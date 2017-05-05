@@ -1,0 +1,70 @@
+//
+// @font-face
+// -------------
+
+$bodyFont: sans-serif;
+
+//
+// Color Palette
+// -------------
+
+$background: white;
+$text: #212121;
+$link: #2962FF;
+$super: #1DE9B6;
+$minor: #D7F2FF;
+$highlight: #FFD740;
+
+// function for setColor
+@if (lightness($text) > 50) {
+  $setDark: $background;
+  $setLight: $text;
+} @else {
+  $setDark: $text;
+  $setLight: $background;
+}
+
+// radius of input-elements
+$input-radius: 4 !default;
+
+// radius of buttons
+// if $btn-round === false
+$btn-radius: 4 !default;
+
+// if is btn is round
+$btn-round: false;
+
+// min width for wide buttons
+$btn-wide-width: 240px;
+
+// min width for wide small buttons
+$btn-wide-small-width: 160px;
+
+// radius of dropdown-elements
+$dropdown-radius: 4 !default;
+
+// headings variables
+$base-size: 16;
+
+$headings-weight: bold;
+
+$h1-size: 48;
+$h1-height: 56;
+
+$h2-size: 40;
+$h2-height: 48;
+
+$h3-size: 32;
+$h3-height: 40;
+
+$h4-size: 24;
+$h4-height: 32;
+
+$h5-size: 20;
+$h5-height: 28;
+
+$h6-size: 16;
+$h6-height: 24;
+
+// Breakpoint for responsive navigation
+$bpNav: $bpLg;

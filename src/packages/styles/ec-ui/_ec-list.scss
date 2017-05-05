@@ -1,0 +1,153 @@
+.ec-list {
+  margin: rem(16) 0;
+  > ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    @include flexbox;
+    @include flex-direction(column);
+
+    > li {
+      &:last-child {
+        .ec-list-item {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+}
+
+.ec-list-item {
+  @include flexbox;
+  @include justify-content(space-between);
+  @include align-items(center);
+  background-color: getColor(base, background);
+  border-bottom: 1px solid getColor(base, divider);
+
+  .label {
+    mix-blend-mode: multiply;
+  }
+
+  &:hover {
+    @extend %shadow%hover;
+    z-index: 10;
+    position: relative;
+  }
+
+  &.selected {
+    background-color: getColor(state, selected);
+  }
+
+  &.disabled {
+    color: getColor(text, light);
+    opacity: .6;
+    cursor: not-allowed;
+
+    a {
+      color: getColor(text, light);
+    }
+
+    img {
+      @include filter(grayscale(1));
+    }
+
+    .label {
+      color: getColor(text, light);
+    }
+  }
+
+  &.invalid {
+    color: getColor(text, light);
+    text-decoration: line-through;
+    opacity: .6;
+
+    a {
+      color: getColor(text, light);
+    }
+
+    img {
+      @include filter(grayscale(1));
+    }
+
+    .label {
+      color: getColor(text, light);
+    }
+  }
+
+  &.error {
+    @include box-shadow(inset 0 0 0 2px getColor(state, error));
+  }
+
+  &.info {
+    @include box-shadow(inset 0 0 0 2px getColor(state, info));
+  }
+
+  &.success {
+    @include box-shadow(inset 0 0 0 2px getColor(state, success));
+  }
+}
+
+.ec-list-item-cell {
+  padding: rem(8);
+  @include flex(1 1 auto);
+
+  &.ec-list-checkbox,
+  &.ec-list-avatar,
+  &.ec-list-controls {
+    @include flex(0 0 auto);
+  }
+
+  &.ec-list-number,
+  &.ec-list-date,
+  &.ec-list-tel {
+    text-align: right;
+  }
+}
+
+.ec-list-avatar {
+  img {
+    @extend %avatar, %avatar%small;
+  }
+}
+
+.ec-list-controls {
+  nav {
+    a.btn {
+      @extend .btn.clear;
+    }
+  }
+}
+
+.ec-list-group {
+  .ec-list-group-header {
+    @include flexbox;
+    @include justify-content(space-between);
+    @include align-items(center);
+
+    .ec-list-item {
+      background-color: transparent;
+      border: none;
+    }
+
+    .ec-list-group-name {
+      font-weight: bold;
+    }
+  }
+
+  > ec-list-items > ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    @include flexbox;
+    @include flex-direction(column);
+
+    > li {
+
+      &:last-child {
+        .ec-list-item {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+}

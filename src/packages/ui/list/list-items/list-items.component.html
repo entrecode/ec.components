@@ -1,0 +1,53 @@
+<ul>
+  <li *ngFor="let item of items" (click)="columnClick(item)">
+    <div class="ec-list-item" [class.selected]="selection?.has(item)">
+      <div class="ec-list-item-cell ec-list-checkbox" *ngIf="selection">
+        <input type="checkbox" [checked]="selection?.has(item)">
+      </div>
+
+      <div *ngFor="let field of list?.fields" class="ec-list-item-cell"
+           [ngClass]="'ec-list-' + field.type" [ngSwitch]="field.type">
+        <ul class="labels-list" *ngSwitchCase="'entries'">
+          <li *ngFor="let label of item.display(field.property)">
+            <div class="label">
+              {{label}}
+            </div>
+          </li>
+        </ul>
+        <a href="mailto:test@test.de" *ngSwitchCase="'email'">
+          {{item.display(field.property)}}
+        </a>
+        <span *ngSwitchCase="'location'">
+              {{item.display(field.property) | json}}
+            </span>
+        <span *ngSwitchCase="'json'">
+              {{item.display(field.property) | json}}
+            </span>
+        <div class="ec-list-avatar" *ngSwitchCase="'asset'">
+          <img src="http://i.pravatar.cc/160" alt="">
+        </div>
+        <div class="ec-list-avatar" *ngSwitchCase="'assets'">
+          <img [src]="url" *ngFor="let url of item.display(field.property)">
+        </div>
+        <span *ngSwitchDefault>
+          {{item.display(field.property)}}
+        </span>
+      </div>
+
+
+      <!--<div class="ec-list-item-cell ec-list-controls">
+        <nav class="ec-context-menu">
+          <a class="btn"><span class="ec-icon more-horizontal"></span></a>
+          <ul>
+            <li>
+              <a href="" class="btn">delete</a>
+            </li>
+            <li>
+              <a href="" class="btn">dublicate</a>
+            </li>
+          </ul>
+        </nav>
+      </div>-->
+    </div>
+  </li>
+</ul>

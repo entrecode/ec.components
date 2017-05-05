@@ -1,0 +1,952 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ec-core documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	    <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">ec-core documentation</a>
+            <button type="button" class="btn btn-default btn-menu fa fa-bars" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+            <div id="book-search-input" role="search">
+                <input type="text" placeholder="Type to search">
+            </div>
+            <nav>
+            
+                <ul class="list">
+            
+                    <li class="title">
+                        <a href="../index.html">ec-core documentation</a>
+                    </li>
+            
+                    <li class="divider"></li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../index.html"><span class="fa fa-home"></span>Getting started</a>
+                        <ul class="links">
+                                <li class="link">
+                                    <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
+                                </li>
+                                <li class="link">
+                                    <a 
+                                        
+                                         href="../overview.html" 
+                                         href="../overview.html" 
+                                        >
+                                        <span class="fa fa-th"></span>Overview
+                                    </a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-book"></span>
+                            <span>Tutorial</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-additional-pages"
+                            ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-additional-pages"
+                            >
+                                <li class="link ">
+                                    <a href="../additional-documentation/overview.html" >Overview</a>
+                                </li>
+                                <li class="link ">
+                                    <a href="../additional-documentation/components.html" >Components</a>
+                                </li>
+                                <li class="link for-chapter">
+                                    <a href="../additional-documentation/components/list.html" >List</a>
+                                </li>
+                                <li class="link for-chapter">
+                                    <a href="../additional-documentation/components/pagination.html" >Pagination</a>
+                                </li>
+                                <li class="link for-chapter">
+                                    <a href="../additional-documentation/components/entry-list.html" >Entry List</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../modules.html" >
+                            <span class="fa fa-archive"></span>
+                            <span>Modules</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-modules-links"
+                            ></span>
+                        </a>
+                        <ul class="links collapse in"
+                                id="xs-modules-links"
+                            >
+                                <li class="link">
+                                    <a href="../modules/AppModule.html" >AppModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/DataModule.html" >DataModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/UiModule.html" >UiModule</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-cogs"></span>
+                            <span>Components</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-components-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-components-links"
+                            >
+                                <li class="link">
+                                    <a href="../components/AppComponent.html"  data-type="entity-link" class="active" >AppComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/EntryListComponent.html" >EntryListComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/FieldComponent.html" >FieldComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/FilterComponent.html" >FilterComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/ListComponent.html" >ListComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/ListHeaderComponent.html" >ListHeaderComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/ListItemsComponent.html" >ListItemsComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/MockupComponent.html" >MockupComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/PaginationComponent.html" >PaginationComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/TabComponent.html" >TabComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/TabsComponent.html" >TabsComponent</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-file-code-o"></span>
+                            <span>Classes</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-classes-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-classes-links"
+                            >
+                                <li class="link">
+                                    <a href="../classes/Collection.html" >Collection</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/Config.html" >Config</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/Datamanager.html" >Datamanager</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/EcCorePage.html" >EcCorePage</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/EntryList.html" >EntryList</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/Field.html" >Field</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/Item.html" >Item</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/List.html" >List</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/ModelConfig.html" >ModelConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/Pagination.html" >Pagination</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/Selection.html" >Selection</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/Sorter.html" >Sorter</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/TimeoutAction.html" >TimeoutAction</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-info"></span>
+                            <span>Interfaces</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-interfaces-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-interfaces-links"
+                            >
+                                <li class="link">
+                                    <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/Environment.html" >Environment</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/FieldConfig.html" >FieldConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/FieldConfigProperty.html" >FieldConfigProperty</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/ItemConfig.html" >ItemConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/ListConfig.html" >ListConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/ModelConfiguration.html" >ModelConfiguration</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/PaginationConfig.html" >PaginationConfig</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple">
+                            <span class="fa fa-plus"></span>
+                            <span>Pipes</span>
+                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                    data-target="#xs-pipes-links"
+                                ></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-pipes-links"
+                            >
+                                <li class="link">
+                                    <a href="../pipes/GroupPipe.html" >GroupPipe</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
+                    </li>
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
+                    </li>
+            
+                    <li class="divider"></li>
+                    <li class="copyright">
+                            Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
+                                        <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
+                            </a>
+                    </li>
+            
+                </ul>
+            
+            </nav>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <nav>
+                   
+                       <ul class="list">
+                   
+                           <li class="title">
+                               <a href="../index.html">ec-core documentation</a>
+                           </li>
+                   
+                           <li class="divider"></li>
+                   
+                               <div id="book-search-input" role="search">
+                                   <input type="text" placeholder="Type to search">
+                               </div>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../index.html"><span class="fa fa-home"></span>Getting started</a>
+                               <ul class="links">
+                                       <li class="link">
+                                           <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
+                                       </li>
+                                       <li class="link">
+                                           <a 
+                                               
+                                                href="../overview.html" 
+                                                href="../overview.html" 
+                                               >
+                                               <span class="fa fa-th"></span>Overview
+                                           </a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-book"></span>
+                                   <span>Tutorial</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#additional-pages"
+                                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="additional-pages"
+                   >
+                                       <li class="link ">
+                                           <a href="../additional-documentation/overview.html" >Overview</a>
+                                       </li>
+                                       <li class="link ">
+                                           <a href="../additional-documentation/components.html" >Components</a>
+                                       </li>
+                                       <li class="link for-chapter">
+                                           <a href="../additional-documentation/components/list.html" >List</a>
+                                       </li>
+                                       <li class="link for-chapter">
+                                           <a href="../additional-documentation/components/pagination.html" >Pagination</a>
+                                       </li>
+                                       <li class="link for-chapter">
+                                           <a href="../additional-documentation/components/entry-list.html" >Entry List</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../modules.html" >
+                                   <span class="fa fa-archive"></span>
+                                   <span>Modules</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#modules-links"
+                                   ></span>
+                               </a>
+                               <ul class="links collapse in"
+                                       id="modules-links"
+                   >
+                                       <li class="link">
+                                           <a href="../modules/AppModule.html" >AppModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/DataModule.html" >DataModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/UiModule.html" >UiModule</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-cogs"></span>
+                                   <span>Components</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#components-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="components-links"
+                   >
+                                       <li class="link">
+                                           <a href="../components/AppComponent.html"  data-type="entity-link" class="active" >AppComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/EntryListComponent.html" >EntryListComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/FieldComponent.html" >FieldComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/FilterComponent.html" >FilterComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/ListComponent.html" >ListComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/ListHeaderComponent.html" >ListHeaderComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/ListItemsComponent.html" >ListItemsComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/MockupComponent.html" >MockupComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/PaginationComponent.html" >PaginationComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/TabComponent.html" >TabComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/TabsComponent.html" >TabsComponent</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-file-code-o"></span>
+                                   <span>Classes</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#classes-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="classes-links"
+                   >
+                                       <li class="link">
+                                           <a href="../classes/Collection.html" >Collection</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/Config.html" >Config</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/Datamanager.html" >Datamanager</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/EcCorePage.html" >EcCorePage</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/EntryList.html" >EntryList</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/Field.html" >Field</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/Item.html" >Item</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/List.html" >List</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/ModelConfig.html" >ModelConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/Pagination.html" >Pagination</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/Selection.html" >Selection</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/Sorter.html" >Sorter</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/TimeoutAction.html" >TimeoutAction</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-info"></span>
+                                   <span>Interfaces</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#interfaces-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="interfaces-links"
+                   >
+                                       <li class="link">
+                                           <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/Environment.html" >Environment</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/FieldConfig.html" >FieldConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/FieldConfigProperty.html" >FieldConfigProperty</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/ItemConfig.html" >ItemConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/ListConfig.html" >ListConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/ModelConfiguration.html" >ModelConfiguration</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/PaginationConfig.html" >PaginationConfig</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple">
+                                   <span class="fa fa-plus"></span>
+                                   <span>Pipes</span>
+                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                           data-target="#pipes-links"
+                   ></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="pipes-links"
+                   >
+                                       <li class="link">
+                                           <a href="../pipes/GroupPipe.html" >GroupPipe</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
+                           </li>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
+                           </li>
+                   
+                           <li class="divider"></li>
+                           <li class="copyright">
+                                   Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
+                                               <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
+                                   </a>
+                           </li>
+                   
+                       </ul>
+                   
+                   </nav>
+               </div>
+               <div class="content component">
+                   <div class="content-data">
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>AppComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+    <li class="active">
+        <a href="#infos" id="infos-tab" role="tab" data-toggle="tab" data-link="infos">Infos</a>
+    </li>
+
+    <li>
+        <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+    </li>
+
+    <li>
+        <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+    </li>
+    <li>
+        <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="infos"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/app.component.ts</code>
+</p>
+
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+            <tr>
+                <td class="col-md-3">encapsulation</td>
+                <td class="col-md-9"><code>ViewEncapsulation.None</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-root</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>app.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./app.component.html</code></td>
+            </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+    <section>
+        <h3 id="constructor">Constructor</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>constructor()</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/app.component.ts:18</a></div>
+                            </td>
+                        </tr>
+    
+                </tbody>
+            </table>
+    </section>
+
+
+    <section>
+        
+            <h3 id="inputs">
+                Properties
+            </h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> currentPage</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>currentPage:     <code>number</code>
+    </bcode>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/app.component.ts:18</a></div>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Private</span> mocked</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-lock"></span><code>mocked:     <code>any</code>
+    </bcode>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/app.component.ts:15</a></div>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Private</span> pagination</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-lock"></span><code>pagination:     <code><a href="../classes/Pagination.html" target="_self" >Pagination</a></code>
+    </bcode>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/app.component.ts:17</a></div>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b><span class="modifier">Private</span> title</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-lock"></span><code>title:     <code>string</code>
+    </bcode>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Default value: </i><code>ec-core</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/app.component.ts:16</a></div>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+    </section>
+</div>
+
+
+    <div class="tab-pane fade tab-source-code" id="source">
+        <pre class="line-numbers"><code class="language-typescript">import { Component, ViewEncapsulation } from &#x27;@angular/core&#x27;;
+import { mocked } from &#x27;../mocks/data&#x27;;
+import { Datamanager, ModelConfig } from &#x27;@ec.components/data&#x27;;
+import { environment } from &#x27;../environments/environment&#x27;;
+import { Pagination } from &#x27;@ec.components/core&#x27;;
+import * as moment from &#x27;moment&#x27;;
+
+@Component({
+  selector: &#x27;app-root&#x27;,
+  templateUrl: &#x27;./app.component.html&#x27;,
+  styleUrls: [&#x27;./app.component.scss&#x27;],
+  encapsulation: ViewEncapsulation.None,
+})
+export class AppComponent {
+  private mocked;
+  private title &#x3D; &#x27;ec-core&#x27;;
+  private pagination &#x3D; new Pagination({});
+  currentPage: number &#x3D; this.pagination.getPage();
+
+  constructor() {
+    Datamanager.useEnvironment(environment);
+    this.mocked &#x3D; mocked;
+    this.pagination.setTotal(5100);
+    this.pagination.change$.debounceTime(500)
+    .subscribe((p) &#x3D;&gt; {
+      this.currentPage &#x3D; this.pagination.getPage();
+      console.log(&#x27;changed!&#x27;, p);
+    });
+
+    ModelConfig.set(&#x27;muffin&#x27;, {
+      fields: {
+        pictures: {
+          label: &#x27;Bilder&#x27;
+        },
+        name: {
+          label: &#x27;Muffin Name&#x27;,
+          group: (name) &#x3D;&gt; {
+            return name[0].toUpperCase()
+          }
+        },
+        _created: {
+          label: &#x27;Erstellt&#x27;,
+          group: (value) &#x3D;&gt; moment(value).format(&#x27;YYYY&#x27;)
+        },
+        amazement_factor: {
+          label: &#x27;Amazement Faktor&#x27;,
+          display: (value) &#x3D;&gt; {
+            return (value * 10) + &#x27;%&#x27;
+          },
+          group: (value) &#x3D;&gt; {
+            return value &gt; 5 ? &#x27;Größer als 50%&#x27; : &#x27;Kleiner als 50%&#x27;;
+          }
+        },
+      }
+    });
+
+    ModelConfig.set(&#x27;baker&#x27;, {
+      fields: {
+        name: {
+          label: &#x27;Bäcker&#x27;
+        },
+        muffins: {
+          label: &#x27;Muffins&#x27;,
+          display: (value, item) &#x3D;&gt; {
+            let muffins &#x3D; item.getTitle(&#x27;muffins&#x27;) || [];
+            if (muffins &amp;&amp; !Array.isArray(muffins)) {
+              muffins &#x3D; [muffins];
+            }
+            return muffins;
+          }
+        }
+      }
+    });
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade" id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;h1&gt;{{title}}&lt;/h1&gt;
+&lt;h2&gt;Pagination&lt;/h2&gt;
+&lt;ec-pagination [pagination]&#x3D;&quot;pagination&quot; [range]&#x3D;&quot;2&quot;&gt;&lt;/ec-pagination&gt;
+&lt;p&gt;Active Page Live: {{pagination.getPage()}}&lt;/p&gt;
+&lt;p&gt;Active Page Debounced: {{currentPage}}&lt;/p&gt;
+
+&lt;h2&gt;Simple List&lt;/h2&gt;
+&lt;ec-list class&#x3D;&quot;ec-list-card&quot; [list]&#x3D;&quot;mocked.lists.trees&quot;&gt;&lt;/ec-list&gt;
+
+
+&lt;h2&gt;Muffins&lt;/h2&gt;
+&lt;ec-filter (changed)&#x3D;&quot;muffins.filter(&#x27;name&#x27;,$event)&quot;&gt;&lt;/ec-filter&gt;
+&lt;ec-entry-list model&#x3D;&quot;muffin&quot; [config]&#x3D;&quot;{size:10}&quot; #muffins&gt;&lt;/ec-entry-list&gt;
+
+&lt;h2&gt;Bakeers&lt;/h2&gt;
+&lt;ec-entry-list model&#x3D;&quot;baker&quot; [config]&#x3D;&quot;{size:10}&quot;&gt;&lt;/ec-entry-list&gt;
+&lt;!--&lt;h2&gt;Field Test&lt;/h2&gt;
+&lt;ec-entry-list model&#x3D;&quot;field_test&quot;&gt;&lt;/ec-entry-list&gt;--&gt;
+
+&lt;h2&gt;Tabs&lt;/h2&gt;
+&lt;ec-tabs&gt;
+  &lt;ec-tab label&#x3D;&quot;Tab A&quot;&gt;
+    &lt;img src&#x3D;&quot;https://unsplash.it/300/400&quot;&gt;
+  &lt;/ec-tab&gt;
+  &lt;ec-tab label&#x3D;&quot;Tab B&quot;&gt;
+    &lt;img src&#x3D;&quot;https://unsplash.it/200/300&quot;&gt;
+  &lt;/ec-tab&gt;
+  &lt;ec-tab label&#x3D;&quot;Tab C&quot; selected&gt;
+    &lt;img src&#x3D;&quot;https://unsplash.it/400/500&quot;&gt;
+  &lt;/ec-tab&gt;
+  &lt;ec-tab label&#x3D;&quot;Tab D&quot;&gt;
+    &lt;img src&#x3D;&quot;https://unsplash.it/200/100&quot;&gt;
+  &lt;/ec-tab&gt;
+&lt;/ec-tabs&gt;
+
+
+&lt;h2&gt;Mockups&lt;/h2&gt;
+&lt;ec-mockup&gt;&lt;/ec-mockup&gt;
+
+
+&lt;!--&lt;ec-list #treeList [items]&#x3D;&quot;trees.items&quot; (onSelect)&#x3D;&quot;selectTree($event,treeList)&quot;
+         [config]&#x3D;&quot;config.trees&quot;&gt;&lt;/ec-list&gt;
+&lt;ec-list [items]&#x3D;&quot;trees.items&quot; [config]&#x3D;&quot;config.trees&quot;&gt;&lt;/ec-list&gt;--&gt;
+
+
+&lt;!--{{mocked.lists?.trees?.items?.length}} Trees--&gt;
+
+&lt;!--&lt;template #cell let-field&#x3D;&quot;field&quot; let-value&#x3D;&quot;value&quot;&gt;
+  &lt;strong style&#x3D;&quot;color:red&quot;&gt;{{value}}&lt;/strong&gt;
+&lt;/template&gt;
+&lt;ec-list [cellTemplate]&#x3D;&quot;cell&quot; [items]&#x3D;&quot;trees&quot; [listConfig]&#x3D;&quot;config.trees&quot;&gt;&lt;/ec-list&gt;
+
+&lt;ec-list [items]&#x3D;&quot;products&quot;&gt;&lt;/ec-list&gt;--&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade" id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><h1>{{title}}</h1><h2>Pagination</h2><ec-pagination [pagination]="pagination" [range]="2"></ec-pagination><p>Active Page Live: {{pagination.getPage()}}</p><p>Active Page Debounced: {{currentPage}}</p><h2>Simple List</h2><ec-list class="ec-list-card" [list]="mocked.lists.trees"></ec-list><h2>Muffins</h2><ec-filter (changed)="muffins.filter(\'name\',$event)"></ec-filter><ec-entry-list model="muffin" [config]="{size:10}" #muffins></ec-entry-list><h2>Bakeers</h2><ec-entry-list model="baker" [config]="{size:10}"></ec-entry-list><!--<h2>Field Test</h2><ec-entry-list model="field_test"></ec-entry-list>--><h2>Tabs</h2><ec-tabs>  <ec-tab label="Tab A">    <img src="https://unsplash.it/300/400">  </ec-tab>  <ec-tab label="Tab B">    <img src="https://unsplash.it/200/300">  </ec-tab>  <ec-tab label="Tab C" selected>    <img src="https://unsplash.it/400/500">  </ec-tab>  <ec-tab label="Tab D">    <img src="https://unsplash.it/200/100">  </ec-tab></ec-tabs><h2>Mockups</h2><ec-mockup></ec-mockup><!--<ec-list #treeList [items]="trees.items" (onSelect)="selectTree($event,treeList)"         [config]="config.trees"></ec-list><ec-list [items]="trees.items" [config]="config.trees"></ec-list>--><!--{{mocked.lists?.trees?.items?.length}} Trees--><!--<template #cell let-field="field" let-value="value">  <strong style="color:red">{{value}}</strong></template><ec-list [cellTemplate]="cell" [items]="trees" [listConfig]="config.trees"></ec-list><ec-list [items]="products"></ec-list>--></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'FieldComponent', 'selector': 'ec-field'},{'name': 'FilterComponent', 'selector': 'ec-filter'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'AppComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+           </div>
+       </div>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script>var COMPODOC_CURRENT_PAGE_DEPTH = 1;</script>
+
+       <script src="../js/search/search.js"></script>
+       <script src="../js/search/lunr.min.js"></script>
+       <script src="../js/search/search-lunr.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+       <script src="../js/search/search_index.js"></script>
+
+    </body>
+</html>

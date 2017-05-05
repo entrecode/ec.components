@@ -1,0 +1,31 @@
+<nav>
+  <ul>
+    <li [class.disabled]="pagination?.isFirst()"
+        (click)="pagination.first()" #item>
+      <i class="ec-icon previous"></i>
+    </li>
+    <li [class.disabled]="pagination?.isFirst()"
+        (click)="pagination.prev()" #item>
+      <i class="ec-icon chevron-left"></i>
+    </li>
+  </ul>
+  <div [style.maxWidth.px]="containerWidth" #container>
+    <ul [style.transform]="translation" #pages *ngIf="pagination?.pages">
+      <li *ngFor="let page of pagination.pages;let i = index"
+          (click)="pagination.select(i+1)"
+          [class.active]="pagination.isActive(i+1)">
+        {{i+1}}
+      </li>
+    </ul>
+  </div>
+  <ul>
+    <li [class.disabled]="pagination?.isLast()"
+        (click)="pagination.next()" #item>
+      <i class="ec-icon chevron-right"></i>
+    </li>
+    <li [class.disabled]="pagination?.isLast()"
+        (click)="pagination.last()">
+      <i class="ec-icon next"></i>
+    </li>
+  </ul>
+</nav>
