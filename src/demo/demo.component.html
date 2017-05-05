@@ -1,4 +1,7 @@
 <h1>{{title}}</h1>
+
+<p>Welcome to the ec.components demo.</p>
+
 <h2>Pagination</h2>
 <ec-pagination [pagination]="pagination" [range]="2"></ec-pagination>
 <p>Active Page Live: {{pagination.getPage()}}</p>
@@ -12,7 +15,7 @@
 <ec-filter (changed)="muffins.filter('name',$event)"></ec-filter>
 <ec-entry-list model="muffin" [config]="{size:10}" #muffins></ec-entry-list>
 
-<h2>Bakeers</h2>
+<h2>Bakers</h2>
 <ec-entry-list model="baker" [config]="{size:10}"></ec-entry-list>
 <!--<h2>Field Test</h2>
 <ec-entry-list model="field_test"></ec-entry-list>-->

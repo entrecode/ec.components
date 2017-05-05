@@ -19,6 +19,10 @@ The packages sources are located at src/packages.
 
 The main documentation is located at https://entrecode.github.io/ec.components/.
 
+## Demo
+
+A Demo is available at https://components.entrecode.de/.
+
 ## Quick Get Started Guide
 
 ### Install:
