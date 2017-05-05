@@ -1,14 +1,13 @@
 import { async, TestBed } from '@angular/core/testing';
 import { DemoComponent } from './demo.component';
 import { FormsModule } from '@angular/forms';
-import { AppModule } from './demo.module';
+import { DemoModule } from './demo.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { UiModule } from '@ec.components/ui';
 import { DataModule } from '@ec.components/data';
-describe('AppComponent', () => {
+describe('DemoComponent', () => {
   beforeEach(async(() => {
-    console.log('describe', AppModule);
     TestBed.configureTestingModule({
       declarations: [
         DemoComponent
