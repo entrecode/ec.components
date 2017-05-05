@@ -1,8 +1,10 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { mocked } from '../mocks/data';
-import { Datamanager, ModelConfig } from '@ec.components/data';
 import { environment } from '../environments/environment';
-import { Pagination } from '@ec.components/core';
+// import { Pagination } from '@ec.components/core'; //real world imports
+// import { Datamanager, ModelConfig } from '@ec.components/data';
+import { Datamanager, ModelConfig } from '../packages/data';
+import { Pagination } from '../packages/core';
 import * as moment from 'moment';
 
 @Component({
