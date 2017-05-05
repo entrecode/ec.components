@@ -17,7 +17,7 @@ The packages sources are located at src/packages.
 
 ## Documentation
 
-The main documentation is located at [components.entrecode.de](https://components.entrecode.de)
+The main documentation is located at https://entrecode.github.io/ec.components/.
 
 ## Quick Get Started Guide
 
@@ -52,7 +52,7 @@ export class AppModule {
 
 ### Set up Datamanager with environment
 
-The Datamanager Class is a Singleton that holds an instance of the [https://github.com/entrecode/ec.datamanager.js](ec.datamanager SDK).
+The Datamanager Class is a Singleton that holds an instance of the [ec.datamanager SDK](https://github.com/entrecode/ec.datamanager.js).
 You can feed it with an environment like this:
 
 ```js
@@ -72,7 +72,7 @@ Here is a short breakdown of some of the classes and components you can use.
 - *ec-tabs*: Tabs with arbitrary content.
 - More coming soon!
 
-For more infos, look at the doc: [components.entrecode.de](https://components.entrecode.de).
+For more infos, look at the doc: https://entrecode.github.io/ec.components/.
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
