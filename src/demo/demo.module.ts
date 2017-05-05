@@ -14,5 +14,5 @@ import { DataModule } from '@ec.components/data';
   providers: [],
   bootstrap: [DemoComponent]
 })
-export class AppModule {
+export class DemoModule {
 }
