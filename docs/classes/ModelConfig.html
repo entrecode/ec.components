@@ -669,7 +669,7 @@
             
                                 <tr>
                                     <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/packages/data/model-config/model-config.ts:57</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/packages/data/model-config/model-config.ts:62</a></div>
                                     </td>
                                 </tr>
             
@@ -704,7 +704,7 @@
             
                                 <tr>
                                     <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/packages/data/model-config/model-config.ts:62</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/packages/data/model-config/model-config.ts:67</a></div>
                                     </td>
                                 </tr>
             
@@ -739,7 +739,7 @@
             
                                 <tr>
                                     <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">src/packages/data/model-config/model-config.ts:76</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/packages/data/model-config/model-config.ts:81</a></div>
                                     </td>
                                 </tr>
             
@@ -840,7 +840,12 @@ export class ModelConfig extends Config {
       return (value, entry) &#x3D;&gt; entry.getTitle(property);
     }
     if ([&#x27;asset&#x27;, &#x27;assets&#x27;].indexOf(type) !&#x3D;&#x3D; -1) {
-      return (value, entry) &#x3D;&gt; entry.getImageThumbUrl(&#x27;pictures&#x27;, 100);
+      return (value, entry) &#x3D;&gt; {
+        if (!value.length) {
+          return [];
+        }
+        return entry.getImageThumbUrl(&#x27;pictures&#x27;, 100);
+      }
     }
     if (type &#x3D;&#x3D;&#x3D; &#x27;datetime&#x27;) {
       return (value) &#x3D;&gt; moment(value).format(&#x27;DD.MM.YY&#x27;);

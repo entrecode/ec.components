@@ -45,7 +45,12 @@ export class ModelConfig extends Config {
       return (value, entry) => entry.getTitle(property);
     }
     if (['asset', 'assets'].indexOf(type) !== -1) {
-      return (value, entry) => entry.getImageThumbUrl('pictures', 100);
+      return (value, entry) => {
+        if (!value.length) {
+          return [];
+        }
+        return entry.getImageThumbUrl('pictures', 100);
+      }
     }
     if (type === 'datetime') {
       return (value) => moment(value).format('DD.MM.YY');
