@@ -23,7 +23,7 @@ The main documentation is located at https://entrecode.github.io/ec.components/.
 
 A Demo is available at https://components.entrecode.de/.
 
-## Quick Get Started Guide
+## Get Started
 
 ### Install:
 
