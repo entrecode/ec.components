@@ -1,6 +1,6 @@
 # ec.components
 
-This is the main project for ec.components, rewritten in Typescript and Angular.
+This is the main project for ec.components, written in Typescript and Angular.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.0.
 
@@ -56,11 +56,11 @@ The Datamanager Class is a Singleton that holds an instance of the [https://gith
 You can feed it with an environment like this:
 
 ```js
-    import { Datamanager } from '@ec.components/data';
-    import { environment } from '../environments/environment';
-    //environment minimum: { apiRoot: 'https://datamanager.cachena.entrecode.de/api/XXxxXXxx' }
-    Datamanager.useEnvironment(environment);
-    Datamanager.api().model('baker').entries(); //use sdk
+ import { Datamanager } from '@ec.components/data';
+ import { environment } from '../environments/environment';
+ //environment minimum: { apiRoot: 'https://datamanager.cachena.entrecode.de/api/XXxxXXxx' }
+ Datamanager.useEnvironment(environment);
+ Datamanager.api().model('baker').entries(); //use sdk
 ```
 
 ## UI Components
