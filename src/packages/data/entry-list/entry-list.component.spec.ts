@@ -6,6 +6,7 @@ import { ListItemsComponent } from '../../ui/list/list-items/list-items.componen
 import { ListComponent } from '../../ui/list/list.component';
 import { ListHeaderComponent } from '../../ui/list/list-header/list-header.component';
 import { GroupPipe } from '../../ui/list/group.pipe';
+import sinon = require('sinon');
 
 describe('EntryListComponent', () => {
   let component: EntryListComponent;
@@ -27,5 +28,12 @@ describe('EntryListComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+    component.ngOnChanges();
   });
+
+  it('should construct list when setting model', () => {
+    component.model = 'muffin';
+    component.ngOnChanges();
+    expect(component.list).toBeDefined();
+  })
 });

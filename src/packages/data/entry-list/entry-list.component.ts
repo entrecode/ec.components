@@ -1,8 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ListComponent } from '@ec.components/ui';
-import { PaginationConfig, Selection } from '@ec.components/core';
+import { PaginationConfig } from '@ec.components/core';
 import { EntryList } from './entry-list';
-import { ModelConfig } from '../model-config/model-config';
 
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent */
 @Component({
@@ -28,13 +27,7 @@ export class EntryListComponent extends ListComponent {
     if (!this.model) {
       return;
     }
-    ModelConfig.generateFieldConfig(this.model, this.config.fields).then((fieldConfig) => {
-      Object.assign(this.config, { fields: fieldConfig });
-      this.list = new EntryList(this.model, this.config);
-      if (!this.selection) {
-        this.selection = new Selection([], this.list.config);
-      }
-    });
+    this.list = new EntryList(this.model, this.config);
   }
 
   /** This method will filter the list by a given property value and optional operator. */

@@ -1,5 +1,6 @@
 import { Datamanager } from './datamanager';
 import { mocked } from '../../../mocks/data';
+import sinon = require('sinon');
 
 describe('Datamanager', () => {
 
@@ -18,10 +19,10 @@ describe('Datamanager', () => {
     expect(api.id).toBe(mocked.environment.datamanagerID);
   });
 
-  /*it ('should return a schema', () => {
-   const s = sinon.stub(Datamanager, 'schema');
-   s.returns({
-   allOf: [{ properties: { mock: true } }]
-   });
-   });*/
+  /*it('should return a schema', () => {
+    const s = sinon.stub(Datamanager, 'schema');
+    s.returns({
+      allOf: [{ properties: { mock: true } }]
+    });
+  });*/
 });

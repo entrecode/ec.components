@@ -51,6 +51,7 @@ export class List<T> extends Collection<Item<T>> {
     }
     this.page = this.pagination.slice(this.items);
     this.groupBy(this.config.sortBy);
+
   }
 
   /** Adds the given item to the list and assigns the list config to the item*/

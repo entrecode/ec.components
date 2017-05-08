@@ -73,13 +73,9 @@ export class ModelConfig extends Config {
    * If no local fieldConfig is given, the global model's field config is used.
    * If no global field config is found for that model, it will be generated from the model schema.
    * */
-  static generateFieldConfig(model: string, localFieldConfig?: FieldConfig<FieldConfigProperty>): Promise<FieldConfig<FieldConfigProperty>> {
+  static generateFieldConfig(model: string): Promise<FieldConfig<FieldConfigProperty>> {
     let fieldConfig;
     return Promise.resolve().then(() => {
-      //use local config, if given
-      if (localFieldConfig) {
-        return Promise.resolve(localFieldConfig);
-      }
       //use global config, if given
       if (this.get(model) && this.get(model).fields) {
         return Promise.resolve(this.get(model).fields);

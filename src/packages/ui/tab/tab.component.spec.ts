@@ -4,8 +4,9 @@ import { TabComponent } from './tab.component';
 import { TabsComponent } from '../tabs/tabs.component';
 
 describe('TabComponent', () => {
-  /*let component: TabComponent;
+  let component: TabComponent;
   let fixture: ComponentFixture<TabComponent>;
+  let tabsFix: ComponentFixture<TabsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -15,12 +16,13 @@ describe('TabComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TabComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    tabsFix = TestBed.createComponent(TabsComponent);
+    // fixture = TestBed.createComponent(TabComponent);
+    // component = fixture.componentInstance;
+    // fixture.detectChanges();
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
-  });*/
+    // expect(component).toBeTruthy();
+  });
 });

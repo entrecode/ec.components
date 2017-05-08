@@ -66,8 +66,24 @@ export const mocked = {
       name: 'Mapple',
       height: 20,
       fruits: false
+    }, {
+      name: 'ZZ',
+      height: 20,
+      fruits: false
+    }, {
+      name: 'Z',
+      height: 20,
+      fruits: false
+    }, {
+      name: 'aa',
+      height: 20,
+      fruits: false
+    }, {
+      name: 'ba',
+      height: 20,
+      fruits: false
     }], {
-      size: 3,
+      size: 5,
       fields: {
         name: {
           label: 'Name'

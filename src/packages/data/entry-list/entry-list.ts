@@ -1,5 +1,6 @@
 import { Item, List } from '@ec.components/core';
 import { Datamanager, EntryListConfig } from '../index';
+import { ModelConfig } from '../model-config/model-config';
 
 /**
  * Extension of List for Datamanager Entries.
@@ -18,8 +19,15 @@ export class EntryList<Entry> extends List<Entry> {
       fields: config.fields
     }, config));
     this.model = model;
-    // Object.assign(this.config, config);
-    this.load();
+    if (this.config.fields) {
+      this.load();
+      return;
+    }
+    ModelConfig.generateFieldConfig(this.model).then((fieldConfig) => {
+      Object.assign(this.config, { fields: fieldConfig });
+      this.fields = this.getFields();
+      this.load();
+    });
   }
 
   private useList(entryList) {
@@ -29,7 +37,6 @@ export class EntryList<Entry> extends List<Entry> {
       return new Item(entry, this.config);
     }), true);
     this.page = this.items;
-
     if (this.pagination) {
       this.pagination.setTotal(entryList.total);
     }
@@ -41,6 +48,11 @@ export class EntryList<Entry> extends List<Entry> {
       return;
     }
     if (config) {
+      Object.keys(config).forEach((key) => {
+        if (config[key] === undefined) {
+          delete config[key];
+        }
+      });
       Object.assign(this.config, config);
     }
     return Datamanager.api().model(this.model).entryList(this.config)
