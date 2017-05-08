@@ -1,10 +1,11 @@
 import { Item } from '../';
+const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
 /** The Sorter is a singleton that handles all kinds of sorting operations. */
 export abstract class Sorter<T> {
   /** Contains sorting methods for different value types. */
   static sortType = {
     'string': (a, b) => {
-      return a > b;
+      return collator.compare(a, b);
     },
     'number': (a, b) => {
       return a - b
