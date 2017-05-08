@@ -25,7 +25,7 @@ export class ListItemsComponent {
       this.selection = this.host.selection;
     }
     if (!this.items && this.list) {
-      this.items = this.list.items;
+      this.items = this.list.page;
     }
   }
 

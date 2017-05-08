@@ -799,7 +799,7 @@
     
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/packages/ui/list/list.component.ts:61</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/packages/ui/list/list.component.ts:60</a></div>
                             </td>
                         </tr>
     
@@ -913,8 +913,7 @@ export class ListComponent {
   /** Helper function for custom cell templates. Returns object containing field name and field value */
   getContext(field, item) {
     return {
-      field: field,
-      value: item.resolve(item, field)
+      field, item
     }
   }
 
@@ -932,10 +931,11 @@ export class ListComponent {
     </div>
 
     <div class="tab-pane fade" id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;ec-list&quot;&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;ec-pagination [pagination]&#x3D;&quot;list?.pagination&quot;&gt;&lt;/ec-pagination&gt;
+&lt;div class&#x3D;&quot;ec-list&quot;&gt;
   &lt;div class&#x3D;&quot;ec-list-group&quot;&gt;
     &lt;ec-list-header [host]&#x3D;&quot;this&quot;&gt;&lt;/ec-list-header&gt;
-    &lt;ec-list-items [host]&#x3D;&quot;this&quot; *ngIf&#x3D;&quot;!list?.groups&quot;&gt;&lt;/ec-list-items&gt;
+    &lt;ec-list-items [items]&#x3D;&quot;list?.page&quot; [host]&#x3D;&quot;this&quot; *ngIf&#x3D;&quot;!list?.groups&quot;&gt;&lt;/ec-list-items&gt;
   &lt;/div&gt;
   &lt;div class&#x3D;&quot;ec-list-group&quot; *ngFor&#x3D;&quot;let group of list?.groups;trackBy:list?.trackGroup&quot;&gt;
     &lt;div class&#x3D;&quot;ec-list-group-header&quot;&gt;
@@ -948,9 +948,11 @@ export class ListComponent {
       &lt;/div&gt;
     &lt;/div&gt;
     &lt;ec-list-items [host]&#x3D;&quot;this&quot; #listItems
-                   [items]&#x3D;&quot;list?.items | group: list?.config.sortBy: group&quot;&gt;&lt;/ec-list-items&gt;
+                   [items]&#x3D;&quot;list?.page | group: list?.config.sortBy: group&quot;&gt;&lt;/ec-list-items&gt;
   &lt;/div&gt;
-&lt;/div&gt;</code></pre>
+&lt;/div&gt;
+&lt;ec-pagination [pagination]&#x3D;&quot;list?.pagination&quot;&gt;&lt;/ec-pagination&gt;
+</code></pre>
     </div>
 
     <div class="tab-pane fade" id="tree">
@@ -976,7 +978,7 @@ export class ListComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="ec-list">  <div class="ec-list-group">    <ec-list-header [host]="this"></ec-list-header>    <ec-list-items [host]="this" *ngIf="!list?.groups"></ec-list-items>  </div>  <div class="ec-list-group" *ngFor="let group of list?.groups;trackBy:list?.trackGroup">    <div class="ec-list-group-header">      <div class="ec-list-item-cell ec-list-checkbox" *ngIf="selection">        <input type="checkbox" (click)="selection?.toggleAll(listItems?.items)"               [checked]="selection?.hasAll(listItems?.items)">      </div>      <div class="ec-list-item ec-list-group-name">        {{group}}      </div>    </div>    <ec-list-items [host]="this" #listItems                   [items]="list?.items | group: list?.config.sortBy: group"></ec-list-items>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><ec-pagination [pagination]="list?.pagination"></ec-pagination><div class="ec-list">  <div class="ec-list-group">    <ec-list-header [host]="this"></ec-list-header>    <ec-list-items [items]="list?.page" [host]="this" *ngIf="!list?.groups"></ec-list-items>  </div>  <div class="ec-list-group" *ngFor="let group of list?.groups;trackBy:list?.trackGroup">    <div class="ec-list-group-header">      <div class="ec-list-item-cell ec-list-checkbox" *ngIf="selection">        <input type="checkbox" (click)="selection?.toggleAll(listItems?.items)"               [checked]="selection?.hasAll(listItems?.items)">      </div>      <div class="ec-list-item ec-list-group-name">        {{group}}      </div>    </div>    <ec-list-items [host]="this" #listItems                   [items]="list?.page | group: list?.config.sortBy: group"></ec-list-items>  </div></div><ec-pagination [pagination]="list?.pagination"></ec-pagination></div>'
     var COMPONENTS = [{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'FieldComponent', 'selector': 'ec-field'},{'name': 'FilterComponent', 'selector': 'ec-filter'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ListComponent'};

@@ -1,7 +1,8 @@
+<ec-pagination [pagination]="list?.pagination"></ec-pagination>
 <div class="ec-list">
   <div class="ec-list-group">
     <ec-list-header [host]="this"></ec-list-header>
-    <ec-list-items [host]="this" *ngIf="!list?.groups"></ec-list-items>
+    <ec-list-items [items]="list?.page" [host]="this" *ngIf="!list?.groups"></ec-list-items>
   </div>
   <div class="ec-list-group" *ngFor="let group of list?.groups;trackBy:list?.trackGroup">
     <div class="ec-list-group-header">
@@ -14,6 +15,7 @@
       </div>
     </div>
     <ec-list-items [host]="this" #listItems
-                   [items]="list?.items | group: list?.config.sortBy: group"></ec-list-items>
+                   [items]="list?.page | group: list?.config.sortBy: group"></ec-list-items>
   </div>
 </div>
+<ec-pagination [pagination]="list?.pagination"></ec-pagination>

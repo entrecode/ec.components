@@ -511,7 +511,7 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <code>constructor(config: <a href="../interfaces/PaginationConfig.html">PaginationConfig</a>)</code>
+                                    <code>constructor(config: <a href="../interfaces/PaginationConfig.html">PaginationConfig</a>, total: number)</code>
                                 </td>
                             </tr>
                                 <tr>
@@ -550,7 +550,7 @@
             
                                 <tr>
                                     <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/packages/core/pagination/pagination.ts:23</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/packages/core/pagination/pagination.ts:26</a></div>
                                     </td>
                                 </tr>
             
@@ -582,7 +582,7 @@
             
                                 <tr>
                                     <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/packages/core/pagination/pagination.ts:28</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/packages/core/pagination/pagination.ts:31</a></div>
                                     </td>
                                 </tr>
             
@@ -713,7 +713,7 @@
             
                                 <tr>
                                     <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/packages/core/pagination/pagination.ts:69</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/packages/core/pagination/pagination.ts:66</a></div>
                                     </td>
                                 </tr>
             
@@ -745,7 +745,7 @@
             
                                 <tr>
                                     <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">src/packages/core/pagination/pagination.ts:77</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/packages/core/pagination/pagination.ts:74</a></div>
                                     </td>
                                 </tr>
             
@@ -777,7 +777,7 @@
             
                                 <tr>
                                     <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/packages/core/pagination/pagination.ts:85</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/packages/core/pagination/pagination.ts:82</a></div>
                                     </td>
                                 </tr>
             
@@ -809,7 +809,7 @@
             
                                 <tr>
                                     <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">src/packages/core/pagination/pagination.ts:90</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">src/packages/core/pagination/pagination.ts:87</a></div>
                                     </td>
                                 </tr>
             
@@ -841,7 +841,7 @@
             
                                 <tr>
                                     <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">src/packages/core/pagination/pagination.ts:99</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">src/packages/core/pagination/pagination.ts:96</a></div>
                                     </td>
                                 </tr>
             
@@ -873,7 +873,7 @@
             
                                 <tr>
                                     <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">src/packages/core/pagination/pagination.ts:104</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">src/packages/core/pagination/pagination.ts:101</a></div>
                                     </td>
                                 </tr>
             
@@ -905,7 +905,7 @@
             
                                 <tr>
                                     <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="109" class="link-to-prism">src/packages/core/pagination/pagination.ts:109</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">src/packages/core/pagination/pagination.ts:106</a></div>
                                     </td>
                                 </tr>
             
@@ -916,6 +916,38 @@
             
                                         <div class="io-description">
                                             <b>Returns: </b>    <code>boolean</code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> slice</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>slice(items: any[])</code>
+                                </td>
+                            </tr>
+            
+                                <tr>
+                                    <td class="col-md-4">
+                                        <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">src/packages/core/pagination/pagination.ts:114</a></div>
+                                    </td>
+                                </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>slices a given array according to the current pagination state </p>
+            </div>
+            
+                                        <div class="io-description">
+                                            <b>Returns: </b>    <code>any[]</code>
             
                                         </div>
                                 </td>
@@ -1067,9 +1099,12 @@ export class Pagination {
 
   /** You can init each Pagination instance with an optional config.
    * If no config is provided, it will default to &#x60;&#x60;&#x60;{page: 1, size: 25}&#x60;&#x60;&#x60;. */
-  constructor(config?: PaginationConfig) {
+  constructor(config?: PaginationConfig, total?: number) {
     this.config &#x3D; { page: 1, size: 25 };
     Object.assign(this.config, config);
+    if (total) {
+      this.setTotal(total);
+    }
   }
 
   /** Retrieves the current page */
@@ -1079,10 +1114,7 @@ export class Pagination {
 
   /** Retrieves the number of pages */
   getPages(): number {
-    if (!this.pages) {
-      return 0;
-    }
-    return this.pages.length;
+    return this.pages ? this.pages.length : 0;
   }
 
   /** Loads the next page. Throws error if already on last page. */
@@ -1112,9 +1144,6 @@ export class Pagination {
     if (this.config.page !&#x3D;&#x3D; 1 &amp;&amp; this.config.page &gt; this.pages.length) {
       this.config.page &#x3D; this.pages.length || 1;
       this.load();
-    }
-    if (this.pages.length &gt; 200) {
-      console.warn(&#x27;Pagination: more than 200 pages! consider using a higher size to relieve the DOM.&#x27;)
     }
   }
 
@@ -1164,6 +1193,11 @@ export class Pagination {
       return true;
     }
     return this.config.page &#x3D;&#x3D;&#x3D; this.pages.length;
+  }
+
+  /** slices a given array according to the current pagination state */
+  slice(items: Array&lt;any&gt;): Array&lt;any&gt; {
+    return items.slice((this.config.page - 1) * this.config.size, (this.config.page) * this.config.size);
   }
 }
 </code></pre>

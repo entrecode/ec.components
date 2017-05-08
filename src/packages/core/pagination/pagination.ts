@@ -14,9 +14,12 @@ export class Pagination {
 
   /** You can init each Pagination instance with an optional config.
    * If no config is provided, it will default to ```{page: 1, size: 25}```. */
-  constructor(config?: PaginationConfig) {
+  constructor(config?: PaginationConfig, total?: number) {
     this.config = { page: 1, size: 25 };
     Object.assign(this.config, config);
+    if (total) {
+      this.setTotal(total);
+    }
   }
 
   /** Retrieves the current page */
@@ -26,10 +29,7 @@ export class Pagination {
 
   /** Retrieves the number of pages */
   getPages(): number {
-    if (!this.pages) {
-      return 0;
-    }
-    return this.pages.length;
+    return this.pages ? this.pages.length : 0;
   }
 
   /** Loads the next page. Throws error if already on last page. */
@@ -59,9 +59,6 @@ export class Pagination {
     if (this.config.page !== 1 && this.config.page > this.pages.length) {
       this.config.page = this.pages.length || 1;
       this.load();
-    }
-    if (this.pages.length > 200) {
-      console.warn('Pagination: more than 200 pages! consider using a higher size to relieve the DOM.')
     }
   }
 
@@ -111,5 +108,10 @@ export class Pagination {
       return true;
     }
     return this.config.page === this.pages.length;
+  }
+
+  /** slices a given array according to the current pagination state */
+  slice(items: Array<any>): Array<any> {
+    return items.slice((this.config.page - 1) * this.config.size, (this.config.page) * this.config.size);
   }
 }

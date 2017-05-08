@@ -1,4 +1,5 @@
 import { ItemConfig } from './item-config.interface';
+import { Pagination } from '../pagination/pagination';
 
 /**
  *  Configuration for List Classes.
@@ -15,4 +16,10 @@ export interface ListConfig extends ItemConfig<any> {
   resolve?: (item: any) => any;
   /** If true, the list will have no checkboxes and selection feature. */
   disableSelection?: boolean
+  /** The current active page */
+  page?: number,
+  /** The number of items per page */
+  size?: number,
+  /** The pagination that should be used */
+  pagination?: Pagination
 }

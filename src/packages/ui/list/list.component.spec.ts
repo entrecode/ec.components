@@ -4,6 +4,10 @@ import { ListComponent } from './list.component';
 import { ListItemsComponent } from './list-items/list-items.component';
 import { ListHeaderComponent } from './list-header/list-header.component';
 import { GroupPipe } from './group.pipe';
+import { Item } from '../../core/list/item';
+import { mocked } from '../../../mocks/data';
+import { Collection } from '../../core/collection/collection';
+import { PaginationComponent } from '../pagination/pagination.component';
 
 describe('ListComponent', () => {
   let component: ListComponent;
@@ -11,7 +15,7 @@ describe('ListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ListComponent, ListItemsComponent, ListHeaderComponent, GroupPipe]
+      declarations: [PaginationComponent, ListComponent, ListItemsComponent, ListHeaderComponent, GroupPipe]
     })
     .compileComponents();
   }));
@@ -24,5 +28,54 @@ describe('ListComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+    component.ngOnChanges();
   });
+
+  it('should detect change to items and create a list', () => {
+    component.items = ['a', 'b', 'c'].map((i) => new Item(i));
+    component.ngOnChanges();
+    expect(component.list).toBeDefined();
+    expect(component.list.items.length).toBe(component.items.length);
+    expect(component.selection).toBeDefined();
+  });
+
+  it('should use collection input', () => {
+    component.collection = new Collection(mocked.muffins);
+    component.ngOnChanges();
+    expect(component.list).toBeDefined();
+    expect(component.list.items.length).toBe(mocked.muffins.length);
+    expect(component.selection).toBeDefined();
+  });
+
+  it('return a fields context', () => {
+    component.collection = new Collection(mocked.products);
+    component.ngOnChanges();
+    const context = component.getContext('id', component.list.items[0]);
+    expect(context).toEqual({
+      field: 'id',
+      item: component.list.items[0]
+    });
+  });
+
+  it('should toggle selection on columnClick', () => {
+    component.collection = new Collection(mocked.products);
+    component.ngOnChanges();
+    component.columnClick(component.list.items[0]);
+    expect(component.selection.has(component.list.items[0])).toBeTruthy();
+    component.columnClick(component.list.items[0]);
+    expect(component.selection.has(component.list.items[0])).toBeFalsy();
+  });
+
+  it('should support custom onSelect', () => {
+    component.collection = new Collection(mocked.products);
+    component.ngOnChanges();
+    let selected;
+    component.onSelect.subscribe((item) => {
+      selected = item;
+    });
+    component.columnClick(component.list.items[0]); //selection should not change
+    expect(component.selection.has(component.list.items[0])).toBeFalsy();
+    expect(selected).toBe(component.list.items[0]);
+  });
+
 });

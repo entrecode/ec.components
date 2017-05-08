@@ -26,7 +26,6 @@ export class DemoComponent {
     this.pagination.change$.debounceTime(500)
     .subscribe((p) => {
       this.currentPage = this.pagination.getPage();
-      console.log('changed!', p);
     });
 
     ModelConfig.set('muffin', {

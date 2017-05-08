@@ -52,8 +52,7 @@ export class ListComponent {
   /** Helper function for custom cell templates. Returns object containing field name and field value */
   getContext(field, item) {
     return {
-      field: field,
-      value: item.resolve(item, field)
+      field, item
     }
   }
 

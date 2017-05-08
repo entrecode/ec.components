@@ -26,20 +26,30 @@ describe('Pagination', () => {
     });
     pagination.setTotal(50);
     pagination.select(2);
+    pagination.select(2);
     expect(loaded).toBe(true);
+    expect(pagination.getPage()).toBe(2);
   });
 
   it('should support next/prev + isActive', () => {
     const pagination = new Pagination({});
+    expect(() => {
+      pagination.last();
+    }).toThrow();
+    expect(pagination.isLast()).toBe(true);
     pagination.setTotal(75);
     expect([1, 2, 3].map(p => pagination.isActive(p))).toEqual([true, false, false]);
     pagination.next();
     expect([1, 2, 3].map(p => pagination.isActive(p))).toEqual([false, true, false]);
     pagination.next();
     expect([1, 2, 3].map(p => pagination.isActive(p))).toEqual([false, false, true]);
+    pagination.next(); // one step too far
+    expect([1, 2, 3].map(p => pagination.isActive(p))).toEqual([false, false, true]);
     pagination.prev();
     expect([1, 2, 3].map(p => pagination.isActive(p))).toEqual([false, true, false]);
     pagination.prev();
+    expect([1, 2, 3].map(p => pagination.isActive(p))).toEqual([true, false, false]);
+    pagination.prev(); // one step too far
     expect([1, 2, 3].map(p => pagination.isActive(p))).toEqual([true, false, false]);
   });
 

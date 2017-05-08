@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ListHeaderComponent } from './list-header.component';
+import { Item } from '../../../core/list/item';
 
 describe('ListHeaderComponent', () => {
   let component: ListHeaderComponent;

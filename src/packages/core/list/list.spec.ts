@@ -10,6 +10,13 @@ describe('List', () => {
     expect(products.id('xy')).toBe(undefined);
   });
 
+  it('should throw an error when using id without identifier set', () => {
+    const products = new List(mocked.products);
+    expect(() => {
+      products.id('x1')
+    }).toThrow();
+  });
+
   it('should support property sorting', () => {
     const people = new List([{ name: 'Yolanda' }, { name: 'Adam' }, { name: 'Terrence' }]);
     expect(people.id(0).resolve('name')).toBe('Yolanda');
@@ -42,4 +49,20 @@ describe('List', () => {
     muffins.groupBy('name');
     expect(muffins.groups.length).toBe(2);
   });
+  it('should generate unique group ids for tracking', () => {
+    const muffins = new List([{ name: 'A' }, { name: 'A' }, { name: 'B' }], { fields: { name: { group: (v) => v } } });
+    muffins.groupBy('name');
+    const ids = muffins.groups.map((muffin, index) => {
+      return muffins['trackGroup'](index, muffin);
+    });
+    expect(ids[0] !== ids[1] && ids[1] !== ids[2] && ids[2] !== ids[0]).toBeTruthy();
+  });
+  it('should support groupFilter', () => {
+    const muffins = new List([{ name: 'A' }, { name: 'A' }, { name: 'B' }], { fields: { name: { group: (v) => v } } });
+    muffins.toggleSort('name');
+    expect(muffins['groupFilter']('xyz')).toEqual({
+      property: 'name',
+      value: 'xyz'
+    });
+  })
 });

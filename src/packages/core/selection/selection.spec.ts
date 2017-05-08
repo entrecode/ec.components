@@ -59,5 +59,12 @@ describe('Selection', () => {
     expect(items.map(item => selection.has(item))).toEqual([true, true, true]);
     selection.toggleAll(items);
     expect(items.map(item => selection.has(item))).toEqual([false, false, false]);
+    selection.toggleAll(items);
+    selection.toggle(items[0], true);
+    expect(items.map(item => selection.has(item))).toEqual([true, false, false]);
+    selection.toggle(items[1], true);
+    expect(items.map(item => selection.has(item))).toEqual([false, true, false]);
+    selection.toggle(items[1], true);
+    expect(items.map(item => selection.has(item))).toEqual([false, false, false]);
   });
 });

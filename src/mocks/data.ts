@@ -54,7 +54,20 @@ export const mocked = {
       name: 'Birch',
       height: 20,
       fruits: false
+    }, {
+      name: 'Cinnamon',
+      height: 10,
+      fruits: true
+    }, {
+      name: 'Papple',
+      height: 8,
+      fruits: true
+    }, {
+      name: 'Mapple',
+      height: 20,
+      fruits: false
     }], {
+      size: 3,
       fields: {
         name: {
           label: 'Name'
@@ -68,7 +81,7 @@ export const mocked = {
           template: 'fff {{item[field]}}',
           display: (value) => value ? 'ja' : 'nein'
         },
-      }
+      },
     }),
   }
 };

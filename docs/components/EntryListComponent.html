@@ -790,9 +790,7 @@ export class EntryListComponent extends ListComponent {
     </div>
 
     <div class="tab-pane fade" id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;ec-pagination [pagination]&#x3D;&quot;list?.pagination&quot;&gt;&lt;/ec-pagination&gt;
-&lt;ec-list [list]&#x3D;&quot;list&quot; *ngIf&#x3D;&quot;list&quot;&gt;&lt;/ec-list&gt;
-&lt;ec-pagination [pagination]&#x3D;&quot;list?.pagination&quot;&gt;&lt;/ec-pagination&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;ec-list [list]&#x3D;&quot;list&quot; *ngIf&#x3D;&quot;list&quot;&gt;&lt;/ec-list&gt;
 </code></pre>
     </div>
 
@@ -819,7 +817,7 @@ export class EntryListComponent extends ListComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ec-pagination [pagination]="list?.pagination"></ec-pagination><ec-list [list]="list" *ngIf="list"></ec-list><ec-pagination [pagination]="list?.pagination"></ec-pagination></div>'
+        var COMPONENT_TEMPLATE = '<div><ec-list [list]="list" *ngIf="list"></ec-list></div>'
     var COMPONENTS = [{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'FieldComponent', 'selector': 'ec-field'},{'name': 'FilterComponent', 'selector': 'ec-filter'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'EntryListComponent'};

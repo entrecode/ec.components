@@ -1,4 +1,4 @@
-import { Item, List, Pagination } from '@ec.components/core';
+import { Item, List } from '@ec.components/core';
 import { Datamanager, EntryListConfig } from '../index';
 
 /**
@@ -9,24 +9,17 @@ export class EntryList<Entry> extends List<Entry> {
   private model: string;
   /** The list's config. */
   public config: EntryListConfig;
-  /** The list's pagination (Optional) */
-  public pagination: Pagination;
 
   /** The constructor will init the List and Pagination instances.*/
   constructor(model: string, config: EntryListConfig) {
-    super([], {
+    super([], Object.assign({
       identifier: '_id',
       resolve: (entry => entry.value),
       fields: config.fields
-    });
+    }, config));
     this.model = model;
-    Object.assign(this.config, config);
-    this.pagination = this.pagination || new Pagination(this.config);
-    this.pagination.change$.debounceTime(200)
-    .subscribe((config) => {
-      this.load(config);
-    });
-    this.load(config);
+    // Object.assign(this.config, config);
+    this.load();
   }
 
   private useList(entryList) {
@@ -34,35 +27,24 @@ export class EntryList<Entry> extends List<Entry> {
     this.removeAll();
     this.addAll(entryList.entries.map((entry) => {
       return new Item(entry, this.config);
-    }));
+    }), true);
+    this.page = this.items;
+
     if (this.pagination) {
       this.pagination.setTotal(entryList.total);
     }
-    if (this.config.sortBy) {
-      this.groupBy(this.config.sortBy);
-    }
+    this.groupBy(this.config.sortBy);
   }
 
-  private load(config?: EntryListConfig) {
+  protected load(config?: EntryListConfig) {
+    if (!this.model) {
+      return;
+    }
     if (config) {
       Object.assign(this.config, config);
     }
     return Datamanager.api().model(this.model).entryList(this.config)
     .then(entryList => this.useList(entryList));
-  }
-
-  private nextPage() {
-    if (!this.entryList || !this.entryList.next) {
-      throw new Error('cannot load next page of entryList' + this.entryList);
-    }
-    this.entryList.next().then(entryList => this.useList(entryList));
-  }
-
-  private previousPage() {
-    if (!this.entryList || !this.entryList.prev) {
-      throw new Error('cannot load previous page of entryList' + this.entryList);
-    }
-    this.entryList.prev().then(entryList => this.useList(entryList));
   }
 
   /** Toggles sorting of the given property. Overloads list method to reload with the new sort setup*/

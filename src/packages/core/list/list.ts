@@ -3,6 +3,8 @@ import { ListConfig } from './list-config.interface';
 import { Sorter } from '../sorter/sorter';
 import { FieldConfigProperty } from '../config/field-config-property.interface';
 import { Item } from './item';
+import { Pagination } from '../pagination/pagination';
+import { PaginationConfig } from '../pagination/pagination-config.interface';
 
 /**
  * A more sophisticated Collection of Objects with arbitrary content.
@@ -22,6 +24,10 @@ export class List<T> extends Collection<Item<T>> {
    * Current Value Groups (Different Unique Values).
    */
   groups: any[];
+  /** The list's pagination (Optional) */
+  public pagination: Pagination;
+  /** The items of the current page */
+  public page: Array<Item<T>>;
 
   /**
    * Constructs the List. Populates the items and instantiates the fields.
@@ -32,7 +38,25 @@ export class List<T> extends Collection<Item<T>> {
       super.addAll(items.map(item => new Item(item, config)));
     }
     this.config = config || {};
+    this.config.page = 1;
     this.fields = this.getFields();
+    this.pagination = this.config.pagination || new Pagination(this.config, this.items.length);
+    this.pagination.change$.subscribe(config => this.load(config));
+    this.load();
+  }
+
+  protected load(config?: PaginationConfig) {
+    if (config) {
+      Object.assign(this.config, config);
+    }
+    this.page = this.pagination.slice(this.items);
+    this.groupBy(this.config.sortBy);
+  }
+
+  /** Adds the given item to the list and assigns the list config to the item*/
+  add(item: Item<T>, unique?: boolean) {
+    item.useConfig(this.config);
+    return super.add(item, unique);
   }
 
   private makeField(property: string) {
@@ -62,7 +86,7 @@ export class List<T> extends Collection<Item<T>> {
   /**
    * Resolves the item with the given Array index or identifier (if configured)
    */
-  id(identifier: number | string): Item<T> {
+  id(identifier: any): Item<T> {
     if (!this.config.identifier && typeof identifier === 'number') {
       return this.items[identifier];
     }
@@ -70,7 +94,7 @@ export class List<T> extends Collection<Item<T>> {
       throw new Error(`cannot get item with id ${identifier} => config is missing idenfier`);
     }
     return this.items.find((item, key) => {
-      return item.resolve(this.config.identifier) === identifier;
+      return item.id() === identifier;
     });
   }
 
@@ -87,7 +111,7 @@ export class List<T> extends Collection<Item<T>> {
   toggleSort(property: string, desc?: boolean) {
     this.sortProperty(property, desc);
     Sorter.sort(this.items, property, this.config.desc);
-    this.groupBy(property);
+    this.load(this.config);
   }
 
   /** Returns an Array of all unique values of the given property */
@@ -97,7 +121,7 @@ export class List<T> extends Collection<Item<T>> {
       return;
     }
     const values = [];
-    this.items.forEach(item => {
+    this.page.forEach(item => {
       let value = item.group(property);
       if (values.indexOf(value) === -1) {
         values.push(value);

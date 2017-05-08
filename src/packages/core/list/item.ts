@@ -12,10 +12,14 @@ export class Item<T> {
     this.config = config;
   }
 
+  /** Assigns the given config to the existing via Object.assign */
+  useConfig(config: ItemConfig<T>) {
+    Object.assign(this.config, config);
+  }
+
   /** Returns an Array of properties possesed by the object. */
   getProperties(): Array<string> {
     if (typeof this.body !== 'object') {
-      console.error('Item: cannot get properties of non-object body:' + this.body);
       return [];
     }
     return Object.keys(this.body);
