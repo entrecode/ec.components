@@ -22,6 +22,8 @@ export interface FieldConfigProperty {
   model?: string;
   /** The type of cell view. (e.g. labels, email etc..) */
   view?: string;
+  /** Tells if the field is required in forms */
+  required?: boolean;
   /** The field's JSON schema. */
   schema?: {
     type: string;

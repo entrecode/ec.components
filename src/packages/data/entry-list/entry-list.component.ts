@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ListComponent } from '@ec.components/ui';
-import { PaginationConfig } from '@ec.components/core';
+import { ListConfig, Selection } from '@ec.components/core';
 import { EntryList } from './entry-list';
 
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent */
@@ -13,7 +13,9 @@ export class EntryListComponent extends ListComponent {
   /** The model whose entries should be shown.*/
   @Input() model: string;
   /** The config which is used mainly for the pagination. */
-  @Input() config: PaginationConfig = {};
+  @Input() config: ListConfig = {};
+  /** If true, only one item is selectable next */
+  @Input() solo: boolean;
   /** The instance of an EntryList */
   list: EntryList<any>;
 
@@ -28,6 +30,11 @@ export class EntryListComponent extends ListComponent {
       return;
     }
     this.list = new EntryList(this.model, this.config);
+    this.list.change$.subscribe((list) => {
+      if (!this.selection && this.list.config && !this.list.config.disableSelection) {
+        this.selection = new Selection([], this.list.config);
+      }
+    });
   }
 
   /** This method will filter the list by a given property value and optional operator. */

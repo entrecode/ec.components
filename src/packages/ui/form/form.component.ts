@@ -1,6 +1,13 @@
-import { Component, Input } from '@angular/core';
-import { Form } from '@ec.components/core';
-import { FormConfig } from '../../core/form/form-config.interface';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import {
+  Field,
+  FieldConfig,
+  FieldConfigProperty,
+  Form,
+  FormConfig,
+  Item
+} from '@ec.components/core';
 
 @Component({
   selector: 'ec-form',
@@ -8,17 +15,56 @@ import { FormConfig } from '../../core/form/form-config.interface';
   styleUrls: ['./form.component.scss']
 })
 export class FormComponent {
-  fields: string[];
   form: Form<any>;
+  private group: FormGroup;
+  /** You can use a field config directly as input */
+  @Input() fields: FieldConfig<FieldConfigProperty>;
+  /** You can also use a FormConfig/ItemConfig as input (with defined fields property) */
   @Input() config: FormConfig<any>;
+  /** You can also use an Item as input */
+  @Input() item: Item<any>;
+  /** Emits when the form is submitted. The form can only be submitted if all Validators succeeded. */
+  @Output() submit: EventEmitter<FormGroup> = new EventEmitter();
 
-  constructor() {
-
+  constructor(private fb: FormBuilder) {
   }
 
   ngOnChanges() {
-    if (this.config) {
-      this.form = new Form({}, this.config);
+    if (this.item) {
+      Object.assign(this, this.item);
+    } else if (!this.fields && !this.config) {
+      return;
     }
+    if (this.fields && this.config) {
+      Object.assign(this.config, { fields: this.fields });
+    }
+    if (!this.config && this.fields) {
+      this.config = { fields: this.fields };
+    }
+    if (!this.item) {
+      this.item = new Item({}, this.config);
+    }
+    this.form = new Form(this.item.resolve(), this.config);
+
+    const control = {};
+    this.form.fields.forEach((field) => {
+      const validators = this.getValidators(field);
+      control[field.property] = new FormControl(this.item.resolve(field.property), validators)
+    });
+
+    this.group = new FormGroup(control);
+  }
+
+  getValidators(field: Field<any>): ValidatorFn[] {
+    const validators = [];
+    if (field.required) {
+      validators.push(Validators.required);
+    }
+    return validators;
+  }
+
+  onSubmit() {
+    console.log('submit!', this.group.value);
+    this.submit.emit(this.group);
   }
 }

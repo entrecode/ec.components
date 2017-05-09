@@ -18,6 +18,8 @@ export class ListItemsComponent {
   @Input() items: Item<any>[];
   /** You pass in the entire parent list component */
   @Input() host: ListComponent;
+  /** If true, only one item is selectable next */
+  @Input() solo: boolean;
 
   private ngOnChanges() {
     if (this.host) {
@@ -33,7 +35,7 @@ export class ListItemsComponent {
     if (this.host) {
       this.host.columnClick(item);
     } else if (this.selection) {
-      this.selection.toggle(item);
+      this.selection.toggle(item, this.solo);
     }
   }
 }

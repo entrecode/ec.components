@@ -41,6 +41,7 @@ export class EntryList<Entry> extends List<Entry> {
       this.pagination.setTotal(entryList.total);
     }
     this.groupBy(this.config.sortBy);
+    this.change.next(this);
   }
 
   protected load(config?: EntryListConfig) {

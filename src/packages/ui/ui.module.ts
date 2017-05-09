@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import {
   FieldComponent,
+  FieldErrorsComponent,
   FilterComponent,
   FormComponent,
   GroupPipe,
@@ -27,13 +28,16 @@ import {
     ListItemsComponent,
     ListHeaderComponent,
     GroupPipe,
+    FieldErrorsComponent,
     FormComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [
+    ReactiveFormsModule,
     ListComponent,
     PaginationComponent,
     TabsComponent,
@@ -44,7 +48,8 @@ import {
     ListItemsComponent,
     ListHeaderComponent,
     GroupPipe,
-    FormComponent
+    FormComponent,
+    FieldErrorsComponent
   ],
   providers: [],
 })

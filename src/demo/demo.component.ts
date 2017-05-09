@@ -34,12 +34,16 @@ export class DemoComponent {
       fields: {
         name: {
           label: 'Name',
+          required: true,
           type: 'string'
-
         },
         age: {
           label: 'Alter',
           type: 'number'
+        },
+        dead: {
+          label: 'Ist Tot?',
+          type: 'boolean'
         },
       }
     };

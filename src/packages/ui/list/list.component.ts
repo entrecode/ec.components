@@ -26,6 +26,8 @@ export class ListComponent {
   @Input() collection: Collection<any>;
   /** The used selection */
   @Input() selection: Selection<any>;
+  /** If true, only one item is selectable next */
+  @Input() solo: boolean;
   /** Custom cell template */
   @Input() cellTemplate: TemplateRef<any>;
   /** Event emitter on item selection */
@@ -62,7 +64,7 @@ export class ListComponent {
       return this.onSelect.emit(item);
     }
     if (this.selection) {
-      this.selection.toggle(item);
+      this.selection.toggle(item, this.solo);
     }
   }
 }

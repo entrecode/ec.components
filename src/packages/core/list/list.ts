@@ -5,6 +5,8 @@ import { Item } from '../item/item';
 import { Pagination } from '../pagination/pagination';
 import { PaginationConfig } from '../pagination/pagination-config.interface';
 import { Field } from '../field/field';
+import { Selection } from '../selection/selection';
+import { Subject } from 'rxjs';
 
 /**
  * A more sophisticated Collection of Objects with arbitrary content.
@@ -26,8 +28,14 @@ export class List<T> extends Collection<Item<T>> {
   groups: any[];
   /** The list's pagination (Optional) */
   public pagination: Pagination;
+  /** The list's selection (Optional) */
+  public selection: Selection<T>;
   /** The items of the current page */
   public page: Array<Item<T>>;
+  /** Subject that should be nexted when loading is finished */
+  protected change = new Subject();
+  /** Observable that is nexted when the list has changed. */
+  public change$ = this.change.asObservable();
 
   /**
    * Constructs the List. Populates the items and instantiates the fields.
@@ -51,7 +59,7 @@ export class List<T> extends Collection<Item<T>> {
     }
     this.page = this.pagination.slice(this.items);
     this.groupBy(this.config.sortBy);
-
+    this.change.next(this);
   }
 
   /** Adds the given item to the list and assigns the list config to the item*/
