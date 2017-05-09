@@ -92,6 +92,9 @@
                                     <a href="../components/FilterComponent.html" >FilterComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/FormComponent.html" >FormComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/ListComponent.html" >ListComponent</a>
                                 </li>
                                 <li class="link">
@@ -143,6 +146,9 @@
                                     <a href="../classes/Field.html" >Field</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../classes/Form.html" >Form</a>
+                                </li>
+                                <li class="link">
                                     <a href="../classes/Item.html" >Item</a>
                                 </li>
                                 <li class="link">
@@ -191,6 +197,9 @@
                                     <a href="../interfaces/FieldConfigProperty.html" >FieldConfigProperty</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../interfaces/FormConfig.html" >FormConfig</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/ItemConfig.html" >ItemConfig</a>
                                 </li>
                                 <li class="link">
@@ -223,6 +232,9 @@
                     </li>
             
             
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
+                    </li>
             
                     <li class="chapter">
                         <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
@@ -317,6 +329,9 @@
                                            <a href="../components/FilterComponent.html" >FilterComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/FormComponent.html" >FormComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/ListComponent.html" >ListComponent</a>
                                        </li>
                                        <li class="link">
@@ -368,6 +383,9 @@
                                            <a href="../classes/Field.html" >Field</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../classes/Form.html" >Form</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../classes/Item.html" >Item</a>
                                        </li>
                                        <li class="link">
@@ -416,6 +434,9 @@
                                            <a href="../interfaces/FieldConfigProperty.html" >FieldConfigProperty</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../interfaces/FormConfig.html" >FormConfig</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/ItemConfig.html" >ItemConfig</a>
                                        </li>
                                        <li class="link">
@@ -448,6 +469,9 @@
                            </li>
                    
                    
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
+                           </li>
                    
                            <li class="chapter">
                                <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
@@ -733,7 +757,7 @@
                                         <span class="modifier-icon method fa fa-play export">
                                             <span class="fa fa-export"></span>
                                         </span>
-                                    <code>generateFieldConfig(model: string, localFieldConfig: <a href="../interfaces/FieldConfigProperty.html">FieldConfig<FieldConfigProperty></a>)</code>
+                                    <code>generateFieldConfig(model: string)</code>
                                 </td>
                             </tr>
             
@@ -868,13 +892,9 @@ export class ModelConfig extends Config {
    * If no local fieldConfig is given, the global model&#x27;s field config is used.
    * If no global field config is found for that model, it will be generated from the model schema.
    * */
-  static generateFieldConfig(model: string, localFieldConfig?: FieldConfig&lt;FieldConfigProperty&gt;): Promise&lt;FieldConfig&lt;FieldConfigProperty&gt;&gt; {
+  static generateFieldConfig(model: string): Promise&lt;FieldConfig&lt;FieldConfigProperty&gt;&gt; {
     let fieldConfig;
     return Promise.resolve().then(() &#x3D;&gt; {
-      //use local config, if given
-      if (localFieldConfig) {
-        return Promise.resolve(localFieldConfig);
-      }
       //use global config, if given
       if (this.get(model) &amp;&amp; this.get(model).fields) {
         return Promise.resolve(this.get(model).fields);

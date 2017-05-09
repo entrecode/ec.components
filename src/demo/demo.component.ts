@@ -6,6 +6,7 @@ import { environment } from '../environments/environment';
 import { Datamanager, ModelConfig } from '../packages/data';
 import { Pagination } from '../packages/core';
 import * as moment from 'moment';
+import { FormConfig } from '../packages/core/form/form-config.interface';
 
 @Component({
   selector: 'demo-root',
@@ -18,6 +19,7 @@ export class DemoComponent {
   private title = 'ec.components demo';
   private pagination = new Pagination({});
   currentPage: number = this.pagination.getPage();
+  private formConfig: FormConfig<any>;
 
   constructor() {
     Datamanager.useEnvironment(environment);
@@ -27,6 +29,20 @@ export class DemoComponent {
     .subscribe((p) => {
       this.currentPage = this.pagination.getPage();
     });
+
+    this.formConfig = {
+      fields: {
+        name: {
+          label: 'Name',
+          type: 'string'
+
+        },
+        age: {
+          label: 'Alter',
+          type: 'number'
+        },
+      }
+    };
 
     ModelConfig.set('muffin', {
       fields: {

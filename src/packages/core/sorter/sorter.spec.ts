@@ -1,5 +1,5 @@
 import { Sorter } from './sorter';
-import { Item } from '../list/item';
+import { Item } from '../item/item';
 
 describe('Sorter', () => {
   beforeEach(() => {

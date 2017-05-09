@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import {
   FieldComponent,
   FilterComponent,
+  FormComponent,
   GroupPipe,
   ListComponent,
   ListHeaderComponent,
@@ -26,6 +27,7 @@ import {
     ListItemsComponent,
     ListHeaderComponent,
     GroupPipe,
+    FormComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,8 @@ import {
     FieldComponent,
     ListItemsComponent,
     ListHeaderComponent,
-    GroupPipe
+    GroupPipe,
+    FormComponent
   ],
   providers: [],
 })

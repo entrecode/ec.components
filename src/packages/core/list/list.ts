@@ -1,10 +1,10 @@
 import { Collection } from '../collection/collection';
 import { ListConfig } from './list-config.interface';
 import { Sorter } from '../sorter/sorter';
-import { FieldConfigProperty } from '../config/field-config-property.interface';
-import { Item } from './item';
+import { Item } from '../item/item';
 import { Pagination } from '../pagination/pagination';
 import { PaginationConfig } from '../pagination/pagination-config.interface';
+import { Field } from '../field/field';
 
 /**
  * A more sophisticated Collection of Objects with arbitrary content.
@@ -15,7 +15,7 @@ export class List<T> extends Collection<Item<T>> {
    * Array of Properties that are relevant for each item. The fields are populated on construction
    * via getFields method.
    */
-  public fields: Array<FieldConfigProperty>;
+  public fields: Array<Field<T>>;
   /**
    * The List Configuration, click on ListConfig for details. Can be given an optional ListConfig.
    */
@@ -60,28 +60,23 @@ export class List<T> extends Collection<Item<T>> {
     return super.add(item, unique);
   }
 
-  private makeField(property: string) {
-    const config = this.config && this.config.fields ? this.config.fields[property] : {} || {};
-    return Object.assign(config, { property: property });
-  }
-
   /**
    * Distills Array of item properties. Either uses keys of config.fields or parses the item
    * properties directly.
    */
-  protected getFields(): Array<FieldConfigProperty> {
+  protected getFields(): Array<Field<T>> {
     if (this.config && this.config.fields) {
-      return Object.keys(this.config.fields).map((field) => this.makeField(field));
+      return Object.keys(this.config.fields).map((field) => new Field(field, this.config.fields[field]));
     }
-    const properties = [];
+    const fields = [];
     this.items.forEach((item) => {
       item.getProperties().forEach(property => {
-        if (properties.indexOf(property) === -1) {
-          properties.push(property);
+        if (fields.indexOf(property) === -1) {
+          fields.push(new Field(property, { type: typeof item.resolve(property) }));
         }
       });
     });
-    return properties.map((property) => this.makeField(property));
+    return fields;
   }
 
   /**

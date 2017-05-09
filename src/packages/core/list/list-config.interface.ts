@@ -1,4 +1,4 @@
-import { ItemConfig } from './item-config.interface';
+import { ItemConfig } from '../item/item-config.interface';
 import { Pagination } from '../pagination/pagination';
 
 /**

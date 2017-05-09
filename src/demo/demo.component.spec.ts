@@ -1,12 +1,13 @@
-import { async, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DemoComponent } from './demo.component';
 import { FormsModule } from '@angular/forms';
-import { DemoModule } from './demo.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { UiModule } from '@ec.components/ui';
 import { DataModule } from '@ec.components/data';
 describe('DemoComponent', () => {
+  let component: DemoComponent;
+  let fixture: ComponentFixture<DemoComponent>;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
@@ -24,4 +25,15 @@ describe('DemoComponent', () => {
       ],
     }).compileComponents();
   }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(DemoComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
 });

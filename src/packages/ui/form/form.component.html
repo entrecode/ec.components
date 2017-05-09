@@ -1,0 +1,12 @@
+<ul>
+  <li *ngFor="let field of form?.fields" [ngSwitch]="field.type">
+    <div *ngSwitchCase="'string'">
+      <label>{{field.label || field.property}}</label>
+      <input type="text">
+    </div>
+    <div *ngSwitchCase="'number'">
+      <label>{{field.label || field.property}}</label>
+      <input type="number">
+    </div>
+  </li>
+</ul>

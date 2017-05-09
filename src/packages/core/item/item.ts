@@ -2,9 +2,9 @@ import { ItemConfig } from './item-config.interface';
 /** An Item basically wraps an Object and provides a config with metadata and helper methods to access the object. */
 export class Item<T> {
   /** The value body of the item. This can be either a primitive value or an Object. */
-  private body: T;
+  protected body: T;
   /** The config of the item. */
-  private config: ItemConfig<T>;
+  protected config: ItemConfig<T>;
 
   /** Each item is constructed with its body and an optional config. */
   constructor(body: T, config: ItemConfig<T> = {}) {

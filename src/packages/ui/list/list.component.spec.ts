@@ -4,7 +4,7 @@ import { ListComponent } from './list.component';
 import { ListItemsComponent } from './list-items/list-items.component';
 import { ListHeaderComponent } from './list-header/list-header.component';
 import { GroupPipe } from './group.pipe';
-import { Item } from '../../core/list/item';
+import { Item } from '../../core/item/item';
 import { mocked } from '../../../mocks/data';
 import { Collection } from '../../core/collection/collection';
 import { PaginationComponent } from '../pagination/pagination.component';

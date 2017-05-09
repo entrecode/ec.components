@@ -8,5 +8,6 @@ export * from './filter/filter.component'
 export * from './field/field.component'
 export * from './tabs/tabs.component'
 export * from './tab/tab.component'
+export * from './form/form.component'
 
 export { UiModule } from './ui.module'

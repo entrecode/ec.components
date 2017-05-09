@@ -92,6 +92,9 @@
                                     <a href="../components/FilterComponent.html" >FilterComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/FormComponent.html" >FormComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/ListComponent.html" >ListComponent</a>
                                 </li>
                                 <li class="link">
@@ -143,6 +146,9 @@
                                     <a href="../classes/Field.html" >Field</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../classes/Form.html" >Form</a>
+                                </li>
+                                <li class="link">
                                     <a href="../classes/Item.html" >Item</a>
                                 </li>
                                 <li class="link">
@@ -191,6 +197,9 @@
                                     <a href="../interfaces/FieldConfigProperty.html" >FieldConfigProperty</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../interfaces/FormConfig.html" >FormConfig</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/ItemConfig.html" >ItemConfig</a>
                                 </li>
                                 <li class="link">
@@ -223,6 +232,9 @@
                     </li>
             
             
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
+                    </li>
             
                     <li class="chapter">
                         <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
@@ -317,6 +329,9 @@
                                            <a href="../components/FilterComponent.html" >FilterComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/FormComponent.html" >FormComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/ListComponent.html" >ListComponent</a>
                                        </li>
                                        <li class="link">
@@ -368,6 +383,9 @@
                                            <a href="../classes/Field.html" >Field</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../classes/Form.html" >Form</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../classes/Item.html" >Item</a>
                                        </li>
                                        <li class="link">
@@ -416,6 +434,9 @@
                                            <a href="../interfaces/FieldConfigProperty.html" >FieldConfigProperty</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../interfaces/FormConfig.html" >FormConfig</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/ItemConfig.html" >ItemConfig</a>
                                        </li>
                                        <li class="link">
@@ -448,6 +469,9 @@
                            </li>
                    
                    
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
+                           </li>
                    
                            <li class="chapter">
                                <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
@@ -745,7 +769,7 @@ export class ListHeaderComponent {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div class="ec-list-group-header" *ngIf="!disableHeader">  <div class="ec-list-item-cell ec-list-checkbox" *ngIf="selection">    <input type="checkbox" (click)="selection?.toggleAll(list?.items)"           [checked]="selection?.hasAll(list?.items)">  </div>  <div class="ec-list-item ec-list-header" *ngFor="let field of list?.fields"       (click)="list.toggleSort(field.property)">    {{field.label || field.property}}    <span *ngIf="list.config?.sortBy===field.property">      <i class="ec-icon" [ngClass]="list.config?.desc?\'arrow-down\':\'arrow-up\'"></i>    </span>  </div>  <!--<div class="ec-list-item-cell ec-list-controls">    <nav class="ec-context-menu">      <a href="" class="btn"><span class="ec-icon more-horizontal"></span></a>      <ul>        <li>          <a href="" class="btn">delete</a>        </li>        <li>          <a href="" class="btn">dublicate</a>        </li>      </ul>    </nav>  </div>--></div></div>'
-    var COMPONENTS = [{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'FieldComponent', 'selector': 'ec-field'},{'name': 'FilterComponent', 'selector': 'ec-filter'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'}];
+    var COMPONENTS = [{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'FieldComponent', 'selector': 'ec-field'},{'name': 'FilterComponent', 'selector': 'ec-filter'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ListHeaderComponent'};
 </script>

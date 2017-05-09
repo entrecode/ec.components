@@ -92,6 +92,9 @@
                                     <a href="../components/FilterComponent.html" >FilterComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/FormComponent.html" >FormComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/ListComponent.html" >ListComponent</a>
                                 </li>
                                 <li class="link">
@@ -143,6 +146,9 @@
                                     <a href="../classes/Field.html" >Field</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../classes/Form.html" >Form</a>
+                                </li>
+                                <li class="link">
                                     <a href="../classes/Item.html" >Item</a>
                                 </li>
                                 <li class="link">
@@ -191,6 +197,9 @@
                                     <a href="../interfaces/FieldConfigProperty.html" >FieldConfigProperty</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../interfaces/FormConfig.html" >FormConfig</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/ItemConfig.html" >ItemConfig</a>
                                 </li>
                                 <li class="link">
@@ -223,6 +232,9 @@
                     </li>
             
             
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
+                    </li>
             
                     <li class="chapter">
                         <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
@@ -317,6 +329,9 @@
                                            <a href="../components/FilterComponent.html" >FilterComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/FormComponent.html" >FormComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/ListComponent.html" >ListComponent</a>
                                        </li>
                                        <li class="link">
@@ -368,6 +383,9 @@
                                            <a href="../classes/Field.html" >Field</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../classes/Form.html" >Form</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../classes/Item.html" >Item</a>
                                        </li>
                                        <li class="link">
@@ -416,6 +434,9 @@
                                            <a href="../interfaces/FieldConfigProperty.html" >FieldConfigProperty</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../interfaces/FormConfig.html" >FormConfig</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/ItemConfig.html" >ItemConfig</a>
                                        </li>
                                        <li class="link">
@@ -448,6 +469,9 @@
                            </li>
                    
                    
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../miscellaneous.html" ><span class="fa fa-cubes"></span>Miscellaneous</a>
+                           </li>
                    
                            <li class="chapter">
                                <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
@@ -783,7 +807,7 @@ export class TabsComponent implements OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><nav>  <ul>    <li *ngFor="let tab of tabs.items;let i = index" (click)="selected=tab"        [class.selected]="selected===tab">      {{tab.label}}    </li>  </ul></nav><ng-content select="ec-tab" #tab></ng-content></div>'
-    var COMPONENTS = [{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'FieldComponent', 'selector': 'ec-field'},{'name': 'FilterComponent', 'selector': 'ec-filter'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'}];
+    var COMPONENTS = [{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'FieldComponent', 'selector': 'ec-field'},{'name': 'FilterComponent', 'selector': 'ec-filter'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'TabsComponent'};
 </script>
