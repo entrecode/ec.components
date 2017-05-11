@@ -173,43 +173,6 @@
                     </li>
             
             
-                    <li class="chapter">
-                        <div class="simple">
-                            <span class="fa fa-info"></span>
-                            <span>Interfaces</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-interfaces-links"
-                                ></span>
-                        </div>
-                        <ul class="links collapse in"
-                                id="xs-interfaces-links"
-                            >
-                                <li class="link">
-                                    <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/Environment.html" >Environment</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/FieldConfig.html" >FieldConfig</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/FieldConfigProperty.html" >FieldConfigProperty</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/FormConfig.html" >FormConfig</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/ItemConfig.html" >ItemConfig</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/ListConfig.html" >ListConfig</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/ModelConfiguration.html" >ModelConfiguration</a>
-                                </li>
-                        </ul>
-                    </li>
             
                     <li class="chapter">
                         <div class="simple">
@@ -407,43 +370,6 @@
                            </li>
                    
                    
-                           <li class="chapter">
-                               <div class="simple">
-                                   <span class="fa fa-info"></span>
-                                   <span>Interfaces</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#interfaces-links"
-                   ></span>
-                               </div>
-                               <ul class="links collapse in"
-                                       id="interfaces-links"
-                   >
-                                       <li class="link">
-                                           <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/Environment.html" >Environment</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/FieldConfig.html" >FieldConfig</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/FieldConfigProperty.html" >FieldConfigProperty</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/FormConfig.html" >FormConfig</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/ItemConfig.html" >ItemConfig</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/ListConfig.html" >ListConfig</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/ModelConfiguration.html" >ModelConfiguration</a>
-                                       </li>
-                               </ul>
-                           </li>
                    
                            <li class="chapter">
                                <div class="simple">
@@ -520,8 +446,7 @@
         <h3>Description</h3>
     </p>
     <p class="comment">
-        <p>This component can be used to fire events from a query. Currently only a text input is used, but all form fields will be applicable in the future.</p>
-
+        <p>This component can be used to fire events from a query. Currently only a text input is used, but all form fields will be applicable in the future.</p><br/>
     </p>
 
 
@@ -580,8 +505,7 @@
                             <code>debounce</code>
                         </td>
                         <td class="col-md-10">
-                            <div><p>Debounce time in ms for the change EventEmitter to fire. Defaults to 200. </p>
-</div>
+                            <div><p>Debounce time in ms for the change EventEmitter to fire. Defaults to 200. </p><br/></div>
                               <p>
                                 <em>Type:</em>    <code>number</code>
 
@@ -609,8 +533,7 @@
                             <code>changed</code>
                         </td>
                         <td class="col-md-10">
-                            <div><p>This EventEmitter calls when the query has changed.</p>
-</div>
+                            <div><p>This EventEmitter calls when the query has changed.</p><br/></div>
                             <em><code>$event</code> type:</em>    <code>EventEmitter&lt;any&gt;</code>
 
                         </td>
@@ -643,6 +566,7 @@
                         </td>
                     </tr>
     
+    
                         <tr>
                             <td class="col-md-4">
                                 <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/packages/ui/filter/filter.component.ts:20</a></div>
@@ -651,11 +575,10 @@
     
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-description"><p>On init, the filter component subscribes to the change of the filter model and emits new queries after the given debounce time. </p>
-    </div>
+                                <div class="io-description"><p>On init, the filter component subscribes to the change of the filter model and emits new queries after the given debounce time. </p><br/></div>
     
                                 <div class="io-description">
-                                    <b>Returns: </b>    <code>void</code>
+                                    <b>Returns : </b>    <code>void</code>
     
                                 </div>
                         </td>
@@ -673,12 +596,12 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b><span class="modifier">Public</span> change$</b>
+                            <b><span class="modifier">Static</span> change$</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-circle"></span><code>change$:     <code>Observable&lt;{}&gt;</code>
+                            <span class="modifier-icon fa fa-export"></span><code>change$:     <code>Observable&lt;{}&gt;</code>
     </bcode>
                         </td>
                     </tr>
@@ -689,8 +612,7 @@
                         </tr>
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-description"><p>Observable that is nexted when the query has changed. </p>
-    </div>
+                            <div class="io-description"><p>Observable that is nexted when the query has changed. </p><br/></div>
                         </td>
                     </tr>
                 </tbody>
@@ -699,7 +621,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b><span class="modifier">Private</span> query</b>
+                            <b><span class="modifier">Protected</span> query</b>
                         </td>
                     </tr>
                     <tr>
@@ -719,7 +641,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b><span class="modifier">Private</span> source</b>
+                            <b><span class="modifier">Protected</span> source</b>
                         </td>
                     </tr>
                     <tr>

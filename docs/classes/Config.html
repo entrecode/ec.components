@@ -173,43 +173,6 @@
                     </li>
             
             
-                    <li class="chapter">
-                        <div class="simple">
-                            <span class="fa fa-info"></span>
-                            <span>Interfaces</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-interfaces-links"
-                                ></span>
-                        </div>
-                        <ul class="links collapse in"
-                                id="xs-interfaces-links"
-                            >
-                                <li class="link">
-                                    <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/Environment.html" >Environment</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/FieldConfig.html" >FieldConfig</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/FieldConfigProperty.html" >FieldConfigProperty</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/FormConfig.html" >FormConfig</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/ItemConfig.html" >ItemConfig</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/ListConfig.html" >ListConfig</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/ModelConfiguration.html" >ModelConfiguration</a>
-                                </li>
-                        </ul>
-                    </li>
             
                     <li class="chapter">
                         <div class="simple">
@@ -407,43 +370,6 @@
                            </li>
                    
                    
-                           <li class="chapter">
-                               <div class="simple">
-                                   <span class="fa fa-info"></span>
-                                   <span>Interfaces</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#interfaces-links"
-                   ></span>
-                               </div>
-                               <ul class="links collapse in"
-                                       id="interfaces-links"
-                   >
-                                       <li class="link">
-                                           <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/Environment.html" >Environment</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/FieldConfig.html" >FieldConfig</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/FieldConfigProperty.html" >FieldConfigProperty</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/FormConfig.html" >FormConfig</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/ItemConfig.html" >ItemConfig</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/ListConfig.html" >ListConfig</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/ModelConfiguration.html" >ModelConfiguration</a>
-                                       </li>
-                               </ul>
-                           </li>
                    
                            <li class="chapter">
                                <div class="simple">
@@ -517,8 +443,7 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>The Root class for all Configurations. </p>
-
+                <p>The Root class for all Configurations. </p><br/>
             </p>
 
 
@@ -533,17 +458,18 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Public</span> configure</b>
+                                    <b><span class="modifier">Static</span> configure</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play circle">
-                                            <span class="fa fa-circle"></span>
+                                        <span class="modifier-icon method fa fa-play export">
+                                            <span class="fa fa-export"></span>
                                         </span>
                                     <code>configure(key: string, property: string, config: <a href="../classes/Config.html">Config</a>)</code>
                                 </td>
                             </tr>
+            
             
                                 <tr>
                                     <td class="col-md-4">
@@ -553,11 +479,10 @@
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>This method is a getter and setter for configurations. The key stands for the config (e.g. model).<br>The property is a sub property if the config (e.g. fields =&gt; model.fields).<br>If no config is given, the method just returns the configuration for the given property.<br>If a config is given, the property config is merged via Object.assign. </p>
-            </div>
+                                        <div class="io-description"><p>This method is a getter and setter for configurations. The key stands for the config (e.g. model).<br/>The property is a sub property if the config (e.g. fields =&gt; model.fields).<br/>If no config is given, the method just returns the configuration for the given property.<br/>If a config is given, the property config is merged via Object.assign. </p><br/></div>
             
                                         <div class="io-description">
-                                            <b>Returns: </b>    <code>void</code>
+                                            <b>Returns : </b>    <code>void</code>
             
                                         </div>
                                 </td>
@@ -576,7 +501,7 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Private</span> config</b>
+                                    <b><span class="modifier">Protected</span> config</b>
                                 </td>
                             </tr>
                             <tr>

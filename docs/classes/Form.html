@@ -173,43 +173,6 @@
                     </li>
             
             
-                    <li class="chapter">
-                        <div class="simple">
-                            <span class="fa fa-info"></span>
-                            <span>Interfaces</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-interfaces-links"
-                                ></span>
-                        </div>
-                        <ul class="links collapse in"
-                                id="xs-interfaces-links"
-                            >
-                                <li class="link">
-                                    <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/Environment.html" >Environment</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/FieldConfig.html" >FieldConfig</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/FieldConfigProperty.html" >FieldConfigProperty</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/FormConfig.html" >FormConfig</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/ItemConfig.html" >ItemConfig</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/ListConfig.html" >ListConfig</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/ModelConfiguration.html" >ModelConfiguration</a>
-                                </li>
-                        </ul>
-                    </li>
             
                     <li class="chapter">
                         <div class="simple">
@@ -407,43 +370,6 @@
                            </li>
                    
                    
-                           <li class="chapter">
-                               <div class="simple">
-                                   <span class="fa fa-info"></span>
-                                   <span>Interfaces</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#interfaces-links"
-                   ></span>
-                               </div>
-                               <ul class="links collapse in"
-                                       id="interfaces-links"
-                   >
-                                       <li class="link">
-                                           <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/Environment.html" >Environment</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/FieldConfig.html" >FieldConfig</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/FieldConfigProperty.html" >FieldConfigProperty</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/FormConfig.html" >FormConfig</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/ItemConfig.html" >ItemConfig</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/ListConfig.html" >ListConfig</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/ModelConfiguration.html" >ModelConfiguration</a>
-                                       </li>
-                               </ul>
-                           </li>
                    
                            <li class="chapter">
                                <div class="simple">
@@ -517,8 +443,7 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>A Form is an extension of an Item. In advance to an Item it will create an Array of fields that is either extracted from config.fields or directly from the item body.</p>
-
+                <p>A Form is an extension of an Item. In advance to an Item it will create an Array of fields that is either extracted from config.fields or directly from the item body.</p><br/>
             </p>
 
             <p class="comment">
@@ -535,7 +460,7 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <code>constructor(body: T, config: <a href="../interfaces/FormConfig.html">FormConfig<T></a>)</code>
+                                    <code>constructor(body: T, config: <a href="../classes/Form.html">FormConfig<T></a>)</code>
                                 </td>
                             </tr>
                                 <tr>
@@ -546,8 +471,7 @@
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>The constructor will populate the fields array. If config.fields is set only the configured fields will be created. If not, all properties of the given body will be used as fields. </p>
-            </div>
+                                        <div class="io-description"><p>The constructor will populate the fields array. If config.fields is set only the configured fields will be created. If not, all properties of the given body will be used as fields. </p><br/></div>
                                 </td>
                             </tr>
                         </tbody>
@@ -565,12 +489,12 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Protected</span> config</b>
+                                    <b><span class="modifier">Public</span> config</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-lock"></span><code>config:     <code><a href="../interfaces/FormConfig.html" target="_self" >FormConfig&lt;T&gt;</a></code>
+                                    <span class="modifier-icon fa fa-circle"></span><code>config:     <code><a href="../classes/Form.html" target="_self" >FormConfig&lt;T&gt;</a></code>
             </bcode>
                                 </td>
                             </tr>
@@ -581,8 +505,7 @@
                                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>The configuration of the form. It is an extension of ItemConfig. </p>
-            </div>
+                                    <div class="io-description"><p>The configuration of the form. It is an extension of ItemConfig. </p><br/></div>
                                 </td>
                             </tr>
                         </tbody>
@@ -607,8 +530,7 @@
                                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Array of fields. It will be populated automatically when the form is constructed. </p>
-            </div>
+                                    <div class="io-description"><p>Array of fields. It will be populated automatically when the form is constructed. </p><br/></div>
                                 </td>
                             </tr>
                         </tbody>

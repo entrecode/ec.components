@@ -173,43 +173,6 @@
                     </li>
             
             
-                    <li class="chapter">
-                        <div class="simple">
-                            <span class="fa fa-info"></span>
-                            <span>Interfaces</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-interfaces-links"
-                                ></span>
-                        </div>
-                        <ul class="links collapse in"
-                                id="xs-interfaces-links"
-                            >
-                                <li class="link">
-                                    <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/Environment.html" >Environment</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/FieldConfig.html" >FieldConfig</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/FieldConfigProperty.html" >FieldConfigProperty</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/FormConfig.html" >FormConfig</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/ItemConfig.html" >ItemConfig</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/ListConfig.html" >ListConfig</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/ModelConfiguration.html" >ModelConfiguration</a>
-                                </li>
-                        </ul>
-                    </li>
             
                     <li class="chapter">
                         <div class="simple">
@@ -407,43 +370,6 @@
                            </li>
                    
                    
-                           <li class="chapter">
-                               <div class="simple">
-                                   <span class="fa fa-info"></span>
-                                   <span>Interfaces</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#interfaces-links"
-                   ></span>
-                               </div>
-                               <ul class="links collapse in"
-                                       id="interfaces-links"
-                   >
-                                       <li class="link">
-                                           <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/Environment.html" >Environment</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/FieldConfig.html" >FieldConfig</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/FieldConfigProperty.html" >FieldConfigProperty</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/FormConfig.html" >FormConfig</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/ItemConfig.html" >ItemConfig</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/ListConfig.html" >ListConfig</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/ModelConfiguration.html" >ModelConfiguration</a>
-                                       </li>
-                               </ul>
-                           </li>
                    
                            <li class="chapter">
                                <div class="simple">
@@ -517,12 +443,7 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>This is the ec.datamanager SDK wrapper class. It consumes a given Environment instance and<br>holds an instance of the SDK DataManager.<br>To initialize the Datamanager, call useEnvironment in your app module:</p>
-<pre class="line-numbers"><code class="language-typescript">Datamanager.useEnvironment(environment);</code></pre><p>After that, you can access the SDK via <code>Datamanager.api()</code>, e.g:</p>
-<pre class="line-numbers"><code class="language-typescript">Datamanager.api().model('muffin').entries()
-  .then((entries) => {
-    console.log('entries', entries);
-  });</code></pre>
+                <p>This is the ec.datamanager SDK wrapper class. It consumes a given Environment instance and<br/>holds an instance of the SDK DataManager.<br/>To initialize the Datamanager, call useEnvironment in your app module:</p><br/><pre class="line-numbers"><code class="language-typescript">Datamanager.useEnvironment(environment);</code></pre><p>After that, you can access the SDK via <code>Datamanager.api()</code>, e.g:</p><br/><pre class="line-numbers"><code class="language-typescript">Datamanager.api().model(&#39;muffin&#39;).entries()<br/>  .then((entries) =&gt; {<br/>    console.log(&#39;entries&#39;, entries);<br/>  });</code></pre>
             </p>
 
 
@@ -537,17 +458,18 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Static</span> useEnvironment</b>
+                                    <b><span class="modifier"></span> useEnvironment</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play export">
-                                            <span class="fa fa-export"></span>
+                                        <span class="modifier-icon method fa fa-play ">
+                                            <span class="fa fa-"></span>
                                         </span>
-                                    <code>useEnvironment(environment: <a href="../interfaces/Environment.html">Environment</a>)</code>
+                                    <code>useEnvironment(environment: Environment)</code>
                                 </td>
                             </tr>
+            
             
                                 <tr>
                                     <td class="col-md-4">
@@ -557,11 +479,10 @@
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>Uses the given environment. All following calls to api() will use that environment. </p>
-            </div>
+                                        <div class="io-description"><p>Uses the given environment. All following calls to api() will use that environment. </p><br/></div>
             
                                         <div class="io-description">
-                                            <b>Returns: </b>    <code>void</code>
+                                            <b>Returns : </b>    <code>void</code>
             
                                         </div>
                                 </td>
@@ -572,7 +493,7 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Private</span> fromEnvironment</b>
+                                    <b><span class="modifier">Protected</span> fromEnvironment</b>
                                 </td>
                             </tr>
                             <tr>
@@ -580,9 +501,10 @@
                                         <span class="modifier-icon method fa fa-play lock">
                                             <span class="fa fa-lock"></span>
                                         </span>
-                                    <code>fromEnvironment(environment: <a href="../interfaces/Environment.html">Environment</a>)</code>
+                                    <code>fromEnvironment(environment: Environment)</code>
                                 </td>
                             </tr>
+            
             
                                 <tr>
                                     <td class="col-md-4">
@@ -594,7 +516,7 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
-                                            <b>Returns: </b>    <code>void</code>
+                                            <b>Returns : </b>    <code>void</code>
             
                                         </div>
                                 </td>
@@ -605,17 +527,18 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Static</span> api</b>
+                                    <b><span class="modifier"></span> api</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play export">
-                                            <span class="fa fa-export"></span>
+                                        <span class="modifier-icon method fa fa-play ">
+                                            <span class="fa fa-"></span>
                                         </span>
                                     <code>api(options: any)</code>
                                 </td>
                             </tr>
+            
             
                                 <tr>
                                     <td class="col-md-4">
@@ -625,11 +548,10 @@
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>Retrieves the SDK instance. If no options are provided, the current environment will be used.<br>If options are provided,  </p>
-            </div>
+                                        <div class="io-description"><p>Retrieves the SDK instance. If no options are provided, the current environment will be used.<br/>If options are provided,  </p><br/></div>
             
                                         <div class="io-description">
-                                            <b>Returns: </b>    <code>void</code>
+                                            <b>Returns : </b>    <code>void</code>
             
                                         </div>
                                 </td>
@@ -640,17 +562,18 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Static</span> schema</b>
+                                    <b><span class="modifier"></span> schema</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play export">
-                                            <span class="fa fa-export"></span>
+                                        <span class="modifier-icon method fa fa-play ">
+                                            <span class="fa fa-"></span>
                                         </span>
                                     <code>schema(model: string)</code>
                                 </td>
                             </tr>
+            
             
                                 <tr>
                                     <td class="col-md-4">
@@ -660,11 +583,10 @@
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>Returns a Datamanager model schema </p>
-            </div>
+                                        <div class="io-description"><p>Returns a Datamanager model schema </p><br/></div>
             
                                         <div class="io-description">
-                                            <b>Returns: </b>    <code>void</code>
+                                            <b>Returns : </b>    <code>void</code>
             
                                         </div>
                                 </td>
@@ -683,7 +605,7 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Private</span> config</b>
+                                    <b><span class="modifier">Protected</span> config</b>
                                 </td>
                             </tr>
                             <tr>
@@ -703,7 +625,7 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Private</span> datamanager</b>
+                                    <b><span class="modifier">Protected</span> datamanager</b>
                                 </td>
                             </tr>
                             <tr>
@@ -723,12 +645,12 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Private</span> environment</b>
+                                    <b><span class="modifier">Protected</span> environment</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-lock"></span><code>environment:     <code><a href="../interfaces/Environment.html" target="_self" >Environment</a></code>
+                                    <span class="modifier-icon fa fa-lock"></span><code>environment:     <code>Environment</code>
             </bcode>
                                 </td>
                             </tr>

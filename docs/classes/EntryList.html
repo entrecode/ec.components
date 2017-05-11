@@ -173,43 +173,6 @@
                     </li>
             
             
-                    <li class="chapter">
-                        <div class="simple">
-                            <span class="fa fa-info"></span>
-                            <span>Interfaces</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-interfaces-links"
-                                ></span>
-                        </div>
-                        <ul class="links collapse in"
-                                id="xs-interfaces-links"
-                            >
-                                <li class="link">
-                                    <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/Environment.html" >Environment</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/FieldConfig.html" >FieldConfig</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/FieldConfigProperty.html" >FieldConfigProperty</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/FormConfig.html" >FormConfig</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/ItemConfig.html" >ItemConfig</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/ListConfig.html" >ListConfig</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/ModelConfiguration.html" >ModelConfiguration</a>
-                                </li>
-                        </ul>
-                    </li>
             
                     <li class="chapter">
                         <div class="simple">
@@ -407,43 +370,6 @@
                            </li>
                    
                    
-                           <li class="chapter">
-                               <div class="simple">
-                                   <span class="fa fa-info"></span>
-                                   <span>Interfaces</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#interfaces-links"
-                   ></span>
-                               </div>
-                               <ul class="links collapse in"
-                                       id="interfaces-links"
-                   >
-                                       <li class="link">
-                                           <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/Environment.html" >Environment</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/FieldConfig.html" >FieldConfig</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/FieldConfigProperty.html" >FieldConfigProperty</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/FormConfig.html" >FormConfig</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/ItemConfig.html" >ItemConfig</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/ListConfig.html" >ListConfig</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/ModelConfiguration.html" >ModelConfiguration</a>
-                                       </li>
-                               </ul>
-                           </li>
                    
                            <li class="chapter">
                                <div class="simple">
@@ -517,8 +443,7 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>Extension of List for Datamanager Entries.</p>
-
+                <p>Extension of List for Datamanager Entries.</p><br/>
             </p>
 
             <p class="comment">
@@ -535,7 +460,7 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <code>constructor(model: string, config: <a href="../interfaces/ListConfig.html">EntryListConfig</a>)</code>
+                                    <code>constructor(model: string, config: <a href="../classes/List.html">EntryListConfig</a>)</code>
                                 </td>
                             </tr>
                                 <tr>
@@ -546,8 +471,7 @@
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>The constructor will init the List and Pagination instances.</p>
-            </div>
+                                        <div class="io-description"><p>The constructor will init the List and Pagination instances.</p><br/></div>
                                 </td>
                             </tr>
                         </tbody>
@@ -563,7 +487,7 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Private</span> useList</b>
+                                    <b><span class="modifier">Protected</span> useList</b>
                                 </td>
                             </tr>
                             <tr>
@@ -575,6 +499,7 @@
                                 </td>
                             </tr>
             
+            
                                 <tr>
                                     <td class="col-md-4">
                                         <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/packages/data/entry-list/entry-list.ts:32</a></div>
@@ -585,7 +510,7 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
-                                            <b>Returns: </b>    <code>void</code>
+                                            <b>Returns : </b>    <code>void</code>
             
                                         </div>
                                 </td>
@@ -596,17 +521,18 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Protected</span> load</b>
+                                    <b><span class="modifier">Public</span> load</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock">
-                                            <span class="fa fa-lock"></span>
+                                        <span class="modifier-icon method fa fa-play circle">
+                                            <span class="fa fa-circle"></span>
                                         </span>
-                                    <code>load(config: <a href="../interfaces/ListConfig.html">EntryListConfig</a>)</code>
+                                    <code>load(config: <a href="../classes/List.html">EntryListConfig</a>)</code>
                                 </td>
                             </tr>
+            
             
                                 <tr>
                                     <td class="col-md-4">
@@ -616,11 +542,10 @@
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>Overrides the List load method. Instead of slicing the page out of all items, a datamanager request is made using the config.</p>
-            </div>
+                                        <div class="io-description"><p>Overrides the List load method. Instead of slicing the page out of all items, a datamanager request is made using the config.</p><br/></div>
             
                                         <div class="io-description">
-                                            <b>Returns: </b>    <code>void</code>
+                                            <b>Returns : </b>    <code>void</code>
             
                                         </div>
                                 </td>
@@ -640,6 +565,7 @@
                                 </td>
                             </tr>
             
+            
                                 <tr>
                                     <td class="col-md-4">
                                         <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/packages/data/entry-list/entry-list.ts:64</a></div>
@@ -648,11 +574,10 @@
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>Toggles sorting of the given property. Overloads list method to reload with the new sort setup</p>
-            </div>
+                                        <div class="io-description"><p>Toggles sorting of the given property. Overloads list method to reload with the new sort setup</p><br/></div>
             
                                         <div class="io-description">
-                                            <b>Returns: </b>    <code>void</code>
+                                            <b>Returns : </b>    <code>void</code>
             
                                         </div>
                                 </td>
@@ -672,6 +597,7 @@
                                 </td>
                             </tr>
             
+            
                                 <tr>
                                     <td class="col-md-4">
                                         <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/packages/data/entry-list/entry-list.ts:71</a></div>
@@ -680,11 +606,10 @@
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>Filters the entry list by a given property value. Triggers load </p>
-            </div>
+                                        <div class="io-description"><p>Filters the entry list by a given property value. Triggers load </p><br/></div>
             
                                         <div class="io-description">
-                                            <b>Returns: </b>    <code>void</code>
+                                            <b>Returns : </b>    <code>void</code>
             
                                         </div>
                                 </td>
@@ -703,12 +628,12 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Public</span> config</b>
+                                    <b><span class="modifier">Static</span> config</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-circle"></span><code>config:     <code><a href="../interfaces/ListConfig.html" target="_self" >EntryListConfig</a></code>
+                                    <span class="modifier-icon fa fa-export"></span><code>config:     <code><a href="../classes/List.html" target="_self" >EntryListConfig</a></code>
             </bcode>
                                 </td>
                             </tr>
@@ -719,8 +644,7 @@
                                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>The list&#39;s config. </p>
-            </div>
+                                    <div class="io-description"><p>The list&#39;s config. </p><br/></div>
                                 </td>
                             </tr>
                         </tbody>
@@ -729,7 +653,7 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Private</span> entryList</b>
+                                    <b><span class="modifier">Protected</span> entryList</b>
                                 </td>
                             </tr>
                             <tr>
@@ -749,7 +673,7 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Private</span> model</b>
+                                    <b><span class="modifier">Protected</span> model</b>
                                 </td>
                             </tr>
                             <tr>

@@ -173,43 +173,6 @@
                     </li>
             
             
-                    <li class="chapter">
-                        <div class="simple">
-                            <span class="fa fa-info"></span>
-                            <span>Interfaces</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-interfaces-links"
-                                ></span>
-                        </div>
-                        <ul class="links collapse in"
-                                id="xs-interfaces-links"
-                            >
-                                <li class="link">
-                                    <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/Environment.html" >Environment</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/FieldConfig.html" >FieldConfig</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/FieldConfigProperty.html" >FieldConfigProperty</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/FormConfig.html" >FormConfig</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/ItemConfig.html" >ItemConfig</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/ListConfig.html" >ListConfig</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/ModelConfiguration.html" >ModelConfiguration</a>
-                                </li>
-                        </ul>
-                    </li>
             
                     <li class="chapter">
                         <div class="simple">
@@ -407,43 +370,6 @@
                            </li>
                    
                    
-                           <li class="chapter">
-                               <div class="simple">
-                                   <span class="fa fa-info"></span>
-                                   <span>Interfaces</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#interfaces-links"
-                   ></span>
-                               </div>
-                               <ul class="links collapse in"
-                                       id="interfaces-links"
-                   >
-                                       <li class="link">
-                                           <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/Environment.html" >Environment</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/FieldConfig.html" >FieldConfig</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/FieldConfigProperty.html" >FieldConfigProperty</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/FormConfig.html" >FormConfig</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/ItemConfig.html" >ItemConfig</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/ListConfig.html" >ListConfig</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/ModelConfiguration.html" >ModelConfiguration</a>
-                                       </li>
-                               </ul>
-                           </li>
                    
                            <li class="chapter">
                                <div class="simple">
@@ -517,8 +443,7 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>The Sorter is a singleton that handles all kinds of sorting operations. </p>
-
+                <p>The Sorter is a singleton that handles all kinds of sorting operations. </p><br/>
             </p>
 
 
@@ -533,7 +458,7 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Private</span> getAlgorithm</b>
+                                    <b><span class="modifier">Protected</span> getAlgorithm</b>
                                 </td>
                             </tr>
                             <tr>
@@ -545,6 +470,7 @@
                                 </td>
                             </tr>
             
+            
                                 <tr>
                                     <td class="col-md-4">
                                         <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/packages/core/sorter/sorter.ts:18</a></div>
@@ -555,7 +481,7 @@
                                 <td class="col-md-4">
             
                                         <div class="io-description">
-                                            <b>Returns: </b>    <code>(a: any, b: any) &#x3D;&gt; number</code>
+                                            <b>Returns : </b>    <code>(a: any, b: any) &#x3D;&gt; number</code>
             
                                         </div>
                                 </td>
@@ -566,17 +492,18 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Static</span> sort</b>
+                                    <b><span class="modifier"></span> sort</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play export">
-                                            <span class="fa fa-export"></span>
+                                        <span class="modifier-icon method fa fa-play ">
+                                            <span class="fa fa-"></span>
                                         </span>
                                     <code>sort(items: <a href="../classes/Item.html">Item<any>[]</a>, property: string, desc: boolean)</code>
                                 </td>
                             </tr>
+            
             
                                 <tr>
                                     <td class="col-md-4">
@@ -586,8 +513,7 @@
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>Sorts a given Array of items after a given property.</p>
-            </div>
+                                        <div class="io-description"><p>Sorts a given Array of items after a given property.</p><br/></div>
             
                                         <div class="io-description">
                                                 <b>Parameters :</b>
@@ -624,14 +550,15 @@
                                                                 <b>resolve</b>
                                                             </div>
                                                             <div>
-                                                                <p>Optional resolve function to expose relevant the part of object that contains<br>the given property. </p>
+                                                                <p>Optional resolve function to expose relevant the part of object that contains
+            the given property. </p>
             
                                                             </div>
                                                         </li>
                                                 </ul>
                                         </div>
                                         <div class="io-description">
-                                            <b>Returns: </b>    <code>any[]</code>
+                                            <b>Returns : </b>    <code>any[]</code>
             
                                         </div>
                                             <div class="io-description">
@@ -653,12 +580,12 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Static</span> sortType</b>
+                                    <b><span class="modifier"></span> sortType</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-export"></span><code>sortType:     <code>{ &#x27;string&#x27;: (a: any, b: any) &#x3D;&gt; number; &#x27;number&#x27;: (a: any, b: any) &#x3D;&gt; number; &#x27;boolean&#x27;: (a: any,...</code>
+                                    <span class="modifier-icon fa fa-"></span><code>sortType:     <code>{ &#x27;string&#x27;: (a: any, b: any) &#x3D;&gt; number; &#x27;number&#x27;: (a: any, b: any) &#x3D;&gt; number; &#x27;boolean&#x27;: (a: any,...</code>
             </bcode>
                                 </td>
                             </tr>
@@ -669,8 +596,7 @@
                                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Contains sorting methods for different value types. </p>
-            </div>
+                                    <div class="io-description"><p>Contains sorting methods for different value types. </p><br/></div>
                                 </td>
                             </tr>
                         </tbody>
