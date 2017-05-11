@@ -11,4 +11,4 @@ export * from './form/form.component'
 export * from './field-errors/field-errors.component'
 export * from './list/list.component'
 
-export { UiModule } from './ui.module'
+export * from './ui.module'
