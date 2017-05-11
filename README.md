@@ -87,6 +87,15 @@ In main style.scss, import the following:
 @import "../node_modules/@ec.components/ui/styles";
 ```
 
+## Icons
+
+The ui and data packages both use [ec-icons](https://icons.entrecode.de/).
+Just add this to your index.html:
+
+```html
+<link rel="stylesheet" href="https://icons.entrecode.de/ec-icons-1.1.1.min.css"/>
+```
+
 # Development
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.0.
 
