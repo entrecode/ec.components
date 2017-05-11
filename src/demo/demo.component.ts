@@ -25,6 +25,9 @@ export class DemoComponent {
   private songs = new List(songs.songs, {
     size: 10,
     fields: {
+      music: {
+        label: 'Bild'
+      },
       title: {
         label: 'Titel',
       },
@@ -38,7 +41,7 @@ export class DemoComponent {
       },
       key: {
         label: 'Tonart',
-        group: (value) => value[0].toUpperCase()
+        group: (value) => value.replace('-', '')
       },
       density: {
         label: 'Dichte',
