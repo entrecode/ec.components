@@ -41,7 +41,6 @@ export class ListComponent {
   @Input() list: List<any>;
   /** A field component inside the ec-list tags interpreted as a custom template */
   @ContentChildren(FieldComponent) fields: QueryList<any>;
-  @ViewChildren(ListItemsComponent) private itemContainers: QueryList<ListItemsComponent>;
 
   /** Changing items or collection will trigger reconstructing the list with the new items.
    * Changing the selection will reconstruct the selection */
@@ -54,12 +53,6 @@ export class ListComponent {
     if (!this.list) {
       return;
     }
-    this.list.change$.subscribe(() => {
-      this.itemContainers.forEach((container) => {
-        container.renderTemplates()
-      });
-    });
-
     if (!this.selection && this.list.config && !this.list.config.disableSelection) {
       this.selection = new Selection([], this.list.config);
     }

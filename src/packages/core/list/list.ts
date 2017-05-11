@@ -126,8 +126,13 @@ export class List<T> extends Collection<Item<T>> {
   /** Returns an Array of all unique values of the given property */
   groupBy(property) {
     delete this.groups;
+    const page = this.pagination ? this.pagination.getPage() : 0;
     if (!property || !this.config.fields || !this.config.fields[property] || !this.config.fields[property].group) {
-      this.groups = [{}];
+      this.groups = [{
+        page,
+        sortBy: this.config.sortBy,
+        desc: this.config.desc
+      }];
       return;
     }
     const groups = [];
@@ -136,8 +141,9 @@ export class List<T> extends Collection<Item<T>> {
       if (!groups.find((g) => g.value === value)) {
         groups.push({
           value,
+          page,
           property: this.config.sortBy,
-          page: this.pagination ? this.pagination.getPage() : 0
+          desc: this.config.desc
         });
       }
     });
@@ -145,7 +151,7 @@ export class List<T> extends Collection<Item<T>> {
   }
 
   private trackGroup(index, group) {
-    return index + group.value + group.page + group.property;
+    return index.toString() + JSON.stringify(group);
   }
 
   private trackItem(index, item) {
