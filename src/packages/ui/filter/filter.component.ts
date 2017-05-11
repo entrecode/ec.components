@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs';
+/** This component can be used to fire events from a query. Currently only a text input is used, but all form fields will be applicable in the future.*/
 @Component({
   selector: 'ec-filter',
   templateUrl: './filter.component.html',
@@ -15,9 +16,7 @@ export class FilterComponent implements OnInit {
   /** Debounce time in ms for the change EventEmitter to fire. Defaults to 200. */
   @Input() debounce: number = 200;
 
-  constructor() {
-  }
-
+  /** On init, the filter component subscribes to the change of the filter model and emits new queries after the given debounce time. */
   ngOnInit() {
     this.change$.debounceTime(this.debounce)
     .subscribe((q) => {

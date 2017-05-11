@@ -8,6 +8,7 @@ export class Field<T> implements FieldConfigProperty {
   /** If true, the field will not be visible anywhere */
   hidden?: boolean;
 
+  /** A Field is constructed by assigning the given config and the property to itself*/
   constructor(property: string, config: FieldConfigProperty = {}) {
     Object.assign(this, config);
     Object.assign(this, { property: property });

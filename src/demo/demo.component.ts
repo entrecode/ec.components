@@ -25,8 +25,9 @@ export class DemoComponent {
   private songs = new List(songs.songs, {
     size: 10,
     fields: {
-      music: {
-        label: 'Bild'
+      picture: {
+        label: 'Bild',
+        resolve: (body) => body.music.measures.length
       },
       title: {
         label: 'Titel',

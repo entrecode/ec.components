@@ -1,15 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component } from '@angular/core';
+/** This component holds the style prototypes */
 @Component({
   selector: 'ec-mockup',
   templateUrl: './mockup.component.html',
   styleUrls: ['./mockup.component.scss']
 })
-export class MockupComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+export class MockupComponent {
 }

@@ -169,9 +169,6 @@
                                 <li class="link">
                                     <a href="../classes/Sorter.html" >Sorter</a>
                                 </li>
-                                <li class="link">
-                                    <a href="../classes/TimeoutAction.html" >TimeoutAction</a>
-                                </li>
                         </ul>
                     </li>
             
@@ -409,9 +406,6 @@
                                        <li class="link">
                                            <a href="../classes/Sorter.html" >Sorter</a>
                                        </li>
-                                       <li class="link">
-                                           <a href="../classes/TimeoutAction.html" >TimeoutAction</a>
-                                       </li>
                                </ul>
                            </li>
                    
@@ -525,6 +519,13 @@
             <code>src/packages/core/form/form.ts</code>
         </p>
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>A Form is an extension of an Item. In advance to an Item it will create an Array of fields that is either extracted from config.fields or directly from the item body.</p>
+
+            </p>
 
             <p class="comment">
                 <h3>Extends</h3>
@@ -545,10 +546,16 @@
                             </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/packages/core/form/form.ts:8</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/packages/core/form/form.ts:9</a></div>
                                     </td>
                                 </tr>
             
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>The constructor will populate the fields array. If config.fields is set only the configured fields will be created. If not, all properties of the given body will be used as fields. </p>
+            </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -575,9 +582,15 @@
                             </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/packages/core/form/form.ts:8</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/packages/core/form/form.ts:9</a></div>
                                     </td>
                                 </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The configuration of the form. It is an extension of ItemConfig. </p>
+            </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
@@ -589,7 +602,7 @@
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <code>fields:     <code><a href="../interfaces/FieldConfigProperty.html" target="_self" >FieldConfigProperty[]</a></code>
+                                    <code>fields:     <code><a href="../classes/Field.html" target="_self" >Field&lt;T&gt;[]</a></code>
             </bcode>
                                 </td>
                             </tr>
@@ -598,20 +611,28 @@
                                         <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/packages/core/form/form.ts:7</a></div>
                                     </td>
                                 </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Array of fields. It will be populated automatically when the form is constructed. </p>
+            </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
     </div>
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { FormConfig } from &#x27;./form-config.interface&#x27;;
-import { FieldConfigProperty } from &#x27;../config/field-config-property.interface&#x27;;
 import { Item } from &#x27;../item/item&#x27;;
 import { Field } from &#x27;../field/field&#x27;;
-
+/** A Form is an extension of an Item. In advance to an Item it will create an Array of fields that is either extracted from config.fields or directly from the item body.*/
 export class Form&lt;T&gt; extends Item&lt;T&gt; {
-  fields: FieldConfigProperty[];
+  /** Array of fields. It will be populated automatically when the form is constructed. */
+  fields: Field&lt;T&gt;[];
+  /** The configuration of the form. It is an extension of ItemConfig. */
   protected config: FormConfig&lt;T&gt;;
 
+  /** The constructor will populate the fields array. If config.fields is set only the configured fields will be created. If not, all properties of the given body will be used as fields. */
   constructor(body: T, config?: FormConfig&lt;T&gt;) {
     super(body, config);
     this.fields &#x3D; [];

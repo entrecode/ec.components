@@ -54,6 +54,7 @@ export class List<T> extends Collection<Item<T>> {
     this.load();
   }
 
+  /** Loads the list page with the given config or, if none given, uses the current config. Reapplies grouping (if any) and calls the change Subject. */
   protected load(config?: PaginationConfig) {
     if (config) {
       Object.assign(this.config, config);

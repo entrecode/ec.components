@@ -26,10 +26,10 @@
       <strong>{{value}}</strong>
     </ng-template>
   </ec-field>
-  <ec-field property="music">
+  <ec-field property="picture">
     <ng-template let-item="item" let-value="value">
       <div class="ec-list-avatar">
-        <img [src]="'https://unsplash.it/'+value.measures.length*2+'/'+value.measures.length">
+        <img [src]="'https://unsplash.it/'+value*2+'/'+value">
       </div>
     </ng-template>
   </ec-field>

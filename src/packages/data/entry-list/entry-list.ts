@@ -44,6 +44,7 @@ export class EntryList<Entry> extends List<Entry> {
     this.change.next(this);
   }
 
+  /** Overrides the List load method. Instead of slicing the page out of all items, a datamanager request is made using the config.*/
   protected load(config?: EntryListConfig) {
     if (!this.model) {
       return;

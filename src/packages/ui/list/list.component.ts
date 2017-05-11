@@ -6,12 +6,10 @@ import {
   Output,
   QueryList,
   TemplateRef,
-  ViewChildren,
   ViewEncapsulation
 } from '@angular/core';
 import { Collection, List, ListConfig, Selection } from '@ec.components/core';
 import { FieldComponent } from '../field/field.component';
-import { ListItemsComponent } from './list-items/list-items.component';
 
 /**
  * The ListComponent will render a list containing the given items or collection.

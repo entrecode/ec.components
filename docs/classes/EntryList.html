@@ -169,9 +169,6 @@
                                 <li class="link">
                                     <a href="../classes/Sorter.html" >Sorter</a>
                                 </li>
-                                <li class="link">
-                                    <a href="../classes/TimeoutAction.html" >TimeoutAction</a>
-                                </li>
                         </ul>
                     </li>
             
@@ -409,9 +406,6 @@
                                        <li class="link">
                                            <a href="../classes/Sorter.html" >Sorter</a>
                                        </li>
-                                       <li class="link">
-                                           <a href="../classes/TimeoutAction.html" >TimeoutAction</a>
-                                       </li>
                                </ul>
                            </li>
                    
@@ -622,12 +616,14 @@
             
                                 <tr>
                                     <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/packages/data/entry-list/entry-list.ts:47</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/packages/data/entry-list/entry-list.ts:48</a></div>
                                     </td>
                                 </tr>
             
                             <tr>
                                 <td class="col-md-4">
+                                        <div class="io-description"><p>Overrides the List load method. Instead of slicing the page out of all items, a datamanager request is made using the config.</p>
+            </div>
             
                                         <div class="io-description">
                                             <b>Returns: </b>    <code>void</code>
@@ -652,7 +648,7 @@
             
                                 <tr>
                                     <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/packages/data/entry-list/entry-list.ts:64</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/packages/data/entry-list/entry-list.ts:65</a></div>
                                     </td>
                                 </tr>
             
@@ -684,7 +680,7 @@
             
                                 <tr>
                                     <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/packages/data/entry-list/entry-list.ts:71</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">src/packages/data/entry-list/entry-list.ts:72</a></div>
                                     </td>
                                 </tr>
             
@@ -824,6 +820,7 @@ export class EntryList&lt;Entry&gt; extends List&lt;Entry&gt; {
     this.change.next(this);
   }
 
+  /** Overrides the List load method. Instead of slicing the page out of all items, a datamanager request is made using the config.*/
   protected load(config?: EntryListConfig) {
     if (!this.model) {
       return;

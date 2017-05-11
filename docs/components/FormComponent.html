@@ -169,9 +169,6 @@
                                 <li class="link">
                                     <a href="../classes/Sorter.html" >Sorter</a>
                                 </li>
-                                <li class="link">
-                                    <a href="../classes/TimeoutAction.html" >TimeoutAction</a>
-                                </li>
                         </ul>
                     </li>
             
@@ -409,9 +406,6 @@
                                        <li class="link">
                                            <a href="../classes/Sorter.html" >Sorter</a>
                                        </li>
-                                       <li class="link">
-                                           <a href="../classes/TimeoutAction.html" >TimeoutAction</a>
-                                       </li>
                                </ul>
                            </li>
                    
@@ -528,6 +522,13 @@
     <code>src/packages/ui/form/form.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>This component renders a form using a FieldConfig Object. </p>
+
+    </p>
 
 
 
@@ -589,7 +590,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/packages/ui/form/form.component.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/packages/ui/form/form.component.ts:24</a></div>
                             </td>
                         </tr>
                 </tbody>
@@ -611,7 +612,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/packages/ui/form/form.component.ts:21</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/packages/ui/form/form.component.ts:22</a></div>
                             </td>
                         </tr>
                 </tbody>
@@ -633,7 +634,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/packages/ui/form/form.component.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/packages/ui/form/form.component.ts:26</a></div>
                             </td>
                         </tr>
                 </tbody>
@@ -657,7 +658,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/packages/ui/form/form.component.ts:27</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/packages/ui/form/form.component.ts:28</a></div>
                             </td>
                         </tr>
                 </tbody>
@@ -675,10 +676,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/packages/ui/form/form.component.ts:27</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/packages/ui/form/form.component.ts:28</a></div>
                             </td>
                         </tr>
     
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>The constructor injects the FormBuilder. </p>
+    </div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
     </section>
@@ -703,12 +710,14 @@
     
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/packages/ui/form/form.component.ts:32</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/packages/ui/form/form.component.ts:35</a></div>
                             </td>
                         </tr>
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>On change, the form instance is (re)created by combining all inputs. If no item is given, an empty form is created using the config. You can also pass just an item to use its config and body.</p>
+    </div>
     
                                 <div class="io-description">
                                     <b>Returns: </b>    <code>void</code>
@@ -733,12 +742,14 @@
     
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/packages/ui/form/form.component.ts:58</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/packages/ui/form/form.component.ts:62</a></div>
                             </td>
                         </tr>
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>Extracts all validators from a given Field instance. </p>
+    </div>
     
                                 <div class="io-description">
                                     <b>Returns: </b>    <code>ValidatorFn[]</code>
@@ -763,12 +774,14 @@
     
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/packages/ui/form/form.component.ts:66</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/packages/ui/form/form.component.ts:71</a></div>
                             </td>
                         </tr>
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>Method that is invoked when the form is submitted.</p>
+    </div>
     
                                 <div class="io-description">
                                     <b>Returns: </b>    <code>void</code>
@@ -800,9 +813,15 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/packages/ui/form/form.component.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/packages/ui/form/form.component.ts:19</a></div>
                             </td>
                         </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>The instance of Form that is used. </p>
+    </div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <table class="table table-sm table-bordered">
@@ -820,7 +839,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/packages/ui/form/form.component.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/packages/ui/form/form.component.ts:20</a></div>
                             </td>
                         </tr>
                 </tbody>
@@ -840,13 +859,14 @@ import {
   FormConfig,
   Item
 } from &#x27;@ec.components/core&#x27;;
-
+/** This component renders a form using a FieldConfig Object. */
 @Component({
   selector: &#x27;ec-form&#x27;,
   templateUrl: &#x27;./form.component.html&#x27;,
   styleUrls: [&#x27;./form.component.scss&#x27;]
 })
 export class FormComponent {
+  /** The instance of Form that is used. */
   form: Form&lt;any&gt;;
   private group: FormGroup;
   /** You can use a field config directly as input */
@@ -858,9 +878,11 @@ export class FormComponent {
   /** Emits when the form is submitted. The form can only be submitted if all Validators succeeded. */
   @Output() submit: EventEmitter&lt;FormGroup&gt; &#x3D; new EventEmitter();
 
+  /** The constructor injects the FormBuilder. */
   constructor(private fb: FormBuilder) {
   }
 
+  /** On change, the form instance is (re)created by combining all inputs. If no item is given, an empty form is created using the config. You can also pass just an item to use its config and body.*/
   ngOnChanges() {
     if (this.item) {
       Object.assign(this, this.item);
@@ -887,6 +909,7 @@ export class FormComponent {
     this.group &#x3D; new FormGroup(control);
   }
 
+  /** Extracts all validators from a given Field instance. */
   getValidators(field: Field&lt;any&gt;): ValidatorFn[] {
     const validators &#x3D; [];
     if (field.required) {
@@ -895,6 +918,7 @@ export class FormComponent {
     return validators;
   }
 
+  /** Method that is invoked when the form is submitted.*/
   onSubmit() {
     console.log(&#x27;submit!&#x27;, this.group.value);
     this.submit.emit(this.group);

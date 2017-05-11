@@ -169,9 +169,6 @@
                                 <li class="link">
                                     <a href="../classes/Sorter.html" >Sorter</a>
                                 </li>
-                                <li class="link">
-                                    <a href="../classes/TimeoutAction.html" >TimeoutAction</a>
-                                </li>
                         </ul>
                     </li>
             
@@ -409,9 +406,6 @@
                                        <li class="link">
                                            <a href="../classes/Sorter.html" >Sorter</a>
                                        </li>
-                                       <li class="link">
-                                           <a href="../classes/TimeoutAction.html" >TimeoutAction</a>
-                                       </li>
                                </ul>
                            </li>
                    
@@ -589,12 +583,14 @@
             
                                 <tr>
                                     <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/packages/core/list/list.ts:57</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/packages/core/list/list.ts:58</a></div>
                                     </td>
                                 </tr>
             
                             <tr>
                                 <td class="col-md-4">
+                                        <div class="io-description"><p>Loads the list page with the given config or, if none given, uses the current config. Reapplies grouping (if any) and calls the change Subject. </p>
+            </div>
             
                                         <div class="io-description">
                                             <b>Returns: </b>    <code>void</code>
@@ -619,7 +615,7 @@
             
                                 <tr>
                                     <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/packages/core/list/list.ts:67</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/packages/core/list/list.ts:68</a></div>
                                     </td>
                                 </tr>
             
@@ -654,7 +650,7 @@
             
                                 <tr>
                                     <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">src/packages/core/list/list.ts:76</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">src/packages/core/list/list.ts:77</a></div>
                                     </td>
                                 </tr>
             
@@ -686,7 +682,7 @@
             
                                 <tr>
                                     <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">src/packages/core/list/list.ts:94</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">src/packages/core/list/list.ts:95</a></div>
                                     </td>
                                 </tr>
             
@@ -721,7 +717,7 @@
             
                                 <tr>
                                     <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">src/packages/core/list/list.ts:107</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">src/packages/core/list/list.ts:108</a></div>
                                     </td>
                                 </tr>
             
@@ -753,7 +749,7 @@
             
                                 <tr>
                                     <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="120" class="link-to-prism">src/packages/core/list/list.ts:120</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="121" class="link-to-prism">src/packages/core/list/list.ts:121</a></div>
                                     </td>
                                 </tr>
             
@@ -785,7 +781,7 @@
             
                                 <tr>
                                     <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="127" class="link-to-prism">src/packages/core/list/list.ts:127</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="128" class="link-to-prism">src/packages/core/list/list.ts:128</a></div>
                                     </td>
                                 </tr>
             
@@ -820,7 +816,7 @@
             
                                 <tr>
                                     <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="147" class="link-to-prism">src/packages/core/list/list.ts:147</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="154" class="link-to-prism">src/packages/core/list/list.ts:154</a></div>
                                     </td>
                                 </tr>
             
@@ -853,7 +849,7 @@
             
                                 <tr>
                                     <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="151" class="link-to-prism">src/packages/core/list/list.ts:151</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="158" class="link-to-prism">src/packages/core/list/list.ts:158</a></div>
                                     </td>
                                 </tr>
             
@@ -886,7 +882,7 @@
             
                                 <tr>
                                     <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="155" class="link-to-prism">src/packages/core/list/list.ts:155</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="162" class="link-to-prism">src/packages/core/list/list.ts:162</a></div>
                                     </td>
                                 </tr>
             
@@ -1176,6 +1172,7 @@ export class List&lt;T&gt; extends Collection&lt;Item&lt;T&gt;&gt; {
     this.load();
   }
 
+  /** Loads the list page with the given config or, if none given, uses the current config. Reapplies grouping (if any) and calls the change Subject. */
   protected load(config?: PaginationConfig) {
     if (config) {
       Object.assign(this.config, config);
@@ -1248,8 +1245,13 @@ export class List&lt;T&gt; extends Collection&lt;Item&lt;T&gt;&gt; {
   /** Returns an Array of all unique values of the given property */
   groupBy(property) {
     delete this.groups;
+    const page &#x3D; this.pagination ? this.pagination.getPage() : 0;
     if (!property || !this.config.fields || !this.config.fields[property] || !this.config.fields[property].group) {
-      this.groups &#x3D; [{}];
+      this.groups &#x3D; [{
+        page,
+        sortBy: this.config.sortBy,
+        desc: this.config.desc
+      }];
       return;
     }
     const groups &#x3D; [];
@@ -1258,8 +1260,9 @@ export class List&lt;T&gt; extends Collection&lt;Item&lt;T&gt;&gt; {
       if (!groups.find((g) &#x3D;&gt; g.value &#x3D;&#x3D;&#x3D; value)) {
         groups.push({
           value,
+          page,
           property: this.config.sortBy,
-          page: this.pagination ? this.pagination.getPage() : 0
+          desc: this.config.desc
         });
       }
     });
@@ -1267,7 +1270,7 @@ export class List&lt;T&gt; extends Collection&lt;Item&lt;T&gt;&gt; {
   }
 
   private trackGroup(index, group) {
-    return index + group.value + group.page + group.property;
+    return index.toString() + JSON.stringify(group);
   }
 
   private trackItem(index, item) {

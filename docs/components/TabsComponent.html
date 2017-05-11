@@ -169,9 +169,6 @@
                                 <li class="link">
                                     <a href="../classes/Sorter.html" >Sorter</a>
                                 </li>
-                                <li class="link">
-                                    <a href="../classes/TimeoutAction.html" >TimeoutAction</a>
-                                </li>
                         </ul>
                     </li>
             
@@ -409,9 +406,6 @@
                                        <li class="link">
                                            <a href="../classes/Sorter.html" >Sorter</a>
                                        </li>
-                                       <li class="link">
-                                           <a href="../classes/TimeoutAction.html" >TimeoutAction</a>
-                                       </li>
                                </ul>
                            </li>
                    
@@ -528,14 +522,15 @@
     <code>src/packages/ui/tabs/tabs.component.ts</code>
 </p>
 
-
-
     <p class="comment">
-        <h3>Implements</h3>
+        <h3>Description</h3>
     </p>
     <p class="comment">
-                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnInit-interface.html" target="_blank" >OnInit</a></code>
+        <p>The TabsComponent holds serveral instances of TabComponent. </p>
+
     </p>
+
+
 
 
 <section>
@@ -585,11 +580,17 @@
                             <code>selected</code>
                         </td>
                         <td class="col-md-10">
+                            <div><p>You can set the initially selected tab by passing a TabComponent in (e.g. via #variable) </p>
+</div>
+                              <p>
+                                <em>Type:</em>    <code><a href="../components/TabComponent.html" target="_self" >TabComponent</a></code>
+
+                              </p>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/packages/ui/tabs/tabs.component.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/packages/ui/tabs/tabs.component.ts:13</a></div>
                             </td>
                         </tr>
                 </tbody>
@@ -608,10 +609,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/packages/ui/tabs/tabs.component.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/packages/ui/tabs/tabs.component.ts:13</a></div>
                             </td>
                         </tr>
     
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>The constructor inits the collection of tabs </p>
+    </div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
     </section>
@@ -636,72 +643,14 @@
     
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/packages/ui/tabs/tabs.component.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/packages/ui/tabs/tabs.component.ts:21</a></div>
                             </td>
                         </tr>
     
                     <tr>
                         <td class="col-md-4">
-    
-                                <div class="io-description">
-                                    <b>Returns: </b>    <code>void</code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> ngAfterViewInit</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-    <code>ngAfterViewInit()</code>
-                        </td>
-                    </tr>
-    
-                        <tr>
-                            <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/packages/ui/tabs/tabs.component.ts:25</a></div>
-                            </td>
-                        </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-    
-                                <div class="io-description">
-                                    <b>Returns: </b>    <code>void</code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> ngOnInit</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-    <code>ngOnInit()</code>
-                        </td>
-                    </tr>
-    
-                        <tr>
-                            <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/packages/ui/tabs/tabs.component.ts:28</a></div>
-                            </td>
-                        </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
+                                <div class="io-description"><p>This method adds a new tab to the tabs collection and auto selects if it is the first. </p>
+    </div>
     
                                 <div class="io-description">
                                     <b>Returns: </b>    <code>void</code>
@@ -746,33 +695,29 @@
         <pre class="line-numbers"><code class="language-typescript">import { Component, Input, OnInit } from &#x27;@angular/core&#x27;;
 import { TabComponent } from &#x27;../tab/tab.component&#x27;;
 import { Collection } from &#x27;../../core&#x27;;
-
+/** The TabsComponent holds serveral instances of TabComponent. */
 @Component({
   selector: &#x27;ec-tabs&#x27;,
   templateUrl: &#x27;./tabs.component.html&#x27;,
   styleUrls: [&#x27;./tabs.component.scss&#x27;]
 })
-export class TabsComponent implements OnInit {
+export class TabsComponent {
   private tabs: Collection&lt;TabComponent&gt;;
-  @Input() selected;
+  /** You can set the initially selected tab by passing a TabComponent in (e.g. via #variable) */
+  @Input() selected: TabComponent;
 
+  /** The constructor inits the collection of tabs */
   constructor() {
     this.tabs &#x3D; new Collection([]);
   }
 
+  /** This method adds a new tab to the tabs collection and auto selects if it is the first. */
   add(tab: TabComponent) {
     this.tabs.add(tab);
     if (!this.selected) {
       this.selected &#x3D; tab;
     }
   }
-
-  ngAfterViewInit() {
-  }
-
-  ngOnInit() {
-  }
-
 }
 </code></pre>
     </div>

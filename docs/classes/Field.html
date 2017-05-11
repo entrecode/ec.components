@@ -169,9 +169,6 @@
                                 <li class="link">
                                     <a href="../classes/Sorter.html" >Sorter</a>
                                 </li>
-                                <li class="link">
-                                    <a href="../classes/TimeoutAction.html" >TimeoutAction</a>
-                                </li>
                         </ul>
                     </li>
             
@@ -409,9 +406,6 @@
                                        <li class="link">
                                            <a href="../classes/Sorter.html" >Sorter</a>
                                        </li>
-                                       <li class="link">
-                                           <a href="../classes/TimeoutAction.html" >TimeoutAction</a>
-                                       </li>
                                </ul>
                            </li>
                    
@@ -556,6 +550,12 @@
                                     </td>
                                 </tr>
             
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>A Field is constructed by assigning the given config and the property to itself</p>
+            </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -658,6 +658,7 @@ export class Field&lt;T&gt; implements FieldConfigProperty {
   /** If true, the field will not be visible anywhere */
   hidden?: boolean;
 
+  /** A Field is constructed by assigning the given config and the property to itself*/
   constructor(property: string, config: FieldConfigProperty &#x3D; {}) {
     Object.assign(this, config);
     Object.assign(this, { property: property });
