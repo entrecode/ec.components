@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { TabComponent } from '../tab/tab.component';
+import { Component, Input } from '@angular/core';
+import { TabComponent } from '..';
 import { Collection } from '../../core';
 /** The TabsComponent holds serveral instances of TabComponent. */
 @Component({

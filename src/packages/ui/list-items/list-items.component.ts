@@ -1,6 +1,6 @@
 import { Component, Input, QueryList, ViewChildren, ViewContainerRef } from '@angular/core';
-import { Item, List, Selection } from '@ec.components/core';
-import { ListComponent } from '../list.component';
+import { Item, List, Selection } from '../../core';
+import { ListComponent } from '..';
 
 /** The ListItemsComponent displays the actual list, without all peripherals (header, pagination etc.).
  * It can either be given an Array of Items or just the list parent to control the shown items. */
@@ -38,6 +38,9 @@ export class ListItemsComponent {
 
   /** Renders all custom cell templates on the current page */
   renderTemplates(): void {
+    if (!this.host) {
+      return;
+    }
     this.host.fields.forEach((field) => {
       this.cells.forEach((cell, index) => {
         const row = index % this.list.fields.length;

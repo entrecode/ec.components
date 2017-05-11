@@ -8,8 +8,8 @@ import {
   TemplateRef,
   ViewEncapsulation
 } from '@angular/core';
-import { Collection, List, ListConfig, Selection } from '@ec.components/core';
-import { FieldComponent } from '../field/field.component';
+import { Collection, List, ListConfig, Selection } from '../../core';
+import { FieldComponent } from '..';
 
 /**
  * The ListComponent will render a list containing the given items or collection.

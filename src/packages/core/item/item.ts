@@ -1,4 +1,4 @@
-import { ItemConfig } from './item-config.interface';
+import { ItemConfig } from '..';
 /** An Item basically wraps an Object and provides a config with metadata and helper methods to access the object. */
 export class Item<T> {
   /** The value body of the item. This can be either a primitive value or an Object. */

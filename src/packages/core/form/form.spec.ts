@@ -1,8 +1,7 @@
 /**
  * Created by felix on 09.05.17.
  */
-import { Form } from './form';
-import { Item } from '../item/item';
+import { Form, Item } from '..';
 
 describe('Form', () => {
   let person = new Item({

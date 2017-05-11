@@ -1,5 +1,4 @@
-import { FieldConfig } from '../config/field-config.interface';
-import { FieldConfigProperty } from '../config/field-config-property.interface';
+import { FieldConfig, FieldConfigProperty } from '..';
 export interface ItemConfig<T> {
   /** The Property that is used to identify items from another. */
   identifier?: string;

@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
-import { Pagination } from '@ec.components/core';
+import { Pagination } from '../../core';
 /**
  * The Pagination component renders a given instance of the Pagination class.
  * The navigation b

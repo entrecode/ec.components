@@ -1,11 +1,4 @@
-import { Collection } from '../collection/collection';
-import { ListConfig } from './list-config.interface';
-import { Sorter } from '../sorter/sorter';
-import { Item } from '../item/item';
-import { Pagination } from '../pagination/pagination';
-import { PaginationConfig } from '../pagination/pagination-config.interface';
-import { Field } from '../field/field';
-import { Selection } from '../selection/selection';
+import { Collection, Field, Item, ListConfig, Pagination, Sorter } from '..';
 import { Subject } from 'rxjs';
 
 /**
@@ -28,8 +21,6 @@ export class List<T> extends Collection<Item<T>> {
   groups: any[];
   /** The list's pagination (Optional) */
   public pagination: Pagination;
-  /** The list's selection (Optional) */
-  public selection: Selection<T>;
   /** The items of the current page */
   public page: Array<Item<T>>;
   /** Subject that should be nexted when loading is finished */
@@ -40,7 +31,7 @@ export class List<T> extends Collection<Item<T>> {
   /**
    * Constructs the List. Populates the items and instantiates the fields.
    */
-  constructor(items?: Array<T>, config: ListConfig = {}) {
+  constructor(items?: Array<T>, config: ListConfig = {}, pagination?: Pagination) {
     super([]);
     if (items) {
       super.addAll(items.map(item => new Item(item, config)));
@@ -48,14 +39,14 @@ export class List<T> extends Collection<Item<T>> {
     this.config = config || {};
     this.config.page = 1;
     this.fields = this.getFields();
-    this.pagination = this.config.pagination || new Pagination(this.config, this.items.length);
+    this.pagination = pagination || new Pagination(this.config, this.items.length);
     this.pagination.change$.debounceTime(200)
     .subscribe(config => this.load(config));
     this.load();
   }
 
   /** Loads the list page with the given config or, if none given, uses the current config. Reapplies grouping (if any) and calls the change Subject. */
-  protected load(config?: PaginationConfig) {
+  protected load(config?: ListConfig) {
     if (config) {
       Object.assign(this.config, config);
     }

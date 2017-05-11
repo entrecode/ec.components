@@ -208,9 +208,6 @@
                                 <li class="link">
                                     <a href="../interfaces/ModelConfiguration.html" >ModelConfiguration</a>
                                 </li>
-                                <li class="link">
-                                    <a href="../interfaces/PaginationConfig.html" >PaginationConfig</a>
-                                </li>
                         </ul>
                     </li>
             
@@ -445,9 +442,6 @@
                                        <li class="link">
                                            <a href="../interfaces/ModelConfiguration.html" >ModelConfiguration</a>
                                        </li>
-                                       <li class="link">
-                                           <a href="../interfaces/PaginationConfig.html" >PaginationConfig</a>
-                                       </li>
                                </ul>
                            </li>
                    
@@ -612,9 +606,9 @@
             </section>
     </div>
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { PaginationConfig } from &#x27;@ec.components/core&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { ListConfig } from &#x27;../../core&#x27;;
 /** Configuration for an EntryList instance */
-export interface EntryListConfig extends PaginationConfig {
+export interface EntryListConfig extends ListConfig {
   /** Property that is sorted after. */
   sort?: Array&lt;string&gt;;
   /** SDK Entry Filter Object. */

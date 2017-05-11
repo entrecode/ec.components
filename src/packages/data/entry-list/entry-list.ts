@@ -1,6 +1,5 @@
-import { Item, List } from '@ec.components/core';
-import { Datamanager, EntryListConfig } from '../index';
-import { ModelConfig } from '../model-config/model-config';
+import { Item, List } from '../../core';
+import { Datamanager, EntryListConfig, ModelConfig } from '..';
 
 /**
  * Extension of List for Datamanager Entries.

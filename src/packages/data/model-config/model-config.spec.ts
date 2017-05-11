@@ -1,5 +1,4 @@
-import { ModelConfig } from './model-config';
-import { Datamanager } from '../datamanager/datamanager';
+import { Datamanager, ModelConfig } from '..';
 import * as sinon from 'sinon';
 import { muffinSchema } from '../../../mocks/data';
 

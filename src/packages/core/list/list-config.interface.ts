@@ -1,6 +1,4 @@
-import { ItemConfig } from '../item/item-config.interface';
-import { Pagination } from '../pagination/pagination';
-import { Selection } from '../selection/selection';
+import { ItemConfig } from '..';
 
 /**
  *  Configuration for List Classes.
@@ -21,10 +19,6 @@ export interface ListConfig extends ItemConfig<any> {
   page?: number,
   /** The number of items per page */
   size?: number,
-  /** The pagination that should be used */
-  pagination?: Pagination
-  /** The selection that should be used */
-  selection?: Selection<any>
   /** Should the selection be solo? */
   solo?: boolean
 }

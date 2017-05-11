@@ -1,5 +1,4 @@
-import { Selection } from './selection';
-import { Item } from '../item/item';
+import { Item, Selection } from '..';
 
 describe('Selection', () => {
   it('should select items', () => {

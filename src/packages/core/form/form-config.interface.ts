@@ -1,4 +1,4 @@
-import { ItemConfig } from '../item/item-config.interface';
+import { ItemConfig } from '..';
 export interface FormConfig<T> extends ItemConfig<T> {
 
 }

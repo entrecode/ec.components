@@ -1,6 +1,5 @@
-import { Config, FieldConfig, FieldConfigProperty } from '@ec.components/core';
-import { ModelConfiguration } from './model-configuration.interface';
-import { Datamanager } from '../index';
+import { Config, FieldConfig, FieldConfigProperty } from '../../core';
+import { Datamanager, ModelConfiguration } from '..';
 import * as moment from 'moment';
 
 /** The main class for configuring model data behaviour.*/

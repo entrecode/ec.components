@@ -1,13 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
-import {
-  Field,
-  FieldConfig,
-  FieldConfigProperty,
-  Form,
-  FormConfig,
-  Item
-} from '@ec.components/core';
+import { Field, FieldConfig, FieldConfigProperty, Form, FormConfig, Item } from '../../core';
 /** This component renders a form using a FieldConfig Object. */
 @Component({
   selector: 'ec-form',

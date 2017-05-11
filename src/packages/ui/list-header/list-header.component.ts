@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { List } from '@ec.components/core/list/list';
-import { Selection } from '@ec.components/core/selection/selection';
-import { ListComponent } from '../list.component';
+import { List, Selection } from '../../core';
+import { ListComponent } from '..';
 
 /** This component renders, as the name states, the header of a list.*/
 @Component({

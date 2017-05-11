@@ -208,9 +208,6 @@
                                 <li class="link">
                                     <a href="../interfaces/ModelConfiguration.html" >ModelConfiguration</a>
                                 </li>
-                                <li class="link">
-                                    <a href="../interfaces/PaginationConfig.html" >PaginationConfig</a>
-                                </li>
                         </ul>
                     </li>
             
@@ -445,9 +442,6 @@
                                        <li class="link">
                                            <a href="../interfaces/ModelConfiguration.html" >ModelConfiguration</a>
                                        </li>
-                                       <li class="link">
-                                           <a href="../interfaces/PaginationConfig.html" >PaginationConfig</a>
-                                       </li>
                                </ul>
                            </li>
                    
@@ -535,7 +529,7 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <code>constructor(config: <a href="../interfaces/PaginationConfig.html">PaginationConfig</a>, total: number)</code>
+                                    <code>constructor(config: <a href="../interfaces/ListConfig.html">ListConfig</a>, total: number)</code>
                                 </td>
                             </tr>
                                 <tr>
@@ -731,7 +725,7 @@
                                         <span class="modifier-icon method fa fa-play lock">
                                             <span class="fa fa-lock"></span>
                                         </span>
-                                    <code>load(config: <a href="../interfaces/PaginationConfig.html">PaginationConfig</a>)</code>
+                                    <code>load(config: <a href="../interfaces/ListConfig.html">ListConfig</a>)</code>
                                 </td>
                             </tr>
             
@@ -1021,7 +1015,7 @@
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-lock"></span><code>config:     <code><a href="../interfaces/PaginationConfig.html" target="_self" >PaginationConfig</a></code>
+                                    <span class="modifier-icon fa fa-lock"></span><code>config:     <code><a href="../interfaces/ListConfig.html" target="_self" >ListConfig</a></code>
             </bcode>
                                 </td>
                             </tr>
@@ -1107,15 +1101,15 @@
             </section>
     </div>
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { PaginationConfig } from &#x27;./pagination-config.interface&#x27;;
-import { Subject } from &#x27;rxjs&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { Subject } from &#x27;rxjs&#x27;;
+import { ListConfig } from &#x27;..&#x27;;
 
 /** This class can be used to control the loading behaviour of external data. */
 export class Pagination {
   /** The total number of items that is being paginated. It can be changed via setTotal. */
   protected total: number;
   /** The pagination config */
-  protected config: PaginationConfig;
+  protected config: ListConfig;
   private pages: Array&lt;any&gt;;
   private source &#x3D; new Subject();
   /** Observable that is nexted when the pagination has changed. */
@@ -1123,7 +1117,7 @@ export class Pagination {
 
   /** You can init each Pagination instance with an optional config.
    * If no config is provided, it will default to &#x60;&#x60;&#x60;{page: 1, size: 25}&#x60;&#x60;&#x60;. */
-  constructor(config?: PaginationConfig, total?: number) {
+  constructor(config?: ListConfig, total?: number) {
     this.config &#x3D; { page: 1, size: 25 };
     Object.assign(this.config, config);
     if (total) {
@@ -1172,7 +1166,7 @@ export class Pagination {
   }
 
   /** Merges config and fires next on source */
-  protected load(config?: PaginationConfig): void {
+  protected load(config?: ListConfig): void {
     if (config) {
       Object.assign(this.config, config);
     }

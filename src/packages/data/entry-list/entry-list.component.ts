@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { ListComponent } from '@ec.components/ui';
-import { ListConfig, Selection } from '@ec.components/core';
-import { EntryList } from './entry-list';
+import { ListComponent } from '../../ui';
+import { ListConfig, Selection } from '../../core';
+import { EntryList } from '..';
 
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent */
 @Component({

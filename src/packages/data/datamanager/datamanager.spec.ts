@@ -1,4 +1,4 @@
-import { Datamanager } from './datamanager';
+import { Datamanager } from '..';
 import { mocked } from '../../../mocks/data';
 import sinon = require('sinon');
 

@@ -4,9 +4,8 @@ import { environment } from '../environments/environment';
 // import { Pagination } from '@ec.components/core'; //real world imports
 // import { Datamanager, ModelConfig } from '@ec.components/data';
 import { Datamanager, ModelConfig } from '../packages/data';
-import { List, Pagination } from '../packages/core';
+import { FormConfig, List, Pagination } from '../packages/core';
 import * as moment from 'moment';
-import { FormConfig } from '../packages/core/form/form-config.interface';
 import { songs } from '../assets/songs';
 @Component({
   selector: 'demo-root',

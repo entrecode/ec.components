@@ -1,8 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { EntryListComponent } from './entry-list.component';
-import { UiModule } from '../../ui/ui.module';
-import { DataModule } from '../data.module';
+import { DataModule, EntryListComponent } from '..';
+import { UiModule } from '../../ui';
 import sinon = require('sinon');
 
 describe('EntryListComponent', () => {

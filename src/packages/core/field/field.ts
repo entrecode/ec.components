@@ -1,4 +1,4 @@
-import { FieldConfigProperty } from '../index';
+import { FieldConfigProperty } from '..';
 /** A Field acts as a property of an Item. It holds a single Property config. */
 export class Field<T> implements FieldConfigProperty {
   /** Tells if the field is required in forms */
@@ -7,6 +7,8 @@ export class Field<T> implements FieldConfigProperty {
   property?: string;
   /** If true, the field will not be visible anywhere */
   hidden?: boolean;
+  /** The field's type */
+  type?: string;
 
   /** A Field is constructed by assigning the given config and the property to itself*/
   constructor(property: string, config: FieldConfigProperty = {}) {

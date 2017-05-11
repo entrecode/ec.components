@@ -1,5 +1,5 @@
 import { Component, ElementRef, Host, Input, OnInit } from '@angular/core';
-import { TabsComponent } from '../tabs/tabs.component';
+import { TabsComponent } from '..';
 /** A Tab is meant to be placed inside TabsComponent */
 @Component({
   selector: 'ec-tab',

@@ -1,6 +1,4 @@
-import { FormConfig } from './form-config.interface';
-import { Item } from '../item/item';
-import { Field } from '../field/field';
+import { Field, FormConfig, Item } from '..';
 /** A Form is an extension of an Item. In advance to an Item it will create an Array of fields that is either extracted from config.fields or directly from the item body.*/
 export class Form<T> extends Item<T> {
   /** Array of fields. It will be populated automatically when the form is constructed. */

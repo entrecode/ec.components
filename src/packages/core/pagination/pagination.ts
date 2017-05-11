@@ -1,12 +1,12 @@
-import { PaginationConfig } from './pagination-config.interface';
 import { Subject } from 'rxjs';
+import { ListConfig } from '..';
 
 /** This class can be used to control the loading behaviour of external data. */
 export class Pagination {
   /** The total number of items that is being paginated. It can be changed via setTotal. */
   protected total: number;
   /** The pagination config */
-  protected config: PaginationConfig;
+  protected config: ListConfig;
   private pages: Array<any>;
   private source = new Subject();
   /** Observable that is nexted when the pagination has changed. */
@@ -14,7 +14,7 @@ export class Pagination {
 
   /** You can init each Pagination instance with an optional config.
    * If no config is provided, it will default to ```{page: 1, size: 25}```. */
-  constructor(config?: PaginationConfig, total?: number) {
+  constructor(config?: ListConfig, total?: number) {
     this.config = { page: 1, size: 25 };
     Object.assign(this.config, config);
     if (total) {
@@ -63,7 +63,7 @@ export class Pagination {
   }
 
   /** Merges config and fires next on source */
-  protected load(config?: PaginationConfig): void {
+  protected load(config?: ListConfig): void {
     if (config) {
       Object.assign(this.config, config);
     }

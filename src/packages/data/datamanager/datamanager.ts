@@ -1,5 +1,5 @@
 import * as DataManager from 'ec.datamanager';
-import { Environment } from './environment.inferface';
+import { Environment } from '..';
 /**
  * This is the ec.datamanager SDK wrapper class. It consumes a given Environment instance and
  * holds an instance of the SDK DataManager.

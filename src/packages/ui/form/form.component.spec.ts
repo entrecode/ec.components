@@ -1,8 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { FormComponent } from './form.component';
-import { FieldErrorsComponent } from '../field-errors/field-errors.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FieldErrorsComponent, FormComponent } from '..';
 
 describe('FormComponent', () => {
   let component: FormComponent;

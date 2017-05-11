@@ -1,4 +1,4 @@
-import { Item, List } from '../index';
+import { Item, List } from '..';
 import { Subject } from 'rxjs';
 
 /**

@@ -3,8 +3,8 @@ import { DemoComponent } from './demo.component';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
-import { UiModule } from '@ec.components/ui';
-import { DataModule } from '@ec.components/data';
+import { UiModule } from '../packages/ui';
+import { DataModule } from '../packages/data';
 describe('DemoComponent', () => {
   let component: DemoComponent;
   let fixture: ComponentFixture<DemoComponent>;

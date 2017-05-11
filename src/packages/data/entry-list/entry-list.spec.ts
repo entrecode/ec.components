@@ -1,5 +1,4 @@
-import { EntryList } from './entry-list';
-import { Datamanager } from '../datamanager/datamanager';
+import { Datamanager, EntryList } from '..';
 import { muffinList, muffinSchema } from '../../../mocks/muffins';
 import sinon = require('sinon');
 

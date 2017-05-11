@@ -1,4 +1,4 @@
-import { Field } from './field';
+import { Field } from '..';
 /**
  * Created by felix on 09.05.17.
  */

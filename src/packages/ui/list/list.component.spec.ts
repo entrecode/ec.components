@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ListComponent } from './list.component';
-import { ListItemsComponent } from './list-items/list-items.component';
-import { ListHeaderComponent } from './list-header/list-header.component';
+import { ListItemsComponent } from '../list-items/list-items.component';
+import { ListHeaderComponent } from '../list-header/list-header.component';
 import { GroupPipe } from './group.pipe';
 import { Item } from '../../core/item/item';
 import { mocked } from '../../../mocks/data';

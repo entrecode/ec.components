@@ -1,4 +1,4 @@
-import { List } from '../packages/core/list/list';
+import { List } from '../packages/core';
 export const mocked = {
   products: [
     {

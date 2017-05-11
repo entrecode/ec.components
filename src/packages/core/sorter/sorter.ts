@@ -1,4 +1,4 @@
-import { Item } from '../';
+import { Item } from '..';
 const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
 /** The Sorter is a singleton that handles all kinds of sorting operations. */
 export abstract class Sorter<T> {
