@@ -39,6 +39,9 @@ export class Item<T> {
     if (!property) {
       return this.body; //should this part use config.resolve too??
     }
+    if (this.config.fields && this.config.fields[property] && this.config.fields[property].resolve) {
+      return this.config.fields[property].resolve(this.body, this);
+    }
     if (!this.config.resolve) {
       return this.body[property];
     }
@@ -61,7 +64,14 @@ export class Item<T> {
   /** Returns the output of the config.display transformation function with the given property value.
    * If no display function is set, it will just return the property value.*/
   /** Transforms the given field's value for displaying */
-  display(property): any {
+  display(property: string): any {
     return this.transform('display', property);
+  }
+
+  /** Returns the output of the config.sort transformation function with the given property value.
+   * If no display function is set, it will just return the property value.*/
+  /** Transforms the given field's value for sorting */
+  sort(property: string): any {
+    return this.transform('sort', property);
   }
 }

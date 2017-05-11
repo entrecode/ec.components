@@ -1,12 +1,17 @@
 import {
   Component,
+  ContentChildren,
   EventEmitter,
   Input,
   Output,
+  QueryList,
   TemplateRef,
+  ViewChildren,
   ViewEncapsulation
 } from '@angular/core';
 import { Collection, List, ListConfig, Selection } from '@ec.components/core';
+import { FieldComponent } from '../field/field.component';
+import { ListItemsComponent } from './list-items/list-items.component';
 
 /**
  * The ListComponent will render a list containing the given items or collection.
@@ -34,6 +39,9 @@ export class ListComponent {
   @Output() onSelect: EventEmitter<any> = new EventEmitter();
   /** The Instance of the List */
   @Input() list: List<any>;
+  /** A field component inside the ec-list tags interpreted as a custom template */
+  @ContentChildren(FieldComponent) fields: QueryList<any>;
+  @ViewChildren(ListItemsComponent) private itemContainers: QueryList<ListItemsComponent>;
 
   /** Changing items or collection will trigger reconstructing the list with the new items.
    * Changing the selection will reconstruct the selection */
@@ -46,6 +54,12 @@ export class ListComponent {
     if (!this.list) {
       return;
     }
+    this.list.change$.subscribe(() => {
+      this.itemContainers.forEach((container) => {
+        container.renderTemplates()
+      });
+    });
+
     if (!this.selection && this.list.config && !this.list.config.disableSelection) {
       this.selection = new Selection([], this.list.config);
     }

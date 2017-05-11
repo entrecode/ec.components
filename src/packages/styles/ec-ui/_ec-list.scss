@@ -1,5 +1,18 @@
 .ec-list {
   margin: rem(16) 0;
+
+  .ec-list-header, .ec-list-item-cell {
+    flex: 1 1 auto;
+    flex-basis: 0;
+    flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    &.hidden {
+      display: none;
+    }
+    //border: 1px solid rebeccapurple;
+  }
+
   > ul {
     list-style: none;
     margin: 0;

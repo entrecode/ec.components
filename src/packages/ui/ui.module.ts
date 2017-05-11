@@ -17,6 +17,9 @@ import {
 } from './index';
 
 @NgModule({
+  entryComponents: [
+    FieldComponent
+  ],
   declarations: [
     ListComponent,
     PaginationComponent,

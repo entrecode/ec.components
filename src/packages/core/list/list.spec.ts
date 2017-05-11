@@ -18,7 +18,10 @@ describe('List', () => {
   });
 
   it('should support property sorting', () => {
-    const people = new List([{ name: 'Yolanda' }, { name: 'Adam' }, { name: 'Terrence' }]);
+    const people = new List([{ name: 'Yolanda', age: 24 }, {
+      name: 'Adam',
+      age: 17
+    }, { name: 'Terrence', age: 58 }]);
     expect(people.id(0).resolve('name')).toBe('Yolanda');
     people.toggleSort('name');
     expect(people.id(0).resolve('name')).toBe('Adam');
@@ -26,6 +29,11 @@ describe('List', () => {
     people.toggleSort('name');
     expect(people.id(0).resolve('name')).toBe('Yolanda');
     expect(people.id(1).resolve('name')).toBe('Terrence');
+    people.toggleSort('age');
+    expect(people.config.desc).toBe(false);
+    expect(people.id(0).resolve('age')).toBe(17);
+    people.toggleSort('age');
+    expect(people.id(0).resolve('age')).toBe(58);
   });
   it('should support resolve functions', () => {
     const muffins = new List(mocked.muffins, { resolve: m => m.value });

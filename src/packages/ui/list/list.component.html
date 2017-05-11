@@ -2,20 +2,19 @@
 <div class="ec-list">
   <div class="ec-list-group">
     <ec-list-header [host]="this"></ec-list-header>
-    <ec-list-items [items]="list?.page" [host]="this" *ngIf="!list?.groups"></ec-list-items>
   </div>
   <div class="ec-list-group" *ngFor="let group of list?.groups;trackBy:list?.trackGroup">
-    <div class="ec-list-group-header">
+    <div class="ec-list-group-header" *ngIf="group.value">
       <div class="ec-list-item-cell ec-list-checkbox" *ngIf="selection">
         <input type="checkbox" (click)="selection?.toggleAll(listItems?.items)"
                [checked]="selection?.hasAll(listItems?.items)">
       </div>
       <div class="ec-list-item ec-list-group-name">
-        {{group}}
+        {{group.value}}
       </div>
     </div>
     <ec-list-items [host]="this" #listItems
-                   [items]="list?.page | group: list?.config.sortBy: group"></ec-list-items>
+                   [items]="list?.page | group: group.property: group.value"></ec-list-items>
   </div>
 </div>
 <ec-pagination [pagination]="list?.pagination"></ec-pagination>

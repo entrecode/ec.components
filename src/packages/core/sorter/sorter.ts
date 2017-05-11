@@ -20,12 +20,12 @@ export abstract class Sorter<T> {
       return;
     }
     if (property && !items
-      .reduce((has, item) => has && item.resolve(property) !== undefined, true)) {
+      .reduce((has, item) => has && item.sort(property) !== undefined, true)) {
       console.warn('cannot sort property "' + property + '" because not all items have that property', items);
       return;
     }
     const types = items
-    .map(item => typeof item.resolve(property))
+    .map(item => typeof item.sort(property))
     .filter((item, index, items) => items.indexOf(item) === index);
     if (types.length > 1) {
       console.warn('cannot sort items because they contain multiple types:', types);
@@ -54,7 +54,7 @@ export abstract class Sorter<T> {
       if (!property) {
         return algorithm(a.resolve(), b.resolve());
       }
-      return algorithm(a.resolve(property), b.resolve(property));
+      return algorithm(a.sort(property), b.sort(property));
     });
     if (desc) {
       items.reverse();

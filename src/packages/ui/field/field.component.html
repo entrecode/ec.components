@@ -1,12 +1,1 @@
-<div [ngSwitch]="field?.config.type">
-  <ul class="labels-list" *ngSwitchCase="'labels'">
-    <li *ngFor="let label of field?.display()">
-      <div class="label">
-        {{label}}
-      </div>
-    </li>
-  </ul>
-  <span *ngSwitchDefault>
-    {{field?.display()}}
-  </span>
-</div>
+<ng-content></ng-content>

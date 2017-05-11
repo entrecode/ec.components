@@ -1,11 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EntryListComponent } from './entry-list.component';
-import { PaginationComponent } from '../../ui/pagination/pagination.component';
-import { ListItemsComponent } from '../../ui/list/list-items/list-items.component';
-import { ListComponent } from '../../ui/list/list.component';
-import { ListHeaderComponent } from '../../ui/list/list-header/list-header.component';
-import { GroupPipe } from '../../ui/list/group.pipe';
+import { UiModule } from '../../ui/ui.module';
+import { DataModule } from '../data.module';
 import sinon = require('sinon');
 
 describe('EntryListComponent', () => {
@@ -14,8 +11,7 @@ describe('EntryListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ListComponent, ListItemsComponent, GroupPipe,
-        ListHeaderComponent, EntryListComponent, PaginationComponent]
+      imports: [UiModule, DataModule]
     })
     .compileComponents();
   }));

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, QueryList, ViewChildren, ViewContainerRef } from '@angular/core';
 import { Item, List, Selection } from '@ec.components/core';
 import { ListComponent } from '../list.component';
 
@@ -20,8 +20,9 @@ export class ListItemsComponent {
   @Input() host: ListComponent;
   /** If true, only one item is selectable next */
   @Input() solo: boolean;
+  @ViewChildren('cells', { read: ViewContainerRef }) private cells: QueryList<ViewContainerRef>;
 
-  private ngOnChanges() {
+  private ngOnChanges(changes) {
     if (this.host) {
       this.list = this.host.list;
       this.selection = this.host.selection;
@@ -31,6 +32,31 @@ export class ListItemsComponent {
     }
   }
 
+  private ngAfterViewInit() {
+    setTimeout(() => this.renderTemplates(), 0);
+  }
+
+  /** Renders all custom cell templates on the current page */
+  renderTemplates(): void {
+    this.host.fields.forEach((field) => {
+      this.cells.forEach((cell, index) => {
+        const row = index % this.list.fields.length;
+        const col = Math.floor(index / this.list.fields.length);
+        if (field.template && (field.type === cell.element.nativeElement.getAttribute('type') || field.property === cell.element.nativeElement.getAttribute('property'))) {
+          const context = {
+            item: this.items[col],
+            field: this.list.fields[row],
+          };
+          cell.element.nativeElement.innerHTML = '';
+          cell.clear();
+          cell.createEmbeddedView(field.template, Object.assign(context,
+            { value: context.item.resolve(context.field.property) }), index);
+        }
+      });
+    });
+  }
+
+  /** Propagate clicked item to host or toggle selection. */
   columnClick(item: Item<any>) {
     if (this.host) {
       this.host.columnClick(item);

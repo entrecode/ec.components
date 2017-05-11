@@ -2,6 +2,39 @@
 
 <p>Welcome to the ec.components demo.</p>
 
+<!--<ng-template #templates field-type="asset" let-field="field" let-item="item"></ng-template>-->
+<!--<ng-template #template field-type="datetime" let-field="field" let-item="item">
+  ITEM: {{item.value}}
+</ng-template>-->
+<!--<ec-list [list]="mocked.lists.trees">
+  <ec-field type="string">
+    <ng-template let-item="item" let-value="value">
+      <strong>das ist ein string!!! {{value}}</strong>
+    </ng-template>
+  </ec-field>
+
+  <ec-field type="number">
+    <ng-template let-item="item" let-value="value">
+      <strong>das ist eine numer... {{value}}</strong>
+    </ng-template>
+  </ec-field>
+</ec-list>-->
+
+<ec-list [list]="songs" [config]="{size:5,disableSelection:true}">
+  <ec-field property="key">
+    <ng-template let-value="value">
+      <strong>{{value}}</strong>
+    </ng-template>
+  </ec-field>
+  <ec-field property="music">
+    <ng-template let-item="item" let-value="value">
+      <div class="ec-list-avatar">
+        <img [src]="'https://unsplash.it/'+value.measures.length*2+'/'+value.measures.length">
+      </div>
+    </ng-template>
+  </ec-field>
+</ec-list>
+
 <!--<h2>Form</h2>
 <ec-form [config]="formConfig" #ecForm></ec-form>
 Form Config: {{formConfig | json}}
@@ -22,10 +55,10 @@ Form value: {{ecForm.group.value | json}}-->
 
 <h2>Muffins</h2>
 <ec-filter (changed)="muffins.filter('name',$event)"></ec-filter>
-<ec-entry-list model="muffin" [config]="{size:3}" [solo]="true" #muffinList></ec-entry-list>
+<ec-entry-list model="muffin" [config]="{size:10}" [solo]="true" #muffinList></ec-entry-list>
 <!--{{muffinList.list.config?.fields | json}}-->
 <!-- [fields]="muffinList.list.config?.fields"  -->
-<ec-form [item]="muffinList.selection?.items[0]"></ec-form>
+<ec-form [item]="muffinList.selection?.items[0]" *ngIf="muffinList.selection?.items[0]"></ec-form>
 
 <h2>Bakers</h2>
 <ec-entry-list model="baker" [config]="{size:3}"></ec-entry-list>
@@ -56,8 +89,6 @@ Form value: {{ecForm.group.value | json}}-->
          [config]="config.trees"></ec-list>
 <ec-list [items]="trees.items" [config]="config.trees"></ec-list>-->
 <!--{{mocked.lists?.trees?.items?.length}} Trees-->
-<!--<template #cell let-field="field" let-value="value">
-  <strong style="color:red">{{value}}</strong>
-</template>
-<ec-list [cellTemplate]="cell" [items]="trees" [listConfig]="config.trees"></ec-list>
-<ec-list [items]="products"></ec-list>-->
+
+
+<!--<ec-list [items]="products"></ec-list>-->

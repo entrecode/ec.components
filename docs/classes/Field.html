@@ -89,6 +89,9 @@
                                     <a href="../components/FieldComponent.html" >FieldComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/FieldErrorsComponent.html" >FieldErrorsComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/FilterComponent.html" >FilterComponent</a>
                                 </li>
                                 <li class="link">
@@ -326,6 +329,9 @@
                                            <a href="../components/FieldComponent.html" >FieldComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/FieldErrorsComponent.html" >FieldErrorsComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/FilterComponent.html" >FilterComponent</a>
                                        </li>
                                        <li class="link">
@@ -546,28 +552,112 @@
                             </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="3" class="link-to-prism">src/packages/core/field/field.ts:3</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/packages/core/field/field.ts:9</a></div>
                                     </td>
                                 </tr>
             
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description"><p>The field configuration </p>
-            </div>
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
             </section>
 
 
 
+            <section>
+                
+                    <h3 id="inputs">
+                        Properties
+                    </h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> hidden</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>hidden:     <code>boolean</code>
+            </bcode>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/packages/core/field/field.ts:9</a></div>
+                                    </td>
+                                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>If true, the field will not be visible anywhere </p>
+            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> property</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>property:     <code>string</code>
+            </bcode>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/packages/core/field/field.ts:7</a></div>
+                                    </td>
+                                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The name of the field&#39;s property </p>
+            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> required</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>required:     <code>boolean</code>
+            </bcode>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <div class="io-line">Defined in <a href="" data-line="5" class="link-to-prism">src/packages/core/field/field.ts:5</a></div>
+                                    </td>
+                                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Tells if the field is required in forms </p>
+            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </section>
     </div>
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { FieldConfigProperty } from &#x27;../index&#x27;;
 /** A Field acts as a property of an Item. It holds a single Property config. */
 export class Field&lt;T&gt; implements FieldConfigProperty {
-  /** The field configuration */
+  /** Tells if the field is required in forms */
+  required?: boolean;
+  /** The name of the field&#x27;s property */
+  property?: string;
+  /** If true, the field will not be visible anywhere */
+  hidden?: boolean;
+
   constructor(property: string, config: FieldConfigProperty &#x3D; {}) {
     Object.assign(this, config);
     Object.assign(this, { property: property });

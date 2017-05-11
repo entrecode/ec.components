@@ -49,7 +49,8 @@ export class List<T> extends Collection<Item<T>> {
     this.config.page = 1;
     this.fields = this.getFields();
     this.pagination = this.config.pagination || new Pagination(this.config, this.items.length);
-    this.pagination.change$.subscribe(config => this.load(config));
+    this.pagination.change$.debounceTime(200)
+    .subscribe(config => this.load(config));
     this.load();
   }
 
@@ -79,7 +80,7 @@ export class List<T> extends Collection<Item<T>> {
     const fields = [];
     this.items.forEach((item) => {
       item.getProperties().forEach(property => {
-        if (fields.indexOf(property) === -1) {
+        if (!fields.find((f) => f.property === property)) {
           fields.push(new Field(property, { type: typeof item.resolve(property) }));
         }
       });
@@ -105,8 +106,12 @@ export class List<T> extends Collection<Item<T>> {
   /** Changes the config's sort variables to reflect the given sorting */
   protected sortProperty(property: string, desc?: boolean) {
     if (property !== this.config.sortBy) {
-      delete this.config.sortBy;
+      delete this.config.desc;
     }
+    /*else if (this.config.desc && desc === undefined) {
+     delete this.config.sortBy;
+     return;
+     }*/
     this.config.sortBy = property;
     this.config.desc = this.config.desc === undefined ? desc || false : !this.config.desc;
   }
@@ -122,21 +127,29 @@ export class List<T> extends Collection<Item<T>> {
   groupBy(property) {
     delete this.groups;
     if (!property || !this.config.fields || !this.config.fields[property] || !this.config.fields[property].group) {
+      this.groups = [{}];
       return;
     }
-    const values = [];
+    const groups = [];
     this.page.forEach(item => {
       let value = item.group(property);
-      if (values.indexOf(value) === -1) {
-        values.push(value);
+      if (!groups.find((g) => g.value === value)) {
+        groups.push({
+          value,
+          property: this.config.sortBy,
+          page: this.pagination ? this.pagination.getPage() : 0
+        });
       }
     });
-    this.groups = values;
+    this.groups = groups;
   }
 
   private trackGroup(index, group) {
-    //track group by index to force reload
-    return index + group + Math.random();
+    return index + group.value + group.page + group.property;
+  }
+
+  private trackItem(index, item) {
+    return index;
   }
 
   private groupFilter(value) {

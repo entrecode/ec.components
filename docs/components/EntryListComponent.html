@@ -89,6 +89,9 @@
                                     <a href="../components/FieldComponent.html" >FieldComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/FieldErrorsComponent.html" >FieldErrorsComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/FilterComponent.html" >FilterComponent</a>
                                 </li>
                                 <li class="link">
@@ -324,6 +327,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/FieldComponent.html" >FieldComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/FieldErrorsComponent.html" >FieldErrorsComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/FilterComponent.html" >FilterComponent</a>
@@ -592,7 +598,7 @@
                             <div><p>The config which is used mainly for the pagination. </p>
 </div>
                               <p>
-                                <em>Type:</em>    <code><a href="../interfaces/PaginationConfig.html" target="_self" >PaginationConfig</a></code>
+                                <em>Type:</em>    <code><a href="../interfaces/ListConfig.html" target="_self" >ListConfig</a></code>
 
                               </p>
                         </td>
@@ -626,6 +632,28 @@
                         </tr>
                 </tbody>
             </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>solo</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>If true, only one item is selectable next </p>
+</div>
+                              <p>
+                                <em>Type:</em>    <code>boolean</code>
+
+                              </p>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/packages/data/entry-list/entry-list.component.ts:18</a></div>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
     </section>
 
 
@@ -640,7 +668,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/packages/data/entry-list/entry-list.component.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/packages/data/entry-list/entry-list.component.ts:20</a></div>
                             </td>
                         </tr>
     
@@ -674,7 +702,7 @@
     
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/packages/data/entry-list/entry-list.component.ts:26</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/packages/data/entry-list/entry-list.component.ts:28</a></div>
                             </td>
                         </tr>
     
@@ -706,7 +734,7 @@
     
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/packages/data/entry-list/entry-list.component.ts:34</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/packages/data/entry-list/entry-list.component.ts:41</a></div>
                             </td>
                         </tr>
     
@@ -745,7 +773,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/packages/data/entry-list/entry-list.component.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/packages/data/entry-list/entry-list.component.ts:20</a></div>
                             </td>
                         </tr>
                     <tr>
@@ -768,7 +796,7 @@
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { Component, Input } from &#x27;@angular/core&#x27;;
 import { ListComponent } from &#x27;@ec.components/ui&#x27;;
-import { PaginationConfig } from &#x27;@ec.components/core&#x27;;
+import { ListConfig, Selection } from &#x27;@ec.components/core&#x27;;
 import { EntryList } from &#x27;./entry-list&#x27;;
 
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent */
@@ -781,7 +809,9 @@ export class EntryListComponent extends ListComponent {
   /** The model whose entries should be shown.*/
   @Input() model: string;
   /** The config which is used mainly for the pagination. */
-  @Input() config: PaginationConfig &#x3D; {};
+  @Input() config: ListConfig &#x3D; {};
+  /** If true, only one item is selectable next */
+  @Input() solo: boolean;
   /** The instance of an EntryList */
   list: EntryList&lt;any&gt;;
 
@@ -796,6 +826,11 @@ export class EntryListComponent extends ListComponent {
       return;
     }
     this.list &#x3D; new EntryList(this.model, this.config);
+    this.list.change$.subscribe((list) &#x3D;&gt; {
+      if (!this.selection &amp;&amp; this.list.config &amp;&amp; !this.list.config.disableSelection) {
+        this.selection &#x3D; new Selection([], this.list.config);
+      }
+    });
   }
 
   /** This method will filter the list by a given property value and optional operator. */
@@ -807,7 +842,7 @@ export class EntryListComponent extends ListComponent {
     </div>
 
     <div class="tab-pane fade" id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;ec-list [list]&#x3D;&quot;list&quot; *ngIf&#x3D;&quot;list&quot;&gt;&lt;/ec-list&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;ec-list [list]&#x3D;&quot;list&quot; *ngIf&#x3D;&quot;list&quot; [solo]&#x3D;&quot;solo&quot; [selection]&#x3D;&quot;selection&quot;&gt;&lt;/ec-list&gt;
 </code></pre>
     </div>
 
@@ -834,8 +869,8 @@ export class EntryListComponent extends ListComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ec-list [list]="list" *ngIf="list"></ec-list></div>'
-    var COMPONENTS = [{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'FieldComponent', 'selector': 'ec-field'},{'name': 'FilterComponent', 'selector': 'ec-filter'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'}];
+        var COMPONENT_TEMPLATE = '<div><ec-list [list]="list" *ngIf="list" [solo]="solo" [selection]="selection"></ec-list></div>'
+    var COMPONENTS = [{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'FieldComponent', 'selector': 'ec-field'},{'name': 'FieldErrorsComponent', 'selector': 'ec-field-errors'},{'name': 'FilterComponent', 'selector': 'ec-filter'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'EntryListComponent'};
 </script>

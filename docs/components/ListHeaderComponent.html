@@ -89,6 +89,9 @@
                                     <a href="../components/FieldComponent.html" >FieldComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/FieldErrorsComponent.html" >FieldErrorsComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/FilterComponent.html" >FilterComponent</a>
                                 </li>
                                 <li class="link">
@@ -324,6 +327,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/FieldComponent.html" >FieldComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/FieldErrorsComponent.html" >FieldErrorsComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/FilterComponent.html" >FilterComponent</a>
@@ -723,7 +729,7 @@ export class ListHeaderComponent {
            [checked]&#x3D;&quot;selection?.hasAll(list?.items)&quot;&gt;
   &lt;/div&gt;
   &lt;div class&#x3D;&quot;ec-list-item ec-list-header&quot; *ngFor&#x3D;&quot;let field of list?.fields&quot;
-       (click)&#x3D;&quot;list.toggleSort(field.property)&quot;&gt;
+       (click)&#x3D;&quot;list.toggleSort(field.property)&quot; [class.hidden]&#x3D;&quot;field.hidden&quot;&gt;
     {{field.label || field.property}}
     &lt;span *ngIf&#x3D;&quot;list.config?.sortBy&#x3D;&#x3D;&#x3D;field.property&quot;&gt;
       &lt;i class&#x3D;&quot;ec-icon&quot; [ngClass]&#x3D;&quot;list.config?.desc?&#x27;arrow-down&#x27;:&#x27;arrow-up&#x27;&quot;&gt;&lt;/i&gt;
@@ -768,8 +774,8 @@ export class ListHeaderComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="ec-list-group-header" *ngIf="!disableHeader">  <div class="ec-list-item-cell ec-list-checkbox" *ngIf="selection">    <input type="checkbox" (click)="selection?.toggleAll(list?.items)"           [checked]="selection?.hasAll(list?.items)">  </div>  <div class="ec-list-item ec-list-header" *ngFor="let field of list?.fields"       (click)="list.toggleSort(field.property)">    {{field.label || field.property}}    <span *ngIf="list.config?.sortBy===field.property">      <i class="ec-icon" [ngClass]="list.config?.desc?\'arrow-down\':\'arrow-up\'"></i>    </span>  </div>  <!--<div class="ec-list-item-cell ec-list-controls">    <nav class="ec-context-menu">      <a href="" class="btn"><span class="ec-icon more-horizontal"></span></a>      <ul>        <li>          <a href="" class="btn">delete</a>        </li>        <li>          <a href="" class="btn">dublicate</a>        </li>      </ul>    </nav>  </div>--></div></div>'
-    var COMPONENTS = [{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'FieldComponent', 'selector': 'ec-field'},{'name': 'FilterComponent', 'selector': 'ec-filter'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'}];
+        var COMPONENT_TEMPLATE = '<div><div class="ec-list-group-header" *ngIf="!disableHeader">  <div class="ec-list-item-cell ec-list-checkbox" *ngIf="selection">    <input type="checkbox" (click)="selection?.toggleAll(list?.items)"           [checked]="selection?.hasAll(list?.items)">  </div>  <div class="ec-list-item ec-list-header" *ngFor="let field of list?.fields"       (click)="list.toggleSort(field.property)" [class.hidden]="field.hidden">    {{field.label || field.property}}    <span *ngIf="list.config?.sortBy===field.property">      <i class="ec-icon" [ngClass]="list.config?.desc?\'arrow-down\':\'arrow-up\'"></i>    </span>  </div>  <!--<div class="ec-list-item-cell ec-list-controls">    <nav class="ec-context-menu">      <a href="" class="btn"><span class="ec-icon more-horizontal"></span></a>      <ul>        <li>          <a href="" class="btn">delete</a>        </li>        <li>          <a href="" class="btn">dublicate</a>        </li>      </ul>    </nav>  </div>--></div></div>'
+    var COMPONENTS = [{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'FieldComponent', 'selector': 'ec-field'},{'name': 'FieldErrorsComponent', 'selector': 'ec-field-errors'},{'name': 'FilterComponent', 'selector': 'ec-filter'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ListHeaderComponent'};
 </script>

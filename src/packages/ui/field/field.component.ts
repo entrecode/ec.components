@@ -1,43 +1,36 @@
-import { Component, Host, Input, OnInit } from '@angular/core';
-import { Field, FieldConfigProperty } from '@ec.components/core';
-import { ListComponent } from '@ec.components/ui';
+import { Component, ContentChild, Host, Input, TemplateRef } from '@angular/core';
+import { FieldConfigProperty } from '@ec.components/core';
+import { ListComponent } from '../index';
+import { Field } from '../../core/field/field';
 
 @Component({
   selector: 'ec-field',
   templateUrl: './field.component.html',
   styleUrls: ['./field.component.scss']
 })
-export class FieldComponent implements OnInit {
-  field: Field<any>;
-
+export class FieldComponent {
+  cell: {
+    value: string;
+  };
+  @Input() field: Field<any>;
   @Input() item: any;
-  @Input() property: string;
   @Input() config: FieldConfigProperty;
   @Host() list: ListComponent;
+  @Input() component: FieldComponent;
 
+  @Input() property: string;
   @Input() type: string;
   @Input() value: any;
-  private validators = {
-    text: (v) => typeof v === 'string',
-    number: (v) => typeof v === 'number',
-    labels: (v) => Array.isArray(v),
-  };
+
+  @ContentChild(TemplateRef) template: any;
 
   constructor() {
   }
 
-  ngOnInit() {
-    if (this.item && this.list) {
-      console.log('LISTT', this.list.config);
-      console.log('field', this.item);
-      this.field = new Field(this.item, {});
-    }
-    /*if (!this.validators.hasOwnProperty(this.field.config.type) || !this.validators[this.field.config.type]) {
-     console.error('type', this.field.config.type, 'cannot be of type', typeof this.field.config.type);
-     }*/
+  ngAfterContentInit() {
   }
 
-  ngOnChange() {
+  ngOnInit() {
   }
 
 }
