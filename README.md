@@ -2,8 +2,6 @@
 
 This is the main project for ec.components, written in Typescript and Angular.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.0.
-
 ## Modules
 
 There are three main modules:
@@ -77,6 +75,19 @@ Here is a short breakdown of some of the classes and components you can use.
 - More coming soon!
 
 For more infos, look at the doc: https://entrecode.github.io/ec.components/.
+
+# Development
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.0.
+
+## Lerna
+The repository is a so called monorepo, managed by [lerna](https://github.com/lerna/lerna).
+
+## Import Structure
+All imports inside src/packages that import from the same package or another ec.components package must be relative.
+- Imports from the same package should always import the index file "from '..'"
+    - This implies that all components/classes etc are placed inside a flat subfolder structure.
+    - The relative path '..' therefore links to the index.ts where all package exports are defined.
+- Imports from another package should always import the relative path to the package index (e.g. ../../packages/core)
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
