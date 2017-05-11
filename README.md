@@ -82,7 +82,7 @@ For more infos, look at the doc: https://entrecode.github.io/ec.components/.
 
 In main style.scss, import the following:
 
-```sass
+```
 @import "../node_modules/xlcss/sass/xlcss";
 @import "../node_modules/@ec.components/ui/styles";
 ```
