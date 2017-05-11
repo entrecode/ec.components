@@ -25,8 +25,10 @@ A Demo is available at https://components.entrecode.de/.
 
 ### Install:
 
+You can install all three modules like this:
+
 ```shell
-npm i ec.components
+npm i @ec.components/core @ec.components/ui @ec.components/data
 ```
 
 Then you can import the ui and data modules to your app module:
