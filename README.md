@@ -78,6 +78,15 @@ Here is a short breakdown of some of the classes and components you can use.
 
 For more infos, look at the doc: https://entrecode.github.io/ec.components/.
 
+## Styles
+
+In main style.scss, import the following:
+
+```sass
+@import "../node_modules/xlcss/sass/xlcss";
+@import "../node_modules/@ec.components/ui/styles";
+```
+
 # Development
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.0.
 
