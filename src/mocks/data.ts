@@ -687,20 +687,20 @@ export const mocked = {
       fields: {
         name: {
           label: 'Name',
-          type: 'string',
+          view: 'string',
           required: true
         },
         height: {
           label: 'Höhe',
           group: (h) => h > 10 ? 'Höher als 10m' : 'Niedriger als 10m',
-          type: 'number',
+          view: 'number',
           required: true
         },
         fruits: {
           label: 'Früchte',
           template: 'fff {{item[field]}}',
           display: (value) => value ? 'ja' : 'nein',
-          type: 'boolean'
+          view: 'boolean'
         },
       },
     }),

@@ -13,6 +13,16 @@ export class ModelConfig extends Config {
     'modified'
   ];
 
+  static typeViews = {
+    entries: 'labels',
+    entry: 'label',
+    asset: 'avatar',
+    assets: 'avatars',
+    text: 'string',
+    decimal: 'number',
+    number: 'number',
+  };
+
   /** Retrieves the given model config.
    * @example
    * ```typescript
@@ -97,6 +107,7 @@ export class ModelConfig extends Config {
           label: property,
           schema: schema[property],
           type: type.name,
+          view: this.typeViews[type.name],
           model: type.model,
           display: this.displayField(type.name, property)
         }, fieldConfig[property] ? fieldConfig[property] : {});

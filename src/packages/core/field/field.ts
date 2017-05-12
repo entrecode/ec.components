@@ -9,6 +9,8 @@ export class Field<T> implements FieldConfigProperty {
   hidden?: boolean;
   /** The field's type */
   type?: string;
+  /** The field's view */
+  view?: string;
 
   /** A Field is constructed by assigning the given config and the property to itself*/
   constructor(property: string, config: FieldConfigProperty = {}) {

@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ListItemsComponent } from '..';
+import { FieldComponent } from '../field/field.component';
 
 describe('ListItemsComponent', () => {
   let component: ListItemsComponent;
@@ -7,7 +8,7 @@ describe('ListItemsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ListItemsComponent]
+      declarations: [ListItemsComponent, FieldComponent]
     })
     .compileComponents();
   }));

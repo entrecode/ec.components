@@ -1,14 +1,18 @@
 <ul>
   <li *ngFor="let item of items;trackBy:list?.trackItem" (click)="columnClick(item)">
+
+    <!--<ng-template [ngTemplateOutlet]="getTemplate(item)" [ngOutletContext]="{item: item}"></ng-template>-->
+
     <div class="ec-list-item" [class.selected]="selection?.has(item)">
       <div class="ec-list-item-cell ec-list-checkbox" *ngIf="selection">
         <input type="checkbox" [checked]="selection?.has(item)">
       </div>
       <div *ngFor="let field of list?.fields" class="ec-list-item-cell"
-           [ngClass]="'ec-list-' + field.type" [ngSwitch]="field.type"
+           [ngClass]="'ec-list-' + field.type" [ngSwitch]="field.view"
            [class.hidden]="field.hidden">
-        <div #cells [attr.type]="field.type" [attr.property]="field.property">
-          <ul class="labels-list" *ngSwitchCase="'entries'">
+        <ec-field [view]="field.view" [property]="field.property" [field]="field" #cells>
+        <!--<div [attr.view]="field.view" [attr.property]="field.property" #cells>-->
+          <ul class="labels-list" *ngSwitchCase="'labels'">
             <li *ngFor="let label of item.display(field.property)">
               <div class="label">
                 {{label}}
@@ -18,42 +22,31 @@
           <a href="mailto:test@test.de" *ngSwitchCase="'email'">
             {{item.display(field.property)}}
           </a>
-          <span *ngSwitchCase="'location'">
-              {{item.display(field.property) | json}}
-            </span>
-          <span *ngSwitchCase="'json'">
-              {{item.display(field.property) | json}}
-            </span>
-          <div class="ec-list-avatar" *ngSwitchCase="'asset'">
+          <div class="ec-list-avatar" *ngSwitchCase="'avatar'">
             <img [src]="item.display(field.property)">
           </div>
-          <div class="ec-list-avatar" *ngSwitchCase="'assets'">
-            <img [src]="url" *ngFor="let url of item.display(field.property)">
-          </div>
-          <div class="ec-list-avatar" *ngSwitchCase="'image'">
-            <img [src]="item.display(field.property)">
-          </div>
-          <div class="ec-list-avatar" *ngSwitchCase="'images'">
+          <div class="ec-list-avatar" *ngSwitchCase="'avatars'">
             <img [src]="url" *ngFor="let url of item.display(field.property)">
           </div>
           <span *ngSwitchDefault>
           {{item.display(field.property)}}
         </span>
-        </div>
+        </ec-field>
+        <!--</div>-->
       </div>
-      <!--<div class="ec-list-item-cell ec-list-controls">
-        <nav class="ec-context-menu">
-          <a class="btn"><span class="ec-icon more-horizontal"></span></a>
-          <ul>
-            <li>
-              <a href="" class="btn">delete</a>
-            </li>
-            <li>
-              <a href="" class="btn">dublicate</a>
-            </li>
-          </ul>
-        </nav>
-      </div>-->
     </div>
   </li>
 </ul>
+<!--<div class="ec-list-item-cell ec-list-controls">
+  <nav class="ec-context-menu">
+    <a class="btn"><span class="ec-icon more-horizontal"></span></a>
+    <ul>
+      <li>
+        <a href="" class="btn">delete</a>
+      </li>
+      <li>
+        <a href="" class="btn">dublicate</a>
+      </li>
+    </ul>
+  </nav>
+</div>-->

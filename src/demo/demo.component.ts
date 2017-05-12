@@ -28,20 +28,29 @@ export class DemoComponent {
         label: 'Bild',
         resolve: (body) => body.music.measures.length
       },
+      music: {
+        label: 'Akkorde',
+        display: (value) => value.measures.reduce((chords, measure) => chords.concat(measure), []),
+        sort: (value) => value.measures.length,
+        view: 'labels'
+      },
       title: {
         label: 'Titel',
+        view: 'string'
       },
       composer: {
-        label: 'Komponist'
+        label: 'Komponist',
+        view: 'string'
       },
       style: {
         label: 'Stil',
         group: (value) => value,
-        hidden: true
+        view: 'string'
       },
       key: {
         label: 'Tonart',
-        group: (value) => value.replace('-', '')
+        group: (value) => value.replace('-', ''),
+        view: 'string'
       },
       density: {
         label: 'Dichte',
@@ -860,10 +869,10 @@ export class DemoComponent {
     ], {
       fields: {
         index: {
-          type: 'number'
+          view: 'number'
         },
         isActive: {
-          type: 'boolean'
+          view: 'boolean'
         },
         age: {
           display: (age) => {
@@ -880,15 +889,15 @@ export class DemoComponent {
         name: {
           label: 'Name',
           required: true,
-          type: 'string'
+          view: 'string'
         },
         age: {
           label: 'Alter',
-          type: 'number'
+          view: 'number'
         },
         dead: {
           label: 'Ist Tot?',
-          type: 'boolean'
+          view: 'boolean'
         },
       }
     };

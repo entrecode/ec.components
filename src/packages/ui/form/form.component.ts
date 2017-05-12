@@ -1,6 +1,16 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  ContentChildren,
+  EventEmitter,
+  Input,
+  Output,
+  QueryList,
+  ViewChildren
+} from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
-import { Field, FieldConfig, FieldConfigProperty, Form, FormConfig, Item } from '../../core';
+import { Field, Form, FormConfig, Item } from '../../core';
+import { FieldComponent } from '..';
 /** This component renders a form using a FieldConfig Object. */
 @Component({
   selector: 'ec-form',
@@ -12,30 +22,26 @@ export class FormComponent {
   form: Form<any>;
   private group: FormGroup;
   /** You can use a field config directly as input */
-  @Input() fields: FieldConfig<FieldConfigProperty>;
   /** You can also use a FormConfig/ItemConfig as input (with defined fields property) */
   @Input() config: FormConfig<any>;
   /** You can also use an Item as input */
   @Input() item: Item<any>;
   /** Emits when the form is submitted. The form can only be submitted if all Validators succeeded. */
   @Output() submit: EventEmitter<FormGroup> = new EventEmitter();
+  /** A field component inside the ec-form tags interpreted as a custom template */
+  @ContentChildren(FieldComponent) templates: QueryList<FieldComponent>;
+  @ViewChildren(FieldComponent) fields: QueryList<FieldComponent>;
 
   /** The constructor injects the FormBuilder. */
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private cdr: ChangeDetectorRef) {
   }
 
   /** On change, the form instance is (re)created by combining all inputs. If no item is given, an empty form is created using the config. You can also pass just an item to use its config and body.*/
   ngOnChanges() {
     if (this.item) {
       Object.assign(this, this.item);
-    } else if (!this.fields && !this.config) {
+    } else if (!this.config) {
       return;
-    }
-    if (this.fields && this.config) {
-      Object.assign(this.config, { fields: this.fields });
-    }
-    if (!this.config && this.fields) {
-      this.config = { fields: this.fields };
     }
     if (!this.item) {
       this.item = new Item({}, this.config);
@@ -47,8 +53,29 @@ export class FormComponent {
       const validators = this.getValidators(field);
       control[field.property] = new FormControl(this.item.resolve(field.property), validators)
     });
-
     this.group = new FormGroup(control);
+  }
+
+  ngAfterViewChecked(b) {
+    this.renderTemplates();
+  }
+
+  renderTemplates() {
+    if (!this.templates) {
+      return;
+    }
+    this.templates.forEach((template) => {
+      this.fields.forEach((field) => {
+        if (template.matches(field)) {
+          field.renderTemplate(template.template, {
+            field: field.field,
+            group: this.group,
+            value: this.group.get(field.property).value
+          });
+        }
+      });
+    });
+    this.cdr.detectChanges();
   }
 
   /** Extracts all validators from a given Field instance. */

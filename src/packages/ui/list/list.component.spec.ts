@@ -8,6 +8,7 @@ import { Item } from '../../core/item/item';
 import { mocked } from '../../../mocks/data';
 import { Collection } from '../../core/collection/collection';
 import { PaginationComponent } from '../pagination/pagination.component';
+import { FieldComponent } from '../field/field.component';
 
 describe('ListComponent', () => {
   let component: ListComponent;
@@ -15,7 +16,7 @@ describe('ListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [PaginationComponent, ListComponent, ListItemsComponent, ListHeaderComponent, GroupPipe]
+      declarations: [PaginationComponent, ListComponent, ListItemsComponent, ListHeaderComponent, GroupPipe, FieldComponent]
     })
     .compileComponents();
   }));

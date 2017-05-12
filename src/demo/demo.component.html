@@ -2,25 +2,7 @@
 
 <p>Welcome to the ec.components demo.</p>
 
-<!--<ng-template #templates field-type="asset" let-field="field" let-item="item"></ng-template>-->
-<!--<ng-template #template field-type="datetime" let-field="field" let-item="item">
-  ITEM: {{item.value}}
-</ng-template>-->
-<!--<ec-list [list]="mocked.lists.trees">
-  <ec-field type="string">
-    <ng-template let-item="item" let-value="value">
-      <strong>das ist ein string!!! {{value}}</strong>
-    </ng-template>
-  </ec-field>
-
-  <ec-field type="number">
-    <ng-template let-item="item" let-value="value">
-      <strong>das ist eine numer... {{value}}</strong>
-    </ng-template>
-  </ec-field>
-</ec-list>-->
-
-<ec-list [list]="songs" [config]="{size:5,disableSelection:true}">
+<ec-list [list]="songs" [solo]="true" #songList>
   <ec-field property="key">
     <ng-template let-value="value">
       <strong>{{value}}</strong>
@@ -34,7 +16,26 @@
     </ng-template>
   </ec-field>
 </ec-list>
+<ec-form [config]="songList.list.config" *ngIf="songList.selection?.id(0)"
+         [item]="songList.selection?.id(0)">
+  <ec-field property="picture">
+    <ng-template let-field="field" let-group="group" let-value="value">
+      <div class="ec-list-avatar">
+        <img
+            [src]="'https://unsplash.it/'+value*2+'/'+value">
+      </div>
+    </ng-template>
 
+  </ec-field>
+  <ec-field property="title">
+    <ng-template let-group="group" let-field="field">
+      <label [formGroup]="group">
+        {{field.label || field.property}}
+        <input type="text" [formControlName]="field.property">
+      </label>
+    </ng-template>
+  </ec-field>
+</ec-form>
 <!--<h2>Form</h2>
 <ec-form [config]="formConfig" #ecForm></ec-form>
 Form Config: {{formConfig | json}}

@@ -1,26 +1,25 @@
 <form novalidate [formGroup]="group" (ngSubmit)="onSubmit()" *ngIf="group">
   <ul>
-    <li *ngFor="let field of form?.fields" [ngSwitch]="field.type">
-      <ec-field-errors [control]="group.get(field.property)"></ec-field-errors>
-      <div *ngSwitchCase="'string'">
-        <label>{{field.label || field.property}}
-          <input type="text" [formControlName]="field.property">
-        </label>
-      </div>
-      <div *ngSwitchCase="'number'">
-        <label>{{field.label || field.property}}
-          <input type="number" [formControlName]="field.property">
-        </label>
-      </div>
-      <div *ngSwitchCase="'boolean'">
-        <label>
-          <input type="checkbox" [formControlName]="field.property">
-          {{field.label || field.property}}
-        </label>
-      </div>
-      <div *ngSwitchDefault>
-        Field type {{field.type}} has no default field template!
-      </div>
+    <li *ngFor="let field of form?.fields" [ngSwitch]="field.view">
+      <ec-field [view]="field.view" [property]="field.property" [field]="field">
+        <ec-field-errors [control]="group.get(field.property)"></ec-field-errors>
+        <div *ngSwitchCase="'string'">
+          <label>{{field.label || field.property}}
+            <input type="text" [formControlName]="field.property">
+          </label>
+        </div>
+        <div *ngSwitchCase="'number'">
+          <label>{{field.label || field.property}}
+            <input type="number" [formControlName]="field.property">
+          </label>
+        </div>
+        <div *ngSwitchCase="'boolean'">
+          <label>
+            <input type="checkbox" [formControlName]="field.property">
+            {{field.label || field.property}}
+          </label>
+        </div>
+      </ec-field>
     </li>
   </ul>
   <button type="submit" [disabled]="group.invalid" [class.disabled]="group.invalid">

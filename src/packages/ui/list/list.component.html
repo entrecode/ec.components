@@ -14,7 +14,9 @@
       </div>
     </div>
     <ec-list-items [host]="this" #listItems
-                   [items]="list?.page | group: group.property: group.value"></ec-list-items>
+                   [items]="list?.page | group: group.property: group.value">
+      <ng-content></ng-content>
+    </ec-list-items>
   </div>
 </div>
 <ec-pagination [pagination]="list?.pagination"></ec-pagination>

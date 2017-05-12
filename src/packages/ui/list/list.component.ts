@@ -5,7 +5,6 @@ import {
   Input,
   Output,
   QueryList,
-  TemplateRef,
   ViewEncapsulation
 } from '@angular/core';
 import { Collection, List, ListConfig, Selection } from '../../core';
@@ -31,14 +30,12 @@ export class ListComponent {
   @Input() selection: Selection<any>;
   /** If true, only one item is selectable next */
   @Input() solo: boolean;
-  /** Custom cell template */
-  @Input() cellTemplate: TemplateRef<any>;
   /** Event emitter on item selection */
   @Output() onSelect: EventEmitter<any> = new EventEmitter();
   /** The Instance of the List */
   @Input() list: List<any>;
   /** A field component inside the ec-list tags interpreted as a custom template */
-  @ContentChildren(FieldComponent) fields: QueryList<any>;
+  @ContentChildren(FieldComponent, { descendants: true }) templates: QueryList<FieldComponent>;
 
   /** Changing items or collection will trigger reconstructing the list with the new items.
    * Changing the selection will reconstruct the selection */

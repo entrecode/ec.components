@@ -1,6 +1,13 @@
-import { Component, Input, QueryList, ViewChildren, ViewContainerRef } from '@angular/core';
+import {
+  Component,
+  ContentChildren,
+  forwardRef,
+  Input,
+  QueryList,
+  ViewChildren
+} from '@angular/core';
 import { Item, List, Selection } from '../../core';
-import { ListComponent } from '..';
+import { FieldComponent, ListComponent } from '..';
 
 /** The ListItemsComponent displays the actual list, without all peripherals (header, pagination etc.).
  * It can either be given an Array of Items or just the list parent to control the shown items. */
@@ -20,7 +27,9 @@ export class ListItemsComponent {
   @Input() host: ListComponent;
   /** If true, only one item is selectable next */
   @Input() solo: boolean;
-  @ViewChildren('cells', { read: ViewContainerRef }) private cells: QueryList<ViewContainerRef>;
+  @ViewChildren(forwardRef(() => FieldComponent)) private fields: QueryList<FieldComponent>;
+  /** A field component inside the ec-lis-items tags interpreted as a custom template */
+  @ContentChildren(forwardRef(() => FieldComponent), { descendants: true }) templates: QueryList<FieldComponent>;
 
   private ngOnChanges(changes) {
     if (this.host) {
@@ -38,21 +47,23 @@ export class ListItemsComponent {
 
   /** Renders all custom cell templates on the current page */
   renderTemplates(): void {
-    if (!this.host) {
+    if (!this.templates) {
       return;
     }
-    this.host.fields.forEach((field) => {
-      this.cells.forEach((cell, index) => {
-        const row = index % this.list.fields.length;
-        const col = Math.floor(index / this.list.fields.length);
-        if (field.template && (field.type === cell.element.nativeElement.getAttribute('type') || field.property === cell.element.nativeElement.getAttribute('property'))) {
+    if (!this.templates.length && this.host && this.host.templates.length) {
+      //if no direct ec-field contentchildren are found, try the host's
+      this.templates = this.host.templates;
+    }
+    this.templates.forEach((field) => {
+      this.fields.forEach((cell, index) => {
+        if (cell.matches(field)) {
+          const row = index % this.list.fields.length;
+          const col = Math.floor(index / this.list.fields.length);
           const context = {
             item: this.items[col],
             field: this.list.fields[row],
           };
-          cell.element.nativeElement.innerHTML = '';
-          cell.clear();
-          cell.createEmbeddedView(field.template, Object.assign(context,
+          cell.renderTemplate(field.template, Object.assign(context,
             { value: context.item.resolve(context.field.property) }), index);
         }
       });

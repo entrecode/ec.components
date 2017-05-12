@@ -479,7 +479,7 @@
             
                                 <tr>
                                     <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/packages/data/model-config/model-config.ts:22</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/packages/data/model-config/model-config.ts:32</a></div>
                                     </td>
                                 </tr>
             
@@ -523,7 +523,7 @@
             
                                 <tr>
                                     <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/packages/data/model-config/model-config.ts:37</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/packages/data/model-config/model-config.ts:47</a></div>
                                     </td>
                                 </tr>
             
@@ -572,7 +572,7 @@
             
                                 <tr>
                                     <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/packages/data/model-config/model-config.ts:42</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/packages/data/model-config/model-config.ts:52</a></div>
                                     </td>
                                 </tr>
             
@@ -607,7 +607,7 @@
             
                                 <tr>
                                     <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/packages/data/model-config/model-config.ts:56</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/packages/data/model-config/model-config.ts:66</a></div>
                                     </td>
                                 </tr>
             
@@ -642,7 +642,7 @@
             
                                 <tr>
                                     <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/packages/data/model-config/model-config.ts:61</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/packages/data/model-config/model-config.ts:71</a></div>
                                     </td>
                                 </tr>
             
@@ -677,7 +677,7 @@
             
                                 <tr>
                                     <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/packages/data/model-config/model-config.ts:75</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/packages/data/model-config/model-config.ts:85</a></div>
                                     </td>
                                 </tr>
             
@@ -726,6 +726,26 @@
                             </tr>
                         </tbody>
                     </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b><span class="modifier"></span> typeViews</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-"></span><code>typeViews:     <code>{ entries: string; entry: string; asset: string; assets: string; text: string; decimal: string; n...</code>
+            </bcode>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/packages/data/model-config/model-config.ts:16</a></div>
+                                    </td>
+                                </tr>
+                        </tbody>
+                    </table>
             </section>
     </div>
     <div class="tab-pane fade tab-source-code" id="source">
@@ -743,6 +763,16 @@ export class ModelConfig extends Config {
     &#x27;creator&#x27;,
     &#x27;modified&#x27;
   ];
+
+  static typeViews &#x3D; {
+    entries: &#x27;labels&#x27;,
+    entry: &#x27;label&#x27;,
+    asset: &#x27;avatar&#x27;,
+    assets: &#x27;avatars&#x27;,
+    text: &#x27;string&#x27;,
+    decimal: &#x27;number&#x27;,
+    number: &#x27;number&#x27;,
+  };
 
   /** Retrieves the given model config.
    * @example
@@ -828,6 +858,7 @@ export class ModelConfig extends Config {
           label: property,
           schema: schema[property],
           type: type.name,
+          view: this.typeViews[type.name],
           model: type.model,
           display: this.displayField(type.name, property)
         }, fieldConfig[property] ? fieldConfig[property] : {});
