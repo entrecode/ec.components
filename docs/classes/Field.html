@@ -83,6 +83,15 @@
                                 id="xs-components-links"
                             >
                                 <li class="link">
+                                    <a href="../components/EntriesComponent.html" >EntriesComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/EntryComponent.html" >EntryComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/EntryFormComponent.html" >EntryFormComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/EntryListComponent.html" >EntryListComponent</a>
                                 </li>
                                 <li class="link">
@@ -141,6 +150,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../classes/Datamanager.html" >Datamanager</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/Entry.html" >Entry</a>
                                 </li>
                                 <li class="link">
                                     <a href="../classes/EntryList.html" >EntryList</a>
@@ -280,6 +292,15 @@
                                        id="components-links"
                    >
                                        <li class="link">
+                                           <a href="../components/EntriesComponent.html" >EntriesComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/EntryComponent.html" >EntryComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/EntryFormComponent.html" >EntryFormComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/EntryListComponent.html" >EntryListComponent</a>
                                        </li>
                                        <li class="link">
@@ -338,6 +359,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../classes/Datamanager.html" >Datamanager</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/Entry.html" >Entry</a>
                                        </li>
                                        <li class="link">
                                            <a href="../classes/EntryList.html" >EntryList</a>
@@ -465,7 +489,7 @@
                             </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/packages/core/field/field.ts:13</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/packages/core/field/field.ts:15</a></div>
                                     </td>
                                 </tr>
             
@@ -589,6 +613,31 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
+                                    <b> validate</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>validate:     <code>(value: any, field: any) &#x3D;&gt; any</code>
+            </bcode>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/packages/core/field/field.ts:15</a></div>
+                                    </td>
+                                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Custom Validation function </p><br/></div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
                                     <b> view</b>
                                 </td>
                             </tr>
@@ -626,6 +675,8 @@ export class Field&lt;T&gt; implements FieldConfigProperty {
   type?: string;
   /** The field&#x27;s view */
   view?: string;
+  /** Custom Validation function */
+  validate?: (value, field) &#x3D;&gt; any;
 
   /** A Field is constructed by assigning the given config and the property to itself*/
   constructor(property: string, config: FieldConfigProperty &#x3D; {}) {

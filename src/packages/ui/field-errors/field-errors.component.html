@@ -1,5 +1,5 @@
 <ul *ngIf="control?.errors&&control.dirty" class="field-errors">
   <li *ngFor="let error of getErrors()">
-    {{errors[error.key] || 'Ungültige Eingabe'}}
+    {{error.message}}
   </li>
 </ul>

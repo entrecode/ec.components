@@ -83,6 +83,15 @@
                                 id="xs-components-links"
                             >
                                 <li class="link">
+                                    <a href="../components/EntriesComponent.html" >EntriesComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/EntryComponent.html" >EntryComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/EntryFormComponent.html" >EntryFormComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/EntryListComponent.html" >EntryListComponent</a>
                                 </li>
                                 <li class="link">
@@ -141,6 +150,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../classes/Datamanager.html" >Datamanager</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/Entry.html" >Entry</a>
                                 </li>
                                 <li class="link">
                                     <a href="../classes/EntryList.html" >EntryList</a>
@@ -280,6 +292,15 @@
                                        id="components-links"
                    >
                                        <li class="link">
+                                           <a href="../components/EntriesComponent.html" >EntriesComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/EntryComponent.html" >EntryComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/EntryFormComponent.html" >EntryFormComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/EntryListComponent.html" >EntryListComponent</a>
                                        </li>
                                        <li class="link">
@@ -338,6 +359,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../classes/Datamanager.html" >Datamanager</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/Entry.html" >Entry</a>
                                        </li>
                                        <li class="link">
                                            <a href="../classes/EntryList.html" >EntryList</a>
@@ -541,7 +565,7 @@
     
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/packages/ui/field-errors/field-errors.component.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/packages/ui/field-errors/field-errors.component.ts:16</a></div>
                             </td>
                         </tr>
     
@@ -559,13 +583,44 @@
             </table>
     </section>
 
+    <section>
+        
+            <h3 id="inputs">
+                Properties
+            </h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <b> errors</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>errors:     <code>{ emailUnavailable: string; required: string; pattern: string; minlength: string; }</code>
+    </bcode>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Default value : </i><code>errors</code>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/packages/ui/field-errors/field-errors.component.ts:13</a></div>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+    </section>
 </div>
 
 
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { Component, Input } from &#x27;@angular/core&#x27;;
 import { FormControl } from &#x27;@angular/forms&#x27;;
-
+import { errors } from &#x27;./field-errors&#x27;;
 /** This component keeps track of a form control&#x27;s errors and displays them. It is meant to be used beneath a form control. */
 @Component({
   selector: &#x27;ec-field-errors&#x27;,
@@ -575,15 +630,23 @@ import { FormControl } from &#x27;@angular/forms&#x27;;
 export class FieldErrorsComponent {
   /** The form control that should be tracked */
   @Input() control: FormControl;
+  errors &#x3D; errors;
 
   /** This method will iterate over the control errors and generate objects for the template. */
   private getErrors() {
-    return Object.keys(this.control.errors).reduce((errors, key) &#x3D;&gt; {
-      errors.push({
+    return Object.keys(this.control.errors).reduce((errs, key) &#x3D;&gt; {
+      let message;
+      if (key &#x3D;&#x3D;&#x3D; &#x27;custom&#x27;) {
+        message &#x3D; this.control.errors[key];
+      } else {
+        message &#x3D; errors[key] || &#x27;Ungültige Eingabe&#x27;;
+      }
+      errs.push({
         key: key,
-        error: this.control.errors[key]
+        error: this.control.errors[key],
+        message
       });
-      return errors;
+      return errs;
     }, []);
   }
 
@@ -594,7 +657,7 @@ export class FieldErrorsComponent {
     <div class="tab-pane fade" id="templateData">
         <pre class="line-numbers"><code class="language-html">&lt;ul *ngIf&#x3D;&quot;control?.errors&amp;&amp;control.dirty&quot; class&#x3D;&quot;field-errors&quot;&gt;
   &lt;li *ngFor&#x3D;&quot;let error of getErrors()&quot;&gt;
-    {{errors[error.key] || &#x27;Ungültige Eingabe&#x27;}}
+    {{error.message}}
   &lt;/li&gt;
 &lt;/ul&gt;</code></pre>
     </div>
@@ -622,8 +685,8 @@ export class FieldErrorsComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ul *ngIf="control?.errors&&control.dirty" class="field-errors">  <li *ngFor="let error of getErrors()">    {{errors[error.key] || \'Ungültige Eingabe\'}}  </li></ul></div>'
-    var COMPONENTS = [{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'FieldComponent', 'selector': 'ec-field'},{'name': 'FieldErrorsComponent', 'selector': 'ec-field-errors'},{'name': 'FilterComponent', 'selector': 'ec-filter'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'}];
+        var COMPONENT_TEMPLATE = '<div><ul *ngIf="control?.errors&&control.dirty" class="field-errors">  <li *ngFor="let error of getErrors()">    {{error.message}}  </li></ul></div>'
+    var COMPONENTS = [{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'FieldComponent', 'selector': 'ec-field'},{'name': 'FieldErrorsComponent', 'selector': 'ec-field-errors'},{'name': 'FilterComponent', 'selector': 'ec-filter'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'FieldErrorsComponent'};
 </script>

@@ -1,5 +1,6 @@
 import * as DataManager from 'ec.datamanager';
 import { Environment } from '..';
+import { EntryListConfig } from '../entry-list/entry-list-config';
 /**
  * This is the ec.datamanager SDK wrapper class. It consumes a given Environment instance and
  * holds an instance of the SDK DataManager.
@@ -62,5 +63,15 @@ export class Datamanager {
     .then((schema) => {
       return schema.allOf[1].properties;
     });
+  }
+
+  /** Loads a Datamanager entry */
+  static entry(model: string, id: string, levels = 1): Promise<any> {
+    return Datamanager.api().model(model).entry({ id, levels });
+  }
+
+  /** Loads multiple a Datamanager entryList */
+  static entryList(model: string, config: EntryListConfig = {}): Promise<any> {
+    return Datamanager.api().model(model).entryList(config);
   }
 }

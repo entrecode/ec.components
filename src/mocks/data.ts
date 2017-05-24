@@ -82,7 +82,7 @@ export const mocked = {
       name: 'ba',
       height: 20,
       fruits: false
-    },{
+    }, {
       name: 'Appletree',
       height: 10,
       fruits: true
@@ -122,7 +122,7 @@ export const mocked = {
       name: 'ba',
       height: 20,
       fruits: false
-    },{
+    }, {
       name: 'Appletree',
       height: 10,
       fruits: true
@@ -162,7 +162,7 @@ export const mocked = {
       name: 'ba',
       height: 20,
       fruits: false
-    },{
+    }, {
       name: 'Appletree',
       height: 10,
       fruits: true
@@ -202,7 +202,7 @@ export const mocked = {
       name: 'ba',
       height: 20,
       fruits: false
-    },{
+    }, {
       name: 'Appletree',
       height: 10,
       fruits: true
@@ -242,7 +242,7 @@ export const mocked = {
       name: 'ba',
       height: 20,
       fruits: false
-    },{
+    }, {
       name: 'Appletree',
       height: 10,
       fruits: true
@@ -282,7 +282,7 @@ export const mocked = {
       name: 'ba',
       height: 20,
       fruits: false
-    },{
+    }, {
       name: 'Appletree',
       height: 10,
       fruits: true
@@ -322,7 +322,7 @@ export const mocked = {
       name: 'ba',
       height: 20,
       fruits: false
-    },{
+    }, {
       name: 'Appletree',
       height: 10,
       fruits: true
@@ -362,7 +362,7 @@ export const mocked = {
       name: 'ba',
       height: 20,
       fruits: false
-    },{
+    }, {
       name: 'Appletree',
       height: 10,
       fruits: true
@@ -402,7 +402,7 @@ export const mocked = {
       name: 'ba',
       height: 20,
       fruits: false
-    },{
+    }, {
       name: 'Appletree',
       height: 10,
       fruits: true
@@ -442,7 +442,7 @@ export const mocked = {
       name: 'ba',
       height: 20,
       fruits: false
-    },{
+    }, {
       name: 'Appletree',
       height: 10,
       fruits: true
@@ -482,7 +482,7 @@ export const mocked = {
       name: 'ba',
       height: 20,
       fruits: false
-    },{
+    }, {
       name: 'Appletree',
       height: 10,
       fruits: true
@@ -522,7 +522,7 @@ export const mocked = {
       name: 'ba',
       height: 20,
       fruits: false
-    },{
+    }, {
       name: 'Appletree',
       height: 10,
       fruits: true
@@ -562,7 +562,7 @@ export const mocked = {
       name: 'ba',
       height: 20,
       fruits: false
-    },{
+    }, {
       name: 'Appletree',
       height: 10,
       fruits: true
@@ -602,7 +602,7 @@ export const mocked = {
       name: 'ba',
       height: 20,
       fruits: false
-    },{
+    }, {
       name: 'Appletree',
       height: 10,
       fruits: true
@@ -642,7 +642,7 @@ export const mocked = {
       name: 'ba',
       height: 20,
       fruits: false
-    },{
+    }, {
       name: 'Appletree',
       height: 10,
       fruits: true
@@ -694,7 +694,17 @@ export const mocked = {
           label: 'Höhe',
           group: (h) => h > 10 ? 'Höher als 10m' : 'Niedriger als 10m',
           view: 'number',
-          required: true
+          required: true,
+          validate: (value) => {
+            if (typeof value !== 'number') {
+              return;
+            }
+            if (value < 1) {
+              return 'Muss mindestens 1 sein';
+            } else if (value > 10) {
+              return 'Darf maximal 10 sein';
+            }
+          }
         },
         fruits: {
           label: 'Früchte',

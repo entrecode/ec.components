@@ -911,7 +911,8 @@ export class DemoComponent {
           label: 'Muffin Name',
           group: (name) => {
             return name[0].toUpperCase()
-          }
+          },
+          required: true
         },
         _created: {
           label: 'Erstellt',

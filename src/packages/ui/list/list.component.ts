@@ -53,13 +53,6 @@ export class ListComponent {
     }
   }
 
-  /** Helper function for custom cell templates. Returns object containing field name and field value */
-  getContext(field, item) {
-    return {
-      field, item
-    }
-  }
-
   /** Column click handler. Triggers onSelect.emit(item) with fallback to selection.toggle*/
   columnClick(item) {
     if (this.onSelect.observers.length) {

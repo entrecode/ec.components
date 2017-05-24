@@ -8,7 +8,15 @@ import {
   QueryList,
   ViewChildren
 } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ValidationErrors,
+  ValidatorFn,
+  Validators
+} from '@angular/forms';
 import { Field, Form, FormConfig, Item } from '../../core';
 import { FieldComponent } from '..';
 /** This component renders a form using a FieldConfig Object. */
@@ -78,11 +86,28 @@ export class FormComponent {
     this.cdr.detectChanges();
   }
 
+  validateFactory(field: Field<any>): ValidationErrors | null {
+    return (control: AbstractControl) => {
+      if (!field.validate) {
+        return;
+      }
+      const error = field.validate(control.value, field);
+      if (field.validate(control.value, field)) {
+        return {
+          custom: error
+        }
+      }
+    }
+  }
+
   /** Extracts all validators from a given Field instance. */
   getValidators(field: Field<any>): ValidatorFn[] {
     const validators = [];
     if (field.required) {
       validators.push(Validators.required);
+    }
+    if (field.validate) {
+      validators.push(this.validateFactory(field));
     }
     return validators;
   }

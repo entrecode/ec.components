@@ -21,6 +21,10 @@ export interface FieldConfigProperty {
    * @param value The current property value
    * @param field The field property name */
   sort?: (value, field) => any;
+  /** Custom validation function. Its return value will be used for validation in a form.
+   * @param value The current property value
+   * @param field The field property name */
+  validate?: (value, field) => any;
   /** The field's type (use FieldType.*) */
   type?: string;
   /** The model title of the entries/entry field */

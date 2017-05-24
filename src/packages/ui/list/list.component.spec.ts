@@ -48,16 +48,6 @@ describe('ListComponent', () => {
     expect(component.selection).toBeDefined();
   });
 
-  it('return a fields context', () => {
-    component.collection = new Collection(mocked.products);
-    component.ngOnChanges();
-    const context = component.getContext('id', component.list.items[0]);
-    expect(context).toEqual({
-      field: 'id',
-      item: component.list.items[0]
-    });
-  });
-
   it('should toggle selection on columnClick', () => {
     component.collection = new Collection(mocked.products);
     component.ngOnChanges();

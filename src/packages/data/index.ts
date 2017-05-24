@@ -5,4 +5,7 @@ export * from './model-config/model-config'
 export * from './entry-list/entry-list-config'
 export * from './entry-list/entry-list'
 export * from './entry-list/entry-list.component'
+export * from './entry/entry.component'
+export * from './entries/entries.component'
+export * from './entry-form/entry-form.component'
 export * from './data.module';

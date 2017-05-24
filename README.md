@@ -13,6 +13,9 @@ There are three main modules:
 The dependencies stack up from core to data (data > ui > core).
 The packages sources are located at src/packages.
 
+There is also a fourth module called ```*@ec.components/styles*```.
+It contains more sophisticated styles for ui components using xlcss.
+
 ## Documentation
 
 The main documentation is located at https://entrecode.github.io/ec.components/.

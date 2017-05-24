@@ -83,6 +83,15 @@
                                 id="xs-components-links"
                             >
                                 <li class="link">
+                                    <a href="../components/EntriesComponent.html" >EntriesComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/EntryComponent.html" >EntryComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/EntryFormComponent.html" >EntryFormComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/EntryListComponent.html" >EntryListComponent</a>
                                 </li>
                                 <li class="link">
@@ -141,6 +150,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../classes/Datamanager.html" >Datamanager</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/Entry.html" >Entry</a>
                                 </li>
                                 <li class="link">
                                     <a href="../classes/EntryList.html" >EntryList</a>
@@ -280,6 +292,15 @@
                                        id="components-links"
                    >
                                        <li class="link">
+                                           <a href="../components/EntriesComponent.html" >EntriesComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/EntryComponent.html" >EntryComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/EntryFormComponent.html" >EntryFormComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/EntryListComponent.html" >EntryListComponent</a>
                                        </li>
                                        <li class="link">
@@ -338,6 +359,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../classes/Datamanager.html" >Datamanager</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/Entry.html" >Entry</a>
                                        </li>
                                        <li class="link">
                                            <a href="../classes/EntryList.html" >EntryList</a>
@@ -968,7 +992,7 @@ export class ListItemsComponent {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><ul>  <li *ngFor="let item of items;trackBy:list?.trackItem" (click)="columnClick(item)">    <!--<ng-template [ngTemplateOutlet]="getTemplate(item)" [ngOutletContext]="{item: item}"></ng-template>-->    <div class="ec-list-item" [class.selected]="selection?.has(item)">      <div class="ec-list-item-cell ec-list-checkbox" *ngIf="selection">        <input type="checkbox" [checked]="selection?.has(item)">      </div>      <div *ngFor="let field of list?.fields" class="ec-list-item-cell"           [ngClass]="\'ec-list-\' + field.type" [ngSwitch]="field.view"           [class.hidden]="field.hidden">        <ec-field [view]="field.view" [property]="field.property" [field]="field" #cells>        <!--<div [attr.view]="field.view" [attr.property]="field.property" #cells>-->          <ul class="labels-list" *ngSwitchCase="\'labels\'">            <li *ngFor="let label of item.display(field.property)">              <div class="label">                {{label}}              </div>            </li>          </ul>          <a href="mailto:test@test.de" *ngSwitchCase="\'email\'">            {{item.display(field.property)}}          </a>          <div class="ec-list-avatar" *ngSwitchCase="\'avatar\'">            <img [src]="item.display(field.property)">          </div>          <div class="ec-list-avatar" *ngSwitchCase="\'avatars\'">            <img [src]="url" *ngFor="let url of item.display(field.property)">          </div>          <span *ngSwitchDefault>          {{item.display(field.property)}}        </span>        </ec-field>        <!--</div>-->      </div>    </div>  </li></ul><!--<div class="ec-list-item-cell ec-list-controls">  <nav class="ec-context-menu">    <a class="btn"><span class="ec-icon more-horizontal"></span></a>    <ul>      <li>        <a href="" class="btn">delete</a>      </li>      <li>        <a href="" class="btn">dublicate</a>      </li>    </ul>  </nav></div>--></div>'
-    var COMPONENTS = [{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'FieldComponent', 'selector': 'ec-field'},{'name': 'FieldErrorsComponent', 'selector': 'ec-field-errors'},{'name': 'FilterComponent', 'selector': 'ec-filter'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'}];
+    var COMPONENTS = [{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'FieldComponent', 'selector': 'ec-field'},{'name': 'FieldErrorsComponent', 'selector': 'ec-field-errors'},{'name': 'FilterComponent', 'selector': 'ec-filter'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ListItemsComponent'};
 </script>

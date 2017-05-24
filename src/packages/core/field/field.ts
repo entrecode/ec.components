@@ -11,6 +11,8 @@ export class Field<T> implements FieldConfigProperty {
   type?: string;
   /** The field's view */
   view?: string;
+  /** Custom Validation function */
+  validate?: (value, field) => any;
 
   /** A Field is constructed by assigning the given config and the property to itself*/
   constructor(property: string, config: FieldConfigProperty = {}) {

@@ -2,11 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { UiModule } from '../ui';
-import { EntryListComponent } from '.';
+import { EntriesComponent, EntryComponent, EntryFormComponent, EntryListComponent } from '.';
 
 @NgModule({
   declarations: [
-    EntryListComponent
+    EntryListComponent,
+    EntryComponent,
+    EntriesComponent,
+    EntryFormComponent
   ],
   imports: [
     BrowserModule,
@@ -14,7 +17,10 @@ import { EntryListComponent } from '.';
     UiModule
   ],
   exports: [
-    EntryListComponent
+    EntryListComponent,
+    EntryComponent,
+    EntriesComponent,
+    EntryFormComponent
   ],
   providers: [],
 })

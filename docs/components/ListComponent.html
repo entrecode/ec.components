@@ -83,6 +83,15 @@
                                 id="xs-components-links"
                             >
                                 <li class="link">
+                                    <a href="../components/EntriesComponent.html" >EntriesComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/EntryComponent.html" >EntryComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/EntryFormComponent.html" >EntryFormComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/EntryListComponent.html" >EntryListComponent</a>
                                 </li>
                                 <li class="link">
@@ -141,6 +150,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../classes/Datamanager.html" >Datamanager</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/Entry.html" >Entry</a>
                                 </li>
                                 <li class="link">
                                     <a href="../classes/EntryList.html" >EntryList</a>
@@ -280,6 +292,15 @@
                                        id="components-links"
                    >
                                        <li class="link">
+                                           <a href="../components/EntriesComponent.html" >EntriesComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/EntryComponent.html" >EntryComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/EntryFormComponent.html" >EntryFormComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/EntryListComponent.html" >EntryListComponent</a>
                                        </li>
                                        <li class="link">
@@ -338,6 +359,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../classes/Datamanager.html" >Datamanager</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/Entry.html" >Entry</a>
                                        </li>
                                        <li class="link">
                                            <a href="../classes/EntryList.html" >EntryList</a>
@@ -692,38 +716,6 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b> getContext</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-    <code>getContext(field: any, item: any)</code>
-                        </td>
-                    </tr>
-    
-    
-                        <tr>
-                            <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/packages/ui/list/list.component.ts:57</a></div>
-                            </td>
-                        </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-description"><p>Helper function for custom cell templates. Returns object containing field name and field value </p><br/></div>
-    
-                                <div class="io-description">
-                                    <b>Returns : </b>    <code>void</code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
                             <b> columnClick</b>
                         </td>
                     </tr>
@@ -736,7 +728,7 @@
     
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/packages/ui/list/list.component.ts:64</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/packages/ui/list/list.component.ts:57</a></div>
                             </td>
                         </tr>
     
@@ -887,13 +879,6 @@ export class ListComponent {
     }
   }
 
-  /** Helper function for custom cell templates. Returns object containing field name and field value */
-  getContext(field, item) {
-    return {
-      field, item
-    }
-  }
-
   /** Column click handler. Triggers onSelect.emit(item) with fallback to selection.toggle*/
   columnClick(item) {
     if (this.onSelect.observers.length) {
@@ -956,7 +941,7 @@ export class ListComponent {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><ec-pagination [pagination]="list?.pagination"></ec-pagination><div class="ec-list">  <div class="ec-list-group">    <ec-list-header [host]="this"></ec-list-header>  </div>  <div class="ec-list-group" *ngFor="let group of list?.groups;trackBy:list?.trackGroup">    <div class="ec-list-group-header" *ngIf="group.value"         (click)="selection?.toggleAll(listItems?.items)">      <div class="ec-list-item-cell ec-list-checkbox" *ngIf="selection">        <input type="checkbox" [checked]="selection?.hasAll(listItems?.items)">      </div>      <div class="ec-list-item ec-list-group-name">        {{group.value}}      </div>    </div>    <ec-list-items [host]="this" #listItems                   [items]="list?.page | group: group.property: group.value">      <ng-content></ng-content>    </ec-list-items>  </div></div><ec-pagination [pagination]="list?.pagination"></ec-pagination></div>'
-    var COMPONENTS = [{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'FieldComponent', 'selector': 'ec-field'},{'name': 'FieldErrorsComponent', 'selector': 'ec-field-errors'},{'name': 'FilterComponent', 'selector': 'ec-filter'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'}];
+    var COMPONENTS = [{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'FieldComponent', 'selector': 'ec-field'},{'name': 'FieldErrorsComponent', 'selector': 'ec-field-errors'},{'name': 'FilterComponent', 'selector': 'ec-filter'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ListComponent'};
 </script>
