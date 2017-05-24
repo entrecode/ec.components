@@ -25,9 +25,9 @@ If you want to use your own color map and configuration, import the following:
 ```
 
 The lines with "#replace" are meant to be replaced with your own config that has a similar structure like the ones provided.
+It is recommended that you copy the file contents and change the values you'd like to customize.
 
 ### Config Options
-Have a look at [the default config](./config.scss) to find out which config options should be set. It is recommended that you copy the file contents and change the values you'd like to customize.
-
+Have a look at [the default config](./config.scss) to find out which config options should be set.
 ### Color and Font Options
 At the the core folder, you can find the available [color](./core/_colors.scss) and [font](./core/_typo.scss) settings.
