@@ -1,6 +1,6 @@
 # @ec.components/styles
 
-This package contains all the more sophisticated components styles.
+This package contains all the more sophisticated components styles, using [xlcss](https://github.com/entrecode/xlcss).
 
 ## Import Method 1
 
