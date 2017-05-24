@@ -10,6 +10,5 @@ import { FormComponent } from '../../ui/form/form.component';
 export class EntryFormComponent extends FormComponent {
 
   ngOnInit() {
-    console.log('init form!');
   }
 }

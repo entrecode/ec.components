@@ -925,6 +925,16 @@ export class DemoComponent {
           },
           group: (value) => {
             return value > 5 ? 'Größer als 50%' : 'Kleiner als 50%';
+          },
+          validate: (value) => {
+            if (typeof value !== 'number') {
+              return;
+            }
+            if (value < 1) {
+              return 'Muss mindestens 1 sein';
+            } else if (value > 10) {
+              return 'Darf maximal 10 sein';
+            }
           }
         },
       }

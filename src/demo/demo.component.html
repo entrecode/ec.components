@@ -67,7 +67,8 @@
 <h2>Muffins</h2>
 <ec-filter (changed)="muffinList.filter('name',$event)"></ec-filter>
 <ec-entry-list model="muffin" [config]="{size:10}" [solo]="true" #muffinList></ec-entry-list>
-<ec-form [item]="muffinList.selection?.items[0]" *ngIf="muffinList.selection?.items[0]"></ec-form>
+<ec-form [item]="muffinList.selection?.items[0]" *ngIf="muffinList.selection?.items[0]"
+         [config]="muffinList.list.config"></ec-form>
 
 
 <h2>Form</h2>

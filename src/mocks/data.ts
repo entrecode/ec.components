@@ -694,17 +694,7 @@ export const mocked = {
           label: 'Höhe',
           group: (h) => h > 10 ? 'Höher als 10m' : 'Niedriger als 10m',
           view: 'number',
-          required: true,
-          validate: (value) => {
-            if (typeof value !== 'number') {
-              return;
-            }
-            if (value < 1) {
-              return 'Muss mindestens 1 sein';
-            } else if (value > 10) {
-              return 'Darf maximal 10 sein';
-            }
-          }
+          required: true
         },
         fruits: {
           label: 'Früchte',
