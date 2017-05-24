@@ -19,9 +19,9 @@ If you want to use your own color map and configuration, import the following:
 
 ```
 @import "../node_modules/xlcss/sass/xlcss";
-@import "~@ec.components/styles/config"; #replace
-@import "~@ec.components/styles/core/core"; #replace
-@import "~@ec.components/styles/styles";
+@import "../node_modules/@ec.components/styles/config"; #replace
+@import "../node_modules/@ec.components/styles/core/core"; #replace
+@import "../node_modules/@ec.components/styles/styles";
 ```
 
 The lines with "#replace" are meant to be replaced with your own config that has a similar structure like the ones provided.
