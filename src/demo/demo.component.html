@@ -3,12 +3,16 @@
 <p>Welcome to the ec.components demo.</p>
 
 <h2>ec-pop</h2>
-<button (click)="myPop.show()">POP SHOW</button>
-<button (click)="myPop.hide()">POP HIDE</button>
+<button (click)="popLeft.show()">sidebar-left</button>
+<button (click)="popRight.show()">sidebar-right</button>
 
-<ec-pop #myPop class="sidebar-right">
-  <button (click)="myPop.hide()">X</button>
-  <h1>show POP!</h1>
+<ec-pop #popLeft class="sidebar-left">
+  <button (click)="popLeft.hide()">X</button>
+  <h1>YEHA!</h1>
+</ec-pop>
+<ec-pop #popRight class="sidebar-right">
+  <button (click)="popRight.hide()">X</button>
+  <h1>YUPIDOODLE</h1>
 </ec-pop>
 
 <h2>ec-entry</h2>
