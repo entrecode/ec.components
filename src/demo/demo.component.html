@@ -10,9 +10,9 @@
   <button (click)="popLeft.hide()">X</button>
   <h1>YEHA!</h1>
 </ec-pop>
-<ec-pop #popRight class="sidebar-right">
-  <button (click)="popRight.hide()">X</button>
-  <h1>YUPIDOODLE</h1>
+<ec-pop #popRight class="sidebar-right" active="true">
+  <h1>Yupidoodle!</h1>
+  <button (click)="popRight.hide()">cloooose</button>
 </ec-pop>
 
 <h2>ec-entry</h2>
@@ -46,25 +46,6 @@
     </ng-template>
   </ec-field>
 </ec-list>
-<ec-form #songForm>
-  <ec-field property="picture">
-    <ng-template let-field="field" let-group="group" let-value="value">
-      <div class="ec-list-avatar">
-        <img
-            [src]="'https://unsplash.it/'+value*2+'/'+value">
-      </div>
-    </ng-template>
-
-  </ec-field>
-  <ec-field property="title">
-    <ng-template let-group="group" let-field="field">
-      <label [formGroup]="group">
-        {{field.label || field.property}}
-        <input type="text" [formControlName]="field.property">
-      </label>
-    </ng-template>
-  </ec-field>
-</ec-form>
 
 <h2>Pagination</h2>
 <ec-pagination [pagination]="pagination" [range]="2"></ec-pagination>
@@ -89,7 +70,28 @@
 
 <h2>Form</h2>
 <p>Click a list entry from Bakers, Muffins or Trees to view the form.</p>
-<ec-form #myForm></ec-form>
+<button (click)="formPop.show()">View now</button>
+<ec-pop #formPop class="sidebar-right" active="true">
+  <button (click)="formPop.hide()">X</button>
+  <ec-form #myForm (onChange)="formPop.show()">
+    <ec-field property="picture">
+      <ng-template let-field="field" let-group="group" let-value="value">
+        <div class="ec-list-avatar">
+          <img
+              [src]="'https://unsplash.it/'+value*2+'/'+value">
+        </div>
+      </ng-template>
+    </ec-field>
+    <ec-field property="title">
+      <ng-template let-group="group" let-field="field">
+        <label [formGroup]="group">
+          {{field.label || field.property}}
+          <input type="text" [formControlName]="field.property">
+        </label>
+      </ng-template>
+    </ec-field>
+  </ec-form>
+</ec-pop>
 
 <h2>Tabs</h2>
 <ec-tabs>

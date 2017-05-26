@@ -1,7 +1,7 @@
 /**
  * Created by felix on 26.05.17.
  */
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'ec-pop',
@@ -9,12 +9,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./pop.component.scss']
 })
 export class PopComponent {
-  active: boolean;
+  @Input() active: boolean;
   visible: boolean;
   delay: number = 0;
 
   constructor() {
-    console.log('pop constructed !');
   }
 
   public show() {

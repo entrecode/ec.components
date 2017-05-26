@@ -36,6 +36,8 @@ export class FormComponent {
   @Input() item: Item<any>;
   /** Emits when the form is submitted. The form can only be submitted if all Validators succeeded. */
   @Output() submit: EventEmitter<FormGroup> = new EventEmitter();
+  /** Emits when a new instance of Form is present */
+  @Output() onChange: EventEmitter<FormComponent> = new EventEmitter();
   /** A field component inside the ec-form tags interpreted as a custom template */
   @ContentChildren(FieldComponent) templates: QueryList<FieldComponent>;
   @ViewChildren(FieldComponent) fields: QueryList<FieldComponent>;
@@ -62,6 +64,7 @@ export class FormComponent {
       control[field.property] = new FormControl(this.item.resolve(field.property), validators)
     });
     this.group = new FormGroup(control);
+    this.onChange.emit(this);
   }
 
   edit(item: Item<any>) {
