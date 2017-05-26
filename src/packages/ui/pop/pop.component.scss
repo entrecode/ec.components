@@ -1,0 +1,62 @@
+:host {
+  .ec-pop-container {
+    .ec-pop {
+      visibility: hidden;
+    }
+    &:not(.visible) .ec-pop {
+      visibility: hidden;
+    }
+    &.visible .ec-pop {
+      visibility: visible;
+    }
+  }
+  &.fade {
+    .ec-pop-container {
+      .ec-pop {
+        opacity: 0;
+        transition: all .3s linear;
+      }
+      &.visible .ec-pop {
+        opacity: 1;
+      }
+    }
+  }
+
+  &.sidebar-left {
+    .ec-pop-container {
+      .ec-pop {
+        width: 50vw;
+        top: 0;
+        height: 100vh;
+        background-color: white;
+        border-right: 1px solid slategray;
+        padding: 10px;
+        position: fixed;
+        left: -50vw;
+        transition: all .3s ease-in;
+      }
+      &.visible .ec-pop {
+        left: 0;
+      }
+    }
+  }
+
+  &.sidebar-right {
+    .ec-pop-container {
+      .ec-pop {
+        width: 50vw;
+        top: 0;
+        height: 100vh;
+        background-color: white;
+        border-left: 1px solid slategray;
+        padding: 10px;
+        position: fixed;
+        right: -50vw;
+        transition: all .3s ease-in;
+      }
+      &.visible .ec-pop {
+        right: 0;
+      }
+    }
+  }
+}

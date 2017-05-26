@@ -17,6 +17,11 @@ export class Item<T> {
     Object.assign(this.config, config);
   }
 
+  /** Returns the item's config */
+  getConfig() {
+    return this.config;
+  }
+
   /** Returns an Array of properties possesed by the object. */
   getProperties(): Array<string> {
     if (typeof this.body !== 'object') {

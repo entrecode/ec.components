@@ -64,6 +64,12 @@ export class FormComponent {
     this.group = new FormGroup(control);
   }
 
+  edit(item: Item<any>) {
+    this.config = item.getConfig() || this.config;
+    this.item = item;
+    this.ngOnChanges();
+  }
+
   ngAfterViewChecked(b) {
     this.renderTemplates();
   }

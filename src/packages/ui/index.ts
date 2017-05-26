@@ -10,5 +10,6 @@ export * from './tab/tab.component'
 export * from './form/form.component'
 export * from './field-errors/field-errors.component'
 export * from './list/list.component'
+export * from './pop/pop.component'
 
 export * from './ui.module'

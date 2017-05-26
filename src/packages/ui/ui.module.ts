@@ -12,13 +12,15 @@ import {
   ListItemsComponent,
   MockupComponent,
   PaginationComponent,
+  PopComponent,
   TabComponent,
   TabsComponent
 } from './index';
 
 @NgModule({
   entryComponents: [
-    FieldComponent
+    FieldComponent,
+    PopComponent,
   ],
   declarations: [
     ListComponent,
@@ -32,7 +34,8 @@ import {
     ListHeaderComponent,
     GroupPipe,
     FieldErrorsComponent,
-    FormComponent
+    FormComponent,
+    PopComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +55,8 @@ import {
     ListHeaderComponent,
     GroupPipe,
     FormComponent,
-    FieldErrorsComponent
+    FieldErrorsComponent,
+    PopComponent
   ],
   providers: [],
 })

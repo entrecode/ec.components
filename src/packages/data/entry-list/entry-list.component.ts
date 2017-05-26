@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ListComponent } from '../../ui';
 import { ListConfig, Selection } from '../../core';
 import { EntryList } from '..';
@@ -18,6 +18,8 @@ export class EntryListComponent extends ListComponent {
   @Input() solo: boolean;
   /** The instance of an EntryList */
   list: EntryList<any>;
+  /** Event emitter on item selection */
+  @Output() onSelect: EventEmitter<any> = new EventEmitter();
 
   /** The constructor will just call super of List*/
   constructor() {
@@ -40,5 +42,10 @@ export class EntryListComponent extends ListComponent {
   /** This method will filter the list by a given property value and optional operator. */
   filter(property: string, value: any, operator: string = 'search') {
     this.list.filter(property, value, operator);
+  }
+
+  /** Callback when an entry is clicked. */
+  selectEntry(entry) {
+    this.onSelect.emit(entry);
   }
 }
