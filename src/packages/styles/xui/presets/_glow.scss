@@ -1,0 +1,38 @@
+@mixin glow ($glow-color, $glow-color-hover){
+  position: relative;
+
+  &:after {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    height: 60%;
+    width: 60%;
+    background-color: darken($glow-color, 4);
+    @include filter(blur(8px));
+    bottom: 0;
+    //mix-blend-mode: multiply;
+    left: 20%;
+    @include transition(all .2s);
+  }
+
+  &:hover {
+    &:after {
+      width: 80%;
+      left: 10%;
+      @include filter(blur(4px));
+      background-color: darken($glow-color-hover, 4);
+    }
+  }
+}
+
+%glow {
+@include glow(getColor(base, link), getColor(base, linkHover));
+
+  &.super {
+    @include glow(getColor(base, super), getColor(base, superHover));
+  }
+
+  &.minor {
+    @include glow(getColor(base, minor), getColor(base, minorHover));
+  }
+}
