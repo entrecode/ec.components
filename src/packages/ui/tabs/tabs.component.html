@@ -1,8 +1,8 @@
-<nav>
+<nav class="ec-tab-nav">
   <ul>
     <li *ngFor="let tab of tabs.items;let i = index" (click)="selected=tab"
         [class.selected]="selected===tab">
-      {{tab.label}}
+      <span>{{tab.label}}</span>
     </li>
   </ul>
 </nav>

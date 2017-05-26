@@ -13,6 +13,7 @@
 <ul>
   <li *ngFor="let m of myMuffins.entries()">{{m.display('name')}}</li>
 </ul>
+
 <h2>ec-entries in a list</h2>
 <ec-list *ngIf="myMuffins.list" [list]="myMuffins.list"
          [config]="myMuffins.config"></ec-list>
