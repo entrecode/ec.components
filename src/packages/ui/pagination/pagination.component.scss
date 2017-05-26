@@ -1,44 +1,50 @@
-nav {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  white-space: nowrap;
-  > * {
-    display: inline-block;
-  }
-  div {
-    overflow: hidden;
-  }
-  ul {
-    transition: transform .2s linear;
-    margin: 0;
+.ec-pagination {
+  display: flex;
+
+  .ec-pagination-controls {
+    list-style: none;
     padding: 0;
-    user-select: none;
-    &.hidden {
-      display: none;
-    }
-    li {
-      background-color: #f0f2f1;
+    margin: 0;
+    display: flex;
+
+    .ec-pagination-control {
       display: inline-block;
+
+      &.go-to-last {
+        &:after {
+          content:"\00bb";
+        }
+      }
+      &.go-to-next {
+        &:after {
+          content:"\203A";
+        }
+      }
+      &.go-to-prev {
+        &:after {
+          content:"\2039";
+        }
+      }
+      &.go-to-first {
+        &:after {
+          content:"\00ab";
+        }
+      }
+    }
+  }
+
+  .ec-pagination-pages {
+
+    ul {
       list-style: none;
-      width: 50px;
-      height: 50px;
-      padding: 15px 10px;
-      border-radius: 5%;
-      text-align: center;
-      cursor: pointer;
-      box-sizing: border-box;
-      transition: all .2s linear;
-      &.active {
-        background: #0c5593;
-        color: white;
-      }
-      &.disabled {
-        color: gray;
-        cursor: not-allowed;
-      }
-      &.hidden {
-        display: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+
+      .ec-pagination-page {
+
+        span {
+        }
       }
     }
   }

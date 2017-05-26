@@ -1,8 +1,7 @@
 <ec-pagination [pagination]="list?.pagination"></ec-pagination>
 <div class="ec-list">
-  <div class="ec-list-group">
-    <ec-list-header [host]="this"></ec-list-header>
-  </div>
+  <ec-list-header [host]="this"></ec-list-header>
+
   <div class="ec-list-group" *ngFor="let group of list?.groups;trackBy:list?.trackGroup">
     <div class="ec-list-group-header" *ngIf="group.value"
          (click)="selection?.toggleAll(listItems?.items)">
@@ -18,5 +17,6 @@
       <ng-content></ng-content>
     </ec-list-items>
   </div>
+
 </div>
 <ec-pagination [pagination]="list?.pagination"></ec-pagination>

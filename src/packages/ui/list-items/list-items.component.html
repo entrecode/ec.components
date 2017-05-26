@@ -1,39 +1,38 @@
-<ul>
-  <li *ngFor="let item of items;trackBy:list?.trackItem" (click)="columnClick(item)">
+<ul class="ec-list-items">
+  <li *ngFor="let item of items;trackBy:list?.trackItem" (click)="columnClick(item)"
+      class="ec-list-item" [class.selected]="selection?.has(item)">
 
     <!--<ng-template [ngTemplateOutlet]="getTemplate(item)" [ngOutletContext]="{item: item}"></ng-template>-->
 
-    <div class="ec-list-item" [class.selected]="selection?.has(item)">
-      <div class="ec-list-item-cell ec-list-checkbox" *ngIf="selection">
-        <input type="checkbox" [checked]="selection?.has(item)">
-      </div>
-      <div *ngFor="let field of list?.fields" class="ec-list-item-cell"
-           [ngClass]="'ec-list-' + field.type" [ngSwitch]="field.view"
-           [class.hidden]="field.hidden">
-        <ec-field [view]="field.view" [property]="field.property" [field]="field" #cells>
+    <div class="ec-list-item-cell ec-list-checkbox" *ngIf="selection">
+      <input type="checkbox" [checked]="selection?.has(item)">
+    </div>
+    <div *ngFor="let field of list?.fields" class="ec-list-item-cell"
+         [ngClass]="'ec-list-' + field.type" [ngSwitch]="field.view"
+         [class.hidden]="field.hidden">
+      <ec-field [view]="field.view" [property]="field.property" [field]="field" #cells>
         <!--<div [attr.view]="field.view" [attr.property]="field.property" #cells>-->
-          <ul class="labels-list" *ngSwitchCase="'labels'">
-            <li *ngFor="let label of item.display(field.property)">
-              <div class="label">
+        <ul class="tags-list" *ngSwitchCase="'labels'">
+          <li *ngFor="let label of item.display(field.property)">
+              <span class="tag">
                 {{label}}
-              </div>
-            </li>
-          </ul>
-          <a href="mailto:test@test.de" *ngSwitchCase="'email'">
-            {{item.display(field.property)}}
-          </a>
-          <div class="ec-list-avatar" *ngSwitchCase="'avatar'">
-            <img [src]="item.display(field.property)">
-          </div>
-          <div class="ec-list-avatar" *ngSwitchCase="'avatars'">
-            <img [src]="url" *ngFor="let url of item.display(field.property)">
-          </div>
-          <span *ngSwitchDefault>
+              </span>
+          </li>
+        </ul>
+        <a href="mailto:test@test.de" *ngSwitchCase="'email'">
+          {{item.display(field.property)}}
+        </a>
+        <div class="ec-list-avatar" *ngSwitchCase="'avatar'">
+          <img [src]="item.display(field.property)">
+        </div>
+        <div class="ec-list-avatar" *ngSwitchCase="'avatars'">
+          <img [src]="url" *ngFor="let url of item.display(field.property)">
+        </div>
+        <span *ngSwitchDefault>
           {{item.display(field.property)}}
         </span>
-        </ec-field>
-        <!--</div>-->
-      </div>
+      </ec-field>
+      <!--</div>-->
     </div>
   </li>
 </ul>

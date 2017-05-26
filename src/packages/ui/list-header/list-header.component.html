@@ -1,15 +1,17 @@
-<div class="ec-list-group-header" *ngIf="!disableHeader">
-  <div class="ec-list-item-cell ec-list-checkbox" *ngIf="selection">
-    <input type="checkbox" (click)="selection?.toggleAll(list?.items)"
-           [checked]="selection?.hasAll(list?.items)">
-  </div>
-  <div class="ec-list-item ec-list-header" *ngFor="let field of list?.fields"
-       (click)="list.toggleSort(field.property)" [class.hidden]="field.hidden">
-    {{field.label || field.property}}
-    <span *ngIf="list.config?.sortBy===field.property">
-      <i class="ec-icon" [ngClass]="list.config?.desc?'arrow-down':'arrow-up'"></i>
-    </span>
-  </div>
+<ul class="ec-list-header" *ngIf="!disableHeader">
+  <li class="ec-list-item">
+    <div class="ec-list-item-cell ec-list-checkbox" *ngIf="selection">
+      <input type="checkbox" (click)="selection?.toggleAll(list?.items)"
+             [checked]="selection?.hasAll(list?.items)">
+    </div>
+    <div class="ec-list-item-cell" *ngFor="let field of list?.fields"
+         (click)="list.toggleSort(field.property)" [class.hidden]="field.hidden" [class.sortable]="list.config?.sortBy===field.property">
+      <span>{{field.label || field.property}}</span>
+      <span *ngIf="list.config?.sortBy===field.property" class="sort-handle">
+        <span [ngClass]="list.config?.desc?'arrow-down':'arrow-up'"></span>
+      </span>
+    </div>
+  </li>
   <!--<div class="ec-list-item-cell ec-list-controls">
     <nav class="ec-context-menu">
       <a href="" class="btn"><span class="ec-icon more-horizontal"></span></a>
@@ -23,4 +25,4 @@
       </ul>
     </nav>
   </div>-->
-</div>
+</ul>

@@ -1,31 +1,31 @@
-<nav>
-  <ul>
+<nav class="ec-pagination">
+  <ul class="ec-pagination-controls">
     <li [class.disabled]="pagination?.isFirst()"
-        (click)="pagination.first()" #item>
-      <i class="ec-icon previous"></i>
+        (click)="pagination.first()" #item class="ec-pagination-control go-to-first">
+      <span></span>
     </li>
     <li [class.disabled]="pagination?.isFirst()"
-        (click)="pagination.prev()" #item>
-      <i class="ec-icon chevron-left"></i>
+        (click)="pagination.prev()" #item  class="ec-pagination-control go-to-prev">
+      <span></span>
     </li>
   </ul>
-  <div [style.maxWidth.px]="containerWidth" #container>
+  <div [style.maxWidth.px]="containerWidth" #container class="ec-pagination-pages">
     <ul [style.transform]="translation" #pages *ngIf="pagination?.pages">
       <li *ngFor="let page of pagination.pages;let i = index"
           (click)="pagination.select(i+1)"
-          [class.active]="pagination.isActive(i+1)">
-        {{i+1}}
+          [class.active]="pagination.isActive(i+1)" class="ec-pagination-page">
+        <span>{{i+1}}</span>
       </li>
     </ul>
   </div>
-  <ul>
+  <ul class="ec-pagination-controls">
     <li [class.disabled]="pagination?.isLast()"
-        (click)="pagination.next()" #item>
-      <i class="ec-icon chevron-right"></i>
+        (click)="pagination.next()" #item class="ec-pagination-control go-to-next">
+      <span></span>
     </li>
     <li [class.disabled]="pagination?.isLast()"
-        (click)="pagination.last()">
-      <i class="ec-icon next"></i>
+        (click)="pagination.last()" class="ec-pagination-control go-to-last">
+      <span></span>
     </li>
   </ul>
 </nav>
