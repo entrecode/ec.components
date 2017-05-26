@@ -123,7 +123,7 @@ export class FormComponent {
 
   /** Method that is invoked when the form is submitted.*/
   onSubmit() {
-    console.log('submit!', this.group.value);
+    this.item.save(this.group.value);
     this.submit.emit(this.group);
   }
 }

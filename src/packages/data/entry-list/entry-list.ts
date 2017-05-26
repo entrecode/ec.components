@@ -15,7 +15,10 @@ export class EntryList<Entry> extends List<Entry> {
     super([], Object.assign({
       identifier: '_id',
       resolve: (entry => entry.value),
-      fields: config.fields
+      fields: config.fields,
+      onSave: (item: Item<Entry>) => {
+        Datamanager.save(item.getBody());
+      }
     }, config));
     this.model = model;
     if (this.config.fields) {

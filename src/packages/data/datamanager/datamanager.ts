@@ -74,4 +74,12 @@ export class Datamanager {
   static entryList(model: string, config: EntryListConfig = {}): Promise<any> {
     return Datamanager.api().model(model).entryList(config);
   }
+
+  /** Saves the given entry */
+  static save(entry) {
+    return entry.save().catch((err) => {
+      console.log('could not save entry!');
+      //TODO handle error
+    });
+  }
 }

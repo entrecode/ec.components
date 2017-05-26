@@ -1,4 +1,5 @@
 import { FieldConfig, FieldConfigProperty } from '..';
+import { Item } from './item';
 export interface ItemConfig<T> {
   /** The Property that is used to identify items from another. */
   identifier?: string;
@@ -12,4 +13,6 @@ export interface ItemConfig<T> {
   resolve?: (body: T) => any;
   /** Contains the parent Instance which inhabits the item. This property is set programmatically and therefore meant to be readonly.*/
   parent?: any;
+  /** Callback that is invoked when the item is saved */
+  onSave?: (item?: Item<T>, body?: T) => any;
 }
