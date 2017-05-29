@@ -23,10 +23,14 @@
           {{item.display(field.property)}}
         </a>
         <div class="ec-list-avatar" *ngSwitchCase="'avatar'">
-          <img [src]="item.display(field.property)">
+          <img [src]="item.display(field.property)" class="avatar-thumb">
         </div>
-        <div class="ec-list-avatar" *ngSwitchCase="'avatars'">
-          <img [src]="url" *ngFor="let url of item.display(field.property)">
+        <div class="ec-list-avatars" *ngSwitchCase="'avatars'">
+          <ul>
+            <li *ngFor="let url of item.display(field.property)">
+              <img [src]="url" class="avatar-thumb">
+            </li>
+          </ul>
         </div>
         <span *ngSwitchDefault>
           {{item.display(field.property)}}
