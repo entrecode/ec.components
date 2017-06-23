@@ -6,7 +6,8 @@ import { environment } from '../environments/environment';
 import { Datamanager, ModelConfig } from '../packages/data';
 import { FormConfig, List, Pagination } from '../packages/core';
 import * as moment from 'moment';
-import { songs } from '../assets/songs';
+import { demoRoutes } from './demo.module';
+
 @Component({
   selector: 'demo-root',
   templateUrl: './demo.component.html',
@@ -14,91 +15,17 @@ import { songs } from '../assets/songs';
   encapsulation: ViewEncapsulation.None,
 })
 export class DemoComponent {
-  private mocked;
-  private title = 'ec.components demo';
+
+  private demos = demoRoutes;
+
+  private mocked = mocked;
   private pagination = new Pagination({});
   currentPage: number = this.pagination.getPage();
   private formConfig: FormConfig<any>;
   private randomData: any;
 
-  private songs = new List(songs.songs, {
-    size: 10,
-    fields: {
-      picture: {
-        label: 'Bild',
-        resolve: (body) => body.music.measures.length
-      },
-      music: {
-        label: 'Akkorde',
-        display: (value) => value.measures.reduce((chords, measure) => chords.concat(measure), []),
-        sort: (value) => value.measures.length,
-        view: 'labels'
-      },
-      title: {
-        label: 'Titel',
-        view: 'string'
-      },
-      composer: {
-        label: 'Komponist',
-        view: 'string'
-      },
-      style: {
-        label: 'Stil',
-        group: (value) => value,
-        view: 'string'
-      },
-      key: {
-        label: 'Tonart',
-        group: (value) => value.replace('-', ''),
-        view: 'string'
-      },
-      density: {
-        label: 'Dichte',
-        hidden: true,
-        resolve: (body) => {
-          return Math.round(body.music.measures.reduce((chords, measure) => chords.concat(measure), []).length / body.music.measures.length * 10) / 10;
-        }
-      },
-      diversity: {
-        label: 'Diversität',
-        hidden: true,
-        resolve: (body) => {
-          return body.music.measures.reduce((chords, measure) => chords.concat(measure), []).filter((v, i, a) => a.indexOf(v) === i).length;
-        }
-      },
-      difficulty: {
-        label: 'Schwierigkeit',
-        resolve: (body, item) => {
-          return Math.round(item.resolve('diversity') * item.resolve('density'));
-        },
-        group: (value) => {
-          if (value < 5) {
-            return 'Käseleicht'
-          }
-          if (value < 10) {
-            return 'Anfänger'
-          }
-          if (value < 30) {
-            return 'Ganz nett'
-          }
-          if (value < 40) {
-            return 'Fortgeschritten'
-          }
-          if (value < 50) {
-            return 'Ordentlich'
-          }
-          if (value < 60) {
-            return 'Profi'
-          }
-          return 'Hardcore'
-        }
-      },
-    }
-  });
-
   constructor() {
     Datamanager.useEnvironment(environment);
-    this.mocked = mocked;
     this.pagination.setTotal(5100);
     this.pagination.change$.debounceTime(500)
     .subscribe((p) => {
@@ -958,4 +885,5 @@ export class DemoComponent {
       }
     });
   }
+
 }

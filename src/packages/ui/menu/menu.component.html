@@ -1,0 +1,13 @@
+<div class="ec-menu" [class.root]="!parent">
+  <ul>
+    <li *ngIf="title">
+      <strong>{{title}}</strong>
+    </li>
+    <li *ngFor="let item of routes" (mouseenter)="this.hoverItem(item)"
+        (mouseleave)="this.parent?.hoverOut()">
+      <span *ngIf="!item.path">{{item.data?.title}}</span>
+      <a *ngIf="item.path" [href]="getPath(item)">{{item.data?.title || item.path}}</a>
+    </li>
+  </ul>
+  <ec-menu *ngIf="hover?.children" [route]="hover" [parent]="this" #current></ec-menu>
+</div>

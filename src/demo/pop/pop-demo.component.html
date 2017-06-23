@@ -1,0 +1,10 @@
+<button (click)="popLeft.show()">sidebar-left</button>
+<button (click)="popRight.show()">sidebar-right</button>
+<ec-pop #popLeft class="sidebar-left">
+  <button (click)="popLeft.hide()">X</button>
+  <h1>YEHA!</h1>
+</ec-pop>
+<ec-pop #popRight class="sidebar-right" active="true">
+  <h1>Yupidoodle!</h1>
+  <button (click)="popRight.hide()">cloooose</button>
+</ec-pop>

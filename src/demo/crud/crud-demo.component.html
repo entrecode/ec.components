@@ -1,0 +1,27 @@
+<!--
+<h2>Form</h2>
+<p>Click a list entry from Bakers, Muffins or Trees to view the form.</p>
+<button (click)="formPop.show()">View now</button>
+<ec-pop #formPop class="sidebar-right" active="true">
+  <button (click)="formPop.hide()">X</button>
+  <ec-form #myForm (onChange)="formPop.show()">
+    <ec-field property="picture">
+      <ng-template let-field="field" let-group="group" let-value="value">
+        <div class="ec-list-avatar">
+          <img
+              [src]="'https://unsplash.it/'+value*2+'/'+value">
+        </div>
+      </ng-template>
+    </ec-field>
+    <ec-field property="title">
+      <ng-template let-group="group" let-field="field">
+        <label [formGroup]="group">
+          {{field.label || field.property}}
+          <input type="text" [formControlName]="field.property">
+        </label>
+      </ng-template>
+    </ec-field>
+  </ec-form>
+</ec-pop>
+-->
+<!-- TODO -->

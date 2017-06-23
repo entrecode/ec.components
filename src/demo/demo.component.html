@@ -1,121 +1,23 @@
-<h1>{{title}}</h1>
+<ec-menu title="ec.components" [routes]="demos"></ec-menu>
 
-<p>Welcome to the ec.components demo.</p>
+<!--<ul class="demo-menu">
+  <li>
+    <strong>ec.components</strong>
+  </li>
+  <li *ngFor="let demo of demos">
+    <a [href]="demo.path">{{demo.data?.title||demo.path}}</a>
+    <span *ngIf="!demo.path">{{demo.data?.title||demo.path}}</span>
+    <ul *ngIf="demo.children">
+      <li *ngFor="let child of demo.children">
+        {{child.path}}
+      </li>
+    </ul>
+  </li>
+</ul>-->
 
-<h2>ec-pop</h2>
-<button (click)="popLeft.show()">sidebar-left</button>
-<button (click)="popRight.show()">sidebar-right</button>
-
-<ec-pop #popLeft class="sidebar-left">
-  <button (click)="popLeft.hide()">X</button>
-  <h1>YEHA!</h1>
-</ec-pop>
-<ec-pop #popRight class="sidebar-right" active="true">
-  <h1>Yupidoodle!</h1>
-  <button (click)="popRight.hide()">cloooose</button>
-</ec-pop>
-
-<h2>ec-entry</h2>
-<ec-entry model="muffin" id="SkXEhDZ5yW" #muffinEntry></ec-entry>
-{{muffinEntry.entry?.value._entryTitle}}
-
-<ec-entry-form></ec-entry-form>
-
-<h2>ec-entries</h2>
-<ec-entries model="muffin" [config]="{size:3}" #myMuffins></ec-entries>
-{{myMuffins.entries().length}} MUFFINS!
-<ul>
-  <li *ngFor="let m of myMuffins.entries()">{{m.display('name')}}</li>
-</ul>
-<h2>ec-entries in a list</h2>
-<ec-list *ngIf="myMuffins.list" [list]="myMuffins.list"
-         [config]="myMuffins.config"></ec-list>
-
-<h2>ec-list</h2>
-<ec-list [list]="songs" [solo]="true" (onSelect)="myForm.edit($event)" #songList>
-  <ec-field property="key">
-    <ng-template let-value="value">
-      <strong>{{value}}</strong>
-    </ng-template>
-  </ec-field>
-  <ec-field property="picture">
-    <ng-template let-item="item" let-value="value">
-      <div class="ec-list-avatar">
-        <img [src]="'https://unsplash.it/'+value*2+'/'+value">
-      </div>
-    </ng-template>
-  </ec-field>
-</ec-list>
-
-<h2>Pagination</h2>
-<ec-pagination [pagination]="pagination" [range]="2"></ec-pagination>
-<p>Active Page Live: {{pagination.getPage()}}</p>
-<p>Active Page Debounced: {{currentPage}}</p>
-
-<h2>Simple List</h2>
-<ec-list class="ec-list-card" [list]="mocked.lists.trees" #treeList [solo]="true"></ec-list>
-<ec-form [config]="treeList.list.config"
-         [item]="treeList.selection?.id(0)"></ec-form>
-
-
-<h2>Muffins</h2>
-<ec-filter (changed)="muffinList.filter('name',$event)"></ec-filter>
-<ec-entry-list model="muffin" [config]="{size:10}" [solo]="true" #muffinList
-               (onSelect)="myForm.edit($event)"></ec-entry-list>
-
-<h2>Bakers</h2>
-<ec-entry-list model="baker" [config]="{size:3}" (onSelect)="myForm.edit($event)"></ec-entry-list>
-<!--<h2>Field Test</h2>-->
-<!--<ec-entry-list model="field_test"></ec-entry-list>-->
-
-<h2>Form</h2>
-<p>Click a list entry from Bakers, Muffins or Trees to view the form.</p>
-<button (click)="formPop.show()">View now</button>
-<ec-pop #formPop class="sidebar-right" active="true">
-  <button (click)="formPop.hide()">X</button>
-  <ec-form #myForm (onChange)="formPop.show()">
-    <ec-field property="picture">
-      <ng-template let-field="field" let-group="group" let-value="value">
-        <div class="ec-list-avatar">
-          <img
-              [src]="'https://unsplash.it/'+value*2+'/'+value">
-        </div>
-      </ng-template>
-    </ec-field>
-    <ec-field property="title">
-      <ng-template let-group="group" let-field="field">
-        <label [formGroup]="group">
-          {{field.label || field.property}}
-          <input type="text" [formControlName]="field.property">
-        </label>
-      </ng-template>
-    </ec-field>
-  </ec-form>
-</ec-pop>
-
-<h2>Tabs</h2>
-<ec-tabs>
-  <ec-tab label="Tab A">
-    <img src="https://unsplash.it/300/400">
-  </ec-tab>
-  <ec-tab label="Tab B">
-    <img src="https://unsplash.it/200/300">
-  </ec-tab>
-  <ec-tab label="Tab C" selected>
-    <img src="https://unsplash.it/400/500">
-  </ec-tab>
-  <ec-tab label="Tab D">
-    <img src="https://unsplash.it/200/100">
-  </ec-tab>
-</ec-tabs>
+<router-outlet></router-outlet>
 
 
 <!--<h2>Mockups</h2>
-<ec-mockup></ec-mockup>-->
-<!--<ec-list #treeList [items]="trees.items" (onSelect)="selectTree($event,treeList)"
-         [config]="config.trees"></ec-list>
-<ec-list [items]="trees.items" [config]="config.trees"></ec-list>-->
-<!--{{mocked.lists?.trees?.items?.length}} Trees-->
-
-
-<!--<ec-list [items]="products"></ec-list>-->
+<ec-mockup></ec-mockup>
+-->

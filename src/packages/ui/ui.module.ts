@@ -16,6 +16,7 @@ import {
   TabComponent,
   TabsComponent
 } from './index';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   entryComponents: [
@@ -35,7 +36,8 @@ import {
     GroupPipe,
     FieldErrorsComponent,
     FormComponent,
-    PopComponent
+    PopComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,7 +58,8 @@ import {
     GroupPipe,
     FormComponent,
     FieldErrorsComponent,
-    PopComponent
+    PopComponent,
+    MenuComponent
   ],
   providers: [],
 })

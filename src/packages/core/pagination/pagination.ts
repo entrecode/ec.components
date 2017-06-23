@@ -1,4 +1,4 @@
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { ListConfig } from '..';
 
 /** This class can be used to control the loading behaviour of external data. */
@@ -10,7 +10,7 @@ export class Pagination {
   private pages: Array<any>;
   private source = new Subject();
   /** Observable that is nexted when the pagination has changed. */
-  public change$ = this.source.asObservable();
+  public change$: Observable<any> = this.source.asObservable();
 
   /** You can init each Pagination instance with an optional config.
    * If no config is provided, it will default to ```{page: 1, size: 25}```. */

@@ -1,0 +1,10 @@
+<h2>ec-entry</h2>
+<ec-entry model="muffin" id="SkXEhDZ5yW" #muffinEntry></ec-entry>
+{{muffinEntry.entry?.value._entryTitle}}
+
+<h2>ec-entries</h2>
+<ec-entries model="muffin" [config]="{size:3}" #myMuffins></ec-entries>
+{{myMuffins.entries().length}} MUFFINS!
+<ul>
+  <li *ngFor="let m of myMuffins.entries()">{{m.display('name')}}</li>
+</ul>
