@@ -13,6 +13,7 @@ import {
   MockupComponent,
   PaginationComponent,
   PopComponent,
+  SelectComponent,
   TabComponent,
   TabsComponent
 } from './index';
@@ -38,6 +39,7 @@ import { MenuComponent } from './menu/menu.component';
     FormComponent,
     PopComponent,
     MenuComponent,
+    SelectComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,7 +61,8 @@ import { MenuComponent } from './menu/menu.component';
     FormComponent,
     FieldErrorsComponent,
     PopComponent,
-    MenuComponent
+    MenuComponent,
+    SelectComponent,
   ],
   providers: [],
 })

@@ -1,8 +1,6 @@
 <ul>
   <li *ngFor="let item of items;trackBy:list?.trackItem" (click)="columnClick(item)">
-
     <!--<ng-template [ngTemplateOutlet]="getTemplate(item)" [ngOutletContext]="{item: item}"></ng-template>-->
-
     <div class="ec-list-item" [class.selected]="selection?.has(item)">
       <div class="ec-list-item-cell ec-list-checkbox" *ngIf="selection">
         <input type="checkbox" [checked]="selection?.has(item)">
@@ -11,7 +9,7 @@
            [ngClass]="'ec-list-' + field.type" [ngSwitch]="field.view"
            [class.hidden]="field.hidden">
         <ec-field [view]="field.view" [property]="field.property" [field]="field" #cells>
-        <!--<div [attr.view]="field.view" [attr.property]="field.property" #cells>-->
+          <!--<div [attr.view]="field.view" [attr.property]="field.property" #cells>-->
           <ul class="labels-list" *ngSwitchCase="'labels'">
             <li *ngFor="let label of item.display(field.property)">
               <div class="label">

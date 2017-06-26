@@ -1,10 +1,13 @@
 :host {
   z-index: 9999;
+  padding-bottom: 100px;
   > div {
     &.root {
-      position: relative;
       background-color: cornflowerblue;
       color: white;
+      position: relative;
+      //position: fixed;
+      //top: 0;
     }
     &:not(.root) {
       position: absolute;
@@ -13,12 +16,13 @@
     > .ec-menu {
       position: relative;
       top: 0;
+      left: 10px;
     }
 
     ul {
       width: 100vw;
       top: 0;
-      padding: 0;
+      padding: 5px 5px 0 5px;
       overflow: scroll;
       margin: 0;
       white-space: nowrap;
@@ -28,7 +32,8 @@
         list-style: none;
         text-align: center;
         text-transform: uppercase;
-        > a, > strong {
+        //border-radius: 10px 10px 0 0;
+        > a, > span, > strong {
           margin: 0;
           white-space: nowrap;
           display: block;
@@ -36,10 +41,12 @@
           padding: 10px;
           min-width: 100px;
         }
-        > a {
-          //background: orchid;
+        &.active {
+          background-color: lightgoldenrodyellow;
+        }
+        > a, > span {
           &:hover {
-            background-color: lightgoldenrodyellow;
+            //background-color: lightgoldenrodyellow;
           }
         }
       }

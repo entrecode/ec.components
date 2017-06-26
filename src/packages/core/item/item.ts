@@ -77,7 +77,10 @@ export class Item<T> {
   /** Returns the output of the config.display transformation function with the given property value.
    * If no display function is set, it will just return the property value.*/
   /** Transforms the given field's value for displaying */
-  display(property: string): any {
+  display(property?: string): any {
+    if (!property) {
+      return this.transform('display', this.config.label || Object.keys(this.resolve())[0]);
+    }
     return this.transform('display', property);
   }
 

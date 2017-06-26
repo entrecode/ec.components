@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'ec-data-demo',
-  templateUrl: './data-demo.component.html',
+  selector: 'ec-crud-demo',
+  templateUrl: './crud-demo.component.html',
 })
-export class DataDemoComponent {
+export class CrudDemoComponent {
   constructor() {
   }
 }

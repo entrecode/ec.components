@@ -11,5 +11,6 @@ export * from './form/form.component'
 export * from './field-errors/field-errors.component'
 export * from './list/list.component'
 export * from './pop/pop.component'
+export * from './select/select.component'
 
 export * from './ui.module'

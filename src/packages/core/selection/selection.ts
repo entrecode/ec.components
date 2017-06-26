@@ -57,7 +57,7 @@ export class Selection<T> extends List<T> {
   /** Toggle multiple items. You can control if the items should be kept, flipped, or be kept unique*/
   toggleAll(items: Array<Item<T>>, flip?: boolean, keep?: boolean) {
     items = items || [];
-    items = Array.isArray(items) ? items : [items];
+    // items = Array.isArray(items) ? items : [items];
     if (!flip && !keep && this.hasAll(items)) {
       this.removeAll(items);
       return this;
@@ -76,4 +76,9 @@ export class Selection<T> extends List<T> {
   flipAll(items) {
     return this.toggleAll(items, true);
   };
+
+  /** Returns an Array containing only the selected identifiers */
+  getIdentifiers() {
+    return this.items.map((item) => this.config.identifier ? item.id() : item);
+  }
 }

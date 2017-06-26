@@ -17,28 +17,32 @@ import { FormDemoComponent } from './form/form-demo.component';
 import { TabsDemoComponent } from './tabs/tabs-demo.component';
 import { EntryFormDemoComponent } from './entry-form/entry-form.demo.component';
 import { MockupComponent } from '../packages/ui/mockup/mockup.component';
+import { CrudDemoComponent } from './crud/crud-demo.component';
+import { SelectDemoComponent } from './select/select-demo.component';
 
 export const demoRoutes: Routes = [
   {
     path: 'ui',
-    children: [
+    children: [{
+      path: 'deeply',
+      children: [{
+        path: 'nested',
+        children: [{
+          path: 'route',
+          children: [{
+            path: 'structure',
+            redirectTo: '/ui'
+          }]
+        }]
+      }]
+    },
       {
         path: 'list',
         component: ListDemoComponent,
         data: {
           title: 'list'
-        },
-        children: [
-          {
-            path: 'entry-list',
-            component: EntryListDemoComponent,
-            data: {
-              title: 'entry-list'
-            }
-          },
-        ]
+        }
       },
-
       {
         path: 'form',
         component: FormDemoComponent,
@@ -61,6 +65,10 @@ export const demoRoutes: Routes = [
         }
       },
       {
+        path: 'select',
+        component: SelectDemoComponent,
+      },
+      {
         path: 'mockups',
         component: MockupComponent,
         data: {
@@ -72,6 +80,13 @@ export const demoRoutes: Routes = [
   {
     path: 'data',
     children: [
+      {
+        path: 'entries',
+        component: DataDemoComponent,
+        data: {
+          title: 'entries'
+        }
+      },
       {
         path: 'entry-list',
         component: EntryListDemoComponent,
@@ -86,6 +101,10 @@ export const demoRoutes: Routes = [
           title: 'entry-form'
         }
       },
+      {
+        path: 'crud',
+        component: CrudDemoComponent
+      },
     ]
   },
   {
@@ -93,13 +112,6 @@ export const demoRoutes: Routes = [
     component: VcDemoComponent,
     data: {
       title: 'ec-vc'
-    }
-  },
-  {
-    path: 'data',
-    component: DataDemoComponent,
-    data: {
-      title: 'data'
     }
   },
 ];
@@ -116,6 +128,8 @@ export const demoRoutes: Routes = [
     FormDemoComponent,
     TabsDemoComponent,
     EntryFormDemoComponent,
+    CrudDemoComponent,
+    SelectDemoComponent,
   ],
   imports: [
     CommonModule,
