@@ -10,6 +10,7 @@ import { PublicLoginComponent } from './public-login/public-login.component';
 import { ValidationOnBlurDirective } from './validate-onblur';
 import { PublicSignupComponent } from './public-signup/public-signup.component';
 import { FieldErrorsComponent } from './field-errors/field-errors.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 // import { HyperAgentModule } from './hyperagent/hyper-agent.module';
 
 @NgModule({
@@ -18,6 +19,7 @@ import { FieldErrorsComponent } from './field-errors/field-errors.component';
     PublicSignupComponent,
     ValidationOnBlurDirective,
     FieldErrorsComponent,
+    AdminLoginComponent,
   ],
   imports: [
     CookieModule.forRoot(),
@@ -27,10 +29,11 @@ import { FieldErrorsComponent } from './field-errors/field-errors.component';
     HttpModule,
   ],
   exports: [
+    ValidationOnBlurDirective,
+    FieldErrorsComponent,
     PublicLoginComponent,
     PublicSignupComponent,
-    ValidationOnBlurDirective,
-    FieldErrorsComponent
+    AdminLoginComponent
   ],
   providers: [AuthorizationService, requestOptionsProvider, PublicAuthService]
 })

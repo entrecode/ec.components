@@ -1,3 +1,4 @@
+<h2>Public</h2>
 <strong *ngIf="!dm.ready">
   LADE USER
 </strong>
@@ -6,6 +7,23 @@
   <ec-auth-public-login></ec-auth-public-login>
   <h2>Signup</h2>
   <ec-auth-public-signup></ec-auth-public-signup>
+</section>
+
+<pre *ngIf="dm.user">
+  {{dm.user | json}}
+  <button (click)="logout()">Logout</button>
+</pre>
+
+
+<h2>Admin</h2>
+<strong *ngIf="!dm.ready">
+  LADE USER
+</strong>
+<section *ngIf="dm.user===null">
+  <h2>Login</h2>
+  <ec-auth-admin-login></ec-auth-admin-login>
+  <h2>Signup</h2>
+  <!--<ec-auth-public-signup></ec-auth-public-signup>-->
 </section>
 
 <pre *ngIf="dm.user">

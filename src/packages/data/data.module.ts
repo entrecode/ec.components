@@ -7,7 +7,8 @@ import {
   EntriesComponent,
   EntryComponent,
   EntryFormComponent,
-  EntryListComponent
+  EntryListComponent,
+  SdkService
 } from '.';
 
 @NgModule({
@@ -30,6 +31,7 @@ import {
   ],
   providers: [
     ApiService,
+    SdkService,
   ],
 })
 export class DataModule {
