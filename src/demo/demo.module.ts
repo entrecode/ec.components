@@ -22,6 +22,7 @@ import { SelectDemoComponent } from './select/select-demo.component';
 import { PublicLoginComponent } from '../packages/auth/public-login/public-login.component';
 import { PublicSignupComponent } from '../packages/auth/public-signup/public-signup.component';
 import { AuthModule } from '../packages/auth/auth.module';
+import { AuthDemoComponent } from './auth/auth-demo.component';
 
 export const demoRoutes: Routes = [
   {
@@ -121,6 +122,10 @@ export const demoRoutes: Routes = [
         path: 'signup',
         component: PublicSignupComponent
       },
+      {
+        path: 'auth',
+        component: AuthDemoComponent
+      },
     ]
   },
   {
@@ -146,6 +151,7 @@ export const demoRoutes: Routes = [
     EntryFormDemoComponent,
     CrudDemoComponent,
     SelectDemoComponent,
+    AuthDemoComponent,
   ],
   imports: [
     CommonModule,

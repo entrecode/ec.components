@@ -8,4 +8,5 @@ export * from './entry-list/entry-list.component'
 export * from './entry/entry.component'
 export * from './entries/entries.component'
 export * from './entry-form/entry-form.component'
+export * from './api/api.service'
 export * from './data.module';

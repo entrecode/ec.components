@@ -1,8 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PublicAuthService } from '../public-auth.service';
 import { FieldValidators } from '../field-validators';
 import { Observable } from 'rxjs';
+import { ApiService } from '../../data/api/api.service';
 
 @Component({
   selector: 'ec-auth-public-signup',
@@ -16,7 +16,7 @@ export class PublicSignupComponent implements OnInit {
   @Output() success: EventEmitter<any> = new EventEmitter();
   @Output() error: EventEmitter<any> = new EventEmitter();
 
-  constructor(private fb: FormBuilder, private auth: PublicAuthService) {
+  constructor(private fb: FormBuilder, private dm: ApiService) {
   }
 
   ngOnInit() {
@@ -37,13 +37,12 @@ export class PublicSignupComponent implements OnInit {
     if (!this.signup.valid) {
       return;
     }
-    console.log('subtmi!');
-    /*this.auth.signup(this.signup.value)
-    .catch((err) => this.showError(err))
-    .subscribe(res => {
+    this.dm.signup(this.signup.value.email, this.signup.value.password, '').then((token) => {
+      // this.dm.api.setToken(token);
+      console.log('token', token);
       this.signup.reset();
       this.success.emit();
-      this.auth.useToken(res.token)
-    });*/
+    })
+    //TODO error handling etc
   }
 }

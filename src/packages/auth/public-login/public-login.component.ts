@@ -1,9 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Http } from '@angular/http';
-import { PublicAuthService } from '../public-auth.service';
 import { FieldValidators } from '../field-validators';
 import { Observable } from 'rxjs';
+import { ApiService } from '../../data';
 
 @Component({
   selector: 'ec-auth-public-login',
@@ -17,7 +16,7 @@ export class PublicLoginComponent implements OnInit {
   @Output() success: EventEmitter<any> = new EventEmitter();
   @Output() error: EventEmitter<any> = new EventEmitter();
 
-  constructor(private fb: FormBuilder, private http: Http, private auth: PublicAuthService) {
+  constructor(private fb: FormBuilder, private dm: ApiService) {
   }
 
   ngOnInit() {
@@ -40,13 +39,12 @@ export class PublicLoginComponent implements OnInit {
     if (!this.login.valid) {
       return;
     }
-    console.log('login!.');
-    /*this.auth.login(this.login.value)
-     .catch((err) => this.showError(err))
-     .subscribe(res => {
-     this.auth.useToken(res.token);
-     this.login.reset();
-     this.success.emit();
-     });*/
+
+    this.dm.login(this.login.value.email, this.login.value.password)
+    .then((res) => {
+      console.log('login res', res);
+      this.login.reset();
+      this.success.emit();
+    });
   }
 }

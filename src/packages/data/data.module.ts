@@ -2,14 +2,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { UiModule } from '../ui';
-import { EntriesComponent, EntryComponent, EntryFormComponent, EntryListComponent } from '.';
+import {
+  ApiService,
+  EntriesComponent,
+  EntryComponent,
+  EntryFormComponent,
+  EntryListComponent
+} from '.';
 
 @NgModule({
   declarations: [
     EntryListComponent,
     EntryComponent,
     EntriesComponent,
-    EntryFormComponent
+    EntryFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -20,9 +26,11 @@ import { EntriesComponent, EntryComponent, EntryFormComponent, EntryListComponen
     EntryListComponent,
     EntryComponent,
     EntriesComponent,
-    EntryFormComponent
+    EntryFormComponent,
   ],
-  providers: [],
+  providers: [
+    ApiService,
+  ],
 })
 export class DataModule {
 }
