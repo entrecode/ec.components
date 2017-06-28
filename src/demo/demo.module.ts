@@ -19,6 +19,9 @@ import { EntryFormDemoComponent } from './entry-form/entry-form.demo.component';
 import { MockupComponent } from '../packages/ui/mockup/mockup.component';
 import { CrudDemoComponent } from './crud/crud-demo.component';
 import { SelectDemoComponent } from './select/select-demo.component';
+import { PublicLoginComponent } from '../packages/auth/public-login/public-login.component';
+import { PublicSignupComponent } from '../packages/auth/public-signup/public-signup.component';
+import { AuthModule } from '../packages/auth/auth.module';
 
 export const demoRoutes: Routes = [
   {
@@ -108,6 +111,19 @@ export const demoRoutes: Routes = [
     ]
   },
   {
+    path: 'auth',
+    children: [
+      {
+        path: 'login',
+        component: PublicLoginComponent
+      },
+      {
+        path: 'signup',
+        component: PublicSignupComponent
+      },
+    ]
+  },
+  {
     path: 'vc',
     component: VcDemoComponent,
     data: {
@@ -136,6 +152,7 @@ export const demoRoutes: Routes = [
     UiModule,
     DataModule,
     VcModule,
+    AuthModule,
     RouterModule.forRoot(demoRoutes)
   ],
   providers: [],

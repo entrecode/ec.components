@@ -1,0 +1,38 @@
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CookieModule } from 'ngx-cookie';
+import { PublicAuthService } from './public-auth.service';
+import { requestOptionsProvider } from './request-options';
+import { AuthorizationService } from './authorization.service';
+import { PublicLoginComponent } from './public-login/public-login.component';
+import { ValidationOnBlurDirective } from './validate-onblur';
+import { PublicSignupComponent } from './public-signup/public-signup.component';
+import { FieldErrorsComponent } from './field-errors/field-errors.component';
+// import { HyperAgentModule } from './hyperagent/hyper-agent.module';
+
+@NgModule({
+  declarations: [
+    PublicLoginComponent,
+    PublicSignupComponent,
+    ValidationOnBlurDirective,
+    FieldErrorsComponent,
+  ],
+  imports: [
+    CookieModule.forRoot(),
+    BrowserModule,
+    ReactiveFormsModule,
+    //HyperAgentModule,
+    HttpModule,
+  ],
+  exports: [
+    PublicLoginComponent,
+    PublicSignupComponent,
+    ValidationOnBlurDirective,
+    FieldErrorsComponent
+  ],
+  providers: [AuthorizationService, requestOptionsProvider, PublicAuthService]
+})
+export class AuthModule {
+}

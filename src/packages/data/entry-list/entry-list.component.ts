@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ListComponent } from '../../ui';
 import { ListConfig, Selection } from '../../core';
 import { EntryList } from '..';
@@ -18,8 +18,6 @@ export class EntryListComponent extends ListComponent {
   @Input() solo: boolean;
   /** The instance of an EntryList */
   list: EntryList<any>;
-  /** Event emitter on item selection */
-  @Output() onSelect: EventEmitter<any> = new EventEmitter();
 
   /** The constructor will just call super of List*/
   constructor() {

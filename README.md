@@ -103,7 +103,16 @@ Just add this to your index.html:
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.0.
 
 ## Lerna
-The repository is a so called monorepo, managed by [lerna](https://github.com/lerna/lerna).
+The repository is a monorepo, managed by [lerna](https://github.com/lerna/lerna).
+
+## Developing with Symlinks
+
+When developing ec.components inside another project, it is recommended to use symlinks via npm link:
+1. Inside the ec.components project go to ```cd src/packages/ui```
+2. Then run ```npm link```
+3. Inside the foreign project, link via ```npm link @ec.components/ui```
+
+The same procedure can be applied for the ec.components packages.
 
 ## Import Structure
 All imports inside src/packages that import from the same package or another ec.components package must be relative.

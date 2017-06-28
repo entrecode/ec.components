@@ -306,6 +306,7 @@ export class EditorComponent {
       return;
     }
     if (document.getSelection().toString().length) {
+      console.log('warapppp');
       const node = this.wrap(element);
       this.update();
       return;
@@ -399,15 +400,34 @@ export class EditorComponent {
 
     while (treeWalker.nextNode()) {
       if (!treeWalker.currentNode.parentElement) {
+        console.dir(treeWalker.currentNode);
+
+        const base = selection.baseNode;
+        const container = base.parentNode;
+        let el = this.getInstance(container);
+        if (this.isText(el)) {
+          el = this.getInstance(container.parentNode);
+          console.log('was text', el);
+        }
+
+        console.dir(base);
+        console.dir(container);
         const start = Math.min(selection.anchorOffset, selection.focusOffset);
-        const content = this.getText(this.caret.phrasing);
+        // const content = this.getText(this.caret.phrasing);
+        const content = this.getText(el);
+
+        console.log('content', content, selection);
         const split = this.splitAt(start)(content);
         split[1] = split[1].substr(selection.toString().length);
         const json = Object.assign(phrasing.json, { content: treeWalker.currentNode.nodeValue });
         split.splice(1, 0, json);
-        parent.content = split.filter(e => e);
+
+        // parent.content = split.filter(e => e);
+        el.content = split.filter(e => e);
+
         this.flushInstance(parent);
-        this.selectNode(this.getElement(parent.content[1]));
+        console.log('flush ', parent);
+        this.selectNode(this.getElement(parent.content[1] || parent.content[0]));
       }
       else if (treeWalker.currentNode.nodeType === 3) {
         //TODO
