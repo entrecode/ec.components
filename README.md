@@ -105,6 +105,19 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Lerna
 The repository is a monorepo, managed by [lerna](https://github.com/lerna/lerna).
 
+## Developing with the ec.components repo
+
+Instead of installing the subrepos, you can also work with the monorepo:
+
+add this to your package.json:
+```
+    "ec.components": "git+https://github.com/entrecode/ec.components.git#develop"
+```
+and import the modules directly:
+```
+import { AuthModule, Datamanager, DataModule, UiModule } from 'ec.components';
+```
+
 ## Developing with Symlinks
 
 When developing ec.components inside another project, it is recommended to use symlinks via npm link:
