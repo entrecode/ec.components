@@ -1,32 +1,24 @@
-<h2>Public</h2>
-<strong *ngIf="!dm.ready">
-  LADE USER
-</strong>
-<section *ngIf="dm.user===null">
-  <h2>Login</h2>
-  <ec-auth-public-login></ec-auth-public-login>
-  <h2>Signup</h2>
-  <ec-auth-public-signup></ec-auth-public-signup>
-</section>
+<button (click)="loginPop.show()">{{sdk.user?.email || 'Login'}}</button>
 
-<pre *ngIf="dm.user">
-  {{dm.user | json}}
-  <button (click)="logout()">Logout</button>
-</pre>
+<ec-pop #loginPop class="fullscreen" active="true">
+  <button (click)="loginPop.hide()" style="float:right">
+    <i class="ec-icon close"></i>
+  </button>
 
+  <section *ngIf="sdk.user">
+    <p><strong>Logged in as {{sdk.user.email}}</strong></p>
+    <button (click)="sdk.logout()">Logout</button>
+    <pre>
+    {{sdk.user | json}}
+    </pre>
+  </section>
+  <section *ngIf="!sdk.user">
+    <h2>general login</h2>
+    <ec-login (success)="sdk.login($event)"></ec-login>
+    <h2>public login</h2>
+    <ec-login (success)="pub.login($event)"></ec-login>
+    <h2>admin login</h2>
+    <ec-login (success)="admin.login($event)"></ec-login>
+  </section>
+</ec-pop>
 
-<h2>Admin</h2>
-<strong *ngIf="!dm.ready">
-  LADE USER
-</strong>
-<section *ngIf="dm.user===null">
-  <h2>Login</h2>
-  <ec-auth-admin-login></ec-auth-admin-login>
-  <h2>Signup</h2>
-  <!--<ec-auth-public-signup></ec-auth-public-signup>-->
-</section>
-
-<pre *ngIf="dm.user">
-  {{dm.user | json}}
-  <button (click)="logout()">Logout</button>
-</pre>

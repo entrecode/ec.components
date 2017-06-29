@@ -10,6 +10,8 @@ import {
   ListComponent,
   ListHeaderComponent,
   ListItemsComponent,
+  LoginComponent,
+  MenuComponent,
   MockupComponent,
   PaginationComponent,
   PopComponent,
@@ -17,7 +19,6 @@ import {
   TabComponent,
   TabsComponent
 } from './index';
-import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   entryComponents: [
@@ -40,6 +41,7 @@ import { MenuComponent } from './menu/menu.component';
     PopComponent,
     MenuComponent,
     SelectComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,6 +65,7 @@ import { MenuComponent } from './menu/menu.component';
     PopComponent,
     MenuComponent,
     SelectComponent,
+    LoginComponent
   ],
   providers: [],
 })

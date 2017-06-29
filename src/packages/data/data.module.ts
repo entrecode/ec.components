@@ -1,15 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { UiModule } from '../ui';
+import { UiModule } from '../ui/ui.module';
 import {
-  ApiService,
+  AdminService,
   EntriesComponent,
   EntryComponent,
   EntryFormComponent,
   EntryListComponent,
+  PublicService,
   SdkService
-} from '.';
+} from './index';
 
 @NgModule({
   declarations: [
@@ -30,8 +31,9 @@ import {
     EntryFormComponent,
   ],
   providers: [
-    ApiService,
     SdkService,
+    PublicService,
+    AdminService
   ],
 })
 export class DataModule {

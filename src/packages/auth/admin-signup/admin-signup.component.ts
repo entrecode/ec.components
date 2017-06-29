@@ -1,22 +1,22 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FieldValidators } from '../email-available.validator';
 import { Observable } from 'rxjs';
-import { PublicService } from '../../data';
-import { FieldValidators } from '../../ui';
+import { AdminService } from '../../data';
 
 @Component({
-  selector: 'ec-auth-public-signup',
-  templateUrl: './public-signup.component.html',
-  styleUrls: ['./public-signup.component.scss']
+  selector: 'ec-auth-admin-signup',
+  templateUrl: './admin-signup.component.html',
+  styleUrls: ['./admin-signup.component.scss']
 })
-export class PublicSignupComponent implements OnInit {
+export class AdminSignupComponent implements OnInit {
   private signup: FormGroup;
   private submitted: boolean;
   private errorMessage: string;
   @Output() success: EventEmitter<any> = new EventEmitter();
   @Output() error: EventEmitter<any> = new EventEmitter();
 
-  constructor(private fb: FormBuilder, private pub: PublicService) {
+  constructor(private fb: FormBuilder, private admin: AdminService) {
   }
 
   ngOnInit() {
@@ -37,7 +37,7 @@ export class PublicSignupComponent implements OnInit {
     if (!this.signup.valid) {
       return;
     }
-    this.pub.signup(this.signup.value).then((token) => {
+    this.admin.signup(this.signup.value).then((token) => {
       this.signup.reset();
       this.success.emit();
     })

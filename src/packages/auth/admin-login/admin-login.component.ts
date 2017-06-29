@@ -1,9 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { FieldValidators } from '../field-validators';
 import { Observable } from 'rxjs';
-import { ApiService } from '../../data';
-import { SdkService } from '../../data/sdk/sdk.service';
+import { AdminService } from '../../data';
+import { FieldValidators } from '../../ui';
 
 @Component({
   selector: 'ec-auth-admin-login',
@@ -17,7 +16,7 @@ export class AdminLoginComponent implements OnInit {
   @Output() success: EventEmitter<any> = new EventEmitter();
   @Output() error: EventEmitter<any> = new EventEmitter();
 
-  constructor(private fb: FormBuilder, private dm: ApiService, private sdk: SdkService) {
+  constructor(private fb: FormBuilder, private admin: AdminService) {
   }
 
   ngOnInit() {
@@ -41,15 +40,10 @@ export class AdminLoginComponent implements OnInit {
       return;
     }
     console.log('!admin login', this.login.value);
-    this.sdk.login(this.login.value).then((token) => {
+    this.admin.login(this.login.value).then((token) => {
       console.log(token);
+      this.login.reset();
+      this.success.emit();
     });
-
-    /*this.dm.login(this.login.value.email, this.login.value.password)
-     .then((res) => {
-     console.log('login res', res);
-     this.login.reset();
-     this.success.emit();
-     });*/
   }
 }

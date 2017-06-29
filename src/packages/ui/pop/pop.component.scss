@@ -2,6 +2,7 @@
   .ec-pop-container {
     .ec-pop {
       visibility: hidden;
+      overflow: auto;
     }
     &:not(.visible) .ec-pop {
       visibility: hidden;
@@ -15,6 +16,44 @@
       .ec-pop {
         opacity: 0;
         transition: all .3s linear;
+      }
+      &.visible .ec-pop {
+        opacity: 1;
+      }
+    }
+  }
+
+  &.modal {
+    .ec-pop-container {
+      .ec-pop {
+        width: 60vw;
+        height: 60vh;
+        background-color: white;
+        padding: 10px;
+        position: fixed;
+        top: -60vh;
+        left: 50%;
+        border: 1px solid slategray;
+        transform: translateX(-50%);
+        transition: all .3s ease-in;
+      }
+      &.visible .ec-pop {
+        top: 0;
+      }
+    }
+  }
+
+  &.fullscreen {
+    .ec-pop-container {
+      .ec-pop {
+        width: 100vw;
+        height: 100vh;
+        background-color: white;
+        padding: 10px;
+        position: fixed;
+        top: 0;
+        opacity: 0;
+        transition: all .3s ease-in;
       }
       &.visible .ec-pop {
         opacity: 1;
