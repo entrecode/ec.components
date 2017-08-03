@@ -1,1 +1,5 @@
-<ec-select [items]="products" [config]="productConfig"></ec-select>
+<h1>ec-select</h1>
+
+<ec-select [items]="products" [config]="productConfig" #ecSelect></ec-select>
+
+{{ecSelect.selection.getIdentifiers() | json}}

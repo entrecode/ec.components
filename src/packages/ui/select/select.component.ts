@@ -36,6 +36,7 @@ export class SelectComponent {
   @Input() list: List<any>;
   /** A field component inside the ec-list tags interpreted as a custom template */
   @ContentChildren(FieldComponent, { descendants: true }) templates: QueryList<FieldComponent>;
+  private open: boolean;
 
   /** Changing items or collection will trigger reconstructing the list with the new items.
    * Changing the selection will reconstruct the selection */
@@ -60,6 +61,13 @@ export class SelectComponent {
     }
     if (this.selection) {
       this.selection.toggle(item, this.solo);
+    }
+  }
+
+  private addItem(item) {
+    this.selection.toggle(item);
+    if (this.selection.hasAll(this.list.items)) {
+      this.open = false;
     }
   }
 }

@@ -27,7 +27,7 @@ import { AuthDemoComponent } from './auth/auth-demo.component';
 export const demoRoutes: Routes = [
   {
     path: 'ui',
-    children: [{
+    children: [/*{
       path: 'deeply',
       children: [{
         path: 'nested',
@@ -39,7 +39,7 @@ export const demoRoutes: Routes = [
           }]
         }]
       }]
-    },
+    },*/
       {
         path: 'list',
         component: ListDemoComponent,

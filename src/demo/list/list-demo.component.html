@@ -2,7 +2,7 @@
 <ec-list class="ec-list-card" [list]="mocked.lists.trees" #treeList [solo]="true"></ec-list>
 
 <h2>Templated List</h2>
-<ec-list [list]="songs" [solo]="true" #songList><!-- (onSelect)="myForm.edit($event)"  -->
+<ec-list [list]="songs" [solo]="true" #songList>
   <ec-field property="key">
     <ng-template let-value="value">
       <strong>{{value}}</strong>

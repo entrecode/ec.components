@@ -53,35 +53,52 @@
             
                     <li class="chapter">
                         <a data-type="chapter-link" href="../modules.html" >
-                            <span class="fa fa-archive"></span>
-                            <span>Modules</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                            <div class="menu-toggler linked" data-toggle="collapse"
                                     data-target="#xs-modules-links"
-                            ></span>
+                            >
+                                <span class="fa fa-archive"></span>
+                                <span class="link-name">Modules</span>
+                                <span class="fa fa-angle-up"></span>
+                            </div>
                         </a>
                         <ul class="links collapse in"
                                 id="xs-modules-links"
                             >
+                                <li class="link">
+                                    <a href="../modules/AuthModule.html" >AuthModule</a>
+                                </li>
                                 <li class="link">
                                     <a href="../modules/DataModule.html" >DataModule</a>
                                 </li>
                                 <li class="link">
                                     <a href="../modules/UiModule.html" >UiModule</a>
                                 </li>
+                                <li class="link">
+                                    <a href="../modules/VcModule.html" >VcModule</a>
+                                </li>
                         </ul>
                     </li>
             
                     <li class="chapter">
-                        <div class="simple">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-components-links"
+                            >
                             <span class="fa fa-cogs"></span>
                             <span>Components</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-components-links"
-                                ></span>
+                            <span class="fa fa-angle-up"></span>
                         </div>
                         <ul class="links collapse in"
                                 id="xs-components-links"
                             >
+                                <li class="link">
+                                    <a href="../components/AdminLoginComponent.html" >AdminLoginComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AdminSignupComponent.html" >AdminSignupComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/EditorComponent.html" >EditorComponent</a>
+                                </li>
                                 <li class="link">
                                     <a href="../components/EntriesComponent.html" >EntriesComponent</a>
                                 </li>
@@ -96,6 +113,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/FieldComponent.html" >FieldComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/FieldErrorsComponent.html" >FieldErrorsComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/FieldErrorsComponent.html" >FieldErrorsComponent</a>
@@ -116,10 +136,28 @@
                                     <a href="../components/ListItemsComponent.html" >ListItemsComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/LoginComponent.html" >LoginComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/MenuComponent.html" >MenuComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/MockupComponent.html" >MockupComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/PaginationComponent.html" >PaginationComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/PopComponent.html" >PopComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/PublicLoginComponent.html" >PublicLoginComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/PublicSignupComponent.html" >PublicSignupComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/SelectComponent.html" >SelectComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/TabComponent.html" >TabComponent</a>
@@ -127,17 +165,36 @@
                                 <li class="link">
                                     <a href="../components/TabsComponent.html" >TabsComponent</a>
                                 </li>
+                                <li class="link">
+                                    <a href="../components/ToolbarComponent.html" >ToolbarComponent</a>
+                                </li>
                         </ul>
                     </li>
             
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-directives-links"
+                            >
+                            <span class="fa fa-code"></span>
+                            <span>Directives</span>
+                            <span class="fa fa-angle-up"></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-directives-links"
+                            >
+                                <li class="link">
+                                    <a href="../directives/ValidationOnBlurDirective.html" >ValidationOnBlurDirective</a>
+                                </li>
+                        </ul>
+                    </li>
             
                     <li class="chapter">
-                        <div class="simple">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-classes-links"
+                            >
                             <span class="fa fa-file-code-o"></span>
                             <span>Classes</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-classes-links"
-                                ></span>
+                            <span class="fa fa-angle-up"></span>
                         </div>
                         <ul class="links collapse in"
                                 id="xs-classes-links"
@@ -184,21 +241,92 @@
                         </ul>
                     </li>
             
-            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-injectables-links"
+                            >
+                            <span class="fa fa-long-arrow-down"></span>
+                            <span>Injectables</span>
+                            <span class="fa fa-angle-up"></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-injectables-links"
+                            >
+                                <li class="link">
+                                    <a href="../injectables/AdminService.html" >AdminService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/AuthorizationService.html" >AuthorizationService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/PublicAuthService.html" >PublicAuthService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/PublicService.html" >PublicService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/SdkService.html" >SdkService</a>
+                                </li>
+                        </ul>
+                    </li>
             
                     <li class="chapter">
-                        <div class="simple">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-interfaces-links"
+                            >
+                            <span class="fa fa-info"></span>
+                            <span>Interfaces</span>
+                            <span class="fa fa-angle-up"></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-interfaces-links"
+                            >
+                                <li class="link">
+                                    <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/Environment.html" >Environment</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/FieldConfig.html" >FieldConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/FieldConfigProperty.html" >FieldConfigProperty</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/FormConfig.html" >FormConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/ItemConfig.html" >ItemConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/ListConfig.html" >ListConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/ModelConfiguration.html" >ModelConfiguration</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-pipes-links"
+                            >
                             <span class="fa fa-plus"></span>
                             <span>Pipes</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-pipes-links"
-                                ></span>
+                            <span class="fa fa-angle-up"></span>
                         </div>
                         <ul class="links collapse in"
                                 id="xs-pipes-links"
                             >
                                 <li class="link">
                                     <a href="../pipes/GroupPipe.html" >GroupPipe</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../pipes/SafeHtmlPipe.html" >SafeHtmlPipe</a>
                                 </li>
                         </ul>
                     </li>
@@ -262,35 +390,52 @@
                    
                            <li class="chapter">
                                <a data-type="chapter-link" href="../modules.html" >
-                                   <span class="fa fa-archive"></span>
-                                   <span>Modules</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                   <div class="menu-toggler linked" data-toggle="collapse"
                                            data-target="#modules-links"
-                                   ></span>
+                                   >
+                                       <span class="fa fa-archive"></span>
+                                       <span class="link-name">Modules</span>
+                                       <span class="fa fa-angle-up"></span>
+                                   </div>
                                </a>
                                <ul class="links collapse in"
                                        id="modules-links"
                    >
+                                       <li class="link">
+                                           <a href="../modules/AuthModule.html" >AuthModule</a>
+                                       </li>
                                        <li class="link">
                                            <a href="../modules/DataModule.html" >DataModule</a>
                                        </li>
                                        <li class="link">
                                            <a href="../modules/UiModule.html" >UiModule</a>
                                        </li>
+                                       <li class="link">
+                                           <a href="../modules/VcModule.html" >VcModule</a>
+                                       </li>
                                </ul>
                            </li>
                    
                            <li class="chapter">
-                               <div class="simple">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#components-links"
+                   >
                                    <span class="fa fa-cogs"></span>
                                    <span>Components</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#components-links"
-                   ></span>
+                                   <span class="fa fa-angle-up"></span>
                                </div>
                                <ul class="links collapse in"
                                        id="components-links"
                    >
+                                       <li class="link">
+                                           <a href="../components/AdminLoginComponent.html" >AdminLoginComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AdminSignupComponent.html" >AdminSignupComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/EditorComponent.html" >EditorComponent</a>
+                                       </li>
                                        <li class="link">
                                            <a href="../components/EntriesComponent.html" >EntriesComponent</a>
                                        </li>
@@ -305,6 +450,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/FieldComponent.html" >FieldComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/FieldErrorsComponent.html" >FieldErrorsComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/FieldErrorsComponent.html" >FieldErrorsComponent</a>
@@ -325,10 +473,28 @@
                                            <a href="../components/ListItemsComponent.html" >ListItemsComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/LoginComponent.html" >LoginComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/MenuComponent.html" >MenuComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/MockupComponent.html" >MockupComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/PaginationComponent.html" >PaginationComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/PopComponent.html" >PopComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/PublicLoginComponent.html" >PublicLoginComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/PublicSignupComponent.html" >PublicSignupComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/SelectComponent.html" >SelectComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/TabComponent.html" >TabComponent</a>
@@ -336,17 +502,36 @@
                                        <li class="link">
                                            <a href="../components/TabsComponent.html" >TabsComponent</a>
                                        </li>
+                                       <li class="link">
+                                           <a href="../components/ToolbarComponent.html" >ToolbarComponent</a>
+                                       </li>
                                </ul>
                            </li>
                    
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#directives-links"
+                   >
+                                   <span class="fa fa-code"></span>
+                                   <span>Directives</span>
+                                   <span class="fa fa-angle-up"></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="directives-links"
+                   >
+                                       <li class="link">
+                                           <a href="../directives/ValidationOnBlurDirective.html" >ValidationOnBlurDirective</a>
+                                       </li>
+                               </ul>
+                           </li>
                    
                            <li class="chapter">
-                               <div class="simple">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#classes-links"
+                   >
                                    <span class="fa fa-file-code-o"></span>
                                    <span>Classes</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#classes-links"
-                   ></span>
+                                   <span class="fa fa-angle-up"></span>
                                </div>
                                <ul class="links collapse in"
                                        id="classes-links"
@@ -393,21 +578,92 @@
                                </ul>
                            </li>
                    
-                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#injectables-links"
+                   >
+                                   <span class="fa fa-long-arrow-down"></span>
+                                   <span>Injectables</span>
+                                   <span class="fa fa-angle-up"></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="injectables-links"
+                   >
+                                       <li class="link">
+                                           <a href="../injectables/AdminService.html" >AdminService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/AuthorizationService.html" >AuthorizationService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/PublicAuthService.html" >PublicAuthService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/PublicService.html" >PublicService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/SdkService.html" >SdkService</a>
+                                       </li>
+                               </ul>
+                           </li>
                    
                            <li class="chapter">
-                               <div class="simple">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#interfaces-links"
+                   >
+                                   <span class="fa fa-info"></span>
+                                   <span>Interfaces</span>
+                                   <span class="fa fa-angle-up"></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="interfaces-links"
+                   >
+                                       <li class="link">
+                                           <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/Environment.html" >Environment</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/FieldConfig.html" >FieldConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/FieldConfigProperty.html" >FieldConfigProperty</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/FormConfig.html" >FormConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/ItemConfig.html" >ItemConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/ListConfig.html" >ListConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/ModelConfiguration.html" >ModelConfiguration</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#pipes-links"
+                   >
                                    <span class="fa fa-plus"></span>
                                    <span>Pipes</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#pipes-links"
-                   ></span>
+                                   <span class="fa fa-angle-up"></span>
                                </div>
                                <ul class="links collapse in"
                                        id="pipes-links"
                    >
                                        <li class="link">
                                            <a href="../pipes/GroupPipe.html" >GroupPipe</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../pipes/SafeHtmlPipe.html" >SafeHtmlPipe</a>
                                        </li>
                                </ul>
                            </li>
@@ -467,7 +723,8 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>A Collection is a more sophisticated Array. It is fundamental for other classes like List.</p><br/>
+                <p>A Collection is a more sophisticated Array. It is fundamental for other classes like List.</p>
+
             </p>
 
 
@@ -478,18 +735,19 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <code>constructor(items: T[])</code>
+                                    <code>constructor(items: any)</code>
                                 </td>
                             </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/packages/core/collection/collection.ts:8</a></div>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/packages/core/collection/collection.ts:8</a></div>
+                                        </td>
+                                    </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>Constructs the collection with the given item Array (optional).</p><br/></div>
+                                        <div class="io-description"><p>Constructs the collection with the given item Array (optional).</p>
+            </div>
                                         <div class="io-description">
                                                 <b>Example :</b>
                                                     <div>
@@ -521,15 +779,16 @@
                             </tr>
             
             
-                                <tr>
-                                    <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/packages/core/collection/collection.ts:25</a></div>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/packages/core/collection/collection.ts:25</a></div>
+                                        </td>
+                                    </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>Returns the index of the given item </p><br/></div>
+                                        <div class="io-description"><p>Returns the index of the given item </p>
+            </div>
             
                                         <div class="io-description">
                                             <b>Returns : </b>    <code>number</code>
@@ -553,15 +812,16 @@
                             </tr>
             
             
-                                <tr>
-                                    <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/packages/core/collection/collection.ts:36</a></div>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/packages/core/collection/collection.ts:36</a></div>
+                                        </td>
+                                    </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>Checks if the Collection contains the given item.</p><br/></div>
+                                        <div class="io-description"><p>Checks if the Collection contains the given item.</p>
+            </div>
             
                                         <div class="io-description">
                                                 <b>Example :</b>
@@ -589,20 +849,21 @@
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>hasAll(items: T[])</code>
+            <code>hasAll(items: any)</code>
                                 </td>
                             </tr>
             
             
-                                <tr>
-                                    <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/packages/core/collection/collection.ts:47</a></div>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/packages/core/collection/collection.ts:47</a></div>
+                                        </td>
+                                    </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>Checks if the Collection contains all given items.</p><br/></div>
+                                        <div class="io-description"><p>Checks if the Collection contains all given items.</p>
+            </div>
             
                                         <div class="io-description">
                                                 <b>Example :</b>
@@ -635,15 +896,17 @@
                             </tr>
             
             
-                                <tr>
-                                    <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/packages/core/collection/collection.ts:61</a></div>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/packages/core/collection/collection.ts:61</a></div>
+                                        </td>
+                                    </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>Adds the given item to the Collection. If the unique flag is set, the item will only be added<br/>if it is not contained.</p><br/></div>
+                                        <div class="io-description"><p>Adds the given item to the Collection. If the unique flag is set, the item will only be added
+            if it is not contained.</p>
+            </div>
             
                                         <div class="io-description">
                                                 <b>Example :</b>
@@ -671,20 +934,22 @@
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>addAll(items: T[], unique: boolean)</code>
+            <code>addAll(items: any, unique: boolean)</code>
                                 </td>
                             </tr>
             
             
-                                <tr>
-                                    <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">src/packages/core/collection/collection.ts:76</a></div>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">src/packages/core/collection/collection.ts:76</a></div>
+                                        </td>
+                                    </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>Adds the given items to the Collection. If the unique flag is set, only items that are not<br/>contained will be added.</p><br/></div>
+                                        <div class="io-description"><p>Adds the given items to the Collection. If the unique flag is set, only items that are not
+            contained will be added.</p>
+            </div>
             
                                         <div class="io-description">
                                                 <b>Example :</b>
@@ -717,15 +982,16 @@
                             </tr>
             
             
-                                <tr>
-                                    <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">src/packages/core/collection/collection.ts:89</a></div>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">src/packages/core/collection/collection.ts:89</a></div>
+                                        </td>
+                                    </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>Removes the given item from the Collection.</p><br/></div>
+                                        <div class="io-description"><p>Removes the given item from the Collection.</p>
+            </div>
             
                                         <div class="io-description">
                                                 <b>Example :</b>
@@ -753,20 +1019,21 @@
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>removeAll(items: T[])</code>
+            <code>removeAll(items: any)</code>
                                 </td>
                             </tr>
             
             
-                                <tr>
-                                    <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">src/packages/core/collection/collection.ts:103</a></div>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">src/packages/core/collection/collection.ts:103</a></div>
+                                        </td>
+                                    </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>Removes all items from the Collection.</p><br/></div>
+                                        <div class="io-description"><p>Removes all items from the Collection.</p>
+            </div>
             
                                         <div class="io-description">
                                                 <b>Example :</b>
@@ -797,23 +1064,24 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Static</span> items</b>
+                                    <b><span class="modifier">Public</span> items</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-export"></span><code>items:     <code>T[]</code>
+                                    <span class="modifier-icon fa fa-"></span><code>items:     <code>any</code>
             </bcode>
                                 </td>
                             </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/packages/core/collection/collection.ts:8</a></div>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/packages/core/collection/collection.ts:8</a></div>
+                                        </td>
+                                    </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>The items must all have the same type T.</p><br/></div>
+                                    <div class="io-description"><p>The items must all have the same type T.</p>
+            </div>
                                 </td>
                             </tr>
                         </tbody>

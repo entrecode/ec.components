@@ -53,35 +53,52 @@
             
                     <li class="chapter">
                         <a data-type="chapter-link" href="./modules.html" >
-                            <span class="fa fa-archive"></span>
-                            <span>Modules</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                            <div class="menu-toggler linked" data-toggle="collapse"
                                     data-target="#xs-modules-links"
-                            ></span>
+                            >
+                                <span class="fa fa-archive"></span>
+                                <span class="link-name">Modules</span>
+                                <span class="fa fa-angle-up"></span>
+                            </div>
                         </a>
                         <ul class="links collapse in"
                                 id="xs-modules-links"
                             >
+                                <li class="link">
+                                    <a href="./modules/AuthModule.html" >AuthModule</a>
+                                </li>
                                 <li class="link">
                                     <a href="./modules/DataModule.html" >DataModule</a>
                                 </li>
                                 <li class="link">
                                     <a href="./modules/UiModule.html" >UiModule</a>
                                 </li>
+                                <li class="link">
+                                    <a href="./modules/VcModule.html" >VcModule</a>
+                                </li>
                         </ul>
                     </li>
             
                     <li class="chapter">
-                        <div class="simple">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-components-links"
+                            >
                             <span class="fa fa-cogs"></span>
                             <span>Components</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-components-links"
-                                ></span>
+                            <span class="fa fa-angle-up"></span>
                         </div>
                         <ul class="links collapse in"
                                 id="xs-components-links"
                             >
+                                <li class="link">
+                                    <a href="./components/AdminLoginComponent.html" >AdminLoginComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/AdminSignupComponent.html" >AdminSignupComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/EditorComponent.html" >EditorComponent</a>
+                                </li>
                                 <li class="link">
                                     <a href="./components/EntriesComponent.html" >EntriesComponent</a>
                                 </li>
@@ -96,6 +113,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="./components/FieldComponent.html" >FieldComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/FieldErrorsComponent.html" >FieldErrorsComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="./components/FieldErrorsComponent.html" >FieldErrorsComponent</a>
@@ -116,10 +136,28 @@
                                     <a href="./components/ListItemsComponent.html" >ListItemsComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="./components/LoginComponent.html" >LoginComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/MenuComponent.html" >MenuComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="./components/MockupComponent.html" >MockupComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="./components/PaginationComponent.html" >PaginationComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/PopComponent.html" >PopComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/PublicLoginComponent.html" >PublicLoginComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/PublicSignupComponent.html" >PublicSignupComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/SelectComponent.html" >SelectComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="./components/TabComponent.html" >TabComponent</a>
@@ -127,17 +165,36 @@
                                 <li class="link">
                                     <a href="./components/TabsComponent.html" >TabsComponent</a>
                                 </li>
+                                <li class="link">
+                                    <a href="./components/ToolbarComponent.html" >ToolbarComponent</a>
+                                </li>
                         </ul>
                     </li>
             
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-directives-links"
+                            >
+                            <span class="fa fa-code"></span>
+                            <span>Directives</span>
+                            <span class="fa fa-angle-up"></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-directives-links"
+                            >
+                                <li class="link">
+                                    <a href="./directives/ValidationOnBlurDirective.html" >ValidationOnBlurDirective</a>
+                                </li>
+                        </ul>
+                    </li>
             
                     <li class="chapter">
-                        <div class="simple">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-classes-links"
+                            >
                             <span class="fa fa-file-code-o"></span>
                             <span>Classes</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-classes-links"
-                                ></span>
+                            <span class="fa fa-angle-up"></span>
                         </div>
                         <ul class="links collapse in"
                                 id="xs-classes-links"
@@ -184,21 +241,92 @@
                         </ul>
                     </li>
             
-            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-injectables-links"
+                            >
+                            <span class="fa fa-long-arrow-down"></span>
+                            <span>Injectables</span>
+                            <span class="fa fa-angle-up"></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-injectables-links"
+                            >
+                                <li class="link">
+                                    <a href="./injectables/AdminService.html" >AdminService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./injectables/AuthorizationService.html" >AuthorizationService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./injectables/PublicAuthService.html" >PublicAuthService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./injectables/PublicService.html" >PublicService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./injectables/SdkService.html" >SdkService</a>
+                                </li>
+                        </ul>
+                    </li>
             
                     <li class="chapter">
-                        <div class="simple">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-interfaces-links"
+                            >
+                            <span class="fa fa-info"></span>
+                            <span>Interfaces</span>
+                            <span class="fa fa-angle-up"></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-interfaces-links"
+                            >
+                                <li class="link">
+                                    <a href="./interfaces/EntryListConfig.html" >EntryListConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./interfaces/Environment.html" >Environment</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./interfaces/FieldConfig.html" >FieldConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./interfaces/FieldConfigProperty.html" >FieldConfigProperty</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./interfaces/FormConfig.html" >FormConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./interfaces/ItemConfig.html" >ItemConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./interfaces/ListConfig.html" >ListConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./interfaces/ModelConfiguration.html" >ModelConfiguration</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-pipes-links"
+                            >
                             <span class="fa fa-plus"></span>
                             <span>Pipes</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-pipes-links"
-                                ></span>
+                            <span class="fa fa-angle-up"></span>
                         </div>
                         <ul class="links collapse in"
                                 id="xs-pipes-links"
                             >
                                 <li class="link">
                                     <a href="./pipes/GroupPipe.html" >GroupPipe</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./pipes/SafeHtmlPipe.html" >SafeHtmlPipe</a>
                                 </li>
                         </ul>
                     </li>
@@ -262,35 +390,52 @@
                    
                            <li class="chapter">
                                <a data-type="chapter-link" href="./modules.html" >
-                                   <span class="fa fa-archive"></span>
-                                   <span>Modules</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                   <div class="menu-toggler linked" data-toggle="collapse"
                                            data-target="#modules-links"
-                                   ></span>
+                                   >
+                                       <span class="fa fa-archive"></span>
+                                       <span class="link-name">Modules</span>
+                                       <span class="fa fa-angle-up"></span>
+                                   </div>
                                </a>
                                <ul class="links collapse in"
                                        id="modules-links"
                    >
+                                       <li class="link">
+                                           <a href="./modules/AuthModule.html" >AuthModule</a>
+                                       </li>
                                        <li class="link">
                                            <a href="./modules/DataModule.html" >DataModule</a>
                                        </li>
                                        <li class="link">
                                            <a href="./modules/UiModule.html" >UiModule</a>
                                        </li>
+                                       <li class="link">
+                                           <a href="./modules/VcModule.html" >VcModule</a>
+                                       </li>
                                </ul>
                            </li>
                    
                            <li class="chapter">
-                               <div class="simple">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#components-links"
+                   >
                                    <span class="fa fa-cogs"></span>
                                    <span>Components</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#components-links"
-                   ></span>
+                                   <span class="fa fa-angle-up"></span>
                                </div>
                                <ul class="links collapse in"
                                        id="components-links"
                    >
+                                       <li class="link">
+                                           <a href="./components/AdminLoginComponent.html" >AdminLoginComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/AdminSignupComponent.html" >AdminSignupComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/EditorComponent.html" >EditorComponent</a>
+                                       </li>
                                        <li class="link">
                                            <a href="./components/EntriesComponent.html" >EntriesComponent</a>
                                        </li>
@@ -305,6 +450,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="./components/FieldComponent.html" >FieldComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/FieldErrorsComponent.html" >FieldErrorsComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="./components/FieldErrorsComponent.html" >FieldErrorsComponent</a>
@@ -325,10 +473,28 @@
                                            <a href="./components/ListItemsComponent.html" >ListItemsComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="./components/LoginComponent.html" >LoginComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/MenuComponent.html" >MenuComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="./components/MockupComponent.html" >MockupComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="./components/PaginationComponent.html" >PaginationComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/PopComponent.html" >PopComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/PublicLoginComponent.html" >PublicLoginComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/PublicSignupComponent.html" >PublicSignupComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/SelectComponent.html" >SelectComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="./components/TabComponent.html" >TabComponent</a>
@@ -336,17 +502,36 @@
                                        <li class="link">
                                            <a href="./components/TabsComponent.html" >TabsComponent</a>
                                        </li>
+                                       <li class="link">
+                                           <a href="./components/ToolbarComponent.html" >ToolbarComponent</a>
+                                       </li>
                                </ul>
                            </li>
                    
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#directives-links"
+                   >
+                                   <span class="fa fa-code"></span>
+                                   <span>Directives</span>
+                                   <span class="fa fa-angle-up"></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="directives-links"
+                   >
+                                       <li class="link">
+                                           <a href="./directives/ValidationOnBlurDirective.html" >ValidationOnBlurDirective</a>
+                                       </li>
+                               </ul>
+                           </li>
                    
                            <li class="chapter">
-                               <div class="simple">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#classes-links"
+                   >
                                    <span class="fa fa-file-code-o"></span>
                                    <span>Classes</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#classes-links"
-                   ></span>
+                                   <span class="fa fa-angle-up"></span>
                                </div>
                                <ul class="links collapse in"
                                        id="classes-links"
@@ -393,21 +578,92 @@
                                </ul>
                            </li>
                    
-                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#injectables-links"
+                   >
+                                   <span class="fa fa-long-arrow-down"></span>
+                                   <span>Injectables</span>
+                                   <span class="fa fa-angle-up"></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="injectables-links"
+                   >
+                                       <li class="link">
+                                           <a href="./injectables/AdminService.html" >AdminService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./injectables/AuthorizationService.html" >AuthorizationService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./injectables/PublicAuthService.html" >PublicAuthService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./injectables/PublicService.html" >PublicService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./injectables/SdkService.html" >SdkService</a>
+                                       </li>
+                               </ul>
+                           </li>
                    
                            <li class="chapter">
-                               <div class="simple">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#interfaces-links"
+                   >
+                                   <span class="fa fa-info"></span>
+                                   <span>Interfaces</span>
+                                   <span class="fa fa-angle-up"></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="interfaces-links"
+                   >
+                                       <li class="link">
+                                           <a href="./interfaces/EntryListConfig.html" >EntryListConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./interfaces/Environment.html" >Environment</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./interfaces/FieldConfig.html" >FieldConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./interfaces/FieldConfigProperty.html" >FieldConfigProperty</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./interfaces/FormConfig.html" >FormConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./interfaces/ItemConfig.html" >ItemConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./interfaces/ListConfig.html" >ListConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./interfaces/ModelConfiguration.html" >ModelConfiguration</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#pipes-links"
+                   >
                                    <span class="fa fa-plus"></span>
                                    <span>Pipes</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#pipes-links"
-                   ></span>
+                                   <span class="fa fa-angle-up"></span>
                                </div>
                                <ul class="links collapse in"
                                        id="pipes-links"
                    >
                                        <li class="link">
                                            <a href="./pipes/GroupPipe.html" >GroupPipe</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./pipes/SafeHtmlPipe.html" >SafeHtmlPipe</a>
                                        </li>
                                </ul>
                            </li>
@@ -454,13 +710,13 @@ It contains more sophisticated styles for ui components using xlcss.</p>
 <h2 id="get-started">Get Started</h2>
 <h3 id="install-">Install:</h3>
 <p>You can install all three modules like this:</p>
-<pre class="line-numbers"><code class="language-shell">npm i &#40;ec.components/core &#40;ec.components/ui &#40;ec.components/data</code></pre><p>Then you can import the ui and data modules to your app module:</p>
-<pre class="line-numbers"><code class="language-typescript">import { NgModule } from &#39;&#40;angular/core&#39;;
+<pre class="line-numbers"><code class="language-shell">npm i &#64;ec.components/core &#64;ec.components/ui &#64;ec.components/data</code></pre><p>Then you can import the ui and data modules to your app module:</p>
+<pre class="line-numbers"><code class="language-typescript">import { NgModule } from &#39;&#64;angular/core&#39;;
 import { AppComponent } from &#39;./app.component&#39;;
-import { UiModule } from &#39;&#40;ec.components/ui&#39;;
-import { DataModule } from &#39;&#40;ec.components/data&#39;;
+import { UiModule } from &#39;&#64;ec.components/ui&#39;;
+import { DataModule } from &#39;&#64;ec.components/data&#39;;
 
-&#40;NgModule({
+&#64;NgModule({
   declarations: [
     AppComponent,
   ],
@@ -475,7 +731,7 @@ export class AppModule {
 }</code></pre><h3 id="set-up-datamanager-with-environment">Set up Datamanager with environment</h3>
 <p>The Datamanager Class is a Singleton that holds an instance of the <a href="https://github.com/entrecode/ec.datamanager.js">ec.datamanager SDK</a>.
 You can feed it with an environment like this:</p>
-<pre class="line-numbers"><code class="language-js"> import { Datamanager } from &#39;&#40;ec.components/data&#39;;
+<pre class="line-numbers"><code class="language-js"> import { Datamanager } from &#39;&#64;ec.components/data&#39;;
  import { environment } from &#39;../environments/environment&#39;;
  //environment minimum: { apiRoot: &#39;https://datamanager.cachena.entrecode.de/api/XXxxXXxx&#39; }
  Datamanager.useEnvironment(environment);
@@ -490,14 +746,26 @@ You can feed it with an environment like this:</p>
 <p>For more infos, look at the doc: <a href="https://entrecode.github.io/ec.components/">https://entrecode.github.io/ec.components/</a>.</p>
 <h2 id="styles">Styles</h2>
 <p>In main style.scss, import the following:</p>
-<pre class="line-numbers"><code class="language-none">&#40;import &quot;../node_modules/xlcss/sass/xlcss&quot;;
-&#40;import &quot;../node_modules/&#40;ec.components/ui/styles&quot;;</code></pre><h2 id="icons">Icons</h2>
+<pre class="line-numbers"><code class="language-none">&#64;import &quot;../node_modules/xlcss/sass/xlcss&quot;;
+&#64;import &quot;../node_modules/&#64;ec.components/ui/styles&quot;;</code></pre><h2 id="icons">Icons</h2>
 <p>The ui and data packages both use <a href="https://icons.entrecode.de/">ec-icons</a>.
 Just add this to your index.html:</p>
 <pre class="line-numbers"><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://icons.entrecode.de/ec-icons-1.1.1.min.css&quot;/&gt;</code></pre><h1 id="development">Development</h1>
 <p>This project was generated with <a href="https://github.com/angular/angular-cli">Angular CLI</a> version 1.0.0-rc.0.</p>
 <h2 id="lerna">Lerna</h2>
-<p>The repository is a so called monorepo, managed by <a href="https://github.com/lerna/lerna">lerna</a>.</p>
+<p>The repository is a monorepo, managed by <a href="https://github.com/lerna/lerna">lerna</a>.</p>
+<h2 id="developing-with-the-ec-components-repo">Developing with the ec.components repo</h2>
+<p>Instead of installing the subrepos, you can also work with the monorepo:</p>
+<p>add this to your package.json:</p>
+<pre class="line-numbers"><code class="language-none">    &quot;ec.components&quot;: &quot;git+https://github.com/entrecode/ec.components.git#develop&quot;</code></pre><p>and import the modules directly:</p>
+<pre class="line-numbers"><code class="language-none">import { AuthModule, Datamanager, DataModule, UiModule } from &#39;ec.components&#39;;</code></pre><h2 id="developing-with-symlinks">Developing with Symlinks</h2>
+<p>When developing ec.components inside another project, it is recommended to use symlinks via npm link:</p>
+<ol>
+<li>Inside the ec.components project go to <code>cd src/packages/ui</code></li>
+<li>Then run <code>npm link</code></li>
+<li>Inside the foreign project, link via <code>npm link @ec.components/ui</code></li>
+</ol>
+<p>The same procedure can be applied for the ec.components packages.</p>
 <h2 id="import-structure">Import Structure</h2>
 <p>All imports inside src/packages that import from the same package or another ec.components package must be relative.</p>
 <ul>

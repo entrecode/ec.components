@@ -53,35 +53,52 @@
             
                     <li class="chapter">
                         <a data-type="chapter-link" href="../modules.html" >
-                            <span class="fa fa-archive"></span>
-                            <span>Modules</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                            <div class="menu-toggler linked" data-toggle="collapse"
                                     data-target="#xs-modules-links"
-                            ></span>
+                            >
+                                <span class="fa fa-archive"></span>
+                                <span class="link-name">Modules</span>
+                                <span class="fa fa-angle-up"></span>
+                            </div>
                         </a>
                         <ul class="links collapse in"
                                 id="xs-modules-links"
                             >
+                                <li class="link">
+                                    <a href="../modules/AuthModule.html" >AuthModule</a>
+                                </li>
                                 <li class="link">
                                     <a href="../modules/DataModule.html" >DataModule</a>
                                 </li>
                                 <li class="link">
                                     <a href="../modules/UiModule.html" >UiModule</a>
                                 </li>
+                                <li class="link">
+                                    <a href="../modules/VcModule.html" >VcModule</a>
+                                </li>
                         </ul>
                     </li>
             
                     <li class="chapter">
-                        <div class="simple">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-components-links"
+                            >
                             <span class="fa fa-cogs"></span>
                             <span>Components</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-components-links"
-                                ></span>
+                            <span class="fa fa-angle-up"></span>
                         </div>
                         <ul class="links collapse in"
                                 id="xs-components-links"
                             >
+                                <li class="link">
+                                    <a href="../components/AdminLoginComponent.html" >AdminLoginComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AdminSignupComponent.html" >AdminSignupComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/EditorComponent.html" >EditorComponent</a>
+                                </li>
                                 <li class="link">
                                     <a href="../components/EntriesComponent.html" >EntriesComponent</a>
                                 </li>
@@ -96,6 +113,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/FieldComponent.html" >FieldComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/FieldErrorsComponent.html" >FieldErrorsComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/FieldErrorsComponent.html" >FieldErrorsComponent</a>
@@ -116,10 +136,28 @@
                                     <a href="../components/ListItemsComponent.html" >ListItemsComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/LoginComponent.html" >LoginComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/MenuComponent.html" >MenuComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/MockupComponent.html" >MockupComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/PaginationComponent.html" >PaginationComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/PopComponent.html" >PopComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/PublicLoginComponent.html" >PublicLoginComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/PublicSignupComponent.html" >PublicSignupComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/SelectComponent.html" >SelectComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/TabComponent.html" >TabComponent</a>
@@ -127,17 +165,36 @@
                                 <li class="link">
                                     <a href="../components/TabsComponent.html" >TabsComponent</a>
                                 </li>
+                                <li class="link">
+                                    <a href="../components/ToolbarComponent.html" >ToolbarComponent</a>
+                                </li>
                         </ul>
                     </li>
             
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-directives-links"
+                            >
+                            <span class="fa fa-code"></span>
+                            <span>Directives</span>
+                            <span class="fa fa-angle-up"></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-directives-links"
+                            >
+                                <li class="link">
+                                    <a href="../directives/ValidationOnBlurDirective.html" >ValidationOnBlurDirective</a>
+                                </li>
+                        </ul>
+                    </li>
             
                     <li class="chapter">
-                        <div class="simple">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-classes-links"
+                            >
                             <span class="fa fa-file-code-o"></span>
                             <span>Classes</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-classes-links"
-                                ></span>
+                            <span class="fa fa-angle-up"></span>
                         </div>
                         <ul class="links collapse in"
                                 id="xs-classes-links"
@@ -184,21 +241,92 @@
                         </ul>
                     </li>
             
-            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-injectables-links"
+                            >
+                            <span class="fa fa-long-arrow-down"></span>
+                            <span>Injectables</span>
+                            <span class="fa fa-angle-up"></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-injectables-links"
+                            >
+                                <li class="link">
+                                    <a href="../injectables/AdminService.html" >AdminService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/AuthorizationService.html" >AuthorizationService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/PublicAuthService.html" >PublicAuthService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/PublicService.html" >PublicService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/SdkService.html" >SdkService</a>
+                                </li>
+                        </ul>
+                    </li>
             
                     <li class="chapter">
-                        <div class="simple">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-interfaces-links"
+                            >
+                            <span class="fa fa-info"></span>
+                            <span>Interfaces</span>
+                            <span class="fa fa-angle-up"></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-interfaces-links"
+                            >
+                                <li class="link">
+                                    <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/Environment.html" >Environment</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/FieldConfig.html" >FieldConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/FieldConfigProperty.html" >FieldConfigProperty</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/FormConfig.html" >FormConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/ItemConfig.html" >ItemConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/ListConfig.html" >ListConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/ModelConfiguration.html" >ModelConfiguration</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-pipes-links"
+                            >
                             <span class="fa fa-plus"></span>
                             <span>Pipes</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-pipes-links"
-                                ></span>
+                            <span class="fa fa-angle-up"></span>
                         </div>
                         <ul class="links collapse in"
                                 id="xs-pipes-links"
                             >
                                 <li class="link">
                                     <a href="../pipes/GroupPipe.html" >GroupPipe</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../pipes/SafeHtmlPipe.html" >SafeHtmlPipe</a>
                                 </li>
                         </ul>
                     </li>
@@ -262,35 +390,52 @@
                    
                            <li class="chapter">
                                <a data-type="chapter-link" href="../modules.html" >
-                                   <span class="fa fa-archive"></span>
-                                   <span>Modules</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                   <div class="menu-toggler linked" data-toggle="collapse"
                                            data-target="#modules-links"
-                                   ></span>
+                                   >
+                                       <span class="fa fa-archive"></span>
+                                       <span class="link-name">Modules</span>
+                                       <span class="fa fa-angle-up"></span>
+                                   </div>
                                </a>
                                <ul class="links collapse in"
                                        id="modules-links"
                    >
+                                       <li class="link">
+                                           <a href="../modules/AuthModule.html" >AuthModule</a>
+                                       </li>
                                        <li class="link">
                                            <a href="../modules/DataModule.html" >DataModule</a>
                                        </li>
                                        <li class="link">
                                            <a href="../modules/UiModule.html" >UiModule</a>
                                        </li>
+                                       <li class="link">
+                                           <a href="../modules/VcModule.html" >VcModule</a>
+                                       </li>
                                </ul>
                            </li>
                    
                            <li class="chapter">
-                               <div class="simple">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#components-links"
+                   >
                                    <span class="fa fa-cogs"></span>
                                    <span>Components</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#components-links"
-                   ></span>
+                                   <span class="fa fa-angle-up"></span>
                                </div>
                                <ul class="links collapse in"
                                        id="components-links"
                    >
+                                       <li class="link">
+                                           <a href="../components/AdminLoginComponent.html" >AdminLoginComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AdminSignupComponent.html" >AdminSignupComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/EditorComponent.html" >EditorComponent</a>
+                                       </li>
                                        <li class="link">
                                            <a href="../components/EntriesComponent.html" >EntriesComponent</a>
                                        </li>
@@ -305,6 +450,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/FieldComponent.html" >FieldComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/FieldErrorsComponent.html" >FieldErrorsComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/FieldErrorsComponent.html" >FieldErrorsComponent</a>
@@ -325,10 +473,28 @@
                                            <a href="../components/ListItemsComponent.html" >ListItemsComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/LoginComponent.html" >LoginComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/MenuComponent.html" >MenuComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/MockupComponent.html" >MockupComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/PaginationComponent.html" >PaginationComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/PopComponent.html" >PopComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/PublicLoginComponent.html" >PublicLoginComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/PublicSignupComponent.html" >PublicSignupComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/SelectComponent.html" >SelectComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/TabComponent.html" >TabComponent</a>
@@ -336,17 +502,36 @@
                                        <li class="link">
                                            <a href="../components/TabsComponent.html" >TabsComponent</a>
                                        </li>
+                                       <li class="link">
+                                           <a href="../components/ToolbarComponent.html" >ToolbarComponent</a>
+                                       </li>
                                </ul>
                            </li>
                    
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#directives-links"
+                   >
+                                   <span class="fa fa-code"></span>
+                                   <span>Directives</span>
+                                   <span class="fa fa-angle-up"></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="directives-links"
+                   >
+                                       <li class="link">
+                                           <a href="../directives/ValidationOnBlurDirective.html" >ValidationOnBlurDirective</a>
+                                       </li>
+                               </ul>
+                           </li>
                    
                            <li class="chapter">
-                               <div class="simple">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#classes-links"
+                   >
                                    <span class="fa fa-file-code-o"></span>
                                    <span>Classes</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#classes-links"
-                   ></span>
+                                   <span class="fa fa-angle-up"></span>
                                </div>
                                <ul class="links collapse in"
                                        id="classes-links"
@@ -393,21 +578,92 @@
                                </ul>
                            </li>
                    
-                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#injectables-links"
+                   >
+                                   <span class="fa fa-long-arrow-down"></span>
+                                   <span>Injectables</span>
+                                   <span class="fa fa-angle-up"></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="injectables-links"
+                   >
+                                       <li class="link">
+                                           <a href="../injectables/AdminService.html" >AdminService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/AuthorizationService.html" >AuthorizationService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/PublicAuthService.html" >PublicAuthService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/PublicService.html" >PublicService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/SdkService.html" >SdkService</a>
+                                       </li>
+                               </ul>
+                           </li>
                    
                            <li class="chapter">
-                               <div class="simple">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#interfaces-links"
+                   >
+                                   <span class="fa fa-info"></span>
+                                   <span>Interfaces</span>
+                                   <span class="fa fa-angle-up"></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="interfaces-links"
+                   >
+                                       <li class="link">
+                                           <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/Environment.html" >Environment</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/FieldConfig.html" >FieldConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/FieldConfigProperty.html" >FieldConfigProperty</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/FormConfig.html" >FormConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/ItemConfig.html" >ItemConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/ListConfig.html" >ListConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/ModelConfiguration.html" >ModelConfiguration</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#pipes-links"
+                   >
                                    <span class="fa fa-plus"></span>
                                    <span>Pipes</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#pipes-links"
-                   ></span>
+                                   <span class="fa fa-angle-up"></span>
                                </div>
                                <ul class="links collapse in"
                                        id="pipes-links"
                    >
                                        <li class="link">
                                            <a href="../pipes/GroupPipe.html" >GroupPipe</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../pipes/SafeHtmlPipe.html" >SafeHtmlPipe</a>
                                        </li>
                                </ul>
                            </li>
@@ -467,7 +723,8 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>This class can be used to control the loading behaviour of external data. </p><br/>
+                <p>This class can be used to control the loading behaviour of external data. </p>
+
             </p>
 
 
@@ -478,18 +735,20 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <code>constructor(config: <a href="../classes/List.html">ListConfig</a>, total: number)</code>
+                                    <code>constructor(config: any, total: number)</code>
                                 </td>
                             </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/packages/core/pagination/pagination.ts:13</a></div>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/packages/core/pagination/pagination.ts:13</a></div>
+                                        </td>
+                                    </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>You can init each Pagination instance with an optional config.<br/>If no config is provided, it will default to <code>{page: 1, size: 25}</code>. </p><br/></div>
+                                        <div class="io-description"><p>You can init each Pagination instance with an optional config.
+            If no config is provided, it will default to <code>{page: 1, size: 25}</code>. </p>
+            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -515,15 +774,16 @@
                             </tr>
             
             
-                                <tr>
-                                    <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/packages/core/pagination/pagination.ts:26</a></div>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/packages/core/pagination/pagination.ts:26</a></div>
+                                        </td>
+                                    </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>Retrieves the current page </p><br/></div>
+                                        <div class="io-description"><p>Retrieves the current page </p>
+            </div>
             
                                         <div class="io-description">
                                             <b>Returns : </b>    <code>number</code>
@@ -547,15 +807,16 @@
                             </tr>
             
             
-                                <tr>
-                                    <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/packages/core/pagination/pagination.ts:31</a></div>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/packages/core/pagination/pagination.ts:31</a></div>
+                                        </td>
+                                    </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>Retrieves the number of pages </p><br/></div>
+                                        <div class="io-description"><p>Retrieves the number of pages </p>
+            </div>
             
                                         <div class="io-description">
                                             <b>Returns : </b>    <code>number</code>
@@ -579,15 +840,16 @@
                             </tr>
             
             
-                                <tr>
-                                    <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/packages/core/pagination/pagination.ts:36</a></div>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/packages/core/pagination/pagination.ts:36</a></div>
+                                        </td>
+                                    </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>Loads the next page. Throws error if already on last page. </p><br/></div>
+                                        <div class="io-description"><p>Loads the next page. Throws error if already on last page. </p>
+            </div>
             
                                         <div class="io-description">
                                             <b>Returns : </b>    <code>void</code>
@@ -611,15 +873,16 @@
                             </tr>
             
             
-                                <tr>
-                                    <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/packages/core/pagination/pagination.ts:45</a></div>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/packages/core/pagination/pagination.ts:45</a></div>
+                                        </td>
+                                    </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>Loads the previous page. Throws error if already on first page. </p><br/></div>
+                                        <div class="io-description"><p>Loads the previous page. Throws error if already on first page. </p>
+            </div>
             
                                         <div class="io-description">
                                             <b>Returns : </b>    <code>void</code>
@@ -643,15 +906,16 @@
                             </tr>
             
             
-                                <tr>
-                                    <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/packages/core/pagination/pagination.ts:56</a></div>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/packages/core/pagination/pagination.ts:56</a></div>
+                                        </td>
+                                    </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>Sets the total number of items and calculcates the page count.</p><br/></div>
+                                        <div class="io-description"><p>Sets the total number of items and calculcates the page count.</p>
+            </div>
             
                                         <div class="io-description">
                                             <b>Returns : </b>    <code>void</code>
@@ -665,28 +929,27 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Public</span> load</b>
+                                    <b><span class="modifier">Protected</span> load</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play circle">
-                                            <span class="fa fa-circle"></span>
-                                        </span>
-                                    <code>load(config: <a href="../classes/List.html">ListConfig</a>)</code>
+                                        <span class="modifier-icon method fa fa-play circle"></span>
+                                    <code>load(config: any)</code>
                                 </td>
                             </tr>
             
             
-                                <tr>
-                                    <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/packages/core/pagination/pagination.ts:66</a></div>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/packages/core/pagination/pagination.ts:66</a></div>
+                                        </td>
+                                    </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>Merges config and fires next on source </p><br/></div>
+                                        <div class="io-description"><p>Merges config and fires next on source </p>
+            </div>
             
                                         <div class="io-description">
                                             <b>Returns : </b>    <code>void</code>
@@ -710,15 +973,16 @@
                             </tr>
             
             
-                                <tr>
-                                    <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/packages/core/pagination/pagination.ts:74</a></div>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/packages/core/pagination/pagination.ts:74</a></div>
+                                        </td>
+                                    </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>Selects the given page number </p><br/></div>
+                                        <div class="io-description"><p>Selects the given page number </p>
+            </div>
             
                                         <div class="io-description">
                                             <b>Returns : </b>    <code>void</code>
@@ -742,15 +1006,16 @@
                             </tr>
             
             
-                                <tr>
-                                    <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/packages/core/pagination/pagination.ts:82</a></div>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/packages/core/pagination/pagination.ts:82</a></div>
+                                        </td>
+                                    </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>Loads the first Page </p><br/></div>
+                                        <div class="io-description"><p>Loads the first Page </p>
+            </div>
             
                                         <div class="io-description">
                                             <b>Returns : </b>    <code>void</code>
@@ -774,15 +1039,16 @@
                             </tr>
             
             
-                                <tr>
-                                    <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">src/packages/core/pagination/pagination.ts:87</a></div>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">src/packages/core/pagination/pagination.ts:87</a></div>
+                                        </td>
+                                    </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>Loads the last page </p><br/></div>
+                                        <div class="io-description"><p>Loads the last page </p>
+            </div>
             
                                         <div class="io-description">
                                             <b>Returns : </b>    <code>void</code>
@@ -806,15 +1072,16 @@
                             </tr>
             
             
-                                <tr>
-                                    <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">src/packages/core/pagination/pagination.ts:96</a></div>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">src/packages/core/pagination/pagination.ts:96</a></div>
+                                        </td>
+                                    </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>Returns true if the given page number is currently active.</p><br/></div>
+                                        <div class="io-description"><p>Returns true if the given page number is currently active.</p>
+            </div>
             
                                         <div class="io-description">
                                             <b>Returns : </b>    <code>boolean</code>
@@ -838,15 +1105,16 @@
                             </tr>
             
             
-                                <tr>
-                                    <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">src/packages/core/pagination/pagination.ts:101</a></div>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">src/packages/core/pagination/pagination.ts:101</a></div>
+                                        </td>
+                                    </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>Returns true if the current page is the first one </p><br/></div>
+                                        <div class="io-description"><p>Returns true if the current page is the first one </p>
+            </div>
             
                                         <div class="io-description">
                                             <b>Returns : </b>    <code>boolean</code>
@@ -870,15 +1138,16 @@
                             </tr>
             
             
-                                <tr>
-                                    <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">src/packages/core/pagination/pagination.ts:106</a></div>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">src/packages/core/pagination/pagination.ts:106</a></div>
+                                        </td>
+                                    </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>Returns true if the current page is the last one </p><br/></div>
+                                        <div class="io-description"><p>Returns true if the current page is the last one </p>
+            </div>
             
                                         <div class="io-description">
                                             <b>Returns : </b>    <code>boolean</code>
@@ -897,23 +1166,24 @@
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>slice(items: any[])</code>
+            <code>slice(items: any)</code>
                                 </td>
                             </tr>
             
             
-                                <tr>
-                                    <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">src/packages/core/pagination/pagination.ts:114</a></div>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">src/packages/core/pagination/pagination.ts:114</a></div>
+                                        </td>
+                                    </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>slices a given array according to the current pagination state </p><br/></div>
+                                        <div class="io-description"><p>slices a given array according to the current pagination state </p>
+            </div>
             
                                         <div class="io-description">
-                                            <b>Returns : </b>    <code>any[]</code>
+                                            <b>Returns : </b>    <code>any</code>
             
                                         </div>
                                 </td>
@@ -932,23 +1202,24 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Static</span> change$</b>
+                                    <b><span class="modifier">Public</span> change$</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-export"></span><code>change$:     <code>Observable&lt;{}&gt;</code>
+                                    <span class="modifier-icon fa fa-"></span><code>change$:     <code>any</code>
             </bcode>
                                 </td>
                             </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/packages/core/pagination/pagination.ts:13</a></div>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/packages/core/pagination/pagination.ts:13</a></div>
+                                        </td>
+                                    </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Observable that is nexted when the pagination has changed. </p><br/></div>
+                                    <div class="io-description"><p>Observable that is nexted when the pagination has changed. </p>
+            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -957,23 +1228,24 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Public</span> config</b>
+                                    <b><span class="modifier">Protected</span> config</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-circle"></span><code>config:     <code><a href="../classes/List.html" target="_self" >ListConfig</a></code>
+                                    <span class="modifier-icon fa fa-circle"></span><code>config:     <code>any</code>
             </bcode>
                                 </td>
                             </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/packages/core/pagination/pagination.ts:9</a></div>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/packages/core/pagination/pagination.ts:9</a></div>
+                                        </td>
+                                    </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>The pagination config </p><br/></div>
+                                    <div class="io-description"><p>The pagination config </p>
+            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -982,47 +1254,47 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Protected</span> pages</b>
+                                    <b><span class="modifier">Private</span> pages</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-lock"></span><code>pages:     <code>any[]</code>
+                                    <span class="modifier-icon fa fa-lock"></span><code>pages:     <code>any</code>
             </bcode>
                                 </td>
                             </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/packages/core/pagination/pagination.ts:10</a></div>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/packages/core/pagination/pagination.ts:10</a></div>
+                                        </td>
+                                    </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Protected</span> source</b>
+                                    <b><span class="modifier">Private</span> source</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-lock"></span><code>source:     <code>Subject&lt;{}&gt;</code>
+                                    <span class="modifier-icon fa fa-lock"></span><code>source:     <code>any</code>
             </bcode>
                                 </td>
                             </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/packages/core/pagination/pagination.ts:11</a></div>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/packages/core/pagination/pagination.ts:11</a></div>
+                                        </td>
+                                    </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Public</span> total</b>
+                                    <b><span class="modifier">Protected</span> total</b>
                                 </td>
                             </tr>
                             <tr>
@@ -1031,14 +1303,15 @@
             </bcode>
                                 </td>
                             </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/packages/core/pagination/pagination.ts:7</a></div>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/packages/core/pagination/pagination.ts:7</a></div>
+                                        </td>
+                                    </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>The total number of items that is being paginated. It can be changed via setTotal. </p><br/></div>
+                                    <div class="io-description"><p>The total number of items that is being paginated. It can be changed via setTotal. </p>
+            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1046,7 +1319,7 @@
             </section>
     </div>
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { Subject } from &#x27;rxjs&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { Observable, Subject } from &#x27;rxjs&#x27;;
 import { ListConfig } from &#x27;..&#x27;;
 
 /** This class can be used to control the loading behaviour of external data. */
@@ -1058,7 +1331,7 @@ export class Pagination {
   private pages: Array&lt;any&gt;;
   private source &#x3D; new Subject();
   /** Observable that is nexted when the pagination has changed. */
-  public change$ &#x3D; this.source.asObservable();
+  public change$: Observable&lt;any&gt; &#x3D; this.source.asObservable();
 
   /** You can init each Pagination instance with an optional config.
    * If no config is provided, it will default to &#x60;&#x60;&#x60;{page: 1, size: 25}&#x60;&#x60;&#x60;. */

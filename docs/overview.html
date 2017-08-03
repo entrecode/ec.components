@@ -53,35 +53,52 @@
             
                     <li class="chapter">
                         <a data-type="chapter-link" href="./modules.html" >
-                            <span class="fa fa-archive"></span>
-                            <span>Modules</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                            <div class="menu-toggler linked" data-toggle="collapse"
                                     data-target="#xs-modules-links"
-                            ></span>
+                            >
+                                <span class="fa fa-archive"></span>
+                                <span class="link-name">Modules</span>
+                                <span class="fa fa-angle-up"></span>
+                            </div>
                         </a>
                         <ul class="links collapse in"
                                 id="xs-modules-links"
                             >
+                                <li class="link">
+                                    <a href="./modules/AuthModule.html" >AuthModule</a>
+                                </li>
                                 <li class="link">
                                     <a href="./modules/DataModule.html" >DataModule</a>
                                 </li>
                                 <li class="link">
                                     <a href="./modules/UiModule.html" >UiModule</a>
                                 </li>
+                                <li class="link">
+                                    <a href="./modules/VcModule.html" >VcModule</a>
+                                </li>
                         </ul>
                     </li>
             
                     <li class="chapter">
-                        <div class="simple">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-components-links"
+                            >
                             <span class="fa fa-cogs"></span>
                             <span>Components</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-components-links"
-                                ></span>
+                            <span class="fa fa-angle-up"></span>
                         </div>
                         <ul class="links collapse in"
                                 id="xs-components-links"
                             >
+                                <li class="link">
+                                    <a href="./components/AdminLoginComponent.html" >AdminLoginComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/AdminSignupComponent.html" >AdminSignupComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/EditorComponent.html" >EditorComponent</a>
+                                </li>
                                 <li class="link">
                                     <a href="./components/EntriesComponent.html" >EntriesComponent</a>
                                 </li>
@@ -96,6 +113,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="./components/FieldComponent.html" >FieldComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/FieldErrorsComponent.html" >FieldErrorsComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="./components/FieldErrorsComponent.html" >FieldErrorsComponent</a>
@@ -116,10 +136,28 @@
                                     <a href="./components/ListItemsComponent.html" >ListItemsComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="./components/LoginComponent.html" >LoginComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/MenuComponent.html" >MenuComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="./components/MockupComponent.html" >MockupComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="./components/PaginationComponent.html" >PaginationComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/PopComponent.html" >PopComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/PublicLoginComponent.html" >PublicLoginComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/PublicSignupComponent.html" >PublicSignupComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/SelectComponent.html" >SelectComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="./components/TabComponent.html" >TabComponent</a>
@@ -127,17 +165,36 @@
                                 <li class="link">
                                     <a href="./components/TabsComponent.html" >TabsComponent</a>
                                 </li>
+                                <li class="link">
+                                    <a href="./components/ToolbarComponent.html" >ToolbarComponent</a>
+                                </li>
                         </ul>
                     </li>
             
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-directives-links"
+                            >
+                            <span class="fa fa-code"></span>
+                            <span>Directives</span>
+                            <span class="fa fa-angle-up"></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-directives-links"
+                            >
+                                <li class="link">
+                                    <a href="./directives/ValidationOnBlurDirective.html" >ValidationOnBlurDirective</a>
+                                </li>
+                        </ul>
+                    </li>
             
                     <li class="chapter">
-                        <div class="simple">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-classes-links"
+                            >
                             <span class="fa fa-file-code-o"></span>
                             <span>Classes</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-classes-links"
-                                ></span>
+                            <span class="fa fa-angle-up"></span>
                         </div>
                         <ul class="links collapse in"
                                 id="xs-classes-links"
@@ -184,21 +241,92 @@
                         </ul>
                     </li>
             
-            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-injectables-links"
+                            >
+                            <span class="fa fa-long-arrow-down"></span>
+                            <span>Injectables</span>
+                            <span class="fa fa-angle-up"></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-injectables-links"
+                            >
+                                <li class="link">
+                                    <a href="./injectables/AdminService.html" >AdminService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./injectables/AuthorizationService.html" >AuthorizationService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./injectables/PublicAuthService.html" >PublicAuthService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./injectables/PublicService.html" >PublicService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./injectables/SdkService.html" >SdkService</a>
+                                </li>
+                        </ul>
+                    </li>
             
                     <li class="chapter">
-                        <div class="simple">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-interfaces-links"
+                            >
+                            <span class="fa fa-info"></span>
+                            <span>Interfaces</span>
+                            <span class="fa fa-angle-up"></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-interfaces-links"
+                            >
+                                <li class="link">
+                                    <a href="./interfaces/EntryListConfig.html" >EntryListConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./interfaces/Environment.html" >Environment</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./interfaces/FieldConfig.html" >FieldConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./interfaces/FieldConfigProperty.html" >FieldConfigProperty</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./interfaces/FormConfig.html" >FormConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./interfaces/ItemConfig.html" >ItemConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./interfaces/ListConfig.html" >ListConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./interfaces/ModelConfiguration.html" >ModelConfiguration</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-pipes-links"
+                            >
                             <span class="fa fa-plus"></span>
                             <span>Pipes</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-pipes-links"
-                                ></span>
+                            <span class="fa fa-angle-up"></span>
                         </div>
                         <ul class="links collapse in"
                                 id="xs-pipes-links"
                             >
                                 <li class="link">
                                     <a href="./pipes/GroupPipe.html" >GroupPipe</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./pipes/SafeHtmlPipe.html" >SafeHtmlPipe</a>
                                 </li>
                         </ul>
                     </li>
@@ -262,35 +390,52 @@
                    
                            <li class="chapter">
                                <a data-type="chapter-link" href="./modules.html" >
-                                   <span class="fa fa-archive"></span>
-                                   <span>Modules</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                   <div class="menu-toggler linked" data-toggle="collapse"
                                            data-target="#modules-links"
-                                   ></span>
+                                   >
+                                       <span class="fa fa-archive"></span>
+                                       <span class="link-name">Modules</span>
+                                       <span class="fa fa-angle-up"></span>
+                                   </div>
                                </a>
                                <ul class="links collapse in"
                                        id="modules-links"
                    >
+                                       <li class="link">
+                                           <a href="./modules/AuthModule.html" >AuthModule</a>
+                                       </li>
                                        <li class="link">
                                            <a href="./modules/DataModule.html" >DataModule</a>
                                        </li>
                                        <li class="link">
                                            <a href="./modules/UiModule.html" >UiModule</a>
                                        </li>
+                                       <li class="link">
+                                           <a href="./modules/VcModule.html" >VcModule</a>
+                                       </li>
                                </ul>
                            </li>
                    
                            <li class="chapter">
-                               <div class="simple">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#components-links"
+                   >
                                    <span class="fa fa-cogs"></span>
                                    <span>Components</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#components-links"
-                   ></span>
+                                   <span class="fa fa-angle-up"></span>
                                </div>
                                <ul class="links collapse in"
                                        id="components-links"
                    >
+                                       <li class="link">
+                                           <a href="./components/AdminLoginComponent.html" >AdminLoginComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/AdminSignupComponent.html" >AdminSignupComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/EditorComponent.html" >EditorComponent</a>
+                                       </li>
                                        <li class="link">
                                            <a href="./components/EntriesComponent.html" >EntriesComponent</a>
                                        </li>
@@ -305,6 +450,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="./components/FieldComponent.html" >FieldComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/FieldErrorsComponent.html" >FieldErrorsComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="./components/FieldErrorsComponent.html" >FieldErrorsComponent</a>
@@ -325,10 +473,28 @@
                                            <a href="./components/ListItemsComponent.html" >ListItemsComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="./components/LoginComponent.html" >LoginComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/MenuComponent.html" >MenuComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="./components/MockupComponent.html" >MockupComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="./components/PaginationComponent.html" >PaginationComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/PopComponent.html" >PopComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/PublicLoginComponent.html" >PublicLoginComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/PublicSignupComponent.html" >PublicSignupComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/SelectComponent.html" >SelectComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="./components/TabComponent.html" >TabComponent</a>
@@ -336,17 +502,36 @@
                                        <li class="link">
                                            <a href="./components/TabsComponent.html" >TabsComponent</a>
                                        </li>
+                                       <li class="link">
+                                           <a href="./components/ToolbarComponent.html" >ToolbarComponent</a>
+                                       </li>
                                </ul>
                            </li>
                    
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#directives-links"
+                   >
+                                   <span class="fa fa-code"></span>
+                                   <span>Directives</span>
+                                   <span class="fa fa-angle-up"></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="directives-links"
+                   >
+                                       <li class="link">
+                                           <a href="./directives/ValidationOnBlurDirective.html" >ValidationOnBlurDirective</a>
+                                       </li>
+                               </ul>
+                           </li>
                    
                            <li class="chapter">
-                               <div class="simple">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#classes-links"
+                   >
                                    <span class="fa fa-file-code-o"></span>
                                    <span>Classes</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#classes-links"
-                   ></span>
+                                   <span class="fa fa-angle-up"></span>
                                </div>
                                <ul class="links collapse in"
                                        id="classes-links"
@@ -393,21 +578,92 @@
                                </ul>
                            </li>
                    
-                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#injectables-links"
+                   >
+                                   <span class="fa fa-long-arrow-down"></span>
+                                   <span>Injectables</span>
+                                   <span class="fa fa-angle-up"></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="injectables-links"
+                   >
+                                       <li class="link">
+                                           <a href="./injectables/AdminService.html" >AdminService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./injectables/AuthorizationService.html" >AuthorizationService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./injectables/PublicAuthService.html" >PublicAuthService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./injectables/PublicService.html" >PublicService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./injectables/SdkService.html" >SdkService</a>
+                                       </li>
+                               </ul>
+                           </li>
                    
                            <li class="chapter">
-                               <div class="simple">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#interfaces-links"
+                   >
+                                   <span class="fa fa-info"></span>
+                                   <span>Interfaces</span>
+                                   <span class="fa fa-angle-up"></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="interfaces-links"
+                   >
+                                       <li class="link">
+                                           <a href="./interfaces/EntryListConfig.html" >EntryListConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./interfaces/Environment.html" >Environment</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./interfaces/FieldConfig.html" >FieldConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./interfaces/FieldConfigProperty.html" >FieldConfigProperty</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./interfaces/FormConfig.html" >FormConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./interfaces/ItemConfig.html" >ItemConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./interfaces/ListConfig.html" >ListConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./interfaces/ModelConfiguration.html" >ModelConfiguration</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#pipes-links"
+                   >
                                    <span class="fa fa-plus"></span>
                                    <span>Pipes</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#pipes-links"
-                   ></span>
+                                   <span class="fa fa-angle-up"></span>
                                </div>
                                <ul class="links collapse in"
                                        id="pipes-links"
                    >
                                        <li class="link">
                                            <a href="./pipes/GroupPipe.html" >GroupPipe</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./pipes/SafeHtmlPipe.html" >SafeHtmlPipe</a>
                                        </li>
                                </ul>
                            </li>
@@ -443,315 +699,523 @@
 <!-- Generated by graphviz version 2.40.1 (20161225.0304)
  -->
 <!-- Title: dependencies Pages: 1 -->
-<svg width="2665pt" height="355pt"
- viewBox="0.00 0.00 2665.00 355.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="4193pt" height="355pt"
+ viewBox="0.00 0.00 4193.00 355.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 351)">
 <title>dependencies</title>
-<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-351 2661,-351 2661,4 -4,4"/>
-<text text-anchor="start" x="1307.5091" y="-42.4" font-family="sans-serif" font-weight="bold" font-size="14.00" fill="#000000">Legend</text>
-<polygon fill="#ffffb3" stroke="transparent" points="1094.5,-10 1094.5,-30 1114.5,-30 1114.5,-10 1094.5,-10"/>
-<text text-anchor="start" x="1118.129" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Declarations</text>
-<polygon fill="#8dd3c7" stroke="transparent" points="1207.5,-10 1207.5,-30 1227.5,-30 1227.5,-10 1207.5,-10"/>
-<text text-anchor="start" x="1231.2251" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Module</text>
-<polygon fill="#80b1d3" stroke="transparent" points="1293.5,-10 1293.5,-30 1313.5,-30 1313.5,-10 1293.5,-10"/>
-<text text-anchor="start" x="1317.2812" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Bootstrap</text>
-<polygon fill="#fdb462" stroke="transparent" points="1390.5,-10 1390.5,-30 1410.5,-30 1410.5,-10 1390.5,-10"/>
-<text text-anchor="start" x="1414.1732" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Providers</text>
-<polygon fill="#fb8072" stroke="transparent" points="1486.5,-10 1486.5,-30 1506.5,-30 1506.5,-10 1486.5,-10"/>
-<text text-anchor="start" x="1510.2258" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Exports</text>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-351 4189,-351 4189,4 -4,4"/>
+<text text-anchor="start" x="2071.5091" y="-42.4" font-family="sans-serif" font-weight="bold" font-size="14.00" fill="#000000">Legend</text>
+<polygon fill="#ffffb3" stroke="transparent" points="1858.5,-10 1858.5,-30 1878.5,-30 1878.5,-10 1858.5,-10"/>
+<text text-anchor="start" x="1882.129" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Declarations</text>
+<polygon fill="#8dd3c7" stroke="transparent" points="1971.5,-10 1971.5,-30 1991.5,-30 1991.5,-10 1971.5,-10"/>
+<text text-anchor="start" x="1995.2251" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Module</text>
+<polygon fill="#80b1d3" stroke="transparent" points="2057.5,-10 2057.5,-30 2077.5,-30 2077.5,-10 2057.5,-10"/>
+<text text-anchor="start" x="2081.2812" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Bootstrap</text>
+<polygon fill="#fdb462" stroke="transparent" points="2154.5,-10 2154.5,-30 2174.5,-30 2174.5,-10 2154.5,-10"/>
+<text text-anchor="start" x="2178.1732" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Providers</text>
+<polygon fill="#fb8072" stroke="transparent" points="2250.5,-10 2250.5,-30 2270.5,-30 2270.5,-10 2250.5,-10"/>
+<text text-anchor="start" x="2274.2258" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Exports</text>
 <g id="clust1" class="cluster">
-<title>cluster_DataModule</title>
-<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="8,-70 8,-339 618,-339 618,-70 8,-70"/>
+<title>cluster_AuthModule</title>
+<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="432,-70 432,-271 1329,-271 1329,-70 432,-70"/>
 </g>
 <g id="clust3" class="cluster">
-<title>cluster_DataModule_imports</title>
-<polygon fill="none" stroke="#000000" points="374,-78 374,-195 610,-195 610,-78 374,-78"/>
+<title>cluster_AuthModule_imports</title>
+<polygon fill="none" stroke="#000000" points="759,-78 759,-130 1321,-130 1321,-78 759,-78"/>
 </g>
 <g id="clust4" class="cluster">
-<title>cluster_DataModule_exports</title>
-<polygon fill="none" stroke="#000000" points="16,-279 16,-331 610,-331 610,-279 16,-279"/>
+<title>cluster_AuthModule_exports</title>
+<polygon fill="none" stroke="#000000" points="440,-211 440,-263 1321,-263 1321,-211 440,-211"/>
 </g>
 <g id="clust7" class="cluster">
-<title>cluster_UiModule</title>
-<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="626,-203 626,-271 2649,-271 2649,-203 626,-203"/>
+<title>cluster_DataModule</title>
+<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="1337,-70 1337,-339 1947,-339 1947,-70 1337,-70"/>
 </g>
 <g id="clust9" class="cluster">
-<title>cluster_UiModule_imports</title>
-<polygon fill="none" stroke="#000000" points="2481,-211 2481,-263 2641,-263 2641,-211 2481,-211"/>
+<title>cluster_DataModule_imports</title>
+<polygon fill="none" stroke="#000000" points="1827,-78 1827,-195 1939,-195 1939,-78 1827,-78"/>
 </g>
 <g id="clust10" class="cluster">
+<title>cluster_DataModule_exports</title>
+<polygon fill="none" stroke="#000000" points="1345,-279 1345,-331 1939,-331 1939,-279 1345,-279"/>
+</g>
+<g id="clust13" class="cluster">
+<title>cluster_UiModule</title>
+<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="1955,-203 1955,-271 4177,-271 4177,-203 1955,-203"/>
+</g>
+<g id="clust16" class="cluster">
 <title>cluster_UiModule_exports</title>
-<polygon fill="none" stroke="#000000" points="634,-211 634,-263 2473,-263 2473,-211 634,-211"/>
+<polygon fill="none" stroke="#000000" points="1963,-211 1963,-263 4169,-263 4169,-211 1963,-211"/>
+</g>
+<g id="clust19" class="cluster">
+<title>cluster_VcModule</title>
+<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="8,-143 8,-271 424,-271 424,-143 8,-143"/>
+</g>
+<g id="clust22" class="cluster">
+<title>cluster_VcModule_exports</title>
+<polygon fill="none" stroke="#000000" points="16,-211 16,-263 416,-263 416,-211 16,-211"/>
+</g>
+<!-- CookieModule.forRoot() -->
+<g id="node1" class="node">
+<title>CookieModule.forRoot()</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="1025.3616,-122 1022.3616,-126 1001.3616,-126 998.3616,-122 868.6384,-122 868.6384,-86 1025.3616,-86 1025.3616,-122"/>
+<text text-anchor="middle" x="947" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">CookieModule.forRoot()</text>
+</g>
+<!-- AuthModule -->
+<g id="node5" class="node">
+<title>AuthModule</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="990.5482,-187 987.5482,-191 966.5482,-191 963.5482,-187 903.4518,-187 903.4518,-151 990.5482,-151 990.5482,-187"/>
+<text text-anchor="middle" x="947" y="-164.8" font-family="Times,serif" font-size="14.00" fill="#000000">AuthModule</text>
+</g>
+<!-- CookieModule.forRoot()&#45;&gt;AuthModule -->
+<g id="edge1" class="edge">
+<title>CookieModule.forRoot()&#45;&gt;AuthModule</title>
+<path fill="none" stroke="#000000" d="M947,-122.1061C947,-122.1061 947,-140.991 947,-140.991"/>
+<polygon fill="#000000" stroke="#000000" points="943.5001,-140.9909 947,-150.991 950.5001,-140.991 943.5001,-140.9909"/>
 </g>
 <!-- BrowserModule -->
-<g id="node1" class="node">
+<g id="node2" class="node">
 <title>BrowserModule</title>
-<polygon fill="#8dd3c7" stroke="#000000" points="488.4734,-122 485.4734,-126 464.4734,-126 461.4734,-122 381.5266,-122 381.5266,-86 488.4734,-86 488.4734,-122"/>
-<text text-anchor="middle" x="435" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">BrowserModule</text>
+<polygon fill="#8dd3c7" stroke="#000000" points="1150.4734,-122 1147.4734,-126 1126.4734,-126 1123.4734,-122 1043.5266,-122 1043.5266,-86 1150.4734,-86 1150.4734,-122"/>
+<text text-anchor="middle" x="1097" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">BrowserModule</text>
+</g>
+<!-- BrowserModule&#45;&gt;AuthModule -->
+<g id="edge2" class="edge">
+<title>BrowserModule&#45;&gt;AuthModule</title>
+<path fill="none" stroke="#000000" d="M1084.6431,-122.2222C1084.6431,-140.8285 1084.6431,-167 1084.6431,-167 1084.6431,-167 1000.5511,-167 1000.5511,-167"/>
+<polygon fill="#000000" stroke="#000000" points="1000.5512,-163.5001 990.5511,-167 1000.5511,-170.5001 1000.5512,-163.5001"/>
 </g>
 <!-- UiModule -->
-<g id="node3" class="node">
+<g id="node12" class="node">
 <title>UiModule</title>
-<polygon fill="#8dd3c7" stroke="#000000" points="601.5484,-187 598.5484,-191 577.5484,-191 574.5484,-187 528.4516,-187 528.4516,-151 601.5484,-151 601.5484,-187"/>
-<text text-anchor="middle" x="565" y="-164.8" font-family="Times,serif" font-size="14.00" fill="#000000">UiModule</text>
+<polygon fill="#8dd3c7" stroke="#000000" points="1930.5484,-187 1927.5484,-191 1906.5484,-191 1903.5484,-187 1857.4516,-187 1857.4516,-151 1930.5484,-151 1930.5484,-187"/>
+<text text-anchor="middle" x="1894" y="-164.8" font-family="Times,serif" font-size="14.00" fill="#000000">UiModule</text>
 </g>
 <!-- BrowserModule&#45;&gt;UiModule -->
-<g id="edge8" class="edge">
+<g id="edge17" class="edge">
 <title>BrowserModule&#45;&gt;UiModule</title>
-<path fill="none" stroke="#000000" d="M483.2374,-122.1061C483.2374,-141.3391 483.2374,-169 483.2374,-169 483.2374,-169 518.4233,-169 518.4233,-169"/>
-<polygon fill="#000000" stroke="#000000" points="518.4233,-172.5001 528.4233,-169 518.4233,-165.5001 518.4233,-172.5001"/>
+<path fill="none" stroke="#000000" d="M1105.2079,-122.0336C1105.2079,-139.0597 1105.2079,-162 1105.2079,-162 1105.2079,-162 1847.2753,-162 1847.2753,-162"/>
+<polygon fill="#000000" stroke="#000000" points="1847.2754,-165.5001 1857.2753,-162 1847.2753,-158.5001 1847.2754,-165.5001"/>
 </g>
 <!-- DataModule -->
-<g id="node4" class="node">
+<g id="node13" class="node">
 <title>DataModule</title>
-<polygon fill="#8dd3c7" stroke="#000000" points="477.9762,-255 474.9762,-259 453.9762,-259 450.9762,-255 392.0238,-255 392.0238,-219 477.9762,-219 477.9762,-255"/>
-<text text-anchor="middle" x="435" y="-232.8" font-family="Times,serif" font-size="14.00" fill="#000000">DataModule</text>
+<polygon fill="#8dd3c7" stroke="#000000" points="1759.9762,-255 1756.9762,-259 1735.9762,-259 1732.9762,-255 1674.0238,-255 1674.0238,-219 1759.9762,-219 1759.9762,-255"/>
+<text text-anchor="middle" x="1717" y="-232.8" font-family="Times,serif" font-size="14.00" fill="#000000">DataModule</text>
 </g>
 <!-- BrowserModule&#45;&gt;DataModule -->
-<g id="edge1" class="edge">
+<g id="edge10" class="edge">
 <title>BrowserModule&#45;&gt;DataModule</title>
-<path fill="none" stroke="#000000" d="M435,-122.2142C435,-122.2142 435,-208.579 435,-208.579"/>
-<polygon fill="#000000" stroke="#000000" points="431.5001,-208.5789 435,-218.579 438.5001,-208.579 431.5001,-208.5789"/>
+<path fill="none" stroke="#000000" d="M1125.7728,-122.1097C1125.7728,-131.897 1125.7728,-142 1125.7728,-142 1125.7728,-142 1717,-142 1717,-142 1717,-142 1717,-208.683 1717,-208.683"/>
+<polygon fill="#000000" stroke="#000000" points="1713.5001,-208.683 1717,-218.683 1720.5001,-208.6831 1713.5001,-208.683"/>
 </g>
-<!-- FormsModule -->
-<g id="node2" class="node">
-<title>FormsModule</title>
-<polygon fill="#8dd3c7" stroke="#000000" points="601.8288,-122 598.8288,-126 577.8288,-126 574.8288,-122 506.1712,-122 506.1712,-86 601.8288,-86 601.8288,-122"/>
-<text text-anchor="middle" x="554" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">FormsModule</text>
+<!-- VcModule -->
+<g id="node34" class="node">
+<title>VcModule</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="314.8711,-187 311.8711,-191 290.8711,-191 287.8711,-187 239.1289,-187 239.1289,-151 314.8711,-151 314.8711,-187"/>
+<text text-anchor="middle" x="277" y="-164.8" font-family="Times,serif" font-size="14.00" fill="#000000">VcModule</text>
 </g>
-<!-- FormsModule&#45;&gt;UiModule -->
-<g id="edge9" class="edge">
-<title>FormsModule&#45;&gt;UiModule</title>
-<path fill="none" stroke="#000000" d="M564.9453,-122.1061C564.9453,-122.1061 564.9453,-140.991 564.9453,-140.991"/>
-<polygon fill="#000000" stroke="#000000" points="561.4454,-140.9909 564.9453,-150.991 568.4454,-140.991 561.4454,-140.9909"/>
-</g>
-<!-- FormsModule&#45;&gt;DataModule -->
-<g id="edge2" class="edge">
-<title>FormsModule&#45;&gt;DataModule</title>
-<path fill="none" stroke="#000000" d="M517.2812,-122.0307C517.2812,-156.4218 517.2812,-228 517.2812,-228 517.2812,-228 488.0684,-228 488.0684,-228"/>
-<polygon fill="#000000" stroke="#000000" points="488.0685,-224.5001 478.0684,-228 488.0684,-231.5001 488.0685,-224.5001"/>
-</g>
-<!-- UiModule&#45;&gt;DataModule -->
-<g id="edge3" class="edge">
-<title>UiModule&#45;&gt;DataModule</title>
-<path fill="none" stroke="#000000" d="M552.7422,-187.2479C552.7422,-210.0179 552.7422,-246 552.7422,-246 552.7422,-246 488.1743,-246 488.1743,-246"/>
-<polygon fill="#000000" stroke="#000000" points="488.1743,-242.5001 478.1743,-246 488.1742,-249.5001 488.1743,-242.5001"/>
-</g>
-<!-- ReactiveFormsModule  -->
-<g id="node10" class="node">
-<title>ReactiveFormsModule </title>
-<polygon fill="#fb8072" stroke="#000000" points="1900.8045,-255 1753.1955,-255 1753.1955,-219 1900.8045,-219 1900.8045,-255"/>
-<text text-anchor="middle" x="1827" y="-232.8" font-family="Times,serif" font-size="14.00" fill="#000000">ReactiveFormsModule </text>
-</g>
-<!-- UiModule&#45;&gt;ReactiveFormsModule  -->
-<g id="edge11" class="edge">
-<title>UiModule&#45;&gt;ReactiveFormsModule </title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M601.7463,-167C809.4332,-167 1827,-167 1827,-167 1827,-167 1827,-208.9733 1827,-208.9733"/>
-<polygon fill="#000000" stroke="#000000" points="1823.5001,-208.9732 1827,-218.9733 1830.5001,-208.9733 1823.5001,-208.9732"/>
-</g>
-<!-- ListComponent  -->
-<g id="node11" class="node">
-<title>ListComponent </title>
-<polygon fill="#fb8072" stroke="#000000" points="1735.1115,-255 1628.8885,-255 1628.8885,-219 1735.1115,-219 1735.1115,-255"/>
-<text text-anchor="middle" x="1682" y="-232.8" font-family="Times,serif" font-size="14.00" fill="#000000">ListComponent </text>
-</g>
-<!-- UiModule&#45;&gt;ListComponent  -->
-<g id="edge12" class="edge">
-<title>UiModule&#45;&gt;ListComponent </title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M601.8464,-169C795.0094,-169 1682,-169 1682,-169 1682,-169 1682,-208.7772 1682,-208.7772"/>
-<polygon fill="#000000" stroke="#000000" points="1678.5001,-208.7772 1682,-218.7772 1685.5001,-208.7773 1678.5001,-208.7772"/>
-</g>
-<!-- PaginationComponent  -->
-<g id="node12" class="node">
-<title>PaginationComponent </title>
-<polygon fill="#fb8072" stroke="#000000" points="1610.2163,-255 1465.7837,-255 1465.7837,-219 1610.2163,-219 1610.2163,-255"/>
-<text text-anchor="middle" x="1538" y="-232.8" font-family="Times,serif" font-size="14.00" fill="#000000">PaginationComponent </text>
-</g>
-<!-- UiModule&#45;&gt;PaginationComponent  -->
-<g id="edge13" class="edge">
-<title>UiModule&#45;&gt;PaginationComponent </title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M601.6602,-172C778.8457,-172 1538,-172 1538,-172 1538,-172 1538,-208.8939 1538,-208.8939"/>
-<polygon fill="#000000" stroke="#000000" points="1534.5001,-208.8938 1538,-218.8939 1541.5001,-208.8939 1534.5001,-208.8938"/>
-</g>
-<!-- TabsComponent  -->
-<g id="node13" class="node">
-<title>TabsComponent </title>
-<polygon fill="#fb8072" stroke="#000000" points="1448.0442,-255 1335.9558,-255 1335.9558,-219 1448.0442,-219 1448.0442,-255"/>
-<text text-anchor="middle" x="1392" y="-232.8" font-family="Times,serif" font-size="14.00" fill="#000000">TabsComponent </text>
-</g>
-<!-- UiModule&#45;&gt;TabsComponent  -->
-<g id="edge14" class="edge">
-<title>UiModule&#45;&gt;TabsComponent </title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M601.6022,-175C761.6516,-175 1392,-175 1392,-175 1392,-175 1392,-208.7333 1392,-208.7333"/>
-<polygon fill="#000000" stroke="#000000" points="1388.5001,-208.7333 1392,-218.7333 1395.5001,-208.7333 1388.5001,-208.7333"/>
-</g>
-<!-- TabComponent  -->
-<g id="node14" class="node">
-<title>TabComponent </title>
-<polygon fill="#fb8072" stroke="#000000" points="1318.1003,-255 1211.8997,-255 1211.8997,-219 1318.1003,-219 1318.1003,-255"/>
-<text text-anchor="middle" x="1265" y="-232.8" font-family="Times,serif" font-size="14.00" fill="#000000">TabComponent </text>
-</g>
-<!-- UiModule&#45;&gt;TabComponent  -->
-<g id="edge15" class="edge">
-<title>UiModule&#45;&gt;TabComponent </title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M601.6495,-177C745.6797,-177 1265,-177 1265,-177 1265,-177 1265,-208.998 1265,-208.998"/>
-<polygon fill="#000000" stroke="#000000" points="1261.5001,-208.998 1265,-218.998 1268.5001,-208.9981 1261.5001,-208.998"/>
-</g>
-<!-- MockupComponent  -->
-<g id="node15" class="node">
-<title>MockupComponent </title>
-<polygon fill="#fb8072" stroke="#000000" points="1193.9925,-255 1062.0075,-255 1062.0075,-219 1193.9925,-219 1193.9925,-255"/>
-<text text-anchor="middle" x="1128" y="-232.8" font-family="Times,serif" font-size="14.00" fill="#000000">MockupComponent </text>
-</g>
-<!-- UiModule&#45;&gt;MockupComponent  -->
-<g id="edge16" class="edge">
-<title>UiModule&#45;&gt;MockupComponent </title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M601.94,-180C727.1924,-180 1128,-180 1128,-180 1128,-180 1128,-208.9648 1128,-208.9648"/>
-<polygon fill="#000000" stroke="#000000" points="1124.5001,-208.9648 1128,-218.9648 1131.5001,-208.9649 1124.5001,-208.9648"/>
-</g>
-<!-- FilterComponent  -->
-<g id="node16" class="node">
-<title>FilterComponent </title>
-<polygon fill="#fb8072" stroke="#000000" points="1044.6621,-255 929.3379,-255 929.3379,-219 1044.6621,-219 1044.6621,-255"/>
-<text text-anchor="middle" x="987" y="-232.8" font-family="Times,serif" font-size="14.00" fill="#000000">FilterComponent </text>
-</g>
-<!-- UiModule&#45;&gt;FilterComponent  -->
-<g id="edge17" class="edge">
-<title>UiModule&#45;&gt;FilterComponent </title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M601.7115,-182C704.3815,-182 987,-182 987,-182 987,-182 987,-208.9909 987,-208.9909"/>
-<polygon fill="#000000" stroke="#000000" points="983.5001,-208.9909 987,-218.9909 990.5001,-208.991 983.5001,-208.9909"/>
-</g>
-<!-- FieldComponent  -->
-<g id="node17" class="node">
-<title>FieldComponent </title>
-<polygon fill="#fb8072" stroke="#000000" points="911.6115,-255 798.3885,-255 798.3885,-219 911.6115,-219 911.6115,-255"/>
-<text text-anchor="middle" x="855" y="-232.8" font-family="Times,serif" font-size="14.00" fill="#000000">FieldComponent </text>
-</g>
-<!-- UiModule&#45;&gt;FieldComponent  -->
-<g id="edge18" class="edge">
-<title>UiModule&#45;&gt;FieldComponent </title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M601.7287,-185C679.7636,-185 855,-185 855,-185 855,-185 855,-208.8129 855,-208.8129"/>
-<polygon fill="#000000" stroke="#000000" points="851.5001,-208.8129 855,-218.8129 858.5001,-208.813 851.5001,-208.8129"/>
-</g>
-<!-- ListItemsComponent  -->
-<g id="node18" class="node">
-<title>ListItemsComponent </title>
-<polygon fill="#fb8072" stroke="#000000" points="779.7121,-255 642.2879,-255 642.2879,-219 779.7121,-219 779.7121,-255"/>
-<text text-anchor="middle" x="711" y="-232.8" font-family="Times,serif" font-size="14.00" fill="#000000">ListItemsComponent </text>
-</g>
-<!-- UiModule&#45;&gt;ListItemsComponent  -->
-<g id="edge19" class="edge">
-<title>UiModule&#45;&gt;ListItemsComponent </title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M577.2578,-187.2228C577.2578,-207.3652 577.2578,-237 577.2578,-237 577.2578,-237 632.1701,-237 632.1701,-237"/>
-<polygon fill="#000000" stroke="#000000" points="632.1701,-240.5001 642.1701,-237 632.17,-233.5001 632.1701,-240.5001"/>
-</g>
-<!-- ListHeaderComponent  -->
-<g id="node19" class="node">
-<title>ListHeaderComponent </title>
-<polygon fill="#fb8072" stroke="#000000" points="2464.5218,-255 2317.4782,-255 2317.4782,-219 2464.5218,-219 2464.5218,-255"/>
-<text text-anchor="middle" x="2391" y="-232.8" font-family="Times,serif" font-size="14.00" fill="#000000">ListHeaderComponent </text>
-</g>
-<!-- UiModule&#45;&gt;ListHeaderComponent  -->
-<g id="edge20" class="edge">
-<title>UiModule&#45;&gt;ListHeaderComponent </title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M601.8877,-157C860.4645,-157 2391,-157 2391,-157 2391,-157 2391,-208.8468 2391,-208.8468"/>
-<polygon fill="#000000" stroke="#000000" points="2387.5001,-208.8467 2391,-218.8468 2394.5001,-208.8468 2387.5001,-208.8467"/>
-</g>
-<!-- GroupPipe  -->
-<g id="node20" class="node">
-<title>GroupPipe </title>
-<polygon fill="#fb8072" stroke="#000000" points="2299.1552,-255 2218.8448,-255 2218.8448,-219 2299.1552,-219 2299.1552,-255"/>
-<text text-anchor="middle" x="2259" y="-232.8" font-family="Times,serif" font-size="14.00" fill="#000000">GroupPipe </text>
-</g>
-<!-- UiModule&#45;&gt;GroupPipe  -->
-<g id="edge21" class="edge">
-<title>UiModule&#45;&gt;GroupPipe </title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M601.5602,-159C848.1784,-159 2259,-159 2259,-159 2259,-159 2259,-208.9092 2259,-208.9092"/>
-<polygon fill="#000000" stroke="#000000" points="2255.5001,-208.9091 2259,-218.9092 2262.5001,-208.9092 2255.5001,-208.9091"/>
-</g>
-<!-- FormComponent  -->
-<g id="node21" class="node">
-<title>FormComponent </title>
-<polygon fill="#fb8072" stroke="#000000" points="2200.6663,-255 2085.3337,-255 2085.3337,-219 2200.6663,-219 2200.6663,-255"/>
-<text text-anchor="middle" x="2143" y="-232.8" font-family="Times,serif" font-size="14.00" fill="#000000">FormComponent </text>
-</g>
-<!-- UiModule&#45;&gt;FormComponent  -->
-<g id="edge22" class="edge">
-<title>UiModule&#45;&gt;FormComponent </title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M601.6834,-162C838.613,-162 2143,-162 2143,-162 2143,-162 2143,-208.8446 2143,-208.8446"/>
-<polygon fill="#000000" stroke="#000000" points="2139.5001,-208.8446 2143,-218.8446 2146.5001,-208.8446 2139.5001,-208.8446"/>
-</g>
-<!-- FieldErrorsComponent  -->
-<g id="node22" class="node">
-<title>FieldErrorsComponent </title>
-<polygon fill="#fb8072" stroke="#000000" points="2067.0904,-255 1918.9096,-255 1918.9096,-219 2067.0904,-219 2067.0904,-255"/>
-<text text-anchor="middle" x="1993" y="-232.8" font-family="Times,serif" font-size="14.00" fill="#000000">FieldErrorsComponent </text>
-</g>
-<!-- UiModule&#45;&gt;FieldErrorsComponent  -->
-<g id="edge23" class="edge">
-<title>UiModule&#45;&gt;FieldErrorsComponent </title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M601.7341,-164C825.2489,-164 1993,-164 1993,-164 1993,-164 1993,-208.9551 1993,-208.9551"/>
-<polygon fill="#000000" stroke="#000000" points="1989.5001,-208.955 1993,-218.9551 1996.5001,-208.9551 1989.5001,-208.955"/>
-</g>
-<!-- EntryListComponent  -->
-<g id="node5" class="node">
-<title>EntryListComponent </title>
-<polygon fill="#fb8072" stroke="#000000" points="601.7149,-323 464.2851,-323 464.2851,-287 601.7149,-287 601.7149,-323"/>
-<text text-anchor="middle" x="533" y="-300.8" font-family="Times,serif" font-size="14.00" fill="#000000">EntryListComponent </text>
-</g>
-<!-- DataModule&#45;&gt;EntryListComponent  -->
-<g id="edge4" class="edge">
-<title>DataModule&#45;&gt;EntryListComponent </title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M471.0654,-255.2228C471.0654,-255.2228 471.0654,-276.7269 471.0654,-276.7269"/>
-<polygon fill="#000000" stroke="#000000" points="467.5655,-276.7269 471.0654,-286.7269 474.5655,-276.727 467.5655,-276.7269"/>
-</g>
-<!-- EntryComponent  -->
-<g id="node6" class="node">
-<title>EntryComponent </title>
-<polygon fill="#fb8072" stroke="#000000" points="445.9362,-323 330.0638,-323 330.0638,-287 445.9362,-287 445.9362,-323"/>
-<text text-anchor="middle" x="388" y="-300.8" font-family="Times,serif" font-size="14.00" fill="#000000">EntryComponent </text>
-</g>
-<!-- DataModule&#45;&gt;EntryComponent  -->
-<g id="edge5" class="edge">
-<title>DataModule&#45;&gt;EntryComponent </title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M418.99,-255.2228C418.99,-255.2228 418.99,-276.7269 418.99,-276.7269"/>
-<polygon fill="#000000" stroke="#000000" points="415.4901,-276.7269 418.99,-286.7269 422.4901,-276.727 415.4901,-276.7269"/>
-</g>
-<!-- EntriesComponent  -->
-<g id="node7" class="node">
-<title>EntriesComponent </title>
-<polygon fill="#fb8072" stroke="#000000" points="312.487,-323 187.513,-323 187.513,-287 312.487,-287 312.487,-323"/>
-<text text-anchor="middle" x="250" y="-300.8" font-family="Times,serif" font-size="14.00" fill="#000000">EntriesComponent </text>
-</g>
-<!-- DataModule&#45;&gt;EntriesComponent  -->
-<g id="edge6" class="edge">
-<title>DataModule&#45;&gt;EntriesComponent </title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M391.6257,-243C336.9453,-243 250,-243 250,-243 250,-243 250,-276.7333 250,-276.7333"/>
-<polygon fill="#000000" stroke="#000000" points="246.5001,-276.7333 250,-286.7333 253.5001,-276.7333 246.5001,-276.7333"/>
-</g>
-<!-- EntryFormComponent  -->
-<g id="node8" class="node">
-<title>EntryFormComponent </title>
-<polygon fill="#fb8072" stroke="#000000" points="170.2702,-323 23.7298,-323 23.7298,-287 170.2702,-287 170.2702,-323"/>
-<text text-anchor="middle" x="97" y="-300.8" font-family="Times,serif" font-size="14.00" fill="#000000">EntryFormComponent </text>
-</g>
-<!-- DataModule&#45;&gt;EntryFormComponent  -->
-<g id="edge7" class="edge">
-<title>DataModule&#45;&gt;EntryFormComponent </title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M391.8488,-231C300.7282,-231 97,-231 97,-231 97,-231 97,-276.7079 97,-276.7079"/>
-<polygon fill="#000000" stroke="#000000" points="93.5001,-276.7078 97,-286.7079 100.5001,-276.7079 93.5001,-276.7078"/>
+<!-- BrowserModule&#45;&gt;VcModule -->
+<g id="edge37" class="edge">
+<title>BrowserModule&#45;&gt;VcModule</title>
+<path fill="none" stroke="#000000" d="M1064.0782,-122.207C1064.0782,-127.5549 1064.0782,-132 1064.0782,-132 1064.0782,-132 277,-132 277,-132 277,-132 277,-140.9336 277,-140.9336"/>
+<polygon fill="#000000" stroke="#000000" points="273.5001,-140.9335 277,-150.9336 280.5001,-140.9336 273.5001,-140.9335"/>
 </g>
 <!-- ReactiveFormsModule -->
-<g id="node9" class="node">
+<g id="node3" class="node">
 <title>ReactiveFormsModule</title>
-<polygon fill="#8dd3c7" stroke="#000000" points="2633.3047,-255 2630.3047,-259 2609.3047,-259 2606.3047,-255 2488.6953,-255 2488.6953,-219 2633.3047,-219 2633.3047,-255"/>
-<text text-anchor="middle" x="2561" y="-232.8" font-family="Times,serif" font-size="14.00" fill="#000000">ReactiveFormsModule</text>
+<polygon fill="#8dd3c7" stroke="#000000" points="1313.3047,-122 1310.3047,-126 1289.3047,-126 1286.3047,-122 1168.6953,-122 1168.6953,-86 1313.3047,-86 1313.3047,-122"/>
+<text text-anchor="middle" x="1241" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">ReactiveFormsModule</text>
+</g>
+<!-- ReactiveFormsModule&#45;&gt;AuthModule -->
+<g id="edge3" class="edge">
+<title>ReactiveFormsModule&#45;&gt;AuthModule</title>
+<path fill="none" stroke="#000000" d="M1197.7087,-122.2228C1197.7087,-142.3652 1197.7087,-172 1197.7087,-172 1197.7087,-172 1000.6701,-172 1000.6701,-172"/>
+<polygon fill="#000000" stroke="#000000" points="1000.6702,-168.5001 990.6701,-172 1000.6701,-175.5001 1000.6702,-168.5001"/>
 </g>
 <!-- ReactiveFormsModule&#45;&gt;UiModule -->
-<g id="edge10" class="edge">
+<g id="edge19" class="edge">
 <title>ReactiveFormsModule&#45;&gt;UiModule</title>
-<path fill="none" stroke="#000000" d="M2561,-218.9902C2561,-194.5793 2561,-154 2561,-154 2561,-154 611.7802,-154 611.7802,-154"/>
-<polygon fill="#000000" stroke="#000000" points="611.7802,-150.5001 601.7802,-154 611.7801,-157.5001 611.7802,-150.5001"/>
+<path fill="none" stroke="#000000" d="M1284.2913,-122.2396C1284.2913,-137.5706 1284.2913,-157 1284.2913,-157 1284.2913,-157 1847.2331,-157 1847.2331,-157"/>
+<polygon fill="#000000" stroke="#000000" points="1847.2331,-160.5001 1857.2331,-157 1847.233,-153.5001 1847.2331,-160.5001"/>
+</g>
+<!-- HttpModule -->
+<g id="node4" class="node">
+<title>HttpModule</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="851.4387,-122 848.4387,-126 827.4387,-126 824.4387,-122 766.5613,-122 766.5613,-86 851.4387,-86 851.4387,-122"/>
+<text text-anchor="middle" x="809" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">HttpModule</text>
+</g>
+<!-- HttpModule&#45;&gt;AuthModule -->
+<g id="edge4" class="edge">
+<title>HttpModule&#45;&gt;AuthModule</title>
+<path fill="none" stroke="#000000" d="M824.8186,-122.027C824.8186,-138.3976 824.8186,-160 824.8186,-160 824.8186,-160 893.2348,-160 893.2348,-160"/>
+<polygon fill="#000000" stroke="#000000" points="893.2348,-163.5001 903.2348,-160 893.2348,-156.5001 893.2348,-163.5001"/>
+</g>
+<!-- ValidationOnBlurDirective  -->
+<g id="node6" class="node">
+<title>ValidationOnBlurDirective </title>
+<polygon fill="#fb8072" stroke="#000000" points="1146.1757,-255 973.8243,-255 973.8243,-219 1146.1757,-219 1146.1757,-255"/>
+<text text-anchor="middle" x="1060" y="-232.8" font-family="Times,serif" font-size="14.00" fill="#000000">ValidationOnBlurDirective </text>
+</g>
+<!-- AuthModule&#45;&gt;ValidationOnBlurDirective  -->
+<g id="edge5" class="edge">
+<title>AuthModule&#45;&gt;ValidationOnBlurDirective </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M982.2179,-187.2228C982.2179,-187.2228 982.2179,-208.7269 982.2179,-208.7269"/>
+<polygon fill="#000000" stroke="#000000" points="978.718,-208.7269 982.2179,-218.7269 985.718,-208.727 978.718,-208.7269"/>
+</g>
+<!-- FieldErrorsComponent  -->
+<g id="node7" class="node">
+<title>FieldErrorsComponent </title>
+<polygon fill="#fb8072" stroke="#000000" points="1313.0904,-255 1164.9096,-255 1164.9096,-219 1313.0904,-219 1313.0904,-255"/>
+<text text-anchor="middle" x="1239" y="-232.8" font-family="Times,serif" font-size="14.00" fill="#000000">FieldErrorsComponent </text>
+</g>
+<!-- AuthModule&#45;&gt;FieldErrorsComponent  -->
+<g id="edge6" class="edge">
+<title>AuthModule&#45;&gt;FieldErrorsComponent </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M990.6827,-182C1069.3117,-182 1226.5696,-182 1226.5696,-182 1226.5696,-182 1226.5696,-208.9909 1226.5696,-208.9909"/>
+<polygon fill="#000000" stroke="#000000" points="1223.0697,-208.9909 1226.5696,-218.9909 1230.0697,-208.991 1223.0697,-208.9909"/>
+</g>
+<!-- PublicLoginComponent  -->
+<g id="node8" class="node">
+<title>PublicLoginComponent </title>
+<polygon fill="#fb8072" stroke="#000000" points="780.054,-255 625.946,-255 625.946,-219 780.054,-219 780.054,-255"/>
+<text text-anchor="middle" x="703" y="-232.8" font-family="Times,serif" font-size="14.00" fill="#000000">PublicLoginComponent </text>
+</g>
+<!-- AuthModule&#45;&gt;PublicLoginComponent  -->
+<g id="edge7" class="edge">
+<title>AuthModule&#45;&gt;PublicLoginComponent </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M903.1944,-178C851.7681,-178 773.4041,-178 773.4041,-178 773.4041,-178 773.4041,-208.9775 773.4041,-208.9775"/>
+<polygon fill="#000000" stroke="#000000" points="769.9042,-208.9774 773.4041,-218.9775 776.9042,-208.9775 769.9042,-208.9774"/>
+</g>
+<!-- PublicSignupComponent  -->
+<g id="node9" class="node">
+<title>PublicSignupComponent </title>
+<polygon fill="#fb8072" stroke="#000000" points="608.2843,-255 447.7157,-255 447.7157,-219 608.2843,-219 608.2843,-255"/>
+<text text-anchor="middle" x="528" y="-232.8" font-family="Times,serif" font-size="14.00" fill="#000000">PublicSignupComponent </text>
+</g>
+<!-- AuthModule&#45;&gt;PublicSignupComponent  -->
+<g id="edge8" class="edge">
+<title>AuthModule&#45;&gt;PublicSignupComponent </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M903.3454,-169C796.0291,-169 528,-169 528,-169 528,-169 528,-208.7772 528,-208.7772"/>
+<polygon fill="#000000" stroke="#000000" points="524.5001,-208.7772 528,-218.7772 531.5001,-208.7773 524.5001,-208.7772"/>
+</g>
+<!-- AdminLoginComponent  -->
+<g id="node10" class="node">
+<title>AdminLoginComponent </title>
+<polygon fill="#fb8072" stroke="#000000" points="955.6635,-255 798.3365,-255 798.3365,-219 955.6635,-219 955.6635,-255"/>
+<text text-anchor="middle" x="877" y="-232.8" font-family="Times,serif" font-size="14.00" fill="#000000">AdminLoginComponent </text>
+</g>
+<!-- AuthModule&#45;&gt;AdminLoginComponent  -->
+<g id="edge9" class="edge">
+<title>AuthModule&#45;&gt;AdminLoginComponent </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M929.4041,-187.2228C929.4041,-187.2228 929.4041,-208.7269 929.4041,-208.7269"/>
+<polygon fill="#000000" stroke="#000000" points="925.9042,-208.7269 929.4041,-218.7269 932.9042,-208.727 925.9042,-208.7269"/>
+</g>
+<!-- FormsModule -->
+<g id="node11" class="node">
+<title>FormsModule</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="1930.8288,-122 1927.8288,-126 1906.8288,-126 1903.8288,-122 1835.1712,-122 1835.1712,-86 1930.8288,-86 1930.8288,-122"/>
+<text text-anchor="middle" x="1883" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">FormsModule</text>
+</g>
+<!-- FormsModule&#45;&gt;UiModule -->
+<g id="edge18" class="edge">
+<title>FormsModule&#45;&gt;UiModule</title>
+<path fill="none" stroke="#000000" d="M1893.9453,-122.1061C1893.9453,-122.1061 1893.9453,-140.991 1893.9453,-140.991"/>
+<polygon fill="#000000" stroke="#000000" points="1890.4454,-140.9909 1893.9453,-150.991 1897.4454,-140.991 1890.4454,-140.9909"/>
+</g>
+<!-- FormsModule&#45;&gt;DataModule -->
+<g id="edge11" class="edge">
+<title>FormsModule&#45;&gt;DataModule</title>
+<path fill="none" stroke="#000000" d="M1846.2812,-122.1491C1846.2812,-156.3636 1846.2812,-227 1846.2812,-227 1846.2812,-227 1770.0488,-227 1770.0488,-227"/>
+<polygon fill="#000000" stroke="#000000" points="1770.0488,-223.5001 1760.0488,-227 1770.0487,-230.5001 1770.0488,-223.5001"/>
+</g>
+<!-- UiModule&#45;&gt;FieldErrorsComponent  -->
+<g id="edge32" class="edge">
+<title>UiModule&#45;&gt;FieldErrorsComponent </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1857.3742,-177C1721.6864,-177 1255.4304,-177 1255.4304,-177 1255.4304,-177 1255.4304,-208.998 1255.4304,-208.998"/>
+<polygon fill="#000000" stroke="#000000" points="1251.9305,-208.998 1255.4304,-218.998 1258.9305,-208.9981 1251.9305,-208.998"/>
+</g>
+<!-- UiModule&#45;&gt;DataModule -->
+<g id="edge12" class="edge">
+<title>UiModule&#45;&gt;DataModule</title>
+<path fill="none" stroke="#000000" d="M1881.7422,-187.1061C1881.7422,-206.3391 1881.7422,-234 1881.7422,-234 1881.7422,-234 1770.2841,-234 1770.2841,-234"/>
+<polygon fill="#000000" stroke="#000000" points="1770.2841,-230.5001 1760.2841,-234 1770.284,-237.5001 1770.2841,-230.5001"/>
+</g>
+<!-- ReactiveFormsModule  -->
+<g id="node18" class="node">
+<title>ReactiveFormsModule </title>
+<polygon fill="#fb8072" stroke="#000000" points="3886.8045,-255 3739.1955,-255 3739.1955,-219 3886.8045,-219 3886.8045,-255"/>
+<text text-anchor="middle" x="3813" y="-232.8" font-family="Times,serif" font-size="14.00" fill="#000000">ReactiveFormsModule </text>
+</g>
+<!-- UiModule&#45;&gt;ReactiveFormsModule  -->
+<g id="edge20" class="edge">
+<title>UiModule&#45;&gt;ReactiveFormsModule </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1930.621,-158C2195.9227,-158 3813,-158 3813,-158 3813,-158 3813,-208.6772 3813,-208.6772"/>
+<polygon fill="#000000" stroke="#000000" points="3809.5001,-208.6772 3813,-218.6772 3816.5001,-208.6773 3809.5001,-208.6772"/>
+</g>
+<!-- ListComponent  -->
+<g id="node19" class="node">
+<title>ListComponent </title>
+<polygon fill="#fb8072" stroke="#000000" points="3721.1115,-255 3614.8885,-255 3614.8885,-219 3721.1115,-219 3721.1115,-255"/>
+<text text-anchor="middle" x="3668" y="-232.8" font-family="Times,serif" font-size="14.00" fill="#000000">ListComponent </text>
+</g>
+<!-- UiModule&#45;&gt;ListComponent  -->
+<g id="edge21" class="edge">
+<title>UiModule&#45;&gt;ListComponent </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1930.6453,-160C2184.2208,-160 3668,-160 3668,-160 3668,-160 3668,-208.7521 3668,-208.7521"/>
+<polygon fill="#000000" stroke="#000000" points="3664.5001,-208.752 3668,-218.7521 3671.5001,-208.7521 3664.5001,-208.752"/>
+</g>
+<!-- PaginationComponent  -->
+<g id="node20" class="node">
+<title>PaginationComponent </title>
+<polygon fill="#fb8072" stroke="#000000" points="3596.2163,-255 3451.7837,-255 3451.7837,-219 3596.2163,-219 3596.2163,-255"/>
+<text text-anchor="middle" x="3524" y="-232.8" font-family="Times,serif" font-size="14.00" fill="#000000">PaginationComponent </text>
+</g>
+<!-- UiModule&#45;&gt;PaginationComponent  -->
+<g id="edge22" class="edge">
+<title>UiModule&#45;&gt;PaginationComponent </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1930.7179,-163C2172.2843,-163 3524,-163 3524,-163 3524,-163 3524,-208.7079 3524,-208.7079"/>
+<polygon fill="#000000" stroke="#000000" points="3520.5001,-208.7078 3524,-218.7079 3527.5001,-208.7079 3520.5001,-208.7078"/>
+</g>
+<!-- TabsComponent  -->
+<g id="node21" class="node">
+<title>TabsComponent </title>
+<polygon fill="#fb8072" stroke="#000000" points="3434.0442,-255 3321.9558,-255 3321.9558,-219 3434.0442,-219 3434.0442,-255"/>
+<text text-anchor="middle" x="3378" y="-232.8" font-family="Times,serif" font-size="14.00" fill="#000000">TabsComponent </text>
+</g>
+<!-- UiModule&#45;&gt;TabsComponent  -->
+<g id="edge23" class="edge">
+<title>UiModule&#45;&gt;TabsComponent </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1930.6833,-165C2159.207,-165 3378,-165 3378,-165 3378,-165 3378,-208.8314 3378,-208.8314"/>
+<polygon fill="#000000" stroke="#000000" points="3374.5001,-208.8313 3378,-218.8314 3381.5001,-208.8314 3374.5001,-208.8313"/>
+</g>
+<!-- TabComponent  -->
+<g id="node22" class="node">
+<title>TabComponent </title>
+<polygon fill="#fb8072" stroke="#000000" points="3304.1003,-255 3197.8997,-255 3197.8997,-219 3304.1003,-219 3304.1003,-255"/>
+<text text-anchor="middle" x="3251" y="-232.8" font-family="Times,serif" font-size="14.00" fill="#000000">TabComponent </text>
+</g>
+<!-- UiModule&#45;&gt;TabComponent  -->
+<g id="edge24" class="edge">
+<title>UiModule&#45;&gt;TabComponent </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1930.6476,-167C2147.2932,-167 3251,-167 3251,-167 3251,-167 3251,-208.9733 3251,-208.9733"/>
+<polygon fill="#000000" stroke="#000000" points="3247.5001,-208.9732 3251,-218.9733 3254.5001,-208.9733 3247.5001,-208.9732"/>
+</g>
+<!-- MockupComponent  -->
+<g id="node23" class="node">
+<title>MockupComponent </title>
+<polygon fill="#fb8072" stroke="#000000" points="3179.9925,-255 3048.0075,-255 3048.0075,-219 3179.9925,-219 3179.9925,-255"/>
+<text text-anchor="middle" x="3114" y="-232.8" font-family="Times,serif" font-size="14.00" fill="#000000">MockupComponent </text>
+</g>
+<!-- UiModule&#45;&gt;MockupComponent  -->
+<g id="edge25" class="edge">
+<title>UiModule&#45;&gt;MockupComponent </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1930.8446,-169C2134.573,-169 3114,-169 3114,-169 3114,-169 3114,-208.7772 3114,-208.7772"/>
+<polygon fill="#000000" stroke="#000000" points="3110.5001,-208.7772 3114,-218.7772 3117.5001,-208.7773 3110.5001,-208.7772"/>
+</g>
+<!-- FilterComponent  -->
+<g id="node24" class="node">
+<title>FilterComponent </title>
+<polygon fill="#fb8072" stroke="#000000" points="3030.6621,-255 2915.3379,-255 2915.3379,-219 3030.6621,-219 3030.6621,-255"/>
+<text text-anchor="middle" x="2973" y="-232.8" font-family="Times,serif" font-size="14.00" fill="#000000">FilterComponent </text>
+</g>
+<!-- UiModule&#45;&gt;FilterComponent  -->
+<g id="edge26" class="edge">
+<title>UiModule&#45;&gt;FilterComponent </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1930.8295,-172C2119.9364,-172 2973,-172 2973,-172 2973,-172 2973,-208.8939 2973,-208.8939"/>
+<polygon fill="#000000" stroke="#000000" points="2969.5001,-208.8938 2973,-218.8939 2976.5001,-208.8939 2969.5001,-208.8938"/>
+</g>
+<!-- FieldComponent  -->
+<g id="node25" class="node">
+<title>FieldComponent </title>
+<polygon fill="#fb8072" stroke="#000000" points="2897.6115,-255 2784.3885,-255 2784.3885,-219 2897.6115,-219 2897.6115,-255"/>
+<text text-anchor="middle" x="2841" y="-232.8" font-family="Times,serif" font-size="14.00" fill="#000000">FieldComponent </text>
+</g>
+<!-- UiModule&#45;&gt;FieldComponent  -->
+<g id="edge27" class="edge">
+<title>UiModule&#45;&gt;FieldComponent </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1930.8329,-174C2105.3953,-174 2841,-174 2841,-174 2841,-174 2841,-208.7778 2841,-208.7778"/>
+<polygon fill="#000000" stroke="#000000" points="2837.5001,-208.7778 2841,-218.7778 2844.5001,-208.7778 2837.5001,-208.7778"/>
+</g>
+<!-- ListItemsComponent  -->
+<g id="node26" class="node">
+<title>ListItemsComponent </title>
+<polygon fill="#fb8072" stroke="#000000" points="2765.7121,-255 2628.2879,-255 2628.2879,-219 2765.7121,-219 2765.7121,-255"/>
+<text text-anchor="middle" x="2697" y="-232.8" font-family="Times,serif" font-size="14.00" fill="#000000">ListItemsComponent </text>
+</g>
+<!-- UiModule&#45;&gt;ListItemsComponent  -->
+<g id="edge28" class="edge">
+<title>UiModule&#45;&gt;ListItemsComponent </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1930.5899,-176C2087.6801,-176 2697,-176 2697,-176 2697,-176 2697,-208.698 2697,-208.698"/>
+<polygon fill="#000000" stroke="#000000" points="2693.5001,-208.698 2697,-218.698 2700.5001,-208.698 2693.5001,-208.698"/>
+</g>
+<!-- ListHeaderComponent  -->
+<g id="node27" class="node">
+<title>ListHeaderComponent </title>
+<polygon fill="#fb8072" stroke="#000000" points="2610.5218,-255 2463.4782,-255 2463.4782,-219 2610.5218,-219 2610.5218,-255"/>
+<text text-anchor="middle" x="2537" y="-232.8" font-family="Times,serif" font-size="14.00" fill="#000000">ListHeaderComponent </text>
+</g>
+<!-- UiModule&#45;&gt;ListHeaderComponent  -->
+<g id="edge29" class="edge">
+<title>UiModule&#45;&gt;ListHeaderComponent </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1930.8799,-178C2067.5091,-178 2537,-178 2537,-178 2537,-178 2537,-208.9775 2537,-208.9775"/>
+<polygon fill="#000000" stroke="#000000" points="2533.5001,-208.9774 2537,-218.9775 2540.5001,-208.9775 2533.5001,-208.9774"/>
+</g>
+<!-- GroupPipe  -->
+<g id="node28" class="node">
+<title>GroupPipe </title>
+<polygon fill="#fb8072" stroke="#000000" points="2445.1552,-255 2364.8448,-255 2364.8448,-219 2445.1552,-219 2445.1552,-255"/>
+<text text-anchor="middle" x="2405" y="-232.8" font-family="Times,serif" font-size="14.00" fill="#000000">GroupPipe </text>
+</g>
+<!-- UiModule&#45;&gt;GroupPipe  -->
+<g id="edge30" class="edge">
+<title>UiModule&#45;&gt;GroupPipe </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1930.7499,-181C2047.9175,-181 2405,-181 2405,-181 2405,-181 2405,-208.973 2405,-208.973"/>
+<polygon fill="#000000" stroke="#000000" points="2401.5001,-208.973 2405,-218.973 2408.5001,-208.973 2401.5001,-208.973"/>
+</g>
+<!-- FormComponent  -->
+<g id="node29" class="node">
+<title>FormComponent </title>
+<polygon fill="#fb8072" stroke="#000000" points="2346.6663,-255 2231.3337,-255 2231.3337,-219 2346.6663,-219 2346.6663,-255"/>
+<text text-anchor="middle" x="2289" y="-232.8" font-family="Times,serif" font-size="14.00" fill="#000000">FormComponent </text>
+</g>
+<!-- UiModule&#45;&gt;FormComponent  -->
+<g id="edge31" class="edge">
+<title>UiModule&#45;&gt;FormComponent </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1930.8059,-183C2028.8647,-183 2289,-183 2289,-183 2289,-183 2289,-208.7181 2289,-208.7181"/>
+<polygon fill="#000000" stroke="#000000" points="2285.5001,-208.718 2289,-218.7181 2292.5001,-208.7181 2285.5001,-208.718"/>
+</g>
+<!-- PopComponent  -->
+<g id="node30" class="node">
+<title>PopComponent </title>
+<polygon fill="#fb8072" stroke="#000000" points="2213.1157,-255 2106.8843,-255 2106.8843,-219 2213.1157,-219 2213.1157,-255"/>
+<text text-anchor="middle" x="2160" y="-232.8" font-family="Times,serif" font-size="14.00" fill="#000000">PopComponent </text>
+</g>
+<!-- UiModule&#45;&gt;PopComponent  -->
+<g id="edge33" class="edge">
+<title>UiModule&#45;&gt;PopComponent </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1930.7069,-185C2003.6777,-185 2160,-185 2160,-185 2160,-185 2160,-208.8129 2160,-208.8129"/>
+<polygon fill="#000000" stroke="#000000" points="2156.5001,-208.8129 2160,-218.8129 2163.5001,-208.813 2156.5001,-208.8129"/>
+</g>
+<!-- MenuComponent  -->
+<g id="node31" class="node">
+<title>MenuComponent </title>
+<polygon fill="#fb8072" stroke="#000000" points="2088.9926,-255 1971.0074,-255 1971.0074,-219 2088.9926,-219 2088.9926,-255"/>
+<text text-anchor="middle" x="2030" y="-232.8" font-family="Times,serif" font-size="14.00" fill="#000000">MenuComponent </text>
+</g>
+<!-- UiModule&#45;&gt;MenuComponent  -->
+<g id="edge34" class="edge">
+<title>UiModule&#45;&gt;MenuComponent </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1906.2578,-187.3228C1906.2578,-210.6602 1906.2578,-248 1906.2578,-248 1906.2578,-248 1961.0282,-248 1961.0282,-248"/>
+<polygon fill="#000000" stroke="#000000" points="1961.0282,-251.5001 1971.0282,-248 1961.0281,-244.5001 1961.0282,-251.5001"/>
+</g>
+<!-- SelectComponent  -->
+<g id="node32" class="node">
+<title>SelectComponent </title>
+<polygon fill="#fb8072" stroke="#000000" points="4160.54,-255 4041.46,-255 4041.46,-219 4160.54,-219 4160.54,-255"/>
+<text text-anchor="middle" x="4101" y="-232.8" font-family="Times,serif" font-size="14.00" fill="#000000">SelectComponent </text>
+</g>
+<!-- UiModule&#45;&gt;SelectComponent  -->
+<g id="edge35" class="edge">
+<title>UiModule&#45;&gt;SelectComponent </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1930.9216,-154C2219.4079,-154 4101,-154 4101,-154 4101,-154 4101,-208.9902 4101,-208.9902"/>
+<polygon fill="#000000" stroke="#000000" points="4097.5001,-208.9902 4101,-218.9902 4104.5001,-208.9903 4097.5001,-208.9902"/>
+</g>
+<!-- LoginComponent  -->
+<g id="node33" class="node">
+<title>LoginComponent </title>
+<polygon fill="#fb8072" stroke="#000000" points="4023.2759,-255 3904.7241,-255 3904.7241,-219 4023.2759,-219 4023.2759,-255"/>
+<text text-anchor="middle" x="3964" y="-232.8" font-family="Times,serif" font-size="14.00" fill="#000000">LoginComponent </text>
+</g>
+<!-- UiModule&#45;&gt;LoginComponent  -->
+<g id="edge36" class="edge">
+<title>UiModule&#45;&gt;LoginComponent </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1930.8073,-156C2208.5284,-156 3964,-156 3964,-156 3964,-156 3964,-208.6198 3964,-208.6198"/>
+<polygon fill="#000000" stroke="#000000" points="3960.5001,-208.6198 3964,-218.6198 3967.5001,-208.6199 3960.5001,-208.6198"/>
+</g>
+<!-- EntryListComponent  -->
+<g id="node14" class="node">
+<title>EntryListComponent </title>
+<polygon fill="#fb8072" stroke="#000000" points="1930.7149,-323 1793.2851,-323 1793.2851,-287 1930.7149,-287 1930.7149,-323"/>
+<text text-anchor="middle" x="1862" y="-300.8" font-family="Times,serif" font-size="14.00" fill="#000000">EntryListComponent </text>
+</g>
+<!-- DataModule&#45;&gt;EntryListComponent  -->
+<g id="edge13" class="edge">
+<title>DataModule&#45;&gt;EntryListComponent </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1760.2169,-241C1786.1871,-241 1814.2393,-241 1814.2393,-241 1814.2393,-241 1814.2393,-276.8314 1814.2393,-276.8314"/>
+<polygon fill="#000000" stroke="#000000" points="1810.7394,-276.8313 1814.2393,-286.8314 1817.7394,-276.8314 1810.7394,-276.8313"/>
+</g>
+<!-- EntryComponent  -->
+<g id="node15" class="node">
+<title>EntryComponent </title>
+<polygon fill="#fb8072" stroke="#000000" points="1774.9362,-323 1659.0638,-323 1659.0638,-287 1774.9362,-287 1774.9362,-323"/>
+<text text-anchor="middle" x="1717" y="-300.8" font-family="Times,serif" font-size="14.00" fill="#000000">EntryComponent </text>
+</g>
+<!-- DataModule&#45;&gt;EntryComponent  -->
+<g id="edge14" class="edge">
+<title>DataModule&#45;&gt;EntryComponent </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1717,-255.2228C1717,-255.2228 1717,-276.7269 1717,-276.7269"/>
+<polygon fill="#000000" stroke="#000000" points="1713.5001,-276.7269 1717,-286.7269 1720.5001,-276.727 1713.5001,-276.7269"/>
+</g>
+<!-- EntriesComponent  -->
+<g id="node16" class="node">
+<title>EntriesComponent </title>
+<polygon fill="#fb8072" stroke="#000000" points="1641.487,-323 1516.513,-323 1516.513,-287 1641.487,-287 1641.487,-323"/>
+<text text-anchor="middle" x="1579" y="-300.8" font-family="Times,serif" font-size="14.00" fill="#000000">EntriesComponent </text>
+</g>
+<!-- DataModule&#45;&gt;EntriesComponent  -->
+<g id="edge15" class="edge">
+<title>DataModule&#45;&gt;EntriesComponent </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1673.7146,-243C1633.2437,-243 1579,-243 1579,-243 1579,-243 1579,-276.7333 1579,-276.7333"/>
+<polygon fill="#000000" stroke="#000000" points="1575.5001,-276.7333 1579,-286.7333 1582.5001,-276.7333 1575.5001,-276.7333"/>
+</g>
+<!-- EntryFormComponent  -->
+<g id="node17" class="node">
+<title>EntryFormComponent </title>
+<polygon fill="#fb8072" stroke="#000000" points="1499.2702,-323 1352.7298,-323 1352.7298,-287 1499.2702,-287 1499.2702,-323"/>
+<text text-anchor="middle" x="1426" y="-300.8" font-family="Times,serif" font-size="14.00" fill="#000000">EntryFormComponent </text>
+</g>
+<!-- DataModule&#45;&gt;EntryFormComponent  -->
+<g id="edge16" class="edge">
+<title>DataModule&#45;&gt;EntryFormComponent </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1673.7486,-231C1592.685,-231 1426,-231 1426,-231 1426,-231 1426,-276.7079 1426,-276.7079"/>
+<polygon fill="#000000" stroke="#000000" points="1422.5001,-276.7078 1426,-286.7079 1429.5001,-276.7079 1422.5001,-276.7078"/>
+</g>
+<!-- EditorComponent  -->
+<g id="node35" class="node">
+<title>EditorComponent </title>
+<polygon fill="#fb8072" stroke="#000000" points="143.8269,-255 24.1731,-255 24.1731,-219 143.8269,-219 143.8269,-255"/>
+<text text-anchor="middle" x="84" y="-232.8" font-family="Times,serif" font-size="14.00" fill="#000000">EditorComponent </text>
+</g>
+<!-- VcModule&#45;&gt;EditorComponent  -->
+<g id="edge38" class="edge">
+<title>VcModule&#45;&gt;EditorComponent </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M238.8694,-169C182.6233,-169 84,-169 84,-169 84,-169 84,-208.7772 84,-208.7772"/>
+<polygon fill="#000000" stroke="#000000" points="80.5001,-208.7772 84,-218.7772 87.5001,-208.7773 80.5001,-208.7772"/>
+</g>
+<!-- ToolbarComponent  -->
+<g id="node36" class="node">
+<title>ToolbarComponent </title>
+<polygon fill="#fb8072" stroke="#000000" points="407.6509,-255 278.3491,-255 278.3491,-219 407.6509,-219 407.6509,-255"/>
+<text text-anchor="middle" x="343" y="-232.8" font-family="Times,serif" font-size="14.00" fill="#000000">ToolbarComponent </text>
+</g>
+<!-- VcModule&#45;&gt;ToolbarComponent  -->
+<g id="edge39" class="edge">
+<title>VcModule&#45;&gt;ToolbarComponent </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M296.6801,-187.2228C296.6801,-187.2228 296.6801,-208.7269 296.6801,-208.7269"/>
+<polygon fill="#000000" stroke="#000000" points="293.1801,-208.7269 296.6801,-218.7269 300.1801,-208.727 293.1801,-208.7269"/>
+</g>
+<!-- SafeHtmlPipe  -->
+<g id="node37" class="node">
+<title>SafeHtmlPipe </title>
+<polygon fill="#fb8072" stroke="#000000" points="260.0386,-255 161.9614,-255 161.9614,-219 260.0386,-219 260.0386,-255"/>
+<text text-anchor="middle" x="211" y="-232.8" font-family="Times,serif" font-size="14.00" fill="#000000">SafeHtmlPipe </text>
+</g>
+<!-- VcModule&#45;&gt;SafeHtmlPipe  -->
+<g id="edge40" class="edge">
+<title>VcModule&#45;&gt;SafeHtmlPipe </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M249.5419,-187.2228C249.5419,-187.2228 249.5419,-208.7269 249.5419,-208.7269"/>
+<polygon fill="#000000" stroke="#000000" points="246.042,-208.7269 249.5419,-218.7269 253.042,-208.727 246.042,-208.7269"/>
 </g>
 </g>
 </svg>
@@ -770,7 +1234,7 @@
                     <div class="card-block">
                         <h4 class="card-title"><span class="fa fa-archive"></span></h4>
                         <p class="card-text">
-                            <a href="./modules.html">2 modules</a>
+                            <a href="./modules.html">4 modules</a>
                         </p>
                     </div>
                 </div>
@@ -779,7 +1243,23 @@
                 <div class="card text-center">
                     <div class="card-block">
                         <h4 class="card-title"><span class="fa fa-cogs"></span></h4>
-                        <p class="card-text">15 components</p>
+                        <p class="card-text">26 components</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card text-center">
+                    <div class="card-block">
+                        <h4 class="card-title"><span class="fa fa-code"></span></h4>
+                        <p class="card-text">1 directive</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card text-center">
+                    <div class="card-block">
+                        <h4 class="card-title"><span class="fa fa-code-fork"></span></h4>
+                        <p class="card-text">6 injectables</p>
                     </div>
                 </div>
             </div>
@@ -787,7 +1267,7 @@
                 <div class="card text-center">
                     <div class="card-block">
                         <h4 class="card-title"><span class="fa fa-plus"></span></h4>
-                        <p class="card-text">1 pipe</p>
+                        <p class="card-text">2 pipes</p>
                     </div>
                 </div>
             </div>
@@ -796,6 +1276,14 @@
                     <div class="card-block">
                         <h4 class="card-title"><span class="fa fa-file-code-o"></span></h4>
                         <p class="card-text">13 classes</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card text-center">
+                    <div class="card-block">
+                        <h4 class="card-title"><span class="fa fa-info"></span></h4>
+                        <p class="card-text">8 interfaces</p>
                     </div>
                 </div>
             </div>

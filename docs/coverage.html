@@ -53,35 +53,52 @@
             
                     <li class="chapter">
                         <a data-type="chapter-link" href="./modules.html" >
-                            <span class="fa fa-archive"></span>
-                            <span>Modules</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                            <div class="menu-toggler linked" data-toggle="collapse"
                                     data-target="#xs-modules-links"
-                            ></span>
+                            >
+                                <span class="fa fa-archive"></span>
+                                <span class="link-name">Modules</span>
+                                <span class="fa fa-angle-up"></span>
+                            </div>
                         </a>
                         <ul class="links collapse in"
                                 id="xs-modules-links"
                             >
+                                <li class="link">
+                                    <a href="./modules/AuthModule.html" >AuthModule</a>
+                                </li>
                                 <li class="link">
                                     <a href="./modules/DataModule.html" >DataModule</a>
                                 </li>
                                 <li class="link">
                                     <a href="./modules/UiModule.html" >UiModule</a>
                                 </li>
+                                <li class="link">
+                                    <a href="./modules/VcModule.html" >VcModule</a>
+                                </li>
                         </ul>
                     </li>
             
                     <li class="chapter">
-                        <div class="simple">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-components-links"
+                            >
                             <span class="fa fa-cogs"></span>
                             <span>Components</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-components-links"
-                                ></span>
+                            <span class="fa fa-angle-up"></span>
                         </div>
                         <ul class="links collapse in"
                                 id="xs-components-links"
                             >
+                                <li class="link">
+                                    <a href="./components/AdminLoginComponent.html" >AdminLoginComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/AdminSignupComponent.html" >AdminSignupComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/EditorComponent.html" >EditorComponent</a>
+                                </li>
                                 <li class="link">
                                     <a href="./components/EntriesComponent.html" >EntriesComponent</a>
                                 </li>
@@ -96,6 +113,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="./components/FieldComponent.html" >FieldComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/FieldErrorsComponent.html" >FieldErrorsComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="./components/FieldErrorsComponent.html" >FieldErrorsComponent</a>
@@ -116,10 +136,28 @@
                                     <a href="./components/ListItemsComponent.html" >ListItemsComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="./components/LoginComponent.html" >LoginComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/MenuComponent.html" >MenuComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="./components/MockupComponent.html" >MockupComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="./components/PaginationComponent.html" >PaginationComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/PopComponent.html" >PopComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/PublicLoginComponent.html" >PublicLoginComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/PublicSignupComponent.html" >PublicSignupComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/SelectComponent.html" >SelectComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="./components/TabComponent.html" >TabComponent</a>
@@ -127,17 +165,36 @@
                                 <li class="link">
                                     <a href="./components/TabsComponent.html" >TabsComponent</a>
                                 </li>
+                                <li class="link">
+                                    <a href="./components/ToolbarComponent.html" >ToolbarComponent</a>
+                                </li>
                         </ul>
                     </li>
             
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-directives-links"
+                            >
+                            <span class="fa fa-code"></span>
+                            <span>Directives</span>
+                            <span class="fa fa-angle-up"></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-directives-links"
+                            >
+                                <li class="link">
+                                    <a href="./directives/ValidationOnBlurDirective.html" >ValidationOnBlurDirective</a>
+                                </li>
+                        </ul>
+                    </li>
             
                     <li class="chapter">
-                        <div class="simple">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-classes-links"
+                            >
                             <span class="fa fa-file-code-o"></span>
                             <span>Classes</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-classes-links"
-                                ></span>
+                            <span class="fa fa-angle-up"></span>
                         </div>
                         <ul class="links collapse in"
                                 id="xs-classes-links"
@@ -184,21 +241,92 @@
                         </ul>
                     </li>
             
-            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-injectables-links"
+                            >
+                            <span class="fa fa-long-arrow-down"></span>
+                            <span>Injectables</span>
+                            <span class="fa fa-angle-up"></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-injectables-links"
+                            >
+                                <li class="link">
+                                    <a href="./injectables/AdminService.html" >AdminService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./injectables/AuthorizationService.html" >AuthorizationService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./injectables/PublicAuthService.html" >PublicAuthService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./injectables/PublicService.html" >PublicService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./injectables/SdkService.html" >SdkService</a>
+                                </li>
+                        </ul>
+                    </li>
             
                     <li class="chapter">
-                        <div class="simple">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-interfaces-links"
+                            >
+                            <span class="fa fa-info"></span>
+                            <span>Interfaces</span>
+                            <span class="fa fa-angle-up"></span>
+                        </div>
+                        <ul class="links collapse in"
+                                id="xs-interfaces-links"
+                            >
+                                <li class="link">
+                                    <a href="./interfaces/EntryListConfig.html" >EntryListConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./interfaces/Environment.html" >Environment</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./interfaces/FieldConfig.html" >FieldConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./interfaces/FieldConfigProperty.html" >FieldConfigProperty</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./interfaces/FormConfig.html" >FormConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./interfaces/ItemConfig.html" >ItemConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./interfaces/ListConfig.html" >ListConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./interfaces/ModelConfiguration.html" >ModelConfiguration</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-pipes-links"
+                            >
                             <span class="fa fa-plus"></span>
                             <span>Pipes</span>
-                            <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                    data-target="#xs-pipes-links"
-                                ></span>
+                            <span class="fa fa-angle-up"></span>
                         </div>
                         <ul class="links collapse in"
                                 id="xs-pipes-links"
                             >
                                 <li class="link">
                                     <a href="./pipes/GroupPipe.html" >GroupPipe</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./pipes/SafeHtmlPipe.html" >SafeHtmlPipe</a>
                                 </li>
                         </ul>
                     </li>
@@ -262,35 +390,52 @@
                    
                            <li class="chapter">
                                <a data-type="chapter-link" href="./modules.html" >
-                                   <span class="fa fa-archive"></span>
-                                   <span>Modules</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
+                                   <div class="menu-toggler linked" data-toggle="collapse"
                                            data-target="#modules-links"
-                                   ></span>
+                                   >
+                                       <span class="fa fa-archive"></span>
+                                       <span class="link-name">Modules</span>
+                                       <span class="fa fa-angle-up"></span>
+                                   </div>
                                </a>
                                <ul class="links collapse in"
                                        id="modules-links"
                    >
+                                       <li class="link">
+                                           <a href="./modules/AuthModule.html" >AuthModule</a>
+                                       </li>
                                        <li class="link">
                                            <a href="./modules/DataModule.html" >DataModule</a>
                                        </li>
                                        <li class="link">
                                            <a href="./modules/UiModule.html" >UiModule</a>
                                        </li>
+                                       <li class="link">
+                                           <a href="./modules/VcModule.html" >VcModule</a>
+                                       </li>
                                </ul>
                            </li>
                    
                            <li class="chapter">
-                               <div class="simple">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#components-links"
+                   >
                                    <span class="fa fa-cogs"></span>
                                    <span>Components</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#components-links"
-                   ></span>
+                                   <span class="fa fa-angle-up"></span>
                                </div>
                                <ul class="links collapse in"
                                        id="components-links"
                    >
+                                       <li class="link">
+                                           <a href="./components/AdminLoginComponent.html" >AdminLoginComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/AdminSignupComponent.html" >AdminSignupComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/EditorComponent.html" >EditorComponent</a>
+                                       </li>
                                        <li class="link">
                                            <a href="./components/EntriesComponent.html" >EntriesComponent</a>
                                        </li>
@@ -305,6 +450,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="./components/FieldComponent.html" >FieldComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/FieldErrorsComponent.html" >FieldErrorsComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="./components/FieldErrorsComponent.html" >FieldErrorsComponent</a>
@@ -325,10 +473,28 @@
                                            <a href="./components/ListItemsComponent.html" >ListItemsComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="./components/LoginComponent.html" >LoginComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/MenuComponent.html" >MenuComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="./components/MockupComponent.html" >MockupComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="./components/PaginationComponent.html" >PaginationComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/PopComponent.html" >PopComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/PublicLoginComponent.html" >PublicLoginComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/PublicSignupComponent.html" >PublicSignupComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/SelectComponent.html" >SelectComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="./components/TabComponent.html" >TabComponent</a>
@@ -336,17 +502,36 @@
                                        <li class="link">
                                            <a href="./components/TabsComponent.html" >TabsComponent</a>
                                        </li>
+                                       <li class="link">
+                                           <a href="./components/ToolbarComponent.html" >ToolbarComponent</a>
+                                       </li>
                                </ul>
                            </li>
                    
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#directives-links"
+                   >
+                                   <span class="fa fa-code"></span>
+                                   <span>Directives</span>
+                                   <span class="fa fa-angle-up"></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="directives-links"
+                   >
+                                       <li class="link">
+                                           <a href="./directives/ValidationOnBlurDirective.html" >ValidationOnBlurDirective</a>
+                                       </li>
+                               </ul>
+                           </li>
                    
                            <li class="chapter">
-                               <div class="simple">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#classes-links"
+                   >
                                    <span class="fa fa-file-code-o"></span>
                                    <span>Classes</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#classes-links"
-                   ></span>
+                                   <span class="fa fa-angle-up"></span>
                                </div>
                                <ul class="links collapse in"
                                        id="classes-links"
@@ -393,21 +578,92 @@
                                </ul>
                            </li>
                    
-                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#injectables-links"
+                   >
+                                   <span class="fa fa-long-arrow-down"></span>
+                                   <span>Injectables</span>
+                                   <span class="fa fa-angle-up"></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="injectables-links"
+                   >
+                                       <li class="link">
+                                           <a href="./injectables/AdminService.html" >AdminService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./injectables/AuthorizationService.html" >AuthorizationService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./injectables/PublicAuthService.html" >PublicAuthService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./injectables/PublicService.html" >PublicService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./injectables/SdkService.html" >SdkService</a>
+                                       </li>
+                               </ul>
+                           </li>
                    
                            <li class="chapter">
-                               <div class="simple">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#interfaces-links"
+                   >
+                                   <span class="fa fa-info"></span>
+                                   <span>Interfaces</span>
+                                   <span class="fa fa-angle-up"></span>
+                               </div>
+                               <ul class="links collapse in"
+                                       id="interfaces-links"
+                   >
+                                       <li class="link">
+                                           <a href="./interfaces/EntryListConfig.html" >EntryListConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./interfaces/Environment.html" >Environment</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./interfaces/FieldConfig.html" >FieldConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./interfaces/FieldConfigProperty.html" >FieldConfigProperty</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./interfaces/FormConfig.html" >FormConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./interfaces/ItemConfig.html" >ItemConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./interfaces/ListConfig.html" >ListConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./interfaces/ModelConfiguration.html" >ModelConfiguration</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#pipes-links"
+                   >
                                    <span class="fa fa-plus"></span>
                                    <span>Pipes</span>
-                                   <span class="menu-toggler fa fa-angle-up" data-toggle="collapse"
-                                           data-target="#pipes-links"
-                   ></span>
+                                   <span class="fa fa-angle-up"></span>
                                </div>
                                <ul class="links collapse in"
                                        id="pipes-links"
                    >
                                        <li class="link">
                                            <a href="./pipes/GroupPipe.html" >GroupPipe</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./pipes/SafeHtmlPipe.html" >SafeHtmlPipe</a>
                                        </li>
                                </ul>
                            </li>
@@ -460,6 +716,126 @@
         </tr>
     </thead>
     <tbody>
+        <tr class="low">
+            <td>
+                <a href="./components/AdminLoginComponent.html">src/packages/auth/admin-login/admin-login.component.ts</a>
+            </td>
+            <td>
+                component
+            </td>
+            <td>
+                AdminLoginComponent
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/10)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./components/AdminSignupComponent.html">src/packages/auth/admin-signup/admin-signup.component.ts</a>
+            </td>
+            <td>
+                component
+            </td>
+            <td>
+                AdminSignupComponent
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/10)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./injectables/AuthorizationService.html">src/packages/auth/authorization.service.ts</a>
+            </td>
+            <td>
+                injectable
+            </td>
+            <td>
+                AuthorizationService
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/9)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./components/FieldErrorsComponent.html">src/packages/auth/field-errors/field-errors.component.ts</a>
+            </td>
+            <td>
+                component
+            </td>
+            <td>
+                FieldErrorsComponent
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/6)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./injectables/PublicAuthService.html">src/packages/auth/public-auth.service.ts</a>
+            </td>
+            <td>
+                injectable
+            </td>
+            <td>
+                PublicAuthService
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/11)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./components/PublicLoginComponent.html">src/packages/auth/public-login/public-login.component.ts</a>
+            </td>
+            <td>
+                component
+            </td>
+            <td>
+                PublicLoginComponent
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/10)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./components/PublicSignupComponent.html">src/packages/auth/public-signup/public-signup.component.ts</a>
+            </td>
+            <td>
+                component
+            </td>
+            <td>
+                PublicSignupComponent
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/10)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./injectables/DefaultRequestOptions.html">src/packages/auth/request-options.ts</a>
+            </td>
+            <td>
+                injectable
+            </td>
+            <td>
+                DefaultRequestOptions
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/3)</span>
+            </td>
+        </tr>
         <tr class="good">
             <td>
                 <a href="./classes/Collection.html">src/packages/core/collection/collection.ts</a>
@@ -492,6 +868,36 @@
         </tr>
         <tr class="good">
             <td>
+                <a href="./interfaces/FieldConfigProperty.html">src/packages/core/config/field-config-property.interface.ts</a>
+            </td>
+            <td>
+                interface
+            </td>
+            <td>
+                FieldConfigProperty
+            </td>
+            <td align="right">
+                <span class="coverage-percent">100 %</span>
+                <span class="coverage-count">(15/15)</span>
+            </td>
+        </tr>
+        <tr class="good">
+            <td>
+                <a href="./interfaces/FieldConfig.html">src/packages/core/config/field-config.interface.ts</a>
+            </td>
+            <td>
+                interface
+            </td>
+            <td>
+                FieldConfig
+            </td>
+            <td align="right">
+                <span class="coverage-percent">100 %</span>
+                <span class="coverage-count">(2/2)</span>
+            </td>
+        </tr>
+        <tr class="good">
+            <td>
                 <a href="./classes/Field.html">src/packages/core/field/field.ts</a>
             </td>
             <td>
@@ -503,6 +909,21 @@
             <td align="right">
                 <span class="coverage-percent">100 %</span>
                 <span class="coverage-count">(8/8)</span>
+            </td>
+        </tr>
+        <tr class="good">
+            <td>
+                <a href="./interfaces/FormConfig.html">src/packages/core/form/form-config.interface.ts</a>
+            </td>
+            <td>
+                interface
+            </td>
+            <td>
+                FormConfig
+            </td>
+            <td align="right">
+                <span class="coverage-percent">100 %</span>
+                <span class="coverage-count">(1/1)</span>
             </td>
         </tr>
         <tr class="good">
@@ -522,6 +943,21 @@
         </tr>
         <tr class="good">
             <td>
+                <a href="./interfaces/ItemConfig.html">src/packages/core/item/item-config.interface.ts</a>
+            </td>
+            <td>
+                interface
+            </td>
+            <td>
+                ItemConfig
+            </td>
+            <td align="right">
+                <span class="coverage-percent">100 %</span>
+                <span class="coverage-count">(8/8)</span>
+            </td>
+        </tr>
+        <tr class="good">
+            <td>
                 <a href="./classes/Item.html">src/packages/core/item/item.ts</a>
             </td>
             <td>
@@ -531,8 +967,23 @@
                 Item
             </td>
             <td align="right">
-                <span class="coverage-percent">91 %</span>
-                <span class="coverage-count">(11/12)</span>
+                <span class="coverage-percent">93 %</span>
+                <span class="coverage-count">(14/15)</span>
+            </td>
+        </tr>
+        <tr class="good">
+            <td>
+                <a href="./interfaces/ListConfig.html">src/packages/core/list/list-config.interface.ts</a>
+            </td>
+            <td>
+                interface
+            </td>
+            <td>
+                ListConfig
+            </td>
+            <td align="right">
+                <span class="coverage-percent">100 %</span>
+                <span class="coverage-count">(8/8)</span>
             </td>
         </tr>
         <tr class="good">
@@ -576,8 +1027,8 @@
                 Selection
             </td>
             <td align="right">
-                <span class="coverage-percent">77 %</span>
-                <span class="coverage-count">(7/9)</span>
+                <span class="coverage-percent">80 %</span>
+                <span class="coverage-count">(8/10)</span>
             </td>
         </tr>
         <tr class="good">
@@ -606,8 +1057,23 @@
                 Datamanager
             </td>
             <td align="right">
-                <span class="coverage-percent">60 %</span>
-                <span class="coverage-count">(6/10)</span>
+                <span class="coverage-percent">63 %</span>
+                <span class="coverage-count">(7/11)</span>
+            </td>
+        </tr>
+        <tr class="good">
+            <td>
+                <a href="./interfaces/Environment.html">src/packages/data/datamanager/environment.inferface.ts</a>
+            </td>
+            <td>
+                interface
+            </td>
+            <td>
+                Environment
+            </td>
+            <td align="right">
+                <span class="coverage-percent">100 %</span>
+                <span class="coverage-count">(5/5)</span>
             </td>
         </tr>
         <tr class="low">
@@ -642,6 +1108,21 @@
         </tr>
         <tr class="good">
             <td>
+                <a href="./interfaces/EntryListConfig.html">src/packages/data/entry-list/entry-list-config.ts</a>
+            </td>
+            <td>
+                interface
+            </td>
+            <td>
+                EntryListConfig
+            </td>
+            <td align="right">
+                <span class="coverage-percent">100 %</span>
+                <span class="coverage-count">(3/3)</span>
+            </td>
+        </tr>
+        <tr class="good">
+            <td>
                 <a href="./components/EntryListComponent.html">src/packages/data/entry-list/entry-list.component.ts</a>
             </td>
             <td>
@@ -652,7 +1133,7 @@
             </td>
             <td align="right">
                 <span class="coverage-percent">100 %</span>
-                <span class="coverage-count">(8/8)</span>
+                <span class="coverage-count">(9/9)</span>
             </td>
         </tr>
         <tr class="good">
@@ -717,6 +1198,66 @@
         </tr>
         <tr class="good">
             <td>
+                <a href="./interfaces/ModelConfiguration.html">src/packages/data/model-config/model-configuration.interface.ts</a>
+            </td>
+            <td>
+                interface
+            </td>
+            <td>
+                ModelConfiguration
+            </td>
+            <td align="right">
+                <span class="coverage-percent">100 %</span>
+                <span class="coverage-count">(2/2)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./injectables/AdminService.html">src/packages/data/sdk/admin.service.ts</a>
+            </td>
+            <td>
+                injectable
+            </td>
+            <td>
+                AdminService
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/5)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./injectables/PublicService.html">src/packages/data/sdk/public.service.ts</a>
+            </td>
+            <td>
+                injectable
+            </td>
+            <td>
+                PublicService
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/5)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./injectables/SdkService.html">src/packages/data/sdk/sdk.service.ts</a>
+            </td>
+            <td>
+                injectable
+            </td>
+            <td>
+                SdkService
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/10)</span>
+            </td>
+        </tr>
+        <tr class="good">
+            <td>
                 <a href="./components/FieldErrorsComponent.html">src/packages/ui/field-errors/field-errors.component.ts</a>
             </td>
             <td>
@@ -771,8 +1312,8 @@
                 FormComponent
             </td>
             <td align="right">
-                <span class="coverage-percent">66 %</span>
-                <span class="coverage-count">(10/15)</span>
+                <span class="coverage-percent">64 %</span>
+                <span class="coverage-count">(11/17)</span>
             </td>
         </tr>
         <tr class="good">
@@ -835,6 +1376,36 @@
                 <span class="coverage-count">(11/11)</span>
             </td>
         </tr>
+        <tr class="low">
+            <td>
+                <a href="./components/LoginComponent.html">src/packages/ui/login/login.component.ts</a>
+            </td>
+            <td>
+                component
+            </td>
+            <td>
+                LoginComponent
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/11)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./components/MenuComponent.html">src/packages/ui/menu/menu.component.ts</a>
+            </td>
+            <td>
+                component
+            </td>
+            <td>
+                MenuComponent
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/22)</span>
+            </td>
+        </tr>
         <tr class="good">
             <td>
                 <a href="./components/MockupComponent.html">src/packages/ui/mockup/mockup.component.ts</a>
@@ -865,6 +1436,36 @@
                 <span class="coverage-count">(5/12)</span>
             </td>
         </tr>
+        <tr class="low">
+            <td>
+                <a href="./components/PopComponent.html">src/packages/ui/pop/pop.component.ts</a>
+            </td>
+            <td>
+                component
+            </td>
+            <td>
+                PopComponent
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/7)</span>
+            </td>
+        </tr>
+        <tr class="good">
+            <td>
+                <a href="./components/SelectComponent.html">src/packages/ui/select/select.component.ts</a>
+            </td>
+            <td>
+                component
+            </td>
+            <td>
+                SelectComponent
+            </td>
+            <td align="right">
+                <span class="coverage-percent">84 %</span>
+                <span class="coverage-count">(11/13)</span>
+            </td>
+        </tr>
         <tr class="good">
             <td>
                 <a href="./components/TabComponent.html">src/packages/ui/tab/tab.component.ts</a>
@@ -893,6 +1494,51 @@
             <td align="right">
                 <span class="coverage-percent">80 %</span>
                 <span class="coverage-count">(4/5)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./components/EditorComponent.html">src/packages/vc/editor/editor.component.ts</a>
+            </td>
+            <td>
+                component
+            </td>
+            <td>
+                EditorComponent
+            </td>
+            <td align="right">
+                <span class="coverage-percent">1 %</span>
+                <span class="coverage-count">(1/62)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./pipes/SafeHtmlPipe.html">src/packages/vc/safe-html.pipe.ts</a>
+            </td>
+            <td>
+                pipe
+            </td>
+            <td>
+                SafeHtmlPipe
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/1)</span>
+            </td>
+        </tr>
+        <tr class="low">
+            <td>
+                <a href="./components/ToolbarComponent.html">src/packages/vc/toolbar/toolbar.component.ts</a>
+            </td>
+            <td>
+                component
+            </td>
+            <td>
+                ToolbarComponent
+            </td>
+            <td align="right">
+                <span class="coverage-percent">0 %</span>
+                <span class="coverage-count">(0/7)</span>
             </td>
         </tr>
     </tbody>

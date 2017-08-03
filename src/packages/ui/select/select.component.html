@@ -1,19 +1,20 @@
-<!--<div class="ec-list">
-  <div class="ec-list-group">
-    <ec-list-items [selection]="selection" [list]="list"></ec-list-items>
-  </div>
-</div>-->
-
-<ul class="selected-items">
-  <li *ngFor="let selected of selection.items">
-    {{selected.display()}} <a (click)="selection.remove(selected)">X</a>
-  </li>
-</ul>
-<ul class="available-items">
-  <li *ngFor="let item of list.items"
-      (click)="selection.toggle(item)" [hidden]="selection.has(item)">
-    {{item.display()}}
-  </li>
-</ul>
-
-{{selection.getIdentifiers() | json}}
+<div class="ec-select">
+  <ul class="selected-items">
+    <li *ngFor="let selected of selection.items" class="pill">
+      {{selected.display()}} <a (click)="selection.remove(selected)">X</a>
+    </li>
+    <li (click)="open=!open" class="pill" [class.open]="open"
+        *ngIf="!selection.hasAll(list.items)">
+      <span>+</span>
+    </li>
+  </ul>
+  <ul class="available-items" [class.closed]="!open" *ngIf="!selection.hasAll(list.items)">
+    <li>
+      <input>
+    </li>
+    <li *ngFor="let item of list.items"
+        (click)="addItem(item)" [class.hidden]="selection.has(item)">
+      {{item.display()}}
+    </li>
+  </ul>
+</div>

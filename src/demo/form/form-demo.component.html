@@ -2,23 +2,16 @@
 <ec-form [config]="mocked.lists.trees.config"
          [item]="mocked.lists.trees.id(0)"></ec-form>
 
-<!--
-<ec-form #myForm (onChange)="formPop.show()">
-  <ec-field property="picture">
+<h2>Templated Form</h2>
+
+<ec-form [config]="mocked.lists.trees.config"
+         [item]="mocked.lists.trees.id(0)">
+  <ec-field property="name">
     <ng-template let-field="field" let-group="group" let-value="value">
-      <div class="ec-list-avatar">
-        <img
-            [src]="'https://unsplash.it/'+value*2+'/'+value">
-      </div>
-    </ng-template>
-  </ec-field>
-  <ec-field property="title">
-    <ng-template let-group="group" let-field="field">
       <label [formGroup]="group">
-        {{field.label || field.property}}
+        Custom Input
         <input type="text" [formControlName]="field.property">
       </label>
     </ng-template>
   </ec-field>
 </ec-form>
--->
