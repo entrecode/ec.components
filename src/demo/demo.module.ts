@@ -23,6 +23,7 @@ import { PublicLoginComponent } from '../packages/auth/public-login/public-login
 import { PublicSignupComponent } from '../packages/auth/public-signup/public-signup.component';
 import { AuthModule } from '../packages/auth/auth.module';
 import { AuthDemoComponent } from './auth/auth-demo.component';
+import { CoolStringComponent } from './form/cool-string.component'
 
 export const demoRoutes: Routes = [
   {
@@ -156,6 +157,10 @@ export const demoRoutes: Routes = [
     CrudDemoComponent,
     SelectDemoComponent,
     AuthDemoComponent,
+    CoolStringComponent,
+  ],
+  entryComponents: [
+    CoolStringComponent
   ],
   imports: [
     CommonModule,

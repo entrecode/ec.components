@@ -1,13 +1,4 @@
-import {
-  ChangeDetectorRef,
-  Component,
-  ContentChildren,
-  EventEmitter,
-  Input,
-  Output,
-  QueryList,
-  ViewChildren
-} from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, Output, } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -18,7 +9,7 @@ import {
   Validators
 } from '@angular/forms';
 import { Field, Form, FormConfig, Item } from '../../core';
-import { FieldComponent } from '..';
+
 /** This component renders a form using a FieldConfig Object. */
 @Component({
   selector: 'ec-form',
@@ -35,12 +26,9 @@ export class FormComponent {
   /** You can also use an Item as input */
   @Input() item: Item<any>;
   /** Emits when the form is submitted. The form can only be submitted if all Validators succeeded. */
-  @Output() submit: EventEmitter<FormGroup> = new EventEmitter();
+  @Output('onSubmit') submit: EventEmitter<FormGroup> = new EventEmitter();
   /** Emits when a new instance of Form is present */
   @Output() onChange: EventEmitter<FormComponent> = new EventEmitter();
-  /** A field component inside the ec-form tags interpreted as a custom template */
-  @ContentChildren(FieldComponent) templates: QueryList<FieldComponent>;
-  @ViewChildren(FieldComponent) fields: QueryList<FieldComponent>;
 
   /** The constructor injects the FormBuilder. */
   constructor(private fb: FormBuilder, private cdr: ChangeDetectorRef) {
@@ -57,13 +45,13 @@ export class FormComponent {
       this.item = new Item({}, this.config);
     }
     this.form = new Form(this.item.resolve(), this.config);
-
     const control = {};
     this.form.fields.forEach((field) => {
       const validators = this.getValidators(field);
       control[field.property] = new FormControl(this.item.resolve(field.property), validators)
     });
     this.group = new FormGroup(control);
+
     this.onChange.emit(this);
   }
 
@@ -71,28 +59,6 @@ export class FormComponent {
     this.config = item.getConfig() || this.config;
     this.item = item;
     this.ngOnChanges();
-  }
-
-  ngAfterViewChecked(b) {
-    this.renderTemplates();
-  }
-
-  renderTemplates() {
-    if (!this.templates) {
-      return;
-    }
-    this.templates.forEach((template) => {
-      this.fields.forEach((field) => {
-        if (template.matches(field)) {
-          field.renderTemplate(template.template, {
-            field: field.field,
-            group: this.group,
-            value: this.group.get(field.property).value
-          });
-        }
-      });
-    });
-    this.cdr.detectChanges();
   }
 
   validateFactory(field: Field<any>): ValidationErrors | null {

@@ -1,0 +1,20 @@
+<div [ngSwitch]="field.view" *ngIf="group" [formGroup]="group">
+  <ec-field-errors [control]="group.get(field.property)"></ec-field-errors>
+
+  <div *ngSwitchCase="'string'">
+    <label>{{field.label || field.property}}
+      <input type="text" [formControlName]="field.property">
+    </label>
+  </div>
+  <div *ngSwitchCase="'number'">
+    <label>{{field.label || field.property}}
+      <input type="number" [formControlName]="field.property">
+    </label>
+  </div>
+  <div *ngSwitchCase="'boolean'">
+    <label>
+      <input type="checkbox" [formControlName]="field.property">
+      {{field.label || field.property}}
+    </label>
+  </div>
+</div>

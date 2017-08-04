@@ -8,7 +8,7 @@ import { Item } from '../../core/item/item';
 import { mocked } from '../../../mocks/data';
 import { Collection } from '../../core/collection/collection';
 import { PaginationComponent } from '../pagination/pagination.component';
-import { FieldComponent } from '../field/field.component';
+import { FieldComponent } from '../input/input.component';
 
 describe('ListComponent', () => {
   let component: ListComponent;

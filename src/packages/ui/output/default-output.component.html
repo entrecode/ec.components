@@ -1,0 +1,22 @@
+<div [ngSwitch]="field.view" *ngIf="item">
+  <!--<div [attr.view]="field.view" [attr.property]="field.property" #cells>-->
+  <ul class="labels-list" *ngSwitchCase="'labels'">
+    <li *ngFor="let label of item.display(field.property)">
+      <div class="label">
+        {{label}}
+      </div>
+    </li>
+  </ul>
+  <a href="mailto:test@test.de" *ngSwitchCase="'email'">
+    {{item.display(field.property)}}
+  </a>
+  <div class="ec-list-avatar" *ngSwitchCase="'avatar'">
+    <img [src]="item.display(field.property)">
+  </div>
+  <div class="ec-list-avatar" *ngSwitchCase="'avatars'">
+    <img [src]="url" *ngFor="let url of item.display(field.property)">
+  </div>
+  <span *ngSwitchDefault>
+  {{item.display(field.property)}}
+</span>
+</div>

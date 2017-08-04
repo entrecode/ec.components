@@ -1,4 +1,6 @@
 /** Configuration for a FieldConfig property. */
+import { Type } from '@angular/core';
+
 export interface FieldConfigProperty {
   /** Property name */
   property?: string;
@@ -40,4 +42,8 @@ export interface FieldConfigProperty {
     type: string;
     title: string
   };
+  /** Custom Component for input (forms) */
+  input?: Type<any>;
+  /** Custom Component for output (e.g. list cell) */
+  output?: Type<any>;
 }

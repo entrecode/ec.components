@@ -1,14 +1,5 @@
-import {
-  Component,
-  ContentChildren,
-  EventEmitter,
-  Input,
-  Output,
-  QueryList,
-  ViewEncapsulation
-} from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
 import { Collection, List, ListConfig, Selection } from '../../core';
-import { FieldComponent } from '..';
 
 /**
  * The SelectComponent will render a dropdown of a given list.
@@ -34,8 +25,6 @@ export class SelectComponent {
   @Output() onSelect: EventEmitter<any> = new EventEmitter();
   /** The Instance of the List */
   @Input() list: List<any>;
-  /** A field component inside the ec-list tags interpreted as a custom template */
-  @ContentChildren(FieldComponent, { descendants: true }) templates: QueryList<FieldComponent>;
   private open: boolean;
 
   /** Changing items or collection will trigger reconstructing the list with the new items.

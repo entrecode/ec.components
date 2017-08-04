@@ -1,17 +1,31 @@
-<h2>Simple Form</h2>
-<ec-form [config]="mocked.lists.trees.config"
-         [item]="mocked.lists.trees.id(0)"></ec-form>
+<h2>Form</h2>
 
-<h2>Templated Form</h2>
+<h3>Default Form</h3>
+<p>If the ec-form element has no contents, the default form will be rendered, which is a list
+  containing all fields and a submit button</p>
+<ec-form [config]="mocked.lists.trees.config" [item]="mocked.lists.trees.id(0)"
+         (onSubmit)="submitTree($event)"></ec-form>
 
-<ec-form [config]="mocked.lists.trees.config"
-         [item]="mocked.lists.trees.id(0)">
-  <ec-field property="name">
-    <ng-template let-field="field" let-group="group" let-value="value">
-      <label [formGroup]="group">
-        Custom Input
-        <input type="text" [formControlName]="field.property">
-      </label>
-    </ng-template>
-  </ec-field>
+<h3>Custom Content</h3>
+<p>As soon as you put something inside the ec-form element, the default content will be omitted.
+  You can utilize the ec-input element to automatically render certain fields.</p>
+
+<ec-form [config]="mocked.lists.trees.config" [item]="mocked.lists.trees.id(0)"
+         (onSubmit)="submitTree($event)" #treeForm>
+  <!--<ec-input *ngFor="let field of treeForm.form?.fields" [group]="treeForm.group"
+            [field]="field"></ec-input>-->
+  <ec-output [field]="treeForm.form.getField('height')" [item]="treeForm.item"></ec-output>
+
+  <ec-input [field]="treeForm.form.getField('name')" [group]="treeForm.group"></ec-input>
+  <ec-input [field]="treeForm.form.getField('height')" [group]="treeForm.group"></ec-input>
+  <ec-input [field]="treeForm.form.getField('fruits')"
+            [group]="treeForm.group"></ec-input>
+  <button type="submit" [disabled]="treeForm.group?.invalid"
+          [class.disabled]="treeForm.group?.invalid">
+    Na los
+  </button>
 </ec-form>
+
+<pre>
+{{treeForm.group?.value | json}}
+</pre>

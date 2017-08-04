@@ -8,7 +8,7 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import { Collection, List, ListConfig, Selection } from '../../core';
-import { FieldComponent } from '..';
+import { InputComponent } from '..';
 
 /**
  * The ListComponent will render a list containing the given items or collection.
@@ -34,8 +34,6 @@ export class ListComponent {
   @Output() onSelect: EventEmitter<any> = new EventEmitter();
   /** The Instance of the List */
   @Input() list: List<any>;
-  /** A field component inside the ec-list tags interpreted as a custom template */
-  @ContentChildren(FieldComponent, { descendants: true }) templates: QueryList<FieldComponent>;
 
   /** Changing items or collection will trigger reconstructing the list with the new items.
    * Changing the selection will reconstruct the selection */

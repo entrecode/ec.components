@@ -1,4 +1,5 @@
 import { Field, FormConfig, Item } from '..';
+
 /** A Form is an extension of an Item. In advance to an Item it will create an Array of fields that is either extracted from config.fields or directly from the item body.*/
 export class Form<T> extends Item<T> {
   /** Array of fields. It will be populated automatically when the form is constructed. */
@@ -19,5 +20,10 @@ export class Form<T> extends Item<T> {
         this.fields.push(new Field(property, { type: typeof this.resolve(property) }));
       })
     }
+  }
+
+  /** returns the field instance of the given property */
+  getField(property: string) {
+    return this.fields.find((field) => field.property === property);
   }
 }

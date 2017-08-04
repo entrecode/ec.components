@@ -2,8 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import {
-  FieldComponent,
+  DefaultInputComponent,
+  DefaultOutputComponent,
+  DynamicFieldComponent,
+  InputComponent,
   FieldErrorsComponent,
+  FieldHostDirective,
   FilterComponent,
   FormComponent,
   GroupPipe,
@@ -13,17 +17,21 @@ import {
   LoginComponent,
   MenuComponent,
   MockupComponent,
+  OutputComponent,
   PaginationComponent,
   PopComponent,
   SelectComponent,
   TabComponent,
-  TabsComponent
+  TabsComponent,
 } from './index';
 
 @NgModule({
   entryComponents: [
-    FieldComponent,
+    InputComponent,
     PopComponent,
+    DynamicFieldComponent,
+    DefaultInputComponent,
+    DefaultOutputComponent,
   ],
   declarations: [
     ListComponent,
@@ -32,7 +40,8 @@ import {
     TabComponent,
     MockupComponent,
     FilterComponent,
-    FieldComponent,
+    InputComponent,
+    OutputComponent,
     ListItemsComponent,
     ListHeaderComponent,
     GroupPipe,
@@ -42,6 +51,11 @@ import {
     MenuComponent,
     SelectComponent,
     LoginComponent,
+    FieldHostDirective,
+    DynamicFieldComponent,
+    DefaultInputComponent,
+    DefaultOutputComponent,
+    // CustomFieldComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,12 +70,12 @@ import {
     TabComponent,
     MockupComponent,
     FilterComponent,
-    FieldComponent,
+    InputComponent,
+    OutputComponent,
     ListItemsComponent,
     ListHeaderComponent,
     GroupPipe,
     FormComponent,
-    FieldErrorsComponent,
     PopComponent,
     MenuComponent,
     SelectComponent,

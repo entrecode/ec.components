@@ -8,28 +8,7 @@
       <div *ngFor="let field of list?.fields" class="ec-list-item-cell"
            [ngClass]="'ec-list-' + field.type" [ngSwitch]="field.view"
            [class.hidden]="field.hidden">
-        <ec-field [view]="field.view" [property]="field.property" [field]="field" #cells>
-          <!--<div [attr.view]="field.view" [attr.property]="field.property" #cells>-->
-          <ul class="labels-list" *ngSwitchCase="'labels'">
-            <li *ngFor="let label of item.display(field.property)">
-              <div class="label">
-                {{label}}
-              </div>
-            </li>
-          </ul>
-          <a href="mailto:test@test.de" *ngSwitchCase="'email'">
-            {{item.display(field.property)}}
-          </a>
-          <div class="ec-list-avatar" *ngSwitchCase="'avatar'">
-            <img [src]="item.display(field.property)">
-          </div>
-          <div class="ec-list-avatar" *ngSwitchCase="'avatars'">
-            <img [src]="url" *ngFor="let url of item.display(field.property)">
-          </div>
-          <span *ngSwitchDefault>
-          {{item.display(field.property)}}
-        </span>
-        </ec-field>
+        <ec-output [field]="field" [item]="item"></ec-output>
         <!--</div>-->
       </div>
     </div>

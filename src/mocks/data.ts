@@ -1,4 +1,6 @@
 import { List } from '../packages/core';
+import { CoolStringComponent } from "../demo/form/cool-string.component";
+
 export const mocked = {
   products: [
     {
@@ -686,15 +688,21 @@ export const mocked = {
       size: 19,
       fields: {
         name: {
-          label: 'Name',
+          label: 'Name..',
           view: 'string',
-          required: true
+          required: true,
+          input: CoolStringComponent
         },
         height: {
           label: 'Höhe',
           group: (h) => h > 10 ? 'Höher als 10m' : 'Niedriger als 10m',
           view: 'number',
-          required: true
+          required: true,
+          validate: (value) => {
+            if (value < 1) {
+              return 'Der Wert muss positiv sein.'
+            }
+          }
         },
         fruits: {
           label: 'Früchte',
