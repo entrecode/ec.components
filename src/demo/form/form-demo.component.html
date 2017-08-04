@@ -12,10 +12,6 @@
 
 <ec-form [config]="mocked.lists.trees.config" [item]="mocked.lists.trees.id(0)"
          (onSubmit)="submitTree($event)" #treeForm>
-  <!--<ec-input *ngFor="let field of treeForm.form?.fields" [group]="treeForm.group"
-            [field]="field"></ec-input>-->
-  <ec-output [field]="treeForm.form.getField('height')" [item]="treeForm.item"></ec-output>
-
   <ec-input [field]="treeForm.form.getField('name')" [group]="treeForm.group"></ec-input>
   <ec-input [field]="treeForm.form.getField('height')" [group]="treeForm.group"></ec-input>
   <ec-input [field]="treeForm.form.getField('fruits')"

@@ -1,5 +1,5 @@
 <div [ngSwitch]="field.view" *ngIf="group" [formGroup]="group">
-  <ec-field-errors [control]="group.get(field.property)"></ec-field-errors>
+  <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>
 
   <div *ngSwitchCase="'string'">
     <label>{{field.label || field.property}}

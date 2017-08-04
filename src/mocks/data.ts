@@ -691,7 +691,8 @@ export const mocked = {
           label: 'Name..',
           view: 'string',
           required: true,
-          input: CoolStringComponent
+          input: CoolStringComponent,
+          output: CoolStringComponent
         },
         height: {
           label: 'Höhe',

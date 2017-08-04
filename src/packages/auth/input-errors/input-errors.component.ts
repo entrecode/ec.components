@@ -3,11 +3,11 @@ import { FormControl } from '@angular/forms';
 import { errors } from '../errors';
 
 @Component({
-  selector: 'ec-field-errors',
-  templateUrl: './field-errors.component.html',
-  styleUrls: ['./field-errors.component.scss']
+  selector: 'ec-input-errors',
+  templateUrl: './input-errors.component.html',
+  styleUrls: ['./input-errors.component.scss']
 })
-export class FieldErrorsComponent implements OnInit {
+export class InputErrorsComponent implements OnInit {
   @Input() control: FormControl;
   private errors;
 

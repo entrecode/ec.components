@@ -4,12 +4,12 @@
   </p>
   <label>
     E-Mail
-    <ec-field-errors [control]="login.get('email')"></ec-field-errors>
+    <ec-input-errors [control]="login.get('email')"></ec-input-errors>
     <input type="email" formControlName="email" validate-onblur>
   </label>
   <label>
     Passwort
-    <ec-field-errors [control]="login.get('password')"></ec-field-errors>
+    <ec-input-errors [control]="login.get('password')"></ec-input-errors>
     <input type="password" formControlName="password" validate-onblur>
   </label>
   <button type="submit" [disabled]="login.invalid" [class.disabled]="login.invalid">

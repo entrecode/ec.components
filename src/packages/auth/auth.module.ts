@@ -9,7 +9,7 @@ import { AuthorizationService } from './authorization.service';
 import { PublicLoginComponent } from './public-login/public-login.component';
 import { ValidationOnBlurDirective } from './validate-onblur';
 import { PublicSignupComponent } from './public-signup/public-signup.component';
-import { FieldErrorsComponent } from './field-errors/field-errors.component';
+import { InputErrorsComponent } from './input-errors/input-errors.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 // import { HyperAgentModule } from './hyperagent/hyper-agent.module';
 
@@ -18,7 +18,7 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
     PublicLoginComponent,
     PublicSignupComponent,
     ValidationOnBlurDirective,
-    FieldErrorsComponent,
+    InputErrorsComponent,
     AdminLoginComponent,
   ],
   imports: [
@@ -30,7 +30,7 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
   ],
   exports: [
     ValidationOnBlurDirective,
-    FieldErrorsComponent,
+    InputErrorsComponent,
     PublicLoginComponent,
     PublicSignupComponent,
     AdminLoginComponent

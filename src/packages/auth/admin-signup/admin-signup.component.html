@@ -4,12 +4,12 @@
   </p>
   <label>
     E-Mail
-    <ec-field-errors [control]="signup.get('email')"></ec-field-errors>
+    <ec-input-errors [control]="signup.get('email')"></ec-input-errors>
     <input type="email" formControlName="email" validate-onblur>
   </label>
   <label>
     Passwort
-    <ec-field-errors [control]="signup.get('password')"></ec-field-errors>
+    <ec-input-errors [control]="signup.get('password')"></ec-input-errors>
     <input type="password" formControlName="password" validate-onblur>
   </label>
   <button type="submit" [disabled]="signup.invalid" [class.disabled]="signup.invalid">
