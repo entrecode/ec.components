@@ -130,10 +130,10 @@
                                     <a href="../components/InputComponent.html" >InputComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/InputErrorsComponent.html" >InputErrorsComponent</a>
+                                    <a href="../components/InputErrorsComponent.html"  data-type="entity-link" class="active" >InputErrorsComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/InputErrorsComponent.html" >InputErrorsComponent</a>
+                                    <a href="../components/InputErrorsComponent.html"  data-type="entity-link" class="active" >InputErrorsComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/ListComponent.html" >ListComponent</a>
@@ -172,7 +172,7 @@
                                     <a href="../components/SelectComponent.html" >SelectComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/TabComponent.html"  data-type="entity-link" class="active" >TabComponent</a>
+                                    <a href="../components/TabComponent.html" >TabComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/TabsComponent.html" >TabsComponent</a>
@@ -485,10 +485,10 @@
                                            <a href="../components/InputComponent.html" >InputComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/InputErrorsComponent.html" >InputErrorsComponent</a>
+                                           <a href="../components/InputErrorsComponent.html"  data-type="entity-link" class="active" >InputErrorsComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/InputErrorsComponent.html" >InputErrorsComponent</a>
+                                           <a href="../components/InputErrorsComponent.html"  data-type="entity-link" class="active" >InputErrorsComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/ListComponent.html" >ListComponent</a>
@@ -527,7 +527,7 @@
                                            <a href="../components/SelectComponent.html" >SelectComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/TabComponent.html"  data-type="entity-link" class="active" >TabComponent</a>
+                                           <a href="../components/TabComponent.html" >TabComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/TabsComponent.html" >TabsComponent</a>
@@ -730,7 +730,7 @@
 
 <ol class="breadcrumb">
   <li>Components</li>
-  <li>TabComponent</li>
+  <li>InputErrorsComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -755,24 +755,18 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>src/packages/ui/tab/tab.component.ts</code>
+    <code>src/packages/ui/input-errors/input-errors.component.ts</code>
 </p>
 
     <p class="comment">
         <h3>Description</h3>
     </p>
     <p class="comment">
-        <p>A Tab is meant to be placed inside TabsComponent </p>
+        <p>This component keeps track of a form control&#39;s errors and displays them. It is meant to be used beneath a form control. </p>
 
     </p>
 
 
-    <p class="comment">
-        <h3>Implements</h3>
-    </p>
-    <p class="comment">
-                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnInit-interface.html" target="_blank" >OnInit</a></code>
-    </p>
 
 
 <section>
@@ -793,19 +787,19 @@
 
             <tr>
                 <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>ec-tab</code></td>
+                <td class="col-md-9"><code>ec-input-errors</code></td>
             </tr>
 
             <tr>
                 <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>tab.component.scss</code></td>
+                <td class="col-md-9"><code>input-errors.component.scss</code></td>
             </tr>
 
 
 
             <tr>
                 <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>./tab.component.html</code></td>
+                <td class="col-md-9"><code>./input-errors.component.html</code></td>
             </tr>
 
 
@@ -819,42 +813,20 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
-                            <code>label</code>
+                            <code>control</code>
                         </td>
                         <td class="col-md-10">
-                            <div><p>The tab&#39;s label </p>
+                            <div><p>The form control that should be tracked </p>
 </div>
                               <p>
-                                <em>Type:</em>    <code>string</code>
+                                <em>Type:</em>    <code>any</code>
 
                               </p>
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/packages/ui/tab/tab.component.ts:11</a></div>
-                                </td>
-                            </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <code>selected</code>
-                        </td>
-                        <td class="col-md-10">
-                            <div><p>If set to true, the tab will be selected at start. </p>
-</div>
-                              <p>
-                                <em>Type:</em>    <code>boolean</code>
-
-                              </p>
-                        </td>
-                    </tr>
-                            <tr>
-                                <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/packages/ui/tab/tab.component.ts:13</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/packages/ui/input-errors/input-errors.component.ts:12</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -862,30 +834,6 @@
     </section>
 
 
-    <section>
-        <h3 id="constructor">Constructor</h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <code>constructor(parent: any, el: any)</code>
-                        </td>
-                    </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/packages/ui/tab/tab.component.ts:13</a></div>
-                                </td>
-                            </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-description"><p>The constructor adds the tab itself to its TabsComponent parent. </p>
-    </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-    </section>
 
     <section>
         
@@ -896,58 +844,26 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b> isSelected</b>
+                            <b><span class="modifier">Private</span> getErrors</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-    <code>isSelected()</code>
-                        </td>
-                    </tr>
-    
-    
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/packages/ui/tab/tab.component.ts:21</a></div>
-                                </td>
-                            </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-description"><p>Returns true if the tab is currently selected. </p>
-    </div>
-    
-                                <div class="io-description">
-                                    <b>Returns : </b>    <code>boolean</code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <b> ngOnInit</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-    <code>ngOnInit()</code>
+                                <span class="modifier-icon method fa fa-play lock"></span>
+                            <code>getErrors()</code>
                         </td>
                     </tr>
     
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/packages/ui/tab/tab.component.ts:26</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/packages/ui/input-errors/input-errors.component.ts:16</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-description"><p>On init, the tab is selected if its selected attribute is set. It has to be done from here because it utilizes the element attribute directly. This makes it possible to just add <ec-tab selected>. </p>
+                                <div class="io-description"><p>This method will iterate over the control errors and generate objects for the template. </p>
     </div>
     
                                 <div class="io-description">
@@ -969,15 +885,25 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <b> parent</b>
+                            <b> errors</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <code>parent:     <code>any</code>
+                            <code>errors:     <code>any</code>
     </bcode>
                         </td>
                     </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Default value : </i><code>errors</code>
+                            </td>
+                        </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/packages/ui/input-errors/input-errors.component.ts:13</a></div>
+                                </td>
+                            </tr>
                 </tbody>
             </table>
     </section>
@@ -985,45 +911,48 @@
 
 
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { Component, ElementRef, Host, Input, OnInit } from &#x27;@angular/core&#x27;;
-import { TabsComponent } from &#x27;..&#x27;;
-/** A Tab is meant to be placed inside TabsComponent */
+        <pre class="line-numbers"><code class="language-typescript">import { Component, Input } from &#x27;@angular/core&#x27;;
+import { FormControl } from &#x27;@angular/forms&#x27;;
+import { errors } from &#x27;./input-errors&#x27;;
+/** This component keeps track of a form control&#x27;s errors and displays them. It is meant to be used beneath a form control. */
 @Component({
-  selector: &#x27;ec-tab&#x27;,
-  templateUrl: &#x27;./tab.component.html&#x27;,
-  styleUrls: [&#x27;./tab.component.scss&#x27;]
+  selector: &#x27;ec-input-errors&#x27;,
+  templateUrl: &#x27;./input-errors.component.html&#x27;,
+  styleUrls: [&#x27;./input-errors.component.scss&#x27;]
 })
-export class TabComponent implements OnInit {
-  /** The tab&#x27;s label */
-  @Input() label: string;
-  /** If set to true, the tab will be selected at start. */
-  @Input() selected: boolean;
+export class InputErrorsComponent {
+  /** The form control that should be tracked */
+  @Input() control: FormControl;
+  errors &#x3D; errors;
 
-  /** The constructor adds the tab itself to its TabsComponent parent. */
-  constructor(@Host() public parent: TabsComponent, private el: ElementRef) {
-    parent.add(this);
+  /** This method will iterate over the control errors and generate objects for the template. */
+  private getErrors() {
+    return Object.keys(this.control.errors).reduce((errs, key) &#x3D;&gt; {
+      let message;
+      if (key &#x3D;&#x3D;&#x3D; &#x27;custom&#x27;) {
+        message &#x3D; this.control.errors[key];
+      } else {
+        message &#x3D; errors[key] || &#x27;Ungültige Eingabe&#x27;;
+      }
+      errs.push({
+        key: key,
+        error: this.control.errors[key],
+        message
+      });
+      return errs;
+    }, []);
   }
 
-  /** Returns true if the tab is currently selected. */
-  isSelected(): boolean {
-    return this.parent.selected &#x3D;&#x3D;&#x3D; this;
-  }
-
-  /** On init, the tab is selected if its selected attribute is set. It has to be done from here because it utilizes the element attribute directly. This makes it possible to just add &lt;ec-tab selected&gt;. */
-  ngOnInit() {
-    if (this.el.nativeElement.getAttribute(&#x27;selected&#x27;) !&#x3D;&#x3D; null) {
-      this.parent.selected &#x3D; this;
-    }
-  }
 }
 </code></pre>
     </div>
 
     <div class="tab-pane fade" id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;ec-tab&quot; *ngIf&#x3D;&quot;isSelected()&quot;&gt;
-  &lt;ng-content&gt;&lt;/ng-content&gt;
-&lt;/div&gt;
-</code></pre>
+        <pre class="line-numbers"><code class="language-html">&lt;ul *ngIf&#x3D;&quot;control?.errors&amp;&amp;control.dirty&quot; class&#x3D;&quot;field-errors&quot;&gt;
+  &lt;li *ngFor&#x3D;&quot;let error of getErrors()&quot;&gt;
+    {{error.message}}
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
     </div>
 
     <div class="tab-pane fade" id="tree">
@@ -1049,10 +978,10 @@ export class TabComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="ec-tab" *ngIf="isSelected()">  <ng-content></ng-content></div></div>'
+        var COMPONENT_TEMPLATE = '<div><ul *ngIf="control?.errors&&control.dirty" class="field-errors">  <li *ngFor="let error of getErrors()">    {{error.message}}  </li></ul></div>'
     var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'DefaultInputComponent', 'selector': 'ec-default-input'},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicFieldComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'FilterComponent', 'selector': 'ec-filter'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'}];
     var DIRECTIVES = [{'name': 'FieldHostDirective', 'selector': '[ec-field-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
-    var ACTUAL_COMPONENT = {'name': 'TabComponent'};
+    var ACTUAL_COMPONENT = {'name': 'InputErrorsComponent'};
 </script>
 <script src="../js/tree.js"></script>
 

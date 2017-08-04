@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormComponent } from '../../ui/form/form.component';
+import { EntryForm } from './entry-form';
 
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent */
 @Component({
@@ -8,7 +9,13 @@ import { FormComponent } from '../../ui/form/form.component';
   styleUrls: ['./entry-form.component.scss']
 })
 export class EntryFormComponent extends FormComponent {
+  @Input() model: string;
+  @Input() entry = { value: {} };
 
-  ngOnInit() {
+  ngOnChanges() {
+    if (this.model) {
+      console.log('entry', this.entry);
+      this.form = new EntryForm(this.model, this.entry);
+    }
   }
 }

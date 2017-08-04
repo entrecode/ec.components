@@ -111,6 +111,7 @@ export class ModelConfig extends Config {
           model: type.model,
           display: this.displayField(type.name, property)
         }, fieldConfig[property] ? fieldConfig[property] : {});
+        //TODO find strategy for input/output templates!!
       });
       return fieldConfig;
     });

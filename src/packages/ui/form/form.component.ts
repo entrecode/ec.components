@@ -30,10 +30,6 @@ export class FormComponent {
   /** Emits when a new instance of Form is present */
   @Output() onChange: EventEmitter<FormComponent> = new EventEmitter();
 
-  /** The constructor injects the FormBuilder. */
-  constructor(private fb: FormBuilder, private cdr: ChangeDetectorRef) {
-  }
-
   /** On change, the form instance is (re)created by combining all inputs. If no item is given, an empty form is created using the config. You can also pass just an item to use its config and body.*/
   ngOnChanges() {
     if (this.item) {
