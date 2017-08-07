@@ -97,6 +97,9 @@
                                     <a href="../components/AdminSignupComponent.html" >AdminSignupComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/DefaultEntryInputComponent.html" >DefaultEntryInputComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/DefaultInputComponent.html" >DefaultInputComponent</a>
                                 </li>
                                 <li class="link">
@@ -128,9 +131,6 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/InputComponent.html" >InputComponent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../components/InputErrorsComponent.html" >InputErrorsComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/InputErrorsComponent.html" >InputErrorsComponent</a>
@@ -452,6 +452,9 @@
                                            <a href="../components/AdminSignupComponent.html" >AdminSignupComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/DefaultEntryInputComponent.html" >DefaultEntryInputComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/DefaultInputComponent.html" >DefaultInputComponent</a>
                                        </li>
                                        <li class="link">
@@ -483,9 +486,6 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/InputComponent.html" >InputComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../components/InputErrorsComponent.html" >InputErrorsComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/InputErrorsComponent.html" >InputErrorsComponent</a>
@@ -921,7 +921,6 @@ export class EntryFormComponent extends FormComponent {
 
   ngOnChanges() {
     if (this.model) {
-      console.log(&#x27;entry&#x27;, this.entry);
       this.form &#x3D; new EntryForm(this.model, this.entry);
     }
   }
@@ -960,7 +959,7 @@ export class EntryFormComponent extends FormComponent {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><ec-form *ngIf="form?.config?.fields" [item]="form"></ec-form><pre>  {{form.config |json}}</pre></div>'
-    var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'DefaultInputComponent', 'selector': 'ec-default-input'},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicFieldComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'FilterComponent', 'selector': 'ec-filter'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'}];
+    var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'DefaultEntryInputComponent', 'selector': 'ec-default-entry-input'},{'name': 'DefaultInputComponent', 'selector': 'ec-default-input'},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicFieldComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'FilterComponent', 'selector': 'ec-filter'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'}];
     var DIRECTIVES = [{'name': 'FieldHostDirective', 'selector': '[ec-field-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'EntryFormComponent'};
 </script>

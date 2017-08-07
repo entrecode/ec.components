@@ -97,6 +97,9 @@
                                     <a href="../components/AdminSignupComponent.html" >AdminSignupComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/DefaultEntryInputComponent.html" >DefaultEntryInputComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/DefaultInputComponent.html"  data-type="entity-link" class="active" >DefaultInputComponent</a>
                                 </li>
                                 <li class="link">
@@ -128,9 +131,6 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/InputComponent.html" >InputComponent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../components/InputErrorsComponent.html" >InputErrorsComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/InputErrorsComponent.html" >InputErrorsComponent</a>
@@ -452,6 +452,9 @@
                                            <a href="../components/AdminSignupComponent.html" >AdminSignupComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/DefaultEntryInputComponent.html" >DefaultEntryInputComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/DefaultInputComponent.html"  data-type="entity-link" class="active" >DefaultInputComponent</a>
                                        </li>
                                        <li class="link">
@@ -483,9 +486,6 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/InputComponent.html" >InputComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../components/InputErrorsComponent.html" >InputErrorsComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/InputErrorsComponent.html" >InputErrorsComponent</a>
@@ -907,7 +907,6 @@ export class DefaultInputComponent {
     <div class="tab-pane fade" id="templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div [ngSwitch]&#x3D;&quot;field.view&quot; *ngIf&#x3D;&quot;group&quot; [formGroup]&#x3D;&quot;group&quot;&gt;
   &lt;ec-input-errors [control]&#x3D;&quot;group.get(field.property)&quot;&gt;&lt;/ec-input-errors&gt;
-
   &lt;div *ngSwitchCase&#x3D;&quot;&#x27;string&#x27;&quot;&gt;
     &lt;label&gt;{{field.label || field.property}}
       &lt;input type&#x3D;&quot;text&quot; [formControlName]&#x3D;&quot;field.property&quot;&gt;
@@ -922,6 +921,16 @@ export class DefaultInputComponent {
     &lt;label&gt;
       &lt;input type&#x3D;&quot;checkbox&quot; [formControlName]&#x3D;&quot;field.property&quot;&gt;
       {{field.label || field.property}}
+    &lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div *ngSwitchCase&#x3D;&quot;&#x27;date&#x27;&quot;&gt;
+    &lt;label&gt;{{field.label || field.property}}
+      &lt;input type&#x3D;&quot;date&quot; [formControlName]&#x3D;&quot;field.property&quot;&gt;
+    &lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div *ngSwitchCase&#x3D;&quot;&#x27;array&#x27;&quot;&gt;
+    &lt;label&gt;{{field.label || field.property}}
+      &lt;ec-select [formControlName]&#x3D;&quot;field.property&quot;&gt;&lt;/ec-select&gt;
     &lt;/label&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
@@ -950,8 +959,8 @@ export class DefaultInputComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div [ngSwitch]="field.view" *ngIf="group" [formGroup]="group">  <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>  <div *ngSwitchCase="\'string\'">    <label>{{field.label || field.property}}      <input type="text" [formControlName]="field.property">    </label>  </div>  <div *ngSwitchCase="\'number\'">    <label>{{field.label || field.property}}      <input type="number" [formControlName]="field.property">    </label>  </div>  <div *ngSwitchCase="\'boolean\'">    <label>      <input type="checkbox" [formControlName]="field.property">      {{field.label || field.property}}    </label>  </div></div></div>'
-    var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'DefaultInputComponent', 'selector': 'ec-default-input'},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicFieldComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'FilterComponent', 'selector': 'ec-filter'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'}];
+        var COMPONENT_TEMPLATE = '<div><div [ngSwitch]="field.view" *ngIf="group" [formGroup]="group">  <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>  <div *ngSwitchCase="\'string\'">    <label>{{field.label || field.property}}      <input type="text" [formControlName]="field.property">    </label>  </div>  <div *ngSwitchCase="\'number\'">    <label>{{field.label || field.property}}      <input type="number" [formControlName]="field.property">    </label>  </div>  <div *ngSwitchCase="\'boolean\'">    <label>      <input type="checkbox" [formControlName]="field.property">      {{field.label || field.property}}    </label>  </div>  <div *ngSwitchCase="\'date\'">    <label>{{field.label || field.property}}      <input type="date" [formControlName]="field.property">    </label>  </div>  <div *ngSwitchCase="\'array\'">    <label>{{field.label || field.property}}      <ec-select [formControlName]="field.property"></ec-select>    </label>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'DefaultEntryInputComponent', 'selector': 'ec-default-entry-input'},{'name': 'DefaultInputComponent', 'selector': 'ec-default-input'},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicFieldComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'FilterComponent', 'selector': 'ec-filter'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'}];
     var DIRECTIVES = [{'name': 'FieldHostDirective', 'selector': '[ec-field-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'DefaultInputComponent'};
 </script>

@@ -97,6 +97,9 @@
                                     <a href="../components/AdminSignupComponent.html" >AdminSignupComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/DefaultEntryInputComponent.html" >DefaultEntryInputComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/DefaultInputComponent.html" >DefaultInputComponent</a>
                                 </li>
                                 <li class="link">
@@ -128,9 +131,6 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/InputComponent.html" >InputComponent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../components/InputErrorsComponent.html" >InputErrorsComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/InputErrorsComponent.html" >InputErrorsComponent</a>
@@ -452,6 +452,9 @@
                                            <a href="../components/AdminSignupComponent.html" >AdminSignupComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/DefaultEntryInputComponent.html" >DefaultEntryInputComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/DefaultInputComponent.html" >DefaultInputComponent</a>
                                        </li>
                                        <li class="link">
@@ -483,9 +486,6 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/InputComponent.html" >InputComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../components/InputErrorsComponent.html" >InputErrorsComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/InputErrorsComponent.html" >InputErrorsComponent</a>
@@ -781,6 +781,76 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
+                                    <b><span class="modifier">Static</span> registerInputComponent</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon method fa fa-play export"></span>
+                                    <code>registerInputComponent(component: any, types: any)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/packages/data/model-config/model-config.ts:37</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Registers a custom input component for the given types. You can e.g. register a custom file picker for the types &#39;asset&#39; and &#39;assets&#39;.
+            Be aware that you have to handle different formats yourself when dealing with multiple types</p>
+            </div>
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code>void</code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b><span class="modifier">Static</span> getInputComponent</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon method fa fa-play export"></span>
+                                    <code>getInputComponent(type: any)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/packages/data/model-config/model-config.ts:46</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Retrieves the component that should be used to render an input for the given type.
+            You can register components via registerInputComponent for custom components.</p>
+            </div>
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code>void</code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
                                     <b><span class="modifier">Static</span> get</b>
                                 </td>
                             </tr>
@@ -794,7 +864,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/packages/data/model-config/model-config.ts:32</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/packages/data/model-config/model-config.ts:62</a></div>
                                         </td>
                                     </tr>
             
@@ -837,7 +907,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/packages/data/model-config/model-config.ts:47</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">src/packages/data/model-config/model-config.ts:77</a></div>
                                         </td>
                                     </tr>
             
@@ -885,7 +955,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/packages/data/model-config/model-config.ts:52</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/packages/data/model-config/model-config.ts:82</a></div>
                                         </td>
                                     </tr>
             
@@ -919,7 +989,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/packages/data/model-config/model-config.ts:66</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">src/packages/data/model-config/model-config.ts:96</a></div>
                                         </td>
                                     </tr>
             
@@ -953,7 +1023,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/packages/data/model-config/model-config.ts:71</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">src/packages/data/model-config/model-config.ts:101</a></div>
                                         </td>
                                     </tr>
             
@@ -987,7 +1057,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/packages/data/model-config/model-config.ts:85</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="115" class="link-to-prism">src/packages/data/model-config/model-config.ts:115</a></div>
                                         </td>
                                     </tr>
             
@@ -1030,12 +1100,38 @@
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/packages/data/model-config/model-config.ts:8</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/packages/data/model-config/model-config.ts:11</a></div>
                                         </td>
                                     </tr>
                             <tr>
                                 <td class="col-md-4">
                                     <div class="io-description"><p>Array of property names that are omitted by default. </p>
+            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b><span class="modifier">Static</span> typeInputComponents</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-export"></span><code>typeInputComponents:     <code>{}</code>
+            </bcode>
+                                </td>
+                            </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/packages/data/model-config/model-config.ts:33</a></div>
+                                        </td>
+                                    </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Maps field types to components </p>
             </div>
                                 </td>
                             </tr>
@@ -1056,9 +1152,15 @@
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/packages/data/model-config/model-config.ts:16</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/packages/data/model-config/model-config.ts:20</a></div>
                                         </td>
                                     </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Maps field types to view types (may be deprecated in the future) </p>
+            </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -1067,6 +1169,9 @@
         <pre class="line-numbers"><code class="language-typescript">import { Config, FieldConfig, FieldConfigProperty } from &#x27;../../core&#x27;;
 import { Datamanager, ModelConfiguration } from &#x27;..&#x27;;
 import * as moment from &#x27;moment&#x27;;
+import { DefaultEntryInputComponent } from &#x27;../entry-form/default-entry-input.component&#x27;;
+import { DefaultInputComponent } from &#x27;../../ui/input/default-input.component&#x27;;
+import { Type } from &quot;@angular/core&quot;;
 
 /** The main class for configuring model data behaviour.*/
 export class ModelConfig extends Config {
@@ -1079,6 +1184,7 @@ export class ModelConfig extends Config {
     &#x27;modified&#x27;
   ];
 
+  /** Maps field types to view types (may be deprecated in the future) */
   static typeViews &#x3D; {
     entries: &#x27;labels&#x27;,
     entry: &#x27;label&#x27;,
@@ -1087,7 +1193,33 @@ export class ModelConfig extends Config {
     text: &#x27;string&#x27;,
     decimal: &#x27;number&#x27;,
     number: &#x27;number&#x27;,
+    boolean: &#x27;boolean&#x27;,
+    datetime: &#x27;date&#x27;
   };
+
+  /** Maps field types to components */
+  static typeInputComponents &#x3D; {};
+
+  /** Registers a custom input component for the given types. You can e.g. register a custom file picker for the types &#x27;asset&#x27; and &#x27;assets&#x27;.
+   * Be aware that you have to handle different formats yourself when dealing with multiple types*/
+  static registerInputComponent(component: Type&lt;any&gt;, types: Array&lt;string&gt;) {
+    types.forEach((type) &#x3D;&gt; {
+      this.typeInputComponents[type] &#x3D; component;
+    })
+  }
+
+  /** Retrieves the component that should be used to render an input for the given type.
+   * You can register components via registerInputComponent for custom components.
+   * */
+  static getInputComponent(type) {
+    if (this.typeInputComponents[type]) {
+      return this.typeInputComponents[type];
+    }
+    if (type &#x3D;&#x3D;&#x3D; &#x27;text&#x27; || type &#x3D;&#x3D;&#x3D; &#x27;decimal&#x27; || type &#x3D;&#x3D;&#x3D; &#x27;boolean&#x27; || type &#x3D;&#x3D;&#x3D; &#x27;number&#x27; || type &#x3D;&#x3D;&#x3D; &#x27;datetime&#x27;) {
+      return DefaultInputComponent;
+    }
+    return DefaultEntryInputComponent;
+  }
 
   /** Retrieves the given model config.
    * @example
@@ -1175,7 +1307,9 @@ export class ModelConfig extends Config {
           type: type.name,
           view: this.typeViews[type.name],
           model: type.model,
-          display: this.displayField(type.name, property)
+          display: this.displayField(type.name, property),
+          input: this.getInputComponent(type.name)
+          // TODO set custom input/ouput components based on view
         }, fieldConfig[property] ? fieldConfig[property] : {});
         //TODO find strategy for input/output templates!!
       });

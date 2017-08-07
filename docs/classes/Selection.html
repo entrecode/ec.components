@@ -97,6 +97,9 @@
                                     <a href="../components/AdminSignupComponent.html" >AdminSignupComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/DefaultEntryInputComponent.html" >DefaultEntryInputComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/DefaultInputComponent.html" >DefaultInputComponent</a>
                                 </li>
                                 <li class="link">
@@ -128,9 +131,6 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/InputComponent.html" >InputComponent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../components/InputErrorsComponent.html" >InputErrorsComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/InputErrorsComponent.html" >InputErrorsComponent</a>
@@ -452,6 +452,9 @@
                                            <a href="../components/AdminSignupComponent.html" >AdminSignupComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/DefaultEntryInputComponent.html" >DefaultEntryInputComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/DefaultInputComponent.html" >DefaultInputComponent</a>
                                        </li>
                                        <li class="link">
@@ -483,9 +486,6 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/InputComponent.html" >InputComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../components/InputErrorsComponent.html" >InputErrorsComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/InputErrorsComponent.html" >InputErrorsComponent</a>
@@ -949,12 +949,12 @@ It supports solo and multiple selection.</p>
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b> getIdentifiers</b>
+                                    <b> getValue</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>getIdentifiers()</code>
+            <code>getValue()</code>
                                 </td>
                             </tr>
             
@@ -967,7 +967,7 @@ It supports solo and multiple selection.</p>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>Returns an Array containing only the selected identifiers </p>
+                                        <div class="io-description"><p>Returns an Array containing the current value. If an identifier is set, the array will consist of the identifier values, if not, it will resolve the item contents. </p>
             </div>
             
                                         <div class="io-description">
@@ -1134,9 +1134,9 @@ export class Selection&lt;T&gt; extends List&lt;T&gt; {
     return this.toggleAll(items, true);
   };
 
-  /** Returns an Array containing only the selected identifiers */
-  getIdentifiers() {
-    return this.items.map((item) &#x3D;&gt; this.config.identifier ? item.id() : item);
+  /** Returns an Array containing the current value. If an identifier is set, the array will consist of the identifier values, if not, it will resolve the item contents. */
+  getValue() {
+    return this.items.map((item) &#x3D;&gt; this.config.identifier ? item.id() : item.resolve());
   }
 }</code></pre>
     </div>

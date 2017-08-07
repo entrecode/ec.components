@@ -97,6 +97,9 @@
                                     <a href="../components/AdminSignupComponent.html" >AdminSignupComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/DefaultEntryInputComponent.html" >DefaultEntryInputComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/DefaultInputComponent.html" >DefaultInputComponent</a>
                                 </li>
                                 <li class="link">
@@ -128,9 +131,6 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/InputComponent.html" >InputComponent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../components/InputErrorsComponent.html" >InputErrorsComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/InputErrorsComponent.html" >InputErrorsComponent</a>
@@ -452,6 +452,9 @@
                                            <a href="../components/AdminSignupComponent.html" >AdminSignupComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/DefaultEntryInputComponent.html" >DefaultEntryInputComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/DefaultInputComponent.html" >DefaultInputComponent</a>
                                        </li>
                                        <li class="link">
@@ -483,9 +486,6 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/InputComponent.html" >InputComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../components/InputErrorsComponent.html" >InputErrorsComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/InputErrorsComponent.html" >InputErrorsComponent</a>
@@ -799,6 +799,53 @@
     </table>
 </section>
 
+    <section>
+        <h3 id="inputs">Inputs</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>field</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>The instance of field that should be used in the template </p>
+</div>
+                              <p>
+                                <em>Type:</em>    <code>any</code>
+
+                              </p>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/packages/ui/dynamic-field/dynamic-field.component.ts:17</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <code>item</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>The belonging item </p>
+</div>
+                              <p>
+                                <em>Type:</em>    <code>any</code>
+
+                              </p>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/packages/ui/dynamic-field/dynamic-field.component.ts:19</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+    </section>
 
 
     <section>
@@ -812,7 +859,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/packages/ui/dynamic-field/dynamic-field.component.ts:13</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/packages/ui/dynamic-field/dynamic-field.component.ts:19</a></div>
                                 </td>
                             </tr>
     
@@ -847,7 +894,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/packages/ui/dynamic-field/dynamic-field.component.ts:19</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/packages/ui/dynamic-field/dynamic-field.component.ts:25</a></div>
                                 </td>
                             </tr>
     
@@ -889,7 +936,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/packages/ui/dynamic-field/dynamic-field.component.ts:13</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/packages/ui/dynamic-field/dynamic-field.component.ts:15</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -905,8 +952,10 @@
 
 
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { Component, ComponentFactoryResolver, Type, ViewChild, } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { Component, ComponentFactoryResolver, Input, Type, ViewChild } from &#x27;@angular/core&#x27;;
 import { FieldHostDirective } from &#x27;./field-host.directive&#x27;;
+import { Item } from &#x27;../../core/item/item&#x27;;
+import { Field } from &#x27;../../core/field/field&#x27;;
 
 // import { CustomFieldComponent } from &#x27;./custom-field.component&#x27;;
 
@@ -918,6 +967,10 @@ import { FieldHostDirective } from &#x27;./field-host.directive&#x27;;
 export class DynamicFieldComponent {
   /** The FieldHostDirective will  be used to nest custom components into the field */
   @ViewChild(FieldHostDirective) fieldHost: FieldHostDirective;
+  /** The instance of field that should be used in the template */
+  @Input() field: Field&lt;any&gt;;
+  /** The belonging item */
+  @Input() item: Item&lt;any&gt;;
 
   /** The constructor provides the instance of ViewContainerRef which is later used to create embedded views*/
   constructor(private componentFactoryResolver: ComponentFactoryResolver) {
@@ -963,7 +1016,7 @@ export class DynamicFieldComponent {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><ng-template ec-field-host></ng-template></div>'
-    var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'DefaultInputComponent', 'selector': 'ec-default-input'},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicFieldComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'FilterComponent', 'selector': 'ec-filter'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'}];
+    var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'DefaultEntryInputComponent', 'selector': 'ec-default-entry-input'},{'name': 'DefaultInputComponent', 'selector': 'ec-default-input'},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicFieldComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'FilterComponent', 'selector': 'ec-filter'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'}];
     var DIRECTIVES = [{'name': 'FieldHostDirective', 'selector': '[ec-field-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'DynamicFieldComponent'};
 </script>
