@@ -24,6 +24,7 @@ import { PublicSignupComponent } from '../packages/auth/public-signup/public-sig
 import { AuthModule } from '../packages/auth/auth.module';
 import { AuthDemoComponent } from './auth/auth-demo.component';
 import { CoolStringComponent } from './form/cool-string.component'
+import { UnsplashImageComponent } from './list/unsplash-image.component';
 
 export const demoRoutes: Routes = [
   {
@@ -158,9 +159,11 @@ export const demoRoutes: Routes = [
     SelectDemoComponent,
     AuthDemoComponent,
     CoolStringComponent,
+    UnsplashImageComponent,
   ],
   entryComponents: [
-    CoolStringComponent
+    CoolStringComponent,
+    UnsplashImageComponent
   ],
   imports: [
     CommonModule,

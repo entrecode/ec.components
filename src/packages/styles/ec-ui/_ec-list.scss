@@ -2,11 +2,12 @@
   margin: rem(16) 0;
 
   .ec-list-header, .ec-list-item-cell {
+    position: relative;
     flex: 1 1 auto;
     flex-basis: 0;
     flex-grow: 1;
     white-space: nowrap;
-    overflow: hidden;
+    //overflow: hidden;
     &.hidden {
       display: none;
     }
@@ -41,10 +42,34 @@
     mix-blend-mode: multiply;
   }
 
+  .action {
+    opacity: 0;
+    transition: opacity .1s;
+    &.active {
+      opacity: 1;
+    }
+  }
+
+  .popdown {
+    .ec-pop {
+      padding: rem(8);
+      label {
+        margin: 0;
+      }
+      a {
+        float: right
+      }
+    }
+
+  }
+
   &:hover {
     @extend %shadow%hover;
     z-index: 10;
     position: relative;
+    .action {
+      opacity: 1;
+    }
   }
 
   &.selected {
@@ -103,6 +128,7 @@
 .ec-list-item-cell {
   padding: rem(8);
   @include flex(1 1 auto);
+  overflow: hidden;
 
   &.ec-list-checkbox,
   &.ec-list-avatar,
@@ -144,6 +170,16 @@
 
     .ec-list-group-name {
       font-weight: bold;
+    }
+
+    ul {
+      padding: 0;
+      margin: 0;
+      @include flexbox;
+      @include align-items(center);
+      li {
+        list-style: none;
+      }
     }
   }
 

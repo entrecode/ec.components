@@ -47,7 +47,7 @@ export class Item<T> {
     if (typeof this.body !== 'object') {
       return [];
     }
-    return Object.keys(this.resolve());
+    return Object.keys(this.body);
   }
 
   /** Returns the value of the the Item's identifier property. */
@@ -76,7 +76,8 @@ export class Item<T> {
     if (!this.config.resolve) {
       return this.body[property];
     }
-    return this.config.resolve(this.body)[property];
+    const v = this.config.resolve(this.body);
+    return v ? v[property] : null;
   }
 
   private transform(action: string, property: string) {

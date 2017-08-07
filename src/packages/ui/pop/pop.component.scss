@@ -98,4 +98,29 @@
       }
     }
   }
+
+  &.popdown {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    .ec-pop-container {
+      .ec-pop {
+        position: absolute;
+        width: 100%;
+        display: none;
+        top: 0;
+        //border: 1px solid gainsboro;
+        padding: 0;
+        //border-radius: 5px;
+        background: white;
+        z-index: 1001;
+        //min-height: 100px;
+        min-width: 100px;
+      }
+      &.visible .ec-pop {
+        display: block;
+      }
+    }
+
+  }
 }

@@ -95,15 +95,22 @@ export class List<T> extends Collection<Item<T>> {
     });
   }
 
+  public filterProperty(property: string, value: any) {
+    //TODO find way to filter with pagination and without loosing filtered out items
+    this.page = this.items.filter((item) => {
+      return item.resolve(property).includes(value);
+    });
+  }
+
   /** Changes the config's sort variables to reflect the given sorting */
   protected sortProperty(property: string, desc?: boolean) {
+    /* if (this.config.desc && property === this.config.sortBy) {
+       delete this.config.sortBy;
+       return;
+     }*/
     if (property !== this.config.sortBy) {
       delete this.config.desc;
     }
-    /*else if (this.config.desc && desc === undefined) {
-     delete this.config.sortBy;
-     return;
-     }*/
     this.config.sortBy = property;
     this.config.desc = this.config.desc === undefined ? desc || false : !this.config.desc;
   }

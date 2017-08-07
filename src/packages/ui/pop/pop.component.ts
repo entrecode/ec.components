@@ -16,6 +16,14 @@ export class PopComponent {
   constructor() {
   }
 
+  public toggle() {
+    if (this.visible) {
+      this.hide();
+    } else {
+      this.show();
+    }
+  }
+
   public show() {
     this.active = true;
     setTimeout(() => {

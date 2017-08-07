@@ -4,7 +4,13 @@
   <button (click)="popLeft.hide()">X</button>
   <h1>YEHA!</h1>
 </ec-pop>
+
 <ec-pop #popRight class="sidebar-right" active="true">
   <h1>Yupidoodle!</h1>
   <button (click)="popRight.hide()">cloooose</button>
+</ec-pop>
+<button (click)="popdown.toggle()">popdown</button>
+<ec-pop #popdown class="popdown" active="true">
+  <h1>Yupidoodle!</h1>
+  <button (click)="popdown.hide()">cloooose</button>
 </ec-pop>

@@ -1,6 +1,7 @@
 import { List } from '../packages/core';
 import { CoolStringComponent } from "../demo/form/cool-string.component";
 import { songs } from '../assets/songs';
+import { UnsplashImageComponent } from "../demo/list/unsplash-image.component";
 
 export const mocked = {
   products: [
@@ -53,12 +54,14 @@ export const mocked = {
       fields: {
         picture: {
           label: 'Bild',
-          resolve: (body) => body.music.measures.length
+          resolve: (body) => body.music ? body.music.measures.length : 1,
+          output: UnsplashImageComponent,
+          input: UnsplashImageComponent
         },
         music: {
           label: 'Akkorde',
           display: (value) => value.measures.reduce((chords, measure) => chords.concat(measure), []),
-          sort: (value) => value.measures.length,
+          sort: (value) => value ? value.measures.length : 0,
           view: 'labels'
         },
         title: {
@@ -83,14 +86,14 @@ export const mocked = {
           label: 'Dichte',
           hidden: true,
           resolve: (body) => {
-            return Math.round(body.music.measures.reduce((chords, measure) => chords.concat(measure), []).length / body.music.measures.length * 10) / 10;
+            return body.music ? (Math.round(body.music.measures.reduce((chords, measure) => chords.concat(measure), []).length / body.music.measures.length * 10) / 10) : 0;
           }
         },
         diversity: {
           label: 'Diversität',
           hidden: true,
           resolve: (body) => {
-            return body.music.measures.reduce((chords, measure) => chords.concat(measure), []).filter((v, i, a) => a.indexOf(v) === i).length;
+            return body.music ? (body.music.measures.reduce((chords, measure) => chords.concat(measure), []).filter((v, i, a) => a.indexOf(v) === i).length) : 0;
           }
         },
         difficulty: {
@@ -98,6 +101,7 @@ export const mocked = {
           resolve: (body, item) => {
             return Math.round(item.resolve('diversity') * item.resolve('density'));
           },
+          view: 'number',
           group: (value) => {
             if (value < 5) {
               return 'Käseleicht'
@@ -766,7 +770,7 @@ export const mocked = {
       size: 19,
       fields: {
         name: {
-          label: 'Name..',
+          label: 'Name',
           view: 'string',
           required: true,
           input: CoolStringComponent,

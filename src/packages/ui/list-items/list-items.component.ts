@@ -1,13 +1,6 @@
-import {
-  Component,
-  ContentChildren,
-  forwardRef,
-  Input,
-  QueryList,
-  ViewChildren
-} from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Item, List, Selection } from '../../core';
-import { InputComponent, ListComponent } from '..';
+import { ListComponent } from '..';
 
 /** The ListItemsComponent displays the actual list, without all peripherals (header, pagination etc.).
  * It can either be given an Array of Items or just the list parent to control the shown items. */

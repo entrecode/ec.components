@@ -20,5 +20,7 @@ export interface ListConfig extends ItemConfig<any> {
   /** The number of items per page */
   size?: number,
   /** Should the selection be solo? */
-  solo?: boolean
+  solo?: boolean,
+  /** tells the list to show only items that match the filter */
+  filter?: any
 }

@@ -2,7 +2,7 @@
   <div #wrapper>
     <ng-content></ng-content>
   </div>
-  <div *ngIf="!wrapper.children.length">
+  <div *ngIf="!wrapper.children.length&&!empty">
     <ul>
       <li *ngFor="let field of form?.fields" [ngSwitch]="field.view">
         <ec-input [field]="field" [group]="group" [item]="form"></ec-input>

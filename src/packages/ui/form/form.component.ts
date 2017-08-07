@@ -26,6 +26,8 @@ export class FormComponent {
   @Input() item: Item<any>;
   /** If you pass an object to value, the form will generate an item from it. */
   @Input() value: any;
+  /** If set to true, the form will be rendered empty, to be referenced from the outside. */
+  @Input() empty: boolean;
   /** Emits when the form is submitted. The form can only be submitted if all Validators succeeded. */
   @Output('onSubmit') submit: EventEmitter<FormGroup> = new EventEmitter();
   /** Emits when a new instance of Form is present */
@@ -50,8 +52,12 @@ export class FormComponent {
       const validators = this.getValidators(field);
       control[field.property] = new FormControl(this.item.resolve(field.property), validators)
     });
-    this.group = new FormGroup(control);
-    this.onChange.emit(this);
+    if (!this.group) {
+      this.group = new FormGroup(control);
+      this.group.valueChanges.subscribe((change) => {
+        this.onChange.emit(this);
+      });
+    }
   }
 
   edit(item: Item<any>) {
@@ -90,5 +96,10 @@ export class FormComponent {
   onSubmit() {
     this.item.save(this.group.value);
     this.submit.emit(this.group);
+  }
+
+  /** Returns the current value of the form control group. */
+  getValue() {
+    return this.group.value;
   }
 }

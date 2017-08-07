@@ -1,6 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { List, Selection } from '../../core';
 import { ListComponent } from '..';
+import { PopComponent } from '../pop/pop.component';
+import { FormComponent } from '../form/form.component';
 
 /** This component renders, as the name states, the header of a list.*/
 @Component({
@@ -15,11 +17,34 @@ export class ListHeaderComponent {
   @Input() selection: Selection<any>;
   /** You can also just pass in the entire parent list component */
   @Input() host: ListComponent;
+  /** The pop dropdowns that contain the filtering */
+  @ViewChildren('filterPop') pops: QueryList<PopComponent>;
+  @ViewChild('filterForm') filter: FormComponent;
 
   private ngOnChanges() {
     if (this.host) {
       this.list = this.host.list;
       this.selection = this.host.selection;
     }
+  }
+
+  private editFilter(pop) {
+    pop.toggle();
+    this.pops.forEach((pop) => pop.hide());
+  }
+
+  private applyFilter(property, value) {
+    console.log('apply filter', property, value);
+    //TODO
+    this.list.filterProperty(property, value);
+    /*const filter = {};
+    filter[property] = this.filter.getValue()[property];
+    pop.hide();
+    console.log('filter', filter);
+    this.list.applyFilter(filter);*/
+  }
+
+  private hasFilter(property) {
+    return false;
   }
 }
