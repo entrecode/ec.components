@@ -1,5 +1,4 @@
 import { FieldConfigProperty } from '..';
-import { Type } from '@angular/core';
 
 /** A Field acts as a property of an Item. It holds a single Property config. */
 export class Field<T> implements FieldConfigProperty {
@@ -16,9 +15,9 @@ export class Field<T> implements FieldConfigProperty {
   /** Custom Validation function */
   validate?: (value, field) => any;
   /** Custom Component to display form input **/
-  input?: Type<any>;
+  input?: any;
   /** Custom Component to display value **/
-  output?: Type<any>;
+  output?: any;
 
   /** A Field is constructed by assigning the given config and the property to itself*/
   constructor(property: string, config: FieldConfigProperty = {}) {

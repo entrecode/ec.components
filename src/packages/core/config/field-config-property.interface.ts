@@ -1,5 +1,4 @@
 /** Configuration for a FieldConfig property. */
-import { Type } from '@angular/core';
 
 export interface FieldConfigProperty {
   /** Property name */
@@ -43,7 +42,7 @@ export interface FieldConfigProperty {
     title: string
   };
   /** Custom Component for input (forms) */
-  input?: Type<any>;
+  input?: any;
   /** Custom Component for output (e.g. list cell) */
-  output?: Type<any>;
+  output?: any;
 }

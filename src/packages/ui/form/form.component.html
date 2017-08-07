@@ -5,8 +5,7 @@
   <div *ngIf="!wrapper.children.length">
     <ul>
       <li *ngFor="let field of form?.fields" [ngSwitch]="field.view">
-        <ec-input [view]="field.view" [property]="field.property" [field]="field"
-                  [group]="group"></ec-input>
+        <ec-input [field]="field" [group]="group" [item]="form"></ec-input>
       </li>
     </ul>
     <button type="submit" [disabled]="group.invalid" [class.disabled]="group.invalid">

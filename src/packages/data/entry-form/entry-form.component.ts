@@ -14,7 +14,6 @@ export class EntryFormComponent extends FormComponent {
 
   ngOnChanges() {
     if (this.model) {
-      console.log('entry', this.entry);
       this.form = new EntryForm(this.model, this.entry);
     }
   }

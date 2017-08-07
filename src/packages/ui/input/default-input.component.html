@@ -17,4 +17,9 @@
       {{field.label || field.property}}
     </label>
   </div>
+  <div *ngSwitchCase="'date'">
+    <label>{{field.label || field.property}}
+      <input type="date" [formControlName]="field.property">
+    </label>
+  </div>
 </div>

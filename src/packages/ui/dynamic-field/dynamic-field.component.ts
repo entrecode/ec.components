@@ -1,5 +1,7 @@
-import { Component, ComponentFactoryResolver, Type, ViewChild, } from '@angular/core';
+import { Component, ComponentFactoryResolver, Input, Type, ViewChild } from '@angular/core';
 import { FieldHostDirective } from './field-host.directive';
+import { Item } from '../../core/item/item';
+import { Field } from '../../core/field/field';
 
 // import { CustomFieldComponent } from './custom-field.component';
 
@@ -11,6 +13,10 @@ import { FieldHostDirective } from './field-host.directive';
 export class DynamicFieldComponent {
   /** The FieldHostDirective will  be used to nest custom components into the field */
   @ViewChild(FieldHostDirective) fieldHost: FieldHostDirective;
+  /** The instance of field that should be used in the template */
+  @Input() field: Field<any>;
+  /** The belonging item */
+  @Input() item: Item<any>;
 
   /** The constructor provides the instance of ViewContainerRef which is later used to create embedded views*/
   constructor(private componentFactoryResolver: ComponentFactoryResolver) {

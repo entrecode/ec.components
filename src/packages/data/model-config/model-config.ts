@@ -1,6 +1,9 @@
 import { Config, FieldConfig, FieldConfigProperty } from '../../core';
 import { Datamanager, ModelConfiguration } from '..';
 import * as moment from 'moment';
+import { DefaultEntryInputComponent } from '../entry-form/default-entry-input.component';
+import { DefaultInputComponent } from '../../ui/input/default-input.component';
+import { Type } from "@angular/core";
 
 /** The main class for configuring model data behaviour.*/
 export class ModelConfig extends Config {
@@ -13,6 +16,7 @@ export class ModelConfig extends Config {
     'modified'
   ];
 
+  /** Maps field types to view types (may be deprecated in the future) */
   static typeViews = {
     entries: 'labels',
     entry: 'label',
@@ -21,7 +25,33 @@ export class ModelConfig extends Config {
     text: 'string',
     decimal: 'number',
     number: 'number',
+    boolean: 'boolean',
+    datetime: 'date'
   };
+
+  /** Maps field types to components */
+  static typeInputComponents = {};
+
+  /** Registers a custom input component for the given types. You can e.g. register a custom file picker for the types 'asset' and 'assets'.
+   * Be aware that you have to handle different formats yourself when dealing with multiple types*/
+  static registerInputComponent(component: Type<any>, types: Array<string>) {
+    types.forEach((type) => {
+      this.typeInputComponents[type] = component;
+    })
+  }
+
+  /** Retrieves the component that should be used to render an input for the given type.
+   * You can register components via registerInputComponent for custom components.
+   * */
+  static getInputComponent(type) {
+    if (this.typeInputComponents[type]) {
+      return this.typeInputComponents[type];
+    }
+    if (type === 'text' || type === 'decimal' || type === 'boolean' || type === 'number' || type === 'datetime') {
+      return DefaultInputComponent;
+    }
+    return DefaultEntryInputComponent;
+  }
 
   /** Retrieves the given model config.
    * @example
@@ -109,7 +139,9 @@ export class ModelConfig extends Config {
           type: type.name,
           view: this.typeViews[type.name],
           model: type.model,
-          display: this.displayField(type.name, property)
+          display: this.displayField(type.name, property),
+          input: this.getInputComponent(type.name)
+          // TODO set custom input/ouput components based on view
         }, fieldConfig[property] ? fieldConfig[property] : {});
         //TODO find strategy for input/output templates!!
       });

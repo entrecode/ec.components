@@ -9,8 +9,9 @@ import { AuthorizationService } from './authorization.service';
 import { PublicLoginComponent } from './public-login/public-login.component';
 import { ValidationOnBlurDirective } from './validate-onblur';
 import { PublicSignupComponent } from './public-signup/public-signup.component';
-import { InputErrorsComponent } from './input-errors/input-errors.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { UiModule } from '../ui/ui.module';
+
 // import { HyperAgentModule } from './hyperagent/hyper-agent.module';
 
 @NgModule({
@@ -18,7 +19,6 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
     PublicLoginComponent,
     PublicSignupComponent,
     ValidationOnBlurDirective,
-    InputErrorsComponent,
     AdminLoginComponent,
   ],
   imports: [
@@ -27,10 +27,10 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
     ReactiveFormsModule,
     //HyperAgentModule,
     HttpModule,
+    UiModule
   ],
   exports: [
     ValidationOnBlurDirective,
-    InputErrorsComponent,
     PublicLoginComponent,
     PublicSignupComponent,
     AdminLoginComponent

@@ -1,0 +1,33 @@
+<div [ngSwitch]="field.type" *ngIf="group" [formGroup]="group">
+  <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>
+  <div *ngSwitchCase="'text'">
+    <label>{{field.label || field.property}}
+      <input type="text" [formControlName]="field.property">
+    </label>
+  </div>
+  <div *ngSwitchCase="'asset'">
+    <label>{{field.label || field.property}}
+      <!--<input type="text" [formControlName]="field.property">-->
+      asset... TBD
+    </label>
+  </div>
+  <div *ngSwitchCase="'assets'">
+    <label>{{field.label || field.property}}
+      <!--<input type="text" [formControlName]="field.property">-->
+      assets... TBD
+    </label>
+  </div>
+  <div *ngSwitchCase="'entry'">
+    <label>{{field.label || field.property}}
+      <!--<input type="number" [formControlName]="field.property">-->
+      entry.. TBD
+    </label>
+  </div>
+  <div *ngSwitchCase="'entries'">
+    <label>
+      <!--<input type="checkbox" [formControlName]="field.property">-->
+      {{field.label || field.property}}
+      entries
+    </label>
+  </div>
+</div>

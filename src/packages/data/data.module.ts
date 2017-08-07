@@ -4,20 +4,25 @@ import { NgModule } from '@angular/core';
 import { UiModule } from '../ui/ui.module';
 import {
   AdminService,
+  DefaultEntryInputComponent,
   EntriesComponent,
   EntryComponent,
   EntryFormComponent,
   EntryListComponent,
   PublicService,
-  SdkService
+  SdkService,
 } from './index';
 
 @NgModule({
+  entryComponents: [
+    DefaultEntryInputComponent,
+  ],
   declarations: [
     EntryListComponent,
     EntryComponent,
     EntriesComponent,
     EntryFormComponent,
+    DefaultEntryInputComponent,
   ],
   imports: [
     BrowserModule,

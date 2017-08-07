@@ -1,7 +1,6 @@
-import { ChangeDetectorRef, Component, EventEmitter, Input, Output, } from '@angular/core';
+import { Component, EventEmitter, Input, Output, } from '@angular/core';
 import {
   AbstractControl,
-  FormBuilder,
   FormControl,
   FormGroup,
   ValidationErrors,
@@ -47,7 +46,6 @@ export class FormComponent {
       control[field.property] = new FormControl(this.item.resolve(field.property), validators)
     });
     this.group = new FormGroup(control);
-
     this.onChange.emit(this);
   }
 
