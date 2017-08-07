@@ -18,6 +18,7 @@ export class OutputComponent extends DynamicFieldComponent {
     if (this.field && this.item) {
       const component = this.loadComponent(this.field.output || DefaultOutputComponent);
       component.instance.field = this.field;
+      component.instance.item = this.item;
     }
   }
 }

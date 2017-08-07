@@ -8,9 +8,23 @@ export class Item<T> {
   protected config: ItemConfig<T>;
 
   /** Each item is constructed with its body and an optional config. */
-  constructor(body: T, config: ItemConfig<T> = {}) {
+  constructor(body: T, config?: ItemConfig<T>) {
     this.body = body;
-    this.config = config;
+    this.config = config || this.generateConfig();
+  }
+
+  //TODO move the type / view / component stuff to service?
+  generateConfig() {
+    this.config = { fields: {} };
+    this.getProperties().forEach((property) => {
+      this.config.fields[property] = {
+        view: typeof this.body[property]
+      };
+      if (this.config.fields[property].view === 'object' && Array.isArray(this.body[property])) {
+        this.config.fields[property].view = 'array'
+      }
+    });
+    return this.config;
   }
 
   /** Returns the item's body */
@@ -33,7 +47,7 @@ export class Item<T> {
     if (typeof this.body !== 'object') {
       return [];
     }
-    return Object.keys(this.body);
+    return Object.keys(this.resolve());
   }
 
   /** Returns the value of the the Item's identifier property. */
@@ -47,6 +61,9 @@ export class Item<T> {
   /** Returns either the whole body (if no property is given) or the value of the given property.
    * This method will traverse the body via the config.resolve function (if given). */
   resolve(property?: string): any {
+    if (!this.config) {
+      return this.body;
+    }
     if (!property) {
       if (this.config.resolve) {
         return this.config.resolve(this.body)
@@ -80,7 +97,7 @@ export class Item<T> {
   /** Transforms the given field's value for displaying */
   display(property?: string): any {
     if (!property) {
-      return this.transform('display', this.config.label || Object.keys(this.resolve())[0]);
+      return this.transform('display', this.config.label || this.getProperties()[0]); // Object.keys(this.resolve())[0]
     }
     return this.transform('display', property);
   }

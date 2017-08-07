@@ -1,6 +1,5 @@
 <div [ngSwitch]="field.view" *ngIf="group" [formGroup]="group">
   <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>
-
   <div *ngSwitchCase="'string'">
     <label>{{field.label || field.property}}
       <input type="text" [formControlName]="field.property">
@@ -20,6 +19,11 @@
   <div *ngSwitchCase="'date'">
     <label>{{field.label || field.property}}
       <input type="date" [formControlName]="field.property">
+    </label>
+  </div>
+  <div *ngSwitchCase="'array'">
+    <label>{{field.label || field.property}}
+      <ec-select [formControlName]="field.property"></ec-select>
     </label>
   </div>
 </div>

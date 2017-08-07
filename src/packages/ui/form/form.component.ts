@@ -24,6 +24,8 @@ export class FormComponent {
   @Input() config: FormConfig<any>;
   /** You can also use an Item as input */
   @Input() item: Item<any>;
+  /** If you pass an object to value, the form will generate an item from it. */
+  @Input() value: any;
   /** Emits when the form is submitted. The form can only be submitted if all Validators succeeded. */
   @Output('onSubmit') submit: EventEmitter<FormGroup> = new EventEmitter();
   /** Emits when a new instance of Form is present */
@@ -31,6 +33,9 @@ export class FormComponent {
 
   /** On change, the form instance is (re)created by combining all inputs. If no item is given, an empty form is created using the config. You can also pass just an item to use its config and body.*/
   ngOnChanges() {
+    if (this.value) {
+      this.item = new Item(this.value);
+    }
     if (this.item) {
       Object.assign(this, this.item);
     } else if (!this.config) {

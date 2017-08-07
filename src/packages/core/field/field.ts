@@ -22,6 +22,6 @@ export class Field<T> implements FieldConfigProperty {
   /** A Field is constructed by assigning the given config and the property to itself*/
   constructor(property: string, config: FieldConfigProperty = {}) {
     Object.assign(this, config);
-    Object.assign(this, { property: property });
+    Object.assign(this, { property });
   }
 }

@@ -1,7 +1,7 @@
-<div class="ec-select">
+<div class="ec-select" *ngIf="selection&&list">
   <ul class="selected-items">
     <li *ngFor="let selected of selection.items" class="pill">
-      {{selected.display()}} <a (click)="selection.remove(selected)">X</a>
+      {{selected.display()}} <a (click)="removeItem(selected)">X</a>
     </li>
     <li (click)="open=!open" class="pill" [class.open]="open"
         *ngIf="!selection.hasAll(list.items)">

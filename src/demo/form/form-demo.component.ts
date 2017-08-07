@@ -14,7 +14,7 @@ export class FormDemoComponent {
     this.tree = mocked.lists.trees.id(0);
   }
 
-  submitTree(form) {
-    console.log('tree value', form.value);
+  logValue(form) {
+    console.log('form value', form.value);
   }
 }

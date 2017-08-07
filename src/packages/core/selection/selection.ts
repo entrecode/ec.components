@@ -77,8 +77,8 @@ export class Selection<T> extends List<T> {
     return this.toggleAll(items, true);
   };
 
-  /** Returns an Array containing only the selected identifiers */
-  getIdentifiers() {
-    return this.items.map((item) => this.config.identifier ? item.id() : item);
+  /** Returns an Array containing the current value. If an identifier is set, the array will consist of the identifier values, if not, it will resolve the item contents. */
+  getValue() {
+    return this.items.map((item) => this.config.identifier ? item.id() : item.resolve());
   }
 }

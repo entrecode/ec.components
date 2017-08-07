@@ -1,22 +1,26 @@
 import { List } from '../packages/core';
 import { CoolStringComponent } from "../demo/form/cool-string.component";
+import { songs } from '../assets/songs';
 
 export const mocked = {
   products: [
     {
       id: 'x1',
       name: 'Brush',
-      price: 2
+      price: 2,
+      tags: ['tool', 'plastic', 'dirty']
     },
     {
       id: 'x2',
       name: 'Toilet',
-      price: 100
+      price: 100,
+      tags: ['tool', 'water']
     },
     {
       id: 'x3',
       name: 'Toilet Seat',
-      price: 20
+      price: 20,
+      tags: ['utility', 'plastic']
     }
   ],
   muffins: [
@@ -44,6 +48,80 @@ export const mocked = {
     model: 'muffin'
   },
   lists: {
+    songs: new List(songs.songs, {
+      size: 10,
+      fields: {
+        picture: {
+          label: 'Bild',
+          resolve: (body) => body.music.measures.length
+        },
+        music: {
+          label: 'Akkorde',
+          display: (value) => value.measures.reduce((chords, measure) => chords.concat(measure), []),
+          sort: (value) => value.measures.length,
+          view: 'labels'
+        },
+        title: {
+          label: 'Titel',
+          view: 'string'
+        },
+        composer: {
+          label: 'Komponist',
+          view: 'string'
+        },
+        style: {
+          label: 'Stil',
+          group: (value) => value,
+          view: 'string'
+        },
+        key: {
+          label: 'Tonart',
+          group: (value) => value.replace('-', ''),
+          view: 'string'
+        },
+        density: {
+          label: 'Dichte',
+          hidden: true,
+          resolve: (body) => {
+            return Math.round(body.music.measures.reduce((chords, measure) => chords.concat(measure), []).length / body.music.measures.length * 10) / 10;
+          }
+        },
+        diversity: {
+          label: 'Diversität',
+          hidden: true,
+          resolve: (body) => {
+            return body.music.measures.reduce((chords, measure) => chords.concat(measure), []).filter((v, i, a) => a.indexOf(v) === i).length;
+          }
+        },
+        difficulty: {
+          label: 'Schwierigkeit',
+          resolve: (body, item) => {
+            return Math.round(item.resolve('diversity') * item.resolve('density'));
+          },
+          group: (value) => {
+            if (value < 5) {
+              return 'Käseleicht'
+            }
+            if (value < 10) {
+              return 'Anfänger'
+            }
+            if (value < 30) {
+              return 'Ganz nett'
+            }
+            if (value < 40) {
+              return 'Fortgeschritten'
+            }
+            if (value < 50) {
+              return 'Ordentlich'
+            }
+            if (value < 60) {
+              return 'Profi'
+            }
+            return 'Hardcore'
+          }
+        },
+      }
+    }),
     trees: new List([{
       name: 'Appletree',
       height: 10,

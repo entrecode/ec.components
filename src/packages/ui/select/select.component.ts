@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  forwardRef,
+  Input,
+  Output,
+  ViewEncapsulation
+} from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Collection, List, ListConfig, Selection } from '../../core';
 
 /**
@@ -8,9 +16,16 @@ import { Collection, List, ListConfig, Selection } from '../../core';
   selector: 'ec-select',
   templateUrl: './select.component.html',
   styleUrls: ['./select.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => SelectComponent),
+      multi: true
+    }
+  ]
 })
-export class SelectComponent {
+export class SelectComponent implements ControlValueAccessor {
   /** Configuration Object for List */
   @Input() config: ListConfig;
   /** The visible items */
@@ -58,5 +73,32 @@ export class SelectComponent {
     if (this.selection.hasAll(this.list.items)) {
       this.open = false;
     }
+    this.propagateChange(this.selection.getValue());
+  }
+
+  private removeItem(item) {
+    this.selection.remove(item);
+    this.propagateChange(this.selection.getValue());
+  }
+
+  writeValue(value: any) {
+    //value is a model value => array of identifiers
+    // items = this.select.
+    if (!this.items) {
+      this.items = value;
+      this.ngOnChanges();
+      this.selection.addAll(this.list.items);
+    }
+  }
+
+  propagateChange = (_: any) => {
+  };
+
+  registerOnChange(fn) {
+    this.propagateChange = fn;
+  }
+
+  registerOnTouched() {
+
   }
 }

@@ -2,4 +2,4 @@
 
 <ec-select [items]="products" [config]="productConfig" #ecSelect></ec-select>
 
-{{ecSelect.selection.getIdentifiers() | json}}
+{{ecSelect.selection.getValue() | json}}
