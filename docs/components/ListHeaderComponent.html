@@ -248,9 +248,6 @@
                                     <a href="../classes/List.html" >List</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../classes/ModelConfig.html" >ModelConfig</a>
-                                </li>
-                                <li class="link">
                                     <a href="../classes/Pagination.html" >Pagination</a>
                                 </li>
                                 <li class="link">
@@ -281,6 +278,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ModelConfig.html" >ModelConfig</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/ModelService.html" >ModelService</a>
@@ -612,9 +612,6 @@
                                            <a href="../classes/List.html" >List</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../classes/ModelConfig.html" >ModelConfig</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../classes/Pagination.html" >Pagination</a>
                                        </li>
                                        <li class="link">
@@ -645,6 +642,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ModelConfig.html" >ModelConfig</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/ModelService.html" >ModelService</a>
@@ -1169,13 +1169,13 @@ export class ListHeaderComponent {
     &lt;/ec-pop&gt;
     {{field.label || field.property}}
     &lt;ul&gt;
-      &lt;li&gt;
+      &lt;li *ngIf&#x3D;&quot;field.sortable!&#x3D;&#x3D;false&quot;&gt;
         &lt;a class&#x3D;&quot;action&quot; [class.active]&#x3D;&quot;list.config?.sortBy&#x3D;&#x3D;&#x3D;field.property&quot;
            (click)&#x3D;&quot;list.toggleSort(field.property)&quot;&gt;
           &lt;i class&#x3D;&quot;ec-icon&quot; [ngClass]&#x3D;&quot;!list.config?.desc?&#x27;arrow-down&#x27;:&#x27;arrow-up&#x27;&quot;&gt;&lt;/i&gt;
         &lt;/a&gt;
       &lt;/li&gt;
-      &lt;li&gt;
+      &lt;li *ngIf&#x3D;&quot;field.filterable!&#x3D;&#x3D;false&quot;&gt;
         &lt;a class&#x3D;&quot;action&quot; [class.active]&#x3D;&quot;hasFilter(field.property)&quot;
            (click)&#x3D;&quot;editFilter(filterPop)&quot;&gt;
           &lt;i class&#x3D;&quot;ec-icon find&quot;&gt;&lt;/i&gt;
@@ -1222,7 +1222,7 @@ export class ListHeaderComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="ec-list-group-header" *ngIf="!disableHeader&&list?.config.fields">  <div class="ec-list-item-cell ec-list-checkbox" *ngIf="selection">    <input type="checkbox" (click)="selection?.toggleAll(list?.items)"           [checked]="selection?.hasAll(list?.items)">  </div>  <ec-form [config]="list?.config" [empty]="true" #filterForm></ec-form>  <div class="ec-list-item ec-list-header" *ngFor="let field of list?.fields"       [class.hidden]="field.hidden">    <ec-pop #filterPop class="popdown">      <a (click)="filterPop.hide()">        <i class="ec-icon close"></i>      </a>      <ec-input [field]="field" [group]="filterForm?.group"                (changed)="applyFilter(field.property, $event)"></ec-input>    </ec-pop>    {{field.label || field.property}}    <ul>      <li>        <a class="action" [class.active]="list.config?.sortBy===field.property"           (click)="list.toggleSort(field.property)">          <i class="ec-icon" [ngClass]="!list.config?.desc?\'arrow-down\':\'arrow-up\'"></i>        </a>      </li>      <li>        <a class="action" [class.active]="hasFilter(field.property)"           (click)="editFilter(filterPop)">          <i class="ec-icon find"></i>        </a>      </li>    </ul>  </div>  <!--<div class="ec-list-item-cell ec-list-controls">    <nav class="ec-context-menu">      <a href="" class="btn"><span class="ec-icon more-horizontal"></span></a>      <ul>        <li>          <a href="" class="btn">delete</a>        </li>        <li>          <a href="" class="btn">dublicate</a>        </li>      </ul>    </nav>  </div>--></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="ec-list-group-header" *ngIf="!disableHeader&&list?.config.fields">  <div class="ec-list-item-cell ec-list-checkbox" *ngIf="selection">    <input type="checkbox" (click)="selection?.toggleAll(list?.items)"           [checked]="selection?.hasAll(list?.items)">  </div>  <ec-form [config]="list?.config" [empty]="true" #filterForm></ec-form>  <div class="ec-list-item ec-list-header" *ngFor="let field of list?.fields"       [class.hidden]="field.hidden">    <ec-pop #filterPop class="popdown">      <a (click)="filterPop.hide()">        <i class="ec-icon close"></i>      </a>      <ec-input [field]="field" [group]="filterForm?.group"                (changed)="applyFilter(field.property, $event)"></ec-input>    </ec-pop>    {{field.label || field.property}}    <ul>      <li *ngIf="field.sortable!==false">        <a class="action" [class.active]="list.config?.sortBy===field.property"           (click)="list.toggleSort(field.property)">          <i class="ec-icon" [ngClass]="!list.config?.desc?\'arrow-down\':\'arrow-up\'"></i>        </a>      </li>      <li *ngIf="field.filterable!==false">        <a class="action" [class.active]="hasFilter(field.property)"           (click)="editFilter(filterPop)">          <i class="ec-icon find"></i>        </a>      </li>    </ul>  </div>  <!--<div class="ec-list-item-cell ec-list-controls">    <nav class="ec-context-menu">      <a href="" class="btn"><span class="ec-icon more-horizontal"></span></a>      <ul>        <li>          <a href="" class="btn">delete</a>        </li>        <li>          <a href="" class="btn">dublicate</a>        </li>      </ul>    </nav>  </div>--></div></div>'
     var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'DefaultEntryInputComponent', 'selector': 'ec-default-entry-input'},{'name': 'DefaultInputComponent', 'selector': 'ec-default-input'},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicFieldComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'FilterComponent', 'selector': 'ec-filter'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'}];
     var DIRECTIVES = [{'name': 'FieldHostDirective', 'selector': '[ec-field-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'ListHeaderComponent'};

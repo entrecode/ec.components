@@ -248,9 +248,6 @@
                                     <a href="../classes/List.html" >List</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../classes/ModelConfig.html" >ModelConfig</a>
-                                </li>
-                                <li class="link">
                                     <a href="../classes/Pagination.html" >Pagination</a>
                                 </li>
                                 <li class="link">
@@ -281,6 +278,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ModelConfig.html" >ModelConfig</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/ModelService.html" >ModelService</a>
@@ -612,9 +612,6 @@
                                            <a href="../classes/List.html" >List</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../classes/ModelConfig.html" >ModelConfig</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../classes/Pagination.html" >Pagination</a>
                                        </li>
                                        <li class="link">
@@ -645,6 +642,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ModelConfig.html" >ModelConfig</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/ModelService.html" >ModelService</a>
@@ -833,31 +833,6 @@ template should be applied. </p>
     </table>
 </section>
 
-    <section>
-        <h3 id="inputs">Inputs</h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <code>view</code>
-                        </td>
-                        <td class="col-md-10">
-                            <div><p>The type for which the field stands for </p>
-</div>
-                              <p>
-                                <em>Type:</em>    <code>string</code>
-
-                              </p>
-                        </td>
-                    </tr>
-                            <tr>
-                                <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/packages/ui/output/output.component.ts:15</a></div>
-                                </td>
-                            </tr>
-                </tbody>
-            </table>
-    </section>
 
 
 
@@ -882,7 +857,7 @@ template should be applied. </p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/packages/ui/output/output.component.ts:17</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/packages/ui/output/output.component.ts:14</a></div>
                                 </td>
                             </tr>
     
@@ -916,14 +891,9 @@ import { DynamicFieldComponent } from &#x27;../dynamic-field/dynamic-field.compo
   styleUrls: [&#x27;./output.component.scss&#x27;]
 })
 export class OutputComponent extends DynamicFieldComponent {
-  /** The type for which the field stands for */
-  @Input() view: string;
-
   ngOnChanges() {
     if (this.field &amp;&amp; this.item) {
-      const component &#x3D; this.loadComponent(this.field.output || DefaultOutputComponent);
-      component.instance.field &#x3D; this.field;
-      component.instance.item &#x3D; this.item;
+      this.loadComponent(this.field.output || DefaultOutputComponent);
     }
   }
 }

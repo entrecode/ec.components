@@ -248,9 +248,6 @@
                                     <a href="../classes/List.html" >List</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../classes/ModelConfig.html" >ModelConfig</a>
-                                </li>
-                                <li class="link">
                                     <a href="../classes/Pagination.html" >Pagination</a>
                                 </li>
                                 <li class="link">
@@ -281,6 +278,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ModelConfig.html" >ModelConfig</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/ModelService.html" >ModelService</a>
@@ -612,9 +612,6 @@
                                            <a href="../classes/List.html" >List</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../classes/ModelConfig.html" >ModelConfig</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../classes/Pagination.html" >Pagination</a>
                                        </li>
                                        <li class="link">
@@ -645,6 +642,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ModelConfig.html" >ModelConfig</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/ModelService.html" >ModelService</a>
@@ -800,7 +800,7 @@
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/packages/data/entry-form/entry-form.ts:9</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/packages/data/entry-form/entry-form.ts:8</a></div>
                                         </td>
                                     </tr>
             
@@ -836,7 +836,7 @@
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/packages/data/entry-form/entry-form.ts:9</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/packages/data/entry-form/entry-form.ts:8</a></div>
                                         </td>
                                     </tr>
                         </tbody>
@@ -844,8 +844,7 @@
             </section>
     </div>
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { Item } from &#x27;../../core&#x27;;
-import { Datamanager, EntryListConfig, ModelConfig } from &#x27;..&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { EntryListConfig } from &#x27;..&#x27;;
 import { Form } from &#x27;../../core/form/form&#x27;;
 
 /**
@@ -855,32 +854,10 @@ export class EntryForm&lt;Entry&gt; extends Form&lt;Entry&gt; {
   private model: string;
 
   /** The constructor will init the Form and generate the field config from the model schema */
-  constructor(model: string, body, config?: EntryListConfig) {
-    super(body, Object.assign({
-      identifier: &#x27;_id&#x27;,
-      resolve: (entry &#x3D;&gt; entry.value || {}),
-      fields: config ? config.fields : null,
-      onSave: (item: Item&lt;Entry&gt;) &#x3D;&gt; {
-        console.log(&#x27;save&#x27;, item);
-        const entry &#x3D; item.getBody();
-        if (!entry || !entry[&#x27;save&#x27;]) {
-          console.log(&#x27;no body.. TODO: create entry&#x27;, entry);
-          return;
-        }
-        Datamanager.save(entry);
-      }
-    }, config));
+  constructor(model: string, body, config: EntryListConfig &#x3D; {}) {
+    super(body, config);
     this.model &#x3D; model;
-    if (this.config.fields) {
-      // this.load();
-      return;
-    }
-    ModelConfig.generateFieldConfig(this.model).then((fieldConfig) &#x3D;&gt; {
-      Object.assign(this.config, { fields: fieldConfig });
-      // this.load();
-    });
   }
-
 }
 </code></pre>
     </div>

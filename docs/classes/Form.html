@@ -248,9 +248,6 @@
                                     <a href="../classes/List.html" >List</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../classes/ModelConfig.html" >ModelConfig</a>
-                                </li>
-                                <li class="link">
                                     <a href="../classes/Pagination.html" >Pagination</a>
                                 </li>
                                 <li class="link">
@@ -281,6 +278,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ModelConfig.html" >ModelConfig</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/ModelService.html" >ModelService</a>
@@ -612,9 +612,6 @@
                                            <a href="../classes/List.html" >List</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../classes/ModelConfig.html" >ModelConfig</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../classes/Pagination.html" >Pagination</a>
                                        </li>
                                        <li class="link">
@@ -645,6 +642,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ModelConfig.html" >ModelConfig</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/ModelService.html" >ModelService</a>
@@ -835,7 +835,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/packages/core/form/form.ts:26</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/packages/core/form/form.ts:28</a></div>
                                         </td>
                                     </tr>
             
@@ -929,7 +929,9 @@ export class Form&lt;T&gt; extends Item&lt;T&gt; {
     super(body, config);
     this.fields &#x3D; [];
     if (this.config.fields) {
-      Object.keys(this.config.fields).forEach((property) &#x3D;&gt; {
+      Object.keys(this.config.fields)
+      .filter((key) &#x3D;&gt; this.config.fields[key].form !&#x3D;&#x3D; false)
+      .forEach((property) &#x3D;&gt; {
         this.fields.push(new Field(property, this.config.fields[property]));
       });
     } else {

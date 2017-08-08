@@ -248,9 +248,6 @@
                                     <a href="../classes/List.html" >List</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../classes/ModelConfig.html" >ModelConfig</a>
-                                </li>
-                                <li class="link">
                                     <a href="../classes/Pagination.html" >Pagination</a>
                                 </li>
                                 <li class="link">
@@ -281,6 +278,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ModelConfig.html" >ModelConfig</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/ModelService.html" >ModelService</a>
@@ -612,9 +612,6 @@
                                            <a href="../classes/List.html" >List</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../classes/ModelConfig.html" >ModelConfig</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../classes/Pagination.html" >Pagination</a>
                                        </li>
                                        <li class="link">
@@ -645,6 +642,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ModelConfig.html" >ModelConfig</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/ModelService.html" >ModelService</a>
@@ -799,7 +799,7 @@
                             <tr>
                                 <td class="col-md-4">
                                         <span class="modifier-icon method fa fa-play "></span>
-                                    <code>configure(key: string, property: string, config: <a href="../classes/Config.html">Config</a>)</code>
+                                    <code>configure(key: string, property: string, config: any)</code>
                                 </td>
                             </tr>
             
@@ -843,7 +843,7 @@
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-lock"></span><code>config:     <code><a href="../classes/Config.html" target="_self" >{ [key: string]: Config; }</a></code>
+                                    <span class="modifier-icon fa fa-lock"></span><code>config:     <code>{ [key: string]: any; }</code>
             </bcode>
                                 </td>
                             </tr>
@@ -858,15 +858,15 @@
     </div>
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">export abstract class Config {
-  private static config: {
-    [key: string]: Config,
+  private config?: {
+    [key: string]: Object,
   } &#x3D; {};
 
   /** This method is a getter and setter for configurations. The key stands for the config (e.g. model).
    * The property is a sub property if the config (e.g. fields &#x3D;&gt; model.fields).
    * If no config is given, the method just returns the configuration for the given property.
    * If a config is given, the property config is merged via Object.assign. */
-  public static configure(key: string, property: string, config?: Config) {
+  public configure?(key: string, property: string, config?: Object) {
     if (!this.config[key]) {
       this.config[key] &#x3D; {};
     }

@@ -55,4 +55,8 @@ export interface FieldConfigProperty {
   filterable?: boolean;
   /** if false, the field will not be sortable in a list */
   sortable?: boolean;
+  /** if false, the field will not be visible in a list */
+  list?: boolean;
+  /** if false, the field will not be visible in a form */
+  form?: boolean;
 }

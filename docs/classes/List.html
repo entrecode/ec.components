@@ -248,9 +248,6 @@
                                     <a href="../classes/List.html"  data-type="entity-link" class="active" >List</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../classes/ModelConfig.html" >ModelConfig</a>
-                                </li>
-                                <li class="link">
                                     <a href="../classes/Pagination.html" >Pagination</a>
                                 </li>
                                 <li class="link">
@@ -281,6 +278,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ModelConfig.html" >ModelConfig</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/ModelService.html" >ModelService</a>
@@ -612,9 +612,6 @@
                                            <a href="../classes/List.html"  data-type="entity-link" class="active" >List</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../classes/ModelConfig.html" >ModelConfig</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../classes/Pagination.html" >Pagination</a>
                                        </li>
                                        <li class="link">
@@ -645,6 +642,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ModelConfig.html" >ModelConfig</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/ModelService.html" >ModelService</a>
@@ -938,7 +938,7 @@ It comes with features like resolve functions, identifiers, display formatting a
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">src/packages/core/list/list.ts:86</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/packages/core/list/list.ts:88</a></div>
                                         </td>
                                     </tr>
             
@@ -972,7 +972,7 @@ It comes with features like resolve functions, identifiers, display formatting a
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">src/packages/core/list/list.ts:98</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">src/packages/core/list/list.ts:100</a></div>
                                         </td>
                                     </tr>
             
@@ -1004,7 +1004,7 @@ It comes with features like resolve functions, identifiers, display formatting a
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">src/packages/core/list/list.ts:106</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">src/packages/core/list/list.ts:108</a></div>
                                         </td>
                                     </tr>
             
@@ -1037,7 +1037,7 @@ It comes with features like resolve functions, identifiers, display formatting a
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">src/packages/core/list/list.ts:119</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="121" class="link-to-prism">src/packages/core/list/list.ts:121</a></div>
                                         </td>
                                     </tr>
             
@@ -1070,7 +1070,7 @@ It comes with features like resolve functions, identifiers, display formatting a
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">src/packages/core/list/list.ts:126</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="128" class="link-to-prism">src/packages/core/list/list.ts:128</a></div>
                                         </td>
                                     </tr>
             
@@ -1104,7 +1104,7 @@ It comes with features like resolve functions, identifiers, display formatting a
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="152" class="link-to-prism">src/packages/core/list/list.ts:152</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="154" class="link-to-prism">src/packages/core/list/list.ts:154</a></div>
                                         </td>
                                     </tr>
             
@@ -1136,7 +1136,7 @@ It comes with features like resolve functions, identifiers, display formatting a
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="156" class="link-to-prism">src/packages/core/list/list.ts:156</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="158" class="link-to-prism">src/packages/core/list/list.ts:158</a></div>
                                         </td>
                                     </tr>
             
@@ -1168,7 +1168,7 @@ It comes with features like resolve functions, identifiers, display formatting a
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="160" class="link-to-prism">src/packages/core/list/list.ts:160</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="162" class="link-to-prism">src/packages/core/list/list.ts:162</a></div>
                                         </td>
                                     </tr>
             
@@ -1446,7 +1446,9 @@ export class List&lt;T&gt; extends Collection&lt;Item&lt;T&gt;&gt; {
    */
   protected getFields(): Array&lt;Field&lt;T&gt;&gt; {
     if (this.config &amp;&amp; this.config.fields) {
-      return Object.keys(this.config.fields).map((field) &#x3D;&gt; new Field(field, this.config.fields[field]));
+      return Object.keys(this.config.fields)
+      .filter((key) &#x3D;&gt; this.config.fields[key].list !&#x3D;&#x3D; false)
+      .map((field) &#x3D;&gt; new Field(field, this.config.fields[field]));
     }
     const fields &#x3D; [];
     this.items.forEach((item) &#x3D;&gt; {

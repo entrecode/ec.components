@@ -248,9 +248,6 @@
                                     <a href="../classes/List.html" >List</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../classes/ModelConfig.html" >ModelConfig</a>
-                                </li>
-                                <li class="link">
                                     <a href="../classes/Pagination.html" >Pagination</a>
                                 </li>
                                 <li class="link">
@@ -281,6 +278,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ModelConfig.html" >ModelConfig</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/ModelService.html" >ModelService</a>
@@ -612,9 +612,6 @@
                                            <a href="../classes/List.html" >List</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../classes/ModelConfig.html" >ModelConfig</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../classes/Pagination.html" >Pagination</a>
                                        </li>
                                        <li class="link">
@@ -645,6 +642,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ModelConfig.html" >ModelConfig</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/ModelService.html" >ModelService</a>
@@ -951,6 +951,9 @@ export class DefaultInputComponent {
       &lt;ec-select [formControlName]&#x3D;&quot;field.property&quot;&gt;&lt;/ec-select&gt;
     &lt;/label&gt;
   &lt;/div&gt;
+  &lt;div *ngSwitchDefault&gt;
+    &lt;ec-output [field]&#x3D;&quot;field&quot; [item]&#x3D;&quot;item&quot;&gt;&lt;/ec-output&gt;
+  &lt;/div&gt;
 &lt;/div&gt;</code></pre>
     </div>
 
@@ -977,7 +980,7 @@ export class DefaultInputComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div [ngSwitch]="field.view" *ngIf="group" [formGroup]="group">  <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>  <div *ngSwitchCase="\'string\'">    <label>{{field.label || field.property}}      <input type="text" [formControlName]="field.property">    </label>  </div>  <div *ngSwitchCase="\'number\'">    <label>{{field.label || field.property}}      <input type="number" [formControlName]="field.property">    </label>  </div>  <div *ngSwitchCase="\'boolean\'">    <label>      <input type="checkbox" [formControlName]="field.property">      {{field.label || field.property}}    </label>  </div>  <div *ngSwitchCase="\'date\'">    <label>{{field.label || field.property}}      <input type="date" [formControlName]="field.property">    </label>  </div>  <div *ngSwitchCase="\'array\'">    <label>{{field.label || field.property}}      <ec-select [formControlName]="field.property"></ec-select>    </label>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div [ngSwitch]="field.view" *ngIf="group" [formGroup]="group">  <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>  <div *ngSwitchCase="\'string\'">    <label>{{field.label || field.property}}      <input type="text" [formControlName]="field.property">    </label>  </div>  <div *ngSwitchCase="\'number\'">    <label>{{field.label || field.property}}      <input type="number" [formControlName]="field.property">    </label>  </div>  <div *ngSwitchCase="\'boolean\'">    <label>      <input type="checkbox" [formControlName]="field.property">      {{field.label || field.property}}    </label>  </div>  <div *ngSwitchCase="\'date\'">    <label>{{field.label || field.property}}      <input type="date" [formControlName]="field.property">    </label>  </div>  <div *ngSwitchCase="\'array\'">    <label>{{field.label || field.property}}      <ec-select [formControlName]="field.property"></ec-select>    </label>  </div>  <div *ngSwitchDefault>    <ec-output [field]="field" [item]="item"></ec-output>  </div></div></div>'
     var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'DefaultEntryInputComponent', 'selector': 'ec-default-entry-input'},{'name': 'DefaultInputComponent', 'selector': 'ec-default-input'},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicFieldComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'FilterComponent', 'selector': 'ec-filter'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'}];
     var DIRECTIVES = [{'name': 'FieldHostDirective', 'selector': '[ec-field-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'DefaultInputComponent'};

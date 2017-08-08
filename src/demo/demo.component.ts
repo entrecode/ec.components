@@ -843,6 +843,7 @@ export class DemoComponent {
         },
         _created: {
           label: 'Erstellt',
+          form: false,
           group: (value) => moment(value).format('YYYY')
         },
         amazement_factor: {

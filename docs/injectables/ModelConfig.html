@@ -248,7 +248,7 @@
                                     <a href="../classes/List.html" >List</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../classes/Pagination.html"  data-type="entity-link" class="active" >Pagination</a>
+                                    <a href="../classes/Pagination.html" >Pagination</a>
                                 </li>
                                 <li class="link">
                                     <a href="../classes/Selection.html" >Selection</a>
@@ -280,7 +280,7 @@
                                     <a href="../injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../injectables/ModelConfig.html" >ModelConfig</a>
+                                    <a href="../injectables/ModelConfig.html"  data-type="entity-link" class="active" >ModelConfig</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/ModelService.html" >ModelService</a>
@@ -330,7 +330,7 @@
                                     <a href="../interfaces/ListConfig.html" >ListConfig</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../interfaces/ModelConfig.html" >ModelConfig</a>
+                                    <a href="../interfaces/ModelConfig.html"  data-type="entity-link" class="active" >ModelConfig</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/ModelConfiguration.html" >ModelConfiguration</a>
@@ -612,7 +612,7 @@
                                            <a href="../classes/List.html" >List</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../classes/Pagination.html"  data-type="entity-link" class="active" >Pagination</a>
+                                           <a href="../classes/Pagination.html" >Pagination</a>
                                        </li>
                                        <li class="link">
                                            <a href="../classes/Selection.html" >Selection</a>
@@ -644,7 +644,7 @@
                                            <a href="../injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../injectables/ModelConfig.html" >ModelConfig</a>
+                                           <a href="../injectables/ModelConfig.html"  data-type="entity-link" class="active" >ModelConfig</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/ModelService.html" >ModelService</a>
@@ -694,7 +694,7 @@
                                            <a href="../interfaces/ListConfig.html" >ListConfig</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../interfaces/ModelConfig.html" >ModelConfig</a>
+                                           <a href="../interfaces/ModelConfig.html"  data-type="entity-link" class="active" >ModelConfig</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/ModelConfiguration.html" >ModelConfiguration</a>
@@ -742,17 +742,15 @@
                    
                    </nav>
                </div>
-               <div class="content class">
+               <div class="content injectable">
                    <div class="content-data">
 
 
 
 
-
-
 <ol class="breadcrumb">
-  <li>Classes</li>
-  <li>Pagination</li>
+  <li>Injectables</li>
+  <li>ModelConfig</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -770,44 +768,17 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/packages/core/pagination/pagination.ts</code>
+            <code>src/packages/data/model-config/model-config.ts</code>
         </p>
 
             <p class="comment">
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>This class can be used to control the loading behaviour of external data. </p>
+                <p>The main class for configuring model data behaviour.</p>
 
             </p>
 
-
-
-            <section>
-                <h3 id="constructor">Constructor</h3>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <code>constructor(config: any, total: number)</code>
-                                </td>
-                            </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/packages/core/pagination/pagination.ts:13</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description"><p>You can init each Pagination instance with an optional config.
-            If no config is provided, it will default to <code>{page: 1, size: 25}</code>. </p>
-            </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-            </section>
 
             <section>
                 
@@ -818,91 +789,26 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b> getPage</b>
+                                    <b> registerInputComponent</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>getPage()</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/packages/core/pagination/pagination.ts:26</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description"><p>Retrieves the current page </p>
-            </div>
-            
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code>number</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> getPages</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-            <code>getPages()</code>
+            <code>registerInputComponent(component: any, types: any)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/packages/core/pagination/pagination.ts:31</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/packages/data/model-config/model-config.ts:50</a></div>
                                         </td>
                                     </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>Retrieves the number of pages </p>
-            </div>
-            
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code>number</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> next</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-            <code>next()</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/packages/core/pagination/pagination.ts:36</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description"><p>Loads the next page. Throws error if already on last page. </p>
+                                        <div class="io-description"><p>Registers a custom input component for the given types. You can e.g. register a custom file picker for the types &#39;asset&#39; and &#39;assets&#39;.
+            Be aware that you have to handle different formats yourself when dealing with multiple types</p>
             </div>
             
                                         <div class="io-description">
@@ -917,25 +823,26 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b> prev</b>
+                                    <b> registerOutputComponent</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>prev()</code>
+            <code>registerOutputComponent(component: any, types: any)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/packages/core/pagination/pagination.ts:45</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/packages/data/model-config/model-config.ts:58</a></div>
                                         </td>
                                     </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>Loads the previous page. Throws error if already on first page. </p>
+                                        <div class="io-description"><p>Registers a custom output component for the given types. You can e.g. register a custom file viewer for the types &#39;asset&#39; and &#39;assets&#39;.
+            Be aware that you have to handle different formats yourself when dealing with multiple types</p>
             </div>
             
                                         <div class="io-description">
@@ -950,25 +857,26 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b> setTotal</b>
+                                    <b> getInputComponent</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>setTotal(total: number)</code>
+            <code>getInputComponent(type: any)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/packages/core/pagination/pagination.ts:56</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/packages/data/model-config/model-config.ts:67</a></div>
                                         </td>
                                     </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>Sets the total number of items and calculcates the page count.</p>
+                                        <div class="io-description"><p>Retrieves the component that should be used to render an input for the given type.
+            You can register components via registerInputComponent for custom components.</p>
             </div>
             
                                         <div class="io-description">
@@ -983,26 +891,26 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Protected</span> load</b>
+                                    <b> getOutputComponent</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play circle"></span>
-                                    <code>load(config: any)</code>
+            <code>getOutputComponent(type: any)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/packages/core/pagination/pagination.ts:66</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">src/packages/data/model-config/model-config.ts:80</a></div>
                                         </td>
                                     </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>Merges config and fires next on source </p>
+                                        <div class="io-description"><p>Retrieves the component that should be used to render an output for the given type.
+            You can register components via registerInputComponent for custom components.</p>
             </div>
             
                                         <div class="io-description">
@@ -1017,25 +925,114 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b> select</b>
+                                    <b> get</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>select(page: number)</code>
+            <code>get(property: string)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/packages/core/pagination/pagination.ts:74</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">src/packages/data/model-config/model-config.ts:94</a></div>
                                         </td>
                                     </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>Selects the given page number </p>
+                                        <div class="io-description"><p>Retrieves the given model config.</p>
+            </div>
+            
+                                        <div class="io-description">
+                                                <b>Example :</b>
+                                                    <div class="jsdoc-example-ul">
+                                                        <pre class="line-numbers"><code class="language-typescript">ModelConfig.get(&#39;muffin&#39;); //returns muffin config;</code></pre>
+                                                    </div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code>any</code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> set</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>set(property: string, config: any)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="109" class="link-to-prism">src/packages/data/model-config/model-config.ts:109</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Sets the given model config.</p>
+            </div>
+            
+                                        <div class="io-description">
+                                                <b>Example :</b>
+                                                    <div class="jsdoc-example-ul">
+                                                        <pre class="line-numbers"><code class="language-typescript">ModelConfig.set(&#39;muffin&#39;, {
+            fields: {
+            title: {
+            label: &#39;Muffin Titel&#39;
+            }
+            });</code></pre>
+                                                    </div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code>any</code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> displayField</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>displayField(type: any, property: any)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">src/packages/data/model-config/model-config.ts:114</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Returns a resolve function that will return the value of a certain field type and property. </p>
             </div>
             
                                         <div class="io-description">
@@ -1050,25 +1047,25 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b> first</b>
+                                    <b> isSystemProperty</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>first()</code>
+            <code>isSystemProperty(property: string)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/packages/core/pagination/pagination.ts:82</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="128" class="link-to-prism">src/packages/data/model-config/model-config.ts:128</a></div>
                                         </td>
                                     </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>Loads the first Page </p>
+                                        <div class="io-description"><p>Checks if a given property name is a system property (either part of omittedFields or beginning with _).</p>
             </div>
             
                                         <div class="io-description">
@@ -1083,25 +1080,25 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b> last</b>
+                                    <b> parseType</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>last()</code>
+            <code>parseType(type: string)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">src/packages/core/pagination/pagination.ts:87</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">src/packages/data/model-config/model-config.ts:133</a></div>
                                         </td>
                                     </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>Loads the last page </p>
+                                        <div class="io-description"><p>Parses the property type (as contained in the property schema&#39;s title field). </p>
             </div>
             
                                         <div class="io-description">
@@ -1116,124 +1113,28 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b> isActive</b>
+                                    <b> generateFieldConfig</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>isActive(page: number)</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">src/packages/core/pagination/pagination.ts:96</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description"><p>Returns true if the given page number is currently active.</p>
-            </div>
-            
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code>boolean</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> isFirst</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-            <code>isFirst()</code>
+            <code>generateFieldConfig(model: string)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">src/packages/core/pagination/pagination.ts:101</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="147" class="link-to-prism">src/packages/data/model-config/model-config.ts:147</a></div>
                                         </td>
                                     </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>Returns true if the current page is the first one </p>
-            </div>
-            
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code>boolean</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> isLast</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-            <code>isLast()</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">src/packages/core/pagination/pagination.ts:106</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description"><p>Returns true if the current page is the last one </p>
-            </div>
-            
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code>boolean</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <b> slice</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-            <code>slice(items: any)</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">src/packages/core/pagination/pagination.ts:114</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description"><p>slices a given array according to the current pagination state </p>
+                                        <div class="io-description"><p>Generates a proper fieldConfig for a given model and an optional local fieldConfig.
+            Operates in three layers: If a local fieldConfig is given, it will be used.
+            If no local fieldConfig is given, the global model&#39;s field config is used.
+            If no global field config is found for that model, it will be generated from the model schema.</p>
             </div>
             
                                         <div class="io-description">
@@ -1244,8 +1145,40 @@
                             </tr>
                         </tbody>
                     </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> generateConfig</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>generateConfig(model: string)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="186" class="link-to-prism">src/packages/data/model-config/model-config.ts:186</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Returns the given model&#39;s config and generates a field config from the schema if it is not configured. </p>
+            </div>
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code>void</code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
             </section>
-
 
             <section>
                 
@@ -1256,23 +1189,23 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Public</span> change$</b>
+                                    <b> filterableTypes</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-"></span><code>change$:     <code>any</code>
+                                    <code>filterableTypes:     <code>{}</code>
             </bcode>
                                 </td>
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/packages/core/pagination/pagination.ts:13</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/packages/data/model-config/model-config.ts:40</a></div>
                                         </td>
                                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Observable that is nexted when the pagination has changed. </p>
+                                    <div class="io-description"><p>which types should be filterable by default? </p>
             </div>
                                 </td>
                             </tr>
@@ -1282,23 +1215,23 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Protected</span> config</b>
+                                    <b> omittedFields</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-circle"></span><code>config:     <code>any</code>
+                                    <code>omittedFields:     <code>any</code>
             </bcode>
                                 </td>
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/packages/core/pagination/pagination.ts:9</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/packages/data/model-config/model-config.ts:16</a></div>
                                         </td>
                                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>The pagination config </p>
+                                    <div class="io-description"><p>Array of property names that are omitted by default. </p>
             </div>
                                 </td>
                             </tr>
@@ -1308,63 +1241,101 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Private</span> pages</b>
+                                    <b> sortableTypes</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-lock"></span><code>pages:     <code>any</code>
+                                    <code>sortableTypes:     <code>{}</code>
             </bcode>
                                 </td>
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/packages/core/pagination/pagination.ts:10</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/packages/data/model-config/model-config.ts:38</a></div>
                                         </td>
                                     </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>which types should be sortable by default? </p>
+            </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Private</span> source</b>
+                                    <b> typeInputComponents</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-lock"></span><code>source:     <code>any</code>
+                                    <code>typeInputComponents:     <code>{}</code>
             </bcode>
                                 </td>
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/packages/core/pagination/pagination.ts:11</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/packages/data/model-config/model-config.ts:44</a></div>
                                         </td>
                                     </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Maps field types to input omponents </p>
+            </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <b><span class="modifier">Protected</span> total</b>
+                                    <b> typeOutputComponents</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-circle"></span><code>total:     <code>number</code>
+                                    <code>typeOutputComponents:     <code>{}</code>
             </bcode>
                                 </td>
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/packages/core/pagination/pagination.ts:7</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/packages/data/model-config/model-config.ts:46</a></div>
                                         </td>
                                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>The total number of items that is being paginated. It can be changed via setTotal. </p>
+                                    <div class="io-description"><p>Maps field types to output components </p>
+            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <b> typeViews</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>typeViews:     <code>{ entries: string; entry: string; asset: string; assets: string; text: string; decimal: string; n...</code>
+            </bcode>
+                                </td>
+                            </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/packages/data/model-config/model-config.ts:25</a></div>
+                                        </td>
+                                    </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Maps field types to view types (may be deprecated in the future) </p>
             </div>
                                 </td>
                             </tr>
@@ -1373,126 +1344,222 @@
             </section>
     </div>
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { Observable, Subject } from &#x27;rxjs&#x27;;
-import { ListConfig } from &#x27;..&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { Config, FieldConfig, FieldConfigProperty } from &#x27;../../core&#x27;;
+import { Datamanager } from &#x27;..&#x27;;
+import * as moment from &#x27;moment&#x27;;
+import { DefaultEntryInputComponent } from &#x27;../entry-form/default-entry-input.component&#x27;;
+import { DefaultInputComponent } from &#x27;../../ui/input/default-input.component&#x27;;
+import { Injectable, Type } from &quot;@angular/core&quot;;
+import { Item } from &#x27;../../core/item/item&#x27;;
+import { EntryResource } from &quot;ec.sdk/typings/resources/publicAPI/EntryResource&quot;;
+import { ItemConfig } from &#x27;../../core/item/item-config.interface&#x27;;
+import { DefaultOutputComponent } from &#x27;../../ui/output/default-output.component&#x27;;
 
-/** This class can be used to control the loading behaviour of external data. */
-export class Pagination {
-  /** The total number of items that is being paginated. It can be changed via setTotal. */
-  protected total: number;
-  /** The pagination config */
-  protected config: ListConfig;
-  private pages: Array&lt;any&gt;;
-  private source &#x3D; new Subject();
-  /** Observable that is nexted when the pagination has changed. */
-  public change$: Observable&lt;any&gt; &#x3D; this.source.asObservable();
+/** The main class for configuring model data behaviour.*/
+@Injectable()
+export class ModelConfig extends Config {
+  /** Array of property names that are omitted by default. */
+  omittedFields: Array&lt;string&gt; &#x3D; [
+    &#x27;id&#x27;,
+    &#x27;private&#x27;,
+    &#x27;created&#x27;,
+    &#x27;creator&#x27;,
+    &#x27;modified&#x27;
+  ];
 
-  /** You can init each Pagination instance with an optional config.
-   * If no config is provided, it will default to &#x60;&#x60;&#x60;{page: 1, size: 25}&#x60;&#x60;&#x60;. */
-  constructor(config?: ListConfig, total?: number) {
-    this.config &#x3D; { page: 1, size: 25 };
-    Object.assign(this.config, config);
-    if (total) {
-      this.setTotal(total);
-    }
+  /** Maps field types to view types (may be deprecated in the future) */
+  typeViews &#x3D; {
+    entries: &#x27;labels&#x27;,
+    entry: &#x27;label&#x27;,
+    asset: &#x27;avatar&#x27;,
+    assets: &#x27;avatars&#x27;,
+    text: &#x27;string&#x27;,
+    decimal: &#x27;number&#x27;,
+    number: &#x27;number&#x27;,
+    boolean: &#x27;boolean&#x27;,
+    datetime: &#x27;date&#x27;
+  };
+
+  /** which types should be sortable by default? */
+  sortableTypes &#x3D; [&#x27;text&#x27;, &#x27;number&#x27;, &#x27;datetime&#x27;];
+  /** which types should be filterable by default? */
+  filterableTypes &#x3D; [&#x27;text&#x27;, &#x27;formattedText&#x27;];
+
+  //TODO simplify input output logic / use service etc.
+  /** Maps field types to input omponents */
+  typeInputComponents &#x3D; {};
+  /** Maps field types to output components */
+  typeOutputComponents &#x3D; {};
+
+  /** Registers a custom input component for the given types. You can e.g. register a custom file picker for the types &#x27;asset&#x27; and &#x27;assets&#x27;.
+   * Be aware that you have to handle different formats yourself when dealing with multiple types*/
+  registerInputComponent(component: Type&lt;any&gt;, types: Array&lt;string&gt;) {
+    types.forEach((type) &#x3D;&gt; {
+      this.typeInputComponents[type] &#x3D; component;
+    })
   }
 
-  /** Retrieves the current page */
-  getPage(): number {
-    return this.config.page;
+  /** Registers a custom output component for the given types. You can e.g. register a custom file viewer for the types &#x27;asset&#x27; and &#x27;assets&#x27;.
+   * Be aware that you have to handle different formats yourself when dealing with multiple types*/
+  registerOutputComponent(component: Type&lt;any&gt;, types: Array&lt;string&gt;) {
+    types.forEach((type) &#x3D;&gt; {
+      this.typeOutputComponents[type] &#x3D; component;
+    })
   }
 
-  /** Retrieves the number of pages */
-  getPages(): number {
-    return this.pages ? this.pages.length : 0;
-  }
-
-  /** Loads the next page. Throws error if already on last page. */
-  next(): void {
-    if (this.isLast()) {
-      return; //already last page
-    }
-    this.config.page +&#x3D; 1;
-    this.load();
-  }
-
-  /** Loads the previous page. Throws error if already on first page. */
-  prev(): void {
-    if (this.isFirst()) {
-      return; //already first page
-    }
-    this.config.page -&#x3D; 1;
-    this.load();
-  }
-
-  /**
-   * Sets the total number of items and calculcates the page count.
+  /** Retrieves the component that should be used to render an input for the given type.
+   * You can register components via registerInputComponent for custom components.
    * */
-  setTotal(total: number) {
-    this.total &#x3D; total;
-    this.pages &#x3D; new Array(Math.ceil(this.total / this.config.size));
-    if (this.config.page !&#x3D;&#x3D; 1 &amp;&amp; this.config.page &gt; this.pages.length) {
-      this.config.page &#x3D; this.pages.length || 1;
-      this.load();
+  getInputComponent(type) {
+    if (this.typeInputComponents[type]) {
+      return this.typeInputComponents[type];
     }
+    if (type &#x3D;&#x3D;&#x3D; &#x27;text&#x27; || type &#x3D;&#x3D;&#x3D; &#x27;decimal&#x27; || type &#x3D;&#x3D;&#x3D; &#x27;boolean&#x27; || type &#x3D;&#x3D;&#x3D; &#x27;number&#x27;) {
+      return DefaultInputComponent;
+    }
+    return DefaultEntryInputComponent;
   }
 
-  /** Merges config and fires next on source */
-  protected load(config?: ListConfig): void {
-    if (config) {
-      Object.assign(this.config, config);
+  /** Retrieves the component that should be used to render an output for the given type.
+   * You can register components via registerInputComponent for custom components.
+   * */
+  getOutputComponent(type) {
+    if (this.typeOutputComponents[type]) {
+      return this.typeOutputComponents[type];
     }
-    this.source.next(this.config);
+    return DefaultOutputComponent;
+    //TODO DefaultEntryOutputComponent?
   }
 
-  /** Selects the given page number */
-  select(page: number): void {
-    if (page &#x3D;&#x3D;&#x3D; this.config.page) {
+  /** Retrieves the given model config.
+   * @example
+   * &#x60;&#x60;&#x60;typescript
+   * ModelConfig.get(&#x27;muffin&#x27;); //returns muffin config;
+   * &#x60;&#x60;&#x60;
+   * */
+  get(property: string): ItemConfig&lt;EntryResource&gt; {
+    return this.configure(&#x27;model&#x27;, property);
+  }
+
+  /** Sets the given model config.
+   * @example
+   * &#x60;&#x60;&#x60;typescript
+   * ModelConfig.set(&#x27;muffin&#x27;, {
+   *  fields: {
+   *    title: {
+   *      label: &#x27;Muffin Titel&#x27;
+   *    }
+   *  });
+   * &#x60;&#x60;&#x60;
+   * */
+  set(property: string, config: ItemConfig&lt;EntryResource&gt;): ItemConfig&lt;any&gt; {
+    return this.configure(&#x27;model&#x27;, property, config);
+  }
+
+  /** Returns a resolve function that will return the value of a certain field type and property. */
+  displayField(type, property) {
+    if ([&#x27;entries&#x27;, &#x27;entry&#x27;].indexOf(type) !&#x3D;&#x3D; -1) {
+      return (value, entry) &#x3D;&gt; entry.getTitle(property);
+    }
+    if ([&#x27;asset&#x27;, &#x27;assets&#x27;].indexOf(type) !&#x3D;&#x3D; -1) {
+      return (value, entry) &#x3D;&gt; entry.getImageThumbUrl(&#x27;pictures&#x27;, 100);
+    }
+    if (type &#x3D;&#x3D;&#x3D; &#x27;datetime&#x27;) {
+      return (value) &#x3D;&gt; moment(value).format(&#x27;DD.MM.YY&#x27;);
+    }
+    return (value) &#x3D;&gt; value;
+  };
+
+  /** Checks if a given property name is a system property (either part of omittedFields or beginning with _).*/
+  isSystemProperty(property: string) {
+    return property[0] &#x3D;&#x3D;&#x3D; &#x27;_&#x27; || this.omittedFields.indexOf(property) !&#x3D;&#x3D; -1;
+  }
+
+  /** Parses the property type (as contained in the property schema&#x27;s title field). */
+  parseType(type: string) {
+    const match &#x3D; type.match(/^(\w*)[&lt;\w*&gt;]?/i);
+    return !match.length ? null : {
+      raw: type,
+      name: match[1],
+      model: match.length &gt; 2 ? match[2] : null
+    };
+  }
+
+  /** Generates a proper fieldConfig for a given model and an optional local fieldConfig.
+   * Operates in three layers: If a local fieldConfig is given, it will be used.
+   * If no local fieldConfig is given, the global model&#x27;s field config is used.
+   * If no global field config is found for that model, it will be generated from the model schema.
+   * */
+  generateFieldConfig(model: string): Promise&lt;FieldConfig&lt;FieldConfigProperty&gt;&gt; {
+    let fieldConfig;
+    return Promise.resolve().then(() &#x3D;&gt; {
+      //use global config, if given
+      if (this.get(model) &amp;&amp; this.get(model).fields) {
+        return Promise.resolve(this.get(model).fields);
+      }
       return;
-    }
-    this.load({ page: page });
+    }).then((config) &#x3D;&gt; {
+      fieldConfig &#x3D; config;
+      return Datamanager.schema(model);
+    }).then((schema) &#x3D;&gt; {
+      const properties &#x3D; Object.keys(schema)
+      .filter(property &#x3D;&gt; (!fieldConfig &amp;&amp; !this.isSystemProperty(property)) || (fieldConfig &amp;&amp; !!fieldConfig[property]));
+      fieldConfig &#x3D; fieldConfig || {};
+      properties.forEach(property &#x3D;&gt; {
+        const type &#x3D; this.parseType(schema[property].title);
+        if (!type) {
+          console.error(&#x27;Model Property Schema title &#x27;, schema[property].title, &#x27; was unexpected, ignoring property&#x27;, property)
+          return;
+        }
+        fieldConfig[property] &#x3D; Object.assign({
+          label: property,
+          schema: schema[property],
+          type: type.name,
+          view: this.typeViews[type.name],
+          model: type.model,
+          display: this.displayField(type.name, property),
+          input: this.getInputComponent(type.name),
+          output: this.getOutputComponent(type.name),
+          filterable: this.filterableTypes.indexOf(type.name) !&#x3D;&#x3D; -1,
+          sortable: this.sortableTypes.indexOf(type.name) !&#x3D;&#x3D; -1,
+        }, fieldConfig[property] ? fieldConfig[property] : {});
+      });
+      return fieldConfig;
+    });
   }
 
-  /** Loads the first Page */
-  first(): void {
-    this.load({ page: 1 });
-  }
+  /** Returns the given model&#x27;s config and generates a field config from the schema if it is not configured. */
+  generateConfig(model: string) {
+    const config &#x3D; this.get(model);
+    Object.assign(config, {
+      identifier: &#x27;id&#x27;,
+      onSave: (item: Item&lt;EntryResource&gt;, value) &#x3D;&gt; {
+        if (item.getBody() &amp;&amp; item.getBody().save) {
+          return item.getBody().save().then((entry) &#x3D;&gt; {
+            Object.assign(item.resolve(), value);
+            return item;
+          }).catch((err) &#x3D;&gt; {
+            console.log(&#x27;could no save...&#x27;);
+            //TODO connect to error handler
+          });
+        } else {
+          console.log(&#x27;create..&#x27;);
+          return Promise.resolve();
+          //TODO
+        }
+      }
+    });
 
-  /** Loads the last page */
-  last() {
-    if (!this.pages) {
-      throw new Error(&#x60;Cannot load last page without knowing the item count.
-        Call setTotal(itemCount) before loading.&#x60;);
-    }
-    this.load({ page: this.pages.length });
+    return this.generateFieldConfig(model).then((fieldConfig) &#x3D;&gt; {
+      Object.assign(config, { fields: fieldConfig });
+      return Promise.resolve(config);
+    });
   }
-
-  /** Returns true if the given page number is currently active.*/
-  isActive(page: number): boolean {
-    return this.config.page &#x3D;&#x3D;&#x3D; page;
-  }
-
-  /** Returns true if the current page is the first one */
-  isFirst(): boolean {
-    return this.config.page &#x3D;&#x3D;&#x3D; 1;
-  }
-
-  /** Returns true if the current page is the last one */
-  isLast(): boolean {
-    if (!this.pages) {
-      return true;
-    }
-    return this.config.page &#x3D;&#x3D;&#x3D; this.pages.length;
-  }
-
-  /** slices a given array according to the current pagination state */
-  slice(items: Array&lt;any&gt;): Array&lt;any&gt; {
-    return items.slice((this.config.page - 1) * this.config.size, (this.config.page) * this.config.size);
-  }
-}
-</code></pre>
+}</code></pre>
     </div>
 </div>
+
+
 
 
 

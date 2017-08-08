@@ -67,7 +67,9 @@ export class List<T> extends Collection<Item<T>> {
    */
   protected getFields(): Array<Field<T>> {
     if (this.config && this.config.fields) {
-      return Object.keys(this.config.fields).map((field) => new Field(field, this.config.fields[field]));
+      return Object.keys(this.config.fields)
+      .filter((key) => this.config.fields[key].list !== false)
+      .map((field) => new Field(field, this.config.fields[field]));
     }
     const fields = [];
     this.items.forEach((item) => {
