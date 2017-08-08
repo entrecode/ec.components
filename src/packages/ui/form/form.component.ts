@@ -28,8 +28,10 @@ export class FormComponent {
   @Input() value: any;
   /** If set to true, the form will be rendered empty, to be referenced from the outside. */
   @Input() empty: boolean;
+  /** If set to true, the form will be rendered without a submit button. */
+  @Input() submitButton: boolean;
   /** Emits when the form is submitted. The form can only be submitted if all Validators succeeded. */
-  @Output('onSubmit') submit: EventEmitter<FormGroup> = new EventEmitter();
+  @Output('submit') submitted: EventEmitter<FormGroup> = new EventEmitter();
   /** Emits when a new instance of Form is present */
   @Output() onChange: EventEmitter<FormComponent> = new EventEmitter();
 
@@ -94,9 +96,11 @@ export class FormComponent {
   }
 
   /** Method that is invoked when the form is submitted.*/
-  onSubmit() {
-    this.item.save(this.group.value);
-    this.submit.emit(this.group);
+  submit() {
+    //TODO loader?
+    this.item.save(this.group.value).then((v) => {
+      this.submitted.emit(this.group);
+    });
   }
 
   /** Returns the current value of the form control group. */

@@ -23,7 +23,7 @@ export class EntryFormComponent extends FormComponent {
     }
     this.modelConfig.generateConfig(this.model).then((config) => {
       Object.assign(this.config, config);
-      this.form = new EntryForm(this.model, this.entry, this.config, this.modelConfig);
+      this.form = new EntryForm(this.model, this.entry, this.config);
     });
   }
 }

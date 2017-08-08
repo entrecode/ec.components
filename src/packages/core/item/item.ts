@@ -113,8 +113,9 @@ export class Item<T> {
   /** Saves the given value. */
   save(value: T) {
     if (this.config.onSave) {
-      return this.config.onSave(this, value);
+      return Promise.resolve(this.config.onSave(this, value));
     }
     Object.assign(this.resolve(), value);
+    return Promise.resolve(this);
   }
 }

@@ -7,6 +7,14 @@
                #muffinList></ec-entry-list>
 
 <ec-pop #formPop class="modal">
-  <button (click)="formPop.hide()">X</button>
-  <ec-form (submit)="formPop.hide()" #myForm></ec-form>
+  <nav style="position:absolute;right:0;top:0">
+    <button (click)="myForm.submit()">
+      <i class="ec-icon save"></i>
+    </button>
+    <button (click)="formPop.hide()">
+      <i class="ec-icon close"></i>
+    </button>
+  </nav>
+  <ec-form (submit)="formPop.hide()" [submitButton]="false" (submitted)="formPop.hide()"
+           #myForm></ec-form>
 </ec-pop>

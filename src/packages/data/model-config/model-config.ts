@@ -189,14 +189,16 @@ export class ModelConfig extends Config {
       identifier: 'id',
       onSave: (item: Item<EntryResource>, value) => {
         if (item.getBody() && item.getBody().save) {
-          item.getBody().save().then((entry) => {
+          return item.getBody().save().then((entry) => {
             Object.assign(item.resolve(), value);
+            return item;
           }).catch((err) => {
             console.log('could no save...');
             //TODO connect to error handler
           });
         } else {
           console.log('create..');
+          return Promise.resolve();
           //TODO
         }
       }

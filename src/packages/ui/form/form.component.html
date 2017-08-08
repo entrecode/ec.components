@@ -1,4 +1,4 @@
-<form novalidate [formGroup]="group" (ngSubmit)="onSubmit()" *ngIf="group">
+<form novalidate [formGroup]="group" (ngSubmit)="submit()" *ngIf="group">
   <div #wrapper>
     <ng-content></ng-content>
   </div>
@@ -11,7 +11,9 @@
         </label>
       </li>
     </ul>
-    <button type="submit" [disabled]="group.invalid" [class.disabled]="group.invalid">
+    <button type="submit" *ngIf="submitButton!==false"
+            [disabled]="group.invalid"
+            [class.disabled]="group.invalid">
       Speichern
     </button>
   </div>
