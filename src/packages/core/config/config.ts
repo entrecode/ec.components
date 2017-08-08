@@ -1,14 +1,14 @@
 /** The Root class for all Configurations. */
 export abstract class Config {
-  private static config: {
-    [key: string]: Config,
+  private config?: {
+    [key: string]: Object,
   } = {};
 
   /** This method is a getter and setter for configurations. The key stands for the config (e.g. model).
    * The property is a sub property if the config (e.g. fields => model.fields).
    * If no config is given, the method just returns the configuration for the given property.
    * If a config is given, the property config is merged via Object.assign. */
-  public static configure(key: string, property: string, config?: Config) {
+  public configure?(key: string, property: string, config?: Object) {
     if (!this.config[key]) {
       this.config[key] = {};
     }

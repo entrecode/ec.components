@@ -9,7 +9,7 @@ export class EntryForm<Entry> extends Form<Entry> {
   private model: string;
 
   /** The constructor will init the Form and generate the field config from the model schema */
-  constructor(model: string, body, config?: EntryListConfig) {
+  constructor(model: string, body, config: EntryListConfig = {}, private modelConfig: ModelConfig) {
     super(body, Object.assign({
       identifier: '_id',
       resolve: (entry => entry.value || {}),
@@ -30,7 +30,7 @@ export class EntryForm<Entry> extends Form<Entry> {
       // this.load();
       return;
     }
-    ModelConfig.generateFieldConfig(this.model).then((fieldConfig) => {
+    this.modelConfig.generateFieldConfig(this.model).then((fieldConfig) => {
       Object.assign(this.config, { fields: fieldConfig });
       // this.load();
     });

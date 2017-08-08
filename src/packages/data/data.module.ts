@@ -12,6 +12,7 @@ import {
   PublicService,
   SdkService,
 } from './index';
+import { ModelConfig } from './model-config/model-config';
 
 @NgModule({
   entryComponents: [
@@ -38,7 +39,8 @@ import {
   providers: [
     SdkService,
     PublicService,
-    AdminService
+    AdminService,
+    ModelConfig,
   ],
 })
 export class DataModule {

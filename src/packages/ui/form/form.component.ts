@@ -21,7 +21,7 @@ export class FormComponent {
   private group: FormGroup;
   /** You can use a field config directly as input */
   /** You can also use a FormConfig/ItemConfig as input (with defined fields property) */
-  @Input() config: FormConfig<any>;
+  @Input() config: FormConfig<any> = {};
   /** You can also use an Item as input */
   @Input() item: Item<any>;
   /** If you pass an object to value, the form will generate an item from it. */

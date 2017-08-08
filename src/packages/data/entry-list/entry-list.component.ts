@@ -3,6 +3,7 @@ import { ListComponent } from '../../ui';
 import { ListConfig, Selection } from '../../core';
 import { EntryList } from '..';
 import { SdkService } from '../sdk/sdk.service';
+import { ModelConfig } from '../model-config/model-config';
 
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent */
 @Component({
@@ -21,7 +22,7 @@ export class EntryListComponent extends ListComponent {
   list: EntryList<any>;
 
   /** The constructor will just call super of List*/
-  constructor(private sdk: SdkService) {
+  constructor(private sdk: SdkService, private modelConfig: ModelConfig) {
     super();
   }
 
@@ -30,11 +31,14 @@ export class EntryListComponent extends ListComponent {
     if (!this.model) {
       return;
     }
-    this.list = new EntryList(this.model, this.config, this.sdk);
-    this.list.change$.subscribe((list) => {
-      if (!this.selection && this.list.config && !this.list.config.disableSelection) {
-        this.selection = new Selection([], this.list.config);
-      }
+    this.modelConfig.generateConfig(this.model).then((config) => {
+      Object.assign(this.config, config);
+      this.list = new EntryList(this.model, this.config, this.sdk);
+      this.list.change$.subscribe((list) => {
+        if (!this.selection && this.list.config && !this.list.config.disableSelection) {
+          this.selection = new Selection([], this.list.config);
+        }
+      });
     });
   }
 

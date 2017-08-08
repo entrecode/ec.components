@@ -3,12 +3,15 @@ import { Datamanager, ModelConfiguration } from '..';
 import * as moment from 'moment';
 import { DefaultEntryInputComponent } from '../entry-form/default-entry-input.component';
 import { DefaultInputComponent } from '../../ui/input/default-input.component';
-import { Type } from "@angular/core";
+import { Injectable, Type } from "@angular/core";
+import { Item } from '../../core/item/item';
+import { EntryResource } from "ec.sdk/typings/resources/publicAPI/EntryResource";
 
 /** The main class for configuring model data behaviour.*/
+@Injectable()
 export class ModelConfig extends Config {
   /** Array of property names that are omitted by default. */
-  static omittedFields: Array<string> = [
+  omittedFields: Array<string> = [
     'id',
     'private',
     'created',
@@ -17,7 +20,7 @@ export class ModelConfig extends Config {
   ];
 
   /** Maps field types to view types (may be deprecated in the future) */
-  static typeViews = {
+  typeViews = {
     entries: 'labels',
     entry: 'label',
     asset: 'avatar',
@@ -30,11 +33,11 @@ export class ModelConfig extends Config {
   };
 
   /** Maps field types to components */
-  static typeInputComponents = {};
+  typeInputComponents = {};
 
   /** Registers a custom input component for the given types. You can e.g. register a custom file picker for the types 'asset' and 'assets'.
    * Be aware that you have to handle different formats yourself when dealing with multiple types*/
-  static registerInputComponent(component: Type<any>, types: Array<string>) {
+  registerInputComponent(component: Type<any>, types: Array<string>) {
     types.forEach((type) => {
       this.typeInputComponents[type] = component;
     })
@@ -43,7 +46,7 @@ export class ModelConfig extends Config {
   /** Retrieves the component that should be used to render an input for the given type.
    * You can register components via registerInputComponent for custom components.
    * */
-  static getInputComponent(type) {
+  getInputComponent(type) {
     if (this.typeInputComponents[type]) {
       return this.typeInputComponents[type];
     }
@@ -59,7 +62,7 @@ export class ModelConfig extends Config {
    * ModelConfig.get('muffin'); //returns muffin config;
    * ```
    * */
-  static get(property: string): ModelConfiguration {
+  get(property: string): ModelConfiguration {
     return this.configure('model', property);
   }
 
@@ -74,12 +77,12 @@ export class ModelConfig extends Config {
    *  });
    * ```
    * */
-  static set(property: string, config: ModelConfiguration): ModelConfiguration {
+  set(property: string, config: ModelConfiguration): ModelConfiguration {
     return this.configure('model', property, config);
   }
 
   /** Returns a resolve function that will return the value of a certain field type and property. */
-  static displayField(type, property) {
+  displayField(type, property) {
     if (['entries', 'entry'].indexOf(type) !== -1) {
       return (value, entry) => entry.getTitle(property);
     }
@@ -93,12 +96,12 @@ export class ModelConfig extends Config {
   };
 
   /** Checks if a given property name is a system property (either part of omittedFields or beginning with _).*/
-  static isSystemProperty(property: string) {
+  isSystemProperty(property: string) {
     return property[0] === '_' || this.omittedFields.indexOf(property) !== -1;
   }
 
   /** Parses the property type (as contained in the property schema's title field). */
-  static parseType(type: string) {
+  parseType(type: string) {
     const match = type.match(/^(\w*)[<\w*>]?/i);
     return !match.length ? null : {
       raw: type,
@@ -112,7 +115,7 @@ export class ModelConfig extends Config {
    * If no local fieldConfig is given, the global model's field config is used.
    * If no global field config is found for that model, it will be generated from the model schema.
    * */
-  static generateFieldConfig(model: string): Promise<FieldConfig<FieldConfigProperty>> {
+  generateFieldConfig(model: string): Promise<FieldConfig<FieldConfigProperty>> {
     let fieldConfig;
     return Promise.resolve().then(() => {
       //use global config, if given
@@ -146,6 +149,24 @@ export class ModelConfig extends Config {
         //TODO find strategy for input/output templates!!
       });
       return fieldConfig;
+    });
+  }
+
+  /** Returns the given model's config and generates a field config from the schema if it is not configured. */
+  generateConfig(model: string) {
+    const config = this.get(model);
+    Object.assign({
+      identifier: 'id',
+      fields: config.fields,
+      onSave: (item: Item<EntryResource>) => {
+        console.log('save...');
+        //TODO save does not get called
+        item.getBody().save();
+      }
+    }, config);
+    return this.generateFieldConfig(model).then((fieldConfig) => {
+      Object.assign(config, { fields: fieldConfig });
+      return Promise.resolve(config);
     });
   }
 }

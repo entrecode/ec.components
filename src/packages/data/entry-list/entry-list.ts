@@ -1,7 +1,6 @@
 import { Item, List } from '../../core';
-import { EntryListConfig, ModelConfig } from '..';
+import { EntryListConfig } from '..';
 import { SdkService } from '../sdk/sdk.service';
-import { EntryResource } from 'ec.sdk/typings/resources/publicAPI/EntryResource';
 
 /**
  * Extension of List for Datamanager Entries.
@@ -12,29 +11,12 @@ export class EntryList<Entry> extends List<Entry> {
   /** The list's config. */
   public config; //TODO use filterOptions
 
-  /** The constructor will init the List and Pagination instances.*/
+  /** The constructor will init the List and Pagination instances.
+   * Make sure the config is already complete when initiating an EntryList instance. */
   constructor(model: string, config: EntryListConfig, private sdk: SdkService) { //TODO filterOptions import
-    super([], Object.assign({
-      identifier: '_id',
-      // resolve: (entry => entry.value),
-      fields: config.fields,
-      onSave: (item: Item<EntryResource>) => {
-        console.log('save', item);
-        // Datamanager.save(item.getBody());
-        item.getBody().save()
-        //TODO save...
-      }
-    }, config));
+    super([], config);
     this.model = model;
-    if (this.config.fields) {
-      this.load();
-      return;
-    }
-    ModelConfig.generateFieldConfig(this.model).then((fieldConfig) => {
-      Object.assign(this.config, { fields: fieldConfig });
-      this.fields = this.getFields();
-      this.load();
-    });
+    this.load();
   }
 
   private use(entryList) {

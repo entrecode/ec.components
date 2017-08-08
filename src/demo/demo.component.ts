@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { mocked } from '../mocks/data';
 import { environment } from '../environments/environment';
 // import { Pagination } from '@ec.components/core'; //real world imports
-// import { Datamanager, ModelConfig } from '@ec.components/data';
+// import { Datamanager, modelConfig } from '@ec.components/data';
 import { Datamanager, ModelConfig } from '../packages/data';
 import { FormConfig, List, Pagination } from '../packages/core';
 import * as moment from 'moment';
@@ -24,7 +24,7 @@ export class DemoComponent {
   private formConfig: FormConfig<any>;
   private randomData: any;
 
-  constructor() {
+  constructor(private modelConfig: ModelConfig) {
     Datamanager.useEnvironment(environment);
     this.pagination.setTotal(5100);
     this.pagination.change$.debounceTime(500)
@@ -829,7 +829,7 @@ export class DemoComponent {
       }
     };
 
-    ModelConfig.set('muffin', {
+    this.modelConfig.set('muffin', {
       fields: {
         pictures: {
           label: 'Bilder'
@@ -867,7 +867,7 @@ export class DemoComponent {
       }
     });
 
-    ModelConfig.set('baker', {
+    this.modelConfig.set('baker', {
       fields: {
         name: {
           label: 'Bäcker'
