@@ -2,7 +2,7 @@
  * Created by felix on 23.05.17.
  */
 import { Component, Input } from '@angular/core';
-import { Datamanager } from '..';
+import { SdkService } from '../sdk/sdk.service';
 
 @Component({
   selector: 'ec-entry',
@@ -15,9 +15,12 @@ export class EntryComponent {
   @Input() levels: number;
   entry: any;
 
+  constructor(private sdk: SdkService) {
+  }
+
   ngOnChanges() {
     if (this.id && this.model) {
-      this.promise = Datamanager.entry(this.model, this.id, this.levels)
+      this.promise = this.sdk.api.entry(this.model, this.id, this.levels)
       .then((entry) => {
         this.entry = entry;
         return entry;

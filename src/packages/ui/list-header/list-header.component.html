@@ -16,15 +16,15 @@
     {{field.label || field.property}}
     <ul>
       <li>
-        <a class="action" [class.active]="hasFilter(field.property)"
-           (click)="editFilter(filterPop)">
-          <i class="ec-icon find"></i>
-        </a>
-      </li>
-      <li>
         <a class="action" [class.active]="list.config?.sortBy===field.property"
            (click)="list.toggleSort(field.property)">
           <i class="ec-icon" [ngClass]="!list.config?.desc?'arrow-down':'arrow-up'"></i>
+        </a>
+      </li>
+      <li>
+        <a class="action" [class.active]="hasFilter(field.property)"
+           (click)="editFilter(filterPop)">
+          <i class="ec-icon find"></i>
         </a>
       </li>
     </ul>

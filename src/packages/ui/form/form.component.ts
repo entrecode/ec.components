@@ -63,6 +63,7 @@ export class FormComponent {
   edit(item: Item<any>) {
     this.config = item.getConfig() || this.config;
     this.item = item;
+    delete this.group;
     this.ngOnChanges();
   }
 

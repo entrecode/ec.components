@@ -1,26 +1,12 @@
 <!--<button (click)="formPop.show()">View now</button>-->
 
-<ec-entry-list model="muffin" [config]="{size:10}" [solo]="true" (onSelect)="myForm.edit($event)"
+<h1>CRUD Demo</h1>
+
+<ec-entry-list model="muffin" [config]="{size:10}" [solo]="true"
+               (onSelect)="formPop.show();myForm.edit($event)"
                #muffinList></ec-entry-list>
 
-<ec-pop #formPop class="sidebar-right" active="true">
+<ec-pop #formPop class="sidebar-right">
   <button (click)="formPop.hide()">X</button>
-  <ec-form #myForm (onChange)="formPop.show()">
-    <!--<ec-field property="picture">
-      <ng-template let-field="field" let-group="group" let-value="value">
-        <div class="ec-list-avatar">
-          <img
-              [src]="'https://unsplash.it/'+value*2+'/'+value">
-        </div>
-      </ng-template>
-    </ec-field>
-    <ec-field property="title">
-      <ng-template let-group="group" let-field="field">
-        <label [formGroup]="group">
-          {{field.label || field.property}}
-          <input type="text" [formControlName]="field.property">
-        </label>
-      </ng-template>
-    </ec-field>-->
-  </ec-form>
+  <ec-form (submit)="formPop.hide()" #myForm></ec-form>
 </ec-pop>

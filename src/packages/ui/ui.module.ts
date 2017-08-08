@@ -32,6 +32,7 @@ import {
     DynamicFieldComponent,
     DefaultInputComponent,
     DefaultOutputComponent,
+    SelectComponent,
   ],
   declarations: [
     ListComponent,
