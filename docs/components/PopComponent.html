@@ -236,6 +236,9 @@
                                     <a href="../classes/Field.html" >Field</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../classes/Filter.html" >Filter</a>
+                                </li>
+                                <li class="link">
                                     <a href="../classes/Form.html" >Form</a>
                                 </li>
                                 <li class="link">
@@ -280,6 +283,9 @@
                                     <a href="../injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../injectables/ModelService.html" >ModelService</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/PublicAuthService.html" >PublicAuthService</a>
                                 </li>
                                 <li class="link">
@@ -322,6 +328,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/ListConfig.html" >ListConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/ModelConfig.html" >ModelConfig</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/ModelConfiguration.html" >ModelConfiguration</a>
@@ -591,6 +600,9 @@
                                            <a href="../classes/Field.html" >Field</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../classes/Filter.html" >Filter</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../classes/Form.html" >Form</a>
                                        </li>
                                        <li class="link">
@@ -635,6 +647,9 @@
                                            <a href="../injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../injectables/ModelService.html" >ModelService</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/PublicAuthService.html" >PublicAuthService</a>
                                        </li>
                                        <li class="link">
@@ -677,6 +692,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/ListConfig.html" >ListConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/ModelConfig.html" >ModelConfig</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/ModelConfiguration.html" >ModelConfiguration</a>
@@ -856,6 +874,38 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
+                            <b><span class="modifier">Public</span> toggle</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <span class="modifier-icon method fa fa-play "></span>
+                            <code>toggle()</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/packages/ui/pop/pop.component.ts:19</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code>void</code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
                             <b><span class="modifier">Public</span> show</b>
                         </td>
                     </tr>
@@ -869,7 +919,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/packages/ui/pop/pop.component.ts:19</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/packages/ui/pop/pop.component.ts:27</a></div>
                                 </td>
                             </tr>
     
@@ -901,7 +951,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/packages/ui/pop/pop.component.ts:26</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/packages/ui/pop/pop.component.ts:34</a></div>
                                 </td>
                             </tr>
     
@@ -1002,6 +1052,14 @@ export class PopComponent {
   delay: number &#x3D; 0;
 
   constructor() {
+  }
+
+  public toggle() {
+    if (this.visible) {
+      this.hide();
+    } else {
+      this.show();
+    }
   }
 
   public show() {

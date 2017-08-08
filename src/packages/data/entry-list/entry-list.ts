@@ -1,5 +1,7 @@
 import { Item, List } from '../../core';
-import { Datamanager, EntryListConfig, ModelConfig } from '..';
+import { EntryListConfig, ModelConfig } from '..';
+import { SdkService } from '../sdk/sdk.service';
+import { EntryResource } from 'ec.sdk/typings/resources/publicAPI/EntryResource';
 
 /**
  * Extension of List for Datamanager Entries.
@@ -8,16 +10,19 @@ export class EntryList<Entry> extends List<Entry> {
   private entryList;
   private model: string;
   /** The list's config. */
-  public config: EntryListConfig;
+  public config; //TODO use filterOptions
 
   /** The constructor will init the List and Pagination instances.*/
-  constructor(model: string, config: EntryListConfig) {
+  constructor(model: string, config: EntryListConfig, private sdk: SdkService) { //TODO filterOptions import
     super([], Object.assign({
       identifier: '_id',
-      resolve: (entry => entry.value),
+      // resolve: (entry => entry.value),
       fields: config.fields,
-      onSave: (item: Item<Entry>) => {
-        Datamanager.save(item.getBody());
+      onSave: (item: Item<EntryResource>) => {
+        console.log('save', item);
+        // Datamanager.save(item.getBody());
+        item.getBody().save()
+        //TODO save...
       }
     }, config));
     this.model = model;
@@ -32,10 +37,10 @@ export class EntryList<Entry> extends List<Entry> {
     });
   }
 
-  private useList(entryList) {
+  private use(entryList) {
     this.entryList = entryList;
     this.removeAll();
-    this.addAll(entryList.entries.map((entry) => {
+    this.addAll(entryList.getAllItems().map((entry) => {
       return new Item(entry, this.config);
     }), true);
     this.page = this.items;
@@ -59,8 +64,18 @@ export class EntryList<Entry> extends List<Entry> {
       });
       Object.assign(this.config, config);
     }
-    return Datamanager.api().model(this.model).entryList(this.config)
-    .then(entryList => this.useList(entryList));
+    let c = {
+      size: this.config.size,
+      page: this.config.page
+      // fields: Object.keys(this.config.fields)
+    };
+    if (this.config.sortBy) {
+      c['sort'] = [(this.config.desc ? '-' : '') + this.config.sortBy];
+    }
+    return this.sdk.api.entryList(this.model, c)
+    .then((list) => {
+      this.use(list);
+    });
   }
 
   /** Toggles sorting of the given property. Overloads list method to reload with the new sort setup*/

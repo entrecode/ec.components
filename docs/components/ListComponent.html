@@ -236,6 +236,9 @@
                                     <a href="../classes/Field.html" >Field</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../classes/Filter.html" >Filter</a>
+                                </li>
+                                <li class="link">
                                     <a href="../classes/Form.html" >Form</a>
                                 </li>
                                 <li class="link">
@@ -280,6 +283,9 @@
                                     <a href="../injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../injectables/ModelService.html" >ModelService</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/PublicAuthService.html" >PublicAuthService</a>
                                 </li>
                                 <li class="link">
@@ -322,6 +328,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/ListConfig.html" >ListConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/ModelConfig.html" >ModelConfig</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/ModelConfiguration.html" >ModelConfiguration</a>
@@ -591,6 +600,9 @@
                                            <a href="../classes/Field.html" >Field</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../classes/Filter.html" >Filter</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../classes/Form.html" >Form</a>
                                        </li>
                                        <li class="link">
@@ -635,6 +647,9 @@
                                            <a href="../injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../injectables/ModelService.html" >ModelService</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/PublicAuthService.html" >PublicAuthService</a>
                                        </li>
                                        <li class="link">
@@ -677,6 +692,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/ListConfig.html" >ListConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/ModelConfig.html" >ModelConfig</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/ModelConfiguration.html" >ModelConfiguration</a>
@@ -1190,9 +1208,7 @@ export class ListComponent {
       &lt;/div&gt;
     &lt;/div&gt;
     &lt;ec-list-items [host]&#x3D;&quot;this&quot; #listItems
-                   [items]&#x3D;&quot;list?.page | group: group.property: group.value&quot;&gt;
-      &lt;ng-content&gt;&lt;/ng-content&gt;
-    &lt;/ec-list-items&gt;
+                   [items]&#x3D;&quot;list?.page | group: group.property: group.value&quot;&gt;&lt;/ec-list-items&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;ec-pagination [pagination]&#x3D;&quot;list?.pagination&quot;&gt;&lt;/ec-pagination&gt;</code></pre>
@@ -1221,7 +1237,7 @@ export class ListComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ec-pagination [pagination]="list?.pagination"></ec-pagination><div class="ec-list">  <div class="ec-list-group">    <ec-list-header [host]="this"></ec-list-header>  </div>  <div class="ec-list-group" *ngFor="let group of list?.groups;trackBy:list?.trackGroup">    <div class="ec-list-group-header" *ngIf="group.value"         (click)="selection?.toggleAll(listItems?.items)">      <div class="ec-list-item-cell ec-list-checkbox" *ngIf="selection">        <input type="checkbox" [checked]="selection?.hasAll(listItems?.items)">      </div>      <div class="ec-list-item ec-list-group-name">        {{group.value}}      </div>    </div>    <ec-list-items [host]="this" #listItems                   [items]="list?.page | group: group.property: group.value">      <ng-content></ng-content>    </ec-list-items>  </div></div><ec-pagination [pagination]="list?.pagination"></ec-pagination></div>'
+        var COMPONENT_TEMPLATE = '<div><ec-pagination [pagination]="list?.pagination"></ec-pagination><div class="ec-list">  <div class="ec-list-group">    <ec-list-header [host]="this"></ec-list-header>  </div>  <div class="ec-list-group" *ngFor="let group of list?.groups;trackBy:list?.trackGroup">    <div class="ec-list-group-header" *ngIf="group.value"         (click)="selection?.toggleAll(listItems?.items)">      <div class="ec-list-item-cell ec-list-checkbox" *ngIf="selection">        <input type="checkbox" [checked]="selection?.hasAll(listItems?.items)">      </div>      <div class="ec-list-item ec-list-group-name">        {{group.value}}      </div>    </div>    <ec-list-items [host]="this" #listItems                   [items]="list?.page | group: group.property: group.value"></ec-list-items>  </div></div><ec-pagination [pagination]="list?.pagination"></ec-pagination></div>'
     var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'DefaultEntryInputComponent', 'selector': 'ec-default-entry-input'},{'name': 'DefaultInputComponent', 'selector': 'ec-default-input'},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicFieldComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'FilterComponent', 'selector': 'ec-filter'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'}];
     var DIRECTIVES = [{'name': 'FieldHostDirective', 'selector': '[ec-field-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'ListComponent'};

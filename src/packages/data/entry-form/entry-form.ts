@@ -1,5 +1,5 @@
 import { Item } from '../../core';
-import { Datamanager, EntryListConfig, ModelConfig } from '..';
+import { EntryListConfig, ModelConfig } from '..';
 import { Form } from '../../core/form/form';
 
 /**
@@ -15,13 +15,14 @@ export class EntryForm<Entry> extends Form<Entry> {
       resolve: (entry => entry.value || {}),
       fields: config ? config.fields : null,
       onSave: (item: Item<Entry>) => {
-        console.log('save', item);
+        console.log('save?', item);
         const entry = item.getBody();
         if (!entry || !entry['save']) {
           console.log('no body.. TODO: create entry', entry);
           return;
         }
-        Datamanager.save(entry);
+        //TODO save!
+        // Datamanager.save(entry);
       }
     }, config));
     this.model = model;

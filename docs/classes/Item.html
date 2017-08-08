@@ -236,6 +236,9 @@
                                     <a href="../classes/Field.html" >Field</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../classes/Filter.html" >Filter</a>
+                                </li>
+                                <li class="link">
                                     <a href="../classes/Form.html" >Form</a>
                                 </li>
                                 <li class="link">
@@ -280,6 +283,9 @@
                                     <a href="../injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../injectables/ModelService.html" >ModelService</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/PublicAuthService.html" >PublicAuthService</a>
                                 </li>
                                 <li class="link">
@@ -322,6 +328,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/ListConfig.html" >ListConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/ModelConfig.html" >ModelConfig</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/ModelConfiguration.html" >ModelConfiguration</a>
@@ -591,6 +600,9 @@
                                            <a href="../classes/Field.html" >Field</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../classes/Filter.html" >Filter</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../classes/Form.html" >Form</a>
                                        </li>
                                        <li class="link">
@@ -635,6 +647,9 @@
                                            <a href="../injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../injectables/ModelService.html" >ModelService</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/PublicAuthService.html" >PublicAuthService</a>
                                        </li>
                                        <li class="link">
@@ -677,6 +692,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/ListConfig.html" >ListConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/ModelConfig.html" >ModelConfig</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/ModelConfiguration.html" >ModelConfiguration</a>
@@ -1042,7 +1060,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/packages/core/item/item.ts:82</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">src/packages/core/item/item.ts:83</a></div>
                                         </td>
                                     </tr>
             
@@ -1073,7 +1091,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">src/packages/core/item/item.ts:91</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">src/packages/core/item/item.ts:92</a></div>
                                         </td>
                                     </tr>
             
@@ -1107,7 +1125,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">src/packages/core/item/item.ts:98</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">src/packages/core/item/item.ts:99</a></div>
                                         </td>
                                     </tr>
             
@@ -1142,7 +1160,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">src/packages/core/item/item.ts:108</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="109" class="link-to-prism">src/packages/core/item/item.ts:109</a></div>
                                         </td>
                                     </tr>
             
@@ -1177,7 +1195,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="113" class="link-to-prism">src/packages/core/item/item.ts:113</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">src/packages/core/item/item.ts:114</a></div>
                                         </td>
                                     </tr>
             
@@ -1306,7 +1324,7 @@ export class Item&lt;T&gt; {
     if (typeof this.body !&#x3D;&#x3D; &#x27;object&#x27;) {
       return [];
     }
-    return Object.keys(this.resolve());
+    return Object.keys(this.body);
   }
 
   /** Returns the value of the the Item&#x27;s identifier property. */
@@ -1335,7 +1353,8 @@ export class Item&lt;T&gt; {
     if (!this.config.resolve) {
       return this.body[property];
     }
-    return this.config.resolve(this.body)[property];
+    const v &#x3D; this.config.resolve(this.body);
+    return v ? v[property] : null;
   }
 
   private transform(action: string, property: string) {

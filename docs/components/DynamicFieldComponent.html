@@ -236,6 +236,9 @@
                                     <a href="../classes/Field.html" >Field</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../classes/Filter.html" >Filter</a>
+                                </li>
+                                <li class="link">
                                     <a href="../classes/Form.html" >Form</a>
                                 </li>
                                 <li class="link">
@@ -280,6 +283,9 @@
                                     <a href="../injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../injectables/ModelService.html" >ModelService</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/PublicAuthService.html" >PublicAuthService</a>
                                 </li>
                                 <li class="link">
@@ -322,6 +328,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/ListConfig.html" >ListConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/ModelConfig.html" >ModelConfig</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/ModelConfiguration.html" >ModelConfiguration</a>
@@ -591,6 +600,9 @@
                                            <a href="../classes/Field.html" >Field</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../classes/Filter.html" >Filter</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../classes/Form.html" >Form</a>
                                        </li>
                                        <li class="link">
@@ -635,6 +647,9 @@
                                            <a href="../injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../injectables/ModelService.html" >ModelService</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/PublicAuthService.html" >PublicAuthService</a>
                                        </li>
                                        <li class="link">
@@ -677,6 +692,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/ListConfig.html" >ListConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/ModelConfig.html" >ModelConfig</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/ModelConfiguration.html" >ModelConfiguration</a>
@@ -982,6 +1000,7 @@ export class DynamicFieldComponent {
     viewContainerRef.clear();
     let componentRef &#x3D; viewContainerRef.createComponent(componentFactory);
     //custom field component is the component each custom field should inherit
+    componentRef.instance.item &#x3D; this.item;
     return componentRef;
   }
 }

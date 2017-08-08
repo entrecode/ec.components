@@ -28,7 +28,6 @@ export class SdkService {
     }).catch((err) => {
       return this.api.me();
     }).then((user) => {
-      console.log('user', user);
       this.user = user;
       return this.user;
     });
