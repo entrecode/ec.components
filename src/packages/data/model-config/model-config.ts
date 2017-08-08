@@ -1,11 +1,12 @@
 import { Config, FieldConfig, FieldConfigProperty } from '../../core';
-import { Datamanager, ModelConfiguration } from '..';
+import { Datamanager } from '..';
 import * as moment from 'moment';
 import { DefaultEntryInputComponent } from '../entry-form/default-entry-input.component';
 import { DefaultInputComponent } from '../../ui/input/default-input.component';
 import { Injectable, Type } from "@angular/core";
 import { Item } from '../../core/item/item';
 import { EntryResource } from "ec.sdk/typings/resources/publicAPI/EntryResource";
+import { ItemConfig } from '../../core/item/item-config.interface';
 
 /** The main class for configuring model data behaviour.*/
 @Injectable()
@@ -62,7 +63,7 @@ export class ModelConfig extends Config {
    * ModelConfig.get('muffin'); //returns muffin config;
    * ```
    * */
-  get(property: string): ModelConfiguration {
+  get(property: string): ItemConfig<EntryResource> {
     return this.configure('model', property);
   }
 
@@ -77,7 +78,7 @@ export class ModelConfig extends Config {
    *  });
    * ```
    * */
-  set(property: string, config: ModelConfiguration): ModelConfiguration {
+  set(property: string, config: ItemConfig<EntryResource>): ItemConfig<any> {
     return this.configure('model', property, config);
   }
 
@@ -155,15 +156,23 @@ export class ModelConfig extends Config {
   /** Returns the given model's config and generates a field config from the schema if it is not configured. */
   generateConfig(model: string) {
     const config = this.get(model);
-    Object.assign({
+    Object.assign(config, {
       identifier: 'id',
-      fields: config.fields,
-      onSave: (item: Item<EntryResource>) => {
-        console.log('save...');
-        //TODO save does not get called
-        item.getBody().save();
+      onSave: (item: Item<EntryResource>, value) => {
+        if (item.getBody() && item.getBody().save) {
+          item.getBody().save().then((entry) => {
+            Object.assign(item.resolve(), value);
+          }).catch((err) => {
+            console.log('could no save...');
+            //TODO connect to error handler
+          });
+        } else {
+          console.log('create..');
+          //TODO
+        }
       }
-    }, config);
+    });
+
     return this.generateFieldConfig(model).then((fieldConfig) => {
       Object.assign(config, { fields: fieldConfig });
       return Promise.resolve(config);
