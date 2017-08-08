@@ -61,6 +61,9 @@ export class Item<T> {
   /** Returns either the whole body (if no property is given) or the value of the given property.
    * This method will traverse the body via the config.resolve function (if given). */
   resolve(property?: string): any {
+    if (!this.body) {
+      return;
+    }
     if (!this.config) {
       return this.body;
     }
@@ -103,8 +106,6 @@ export class Item<T> {
     return this.transform('display', property);
   }
 
-  /** Returns the output of the config.sort transformation function with the given property value.
-   * If no display function is set, it will just return the property value.*/
   /** Transforms the given field's value for sorting */
   sort(property: string): any {
     return this.transform('sort', property);

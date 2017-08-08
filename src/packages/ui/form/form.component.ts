@@ -8,6 +8,7 @@ import {
   Validators
 } from '@angular/forms';
 import { Field, Form, FormConfig, Item } from '../../core';
+import { ItemConfig } from '../../core/item/item-config.interface';
 
 /** This component renders a form using a FieldConfig Object. */
 @Component({
@@ -21,7 +22,7 @@ export class FormComponent {
   private group: FormGroup;
   /** You can use a field config directly as input */
   /** You can also use a FormConfig/ItemConfig as input (with defined fields property) */
-  @Input() config: FormConfig<any> = {};
+  @Input() config: FormConfig<any>;
   /** You can also use an Item as input */
   @Input() item: Item<any>;
   /** If you pass an object to value, the form will generate an item from it. */
@@ -35,18 +36,26 @@ export class FormComponent {
   /** Emits when a new instance of Form is present */
   @Output() onChange: EventEmitter<FormComponent> = new EventEmitter();
 
-  /** On change, the form instance is (re)created by combining all inputs. If no item is given, an empty form is created using the config. You can also pass just an item to use its config and body.*/
-  ngOnChanges() {
+  /** inits the forms item based on the given value, config or item */
+  protected initItem() {
     if (this.value) {
       this.item = new Item(this.value);
     }
-    if (this.item) {
-      Object.assign(this, this.item);
-    } else if (!this.config) {
+    if (!this.item && !this.config) {
       return;
     }
-    if (!this.item) {
+    if (this.item) {
+      Object.assign(this, this.item);
+    } else {
       this.item = new Item({}, this.config);
+    }
+    return this.item;
+  }
+
+  /** On change, the form instance is (re)created by combining all inputs. If no item is given, an empty form is created using the config. You can also pass just an item to use its config and body.*/
+  ngOnChanges() {
+    if (!this.initItem()) {
+      return;
     }
     this.form = new Form(this.item.resolve(), this.config);
     const control = {};
@@ -65,6 +74,17 @@ export class FormComponent {
   edit(item: Item<any>) {
     this.config = item.getConfig() || this.config;
     this.item = item;
+    delete this.group;
+    this.ngOnChanges();
+  }
+
+  create(config?: ItemConfig<any>) {
+    this.config = config || this.config;
+    if (!this.config) {
+      console.warn('cannot create new form: no config present');
+      return;
+    }
+    //TODO ..
     delete this.group;
     this.ngOnChanges();
   }
