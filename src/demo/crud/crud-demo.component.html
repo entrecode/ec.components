@@ -6,7 +6,7 @@
                (onSelect)="formPop.show();myForm.edit($event)"
                #muffinList></ec-entry-list>
 
-<ec-pop #formPop class="sidebar-right">
+<ec-pop #formPop class="modal">
   <button (click)="formPop.hide()">X</button>
   <ec-form (submit)="formPop.hide()" #myForm></ec-form>
 </ec-pop>

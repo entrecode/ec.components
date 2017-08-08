@@ -26,4 +26,7 @@
       <ec-select [formControlName]="field.property"></ec-select>
     </label>
   </div>
+  <div *ngSwitchDefault>
+    <ec-output [field]="field" [item]="item"></ec-output>
+  </div>
 </div>

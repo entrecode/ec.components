@@ -51,7 +51,7 @@ export class ModelConfig extends Config {
     if (this.typeInputComponents[type]) {
       return this.typeInputComponents[type];
     }
-    if (type === 'text' || type === 'decimal' || type === 'boolean' || type === 'number' || type === 'datetime') {
+    if (type === 'text' || type === 'decimal' || type === 'boolean' || type === 'number') {
       return DefaultInputComponent;
     }
     return DefaultEntryInputComponent;
