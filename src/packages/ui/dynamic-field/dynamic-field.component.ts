@@ -29,6 +29,7 @@ export class DynamicFieldComponent {
     let componentRef = viewContainerRef.createComponent(componentFactory);
     //custom field component is the component each custom field should inherit
     componentRef.instance.item = this.item;
+    componentRef.instance.field = this.field;
     return componentRef;
   }
 }

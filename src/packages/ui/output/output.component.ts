@@ -11,14 +11,9 @@ import { DynamicFieldComponent } from '../dynamic-field/dynamic-field.component'
   styleUrls: ['./output.component.scss']
 })
 export class OutputComponent extends DynamicFieldComponent {
-  /** The type for which the field stands for */
-  @Input() view: string;
-
   ngOnChanges() {
     if (this.field && this.item) {
-      const component = this.loadComponent(this.field.output || DefaultOutputComponent);
-      component.instance.field = this.field;
-      component.instance.item = this.item;
+      this.loadComponent(this.field.output || DefaultOutputComponent);
     }
   }
 }

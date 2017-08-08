@@ -49,4 +49,10 @@ export interface FieldConfigProperty {
   input?: any;
   /** Custom Component for output (e.g. list cell) */
   output?: any;
+  /** If true, an ec-output will be rendered inside each form which prevents editing the field. */
+  readOnly?: boolean;
+  /** if false, the field will not be filterable in a list */
+  filterable?: boolean;
+  /** if false, the field will not be sortable in a list */
+  sortable?: boolean;
 }

@@ -18,7 +18,6 @@ export class InputComponent extends DynamicFieldComponent {
   ngOnChanges() {
     if (this.field && this.group) {
       const componentRef = this.loadComponent(this.field.input || DefaultInputComponent);
-      componentRef.instance.field = this.field;
       componentRef.instance.group = this.group;
       componentRef.instance.control = this.group.get(this.field.property);
 

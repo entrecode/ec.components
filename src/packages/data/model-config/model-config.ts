@@ -7,6 +7,7 @@ import { Injectable, Type } from "@angular/core";
 import { Item } from '../../core/item/item';
 import { EntryResource } from "ec.sdk/typings/resources/publicAPI/EntryResource";
 import { ItemConfig } from '../../core/item/item-config.interface';
+import { DefaultOutputComponent } from '../../ui/output/default-output.component';
 
 /** The main class for configuring model data behaviour.*/
 @Injectable()
@@ -33,14 +34,30 @@ export class ModelConfig extends Config {
     datetime: 'date'
   };
 
-  /** Maps field types to components */
+  /** which types should be sortable by default? */
+  sortableTypes = ['text', 'number', 'datetime'];
+  /** which types should be filterable by default? */
+  filterableTypes = ['text', 'formattedText'];
+
+  //TODO simplify input output logic / use service etc.
+  /** Maps field types to input omponents */
   typeInputComponents = {};
+  /** Maps field types to output components */
+  typeOutputComponents = {};
 
   /** Registers a custom input component for the given types. You can e.g. register a custom file picker for the types 'asset' and 'assets'.
    * Be aware that you have to handle different formats yourself when dealing with multiple types*/
   registerInputComponent(component: Type<any>, types: Array<string>) {
     types.forEach((type) => {
       this.typeInputComponents[type] = component;
+    })
+  }
+
+  /** Registers a custom output component for the given types. You can e.g. register a custom file viewer for the types 'asset' and 'assets'.
+   * Be aware that you have to handle different formats yourself when dealing with multiple types*/
+  registerOutputComponent(component: Type<any>, types: Array<string>) {
+    types.forEach((type) => {
+      this.typeOutputComponents[type] = component;
     })
   }
 
@@ -55,6 +72,17 @@ export class ModelConfig extends Config {
       return DefaultInputComponent;
     }
     return DefaultEntryInputComponent;
+  }
+
+  /** Retrieves the component that should be used to render an output for the given type.
+   * You can register components via registerInputComponent for custom components.
+   * */
+  getOutputComponent(type) {
+    if (this.typeOutputComponents[type]) {
+      return this.typeOutputComponents[type];
+    }
+    return DefaultOutputComponent;
+    //TODO DefaultEntryOutputComponent?
   }
 
   /** Retrieves the given model config.
@@ -144,10 +172,11 @@ export class ModelConfig extends Config {
           view: this.typeViews[type.name],
           model: type.model,
           display: this.displayField(type.name, property),
-          input: this.getInputComponent(type.name)
-          // TODO set custom input/ouput components based on view
+          input: this.getInputComponent(type.name),
+          output: this.getOutputComponent(type.name),
+          filterable: this.filterableTypes.indexOf(type.name) !== -1,
+          sortable: this.sortableTypes.indexOf(type.name) !== -1,
         }, fieldConfig[property] ? fieldConfig[property] : {});
-        //TODO find strategy for input/output templates!!
       });
       return fieldConfig;
     });
