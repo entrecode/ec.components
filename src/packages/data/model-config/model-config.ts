@@ -190,13 +190,12 @@ export class ModelConfig extends Config {
       identifier: 'id',
       onSave: (item: Item<EntryResource>, value) => {
         const entry = item.getBody();
-        const oldValues = {};
-        //save old values to fall back on error
-        Object.keys(value).forEach((key) => oldValues[key] = entry[key]);
-        Object.assign(entry, value); //assign new form values
         if (entry && entry.save) { //PUT
+          const oldValues = {};
+          //save old values to fall back on error
+          Object.keys(value).forEach((key) => oldValues[key] = entry[key]);
+          Object.assign(entry, value); //assign new form values
           return entry.save().then((savedEntry) => {
-            console.log('saved..');
             return item;
           }).catch((err) => {
             console.log('err..');

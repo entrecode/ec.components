@@ -19,6 +19,8 @@ import {
   LoginComponent,
   MenuComponent,
   MockupComponent,
+  NotificationsComponent,
+  NotificationsService,
   OutputComponent,
   PaginationComponent,
   PopComponent,
@@ -36,6 +38,7 @@ import {
     DefaultOutputComponent,
     SelectComponent,
     LoaderComponent,
+    NotificationsComponent,
   ],
   declarations: [
     ListComponent,
@@ -60,6 +63,7 @@ import {
     DefaultInputComponent,
     DefaultOutputComponent,
     LoaderComponent,
+    NotificationsComponent
   ],
   imports: [
     BrowserModule,
@@ -86,9 +90,11 @@ import {
     LoginComponent,
     InputErrorsComponent,
     LoaderComponent,
+    NotificationsComponent,
   ],
   providers: [
     LoaderService,
+    NotificationsService,
   ],
 })
 export class UiModule {

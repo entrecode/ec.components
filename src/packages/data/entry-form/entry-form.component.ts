@@ -3,6 +3,7 @@ import { FormComponent } from '../../ui/form/form.component';
 import { ModelConfig } from '../model-config/model-config';
 import { EntryForm } from './entry-form';
 import { LoaderService } from '../../ui/loader/loader.service';
+import { NotificationsService } from '../../ui/notifications/notifications.service';
 
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent */
 @Component({
@@ -13,8 +14,8 @@ import { LoaderService } from '../../ui/loader/loader.service';
 export class EntryFormComponent extends FormComponent {
   @Input() model: string;
 
-  constructor(protected loaderService: LoaderService, private modelConfig: ModelConfig) {
-    super(loaderService);
+  constructor(protected loaderService: LoaderService, private modelConfig: ModelConfig, protected notificationService: NotificationsService) {
+    super(loaderService, notificationService);
   }
 
   ngOnChanges() {

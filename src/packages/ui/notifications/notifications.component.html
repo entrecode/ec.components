@@ -1,0 +1,5 @@
+<ec-pop *ngFor="let notification of notifications?.items" [ngClass]="notification.type"
+        [active]="true" [visible]="true">
+  <strong>{{notification.title}}</strong>
+  <p>{{notification.message}}</p>
+</ec-pop>

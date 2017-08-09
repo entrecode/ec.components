@@ -10,7 +10,7 @@ import { LoaderService } from '../../ui/loader/loader.service';
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent */
 @Component({
   selector: 'ec-entry-list',
-  templateUrl: './entry-list.component.html',
+  templateUrl: '../../ui/list/list.component.html',
   styleUrls: ['./entry-list.component.scss']
 })
 export class EntryListComponent extends ListComponent {

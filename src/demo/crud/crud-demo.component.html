@@ -1,15 +1,16 @@
 <!--<button (click)="formPop.show()">View now</button>-->
-<ec-entry-list model="muffin" [config]="{size:2}" [solo]="true"
+<ec-entry-list model="muffin" [config]="{size:10}" [solo]="true"
                (onSelect)="myForm.edit($event);formPop.show();" [loader]="listLoader"
                #muffinList>
 </ec-entry-list>
 <ec-loader #listLoader class="blend"></ec-loader>
 
+
 <button (click)="myForm.create();formPop.show()">
   <i class="ec-icon add"></i>
   Neuer Muffin
 </button>
-<ec-pop #formPop class="modal">
+<ec-pop #formPop class="sidebar-right">
   <nav style="position:absolute;right:0;top:0">
     <button (click)="myForm.submit()" [disabled]="myForm.group?.invalid"
             [class.disabled]="myForm.group?.invalid">
@@ -24,3 +25,4 @@
   <ec-loader #popLoader class="blend"></ec-loader>
   <!--<ec-form (submit)="formPop.hide()" [submitButton]="false" #myForm></ec-form>-->
 </ec-pop>
+<ec-notifications class="toast"></ec-notifications>

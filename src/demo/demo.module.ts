@@ -173,7 +173,12 @@ export const demoRoutes: Routes = [
     AuthModule,
     RouterModule.forRoot(demoRoutes)
   ],
-  providers: [],
+  providers: [
+    {
+      provide: 'useDesktopNotifications',
+      useValue: false
+    }
+  ],
   bootstrap: [DemoComponent]
 })
 export class DemoModule {

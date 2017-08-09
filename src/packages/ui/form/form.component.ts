@@ -11,6 +11,7 @@ import { Field, Form, FormConfig, Item } from '../../core';
 import { ItemConfig } from '../../core/item/item-config.interface';
 import { LoaderComponent } from '../loader/loader.component';
 import { LoaderService } from '../loader/loader.service';
+import { NotificationsService } from '../notifications/notifications.service';
 
 /** This component renders a form using a FieldConfig Object. */
 @Component({
@@ -40,7 +41,7 @@ export class FormComponent {
   /** Emits when a new instance of Form is present */
   @Output() change: EventEmitter<FormComponent> = new EventEmitter();
 
-  constructor(protected loaderService: LoaderService) {
+  constructor(protected loaderService: LoaderService, protected notificationService: NotificationsService) {
   }
 
   /** inits the forms item based on the given value, config or item */
@@ -131,8 +132,16 @@ export class FormComponent {
       this.item.save(this.group.value)
       .then((v) => {
         this.submitted.emit(this.group);
+        this.notificationService.emit({
+          title: 'Eintrag gespeichert',
+          type: 'success'
+        });
       }).catch((err) => {
-        console.log('form submit error');
+        this.notificationService.emit({
+          title: 'Fehler beim Speichern',
+          message: err,
+          type: 'error'
+        });
       });
     this.loaderService.wait(this.loader, submit);
     return submit;

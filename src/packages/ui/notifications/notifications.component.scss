@@ -1,0 +1,26 @@
+:host {
+  &.toast {
+    position: fixed;
+    left: 10px;
+    top: 10px;
+    z-index: 10000;
+    ec-pop {
+      display: block;
+      padding: 10px;
+      border-radius: 2px;
+      border: 1px solid lightgray;
+      position: relative;
+      margin-top: 10px;
+      background-color: white;
+      &.info {
+        background-color: lightblue;
+      }
+      &.error {
+        background-color: lightsalmon;
+      }
+      &.success {
+        background-color: darkseagreen;
+      }
+    }
+  }
+}

@@ -10,7 +10,7 @@ import { Component, Input } from '@angular/core';
 })
 export class PopComponent {
   @Input() active: boolean;
-  visible: boolean;
+  @Input() visible: boolean;
   delay: number = 0;
 
   constructor() {
