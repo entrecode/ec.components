@@ -26,18 +26,15 @@ export class NotificationsService {
   }
 
   getPermission() {
-    return new Promise((resolve, reject) => {
-      if (window.Notification.permission === 'granted') {
-        resolve();
+    if (window.Notification.permission === 'granted') {
+      return Promise.resolve();
+    }
+    return window.Notification.requestPermission().then((permission) => {
+      // If the user accepts, let's create a notification
+      if (permission !== 'granted') {
+        return Promise.reject('Desktop Notification Permission Denied!');
       }
-      window.Notification.requestPermission((permission) => {
-        // If the user accepts, let's create a notification
-        if (permission === 'granted') {
-          return resolve();
-        }
-        reject();
-      });
-    })
+    });
   }
 
   desktopNotification(notification: Notification) {

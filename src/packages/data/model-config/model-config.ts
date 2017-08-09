@@ -198,7 +198,6 @@ export class ModelConfig extends Config {
           return entry.save().then((savedEntry) => {
             return item;
           }).catch((err) => {
-            console.log('err..');
             Object.assign(entry, oldValues); //fall back to old values
             return Promise.reject(err);
             //TODO connect to error handler

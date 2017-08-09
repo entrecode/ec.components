@@ -176,7 +176,7 @@ export const demoRoutes: Routes = [
   providers: [
     {
       provide: 'useDesktopNotifications',
-      useValue: false
+      useValue: true
     }
   ],
   bootstrap: [DemoComponent]
