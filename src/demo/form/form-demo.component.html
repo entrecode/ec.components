@@ -31,3 +31,4 @@
 <!--<ec-form [config]="mocked.lists.songs.config" [item]="mocked.lists.songs.id(0)" #songForm></ec-form>-->
 
 <ec-form [value]="mocked.products[0]" #productForm (submit)="logValue($event)"></ec-form>
+<button (click)="productForm.create()">Create new...</button>

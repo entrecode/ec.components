@@ -32,6 +32,11 @@ export class Item<T> {
     return this.body;
   }
 
+  /** deletes the item body */
+  clear() {
+    delete this.body;
+  }
+
   /** Assigns the given config to the existing via Object.assign */
   useConfig(config: ItemConfig<T>) {
     Object.assign(this.config, config);
@@ -119,7 +124,7 @@ export class Item<T> {
     if (this.config.onSave) {
       return Promise.resolve(this.config.onSave(this, value));
     }
-    Object.assign(this.resolve(), value);
+    Object.assign(this.resolve() || {}, value);
     return Promise.resolve(this);
   }
 }

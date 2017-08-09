@@ -88,6 +88,7 @@ export class FormComponent {
     }
     delete this.group;
     delete this.item;
+    delete this.value;
     this.ngOnChanges();
   }
 

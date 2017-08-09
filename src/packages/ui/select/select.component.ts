@@ -83,9 +83,8 @@ export class SelectComponent implements ControlValueAccessor {
 
   writeValue(value: any) {
     //value is a model value => array of identifiers
-    // items = this.select.
     if (!this.items) {
-      this.items = value;
+      this.items = value || [];
       this.ngOnChanges();
       this.selection.addAll(this.list.items);
     }
