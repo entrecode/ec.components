@@ -15,6 +15,7 @@ import {
   ListHeaderComponent,
   ListItemsComponent,
   LoaderComponent,
+  LoaderService,
   LoginComponent,
   MenuComponent,
   MockupComponent,
@@ -59,7 +60,6 @@ import {
     DefaultInputComponent,
     DefaultOutputComponent,
     LoaderComponent,
-    // CustomFieldComponent,
   ],
   imports: [
     BrowserModule,
@@ -87,7 +87,9 @@ import {
     InputErrorsComponent,
     LoaderComponent,
   ],
-  providers: [],
+  providers: [
+    LoaderService,
+  ],
 })
 export class UiModule {
 }

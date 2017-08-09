@@ -9,37 +9,37 @@ import { Collection } from '../../core/collection/collection';
 })
 export class LoaderComponent {
 
-  stack: Collection<Promise<any>> = new Collection();
-  visible: boolean = false;
-  timestamp;
+  private stack: Collection<Promise<any>> = new Collection();
+  private visible: boolean = false;
+  private timestamp;
 
-  constructor(private host: ElementRef, private renderer: Renderer2) {
+  constructor(private host: ElementRef) {
   }
 
-  show() {
+  private show() {
     this.visible = true; //show loader
     this.host.nativeElement.classList.add('visible');
   }
 
-  hide() {
+  private hide() {
     this.visible = false; //show loader
     this.host.nativeElement.classList.remove('visible');
   }
 
+  /** Tells loader to show until the given promise resolves. (includes all other promises that are waited upon)
+   * Make sure the given promise is catched!. */
   wait(promise: Promise<any>) {
     this.stack.add(promise); //add promise to stack
     this.show();
     const timestamp = Date.now();
     this.timestamp = timestamp; //get timestamp
-    Promise.all(this.stack.items).then(() => {
-      //show loader when stack is finished
+    Promise.all(this.stack.items)
+    .then(() => {
       if (timestamp === this.timestamp) {
         this.hide();
+        this.stack.removeAll();
       }
     });
-    return promise.then((res: any) => {
-      this.stack.remove(promise); //remove promise from stack when done
-      return res;
-    });
+    return promise;
   }
 }

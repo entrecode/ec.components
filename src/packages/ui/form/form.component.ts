@@ -10,6 +10,7 @@ import {
 import { Field, Form, FormConfig, Item } from '../../core';
 import { ItemConfig } from '../../core/item/item-config.interface';
 import { LoaderComponent } from '../loader/loader.component';
+import { LoaderService } from '../loader/loader.service';
 
 /** This component renders a form using a FieldConfig Object. */
 @Component({
@@ -32,11 +33,15 @@ export class FormComponent {
   @Input() empty: boolean;
   /** If set to true, the form will be rendered without a submit button. */
   @Input() submitButton: boolean;
+  /** The loader that should be used. */
   @Input() loader: LoaderComponent;
   /** Emits when the form is submitted. The form can only be submitted if all Validators succeeded. */
   @Output('submit') submitted: EventEmitter<FormGroup> = new EventEmitter();
   /** Emits when a new instance of Form is present */
-  @Output() onChange: EventEmitter<FormComponent> = new EventEmitter();
+  @Output() change: EventEmitter<FormComponent> = new EventEmitter();
+
+  constructor(protected loaderService: LoaderService) {
+  }
 
   /** inits the forms item based on the given value, config or item */
   protected initItem() {
@@ -68,7 +73,7 @@ export class FormComponent {
     if (!this.group) {
       this.group = new FormGroup(control);
       this.group.valueChanges.subscribe((change) => {
-        this.onChange.emit(this);
+        this.change.emit(this);
       });
     }
   }
@@ -122,11 +127,15 @@ export class FormComponent {
 
   /** Method that is invoked when the form is submitted.*/
   submit() {
-    //TODO loader?
-    return this.loader.wait(this.item.save(this.group.value)
-    .then((v) => {
-      this.submitted.emit(this.group);
-    }));
+    const submit =
+      this.item.save(this.group.value)
+      .then((v) => {
+        this.submitted.emit(this.group);
+      }).catch((err) => {
+        console.log('form submit error');
+      });
+    this.loaderService.wait(this.loader, submit);
+    return submit;
   }
 
   /** Returns the current value of the form control group. */

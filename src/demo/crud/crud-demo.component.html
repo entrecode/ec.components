@@ -1,8 +1,10 @@
 <!--<button (click)="formPop.show()">View now</button>-->
-
 <ec-entry-list model="muffin" [config]="{size:2}" [solo]="true"
-               (onSelect)="myForm.edit($event);formPop.show();"
-               #muffinList></ec-entry-list>
+               (onSelect)="myForm.edit($event);formPop.show();" [loader]="listLoader"
+               #muffinList>
+</ec-entry-list>
+<ec-loader #listLoader class="blend"></ec-loader>
+
 <button (click)="myForm.create();formPop.show()">
   <i class="ec-icon add"></i>
   Neuer Muffin

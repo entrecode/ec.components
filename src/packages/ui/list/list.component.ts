@@ -1,14 +1,6 @@
-import {
-  Component,
-  ContentChildren,
-  EventEmitter,
-  Input,
-  Output,
-  QueryList,
-  ViewEncapsulation
-} from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
 import { Collection, List, ListConfig, Selection } from '../../core';
-import { InputComponent } from '..';
+import { LoaderService } from '../loader/loader.service';
 
 /**
  * The ListComponent will render a list containing the given items or collection.

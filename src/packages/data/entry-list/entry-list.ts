@@ -1,6 +1,7 @@
 import { Item, List } from '../../core';
 import { EntryListConfig } from '..';
 import { SdkService } from '../sdk/sdk.service';
+import { Subject } from 'rxjs';
 
 /**
  * Extension of List for Datamanager Entries.
@@ -10,6 +11,10 @@ export class EntryList<Entry> extends List<Entry> {
   private model: string;
   /** The list's config. */
   public config; //TODO use filterOptions
+  /** Subject that should be nexted when loading begins */
+  protected loading = new Subject();
+  /** Observable that is nexted when the list begins loading. */
+  public loading$ = this.loading.asObservable();
 
   /** The constructor will init the List and Pagination instances.
    * Make sure the config is already complete when initiating an EntryList instance. */
@@ -54,10 +59,12 @@ export class EntryList<Entry> extends List<Entry> {
     if (this.config.sortBy) {
       c['sort'] = [(this.config.desc ? '-' : '') + this.config.sortBy];
     }
-    return this.sdk.api.entryList(this.model, c)
+    const loading = this.sdk.api.entryList(this.model, c)
     .then((list) => {
       this.use(list);
     });
+    this.loading.next(loading);
+    return loading;
   }
 
   /** Toggles sorting of the given property. Overloads list method to reload with the new sort setup*/

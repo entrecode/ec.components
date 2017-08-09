@@ -21,5 +21,6 @@ export * from './input/default-input.component'
 export * from './output/output.component'
 export * from './output/default-output.component'
 export * from './loader/loader.component'
+export * from './loader/loader.service'
 
 export * from './ui.module'
