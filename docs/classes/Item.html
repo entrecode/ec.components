@@ -283,9 +283,6 @@
                                     <a href="../injectables/ModelConfig.html" >ModelConfig</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../injectables/ModelService.html" >ModelService</a>
-                                </li>
-                                <li class="link">
                                     <a href="../injectables/PublicAuthService.html" >PublicAuthService</a>
                                 </li>
                                 <li class="link">
@@ -645,9 +642,6 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/ModelConfig.html" >ModelConfig</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../injectables/ModelService.html" >ModelService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/PublicAuthService.html" >PublicAuthService</a>
@@ -1060,7 +1054,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">src/packages/core/item/item.ts:83</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">src/packages/core/item/item.ts:86</a></div>
                                         </td>
                                     </tr>
             
@@ -1091,7 +1085,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">src/packages/core/item/item.ts:92</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">src/packages/core/item/item.ts:98</a></div>
                                         </td>
                                     </tr>
             
@@ -1125,7 +1119,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">src/packages/core/item/item.ts:99</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">src/packages/core/item/item.ts:105</a></div>
                                         </td>
                                     </tr>
             
@@ -1160,15 +1154,13 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="109" class="link-to-prism">src/packages/core/item/item.ts:109</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="113" class="link-to-prism">src/packages/core/item/item.ts:113</a></div>
                                         </td>
                                     </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>Returns the output of the config.sort transformation function with the given property value.
-            If no display function is set, it will just return the property value.
-            Transforms the given field&#39;s value for sorting </p>
+                                        <div class="io-description"><p>Transforms the given field&#39;s value for sorting </p>
             </div>
             
                                         <div class="io-description">
@@ -1195,7 +1187,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">src/packages/core/item/item.ts:114</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="118" class="link-to-prism">src/packages/core/item/item.ts:118</a></div>
                                         </td>
                                     </tr>
             
@@ -1338,6 +1330,9 @@ export class Item&lt;T&gt; {
   /** Returns either the whole body (if no property is given) or the value of the given property.
    * This method will traverse the body via the config.resolve function (if given). */
   resolve(property?: string): any {
+    if (!this.body) {
+      return;
+    }
     if (!this.config) {
       return this.body;
     }
@@ -1358,6 +1353,9 @@ export class Item&lt;T&gt; {
   }
 
   private transform(action: string, property: string) {
+    if (!this.body) {
+      return;
+    }
     if (this.config.fields &amp;&amp; this.config.fields[property] &amp;&amp; this.config.fields[property][action]) {
       return this.config.fields[property][action](this.resolve(property), this.body);
     }
@@ -1380,8 +1378,6 @@ export class Item&lt;T&gt; {
     return this.transform(&#x27;display&#x27;, property);
   }
 
-  /** Returns the output of the config.sort transformation function with the given property value.
-   * If no display function is set, it will just return the property value.*/
   /** Transforms the given field&#x27;s value for sorting */
   sort(property: string): any {
     return this.transform(&#x27;sort&#x27;, property);

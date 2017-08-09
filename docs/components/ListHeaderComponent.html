@@ -283,9 +283,6 @@
                                     <a href="../injectables/ModelConfig.html" >ModelConfig</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../injectables/ModelService.html" >ModelService</a>
-                                </li>
-                                <li class="link">
                                     <a href="../injectables/PublicAuthService.html" >PublicAuthService</a>
                                 </li>
                                 <li class="link">
@@ -645,9 +642,6 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/ModelConfig.html" >ModelConfig</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../injectables/ModelService.html" >ModelService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/PublicAuthService.html" >PublicAuthService</a>
@@ -1157,15 +1151,15 @@ export class ListHeaderComponent {
     &lt;input type&#x3D;&quot;checkbox&quot; (click)&#x3D;&quot;selection?.toggleAll(list?.items)&quot;
            [checked]&#x3D;&quot;selection?.hasAll(list?.items)&quot;&gt;
   &lt;/div&gt;
-  &lt;ec-form [config]&#x3D;&quot;list?.config&quot; [empty]&#x3D;&quot;true&quot; #filterForm&gt;&lt;/ec-form&gt;
+  &lt;!--&lt;ec-form [config]&#x3D;&quot;list?.config&quot; [empty]&#x3D;&quot;true&quot; #filterForm&gt;&lt;/ec-form&gt;--&gt;
   &lt;div class&#x3D;&quot;ec-list-item ec-list-header&quot; *ngFor&#x3D;&quot;let field of list?.fields&quot;
        [class.hidden]&#x3D;&quot;field.hidden&quot;&gt;
     &lt;ec-pop #filterPop class&#x3D;&quot;popdown&quot;&gt;
       &lt;a (click)&#x3D;&quot;filterPop.hide()&quot;&gt;
         &lt;i class&#x3D;&quot;ec-icon close&quot;&gt;&lt;/i&gt;
       &lt;/a&gt;
-      &lt;ec-input [field]&#x3D;&quot;field&quot; [group]&#x3D;&quot;filterForm?.group&quot;
-                (changed)&#x3D;&quot;applyFilter(field.property, $event)&quot;&gt;&lt;/ec-input&gt;
+      &lt;!--&lt;ec-input [field]&#x3D;&quot;field&quot; [group]&#x3D;&quot;filterForm?.group&quot;
+                (changed)&#x3D;&quot;applyFilter(field.property, $event)&quot;&gt;&lt;/ec-input&gt;--&gt;
     &lt;/ec-pop&gt;
     {{field.label || field.property}}
     &lt;ul&gt;
@@ -1222,7 +1216,7 @@ export class ListHeaderComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="ec-list-group-header" *ngIf="!disableHeader&&list?.config.fields">  <div class="ec-list-item-cell ec-list-checkbox" *ngIf="selection">    <input type="checkbox" (click)="selection?.toggleAll(list?.items)"           [checked]="selection?.hasAll(list?.items)">  </div>  <ec-form [config]="list?.config" [empty]="true" #filterForm></ec-form>  <div class="ec-list-item ec-list-header" *ngFor="let field of list?.fields"       [class.hidden]="field.hidden">    <ec-pop #filterPop class="popdown">      <a (click)="filterPop.hide()">        <i class="ec-icon close"></i>      </a>      <ec-input [field]="field" [group]="filterForm?.group"                (changed)="applyFilter(field.property, $event)"></ec-input>    </ec-pop>    {{field.label || field.property}}    <ul>      <li *ngIf="field.sortable!==false">        <a class="action" [class.active]="list.config?.sortBy===field.property"           (click)="list.toggleSort(field.property)">          <i class="ec-icon" [ngClass]="!list.config?.desc?\'arrow-down\':\'arrow-up\'"></i>        </a>      </li>      <li *ngIf="field.filterable!==false">        <a class="action" [class.active]="hasFilter(field.property)"           (click)="editFilter(filterPop)">          <i class="ec-icon find"></i>        </a>      </li>    </ul>  </div>  <!--<div class="ec-list-item-cell ec-list-controls">    <nav class="ec-context-menu">      <a href="" class="btn"><span class="ec-icon more-horizontal"></span></a>      <ul>        <li>          <a href="" class="btn">delete</a>        </li>        <li>          <a href="" class="btn">dublicate</a>        </li>      </ul>    </nav>  </div>--></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="ec-list-group-header" *ngIf="!disableHeader&&list?.config.fields">  <div class="ec-list-item-cell ec-list-checkbox" *ngIf="selection">    <input type="checkbox" (click)="selection?.toggleAll(list?.items)"           [checked]="selection?.hasAll(list?.items)">  </div>  <!--<ec-form [config]="list?.config" [empty]="true" #filterForm></ec-form>-->  <div class="ec-list-item ec-list-header" *ngFor="let field of list?.fields"       [class.hidden]="field.hidden">    <ec-pop #filterPop class="popdown">      <a (click)="filterPop.hide()">        <i class="ec-icon close"></i>      </a>      <!--<ec-input [field]="field" [group]="filterForm?.group"                (changed)="applyFilter(field.property, $event)"></ec-input>-->    </ec-pop>    {{field.label || field.property}}    <ul>      <li *ngIf="field.sortable!==false">        <a class="action" [class.active]="list.config?.sortBy===field.property"           (click)="list.toggleSort(field.property)">          <i class="ec-icon" [ngClass]="!list.config?.desc?\'arrow-down\':\'arrow-up\'"></i>        </a>      </li>      <li *ngIf="field.filterable!==false">        <a class="action" [class.active]="hasFilter(field.property)"           (click)="editFilter(filterPop)">          <i class="ec-icon find"></i>        </a>      </li>    </ul>  </div>  <!--<div class="ec-list-item-cell ec-list-controls">    <nav class="ec-context-menu">      <a href="" class="btn"><span class="ec-icon more-horizontal"></span></a>      <ul>        <li>          <a href="" class="btn">delete</a>        </li>        <li>          <a href="" class="btn">dublicate</a>        </li>      </ul>    </nav>  </div>--></div></div>'
     var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'DefaultEntryInputComponent', 'selector': 'ec-default-entry-input'},{'name': 'DefaultInputComponent', 'selector': 'ec-default-input'},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicFieldComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'FilterComponent', 'selector': 'ec-filter'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'}];
     var DIRECTIVES = [{'name': 'FieldHostDirective', 'selector': '[ec-field-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'ListHeaderComponent'};

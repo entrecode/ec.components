@@ -84,6 +84,9 @@ export class Item<T> {
   }
 
   private transform(action: string, property: string) {
+    if (!this.body) {
+      return;
+    }
     if (this.config.fields && this.config.fields[property] && this.config.fields[property][action]) {
       return this.config.fields[property][action](this.resolve(property), this.body);
     }

@@ -47,7 +47,7 @@ export class FormComponent {
     if (this.item) {
       Object.assign(this, this.item);
     } else {
-      this.item = new Item({}, this.config);
+      this.item = new Item(null, this.config);
     }
     return this.item;
   }
@@ -71,6 +71,7 @@ export class FormComponent {
     }
   }
 
+  /** edits a given Item instance by using its config and body. */
   edit(item: Item<any>) {
     this.config = item.getConfig() || this.config;
     this.item = item;
@@ -78,14 +79,15 @@ export class FormComponent {
     this.ngOnChanges();
   }
 
+  /* clears the form and uses the given config (falls back to existing one). Renders an empty form. */
   create(config?: ItemConfig<any>) {
     this.config = config || this.config;
     if (!this.config) {
       console.warn('cannot create new form: no config present');
       return;
     }
-    //TODO ..
     delete this.group;
+    delete this.item;
     this.ngOnChanges();
   }
 

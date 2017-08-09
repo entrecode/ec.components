@@ -6,12 +6,11 @@ import { EntryForm } from './entry-form';
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent */
 @Component({
   selector: 'ec-entry-form',
-  templateUrl: './entry-form.component.html',
+  templateUrl: '../../ui/form/form.component.html',
   styleUrls: ['./entry-form.component.scss']
 })
 export class EntryFormComponent extends FormComponent {
   @Input() model: string;
-  @Input() entry;
 
   constructor(private modelConfig: ModelConfig) {
     super();
@@ -21,17 +20,17 @@ export class EntryFormComponent extends FormComponent {
     if (!this.model) {
       return;
     }
-    if (!this.config) {
-      this.config = {};
-    }
-    if (!this.initItem()) {
+    if (this.config) {
+      super.ngOnChanges();
       return;
     }
-    this.config = this.item.getConfig();
-
     this.modelConfig.generateConfig(this.model).then((config) => {
-      Object.assign(this.config, config);
-      this.form = new EntryForm(this.model, this.entry, this.config);
+      if (this.config) {
+        Object.assign(this.config, config)
+      } else {
+        this.config = config;
+      }
+      this.form = new EntryForm(this.model, {}, this.config);
     });
   }
 }

@@ -197,7 +197,7 @@ export class ModelConfig extends Config {
             //TODO connect to error handler
           });
         } else {
-          console.log('create..');
+          console.log('create entry tbd..');
           return Promise.resolve();
           //TODO
         }
