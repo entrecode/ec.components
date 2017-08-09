@@ -121,7 +121,8 @@ export class FormComponent {
   /** Method that is invoked when the form is submitted.*/
   submit() {
     //TODO loader?
-    this.item.save(this.group.value).then((v) => {
+    this.item.save(this.group.value)
+    .then((v) => {
       this.submitted.emit(this.group);
     });
   }

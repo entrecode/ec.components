@@ -183,23 +183,28 @@ export class ModelConfig extends Config {
   }
 
   /** Returns the given model's config and generates a field config from the schema if it is not configured. */
-  generateConfig(model: string) {
+  generateConfig(model: string): Promise<ItemConfig<EntryResource>> {
     const config = this.get(model);
     Object.assign(config, {
       identifier: 'id',
       onSave: (item: Item<EntryResource>, value) => {
-        if (item.getBody() && item.getBody().save) {
-          return item.getBody().save().then((entry) => {
-            Object.assign(item.resolve(), value);
+        console.log('save entry value', value);
+        const entry = item.getBody();
+        const oldValues = {};
+        //save old values to fall back on error
+        Object.keys(value).forEach((key) => oldValues[key] = entry[key]);
+        Object.assign(entry, value); //assign new form values
+        if (entry && entry.save) { //PUT
+          return entry.save().then((savedEntry) => {
+            console.log('saved', savedEntry);
             return item;
           }).catch((err) => {
-            console.log('could no save...');
+            console.error('could no save...', err);
+            Object.assign(entry, oldValues); //fall back to old values
             //TODO connect to error handler
           });
-        } else {
+        } else { //POST
           console.log('create entry tbd..');
-
-
           return Promise.resolve();
           //TODO
         }

@@ -120,7 +120,7 @@ export class Item<T> {
   }
 
   /** Saves the given value. */
-  save(value: T) {
+  save(value: T): Promise<Item<T>> {
     if (this.config.onSave) {
       return Promise.resolve(this.config.onSave(this, value));
     }
