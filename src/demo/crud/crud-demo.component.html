@@ -9,13 +9,16 @@
 </button>
 <ec-pop #formPop class="modal">
   <nav style="position:absolute;right:0;top:0">
-    <button (click)="myForm.submit()">
+    <button (click)="myForm.submit()" [disabled]="myForm.group?.invalid"
+            [class.disabled]="myForm.group?.invalid">
       <i class="ec-icon save"></i>
     </button>
     <button (click)="formPop.hide()">
       <i class="ec-icon close"></i>
     </button>
   </nav>
-  <ec-entry-form model="muffin" (submit)="formPop.hide()" [submitButton]="false" #myForm></ec-entry-form>
+  <ec-entry-form model="muffin" [submitButton]="false" [loader]="popLoader"
+                 (submit)="formPop.hide()" #myForm></ec-entry-form>
+  <ec-loader #popLoader class="blend"></ec-loader>
   <!--<ec-form (submit)="formPop.hide()" [submitButton]="false" #myForm></ec-form>-->
 </ec-pop>

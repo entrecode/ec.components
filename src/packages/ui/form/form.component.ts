@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { Field, Form, FormConfig, Item } from '../../core';
 import { ItemConfig } from '../../core/item/item-config.interface';
+import { LoaderComponent } from '../loader/loader.component';
 
 /** This component renders a form using a FieldConfig Object. */
 @Component({
@@ -31,6 +32,7 @@ export class FormComponent {
   @Input() empty: boolean;
   /** If set to true, the form will be rendered without a submit button. */
   @Input() submitButton: boolean;
+  @Input() loader: LoaderComponent;
   /** Emits when the form is submitted. The form can only be submitted if all Validators succeeded. */
   @Output('submit') submitted: EventEmitter<FormGroup> = new EventEmitter();
   /** Emits when a new instance of Form is present */
@@ -121,10 +123,10 @@ export class FormComponent {
   /** Method that is invoked when the form is submitted.*/
   submit() {
     //TODO loader?
-    this.item.save(this.group.value)
+    return this.loader.wait(this.item.save(this.group.value)
     .then((v) => {
       this.submitted.emit(this.group);
-    });
+    }));
   }
 
   /** Returns the current value of the form control group. */

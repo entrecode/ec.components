@@ -14,6 +14,7 @@ import {
   ListComponent,
   ListHeaderComponent,
   ListItemsComponent,
+  LoaderComponent,
   LoginComponent,
   MenuComponent,
   MockupComponent,
@@ -33,6 +34,7 @@ import {
     DefaultInputComponent,
     DefaultOutputComponent,
     SelectComponent,
+    LoaderComponent,
   ],
   declarations: [
     ListComponent,
@@ -56,6 +58,7 @@ import {
     DynamicFieldComponent,
     DefaultInputComponent,
     DefaultOutputComponent,
+    LoaderComponent,
     // CustomFieldComponent,
   ],
   imports: [
@@ -82,6 +85,7 @@ import {
     SelectComponent,
     LoginComponent,
     InputErrorsComponent,
+    LoaderComponent,
   ],
   providers: [],
 })

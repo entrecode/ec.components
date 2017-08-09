@@ -165,6 +165,7 @@ export class ModelConfig extends Config {
           console.error('Model Property Schema title ', schema[property].title, ' was unexpected, ignoring property', property)
           return;
         }
+        console.log(' schema', schema);
         fieldConfig[property] = Object.assign({
           label: property,
           schema: schema[property],
@@ -176,6 +177,7 @@ export class ModelConfig extends Config {
           output: this.getOutputComponent(type.name),
           filterable: this.filterableTypes.indexOf(type.name) !== -1,
           sortable: this.sortableTypes.indexOf(type.name) !== -1,
+          readOnly: schema[property].readOnly
         }, fieldConfig[property] ? fieldConfig[property] : {});
       });
       return fieldConfig;
@@ -188,7 +190,6 @@ export class ModelConfig extends Config {
     Object.assign(config, {
       identifier: 'id',
       onSave: (item: Item<EntryResource>, value) => {
-        console.log('save entry value', value);
         const entry = item.getBody();
         const oldValues = {};
         //save old values to fall back on error
@@ -196,10 +197,8 @@ export class ModelConfig extends Config {
         Object.assign(entry, value); //assign new form values
         if (entry && entry.save) { //PUT
           return entry.save().then((savedEntry) => {
-            console.log('saved', savedEntry);
             return item;
           }).catch((err) => {
-            console.error('could no save...', err);
             Object.assign(entry, oldValues); //fall back to old values
             //TODO connect to error handler
           });
