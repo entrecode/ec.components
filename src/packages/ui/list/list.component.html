@@ -3,7 +3,7 @@
   <div class="ec-list-group">
     <ec-list-header [list]="list" [selection]="selection"></ec-list-header>
   </div>
-  <div class="ec-list-group" *ngFor="let group of list?.groups;trackBy:list?.trackGroup">
+  <div class="ec-list-group" *ngFor="let group of list?.groups">
     <div class="ec-list-group-header" *ngIf="group.value"
          (click)="selection?.toggleAll(listItems?.items)">
       <div class="ec-list-item-cell ec-list-checkbox" *ngIf="selection">

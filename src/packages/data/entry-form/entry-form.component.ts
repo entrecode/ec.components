@@ -54,9 +54,10 @@ export class EntryFormComponent extends FormComponent {
     if (!this.form || !this.isEditing()) {
       return;
     }
-    this.crud.del(this.model, this.form.getBody()).then(() => {
+    const deletion = this.crud.del(this.model, this.form.getBody()).then(() => {
       this.deleted.emit();
       this.create();
-    })
+    });
+    this.loaderService.wait(this.loader, deletion);
   }
 }

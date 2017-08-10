@@ -1,4 +1,4 @@
-<div class="ec-list-group-header" *ngIf="!disableHeader"><!-- &&list?.config?.fields -->
+<div class="ec-list-group-header" *ngIf="!disableHeader">
   <div class="ec-list-item-cell ec-list-checkbox" *ngIf="selection">
     <input type="checkbox" (click)="selection?.toggleAll(list?.items)"
            [checked]="selection?.hasAll(list?.items)">
@@ -29,17 +29,4 @@
       </li>
     </ul>
   </div>
-  <!--<div class="ec-list-item-cell ec-list-controls">
-    <nav class="ec-context-menu">
-      <a href="" class="btn"><span class="ec-icon more-horizontal"></span></a>
-      <ul>
-        <li>
-          <a href="" class="btn">delete</a>
-        </li>
-        <li>
-          <a href="" class="btn">dublicate</a>
-        </li>
-      </ul>
-    </nav>
-  </div>-->
 </div>

@@ -157,10 +157,6 @@ export class List<T> extends Collection<Item<T>> {
     this.groups = groups;
   }
 
-  private trackGroup(index, group) {
-    return index.toString() + JSON.stringify(group);
-  }
-
   private trackItem(index, item) {
     return index;
   }

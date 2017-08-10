@@ -197,7 +197,7 @@ export class ModelConfig extends Config {
     const config = this.get(model);
     Object.assign(config, {
       identifier: 'id',
-      onSave: (item: Item<EntryResource>, value) => this.crud.save(model, item, value)
+      onSave: (item: Item<EntryResource>, value) => this.crud.save(model, item.getBody(), value)
     });
 
     return this.generateFieldConfig(model).then((fieldConfig) => {

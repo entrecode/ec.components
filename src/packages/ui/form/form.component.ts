@@ -129,8 +129,9 @@ export class FormComponent {
   /** Method that is invoked when the form is submitted.*/
   submit() {
     const submit = this.item.save(this.group.value)
-    .then((v) => {
+    .then((item) => {
       this.submitted.emit(this.group);
+      this.edit(item);
       this.notificationService.emit({ //TODO pull out to entry-form?
         title: 'Eintrag gespeichert',
         type: 'success'

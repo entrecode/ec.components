@@ -22,8 +22,7 @@
     </button>
   </nav>
   <ec-entry-form model="muffin" [submitButton]="false" [loader]="popLoader"
-                 (submit)="formPop.hide()" (deleted)="formPop.hide()" #myForm></ec-entry-form>
+                 (deleted)="formPop.hide()" #myForm></ec-entry-form><!--(submit)="formPop.hide()"-->
   <ec-loader #popLoader class="blend"></ec-loader>
-  <!--<ec-form (submit)="formPop.hide()" [submitButton]="false" #myForm></ec-form>-->
 </ec-pop>
 <ec-notifications class="toast"></ec-notifications>

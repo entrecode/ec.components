@@ -15,5 +15,5 @@ export interface ItemConfig<T> {
   /** Contains the parent Instance which inhabits the item. This property is set programmatically and therefore meant to be readonly.*/
   parent?: any;
   /** Callback that is invoked when the item is saved */
-  onSave?: (item?: Item<T>, body?: T) => Promise<Item<T>> | Item<T>;
+  onSave?: (item?: Item<T>, body?: T) => Promise<T> | T;
 }

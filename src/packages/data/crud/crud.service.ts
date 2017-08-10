@@ -1,5 +1,4 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { Item } from '../../core/item/item';
 import { EntryResource } from "ec.sdk/typings/resources/publicAPI/EntryResource";
 import { EntryList } from "ec.sdk/typings/resources/publicAPI/EntryList";
 import { SdkService } from '../sdk/sdk.service';
@@ -39,18 +38,17 @@ export class CrudService {
     return this.changes.filter((change: Update) => this.matches(change, filter));
   }
 
-  /** Saves the given entry item with the given value. If the entry is not yet existing, it will be created. Otherwise it will be updated. */
-  save(model: string, item: Item<EntryResource>, value: Object) {
-    const entry = item.getBody();
+  /** Saves the given entry with the given value. If the entry is not yet existing, it will be created. Otherwise it will be updated. */
+  save(model: string, entry: EntryResource, value: Object) {
     if (entry && entry.save) {
       return this.update(model, entry, value);
     }
     return this.create(model, value)
     .then((entry) => {
-      return item;
+      return entry;
     }).catch((err) => {
       console.log('create fail', err);
-      return item;
+      return entry;
     });
   }
 
@@ -58,7 +56,7 @@ export class CrudService {
   update(model, entry: EntryResource, value: Object): Promise<EntryResource> {
     const oldValues = {}; //save old values
     Object.keys(value).forEach((key) => oldValues[key] = entry[key]);
-    Object.assign(entry, value); //assign new form values
+    Object.assign(entry, this.clean(value)); //assign new form values
     return entry.save().then((entry) => {
       this.changes.emit({ model, entry, type: 'update' });
       return entry;
@@ -81,7 +79,6 @@ export class CrudService {
 
   /** Creates a new entry with the given value for the given model. Fires the "create" change. */
   create(model: string, value: Object): Promise<EntryResource> {
-    console.log(model, this.clean(value));
     return this.sdk.api.createEntry(model, this.clean(value))
     .then((entry) => {
       this.changes.emit({ model, entry, type: 'create' });
@@ -91,10 +88,9 @@ export class CrudService {
     });
   }
 
+  /** deletes the given entry and emits the "delete" change. */
   del(model: string, entry: EntryResource) {
-    console.log('delete', entry);
     return entry.del().then((res) => {
-      console.log('deeleted');
       this.changes.emit({ model, entry, type: 'delete' });
       return res;
     });
