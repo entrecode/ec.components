@@ -14,6 +14,8 @@ export class InputComponent extends DynamicFieldComponent {
   @Input() group: FormGroup;
   /** The changed ouput emits whenever the form control of the input changes. */
   @Output() changed = new EventEmitter();
+  /** Debounce time in ms before the changed event emits. */
+  @Input() debounce: number = 0;
 
   ngOnChanges() {
     if (this.field && this.group) {
@@ -23,6 +25,7 @@ export class InputComponent extends DynamicFieldComponent {
 
       if (componentRef.instance.control) {
         componentRef.instance.control.valueChanges
+        .debounceTime(this.debounce)
         .subscribe((change) => {
           this.changed.emit(change);
         });

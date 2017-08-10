@@ -38,6 +38,19 @@ export class EntryList<Entry> extends List<Entry> {
     this.change.next(this);
   }
 
+  private getFilterOptions({ size = 20, page = 1, filter, sortBy, desc, sort = [] }: EntryListConfig) {
+    const options = { size, page };
+    if (sortBy) {
+      options['sort'] = [(desc ? '-' : '') + sortBy];
+    }
+    if (filter) {
+      for (let property in filter) {
+        Object.assign(options, { [property]: filter[property] });
+      }
+    }
+    return options;
+  }
+
   /** Overrides the List load method. Instead of slicing the page out of all items, a datamanager request is made using the config.*/
   public load(config?: EntryListConfig) {
     if (!this.model) {
@@ -51,15 +64,7 @@ export class EntryList<Entry> extends List<Entry> {
       });
       Object.assign(this.config, config);
     }
-    let c = {
-      size: this.config.size,
-      page: this.config.page
-      // fields: Object.keys(this.config.fields)
-    };
-    if (this.config.sortBy) {
-      c['sort'] = [(this.config.desc ? '-' : '') + this.config.sortBy];
-    }
-    const loading = this.sdk.api.entryList(this.model, c)
+    const loading = this.sdk.api.entryList(this.model, this.getFilterOptions(this.config))
     .then((list) => {
       this.use(list);
     });
@@ -75,8 +80,11 @@ export class EntryList<Entry> extends List<Entry> {
   }
 
   /** Filters the entry list by a given property value. Triggers load */
-  filter(property: string, value: any, operator: string = 'exact') {
-    this.load({
+  filter(property: string, value: any, operator: string = 'search') {
+    if (!value && operator === 'search') {
+      return this.load({ filter: {} });
+    }
+    return this.load({
       filter: {
         [property]: {
           [operator]: value

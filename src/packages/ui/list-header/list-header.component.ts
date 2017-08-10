@@ -25,14 +25,7 @@ export class ListHeaderComponent {
   }
 
   private applyFilter(property, value) {
-    console.log('apply filter', property, value);
-    //TODO
-    this.list.filterProperty(property, value);
-    /*const filter = {};
-    filter[property] = this.filter.getValue()[property];
-    pop.hide();
-    console.log('filter', filter);
-    this.list.applyFilter(filter);*/
+    this.list.filter(property, value);
   }
 
   private hasFilter(property) {

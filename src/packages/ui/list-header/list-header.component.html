@@ -10,7 +10,7 @@
       <a (click)="filterPop.hide()">
         <i class="ec-icon close"></i>
       </a>
-      <ec-input [field]="field" [group]="filterForm?.group"
+      <ec-input [field]="field" [group]="filterForm?.group" [debounce]="200"
                 (changed)="applyFilter(field.property, $event)"></ec-input>
     </ec-pop>
     {{field.label || field.property}}
