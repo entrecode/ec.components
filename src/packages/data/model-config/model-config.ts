@@ -46,8 +46,9 @@ export class ModelConfig extends Config {
   sortableTypes = ['text', 'number', 'datetime'];
   /** which types should be filterable by default? */
   filterableTypes = ['text', 'formattedText'];
-
-  //TODO simplify input output logic / use service etc.
+  //todo add way to map default filter types
+  //todo (exact,search etc) for field types e.g. number does not support search
+  //TODO simplify input output logic / use service etc. ComponentService?
   /** Maps field types to input omponents */
   typeInputComponents = {};
   /** Maps field types to output components */

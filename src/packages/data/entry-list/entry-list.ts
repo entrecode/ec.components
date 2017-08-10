@@ -67,6 +67,8 @@ export class EntryList<Entry> extends List<Entry> {
     const loading = this.sdk.api.entryList(this.model, this.getFilterOptions(this.config))
     .then((list) => {
       this.use(list);
+    }).catch((err) => {
+      console.log('err', err);
     });
     this.loading.next(loading);
     return loading;
