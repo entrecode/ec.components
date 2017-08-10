@@ -6,7 +6,7 @@ import { environment } from '../environments/environment';
 import { Datamanager, ModelConfig } from '../packages/data';
 import { FormConfig, List, Pagination } from '../packages/core';
 import * as moment from 'moment';
-import { demoRoutes } from './demo.module';
+import { demoRoutes } from './demo.routes';
 
 @Component({
   selector: 'demo-root',

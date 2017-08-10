@@ -1,33 +1,31 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import {
-  DefaultInputComponent,
-  DefaultOutputComponent,
-  DynamicFieldComponent,
-  FieldHostDirective,
-  FilterComponent,
-  FormComponent,
-  GroupPipe,
-  InputComponent,
-  InputErrorsComponent,
-  ListComponent,
-  ListHeaderComponent,
-  ListItemsComponent,
-  LoaderComponent,
-  LoaderService,
-  LoginComponent,
-  MenuComponent,
-  MockupComponent,
-  NotificationsComponent,
-  NotificationsService,
-  OutputComponent,
-  PaginationComponent,
-  PopComponent,
-  SelectComponent,
-  TabComponent,
-  TabsComponent,
-} from './index';
+import { InputComponent } from './input/input.component';
+import { PopComponent } from './pop/pop.component';
+import { DynamicFieldComponent } from './dynamic-field/dynamic-field.component';
+import { DefaultInputComponent } from './input/default-input.component';
+import { DefaultOutputComponent } from './output/default-output.component';
+import { SelectComponent } from './select/select.component';
+import { LoaderComponent } from './loader/loader.component';
+import { NotificationsComponent } from './notifications/notifications.component';
+import { ListComponent } from './list/list.component';
+import { PaginationComponent } from './pagination/pagination.component';
+import { TabsComponent } from './tabs/tabs.component';
+import { TabComponent } from './tab/tab.component';
+import { MockupComponent } from './mockup/mockup.component';
+import { FilterComponent } from './filter/filter.component';
+import { OutputComponent } from './output/output.component';
+import { ListItemsComponent } from './list-items/list-items.component';
+import { ListHeaderComponent } from './list-header/list-header.component';
+import { GroupPipe } from './list/group.pipe';
+import { InputErrorsComponent } from './input-errors/input-errors.component';
+import { FormComponent } from './form/form.component';
+import { MenuComponent } from './menu/menu.component';
+import { LoginComponent } from './login/login.component';
+import { FieldHostDirective } from './dynamic-field/field-host.directive';
+import { LoaderService } from './loader/loader.service';
+import { NotificationsService } from './notifications/notifications.service';
 
 @NgModule({
   entryComponents: [

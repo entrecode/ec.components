@@ -128,21 +128,20 @@ export class FormComponent {
 
   /** Method that is invoked when the form is submitted.*/
   submit() {
-    const submit =
-      this.item.save(this.group.value)
-      .then((v) => {
-        this.submitted.emit(this.group);
-        this.notificationService.emit({
-          title: 'Eintrag gespeichert',
-          type: 'success'
-        });
-      }).catch((err) => {
-        this.notificationService.emit({
-          title: 'Fehler beim Speichern',
-          message: err,
-          type: 'error'
-        });
+    const submit = this.item.save(this.group.value)
+    .then((v) => {
+      this.submitted.emit(this.group);
+      this.notificationService.emit({ //TODO pull out to entry-form?
+        title: 'Eintrag gespeichert',
+        type: 'success'
       });
+    }).catch((err) => {
+      this.notificationService.emit({
+        title: 'Fehler beim Speichern',
+        message: err,
+        type: 'error'
+      });
+    });
     this.loaderService.wait(this.loader, submit);
     return submit;
   }

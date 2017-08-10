@@ -1,11 +1,13 @@
 import { Component, Input } from '@angular/core';
-import { ListComponent } from '../../ui';
-import { ListConfig, Selection } from '../../core';
-import { EntryList } from '..';
 import { SdkService } from '../sdk/sdk.service';
 import { ModelConfig } from '../model-config/model-config';
 import { LoaderComponent } from '../../ui/loader/loader.component';
 import { LoaderService } from '../../ui/loader/loader.service';
+import { ListComponent } from '../../ui/list/list.component';
+import { Selection } from '../../core/selection/selection';
+import { ListConfig } from '../../core/list/list-config.interface';
+import { EntryList } from './entry-list';
+import { CrudService } from '../crud/crud.service';
 
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent */
 @Component({
@@ -26,7 +28,7 @@ export class EntryListComponent extends ListComponent {
   @Input() loader: LoaderComponent;
 
   /** The constructor will just call super of List*/
-  constructor(protected loaderService: LoaderService, private sdk: SdkService, private modelConfig: ModelConfig) {
+  constructor(protected loaderService: LoaderService, private sdk: SdkService, private modelConfig: ModelConfig, private crud: CrudService) {
     super();
   }
 
@@ -35,6 +37,11 @@ export class EntryListComponent extends ListComponent {
     if (!this.model) {
       return;
     }
+    this.crud.change({ model: this.model }) //, type: 'create'
+    .subscribe((update) => {
+      this.list.load();
+    });
+
     this.modelConfig.generateConfig(this.model).then((config) => {
       Object.assign(this.config, config);
       this.list = new EntryList(this.model, this.config, this.sdk);

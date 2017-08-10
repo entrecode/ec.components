@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { EditorComponent, ToolbarComponent } from './index';
 import { SafeHtmlPipe } from './safe-html.pipe';
+import { EditorComponent } from './editor/editor.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 @NgModule({
   entryComponents: [

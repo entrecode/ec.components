@@ -39,7 +39,7 @@ export class EntryList<Entry> extends List<Entry> {
   }
 
   /** Overrides the List load method. Instead of slicing the page out of all items, a datamanager request is made using the config.*/
-  protected load(config?: EntryListConfig) {
+  public load(config?: EntryListConfig) {
     if (!this.model) {
       return;
     }

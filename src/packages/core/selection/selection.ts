@@ -1,5 +1,6 @@
-import { Item, List } from '..';
 import { Subject } from 'rxjs';
+import { Item } from '../item/item';
+import { List } from '../list/list';
 
 /**
  * Extension of List that keeps track of selected items. It can keep track of items via identifier

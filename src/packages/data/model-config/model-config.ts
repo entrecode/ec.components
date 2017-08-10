@@ -1,5 +1,3 @@
-import { Config, FieldConfig, FieldConfigProperty } from '../../core';
-import { Datamanager } from '..';
 import * as moment from 'moment';
 import { DefaultEntryInputComponent } from '../entry-form/default-entry-input.component';
 import { DefaultInputComponent } from '../../ui/input/default-input.component';
@@ -8,10 +6,20 @@ import { Item } from '../../core/item/item';
 import { EntryResource } from "ec.sdk/typings/resources/publicAPI/EntryResource";
 import { ItemConfig } from '../../core/item/item-config.interface';
 import { DefaultOutputComponent } from '../../ui/output/default-output.component';
+import { CrudService } from '../crud/crud.service';
+import { Config } from '../../core/config/config';
+import { FieldConfig } from '../../core/config/field-config.interface';
+import { FieldConfigProperty } from '../../core/config/field-config-property.interface';
+import { SdkService } from '../sdk/sdk.service';
 
 /** The main class for configuring model data behaviour.*/
 @Injectable()
 export class ModelConfig extends Config {
+
+  constructor(private crud: CrudService, private sdk: SdkService) {
+    super();
+  }
+
   /** Array of property names that are omitted by default. */
   omittedFields: Array<string> = [
     'id',
@@ -154,8 +162,9 @@ export class ModelConfig extends Config {
       return;
     }).then((config) => {
       fieldConfig = config;
-      return Datamanager.schema(model);
+      return this.sdk.api.getSchema(model);
     }).then((schema) => {
+      schema = schema.allOf[1].properties;
       const properties = Object.keys(schema)
       .filter(property => (!fieldConfig && !this.isSystemProperty(property)) || (fieldConfig && !!fieldConfig[property]));
       fieldConfig = fieldConfig || {};
@@ -188,26 +197,7 @@ export class ModelConfig extends Config {
     const config = this.get(model);
     Object.assign(config, {
       identifier: 'id',
-      onSave: (item: Item<EntryResource>, value) => {
-        const entry = item.getBody();
-        if (entry && entry.save) { //PUT
-          const oldValues = {};
-          //save old values to fall back on error
-          Object.keys(value).forEach((key) => oldValues[key] = entry[key]);
-          Object.assign(entry, value); //assign new form values
-          return entry.save().then((savedEntry) => {
-            return item;
-          }).catch((err) => {
-            Object.assign(entry, oldValues); //fall back to old values
-            return Promise.reject(err);
-            //TODO connect to error handler
-          });
-        } else { //POST
-          console.log('create entry tbd..');
-          return Promise.resolve();
-          //TODO
-        }
-      }
+      onSave: (item: Item<EntryResource>, value) => this.crud.save(model, item, value)
     });
 
     return this.generateFieldConfig(model).then((fieldConfig) => {

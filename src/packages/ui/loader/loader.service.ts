@@ -7,6 +7,6 @@ export class LoaderService {
     if (!loader || !promise) {
       return;
     }
-    loader.wait(promise);
+    return loader.wait(promise);
   }
 }

@@ -1,5 +1,10 @@
-import { Collection, Field, Item, ListConfig, Pagination, Sorter } from '..';
 import { Subject } from 'rxjs';
+import { Collection } from '../collection/collection';
+import { Item } from '../item/item';
+import { Field } from '../field/field';
+import { ListConfig } from './list-config.interface';
+import { Pagination } from '../pagination/pagination';
+import { Sorter } from '../filter/filter';
 
 /**
  * A more sophisticated Collection of Objects with arbitrary content.
