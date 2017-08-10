@@ -1,17 +1,17 @@
-<div class="ec-list-group-header" *ngIf="!disableHeader&&list?.config.fields">
+<div class="ec-list-group-header" *ngIf="!disableHeader"><!-- &&list?.config?.fields -->
   <div class="ec-list-item-cell ec-list-checkbox" *ngIf="selection">
     <input type="checkbox" (click)="selection?.toggleAll(list?.items)"
            [checked]="selection?.hasAll(list?.items)">
   </div>
-  <!--<ec-form [config]="list?.config" [empty]="true" #filterForm></ec-form>-->
+  <ec-form [config]="list?.config" [empty]="true" #filterForm></ec-form>
   <div class="ec-list-item ec-list-header" *ngFor="let field of list?.fields"
        [class.hidden]="field.hidden">
     <ec-pop #filterPop class="popdown">
       <a (click)="filterPop.hide()">
         <i class="ec-icon close"></i>
       </a>
-      <!--<ec-input [field]="field" [group]="filterForm?.group"
-                (changed)="applyFilter(field.property, $event)"></ec-input>-->
+      <ec-input [field]="field" [group]="filterForm?.group"
+                (changed)="applyFilter(field.property, $event)"></ec-input>
     </ec-pop>
     {{field.label || field.property}}
     <ul>

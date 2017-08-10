@@ -2,7 +2,6 @@ import { Component, Input, QueryList, ViewChild, ViewChildren } from '@angular/c
 import { PopComponent } from '../pop/pop.component';
 import { FormComponent } from '../form/form.component';
 import { List } from '../../core/list/list';
-import { ListComponent } from '../list/list.component';
 import { Selection } from "../../core/selection/selection";
 
 /** This component renders, as the name states, the header of a list.*/
@@ -16,18 +15,9 @@ export class ListHeaderComponent {
   @Input() list: List<any>;
   /** The selection instance. This is optional. If It is not provided, no checkbox will be visible.*/
   @Input() selection: Selection<any>;
-  /** You can also just pass in the entire parent list component */
-  @Input() host: ListComponent;
   /** The pop dropdowns that contain the filtering */
   @ViewChildren('filterPop') pops: QueryList<PopComponent>;
   @ViewChild('filterForm') filter: FormComponent;
-
-  private ngOnChanges() {
-    if (this.host) {
-      this.list = this.host.list;
-      this.selection = this.host.selection;
-    }
-  }
 
   private editFilter(pop) {
     pop.toggle();
