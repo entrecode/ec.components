@@ -12,6 +12,7 @@ import { EntryFormComponent } from './entry-form/entry-form.component';
 import { SdkService } from './sdk/sdk.service';
 import { PublicService } from './sdk/public.service';
 import { AdminService } from './sdk/admin.service';
+import { CrudComponent } from './crud/crud.component';
 
 @NgModule({
   entryComponents: [
@@ -23,6 +24,7 @@ import { AdminService } from './sdk/admin.service';
     EntriesComponent,
     EntryFormComponent,
     DefaultEntryInputComponent,
+    CrudComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +36,7 @@ import { AdminService } from './sdk/admin.service';
     EntryComponent,
     EntriesComponent,
     EntryFormComponent,
+    CrudComponent,
   ],
   providers: [
     SdkService,

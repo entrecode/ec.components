@@ -1,28 +1,2 @@
 <h2>ec-crud</h2>
-<button (click)="myForm.create();formPop.show()" style="float:right">
-  Neuer Muffin
-</button>
-<ec-entry-list model="muffin" [config]="{size:10}" [solo]="true"
-               (onSelect)="myForm.edit($event);formPop.show();" [loader]="listLoader"
-               #muffinList>
-</ec-entry-list>
-<ec-loader #listLoader class="blend"></ec-loader>
-
-<ec-pop #formPop class="modal">
-  <nav style="position:absolute;right:0;top:0">
-    <button (click)="myForm.deleteEntry()" *ngIf="myForm.isEditing()">
-      <i class="ec-icon trash"></i>
-    </button>
-    <button (click)="myForm.submit()" [disabled]="myForm.group?.invalid"
-            [class.disabled]="myForm.group?.invalid">
-      <i class="ec-icon save"></i>
-    </button>
-    <button (click)="formPop.hide()">
-      <i class="ec-icon close"></i>
-    </button>
-  </nav>
-  <ec-entry-form model="muffin" [submitButton]="false" [loader]="popLoader"
-                 (deleted)="formPop.hide()" #myForm></ec-entry-form><!--(submit)="formPop.hide()"-->
-  <ec-loader #popLoader class="blend"></ec-loader>
-</ec-pop>
-<ec-notifications class="toast"></ec-notifications>
+<ec-crud model="muffin" [config]="{createLabel:'Neuer Muffin',listConfig:{size:12}}"></ec-crud>

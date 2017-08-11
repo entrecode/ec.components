@@ -1,4 +1,5 @@
-<ec-pagination [pagination]="list?.pagination"></ec-pagination>
+<ec-pagination [pagination]="list?.pagination"
+               *ngIf="list?.pagination?.getPages()>1"></ec-pagination>
 <div class="ec-list">
   <div class="ec-list-group">
     <ec-list-header [list]="list" [selection]="selection"></ec-list-header>
@@ -17,4 +18,5 @@
                    [items]="list?.page | group: group.property: group.value"></ec-list-items>
   </div>
 </div>
-<ec-pagination [pagination]="list?.pagination"></ec-pagination>
+<ec-pagination [pagination]="list?.pagination"
+               *ngIf="list?.pagination?.getPages()>1"></ec-pagination>

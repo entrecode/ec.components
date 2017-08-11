@@ -43,6 +43,7 @@ export class EntryListComponent extends ListComponent {
     });
 
     this.modelConfig.generateConfig(this.model).then((config) => {
+      this.config = this.config || {};
       Object.assign(this.config, config);
       this.list = new EntryList(this.model, this.config, this.sdk);
       this.list.change$.subscribe((list) => {
