@@ -5,6 +5,11 @@
       <input type="text" [formControlName]="field.property">
     </label>
   </div>
+  <div *ngSwitchCase="'textarea'">
+    <label>{{field.label || field.property}}
+      <textarea type="text" [formControlName]="field.property"></textarea>
+    </label>
+  </div>
   <div *ngSwitchCase="'number'">
     <label>{{field.label || field.property}}
       <input type="number" [formControlName]="field.property">
@@ -16,17 +21,19 @@
       {{field.label || field.property}}
     </label>
   </div>
-  <div *ngSwitchCase="'date'">
+  <!--<div *ngSwitchCase="'date'">
     <label>{{field.label || field.property}}
       <input type="date" [formControlName]="field.property">
     </label>
-  </div>
+  </div>-->
   <div *ngSwitchCase="'array'">
     <label>{{field.label || field.property}}
       <ec-select [formControlName]="field.property"></ec-select>
     </label>
   </div>
   <div *ngSwitchDefault>
+    <label>{{field.label || field.property}}</label>
     <ec-output [field]="field" [item]="item"></ec-output>
+    <marquee>🚂🚃🚃🚃 {{field.type}} input coming soon</marquee>
   </div>
 </div>

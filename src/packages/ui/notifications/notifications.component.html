@@ -2,4 +2,10 @@
         [active]="true" [visible]="true">
   <strong>{{notification.title}}</strong>
   <p>{{notification.message}}</p>
+  <ec-error [error]="notification.error"></ec-error>
+  <ul *ngIf="notification.error">
+    <li *ngFor="let error of notification.error?.errors">
+      <ec-error [error]="error"></ec-error>
+    </li>
+  </ul>
 </ec-pop>

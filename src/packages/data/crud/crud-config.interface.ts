@@ -16,4 +16,6 @@ export class CrudConfig {
   listConfig?: EntryListConfig;
   /** If true, the entry pop will remain open after the entry has been successfully saved. */
   keepPopOpen?: boolean;
+  /** If true, an extra develop button will be shown*/
+  develop?: boolean;
 }

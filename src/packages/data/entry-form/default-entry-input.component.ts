@@ -7,10 +7,4 @@ import { Field } from '../../core/field/field';
 })
 export class DefaultEntryInputComponent {
   field: Field<any>;
-
-  constructor() {
-  }
-
-  ngOnChanges() {
-  }
 }

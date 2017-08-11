@@ -13,10 +13,12 @@ import { SdkService } from './sdk/sdk.service';
 import { PublicService } from './sdk/public.service';
 import { AdminService } from './sdk/admin.service';
 import { CrudComponent } from './crud/crud.component';
+import { DefaultEntryOutputComponent } from './entry-form/default-entry-output.component';
 
 @NgModule({
   entryComponents: [
     DefaultEntryInputComponent,
+    DefaultEntryOutputComponent,
   ],
   declarations: [
     EntryListComponent,
@@ -24,6 +26,7 @@ import { CrudComponent } from './crud/crud.component';
     EntriesComponent,
     EntryFormComponent,
     DefaultEntryInputComponent,
+    DefaultEntryOutputComponent,
     CrudComponent,
   ],
   imports: [

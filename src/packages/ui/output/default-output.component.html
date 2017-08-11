@@ -1,4 +1,7 @@
-<div [ngSwitch]="field.view" *ngIf="item">
+<div *ngIf="!item.display(field.property)">
+  <!-- empty -->
+</div>
+<div [ngSwitch]="field.view" *ngIf="item&&item.display(field.property)">
   <!--<div [attr.view]="field.view" [attr.property]="field.property" #cells>-->
   <ul class="labels-list" *ngSwitchCase="'labels'">
     <li *ngFor="let label of item.display(field.property)">

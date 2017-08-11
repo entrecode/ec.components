@@ -1,5 +1,6 @@
 import * as moment from 'moment';
 import { DefaultEntryInputComponent } from '../entry-form/default-entry-input.component';
+import { DefaultEntryOutputComponent } from '../entry-form/default-entry-output.component';
 import { DefaultInputComponent } from '../../ui/input/default-input.component';
 import { Injectable, Type } from "@angular/core";
 import { Item } from '../../core/item/item';
@@ -31,16 +32,30 @@ export class ModelConfig extends Config {
 
   /** Maps field types to view types (may be deprecated in the future) */
   typeViews = {
-    entries: 'labels',
-    entry: 'label',
+    entry: 'string',
+    entries: 'array',
     asset: 'avatar',
     assets: 'avatars',
     text: 'string',
+    formattedText: 'textarea',
     decimal: 'number',
     number: 'number',
     boolean: 'boolean',
     datetime: 'date'
   };
+
+  /** primitive types: will use the DefaultInputComponent */
+  primitiveTypes = [
+    'text',
+    'asset',
+    'assets',
+    'datetime',
+    'decimal',
+    'boolean',
+    'number',
+    'formattedText',
+    'entry',
+  ];
 
   /** which types should be sortable by default? */
   sortableTypes = ['text', 'number', 'datetime'];
@@ -77,7 +92,7 @@ export class ModelConfig extends Config {
     if (this.typeInputComponents[type]) {
       return this.typeInputComponents[type];
     }
-    if (type === 'text' || type === 'decimal' || type === 'boolean' || type === 'number') {
+    if (this.primitiveTypes.indexOf(type) !== -1) {
       return DefaultInputComponent;
     }
     return DefaultEntryInputComponent;
@@ -90,8 +105,10 @@ export class ModelConfig extends Config {
     if (this.typeOutputComponents[type]) {
       return this.typeOutputComponents[type];
     }
-    return DefaultOutputComponent;
-    //TODO DefaultEntryOutputComponent?
+    if (this.primitiveTypes.indexOf(type) !== -1) {
+      return DefaultOutputComponent;
+    }
+    return DefaultEntryOutputComponent;
   }
 
   /** Retrieves the given model config.
@@ -122,13 +139,21 @@ export class ModelConfig extends Config {
   /** Returns a resolve function that will return the value of a certain field type and property. */
   displayField(type, property) {
     if (['entries', 'entry'].indexOf(type) !== -1) {
-      return (value, entry) => entry.getTitle(property);
+      // return (value, entry) => entry.getTitle(property);
+      //TODO find way to get nested entry title (without using levels if possible)
+      return (value, entry) => value;
     }
     if (['asset', 'assets'].indexOf(type) !== -1) {
       return (value, entry) => entry.getImageThumbUrl('pictures', 100);
     }
     if (type === 'datetime') {
       return (value) => moment(value).format('DD.MM.YY');
+    }
+    if (type === 'json') {
+      return (value) => JSON.stringify(value);
+    }
+    if (type === 'location') {
+      return (value) => value.longitude + ',' + value.latitude;
     }
     return (value) => value;
   };
@@ -195,7 +220,7 @@ export class ModelConfig extends Config {
 
   /** Returns the given model's config and generates a field config from the schema if it is not configured. */
   generateConfig(model: string): Promise<ItemConfig<EntryResource>> {
-    const config = this.get(model);
+    const config = this.get(model) || {};
     Object.assign(config, {
       identifier: 'id',
       onSave: (item: Item<EntryResource>, value) => this.crud.save(model, item.getBody(), value)

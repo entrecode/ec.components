@@ -24,5 +24,6 @@ export * from './loader/loader.component'
 export * from './loader/loader.service'
 export * from './notifications/notifications.component'
 export * from './notifications/notifications.service'
+export * from './error/error.component'
 
 export * from './ui.module'

@@ -26,6 +26,7 @@ import { LoginComponent } from './login/login.component';
 import { FieldHostDirective } from './dynamic-field/field-host.directive';
 import { LoaderService } from './loader/loader.service';
 import { NotificationsService } from './notifications/notifications.service';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   entryComponents: [
@@ -37,6 +38,7 @@ import { NotificationsService } from './notifications/notifications.service';
     SelectComponent,
     LoaderComponent,
     NotificationsComponent,
+    ErrorComponent,
   ],
   declarations: [
     ListComponent,
@@ -61,7 +63,8 @@ import { NotificationsService } from './notifications/notifications.service';
     DefaultInputComponent,
     DefaultOutputComponent,
     LoaderComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
@@ -89,6 +92,7 @@ import { NotificationsService } from './notifications/notifications.service';
     InputErrorsComponent,
     LoaderComponent,
     NotificationsComponent,
+    ErrorComponent,
   ],
   providers: [
     LoaderService,

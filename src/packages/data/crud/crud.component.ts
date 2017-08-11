@@ -22,6 +22,10 @@ export class CrudComponent {
     }
   }
 
+  private log(form) {
+    console.dir(form);
+  }
+
   private hasMethod(method: string) {
     return !this.config.methods || this.config.methods.indexOf(method) !== -1;
   }

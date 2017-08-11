@@ -40,6 +40,7 @@ export class CrudService {
 
   /** Saves the given entry with the given value. If the entry is not yet existing, it will be created. Otherwise it will be updated. */
   save(model: string, entry: EntryResource, value: Object) {
+    console.log('save', this.clean(value));
     if (entry && entry.save) {
       return this.update(model, entry, value);
     }
@@ -47,8 +48,7 @@ export class CrudService {
     .then((entry) => {
       return entry;
     }).catch((err) => {
-      console.log('create fail', err);
-      return entry;
+      return Promise.reject(err);
     });
   }
 
@@ -67,10 +67,12 @@ export class CrudService {
     });
   }
 
+  //TODO serialization => set boolean to false if null, etc. transform date
+
   /** Removes all null or undefined values from the given object */
   clean(value: Object): Object {
     for (let key in value) {
-      if (value[key] === null || value[key] === undefined) {
+      if (value[key] === null || value[key] === undefined || value[key] === '') {
         delete value[key];
       }
     }

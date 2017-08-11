@@ -137,10 +137,10 @@ export class FormComponent {
         type: 'success'
       });
     }).catch((err) => {
+      console.error(err, err.errors);
       this.notificationService.emit({
         title: 'Fehler beim Speichern',
-        message: err,
-        type: 'error'
+        error: err
       });
     });
     this.loaderService.wait(this.loader, submit);

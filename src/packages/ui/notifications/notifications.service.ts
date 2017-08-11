@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { Notification } from './notification.interface';
+import { Notification } from './notification';
 import { Subject } from 'rxjs';
 
 declare const window;
@@ -11,7 +11,7 @@ export class NotificationsService {
   /** Observable that is nexted when a new notification comes in. */
   public emitter$ = this.emitter.asObservable();
   /** The default view time for a notification. */
-  public defaultTime: number = 3000;
+  public defaultTime: number = 5000;
 
   constructor(@Inject('useDesktopNotifications') private useDesktopNotifications) {
   }
@@ -19,9 +19,9 @@ export class NotificationsService {
   /** Emits a notification to all ec-notification components. If host is set, it is only pushed to the specified host.*/
   emit(notification: Notification, desktop?: boolean) {
     if (desktop || this.useDesktopNotifications) {
-      this.desktopNotification(notification);
+      this.desktopNotification(new Notification(notification));
     } else {
-      this.emitter.next(notification);
+      this.emitter.next(new Notification(notification));
     }
   }
 
