@@ -1,22 +1,20 @@
-import * as moment from 'moment';
-import { DefaultEntryInputComponent } from '../entry-form/default-entry-input.component';
-import { DefaultEntryOutputComponent } from '../entry-form/default-entry-output.component';
-import { DefaultInputComponent } from '../../ui/input/default-input.component';
-import { Injectable, Type } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { Item } from '../../core/item/item';
 import { EntryResource } from "ec.sdk/typings/resources/publicAPI/EntryResource";
 import { ItemConfig } from '../../core/item/item-config.interface';
-import { DefaultOutputComponent } from '../../ui/output/default-output.component';
 import { CrudService } from '../crud/crud.service';
 import { Config } from '../../core/config/config';
 import { FieldConfig } from '../../core/config/field-config.interface';
 import { FieldConfigProperty } from '../../core/config/field-config-property.interface';
 import { SdkService } from '../sdk/sdk.service';
+import { TypeConfig } from './type-config';
 
-/** The main class for configuring model data behaviour.*/
+/** The main class for configuring the behaviour of a model.
+ * By default, everything is auto generated from the model's schema but can be overriden via the
+ * set method. */
 @Injectable()
 export class ModelConfig extends Config {
-
+  /** Injects CrudService and SdkService. */
   constructor(private crud: CrudService, private sdk: SdkService) {
     super();
   }
@@ -29,87 +27,6 @@ export class ModelConfig extends Config {
     'creator',
     'modified'
   ];
-
-  /** Maps field types to view types (may be deprecated in the future) */
-  typeViews = {
-    entry: 'string',
-    entries: 'array',
-    asset: 'avatar',
-    assets: 'avatars',
-    text: 'string',
-    formattedText: 'textarea',
-    decimal: 'number',
-    number: 'number',
-    boolean: 'boolean',
-    datetime: 'date'
-  };
-
-  /** primitive types: will use the DefaultInputComponent */
-  primitiveTypes = [
-    'text',
-    'asset',
-    'assets',
-    'datetime',
-    'decimal',
-    'boolean',
-    'number',
-    'formattedText',
-    'entry',
-  ];
-
-  /** which types should be sortable by default? */
-  sortableTypes = ['text', 'number', 'datetime'];
-  /** which types should be filterable by default? */
-  filterableTypes = ['text', 'formattedText'];
-  //todo add way to map default filter types
-  //todo (exact,search etc) for field types e.g. number does not support search
-  //TODO simplify input output logic / use service etc. ComponentService?
-  /** Maps field types to input omponents */
-  typeInputComponents = {};
-  /** Maps field types to output components */
-  typeOutputComponents = {};
-
-  /** Registers a custom input component for the given types. You can e.g. register a custom file picker for the types 'asset' and 'assets'.
-   * Be aware that you have to handle different formats yourself when dealing with multiple types*/
-  registerInputComponent(component: Type<any>, types: Array<string>) {
-    types.forEach((type) => {
-      this.typeInputComponents[type] = component;
-    })
-  }
-
-  /** Registers a custom output component for the given types. You can e.g. register a custom file viewer for the types 'asset' and 'assets'.
-   * Be aware that you have to handle different formats yourself when dealing with multiple types*/
-  registerOutputComponent(component: Type<any>, types: Array<string>) {
-    types.forEach((type) => {
-      this.typeOutputComponents[type] = component;
-    })
-  }
-
-  /** Retrieves the component that should be used to render an input for the given type.
-   * You can register components via registerInputComponent for custom components.
-   * */
-  getInputComponent(type) {
-    if (this.typeInputComponents[type]) {
-      return this.typeInputComponents[type];
-    }
-    if (this.primitiveTypes.indexOf(type) !== -1) {
-      return DefaultInputComponent;
-    }
-    return DefaultEntryInputComponent;
-  }
-
-  /** Retrieves the component that should be used to render an output for the given type.
-   * You can register components via registerInputComponent for custom components.
-   * */
-  getOutputComponent(type) {
-    if (this.typeOutputComponents[type]) {
-      return this.typeOutputComponents[type];
-    }
-    if (this.primitiveTypes.indexOf(type) !== -1) {
-      return DefaultOutputComponent;
-    }
-    return DefaultEntryOutputComponent;
-  }
 
   /** Retrieves the given model config.
    * @example
@@ -132,31 +49,9 @@ export class ModelConfig extends Config {
    *  });
    * ```
    * */
-  set(property: string, config: ItemConfig<EntryResource>): ItemConfig<any> {
+  set(property: string, config: ItemConfig<EntryResource>): ItemConfig<EntryResource> {
     return this.configure('model', property, config);
   }
-
-  /** Returns a resolve function that will return the value of a certain field type and property. */
-  displayField(type, property) {
-    if (['entries', 'entry'].indexOf(type) !== -1) {
-      // return (value, entry) => entry.getTitle(property);
-      //TODO find way to get nested entry title (without using levels if possible)
-      return (value, entry) => value;
-    }
-    if (['asset', 'assets'].indexOf(type) !== -1) {
-      return (value, entry) => entry.getImageThumbUrl('pictures', 100);
-    }
-    if (type === 'datetime') {
-      return (value) => moment(value).format('DD.MM.YY');
-    }
-    if (type === 'json') {
-      return (value) => JSON.stringify(value);
-    }
-    if (type === 'location') {
-      return (value) => value.longitude + ',' + value.latitude;
-    }
-    return (value) => value;
-  };
 
   /** Checks if a given property name is a system property (either part of omittedFields or beginning with _).*/
   isSystemProperty(property: string) {
@@ -201,18 +96,13 @@ export class ModelConfig extends Config {
           return;
         }
         fieldConfig[property] = Object.assign({
-          label: property,
-          schema: schema[property],
-          type: type.name,
-          view: this.typeViews[type.name],
-          model: type.model,
-          display: this.displayField(type.name, property),
-          input: this.getInputComponent(type.name),
-          output: this.getOutputComponent(type.name),
-          filterable: this.filterableTypes.indexOf(type.name) !== -1,
-          sortable: this.sortableTypes.indexOf(type.name) !== -1,
-          readOnly: schema[property].readOnly
-        }, fieldConfig[property] ? fieldConfig[property] : {});
+            label: property,
+            schema: schema[property],
+            model: type.model,
+            readOnly: schema[property].readOnly,
+            display: ((value) => value)
+          }, fieldConfig[property] ? fieldConfig[property] : {},
+          TypeConfig.get(type.name));
       });
       return fieldConfig;
     });
@@ -225,7 +115,6 @@ export class ModelConfig extends Config {
       identifier: 'id',
       onSave: (item: Item<EntryResource>, value) => this.crud.save(model, item.getBody(), value)
     });
-
     return this.generateFieldConfig(model).then((fieldConfig) => {
       Object.assign(config, { fields: fieldConfig });
       return Promise.resolve(config);

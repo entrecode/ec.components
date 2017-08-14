@@ -13,18 +13,18 @@ export class Item<T> {
     this.config = config || this.generateConfig();
   }
 
-  //TODO move the type / view / component stuff to service?
-  generateConfig() {
-    this.config = { fields: {} };
+  /** Generates a config from the body by setting view to the properties type. */
+  private generateConfig() {
+    const config = { fields: {} };
     this.getProperties().forEach((property) => {
-      this.config.fields[property] = {
+      config.fields[property] = {
         view: typeof this.body[property]
       };
-      if (this.config.fields[property].view === 'object' && Array.isArray(this.body[property])) {
-        this.config.fields[property].view = 'array'
+      if (config.fields[property].view === 'object' && Array.isArray(this.body[property])) {
+        config.fields[property].view = 'array'
       }
     });
-    return this.config;
+    return config;
   }
 
   /** Returns the item's body */
@@ -88,12 +88,13 @@ export class Item<T> {
     return v ? v[property] : null;
   }
 
+  /** The main method for transformation functions like resolve, display and group. */
   private transform(action: string, property: string) {
     if (!this.body) {
       return;
     }
     if (this.config.fields && this.config.fields[property] && this.config.fields[property][action]) {
-      return this.config.fields[property][action](this.resolve(property), this.body);
+      return this.config.fields[property][action](this.resolve(property), this.body, property);
     }
     return this.resolve(property);
   }

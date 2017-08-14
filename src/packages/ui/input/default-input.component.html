@@ -21,6 +21,18 @@
       {{field.label || field.property}}
     </label>
   </div>
+  <div *ngSwitchCase="'email'">
+    <label>
+      {{field.label || field.property}}
+      <input type="email" [formControlName]="field.property">
+    </label>
+  </div>
+  <div *ngSwitchCase="'url'">
+    <label>
+      {{field.label || field.property}}
+      <input type="url" [formControlName]="field.property">
+    </label>
+  </div>
   <!--<div *ngSwitchCase="'date'">
     <label>{{field.label || field.property}}
       <input type="date" [formControlName]="field.property">
@@ -34,6 +46,6 @@
   <div *ngSwitchDefault>
     <label>{{field.label || field.property}}</label>
     <ec-output [field]="field" [item]="item"></ec-output>
-    <marquee>🚂🚃🚃🚃 {{field.type}} input coming soon</marquee>
+    <marquee>🚂🚃🚃🚃 {{field.type}}/{{field.view}} input coming soon</marquee>
   </div>
 </div>

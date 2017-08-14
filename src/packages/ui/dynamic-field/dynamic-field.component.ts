@@ -22,6 +22,7 @@ export class DynamicFieldComponent {
   constructor(private componentFactoryResolver: ComponentFactoryResolver) {
   }
 
+  /** Loads the given component inside the fieldHost. Sets current item and field by default. */
   loadComponent(component: Type<any>) {
     let componentFactory = this.componentFactoryResolver.resolveComponentFactory(component);
     let viewContainerRef = this.fieldHost.viewContainerRef;

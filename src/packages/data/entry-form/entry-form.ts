@@ -5,6 +5,7 @@ import { Form } from '../../core/form/form';
  * Extension of List for Datamanager Entries.
  */
 export class EntryForm<Entry> extends Form<Entry> {
+  /** The form's model */
   private model: string;
 
   /** The constructor will init the Form and generate the field config from the model schema */

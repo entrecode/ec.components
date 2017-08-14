@@ -23,7 +23,8 @@ export class ListItemsComponent {
   /** If true, only one item is selectable next */
   @Input() solo: boolean;
 
-  private ngOnChanges(changes) {
+  /** Checks for host and uses its list. */
+  private ngOnChanges() {
     if (this.host) {
       this.list = this.host.list;
       this.selection = this.host.selection;

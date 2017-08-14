@@ -14,7 +14,6 @@ import { PaginationComponent } from './pagination/pagination.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { TabComponent } from './tab/tab.component';
 import { MockupComponent } from './mockup/mockup.component';
-import { FilterComponent } from './filter/filter.component';
 import { OutputComponent } from './output/output.component';
 import { ListItemsComponent } from './list-items/list-items.component';
 import { ListHeaderComponent } from './list-header/list-header.component';
@@ -46,7 +45,6 @@ import { ErrorComponent } from './error/error.component';
     TabsComponent,
     TabComponent,
     MockupComponent,
-    FilterComponent,
     InputComponent,
     OutputComponent,
     ListItemsComponent,
@@ -78,7 +76,6 @@ import { ErrorComponent } from './error/error.component';
     TabsComponent,
     TabComponent,
     MockupComponent,
-    FilterComponent,
     InputComponent,
     OutputComponent,
     ListItemsComponent,

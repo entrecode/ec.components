@@ -1,11 +1,10 @@
-<div [ngSwitch]="field.type" *ngIf="group" [formGroup]="group">
-  <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>
-  <div *ngSwitchCase="entry">
-    entry....
-  </div>
+<div [ngSwitch]="field.type">
+  <pre *ngSwitchCase="'json'">{{item.display(field.property)}}</pre>
+  <!--<div *ngSwitchCase="'entry'">
+
+  </div>-->
   <div *ngSwitchDefault>
-    <label>{{field.label || field.property}}</label>
-    <ec-output [field]="field" [item]="item"></ec-output>
-    <marquee>🚂🚃🚃🚃 {{field.type}} input coming soon</marquee>
+    <!--<marquee>🚂🚃🚃🚃 {{field.type}} output coming soon!</marquee>-->
+    {{item.display(field.property)}}
   </div>
 </div>

@@ -8,7 +8,9 @@ import { List } from '../list/list';
  * It supports solo and multiple selection.
  */
 export class Selection<T> extends List<T> {
+  /** If true, only one item can be selected at a time. */
   private solo: boolean;
+  /** Subject for tracking changes to selection. */
   private selectSource = new Subject();
 
   /**

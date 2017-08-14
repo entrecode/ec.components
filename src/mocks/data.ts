@@ -789,7 +789,6 @@ export const mocked = {
         },
         fruits: {
           label: 'Früchte',
-          template: 'fff {{item[field]}}',
           display: (value) => value ? 'ja' : 'nein',
           view: 'boolean'
         },

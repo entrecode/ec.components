@@ -7,10 +7,12 @@ export class Pagination {
   protected total: number;
   /** The pagination config */
   protected config: ListConfig;
+  /** Array to iterate over the number of pages. */
   private pages: Array<any>;
-  private source = new Subject();
+  /** Subject for tracking changes. */
+  private change = new Subject();
   /** Observable that is nexted when the pagination has changed. */
-  public change$: Observable<any> = this.source.asObservable();
+  public change$: Observable<any> = this.change.asObservable();
 
   /** You can init each Pagination instance with an optional config.
    * If no config is provided, it will default to ```{page: 1, size: 25}```. */
@@ -62,12 +64,12 @@ export class Pagination {
     }
   }
 
-  /** Merges config and fires next on source */
+  /** Merges config and fires next on change */
   protected load(config?: ListConfig): void {
     if (config) {
       Object.assign(this.config, config);
     }
-    this.source.next(this.config);
+    this.change.next(this.config);
   }
 
   /** Selects the given page number */

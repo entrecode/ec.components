@@ -4,6 +4,7 @@ import { Item } from '../item/item';
 import { Field } from '../field/field';
 import { FormConfig } from './form-config.interface';
 
+/** The Form class is an Item with additional info about its properties (Fields). */
 export class Form<T> extends Item<T> {
   /** Array of fields. It will be populated automatically when the form is constructed. */
   fields: Field<T>[];

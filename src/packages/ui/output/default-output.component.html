@@ -10,6 +10,12 @@
       </div>
     </li>
   </ul>
+  <a [href]="'mailto:'+item.display(field.property)" *ngSwitchCase="'email'">
+    {{item.display(field.property)}}
+  </a>
+  <a [href]="item.display(field.property)" *ngSwitchCase="'url'">
+    {{item.display(field.property)}}
+  </a>
   <a href="mailto:test@test.de" *ngSwitchCase="'email'">
     {{item.display(field.property)}}
   </a>

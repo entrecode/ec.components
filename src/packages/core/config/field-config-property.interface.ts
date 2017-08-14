@@ -5,12 +5,10 @@ export interface FieldConfigProperty {
   property?: string;
   /** Human readable field label*/
   label?: string;
-  /** Custom field template (experimental) */
-  template?: string;
   /** Custom display transformation function.
    * @param value The current property value
    * @param field The field property name */
-  display?: (value, field) => any;
+  display?: (value, field, property: string) => any;
   /** Custom resolve transformation function.
    * @param body The item body */
   resolve?: (body: any, item: any) => any;

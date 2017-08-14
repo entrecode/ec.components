@@ -1,8 +1,9 @@
 import { FieldConfig, FieldConfigProperty } from '..';
 import { Item } from './item';
 
+/** An ItemConfig describes an abstract entity with certain properties.*/
 export interface ItemConfig<T> {
-  /** The Property that is used to identify items from another. */
+  /** The Property that is used to identify items from another (e.g. in a selection). */
   identifier?: string;
   /** The Property that is used to display the item for humans */
   label?: string;

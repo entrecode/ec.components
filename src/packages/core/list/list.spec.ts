@@ -65,12 +65,4 @@ describe('List', () => {
     });
     expect(ids[0] !== ids[1] && ids[1] !== ids[2] && ids[2] !== ids[0]).toBeTruthy();
   });
-  it('should support groupFilter', () => {
-    const muffins = new List([{ name: 'A' }, { name: 'A' }, { name: 'B' }], { fields: { name: { group: (v) => v } } });
-    muffins.toggleSort('name');
-    expect(muffins['groupFilter']('xyz')).toEqual({
-      property: 'name',
-      value: 'xyz'
-    });
-  })
 });

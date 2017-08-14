@@ -3,18 +3,20 @@
     <li *ngFor="let selected of selection.items" class="pill">
       {{selected.display()}} <a (click)="removeItem(selected)">X</a>
     </li>
-    <li (click)="open=!open" class="pill" [class.open]="open"
+    <li (click)="itemsPop.toggle()" class="pill" [class.open]="itemsPop.visible"
         *ngIf="!selection.hasAll(list.items)">
       <span>+</span>
     </li>
   </ul>
-  <ul class="available-items" [class.closed]="!open" *ngIf="!selection.hasAll(list.items)">
-    <li>
-      <input>
-    </li>
-    <li *ngFor="let item of list.items"
-        (click)="addItem(item)" [class.hidden]="selection.has(item)">
-      {{item.display()}}
-    </li>
-  </ul>
+  <ec-pop #itemsPop class="dropdown">
+    <ul class="available-items" *ngIf="!selection.hasAll(list.items)">
+      <li>
+        <input>
+      </li>
+      <li *ngFor="let item of list.items" (click)="addItem(item)"
+          [class.hidden]="selection.has(item)">
+        {{item.display()}}
+      </li>
+    </ul>
+  </ec-pop>
 </div>

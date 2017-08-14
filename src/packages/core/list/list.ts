@@ -4,7 +4,7 @@ import { Item } from '../item/item';
 import { Field } from '../field/field';
 import { ListConfig } from './list-config.interface';
 import { Pagination } from '../pagination/pagination';
-import { Sorter } from '../filter/filter';
+import { Sorter } from '../sorter/sorter';
 
 /**
  * A more sophisticated Collection of Objects with arbitrary content.
@@ -157,14 +157,8 @@ export class List<T> extends Collection<Item<T>> {
     this.groups = groups;
   }
 
+  /** Item tracking for *ngFor. */
   private trackItem(index, item) {
     return index;
-  }
-
-  private groupFilter(value) {
-    return {
-      property: this.config.sortBy,
-      value: value,
-    }
   }
 }

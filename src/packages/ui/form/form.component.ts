@@ -22,8 +22,8 @@ import { NotificationsService } from '../notifications/notifications.service';
 export class FormComponent {
   /** The instance of Form that is used. */
   form: Form<any>;
+  /** The current (angular) form group. */
   private group: FormGroup;
-  /** You can use a field config directly as input */
   /** You can also use a FormConfig/ItemConfig as input (with defined fields property) */
   @Input() config: FormConfig<any>;
   /** You can also use an Item as input */
@@ -41,6 +41,7 @@ export class FormComponent {
   /** Emits when a new instance of Form is present */
   @Output() change: EventEmitter<FormComponent> = new EventEmitter();
 
+  /** Injects the services. */
   constructor(protected loaderService: LoaderService, protected notificationService: NotificationsService) {
   }
 
@@ -143,7 +144,7 @@ export class FormComponent {
         error: err
       });
     });
-    this.loaderService.wait(this.loader, submit);
+    this.loaderService.wait(submit, this.loader);
     return submit;
   }
 

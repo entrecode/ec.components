@@ -17,18 +17,26 @@ export class ListHeaderComponent {
   @Input() selection: Selection<any>;
   /** The pop dropdowns that contain the filtering */
   @ViewChildren('filterPop') pops: QueryList<PopComponent>;
+  /** The form that holds the current filter information */
   @ViewChild('filterForm') filter: FormComponent;
+  /** Contains the current property that has been filtered. */
+  currentFilterProperty: string;
 
+  /** opens the given filter pop and closes all others */
   private editFilter(pop) {
     pop.toggle();
     this.pops.forEach((pop) => pop.hide());
   }
 
+  /** Applies the given filter to the list. */
   private applyFilter(property, value) {
+    this.currentFilterProperty = property;
     this.list.filter(property, value);
   }
 
+  /** Returns true if the property is currently filtered. */
   private hasFilter(property) {
-    return false;
+    //TODO find better way
+    return property === this.currentFilterProperty;
   }
 }

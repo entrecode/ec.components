@@ -16,12 +16,14 @@ export class EntryFormComponent extends FormComponent {
   /** The model of the form. It is used to extract the schema and generate the config from. */
   @Input() model: string;
   /** This output fires when the entry has been deleted using deleteEntry(). */
-  @Output() deleted: EventEmitter<any> = new EventEmitter()
+  @Output() deleted: EventEmitter<any> = new EventEmitter();
 
+  /** Injects the required services. */
   constructor(protected loaderService: LoaderService, private modelConfig: ModelConfig, protected notificationService: NotificationsService, protected crud: CrudService) {
     super(loaderService, notificationService);
   }
 
+  /** As soon as the model is known, the config is generated to then instantiate the form with. */
   ngOnChanges() {
     if (!this.model) {
       return;
@@ -58,6 +60,6 @@ export class EntryFormComponent extends FormComponent {
       this.deleted.emit();
       this.create();
     });
-    this.loaderService.wait(this.loader, deletion);
+    this.loaderService.wait(deletion, this.loader);
   }
 }

@@ -11,25 +11,23 @@ import { EntryFormComponent } from '../entry-form/entry-form.component';
   templateUrl: './crud.component.html',
   styleUrls: ['./crud.component.scss']
 })
-
 export class CrudComponent {
+  /** The model that should be crud'ed. */
   @Input() model: string;
+  /** CrudConfig for customization of the crud's UI.*/
   @Input() config: CrudConfig = {};
 
-  ngOnChanges() {
-    if (!this.model) {
-      return;
-    }
-  }
-
+  /** Logs the current form (Developer help). */
   private log(form) {
     console.dir(form);
   }
 
+  /** Returns true if the given method is part of the methods array (or if there is no methods array) */
   private hasMethod(method: string) {
     return !this.config.methods || this.config.methods.indexOf(method) !== -1;
   }
 
+  /** Determines if the current form can be saved, based on the allowed method (edit/update). */
   private maySave(form: EntryFormComponent) {
     const edit = form.isEditing();
     return (!edit && this.hasMethod('create')) || (edit && this.hasMethod('update'))

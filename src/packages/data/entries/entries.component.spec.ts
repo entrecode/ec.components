@@ -2,9 +2,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DataModule } from '..';
 import { UiModule } from '../../ui';
 import { EntriesComponent } from './entries.component';
-import { Datamanager } from '../datamanager/datamanager';
-import { muffinList } from '../../../mocks/muffins';
-import sinon = require('sinon');
 
 describe('EntriesComponent', () => {
   let component: EntriesComponent;

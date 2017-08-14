@@ -7,7 +7,9 @@ import { Subject } from 'rxjs';
  * Extension of List for Datamanager Entries.
  */
 export class EntryList<Entry> extends List<Entry> {
+  /** The current loaded entryList */
   private entryList;
+  /** The model that is loaded from. */
   private model: string;
   /** The list's config. */
   public config; //TODO use filterOptions
@@ -24,6 +26,7 @@ export class EntryList<Entry> extends List<Entry> {
     this.load();
   }
 
+  /** Takes the entryList and dumps the items into the the current page. Then it applies grouping if present. */
   private use(entryList) {
     this.entryList = entryList;
     this.removeAll();
@@ -38,6 +41,7 @@ export class EntryList<Entry> extends List<Entry> {
     this.change.next(this);
   }
 
+  /** Returns SDK filterOptions from a given EntryListConfig. */
   private getFilterOptions({ size = 20, page = 1, filter, sortBy, desc, sort = [] }: EntryListConfig) {
     const options = { size, page };
     if (sortBy) {

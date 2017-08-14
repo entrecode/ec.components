@@ -52,7 +52,7 @@ export class EntryListComponent extends ListComponent {
         }
       });
       this.list.loading$.subscribe((promise: Promise<any>) => {
-        this.loaderService.wait(this.loader, promise);
+        this.loaderService.wait(promise, this.loader);
       })
     });
   }

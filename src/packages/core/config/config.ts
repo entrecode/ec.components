@@ -1,5 +1,6 @@
 /** The Root class for all Configurations. */
 export abstract class Config {
+  /** The config object. */
   private config?: {
     [key: string]: Object,
   } = {};

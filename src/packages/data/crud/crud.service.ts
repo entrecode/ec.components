@@ -4,10 +4,15 @@ import { EntryList } from "ec.sdk/typings/resources/publicAPI/EntryList";
 import { SdkService } from '../sdk/sdk.service';
 import { Observable } from 'rxjs';
 
+/** Instances of Update are emitted by the changes EventEmitter of the CrudService. */
 export interface Update {
+  /** The model that has been updated. */
   model: string | string[],
+  /** The relevant entry. */
   entry?: EntryResource,
+  /** The list where it happened. */
   list?: EntryList,
+  /** The type of update. (create/read/update/delete) */
   type?: string
 }
 
@@ -18,9 +23,10 @@ export interface Update {
  * */
 @Injectable()
 export class CrudService {
-
+  /** The changes event is emitted everytime an entry is created or updated. */
   private changes: EventEmitter<Update> = new EventEmitter();
 
+  /** Injects sdk */
   constructor(private sdk: SdkService) {
   }
 

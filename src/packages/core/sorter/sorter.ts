@@ -1,9 +1,11 @@
 import { Item } from '..';
+
 const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
-/** The Filter is a singleton that handles all kinds of filtering operations. */
-export abstract class Filter<T> {
-  /** Contains filter methods for different value types. */
-  static filterType = {
+
+/** The Sorter is a singleton that handles all kinds of sorting operations. */
+export abstract class Sorter<T> {
+  /** Contains sorting methods for different value types. */
+  static sortType = {
     'string': (a, b) => {
       return collator.compare(a, b);
     },
@@ -15,6 +17,7 @@ export abstract class Filter<T> {
     }
   };
 
+  /** Returns the sorting algorithm for the given item array. */
   private static getAlgorithm(items: Array<Item<any>>, property?: string): (a, b) => number {
     if (!items.length) {
       return;
@@ -31,21 +34,21 @@ export abstract class Filter<T> {
       console.warn('cannot sort items because they contain multiple types:', types);
       return;
     }
-    if (!this.filterType[types[0]]) {
+    if (!this.sortType[types[0]]) {
       console.warn('cannot sort items because no algorithm was found for type', types[0]);
       return;
     }
-    return this.filterType[types[0]];
+    return this.sortType[types[0]];
   }
 
-  /** Filters a given Array of items after a given property.
+  /** Sorts a given Array of items after a given property.
    * @param items Array of arbitrary content.
    * @param property Optional property to sort after (For Objects)
    * @param desc Optional Flag that will reverse sort the result (descending).
    * @param resolve Optional resolve function to expose relevant the part of object that contains
    *   the given property. */
 
-  static sort(items: Array<Item<any>>, property?: string): Array<any> {
+  static sort(items: Array<Item<any>>, property?: string, desc?: boolean): Array<any> {
     const algorithm = this.getAlgorithm(items, property);
     if (!algorithm) {
       return;
@@ -56,5 +59,8 @@ export abstract class Filter<T> {
       }
       return algorithm(a.sort(property), b.sort(property));
     });
+    if (desc) {
+      items.reverse();
+    }
   }
 }
