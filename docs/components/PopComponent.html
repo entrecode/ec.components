@@ -849,6 +849,14 @@
     <code>src/packages/ui/pop/pop.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>A Pop is an area of content whose visibility can be toggled.
+It can be used e.g as popup, modal or dropdown.</p>
+
+    </p>
 
 
 
@@ -1182,13 +1190,13 @@ The default classes can be looked up in pop.component.scss.</p>
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { Component, Input } from &#x27;@angular/core&#x27;;
 
+/** A Pop is an area of content whose visibility can be toggled.
+ * It can be used e.g as popup, modal or dropdown.*/
 @Component({
   selector: &#x27;ec-pop&#x27;,
   templateUrl: &#x27;./pop.component.html&#x27;,
   styleUrls: [&#x27;./pop.component.scss&#x27;]
 })
-/** A Pop is an area of content whose visibility can be toggled.
- * It can be used e.g as popup, modal or dropdown.*/
 export class PopComponent {
   /** If true, .ec-pop is part of the DOM (*ngIf) + .active is set on .ec-pop-container.  */
   @Input() active: boolean;

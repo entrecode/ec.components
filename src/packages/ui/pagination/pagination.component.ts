@@ -1,8 +1,8 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { Pagination } from '../../core';
+
 /**
  * The Pagination component renders a given instance of the Pagination class.
- * The navigation b
  */
 @Component({
   selector: 'ec-pagination',
@@ -15,16 +15,21 @@ export class PaginationComponent {
   /** Range of displayed pages in the UI. Controls the number of pages before and after the current page. Defaults to 3.
    * NOTE: For a smoother UX, there are minimum ```2 * range + 1``` pages visible.*/
   @Input() range: number = 2;
+  /** The container for the pages*/
   @ViewChild('container') private container: ElementRef;
+  /** The item ViewChild is used to determine the size of the pagination buttons to calculate the offset for animation. */
   @ViewChild('item') private item: ElementRef;
-  @ViewChild('pages') private pages: ElementRef;
+  /** The current translation of the pagination page list. The current page is always in the middle. */
   private translation: string;
+  /** The containerWidth of all pages. Needed for animation */
   private containerWidth: number;
 
+  /** When intitializing, the containerWidth is saved. */
   private ngOnInit() {
     this.containerWidth = (1 + 2 * this.range) * this.item.nativeElement.clientWidth;
   }
 
+  /** As soon as the pagination is known, the change$ event is subscribed to translate the container on change.*/
   private ngOnChanges() {
     if (!this.pagination) {
       return;

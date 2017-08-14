@@ -845,6 +845,13 @@
             <code>src/packages/ui/notifications/notification.ts</code>
         </p>
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>A Notification is used inside NotificationService and NotificationComponent to display any information to the user.</p>
+
+            </p>
 
 
 
@@ -897,10 +904,16 @@
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/packages/ui/notifications/notification.ts:9</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/packages/ui/notifications/notification.ts:16</a></div>
                                         </td>
                                     </tr>
             
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>The constructor just looks if an error is set, and if yes, sets the type to error. </p>
+            </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -934,10 +947,16 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/packages/ui/notifications/notification.ts:9</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/packages/ui/notifications/notification.ts:16</a></div>
                                         </td>
                                     </tr>
             
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>If an error is given, the type will automatically be set to error. The error will be displayed inside the notification via ec-error.</p>
+            </div>
+                                </td>
+                            </tr>
             
                         </tbody>
                     </table>
@@ -963,10 +982,16 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">src/packages/ui/notifications/notification.ts:6</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/packages/ui/notifications/notification.ts:10</a></div>
                                         </td>
                                     </tr>
             
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The host the is NotificationsComponent that should display the notification. </p>
+            </div>
+                                </td>
+                            </tr>
             
                         </tbody>
                     </table>
@@ -992,10 +1017,16 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="5" class="link-to-prism">src/packages/ui/notifications/notification.ts:5</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/packages/ui/notifications/notification.ts:8</a></div>
                                         </td>
                                     </tr>
             
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The message is shown below the title and is meant for further description. </p>
+            </div>
+                                </td>
+                            </tr>
             
                         </tbody>
                     </table>
@@ -1021,10 +1052,16 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/packages/ui/notifications/notification.ts:7</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/packages/ui/notifications/notification.ts:12</a></div>
                                         </td>
                                     </tr>
             
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The amount of ms it should be visible </p>
+            </div>
+                                </td>
+                            </tr>
             
                         </tbody>
                     </table>
@@ -1050,10 +1087,16 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="4" class="link-to-prism">src/packages/ui/notifications/notification.ts:4</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">src/packages/ui/notifications/notification.ts:6</a></div>
                                         </td>
                                     </tr>
             
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The title is the headline of a notification and the only value that is required. </p>
+            </div>
+                                </td>
+                            </tr>
             
                         </tbody>
                     </table>
@@ -1079,10 +1122,16 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/packages/ui/notifications/notification.ts:8</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/packages/ui/notifications/notification.ts:14</a></div>
                                         </td>
                                     </tr>
             
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Determines the looks. Currently info, error and success are defined. </p>
+            </div>
+                                </td>
+                            </tr>
             
                         </tbody>
                     </table>
@@ -1093,18 +1142,25 @@
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { NotificationsComponent } from &#x27;./notifications.component&#x27;;
 
+/** A Notification is used inside NotificationService and NotificationComponent to display any information to the user.*/
 export class Notification {
+  /** The title is the headline of a notification and the only value that is required. */
   title: string;
+  /** The message is shown below the title and is meant for further description. */
   message?: string;
+  /** The host the is NotificationsComponent that should display the notification. */
   host?: NotificationsComponent;
+  /** The amount of ms it should be visible */
   time?: number;
+  /** Determines the looks. Currently info, error and success are defined. */
   type?: string;
+  /** If an error is given, the type will automatically be set to error. The error will be displayed inside the notification via ec-error.*/
   error?: any;
 
+  /** The constructor just looks if an error is set, and if yes, sets the type to error. */
   constructor(notification: Notification) {
     if (notification.error) {
       this.type &#x3D; &#x27;error&#x27;;
-      // this.message &#x3D; notification.error;
     }
     Object.assign(this, notification);
   }

@@ -846,6 +846,13 @@
     <code>src/packages/ui/notifications/notifications.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Displays any kind of Notification inside the DOM. It listens on the notificationService.$emitter for notifications. </p>
+
+    </p>
 
 
 
@@ -935,10 +942,16 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/packages/ui/notifications/notifications.component.ts:17</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/packages/ui/notifications/notifications.component.ts:19</a></div>
                                 </td>
                             </tr>
     
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Listens on the NotificationService and shows each notification that has this component set as host, or none at all. </p>
+    </div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
     </section>
@@ -953,6 +966,8 @@
                             <code>time</code>
                         </td>
                         <td class="col-md-10">
+                            <div><p>The default time for a notification to be visible. Will be ignored if the notification itself has a time set. </p>
+</div>
                               <p>
                                 <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
@@ -961,7 +976,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/packages/ui/notifications/notifications.component.ts:17</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/packages/ui/notifications/notifications.component.ts:19</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -997,10 +1012,16 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/packages/ui/notifications/notifications.component.ts:16</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/packages/ui/notifications/notifications.component.ts:17</a></div>
                                 </td>
                             </tr>
     
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>The current stack of notifications that are visible. </p>
+    </div>
+                        </td>
+                    </tr>
     
                 </tbody>
             </table>
@@ -1014,16 +1035,19 @@ import { Notification } from &quot;./notification&quot;;
 import { Collection } from &#x27;../../core/collection/collection&#x27;;
 import { NotificationsService } from &#x27;./notifications.service&#x27;;
 
+/** Displays any kind of Notification inside the DOM. It listens on the notificationService.$emitter for notifications. */
 @Component({
   selector: &#x27;ec-notifications&#x27;,
   templateUrl: &#x27;./notifications.component.html&#x27;,
   styleUrls: [&#x27;./notifications.component.scss&#x27;]
 })
 export class NotificationsComponent {
-
+  /** The current stack of notifications that are visible. */
   notifications: Collection&lt;Notification&gt; &#x3D; new Collection();
+  /** The default time for a notification to be visible. Will be ignored if the notification itself has a time set. */
   @Input() time: number;
 
+  /** Listens on the NotificationService and shows each notification that has this component set as host, or none at all. */
   constructor(private notificationService: NotificationsService) {
     this.time &#x3D; this.time || this.notificationService.defaultTime;
     this.notificationService.emitter$.subscribe((notification: Notification) &#x3D;&gt; {

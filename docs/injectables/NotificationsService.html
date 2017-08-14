@@ -843,6 +843,13 @@
             <code>src/packages/ui/notifications/notifications.service.ts</code>
         </p>
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>This service is the main interaction layer for the developer to show notifications. </p>
+
+            </p>
 
 
             <section>
@@ -904,10 +911,17 @@
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/packages/ui/notifications/notifications.service.ts:14</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/packages/ui/notifications/notifications.service.ts:15</a></div>
                                         </td>
                                     </tr>
             
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>The constructors injects the useDesktopNotifications flag from the module.
+            If true, all notifications will be shown as desktop notifications instead. </p>
+            </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
@@ -934,12 +948,14 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/packages/ui/notifications/notifications.service.ts:40</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/packages/ui/notifications/notifications.service.ts:45</a></div>
                                         </td>
                                     </tr>
             
                             <tr>
                                 <td class="col-md-4">
+                                        <div class="io-description"><p>Emits a desktop notification after asking for permission (if not already granted). </p>
+            </div>
             
                                         <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -966,7 +982,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/packages/ui/notifications/notifications.service.ts:20</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/packages/ui/notifications/notifications.service.ts:23</a></div>
                                         </td>
                                     </tr>
             
@@ -1000,15 +1016,17 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/packages/ui/notifications/notifications.service.ts:28</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/packages/ui/notifications/notifications.service.ts:32</a></div>
                                         </td>
                                     </tr>
             
                             <tr>
                                 <td class="col-md-4">
+                                        <div class="io-description"><p>Asks for permission to show desktop notifications, if not already granted. </p>
+            </div>
             
                                         <div class="io-description">
-                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            <b>Returns : </b>    <code>Promise&lt;void&gt;</code>
             
                                         </div>
                                 </td>
@@ -1049,7 +1067,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/packages/ui/notifications/notifications.service.ts:14</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/packages/ui/notifications/notifications.service.ts:15</a></div>
                                         </td>
                                     </tr>
             
@@ -1078,10 +1096,16 @@
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/packages/ui/notifications/notifications.service.ts:10</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/packages/ui/notifications/notifications.service.ts:11</a></div>
                                         </td>
                                     </tr>
             
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The emitter subject to fire notifications. </p>
+            </div>
+                                </td>
+                            </tr>
             
                         </tbody>
                     </table>
@@ -1101,7 +1125,7 @@
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/packages/ui/notifications/notifications.service.ts:12</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/packages/ui/notifications/notifications.service.ts:13</a></div>
                                         </td>
                                     </tr>
             
@@ -1125,15 +1149,18 @@ import { Subject } from &#x27;rxjs&#x27;;
 
 declare const window;
 
+/** This service is the main interaction layer for the developer to show notifications. */
 @Injectable()
 export class NotificationsService {
-
+  /** The emitter subject to fire notifications. */
   private emitter &#x3D; new Subject();
   /** Observable that is nexted when a new notification comes in. */
   public emitter$ &#x3D; this.emitter.asObservable();
   /** The default view time for a notification. */
   public defaultTime: number &#x3D; 5000;
 
+  /** The constructors injects the useDesktopNotifications flag from the module.
+   * If true, all notifications will be shown as desktop notifications instead. */
   constructor(@Inject(&#x27;useDesktopNotifications&#x27;) private useDesktopNotifications) {
   }
 
@@ -1146,7 +1173,8 @@ export class NotificationsService {
     }
   }
 
-  getPermission() {
+  /** Asks for permission to show desktop notifications, if not already granted. */
+  getPermission(): Promise&lt;void&gt; {
     if (window.Notification.permission &#x3D;&#x3D;&#x3D; &#x27;granted&#x27;) {
       return Promise.resolve();
     }
@@ -1158,6 +1186,7 @@ export class NotificationsService {
     });
   }
 
+  /** Emits a desktop notification after asking for permission (if not already granted). */
   desktopNotification(notification: Notification) {
     if (!(&#x27;Notification&#x27; in window)) {
       console.warn(&#x27;This browser does not support desktop notification&#x27;);

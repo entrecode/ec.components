@@ -3,13 +3,13 @@
  */
 import { Component, Input } from '@angular/core';
 
+/** A Pop is an area of content whose visibility can be toggled.
+ * It can be used e.g as popup, modal or dropdown.*/
 @Component({
   selector: 'ec-pop',
   templateUrl: './pop.component.html',
   styleUrls: ['./pop.component.scss']
 })
-/** A Pop is an area of content whose visibility can be toggled.
- * It can be used e.g as popup, modal or dropdown.*/
 export class PopComponent {
   /** If true, .ec-pop is part of the DOM (*ngIf) + .active is set on .ec-pop-container.  */
   @Input() active: boolean;

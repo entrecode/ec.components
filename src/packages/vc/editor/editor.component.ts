@@ -7,6 +7,8 @@ import * as Block from 'visual-cms.core/classes/base/Block.js';
 import * as ListElement from 'visual-cms.core/classes/base/ListElement.js';
 import { Subject } from 'rxjs';
 
+declare const document;
+
 @Component({
   selector: 'ec-vc-editor,[ec-vc-editor]',
   templateUrl: './editor.component.html',

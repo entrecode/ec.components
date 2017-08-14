@@ -4,15 +4,18 @@ import { Subject } from 'rxjs';
 
 declare const window;
 
+/** This service is the main interaction layer for the developer to show notifications. */
 @Injectable()
 export class NotificationsService {
-
+  /** The emitter subject to fire notifications. */
   private emitter = new Subject();
   /** Observable that is nexted when a new notification comes in. */
   public emitter$ = this.emitter.asObservable();
   /** The default view time for a notification. */
   public defaultTime: number = 5000;
 
+  /** The constructors injects the useDesktopNotifications flag from the module.
+   * If true, all notifications will be shown as desktop notifications instead. */
   constructor(@Inject('useDesktopNotifications') private useDesktopNotifications) {
   }
 
@@ -25,7 +28,8 @@ export class NotificationsService {
     }
   }
 
-  getPermission() {
+  /** Asks for permission to show desktop notifications, if not already granted. */
+  getPermission(): Promise<void> {
     if (window.Notification.permission === 'granted') {
       return Promise.resolve();
     }
@@ -37,6 +41,7 @@ export class NotificationsService {
     });
   }
 
+  /** Emits a desktop notification after asking for permission (if not already granted). */
   desktopNotification(notification: Notification) {
     if (!('Notification' in window)) {
       console.warn('This browser does not support desktop notification');

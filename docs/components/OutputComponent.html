@@ -850,9 +850,7 @@
         <h3>Description</h3>
     </p>
     <p class="comment">
-        <p>This component can be used to define a custom template for a field (e.g. a list field or a form field).
-You can either use the property or the type input as a kind of selector to define when the
-template should be applied. </p>
+        <p>Outputs the given field of the given item, rendering the component dynamically. </p>
 
     </p>
 
@@ -956,6 +954,9 @@ template should be applied. </p>
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>The component is loade as soon as the field and item are known.
+    If the field has no output property set, the DefaultOutputComponent will be rendered. </p>
+    </div>
     
                                 <div class="io-description">
                                     <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -971,19 +972,19 @@ template should be applied. </p>
 
 
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { Component, Input, } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { Component, } from &#x27;@angular/core&#x27;;
 import { DefaultOutputComponent } from &#x27;./default-output.component&#x27;;
 import { DynamicFieldComponent } from &#x27;../dynamic-field/dynamic-field.component&#x27;;
 
-/** This component can be used to define a custom template for a field (e.g. a list field or a form field).
- * You can either use the property or the type input as a kind of selector to define when the
- * template should be applied. */
+/** Outputs the given field of the given item, rendering the component dynamically. */
 @Component({
   selector: &#x27;ec-output&#x27;,
   templateUrl: &#x27;./output.component.html&#x27;,
   styleUrls: [&#x27;./output.component.scss&#x27;]
 })
 export class OutputComponent extends DynamicFieldComponent {
+  /** The component is loade as soon as the field and item are known.
+   * If the field has no output property set, the DefaultOutputComponent will be rendered. */
   ngOnChanges() {
     if (this.field &amp;&amp; this.item) {
       this.loadComponent(this.field.output || DefaultOutputComponent);
