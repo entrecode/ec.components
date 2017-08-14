@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormComponent } from '../../ui/form/form.component';
 import { ModelConfig } from '../model-config/model-config';
-import { EntryForm } from './entry-form';
 import { LoaderService } from '../../ui/loader/loader.service';
 import { NotificationsService } from '../../ui/notifications/notifications.service';
 import { CrudService } from '../crud/crud.service';
@@ -28,17 +27,10 @@ export class EntryFormComponent extends FormComponent {
     if (!this.model) {
       return;
     }
-    if (this.config) {
-      super.ngOnChanges();
-      return;
-    }
-    this.modelConfig.generateConfig(this.model).then((config) => {
-      if (this.config) {
-        Object.assign(this.config, config)
-      } else {
-        this.config = config;
-      }
-      this.form = new EntryForm(this.model, {}, this.config);
+    Promise.resolve(this.config || this.modelConfig.generateConfig(this.model))
+    .then((config) => {
+      this.config = Object.assign(this.config || {}, config);
+      this.init();
     });
   }
 
@@ -59,6 +51,13 @@ export class EntryFormComponent extends FormComponent {
     const deletion = this.crud.del(this.model, this.form.getBody()).then(() => {
       this.deleted.emit();
       this.create();
+      this.notificationService.emit({
+        title: 'Eintrag gelöscht', type: 'success'
+      });
+    }).catch((error) => {
+      this.notificationService.emit({
+        title: 'Fehler beim Löschen', error
+      });
     });
     this.loaderService.wait(deletion, this.loader);
   }

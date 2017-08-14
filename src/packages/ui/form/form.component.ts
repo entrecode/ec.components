@@ -23,7 +23,7 @@ export class FormComponent {
   /** The instance of Form that is used. */
   form: Form<any>;
   /** The current (angular) form group. */
-  private group: FormGroup;
+  protected group: FormGroup;
   /** You can also use a FormConfig/ItemConfig as input (with defined fields property) */
   @Input() config: FormConfig<any>;
   /** You can also use an Item as input */
@@ -63,21 +63,32 @@ export class FormComponent {
 
   /** On change, the form instance is (re)created by combining all inputs. If no item is given, an empty form is created using the config. You can also pass just an item to use its config and body.*/
   ngOnChanges() {
+    this.init();
+  }
+
+  /** Inits the form (if ready) */
+  protected init() {
     if (!this.initItem()) {
       return;
     }
     this.form = new Form(this.item.resolve(), this.config);
+    this.initGroup();
+  }
+
+  /** Initializes the form group from the form fields*/
+  protected initGroup(force?: boolean) {
+    if (this.group && !force) {
+      return;
+    }
     const control = {};
     this.form.fields.forEach((field) => {
       const validators = this.getValidators(field);
       control[field.property] = new FormControl(this.item.resolve(field.property), validators)
     });
-    if (!this.group) {
-      this.group = new FormGroup(control);
-      this.group.valueChanges.subscribe((change) => {
-        this.change.emit(this);
-      });
-    }
+    this.group = new FormGroup(control);
+    this.group.valueChanges.subscribe((change) => {
+      this.change.emit(this);
+    });
   }
 
   /** edits a given Item instance by using its config and body. */
