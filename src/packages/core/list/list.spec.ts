@@ -57,12 +57,4 @@ describe('List', () => {
     muffins.groupBy('name');
     expect(muffins.groups.length).toBe(2);
   });
-  it('should generate unique group ids for tracking', () => {
-    const muffins = new List([{ name: 'A' }, { name: 'A' }, { name: 'B' }], { fields: { name: { group: (v) => v } } });
-    muffins.groupBy('name');
-    const ids = muffins.groups.map((muffin, index) => {
-      return muffins['trackGroup'](index, muffin);
-    });
-    expect(ids[0] !== ids[1] && ids[1] !== ids[2] && ids[2] !== ids[0]).toBeTruthy();
-  });
 });

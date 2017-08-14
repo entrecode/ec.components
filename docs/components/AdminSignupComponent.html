@@ -1223,7 +1223,7 @@
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { Component, EventEmitter, OnInit, Output } from &#x27;@angular/core&#x27;;
 import { FormBuilder, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
-import { FieldValidators } from &#x27;../email-available.validator&#x27;;
+import { emailAvailable } from &#x27;../email-available.validator&#x27;;
 import { Observable } from &#x27;rxjs&#x27;;
 import { AdminService } from &#x27;../../data&#x27;;
 
@@ -1244,7 +1244,7 @@ export class AdminSignupComponent implements OnInit {
 
   ngOnInit() {
     this.signup &#x3D; this.fb.group({
-      email: [&#x27;&#x27;, [Validators.required, FieldValidators.email]], //emailAvailable
+      email: [&#x27;&#x27;, [Validators.required, emailAvailable]], //emailAvailable
       password: [&#x27;&#x27;, [Validators.required]],
     });
   }

@@ -1,7 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DataModule, EntryListComponent } from '..';
 import { UiModule } from '../../ui';
-import sinon = require('sinon');
 
 describe('EntryListComponent', () => {
   let component: EntryListComponent;
@@ -27,7 +26,8 @@ describe('EntryListComponent', () => {
 
   it('should construct list when setting model', () => {
     component.model = 'muffin';
-    component.ngOnChanges();
-    expect(component.list).toBeDefined();
+    return component.ngOnChanges().then(() => {
+      expect(component.list).toBeDefined();
+    });
   })
 });

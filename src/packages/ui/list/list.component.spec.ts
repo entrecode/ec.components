@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { ListComponent } from './list.component';
 import { ListItemsComponent } from '../list-items/list-items.component';
@@ -8,7 +9,11 @@ import { Item } from '../../core/item/item';
 import { mocked } from '../../../mocks/data';
 import { Collection } from '../../core/collection/collection';
 import { PaginationComponent } from '../pagination/pagination.component';
-import { FieldComponent } from '../input/input.component';
+import { InputComponent } from '../input/input.component';
+import { OutputComponent } from '../output/output.component';
+import { FormComponent, NotificationsService } from "../index";
+import { PopComponent } from '../pop/pop.component';
+import { LoaderService } from '../loader/loader.service';
 
 describe('ListComponent', () => {
   let component: ListComponent;
@@ -16,7 +21,12 @@ describe('ListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [PaginationComponent, ListComponent, ListItemsComponent, ListHeaderComponent, GroupPipe, FieldComponent]
+      imports: [ReactiveFormsModule],
+      declarations: [PopComponent, FormComponent, PaginationComponent, ListComponent, ListItemsComponent, ListHeaderComponent, GroupPipe, InputComponent, OutputComponent],
+      providers: [LoaderService, {
+        provide: 'useDesktopNotifications',
+        useValue: false
+      }, NotificationsService]
     })
     .compileComponents();
   }));

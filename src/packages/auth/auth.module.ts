@@ -33,7 +33,8 @@ import { UiModule } from '../ui/ui.module';
     ValidationOnBlurDirective,
     PublicLoginComponent,
     PublicSignupComponent,
-    AdminLoginComponent
+    AdminLoginComponent,
+    ReactiveFormsModule
   ],
   providers: [AuthorizationService, requestOptionsProvider, PublicAuthService]
 })

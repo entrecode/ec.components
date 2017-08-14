@@ -1157,7 +1157,7 @@
     </div>
     
                                 <div class="io-description">
-                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
     
                                 </div>
                         </td>
@@ -1294,7 +1294,7 @@ export class EntryListComponent extends ListComponent {
       this.list.load();
     });
 
-    this.modelConfig.generateConfig(this.model).then((config) &#x3D;&gt; {
+    return this.modelConfig.generateConfig(this.model).then((config) &#x3D;&gt; {
       this.config &#x3D; this.config || {};
       Object.assign(this.config, config);
       this.list &#x3D; new EntryList(this.model, this.config, this.sdk);

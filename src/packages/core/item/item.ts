@@ -18,7 +18,9 @@ export class Item<T> {
     const config = { fields: {} };
     this.getProperties().forEach((property) => {
       config.fields[property] = {
-        view: typeof this.body[property]
+        view: typeof this.body[property],
+        type: typeof this.body[property],
+
       };
       if (config.fields[property].view === 'object' && Array.isArray(this.body[property])) {
         config.fields[property].view = 'array'
@@ -30,6 +32,11 @@ export class Item<T> {
   /** Returns the item's body */
   getBody() {
     return this.body;
+  }
+
+  /** Returns true if the body is defined and not null*/
+  hasBody() {
+    return this.body !== undefined && this.body !== null;
   }
 
   /** deletes the item body */
@@ -66,11 +73,11 @@ export class Item<T> {
   /** Returns either the whole body (if no property is given) or the value of the given property.
    * This method will traverse the body via the config.resolve function (if given). */
   resolve(property?: string): any {
-    if (!this.body) {
+    if (!this.hasBody()) {
       return;
     }
     if (!this.config) {
-      return this.body;
+      return property ? this.body[property] : this.body;
     }
     if (!property) {
       if (this.config.resolve) {
@@ -90,7 +97,7 @@ export class Item<T> {
 
   /** The main method for transformation functions like resolve, display and group. */
   private transform(action: string, property: string) {
-    if (!this.body) {
+    if (!this.hasBody()) {
       return;
     }
     if (this.config.fields && this.config.fields[property] && this.config.fields[property][action]) {

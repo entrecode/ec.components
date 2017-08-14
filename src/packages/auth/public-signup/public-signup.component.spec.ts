@@ -1,20 +1,26 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 
-import { SignupComponent } from './signup.component';
+import { PublicSignupComponent } from './public-signup.component';
+import { PublicService } from '../../data/sdk/public.service';
+import { UiModule } from '../../ui/ui.module';
+import { SdkService } from '../../data/sdk/sdk.service';
 
-describe('SignupComponent', () => {
-  let component: SignupComponent;
-  let fixture: ComponentFixture<SignupComponent>;
+describe('PublicSignupComponent', () => {
+  let component: PublicSignupComponent;
+  let fixture: ComponentFixture<PublicSignupComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SignupComponent ]
+      imports: [ReactiveFormsModule, UiModule],
+      declarations: [PublicSignupComponent],
+      providers: [PublicService, SdkService]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SignupComponent);
+    fixture = TestBed.createComponent(PublicSignupComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

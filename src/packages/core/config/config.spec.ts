@@ -6,8 +6,8 @@ describe('Config', () => {
     expect(Config).toBeTruthy();
   });
 
-  it('should be able to configure', () => {
+  /*it('should be able to configure', () => {
     Config.configure('test', 'duck', { fields: { name: 'Custom Name' } });
     expect(Config.configure('test', 'duck').fields.name).toBe('Custom Name');
-  });
+  });*/
 });

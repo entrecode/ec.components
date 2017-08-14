@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { FieldValidators } from '../email-available.validator';
+import { emailAvailable } from '../email-available.validator';
 import { Observable } from 'rxjs';
 import { AdminService } from '../../data';
 
@@ -21,7 +21,7 @@ export class AdminSignupComponent implements OnInit {
 
   ngOnInit() {
     this.signup = this.fb.group({
-      email: ['', [Validators.required, FieldValidators.email]], //emailAvailable
+      email: ['', [Validators.required, emailAvailable]], //emailAvailable
       password: ['', [Validators.required]],
     });
   }

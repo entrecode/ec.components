@@ -5,6 +5,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { UiModule } from '../packages/ui';
 import { DataModule } from '../packages/data';
+import { RouterTestingModule } from '@angular/router/testing';
+
 describe('DemoComponent', () => {
   let component: DemoComponent;
   let fixture: ComponentFixture<DemoComponent>;
@@ -18,7 +20,8 @@ describe('DemoComponent', () => {
         FormsModule,
         HttpModule,
         UiModule,
-        DataModule
+        RouterTestingModule,
+        DataModule,
       ],
       providers: [
         { provide: 'environment', useValue: 'development' }

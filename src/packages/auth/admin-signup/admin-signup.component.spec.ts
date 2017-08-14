@@ -1,20 +1,26 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 
-import { AdminLoginComponent } from './admin-signup.component';
+import { AdminSignupComponent } from './admin-signup.component';
+import { UiModule } from '../../ui/ui.module';
+import { AdminService } from '../../data/sdk/admin.service';
+import { SdkService } from '../../data/sdk/sdk.service';
 
-describe('AdminLoginComponent', () => {
-  let component: AdminLoginComponent;
-  let fixture: ComponentFixture<AdminLoginComponent>;
+describe('AdminSignupComponent', () => {
+  let component: AdminSignupComponent;
+  let fixture: ComponentFixture<AdminSignupComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdminLoginComponent ]
+      imports: [ReactiveFormsModule, UiModule],
+      declarations: [AdminSignupComponent],
+      providers: [AdminService, SdkService]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdminLoginComponent);
+    fixture = TestBed.createComponent(AdminSignupComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

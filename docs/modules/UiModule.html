@@ -1624,6 +1624,7 @@ import { ErrorComponent } from &#x27;./error/error.component&#x27;;
     LoaderComponent,
     NotificationsComponent,
     ErrorComponent,
+    InputErrorsComponent,
   ],
   declarations: [
     ListComponent,
@@ -1657,6 +1658,7 @@ import { ErrorComponent } from &#x27;./error/error.component&#x27;;
   ],
   exports: [
     ReactiveFormsModule,
+    FormsModule,
     ListComponent,
     PaginationComponent,
     TabsComponent,
@@ -1679,6 +1681,10 @@ import { ErrorComponent } from &#x27;./error/error.component&#x27;;
   ],
   providers: [
     LoaderService,
+    {
+      provide: &#x27;useDesktopNotifications&#x27;,
+      useValue: false
+    },
     NotificationsService,
   ],
 })

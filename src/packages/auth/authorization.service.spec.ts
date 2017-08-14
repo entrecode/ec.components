@@ -1,11 +1,13 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { inject, TestBed } from '@angular/core/testing';
+import { CookieModule } from 'ngx-cookie';
 
 import { AuthorizationService } from './authorization.service';
 
 describe('AuthorizationService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [AuthorizationService]
+      providers: [AuthorizationService],
+      imports: [CookieModule.forRoot()]
     });
   });
 

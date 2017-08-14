@@ -9,6 +9,7 @@ import { DynamicFieldComponent } from '../dynamic-field/dynamic-field.component'
   styleUrls: ['./output.component.scss']
 })
 export class OutputComponent extends DynamicFieldComponent {
+
   /** The component is loade as soon as the field and item are known.
    * If the field has no output property set, the DefaultOutputComponent will be rendered. */
   ngOnChanges() {

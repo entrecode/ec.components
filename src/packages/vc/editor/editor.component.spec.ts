@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EditorComponent } from './editor.component';
+import { SafeHtmlPipe } from '../safe-html.pipe';
 
 describe('VcComponent', () => {
   let component: EditorComponent;
@@ -8,7 +9,8 @@ describe('VcComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [EditorComponent]
+      declarations: [EditorComponent, SafeHtmlPipe],
+      providers: []
     })
     .compileComponents();
   }));

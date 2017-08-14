@@ -2,7 +2,6 @@ import { Http, RequestOptions } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthorizationService } from './authorization.service';
-import { environment } from '../../environments/environment';
 
 @Injectable()
 export class PublicAuthService {

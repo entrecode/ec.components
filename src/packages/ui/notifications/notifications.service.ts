@@ -4,6 +4,8 @@ import { Subject } from 'rxjs';
 
 declare const window;
 
+//TODO make Notifications module
+
 /** This service is the main interaction layer for the developer to show notifications. */
 @Injectable()
 export class NotificationsService {

@@ -38,6 +38,7 @@ import { ErrorComponent } from './error/error.component';
     LoaderComponent,
     NotificationsComponent,
     ErrorComponent,
+    InputErrorsComponent,
   ],
   declarations: [
     ListComponent,
@@ -71,6 +72,7 @@ import { ErrorComponent } from './error/error.component';
   ],
   exports: [
     ReactiveFormsModule,
+    FormsModule,
     ListComponent,
     PaginationComponent,
     TabsComponent,
@@ -93,6 +95,10 @@ import { ErrorComponent } from './error/error.component';
   ],
   providers: [
     LoaderService,
+    {
+      provide: 'useDesktopNotifications',
+      useValue: false
+    },
     NotificationsService,
   ],
 })
