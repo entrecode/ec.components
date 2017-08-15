@@ -91,8 +91,16 @@ export class FormComponent {
     });
   }
 
+  dirtyTalk() {
+    if (this.group.dirty) {
+      console.warn('form is dirty');
+      //TODO open dialog to either save or discard changes
+    }
+  }
+
   /** edits a given Item instance by using its config and body. */
   edit(item: Item<any>) {
+    this.dirtyTalk();
     this.config = item.getConfig() || this.config;
     this.item = item;
     delete this.group;
@@ -101,6 +109,7 @@ export class FormComponent {
 
   /* clears the form and uses the given config (falls back to existing one). Renders an empty form. */
   create(config?: ItemConfig<any>) {
+    this.dirtyTalk();
     this.config = config || this.config;
     if (!this.config) {
       console.warn('cannot create new form: no config present');

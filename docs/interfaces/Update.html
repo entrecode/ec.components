@@ -199,6 +199,9 @@
                                     <a href="../components/SelectComponent.html" >SelectComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/SelectionComponent.html" >SelectionComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/TabComponent.html" >TabComponent</a>
                                 </li>
                                 <li class="link">
@@ -607,6 +610,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/SelectComponent.html" >SelectComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/SelectionComponent.html" >SelectionComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/TabComponent.html" >TabComponent</a>
@@ -1122,7 +1128,6 @@ export class CrudService {
 
   /** Saves the given entry with the given value. If the entry is not yet existing, it will be created. Otherwise it will be updated. */
   save(model: string, entry: EntryResource, value: Object) {
-    console.log(&#x27;save&#x27;, this.clean(value));
     if (entry &amp;&amp; entry.save) {
       return this.update(model, entry, value);
     }

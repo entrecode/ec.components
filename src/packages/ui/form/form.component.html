@@ -5,10 +5,11 @@
   <div *ngIf="!wrapper.children.length&&!empty">
     <ul>
       <li *ngFor="let field of form?.fields" [ngSwitch]="field.view">
-        <ec-input *ngIf="!field.readOnly" [field]="field" [group]="group" [item]="form"></ec-input>
-        <label *ngIf="field.readOnly">
+        <label>
           {{field.label || field.property}}
-          <ec-output [field]="field" [item]="form"></ec-output>
+          <ec-input *ngIf="!field.readOnly" [field]="field" [group]="group"
+                    [item]="form"></ec-input>
+          <ec-output *ngIf="field.readOnly" [field]="field" [item]="form"></ec-output>
         </label>
       </li>
     </ul>

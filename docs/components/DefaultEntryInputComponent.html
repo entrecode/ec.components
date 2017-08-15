@@ -199,6 +199,9 @@
                                     <a href="../components/SelectComponent.html" >SelectComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/SelectionComponent.html" >SelectionComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/TabComponent.html" >TabComponent</a>
                                 </li>
                                 <li class="link">
@@ -607,6 +610,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/SelectComponent.html" >SelectComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/SelectionComponent.html" >SelectionComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/TabComponent.html" >TabComponent</a>
@@ -1043,22 +1049,21 @@ export class DefaultEntryInputComponent {
     </div>
 
     <div class="tab-pane fade" id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div [ngSwitch]&#x3D;&quot;field.type&quot; *ngIf&#x3D;&quot;group&quot; [formGroup]&#x3D;&quot;group&quot;&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;fieldset [ngSwitch]&#x3D;&quot;field.type&quot; *ngIf&#x3D;&quot;group&quot; [formGroup]&#x3D;&quot;group&quot;&gt;
   &lt;ec-input-errors [control]&#x3D;&quot;group.get(field.property)&quot;&gt;&lt;/ec-input-errors&gt;
-  &lt;div *ngSwitchCase&#x3D;&quot;&#x27;phone&#x27;&quot;&gt;
-    &lt;label&gt;
-      {{field.label || field.property}}
-      &lt;input type&#x3D;&quot;text&quot;&gt;&lt;!-- TODO --&gt;
-    &lt;/label&gt;
+  &lt;!--&lt;div *ngSwitchCase&#x3D;&quot;&#x27;entry&#x27;&quot;&gt;
+    {{item?.display(field.property)}}
   &lt;/div&gt;
+  &lt;div *ngSwitchCase&#x3D;&quot;&#x27;entries&#x27;&quot;&gt;
+    {{item?.display(field.property)}}
+  &lt;/div&gt;--&gt;
+  &lt;input *ngSwitchCase&#x3D;&quot;&#x27;phone&#x27;&quot; type&#x3D;&quot;text&quot; [placeholder]&#x3D;&quot;field.placeholder&quot;&gt;
+  &lt;!-- TODO --&gt;
   &lt;div *ngSwitchDefault&gt;
-    &lt;label&gt;{{field.label || field.property}}
-      &lt;marquee&gt;🚂🚃🚃🚃 {{field.type}} input coming soon..&lt;/marquee&gt;
-      &lt;ec-output [field]&#x3D;&quot;field&quot; [item]&#x3D;&quot;item&quot;&gt;&lt;/ec-output&gt;
-      &lt;!--&lt;input type&#x3D;&quot;text&quot; [formControlName]&#x3D;&quot;field.property&quot;&gt;--&gt;
-    &lt;/label&gt;
+    &lt;marquee&gt;🚂🚃🚃🚃 {{field.type}} input coming soon..&lt;/marquee&gt;
+    &lt;ec-output [field]&#x3D;&quot;field&quot; [item]&#x3D;&quot;item&quot;&gt;&lt;/ec-output&gt;
   &lt;/div&gt;
-&lt;/div&gt;</code></pre>
+&lt;/fieldset&gt;</code></pre>
     </div>
 
     <div class="tab-pane fade" id="tree">
@@ -1084,8 +1089,8 @@ export class DefaultEntryInputComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div [ngSwitch]="field.type" *ngIf="group" [formGroup]="group">  <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>  <div *ngSwitchCase="\'phone\'">    <label>      {{field.label || field.property}}      <input type="text"><!-- TODO -->    </label>  </div>  <div *ngSwitchDefault>    <label>{{field.label || field.property}}      <marquee>🚂🚃🚃🚃 {{field.type}} input coming soon..</marquee>      <ec-output [field]="field" [item]="item"></ec-output>      <!--<input type="text" [formControlName]="field.property">-->    </label>  </div></div></div>'
-    var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DefaultEntryInputComponent', 'selector': 'ec-default-entry-input'},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': 'ec-default-input'},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicFieldComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'}];
+        var COMPONENT_TEMPLATE = '<div><fieldset [ngSwitch]="field.type" *ngIf="group" [formGroup]="group">  <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>  <!--<div *ngSwitchCase="\'entry\'">    {{item?.display(field.property)}}  </div>  <div *ngSwitchCase="\'entries\'">    {{item?.display(field.property)}}  </div>-->  <input *ngSwitchCase="\'phone\'" type="text" [placeholder]="field.placeholder">  <!-- TODO -->  <div *ngSwitchDefault>    <marquee>🚂🚃🚃🚃 {{field.type}} input coming soon..</marquee>    <ec-output [field]="field" [item]="item"></ec-output>  </div></fieldset></div>'
+    var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DefaultEntryInputComponent', 'selector': 'ec-default-entry-input'},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': 'ec-default-input'},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicFieldComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SelectionComponent', 'selector': 'ec-selection'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'}];
     var DIRECTIVES = [{'name': 'FieldHostDirective', 'selector': '[ec-field-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'DefaultEntryInputComponent'};
 </script>

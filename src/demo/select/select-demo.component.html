@@ -1,5 +1,31 @@
 <h1>ec-select</h1>
+<!--<ec-select [items]="products" [config]="productConfig" #ecSelect></ec-select>
 
-<ec-select [items]="products" [config]="productConfig" #ecSelect></ec-select>
+{{ecSelect.selection.getValue() | json}}-->
 
-{{ecSelect.selection.getValue() | json}}
+<ec-selection [items]="products" [config]="{label:'name',identifier:'id'}" [ids]="['x1']"
+              (toggle)="testPop.toggle()" #mySelection></ec-selection>
+
+<ec-pop #testPop class="sidebar-right">
+  <ec-list [items]="mySelection.items" [config]="mySelection.config"
+           [selection]="mySelection.selection"></ec-list>
+</ec-pop>
+
+<h2>Entry Selection</h2>
+<!--{{myCrud.list?.selection?.items?.length}}-->
+
+{{crudPop.active?'JO':'NO'}}
+
+<ec-selection (toggle)="crudPop.toggle()" #crudSelection></ec-selection>
+<ec-pop #crudPop class="dropdown">
+  <ec-crud *ngIf="crudPop.active" model="muffin" (selected)="crudSelection.add($event)"
+           [config]="{selection:crudSelection?.selection}"></ec-crud>
+</ec-pop>
+
+
+<!--<button (click)="log(myCrud?.entryList)">LOG</button>
+
+<ec-selection [list]="myCrud?.entryList?.list"></ec-selection>
+
+<ec-crud model="muffin" #myCrud></ec-crud>
+-->

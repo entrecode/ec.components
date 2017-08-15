@@ -18,4 +18,8 @@ export class SelectDemoComponent {
 
   constructor() {
   }
+
+  log(x) {
+    console.log(x)
+  }
 }

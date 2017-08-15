@@ -22,7 +22,9 @@ export class ListComponent {
   /** If true, only one item is selectable next */
   @Input() solo: boolean;
   /** Event emitter on item selection */
-  @Output() onSelect: EventEmitter<any> = new EventEmitter();
+  @Output() select: EventEmitter<any> = new EventEmitter();
+  /** Event emitter on selection change */
+  @Output() selected: EventEmitter<any> = new EventEmitter();
   /** The Instance of the List */
   @Input() list: List<any>;
 
@@ -42,10 +44,10 @@ export class ListComponent {
     }
   }
 
-  /** Column click handler. Triggers onSelect.emit(item) with fallback to selection.toggle*/
+  /** Column click handler. Triggers select.emit(item) with fallback to selection.toggle*/
   columnClick(item) {
-    if (this.onSelect.observers.length) {
-      return this.onSelect.emit(item);
+    if (this.select.observers.length) {
+      return this.select.emit(item);
     }
     if (this.selection) {
       this.selection.toggle(item, this.solo);

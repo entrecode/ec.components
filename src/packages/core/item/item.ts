@@ -20,7 +20,6 @@ export class Item<T> {
       config.fields[property] = {
         view: typeof this.body[property],
         type: typeof this.body[property],
-
       };
       if (config.fields[property].view === 'object' && Array.isArray(this.body[property])) {
         config.fields[property].view = 'array'

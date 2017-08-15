@@ -59,12 +59,12 @@ export class TypeConfig {
     entry: {
       input: DefaultEntryInputComponent,
       output: DefaultEntryOutputComponent,
-      display: (value, entry) => value //TODO
+      display: TypeConfig.displayEntry
     },
     entries: {
       input: DefaultEntryInputComponent,
       output: DefaultEntryOutputComponent,
-      display: (value, entry) => value //TODO
+      display: TypeConfig.displayEntries
     },
     json: {
       input: DefaultEntryInputComponent,
@@ -100,5 +100,16 @@ export class TypeConfig {
       output: config.output || DefaultOutputComponent,
     });
     return config;
+  }
+
+  static displayEntry(value, entry) {
+    if (typeof value === 'string') { //TODO use getLevels when ready
+      return value; //TODO wait for getTitle(property) implementation
+    }
+    return value ? value.getTitle('') : '';
+  }
+
+  static displayEntries(value, entry) {
+    return value.map((item) => TypeConfig.displayEntry(item, entry));
   }
 }

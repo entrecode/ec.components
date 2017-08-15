@@ -67,11 +67,11 @@ describe('ListComponent', () => {
     expect(component.selection.has(component.list.items[0])).toBeFalsy();
   });
 
-  it('should support custom onSelect', () => {
+  it('should support custom select', () => {
     component.collection = new Collection(mocked.products);
     component.ngOnChanges();
     let selected;
-    component.onSelect.subscribe((item) => {
+    component.select.subscribe((item) => {
       selected = item;
     });
     component.columnClick(component.list.items[0]); //selection should not change

@@ -1,0 +1,13 @@
+<ul class="selected-items">
+  <li *ngFor="let selected of selection?.items" class="pill">
+    {{selected.display()}}
+    <a (click)="selection.remove(selected)">
+      <i class="ec-icon close"></i>
+    </a>
+  </li>
+  <li *ngIf="hasToggle()" (click)="toggleOpen()" class="pill" [class.open]="open">
+    <span>
+      <i class="ec-icon add-circle"></i>
+    </span>
+  </li>
+</ul>

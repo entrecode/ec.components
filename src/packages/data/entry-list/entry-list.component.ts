@@ -64,6 +64,6 @@ export class EntryListComponent extends ListComponent {
 
   /** Callback when an entry is clicked. */
   selectEntry(entry) {
-    this.onSelect.emit(entry);
+    this.select.emit(entry);
   }
 }

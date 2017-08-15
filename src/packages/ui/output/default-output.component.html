@@ -10,6 +10,9 @@
       </div>
     </li>
   </ul>
+  <div *ngSwitchCase="'boolean'">
+    <i class="ec-icon check-box" *ngIf="item.resolve(field.property)"></i>
+  </div>
   <a [href]="'mailto:'+item.display(field.property)" *ngSwitchCase="'email'">
     {{item.display(field.property)}}
   </a>

@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 export class CrudDemoComponent {
   constructor() {
   }
+
+  log(entry) {
+    console.log('select', entry);
+  }
 }

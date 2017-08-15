@@ -12,6 +12,7 @@ import { FieldHostDirective } from '../dynamic-field/field-host.directive';
 import { ReactiveFormsModule } from "@angular/forms";
 import { SelectComponent } from '../select/select.component';
 import { PopModule } from '../pop/pop.module';
+import { SelectionComponent } from '../select/selection.component';
 
 @NgModule({
   entryComponents: [
@@ -28,6 +29,7 @@ import { PopModule } from '../pop/pop.module';
     InputErrorsComponent,
     FieldHostDirective,
     SelectComponent,
+    SelectionComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +45,7 @@ import { PopModule } from '../pop/pop.module';
     FieldHostDirective,
     ReactiveFormsModule,
     SelectComponent,
+    SelectionComponent,
     PopModule,
   ],
   providers: []

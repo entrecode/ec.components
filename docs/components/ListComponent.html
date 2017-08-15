@@ -199,6 +199,9 @@
                                     <a href="../components/SelectComponent.html" >SelectComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/SelectionComponent.html" >SelectionComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/TabComponent.html" >TabComponent</a>
                                 </li>
                                 <li class="link">
@@ -609,6 +612,9 @@
                                            <a href="../components/SelectComponent.html" >SelectComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/SelectionComponent.html" >SelectionComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/TabComponent.html" >TabComponent</a>
                                        </li>
                                        <li class="link">
@@ -985,7 +991,10 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#onSelect">onSelect</a>
+                                <a href="#select">select</a>
+                            </li>
+                            <li>
+                                <a href="#selected">selected</a>
                             </li>
                         </ul>
                     </td>
@@ -1084,7 +1093,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/packages/ui/list/list.component.ts:27</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/packages/ui/list/list.component.ts:29</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1143,8 +1152,8 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
-                            <a name="onSelect"></a>
-                            <code>onSelect</code>
+                            <a name="select"></a>
+                            <code>select</code>
                         </td>
                         <td class="col-md-10">
                             <div><p>Event emitter on item selection </p>
@@ -1156,6 +1165,27 @@
                             <tr>
                                 <td class="col-md-2" colspan="2">
                                     <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/packages/ui/list/list.component.ts:25</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="selected"></a>
+                            <code>selected</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>Event emitter on selection change </p>
+</div>
+                            <em><code>$event</code> type:</em>    <code>EventEmitter&lt;any&gt;</code>
+
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/packages/ui/list/list.component.ts:27</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1184,13 +1214,13 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/packages/ui/list/list.component.ts:46</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/packages/ui/list/list.component.ts:48</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-description"><p>Column click handler. Triggers onSelect.emit(item) with fallback to selection.toggle</p>
+                                <div class="io-description"><p>Column click handler. Triggers select.emit(item) with fallback to selection.toggle</p>
     </div>
     
                                 <div class="io-description">
@@ -1218,7 +1248,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/packages/ui/list/list.component.ts:31</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/packages/ui/list/list.component.ts:33</a></div>
                                 </td>
                             </tr>
     
@@ -1320,7 +1350,9 @@ export class ListComponent {
   /** If true, only one item is selectable next */
   @Input() solo: boolean;
   /** Event emitter on item selection */
-  @Output() onSelect: EventEmitter&lt;any&gt; &#x3D; new EventEmitter();
+  @Output() select: EventEmitter&lt;any&gt; &#x3D; new EventEmitter();
+  /** Event emitter on selection change */
+  @Output() selected: EventEmitter&lt;any&gt; &#x3D; new EventEmitter();
   /** The Instance of the List */
   @Input() list: List&lt;any&gt;;
 
@@ -1340,10 +1372,10 @@ export class ListComponent {
     }
   }
 
-  /** Column click handler. Triggers onSelect.emit(item) with fallback to selection.toggle*/
+  /** Column click handler. Triggers select.emit(item) with fallback to selection.toggle*/
   columnClick(item) {
-    if (this.onSelect.observers.length) {
-      return this.onSelect.emit(item);
+    if (this.select.observers.length) {
+      return this.select.emit(item);
     }
     if (this.selection) {
       this.selection.toggle(item, this.solo);
@@ -1402,7 +1434,7 @@ export class ListComponent {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><ec-pagination [pagination]="list?.pagination"               *ngIf="list?.pagination?.getPages()>1"></ec-pagination><div class="ec-list">  <div class="ec-list-group">    <ec-list-header [list]="list" [selection]="selection"></ec-list-header>  </div>  <div class="ec-list-group" *ngFor="let group of list?.groups">    <div class="ec-list-group-header" *ngIf="group.value"         (click)="selection?.toggleAll(listItems?.items)">      <div class="ec-list-item-cell ec-list-checkbox" *ngIf="selection">        <input type="checkbox" [checked]="selection?.hasAll(listItems?.items)">      </div>      <div class="ec-list-item ec-list-group-name">        {{group.value}}      </div>    </div>    <ec-list-items [host]="this" #listItems                   [items]="list?.page | group: group.property: group.value"></ec-list-items>  </div></div><ec-pagination [pagination]="list?.pagination"               *ngIf="list?.pagination?.getPages()>1"></ec-pagination></div>'
-    var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DefaultEntryInputComponent', 'selector': 'ec-default-entry-input'},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': 'ec-default-input'},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicFieldComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'}];
+    var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DefaultEntryInputComponent', 'selector': 'ec-default-entry-input'},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': 'ec-default-input'},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicFieldComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SelectionComponent', 'selector': 'ec-selection'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'}];
     var DIRECTIVES = [{'name': 'FieldHostDirective', 'selector': '[ec-field-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'ListComponent'};
 </script>

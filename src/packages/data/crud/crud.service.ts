@@ -46,7 +46,6 @@ export class CrudService {
 
   /** Saves the given entry with the given value. If the entry is not yet existing, it will be created. Otherwise it will be updated. */
   save(model: string, entry: EntryResource, value: Object) {
-    console.log('save', this.clean(value));
     if (entry && entry.save) {
       return this.update(model, entry, value);
     }

@@ -1,16 +1,15 @@
-<div [ngSwitch]="field.type" *ngIf="group" [formGroup]="group">
+<fieldset [ngSwitch]="field.type" *ngIf="group" [formGroup]="group">
   <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>
-  <div *ngSwitchCase="'phone'">
-    <label>
-      {{field.label || field.property}}
-      <input type="text"><!-- TODO -->
-    </label>
+  <!--<div *ngSwitchCase="'entry'">
+    {{item?.display(field.property)}}
   </div>
+  <div *ngSwitchCase="'entries'">
+    {{item?.display(field.property)}}
+  </div>-->
+  <input *ngSwitchCase="'phone'" type="text" [placeholder]="field.placeholder">
+  <!-- TODO -->
   <div *ngSwitchDefault>
-    <label>{{field.label || field.property}}
-      <marquee>🚂🚃🚃🚃 {{field.type}} input coming soon..</marquee>
-      <ec-output [field]="field" [item]="item"></ec-output>
-      <!--<input type="text" [formControlName]="field.property">-->
-    </label>
+    <marquee>🚂🚃🚃🚃 {{field.type}} input coming soon..</marquee>
+    <ec-output [field]="field" [item]="item"></ec-output>
   </div>
-</div>
+</fieldset>

@@ -18,10 +18,17 @@ export class Field<T> implements FieldConfigProperty {
   input?: any;
   /** Custom Component to display value **/
   output?: any;
+  /** Placeholder in inputs */
+  placeholder?: string;
 
   /** A Field is constructed by assigning the given config and the property to itself*/
   constructor(property: string, config: FieldConfigProperty = {}) {
     Object.assign(this, config);
     Object.assign(this, { property: property });
+  }
+
+  /** Returns placeholder if any */
+  getPlaceholder() {
+    return this.placeholder || this.property;
   }
 }

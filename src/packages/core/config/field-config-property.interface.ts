@@ -5,6 +5,8 @@ export interface FieldConfigProperty {
   property?: string;
   /** Human readable field label*/
   label?: string;
+  /** Placeholder in inputs */
+  placeholder?: string;
   /** Custom display transformation function.
    * @param value The current property value
    * @param field The field property name */
