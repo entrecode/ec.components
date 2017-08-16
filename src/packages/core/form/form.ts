@@ -5,14 +5,14 @@ import { Field } from '../field/field';
 import { FormConfig } from './form-config.interface';
 
 /** The Form class is an Item with additional info about its properties (Fields). */
-export class Form<T> extends Item<T> {
+export class Form<Object> extends Item<Object> {
   /** Array of fields. It will be populated automatically when the form is constructed. */
-  fields: Field<T>[];
+  fields: Field<Object>[];
   /** The configuration of the form. It is an extension of ItemConfig. */
-  protected config: FormConfig<T>;
+  protected config: FormConfig<Object>;
 
   /** The constructor will populate the fields array. If config.fields is set only the configured fields will be created. If not, all properties of the given body will be used as fields. */
-  constructor(body: T, config?: FormConfig<T>) {
+  constructor(body: Object, config?: FormConfig<Object>) {
     super(body, config);
     this.fields = [];
     if (this.config.fields) {
@@ -34,11 +34,12 @@ export class Form<T> extends Item<T> {
   }
 
   /** Returns the original value of the property, if any. */
-  getValue(property: string, shouldPrefill: boolean = false) {
-    if (shouldPrefill && this.config.fields && this.config.fields[property]) {
+  getValue(property: string) {
+    if (!this.body && this.config.fields && this.config.fields[property]) {
+      //if no body is present, the prefills are used
       return this.config.fields[property].prefill;
     } else {
-      return (this.resolve() || {})[property];
+      return (this.resolve() || {})[property]; //TODO find cleaner access
     }
   }
 }

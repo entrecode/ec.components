@@ -19,9 +19,7 @@ export class FormService {
     const control = {};
     form.fields.forEach((field) => {
       const validators = this.getValidators(field);
-      //TODO find better way to get the editable body value
-      const value = form.getValue(field.property);
-      control[field.property] = new FormControl(value, validators)
+      control[field.property] = new FormControl(form.getValue(field.property), validators)
     });
     return new FormGroup(control);
   }

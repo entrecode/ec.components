@@ -16,13 +16,12 @@ export class TypeConfig {
       view: 'string',
       filterable: true,
       sortable: true,
-      prefill: 'Du alte sau'
     },
     boolean: {
       // sortable: true,
       filterable: true,
       filterOperator: 'exact',
-      prefill: true
+      prefill: false
     },
     formattedText: {
       view: 'textarea',
@@ -77,7 +76,7 @@ export class TypeConfig {
     json: {
       input: DefaultEntryInputComponent,
       output: DefaultEntryOutputComponent,
-      display: (value) => JSON.stringify(value)
+      display: (value) => value ? JSON.stringify(value) : ''
     },
     location: {
       input: DefaultEntryInputComponent,
