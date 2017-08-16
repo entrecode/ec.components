@@ -62,13 +62,15 @@ export class TypeConfig {
       view: 'label',
       input: DefaultEntryInputComponent,
       output: DefaultOutputComponent,
-      display: TypeConfig.displayEntry
+      resolve: TypeConfig.resolveEntries,
+      display: TypeConfig.displayEntries,
     },
     entries: {
       view: 'labels',
       input: DefaultEntryInputComponent,
       output: DefaultOutputComponent,
-      display: TypeConfig.displayEntries
+      resolve: TypeConfig.resolveEntries,
+      display: TypeConfig.displayEntries,
     },
     json: {
       input: DefaultEntryInputComponent,
@@ -106,14 +108,28 @@ export class TypeConfig {
     return config;
   }
 
-  static displayEntry(value, entry) {
-    if (typeof value === 'string') { //TODO use getLevels when ready
-      return value; //TODO wait for getTitle(property) implementation
+  /** Resolves entry/entries from nested resource or id inside (single and array).
+   * Gives back standardizes "light" entries {id, _entryTitle} */
+  static resolveEntries(entry, item, property, value = entry[property]) {
+    if (Array.isArray(value)) {
+      return value ? value.map((e) => TypeConfig.resolveEntries(entry, item, property, e)) : [];
     }
-    return value ? value.getTitle('') : '';
+    if (typeof value === 'string') {
+      //TODO use getLevels when ready
+      //TODO is it possible to get the model title field of the nested entry? (and useful)
+      return { id: value, _entryTitle: 'Simi' };
+      //TODO wait for getTitle(property) implementation
+    }
+    if (value && value.getTitle) {
+      return { id: value.id, _entryTitle: value.getTitle('') }
+    }
   }
 
+  /** Displays one or multiple "light" entries */
   static displayEntries(value, entry) {
-    return value.map((item) => TypeConfig.displayEntry(item, entry));
+    if (Array.isArray(value)) {
+      return value.map((nested) => TypeConfig.displayEntries(nested, entry));
+    }
+    return value ? value._entryTitle : '';
   }
 }

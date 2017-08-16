@@ -1,4 +1,5 @@
 import { Item } from './item';
+
 describe('Item', () => {
 
   it('should construct an item and support resolve', () => {
@@ -31,5 +32,29 @@ describe('Item', () => {
       }
     });
     expect(j.display('id')).toBe('b!!');
+  });
+
+  it('should resolve before other transformations', () => {
+    const config = {
+      fields: {
+        name: {
+          resolve: (v) => {
+            console.log('resolve', v);
+            return 'Name:' + v.name
+          },
+          display: (v) => v + '!',
+          group: (v) => v.length,
+          validate: (v) => v.indexOf('a') === -1 ? 'Kein a enthalten!' : null,
+          sort: (v) => v.length
+        }
+      }
+    };
+    const persons = [
+      new Item({ name: 'Max' }, config),
+      new Item({ name: 'Tobi' }, config),
+      new Item({ name: 'Mareike' }, config),
+    ];
+
+    expect(persons[0].resolve('name')).toBe('Name:Max');
   })
 });

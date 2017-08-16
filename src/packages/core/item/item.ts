@@ -85,7 +85,7 @@ export class Item<T> {
       return this.body;
     }
     if (this.config.fields && this.config.fields[property] && this.config.fields[property].resolve) {
-      return this.config.fields[property].resolve(this.body, this);
+      return this.config.fields[property].resolve(this.body, this, property);
     }
     if (!this.config.resolve) {
       return this.body[property];
@@ -113,7 +113,6 @@ export class Item<T> {
 
   /** Returns the output of the config.display transformation function with the given property value.
    * If no display function is set, it will just return the property value.*/
-  /** Transforms the given field's value for displaying */
   display(property?: string): any {
     if (!property) {
       return this.transform('display', this.config.label || this.getProperties()[0]); // Object.keys(this.resolve())[0]

@@ -7,13 +7,13 @@ export interface FieldConfigProperty {
   label?: string;
   /** Placeholder in inputs */
   placeholder?: string;
+  /** Custom resolve transformation function.
+   * @param body The item body */
+  resolve?: (body: any, item: any, property: string) => any;
   /** Custom display transformation function.
    * @param value The current property value
    * @param field The field property name */
   display?: (value, field, property: string) => any;
-  /** Custom resolve transformation function.
-   * @param body The item body */
-  resolve?: (body: any, item: any) => any;
   /** Custom group transformation function. Its return value will be used for grouping.
    * @param value The current property value
    * @param field The field property name */
