@@ -14,6 +14,7 @@ import { SelectComponent } from '../select/select.component';
 import { PopModule } from '../pop/pop.module';
 import { SelectionComponent } from '../select/selection.component';
 import { FormService } from './form.service';
+import { VisibleFieldsPipe } from './visible-fields.pipe';
 
 @NgModule({
   entryComponents: [
@@ -31,6 +32,7 @@ import { FormService } from './form.service';
     SlotHostDirective,
     SelectComponent,
     SelectionComponent,
+    VisibleFieldsPipe,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +50,7 @@ import { FormService } from './form.service';
     SelectComponent,
     SelectionComponent,
     PopModule,
+    VisibleFieldsPipe,
   ],
   providers: [
     FormService

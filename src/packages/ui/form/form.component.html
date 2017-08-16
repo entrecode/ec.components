@@ -4,7 +4,7 @@
   </div>
   <div *ngIf="!wrapper.children.length&&!empty">
     <ul>
-      <li *ngFor="let field of form?.fields" [ngSwitch]="field.view">
+      <li *ngFor="let field of form?.fields | visibleFields" [ngSwitch]="field.view">
         <label>
           {{field.label || field.property}}
         </label>

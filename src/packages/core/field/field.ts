@@ -24,6 +24,8 @@ export class Field<T> implements FieldConfigProperty {
   label?: string;
   /** The operator to use for filtering: exact, search, any etc.. see ec.sdk doc */
   filterOperator?: string;
+  /** Wether or not the field should appear in default forms */
+  form?: boolean;
 
   /** A Field is constructed by assigning the given config and the property to itself*/
   constructor(property: string, config: FieldConfigProperty = {}) {

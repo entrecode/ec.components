@@ -18,10 +18,9 @@ export class TypeConfig {
       sortable: true,
     },
     boolean: {
-      // sortable: true,
       filterable: true,
       filterOperator: 'exact',
-      prefill: false
+      prefill: false,
     },
     formattedText: {
       view: 'textarea',

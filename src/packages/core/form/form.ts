@@ -17,7 +17,6 @@ export class Form<Object> extends Item<Object> {
     this.fields = [];
     if (this.config.fields) {
       Object.keys(this.config.fields)
-      .filter((key) => this.config.fields[key].form !== false)
       .forEach((property) => {
         this.fields.push(new Field(property, this.config.fields[property]));
       });
