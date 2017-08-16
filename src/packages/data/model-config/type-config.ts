@@ -16,11 +16,13 @@ export class TypeConfig {
       view: 'string',
       filterable: true,
       sortable: true,
+      prefill: 'Du alte sau'
     },
     boolean: {
       // sortable: true,
       filterable: true,
-      filterOperator: 'exact'
+      filterOperator: 'exact',
+      prefill: true
     },
     formattedText: {
       view: 'textarea',

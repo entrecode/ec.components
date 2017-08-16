@@ -4,6 +4,9 @@ import { ModelConfig } from '../model-config/model-config';
 import { LoaderService } from '../../ui/loader/loader.service';
 import { NotificationsService } from '../../ui/notifications/notifications.service';
 import { CrudService } from '../crud/crud.service';
+import { Item } from '../../core/item/item';
+import { FormConfig } from '../../core/form/form-config.interface';
+import { FormService } from '../../ui/form/form.service';
 
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent */
 @Component({
@@ -18,19 +21,18 @@ export class EntryFormComponent extends FormComponent {
   @Output() deleted: EventEmitter<any> = new EventEmitter();
 
   /** Injects the required services. */
-  constructor(protected loaderService: LoaderService, private modelConfig: ModelConfig, protected notificationService: NotificationsService, protected crud: CrudService) {
-    super(loaderService, notificationService);
+  constructor(protected loaderService: LoaderService, private modelConfig: ModelConfig, protected notificationService: NotificationsService, protected crud: CrudService, protected formService: FormService) {
+    super(loaderService, notificationService, formService);
   }
 
   /** As soon as the model is known, the config is generated to then instantiate the form with. */
-  ngOnChanges() {
+  init(item: Item<any> = this.item, config: FormConfig<any> = this.config) {
     if (!this.model) {
       return;
     }
-    Promise.resolve(this.config || this.modelConfig.generateConfig(this.model))
+    Promise.resolve(config || this.modelConfig.generateConfig(this.model))
     .then((config) => {
-      this.config = Object.assign(this.config || {}, config);
-      this.init();
+      super.init(item, config);
     });
   }
 

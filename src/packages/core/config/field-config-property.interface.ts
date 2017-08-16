@@ -10,6 +10,12 @@ export interface FieldConfigProperty {
   /** Custom resolve transformation function.
    * @param body The item body */
   resolve?: (body: any, item: any, property: string) => any;
+  /** Custom edit transformation function. It is used before editing the value in a form.
+   * @param body The item body */
+  edit?: (value, field, property: string) => any;
+  /** Custom serialize transformation function. It is used before saving it in a form.
+   * @param body The item body */
+  serialize?: (value, field, property: string) => any;
   /** Custom display transformation function.
    * @param value The current property value
    * @param field The field property name */
@@ -61,4 +67,6 @@ export interface FieldConfigProperty {
   list?: boolean;
   /** if false, the field will not be visible in a form */
   form?: boolean;
+  /** If a prefill value is set, it will be used at creation in a form. */
+  prefill?: any;
 }

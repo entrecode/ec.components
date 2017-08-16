@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { SelectComponent } from '../select/select.component';
 import { PopModule } from '../pop/pop.module';
 import { SelectionComponent } from '../select/selection.component';
+import { FormService } from './form.service';
 
 @NgModule({
   entryComponents: [
@@ -48,7 +49,9 @@ import { SelectionComponent } from '../select/selection.component';
     SelectionComponent,
     PopModule,
   ],
-  providers: []
+  providers: [
+    FormService
+  ]
 })
 export class FormModule {
 }

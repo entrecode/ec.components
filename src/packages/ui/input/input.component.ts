@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { DynamicSlotComponent } from '../dynamic-slot/dynamic-slot.component';
 import { DefaultInputComponent } from './default-input.component';
 import { Field } from '../../core/field/field';
@@ -14,6 +14,8 @@ import { Item } from '../../core/item/item';
 export class InputComponent extends DynamicSlotComponent {
   /** The belonging form group */
   @Input() group: FormGroup;
+  /** The belonging form control. This is not required if you pass in a field and group. */
+  @Input() control: FormControl;
   /** The changed ouput emits whenever the form control of the input changes. */
   @Output() changed = new EventEmitter();
   /** Debounce time in ms before the changed event emits. */
@@ -24,10 +26,10 @@ export class InputComponent extends DynamicSlotComponent {
   @Input() item: Item<any>;
 
   ngOnChanges() {
-    if (this.field && this.group) {
+    if (this.field) {// && this.group
       const data = {
         group: this.group,
-        control: this.group.get(this.field.property),
+        control: this.control || this.group.get(this.field.property),
         item: this.item,
         field: this.field
       };

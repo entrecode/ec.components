@@ -272,7 +272,7 @@
                                     <a href="../classes/Item.html" >Item</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../classes/List.html"  data-type="entity-link" class="active" >List</a>
+                                    <a href="../classes/List.html" >List</a>
                                 </li>
                                 <li class="link">
                                     <a href="../classes/Notification.html" >Notification</a>
@@ -316,7 +316,7 @@
                                     <a href="../injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../injectables/FormService.html" >FormService</a>
+                                    <a href="../injectables/FormService.html"  data-type="entity-link" class="active" >FormService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/LoaderService.html" >LoaderService</a>
@@ -691,7 +691,7 @@
                                            <a href="../classes/Item.html" >Item</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../classes/List.html"  data-type="entity-link" class="active" >List</a>
+                                           <a href="../classes/List.html" >List</a>
                                        </li>
                                        <li class="link">
                                            <a href="../classes/Notification.html" >Notification</a>
@@ -735,7 +735,7 @@
                                            <a href="../injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../injectables/FormService.html" >FormService</a>
+                                           <a href="../injectables/FormService.html"  data-type="entity-link" class="active" >FormService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/LoaderService.html" >LoaderService</a>
@@ -852,7 +852,7 @@
                    
                    </nav>
                </div>
-               <div class="content class">
+               <div class="content injectable">
                    <div class="content-data">
 
 
@@ -860,11 +860,9 @@
 
 
 
-
-
 <ol class="breadcrumb">
-  <li>Classes</li>
-  <li>List</li>
+  <li>Injectables</li>
+  <li>FormService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -884,63 +882,22 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/packages/core/list/list.ts</code>
+            <code>src/packages/ui/form/form.service.ts</code>
         </p>
 
             <p class="comment">
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>A more sophisticated Collection of Objects with arbitrary content.
-It comes with features like resolve functions, identifiers, display formatting and sorting.</p>
+                <p>This service is the interface between Angular Forms and ec.components core classes. </p>
 
             </p>
-
-            <p class="comment">
-                <h3>Extends</h3>
-            </p>
-            <p class="comment">
-                    <code><a href="../classes/Collection.html" target="_self" >Collection</a></code>
-            </p>
-
 
 
             <section>
                 <h3 id="index">Index</h3>
                 <table class="table table-sm table-bordered index-table">
                     <tbody>
-                        <tr>
-                            <td class="col-md-4">
-                                <h6><b>Properties</b></h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <ul class="index-list">
-                                    <li>
-                                        <span class="modifier">Protected</span> <a href="#change">change</a>
-                                    </li>
-                                    <li>
-                                        <span class="modifier">Public</span> <a href="#change$">change$</a>
-                                    </li>
-                                    <li>
-                                        <span class="modifier">Public</span> <a href="#config">config</a>
-                                    </li>
-                                    <li>
-                                        <span class="modifier">Public</span> <a href="#fields">fields</a>
-                                    </li>
-                                    <li>
-                                         <a href="#groups">groups</a>
-                                    </li>
-                                    <li>
-                                        <span class="modifier">Public</span> <a href="#page">page</a>
-                                    </li>
-                                    <li>
-                                        <span class="modifier">Public</span> <a href="#pagination">pagination</a>
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr>
                         <tr>
                             <td class="col-md-4">
                                 <h6><b>Methods</b></h6>
@@ -950,31 +907,13 @@ It comes with features like resolve functions, identifiers, display formatting a
                             <td class="col-md-4">
                                 <ul class="index-list">
                                     <li>
-                                         <a href="#add">add</a>
+                                        <span class="modifier">Public</span> <a href="#getGroup">getGroup</a>
                                     </li>
                                     <li>
-                                        <span class="modifier">Public</span> <a href="#filter">filter</a>
+                                         <a href="#getValidators">getValidators</a>
                                     </li>
                                     <li>
-                                        <span class="modifier">Protected</span> <a href="#getFields">getFields</a>
-                                    </li>
-                                    <li>
-                                         <a href="#groupBy">groupBy</a>
-                                    </li>
-                                    <li>
-                                         <a href="#id">id</a>
-                                    </li>
-                                    <li>
-                                        <span class="modifier">Protected</span> <a href="#load">load</a>
-                                    </li>
-                                    <li>
-                                        <span class="modifier">Protected</span> <a href="#sortProperty">sortProperty</a>
-                                    </li>
-                                    <li>
-                                         <a href="#toggleSort">toggleSort</a>
-                                    </li>
-                                    <li>
-                                        <span class="modifier">Private</span> <a href="#trackItem">trackItem</a>
+                                         <a href="#validateFactory">validateFactory</a>
                                     </li>
                                 </ul>
                             </td>
@@ -983,30 +922,6 @@ It comes with features like resolve functions, identifiers, display formatting a
                 </table>
             </section>
 
-            <section>
-                <h3 id="constructor">Constructor</h3>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <code>constructor(items: Array<T>, config: <a href="../interfaces/ListConfig.html">ListConfig</a>, pagination: <a href="../classes/Pagination.html">Pagination</a>)</code>
-                                </td>
-                            </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/packages/core/list/list.ts:34</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description"><p>Constructs the List. Populates the items and instantiates the fields.</p>
-            </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-            </section>
 
             <section>
                 
@@ -1017,304 +932,27 @@ It comes with features like resolve functions, identifiers, display formatting a
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <a name="add"></a>
-                                    <b> add</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-            <code>add(item: <a href="../classes/Item.html">Item<T></a>, unique: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/packages/core/list/list.ts:64</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description"><p>Adds the given item to the list and assigns the list config to the item</p>
-            </div>
-            
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="filter"></a>
-                                    <b><span class="modifier">Public</span> filter</b>
+                                    <a name="getGroup"></a>
+                                    <b><span class="modifier">Public</span> getGroup</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
                                         <span class="modifier-icon method fa fa-play "></span>
-                                    <code>filter(property: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, value: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, operator: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                                    <code>getGroup(form: <a href="../classes/Form.html">Form<any></a>)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">src/packages/core/list/list.ts:106</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/packages/ui/form/form.service.ts:18</a></div>
                                         </td>
                                     </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>Filters the list after the given property and value </p>
-            </div>
-            
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="getFields"></a>
-                                    <b><span class="modifier">Protected</span> getFields</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play circle"></span>
-                                    <code>getFields()</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/packages/core/list/list.ts:73</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description"><p>Distills Array of item properties. Either uses keys of config.fields or parses the item
-            properties directly.</p>
-            </div>
-            
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code>Array&lt;&gt;</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="groupBy"></a>
-                                    <b> groupBy</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-            <code>groupBy(property: )</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="134" class="link-to-prism">src/packages/core/list/list.ts:134</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description"><p>Returns an Array of all unique values of the given property </p>
-            </div>
-            
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="id"></a>
-                                    <b> id</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-            <code>id(identifier: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">src/packages/core/list/list.ts:93</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description"><p>Resolves the item with the given Array index or identifier (if configured)</p>
-            </div>
-            
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code><a href="../classes/Item.html" target="_self" >Item&lt;&gt;</a></code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="load"></a>
-                                    <b><span class="modifier">Protected</span> load</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play circle"></span>
-                                    <code>load(config: <a href="../interfaces/ListConfig.html">ListConfig</a>)</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/packages/core/list/list.ts:54</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description"><p>Loads the list page with the given config or, if none given, uses the current config. Reapplies grouping (if any) and calls the change Subject. </p>
-            </div>
-            
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="sortProperty"></a>
-                                    <b><span class="modifier">Protected</span> sortProperty</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play circle"></span>
-                                    <code>sortProperty(property: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, desc: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">src/packages/core/list/list.ts:114</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description"><p>Changes the config&#39;s sort variables to reflect the given sorting </p>
-            </div>
-            
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="toggleSort"></a>
-                                    <b> toggleSort</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-            <code>toggleSort(property: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, desc: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="127" class="link-to-prism">src/packages/core/list/list.ts:127</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description"><p>Sorts with given sorting, using the Sorter </p>
-            </div>
-            
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="trackItem"></a>
-                                    <b><span class="modifier">Private</span> trackItem</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
-                                    <code>trackItem(index: , item: )</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="161" class="link-to-prism">src/packages/core/list/list.ts:161</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description"><p>Item tracking for *ngFor. </p>
+                                        <div class="io-description"><p>Initializes the form group from the form fields</p>
             </div>
             
                                         <div class="io-description">
@@ -1325,420 +963,140 @@ It comes with features like resolve functions, identifiers, display formatting a
                             </tr>
                         </tbody>
                     </table>
-            </section>
-
-
-            <section>
-                
-                    <h3 id="inputs">
-                        Properties
-                    </h3>
                     <table class="table table-sm table-bordered">
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <a name="change"></a>
-                                    <b><span class="modifier">Protected</span> change</b>
+                                    <a name="getValidators"></a>
+                                    <b> getValidators</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-circle"></span><code>change:     <code></code>
-            </code>
+            <code>getValidators(field: <a href="../classes/Field.html">Field<any></a>)</code>
                                 </td>
                             </tr>
+            
+            
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/packages/core/list/list.ts:32</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/packages/ui/form/form.service.ts:30</a></div>
                                         </td>
                                     </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Subject that should be nexted when loading is finished </p>
+                                        <div class="io-description"><p>Extracts all validators from a given Field instance. </p>
             </div>
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code>[]</code>
+            
+                                        </div>
                                 </td>
                             </tr>
-            
                         </tbody>
                     </table>
                     <table class="table table-sm table-bordered">
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <a name="change$"></a>
-                                    <b><span class="modifier">Public</span> change$</b>
+                                    <a name="validateFactory"></a>
+                                    <b> validateFactory</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-"></span><code>change$:     <code></code>
-            </code>
+            <code>validateFactory(field: <a href="../classes/Field.html">Field<any></a>)</code>
                                 </td>
                             </tr>
+            
+            
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/packages/core/list/list.ts:34</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/packages/ui/form/form.service.ts:42</a></div>
                                         </td>
                                     </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Observable that is nexted when the list has changed. </p>
+                                        <div class="io-description"><p>Returns a Validation function from the given field (using field.validate) </p>
             </div>
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code>|</code>
+            
+                                        </div>
                                 </td>
                             </tr>
-            
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="config"></a>
-                                    <b><span class="modifier">Public</span> config</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-"></span><code>config:     <code><a href="../interfaces/ListConfig.html" target="_self" >ListConfig</a></code>
-            </code>
-                                </td>
-                            </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="../interfaces/ListConfig.html" target="_self" >ListConfig</a></code>
-            
-                                    </td>
-                                </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/packages/core/list/list.ts:22</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-description"><p>The List Configuration, click on ListConfig for details. Can be given an optional ListConfig.</p>
-            </div>
-                                </td>
-                            </tr>
-            
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="fields"></a>
-                                    <b><span class="modifier">Public</span> fields</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-"></span><code>fields:     <code><a href="../classes/Field.html" target="_self" >Array&lt;Field&gt;</a></code>
-            </code>
-                                </td>
-                            </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="../classes/Field.html" target="_self" >Array&lt;Field&gt;</a></code>
-            
-                                    </td>
-                                </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/packages/core/list/list.ts:18</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-description"><p>Array of Properties that are relevant for each item. The fields are populated on construction
-            via getFields method.</p>
-            </div>
-                                </td>
-                            </tr>
-            
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="groups"></a>
-                                    <b> groups</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <code>groups:     <code>any[]</code>
-            </code>
-                                </td>
-                            </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Type : </i>    <code>any[]</code>
-            
-                                    </td>
-                                </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/packages/core/list/list.ts:26</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-description"><p>Current Value Groups (Different Unique Values).</p>
-            </div>
-                                </td>
-                            </tr>
-            
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="page"></a>
-                                    <b><span class="modifier">Public</span> page</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-"></span><code>page:     <code><a href="../classes/Item.html" target="_self" >Array&lt;Item&gt;</a></code>
-            </code>
-                                </td>
-                            </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="../classes/Item.html" target="_self" >Array&lt;Item&gt;</a></code>
-            
-                                    </td>
-                                </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/packages/core/list/list.ts:30</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-description"><p>The items of the current page </p>
-            </div>
-                                </td>
-                            </tr>
-            
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="pagination"></a>
-                                    <b><span class="modifier">Public</span> pagination</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-"></span><code>pagination:     <code><a href="../classes/Pagination.html" target="_self" >Pagination</a></code>
-            </code>
-                                </td>
-                            </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="../classes/Pagination.html" target="_self" >Pagination</a></code>
-            
-                                    </td>
-                                </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/packages/core/list/list.ts:28</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-description"><p>The list&#39;s pagination (Optional) </p>
-            </div>
-                                </td>
-                            </tr>
-            
                         </tbody>
                     </table>
             </section>
+
     </div>
 
 
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { Subject } from &#x27;rxjs&#x27;;
-import { Collection } from &#x27;../collection/collection&#x27;;
-import { Item } from &#x27;../item/item&#x27;;
-import { Field } from &#x27;../field/field&#x27;;
-import { ListConfig } from &#x27;./list-config.interface&#x27;;
-import { Pagination } from &#x27;../pagination/pagination&#x27;;
-import { Sorter } from &#x27;../sorter/sorter&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { Form } from &#x27;../../core/form/form&#x27;;
+import {
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  ValidationErrors,
+  ValidatorFn,
+  Validators
+} from &quot;@angular/forms&quot;;
+import { Field } from &#x27;../../core/field/field&#x27;;
 
-/**
- * A more sophisticated Collection of Objects with arbitrary content.
- * It comes with features like resolve functions, identifiers, display formatting and sorting.
- */
-export class List&lt;T&gt; extends Collection&lt;Item&lt;T&gt;&gt; {
-  /**
-   * Array of Properties that are relevant for each item. The fields are populated on construction
-   * via getFields method.
-   */
-  public fields: Array&lt;Field&lt;T&gt;&gt;;
-  /**
-   * The List Configuration, click on ListConfig for details. Can be given an optional ListConfig.
-   */
-  public config: ListConfig;
-  /**
-   * Current Value Groups (Different Unique Values).
-   */
-  groups: any[];
-  /** The list&#x27;s pagination (Optional) */
-  public pagination: Pagination;
-  /** The items of the current page */
-  public page: Array&lt;Item&lt;T&gt;&gt;;
-  /** Subject that should be nexted when loading is finished */
-  protected change &#x3D; new Subject();
-  /** Observable that is nexted when the list has changed. */
-  public change$ &#x3D; this.change.asObservable();
+/** This service is the interface between Angular Forms and ec.components core classes. */
+@Injectable()
+export class FormService {
 
-  /**
-   * Constructs the List. Populates the items and instantiates the fields.
-   */
-  constructor(items?: Array&lt;T&gt;, config: ListConfig &#x3D; {}, pagination?: Pagination) {
-    super([]);
-    if (items) {
-      super.addAll(items.map(item &#x3D;&gt; new Item(item, config)));
-    }
-    this.config &#x3D; config || {};
-    this.config.page &#x3D; 1;
-    this.fields &#x3D; this.getFields();
-    this.pagination &#x3D; pagination || new Pagination(this.config, this.items.length);
-    this.pagination.change$.debounceTime(200)
-    .subscribe(config &#x3D;&gt; this.load(config));
-    this.load();
-  }
-
-  /** Loads the list page with the given config or, if none given, uses the current config. Reapplies grouping (if any) and calls the change Subject. */
-  protected load(config?: ListConfig) {
-    if (config) {
-      Object.assign(this.config, config);
-    }
-    this.page &#x3D; this.pagination.slice(this.items);
-    this.groupBy(this.config.sortBy);
-    this.change.next(this);
-  }
-
-  /** Adds the given item to the list and assigns the list config to the item*/
-  add(item: Item&lt;T&gt;, unique?: boolean) {
-    item.useConfig(this.config);
-    return super.add(item, unique);
-  }
-
-  /**
-   * Distills Array of item properties. Either uses keys of config.fields or parses the item
-   * properties directly.
-   */
-  protected getFields(): Array&lt;Field&lt;T&gt;&gt; {
-    if (this.config &amp;&amp; this.config.fields) {
-      return Object.keys(this.config.fields)
-      .filter((key) &#x3D;&gt; this.config.fields[key].list !&#x3D;&#x3D; false)
-      .map((field) &#x3D;&gt; new Field(field, this.config.fields[field]));
-    }
-    const fields &#x3D; [];
-    this.items.forEach((item) &#x3D;&gt; {
-      item.getProperties().forEach(property &#x3D;&gt; {
-        if (!fields.find((f) &#x3D;&gt; f.property &#x3D;&#x3D;&#x3D; property)) {
-          fields.push(new Field(property, { type: typeof item.resolve(property) }));
-        }
-      });
+  /** Initializes the form group from the form fields*/
+  public getGroup(form: Form&lt;any&gt;) {
+    const control &#x3D; {};
+    form.fields.forEach((field) &#x3D;&gt; {
+      const validators &#x3D; this.getValidators(field);
+      //TODO find better way to get the editable body value
+      const value &#x3D; form.getValue(field.property);
+      control[field.property] &#x3D; new FormControl(value, validators)
     });
-    return fields;
+    return new FormGroup(control);
   }
 
-  /**
-   * Resolves the item with the given Array index or identifier (if configured)
-   */
-  id(identifier: any): Item&lt;T&gt; {
-    if (!this.config.identifier &amp;&amp; typeof identifier &#x3D;&#x3D;&#x3D; &#x27;number&#x27;) {
-      return this.items[identifier];
+  /** Extracts all validators from a given Field instance. */
+  getValidators(field: Field&lt;any&gt;): ValidatorFn[] {
+    const validators &#x3D; [];
+    if (field.required) {
+      validators.push(Validators.required);
     }
-    if (!this.config.identifier) {
-      throw new Error(&#x60;cannot get item with id ${identifier} &#x3D;&gt; config is missing idenfier&#x60;);
+    if (field.validate) {
+      validators.push(this.validateFactory(field));
     }
-    return this.items.find((item, key) &#x3D;&gt; {
-      return item.id() &#x3D;&#x3D;&#x3D; identifier;
-    });
+    return validators;
   }
 
-  /** Filters the list after the given property and value */
-  public filter(property: string, value: any &#x3D; &#x27;&#x27;, operator: string &#x3D; &#x27;exact&#x27;) {
-    //TODO find way to filter with pagination and without loosing filtered out items
-    this.page &#x3D; this.items.filter((item) &#x3D;&gt; {
-      return item.resolve(property).includes(value);
-    });
-  }
-
-  /** Changes the config&#x27;s sort variables to reflect the given sorting */
-  protected sortProperty(property: string, desc?: boolean) {
-    /* if (this.config.desc &amp;&amp; property &#x3D;&#x3D;&#x3D; this.config.sortBy) {
-       delete this.config.sortBy;
-       return;
-     }*/
-    if (property !&#x3D;&#x3D; this.config.sortBy) {
-      delete this.config.desc;
-    }
-    this.config.sortBy &#x3D; property;
-    this.config.desc &#x3D; this.config.desc &#x3D;&#x3D;&#x3D; undefined ? desc || false : !this.config.desc;
-  }
-
-  /** Sorts with given sorting, using the Sorter */
-  toggleSort(property: string, desc?: boolean) {
-    this.sortProperty(property, desc);
-    Sorter.sort(this.items, property, this.config.desc);
-    this.load(this.config);
-  }
-
-  /** Returns an Array of all unique values of the given property */
-  groupBy(property) {
-    delete this.groups;
-    const page &#x3D; this.pagination ? this.pagination.getPage() : 0;
-    if (!property || !this.config.fields || !this.config.fields[property] || !this.config.fields[property].group) {
-      this.groups &#x3D; [{
-        page,
-        sortBy: this.config.sortBy,
-        desc: this.config.desc
-      }];
-      return;
-    }
-    const groups &#x3D; [];
-    this.page.forEach(item &#x3D;&gt; {
-      let value &#x3D; item.group(property);
-      if (!groups.find((g) &#x3D;&gt; g.value &#x3D;&#x3D;&#x3D; value)) {
-        groups.push({
-          value,
-          page,
-          property: this.config.sortBy,
-          desc: this.config.desc
-        });
+  /** Returns a Validation function from the given field (using field.validate) */
+  validateFactory(field: Field&lt;any&gt;): ValidationErrors | null {
+    return (control: AbstractControl) &#x3D;&gt; {
+      if (!field.validate) {
+        return;
       }
-    });
-    this.groups &#x3D; groups;
+      const error &#x3D; field.validate(control.value, field);
+      if (field.validate(control.value, field)) {
+        return {
+          custom: error
+        }
+      }
+    }
   }
 
-  /** Item tracking for *ngFor. */
-  private trackItem(index, item) {
-    return index;
-  }
-}
-</code></pre>
+}</code></pre>
     </div>
 </div>
+
+
 
 
 

@@ -316,6 +316,9 @@
                                     <a href="../injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../injectables/FormService.html" >FormService</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/LoaderService.html" >LoaderService</a>
                                 </li>
                                 <li class="link">
@@ -732,6 +735,9 @@
                                            <a href="../injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../injectables/FormService.html" >FormService</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/LoaderService.html" >LoaderService</a>
                                        </li>
                                        <li class="link">
@@ -922,10 +928,10 @@
                                         <span class="modifier">Static</span> <a href="#displayEntries">displayEntries</a>
                                     </li>
                                     <li>
-                                        <span class="modifier">Static</span> <a href="#displayEntry">displayEntry</a>
+                                        <span class="modifier">Static</span> <a href="#get">get</a>
                                     </li>
                                     <li>
-                                        <span class="modifier">Static</span> <a href="#get">get</a>
+                                        <span class="modifier">Static</span> <a href="#resolveEntries">resolveEntries</a>
                                     </li>
                                 </ul>
                             </td>
@@ -958,45 +964,14 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="116" class="link-to-prism">src/packages/data/model-config/type-config.ts:116</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="131" class="link-to-prism">src/packages/data/model-config/type-config.ts:131</a></div>
                                         </td>
                                     </tr>
             
                             <tr>
                                 <td class="col-md-4">
-            
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="displayEntry"></a>
-                                    <b><span class="modifier">Static</span> displayEntry</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play export"></span>
-                                    <code>displayEntry(value: , entry: )</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="109" class="link-to-prism">src/packages/data/model-config/type-config.ts:109</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
+                                        <div class="io-description"><p>Displays one or multiple &quot;light&quot; entries </p>
+            </div>
             
                                         <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
@@ -1024,7 +999,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">src/packages/data/model-config/type-config.ts:94</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">src/packages/data/model-config/type-config.ts:98</a></div>
                                         </td>
                                     </tr>
             
@@ -1035,6 +1010,42 @@
             
                                         <div class="io-description">
                                             <b>Returns : </b>    <code><a href="../interfaces/FieldConfigProperty.html" target="_self" >FieldConfigProperty</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="resolveEntries"></a>
+                                    <b><span class="modifier">Static</span> resolveEntries</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon method fa fa-play export"></span>
+                                    <code>resolveEntries(entry: , item: , property: , value: )</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="115" class="link-to-prism">src/packages/data/model-config/type-config.ts:115</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Resolves entry/entries from nested resource or id inside (single and array).
+            Gives back standardizes &quot;light&quot; entries {id, _entryTitle} </p>
+            </div>
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
             
                                         </div>
                                 </td>
@@ -1107,11 +1118,13 @@ export class TypeConfig {
       view: &#x27;string&#x27;,
       filterable: true,
       sortable: true,
+      prefill: &#x27;Du alte sau&#x27;
     },
     boolean: {
       // sortable: true,
       filterable: true,
-      filterOperator: &#x27;exact&#x27;
+      filterOperator: &#x27;exact&#x27;,
+      prefill: true
     },
     formattedText: {
       view: &#x27;textarea&#x27;,
@@ -1153,13 +1166,15 @@ export class TypeConfig {
       view: &#x27;label&#x27;,
       input: DefaultEntryInputComponent,
       output: DefaultOutputComponent,
-      display: TypeConfig.displayEntry
+      resolve: TypeConfig.resolveEntries,
+      display: TypeConfig.displayEntries,
     },
     entries: {
       view: &#x27;labels&#x27;,
       input: DefaultEntryInputComponent,
       output: DefaultOutputComponent,
-      display: TypeConfig.displayEntries
+      resolve: TypeConfig.resolveEntries,
+      display: TypeConfig.displayEntries,
     },
     json: {
       input: DefaultEntryInputComponent,
@@ -1197,15 +1212,29 @@ export class TypeConfig {
     return config;
   }
 
-  static displayEntry(value, entry) {
-    if (typeof value &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) { //TODO use getLevels when ready
-      return value; //TODO wait for getTitle(property) implementation
+  /** Resolves entry/entries from nested resource or id inside (single and array).
+   * Gives back standardizes &quot;light&quot; entries {id, _entryTitle} */
+  static resolveEntries(entry, item, property, value &#x3D; entry[property]) {
+    if (Array.isArray(value)) {
+      return value ? value.map((e) &#x3D;&gt; TypeConfig.resolveEntries(entry, item, property, e)) : [];
     }
-    return value ? value.getTitle(&#x27;&#x27;) : &#x27;&#x27;;
+    if (typeof value &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
+      //TODO use getLevels when ready
+      //TODO is it possible to get the model title field of the nested entry? (and useful)
+      return { id: value, _entryTitle: &#x27;Simi&#x27; };
+      //TODO wait for getTitle(property) implementation
+    }
+    if (value &amp;&amp; value.getTitle) {
+      return { id: value.id, _entryTitle: value.getTitle(&#x27;&#x27;) }
+    }
   }
 
+  /** Displays one or multiple &quot;light&quot; entries */
   static displayEntries(value, entry) {
-    return value.map((item) &#x3D;&gt; TypeConfig.displayEntry(item, entry));
+    if (Array.isArray(value)) {
+      return value.map((nested) &#x3D;&gt; TypeConfig.displayEntries(nested, entry));
+    }
+    return value ? value._entryTitle : &#x27;&#x27;;
   }
 }</code></pre>
     </div>

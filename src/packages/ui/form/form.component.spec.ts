@@ -3,8 +3,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormComponent, InputErrorsComponent } from '..';
 import { InputComponent } from '../input/input.component';
 import { OutputComponent } from '../output/output.component';
-import { LoaderService } from '../loader/loader.service';
-import { NotificationsService } from '../notifications/notifications.service';
+import { LoaderModule } from '../loader/loader.module';
+import { FormService } from './form.service';
+import { NotificationsModule } from '../notifications/notifications.module';
 
 describe('FormComponent', () => {
   let component: FormComponent;
@@ -12,13 +13,9 @@ describe('FormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule],
+      imports: [ReactiveFormsModule, LoaderModule, NotificationsModule],
       declarations: [OutputComponent, FormComponent, InputComponent, InputErrorsComponent],
-      providers: [LoaderService,
-        {
-          provide: 'useDesktopNotifications',
-          useValue: false
-        }, NotificationsService]
+      providers: [FormService]
     })
     .compileComponents();
   }));

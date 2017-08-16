@@ -316,6 +316,9 @@
                                     <a href="../injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../injectables/FormService.html" >FormService</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/LoaderService.html" >LoaderService</a>
                                 </li>
                                 <li class="link">
@@ -732,6 +735,9 @@
                                            <a href="../injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../injectables/FormService.html" >FormService</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/LoaderService.html" >LoaderService</a>
                                        </li>
                                        <li class="link">
@@ -955,6 +961,9 @@
                                          <a href="#save">save</a>
                                     </li>
                                     <li>
+                                         <a href="#serialize">serialize</a>
+                                    </li>
+                                    <li>
                                          <a href="#sort">sort</a>
                                     </li>
                                     <li>
@@ -1051,15 +1060,14 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="117" class="link-to-prism">src/packages/core/item/item.ts:117</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="116" class="link-to-prism">src/packages/core/item/item.ts:116</a></div>
                                         </td>
                                     </tr>
             
                             <tr>
                                 <td class="col-md-4">
                                         <div class="io-description"><p>Returns the output of the config.display transformation function with the given property value.
-            If no display function is set, it will just return the property value.
-            Transforms the given field&#39;s value for displaying </p>
+            If no display function is set, it will just return the property value.</p>
             </div>
             
                                         <div class="io-description">
@@ -1362,7 +1370,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="130" class="link-to-prism">src/packages/core/item/item.ts:130</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="134" class="link-to-prism">src/packages/core/item/item.ts:134</a></div>
                                         </td>
                                     </tr>
             
@@ -1373,6 +1381,40 @@
             
                                         <div class="io-description">
                                             <b>Returns : </b>    <code>Promise&lt;&gt;</code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="serialize"></a>
+                                    <b> serialize</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>serialize(body: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, item: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, property: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">src/packages/core/item/item.ts:129</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Transforms the given field&#39;s value for serialization when saving. </p>
+            </div>
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
             
                                         </div>
                                 </td>
@@ -1396,7 +1438,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="125" class="link-to-prism">src/packages/core/item/item.ts:125</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">src/packages/core/item/item.ts:124</a></div>
                                         </td>
                                     </tr>
             
@@ -1652,7 +1694,7 @@ export class Item&lt;T&gt; {
       return this.body;
     }
     if (this.config.fields &amp;&amp; this.config.fields[property] &amp;&amp; this.config.fields[property].resolve) {
-      return this.config.fields[property].resolve(this.body, this);
+      return this.config.fields[property].resolve(this.body, this, property);
     }
     if (!this.config.resolve) {
       return this.body[property];
@@ -1680,7 +1722,6 @@ export class Item&lt;T&gt; {
 
   /** Returns the output of the config.display transformation function with the given property value.
    * If no display function is set, it will just return the property value.*/
-  /** Transforms the given field&#x27;s value for displaying */
   display(property?: string): any {
     if (!property) {
       return this.transform(&#x27;display&#x27;, this.config.label || this.getProperties()[0]); // Object.keys(this.resolve())[0]
@@ -1691,6 +1732,11 @@ export class Item&lt;T&gt; {
   /** Transforms the given field&#x27;s value for sorting */
   sort(property: string): any {
     return this.transform(&#x27;sort&#x27;, property);
+  }
+
+  /** Transforms the given field&#x27;s value for serialization when saving. */
+  serialize(body: any, item: any, property: string): any {
+    return this.transform(&#x27;serialize&#x27;, property);
   }
 
   /** Saves the given value. */

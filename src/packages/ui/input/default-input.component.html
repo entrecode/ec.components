@@ -1,24 +1,24 @@
 <fieldset [ngSwitch]="field.view" *ngIf="group" [formGroup]="group">
   <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>
-  <input *ngSwitchCase="'string'" type="text" [formControlName]="field.property"
+  <input *ngSwitchCase="'string'" type="text" [formControl]="control"
          [placeholder]="field.getPlaceholder()">
 
-  <textarea *ngSwitchCase="'textarea'" type="text" [formControlName]="field.property"
+  <textarea *ngSwitchCase="'textarea'" type="text" [formControl]="control"
             [placeholder]="field.getPlaceholder()"></textarea>
 
-  <input *ngSwitchCase="'number'" type="number" [formControlName]="field.property"
+  <input *ngSwitchCase="'number'" type="number"  [formControl]="control"
          [placeholder]="field.getPlaceholder()">
 
-  <input *ngSwitchCase="'boolean'" type="checkbox" [formControlName]="field.property"
+  <input *ngSwitchCase="'boolean'" type="checkbox"  [formControl]="control"
          [placeholder]="field.getPlaceholder()">
 
-  <input *ngSwitchCase="'email'" type="email" [formControlName]="field.property"
+  <input *ngSwitchCase="'email'" type="email"  [formControl]="control"
          [placeholder]="field.getPlaceholder()">
 
-  <input *ngSwitchCase="'url'" type="url" [formControlName]="field.property"
+  <input *ngSwitchCase="'url'" type="url"  [formControl]="control"
          [placeholder]="field.getPlaceholder()">
   
-  <ec-select *ngSwitchCase="'array'" [formControlName]="field.property"></ec-select>
+  <ec-select *ngSwitchCase="'array'"  [formControl]="control"></ec-select>
   <div *ngSwitchDefault>
     <ec-output [field]="field" [item]="item"></ec-output>
     <!--<marquee>🚂🚃🚃🚃 {{field.type}}/{{field.view}} input coming soon</marquee>-->

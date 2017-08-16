@@ -61,7 +61,7 @@ export class CrudService {
   update(model, entry: EntryResource, value: Object): Promise<EntryResource> {
     const oldValues = {}; //save old values
     Object.keys(value).forEach((key) => oldValues[key] = entry[key]);
-    Object.assign(entry, this.clean(value)); //assign new form values
+    Object.assign(entry, this.clean(value, oldValues)); //assign new form values
     return entry.save().then((entry) => {
       this.changes.emit({ model, entry, type: 'update' });
       return entry;
@@ -73,11 +73,19 @@ export class CrudService {
   }
 
   //TODO serialization => set boolean to false if null, etc. transform date
+  //could also be solved over prefills in type-config.... at least boolean
 
   /** Removes all null or undefined values from the given object */
-  clean(value: Object): Object {
+  clean(value: Object, oldValues: any = {}): Object {
     for (let key in value) {
       if (value[key] === null || value[key] === undefined || value[key] === '') {
+        //TODO find way to decide, when to send empty string and when not:
+        //  it is important to send it when an entries value needs to be "cleared"
+        //    e.g. to remove a description
+        //  it is though important to remove it for fields that require a validation
+        //    e.g. email fields will throw an error once clicked (filled with empty string)
+        //  should this be handled by the sdk or the module??!!
+        //    how to decide ???!?!!??!??!
         delete value[key];
       }
     }

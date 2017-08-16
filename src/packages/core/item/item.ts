@@ -125,6 +125,11 @@ export class Item<T> {
     return this.transform('sort', property);
   }
 
+  /** Transforms the given field's value for serialization when saving. */
+  serialize(body: any, item: any, property: string): any {
+    return this.transform('serialize', property);
+  }
+
   /** Saves the given value. */
   save(value: T): Promise<Item<T>> {
     if (this.config.onSave) {

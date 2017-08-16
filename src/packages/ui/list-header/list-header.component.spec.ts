@@ -1,12 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ListHeaderComponent } from '..';
-import { FormComponent } from '../form/form.component';
-import { InputComponent } from '../input/input.component';
-import { OutputComponent } from '../output/output.component';
-import { PopComponent } from '../pop/pop.component';
-import { LoaderService } from '../loader/loader.service';
-import { NotificationsService } from '../notifications/notifications.service';
+import { FormModule } from '../form/form.module';
+import { LoaderModule } from '../loader/loader.module';
+import { NotificationsModule } from '../notifications/notifications.module';
+import { PopModule } from '../pop/pop.module';
 
 describe('ListHeaderComponent', () => {
   let component: ListHeaderComponent;
@@ -14,13 +12,9 @@ describe('ListHeaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule],
-      declarations: [PopComponent, InputComponent, OutputComponent, FormComponent, ListHeaderComponent],
-      providers: [LoaderService,
-        {
-          provide: 'useDesktopNotifications',
-          useValue: false
-        }, NotificationsService]
+      imports: [ReactiveFormsModule, FormModule, LoaderModule, PopModule, NotificationsModule],
+      declarations: [ListHeaderComponent],
+      providers: []
     })
     .compileComponents();
   }));

@@ -316,6 +316,9 @@
                                     <a href="../injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../injectables/FormService.html" >FormService</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/LoaderService.html" >LoaderService</a>
                                 </li>
                                 <li class="link">
@@ -732,6 +735,9 @@
                                            <a href="../injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../injectables/FormService.html" >FormService</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/LoaderService.html" >LoaderService</a>
                                        </li>
                                        <li class="link">
@@ -1019,14 +1025,14 @@ changes.</p>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>clean(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank">Object</a>)</code>
+            <code>clean(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank">Object</a>, oldValues: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">src/packages/data/crud/crud.service.ts:78</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/packages/data/crud/crud.service.ts:79</a></div>
                                         </td>
                                     </tr>
             
@@ -1060,7 +1066,7 @@ changes.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/packages/data/crud/crud.service.ts:88</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">src/packages/data/crud/crud.service.ts:96</a></div>
                                         </td>
                                     </tr>
             
@@ -1094,7 +1100,7 @@ changes.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">src/packages/data/crud/crud.service.ts:99</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">src/packages/data/crud/crud.service.ts:107</a></div>
                                         </td>
                                     </tr>
             
@@ -1323,7 +1329,7 @@ export class CrudService {
   update(model, entry: EntryResource, value: Object): Promise&lt;EntryResource&gt; {
     const oldValues &#x3D; {}; //save old values
     Object.keys(value).forEach((key) &#x3D;&gt; oldValues[key] &#x3D; entry[key]);
-    Object.assign(entry, this.clean(value)); //assign new form values
+    Object.assign(entry, this.clean(value, oldValues)); //assign new form values
     return entry.save().then((entry) &#x3D;&gt; {
       this.changes.emit({ model, entry, type: &#x27;update&#x27; });
       return entry;
@@ -1335,11 +1341,19 @@ export class CrudService {
   }
 
   //TODO serialization &#x3D;&gt; set boolean to false if null, etc. transform date
+  //could also be solved over prefills in type-config.... at least boolean
 
   /** Removes all null or undefined values from the given object */
-  clean(value: Object): Object {
+  clean(value: Object, oldValues: any &#x3D; {}): Object {
     for (let key in value) {
       if (value[key] &#x3D;&#x3D;&#x3D; null || value[key] &#x3D;&#x3D;&#x3D; undefined || value[key] &#x3D;&#x3D;&#x3D; &#x27;&#x27;) {
+        //TODO find way to decide, when to send empty string and when not:
+        //  it is important to send it when an entries value needs to be &quot;cleared&quot;
+        //    e.g. to remove a description
+        //  it is though important to remove it for fields that require a validation
+        //    e.g. email fields will throw an error once clicked (filled with empty string)
+        //  should this be handled by the sdk or the module??!!
+        //    how to decide ???!?!!??!??!
         delete value[key];
       }
     }

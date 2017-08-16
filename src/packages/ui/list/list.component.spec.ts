@@ -9,11 +9,10 @@ import { Item } from '../../core/item/item';
 import { mocked } from '../../../mocks/data';
 import { Collection } from '../../core/collection/collection';
 import { PaginationComponent } from '../pagination/pagination.component';
-import { InputComponent } from '../input/input.component';
-import { OutputComponent } from '../output/output.component';
-import { FormComponent, NotificationsService } from "../index";
-import { PopComponent } from '../pop/pop.component';
-import { LoaderService } from '../loader/loader.service';
+import { FormModule } from '../form/form.module';
+import { PopModule } from '../pop/pop.module';
+import { NotificationsModule } from '../notifications/notifications.module';
+import { LoaderModule } from '../loader/loader.module';
 
 describe('ListComponent', () => {
   let component: ListComponent;
@@ -21,12 +20,9 @@ describe('ListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule],
-      declarations: [PopComponent, FormComponent, PaginationComponent, ListComponent, ListItemsComponent, ListHeaderComponent, GroupPipe, InputComponent, OutputComponent],
-      providers: [LoaderService, {
-        provide: 'useDesktopNotifications',
-        useValue: false
-      }, NotificationsService]
+      imports: [LoaderModule, FormModule, PopModule, NotificationsModule, ReactiveFormsModule],
+      declarations: [PaginationComponent, ListComponent, ListItemsComponent, ListHeaderComponent, GroupPipe],
+      providers: []
     })
     .compileComponents();
   }));

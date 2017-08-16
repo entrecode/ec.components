@@ -5,10 +5,13 @@
   </div> -->
   <div *ngSwitchCase="'entries'">
     <ec-output [field]="field" [item]="item"></ec-output>
+
+    <ec-input type="json" property="test"></ec-input>
+
     <span class="btn" (click)="toggleList=!toggleList">
       <i class="ec-icon list-bullets"></i>
     </span>
-    <ec-crud model="muffin" [config]="{popClass:'modal'}"
+    <ec-crud model="muffin" [config]="{popClass:'modal',listConfig:{fields:{name:{label:'N'}}}}"
              [hidden]="!toggleList" *ngIf="toggleList!==undefined"></ec-crud>
     <!--(selected)="crudSelection.add($event)"-->
     <!--[config]="{selection:crudSelection?.selection}"-->

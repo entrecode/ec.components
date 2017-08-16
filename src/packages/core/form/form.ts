@@ -32,4 +32,13 @@ export class Form<T> extends Item<T> {
   getField(property: string) {
     return this.fields.find((field) => field.property === property);
   }
+
+  /** Returns the original value of the property, if any. */
+  getValue(property: string, shouldPrefill: boolean = false) {
+    if (shouldPrefill && this.config.fields && this.config.fields[property]) {
+      return this.config.fields[property].prefill;
+    } else {
+      return (this.resolve() || {})[property];
+    }
+  }
 }

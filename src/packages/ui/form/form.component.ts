@@ -1,17 +1,11 @@
 import { Component, EventEmitter, Input, Output, } from '@angular/core';
-import {
-  AbstractControl,
-  FormControl,
-  FormGroup,
-  ValidationErrors,
-  ValidatorFn,
-  Validators
-} from '@angular/forms';
-import { Field, Form, FormConfig, Item } from '../../core';
+import { FormGroup } from '@angular/forms';
+import { Form, FormConfig, Item } from '../../core';
 import { ItemConfig } from '../../core/item/item-config.interface';
 import { LoaderComponent } from '../loader/loader.component';
 import { LoaderService } from '../loader/loader.service';
 import { NotificationsService } from '../notifications/notifications.service';
+import { FormService } from './form.service';
 
 /** This component renders a form using a FieldConfig Object. */
 @Component({
@@ -21,13 +15,13 @@ import { NotificationsService } from '../notifications/notifications.service';
 })
 export class FormComponent {
   /** The instance of Form that is used. */
-  form: Form<any>;
+  protected form: Form<any>;
   /** The current (angular) form group. */
   protected group: FormGroup;
   /** You can also use a FormConfig/ItemConfig as input (with defined fields property) */
-  @Input() config: FormConfig<any>;
+  @Input() readonly config: FormConfig<any>;
   /** You can also use an Item as input */
-  @Input() item: Item<any>;
+  @Input() readonly item: Item<any>;
   /** If you pass an object to value, the form will generate an item from it. */
   @Input() value: any;
   /** If set to true, the form will be rendered empty, to be referenced from the outside. */
@@ -42,23 +36,7 @@ export class FormComponent {
   @Output() change: EventEmitter<FormComponent> = new EventEmitter();
 
   /** Injects the services. */
-  constructor(protected loaderService: LoaderService, protected notificationService: NotificationsService) {
-  }
-
-  /** inits the forms item based on the given value, config or item */
-  protected initItem() {
-    if (this.value) {
-      this.item = new Item(this.value);
-    }
-    if (!this.item && !this.config) {
-      return;
-    }
-    if (this.item) {
-      Object.assign(this, this.item);
-    } else {
-      this.item = new Item(null, this.config);
-    }
-    return this.item;
+  constructor(protected loaderService: LoaderService, protected notificationService: NotificationsService, protected formService: FormService) {
   }
 
   /** On change, the form instance is (re)created by combining all inputs. If no item is given, an empty form is created using the config. You can also pass just an item to use its config and body.*/
@@ -67,95 +45,42 @@ export class FormComponent {
   }
 
   /** Inits the form (if ready) */
-  protected init() {
-    if (!this.initItem()) {
-      return;
+  protected init(item: Item<any> = this.item, config: FormConfig<any> = this.config) {
+    if (this.value) { //if value is set, create item from value only
+      this.form = new Form(this.value, config);
     }
-    this.form = new Form(this.item.resolve(), this.config);
-    this.initGroup();
-  }
-
-  /** Initializes the form group from the form fields*/
-  protected initGroup(force?: boolean) {
-    if (this.group && !force) {
-      return;
+    if (config) { //TODO prefill
+      this.form = new Form(null, config);
     }
-    const control = {};
-    this.form.fields.forEach((field) => {
-      const validators = this.getValidators(field);
-      control[field.property] = new FormControl(this.item.resolve(field.property), validators)
-    });
-    this.group = new FormGroup(control);
-    this.group.valueChanges.subscribe((change) => {
-      this.change.emit(this);
-    });
-  }
-
-  dirtyTalk() {
-    if (this.group.dirty) {
-      console.warn('form is dirty');
-      //TODO open dialog to either save or discard changes
+    if (item) {
+      this.form = new Form(item.getBody(), item.getConfig());
     }
-  }
-
-  /** edits a given Item instance by using its config and body. */
-  edit(item: Item<any>) {
-    this.dirtyTalk();
-    if (!item || !item.getConfig) {
-      console.warn('malicious item', item);
+    if (this.form) {
+      this.group = this.formService.getGroup(this.form);
+      this.group.valueChanges.subscribe((change) => {
+        this.change.emit(this);
+      });
     }
-    this.config = item.getConfig() || this.config;
-    this.item = item;
-    delete this.group;
-    this.ngOnChanges();
   }
 
   /* clears the form and uses the given config (falls back to existing one). Renders an empty form. */
   create(config?: ItemConfig<any>) {
     this.dirtyTalk();
-    this.config = config || this.config;
-    if (!this.config) {
-      console.warn('cannot create new form: no config present');
-      return;
-    }
-    delete this.group;
-    delete this.item;
-    delete this.value;
-    this.ngOnChanges();
+    this.init(null, config);
   }
 
-  validateFactory(field: Field<any>): ValidationErrors | null {
-    return (control: AbstractControl) => {
-      if (!field.validate) {
-        return;
-      }
-      const error = field.validate(control.value, field);
-      if (field.validate(control.value, field)) {
-        return {
-          custom: error
-        }
-      }
-    }
-  }
-
-  /** Extracts all validators from a given Field instance. */
-  getValidators(field: Field<any>): ValidatorFn[] {
-    const validators = [];
-    if (field.required) {
-      validators.push(Validators.required);
-    }
-    if (field.validate) {
-      validators.push(this.validateFactory(field));
-    }
-    return validators;
+  /** edits a given Item instance by using its config and body. */
+  edit(item: Item<any>) {
+    this.dirtyTalk();
+    this.init(item);
   }
 
   /** Method that is invoked when the form is submitted.*/
   submit() {
-    const submit = this.item.save(this.group.value)
-    .then((item) => {
+    const submit = this.form.save(this.group.value)
+    .then((form) => {
       this.submitted.emit(this.group);
-      this.edit(item);
+      this.edit(form);
       this.notificationService.emit({ //TODO pull out to entry-form?
         title: 'Eintrag gespeichert',
         type: 'success'
@@ -174,5 +99,13 @@ export class FormComponent {
   /** Returns the current value of the form control group. */
   getValue() {
     return this.group.value;
+  }
+
+  /** If dirty, opens a dialog that forces the user to decide if the current form should be saved or discarded. */
+  protected dirtyTalk() {
+    if (this.group && this.group.dirty) {
+      console.warn('form is dirty');
+      //TODO open dialog to either save or discard changes
+    }
   }
 }
