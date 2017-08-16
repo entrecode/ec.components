@@ -127,7 +127,10 @@
                                     <a href="../components/DefaultOutputComponent.html" >DefaultOutputComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/DynamicFieldComponent.html" >DynamicFieldComponent</a>
+                                    <a href="../components/DynamicRackComponent.html" >DynamicRackComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/DynamicSlotComponent.html" >DynamicSlotComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/EditorComponent.html" >EditorComponent</a>
@@ -225,7 +228,7 @@
                                 id="xs-directives-links"
                             >
                                 <li class="link">
-                                    <a href="../directives/FieldHostDirective.html" >FieldHostDirective</a>
+                                    <a href="../directives/SlotHostDirective.html" >SlotHostDirective</a>
                                 </li>
                                 <li class="link">
                                     <a href="../directives/ValidationOnBlurDirective.html" >ValidationOnBlurDirective</a>
@@ -540,7 +543,10 @@
                                            <a href="../components/DefaultOutputComponent.html" >DefaultOutputComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/DynamicFieldComponent.html" >DynamicFieldComponent</a>
+                                           <a href="../components/DynamicRackComponent.html" >DynamicRackComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/DynamicSlotComponent.html" >DynamicSlotComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/EditorComponent.html" >EditorComponent</a>
@@ -638,7 +644,7 @@
                                        id="directives-links"
                    >
                                        <li class="link">
-                                           <a href="../directives/FieldHostDirective.html" >FieldHostDirective</a>
+                                           <a href="../directives/SlotHostDirective.html" >SlotHostDirective</a>
                                        </li>
                                        <li class="link">
                                            <a href="../directives/ValidationOnBlurDirective.html" >ValidationOnBlurDirective</a>
@@ -1262,10 +1268,10 @@ export class EntryFormComponent extends FormComponent {
       &lt;li *ngFor&#x3D;&quot;let field of form?.fields&quot; [ngSwitch]&#x3D;&quot;field.view&quot;&gt;
         &lt;label&gt;
           {{field.label || field.property}}
-          &lt;ec-input *ngIf&#x3D;&quot;!field.readOnly&quot; [field]&#x3D;&quot;field&quot; [group]&#x3D;&quot;group&quot;
-                    [item]&#x3D;&quot;form&quot;&gt;&lt;/ec-input&gt;
-          &lt;ec-output *ngIf&#x3D;&quot;field.readOnly&quot; [field]&#x3D;&quot;field&quot; [item]&#x3D;&quot;form&quot;&gt;&lt;/ec-output&gt;
         &lt;/label&gt;
+        &lt;ec-input *ngIf&#x3D;&quot;!field.readOnly&quot; [field]&#x3D;&quot;field&quot; [group]&#x3D;&quot;group&quot;
+                  [item]&#x3D;&quot;form&quot;&gt;&lt;/ec-input&gt;
+        &lt;ec-output *ngIf&#x3D;&quot;field.readOnly&quot; [field]&#x3D;&quot;field&quot; [item]&#x3D;&quot;form&quot;&gt;&lt;/ec-output&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
     &lt;button type&#x3D;&quot;submit&quot; *ngIf&#x3D;&quot;submitButton!&#x3D;&#x3D;false&quot;
@@ -1300,9 +1306,9 @@ export class EntryFormComponent extends FormComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><form novalidate [formGroup]="group" (ngSubmit)="submit()" *ngIf="group">  <div #wrapper>    <ng-content></ng-content>  </div>  <div *ngIf="!wrapper.children.length&&!empty">    <ul>      <li *ngFor="let field of form?.fields" [ngSwitch]="field.view">        <label>          {{field.label || field.property}}          <ec-input *ngIf="!field.readOnly" [field]="field" [group]="group"                    [item]="form"></ec-input>          <ec-output *ngIf="field.readOnly" [field]="field" [item]="form"></ec-output>        </label>      </li>    </ul>    <button type="submit" *ngIf="submitButton!==false"            [disabled]="group.invalid"            [class.disabled]="group.invalid">      Speichern    </button>  </div></form></div>'
-    var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DefaultEntryInputComponent', 'selector': 'ec-default-entry-input'},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': 'ec-default-input'},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicFieldComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SelectionComponent', 'selector': 'ec-selection'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'}];
-    var DIRECTIVES = [{'name': 'FieldHostDirective', 'selector': '[ec-field-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
+        var COMPONENT_TEMPLATE = '<div><form novalidate [formGroup]="group" (ngSubmit)="submit()" *ngIf="group">  <div #wrapper>    <ng-content></ng-content>  </div>  <div *ngIf="!wrapper.children.length&&!empty">    <ul>      <li *ngFor="let field of form?.fields" [ngSwitch]="field.view">        <label>          {{field.label || field.property}}        </label>        <ec-input *ngIf="!field.readOnly" [field]="field" [group]="group"                  [item]="form"></ec-input>        <ec-output *ngIf="field.readOnly" [field]="field" [item]="form"></ec-output>      </li>    </ul>    <button type="submit" *ngIf="submitButton!==false"            [disabled]="group.invalid"            [class.disabled]="group.invalid">      Speichern    </button>  </div></form></div>'
+    var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DefaultEntryInputComponent', 'selector': 'ec-default-entry-input'},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': 'ec-default-input'},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SelectionComponent', 'selector': 'ec-selection'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'}];
+    var DIRECTIVES = [{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'EntryFormComponent'};
 </script>
 <script src="../js/tree.js"></script>

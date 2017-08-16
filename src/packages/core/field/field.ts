@@ -20,6 +20,10 @@ export class Field<T> implements FieldConfigProperty {
   output?: any;
   /** Placeholder in inputs */
   placeholder?: string;
+  /** Label for Inputs */
+  label?: string;
+  /** The operator to use for filtering: exact, search, any etc.. see ec.sdk doc */
+  filterOperator?: string;
 
   /** A Field is constructed by assigning the given config and the property to itself*/
   constructor(property: string, config: FieldConfigProperty = {}) {
@@ -29,6 +33,6 @@ export class Field<T> implements FieldConfigProperty {
 
   /** Returns placeholder if any */
   getPlaceholder() {
-    return this.placeholder || this.property;
+    return this.placeholder || this.label || this.property;
   }
 }

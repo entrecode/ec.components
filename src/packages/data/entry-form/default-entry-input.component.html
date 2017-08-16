@@ -2,14 +2,28 @@
   <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>
   <!--<div *ngSwitchCase="'entry'">
     {{item?.display(field.property)}}
-  </div>
+  </div> -->
   <div *ngSwitchCase="'entries'">
-    {{item?.display(field.property)}}
-  </div>-->
+    <ec-output [field]="field" [item]="item"></ec-output>
+    <span class="btn" (click)="toggleList=!toggleList">
+      <i class="ec-icon list-bullets"></i>
+    </span>
+    <ec-crud model="muffin" [config]="{popClass:'modal'}"
+             [hidden]="!toggleList" *ngIf="toggleList!==undefined"></ec-crud>
+    <!--(selected)="crudSelection.add($event)"-->
+    <!--[config]="{selection:crudSelection?.selection}"-->
+  </div>
+  <!--
+  - use entry resource array (lvl2)
+  - generate config via model-config
+  - use selection.component to display entries
+  - open crud-list on + (using existing selection)
+  -->
+
   <input *ngSwitchCase="'phone'" type="text" [placeholder]="field.placeholder">
   <!-- TODO -->
   <div *ngSwitchDefault>
-    <marquee>🚂🚃🚃🚃 {{field.type}} input coming soon..</marquee>
+    <!--<marquee>🚂🚃🚃🚃 {{field.type}} input coming soon..</marquee>-->
     <ec-output [field]="field" [item]="item"></ec-output>
   </div>
 </fieldset>

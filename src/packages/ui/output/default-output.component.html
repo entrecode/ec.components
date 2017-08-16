@@ -10,6 +10,13 @@
       </div>
     </li>
   </ul>
+  <ul class="labels-list" *ngSwitchCase="'label'">
+    <li>
+      <div class="label">
+        {{item.display(field.property)}}
+      </div>
+    </li>
+  </ul>
   <div *ngSwitchCase="'boolean'">
     <i class="ec-icon check-box" *ngIf="item.resolve(field.property)"></i>
   </div>

@@ -127,7 +127,10 @@
                                     <a href="../components/DefaultOutputComponent.html" >DefaultOutputComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/DynamicFieldComponent.html" >DynamicFieldComponent</a>
+                                    <a href="../components/DynamicRackComponent.html" >DynamicRackComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/DynamicSlotComponent.html" >DynamicSlotComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/EditorComponent.html" >EditorComponent</a>
@@ -225,7 +228,7 @@
                                 id="xs-directives-links"
                             >
                                 <li class="link">
-                                    <a href="../directives/FieldHostDirective.html" >FieldHostDirective</a>
+                                    <a href="../directives/SlotHostDirective.html" >SlotHostDirective</a>
                                 </li>
                                 <li class="link">
                                     <a href="../directives/ValidationOnBlurDirective.html" >ValidationOnBlurDirective</a>
@@ -540,7 +543,10 @@
                                            <a href="../components/DefaultOutputComponent.html" >DefaultOutputComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/DynamicFieldComponent.html" >DynamicFieldComponent</a>
+                                           <a href="../components/DynamicRackComponent.html" >DynamicRackComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/DynamicSlotComponent.html" >DynamicSlotComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/EditorComponent.html" >EditorComponent</a>
@@ -638,7 +644,7 @@
                                        id="directives-links"
                    >
                                        <li class="link">
-                                           <a href="../directives/FieldHostDirective.html" >FieldHostDirective</a>
+                                           <a href="../directives/SlotHostDirective.html" >SlotHostDirective</a>
                                        </li>
                                        <li class="link">
                                            <a href="../directives/ValidationOnBlurDirective.html" >ValidationOnBlurDirective</a>
@@ -934,6 +940,9 @@
                                          <a href="#filter">filter</a>
                                     </li>
                                     <li>
+                                        <span class="modifier">Private</span> <a href="#getFilterOperator">getFilterOperator</a>
+                                    </li>
+                                    <li>
                                         <span class="modifier">Private</span> <a href="#getFilterOptions">getFilterOptions</a>
                                     </li>
                                     <li>
@@ -1000,7 +1009,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">src/packages/data/entry-list/entry-list.ts:89</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">src/packages/data/entry-list/entry-list.ts:98</a></div>
                                         </td>
                                     </tr>
             
@@ -1011,6 +1020,41 @@
             
                                         <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="getFilterOperator"></a>
+                                    <b><span class="modifier">Private</span> getFilterOperator</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                    <code>getFilterOperator(property: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">src/packages/data/entry-list/entry-list.ts:89</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Returns the operator to use for filtering the given property. Defaults to search. </p>
+            </div>
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
             
                                         </div>
                                 </td>
@@ -1394,7 +1438,7 @@ export class EntryList&lt;Entry&gt; extends List&lt;Entry&gt; {
     .then((list) &#x3D;&gt; {
       this.use(list);
     }).catch((err) &#x3D;&gt; {
-      console.log(&#x27;err&#x27;, err);
+      console.error(&#x27;err&#x27;, err);
     });
     this.loading.next(loading);
     return loading;
@@ -1407,17 +1451,29 @@ export class EntryList&lt;Entry&gt; extends List&lt;Entry&gt; {
     this.load();
   }
 
-  /** Filters the entry list by a given property value. Triggers load */
-  filter(property: string, value: any, operator: string &#x3D; &#x27;search&#x27;) {
-    if (!value &amp;&amp; operator &#x3D;&#x3D;&#x3D; &#x27;search&#x27;) {
-      return this.load({ filter: {} });
+  /** Returns the operator to use for filtering the given property. Defaults to search. */
+  private getFilterOperator(property: string): string {
+    if (!this.fields) {
+      return &#x27;search&#x27;;
     }
-    return this.load({
-      filter: {
+    const field &#x3D; this.fields.find((field) &#x3D;&gt; field.property &#x3D;&#x3D;&#x3D; property);
+    return field &amp;&amp; field.filterOperator ? field.filterOperator : &#x27;search&#x27;;
+  }
+
+  /** Filters the entry list by a given property value. Triggers load */
+  filter(property: string, value: any &#x3D; &#x27;&#x27;, operator: string &#x3D; this.getFilterOperator(property)) {
+    const currentFilter &#x3D; this.config.filter || {};
+    if (value &#x3D;&#x3D;&#x3D; &#x27;&#x27; || value &#x3D;&#x3D;&#x3D; null || value &#x3D;&#x3D;&#x3D; undefined) {
+      delete currentFilter[property];
+    } else {
+      Object.assign(currentFilter, {
         [property]: {
           [operator]: value
         }
-      }
+      });
+    }
+    return this.load({
+      filter: currentFilter
     })
   }
 }

@@ -53,6 +53,8 @@ export interface FieldConfigProperty {
   readOnly?: boolean;
   /** if false, the field will not be filterable in a list */
   filterable?: boolean;
+  /** The operator to use for filtering: exact, search, any etc.. see ec.sdk doc */
+  filterOperator?: string;
   /** if false, the field will not be sortable in a list */
   sortable?: boolean;
   /** if false, the field will not be visible in a list */

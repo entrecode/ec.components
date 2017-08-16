@@ -101,6 +101,9 @@ export class FormComponent {
   /** edits a given Item instance by using its config and body. */
   edit(item: Item<any>) {
     this.dirtyTalk();
+    if (!item || !item.getConfig) {
+      console.warn('malicious item', item);
+    }
     this.config = item.getConfig() || this.config;
     this.item = item;
     delete this.group;

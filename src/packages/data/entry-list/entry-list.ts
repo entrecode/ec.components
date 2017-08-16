@@ -72,7 +72,7 @@ export class EntryList<Entry> extends List<Entry> {
     .then((list) => {
       this.use(list);
     }).catch((err) => {
-      console.log('err', err);
+      console.error('err', err);
     });
     this.loading.next(loading);
     return loading;
@@ -85,17 +85,29 @@ export class EntryList<Entry> extends List<Entry> {
     this.load();
   }
 
-  /** Filters the entry list by a given property value. Triggers load */
-  filter(property: string, value: any, operator: string = 'search') {
-    if (!value && operator === 'search') {
-      return this.load({ filter: {} });
+  /** Returns the operator to use for filtering the given property. Defaults to search. */
+  private getFilterOperator(property: string): string {
+    if (!this.fields) {
+      return 'search';
     }
-    return this.load({
-      filter: {
+    const field = this.fields.find((field) => field.property === property);
+    return field && field.filterOperator ? field.filterOperator : 'search';
+  }
+
+  /** Filters the entry list by a given property value. Triggers load */
+  filter(property: string, value: any = '', operator: string = this.getFilterOperator(property)) {
+    const currentFilter = this.config.filter || {};
+    if (value === '' || value === null || value === undefined) {
+      delete currentFilter[property];
+    } else {
+      Object.assign(currentFilter, {
         [property]: {
           [operator]: value
         }
-      }
+      });
+    }
+    return this.load({
+      filter: currentFilter
     })
   }
 }

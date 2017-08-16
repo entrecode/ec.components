@@ -7,7 +7,7 @@
   <div class="ec-list-item ec-list-header" *ngFor="let field of list?.fields"
        [class.hidden]="field.hidden">
     <ec-pop #filterPop class="popdown">
-      <a (click)="filterPop.hide()">
+      <a (click)="removeFilter(field.property);filterPop.hide()">
         <i class="ec-icon close"></i>
       </a>
       <ec-input [field]="field" [group]="filterForm?.group" [debounce]="200"
@@ -15,13 +15,13 @@
     </ec-pop>
     {{field.label || field.property}}
     <ul>
-      <li *ngIf="field.sortable!==false">
+      <li *ngIf="field.sortable">
         <a class="action" [class.active]="list.config?.sortBy===field.property"
            (click)="list.toggleSort(field.property)">
           <i class="ec-icon" [ngClass]="!list.config?.desc?'arrow-down':'arrow-up'"></i>
         </a>
       </li>
-      <li *ngIf="field.filterable!==false">
+      <li *ngIf="field.filterable">
         <a class="action" [class.active]="hasFilter(field.property)"
            (click)="editFilter(filterPop)">
           <i class="ec-icon find"></i>

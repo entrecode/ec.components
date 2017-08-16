@@ -5,10 +5,10 @@ import { FormComponent } from './form.component';
 import { InputComponent } from '../input/input.component';
 import { DefaultInputComponent } from '../input/default-input.component';
 import { DefaultOutputComponent } from '../output/default-output.component';
-import { DynamicFieldComponent } from '../dynamic-field/dynamic-field.component';
+import { DynamicSlotComponent } from '../dynamic-slot/dynamic-slot.component';
 import { OutputComponent } from '../output/output.component';
 import { InputErrorsComponent } from '../input-errors/input-errors.component';
-import { FieldHostDirective } from '../dynamic-field/field-host.directive';
+import { SlotHostDirective } from '../dynamic-slot/slot-host.directive';
 import { ReactiveFormsModule } from "@angular/forms";
 import { SelectComponent } from '../select/select.component';
 import { PopModule } from '../pop/pop.module';
@@ -25,9 +25,9 @@ import { SelectionComponent } from '../select/selection.component';
     OutputComponent,
     DefaultInputComponent,
     DefaultOutputComponent,
-    DynamicFieldComponent,
+    DynamicSlotComponent,
     InputErrorsComponent,
-    FieldHostDirective,
+    SlotHostDirective,
     SelectComponent,
     SelectionComponent,
   ],
@@ -42,7 +42,7 @@ import { SelectionComponent } from '../select/selection.component';
     InputComponent,
     OutputComponent,
     InputErrorsComponent,
-    FieldHostDirective,
+    SlotHostDirective,
     ReactiveFormsModule,
     SelectComponent,
     SelectionComponent,

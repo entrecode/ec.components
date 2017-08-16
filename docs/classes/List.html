@@ -127,7 +127,10 @@
                                     <a href="../components/DefaultOutputComponent.html" >DefaultOutputComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/DynamicFieldComponent.html" >DynamicFieldComponent</a>
+                                    <a href="../components/DynamicRackComponent.html" >DynamicRackComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/DynamicSlotComponent.html" >DynamicSlotComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/EditorComponent.html" >EditorComponent</a>
@@ -225,7 +228,7 @@
                                 id="xs-directives-links"
                             >
                                 <li class="link">
-                                    <a href="../directives/FieldHostDirective.html" >FieldHostDirective</a>
+                                    <a href="../directives/SlotHostDirective.html" >SlotHostDirective</a>
                                 </li>
                                 <li class="link">
                                     <a href="../directives/ValidationOnBlurDirective.html" >ValidationOnBlurDirective</a>
@@ -540,7 +543,10 @@
                                            <a href="../components/DefaultOutputComponent.html" >DefaultOutputComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/DynamicFieldComponent.html" >DynamicFieldComponent</a>
+                                           <a href="../components/DynamicRackComponent.html" >DynamicRackComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/DynamicSlotComponent.html" >DynamicSlotComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/EditorComponent.html" >EditorComponent</a>
@@ -638,7 +644,7 @@
                                        id="directives-links"
                    >
                                        <li class="link">
-                                           <a href="../directives/FieldHostDirective.html" >FieldHostDirective</a>
+                                           <a href="../directives/SlotHostDirective.html" >SlotHostDirective</a>
                                        </li>
                                        <li class="link">
                                            <a href="../directives/ValidationOnBlurDirective.html" >ValidationOnBlurDirective</a>
@@ -1665,7 +1671,7 @@ export class List&lt;T&gt; extends Collection&lt;Item&lt;T&gt;&gt; {
   }
 
   /** Filters the list after the given property and value */
-  public filter(property: string, value: any, operator: string &#x3D; &#x27;exact&#x27;) {
+  public filter(property: string, value: any &#x3D; &#x27;&#x27;, operator: string &#x3D; &#x27;exact&#x27;) {
     //TODO find way to filter with pagination and without loosing filtered out items
     this.page &#x3D; this.items.filter((item) &#x3D;&gt; {
       return item.resolve(property).includes(value);

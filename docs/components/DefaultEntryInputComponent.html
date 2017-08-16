@@ -127,7 +127,10 @@
                                     <a href="../components/DefaultOutputComponent.html" >DefaultOutputComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/DynamicFieldComponent.html" >DynamicFieldComponent</a>
+                                    <a href="../components/DynamicRackComponent.html" >DynamicRackComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/DynamicSlotComponent.html" >DynamicSlotComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/EditorComponent.html" >EditorComponent</a>
@@ -225,7 +228,7 @@
                                 id="xs-directives-links"
                             >
                                 <li class="link">
-                                    <a href="../directives/FieldHostDirective.html" >FieldHostDirective</a>
+                                    <a href="../directives/SlotHostDirective.html" >SlotHostDirective</a>
                                 </li>
                                 <li class="link">
                                     <a href="../directives/ValidationOnBlurDirective.html" >ValidationOnBlurDirective</a>
@@ -540,7 +543,10 @@
                                            <a href="../components/DefaultOutputComponent.html" >DefaultOutputComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/DynamicFieldComponent.html" >DynamicFieldComponent</a>
+                                           <a href="../components/DynamicRackComponent.html" >DynamicRackComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/DynamicSlotComponent.html" >DynamicSlotComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/EditorComponent.html" >EditorComponent</a>
@@ -638,7 +644,7 @@
                                        id="directives-links"
                    >
                                        <li class="link">
-                                           <a href="../directives/FieldHostDirective.html" >FieldHostDirective</a>
+                                           <a href="../directives/SlotHostDirective.html" >SlotHostDirective</a>
                                        </li>
                                        <li class="link">
                                            <a href="../directives/ValidationOnBlurDirective.html" >ValidationOnBlurDirective</a>
@@ -1053,14 +1059,28 @@ export class DefaultEntryInputComponent {
   &lt;ec-input-errors [control]&#x3D;&quot;group.get(field.property)&quot;&gt;&lt;/ec-input-errors&gt;
   &lt;!--&lt;div *ngSwitchCase&#x3D;&quot;&#x27;entry&#x27;&quot;&gt;
     {{item?.display(field.property)}}
-  &lt;/div&gt;
+  &lt;/div&gt; --&gt;
   &lt;div *ngSwitchCase&#x3D;&quot;&#x27;entries&#x27;&quot;&gt;
-    {{item?.display(field.property)}}
-  &lt;/div&gt;--&gt;
+    &lt;ec-output [field]&#x3D;&quot;field&quot; [item]&#x3D;&quot;item&quot;&gt;&lt;/ec-output&gt;
+    &lt;span class&#x3D;&quot;btn&quot; (click)&#x3D;&quot;toggleList&#x3D;!toggleList&quot;&gt;
+      &lt;i class&#x3D;&quot;ec-icon list-bullets&quot;&gt;&lt;/i&gt;
+    &lt;/span&gt;
+    &lt;ec-crud model&#x3D;&quot;muffin&quot; [config]&#x3D;&quot;{popClass:&#x27;modal&#x27;}&quot;
+             [hidden]&#x3D;&quot;!toggleList&quot; *ngIf&#x3D;&quot;toggleList!&#x3D;&#x3D;undefined&quot;&gt;&lt;/ec-crud&gt;
+    &lt;!--(selected)&#x3D;&quot;crudSelection.add($event)&quot;--&gt;
+    &lt;!--[config]&#x3D;&quot;{selection:crudSelection?.selection}&quot;--&gt;
+  &lt;/div&gt;
+  &lt;!--
+  - use entry resource array (lvl2)
+  - generate config via model-config
+  - use selection.component to display entries
+  - open crud-list on + (using existing selection)
+  --&gt;
+
   &lt;input *ngSwitchCase&#x3D;&quot;&#x27;phone&#x27;&quot; type&#x3D;&quot;text&quot; [placeholder]&#x3D;&quot;field.placeholder&quot;&gt;
   &lt;!-- TODO --&gt;
   &lt;div *ngSwitchDefault&gt;
-    &lt;marquee&gt;🚂🚃🚃🚃 {{field.type}} input coming soon..&lt;/marquee&gt;
+    &lt;!--&lt;marquee&gt;🚂🚃🚃🚃 {{field.type}} input coming soon..&lt;/marquee&gt;--&gt;
     &lt;ec-output [field]&#x3D;&quot;field&quot; [item]&#x3D;&quot;item&quot;&gt;&lt;/ec-output&gt;
   &lt;/div&gt;
 &lt;/fieldset&gt;</code></pre>
@@ -1089,9 +1109,9 @@ export class DefaultEntryInputComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><fieldset [ngSwitch]="field.type" *ngIf="group" [formGroup]="group">  <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>  <!--<div *ngSwitchCase="\'entry\'">    {{item?.display(field.property)}}  </div>  <div *ngSwitchCase="\'entries\'">    {{item?.display(field.property)}}  </div>-->  <input *ngSwitchCase="\'phone\'" type="text" [placeholder]="field.placeholder">  <!-- TODO -->  <div *ngSwitchDefault>    <marquee>🚂🚃🚃🚃 {{field.type}} input coming soon..</marquee>    <ec-output [field]="field" [item]="item"></ec-output>  </div></fieldset></div>'
-    var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DefaultEntryInputComponent', 'selector': 'ec-default-entry-input'},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': 'ec-default-input'},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicFieldComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SelectionComponent', 'selector': 'ec-selection'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'}];
-    var DIRECTIVES = [{'name': 'FieldHostDirective', 'selector': '[ec-field-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
+        var COMPONENT_TEMPLATE = '<div><fieldset [ngSwitch]="field.type" *ngIf="group" [formGroup]="group">  <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>  <!--<div *ngSwitchCase="\'entry\'">    {{item?.display(field.property)}}  </div> -->  <div *ngSwitchCase="\'entries\'">    <ec-output [field]="field" [item]="item"></ec-output>    <span class="btn" (click)="toggleList=!toggleList">      <i class="ec-icon list-bullets"></i>    </span>    <ec-crud model="muffin" [config]="{popClass:\'modal\'}"             [hidden]="!toggleList" *ngIf="toggleList!==undefined"></ec-crud>    <!--(selected)="crudSelection.add($event)"-->    <!--[config]="{selection:crudSelection?.selection}"-->  </div>  <!--  - use entry resource array (lvl2)  - generate config via model-config  - use selection.component to display entries  - open crud-list on + (using existing selection)  -->  <input *ngSwitchCase="\'phone\'" type="text" [placeholder]="field.placeholder">  <!-- TODO -->  <div *ngSwitchDefault>    <!--<marquee>🚂🚃🚃🚃 {{field.type}} input coming soon..</marquee>-->    <ec-output [field]="field" [item]="item"></ec-output>  </div></fieldset></div>'
+    var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DefaultEntryInputComponent', 'selector': 'ec-default-entry-input'},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': 'ec-default-input'},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SelectionComponent', 'selector': 'ec-selection'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'}];
+    var DIRECTIVES = [{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'DefaultEntryInputComponent'};
 </script>
 <script src="../js/tree.js"></script>

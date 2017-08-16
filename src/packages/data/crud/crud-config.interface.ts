@@ -22,4 +22,6 @@ export class CrudConfig {
   develop?: boolean;
   /** The selection that should be used */
   selection?: Selection<EntryResource>;
+  /** With how many levels should a list entry be loaded? Defaults to 1 (taking entry directly from the list, without loading)*/
+  levels?: number;
 }

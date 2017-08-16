@@ -127,7 +127,10 @@
                                     <a href="../components/DefaultOutputComponent.html" >DefaultOutputComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/DynamicFieldComponent.html" >DynamicFieldComponent</a>
+                                    <a href="../components/DynamicRackComponent.html" >DynamicRackComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/DynamicSlotComponent.html" >DynamicSlotComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/EditorComponent.html" >EditorComponent</a>
@@ -225,7 +228,7 @@
                                 id="xs-directives-links"
                             >
                                 <li class="link">
-                                    <a href="../directives/FieldHostDirective.html" >FieldHostDirective</a>
+                                    <a href="../directives/SlotHostDirective.html" >SlotHostDirective</a>
                                 </li>
                                 <li class="link">
                                     <a href="../directives/ValidationOnBlurDirective.html" >ValidationOnBlurDirective</a>
@@ -540,7 +543,10 @@
                                            <a href="../components/DefaultOutputComponent.html" >DefaultOutputComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/DynamicFieldComponent.html" >DynamicFieldComponent</a>
+                                           <a href="../components/DynamicRackComponent.html" >DynamicRackComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/DynamicSlotComponent.html" >DynamicSlotComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/EditorComponent.html" >EditorComponent</a>
@@ -638,7 +644,7 @@
                                        id="directives-links"
                    >
                                        <li class="link">
-                                           <a href="../directives/FieldHostDirective.html" >FieldHostDirective</a>
+                                           <a href="../directives/SlotHostDirective.html" >SlotHostDirective</a>
                                        </li>
                                        <li class="link">
                                            <a href="../directives/ValidationOnBlurDirective.html" >ValidationOnBlurDirective</a>
@@ -888,7 +894,7 @@
         <h3>Extends</h3>
     </p>
     <p class="comment">
-            <code><a href="../classes/Field.html" target="_self" >DynamicFieldComponent</a></code>
+            <code><a href="../components/DynamicSlotComponent.html" target="_self" >DynamicSlotComponent</a></code>
     </p>
 
 
@@ -919,7 +925,7 @@
 
             <tr>
                 <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>./input.component.html</code></td>
+                <td class="col-md-9"><code>../dynamic-slot/dynamic-slot.component.html</code></td>
             </tr>
 
 
@@ -957,7 +963,13 @@
                                 <a href="#debounce">debounce</a>
                             </li>
                             <li>
+                                <a href="#field">field</a>
+                            </li>
+                            <li>
                                 <a href="#group">group</a>
+                            </li>
+                            <li>
+                                <a href="#item">item</a>
                             </li>
                         </ul>
                     </td>
@@ -1004,7 +1016,30 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/packages/ui/input/input.component.ts:18</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/packages/ui/input/input.component.ts:20</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="field"></a>
+                            <code>field</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>The instance of field that should be used in the template </p>
+</div>
+                              <p>
+                                <em>Type:</em>    <code><a href="../classes/Field.html" target="_self" >Field&lt;any&gt;</a></code>
+
+                              </p>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/packages/ui/input/input.component.ts:22</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1027,7 +1062,30 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/packages/ui/input/input.component.ts:14</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/packages/ui/input/input.component.ts:16</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="item"></a>
+                            <code>item</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>The belonging item </p>
+</div>
+                              <p>
+                                <em>Type:</em>    <code><a href="../classes/Item.html" target="_self" >Item&lt;any&gt;</a></code>
+
+                              </p>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/packages/ui/input/input.component.ts:24</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1052,7 +1110,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/packages/ui/input/input.component.ts:16</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/packages/ui/input/input.component.ts:18</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1081,7 +1139,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/packages/ui/input/input.component.ts:20</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/packages/ui/input/input.component.ts:26</a></div>
                                 </td>
                             </tr>
     
@@ -1105,28 +1163,38 @@
         <pre class="line-numbers"><code class="language-typescript">import { Component, EventEmitter, Input, Output } from &#x27;@angular/core&#x27;;
 
 import { FormGroup } from &#x27;@angular/forms&#x27;;
-import { DynamicFieldComponent } from &#x27;../dynamic-field/dynamic-field.component&#x27;;
+import { DynamicSlotComponent } from &#x27;../dynamic-slot/dynamic-slot.component&#x27;;
 import { DefaultInputComponent } from &#x27;./default-input.component&#x27;;
+import { Field } from &#x27;../../core/field/field&#x27;;
+import { Item } from &#x27;../../core/item/item&#x27;;
 
 /** This directive can be used to display a field. It is used inside ec-form as well as ec-list. */
 @Component({
   selector: &#x27;ec-input&#x27;,
-  templateUrl: &#x27;./input.component.html&#x27;,
+  templateUrl: &#x27;../dynamic-slot/dynamic-slot.component.html&#x27;,
 })
-export class InputComponent extends DynamicFieldComponent {
+export class InputComponent extends DynamicSlotComponent {
   /** The belonging form group */
   @Input() group: FormGroup;
   /** The changed ouput emits whenever the form control of the input changes. */
   @Output() changed &#x3D; new EventEmitter();
   /** Debounce time in ms before the changed event emits. */
   @Input() debounce: number &#x3D; 0;
+  /** The instance of field that should be used in the template */
+  @Input() field: Field&lt;any&gt;;
+  /** The belonging item */
+  @Input() item: Item&lt;any&gt;;
 
   ngOnChanges() {
     if (this.field &amp;&amp; this.group) {
-      const componentRef &#x3D; this.loadComponent(this.field.input || DefaultInputComponent);
-      componentRef.instance.group &#x3D; this.group;
-      componentRef.instance.control &#x3D; this.group.get(this.field.property);
+      const data &#x3D; {
+        group: this.group,
+        control: this.group.get(this.field.property),
+        item: this.item,
+        field: this.field
+      };
 
+      const componentRef &#x3D; this.loadComponent(this.field.input || DefaultInputComponent, data);
       if (componentRef.instance.control) {
         componentRef.instance.control.valueChanges
         .debounceTime(this.debounce)
@@ -1141,8 +1209,7 @@ export class InputComponent extends DynamicFieldComponent {
     </div>
 
     <div class="tab-pane fade" id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;ng-template ec-field-host&gt;&lt;/ng-template&gt;
-</code></pre>
+        <pre class="line-numbers"><code class="language-html">&lt;ng-template ec-slot-host&gt;&lt;/ng-template&gt;</code></pre>
     </div>
 
     <div class="tab-pane fade" id="tree">
@@ -1168,9 +1235,9 @@ export class InputComponent extends DynamicFieldComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ng-template ec-field-host></ng-template></div>'
-    var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DefaultEntryInputComponent', 'selector': 'ec-default-entry-input'},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': 'ec-default-input'},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicFieldComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SelectionComponent', 'selector': 'ec-selection'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'}];
-    var DIRECTIVES = [{'name': 'FieldHostDirective', 'selector': '[ec-field-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
+        var COMPONENT_TEMPLATE = '<div><ng-template ec-slot-host></ng-template></div>'
+    var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DefaultEntryInputComponent', 'selector': 'ec-default-entry-input'},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': 'ec-default-input'},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SelectionComponent', 'selector': 'ec-selection'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'}];
+    var DIRECTIVES = [{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'InputComponent'};
 </script>
 <script src="../js/tree.js"></script>

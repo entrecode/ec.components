@@ -25,13 +25,18 @@ export class ListHeaderComponent {
   /** opens the given filter pop and closes all others */
   private editFilter(pop) {
     pop.toggle();
-    this.pops.forEach((pop) => pop.hide());
+    // this.pops.forEach((pop) => pop.hide());
   }
 
   /** Applies the given filter to the list. */
   private applyFilter(property, value) {
     this.currentFilterProperty = property;
     this.list.filter(property, value);
+  }
+
+  private removeFilter(property) {
+    delete this.currentFilterProperty;
+    this.list.filter(property, '');
   }
 
   /** Returns true if the property is currently filtered. */

@@ -127,7 +127,10 @@
                                     <a href="../components/DefaultOutputComponent.html" >DefaultOutputComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/DynamicFieldComponent.html" >DynamicFieldComponent</a>
+                                    <a href="../components/DynamicRackComponent.html" >DynamicRackComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/DynamicSlotComponent.html" >DynamicSlotComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/EditorComponent.html" >EditorComponent</a>
@@ -225,7 +228,7 @@
                                 id="xs-directives-links"
                             >
                                 <li class="link">
-                                    <a href="../directives/FieldHostDirective.html" >FieldHostDirective</a>
+                                    <a href="../directives/SlotHostDirective.html" >SlotHostDirective</a>
                                 </li>
                                 <li class="link">
                                     <a href="../directives/ValidationOnBlurDirective.html" >ValidationOnBlurDirective</a>
@@ -540,7 +543,10 @@
                                            <a href="../components/DefaultOutputComponent.html" >DefaultOutputComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/DynamicFieldComponent.html" >DynamicFieldComponent</a>
+                                           <a href="../components/DynamicRackComponent.html" >DynamicRackComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/DynamicSlotComponent.html" >DynamicSlotComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/EditorComponent.html" >EditorComponent</a>
@@ -638,7 +644,7 @@
                                        id="directives-links"
                    >
                                        <li class="link">
-                                           <a href="../directives/FieldHostDirective.html" >FieldHostDirective</a>
+                                           <a href="../directives/SlotHostDirective.html" >SlotHostDirective</a>
                                        </li>
                                        <li class="link">
                                            <a href="../directives/ValidationOnBlurDirective.html" >ValidationOnBlurDirective</a>
@@ -905,10 +911,16 @@
                             <td class="col-md-4">
                                 <ul class="index-list">
                                     <li>
+                                         <a href="#filterOperator">filterOperator</a>
+                                    </li>
+                                    <li>
                                          <a href="#hidden">hidden</a>
                                     </li>
                                     <li>
                                          <a href="#input">input</a>
+                                    </li>
+                                    <li>
+                                         <a href="#label">label</a>
                                     </li>
                                     <li>
                                          <a href="#output">output</a>
@@ -963,7 +975,7 @@
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/packages/core/field/field.ts:22</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/packages/core/field/field.ts:26</a></div>
                                         </td>
                                     </tr>
             
@@ -999,7 +1011,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/packages/core/field/field.ts:31</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/packages/core/field/field.ts:35</a></div>
                                         </td>
                                     </tr>
             
@@ -1024,6 +1036,41 @@
                     <h3 id="inputs">
                         Properties
                     </h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="filterOperator"></a>
+                                    <b> filterOperator</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>filterOperator:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+            </code>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+            
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/packages/core/field/field.ts:26</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The operator to use for filtering: exact, search, any etc.. see ec.sdk doc </p>
+            </div>
+                                </td>
+                            </tr>
+            
+                        </tbody>
+                    </table>
                     <table class="table table-sm table-bordered">
                         <tbody>
                             <tr>
@@ -1088,6 +1135,41 @@
                             <tr>
                                 <td class="col-md-4">
                                     <div class="io-description"><p>Custom Component to display form input *</p>
+            </div>
+                                </td>
+                            </tr>
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="label"></a>
+                                    <b> label</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>label:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+            </code>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+            
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/packages/core/field/field.ts:24</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Label for Inputs </p>
             </div>
                                 </td>
                             </tr>
@@ -1366,6 +1448,10 @@ export class Field&lt;T&gt; implements FieldConfigProperty {
   output?: any;
   /** Placeholder in inputs */
   placeholder?: string;
+  /** Label for Inputs */
+  label?: string;
+  /** The operator to use for filtering: exact, search, any etc.. see ec.sdk doc */
+  filterOperator?: string;
 
   /** A Field is constructed by assigning the given config and the property to itself*/
   constructor(property: string, config: FieldConfigProperty &#x3D; {}) {
@@ -1375,7 +1461,7 @@ export class Field&lt;T&gt; implements FieldConfigProperty {
 
   /** Returns placeholder if any */
   getPlaceholder() {
-    return this.placeholder || this.property;
+    return this.placeholder || this.label || this.property;
   }
 }
 </code></pre>

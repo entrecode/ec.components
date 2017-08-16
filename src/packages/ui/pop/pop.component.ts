@@ -38,10 +38,11 @@ export class PopComponent {
   /** Hides the pop. First removes visible and after the delay it removes active. */
   public hide() {
     this.visible = false;
-    if (this.delay) {
-      setTimeout(() => {
-        this.active = false;
-      }, this.delay);
+    if (!this.delay) {
+      return;
     }
+    setTimeout(() => {
+      this.active = false;
+    }, this.delay);
   }
 }

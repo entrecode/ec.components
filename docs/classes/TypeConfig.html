@@ -127,7 +127,10 @@
                                     <a href="../components/DefaultOutputComponent.html" >DefaultOutputComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/DynamicFieldComponent.html" >DynamicFieldComponent</a>
+                                    <a href="../components/DynamicRackComponent.html" >DynamicRackComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/DynamicSlotComponent.html" >DynamicSlotComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/EditorComponent.html" >EditorComponent</a>
@@ -225,7 +228,7 @@
                                 id="xs-directives-links"
                             >
                                 <li class="link">
-                                    <a href="../directives/FieldHostDirective.html" >FieldHostDirective</a>
+                                    <a href="../directives/SlotHostDirective.html" >SlotHostDirective</a>
                                 </li>
                                 <li class="link">
                                     <a href="../directives/ValidationOnBlurDirective.html" >ValidationOnBlurDirective</a>
@@ -540,7 +543,10 @@
                                            <a href="../components/DefaultOutputComponent.html" >DefaultOutputComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/DynamicFieldComponent.html" >DynamicFieldComponent</a>
+                                           <a href="../components/DynamicRackComponent.html" >DynamicRackComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/DynamicSlotComponent.html" >DynamicSlotComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/EditorComponent.html" >EditorComponent</a>
@@ -638,7 +644,7 @@
                                        id="directives-links"
                    >
                                        <li class="link">
-                                           <a href="../directives/FieldHostDirective.html" >FieldHostDirective</a>
+                                           <a href="../directives/SlotHostDirective.html" >SlotHostDirective</a>
                                        </li>
                                        <li class="link">
                                            <a href="../directives/ValidationOnBlurDirective.html" >ValidationOnBlurDirective</a>
@@ -952,7 +958,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">src/packages/data/model-config/type-config.ts:112</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="116" class="link-to-prism">src/packages/data/model-config/type-config.ts:116</a></div>
                                         </td>
                                     </tr>
             
@@ -985,7 +991,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">src/packages/data/model-config/type-config.ts:105</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="109" class="link-to-prism">src/packages/data/model-config/type-config.ts:109</a></div>
                                         </td>
                                     </tr>
             
@@ -1018,7 +1024,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">src/packages/data/model-config/type-config.ts:90</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">src/packages/data/model-config/type-config.ts:94</a></div>
                                         </td>
                                     </tr>
             
@@ -1065,7 +1071,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/packages/data/model-config/type-config.ts:15</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/packages/data/model-config/type-config.ts:14</a></div>
                                         </td>
                                     </tr>
             
@@ -1093,7 +1099,6 @@ import { FieldConfigProperty } from &#x27;../../core/config/field-config-propert
 
 /** The TypeConfig holds each field type&#x27;s specific behaviour in certain situations */
 export class TypeConfig {
-
   //todo add way to map default filter types
   //todo (exact,search etc) for field types e.g. number does not support search
   /** Defines the base configuration of each type.*/
@@ -1104,8 +1109,9 @@ export class TypeConfig {
       sortable: true,
     },
     boolean: {
+      // sortable: true,
       filterable: true,
-      sortable: true
+      filterOperator: &#x27;exact&#x27;
     },
     formattedText: {
       view: &#x27;textarea&#x27;,
@@ -1114,6 +1120,8 @@ export class TypeConfig {
     },
     number: {
       sortable: true,
+      filterable: true,
+      filterOperator: &#x27;exact&#x27;
     },
     decimal: {
       view: &#x27;number&#x27;,
@@ -1142,13 +1150,15 @@ export class TypeConfig {
       display: (value) &#x3D;&gt; moment(value).format(&#x27;DD.MM.YY&#x27;)
     },
     entry: {
+      view: &#x27;label&#x27;,
       input: DefaultEntryInputComponent,
-      output: DefaultEntryOutputComponent,
+      output: DefaultOutputComponent,
       display: TypeConfig.displayEntry
     },
     entries: {
+      view: &#x27;labels&#x27;,
       input: DefaultEntryInputComponent,
-      output: DefaultEntryOutputComponent,
+      output: DefaultOutputComponent,
       display: TypeConfig.displayEntries
     },
     json: {

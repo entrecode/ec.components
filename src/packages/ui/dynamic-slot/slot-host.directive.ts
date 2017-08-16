@@ -4,9 +4,9 @@ import { Directive, ViewContainerRef } from '@angular/core';
  * see https://angular.io/guide/dynamic-component-loader
  * */
 @Directive({
-  selector: '[ec-field-host]',
+  selector: '[ec-slot-host]',
 })
-export class FieldHostDirective {
+export class SlotHostDirective {
   /** The constructor exposes the viewContainer that is used to load components into from outside.*/
   constructor(public viewContainerRef: ViewContainerRef) {
   }

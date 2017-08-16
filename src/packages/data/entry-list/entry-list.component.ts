@@ -61,9 +61,4 @@ export class EntryListComponent extends ListComponent {
   filter(property: string, value: any, operator: string = 'search') {
     this.list.filter(property, value, operator);
   }
-
-  /** Callback when an entry is clicked. */
-  selectEntry(entry) {
-    this.select.emit(entry);
-  }
 }

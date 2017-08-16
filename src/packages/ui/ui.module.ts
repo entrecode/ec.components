@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { DynamicFieldComponent } from './dynamic-field/dynamic-field.component';
 import { DefaultOutputComponent } from './output/default-output.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { TabComponent } from './tab/tab.component';
@@ -16,7 +15,6 @@ import { FormModule } from './form/form.module';
 
 @NgModule({
   entryComponents: [
-    DynamicFieldComponent,
     DefaultOutputComponent,
   ],
   declarations: [

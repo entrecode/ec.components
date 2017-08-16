@@ -21,11 +21,11 @@ export class CrudComponent {
   /** CrudConfig for customization of the crud's UI.*/
   @Input() config: CrudConfig = {};
   /** The EntryForm inside the template. */
-  @ViewChild('crudForm') form: EntryFormComponent;
+  @ViewChild(EntryFormComponent) form: EntryFormComponent;
   /** The EntryList inside the template. */
-  @ViewChild('crudList') list: EntryListComponent;
+  @ViewChild(EntryListComponent) list: EntryListComponent;
   /** The Pop inside the template. */
-  @ViewChild('formPop') pop: PopComponent;
+  @ViewChild(PopComponent) pop: PopComponent;
   /** Emits when a list element is clicked */
   @Output() select: EventEmitter<any> = new EventEmitter();
   /** Emits when the selection has changed */
@@ -51,19 +51,25 @@ export class CrudComponent {
   }
 
   /** Is called when an item in the list is clicked. */
-  private selectEntry(entry) {
-    if (this.select.observers.length) {
-      this.select.emit(entry);
+  private selectEntry(item, form) {
+    if (!item) {
       return;
     }
-    //TODO show loader, fetch errors
-    this.sdk.api.entry(this.model, entry.id(), 2)
-    .then((leveledEntry) => {
-      const entryItem = new Item(leveledEntry, entry.config);
-      this.form.edit(entryItem);
+    if (this.select.observers.length) {
+      this.select.emit(item);
+      return;
+    }
+    return Promise.resolve().then(() => {
+      if (!this.config.levels || this.config.levels === 1) {
+        return item;
+      }
+      return this.sdk.api.entry(this.model, item.id(), 2)
+      .then((leveledEntry) => {
+        return new Item(leveledEntry, item.config);
+      });
+    }).then((loadedEntry) => {
+      this.form.edit(loadedEntry);
       this.pop.show();
     });
-    /*    this.form.edit(entry);
-        this.pop.show();*/
   }
 }

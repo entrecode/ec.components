@@ -127,7 +127,10 @@
                                     <a href="../components/DefaultOutputComponent.html" >DefaultOutputComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/DynamicFieldComponent.html" >DynamicFieldComponent</a>
+                                    <a href="../components/DynamicRackComponent.html" >DynamicRackComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/DynamicSlotComponent.html" >DynamicSlotComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/EditorComponent.html" >EditorComponent</a>
@@ -225,7 +228,7 @@
                                 id="xs-directives-links"
                             >
                                 <li class="link">
-                                    <a href="../directives/FieldHostDirective.html" >FieldHostDirective</a>
+                                    <a href="../directives/SlotHostDirective.html" >SlotHostDirective</a>
                                 </li>
                                 <li class="link">
                                     <a href="../directives/ValidationOnBlurDirective.html" >ValidationOnBlurDirective</a>
@@ -540,7 +543,10 @@
                                            <a href="../components/DefaultOutputComponent.html" >DefaultOutputComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/DynamicFieldComponent.html" >DynamicFieldComponent</a>
+                                           <a href="../components/DynamicRackComponent.html" >DynamicRackComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/DynamicSlotComponent.html" >DynamicSlotComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/EditorComponent.html" >EditorComponent</a>
@@ -638,7 +644,7 @@
                                        id="directives-links"
                    >
                                        <li class="link">
-                                           <a href="../directives/FieldHostDirective.html" >FieldHostDirective</a>
+                                           <a href="../directives/SlotHostDirective.html" >SlotHostDirective</a>
                                        </li>
                                        <li class="link">
                                            <a href="../directives/ValidationOnBlurDirective.html" >ValidationOnBlurDirective</a>
@@ -1246,7 +1252,7 @@
                     <tr>
                         <td class="col-md-4">
                                 <span class="modifier-icon method fa fa-play lock"></span>
-                            <code>selectEntry(entry: )</code>
+                            <code>selectEntry(item: , form: )</code>
                         </td>
                     </tr>
     
@@ -1263,7 +1269,7 @@
     </div>
     
                                 <div class="io-description">
-                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
     
                                 </div>
                         </td>
@@ -1422,11 +1428,11 @@ export class CrudComponent {
   /** CrudConfig for customization of the crud&#x27;s UI.*/
   @Input() config: CrudConfig &#x3D; {};
   /** The EntryForm inside the template. */
-  @ViewChild(&#x27;crudForm&#x27;) form: EntryFormComponent;
+  @ViewChild(EntryFormComponent) form: EntryFormComponent;
   /** The EntryList inside the template. */
-  @ViewChild(&#x27;crudList&#x27;) list: EntryListComponent;
+  @ViewChild(EntryListComponent) list: EntryListComponent;
   /** The Pop inside the template. */
-  @ViewChild(&#x27;formPop&#x27;) pop: PopComponent;
+  @ViewChild(PopComponent) pop: PopComponent;
   /** Emits when a list element is clicked */
   @Output() select: EventEmitter&lt;any&gt; &#x3D; new EventEmitter();
   /** Emits when the selection has changed */
@@ -1452,35 +1458,43 @@ export class CrudComponent {
   }
 
   /** Is called when an item in the list is clicked. */
-  private selectEntry(entry) {
-    if (this.select.observers.length) {
-      this.select.emit(entry);
+  private selectEntry(item, form) {
+    if (!item) {
       return;
     }
-    //TODO show loader, fetch errors
-    this.sdk.api.entry(this.model, entry.id(), 2)
-    .then((leveledEntry) &#x3D;&gt; {
-      const entryItem &#x3D; new Item(leveledEntry, entry.config);
-      this.form.edit(entryItem);
+    if (this.select.observers.length) {
+      this.select.emit(item);
+      return;
+    }
+    return Promise.resolve().then(() &#x3D;&gt; {
+      if (!this.config.levels || this.config.levels &#x3D;&#x3D;&#x3D; 1) {
+        return item;
+      }
+      return this.sdk.api.entry(this.model, item.id(), 2)
+      .then((leveledEntry) &#x3D;&gt; {
+        return new Item(leveledEntry, item.config);
+      });
+    }).then((loadedEntry) &#x3D;&gt; {
+
+      console.log(&#x27;edit!&#x27;, loadedEntry);
+      this.form.edit(loadedEntry);
       this.pop.show();
     });
-    /*    this.form.edit(entry);
-        this.pop.show();*/
   }
 }</code></pre>
     </div>
 
     <div class="tab-pane fade" id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;button (click)&#x3D;&quot;crudForm.create();formPop.show()&quot; *ngIf&#x3D;&quot;hasMethod(&#x27;create&#x27;)&quot;&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;button (click)&#x3D;&quot;crudForm.create();formPop.show()&quot; *ngIf&#x3D;&quot;hasMethod(&#x27;create&#x27;)&quot; type&#x3D;&quot;button&quot;&gt;
   {{this.config?.createLabel||&#x27;New Entry&#x27;}}
 &lt;/button&gt;
 &lt;ec-entry-list [model]&#x3D;&quot;model&quot; [config]&#x3D;&quot;config?.listConfig&quot; [solo]&#x3D;&quot;true&quot;
                *ngIf&#x3D;&quot;hasMethod(&#x27;read&#x27;)&quot; [selection]&#x3D;&quot;config.selection&quot;
                [loader]&#x3D;&quot;config?.loader||listLoader&quot;
-               #crudList (select)&#x3D;&quot;selectEntry($event)&quot;&gt;
+               (select)&#x3D;&quot;selectEntry($event,crudForm)&quot;&gt;
 &lt;/ec-entry-list&gt;
 &lt;ec-loader #listLoader class&#x3D;&quot;blend&quot;&gt;&lt;/ec-loader&gt;
-&lt;ec-pop #formPop class&#x3D;&quot;modal&quot;&gt;
+&lt;ec-pop #formPop [ngClass]&#x3D;&quot;config?.popClass||&#x27;modal&#x27;&quot;&gt;
   &lt;nav&gt;
     &lt;button (click)&#x3D;&quot;log(crudForm)&quot; *ngIf&#x3D;&quot;config?.develop&quot;&gt;
       &lt;i class&#x3D;&quot;ec-icon code&quot;&gt;&lt;/i&gt;
@@ -1492,7 +1506,7 @@ export class CrudComponent {
             [class.disabled]&#x3D;&quot;crudForm.group?.invalid&quot; *ngIf&#x3D;&quot;maySave(crudForm)&quot;&gt;
       &lt;i class&#x3D;&quot;ec-icon save&quot;&gt;&lt;/i&gt;
     &lt;/button&gt;
-    &lt;button (click)&#x3D;&quot;formPop.hide()&quot;&gt;
+    &lt;button (click)&#x3D;&quot;formPop.hide()&quot; type&#x3D;&quot;button&quot;&gt;
       &lt;i class&#x3D;&quot;ec-icon close&quot;&gt;&lt;/i&gt;
     &lt;/button&gt;
   &lt;/nav&gt;
@@ -1528,9 +1542,9 @@ export class CrudComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><button (click)="crudForm.create();formPop.show()" *ngIf="hasMethod(\'create\')">  {{this.config?.createLabel||\'New Entry\'}}</button><ec-entry-list [model]="model" [config]="config?.listConfig" [solo]="true"               *ngIf="hasMethod(\'read\')" [selection]="config.selection"               [loader]="config?.loader||listLoader"               #crudList (select)="selectEntry($event)"></ec-entry-list><ec-loader #listLoader class="blend"></ec-loader><ec-pop #formPop class="modal">  <nav>    <button (click)="log(crudForm)" *ngIf="config?.develop">      <i class="ec-icon code"></i>    </button>    <button (click)="crudForm.deleteEntry()" *ngIf="hasMethod(\'delete\')&&crudForm.isEditing()">      <i class="ec-icon trash"></i>    </button>    <button (click)="crudForm.submit()" [disabled]="crudForm.group?.invalid"            [class.disabled]="crudForm.group?.invalid" *ngIf="maySave(crudForm)">      <i class="ec-icon save"></i>    </button>    <button (click)="formPop.hide()">      <i class="ec-icon close"></i>    </button>  </nav>  <ec-entry-form [model]="model" [submitButton]="false" [loader]="popLoader"                 (submit)="!this.config?.keepPopOpen&&formPop.hide()" (deleted)="formPop.hide()"                 #crudForm></ec-entry-form>  <ec-loader #popLoader class="blend"></ec-loader></ec-pop><ec-notifications class="toast" *ngIf="!this.config?.notifications"></ec-notifications></div>'
-    var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DefaultEntryInputComponent', 'selector': 'ec-default-entry-input'},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': 'ec-default-input'},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicFieldComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SelectionComponent', 'selector': 'ec-selection'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'}];
-    var DIRECTIVES = [{'name': 'FieldHostDirective', 'selector': '[ec-field-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
+        var COMPONENT_TEMPLATE = '<div><button (click)="crudForm.create();formPop.show()" *ngIf="hasMethod(\'create\')" type="button">  {{this.config?.createLabel||\'New Entry\'}}</button><ec-entry-list [model]="model" [config]="config?.listConfig" [solo]="true"               *ngIf="hasMethod(\'read\')" [selection]="config.selection"               [loader]="config?.loader||listLoader"               (select)="selectEntry($event,crudForm)"></ec-entry-list><ec-loader #listLoader class="blend"></ec-loader><ec-pop #formPop [ngClass]="config?.popClass||\'modal\'">  <nav>    <button (click)="log(crudForm)" *ngIf="config?.develop">      <i class="ec-icon code"></i>    </button>    <button (click)="crudForm.deleteEntry()" *ngIf="hasMethod(\'delete\')&&crudForm.isEditing()">      <i class="ec-icon trash"></i>    </button>    <button (click)="crudForm.submit()" [disabled]="crudForm.group?.invalid"            [class.disabled]="crudForm.group?.invalid" *ngIf="maySave(crudForm)">      <i class="ec-icon save"></i>    </button>    <button (click)="formPop.hide()" type="button">      <i class="ec-icon close"></i>    </button>  </nav>  <ec-entry-form [model]="model" [submitButton]="false" [loader]="popLoader"                 (submit)="!this.config?.keepPopOpen&&formPop.hide()" (deleted)="formPop.hide()"                 #crudForm></ec-entry-form>  <ec-loader #popLoader class="blend"></ec-loader></ec-pop><ec-notifications class="toast" *ngIf="!this.config?.notifications"></ec-notifications></div>'
+    var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DefaultEntryInputComponent', 'selector': 'ec-default-entry-input'},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': 'ec-default-input'},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SelectionComponent', 'selector': 'ec-selection'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'}];
+    var DIRECTIVES = [{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'CrudComponent'};
 </script>
 <script src="../js/tree.js"></script>

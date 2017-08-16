@@ -127,7 +127,10 @@
                                     <a href="../components/DefaultOutputComponent.html" >DefaultOutputComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/DynamicFieldComponent.html" >DynamicFieldComponent</a>
+                                    <a href="../components/DynamicRackComponent.html" >DynamicRackComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/DynamicSlotComponent.html" >DynamicSlotComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/EditorComponent.html" >EditorComponent</a>
@@ -225,7 +228,7 @@
                                 id="xs-directives-links"
                             >
                                 <li class="link">
-                                    <a href="../directives/FieldHostDirective.html" >FieldHostDirective</a>
+                                    <a href="../directives/SlotHostDirective.html" >SlotHostDirective</a>
                                 </li>
                                 <li class="link">
                                     <a href="../directives/ValidationOnBlurDirective.html" >ValidationOnBlurDirective</a>
@@ -540,7 +543,10 @@
                                            <a href="../components/DefaultOutputComponent.html" >DefaultOutputComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/DynamicFieldComponent.html" >DynamicFieldComponent</a>
+                                           <a href="../components/DynamicRackComponent.html" >DynamicRackComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/DynamicSlotComponent.html" >DynamicSlotComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/EditorComponent.html" >EditorComponent</a>
@@ -638,7 +644,7 @@
                                        id="directives-links"
                    >
                                        <li class="link">
-                                           <a href="../directives/FieldHostDirective.html" >FieldHostDirective</a>
+                                           <a href="../directives/SlotHostDirective.html" >SlotHostDirective</a>
                                        </li>
                                        <li class="link">
                                            <a href="../directives/ValidationOnBlurDirective.html" >ValidationOnBlurDirective</a>
@@ -966,6 +972,9 @@
                             <li>
                                 <span class="modifier">Private</span> <a href="#hasFilter">hasFilter</a>
                             </li>
+                            <li>
+                                <span class="modifier">Private</span> <a href="#removeFilter">removeFilter</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -1135,7 +1144,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/packages/ui/list-header/list-header.component.ts:38</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/packages/ui/list-header/list-header.component.ts:43</a></div>
                                 </td>
                             </tr>
     
@@ -1146,6 +1155,39 @@
     
                                 <div class="io-description">
                                     <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="removeFilter"></a>
+                            <b><span class="modifier">Private</span> removeFilter</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <span class="modifier-icon method fa fa-play lock"></span>
+                            <code>removeFilter(property: )</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/packages/ui/list-header/list-header.component.ts:37</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
     
                                 </div>
                         </td>
@@ -1306,13 +1348,18 @@ export class ListHeaderComponent {
   /** opens the given filter pop and closes all others */
   private editFilter(pop) {
     pop.toggle();
-    this.pops.forEach((pop) &#x3D;&gt; pop.hide());
+    // this.pops.forEach((pop) &#x3D;&gt; pop.hide());
   }
 
   /** Applies the given filter to the list. */
   private applyFilter(property, value) {
     this.currentFilterProperty &#x3D; property;
     this.list.filter(property, value);
+  }
+
+  private removeFilter(property) {
+    delete this.currentFilterProperty;
+    this.list.filter(property, &#x27;&#x27;);
   }
 
   /** Returns true if the property is currently filtered. */
@@ -1334,7 +1381,7 @@ export class ListHeaderComponent {
   &lt;div class&#x3D;&quot;ec-list-item ec-list-header&quot; *ngFor&#x3D;&quot;let field of list?.fields&quot;
        [class.hidden]&#x3D;&quot;field.hidden&quot;&gt;
     &lt;ec-pop #filterPop class&#x3D;&quot;popdown&quot;&gt;
-      &lt;a (click)&#x3D;&quot;filterPop.hide()&quot;&gt;
+      &lt;a (click)&#x3D;&quot;removeFilter(field.property);filterPop.hide()&quot;&gt;
         &lt;i class&#x3D;&quot;ec-icon close&quot;&gt;&lt;/i&gt;
       &lt;/a&gt;
       &lt;ec-input [field]&#x3D;&quot;field&quot; [group]&#x3D;&quot;filterForm?.group&quot; [debounce]&#x3D;&quot;200&quot;
@@ -1342,13 +1389,13 @@ export class ListHeaderComponent {
     &lt;/ec-pop&gt;
     {{field.label || field.property}}
     &lt;ul&gt;
-      &lt;li *ngIf&#x3D;&quot;field.sortable!&#x3D;&#x3D;false&quot;&gt;
+      &lt;li *ngIf&#x3D;&quot;field.sortable&quot;&gt;
         &lt;a class&#x3D;&quot;action&quot; [class.active]&#x3D;&quot;list.config?.sortBy&#x3D;&#x3D;&#x3D;field.property&quot;
            (click)&#x3D;&quot;list.toggleSort(field.property)&quot;&gt;
           &lt;i class&#x3D;&quot;ec-icon&quot; [ngClass]&#x3D;&quot;!list.config?.desc?&#x27;arrow-down&#x27;:&#x27;arrow-up&#x27;&quot;&gt;&lt;/i&gt;
         &lt;/a&gt;
       &lt;/li&gt;
-      &lt;li *ngIf&#x3D;&quot;field.filterable!&#x3D;&#x3D;false&quot;&gt;
+      &lt;li *ngIf&#x3D;&quot;field.filterable&quot;&gt;
         &lt;a class&#x3D;&quot;action&quot; [class.active]&#x3D;&quot;hasFilter(field.property)&quot;
            (click)&#x3D;&quot;editFilter(filterPop)&quot;&gt;
           &lt;i class&#x3D;&quot;ec-icon find&quot;&gt;&lt;/i&gt;
@@ -1383,9 +1430,9 @@ export class ListHeaderComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="ec-list-group-header" *ngIf="!disableHeader">  <div class="ec-list-item-cell ec-list-checkbox" *ngIf="selection">    <input type="checkbox" (click)="selection?.toggleAll(list?.items)"           [checked]="selection?.hasAll(list?.items)">  </div>  <ec-form [config]="list?.config" [empty]="true" #filterForm></ec-form>  <div class="ec-list-item ec-list-header" *ngFor="let field of list?.fields"       [class.hidden]="field.hidden">    <ec-pop #filterPop class="popdown">      <a (click)="filterPop.hide()">        <i class="ec-icon close"></i>      </a>      <ec-input [field]="field" [group]="filterForm?.group" [debounce]="200"                (changed)="applyFilter(field.property, $event)"></ec-input>    </ec-pop>    {{field.label || field.property}}    <ul>      <li *ngIf="field.sortable!==false">        <a class="action" [class.active]="list.config?.sortBy===field.property"           (click)="list.toggleSort(field.property)">          <i class="ec-icon" [ngClass]="!list.config?.desc?\'arrow-down\':\'arrow-up\'"></i>        </a>      </li>      <li *ngIf="field.filterable!==false">        <a class="action" [class.active]="hasFilter(field.property)"           (click)="editFilter(filterPop)">          <i class="ec-icon find"></i>        </a>      </li>    </ul>  </div></div></div>'
-    var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DefaultEntryInputComponent', 'selector': 'ec-default-entry-input'},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': 'ec-default-input'},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicFieldComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SelectionComponent', 'selector': 'ec-selection'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'}];
-    var DIRECTIVES = [{'name': 'FieldHostDirective', 'selector': '[ec-field-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
+        var COMPONENT_TEMPLATE = '<div><div class="ec-list-group-header" *ngIf="!disableHeader">  <div class="ec-list-item-cell ec-list-checkbox" *ngIf="selection">    <input type="checkbox" (click)="selection?.toggleAll(list?.items)"           [checked]="selection?.hasAll(list?.items)">  </div>  <ec-form [config]="list?.config" [empty]="true" #filterForm></ec-form>  <div class="ec-list-item ec-list-header" *ngFor="let field of list?.fields"       [class.hidden]="field.hidden">    <ec-pop #filterPop class="popdown">      <a (click)="removeFilter(field.property);filterPop.hide()">        <i class="ec-icon close"></i>      </a>      <ec-input [field]="field" [group]="filterForm?.group" [debounce]="200"                (changed)="applyFilter(field.property, $event)"></ec-input>    </ec-pop>    {{field.label || field.property}}    <ul>      <li *ngIf="field.sortable">        <a class="action" [class.active]="list.config?.sortBy===field.property"           (click)="list.toggleSort(field.property)">          <i class="ec-icon" [ngClass]="!list.config?.desc?\'arrow-down\':\'arrow-up\'"></i>        </a>      </li>      <li *ngIf="field.filterable">        <a class="action" [class.active]="hasFilter(field.property)"           (click)="editFilter(filterPop)">          <i class="ec-icon find"></i>        </a>      </li>    </ul>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DefaultEntryInputComponent', 'selector': 'ec-default-entry-input'},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': 'ec-default-input'},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SelectionComponent', 'selector': 'ec-selection'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'}];
+    var DIRECTIVES = [{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'ListHeaderComponent'};
 </script>
 <script src="../js/tree.js"></script>

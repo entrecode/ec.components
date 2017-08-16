@@ -7,10 +7,10 @@
       <li *ngFor="let field of form?.fields" [ngSwitch]="field.view">
         <label>
           {{field.label || field.property}}
-          <ec-input *ngIf="!field.readOnly" [field]="field" [group]="group"
-                    [item]="form"></ec-input>
-          <ec-output *ngIf="field.readOnly" [field]="field" [item]="form"></ec-output>
         </label>
+        <ec-input *ngIf="!field.readOnly" [field]="field" [group]="group"
+                  [item]="form"></ec-input>
+        <ec-output *ngIf="field.readOnly" [field]="field" [item]="form"></ec-output>
       </li>
     </ul>
     <button type="submit" *ngIf="submitButton!==false"

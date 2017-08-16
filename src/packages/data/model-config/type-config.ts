@@ -8,7 +8,6 @@ import { FieldConfigProperty } from '../../core/config/field-config-property.int
 
 /** The TypeConfig holds each field type's specific behaviour in certain situations */
 export class TypeConfig {
-
   //todo add way to map default filter types
   //todo (exact,search etc) for field types e.g. number does not support search
   /** Defines the base configuration of each type.*/
@@ -19,8 +18,9 @@ export class TypeConfig {
       sortable: true,
     },
     boolean: {
+      // sortable: true,
       filterable: true,
-      sortable: true
+      filterOperator: 'exact'
     },
     formattedText: {
       view: 'textarea',
@@ -29,6 +29,8 @@ export class TypeConfig {
     },
     number: {
       sortable: true,
+      filterable: true,
+      filterOperator: 'exact'
     },
     decimal: {
       view: 'number',
@@ -57,13 +59,15 @@ export class TypeConfig {
       display: (value) => moment(value).format('DD.MM.YY')
     },
     entry: {
+      view: 'label',
       input: DefaultEntryInputComponent,
-      output: DefaultEntryOutputComponent,
+      output: DefaultOutputComponent,
       display: TypeConfig.displayEntry
     },
     entries: {
+      view: 'labels',
       input: DefaultEntryInputComponent,
-      output: DefaultEntryOutputComponent,
+      output: DefaultOutputComponent,
       display: TypeConfig.displayEntries
     },
     json: {
