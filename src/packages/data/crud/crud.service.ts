@@ -67,7 +67,7 @@ export class CrudService {
       return entry;
     })
     .catch((err) => {
-      Object.assign(entry, oldValues); //fall back to old values
+      Object.assign(entry, this.clean(oldValues)); //fall back to old values
       return Promise.reject(err);
     });
   }

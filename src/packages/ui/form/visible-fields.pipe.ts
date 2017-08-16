@@ -1,13 +1,13 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Field } from '../../core/field/field';
 
-/** The GroupPipe filters an array of Item instances by a given property value.
- * It is meant to be used to get only the items with the exact same value. */
+/** The VisibleFieldsPipe filters an array of Fields to only give back the ones that have form NOT set to false. */
 @Pipe({
   name: 'visibleFields'
 })
 export class VisibleFieldsPipe implements PipeTransform {
-  transform(fields: Array<Field<any>>, type: string = 'form'): any {
+  /** Filters out all fields that should not be displayed in a regular form */
+  transform(fields: Array<Field<any>>): any {
     return fields.filter((field) => {
       return field.form !== false;
     });

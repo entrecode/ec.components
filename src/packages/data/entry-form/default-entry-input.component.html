@@ -12,7 +12,8 @@
       <i class="ec-icon list-bullets"></i>
     </span>
     <ec-crud model="muffin" [config]="{popClass:'modal',listConfig:{fields:{name:{label:'N'}}}}"
-             [hidden]="!toggleList" *ngIf="toggleList!==undefined"></ec-crud>
+             [hidden]="!toggleList" *ngIf="toggleList!==undefined"
+             (select)="entrySelect.list?.selection?.toggle($event)" #entrySelect></ec-crud>
     <!--(selected)="crudSelection.add($event)"-->
     <!--[config]="{selection:crudSelection?.selection}"-->
   </div>

@@ -85,21 +85,22 @@ export class ModelConfig extends Config {
       fieldConfig = config;
       return this.sdk.api.getSchema(model);
     }).then((schema) => {
-      schema = schema.allOf[1].properties;
-      const properties = Object.keys(schema)
+      schema = schema.allOf[1];
+      const properties = Object.keys(schema.properties)
       .filter(property => (!fieldConfig && !this.isSystemProperty(property)) || (fieldConfig && !!fieldConfig[property]));
       fieldConfig = fieldConfig || {};
       properties.forEach(property => {
-        const type = this.parseType(schema[property].title);
+        const type = this.parseType(schema.properties[property].title);
         if (!type) {
-          console.error('Model Property Schema title ', schema[property].title, ' was unexpected, ignoring property', property)
+          console.error('Model Property Schema title ', schema.properties[property].title, ' was unexpected, ignoring property', property)
           return;
         }
         fieldConfig[property] = Object.assign({
             label: property,
-            schema: schema[property],
+            schema: schema.properties[property],
             model: type.model,
-            readOnly: schema[property].readOnly,
+            readOnly: schema.properties[property].readOnly,
+            // required: schema.required.indexOf(property) !== -1,
             display: ((value) => value)
           }, fieldConfig[property] ? fieldConfig[property] : {},
           TypeConfig.get(type.name));
