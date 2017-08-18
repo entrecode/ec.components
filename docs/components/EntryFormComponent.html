@@ -322,7 +322,7 @@
                                     <a href="../injectables/LoaderService.html" >LoaderService</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../injectables/ModelConfig.html" >ModelConfig</a>
+                                    <a href="../injectables/ModelConfigService.html" >ModelConfigService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/NotificationsService.html" >NotificationsService</a>
@@ -747,7 +747,7 @@
                                            <a href="../injectables/LoaderService.html" >LoaderService</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../injectables/ModelConfig.html" >ModelConfig</a>
+                                           <a href="../injectables/ModelConfigService.html" >ModelConfigService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/NotificationsService.html" >NotificationsService</a>
@@ -1020,7 +1020,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(loaderService: <a href="../injectables/LoaderService.html">LoaderService</a>, modelConfig: <a href="../injectables/ModelConfig.html">ModelConfig</a>, notificationService: <a href="../injectables/NotificationsService.html">NotificationsService</a>, crud: <a href="../injectables/CrudService.html">CrudService</a>, formService: <a href="../injectables/FormService.html">FormService</a>)</code>
+                            <code>constructor(loaderService: <a href="../injectables/LoaderService.html">LoaderService</a>, modelConfig: <a href="../injectables/ModelConfigService.html">ModelConfigService</a>, notificationService: <a href="../injectables/NotificationsService.html">NotificationsService</a>, crud: <a href="../injectables/CrudService.html">CrudService</a>, formService: <a href="../injectables/FormService.html">FormService</a>)</code>
                         </td>
                     </tr>
                             <tr>
@@ -1211,7 +1211,7 @@
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { Component, EventEmitter, Input, Output } from &#x27;@angular/core&#x27;;
 import { FormComponent } from &#x27;../../ui/form/form.component&#x27;;
-import { ModelConfig } from &#x27;../model-config/model-config&#x27;;
+import { ModelConfigService } from &#x27;../model-config/model-config.service&#x27;;
 import { LoaderService } from &#x27;../../ui/loader/loader.service&#x27;;
 import { NotificationsService } from &#x27;../../ui/notifications/notifications.service&#x27;;
 import { CrudService } from &#x27;../crud/crud.service&#x27;;
@@ -1232,7 +1232,7 @@ export class EntryFormComponent extends FormComponent {
   @Output() deleted: EventEmitter&lt;any&gt; &#x3D; new EventEmitter();
 
   /** Injects the required services. */
-  constructor(protected loaderService: LoaderService, private modelConfig: ModelConfig, protected notificationService: NotificationsService, protected crud: CrudService, protected formService: FormService) {
+  constructor(protected loaderService: LoaderService, private modelConfig: ModelConfigService, protected notificationService: NotificationsService, protected crud: CrudService, protected formService: FormService) {
     super(loaderService, notificationService, formService);
   }
 

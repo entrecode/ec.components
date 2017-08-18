@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormComponent } from '../../ui/form/form.component';
-import { ModelConfig } from '../model-config/model-config';
+import { ModelConfigService } from '../model-config/model-config.service';
 import { LoaderService } from '../../ui/loader/loader.service';
 import { NotificationsService } from '../../ui/notifications/notifications.service';
 import { CrudService } from '../crud/crud.service';
@@ -21,7 +21,7 @@ export class EntryFormComponent extends FormComponent {
   @Output() deleted: EventEmitter<any> = new EventEmitter();
 
   /** Injects the required services. */
-  constructor(protected loaderService: LoaderService, private modelConfig: ModelConfig, protected notificationService: NotificationsService, protected crud: CrudService, protected formService: FormService) {
+  constructor(protected loaderService: LoaderService, private modelConfig: ModelConfigService, protected notificationService: NotificationsService, protected crud: CrudService, protected formService: FormService) {
     super(loaderService, notificationService, formService);
   }
 

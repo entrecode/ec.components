@@ -322,7 +322,7 @@
                                     <a href="../injectables/LoaderService.html" >LoaderService</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../injectables/ModelConfig.html" >ModelConfig</a>
+                                    <a href="../injectables/ModelConfigService.html" >ModelConfigService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/NotificationsService.html" >NotificationsService</a>
@@ -747,7 +747,7 @@
                                            <a href="../injectables/LoaderService.html" >LoaderService</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../injectables/ModelConfig.html" >ModelConfig</a>
+                                           <a href="../injectables/ModelConfigService.html" >ModelConfigService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/NotificationsService.html" >NotificationsService</a>
@@ -1026,7 +1026,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(loaderService: <a href="../injectables/LoaderService.html">LoaderService</a>, sdk: <a href="../injectables/SdkService.html">SdkService</a>, modelConfig: <a href="../injectables/ModelConfig.html">ModelConfig</a>, crud: <a href="../injectables/CrudService.html">CrudService</a>)</code>
+                            <code>constructor(loaderService: <a href="../injectables/LoaderService.html">LoaderService</a>, sdk: <a href="../injectables/SdkService.html">SdkService</a>, modelConfig: <a href="../injectables/ModelConfigService.html">ModelConfigService</a>, crud: <a href="../injectables/CrudService.html">CrudService</a>)</code>
                         </td>
                     </tr>
                             <tr>
@@ -1269,7 +1269,7 @@
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { Component, Input } from &#x27;@angular/core&#x27;;
 import { SdkService } from &#x27;../sdk/sdk.service&#x27;;
-import { ModelConfig } from &#x27;../model-config/model-config&#x27;;
+import { ModelConfigService } from &#x27;../model-config/model-config.service&#x27;;
 import { LoaderComponent } from &#x27;../../ui/loader/loader.component&#x27;;
 import { LoaderService } from &#x27;../../ui/loader/loader.service&#x27;;
 import { ListComponent } from &#x27;../../ui/list/list.component&#x27;;
@@ -1297,7 +1297,7 @@ export class EntryListComponent extends ListComponent {
   @Input() loader: LoaderComponent;
 
   /** The constructor will just call super of List*/
-  constructor(protected loaderService: LoaderService, private sdk: SdkService, private modelConfig: ModelConfig, private crud: CrudService) {
+  constructor(protected loaderService: LoaderService, private sdk: SdkService, private modelConfig: ModelConfigService, private crud: CrudService) {
     super();
   }
 

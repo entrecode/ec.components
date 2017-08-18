@@ -1,5 +1,5 @@
 export * from './model-config/model-configuration.interface'
-export * from './model-config/model-config'
+export * from './model-config/model-config.service'
 export * from './entry-list/entry-list-config'
 export * from './entry-list/entry-list'
 export * from './entry-list/entry-list.component'

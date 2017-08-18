@@ -1,9 +1,9 @@
-import { ModelConfig } from '..';
+import { ModelConfigService } from '..';
 
 describe('ModelConfig', () => {
 
   it('should be injected', () => {
-    expect(ModelConfig).toBeTruthy();
+    expect(ModelConfigService).toBeTruthy();
   });
 
   it('should be able to set and get configurations', () => {

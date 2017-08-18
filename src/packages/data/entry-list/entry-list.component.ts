@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { SdkService } from '../sdk/sdk.service';
-import { ModelConfig } from '../model-config/model-config';
+import { ModelConfigService } from '../model-config/model-config.service';
 import { LoaderComponent } from '../../ui/loader/loader.component';
 import { LoaderService } from '../../ui/loader/loader.service';
 import { ListComponent } from '../../ui/list/list.component';
@@ -28,7 +28,7 @@ export class EntryListComponent extends ListComponent {
   @Input() loader: LoaderComponent;
 
   /** The constructor will just call super of List*/
-  constructor(protected loaderService: LoaderService, private sdk: SdkService, private modelConfig: ModelConfig, private crud: CrudService) {
+  constructor(protected loaderService: LoaderService, private sdk: SdkService, private modelConfig: ModelConfigService, private crud: CrudService) {
     super();
   }
 

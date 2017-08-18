@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { UiModule } from '../ui/ui.module';
-import { ModelConfig } from './model-config/model-config';
+import { ModelConfigService } from './model-config/model-config.service';
 import { CrudService } from './crud/crud.service';
 import { DefaultEntryInputComponent } from './entry-form/default-entry-input.component';
 import { EntryListComponent } from './entry-list/entry-list.component';
@@ -50,7 +50,7 @@ import { EntrySelectComponent } from './entry-select/entry-select.component';
     PublicService,
     AdminService,
     CrudService,
-    ModelConfig,
+    ModelConfigService,
   ],
 })
 export class DataModule {

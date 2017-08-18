@@ -322,7 +322,7 @@
                                     <a href="../injectables/LoaderService.html" >LoaderService</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../injectables/ModelConfig.html" >ModelConfig</a>
+                                    <a href="../injectables/ModelConfigService.html" >ModelConfigService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/NotificationsService.html" >NotificationsService</a>
@@ -747,7 +747,7 @@
                                            <a href="../injectables/LoaderService.html" >LoaderService</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../injectables/ModelConfig.html" >ModelConfig</a>
+                                           <a href="../injectables/ModelConfigService.html" >ModelConfigService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/NotificationsService.html" >NotificationsService</a>
@@ -951,17 +951,73 @@
     </table>
 </section>
 
+    <section>
+        <h3 id="index">Index</h3>
+        <table class="table table-sm table-bordered index-table">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                 <a href="#entrySelectConfig">entrySelectConfig</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
 
 
 
 
 
+    <section>
+        
+            <h3 id="inputs">
+                Properties
+            </h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="entrySelectConfig"></a>
+                            <b> entrySelectConfig</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>entrySelectConfig:     <code></code>
+    </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Default value : </i><code>nestedCrudConfig</code>
+                            </td>
+                        </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/packages/data/entry-form/default-entry-input.component.ts:11</a></div>
+                                </td>
+                            </tr>
+    
+    
+                </tbody>
+            </table>
+    </section>
 </div>
 
 
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 import { DefaultInputComponent } from &#x27;../../ui/input/default-input.component&#x27;;
+import { nestedCrudConfig } from &#x27;../model-config/nested-crud-config&#x27;;
 
 /** This component holds the input templates for all field types that can not be represented by the default input template. */
 @Component({
@@ -969,6 +1025,7 @@ import { DefaultInputComponent } from &#x27;../../ui/input/default-input.compone
   templateUrl: &#x27;./default-entry-input.component.html&#x27;,
 })
 export class DefaultEntryInputComponent extends DefaultInputComponent {
+  entrySelectConfig &#x3D; nestedCrudConfig;
 }
 </code></pre>
     </div>
@@ -978,10 +1035,11 @@ export class DefaultEntryInputComponent extends DefaultInputComponent {
   &lt;ec-input-errors [control]&#x3D;&quot;group.get(field.property)&quot;&gt;&lt;/ec-input-errors&gt;
   &lt;div *ngSwitchCase&#x3D;&quot;&#x27;entry&#x27;&quot;&gt;
     &lt;ec-entry-select [formControl]&#x3D;&quot;group.get(field.property)&quot; [field]&#x3D;&quot;field&quot;
-                     [solo]&#x3D;&quot;true&quot;&gt;&lt;/ec-entry-select&gt;
+                     [solo]&#x3D;&quot;true&quot; [config]&#x3D;&quot;nestedConfig&quot;&gt;&lt;/ec-entry-select&gt;
   &lt;/div&gt;
   &lt;div *ngSwitchCase&#x3D;&quot;&#x27;entries&#x27;&quot;&gt;
-    &lt;ec-entry-select [formControl]&#x3D;&quot;group.get(field.property)&quot; [field]&#x3D;&quot;field&quot;&gt;&lt;/ec-entry-select&gt;
+    &lt;ec-entry-select [formControl]&#x3D;&quot;group.get(field.property)&quot; [field]&#x3D;&quot;field&quot;
+                     [config]&#x3D;&quot;entrySelectConfig&quot;&gt;&lt;/ec-entry-select&gt;
   &lt;/div&gt;
   &lt;!--
   - use entry resource array (lvl2)
@@ -1022,7 +1080,7 @@ export class DefaultEntryInputComponent extends DefaultInputComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><fieldset [ngSwitch]="field.type" *ngIf="group" [formGroup]="group">  <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>  <div *ngSwitchCase="\'entry\'">    <ec-entry-select [formControl]="group.get(field.property)" [field]="field"                     [solo]="true"></ec-entry-select>  </div>  <div *ngSwitchCase="\'entries\'">    <ec-entry-select [formControl]="group.get(field.property)" [field]="field"></ec-entry-select>  </div>  <!--  - use entry resource array (lvl2)  - generate config via model-config  - use selection.component to display entries  - open crud-list on + (using existing selection)  -->  <input *ngSwitchCase="\'phone\'" type="text" [placeholder]="field.placeholder">  <!-- TODO -->  <div *ngSwitchDefault>    <!--<marquee>🚂🚃🚃🚃 {{field.type}} input coming soon..</marquee>-->    <ec-output [field]="field" [item]="item"></ec-output>  </div></fieldset></div>'
+        var COMPONENT_TEMPLATE = '<div><fieldset [ngSwitch]="field.type" *ngIf="group" [formGroup]="group">  <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>  <div *ngSwitchCase="\'entry\'">    <ec-entry-select [formControl]="group.get(field.property)" [field]="field"                     [solo]="true" [config]="nestedConfig"></ec-entry-select>  </div>  <div *ngSwitchCase="\'entries\'">    <ec-entry-select [formControl]="group.get(field.property)" [field]="field"                     [config]="entrySelectConfig"></ec-entry-select>  </div>  <!--  - use entry resource array (lvl2)  - generate config via model-config  - use selection.component to display entries  - open crud-list on + (using existing selection)  -->  <input *ngSwitchCase="\'phone\'" type="text" [placeholder]="field.placeholder">  <!-- TODO -->  <div *ngSwitchDefault>    <!--<marquee>🚂🚃🚃🚃 {{field.type}} input coming soon..</marquee>-->    <ec-output [field]="field" [item]="item"></ec-output>  </div></fieldset></div>'
     var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DefaultEntryInputComponent', 'selector': 'ec-default-entry-input'},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': 'ec-default-input'},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SelectionComponent', 'selector': 'ec-selection'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'}];
     var DIRECTIVES = [{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'DefaultEntryInputComponent'};

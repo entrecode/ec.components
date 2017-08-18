@@ -25,4 +25,6 @@ export interface CrudConfig extends ListConfig {
   selection?: Selection<EntryResource>;
   /** With how many levels should a list entry be loaded? Defaults to 1 (taking entry directly from the list, without loading)*/
   levels?: number;
+  /** The class that should be used for the pop, defaults to modal */
+  popClass?: string;
 }

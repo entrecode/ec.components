@@ -14,7 +14,7 @@ import { ListConfig } from '../../core/list/list-config.interface';
  * By default, everything is auto generated from the model's schema but can be overriden via the
  * set method. */
 @Injectable()
-export class ModelConfig extends Config {
+export class ModelConfigService extends Config {
   /** Injects CrudService and SdkService. */
   constructor(private crud: CrudService, private sdk: SdkService) {
     super();

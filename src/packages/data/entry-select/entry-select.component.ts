@@ -6,12 +6,13 @@ import { DefaultInputComponent } from '../../ui/input/default-input.component';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Field } from '../../core/field/field';
 import { CrudComponent } from '../crud/crud.component';
-import { ModelConfig } from '../model-config/model-config';
+import { ModelConfigService } from '../model-config/model-config.service';
 import { EntryResource } from "ec.sdk/typings/resources/publicAPI/EntryResource";
 import { Selection } from '../../core/selection/selection';
 import { ListConfig } from '../../core/list/list-config.interface';
 import { PopComponent } from '../../ui/pop/pop.component';
 import { Item } from '../../core/item/item';
+import { CrudConfig } from '../crud/crud-config.interface';
 
 /** Loads an entry by id to the template. */
 @Component({
@@ -34,15 +35,18 @@ export class EntrySelectComponent extends DefaultInputComponent implements Contr
   @Input() field: Field<any>;
   /** The used field */
   @ViewChild('crud') crud: CrudComponent;
-  /** The ListConfig that should be used. */
+  /** The config that is being generated. */
   private config: ListConfig;
-
+  /** Wether or not the selection should be solo */
   @Input() solo: boolean;
-  selection: Selection<EntryResource>;
-  visible: boolean;
+  /** The config that should be merged into the generated config */
+  @Input('config') crudConfig: CrudConfig;
+  /** The current selection */
+  private selection: Selection<EntryResource>;
+  /** The crud pop with the list to select from */
   @ViewChild('crudPop') pop: PopComponent;
 
-  constructor(private modelConfig: ModelConfig) {
+  constructor(private modelConfig: ModelConfigService) {
     super()
   }
 
@@ -50,7 +54,7 @@ export class EntrySelectComponent extends DefaultInputComponent implements Contr
     if (this.field) {
       this.modelConfig.generateConfig(this.field['model'])
       .then((config) => {
-        this.config = Object.assign(config, { solo: this.solo });
+        this.config = Object.assign(config, { size: 10 }, this.crudConfig, { solo: this.solo });
       })
     }
   }
@@ -65,6 +69,7 @@ export class EntrySelectComponent extends DefaultInputComponent implements Contr
   toggle(selection: Selection<EntryResource>) {
     this.pop.toggle();
     if (!this.selection) {
+      Object.assign(this.config, { selection });
       this.selection = selection;
       this.selection.update$.subscribe((selection: Selection<EntryResource>) => {
         this.propagateChange(selection.getValue());

@@ -2,7 +2,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { mocked } from '../mocks/data';
 // import { Pagination } from '@ec.components/core'; //real world imports
 // import { Datamanager, modelConfig } from '@ec.components/data';
-import { ModelConfig } from '../packages/data';
+import { ModelConfigService } from '../packages/data';
 import { FormConfig, List, Pagination } from '../packages/core';
 import * as moment from 'moment';
 import { demoRoutes } from './demo.routes';
@@ -23,7 +23,7 @@ export class DemoComponent {
   private formConfig: FormConfig<any>;
   private randomData: any;
 
-  constructor(private modelConfig: ModelConfig) {
+  constructor(private modelConfig: ModelConfigService) {
     // Datamanager.useEnvironment(environment);
     this.pagination.setTotal(5100);
     this.pagination.change$.debounceTime(500)
