@@ -2,7 +2,8 @@
   <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>
   <div *ngSwitchCase="'entry'">
     <ec-entry-select [formControl]="group.get(field.property)" [field]="field"
-                     [solo]="true" [config]="nestedConfig"></ec-entry-select>
+                     [solo]="true" [config]="nestedConfig"
+                     [config]="entrySelectConfig"></ec-entry-select>
   </div>
   <div *ngSwitchCase="'entries'">
     <ec-entry-select [formControl]="group.get(field.property)" [field]="field"

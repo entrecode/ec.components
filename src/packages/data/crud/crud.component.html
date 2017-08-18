@@ -1,5 +1,6 @@
 <button (click)="crudForm.create();formPop.show()" *ngIf="hasMethod('create')" type="button">
-  {{this.config?.createLabel||'New Entry'}}
+  <span *ngIf="this.config?.createLabel">{{this.config?.createLabel}}</span>
+  <i *ngIf="!this.config?.createLabel" class="ec-icon add"></i>
 </button>
 <ec-entry-list [model]="model" [config]="config" [solo]="true"
                *ngIf="hasMethod('read')" [selection]="config.selection"
@@ -7,6 +8,7 @@
                (select)="selectEntry($event,crudForm)">
 </ec-entry-list>
 <ec-loader #listLoader class="blend"></ec-loader>
+<!-- TODO wrap into entry-pop -->
 <ec-pop #formPop [ngClass]="config?.popClass||'modal'">
   <nav>
     <button (click)="log(crudForm)" *ngIf="config?.develop">

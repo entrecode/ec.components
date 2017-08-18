@@ -22,8 +22,7 @@
         </a>
       </li>
       <li *ngIf="field.filterable">
-        <a class="action" [class.active]="hasFilter(field.property)"
-           (click)="editFilter(filterPop)">
+        <a class="action" (click)="editFilter(filterPop)">
           <i class="ec-icon find"></i>
         </a>
       </li>

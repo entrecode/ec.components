@@ -47,7 +47,12 @@ export class EntrySelectComponent extends DefaultInputComponent implements Contr
   @ViewChild('crudPop') pop: PopComponent;
 
   constructor(private modelConfig: ModelConfigService) {
-    super()
+    super();
+  }
+
+  /** Is called when a selected item has been clicked. */
+  editItem(item) {
+    console.log('edit!!!', item); //TODO
   }
 
   ngOnInit() {

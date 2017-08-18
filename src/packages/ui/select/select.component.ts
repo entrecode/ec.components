@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Collection, List, ListConfig, Selection } from '../../core';
+import { Item } from '../../core/item/item';
 
 /**
  * The SelectComponent will render a dropdown of a given list.
@@ -36,6 +37,8 @@ export class SelectComponent implements ControlValueAccessor {
   @Input() selection: Selection<any>;
   /** Event emitter on item selection */
   @Output() onSelect: EventEmitter<any> = new EventEmitter();
+  /** Event emitter on selected item click */
+  @Output() itemClick: EventEmitter<Item<any>> = new EventEmitter();
   /** Event that emits when the plus is clicked. */
   @Output('toggle') _toggle: EventEmitter<Selection<any>> = new EventEmitter();
   /** The Instance of the List */
@@ -58,11 +61,6 @@ export class SelectComponent implements ControlValueAccessor {
     }
   }
 
-  /*
-  ngOnChanges() {
-    init();
-  }*/
-
   /** Returns true if the toggle button should be shown.
    * Is hidden when all items are selection and the toggle output has no observers. */
   canToggle() {
@@ -73,6 +71,11 @@ export class SelectComponent implements ControlValueAccessor {
   toggle(active: boolean = !this.active, emit: boolean = false) {
     this.active = active;
     this._toggle.emit(this.selection);
+  }
+
+  /** Is called when a selected item is clicked*/
+  private clickItem(item) {
+    this.itemClick.emit(item);
   }
 
   /** Column click handler. Triggers onSelect.emit(item) with fallback to selection.toggle*/
@@ -99,9 +102,8 @@ export class SelectComponent implements ControlValueAccessor {
     return this.propagateChange(this.selection.getValue());
   }
 
+  /** Called when the model changes */
   writeValue(value: any) {
-    //TODO test what happens when switching entries while pop open
-    //value is a model value => array of identifiers
     this.value = Array.isArray(value) ? value : (value ? [value] : []);
     this.init();
     this.selection.removeAll();

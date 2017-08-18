@@ -1,11 +1,11 @@
 <div class="ec-select" *ngIf="selection&&list">
   <ul class="selected-items">
-    <li *ngFor="let selected of selection.items" class="pill">
-      {{selected.display()}} <a (click)="removeItem(selected)">X</a>
-    </li>
     <li (click)="toggle(!active,true)" class="btn" [ngClass]="active?'default':'minor'"
         *ngIf="canToggle()">
       <i class="ec-icon find"></i>
+    </li>
+    <li *ngFor="let selected of selection.items" class="pill" (click)="clickItem(selected)">
+      {{selected.display()}} <a (click)="removeItem(selected)">X</a>
     </li>
   </ul>
   <ec-pop #itemsPop class="dropdown">

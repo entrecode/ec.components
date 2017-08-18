@@ -6,5 +6,5 @@ import { CrudConfig } from '../crud/crud-config.interface';
 export const nestedCrudConfig: CrudConfig = {
   size: 10,
   // methods: ['read'],
-  popClass: 'sidebar-right'
+  // popClass: 'sidebar-right'
 };
