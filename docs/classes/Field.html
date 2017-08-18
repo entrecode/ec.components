@@ -148,6 +148,9 @@
                                     <a href="../components/EntryListComponent.html" >EntryListComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/EntrySelectComponent.html" >EntrySelectComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/ErrorComponent.html" >ErrorComponent</a>
                                 </li>
                                 <li class="link">
@@ -254,9 +257,6 @@
                                     <a href="../classes/Config.html" >Config</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../classes/CrudConfig.html" >CrudConfig</a>
-                                </li>
-                                <li class="link">
                                     <a href="../classes/Entry.html" >Entry</a>
                                 </li>
                                 <li class="link">
@@ -351,6 +351,9 @@
                                 id="xs-interfaces-links"
                             >
                                 <li class="link">
+                                    <a href="../interfaces/CrudConfig.html" >CrudConfig</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
                                 </li>
                                 <li class="link">
@@ -396,6 +399,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../pipes/SafeHtmlPipe.html" >SafeHtmlPipe</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../pipes/VisibleFieldsPipe.html" >VisibleFieldsPipe</a>
                                 </li>
                         </ul>
                     </li>
@@ -567,6 +573,9 @@
                                            <a href="../components/EntryListComponent.html" >EntryListComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/EntrySelectComponent.html" >EntrySelectComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/ErrorComponent.html" >ErrorComponent</a>
                                        </li>
                                        <li class="link">
@@ -673,9 +682,6 @@
                                            <a href="../classes/Config.html" >Config</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../classes/CrudConfig.html" >CrudConfig</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../classes/Entry.html" >Entry</a>
                                        </li>
                                        <li class="link">
@@ -770,6 +776,9 @@
                                        id="interfaces-links"
                    >
                                        <li class="link">
+                                           <a href="../interfaces/CrudConfig.html" >CrudConfig</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
                                        </li>
                                        <li class="link">
@@ -815,6 +824,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../pipes/SafeHtmlPipe.html" >SafeHtmlPipe</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../pipes/VisibleFieldsPipe.html" >VisibleFieldsPipe</a>
                                        </li>
                                </ul>
                            </li>
@@ -920,6 +932,9 @@
                                          <a href="#filterOperator">filterOperator</a>
                                     </li>
                                     <li>
+                                         <a href="#form">form</a>
+                                    </li>
+                                    <li>
                                          <a href="#hidden">hidden</a>
                                     </li>
                                     <li>
@@ -981,7 +996,7 @@
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/packages/core/field/field.ts:26</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/packages/core/field/field.ts:28</a></div>
                                         </td>
                                     </tr>
             
@@ -1017,7 +1032,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/packages/core/field/field.ts:35</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/packages/core/field/field.ts:37</a></div>
                                         </td>
                                     </tr>
             
@@ -1071,6 +1086,41 @@
                             <tr>
                                 <td class="col-md-4">
                                     <div class="io-description"><p>The operator to use for filtering: exact, search, any etc.. see ec.sdk doc </p>
+            </div>
+                                </td>
+                            </tr>
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="form"></a>
+                                    <b> form</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>form:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+            </code>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+            
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/packages/core/field/field.ts:28</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Wether or not the field should appear in default forms </p>
             </div>
                                 </td>
                             </tr>
@@ -1458,6 +1508,8 @@ export class Field&lt;T&gt; implements FieldConfigProperty {
   label?: string;
   /** The operator to use for filtering: exact, search, any etc.. see ec.sdk doc */
   filterOperator?: string;
+  /** Wether or not the field should appear in default forms */
+  form?: boolean;
 
   /** A Field is constructed by assigning the given config and the property to itself*/
   constructor(property: string, config: FieldConfigProperty &#x3D; {}) {

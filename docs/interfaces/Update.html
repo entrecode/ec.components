@@ -148,6 +148,9 @@
                                     <a href="../components/EntryListComponent.html" >EntryListComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/EntrySelectComponent.html" >EntrySelectComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/ErrorComponent.html" >ErrorComponent</a>
                                 </li>
                                 <li class="link">
@@ -254,9 +257,6 @@
                                     <a href="../classes/Config.html" >Config</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../classes/CrudConfig.html" >CrudConfig</a>
-                                </li>
-                                <li class="link">
                                     <a href="../classes/Entry.html" >Entry</a>
                                 </li>
                                 <li class="link">
@@ -351,6 +351,9 @@
                                 id="xs-interfaces-links"
                             >
                                 <li class="link">
+                                    <a href="../interfaces/CrudConfig.html" >CrudConfig</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
                                 </li>
                                 <li class="link">
@@ -396,6 +399,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../pipes/SafeHtmlPipe.html" >SafeHtmlPipe</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../pipes/VisibleFieldsPipe.html" >VisibleFieldsPipe</a>
                                 </li>
                         </ul>
                     </li>
@@ -567,6 +573,9 @@
                                            <a href="../components/EntryListComponent.html" >EntryListComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/EntrySelectComponent.html" >EntrySelectComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/ErrorComponent.html" >ErrorComponent</a>
                                        </li>
                                        <li class="link">
@@ -673,9 +682,6 @@
                                            <a href="../classes/Config.html" >Config</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../classes/CrudConfig.html" >CrudConfig</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../classes/Entry.html" >Entry</a>
                                        </li>
                                        <li class="link">
@@ -770,6 +776,9 @@
                                        id="interfaces-links"
                    >
                                        <li class="link">
+                                           <a href="../interfaces/CrudConfig.html" >CrudConfig</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
                                        </li>
                                        <li class="link">
@@ -815,6 +824,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../pipes/SafeHtmlPipe.html" >SafeHtmlPipe</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../pipes/VisibleFieldsPipe.html" >VisibleFieldsPipe</a>
                                        </li>
                                </ul>
                            </li>
@@ -1161,7 +1173,7 @@ export class CrudService {
       return entry;
     })
     .catch((err) &#x3D;&gt; {
-      Object.assign(entry, oldValues); //fall back to old values
+      Object.assign(entry, this.clean(oldValues)); //fall back to old values
       return Promise.reject(err);
     });
   }
@@ -1172,7 +1184,7 @@ export class CrudService {
   /** Removes all null or undefined values from the given object */
   clean(value: Object, oldValues: any &#x3D; {}): Object {
     for (let key in value) {
-      if (value[key] &#x3D;&#x3D;&#x3D; null || value[key] &#x3D;&#x3D;&#x3D; undefined || value[key] &#x3D;&#x3D;&#x3D; &#x27;&#x27;) {
+      if (value[key] &#x3D;&#x3D;&#x3D; null || value[key] &#x3D;&#x3D;&#x3D; &#x27;&#x27; || value[key] &#x3D;&#x3D;&#x3D; undefined) {
         //TODO find way to decide, when to send empty string and when not:
         //  it is important to send it when an entries value needs to be &quot;cleared&quot;
         //    e.g. to remove a description

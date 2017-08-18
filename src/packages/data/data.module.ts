@@ -14,11 +14,13 @@ import { PublicService } from './sdk/public.service';
 import { AdminService } from './sdk/admin.service';
 import { CrudComponent } from './crud/crud.component';
 import { DefaultEntryOutputComponent } from './entry-form/default-entry-output.component';
+import { EntrySelectComponent } from './entry-select/entry-select.component';
 
 @NgModule({
   entryComponents: [
     DefaultEntryInputComponent,
     DefaultEntryOutputComponent,
+    EntrySelectComponent,
   ],
   declarations: [
     EntryListComponent,
@@ -28,6 +30,7 @@ import { DefaultEntryOutputComponent } from './entry-form/default-entry-output.c
     DefaultEntryInputComponent,
     DefaultEntryOutputComponent,
     CrudComponent,
+    EntrySelectComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +43,7 @@ import { DefaultEntryOutputComponent } from './entry-form/default-entry-output.c
     EntriesComponent,
     EntryFormComponent,
     CrudComponent,
+    EntrySelectComponent,
   ],
   providers: [
     SdkService,

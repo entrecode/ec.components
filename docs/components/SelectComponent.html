@@ -148,6 +148,9 @@
                                     <a href="../components/EntryListComponent.html" >EntryListComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/EntrySelectComponent.html" >EntrySelectComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/ErrorComponent.html" >ErrorComponent</a>
                                 </li>
                                 <li class="link">
@@ -254,9 +257,6 @@
                                     <a href="../classes/Config.html" >Config</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../classes/CrudConfig.html" >CrudConfig</a>
-                                </li>
-                                <li class="link">
                                     <a href="../classes/Entry.html" >Entry</a>
                                 </li>
                                 <li class="link">
@@ -351,6 +351,9 @@
                                 id="xs-interfaces-links"
                             >
                                 <li class="link">
+                                    <a href="../interfaces/CrudConfig.html" >CrudConfig</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
                                 </li>
                                 <li class="link">
@@ -396,6 +399,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../pipes/SafeHtmlPipe.html" >SafeHtmlPipe</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../pipes/VisibleFieldsPipe.html" >VisibleFieldsPipe</a>
                                 </li>
                         </ul>
                     </li>
@@ -567,6 +573,9 @@
                                            <a href="../components/EntryListComponent.html" >EntryListComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/EntrySelectComponent.html" >EntrySelectComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/ErrorComponent.html" >ErrorComponent</a>
                                        </li>
                                        <li class="link">
@@ -673,9 +682,6 @@
                                            <a href="../classes/Config.html" >Config</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../classes/CrudConfig.html" >CrudConfig</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../classes/Entry.html" >Entry</a>
                                        </li>
                                        <li class="link">
@@ -770,6 +776,9 @@
                                        id="interfaces-links"
                    >
                                        <li class="link">
+                                           <a href="../interfaces/CrudConfig.html" >CrudConfig</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
                                        </li>
                                        <li class="link">
@@ -815,6 +824,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../pipes/SafeHtmlPipe.html" >SafeHtmlPipe</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../pipes/VisibleFieldsPipe.html" >VisibleFieldsPipe</a>
                                        </li>
                                </ul>
                            </li>
@@ -971,9 +983,6 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <span class="modifier">Private</span> <a href="#open">open</a>
-                            </li>
-                            <li>
                                  <a href="#propagateChange">propagateChange</a>
                             </li>
                         </ul>
@@ -991,10 +1000,16 @@
                                 <span class="modifier">Private</span> <a href="#addItem">addItem</a>
                             </li>
                             <li>
+                                 <a href="#canToggle">canToggle</a>
+                            </li>
+                            <li>
+                                 <a href="#change">change</a>
+                            </li>
+                            <li>
                                  <a href="#columnClick">columnClick</a>
                             </li>
                             <li>
-                                 <a href="#ngOnChanges">ngOnChanges</a>
+                                 <a href="#init">init</a>
                             </li>
                             <li>
                                  <a href="#registerOnChange">registerOnChange</a>
@@ -1004,6 +1019,9 @@
                             </li>
                             <li>
                                 <span class="modifier">Private</span> <a href="#removeItem">removeItem</a>
+                            </li>
+                            <li>
+                                 <a href="#toggle">toggle</a>
                             </li>
                             <li>
                                  <a href="#writeValue">writeValue</a>
@@ -1020,13 +1038,13 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#active">active</a>
+                            </li>
+                            <li>
                                 <a href="#collection">collection</a>
                             </li>
                             <li>
                                 <a href="#config">config</a>
-                            </li>
-                            <li>
-                                <a href="#items">items</a>
                             </li>
                             <li>
                                 <a href="#list">list</a>
@@ -1035,7 +1053,7 @@
                                 <a href="#selection">selection</a>
                             </li>
                             <li>
-                                <a href="#solo">solo</a>
+                                <a href="#value">value</a>
                             </li>
                         </ul>
                     </td>
@@ -1051,6 +1069,9 @@
                             <li>
                                 <a href="#onSelect">onSelect</a>
                             </li>
+                            <li>
+                                <a href="#toggle">toggle</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -1061,6 +1082,29 @@
 
     <section>
         <h3 id="inputs">Inputs</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="active"></a>
+                            <code>active</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>True if the selection is active </p>
+</div>
+                              <p>
+                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                              </p>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/packages/ui/select/select.component.ts:44</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
             <table class="table table-sm table-bordered">
                 <tbody>
                     <tr>
@@ -1103,29 +1147,6 @@
                             <tr>
                                 <td class="col-md-2" colspan="2">
                                     <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/packages/ui/select/select.component.ts:30</a></div>
-                                </td>
-                            </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <a name="items"></a>
-                            <code>items</code>
-                        </td>
-                        <td class="col-md-10">
-                            <div><p>The visible items </p>
-</div>
-                              <p>
-                                <em>Type:</em>    <code>Array&lt;any&gt;</code>
-
-                              </p>
-                        </td>
-                    </tr>
-                            <tr>
-                                <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/packages/ui/select/select.component.ts:32</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1180,21 +1201,21 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
-                            <a name="solo"></a>
-                            <code>solo</code>
+                            <a name="value"></a>
+                            <code>value</code>
                         </td>
                         <td class="col-md-10">
-                            <div><p>If true, only one item is selectable next </p>
+                            <div><p>The visible items </p>
 </div>
                               <p>
-                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                <em>Type:</em>    <code>Array&lt;any&gt;</code>
 
                               </p>
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/packages/ui/select/select.component.ts:38</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/packages/ui/select/select.component.ts:32</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1214,6 +1235,27 @@
                             <div><p>Event emitter on item selection </p>
 </div>
                             <em><code>$event</code> type:</em>    <code>EventEmitter&lt;any&gt;</code>
+
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/packages/ui/select/select.component.ts:38</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="toggle"></a>
+                            <code>toggle</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>Event that emits when the plus is clicked. </p>
+</div>
+                            <em><code>$event</code> type:</em>    <code><a href="../classes/Selection.html" target="_self" >EventEmitter&lt;Selection&gt;</a></code>
 
                         </td>
                     </tr>
@@ -1249,7 +1291,74 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/packages/ui/select/select.component.ts:71</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/packages/ui/select/select.component.ts:88</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="canToggle"></a>
+                            <b> canToggle</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>canToggle()</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/packages/ui/select/select.component.ts:68</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Returns true if the toggle button should be shown.
+    Is hidden when all items are selection and the toggle output has no observers. </p>
+    </div>
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="change"></a>
+                            <b> change</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>change()</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">src/packages/ui/select/select.component.ts:98</a></div>
                                 </td>
                             </tr>
     
@@ -1281,7 +1390,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/packages/ui/select/select.component.ts:62</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/packages/ui/select/select.component.ts:79</a></div>
                                 </td>
                             </tr>
     
@@ -1302,13 +1411,13 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <a name="ngOnChanges"></a>
-                            <b> ngOnChanges</b>
+                            <a name="init"></a>
+                            <b> init</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-    <code>ngOnChanges()</code>
+    <code>init()</code>
                         </td>
                     </tr>
     
@@ -1321,8 +1430,7 @@
     
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-description"><p>Changing items or collection will trigger reconstructing the list with the new items.
-    Changing the selection will reconstruct the selection </p>
+                                <div class="io-description"><p>Initializes either with values, collection or list. Creates Selection with config. </p>
     </div>
     
                                 <div class="io-description">
@@ -1350,7 +1458,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">src/packages/ui/select/select.component.ts:96</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">src/packages/ui/select/select.component.ts:114</a></div>
                                 </td>
                             </tr>
     
@@ -1382,7 +1490,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">src/packages/ui/select/select.component.ts:100</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="118" class="link-to-prism">src/packages/ui/select/select.component.ts:118</a></div>
                                 </td>
                             </tr>
     
@@ -1415,12 +1523,46 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/packages/ui/select/select.component.ts:79</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">src/packages/ui/select/select.component.ts:93</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="toggle"></a>
+                            <b> toggle</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>toggle(active: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, emit: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/packages/ui/select/select.component.ts:73</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Called when clicking the toggle button. emits toggle event with current selection. </p>
+    </div>
     
                                 <div class="io-description">
                                     <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -1447,7 +1589,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">src/packages/ui/select/select.component.ts:84</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">src/packages/ui/select/select.component.ts:102</a></div>
                                 </td>
                             </tr>
     
@@ -1473,35 +1615,6 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <a name="open"></a>
-                            <b><span class="modifier">Private</span> open</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <span class="modifier-icon fa fa-lock"></span><code>open:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-    </code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-    
-                            </td>
-                        </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/packages/ui/select/select.component.ts:43</a></div>
-                                </td>
-                            </tr>
-    
-    
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
                             <a name="propagateChange"></a>
                             <b> propagateChange</b>
                         </td>
@@ -1514,7 +1627,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">src/packages/ui/select/select.component.ts:93</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">src/packages/ui/select/select.component.ts:111</a></div>
                                 </td>
                             </tr>
     
@@ -1564,33 +1677,50 @@ export class SelectComponent implements ControlValueAccessor {
   /** Configuration Object for List */
   @Input() config: ListConfig;
   /** The visible items */
-  @Input() items: Array&lt;any&gt;;
+  @Input() value: Array&lt;any&gt;;
   /** The used collection */
   @Input() collection: Collection&lt;any&gt;;
   /** The used selection */
   @Input() selection: Selection&lt;any&gt;;
-  /** If true, only one item is selectable next */
-  @Input() solo: boolean;
   /** Event emitter on item selection */
   @Output() onSelect: EventEmitter&lt;any&gt; &#x3D; new EventEmitter();
+  /** Event that emits when the plus is clicked. */
+  @Output(&#x27;toggle&#x27;) _toggle: EventEmitter&lt;Selection&lt;any&gt;&gt; &#x3D; new EventEmitter();
   /** The Instance of the List */
   @Input() list: List&lt;any&gt;;
-  private open: boolean;
+  /** True if the selection is active */
+  @Input() active: boolean;
 
-  /** Changing items or collection will trigger reconstructing the list with the new items.
-   * Changing the selection will reconstruct the selection */
-  ngOnChanges() {
-    if (this.items) {
-      this.list &#x3D; new List(this.items, this.config);
+  /** Initializes either with values, collection or list. Creates Selection with config. */
+  init() {
+    if (this.value) {
+      this.list &#x3D; new List(this.value, this.config);
     } else if (this.collection) {
       this.list &#x3D; new List(this.collection.items, this.config);
     }
     if (!this.list) {
       return;
     }
-    if (!this.selection &amp;&amp; this.list.config &amp;&amp; !this.list.config.disableSelection) {
-      this.selection &#x3D; new Selection([], this.list.config);
+    if (!this.selection &amp;&amp; this.config &amp;&amp; !this.config.disableSelection) {
+      this.selection &#x3D; new Selection([], this.config);
     }
+  }
+
+  /*
+  ngOnChanges() {
+    init();
+  }*/
+
+  /** Returns true if the toggle button should be shown.
+   * Is hidden when all items are selection and the toggle output has no observers. */
+  canToggle() {
+    return this._toggle.observers.length || !this.selection.hasAll(this.list.items);
+  }
+
+  /** Called when clicking the toggle button. emits toggle event with current selection. */
+  toggle(active: boolean &#x3D; !this.active, emit: boolean &#x3D; false) {
+    this.active &#x3D; active;
+    this._toggle.emit(this.selection);
   }
 
   /** Column click handler. Triggers onSelect.emit(item) with fallback to selection.toggle*/
@@ -1599,30 +1729,31 @@ export class SelectComponent implements ControlValueAccessor {
       return this.onSelect.emit(item);
     }
     if (this.selection) {
-      this.selection.toggle(item, this.solo);
+      this.selection.toggle(item);
     }
   }
 
   private addItem(item) {
     this.selection.toggle(item);
-    if (this.selection.hasAll(this.list.items)) {
-      this.open &#x3D; false;
-    }
-    this.propagateChange(this.selection.getValue());
+    this.change();
   }
 
   private removeItem(item) {
     this.selection.remove(item);
-    this.propagateChange(this.selection.getValue());
+    this.change();
+  }
+
+  change() {
+    return this.propagateChange(this.selection.getValue());
   }
 
   writeValue(value: any) {
+    //TODO test what happens when switching entries while pop open
     //value is a model value &#x3D;&gt; array of identifiers
-    if (!this.items) {
-      this.items &#x3D; value || [];
-      this.ngOnChanges();
-      this.selection.addAll(this.list.items);
-    }
+    this.value &#x3D; Array.isArray(value) ? value : (value ? [value] : []);
+    this.init();
+    this.selection.removeAll();
+    this.selection.addAll(this.list.items);
   }
 
   propagateChange &#x3D; (_: any) &#x3D;&gt; {
@@ -1645,9 +1776,9 @@ export class SelectComponent implements ControlValueAccessor {
     &lt;li *ngFor&#x3D;&quot;let selected of selection.items&quot; class&#x3D;&quot;pill&quot;&gt;
       {{selected.display()}} &lt;a (click)&#x3D;&quot;removeItem(selected)&quot;&gt;X&lt;/a&gt;
     &lt;/li&gt;
-    &lt;li (click)&#x3D;&quot;itemsPop.toggle()&quot; class&#x3D;&quot;pill&quot; [class.open]&#x3D;&quot;itemsPop.visible&quot;
-        *ngIf&#x3D;&quot;!selection.hasAll(list.items)&quot;&gt;
-      &lt;span&gt;+&lt;/span&gt;
+    &lt;li (click)&#x3D;&quot;toggle(!active,true)&quot; class&#x3D;&quot;btn&quot; [ngClass]&#x3D;&quot;active?&#x27;default&#x27;:&#x27;minor&#x27;&quot;
+        *ngIf&#x3D;&quot;canToggle()&quot;&gt;
+      &lt;i class&#x3D;&quot;ec-icon find&quot;&gt;&lt;/i&gt;
     &lt;/li&gt;
   &lt;/ul&gt;
   &lt;ec-pop #itemsPop class&#x3D;&quot;dropdown&quot;&gt;
@@ -1687,8 +1818,8 @@ export class SelectComponent implements ControlValueAccessor {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="ec-select" *ngIf="selection&&list">  <ul class="selected-items">    <li *ngFor="let selected of selection.items" class="pill">      {{selected.display()}} <a (click)="removeItem(selected)">X</a>    </li>    <li (click)="itemsPop.toggle()" class="pill" [class.open]="itemsPop.visible"        *ngIf="!selection.hasAll(list.items)">      <span>+</span>    </li>  </ul>  <ec-pop #itemsPop class="dropdown">    <ul class="available-items" *ngIf="!selection.hasAll(list.items)">      <li>        <input>      </li>      <li *ngFor="let item of list.items" (click)="addItem(item)"          [class.hidden]="selection.has(item)">        {{item.display()}}      </li>    </ul>  </ec-pop></div></div>'
-    var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DefaultEntryInputComponent', 'selector': 'ec-default-entry-input'},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': 'ec-default-input'},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SelectionComponent', 'selector': 'ec-selection'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'}];
+        var COMPONENT_TEMPLATE = '<div><div class="ec-select" *ngIf="selection&&list">  <ul class="selected-items">    <li *ngFor="let selected of selection.items" class="pill">      {{selected.display()}} <a (click)="removeItem(selected)">X</a>    </li>    <li (click)="toggle(!active,true)" class="btn" [ngClass]="active?\'default\':\'minor\'"        *ngIf="canToggle()">      <i class="ec-icon find"></i>    </li>  </ul>  <ec-pop #itemsPop class="dropdown">    <ul class="available-items" *ngIf="!selection.hasAll(list.items)">      <li>        <input>      </li>      <li *ngFor="let item of list.items" (click)="addItem(item)"          [class.hidden]="selection.has(item)">        {{item.display()}}      </li>    </ul>  </ec-pop></div></div>'
+    var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DefaultEntryInputComponent', 'selector': 'ec-default-entry-input'},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': 'ec-default-input'},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SelectionComponent', 'selector': 'ec-selection'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'}];
     var DIRECTIVES = [{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'SelectComponent'};
 </script>

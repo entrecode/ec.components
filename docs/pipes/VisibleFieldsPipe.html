@@ -151,7 +151,7 @@
                                     <a href="../components/EntrySelectComponent.html" >EntrySelectComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/ErrorComponent.html"  data-type="entity-link" class="active" >ErrorComponent</a>
+                                    <a href="../components/ErrorComponent.html" >ErrorComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/FormComponent.html" >FormComponent</a>
@@ -401,7 +401,7 @@
                                     <a href="../pipes/SafeHtmlPipe.html" >SafeHtmlPipe</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../pipes/VisibleFieldsPipe.html" >VisibleFieldsPipe</a>
+                                    <a href="../pipes/VisibleFieldsPipe.html"  data-type="entity-link" class="active" >VisibleFieldsPipe</a>
                                 </li>
                         </ul>
                     </li>
@@ -576,7 +576,7 @@
                                            <a href="../components/EntrySelectComponent.html" >EntrySelectComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/ErrorComponent.html"  data-type="entity-link" class="active" >ErrorComponent</a>
+                                           <a href="../components/ErrorComponent.html" >ErrorComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/FormComponent.html" >FormComponent</a>
@@ -826,7 +826,7 @@
                                            <a href="../pipes/SafeHtmlPipe.html" >SafeHtmlPipe</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../pipes/VisibleFieldsPipe.html" >VisibleFieldsPipe</a>
+                                           <a href="../pipes/VisibleFieldsPipe.html"  data-type="entity-link" class="active" >VisibleFieldsPipe</a>
                                        </li>
                                </ul>
                            </li>
@@ -864,15 +864,18 @@
                    
                    </nav>
                </div>
-               <div class="content component">
+               <div class="content pipe">
                    <div class="content-data">
 
 
 
 
+
+
+
 <ol class="breadcrumb">
-  <li>Components</li>
-  <li>ErrorComponent</li>
+  <li>Pipes</li>
+  <li>VisibleFieldsPipe</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -880,184 +883,53 @@
         <a href="#info" id="info-tab" role="tab" data-toggle="tab" data-link="info">Info</a>
     </li>
 
-    <li>
-        <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
-    </li>
 
     <li>
-        <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
-    </li>
-    <li>
-        <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
     </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="info"><p class="comment">
-    <h3>File</h3>
-</p>
-<p class="comment">
-    <code>src/packages/ui/error/error.component.ts</code>
-</p>
+    <div class="tab-pane fade active in" id="info">
 
-    <p class="comment">
-        <h3>Description</h3>
-    </p>
-    <p class="comment">
-        <p>The CrudComponent takes at least a model name to render an entry list with create/edit/delete functionality out of the box.  </p>
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/packages/ui/form/visible-fields.pipe.ts</code>
+        </p>
 
-    </p>
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>The VisibleFieldsPipe filters an array of Fields to only give back the ones that have form NOT set to false. </p>
 
-
-
-
-<section>
-    <h3>Metadata</h3>
-    <table class="table table-sm table-hover">
-        <tbody>
+            </p>
 
 
-
-
-
-
-
-
-
-
-
-
-            <tr>
-                <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>ec-error</code></td>
-            </tr>
-
-
-
-
-            <tr>
-                <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>./error.component.html</code></td>
-            </tr>
-
-
-        </tbody>
-    </table>
-</section>
-
-    <section>
-        <h3 id="index">Index</h3>
-        <table class="table table-sm table-bordered index-table">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Inputs</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                <a href="#error">error</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-
-
-    <section>
-        <h3 id="inputs">Inputs</h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <a name="error"></a>
-                            <code>error</code>
-                        </td>
-                        <td class="col-md-10">
-                            <div><p>The error that should be displayed </p>
-</div>
-                              <p>
-                                <em>Type:</em>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                              </p>
-                        </td>
-                    </tr>
-                            <tr>
-                                <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/packages/ui/error/error.component.ts:11</a></div>
-                                </td>
-                            </tr>
-                </tbody>
-            </table>
-    </section>
-
-
-
-</div>
+    </div>
 
 
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { Component, Input } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { Pipe, PipeTransform } from &#x27;@angular/core&#x27;;
+import { Field } from &#x27;../../core/field/field&#x27;;
 
-/** The CrudComponent takes at least a model name to render an entry list with create/edit/delete functionality out of the box.  */
-@Component({
-  selector: &#x27;ec-error&#x27;,
-  templateUrl: &#x27;./error.component.html&#x27;
+/** The VisibleFieldsPipe filters an array of Fields to only give back the ones that have form NOT set to false. */
+@Pipe({
+  name: &#x27;visibleFields&#x27;
 })
-/** Displays an error thrown by the SDK. */
-export class ErrorComponent {
-  /** The error that should be displayed */
-  @Input() error: any;
-}</code></pre>
-    </div>
-
-    <div class="tab-pane fade" id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;span *ngIf&#x3D;&quot;error?.code&quot;&gt;{{error.code}}&lt;/span&gt;
-&lt;span *ngIf&#x3D;&quot;error?.dataPath&quot;&gt;{{error.dataPath}}&lt;/span&gt;
-{{error?.message}}
-&lt;ul *ngIf&#x3D;&quot;error?.subErrors&quot;&gt;
-  &lt;li *ngFor&#x3D;&quot;let subError of error.subErrors&quot;&gt;
-    &lt;ec-error [error]&#x3D;&quot;subError&quot;&gt;&lt;/ec-error&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;</code></pre>
-    </div>
-
-    <div class="tab-pane fade" id="tree">
-        <div id="tree-container"></div>
-        <div class="tree-legend">
-            <div class="title">
-                <b>Legend</b>
-            </div>
-            <div>
-                <div class="color htmlelement"></div><span>Html element</span>
-            </div>
-            <div>
-                <div class="color component"></div><span>Component</span>
-            </div>
-            <div>
-                <div class="color directive"></div><span>Html element with directive</span>
-            </div>
-        </div>
+export class VisibleFieldsPipe implements PipeTransform {
+  /** Filters out all fields that should not be displayed in a regular form */
+  transform(fields: Array&lt;Field&lt;any&gt;&gt;): any {
+    return fields.filter((field) &#x3D;&gt; {
+      return field.form !&#x3D;&#x3D; false;
+    });
+  }
+}
+</code></pre>
     </div>
 </div>
-
-<script src="../js/libs/vis.min.js"></script>
-<script src="../js/libs/htmlparser.js"></script>
-<script src="../js/libs/deep-iterator.js"></script>
-<script>
-        var COMPONENT_TEMPLATE = '<div><span *ngIf="error?.code">{{error.code}}</span><span *ngIf="error?.dataPath">{{error.dataPath}}</span>{{error?.message}}<ul *ngIf="error?.subErrors">  <li *ngFor="let subError of error.subErrors">    <ec-error [error]="subError"></ec-error>  </li></ul></div>'
-    var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DefaultEntryInputComponent', 'selector': 'ec-default-entry-input'},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': 'ec-default-input'},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SelectionComponent', 'selector': 'ec-selection'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'}];
-    var DIRECTIVES = [{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
-    var ACTUAL_COMPONENT = {'name': 'ErrorComponent'};
-</script>
-<script src="../js/tree.js"></script>
-
-
-
 
 
 

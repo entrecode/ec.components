@@ -29,33 +29,50 @@ export class SelectComponent implements ControlValueAccessor {
   /** Configuration Object for List */
   @Input() config: ListConfig;
   /** The visible items */
-  @Input() items: Array<any>;
+  @Input() value: Array<any>;
   /** The used collection */
   @Input() collection: Collection<any>;
   /** The used selection */
   @Input() selection: Selection<any>;
-  /** If true, only one item is selectable next */
-  @Input() solo: boolean;
   /** Event emitter on item selection */
   @Output() onSelect: EventEmitter<any> = new EventEmitter();
+  /** Event that emits when the plus is clicked. */
+  @Output('toggle') _toggle: EventEmitter<Selection<any>> = new EventEmitter();
   /** The Instance of the List */
   @Input() list: List<any>;
-  private open: boolean;
+  /** True if the selection is active */
+  @Input() active: boolean;
 
-  /** Changing items or collection will trigger reconstructing the list with the new items.
-   * Changing the selection will reconstruct the selection */
-  ngOnChanges() {
-    if (this.items) {
-      this.list = new List(this.items, this.config);
+  /** Initializes either with values, collection or list. Creates Selection with config. */
+  init() {
+    if (this.value) {
+      this.list = new List(this.value, this.config);
     } else if (this.collection) {
       this.list = new List(this.collection.items, this.config);
     }
     if (!this.list) {
       return;
     }
-    if (!this.selection && this.list.config && !this.list.config.disableSelection) {
-      this.selection = new Selection([], this.list.config);
+    if (!this.selection && this.config && !this.config.disableSelection) {
+      this.selection = new Selection([], this.config);
     }
+  }
+
+  /*
+  ngOnChanges() {
+    init();
+  }*/
+
+  /** Returns true if the toggle button should be shown.
+   * Is hidden when all items are selection and the toggle output has no observers. */
+  canToggle() {
+    return this._toggle.observers.length || !this.selection.hasAll(this.list.items);
+  }
+
+  /** Called when clicking the toggle button. emits toggle event with current selection. */
+  toggle(active: boolean = !this.active, emit: boolean = false) {
+    this.active = active;
+    this._toggle.emit(this.selection);
   }
 
   /** Column click handler. Triggers onSelect.emit(item) with fallback to selection.toggle*/
@@ -64,30 +81,31 @@ export class SelectComponent implements ControlValueAccessor {
       return this.onSelect.emit(item);
     }
     if (this.selection) {
-      this.selection.toggle(item, this.solo);
+      this.selection.toggle(item);
     }
   }
 
   private addItem(item) {
     this.selection.toggle(item);
-    if (this.selection.hasAll(this.list.items)) {
-      this.open = false;
-    }
-    this.propagateChange(this.selection.getValue());
+    this.change();
   }
 
   private removeItem(item) {
     this.selection.remove(item);
-    this.propagateChange(this.selection.getValue());
+    this.change();
+  }
+
+  change() {
+    return this.propagateChange(this.selection.getValue());
   }
 
   writeValue(value: any) {
+    //TODO test what happens when switching entries while pop open
     //value is a model value => array of identifiers
-    if (!this.items) {
-      this.items = value || [];
-      this.ngOnChanges();
-      this.selection.addAll(this.list.items);
-    }
+    this.value = Array.isArray(value) ? value : (value ? [value] : []);
+    this.init();
+    this.selection.removeAll();
+    this.selection.addAll(this.list.items);
   }
 
   propagateChange = (_: any) => {

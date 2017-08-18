@@ -10,12 +10,12 @@ export interface FieldConfigProperty {
   /** Custom resolve transformation function.
    * @param body The item body */
   resolve?: (body: any, item: any, property: string) => any;
-  /** Custom edit transformation function. It is used before editing the value in a form.
+  /** Custom edit transformation function. It is used before editing the value, e.g. in a form.
    * @param body The item body */
   edit?: (value, field, property: string) => any;
-  /** Custom serialize transformation function. It is used before saving it in a form.
+  /** Custom serialize transformation function. It is used before saving it, e.g. in a form.
    * @param body The item body */
-  serialize?: (value, field, property: string) => any;
+  // serialize?: (value, field, property: string) => any;
   /** Custom display transformation function.
    * @param value The current property value
    * @param field The field property name */

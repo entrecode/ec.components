@@ -148,6 +148,9 @@
                                     <a href="../components/EntryListComponent.html" >EntryListComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/EntrySelectComponent.html" >EntrySelectComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/ErrorComponent.html" >ErrorComponent</a>
                                 </li>
                                 <li class="link">
@@ -254,9 +257,6 @@
                                     <a href="../classes/Config.html" >Config</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../classes/CrudConfig.html" >CrudConfig</a>
-                                </li>
-                                <li class="link">
                                     <a href="../classes/Entry.html" >Entry</a>
                                 </li>
                                 <li class="link">
@@ -351,6 +351,9 @@
                                 id="xs-interfaces-links"
                             >
                                 <li class="link">
+                                    <a href="../interfaces/CrudConfig.html" >CrudConfig</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
                                 </li>
                                 <li class="link">
@@ -396,6 +399,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../pipes/SafeHtmlPipe.html" >SafeHtmlPipe</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../pipes/VisibleFieldsPipe.html" >VisibleFieldsPipe</a>
                                 </li>
                         </ul>
                     </li>
@@ -567,6 +573,9 @@
                                            <a href="../components/EntryListComponent.html" >EntryListComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/EntrySelectComponent.html" >EntrySelectComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/ErrorComponent.html" >ErrorComponent</a>
                                        </li>
                                        <li class="link">
@@ -673,9 +682,6 @@
                                            <a href="../classes/Config.html" >Config</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../classes/CrudConfig.html" >CrudConfig</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../classes/Entry.html" >Entry</a>
                                        </li>
                                        <li class="link">
@@ -770,6 +776,9 @@
                                        id="interfaces-links"
                    >
                                        <li class="link">
+                                           <a href="../interfaces/CrudConfig.html" >CrudConfig</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
                                        </li>
                                        <li class="link">
@@ -815,6 +824,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../pipes/SafeHtmlPipe.html" >SafeHtmlPipe</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../pipes/VisibleFieldsPipe.html" >VisibleFieldsPipe</a>
                                        </li>
                                </ul>
                            </li>
@@ -961,9 +973,6 @@
                                          <a href="#save">save</a>
                                     </li>
                                     <li>
-                                         <a href="#serialize">serialize</a>
-                                    </li>
-                                    <li>
                                          <a href="#sort">sort</a>
                                     </li>
                                     <li>
@@ -1060,7 +1069,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="116" class="link-to-prism">src/packages/core/item/item.ts:116</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">src/packages/core/item/item.ts:119</a></div>
                                         </td>
                                     </tr>
             
@@ -1232,7 +1241,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">src/packages/core/item/item.ts:110</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="113" class="link-to-prism">src/packages/core/item/item.ts:113</a></div>
                                         </td>
                                     </tr>
             
@@ -1370,51 +1379,18 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="134" class="link-to-prism">src/packages/core/item/item.ts:134</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="142" class="link-to-prism">src/packages/core/item/item.ts:142</a></div>
                                         </td>
                                     </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>Saves the given value. </p>
+                                        <div class="io-description"><p>Transforms the given field&#39;s value for serialization when saving. 
+            Saves the given value. Run serializers before assigning the new value. </p>
             </div>
             
                                         <div class="io-description">
                                             <b>Returns : </b>    <code>Promise&lt;&gt;</code>
-            
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="serialize"></a>
-                                    <b> serialize</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-            <code>serialize(body: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, item: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, property: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">src/packages/core/item/item.ts:129</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description"><p>Transforms the given field&#39;s value for serialization when saving. </p>
-            </div>
-            
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
             
                                         </div>
                                 </td>
@@ -1438,7 +1414,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">src/packages/core/item/item.ts:124</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="127" class="link-to-prism">src/packages/core/item/item.ts:127</a></div>
                                         </td>
                                     </tr>
             
@@ -1466,20 +1442,23 @@
                             <tr>
                                 <td class="col-md-4">
                                         <span class="modifier-icon method fa fa-play lock"></span>
-                                    <code>transform(action: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, property: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                                    <code>transform(action: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, property: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, value: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">src/packages/core/item/item.ts:98</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">src/packages/core/item/item.ts:101</a></div>
                                         </td>
                                     </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>The main method for transformation functions like resolve, display and group. </p>
+                                        <div class="io-description"><p>The main method for transformation functions like resolve, display and group.
+            If you dont set the third parameter, the current item value will be used.
+            The third parameter can be used to transform a value that is not yet possesed (e.g. to
+            serialize) </p>
             </div>
             
                                         <div class="io-description">
@@ -1703,15 +1682,18 @@ export class Item&lt;T&gt; {
     return v ? v[property] : null;
   }
 
-  /** The main method for transformation functions like resolve, display and group. */
-  private transform(action: string, property: string) {
+  /** The main method for transformation functions like resolve, display and group.
+   * If you dont set the third parameter, the current item value will be used.
+   * The third parameter can be used to transform a value that is not yet possesed (e.g. to
+   * serialize) */
+  private transform(action: string, property: string, value: any &#x3D; this.resolve(property)) {
     if (!this.hasBody()) {
       return;
     }
     if (this.config.fields &amp;&amp; this.config.fields[property] &amp;&amp; this.config.fields[property][action]) {
-      return this.config.fields[property][action](this.resolve(property), this.body, property);
+      return this.config.fields[property][action](value, this.body, property);
     }
-    return this.resolve(property);
+    return value;
   }
 
   /** Returns the output of the config.group transformation function with the given property value.
@@ -1735,20 +1717,27 @@ export class Item&lt;T&gt; {
   }
 
   /** Transforms the given field&#x27;s value for serialization when saving. */
-  serialize(body: any, item: any, property: string): any {
-    return this.transform(&#x27;serialize&#x27;, property);
-  }
 
-  /** Saves the given value. */
+  /*  serialize(value): any {
+      return Object.keys(value).reduce((serialized, property) &#x3D;&gt; {
+        return Object.assign(serialized, {
+          [property]: this.transform(&#x27;serialize&#x27;, property, value[property])
+        });
+      }, {});
+    }*/
+
+  /** Saves the given value. Run serializers before assigning the new value. */
   save(value: T): Promise&lt;Item&lt;T&gt;&gt; {
     if (this.config.onSave) {
       return Promise.resolve(this.config.onSave(this, value))
+      // return Promise.resolve(this.config.onSave(this, this.serialize(value)))
       .then((value) &#x3D;&gt; {
         this.body &#x3D; value;
         return this;
       });
     }
     Object.assign(this.resolve() || {}, value);
+    // Object.assign(this.resolve() || {}, this.serialize(value));
     return Promise.resolve(this);
   }
 }</code></pre>

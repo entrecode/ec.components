@@ -1,10 +1,10 @@
-<div *ngIf="!item.display(field.property)">
+<div *ngIf="!item?.display(field.property)">
   <!-- empty -->
 </div>
-<div [ngSwitch]="field.view" *ngIf="item&&item.display(field.property)">
+<div [ngSwitch]="field.view" *ngIf="item&&item?.display(field.property)">
   <!--<div [attr.view]="field.view" [attr.property]="field.property" #cells>-->
   <ul class="labels-list" *ngSwitchCase="'labels'">
-    <li *ngFor="let label of item.display(field.property)">
+    <li *ngFor="let label of item?.display(field.property)">
       <div class="label">
         {{label}}
       </div>
@@ -13,29 +13,29 @@
   <ul class="labels-list" *ngSwitchCase="'label'">
     <li>
       <div class="label">
-        {{item.display(field.property)}}
+        {{item?.display(field.property)}}
       </div>
     </li>
   </ul>
   <div *ngSwitchCase="'boolean'">
-    <i class="ec-icon check-box" *ngIf="item.resolve(field.property)"></i>
+    <i class="ec-icon check-box" *ngIf="item?.resolve(field.property)"></i>
   </div>
-  <a [href]="'mailto:'+item.display(field.property)" *ngSwitchCase="'email'">
-    {{item.display(field.property)}}
+  <a [href]="'mailto:'+item?.display(field.property)" *ngSwitchCase="'email'">
+    {{item?.display(field.property)}}
   </a>
-  <a [href]="item.display(field.property)" *ngSwitchCase="'url'">
-    {{item.display(field.property)}}
+  <a [href]="item?.display(field.property)" *ngSwitchCase="'url'">
+    {{item?.display(field.property)}}
   </a>
   <a href="mailto:test@test.de" *ngSwitchCase="'email'">
-    {{item.display(field.property)}}
+    {{item?.display(field.property)}}
   </a>
   <div class="ec-list-avatar" *ngSwitchCase="'avatar'">
-    <img [src]="item.display(field.property)">
+    <img [src]="item?.display(field.property)">
   </div>
   <div class="ec-list-avatar" *ngSwitchCase="'avatars'">
-    <img [src]="url" *ngFor="let url of item.display(field.property)">
+    <img [src]="url" *ngFor="let url of item?.display(field.property)">
   </div>
   <span *ngSwitchDefault>
-    {{item.display(field.property)}}
+    {{item?.display(field.property)}}
   </span>
 </div>

@@ -8,6 +8,7 @@ import { FieldConfig } from '../../core/config/field-config.interface';
 import { FieldConfigProperty } from '../../core/config/field-config-property.interface';
 import { SdkService } from '../sdk/sdk.service';
 import { TypeConfig } from './type-config';
+import { ListConfig } from '../../core/list/list-config.interface';
 
 /** The main class for configuring the behaviour of a model.
  * By default, everything is auto generated from the model's schema but can be overriden via the
@@ -60,11 +61,11 @@ export class ModelConfig extends Config {
 
   /** Parses the property type (as contained in the property schema's title field). */
   parseType(type: string) {
-    const match = type.match(/^(\w*)[<\w*>]?/i);
+    const match = type.match(/^(\w*)(<(\w*)>)?/i);
     return !match.length ? null : {
       raw: type,
       name: match[1],
-      model: match.length > 2 ? match[2] : null
+      model: match.length > 2 ? match[3] : null
     };
   }
 
@@ -110,10 +111,12 @@ export class ModelConfig extends Config {
   }
 
   /** Returns the given model's config and generates a field config from the schema if it is not configured. */
-  generateConfig(model: string): Promise<ItemConfig<EntryResource>> {
-    const config = this.get(model) || {};
+  generateConfig(model: string): Promise<ListConfig> {
+    const config = Object.assign({}, this.get(model) || {}); //clone
     Object.assign(config, {
       identifier: 'id',
+      label: 'name', //will currently only work for muffins...
+      //TODO add label _entryTitle (or similar) when generic entryTitle property is there
       onSave: (item: Item<EntryResource>, value) => this.crud.save(model, item.getBody(), value)
     });
     return this.generateFieldConfig(model).then((fieldConfig) => {

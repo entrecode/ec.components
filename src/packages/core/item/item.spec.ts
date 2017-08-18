@@ -39,7 +39,6 @@ describe('Item', () => {
       fields: {
         name: {
           resolve: (v) => {
-            console.log('resolve', v);
             return 'Name:' + v.name
           },
           display: (v) => v + '!',

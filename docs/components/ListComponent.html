@@ -148,6 +148,9 @@
                                     <a href="../components/EntryListComponent.html" >EntryListComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/EntrySelectComponent.html" >EntrySelectComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/ErrorComponent.html" >ErrorComponent</a>
                                 </li>
                                 <li class="link">
@@ -254,9 +257,6 @@
                                     <a href="../classes/Config.html" >Config</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../classes/CrudConfig.html" >CrudConfig</a>
-                                </li>
-                                <li class="link">
                                     <a href="../classes/Entry.html" >Entry</a>
                                 </li>
                                 <li class="link">
@@ -351,6 +351,9 @@
                                 id="xs-interfaces-links"
                             >
                                 <li class="link">
+                                    <a href="../interfaces/CrudConfig.html" >CrudConfig</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
                                 </li>
                                 <li class="link">
@@ -396,6 +399,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../pipes/SafeHtmlPipe.html" >SafeHtmlPipe</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../pipes/VisibleFieldsPipe.html" >VisibleFieldsPipe</a>
                                 </li>
                         </ul>
                     </li>
@@ -567,6 +573,9 @@
                                            <a href="../components/EntryListComponent.html" >EntryListComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/EntrySelectComponent.html" >EntrySelectComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/ErrorComponent.html" >ErrorComponent</a>
                                        </li>
                                        <li class="link">
@@ -673,9 +682,6 @@
                                            <a href="../classes/Config.html" >Config</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../classes/CrudConfig.html" >CrudConfig</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../classes/Entry.html" >Entry</a>
                                        </li>
                                        <li class="link">
@@ -770,6 +776,9 @@
                                        id="interfaces-links"
                    >
                                        <li class="link">
+                                           <a href="../interfaces/CrudConfig.html" >CrudConfig</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
                                        </li>
                                        <li class="link">
@@ -815,6 +824,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../pipes/SafeHtmlPipe.html" >SafeHtmlPipe</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../pipes/VisibleFieldsPipe.html" >VisibleFieldsPipe</a>
                                        </li>
                                </ul>
                            </li>
@@ -1446,7 +1458,7 @@ export class ListComponent {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><ec-pagination [pagination]="list?.pagination"               *ngIf="list?.pagination?.getPages()>1"></ec-pagination><div class="ec-list">  <div class="ec-list-group">    <ec-list-header [list]="list" [selection]="selection"></ec-list-header>  </div>  <div class="ec-list-group" *ngFor="let group of list?.groups">    <div class="ec-list-group-header" *ngIf="group.value"         (click)="selection?.toggleAll(listItems?.items)">      <div class="ec-list-item-cell ec-list-checkbox" *ngIf="selection">        <input type="checkbox" [checked]="selection?.hasAll(listItems?.items)">      </div>      <div class="ec-list-item ec-list-group-name">        {{group.value}}      </div>    </div>    <ec-list-items [host]="this" #listItems                   [items]="list?.page | group: group.property: group.value"></ec-list-items>  </div></div><ec-pagination [pagination]="list?.pagination"               *ngIf="list?.pagination?.getPages()>1"></ec-pagination></div>'
-    var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DefaultEntryInputComponent', 'selector': 'ec-default-entry-input'},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': 'ec-default-input'},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SelectionComponent', 'selector': 'ec-selection'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'}];
+    var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DefaultEntryInputComponent', 'selector': 'ec-default-entry-input'},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': 'ec-default-input'},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SelectionComponent', 'selector': 'ec-selection'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'}];
     var DIRECTIVES = [{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'ListComponent'};
 </script>

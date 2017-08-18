@@ -148,6 +148,9 @@
                                     <a href="../components/EntryListComponent.html" >EntryListComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/EntrySelectComponent.html" >EntrySelectComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/ErrorComponent.html" >ErrorComponent</a>
                                 </li>
                                 <li class="link">
@@ -254,9 +257,6 @@
                                     <a href="../classes/Config.html" >Config</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../classes/CrudConfig.html" >CrudConfig</a>
-                                </li>
-                                <li class="link">
                                     <a href="../classes/Entry.html" >Entry</a>
                                 </li>
                                 <li class="link">
@@ -351,6 +351,9 @@
                                 id="xs-interfaces-links"
                             >
                                 <li class="link">
+                                    <a href="../interfaces/CrudConfig.html" >CrudConfig</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
                                 </li>
                                 <li class="link">
@@ -396,6 +399,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../pipes/SafeHtmlPipe.html" >SafeHtmlPipe</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../pipes/VisibleFieldsPipe.html" >VisibleFieldsPipe</a>
                                 </li>
                         </ul>
                     </li>
@@ -567,6 +573,9 @@
                                            <a href="../components/EntryListComponent.html" >EntryListComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/EntrySelectComponent.html" >EntrySelectComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/ErrorComponent.html" >ErrorComponent</a>
                                        </li>
                                        <li class="link">
@@ -673,9 +682,6 @@
                                            <a href="../classes/Config.html" >Config</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../classes/CrudConfig.html" >CrudConfig</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../classes/Entry.html" >Entry</a>
                                        </li>
                                        <li class="link">
@@ -770,6 +776,9 @@
                                        id="interfaces-links"
                    >
                                        <li class="link">
+                                           <a href="../interfaces/CrudConfig.html" >CrudConfig</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
                                        </li>
                                        <li class="link">
@@ -815,6 +824,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../pipes/SafeHtmlPipe.html" >SafeHtmlPipe</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../pipes/VisibleFieldsPipe.html" >VisibleFieldsPipe</a>
                                        </li>
                                </ul>
                            </li>
@@ -924,9 +936,6 @@ It supports solo and multiple selection.</p>
                                     <li>
                                         <span class="modifier">Private</span> <a href="#selectSource">selectSource</a>
                                     </li>
-                                    <li>
-                                        <span class="modifier">Private</span> <a href="#solo">solo</a>
-                                    </li>
                                 </ul>
                             </td>
                         </tr>
@@ -986,7 +995,7 @@ It supports solo and multiple selection.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/packages/core/selection/selection.ts:79</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/packages/core/selection/selection.ts:82</a></div>
                                         </td>
                                     </tr>
             
@@ -1013,14 +1022,14 @@ It supports solo and multiple selection.</p>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>getValue()</code>
+            <code>getValue(solo: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">src/packages/core/selection/selection.ts:84</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">src/packages/core/selection/selection.ts:87</a></div>
                                         </td>
                                     </tr>
             
@@ -1054,7 +1063,7 @@ It supports solo and multiple selection.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/packages/core/selection/selection.ts:33</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/packages/core/selection/selection.ts:31</a></div>
                                         </td>
                                     </tr>
             
@@ -1088,7 +1097,7 @@ It supports solo and multiple selection.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/packages/core/selection/selection.ts:22</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/packages/core/selection/selection.ts:20</a></div>
                                         </td>
                                     </tr>
             
@@ -1115,14 +1124,14 @@ It supports solo and multiple selection.</p>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>toggle(item: <a href="../classes/Item.html">Item<T></a>, solo: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+            <code>toggle(item: <a href="../classes/Item.html">Item<T></a>, solo: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, event: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/packages/core/selection/selection.ts:42</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/packages/core/selection/selection.ts:40</a></div>
                                         </td>
                                     </tr>
             
@@ -1157,7 +1166,7 @@ It supports solo and multiple selection.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/packages/core/selection/selection.ts:61</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/packages/core/selection/selection.ts:63</a></div>
                                         </td>
                                     </tr>
             
@@ -1198,7 +1207,7 @@ It supports solo and multiple selection.</p>
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/packages/core/selection/selection.ts:19</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/packages/core/selection/selection.ts:17</a></div>
                                         </td>
                                     </tr>
             
@@ -1227,48 +1236,13 @@ It supports solo and multiple selection.</p>
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/packages/core/selection/selection.ts:14</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-description"><p>Subject for tracking changes to selection. </p>
-            </div>
-                                </td>
-                            </tr>
-            
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="solo"></a>
-                                    <b><span class="modifier">Private</span> solo</b>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-lock"></span><code>solo:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-            </code>
-                                </td>
-                            </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-            
-                                    </td>
-                                </tr>
-                                    <tr>
-                                        <td class="col-md-4">
                                             <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/packages/core/selection/selection.ts:12</a></div>
                                         </td>
                                     </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>If true, only one item can be selected at a time. </p>
+                                    <div class="io-description"><p>Subject for tracking changes to selection. </p>
             </div>
                                 </td>
                             </tr>
@@ -1290,8 +1264,6 @@ import { List } from &#x27;../list/list&#x27;;
  * It supports solo and multiple selection.
  */
 export class Selection&lt;T&gt; extends List&lt;T&gt; {
-  /** If true, only one item can be selected at a time. */
-  private solo: boolean;
   /** Subject for tracking changes to selection. */
   private selectSource &#x3D; new Subject();
 
@@ -1301,7 +1273,7 @@ export class Selection&lt;T&gt; extends List&lt;T&gt; {
   public select$ &#x3D; this.selectSource.asObservable();
 
   /** Adds item to selection. If solo is true, all other items will be removed. */
-  select(item: Item&lt;T&gt;, solo: boolean &#x3D; this.solo) {
+  select(item: Item&lt;T&gt;, solo: boolean &#x3D; this.config.solo) {
     if (solo) {
       this.removeAll();
       this.add(item);
@@ -1321,21 +1293,25 @@ export class Selection&lt;T&gt; extends List&lt;T&gt; {
 
   /** Toggle item in and out of selection.
    * The solo property will change the behaviour like you would expect it to behave :) */
-  toggle(item: Item&lt;T&gt;, solo: boolean &#x3D; this.solo) {
+  toggle(item: Item&lt;T&gt;, solo: boolean &#x3D; this.config.solo, event: boolean &#x3D; true) {
+    if (!item) {
+      console.warn(&#x27;toggle malicious item&#x27;, item);
+      return;
+    }
     if (!this.has(item)) {
       if (solo) {
         this.removeAll();
       }
-      this.add(item);
+      this.add(item, event);
     } else if (solo) {
       if (this.items.length &gt; 1) {
         //if multiple are selected &#x3D;&gt; keep item
         this.removeAll();
-        return this.add(item);
+        return this.add(item, event);
       }
       this.removeAll();
     } else {
-      this.remove(item);
+      this.remove(item, event);
     }
   }
 
@@ -1349,11 +1325,12 @@ export class Selection&lt;T&gt; extends List&lt;T&gt; {
     }
     items.forEach((item) &#x3D;&gt; {
       if (flip) {
-        this.toggle(item);
+        this.toggle(item, this.config.solo, false);
       } else if (!this.hasAll(items)) {
-        this.add(item, true);
+        this.add(item, true, false);
       }
     });
+    this.update.next(this);
     return this;
   };
 
@@ -1363,8 +1340,12 @@ export class Selection&lt;T&gt; extends List&lt;T&gt; {
   };
 
   /** Returns an Array containing the current value. If an identifier is set, the array will consist of the identifier values, if not, it will resolve the item contents. */
-  getValue() {
-    return this.items.map((item) &#x3D;&gt; this.config.identifier ? item.id() : item.resolve());
+  getValue(solo: boolean &#x3D; this.config.solo) {
+    const value &#x3D; this.items.map((item) &#x3D;&gt; this.config.identifier ? item.id() : item.resolve());
+    if (solo) {
+      return value.length ? value[0] : null;
+    }
+    return value;
   }
 }</code></pre>
     </div>

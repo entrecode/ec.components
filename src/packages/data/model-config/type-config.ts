@@ -62,15 +62,18 @@ export class TypeConfig {
       view: 'label',
       input: DefaultEntryInputComponent,
       output: DefaultOutputComponent,
-      resolve: TypeConfig.resolveEntries,
       display: TypeConfig.displayEntries,
+      filterable: true,
+      filterOperator: 'any'
     },
     entries: {
       view: 'labels',
       input: DefaultEntryInputComponent,
       output: DefaultOutputComponent,
-      resolve: TypeConfig.resolveEntries,
       display: TypeConfig.displayEntries,
+      filterable: true,
+      filterOperator: 'any',
+      // form: false,
     },
     json: {
       input: DefaultEntryInputComponent,
@@ -117,11 +120,13 @@ export class TypeConfig {
     if (typeof value === 'string') {
       //TODO use getLevels when ready
       //TODO is it possible to get the model title field of the nested entry? (and useful)
-      return { id: value, _entryTitle: 'Simi' };
+      return { id: value, name: 'Simi' };
       //TODO wait for getTitle(property) implementation
     }
     if (value && value.getTitle) {
-      return { id: value.id, _entryTitle: value.getTitle('') }
+      // return { id: value.id, _entryTitle: value.getTitle('') }
+      return { id: value.id, [value.getModelTitleField()]: value.getTitle('') }
+      //TODO use modelTitleField when it is possible to get it with lvl1
     }
   }
 
@@ -130,6 +135,10 @@ export class TypeConfig {
     if (Array.isArray(value)) {
       return value.map((nested) => TypeConfig.displayEntries(nested, entry));
     }
-    return value ? value._entryTitle : '';
+    if (typeof value === 'string') {
+      return value || 'entry';
+    }
+    //TODO replace name with _entryTitle when ready
+    return value ? value.getTitle() : '';
   }
 }

@@ -1,3 +1,5 @@
+import { Subject } from 'rxjs';
+
 /**
  * A Collection is a more sophisticated Array. It is fundamental for other classes like List.
  */
@@ -6,6 +8,10 @@ export class Collection<T> {
    * The items must all have the same type T.
    */
   public items: Array<T>;
+  /** Subject that is nexted when the items update */
+  protected update = new Subject();
+  /** Subject that is nexted when the items change */
+  public update$ = this.update.asObservable();
 
   /**
    * Constructs the collection with the given item Array (optional).
@@ -44,7 +50,11 @@ export class Collection<T> {
    * numbers.has([1,2]); //true
    * ```
    */
-  hasAll(items: Array<T>): boolean {
+  hasAll(items: Array<T> = []): boolean {
+    if (items === null) {
+      // console.warn('has all fail', this, items);
+      return;
+    }
     return items.reduce((has, item) => {
       return has && this.has(item);
     }, true);
@@ -58,11 +68,14 @@ export class Collection<T> {
    * numbers.add(4);
    * ```
    */
-  add(item: T, unique?: boolean) {
+  add(item: T, unique?: boolean, event: boolean = true) {
     if (unique && this.has(item)) {
       return false;
     }
     this.items.push(item);
+    if (event) {
+      this.update.next(this);
+    }
   }
 
   /**
@@ -75,8 +88,9 @@ export class Collection<T> {
    */
   addAll(items: Array<T>, unique?: boolean) {
     items.forEach((item) => {
-      this.add(item, unique);
+      this.add(item, unique, false);
     });
+    this.update.next(this);
   };
 
   /**
@@ -86,11 +100,14 @@ export class Collection<T> {
    * numbers.remove(4);
    * ```
    */
-  remove(item: T) {
+  remove(item: T, event: boolean = true) {
     if (!this.has(item)) {
       return false;
     }
     this.items.splice(this.index(item), 1);
+    if (event) {
+      this.update.next(this);
+    }
   }
 
   /**
@@ -103,10 +120,11 @@ export class Collection<T> {
   removeAll(items?: Array<T>) {
     if (items) {
       items.forEach((item) => {
-        this.remove(item);
+        this.remove(item, false);
       });
     } else {
       this.items.length = 0;
     }
+    this.update.next(this);
   }
 }

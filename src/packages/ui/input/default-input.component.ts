@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Field } from '../../core/field/field';
 import { Item } from '../../core/item/item';
 
@@ -9,7 +10,11 @@ import { Item } from '../../core/item/item';
 })
 export class DefaultInputComponent {
   /** The field for which the input is meant. */
-  field: Field<any>;
+  protected field: Field<any>;
   /** The item that is targeted by the input */
-  item: Item<any>;
+  protected item: Item<any>;
+  /** The form group that is used */
+  protected group: FormGroup;
+  /** The form control that is used */
+  protected control: FormControl;
 }

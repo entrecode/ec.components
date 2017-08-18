@@ -8,6 +8,9 @@ import { EntryListComponent } from '../entry-list/entry-list.component';
 import { PopComponent } from '../../ui/pop/pop.component';
 import { SdkService } from '../sdk/sdk.service';
 import { Item } from '../../core/item/item';
+import { LoaderComponent } from '../../ui/loader/loader.component';
+import { LoaderService } from '../../ui/loader/loader.service';
+import { NotificationsService } from '../../ui/notifications/notifications.service';
 
 /** The CrudComponent takes at least a model name to render an entry list with create/edit/delete functionality out of the box.  */
 @Component({
@@ -26,12 +29,14 @@ export class CrudComponent {
   @ViewChild(EntryListComponent) list: EntryListComponent;
   /** The Pop inside the template. */
   @ViewChild(PopComponent) pop: PopComponent;
+  /** The lists loader */
+  @ViewChild('listLoader') loader: LoaderComponent;
   /** Emits when a list element is clicked */
   @Output() select: EventEmitter<any> = new EventEmitter();
   /** Emits when the selection has changed */
   @Output() selected: EventEmitter<any> = new EventEmitter();
 
-  constructor(private sdk: SdkService) {
+  constructor(private sdk: SdkService, private loaderService: LoaderService, private notificationService: NotificationsService) {
   }
 
   /** Logs the current form (Developer help). */
@@ -50,6 +55,27 @@ export class CrudComponent {
     return (!edit && this.hasMethod('create')) || (edit && this.hasMethod('update'))
   }
 
+  private loadEntry(item) {
+    return Promise.resolve().then(() => {
+      if (!this.config.levels || this.config.levels === 1) {
+        return item;
+      }
+      return this.sdk.api.entry(this.model, item.id(), this.config.levels)
+      .then((leveledEntry) => {
+        return new Item(leveledEntry, item.config);
+      });
+    }).then((loadedEntry) => {
+      this.form.edit(loadedEntry);
+      this.pop.show();
+    }).catch((err) => {
+      console.log('err', err);
+      this.notificationService.emit({
+        title: 'Fehler beim Laden',
+        error: err
+      })
+    });
+  }
+
   /** Is called when an item in the list is clicked. */
   private selectEntry(item, form) {
     if (!item) {
@@ -59,17 +85,6 @@ export class CrudComponent {
       this.select.emit(item);
       return;
     }
-    return Promise.resolve().then(() => {
-      if (!this.config.levels || this.config.levels === 1) {
-        return item;
-      }
-      return this.sdk.api.entry(this.model, item.id(), 2)
-      .then((leveledEntry) => {
-        return new Item(leveledEntry, item.config);
-      });
-    }).then((loadedEntry) => {
-      this.form.edit(loadedEntry);
-      this.pop.show();
-    });
+    this.loaderService.wait(this.loadEntry(item), this.loader);
   }
 }

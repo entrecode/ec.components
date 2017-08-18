@@ -3,9 +3,10 @@ import { NotificationsComponent } from '../../ui/notifications/notifications.com
 import { EntryListConfig } from '../entry-list/entry-list-config';
 import { Selection } from '../../core/selection/selection';
 import { EntryResource } from "ec.sdk/typings/resources/publicAPI/EntryResource";
+import { ListConfig } from '../../core/list/list-config.interface';
 
 /** The CrudConfig allows a quick customization of an ec-crud component. */
-export class CrudConfig {
+export interface CrudConfig extends ListConfig {
   /** The label for the entry create button */
   createLabel?: string;
   /** An Array of Methods that should be supported. Possible values are create, read, update and delete*/

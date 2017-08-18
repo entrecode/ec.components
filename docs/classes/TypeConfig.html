@@ -148,6 +148,9 @@
                                     <a href="../components/EntryListComponent.html" >EntryListComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/EntrySelectComponent.html" >EntrySelectComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/ErrorComponent.html" >ErrorComponent</a>
                                 </li>
                                 <li class="link">
@@ -254,9 +257,6 @@
                                     <a href="../classes/Config.html" >Config</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../classes/CrudConfig.html" >CrudConfig</a>
-                                </li>
-                                <li class="link">
                                     <a href="../classes/Entry.html" >Entry</a>
                                 </li>
                                 <li class="link">
@@ -351,6 +351,9 @@
                                 id="xs-interfaces-links"
                             >
                                 <li class="link">
+                                    <a href="../interfaces/CrudConfig.html" >CrudConfig</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
                                 </li>
                                 <li class="link">
@@ -396,6 +399,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../pipes/SafeHtmlPipe.html" >SafeHtmlPipe</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../pipes/VisibleFieldsPipe.html" >VisibleFieldsPipe</a>
                                 </li>
                         </ul>
                     </li>
@@ -567,6 +573,9 @@
                                            <a href="../components/EntryListComponent.html" >EntryListComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/EntrySelectComponent.html" >EntrySelectComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/ErrorComponent.html" >ErrorComponent</a>
                                        </li>
                                        <li class="link">
@@ -673,9 +682,6 @@
                                            <a href="../classes/Config.html" >Config</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../classes/CrudConfig.html" >CrudConfig</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../classes/Entry.html" >Entry</a>
                                        </li>
                                        <li class="link">
@@ -770,6 +776,9 @@
                                        id="interfaces-links"
                    >
                                        <li class="link">
+                                           <a href="../interfaces/CrudConfig.html" >CrudConfig</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
                                        </li>
                                        <li class="link">
@@ -815,6 +824,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../pipes/SafeHtmlPipe.html" >SafeHtmlPipe</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../pipes/VisibleFieldsPipe.html" >VisibleFieldsPipe</a>
                                        </li>
                                </ul>
                            </li>
@@ -964,7 +976,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="131" class="link-to-prism">src/packages/data/model-config/type-config.ts:131</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="134" class="link-to-prism">src/packages/data/model-config/type-config.ts:134</a></div>
                                         </td>
                                     </tr>
             
@@ -999,7 +1011,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">src/packages/data/model-config/type-config.ts:98</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">src/packages/data/model-config/type-config.ts:99</a></div>
                                         </td>
                                     </tr>
             
@@ -1034,7 +1046,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="115" class="link-to-prism">src/packages/data/model-config/type-config.ts:115</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="116" class="link-to-prism">src/packages/data/model-config/type-config.ts:116</a></div>
                                         </td>
                                     </tr>
             
@@ -1118,13 +1130,11 @@ export class TypeConfig {
       view: &#x27;string&#x27;,
       filterable: true,
       sortable: true,
-      prefill: &#x27;Du alte sau&#x27;
     },
     boolean: {
-      // sortable: true,
       filterable: true,
       filterOperator: &#x27;exact&#x27;,
-      prefill: true
+      prefill: false,
     },
     formattedText: {
       view: &#x27;textarea&#x27;,
@@ -1166,20 +1176,23 @@ export class TypeConfig {
       view: &#x27;label&#x27;,
       input: DefaultEntryInputComponent,
       output: DefaultOutputComponent,
-      resolve: TypeConfig.resolveEntries,
       display: TypeConfig.displayEntries,
+      filterable: true,
+      filterOperator: &#x27;any&#x27;
     },
     entries: {
       view: &#x27;labels&#x27;,
       input: DefaultEntryInputComponent,
       output: DefaultOutputComponent,
-      resolve: TypeConfig.resolveEntries,
       display: TypeConfig.displayEntries,
+      filterable: true,
+      filterOperator: &#x27;any&#x27;,
+      // form: false,
     },
     json: {
       input: DefaultEntryInputComponent,
       output: DefaultEntryOutputComponent,
-      display: (value) &#x3D;&gt; JSON.stringify(value)
+      display: (value) &#x3D;&gt; value ? JSON.stringify(value) : &#x27;&#x27;
     },
     location: {
       input: DefaultEntryInputComponent,
@@ -1221,11 +1234,13 @@ export class TypeConfig {
     if (typeof value &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
       //TODO use getLevels when ready
       //TODO is it possible to get the model title field of the nested entry? (and useful)
-      return { id: value, _entryTitle: &#x27;Simi&#x27; };
+      return { id: value, name: &#x27;Simi&#x27; };
       //TODO wait for getTitle(property) implementation
     }
     if (value &amp;&amp; value.getTitle) {
-      return { id: value.id, _entryTitle: value.getTitle(&#x27;&#x27;) }
+      // return { id: value.id, _entryTitle: value.getTitle(&#x27;&#x27;) }
+      return { id: value.id, [value.getModelTitleField()]: value.getTitle(&#x27;&#x27;) }
+      //TODO use modelTitleField when it is possible to get it with lvl1
     }
   }
 
@@ -1234,7 +1249,11 @@ export class TypeConfig {
     if (Array.isArray(value)) {
       return value.map((nested) &#x3D;&gt; TypeConfig.displayEntries(nested, entry));
     }
-    return value ? value._entryTitle : &#x27;&#x27;;
+    if (typeof value &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
+      return value || &#x27;entry&#x27;;
+    }
+    //TODO replace name with _entryTitle when ready
+    return value ? value.getTitle() : &#x27;&#x27;;
   }
 }</code></pre>
     </div>

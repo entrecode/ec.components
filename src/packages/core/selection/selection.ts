@@ -8,8 +8,6 @@ import { List } from '../list/list';
  * It supports solo and multiple selection.
  */
 export class Selection<T> extends List<T> {
-  /** If true, only one item can be selected at a time. */
-  private solo: boolean;
   /** Subject for tracking changes to selection. */
   private selectSource = new Subject();
 
@@ -19,7 +17,7 @@ export class Selection<T> extends List<T> {
   public select$ = this.selectSource.asObservable();
 
   /** Adds item to selection. If solo is true, all other items will be removed. */
-  select(item: Item<T>, solo: boolean = this.solo) {
+  select(item: Item<T>, solo: boolean = this.config.solo) {
     if (solo) {
       this.removeAll();
       this.add(item);
@@ -39,21 +37,25 @@ export class Selection<T> extends List<T> {
 
   /** Toggle item in and out of selection.
    * The solo property will change the behaviour like you would expect it to behave :) */
-  toggle(item: Item<T>, solo: boolean = this.solo) {
+  toggle(item: Item<T>, solo: boolean = this.config.solo, event: boolean = true) {
+    if (!item) {
+      console.warn('toggle malicious item', item);
+      return;
+    }
     if (!this.has(item)) {
       if (solo) {
         this.removeAll();
       }
-      this.add(item);
+      this.add(item, event);
     } else if (solo) {
       if (this.items.length > 1) {
         //if multiple are selected => keep item
         this.removeAll();
-        return this.add(item);
+        return this.add(item, event);
       }
       this.removeAll();
     } else {
-      this.remove(item);
+      this.remove(item, event);
     }
   }
 
@@ -67,11 +69,12 @@ export class Selection<T> extends List<T> {
     }
     items.forEach((item) => {
       if (flip) {
-        this.toggle(item);
+        this.toggle(item, this.config.solo, false);
       } else if (!this.hasAll(items)) {
-        this.add(item, true);
+        this.add(item, true, false);
       }
     });
+    this.update.next(this);
     return this;
   };
 
@@ -81,7 +84,11 @@ export class Selection<T> extends List<T> {
   };
 
   /** Returns an Array containing the current value. If an identifier is set, the array will consist of the identifier values, if not, it will resolve the item contents. */
-  getValue() {
-    return this.items.map((item) => this.config.identifier ? item.id() : item.resolve());
+  getValue(solo: boolean = this.config.solo) {
+    const value = this.items.map((item) => this.config.identifier ? item.id() : item.resolve());
+    if (solo) {
+      return value.length ? value[0] : null;
+    }
+    return value;
   }
 }

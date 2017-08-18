@@ -1,7 +1,7 @@
 /**
  * Created by felix on 26.05.17.
  */
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 /** A Pop is an area of content whose visibility can be toggled.
  * It can be used e.g as popup, modal or dropdown.*/
@@ -15,15 +15,20 @@ export class PopComponent {
   @Input() active: boolean;
   /** If true, .visible is set on .ec-pop-container.  */
   @Input() visible: boolean;
+  /** Emits the value of visible on change. */
+  @Output('toggle') _toggle: EventEmitter<boolean> = new EventEmitter();
   /** The amount of time between setting active and visible. Defaults to 0. */
   delay: number = 0;
 
   /** Shows if not visible, hides if visible. */
-  public toggle() {
-    if (this.visible) {
+  public toggle(visible: boolean = !this.visible, emit: boolean = false) {
+    if (!visible) {
       this.hide();
     } else {
       this.show();
+    }
+    if (emit) {
+      this._toggle.emit(visible);
     }
   }
 

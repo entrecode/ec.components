@@ -94,15 +94,18 @@ export class Item<T> {
     return v ? v[property] : null;
   }
 
-  /** The main method for transformation functions like resolve, display and group. */
-  private transform(action: string, property: string) {
+  /** The main method for transformation functions like resolve, display and group.
+   * If you dont set the third parameter, the current item value will be used.
+   * The third parameter can be used to transform a value that is not yet possesed (e.g. to
+   * serialize) */
+  private transform(action: string, property: string, value: any = this.resolve(property)) {
     if (!this.hasBody()) {
       return;
     }
     if (this.config.fields && this.config.fields[property] && this.config.fields[property][action]) {
-      return this.config.fields[property][action](this.resolve(property), this.body, property);
+      return this.config.fields[property][action](value, this.body, property);
     }
-    return this.resolve(property);
+    return value;
   }
 
   /** Returns the output of the config.group transformation function with the given property value.
@@ -126,20 +129,27 @@ export class Item<T> {
   }
 
   /** Transforms the given field's value for serialization when saving. */
-  serialize(body: any, item: any, property: string): any {
-    return this.transform('serialize', property);
-  }
 
-  /** Saves the given value. */
+  /*  serialize(value): any {
+      return Object.keys(value).reduce((serialized, property) => {
+        return Object.assign(serialized, {
+          [property]: this.transform('serialize', property, value[property])
+        });
+      }, {});
+    }*/
+
+  /** Saves the given value. Run serializers before assigning the new value. */
   save(value: T): Promise<Item<T>> {
     if (this.config.onSave) {
       return Promise.resolve(this.config.onSave(this, value))
+      // return Promise.resolve(this.config.onSave(this, this.serialize(value)))
       .then((value) => {
         this.body = value;
         return this;
       });
     }
     Object.assign(this.resolve() || {}, value);
+    // Object.assign(this.resolve() || {}, this.serialize(value));
     return Promise.resolve(this);
   }
 }

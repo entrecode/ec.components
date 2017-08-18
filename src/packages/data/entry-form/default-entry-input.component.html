@@ -1,21 +1,11 @@
 <fieldset [ngSwitch]="field.type" *ngIf="group" [formGroup]="group">
   <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>
-  <!--<div *ngSwitchCase="'entry'">
-    {{item?.display(field.property)}}
-  </div> -->
+  <div *ngSwitchCase="'entry'">
+    <ec-entry-select [formControl]="group.get(field.property)" [field]="field"
+                     [solo]="true"></ec-entry-select>
+  </div>
   <div *ngSwitchCase="'entries'">
-    <ec-output [field]="field" [item]="item"></ec-output>
-
-    <ec-input type="json" property="test"></ec-input>
-
-    <span class="btn" (click)="toggleList=!toggleList">
-      <i class="ec-icon list-bullets"></i>
-    </span>
-    <ec-crud model="muffin" [config]="{popClass:'modal',listConfig:{fields:{name:{label:'N'}}}}"
-             [hidden]="!toggleList" *ngIf="toggleList!==undefined"
-             (select)="entrySelect.list?.selection?.toggle($event)" #entrySelect></ec-crud>
-    <!--(selected)="crudSelection.add($event)"-->
-    <!--[config]="{selection:crudSelection?.selection}"-->
+    <ec-entry-select [formControl]="group.get(field.property)" [field]="field"></ec-entry-select>
   </div>
   <!--
   - use entry resource array (lvl2)

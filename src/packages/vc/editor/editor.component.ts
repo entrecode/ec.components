@@ -308,7 +308,6 @@ export class EditorComponent {
       return;
     }
     if (document.getSelection().toString().length) {
-      console.log('warapppp');
       const node = this.wrap(element);
       this.update();
       return;
@@ -409,7 +408,6 @@ export class EditorComponent {
         let el = this.getInstance(container);
         if (this.isText(el)) {
           el = this.getInstance(container.parentNode);
-          console.log('was text', el);
         }
 
         console.dir(base);
@@ -418,7 +416,6 @@ export class EditorComponent {
         // const content = this.getText(this.caret.phrasing);
         const content = this.getText(el);
 
-        console.log('content', content, selection);
         const split = this.splitAt(start)(content);
         split[1] = split[1].substr(selection.toString().length);
         const json = Object.assign(phrasing.json, { content: treeWalker.currentNode.nodeValue });
@@ -428,7 +425,6 @@ export class EditorComponent {
         el.content = split.filter(e => e);
 
         this.flushInstance(parent);
-        console.log('flush ', parent);
         this.selectNode(this.getElement(parent.content[1] || parent.content[0]));
       }
       else if (treeWalker.currentNode.nodeType === 3) {
@@ -551,7 +547,6 @@ export class EditorComponent {
     if (this.isText(a)) {
       a.content += b.content;
     } else {
-      console.log('concat', a, b);
       a.content.concat(b.content);
     }
   }

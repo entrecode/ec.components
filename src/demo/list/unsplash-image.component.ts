@@ -8,8 +8,4 @@ export class UnsplashImageComponent {
 
   constructor() {
   }
-
-  ngOnChanges() {
-    console.log('changed', this);
-  }
 }

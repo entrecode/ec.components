@@ -42,7 +42,6 @@ export class PublicLoginComponent implements OnInit {
 
     this.sdk.login(this.login.value)
     .then((res) => {
-      console.log('login res', res);
       this.login.reset();
       this.success.emit();
     });

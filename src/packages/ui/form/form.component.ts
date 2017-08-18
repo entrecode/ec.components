@@ -49,7 +49,7 @@ export class FormComponent {
     if (this.value) { //if value is set, create item from value only
       this.form = new Form(this.value, config);
     }
-    if (config) { //TODO prefill
+    if (config) {
       this.form = new Form(null, config);
     }
     if (item) {

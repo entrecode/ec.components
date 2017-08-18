@@ -9,6 +9,5 @@ export class CrudDemoComponent {
   }
 
   log(entry) {
-    console.log('select', entry);
   }
 }

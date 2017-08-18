@@ -1,14 +1,18 @@
 :host {
-  .ec-pop-container {
-    .ec-pop {
+  > .ec-pop-container {
+    > .ec-pop {
       visibility: hidden;
       overflow: auto;
       z-index: 1001;
+      display: none;
     }
-    &:not(.visible) .ec-pop {
+    &.visible > .ec-pop {
+      display: block;
+    }
+    &:not(.visible) > .ec-pop {
       visibility: hidden;
     }
-    &.visible .ec-pop {
+    &.visible > .ec-pop {
       visibility: visible;
     }
   }
@@ -46,8 +50,8 @@
   }
 
   &.fullscreen {
-    .ec-pop-container {
-      .ec-pop {
+    > .ec-pop-container {
+      > .ec-pop {
         width: 100vw;
         height: 100vh;
         background-color: white;
@@ -57,15 +61,15 @@
         opacity: 0;
         transition: all .3s ease-in;
       }
-      &.visible .ec-pop {
+      &.visible > .ec-pop {
         opacity: 1;
       }
     }
   }
 
   &.sidebar-left {
-    .ec-pop-container {
-      .ec-pop {
+    > .ec-pop-container {
+      > .ec-pop {
         width: 50vw;
         top: 0;
         height: 100vh;
@@ -76,15 +80,15 @@
         left: -50vw;
         transition: all .3s ease-in;
       }
-      &.visible .ec-pop {
+      &.visible > .ec-pop {
         left: 0;
       }
     }
   }
 
   &.sidebar-right {
-    .ec-pop-container {
-      .ec-pop {
+    > .ec-pop-container {
+      > .ec-pop {
         width: 50vw;
         top: 0;
         height: 100vh;
@@ -95,18 +99,18 @@
         right: -50vw;
         transition: all .3s ease-in;
       }
-      &.visible .ec-pop {
+      &.visible > .ec-pop {
         right: 0;
       }
     }
   }
 
-  &.popdown {
+  &.popdown, &.dropdown {
     position: absolute;
     top: 0;
     width: 100%;
-    .ec-pop-container {
-      .ec-pop {
+    > .ec-pop-container {
+      > .ec-pop {
         position: absolute;
         width: 100%;
         display: none;
@@ -119,7 +123,7 @@
         //min-height: 100px;
         min-width: 100px;
       }
-      &.visible .ec-pop {
+      &.visible > .ec-pop {
         display: block;
       }
     }

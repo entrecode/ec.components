@@ -8,8 +8,4 @@ export class CoolStringComponent {
 
   constructor() {
   }
-
-  ngOnChanges() {
-    console.log('changed', this);
-  }
 }

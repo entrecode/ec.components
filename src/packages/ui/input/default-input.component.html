@@ -6,19 +6,19 @@
   <textarea *ngSwitchCase="'textarea'" type="text" [formControl]="control"
             [placeholder]="field.getPlaceholder()"></textarea>
 
-  <input *ngSwitchCase="'number'" type="number"  [formControl]="control"
+  <input *ngSwitchCase="'number'" type="number" [formControl]="control"
          [placeholder]="field.getPlaceholder()">
 
-  <input *ngSwitchCase="'boolean'" type="checkbox"  [formControl]="control"
+  <input *ngSwitchCase="'boolean'" type="checkbox" [formControl]="control"
          [placeholder]="field.getPlaceholder()">
 
-  <input *ngSwitchCase="'email'" type="email"  [formControl]="control"
+  <input *ngSwitchCase="'email'" type="email" [formControl]="control"
          [placeholder]="field.getPlaceholder()">
 
-  <input *ngSwitchCase="'url'" type="url"  [formControl]="control"
+  <input *ngSwitchCase="'url'" type="url" [formControl]="control"
          [placeholder]="field.getPlaceholder()">
-  
-  <ec-select *ngSwitchCase="'array'"  [formControl]="control"></ec-select>
+
+  <ec-select *ngSwitchCase="'array'" [formControl]="control"></ec-select>
   <div *ngSwitchDefault>
     <ec-output [field]="field" [item]="item"></ec-output>
     <!--<marquee>🚂🚃🚃🚃 {{field.type}}/{{field.view}} input coming soon</marquee>-->

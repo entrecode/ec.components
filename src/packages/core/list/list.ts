@@ -61,9 +61,9 @@ export class List<T> extends Collection<Item<T>> {
   }
 
   /** Adds the given item to the list and assigns the list config to the item*/
-  add(item: Item<T>, unique?: boolean) {
+  add(item: Item<T>, unique?: boolean, event: boolean = true) {
     item.useConfig(this.config);
-    return super.add(item, unique);
+    return super.add(item, unique, event);
   }
 
   /**

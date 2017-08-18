@@ -97,7 +97,7 @@ export class EntryList<Entry> extends List<Entry> {
   /** Filters the entry list by a given property value. Triggers load */
   filter(property: string, value: any = '', operator: string = this.getFilterOperator(property)) {
     const currentFilter = this.config.filter || {};
-    if (value === '' || value === null || value === undefined) {
+    if (value === '' || value === null || value === undefined || (Array.isArray(value) && !value.length)) {
       delete currentFilter[property];
     } else {
       Object.assign(currentFilter, {

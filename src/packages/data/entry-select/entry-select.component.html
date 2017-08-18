@@ -1,0 +1,13 @@
+<div *ngIf="config" class="ec-entry-select">
+  <ec-select [config]="config" [formControl]="formControl"
+             [active]="crudPop.visible" (toggle)="toggle($event)" #entrySelect></ec-select>
+
+  <ec-pop (toggle)="select.toggle($event)" #crudPop>
+    <!--<button type="button" (click)="crudPop.toggle(false,true)">
+      <i class="ec-icon close"></i>
+    </button>-->
+    <ec-crud [model]="field.model" *ngIf="crudPop.active"
+             [config]="{size:10,selection:selection}"
+             (select)="select($event)" #crud></ec-crud>
+  </ec-pop>
+</div>

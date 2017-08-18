@@ -148,6 +148,9 @@
                                     <a href="../components/EntryListComponent.html" >EntryListComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/EntrySelectComponent.html" >EntrySelectComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/ErrorComponent.html" >ErrorComponent</a>
                                 </li>
                                 <li class="link">
@@ -254,9 +257,6 @@
                                     <a href="../classes/Config.html" >Config</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../classes/CrudConfig.html" >CrudConfig</a>
-                                </li>
-                                <li class="link">
                                     <a href="../classes/Entry.html" >Entry</a>
                                 </li>
                                 <li class="link">
@@ -351,6 +351,9 @@
                                 id="xs-interfaces-links"
                             >
                                 <li class="link">
+                                    <a href="../interfaces/CrudConfig.html" >CrudConfig</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
                                 </li>
                                 <li class="link">
@@ -396,6 +399,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../pipes/SafeHtmlPipe.html" >SafeHtmlPipe</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../pipes/VisibleFieldsPipe.html" >VisibleFieldsPipe</a>
                                 </li>
                         </ul>
                     </li>
@@ -567,6 +573,9 @@
                                            <a href="../components/EntryListComponent.html" >EntryListComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/EntrySelectComponent.html" >EntrySelectComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/ErrorComponent.html" >ErrorComponent</a>
                                        </li>
                                        <li class="link">
@@ -673,9 +682,6 @@
                                            <a href="../classes/Config.html" >Config</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../classes/CrudConfig.html" >CrudConfig</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../classes/Entry.html" >Entry</a>
                                        </li>
                                        <li class="link">
@@ -770,6 +776,9 @@
                                        id="interfaces-links"
                    >
                                        <li class="link">
+                                           <a href="../interfaces/CrudConfig.html" >CrudConfig</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
                                        </li>
                                        <li class="link">
@@ -815,6 +824,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../pipes/SafeHtmlPipe.html" >SafeHtmlPipe</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../pipes/VisibleFieldsPipe.html" >VisibleFieldsPipe</a>
                                        </li>
                                </ul>
                            </li>
@@ -1381,7 +1393,7 @@ export class ListHeaderComponent {
         <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;ec-list-group-header&quot; *ngIf&#x3D;&quot;!disableHeader&quot;&gt;
   &lt;div class&#x3D;&quot;ec-list-item-cell ec-list-checkbox&quot; *ngIf&#x3D;&quot;selection&quot;&gt;
     &lt;input type&#x3D;&quot;checkbox&quot; (click)&#x3D;&quot;selection?.toggleAll(list?.items)&quot;
-           [checked]&#x3D;&quot;selection?.hasAll(list?.items)&quot;&gt;
+           [checked]&#x3D;&quot;selection?.hasAll(list?.items)&quot; [disabled]&#x3D;&quot;selection.config?.solo&quot;&gt;
   &lt;/div&gt;
   &lt;ec-form [config]&#x3D;&quot;list?.config&quot; [empty]&#x3D;&quot;true&quot; #filterForm&gt;&lt;/ec-form&gt;
   &lt;div class&#x3D;&quot;ec-list-item ec-list-header&quot; *ngFor&#x3D;&quot;let field of list?.fields&quot;
@@ -1436,8 +1448,8 @@ export class ListHeaderComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="ec-list-group-header" *ngIf="!disableHeader">  <div class="ec-list-item-cell ec-list-checkbox" *ngIf="selection">    <input type="checkbox" (click)="selection?.toggleAll(list?.items)"           [checked]="selection?.hasAll(list?.items)">  </div>  <ec-form [config]="list?.config" [empty]="true" #filterForm></ec-form>  <div class="ec-list-item ec-list-header" *ngFor="let field of list?.fields"       [class.hidden]="field.hidden">    <ec-pop #filterPop class="popdown">      <a (click)="removeFilter(field.property);filterPop.hide()">        <i class="ec-icon close"></i>      </a>      <ec-input [field]="field" [group]="filterForm?.group" [debounce]="200"                (changed)="applyFilter(field.property, $event)"></ec-input>    </ec-pop>    {{field.label || field.property}}    <ul>      <li *ngIf="field.sortable">        <a class="action" [class.active]="list.config?.sortBy===field.property"           (click)="list.toggleSort(field.property)">          <i class="ec-icon" [ngClass]="!list.config?.desc?\'arrow-down\':\'arrow-up\'"></i>        </a>      </li>      <li *ngIf="field.filterable">        <a class="action" [class.active]="hasFilter(field.property)"           (click)="editFilter(filterPop)">          <i class="ec-icon find"></i>        </a>      </li>    </ul>  </div></div></div>'
-    var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DefaultEntryInputComponent', 'selector': 'ec-default-entry-input'},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': 'ec-default-input'},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SelectionComponent', 'selector': 'ec-selection'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'}];
+        var COMPONENT_TEMPLATE = '<div><div class="ec-list-group-header" *ngIf="!disableHeader">  <div class="ec-list-item-cell ec-list-checkbox" *ngIf="selection">    <input type="checkbox" (click)="selection?.toggleAll(list?.items)"           [checked]="selection?.hasAll(list?.items)" [disabled]="selection.config?.solo">  </div>  <ec-form [config]="list?.config" [empty]="true" #filterForm></ec-form>  <div class="ec-list-item ec-list-header" *ngFor="let field of list?.fields"       [class.hidden]="field.hidden">    <ec-pop #filterPop class="popdown">      <a (click)="removeFilter(field.property);filterPop.hide()">        <i class="ec-icon close"></i>      </a>      <ec-input [field]="field" [group]="filterForm?.group" [debounce]="200"                (changed)="applyFilter(field.property, $event)"></ec-input>    </ec-pop>    {{field.label || field.property}}    <ul>      <li *ngIf="field.sortable">        <a class="action" [class.active]="list.config?.sortBy===field.property"           (click)="list.toggleSort(field.property)">          <i class="ec-icon" [ngClass]="!list.config?.desc?\'arrow-down\':\'arrow-up\'"></i>        </a>      </li>      <li *ngIf="field.filterable">        <a class="action" [class.active]="hasFilter(field.property)"           (click)="editFilter(filterPop)">          <i class="ec-icon find"></i>        </a>      </li>    </ul>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DefaultEntryInputComponent', 'selector': 'ec-default-entry-input'},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': 'ec-default-input'},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SelectionComponent', 'selector': 'ec-selection'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'}];
     var DIRECTIVES = [{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'ListHeaderComponent'};
 </script>

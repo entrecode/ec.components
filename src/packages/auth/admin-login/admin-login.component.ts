@@ -39,7 +39,6 @@ export class AdminLoginComponent implements OnInit {
     if (!this.login.valid) {
       return;
     }
-    console.log('!admin login', this.login.value);
     this.admin.login(this.login.value).then((token) => {
       console.log(token);
       this.login.reset();

@@ -78,7 +78,7 @@ export class CrudService {
   /** Removes all null or undefined values from the given object */
   clean(value: Object, oldValues: any = {}): Object {
     for (let key in value) {
-      if (value[key] === null || value[key] === undefined || value[key] === '') {
+      if (value[key] === null || value[key] === '' || value[key] === undefined) {
         //TODO find way to decide, when to send empty string and when not:
         //  it is important to send it when an entries value needs to be "cleared"
         //    e.g. to remove a description

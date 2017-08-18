@@ -148,6 +148,9 @@
                                     <a href="../components/EntryListComponent.html" >EntryListComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/EntrySelectComponent.html" >EntrySelectComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/ErrorComponent.html" >ErrorComponent</a>
                                 </li>
                                 <li class="link">
@@ -254,9 +257,6 @@
                                     <a href="../classes/Config.html" >Config</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../classes/CrudConfig.html" >CrudConfig</a>
-                                </li>
-                                <li class="link">
                                     <a href="../classes/Entry.html" >Entry</a>
                                 </li>
                                 <li class="link">
@@ -351,6 +351,9 @@
                                 id="xs-interfaces-links"
                             >
                                 <li class="link">
+                                    <a href="../interfaces/CrudConfig.html" >CrudConfig</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
                                 </li>
                                 <li class="link">
@@ -396,6 +399,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../pipes/SafeHtmlPipe.html" >SafeHtmlPipe</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../pipes/VisibleFieldsPipe.html" >VisibleFieldsPipe</a>
                                 </li>
                         </ul>
                     </li>
@@ -567,6 +573,9 @@
                                            <a href="../components/EntryListComponent.html" >EntryListComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/EntrySelectComponent.html" >EntrySelectComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/ErrorComponent.html" >ErrorComponent</a>
                                        </li>
                                        <li class="link">
@@ -673,9 +682,6 @@
                                            <a href="../classes/Config.html" >Config</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../classes/CrudConfig.html" >CrudConfig</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../classes/Entry.html" >Entry</a>
                                        </li>
                                        <li class="link">
@@ -770,6 +776,9 @@
                                        id="interfaces-links"
                    >
                                        <li class="link">
+                                           <a href="../interfaces/CrudConfig.html" >CrudConfig</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
                                        </li>
                                        <li class="link">
@@ -815,6 +824,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../pipes/SafeHtmlPipe.html" >SafeHtmlPipe</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../pipes/VisibleFieldsPipe.html" >VisibleFieldsPipe</a>
                                        </li>
                                </ul>
                            </li>
@@ -952,7 +964,7 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <code>constructor(body: T, config: <a href="../interfaces/FormConfig.html">FormConfig<T></a>)</code>
+                                    <code>constructor(body: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank">Object</a>, config: <a href="../interfaces/FormConfig.html">FormConfig<Object></a>)</code>
                                 </td>
                             </tr>
                                     <tr>
@@ -993,7 +1005,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/packages/core/form/form.ts:32</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/packages/core/form/form.ts:31</a></div>
                                         </td>
                                     </tr>
             
@@ -1020,14 +1032,14 @@
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>getValue(property: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, shouldPrefill: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+            <code>getValue(property: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/packages/core/form/form.ts:37</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/packages/core/form/form.ts:36</a></div>
                                         </td>
                                     </tr>
             
@@ -1062,13 +1074,13 @@
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-circle"></span><code>config:     <code><a href="../interfaces/FormConfig.html" target="_self" >FormConfig&lt;T&gt;</a></code>
+                                    <span class="modifier-icon fa fa-circle"></span><code>config:     <code><a href="../interfaces/FormConfig.html" target="_self" >FormConfig&lt;Object&gt;</a></code>
             </code>
                                 </td>
                             </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="../interfaces/FormConfig.html" target="_self" >FormConfig&lt;T&gt;</a></code>
+                                        <i>Type : </i>    <code><a href="../interfaces/FormConfig.html" target="_self" >FormConfig&lt;Object&gt;</a></code>
             
                                     </td>
                                 </tr>
@@ -1132,19 +1144,18 @@ import { Field } from &#x27;../field/field&#x27;;
 import { FormConfig } from &#x27;./form-config.interface&#x27;;
 
 /** The Form class is an Item with additional info about its properties (Fields). */
-export class Form&lt;T&gt; extends Item&lt;T&gt; {
+export class Form&lt;Object&gt; extends Item&lt;Object&gt; {
   /** Array of fields. It will be populated automatically when the form is constructed. */
-  fields: Field&lt;T&gt;[];
+  fields: Field&lt;Object&gt;[];
   /** The configuration of the form. It is an extension of ItemConfig. */
-  protected config: FormConfig&lt;T&gt;;
+  protected config: FormConfig&lt;Object&gt;;
 
   /** The constructor will populate the fields array. If config.fields is set only the configured fields will be created. If not, all properties of the given body will be used as fields. */
-  constructor(body: T, config?: FormConfig&lt;T&gt;) {
+  constructor(body: Object, config?: FormConfig&lt;Object&gt;) {
     super(body, config);
     this.fields &#x3D; [];
     if (this.config.fields) {
       Object.keys(this.config.fields)
-      .filter((key) &#x3D;&gt; this.config.fields[key].form !&#x3D;&#x3D; false)
       .forEach((property) &#x3D;&gt; {
         this.fields.push(new Field(property, this.config.fields[property]));
       });
@@ -1161,11 +1172,13 @@ export class Form&lt;T&gt; extends Item&lt;T&gt; {
   }
 
   /** Returns the original value of the property, if any. */
-  getValue(property: string, shouldPrefill: boolean &#x3D; false) {
-    if (shouldPrefill &amp;&amp; this.config.fields &amp;&amp; this.config.fields[property]) {
+  getValue(property: string) {
+    if (!this.body &amp;&amp; this.config.fields &amp;&amp; this.config.fields[property]) {
+      //if no body is present, the prefills are used
       return this.config.fields[property].prefill;
     } else {
-      return (this.resolve() || {})[property];
+      // return (this.resolve() || {})[property]; //TODO find cleaner access
+      return this.resolve(property); //TODO find cleaner access
     }
   }
 }</code></pre>
