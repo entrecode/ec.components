@@ -31,9 +31,13 @@ import { CrudConfig } from '../crud/crud-config.interface';
 export class EntrySelectComponent extends DefaultInputComponent implements ControlValueAccessor {
   /** The formControl that is used. */
   @Input() formControl: FormControl;
-  /** The used field */
+  /** The value that should be prefilled */
+  @Input() value: Array<EntryResource>;
+  /** The used field, which should contain a model property (when not using model input) */
   @Input() field: Field<any>;
-  /** The used field */
+  /** The model to pick from, alternative to field with model property set. */
+  @Input() model: string;
+  /** The ec-crud inside the view template */
   @ViewChild('crud') crud: CrudComponent;
   /** The config that is being generated. */
   private config: ListConfig;
@@ -52,16 +56,20 @@ export class EntrySelectComponent extends DefaultInputComponent implements Contr
 
   /** Is called when a selected item has been clicked. */
   editItem(item) {
-    console.log('edit!!!', item); //TODO
+    console.log('edit!!! TBD', item); //TODO
   }
 
   ngOnInit() {
-    if (this.field) {
-      this.modelConfig.generateConfig(this.field['model'])
-      .then((config) => {
-        this.config = Object.assign(config, { size: 10 }, this.crudConfig, { solo: this.solo });
-      })
+    if (!this.formControl) {
+      this.formControl = new FormControl(this.value || []);
     }
+    if (this.field) {
+      this.model = this.model || this.field['model'];
+    }
+    this.modelConfig.generateConfig(this.model)
+    .then((config) => {
+      this.config = Object.assign(config, { size: 10 }, this.crudConfig, { solo: this.solo });
+    })
   }
 
   select(item: Item<EntryResource>) {

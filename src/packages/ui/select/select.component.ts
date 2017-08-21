@@ -46,6 +46,12 @@ export class SelectComponent implements ControlValueAccessor {
   /** True if the selection is active */
   @Input() active: boolean;
 
+  ngOnChanges() {
+    if (this.config && this.value) {
+      this.init();
+    }
+  }
+
   /** Initializes either with values, collection or list. Creates Selection with config. */
   init() {
     if (this.value) {

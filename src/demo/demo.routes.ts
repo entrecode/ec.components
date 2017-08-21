@@ -14,6 +14,7 @@ import { SelectDemoComponent } from './select/select-demo.component';
 import { PublicLoginComponent } from '../packages/auth/public-login/public-login.component';
 import { PublicSignupComponent } from '../packages/auth/public-signup/public-signup.component';
 import { AuthDemoComponent } from './auth/auth-demo.component';
+import { EntrySelectDemoComponent } from './entry-select/entry-select-demo.component';
 
 export const demoRoutes: Routes = [
   {
@@ -86,6 +87,13 @@ export const demoRoutes: Routes = [
         component: EntryFormDemoComponent,
         data: {
           title: 'entry-form'
+        }
+      },
+      {
+        path: 'entry-select',
+        component: EntrySelectDemoComponent,
+        data: {
+          title: 'entry-select'
         }
       },
       {

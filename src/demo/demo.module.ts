@@ -23,6 +23,7 @@ import { AuthDemoComponent } from './auth/auth-demo.component';
 import { CoolStringComponent } from './form/cool-string.component'
 import { UnsplashImageComponent } from './list/unsplash-image.component';
 import { demoRoutes } from './demo.routes'
+import { EntrySelectDemoComponent } from './entry-select/entry-select-demo.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { demoRoutes } from './demo.routes'
     FormDemoComponent,
     TabsDemoComponent,
     EntryFormDemoComponent,
+    EntrySelectDemoComponent,
     CrudDemoComponent,
     SelectDemoComponent,
     AuthDemoComponent,

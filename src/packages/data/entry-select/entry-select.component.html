@@ -1,12 +1,14 @@
-<div *ngIf="config" class="ec-entry-select">
-  <ec-select [config]="config" [formControl]="formControl" (itemClick)="editItem($event)"
+<div *ngIf="config&&formControl&&model" class="ec-entry-select">
+  <ec-select [config]="config" (itemClick)="editItem($event)"
+             [value]="value" [formControl]="formControl"
              [active]="crudPop.visible" (toggle)="toggle($event)" #entrySelect></ec-select>
+
   <!-- TODO use entry pop when ready-->
-  <ec-pop [ngClass]="config.popClass" #crudPop>
+  <ec-pop [ngClass]="config?.popClass" #crudPop>
     <!--<button type="button" (click)="crudPop.hide()">
       <i class="ec-icon close"></i> &lt;!&ndash; TODO unified pop header component &ndash;&gt;
     </button>-->
-    <ec-crud [model]="field.model" *ngIf="selection&&crudPop.active"
+    <ec-crud [model]="model" *ngIf="selection&&crudPop.active"
              [config]="config" (select)="select($event)" #crud></ec-crud>
   </ec-pop>
 </div>
