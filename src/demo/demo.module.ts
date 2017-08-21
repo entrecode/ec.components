@@ -24,6 +24,8 @@ import { CoolStringComponent } from './form/cool-string.component'
 import { UnsplashImageComponent } from './list/unsplash-image.component';
 import { demoRoutes } from './demo.routes'
 import { EntrySelectDemoComponent } from './entry-select/entry-select-demo.component';
+import { FilesModule } from '../packages/files/files.module';
+import { AssetListDemoComponent } from './asset-list/asset-list.demo.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,7 @@ import { EntrySelectDemoComponent } from './entry-select/entry-select-demo.compo
     AuthDemoComponent,
     CoolStringComponent,
     UnsplashImageComponent,
+    AssetListDemoComponent,
   ],
   entryComponents: [
     CoolStringComponent,
@@ -52,6 +55,7 @@ import { EntrySelectDemoComponent } from './entry-select/entry-select-demo.compo
     CommonModule,
     UiModule,
     DataModule,
+    FilesModule,
     VcModule,
     AuthModule,
     RouterModule.forRoot(demoRoutes)

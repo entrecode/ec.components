@@ -32,6 +32,10 @@ export class List<T> extends Collection<Item<T>> {
   protected change = new Subject();
   /** Observable that is nexted when the list has changed. */
   public change$ = this.change.asObservable();
+  /** Subject that should be nexted when an error occurs */
+  protected error = new Subject();
+  /** Observable that is nexted when the list has an error. */
+  public error$ = this.error.asObservable();
 
   /**
    * Constructs the List. Populates the items and instantiates the fields.

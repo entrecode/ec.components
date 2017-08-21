@@ -55,7 +55,7 @@ export class Item<T> {
 
   /** Returns an Array of properties possesed by the object. */
   getProperties(): Array<string> {
-    if (typeof this.body !== 'object') {
+    if (!this.body || typeof this.body !== 'object') {
       return [];
     }
     return Object.keys(this.body);

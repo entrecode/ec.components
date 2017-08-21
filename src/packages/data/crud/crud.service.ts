@@ -96,7 +96,8 @@ export class CrudService {
   create(model: string, value: Object): Promise<EntryResource> {
     return this.sdk.api.createEntry(model, this.clean(value))
     .then((entry) => {
-      console.log('created entry', entry); //TODO make sure leveld entries are returned leveled
+      // console.log('created entry', entry);
+      // TODO make sure leveled entries are returned leveled
       this.changes.emit({ model, entry, type: 'create' });
       return entry;
     }).catch((err) => {

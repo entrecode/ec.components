@@ -8,6 +8,7 @@ import { Selection } from '../../core/selection/selection';
 import { ListConfig } from '../../core/list/list-config.interface';
 import { EntryList } from './entry-list';
 import { CrudService } from '../crud/crud.service';
+import { NotificationsService } from '../../ui/notifications/notifications.service';
 
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent */
 @Component({
@@ -28,7 +29,7 @@ export class EntryListComponent extends ListComponent {
   @Input() loader: LoaderComponent;
 
   /** The constructor will just call super of List*/
-  constructor(protected loaderService: LoaderService, private sdk: SdkService, private modelConfig: ModelConfigService, private crud: CrudService) {
+  constructor(protected loaderService: LoaderService, private sdk: SdkService, private modelConfig: ModelConfigService, private crud: CrudService, private notificationService: NotificationsService) {
     super();
   }
 
@@ -50,6 +51,12 @@ export class EntryListComponent extends ListComponent {
         if (!this.selection && this.list.config && !this.list.config.disableSelection) {
           this.selection = new Selection([], this.list.config);
         }
+      });
+      this.list.error$.subscribe((err) => {
+        this.notificationService.emit({
+          title: 'Fehler beim laden der Liste',
+          error: err
+        });
       });
       this.list.loading$.subscribe((promise: Promise<any>) => {
         this.loaderService.wait(promise, this.loader);

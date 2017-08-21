@@ -13,9 +13,8 @@
         <ec-output *ngIf="field.readOnly" [field]="field" [item]="form"></ec-output>
       </li>
     </ul>
-    <button type="submit" *ngIf="submitButton!==false"
-            [disabled]="group.invalid"
-            [class.disabled]="group.invalid">
+    <button type="button" (click)="submit()" *ngIf="submitButton!==false"
+            [disabled]="group.invalid" [class.disabled]="group.invalid">
       Speichern
     </button>
   </div>

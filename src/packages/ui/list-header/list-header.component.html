@@ -7,7 +7,7 @@
   <div class="ec-list-item ec-list-header" *ngFor="let field of list?.fields"
        [class.hidden]="field.hidden">
     <ec-pop #filterPop class="popdown">
-      <a (click)="removeFilter(field.property);filterPop.hide()">
+      <a (click)="removeFilter(field.property, filterForm.group.get(field.property));filterPop.hide()">
         <i class="ec-icon close"></i>
       </a>
       <ec-input [field]="field" [group]="filterForm?.group" [debounce]="200"

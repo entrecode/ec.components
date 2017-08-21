@@ -112,8 +112,10 @@ export class SelectComponent implements ControlValueAccessor {
   writeValue(value: any) {
     this.value = Array.isArray(value) ? value : (value ? [value] : []);
     this.init();
-    this.selection.removeAll();
-    this.selection.addAll(this.list.items);
+    if (this.selection) {
+      this.selection.removeAll();
+      this.selection.addAll(this.list.items);
+    }
   }
 
   propagateChange = (_: any) => {

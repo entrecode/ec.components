@@ -15,6 +15,7 @@ import { PublicLoginComponent } from '../packages/auth/public-login/public-login
 import { PublicSignupComponent } from '../packages/auth/public-signup/public-signup.component';
 import { AuthDemoComponent } from './auth/auth-demo.component';
 import { EntrySelectDemoComponent } from './entry-select/entry-select-demo.component';
+import { AssetListDemoComponent } from './asset-list/asset-list.demo.component';
 
 export const demoRoutes: Routes = [
   {
@@ -99,6 +100,15 @@ export const demoRoutes: Routes = [
       {
         path: 'crud',
         component: CrudDemoComponent
+      },
+    ]
+  },
+  {
+    path: 'files',
+    children: [
+      {
+        path: 'asset-list',
+        component: AssetListDemoComponent
       },
     ]
   },

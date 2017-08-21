@@ -104,7 +104,7 @@ export class FormComponent {
   /** If dirty, opens a dialog that forces the user to decide if the current form should be saved or discarded. */
   protected dirtyTalk() {
     if (this.group && this.group.dirty) {
-      console.warn('form is dirty');
+      // console.warn('form is dirty');
       //TODO open dialog to either save or discard changes
     }
   }

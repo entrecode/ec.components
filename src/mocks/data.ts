@@ -66,21 +66,29 @@ export const mocked = {
         },
         title: {
           label: 'Titel',
-          view: 'string'
+          view: 'string',
+          // filterable: true,
+          sortable: true,
         },
         composer: {
           label: 'Komponist',
-          view: 'string'
+          view: 'string',
+          // filterable: true,
+          sortable: true,
         },
         style: {
           label: 'Stil',
           group: (value) => value,
-          view: 'string'
+          view: 'string',
+          // filterable: true,
+          sortable: true,
         },
         key: {
           label: 'Tonart',
           group: (value) => value.replace('-', ''),
-          view: 'string'
+          view: 'string',
+          // filterable: true,
+          sortable: true,
         },
         density: {
           label: 'Dichte',
@@ -94,13 +102,15 @@ export const mocked = {
           hidden: true,
           resolve: (body) => {
             return body.music ? (body.music.measures.reduce((chords, measure) => chords.concat(measure), []).filter((v, i, a) => a.indexOf(v) === i).length) : 0;
-          }
+          },
+          sortable: true,
         },
         difficulty: {
           label: 'Schwierigkeit',
           resolve: (body, item) => {
             return Math.round(item.resolve('diversity') * item.resolve('density'));
           },
+          sortable: true,
           view: 'number',
           group: (value) => {
             if (value < 5) {

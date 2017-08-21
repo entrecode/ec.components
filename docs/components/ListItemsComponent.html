@@ -71,6 +71,9 @@
                                     <a href="../modules/DataModule.html" >DataModule</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../modules/FilesModule.html" >FilesModule</a>
+                                </li>
+                                <li class="link">
                                     <a href="../modules/FormModule.html" >FormModule</a>
                                 </li>
                                 <li class="link">
@@ -110,6 +113,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/AdminSignupComponent.html" >AdminSignupComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AssetListComponent.html" >AssetListComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/CrudComponent.html" >CrudComponent</a>
@@ -251,10 +257,16 @@
                                 id="xs-classes-links"
                             >
                                 <li class="link">
+                                    <a href="../classes/AssetList.html" >AssetList</a>
+                                </li>
+                                <li class="link">
                                     <a href="../classes/Collection.html" >Collection</a>
                                 </li>
                                 <li class="link">
                                     <a href="../classes/Config.html" >Config</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/DataList.html" >DataList</a>
                                 </li>
                                 <li class="link">
                                     <a href="../classes/Entry.html" >Entry</a>
@@ -496,6 +508,9 @@
                                            <a href="../modules/DataModule.html" >DataModule</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../modules/FilesModule.html" >FilesModule</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../modules/FormModule.html" >FormModule</a>
                                        </li>
                                        <li class="link">
@@ -535,6 +550,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/AdminSignupComponent.html" >AdminSignupComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AssetListComponent.html" >AssetListComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/CrudComponent.html" >CrudComponent</a>
@@ -676,10 +694,16 @@
                                        id="classes-links"
                    >
                                        <li class="link">
+                                           <a href="../classes/AssetList.html" >AssetList</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../classes/Collection.html" >Collection</a>
                                        </li>
                                        <li class="link">
                                            <a href="../classes/Config.html" >Config</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/DataList.html" >DataList</a>
                                        </li>
                                        <li class="link">
                                            <a href="../classes/Entry.html" >Entry</a>
@@ -1291,7 +1315,7 @@ export class ListItemsComponent {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><ul>  <li *ngFor="let item of items;trackBy:list?.trackItem" (click)="columnClick(item)">    <div class="ec-list-item" [class.selected]="selection?.has(item)">      <div class="ec-list-item-cell ec-list-checkbox" *ngIf="selection">        <input type="checkbox" [checked]="selection?.has(item)">      </div>      <div *ngFor="let field of list?.fields" class="ec-list-item-cell"           [ngClass]="\'ec-list-\' + field.type" [ngSwitch]="field.view"           [class.hidden]="field.hidden">        <ec-output [field]="field" [item]="item"></ec-output>      </div>    </div>  </li></ul></div>'
-    var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DefaultEntryInputComponent', 'selector': 'ec-default-entry-input'},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': 'ec-default-input'},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SelectionComponent', 'selector': 'ec-selection'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'}];
+    var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DefaultEntryInputComponent', 'selector': 'ec-default-entry-input'},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': 'ec-default-input'},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SelectionComponent', 'selector': 'ec-selection'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'}];
     var DIRECTIVES = [{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'ListItemsComponent'};
 </script>
