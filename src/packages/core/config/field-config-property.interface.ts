@@ -1,3 +1,5 @@
+import { Type } from '@angular/core';
+
 /** Configuration for a FieldConfig property. */
 
 export interface FieldConfigProperty {
@@ -52,9 +54,9 @@ export interface FieldConfigProperty {
     title: string
   };
   /** Custom Component for input (forms) */
-  input?: any;
+  input?: Type<any>;
   /** Custom Component for output (e.g. list cell) */
-  output?: any;
+  output?: Type<any>;
   /** If true, an ec-output will be rendered inside each form which prevents editing the field. */
   readOnly?: boolean;
   /** if false, the field will not be filterable in a list */

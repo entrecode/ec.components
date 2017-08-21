@@ -5,13 +5,15 @@ import { DefaultInputComponent } from '../../ui/input/default-input.component';
 import * as moment from 'moment';
 import { FieldConfig } from '../../core/config/field-config.interface';
 import { FieldConfigProperty } from '../../core/config/field-config-property.interface';
+import { Injectable } from "@angular/core";
 
 /** The TypeConfig holds each field type's specific behaviour in certain situations */
-export class TypeConfig {
+@Injectable()
+export class TypeConfigService {
   //todo add way to map default filter types
   //todo (exact,search etc) for field types e.g. number does not support search
   /** Defines the base configuration of each type.*/
-  private static types: FieldConfig<FieldConfigProperty> = {
+  private types: FieldConfig<FieldConfigProperty> = {
     text: {
       view: 'string',
       filterable: true,
@@ -42,10 +44,12 @@ export class TypeConfig {
     },
     asset: {
       view: 'avatar',
+      input: DefaultEntryInputComponent,
       display: (value, entry, property) => entry.getImageThumbUrl(property, 100)
     },
     assets: {
       view: 'avatars',
+      input: DefaultEntryInputComponent,
       display: (value, entry, property) => entry.getImageThumbUrl(property, 100)
     },
     email: {},
@@ -62,7 +66,7 @@ export class TypeConfig {
       view: 'label',
       input: DefaultEntryInputComponent,
       output: DefaultOutputComponent,
-      display: TypeConfig.displayEntries,
+      display: TypeConfigService.displayEntries,
       filterable: true,
       filterOperator: 'any'
     },
@@ -70,7 +74,7 @@ export class TypeConfig {
       view: 'labels',
       input: DefaultEntryInputComponent,
       output: DefaultOutputComponent,
-      display: TypeConfig.displayEntries,
+      display: TypeConfigService.displayEntries,
       filterable: true,
       filterOperator: 'any',
       // form: false,
@@ -96,7 +100,7 @@ export class TypeConfig {
   };
 
   /** Returns the base FieldConfig for the given type. */
-  static get(type): FieldConfigProperty {
+  get(type: string): FieldConfigProperty {
     const config = this.types[type];
     if (!config) {
       console.error('missing config for type', type);
@@ -111,11 +115,20 @@ export class TypeConfig {
     return config;
   }
 
+  /** Assigns the given config to the type, e.g. to change the default template of a type. */
+  set(type: string, config: FieldConfigProperty) {
+    if (!this.types[type]) {
+      console.error('cannot configure non existing type', type);
+      return;
+    }
+    Object.assign(this.types[type], config);
+  }
+
   /** Resolves entry/entries from nested resource or id inside (single and array).
    * Gives back standardizes "light" entries {id, _entryTitle} */
   static resolveEntries(entry, item, property, value = entry[property]) {
     if (Array.isArray(value)) {
-      return value ? value.map((e) => TypeConfig.resolveEntries(entry, item, property, e)) : [];
+      return value ? value.map((e) => TypeConfigService.resolveEntries(entry, item, property, e)) : [];
     }
     if (typeof value === 'string') {
       //TODO use getLevels when ready
@@ -133,7 +146,7 @@ export class TypeConfig {
   /** Displays one or multiple "light" entries */
   static displayEntries(value, entry) {
     if (Array.isArray(value)) {
-      return value.map((nested) => TypeConfig.displayEntries(nested, entry));
+      return value.map((nested) => TypeConfigService.displayEntries(nested, entry));
     }
     if (typeof value === 'string') {
       return value || 'entry';

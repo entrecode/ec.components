@@ -26,6 +26,8 @@ import { demoRoutes } from './demo.routes'
 import { EntrySelectDemoComponent } from './entry-select/entry-select-demo.component';
 import { FilesModule } from '../packages/files/files.module';
 import { AssetListDemoComponent } from './asset-list/asset-list.demo.component';
+import { FileService } from '../packages/files/file.service';
+import { AssetInputComponent } from '../packages/files/asset-input/asset-input.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,8 @@ import { AssetListDemoComponent } from './asset-list/asset-list.demo.component';
   ],
   entryComponents: [
     CoolStringComponent,
-    UnsplashImageComponent
+    UnsplashImageComponent,
+    AssetInputComponent,
   ],
   imports: [
     CommonModule,

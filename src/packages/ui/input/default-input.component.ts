@@ -5,7 +5,6 @@ import { Item } from '../../core/item/item';
 
 /** This component holds the templates for all basic field types. */
 @Component({
-  selector: 'ec-default-input',
   templateUrl: './default-input.component.html',
 })
 export class DefaultInputComponent {

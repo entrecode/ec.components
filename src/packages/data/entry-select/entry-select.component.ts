@@ -14,7 +14,7 @@ import { PopComponent } from '../../ui/pop/pop.component';
 import { Item } from '../../core/item/item';
 import { CrudConfig } from '../crud/crud-config.interface';
 
-/** Loads an entry by id to the template. */
+/** Shows entries of a selection and is able to pick new ones from a crud list */
 @Component({
   selector: 'ec-entry-select',
   templateUrl: './entry-select.component.html',

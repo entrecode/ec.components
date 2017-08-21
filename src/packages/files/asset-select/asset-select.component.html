@@ -1,0 +1,14 @@
+<ec-output [field]="field" [item]="item"></ec-output>
+
+<div *ngIf="formControl" class="ec-asset-select">
+  <!--<b>TODO</b>-->
+  <!--<pre>{{item?.display(field.property)}}</pre>-->
+
+  <!--<ec-select [config]="config" (itemClick)="editItem($event)"
+             [value]="value" [formControl]="formControl"
+             [active]="crudPop.visible" (toggle)="toggle($event)" #entrySelect></ec-select>
+  <ec-pop [ngClass]="config?.popClass" #crudPop>
+    <ec-crud [model]="model" *ngIf="selection&&crudPop.active"
+             [config]="config" (select)="select($event)" #crud></ec-crud>
+  </ec-pop>-->
+</div>

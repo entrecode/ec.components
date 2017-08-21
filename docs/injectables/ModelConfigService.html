@@ -115,7 +115,13 @@
                                     <a href="../components/AdminSignupComponent.html" >AdminSignupComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/AssetInputComponent.html" >AssetInputComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/AssetListComponent.html" >AssetListComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AssetSelectComponent.html" >AssetSelectComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/CrudComponent.html" >CrudComponent</a>
@@ -158,6 +164,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/ErrorComponent.html" >ErrorComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/FileSelectComponent.html" >FileSelectComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/FormComponent.html" >FormComponent</a>
@@ -298,9 +307,6 @@
                                 <li class="link">
                                     <a href="../classes/Sorter.html" >Sorter</a>
                                 </li>
-                                <li class="link">
-                                    <a href="../classes/TypeConfig.html" >TypeConfig</a>
-                                </li>
                         </ul>
                     </li>
             
@@ -328,6 +334,9 @@
                                     <a href="../injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../injectables/FileService.html" >FileService</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/FormService.html" >FormService</a>
                                 </li>
                                 <li class="link">
@@ -347,6 +356,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/SdkService.html" >SdkService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/TypeConfigService.html" >TypeConfigService</a>
                                 </li>
                         </ul>
                     </li>
@@ -391,6 +403,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/Update.html" >Update</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/Upload.html" >Upload</a>
                                 </li>
                         </ul>
                     </li>
@@ -552,7 +567,13 @@
                                            <a href="../components/AdminSignupComponent.html" >AdminSignupComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/AssetInputComponent.html" >AssetInputComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/AssetListComponent.html" >AssetListComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AssetSelectComponent.html" >AssetSelectComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/CrudComponent.html" >CrudComponent</a>
@@ -595,6 +616,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/ErrorComponent.html" >ErrorComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/FileSelectComponent.html" >FileSelectComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/FormComponent.html" >FormComponent</a>
@@ -735,9 +759,6 @@
                                        <li class="link">
                                            <a href="../classes/Sorter.html" >Sorter</a>
                                        </li>
-                                       <li class="link">
-                                           <a href="../classes/TypeConfig.html" >TypeConfig</a>
-                                       </li>
                                </ul>
                            </li>
                    
@@ -765,6 +786,9 @@
                                            <a href="../injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../injectables/FileService.html" >FileService</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/FormService.html" >FormService</a>
                                        </li>
                                        <li class="link">
@@ -784,6 +808,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/SdkService.html" >SdkService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/TypeConfigService.html" >TypeConfigService</a>
                                        </li>
                                </ul>
                            </li>
@@ -828,6 +855,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/Update.html" >Update</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/Upload.html" >Upload</a>
                                        </li>
                                </ul>
                            </li>
@@ -989,7 +1019,7 @@ set method. </p>
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <code>constructor(crud: <a href="../injectables/CrudService.html">CrudService</a>, sdk: <a href="../injectables/SdkService.html">SdkService</a>)</code>
+                                    <code>constructor(crud: <a href="../injectables/CrudService.html">CrudService</a>, sdk: <a href="../injectables/SdkService.html">SdkService</a>, typeConfig: <a href="../injectables/TypeConfigService.html">TypeConfigService</a>)</code>
                                 </td>
                             </tr>
                                     <tr>
@@ -1299,7 +1329,7 @@ import { Config } from &#x27;../../core/config/config&#x27;;
 import { FieldConfig } from &#x27;../../core/config/field-config.interface&#x27;;
 import { FieldConfigProperty } from &#x27;../../core/config/field-config-property.interface&#x27;;
 import { SdkService } from &#x27;../sdk/sdk.service&#x27;;
-import { TypeConfig } from &#x27;./type-config&#x27;;
+import { TypeConfigService } from &#x27;./type-config.service&#x27;;
 import { ListConfig } from &#x27;../../core/list/list-config.interface&#x27;;
 
 /** The main class for configuring the behaviour of a model.
@@ -1308,7 +1338,7 @@ import { ListConfig } from &#x27;../../core/list/list-config.interface&#x27;;
 @Injectable()
 export class ModelConfigService extends Config {
   /** Injects CrudService and SdkService. */
-  constructor(private crud: CrudService, private sdk: SdkService) {
+  constructor(private crud: CrudService, private sdk: SdkService, private typeConfig: TypeConfigService) {
     super();
   }
 
@@ -1396,7 +1426,7 @@ export class ModelConfigService extends Config {
             // required: schema.required.indexOf(property) !&#x3D;&#x3D; -1,
             display: ((value) &#x3D;&gt; value)
           }, fieldConfig[property] ? fieldConfig[property] : {},
-          TypeConfig.get(type.name));
+          this.typeConfig.get(type.name));
       });
       return fieldConfig;
     });

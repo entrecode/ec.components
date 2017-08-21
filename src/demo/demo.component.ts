@@ -6,6 +6,7 @@ import { ModelConfigService } from '../packages/data';
 import { FormConfig, List, Pagination } from '../packages/core';
 import * as moment from 'moment';
 import { demoRoutes } from './demo.routes';
+import { FileService } from '../packages/files/file.service';
 
 @Component({
   selector: 'demo-root',
@@ -23,7 +24,8 @@ export class DemoComponent {
   private formConfig: FormConfig<any>;
   private randomData: any;
 
-  constructor(private modelConfig: ModelConfigService) {
+  constructor(private modelConfig: ModelConfigService, private fileService: FileService) {
+    this.fileService.registerComponents();
     // Datamanager.useEnvironment(environment);
     this.pagination.setTotal(5100);
     this.pagination.change$.debounceTime(500)

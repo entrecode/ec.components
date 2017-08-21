@@ -1,9 +1,14 @@
 <fieldset [ngSwitch]="field.type" *ngIf="group" [formGroup]="group">
   <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>
+  <div *ngSwitchCase="'asset'">
+    <img [src]="item?.display(field.property)">
+  </div>
+  <div *ngSwitchCase="'assets'">
+    <img [src]="url" *ngFor="let url of item?.display(field.property)">
+  </div>
   <div *ngSwitchCase="'entry'">
     <ec-entry-select [formControl]="group.get(field.property)" [field]="field"
-                     [solo]="true" [config]="nestedConfig"
-                     [config]="entrySelectConfig"></ec-entry-select>
+                     [solo]="true" [config]="entrySelectConfig"></ec-entry-select>
   </div>
   <div *ngSwitchCase="'entries'">
     <ec-entry-select [formControl]="group.get(field.property)" [field]="field"

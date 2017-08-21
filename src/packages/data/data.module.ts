@@ -15,6 +15,7 @@ import { AdminService } from './sdk/admin.service';
 import { CrudComponent } from './crud/crud.component';
 import { DefaultEntryOutputComponent } from './entry-form/default-entry-output.component';
 import { EntrySelectComponent } from './entry-select/entry-select.component';
+import { TypeConfigService } from './model-config/type-config.service';
 
 @NgModule({
   entryComponents: [
@@ -35,7 +36,7 @@ import { EntrySelectComponent } from './entry-select/entry-select.component';
   imports: [
     BrowserModule,
     FormsModule,
-    UiModule
+    UiModule,
   ],
   exports: [
     EntryListComponent,
@@ -50,6 +51,7 @@ import { EntrySelectComponent } from './entry-select/entry-select.component';
     PublicService,
     AdminService,
     CrudService,
+    TypeConfigService,
     ModelConfigService,
   ],
 })

@@ -4,7 +4,7 @@ import { DataList } from '../../data/data-list/data-list';
 /**
  * Extension of List for Datamanager Assets.
  */
-export class AssetList<Asset> extends DataList<Asset> {
+export class AssetList<PublicAssetResource> extends DataList<PublicAssetResource> {
 
   /** Overrides the List load method. Instead of slicing the page out of all items, a datamanager request is made using the config.*/
   public load(config?: EntryListConfig) {

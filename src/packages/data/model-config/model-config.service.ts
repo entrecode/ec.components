@@ -7,7 +7,7 @@ import { Config } from '../../core/config/config';
 import { FieldConfig } from '../../core/config/field-config.interface';
 import { FieldConfigProperty } from '../../core/config/field-config-property.interface';
 import { SdkService } from '../sdk/sdk.service';
-import { TypeConfig } from './type-config';
+import { TypeConfigService } from './type-config.service';
 import { ListConfig } from '../../core/list/list-config.interface';
 
 /** The main class for configuring the behaviour of a model.
@@ -16,7 +16,7 @@ import { ListConfig } from '../../core/list/list-config.interface';
 @Injectable()
 export class ModelConfigService extends Config {
   /** Injects CrudService and SdkService. */
-  constructor(private crud: CrudService, private sdk: SdkService) {
+  constructor(private crud: CrudService, private sdk: SdkService, private typeConfig: TypeConfigService) {
     super();
   }
 
@@ -104,7 +104,7 @@ export class ModelConfigService extends Config {
             // required: schema.required.indexOf(property) !== -1,
             display: ((value) => value)
           }, fieldConfig[property] ? fieldConfig[property] : {},
-          TypeConfig.get(type.name));
+          this.typeConfig.get(type.name));
       });
       return fieldConfig;
     });

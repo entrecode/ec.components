@@ -115,7 +115,13 @@
                                     <a href="../components/AdminSignupComponent.html" >AdminSignupComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/AssetInputComponent.html" >AssetInputComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/AssetListComponent.html" >AssetListComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/AssetSelectComponent.html" >AssetSelectComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/CrudComponent.html" >CrudComponent</a>
@@ -158,6 +164,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/ErrorComponent.html" >ErrorComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/FileSelectComponent.html" >FileSelectComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/FormComponent.html" >FormComponent</a>
@@ -298,9 +307,6 @@
                                 <li class="link">
                                     <a href="../classes/Sorter.html" >Sorter</a>
                                 </li>
-                                <li class="link">
-                                    <a href="../classes/TypeConfig.html" >TypeConfig</a>
-                                </li>
                         </ul>
                     </li>
             
@@ -328,6 +334,9 @@
                                     <a href="../injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../injectables/FileService.html" >FileService</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/FormService.html" >FormService</a>
                                 </li>
                                 <li class="link">
@@ -347,6 +356,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/SdkService.html" >SdkService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/TypeConfigService.html" >TypeConfigService</a>
                                 </li>
                         </ul>
                     </li>
@@ -391,6 +403,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/Update.html" >Update</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/Upload.html" >Upload</a>
                                 </li>
                         </ul>
                     </li>
@@ -552,7 +567,13 @@
                                            <a href="../components/AdminSignupComponent.html" >AdminSignupComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/AssetInputComponent.html" >AssetInputComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/AssetListComponent.html" >AssetListComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/AssetSelectComponent.html" >AssetSelectComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/CrudComponent.html" >CrudComponent</a>
@@ -595,6 +616,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/ErrorComponent.html" >ErrorComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/FileSelectComponent.html" >FileSelectComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/FormComponent.html" >FormComponent</a>
@@ -735,9 +759,6 @@
                                        <li class="link">
                                            <a href="../classes/Sorter.html" >Sorter</a>
                                        </li>
-                                       <li class="link">
-                                           <a href="../classes/TypeConfig.html" >TypeConfig</a>
-                                       </li>
                                </ul>
                            </li>
                    
@@ -765,6 +786,9 @@
                                            <a href="../injectables/DefaultRequestOptions.html" >DefaultRequestOptions</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../injectables/FileService.html" >FileService</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/FormService.html" >FormService</a>
                                        </li>
                                        <li class="link">
@@ -784,6 +808,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/SdkService.html" >SdkService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/TypeConfigService.html" >TypeConfigService</a>
                                        </li>
                                </ul>
                            </li>
@@ -828,6 +855,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/Update.html" >Update</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/Upload.html" >Upload</a>
                                        </li>
                                </ul>
                            </li>
@@ -928,7 +958,7 @@
         <h3>Description</h3>
     </p>
     <p class="comment">
-        <p>Loads an entry by id to the template. </p>
+        <p>Shows entries of a selection and is able to pick new ones from a crud list </p>
 
     </p>
 
@@ -1683,7 +1713,7 @@ import { PopComponent } from &#x27;../../ui/pop/pop.component&#x27;;
 import { Item } from &#x27;../../core/item/item&#x27;;
 import { CrudConfig } from &#x27;../crud/crud-config.interface&#x27;;
 
-/** Loads an entry by id to the template. */
+/** Shows entries of a selection and is able to pick new ones from a crud list */
 @Component({
   selector: &#x27;ec-entry-select&#x27;,
   templateUrl: &#x27;./entry-select.component.html&#x27;,
@@ -1816,7 +1846,7 @@ export class EntrySelectComponent extends DefaultInputComponent implements Contr
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div *ngIf="config&&formControl&&model" class="ec-entry-select">  <ec-select [config]="config" (itemClick)="editItem($event)"             [value]="value" [formControl]="formControl"             [active]="crudPop.visible" (toggle)="toggle($event)" #entrySelect></ec-select>  <!-- TODO use entry pop when ready-->  <ec-pop [ngClass]="config?.popClass" #crudPop>    <!--<button type="button" (click)="crudPop.hide()">      <i class="ec-icon close"></i> &lt;!&ndash; TODO unified pop header component &ndash;&gt;    </button>-->    <ec-crud [model]="model" *ngIf="selection&&crudPop.active"             [config]="config" (select)="select($event)" #crud></ec-crud>  </ec-pop></div></div>'
-    var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DefaultEntryInputComponent', 'selector': 'ec-default-entry-input'},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': 'ec-default-input'},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SelectionComponent', 'selector': 'ec-selection'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'}];
+    var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'AssetInputComponent', 'selector': ''},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FileSelectComponent', 'selector': 'ec-file-select'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SelectionComponent', 'selector': 'ec-selection'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'}];
     var DIRECTIVES = [{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'EntrySelectComponent'};
 </script>
