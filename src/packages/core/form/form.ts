@@ -38,8 +38,7 @@ export class Form<Object> extends Item<Object> {
       //if no body is present, the prefills are used
       return this.config.fields[property].prefill;
     } else {
-      // return (this.resolve() || {})[property]; //TODO find cleaner access
-      return this.resolve(property); //TODO find cleaner access
+      return this.resolve(property);
     }
   }
 }

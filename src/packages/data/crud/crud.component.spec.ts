@@ -6,6 +6,7 @@ import { UiModule } from '../../ui/ui.module';
 import { ModelConfigService } from '../model-config/model-config.service';
 import { CrudService } from './crud.service';
 import { SdkService } from '../sdk/sdk.service';
+import { TypeConfigService } from '../model-config/type-config.service';
 
 describe('CrudComponent', () => {
   let component: CrudComponent;
@@ -15,7 +16,7 @@ describe('CrudComponent', () => {
     TestBed.configureTestingModule({
       imports: [UiModule],
       declarations: [EntryFormComponent, EntryListComponent, CrudComponent],
-      providers: [ModelConfigService, CrudService, SdkService]
+      providers: [ModelConfigService, CrudService, SdkService, TypeConfigService]
     })
     .compileComponents();
   }));

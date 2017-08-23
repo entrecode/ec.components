@@ -52,7 +52,7 @@ export class FormComponent {
     if (config) {
       this.form = new Form(null, config);
     }
-    if (item) {
+    if (item && item.getBody) { //TODO find cleaner way to check if is item
       this.form = new Form(item.getBody(), item.getConfig());
     }
     if (this.form) {
@@ -73,6 +73,12 @@ export class FormComponent {
   edit(item: Item<any>) {
     this.dirtyTalk();
     this.init(item);
+  }
+
+  /** edits a given value by creating an item and calling edit. */
+  editValue(value: any, config = this.config) {
+    const item = new Item(value, config);
+    this.edit(item);
   }
 
   /** Method that is invoked when the form is submitted.*/

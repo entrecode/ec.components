@@ -2,7 +2,6 @@
  * Created by felix on 23.05.17.
  */
 import { Component, Input } from '@angular/core';
-// import { EntryListConfig } from '../entry-list/entry-list-config';
 import { SdkService } from '../sdk/sdk.service';
 
 // import { filterOptions } from 'ec.sdk/typings/interfaces'
@@ -18,7 +17,7 @@ export class EntriesComponent {
   /** The model to load from. */
   @Input() model: string;
   /** The config (filterOptions) for loading. */
-  @Input() config;//: filterOptions;//TODO find way to import from sdk typings
+  @Input() config;//: filterOptions; //TODO why cannot import?
   /** The current loaded entryList */
   private entryList: any;
 

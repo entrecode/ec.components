@@ -72,9 +72,6 @@ export class CrudService {
     });
   }
 
-  //TODO serialization => set boolean to false if null, etc. transform date
-  //could also be solved over prefills in type-config.... at least boolean
-
   /** Removes all null or undefined values from the given object */
   clean(value: Object, oldValues: any = {}): Object {
     for (let key in value) {

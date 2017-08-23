@@ -23,11 +23,4 @@ describe('EntryListComponent', () => {
     expect(component).toBeTruthy();
     component.ngOnChanges();
   });
-
-  it('should construct list when setting model', () => {
-    component.model = 'muffin';
-    return component.ngOnChanges().then(() => {
-      expect(component.list).toBeDefined();
-    });
-  })
 });

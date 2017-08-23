@@ -17,7 +17,8 @@ export class FormService {
   /** Initializes the form group from the form fields*/
   public getGroup(form: Form<any>) {
     const control = {};
-    form.fields.forEach((field) => {
+    form.fields.filter((field) => field.form !== false)
+    .forEach((field) => {
       const validators = this.getValidators(field);
       control[field.property] = new FormControl(form.getValue(field.property), validators)
     });

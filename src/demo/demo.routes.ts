@@ -16,6 +16,8 @@ import { PublicSignupComponent } from '../packages/auth/public-signup/public-sig
 import { AuthDemoComponent } from './auth/auth-demo.component';
 import { EntrySelectDemoComponent } from './entry-select/entry-select-demo.component';
 import { AssetListDemoComponent } from './asset-list/asset-list.demo.component';
+import { ListTransformsDemoComponent } from './list-transforms/list-transforms-demo.component';
+import { DatamanagerListDemoComponent } from './datamanager-list/datamanager-list.demo.component';
 
 export const demoRoutes: Routes = [
   {
@@ -26,6 +28,13 @@ export const demoRoutes: Routes = [
         component: ListDemoComponent,
         data: {
           title: 'list'
+        }
+      },
+      {
+        path: 'list-transforms',
+        component: ListTransformsDemoComponent,
+        data: {
+          title: 'list-transforms'
         }
       },
       {
@@ -100,6 +109,10 @@ export const demoRoutes: Routes = [
       {
         path: 'crud',
         component: CrudDemoComponent
+      },
+      {
+        path: 'datamanager-list',
+        component: DatamanagerListDemoComponent
       },
     ]
   },

@@ -27,4 +27,6 @@ export interface CrudConfig extends ListConfig {
   levels?: number;
   /** The class that should be used for the pop, defaults to modal */
   popClass?: string;
+  /** The class that should be used for the nested resources pops, defaults to no class. */
+  nestedPopClass?: string;
 }

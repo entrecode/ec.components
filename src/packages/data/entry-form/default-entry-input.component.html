@@ -14,15 +14,7 @@
     <ec-entry-select [formControl]="group.get(field.property)" [field]="field"
                      [config]="entrySelectConfig"></ec-entry-select>
   </div>
-  <!--
-  - use entry resource array (lvl2)
-  - generate config via model-config
-  - use selection.component to display entries
-  - open crud-list on + (using existing selection)
-  -->
-
   <input *ngSwitchCase="'phone'" type="text" [placeholder]="field.placeholder">
-  <!-- TODO -->
   <div *ngSwitchDefault>
     <!--<marquee>🚂🚃🚃🚃 {{field.type}} input coming soon..</marquee>-->
     <ec-output [field]="field" [item]="item"></ec-output>

@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { UiModule } from '../packages/ui';
 import { DataModule } from '../packages/data';
 import { RouterTestingModule } from '@angular/router/testing';
+import { FilesModule } from '../packages/files/files.module';
 
 describe('DemoComponent', () => {
   let component: DemoComponent;
@@ -22,6 +23,7 @@ describe('DemoComponent', () => {
         UiModule,
         RouterTestingModule,
         DataModule,
+        FilesModule,
       ],
       providers: [
         { provide: 'environment', useValue: 'development' }

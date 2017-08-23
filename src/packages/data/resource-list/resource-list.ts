@@ -2,16 +2,18 @@ import { Item, List } from '../../core';
 import { EntryListConfig } from '../../data/';
 import { SdkService } from '../sdk/sdk.service';
 import { Subject } from 'rxjs';
+import { ListResource } from "ec.sdk/typings/resources/ListResource";
+import { ListConfig } from '../../core/list/list-config.interface';
 
 /**
  * Extension of List for SDK ListResource. Each each implementation should implement the load
  * method to call the SDK method for loading the desired list! (see EntryList for example)
  */
-export class DataList<T> extends List<T> {
+export class ResourceList<T> extends List<T> {
   /** The current loaded assetList */
-  protected listResource; //TODO import ListResource
+  protected listResource: ListResource;
   /** The list's config. */
-  public config; //TODO use filterOptions
+  public config: ListConfig;
   /** Subject that should be nexted when loading begins */
   protected loading = new Subject();
   /** Observable that is nexted when the list begins loading. */
@@ -19,7 +21,7 @@ export class DataList<T> extends List<T> {
 
   /** The constructor will init the List and Pagination instances.
    * Make sure the config is already complete when initiating an EntryList instance. */
-  constructor(config: EntryListConfig, protected sdk: SdkService) { //TODO filterOptions import
+  constructor(config: EntryListConfig, protected sdk: SdkService) {
     super([], config);
     this.load();
   }
@@ -55,7 +57,7 @@ export class DataList<T> extends List<T> {
   protected getFilterOptions({ size = 20, page = 1, filter, sortBy, desc, sort = [] }: EntryListConfig) {
     const options = { size, page };
     if (sortBy) {
-      options['sort'] = [(desc ? '-' : '') + sortBy];
+      Object.assign(options, { sort: [(desc ? '-' : '') + sortBy] });
     }
     if (filter) {
       for (let property in filter) {
@@ -68,7 +70,7 @@ export class DataList<T> extends List<T> {
   /** Toggles sorting of the given property. Overloads list method to reload with the new sort setup*/
   toggleSort(property: string, desc?: boolean) {
     this.sortProperty(property, desc);
-    this.config.sort = [(this.config.desc ? '-' : '') + this.config.sortBy];
+    Object.assign(this.config, { sort: [(this.config.desc ? '-' : '') + this.config.sortBy] });
     this.load();
   }
 

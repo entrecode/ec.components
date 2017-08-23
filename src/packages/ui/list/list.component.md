@@ -45,25 +45,3 @@ This is how you display a List instance into your template:
 ```html
 <ec-list [list]="trees"></ec-list>
 ```
-
-## Templated List
-
-You can customize each list field by using ec-field inside the ec-list.
-The affected fields which should be templated can either be selected by property or by type.
-
-```html
-<ec-list [list]="songs" [solo]="true" #songList>
-  <ec-field property="key">
-    <ng-template let-value="value">
-      <strong>{{value}}</strong>
-    </ng-template>
-  </ec-field>
-  <ec-field property="picture">
-    <ng-template let-item="item" let-value="value">
-      <div class="ec-list-avatar">
-        <img [src]="'https://unsplash.it/'+value*2+'/'+value">
-      </div>
-    </ng-template>
-  </ec-field>
-</ec-list>
-```

@@ -1,5 +1,6 @@
 import { Collection } from '..';
 import { mocked } from '../../../mocks/data';
+
 describe('Collection', () => {
   it('should be constructed empty', () => {
     const collection = new Collection();
@@ -55,5 +56,11 @@ describe('Collection', () => {
     const numbers = new Collection([0, 1, 2]);
     expect(numbers.hasAll([0, 1, 2])).toBe(true);
     expect(numbers.hasAll([5, 1, 2])).toBe(false);
+  });
+  it('should support isEmpty', () => {
+    const numbers = new Collection([0, 1, 2]);
+    expect(numbers.isEmpty()).toBe(false);
+    numbers.removeAll();
+    expect(numbers.isEmpty()).toBe(true);
   });
 });

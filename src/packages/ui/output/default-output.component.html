@@ -29,6 +29,8 @@
   <a href="mailto:test@test.de" *ngSwitchCase="'email'">
     {{item?.display(field.property)}}
   </a>
+  <div class="ec-list-color" *ngSwitchCase="'color'"
+       [style.backgroundColor]="item?.display(field.property)"></div>
   <div class="ec-list-avatar" *ngSwitchCase="'avatar'">
     <img [src]="item?.display(field.property)">
   </div>

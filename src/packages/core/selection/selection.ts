@@ -8,13 +8,6 @@ import { List } from '../list/list';
  * It supports solo and multiple selection.
  */
 export class Selection<T> extends List<T> {
-  /** Subject for tracking changes to selection. */
-  private selectSource = new Subject();
-
-  /**
-   * Observable that fires when an element is selected.
-   */
-  public select$ = this.selectSource.asObservable();
 
   /** Adds item to selection. If solo is true, all other items will be removed. */
   select(item: Item<T>, solo: boolean = this.config.solo) {
@@ -24,7 +17,6 @@ export class Selection<T> extends List<T> {
     } else {
       this.add(item, true);
     }
-    this.selectSource.next(item);
   }
 
   /** Returns the index of the given item or an item that has the same identifier or value. */

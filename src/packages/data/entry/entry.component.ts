@@ -1,8 +1,9 @@
 /**
  * Created by felix on 23.05.17.
  */
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { SdkService } from '../sdk/sdk.service';
+import { EntryResource } from "ec.sdk/typings/resources/publicAPI/EntryResource";
 
 /** Loads an entry by id to the template. */
 @Component({
@@ -18,6 +19,8 @@ export class EntryComponent {
   @Input() model: string;
   /** The levels to use. */
   @Input() levels: number;
+  /** Fires as soon as the entry has been loaded. */
+  @Output() loaded: EventEmitter<EntryResource> = new EventEmitter();
   /** The current loaded entry */
   entry: any;
 
@@ -31,6 +34,7 @@ export class EntryComponent {
       this.promise = this.sdk.api.entry(this.model, this.id, this.levels)
       .then((entry) => {
         this.entry = entry;
+        this.loaded.emit(entry);
         return entry;
       })
     }

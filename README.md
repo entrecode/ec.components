@@ -57,29 +57,18 @@ export class AppModule {
 }
 ```
 
-### Set up Datamanager with environment
+### Using the Sdk
 
-The Datamanager Class is a Singleton that holds an instance of the [ec.datamanager SDK](https://github.com/entrecode/ec.datamanager.js).
-You can feed it with an environment like this:
+You can access the [ec.datamanager SDK](https://github.com/entrecode/ec.datamanager.js) via the SdkService.
 
-```js
- import { Datamanager } from '@ec.components/data';
- import { environment } from '../environments/environment';
- //environment minimum: { apiRoot: 'https://datamanager.cachena.entrecode.de/api/XXxxXXxx' }
- Datamanager.useEnvironment(environment);
- Datamanager.api().model('baker').entries(); //use sdk
+```ts
+ import { SdkService } from '@ec.components/data';
+ class SomeComponent {
+    constructor(private sdk: SdkService) {
+        this.sdk.api.entryList('baker'); //use sdk Public API
+    }
+ }
 ```
-
-## UI Components
-
-Here is a short breakdown of some of the classes and components you can use.
-
-- *ec-list*: Smart datatable.
-- *ec-pagination*: Pagination that can be used with ec-list.
-- *ec-tabs*: Tabs with arbitrary content.
-- More coming soon!
-
-For more infos, look at the doc: https://entrecode.github.io/ec.components/.
 
 ## Styles
 

@@ -42,6 +42,14 @@ export class ListComponent {
     if (!this.selection && this.list.config && !this.list.config.disableSelection) {
       this.selection = new Selection([], this.list.config);
     }
+    if (this.selection) {
+      this.selection.update$.subscribe((item) => {
+        this.selected.emit(item);
+      })
+    }
+    /*this.list.update$.subscribe(() => {
+      this.list.load();
+    });*/
   }
 
   /** Column click handler. Triggers select.emit(item) with fallback to selection.toggle*/

@@ -1,18 +1,11 @@
 <h2>Simple List</h2>
 <ec-list class="ec-list-card" [list]="mocked.lists.trees" #treeList [solo]="true"></ec-list>
+<pre>
+  {{treeList.list.config | json}}
+</pre>
 
 <h2>Templated List</h2>
-<ec-list [list]="songs" [solo]="true" #songList>
-  <!--<ec-field property="key">
-    <ng-template let-value="value">
-      <strong>{{value}}</strong>
-    </ng-template>
-  </ec-field>
-  <ec-field property="picture">
-    <ng-template let-item="item" let-value="value">
-      <div class="ec-list-avatar">
-        <img [src]="'https://unsplash.it/'+value*2+'/'+value">
-      </div>
-    </ng-template>
-  </ec-field>-->
-</ec-list>
+<ec-list [list]="songs" [solo]="true" #songList></ec-list>
+<pre>
+  {{songList.list.config | json}}
+</pre>

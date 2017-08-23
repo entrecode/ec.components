@@ -9,7 +9,6 @@ import { CrudComponent } from '../crud/crud.component';
 import { ModelConfigService } from '../model-config/model-config.service';
 import { EntryResource } from "ec.sdk/typings/resources/publicAPI/EntryResource";
 import { Selection } from '../../core/selection/selection';
-import { ListConfig } from '../../core/list/list-config.interface';
 import { PopComponent } from '../../ui/pop/pop.component';
 import { Item } from '../../core/item/item';
 import { CrudConfig } from '../crud/crud-config.interface';
@@ -40,7 +39,7 @@ export class EntrySelectComponent extends DefaultInputComponent implements Contr
   /** The ec-crud inside the view template */
   @ViewChild('crud') crud: CrudComponent;
   /** The config that is being generated. */
-  private config: ListConfig;
+  private config: CrudConfig;
   /** Wether or not the selection should be solo */
   @Input() solo: boolean;
   /** The config that should be merged into the generated config */
@@ -88,6 +87,11 @@ export class EntrySelectComponent extends DefaultInputComponent implements Contr
         this.propagateChange(selection.getValue());
       });
     }
+  }
+
+  /** Returns pop class for entry picker, defaults to no class. */
+  getPopClass() {
+    return this.config && this.config.nestedPopClass ? this.config.nestedPopClass : '';
   }
 
   writeValue(value: any) {

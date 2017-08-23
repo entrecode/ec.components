@@ -4,7 +4,7 @@
              [active]="crudPop.visible" (toggle)="toggle($event)" #entrySelect></ec-select>
 
   <!-- TODO use entry pop when ready-->
-  <ec-pop [ngClass]="config?.popClass" #crudPop>
+  <ec-pop [ngClass]="getPopClass()" #crudPop>
     <!--<button type="button" (click)="crudPop.hide()">
       <i class="ec-icon close"></i> &lt;!&ndash; TODO unified pop header component &ndash;&gt;
     </button>-->

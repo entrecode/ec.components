@@ -17,6 +17,8 @@ import { FormService } from '../../ui/form/form.service';
 export class EntryFormComponent extends FormComponent {
   /** The model of the form. It is used to extract the schema and generate the config from. */
   @Input() model: string;
+  /** The entry that should be edited. */
+  @Input() entry;//: EntryResource;
   /** This output fires when the entry has been deleted using deleteEntry(). */
   @Output() deleted: EventEmitter<any> = new EventEmitter();
 
@@ -32,6 +34,9 @@ export class EntryFormComponent extends FormComponent {
     }
     Promise.resolve(config || this.modelConfig.generateConfig(this.model))
     .then((config) => {
+      if (this.entry) {
+        item = new Item(this.entry, config);
+      }
       super.init(item, config);
     });
   }

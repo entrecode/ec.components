@@ -9,7 +9,7 @@
 </ec-entry-list>
 <ec-loader #listLoader class="blend"></ec-loader>
 <!-- TODO wrap into entry-pop -->
-<ec-pop #formPop [ngClass]="config?.popClass||'modal'">
+<ec-pop #formPop [ngClass]="getPopClass()">
   <nav>
     <button (click)="log(crudForm)" *ngIf="config?.develop">
       <i class="ec-icon code"></i>

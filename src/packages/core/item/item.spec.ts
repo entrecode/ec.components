@@ -55,5 +55,12 @@ describe('Item', () => {
     ];
 
     expect(persons[0].resolve('name')).toBe('Name:Max');
+  });
+
+  it('should support onSave', () => {
+    const n = new Item(1, { onSave: (item, body) => body + 1 });
+    return n.save().then(() => {
+      return expect(n.resolve()).toBe(2);
+    });
   })
 });

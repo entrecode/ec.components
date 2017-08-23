@@ -784,7 +784,8 @@ export const mocked = {
           view: 'string',
           required: true,
           input: CoolStringComponent,
-          output: CoolStringComponent
+          output: CoolStringComponent,
+          sortable: true
         },
         height: {
           label: 'Höhe',
@@ -795,12 +796,14 @@ export const mocked = {
             if (value < 1) {
               return 'Der Wert muss positiv sein.'
             }
-          }
+          },
+          sortable: true
         },
         fruits: {
           label: 'Früchte',
           display: (value) => value ? 'ja' : 'nein',
-          view: 'boolean'
+          view: 'boolean',
+          sortable: true
         },
       },
     }),

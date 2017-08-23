@@ -127,4 +127,9 @@ export class Collection<T> {
     }
     this.update.next(this);
   }
+
+  /** Returns true if the collection is empty */
+  isEmpty() {
+    return this.items.length === 0;
+  }
 }

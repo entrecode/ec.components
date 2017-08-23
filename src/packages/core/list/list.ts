@@ -40,10 +40,10 @@ export class List<T> extends Collection<Item<T>> {
   /**
    * Constructs the List. Populates the items and instantiates the fields.
    */
-  constructor(items?: Array<T>, config: ListConfig = {}, pagination?: Pagination) {
+  constructor(values?: Array<T>, config: ListConfig = {}, pagination?: Pagination) {
     super([]);
-    if (items) {
-      super.addAll(items.map(item => new Item(item, config)));
+    if (values) {
+      super.addAll(values.map(item => new Item(item, config)));
     }
     this.config = config || {};
     this.config.page = 1;
@@ -55,7 +55,7 @@ export class List<T> extends Collection<Item<T>> {
   }
 
   /** Loads the list page with the given config or, if none given, uses the current config. Reapplies grouping (if any) and calls the change Subject. */
-  protected load(config?: ListConfig) {
+  public load(config?: ListConfig) {
     if (config) {
       Object.assign(this.config, config);
     }

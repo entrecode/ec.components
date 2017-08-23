@@ -1,0 +1,15 @@
+import { Component } from '@angular/core';
+import { DatamanagerList } from './datamanager-list';
+import { ResourceListComponent } from '../resource-list/resource-list.component';
+
+/** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent */
+@Component({
+  selector: 'ec-datamanager-list',
+  templateUrl: '../../ui/list/list.component.html'
+})
+export class DatamanagerListComponent extends ResourceListComponent {
+
+  createList() {
+    return new DatamanagerList(this.config, this.sdk);
+  }
+}

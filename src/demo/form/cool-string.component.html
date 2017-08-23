@@ -3,9 +3,5 @@
 </strong>
 <label [formGroup]="group" *ngIf="group">
   <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>
-  <div>
-    {{field?.label||field?.property}}
-    <input type="text" style="background-color:cornflowerblue"
-           [formControlName]="field?.property">
-  </div>
+  <input type="text" style="background-color:cornflowerblue" [formControlName]="field?.property">
 </label>

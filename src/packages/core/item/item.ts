@@ -53,7 +53,7 @@ export class Item<T> {
     return this.config;
   }
 
-  /** Returns an Array of properties possesed by the object. */
+  /** Returns an Array of properties possessed by the body. */
   getProperties(): Array<string> {
     if (!this.body || typeof this.body !== 'object') {
       return [];
@@ -139,7 +139,7 @@ export class Item<T> {
     }*/
 
   /** Saves the given value. Run serializers before assigning the new value. */
-  save(value: T): Promise<Item<T>> {
+  save(value: T = this.body): Promise<Item<T>> {
     if (this.config.onSave) {
       return Promise.resolve(this.config.onSave(this, value))
       // return Promise.resolve(this.config.onSave(this, this.serialize(value)))

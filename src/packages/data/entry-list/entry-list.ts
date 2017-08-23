@@ -1,17 +1,17 @@
 import { EntryListConfig } from '..';
 import { SdkService } from '../sdk/sdk.service';
-import { DataList } from '../data-list/data-list';
+import { ResourceList } from '../resource-list/resource-list';
 
 /**
  * Extension of List for Datamanager Entries.
  */
-export class EntryList<Entry> extends DataList<Entry> {
+export class EntryList<Entry> extends ResourceList<Entry> {
   /** The model that is loaded from. */
   private model: string;
 
   /** The constructor will init the List and Pagination instances.
    * Make sure the config is already complete when initiating an EntryList instance. */
-  constructor(model: string, config: EntryListConfig, protected sdk: SdkService) { //TODO filterOptions import
+  constructor(model: string, config: EntryListConfig, protected sdk: SdkService) {
     super(config, sdk);
     this.model = model;
     this.load();

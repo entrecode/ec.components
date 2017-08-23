@@ -4,6 +4,7 @@ import { SdkService } from '../data/sdk/sdk.service';
 import { AssetList } from './asset-list/asset-list';
 import { TypeConfigService } from '../data/model-config/type-config.service';
 import { AssetInputComponent } from './asset-input/asset-input.component';
+import * as moment from 'moment';
 
 /** Instances of Update are emitted by the changes EventEmitter of the CrudService. */
 export interface Upload {
@@ -22,6 +23,41 @@ export interface Upload {
 export class FileService {
   /** The changes event is emitted everytime an entry is created or updated. */
   private changes: EventEmitter<Upload> = new EventEmitter();
+  /** The default config for asset lists */
+  public assetListConfig = {
+    label: 'title',
+    size: 5,
+    fields: {
+      thumb: {
+        label: 'Vorschau',
+        resolve: (asset, item, property) => asset.getImageThumbUrl(200),
+        view: 'avatar'
+      },
+      title: {
+        label: 'Titel',
+        sortable: true,
+        filterable: true,
+        type: 'text',
+        view: 'string',
+      },
+      tags: {
+        label: 'Tags',
+        view: 'labels'
+      },
+      type: {
+        label: 'Typ',
+        view: 'label',
+        sortable: true
+      },
+      created: {
+        label: 'Datum',
+        view: 'date',
+        sortable: true,
+        display: (value) => moment(value).format('DD.MM.YY'),
+        group: (value) => moment(value).format('MMMM YYYY')
+      }
+    }
+  };
 
   /** Injects sdk */
   constructor(private sdk: SdkService, private typeConfig: TypeConfigService) {

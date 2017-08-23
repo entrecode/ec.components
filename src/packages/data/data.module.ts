@@ -16,11 +16,15 @@ import { CrudComponent } from './crud/crud.component';
 import { DefaultEntryOutputComponent } from './entry-form/default-entry-output.component';
 import { EntrySelectComponent } from './entry-select/entry-select.component';
 import { TypeConfigService } from './model-config/type-config.service';
+import { DatamanagerListComponent } from './datamanager-list/datamanager-list.component';
+import { ResourceListComponent } from './resource-list/resource-list.component';
 
 @NgModule({
   entryComponents: [
     DefaultEntryInputComponent,
     DefaultEntryOutputComponent,
+    DatamanagerListComponent,
+    ResourceListComponent,
     EntrySelectComponent,
   ],
   declarations: [
@@ -28,6 +32,8 @@ import { TypeConfigService } from './model-config/type-config.service';
     EntryComponent,
     EntriesComponent,
     EntryFormComponent,
+    DatamanagerListComponent,
+    ResourceListComponent,
     DefaultEntryInputComponent,
     DefaultEntryOutputComponent,
     CrudComponent,
@@ -45,6 +51,8 @@ import { TypeConfigService } from './model-config/type-config.service';
     EntryFormComponent,
     CrudComponent,
     EntrySelectComponent,
+    DatamanagerListComponent,
+    ResourceListComponent,
   ],
   providers: [
     SdkService,

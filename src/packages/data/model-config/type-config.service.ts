@@ -10,8 +10,6 @@ import { Injectable } from "@angular/core";
 /** The TypeConfig holds each field type's specific behaviour in certain situations */
 @Injectable()
 export class TypeConfigService {
-  //todo add way to map default filter types
-  //todo (exact,search etc) for field types e.g. number does not support search
   /** Defines the base configuration of each type.*/
   private types: FieldConfig<FieldConfigProperty> = {
     text: {
@@ -66,7 +64,7 @@ export class TypeConfigService {
       view: 'label',
       input: DefaultEntryInputComponent,
       output: DefaultOutputComponent,
-      display: TypeConfigService.displayEntries,
+      display: (value, entry, property) => entry.getTitle(property),
       filterable: true,
       filterOperator: 'any'
     },
@@ -74,7 +72,7 @@ export class TypeConfigService {
       view: 'labels',
       input: DefaultEntryInputComponent,
       output: DefaultOutputComponent,
-      display: TypeConfigService.displayEntries,
+      display: (value, entry, property) => entry.getTitle(property),
       filterable: true,
       filterOperator: 'any',
       // form: false,
@@ -126,7 +124,7 @@ export class TypeConfigService {
 
   /** Resolves entry/entries from nested resource or id inside (single and array).
    * Gives back standardizes "light" entries {id, _entryTitle} */
-  static resolveEntries(entry, item, property, value = entry[property]) {
+  /*static resolveEntries(entry, item, property, value = entry[property]) {
     if (Array.isArray(value)) {
       return value ? value.map((e) => TypeConfigService.resolveEntries(entry, item, property, e)) : [];
     }
@@ -134,24 +132,11 @@ export class TypeConfigService {
       //TODO use getLevels when ready
       //TODO is it possible to get the model title field of the nested entry? (and useful)
       return { id: value, name: 'Simi' };
-      //TODO wait for getTitle(property) implementation
     }
     if (value && value.getTitle) {
       // return { id: value.id, _entryTitle: value.getTitle('') }
       return { id: value.id, [value.getModelTitleField()]: value.getTitle('') }
       //TODO use modelTitleField when it is possible to get it with lvl1
     }
-  }
-
-  /** Displays one or multiple "light" entries */
-  static displayEntries(value, entry) {
-    if (Array.isArray(value)) {
-      return value.map((nested) => TypeConfigService.displayEntries(nested, entry));
-    }
-    if (typeof value === 'string') {
-      return value || 'entry';
-    }
-    //TODO replace name with _entryTitle when ready
-    return value ? value.getTitle() : '';
-  }
+  }*/
 }

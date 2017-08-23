@@ -12,7 +12,6 @@ import { SlotHostDirective } from '../dynamic-slot/slot-host.directive';
 import { ReactiveFormsModule } from "@angular/forms";
 import { SelectComponent } from '../select/select.component';
 import { PopModule } from '../pop/pop.module';
-import { SelectionComponent } from '../select/selection.component';
 import { FormService } from './form.service';
 import { VisibleFieldsPipe } from './visible-fields.pipe';
 
@@ -31,7 +30,6 @@ import { VisibleFieldsPipe } from './visible-fields.pipe';
     InputErrorsComponent,
     SlotHostDirective,
     SelectComponent,
-    SelectionComponent,
     VisibleFieldsPipe,
   ],
   imports: [
@@ -48,7 +46,6 @@ import { VisibleFieldsPipe } from './visible-fields.pipe';
     SlotHostDirective,
     ReactiveFormsModule,
     SelectComponent,
-    SelectionComponent,
     PopModule,
     VisibleFieldsPipe,
   ],
