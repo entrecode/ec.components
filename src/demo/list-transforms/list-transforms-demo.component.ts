@@ -6,7 +6,16 @@ import { List } from "../../../index";
 import { substantives } from '../../mocks/substantives';
 
 @Component({
-  templateUrl: './list-transforms-demo.component.html',
+  template: `
+<h2>List Transforms Test</h2>
+
+<ec-list class="ec-list-card" [list]="words" (selected)="log($event)" #wordList></ec-list>
+<ul>
+  <li *ngFor="let word of wordList.selection.items">
+    {{word.resolve('word')}}
+  </li>
+</ul>
+`
 })
 export class ListTransformsDemoComponent {
   private percent = (value) => Math.round(100 * value) + '%';
@@ -22,6 +31,7 @@ export class ListTransformsDemoComponent {
           label: 'Wort',
           sortable: true,
           filterable: true,
+          view: 'string'
         },
         length: {
           label: 'Länge',
@@ -81,7 +91,8 @@ export class ListTransformsDemoComponent {
         }
       }
     }
-  );
+  )
+  ;
 
   log(wort) {
     console.log('log', wort);

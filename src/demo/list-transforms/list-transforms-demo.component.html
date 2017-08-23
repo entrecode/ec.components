@@ -1,8 +1,0 @@
-<h2>List Transforms Test</h2>
-
-<ec-list class="ec-list-card" [list]="words" (selected)="log($event)" #wordList></ec-list>
-<ul>
-  <li *ngFor="let word of wordList.selection.items">
-    {{word.resolve('word')}}
-  </li>
-</ul>

@@ -12,6 +12,8 @@ export interface FieldConfigProperty {
   /** Custom resolve transformation function.
    * @param body The item body */
   resolve?: (body: any, item: any, property: string) => any;
+  /** Custom resolve method to get the title, has priority over label property. */
+  title?: (body: any, item: any, property: string) => any;
   /** Custom edit transformation function. It is used before editing the value, e.g. in a form.
    * @param body The item body */
   // edit?: (value, field, property: string) => any;

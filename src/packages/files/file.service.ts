@@ -27,6 +27,7 @@ export class FileService {
   public assetListConfig = {
     label: 'title',
     size: 5,
+    identifier: 'assetID',
     fields: {
       thumb: {
         label: 'Vorschau',

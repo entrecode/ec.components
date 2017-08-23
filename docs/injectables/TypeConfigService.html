@@ -1156,7 +1156,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">src/packages/data/model-config/type-config.service.ts:101</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">src/packages/data/model-config/type-config.service.ts:106</a></div>
                                         </td>
                                     </tr>
             
@@ -1190,7 +1190,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="117" class="link-to-prism">src/packages/data/model-config/type-config.service.ts:117</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="122" class="link-to-prism">src/packages/data/model-config/type-config.service.ts:122</a></div>
                                         </td>
                                     </tr>
             
@@ -1304,7 +1304,8 @@ export class TypeConfigService {
     assets: {
       view: &#x27;avatars&#x27;,
       input: DefaultEntryInputComponent,
-      display: (value, entry, property) &#x3D;&gt; entry.getImageThumbUrl(property, 100)
+      display: (value, entry, property) &#x3D;&gt; entry.getImageThumbUrl(property, 100),
+      prefill: []
     },
     email: {},
     phone: {
@@ -1314,13 +1315,15 @@ export class TypeConfigService {
       view: &#x27;date&#x27;,
       sortable: true,
       // display: (value) &#x3D;&gt; moment(value).format(&#x27;DD.MM.YY&#x27;)
-      display: (value) &#x3D;&gt; moment(value).format(&#x27;DD.MM.YY&#x27;)
+      display: (value) &#x3D;&gt; value ? moment(value).format(&#x27;DD.MM.YY&#x27;) : &#x27;&#x27;/*,
+      prefill: new Date(0)*/
     },
     entry: {
       view: &#x27;label&#x27;,
       input: DefaultEntryInputComponent,
       output: DefaultOutputComponent,
       display: (value, entry, property) &#x3D;&gt; entry.getTitle(property),
+      // resolve: (body) &#x3D;&gt; TypeConfigService.resolveEntries,
       filterable: true,
       filterOperator: &#x27;any&#x27;
     },
@@ -1329,8 +1332,10 @@ export class TypeConfigService {
       input: DefaultEntryInputComponent,
       output: DefaultOutputComponent,
       display: (value, entry, property) &#x3D;&gt; entry.getTitle(property),
+      // resolve: (body) &#x3D;&gt; TypeConfigService.resolveEntries,
       filterable: true,
       filterOperator: &#x27;any&#x27;,
+      prefill: []
       // form: false,
     },
     json: {
@@ -1387,11 +1392,11 @@ export class TypeConfigService {
     if (typeof value &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
       //TODO use getLevels when ready
       //TODO is it possible to get the model title field of the nested entry? (and useful)
-      return { id: value, name: &#x27;Simi&#x27; };
+      return { id: value, _entryTitle: entry.getTitle(property) };
     }
     if (value &amp;&amp; value.getTitle) {
       // return { id: value.id, _entryTitle: value.getTitle(&#x27;&#x27;) }
-      return { id: value.id, [value.getModelTitleField()]: value.getTitle(&#x27;&#x27;) }
+      return { id: value.id, _entryTitle: value.getTitle() }
       //TODO use modelTitleField when it is possible to get it with lvl1
     }
   }*/

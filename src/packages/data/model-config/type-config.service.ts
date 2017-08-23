@@ -48,7 +48,8 @@ export class TypeConfigService {
     assets: {
       view: 'avatars',
       input: DefaultEntryInputComponent,
-      display: (value, entry, property) => entry.getImageThumbUrl(property, 100)
+      display: (value, entry, property) => entry.getImageThumbUrl(property, 100),
+      prefill: []
     },
     email: {},
     phone: {
@@ -58,13 +59,15 @@ export class TypeConfigService {
       view: 'date',
       sortable: true,
       // display: (value) => moment(value).format('DD.MM.YY')
-      display: (value) => moment(value).format('DD.MM.YY')
+      display: (value) => value ? moment(value).format('DD.MM.YY') : ''/*,
+      prefill: new Date(0)*/
     },
     entry: {
       view: 'label',
       input: DefaultEntryInputComponent,
       output: DefaultOutputComponent,
       display: (value, entry, property) => entry.getTitle(property),
+      // resolve: (body) => TypeConfigService.resolveEntries,
       filterable: true,
       filterOperator: 'any'
     },
@@ -73,8 +76,10 @@ export class TypeConfigService {
       input: DefaultEntryInputComponent,
       output: DefaultOutputComponent,
       display: (value, entry, property) => entry.getTitle(property),
+      // resolve: (body) => TypeConfigService.resolveEntries,
       filterable: true,
       filterOperator: 'any',
+      prefill: []
       // form: false,
     },
     json: {
@@ -131,11 +136,11 @@ export class TypeConfigService {
     if (typeof value === 'string') {
       //TODO use getLevels when ready
       //TODO is it possible to get the model title field of the nested entry? (and useful)
-      return { id: value, name: 'Simi' };
+      return { id: value, _entryTitle: entry.getTitle(property) };
     }
     if (value && value.getTitle) {
       // return { id: value.id, _entryTitle: value.getTitle('') }
-      return { id: value.id, [value.getModelTitleField()]: value.getTitle('') }
+      return { id: value.id, _entryTitle: value.getTitle() }
       //TODO use modelTitleField when it is possible to get it with lvl1
     }
   }*/

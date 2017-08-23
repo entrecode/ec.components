@@ -1,11 +1,11 @@
 <fieldset [ngSwitch]="field.type" *ngIf="group" [formGroup]="group">
   <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>
-  <div *ngSwitchCase="'asset'">
+  <!--<div *ngSwitchCase="'asset'">
     <img [src]="item?.display(field.property)">
   </div>
   <div *ngSwitchCase="'assets'">
     <img [src]="url" *ngFor="let url of item?.display(field.property)">
-  </div>
+  </div>-->
   <div *ngSwitchCase="'entry'">
     <ec-entry-select [formControl]="group.get(field.property)" [field]="field"
                      [solo]="true" [config]="entrySelectConfig"></ec-entry-select>
@@ -16,7 +16,7 @@
   </div>
   <input *ngSwitchCase="'phone'" type="text" [placeholder]="field.placeholder">
   <div *ngSwitchDefault>
-    <!--<marquee>🚂🚃🚃🚃 {{field.type}} input coming soon..</marquee>-->
+    <marquee>🚂🚃🚃🚃 {{field.type}} input coming soon..</marquee>
     <ec-output [field]="field" [item]="item"></ec-output>
   </div>
 </fieldset>

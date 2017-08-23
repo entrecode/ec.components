@@ -75,15 +75,9 @@ export class CrudService {
   /** Removes all null or undefined values from the given object */
   clean(value: Object, oldValues: any = {}): Object {
     for (let key in value) {
-      if (value[key] === null || value[key] === '' || value[key] === undefined) {
-        //TODO find way to decide, when to send empty string and when not:
-        //  it is important to send it when an entries value needs to be "cleared"
-        //    e.g. to remove a description
-        //  it is though important to remove it for fields that require a validation
-        //    e.g. email fields will throw an error once clicked (filled with empty string)
-        //  should this be handled by the sdk or the module??!!
-        //    how to decide ???!?!!??!??!
-        delete value[key];
+      if (value[key] === '') { //value[key] === null ||  || value[key] === undefined
+        //TODO
+         value[key] = null;
       }
     }
     return value;

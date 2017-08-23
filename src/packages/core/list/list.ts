@@ -111,7 +111,7 @@ export class List<T> extends Collection<Item<T>> {
     //TODO find way to filter with pagination and without loosing filtered out items
     this.page = this.items.filter((item) => {
       return item.resolve(property).includes(value);
-    });
+    }).slice(0, this.config.size || 100);
   }
 
   /** Changes the config's sort variables to reflect the given sorting */

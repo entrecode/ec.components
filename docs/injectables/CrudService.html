@@ -1266,7 +1266,7 @@ changes.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">src/packages/data/crud/crud.service.ts:93</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">src/packages/data/crud/crud.service.ts:87</a></div>
                                         </td>
                                     </tr>
             
@@ -1300,7 +1300,7 @@ changes.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">src/packages/data/crud/crud.service.ts:106</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">src/packages/data/crud/crud.service.ts:100</a></div>
                                         </td>
                                     </tr>
             
@@ -1543,15 +1543,9 @@ export class CrudService {
   /** Removes all null or undefined values from the given object */
   clean(value: Object, oldValues: any &#x3D; {}): Object {
     for (let key in value) {
-      if (value[key] &#x3D;&#x3D;&#x3D; null || value[key] &#x3D;&#x3D;&#x3D; &#x27;&#x27; || value[key] &#x3D;&#x3D;&#x3D; undefined) {
-        //TODO find way to decide, when to send empty string and when not:
-        //  it is important to send it when an entries value needs to be &quot;cleared&quot;
-        //    e.g. to remove a description
-        //  it is though important to remove it for fields that require a validation
-        //    e.g. email fields will throw an error once clicked (filled with empty string)
-        //  should this be handled by the sdk or the module??!!
-        //    how to decide ???!?!!??!??!
-        delete value[key];
+      if (value[key] &#x3D;&#x3D;&#x3D; &#x27;&#x27;) { //value[key] &#x3D;&#x3D;&#x3D; null ||  || value[key] &#x3D;&#x3D;&#x3D; undefined
+        //TODO
+         value[key] &#x3D; null;
       }
     }
     return value;

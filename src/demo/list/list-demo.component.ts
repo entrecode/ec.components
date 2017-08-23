@@ -4,7 +4,19 @@ import { songs } from '../../assets/songs';
 
 @Component({
   selector: 'ec-list-demo',
-  templateUrl: './list-demo.component.html',
+  template: `
+<h2>Simple List</h2>
+<ec-list class="ec-list-card" [list]="mocked.lists.trees" #treeList [solo]="true"></ec-list>
+<pre>
+  {{treeList.list.config | json}}
+</pre>
+
+<h2>Templated List</h2>
+<ec-list [list]="songs" [solo]="true" #songList></ec-list>
+<pre>
+  {{songList.list.config | json}}
+</pre>
+  `,
 })
 export class ListDemoComponent {
   private mocked = mocked;

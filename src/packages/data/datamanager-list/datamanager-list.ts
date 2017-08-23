@@ -10,6 +10,7 @@ export class DatamanagerList<DatamanagerResource> extends ResourceList<Datamanag
 
   constructor(config: EntryListConfig, protected sdk: SdkService) {
     super(Object.assign(config, {
+      identifier: 'datamanagerID',
       fields: {
         hexColor: {
           label: '#',

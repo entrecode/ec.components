@@ -1368,7 +1368,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">src/packages/data/crud/crud.component.ts:92</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">src/packages/data/crud/crud.component.ts:93</a></div>
                                 </td>
                             </tr>
     
@@ -1438,12 +1438,14 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/packages/data/crud/crud.component.ts:58</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/packages/data/crud/crud.component.ts:59</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>Loads the clicked entry item, depending on the configured levels </p>
+    </div>
     
                                 <div class="io-description">
                                     <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
@@ -1541,7 +1543,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">src/packages/data/crud/crud.component.ts:80</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/packages/data/crud/crud.component.ts:81</a></div>
                                 </td>
                             </tr>
     
@@ -1784,12 +1786,13 @@ export class CrudComponent {
     return (!edit &amp;&amp; this.hasMethod(&#x27;create&#x27;)) || (edit &amp;&amp; this.hasMethod(&#x27;update&#x27;))
   }
 
+  /** Loads the clicked entry item, depending on the configured levels */
   private loadEntry(item) {
     return Promise.resolve().then(() &#x3D;&gt; {
-      if (!this.config.levels || this.config.levels &#x3D;&#x3D;&#x3D; 1) {
+      if (this.config.levels &#x3D;&#x3D;&#x3D; 1) { //TODO add !this.config.levels ||&#x27; when lvl1 is supported
         return item;
       }
-      return this.sdk.api.entry(this.model, item.id(), this.config.levels)
+      return this.sdk.api.entry(this.model, item.id(), this.config.levels || 2)
       .then((leveledEntry) &#x3D;&gt; {
         return new Item(leveledEntry, item.config);
       });

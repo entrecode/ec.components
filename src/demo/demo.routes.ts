@@ -25,17 +25,21 @@ export const demoRoutes: Routes = [
     children: [
       {
         path: 'list',
-        component: ListDemoComponent,
-        data: {
-          title: 'list'
-        }
-      },
-      {
-        path: 'list-transforms',
-        component: ListTransformsDemoComponent,
-        data: {
-          title: 'list-transforms'
-        }
+        children: [
+          {
+            path: 'list',
+            component: ListDemoComponent,
+            data: {
+              title: 'basic'
+            }
+          },
+          {
+            path: 'list-transforms',
+            component: ListTransformsDemoComponent,
+            data: {
+              title: 'transforms'
+            }
+          },]
       },
       {
         path: 'form',

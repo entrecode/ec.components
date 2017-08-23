@@ -55,8 +55,7 @@ export const mocked = {
         picture: {
           label: 'Bild',
           resolve: (body) => body.music ? body.music.measures.length : 1,
-          output: UnsplashImageComponent,
-          input: UnsplashImageComponent
+          output: UnsplashImageComponent
         },
         music: {
           label: 'Akkorde',
@@ -67,27 +66,23 @@ export const mocked = {
         title: {
           label: 'Titel',
           view: 'string',
-          // filterable: true,
           sortable: true,
         },
         composer: {
           label: 'Komponist',
           view: 'string',
-          // filterable: true,
           sortable: true,
         },
         style: {
           label: 'Stil',
           group: (value) => value,
           view: 'string',
-          // filterable: true,
           sortable: true,
         },
         key: {
           label: 'Tonart',
           group: (value) => value.replace('-', ''),
           view: 'string',
-          // filterable: true,
           sortable: true,
         },
         density: {
