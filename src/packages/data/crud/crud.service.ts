@@ -77,7 +77,7 @@ export class CrudService {
     for (let key in value) {
       if (value[key] === '') { //value[key] === null ||  || value[key] === undefined
         //TODO
-         value[key] = null;
+        value[key] = null;
       }
     }
     return value;
