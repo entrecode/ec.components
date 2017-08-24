@@ -29,6 +29,7 @@ import { AssetListDemoComponent } from './asset-list/asset-list.demo.component';
 import { AssetInputComponent } from '../packages/files/asset-input/asset-input.component';
 import { ListTransformsDemoComponent } from './list-transforms/list-transforms-demo.component';
 import { DatamanagerListDemoComponent } from './datamanager-list/datamanager-list.demo.component';
+import { ModelListDemoComponent } from './model-list/model-list.demo.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { DatamanagerListDemoComponent } from './datamanager-list/datamanager-lis
     UnsplashImageComponent,
     AssetListDemoComponent,
     DatamanagerListDemoComponent,
+    ModelListDemoComponent,
   ],
   entryComponents: [
     CoolStringComponent,

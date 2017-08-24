@@ -18,6 +18,7 @@ import { EntrySelectDemoComponent } from './entry-select/entry-select-demo.compo
 import { AssetListDemoComponent } from './asset-list/asset-list.demo.component';
 import { ListTransformsDemoComponent } from './list-transforms/list-transforms-demo.component';
 import { DatamanagerListDemoComponent } from './datamanager-list/datamanager-list.demo.component';
+import { ModelListDemoComponent } from './model-list/model-list.demo.component';
 
 export const demoRoutes: Routes = [
   {
@@ -117,6 +118,10 @@ export const demoRoutes: Routes = [
       {
         path: 'datamanager-list',
         component: DatamanagerListDemoComponent
+      },
+      {
+        path: 'model-list',
+        component: ModelListDemoComponent
       },
     ]
   },

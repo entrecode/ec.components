@@ -115,7 +115,7 @@ export class ModelConfigService extends Config {
     const config = Object.assign({}, this.get(model) || {}); //clone
     Object.assign(config, {
       identifier: 'id',
-      label: 'name', //will currently only work for muffins...
+      label: '_entryTitle',
       //TODO add label _entryTitle (or similar) when generic entryTitle property is there
       onSave: (item: Item<EntryResource>, value) => this.crud.save(model, item.getBody(), value)
     });

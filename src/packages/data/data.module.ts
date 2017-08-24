@@ -18,12 +18,14 @@ import { EntrySelectComponent } from './entry-select/entry-select.component';
 import { TypeConfigService } from './model-config/type-config.service';
 import { DatamanagerListComponent } from './datamanager-list/datamanager-list.component';
 import { ResourceListComponent } from './resource-list/resource-list.component';
+import { ModelListComponent } from './model-list/model-list.component';
 
 @NgModule({
   entryComponents: [
     DefaultEntryInputComponent,
     DefaultEntryOutputComponent,
     DatamanagerListComponent,
+    ModelListComponent,
     ResourceListComponent,
     EntrySelectComponent,
   ],
@@ -33,6 +35,7 @@ import { ResourceListComponent } from './resource-list/resource-list.component';
     EntriesComponent,
     EntryFormComponent,
     DatamanagerListComponent,
+    ModelListComponent,
     ResourceListComponent,
     DefaultEntryInputComponent,
     DefaultEntryOutputComponent,
@@ -52,6 +55,7 @@ import { ResourceListComponent } from './resource-list/resource-list.component';
     CrudComponent,
     EntrySelectComponent,
     DatamanagerListComponent,
+    ModelListComponent,
     ResourceListComponent,
   ],
   providers: [

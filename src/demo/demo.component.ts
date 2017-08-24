@@ -883,6 +883,9 @@ export class DemoComponent {
             }
             return muffins;
           }
+        },
+        field_test: {
+
         }
       }
     });

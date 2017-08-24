@@ -269,6 +269,9 @@
                                     <a href="../components/MockupComponent.html" >MockupComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/ModelListComponent.html" >ModelListComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/NotificationsComponent.html" >NotificationsComponent</a>
                                 </li>
                                 <li class="link">
@@ -364,6 +367,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../classes/List.html" >List</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/ModelList.html" >ModelList</a>
                                 </li>
                                 <li class="link">
                                     <a href="../classes/Notification.html" >Notification</a>
@@ -794,6 +800,9 @@
                                            <a href="../components/MockupComponent.html" >MockupComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/ModelListComponent.html" >ModelListComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/NotificationsComponent.html" >NotificationsComponent</a>
                                        </li>
                                        <li class="link">
@@ -889,6 +898,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../classes/List.html" >List</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/ModelList.html" >ModelList</a>
                                        </li>
                                        <li class="link">
                                            <a href="../classes/Notification.html" >Notification</a>
@@ -1583,7 +1595,7 @@ export class ModelConfigService extends Config {
     const config &#x3D; Object.assign({}, this.get(model) || {}); //clone
     Object.assign(config, {
       identifier: &#x27;id&#x27;,
-      label: &#x27;name&#x27;, //will currently only work for muffins...
+      label: &#x27;_entryTitle&#x27;,
       //TODO add label _entryTitle (or similar) when generic entryTitle property is there
       onSave: (item: Item&lt;EntryResource&gt;, value) &#x3D;&gt; this.crud.save(model, item.getBody(), value)
     });

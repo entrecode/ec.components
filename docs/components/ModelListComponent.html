@@ -248,7 +248,7 @@
                                     <a href="../components/InputErrorsComponent.html" >InputErrorsComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/ListComponent.html"  data-type="entity-link" class="active" >ListComponent</a>
+                                    <a href="../components/ListComponent.html" >ListComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/ListHeaderComponent.html" >ListHeaderComponent</a>
@@ -269,7 +269,7 @@
                                     <a href="../components/MockupComponent.html" >MockupComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/ModelListComponent.html" >ModelListComponent</a>
+                                    <a href="../components/ModelListComponent.html"  data-type="entity-link" class="active" >ModelListComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/NotificationsComponent.html" >NotificationsComponent</a>
@@ -779,7 +779,7 @@
                                            <a href="../components/InputErrorsComponent.html" >InputErrorsComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/ListComponent.html"  data-type="entity-link" class="active" >ListComponent</a>
+                                           <a href="../components/ListComponent.html" >ListComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/ListHeaderComponent.html" >ListHeaderComponent</a>
@@ -800,7 +800,7 @@
                                            <a href="../components/MockupComponent.html" >MockupComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/ModelListComponent.html" >ModelListComponent</a>
+                                           <a href="../components/ModelListComponent.html"  data-type="entity-link" class="active" >ModelListComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/NotificationsComponent.html" >NotificationsComponent</a>
@@ -1084,15 +1084,12 @@
 
 <ol class="breadcrumb">
   <li>Components</li>
-  <li>ListComponent</li>
+  <li>ModelListComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
     <li class="active">
         <a href="#info" id="info-tab" role="tab" data-toggle="tab" data-link="info">Info</a>
-    </li>
-    <li>
-        <a href="#readme" role="tab" id="readme-tab" data-toggle="tab" data-link="readme">README</a>
     </li>
 
     <li>
@@ -1112,17 +1109,23 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>src/packages/ui/list/list.component.ts</code>
+    <code>src/packages/data/model-list/model-list.component.ts</code>
 </p>
 
     <p class="comment">
         <h3>Description</h3>
     </p>
     <p class="comment">
-        <p>The ListComponent will render a list containing the given items or collection.</p>
+        <p>The ModelListComponent is a thin holder of an ModelList instance. It extends the ResourceListComponent </p>
 
     </p>
 
+    <p class="comment">
+        <h3>Extends</h3>
+    </p>
+    <p class="comment">
+            <code><a href="../classes/ResourceList.html" target="_self" >ResourceListComponent</a></code>
+    </p>
 
 
 
@@ -1132,10 +1135,6 @@
         <tbody>
 
 
-            <tr>
-                <td class="col-md-3">encapsulation</td>
-                <td class="col-md-9"><code>ViewEncapsulation.None</code></td>
-            </tr>
 
 
 
@@ -1148,19 +1147,15 @@
 
             <tr>
                 <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>ec-list</code></td>
+                <td class="col-md-9"><code>ec-model-list</code></td>
             </tr>
 
-            <tr>
-                <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>list.component.scss</code></td>
-            </tr>
 
 
 
             <tr>
                 <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>./list.component.html</code></td>
+                <td class="col-md-9"><code>../../ui/list/list.component.html</code></td>
             </tr>
 
 
@@ -1181,10 +1176,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                 <a href="#columnClick">columnClick</a>
-                            </li>
-                            <li>
-                                 <a href="#ngOnChanges">ngOnChanges</a>
+                                 <a href="#createList">createList</a>
                             </li>
                         </ul>
                     </td>
@@ -1198,39 +1190,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#collection">collection</a>
-                            </li>
-                            <li>
-                                <a href="#config">config</a>
-                            </li>
-                            <li>
-                                <a href="#items">items</a>
-                            </li>
-                            <li>
-                                <a href="#list">list</a>
-                            </li>
-                            <li>
-                                <a href="#selection">selection</a>
-                            </li>
-                            <li>
-                                <a href="#solo">solo</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Outputs</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                <a href="#select">select</a>
-                            </li>
-                            <li>
-                                <a href="#selected">selected</a>
+                                <a href="#datamanager">datamanager</a>
                             </li>
                         </ul>
                     </td>
@@ -1246,187 +1206,25 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
-                            <a name="collection"></a>
-                            <code>collection</code>
+                            <a name="datamanager"></a>
+                            <code>datamanager</code>
                         </td>
                         <td class="col-md-10">
-                            <div><p>The used collection </p>
-</div>
                               <p>
-                                <em>Type:</em>    <code><a href="../classes/Collection.html" target="_self" >Collection&lt;any&gt;</a></code>
+                                <em>Type:</em>    <code>string|</code>
 
                               </p>
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/packages/ui/list/list.component.ts:19</a></div>
-                                </td>
-                            </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <a name="config"></a>
-                            <code>config</code>
-                        </td>
-                        <td class="col-md-10">
-                            <div><p>Configuration Object for List </p>
-</div>
-                              <p>
-                                <em>Type:</em>    <code><a href="../interfaces/ListConfig.html" target="_self" >ListConfig</a></code>
-
-                              </p>
-                        </td>
-                    </tr>
-                            <tr>
-                                <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/packages/ui/list/list.component.ts:15</a></div>
-                                </td>
-                            </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <a name="items"></a>
-                            <code>items</code>
-                        </td>
-                        <td class="col-md-10">
-                            <div><p>The visible items </p>
-</div>
-                              <p>
-                                <em>Type:</em>    <code>Array&lt;any&gt;</code>
-
-                              </p>
-                        </td>
-                    </tr>
-                            <tr>
-                                <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/packages/ui/list/list.component.ts:17</a></div>
-                                </td>
-                            </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <a name="list"></a>
-                            <code>list</code>
-                        </td>
-                        <td class="col-md-10">
-                            <div><p>The Instance of the List </p>
-</div>
-                              <p>
-                                <em>Type:</em>    <code><a href="../classes/List.html" target="_self" >List&lt;any&gt;</a></code>
-
-                              </p>
-                        </td>
-                    </tr>
-                            <tr>
-                                <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/packages/ui/list/list.component.ts:29</a></div>
-                                </td>
-                            </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <a name="selection"></a>
-                            <code>selection</code>
-                        </td>
-                        <td class="col-md-10">
-                            <div><p>The used selection </p>
-</div>
-                              <p>
-                                <em>Type:</em>    <code><a href="../classes/Selection.html" target="_self" >Selection&lt;any&gt;</a></code>
-
-                              </p>
-                        </td>
-                    </tr>
-                            <tr>
-                                <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/packages/ui/list/list.component.ts:21</a></div>
-                                </td>
-                            </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <a name="solo"></a>
-                            <code>solo</code>
-                        </td>
-                        <td class="col-md-10">
-                            <div><p>If true, only one item is selectable next </p>
-</div>
-                              <p>
-                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-
-                              </p>
-                        </td>
-                    </tr>
-                            <tr>
-                                <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/packages/ui/list/list.component.ts:23</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/packages/data/model-list/model-list.component.ts:13</a></div>
                                 </td>
                             </tr>
                 </tbody>
             </table>
     </section>
 
-    <section>
-        <h3 id="outputs">Outputs</h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <a name="select"></a>
-                            <code>select</code>
-                        </td>
-                        <td class="col-md-10">
-                            <div><p>Event emitter on item selection </p>
-</div>
-                            <em><code>$event</code> type:</em>    <code>EventEmitter&lt;any&gt;</code>
-
-                        </td>
-                    </tr>
-                            <tr>
-                                <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/packages/ui/list/list.component.ts:25</a></div>
-                                </td>
-                            </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <a name="selected"></a>
-                            <code>selected</code>
-                        </td>
-                        <td class="col-md-10">
-                            <div><p>Event emitter on selection change </p>
-</div>
-                            <em><code>$event</code> type:</em>    <code>EventEmitter&lt;any&gt;</code>
-
-                        </td>
-                    </tr>
-                            <tr>
-                                <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/packages/ui/list/list.component.ts:27</a></div>
-                                </td>
-                            </tr>
-                </tbody>
-            </table>
-    </section>
 
     <section>
         
@@ -1437,65 +1235,28 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <a name="columnClick"></a>
-                            <b> columnClick</b>
+                            <a name="createList"></a>
+                            <b> createList</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-    <code>columnClick(item: )</code>
+    <code>createList()</code>
                         </td>
                     </tr>
     
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/packages/ui/list/list.component.ts:56</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/packages/data/model-list/model-list.component.ts:15</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-description"><p>Column click handler. Triggers select.emit(item) with fallback to selection.toggle</p>
-    </div>
     
                                 <div class="io-description">
                                     <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-    
-                                </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="ngOnChanges"></a>
-                            <b> ngOnChanges</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-    <code>ngOnChanges()</code>
-                        </td>
-                    </tr>
-    
-    
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/packages/ui/list/list.component.ts:33</a></div>
-                                </td>
-                            </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-                                <div class="io-description"><p>Changing items or collection will trigger reconstructing the list with the new items.
-    Changing the selection will reconstruct the selection </p>
-    </div>
-    
-                                <div class="io-description">
-                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
     
                                 </div>
                         </td>
@@ -1506,108 +1267,28 @@
 
 </div>
 
-    <div class="tab-pane fade" id="readme">
-        <p><h1 id="list">List</h1>
-<p>The List is one of the main components to work with.
-The basic idea is to display collections of data in a structured but flexible way.</p>
-<p>You can create a new List like this:</p>
-<pre class="line-numbers"><code class="language-typescript">this.trees = new List(
-//first argument: Array of Objects
-[{
-  name: &#39;Appletree&#39;,
-  height: 10,
-  fruits: true
-}, {
-  name: &#39;Lemontree&#39;,
-  height: 8,
-  fruits: true
-}, {
-  name: &#39;Birch&#39;,
-  height: 20,
-  fruits: false
-}],
-//second (optional) argument: ListConfig
-{
-  fields: {
-    name: {
-      label: &#39;Name&#39;
-    },
-    height: {
-      label: &#39;Height&#39;,
-      group: (h) =&gt; h &gt; 10 ? &#39;Higher than 10m&#39; : &#39;Lower than 10m&#39;
-    },
-    fruits: {
-      label: &#39;Has Fruits?&#39;,
-      display: (value) =&gt; value ? &#39;yes&#39; : &#39;no&#39;
-    },
-  }
-})</code></pre><p>This is how you display a List instance into your template:</p>
-<pre class="line-numbers"><code class="language-html">&lt;ec-list [list]=&quot;trees&quot;&gt;&lt;/ec-list&gt;</code></pre></p>
-    </div>
 
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { Component, EventEmitter, Input, Output, ViewEncapsulation } from &#x27;@angular/core&#x27;;
-import { Collection, List, ListConfig, Selection } from &#x27;../../core/index&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { Component, Input } from &#x27;@angular/core&#x27;;
+import { ModelList } from &#x27;./model-list&#x27;;
+import { ResourceListComponent } from &#x27;../resource-list/resource-list.component&#x27;;
 
-/**
- * The ListComponent will render a list containing the given items or collection.
- * */
+import { DataManagerResource } from &#x27;ec.sdk/typings/resources/datamanager/DataManagerResource&#x27;;
+
+/** The ModelListComponent is a thin holder of an ModelList instance. It extends the ResourceListComponent */
 @Component({
-  selector: &#x27;ec-list&#x27;,
-  templateUrl: &#x27;./list.component.html&#x27;,
-  styleUrls: [&#x27;./list.component.scss&#x27;],
-  encapsulation: ViewEncapsulation.None
+  selector: &#x27;ec-model-list&#x27;,
+  templateUrl: &#x27;../../ui/list/list.component.html&#x27;
 })
-export class ListComponent {
-  /** Configuration Object for List */
-  @Input() config: ListConfig;
-  /** The visible items */
-  @Input() items: Array&lt;any&gt;;
-  /** The used collection */
-  @Input() collection: Collection&lt;any&gt;;
-  /** The used selection */
-  @Input() selection: Selection&lt;any&gt;;
-  /** If true, only one item is selectable next */
-  @Input() solo: boolean;
-  /** Event emitter on item selection */
-  @Output() select: EventEmitter&lt;any&gt; &#x3D; new EventEmitter();
-  /** Event emitter on selection change */
-  @Output() selected: EventEmitter&lt;any&gt; &#x3D; new EventEmitter();
-  /** The Instance of the List */
-  @Input() list: List&lt;any&gt;;
+export class ModelListComponent extends ResourceListComponent {
+  @Input() datamanager: string | DataManagerResource;//: DataManagerResource;
 
-  /** Changing items or collection will trigger reconstructing the list with the new items.
-   * Changing the selection will reconstruct the selection */
-  ngOnChanges() {
-    if (this.items) {
-      this.list &#x3D; new List(this.items, this.config);
-    } else if (this.collection) {
-      this.list &#x3D; new List(this.collection.items, this.config);
-    }
-    if (!this.list) {
+  createList() {
+    if (!this.datamanager) {
+      console.log(&#x27;no dataamaagner given..&#x27;);
       return;
     }
-    if (!this.selection &amp;&amp; this.list.config &amp;&amp; !this.list.config.disableSelection) {
-      this.selection &#x3D; new Selection([], this.list.config);
-    }
-    if (this.selection) {
-      this.selection.update$.subscribe((item) &#x3D;&gt; {
-        this.selected.emit(item);
-      })
-    }
-    /*this.list.update$.subscribe(() &#x3D;&gt; {
-      this.list.load();
-    });*/
-  }
-
-  /** Column click handler. Triggers select.emit(item) with fallback to selection.toggle*/
-  columnClick(item) {
-    if (this.select.observers.length) {
-      return this.select.emit(item);
-    }
-    if (this.selection) {
-      this.selection.toggle(item, this.solo);
-    }
+    return new ModelList(this.datamanager, this.config, this.sdk);
   }
 }
 </code></pre>
@@ -1664,7 +1345,7 @@ export class ListComponent {
         var COMPONENT_TEMPLATE = '<div><ec-pagination [pagination]="list?.pagination"               *ngIf="list?.pagination?.getPages()>1"></ec-pagination><div class="ec-list">  <div class="ec-list-group">    <ec-list-header [list]="list" [selection]="selection"></ec-list-header>  </div>  <div class="ec-list-group" *ngFor="let group of list?.groups">    <div class="ec-list-group-header" *ngIf="group.value"         (click)="selection?.toggleAll(listItems?.items)">      <div class="ec-list-item-cell ec-list-checkbox" *ngIf="selection">        <input type="checkbox" [checked]="selection?.hasAll(listItems?.items)">      </div>      <div class="ec-list-item ec-list-group-name">        {{group.value}}      </div>    </div>    <ec-list-items [host]="this" #listItems                   [items]="list?.page | group: group.property: group.value"></ec-list-items>  </div></div><ec-pagination [pagination]="list?.pagination"               *ngIf="list?.pagination?.getPages()>1"></ec-pagination></div>'
     var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'AssetInputComponent', 'selector': ''},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'}];
     var DIRECTIVES = [{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
-    var ACTUAL_COMPONENT = {'name': 'ListComponent'};
+    var ACTUAL_COMPONENT = {'name': 'ModelListComponent'};
 </script>
 <script src="../js/tree.js"></script>
 
