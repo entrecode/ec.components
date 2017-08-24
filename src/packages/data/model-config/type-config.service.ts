@@ -1,7 +1,7 @@
 import { DefaultEntryInputComponent } from '../entry-form/default-entry-input.component';
 import { DefaultEntryOutputComponent } from '../entry-form/default-entry-output.component';
-import { DefaultOutputComponent } from '../../ui/output/default-output.component';
-import { DefaultInputComponent } from '../../ui/input/default-input.component';
+import { DefaultOutputComponent } from '../../ui/form/default-output/default-output.component';
+import { DefaultInputComponent } from '../../ui/form/default-input/default-input.component';
 import * as moment from 'moment';
 import { FieldConfig } from '../../core/config/field-config.interface';
 import { FieldConfigProperty } from '../../core/config/field-config-property.interface';

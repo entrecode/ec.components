@@ -2,7 +2,7 @@
  * Created by felix on 23.05.17.
  */
 import { Component, forwardRef, Input, ViewEncapsulation } from '@angular/core';
-import { DefaultInputComponent } from '../../ui/input/default-input.component';
+import { DefaultInputComponent } from '../../ui/form/default-input/default-input.component';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Field } from '../../core/field/field';
 import { Selection } from '../../core/selection/selection';

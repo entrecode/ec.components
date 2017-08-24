@@ -8,7 +8,7 @@ import { EntryListDemoComponent } from './entry-list/entry-list.demo.component';
 import { FormDemoComponent } from './form/form-demo.component';
 import { TabsDemoComponent } from './tabs/tabs-demo.component';
 import { EntryFormDemoComponent } from './entry-form/entry-form.demo.component';
-import { MockupComponent } from '../packages/ui/mockup/mockup.component';
+import { MockupComponent } from '../packages/ui/utility/mockup/mockup.component';
 import { CrudDemoComponent } from './crud/crud-demo.component';
 import { SelectDemoComponent } from './select/select-demo.component';
 import { PublicLoginComponent } from '../packages/auth/public-login/public-login.component';

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output, } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Form, FormConfig, Item } from '../../core';
+import { Form, FormConfig, Item } from '../../core/index';
 import { ItemConfig } from '../../core/item/item-config.interface';
 import { LoaderComponent } from '../loader/loader.component';
 import { LoaderService } from '../loader/loader.service';

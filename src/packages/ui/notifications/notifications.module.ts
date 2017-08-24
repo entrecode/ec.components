@@ -4,7 +4,7 @@ import { HttpModule } from '@angular/http';
 import { NotificationsComponent } from './notifications.component';
 import { NotificationsService } from './notifications.service';
 import { PopModule } from '../pop/pop.module';
-import { ErrorComponent } from '../error/error.component';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [

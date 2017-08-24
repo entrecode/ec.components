@@ -2,13 +2,13 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { ListComponent } from './list.component';
-import { ListItemsComponent } from '../list-items/list-items.component';
-import { ListHeaderComponent } from '../list-header/list-header.component';
+import { ListItemsComponent } from './list-items/list-items.component';
+import { ListHeaderComponent } from './list-header/list-header.component';
 import { GroupPipe } from './group.pipe';
 import { Item } from '../../core/item/item';
 import { mocked } from '../../../mocks/data';
 import { Collection } from '../../core/collection/collection';
-import { PaginationComponent } from '../pagination/pagination.component';
+import { PaginationComponent } from './pagination/pagination.component';
 import { FormModule } from '../form/form.module';
 import { PopModule } from '../pop/pop.module';
 import { NotificationsModule } from '../notifications/notifications.module';
