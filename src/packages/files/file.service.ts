@@ -88,4 +88,11 @@ export class FileService {
     this.typeConfig.set('asset', { input: AssetInputComponent });
     this.typeConfig.set('assets', { input: AssetInputComponent });
   }
+
+  public uploadFile()/*: Promise<PublicAssetResource>*/ {
+    //TODO upload logic
+
+    // this.changes.emit({ asset: asset });
+    // return Promise.resolve(asset);
+  }
 }

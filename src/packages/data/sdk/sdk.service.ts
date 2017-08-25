@@ -1,7 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Accounts, DataManager, PublicAPI, Session } from 'ec.sdk';
-// import { AccountResource } from 'ec.sdk/typings/resources/accounts/AccountResource';
-// TODO find out how to resolve
+import { AccountResource } from 'ec.sdk/typings/resources/accounts/AccountResource';
 import { environment as env } from 'ec.sdk/typings/interfaces';
 import { environment } from '../../../environments/environment';
 
@@ -17,9 +16,9 @@ export class SdkService {
   /** Current DataManager instance */
   public datamanager: DataManager;
   /** Current User */
-  public user;
+  public user: AccountResource;
   /** Emits  after the APIs have been initialized. */
-  public ready: EventEmitter<void> = new EventEmitter();
+  public ready: EventEmitter<AccountResource> = new EventEmitter();
 
   /** Calls init and sets ready to true when finished. */
   constructor() {
@@ -65,7 +64,7 @@ export class SdkService {
   }
 
   /** Returns the current account. Returns ec user or public user if any found. */
-  getAccount() {
+  getAccount(): Promise<AccountResource> {
     return this.accounts.me().then((account) => {
       if (account) {
         this.datamanager = new DataManager(<env>environment.environment);

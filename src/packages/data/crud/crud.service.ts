@@ -75,10 +75,8 @@ export class CrudService {
   /** Removes all null or undefined values from the given object */
   clean(value: Object): Object {
     for (let key in value) {
-      if (value[key] === '' || value[key] === null || value[key] === undefined) { //
-        //TODO
-        delete value[key];
-        // value[key] = null;
+      if (value[key] === '') { //clear empty strings
+        value[key] = null;
       }
     }
     return value;
