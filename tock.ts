@@ -1,4 +1,4 @@
-import { Datamanager } from './src/packages/data/datamanager/datamanager';
+// import { Datamanager } from './src/packages/data/datamanager/datamanager';
 import { environment } from './src/environments/environment';
 import fs = require('fs');
 
@@ -21,7 +21,7 @@ const str = (o) => {
   return s;
 };
 
-Datamanager.useEnvironment(environment);
+// Datamanager.useEnvironment(environment);
 /*
  Datamanager.api().model('muffin').entryList().then((data) => {
  console.log('data', data);
@@ -29,6 +29,6 @@ Datamanager.useEnvironment(environment);
  });
  */
 
-Datamanager.api().model('muffin').getSchema().then((schema) => {
-  fs.writeFileSync('tock.json', str(schema))
-});
+// Datamanager.api().model('muffin').getSchema().then((schema) => {
+//   fs.writeFileSync('tock.json', str(schema))
+// });

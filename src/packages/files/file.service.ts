@@ -1,15 +1,23 @@
 import { EventEmitter, Injectable } from '@angular/core';
+import { PublicAssetList } from "ec.sdk/typings/resources/publicAPI/PublicAssetList";
 import { PublicAssetResource } from "ec.sdk/typings/resources/publicAPI/PublicAssetResource";
 import { SdkService } from '../data/sdk/sdk.service';
 import { AssetList } from './asset-list/asset-list';
 import { TypeConfigService } from '../data/model-config/type-config.service';
 import { AssetInputComponent } from './asset-input/asset-input.component';
 import * as moment from 'moment';
+import { Item } from '../core/item/item';
 
 /** Instances of Update are emitted by the changes EventEmitter of the CrudService. */
 export interface Upload {
-  /** The relevant entry. */
+  /** The relevant asset. */
   asset?: PublicAssetResource,
+  /** The relevant assets (when uploading multiple). */
+  assets?: PublicAssetResource[],
+  /** The uploaded asset as item */
+  item?: Item<PublicAssetResource>
+  /** The uploaded asset as item */
+  items?: Array<Item<PublicAssetResource>>
   /** The list where it happened. */
   list?: AssetList<PublicAssetResource>
 }
@@ -22,7 +30,7 @@ export interface Upload {
 @Injectable()
 export class FileService {
   /** The changes event is emitted everytime an entry is created or updated. */
-  private changes: EventEmitter<Upload> = new EventEmitter();
+  public uploads: EventEmitter<Upload> = new EventEmitter();
   /** The default config for asset lists */
   public assetListConfig = {
     label: 'title',
@@ -89,10 +97,42 @@ export class FileService {
     this.typeConfig.set('assets', { input: AssetInputComponent });
   }
 
-  public uploadFile()/*: Promise<PublicAssetResource>*/ {
-    //TODO upload logic
+  public getFormData(files: FileList): FormData {
+    const formData: FormData = new FormData();
+    for (let i = 0; i < files.length; i++) {
+      formData.append('file', files.item(i), files.item(i).name);
+    }
+    return formData;
+  }
 
-    // this.changes.emit({ asset: asset });
-    // return Promise.resolve(asset);
+  public uploadFiles(e): Promise<Upload> {
+    const files = e.target.files;
+    if (!files.length) {
+      return;
+    }
+    const data = this.getFormData(files);
+    return Promise.resolve().then((): Promise<() => Promise<(PublicAssetList | PublicAssetResource)>> => {
+      if (files.length === 1) {
+        return this.sdk.api.createAsset(data, {})
+      }
+      return this.sdk.api.createAssets(data, {})
+    })
+    .then(res => res())
+    .then((response) => {
+      if (response['getAllItems']) {
+        return response['getAllItems']();
+      }
+      return [response];
+    }).then((assets) => {
+      return {
+        asset: assets[0],
+        assets,
+        item: new Item(assets[0], this.assetListConfig),
+        items: assets.map(asset => new Item(asset, this.assetListConfig))
+      }
+    }).then((upload: Upload) => {
+      this.uploads.emit(upload);
+      return upload;
+    });
   }
 }

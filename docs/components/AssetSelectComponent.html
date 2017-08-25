@@ -304,6 +304,9 @@
                                 <li class="link">
                                     <a href="../components/ToolbarComponent.html" >ToolbarComponent</a>
                                 </li>
+                                <li class="link">
+                                    <a href="../components/UploadComponent.html" >UploadComponent</a>
+                                </li>
                         </ul>
                     </li>
             
@@ -835,6 +838,9 @@
                                        <li class="link">
                                            <a href="../components/ToolbarComponent.html" >ToolbarComponent</a>
                                        </li>
+                                       <li class="link">
+                                           <a href="../components/UploadComponent.html" >UploadComponent</a>
+                                       </li>
                                </ul>
                            </li>
                    
@@ -1221,6 +1227,9 @@
                                  <a href="#select">select</a>
                             </li>
                             <li>
+                                 <a href="#selectUpload">selectUpload</a>
+                            </li>
+                            <li>
                                  <a href="#toggle">toggle</a>
                             </li>
                         </ul>
@@ -1500,6 +1509,38 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
+                            <a name="selectUpload"></a>
+                            <b> selectUpload</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>selectUpload(upload: <a href="../interfaces/Upload.html">Upload</a>)</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/packages/files/asset-select/asset-select.component.ts:74</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
                             <a name="toggle"></a>
                             <b> toggle</b>
                         </td>
@@ -1654,7 +1695,7 @@
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from &#x27;@angular/forms&#x27;;
 import { Field } from &#x27;../../core/field/field&#x27;;
 import { Item } from &#x27;../../core/item/item&#x27;;
-import { FileService } from &#x27;../file.service&#x27;;
+import { FileService, Upload } from &#x27;../file.service&#x27;;
 import { PopComponent } from &#x27;../../ui/pop/pop.component&#x27;;
 import { SelectComponent } from &#x27;../../ui/form/select/select.component&#x27;;
 
@@ -1720,6 +1761,15 @@ export class AssetSelectComponent extends SelectComponent {
     return true;
   }
 
+  selectUpload(upload: Upload) {
+    console.log(&#x27;upload&#x27;, upload);
+    if (this.solo) {
+      this.selection.select(upload.item);
+    } else {
+      this.selection.toggleAll(upload.items);
+    }
+  }
+
 }</code></pre>
     </div>
 
@@ -1736,7 +1786,10 @@ export class AssetSelectComponent extends SelectComponent {
     &lt;/li&gt;
   &lt;/ul&gt;
   &lt;ec-pop [ngClass]&#x3D;&quot;config?.popClass&quot; #assetPop&gt;
-    &lt;ec-asset-list [selection]&#x3D;&quot;selection&quot; [config]&#x3D;&quot;config&quot;
+    &lt;ec-loader #assetLoader class&#x3D;&quot;blend&quot;&gt;&lt;/ec-loader&gt;
+    &lt;ec-upload [placeholder]&#x3D;&quot;field?.getPlaceholder()&quot; [loader]&#x3D;&quot;assetLoader&quot;
+               (success)&#x3D;&quot;selectUpload($event)&quot;&gt;&lt;/ec-upload&gt;
+    &lt;ec-asset-list [selection]&#x3D;&quot;selection&quot; [config]&#x3D;&quot;config&quot; [loader]&#x3D;&quot;assetLoader&quot;
                    *ngIf&#x3D;&quot;selection&amp;&amp;assetPop.active&quot;&gt;&lt;/ec-asset-list&gt;
   &lt;/ec-pop&gt;
 &lt;/div&gt;</code></pre>
@@ -1765,8 +1818,8 @@ export class AssetSelectComponent extends SelectComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div *ngIf="selection" class="ec-select ec-asset-select">  <ul class="selected-items">    <li (click)="toggle(!active,true)" class="btn" [ngClass]="active?\'default\':\'minor\'"        *ngIf="canToggle()">      <i class="ec-icon find"></i>    </li>    <li *ngFor="let selected of selection.items" class="ec-list-avatar"        (click)="clickItem(selected)">      <img [src]="selected.resolve(\'thumb\')"> <a (click)="removeItem(selected)">X</a>    </li>  </ul>  <ec-pop [ngClass]="config?.popClass" #assetPop>    <ec-asset-list [selection]="selection" [config]="config"                   *ngIf="selection&&assetPop.active"></ec-asset-list>  </ec-pop></div></div>'
-    var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'AssetInputComponent', 'selector': ''},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'}];
+        var COMPONENT_TEMPLATE = '<div><div *ngIf="selection" class="ec-select ec-asset-select">  <ul class="selected-items">    <li (click)="toggle(!active,true)" class="btn" [ngClass]="active?\'default\':\'minor\'"        *ngIf="canToggle()">      <i class="ec-icon find"></i>    </li>    <li *ngFor="let selected of selection.items" class="ec-list-avatar"        (click)="clickItem(selected)">      <img [src]="selected.resolve(\'thumb\')"> <a (click)="removeItem(selected)">X</a>    </li>  </ul>  <ec-pop [ngClass]="config?.popClass" #assetPop>    <ec-loader #assetLoader class="blend"></ec-loader>    <ec-upload [placeholder]="field?.getPlaceholder()" [loader]="assetLoader"               (success)="selectUpload($event)"></ec-upload>    <ec-asset-list [selection]="selection" [config]="config" [loader]="assetLoader"                   *ngIf="selection&&assetPop.active"></ec-asset-list>  </ec-pop></div></div>'
+    var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'AssetInputComponent', 'selector': ''},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
     var DIRECTIVES = [{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'AssetSelectComponent'};
 </script>

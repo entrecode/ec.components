@@ -18,6 +18,10 @@ export class AssetListComponent extends ResourceListComponent {
     protected notificationService: NotificationsService,
     protected fileService: FileService,) {
     super(loaderService, sdk, notificationService);
+    this.fileService.uploads.subscribe((upload) => {
+      console.log('new upload', upload);
+      this.list.load();
+    })
   }
 
   createList() {

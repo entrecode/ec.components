@@ -305,7 +305,7 @@
                                     <a href="../components/ToolbarComponent.html" >ToolbarComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/UploadComponent.html" >UploadComponent</a>
+                                    <a href="../components/UploadComponent.html"  data-type="entity-link" class="active" >UploadComponent</a>
                                 </li>
                         </ul>
                     </li>
@@ -507,7 +507,7 @@
                                     <a href="../pipes/GroupPipe.html" >GroupPipe</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../pipes/SafeHtmlPipe.html"  data-type="entity-link" class="active" >SafeHtmlPipe</a>
+                                    <a href="../pipes/SafeHtmlPipe.html" >SafeHtmlPipe</a>
                                 </li>
                                 <li class="link">
                                     <a href="../pipes/VisibleFieldsPipe.html" >VisibleFieldsPipe</a>
@@ -839,7 +839,7 @@
                                            <a href="../components/ToolbarComponent.html" >ToolbarComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/UploadComponent.html" >UploadComponent</a>
+                                           <a href="../components/UploadComponent.html"  data-type="entity-link" class="active" >UploadComponent</a>
                                        </li>
                                </ul>
                            </li>
@@ -1041,7 +1041,7 @@
                                            <a href="../pipes/GroupPipe.html" >GroupPipe</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../pipes/SafeHtmlPipe.html"  data-type="entity-link" class="active" >SafeHtmlPipe</a>
+                                           <a href="../pipes/SafeHtmlPipe.html" >SafeHtmlPipe</a>
                                        </li>
                                        <li class="link">
                                            <a href="../pipes/VisibleFieldsPipe.html" >VisibleFieldsPipe</a>
@@ -1082,18 +1082,15 @@
                    
                    </nav>
                </div>
-               <div class="content pipe">
+               <div class="content component">
                    <div class="content-data">
 
 
 
 
-
-
-
 <ol class="breadcrumb">
-  <li>Pipes</li>
-  <li>SafeHtmlPipe</li>
+  <li>Components</li>
+  <li>UploadComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -1101,42 +1098,344 @@
         <a href="#info" id="info-tab" role="tab" data-toggle="tab" data-link="info">Info</a>
     </li>
 
-
     <li>
         <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+    </li>
+
+    <li>
+        <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
     </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="info">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/packages/files/upload/upload.component.ts</code>
+</p>
 
-        <p class="comment">
-            <h3>File</h3>
-        </p>
-        <p class="comment">
-            <code>src/packages/vc/safe-html.pipe.ts</code>
-        </p>
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>This component will render an input field to upload files to the datamanager. </p>
+
+    </p>
 
 
 
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>ec-upload</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">template</td>
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;input type&#x3D;&quot;file&quot; (change)&#x3D;&quot;upload($event)&quot; multiple&gt;</code></pre></td>
+            </tr>
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+        <h3 id="index">Index</h3>
+        <table class="table table-sm table-bordered index-table">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                 <a href="#upload">upload</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#loader">loader</a>
+                            </li>
+                            <li>
+                                <a href="#placeholder">placeholder</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#success">success</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h3 id="constructor">Constructor</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>constructor(sdk: <a href="../injectables/SdkService.html">SdkService</a>, fileService: <a href="../injectables/FileService.html">FileService</a>, loaderService: <a href="../injectables/LoaderService.html">LoaderService</a>, notificationService: <a href="../injectables/NotificationsService.html">NotificationsService</a>)</code>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/packages/files/upload/upload.component.ts:19</a></div>
+                                </td>
+                            </tr>
+    
+                </tbody>
+            </table>
+    </section>
+
+    <section>
+        <h3 id="inputs">Inputs</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="loader"></a>
+                            <code>loader</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>The loader that should be used while uploading</p>
+</div>
+                              <p>
+                                <em>Type:</em>    <code><a href="../components/LoaderComponent.html" target="_self" >LoaderComponent</a></code>
+
+                              </p>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/packages/files/upload/upload.component.ts:17</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="placeholder"></a>
+                            <code>placeholder</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>The input placeholder</p>
+</div>
+                              <p>
+                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                              </p>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/packages/files/upload/upload.component.ts:15</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+    </section>
+
+    <section>
+        <h3 id="outputs">Outputs</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="success"></a>
+                            <code>success</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>Emits when an upload is complete. </p>
+</div>
+                            <em><code>$event</code> type:</em>    <code><a href="../interfaces/Upload.html" target="_self" >EventEmitter&lt;Upload&gt;</a></code>
+
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/packages/files/upload/upload.component.ts:19</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+    </section>
+
+    <section>
+        
+            <h3 id="methods">
+                Methods
+            </h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="upload"></a>
+                            <b> upload</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>upload(e: )</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/packages/files/upload/upload.component.ts:28</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Uploads the files from the input event. Handles loader and notifications. </p>
     </div>
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </section>
+
+</div>
 
 
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { Pipe, PipeTransform } from &#x27;@angular/core&#x27;;
-import { DomSanitizer } from &#x27;@angular/platform-browser&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { Component, EventEmitter, Input, Output } from &#x27;@angular/core&#x27;;
+import { SdkService } from &#x27;../../data/sdk/sdk.service&#x27;;
+import { FileService, Upload } from &#x27;../file.service&#x27;;
+import { LoaderComponent } from &#x27;../../ui/loader/loader.component&#x27;;
+import { LoaderService } from &#x27;../../ui/loader/loader.service&#x27;;
+import { NotificationsService } from &#x27;../../ui/notifications/notifications.service&#x27;;
 
-@Pipe({ name: &#x27;safeHtml&#x27; })
-export class SafeHtmlPipe implements PipeTransform {
-  constructor(private sanitized: DomSanitizer) {
+/** This component will render an input field to upload files to the datamanager. */
+@Component({
+  selector: &#x27;ec-upload&#x27;,
+  template: &#x60;&lt;input type&#x3D;&quot;file&quot; (change)&#x3D;&quot;upload($event)&quot; multiple&gt;&#x60;,
+})
+export class UploadComponent {
+  /** The input placeholder*/
+  @Input() placeholder: string;
+  /** The loader that should be used while uploading*/
+  @Input() loader: LoaderComponent;
+  /** Emits when an upload is complete. */
+  @Output() success: EventEmitter&lt;Upload&gt; &#x3D; new EventEmitter();
+
+  constructor(private sdk: SdkService,
+    private fileService: FileService,
+    private loaderService: LoaderService,
+    private notificationService: NotificationsService) {
   }
 
-  transform(value) {
-    return this.sanitized.bypassSecurityTrustHtml(value);
+  /** Uploads the files from the input event. Handles loader and notifications. */
+  upload(e) {
+    const upload &#x3D; this.fileService.uploadFiles(e)
+    .then((upload) &#x3D;&gt; {
+      this.success.emit(upload);
+      this.notificationService.emit({
+        title: &#x27;Upload erfolgreich&#x27;,
+        type: &#x27;success&#x27;
+      });
+    }).catch((err) &#x3D;&gt; {
+      console.log(&#x27;error&#x27;, err);
+      this.notificationService.emit({
+        title: &#x27;Fehler beim Upload&#x27;,
+        error: err
+      });
+    });
+    this.loaderService.wait(upload, this.loader);
+    return upload;
   }
-}</code></pre>
+}
+
+
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade" id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
     </div>
 </div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><input type="file" (change)="upload($event)" multiple></div>'
+    var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'AssetInputComponent', 'selector': ''},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
+    var DIRECTIVES = [{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
+    var ACTUAL_COMPONENT = {'name': 'UploadComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
 
 
 

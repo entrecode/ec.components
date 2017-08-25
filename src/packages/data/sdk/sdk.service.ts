@@ -32,7 +32,8 @@ export class SdkService {
   public init() {
     this.session = new Session(<env>environment.environment);
     this.accounts = new Accounts(<env>environment.environment);
-    this.api = new PublicAPI(environment.datamanagerID, <env>environment.environment, true);
+    this.api = new PublicAPI(environment.datamanagerID, <env>environment.environment, true); //true
+    console.log('api', this.api);
     //TODO recall new PublicAPI with third param set to true when ec user logs in?
     this.api.setClientID(environment.clientID);
     this.session.setClientID(environment.clientID);

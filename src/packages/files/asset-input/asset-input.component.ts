@@ -6,4 +6,5 @@ import { DefaultInputComponent } from '../../ui/form/default-input/default-input
   templateUrl: './asset-input.component.html',
 })
 export class AssetInputComponent extends DefaultInputComponent {
+
 }

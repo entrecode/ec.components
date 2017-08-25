@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
   <h2>Asset List</h2>
   <ec-loader #listLoader class="blend"></ec-loader>
   <ec-notifications class="toast"></ec-notifications>
+  <ec-upload [placeholder]="field?.getPlaceholder()" [loader]="listLoader"></ec-upload>
   <ec-asset-list [loader]="listLoader" [config]="{size:9}" (select)="assetForm.edit($event);assetPop.show()" #assetList></ec-asset-list>  
   <ec-pop class="sidebar-right" #assetPop>
     <button type="button" (click)="assetPop.hide()">

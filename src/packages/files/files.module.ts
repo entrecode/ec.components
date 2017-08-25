@@ -7,17 +7,20 @@ import { DataModule } from '../data/data.module';
 import { AssetSelectComponent } from './asset-select/asset-select.component';
 import { FileService } from './file.service';
 import { AssetInputComponent } from './asset-input/asset-input.component';
+import { UploadComponent } from './upload/upload.component';
 
 @NgModule({
   entryComponents: [
     AssetListComponent,
     AssetSelectComponent,
     AssetInputComponent,
+    UploadComponent,
   ],
   declarations: [
     AssetListComponent,
     AssetSelectComponent,
     AssetInputComponent,
+    UploadComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,6 +32,7 @@ import { AssetInputComponent } from './asset-input/asset-input.component';
     AssetListComponent,
     AssetSelectComponent,
     AssetInputComponent,
+    UploadComponent,
   ],
   providers: [
     FileService

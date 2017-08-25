@@ -10,7 +10,10 @@
     </li>
   </ul>
   <ec-pop [ngClass]="config?.popClass" #assetPop>
-    <ec-asset-list [selection]="selection" [config]="config"
+    <ec-loader #assetLoader class="blend"></ec-loader>
+    <ec-upload [placeholder]="field?.getPlaceholder()" [loader]="assetLoader"
+               (success)="selectUpload($event)"></ec-upload>
+    <ec-asset-list [selection]="selection" [config]="config" [loader]="assetLoader"
                    *ngIf="selection&&assetPop.active"></ec-asset-list>
   </ec-pop>
 </div>

@@ -304,6 +304,9 @@
                                 <li class="link">
                                     <a href="../components/ToolbarComponent.html" >ToolbarComponent</a>
                                 </li>
+                                <li class="link">
+                                    <a href="../components/UploadComponent.html" >UploadComponent</a>
+                                </li>
                         </ul>
                     </li>
             
@@ -835,6 +838,9 @@
                                        <li class="link">
                                            <a href="../components/ToolbarComponent.html" >ToolbarComponent</a>
                                        </li>
+                                       <li class="link">
+                                           <a href="../components/UploadComponent.html" >UploadComponent</a>
+                                       </li>
                                </ul>
                            </li>
                    
@@ -1290,7 +1296,7 @@ changes.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/packages/data/crud/crud.service.ts:88</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">src/packages/data/crud/crud.service.ts:86</a></div>
                                         </td>
                                     </tr>
             
@@ -1324,7 +1330,7 @@ changes.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">src/packages/data/crud/crud.service.ts:101</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">src/packages/data/crud/crud.service.ts:99</a></div>
                                         </td>
                                     </tr>
             
@@ -1567,10 +1573,8 @@ export class CrudService {
   /** Removes all null or undefined values from the given object */
   clean(value: Object): Object {
     for (let key in value) {
-      if (value[key] &#x3D;&#x3D;&#x3D; &#x27;&#x27; || value[key] &#x3D;&#x3D;&#x3D; null || value[key] &#x3D;&#x3D;&#x3D; undefined) { //
-        //TODO
-        delete value[key];
-        // value[key] &#x3D; null;
+      if (value[key] &#x3D;&#x3D;&#x3D; &#x27;&#x27;) { //clear empty strings
+        value[key] &#x3D; null;
       }
     }
     return value;

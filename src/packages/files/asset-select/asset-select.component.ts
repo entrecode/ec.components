@@ -5,7 +5,7 @@ import { Component, forwardRef, Input, ViewChild, ViewEncapsulation } from '@ang
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Field } from '../../core/field/field';
 import { Item } from '../../core/item/item';
-import { FileService } from '../file.service';
+import { FileService, Upload } from '../file.service';
 import { PopComponent } from '../../ui/pop/pop.component';
 import { SelectComponent } from '../../ui/form/select/select.component';
 
@@ -69,6 +69,15 @@ export class AssetSelectComponent extends SelectComponent {
 
   canToggle() {
     return true;
+  }
+
+  selectUpload(upload: Upload) {
+    console.log('upload', upload);
+    if (this.solo) {
+      this.selection.select(upload.item);
+    } else {
+      this.selection.toggleAll(upload.items);
+    }
   }
 
 }

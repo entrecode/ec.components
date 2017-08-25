@@ -1,5 +1,8 @@
 <fieldset [ngSwitch]="field.type" *ngIf="group" [formGroup]="group">
   <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>
+
+
+
   <div *ngSwitchCase="'asset'">
     <ec-asset-select [formControl]="group.get(field.property)" [field]="field"
                      [solo]="true" [item]="item"></ec-asset-select>
