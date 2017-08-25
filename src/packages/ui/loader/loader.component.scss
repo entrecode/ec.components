@@ -1,5 +1,4 @@
 :host {
-  pointer-events: none;
   &.blend {
     position: absolute;
     top: 0;
@@ -14,6 +13,7 @@
   }
 
   &:not(.visible) {
+    pointer-events: none;
     //visibility: hidden;
     opacity: 0;
   }
