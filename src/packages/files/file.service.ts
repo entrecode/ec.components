@@ -28,11 +28,28 @@ export class FileService {
     label: 'title',
     size: 5,
     identifier: 'assetID',
+    onSave: (item, value) => {
+      const asset = item.getBody();
+      //TODO use crud.service for Resource?
+      value = item.serialize(value, !!asset.save);
+      console.log('value', value);
+      Object.assign(asset, value);
+      if (!!asset.save) {
+        return asset.save();
+      }
+      return value; //TODO createAsset
+    },
     fields: {
       thumb: {
         label: 'Vorschau',
-        resolve: (asset, item, property) => asset.getImageThumbUrl(200),
-        view: 'avatar'
+        resolve: (asset, item, property) => {
+          if (typeof asset === 'string') {
+            return false;
+          }
+          return asset.getImageThumbUrl(200)
+        },
+        view: 'avatar',
+        readOnly: true
       },
       title: {
         label: 'Titel',
@@ -48,12 +65,14 @@ export class FileService {
       type: {
         label: 'Typ',
         view: 'label',
-        sortable: true
+        sortable: true,
+        readOnly: true,
       },
       created: {
         label: 'Datum',
         view: 'date',
         sortable: true,
+        readOnly: true,
         display: (value) => moment(value).format('DD.MM.YY'),
         group: (value) => moment(value).format('MMMM YYYY')
       }

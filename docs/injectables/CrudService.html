@@ -1249,7 +1249,7 @@ changes.</p>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>clean(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank">Object</a>, oldValues: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+            <code>clean(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank">Object</a>)</code>
                                 </td>
                             </tr>
             
@@ -1290,7 +1290,7 @@ changes.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">src/packages/data/crud/crud.service.ts:87</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/packages/data/crud/crud.service.ts:88</a></div>
                                         </td>
                                     </tr>
             
@@ -1324,7 +1324,7 @@ changes.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">src/packages/data/crud/crud.service.ts:100</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">src/packages/data/crud/crud.service.ts:101</a></div>
                                         </td>
                                     </tr>
             
@@ -1553,7 +1553,7 @@ export class CrudService {
   update(model, entry: EntryResource, value: Object): Promise&lt;EntryResource&gt; {
     const oldValues &#x3D; {}; //save old values
     Object.keys(value).forEach((key) &#x3D;&gt; oldValues[key] &#x3D; entry[key]);
-    Object.assign(entry, this.clean(value, oldValues)); //assign new form values
+    Object.assign(entry, this.clean(value)); //assign new form values
     return entry.save().then((entry) &#x3D;&gt; {
       this.changes.emit({ model, entry, type: &#x27;update&#x27; });
       return entry;
@@ -1565,11 +1565,12 @@ export class CrudService {
   }
 
   /** Removes all null or undefined values from the given object */
-  clean(value: Object, oldValues: any &#x3D; {}): Object {
+  clean(value: Object): Object {
     for (let key in value) {
-      if (value[key] &#x3D;&#x3D;&#x3D; &#x27;&#x27;) { //value[key] &#x3D;&#x3D;&#x3D; null ||  || value[key] &#x3D;&#x3D;&#x3D; undefined
+      if (value[key] &#x3D;&#x3D;&#x3D; &#x27;&#x27; || value[key] &#x3D;&#x3D;&#x3D; null || value[key] &#x3D;&#x3D;&#x3D; undefined) { //
         //TODO
-        value[key] &#x3D; null;
+        delete value[key];
+        // value[key] &#x3D; null;
       }
     }
     return value;

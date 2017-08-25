@@ -20,10 +20,9 @@ export class AssetList<PublicAssetResource> extends ResourceList<PublicAssetReso
     this.useConfig(config);
     const loading = this.sdk.api.assetList(this.getFilterOptions(this.config))
     .then((list) => {
-      console.log('got list', list.getAllItems());
       this.use(list);
     }).catch((err) => {
-      console.log('load error', err);
+      this.error.next(err);
     });
     this.loading.next(loading);
     return loading;

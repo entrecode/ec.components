@@ -1192,7 +1192,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/packages/data/datamanager-list/datamanager-list.ts:47</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/packages/data/datamanager-list/datamanager-list.ts:56</a></div>
                                         </td>
                                     </tr>
             
@@ -1229,6 +1229,15 @@ export class DatamanagerList&lt;DatamanagerResource&gt; extends ResourceList&lt;
   constructor(config: EntryListConfig, protected sdk: SdkService) {
     super(Object.assign(config, {
       identifier: &#x27;datamanagerID&#x27;,
+      onSave: (item, value) &#x3D;&gt; {
+        const datamanager &#x3D; item.getBody();
+        item.serialize(value, !!datamanager.save);
+        Object.assign(datamanager, value);
+        if (!!datamanager.save) {
+          return datamanager.save();
+        }
+        return value; //TODO
+      },
       fields: {
         hexColor: {
           label: &#x27;#&#x27;,

@@ -1182,10 +1182,16 @@
                                          <a href="#id">id</a>
                                     </li>
                                     <li>
+                                         <a href="#pickWriteOnly">pickWriteOnly</a>
+                                    </li>
+                                    <li>
                                          <a href="#resolve">resolve</a>
                                     </li>
                                     <li>
                                          <a href="#save">save</a>
+                                    </li>
+                                    <li>
+                                         <a href="#serialize">serialize</a>
                                     </li>
                                     <li>
                                          <a href="#sort">sort</a>
@@ -1546,6 +1552,40 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
+                                    <a name="pickWriteOnly"></a>
+                                    <b> pickWriteOnly</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>pickWriteOnly(value: )</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="132" class="link-to-prism">src/packages/core/item/item.ts:132</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Returns value with all readOnly properties removed </p>
+            </div>
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
                                     <a name="resolve"></a>
                                     <b> resolve</b>
                                 </td>
@@ -1594,18 +1634,51 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="142" class="link-to-prism">src/packages/core/item/item.ts:142</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="165" class="link-to-prism">src/packages/core/item/item.ts:165</a></div>
                                         </td>
                                     </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>Transforms the given field&#39;s value for serialization when saving. 
-            Saves the given value. Run serializers before assigning the new value. </p>
+                                        <div class="io-description"><p>Saves the given value. Run serializers before assigning the new value. </p>
             </div>
             
                                         <div class="io-description">
                                             <b>Returns : </b>    <code>Promise&lt;&gt;</code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="serialize"></a>
+                                    <b> serialize</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>serialize(value: , put: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="144" class="link-to-prism">src/packages/core/item/item.ts:144</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Transforms the given field&#39;s value for serialization when saving. </p>
+            </div>
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
             
                                         </div>
                                 </td>
@@ -1969,15 +2042,38 @@ export class Item&lt;T&gt; {
     return this.transform(&#x27;sort&#x27;, property);
   }
 
-  /** Transforms the given field&#x27;s value for serialization when saving. */
+  /** Returns value with all readOnly properties removed */
+  pickWriteOnly(value) {
+    return Object.assign({}, ...Object.keys(value)
+    .map(property &#x3D;&gt; {
+      if (this.config.fields[property].readOnly) {
+        return;
+      }
+      return { [property]: value[property] }
+    }).filter(v &#x3D;&gt; !!v));
 
-  /*  serialize(value): any {
-      return Object.keys(value).reduce((serialized, property) &#x3D;&gt; {
-        return Object.assign(serialized, {
-          [property]: this.transform(&#x27;serialize&#x27;, property, value[property])
-        });
-      }, {});
-    }*/
+  }
+
+  /** Transforms the given field&#x27;s value for serialization when saving. */
+  serialize(value, put: boolean &#x3D; false): any {
+    if (put) {
+      value &#x3D; this.pickWriteOnly(value);
+    }
+    /** Run the remaining properties through serializers */
+    Object.keys(value).map((property) &#x3D;&gt; {
+      Object.assign(value, {
+        [property]: this.transform(&#x27;serialize&#x27;, property, value[property])
+      })
+    });
+    return value;
+
+    /** Run the remaining properties through serializers */
+    /*return Object.keys(value).reduce((serialized, property) &#x3D;&gt; {
+      return Object.assign(serialized, {
+        [property]: this.transform(&#x27;serialize&#x27;, property, value[property])
+      });
+    }, {});*/
+  }
 
   /** Saves the given value. Run serializers before assigning the new value. */
   save(value: T &#x3D; this.body): Promise&lt;Item&lt;T&gt;&gt; {

@@ -43,7 +43,7 @@ export class TypeConfigService {
     asset: {
       view: 'avatar',
       input: DefaultEntryInputComponent,
-      display: (value, entry, property) => entry.getImageThumbUrl(property, 100)
+      display: (value, entry, property) => entry.getImageThumbUrl(property, 100),
     },
     assets: {
       view: 'avatars',

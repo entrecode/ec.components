@@ -1238,10 +1238,9 @@ export class AssetList&lt;PublicAssetResource&gt; extends ResourceList&lt;Public
     this.useConfig(config);
     const loading &#x3D; this.sdk.api.assetList(this.getFilterOptions(this.config))
     .then((list) &#x3D;&gt; {
-      console.log(&#x27;got list&#x27;, list.getAllItems());
       this.use(list);
     }).catch((err) &#x3D;&gt; {
-      console.log(&#x27;load error&#x27;, err);
+      this.error.next(err);
     });
     this.loading.next(loading);
     return loading;

@@ -11,6 +11,15 @@ export class DatamanagerList<DatamanagerResource> extends ResourceList<Datamanag
   constructor(config: EntryListConfig, protected sdk: SdkService) {
     super(Object.assign(config, {
       identifier: 'datamanagerID',
+      onSave: (item, value) => {
+        const datamanager = item.getBody();
+        item.serialize(value, !!datamanager.save);
+        Object.assign(datamanager, value);
+        if (!!datamanager.save) {
+          return datamanager.save();
+        }
+        return value; //TODO
+      },
       fields: {
         hexColor: {
           label: '#',

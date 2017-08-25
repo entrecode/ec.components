@@ -128,15 +128,38 @@ export class Item<T> {
     return this.transform('sort', property);
   }
 
-  /** Transforms the given field's value for serialization when saving. */
+  /** Returns value with all readOnly properties removed */
+  pickWriteOnly(value) {
+    return Object.assign({}, ...Object.keys(value)
+    .map(property => {
+      if (this.config.fields[property].readOnly) {
+        return;
+      }
+      return { [property]: value[property] }
+    }).filter(v => !!v));
 
-  /*  serialize(value): any {
-      return Object.keys(value).reduce((serialized, property) => {
-        return Object.assign(serialized, {
-          [property]: this.transform('serialize', property, value[property])
-        });
-      }, {});
-    }*/
+  }
+
+  /** Transforms the given field's value for serialization when saving. */
+  serialize(value, put: boolean = false): any {
+    if (put) {
+      value = this.pickWriteOnly(value);
+    }
+    /** Run the remaining properties through serializers */
+    Object.keys(value).map((property) => {
+      Object.assign(value, {
+        [property]: this.transform('serialize', property, value[property])
+      })
+    });
+    return value;
+
+    /** Run the remaining properties through serializers */
+    /*return Object.keys(value).reduce((serialized, property) => {
+      return Object.assign(serialized, {
+        [property]: this.transform('serialize', property, value[property])
+      });
+    }, {});*/
+  }
 
   /** Saves the given value. Run serializers before assigning the new value. */
   save(value: T = this.body): Promise<Item<T>> {

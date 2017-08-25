@@ -1,14 +1,16 @@
-<ec-output [field]="field" [item]="item"></ec-output>
-
-<div *ngIf="formControl" class="ec-asset-select">
-  <!--<b>TODO</b>-->
-  <!--<pre>{{item?.display(field.property)}}</pre>-->
-
-  <!--<ec-select [config]="config" (itemClick)="editItem($event)"
-             [value]="value" [formControl]="formControl"
-             [active]="crudPop.visible" (toggle)="toggle($event)" #entrySelect></ec-select>
-  <ec-pop [ngClass]="config?.popClass" #crudPop>
-    <ec-crud [model]="model" *ngIf="selection&&crudPop.active"
-             [config]="config" (select)="select($event)" #crud></ec-crud>
-  </ec-pop>-->
+<div *ngIf="selection" class="ec-select ec-asset-select">
+  <ul class="selected-items">
+    <li (click)="toggle(!active,true)" class="btn" [ngClass]="active?'default':'minor'"
+        *ngIf="canToggle()">
+      <i class="ec-icon find"></i>
+    </li>
+    <li *ngFor="let selected of selection.items" class="ec-list-avatar"
+        (click)="clickItem(selected)">
+      <img [src]="selected.resolve('thumb')"> <a (click)="removeItem(selected)">X</a>
+    </li>
+  </ul>
+  <ec-pop [ngClass]="config?.popClass" #assetPop>
+    <ec-asset-list [selection]="selection" [config]="config"
+                   *ngIf="selection&&assetPop.active"></ec-asset-list>
+  </ec-pop>
 </div>

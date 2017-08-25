@@ -1,19 +1,20 @@
 /**
  * Created by felix on 23.05.17.
  */
-import { Component, forwardRef, Input, ViewEncapsulation } from '@angular/core';
-import { DefaultInputComponent } from '../../ui/form/default-input/default-input.component';
-import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, forwardRef, Input, ViewChild, ViewEncapsulation } from '@angular/core';
+import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Field } from '../../core/field/field';
-import { Selection } from '../../core/selection/selection';
-import { ListConfig } from '../../core/list/list-config.interface';
 import { Item } from '../../core/item/item';
+import { FileService } from '../file.service';
+import { PopComponent } from '../../ui/pop/pop.component';
+import { SelectComponent } from '../../ui/form/select/select.component';
 
 /** Shows assets of a selection and is able to pick new ones from a crud list */
 @Component({
   selector: 'ec-asset-select',
   templateUrl: './asset-select.component.html',
-  styleUrls: ['./asset-select.component.scss'],
+  styleUrls: ['../../ui/form/select/select.component.scss'],
+
   encapsulation: ViewEncapsulation.None,
   providers: [
     {
@@ -23,69 +24,51 @@ import { Item } from '../../core/item/item';
     }
   ]
 })
-export class AssetSelectComponent extends DefaultInputComponent implements ControlValueAccessor {
+export class AssetSelectComponent extends SelectComponent {
   /** The formControl that is used. */
   @Input() formControl: FormControl;
   /** The value that should be prefilled */
   @Input() value: Array<any>;
   /** The used field, which should contain a model property (when not using model input) */
   @Input() field: Field<any>;
+  /** The form group that is used */
+  protected group: FormGroup;
+  /** The form control that is used */
+  protected control: FormControl;
   /** The used item */
   @Input() item: Item<any>;
   /** The model to pick from, alternative to field with model property set. */
   @Input() model: string;
-  /** The config that is being generated. */
-  private config: ListConfig;
-  /** Wether or not the selection should be solo */
-  @Input() solo: boolean;
-  /** The current selection */
-  private selection: Selection<any>;
+  /** The asset list pop with the list to select from */
+  @ViewChild('assetPop') pop: PopComponent;
 
-  /** The crud pop with the list to select from */
-  // @ViewChild('crudPop') pop: PopComponent;
+  constructor(private fileService: FileService) {
+    super();
+  }
 
   ngOnInit() {
     if (!this.formControl) {
       this.formControl = new FormControl(this.value || []);
     }
-    if (this.field) {
-      this.model = this.model || this.field['model'];
-    }
-    /*this.modelConfig.generateConfig(this.model)
-    .then((config) => {
-      this.config = Object.assign(config, { size: 10 }, this.crudConfig, { solo: this.solo });
-    })*/
+    this.config = Object.assign({}, this.fileService.assetListConfig);
+    Object.assign(this.config, { solo: this.solo });
+    this.useConfig(this.config);
   }
 
   select(item: Item<any>) {
     this.selection.toggle(item);
     if (this.config.solo) {
-      // this.pop.toggle(false);
+      this.pop.toggle(false);
     }
   }
 
-  toggle(selection: Selection<any>) {
-    // this.pop.toggle();
-    if (!this.selection) {
-      Object.assign(this.config, { selection });
-      this.selection = selection;
-      this.selection.update$.subscribe((selection: Selection<any>) => {
-        this.propagateChange(selection.getValue());
-      });
-    }
+  toggle(active: boolean = !this.active, emit: boolean = false) {
+    super.toggle(active, emit);
+    this.pop.toggle();
   }
 
-  writeValue(value: any) {
+  canToggle() {
+    return true;
   }
 
-  propagateChange = (_: any) => {
-  };
-
-  registerOnChange(fn) {
-    this.propagateChange = fn;
-  }
-
-  registerOnTouched() {
-
-  }
 }

@@ -1262,11 +1262,28 @@ export class FileService {
     label: &#x27;title&#x27;,
     size: 5,
     identifier: &#x27;assetID&#x27;,
+    onSave: (item, value) &#x3D;&gt; {
+      const asset &#x3D; item.getBody();
+      //TODO use crud.service for Resource?
+      value &#x3D; item.serialize(value, !!asset.save);
+      console.log(&#x27;value&#x27;, value);
+      Object.assign(asset, value);
+      if (!!asset.save) {
+        return asset.save();
+      }
+      return value; //TODO createAsset
+    },
     fields: {
       thumb: {
         label: &#x27;Vorschau&#x27;,
-        resolve: (asset, item, property) &#x3D;&gt; asset.getImageThumbUrl(200),
-        view: &#x27;avatar&#x27;
+        resolve: (asset, item, property) &#x3D;&gt; {
+          if (typeof asset &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
+            return false;
+          }
+          return asset.getImageThumbUrl(200)
+        },
+        view: &#x27;avatar&#x27;,
+        readOnly: true
       },
       title: {
         label: &#x27;Titel&#x27;,
@@ -1282,12 +1299,14 @@ export class FileService {
       type: {
         label: &#x27;Typ&#x27;,
         view: &#x27;label&#x27;,
-        sortable: true
+        sortable: true,
+        readOnly: true,
       },
       created: {
         label: &#x27;Datum&#x27;,
         view: &#x27;date&#x27;,
         sortable: true,
+        readOnly: true,
         display: (value) &#x3D;&gt; moment(value).format(&#x27;DD.MM.YY&#x27;),
         group: (value) &#x3D;&gt; moment(value).format(&#x27;MMMM YYYY&#x27;)
       }

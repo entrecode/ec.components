@@ -871,6 +871,9 @@ export class DemoComponent {
 
     this.modelConfig.set('baker', {
       fields: {
+        picture: {
+          label: 'Bilder'
+        },
         name: {
           label: 'Bäcker'
         },
@@ -883,9 +886,6 @@ export class DemoComponent {
             }
             return muffins;
           }
-        },
-        field_test: {
-
         }
       }
     });

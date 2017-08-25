@@ -61,7 +61,7 @@ export class CrudService {
   update(model, entry: EntryResource, value: Object): Promise<EntryResource> {
     const oldValues = {}; //save old values
     Object.keys(value).forEach((key) => oldValues[key] = entry[key]);
-    Object.assign(entry, this.clean(value, oldValues)); //assign new form values
+    Object.assign(entry, this.clean(value)); //assign new form values
     return entry.save().then((entry) => {
       this.changes.emit({ model, entry, type: 'update' });
       return entry;
@@ -73,11 +73,12 @@ export class CrudService {
   }
 
   /** Removes all null or undefined values from the given object */
-  clean(value: Object, oldValues: any = {}): Object {
+  clean(value: Object): Object {
     for (let key in value) {
-      if (value[key] === '') { //value[key] === null ||  || value[key] === undefined
+      if (value[key] === '' || value[key] === null || value[key] === undefined) { //
         //TODO
-        value[key] = null;
+        delete value[key];
+        // value[key] = null;
       }
     }
     return value;

@@ -1,7 +1,7 @@
 <h2>ec-entry-select</h2>
 <h3>usage without form</h3>
 <ec-entry-select model="muffin" [config]="{size:3}" #entrySelect></ec-entry-select>
-<div *ngIf="entrySelect.selection?.items.length">
+<div *ngIf="entrySelect.selection?.items?.length">
   <strong>Manual iteration over selected entry items</strong>
   <ul>
     <li class="pill" *ngFor="let entry of entrySelect.selection?.items">

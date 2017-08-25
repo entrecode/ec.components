@@ -7,7 +7,7 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Collection, List, ListConfig, Selection } from '../../../core/index';
+import { List, ListConfig, Selection } from '../../../core/index';
 import { Item } from '../../../core/item/item';
 
 /**
@@ -31,12 +31,10 @@ export class SelectComponent implements ControlValueAccessor {
   @Input() config: ListConfig;
   /** The visible items */
   @Input() value: Array<any>;
-  /** The used collection */
-  @Input() collection: Collection<any>;
   /** The used selection */
   @Input() selection: Selection<any>;
   /** Event emitter on item selection */
-  @Output() onSelect: EventEmitter<any> = new EventEmitter();
+  @Output() change: EventEmitter<any> = new EventEmitter();
   /** Event emitter on selected item click */
   @Output() itemClick: EventEmitter<Item<any>> = new EventEmitter();
   /** Event that emits when the plus is clicked. */
@@ -45,26 +43,47 @@ export class SelectComponent implements ControlValueAccessor {
   @Input() list: List<any>;
   /** True if the selection is active */
   @Input() active: boolean;
+  /** Wether or not the selection should be solo */
+  @Input() solo: boolean;
+  /** is emitted when a new value has been written from the outside */
+  written: EventEmitter<any> = new EventEmitter();
+
+  ngOnInit() {
+    this.initSelection();
+  }
 
   ngOnChanges() {
-    if (this.config && this.value) {
-      this.init();
+    this.initSelection();
+  }
+
+  /** creates the collection from the config */
+  initSelection() {
+    if (!this.config || this.config.disableSelection) {
+      return;
+    }
+    this.selection = new Selection(this.value || [], this.config);
+    this.selection.update$.subscribe(() => {
+      this.changed();
+    });
+  }
+
+  /** Called when the model changes */
+  writeValue(value: any) {
+    this.value = Array.isArray(value) ? value : (value ? [value] : []);
+    Object.assign(this.config || {}, { solo: this.solo });
+    this.list = new List(this.value, this.config);
+    if (this.selection) {
+      Object.assign(this.config, { selection: this.selection });
+      this.selection.removeAll();
+      this.selection.addAll(this.list.items);
     }
   }
 
   /** Initializes either with values, collection or list. Creates Selection with config. */
-  init() {
-    if (this.value) {
-      this.list = new List(this.value, this.config);
-    } else if (this.collection) {
-      this.list = new List(this.collection.items, this.config);
-    }
-    if (!this.list) {
-      return;
-    }
-    if (!this.selection && this.config && !this.config.disableSelection) {
-      this.selection = new Selection([], this.config);
-    }
+  useConfig(config = {}) {
+    this.config = Object.assign(this.config || {}, config);
+    this.initSelection();
+    this.writeValue(this.value);
   }
 
   /** Returns true if the toggle button should be shown.
@@ -86,9 +105,6 @@ export class SelectComponent implements ControlValueAccessor {
 
   /** Column click handler. Triggers onSelect.emit(item) with fallback to selection.toggle*/
   columnClick(item) {
-    if (this.onSelect.observers.length) {
-      return this.onSelect.emit(item);
-    }
     if (this.selection) {
       this.selection.toggle(item);
     }
@@ -96,26 +112,17 @@ export class SelectComponent implements ControlValueAccessor {
 
   private addItem(item) {
     this.selection.toggle(item);
-    this.change();
+    this.changed();
   }
 
   private removeItem(item) {
     this.selection.remove(item);
-    this.change();
+    this.changed();
   }
 
-  change() {
+  changed() {
+    this.change.emit(this.selection);
     return this.propagateChange(this.selection.getValue());
-  }
-
-  /** Called when the model changes */
-  writeValue(value: any) {
-    this.value = Array.isArray(value) ? value : (value ? [value] : []);
-    this.init();
-    if (this.selection) {
-      this.selection.removeAll();
-      this.selection.addAll(this.list.items);
-    }
   }
 
   propagateChange = (_: any) => {
