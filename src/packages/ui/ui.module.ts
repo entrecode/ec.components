@@ -7,12 +7,9 @@ import { LoaderModule } from './loader/loader.module';
 import { ListModule } from "./list/list.module";
 import { FormModule } from './form/form.module';
 import { UtilityModule } from './utility/utility.module';
-import { IoModule } from './io/io.module';
-import { InputErrorsComponent } from './io/input-errors/input-errors.component';
 
 @NgModule({
-  entryComponents: [
-  ],
+  entryComponents: [],
   declarations: [],
   imports: [
     BrowserModule,
