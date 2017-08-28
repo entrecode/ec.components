@@ -1,0 +1,25 @@
+<div class="ec-datetime-picker"><!--  ng-class="{'invalid':!ngValid}" -->
+  <!--<input type="text" ng-model="formattedDate" ng-keydown="keyDown($event)" ng-focus="focus=true" ng-blur="focus=false"
+         ng-disabled="ngDisabled" ng-mousedown="focus=true" ng-change="dateTyped()">-->
+
+  {{value | date}}
+
+  <div class="datetime-select">
+    <header class="controls">
+      <ul>
+        <li><a (click)="calendar.change(-1, 'months')"><i class="ec-icon chevron-left"></i></a></li>
+        <li><h6>{{calendar.formatted}}</h6></li>
+        <li><a (click)="calendar.today()">&bull;</a></li>
+        <!-- ng-class="{'disabled': isSame(dateToday)}" -->
+        <li><a (click)="calendar.change(1, 'months')"><i class="ec-icon chevron-right"></i></a></li>
+      </ul>
+    </header>
+    <!--  ng-class="{'active':focus}" -->
+    <ul class="days">
+      <li *ngFor="let weekday of weekdays">
+        {{weekday}}
+      </li>
+    </ul>
+    <ec-month [date]="date" (select)="select($event)" #calendar></ec-month>
+  </div>
+</div>

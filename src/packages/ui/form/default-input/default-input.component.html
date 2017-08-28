@@ -20,7 +20,10 @@
   <input *ngSwitchCase="'url'" type="url" [formControl]="control"
          [placeholder]="field.getPlaceholder()">
 
-  <ec-select *ngSwitchCase="'array'" [formControl]="control"></ec-select>
+  <ec-datetime *ngSwitchCase="'date'" [formControl]="control"
+               [placeholder]="field.getPlaceholder()"></ec-datetime>
+
+  <!--<ec-select *ngSwitchCase="'array'" [formControl]="control"></ec-select>-->
   <div *ngSwitchDefault>
     <ec-output [field]="field" [item]="item"></ec-output>
     <!--<marquee>🚂🚃🚃🚃 {{field.type}}/{{field.view}} input coming soon</marquee>-->

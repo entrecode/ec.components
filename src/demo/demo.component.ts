@@ -25,6 +25,7 @@ export class DemoComponent {
   private randomData: any;
 
   constructor(private modelConfig: ModelConfigService, private fileService: FileService) {
+    moment.locale('de');
     this.fileService.registerComponents();
     // Datamanager.useEnvironment(environment);
     this.pagination.setTotal(5100);

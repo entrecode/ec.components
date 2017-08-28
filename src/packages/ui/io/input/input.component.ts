@@ -26,22 +26,23 @@ export class InputComponent extends DynamicSlotComponent {
   @Input() item: Item<any>;
 
   ngOnChanges() {
-    if (this.field) {// && this.group
-      const data = {
-        group: this.group,
-        control: this.control || this.group.get(this.field.property),
-        item: this.item,
-        field: this.field
-      };
+    if (!this.field) {
+      return;
+    }
+    const data = {
+      group: this.group,
+      control: this.control || this.group.get(this.field.property),
+      item: this.item,
+      field: this.field
+    };
 
-      const componentRef = this.loadComponent(this.field.input || DefaultInputComponent, data);
-      if (componentRef.instance.control) {
-        componentRef.instance.control.valueChanges
-        .debounceTime(this.debounce)
-        .subscribe((change) => {
-          this.changed.emit(change);
-        });
-      }
+    const componentRef = this.loadComponent(this.field.input || DefaultInputComponent, data);
+    if (componentRef.instance.control) {
+      componentRef.instance.control.valueChanges
+      .debounceTime(this.debounce)
+      .subscribe((change) => {
+        this.changed.emit(change);
+      });
     }
   }
 }

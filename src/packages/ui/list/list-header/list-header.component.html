@@ -11,6 +11,7 @@
         <i class="ec-icon close"></i>
       </a>
       <ec-input [field]="field" [group]="filterForm?.group" [debounce]="200"
+                *ngIf="filterForm?.group.get(field?.property)"
                 (changed)="applyFilter(field.property, $event)"></ec-input>
     </ec-pop>
     {{field.label || field.property}}

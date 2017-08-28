@@ -1,0 +1,9 @@
+<ul class="calendar">
+  <li *ngFor="let day of cells"
+      [class.other]="day.type!=='current'"
+      [class.today]="day.today"
+      [class.selected]="isSelected(day)"
+      (click)="selectDay(day.date)">
+    {{day.format}}
+  </li>
+</ul>

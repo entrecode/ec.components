@@ -30,6 +30,7 @@ import { AssetInputComponent } from '../packages/files/asset-input/asset-input.c
 import { ListTransformsDemoComponent } from './list-transforms/list-transforms-demo.component';
 import { DatamanagerListDemoComponent } from './datamanager-list/datamanager-list.demo.component';
 import { ModelListDemoComponent } from './model-list/model-list.demo.component';
+import { DatetimeDemoComponent } from './form/datetime-demo.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { ModelListDemoComponent } from './model-list/model-list.demo.component';
     UnsplashImageComponent,
     AssetListDemoComponent,
     DatamanagerListDemoComponent,
+    DatetimeDemoComponent,
     ModelListDemoComponent,
   ],
   entryComponents: [

@@ -6,7 +6,7 @@
     <ul>
       <li *ngFor="let field of form?.fields | visibleFields" [ngSwitch]="field.view">
         <label>
-          {{field.label || field.property}}
+          {{field.label || field.property}}:
         </label>
         <ec-input *ngIf="!field.readOnly" [field]="field" [group]="group"
                   [item]="form"></ec-input>

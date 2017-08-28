@@ -19,6 +19,7 @@ import { AssetListDemoComponent } from './asset-list/asset-list.demo.component';
 import { ListTransformsDemoComponent } from './list-transforms/list-transforms-demo.component';
 import { DatamanagerListDemoComponent } from './datamanager-list/datamanager-list.demo.component';
 import { ModelListDemoComponent } from './model-list/model-list.demo.component';
+import { DatetimeDemoComponent } from './form/datetime-demo.component';
 
 export const demoRoutes: Routes = [
   {
@@ -77,6 +78,10 @@ export const demoRoutes: Routes = [
         data: {
           title: 'Mockups'
         }
+      },
+      {
+        path: 'datetime',
+        component: DatetimeDemoComponent
       },
     ]
   },
