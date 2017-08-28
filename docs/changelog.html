@@ -45,7 +45,7 @@
                                     </a>
                                 </li>
                                 <li class="link">
-                                  <a href="./index.html"  class="active" ><span class="fa fa-file-text-o"></span>README</a>
+                                  <a href="./index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
                                     <a href="./changelog.html"
@@ -585,7 +585,7 @@
                                            </a>
                                        </li>
                                        <li class="link">
-                                         <a href="./index.html"  class="active" ><span class="fa fa-file-text-o"></span>README</a>
+                                         <a href="./index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
                                            <a href="./changelog.html"
@@ -1097,99 +1097,35 @@
                <div class="content getting-started">
                    <div class="content-data">
 
-<h1 id="ec-components">ec.components</h1>
-<p>This is the main project for ec.components, written in Typescript and Angular.</p>
-<h2 id="modules">Modules</h2>
-<p>There are three main modules:</p>
+<p><a name="0.1.1"></a></p>
+<h2 id="0-1-1">0.1.1</h2>
 <ul>
-<li><em>@ec.components/core</em>: contains core typescript classes (no angular, no datamanager)</li>
-<li><em>@ec.components/ui</em>: contains core ui components (angular, no datamanager)</li>
-<li><em>@ec.components/data</em>: contains ui components for datamanager (angular+datamanager)</li>
+<li>changed src folder and module structure</li>
+<li>ec-model-list</li>
+<li>ec-asset-select</li>
+<li>ec-upload</li>
 </ul>
-<p>The dependencies stack up from core to data (data &gt; ui &gt; core).
-The packages sources are located at src/packages.</p>
-<p>There is also a fourth module called <code>*@ec.components/styles*</code>.
-It contains more sophisticated styles for ui components using xlcss.</p>
-<h2 id="documentation">Documentation</h2>
-<p>The main documentation is located at <a href="https://entrecode.github.io/ec.components/">https://entrecode.github.io/ec.components/</a>.</p>
-<h2 id="demo">Demo</h2>
-<p>A Demo is available at <a href="https://components.entrecode.de/">https://components.entrecode.de/</a>.</p>
-<h2 id="get-started">Get Started</h2>
-<h3 id="install-">Install:</h3>
-<p>You can install all three modules like this:</p>
-<pre class="line-numbers"><code class="language-shell">npm i &#64;ec.components/core &#64;ec.components/ui &#64;ec.components/data</code></pre><p>Then you can import the ui and data modules to your app module:</p>
-<pre class="line-numbers"><code class="language-typescript">import { NgModule } from &#39;&#64;angular/core&#39;;
-import { AppComponent } from &#39;./app.component&#39;;
-import { UiModule } from &#39;&#64;ec.components/ui&#39;;
-import { DataModule } from &#39;&#64;ec.components/data&#39;;
-
-&#64;NgModule({
-  declarations: [
-    AppComponent,
-  ],
-  imports: [
-    UiModule,
-    DataModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule {
-}</code></pre><h3 id="using-the-sdk">Using the Sdk</h3>
-<p>You can access the <a href="https://github.com/entrecode/ec.datamanager.js">ec.datamanager SDK</a> via the SdkService.</p>
-<pre class="line-numbers"><code class="language-ts"> import { SdkService } from &#39;&#64;ec.components/data&#39;;
- class SomeComponent {
-    constructor(private sdk: SdkService) {
-        this.sdk.api.entryList(&#39;baker&#39;); //use sdk Public API
-    }
- }</code></pre><h2 id="styles">Styles</h2>
-<p>In main style.scss, import the following:</p>
-<pre class="line-numbers"><code class="language-none">&#64;import &quot;../node_modules/xlcss/sass/xlcss&quot;;
-&#64;import &quot;../node_modules/&#64;ec.components/ui/styles&quot;;</code></pre><h2 id="icons">Icons</h2>
-<p>The ui and data packages both use <a href="https://icons.entrecode.de/">ec-icons</a>.
-Just add this to your index.html:</p>
-<pre class="line-numbers"><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://icons.entrecode.de/ec-icons-1.1.1.min.css&quot;/&gt;</code></pre><h1 id="development">Development</h1>
-<p>This project was generated with <a href="https://github.com/angular/angular-cli">Angular CLI</a> version 1.0.0-rc.0.</p>
-<h2 id="lerna">Lerna</h2>
-<p>The repository is a monorepo, managed by <a href="https://github.com/lerna/lerna">lerna</a>.</p>
-<h2 id="developing-with-the-ec-components-repo">Developing with the ec.components repo</h2>
-<p>Instead of installing the subrepos, you can also work with the monorepo:</p>
-<p>add this to your package.json:</p>
-<pre class="line-numbers"><code class="language-none">    &quot;ec.components&quot;: &quot;git+https://github.com/entrecode/ec.components.git#develop&quot;</code></pre><p>and import the modules directly:</p>
-<pre class="line-numbers"><code class="language-none">import { AuthModule, Datamanager, DataModule, UiModule } from &#39;ec.components&#39;;</code></pre><h2 id="developing-with-symlinks">Developing with Symlinks</h2>
-<p>When developing ec.components inside another project, it is recommended to use symlinks via npm link:</p>
-<ol>
-<li>Inside the ec.components project go to <code>cd src/packages/ui</code></li>
-<li>Then run <code>npm link</code></li>
-<li>Inside the foreign project, link via <code>npm link @ec.components/ui</code></li>
-</ol>
-<p>The same procedure can be applied for the ec.components packages.</p>
-<h2 id="import-structure">Import Structure</h2>
-<p>All imports inside src/packages that import from the same package or another ec.components package must be relative.</p>
+<p><a name="0.1.0"></a></p>
+<h2 id="0-1-0-2017-08-23-">0.1.0 (2017-08-23)</h2>
 <ul>
-<li>Imports from the same package should always import the index file &quot;from &#39;..&#39;&quot;<ul>
-<li>This implies that all components/classes etc are placed inside a flat subfolder structure.</li>
-<li>The relative path &#39;..&#39; therefore links to the index.ts where all package exports are defined.</li>
+<li>the most important basic components are now implemented</li>
+<li>dynamic input/output templates</li>
+<li>ec-entry, ec-entries</li>
+<li>added demo with multiple routes</li>
+<li>ec-form</li>
+<li>much more</li>
 </ul>
-</li>
-<li>Imports from another package should always import the relative path to the package index (e.g. ../../packages/core)</li>
+<p><a name="0.0.2"></a></p>
+<h2 id="0-0-2-2017-05-11-">0.0.2 (2017-05-11)</h2>
+<ul>
+<li>improved list</li>
+<li>improved imports</li>
 </ul>
-<h2 id="development-server">Development server</h2>
-<p>Run <code>ng serve</code> for a dev server. Navigate to <code>http://localhost:4200/</code>. The app will automatically reload if you change any of the source files.</p>
-<h2 id="code-scaffolding">Code scaffolding</h2>
-<p>Run <code>ng generate component component-name</code> to generate a new component. You can also use <code>ng generate directive/pipe/service/class/module</code>.</p>
-<h2 id="build">Build</h2>
-<p>Run <code>ng build</code> to build the project. The build artifacts will be stored in the <code>dist/</code> directory.
-Use the <code>--env=prod</code> or <code>--env=stag</code> for environment builds.
-CAUTION: you may have to &quot;es2015&quot; in tsconfig.json / lib to make UglifyJS work
-see <a href="https://github.com/mishoo/UglifyJS2/issues/659">https://github.com/mishoo/UglifyJS2/issues/659</a></p>
-<h2 id="running-unit-tests">Running unit tests</h2>
-<p>Run <code>ng test</code> to execute the unit tests via <a href="https://karma-runner.github.io">Karma</a>.</p>
-<h2 id="running-end-to-end-tests">Running end-to-end tests</h2>
-<p>Run <code>ng e2e</code> to execute the end-to-end tests via <a href="http://www.protractortest.org/">Protractor</a>.
-Before running the tests make sure you are serving the app via <code>ng serve</code>.</p>
-<h2 id="further-help">Further help</h2>
-<p>To get more help on the Angular CLI use <code>ng help</code> or go check out the <a href="https://github.com/angular/angular-cli/blob/master/README.md">Angular CLI README</a>.</p>
+<p><a name="0.0.1"></a></p>
+<h2 id="0-0-1-2017-05-10-">0.0.1 (2017-05-10)</h2>
+<ul>
+<li>initial release</li>
+</ul>
 
 
 
