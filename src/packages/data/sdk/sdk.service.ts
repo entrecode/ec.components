@@ -1,10 +1,26 @@
-import { EventEmitter, Injectable } from '@angular/core';
+import { EventEmitter, Inject, Injectable } from '@angular/core';
 import { Accounts, DataManager, PublicAPI, Session } from 'ec.sdk';
 import { AccountResource } from 'ec.sdk/typings/resources/accounts/AccountResource';
 import { environment as env } from 'ec.sdk/typings/interfaces';
-import { environment } from '../../../environments/environment';
 
-/** The SdkService exposes all instances of the ec.sdk APIs. */
+/** The SdkService exposes all instances of the ec.sdk APIs.
+ * To be able to use it, you have to provide an environment like this:
+ *
+ * ```
+ * providers: [
+ {
+   provide: 'environment',
+   useValue: {
+     production: false,
+     name: 'development',
+     datamanagerID: '83cc6374',
+     environment: 'stage',
+     clientID: 'rest',
+     apiRoot: 'https://datamanager.cachena.entrecode.de/api/83cc6374'
+   }
+ }
+ ]```
+ */
 @Injectable()
 export class SdkService {
   /** Current Session instance */
@@ -21,7 +37,24 @@ export class SdkService {
   public ready: EventEmitter<AccountResource> = new EventEmitter();
 
   /** Calls init and sets ready to true when finished. */
-  constructor() {
+  constructor(@Inject('environment') private environment) {
+    if (!environment) {
+      console.error(`could not initialize SDK: no environment is set up, you have to set it via your provider: 
+      providers: [
+        {
+          provide: 'environment',
+          useValue: {
+            production: false,
+            name: 'development',
+            datamanagerID: '83cc6374',
+            environment: 'stage',
+            clientID: 'rest',
+            apiRoot: 'https://datamanager.cachena.entrecode.de/api/83cc6374'
+          }
+        }
+      ],`);
+      return;
+    }
     this.init().then((account) => {
       this.datamanager = new DataManager(<env>environment.environment);
       this.ready.emit(account);
@@ -29,7 +62,7 @@ export class SdkService {
   }
 
   /** Creates all the API instances and determines the current user. */
-  public init() {
+  public init(environment = this.environment) {
     this.session = new Session(<env>environment.environment);
     this.accounts = new Accounts(<env>environment.environment);
     this.api = new PublicAPI(environment.datamanagerID, <env>environment.environment, true); //true
@@ -67,7 +100,7 @@ export class SdkService {
   getAccount(): Promise<AccountResource> {
     return this.accounts.me().then((account) => {
       if (account) {
-        this.datamanager = new DataManager(<env>environment.environment);
+        this.datamanager = new DataManager(<env>this.environment.environment);
         const list = this.datamanager.dataManagerList().then((list) => {
           console.log('list', list.getAllItems());
         });
