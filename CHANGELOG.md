@@ -5,6 +5,7 @@
 * ec-model-list
 * ec-asset-select
 * ec-upload
+* ec-datetime input
 
 <a name="0.1.0"></a>
 ## 0.1.0 (2017-08-23)
