@@ -44,7 +44,7 @@ export class FormService {
         return;
       }
       const error = field.validate(control.value, field);
-      if (field.validate(control.value, field)) {
+      if (error) {
         return {
           custom: error
         }

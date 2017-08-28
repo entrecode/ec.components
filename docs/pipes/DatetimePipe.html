@@ -95,7 +95,7 @@
                                     <a href="../additional-documentation/core-classes/sorter.html" >Sorter</a>
                                 </li>
                                 <li class="link ">
-                                    <a href="../additional-documentation/ui.html"  data-type="entity-link" class="active" >UI</a>
+                                    <a href="../additional-documentation/ui.html" >UI</a>
                                 </li>
                                 <li class="link for-chapter">
                                     <a href="../additional-documentation/ui/listcomponent.html" >ListComponent</a>
@@ -519,7 +519,7 @@
                                 id="xs-pipes-links"
                             >
                                 <li class="link">
-                                    <a href="../pipes/DatetimePipe.html" >DatetimePipe</a>
+                                    <a href="../pipes/DatetimePipe.html"  data-type="entity-link" class="active" >DatetimePipe</a>
                                 </li>
                                 <li class="link">
                                     <a href="../pipes/GroupPipe.html" >GroupPipe</a>
@@ -647,7 +647,7 @@
                                            <a href="../additional-documentation/core-classes/sorter.html" >Sorter</a>
                                        </li>
                                        <li class="link ">
-                                           <a href="../additional-documentation/ui.html"  data-type="entity-link" class="active" >UI</a>
+                                           <a href="../additional-documentation/ui.html" >UI</a>
                                        </li>
                                        <li class="link for-chapter">
                                            <a href="../additional-documentation/ui/listcomponent.html" >ListComponent</a>
@@ -1071,7 +1071,7 @@
                                        id="pipes-links"
                    >
                                        <li class="link">
-                                           <a href="../pipes/DatetimePipe.html" >DatetimePipe</a>
+                                           <a href="../pipes/DatetimePipe.html"  data-type="entity-link" class="active" >DatetimePipe</a>
                                        </li>
                                        <li class="link">
                                            <a href="../pipes/GroupPipe.html" >GroupPipe</a>
@@ -1118,7 +1118,7 @@
                    
                    </nav>
                </div>
-               <div class="content additional-page">
+               <div class="content pipe">
                    <div class="content-data">
 
 
@@ -1127,41 +1127,80 @@
 
 
 
+<ol class="breadcrumb">
+  <li>Pipes</li>
+  <li>DatetimePipe</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+    <li class="active">
+        <a href="#info" id="info-tab" role="tab" data-toggle="tab" data-link="info">Info</a>
+    </li>
 
 
-
-
-
-
-<h1 id="ui-components-overview">UI Components Overview</h1>
-<p>Now that the Core classes were discussed, lets have a look at its application in the ui components.
-The ui components, which lay inside the ui package are all basic angular components.
-They are API agnostic, meaning they do not contain any datamanager logic (or similar).
-API related components are meant to inherit from the base ui components to eliminate redundancies.</p>
-<h2 id="installation">Installation</h2>
-<pre class="line-numbers"><code class="language-sh">npm i &#64;ec.components/ui</code></pre><p><a href="https://components.entrecode.de/">Demo</a></p>
-<p>TBD:</p>
-<ul>
-<li>List<ul>
-<li>Custom Cell Components</li>
-<li>Transform fields</li>
+    <li>
+        <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+    </li>
 </ul>
-</li>
-<li>Form<ul>
-<li>Custom Field Components</li>
-<li>Inline Forms</li>
-</ul>
-</li>
-<li>Login</li>
-<li>Pop</li>
-<li>Tabs</li>
-<li><p>Select</p>
-</li>
-<li><p>Notifications</p>
-</li>
-<li>Loader</li>
-<li>Menu</li>
-</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/packages/ui/form/datetime/datetime.pipe.ts</code>
+        </p>
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>The GroupPipe filters an array of Item instances by a given property value.
+It is meant to be used to get only the items with the exact same value. </p>
+
+            </p>
+
+
+    </div>
+
+
+    <div class="tab-pane fade tab-source-code" id="source">
+        <pre class="line-numbers"><code class="language-typescript">import { Pipe, PipeTransform } from &#x27;@angular/core&#x27;;
+import * as moment from &#x27;moment&#x27;;
+
+/** The GroupPipe filters an array of Item instances by a given property value.
+ * It is meant to be used to get only the items with the exact same value. */
+@Pipe({
+  name: &#x27;datetime&#x27;
+})
+export class DatetimePipe implements PipeTransform {
+  transform(value: Date | string, pattern: string | string[] &#x3D; &#x27;DD.MM.YYYY&#x27;, raw?: string): string {
+    if (!value) {
+      return &#x27;&#x27;;
+    }
+    if (raw) {
+      console.log(&#x27;raw&#x27;, raw);
+    }
+    const typed &#x3D; moment(value, pattern, true);
+    if (!typed.isValid()) {
+      return &#x27;&#x27;;
+    }
+    if (Array.isArray(pattern)) {
+      pattern &#x3D; pattern[0];
+    }
+    return moment(value).format(pattern);
+  }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
 
                    </div><div class="search-results">
     <div class="has-results">

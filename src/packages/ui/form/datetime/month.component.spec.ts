@@ -1,10 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { CalendarComponent } from './month.component';
+import { MonthComponent } from './month.component';
 import { FormModule } from '../form.module';
 
-fdescribe('CalendarComponent', () => {
-  let component: CalendarComponent;
-  let fixture: ComponentFixture<CalendarComponent>;
+fdescribe('MonthComponent', () => {
+  let component: MonthComponent;
+  let fixture: ComponentFixture<MonthComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -14,7 +14,7 @@ fdescribe('CalendarComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CalendarComponent);
+    fixture = TestBed.createComponent(MonthComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -24,7 +24,6 @@ fdescribe('CalendarComponent', () => {
   });
 
   it('should have the correct number of days', () => {
-    const cells = component.before.length + component.days.length + component.after.length;
-    expect((cells === 42)).toBe(true);
+    expect(component['cells'].length).toBe(42);
   })
 });

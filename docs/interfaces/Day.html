@@ -95,7 +95,7 @@
                                     <a href="../additional-documentation/core-classes/sorter.html" >Sorter</a>
                                 </li>
                                 <li class="link ">
-                                    <a href="../additional-documentation/ui.html"  data-type="entity-link" class="active" >UI</a>
+                                    <a href="../additional-documentation/ui.html" >UI</a>
                                 </li>
                                 <li class="link for-chapter">
                                     <a href="../additional-documentation/ui/listcomponent.html" >ListComponent</a>
@@ -472,7 +472,7 @@
                                     <a href="../interfaces/CrudConfig.html" >CrudConfig</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../interfaces/Day.html" >Day</a>
+                                    <a href="../interfaces/Day.html"  data-type="entity-link" class="active" >Day</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
@@ -647,7 +647,7 @@
                                            <a href="../additional-documentation/core-classes/sorter.html" >Sorter</a>
                                        </li>
                                        <li class="link ">
-                                           <a href="../additional-documentation/ui.html"  data-type="entity-link" class="active" >UI</a>
+                                           <a href="../additional-documentation/ui.html" >UI</a>
                                        </li>
                                        <li class="link for-chapter">
                                            <a href="../additional-documentation/ui/listcomponent.html" >ListComponent</a>
@@ -1024,7 +1024,7 @@
                                            <a href="../interfaces/CrudConfig.html" >CrudConfig</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../interfaces/Day.html" >Day</a>
+                                           <a href="../interfaces/Day.html"  data-type="entity-link" class="active" >Day</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
@@ -1118,7 +1118,7 @@
                    
                    </nav>
                </div>
-               <div class="content additional-page">
+               <div class="content interface">
                    <div class="content-data">
 
 
@@ -1129,39 +1129,339 @@
 
 
 
+<ol class="breadcrumb">
+  <li>Interfaces</li>
+  <li>Day</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+    <li class="active">
+        <a href="#info" id="info-tab" role="tab" data-toggle="tab" data-link="info">Info</a>
+    </li>
 
 
-
-
-<h1 id="ui-components-overview">UI Components Overview</h1>
-<p>Now that the Core classes were discussed, lets have a look at its application in the ui components.
-The ui components, which lay inside the ui package are all basic angular components.
-They are API agnostic, meaning they do not contain any datamanager logic (or similar).
-API related components are meant to inherit from the base ui components to eliminate redundancies.</p>
-<h2 id="installation">Installation</h2>
-<pre class="line-numbers"><code class="language-sh">npm i &#64;ec.components/ui</code></pre><p><a href="https://components.entrecode.de/">Demo</a></p>
-<p>TBD:</p>
-<ul>
-<li>List<ul>
-<li>Custom Cell Components</li>
-<li>Transform fields</li>
+    <li>
+        <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+    </li>
 </ul>
-</li>
-<li>Form<ul>
-<li>Custom Field Components</li>
-<li>Inline Forms</li>
-</ul>
-</li>
-<li>Login</li>
-<li>Pop</li>
-<li>Tabs</li>
-<li><p>Select</p>
-</li>
-<li><p>Notifications</p>
-</li>
-<li>Loader</li>
-<li>Menu</li>
-</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/packages/ui/form/datetime/month.component.ts</code>
+        </p>
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Interface for a day inside the a month. </p>
+
+            </p>
+
+        <section>
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Properties</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                        <a href="#date">date</a>
+                                </li>
+                                <li>
+                                        <a href="#format">format</a>
+                                </li>
+                                <li>
+                                        <a href="#today">today</a>
+                                </li>
+                                <li>
+                                        <a href="#type">type</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+
+
+            <section>
+                <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="date"></a>
+                                        <b>date</b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>date:     <code></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/packages/ui/form/datetime/month.component.ts:7</a></div>
+                                        </td>
+                                    </tr>
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The moment that is represented by the day. </p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="format"></a>
+                                        <b>format</b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>format:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/packages/ui/form/datetime/month.component.ts:11</a></div>
+                                        </td>
+                                    </tr>
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>The formatted day number. </p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="today"></a>
+                                        <b>today</b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>today:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/packages/ui/form/datetime/month.component.ts:13</a></div>
+                                        </td>
+                                    </tr>
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Flag that is true if the day is today. </p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="type"></a>
+                                        <b>type</b>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>type:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/packages/ui/form/datetime/month.component.ts:9</a></div>
+                                        </td>
+                                    </tr>
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Can be given a type, to set a class. </p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </section>
+    </div>
+
+
+    <div class="tab-pane fade tab-source-code" id="source">
+        <pre class="line-numbers"><code class="language-typescript">import { Component, EventEmitter, Input, Output } from &#x27;@angular/core&#x27;;
+import * as moment from &#x27;moment&#x27;;
+
+/** Interface for a day inside the a month. */
+interface Day {
+  /** The moment that is represented by the day. */
+  date: moment.Moment;
+  /** Can be given a type, to set a class. */
+  type?: string;
+  /** The formatted day number. */
+  format: string;
+  /** Flag that is true if the day is today. */
+  today: boolean;
+}
+
+/** Displays the days of a month in a calendarish table. */
+@Component({
+  selector: &#x27;ec-month&#x27;,
+  styleUrls: [&#x27;month.component.scss&#x27;],
+  templateUrl: &#x27;month.component.html&#x27;
+})
+export class MonthComponent {
+  /** The current selected date */
+  @Input() selected: moment.Moment;
+  /** The current date (for showing month) */
+  @Input() date: moment.Moment;
+  /** The current month as string */
+  private formatted: string;
+  /** The cells containing the days */
+  private cells: Array&lt;Day&gt;;
+  /** Emits when the selected day changes. */
+  @Output() select: EventEmitter&lt;any&gt; &#x3D; new EventEmitter();
+
+  /** Initializes the calendar. */
+  ngOnInit() {
+    this.setDate();
+  }
+
+  /** When changing the date or selected input, the calendar will update its view to display the month containing it. */
+  ngOnChanges(change) {
+    if (change.selected) {
+      this.setDate(this.selected);
+      return;
+    }
+    if (change.date) {
+      this.setDate(this.date);
+    }
+  }
+
+  /** Returns an Array of days in the given moment&#x27;s month. */
+  getDays(day &#x3D; moment(), type?: string): Array&lt;Day&gt; {
+    const begin &#x3D; day.startOf(&#x27;month&#x27;);
+    return new Array(day.daysInMonth())
+    .fill(0)
+    .map((d, index) &#x3D;&gt; begin.clone().add(index, &#x27;days&#x27;))
+    .map((date) &#x3D;&gt; ({
+      date,
+      type,
+      format: date.format(&#x27;DD&#x27;),
+      today: moment().startOf(&#x27;day&#x27;).diff(date, &#x27;days&#x27;) &#x3D;&#x3D;&#x3D; 0,
+    }));
+  }
+
+  /** Sets the calendars viewed date to the given moment&#x27;s month. Renders always 42 cells to keep the layout consistent. */
+  setDate(date: moment.Moment &#x3D; this.selected || this.date || moment()) {
+    this.date &#x3D; date.clone();
+    this.formatted &#x3D; date.format(&#x27;MMMM YYYY&#x27;);
+    const days &#x3D; this.getDays(date.clone(), &#x27;current&#x27;);
+    const start &#x3D; date.clone().startOf(&#x27;month&#x27;);
+    const end &#x3D; date.clone().endOf(&#x27;month&#x27;);
+    const head &#x3D; start.weekday(); //how many days should be shown ahead of the first?
+    let tail &#x3D; 7 - end.weekday() - 1; //how many days are needed to fill the week after the last?
+    const fill &#x3D; 42 - tail - days.length - head; //days to fill to get 42 total
+    tail +&#x3D; fill; //fill up till 42 days (6 rows)
+    const before &#x3D; head ? this.getDays(date.clone().subtract(1, &#x27;month&#x27;)).slice(-head) : [];
+    const after &#x3D; this.getDays(date.clone().add(1, &#x27;month&#x27;)).slice(0, tail);
+    this.cells &#x3D; [...before, ...days, ...after];
+  }
+
+  /** Selects the day of the given moment. */
+  selectDay(moment: moment.Moment): void {
+    this.setDate(moment);
+    this.selected &#x3D; moment;
+    this.select.emit(moment);
+  }
+
+  /** Returns true if the given moment is currently selected (on a day basis) */
+  isSelected(moment: moment.Moment): boolean {
+    if (!this.selected) {
+      return;
+    }
+    return this.selected.startOf(&#x27;day&#x27;).diff(moment, &#x27;days&#x27;) &#x3D;&#x3D;&#x3D; 0;
+  }
+
+  /** Updates the viewed date to reflect the given relative changes. */
+  change(value, span: string): void {
+    this.setDate(this.date.clone().add(value, span));
+  }
+
+  /** Sets the current viewed date to today. */
+  today(): void {
+    this.setDate(moment());
+  }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
 
                    </div><div class="search-results">
     <div class="has-results">

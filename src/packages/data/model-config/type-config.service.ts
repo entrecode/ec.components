@@ -59,7 +59,14 @@ export class TypeConfigService {
       view: 'date',
       sortable: true,
       // display: (value) => moment(value).format('DD.MM.YY')
-      display: (value) => value ? moment(value).format('DD.MM.YY') : ''/*,
+      display: (value) => value ? moment(value).format('DD.MM.YY') : '',
+      validate: (value) => {
+        if (value && isNaN(value.getTime())) {
+          return 'Ungültiges Datum';
+        }
+        return;
+      }
+      /*,
       prefill: new Date(0)*/
     },
     entry: {

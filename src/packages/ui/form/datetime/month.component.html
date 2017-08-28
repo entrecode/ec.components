@@ -2,7 +2,7 @@
   <li *ngFor="let day of cells"
       [class.other]="day.type!=='current'"
       [class.today]="day.today"
-      [class.selected]="isSelected(day)"
+      [class.selected]="isSelected(day.date)"
       (click)="selectDay(day.date)">
     {{day.format}}
   </li>

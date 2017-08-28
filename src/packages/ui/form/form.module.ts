@@ -12,6 +12,7 @@ import { VisibleFieldsPipe } from './visible-fields.pipe';
 import { IoModule } from '../io/io.module';
 import { DatetimeComponent } from './datetime/datetime.component';
 import { MonthComponent } from './datetime/month.component';
+import { DatetimePipe } from './datetime/datetime.pipe';
 
 @NgModule({
   entryComponents: [
@@ -24,6 +25,7 @@ import { MonthComponent } from './datetime/month.component';
     DefaultOutputComponent,
     SelectComponent,
     DatetimeComponent,
+    DatetimePipe,
     MonthComponent,
     VisibleFieldsPipe,
   ],
@@ -39,6 +41,7 @@ import { MonthComponent } from './datetime/month.component';
     ReactiveFormsModule,
     SelectComponent,
     DatetimeComponent,
+    DatetimePipe,
     MonthComponent,
     PopModule,
     VisibleFieldsPipe,

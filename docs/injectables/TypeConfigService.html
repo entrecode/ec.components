@@ -472,6 +472,9 @@
                                     <a href="../interfaces/CrudConfig.html" >CrudConfig</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../interfaces/Day.html" >Day</a>
+                                </li>
+                                <li class="link">
                                     <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
                                 </li>
                                 <li class="link">
@@ -515,6 +518,9 @@
                         <ul class="links collapse "
                                 id="xs-pipes-links"
                             >
+                                <li class="link">
+                                    <a href="../pipes/DatetimePipe.html" >DatetimePipe</a>
+                                </li>
                                 <li class="link">
                                     <a href="../pipes/GroupPipe.html" >GroupPipe</a>
                                 </li>
@@ -1018,6 +1024,9 @@
                                            <a href="../interfaces/CrudConfig.html" >CrudConfig</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../interfaces/Day.html" >Day</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
                                        </li>
                                        <li class="link">
@@ -1061,6 +1070,9 @@
                                <ul class="links collapse "
                                        id="pipes-links"
                    >
+                                       <li class="link">
+                                           <a href="../pipes/DatetimePipe.html" >DatetimePipe</a>
+                                       </li>
                                        <li class="link">
                                            <a href="../pipes/GroupPipe.html" >GroupPipe</a>
                                        </li>
@@ -1210,7 +1222,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">src/packages/data/model-config/type-config.service.ts:106</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="113" class="link-to-prism">src/packages/data/model-config/type-config.service.ts:113</a></div>
                                         </td>
                                     </tr>
             
@@ -1244,7 +1256,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="122" class="link-to-prism">src/packages/data/model-config/type-config.service.ts:122</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">src/packages/data/model-config/type-config.service.ts:129</a></div>
                                         </td>
                                     </tr>
             
@@ -1369,7 +1381,14 @@ export class TypeConfigService {
       view: &#x27;date&#x27;,
       sortable: true,
       // display: (value) &#x3D;&gt; moment(value).format(&#x27;DD.MM.YY&#x27;)
-      display: (value) &#x3D;&gt; value ? moment(value).format(&#x27;DD.MM.YY&#x27;) : &#x27;&#x27;/*,
+      display: (value) &#x3D;&gt; value ? moment(value).format(&#x27;DD.MM.YY&#x27;) : &#x27;&#x27;,
+      validate: (value) &#x3D;&gt; {
+        if (value &amp;&amp; isNaN(value.getTime())) {
+          return &#x27;Ungültiges Datum&#x27;;
+        }
+        return;
+      }
+      /*,
       prefill: new Date(0)*/
     },
     entry: {
