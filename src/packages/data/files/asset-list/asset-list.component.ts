@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 import { AssetList } from './asset-list';
-import { ResourceListComponent } from '../../data/resource-list/resource-list.component';
+import { ResourceListComponent } from '../../resource-list/resource-list.component';
 import { FileService } from '../file.service';
-import { LoaderService } from '../../ui/loader/loader.service';
-import { NotificationsService } from '../../ui/notifications/notifications.service';
-import { SdkService } from '../../data/sdk/sdk.service';
+import { LoaderService } from '../../../ui/loader/loader.service';
+import { NotificationsService } from '../../../ui/notifications/notifications.service';
+import { SdkService } from '../../sdk/sdk.service';
 
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent */
 @Component({
   selector: 'ec-asset-list',
-  templateUrl: '../../ui/list/list.component.html'
+  templateUrl: '../../../ui/list/list.component.html'
 })
 export class AssetListComponent extends ResourceListComponent {
 

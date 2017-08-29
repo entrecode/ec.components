@@ -4,7 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PublicSignupComponent } from './public-signup.component';
 import { PublicService } from '../../data/sdk/public.service';
 import { UiModule } from '../../ui/ui.module';
-import { SdkService } from '../../data/sdk/sdk.service';
+import { DataModule } from '../../data/data.module';
 
 describe('PublicSignupComponent', () => {
   let component: PublicSignupComponent;
@@ -12,9 +12,9 @@ describe('PublicSignupComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule, UiModule],
+      imports: [ReactiveFormsModule, UiModule, DataModule],
       declarations: [PublicSignupComponent],
-      providers: [PublicService, SdkService]
+      providers: [PublicService]
     })
     .compileComponents();
   }));

@@ -4,7 +4,16 @@ import { Subject } from 'rxjs';
 
 declare const window;
 
-/** This service is the main interaction layer for the developer to show notifications. */
+/** This service is the main interaction layer for the developer to show notifications.
+ * You can use desktop notifications by default by providing:
+ * ```json
+ {
+   provide: "useDesktopNotifications",
+   useValue: true
+ }```
+ * in your module's providers.
+ *
+ * */
 @Injectable()
 export class NotificationsService {
   /** The emitter subject to fire notifications. */

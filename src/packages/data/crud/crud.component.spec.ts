@@ -16,7 +16,13 @@ describe('CrudComponent', () => {
     TestBed.configureTestingModule({
       imports: [UiModule],
       declarations: [EntryFormComponent, EntryListComponent, CrudComponent],
-      providers: [ModelConfigService, CrudService, SdkService, TypeConfigService]
+      providers: [ModelConfigService, CrudService, SdkService, TypeConfigService,
+        {
+          provide: 'environment',
+          useValue: {
+            environment: 'live',
+          }
+        }]
     })
     .compileComponents();
   }));

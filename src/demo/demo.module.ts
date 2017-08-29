@@ -24,9 +24,9 @@ import { CoolStringComponent } from './form/cool-string.component'
 import { UnsplashImageComponent } from './list/unsplash-image.component';
 import { demoRoutes } from './demo.routes'
 import { EntrySelectDemoComponent } from './entry-select/entry-select-demo.component';
-import { FilesModule } from '../packages/files/files.module';
+import { FilesModule } from '../packages/data/files/files.module';
 import { AssetListDemoComponent } from './asset-list/asset-list.demo.component';
-import { AssetInputComponent } from '../packages/files/asset-input/asset-input.component';
+import { AssetInputComponent } from '../packages/data/files/asset-input/asset-input.component';
 import { ListTransformsDemoComponent } from './list-transforms/list-transforms-demo.component';
 import { DatamanagerListDemoComponent } from './datamanager-list/datamanager-list.demo.component';
 import { ModelListDemoComponent } from './model-list/model-list.demo.component';

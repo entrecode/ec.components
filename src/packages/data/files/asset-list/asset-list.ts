@@ -1,6 +1,6 @@
-import { EntryListConfig } from '../../data/';
-import { ResourceList } from '../../data/resource-list/resource-list';
-import { SdkService } from '../../data/sdk/sdk.service';
+import { EntryListConfig } from '../../';
+import { ResourceList } from '../../resource-list/resource-list';
+import { SdkService } from '../../sdk/sdk.service';
 import { FileService } from '../file.service';
 
 /**

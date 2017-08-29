@@ -1,12 +1,12 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { PublicAssetList } from "ec.sdk/typings/resources/publicAPI/PublicAssetList";
 import { PublicAssetResource } from "ec.sdk/typings/resources/publicAPI/PublicAssetResource";
-import { SdkService } from '../data/sdk/sdk.service';
+import { SdkService } from '../sdk/sdk.service';
 import { AssetList } from './asset-list/asset-list';
-import { TypeConfigService } from '../data/model-config/type-config.service';
+import { TypeConfigService } from '../model-config/type-config.service';
 import { AssetInputComponent } from './asset-input/asset-input.component';
 import * as moment from 'moment';
-import { Item } from '../core/item/item';
+import { Item } from '../../core/item/item';
 
 /** Instances of Update are emitted by the changes EventEmitter of the CrudService. */
 export interface Upload {

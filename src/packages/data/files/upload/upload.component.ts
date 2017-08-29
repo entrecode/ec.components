@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { SdkService } from '../../data/sdk/sdk.service';
+import { SdkService } from '../../sdk/sdk.service';
 import { FileService, Upload } from '../file.service';
-import { LoaderComponent } from '../../ui/loader/loader.component';
-import { LoaderService } from '../../ui/loader/loader.service';
-import { NotificationsService } from '../../ui/notifications/notifications.service';
+import { LoaderComponent } from '../../../ui/loader/loader.component';
+import { LoaderService } from '../../../ui/loader/loader.service';
+import { NotificationsService } from '../../../ui/notifications/notifications.service';
 
 /** This component will render an input field to upload files to the datamanager. */
 @Component({

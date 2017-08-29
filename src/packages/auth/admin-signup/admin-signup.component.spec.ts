@@ -3,8 +3,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AdminSignupComponent } from './admin-signup.component';
 import { UiModule } from '../../ui/ui.module';
-import { AdminService } from '../../data/sdk/admin.service';
-import { SdkService } from '../../data/sdk/sdk.service';
+import { DataModule } from '../../data/data.module';
 
 describe('AdminSignupComponent', () => {
   let component: AdminSignupComponent;
@@ -12,9 +11,9 @@ describe('AdminSignupComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule, UiModule],
+      imports: [ReactiveFormsModule, UiModule, DataModule],
       declarations: [AdminSignupComponent],
-      providers: [AdminService, SdkService]
+      providers: []
     })
     .compileComponents();
   }));

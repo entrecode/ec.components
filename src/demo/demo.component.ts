@@ -6,7 +6,7 @@ import { ModelConfigService } from '../packages/data';
 import { FormConfig, List, Pagination } from '../packages/core';
 import * as moment from 'moment';
 import { demoRoutes } from './demo.routes';
-import { FileService } from '../packages/files/file.service';
+import { FileService } from '../packages/data/files/file.service';
 
 @Component({
   selector: 'demo-root',
