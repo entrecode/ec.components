@@ -4,7 +4,7 @@
 ## 0.2.0
 * now using ec.sdk 0.7.0
 * entry-form now supports lvl1 entries even with nested resources
-* datepicker now supports iso dates
+* ec-datetime now supports iso dates
 
 <a name="0.1.1"></a>
 ## 0.1.1

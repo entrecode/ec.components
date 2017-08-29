@@ -20,8 +20,10 @@ import { ListTransformsDemoComponent } from './list-transforms/list-transforms-d
 import { DatamanagerListDemoComponent } from './datamanager-list/datamanager-list.demo.component';
 import { ModelListDemoComponent } from './model-list/model-list.demo.component';
 import { DatetimeDemoComponent } from './form/datetime-demo.component';
+import { DemoDashboardComponent } from './dashboard.component';
 
 export const demoRoutes: Routes = [
+  { path: '', component: DemoDashboardComponent, data: { title: 'ec.components' } },
   {
     path: 'ui',
     children: [
