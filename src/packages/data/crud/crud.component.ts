@@ -12,7 +12,11 @@ import { LoaderComponent } from '../../ui/loader/loader.component';
 import { LoaderService } from '../../ui/loader/loader.service';
 import { NotificationsService } from '../../ui/notifications/notifications.service';
 
-/** The CrudComponent takes at least a model name to render an entry list with create/edit/delete functionality out of the box.  */
+/** The CrudComponent takes at least a model name to render an entry list with create/edit/delete functionality out of the box.
+ * ```html
+ * <ec-crud model="muffin"></ec-crud>
+ * ```
+ * */
 @Component({
   selector: 'ec-crud',
   templateUrl: './crud.component.html',

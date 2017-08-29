@@ -1156,20 +1156,19 @@
             </p>
             <p class="comment">
                 <p>The SdkService exposes all instances of the ec.sdk APIs.
-To be able to use it, you have to provide an environment like this:</p>
-<pre class="line-numbers"><code class="language-none">providers: [
-{
-provide: &#39;environment&#39;,
+To be able to use it, you have to provide an environment like this in your module&#39;s providers:</p>
+<pre class="line-numbers"><code class="language-json">{
+provide: &quot;environment&quot;,
 useValue: {
-production: false,
-name: &#39;development&#39;,
-datamanagerID: &#39;83cc6374&#39;,
-environment: &#39;stage&#39;,
-clientID: &#39;rest&#39;,
-apiRoot: &#39;https://datamanager.cachena.entrecode.de/api/83cc6374&#39;
+datamanagerID: &quot;83cc6374&quot;,
+environment: &quot;stage&quot;,
+clientID: &quot;rest&quot;
 }
-}
-]</code></pre>
+}</code></pre><p>The environment is optional, defaulting to live. See
+<a href="https://entrecode.github.io/ec.sdk/#environment">https://entrecode.github.io/ec.sdk/#environment</a> for more info. The clientID is only optional if
+you do not plan to use authentication. See <a href="https://entrecode.github.io/ec.sdk/#environment">https://entrecode.github.io/ec.sdk/#environment</a> =&gt;
+setClientID.</p>
+
             </p>
 
 
@@ -1226,6 +1225,12 @@ apiRoot: &#39;https://datamanager.cachena.entrecode.de/api/83cc6374&#39;
                                     <li>
                                          <a href="#logout">logout</a>
                                     </li>
+                                    <li>
+                                         <a href="#noClientID">noClientID</a>
+                                    </li>
+                                    <li>
+                                         <a href="#noEnvironment">noEnvironment</a>
+                                    </li>
                                 </ul>
                             </td>
                         </tr>
@@ -1244,7 +1249,7 @@ apiRoot: &#39;https://datamanager.cachena.entrecode.de/api/83cc6374&#39;
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/packages/data/sdk/sdk.service.ts:37</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/packages/data/sdk/sdk.service.ts:36</a></div>
                                         </td>
                                     </tr>
             
@@ -1280,7 +1285,7 @@ apiRoot: &#39;https://datamanager.cachena.entrecode.de/api/83cc6374&#39;
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">src/packages/data/sdk/sdk.service.ts:100</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">src/packages/data/sdk/sdk.service.ts:92</a></div>
                                         </td>
                                     </tr>
             
@@ -1315,7 +1320,7 @@ apiRoot: &#39;https://datamanager.cachena.entrecode.de/api/83cc6374&#39;
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/packages/data/sdk/sdk.service.ts:65</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/packages/data/sdk/sdk.service.ts:47</a></div>
                                         </td>
                                     </tr>
             
@@ -1349,7 +1354,7 @@ apiRoot: &#39;https://datamanager.cachena.entrecode.de/api/83cc6374&#39;
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">src/packages/data/sdk/sdk.service.ts:83</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/packages/data/sdk/sdk.service.ts:69</a></div>
                                         </td>
                                     </tr>
             
@@ -1383,7 +1388,7 @@ apiRoot: &#39;https://datamanager.cachena.entrecode.de/api/83cc6374&#39;
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">src/packages/data/sdk/sdk.service.ts:92</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/packages/data/sdk/sdk.service.ts:81</a></div>
                                         </td>
                                     </tr>
             
@@ -1394,6 +1399,70 @@ apiRoot: &#39;https://datamanager.cachena.entrecode.de/api/83cc6374&#39;
             
                                         <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="noClientID"></a>
+                                    <b> noClientID</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>noClientID()</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">src/packages/data/sdk/sdk.service.ts:119</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="noEnvironment"></a>
+                                    <b> noEnvironment</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>noEnvironment()</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">src/packages/data/sdk/sdk.service.ts:100</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
             
                                         </div>
                                 </td>
@@ -1429,7 +1498,7 @@ apiRoot: &#39;https://datamanager.cachena.entrecode.de/api/83cc6374&#39;
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/packages/data/sdk/sdk.service.ts:29</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/packages/data/sdk/sdk.service.ts:28</a></div>
                                         </td>
                                     </tr>
             
@@ -1464,7 +1533,7 @@ apiRoot: &#39;https://datamanager.cachena.entrecode.de/api/83cc6374&#39;
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/packages/data/sdk/sdk.service.ts:31</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/packages/data/sdk/sdk.service.ts:30</a></div>
                                         </td>
                                     </tr>
             
@@ -1499,7 +1568,7 @@ apiRoot: &#39;https://datamanager.cachena.entrecode.de/api/83cc6374&#39;
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/packages/data/sdk/sdk.service.ts:33</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/packages/data/sdk/sdk.service.ts:32</a></div>
                                         </td>
                                     </tr>
             
@@ -1534,7 +1603,7 @@ apiRoot: &#39;https://datamanager.cachena.entrecode.de/api/83cc6374&#39;
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/packages/data/sdk/sdk.service.ts:37</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/packages/data/sdk/sdk.service.ts:36</a></div>
                                         </td>
                                     </tr>
             
@@ -1569,7 +1638,7 @@ apiRoot: &#39;https://datamanager.cachena.entrecode.de/api/83cc6374&#39;
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/packages/data/sdk/sdk.service.ts:27</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/packages/data/sdk/sdk.service.ts:26</a></div>
                                         </td>
                                     </tr>
             
@@ -1604,7 +1673,7 @@ apiRoot: &#39;https://datamanager.cachena.entrecode.de/api/83cc6374&#39;
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/packages/data/sdk/sdk.service.ts:35</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/packages/data/sdk/sdk.service.ts:34</a></div>
                                         </td>
                                     </tr>
             
@@ -1628,22 +1697,21 @@ import { AccountResource } from &#x27;ec.sdk/typings/resources/accounts/AccountR
 import { environment as env } from &#x27;ec.sdk/typings/interfaces&#x27;;
 
 /** The SdkService exposes all instances of the ec.sdk APIs.
- * To be able to use it, you have to provide an environment like this:
+ * To be able to use it, you have to provide an environment like this in your module&#x27;s providers:
  *
- * &#x60;&#x60;&#x60;
- * providers: [
+ *&#x60;&#x60;&#x60;json
  {
-   provide: &#x27;environment&#x27;,
+   provide: &quot;environment&quot;,
    useValue: {
-     production: false,
-     name: &#x27;development&#x27;,
-     datamanagerID: &#x27;83cc6374&#x27;,
-     environment: &#x27;stage&#x27;,
-     clientID: &#x27;rest&#x27;,
-     apiRoot: &#x27;https://datamanager.cachena.entrecode.de/api/83cc6374&#x27;
+     datamanagerID: &quot;83cc6374&quot;,
+     environment: &quot;stage&quot;,
+     clientID: &quot;rest&quot;
    }
- }
- ]&#x60;&#x60;&#x60;
+ }&#x60;&#x60;&#x60;
+ * The environment is optional, defaulting to live. See
+ * https://entrecode.github.io/ec.sdk/#environment for more info. The clientID is only optional if
+ * you do not plan to use authentication. See https://entrecode.github.io/ec.sdk/#environment &#x3D;&gt;
+ * setClientID.
  */
 @Injectable()
 export class SdkService {
@@ -1662,23 +1730,6 @@ export class SdkService {
 
   /** Calls init and sets ready to true when finished. */
   constructor(@Inject(&#x27;environment&#x27;) private environment) {
-    if (!environment) {
-      console.error(&#x60;could not initialize SDK: no environment is set up, you have to set it via your provider: 
-      providers: [
-        {
-          provide: &#x27;environment&#x27;,
-          useValue: {
-            production: false,
-            name: &#x27;development&#x27;,
-            datamanagerID: &#x27;83cc6374&#x27;,
-            environment: &#x27;stage&#x27;,
-            clientID: &#x27;rest&#x27;,
-            apiRoot: &#x27;https://datamanager.cachena.entrecode.de/api/83cc6374&#x27;
-          }
-        }
-      ],&#x60;);
-      return;
-    }
     this.init().then((account) &#x3D;&gt; {
       this.datamanager &#x3D; new DataManager(&lt;env&gt;environment.environment);
       this.ready.emit(account);
@@ -1687,12 +1738,16 @@ export class SdkService {
 
   /** Creates all the API instances and determines the current user. */
   public init(environment &#x3D; this.environment) {
+    if (this.noEnvironment()) {
+      return Promise.reject(this.noEnvironment());
+    }
     this.session &#x3D; new Session(&lt;env&gt;environment.environment);
     this.accounts &#x3D; new Accounts(&lt;env&gt;environment.environment);
     this.api &#x3D; new PublicAPI(environment.datamanagerID, &lt;env&gt;environment.environment, true); //true
-    //TODO recall new PublicAPI with third param set to true when ec user logs in?
-    this.api.setClientID(environment.clientID);
-    this.session.setClientID(environment.clientID);
+    if (environment.clientID) {
+      this.api.setClientID(environment.clientID);
+      this.session.setClientID(environment.clientID);
+    }
     return this.accounts.me().then((account) &#x3D;&gt; {
       return account || this.api.me();
     }).catch((err) &#x3D;&gt; {
@@ -1705,6 +1760,9 @@ export class SdkService {
 
   /** Generic login that works with both public and admin API. */
   login(credentials: { email: string, password: string, invite: string }) {
+    if (this.noClientID()) {
+      return Promise.reject(this.noClientID());
+    }
     return this.api.login(credentials.email, credentials.password)
     .catch(() &#x3D;&gt; this.session.login(credentials.email, credentials.password))
     .then((token) &#x3D;&gt; {
@@ -1714,6 +1772,9 @@ export class SdkService {
 
   /** Generic logout that works with both public and admin API. */
   logout() {
+    if (this.noClientID()) {
+      return Promise.reject(this.noClientID());
+    }
     return this.api.logout().catch(() &#x3D;&gt; this.session.logout())
     .then(() &#x3D;&gt; {
       return this.init();
@@ -1723,16 +1784,50 @@ export class SdkService {
   /** Returns the current account. Returns ec user or public user if any found. */
   getAccount(): Promise&lt;AccountResource&gt; {
     return this.accounts.me().then((account) &#x3D;&gt; {
-      if (account) {
-        this.datamanager &#x3D; new DataManager(&lt;env&gt;this.environment.environment);
-        const list &#x3D; this.datamanager.dataManagerList().then((list) &#x3D;&gt; {
-          console.log(&#x27;list&#x27;, list.getAllItems());
-        });
-      }
       return account || this.api.me();
     }).catch((err) &#x3D;&gt; {
       return this.api.me();
     })
+  }
+
+  noEnvironment() {
+    if (!this.environment) {
+      return &#x60;
+No environment is set up, you have to set it via your provider: 
+
+providers: [
+  {
+    provide: &#x27;environment&#x27;,
+    useValue: {
+      datamanagerID: &#x27;83cc6374&#x27;,
+      environment: &#x27;stage&#x27;,
+      clientID: &#x27;rest&#x27;
+    }
+  }
+]
+&#x60;;
+    }
+  }
+
+  noClientID() {
+    if (this.noEnvironment()) {
+      return this.noEnvironment();
+    }
+    if (!this.environment.clientID) {
+      return &#x60;
+No clientID set in environment! To enable all auth related functionalities, you can create a client in your datamanager settings and provide it with your environment:
+  
+  providers: [
+    {
+      provide: &#x27;environment&#x27;,
+      useValue: {
+        datamanagerID: &#x27;83cc6374&#x27;,
+        clientID: &#x27;myClient&#x27;,
+      }
+    }
+  ]
+&#x60;;
+    }
   }
 }
 </code></pre>

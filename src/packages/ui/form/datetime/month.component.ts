@@ -84,6 +84,11 @@ export class MonthComponent {
     this.select.emit(moment);
   }
 
+  /** Clears the current selected date*/
+  clearSelection(): void {
+    delete this.selected;
+  }
+
   /** Returns true if the given moment is currently selected (on a day basis) */
   isSelected(moment: moment.Moment): boolean {
     if (!this.selected) {

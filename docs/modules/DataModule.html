@@ -1713,6 +1713,12 @@ import { ModelListComponent } from &#x27;./model-list/model-list.component&#x27;
     CrudService,
     TypeConfigService,
     ModelConfigService,
+    {
+      provide: &#x27;environment&#x27;,
+      useValue: {
+        environment: &#x27;live&#x27;,
+      }
+    }
   ],
 })
 export class DataModule {

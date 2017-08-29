@@ -78,12 +78,9 @@ import { DatetimeDemoComponent } from './form/datetime-demo.component';
     {
       provide: 'environment',
       useValue: {
-        production: false,
-        name: 'development',
         datamanagerID: '83cc6374',
         environment: 'stage',
         clientID: 'rest',
-        apiRoot: 'https://datamanager.cachena.entrecode.de/api/83cc6374'
       }
     }
   ],

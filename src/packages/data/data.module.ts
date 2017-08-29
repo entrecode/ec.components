@@ -65,6 +65,12 @@ import { ModelListComponent } from './model-list/model-list.component';
     CrudService,
     TypeConfigService,
     ModelConfigService,
+    {
+      provide: 'environment',
+      useValue: {
+        environment: 'live',
+      }
+    }
   ],
 })
 export class DataModule {

@@ -67,13 +67,14 @@ export class DatetimeComponent implements ControlValueAccessor {
   input(e) {
     const value = e.target.value;
     this.value = value;
-    if (!value) {
-      return;
-    }
     const typed = moment(value, this.patterns, true);
     if (typed.isValid()) {
       this.calendar.selectDay(typed);
-    } else {
+    } else if (value === '') {
+      this.calendar.clearSelection();
+      this.propagateChange(null);
+    }
+    else {
       this.propagateChange(typed.toDate());
     }
   }
