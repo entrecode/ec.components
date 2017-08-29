@@ -6,11 +6,12 @@ import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Field } from '../../core/field/field';
 import { CrudComponent } from '../crud/crud.component';
 import { ModelConfigService } from '../model-config/model-config.service';
-import { EntryResource } from "ec.sdk/typings/resources/publicAPI/EntryResource";
 import { PopComponent } from '../../ui/pop/pop.component';
 import { Item } from '../../core/item/item';
 import { CrudConfig } from '../crud/crud-config.interface';
 import { SelectComponent } from '../../ui/form/select/select.component';
+import { EntryResource } from "ec.sdk/typings/resources/publicAPI/EntryResource";
+import LiteEntryResource from "ec.sdk/src/resources/publicAPI/LiteEntryResource";
 
 /** Shows entries of a selection and is able to pick new ones from a crud list */
 @Component({
@@ -92,7 +93,14 @@ export class EntrySelectComponent extends SelectComponent {
 
   /** Is called when a selected item has been clicked. */
   editItem(item) {
-    console.log('edit!!! TBD', item); //TODO
+    if (item.getBody().constructor === LiteEntryResource) {
+      item.getBody().resolve().then((entry) => {
+        console.log('resolved', entry);
+      });
+    } else {
+      console.log('edit', item.getBody());
+    }
+    //TODO open edit pop
   }
 
   /** Returns pop class for entry picker, defaults to no class. */

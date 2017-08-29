@@ -4,7 +4,7 @@
         *ngIf="canToggle()">
       <i class="ec-icon find"></i>
     </li>
-    <li *ngFor="let selected of selection?.items" class="pill" (click)="clickItem(selected)">
+    <li *ngFor="let selected of selection?.items" class="pill" (click)="editItem(selected)">
       {{selected.display()}}
       <a (click)="removeItem(selected)"><i class="ec-icon close"></i>
       </a>

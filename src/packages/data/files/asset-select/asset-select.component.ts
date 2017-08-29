@@ -80,4 +80,15 @@ export class AssetSelectComponent extends SelectComponent {
     }
   }
 
+  editItem(item) {
+    if (!item.getBody().isResolved) {
+      item.getBody().resolve().then((asset) => {
+        console.log('resolved', asset);
+      })
+    } else {
+      console.log('edit', item.getBody());
+    }
+    //TODO open edit pop
+  }
+
 }

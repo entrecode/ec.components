@@ -5,7 +5,7 @@
       <i class="ec-icon find"></i>
     </li>
     <li *ngFor="let selected of selection.items" class="ec-list-avatar"
-        (click)="clickItem(selected)">
+        (click)="editItem(selected)">
       <img [src]="selected.resolve('thumb')"> <a (click)="removeItem(selected)">X</a>
     </li>
   </ul>
