@@ -2,7 +2,7 @@
 
 <a name="0.2.0"></a>
 ## 0.2.0
-* now using ec.sdk 0.7.0
+* now using ec.sdk 0.7.1
 * entry-form now supports lvl1 entries even with nested resources
 * ec-datetime now supports iso dates
 
