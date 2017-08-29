@@ -1236,6 +1236,9 @@
                                  <a href="#change">change</a>
                             </li>
                             <li>
+                                 <a href="#clearSelection">clearSelection</a>
+                            </li>
+                            <li>
                                  <a href="#getDays">getDays</a>
                             </li>
                             <li>
@@ -1384,13 +1387,47 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">src/packages/ui/form/datetime/month.component.ts:96</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">src/packages/ui/form/datetime/month.component.ts:101</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
                                 <div class="io-description"><p>Updates the viewed date to reflect the given relative changes. </p>
+    </div>
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="clearSelection"></a>
+                            <b> clearSelection</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>clearSelection()</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/packages/ui/form/datetime/month.component.ts:88</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Clears the current selected date</p>
     </div>
     
                                 <div class="io-description">
@@ -1452,7 +1489,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">src/packages/ui/form/datetime/month.component.ts:88</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">src/packages/ui/form/datetime/month.component.ts:93</a></div>
                                 </td>
                             </tr>
     
@@ -1622,7 +1659,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">src/packages/ui/form/datetime/month.component.ts:101</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">src/packages/ui/form/datetime/month.component.ts:106</a></div>
                                 </td>
                             </tr>
     
@@ -1805,6 +1842,11 @@ export class MonthComponent {
     this.setDate(moment);
     this.selected &#x3D; moment;
     this.select.emit(moment);
+  }
+
+  /** Clears the current selected date*/
+  clearSelection(): void {
+    delete this.selected;
   }
 
   /** Returns true if the given moment is currently selected (on a day basis) */

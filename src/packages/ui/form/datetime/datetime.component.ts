@@ -43,9 +43,9 @@ export class DatetimeComponent implements ControlValueAccessor {
   constructor() {
     this.weekdays = moment.weekdaysMin(true);
     if (!this.disableTime) {
-      this.patterns = this.patterns.concat(this.patterns.map((pattern) => {
+      this.patterns = this.patterns.map((pattern) => {
         return pattern + ' ' + this.timeFormat;
-      }));
+      }).concat(this.patterns);
     }
   }
 
@@ -60,7 +60,8 @@ export class DatetimeComponent implements ControlValueAccessor {
   /** Updates the value with the given moment and propagates the change. */
   select(selected) {
     this.value = selected.format(this.getPattern(selected));
-    this.propagateChange(selected.toDate());
+    this.propagateChange(selected.toISOString() || 'invalid');
+    // this.propagateChange(selected.toDate());
   }
 
   /** Called upon input value change by the user. */
@@ -75,7 +76,8 @@ export class DatetimeComponent implements ControlValueAccessor {
       this.propagateChange(null);
     }
     else {
-      this.propagateChange(typed.toDate());
+      // this.propagateChange(typed.toDate());
+      this.propagateChange(typed.toISOString() || 'invalid');
     }
   }
 
@@ -84,17 +86,13 @@ export class DatetimeComponent implements ControlValueAccessor {
     if (!value) {
       return '';
     }
-    if (typeof value === 'string') {
-      console.log('utc date??', value); //TODO
-    } else {
-      const date = moment(value);
-      if (!date.isValid()) {
-        console.log('model value is not valid', date);
-        return;
-      }
-      this.value = date.format(this.patterns[0]) || '';
-      this.calendar.selectDay(moment(value));
+    const date = moment(value);
+    if (!date.isValid()) {
+      console.warn('written model value is not valid', date);
+      return;
     }
+    this.value = date.format(this.patterns[0]) || '';
+    this.calendar.selectDay(moment(value));
   }
 
   /** Change propagation for ControlValueAccessor */

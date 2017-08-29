@@ -1229,7 +1229,7 @@ setClientID.</p>
                                          <a href="#noClientID">noClientID</a>
                                     </li>
                                     <li>
-                                         <a href="#noEnvironment">noEnvironment</a>
+                                         <a href="#noDatamanagerID">noDatamanagerID</a>
                                     </li>
                                 </ul>
                             </td>
@@ -1422,7 +1422,7 @@ setClientID.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">src/packages/data/sdk/sdk.service.ts:119</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="118" class="link-to-prism">src/packages/data/sdk/sdk.service.ts:118</a></div>
                                         </td>
                                     </tr>
             
@@ -1441,13 +1441,13 @@ setClientID.</p>
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <a name="noEnvironment"></a>
-                                    <b> noEnvironment</b>
+                                    <a name="noDatamanagerID"></a>
+                                    <b> noDatamanagerID</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>noEnvironment()</code>
+            <code>noDatamanagerID()</code>
                                 </td>
                             </tr>
             
@@ -1738,8 +1738,8 @@ export class SdkService {
 
   /** Creates all the API instances and determines the current user. */
   public init(environment &#x3D; this.environment) {
-    if (this.noEnvironment()) {
-      return Promise.reject(this.noEnvironment());
+    if (this.noDatamanagerID()) {
+      return Promise.reject(this.noDatamanagerID());
     }
     this.session &#x3D; new Session(&lt;env&gt;environment.environment);
     this.accounts &#x3D; new Accounts(&lt;env&gt;environment.environment);
@@ -1790,10 +1790,10 @@ export class SdkService {
     })
   }
 
-  noEnvironment() {
-    if (!this.environment) {
+  noDatamanagerID() {
+    if (!this.environment.datamanagerID) {
       return &#x60;
-No environment is set up, you have to set it via your provider: 
+No datamangerID is set in your environment! You can only use the SdkService if you provide an environment like this in your module&#x27;s provide section: 
 
 providers: [
   {
@@ -1804,15 +1804,11 @@ providers: [
       clientID: &#x27;rest&#x27;
     }
   }
-]
-&#x60;;
+]&#x60;;
     }
   }
 
   noClientID() {
-    if (this.noEnvironment()) {
-      return this.noEnvironment();
-    }
     if (!this.environment.clientID) {
       return &#x60;
 No clientID set in environment! To enable all auth related functionalities, you can create a client in your datamanager settings and provide it with your environment:

@@ -61,7 +61,7 @@ export class TypeConfigService {
       // display: (value) => moment(value).format('DD.MM.YY')
       display: (value) => value ? moment(value).format('DD.MM.YY') : '',
       validate: (value) => {
-        if (value && isNaN(value.getTime())) {
+        if (value && (value === 'invalid' || !moment(value).isValid())) {
           return 'Ungültiges Datum';
         }
         return;
