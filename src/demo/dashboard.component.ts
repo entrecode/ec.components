@@ -3,9 +3,9 @@ import { demoRoutes } from './demo.routes';
 
 @Component({
   selector: 'demo-dashboard',
-  template: `<h1>ec.components</h1>
+  template: `<h2>ec.components demos</h2>
 <p>Welcome to the ec.components demos! 
-You can select a demo from the menu above or load <a [href]="randomDemo">Random Demo</a>!</p>
+You can select a demo from the menu above or load a <a [href]="randomDemo">random demo</a>!</p>
 <p>Other Resources: </p>
 <ul>
 <li><a href="https://github.com/entrecode/ec.components/tree/master/src/demo">demo sources</a></li>

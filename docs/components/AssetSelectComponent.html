@@ -1257,6 +1257,9 @@
                                  <a href="#canToggle">canToggle</a>
                             </li>
                             <li>
+                                 <a href="#editItem">editItem</a>
+                            </li>
+                            <li>
                                  <a href="#ngOnInit">ngOnInit</a>
                             </li>
                             <li>
@@ -1471,6 +1474,38 @@
     
                                 <div class="io-description">
                                     <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="editItem"></a>
+                            <b> editItem</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>editItem(item: )</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">src/packages/data/files/asset-select/asset-select.component.ts:83</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
     
                                 </div>
                         </td>
@@ -1806,6 +1841,17 @@ export class AssetSelectComponent extends SelectComponent {
     }
   }
 
+  editItem(item) {
+    if (!item.getBody().isResolved) {
+      item.getBody().resolve().then((asset) &#x3D;&gt; {
+        console.log(&#x27;resolved&#x27;, asset);
+      })
+    } else {
+      console.log(&#x27;edit&#x27;, item.getBody());
+    }
+    //TODO open edit pop
+  }
+
 }</code></pre>
     </div>
 
@@ -1817,7 +1863,7 @@ export class AssetSelectComponent extends SelectComponent {
       &lt;i class&#x3D;&quot;ec-icon find&quot;&gt;&lt;/i&gt;
     &lt;/li&gt;
     &lt;li *ngFor&#x3D;&quot;let selected of selection.items&quot; class&#x3D;&quot;ec-list-avatar&quot;
-        (click)&#x3D;&quot;clickItem(selected)&quot;&gt;
+        (click)&#x3D;&quot;editItem(selected)&quot;&gt;
       &lt;img [src]&#x3D;&quot;selected.resolve(&#x27;thumb&#x27;)&quot;&gt; &lt;a (click)&#x3D;&quot;removeItem(selected)&quot;&gt;X&lt;/a&gt;
     &lt;/li&gt;
   &lt;/ul&gt;
@@ -1854,7 +1900,7 @@ export class AssetSelectComponent extends SelectComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div *ngIf="selection" class="ec-select ec-asset-select">  <ul class="selected-items">    <li (click)="toggle(!active,true)" class="btn" [ngClass]="active?\'default\':\'minor\'"        *ngIf="canToggle()">      <i class="ec-icon find"></i>    </li>    <li *ngFor="let selected of selection.items" class="ec-list-avatar"        (click)="clickItem(selected)">      <img [src]="selected.resolve(\'thumb\')"> <a (click)="removeItem(selected)">X</a>    </li>  </ul>  <ec-pop [ngClass]="config?.popClass" #assetPop>    <ec-loader #assetLoader class="blend"></ec-loader>    <ec-upload [placeholder]="field?.getPlaceholder()" [loader]="assetLoader"               (success)="selectUpload($event)"></ec-upload>    <ec-asset-list [selection]="selection" [config]="config" [loader]="assetLoader"                   *ngIf="selection&&assetPop.active"></ec-asset-list>  </ec-pop></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div *ngIf="selection" class="ec-select ec-asset-select">  <ul class="selected-items">    <li (click)="toggle(!active,true)" class="btn" [ngClass]="active?\'default\':\'minor\'"        *ngIf="canToggle()">      <i class="ec-icon find"></i>    </li>    <li *ngFor="let selected of selection.items" class="ec-list-avatar"        (click)="editItem(selected)">      <img [src]="selected.resolve(\'thumb\')"> <a (click)="removeItem(selected)">X</a>    </li>  </ul>  <ec-pop [ngClass]="config?.popClass" #assetPop>    <ec-loader #assetLoader class="blend"></ec-loader>    <ec-upload [placeholder]="field?.getPlaceholder()" [loader]="assetLoader"               (success)="selectUpload($event)"></ec-upload>    <ec-asset-list [selection]="selection" [config]="config" [loader]="assetLoader"                   *ngIf="selection&&assetPop.active"></ec-asset-list>  </ec-pop></div></div>'
     var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'AssetInputComponent', 'selector': ''},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
     var DIRECTIVES = [{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'AssetSelectComponent'};

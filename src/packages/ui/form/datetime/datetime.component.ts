@@ -31,7 +31,7 @@ export class DatetimeComponent implements ControlValueAccessor {
   /** Array of the days of a week. */
   private weekdays: string[];
   /** The input's placeholder */
-  @Input() placeholder: string;
+  @Input() placeholder: string = '';
   /** If true, the time will not be displayed nor will be editable. */
   @Input() disableTime: boolean;
   /** Allowed date input patterns. The first one will be standard. */
