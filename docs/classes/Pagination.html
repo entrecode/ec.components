@@ -1189,7 +1189,7 @@
                                         <span class="modifier">Protected</span> <a href="#config">config</a>
                                     </li>
                                     <li>
-                                        <span class="modifier">Private</span> <a href="#pages">pages</a>
+                                        <span class="modifier">Public</span> <a href="#pages">pages</a>
                                     </li>
                                     <li>
                                         <span class="modifier">Protected</span> <a href="#total">total</a>
@@ -1837,12 +1837,12 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="pages"></a>
-                                    <b><span class="modifier">Private</span> pages</b>
+                                    <b><span class="modifier">Public</span> pages</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-lock"></span><code>pages:     <code>Array&lt;any&gt;</code>
+                                    <span class="modifier-icon fa fa-"></span><code>pages:     <code>Array&lt;any&gt;</code>
             </code>
                                 </td>
                             </tr>
@@ -1925,7 +1925,7 @@ export class Pagination {
   /** The pagination config */
   protected config: ListConfig;
   /** Array to iterate over the number of pages. */
-  private pages: Array&lt;any&gt;;
+  public pages: Array&lt;any&gt;;
   /** Subject for tracking changes. */
   private change &#x3D; new Subject();
   /** Observable that is nexted when the pagination has changed. */

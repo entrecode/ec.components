@@ -162,7 +162,7 @@ export class List<T> extends Collection<Item<T>> {
   }
 
   /** Item tracking for *ngFor. */
-  private trackItem(index, item) {
+  public trackItem(index, item) {
     return index;
   }
 }

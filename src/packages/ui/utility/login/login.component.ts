@@ -11,7 +11,7 @@ import { FieldValidators } from '../validators/field-validators';
 })
 export class LoginComponent implements OnInit {
   /** The login's form group.*/
-  private form: FormGroup;
+  public form: FormGroup;
   /** Flips true when submitted. */
   private submitted: boolean;
   /** Contains possible error messages. */

@@ -1216,7 +1216,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <span class="modifier">Private</span> <a href="#hover">hover</a>
+                                <span class="modifier">Public</span> <a href="#hover">hover</a>
                             </li>
                             <li>
                                 <span class="modifier">Private</span> <a href="#timeout">timeout</a>
@@ -1884,12 +1884,12 @@
                     <tr>
                         <td class="col-md-4">
                             <a name="hover"></a>
-                            <b><span class="modifier">Private</span> hover</b>
+                            <b><span class="modifier">Public</span> hover</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-lock"></span><code>hover:     <code></code>
+                            <span class="modifier-icon fa fa-"></span><code>hover:     <code></code>
     </code>
                         </td>
                     </tr>
@@ -1967,7 +1967,7 @@ export class MenuComponent {
   /** Delay before menu is shown on mouseover. */
   @Input() hoverDelay: number &#x3D; 50;
   /** The currently hovered Route*/
-  private hover;//: Route;
+  public hover;//: Route;
   /** The timeout for delay handling */
   private timeout;
 

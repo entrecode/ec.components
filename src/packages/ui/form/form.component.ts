@@ -17,7 +17,7 @@ export class FormComponent {
   /** The instance of Form that is used. */
   protected form: Form<any>;
   /** The current (angular) form group. */
-  protected group: FormGroup;
+  public group: FormGroup;
   /** You can also use a FormConfig/ItemConfig as input (with defined fields property) */
   @Input() readonly config: FormConfig<any>;
   /** You can also use an Item as input */

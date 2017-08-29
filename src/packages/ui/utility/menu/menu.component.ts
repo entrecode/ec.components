@@ -26,7 +26,7 @@ export class MenuComponent {
   /** Delay before menu is shown on mouseover. */
   @Input() hoverDelay: number = 50;
   /** The currently hovered Route*/
-  private hover;//: Route;
+  public hover;//: Route;
   /** The timeout for delay handling */
   private timeout;
 

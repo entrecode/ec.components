@@ -19,8 +19,8 @@ import { songs } from '../../assets/songs';
   `,
 })
 export class ListDemoComponent {
-  private mocked = mocked;
-  private songs = mocked.lists.songs;
+  public mocked = mocked;
+  public songs = mocked.lists.songs;
   private songArray = songs.songs;
 
   constructor() {

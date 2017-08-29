@@ -1218,7 +1218,7 @@
                                 <span class="modifier">Public</span> <a href="#errorMessage">errorMessage</a>
                             </li>
                             <li>
-                                <span class="modifier">Private</span> <a href="#login">login</a>
+                                <span class="modifier">Public</span> <a href="#login">login</a>
                             </li>
                             <li>
                                 <span class="modifier">Private</span> <a href="#submitted">submitted</a>
@@ -1471,12 +1471,12 @@
                     <tr>
                         <td class="col-md-4">
                             <a name="login"></a>
-                            <b><span class="modifier">Private</span> login</b>
+                            <b><span class="modifier">Public</span> login</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-lock"></span><code>login:     <code><a href="../classes/Form.html" target="_self" >FormGroup</a></code>
+                            <span class="modifier-icon fa fa-"></span><code>login:     <code><a href="../classes/Form.html" target="_self" >FormGroup</a></code>
     </code>
                         </td>
                     </tr>
@@ -1541,7 +1541,7 @@ import { SdkService } from &#x27;../../data/sdk/sdk.service&#x27;;
   styleUrls: [&#x27;./public-login.component.scss&#x27;]
 })
 export class PublicLoginComponent implements OnInit {
-  private login: FormGroup;
+  public login: FormGroup;
   private submitted: boolean;
   public errorMessage: string;
   @Output() success: EventEmitter&lt;any&gt; &#x3D; new EventEmitter();

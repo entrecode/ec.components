@@ -9,11 +9,11 @@ import { Item } from '../../../core/item/item';
 })
 export class DefaultInputComponent {
   /** The field for which the input is meant. */
-  protected field: Field<any>;
+  public field: Field<any>;
   /** The item that is targeted by the input */
-  protected item: Item<any>;
+  public item: Item<any>;
   /** The form group that is used */
-  protected group: FormGroup;
+  public group: FormGroup;
   /** The form control that is used */
-  protected control: FormControl;
+  public control: FormControl;
 }

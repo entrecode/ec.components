@@ -1242,7 +1242,7 @@
                                  <a href="#getPopClass">getPopClass</a>
                             </li>
                             <li>
-                                <span class="modifier">Private</span> <a href="#hasMethod">hasMethod</a>
+                                <span class="modifier">Public</span> <a href="#hasMethod">hasMethod</a>
                             </li>
                             <li>
                                 <span class="modifier">Private</span> <a href="#loadEntry">loadEntry</a>
@@ -1251,7 +1251,7 @@
                                 <span class="modifier">Private</span> <a href="#log">log</a>
                             </li>
                             <li>
-                                <span class="modifier">Private</span> <a href="#maySave">maySave</a>
+                                <span class="modifier">Public</span> <a href="#maySave">maySave</a>
                             </li>
                             <li>
                                 <span class="modifier">Private</span> <a href="#selectEntry">selectEntry</a>
@@ -1456,12 +1456,12 @@
                     <tr>
                         <td class="col-md-4">
                             <a name="hasMethod"></a>
-                            <b><span class="modifier">Private</span> hasMethod</b>
+                            <b><span class="modifier">Public</span> hasMethod</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                                <span class="modifier-icon method fa fa-play lock"></span>
+                                <span class="modifier-icon method fa fa-play "></span>
                             <code>hasMethod(method: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                         </td>
                     </tr>
@@ -1561,12 +1561,12 @@
                     <tr>
                         <td class="col-md-4">
                             <a name="maySave"></a>
-                            <b><span class="modifier">Private</span> maySave</b>
+                            <b><span class="modifier">Public</span> maySave</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                                <span class="modifier-icon method fa fa-play lock"></span>
+                                <span class="modifier-icon method fa fa-play "></span>
                             <code>maySave(form: <a href="../classes/Form.html">EntryFormComponent</a>)</code>
                         </td>
                     </tr>
@@ -1846,12 +1846,12 @@ export class CrudComponent {
   }
 
   /** Returns true if the given method is part of the methods array (or if there is no methods array) */
-  private hasMethod(method: string) {
+  public hasMethod(method: string) {
     return !this.config.methods || this.config.methods.indexOf(method) !&#x3D;&#x3D; -1;
   }
 
   /** Determines if the current form can be saved, based on the allowed method (edit/update). */
-  private maySave(form: EntryFormComponent) {
+  public maySave(form: EntryFormComponent) {
     const edit &#x3D; form.isEditing();
     return (!edit &amp;&amp; this.hasMethod(&#x27;create&#x27;)) || (edit &amp;&amp; this.hasMethod(&#x27;update&#x27;))
   }

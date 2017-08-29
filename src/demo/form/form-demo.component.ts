@@ -8,7 +8,7 @@ import { Item } from '../../packages/core/item/item';
 })
 export class FormDemoComponent {
   tree: Item<any>;
-  private mocked = mocked;
+  public mocked = mocked;
 
   constructor() {
     this.tree = mocked.lists.trees.id(0);

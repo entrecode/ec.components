@@ -1216,7 +1216,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <span class="modifier">Private</span> <a href="#cells">cells</a>
+                                <span class="modifier">Public</span> <a href="#cells">cells</a>
                             </li>
                             <li>
                                 <span class="modifier">Private</span> <a href="#formatted">formatted</a>
@@ -1688,12 +1688,12 @@
                     <tr>
                         <td class="col-md-4">
                             <a name="cells"></a>
-                            <b><span class="modifier">Private</span> cells</b>
+                            <b><span class="modifier">Public</span> cells</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-lock"></span><code>cells:     <code><a href="../interfaces/Day.html" target="_self" >Array&lt;Day&gt;</a></code>
+                            <span class="modifier-icon fa fa-"></span><code>cells:     <code><a href="../interfaces/Day.html" target="_self" >Array&lt;Day&gt;</a></code>
     </code>
                         </td>
                     </tr>
@@ -1787,7 +1787,7 @@ export class MonthComponent {
   /** The current month as string */
   private formatted: string;
   /** The cells containing the days */
-  private cells: Array&lt;Day&gt;;
+  public cells: Array&lt;Day&gt;;
   /** Emits when the selected day changes. */
   @Output() select: EventEmitter&lt;any&gt; &#x3D; new EventEmitter();
 

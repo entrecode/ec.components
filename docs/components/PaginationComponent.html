@@ -1222,7 +1222,7 @@
                                 <span class="modifier">Private</span> <a href="#container">container</a>
                             </li>
                             <li>
-                                <span class="modifier">Private</span> <a href="#containerWidth">containerWidth</a>
+                                <span class="modifier">Public</span> <a href="#containerWidth">containerWidth</a>
                             </li>
                             <li>
                                 <span class="modifier">Private</span> <a href="#item">item</a>
@@ -1528,12 +1528,12 @@ NOTE: For a smoother UX, there are minimum <code>2 * range + 1</code> pages visi
                     <tr>
                         <td class="col-md-4">
                             <a name="containerWidth"></a>
-                            <b><span class="modifier">Private</span> containerWidth</b>
+                            <b><span class="modifier">Public</span> containerWidth</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-lock"></span><code>containerWidth:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                            <span class="modifier-icon fa fa-"></span><code>containerWidth:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
     </code>
                         </td>
                     </tr>
@@ -1667,7 +1667,7 @@ export class PaginationComponent {
   /** The current translation of the pagination page list. The current page is always in the middle. */
   private translation: string;
   /** The containerWidth of all pages. Needed for animation */
-  private containerWidth: number;
+  public containerWidth: number;
 
   /** When intitializing, the containerWidth is saved. */
   private ngOnInit() {

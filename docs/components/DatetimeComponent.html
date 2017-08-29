@@ -1248,7 +1248,7 @@
                                  <a href="#value">value</a>
                             </li>
                             <li>
-                                <span class="modifier">Private</span> <a href="#weekdays">weekdays</a>
+                                <span class="modifier">Public</span> <a href="#weekdays">weekdays</a>
                             </li>
                         </ul>
                     </td>
@@ -1853,12 +1853,12 @@
                     <tr>
                         <td class="col-md-4">
                             <a name="weekdays"></a>
-                            <b><span class="modifier">Private</span> weekdays</b>
+                            <b><span class="modifier">Public</span> weekdays</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-lock"></span><code>weekdays:     <code>string[]</code>
+                            <span class="modifier-icon fa fa-"></span><code>weekdays:     <code>string[]</code>
     </code>
                         </td>
                     </tr>
@@ -1919,7 +1919,7 @@ export class DatetimeComponent implements ControlValueAccessor {
   /** The dropdown pop with the calendar*/
   @ViewChild(&#x27;calendarPop&#x27;) pop: PopComponent;
   /** Array of the days of a week. */
-  private weekdays: string[];
+  public weekdays: string[];
   /** The input&#x27;s placeholder */
   @Input() placeholder: string &#x3D; &#x27;&#x27;;
   /** If true, the time will not be displayed nor will be editable. */

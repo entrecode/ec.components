@@ -9,7 +9,7 @@ import { TabComponent } from '../tab/tab.component';
   styleUrls: ['./tabs.component.scss']
 })
 export class TabsComponent {
-  private tabs: Collection<TabComponent>;
+  public tabs: Collection<TabComponent>;
   /** You can set the initially selected tab by passing a TabComponent in (e.g. via #variable) */
   @Input() selected: TabComponent;
 

@@ -18,9 +18,9 @@ export class EditorComponent {
   @Input() json;
   @Output() change: EventEmitter<any> = new EventEmitter();
   private element; //current edited element
-  private caret: any; //current edited branch in class
+  public caret: any; //current edited branch in class
   private ecvc;
-  private content: any;
+  public content: any;
 
   private source: any = new Subject();
   /** Observable that is nexted when the content has changed. */

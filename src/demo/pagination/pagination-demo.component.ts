@@ -6,7 +6,7 @@ import { Pagination } from '../../packages/core/pagination/pagination';
   templateUrl: './pagination-demo.component.html',
 })
 export class PaginationDemoComponent {
-  private pagination = new Pagination({});
+  public pagination = new Pagination({});
   currentPage: number = this.pagination.getPage();
 
   constructor() {

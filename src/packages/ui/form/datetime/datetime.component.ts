@@ -29,7 +29,7 @@ export class DatetimeComponent implements ControlValueAccessor {
   /** The dropdown pop with the calendar*/
   @ViewChild('calendarPop') pop: PopComponent;
   /** Array of the days of a week. */
-  private weekdays: string[];
+  public weekdays: string[];
   /** The input's placeholder */
   @Input() placeholder: string = '';
   /** If true, the time will not be displayed nor will be editable. */

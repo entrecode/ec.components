@@ -10,7 +10,7 @@ import { FieldValidators } from '../../ui';
   styleUrls: ['./admin-login.component.scss']
 })
 export class AdminLoginComponent implements OnInit {
-  private login: FormGroup;
+  public login: FormGroup;
   private submitted: boolean;
   public errorMessage: string;
   @Output() success: EventEmitter<any> = new EventEmitter();

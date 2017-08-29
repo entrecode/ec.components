@@ -10,7 +10,7 @@ import { SdkService } from '../../data/sdk/sdk.service';
   styleUrls: ['./public-login.component.scss']
 })
 export class PublicLoginComponent implements OnInit {
-  private login: FormGroup;
+  public login: FormGroup;
   private submitted: boolean;
   public errorMessage: string;
   @Output() success: EventEmitter<any> = new EventEmitter();

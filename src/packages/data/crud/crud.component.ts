@@ -49,12 +49,12 @@ export class CrudComponent {
   }
 
   /** Returns true if the given method is part of the methods array (or if there is no methods array) */
-  private hasMethod(method: string) {
+  public hasMethod(method: string) {
     return !this.config.methods || this.config.methods.indexOf(method) !== -1;
   }
 
   /** Determines if the current form can be saved, based on the allowed method (edit/update). */
-  private maySave(form: EntryFormComponent) {
+  public maySave(form: EntryFormComponent) {
     const edit = form.isEditing();
     return (!edit && this.hasMethod('create')) || (edit && this.hasMethod('update'))
   }

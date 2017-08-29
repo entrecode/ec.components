@@ -1,4 +1,4 @@
-<div class="ec-list-group-header" *ngIf="!disableHeader">
+<div class="ec-list-group-header"><!--  *ngIf="!disableHeader" -->
   <div class="ec-list-item-cell ec-list-checkbox" *ngIf="selection&&!list?.isEmpty()">
     <input type="checkbox" (click)="selection?.toggleAll(list?.page)"
            [checked]="selection?.hasAll(list?.page)" [disabled]="selection.config?.solo">

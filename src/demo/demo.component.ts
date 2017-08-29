@@ -11,7 +11,7 @@ import { demoRoutes } from './demo.routes';
   encapsulation: ViewEncapsulation.None,
 })
 export class DemoComponent {
-  private demos = demoRoutes;
+  public demos = demoRoutes;
 
   constructor(private modelConfig: ModelConfigService, private fileService: FileService) {
     moment.locale('de');

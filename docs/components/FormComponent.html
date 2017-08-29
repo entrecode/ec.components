@@ -1222,7 +1222,7 @@
                                 <span class="modifier">Protected</span> <a href="#form">form</a>
                             </li>
                             <li>
-                                <span class="modifier">Protected</span> <a href="#group">group</a>
+                                <span class="modifier">Public</span> <a href="#group">group</a>
                             </li>
                         </ul>
                     </td>
@@ -1849,12 +1849,12 @@
                     <tr>
                         <td class="col-md-4">
                             <a name="group"></a>
-                            <b><span class="modifier">Protected</span> group</b>
+                            <b><span class="modifier">Public</span> group</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-circle"></span><code>group:     <code><a href="../classes/Form.html" target="_self" >FormGroup</a></code>
+                            <span class="modifier-icon fa fa-"></span><code>group:     <code><a href="../classes/Form.html" target="_self" >FormGroup</a></code>
     </code>
                         </td>
                     </tr>
@@ -1918,7 +1918,7 @@ export class FormComponent {
   /** The instance of Form that is used. */
   protected form: Form&lt;any&gt;;
   /** The current (angular) form group. */
-  protected group: FormGroup;
+  public group: FormGroup;
   /** You can also use a FormConfig/ItemConfig as input (with defined fields property) */
   @Input() readonly config: FormConfig&lt;any&gt;;
   /** You can also use an Item as input */

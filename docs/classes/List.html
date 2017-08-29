@@ -1249,7 +1249,7 @@ It comes with features like resolve functions, identifiers, display formatting a
                                          <a href="#toggleSort">toggleSort</a>
                                     </li>
                                     <li>
-                                        <span class="modifier">Private</span> <a href="#trackItem">trackItem</a>
+                                        <span class="modifier">Public</span> <a href="#trackItem">trackItem</a>
                                     </li>
                                 </ul>
                             </td>
@@ -1570,12 +1570,12 @@ It comes with features like resolve functions, identifiers, display formatting a
                             <tr>
                                 <td class="col-md-4">
                                     <a name="trackItem"></a>
-                                    <b><span class="modifier">Private</span> trackItem</b>
+                                    <b><span class="modifier">Public</span> trackItem</b>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play lock"></span>
+                                        <span class="modifier-icon method fa fa-play "></span>
                                     <code>trackItem(index: , item: )</code>
                                 </td>
                             </tr>
@@ -2131,7 +2131,7 @@ export class List&lt;T&gt; extends Collection&lt;Item&lt;T&gt;&gt; {
   }
 
   /** Item tracking for *ngFor. */
-  private trackItem(index, item) {
+  public trackItem(index, item) {
     return index;
   }
 }

@@ -22,7 +22,7 @@ export class PaginationComponent {
   /** The current translation of the pagination page list. The current page is always in the middle. */
   private translation: string;
   /** The containerWidth of all pages. Needed for animation */
-  private containerWidth: number;
+  public containerWidth: number;
 
   /** When intitializing, the containerWidth is saved. */
   private ngOnInit() {

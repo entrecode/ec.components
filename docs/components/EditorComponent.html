@@ -1209,13 +1209,13 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <span class="modifier">Private</span> <a href="#caret">caret</a>
+                                <span class="modifier">Public</span> <a href="#caret">caret</a>
                             </li>
                             <li>
                                 <span class="modifier">Public</span> <a href="#change$">change$</a>
                             </li>
                             <li>
-                                <span class="modifier">Private</span> <a href="#content">content</a>
+                                <span class="modifier">Public</span> <a href="#content">content</a>
                             </li>
                             <li>
                                 <span class="modifier">Private</span> <a href="#ecvc">ecvc</a>
@@ -3106,12 +3106,12 @@
                     <tr>
                         <td class="col-md-4">
                             <a name="caret"></a>
-                            <b><span class="modifier">Private</span> caret</b>
+                            <b><span class="modifier">Public</span> caret</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-lock"></span><code>caret:     <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                            <span class="modifier-icon fa fa-"></span><code>caret:     <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
     </code>
                         </td>
                     </tr>
@@ -3164,12 +3164,12 @@
                     <tr>
                         <td class="col-md-4">
                             <a name="content"></a>
-                            <b><span class="modifier">Private</span> content</b>
+                            <b><span class="modifier">Public</span> content</b>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-lock"></span><code>content:     <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                            <span class="modifier-icon fa fa-"></span><code>content:     <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
     </code>
                         </td>
                     </tr>
@@ -3357,9 +3357,9 @@ export class EditorComponent {
   @Input() json;
   @Output() change: EventEmitter&lt;any&gt; &#x3D; new EventEmitter();
   private element; //current edited element
-  private caret: any; //current edited branch in class
+  public caret: any; //current edited branch in class
   private ecvc;
-  private content: any;
+  public content: any;
 
   private source: any &#x3D; new Subject();
   /** Observable that is nexted when the content has changed. */

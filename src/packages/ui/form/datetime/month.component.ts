@@ -27,7 +27,7 @@ export class MonthComponent {
   /** The current month as string */
   private formatted: string;
   /** The cells containing the days */
-  private cells: Array<Day>;
+  public cells: Array<Day>;
   /** Emits when the selected day changes. */
   @Output() select: EventEmitter<any> = new EventEmitter();
 

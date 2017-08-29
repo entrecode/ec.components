@@ -16,7 +16,7 @@ You can select a demo from the menu above or load a <a [href]="randomDemo">rando
 })
 export class DemoDashboardComponent {
   private demos = demoRoutes.slice(1);
-  private randomDemo: any;
+  public randomDemo: any;
 
   randomRoute(routes, path = '') {
     const random = routes[Math.floor(Math.random() * routes.length)];

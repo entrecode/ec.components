@@ -20,7 +20,7 @@ import { substantives } from '../../mocks/substantives';
 export class ListTransformsDemoComponent {
   private percent = (value) => Math.round(100 * value) + '%';
   private german = [...irregular_verbs, ...regular_verbs, ...adjektive, ...substantives];
-  private words = new List(this.german.filter(word => !!word)
+  public words = new List(this.german.filter(word => !!word)
     .map((word) => {
       return { word }
     }), {

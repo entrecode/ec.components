@@ -8,7 +8,7 @@ export class Pagination {
   /** The pagination config */
   protected config: ListConfig;
   /** Array to iterate over the number of pages. */
-  private pages: Array<any>;
+  public pages: Array<any>;
   /** Subject for tracking changes. */
   private change = new Subject();
   /** Observable that is nexted when the pagination has changed. */

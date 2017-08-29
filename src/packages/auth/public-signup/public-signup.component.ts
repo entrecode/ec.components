@@ -10,9 +10,9 @@ import { FieldValidators } from '../../ui';
   styleUrls: ['./public-signup.component.scss']
 })
 export class PublicSignupComponent implements OnInit {
-  private signup: FormGroup;
+  public signup: FormGroup;
   private submitted: boolean;
-  private errorMessage: string;
+  public errorMessage: string;
   @Output() success: EventEmitter<any> = new EventEmitter();
   @Output() error: EventEmitter<any> = new EventEmitter();
 

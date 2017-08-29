@@ -8,7 +8,7 @@ import { AdminService, PublicService, SdkService } from '../../packages/data';
 export class AuthDemoComponent {
   private user: any;
 
-  constructor(private sdk: SdkService, private pub: PublicService, private admin: AdminService) {
+  constructor(public sdk: SdkService, private pub: PublicService, private admin: AdminService) {
   }
 
   ngOnInit() {
