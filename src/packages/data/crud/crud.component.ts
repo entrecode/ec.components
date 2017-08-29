@@ -62,10 +62,10 @@ export class CrudComponent {
   /** Loads the clicked entry item, depending on the configured levels */
   private loadEntry(item) {
     return Promise.resolve().then(() => {
-      if (this.config.levels === 1) { //TODO add !this.config.levels ||' when lvl1 is supported
+      if (!this.config.alwaysLoadEntry && (!this.config.levels || this.config.levels === 1)) {
         return item;
       }
-      return this.sdk.api.entry(this.model, item.id(), this.config.levels || 2)
+      return this.sdk.api.entry(this.model, item.id(), this.config.levels || 1)
       .then((leveledEntry) => {
         return new Item(leveledEntry, item.config);
       });

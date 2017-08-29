@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MonthComponent } from './month.component';
 import { FormModule } from '../form.module';
 
-fdescribe('MonthComponent', () => {
+describe('MonthComponent', () => {
   let component: MonthComponent;
   let fixture: ComponentFixture<MonthComponent>;
 
