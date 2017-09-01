@@ -1405,7 +1405,7 @@ method to call the SDK method for loading the desired list! (see EntryList for e
             </div>
             
                                         <div class="io-description">
-                                            <b>Returns : </b>    <code>{ size: any; page: any; }</code>
+                                            <b>Returns : </b>    <code>filterOptions</code>
             
                                         </div>
                                 </td>
@@ -1626,7 +1626,7 @@ method to call the SDK method for loading the desired list! (see EntryList for e
 import { EntryListConfig } from &#x27;../../data/&#x27;;
 import { SdkService } from &#x27;../sdk/sdk.service&#x27;;
 import { Subject } from &#x27;rxjs&#x27;;
-import { ListResource } from &quot;ec.sdk/typings/resources/ListResource&quot;;
+import ListResource, { filterOptions } from &quot;ec.sdk/src/resources/ListResource&quot;;
 import { Field } from &#x27;../../core/field/field&#x27;;
 
 /**
@@ -1682,7 +1682,7 @@ export class ResourceList&lt;T&gt; extends List&lt;T&gt; {
   }
 
   /** Returns SDK filterOptions from a given EntryListConfig. */
-  protected getFilterOptions({ size &#x3D; 20, page &#x3D; 1, filter, sortBy, desc, sort &#x3D; [] }: EntryListConfig) {
+  protected getFilterOptions({ size &#x3D; 20, page &#x3D; 1, filter, sortBy, desc, sort &#x3D; [] }: EntryListConfig): filterOptions {
     const options &#x3D; { size, page };
     if (sortBy) {
       Object.assign(options, { sort: [(desc ? &#x27;-&#x27; : &#x27;&#x27;) + sortBy] });

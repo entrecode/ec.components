@@ -10,7 +10,7 @@ import { PopComponent } from '../../ui/pop/pop.component';
 import { Item } from '../../core/item/item';
 import { CrudConfig } from '../crud/crud-config.interface';
 import { SelectComponent } from '../../ui/form/select/select.component';
-import { EntryResource } from "ec.sdk/typings/resources/publicAPI/EntryResource";
+import EntryResource from "ec.sdk/src/resources/publicAPI/EntryResource";
 
 // import LiteEntryResource from "ec.sdk/src/resources/publicAPI/LiteEntryResource";
 

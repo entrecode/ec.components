@@ -1413,8 +1413,8 @@
 
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { EventEmitter, Injectable } from &#x27;@angular/core&#x27;;
-import { PublicAssetList } from &quot;ec.sdk/typings/resources/publicAPI/PublicAssetList&quot;;
-import { PublicAssetResource } from &quot;ec.sdk/typings/resources/publicAPI/PublicAssetResource&quot;;
+import PublicAssetList from &quot;ec.sdk/src/resources/publicAPI/PublicAssetList&quot;;
+import PublicAssetResource from &quot;ec.sdk/src/resources/publicAPI/PublicAssetResource&quot;;
 import { SdkService } from &#x27;../sdk/sdk.service&#x27;;
 import { AssetList } from &#x27;./asset-list/asset-list&#x27;;
 import { TypeConfigService } from &#x27;../model-config/type-config.service&#x27;;
@@ -1453,13 +1453,12 @@ export class FileService {
     onSave: (item, value) &#x3D;&gt; {
       const asset &#x3D; item.getBody();
       //TODO use crud.service for Resource?
-      value &#x3D; item.serialize(value, !!asset.save);
-      console.log(&#x27;value&#x27;, value);
+      value &#x3D; item.serialize(value, asset instanceof PublicAssetResource);
       Object.assign(asset, value);
-      if (!!asset.save) {
+      if (asset instanceof PublicAssetResource) {
         return asset.save();
       }
-      return value; //TODO createAsset
+      return value;
     },
     fields: {
       thumb: {

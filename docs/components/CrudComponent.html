@@ -1272,6 +1272,9 @@
                                 <span class="modifier">Public</span> <a href="#maySave">maySave</a>
                             </li>
                             <li>
+                                <span class="modifier">Public</span> <a href="#mustReload">mustReload</a>
+                            </li>
+                            <li>
                                 <span class="modifier">Private</span> <a href="#selectEntry">selectEntry</a>
                             </li>
                         </ul>
@@ -1452,7 +1455,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">src/packages/data/crud/crud.component.ts:112</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="120" class="link-to-prism">src/packages/data/crud/crud.component.ts:120</a></div>
                                 </td>
                             </tr>
     
@@ -1522,13 +1525,13 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">src/packages/data/crud/crud.component.ts:78</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">src/packages/data/crud/crud.component.ts:86</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-description"><p>Loads the clicked entry item, depending on the configured levels </p>
+                                <div class="io-description"><p>Loads the clicked entry item, depending on the configured levels. Reloads the entry if the form has fields the which list has not. </p>
     </div>
     
                                 <div class="io-description">
@@ -1613,6 +1616,41 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
+                            <a name="mustReload"></a>
+                            <b><span class="modifier">Public</span> mustReload</b>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <span class="modifier-icon method fa fa-play "></span>
+                            <code>mustReload(item: )</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">src/packages/data/crud/crud.component.ts:78</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Returns true if the visible fields in the list differ from the visible fields in the form</p>
+    </div>
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
                             <a name="selectEntry"></a>
                             <b><span class="modifier">Private</span> selectEntry</b>
                         </td>
@@ -1627,7 +1665,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">src/packages/data/crud/crud.component.ts:100</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">src/packages/data/crud/crud.component.ts:108</a></div>
                                 </td>
                             </tr>
     
@@ -1957,13 +1995,21 @@ export class CrudComponent {
     return (!edit &amp;&amp; this.hasMethod(&#x27;create&#x27;)) || (edit &amp;&amp; this.hasMethod(&#x27;update&#x27;))
   }
 
-  /** Loads the clicked entry item, depending on the configured levels */
+  /** Returns true if the visible fields in the list differ from the visible fields in the form*/
+  public mustReload(item) {
+    console.log(&#x27;must reload&#x3D;&#x27;, item.config.fields);
+    return !Object.keys(item.config.fields).reduce((equal, property) &#x3D;&gt; {
+      return equal &amp;&amp; (item.config.fields[property].list !&#x3D;&#x3D; false || item.config.fields[property].form &#x3D;&#x3D;&#x3D; false);
+    }, true);
+  }
+
+  /** Loads the clicked entry item, depending on the configured levels. Reloads the entry if the form has fields the which list has not. */
   private loadEntry(item) {
     return Promise.resolve().then(() &#x3D;&gt; {
-      if (!this.config.alwaysLoadEntry &amp;&amp; (!this.config.levels || this.config.levels &#x3D;&#x3D;&#x3D; 1)) {
+      if (!this.config.alwaysLoadEntry &amp;&amp; !this.mustReload(item) &amp;&amp; (!this.config.levels || this.config.levels &#x3D;&#x3D;&#x3D; 1)) {
         return item;
       }
-      return this.sdk.api.entry(this.model, item.id(), this.config.levels || 1)
+      return this.sdk.api.entry(this.model, item.id(), { levels: this.config.levels || 1 })
       .then((leveledEntry) &#x3D;&gt; {
         return new Item(leveledEntry, item.config);
       });

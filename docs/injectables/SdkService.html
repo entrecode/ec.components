@@ -1772,8 +1772,8 @@ setClientID.</p>
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { EventEmitter, Inject, Injectable } from &#x27;@angular/core&#x27;;
 import { Accounts, DataManager, PublicAPI, Session } from &#x27;ec.sdk&#x27;;
-import { AccountResource } from &#x27;ec.sdk/typings/resources/accounts/AccountResource&#x27;;
-import { environment as env } from &#x27;ec.sdk/typings/interfaces&#x27;;
+import AccountResource from &#x27;ec.sdk/src/resources/accounts/AccountResource&#x27;;
+import { environment as env } from &#x27;ec.sdk/src/resources/ListResource&#x27;;
 
 /** The SdkService exposes all instances of the ec.sdk APIs.
  * To be able to use it, you have to provide an environment like this in your module&#x27;s providers:

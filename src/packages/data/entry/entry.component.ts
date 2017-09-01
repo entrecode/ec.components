@@ -3,7 +3,7 @@
  */
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { SdkService } from '../sdk/sdk.service';
-import { EntryResource } from "ec.sdk/typings/resources/publicAPI/EntryResource";
+import EntryResource from "ec.sdk/src/resources/publicAPI/EntryResource";
 
 /** Loads an entry by id to the template. */
 @Component({

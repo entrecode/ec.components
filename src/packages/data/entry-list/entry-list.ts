@@ -1,6 +1,7 @@
 import { EntryListConfig } from '..';
 import { SdkService } from '../sdk/sdk.service';
 import { ResourceList } from '../resource-list/resource-list';
+import { filterOptions } from "ec.sdk/src/resources/ListResource";
 
 /**
  * Extension of List for Datamanager Entries.
@@ -15,6 +16,14 @@ export class EntryList<Entry> extends ResourceList<Entry> {
     super(config, sdk);
     this.model = model;
     this.load();
+  }
+
+  /** Generates the filterOptions for loading the entries. Sets the _fields option. */
+  getFilterOptions(config: EntryListConfig): filterOptions {
+    const _fields = Object.keys(this.config.fields)
+    .filter((field) => this.config.fields[field].list !== false);
+    console.log('fields', _fields);
+    return Object.assign(super.getFilterOptions(config), { _fields });
   }
 
   /** Overrides the SdkList load method. */

@@ -1,8 +1,8 @@
 import { EntryListConfig } from '../../data/';
 import { ResourceList } from '../resource-list/resource-list';
-import { SdkService } from '../../data/sdk/sdk.service';
+import { SdkService } from '../sdk/sdk.service';
 import * as moment from 'moment';
-import { DataManagerResource } from 'ec.sdk/typings/resources/datamanager/DataManagerResource';
+import DataManagerResource from 'ec.sdk/src/resources/datamanager/DataManagerResource';
 
 /**
  * Extension of List for Datamanagers

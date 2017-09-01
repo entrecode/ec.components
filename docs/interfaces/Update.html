@@ -1371,8 +1371,8 @@
 
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { EventEmitter, Injectable } from &#x27;@angular/core&#x27;;
-import { EntryResource } from &quot;ec.sdk/typings/resources/publicAPI/EntryResource&quot;;
-import { EntryList } from &quot;ec.sdk/typings/resources/publicAPI/EntryList&quot;;
+import EntryResource from &quot;ec.sdk/src/resources/publicAPI/EntryResource&quot;;
+import EntryList from &quot;ec.sdk/src/resources/publicAPI/EntryList&quot;;
 import { SdkService } from &#x27;../sdk/sdk.service&#x27;;
 import { Observable } from &#x27;rxjs&#x27;;
 
@@ -1418,7 +1418,7 @@ export class CrudService {
 
   /** Saves the given entry with the given value. If the entry is not yet existing, it will be created. Otherwise it will be updated. */
   save(model: string, entry: EntryResource, value: Object) {
-    if (entry &amp;&amp; entry.save) {
+    if (entry instanceof EntryResource) {
       return this.update(model, entry, value);
     }
     return this.create(model, value)

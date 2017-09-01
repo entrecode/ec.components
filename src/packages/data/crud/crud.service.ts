@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { EntryResource } from "ec.sdk/typings/resources/publicAPI/EntryResource";
-import { EntryList } from "ec.sdk/typings/resources/publicAPI/EntryList";
+import EntryResource from "ec.sdk/src/resources/publicAPI/EntryResource";
+import EntryList from "ec.sdk/src/resources/publicAPI/EntryList";
 import { SdkService } from '../sdk/sdk.service';
 import { Observable } from 'rxjs';
 
@@ -46,7 +46,7 @@ export class CrudService {
 
   /** Saves the given entry with the given value. If the entry is not yet existing, it will be created. Otherwise it will be updated. */
   save(model: string, entry: EntryResource, value: Object) {
-    if (entry && entry.save) {
+    if (entry instanceof EntryResource) {
       return this.update(model, entry, value);
     }
     return this.create(model, value)

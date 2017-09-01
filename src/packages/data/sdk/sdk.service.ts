@@ -1,7 +1,7 @@
 import { EventEmitter, Inject, Injectable } from '@angular/core';
 import { Accounts, DataManager, PublicAPI, Session } from 'ec.sdk';
-import { AccountResource } from 'ec.sdk/typings/resources/accounts/AccountResource';
-import { environment as env } from 'ec.sdk/typings/interfaces';
+import AccountResource from 'ec.sdk/src/resources/accounts/AccountResource';
+import { environment as env } from 'ec.sdk/src/resources/ListResource';
 
 /** The SdkService exposes all instances of the ec.sdk APIs.
  * To be able to use it, you have to provide an environment like this in your module's providers:

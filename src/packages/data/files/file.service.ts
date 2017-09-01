@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { PublicAssetList } from "ec.sdk/typings/resources/publicAPI/PublicAssetList";
-import { PublicAssetResource } from "ec.sdk/typings/resources/publicAPI/PublicAssetResource";
+import PublicAssetList from "ec.sdk/src/resources/publicAPI/PublicAssetList";
+import PublicAssetResource from "ec.sdk/src/resources/publicAPI/PublicAssetResource";
 import { SdkService } from '../sdk/sdk.service';
 import { AssetList } from './asset-list/asset-list';
 import { TypeConfigService } from '../model-config/type-config.service';
@@ -39,13 +39,12 @@ export class FileService {
     onSave: (item, value) => {
       const asset = item.getBody();
       //TODO use crud.service for Resource?
-      value = item.serialize(value, !!asset.save);
-      console.log('value', value);
+      value = item.serialize(value, asset instanceof PublicAssetResource);
       Object.assign(asset, value);
-      if (!!asset.save) {
+      if (asset instanceof PublicAssetResource) {
         return asset.save();
       }
-      return value; //TODO createAsset
+      return value;
     },
     fields: {
       thumb: {

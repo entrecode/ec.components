@@ -59,7 +59,8 @@ export class DemoComponent {
     this.modelConfig.set('baker', {
       fields: {
         picture: {
-          label: 'Bilder'
+          label: 'Bilder',
+          // list: false
         },
         name: {
           label: 'Bäcker'

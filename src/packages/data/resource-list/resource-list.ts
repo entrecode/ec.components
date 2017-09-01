@@ -2,7 +2,7 @@ import { Item, List } from '../../core';
 import { EntryListConfig } from '../../data/';
 import { SdkService } from '../sdk/sdk.service';
 import { Subject } from 'rxjs';
-import { ListResource } from "ec.sdk/typings/resources/ListResource";
+import ListResource, { filterOptions } from "ec.sdk/src/resources/ListResource";
 import { Field } from '../../core/field/field';
 
 /**
@@ -58,7 +58,7 @@ export class ResourceList<T> extends List<T> {
   }
 
   /** Returns SDK filterOptions from a given EntryListConfig. */
-  protected getFilterOptions({ size = 20, page = 1, filter, sortBy, desc, sort = [] }: EntryListConfig) {
+  protected getFilterOptions({ size = 20, page = 1, filter, sortBy, desc, sort = [] }: EntryListConfig): filterOptions {
     const options = { size, page };
     if (sortBy) {
       Object.assign(options, { sort: [(desc ? '-' : '') + sortBy] });

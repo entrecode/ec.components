@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ModelList } from './model-list';
 import { ResourceListComponent } from '../resource-list/resource-list.component';
 
-import { DataManagerResource } from 'ec.sdk/typings/resources/datamanager/DataManagerResource';
+import DataManagerResource from 'ec.sdk/src/resources/datamanager/DataManagerResource';
 
 /** The ModelListComponent is a thin holder of an ModelList instance. It extends the ResourceListComponent */
 @Component({

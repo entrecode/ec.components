@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Item } from '../../core/item/item';
-import { EntryResource } from "ec.sdk/typings/resources/publicAPI/EntryResource";
+import EntryResource from "ec.sdk/src/resources/publicAPI/EntryResource";
 import { ItemConfig } from '../../core/item/item-config.interface';
 import { CrudService } from '../crud/crud.service';
 import { Config } from '../../core/config/config';

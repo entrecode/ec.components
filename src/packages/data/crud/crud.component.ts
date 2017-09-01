@@ -74,13 +74,21 @@ export class CrudComponent {
     return (!edit && this.hasMethod('create')) || (edit && this.hasMethod('update'))
   }
 
-  /** Loads the clicked entry item, depending on the configured levels */
+  /** Returns true if the visible fields in the list differ from the visible fields in the form*/
+  public mustReload(item) {
+    console.log('must reload=', item.config.fields);
+    return !Object.keys(item.config.fields).reduce((equal, property) => {
+      return equal && (item.config.fields[property].list !== false || item.config.fields[property].form === false);
+    }, true);
+  }
+
+  /** Loads the clicked entry item, depending on the configured levels. Reloads the entry if the form has fields the which list has not. */
   private loadEntry(item) {
     return Promise.resolve().then(() => {
-      if (!this.config.alwaysLoadEntry && (!this.config.levels || this.config.levels === 1)) {
+      if (!this.config.alwaysLoadEntry && !this.mustReload(item) && (!this.config.levels || this.config.levels === 1)) {
         return item;
       }
-      return this.sdk.api.entry(this.model, item.id(), this.config.levels || 1)
+      return this.sdk.api.entry(this.model, item.id(), { levels: this.config.levels || 1 })
       .then((leveledEntry) => {
         return new Item(leveledEntry, item.config);
       });

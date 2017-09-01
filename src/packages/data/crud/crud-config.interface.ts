@@ -2,8 +2,7 @@ import { LoaderComponent } from '../../ui/loader/loader.component';
 import { NotificationsComponent } from '../../ui/notifications/notifications.component';
 import { EntryListConfig } from '../entry-list/entry-list-config';
 import { Selection } from '../../core/selection/selection';
-import { EntryResource } from "ec.sdk/typings/resources/publicAPI/EntryResource";
-import { ListConfig } from '../../core/list/list-config.interface';
+import EntryResource from "ec.sdk/src/resources/publicAPI/EntryResource";
 
 /** The CrudConfig allows a quick customization of an ec-crud component. */
 export interface CrudConfig extends EntryListConfig {

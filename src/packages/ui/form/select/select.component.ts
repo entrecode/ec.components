@@ -63,7 +63,6 @@ export class SelectComponent implements ControlValueAccessor {
     }
     this.selection = new Selection(this.value || [], this.config);
     this.selection.update$.subscribe(() => {
-      console.log('update');
       this.changed();
     });
   }
