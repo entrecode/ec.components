@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Optional } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { AssetList } from './asset-list';
 import { ResourceListComponent } from '../../resource-list/resource-list.component';
 import { FileService } from '../file.service';
@@ -16,10 +17,10 @@ export class AssetListComponent extends ResourceListComponent {
   constructor(protected loaderService: LoaderService,
     protected sdk: SdkService,
     protected notificationService: NotificationsService,
-    protected fileService: FileService,) {
-    super(loaderService, sdk, notificationService);
+    protected fileService: FileService,
+    @Optional() route: ActivatedRoute) {
+    super(loaderService, sdk, notificationService, route);
     this.fileService.uploads.subscribe((upload) => {
-      console.log('new upload', upload);
       this.list.load();
     })
   }

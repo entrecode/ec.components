@@ -141,6 +141,9 @@
                                     <a href="../modules/DataModule.html" >DataModule</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../modules/DataRoutingModule.html" >DataRoutingModule</a>
+                                </li>
+                                <li class="link">
                                     <a href="../modules/FilesModule.html" >FilesModule</a>
                                 </li>
                                 <li class="link">
@@ -225,6 +228,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/DynamicSlotComponent.html" >DynamicSlotComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/EditorComponent.html" >EditorComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/EditorComponent.html" >EditorComponent</a>
@@ -693,6 +699,9 @@
                                            <a href="../modules/DataModule.html" >DataModule</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../modules/DataRoutingModule.html" >DataRoutingModule</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../modules/FilesModule.html" >FilesModule</a>
                                        </li>
                                        <li class="link">
@@ -777,6 +786,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/DynamicSlotComponent.html" >DynamicSlotComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/EditorComponent.html" >EditorComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/EditorComponent.html" >EditorComponent</a>
@@ -1222,7 +1234,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="113" class="link-to-prism">src/packages/data/model-config/type-config.service.ts:113</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">src/packages/data/model-config/type-config.service.ts:119</a></div>
                                         </td>
                                     </tr>
             
@@ -1256,7 +1268,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">src/packages/data/model-config/type-config.service.ts:129</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="135" class="link-to-prism">src/packages/data/model-config/type-config.service.ts:135</a></div>
                                         </td>
                                     </tr>
             
@@ -1365,13 +1377,18 @@ export class TypeConfigService {
     asset: {
       view: &#x27;avatar&#x27;,
       input: DefaultEntryInputComponent,
+      filterOperator: &#x27;any&#x27;,
+      filterable: true,
       display: (value, entry, property) &#x3D;&gt; entry.getImageThumbUrl(property, 100),
     },
     assets: {
       view: &#x27;avatars&#x27;,
       input: DefaultEntryInputComponent,
       display: (value, entry, property) &#x3D;&gt; entry.getImageThumbUrl(property, 100),
-      prefill: []
+      prefill: [],
+      filterOperator: &#x27;any&#x27;,
+      filterable: true,
+      queryFilter: (value) &#x3D;&gt; value.split(&#x27;,&#x27;)
     },
     email: {},
     phone: {
@@ -1408,7 +1425,8 @@ export class TypeConfigService {
       // resolve: (body) &#x3D;&gt; TypeConfigService.resolveEntries,
       filterable: true,
       filterOperator: &#x27;any&#x27;,
-      prefill: []
+      prefill: [],
+      queryFilter: (value) &#x3D;&gt; value.split(&#x27;,&#x27;)
       // form: false,
     },
     json: {

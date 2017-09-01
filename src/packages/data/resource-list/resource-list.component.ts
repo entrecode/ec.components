@@ -1,10 +1,10 @@
-import { Component, Input } from '@angular/core';
-import { SdkService } from '../../data/sdk/sdk.service';
+import { Component, Input, Optional } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { SdkService } from '../sdk/sdk.service';
 import { LoaderComponent } from '../../ui/loader/loader.component';
 import { LoaderService } from '../../ui/loader/loader.service';
 import { ListComponent } from '../../ui/list/list.component';
 import { Selection } from '../../core/selection/selection';
-import { ListConfig } from '../../core/list/list-config.interface';
 import { NotificationsService } from '../../ui/notifications/notifications.service';
 import { ResourceList } from './resource-list';
 
@@ -15,8 +15,6 @@ import { ResourceList } from './resource-list';
   templateUrl: '../../ui/list/list.component.html'
 })
 export class ResourceListComponent extends ListComponent {
-  /** The config which is used mainly for the pagination. */
-  @Input() config: ListConfig = {};
   /** If true, only one item is selectable next */
   @Input() solo: boolean;
   /** The instance of an EntryList */
@@ -25,8 +23,16 @@ export class ResourceListComponent extends ListComponent {
   @Input() loader: LoaderComponent;
 
   /** The constructor will just call super of List*/
-  constructor(protected loaderService: LoaderService, protected sdk: SdkService, protected notificationService: NotificationsService) {
+  constructor(protected loaderService: LoaderService,
+    protected sdk: SdkService,
+    protected notificationService: NotificationsService,
+    @Optional() public route: ActivatedRoute) {
     super();
+    if (route) {
+      route.queryParams.subscribe((query) => {
+        this.config.query = Object.assign({}, query);
+      });
+    }
   }
 
   /** The method to create the list*/
@@ -36,6 +42,7 @@ export class ResourceListComponent extends ListComponent {
 
   /** When changing the model or the config, the list config will be (re)generated, using the model's schema*/
   ngOnChanges() {
+    Object.assign(this.config || {}, this.configInput || {});
     if (!this.sdk) {
       return;
     }
@@ -63,7 +70,26 @@ export class ResourceListComponent extends ListComponent {
   }
 
   /** This method will filter the list by a given property value and optional operator. */
-  filter(property: string, value: any, operator: string = 'search') {
-    this.list.filter(property, value, operator);
+  filter(property: string, value: any) {
+    this.list.filter(property, value);
+  }
+
+  initFilterQuery(fieldFilter: (property: string, value: any) => { property, value }) {
+    if (!this.config.query || !this.config.fields || !fieldFilter) {
+      return;
+    }
+    Object.keys(this.config.query)
+    .filter((property) =>
+      fieldFilter(property, this.config.query[property]))
+    .map((property) =>
+      fieldFilter(property, this.config.query[property]))
+    .filter((filter) => {
+      return Object.keys(this.config.fields).indexOf(filter.property) !== -1
+    })
+    .forEach((filter) => {
+      this.config.filter = Object.assign(this.config.filter || {}, {
+        [filter.property]: filter.value
+      });
+    });
   }
 }

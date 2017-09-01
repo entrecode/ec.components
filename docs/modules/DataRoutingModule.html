@@ -141,7 +141,7 @@
                                     <a href="../modules/DataModule.html" >DataModule</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../modules/DataRoutingModule.html" >DataRoutingModule</a>
+                                    <a href="../modules/DataRoutingModule.html"  data-type="entity-link" class="active" >DataRoutingModule</a>
                                 </li>
                                 <li class="link">
                                     <a href="../modules/FilesModule.html" >FilesModule</a>
@@ -230,7 +230,7 @@
                                     <a href="../components/DynamicSlotComponent.html" >DynamicSlotComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/EditorComponent.html"  data-type="entity-link" class="active" >EditorComponent</a>
+                                    <a href="../components/EditorComponent.html" >EditorComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/EditorComponent.html" >EditorComponent</a>
@@ -699,7 +699,7 @@
                                            <a href="../modules/DataModule.html" >DataModule</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../modules/DataRoutingModule.html" >DataRoutingModule</a>
+                                           <a href="../modules/DataRoutingModule.html"  data-type="entity-link" class="active" >DataRoutingModule</a>
                                        </li>
                                        <li class="link">
                                            <a href="../modules/FilesModule.html" >FilesModule</a>
@@ -788,7 +788,7 @@
                                            <a href="../components/DynamicSlotComponent.html" >DynamicSlotComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/EditorComponent.html"  data-type="entity-link" class="active" >EditorComponent</a>
+                                           <a href="../components/EditorComponent.html" >EditorComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/EditorComponent.html" >EditorComponent</a>
@@ -1130,143 +1130,74 @@
                    
                    </nav>
                </div>
-               <div class="content component">
+               <div class="content module">
                    <div class="content-data">
 
 
 
-
 <ol class="breadcrumb">
-  <li>Components</li>
-  <li>EditorComponent</li>
+  <li>Modules</li>
+  <li>DataRoutingModule</li>
 </ol>
+
 
 <ul class="nav nav-tabs" role="tablist">
     <li class="active">
         <a href="#info" id="info-tab" role="tab" data-toggle="tab" data-link="info">Info</a>
     </li>
 
-    <li>
-        <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
-    </li>
 
     <li>
-        <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
     </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="info"><p class="comment">
-    <h3>File</h3>
-</p>
-<p class="comment">
-    <code>src/packages/data/editor.component.ts</code>
-</p>
+    <div class="tab-pane fade active in" id="info">
+
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/packages/data/data.routing.ts</code>
+        </p>
 
 
-
-
-
-<section>
-    <h3>Metadata</h3>
-    <table class="table table-sm table-hover">
-        <tbody>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <tr>
-                <td class="col-md-3">template</td>
-                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">&lt;h1&gt;Works!&lt;/h1&gt;</code></pre></td>
-            </tr>
-
-
-
-        </tbody>
-    </table>
-</section>
-
-
-    <section>
-        <h3 id="constructor">Constructor</h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <code>constructor(router: <a href="https://angular.io/docs/ts/latest/api/router/index/Router-class.html" target="_blank">Router</a>)</code>
-                        </td>
-                    </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/packages/data/editor.component.ts:7</a></div>
-                                </td>
-                            </tr>
-    
-                </tbody>
-            </table>
-    </section>
-
-
-
-
-</div>
-
-
-    <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
-import { Router } from &#x27;@angular/router&#x27;;
-
-@Component({
-  template: &#x27;&lt;h1&gt;Works!&lt;/h1&gt;&#x27;
-})
-export class EditorComponent {
-  constructor(private router: Router) {
-    console.log(&#x27;router&#x27;, this.router);
-  }
-}</code></pre>
-    </div>
-
-
-    <div class="tab-pane fade" id="tree">
-        <div id="tree-container"></div>
-        <div class="tree-legend">
-            <div class="title">
-                <b>Legend</b>
-            </div>
-            <div>
-                <div class="color htmlelement"></div><span>Html element</span>
-            </div>
-            <div>
-                <div class="color component"></div><span>Component</span>
-            </div>
-            <div>
-                <div class="color directive"></div><span>Html element with directive</span>
+        <div class="container-fluid module">
+            <div class="row">
             </div>
         </div>
     </div>
+
+
+    <div class="tab-pane fade tab-source-code" id="source">
+        <pre class="line-numbers"><code class="language-typescript">import { EditorComponent } from &#x27;./editor.component&#x27;;
+import { NgModule } from &#x27;@angular/core&#x27;;
+import { RouterModule } from &#x27;@angular/router&#x27;;
+
+const dataRoutes &#x3D; [
+  {
+    path: &#x27;wurst&#x27;,
+    component: EditorComponent
+  },
+  {
+    path: &#x27;cheese&#x27;,
+    component: EditorComponent
+  }/*,
+  {
+    path: &#x27;&#x27;, redirectTo: &#x27;wurst&#x27;, pathMatch: &#x27;full&#x27;
+  }*/
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(dataRoutes)],
+  exports: [RouterModule]
+})
+export class DataRoutingModule {
+}</code></pre>
+    </div>
 </div>
 
-<script src="../js/libs/vis.min.js"></script>
-<script src="../js/libs/htmlparser.js"></script>
-<script src="../js/libs/deep-iterator.js"></script>
-<script>
-        var COMPONENT_TEMPLATE = '<div><h1>Works!</h1></div>'
-    var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'AssetInputComponent', 'selector': ''},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
-    var DIRECTIVES = [{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
-    var ACTUAL_COMPONENT = {'name': 'EditorComponent'};
-</script>
-<script src="../js/tree.js"></script>
 
 
 

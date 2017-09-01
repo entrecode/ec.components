@@ -1,6 +1,7 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { UiModule } from '../ui/ui.module';
 import { ModelConfigService } from './model-config/model-config.service';
 import { CrudService } from './crud/crud.service';
@@ -19,6 +20,8 @@ import { TypeConfigService } from './model-config/type-config.service';
 import { DatamanagerListComponent } from './datamanager-list/datamanager-list.component';
 import { ResourceListComponent } from './resource-list/resource-list.component';
 import { ModelListComponent } from './model-list/model-list.component';
+import { DataRoutingModule } from './data.routing';
+import { EditorComponent } from './editor.component';
 
 @NgModule({
   entryComponents: [
@@ -28,6 +31,7 @@ import { ModelListComponent } from './model-list/model-list.component';
     ModelListComponent,
     ResourceListComponent,
     EntrySelectComponent,
+    EditorComponent,
   ],
   declarations: [
     EntryListComponent,
@@ -41,9 +45,11 @@ import { ModelListComponent } from './model-list/model-list.component';
     DefaultEntryOutputComponent,
     CrudComponent,
     EntrySelectComponent,
+    EditorComponent,
   ],
   imports: [
-    BrowserModule,
+    DataRoutingModule,
+    CommonModule,
     FormsModule,
     UiModule,
   ],
@@ -57,6 +63,8 @@ import { ModelListComponent } from './model-list/model-list.component';
     DatamanagerListComponent,
     ModelListComponent,
     ResourceListComponent,
+    RouterModule,
+    EditorComponent,
   ],
   providers: [
     SdkService,
@@ -64,14 +72,27 @@ import { ModelListComponent } from './model-list/model-list.component';
     AdminService,
     CrudService,
     TypeConfigService,
-    ModelConfigService,
-    {
-      provide: 'environment',
-      useValue: {
-        environment: 'live',
-      }
-    }
+    ModelConfigService
   ],
 })
 export class DataModule {
+
+  constructor() {
+  }
+
+  static forEnvironment(environment): ModuleWithProviders {
+    return {
+      ngModule: DataModule,
+      providers: [
+        {
+          provide: 'environment',
+          useValue: Object.assign(
+            {
+              environment: 'live'
+            },
+            environment)
+        }
+      ]
+    }
+  }
 }

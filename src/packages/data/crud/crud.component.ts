@@ -1,7 +1,8 @@
 /**
  * Created by felix on 26.05.17.
  */
-import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Optional, Output, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CrudConfig } from './crud-config.interface';
 import { EntryFormComponent } from '../entry-form/entry-form.component';
 import { EntryListComponent } from '../entry-list/entry-list.component';
@@ -11,6 +12,8 @@ import { Item } from '../../core/item/item';
 import { LoaderComponent } from '../../ui/loader/loader.component';
 import { LoaderService } from '../../ui/loader/loader.service';
 import { NotificationsService } from '../../ui/notifications/notifications.service';
+import 'rxjs/add/operator/switchMap';
+import { Observable } from 'rxjs';
 
 /** The CrudComponent takes at least a model name to render an entry list with create/edit/delete functionality out of the box.
  * ```html
@@ -40,7 +43,19 @@ export class CrudComponent {
   /** Emits when the selection has changed */
   @Output() selected: EventEmitter<any> = new EventEmitter();
 
-  constructor(private sdk: SdkService, private loaderService: LoaderService, private notificationService: NotificationsService) {
+  constructor(private sdk: SdkService,
+    private loaderService: LoaderService,
+    private notificationService: NotificationsService,
+    @Optional() public router: Router,
+    @Optional() public route: ActivatedRoute) {
+
+    Observable.merge(route.data, route.params, route.queryParams)
+    .subscribe(({ model }) => {
+      if (model) {
+        this.model = model;
+      }
+    });
+
   }
 
   /** Logs the current form (Developer help). */

@@ -37,7 +37,7 @@ export class MenuComponent {
   /** updates the routes on change of route */
   ngOnChanges() {
     if (this.route) {
-      this.routes = this.route.children;
+      this.routes = this.route.children;//.filter(route => route.data && route.data.title);
     }
   }
 
@@ -48,7 +48,8 @@ export class MenuComponent {
 
   /** Returns true if the item is selected. */
   isSelected(item) {
-    return this.getPath(item) === this.router.url || this.router.url.indexOf(this.getPath(item)) === 0;
+    const path = this.getPath(item);
+    return path !== '/' && (path === this.router.url || this.router.url.indexOf(path) === 0);
   }
 
   /** Returns true if the item is active. */

@@ -141,6 +141,9 @@
                                     <a href="../modules/DataModule.html" >DataModule</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../modules/DataRoutingModule.html" >DataRoutingModule</a>
+                                </li>
+                                <li class="link">
                                     <a href="../modules/FilesModule.html" >FilesModule</a>
                                 </li>
                                 <li class="link">
@@ -225,6 +228,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/DynamicSlotComponent.html" >DynamicSlotComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/EditorComponent.html" >EditorComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/EditorComponent.html" >EditorComponent</a>
@@ -693,6 +699,9 @@
                                            <a href="../modules/DataModule.html" >DataModule</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../modules/DataRoutingModule.html" >DataRoutingModule</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../modules/FilesModule.html" >FilesModule</a>
                                        </li>
                                        <li class="link">
@@ -777,6 +786,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/DynamicSlotComponent.html" >DynamicSlotComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/EditorComponent.html" >EditorComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/EditorComponent.html" >EditorComponent</a>
@@ -1223,6 +1235,9 @@
                                     <li>
                                          <a href="#removeAll">removeAll</a>
                                     </li>
+                                    <li>
+                                         <a href="#replaceWith">replaceWith</a>
+                                    </li>
                                 </ul>
                             </td>
                         </tr>
@@ -1314,7 +1329,7 @@
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>addAll(items: Array<T>, unique: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+            <code>addAll(items: Array<T>, unique: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, event: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
                                 </td>
                             </tr>
             
@@ -1485,7 +1500,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="132" class="link-to-prism">src/packages/core/collection/collection.ts:132</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="151" class="link-to-prism">src/packages/core/collection/collection.ts:151</a></div>
                                         </td>
                                     </tr>
             
@@ -1519,7 +1534,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">src/packages/core/collection/collection.ts:103</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">src/packages/core/collection/collection.ts:106</a></div>
                                         </td>
                                     </tr>
             
@@ -1555,14 +1570,14 @@
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>removeAll(items: Array<T>)</code>
+            <code>removeAll(items: Array<T>, event: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="120" class="link-to-prism">src/packages/core/collection/collection.ts:120</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="123" class="link-to-prism">src/packages/core/collection/collection.ts:123</a></div>
                                         </td>
                                     </tr>
             
@@ -1584,6 +1599,40 @@
                                             <div class="io-description">
                                                 
                                             </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="replaceWith"></a>
+                                    <b> replaceWith</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>replaceWith(items: Array<T>, event: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="138" class="link-to-prism">src/packages/core/collection/collection.ts:138</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Replaces all current items with the given items. </p>
+            </div>
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                        </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1796,11 +1845,14 @@ export class Collection&lt;T&gt; {
    * numbers.addAll([5, 6, 7]);
    * &#x60;&#x60;&#x60;
    */
-  addAll(items: Array&lt;T&gt;, unique?: boolean) {
+  addAll(items: Array&lt;T&gt; &#x3D; [], unique: boolean &#x3D; false, event: boolean &#x3D; true) {
+    const length &#x3D; this.items.length;
     items.forEach((item) &#x3D;&gt; {
       this.add(item, unique, false);
     });
-    this.update.next(this);
+    if (this.items.length &gt; length &amp;&amp; event) {
+      this.update.next(this);
+    }
   };
 
   /**
@@ -1827,7 +1879,8 @@ export class Collection&lt;T&gt; {
    * numbers.removeAll();
    * &#x60;&#x60;&#x60;
    */
-  removeAll(items?: Array&lt;T&gt;) {
+  removeAll(items?: Array&lt;T&gt;, event: boolean &#x3D; true) {
+    const length &#x3D; this.items.length;
     if (items) {
       items.forEach((item) &#x3D;&gt; {
         this.remove(item, false);
@@ -1835,7 +1888,22 @@ export class Collection&lt;T&gt; {
     } else {
       this.items.length &#x3D; 0;
     }
-    this.update.next(this);
+    if (this.items.length &lt; length &amp;&amp; event) {
+      this.update.next(this);
+    }
+  }
+
+  /** Replaces all current items with the given items. */
+  replaceWith(items: Array&lt;T&gt;, event: boolean &#x3D; true) {
+    if (this.items &amp;&amp; this.items.length) {
+      this.removeAll(null, false);
+    }
+    if (items.length) {
+      this.addAll(items, false, false);
+    }
+    if (event) {
+      this.update.next(this);
+    }
   }
 
   /** Returns true if the collection is empty */

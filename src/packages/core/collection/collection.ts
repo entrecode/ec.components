@@ -86,11 +86,14 @@ export class Collection<T> {
    * numbers.addAll([5, 6, 7]);
    * ```
    */
-  addAll(items: Array<T>, unique?: boolean) {
+  addAll(items: Array<T> = [], unique: boolean = false, event: boolean = true) {
+    const length = this.items.length;
     items.forEach((item) => {
       this.add(item, unique, false);
     });
-    this.update.next(this);
+    if (this.items.length > length && event) {
+      this.update.next(this);
+    }
   };
 
   /**
@@ -117,7 +120,8 @@ export class Collection<T> {
    * numbers.removeAll();
    * ```
    */
-  removeAll(items?: Array<T>) {
+  removeAll(items?: Array<T>, event: boolean = true) {
+    const length = this.items.length;
     if (items) {
       items.forEach((item) => {
         this.remove(item, false);
@@ -125,7 +129,22 @@ export class Collection<T> {
     } else {
       this.items.length = 0;
     }
-    this.update.next(this);
+    if (this.items.length < length && event) {
+      this.update.next(this);
+    }
+  }
+
+  /** Replaces all current items with the given items. */
+  replaceWith(items: Array<T>, event: boolean = true) {
+    if (this.items && this.items.length) {
+      this.removeAll(null, false);
+    }
+    if (items.length) {
+      this.addAll(items, false, false);
+    }
+    if (event) {
+      this.update.next(this);
+    }
   }
 
   /** Returns true if the collection is empty */

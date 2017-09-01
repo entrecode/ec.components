@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { demoRoutes } from './demo.routes';
 
 @Component({
@@ -26,9 +27,21 @@ export class DemoDashboardComponent {
     return this.randomRoute(random.children, path + '/' + random.path);
   }
 
-  constructor() {
-    console.log('demos', this.demos);
+  appendChildRoute(route) {
+    this.route.routeConfig.children = this.route.routeConfig.children || [];
+    this.route.routeConfig.children.push(route);
+    this.router.resetConfig(this.router.config);
+
+    console.log('router', this.router);
+
+    /*this.router.config.push({
+      path: 'test', component: ListDemoComponent,
+      outlet: 'test'
+    });*/
+
+  }
+
+  constructor(private router: Router, private route: ActivatedRoute) {
     this.randomDemo = this.randomRoute(this.demos);
-    // this.randomDemo
   }
 }

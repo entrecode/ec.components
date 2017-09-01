@@ -1,4 +1,5 @@
-import { BrowserModule } from '@angular/platform-browser';
+// import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { NotificationsModule } from './notifications/notifications.module';
@@ -12,8 +13,9 @@ import { UtilityModule } from './utility/utility.module';
   entryComponents: [],
   declarations: [],
   imports: [
-    BrowserModule,
+    // BrowserModule,
     FormsModule,
+    CommonModule,
     ReactiveFormsModule,
     UtilityModule,
     NotificationsModule,
@@ -30,7 +32,7 @@ import { UtilityModule } from './utility/utility.module';
     NotificationsModule,
     LoaderModule,
     ListModule,
-    FormModule
+    FormModule,
   ],
   providers: [],
 })

@@ -1,4 +1,5 @@
-import { BrowserModule } from '@angular/platform-browser';
+// import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { NotificationsComponent } from './notifications.component';
@@ -12,7 +13,7 @@ import { ErrorComponent } from './error/error.component';
     ErrorComponent,
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
     HttpModule,
     PopModule,
   ],

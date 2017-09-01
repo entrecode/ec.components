@@ -1,4 +1,5 @@
-import { BrowserModule } from '@angular/platform-browser';
+// import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { AssetListComponent } from './asset-list/asset-list.component';
@@ -23,7 +24,8 @@ import { UploadComponent } from './upload/upload.component';
     UploadComponent,
   ],
   imports: [
-    BrowserModule,
+    // BrowserModule,
+    CommonModule,
     FormsModule,
     UiModule,
     DataModule,

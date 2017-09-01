@@ -84,7 +84,7 @@ export class ModelConfigService extends Config {
       return;
     }).then((config) => {
       fieldConfig = config;
-      return this.sdk.api.getSchema(model);
+      return this.sdk.getSchema(model);
     }).then((schema) => {
       schema = schema.allOf[1];
       const properties = Object.keys(schema.properties)

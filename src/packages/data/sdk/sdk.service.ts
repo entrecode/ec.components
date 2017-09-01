@@ -34,6 +34,8 @@ export class SdkService {
   public user: AccountResource;
   /** Emits  after the APIs have been initialized. */
   public ready: EventEmitter<AccountResource> = new EventEmitter();
+  /** Pending schema requests */
+  private schemaRequests = {};
 
   /** Calls init and sets ready to true when finished. */
   constructor(@Inject('environment') private environment) {
@@ -63,6 +65,13 @@ export class SdkService {
       this.user = user;
       return this.user;
     });
+  }
+
+  getSchema(model) {
+    if (!this.schemaRequests[model]) {
+      this.schemaRequests[model] = this.api.getSchema(model);
+    }
+    return this.schemaRequests[model];
   }
 
   /** Generic login that works with both public and admin API. */

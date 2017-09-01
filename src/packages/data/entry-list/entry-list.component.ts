@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Optional } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { SdkService } from '../sdk/sdk.service';
 import { ModelConfigService } from '../model-config/model-config.service';
 import { LoaderService } from '../../ui/loader/loader.service';
@@ -22,8 +23,29 @@ export class EntryListComponent extends ResourceListComponent { //use ResourceLi
     protected sdk: SdkService,
     protected notificationService: NotificationsService,
     protected modelConfig: ModelConfigService,
-    protected crud: CrudService) {
-    super(loaderService, sdk, notificationService);
+    protected crud: CrudService,
+    @Optional() public route: ActivatedRoute) {
+    super(loaderService, sdk, notificationService, route);
+    /*if (route) {
+      route.params.subscribe(({ model }) => {
+        if (model) {
+          this.model = model;
+        }
+      })
+    }*/
+  }
+
+  initFilter() {
+    this.initFilterQuery((property, value) => {
+      const target = property.split('.');
+      const field = this.config.fields[target[1]];
+      if (target[0] === this.model && field) {
+        return {
+          property: target[1],
+          value: field.queryFilter ? field.queryFilter(value) : value
+        }
+      }
+    });
   }
 
   createList() {
@@ -37,6 +59,7 @@ export class EntryListComponent extends ResourceListComponent { //use ResourceLi
     return this.modelConfig.generateConfig(this.model).then((config) => {
       this.config = this.config || {};
       Object.assign(this.config, config);
+      this.initFilter();
       return new EntryList(this.model, this.config, this.sdk);
     });
 

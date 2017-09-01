@@ -63,6 +63,7 @@ export class SelectComponent implements ControlValueAccessor {
     }
     this.selection = new Selection(this.value || [], this.config);
     this.selection.update$.subscribe(() => {
+      console.log('update');
       this.changed();
     });
   }
@@ -72,10 +73,9 @@ export class SelectComponent implements ControlValueAccessor {
     this.value = Array.isArray(value) ? value : (value ? [value] : []);
     Object.assign(this.config || {}, { solo: this.solo });
     this.list = new List(this.value, this.config);
-    if (this.selection) {
+    if (this.selection && this.value && this.value.length) {
       Object.assign(this.config, { selection: this.selection });
-      this.selection.removeAll();
-      this.selection.addAll(this.list.items);
+      this.selection.replaceWith(this.list.items);
     }
   }
 

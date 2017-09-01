@@ -1,5 +1,7 @@
-import { BrowserModule } from '@angular/platform-browser';
+// import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { TabsComponent } from './tabs/tabs.component';
 import { TabComponent } from './tab/tab.component';
@@ -18,10 +20,12 @@ import { IoModule } from '../io/io.module';
     LoginComponent,
   ],
   imports: [
-    BrowserModule,
+    // BrowserModule,
+    CommonModule,
     FormsModule,
     IoModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule,
   ],
   exports: [
     ReactiveFormsModule,

@@ -43,7 +43,7 @@ export class List<T> extends Collection<Item<T>> {
   constructor(values?: Array<T>, config: ListConfig = {}, pagination?: Pagination) {
     super([]);
     if (values) {
-      super.addAll(values.map(item => new Item(item, config)));
+      super.addAll(values.map(item => new Item(item, config)), false, false);
     }
     this.config = config || {};
     this.config.page = 1;

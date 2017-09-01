@@ -1,7 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DemoComponent } from './demo.component';
 import { FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { UiModule } from '../packages/ui';
 import { DataModule } from '../packages/data';
@@ -17,7 +16,6 @@ describe('DemoComponent', () => {
         DemoComponent
       ],
       imports: [
-        BrowserModule,
         FormsModule,
         HttpModule,
         UiModule,

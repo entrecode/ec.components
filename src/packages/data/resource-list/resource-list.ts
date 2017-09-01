@@ -3,7 +3,7 @@ import { EntryListConfig } from '../../data/';
 import { SdkService } from '../sdk/sdk.service';
 import { Subject } from 'rxjs';
 import { ListResource } from "ec.sdk/typings/resources/ListResource";
-import { ListConfig } from '../../core/list/list-config.interface';
+import { Field } from '../../core/field/field';
 
 /**
  * Extension of List for SDK ListResource. Each each implementation should implement the load
@@ -12,8 +12,6 @@ import { ListConfig } from '../../core/list/list-config.interface';
 export class ResourceList<T> extends List<T> {
   /** The current loaded assetList */
   protected listResource: ListResource;
-  /** The list's config. */
-  public config: ListConfig;
   /** Subject that should be nexted when loading begins */
   protected loading = new Subject();
   /** Observable that is nexted when the list begins loading. */
@@ -45,6 +43,12 @@ export class ResourceList<T> extends List<T> {
     this.addAll(listResource.getAllItems().map((value) => {
       return new Item(value, this.config);
     }), true);
+
+    // this.removeAll();
+    /*this.replaceWith(listResource.getAllItems().map((value) => {
+      return new Item(value, this.config);
+    }), true);*/
+
     this.page = this.items;
     if (this.pagination) {
       this.pagination.setTotal(listResource.total);
@@ -61,7 +65,11 @@ export class ResourceList<T> extends List<T> {
     }
     if (filter) {
       for (let property in filter) {
-        Object.assign(options, { [property]: filter[property] });
+        Object.assign(options, {
+          [property]: {
+            [ResourceList.getFilterOperator(property, this.fields)]: filter[property]
+          }
+        });
       }
     }
     return options;
@@ -75,28 +83,34 @@ export class ResourceList<T> extends List<T> {
   }
 
   /** Returns the operator to use for filtering the given property. Defaults to search. */
-  protected getFilterOperator(property: string): string {
-    if (!this.fields) {
+  protected static getFilterOperator(property: string, fields: Array<Field<any>>): string {
+    if (!fields) {
       return 'search';
     }
-    const field = this.fields.find((field) => field.property === property);
+    const field = fields.find((field) => field.property === property);
     return field && field.filterOperator ? field.filterOperator : 'search';
   }
 
-  /** Filters the entry list by a given property value. Triggers load */
-  filter(property: string, value: any = '', operator: string = this.getFilterOperator(property)) {
+  /** Updates the config.filter with the given property filter. */
+  filterProperty(property: string, value: any = '') {
     const currentFilter = this.config.filter || {};
     if (value === '' || value === null || value === undefined || (Array.isArray(value) && !value.length)) {
+      if (!currentFilter[property]) {
+        return; //filter is already empty => no need to load again
+      }
       delete currentFilter[property];
     } else {
       Object.assign(currentFilter, {
-        [property]: {
-          [operator]: value
-        }
+        [property]: value
       });
     }
+    return currentFilter;
+  }
+
+  /** Filters the entry list by a given property value. Triggers load. */
+  filter(property: string, value: any = '') {
     return this.load({
-      filter: currentFilter
-    })
+      filter: this.filterProperty(property, value)
+    });
   }
 }

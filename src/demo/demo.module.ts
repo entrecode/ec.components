@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-// import { UiModule } from '@ec.components/ui'; //this is how you would import it in reality
-// import { DataModule } from '@ec.components/data'; //this is how you would import it in reality
+// import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
 import { UiModule } from '../packages/ui';
 import { DataModule } from '../packages/data';
 import { DemoComponent } from './demo.component';
@@ -64,7 +63,8 @@ import { DemoDashboardComponent } from './dashboard.component';
     AssetInputComponent,
   ],
   imports: [
-    CommonModule,
+    // CommonModule,
+    BrowserModule,
     UiModule,
     DataModule,
     FilesModule,

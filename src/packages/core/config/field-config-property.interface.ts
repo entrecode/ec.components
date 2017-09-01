@@ -65,6 +65,9 @@ export interface FieldConfigProperty {
   filterable?: boolean;
   /** The operator to use for filtering: exact, search, any etc.. see ec.sdk doc */
   filterOperator?: string;
+  /** Transforms a string value from the url query to a value that is used for filtering.
+   * e.g. transforms "A,B,C" to ['A','B','C'] */
+  queryFilter?: (value: string) => any;
   /** if false, the field will not be sortable in a list */
   sortable?: boolean;
   /** if false, the field will not be visible in a list */

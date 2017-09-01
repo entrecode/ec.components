@@ -141,6 +141,9 @@
                                     <a href="../modules/DataModule.html" >DataModule</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../modules/DataRoutingModule.html" >DataRoutingModule</a>
+                                </li>
+                                <li class="link">
                                     <a href="../modules/FilesModule.html" >FilesModule</a>
                                 </li>
                                 <li class="link">
@@ -225,6 +228,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/DynamicSlotComponent.html" >DynamicSlotComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/EditorComponent.html" >EditorComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/EditorComponent.html" >EditorComponent</a>
@@ -693,6 +699,9 @@
                                            <a href="../modules/DataModule.html" >DataModule</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../modules/DataRoutingModule.html" >DataRoutingModule</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../modules/FilesModule.html" >FilesModule</a>
                                        </li>
                                        <li class="link">
@@ -777,6 +786,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/DynamicSlotComponent.html" >DynamicSlotComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/EditorComponent.html" >EditorComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/EditorComponent.html" >EditorComponent</a>
@@ -1606,7 +1618,7 @@ export class ModelConfigService extends Config {
       return;
     }).then((config) &#x3D;&gt; {
       fieldConfig &#x3D; config;
-      return this.sdk.api.getSchema(model);
+      return this.sdk.getSchema(model);
     }).then((schema) &#x3D;&gt; {
       schema &#x3D; schema.allOf[1];
       const properties &#x3D; Object.keys(schema.properties)

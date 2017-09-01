@@ -22,5 +22,7 @@ export interface ListConfig extends ItemConfig<any> {
   /** Should the selection be solo? */
   solo?: boolean,
   /** tells the list to show only items that match the filter */
-  filter?: any
+  filter?: { [key: string]: any },
+  /** a query that will be turned in to a filter */
+  query?: { [key: string]: any },
 }

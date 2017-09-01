@@ -43,13 +43,18 @@ export class TypeConfigService {
     asset: {
       view: 'avatar',
       input: DefaultEntryInputComponent,
+      filterOperator: 'any',
+      filterable: true,
       display: (value, entry, property) => entry.getImageThumbUrl(property, 100),
     },
     assets: {
       view: 'avatars',
       input: DefaultEntryInputComponent,
       display: (value, entry, property) => entry.getImageThumbUrl(property, 100),
-      prefill: []
+      prefill: [],
+      filterOperator: 'any',
+      filterable: true,
+      queryFilter: (value) => value.split(',')
     },
     email: {},
     phone: {
@@ -86,7 +91,8 @@ export class TypeConfigService {
       // resolve: (body) => TypeConfigService.resolveEntries,
       filterable: true,
       filterOperator: 'any',
-      prefill: []
+      prefill: [],
+      queryFilter: (value) => value.split(',')
       // form: false,
     },
     json: {

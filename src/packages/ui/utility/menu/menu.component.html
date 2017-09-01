@@ -7,7 +7,7 @@
     <li *ngFor="let item of routes" (mouseenter)="hoverItem(item)"
         [style.background-color]="getItemColor(item)"
         [class.leaf]="!item.children||!item.children.length">
-      <a *ngIf="item.component" [href]="getPath(item)">{{item.data?.title || item.path}}</a>
+      <a *ngIf="item.component" [routerLink]="getPath(item)">{{item.data?.title || item.path}}</a>
       <span *ngIf="!item.component">{{item.data?.title || item.path}}</span>
     </li>
   </ul>

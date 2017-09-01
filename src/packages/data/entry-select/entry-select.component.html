@@ -10,13 +10,12 @@
       </a>
     </li>
   </ul>
-
   <!-- TODO use entry pop when ready-->
   <ec-pop [ngClass]="getPopClass()" #crudPop>
     <!--<button type="button" (click)="crudPop.hide()">
       <i class="ec-icon close"></i> &lt;!&ndash; TODO unified pop header component &ndash;&gt;
     </button>-->
-    <ec-crud [model]="model" *ngIf="config?.selection&&crudPop.active"
+    <ec-crud [model]="model" *ngIf="selection&&crudPop.active"
              [config]="config" (select)="select($event)" #crud></ec-crud>
   </ec-pop>
 </div>

@@ -1,4 +1,5 @@
-import { BrowserModule } from '@angular/platform-browser';
+// import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { ListComponent } from './list.component';
@@ -17,7 +18,8 @@ import { FormModule } from '../form/form.module';
     GroupPipe,
   ],
   imports: [
-    BrowserModule,
+    // BrowserModule,
+    CommonModule,
     HttpModule,
     FormModule,
   ],

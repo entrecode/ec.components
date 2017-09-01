@@ -6,7 +6,7 @@ import { EntryResource } from "ec.sdk/typings/resources/publicAPI/EntryResource"
 import { ListConfig } from '../../core/list/list-config.interface';
 
 /** The CrudConfig allows a quick customization of an ec-crud component. */
-export interface CrudConfig extends ListConfig {
+export interface CrudConfig extends EntryListConfig {
   /** The label for the entry create button */
   createLabel?: string;
   /** An Array of Methods that should be supported. Possible values are create, read, update and delete*/
@@ -15,8 +15,6 @@ export interface CrudConfig extends ListConfig {
   loader?: LoaderComponent;
   /** An external notifications component that should be used, falls back to internal */
   notifications?: NotificationsComponent;
-  /** The list config that should be used. Falls back to default. */
-  listConfig?: EntryListConfig;
   /** If true, the entry pop will remain open after the entry has been successfully saved. */
   keepPopOpen?: boolean;
   /** If true, an extra develop button will be shown*/

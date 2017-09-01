@@ -11,8 +11,10 @@ import { Collection, List, ListConfig, Selection } from '../../core/index';
   encapsulation: ViewEncapsulation.None
 })
 export class ListComponent {
-  /** Configuration Object for List */
-  @Input() config: ListConfig;
+  /** The current list config */
+  config: ListConfig = {};
+  /** Config input for List */
+  @Input('config') configInput: ListConfig;
   /** The visible items */
   @Input() items: Array<any>;
   /** The used collection */
@@ -31,6 +33,7 @@ export class ListComponent {
   /** Changing items or collection will trigger reconstructing the list with the new items.
    * Changing the selection will reconstruct the selection */
   ngOnChanges() {
+    Object.assign(this.config || {}, this.configInput || {});
     if (this.items) {
       this.list = new List(this.items, this.config);
     } else if (this.collection) {

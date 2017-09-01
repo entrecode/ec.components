@@ -141,6 +141,9 @@
                                     <a href="../modules/DataModule.html" >DataModule</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../modules/DataRoutingModule.html" >DataRoutingModule</a>
+                                </li>
+                                <li class="link">
                                     <a href="../modules/FilesModule.html" >FilesModule</a>
                                 </li>
                                 <li class="link">
@@ -225,6 +228,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/DynamicSlotComponent.html" >DynamicSlotComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/EditorComponent.html" >EditorComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/EditorComponent.html" >EditorComponent</a>
@@ -693,6 +699,9 @@
                                            <a href="../modules/DataModule.html" >DataModule</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../modules/DataRoutingModule.html" >DataRoutingModule</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../modules/FilesModule.html" >FilesModule</a>
                                        </li>
                                        <li class="link">
@@ -777,6 +786,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/DynamicSlotComponent.html" >DynamicSlotComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/EditorComponent.html" >EditorComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/EditorComponent.html" >EditorComponent</a>
@@ -1313,7 +1325,8 @@
 
 
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { BrowserModule } from &#x27;@angular/platform-browser&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { CommonModule } from &#x27;@angular/common&#x27;;
+
 import { NgModule } from &#x27;@angular/core&#x27;;
 import { SafeHtmlPipe } from &#x27;./safe-html.pipe&#x27;;
 import { EditorComponent } from &#x27;./editor/editor.component&#x27;;
@@ -1330,7 +1343,7 @@ import { ToolbarComponent } from &#x27;./toolbar/toolbar.component&#x27;;
     SafeHtmlPipe,
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
   ],
   exports: [
     EditorComponent,

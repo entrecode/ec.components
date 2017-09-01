@@ -141,6 +141,9 @@
                                     <a href="../modules/DataModule.html" >DataModule</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../modules/DataRoutingModule.html" >DataRoutingModule</a>
+                                </li>
+                                <li class="link">
                                     <a href="../modules/FilesModule.html" >FilesModule</a>
                                 </li>
                                 <li class="link">
@@ -225,6 +228,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/DynamicSlotComponent.html" >DynamicSlotComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/EditorComponent.html" >EditorComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/EditorComponent.html" >EditorComponent</a>
@@ -693,6 +699,9 @@
                                            <a href="../modules/DataModule.html" >DataModule</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../modules/DataRoutingModule.html" >DataRoutingModule</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../modules/FilesModule.html" >FilesModule</a>
                                        </li>
                                        <li class="link">
@@ -777,6 +786,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/DynamicSlotComponent.html" >DynamicSlotComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/EditorComponent.html" >EditorComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/EditorComponent.html" >EditorComponent</a>
@@ -1515,7 +1527,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/packages/ui/utility/menu/menu.component.ts:85</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">src/packages/ui/utility/menu/menu.component.ts:86</a></div>
                                 </td>
                             </tr>
     
@@ -1549,7 +1561,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/packages/ui/utility/menu/menu.component.ts:65</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/packages/ui/utility/menu/menu.component.ts:66</a></div>
                                 </td>
                             </tr>
     
@@ -1583,7 +1595,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">src/packages/ui/utility/menu/menu.component.ts:70</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/packages/ui/utility/menu/menu.component.ts:71</a></div>
                                 </td>
                             </tr>
     
@@ -1617,7 +1629,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/packages/ui/utility/menu/menu.component.ts:60</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/packages/ui/utility/menu/menu.component.ts:61</a></div>
                                 </td>
                             </tr>
     
@@ -1651,7 +1663,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">src/packages/ui/utility/menu/menu.component.ts:99</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">src/packages/ui/utility/menu/menu.component.ts:100</a></div>
                                 </td>
                             </tr>
     
@@ -1719,7 +1731,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/packages/ui/utility/menu/menu.component.ts:75</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">src/packages/ui/utility/menu/menu.component.ts:76</a></div>
                                 </td>
                             </tr>
     
@@ -1753,7 +1765,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">src/packages/ui/utility/menu/menu.component.ts:92</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">src/packages/ui/utility/menu/menu.component.ts:93</a></div>
                                 </td>
                             </tr>
     
@@ -1787,7 +1799,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/packages/ui/utility/menu/menu.component.ts:55</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/packages/ui/utility/menu/menu.component.ts:56</a></div>
                                 </td>
                             </tr>
     
@@ -1978,7 +1990,7 @@ export class MenuComponent {
   /** updates the routes on change of route */
   ngOnChanges() {
     if (this.route) {
-      this.routes &#x3D; this.route.children;
+      this.routes &#x3D; this.route.children;//.filter(route &#x3D;&gt; route.data &amp;&amp; route.data.title);
     }
   }
 
@@ -1989,7 +2001,8 @@ export class MenuComponent {
 
   /** Returns true if the item is selected. */
   isSelected(item) {
-    return this.getPath(item) &#x3D;&#x3D;&#x3D; this.router.url || this.router.url.indexOf(this.getPath(item)) &#x3D;&#x3D;&#x3D; 0;
+    const path &#x3D; this.getPath(item);
+    return path !&#x3D;&#x3D; &#x27;/&#x27; &amp;&amp; (path &#x3D;&#x3D;&#x3D; this.router.url || this.router.url.indexOf(path) &#x3D;&#x3D;&#x3D; 0);
   }
 
   /** Returns true if the item is active. */
@@ -2057,7 +2070,7 @@ export class MenuComponent {
     &lt;li *ngFor&#x3D;&quot;let item of routes&quot; (mouseenter)&#x3D;&quot;hoverItem(item)&quot;
         [style.background-color]&#x3D;&quot;getItemColor(item)&quot;
         [class.leaf]&#x3D;&quot;!item.children||!item.children.length&quot;&gt;
-      &lt;a *ngIf&#x3D;&quot;item.component&quot; [href]&#x3D;&quot;getPath(item)&quot;&gt;{{item.data?.title || item.path}}&lt;/a&gt;
+      &lt;a *ngIf&#x3D;&quot;item.component&quot; [routerLink]&#x3D;&quot;getPath(item)&quot;&gt;{{item.data?.title || item.path}}&lt;/a&gt;
       &lt;span *ngIf&#x3D;&quot;!item.component&quot;&gt;{{item.data?.title || item.path}}&lt;/span&gt;
     &lt;/li&gt;
   &lt;/ul&gt;
@@ -2088,8 +2101,8 @@ export class MenuComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="ec-menu" [class.root]="!parent" (mouseleave)="hoverOut()" (mouseover)="cancelTimeout()"     [style.background-color]="getColor()">  <ul>    <li *ngIf="title">      <strong>{{title}}</strong>    </li>    <li *ngFor="let item of routes" (mouseenter)="hoverItem(item)"        [style.background-color]="getItemColor(item)"        [class.leaf]="!item.children||!item.children.length">      <a *ngIf="item.component" [href]="getPath(item)">{{item.data?.title || item.path}}</a>      <span *ngIf="!item.component">{{item.data?.title || item.path}}</span>    </li>  </ul>  <ec-menu *ngIf="hover?.children" [route]="hover" [parent]="this" #current></ec-menu></div></div>'
-    var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'AssetInputComponent', 'selector': ''},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
+        var COMPONENT_TEMPLATE = '<div><div class="ec-menu" [class.root]="!parent" (mouseleave)="hoverOut()" (mouseover)="cancelTimeout()"     [style.background-color]="getColor()">  <ul>    <li *ngIf="title">      <strong>{{title}}</strong>    </li>    <li *ngFor="let item of routes" (mouseenter)="hoverItem(item)"        [style.background-color]="getItemColor(item)"        [class.leaf]="!item.children||!item.children.length">      <a *ngIf="item.component" [routerLink]="getPath(item)">{{item.data?.title || item.path}}</a>      <span *ngIf="!item.component">{{item.data?.title || item.path}}</span>    </li>  </ul>  <ec-menu *ngIf="hover?.children" [route]="hover" [parent]="this" #current></ec-menu></div></div>'
+    var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'AssetInputComponent', 'selector': ''},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
     var DIRECTIVES = [{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'MenuComponent'};
 </script>

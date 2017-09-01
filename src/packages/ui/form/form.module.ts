@@ -1,4 +1,5 @@
-import { BrowserModule } from '@angular/platform-browser';
+// import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { FormComponent } from './form.component';
@@ -30,7 +31,8 @@ import { DatetimePipe } from './datetime/datetime.pipe';
     VisibleFieldsPipe,
   ],
   imports: [
-    BrowserModule,
+    // BrowserModule,
+    CommonModule,
     HttpModule,
     ReactiveFormsModule,
     PopModule,

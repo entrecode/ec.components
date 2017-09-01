@@ -1,4 +1,5 @@
-import { BrowserModule } from '@angular/platform-browser';
+// import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -23,7 +24,8 @@ import { UiModule } from '../ui/ui.module';
   ],
   imports: [
     CookieModule.forRoot(),
-    BrowserModule,
+    // BrowserModule,
+    CommonModule,
     ReactiveFormsModule,
     //HyperAgentModule,
     HttpModule,

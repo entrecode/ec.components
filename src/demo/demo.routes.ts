@@ -21,15 +21,35 @@ import { DatamanagerListDemoComponent } from './datamanager-list/datamanager-lis
 import { ModelListDemoComponent } from './model-list/model-list.demo.component';
 import { DatetimeDemoComponent } from './form/datetime-demo.component';
 import { DemoDashboardComponent } from './dashboard.component';
+import { CrudComponent } from '../packages/data/crud/crud.component';
+import { DataModule } from '../packages/data/data.module';
 
 export const demoRoutes: Routes = [
-  { path: '', component: DemoDashboardComponent, data: { title: 'ec.components' } },
+  {
+    path: '',
+    component: DemoDashboardComponent,
+    data: { title: 'ec.components' }
+  },
+  {
+    path: 'ec',
+    loadChildren: () => DataModule,
+  },
   {
     path: 'ui',
     children: [
       {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'form',
+      },
+      {
         path: 'list',
         children: [
+          {
+            path: '',
+            pathMatch: 'full',
+            redirectTo: 'list',
+          },
           {
             path: 'list',
             component: ListDemoComponent,
@@ -123,6 +143,16 @@ export const demoRoutes: Routes = [
         component: CrudDemoComponent
       },
       {
+        path: 'model/:model',
+        component: CrudComponent,
+        /*data: {
+          model: 'muffin',
+          config: {
+            size: 5
+          }
+        }*/
+      },
+      {
         path: 'datamanager-list',
         component: DatamanagerListDemoComponent
       },
@@ -164,5 +194,5 @@ export const demoRoutes: Routes = [
     data: {
       title: 'ec-vc'
     }
-  },
+  }
 ];
