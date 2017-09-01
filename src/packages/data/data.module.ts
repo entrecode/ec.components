@@ -72,7 +72,13 @@ import { EditorComponent } from './editor.component';
     AdminService,
     CrudService,
     TypeConfigService,
-    ModelConfigService
+    ModelConfigService,
+    {
+      provide: 'environment',
+      useValue: {
+        environment: 'live'
+      }
+    }
   ],
 })
 export class DataModule {

@@ -11,7 +11,7 @@ import { PublicLoginComponent } from './public-login/public-login.component';
 import { ValidationOnBlurDirective } from './validate-onblur';
 import { PublicSignupComponent } from './public-signup/public-signup.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
-import { UiModule } from '../ui/ui.module';
+import { UiModule } from '../../ui/ui.module';
 
 // import { HyperAgentModule } from './hyperagent/hyper-agent.module';
 

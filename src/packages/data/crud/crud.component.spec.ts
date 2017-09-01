@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CrudComponent } from './crud.component';
 import { EntryListComponent } from '../entry-list/entry-list.component';
@@ -14,7 +15,7 @@ describe('CrudComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [UiModule],
+      imports: [UiModule, RouterModule],
       declarations: [EntryFormComponent, EntryListComponent, CrudComponent],
       providers: [ModelConfigService, CrudService, SdkService, TypeConfigService,
         {

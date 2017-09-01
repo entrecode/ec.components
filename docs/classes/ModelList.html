@@ -1232,7 +1232,7 @@
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/packages/data/model-list/model-list.ts:11</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/packages/data/model-list/model-list.ts:12</a></div>
                                         </td>
                                     </tr>
             
@@ -1263,7 +1263,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/packages/data/model-list/model-list.ts:49</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/packages/data/model-list/model-list.ts:62</a></div>
                                         </td>
                                     </tr>
             
@@ -1298,7 +1298,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/packages/data/model-list/model-list.ts:68</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">src/packages/data/model-list/model-list.ts:81</a></div>
                                         </td>
                                     </tr>
             
@@ -1343,7 +1343,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/packages/data/model-list/model-list.ts:11</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/packages/data/model-list/model-list.ts:12</a></div>
                                         </td>
                                     </tr>
             
@@ -1360,16 +1360,26 @@ import { ResourceList } from &#x27;../resource-list/resource-list&#x27;;
 import { SdkService } from &#x27;../sdk/sdk.service&#x27;;
 import * as moment from &#x27;moment&#x27;;
 import DataManagerResource from &#x27;ec.sdk/src/resources/datamanager/DataManagerResource&#x27;;
+import ModelResource from &#x27;ec.sdk/src/resources/datamanager/ModelResource&#x27;;
 
 /**
  * Extension of List for Datamanagers
  */
-export class ModelList&lt;ModelResource&gt; extends ResourceList&lt;ModelResource&gt; {
+export class ModelList&lt;model&gt; extends ResourceList&lt;model&gt; {
   private datamanager: DataManagerResource | string;
 
   constructor(datamanager: DataManagerResource | string, config: EntryListConfig, sdk: SdkService) {
     super(Object.assign(config, {
       identifier: &#x27;modelID&#x27;,
+      onSave:(item,value) &#x3D;&gt; {
+        const model &#x3D; item.getBody();
+        item.serialize(value, model instanceof ModelResource);
+        Object.assign(model, value);
+        if (model instanceof model) {
+          return model.save();
+        }
+        return value; //TODO create
+      },
       fields: {
         hexColor: {
           label: &#x27;#&#x27;,
@@ -1397,6 +1407,9 @@ export class ModelList&lt;ModelResource&gt; extends ResourceList&lt;ModelResourc
       }
     }), sdk);
     this.datamanager &#x3D; datamanager;
+    if (this.sdk.datamanager) {
+      this.load();
+    }
     this.sdk.ready.subscribe(() &#x3D;&gt; {
       this.load();
     });
@@ -1404,7 +1417,7 @@ export class ModelList&lt;ModelResource&gt; extends ResourceList&lt;ModelResourc
 
   /** Overrides the List load method. Instead of slicing the page out of all items, a datamanager request is made using the config.*/
   public load(config?: EntryListConfig) {
-    if (!this.sdk || !this.sdk.datamanager) {
+    if (!this.sdk || !this.sdk.datamanager || !this.datamanager) {
       return;
     }
     this.useConfig(config);

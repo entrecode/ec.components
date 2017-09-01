@@ -1,26 +1,26 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { PublicService } from '../../data';
-import { FieldValidators } from '../../ui';
+import { AdminService } from '../../index';
+import { FieldValidators } from '../../../ui/index';
 
 @Component({
-  selector: 'ec-auth-public-signup',
-  templateUrl: './public-signup.component.html',
-  styleUrls: ['./public-signup.component.scss']
+  selector: 'ec-auth-admin-login',
+  templateUrl: './admin-login.component.html',
+  styleUrls: ['./admin-login.component.scss']
 })
-export class PublicSignupComponent implements OnInit {
-  public signup: FormGroup;
+export class AdminLoginComponent implements OnInit {
+  public login: FormGroup;
   private submitted: boolean;
   public errorMessage: string;
   @Output() success: EventEmitter<any> = new EventEmitter();
   @Output() error: EventEmitter<any> = new EventEmitter();
 
-  constructor(private fb: FormBuilder, private pub: PublicService) {
+  constructor(private fb: FormBuilder, private admin: AdminService) {
   }
 
   ngOnInit() {
-    this.signup = this.fb.group({
+    this.login = this.fb.group({
       email: ['', [Validators.required, FieldValidators.email]], //emailAvailable
       password: ['', [Validators.required]],
     });
@@ -28,19 +28,21 @@ export class PublicSignupComponent implements OnInit {
 
   showError(err) {
     this.errorMessage = err.message;
+    this.login.get('password').setValue('');
     this.error.emit(err);
     return Observable.throw(err);
   }
 
   onSubmit() {
     this.submitted = true;
-    if (!this.signup.valid) {
+    delete this.errorMessage;
+    if (!this.login.valid) {
       return;
     }
-    this.pub.signup(this.signup.value).then((token) => {
-      this.signup.reset();
+    this.admin.login(this.login.value).then((token) => {
+      console.log(token);
+      this.login.reset();
       this.success.emit();
-    })
-    //TODO error handling etc
+    });
   }
 }

@@ -48,14 +48,14 @@ export class CrudComponent {
     private notificationService: NotificationsService,
     @Optional() public router: Router,
     @Optional() public route: ActivatedRoute) {
-
-    Observable.merge(route.data, route.params, route.queryParams)
-    .subscribe(({ model }) => {
-      if (model) {
-        this.model = model;
-      }
-    });
-
+    if (route) {
+      Observable.merge(route.data, route.params, route.queryParams)
+      .subscribe(({ model }) => {
+        if (model) {
+          this.model = model;
+        }
+      });
+    }
   }
 
   /** Logs the current form (Developer help). */

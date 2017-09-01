@@ -2,9 +2,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AdminLoginComponent } from './admin-login.component';
-import { UiModule } from '../../ui/ui.module';
-import { AdminService } from '../../data/sdk/admin.service';
-import { DataModule } from '../../data/data.module';
+import { UiModule } from '../../../ui/ui.module';
+import { AdminService } from '../../sdk/admin.service';
+import { DataModule } from '../../data.module';
 
 describe('AdminLoginComponent', () => {
   let component: AdminLoginComponent;

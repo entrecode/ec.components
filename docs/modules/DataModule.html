@@ -1777,7 +1777,13 @@ import { EditorComponent } from &#x27;./editor.component&#x27;;
     AdminService,
     CrudService,
     TypeConfigService,
-    ModelConfigService
+    ModelConfigService,
+    {
+      provide: &#x27;environment&#x27;,
+      useValue: {
+        environment: &#x27;live&#x27;
+      }
+    }
   ],
 })
 export class DataModule {

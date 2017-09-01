@@ -1,26 +1,26 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { AdminService } from '../../data';
-import { FieldValidators } from '../../ui';
+import { PublicService } from '../../index';
+import { FieldValidators } from '../../../ui/index';
 
 @Component({
-  selector: 'ec-auth-admin-login',
-  templateUrl: './admin-login.component.html',
-  styleUrls: ['./admin-login.component.scss']
+  selector: 'ec-auth-public-signup',
+  templateUrl: './public-signup.component.html',
+  styleUrls: ['./public-signup.component.scss']
 })
-export class AdminLoginComponent implements OnInit {
-  public login: FormGroup;
+export class PublicSignupComponent implements OnInit {
+  public signup: FormGroup;
   private submitted: boolean;
   public errorMessage: string;
   @Output() success: EventEmitter<any> = new EventEmitter();
   @Output() error: EventEmitter<any> = new EventEmitter();
 
-  constructor(private fb: FormBuilder, private admin: AdminService) {
+  constructor(private fb: FormBuilder, private pub: PublicService) {
   }
 
   ngOnInit() {
-    this.login = this.fb.group({
+    this.signup = this.fb.group({
       email: ['', [Validators.required, FieldValidators.email]], //emailAvailable
       password: ['', [Validators.required]],
     });
@@ -28,21 +28,19 @@ export class AdminLoginComponent implements OnInit {
 
   showError(err) {
     this.errorMessage = err.message;
-    this.login.get('password').setValue('');
     this.error.emit(err);
     return Observable.throw(err);
   }
 
   onSubmit() {
     this.submitted = true;
-    delete this.errorMessage;
-    if (!this.login.valid) {
+    if (!this.signup.valid) {
       return;
     }
-    this.admin.login(this.login.value).then((token) => {
-      console.log(token);
-      this.login.reset();
+    this.pub.signup(this.signup.value).then((token) => {
+      this.signup.reset();
       this.success.emit();
-    });
+    })
+    //TODO error handling etc
   }
 }

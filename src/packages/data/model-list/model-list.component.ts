@@ -14,7 +14,7 @@ export class ModelListComponent extends ResourceListComponent {
 
   createList() {
     if (!this.datamanager) {
-      console.log('no dataamaagner given..');
+      console.log('no datamanager given..');
       return;
     }
     return new ModelList(this.datamanager, this.config, this.sdk);

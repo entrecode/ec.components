@@ -1990,7 +1990,7 @@ export class MenuComponent {
   /** updates the routes on change of route */
   ngOnChanges() {
     if (this.route) {
-      this.routes &#x3D; this.route.children;//.filter(route &#x3D;&gt; route.data &amp;&amp; route.data.title);
+      this.routes &#x3D; this.route.children.filter(route &#x3D;&gt; route.path &amp;&amp; route.path.indexOf(&#x27;:&#x27;) &#x3D;&#x3D; -1);
     }
   }
 

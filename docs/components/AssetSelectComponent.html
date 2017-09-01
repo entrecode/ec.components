@@ -1477,7 +1477,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">src/packages/data/files/asset-select/asset-select.component.ts:70</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">src/packages/data/files/asset-select/asset-select.component.ts:71</a></div>
                                 </td>
                             </tr>
     
@@ -1509,7 +1509,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">src/packages/data/files/asset-select/asset-select.component.ts:83</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">src/packages/data/files/asset-select/asset-select.component.ts:84</a></div>
                                 </td>
                             </tr>
     
@@ -1605,7 +1605,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/packages/data/files/asset-select/asset-select.component.ts:74</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/packages/data/files/asset-select/asset-select.component.ts:75</a></div>
                                 </td>
                             </tr>
     
@@ -1637,7 +1637,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/packages/data/files/asset-select/asset-select.component.ts:65</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/packages/data/files/asset-select/asset-select.component.ts:66</a></div>
                                 </td>
                             </tr>
     
@@ -1832,6 +1832,7 @@ export class AssetSelectComponent extends SelectComponent {
     this.selection.toggle(item);
     if (this.config.solo) {
       this.pop.toggle(false);
+      this.active &#x3D; false;
     }
   }
 
@@ -1884,7 +1885,7 @@ export class AssetSelectComponent extends SelectComponent {
     &lt;ec-upload [placeholder]&#x3D;&quot;field?.getPlaceholder()&quot; [loader]&#x3D;&quot;assetLoader&quot;
                (success)&#x3D;&quot;selectUpload($event)&quot;&gt;&lt;/ec-upload&gt;
     &lt;ec-asset-list [selection]&#x3D;&quot;selection&quot; [config]&#x3D;&quot;config&quot; [loader]&#x3D;&quot;assetLoader&quot;
-                   *ngIf&#x3D;&quot;selection&amp;&amp;assetPop.active&quot;&gt;&lt;/ec-asset-list&gt;
+                   *ngIf&#x3D;&quot;selection&amp;&amp;assetPop.active&quot; (select)&#x3D;&quot;select($event)&quot;&gt;&lt;/ec-asset-list&gt;
   &lt;/ec-pop&gt;
 &lt;/div&gt;</code></pre>
     </div>
@@ -1912,7 +1913,7 @@ export class AssetSelectComponent extends SelectComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div *ngIf="selection" class="ec-select ec-asset-select">  <ul class="selected-items">    <li (click)="toggle(!active,true)" class="btn" [ngClass]="active?\'default\':\'minor\'"        *ngIf="canToggle()">      <i class="ec-icon find"></i>    </li>    <li *ngFor="let selected of selection.items" class="ec-list-avatar"        (click)="editItem(selected)">      <img [src]="selected.resolve(\'thumb\')"> <a (click)="removeItem(selected)">X</a>    </li>  </ul>  <ec-pop [ngClass]="config?.popClass" #assetPop>    <ec-loader #assetLoader class="blend"></ec-loader>    <ec-upload [placeholder]="field?.getPlaceholder()" [loader]="assetLoader"               (success)="selectUpload($event)"></ec-upload>    <ec-asset-list [selection]="selection" [config]="config" [loader]="assetLoader"                   *ngIf="selection&&assetPop.active"></ec-asset-list>  </ec-pop></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div *ngIf="selection" class="ec-select ec-asset-select">  <ul class="selected-items">    <li (click)="toggle(!active,true)" class="btn" [ngClass]="active?\'default\':\'minor\'"        *ngIf="canToggle()">      <i class="ec-icon find"></i>    </li>    <li *ngFor="let selected of selection.items" class="ec-list-avatar"        (click)="editItem(selected)">      <img [src]="selected.resolve(\'thumb\')"> <a (click)="removeItem(selected)">X</a>    </li>  </ul>  <ec-pop [ngClass]="config?.popClass" #assetPop>    <ec-loader #assetLoader class="blend"></ec-loader>    <ec-upload [placeholder]="field?.getPlaceholder()" [loader]="assetLoader"               (success)="selectUpload($event)"></ec-upload>    <ec-asset-list [selection]="selection" [config]="config" [loader]="assetLoader"                   *ngIf="selection&&assetPop.active" (select)="select($event)"></ec-asset-list>  </ec-pop></div></div>'
     var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'AssetInputComponent', 'selector': ''},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
     var DIRECTIVES = [{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'AssetSelectComponent'};

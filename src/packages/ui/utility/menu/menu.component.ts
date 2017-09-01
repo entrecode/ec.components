@@ -37,7 +37,7 @@ export class MenuComponent {
   /** updates the routes on change of route */
   ngOnChanges() {
     if (this.route) {
-      this.routes = this.route.children;//.filter(route => route.data && route.data.title);
+      this.routes = this.route.children.filter(route => route.path && route.path.indexOf(':') == -1);
     }
   }
 

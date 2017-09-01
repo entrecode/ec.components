@@ -17,7 +17,7 @@ import { TabsDemoComponent } from './tabs/tabs-demo.component';
 import { EntryFormDemoComponent } from './entry-form/entry-form.demo.component';
 import { CrudDemoComponent } from './crud/crud-demo.component';
 import { SelectDemoComponent } from './select/select-demo.component';
-import { AuthModule } from '../packages/auth/auth.module';
+import { AuthModule } from '../packages/data/auth/auth.module';
 import { AuthDemoComponent } from './auth/auth-demo.component';
 import { CoolStringComponent } from './form/cool-string.component'
 import { UnsplashImageComponent } from './list/unsplash-image.component';
@@ -31,6 +31,13 @@ import { DatamanagerListDemoComponent } from './datamanager-list/datamanager-lis
 import { ModelListDemoComponent } from './model-list/model-list.demo.component';
 import { DatetimeDemoComponent } from './form/datetime-demo.component';
 import { DemoDashboardComponent } from './dashboard.component';
+
+demoRoutes.unshift(
+  {
+    path: '',
+    component: DemoDashboardComponent,
+    data: { title: 'ec.components' }
+  });
 
 @NgModule({
   declarations: [

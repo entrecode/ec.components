@@ -14,12 +14,12 @@ export class DatamanagerList<DatamanagerResource> extends ResourceList<Datamanag
       identifier: 'datamanagerID',
       onSave: (item, value) => {
         const datamanager = item.getBody();
-        item.serialize(value, !!datamanager.save);
+        item.serialize(value, datamanager instanceof DataManagerResource);
         Object.assign(datamanager, value);
         if (datamanager instanceof DataManagerResource) {
           return datamanager.save();
         }
-        return value; //TODO
+        return value; //TODO create
       },
       fields: {
         hexColor: {

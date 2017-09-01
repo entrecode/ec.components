@@ -1304,7 +1304,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/packages/data/entry-list/entry-list.ts:30</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/packages/data/entry-list/entry-list.ts:29</a></div>
                                         </td>
                                     </tr>
             
@@ -1393,7 +1393,6 @@ export class EntryList&lt;Entry&gt; extends ResourceList&lt;Entry&gt; {
   getFilterOptions(config: EntryListConfig): filterOptions {
     const _fields &#x3D; Object.keys(this.config.fields)
     .filter((field) &#x3D;&gt; this.config.fields[field].list !&#x3D;&#x3D; false);
-    console.log(&#x27;fields&#x27;, _fields);
     return Object.assign(super.getFilterOptions(config), { _fields });
   }
 

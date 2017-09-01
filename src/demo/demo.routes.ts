@@ -1,6 +1,5 @@
 import { LoginComponent } from '../packages/ui';
 import { Routes } from '@angular/router';
-import { VcDemoComponent } from './vc/vc-demo.component';
 import { PopDemoComponent } from './pop/pop-demo.component';
 import { DataDemoComponent } from './data/data-demo.component';
 import { ListDemoComponent } from './list/list-demo.component';
@@ -11,29 +10,23 @@ import { EntryFormDemoComponent } from './entry-form/entry-form.demo.component';
 import { MockupComponent } from '../packages/ui/utility/mockup/mockup.component';
 import { CrudDemoComponent } from './crud/crud-demo.component';
 import { SelectDemoComponent } from './select/select-demo.component';
-import { PublicLoginComponent } from '../packages/auth/public-login/public-login.component';
-import { PublicSignupComponent } from '../packages/auth/public-signup/public-signup.component';
-import { AuthDemoComponent } from './auth/auth-demo.component';
 import { EntrySelectDemoComponent } from './entry-select/entry-select-demo.component';
-import { AssetListDemoComponent } from './asset-list/asset-list.demo.component';
 import { ListTransformsDemoComponent } from './list-transforms/list-transforms-demo.component';
 import { DatamanagerListDemoComponent } from './datamanager-list/datamanager-list.demo.component';
 import { ModelListDemoComponent } from './model-list/model-list.demo.component';
 import { DatetimeDemoComponent } from './form/datetime-demo.component';
-import { DemoDashboardComponent } from './dashboard.component';
+import { AssetListDemoComponent } from './asset-list/asset-list.demo.component';
+import { PublicLoginComponent } from '../packages/data/auth/public-login/public-login.component';
+import { PublicSignupComponent } from '../packages/data/auth/public-signup/public-signup.component';
+import { AuthDemoComponent } from './auth/auth-demo.component';
+import { VcDemoComponent } from './vc/vc-demo.component';
 import { CrudComponent } from '../packages/data/crud/crud.component';
-import { DataModule } from '../packages/data/data.module';
 
 export const demoRoutes: Routes = [
-  {
-    path: '',
-    component: DemoDashboardComponent,
-    data: { title: 'ec.components' }
-  },
-  {
-    path: 'ec',
-    loadChildren: () => DataModule,
-  },
+  /*  {
+      path: 'ec',
+      loadChildren: () => DataModule,
+    },*/
   {
     path: 'ui',
     children: [
@@ -142,23 +135,22 @@ export const demoRoutes: Routes = [
         path: 'crud',
         component: CrudDemoComponent
       },
+    ]
+  },
+  {
+    path: 'editor',
+    children: [
       {
-        path: 'model/:model',
-        component: CrudComponent,
-        /*data: {
-          model: 'muffin',
-          config: {
-            size: 5
-          }
-        }*/
+        path: 'data',
+        component: DatamanagerListDemoComponent,
       },
       {
-        path: 'datamanager-list',
-        component: DatamanagerListDemoComponent
-      },
-      {
-        path: 'model-list',
+        path: 'data/:datamanagerID',
         component: ModelListDemoComponent
+      },
+      {
+        path: 'data/:datamanagerID/:model',
+        component: CrudComponent,
       },
     ]
   },

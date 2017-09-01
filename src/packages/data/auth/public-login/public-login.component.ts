@@ -1,8 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { FieldValidators } from '../../ui';
-import { SdkService } from '../../data/sdk/sdk.service';
+import { FieldValidators } from '../../../ui/index';
+import { SdkService } from '../../sdk/sdk.service';
 
 @Component({
   selector: 'ec-auth-public-login',

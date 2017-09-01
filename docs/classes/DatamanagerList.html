@@ -1286,12 +1286,12 @@ export class DatamanagerList&lt;DatamanagerResource&gt; extends ResourceList&lt;
       identifier: &#x27;datamanagerID&#x27;,
       onSave: (item, value) &#x3D;&gt; {
         const datamanager &#x3D; item.getBody();
-        item.serialize(value, !!datamanager.save);
+        item.serialize(value, datamanager instanceof DataManagerResource);
         Object.assign(datamanager, value);
         if (datamanager instanceof DataManagerResource) {
           return datamanager.save();
         }
-        return value; //TODO
+        return value; //TODO create
       },
       fields: {
         hexColor: {

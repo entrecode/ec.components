@@ -1455,7 +1455,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="120" class="link-to-prism">src/packages/data/crud/crud.component.ts:120</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">src/packages/data/crud/crud.component.ts:119</a></div>
                                 </td>
                             </tr>
     
@@ -1525,7 +1525,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">src/packages/data/crud/crud.component.ts:86</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/packages/data/crud/crud.component.ts:85</a></div>
                                 </td>
                             </tr>
     
@@ -1665,7 +1665,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">src/packages/data/crud/crud.component.ts:108</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">src/packages/data/crud/crud.component.ts:107</a></div>
                                 </td>
                             </tr>
     
@@ -1969,14 +1969,14 @@ export class CrudComponent {
     private notificationService: NotificationsService,
     @Optional() public router: Router,
     @Optional() public route: ActivatedRoute) {
-
-    Observable.merge(route.data, route.params, route.queryParams)
-    .subscribe(({ model }) &#x3D;&gt; {
-      if (model) {
-        this.model &#x3D; model;
-      }
-    });
-
+    if (route) {
+      Observable.merge(route.data, route.params, route.queryParams)
+      .subscribe(({ model }) &#x3D;&gt; {
+        if (model) {
+          this.model &#x3D; model;
+        }
+      });
+    }
   }
 
   /** Logs the current form (Developer help). */
@@ -1997,7 +1997,6 @@ export class CrudComponent {
 
   /** Returns true if the visible fields in the list differ from the visible fields in the form*/
   public mustReload(item) {
-    console.log(&#x27;must reload&#x3D;&#x27;, item.config.fields);
     return !Object.keys(item.config.fields).reduce((equal, property) &#x3D;&gt; {
       return equal &amp;&amp; (item.config.fields[property].list !&#x3D;&#x3D; false || item.config.fields[property].form &#x3D;&#x3D;&#x3D; false);
     }, true);
