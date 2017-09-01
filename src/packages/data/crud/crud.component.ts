@@ -76,7 +76,6 @@ export class CrudComponent {
 
   /** Returns true if the visible fields in the list differ from the visible fields in the form*/
   public mustReload(item) {
-    console.log('must reload=', item.config.fields);
     return !Object.keys(item.config.fields).reduce((equal, property) => {
       return equal && (item.config.fields[property].list !== false || item.config.fields[property].form === false);
     }, true);

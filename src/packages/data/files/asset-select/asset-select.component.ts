@@ -59,6 +59,7 @@ export class AssetSelectComponent extends SelectComponent {
     this.selection.toggle(item);
     if (this.config.solo) {
       this.pop.toggle(false);
+      this.active = false;
     }
   }
 

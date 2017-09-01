@@ -56,6 +56,10 @@ export class ResourceListComponent extends ListComponent {
         if (!this.selection && this.list.config && !this.list.config.disableSelection) {
           this.selection = new Selection([], this.list.config);
         }
+
+        // console.log('changed list', this.list.config.filter);
+        //TODO update route to reflect the filter settings
+
       });
       this.list.loading$.subscribe((promise: Promise<any>) => {
         this.loaderService.wait(promise, this.loader);

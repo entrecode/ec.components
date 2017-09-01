@@ -58,6 +58,18 @@ export class DemoComponent {
 
     this.modelConfig.set('baker', {
       fields: {
+        id: {
+          label: 'ID',
+          // readOnly: true
+        },
+        created: {
+          label: 'Datum',
+          readOnly: true
+        },
+        modified: {
+          label: 'Letzte Änderung',
+          readOnly: true
+        },
         picture: {
           label: 'Bilder',
           list: false

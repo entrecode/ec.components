@@ -22,7 +22,6 @@ export class EntryList<Entry> extends ResourceList<Entry> {
   getFilterOptions(config: EntryListConfig): filterOptions {
     const _fields = Object.keys(this.config.fields)
     .filter((field) => this.config.fields[field].list !== false);
-    console.log('fields', _fields);
     return Object.assign(super.getFilterOptions(config), { _fields });
   }
 

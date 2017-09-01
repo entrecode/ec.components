@@ -33,6 +33,5 @@ export class ListHeaderComponent {
 
   private removeFilter(property, control) {
     control.reset();
-    this.list.filter(property, '');
   }
 }

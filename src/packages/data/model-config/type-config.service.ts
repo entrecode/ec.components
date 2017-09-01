@@ -12,6 +12,9 @@ import { Injectable } from "@angular/core";
 export class TypeConfigService {
   /** Defines the base configuration of each type.*/
   private types: FieldConfig<FieldConfigProperty> = {
+    id: {
+      view: 'label'
+    },
     text: {
       view: 'string',
       filterable: true,
