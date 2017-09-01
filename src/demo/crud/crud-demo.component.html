@@ -1,13 +1,15 @@
 <h2>ec-crud</h2>
+<h3>Field Test</h3>
+<p>This crud features all possible field type with the default behaviour</p>
+<ec-crud model="field_test"></ec-crud>
 <h3>Baker</h3>
+<p>The following crud omits the picture field. To open the form, the entry is automatically reloaded
+  with the picture field to be able to edit it.</p>
 <ec-crud model="baker" [config]="{develop:true,keepPopOpen:true,size:5}"></ec-crud>
 <h3>Muffin</h3>
 <p>This crud uses levels:2 option (would also work with levels:1).</p>
 <ec-crud model="muffin"
          [config]="{develop:true,createLabel:'Neuer Muffin',size:5,disableSelection:true,sortBy:'name',levels:2}"></ec-crud>
-<h3>Field Test</h3>
-<ec-crud [config]="{develop:true,popClass:'sidebar-left',keepPopOpen:true}"
-         model="field_test"></ec-crud>
 
 <!--
 <h3>Read</h3>

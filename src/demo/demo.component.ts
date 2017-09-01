@@ -60,7 +60,7 @@ export class DemoComponent {
       fields: {
         picture: {
           label: 'Bilder',
-          // list: false
+          list: false
         },
         name: {
           label: 'Bäcker'
