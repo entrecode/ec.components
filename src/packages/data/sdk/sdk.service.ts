@@ -1,5 +1,5 @@
 import { EventEmitter, Inject, Injectable } from '@angular/core';
-import { Accounts, DataManager, PublicAPI, Session } from 'ec.sdk';
+import { Accounts, DataManager, PublicAPI, Session } from 'ec.sdk/src';
 import AccountResource from 'ec.sdk/src/resources/accounts/AccountResource';
 import { environment as env } from 'ec.sdk/src/Core';
 
