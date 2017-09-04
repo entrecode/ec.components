@@ -6,6 +6,7 @@ import * as moment from 'moment';
 import { FieldConfig } from '../../core/config/field-config.interface';
 import { FieldConfigProperty } from '../../core/config/field-config-property.interface';
 import { Injectable } from "@angular/core";
+import { AssetInputComponent } from '../files/asset-input/asset-input.component';
 
 /** The TypeConfig holds each field type's specific behaviour in certain situations */
 @Injectable()
@@ -45,14 +46,14 @@ export class TypeConfigService {
     },
     asset: {
       view: 'avatar',
-      input: DefaultEntryInputComponent,
+      input: AssetInputComponent,
       filterOperator: 'any',
       filterable: true,
       display: (value, entry, property) => entry.getImageThumbUrl(property, 100),
     },
     assets: {
       view: 'avatars',
-      input: DefaultEntryInputComponent,
+      input: AssetInputComponent,
       display: (value, entry, property) => entry.getImageThumbUrl(property, 100),
       prefill: [],
       filterOperator: 'any',

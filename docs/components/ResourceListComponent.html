@@ -165,6 +165,9 @@
                                     <a href="../modules/PopModule.html" >PopModule</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../modules/SdkModule.html" >SdkModule</a>
+                                </li>
+                                <li class="link">
                                     <a href="../modules/UiModule.html" >UiModule</a>
                                 </li>
                                 <li class="link">
@@ -721,6 +724,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../modules/PopModule.html" >PopModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/SdkModule.html" >SdkModule</a>
                                        </li>
                                        <li class="link">
                                            <a href="../modules/UiModule.html" >UiModule</a>
@@ -1302,6 +1308,57 @@ It is meant to be extended and overriden the createList method. See e.g. AssetLi
                         <td class="col-md-4">
                                 <div class="io-description"><p>The constructor will just call super of List</p>
     </div>
+                                <div>
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Type</td>
+                                                    <td>Optional</td>
+                                                    <td>Description</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                      <td>loaderService</td>
+                                                      <td>
+                                                                <code><a href="../injectables/LoaderService.html" target="_self" >LoaderService</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>sdk</td>
+                                                      <td>
+                                                                <code><a href="../injectables/SdkService.html" target="_self" >SdkService</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>notificationService</td>
+                                                      <td>
+                                                                <code><a href="../injectables/NotificationsService.html" target="_self" >NotificationsService</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>route</td>
+                                                      <td>
+                                                                <code><a href="https://angular.io/docs/ts/latest/api/router/index/ActivatedRoute-interface.html" target="_blank" >ActivatedRoute</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
                         </td>
                     </tr>
                 </tbody>
@@ -1359,6 +1416,8 @@ It is meant to be extended and overriden the createList method. See e.g. AssetLi
     </section>
 
 
+
+
     <section>
         
             <h3 id="methods">
@@ -1374,7 +1433,7 @@ It is meant to be extended and overriden the createList method. See e.g. AssetLi
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                                <span class="modifier-icon method fa fa-play circle"></span>
+                                <span class="modifier-icon fa fa-lock"></span>
                             <code>createList()</code>
                         </td>
                     </tr>
@@ -1392,7 +1451,7 @@ It is meant to be extended and overriden the createList method. See e.g. AssetLi
     </div>
     
                                 <div class="io-description">
-                                    <b>Returns : </b>    <code>|</code>
+                                    <b>Returns : </b>    <code> | </code>
     
                                 </div>
                         </td>
@@ -1426,9 +1485,47 @@ It is meant to be extended and overriden the createList method. See e.g. AssetLi
     </div>
     
                                 <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Type</td>
+                                                    <td>Optional</td>
+                                                    <td>Description</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                      <td>property</td>
+                                                      <td>
+                                                              <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>value</td>
+                                                      <td>
+                                                              <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
                                     <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
     
                                 </div>
+                                    <div class="io-description">
+                                        
+                                    </div>
                         </td>
                     </tr>
                 </tbody>
@@ -1458,9 +1555,38 @@ It is meant to be extended and overriden the createList method. See e.g. AssetLi
                         <td class="col-md-4">
     
                                 <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Type</td>
+                                                    <td>Optional</td>
+                                                    <td>Description</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                      <td>fieldFilter</td>
+                                                      <td>
+                                                              <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/function" target="_blank" >function</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
                                     <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
     
                                 </div>
+                                    <div class="io-description">
+                                        
+                                    </div>
                         </td>
                     </tr>
                 </tbody>

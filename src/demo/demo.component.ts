@@ -1,7 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { ModelConfigService } from '../packages/data';
 import * as moment from 'moment';
-import { FileService } from '../packages/data/files/file.service';
 import { demoRoutes } from './demo.routes';
 
 @Component({
@@ -13,9 +12,8 @@ import { demoRoutes } from './demo.routes';
 export class DemoComponent {
   public demos = demoRoutes;
 
-  constructor(private modelConfig: ModelConfigService, private fileService: FileService) {
+  constructor(private modelConfig: ModelConfigService) {
     moment.locale('de');
-    this.fileService.registerComponents();
 
     this.modelConfig.set('muffin', {
       fields: {

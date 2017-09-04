@@ -9,6 +9,7 @@ import { AssetSelectComponent } from './asset-select/asset-select.component';
 import { FileService } from './file.service';
 import { AssetInputComponent } from './asset-input/asset-input.component';
 import { UploadComponent } from './upload/upload.component';
+import { SdkModule } from '../sdk/sdk.module';
 
 @NgModule({
   entryComponents: [
@@ -24,17 +25,17 @@ import { UploadComponent } from './upload/upload.component';
     UploadComponent,
   ],
   imports: [
-    // BrowserModule,
     CommonModule,
     FormsModule,
     UiModule,
-    DataModule,
+    SdkModule,
   ],
   exports: [
     AssetListComponent,
     AssetSelectComponent,
     AssetInputComponent,
     UploadComponent,
+    SdkModule,
   ],
   providers: [
     FileService

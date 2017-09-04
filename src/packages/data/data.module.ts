@@ -10,9 +10,6 @@ import { EntryListComponent } from './entry-list/entry-list.component';
 import { EntryComponent } from './entry/entry.component';
 import { EntriesComponent } from './entries/entries.component';
 import { EntryFormComponent } from './entry-form/entry-form.component';
-import { SdkService } from './sdk/sdk.service';
-import { PublicService } from './sdk/public.service';
-import { AdminService } from './sdk/admin.service';
 import { CrudComponent } from './crud/crud.component';
 import { DefaultEntryOutputComponent } from './entry-form/default-entry-output.component';
 import { EntrySelectComponent } from './entry-select/entry-select.component';
@@ -22,6 +19,8 @@ import { ResourceListComponent } from './resource-list/resource-list.component';
 import { ModelListComponent } from './model-list/model-list.component';
 import { DataRoutingModule } from './data.routing';
 import { EditorComponent } from './editor.component';
+import { SdkModule } from './sdk/sdk.module';
+import { FilesModule } from './files/files.module';
 
 @NgModule({
   entryComponents: [
@@ -52,6 +51,8 @@ import { EditorComponent } from './editor.component';
     CommonModule,
     FormsModule,
     UiModule,
+    SdkModule,
+    FilesModule,
   ],
   exports: [
     EntryListComponent,
@@ -65,11 +66,10 @@ import { EditorComponent } from './editor.component';
     ResourceListComponent,
     RouterModule,
     EditorComponent,
+    SdkModule,
+    FilesModule,
   ],
   providers: [
-    SdkService,
-    PublicService,
-    AdminService,
     CrudService,
     TypeConfigService,
     ModelConfigService,

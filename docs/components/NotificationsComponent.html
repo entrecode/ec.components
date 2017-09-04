@@ -165,6 +165,9 @@
                                     <a href="../modules/PopModule.html" >PopModule</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../modules/SdkModule.html" >SdkModule</a>
+                                </li>
+                                <li class="link">
                                     <a href="../modules/UiModule.html" >UiModule</a>
                                 </li>
                                 <li class="link">
@@ -723,6 +726,9 @@
                                            <a href="../modules/PopModule.html" >PopModule</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../modules/SdkModule.html" >SdkModule</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../modules/UiModule.html" >UiModule</a>
                                        </li>
                                        <li class="link">
@@ -1270,6 +1276,30 @@
                         <td class="col-md-4">
                                 <div class="io-description"><p>Listens on the NotificationService and shows each notification that has this component set as host, or none at all. </p>
     </div>
+                                <div>
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Type</td>
+                                                    <td>Optional</td>
+                                                    <td>Description</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                      <td>notificationService</td>
+                                                      <td>
+                                                                <code><a href="../injectables/NotificationsService.html" target="_self" >NotificationsService</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
                         </td>
                     </tr>
                 </tbody>
@@ -1302,6 +1332,8 @@
                 </tbody>
             </table>
     </section>
+
+
 
 
 
@@ -1363,7 +1395,7 @@ import { NotificationsService } from &#x27;./notifications.service&#x27;;
 })
 export class NotificationsComponent {
   /** The current stack of notifications that are visible. */
-  notifications: Collection&lt;Notification&gt; &#x3D; new Collection();
+  notifications: Collection&lt;Notification&gt; &#x3D; new Collection([]);
   /** The default time for a notification to be visible. Will be ignored if the notification itself has a time set. */
   @Input() time: number;
 

@@ -11,6 +11,7 @@ export * from './entry-form/default-entry-output.component'
 export * from './sdk/sdk.service'
 export * from './sdk/public.service'
 export * from './sdk/admin.service'
+export * from './sdk/sdk.module'
 export * from './crud/crud.service'
 export * from './crud/crud.component'
 export * from './data.module';

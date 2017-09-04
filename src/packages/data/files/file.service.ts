@@ -4,7 +4,6 @@ import PublicAssetResource from "ec.sdk/src/resources/publicAPI/PublicAssetResou
 import { SdkService } from '../sdk/sdk.service';
 import { AssetList } from './asset-list/asset-list';
 import { TypeConfigService } from '../model-config/type-config.service';
-import { AssetInputComponent } from './asset-input/asset-input.component';
 import * as moment from 'moment';
 import { Item } from '../../core/item/item';
 
@@ -88,12 +87,6 @@ export class FileService {
 
   /** Injects sdk */
   constructor(private sdk: SdkService, private typeConfig: TypeConfigService) {
-    this.registerComponents();
-  }
-
-  public registerComponents() {
-    this.typeConfig.set('asset', { input: AssetInputComponent });
-    this.typeConfig.set('assets', { input: AssetInputComponent });
   }
 
   public getFormData(files: FileList): FormData {

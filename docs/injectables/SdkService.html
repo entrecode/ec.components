@@ -165,6 +165,9 @@
                                     <a href="../modules/PopModule.html" >PopModule</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../modules/SdkModule.html" >SdkModule</a>
+                                </li>
+                                <li class="link">
                                     <a href="../modules/UiModule.html" >UiModule</a>
                                 </li>
                                 <li class="link">
@@ -723,6 +726,9 @@
                                            <a href="../modules/PopModule.html" >PopModule</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../modules/SdkModule.html" >SdkModule</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../modules/UiModule.html" >UiModule</a>
                                        </li>
                                        <li class="link">
@@ -1275,6 +1281,29 @@ setClientID.</p>
                                 <td class="col-md-4">
                                         <div class="io-description"><p>Calls init and sets ready to true when finished. </p>
             </div>
+                                        <div>
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>environment</td>
+                                                              <td>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1345,9 +1374,37 @@ setClientID.</p>
                                 <td class="col-md-4">
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>model</td>
+                                                              <td>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1362,7 +1419,7 @@ setClientID.</p>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon method fa fa-play "></span>
+                                        <span class="modifier-icon fa fa-"></span>
                                     <code>init(environment: )</code>
                                 </td>
                             </tr>
@@ -1380,9 +1437,37 @@ setClientID.</p>
             </div>
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>environment</td>
+                                                              <td>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1414,9 +1499,38 @@ setClientID.</p>
             </div>
             
                                         <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>credentials</td>
+                                                              <td>
+                                                                      <code>literal type</code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
             
                                         </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1771,9 +1885,9 @@ setClientID.</p>
 
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { EventEmitter, Inject, Injectable } from &#x27;@angular/core&#x27;;
-import { Accounts, DataManager, PublicAPI, Session } from &#x27;ec.sdk&#x27;;
+import { Accounts, DataManager, PublicAPI, Session } from &#x27;ec.sdk/src&#x27;;
 import AccountResource from &#x27;ec.sdk/src/resources/accounts/AccountResource&#x27;;
-import { environment as env } from &#x27;ec.sdk/src/resources/ListResource&#x27;;
+import { environment as env } from &#x27;ec.sdk/src/Core&#x27;;
 
 /** The SdkService exposes all instances of the ec.sdk APIs.
  * To be able to use it, you have to provide an environment like this in your module&#x27;s providers:
