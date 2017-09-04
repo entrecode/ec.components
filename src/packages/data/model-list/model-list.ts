@@ -53,7 +53,7 @@ export class ModelList<model> extends ResourceList<model> {
     if (this.sdk.datamanager) {
       this.load();
     }
-    this.sdk.ready.subscribe(() => {
+    this.sdk.ready.then(() => {
       this.load();
     });
   }

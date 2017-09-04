@@ -1,4 +1,4 @@
-import { EventEmitter, Inject, Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Accounts, DataManager, PublicAPI, Session } from 'ec.sdk/src';
 import AccountResource from 'ec.sdk/src/resources/accounts/AccountResource';
 import { environment as env } from 'ec.sdk/src/Core';
@@ -32,21 +32,27 @@ export class SdkService {
   public datamanager: DataManager;
   /** Current User */
   public user: AccountResource;
-  /** Emits  after the APIs have been initialized. */
-  public ready: EventEmitter<AccountResource> = new EventEmitter();
   /** Pending schema requests */
   private schemaRequests = {};
+  /** Promise that should be used before using any auth related stuff:
+   *
+   * ```ts
+   * this.sdk.ready.then(account => {});
+   * ```
+   * */
+  public ready: Promise<AccountResource>;
 
   /** Calls init and sets ready to true when finished. */
   constructor(@Inject('environment') private environment) {
-    this.init().then((account) => {
+    this.ready = this.init();
+    this.ready.then((account) => {
       this.datamanager = new DataManager(<env>environment.environment);
-      this.ready.emit(account);
+      // this.ready.emit(account);
     });
   }
 
   /** Creates all the API instances and determines the current user. */
-  public init(environment = this.environment) {
+  public init(environment = this.environment): Promise<AccountResource> {
     if (this.noDatamanagerID()) {
       return Promise.reject(this.noDatamanagerID());
     }

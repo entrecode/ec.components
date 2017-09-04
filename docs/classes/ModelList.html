@@ -1492,7 +1492,7 @@ export class ModelList&lt;model&gt; extends ResourceList&lt;model&gt; {
     if (this.sdk.datamanager) {
       this.load();
     }
-    this.sdk.ready.subscribe(() &#x3D;&gt; {
+    this.sdk.ready.then(() &#x3D;&gt; {
       this.load();
     });
   }

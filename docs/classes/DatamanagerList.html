@@ -1393,7 +1393,7 @@ export class DatamanagerList&lt;DatamanagerResource&gt; extends ResourceList&lt;
         }
       }
     }), sdk);
-    this.sdk.ready.subscribe(() &#x3D;&gt; {
+    this.sdk.ready.then(() &#x3D;&gt; {
       this.load();
     });
   }

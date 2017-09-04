@@ -48,7 +48,7 @@ export class DatamanagerList<DatamanagerResource> extends ResourceList<Datamanag
         }
       }
     }), sdk);
-    this.sdk.ready.subscribe(() => {
+    this.sdk.ready.then(() => {
       this.load();
     });
   }
