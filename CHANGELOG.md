@@ -4,6 +4,7 @@
 ## 0.3.0
 * now using ec.sdk 0.8.1
 * now supporting default routes for filtering and more
+* AssetInput is now default for asset/assets fields
 
 <a name="0.2.0"></a>
 ## 0.2.0
