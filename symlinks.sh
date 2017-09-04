@@ -1,6 +1,10 @@
+cd ./node_modules/@ec.components
+
 rm -rf core
-ln -l src/packages/core core
+ln -s src/packages/core core
+
 rm -rf ui
-ln -l src/packages/ui ui
-rm -rf ui
-ln -l src/packages/data data
+ln -s src/packages/ui ui
+
+rm -rf data
+ln -s src/packages/data data
