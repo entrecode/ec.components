@@ -9,7 +9,7 @@ import { Collection } from '../../core/collection/collection';
 })
 export class LoaderComponent {
   /** The current stack of loading promises.*/
-  private stack: Collection<Promise<any>> = new Collection();
+  private stack: Collection<Promise<any>> = new Collection([]);
   /** The loader's visibility status. */
   private visible: boolean = false;
   /** The timestamp of the last time a promise has been added to the stack. */

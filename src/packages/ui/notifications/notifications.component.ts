@@ -14,7 +14,7 @@ import { NotificationsService } from './notifications.service';
 })
 export class NotificationsComponent {
   /** The current stack of notifications that are visible. */
-  notifications: Collection<Notification> = new Collection();
+  notifications: Collection<Notification> = new Collection([]);
   /** The default time for a notification to be visible. Will be ignored if the notification itself has a time set. */
   @Input() time: number;
 
