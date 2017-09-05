@@ -8,10 +8,11 @@ import { ModelConfigService } from '../model-config/model-config.service';
 import { CrudService } from './crud.service';
 import { SdkService } from '../sdk/sdk.service';
 import { TypeConfigService } from '../model-config/type-config.service';
+import EntryResource from 'ec.sdk/src/resources/publicAPI/EntryResource';
 
 describe('CrudComponent', () => {
-  let component: CrudComponent;
-  let fixture: ComponentFixture<CrudComponent>;
+  let component: CrudComponent<EntryResource>;
+  let fixture: ComponentFixture<CrudComponent<EntryResource>>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

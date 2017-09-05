@@ -111,7 +111,7 @@ export class ModelConfigService extends Config {
   }
 
   /** Returns the given model's config and generates a field config from the schema if it is not configured. */
-  generateConfig(model: string): Promise<ListConfig> {
+  generateConfig(model: string): Promise<ListConfig<EntryResource>> {
     const config = Object.assign({}, this.get(model) || {}); //clone
     Object.assign(config, {
       identifier: 'id',

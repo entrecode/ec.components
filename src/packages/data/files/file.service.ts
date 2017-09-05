@@ -18,7 +18,7 @@ export interface Upload {
   /** The uploaded asset as item */
   items?: Array<Item<PublicAssetResource>>
   /** The list where it happened. */
-  list?: AssetList<PublicAssetResource>
+  list?: AssetList
 }
 
 /** The CRUD service is meant to be used when modifying entries.

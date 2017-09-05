@@ -2,9 +2,13 @@
   "name": "@ec.components/data",
   "version": "0.3.0",
   "description": "All datamanager related UI components and classes.",
-  "main": "index.js",
+  "main": "lib/data/index.js",
+  "typings": "lib/data/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clear-lib": "rimraf lib",
+    "ngc-build": "ngc -p ./tsconfig-ngc.json",
+    "prepublish": "npm run clear-lib && npm run ngc-build"
   },
   "author": "Felix Roos <roos@entrecode.de>",
   "license": "ISC",
@@ -14,7 +18,9 @@
   },
   "devDependencies": {
     "@types/jasmine": "^2.5.47",
-    "@types/node": "^6.0.71"
+    "@types/node": "^6.0.71",
+    "@angular/compiler-cli": "^4.0.0",
+    "typescript": "^2.4.2"
   },
   "dependencies": {
     "@angular/animations": "^4.0.0",

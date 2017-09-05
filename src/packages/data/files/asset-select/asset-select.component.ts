@@ -8,6 +8,7 @@ import { Item } from '../../../core/item/item';
 import { FileService, Upload } from '../file.service';
 import { PopComponent } from '../../../ui/pop/pop.component';
 import { SelectComponent } from '../../../ui/form/select/select.component';
+import PublicAssetResource from 'ec.sdk/src/resources/publicAPI/PublicAssetResource';
 
 /** Shows assets of a selection and is able to pick new ones from a crud list */
 @Component({
@@ -24,13 +25,13 @@ import { SelectComponent } from '../../../ui/form/select/select.component';
     }
   ]
 })
-export class AssetSelectComponent extends SelectComponent {
+export class AssetSelectComponent extends SelectComponent<PublicAssetResource> {
   /** The formControl that is used. */
   @Input() formControl: FormControl;
   /** The value that should be prefilled */
-  @Input() value: Array<any>;
+  @Input() value: Array<PublicAssetResource>;
   /** The used field, which should contain a model property (when not using model input) */
-  @Input() field: Field<any>;
+  @Input() field: Field<PublicAssetResource>;
   /** The form group that is used */
   protected group: FormGroup;
   /** The form control that is used */

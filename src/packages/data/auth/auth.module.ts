@@ -1,4 +1,3 @@
-// import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
@@ -12,8 +11,7 @@ import { ValidationOnBlurDirective } from './validate-onblur';
 import { PublicSignupComponent } from './public-signup/public-signup.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { UiModule } from '../../ui/ui.module';
-
-// import { HyperAgentModule } from './hyperagent/hyper-agent.module';
+import { AdminSignupComponent } from './admin-signup/admin-signup.component';
 
 @NgModule({
   declarations: [
@@ -21,13 +19,12 @@ import { UiModule } from '../../ui/ui.module';
     PublicSignupComponent,
     ValidationOnBlurDirective,
     AdminLoginComponent,
+    AdminSignupComponent,
   ],
   imports: [
     CookieModule.forRoot(),
-    // BrowserModule,
     CommonModule,
     ReactiveFormsModule,
-    //HyperAgentModule,
     HttpModule,
     UiModule
   ],
@@ -36,6 +33,7 @@ import { UiModule } from '../../ui/ui.module';
     PublicLoginComponent,
     PublicSignupComponent,
     AdminLoginComponent,
+    AdminSignupComponent,
     ReactiveFormsModule
   ],
   providers: [AuthorizationService, requestOptionsProvider, PublicAuthService]

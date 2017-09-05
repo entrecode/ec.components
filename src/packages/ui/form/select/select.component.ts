@@ -26,27 +26,27 @@ import { Item } from '../../../core/item/item';
     }
   ]
 })
-export class SelectComponent implements ControlValueAccessor {
+export class SelectComponent<T> implements ControlValueAccessor {
   /** Configuration Object for List */
-  @Input() config: ListConfig;
+  @Input() config: ListConfig<T>;
   /** The visible items */
-  @Input() value: Array<any>;
+  @Input() value: Array<T>;
   /** The used selection */
-  @Input() selection: Selection<any>;
+  @Input() selection: Selection<T>;
   /** Event emitter on item selection */
-  @Output() change: EventEmitter<any> = new EventEmitter();
+  @Output() change: EventEmitter<Selection<T>> = new EventEmitter();
   /** Event emitter on selected item click */
-  @Output() itemClick: EventEmitter<Item<any>> = new EventEmitter();
+  @Output() itemClick: EventEmitter<Item<T>> = new EventEmitter();
   /** Event that emits when the plus is clicked. */
-  @Output('toggle') _toggle: EventEmitter<Selection<any>> = new EventEmitter();
+  @Output('toggle') _toggle: EventEmitter<Selection<T>> = new EventEmitter();
   /** The Instance of the List */
-  @Input() list: List<any>;
+  @Input() list: List<T>;
   /** True if the selection is active */
   @Input() active: boolean;
   /** Wether or not the selection should be solo */
   @Input() solo: boolean;
   /** is emitted when a new value has been written from the outside */
-  written: EventEmitter<any> = new EventEmitter();
+  // written: EventEmitter<any> = new EventEmitter();
 
   ngOnInit() {
     this.initSelection();

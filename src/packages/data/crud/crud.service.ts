@@ -1,8 +1,8 @@
-import { EventEmitter, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import EntryResource from "ec.sdk/src/resources/publicAPI/EntryResource";
 import EntryList from "ec.sdk/src/resources/publicAPI/EntryList";
 import { SdkService } from '../sdk/sdk.service';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 /** Instances of Update are emitted by the changes EventEmitter of the CrudService. */
 export interface Update {
@@ -24,7 +24,7 @@ export interface Update {
 @Injectable()
 export class CrudService {
   /** The changes event is emitted everytime an entry is created or updated. */
-  private changes: EventEmitter<Update> = new EventEmitter();
+  private changes: Subject<Update> = new Subject();
 
   /** Injects sdk */
   constructor(private sdk: SdkService) {
@@ -39,7 +39,7 @@ export class CrudService {
   /** Yields an observable that emits for all updates that match the given filter */
   change(filter?: Update): Observable<Update> {
     if (!filter) {
-      return this.changes;
+      return this.changes.asObservable();
     }
     return this.changes.filter((change: Update) => this.matches(change, filter));
   }
@@ -63,7 +63,7 @@ export class CrudService {
     Object.keys(value).forEach((key) => oldValues[key] = entry[key]);
     Object.assign(entry, this.clean(value)); //assign new form values
     return entry.save().then((entry) => {
-      this.changes.emit({ model, entry, type: 'update' });
+      this.changes.next({ model, entry, type: 'update' });
       return entry;
     })
     .catch((err) => {
@@ -88,7 +88,7 @@ export class CrudService {
     .then((entry) => {
       // console.log('created entry', entry);
       // TODO make sure leveled entries are returned leveled
-      this.changes.emit({ model, entry, type: 'create' });
+      this.changes.next({ model, entry, type: 'create' });
       return entry;
     }).catch((err) => {
       return Promise.reject(err);
@@ -98,7 +98,7 @@ export class CrudService {
   /** deletes the given entry and emits the "delete" change. */
   del(model: string, entry: EntryResource) {
     return entry.del().then((res) => {
-      this.changes.emit({ model, entry, type: 'delete' });
+      this.changes.next({ model, entry, type: 'delete' });
       return res;
     });
   }

@@ -1,4 +1,6 @@
 import { emailValidator } from './email.validator';
-export const FieldValidators = {
+import { ValidatorFn } from '@angular/forms';
+
+export const FieldValidators: { [key: string]: ValidatorFn } = {
   email: emailValidator
 };

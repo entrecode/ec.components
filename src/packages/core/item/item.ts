@@ -3,7 +3,7 @@ import { ItemConfig } from '..';
 /** An Item basically wraps an Object and provides a config with metadata and helper methods to access the object. */
 export class Item<T> {
   /** The value body of the item. This can be either a primitive value or an Object. */
-  protected body: T;
+  public body: T;
   /** The config of the item. */
   protected config: ItemConfig<T>;
 
@@ -14,7 +14,7 @@ export class Item<T> {
   }
 
   /** Generates a config from the body by setting view to the properties type. */
-  private generateConfig() {
+  private generateConfig(): ItemConfig<T> {
     const config = { fields: {} };
     this.getProperties().forEach((property) => {
       config.fields[property] = {
@@ -164,9 +164,9 @@ export class Item<T> {
   /** Saves the given value. Run serializers before assigning the new value. */
   save(value: T = this.body): Promise<Item<T>> {
     if (this.config.onSave) {
-      return Promise.resolve(this.config.onSave(this, value))
+      return Promise.resolve(this.config.onSave(<Item<T>>this, value))
       // return Promise.resolve(this.config.onSave(this, this.serialize(value)))
-      .then((value) => {
+      .then((value: T) => {
         this.body = value;
         return this;
       });

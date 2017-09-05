@@ -3,9 +3,13 @@ import { ListItemsComponent } from '../../index';
 import { InputComponent } from '../../io/input/input.component';
 import { OutputComponent } from '../../io/output/output.component';
 
+interface ListItem {
+  name: string;
+}
+
 describe('ListItemsComponent', () => {
-  let component: ListItemsComponent;
-  let fixture: ComponentFixture<ListItemsComponent>;
+  let component: ListItemsComponent<ListItem>;
+  let fixture: ComponentFixture<ListItemsComponent<ListItem>>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

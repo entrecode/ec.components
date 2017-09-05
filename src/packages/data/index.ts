@@ -1,6 +1,5 @@
 export * from './model-config/model-configuration.interface'
 export * from './model-config/model-config.service'
-export * from './entry-list/entry-list-config'
 export * from './entry-list/entry-list'
 export * from './entry-list/entry-list.component'
 export * from './entry/entry.component'
@@ -15,3 +14,4 @@ export * from './sdk/sdk.module'
 export * from './crud/crud.service'
 export * from './crud/crud.component'
 export * from './data.module';
+export * from './auth/auth.module';

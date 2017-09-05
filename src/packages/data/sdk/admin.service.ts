@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SdkService } from './sdk.service';
+import AccountResource from 'ec.sdk/src/resources/accounts/AccountResource';
 
 //TODO move to auth?
 
@@ -11,7 +12,7 @@ export class AdminService {
   }
 
   /** Logs in with the given credentials */
-  login(credentials: { email: string, password: string }) {
+  login(credentials: { email: string, password: string }): Promise<AccountResource> {
     return this.sdk.session.login(credentials.email, credentials.password)
     .then((token) => this.sdk.init());
   }

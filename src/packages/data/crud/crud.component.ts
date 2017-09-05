@@ -25,11 +25,11 @@ import { Observable } from 'rxjs';
   templateUrl: './crud.component.html',
   styleUrls: ['./crud.component.scss']
 })
-export class CrudComponent {
+export class CrudComponent<T> {
   /** The model that should be crud'ed. */
   @Input() model: string;
   /** CrudConfig for customization of the crud's UI.*/
-  @Input() config: CrudConfig = {};
+  @Input() config: CrudConfig<T> = {};
   /** The EntryForm inside the template. */
   @ViewChild(EntryFormComponent) form: EntryFormComponent;
   /** The EntryList inside the template. */
