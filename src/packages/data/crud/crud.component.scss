@@ -1,24 +1,12 @@
-:host {
-  position: relative;
-  display: block;
-  &.hidden {
-    display: none;
-  }
-  ec-pop {
-    nav {
-      position: absolute;
-      right: 0;
-      top: 0
-    }
-  }
-  > button {
-    z-index: 1001;
-    float: right;
-  }
-  > ec-entry-list {
-    background: red;
-    ec-pagination {
-      float: right;
-    }
-  }
+.ec-crud {
+  display: flex;
+  flex-direction: column;
+}
+
+.ec-crud-header {
+  flex-grow: 0;
+}
+
+.ec-crud-body {
+  flex-grow: 1;
 }
