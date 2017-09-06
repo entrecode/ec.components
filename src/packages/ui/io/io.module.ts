@@ -10,6 +10,7 @@ import { OutputComponent } from './output/output.component';
 import { InputComponent } from './input/input.component';
 import { InputErrorsComponent } from './input-errors/input-errors.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DynamicRackComponent } from './dynamic-rack/dynamic-rack.component';
 
 @NgModule({
   entryComponents: [
@@ -23,6 +24,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     InputErrorsComponent,
     SlotHostDirective,
     DynamicSlotComponent,
+    DynamicRackComponent,
     InputComponent,
     OutputComponent,
   ],
@@ -34,6 +36,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   exports: [
     SlotHostDirective,
     DynamicSlotComponent,
+    DynamicRackComponent,
     InputComponent,
     OutputComponent,
     InputErrorsComponent,

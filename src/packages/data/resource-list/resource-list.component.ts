@@ -14,11 +14,11 @@ import { ResourceList } from './resource-list';
   selector: 'ec-resource-list',
   templateUrl: '../../ui/list/list.component.html'
 })
-export class ResourceListComponent extends ListComponent {
+export class ResourceListComponent<T> extends ListComponent<T> {
   /** If true, only one item is selectable next */
   @Input() solo: boolean;
   /** The instance of an EntryList */
-  list: ResourceList<any>;
+  list: ResourceList<T>;
   /** The loader that should be shown while the list is loaded. */
   @Input() loader: LoaderComponent;
 
@@ -36,7 +36,7 @@ export class ResourceListComponent extends ListComponent {
   }
 
   /** The method to create the list*/
-  protected createList(): Promise<ResourceList<any>> | ResourceList<any> {
+  protected createList(): Promise<ResourceList<T>> | ResourceList<T> {
     return new ResourceList(this.config, this.sdk);
   }
 

@@ -28,7 +28,7 @@ import EntryResource from "ec.sdk/src/resources/publicAPI/EntryResource";
     }
   ]
 })
-export class EntrySelectComponent extends SelectComponent {
+export class EntrySelectComponent extends SelectComponent<EntryResource> {
   /** The field for which the input is meant. */
   @Input() field: Field<any>;
   /** The item that is targeted by the input */
@@ -44,13 +44,13 @@ export class EntrySelectComponent extends SelectComponent {
   /** The model to pick from, alternative to field with model property set. */
   @Input() model: string;
   /** The ec-crud inside the view template */
-  @ViewChild('crud') crud: CrudComponent;
+  @ViewChild('crud') crud: CrudComponent<EntryResource>;
   /** The config that is being generated. */
-  public config: CrudConfig;
+  public config: CrudConfig<EntryResource>;
   /** Wether or not the selection should be solo */
   @Input() solo: boolean;
   /** The config that should be merged into the generated config */
-  @Input('config') crudConfig: CrudConfig;
+  @Input('config') crudConfig: CrudConfig<EntryResource>;
   /** The crud pop with the list to select from */
   @ViewChild('crudPop') pop: PopComponent;
 

@@ -1,20 +1,20 @@
-import { EntryListConfig } from '../../data/';
 import { ResourceList } from '../resource-list/resource-list';
 import { SdkService } from '../sdk/sdk.service';
 import * as moment from 'moment';
 import DataManagerResource from 'ec.sdk/src/resources/datamanager/DataManagerResource';
 import ModelResource from 'ec.sdk/src/resources/datamanager/ModelResource';
+import { ListConfig } from '../../core/list/list-config.interface';
 
 /**
  * Extension of List for Datamanagers
  */
-export class ModelList<model> extends ResourceList<model> {
+export class ModelList extends ResourceList<ModelResource> {
   private datamanager: DataManagerResource | string;
 
-  constructor(datamanager: DataManagerResource | string, config: EntryListConfig, sdk: SdkService) {
+  constructor(datamanager: DataManagerResource | string, config: ListConfig<ModelResource>, sdk: SdkService) {
     super(Object.assign(config, {
       identifier: 'modelID',
-      onSave:(item,value) => {
+      onSave: (item, value) => {
         const model = item.getBody();
         item.serialize(value, model instanceof ModelResource);
         Object.assign(model, value);
@@ -56,7 +56,7 @@ export class ModelList<model> extends ResourceList<model> {
   }
 
   /** Overrides the List load method. Instead of slicing the page out of all items, a datamanager request is made using the config.*/
-  public load(config?: EntryListConfig) {
+  public load(config?: ListConfig<ModelResource>) {
     if (!this.sdk || !this.sdk.datamanager || !this.datamanager) {
       return;
     }

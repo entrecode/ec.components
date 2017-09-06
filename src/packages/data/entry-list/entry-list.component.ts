@@ -7,14 +7,16 @@ import { EntryList } from './entry-list';
 import { CrudService } from '../crud/crud.service';
 import { NotificationsService } from '../../ui/notifications/notifications.service';
 import { ResourceListComponent } from '../resource-list/resource-list.component';
+import EntryResource from 'ec.sdk/src/resources/publicAPI/EntryResource';
+import { ListConfig } from '../../core/list/list-config.interface';
 
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent */
 @Component({
   selector: 'ec-entry-list',
-  templateUrl: '../../ui/list/list.component.html',
+  templateUrl: '../../ui/list/list.component.html', //TODO avoid relative paths => wont build
   styleUrls: ['./entry-list.component.scss']
 })
-export class EntryListComponent extends ResourceListComponent { //use ResourceListComponent
+export class EntryListComponent extends ResourceListComponent<EntryResource> {
   /** The model whose entries should be shown.*/
   @Input() model: string;
 
@@ -48,7 +50,7 @@ export class EntryListComponent extends ResourceListComponent { //use ResourceLi
     });
   }
 
-  createList() {
+  createList(): Promise<EntryList> {
     if (!this.model || !this.config) {
       return;
     }
@@ -56,9 +58,9 @@ export class EntryListComponent extends ResourceListComponent { //use ResourceLi
     .subscribe((update) => {
       this.list.load();
     });
-    return this.modelConfig.generateConfig(this.model).then((config) => {
-      this.config = this.config || {};
-      Object.assign(this.config, config);
+    return this.modelConfig.generateConfig(this.model)
+    .then((config: ListConfig<EntryResource>) => {
+      this.config = Object.assign(this.config || {}, config);
       this.initFilter();
       return new EntryList(this.model, this.config, this.sdk);
     });

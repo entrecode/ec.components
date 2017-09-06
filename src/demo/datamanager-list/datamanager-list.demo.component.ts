@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
     <button type="button" (click)="dmPop.hide()">
       <i class="ec-icon close"></i>
     </button>
-    <ec-form [config]="dmList.list?.config" (submit)="save(dmForm.form?.getBody())" #dmForm></ec-form>  
+    <ec-form [config]="dmList.list?.config" #dmForm></ec-form>  
   </ec-pop>
 `
 })

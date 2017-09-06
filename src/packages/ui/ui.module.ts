@@ -1,19 +1,15 @@
-// import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgModule } from '@angular/core';
-import { NotificationsModule } from './notifications/notifications.module';
+import { ListModule } from './list/list.module';
+import { FormModule } from './form/form.module';
 import { PopModule } from './pop/pop.module';
 import { LoaderModule } from './loader/loader.module';
-import { ListModule } from "./list/list.module";
-import { FormModule } from './form/form.module';
+import { NotificationsModule } from './notifications/notifications.module';
 import { UtilityModule } from './utility/utility.module';
 
 @NgModule({
-  entryComponents: [],
-  declarations: [],
   imports: [
-    // BrowserModule,
     FormsModule,
     CommonModule,
     ReactiveFormsModule,
@@ -33,8 +29,10 @@ import { UtilityModule } from './utility/utility.module';
     LoaderModule,
     ListModule,
     FormModule,
-  ],
-  providers: [],
+  ]
 })
 export class UiModule {
+  forRoot() {
+
+  }
 }

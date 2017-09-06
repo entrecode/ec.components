@@ -11,15 +11,15 @@ import { ListComponent } from '../list.component';
   templateUrl: './list-items.component.html',
   styleUrls: ['./list-items.component.scss']
 })
-export class ListItemsComponent {
+export class ListItemsComponent<T> {
   /** The list instance */
-  @Input() list: List<any>;
+  @Input() list: List<T>;
   /** The selection instance. This is optional. If It is not provided, no checkbox will be visible.*/
-  @Input() selection: Selection<any>;
+  @Input() selection: Selection<T>;
   /** An Optional Array of Item's that should be displayed. If none are provded, the list Items are used.*/
-  @Input() items: Item<any>[];
+  @Input() items: Item<T>[];
   /** You pass in the entire parent list component */
-  @Input() host: ListComponent;
+  @Input() host: ListComponent<T>;
   /** If true, only one item is selectable next */
   @Input() solo: boolean;
 

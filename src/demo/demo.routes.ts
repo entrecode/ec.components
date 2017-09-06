@@ -1,4 +1,4 @@
-import { LoginComponent } from '../packages/ui';
+import { LoginComponent } from '../packages/ui/utility/login/login.component';
 import { Routes } from '@angular/router';
 import { PopDemoComponent } from './pop/pop-demo.component';
 import { DataDemoComponent } from './data/data-demo.component';
@@ -16,8 +16,7 @@ import { DatamanagerListDemoComponent } from './datamanager-list/datamanager-lis
 import { ModelListDemoComponent } from './model-list/model-list.demo.component';
 import { DatetimeDemoComponent } from './form/datetime-demo.component';
 import { AssetListDemoComponent } from './asset-list/asset-list.demo.component';
-import { PublicLoginComponent } from '../packages/data/auth/public-login/public-login.component';
-import { PublicSignupComponent } from '../packages/data/auth/public-signup/public-signup.component';
+// import { PublicLoginComponent } from '@ec.components/data';
 import { AuthDemoComponent } from './auth/auth-demo.component';
 import { VcDemoComponent } from './vc/vc-demo.component';
 import { CrudComponent } from '../packages/data/crud/crud.component';
@@ -166,14 +165,14 @@ export const demoRoutes: Routes = [
   {
     path: 'auth',
     children: [
-      {
-        path: 'login',
-        component: PublicLoginComponent
-      },
-      {
-        path: 'signup',
-        component: PublicSignupComponent
-      },
+      /* {
+         path: 'login',
+         component: PublicLoginComponent
+       },
+       {
+         path: 'signup',
+         component: PublicSignupComponent
+       },*/
       {
         path: 'auth',
         component: AuthDemoComponent

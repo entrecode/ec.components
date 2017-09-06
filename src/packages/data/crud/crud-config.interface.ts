@@ -1,11 +1,11 @@
 import { LoaderComponent } from '../../ui/loader/loader.component';
 import { NotificationsComponent } from '../../ui/notifications/notifications.component';
-import { EntryListConfig } from '../entry-list/entry-list-config';
 import { Selection } from '../../core/selection/selection';
 import EntryResource from "ec.sdk/src/resources/publicAPI/EntryResource";
+import { ListConfig } from '../../core/list/list-config.interface';
 
 /** The CrudConfig allows a quick customization of an ec-crud component. */
-export interface CrudConfig extends EntryListConfig {
+export interface CrudConfig<T> extends ListConfig<T> {
   /** The label for the entry create button */
   createLabel?: string;
   /** An Array of Methods that should be supported. Possible values are create, read, update and delete*/
