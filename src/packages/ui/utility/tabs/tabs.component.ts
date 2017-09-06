@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Collection } from '../../../core/collection/collection';
+import { Collection } from '@ec.components/core/collection/collection';
 import { TabComponent } from '../tab/tab.component';
 
 /** The TabsComponent holds serveral instances of TabComponent. */

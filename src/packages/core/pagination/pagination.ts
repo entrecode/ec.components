@@ -1,5 +1,5 @@
 import { Observable, Subject } from 'rxjs';
-import { ListConfig } from '..';
+import { ListConfig } from '../list/list-config.interface';
 
 /** This class can be used to control the loading behaviour of external data. */
 export class Pagination<T> {

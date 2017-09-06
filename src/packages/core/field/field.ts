@@ -1,6 +1,7 @@
-import { FieldConfigProperty } from '..';
-
 /** A Field acts as a property of an Item. It holds a single Property config. */
+
+import { FieldConfigProperty } from '../config/field-config-property.interface';
+
 export class Field<T> implements FieldConfigProperty {
   /** Tells if the field is required in forms */
   required?: boolean;

@@ -1,14 +1,14 @@
 import { Injectable } from "@angular/core";
-import { Item } from '../../core/item/item';
+import { Item } from '@ec.components/core/item/item';
 import EntryResource from "ec.sdk/src/resources/publicAPI/EntryResource";
-import { ItemConfig } from '../../core/item/item-config.interface';
+import { ItemConfig } from '@ec.components/core/item/item-config.interface';
 import { CrudService } from '../crud/crud.service';
-import { Config } from '../../core/config/config';
-import { FieldConfig } from '../../core/config/field-config.interface';
-import { FieldConfigProperty } from '../../core/config/field-config-property.interface';
+import { Config } from '@ec.components/core/config/config';
+import { FieldConfig } from '@ec.components/core/config/field-config.interface';
+import { FieldConfigProperty } from '@ec.components/core/config/field-config-property.interface';
 import { SdkService } from '../sdk/sdk.service';
 import { TypeConfigService } from './type-config.service';
-import { ListConfig } from '../../core/list/list-config.interface';
+import { ListConfig } from '@ec.components/core/list/list-config.interface';
 
 /** The main class for configuring the behaviour of a model.
  * By default, everything is auto generated from the model's schema but can be overriden via the

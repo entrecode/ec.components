@@ -3,7 +3,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { PublicSignupComponent } from './public-signup.component';
 import { PublicService } from '../../sdk/public.service';
-import { UiModule } from '../../../ui/ui.module';
+import { UiModule } from '@ec.components/ui/ui.module';
 import { DataModule } from '../../data.module';
 
 describe('PublicSignupComponent', () => {

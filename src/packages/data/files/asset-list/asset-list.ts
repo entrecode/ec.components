@@ -1,7 +1,7 @@
 import { ResourceList } from '../../resource-list/resource-list';
 import { SdkService } from '../../sdk/sdk.service';
 import { FileService } from '../file.service';
-import { ListConfig } from '../../../core/list/list-config.interface';
+import { ListConfig } from '@ec.components/core/list/list-config.interface';
 import PublicAssetResource from 'ec.sdk/src/resources/publicAPI/PublicAssetResource';
 import AssetResource from 'ec.sdk/src/resources/datamanager/AssetResource';
 

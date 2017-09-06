@@ -5,7 +5,6 @@ import { Field } from '../field/field';
 import { ListConfig } from './list-config.interface';
 import { Pagination } from '../pagination/pagination';
 import { Sorter } from '../sorter/sorter';
-import { ItemConfig } from '../item/item-config.interface';
 
 /**
  * A more sophisticated Collection of Objects with arbitrary content.

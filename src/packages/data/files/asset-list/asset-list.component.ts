@@ -3,8 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { AssetList } from './asset-list';
 import { ResourceListComponent } from '../../resource-list/resource-list.component';
 import { FileService } from '../file.service';
-import { LoaderService } from '../../../ui/loader/loader.service';
-import { NotificationsService } from '../../../ui/notifications/notifications.service';
+import { LoaderService } from '@ec.components/ui/loader/loader.service';
+import { NotificationsService } from '@ec.components/ui/notifications/notifications.service';
 import { SdkService } from '../../sdk/sdk.service';
 import AssetResource from 'ec.sdk/src/resources/datamanager/AssetResource';
 import PublicAssetResource from 'ec.sdk/src/resources/publicAPI/PublicAssetResource';
@@ -27,7 +27,7 @@ export class AssetListComponent extends ResourceListComponent<PublicAssetResourc
     })
   }
 
-  createList():AssetList {
+  createList(): AssetList {
     return new AssetList(this.config, this.sdk, this.fileService);
   }
 }

@@ -1,4 +1,4 @@
-import { ItemConfig } from '..';
+import { ItemConfig } from '../item/item-config.interface';
 
 /**
  *  Configuration for List Classes.

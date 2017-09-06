@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { mocked } from '../../mocks/data';
-import { Item } from '../../packages/core/item/item';
+import { Item } from '@ec.components/core';
 
 @Component({
   selector: 'ec-form-demo',
