@@ -2,9 +2,13 @@
   "extends": "../tsconfig-ngc.json",
   "compilerOptions": {
     "baseUrl": "./",
-    "outDir": "lib"
+    "outDir": "./lib"
   },
   "files": [
     "./index.ts"
-  ]
+  ],
+  "angularCompilerOptions": {
+    "skipTemplateCodegen": true,
+    "genDir": "compiled"
+  }
 }
