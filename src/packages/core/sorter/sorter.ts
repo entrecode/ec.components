@@ -1,4 +1,4 @@
-import { Item } from '..';
+import { Item } from '../item/item';
 
 const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
 

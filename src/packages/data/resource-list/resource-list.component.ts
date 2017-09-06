@@ -1,11 +1,11 @@
 import { Component, Input, Optional } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SdkService } from '../sdk/sdk.service';
-import { LoaderComponent } from '../../ui/loader/loader.component';
-import { LoaderService } from '../../ui/loader/loader.service';
-import { ListComponent } from '../../ui/list/list.component';
-import { Selection } from '../../core/selection/selection';
-import { NotificationsService } from '../../ui/notifications/notifications.service';
+import { LoaderComponent } from '@ec.components/ui/loader/loader.component';
+import { LoaderService } from '@ec.components/ui/loader/loader.service';
+import { ListComponent } from '@ec.components/ui/list/list.component';
+import { Selection } from '@ec.components/core/selection/selection';
+import { NotificationsService } from '@ec.components/ui/notifications/notifications.service';
 import { ResourceList } from './resource-list';
 
 /** The ResourceListComponent is an extension of ListComponent for SDK ListResources.

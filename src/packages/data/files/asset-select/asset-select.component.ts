@@ -3,11 +3,11 @@
  */
 import { Component, forwardRef, Input, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Field } from '../../../core/field/field';
-import { Item } from '../../../core/item/item';
+import { Field } from '@ec.components/core/field/field';
+import { Item } from '@ec.components/core/item/item';
 import { FileService, Upload } from '../file.service';
-import { PopComponent } from '../../../ui/pop/pop.component';
-import { SelectComponent } from '../../../ui/form/select/select.component';
+import { PopComponent } from '@ec.components/ui/pop/pop.component';
+import { SelectComponent } from '@ec.components/ui/form/select/select.component';
 import PublicAssetResource from 'ec.sdk/src/resources/publicAPI/PublicAssetResource';
 
 /** Shows assets of a selection and is able to pick new ones from a crud list */

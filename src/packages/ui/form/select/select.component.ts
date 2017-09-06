@@ -7,8 +7,8 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { List, ListConfig, Selection } from '../../../core/index';
-import { Item } from '../../../core/item/item';
+import { List, ListConfig, Selection } from '@ec.components/core/index';
+import { Item } from '@ec.components/core/item/item';
 
 /**
  * The SelectComponent will render a dropdown of a given list.

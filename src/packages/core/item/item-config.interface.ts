@@ -1,5 +1,6 @@
-import { FieldConfig, FieldConfigProperty } from '..';
 import { Item } from './item';
+import { FieldConfigProperty } from '../config/field-config-property.interface';
+import { FieldConfig } from '../config/field-config.interface';
 
 /** An ItemConfig describes an abstract entity with certain properties.*/
 export interface ItemConfig<T> {

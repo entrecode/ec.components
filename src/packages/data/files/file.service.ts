@@ -5,7 +5,7 @@ import { SdkService } from '../sdk/sdk.service';
 import { AssetList } from './asset-list/asset-list';
 import { TypeConfigService } from '../model-config/type-config.service';
 import * as moment from 'moment';
-import { Item } from '../../core/item/item';
+import { Item } from '@ec.components/core/item/item';
 
 /** Instances of Update are emitted by the changes EventEmitter of the CrudService. */
 export interface Upload {

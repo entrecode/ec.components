@@ -2,13 +2,13 @@ import { Component, Input, Optional } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SdkService } from '../sdk/sdk.service';
 import { ModelConfigService } from '../model-config/model-config.service';
-import { LoaderService } from '../../ui/loader/loader.service';
+import { LoaderService } from '@ec.components/ui/loader/loader.service';
 import { EntryList } from './entry-list';
 import { CrudService } from '../crud/crud.service';
-import { NotificationsService } from '../../ui/notifications/notifications.service';
+import { NotificationsService } from '@ec.components/ui/notifications/notifications.service';
 import { ResourceListComponent } from '../resource-list/resource-list.component';
 import EntryResource from 'ec.sdk/src/resources/publicAPI/EntryResource';
-import { ListConfig } from '../../core/list/list-config.interface';
+import { ListConfig } from '@ec.components/core/list/list-config.interface';
 
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent */
 @Component({

@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { AdminService } from '../../sdk/admin.service';
-import { FieldValidators } from '../../../ui/utility/validators/field-validators';
+import { FieldValidators } from '@ec.components/ui/utility/validators/field-validators';
 
 @Component({
   selector: 'ec-auth-admin-login',

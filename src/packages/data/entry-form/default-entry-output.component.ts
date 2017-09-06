@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Field } from '../../core/field/field';
+import { Field } from '@ec.components/core/field/field';
 
 /** This component holds the templates for all output types that cannot be represented by the default output component. */
 @Component({

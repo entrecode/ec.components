@@ -1,7 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { List } from '../../../core/list/list';
-import { Selection } from '../../../core/selection/selection';
-import { Item } from '../../../core/item/item';
+import { Item, List, Selection } from '@ec.components/core';
 import { ListComponent } from '../list.component';
 
 /** The ListItemsComponent displays the actual list, without all peripherals (header, pagination etc.).

@@ -2,7 +2,7 @@ import { ResourceList } from '../resource-list/resource-list';
 import { SdkService } from '../sdk/sdk.service';
 import * as moment from 'moment';
 import DataManagerResource from 'ec.sdk/src/resources/datamanager/DataManagerResource';
-import { ListConfig } from '../../core/list/list-config.interface';
+import { ListConfig } from '@ec.components/core/list/list-config.interface';
 
 /**
  * Extension of List for Datamanagers

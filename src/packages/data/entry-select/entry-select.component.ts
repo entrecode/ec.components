@@ -3,13 +3,13 @@
  */
 import { Component, forwardRef, Input, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Field } from '../../core/field/field';
+import { Field } from '@ec.components/core/field/field';
 import { CrudComponent } from '../crud/crud.component';
 import { ModelConfigService } from '../model-config/model-config.service';
-import { PopComponent } from '../../ui/pop/pop.component';
-import { Item } from '../../core/item/item';
+import { PopComponent } from '@ec.components/ui/pop/pop.component';
+import { Item } from '@ec.components/core/item/item';
 import { CrudConfig } from '../crud/crud-config.interface';
-import { SelectComponent } from '../../ui/form/select/select.component';
+import { SelectComponent } from '@ec.components/ui/form/select/select.component';
 import EntryResource from "ec.sdk/src/resources/publicAPI/EntryResource";
 
 // import LiteEntryResource from "ec.sdk/src/resources/publicAPI/LiteEntryResource";

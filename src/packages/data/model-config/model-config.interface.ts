@@ -1,4 +1,4 @@
-import { FieldConfig, FieldConfigProperty } from '../../core';
+import { FieldConfig, FieldConfigProperty } from '@ec.components/core';
 
 /** This is the interface for a model's configuration.*/
 export interface ModelConfig {

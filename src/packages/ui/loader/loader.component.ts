@@ -1,5 +1,5 @@
 import { Component, ElementRef } from '@angular/core';
-import { Collection } from '../../core/collection/collection';
+import { Collection } from '@ec.components/core/collection/collection';
 
 /** The ec-loader can be plugged into various components to be triggered when they load stuff. */
 @Component({

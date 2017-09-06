@@ -1,9 +1,9 @@
-import { Item, List } from '../../core';
+import { Item, List } from '@ec.components/core';
 import { SdkService } from '../sdk/sdk.service';
 import { Observable, Subject } from 'rxjs';
 import ListResource, { filterOptions } from "ec.sdk/src/resources/ListResource";
-import { Field } from '../../core/field/field';
-import { ListConfig } from '../../core/list/list-config.interface';
+import { Field } from '@ec.components/core/field/field';
+import { ListConfig } from '@ec.components/core/list/list-config.interface';
 
 /**
  * Extension of List for SDK ListResource. Each each implementation should implement the load

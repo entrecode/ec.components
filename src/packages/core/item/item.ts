@@ -1,4 +1,4 @@
-import { ItemConfig } from '..';
+import { ItemConfig } from './item-config.interface';
 
 /** An Item basically wraps an Object and provides a config with metadata and helper methods to access the object. */
 export class Item<T> {
@@ -164,7 +164,7 @@ export class Item<T> {
   /** Saves the given value. Run serializers before assigning the new value. */
   save(value: T = this.body): Promise<Item<T>> {
     if (this.config.onSave) {
-      return Promise.resolve(this.config.onSave(<Item<T>>this, value))
+      return Promise.resolve(this.config.onSave(this, value))
       // return Promise.resolve(this.config.onSave(this, this.serialize(value)))
       .then((value: T) => {
         this.body = value;

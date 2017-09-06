@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
-import { Collection, List, ListConfig, Selection } from '../../core/index';
-import { Item } from '../../core/item/item';
+import { Collection, List, ListConfig, Selection } from '@ec.components/core/index';
+import { Item } from '@ec.components/core/item/item';
 
 /**
  * The ListComponent will render a list containing the given items or collection.

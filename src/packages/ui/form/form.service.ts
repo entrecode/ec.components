@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Form } from '../../core/form/form';
+import { Form } from '@ec.components/core/form/form';
 import {
   AbstractControl,
   FormControl,
@@ -8,7 +8,7 @@ import {
   ValidatorFn,
   Validators
 } from "@angular/forms";
-import { Field } from '../../core/field/field';
+import { Field } from '@ec.components/core/field/field';
 
 /** This service is the interface between Angular Forms and ec.components core classes. */
 @Injectable()
