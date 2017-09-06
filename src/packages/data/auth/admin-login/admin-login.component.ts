@@ -30,7 +30,7 @@ export class AdminLoginComponent implements OnInit {
     this.errorMessage = err.message;
     this.login.get('password').setValue('');
     this.error.emit(err);
-    return Observable.throw(err);
+    Observable.throw(err);
   }
 
   onSubmit() {

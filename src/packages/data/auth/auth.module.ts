@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CookieModule } from 'ngx-cookie';
@@ -13,6 +13,11 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { UiModule } from '@ec.components/ui/ui.module';
 import { AdminSignupComponent } from './admin-signup/admin-signup.component';
 
+export function cookieFactory(): ModuleWithProviders {
+  //https://github.com/auth0/angular2-jwt/issues/305
+  return CookieModule.forRoot();
+}
+
 @NgModule({
   declarations: [
     PublicLoginComponent,
@@ -22,7 +27,7 @@ import { AdminSignupComponent } from './admin-signup/admin-signup.component';
     AdminSignupComponent,
   ],
   imports: [
-    CookieModule.forRoot(),
+    cookieFactory(),
     CommonModule,
     ReactiveFormsModule,
     HttpModule,

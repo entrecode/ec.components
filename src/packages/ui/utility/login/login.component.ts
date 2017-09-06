@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
     this.errorMessage = err.message;
     this.form.get('password').setValue('');
     this.error.emit(err);
-    return Observable.throw(err);
+    Observable.throw(err);
   }
 
   /** Method that is meant to be overwritten by a subclass to communicate with an API. */

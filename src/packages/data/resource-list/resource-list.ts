@@ -1,4 +1,5 @@
-import { Item, List } from '@ec.components/core';
+import { List } from '@ec.components/core/list/list';
+import { Item } from '@ec.components/core/item/item';
 import { SdkService } from '../sdk/sdk.service';
 import { Observable, Subject } from 'rxjs';
 import ListResource, { filterOptions } from "ec.sdk/src/resources/ListResource";

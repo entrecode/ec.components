@@ -1,5 +1,8 @@
 import { Inject, Injectable } from '@angular/core';
-import { Accounts, DataManager, PublicAPI, Session } from 'ec.sdk';
+import DataManager from 'ec.sdk/src/DataManager';
+import Accounts from 'ec.sdk/src/Accounts';
+import PublicAPI from 'ec.sdk/src/PublicAPI';
+import Session from 'ec.sdk/src/Session';
 import AccountResource from 'ec.sdk/src/resources/accounts/AccountResource';
 import { environment as env } from 'ec.sdk/src/Core';
 

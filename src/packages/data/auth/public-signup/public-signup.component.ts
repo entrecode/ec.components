@@ -29,7 +29,7 @@ export class PublicSignupComponent implements OnInit {
   showError(err) {
     this.errorMessage = err.message;
     this.error.emit(err);
-    return Observable.throw(err);
+    Observable.throw(err);
   }
 
   onSubmit() {

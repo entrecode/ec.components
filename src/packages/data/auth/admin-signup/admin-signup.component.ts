@@ -10,9 +10,9 @@ import { AdminService } from '../../sdk/admin.service';
   styleUrls: ['./admin-signup.component.scss']
 })
 export class AdminSignupComponent implements OnInit {
-  private signup: FormGroup;
+  public signup: FormGroup;
   private submitted: boolean;
-  private errorMessage: string;
+  public errorMessage: string;
   @Output() success: EventEmitter<any> = new EventEmitter();
   @Output() error: EventEmitter<any> = new EventEmitter();
 
@@ -29,7 +29,7 @@ export class AdminSignupComponent implements OnInit {
   showError(err) {
     this.errorMessage = err.message;
     this.error.emit(err);
-    return Observable.throw(err);
+    Observable.throw(err);
   }
 
   onSubmit() {
