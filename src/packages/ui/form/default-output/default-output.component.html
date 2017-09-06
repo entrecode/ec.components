@@ -37,7 +37,7 @@
 
   <ul class="ec-output_avatars-list" *ngSwitchCase="'avatars'">
     <li *ngFor="let url of item?.display(field.property)">
-      <div class="ec-output_avatar" *ngSwitchCase="'avatar'">
+      <div class="ec-output_avatar">
         <img [src]="url">
       </div>
     </li>
