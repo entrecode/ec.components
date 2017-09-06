@@ -5,6 +5,7 @@ import { Item } from '@ec.components/core/item/item';
 /** Holds the templates to output item field values. */
 @Component({
   selector: 'ec-default-output',
+  styleUrls: ['./default-output.component.scss'],
   templateUrl: './default-output.component.html',
 })
 export class DefaultOutputComponent {

@@ -32,12 +32,14 @@
   </div>
 
   <div class="ec-output_avatar" *ngSwitchCase="'avatar'">
-    <span class="avatar"><img [src]="item?.display(field.property)"></span>
+    <img [src]="item?.display(field.property)">
   </div>
 
   <ul class="ec-output_avatars-list" *ngSwitchCase="'avatars'">
     <li *ngFor="let url of item?.display(field.property)">
-      <span class="avatar"><img [src]="url"></span>
+      <div class="ec-output_avatar" *ngSwitchCase="'avatar'">
+        <img [src]="url">
+      </div>
     </li>
   </ul>
   <span *ngSwitchDefault>
