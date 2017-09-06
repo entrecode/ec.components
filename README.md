@@ -111,6 +111,7 @@ import { AuthModule, Datamanager, DataModule, UiModule } from 'ec.components';
 
 The start npm script will automatically use the symlinks from src/packages for @ec.components.
 It also deletes eventually existing node_modules folders inside the packages.
+This enables you to always use imports like: import * from '@ec.components/*'.
 
 ### Inside another project
 
