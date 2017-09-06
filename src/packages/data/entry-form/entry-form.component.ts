@@ -1,12 +1,12 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormComponent } from '../../ui/form/form.component';
+import { FormComponent } from '@ec.components/ui/form/form.component';
 import { ModelConfigService } from '../model-config/model-config.service';
-import { LoaderService } from '../../ui/loader/loader.service';
-import { NotificationsService } from '../../ui/notifications/notifications.service';
+import { LoaderService } from '@ec.components/ui/loader/loader.service';
+import { NotificationsService } from '@ec.components/ui/notifications/notifications.service';
 import { CrudService } from '../crud/crud.service';
-import { Item } from '../../core/item/item';
-import { FormConfig } from '../../core/form/form-config.interface';
-import { FormService } from '../../ui/form/form.service';
+import { Item } from '@ec.components/core/item/item';
+import { FormConfig } from '@ec.components/core/form/form-config.interface';
+import { FormService } from '@ec.components/ui/form/form.service';
 
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent */
 @Component({

@@ -109,12 +109,12 @@ import { AuthModule, Datamanager, DataModule, UiModule } from 'ec.components';
 
 ## Developing with Symlinks
 
-When developing ec.components inside another project, it is recommended to use symlinks via npm link:
-1. Inside the ec.components project go to ```cd src/packages/ui```
-2. Then run ```npm link```
-3. Inside the foreign project, link via ```npm link @ec.components/ui```
+The start npm script will automatically use the symlinks from src/packages for @ec.components.
+It also deletes eventually existing node_modules folders inside the packages.
 
-The same procedure can be applied for the ec.components packages.
+### Inside another project
+
+TBD
 
 ## Import Structure
 All imports inside src/packages that import from the same package or another ec.components package must be relative.

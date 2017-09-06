@@ -1,10 +1,14 @@
 {
   "name": "@ec.components/data",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "All datamanager related UI components and classes.",
-  "main": "index.js",
+  "main": "lib/data/index.js",
+  "typings": "lib/data/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clear-lib": "rimraf lib",
+    "ngc-build": "ngc -p ./tsconfig-ngc.json",
+    "prepublish": "npm run clear-lib && npm run ngc-build"
   },
   "author": "Felix Roos <roos@entrecode.de>",
   "license": "ISC",
@@ -13,8 +17,10 @@
     "url": "ssh://git@stash.entrecode.de:7999/ecm/ec.components.git"
   },
   "devDependencies": {
+    "@angular/compiler-cli": "^4.0.0",
     "@types/jasmine": "^2.5.47",
-    "@types/node": "^6.0.71"
+    "@types/node": "^6.0.71",
+    "typescript": "^2.4.2"
   },
   "dependencies": {
     "@angular/animations": "^4.0.0",
@@ -24,10 +30,11 @@
     "@angular/forms": "^4.0.0",
     "@angular/http": "^4.0.0",
     "@angular/platform-browser": "^4.0.0",
-    "@ec.components/core": "^0.3.0",
-    "@ec.components/ui": "^0.3.0",
-    "ec.sdk": "^0.8.2",
+    "@ec.components/core": "^0.3.1",
+    "@ec.components/ui": "^0.3.1",
+    "ec.sdk": "^0.8.5",
     "moment": "^2.18.1",
+    "ngx-cookie": "^1.0.0",
     "rxjs": "^5.1.0",
     "xlcss": "^2.1.10",
     "zone.js": "^0.8.4"

@@ -6,12 +6,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CrudConfig } from './crud-config.interface';
 import { EntryFormComponent } from '../entry-form/entry-form.component';
 import { EntryListComponent } from '../entry-list/entry-list.component';
-import { PopComponent } from '../../ui/pop/pop.component';
+import { PopComponent } from '@ec.components/ui/pop/pop.component';
 import { SdkService } from '../sdk/sdk.service';
-import { Item } from '../../core/item/item';
-import { LoaderComponent } from '../../ui/loader/loader.component';
-import { LoaderService } from '../../ui/loader/loader.service';
-import { NotificationsService } from '../../ui/notifications/notifications.service';
+import { Item } from '@ec.components/core/item/item';
+import { LoaderComponent } from '@ec.components/ui/loader/loader.component';
+import { LoaderService } from '@ec.components/ui/loader/loader.service';
+import { NotificationsService } from '@ec.components/ui/notifications/notifications.service';
 import 'rxjs/add/operator/switchMap';
 import { Observable } from 'rxjs';
 
@@ -25,11 +25,11 @@ import { Observable } from 'rxjs';
   templateUrl: './crud.component.html',
   styleUrls: ['./crud.component.scss']
 })
-export class CrudComponent {
+export class CrudComponent<T> {
   /** The model that should be crud'ed. */
   @Input() model: string;
   /** CrudConfig for customization of the crud's UI.*/
-  @Input() config: CrudConfig = {};
+  @Input() config: CrudConfig<T> = {};
   /** The EntryForm inside the template. */
   @ViewChild(EntryFormComponent) form: EntryFormComponent;
   /** The EntryList inside the template. */

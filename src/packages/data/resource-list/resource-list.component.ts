@@ -1,11 +1,11 @@
 import { Component, Input, Optional } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SdkService } from '../sdk/sdk.service';
-import { LoaderComponent } from '../../ui/loader/loader.component';
-import { LoaderService } from '../../ui/loader/loader.service';
-import { ListComponent } from '../../ui/list/list.component';
-import { Selection } from '../../core/selection/selection';
-import { NotificationsService } from '../../ui/notifications/notifications.service';
+import { LoaderComponent } from '@ec.components/ui/loader/loader.component';
+import { LoaderService } from '@ec.components/ui/loader/loader.service';
+import { ListComponent } from '@ec.components/ui/list/list.component';
+import { Selection } from '@ec.components/core/selection/selection';
+import { NotificationsService } from '@ec.components/ui/notifications/notifications.service';
 import { ResourceList } from './resource-list';
 
 /** The ResourceListComponent is an extension of ListComponent for SDK ListResources.
@@ -14,11 +14,11 @@ import { ResourceList } from './resource-list';
   selector: 'ec-resource-list',
   templateUrl: '../../ui/list/list.component.html'
 })
-export class ResourceListComponent extends ListComponent {
+export class ResourceListComponent<T> extends ListComponent<T> {
   /** If true, only one item is selectable next */
   @Input() solo: boolean;
   /** The instance of an EntryList */
-  list: ResourceList<any>;
+  list: ResourceList<T>;
   /** The loader that should be shown while the list is loaded. */
   @Input() loader: LoaderComponent;
 
@@ -36,7 +36,7 @@ export class ResourceListComponent extends ListComponent {
   }
 
   /** The method to create the list*/
-  protected createList(): Promise<ResourceList<any>> | ResourceList<any> {
+  protected createList(): Promise<ResourceList<T>> | ResourceList<T> {
     return new ResourceList(this.config, this.sdk);
   }
 

@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import * as moment from 'moment';
 
 /** Interface for a day inside the a month. */
-interface Day {
+export interface Day {
   /** The moment that is represented by the day. */
   date: moment.Moment;
   /** Can be given a type, to set a class. */

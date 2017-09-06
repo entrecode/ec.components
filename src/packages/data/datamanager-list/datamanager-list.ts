@@ -1,15 +1,15 @@
-import { EntryListConfig } from '../../data/';
 import { ResourceList } from '../resource-list/resource-list';
 import { SdkService } from '../sdk/sdk.service';
 import * as moment from 'moment';
 import DataManagerResource from 'ec.sdk/src/resources/datamanager/DataManagerResource';
+import { ListConfig } from '@ec.components/core/list/list-config.interface';
 
 /**
  * Extension of List for Datamanagers
  */
-export class DatamanagerList<DatamanagerResource> extends ResourceList<DatamanagerResource> {
+export class DatamanagerList extends ResourceList<DataManagerResource> {
 
-  constructor(config: EntryListConfig, protected sdk: SdkService) {
+  constructor(config: ListConfig<DataManagerResource>, protected sdk: SdkService) {
     super(Object.assign(config, {
       identifier: 'datamanagerID',
       onSave: (item, value) => {
@@ -54,7 +54,7 @@ export class DatamanagerList<DatamanagerResource> extends ResourceList<Datamanag
   }
 
   /** Overrides the List load method. Instead of slicing the page out of all items, a datamanager request is made using the config.*/
-  public load(config?: EntryListConfig) {
+  public load(config?: ListConfig<DataManagerResource>) {
     if (!this.sdk || !this.sdk.datamanager) {
       return;
     }

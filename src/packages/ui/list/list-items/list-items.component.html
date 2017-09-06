@@ -1,12 +1,12 @@
-<ul>
-  <li *ngFor="let item of items;trackBy:list?.trackItem" (click)="columnClick(item)">
-    <div class="ec-list-item" [class.selected]="selection?.has(item)">
-      <div class="ec-list-item-cell ec-list-checkbox" *ngIf="selection">
+<ul class="ec-list-items">
+  <li *ngFor="let item of items;trackBy:list?.trackItem" (click)="columnClick(item)" class="ec-list__row">
+    <div class="ec-list-item" [class._selected]="selection?.has(item)">
+      <div class="ec-list__cell ec-list__select" *ngIf="selection">
         <input type="checkbox" [checked]="selection?.has(item)">
       </div>
-      <div *ngFor="let field of list?.fields" class="ec-list-item-cell"
-           [ngClass]="'ec-list-' + field.type" [ngSwitch]="field.view"
-           [class.hidden]="field.hidden">
+      <div *ngFor="let field of list?.fields" class="ec-list__cell"
+           [ngClass]="'ec-list-field_' + field.view" [ngSwitch]="field.view"
+           [class._hidden]="field.hidden">
         <ec-output [field]="field" [item]="item"></ec-output>
       </div>
     </div>

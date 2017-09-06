@@ -1,9 +1,10 @@
-import { Item, List } from '../../core';
-import { EntryListConfig } from '../../data/';
+import { List } from '@ec.components/core/list/list';
+import { Item } from '@ec.components/core/item/item';
 import { SdkService } from '../sdk/sdk.service';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import ListResource, { filterOptions } from "ec.sdk/src/resources/ListResource";
-import { Field } from '../../core/field/field';
+import { Field } from '@ec.components/core/field/field';
+import { ListConfig } from '@ec.components/core/list/list-config.interface';
 
 /**
  * Extension of List for SDK ListResource. Each each implementation should implement the load
@@ -16,16 +17,20 @@ export class ResourceList<T> extends List<T> {
   protected loading = new Subject();
   /** Observable that is nexted when the list begins loading. */
   public loading$ = this.loading.asObservable();
+  /** Subject that should be nexted when an error occurs */
+  protected error: Subject<Error> = new Subject();
+  /** Observable that is nexted when the list has an error. */
+  public error$: Observable<Error> = this.error.asObservable();
 
   /** The constructor will init the List and Pagination instances.
    * Make sure the config is already complete when initiating an EntryList instance. */
-  constructor(config: EntryListConfig, protected sdk: SdkService) {
+  constructor(config: ListConfig<T>, protected sdk: SdkService) {
     super([], config);
     this.load();
   }
 
   /** deletes all undefined values from given config and assigns it to this.config */
-  protected useConfig(config?: EntryListConfig) {
+  protected useConfig(config?: ListConfig<T>) {
     if (config) {
       Object.keys(config).forEach((key) => {
         if (config[key] === undefined) {
@@ -57,8 +62,8 @@ export class ResourceList<T> extends List<T> {
     this.change.next(this);
   }
 
-  /** Returns SDK filterOptions from a given EntryListConfig. */
-  protected getFilterOptions({ size = 20, page = 1, filter, sortBy, desc, sort = [] }: EntryListConfig): filterOptions {
+  /** Returns SDK filterOptions from a given ListConfig. */
+  protected getFilterOptions({ size = 20, page = 1, filter, sortBy, desc, sort = [] }: ListConfig<T>): filterOptions {
     const options = { size, page };
     if (sortBy) {
       Object.assign(options, { sort: [(desc ? '-' : '') + sortBy] });

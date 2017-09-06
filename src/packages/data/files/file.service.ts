@@ -5,7 +5,7 @@ import { SdkService } from '../sdk/sdk.service';
 import { AssetList } from './asset-list/asset-list';
 import { TypeConfigService } from '../model-config/type-config.service';
 import * as moment from 'moment';
-import { Item } from '../../core/item/item';
+import { Item } from '@ec.components/core/item/item';
 
 /** Instances of Update are emitted by the changes EventEmitter of the CrudService. */
 export interface Upload {
@@ -18,7 +18,7 @@ export interface Upload {
   /** The uploaded asset as item */
   items?: Array<Item<PublicAssetResource>>
   /** The list where it happened. */
-  list?: AssetList<PublicAssetResource>
+  list?: AssetList
 }
 
 /** The CRUD service is meant to be used when modifying entries.

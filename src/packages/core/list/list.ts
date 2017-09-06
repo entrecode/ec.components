@@ -1,4 +1,4 @@
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Collection } from '../collection/collection';
 import { Item } from '../item/item';
 import { Field } from '../field/field';
@@ -19,31 +19,27 @@ export class List<T> extends Collection<Item<T>> {
   /**
    * The List Configuration, click on ListConfig for details. Can be given an optional ListConfig.
    */
-  public config: ListConfig;
+  public config: ListConfig<T>;
   /**
    * Current Value Groups (Different Unique Values).
    */
   groups: any[];
   /** The list's pagination (Optional) */
-  public pagination: Pagination;
+  public pagination: Pagination<T>;
   /** The items of the current page */
   public page: Array<Item<T>>;
   /** Subject that should be nexted when loading is finished */
-  protected change = new Subject();
+  protected change: Subject<List<T>> = new Subject();
   /** Observable that is nexted when the list has changed. */
-  public change$ = this.change.asObservable();
-  /** Subject that should be nexted when an error occurs */
-  protected error = new Subject();
-  /** Observable that is nexted when the list has an error. */
-  public error$ = this.error.asObservable();
+  public change$: Observable<List<T>> = this.change.asObservable();
 
   /**
    * Constructs the List. Populates the items and instantiates the fields.
    */
-  constructor(values?: Array<T>, config: ListConfig = {}, pagination?: Pagination) {
+  constructor(values?: Array<T>, config: ListConfig<T> = {}, pagination?: Pagination<T>) {
     super([]);
     if (values) {
-      super.addAll(values.map(item => new Item(item, config)), false, false);
+      super.addAll(values.map(value => new Item(value, config)), false, false);
     }
     this.config = config || {};
     this.config.page = 1;
@@ -55,7 +51,7 @@ export class List<T> extends Collection<Item<T>> {
   }
 
   /** Loads the list page with the given config or, if none given, uses the current config. Reapplies grouping (if any) and calls the change Subject. */
-  public load(config?: ListConfig) {
+  public load(config?: ListConfig<T>) {
     if (config) {
       Object.assign(this.config, config);
     }

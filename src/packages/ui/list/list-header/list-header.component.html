@@ -1,32 +1,30 @@
-<div class="ec-list-group-header"><!--  *ngIf="!disableHeader" -->
-  <div class="ec-list-item-cell ec-list-checkbox" *ngIf="selection&&!list?.isEmpty()">
+<div class="ec-list-header">
+  <div class="ec-list__cell ec-list__select" *ngIf="selection&&!list?.isEmpty()">
     <input type="checkbox" (click)="selection?.toggleAll(list?.page)"
            [checked]="selection?.hasAll(list?.page)" [disabled]="selection.config?.solo">
   </div>
+
   <ec-form [config]="list?.config" [empty]="true" #filterForm></ec-form>
-  <div class="ec-list-item ec-list-header" *ngFor="let field of list?.fields"
-       [class.hidden]="field.hidden">
-    <ec-pop #filterPop class="popdown">
+
+  <div class="ec-list__cell" *ngFor="let field of list?.fields" [class._hidden]="field.hidden" [ngClass]="'ec-list-field_' + field.view" [class.ec-list-field_sortable]="field.sortable" [class.ec-list-field_sortable_active]="list.config?.sortBy===field.property" (click)="field.sortable&&list.toggleSort(field.property)">
+
+    <span class="ec-list-field__title">
+      {{field.label || field.property}}
+    </span>
+
+    <ec-pop #filterPop class="popdown ec-list-header__search">
       <a (click)="removeFilter(field.property, filterForm.group.get(field.property));filterPop.hide()">
-        <i class="ec-icon close"></i>
+        &times;
       </a>
       <ec-input [field]="field" [group]="filterForm?.group" [debounce]="200"
                 *ngIf="filterForm?.group.get(field?.property)"
                 (changed)="applyFilter(field.property, $event)"></ec-input>
     </ec-pop>
-    {{field.label || field.property}}
-    <ul>
-      <li *ngIf="field.sortable">
-        <a class="action" [class.active]="list.config?.sortBy===field.property"
-           (click)="list.toggleSort(field.property)">
-          <i class="ec-icon" [ngClass]="!list.config?.desc?'arrow-down':'arrow-up'"></i>
-        </a>
-      </li>
-      <li *ngIf="field.filterable">
-        <a class="action" (click)="editFilter(filterPop)">
-          <i class="ec-icon find"></i>
-        </a>
-      </li>
-    </ul>
+
+    <span class="ec-list-field__filter" *ngIf="field.filterable">
+      <a (click)="editFilter(filterPop)">
+        <span class="ec-icon find"></span>
+      </a>
+    </span>
   </div>
 </div>

@@ -1,4 +1,4 @@
-import { Item } from '../../core/item/item';
+import { Item } from '@ec.components/core/item/item';
 /**
  * Created by felix on 23.05.17.
  */

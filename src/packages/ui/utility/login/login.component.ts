@@ -34,11 +34,11 @@ export class LoginComponent implements OnInit {
   }
 
   /** Shows the given error in the form. Clears the password field and emits the error event. */
-  showError(err) {
+  showError(err): any {
     this.errorMessage = err.message;
     this.form.get('password').setValue('');
     this.error.emit(err);
-    return Observable.throw(err);
+    Observable.throw(err);
   }
 
   /** Method that is meant to be overwritten by a subclass to communicate with an API. */

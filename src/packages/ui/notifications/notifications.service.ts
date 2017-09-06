@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { Notification } from './notification';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 
 declare const window;
 
@@ -17,9 +17,9 @@ declare const window;
 @Injectable()
 export class NotificationsService {
   /** The emitter subject to fire notifications. */
-  private emitter = new Subject();
+  private emitter: Subject<Notification> = new Subject();
   /** Observable that is nexted when a new notification comes in. */
-  public emitter$ = this.emitter.asObservable();
+  public emitter$: Observable<Notification> = this.emitter.asObservable();
   /** The default view time for a notification. */
   public defaultTime: number = 5000;
 

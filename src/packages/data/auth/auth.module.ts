@@ -1,6 +1,5 @@
-// import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CookieModule } from 'ngx-cookie';
@@ -11,9 +10,13 @@ import { PublicLoginComponent } from './public-login/public-login.component';
 import { ValidationOnBlurDirective } from './validate-onblur';
 import { PublicSignupComponent } from './public-signup/public-signup.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
-import { UiModule } from '../../ui/ui.module';
+import { UiModule } from '@ec.components/ui/ui.module';
+import { AdminSignupComponent } from './admin-signup/admin-signup.component';
 
-// import { HyperAgentModule } from './hyperagent/hyper-agent.module';
+export function cookieFactory(): ModuleWithProviders {
+  //https://github.com/auth0/angular2-jwt/issues/305
+  return CookieModule.forRoot();
+}
 
 @NgModule({
   declarations: [
@@ -21,13 +24,12 @@ import { UiModule } from '../../ui/ui.module';
     PublicSignupComponent,
     ValidationOnBlurDirective,
     AdminLoginComponent,
+    AdminSignupComponent,
   ],
   imports: [
-    CookieModule.forRoot(),
-    // BrowserModule,
+    cookieFactory(),
     CommonModule,
     ReactiveFormsModule,
-    //HyperAgentModule,
     HttpModule,
     UiModule
   ],
@@ -36,6 +38,7 @@ import { UiModule } from '../../ui/ui.module';
     PublicLoginComponent,
     PublicSignupComponent,
     AdminLoginComponent,
+    AdminSignupComponent,
     ReactiveFormsModule
   ],
   providers: [AuthorizationService, requestOptionsProvider, PublicAuthService]

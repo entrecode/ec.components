@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { FieldValidators } from '../../../ui/index';
+import { FieldValidators } from '@ec.components/ui/index';
 import { SdkService } from '../../sdk/sdk.service';
 
 @Component({
@@ -30,7 +30,7 @@ export class PublicLoginComponent implements OnInit {
     this.errorMessage = err.message;
     this.login.get('password').setValue('');
     this.error.emit(err);
-    return Observable.throw(err);
+    Observable.throw(err);
   }
 
   onSubmit() {

@@ -1,4 +1,4 @@
-import { Component, ComponentFactoryResolver, Type, ViewChild } from '@angular/core';
+import { Component, ComponentFactoryResolver, ComponentRef, Type, ViewChild } from '@angular/core';
 import { SlotHostDirective } from '../slot-host.directive';
 
 // import { CustomFieldComponent } from './custom-field.component';
@@ -17,7 +17,7 @@ export class DynamicSlotComponent {
   }
 
   /** Loads the given component inside the fieldHost. Sets current item and field by default. */
-  loadComponent(component: Type<any>, data: Object = {}) {
+  loadComponent(component: Type<any>, data: Object = {}): ComponentRef<any> {
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(component);
     const viewContainerRef = this.fieldHost.viewContainerRef;
     viewContainerRef.clear();

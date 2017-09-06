@@ -1,12 +1,12 @@
 import { Observable, Subject } from 'rxjs';
-import { ListConfig } from '..';
+import { ListConfig } from '../list/list-config.interface';
 
 /** This class can be used to control the loading behaviour of external data. */
-export class Pagination {
+export class Pagination<T> {
   /** The total number of items that is being paginated. It can be changed via setTotal. */
   protected total: number;
   /** The pagination config */
-  protected config: ListConfig;
+  protected config: ListConfig<T>;
   /** Array to iterate over the number of pages. */
   public pages: Array<any>;
   /** Subject for tracking changes. */
@@ -16,7 +16,7 @@ export class Pagination {
 
   /** You can init each Pagination instance with an optional config.
    * If no config is provided, it will default to ```{page: 1, size: 25}```. */
-  constructor(config?: ListConfig, total?: number) {
+  constructor(config?: ListConfig<T>, total?: number) {
     this.config = { page: 1, size: 25 };
     Object.assign(this.config, config);
     if (total) {
@@ -65,7 +65,7 @@ export class Pagination {
   }
 
   /** Merges config and fires next on change */
-  protected load(config?: ListConfig): void {
+  protected load(config?: ListConfig<T>): void {
     if (config) {
       Object.assign(this.config, config);
     }

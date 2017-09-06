@@ -1,11 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PaginationComponent } from '../../index';
-import { Pagination } from '../../../core/index';
+import { Pagination } from '@ec.components/core/index';
 
 describe('PaginationComponent', () => {
-  let component: PaginationComponent;
-  let fixture: ComponentFixture<PaginationComponent>;
+  let component: PaginationComponent<number>;
+  let fixture: ComponentFixture<PaginationComponent<number>>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

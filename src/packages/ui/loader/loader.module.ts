@@ -1,4 +1,3 @@
-// import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
@@ -10,7 +9,6 @@ import { LoaderService } from './loader.service';
     LoaderComponent,
   ],
   imports: [
-    // BrowserModule,
     CommonModule,
     HttpModule,
   ],

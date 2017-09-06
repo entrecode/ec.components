@@ -3,8 +3,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { DynamicSlotComponent } from '../dynamic-slot/dynamic-slot.component';
 import { DefaultInputComponent } from '../../form/default-input/default-input.component';
-import { Field } from '../../../core/field/field';
-import { Item } from '../../../core/item/item';
+import { Field } from '@ec.components/core/field/field';
+import { Item } from '@ec.components/core/item/item';
 
 /** This directive can be used to display a field. It is used inside ec-form as well as ec-list. */
 @Component({

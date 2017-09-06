@@ -6,6 +6,7 @@ import { backendErrorCodes } from './errors';
 @Injectable()
 export class AuthorizationService {
   token: string;
+
   constructor(private cookie: CookieService) {
     this.token = this.cookie.get('ec-token');
   }
@@ -34,10 +35,9 @@ export class AuthorizationService {
   }
 
   catchError(err) {
-    console.log('error', err.json());
     const error = err.json();
     const message = backendErrorCodes[error.code][error.detail];
-    return Observable.throw({ error: error, message: message });
+    Observable.throw({ error: error, message: message });
   }
 
 }

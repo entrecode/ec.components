@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { emailAvailable } from '../email-available.validator';
 import { Observable } from 'rxjs';
-import { AdminService } from '../../index';
+import { AdminService } from '../../sdk/admin.service';
 
 @Component({
   selector: 'ec-auth-admin-signup',
@@ -10,9 +10,9 @@ import { AdminService } from '../../index';
   styleUrls: ['./admin-signup.component.scss']
 })
 export class AdminSignupComponent implements OnInit {
-  private signup: FormGroup;
+  public signup: FormGroup;
   private submitted: boolean;
-  private errorMessage: string;
+  public errorMessage: string;
   @Output() success: EventEmitter<any> = new EventEmitter();
   @Output() error: EventEmitter<any> = new EventEmitter();
 
@@ -29,7 +29,7 @@ export class AdminSignupComponent implements OnInit {
   showError(err) {
     this.errorMessage = err.message;
     this.error.emit(err);
-    return Observable.throw(err);
+    Observable.throw(err);
   }
 
   onSubmit() {

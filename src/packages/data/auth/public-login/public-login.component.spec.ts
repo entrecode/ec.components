@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PublicLoginComponent } from './public-login.component';
-import { UiModule } from '../../../ui/ui.module';
+import { UiModule } from '@ec.components/ui/ui.module';
 import { DataModule } from '../../data.module';
 
 describe('PublicLoginComponent', () => {

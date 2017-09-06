@@ -1,4 +1,4 @@
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 /**
  * A Collection is a more sophisticated Array. It is fundamental for other classes like List.
@@ -9,9 +9,9 @@ export class Collection<T> {
    */
   public items: Array<T>;
   /** Subject that is nexted when the items update */
-  protected update = new Subject();
+  protected update: Subject<Collection<T>> = new Subject();
   /** Subject that is nexted when the items change */
-  public update$ = this.update.asObservable();
+  public update$: Observable<Collection<T>> = this.update.asObservable();
 
   /**
    * Constructs the collection with the given item Array (optional).

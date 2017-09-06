@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DataModule } from '..';
-import { UiModule } from '../../ui';
+import { UiModule } from '@ec.components/ui';
 import { EntryComponent } from './entry.component';
 
 describe('EntryComponent', () => {

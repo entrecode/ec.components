@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
-// import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { UiModule } from '../packages/ui';
-import { DataModule } from '../packages/data';
+// import { DataModule } from '../packages/data/data.module';
+import { DataModule } from '@ec.components/data';
+// import { UiModule } from '../packages/ui/ui.module';
+import { UiModule } from '@ec.components/ui';
 import { DemoComponent } from './demo.component';
-import { VcModule } from '../packages/vc';
+import { VcModule } from '../packages/vc/vc.module';
 import { RouterModule } from '@angular/router';
 import { VcDemoComponent } from './vc/vc-demo.component';
 import { PopDemoComponent } from './pop/pop-demo.component';
@@ -17,13 +18,11 @@ import { TabsDemoComponent } from './tabs/tabs-demo.component';
 import { EntryFormDemoComponent } from './entry-form/entry-form.demo.component';
 import { CrudDemoComponent } from './crud/crud-demo.component';
 import { SelectDemoComponent } from './select/select-demo.component';
-import { AuthModule } from '../packages/data/auth/auth.module';
 import { AuthDemoComponent } from './auth/auth-demo.component';
 import { CoolStringComponent } from './form/cool-string.component'
 import { UnsplashImageComponent } from './list/unsplash-image.component';
 import { demoRoutes } from './demo.routes'
 import { EntrySelectDemoComponent } from './entry-select/entry-select-demo.component';
-import { FilesModule } from '../packages/data/files/files.module';
 import { AssetListDemoComponent } from './asset-list/asset-list.demo.component';
 import { AssetInputComponent } from '../packages/data/files/asset-input/asset-input.component';
 import { ListTransformsDemoComponent } from './list-transforms/list-transforms-demo.component';
@@ -70,13 +69,10 @@ demoRoutes.unshift(
     AssetInputComponent,
   ],
   imports: [
-    // CommonModule,
     BrowserModule,
     UiModule,
     DataModule,
-    FilesModule,
     VcModule,
-    AuthModule,
     RouterModule.forRoot(demoRoutes)
   ],
   providers: [
