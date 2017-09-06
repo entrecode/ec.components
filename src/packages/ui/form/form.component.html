@@ -3,19 +3,11 @@
     <ng-content></ng-content>
   </div>
   <div *ngIf="!wrapper.children.length&&!empty">
-    <ul>
-      <li *ngFor="let field of form?.fields | visibleFields" [ngSwitch]="field.view">
-        <label>
-          {{field.label || field.property}}:
-        </label>
-        <ec-input *ngIf="!field.readOnly" [field]="field" [group]="group"
-                  [item]="form"></ec-input>
+      <label *ngFor="let field of form?.fields | visibleFields" [ngClass]="'ec-label_' + field.view" [ngSwitch]="field.view">
+        {{field.label || field.property}}:
+        <ec-input *ngIf="!field.readOnly" [field]="field" [group]="group" [item]="form"></ec-input>
         <ec-output *ngIf="field.readOnly" [field]="field" [item]="form"></ec-output>
-      </li>
-    </ul>
-    <button type="button" (click)="submit()" *ngIf="submitButton!==false"
-            [disabled]="group.invalid" [class.disabled]="group.invalid">
-      Speichern
-    </button>
+      </label>
+    <button type="button" (click)="submit()" *ngIf="submitButton!==false" [disabled]="group.invalid" [class._disabled]="group.invalid" class="ec-btn">Speichern</button>
   </div>
 </form>
