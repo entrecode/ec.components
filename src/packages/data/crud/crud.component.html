@@ -1,28 +1,31 @@
 <button (click)="crudForm.create();formPop.show()" *ngIf="hasMethod('create')" type="button">
   <span *ngIf="this.config?.createLabel">{{this.config?.createLabel}}</span>
-  <i *ngIf="!this.config?.createLabel" class="ec-icon add"></i>
+  <span *ngIf="!this.config?.createLabel" class="ec-icon add"></span>
 </button>
+
 <ec-entry-list [model]="model" [config]="config" [solo]="true"
                *ngIf="hasMethod('read')" [selection]="config.selection"
                [loader]="config?.loader||listLoader"
                (select)="selectEntry($event,crudForm)">
 </ec-entry-list>
+
 <ec-loader #listLoader class="blend"></ec-loader>
+
 <!-- TODO wrap into entry-pop -->
 <ec-pop #formPop [ngClass]="getPopClass()">
   <nav>
     <button (click)="log(crudForm)" *ngIf="config?.develop">
-      <i class="ec-icon code"></i>
+      code
     </button>
     <button (click)="crudForm.deleteEntry()" *ngIf="hasMethod('delete')&&crudForm.isEditing()">
-      <i class="ec-icon trash"></i>
+      löschen
     </button>
     <button (click)="crudForm.submit()" [disabled]="crudForm.group?.invalid" type="button"
             [class.disabled]="crudForm.group?.invalid" *ngIf="maySave(crudForm)">
-      <i class="ec-icon save"></i>
+      save
     </button>
     <button (click)="formPop.hide()" type="button">
-      <i class="ec-icon close"></i>
+      &times;
     </button>
   </nav>
   <ec-entry-form [model]="model" [submitButton]="false" [loader]="popLoader"
