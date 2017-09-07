@@ -16,6 +16,6 @@
       <i class="ec-icon close"></i> &lt;!&ndash; TODO unified pop header component &ndash;&gt;
     </button>-->
     <ec-crud [model]="model" *ngIf="selection&&crudPop.active"
-             [config]="config" (select)="select($event)" #crud></ec-crud>
+             [config]="config" [selection]="selection" (select)="select($event)" #crud></ec-crud>
   </ec-pop>
 </div>

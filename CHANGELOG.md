@@ -3,9 +3,10 @@
 <a name="0.4.2"></a>
 ## 0.4.2
 * further styling
-BREAKING CHANGE:
+BREAKING CHANGES:
 * view: 'label' must now be view: 'tag'
 * view: 'labels' must now be view: 'tags'
+* selection is now a direct input of ec-crud instead of a config property
 
 <a name="0.4.1"></a>
 ## 0.4.1
