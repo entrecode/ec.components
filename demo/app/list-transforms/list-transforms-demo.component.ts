@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { adjektive } from '../../mocks/adjektive';
-import { irregular_verbs } from '../../mocks/irregular_verbs';
-import { regular_verbs } from '../../mocks/regular_verbs';
+import { adjektive } from '../../../mocks/adjektive';
+import { irregular_verbs } from '../../../mocks/irregular_verbs';
+import { regular_verbs } from '../../../mocks/regular_verbs';
 import { List } from "../../../index";
-import { substantives } from '../../mocks/substantives';
+import { substantives } from '../../../mocks/substantives';
 
 @Component({
   template: `

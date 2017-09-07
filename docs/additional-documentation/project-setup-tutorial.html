@@ -70,6 +70,12 @@
                                 <li class="link ">
                                     <a href="../additional-documentation/project-setup-tutorial.html"  data-type="entity-link" class="active" >Project Setup Tutorial</a>
                                 </li>
+                                <li class="link for-chapter">
+                                    <a href="../additional-documentation/project-setup-tutorial/routes.html" >Routes</a>
+                                </li>
+                                <li class="link for-chapter">
+                                    <a href="../additional-documentation/project-setup-tutorial/authorization.html" >Authorization</a>
+                                </li>
                                 <li class="link ">
                                     <a href="../additional-documentation/core-classes.html" >Core Classes</a>
                                 </li>
@@ -120,6 +126,9 @@
                                 </li>
                                 <li class="link ">
                                     <a href="../additional-documentation/data.html" >Data</a>
+                                </li>
+                                <li class="link ">
+                                    <a href="../additional-documentation/publishing.html" >Publishing</a>
                                 </li>
                         </ul>
                     </li>
@@ -634,6 +643,12 @@
                                        <li class="link ">
                                            <a href="../additional-documentation/project-setup-tutorial.html"  data-type="entity-link" class="active" >Project Setup Tutorial</a>
                                        </li>
+                                       <li class="link for-chapter">
+                                           <a href="../additional-documentation/project-setup-tutorial/routes.html" >Routes</a>
+                                       </li>
+                                       <li class="link for-chapter">
+                                           <a href="../additional-documentation/project-setup-tutorial/authorization.html" >Authorization</a>
+                                       </li>
                                        <li class="link ">
                                            <a href="../additional-documentation/core-classes.html" >Core Classes</a>
                                        </li>
@@ -684,6 +699,9 @@
                                        </li>
                                        <li class="link ">
                                            <a href="../additional-documentation/data.html" >Data</a>
+                                       </li>
+                                       <li class="link ">
+                                           <a href="../additional-documentation/publishing.html" >Publishing</a>
                                        </li>
                                </ul>
                            </li>
@@ -1181,7 +1199,57 @@
 </ul>
 <p>You can lookup your versions with <code>ng --version</code></p>
 <h3 id="2-generate-new-project">2. Generate new Project</h3>
-<pre class="line-numbers"><code class="language-none">ng new --prefix ec --routing true --style scss</code></pre><p><a href="https://github.com/angular/angular-cli/wiki/new">More info on the options for new</a></p>
+<pre class="line-numbers"><code class="language-sh">ng new ec-project --prefix ec-admin --routing true --style scss</code></pre><p>Make sure you replace <em>ec-project</em> with your project name and the prefix <em>ec-admin</em> with a project related shorthand symbol.
+<a href="https://github.com/angular/angular-cli/wiki/new">More info on the options for new</a>.</p>
+<h3 id="3-install-ec-components-data">3. Install @ec.components/data</h3>
+<pre class="line-numbers"><code class="language-sh">cd ec-project
+yarn install &#64;ec.components/data --save</code></pre><p>This will install the data package which depends on ui and core packages.</p>
+<h3 id="4-setup-environment">4. Setup environment</h3>
+<p>In src/environments, you can find the different environment files.
+By Default, there is a dev and a prod environment. For this tutorial, those two should be enough. We will use the dev environment for dev and staging and the prod environment for live. You could also add more environments, for more information, <a href="https://github.com/angular/angular-cli/wiki/stories-application-environments">look here</a>. </p>
+<p><em>src/environments/environment.ts</em>:</p>
+<pre class="line-numbers"><code class="language-js">export const environment = {
+  production: false,
+  environment: &#39;stage&#39;, // https://entrecode.github.io/ec.sdk/#environment
+  datamanagerID: &#39;XXXXXXXX&#39;, // datamanager shortID
+  clientID: &#39;my-dev-client&#39; // your clientID
+};</code></pre><p><em>src/environments/environment.prod.ts</em>:</p>
+<pre class="line-numbers"><code class="language-js">export const environment = {
+  production: false,
+  environment: &#39;live&#39;, // https://entrecode.github.io/ec.sdk/#environment
+  datamanagerID: &#39;XXXXXXXX&#39;, // datamanager shortID
+  clientID: &#39;my-live-client&#39; // your clientID
+};</code></pre><p>The .prod environment will be used when running ng build for production.
+The client should use token method body. The callback URL does not matter.</p>
+<h3 id="5-add-datamodule">5. Add DataModule</h3>
+<p>Go to src/app/app.module and add DataModule to your imports:</p>
+<pre class="line-numbers"><code class="language-js">import { DataModule } from &#39;&#64;ec.components/data&#39;;
+import { environment } from &#39;../environments/environment&#39;;
+
+&#64;NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    DataModule.forEnvironment(environment),
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }</code></pre><p>Here we are importing the DataModule along with the environment to then import it into our AppModule with the forEnvironment method.</p>
+<h3 id="6-add-ssl-flag">6. Add --ssl flag</h3>
+<p>in your package.json, edit the start script should look like this:</p>
+<pre class="line-numbers"><code class="language-none">&quot;start&quot;: &quot;ng serve --ssl&quot;,</code></pre><p>Without the --ssl flag, the authorization won&#39;t work, because it enforces https.</p>
+<h3 id="7-add-a-route-with-a-component-template">7. Add a route with a component template</h3>
+<p>Generate a new Component to host e.g. a crud for your precious muffins:</p>
+<pre class="line-numbers"><code class="language-sh">ng generate component muffins</code></pre><p>Add the component to a route in src/app/app-routing.module.ts:</p>
+<p>e.g. add to <em>src/app/app.component.html</em>:</p>
+<pre class="line-numbers"><code class="language-html">&lt;ec-crud model=&quot;muffin&quot;&gt;&lt;/ec-crud&gt;</code></pre><p>This assumes that the model <em>muffin</em> exists inside the datamanager provided through your environment.</p>
+<h3 id="8-run-the-fun">8. Run the fun</h3>
+<p>Thats it! Now you can run the app using:</p>
+<pre class="line-numbers"><code class="language-sh">npm run start</code></pre><p>now navigate to <a href="https://localhost:4200">https://localhost:4200</a></p>
 
                    </div><div class="search-results">
     <div class="has-results">

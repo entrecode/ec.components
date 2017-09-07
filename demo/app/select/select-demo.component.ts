@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { songs } from '../../assets/songs';
-import { mocked } from '../../mocks/data';
+import { mocked } from '../../../mocks/data';
 
 @Component({
   selector: 'ec-select-demo',
