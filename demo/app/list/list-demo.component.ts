@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { mocked } from '../../mocks/data';
+import { mocked } from '../../../mocks/data';
 import { songs } from '../../assets/songs';
 
 @Component({

@@ -1,5 +1,5 @@
 import { Collection } from '../../index';
-import { mocked } from '../../../mocks/data';
+import { mocked } from '../../../../mocks/data';
 
 describe('Collection', () => {
   it('should be constructed empty', () => {
