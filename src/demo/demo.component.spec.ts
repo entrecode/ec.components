@@ -2,10 +2,10 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DemoComponent } from './demo.component';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { UiModule } from '../packages/ui';
-import { DataModule } from '../packages/data';
+import { UiModule } from '../../packages/ui/index';
+import { DataModule } from '../../packages/data/index';
 import { RouterTestingModule } from '@angular/router/testing';
-import { FilesModule } from '../packages/data/files/files.module';
+import { FilesModule } from '../../packages/data/src/files/files.module';
 
 describe('DemoComponent', () => {
   let component: DemoComponent;

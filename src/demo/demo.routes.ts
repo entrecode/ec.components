@@ -1,4 +1,4 @@
-import { LoginComponent } from '../packages/ui/utility/login/login.component';
+import { LoginComponent } from '../../packages/ui/src/utility/login/login.component';
 import { Routes } from '@angular/router';
 import { PopDemoComponent } from './pop/pop-demo.component';
 import { DataDemoComponent } from './data/data-demo.component';
@@ -7,7 +7,7 @@ import { EntryListDemoComponent } from './entry-list/entry-list.demo.component';
 import { FormDemoComponent } from './form/form-demo.component';
 import { TabsDemoComponent } from './tabs/tabs-demo.component';
 import { EntryFormDemoComponent } from './entry-form/entry-form.demo.component';
-import { MockupComponent } from '../packages/ui/utility/mockup/mockup.component';
+import { MockupComponent } from '../../packages/ui/src/utility/mockup/mockup.component';
 import { CrudDemoComponent } from './crud/crud-demo.component';
 import { SelectDemoComponent } from './select/select-demo.component';
 import { EntrySelectDemoComponent } from './entry-select/entry-select-demo.component';
@@ -19,7 +19,7 @@ import { AssetListDemoComponent } from './asset-list/asset-list.demo.component';
 // import { PublicLoginComponent } from '@ec.components/data';
 import { AuthDemoComponent } from './auth/auth-demo.component';
 import { VcDemoComponent } from './vc/vc-demo.component';
-import { CrudComponent } from '../packages/data/crud/crud.component';
+import { CrudComponent } from '../../packages/data/src/crud/crud.component';
 
 export const demoRoutes: Routes = [
   /*  {

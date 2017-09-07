@@ -1,5 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { ModelConfigService } from '../packages/data';
+import { ModelConfigService } from '../../packages/data/index';
 import * as moment from 'moment';
 import { demoRoutes } from './demo.routes';
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Pagination } from '../../packages/core/pagination/pagination';
+import { Pagination } from '../../../packages/core/src/pagination/pagination';
 
 @Component({
   selector: 'ec-pagination-demo',
