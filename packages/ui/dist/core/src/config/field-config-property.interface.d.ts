@@ -40,7 +40,7 @@ export interface FieldConfigProperty {
     type?: string;
     /** The model title of the entries/entry field */
     model?: string;
-    /** The type of cell view. (e.g. labels, email etc..) */
+    /** The type of cell view. (e.g. tags, email etc..) */
     view?: string;
     /** Tells if the field should be hidden */
     hidden?: boolean;

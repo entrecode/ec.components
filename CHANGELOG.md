@@ -1,5 +1,12 @@
 # Changelog
 
+<a name="0.4.2"></a>
+## 0.4.2
+* further styling
+BREAKING CHANGE:
+* view: 'label' must now be view: 'tag'
+* view: 'labels' must now be view: 'tags'
+
 <a name="0.4.1"></a>
 ## 0.4.1
 * fixed tests after refactoring
@@ -8,10 +15,11 @@
 
 <a name="0.4.0"></a>
 ## 0.4.0
+* now using ec.sdk 0.8.5
+
 BREAKING CHANGES:
 * all imports from '@ec.components/*/*' must now lead to '@ec.components/*/src/*'
 * imports from '@ec.components/*' can stay the same and should generally be preferred.
-* now using ec.sdk 0.8.5
 
 <a name="0.3.1"></a>
 ## 0.3.1

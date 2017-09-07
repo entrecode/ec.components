@@ -12,10 +12,6 @@ export interface FieldConfigProperty {
     resolve?: (body: any, item: any, property: string) => any;
     /** Custom resolve method to get the title, has priority over label property. */
     title?: (body: any, item: any, property: string) => any;
-    /** Custom edit transformation function. It is used before editing the value, e.g. in a form.
-     * @param body The item body */
-    /** Custom serialize transformation function. It is used before saving it, e.g. in a form.
-     * @param body The item body */
     /** Custom display transformation function.
      * @param value The current property value
      * @param field The field property name */
@@ -40,7 +36,7 @@ export interface FieldConfigProperty {
     type?: string;
     /** The model title of the entries/entry field */
     model?: string;
-    /** The type of cell view. (e.g. labels, email etc..) */
+    /** The type of cell view. (e.g. tags, email etc..) */
     view?: string;
     /** Tells if the field should be hidden */
     hidden?: boolean;

@@ -66,7 +66,7 @@ export class FileService {
       },
       tags: {
         label: 'Tags',
-        view: 'labels'
+        view: 'tags'
       },
       type: {
         label: 'Typ',

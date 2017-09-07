@@ -79,7 +79,7 @@ export class TypeConfigService {
       prefill: new Date(0)*/
     },
     entry: {
-      view: 'label',
+      view: 'tag',
       input: DefaultEntryInputComponent,
       output: DefaultOutputComponent,
       display: (value, entry, property) => entry.getTitle(property),
@@ -88,7 +88,7 @@ export class TypeConfigService {
       filterOperator: 'any'
     },
     entries: {
-      view: 'labels',
+      view: 'tags',
       input: DefaultEntryInputComponent,
       output: DefaultOutputComponent,
       display: (value, entry, property) => entry.getTitle(property),

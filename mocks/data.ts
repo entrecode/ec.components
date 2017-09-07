@@ -62,7 +62,7 @@ export const mocked = {
           label: 'Akkorde',
           display: (value) => value.measures.reduce((chords, measure) => chords.concat(measure), []),
           sort: (value) => value ? value.measures.length : 0,
-          view: 'labels'
+          view: 'tags'
         },
         title: {
           label: 'Titel',
