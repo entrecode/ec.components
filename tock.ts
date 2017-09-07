@@ -1,5 +1,5 @@
 // import { Datamanager } from './src/packages/data/datamanager/datamanager';
-import { environment } from './src/environments/environment';
+import { environment } from './demo/environments/environment';
 import fs = require('fs');
 
 const str = (o) => {

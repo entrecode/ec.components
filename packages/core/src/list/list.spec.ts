@@ -1,5 +1,5 @@
 import { List } from '../../';
-import { mocked } from '../../../mocks/data';
+import { mocked } from '../../../../mocks/data';
 describe('List', () => {
 
   it('should support identifiers', () => {

@@ -6,7 +6,8 @@
   .ec-list__cell {
     flex-grow: 1;
     flex-basis: 10%;
-    padding: .5em;
+    display: flex;
+    align-items: center;
   }
 
   .ec-list__select {
@@ -24,20 +25,6 @@
 
   .ec-list-field-sort {
     position: relative;
-    .ec-btn {
-      span {
-        width: 4px;
-        height: 4px;
-        border: 4px solid transparent;
-        border-top-color: lightgray;
-      }
-
-      &._active {
-        span {
-          border-top-color: black;
-        }
-      }
-    }
   }
 }
 
@@ -74,5 +61,6 @@
 .ec-list-field {
   &_number {
     text-align: right;
+    justify-content: flex-end;
   }
 }

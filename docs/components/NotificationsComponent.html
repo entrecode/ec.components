@@ -68,6 +68,15 @@
                                 id="xs-additional-pages"
                             >
                                 <li class="link ">
+                                    <a href="../additional-documentation/project-setup-tutorial.html" >Project Setup Tutorial</a>
+                                </li>
+                                <li class="link for-chapter">
+                                    <a href="../additional-documentation/project-setup-tutorial/routes.html" >Routes</a>
+                                </li>
+                                <li class="link for-chapter">
+                                    <a href="../additional-documentation/project-setup-tutorial/authorization.html" >Authorization</a>
+                                </li>
+                                <li class="link ">
                                     <a href="../additional-documentation/core-classes.html" >Core Classes</a>
                                 </li>
                                 <li class="link for-chapter">
@@ -117,6 +126,9 @@
                                 </li>
                                 <li class="link ">
                                     <a href="../additional-documentation/data.html" >Data</a>
+                                </li>
+                                <li class="link ">
+                                    <a href="../additional-documentation/publishing.html" >Publishing</a>
                                 </li>
                         </ul>
                     </li>
@@ -484,9 +496,6 @@
                                     <a href="../interfaces/Day.html" >Day</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
-                                </li>
-                                <li class="link">
                                     <a href="../interfaces/FieldConfig.html" >FieldConfig</a>
                                 </li>
                                 <li class="link">
@@ -553,6 +562,9 @@
                         <ul class="links collapse "
                                 id="xs-miscellaneous-links"
                             >
+                                <li class="link">
+                                  <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                </li>
                                 <li class="link">
                                   <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
                                 </li>
@@ -629,6 +641,15 @@
                                        id="additional-pages"
                    >
                                        <li class="link ">
+                                           <a href="../additional-documentation/project-setup-tutorial.html" >Project Setup Tutorial</a>
+                                       </li>
+                                       <li class="link for-chapter">
+                                           <a href="../additional-documentation/project-setup-tutorial/routes.html" >Routes</a>
+                                       </li>
+                                       <li class="link for-chapter">
+                                           <a href="../additional-documentation/project-setup-tutorial/authorization.html" >Authorization</a>
+                                       </li>
+                                       <li class="link ">
                                            <a href="../additional-documentation/core-classes.html" >Core Classes</a>
                                        </li>
                                        <li class="link for-chapter">
@@ -678,6 +699,9 @@
                                        </li>
                                        <li class="link ">
                                            <a href="../additional-documentation/data.html" >Data</a>
+                                       </li>
+                                       <li class="link ">
+                                           <a href="../additional-documentation/publishing.html" >Publishing</a>
                                        </li>
                                </ul>
                            </li>
@@ -1045,9 +1069,6 @@
                                            <a href="../interfaces/Day.html" >Day</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../interfaces/FieldConfig.html" >FieldConfig</a>
                                        </li>
                                        <li class="link">
@@ -1115,6 +1136,9 @@
                                        id="miscellaneous-links"
                    >
                                        <li class="link">
+                                         <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                       </li>
+                                       <li class="link">
                                          <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
                                        </li>
                                </ul>
@@ -1169,7 +1193,7 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>src/packages/ui/notifications/notifications.component.ts</code>
+    <code>packages/ui/src/notifications/notifications.component.ts</code>
 </p>
 
     <p class="comment">
@@ -1268,7 +1292,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/packages/ui/notifications/notifications.component.ts:19</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">packages/ui/src/notifications/notifications.component.ts:19</a></div>
                                 </td>
                             </tr>
     
@@ -1326,7 +1350,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/packages/ui/notifications/notifications.component.ts:19</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">packages/ui/src/notifications/notifications.component.ts:19</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1364,7 +1388,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/packages/ui/notifications/notifications.component.ts:17</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">packages/ui/src/notifications/notifications.component.ts:17</a></div>
                                 </td>
                             </tr>
     
@@ -1384,7 +1408,7 @@
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { Component, Input } from &#x27;@angular/core&#x27;;
 import { Notification } from &quot;./notification&quot;;
-import { Collection } from &#x27;../../core/collection/collection&#x27;;
+import { Collection } from &#x27;@ec.components/core/src/collection/collection&#x27;;
 import { NotificationsService } from &#x27;./notifications.service&#x27;;
 
 /** Displays any kind of Notification inside the DOM. It listens on the notificationService.$emitter for notifications. */

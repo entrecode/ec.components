@@ -68,6 +68,15 @@
                                 id="xs-additional-pages"
                             >
                                 <li class="link ">
+                                    <a href="../additional-documentation/project-setup-tutorial.html" >Project Setup Tutorial</a>
+                                </li>
+                                <li class="link for-chapter">
+                                    <a href="../additional-documentation/project-setup-tutorial/routes.html" >Routes</a>
+                                </li>
+                                <li class="link for-chapter">
+                                    <a href="../additional-documentation/project-setup-tutorial/authorization.html" >Authorization</a>
+                                </li>
+                                <li class="link ">
                                     <a href="../additional-documentation/core-classes.html" >Core Classes</a>
                                 </li>
                                 <li class="link for-chapter">
@@ -117,6 +126,9 @@
                                 </li>
                                 <li class="link ">
                                     <a href="../additional-documentation/data.html" >Data</a>
+                                </li>
+                                <li class="link ">
+                                    <a href="../additional-documentation/publishing.html" >Publishing</a>
                                 </li>
                         </ul>
                     </li>
@@ -484,9 +496,6 @@
                                     <a href="../interfaces/Day.html" >Day</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
-                                </li>
-                                <li class="link">
                                     <a href="../interfaces/FieldConfig.html" >FieldConfig</a>
                                 </li>
                                 <li class="link">
@@ -553,6 +562,9 @@
                         <ul class="links collapse "
                                 id="xs-miscellaneous-links"
                             >
+                                <li class="link">
+                                  <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                </li>
                                 <li class="link">
                                   <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
                                 </li>
@@ -629,6 +641,15 @@
                                        id="additional-pages"
                    >
                                        <li class="link ">
+                                           <a href="../additional-documentation/project-setup-tutorial.html" >Project Setup Tutorial</a>
+                                       </li>
+                                       <li class="link for-chapter">
+                                           <a href="../additional-documentation/project-setup-tutorial/routes.html" >Routes</a>
+                                       </li>
+                                       <li class="link for-chapter">
+                                           <a href="../additional-documentation/project-setup-tutorial/authorization.html" >Authorization</a>
+                                       </li>
+                                       <li class="link ">
                                            <a href="../additional-documentation/core-classes.html" >Core Classes</a>
                                        </li>
                                        <li class="link for-chapter">
@@ -678,6 +699,9 @@
                                        </li>
                                        <li class="link ">
                                            <a href="../additional-documentation/data.html" >Data</a>
+                                       </li>
+                                       <li class="link ">
+                                           <a href="../additional-documentation/publishing.html" >Publishing</a>
                                        </li>
                                </ul>
                            </li>
@@ -1045,9 +1069,6 @@
                                            <a href="../interfaces/Day.html" >Day</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../interfaces/FieldConfig.html" >FieldConfig</a>
                                        </li>
                                        <li class="link">
@@ -1114,6 +1135,9 @@
                                <ul class="links collapse "
                                        id="miscellaneous-links"
                    >
+                                       <li class="link">
+                                         <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                       </li>
                                        <li class="link">
                                          <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
                                        </li>
@@ -1363,7 +1387,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/packages/ui/ui.module.ts</code>
+            <code>packages/ui/src/ui.module.ts</code>
         </p>
 
 
@@ -1421,21 +1445,18 @@
 
 
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { CommonModule } from &#x27;@angular/common&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
 import { FormsModule, ReactiveFormsModule } from &#x27;@angular/forms&#x27;;
-import { NgModule } from &#x27;@angular/core&#x27;;
-import { NotificationsModule } from &#x27;./notifications/notifications.module&#x27;;
+import { ListModule } from &#x27;./list/list.module&#x27;;
+import { FormModule } from &#x27;./form/form.module&#x27;;
 import { PopModule } from &#x27;./pop/pop.module&#x27;;
 import { LoaderModule } from &#x27;./loader/loader.module&#x27;;
-import { ListModule } from &quot;./list/list.module&quot;;
-import { FormModule } from &#x27;./form/form.module&#x27;;
+import { NotificationsModule } from &#x27;./notifications/notifications.module&#x27;;
 import { UtilityModule } from &#x27;./utility/utility.module&#x27;;
 
 @NgModule({
-  entryComponents: [],
-  declarations: [],
   imports: [
-    // BrowserModule,
     FormsModule,
     CommonModule,
     ReactiveFormsModule,
@@ -1455,11 +1476,14 @@ import { UtilityModule } from &#x27;./utility/utility.module&#x27;;
     LoaderModule,
     ListModule,
     FormModule,
-  ],
-  providers: [],
+  ]
 })
 export class UiModule {
-}</code></pre>
+  forRoot() {
+
+  }
+}
+</code></pre>
     </div>
 </div>
 

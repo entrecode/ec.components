@@ -68,6 +68,15 @@
                                 id="xs-additional-pages"
                             >
                                 <li class="link ">
+                                    <a href="../additional-documentation/project-setup-tutorial.html" >Project Setup Tutorial</a>
+                                </li>
+                                <li class="link for-chapter">
+                                    <a href="../additional-documentation/project-setup-tutorial/routes.html" >Routes</a>
+                                </li>
+                                <li class="link for-chapter">
+                                    <a href="../additional-documentation/project-setup-tutorial/authorization.html" >Authorization</a>
+                                </li>
+                                <li class="link ">
                                     <a href="../additional-documentation/core-classes.html" >Core Classes</a>
                                 </li>
                                 <li class="link for-chapter">
@@ -117,6 +126,9 @@
                                 </li>
                                 <li class="link ">
                                     <a href="../additional-documentation/data.html" >Data</a>
+                                </li>
+                                <li class="link ">
+                                    <a href="../additional-documentation/publishing.html" >Publishing</a>
                                 </li>
                         </ul>
                     </li>
@@ -484,9 +496,6 @@
                                     <a href="../interfaces/Day.html" >Day</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
-                                </li>
-                                <li class="link">
                                     <a href="../interfaces/FieldConfig.html" >FieldConfig</a>
                                 </li>
                                 <li class="link">
@@ -553,6 +562,9 @@
                         <ul class="links collapse "
                                 id="xs-miscellaneous-links"
                             >
+                                <li class="link">
+                                  <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                </li>
                                 <li class="link">
                                   <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
                                 </li>
@@ -629,6 +641,15 @@
                                        id="additional-pages"
                    >
                                        <li class="link ">
+                                           <a href="../additional-documentation/project-setup-tutorial.html" >Project Setup Tutorial</a>
+                                       </li>
+                                       <li class="link for-chapter">
+                                           <a href="../additional-documentation/project-setup-tutorial/routes.html" >Routes</a>
+                                       </li>
+                                       <li class="link for-chapter">
+                                           <a href="../additional-documentation/project-setup-tutorial/authorization.html" >Authorization</a>
+                                       </li>
+                                       <li class="link ">
                                            <a href="../additional-documentation/core-classes.html" >Core Classes</a>
                                        </li>
                                        <li class="link for-chapter">
@@ -678,6 +699,9 @@
                                        </li>
                                        <li class="link ">
                                            <a href="../additional-documentation/data.html" >Data</a>
+                                       </li>
+                                       <li class="link ">
+                                           <a href="../additional-documentation/publishing.html" >Publishing</a>
                                        </li>
                                </ul>
                            </li>
@@ -1045,9 +1069,6 @@
                                            <a href="../interfaces/Day.html" >Day</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../interfaces/FieldConfig.html" >FieldConfig</a>
                                        </li>
                                        <li class="link">
@@ -1115,6 +1136,9 @@
                                        id="miscellaneous-links"
                    >
                                        <li class="link">
+                                         <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                       </li>
+                                       <li class="link">
                                          <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
                                        </li>
                                </ul>
@@ -1171,7 +1195,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/packages/core/sorter/sorter.ts</code>
+            <code>packages/core/src/sorter/sorter.ts</code>
         </p>
 
             <p class="comment">
@@ -1248,7 +1272,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/packages/core/sorter/sorter.ts:21</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">packages/core/src/sorter/sorter.ts:21</a></div>
                                         </td>
                                     </tr>
             
@@ -1322,7 +1346,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/packages/core/sorter/sorter.ts:51</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">packages/core/src/sorter/sorter.ts:51</a></div>
                                         </td>
                                     </tr>
             
@@ -1415,7 +1439,7 @@
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/packages/core/sorter/sorter.ts:8</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">packages/core/src/sorter/sorter.ts:8</a></div>
                                         </td>
                                     </tr>
             
@@ -1438,7 +1462,7 @@
     </div>
 
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { Item } from &#x27;..&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { Item } from &#x27;../item/item&#x27;;
 
 const collator &#x3D; new Intl.Collator(undefined, { numeric: true, sensitivity: &#x27;base&#x27; });
 

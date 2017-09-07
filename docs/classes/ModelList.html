@@ -68,6 +68,15 @@
                                 id="xs-additional-pages"
                             >
                                 <li class="link ">
+                                    <a href="../additional-documentation/project-setup-tutorial.html" >Project Setup Tutorial</a>
+                                </li>
+                                <li class="link for-chapter">
+                                    <a href="../additional-documentation/project-setup-tutorial/routes.html" >Routes</a>
+                                </li>
+                                <li class="link for-chapter">
+                                    <a href="../additional-documentation/project-setup-tutorial/authorization.html" >Authorization</a>
+                                </li>
+                                <li class="link ">
                                     <a href="../additional-documentation/core-classes.html" >Core Classes</a>
                                 </li>
                                 <li class="link for-chapter">
@@ -117,6 +126,9 @@
                                 </li>
                                 <li class="link ">
                                     <a href="../additional-documentation/data.html" >Data</a>
+                                </li>
+                                <li class="link ">
+                                    <a href="../additional-documentation/publishing.html" >Publishing</a>
                                 </li>
                         </ul>
                     </li>
@@ -484,9 +496,6 @@
                                     <a href="../interfaces/Day.html" >Day</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
-                                </li>
-                                <li class="link">
                                     <a href="../interfaces/FieldConfig.html" >FieldConfig</a>
                                 </li>
                                 <li class="link">
@@ -553,6 +562,9 @@
                         <ul class="links collapse "
                                 id="xs-miscellaneous-links"
                             >
+                                <li class="link">
+                                  <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                </li>
                                 <li class="link">
                                   <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
                                 </li>
@@ -629,6 +641,15 @@
                                        id="additional-pages"
                    >
                                        <li class="link ">
+                                           <a href="../additional-documentation/project-setup-tutorial.html" >Project Setup Tutorial</a>
+                                       </li>
+                                       <li class="link for-chapter">
+                                           <a href="../additional-documentation/project-setup-tutorial/routes.html" >Routes</a>
+                                       </li>
+                                       <li class="link for-chapter">
+                                           <a href="../additional-documentation/project-setup-tutorial/authorization.html" >Authorization</a>
+                                       </li>
+                                       <li class="link ">
                                            <a href="../additional-documentation/core-classes.html" >Core Classes</a>
                                        </li>
                                        <li class="link for-chapter">
@@ -678,6 +699,9 @@
                                        </li>
                                        <li class="link ">
                                            <a href="../additional-documentation/data.html" >Data</a>
+                                       </li>
+                                       <li class="link ">
+                                           <a href="../additional-documentation/publishing.html" >Publishing</a>
                                        </li>
                                </ul>
                            </li>
@@ -1045,9 +1069,6 @@
                                            <a href="../interfaces/Day.html" >Day</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../interfaces/FieldConfig.html" >FieldConfig</a>
                                        </li>
                                        <li class="link">
@@ -1115,6 +1136,9 @@
                                        id="miscellaneous-links"
                    >
                                        <li class="link">
+                                         <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                       </li>
+                                       <li class="link">
                                          <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
                                        </li>
                                </ul>
@@ -1168,7 +1192,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/packages/data/model-list/model-list.ts</code>
+            <code>packages/data/src/model-list/model-list.ts</code>
         </p>
 
             <p class="comment">
@@ -1233,12 +1257,12 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <code>constructor(datamanager:  | string, config: <a href="../interfaces/ListConfig.html">EntryListConfig</a>, sdk: <a href="../injectables/SdkService.html">SdkService</a>)</code>
+                                    <code>constructor(datamanager:  | string, config: <a href="../interfaces/ListConfig.html">ListConfig<ModelResource></a>, sdk: <a href="../injectables/SdkService.html">SdkService</a>)</code>
                                 </td>
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/packages/data/model-list/model-list.ts:12</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">packages/data/src/model-list/model-list.ts:12</a></div>
                                         </td>
                                     </tr>
             
@@ -1268,7 +1292,7 @@
                                                             <tr>
                                                               <td>config</td>
                                                               <td>
-                                                                        <code><a href="../interfaces/ListConfig.html" target="_self" >EntryListConfig</a></code>
+                                                                        <code><a href="../interfaces/ListConfig.html" target="_self" >ListConfig&lt;ModelResource&gt;</a></code>
                                                               </td>
                                                               <td>
                                                               </td>
@@ -1308,14 +1332,14 @@
                             <tr>
                                 <td class="col-md-4">
                                         <span class="modifier-icon fa fa-"></span>
-                                    <code>load(config?: <a href="../interfaces/ListConfig.html">EntryListConfig</a>)</code>
+                                    <code>load(config?: <a href="../interfaces/ListConfig.html">ListConfig<ModelResource></a>)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/packages/data/model-list/model-list.ts:59</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">packages/data/src/model-list/model-list.ts:59</a></div>
                                         </td>
                                     </tr>
             
@@ -1339,7 +1363,7 @@
                                                             <tr>
                                                               <td>config</td>
                                                               <td>
-                                                                      <code><a href="../interfaces/ListConfig.html" target="_self" >EntryListConfig</a></code>
+                                                                      <code><a href="../interfaces/ListConfig.html" target="_self" >ListConfig&lt;ModelResource&gt;</a></code>
                                                               </td>
                                                               <td>
                                                                   true
@@ -1380,7 +1404,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">src/packages/data/model-list/model-list.ts:78</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">packages/data/src/model-list/model-list.ts:78</a></div>
                                         </td>
                                     </tr>
             
@@ -1425,7 +1449,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/packages/data/model-list/model-list.ts:12</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">packages/data/src/model-list/model-list.ts:12</a></div>
                                         </td>
                                     </tr>
             
@@ -1437,23 +1461,23 @@
 
 
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { EntryListConfig } from &#x27;../../data/&#x27;;
-import { ResourceList } from &#x27;../resource-list/resource-list&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { ResourceList } from &#x27;../resource-list/resource-list&#x27;;
 import { SdkService } from &#x27;../sdk/sdk.service&#x27;;
 import * as moment from &#x27;moment&#x27;;
 import DataManagerResource from &#x27;ec.sdk/src/resources/datamanager/DataManagerResource&#x27;;
 import ModelResource from &#x27;ec.sdk/src/resources/datamanager/ModelResource&#x27;;
+import { ListConfig } from &#x27;@ec.components/core/src/list/list-config.interface&#x27;;
 
 /**
  * Extension of List for Datamanagers
  */
-export class ModelList&lt;model&gt; extends ResourceList&lt;model&gt; {
+export class ModelList extends ResourceList&lt;ModelResource&gt; {
   private datamanager: DataManagerResource | string;
 
-  constructor(datamanager: DataManagerResource | string, config: EntryListConfig, sdk: SdkService) {
+  constructor(datamanager: DataManagerResource | string, config: ListConfig&lt;ModelResource&gt;, sdk: SdkService) {
     super(Object.assign(config, {
       identifier: &#x27;modelID&#x27;,
-      onSave:(item,value) &#x3D;&gt; {
+      onSave: (item, value) &#x3D;&gt; {
         const model &#x3D; item.getBody();
         item.serialize(value, model instanceof ModelResource);
         Object.assign(model, value);
@@ -1495,7 +1519,7 @@ export class ModelList&lt;model&gt; extends ResourceList&lt;model&gt; {
   }
 
   /** Overrides the List load method. Instead of slicing the page out of all items, a datamanager request is made using the config.*/
-  public load(config?: EntryListConfig) {
+  public load(config?: ListConfig&lt;ModelResource&gt;) {
     if (!this.sdk || !this.sdk.datamanager || !this.datamanager) {
       return;
     }

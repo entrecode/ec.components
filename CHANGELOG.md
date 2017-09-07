@@ -1,5 +1,11 @@
 # Changelog
 
+<a name="0.4.1"></a>
+## 0.4.1
+* fixed tests after refactoring
+* wrote project setup tutorial
+* further styling
+
 <a name="0.4.0"></a>
 ## 0.4.0
 BREAKING CHANGES:
