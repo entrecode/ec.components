@@ -3,13 +3,14 @@
     <ng-content></ng-content>
   </div>
   <div *ngIf="!wrapper.children.length&&!empty">
-    <label *ngFor="let field of form?.fields | visibleFields" [ngClass]="'ec-label_' + field.view"
-           [ngSwitch]="field.view">
-      {{field.label || field.property}}:
+    <div *ngFor="let field of form?.fields | visibleFields" [ngClass]="'ec-label_' + field.view"
+         [ngSwitch]="field.view">
+      <label>{{field.label || field.property}}</label>
       <ec-input *ngIf="!field.readOnly" [field]="field" [group]="group" [item]="form"></ec-input>
       <ec-output *ngIf="field.readOnly" [field]="field" [item]="form"></ec-output>
-    </label>
-    <button type="button" (click)="submit()" *ngIf="submitButton!==false" [disabled]="group.invalid" class="btn">Speichern
+    </div>
+    <button type="button" (click)="submit()" *ngIf="submitButton!==false" [disabled]="group.invalid"
+            class="btn">Speichern
     </button>
   </div>
 </form>
