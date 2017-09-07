@@ -8,6 +8,7 @@ import { EntryFormComponent } from '../entry-form/entry-form.component';
 import { EntryListComponent } from '../entry-list/entry-list.component';
 import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
 import { SdkService } from '../sdk/sdk.service';
+import { Selection } from '@ec.components/core/src/selection/selection';
 import { LoaderComponent } from '@ec.components/ui/src/loader/loader.component';
 import { LoaderService } from '@ec.components/ui/src/loader/loader.service';
 import { NotificationsService } from '@ec.components/ui/src/notifications/notifications.service';
@@ -27,6 +28,8 @@ export declare class CrudComponent<T> {
     model: string;
     /** CrudConfig for customization of the crud's UI.*/
     config: CrudConfig<T>;
+    /** The selection that should be used */
+    selection: Selection<T>;
     /** The EntryForm inside the template. */
     form: EntryFormComponent;
     /** The EntryList inside the template. */

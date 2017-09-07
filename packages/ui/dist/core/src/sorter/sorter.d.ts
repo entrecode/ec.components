@@ -1,4 +1,7 @@
 import { Item } from '../item/item';
+export declare function sortString(a: any, b: any): number;
+export declare function sortNumber(a: any, b: any): number;
+export declare function sortBoolean(a: any, b: any): 1 | -1;
 /** The Sorter is a singleton that handles all kinds of sorting operations. */
 export declare abstract class Sorter<T> {
     /** Contains sorting methods for different value types. */

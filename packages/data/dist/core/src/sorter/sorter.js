@@ -1,6 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
+function sortString(a, b) {
+    return collator.compare(a, b);
+}
+exports.sortString = sortString;
+function sortNumber(a, b) {
+    return a - b;
+}
+exports.sortNumber = sortNumber;
+function sortBoolean(a, b) {
+    return a ? -1 : 1;
+}
+exports.sortBoolean = sortBoolean;
 /** The Sorter is a singleton that handles all kinds of sorting operations. */
 class Sorter {
     /** Returns the sorting algorithm for the given item array. */
@@ -50,15 +62,9 @@ class Sorter {
 }
 /** Contains sorting methods for different value types. */
 Sorter.sortType = {
-    'string': (a, b) => {
-        return collator.compare(a, b);
-    },
-    'number': (a, b) => {
-        return a - b;
-    },
-    'boolean': (a, b) => {
-        return a ? -1 : 1;
-    }
+    'string': sortString,
+    'number': sortNumber,
+    'boolean': sortBoolean
 };
 exports.Sorter = Sorter;
 //# sourceMappingURL=sorter.js.map

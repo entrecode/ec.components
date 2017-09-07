@@ -115,6 +115,7 @@ CrudComponent.ctorParameters = () => [
 CrudComponent.propDecorators = {
     'model': [{ type: core_1.Input },],
     'config': [{ type: core_1.Input },],
+    'selection': [{ type: core_1.Input },],
     'form': [{ type: core_1.ViewChild, args: [entry_form_component_1.EntryFormComponent,] },],
     'list': [{ type: core_1.ViewChild, args: [entry_list_component_1.EntryListComponent,] },],
     'pop': [{ type: core_1.ViewChild, args: [pop_component_1.PopComponent,] },],

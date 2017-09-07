@@ -2,19 +2,26 @@ import { Item } from '../item/item';
 
 const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
 
+export function sortString(a, b) {
+  return collator.compare(a, b);
+}
+
+export function sortNumber(a, b) {
+  return a - b;
+}
+
+export function sortBoolean(a, b) {
+  return a ? -1 : 1;
+}
+
 /** The Sorter is a singleton that handles all kinds of sorting operations. */
 export abstract class Sorter<T> {
+
   /** Contains sorting methods for different value types. */
   static sortType = {
-    'string': (a, b) => {
-      return collator.compare(a, b);
-    },
-    'number': (a, b) => {
-      return a - b
-    },
-    'boolean': (a, b) => {
-      return a ? -1 : 1;
-    }
+    'string': sortString,
+    'number': sortNumber,
+    'boolean': sortBoolean
   };
 
   /** Returns the sorting algorithm for the given item array. */
