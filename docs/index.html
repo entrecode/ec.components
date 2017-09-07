@@ -68,6 +68,9 @@
                                 id="xs-additional-pages"
                             >
                                 <li class="link ">
+                                    <a href="./additional-documentation/project-setup-tutorial.html" >Project Setup Tutorial</a>
+                                </li>
+                                <li class="link ">
                                     <a href="./additional-documentation/core-classes.html" >Core Classes</a>
                                 </li>
                                 <li class="link for-chapter">
@@ -484,9 +487,6 @@
                                     <a href="./interfaces/Day.html" >Day</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./interfaces/EntryListConfig.html" >EntryListConfig</a>
-                                </li>
-                                <li class="link">
                                     <a href="./interfaces/FieldConfig.html" >FieldConfig</a>
                                 </li>
                                 <li class="link">
@@ -553,6 +553,9 @@
                         <ul class="links collapse "
                                 id="xs-miscellaneous-links"
                             >
+                                <li class="link">
+                                  <a href="./miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                </li>
                                 <li class="link">
                                   <a href="./miscellaneous/variables.html" data-type="entity-link" >Variables</a>
                                 </li>
@@ -628,6 +631,9 @@
                                <ul class="links collapse "
                                        id="additional-pages"
                    >
+                                       <li class="link ">
+                                           <a href="./additional-documentation/project-setup-tutorial.html" >Project Setup Tutorial</a>
+                                       </li>
                                        <li class="link ">
                                            <a href="./additional-documentation/core-classes.html" >Core Classes</a>
                                        </li>
@@ -1045,9 +1051,6 @@
                                            <a href="./interfaces/Day.html" >Day</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./interfaces/EntryListConfig.html" >EntryListConfig</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="./interfaces/FieldConfig.html" >FieldConfig</a>
                                        </li>
                                        <li class="link">
@@ -1114,6 +1117,9 @@
                                <ul class="links collapse "
                                        id="miscellaneous-links"
                    >
+                                       <li class="link">
+                                         <a href="./miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                       </li>
                                        <li class="link">
                                          <a href="./miscellaneous/variables.html" data-type="entity-link" >Variables</a>
                                        </li>
@@ -1194,18 +1200,12 @@ Just add this to your index.html:</p>
 <p>This project was generated with <a href="https://github.com/angular/angular-cli">Angular CLI</a> version 1.0.0-rc.0.</p>
 <h2 id="lerna">Lerna</h2>
 <p>The repository is a monorepo, managed by <a href="https://github.com/lerna/lerna">lerna</a>.</p>
-<h2 id="developing-with-the-ec-components-repo">Developing with the ec.components repo</h2>
-<p>Instead of installing the subrepos, you can also work with the monorepo:</p>
-<p>add this to your package.json:</p>
-<pre class="line-numbers"><code class="language-none">    &quot;ec.components&quot;: &quot;git+https://github.com/entrecode/ec.components.git#develop&quot;</code></pre><p>and import the modules directly:</p>
-<pre class="line-numbers"><code class="language-none">import { AuthModule, Datamanager, DataModule, UiModule } from &#39;ec.components&#39;;</code></pre><h2 id="developing-with-symlinks">Developing with Symlinks</h2>
-<p>When developing ec.components inside another project, it is recommended to use symlinks via npm link:</p>
-<ol>
-<li>Inside the ec.components project go to <code>cd src/packages/ui</code></li>
-<li>Then run <code>npm link</code></li>
-<li>Inside the foreign project, link via <code>npm link @ec.components/ui</code></li>
-</ol>
-<p>The same procedure can be applied for the ec.components packages.</p>
+<h2 id="developing-with-symlinks">Developing with Symlinks</h2>
+<p>The start npm script will automatically use the symlinks from src/packages for @ec.components.
+It also deletes eventually existing node_modules folders inside the packages.
+This enables you to always use imports like: import <em> from &#39;@ec.components/</em>&#39;.</p>
+<h3 id="inside-another-project">Inside another project</h3>
+<p>TBD</p>
 <h2 id="import-structure">Import Structure</h2>
 <p>All imports inside src/packages that import from the same package or another ec.components package must be relative.</p>
 <ul>

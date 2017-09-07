@@ -68,6 +68,9 @@
                                 id="xs-additional-pages"
                             >
                                 <li class="link ">
+                                    <a href="../additional-documentation/project-setup-tutorial.html" >Project Setup Tutorial</a>
+                                </li>
+                                <li class="link ">
                                     <a href="../additional-documentation/core-classes.html" >Core Classes</a>
                                 </li>
                                 <li class="link for-chapter">
@@ -484,9 +487,6 @@
                                     <a href="../interfaces/Day.html" >Day</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
-                                </li>
-                                <li class="link">
                                     <a href="../interfaces/FieldConfig.html" >FieldConfig</a>
                                 </li>
                                 <li class="link">
@@ -553,6 +553,9 @@
                         <ul class="links collapse "
                                 id="xs-miscellaneous-links"
                             >
+                                <li class="link">
+                                  <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                </li>
                                 <li class="link">
                                   <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
                                 </li>
@@ -628,6 +631,9 @@
                                <ul class="links collapse "
                                        id="additional-pages"
                    >
+                                       <li class="link ">
+                                           <a href="../additional-documentation/project-setup-tutorial.html" >Project Setup Tutorial</a>
+                                       </li>
                                        <li class="link ">
                                            <a href="../additional-documentation/core-classes.html" >Core Classes</a>
                                        </li>
@@ -1045,9 +1051,6 @@
                                            <a href="../interfaces/Day.html" >Day</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../interfaces/FieldConfig.html" >FieldConfig</a>
                                        </li>
                                        <li class="link">
@@ -1115,6 +1118,9 @@
                                        id="miscellaneous-links"
                    >
                                        <li class="link">
+                                         <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                       </li>
+                                       <li class="link">
                                          <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
                                        </li>
                                </ul>
@@ -1168,7 +1174,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/packages/data/entry-list/entry-list.ts</code>
+            <code>packages/data/src/entry-list/entry-list.ts</code>
         </p>
 
             <p class="comment">
@@ -1233,12 +1239,12 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <code>constructor(model: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, config: <a href="../interfaces/ListConfig.html">EntryListConfig</a>, sdk: <a href="../injectables/SdkService.html">SdkService</a>)</code>
+                                    <code>constructor(model: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, config: <a href="../interfaces/ListConfig.html">ListConfig<EntryResource></a>, sdk: <a href="../injectables/SdkService.html">SdkService</a>)</code>
                                 </td>
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/packages/data/entry-list/entry-list.ts:11</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">packages/data/src/entry-list/entry-list.ts:12</a></div>
                                         </td>
                                     </tr>
             
@@ -1271,7 +1277,7 @@
                                                             <tr>
                                                               <td>config</td>
                                                               <td>
-                                                                        <code><a href="../interfaces/ListConfig.html" target="_self" >EntryListConfig</a></code>
+                                                                        <code><a href="../interfaces/ListConfig.html" target="_self" >ListConfig&lt;EntryResource&gt;</a></code>
                                                               </td>
                                                               <td>
                                                               </td>
@@ -1310,14 +1316,14 @@
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>getFilterOptions(config: <a href="../interfaces/ListConfig.html">EntryListConfig</a>)</code>
+            <code>getFilterOptions(config: <a href="../interfaces/ListConfig.html">ListConfig<EntryResource></a>)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/packages/data/entry-list/entry-list.ts:22</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">packages/data/src/entry-list/entry-list.ts:23</a></div>
                                         </td>
                                     </tr>
             
@@ -1341,7 +1347,7 @@
                                                             <tr>
                                                               <td>config</td>
                                                               <td>
-                                                                      <code><a href="../interfaces/ListConfig.html" target="_self" >EntryListConfig</a></code>
+                                                                      <code><a href="../interfaces/ListConfig.html" target="_self" >ListConfig&lt;EntryResource&gt;</a></code>
                                                               </td>
                                                               <td>
                                                               </td>
@@ -1374,14 +1380,14 @@
                             <tr>
                                 <td class="col-md-4">
                                         <span class="modifier-icon fa fa-"></span>
-                                    <code>load(config?: <a href="../interfaces/ListConfig.html">EntryListConfig</a>)</code>
+                                    <code>load(config?: <a href="../interfaces/ListConfig.html">ListConfig<EntryResource></a>)</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/packages/data/entry-list/entry-list.ts:29</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">packages/data/src/entry-list/entry-list.ts:30</a></div>
                                         </td>
                                     </tr>
             
@@ -1405,7 +1411,7 @@
                                                             <tr>
                                                               <td>config</td>
                                                               <td>
-                                                                      <code><a href="../interfaces/ListConfig.html" target="_self" >EntryListConfig</a></code>
+                                                                      <code><a href="../interfaces/ListConfig.html" target="_self" >ListConfig&lt;EntryResource&gt;</a></code>
                                                               </td>
                                                               <td>
                                                                   true
@@ -1418,7 +1424,7 @@
                                         <div>
                                         </div>
                                         <div class="io-description">
-                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
                                             <div class="io-description">
@@ -1458,7 +1464,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/packages/data/entry-list/entry-list.ts:11</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">packages/data/src/entry-list/entry-list.ts:12</a></div>
                                         </td>
                                     </tr>
             
@@ -1476,35 +1482,36 @@
 
 
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { EntryListConfig } from &#x27;..&#x27;;
-import { SdkService } from &#x27;../sdk/sdk.service&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { SdkService } from &#x27;../sdk/sdk.service&#x27;;
 import { ResourceList } from &#x27;../resource-list/resource-list&#x27;;
 import { filterOptions } from &quot;ec.sdk/src/resources/ListResource&quot;;
+import EntryResource from &#x27;ec.sdk/src/resources/publicAPI/EntryResource&#x27;;
+import { ListConfig } from &#x27;@ec.components/core/src/list/list-config.interface&#x27;;
 
 /**
  * Extension of List for Datamanager Entries.
  */
-export class EntryList&lt;Entry&gt; extends ResourceList&lt;Entry&gt; {
+export class EntryList extends ResourceList&lt;EntryResource&gt; {
   /** The model that is loaded from. */
   private model: string;
 
   /** The constructor will init the List and Pagination instances.
    * Make sure the config is already complete when initiating an EntryList instance. */
-  constructor(model: string, config: EntryListConfig, protected sdk: SdkService) {
+  constructor(model: string, config: ListConfig&lt;EntryResource&gt;, protected sdk: SdkService) {
     super(config, sdk);
     this.model &#x3D; model;
     this.load();
   }
 
   /** Generates the filterOptions for loading the entries. Sets the _fields option. */
-  getFilterOptions(config: EntryListConfig): filterOptions {
+  getFilterOptions(config: ListConfig&lt;EntryResource&gt;): filterOptions {
     const _fields &#x3D; Object.keys(this.config.fields)
     .filter((field) &#x3D;&gt; this.config.fields[field].list !&#x3D;&#x3D; false);
     return Object.assign(super.getFilterOptions(config), { _fields });
   }
 
   /** Overrides the SdkList load method. */
-  public load(config?: EntryListConfig) {
+  public load(config?: ListConfig&lt;EntryResource&gt;) {
     if (!this.model || !this.sdk) {
       return;
     }
@@ -1516,7 +1523,7 @@ export class EntryList&lt;Entry&gt; extends ResourceList&lt;Entry&gt; {
       this.error.next(err);
     });
     this.loading.next(loading);
-    return loading;
+    // return loading;
   }
 }</code></pre>
     </div>

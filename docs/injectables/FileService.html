@@ -68,6 +68,9 @@
                                 id="xs-additional-pages"
                             >
                                 <li class="link ">
+                                    <a href="../additional-documentation/project-setup-tutorial.html" >Project Setup Tutorial</a>
+                                </li>
+                                <li class="link ">
                                     <a href="../additional-documentation/core-classes.html" >Core Classes</a>
                                 </li>
                                 <li class="link for-chapter">
@@ -484,9 +487,6 @@
                                     <a href="../interfaces/Day.html" >Day</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
-                                </li>
-                                <li class="link">
                                     <a href="../interfaces/FieldConfig.html" >FieldConfig</a>
                                 </li>
                                 <li class="link">
@@ -553,6 +553,9 @@
                         <ul class="links collapse "
                                 id="xs-miscellaneous-links"
                             >
+                                <li class="link">
+                                  <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                </li>
                                 <li class="link">
                                   <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
                                 </li>
@@ -628,6 +631,9 @@
                                <ul class="links collapse "
                                        id="additional-pages"
                    >
+                                       <li class="link ">
+                                           <a href="../additional-documentation/project-setup-tutorial.html" >Project Setup Tutorial</a>
+                                       </li>
                                        <li class="link ">
                                            <a href="../additional-documentation/core-classes.html" >Core Classes</a>
                                        </li>
@@ -1045,9 +1051,6 @@
                                            <a href="../interfaces/Day.html" >Day</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../interfaces/FieldConfig.html" >FieldConfig</a>
                                        </li>
                                        <li class="link">
@@ -1115,6 +1118,9 @@
                                        id="miscellaneous-links"
                    >
                                        <li class="link">
+                                         <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                       </li>
+                                       <li class="link">
                                          <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
                                        </li>
                                </ul>
@@ -1166,7 +1172,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/packages/data/files/file.service.ts</code>
+            <code>packages/data/src/files/file.service.ts</code>
         </p>
 
             <p class="comment">
@@ -1234,7 +1240,7 @@ changes.</p>
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">src/packages/data/files/file.service.ts:86</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">packages/data/src/files/file.service.ts:86</a></div>
                                         </td>
                                     </tr>
             
@@ -1304,7 +1310,7 @@ changes.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">src/packages/data/files/file.service.ts:92</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">packages/data/src/files/file.service.ts:92</a></div>
                                         </td>
                                     </tr>
             
@@ -1366,7 +1372,7 @@ changes.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">src/packages/data/files/file.service.ts:100</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">packages/data/src/files/file.service.ts:100</a></div>
                                         </td>
                                     </tr>
             
@@ -1432,7 +1438,7 @@ changes.</p>
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/packages/data/files/file.service.ts:34</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">packages/data/src/files/file.service.ts:34</a></div>
                                         </td>
                                     </tr>
             
@@ -1467,7 +1473,7 @@ changes.</p>
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/packages/data/files/file.service.ts:32</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">packages/data/src/files/file.service.ts:32</a></div>
                                         </td>
                                     </tr>
             
@@ -1492,7 +1498,7 @@ import { SdkService } from &#x27;../sdk/sdk.service&#x27;;
 import { AssetList } from &#x27;./asset-list/asset-list&#x27;;
 import { TypeConfigService } from &#x27;../model-config/type-config.service&#x27;;
 import * as moment from &#x27;moment&#x27;;
-import { Item } from &#x27;../../core/item/item&#x27;;
+import { Item } from &#x27;@ec.components/core/src/item/item&#x27;;
 
 /** Instances of Update are emitted by the changes EventEmitter of the CrudService. */
 export interface Upload {
@@ -1505,7 +1511,7 @@ export interface Upload {
   /** The uploaded asset as item */
   items?: Array&lt;Item&lt;PublicAssetResource&gt;&gt;
   /** The list where it happened. */
-  list?: AssetList&lt;PublicAssetResource&gt;
+  list?: AssetList
 }
 
 /** The CRUD service is meant to be used when modifying entries.

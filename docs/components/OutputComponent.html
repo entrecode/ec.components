@@ -68,6 +68,9 @@
                                 id="xs-additional-pages"
                             >
                                 <li class="link ">
+                                    <a href="../additional-documentation/project-setup-tutorial.html" >Project Setup Tutorial</a>
+                                </li>
+                                <li class="link ">
                                     <a href="../additional-documentation/core-classes.html" >Core Classes</a>
                                 </li>
                                 <li class="link for-chapter">
@@ -484,9 +487,6 @@
                                     <a href="../interfaces/Day.html" >Day</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
-                                </li>
-                                <li class="link">
                                     <a href="../interfaces/FieldConfig.html" >FieldConfig</a>
                                 </li>
                                 <li class="link">
@@ -553,6 +553,9 @@
                         <ul class="links collapse "
                                 id="xs-miscellaneous-links"
                             >
+                                <li class="link">
+                                  <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                </li>
                                 <li class="link">
                                   <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
                                 </li>
@@ -628,6 +631,9 @@
                                <ul class="links collapse "
                                        id="additional-pages"
                    >
+                                       <li class="link ">
+                                           <a href="../additional-documentation/project-setup-tutorial.html" >Project Setup Tutorial</a>
+                                       </li>
                                        <li class="link ">
                                            <a href="../additional-documentation/core-classes.html" >Core Classes</a>
                                        </li>
@@ -1045,9 +1051,6 @@
                                            <a href="../interfaces/Day.html" >Day</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../interfaces/FieldConfig.html" >FieldConfig</a>
                                        </li>
                                        <li class="link">
@@ -1115,6 +1118,9 @@
                                        id="miscellaneous-links"
                    >
                                        <li class="link">
+                                         <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                       </li>
+                                       <li class="link">
                                          <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
                                        </li>
                                </ul>
@@ -1169,7 +1175,7 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>src/packages/ui/io/output/output.component.ts</code>
+    <code>packages/ui/src/io/output/output.component.ts</code>
 </p>
 
     <p class="comment">
@@ -1287,7 +1293,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/packages/ui/io/output/output.component.ts:15</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">packages/ui/src/io/output/output.component.ts:15</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1310,7 +1316,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/packages/ui/io/output/output.component.ts:17</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">packages/ui/src/io/output/output.component.ts:17</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1342,7 +1348,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/packages/ui/io/output/output.component.ts:21</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">packages/ui/src/io/output/output.component.ts:21</a></div>
                                 </td>
                             </tr>
     
@@ -1369,8 +1375,8 @@
         <pre class="line-numbers"><code class="language-typescript">import { Component, Input } from &#x27;@angular/core&#x27;;
 import { DefaultOutputComponent } from &#x27;../../form/default-output/default-output.component&#x27;;
 import { DynamicSlotComponent } from &#x27;../dynamic-slot/dynamic-slot.component&#x27;;
-import { Field } from &#x27;../../../core/field/field&#x27;;
-import { Item } from &#x27;../../../core/item/item&#x27;;
+import { Field } from &#x27;@ec.components/core/src/field/field&#x27;;
+import { Item } from &#x27;@ec.components/core/src/item/item&#x27;;
 
 /** Outputs the given field of the given item, rendering the component dynamically. */
 @Component({

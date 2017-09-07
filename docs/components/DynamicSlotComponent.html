@@ -68,6 +68,9 @@
                                 id="xs-additional-pages"
                             >
                                 <li class="link ">
+                                    <a href="../additional-documentation/project-setup-tutorial.html" >Project Setup Tutorial</a>
+                                </li>
+                                <li class="link ">
                                     <a href="../additional-documentation/core-classes.html" >Core Classes</a>
                                 </li>
                                 <li class="link for-chapter">
@@ -484,9 +487,6 @@
                                     <a href="../interfaces/Day.html" >Day</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
-                                </li>
-                                <li class="link">
                                     <a href="../interfaces/FieldConfig.html" >FieldConfig</a>
                                 </li>
                                 <li class="link">
@@ -553,6 +553,9 @@
                         <ul class="links collapse "
                                 id="xs-miscellaneous-links"
                             >
+                                <li class="link">
+                                  <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                </li>
                                 <li class="link">
                                   <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
                                 </li>
@@ -628,6 +631,9 @@
                                <ul class="links collapse "
                                        id="additional-pages"
                    >
+                                       <li class="link ">
+                                           <a href="../additional-documentation/project-setup-tutorial.html" >Project Setup Tutorial</a>
+                                       </li>
                                        <li class="link ">
                                            <a href="../additional-documentation/core-classes.html" >Core Classes</a>
                                        </li>
@@ -1045,9 +1051,6 @@
                                            <a href="../interfaces/Day.html" >Day</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../interfaces/FieldConfig.html" >FieldConfig</a>
                                        </li>
                                        <li class="link">
@@ -1115,6 +1118,9 @@
                                        id="miscellaneous-links"
                    >
                                        <li class="link">
+                                         <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                       </li>
+                                       <li class="link">
                                          <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
                                        </li>
                                </ul>
@@ -1169,7 +1175,7 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>src/packages/ui/io/dynamic-slot/dynamic-slot.component.ts</code>
+    <code>packages/ui/src/io/dynamic-slot/dynamic-slot.component.ts</code>
 </p>
 
     <p class="comment">
@@ -1260,7 +1266,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/packages/ui/io/dynamic-slot/dynamic-slot.component.ts:13</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">packages/ui/src/io/dynamic-slot/dynamic-slot.component.ts:13</a></div>
                                 </td>
                             </tr>
     
@@ -1324,7 +1330,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/packages/ui/io/dynamic-slot/dynamic-slot.component.ts:20</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">packages/ui/src/io/dynamic-slot/dynamic-slot.component.ts:20</a></div>
                                 </td>
                             </tr>
     
@@ -1369,7 +1375,7 @@
                                 <div>
                                 </div>
                                 <div class="io-description">
-                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    <b>Returns : </b>    <code>ComponentRef&lt;any&gt;</code>
     
                                 </div>
                                     <div class="io-description">
@@ -1413,7 +1419,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/packages/ui/io/dynamic-slot/dynamic-slot.component.ts:13</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">packages/ui/src/io/dynamic-slot/dynamic-slot.component.ts:13</a></div>
                                 </td>
                             </tr>
     
@@ -1431,7 +1437,7 @@
 
 
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { Component, ComponentFactoryResolver, Type, ViewChild } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { Component, ComponentFactoryResolver, ComponentRef, Type, ViewChild } from &#x27;@angular/core&#x27;;
 import { SlotHostDirective } from &#x27;../slot-host.directive&#x27;;
 
 // import { CustomFieldComponent } from &#x27;./custom-field.component&#x27;;
@@ -1450,7 +1456,7 @@ export class DynamicSlotComponent {
   }
 
   /** Loads the given component inside the fieldHost. Sets current item and field by default. */
-  loadComponent(component: Type&lt;any&gt;, data: Object &#x3D; {}) {
+  loadComponent(component: Type&lt;any&gt;, data: Object &#x3D; {}): ComponentRef&lt;any&gt; {
     const componentFactory &#x3D; this.componentFactoryResolver.resolveComponentFactory(component);
     const viewContainerRef &#x3D; this.fieldHost.viewContainerRef;
     viewContainerRef.clear();

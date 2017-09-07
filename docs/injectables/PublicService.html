@@ -68,6 +68,9 @@
                                 id="xs-additional-pages"
                             >
                                 <li class="link ">
+                                    <a href="../additional-documentation/project-setup-tutorial.html" >Project Setup Tutorial</a>
+                                </li>
+                                <li class="link ">
                                     <a href="../additional-documentation/core-classes.html" >Core Classes</a>
                                 </li>
                                 <li class="link for-chapter">
@@ -484,9 +487,6 @@
                                     <a href="../interfaces/Day.html" >Day</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
-                                </li>
-                                <li class="link">
                                     <a href="../interfaces/FieldConfig.html" >FieldConfig</a>
                                 </li>
                                 <li class="link">
@@ -553,6 +553,9 @@
                         <ul class="links collapse "
                                 id="xs-miscellaneous-links"
                             >
+                                <li class="link">
+                                  <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                </li>
                                 <li class="link">
                                   <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
                                 </li>
@@ -628,6 +631,9 @@
                                <ul class="links collapse "
                                        id="additional-pages"
                    >
+                                       <li class="link ">
+                                           <a href="../additional-documentation/project-setup-tutorial.html" >Project Setup Tutorial</a>
+                                       </li>
                                        <li class="link ">
                                            <a href="../additional-documentation/core-classes.html" >Core Classes</a>
                                        </li>
@@ -1045,9 +1051,6 @@
                                            <a href="../interfaces/Day.html" >Day</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../interfaces/EntryListConfig.html" >EntryListConfig</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../interfaces/FieldConfig.html" >FieldConfig</a>
                                        </li>
                                        <li class="link">
@@ -1115,6 +1118,9 @@
                                        id="miscellaneous-links"
                    >
                                        <li class="link">
+                                         <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                       </li>
+                                       <li class="link">
                                          <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
                                        </li>
                                </ul>
@@ -1166,7 +1172,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/packages/data/sdk/public.service.ts</code>
+            <code>packages/data/src/sdk/public.service.ts</code>
         </p>
 
             <p class="comment">
@@ -1217,7 +1223,7 @@
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/packages/data/sdk/public.service.ts:8</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">packages/data/src/sdk/public.service.ts:9</a></div>
                                         </td>
                                     </tr>
             
@@ -1277,7 +1283,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/packages/data/sdk/public.service.ts:14</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">packages/data/src/sdk/public.service.ts:15</a></div>
                                         </td>
                                     </tr>
             
@@ -1313,7 +1319,7 @@
                                         <div>
                                         </div>
                                         <div class="io-description">
-                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            <b>Returns : </b>    <code>Promise&lt;&gt;</code>
             
                                         </div>
                                             <div class="io-description">
@@ -1340,7 +1346,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/packages/data/sdk/public.service.ts:20</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">packages/data/src/sdk/public.service.ts:21</a></div>
                                         </td>
                                     </tr>
             
@@ -1374,7 +1380,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/packages/data/sdk/public.service.ts:25</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">packages/data/src/sdk/public.service.ts:26</a></div>
                                         </td>
                                     </tr>
             
@@ -1428,6 +1434,7 @@
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 import { SdkService } from &#x27;./sdk.service&#x27;;
+import AccountResource from &#x27;ec.sdk/src/resources/accounts/AccountResource&#x27;;
 
 //TODO move to auth?
 
@@ -1439,9 +1446,9 @@ export class PublicService {
   }
 
   /** Logs in with the given credentials */
-  login(credentials: { email: string, password: string }) {
+  login(credentials: { email: string, password: string }): Promise&lt;AccountResource&gt; {
     return this.sdk.api.login(credentials.email, credentials.password)
-    .then((token) &#x3D;&gt; this.sdk.init());
+    .then((token): Promise&lt;AccountResource&gt; &#x3D;&gt; this.sdk.init());
   }
 
   /** Logs out the current user */
