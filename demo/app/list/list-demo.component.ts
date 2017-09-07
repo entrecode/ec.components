@@ -12,7 +12,7 @@ import { songs } from '../../assets/songs';
 </pre>
 
 <h2>Templated List</h2>
-<ec-list [list]="songs" [solo]="true" #songList></ec-list>
+<ec-list [list]="songs" [solo]="true" #songList class="ec-list_dense ec-list_multiline"></ec-list>
 <pre>
   {{songList.list.config | json}}
 </pre>
