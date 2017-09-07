@@ -108,16 +108,7 @@ in your package.json, edit the start script should look like this:
 
 Without the --ssl flag, the authorization won't work, because it enforces https.
 
-### 7. Add a route with a component template
-
-Generate a new Component to host e.g. a crud for your precious muffins:
-
-```sh
-ng generate component muffins
-```
-
-Add the component to a route in src/app/app-routing.module.ts:
-
+### 7. Add a component
 
 e.g. add to _src/app/app.component.html_:
 

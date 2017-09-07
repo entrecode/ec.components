@@ -1242,9 +1242,7 @@ export class AppModule { }</code></pre><p>Here we are importing the DataModule a
 <h3 id="6-add-ssl-flag">6. Add --ssl flag</h3>
 <p>in your package.json, edit the start script should look like this:</p>
 <pre class="line-numbers"><code class="language-none">&quot;start&quot;: &quot;ng serve --ssl&quot;,</code></pre><p>Without the --ssl flag, the authorization won&#39;t work, because it enforces https.</p>
-<h3 id="7-add-a-route-with-a-component-template">7. Add a route with a component template</h3>
-<p>Generate a new Component to host e.g. a crud for your precious muffins:</p>
-<pre class="line-numbers"><code class="language-sh">ng generate component muffins</code></pre><p>Add the component to a route in src/app/app-routing.module.ts:</p>
+<h3 id="7-add-a-component">7. Add a component</h3>
 <p>e.g. add to <em>src/app/app.component.html</em>:</p>
 <pre class="line-numbers"><code class="language-html">&lt;ec-crud model=&quot;muffin&quot;&gt;&lt;/ec-crud&gt;</code></pre><p>This assumes that the model <em>muffin</em> exists inside the datamanager provided through your environment.</p>
 <h3 id="8-run-the-fun">8. Run the fun</h3>
