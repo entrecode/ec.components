@@ -13,10 +13,31 @@
   .menu {
     @include flex-grow(1);
     padding: rem(8) rem(16);
+
+    .btn {
+      margin: 0;
+    }
   }
 
   &._invert {
     background-color: getColor(background, invert);
     color: getColor(text, invert);
+
+    a {
+      &:not(.btn) {
+        color: setContrast(getColor(background, invert), getColor(link));
+      }
+    }
+  }
+
+  &._super {
+    background-color: getColor(super);
+    color: setContrast(getColor(super));
+
+    a {
+      &:not(.btn) {
+        color: setContrast(getColor(super), getColor(link));
+      }
+    }
   }
 }
