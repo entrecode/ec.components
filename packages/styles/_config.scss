@@ -1,0 +1,413 @@
+//
+/// @font-face
+/// ------------------------------------------------------
+@import url('https://fonts.googleapis.com/css?family=Catamaran:400,700');
+
+$body-font: 'Catamaran', sans-serif;
+$headings-font: 'Catamaran', sans-serif;
+
+/// font-weight config
+$light: 400;
+$normal: 400;
+$bold: 700;
+
+//
+/// COLORS
+/// ------------------------------------------------------
+
+$background: white;
+$text: #222222;
+$link: #2962FF;
+$super: #F61C8A;
+$minor: rgba($link, .2);
+$highlight: #A7FFEB;
+
+$setDark: $text !default;
+$setLight: $background !default;
+
+/// function for setColor
+@if (lightness($text) > 50) {
+  $setDark: $background;
+  $setLight: $text;
+}
+
+/// if your template supports display:flex
+$flex-support: true;
+
+//
+/// TYPO
+/// ------------------------------------------------------
+
+/// @prop {number} $root-size [16] - default size used for global size calculations
+$root-size: 16;
+
+/// @prop {number} $font-size [16] - default font-size
+$font-size: 14;
+
+$headings-weight: $bold;
+
+$h1-size: 48;
+$h1-height: 56;
+
+$h2-size: 40;
+$h2-height: 48;
+
+$h3-size: 32;
+$h3-height: 40;
+
+$h4-size: 24;
+$h4-height: 32;
+
+$h5-size: 20;
+$h5-height: 28;
+
+$h6-size: 16;
+$h6-height: 24;
+
+/// additional styles for headings
+%heading-style {
+  /// put styles here...
+}
+
+//
+/// BUTTONS
+/// ------------------------------------------------------
+
+/// font-family of btn
+$btn-font-family: $body-font;
+
+/// Style for .btn
+/// --------------------
+
+/// metrics of default btn
+$btn-font-size: 14;
+$btn-line-height: 18;
+$btn-min-height: 32;
+
+/// font-weight of btn
+$btn-weight: $bold;
+
+/// additional styles for .btn
+%btn-style {
+  /// put styles here...
+}
+
+/// Style for .btn._small
+/// --------------------
+
+/// metrics of btn._small
+$btn-small-font-size: 14;
+$btn-small-line-height: 18;
+$btn-small-min-height: 32;
+
+/// font-weight of btn
+$btn-small-weight: $bold;
+
+/// additional styles for .btn
+%btn-small-style {
+  /// put styles here...
+}
+
+/// Style for .btn._big
+/// --------------------
+
+/// metrics of btn._big
+$btn-big-font-size: 18;
+$btn-big-line-height: 24;
+$btn-big-min-height: 48;
+
+/// font-weight of btn
+$btn-big-weight: $bold;
+
+/// additional styles for .btn
+%btn-big-style {
+  /// put styles here...
+}
+
+/// radius of buttons
+/// if is btn-round
+/// sets border-radius to 50% of button height
+$btn-round: false;
+
+/// radius of buttons
+/// if $btn-round === false
+$btn-radius: 4 !default;
+$btn-small-radius: 4 !default;
+$btn-big-radius: 4 !default;
+
+/// min width for .wide buttons
+$btn-wide: 240px;
+
+/// min width for .wide._small buttons
+$btn-small-wide: 160px;
+
+/// min width for .wide._big buttons
+$btn-big-wide: 240px;
+
+/// sets border-width for btn._outlined
+$btn-outline: 1 !default;
+
+/// radius of dropdown-elements
+$dropdown-radius: 4 !default;
+
+/// Input
+/// ------------------------------------------------------
+
+/// metrics default input-elements
+$input-font-size: 16 !default;
+$input-line-height: 24 !default;
+$input-min-height: 32 !default;
+
+/// additional styles for .input
+%input-style {
+  /// put styles here...
+}
+
+/// metrics small input-elements
+$input-small-font-size: 14 !default;
+$input-small-line-height: 18 !default;
+$input-small-min-height: 28 !default;
+
+/// additional styles for .input._small
+%input-small-style {
+  /// put styles here...
+}
+
+/// metrics small input-elements
+$input-big-font-size: 18 !default;
+$input-big-line-height: 24 !default;
+$input-big-min-height: 40 !default;
+
+/// additional styles for .input._big
+%input-big-style {
+  /// put styles here...
+}
+
+$input-border: 1 !default;
+
+/// radius of buttons
+/// if is btn-round
+/// sets border-radius to 50% of min-height
+$input-round: false;
+
+/// radius of input-elements
+/// if $btn-round === false
+$input-radius: 4 !default;
+$input-small-radius: 4 !default;
+$input-big-radius: 4 !default;
+
+/// Alerts
+/// ------------------------------------------------------
+
+/// metrics default alerts
+$alert-font-size: 16 !default;
+$alert-line-height: 20 !default;
+$alert-min-height: 40 !default;
+
+/// font-weight of .alert
+$alert-weight: $bold !default;
+
+/// additional styles for .alert
+%alert-style {
+  /// put styles here...
+}
+
+/// metrics small alerts
+$alert-small-font-size: 14 !default;
+$alert-small-line-height: 18 !default;
+$alert-small-min-height: 32 !default;
+
+/// font-weight of .alert._small
+$alert-small-weight: $bold !default;
+
+/// additional styles for .alert._small
+%alert-small-style {
+  /// put styles here...
+}
+
+/// metrics small alerts
+$alert-big-font-size: 18 !default;
+$alert-big-line-height: 24 !default;
+$alert-big-min-height: 48 !default;
+
+/// font-weight of .alert._big
+$alert-big-weight: $bold;
+
+/// additional styles for .alert._big
+%alert-big-style {
+  /// put styles here...
+}
+
+$alert-outlined: 2 !default;
+
+/// radius of alerts
+/// sets alertbox-radius to 50% of min-height
+$alert-round: false;
+
+/// radius of alerts
+/// if $alert-round === false
+$alert-radius: 2 !default;
+$alert-small-radius: 2 !default;
+$alert-big-radius: 2 !default;
+
+/// Bubbles
+/// ------------------------------------------------------
+
+/// metrics default bubbles
+$bubble-font-size: 10 !default;
+$bubble-line-height: 12 !default;
+$bubble-min-height: 24 !default;
+
+/// font-weight of .bubble
+$bubble-weight: $bold !default;
+
+/// additional styles for .bubble
+%bubble-style {
+  /// put styles here...
+}
+
+/// metrics small bubbles
+$bubble-small-font-size: 10 !default;
+$bubble-small-line-height: 12 !default;
+$bubble-small-min-height: 24 !default;
+
+/// font-weight of .bubble._small
+$bubble-small-weight: $bold !default;
+
+/// additional styles for .bubble._small
+%bubble-small-style {
+  /// put styles here...
+}
+
+/// metrics small bubbles
+$bubble-big-font-size: 12 !default;
+$bubble-big-line-height: 16 !default;
+$bubble-big-min-height: 32 !default;
+
+/// font-weight of .bubble._big
+$bubble-big-weight: $bold !default;
+
+/// additional styles for .bubble._big
+%bubble-big-style {
+  /// put styles here...
+}
+
+$bubble-outlined: 2 !default;
+
+/// radius of bubbles
+/// sets bubblebox-radius to 50% of min-height
+$bubble-round: true;
+
+/// radius of bubbles
+/// if $bubble-round === false
+$bubble-radius: 2 !default;
+$bubble-small-radius: 2 !default;
+$bubble-big-radius: 2 !default;
+
+/// Tags
+/// ------------------------------------------------------
+
+/// metrics default tags
+$tag-font-size: 12 !default;
+$tag-line-height: 14 !default;
+$tag-min-height: 24 !default;
+
+/// font-weight of .tag
+$tag-weight: $bold !default;
+
+/// additional styles for .tag
+%tag-style {
+  /// put styles here...
+}
+
+/// metrics small tags
+$tag-small-font-size: 10 !default;
+$tag-small-line-height: 12 !default;
+$tag-small-min-height: 20 !default;
+
+/// font-weight of .tag._small
+$tag-small-weight: $bold !default;
+
+/// additional styles for .tag._small
+%tag-small-style {
+  /// put styles here...
+}
+
+/// metrics small tags
+$tag-big-font-size: 12 !default;
+$tag-big-line-height: 16 !default;
+$tag-big-min-height: 32 !default;
+
+/// font-weight of .tag._big
+$tag-big-weight: $bold !default;
+
+/// additional styles for .tag._big
+%tag-big-style {
+  /// put styles here...
+}
+
+$tag-outlined: 2 !default;
+
+/// radius of tags
+/// sets tagbox-radius to 50% of min-height
+$tag-round: false;
+
+/// radius of tags
+/// if $tag-round === false
+$tag-radius: 2 !default;
+$tag-small-radius: 2 !default;
+$tag-big-radius: 2 !default;
+
+/// Pills
+/// ------------------------------------------------------
+
+/// metrics default pills
+$pill-font-size: 12 !default;
+$pill-line-height: 14 !default;
+$pill-min-height: 24 !default;
+
+/// font-weight of .pill
+$pill-weight: $bold !default;
+
+/// additional styles for .pill
+%pill-style {
+  /// put styles here...
+}
+
+/// metrics small pills
+$pill-small-font-size: 10 !default;
+$pill-small-line-height: 12 !default;
+$pill-small-min-height: 20 !default;
+
+/// font-weight of .pill._small
+$pill-small-weight: $bold !default;
+
+/// additional styles for .pill._small
+%pill-small-style {
+  /// put styles here...
+}
+
+/// metrics small pills
+$pill-big-font-size: 12 !default;
+$pill-big-line-height: 16 !default;
+$pill-big-min-height: 32 !default;
+
+/// font-weight of .pill._big
+$pill-big-weight: $bold !default;
+
+/// additional styles for .pill._big
+%pill-big-style {
+  /// put styles here...
+}
+
+$pill-outlined: 2 !default;
+
+/// radius of pills
+/// sets pillbox-radius to 50% of min-height
+$pill-round: false;
+
+/// radius of pills
+/// if $pill-round === false
+$pill-radius: 2 !default;
+$pill-small-radius: 2 !default;
+$pill-big-radius: 2 !default;

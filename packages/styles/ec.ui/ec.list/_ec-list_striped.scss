@@ -1,0 +1,15 @@
+.ec-list_striped {
+  .ec-list-items {
+    .ec-list__row {
+      background-color: getColor(background);
+
+      &:nth-child(even) {
+        background-color: getColor(background, lightest);
+      }
+    }
+  }
+}
+
+.ec-list-header {
+  background-color: getColor(background, lighter);
+}
