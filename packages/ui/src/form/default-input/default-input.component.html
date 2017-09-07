@@ -1,13 +1,13 @@
 <div [ngSwitch]="field.view" *ngIf="group" [formGroup]="group">
   <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>
   <input *ngSwitchCase="'string'" type="text" [formControl]="control"
-         [placeholder]="field.getPlaceholder()" class="ec-input">
+         [placeholder]="field.getPlaceholder()" class="input">
 
   <textarea *ngSwitchCase="'textarea'" type="text" [formControl]="control"
-            [placeholder]="field.getPlaceholder()" class="ec-input"></textarea>
+            [placeholder]="field.getPlaceholder()" class="input"></textarea>
 
   <input *ngSwitchCase="'number'" type="number" [formControl]="control"
-         [placeholder]="field.getPlaceholder()" class="ec-input">
+         [placeholder]="field.getPlaceholder()" class="input">
 
   <input *ngSwitchCase="'color'" type="color" [formControl]="control">
 
@@ -15,10 +15,10 @@
          [placeholder]="field.getPlaceholder()">
 
   <input *ngSwitchCase="'email'" type="email" [formControl]="control"
-         [placeholder]="field.getPlaceholder()" class="ec-input">
+         [placeholder]="field.getPlaceholder()" class="input">
 
   <input *ngSwitchCase="'url'" type="url" [formControl]="control"
-         [placeholder]="field.getPlaceholder()" class="ec-input">
+         [placeholder]="field.getPlaceholder()" class="input">
 
   <ec-datetime *ngSwitchCase="'date'" [formControl]="control"
                [placeholder]="field.getPlaceholder()"></ec-datetime>
