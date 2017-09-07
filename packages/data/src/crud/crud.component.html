@@ -1,13 +1,14 @@
 <div class="ec-crud">
   <header class="ec-crud-header">
-    <button (click)="crudForm.create();formPop.show()" *ngIf="hasMethod('create')" type="button" class="btn">
+    <button (click)="crudForm.create();formPop.show()" *ngIf="hasMethod('create')" type="button"
+            class="btn">
       <span *ngIf="this.config?.createLabel">{{this.config?.createLabel}}</span>
       <span *ngIf="!this.config?.createLabel">+</span>
     </button>
   </header>
   <div class="ec-crud-body">
     <ec-entry-list [model]="model" [config]="config" [solo]="true"
-                   *ngIf="hasMethod('read')" [selection]="config.selection"
+                   *ngIf="hasMethod('read')" [selection]="selection"
                    [loader]="config?.loader||listLoader"
                    (select)="selectEntry($event,crudForm)">
     </ec-entry-list>
