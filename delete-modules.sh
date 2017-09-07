@@ -1,4 +1,4 @@
-cd ./src/packages/
+cd ./packages/
 cd core
 rm -rf node_modules
 cd ../ui
