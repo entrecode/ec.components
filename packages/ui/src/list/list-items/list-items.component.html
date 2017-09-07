@@ -6,7 +6,7 @@
       </div>
       <div *ngFor="let field of list?.fields" class="ec-list__cell"
            [ngClass]="'ec-list-field_' + field.view" [ngSwitch]="field.view"
-           [class._hidden]="field.hidden">
+           [class._hidden]="field.hidden"  [class.ec-list-field_sortable]="field.sortable" [class.ec-list-field_sortable_active]="list.config?.sortBy===field.property" >
         <ec-output [field]="field" [item]="item"></ec-output>
       </div>
     </div>
