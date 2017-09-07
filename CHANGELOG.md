@@ -1,5 +1,18 @@
 # Changelog
 
+<a name="0.4.0"></a>
+## 0.4.0
+BREAKING CHANGES:
+* all imports from '@ec.components/*/*' must now lead to '@ec.components/*/src/*'
+* imports from '@ec.components/*' can stay the same and should generally be preferred.
+* now using ec.sdk 0.8.5
+
+<a name="0.3.1"></a>
+## 0.3.1
+* refactored typings to be aot compatible
+* refactored imports
+* began styling
+
 <a name="0.3.0"></a>
 ## 0.3.0
 * now using ec.sdk 0.8.1

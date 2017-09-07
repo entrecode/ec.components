@@ -5,7 +5,7 @@ import { DataModule } from '@ec.components/data';
 // import { UiModule } from '../packages/ui/ui.module';
 import { UiModule } from '@ec.components/ui';
 import { DemoComponent } from './demo.component';
-import { VcModule } from '../packages/vc/vc.module';
+import { VcModule } from '../../packages/vc/src/vc.module';
 import { RouterModule } from '@angular/router';
 import { VcDemoComponent } from './vc/vc-demo.component';
 import { PopDemoComponent } from './pop/pop-demo.component';
@@ -24,7 +24,7 @@ import { UnsplashImageComponent } from './list/unsplash-image.component';
 import { demoRoutes } from './demo.routes'
 import { EntrySelectDemoComponent } from './entry-select/entry-select-demo.component';
 import { AssetListDemoComponent } from './asset-list/asset-list.demo.component';
-import { AssetInputComponent } from '../packages/data/files/asset-input/asset-input.component';
+import { AssetInputComponent } from '../../packages/data/src/files/asset-input/asset-input.component';
 import { ListTransformsDemoComponent } from './list-transforms/list-transforms-demo.component';
 import { DatamanagerListDemoComponent } from './datamanager-list/datamanager-list.demo.component';
 import { ModelListDemoComponent } from './model-list/model-list.demo.component';

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DefaultInputComponent } from '../../packages/ui/form/default-input/default-input.component';
+import { DefaultInputComponent } from '../../../packages/ui/src/form/default-input/default-input.component';
 
 @Component({
   selector: 'ec-cool-string',

@@ -1,0 +1,48 @@
+<div *ngIf="!item?.display(field.property)">
+  <!-- empty -->
+</div>
+<div [ngSwitch]="field.view" *ngIf="item&&item?.display(field.property)">
+  <!--<div [attr.view]="field.view" [attr.property]="field.property" #cells>-->
+
+  <ul class="ec-output_tags-list" *ngSwitchCase="'labels'">
+    <li *ngFor="let label of item?.display(field.property)">
+      <div class="tag">
+        {{label}}
+      </div>
+    </li>
+  </ul>
+
+  <span class="ec-output_tag" *ngSwitchCase="'label'">{{item?.display(field.property)}}</span>
+
+  <div *ngSwitchCase="'boolean'" class="ec-output_boolean" [class._true]="item?.resolve(field.property)">
+    <i class="ec-icon check" *ngIf="item?.resolve(field.property)"></i>
+    <i class="ec-icon subtract" *ngIf="!item?.resolve(field.property)"></i>
+  </div>
+
+  <div class="ec-output_mail" *ngSwitchCase="'email'">
+    <a [href]="'mailto:'+item?.display(field.property)">{{item?.display(field.property)}}</a>
+  </div>
+  <div class="ec-output_url" *ngSwitchCase="'url'">
+    <a [href]="item?.display(field.property)">{{item?.display(field.property)}}</a>
+  </div>
+
+  <div class="ec-output_color" *ngSwitchCase="'color'">
+    <span class="ec-output_color-sample" [style.backgroundColor]="item?.display(field.property)"></span>
+    <span class="ec-output_color-property">{{item?.display(field.property)}}</span>
+  </div>
+
+  <div class="ec-output_avatar" *ngSwitchCase="'avatar'">
+    <img [src]="item?.display(field.property)">
+  </div>
+
+  <ul class="ec-output_avatars-list" *ngSwitchCase="'avatars'">
+    <li *ngFor="let url of item?.display(field.property)">
+      <div class="ec-output_avatar">
+        <img [src]="url">
+      </div>
+    </li>
+  </ul>
+  <span *ngSwitchDefault>
+    {{item?.display(field.property)}}
+  </span>
+</div>

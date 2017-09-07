@@ -6,6 +6,7 @@
   "scripts": {
     "ng": "ng",
     "start": "npm run symlinks && npm run delete-modules && ng serve --ssl",
+    "aot": "npm run symlinks && npm run delete-modules && ng serve --aot --ssl",
     "build": "ng build --prod --env=prod",
     "test": "ng test --cc",
     "lint": "ng lint",
@@ -20,7 +21,7 @@
   },
   "private": true,
   "dependencies": {
-    "@ec.components/data": "^0.2.0",
+    "@ec.components/data": "^0.3.1",
     "@angular/compiler": "^4.0.0",
     "@angular/core": "^4.0.0",
     "@angular/forms": "^4.0.0",
