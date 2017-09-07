@@ -1,10 +1,9 @@
 <div class="ec-crud">
   <header class="ec-crud-header">
-    <button (click)="crudForm.create();formPop.show()" *ngIf="hasMethod('create')" type="button"
-            class="btn">
+    <a (click)="crudForm.create();formPop.show()" *ngIf="hasMethod('create')" class="btn">
       <span *ngIf="this.config?.createLabel">{{this.config?.createLabel}}</span>
       <span *ngIf="!this.config?.createLabel">+</span>
-    </button>
+    </a>
   </header>
   <div class="ec-crud-body">
     <ec-entry-list [model]="model" [config]="config" [solo]="true"
@@ -19,17 +18,18 @@
   <!-- TODO wrap into entry-pop -->
   <ec-pop #formPop [ngClass]="getPopClass()">
     <nav>
-      <button (click)="log(crudForm)" *ngIf="config?.develop">
+      <button (click)="log(crudForm)" *ngIf="config?.develop" class="btn">
         code
       </button>
-      <button (click)="crudForm.deleteEntry()" *ngIf="hasMethod('delete')&&crudForm.isEditing()">
+      <button (click)="crudForm.deleteEntry()" class="btn"
+              *ngIf="hasMethod('delete')&&crudForm.isEditing()">
         löschen
       </button>
       <button (click)="crudForm.submit()" [disabled]="crudForm.group?.invalid" type="button"
-              [class.disabled]="crudForm.group?.invalid" *ngIf="maySave(crudForm)">
+              class="btn" [class.disabled]="crudForm.group?.invalid" *ngIf="maySave(crudForm)">
         save
       </button>
-      <button (click)="formPop.hide()" type="button">
+      <button (click)="formPop.hide()" type="button" class="btn">
         &times;
       </button>
     </nav>
