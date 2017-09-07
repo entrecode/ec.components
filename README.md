@@ -100,9 +100,16 @@ The start npm script will automatically use the symlinks from src/packages for @
 It also deletes eventually existing node_modules folders inside the packages.
 This enables you to always use imports like: import * from '@ec.components/*'.
 
-### Inside another project
+### Publishing
 
-TBD
+1. Run bootstrap task, this will call lerna bootstrap for core/ui/data packages and their prepublish scripts:
+```
+npm run bootstrap
+```
+2. Run publish task and select versions:
+```
+npm run publish
+```
 
 ## Import Structure
 All imports inside src/packages that import from the same package or another ec.components package must be relative.

@@ -1222,8 +1222,11 @@ Just add this to your index.html:</p>
 <p>The start npm script will automatically use the symlinks from src/packages for @ec.components.
 It also deletes eventually existing node_modules folders inside the packages.
 This enables you to always use imports like: import <em> from &#39;@ec.components/</em>&#39;.</p>
-<h3 id="inside-another-project">Inside another project</h3>
-<p>TBD</p>
+<h3 id="publishing">Publishing</h3>
+<ol>
+<li>Run bootstrap task, this will call lerna bootstrap for core/ui/data packages and their prepublish scripts:<pre class="line-numbers"><code class="language-none">npm run bootstrap</code></pre></li>
+<li>Run publish task and select versions:<pre class="line-numbers"><code class="language-none">npm run publish</code></pre></li>
+</ol>
 <h2 id="import-structure">Import Structure</h2>
 <p>All imports inside src/packages that import from the same package or another ec.components package must be relative.</p>
 <ul>

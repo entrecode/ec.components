@@ -9,7 +9,7 @@ import { demoRoutes } from './demo.routes';
 You can select a demo from the menu above or load a <a [routerLink]="randomDemo">random demo</a>!</p>
 <p>Other Resources: </p>
 <ul>
-<li><a href="https://github.com/entrecode/ec.components/tree/master/src/demo">demo sources</a></li>
+<li><a href="https://github.com/entrecode/ec.components/tree/master/demo/app">demo sources</a></li>
 <li><a href="https://github.com/entrecode/ec.components">Github</a></li>
 <li><a href="https://entrecode.github.io/ec.components">Documentation</a></li>
 </ul>
