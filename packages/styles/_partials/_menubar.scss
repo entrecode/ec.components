@@ -1,0 +1,22 @@
+.menubar {
+  @include flexbox;
+  @include justify-content(space-between);
+  @include align-items(center);
+  padding: rem(8) rem(16);
+
+  .menubar__brand {
+    @include flex-grow(0);
+    padding: rem(8) rem(16);
+    margin-left: rem(-16);
+  }
+
+  .menu {
+    @include flex-grow(1);
+    padding: rem(8) rem(16);
+  }
+
+  &_invert {
+    background-color: getColor(background, invert);
+    color: getColor(text, invert);
+  }
+}
