@@ -1,8 +1,8 @@
 // import { List } from '../../packages/core/index';
 import { List } from '@ec.components/core';
-import { CoolStringComponent } from "../demo/form/cool-string.component";
+import { CoolStringComponent } from "../app/form/cool-string.component";
 import { songs } from '../assets/songs';
-import { UnsplashImageComponent } from "../demo/list/unsplash-image.component";
+import { UnsplashImageComponent } from "../app/list/unsplash-image.component";
 
 export const mocked = {
   products: [
