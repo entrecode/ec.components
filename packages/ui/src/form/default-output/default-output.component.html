@@ -4,7 +4,7 @@
 <div [ngSwitch]="field.view" *ngIf="item&&item?.display(field.property)">
   <!--<div [attr.view]="field.view" [attr.property]="field.property" #cells>-->
 
-  <ul class="ec-output_tags-list" *ngSwitchCase="'labels'">
+  <ul class="ec-output_tags-list" *ngSwitchCase="'tags'">
     <li *ngFor="let label of item?.display(field.property)">
       <div class="tag">
         {{label}}
@@ -12,7 +12,7 @@
     </li>
   </ul>
 
-  <span class="ec-output_tag" *ngSwitchCase="'label'">{{item?.display(field.property)}}</span>
+  <span class="ec-output_tag" *ngSwitchCase="'tag'">{{item?.display(field.property)}}</span>
 
   <div *ngSwitchCase="'boolean'" class="ec-output_boolean" [class._true]="item?.resolve(field.property)">
     <i class="ec-icon check" *ngIf="item?.resolve(field.property)"></i>
