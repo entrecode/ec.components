@@ -5,7 +5,7 @@
 
   .ec-list__cell {
     flex-grow: 1;
-    flex-basis: 10%;
+    flex-basis: 100/12*1%;
     display: flex;
     align-items: center;
   }
@@ -58,9 +58,15 @@
   }
 }
 
-.ec-list-field {
-  &_number {
-    text-align: right;
-    justify-content: flex-end;
+.ec-list__cell {
+  &.ec-list-field {
+    &_number {
+      text-align: right;
+      justify-content: flex-end;
+    }
+
+    &_string {
+      flex-grow: 2;
+    }
   }
 }
