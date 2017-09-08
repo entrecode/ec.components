@@ -1272,7 +1272,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">packages/core/src/sorter/sorter.ts:21</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">packages/core/src/sorter/sorter.ts:28</a></div>
                                         </td>
                                     </tr>
             
@@ -1346,7 +1346,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">packages/core/src/sorter/sorter.ts:51</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">packages/core/src/sorter/sorter.ts:58</a></div>
                                         </td>
                                     </tr>
             
@@ -1439,7 +1439,7 @@
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">packages/core/src/sorter/sorter.ts:8</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">packages/core/src/sorter/sorter.ts:21</a></div>
                                         </td>
                                     </tr>
             
@@ -1466,19 +1466,26 @@
 
 const collator &#x3D; new Intl.Collator(undefined, { numeric: true, sensitivity: &#x27;base&#x27; });
 
+export function sortString(a, b) {
+  return collator.compare(a, b);
+}
+
+export function sortNumber(a, b) {
+  return a - b;
+}
+
+export function sortBoolean(a, b) {
+  return a ? -1 : 1;
+}
+
 /** The Sorter is a singleton that handles all kinds of sorting operations. */
 export abstract class Sorter&lt;T&gt; {
+
   /** Contains sorting methods for different value types. */
   static sortType &#x3D; {
-    &#x27;string&#x27;: (a, b) &#x3D;&gt; {
-      return collator.compare(a, b);
-    },
-    &#x27;number&#x27;: (a, b) &#x3D;&gt; {
-      return a - b
-    },
-    &#x27;boolean&#x27;: (a, b) &#x3D;&gt; {
-      return a ? -1 : 1;
-    }
+    &#x27;string&#x27;: sortString,
+    &#x27;number&#x27;: sortNumber,
+    &#x27;boolean&#x27;: sortBoolean
   };
 
   /** Returns the sorting algorithm for the given item array. */

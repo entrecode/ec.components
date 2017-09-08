@@ -1,7 +1,7 @@
 # Changelog
 
-<a name="0.4.2"></a>
-## 0.4.2
+<a name="0.5.0"></a>
+## 0.5.0
 * further styling
 BREAKING CHANGES:
 * view: 'label' must now be view: 'tag'

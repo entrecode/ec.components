@@ -12,8 +12,6 @@ npm install -g @angular/cli
 The following versions have been used for this tutorial:
 
 - @angular/cli: 1.3.2
-- node: 7.9.0
-- os: darwin x64
 - @angular/animations: 4.3.6
 - @angular/common: 4.3.6
 - @angular/compiler: 4.3.6
@@ -65,7 +63,7 @@ _src/environments/environment.prod.ts_:
 
 ```js
 export const environment = {
-  production: false,
+  production: true,
   environment: 'live', // https://entrecode.github.io/ec.sdk/#environment
   datamanagerID: 'XXXXXXXX', // datamanager shortID
   clientID: 'my-live-client' // your clientID
@@ -100,7 +98,7 @@ Here we are importing the DataModule along with the environment to then import i
 
 ### 6. Add --ssl flag
 
-in your package.json, edit the start script should look like this:
+in your package.json, edit your start script to look like this:
 
 ```
 "start": "ng serve --ssl",
