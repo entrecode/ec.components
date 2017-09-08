@@ -17,7 +17,6 @@ import { TypeConfigService } from './model-config/type-config.service';
 import { DatamanagerListComponent } from './datamanager-list/datamanager-list.component';
 import { ResourceListComponent } from './resource-list/resource-list.component';
 import { ModelListComponent } from './model-list/model-list.component';
-import { DataRoutingModule } from './data.routing';
 import { EditorComponent } from './editor.component';
 import { SdkModule } from './sdk/sdk.module';
 import { FilesModule } from './files/files.module';
@@ -47,7 +46,6 @@ import { FilesModule } from './files/files.module';
     EditorComponent,
   ],
   imports: [
-    DataRoutingModule,
     CommonModule,
     FormsModule,
     UiModule,
