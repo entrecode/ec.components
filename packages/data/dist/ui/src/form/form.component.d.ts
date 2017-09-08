@@ -1,4 +1,4 @@
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, OnChanges } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Form, FormConfig, Item } from '@ec.components/core';
 import { ItemConfig } from '@ec.components/core/src/item/item-config.interface';
@@ -7,7 +7,7 @@ import { LoaderService } from '../loader/loader.service';
 import { NotificationsService } from '../notifications/notifications.service';
 import { FormService } from './form.service';
 /** This component renders a form using a FieldConfig Object. */
-export declare class FormComponent {
+export declare class FormComponent implements OnChanges {
     protected loaderService: LoaderService;
     protected notificationService: NotificationsService;
     protected formService: FormService;
@@ -33,7 +33,9 @@ export declare class FormComponent {
     change: EventEmitter<FormComponent>;
     /** Injects the services. */
     constructor(loaderService: LoaderService, notificationService: NotificationsService, formService: FormService);
-    /** On change, the form instance is (re)created by combining all inputs. If no item is given, an empty form is created using the config. You can also pass just an item to use its config and body.*/
+    /** On change, the form instance is (re)created by combining all inputs.
+     * If no item is given, an empty form is created using the config.
+     * You can also pass just an item to use its config and body.*/
     ngOnChanges(): void;
     /** Inits the form (if ready) */
     protected init(item?: Item<any>, config?: FormConfig<any>): void;

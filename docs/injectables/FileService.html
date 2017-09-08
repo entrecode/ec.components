@@ -1386,7 +1386,7 @@ changes.</p>
                             <tr>
                                 <td class="col-md-4">
                                         <span class="modifier-icon fa fa-"></span>
-                                    <code>resolveAssets(ids: string[])</code>
+                                    <code>resolveAssets(assets: Array<>)</code>
                                 </td>
                             </tr>
             
@@ -1399,7 +1399,7 @@ changes.</p>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>resolves all given ids to assets </p>
+                                        <div class="io-description"><p>Resolves all assetIDs to PublicAssetResources </p>
             </div>
             
                                         <div class="io-description">
@@ -1415,9 +1415,9 @@ changes.</p>
                                                     </thead>
                                                     <tbody>
                                                             <tr>
-                                                              <td>ids</td>
+                                                              <td>assets</td>
                                                               <td>
-                                                                      <code>string[]</code>
+                                                                      <code>Array&lt;&gt;</code>
                                                               </td>
                                                               <td>
                                                               </td>
@@ -1429,7 +1429,7 @@ changes.</p>
                                         <div>
                                         </div>
                                         <div class="io-description">
-                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            <b>Returns : </b>    <code>Promise&lt;&gt;</code>
             
                                         </div>
                                             <div class="io-description">
@@ -1706,14 +1706,26 @@ export class FileService {
     });
   }
 
-  /** resolves all given ids to assets */
-  public resolveAssets(ids: string[]) {
-    if (ids.length &#x3D;&#x3D;&#x3D; 1) {
-      ids.push(ids[0]); // :) TODO remove when backend bug is fixed
+  /** Resolves all assetIDs to PublicAssetResources */
+  public resolveAssets(assets: Array&lt;string | PublicAssetResource&gt;): Promise&lt;Array&lt;PublicAssetResource&gt;&gt; {
+    const unresolved &#x3D; assets.reduce((ids, asset) &#x3D;&gt; {
+      if (typeof asset &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
+        ids.push(asset);
+      }
+      return ids;
+    }, []);
+    if (unresolved.length &#x3D;&#x3D;&#x3D; 0) {
+      return Promise.resolve(&lt;Array&lt;PublicAssetResource&gt;&gt;assets);
     }
-    return this.sdk.api.assetList({ assetID: { any: ids } })
+    if (unresolved.length &#x3D;&#x3D;&#x3D; 1) {
+      unresolved.push(unresolved[0]); // :) TODO remove when backend bug is fixed
+    }
+    return this.sdk.api.assetList({ assetID: { any: unresolved } })
     .then((assetList) &#x3D;&gt; {
-      return assetList.getAllItems() || [];
+      const resolved &#x3D; assetList.getAllItems();
+      return assets.map((asset) &#x3D;&gt;
+        typeof asset &#x3D;&#x3D;&#x3D; &#x27;string&#x27; ?
+          resolved.find((resource) &#x3D;&gt; resource.assetID &#x3D;&#x3D;&#x3D; asset) : asset)
     });
   }
 }

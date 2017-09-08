@@ -71,6 +71,6 @@ export declare class FileService {
     constructor(sdk: SdkService, typeConfig: TypeConfigService);
     getFormData(files: FileList): FormData;
     uploadFiles(e: any): Promise<Upload>;
-    /** resolves all given ids to assets */
-    resolveAssets(ids: string[]): Promise<any[]>;
+    /** Resolves all assetIDs to PublicAssetResources */
+    resolveAssets(assets: Array<string | PublicAssetResource>): Promise<Array<PublicAssetResource>>;
 }

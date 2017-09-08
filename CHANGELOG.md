@@ -1,5 +1,9 @@
 # Changelog
 
+<a name="0.5.3"></a>
+## 0.5.3
+* feature: asset-select is now capable of using ngModel with two way binding
+
 <a name="0.5.2"></a>
 ## 0.5.2
 * removed DataRoutingModule from DataModule

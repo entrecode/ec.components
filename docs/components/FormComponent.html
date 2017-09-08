@@ -1208,6 +1208,12 @@
     </p>
 
 
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnChanges-interface.html" target="_blank" >OnChanges</a></code>
+    </p>
 
 
 <section>
@@ -1633,7 +1639,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">packages/ui/src/form/form.component.ts:67</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">packages/ui/src/form/form.component.ts:71</a></div>
                                 </td>
                             </tr>
     
@@ -1696,7 +1702,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">packages/ui/src/form/form.component.ts:111</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="115" class="link-to-prism">packages/ui/src/form/form.component.ts:115</a></div>
                                 </td>
                             </tr>
     
@@ -1730,7 +1736,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">packages/ui/src/form/form.component.ts:73</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">packages/ui/src/form/form.component.ts:77</a></div>
                                 </td>
                             </tr>
     
@@ -1793,7 +1799,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">packages/ui/src/form/form.component.ts:79</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">packages/ui/src/form/form.component.ts:83</a></div>
                                 </td>
                             </tr>
     
@@ -1864,7 +1870,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">packages/ui/src/form/form.component.ts:106</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">packages/ui/src/form/form.component.ts:110</a></div>
                                 </td>
                             </tr>
     
@@ -1899,7 +1905,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">packages/ui/src/form/form.component.ts:48</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">packages/ui/src/form/form.component.ts:52</a></div>
                                 </td>
                             </tr>
     
@@ -1971,13 +1977,15 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">packages/ui/src/form/form.component.ts:43</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">packages/ui/src/form/form.component.ts:47</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-description"><p>On change, the form instance is (re)created by combining all inputs. If no item is given, an empty form is created using the config. You can also pass just an item to use its config and body.</p>
+                                <div class="io-description"><p>On change, the form instance is (re)created by combining all inputs.
+    If no item is given, an empty form is created using the config.
+    You can also pass just an item to use its config and body.</p>
     </div>
     
                                 <div class="io-description">
@@ -2005,7 +2013,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">packages/ui/src/form/form.component.ts:85</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">packages/ui/src/form/form.component.ts:89</a></div>
                                 </td>
                             </tr>
     
@@ -2119,7 +2127,7 @@
     </div>
 
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { Component, EventEmitter, Input, Output, } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { Component, EventEmitter, Input, OnChanges, Output } from &#x27;@angular/core&#x27;;
 import { FormGroup } from &#x27;@angular/forms&#x27;;
 import { Form, FormConfig, Item } from &#x27;@ec.components/core&#x27;;
 import { ItemConfig } from &#x27;@ec.components/core/src/item/item-config.interface&#x27;;
@@ -2134,7 +2142,7 @@ import { FormService } from &#x27;./form.service&#x27;;
   templateUrl: &#x27;./form.component.html&#x27;,
   styleUrls: [&#x27;./form.component.scss&#x27;]
 })
-export class FormComponent {
+export class FormComponent implements OnChanges {
   /** The instance of Form that is used. */
   protected form: Form&lt;any&gt;;
   /** The current (angular) form group. */
@@ -2157,23 +2165,27 @@ export class FormComponent {
   @Output() change: EventEmitter&lt;FormComponent&gt; &#x3D; new EventEmitter();
 
   /** Injects the services. */
-  constructor(protected loaderService: LoaderService, protected notificationService: NotificationsService, protected formService: FormService) {
+  constructor(protected loaderService: LoaderService,
+    protected notificationService: NotificationsService,
+    protected formService: FormService) {
   }
 
-  /** On change, the form instance is (re)created by combining all inputs. If no item is given, an empty form is created using the config. You can also pass just an item to use its config and body.*/
+  /** On change, the form instance is (re)created by combining all inputs.
+   * If no item is given, an empty form is created using the config.
+   * You can also pass just an item to use its config and body.*/
   ngOnChanges() {
     this.init();
   }
 
   /** Inits the form (if ready) */
   protected init(item: Item&lt;any&gt; &#x3D; this.item, config: FormConfig&lt;any&gt; &#x3D; this.config) {
-    if (this.value) { //if value is set, create item from value only
+    if (this.value) { // if value is set, create item from value only
       this.form &#x3D; new Form(this.value, config);
     }
     if (config) {
       this.form &#x3D; new Form(null, config);
     }
-    if (item &amp;&amp; item.getBody) { //TODO find cleaner way to check if is item
+    if (item &amp;&amp; item.getBody) { // TODO find cleaner way to check if is item
       this.form &#x3D; new Form(item.getBody(), item.getConfig());
     }
     if (this.form) {
@@ -2208,7 +2220,7 @@ export class FormComponent {
     .then((form) &#x3D;&gt; {
       this.submitted.emit(this.group);
       this.edit(form);
-      this.notificationService.emit({ //TODO pull out to entry-form?
+      this.notificationService.emit({ // TODO pull out to entry-form?
         title: &#x27;Eintrag gespeichert&#x27;,
         type: &#x27;success&#x27;
       });
@@ -2232,7 +2244,7 @@ export class FormComponent {
   protected dirtyTalk() {
     if (this.group &amp;&amp; this.group.dirty) {
       // console.warn(&#x27;form is dirty&#x27;);
-      //TODO open dialog to either save or discard changes
+      // TODO open dialog to either save or discard changes
     }
   }
 }

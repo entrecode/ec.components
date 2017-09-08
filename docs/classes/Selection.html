@@ -1277,7 +1277,7 @@ It supports solo and multiple selection.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">packages/core/src/selection/selection.ts:74</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">packages/core/src/selection/selection.ts:72</a></div>
                                         </td>
                                     </tr>
             
@@ -1339,7 +1339,7 @@ It supports solo and multiple selection.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">packages/core/src/selection/selection.ts:79</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">packages/core/src/selection/selection.ts:77</a></div>
                                         </td>
                                     </tr>
             
@@ -1402,7 +1402,7 @@ It supports solo and multiple selection.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">packages/core/src/selection/selection.ts:23</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">packages/core/src/selection/selection.ts:22</a></div>
                                         </td>
                                     </tr>
             
@@ -1465,7 +1465,7 @@ It supports solo and multiple selection.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">packages/core/src/selection/selection.ts:13</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">packages/core/src/selection/selection.ts:12</a></div>
                                         </td>
                                     </tr>
             
@@ -1537,7 +1537,7 @@ It supports solo and multiple selection.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">packages/core/src/selection/selection.ts:32</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">packages/core/src/selection/selection.ts:31</a></div>
                                         </td>
                                     </tr>
             
@@ -1619,7 +1619,7 @@ It supports solo and multiple selection.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">packages/core/src/selection/selection.ts:55</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">packages/core/src/selection/selection.ts:53</a></div>
                                         </td>
                                     </tr>
             
@@ -1701,8 +1701,7 @@ It supports solo and multiple selection.</p>
     </div>
 
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { Subject } from &#x27;rxjs&#x27;;
-import { Item } from &#x27;../item/item&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { Item } from &#x27;../item/item&#x27;;
 import { List } from &#x27;../list/list&#x27;;
 
 /**
@@ -1739,14 +1738,13 @@ export class Selection&lt;T&gt; extends List&lt;T&gt; {
     }
     if (!this.has(item)) {
       if (solo) {
-        this.removeAll();
+        return this.replaceWith([item], event);
       }
       this.add(item, event);
     } else if (solo) {
       if (this.items.length &gt; 1) {
         //if multiple are selected &#x3D;&gt; keep item
-        this.removeAll();
-        return this.add(item, event);
+        return this.replaceWith([item], event);
       }
       this.removeAll();
     } else {

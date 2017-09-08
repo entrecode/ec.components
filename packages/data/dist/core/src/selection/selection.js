@@ -33,15 +33,14 @@ class Selection extends list_1.List {
         }
         if (!this.has(item)) {
             if (solo) {
-                this.removeAll();
+                return this.replaceWith([item], event);
             }
             this.add(item, event);
         }
         else if (solo) {
             if (this.items.length > 1) {
                 //if multiple are selected => keep item
-                this.removeAll();
-                return this.add(item, event);
+                return this.replaceWith([item], event);
             }
             this.removeAll();
         }

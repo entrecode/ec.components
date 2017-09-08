@@ -17,7 +17,9 @@ class FormComponent {
         /** Emits when a new instance of Form is present */
         this.change = new core_1.EventEmitter();
     }
-    /** On change, the form instance is (re)created by combining all inputs. If no item is given, an empty form is created using the config. You can also pass just an item to use its config and body.*/
+    /** On change, the form instance is (re)created by combining all inputs.
+     * If no item is given, an empty form is created using the config.
+     * You can also pass just an item to use its config and body.*/
     ngOnChanges() {
         this.init();
     }
@@ -82,7 +84,7 @@ class FormComponent {
     dirtyTalk() {
         if (this.group && this.group.dirty) {
             // console.warn('form is dirty');
-            //TODO open dialog to either save or discard changes
+            // TODO open dialog to either save or discard changes
         }
     }
 }

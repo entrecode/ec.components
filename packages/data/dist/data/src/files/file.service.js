@@ -110,14 +110,25 @@ class FileService {
             return upload;
         });
     }
-    /** resolves all given ids to assets */
-    resolveAssets(ids) {
-        if (ids.length === 1) {
-            ids.push(ids[0]); // :) TODO remove when backend bug is fixed
+    /** Resolves all assetIDs to PublicAssetResources */
+    resolveAssets(assets) {
+        const unresolved = assets.reduce((ids, asset) => {
+            if (typeof asset === 'string') {
+                ids.push(asset);
+            }
+            return ids;
+        }, []);
+        if (unresolved.length === 0) {
+            return Promise.resolve(assets);
         }
-        return this.sdk.api.assetList({ assetID: { any: ids } })
+        if (unresolved.length === 1) {
+            unresolved.push(unresolved[0]); // :) TODO remove when backend bug is fixed
+        }
+        return this.sdk.api.assetList({ assetID: { any: unresolved } })
             .then((assetList) => {
-            return assetList.getAllItems() || [];
+            const resolved = assetList.getAllItems();
+            return assets.map((asset) => typeof asset === 'string' ?
+                resolved.find((resource) => resource.assetID === asset) : asset);
         });
     }
 }

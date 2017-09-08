@@ -14,8 +14,6 @@ export declare class AssetSelectComponent extends SelectComponent<PublicAssetRes
     private fileService;
     /** The formControl that is used. */
     formControl: FormControl;
-    /** The value that should be prefilled */
-    value: Array<PublicAssetResource | string>;
     /** The used field, which should contain a model property (when not using model input) */
     field: Field<PublicAssetResource>;
     /** The form group that is used */
@@ -29,8 +27,9 @@ export declare class AssetSelectComponent extends SelectComponent<PublicAssetRes
     /** The asset list pop with the list to select from */
     pop: PopComponent;
     constructor(fileService: FileService);
-    initValue(value?: (string | PublicAssetResource)[]): void;
-    ngOnInit(): void | Promise<void>;
+    ngOnInit(): void;
+    /** writeValue is overridden to fetch unresolved assetID's */
+    writeValue(value: any): void;
     select(item: Item<any>): void;
     toggle(active?: boolean, emit?: boolean): void;
     canToggle(): boolean;

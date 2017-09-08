@@ -1573,14 +1573,26 @@ export class FileService {
     });
   }
 
-  /** resolves all given ids to assets */
-  public resolveAssets(ids: string[]) {
-    if (ids.length &#x3D;&#x3D;&#x3D; 1) {
-      ids.push(ids[0]); // :) TODO remove when backend bug is fixed
+  /** Resolves all assetIDs to PublicAssetResources */
+  public resolveAssets(assets: Array&lt;string | PublicAssetResource&gt;): Promise&lt;Array&lt;PublicAssetResource&gt;&gt; {
+    const unresolved &#x3D; assets.reduce((ids, asset) &#x3D;&gt; {
+      if (typeof asset &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
+        ids.push(asset);
+      }
+      return ids;
+    }, []);
+    if (unresolved.length &#x3D;&#x3D;&#x3D; 0) {
+      return Promise.resolve(&lt;Array&lt;PublicAssetResource&gt;&gt;assets);
     }
-    return this.sdk.api.assetList({ assetID: { any: ids } })
+    if (unresolved.length &#x3D;&#x3D;&#x3D; 1) {
+      unresolved.push(unresolved[0]); // :) TODO remove when backend bug is fixed
+    }
+    return this.sdk.api.assetList({ assetID: { any: unresolved } })
     .then((assetList) &#x3D;&gt; {
-      return assetList.getAllItems() || [];
+      const resolved &#x3D; assetList.getAllItems();
+      return assets.map((asset) &#x3D;&gt;
+        typeof asset &#x3D;&#x3D;&#x3D; &#x27;string&#x27; ?
+          resolved.find((resource) &#x3D;&gt; resource.assetID &#x3D;&#x3D;&#x3D; asset) : asset)
     });
   }
 }

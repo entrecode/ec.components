@@ -13,8 +13,7 @@ class AssetSelectComponent extends select_component_1.SelectComponent {
         super();
         this.fileService = fileService;
     }
-    initValue(value = this.value) {
-        this.value = value;
+    ngOnInit() {
         if (!this.formControl) {
             this.formControl = new forms_1.FormControl(this.value || []);
         }
@@ -23,21 +22,15 @@ class AssetSelectComponent extends select_component_1.SelectComponent {
                 'is currently not supported. Ask your favorite frontend dev to fix it.');
             // TODO
         }
-        this.useConfig(this.config);
-    }
-    ngOnInit() {
         this.config = Object.assign({}, this.fileService.assetListConfig);
         Object.assign(this.config, { solo: this.solo });
-        // resolve possible string ids
-        const ids = this.value ? this.value
-            .map((asset) => typeof asset === 'string' ? asset : '')
-            .filter((asset) => asset.length) : [];
-        if (!ids.length) {
-            return this.initValue();
-        }
-        return this.fileService.resolveAssets(ids)
-            .then((assets) => {
-            this.initValue(assets);
+        this.useConfig(this.config);
+    }
+    /** writeValue is overridden to fetch unresolved assetID's */
+    writeValue(value) {
+        value = value ? !Array.isArray(value) ? [value] : value : [];
+        this.fileService.resolveAssets(value).then((assets) => {
+            super.writeValue(assets);
         });
     }
     select(item) {
@@ -95,7 +88,6 @@ AssetSelectComponent.ctorParameters = () => [
 ];
 AssetSelectComponent.propDecorators = {
     'formControl': [{ type: core_1.Input },],
-    'value': [{ type: core_1.Input },],
     'field': [{ type: core_1.Input },],
     'item': [{ type: core_1.Input },],
     'model': [{ type: core_1.Input },],
