@@ -1,5 +1,5 @@
 import { EventEmitter } from '@angular/core';
-import PublicAssetResource from "ec.sdk/src/resources/publicAPI/PublicAssetResource";
+import PublicAssetResource from 'ec.sdk/src/resources/publicAPI/PublicAssetResource';
 import { SdkService } from '../sdk/sdk.service';
 import { AssetList } from './asset-list/asset-list';
 import { TypeConfigService } from '../model-config/type-config.service';
@@ -71,4 +71,6 @@ export declare class FileService {
     constructor(sdk: SdkService, typeConfig: TypeConfigService);
     getFormData(files: FileList): FormData;
     uploadFiles(e: any): Promise<Upload>;
+    /** resolves all given ids to assets */
+    resolveAssets(ids: string[]): Promise<any[]>;
 }

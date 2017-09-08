@@ -1444,8 +1444,8 @@
 
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { EventEmitter, Injectable } from &#x27;@angular/core&#x27;;
-import PublicAssetList from &quot;ec.sdk/src/resources/publicAPI/PublicAssetList&quot;;
-import PublicAssetResource from &quot;ec.sdk/src/resources/publicAPI/PublicAssetResource&quot;;
+import PublicAssetResource from &#x27;ec.sdk/src/resources/publicAPI/PublicAssetResource&#x27;;
+import PublicAssetList from &#x27;ec.sdk/src/resources/publicAPI/PublicAssetList&#x27;;
 import { SdkService } from &#x27;../sdk/sdk.service&#x27;;
 import { AssetList } from &#x27;./asset-list/asset-list&#x27;;
 import { TypeConfigService } from &#x27;../model-config/type-config.service&#x27;;
@@ -1482,7 +1482,7 @@ export class FileService {
     identifier: &#x27;assetID&#x27;,
     onSave: (item, value) &#x3D;&gt; {
       const asset &#x3D; item.getBody();
-      //TODO use crud.service for Resource?
+      // TODO use crud.service for Resource?
       value &#x3D; item.serialize(value, asset instanceof PublicAssetResource);
       Object.assign(asset, value);
       if (asset instanceof PublicAssetResource) {
@@ -1583,7 +1583,8 @@ export class FileService {
       return assetList.getAllItems() || [];
     });
   }
-}</code></pre>
+}
+</code></pre>
     </div>
 </div>
 

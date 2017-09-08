@@ -25,7 +25,7 @@ class FileService {
             identifier: 'assetID',
             onSave: (item, value) => {
                 const asset = item.getBody();
-                //TODO use crud.service for Resource?
+                // TODO use crud.service for Resource?
                 value = item.serialize(value, asset instanceof PublicAssetResource_1.default);
                 Object.assign(asset, value);
                 if (asset instanceof PublicAssetResource_1.default) {
@@ -108,6 +108,16 @@ class FileService {
         }).then((upload) => {
             this.uploads.emit(upload);
             return upload;
+        });
+    }
+    /** resolves all given ids to assets */
+    resolveAssets(ids) {
+        if (ids.length === 1) {
+            ids.push(ids[0]); // :) TODO remove when backend bug is fixed
+        }
+        return this.sdk.api.assetList({ assetID: { any: ids } })
+            .then((assetList) => {
+            return assetList.getAllItems() || [];
         });
     }
 }

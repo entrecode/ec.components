@@ -4,6 +4,7 @@
 ## 0.5.2
 * removed DataRoutingModule from DataModule
 * feature: asset-select can now resolve assetID's.
+* feature: added filterPopClass config option to field-property-config.
 * further styling
 
 <a name="0.5.1"></a>

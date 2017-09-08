@@ -9,7 +9,7 @@ export declare class SelectComponent<T> implements ControlValueAccessor {
     /** Configuration Object for List */
     config: ListConfig<T>;
     /** The visible items */
-    value: Array<T>;
+    value: Array<any>;
     /** The used selection */
     selection: Selection<T>;
     /** Event emitter on item selection */

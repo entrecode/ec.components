@@ -19,7 +19,6 @@ const type_config_service_1 = require("./model-config/type-config.service");
 const datamanager_list_component_1 = require("./datamanager-list/datamanager-list.component");
 const resource_list_component_1 = require("./resource-list/resource-list.component");
 const model_list_component_1 = require("./model-list/model-list.component");
-const data_routing_1 = require("./data.routing");
 const editor_component_1 = require("./editor.component");
 const sdk_module_1 = require("./sdk/sdk.module");
 const files_module_1 = require("./files/files.module");
@@ -66,7 +65,6 @@ DataModule.decorators = [
                     editor_component_1.EditorComponent,
                 ],
                 imports: [
-                    data_routing_1.DataRoutingModule,
                     common_1.CommonModule,
                     forms_1.FormsModule,
                     ui_module_1.UiModule,

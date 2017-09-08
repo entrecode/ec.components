@@ -13,13 +13,32 @@ class AssetSelectComponent extends select_component_1.SelectComponent {
         super();
         this.fileService = fileService;
     }
-    ngOnInit() {
+    initValue(value = this.value) {
+        this.value = value;
         if (!this.formControl) {
             this.formControl = new forms_1.FormControl(this.value || []);
         }
+        else if (this.value) {
+            console.warn('asset-select: setting a value to a asset-select with given formControl ' +
+                'is currently not supported. Ask your favorite frontend dev to fix it.');
+            // TODO
+        }
+        this.useConfig(this.config);
+    }
+    ngOnInit() {
         this.config = Object.assign({}, this.fileService.assetListConfig);
         Object.assign(this.config, { solo: this.solo });
-        this.useConfig(this.config);
+        // resolve possible string ids
+        const ids = this.value ? this.value
+            .map((asset) => typeof asset === 'string' ? asset : '')
+            .filter((asset) => asset.length) : [];
+        if (!ids.length) {
+            return this.initValue();
+        }
+        return this.fileService.resolveAssets(ids)
+            .then((assets) => {
+            this.initValue(assets);
+        });
     }
     select(item) {
         this.selection.toggle(item);
@@ -36,7 +55,6 @@ class AssetSelectComponent extends select_component_1.SelectComponent {
         return true;
     }
     selectUpload(upload) {
-        console.log('upload', upload);
         if (this.solo) {
             this.selection.select(upload.item);
         }
@@ -53,7 +71,7 @@ class AssetSelectComponent extends select_component_1.SelectComponent {
         else {
             console.log('edit', item.getBody());
         }
-        //TODO open edit pop
+        // TODO open edit pop
     }
 }
 AssetSelectComponent.decorators = [
