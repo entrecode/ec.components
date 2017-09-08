@@ -30,6 +30,7 @@ import { DatamanagerListDemoComponent } from './datamanager-list/datamanager-lis
 import { ModelListDemoComponent } from './model-list/model-list.demo.component';
 import { DatetimeDemoComponent } from './form/datetime-demo.component';
 import { DemoDashboardComponent } from './dashboard.component';
+import { AssetSelectDemoComponent } from './asset-select/asset-select-demo.component';
 
 demoRoutes.unshift(
   {
@@ -53,6 +54,7 @@ demoRoutes.unshift(
     TabsDemoComponent,
     EntryFormDemoComponent,
     EntrySelectDemoComponent,
+    AssetSelectDemoComponent,
     CrudDemoComponent,
     SelectDemoComponent,
     AuthDemoComponent,
