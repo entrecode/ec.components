@@ -28,8 +28,6 @@ import PublicAssetResource from 'ec.sdk/src/resources/publicAPI/PublicAssetResou
 export class AssetSelectComponent extends SelectComponent<PublicAssetResource> implements OnInit {
   /** The formControl that is used. */
   @Input() formControl: FormControl;
-  /** The value that should be prefilled */
-  @Input() value: Array<PublicAssetResource | string>;
   /** The used field, which should contain a model property (when not using model input) */
   @Input() field: Field<PublicAssetResource>;
   /** The form group that is used */
@@ -47,8 +45,7 @@ export class AssetSelectComponent extends SelectComponent<PublicAssetResource> i
     super();
   }
 
-  initValue(value = this.value) {
-    this.value = value;
+  ngOnInit() {
     if (!this.formControl) {
       this.formControl = new FormControl(this.value || []);
     } else if (this.value) {
@@ -56,22 +53,17 @@ export class AssetSelectComponent extends SelectComponent<PublicAssetResource> i
         'is currently not supported. Ask your favorite frontend dev to fix it.');
       // TODO
     }
+
+    this.config = Object.assign({}, this.fileService.assetListConfig);
+    Object.assign(this.config, { solo: this.solo });
     this.useConfig(this.config);
   }
 
-  ngOnInit() {
-    this.config = Object.assign({}, this.fileService.assetListConfig);
-    Object.assign(this.config, { solo: this.solo });
-    // resolve possible string ids
-    const ids = this.value ? this.value
-    .map((asset): string => typeof asset === 'string' ? asset : '')
-    .filter((asset) => asset.length) : [];
-    if (!ids.length) {
-      return this.initValue();
-    }
-    return this.fileService.resolveAssets(ids)
-    .then((assets) => {
-      this.initValue(assets);
+  /** writeValue is overridden to fetch unresolved assetID's */
+  writeValue(value) {
+    value = value ? !Array.isArray(value) ? [value] : value : [];
+    this.fileService.resolveAssets(value).then((assets) => {
+      super.writeValue(assets);
     });
   }
 

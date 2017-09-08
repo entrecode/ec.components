@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Form, FormConfig, Item } from '@ec.components/core';
 import { ItemConfig } from '@ec.components/core/src/item/item-config.interface';
@@ -13,7 +13,7 @@ import { FormService } from './form.service';
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss']
 })
-export class FormComponent {
+export class FormComponent implements OnChanges {
   /** The instance of Form that is used. */
   protected form: Form<any>;
   /** The current (angular) form group. */
@@ -36,23 +36,27 @@ export class FormComponent {
   @Output() change: EventEmitter<FormComponent> = new EventEmitter();
 
   /** Injects the services. */
-  constructor(protected loaderService: LoaderService, protected notificationService: NotificationsService, protected formService: FormService) {
+  constructor(protected loaderService: LoaderService,
+    protected notificationService: NotificationsService,
+    protected formService: FormService) {
   }
 
-  /** On change, the form instance is (re)created by combining all inputs. If no item is given, an empty form is created using the config. You can also pass just an item to use its config and body.*/
+  /** On change, the form instance is (re)created by combining all inputs.
+   * If no item is given, an empty form is created using the config.
+   * You can also pass just an item to use its config and body.*/
   ngOnChanges() {
     this.init();
   }
 
   /** Inits the form (if ready) */
   protected init(item: Item<any> = this.item, config: FormConfig<any> = this.config) {
-    if (this.value) { //if value is set, create item from value only
+    if (this.value) { // if value is set, create item from value only
       this.form = new Form(this.value, config);
     }
     if (config) {
       this.form = new Form(null, config);
     }
-    if (item && item.getBody) { //TODO find cleaner way to check if is item
+    if (item && item.getBody) { // TODO find cleaner way to check if is item
       this.form = new Form(item.getBody(), item.getConfig());
     }
     if (this.form) {
@@ -87,7 +91,7 @@ export class FormComponent {
     .then((form) => {
       this.submitted.emit(this.group);
       this.edit(form);
-      this.notificationService.emit({ //TODO pull out to entry-form?
+      this.notificationService.emit({ // TODO pull out to entry-form?
         title: 'Eintrag gespeichert',
         type: 'success'
       });
@@ -111,7 +115,7 @@ export class FormComponent {
   protected dirtyTalk() {
     if (this.group && this.group.dirty) {
       // console.warn('form is dirty');
-      //TODO open dialog to either save or discard changes
+      // TODO open dialog to either save or discard changes
     }
   }
 }
