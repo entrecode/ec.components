@@ -1882,8 +1882,8 @@ export class ModelConfigService extends Config {
             readOnly: schema.properties[property].readOnly,
             // required: schema.required.indexOf(property) !&#x3D;&#x3D; -1,
             display: ((value) &#x3D;&gt; value)
-          }, fieldConfig[property] ? fieldConfig[property] : {},
-          this.typeConfig.get(type.name));
+          }, this.typeConfig.get(type.name),
+          fieldConfig[property] ? fieldConfig[property] : {});
       });
       return fieldConfig;
     });

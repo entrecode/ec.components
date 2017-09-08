@@ -20,6 +20,7 @@ import { AssetListDemoComponent } from './asset-list/asset-list.demo.component';
 import { AuthDemoComponent } from './auth/auth-demo.component';
 import { VcDemoComponent } from './vc/vc-demo.component';
 import { CrudComponent } from '../../packages/data/src/crud/crud.component';
+import { AssetSelectDemoComponent } from './asset-select/asset-select-demo.component';
 
 export const demoRoutes: Routes = [
   /*  {
@@ -134,6 +135,14 @@ export const demoRoutes: Routes = [
         path: 'crud',
         component: CrudDemoComponent
       },
+      {
+        path: 'asset-list',
+        component: AssetListDemoComponent
+      },
+      {
+        path: 'asset-select',
+        component: AssetSelectDemoComponent
+      },
     ]
   },
   {
@@ -150,15 +159,6 @@ export const demoRoutes: Routes = [
       {
         path: 'data/:datamanagerID/:model',
         component: CrudComponent,
-      },
-    ]
-  },
-  {
-    path: 'files',
-    children: [
-      {
-        path: 'asset-list',
-        component: AssetListDemoComponent
       },
     ]
   },

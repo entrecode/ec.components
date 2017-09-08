@@ -1,5 +1,12 @@
 # Changelog
 
+
+<a name="0.5.1"></a>
+## 0.5.1
+* further styling
+* fix: could not set custom inputs/outputs for entry fields
+* now using ec.sdk 0.8.6
+
 <a name="0.5.0"></a>
 ## 0.5.0
 * further styling
