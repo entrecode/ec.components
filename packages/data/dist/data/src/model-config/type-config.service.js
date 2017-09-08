@@ -142,23 +142,6 @@ class TypeConfigService {
         Object.assign(this.types[type], config);
     }
 }
-/** Resolves entry/entries from nested resource or id inside (single and array).
- * Gives back standardizes "light" entries {id, _entryTitle} */
-/*static resolveEntries(entry, item, property, value = entry[property]) {
-  if (Array.isArray(value)) {
-    return value ? value.map((e) => TypeConfigService.resolveEntries(entry, item, property, e)) : [];
-  }
-  if (typeof value === 'string') {
-    //TODO use getLevels when ready
-    //TODO is it possible to get the model title field of the nested entry? (and useful)
-    return { id: value, _entryTitle: entry.getTitle(property) };
-  }
-  if (value && value.getTitle) {
-    // return { id: value.id, _entryTitle: value.getTitle('') }
-    return { id: value.id, _entryTitle: value.getTitle() }
-    //TODO use modelTitleField when it is possible to get it with lvl1
-  }
-}*/
 TypeConfigService.decorators = [
     { type: core_1.Injectable },
 ];

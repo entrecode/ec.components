@@ -94,7 +94,7 @@ class ModelConfigService extends config_1.Config {
                     readOnly: schema.properties[property].readOnly,
                     // required: schema.required.indexOf(property) !== -1,
                     display: ((value) => value)
-                }, fieldConfig[property] ? fieldConfig[property] : {}, this.typeConfig.get(type.name));
+                }, this.typeConfig.get(type.name), fieldConfig[property] ? fieldConfig[property] : {});
             });
             return fieldConfig;
         });
