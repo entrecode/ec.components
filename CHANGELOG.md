@@ -1,5 +1,10 @@
 # Changelog
 
+<a name="0.5.2"></a>
+## 0.5.2
+* removed DataRoutingModule from DataModule
+* feature: asset-select can now resolve assetID's.
+* further styling
 
 <a name="0.5.1"></a>
 ## 0.5.1

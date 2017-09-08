@@ -1,7 +1,7 @@
 /**
  * Created by felix on 23.05.17.
  */
-import { Component, forwardRef, Input, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, forwardRef, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Field } from '@ec.components/core/src/field/field';
 import { Item } from '@ec.components/core/src/item/item';
@@ -25,11 +25,11 @@ import PublicAssetResource from 'ec.sdk/src/resources/publicAPI/PublicAssetResou
     }
   ]
 })
-export class AssetSelectComponent extends SelectComponent<PublicAssetResource> {
+export class AssetSelectComponent extends SelectComponent<PublicAssetResource> implements OnInit {
   /** The formControl that is used. */
   @Input() formControl: FormControl;
   /** The value that should be prefilled */
-  @Input() value: Array<PublicAssetResource>;
+  @Input() value: Array<PublicAssetResource | string>;
   /** The used field, which should contain a model property (when not using model input) */
   @Input() field: Field<PublicAssetResource>;
   /** The form group that is used */
@@ -47,13 +47,32 @@ export class AssetSelectComponent extends SelectComponent<PublicAssetResource> {
     super();
   }
 
-  ngOnInit() {
+  initValue(value = this.value) {
+    this.value = value;
     if (!this.formControl) {
       this.formControl = new FormControl(this.value || []);
+    } else if (this.value) {
+      console.warn('asset-select: setting a value to a asset-select with given formControl ' +
+        'is currently not supported. Ask your favorite frontend dev to fix it.');
+      // TODO
     }
+    this.useConfig(this.config);
+  }
+
+  ngOnInit() {
     this.config = Object.assign({}, this.fileService.assetListConfig);
     Object.assign(this.config, { solo: this.solo });
-    this.useConfig(this.config);
+    // resolve possible string ids
+    const ids = this.value ? this.value
+    .map((asset): string => typeof asset === 'string' ? asset : '')
+    .filter((asset) => asset.length) : [];
+    if (!ids.length) {
+      return this.initValue();
+    }
+    return this.fileService.resolveAssets(ids)
+    .then((assets) => {
+      this.initValue(assets);
+    });
   }
 
   select(item: Item<any>) {
@@ -74,7 +93,6 @@ export class AssetSelectComponent extends SelectComponent<PublicAssetResource> {
   }
 
   selectUpload(upload: Upload) {
-    console.log('upload', upload);
     if (this.solo) {
       this.selection.select(upload.item);
     } else {
@@ -90,7 +108,6 @@ export class AssetSelectComponent extends SelectComponent<PublicAssetResource> {
     } else {
       console.log('edit', item.getBody());
     }
-    //TODO open edit pop
+    // TODO open edit pop
   }
-
 }

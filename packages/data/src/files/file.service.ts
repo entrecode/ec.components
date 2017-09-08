@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import PublicAssetList from "ec.sdk/src/resources/publicAPI/PublicAssetList";
-import PublicAssetResource from "ec.sdk/src/resources/publicAPI/PublicAssetResource";
+import PublicAssetResource from 'ec.sdk/src/resources/publicAPI/PublicAssetResource';
+import PublicAssetList from 'ec.sdk/src/resources/publicAPI/PublicAssetList';
 import { SdkService } from '../sdk/sdk.service';
 import { AssetList } from './asset-list/asset-list';
 import { TypeConfigService } from '../model-config/type-config.service';
@@ -37,7 +37,7 @@ export class FileService {
     identifier: 'assetID',
     onSave: (item, value) => {
       const asset = item.getBody();
-      //TODO use crud.service for Resource?
+      // TODO use crud.service for Resource?
       value = item.serialize(value, asset instanceof PublicAssetResource);
       Object.assign(asset, value);
       if (asset instanceof PublicAssetResource) {
@@ -125,6 +125,17 @@ export class FileService {
     }).then((upload: Upload) => {
       this.uploads.emit(upload);
       return upload;
+    });
+  }
+
+  /** resolves all given ids to assets */
+  public resolveAssets(ids: string[]) {
+    if (ids.length === 1) {
+      ids.push(ids[0]); // :) TODO remove when backend bug is fixed
+    }
+    return this.sdk.api.assetList({ assetID: { any: ids } })
+    .then((assetList) => {
+      return assetList.getAllItems() || [];
     });
   }
 }

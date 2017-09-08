@@ -1572,6 +1572,17 @@ export class FileService {
       return upload;
     });
   }
+
+  /** resolves all given ids to assets */
+  public resolveAssets(ids: string[]) {
+    if (ids.length &#x3D;&#x3D;&#x3D; 1) {
+      ids.push(ids[0]); // :) TODO remove when backend bug is fixed
+    }
+    return this.sdk.api.assetList({ assetID: { any: ids } })
+    .then((assetList) &#x3D;&gt; {
+      return assetList.getAllItems() || [];
+    });
+  }
 }</code></pre>
     </div>
 </div>

@@ -30,7 +30,7 @@ export class SelectComponent<T> implements ControlValueAccessor {
   /** Configuration Object for List */
   @Input() config: ListConfig<T>;
   /** The visible items */
-  @Input() value: Array<T>;
+  @Input() value: Array<any>;
   /** The used selection */
   @Input() selection: Selection<T>;
   /** Event emitter on item selection */
@@ -45,6 +45,7 @@ export class SelectComponent<T> implements ControlValueAccessor {
   @Input() active: boolean;
   /** Wether or not the selection should be solo */
   @Input() solo: boolean;
+
   /** is emitted when a new value has been written from the outside */
   // written: EventEmitter<any> = new EventEmitter();
 

@@ -1,10 +1,11 @@
 <h2>ec-asset-select</h2>
 <h3>usage without form</h3>
-<ec-asset-select model="muffin" [config]="{size:3}" #assetSelect
-                 [(ngModel)]="selectedAssets"></ec-asset-select>
+passed id:
+<pre>{{selectedAssets | json}}</pre>
+
+<ec-asset-select model="muffin" [config]="{size:3}" #assetSelect [solo]="true"
+                 [value]="selectedAssets"></ec-asset-select>
 <div *ngIf="assetSelect.selection?.items?.length">
-  {{selectedAssets.length}} items in ngModel:
-  <pre>{{selectedAssets | json}}</pre>
   <strong>Manual iteration over selected asset items</strong>
   <ul>
     <li class="pill" *ngFor="let asset of assetSelect.selection?.items">
@@ -16,6 +17,7 @@
   <strong>selected IDs:</strong>
   <pre>{{assetSelect.selection?.getValue() | json}}</pre>
 </div>
+
 <b>solo</b>
 <ec-asset-select model="muffin" [config]="{size:3}" [solo]="true" #soloAsset></ec-asset-select>
 <pre>{{soloAsset.selection?.getValue()}}</pre>

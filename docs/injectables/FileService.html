@@ -1238,6 +1238,9 @@ changes.</p>
                                         <span class="modifier">Public</span> <a href="#getFormData">getFormData</a>
                                     </li>
                                     <li>
+                                        <span class="modifier">Public</span> <a href="#resolveAssets">resolveAssets</a>
+                                    </li>
+                                    <li>
                                         <span class="modifier">Public</span> <a href="#uploadFiles">uploadFiles</a>
                                     </li>
                                 </ul>
@@ -1363,6 +1366,70 @@ changes.</p>
                                         </div>
                                         <div class="io-description">
                                             <b>Returns : </b>    <code><a href="../classes/Form.html" target="_self" >FormData</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="resolveAssets"></a>
+                                    <b><span class="modifier">Public</span> resolveAssets</b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon fa fa-"></span>
+                                    <code>resolveAssets(ids: string[])</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="132" class="link-to-prism">packages/data/src/files/file.service.ts:132</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>resolves all given ids to assets </p>
+            </div>
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>ids</td>
+                                                              <td>
+                                                                      <code>string[]</code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
             
                                         </div>
                                             <div class="io-description">
@@ -1636,6 +1703,17 @@ export class FileService {
     }).then((upload: Upload) &#x3D;&gt; {
       this.uploads.emit(upload);
       return upload;
+    });
+  }
+
+  /** resolves all given ids to assets */
+  public resolveAssets(ids: string[]) {
+    if (ids.length &#x3D;&#x3D;&#x3D; 1) {
+      ids.push(ids[0]); // :) TODO remove when backend bug is fixed
+    }
+    return this.sdk.api.assetList({ assetID: { any: ids } })
+    .then((assetList) &#x3D;&gt; {
+      return assetList.getAllItems() || [];
     });
   }
 }</code></pre>

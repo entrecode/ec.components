@@ -25,6 +25,8 @@ export class Field<T> implements FieldConfigProperty {
   label?: string;
   /** The operator to use for filtering: exact, search, any etc.. see ec.sdk doc */
   filterOperator?: string;
+  /** Defines the class for the filter pop, e.g. in list header. */
+  filterPopClass?: string;
   /** Wether or not the field should appear in default forms */
   form?: boolean;
 
