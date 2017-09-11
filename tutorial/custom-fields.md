@@ -3,7 +3,7 @@
 ## Add a model config
 
 You can configure a models behaviour over the ModelConfigService.
-It is recommended to configure a model in the component that contains the ec-crud list.
+It is recommended to configure a model in a parent component of all possible ec-crud lists or nested forms.
 
 ```js
 export class MuffinsComponent {
