@@ -40,8 +40,8 @@ class AdminLoginComponent {
 AdminLoginComponent.decorators = [
     { type: core_1.Component, args: [{
                 selector: 'ec-auth-admin-login',
-                template: require('./admin-login.component.html'),
-                styles: [require('./admin-login.component.scss')]
+                templateUrl: './admin-login.component.html',
+                styleUrls: ['./admin-login.component.scss']
             },] },
 ];
 /** @nocollapse */

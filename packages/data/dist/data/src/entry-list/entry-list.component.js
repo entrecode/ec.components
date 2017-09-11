@@ -59,8 +59,8 @@ class EntryListComponent extends resource_list_component_1.ResourceListComponent
 EntryListComponent.decorators = [
     { type: core_1.Component, args: [{
                 selector: 'ec-entry-list',
-                template: require('../../../ui/src/list/list.component.html'),
-                styles: [require('./entry-list.component.scss')]
+                templateUrl: '../../../ui/src/list/list.component.html',
+                styleUrls: ['./entry-list.component.scss']
             },] },
 ];
 /** @nocollapse */

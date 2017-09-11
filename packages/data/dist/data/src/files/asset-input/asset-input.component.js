@@ -7,7 +7,7 @@ class AssetInputComponent extends default_input_component_1.DefaultInputComponen
 }
 AssetInputComponent.decorators = [
     { type: core_1.Component, args: [{
-                template: require('./asset-input.component.html'),
+                templateUrl: './asset-input.component.html',
             },] },
 ];
 /** @nocollapse */

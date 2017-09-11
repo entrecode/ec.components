@@ -46,9 +46,10 @@ class TypeConfigService {
             asset: {
                 view: 'avatar',
                 input: asset_input_component_1.AssetInputComponent,
-                filterOperator: 'any',
+                filterOperator: 'exact',
                 filterable: true,
                 display: (value, entry, property) => entry.getImageThumbUrl(property, 100),
+                filterPopClass: 'modal'
             },
             assets: {
                 view: 'avatars',
@@ -57,7 +58,8 @@ class TypeConfigService {
                 prefill: [],
                 filterOperator: 'any',
                 filterable: true,
-                queryFilter: (value) => value.split(',')
+                queryFilter: (value) => value.split(','),
+                filterPopClass: 'modal'
             },
             email: {},
             phone: {
@@ -66,14 +68,14 @@ class TypeConfigService {
             datetime: {
                 view: 'date',
                 sortable: true,
-                // display: (value) => moment(value).format('DD.MM.YY')
                 display: (value) => value ? moment(value).format('DD.MM.YY') : '',
                 validate: (value) => {
                     if (value && (value === 'invalid' || !moment(value).isValid())) {
                         return 'Ungültiges Datum';
                     }
                     return;
-                }
+                },
+                filterPopClass: 'modal'
                 /*,
                 prefill: new Date(0)*/
             },
@@ -82,21 +84,20 @@ class TypeConfigService {
                 input: default_entry_input_component_1.DefaultEntryInputComponent,
                 output: default_output_component_1.DefaultOutputComponent,
                 display: (value, entry, property) => entry.getTitle(property),
-                // resolve: (body) => TypeConfigService.resolveEntries,
                 filterable: true,
-                filterOperator: 'any'
+                filterOperator: 'exact',
+                filterPopClass: 'modal'
             },
             entries: {
                 view: 'tags',
                 input: default_entry_input_component_1.DefaultEntryInputComponent,
                 output: default_output_component_1.DefaultOutputComponent,
                 display: (value, entry, property) => entry.getTitle(property),
-                // resolve: (body) => TypeConfigService.resolveEntries,
                 filterable: true,
                 filterOperator: 'any',
                 prefill: [],
-                queryFilter: (value) => value.split(',')
-                // form: false,
+                queryFilter: (value) => value.split(','),
+                filterPopClass: 'modal'
             },
             json: {
                 input: default_entry_input_component_1.DefaultEntryInputComponent,
@@ -106,15 +107,18 @@ class TypeConfigService {
             location: {
                 input: default_entry_input_component_1.DefaultEntryInputComponent,
                 output: default_entry_output_component_1.DefaultEntryOutputComponent,
-                display: (value) => value ? value.longitude + ',' + value.latitude : ''
+                display: (value) => value ? value.longitude + ',' + value.latitude : '',
+                filterPopClass: 'modal'
             },
             account: {
                 input: default_entry_input_component_1.DefaultEntryInputComponent,
                 output: default_entry_output_component_1.DefaultEntryOutputComponent,
+                filterPopClass: 'modal'
             },
             role: {
                 input: default_entry_input_component_1.DefaultEntryInputComponent,
                 output: default_entry_output_component_1.DefaultEntryOutputComponent,
+                filterPopClass: 'modal'
             }
         };
     }

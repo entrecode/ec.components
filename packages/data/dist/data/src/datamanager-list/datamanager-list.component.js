@@ -12,7 +12,7 @@ class DatamanagerListComponent extends resource_list_component_1.ResourceListCom
 DatamanagerListComponent.decorators = [
     { type: core_1.Component, args: [{
                 selector: 'ec-datamanager-list',
-                template: require('../../../ui/src/list/list.component.html')
+                templateUrl: '../../../ui/src/list/list.component.html'
             },] },
 ];
 /** @nocollapse */

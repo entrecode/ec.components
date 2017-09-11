@@ -38,8 +38,8 @@ class PublicSignupComponent {
 PublicSignupComponent.decorators = [
     { type: core_1.Component, args: [{
                 selector: 'ec-auth-public-signup',
-                template: require('./public-signup.component.html'),
-                styles: [require('./public-signup.component.scss')]
+                templateUrl: './public-signup.component.html',
+                styleUrls: ['./public-signup.component.scss']
             },] },
 ];
 /** @nocollapse */

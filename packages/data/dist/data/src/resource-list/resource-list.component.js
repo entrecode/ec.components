@@ -82,7 +82,7 @@ class ResourceListComponent extends list_component_1.ListComponent {
 ResourceListComponent.decorators = [
     { type: core_1.Component, args: [{
                 selector: 'ec-resource-list',
-                template: require('../../../ui/src/list/list.component.html')
+                templateUrl: '../../../ui/src/list/list.component.html'
             },] },
 ];
 /** @nocollapse */

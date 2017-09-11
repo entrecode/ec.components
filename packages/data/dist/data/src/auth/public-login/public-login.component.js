@@ -40,8 +40,8 @@ class PublicLoginComponent {
 PublicLoginComponent.decorators = [
     { type: core_1.Component, args: [{
                 selector: 'ec-auth-public-login',
-                template: require('./public-login.component.html'),
-                styles: [require('./public-login.component.scss')]
+                templateUrl: './public-login.component.html',
+                styleUrls: ['./public-login.component.scss']
             },] },
 ];
 /** @nocollapse */
