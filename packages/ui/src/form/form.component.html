@@ -3,8 +3,8 @@
     <ng-content></ng-content>
   </div>
   <div *ngIf="!wrapper.children.length&&!empty">
-    <div *ngFor="let field of form?.fields | visibleFields" [ngClass]="'ec-label_' + field.view"
-         [ngSwitch]="field.view">
+    <div *ngFor="let field of form?.fields | visibleFields" [ngClass]="'input-group_' + field.view"
+         [ngSwitch]="field.view" class="input-group">
       <label>{{field.label || field.property}}</label>
       <ec-input *ngIf="!field.readOnly" [field]="field" [group]="group" [item]="form"></ec-input>
       <ec-output *ngIf="field.readOnly" [field]="field" [item]="form"></ec-output>

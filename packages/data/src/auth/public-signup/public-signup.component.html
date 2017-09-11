@@ -1,11 +1,11 @@
-<form novalidate [formGroup]="signup" (ngSubmit)="onSubmit()" class="ec-auth-signup-public">
+<form novalidate [formGroup]="signup" (ngSubmit)="onSubmit()" class="ec-public-signup">
   <div class="alert error">{{errorMessage}}</div>
   <div class="input-group input-group_email">
     <label>E-Mail</label>
     <input type="email" formControlName="email" validate-onblur class="input">
     <ec-input-errors [control]="signup.get('email')"></ec-input-errors>
   </div>
-  <div class="input-group input-group_email">
+  <div class="input-group input-group_password">
   <label>Passwort</label>
     <input type="password" formControlName="password" validate-onblur class="input">
     <ec-input-errors [control]="signup.get('password')"></ec-input-errors>
