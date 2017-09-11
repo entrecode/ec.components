@@ -1,7 +1,8 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import { FieldValidators } from '../validators/field-validators';
+import { LoaderComponent } from '../../loader/loader.component';
 
 /** Login Form Component with validation. Fires success event with credentials on submit. */
 @Component({
@@ -20,6 +21,8 @@ export class LoginComponent implements OnInit {
   @Output() success: EventEmitter<any> = new EventEmitter();
   /** Event that emits when calling showError. */
   @Output() error: EventEmitter<any> = new EventEmitter();
+  /** The loader that should be shown during login */
+  @Input() loader: LoaderComponent;
 
   /** Injects the FormBuilder*/
   constructor(private fb: FormBuilder) {
@@ -28,7 +31,7 @@ export class LoginComponent implements OnInit {
   /** Initializes the form */
   ngOnInit() {
     this.form = this.fb.group({
-      email: ['', [Validators.required, FieldValidators.email]], //emailAvailable?
+      email: ['', [Validators.required, FieldValidators.email]], // emailAvailable?
       password: ['', [Validators.required]],
     });
   }
@@ -42,7 +45,7 @@ export class LoginComponent implements OnInit {
   }
 
   /** Method that is meant to be overwritten by a subclass to communicate with an API. */
-  login(value) { //meant to be overridden
+  login(value) { // meant to be overridden
     return Promise.resolve(value);
   }
 
@@ -53,10 +56,13 @@ export class LoginComponent implements OnInit {
     if (!this.form.valid) {
       return;
     }
-    this.login(this.form.value)
+    const login = this.login(this.form.value)
     .then((res) => {
       this.form.reset();
       this.success.emit(res);
-    })
+    });
+    if (this.loader) {
+      this.loader.wait(login);
+    }
   }
 }

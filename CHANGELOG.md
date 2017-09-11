@@ -3,6 +3,8 @@
 <a name="0.5.4"></a>
 ## 0.6.0
 - EntryFormComponent.deleteEntry now returns the deletion promise.
+- fix: SdkService.ready promise was not renewed after login
+- LoginComponent now accepts a loader as input
 BREAKING CHANGES:
 - FormComponent.submitted now emits the instance of Form and not the group
 
