@@ -5,3 +5,5 @@ cd ../ui
 rm -rf node_modules
 cd ../data
 rm -rf node_modules
+cd ../style
+rm -rf node_modules

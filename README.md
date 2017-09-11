@@ -111,6 +111,9 @@ npm run bootstrap
 npm run publish
 ```
 
+To publish a new package, make sure you run ```npm publish --access=public``` before running lerna.
+Make sure you update the symlinks.sh and delete-modules.sh scripts to make it work for the demo server.
+
 ## Import Structure
 All imports inside src/packages that import from the same package or another ec.components package must be relative.
 - Imports from the same package should always import the index file "from '..'"

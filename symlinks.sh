@@ -8,3 +8,6 @@ ln -s ../../packages/ui
 
 rm -rf data
 ln -s ../../packages/data
+
+rm -rf style
+ln -s ../../packages/style
