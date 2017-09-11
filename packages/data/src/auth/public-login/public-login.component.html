@@ -1,18 +1,16 @@
-<form novalidate [formGroup]="login" (ngSubmit)="onSubmit()">
-  <p class="error" *ngIf="errorMessage">
-    {{errorMessage}}
-  </p>
-  <label>
-    E-Mail
+<form novalidate [formGroup]="login" (ngSubmit)="onSubmit()" class="ec-auth-login-public">
+  <div class="alert error" *ngIf="errorMessage">{{errorMessage}}</div>
+  <div class="input-group input-group_email">
+    <label>E-Mail</label>
+    <input type="email" formControlName="email" validate-onblur class="input">
     <ec-input-errors [control]="login.get('email')"></ec-input-errors>
-    <input type="email" formControlName="email" validate-onblur>
-  </label>
-  <label>
-    Passwort
+  </div>
+  <div class="input-group input-group_email">
+    <label>Passwort</label>
     <ec-input-errors [control]="login.get('password')"></ec-input-errors>
-    <input type="password" formControlName="password" validate-onblur>
-  </label>
-  <button type="submit" [disabled]="login.invalid" [class.disabled]="login.invalid">
+    <input type="password" formControlName="password" validate-onblur class="input">
+  </div>
+  <button type="submit" [disabled]="login.invalid" [class.disabled]="login.invalid" class="btn">
     Login
   </button>
 </form>
