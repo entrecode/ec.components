@@ -5,7 +5,7 @@ import { DefaultInputComponent } from '@ec.components/ui/src/form/default-input/
 import * as moment from 'moment';
 import { FieldConfig } from '@ec.components/core/src/config/field-config.interface';
 import { FieldConfigProperty } from '@ec.components/core/src/config/field-config-property.interface';
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import { AssetInputComponent } from '../files/asset-input/asset-input.component';
 
 /** The TypeConfig holds each field type's specific behaviour in certain situations */
@@ -47,9 +47,10 @@ export class TypeConfigService {
     asset: {
       view: 'avatar',
       input: AssetInputComponent,
-      filterOperator: 'any',
+      filterOperator: 'exact',
       filterable: true,
       display: (value, entry, property) => entry.getImageThumbUrl(property, 100),
+      filterPopClass: 'modal'
     },
     assets: {
       view: 'avatars',
@@ -58,7 +59,8 @@ export class TypeConfigService {
       prefill: [],
       filterOperator: 'any',
       filterable: true,
-      queryFilter: (value) => value.split(',')
+      queryFilter: (value) => value.split(','),
+      filterPopClass: 'modal'
     },
     email: {},
     phone: {
@@ -67,14 +69,14 @@ export class TypeConfigService {
     datetime: {
       view: 'date',
       sortable: true,
-      // display: (value) => moment(value).format('DD.MM.YY')
       display: (value) => value ? moment(value).format('DD.MM.YY') : '',
       validate: (value) => {
         if (value && (value === 'invalid' || !moment(value).isValid())) {
           return 'Ungültiges Datum';
         }
         return;
-      }
+      },
+      filterPopClass: 'modal'
       /*,
       prefill: new Date(0)*/
     },
@@ -83,21 +85,20 @@ export class TypeConfigService {
       input: DefaultEntryInputComponent,
       output: DefaultOutputComponent,
       display: (value, entry, property) => entry.getTitle(property),
-      // resolve: (body) => TypeConfigService.resolveEntries,
       filterable: true,
-      filterOperator: 'any'
+      filterOperator: 'exact',
+      filterPopClass: 'modal'
     },
     entries: {
       view: 'tags',
       input: DefaultEntryInputComponent,
       output: DefaultOutputComponent,
       display: (value, entry, property) => entry.getTitle(property),
-      // resolve: (body) => TypeConfigService.resolveEntries,
       filterable: true,
       filterOperator: 'any',
       prefill: [],
-      queryFilter: (value) => value.split(',')
-      // form: false,
+      queryFilter: (value) => value.split(','),
+      filterPopClass: 'modal'
     },
     json: {
       input: DefaultEntryInputComponent,
@@ -107,15 +108,18 @@ export class TypeConfigService {
     location: {
       input: DefaultEntryInputComponent,
       output: DefaultEntryOutputComponent,
-      display: (value) => value ? value.longitude + ',' + value.latitude : ''
+      display: (value) => value ? value.longitude + ',' + value.latitude : '',
+      filterPopClass: 'modal'
     },
     account: {
       input: DefaultEntryInputComponent,
       output: DefaultEntryOutputComponent,
+      filterPopClass: 'modal'
     },
     role: {
       input: DefaultEntryInputComponent,
       output: DefaultEntryOutputComponent,
+      filterPopClass: 'modal'
     }
   };
 
