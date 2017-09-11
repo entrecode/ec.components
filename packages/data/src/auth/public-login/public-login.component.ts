@@ -6,8 +6,8 @@ import { SdkService } from '../../sdk/sdk.service';
 
 @Component({
   selector: 'ec-auth-public-login',
-  templateUrl: './public-login.component.html',
-  styleUrls: ['./public-login.component.scss']
+  template: require('./public-login.component.html'),
+  styles: [require('./public-login.component.scss')]
 })
 export class PublicLoginComponent implements OnInit {
   public login: FormGroup;

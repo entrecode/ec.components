@@ -5,8 +5,8 @@ import { demoRoutes } from './demo.routes';
 
 @Component({
   selector: 'demo-root',
-  templateUrl: './demo.component.html',
-  styleUrls: ['./demo.component.scss'],
+  template: require('./demo.component.html'),
+  styles: [require('./demo.component.scss')],
   encapsulation: ViewEncapsulation.None,
 })
 export class DemoComponent {

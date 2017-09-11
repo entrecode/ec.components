@@ -5,7 +5,7 @@ import { mocked } from '../../../mocks/data';
 
 @Component({
   selector: 'ec-select-demo',
-  templateUrl: './select-demo.component.html',
+  template: require('./select-demo.component.html'),
 })
 export class SelectDemoComponent {
 

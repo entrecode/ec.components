@@ -3,8 +3,8 @@ import { EditorComponent } from '../editor/editor.component';
 
 @Component({
   selector: 'ec-vc-toolbar',
-  templateUrl: './toolbar.component.html',
-  styleUrls: ['./toolbar.component.scss']
+  template: require('./toolbar.component.html'),
+  styles: [require('./toolbar.component.scss')]
 })
 export class ToolbarComponent {
 

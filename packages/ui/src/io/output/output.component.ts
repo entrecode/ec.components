@@ -7,8 +7,8 @@ import { Item } from '@ec.components/core/src/item/item';
 /** Outputs the given field of the given item, rendering the component dynamically. */
 @Component({
   selector: 'ec-output',
-  templateUrl: '../dynamic-slot/dynamic-slot.component.html',
-  styleUrls: ['./output.component.scss']
+  template: require('../dynamic-slot/dynamic-slot.component.html'),
+  styles: [require('./output.component.scss')]
 })
 export class OutputComponent extends DynamicSlotComponent {
   /** The instance of field that should be used in the template */

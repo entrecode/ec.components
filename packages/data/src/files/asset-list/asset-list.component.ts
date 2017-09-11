@@ -12,7 +12,7 @@ import PublicAssetResource from 'ec.sdk/src/resources/publicAPI/PublicAssetResou
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent */
 @Component({
   selector: 'ec-asset-list',
-  templateUrl: '../../../../ui/src/list/list.component.html'
+  template: require('../../../../ui/src/list/list.component.html')
 })
 export class AssetListComponent extends ResourceListComponent<PublicAssetResource | AssetResource> {
 

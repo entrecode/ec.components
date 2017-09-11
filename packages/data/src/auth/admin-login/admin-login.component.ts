@@ -1,13 +1,13 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import { AdminService } from '../../sdk/admin.service';
 import { FieldValidators } from '@ec.components/ui/src/utility/validators/field-validators';
 
 @Component({
   selector: 'ec-auth-admin-login',
-  templateUrl: './admin-login.component.html',
-  styleUrls: ['./admin-login.component.scss']
+  template: require('./admin-login.component.html'),
+  styles: [require('./admin-login.component.scss')]
 })
 export class AdminLoginComponent implements OnInit {
   public login: FormGroup;

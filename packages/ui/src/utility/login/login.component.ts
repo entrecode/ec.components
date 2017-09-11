@@ -7,8 +7,8 @@ import { LoaderComponent } from '../../loader/loader.component';
 /** Login Form Component with validation. Fires success event with credentials on submit. */
 @Component({
   selector: 'ec-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  template: require('./login.component.html'),
+  styles: [require('./login.component.scss')]
 })
 export class LoginComponent implements OnInit {
   /** The login's form group.*/

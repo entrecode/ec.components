@@ -3,7 +3,7 @@ import { Pagination } from '../../../packages/core/src/pagination/pagination';
 
 @Component({
   selector: 'ec-pagination-demo',
-  templateUrl: './pagination-demo.component.html',
+  template: require('./pagination-demo.component.html'),
 })
 export class PaginationDemoComponent {
   public pagination = new Pagination({});

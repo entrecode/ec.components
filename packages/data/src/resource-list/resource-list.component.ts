@@ -12,7 +12,7 @@ import { ResourceList } from './resource-list';
  * It is meant to be extended and overriden the createList method. See e.g. AssetListComponent. */
 @Component({
   selector: 'ec-resource-list',
-  templateUrl: '../../../ui/src/list/list.component.html'
+  template: require('../../../ui/src/list/list.component.html')
 })
 export class ResourceListComponent<T> extends ListComponent<T> implements OnChanges {
   /** If true, only one item is selectable next */

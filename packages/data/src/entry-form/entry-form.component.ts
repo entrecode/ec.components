@@ -12,8 +12,8 @@ import EntryResource from 'ec.sdk/src/resources/publicAPI/EntryResource';
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent */
 @Component({
   selector: 'ec-entry-form',
-  templateUrl: '../../../ui/src/form/form.component.html',
-  styleUrls: ['./entry-form.component.scss']
+  template: require('../../../ui/src/form/form.component.html'),
+  styles: [require('./entry-form.component.scss')]
 })
 export class EntryFormComponent extends FormComponent {
   /** The model of the form. It is used to extract the schema and generate the config from. */

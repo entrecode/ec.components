@@ -3,7 +3,7 @@ import { DefaultInputComponent } from '@ec.components/ui/src/form/default-input/
 
 /** This component holds the input templates for all field types that can not be represented by the default input template. */
 @Component({
-  templateUrl: './asset-input.component.html',
+  template: require('./asset-input.component.html'),
 })
 export class AssetInputComponent extends DefaultInputComponent {
 

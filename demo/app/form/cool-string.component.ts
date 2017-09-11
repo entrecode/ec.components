@@ -3,7 +3,7 @@ import { DefaultInputComponent } from '../../../packages/ui/src/form/default-inp
 
 @Component({
   selector: 'ec-cool-string',
-  templateUrl: './cool-string.component.html',
+  template: require('./cool-string.component.html'),
 })
 export class CoolStringComponent extends DefaultInputComponent {
 }

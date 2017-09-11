@@ -15,8 +15,8 @@ import { Item } from '@ec.components/core/src/item/item';
  * */
 @Component({
   selector: 'ec-select',
-  templateUrl: './select.component.html',
-  styleUrls: ['./select.component.scss'],
+  template: require('./select.component.html'),
+  styles: [require('./select.component.scss')],
   encapsulation: ViewEncapsulation.None,
   providers: [
     {

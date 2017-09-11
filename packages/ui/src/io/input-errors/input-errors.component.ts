@@ -5,8 +5,8 @@ import { errors } from './input-errors';
 /** This component keeps track of a form control's errors and displays them. It is meant to be used beneath a form control. */
 @Component({
   selector: 'ec-input-errors',
-  templateUrl: './input-errors.component.html',
-  styleUrls: ['./input-errors.component.scss']
+  template: require('./input-errors.component.html'),
+  styles: [require('./input-errors.component.scss')]
 })
 export class InputErrorsComponent {
   /** The form control that should be tracked */

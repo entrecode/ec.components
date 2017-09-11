@@ -11,8 +11,8 @@ declare const document;
 
 @Component({
   selector: 'ec-vc-editor,[ec-vc-editor]',
-  templateUrl: './editor.component.html',
-  styleUrls: ['./editor.component.scss']
+  template: require('./editor.component.html'),
+  styles: [require('./editor.component.scss')]
 })
 export class EditorComponent {
   @Input() json;

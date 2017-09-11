@@ -17,8 +17,8 @@ import EntryResource from "ec.sdk/src/resources/publicAPI/EntryResource";
 /** Shows entries of a selection and is able to pick new ones from a crud list */
 @Component({
   selector: 'ec-entry-select',
-  templateUrl: './entry-select.component.html',
-  styleUrls: ['../../../ui/src/form/select/select.component.scss'],
+  template: require('./entry-select.component.html'),
+  styles: [require('../../../ui/src/form/select/select.component.scss')],
   encapsulation: ViewEncapsulation.None,
   providers: [
     {

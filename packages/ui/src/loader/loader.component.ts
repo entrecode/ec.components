@@ -4,8 +4,8 @@ import { Collection } from '@ec.components/core/src/collection/collection';
 /** The ec-loader can be plugged into various components to be triggered when they load stuff. */
 @Component({
   selector: 'ec-loader',
-  templateUrl: './loader.component.html',
-  styleUrls: ['./loader.component.scss']
+  template: require('./loader.component.html'),
+  styles: [require('./loader.component.scss')]
 })
 export class LoaderComponent {
   /** The current stack of loading promises.*/

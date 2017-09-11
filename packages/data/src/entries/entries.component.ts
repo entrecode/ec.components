@@ -9,7 +9,7 @@ import { SdkService } from '../sdk/sdk.service';
 /** Loads an entryList of a given model with the given config. */
 @Component({
   selector: 'ec-entries',
-  templateUrl: './entries.component.html'
+  template: require('./entries.component.html')
 })
 export class EntriesComponent {
   /** The promise of the entryList call. */
