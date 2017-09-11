@@ -60,7 +60,7 @@ class FormComponent {
     submit() {
         const submit = this.form.save(this.group.value)
             .then((form) => {
-            this.submitted.emit(this.group);
+            this.submitted.emit(this.form);
             this.edit(form);
             this.notificationService.emit({
                 title: 'Eintrag gespeichert',

@@ -7,6 +7,7 @@ import { CrudService } from '../crud/crud.service';
 import { Item } from '@ec.components/core/src/item/item';
 import { FormConfig } from '@ec.components/core/src/form/form-config.interface';
 import { FormService } from '@ec.components/ui/src/form/form.service';
+import EntryResource from 'ec.sdk/src/resources/publicAPI/EntryResource';
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent */
 export declare class EntryFormComponent extends FormComponent {
     protected loaderService: LoaderService;
@@ -17,7 +18,7 @@ export declare class EntryFormComponent extends FormComponent {
     /** The model of the form. It is used to extract the schema and generate the config from. */
     model: string;
     /** The entry that should be edited. */
-    entry: any;
+    entry: EntryResource;
     /** This output fires when the entry has been deleted using deleteEntry(). */
     deleted: EventEmitter<any>;
     /** Injects the required services. */
@@ -27,5 +28,5 @@ export declare class EntryFormComponent extends FormComponent {
     /** Yields true if the current edited entry is already existing in the backend. */
     isEditing(): any;
     /** Deletes the edited entry. Fires the deleted Output. */
-    deleteEntry(): void;
+    deleteEntry(): Promise<void>;
 }

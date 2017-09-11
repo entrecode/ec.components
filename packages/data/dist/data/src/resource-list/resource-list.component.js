@@ -40,12 +40,12 @@ class ResourceListComponent extends list_component_1.ListComponent {
                 return;
             }
             this.list = list;
-            this.list.change$.subscribe((list) => {
+            this.list.change$.subscribe(() => {
                 if (!this.selection && this.list.config && !this.list.config.disableSelection) {
                     this.selection = new selection_1.Selection([], this.list.config);
                 }
                 // console.log('changed list', this.list.config.filter);
-                //TODO update route to reflect the filter settings
+                // TODO update route to reflect the filter settings
             });
             this.list.loading$.subscribe((promise) => {
                 this.loaderService.wait(promise, this.loader);

@@ -32,7 +32,6 @@ class EntryList extends resource_list_1.ResourceList {
             this.error.next(err);
         });
         this.loading.next(loading);
-        // return loading;
     }
 }
 exports.EntryList = EntryList;

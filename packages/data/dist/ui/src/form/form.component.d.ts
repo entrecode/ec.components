@@ -28,7 +28,7 @@ export declare class FormComponent implements OnChanges {
     /** The loader that should be used. */
     loader: LoaderComponent;
     /** Emits when the form is submitted. The form can only be submitted if all Validators succeeded. */
-    submitted: EventEmitter<FormGroup>;
+    submitted: EventEmitter<Form<any>>;
     /** Emits when a new instance of Form is present */
     change: EventEmitter<FormComponent>;
     /** Injects the services. */

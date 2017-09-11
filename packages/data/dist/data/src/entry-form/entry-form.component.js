@@ -27,11 +27,11 @@ class EntryFormComponent extends form_component_1.FormComponent {
             return;
         }
         Promise.resolve(config || this.modelConfig.generateConfig(this.model))
-            .then((config) => {
+            .then((_config) => {
             if (this.entry) {
-                item = new item_1.Item(this.entry, config);
+                item = new item_1.Item(this.entry, _config);
             }
-            super.init(item, config);
+            super.init(item, _config);
         });
     }
     /** Yields true if the current edited entry is already existing in the backend. */
@@ -59,6 +59,7 @@ class EntryFormComponent extends form_component_1.FormComponent {
             });
         });
         this.loaderService.wait(deletion, this.loader);
+        return deletion;
     }
 }
 EntryFormComponent.decorators = [

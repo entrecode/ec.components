@@ -1688,23 +1688,19 @@ export class PublicSignupComponent implements OnInit {
     </div>
 
     <div class="tab-pane fade" id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;form novalidate [formGroup]&#x3D;&quot;signup&quot; (ngSubmit)&#x3D;&quot;onSubmit()&quot;&gt;
-  &lt;p class&#x3D;&quot;error&quot;&gt;
-    {{errorMessage}}
-  &lt;/p&gt;
-  &lt;label&gt;
-    E-Mail
+        <pre class="line-numbers"><code class="language-html">&lt;form novalidate [formGroup]&#x3D;&quot;signup&quot; (ngSubmit)&#x3D;&quot;onSubmit()&quot; class&#x3D;&quot;ec-public-signup&quot;&gt;
+  &lt;div class&#x3D;&quot;alert error&quot;&gt;{{errorMessage}}&lt;/div&gt;
+  &lt;div class&#x3D;&quot;input-group input-group_email&quot;&gt;
+    &lt;label&gt;E-Mail&lt;/label&gt;
+    &lt;input type&#x3D;&quot;email&quot; formControlName&#x3D;&quot;email&quot; validate-onblur class&#x3D;&quot;input&quot;&gt;
     &lt;ec-input-errors [control]&#x3D;&quot;signup.get(&#x27;email&#x27;)&quot;&gt;&lt;/ec-input-errors&gt;
-    &lt;input type&#x3D;&quot;email&quot; formControlName&#x3D;&quot;email&quot; validate-onblur&gt;
-  &lt;/label&gt;
-  &lt;label&gt;
-    Passwort
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;input-group input-group_password&quot;&gt;
+  &lt;label&gt;Passwort&lt;/label&gt;
+    &lt;input type&#x3D;&quot;password&quot; formControlName&#x3D;&quot;password&quot; validate-onblur class&#x3D;&quot;input&quot;&gt;
     &lt;ec-input-errors [control]&#x3D;&quot;signup.get(&#x27;password&#x27;)&quot;&gt;&lt;/ec-input-errors&gt;
-    &lt;input type&#x3D;&quot;password&quot; formControlName&#x3D;&quot;password&quot; validate-onblur&gt;
-  &lt;/label&gt;
-  &lt;button type&#x3D;&quot;submit&quot; [disabled]&#x3D;&quot;signup.invalid&quot; [class.disabled]&#x3D;&quot;signup.invalid&quot;&gt;
-    Registrieren
-  &lt;/button&gt;
+  &lt;/div&gt;
+  &lt;button type&#x3D;&quot;submit&quot; [disabled]&#x3D;&quot;signup.invalid&quot; [class.disabled]&#x3D;&quot;signup.invalid&quot; class&#x3D;&quot;btn&quot;&gt;Registrieren&lt;/button&gt;
 &lt;/form&gt;</code></pre>
     </div>
 
@@ -1731,7 +1727,7 @@ export class PublicSignupComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><form novalidate [formGroup]="signup" (ngSubmit)="onSubmit()">  <p class="error">    {{errorMessage}}  </p>  <label>    E-Mail    <ec-input-errors [control]="signup.get(\'email\')"></ec-input-errors>    <input type="email" formControlName="email" validate-onblur>  </label>  <label>    Passwort    <ec-input-errors [control]="signup.get(\'password\')"></ec-input-errors>    <input type="password" formControlName="password" validate-onblur>  </label>  <button type="submit" [disabled]="signup.invalid" [class.disabled]="signup.invalid">    Registrieren  </button></form></div>'
+        var COMPONENT_TEMPLATE = '<div><form novalidate [formGroup]="signup" (ngSubmit)="onSubmit()" class="ec-public-signup">  <div class="alert error">{{errorMessage}}</div>  <div class="input-group input-group_email">    <label>E-Mail</label>    <input type="email" formControlName="email" validate-onblur class="input">    <ec-input-errors [control]="signup.get(\'email\')"></ec-input-errors>  </div>  <div class="input-group input-group_password">  <label>Passwort</label>    <input type="password" formControlName="password" validate-onblur class="input">    <ec-input-errors [control]="signup.get(\'password\')"></ec-input-errors>  </div>  <button type="submit" [disabled]="signup.invalid" [class.disabled]="signup.invalid" class="btn">Registrieren</button></form></div>'
     var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'AssetInputComponent', 'selector': ''},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
     var DIRECTIVES = [{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'PublicSignupComponent'};

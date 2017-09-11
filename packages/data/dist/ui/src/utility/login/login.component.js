@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@angular/core");
 const forms_1 = require("@angular/forms");
-const rxjs_1 = require("rxjs");
+const Observable_1 = require("rxjs/Observable");
 const field_validators_1 = require("../validators/field-validators");
 /** Login Form Component with validation. Fires success event with credentials on submit. */
 class LoginComponent {
@@ -26,7 +26,7 @@ class LoginComponent {
         this.errorMessage = err.message;
         this.form.get('password').setValue('');
         this.error.emit(err);
-        rxjs_1.Observable.throw(err);
+        Observable_1.Observable.throw(err);
     }
     /** Method that is meant to be overwritten by a subclass to communicate with an API. */
     login(value) {
@@ -39,11 +39,14 @@ class LoginComponent {
         if (!this.form.valid) {
             return;
         }
-        this.login(this.form.value)
+        const login = this.login(this.form.value)
             .then((res) => {
             this.form.reset();
             this.success.emit(res);
         });
+        if (this.loader) {
+            this.loader.wait(login);
+        }
     }
 }
 LoginComponent.decorators = [
@@ -60,6 +63,7 @@ LoginComponent.ctorParameters = () => [
 LoginComponent.propDecorators = {
     'success': [{ type: core_1.Output },],
     'error': [{ type: core_1.Output },],
+    'loader': [{ type: core_1.Input },],
 };
 exports.LoginComponent = LoginComponent;
 //# sourceMappingURL=login.component.js.map

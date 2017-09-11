@@ -1,6 +1,10 @@
+/**
+ * Created by felix on 26.05.17.
+ */
+import { OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 /** Renders a nested menu from a given routes Array (the same you would use for angular routing). */
-export declare class MenuComponent {
+export declare class MenuComponent implements OnChanges {
     private router;
     /** Routes that should be used for the menu. You can use your angular router routes here. */
     routes: any;

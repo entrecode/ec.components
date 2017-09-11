@@ -1356,7 +1356,7 @@ setClientID.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:110</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="109" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:109</a></div>
                                         </td>
                                     </tr>
             
@@ -1390,7 +1390,7 @@ setClientID.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:79</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:78</a></div>
                                         </td>
                                     </tr>
             
@@ -1451,7 +1451,7 @@ setClientID.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:58</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:56</a></div>
                                         </td>
                                     </tr>
             
@@ -1513,7 +1513,7 @@ setClientID.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:87</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:86</a></div>
                                         </td>
                                     </tr>
             
@@ -1576,7 +1576,7 @@ setClientID.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:99</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:98</a></div>
                                         </td>
                                     </tr>
             
@@ -1610,7 +1610,7 @@ setClientID.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="136" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:136</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="135" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:135</a></div>
                                         </td>
                                     </tr>
             
@@ -1642,7 +1642,7 @@ setClientID.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="118" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:118</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="117" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:117</a></div>
                                         </td>
                                     </tr>
             
@@ -1957,10 +1957,8 @@ export class SdkService {
 
   /** Calls init and sets ready to true when finished. */
   constructor(@Inject(&#x27;environment&#x27;) private environment) {
-    this.ready &#x3D; this.init();
-    this.ready.then((account) &#x3D;&gt; {
+    this.init().then((account) &#x3D;&gt; {
       this.datamanager &#x3D; new DataManager(&lt;env&gt;environment.environment);
-      // this.ready.emit(account);
     });
   }
 
@@ -1976,7 +1974,7 @@ export class SdkService {
       this.api.setClientID(environment.clientID);
       this.session.setClientID(environment.clientID);
     }
-    return this.accounts.me().then((account) &#x3D;&gt; {
+    this.ready &#x3D; this.accounts.me().then((account) &#x3D;&gt; {
       return account || this.api.me();
     }).catch((err) &#x3D;&gt; {
       return this.api.me();
@@ -1984,6 +1982,7 @@ export class SdkService {
       this.user &#x3D; user;
       return this.user;
     });
+    return this.ready;
   }
 
   getSchema(model) {

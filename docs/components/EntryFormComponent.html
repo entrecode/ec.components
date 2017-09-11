@@ -1324,7 +1324,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">packages/data/src/entry-form/entry-form.component.ts:23</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">packages/data/src/entry-form/entry-form.component.ts:24</a></div>
                                 </td>
                             </tr>
     
@@ -1410,11 +1410,15 @@
                         <td class="col-md-10">
                             <div><p>The entry that should be edited. </p>
 </div>
+                              <p>
+                                <em>Type:</em>    <code><a href="../classes/Entry.html" target="_self" >EntryResource</a></code>
+
+                              </p>
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">packages/data/src/entry-form/entry-form.component.ts:21</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">packages/data/src/entry-form/entry-form.component.ts:22</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1437,7 +1441,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">packages/data/src/entry-form/entry-form.component.ts:19</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">packages/data/src/entry-form/entry-form.component.ts:20</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1462,7 +1466,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">packages/data/src/entry-form/entry-form.component.ts:23</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">packages/data/src/entry-form/entry-form.component.ts:24</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1493,7 +1497,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">packages/data/src/entry-form/entry-form.component.ts:54</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">packages/data/src/entry-form/entry-form.component.ts:59</a></div>
                                 </td>
                             </tr>
     
@@ -1503,7 +1507,7 @@
     </div>
     
                                 <div class="io-description">
-                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
     
                                 </div>
                         </td>
@@ -1527,7 +1531,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">packages/data/src/entry-form/entry-form.component.ts:31</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">packages/data/src/entry-form/entry-form.component.ts:36</a></div>
                                 </td>
                             </tr>
     
@@ -1599,7 +1603,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">packages/data/src/entry-form/entry-form.component.ts:45</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">packages/data/src/entry-form/entry-form.component.ts:50</a></div>
                                 </td>
                             </tr>
     
@@ -1636,6 +1640,7 @@ import { CrudService } from &#x27;../crud/crud.service&#x27;;
 import { Item } from &#x27;@ec.components/core/src/item/item&#x27;;
 import { FormConfig } from &#x27;@ec.components/core/src/form/form-config.interface&#x27;;
 import { FormService } from &#x27;@ec.components/ui/src/form/form.service&#x27;;
+import EntryResource from &#x27;ec.sdk/src/resources/publicAPI/EntryResource&#x27;;
 
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent */
 @Component({
@@ -1647,12 +1652,16 @@ export class EntryFormComponent extends FormComponent {
   /** The model of the form. It is used to extract the schema and generate the config from. */
   @Input() model: string;
   /** The entry that should be edited. */
-  @Input() entry;//: EntryResource;
+  @Input() entry: EntryResource;
   /** This output fires when the entry has been deleted using deleteEntry(). */
   @Output() deleted: EventEmitter&lt;any&gt; &#x3D; new EventEmitter();
 
   /** Injects the required services. */
-  constructor(protected loaderService: LoaderService, private modelConfig: ModelConfigService, protected notificationService: NotificationsService, protected crud: CrudService, protected formService: FormService) {
+  constructor(protected loaderService: LoaderService,
+    private modelConfig: ModelConfigService,
+    protected notificationService: NotificationsService,
+    protected crud: CrudService,
+    protected formService: FormService) {
     super(loaderService, notificationService, formService);
   }
 
@@ -1662,11 +1671,11 @@ export class EntryFormComponent extends FormComponent {
       return;
     }
     Promise.resolve(config || this.modelConfig.generateConfig(this.model))
-    .then((config) &#x3D;&gt; {
+    .then((_config) &#x3D;&gt; {
       if (this.entry) {
-        item &#x3D; new Item(this.entry, config);
+        item &#x3D; new Item(this.entry, _config);
       }
-      super.init(item, config);
+      super.init(item, _config);
     });
   }
 
@@ -1696,6 +1705,7 @@ export class EntryFormComponent extends FormComponent {
       });
     });
     this.loaderService.wait(deletion, this.loader);
+    return deletion;
   }
 }
 </code></pre>
@@ -1707,8 +1717,8 @@ export class EntryFormComponent extends FormComponent {
     &lt;ng-content&gt;&lt;/ng-content&gt;
   &lt;/div&gt;
   &lt;div *ngIf&#x3D;&quot;!wrapper.children.length&amp;&amp;!empty&quot;&gt;
-    &lt;div *ngFor&#x3D;&quot;let field of form?.fields | visibleFields&quot; [ngClass]&#x3D;&quot;&#x27;ec-label_&#x27; + field.view&quot;
-         [ngSwitch]&#x3D;&quot;field.view&quot;&gt;
+    &lt;div *ngFor&#x3D;&quot;let field of form?.fields | visibleFields&quot; [ngClass]&#x3D;&quot;&#x27;input-group_&#x27; + field.view&quot;
+         [ngSwitch]&#x3D;&quot;field.view&quot; class&#x3D;&quot;input-group&quot;&gt;
       &lt;label&gt;{{field.label || field.property}}&lt;/label&gt;
       &lt;ec-input *ngIf&#x3D;&quot;!field.readOnly&quot; [field]&#x3D;&quot;field&quot; [group]&#x3D;&quot;group&quot; [item]&#x3D;&quot;form&quot;&gt;&lt;/ec-input&gt;
       &lt;ec-output *ngIf&#x3D;&quot;field.readOnly&quot; [field]&#x3D;&quot;field&quot; [item]&#x3D;&quot;form&quot;&gt;&lt;/ec-output&gt;
@@ -1743,7 +1753,7 @@ export class EntryFormComponent extends FormComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><form novalidate [formGroup]="group" (ngSubmit)="submit()" *ngIf="group">  <div #wrapper>    <ng-content></ng-content>  </div>  <div *ngIf="!wrapper.children.length&&!empty">    <div *ngFor="let field of form?.fields | visibleFields" [ngClass]="\'ec-label_\' + field.view"         [ngSwitch]="field.view">      <label>{{field.label || field.property}}</label>      <ec-input *ngIf="!field.readOnly" [field]="field" [group]="group" [item]="form"></ec-input>      <ec-output *ngIf="field.readOnly" [field]="field" [item]="form"></ec-output>    </div>    <button type="button" (click)="submit()" *ngIf="submitButton!==false" [disabled]="group.invalid"            class="btn">Speichern    </button>  </div></form></div>'
+        var COMPONENT_TEMPLATE = '<div><form novalidate [formGroup]="group" (ngSubmit)="submit()" *ngIf="group">  <div #wrapper>    <ng-content></ng-content>  </div>  <div *ngIf="!wrapper.children.length&&!empty">    <div *ngFor="let field of form?.fields | visibleFields" [ngClass]="\'input-group_\' + field.view"         [ngSwitch]="field.view" class="input-group">      <label>{{field.label || field.property}}</label>      <ec-input *ngIf="!field.readOnly" [field]="field" [group]="group" [item]="form"></ec-input>      <ec-output *ngIf="field.readOnly" [field]="field" [item]="form"></ec-output>    </div>    <button type="button" (click)="submit()" *ngIf="submitButton!==false" [disabled]="group.invalid"            class="btn">Speichern    </button>  </div></form></div>'
     var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'AssetInputComponent', 'selector': ''},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
     var DIRECTIVES = [{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'EntryFormComponent'};

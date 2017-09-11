@@ -28,10 +28,8 @@ class SdkService {
         this.environment = environment;
         /** Pending schema requests */
         this.schemaRequests = {};
-        this.ready = this.init();
-        this.ready.then((account) => {
+        this.init().then((account) => {
             this.datamanager = new DataManager_1.default(environment.environment);
-            // this.ready.emit(account);
         });
     }
     /** Creates all the API instances and determines the current user. */
@@ -46,7 +44,7 @@ class SdkService {
             this.api.setClientID(environment.clientID);
             this.session.setClientID(environment.clientID);
         }
-        return this.accounts.me().then((account) => {
+        this.ready = this.accounts.me().then((account) => {
             return account || this.api.me();
         }).catch((err) => {
             return this.api.me();
@@ -54,6 +52,7 @@ class SdkService {
             this.user = user;
             return this.user;
         });
+        return this.ready;
     }
     getSchema(model) {
         if (!this.schemaRequests[model]) {

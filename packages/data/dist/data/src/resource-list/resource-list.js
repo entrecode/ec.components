@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const list_1 = require("@ec.components/core/src/list/list");
 const item_1 = require("@ec.components/core/src/item/item");
-const rxjs_1 = require("rxjs");
+const Subject_1 = require("rxjs/Subject");
 /**
  * Extension of List for SDK ListResource. Each each implementation should implement the load
  * method to call the SDK method for loading the desired list! (see EntryList for example)
@@ -14,11 +14,11 @@ class ResourceList extends list_1.List {
         super([], config);
         this.sdk = sdk;
         /** Subject that should be nexted when loading begins */
-        this.loading = new rxjs_1.Subject();
+        this.loading = new Subject_1.Subject();
         /** Observable that is nexted when the list begins loading. */
         this.loading$ = this.loading.asObservable();
         /** Subject that should be nexted when an error occurs */
-        this.error = new rxjs_1.Subject();
+        this.error = new Subject_1.Subject();
         /** Observable that is nexted when the list has an error. */
         this.error$ = this.error.asObservable();
         this.load();

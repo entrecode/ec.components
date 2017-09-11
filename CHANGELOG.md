@@ -1,6 +1,6 @@
 # Changelog
 
-<a name="0.5.4"></a>
+<a name="0.6.0"></a>
 ## 0.6.0
 - EntryFormComponent.deleteEntry now returns the deletion promise.
 - fix: SdkService.ready promise was not renewed after login

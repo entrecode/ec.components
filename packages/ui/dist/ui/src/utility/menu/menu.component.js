@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * Created by felix on 26.05.17.
  */
 const core_1 = require("@angular/core");
-const router_1 = require("@angular/router"); //TODO find way to import Route without getting warning
+const router_1 = require("@angular/router"); // TODO find way to import Route without getting warning
 /** Renders a nested menu from a given routes Array (the same you would use for angular routing). */
 class MenuComponent {
     /** Injects the Router. */
@@ -20,7 +20,9 @@ class MenuComponent {
     /** updates the routes on change of route */
     ngOnChanges() {
         if (this.route) {
-            this.routes = this.route.children.filter(route => route.path && route.path.indexOf(':') == -1);
+            this.routes = this.route.children
+                .filter(route => route.path && route.path.indexOf(':') === -1)
+                .filter(route => !route.data || !route.data.hidden);
         }
     }
     /** Returns true if the item or a child of it is active. */

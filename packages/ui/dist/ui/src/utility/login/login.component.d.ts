@@ -1,5 +1,6 @@
 import { EventEmitter, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { LoaderComponent } from '../../loader/loader.component';
 /** Login Form Component with validation. Fires success event with credentials on submit. */
 export declare class LoginComponent implements OnInit {
     private fb;
@@ -13,6 +14,8 @@ export declare class LoginComponent implements OnInit {
     success: EventEmitter<any>;
     /** Event that emits when calling showError. */
     error: EventEmitter<any>;
+    /** The loader that should be shown during login */
+    loader: LoaderComponent;
     /** Injects the FormBuilder*/
     constructor(fb: FormBuilder);
     /** Initializes the form */

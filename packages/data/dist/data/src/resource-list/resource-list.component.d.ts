@@ -1,3 +1,4 @@
+import { OnChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SdkService } from '../sdk/sdk.service';
 import { LoaderComponent } from '@ec.components/ui/src/loader/loader.component';
@@ -7,7 +8,7 @@ import { NotificationsService } from '@ec.components/ui/src/notifications/notifi
 import { ResourceList } from './resource-list';
 /** The ResourceListComponent is an extension of ListComponent for SDK ListResources.
  * It is meant to be extended and overriden the createList method. See e.g. AssetListComponent. */
-export declare class ResourceListComponent<T> extends ListComponent<T> {
+export declare class ResourceListComponent<T> extends ListComponent<T> implements OnChanges {
     protected loaderService: LoaderService;
     protected sdk: SdkService;
     protected notificationService: NotificationsService;

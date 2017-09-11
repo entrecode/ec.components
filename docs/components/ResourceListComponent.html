@@ -1212,6 +1212,12 @@ It is meant to be extended and overriden the createList method. See e.g. AssetLi
             <code><a href="../classes/List.html" target="_self" >ListComponent</a></code>
     </p>
 
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnChanges-interface.html" target="_blank" >OnChanges</a></code>
+    </p>
 
 
 <section>
@@ -1499,7 +1505,7 @@ It is meant to be extended and overriden the createList method. See e.g. AssetLi
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">packages/data/src/resource-list/resource-list.component.ts:77</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">packages/data/src/resource-list/resource-list.component.ts:76</a></div>
                                 </td>
                             </tr>
     
@@ -1571,7 +1577,7 @@ It is meant to be extended and overriden the createList method. See e.g. AssetLi
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">packages/data/src/resource-list/resource-list.component.ts:81</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">packages/data/src/resource-list/resource-list.component.ts:80</a></div>
                                 </td>
                             </tr>
     
@@ -1730,7 +1736,7 @@ It is meant to be extended and overriden the createList method. See e.g. AssetLi
 
 
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { Component, Input, Optional } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { Component, Input, OnChanges, Optional } from &#x27;@angular/core&#x27;;
 import { ActivatedRoute } from &#x27;@angular/router&#x27;;
 import { SdkService } from &#x27;../sdk/sdk.service&#x27;;
 import { LoaderComponent } from &#x27;@ec.components/ui/src/loader/loader.component&#x27;;
@@ -1746,7 +1752,7 @@ import { ResourceList } from &#x27;./resource-list&#x27;;
   selector: &#x27;ec-resource-list&#x27;,
   templateUrl: &#x27;../../../ui/src/list/list.component.html&#x27;
 })
-export class ResourceListComponent&lt;T&gt; extends ListComponent&lt;T&gt; {
+export class ResourceListComponent&lt;T&gt; extends ListComponent&lt;T&gt; implements OnChanges {
   /** If true, only one item is selectable next */
   @Input() solo: boolean;
   /** The instance of an EntryList */
@@ -1784,13 +1790,12 @@ export class ResourceListComponent&lt;T&gt; extends ListComponent&lt;T&gt; {
         return;
       }
       this.list &#x3D; list;
-      this.list.change$.subscribe((list) &#x3D;&gt; {
+      this.list.change$.subscribe(() &#x3D;&gt; {
         if (!this.selection &amp;&amp; this.list.config &amp;&amp; !this.list.config.disableSelection) {
           this.selection &#x3D; new Selection([], this.list.config);
         }
-
         // console.log(&#x27;changed list&#x27;, this.list.config.filter);
-        //TODO update route to reflect the filter settings
+        // TODO update route to reflect the filter settings
 
       });
       this.list.loading$.subscribe((promise: Promise&lt;any&gt;) &#x3D;&gt; {
