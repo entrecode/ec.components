@@ -1264,7 +1264,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="123" class="link-to-prism">packages/data/src/model-config/type-config.service.ts:123</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="127" class="link-to-prism">packages/data/src/model-config/type-config.service.ts:127</a></div>
                                         </td>
                                     </tr>
             
@@ -1327,7 +1327,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="139" class="link-to-prism">packages/data/src/model-config/type-config.service.ts:139</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="143" class="link-to-prism">packages/data/src/model-config/type-config.service.ts:143</a></div>
                                         </td>
                                     </tr>
             
@@ -1436,7 +1436,7 @@ import { DefaultInputComponent } from &#x27;@ec.components/ui/src/form/default-i
 import * as moment from &#x27;moment&#x27;;
 import { FieldConfig } from &#x27;@ec.components/core/src/config/field-config.interface&#x27;;
 import { FieldConfigProperty } from &#x27;@ec.components/core/src/config/field-config-property.interface&#x27;;
-import { Injectable } from &quot;@angular/core&quot;;
+import { Injectable } from &#x27;@angular/core&#x27;;
 import { AssetInputComponent } from &#x27;../files/asset-input/asset-input.component&#x27;;
 
 /** The TypeConfig holds each field type&#x27;s specific behaviour in certain situations */
@@ -1478,9 +1478,10 @@ export class TypeConfigService {
     asset: {
       view: &#x27;avatar&#x27;,
       input: AssetInputComponent,
-      filterOperator: &#x27;any&#x27;,
+      filterOperator: &#x27;exact&#x27;,
       filterable: true,
       display: (value, entry, property) &#x3D;&gt; entry.getImageThumbUrl(property, 100),
+      filterPopClass: &#x27;modal&#x27;
     },
     assets: {
       view: &#x27;avatars&#x27;,
@@ -1489,7 +1490,8 @@ export class TypeConfigService {
       prefill: [],
       filterOperator: &#x27;any&#x27;,
       filterable: true,
-      queryFilter: (value) &#x3D;&gt; value.split(&#x27;,&#x27;)
+      queryFilter: (value) &#x3D;&gt; value.split(&#x27;,&#x27;),
+      filterPopClass: &#x27;modal&#x27;
     },
     email: {},
     phone: {
@@ -1498,14 +1500,14 @@ export class TypeConfigService {
     datetime: {
       view: &#x27;date&#x27;,
       sortable: true,
-      // display: (value) &#x3D;&gt; moment(value).format(&#x27;DD.MM.YY&#x27;)
       display: (value) &#x3D;&gt; value ? moment(value).format(&#x27;DD.MM.YY&#x27;) : &#x27;&#x27;,
       validate: (value) &#x3D;&gt; {
         if (value &amp;&amp; (value &#x3D;&#x3D;&#x3D; &#x27;invalid&#x27; || !moment(value).isValid())) {
           return &#x27;Ungültiges Datum&#x27;;
         }
         return;
-      }
+      },
+      filterPopClass: &#x27;modal&#x27;
       /*,
       prefill: new Date(0)*/
     },
@@ -1514,21 +1516,20 @@ export class TypeConfigService {
       input: DefaultEntryInputComponent,
       output: DefaultOutputComponent,
       display: (value, entry, property) &#x3D;&gt; entry.getTitle(property),
-      // resolve: (body) &#x3D;&gt; TypeConfigService.resolveEntries,
       filterable: true,
-      filterOperator: &#x27;any&#x27;
+      filterOperator: &#x27;exact&#x27;,
+      filterPopClass: &#x27;modal&#x27;
     },
     entries: {
       view: &#x27;tags&#x27;,
       input: DefaultEntryInputComponent,
       output: DefaultOutputComponent,
       display: (value, entry, property) &#x3D;&gt; entry.getTitle(property),
-      // resolve: (body) &#x3D;&gt; TypeConfigService.resolveEntries,
       filterable: true,
       filterOperator: &#x27;any&#x27;,
       prefill: [],
-      queryFilter: (value) &#x3D;&gt; value.split(&#x27;,&#x27;)
-      // form: false,
+      queryFilter: (value) &#x3D;&gt; value.split(&#x27;,&#x27;),
+      filterPopClass: &#x27;modal&#x27;
     },
     json: {
       input: DefaultEntryInputComponent,
@@ -1538,15 +1539,18 @@ export class TypeConfigService {
     location: {
       input: DefaultEntryInputComponent,
       output: DefaultEntryOutputComponent,
-      display: (value) &#x3D;&gt; value ? value.longitude + &#x27;,&#x27; + value.latitude : &#x27;&#x27;
+      display: (value) &#x3D;&gt; value ? value.longitude + &#x27;,&#x27; + value.latitude : &#x27;&#x27;,
+      filterPopClass: &#x27;modal&#x27;
     },
     account: {
       input: DefaultEntryInputComponent,
       output: DefaultEntryOutputComponent,
+      filterPopClass: &#x27;modal&#x27;
     },
     role: {
       input: DefaultEntryInputComponent,
       output: DefaultEntryOutputComponent,
+      filterPopClass: &#x27;modal&#x27;
     }
   };
 

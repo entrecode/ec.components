@@ -1,7 +1,14 @@
 /**
  * Created by felix on 23.05.17.
  */
-import { Component, forwardRef, Input, ViewChild, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  forwardRef,
+  Input,
+  OnChanges,
+  ViewChild,
+  ViewEncapsulation
+} from '@angular/core';
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Field } from '@ec.components/core/src/field/field';
 import { CrudComponent } from '../crud/crud.component';
@@ -10,7 +17,7 @@ import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
 import { Item } from '@ec.components/core/src/item/item';
 import { CrudConfig } from '../crud/crud-config.interface';
 import { SelectComponent } from '@ec.components/ui/src/form/select/select.component';
-import EntryResource from "ec.sdk/src/resources/publicAPI/EntryResource";
+import EntryResource from 'ec.sdk/src/resources/publicAPI/EntryResource';
 
 // import LiteEntryResource from "ec.sdk/src/resources/publicAPI/LiteEntryResource";
 
@@ -28,7 +35,7 @@ import EntryResource from "ec.sdk/src/resources/publicAPI/EntryResource";
     }
   ]
 })
-export class EntrySelectComponent extends SelectComponent<EntryResource> {
+export class EntrySelectComponent extends SelectComponent<EntryResource> implements OnChanges {
   /** The field for which the input is meant. */
   @Input() field: Field<any>;
   /** The item that is targeted by the input */
@@ -102,7 +109,7 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> {
     // } else {
     //   console.log('edit', item.getBody());
     // }
-    //TODO open edit pop
+    // TODO open edit pop
   }
 
   /** Returns pop class for entry picker, defaults to no class. */

@@ -1181,6 +1181,9 @@
     </li>
 
     <li>
+        <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+    </li>
+    <li>
         <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
     </li>
 </ul>
@@ -1249,17 +1252,17 @@
                 <td class="col-md-9"><code>ec-asset-select</code></td>
             </tr>
 
-
             <tr>
-                <td class="col-md-3">styles</td>
-                <td class="col-md-9"><code>require.(args)</code></td>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>.../../../ui/src/form/select/select.component.scss</code></td>
             </tr>
 
-            <tr>
-                <td class="col-md-3">template</td>
-                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">require.(args)</code></pre></td>
-            </tr>
 
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./asset-select.component.html</code></td>
+            </tr>
 
 
         </tbody>
@@ -2012,8 +2015,8 @@ import PublicAssetResource from &#x27;ec.sdk/src/resources/publicAPI/PublicAsset
 /** Shows assets of a selection and is able to pick new ones from a crud list */
 @Component({
   selector: &#x27;ec-asset-select&#x27;,
-  template: require(&#x27;./asset-select.component.html&#x27;),
-  styles: [require(&#x27;../../../../ui/src/form/select/select.component.scss&#x27;)],
+  templateUrl: &#x27;./asset-select.component.html&#x27;,
+  styleUrls: [&#x27;../../../../ui/src/form/select/select.component.scss&#x27;],
 
   encapsulation: ViewEncapsulation.None,
   providers: [
@@ -2105,6 +2108,27 @@ export class AssetSelectComponent extends SelectComponent&lt;PublicAssetResource
 </code></pre>
     </div>
 
+    <div class="tab-pane fade" id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div *ngIf&#x3D;&quot;selection&quot; class&#x3D;&quot;ec-select ec-asset-select&quot;&gt;
+  &lt;ul class&#x3D;&quot;selected-items&quot;&gt;
+    &lt;li (click)&#x3D;&quot;toggle(!active,true)&quot; class&#x3D;&quot;btn&quot; [ngClass]&#x3D;&quot;active?&#x27;default&#x27;:&#x27;minor&#x27;&quot;
+        *ngIf&#x3D;&quot;canToggle()&quot;&gt;
+      &lt;i class&#x3D;&quot;ec-icon find&quot;&gt;&lt;/i&gt;
+    &lt;/li&gt;
+    &lt;li *ngFor&#x3D;&quot;let selected of selection.items&quot; class&#x3D;&quot;ec-list-avatar&quot;
+        (click)&#x3D;&quot;editItem(selected)&quot;&gt;
+      &lt;img [src]&#x3D;&quot;selected.resolve(&#x27;thumb&#x27;)&quot;&gt; &lt;a (click)&#x3D;&quot;removeItem(selected)&quot;&gt;X&lt;/a&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;ec-pop [ngClass]&#x3D;&quot;config?.popClass&quot; #assetPop&gt;
+    &lt;ec-loader #assetLoader class&#x3D;&quot;blend&quot;&gt;&lt;/ec-loader&gt;
+    &lt;ec-upload [placeholder]&#x3D;&quot;field?.getPlaceholder()&quot; [loader]&#x3D;&quot;assetLoader&quot;
+               (success)&#x3D;&quot;selectUpload($event)&quot;&gt;&lt;/ec-upload&gt;
+    &lt;ec-asset-list [selection]&#x3D;&quot;selection&quot; [config]&#x3D;&quot;config&quot; [loader]&#x3D;&quot;assetLoader&quot;
+                   *ngIf&#x3D;&quot;selection&amp;&amp;assetPop.active&quot; (select)&#x3D;&quot;select($event)&quot;&gt;&lt;/ec-asset-list&gt;
+  &lt;/ec-pop&gt;
+&lt;/div&gt;</code></pre>
+    </div>
 
     <div class="tab-pane fade" id="tree">
         <div id="tree-container"></div>
@@ -2129,7 +2153,7 @@ export class AssetSelectComponent extends SelectComponent&lt;PublicAssetResource
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div>require.(args)</div>'
+        var COMPONENT_TEMPLATE = '<div><div *ngIf="selection" class="ec-select ec-asset-select">  <ul class="selected-items">    <li (click)="toggle(!active,true)" class="btn" [ngClass]="active?\'default\':\'minor\'"        *ngIf="canToggle()">      <i class="ec-icon find"></i>    </li>    <li *ngFor="let selected of selection.items" class="ec-list-avatar"        (click)="editItem(selected)">      <img [src]="selected.resolve(\'thumb\')"> <a (click)="removeItem(selected)">X</a>    </li>  </ul>  <ec-pop [ngClass]="config?.popClass" #assetPop>    <ec-loader #assetLoader class="blend"></ec-loader>    <ec-upload [placeholder]="field?.getPlaceholder()" [loader]="assetLoader"               (success)="selectUpload($event)"></ec-upload>    <ec-asset-list [selection]="selection" [config]="config" [loader]="assetLoader"                   *ngIf="selection&&assetPop.active" (select)="select($event)"></ec-asset-list>  </ec-pop></div></div>'
     var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'AssetInputComponent', 'selector': ''},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
     var DIRECTIVES = [{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'AssetSelectComponent'};
