@@ -7,6 +7,7 @@ import { CrudService } from '../crud/crud.service';
 import { Item } from '@ec.components/core/src/item/item';
 import { FormConfig } from '@ec.components/core/src/form/form-config.interface';
 import { FormService } from '@ec.components/ui/src/form/form.service';
+import EntryResource from 'ec.sdk/src/resources/publicAPI/EntryResource';
 
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent */
 @Component({
@@ -18,12 +19,16 @@ export class EntryFormComponent extends FormComponent {
   /** The model of the form. It is used to extract the schema and generate the config from. */
   @Input() model: string;
   /** The entry that should be edited. */
-  @Input() entry;//: EntryResource;
+  @Input() entry: EntryResource;
   /** This output fires when the entry has been deleted using deleteEntry(). */
   @Output() deleted: EventEmitter<any> = new EventEmitter();
 
   /** Injects the required services. */
-  constructor(protected loaderService: LoaderService, private modelConfig: ModelConfigService, protected notificationService: NotificationsService, protected crud: CrudService, protected formService: FormService) {
+  constructor(protected loaderService: LoaderService,
+    private modelConfig: ModelConfigService,
+    protected notificationService: NotificationsService,
+    protected crud: CrudService,
+    protected formService: FormService) {
     super(loaderService, notificationService, formService);
   }
 
@@ -33,11 +38,11 @@ export class EntryFormComponent extends FormComponent {
       return;
     }
     Promise.resolve(config || this.modelConfig.generateConfig(this.model))
-    .then((config) => {
+    .then((_config) => {
       if (this.entry) {
-        item = new Item(this.entry, config);
+        item = new Item(this.entry, _config);
       }
-      super.init(item, config);
+      super.init(item, _config);
     });
   }
 

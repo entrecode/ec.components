@@ -1,8 +1,8 @@
 /**
  * Created by felix on 26.05.17.
  */
-import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router'; //TODO find way to import Route without getting warning
+import { Component, Input, OnChanges } from '@angular/core';
+import { Router } from '@angular/router'; // TODO find way to import Route without getting warning
 
 /** Renders a nested menu from a given routes Array (the same you would use for angular routing). */
 @Component({
@@ -10,11 +10,11 @@ import { Router } from '@angular/router'; //TODO find way to import Route withou
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
-export class MenuComponent {
+export class MenuComponent implements OnChanges {
   /** Routes that should be used for the menu. You can use your angular router routes here. */
-  @Input() routes;//: Route[];
+  @Input() routes; // Route[];
   /** The currently active route */
-  @Input() route;//: Route;
+  @Input() route; // Route;
   /** The title of the menu */
   @Input() title: string;
   /** Parent Menu (when nested) */
@@ -22,11 +22,11 @@ export class MenuComponent {
   /** Color map of submenus. */
   @Input() colors: string[] = ['#29A9E1', '#00DBF0', '#4A5EA9', '#29A9E1', '#C9C8D4'];
   /** Delay before menu is hidden after mouseout. */
-  @Input() vanishDelay: number = 500;
+  @Input() vanishDelay = 500;
   /** Delay before menu is shown on mouseover. */
-  @Input() hoverDelay: number = 50;
+  @Input() hoverDelay = 50;
   /** The currently hovered Route*/
-  public hover;//: Route;
+  public hover; // Route;
   /** The timeout for delay handling */
   private timeout;
 
@@ -37,12 +37,14 @@ export class MenuComponent {
   /** updates the routes on change of route */
   ngOnChanges() {
     if (this.route) {
-      this.routes = this.route.children.filter(route => route.path && route.path.indexOf(':') == -1);
+      this.routes = this.route.children
+      .filter(route => route.path && route.path.indexOf(':') === -1)
+      .filter(route => !route.data || !route.data.hidden);
     }
   }
 
   /** Returns true if the item or a child of it is active. */
-  hasActivePath(item, parent = this) { //=this.parent
+  hasActivePath(item, parent = this) { // this.parent
     return parent.getPath(item) === this.router.url;
   }
 
@@ -73,7 +75,7 @@ export class MenuComponent {
   }
 
   /** Hovers the item after hoverDelay timeout. */
-  hoverItem(item) { //: Route
+  hoverItem(item) { // Route
     if (!this.hover) {
       this.hover = item;
     }
