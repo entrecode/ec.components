@@ -48,9 +48,6 @@
     .ec-list-field__title {
       flex-grow: 1;
     }
-    .ec-list-field__filter {
-      flex-grow: 0;
-    }
   }
 
   .btn {
@@ -74,6 +71,14 @@
   }
 }
 
+.ec-list-field-filter {
+  flex-grow: 0;
+
+  .btn {
+    background-color: transparent;
+  }
+}
+
 .ec-list-field {
   &_sortable {
     &_active {
@@ -84,7 +89,7 @@
   &_filterable {
     position: relative;
 
-    .ec-list-field__filter-drawer {
+    .ec-list-field-filter__drawer {
       .ec-pop-container {
         .ec-pop {
           position: absolute;
