@@ -1,0 +1,25 @@
+.ec-entry-select {
+  @include flexbox;
+  @include align-items(center);
+  position: relative;
+  @extend .input !optional;
+
+  .ec-entry-select__placeholder {
+    font-style: italic;
+    color: getColor(text, light);
+    @include flex-grow(1);
+    font-size: 1em;
+  }
+}
+
+.ec-select-dropdown {
+  .ec-pop-container {
+    @extend %dropdown-options !optional;
+    z-index: 10;
+
+    &.visible {
+      display: inherit;
+      opacity: 1;
+    }
+  }
+}

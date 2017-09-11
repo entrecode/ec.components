@@ -26,8 +26,8 @@
   .menu__items {
   }
 
-  .menu-item {
-    &._parent {
+  .menu__item {
+    &.parent {
       position: relative;
       @extend %parent-indicator;
 
@@ -54,20 +54,15 @@
     display: none;
     opacity: 0;
 
-    .btn {
-      width: 100%;
-      text-align: left;
-    }
-
     .sub-menu__items {
       list-style: none;
       padding: 0;
       margin: 0;
 
-      .sub-menu-item {
+      .sub-menu__item {
         white-space: nowrap;
 
-        &._parent {
+        &.parent {
           position: relative;
           @extend %parent-indicator;
 

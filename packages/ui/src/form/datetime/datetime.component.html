@@ -4,10 +4,10 @@
   <ec-pop class="datetime-select" #calendarPop (mousedown)="$event.preventDefault()">
     <header class="controls">
       <ul>
-        <li><a (click)="calendar.change(-1, 'months')"><i class="ec-icon chevron-left"></i></a></li>
+        <li><a (click)="calendar.change(-1, 'months')"><span class="ec-icon chevron-left"></span></a></li>
         <li><h6>{{calendar.formatted}}</h6></li>
         <li><a (click)="calendar.today()">&bull;</a></li>
-        <li><a (click)="calendar.change(1, 'months')"><i class="ec-icon chevron-right"></i></a></li>
+        <li><a (click)="calendar.change(1, 'months')"><span class="ec-icon chevron-right"></span></a></li>
       </ul>
     </header>
     <ul class="days">

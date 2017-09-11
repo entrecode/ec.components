@@ -25,11 +25,11 @@
 /// @param {number} $btn-radius - radius for default button
 /// @param {number} $btn-small-radius - radius for small button
 /// @param {number} $btn-big-radius - radius for big button
-/// @param {number} $btn-wide -  min width for ._wide button
-/// @param {number} $btn-small-wide - min width for ._wide._small button
-/// @param {number} $btn-big-wide - min width for ._wide._big button
+/// @param {number} $btn-wide -  min width for .wide button
+/// @param {number} $btn-small-wide - min width for .wide.small button
+/// @param {number} $btn-big-wide - min width for .wide.big button
 ///
-/// @param {boolean} $btn-outline - sets border-width for btn._outlined
+/// @param {boolean} $btn-outline - sets border-width for btn.outlined
 /// @param {boolean} $flex-support - sets buttons to display flex
 
 /// placeholder for button metrics
@@ -53,8 +53,6 @@
   font-weight: $btn-weight;
   margin: rem(4) 0;
 
-  @include border-radius(rem($btn-radius));
-
   @include macro-metrics($btn-font-size, $btn-line-height, $btn-min-height) {
     $padding: ($btn-min-height - $btn-line-height) / 2;
     .ec-icon {
@@ -66,6 +64,7 @@
       }
     }
   }
+;
 
   /// ec-icon styles for default btn
   .ec-icon {
@@ -101,6 +100,7 @@
         }
       }
     }
+  ;
   }
 
   &%big {
@@ -117,6 +117,7 @@
         }
       }
     }
+  ;
 
     .ec-icon {
       &:before {
@@ -130,6 +131,7 @@
 .btn {
   @extend %btn !optional;
   @include transition(background-color .2s);
+  @include border-radius(rem($btn-radius));
   @include set-colors(getColor(link));
 
   /// additional styles via config
@@ -147,8 +149,8 @@
   /// states
   /// ------------------------------------------------------
 
-  /// default :hover and ._active state
-  &._active,
+  /// default :hover and .active state
+  &.active,
   &:hover,
   &:focus {
     @include set-colors(getColor(linkHover));
@@ -156,7 +158,7 @@
   }
 
   /// disabled state style for buttons
-  &._disabled,
+  &.disabled,
   &[disabled] {
     opacity: .6;
     cursor: not-allowed;
@@ -173,7 +175,7 @@
   /// ------------------------------------------------------
 
   /// small buttons
-  &._small {
+  &.small {
     @extend %btn%small;
 
     /// additional styles via config
@@ -181,7 +183,7 @@
   }
 
   /// big buttons
-  &._big {
+  &.big {
     @extend %btn%big;
 
     /// additional styles via config
@@ -189,20 +191,20 @@
   }
 
   /// buttons with a minimum width
-  &._wide {
+  &.wide {
     min-width: $btn-wide;
 
-    &._small {
+    &.small {
       min-width: $btn-small-wide;
     }
 
-    &._big {
+    &.big {
       min-width: $btn-big-wide;
     }
   }
 
   /// full-width buttons
-  &._block {
+  &.block {
     width: 100%;
     display: block;
     margin-left: 0;
@@ -214,10 +216,10 @@
   /// ------------------------------------------------------
 
   /// minor button style, for secondary or minor interactions
-  &._minor {
+  &.minor {
     @include set-colors(getColor(minor));
 
-    &._active,
+    &.active,
     &:hover
     &:focus {
       @include set-colors(getColor(minorHover));
@@ -225,48 +227,65 @@
   }
 
   /// super button style, for call to action
-  &._super {
+  &.super {
     @include set-colors(getColor(super));
 
-    &._active,
+    &.active,
     &:hover,
     &:focus {
       @include set-colors(getColor(superHover));
     }
   }
 
+  &.mono {
+    @include set-colors(getColor(background, invert));
+  }
+
   /// invert button style
-  &._invert {
+  &.invert {
     color: getColor(link);
     background-color: getColor(background);
 
-    &._active,
+    &.active,
     &:hover,
     &:focus {
       color: getColor(linkHover);
     }
+
+    &.mono {
+      @include set-colors(getColor(background));
+    }
   }
 
   /// clear button style, for link-alike buttons
-  &._clear {
+  &.clear {
     background-color: transparent;
     color: getColor(link);
 
-    &._active,
+    &.active,
     &:hover,
     &:focus {
       background-color: getColor(state, hover);
       color: getColor(linkHover);
     }
 
-    &._invert {
-      color: getColor(text, invert);
+    &.mono {
+      color: getColor(text)
+    }
 
-      &._active,
+    &.invert {
+      color: setContrast(getColor(background, invert), getColor(link));
+
+      &.active,
       &:hover,
       &:focus {
         background-color: invert(getColor(state, hover));
+        color: setContrast(getColor(background, invert), getColor(link));
+      }
+
+      &.mono {
         color: getColor(text, invert);
+        background-color: transparent;
       }
     }
   }
@@ -279,11 +298,11 @@
   .btn {
     @include border-radius(rem($btn-min-height / 2));
 
-    &._small {
+    &.small {
       @include border-radius(rem($btn-small-min-height / 2));
     }
 
-    &._big {
+    &.big {
       @include border-radius(rem($btn-big-min-height / 2));
     }
   }

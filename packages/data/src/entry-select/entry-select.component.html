@@ -1,17 +1,18 @@
-<div *ngIf="selection" class="ec-select ec-entry-select">
-  <ul class="selected-items">
-    <li (click)="toggle(!active,true)" class="btn" [ngClass]="active?'default':'minor'"
-        *ngIf="canToggle()">
-      <i class="ec-icon find"></i>
-    </li>
-    <li *ngFor="let selected of selection?.items" class="pill" (click)="editItem(selected)">
-      {{selected.display()}}
-      <a (click)="removeItem(selected)"><i class="ec-icon close"></i>
-      </a>
+<div *ngIf="selection" class="ec-entry-select">
+  <a (click)="toggle(!active,true)" class="ec-entry-select__placeholder" *ngIf="canToggle()">
+    - Auswählen -
+  </a>
+  <ul class="ec-entry-select-selected">
+    <li *ngFor="let selected of selection?.items">
+      <span class="pill" (click)="editItem(selected)">
+        {{selected.display()}}
+        <a (click)="removeItem(selected)">&times;</a>
+      </span>
     </li>
   </ul>
+  <span class="caret"></span>
   <!-- TODO use entry pop when ready-->
-  <ec-pop [ngClass]="getPopClass()" #crudPop>
+  <ec-pop [ngClass]="getPopClass()" #crudPop class="ec-select-dropdown">
     <!--<button type="button" (click)="crudPop.hide()">
       <i class="ec-icon close"></i> &lt;!&ndash; TODO unified pop header component &ndash;&gt;
     </button>-->
