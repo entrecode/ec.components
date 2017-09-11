@@ -1,8 +1,9 @@
 import { List } from '@ec.components/core/src/list/list';
 import { Item } from '@ec.components/core/src/item/item';
 import { SdkService } from '../sdk/sdk.service';
-import { Observable, Subject } from 'rxjs';
-import ListResource, { filterOptions } from "ec.sdk/src/resources/ListResource";
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import ListResource, { filterOptions } from 'ec.sdk/src/resources/ListResource';
 import { Field } from '@ec.components/core/src/field/field';
 import { ListConfig } from '@ec.components/core/src/list/list-config.interface';
 

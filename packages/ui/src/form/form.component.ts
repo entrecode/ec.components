@@ -31,7 +31,7 @@ export class FormComponent implements OnChanges {
   /** The loader that should be used. */
   @Input() loader: LoaderComponent;
   /** Emits when the form is submitted. The form can only be submitted if all Validators succeeded. */
-  @Output('submit') submitted: EventEmitter<FormGroup> = new EventEmitter();
+  @Output('submit') submitted: EventEmitter<Form<any>> = new EventEmitter();
   /** Emits when a new instance of Form is present */
   @Output() change: EventEmitter<FormComponent> = new EventEmitter();
 
@@ -89,7 +89,7 @@ export class FormComponent implements OnChanges {
   submit() {
     const submit = this.form.save(this.group.value)
     .then((form) => {
-      this.submitted.emit(this.group);
+      this.submitted.emit(this.form);
       this.edit(form);
       this.notificationService.emit({ // TODO pull out to entry-form?
         title: 'Eintrag gespeichert',

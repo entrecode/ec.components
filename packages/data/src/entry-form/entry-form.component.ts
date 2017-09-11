@@ -72,5 +72,6 @@ export class EntryFormComponent extends FormComponent {
       });
     });
     this.loaderService.wait(deletion, this.loader);
+    return deletion;
   }
 }

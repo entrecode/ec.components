@@ -1,5 +1,11 @@
 # Changelog
 
+<a name="0.5.4"></a>
+## 0.6.0
+- EntryFormComponent.deleteEntry now returns the deletion promise.
+BREAKING CHANGES:
+- FormComponent.submitted now emits the instance of Form and not the group
+
 <a name="0.5.3"></a>
 ## 0.5.3
 * feature: asset-select is now capable of using ngModel with two way binding

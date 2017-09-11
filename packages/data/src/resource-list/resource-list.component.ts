@@ -1,4 +1,4 @@
-import { Component, Input, Optional } from '@angular/core';
+import { Component, Input, OnChanges, Optional } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SdkService } from '../sdk/sdk.service';
 import { LoaderComponent } from '@ec.components/ui/src/loader/loader.component';
@@ -14,7 +14,7 @@ import { ResourceList } from './resource-list';
   selector: 'ec-resource-list',
   templateUrl: '../../../ui/src/list/list.component.html'
 })
-export class ResourceListComponent<T> extends ListComponent<T> {
+export class ResourceListComponent<T> extends ListComponent<T> implements OnChanges {
   /** If true, only one item is selectable next */
   @Input() solo: boolean;
   /** The instance of an EntryList */
@@ -52,13 +52,12 @@ export class ResourceListComponent<T> extends ListComponent<T> {
         return;
       }
       this.list = list;
-      this.list.change$.subscribe((list) => {
+      this.list.change$.subscribe(() => {
         if (!this.selection && this.list.config && !this.list.config.disableSelection) {
           this.selection = new Selection([], this.list.config);
         }
-
         // console.log('changed list', this.list.config.filter);
-        //TODO update route to reflect the filter settings
+        // TODO update route to reflect the filter settings
 
       });
       this.list.loading$.subscribe((promise: Promise<any>) => {

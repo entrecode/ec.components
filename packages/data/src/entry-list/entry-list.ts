@@ -1,6 +1,6 @@
 import { SdkService } from '../sdk/sdk.service';
 import { ResourceList } from '../resource-list/resource-list';
-import { filterOptions } from "ec.sdk/src/resources/ListResource";
+import { filterOptions } from 'ec.sdk/src/resources/ListResource';
 import EntryResource from 'ec.sdk/src/resources/publicAPI/EntryResource';
 import { ListConfig } from '@ec.components/core/src/list/list-config.interface';
 
@@ -39,6 +39,5 @@ export class EntryList extends ResourceList<EntryResource> {
       this.error.next(err);
     });
     this.loading.next(loading);
-    // return loading;
   }
 }
