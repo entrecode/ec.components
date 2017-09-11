@@ -6,8 +6,8 @@ import { Pagination } from '@ec.components/core';
  */
 @Component({
   selector: 'ec-pagination',
-  template: require('./pagination.component.html'),
-  styles: [require('./pagination.component.scss')]
+  templateUrl: './pagination.component.html',
+  styleUrls: ['./pagination.component.scss']
 })
 export class PaginationComponent<T> {
   /** A Pagination Instance */

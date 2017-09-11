@@ -6,7 +6,7 @@ import EntryResource from 'ec.sdk/src/resources/publicAPI/EntryResource';
 
 /** This component holds the input templates for all field types that can not be represented by the default input template. */
 @Component({
-  template: require('./default-entry-input.component.html'),
+  templateUrl: './default-entry-input.component.html',
 })
 export class DefaultEntryInputComponent extends DefaultInputComponent {
   entrySelectConfig: CrudConfig<EntryResource> = nestedCrudConfig;

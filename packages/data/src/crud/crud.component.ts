@@ -23,8 +23,8 @@ import { Observable } from 'rxjs';
  * */
 @Component({
   selector: 'ec-crud',
-  template: require('./crud.component.html'),
-  styles: [require('./crud.component.scss')]
+  templateUrl: './crud.component.html',
+  styleUrls: ['./crud.component.scss']
 })
 export class CrudComponent<T> {
   /** The model that should be crud'ed. */

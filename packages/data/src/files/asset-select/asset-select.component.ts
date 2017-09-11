@@ -13,8 +13,8 @@ import PublicAssetResource from 'ec.sdk/src/resources/publicAPI/PublicAssetResou
 /** Shows assets of a selection and is able to pick new ones from a crud list */
 @Component({
   selector: 'ec-asset-select',
-  template: require('./asset-select.component.html'),
-  styles: [require('../../../../ui/src/form/select/select.component.scss')],
+  templateUrl: './asset-select.component.html',
+  styleUrls: ['../../../../ui/src/form/select/select.component.scss'],
 
   encapsulation: ViewEncapsulation.None,
   providers: [

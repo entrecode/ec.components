@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  template: require('./asset-select-demo.component.html'),
+  templateUrl: 'asset-select-demo.component.html',
 })
 export class AssetSelectDemoComponent {
   selectedAssets: string[];

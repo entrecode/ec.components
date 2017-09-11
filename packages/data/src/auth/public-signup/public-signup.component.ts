@@ -6,8 +6,8 @@ import { FieldValidators } from '@ec.components/ui/src/utility/validators/field-
 
 @Component({
   selector: 'ec-auth-public-signup',
-  template: require('./public-signup.component.html'),
-  styles: [require('./public-signup.component.scss')]
+  templateUrl: './public-signup.component.html',
+  styleUrls: ['./public-signup.component.scss']
 })
 export class PublicSignupComponent implements OnInit {
   public signup: FormGroup;

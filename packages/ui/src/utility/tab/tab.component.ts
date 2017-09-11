@@ -3,8 +3,8 @@ import { Component, Input } from '@angular/core';
 /** A Tab is meant to be placed inside TabsComponent */
 @Component({
   selector: 'ec-tab',
-  template: require('./tab.component.html'),
-  styles: [require('./tab.component.scss')]
+  templateUrl: './tab.component.html',
+  styleUrls: ['./tab.component.scss']
 })
 export class TabComponent {
   /** The tab's label */

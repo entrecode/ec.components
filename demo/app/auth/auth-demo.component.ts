@@ -3,7 +3,7 @@ import { AdminService, PublicService, SdkService } from '../../../packages/data/
 
 @Component({
   selector: 'ec-auth-demo',
-  template: require('./auth-demo.component.html'),
+  templateUrl: './auth-demo.component.html',
 })
 export class AuthDemoComponent {
   private user: any;

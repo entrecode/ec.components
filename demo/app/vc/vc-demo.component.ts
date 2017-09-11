@@ -3,7 +3,7 @@ import { EditorComponent } from '../../../packages/vc/index';
 
 @Component({
   selector: 'ec-vc-demo',
-  template: require('./vc-demo.component.html'),
+  templateUrl: './vc-demo.component.html',
 })
 export class VcDemoComponent {
   constructor() {

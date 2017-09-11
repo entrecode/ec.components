@@ -6,8 +6,8 @@ import { AdminService } from '../../sdk/admin.service';
 
 @Component({
   selector: 'ec-auth-admin-signup',
-  template: require('./admin-signup.component.html'),
-  styles: [require('./admin-signup.component.scss')]
+  templateUrl: './admin-signup.component.html',
+  styleUrls: ['./admin-signup.component.scss']
 })
 export class AdminSignupComponent implements OnInit {
   public signup: FormGroup;

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  template: require('./entry-select-demo.component.html'),
+  templateUrl: 'entry-select-demo.component.html',
 })
 export class EntrySelectDemoComponent {
   constructor() {

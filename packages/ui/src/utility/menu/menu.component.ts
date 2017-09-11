@@ -7,8 +7,8 @@ import { Router } from '@angular/router'; // TODO find way to import Route witho
 /** Renders a nested menu from a given routes Array (the same you would use for angular routing). */
 @Component({
   selector: 'ec-menu,[ec-menu]',
-  template: require('./menu.component.html'),
-  styles: [require('./menu.component.scss')]
+  templateUrl: './menu.component.html',
+  styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnChanges {
   /** Routes that should be used for the menu. You can use your angular router routes here. */

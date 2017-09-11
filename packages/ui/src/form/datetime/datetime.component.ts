@@ -7,8 +7,8 @@ import { PopComponent } from '../../pop/pop.component';
 /** Input for a datetime. */
 @Component({
   selector: 'ec-datetime',
-  template: require('./datetime.component.html'),
-  styles: [require('./datetime.component.scss')],
+  templateUrl: 'datetime.component.html',
+  styleUrls: ['datetime.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

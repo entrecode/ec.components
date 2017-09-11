@@ -10,8 +10,8 @@ import { FormService } from './form.service';
 /** This component renders a form using a FieldConfig Object. */
 @Component({
   selector: 'ec-form',
-  template: require('./form.component.html'),
-  styles: [require('./form.component.scss')]
+  templateUrl: './form.component.html',
+  styleUrls: ['./form.component.scss']
 })
 export class FormComponent implements OnChanges {
   /** The instance of Form that is used. */

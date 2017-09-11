@@ -8,7 +8,7 @@ import EntryResource from "ec.sdk/src/resources/publicAPI/EntryResource";
 /** Loads an entry by id to the template. */
 @Component({
   selector: 'ec-entry',
-  template: require('./entry.component.html')
+  templateUrl: './entry.component.html'
 })
 export class EntryComponent {
   /** The loading promise */

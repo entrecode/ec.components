@@ -5,8 +5,8 @@ import { TabComponent } from '../tab/tab.component';
 /** The TabsComponent holds serveral instances of TabComponent. */
 @Component({
   selector: 'ec-tabs',
-  template: require('./tabs.component.html'),
-  styles: [require('./tabs.component.scss')]
+  templateUrl: './tabs.component.html',
+  styleUrls: ['./tabs.component.scss']
 })
 export class TabsComponent {
   public tabs: Collection<TabComponent>;

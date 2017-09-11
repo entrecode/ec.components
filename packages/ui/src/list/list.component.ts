@@ -7,8 +7,8 @@ import { Item } from '@ec.components/core/src/item/item';
  * */
 @Component({
   selector: 'ec-list',
-  template: require('./list.component.html'),
-  styles: [require('./list.component.scss')],
+  templateUrl: './list.component.html',
+  styleUrls: ['./list.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class ListComponent<T> {

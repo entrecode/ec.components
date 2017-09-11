@@ -16,8 +16,8 @@ export interface Day {
 /** Displays the days of a month in a calendarish table. */
 @Component({
   selector: 'ec-month',
-  styles: [require('./month.component.scss')],
-  template: require('./month.component.html')
+  styleUrls: ['month.component.scss'],
+  templateUrl: 'month.component.html'
 })
 export class MonthComponent {
   /** The current selected date */

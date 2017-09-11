@@ -9,8 +9,8 @@ import { NotificationsService } from './notifications.service';
 /** Displays any kind of Notification inside the DOM. It listens on the notificationService.$emitter for notifications. */
 @Component({
   selector: 'ec-notifications',
-  template: require('./notifications.component.html'),
-  styles: [require('./notifications.component.scss')]
+  templateUrl: './notifications.component.html',
+  styleUrls: ['./notifications.component.scss']
 })
 export class NotificationsComponent {
   /** The current stack of notifications that are visible. */

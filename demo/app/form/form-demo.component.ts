@@ -4,7 +4,7 @@ import { Item } from '@ec.components/core';
 
 @Component({
   selector: 'ec-form-demo',
-  template: require('./form-demo.component.html'),
+  templateUrl: './form-demo.component.html',
 })
 export class FormDemoComponent {
   tree: Item<any>;

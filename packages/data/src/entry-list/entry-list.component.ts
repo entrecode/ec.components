@@ -13,8 +13,8 @@ import { ListConfig } from '@ec.components/core/src/list/list-config.interface';
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent */
 @Component({
   selector: 'ec-entry-list',
-  template: require('../../../ui/src/list/list.component.html'), // TODO avoid relative paths => wont build
-  styles: [require('./entry-list.component.scss')]
+  templateUrl: '../../../ui/src/list/list.component.html', // TODO avoid relative paths => wont build
+  styleUrls: ['./entry-list.component.scss']
 })
 export class EntryListComponent extends ResourceListComponent<EntryResource> {
   /** The model whose entries should be shown.*/

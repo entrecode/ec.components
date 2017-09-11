@@ -6,7 +6,7 @@ import DataManagerResource from 'ec.sdk/src/resources/datamanager/DataManagerRes
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent */
 @Component({
   selector: 'ec-datamanager-list',
-  template: require('../../../ui/src/list/list.component.html')
+  templateUrl: '../../../ui/src/list/list.component.html'
 })
 export class DatamanagerListComponent extends ResourceListComponent<DataManagerResource> {
 

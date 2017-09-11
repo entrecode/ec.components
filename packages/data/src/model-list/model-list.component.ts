@@ -8,7 +8,7 @@ import ModelResource from 'ec.sdk/src/resources/datamanager/ModelResource';
 /** The ModelListComponent is a thin holder of an ModelList instance. It extends the ResourceListComponent */
 @Component({
   selector: 'ec-model-list',
-  template: require('../../../ui/src/list/list.component.html')
+  templateUrl: '../../../ui/src/list/list.component.html'
 })
 export class ModelListComponent extends ResourceListComponent<ModelResource> {
   @Input() datamanager: string | DataManagerResource;//: DataManagerResource;

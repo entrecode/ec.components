@@ -9,7 +9,7 @@ import { Item } from '@ec.components/core/src/item/item';
 /** This directive can be used to display a field. It is used inside ec-form as well as ec-list. */
 @Component({
   selector: 'ec-input',
-  template: require('../dynamic-slot/dynamic-slot.component.html'),
+  templateUrl: '../dynamic-slot/dynamic-slot.component.html',
 })
 export class InputComponent extends DynamicSlotComponent {
   /** The belonging form group */

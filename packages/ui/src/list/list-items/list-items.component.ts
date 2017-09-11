@@ -6,8 +6,8 @@ import { ListComponent } from '../list.component';
  * It can either be given an Array of Items or just the list parent to control the shown items. */
 @Component({
   selector: 'ec-list-items',
-  template: require('./list-items.component.html'),
-  styles: [require('./list-items.component.scss')]
+  templateUrl: './list-items.component.html',
+  styleUrls: ['./list-items.component.scss']
 })
 export class ListItemsComponent<T> {
   /** The list instance */

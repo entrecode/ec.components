@@ -7,8 +7,8 @@ import { Selection } from '@ec.components/core/src/selection/selection';
 /** This component renders, as the name states, the header of a list.*/
 @Component({
   selector: 'ec-list-header',
-  template: require('./list-header.component.html'),
-  styles: [require('./list-header.component.scss')]
+  templateUrl: './list-header.component.html',
+  styleUrls: ['./list-header.component.scss']
 })
 export class ListHeaderComponent {
   /** The list instance */

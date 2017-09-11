@@ -7,8 +7,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
  * It can be used e.g as popup, modal or dropdown.*/
 @Component({
   selector: 'ec-pop',
-  template: require('./pop.component.html'),
-  styles: [require('./pop.component.scss')]
+  templateUrl: './pop.component.html',
+  styleUrls: ['./pop.component.scss']
 })
 export class PopComponent {
   /** If true, .ec-pop is part of the DOM (*ngIf) + .active is set on .ec-pop-container.  */
