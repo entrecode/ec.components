@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-// import { DataModule } from '../packages/data/data.module';
 import { DataModule } from '@ec.components/data';
-// import { UiModule } from '../packages/ui/ui.module';
 import { UiModule } from '@ec.components/ui';
 import { DemoComponent } from './demo.component';
 import { VcModule } from '../../packages/vc/src/vc.module';
