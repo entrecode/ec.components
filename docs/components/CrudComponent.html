@@ -1181,6 +1181,9 @@
     </li>
 
     <li>
+        <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+    </li>
+    <li>
         <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
     </li>
 </ul>
@@ -1225,17 +1228,17 @@
                 <td class="col-md-9"><code>ec-crud</code></td>
             </tr>
 
-
             <tr>
-                <td class="col-md-3">styles</td>
-                <td class="col-md-9"><code>require.(args)</code></td>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>crud.component.scss</code></td>
             </tr>
 
-            <tr>
-                <td class="col-md-3">template</td>
-                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">require.(args)</code></pre></td>
-            </tr>
 
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./crud.component.html</code></td>
+            </tr>
 
 
         </tbody>
@@ -2241,8 +2244,8 @@ import { Observable } from &#x27;rxjs&#x27;;
  * */
 @Component({
   selector: &#x27;ec-crud&#x27;,
-  template: require(&#x27;./crud.component.html&#x27;),
-  styles: [require(&#x27;./crud.component.scss&#x27;)]
+  templateUrl: &#x27;./crud.component.html&#x27;,
+  styleUrls: [&#x27;./crud.component.scss&#x27;]
 })
 export class CrudComponent&lt;T&gt; {
   /** The model that should be crud&#x27;ed. */
@@ -2343,6 +2346,51 @@ export class CrudComponent&lt;T&gt; {
 }</code></pre>
     </div>
 
+    <div class="tab-pane fade" id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;ec-crud&quot;&gt;
+  &lt;header class&#x3D;&quot;ec-crud-header&quot;&gt;
+    &lt;a (click)&#x3D;&quot;crudForm.create();formPop.show()&quot; *ngIf&#x3D;&quot;hasMethod(&#x27;create&#x27;)&quot; class&#x3D;&quot;btn&quot;&gt;
+      &lt;span *ngIf&#x3D;&quot;this.config?.createLabel&quot;&gt;{{this.config?.createLabel}}&lt;/span&gt;
+      &lt;span *ngIf&#x3D;&quot;!this.config?.createLabel&quot;&gt;+&lt;/span&gt;
+    &lt;/a&gt;
+  &lt;/header&gt;
+  &lt;div class&#x3D;&quot;ec-crud-body&quot;&gt;
+    &lt;ec-entry-list [model]&#x3D;&quot;model&quot; [config]&#x3D;&quot;config&quot; [solo]&#x3D;&quot;true&quot;
+                   *ngIf&#x3D;&quot;hasMethod(&#x27;read&#x27;)&quot; [selection]&#x3D;&quot;selection&quot;
+                   [loader]&#x3D;&quot;config?.loader||listLoader&quot;
+                   (select)&#x3D;&quot;selectEntry($event,crudForm)&quot;&gt;
+    &lt;/ec-entry-list&gt;
+  &lt;/div&gt;
+
+  &lt;ec-loader #listLoader class&#x3D;&quot;blend&quot;&gt;&lt;/ec-loader&gt;
+
+  &lt;!-- TODO wrap into entry-pop --&gt;
+  &lt;ec-pop #formPop [ngClass]&#x3D;&quot;getPopClass()&quot;&gt;
+    &lt;nav&gt;
+      &lt;button (click)&#x3D;&quot;log(crudForm)&quot; *ngIf&#x3D;&quot;config?.develop&quot; class&#x3D;&quot;btn&quot;&gt;
+        code
+      &lt;/button&gt;
+      &lt;button (click)&#x3D;&quot;crudForm.deleteEntry()&quot; class&#x3D;&quot;btn&quot;
+              *ngIf&#x3D;&quot;hasMethod(&#x27;delete&#x27;)&amp;&amp;crudForm.isEditing()&quot;&gt;
+        löschen
+      &lt;/button&gt;
+      &lt;button (click)&#x3D;&quot;crudForm.submit()&quot; [disabled]&#x3D;&quot;crudForm.group?.invalid&quot; type&#x3D;&quot;button&quot;
+              class&#x3D;&quot;btn&quot; [class.disabled]&#x3D;&quot;crudForm.group?.invalid&quot; *ngIf&#x3D;&quot;maySave(crudForm)&quot;&gt;
+        save
+      &lt;/button&gt;
+      &lt;button (click)&#x3D;&quot;formPop.hide()&quot; type&#x3D;&quot;button&quot; class&#x3D;&quot;btn&quot;&gt;
+        &amp;times;
+      &lt;/button&gt;
+    &lt;/nav&gt;
+    &lt;ec-entry-form [model]&#x3D;&quot;model&quot; [submitButton]&#x3D;&quot;false&quot; [loader]&#x3D;&quot;popLoader&quot;
+                   (submit)&#x3D;&quot;!this.config?.keepPopOpen&amp;&amp;formPop.hide()&quot; (deleted)&#x3D;&quot;formPop.hide()&quot;
+                   #crudForm&gt;&lt;/ec-entry-form&gt;
+    &lt;ec-loader #popLoader class&#x3D;&quot;blend&quot;&gt;&lt;/ec-loader&gt;
+  &lt;/ec-pop&gt;
+  &lt;ec-notifications class&#x3D;&quot;toast&quot; *ngIf&#x3D;&quot;!this.config?.notifications&quot;&gt;&lt;/ec-notifications&gt;
+
+&lt;/div&gt;</code></pre>
+    </div>
 
     <div class="tab-pane fade" id="tree">
         <div id="tree-container"></div>
@@ -2367,7 +2415,7 @@ export class CrudComponent&lt;T&gt; {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div>require.(args)</div>'
+        var COMPONENT_TEMPLATE = '<div><div class="ec-crud">  <header class="ec-crud-header">    <a (click)="crudForm.create();formPop.show()" *ngIf="hasMethod(\'create\')" class="btn">      <span *ngIf="this.config?.createLabel">{{this.config?.createLabel}}</span>      <span *ngIf="!this.config?.createLabel">+</span>    </a>  </header>  <div class="ec-crud-body">    <ec-entry-list [model]="model" [config]="config" [solo]="true"                   *ngIf="hasMethod(\'read\')" [selection]="selection"                   [loader]="config?.loader||listLoader"                   (select)="selectEntry($event,crudForm)">    </ec-entry-list>  </div>  <ec-loader #listLoader class="blend"></ec-loader>  <!-- TODO wrap into entry-pop -->  <ec-pop #formPop [ngClass]="getPopClass()">    <nav>      <button (click)="log(crudForm)" *ngIf="config?.develop" class="btn">        code      </button>      <button (click)="crudForm.deleteEntry()" class="btn"              *ngIf="hasMethod(\'delete\')&&crudForm.isEditing()">        löschen      </button>      <button (click)="crudForm.submit()" [disabled]="crudForm.group?.invalid" type="button"              class="btn" [class.disabled]="crudForm.group?.invalid" *ngIf="maySave(crudForm)">        save      </button>      <button (click)="formPop.hide()" type="button" class="btn">        &times;      </button>    </nav>    <ec-entry-form [model]="model" [submitButton]="false" [loader]="popLoader"                   (submit)="!this.config?.keepPopOpen&&formPop.hide()" (deleted)="formPop.hide()"                   #crudForm></ec-entry-form>    <ec-loader #popLoader class="blend"></ec-loader>  </ec-pop>  <ec-notifications class="toast" *ngIf="!this.config?.notifications"></ec-notifications></div></div>'
     var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'AssetInputComponent', 'selector': ''},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
     var DIRECTIVES = [{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'CrudComponent'};

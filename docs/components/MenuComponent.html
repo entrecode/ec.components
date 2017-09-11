@@ -1181,6 +1181,9 @@
     </li>
 
     <li>
+        <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+    </li>
+    <li>
         <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
     </li>
 </ul>
@@ -1231,17 +1234,17 @@
                 <td class="col-md-9"><code>ec-menu,[ec-menu]</code></td>
             </tr>
 
-
             <tr>
-                <td class="col-md-3">styles</td>
-                <td class="col-md-9"><code>require.(args)</code></td>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>menu.component.scss</code></td>
             </tr>
 
-            <tr>
-                <td class="col-md-3">template</td>
-                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">require.(args)</code></pre></td>
-            </tr>
 
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./menu.component.html</code></td>
+            </tr>
 
 
         </tbody>
@@ -2252,8 +2255,8 @@ import { Router } from &#x27;@angular/router&#x27;; // TODO find way to import R
 /** Renders a nested menu from a given routes Array (the same you would use for angular routing). */
 @Component({
   selector: &#x27;ec-menu,[ec-menu]&#x27;,
-  template: require(&#x27;./menu.component.html&#x27;),
-  styles: [require(&#x27;./menu.component.scss&#x27;)]
+  templateUrl: &#x27;./menu.component.html&#x27;,
+  styleUrls: [&#x27;./menu.component.scss&#x27;]
 })
 export class MenuComponent implements OnChanges {
   /** Routes that should be used for the menu. You can use your angular router routes here. */
@@ -2354,6 +2357,23 @@ export class MenuComponent implements OnChanges {
 }</code></pre>
     </div>
 
+    <div class="tab-pane fade" id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;ec-menu&quot; [class.root]&#x3D;&quot;!parent&quot; (mouseleave)&#x3D;&quot;hoverOut()&quot; (mouseover)&#x3D;&quot;cancelTimeout()&quot;
+     [style.background-color]&#x3D;&quot;getColor()&quot;&gt;
+  &lt;ul&gt;
+    &lt;li *ngIf&#x3D;&quot;title&quot;&gt;
+      &lt;strong&gt;{{title}}&lt;/strong&gt;
+    &lt;/li&gt;
+    &lt;li *ngFor&#x3D;&quot;let item of routes&quot; (mouseenter)&#x3D;&quot;hoverItem(item)&quot;
+        [style.background-color]&#x3D;&quot;getItemColor(item)&quot;
+        [class.leaf]&#x3D;&quot;!item.children||!item.children.length&quot;&gt;
+      &lt;a *ngIf&#x3D;&quot;item.component&quot; [routerLink]&#x3D;&quot;getPath(item)&quot;&gt;{{item.data?.title || item.path}}&lt;/a&gt;
+      &lt;span *ngIf&#x3D;&quot;!item.component&quot;&gt;{{item.data?.title || item.path}}&lt;/span&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;ec-menu *ngIf&#x3D;&quot;hover?.children&quot; [route]&#x3D;&quot;hover&quot; [parent]&#x3D;&quot;this&quot; #current&gt;&lt;/ec-menu&gt;
+&lt;/div&gt;</code></pre>
+    </div>
 
     <div class="tab-pane fade" id="tree">
         <div id="tree-container"></div>
@@ -2378,7 +2398,7 @@ export class MenuComponent implements OnChanges {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div>require.(args)</div>'
+        var COMPONENT_TEMPLATE = '<div><div class="ec-menu" [class.root]="!parent" (mouseleave)="hoverOut()" (mouseover)="cancelTimeout()"     [style.background-color]="getColor()">  <ul>    <li *ngIf="title">      <strong>{{title}}</strong>    </li>    <li *ngFor="let item of routes" (mouseenter)="hoverItem(item)"        [style.background-color]="getItemColor(item)"        [class.leaf]="!item.children||!item.children.length">      <a *ngIf="item.component" [routerLink]="getPath(item)">{{item.data?.title || item.path}}</a>      <span *ngIf="!item.component">{{item.data?.title || item.path}}</span>    </li>  </ul>  <ec-menu *ngIf="hover?.children" [route]="hover" [parent]="this" #current></ec-menu></div></div>'
     var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'AssetInputComponent', 'selector': ''},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
     var DIRECTIVES = [{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'MenuComponent'};

@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import EntryResource from "ec.sdk/src/resources/publicAPI/EntryResource";
-import EntryList from "ec.sdk/src/resources/publicAPI/EntryList";
+import EntryResource from 'ec.sdk/src/resources/publicAPI/EntryResource';
+import EntryList from 'ec.sdk/src/resources/publicAPI/EntryList';
 import { SdkService } from '../sdk/sdk.service';
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/filter';
+import { Subject } from 'rxjs/Subject';
 
 /** Instances of Update are emitted by the changes EventEmitter of the CrudService. */
 export interface Update {
@@ -41,7 +43,7 @@ export class CrudService {
     if (!filter) {
       return this.changes.asObservable();
     }
-    return this.changes.filter((change: Update) => this.matches(change, filter));
+    return this.changes.asObservable().filter((change: Update) => this.matches(change, filter));
   }
 
   /** Saves the given entry with the given value. If the entry is not yet existing, it will be created. Otherwise it will be updated. */
@@ -50,8 +52,8 @@ export class CrudService {
       return this.update(model, entry, value);
     }
     return this.create(model, value)
-    .then((entry) => {
-      return entry;
+    .then((_entry) => {
+      return _entry;
     }).catch((err) => {
       return Promise.reject(err);
     });
@@ -59,24 +61,27 @@ export class CrudService {
 
   /** Updates the given entry with the new value. Fires the "update" change. */
   update(model, entry: EntryResource, value: Object): Promise<EntryResource> {
-    const oldValues = {}; //save old values
+    const oldValues = {}; // save old values
     Object.keys(value).forEach((key) => oldValues[key] = entry[key]);
-    Object.assign(entry, this.clean(value)); //assign new form values
-    return entry.save().then((entry) => {
-      this.changes.next({ model, entry, type: 'update' });
-      return entry;
+    Object.assign(entry, this.clean(value)); // assign new form values
+    return entry.save().then((_entry) => {
+      this.changes.next({ model, entry: _entry, type: 'update' });
+      return _entry;
     })
     .catch((err) => {
-      Object.assign(entry, this.clean(oldValues)); //fall back to old values
+      Object.assign(entry, this.clean(oldValues)); // fall back to old values
       return Promise.reject(err);
     });
   }
 
   /** Removes all null or undefined values from the given object */
   clean(value: Object): Object {
-    for (let key in value) {
-      if (value[key] === '') { //clear empty strings
+    for (const key in value) {
+      if (value[key] === '') { // clear empty strings
         value[key] = null;
+      }
+      if (value[key][0] === '_') { // filter system properties
+        delete value[key];
       }
     }
     return value;

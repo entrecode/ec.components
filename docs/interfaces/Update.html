@@ -1267,7 +1267,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">packages/data/src/crud/crud.service.ts:12</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">packages/data/src/crud/crud.service.ts:14</a></div>
                                         </td>
                                     </tr>
 
@@ -1306,7 +1306,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">packages/data/src/crud/crud.service.ts:14</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">packages/data/src/crud/crud.service.ts:16</a></div>
                                         </td>
                                     </tr>
 
@@ -1345,7 +1345,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">packages/data/src/crud/crud.service.ts:10</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">packages/data/src/crud/crud.service.ts:12</a></div>
                                         </td>
                                     </tr>
 
@@ -1384,7 +1384,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">packages/data/src/crud/crud.service.ts:16</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">packages/data/src/crud/crud.service.ts:18</a></div>
                                         </td>
                                     </tr>
 
@@ -1402,10 +1402,12 @@
 
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
-import EntryResource from &quot;ec.sdk/src/resources/publicAPI/EntryResource&quot;;
-import EntryList from &quot;ec.sdk/src/resources/publicAPI/EntryList&quot;;
+import EntryResource from &#x27;ec.sdk/src/resources/publicAPI/EntryResource&#x27;;
+import EntryList from &#x27;ec.sdk/src/resources/publicAPI/EntryList&#x27;;
 import { SdkService } from &#x27;../sdk/sdk.service&#x27;;
-import { Observable, Subject } from &#x27;rxjs&#x27;;
+import { Observable } from &#x27;rxjs/Observable&#x27;;
+import &#x27;rxjs/add/operator/filter&#x27;;
+import { Subject } from &#x27;rxjs/Subject&#x27;;
 
 /** Instances of Update are emitted by the changes EventEmitter of the CrudService. */
 export interface Update {
@@ -1444,7 +1446,7 @@ export class CrudService {
     if (!filter) {
       return this.changes.asObservable();
     }
-    return this.changes.filter((change: Update) &#x3D;&gt; this.matches(change, filter));
+    return this.changes.asObservable().filter((change: Update) &#x3D;&gt; this.matches(change, filter));
   }
 
   /** Saves the given entry with the given value. If the entry is not yet existing, it will be created. Otherwise it will be updated. */
@@ -1453,8 +1455,8 @@ export class CrudService {
       return this.update(model, entry, value);
     }
     return this.create(model, value)
-    .then((entry) &#x3D;&gt; {
-      return entry;
+    .then((_entry) &#x3D;&gt; {
+      return _entry;
     }).catch((err) &#x3D;&gt; {
       return Promise.reject(err);
     });
@@ -1462,24 +1464,27 @@ export class CrudService {
 
   /** Updates the given entry with the new value. Fires the &quot;update&quot; change. */
   update(model, entry: EntryResource, value: Object): Promise&lt;EntryResource&gt; {
-    const oldValues &#x3D; {}; //save old values
+    const oldValues &#x3D; {}; // save old values
     Object.keys(value).forEach((key) &#x3D;&gt; oldValues[key] &#x3D; entry[key]);
-    Object.assign(entry, this.clean(value)); //assign new form values
-    return entry.save().then((entry) &#x3D;&gt; {
-      this.changes.next({ model, entry, type: &#x27;update&#x27; });
-      return entry;
+    Object.assign(entry, this.clean(value)); // assign new form values
+    return entry.save().then((_entry) &#x3D;&gt; {
+      this.changes.next({ model, entry: _entry, type: &#x27;update&#x27; });
+      return _entry;
     })
     .catch((err) &#x3D;&gt; {
-      Object.assign(entry, this.clean(oldValues)); //fall back to old values
+      Object.assign(entry, this.clean(oldValues)); // fall back to old values
       return Promise.reject(err);
     });
   }
 
   /** Removes all null or undefined values from the given object */
   clean(value: Object): Object {
-    for (let key in value) {
-      if (value[key] &#x3D;&#x3D;&#x3D; &#x27;&#x27;) { //clear empty strings
+    for (const key in value) {
+      if (value[key] &#x3D;&#x3D;&#x3D; &#x27;&#x27;) { // clear empty strings
         value[key] &#x3D; null;
+      }
+      if (value[key][0] &#x3D;&#x3D;&#x3D; &#x27;_&#x27;) { // filter system properties
+        delete value[key];
       }
     }
     return value;
@@ -1505,7 +1510,8 @@ export class CrudService {
       return res;
     });
   }
-}</code></pre>
+}
+</code></pre>
     </div>
 </div>
 
