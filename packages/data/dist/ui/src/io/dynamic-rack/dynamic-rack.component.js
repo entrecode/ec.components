@@ -12,7 +12,7 @@ class DynamicRackComponent {
 DynamicRackComponent.decorators = [
     { type: core_1.Component, args: [{
                 // selector: 'ec-dynamic-rack',
-                templateUrl: './dynamic-rack.component.html'
+                template: require('./dynamic-rack.component.html')
             },] },
 ];
 /** @nocollapse */

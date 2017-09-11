@@ -7,8 +7,8 @@ class DefaultOutputComponent {
 DefaultOutputComponent.decorators = [
     { type: core_1.Component, args: [{
                 selector: 'ec-default-output',
-                styleUrls: ['./default-output.component.scss'],
-                templateUrl: './default-output.component.html',
+                styles: [require('./default-output.component.scss')],
+                template: require('./default-output.component.html'),
             },] },
 ];
 /** @nocollapse */

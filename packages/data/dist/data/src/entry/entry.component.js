@@ -28,7 +28,7 @@ class EntryComponent {
 EntryComponent.decorators = [
     { type: core_1.Component, args: [{
                 selector: 'ec-entry',
-                templateUrl: './entry.component.html'
+                template: require('./entry.component.html')
             },] },
 ];
 /** @nocollapse */

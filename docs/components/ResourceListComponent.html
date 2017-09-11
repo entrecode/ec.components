@@ -1181,9 +1181,6 @@
     </li>
 
     <li>
-        <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
-    </li>
-    <li>
         <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
     </li>
 </ul>
@@ -1243,11 +1240,11 @@ It is meant to be extended and overriden the createList method. See e.g. AssetLi
 
 
 
-
             <tr>
-                <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>../../../ui/src/list/list.component.html</code></td>
+                <td class="col-md-3">template</td>
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">require.(args)</code></pre></td>
             </tr>
+
 
 
         </tbody>
@@ -1750,7 +1747,7 @@ import { ResourceList } from &#x27;./resource-list&#x27;;
  * It is meant to be extended and overriden the createList method. See e.g. AssetListComponent. */
 @Component({
   selector: &#x27;ec-resource-list&#x27;,
-  templateUrl: &#x27;../../../ui/src/list/list.component.html&#x27;
+  template: require(&#x27;../../../ui/src/list/list.component.html&#x27;)
 })
 export class ResourceListComponent&lt;T&gt; extends ListComponent&lt;T&gt; implements OnChanges {
   /** If true, only one item is selectable next */
@@ -1837,26 +1834,6 @@ export class ResourceListComponent&lt;T&gt; extends ListComponent&lt;T&gt; imple
 </code></pre>
     </div>
 
-    <div class="tab-pane fade" id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;ec-pagination [pagination]&#x3D;&quot;list?.pagination&quot;
-               *ngIf&#x3D;&quot;list?.pagination?.getPages()&gt;1&quot;&gt;&lt;/ec-pagination&gt;
-&lt;div class&#x3D;&quot;ec-list&quot;&gt;
-  &lt;ec-list-header [list]&#x3D;&quot;list&quot; [selection]&#x3D;&quot;selection&quot;&gt;&lt;/ec-list-header&gt;
-
-  &lt;div class&#x3D;&quot;ec-list-body&quot;&gt;
-    &lt;div class&#x3D;&quot;ec-list-group&quot; *ngFor&#x3D;&quot;let group of list?.groups&quot;&gt;
-      &lt;div class&#x3D;&quot;ec-list-group-header ec-list__row&quot; *ngIf&#x3D;&quot;group.value&quot; (click)&#x3D;&quot;selection?.toggleAll(listItems?.items)&quot;&gt;
-        &lt;div class&#x3D;&quot;ec-list__cell ec-list__select&quot; *ngIf&#x3D;&quot;selection&quot;&gt;&lt;input type&#x3D;&quot;checkbox&quot; [checked]&#x3D;&quot;selection?.hasAll(listItems?.items)&quot;&gt;&lt;/div&gt;
-        &lt;div class&#x3D;&quot;ec-list__cell&quot;&gt;
-          &lt;span class&#x3D;&quot;ec-list-group-header__title&quot;&gt;{{group.value}}&lt;/span&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;ec-list-items [host]&#x3D;&quot;this&quot; #listItems [items]&#x3D;&quot;list?.page | group: group.property: group.value&quot;&gt;&lt;/ec-list-items&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;ec-pagination [pagination]&#x3D;&quot;list?.pagination&quot; *ngIf&#x3D;&quot;list?.pagination?.getPages()&gt;1&quot;&gt;&lt;/ec-pagination&gt;</code></pre>
-    </div>
 
     <div class="tab-pane fade" id="tree">
         <div id="tree-container"></div>
@@ -1881,7 +1858,7 @@ export class ResourceListComponent&lt;T&gt; extends ListComponent&lt;T&gt; imple
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ec-pagination [pagination]="list?.pagination"               *ngIf="list?.pagination?.getPages()>1"></ec-pagination><div class="ec-list">  <ec-list-header [list]="list" [selection]="selection"></ec-list-header>  <div class="ec-list-body">    <div class="ec-list-group" *ngFor="let group of list?.groups">      <div class="ec-list-group-header ec-list__row" *ngIf="group.value" (click)="selection?.toggleAll(listItems?.items)">        <div class="ec-list__cell ec-list__select" *ngIf="selection"><input type="checkbox" [checked]="selection?.hasAll(listItems?.items)"></div>        <div class="ec-list__cell">          <span class="ec-list-group-header__title">{{group.value}}</span>        </div>      </div>      <ec-list-items [host]="this" #listItems [items]="list?.page | group: group.property: group.value"></ec-list-items>    </div>  </div></div><ec-pagination [pagination]="list?.pagination" *ngIf="list?.pagination?.getPages()>1"></ec-pagination></div>'
+        var COMPONENT_TEMPLATE = '<div>require.(args)</div>'
     var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'AssetInputComponent', 'selector': ''},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
     var DIRECTIVES = [{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'ResourceListComponent'};

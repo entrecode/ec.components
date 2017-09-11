@@ -52,8 +52,8 @@ class LoginComponent {
 LoginComponent.decorators = [
     { type: core_1.Component, args: [{
                 selector: 'ec-login',
-                templateUrl: './login.component.html',
-                styleUrls: ['./login.component.scss']
+                template: require('./login.component.html'),
+                styles: [require('./login.component.scss')]
             },] },
 ];
 /** @nocollapse */

@@ -30,8 +30,8 @@ class InputErrorsComponent {
 InputErrorsComponent.decorators = [
     { type: core_1.Component, args: [{
                 selector: 'ec-input-errors',
-                templateUrl: './input-errors.component.html',
-                styleUrls: ['./input-errors.component.scss']
+                template: require('./input-errors.component.html'),
+                styles: [require('./input-errors.component.scss')]
             },] },
 ];
 /** @nocollapse */

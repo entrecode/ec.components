@@ -25,8 +25,8 @@ class NotificationsComponent {
 NotificationsComponent.decorators = [
     { type: core_1.Component, args: [{
                 selector: 'ec-notifications',
-                templateUrl: './notifications.component.html',
-                styleUrls: ['./notifications.component.scss']
+                template: require('./notifications.component.html'),
+                styles: [require('./notifications.component.scss')]
             },] },
 ];
 /** @nocollapse */

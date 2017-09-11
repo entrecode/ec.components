@@ -42,8 +42,8 @@ class LoaderComponent {
 LoaderComponent.decorators = [
     { type: core_1.Component, args: [{
                 selector: 'ec-loader',
-                templateUrl: './loader.component.html',
-                styleUrls: ['./loader.component.scss']
+                template: require('./loader.component.html'),
+                styles: [require('./loader.component.scss')]
             },] },
 ];
 /** @nocollapse */

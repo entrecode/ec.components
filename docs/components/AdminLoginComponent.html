@@ -1181,9 +1181,6 @@
     </li>
 
     <li>
-        <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
-    </li>
-    <li>
         <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
     </li>
 </ul>
@@ -1227,17 +1224,17 @@
                 <td class="col-md-9"><code>ec-auth-admin-login</code></td>
             </tr>
 
-            <tr>
-                <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>admin-login.component.scss</code></td>
-            </tr>
-
-
 
             <tr>
-                <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>./admin-login.component.html</code></td>
+                <td class="col-md-3">styles</td>
+                <td class="col-md-9"><code>require.(args)</code></td>
             </tr>
+
+            <tr>
+                <td class="col-md-3">template</td>
+                <td class="col-md-9"><pre class="line-numbers"><code class="language-html">require.(args)</code></pre></td>
+            </tr>
+
 
 
         </tbody>
@@ -1640,14 +1637,14 @@
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { Component, EventEmitter, OnInit, Output } from &#x27;@angular/core&#x27;;
 import { FormBuilder, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
-import { Observable } from &#x27;rxjs&#x27;;
+import { Observable } from &#x27;rxjs/Observable&#x27;;
 import { AdminService } from &#x27;../../sdk/admin.service&#x27;;
 import { FieldValidators } from &#x27;@ec.components/ui/src/utility/validators/field-validators&#x27;;
 
 @Component({
   selector: &#x27;ec-auth-admin-login&#x27;,
-  templateUrl: &#x27;./admin-login.component.html&#x27;,
-  styleUrls: [&#x27;./admin-login.component.scss&#x27;]
+  template: require(&#x27;./admin-login.component.html&#x27;),
+  styles: [require(&#x27;./admin-login.component.scss&#x27;)]
 })
 export class AdminLoginComponent implements OnInit {
   public login: FormGroup;
@@ -1689,24 +1686,6 @@ export class AdminLoginComponent implements OnInit {
 </code></pre>
     </div>
 
-    <div class="tab-pane fade" id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;form novalidate [formGroup]&#x3D;&quot;login&quot; (ngSubmit)&#x3D;&quot;onSubmit()&quot; class&#x3D;&quot;ec-admin-login&quot;&gt;
-  &lt;div class&#x3D;&quot;alert error&quot; *ngIf&#x3D;&quot;errorMessage&quot;&gt;{{errorMessage}}&lt;/div&gt;
-  &lt;div class&#x3D;&quot;input-group input-group_email&quot;&gt;
-    &lt;label&gt;E-Mail&lt;/label&gt;
-    &lt;input type&#x3D;&quot;email&quot; formControlName&#x3D;&quot;email&quot; validate-onblur class&#x3D;&quot;input&quot;&gt;
-    &lt;ec-input-errors [control]&#x3D;&quot;login.get(&#x27;email&#x27;)&quot;&gt;&lt;/ec-input-errors&gt;
-  &lt;/div&gt;
-
-  &lt;div class&#x3D;&quot;input-group input-group_password&quot;&gt;
-    &lt;label&gt;Passwort&lt;/label&gt;
-    &lt;input type&#x3D;&quot;password&quot; formControlName&#x3D;&quot;password&quot; validate-onblur&gt;
-    &lt;ec-input-errors [control]&#x3D;&quot;login.get(&#x27;password&#x27;)&quot;&gt;&lt;/ec-input-errors&gt;
-  &lt;/div&gt;
-  &lt;button type&#x3D;&quot;submit&quot; [disabled]&#x3D;&quot;login.invalid&quot; class&#x3D;&quot;btn&quot;&gt;Login&lt;/button&gt;
-&lt;/form&gt;
-</code></pre>
-    </div>
 
     <div class="tab-pane fade" id="tree">
         <div id="tree-container"></div>
@@ -1731,7 +1710,7 @@ export class AdminLoginComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><form novalidate [formGroup]="login" (ngSubmit)="onSubmit()" class="ec-admin-login">  <div class="alert error" *ngIf="errorMessage">{{errorMessage}}</div>  <div class="input-group input-group_email">    <label>E-Mail</label>    <input type="email" formControlName="email" validate-onblur class="input">    <ec-input-errors [control]="login.get(\'email\')"></ec-input-errors>  </div>  <div class="input-group input-group_password">    <label>Passwort</label>    <input type="password" formControlName="password" validate-onblur>    <ec-input-errors [control]="login.get(\'password\')"></ec-input-errors>  </div>  <button type="submit" [disabled]="login.invalid" class="btn">Login</button></form></div>'
+        var COMPONENT_TEMPLATE = '<div>require.(args)</div>'
     var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'AssetInputComponent', 'selector': ''},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
     var DIRECTIVES = [{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'AdminLoginComponent'};

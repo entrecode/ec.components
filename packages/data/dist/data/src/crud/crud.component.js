@@ -100,8 +100,8 @@ class CrudComponent {
 CrudComponent.decorators = [
     { type: core_1.Component, args: [{
                 selector: 'ec-crud',
-                templateUrl: './crud.component.html',
-                styleUrls: ['./crud.component.scss']
+                template: require('./crud.component.html'),
+                styles: [require('./crud.component.scss')]
             },] },
 ];
 /** @nocollapse */

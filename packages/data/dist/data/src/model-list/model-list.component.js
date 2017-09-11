@@ -16,7 +16,7 @@ class ModelListComponent extends resource_list_component_1.ResourceListComponent
 ModelListComponent.decorators = [
     { type: core_1.Component, args: [{
                 selector: 'ec-model-list',
-                templateUrl: '../../../ui/src/list/list.component.html'
+                template: require('../../../ui/src/list/list.component.html')
             },] },
 ];
 /** @nocollapse */

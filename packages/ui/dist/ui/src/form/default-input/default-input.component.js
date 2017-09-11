@@ -6,7 +6,7 @@ class DefaultInputComponent {
 }
 DefaultInputComponent.decorators = [
     { type: core_1.Component, args: [{
-                templateUrl: './default-input.component.html',
+                template: require('./default-input.component.html'),
             },] },
 ];
 /** @nocollapse */

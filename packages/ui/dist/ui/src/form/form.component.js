@@ -91,8 +91,8 @@ class FormComponent {
 FormComponent.decorators = [
     { type: core_1.Component, args: [{
                 selector: 'ec-form',
-                templateUrl: './form.component.html',
-                styleUrls: ['./form.component.scss']
+                template: require('./form.component.html'),
+                styles: [require('./form.component.scss')]
             },] },
 ];
 /** @nocollapse */

@@ -52,8 +52,8 @@ class ListComponent {
 ListComponent.decorators = [
     { type: core_1.Component, args: [{
                 selector: 'ec-list',
-                templateUrl: './list.component.html',
-                styleUrls: ['./list.component.scss'],
+                template: require('./list.component.html'),
+                styles: [require('./list.component.scss')],
                 encapsulation: core_1.ViewEncapsulation.None
             },] },
 ];

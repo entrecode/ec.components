@@ -19,8 +19,8 @@ class ListHeaderComponent {
 ListHeaderComponent.decorators = [
     { type: core_1.Component, args: [{
                 selector: 'ec-list-header',
-                templateUrl: './list-header.component.html',
-                styleUrls: ['./list-header.component.scss']
+                template: require('./list-header.component.html'),
+                styles: [require('./list-header.component.scss')]
             },] },
 ];
 /** @nocollapse */

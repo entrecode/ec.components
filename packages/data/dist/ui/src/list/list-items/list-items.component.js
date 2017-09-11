@@ -27,8 +27,8 @@ class ListItemsComponent {
 ListItemsComponent.decorators = [
     { type: core_1.Component, args: [{
                 selector: 'ec-list-items',
-                templateUrl: './list-items.component.html',
-                styleUrls: ['./list-items.component.scss']
+                template: require('./list-items.component.html'),
+                styles: [require('./list-items.component.scss')]
             },] },
 ];
 /** @nocollapse */

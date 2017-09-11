@@ -38,8 +38,8 @@ class AdminSignupComponent {
 AdminSignupComponent.decorators = [
     { type: core_1.Component, args: [{
                 selector: 'ec-auth-admin-signup',
-                templateUrl: './admin-signup.component.html',
-                styleUrls: ['./admin-signup.component.scss']
+                template: require('./admin-signup.component.html'),
+                styles: [require('./admin-signup.component.scss')]
             },] },
 ];
 /** @nocollapse */

@@ -7,7 +7,7 @@ class DefaultEntryOutputComponent {
 DefaultEntryOutputComponent.decorators = [
     { type: core_1.Component, args: [{
                 selector: 'ec-default-entry-output',
-                templateUrl: './default-entry-output.component.html',
+                template: require('./default-entry-output.component.html'),
             },] },
 ];
 /** @nocollapse */

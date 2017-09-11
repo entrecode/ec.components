@@ -8,7 +8,7 @@ class ErrorComponent {
 ErrorComponent.decorators = [
     { type: core_1.Component, args: [{
                 selector: 'ec-error',
-                templateUrl: './error.component.html'
+                template: require('./error.component.html')
             },] },
 ];
 /** @nocollapse */

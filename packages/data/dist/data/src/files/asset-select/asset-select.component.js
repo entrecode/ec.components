@@ -70,8 +70,8 @@ class AssetSelectComponent extends select_component_1.SelectComponent {
 AssetSelectComponent.decorators = [
     { type: core_1.Component, args: [{
                 selector: 'ec-asset-select',
-                templateUrl: './asset-select.component.html',
-                styleUrls: ['../../../../ui/src/form/select/select.component.scss'],
+                template: require('./asset-select.component.html'),
+                styles: [require('../../../../ui/src/form/select/select.component.scss')],
                 encapsulation: core_1.ViewEncapsulation.None,
                 providers: [
                     {

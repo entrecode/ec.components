@@ -83,8 +83,8 @@ class MenuComponent {
 MenuComponent.decorators = [
     { type: core_1.Component, args: [{
                 selector: 'ec-menu,[ec-menu]',
-                templateUrl: './menu.component.html',
-                styleUrls: ['./menu.component.scss']
+                template: require('./menu.component.html'),
+                styles: [require('./menu.component.scss')]
             },] },
 ];
 /** @nocollapse */

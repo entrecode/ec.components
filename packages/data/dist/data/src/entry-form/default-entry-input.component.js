@@ -12,7 +12,7 @@ class DefaultEntryInputComponent extends default_input_component_1.DefaultInputC
 }
 DefaultEntryInputComponent.decorators = [
     { type: core_1.Component, args: [{
-                templateUrl: './default-entry-input.component.html',
+                template: require('./default-entry-input.component.html'),
             },] },
 ];
 /** @nocollapse */

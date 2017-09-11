@@ -65,8 +65,8 @@ class EntryFormComponent extends form_component_1.FormComponent {
 EntryFormComponent.decorators = [
     { type: core_1.Component, args: [{
                 selector: 'ec-entry-form',
-                templateUrl: '../../../ui/src/form/form.component.html',
-                styleUrls: ['./entry-form.component.scss']
+                template: require('../../../ui/src/form/form.component.html'),
+                styles: [require('./entry-form.component.scss')]
             },] },
 ];
 /** @nocollapse */

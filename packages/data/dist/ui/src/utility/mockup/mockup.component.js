@@ -7,8 +7,8 @@ class MockupComponent {
 MockupComponent.decorators = [
     { type: core_1.Component, args: [{
                 selector: 'ec-mockup',
-                templateUrl: './mockup.component.html',
-                styleUrls: ['./mockup.component.scss']
+                template: require('./mockup.component.html'),
+                styles: [require('./mockup.component.scss')]
             },] },
 ];
 /** @nocollapse */

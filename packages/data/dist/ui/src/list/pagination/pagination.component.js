@@ -39,8 +39,8 @@ class PaginationComponent {
 PaginationComponent.decorators = [
     { type: core_1.Component, args: [{
                 selector: 'ec-pagination',
-                templateUrl: './pagination.component.html',
-                styleUrls: ['./pagination.component.scss']
+                template: require('./pagination.component.html'),
+                styles: [require('./pagination.component.scss')]
             },] },
 ];
 /** @nocollapse */

@@ -64,8 +64,8 @@ class EntrySelectComponent extends select_component_1.SelectComponent {
 EntrySelectComponent.decorators = [
     { type: core_1.Component, args: [{
                 selector: 'ec-entry-select',
-                templateUrl: './entry-select.component.html',
-                styleUrls: ['../../../ui/src/form/select/select.component.scss'],
+                template: require('./entry-select.component.html'),
+                styles: [require('../../../ui/src/form/select/select.component.scss')],
                 encapsulation: core_1.ViewEncapsulation.None,
                 providers: [
                     {

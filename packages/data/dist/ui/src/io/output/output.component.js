@@ -19,8 +19,8 @@ class OutputComponent extends dynamic_slot_component_1.DynamicSlotComponent {
 OutputComponent.decorators = [
     { type: core_1.Component, args: [{
                 selector: 'ec-output',
-                templateUrl: '../dynamic-slot/dynamic-slot.component.html',
-                styleUrls: ['./output.component.scss']
+                template: require('../dynamic-slot/dynamic-slot.component.html'),
+                styles: [require('./output.component.scss')]
             },] },
 ];
 /** @nocollapse */

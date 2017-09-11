@@ -79,8 +79,8 @@ class MonthComponent {
 MonthComponent.decorators = [
     { type: core_1.Component, args: [{
                 selector: 'ec-month',
-                styleUrls: ['month.component.scss'],
-                templateUrl: 'month.component.html'
+                styles: [require('./month.component.scss')],
+                template: require('./month.component.html')
             },] },
 ];
 /** @nocollapse */

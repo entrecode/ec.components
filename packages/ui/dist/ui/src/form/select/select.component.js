@@ -92,8 +92,8 @@ class SelectComponent {
 SelectComponent.decorators = [
     { type: core_1.Component, args: [{
                 selector: 'ec-select',
-                templateUrl: './select.component.html',
-                styleUrls: ['./select.component.scss'],
+                template: require('./select.component.html'),
+                styles: [require('./select.component.scss')],
                 encapsulation: core_1.ViewEncapsulation.None,
                 providers: [
                     {

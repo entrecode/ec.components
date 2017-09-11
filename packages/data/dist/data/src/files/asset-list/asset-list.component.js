@@ -27,7 +27,7 @@ class AssetListComponent extends resource_list_component_1.ResourceListComponent
 AssetListComponent.decorators = [
     { type: core_1.Component, args: [{
                 selector: 'ec-asset-list',
-                templateUrl: '../../../../ui/src/list/list.component.html'
+                template: require('../../../../ui/src/list/list.component.html')
             },] },
 ];
 /** @nocollapse */

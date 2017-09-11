@@ -21,8 +21,8 @@ class TabComponent {
 TabComponent.decorators = [
     { type: core_1.Component, args: [{
                 selector: 'ec-tab',
-                templateUrl: './tab.component.html',
-                styleUrls: ['./tab.component.scss']
+                template: require('./tab.component.html'),
+                styles: [require('./tab.component.scss')]
             },] },
 ];
 /** @nocollapse */

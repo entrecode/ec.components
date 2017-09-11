@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@angular/core");
 const forms_1 = require("@angular/forms");
-const rxjs_1 = require("rxjs");
+const Observable_1 = require("rxjs/Observable");
 const admin_service_1 = require("../../sdk/admin.service");
 const field_validators_1 = require("@ec.components/ui/src/utility/validators/field-validators");
 class AdminLoginComponent {
@@ -22,7 +22,7 @@ class AdminLoginComponent {
         this.errorMessage = err.message;
         this.login.get('password').setValue('');
         this.error.emit(err);
-        rxjs_1.Observable.throw(err);
+        Observable_1.Observable.throw(err);
     }
     onSubmit() {
         this.submitted = true;
@@ -40,8 +40,8 @@ class AdminLoginComponent {
 AdminLoginComponent.decorators = [
     { type: core_1.Component, args: [{
                 selector: 'ec-auth-admin-login',
-                templateUrl: './admin-login.component.html',
-                styleUrls: ['./admin-login.component.scss']
+                template: require('./admin-login.component.html'),
+                styles: [require('./admin-login.component.scss')]
             },] },
 ];
 /** @nocollapse */

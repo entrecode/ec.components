@@ -79,8 +79,8 @@ class DatetimeComponent {
 DatetimeComponent.decorators = [
     { type: core_1.Component, args: [{
                 selector: 'ec-datetime',
-                templateUrl: 'datetime.component.html',
-                styleUrls: ['datetime.component.scss'],
+                template: require('./datetime.component.html'),
+                styles: [require('./datetime.component.scss')],
                 providers: [
                     {
                         provide: forms_1.NG_VALUE_ACCESSOR,

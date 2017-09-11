@@ -35,7 +35,7 @@ class InputComponent extends dynamic_slot_component_1.DynamicSlotComponent {
 InputComponent.decorators = [
     { type: core_1.Component, args: [{
                 selector: 'ec-input',
-                templateUrl: '../dynamic-slot/dynamic-slot.component.html',
+                template: require('../dynamic-slot/dynamic-slot.component.html'),
             },] },
 ];
 /** @nocollapse */

@@ -33,7 +33,7 @@ class EntriesComponent {
 EntriesComponent.decorators = [
     { type: core_1.Component, args: [{
                 selector: 'ec-entries',
-                templateUrl: './entries.component.html'
+                template: require('./entries.component.html')
             },] },
 ];
 /** @nocollapse */

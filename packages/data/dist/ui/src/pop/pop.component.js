@@ -46,8 +46,8 @@ class PopComponent {
 PopComponent.decorators = [
     { type: core_1.Component, args: [{
                 selector: 'ec-pop',
-                templateUrl: './pop.component.html',
-                styleUrls: ['./pop.component.scss']
+                template: require('./pop.component.html'),
+                styles: [require('./pop.component.scss')]
             },] },
 ];
 /** @nocollapse */

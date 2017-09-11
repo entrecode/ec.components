@@ -23,7 +23,7 @@ class DynamicSlotComponent {
 DynamicSlotComponent.decorators = [
     { type: core_1.Component, args: [{
                 // selector: 'ec-dynamic-field',
-                templateUrl: './dynamic-slot.component.html'
+                template: require('./dynamic-slot.component.html')
             },] },
 ];
 /** @nocollapse */
