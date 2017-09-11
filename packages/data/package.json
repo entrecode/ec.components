@@ -1,14 +1,14 @@
 {
   "name": "@ec.components/data",
-  "version": "0.6.3",
+  "version": "0.6.5",
   "description": "All datamanager related UI components and classes.",
-  "main": "dist/index.js",
+  "main": "index.ts",
   "typings": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clear-dist": "rimraf dist",
     "ngc-build": "ngc -p ./tsconfig-ngc.json",
-    "prepublish": "npm run clear-dist && npm run ngc-build"
+    "prepublish": "npm run clear-dist"
   },
   "author": "Felix Roos <roos@entrecode.de>",
   "license": "ISC",
@@ -31,7 +31,7 @@
     "@angular/http": "^4.0.0",
     "@angular/platform-browser": "^4.0.0",
     "@ec.components/core": "^0.6.0",
-    "@ec.components/ui": "^0.6.2",
+    "@ec.components/ui": "^0.6.4",
     "ec.sdk": "^0.8.6",
     "moment": "^2.18.1",
     "ngx-cookie": "^1.0.0",
