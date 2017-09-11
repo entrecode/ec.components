@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import { AdminService } from '../../sdk/admin.service';
 import { FieldValidators } from '@ec.components/ui/src/utility/validators/field-validators';
 
