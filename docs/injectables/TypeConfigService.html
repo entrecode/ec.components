@@ -1487,7 +1487,7 @@ export class TypeConfigService {
       filterOperator: &#x27;exact&#x27;,
       filterable: true,
       display: (value, entry, property) &#x3D;&gt; entry.getImageThumbUrl(property, 100),
-      filterPopClass: &#x27;modal&#x27;
+      filterPopClass: &#x27;ec-pop_toast-top&#x27;
     },
     assets: {
       view: &#x27;avatars&#x27;,
@@ -1497,7 +1497,7 @@ export class TypeConfigService {
       filterOperator: &#x27;any&#x27;,
       filterable: true,
       queryFilter: (value) &#x3D;&gt; value.split(&#x27;,&#x27;),
-      filterPopClass: &#x27;modal&#x27;
+      filterPopClass: &#x27;ec-pop_toast-top&#x27;
     },
     email: {},
     phone: {
@@ -1513,7 +1513,7 @@ export class TypeConfigService {
         }
         return;
       },
-      filterPopClass: &#x27;modal&#x27;
+      filterPopClass: &#x27;ec-pop_toast-top&#x27;
       /*,
       prefill: new Date(0)*/
     },
@@ -1524,7 +1524,7 @@ export class TypeConfigService {
       display: (value, entry, property) &#x3D;&gt; entry.getTitle(property),
       filterable: true,
       filterOperator: &#x27;exact&#x27;,
-      filterPopClass: &#x27;modal&#x27;
+      filterPopClass: &#x27;ec-pop_toast-top&#x27;
     },
     entries: {
       view: &#x27;tags&#x27;,
@@ -1535,7 +1535,7 @@ export class TypeConfigService {
       filterOperator: &#x27;any&#x27;,
       prefill: [],
       queryFilter: (value) &#x3D;&gt; value.split(&#x27;,&#x27;),
-      filterPopClass: &#x27;modal&#x27;
+      filterPopClass: &#x27;ec-pop_toast-top&#x27;
     },
     json: {
       input: DefaultEntryInputComponent,
@@ -1546,17 +1546,17 @@ export class TypeConfigService {
       input: DefaultEntryInputComponent,
       output: DefaultEntryOutputComponent,
       display: (value) &#x3D;&gt; value ? value.longitude + &#x27;,&#x27; + value.latitude : &#x27;&#x27;,
-      filterPopClass: &#x27;modal&#x27;
+      filterPopClass: &#x27;ec-pop_toast-top&#x27;
     },
     account: {
       input: DefaultEntryInputComponent,
       output: DefaultEntryOutputComponent,
-      filterPopClass: &#x27;modal&#x27;
+      filterPopClass: &#x27;ec-pop_toast-top&#x27;
     },
     role: {
       input: DefaultEntryInputComponent,
       output: DefaultEntryOutputComponent,
-      filterPopClass: &#x27;modal&#x27;
+      filterPopClass: &#x27;ec-pop_toast-top&#x27;
     }
   };
 
