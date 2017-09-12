@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnChanges } from '@angular/core';
 
 import { FormControl, FormGroup } from '@angular/forms';
 import { DynamicSlotComponent } from '../dynamic-slot/dynamic-slot.component';
@@ -11,7 +11,7 @@ import { Item } from '@ec.components/core/src/item/item';
   selector: 'ec-input',
   templateUrl: '../dynamic-slot/dynamic-slot.component.html',
 })
-export class InputComponent extends DynamicSlotComponent {
+export class InputComponent extends DynamicSlotComponent implements OnChanges {
   /** The belonging form group */
   @Input() group: FormGroup;
   /** The belonging form control. This is not required if you pass in a field and group. */
@@ -19,7 +19,7 @@ export class InputComponent extends DynamicSlotComponent {
   /** The changed ouput emits whenever the form control of the input changes. */
   @Output() changed = new EventEmitter();
   /** Debounce time in ms before the changed event emits. */
-  @Input() debounce: number = 0;
+  @Input() debounce = 0;
   /** The instance of field that should be used in the template */
   @Input() field: Field<any>;
   /** The belonging item */
