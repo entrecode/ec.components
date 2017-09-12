@@ -118,8 +118,8 @@ export class CrudComponent<T> {
     this.loaderService.wait(this.loadEntry(item), this.loader);
   }
 
-  /** Returns the pop class that should be used, either uses config.popClass or defaults to sidebar-left. */
+  /** Returns the pop class that should be used, either uses config.popClass or defaults to ec-pop_drawer-left. */
   getPopClass() {
-    return this.config && this.config.popClass ? this.config.popClass : 'sidebar-left';
+    return this.config && this.config.popClass ? this.config.popClass : 'ec-pop_drawer-left';
   }
 }

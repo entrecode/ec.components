@@ -77,7 +77,7 @@ export class DemoComponent {
         },
         muffins: {
           label: 'Muffins',
-          filterPopClass: 'sidebar-left',
+          filterPopClass: 'ec-pop_drawer-right',
           display: (value, item) => {
             let muffins = item.getTitle('muffins') || [];
             if (muffins && !Array.isArray(muffins)) {

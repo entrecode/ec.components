@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
   <ec-notifications class="toast"></ec-notifications>
   <ec-upload [loader]="listLoader"></ec-upload>
   <ec-asset-list [loader]="listLoader" [config]="{size:9}" (select)="assetForm.edit($event);assetPop.show()" #assetList></ec-asset-list>  
-  <ec-pop class="sidebar-right" #assetPop>
+  <ec-pop class="ec-pop_drawer-right" #assetPop>
     <button type="button" (click)="assetPop.hide()">
       <i class="ec-icon close"></i>
     </button>

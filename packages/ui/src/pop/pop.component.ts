@@ -4,7 +4,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 /** A Pop is an area of content whose visibility can be toggled.
- * It can be used e.g as popup, modal or dropdown.*/
+ * It can be used e.g as dialog, drawer or dialog.*/
 @Component({
   selector: 'ec-pop',
   templateUrl: './pop.component.html',

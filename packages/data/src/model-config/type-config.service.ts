@@ -50,7 +50,7 @@ export class TypeConfigService {
       filterOperator: 'exact',
       filterable: true,
       display: (value, entry, property) => entry.getImageThumbUrl(property, 100),
-      filterPopClass: 'modal'
+      filterPopClass: 'ec-pop_toast-top'
     },
     assets: {
       view: 'avatars',
@@ -60,7 +60,7 @@ export class TypeConfigService {
       filterOperator: 'any',
       filterable: true,
       queryFilter: (value) => value.split(','),
-      filterPopClass: 'modal'
+      filterPopClass: 'ec-pop_toast-top'
     },
     email: {},
     phone: {
@@ -76,7 +76,7 @@ export class TypeConfigService {
         }
         return;
       },
-      filterPopClass: 'modal'
+      filterPopClass: 'ec-pop_toast-top'
       /*,
       prefill: new Date(0)*/
     },
@@ -87,7 +87,7 @@ export class TypeConfigService {
       display: (value, entry, property) => entry.getTitle(property),
       filterable: true,
       filterOperator: 'exact',
-      filterPopClass: 'modal'
+      filterPopClass: 'ec-pop_toast-top'
     },
     entries: {
       view: 'tags',
@@ -98,7 +98,7 @@ export class TypeConfigService {
       filterOperator: 'any',
       prefill: [],
       queryFilter: (value) => value.split(','),
-      filterPopClass: 'modal'
+      filterPopClass: 'ec-pop_toast-top'
     },
     json: {
       input: DefaultEntryInputComponent,
@@ -109,17 +109,17 @@ export class TypeConfigService {
       input: DefaultEntryInputComponent,
       output: DefaultEntryOutputComponent,
       display: (value) => value ? value.longitude + ',' + value.latitude : '',
-      filterPopClass: 'modal'
+      filterPopClass: 'ec-pop_toast-top'
     },
     account: {
       input: DefaultEntryInputComponent,
       output: DefaultEntryOutputComponent,
-      filterPopClass: 'modal'
+      filterPopClass: 'ec-pop_toast-top'
     },
     role: {
       input: DefaultEntryInputComponent,
       output: DefaultEntryOutputComponent,
-      filterPopClass: 'modal'
+      filterPopClass: 'ec-pop_toast-top'
     }
   };
 

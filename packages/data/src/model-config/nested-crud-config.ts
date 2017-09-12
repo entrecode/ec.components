@@ -7,5 +7,5 @@ import EntryResource from 'ec.sdk/src/resources/publicAPI/EntryResource';
 export const nestedCrudConfig: CrudConfig<EntryResource> = {
   size: 10,
   // methods: ['read'],
-  // popClass: 'sidebar-right'
+  // popClass: 'ec-pop_drawer-right'
 };

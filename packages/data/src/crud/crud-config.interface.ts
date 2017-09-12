@@ -20,8 +20,8 @@ export interface CrudConfig<T> extends ListConfig<T> {
   levels?: number;
   /** If true, an entry is always loaded when opened, even with lvl1 */
   alwaysLoadEntry?: boolean;
-  /** The class that should be used for the pop, defaults to modal */
+  /** The class that should be used for the pop. */
   popClass?: string;
   /** The class that should be used for the nested resources pops, defaults to no class. */
   nestedPopClass?: string;
-};
+}
