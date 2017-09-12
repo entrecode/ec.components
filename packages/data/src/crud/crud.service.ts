@@ -80,7 +80,7 @@ export class CrudService {
       if (value[key] === '') { // clear empty strings
         value[key] = null;
       }
-      if (value[key][0] === '_') { // filter system properties
+      if (key[0] === '_') { // filter system properties
         delete value[key];
       }
     }

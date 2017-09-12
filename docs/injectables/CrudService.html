@@ -1952,7 +1952,7 @@ export class CrudService {
       if (value[key] &#x3D;&#x3D;&#x3D; &#x27;&#x27;) { // clear empty strings
         value[key] &#x3D; null;
       }
-      if (value[key][0] &#x3D;&#x3D;&#x3D; &#x27;_&#x27;) { // filter system properties
+      if (key[0] &#x3D;&#x3D;&#x3D; &#x27;_&#x27;) { // filter system properties
         delete value[key];
       }
     }
