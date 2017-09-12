@@ -89,7 +89,13 @@
   &_filterable {
     position: relative;
 
-    .ec-list-field-filter__drawer {
+    .ec-list-field__filter-control {
+      .btn {
+        @extend .btn.clear !optional;
+      }
+    }
+
+    .ec-list-field-filter__pop {
       .ec-pop-container {
         .ec-pop {
           position: absolute;

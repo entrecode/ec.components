@@ -12,7 +12,7 @@
       {{field.label || field.property}}
     </span>
 
-    <ec-pop #filterPop class="ec-list-field__filter-drawer" [ngClass]="field.filterPopClass">
+    <ec-pop #filterPop class="ec-list-field__filter-pop" [ngClass]="field.filterPopClass">
       <ec-input [field]="field" [group]="filterForm?.group" [debounce]="200"
                 *ngIf="filterForm?.group.get(field?.property)"
                 (changed)="applyFilter(field.property, $event)"></ec-input>
@@ -21,7 +21,7 @@
       </a>
     </ec-pop>
 
-    <span class="ec-list-field-filter" *ngIf="field.filterable">
+    <span class="ec-list-field__filter-control" *ngIf="field.filterable">
       <a (click)="editFilter(filterPop)" class="btn">
         <span class="ec-icon find"></span>
       </a>

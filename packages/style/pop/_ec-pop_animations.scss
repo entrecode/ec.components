@@ -1,0 +1,21 @@
+ec-pop {
+  .ec-pop-container {
+    opacity: 0;
+    display: none;
+
+    .ec-pop {
+      opacity: 0;
+      display: none;
+    }
+
+    &.visible {
+      opacity: 1;
+      display: inherit;
+
+      .ec-pop {
+        opacity: 1;
+        display: inherit;
+      }
+    }
+  }
+}
