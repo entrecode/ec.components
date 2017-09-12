@@ -161,7 +161,7 @@ import { InputComponent } from '@ec.components/ui';
 })
 export class OpeningHoursComponent extends InputComponent implements ControlValueAccessor {
 
-  writeValue(value: any[]) {
+  writeValue(value: any) {
     console.log('received value', value);
   }
 
