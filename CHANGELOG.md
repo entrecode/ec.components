@@ -1,5 +1,19 @@
 # Changelog
 
+<a name="0.7.0"></a>
+## 0.7.0
+BREAKING CHANGES:
+- pop classes have been completely changed to:
+    - .ec-pop_fullscreen
+    - .ec-pop_dialog
+    - .ec-pop_drawer-left
+    - .ec-pop_drawer-top
+    - .ec-pop_drawer-right
+    - .ec-pop_drawer-bottom
+    - .ec-pop_toast-top
+    - .ec-pop_toast-bottom
+- added @ec.components/style package
+
 <a name="0.6.0"></a>
 ## 0.6.0
 - EntryFormComponent.deleteEntry now returns the deletion promise.
