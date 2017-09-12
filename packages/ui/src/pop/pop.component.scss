@@ -1,133 +1,141 @@
-/*
-:host {
-  > .ec-pop-container {
-    > .ec-pop {
-      visibility: hidden;
-      overflow: auto;
-      z-index: 1001;
+ec-pop {
+
+  // default animation
+  // -----------------------------------------
+
+  .ec-pop-container {
+    opacity: 0;
+    display: none;
+
+    .ec-pop {
+      opacity: 0;
       display: none;
     }
-    &.visible > .ec-pop {
-      display: block;
-    }
-    &:not(.visible) > .ec-pop {
-      visibility: hidden;
-    }
-    &.visible > .ec-pop {
-      visibility: visible;
-    }
-  }
-  &.fade {
-    .ec-pop-container {
+
+    &.visible {
+      opacity: 1;
+      display: inherit;
+
       .ec-pop {
-        opacity: 0;
-        transition: all .3s linear;
-      }
-      &.visible .ec-pop {
         opacity: 1;
+        display: inherit;
       }
     }
   }
 
-  &.modal {
+  // basic drawer style
+  // -----------------------------------------
+
+  &.ec-pop_dialog {
     .ec-pop-container {
-      position: relative;
+      position: fixed;
+
       .ec-pop {
-        width: 60vw;
-        height: 60vh;
-        background-color: white;
-        padding: 10px;
-        position: fixed;
-        top: -60vh;
+        z-index: 9999;
+        position: absolute;
+        top: 50%;
         left: 50%;
-        border: 1px solid slategray;
-        transform: translateX(-50%);
-        transition: all .3s ease-in;
-      }
-      &.visible .ec-pop {
-        top: 0;
+        transform: translate3d(-50%, -50%, 0);
       }
     }
   }
 
-  &.fullscreen {
-    > .ec-pop-container {
-      > .ec-pop {
-        width: 100vw;
-        height: 100vh;
-        background-color: white;
-        padding: 10px;
-        position: fixed;
-        top: 0;
-        opacity: 0;
-        transition: all .3s ease-in;
-      }
-      &.visible > .ec-pop {
-        opacity: 1;
-      }
-    }
+  // basic drawer style
+  // -----------------------------------------
+
+  %basic-drawer {
+    position: fixed;
+    z-index: 9999;
   }
 
-  &.sidebar-left {
-    > .ec-pop-container {
-      > .ec-pop {
-        width: 50vw;
-        top: 0;
+  &.ec-pop_drawer-left {
+    .ec-pop-container {
+      .ec-pop {
+        @extend %basic-drawer;
         height: 100vh;
-        background-color: white;
-        border-right: 1px solid slategray;
-        padding: 10px;
-        position: fixed;
-        left: -50vw;
-        transition: all .3s ease-in;
-      }
-      &.visible > .ec-pop {
+        top: 0;
         left: 0;
       }
     }
   }
 
-  &.sidebar-right {
-    > .ec-pop-container {
-      > .ec-pop {
-        width: 50vw;
-        top: 0;
+  &.ec-pop_drawer-right {
+    .ec-pop-container {
+      .ec-pop {
+        @extend %basic-drawer;
         height: 100vh;
-        background-color: white;
-        border-left: 1px solid slategray;
-        padding: 10px;
-        position: fixed;
-        right: -50vw;
-        transition: all .3s ease-in;
-      }
-      &.visible > .ec-pop {
+        top: 0;
         right: 0;
       }
     }
   }
 
-  &.popdown, &.dropdown {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    > .ec-pop-container {
-      > .ec-pop {
-        position: absolute;
-        width: 100%;
-        display: none;
+  &.ec-pop_drawer-top {
+    .ec-pop-container {
+      .ec-pop {
+        @extend %basic-drawer;
+        width: 100vw;
         top: 0;
-        //border: 1px solid gainsboro;
-        padding: 0;
-        //border-radius: 5px;
-        background: white;
-        z-index: 1001;
-        //min-height: 100px;
-        min-width: 100px;
+        left: 0;
       }
-      &.visible > .ec-pop {
-        display: block;
+    }
+  }
+
+  &.ec-pop_drawer-bottom {
+    .ec-pop-container {
+      .ec-pop {
+        @extend %basic-drawer;
+        width: 100vw;
+        bottom: 0;
+        left: 0;
+      }
+    }
+  }
+
+
+  // basic fullscreen styles
+  // -----------------------------------------
+
+  &.ec-pop_fullscreen {
+    .ec-pop-container {
+      .ec-pop {
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        z-index: 9999;
+        top: 0;
+        left: 0;
+      }
+    }
+  }
+
+  // basic toast styles
+  // -----------------------------------------
+
+  %basic-toast {
+    position: fixed;
+    z-index: 9999;
+  }
+
+  &.ec-pop_toast-top {
+    .ec-pop-container {
+      .ec-pop {
+        @extend %basic-toast;
+        width: 100vw;
+        top: 0;
+        left: 0;
+      }
+    }
+  }
+
+  &.ec-pop_toast-bottom {
+    .ec-pop-container {
+      .ec-pop {
+        @extend %basic-toast;
+        width: 100vw;
+        bottom: 0;
+        left: 0;
       }
     }
   }
 }
-*/

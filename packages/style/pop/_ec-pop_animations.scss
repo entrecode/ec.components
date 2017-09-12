@@ -1,21 +1,13 @@
-ec-pop {
-  .ec-pop-container {
-    opacity: 0;
-    display: none;
-
-    .ec-pop {
-      opacity: 0;
-      display: none;
-    }
-
-    &.visible {
-      opacity: 1;
-      display: inherit;
-
-      .ec-pop {
-        opacity: 1;
-        display: inherit;
-      }
-    }
+@include keyframes(popSlideRight) {
+  0% {
+    @include transform(translateX(-100%));
   }
+
+  100% {
+    @include transform(translateX(0));
+  }
+}
+
+%pop-slide-right {
+  @include animation(popSlideRight .4s forwards)
 }

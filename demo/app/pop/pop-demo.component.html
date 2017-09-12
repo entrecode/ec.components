@@ -52,6 +52,16 @@
   </nav>
   <h6>toast</h6>
   <p><span class="tag">.ec-pop_toast-top</span> <span class="tag">.ec-pop_toast-bottom</span></p>
+  <nav class="nav inline">
+    <ul>
+      <li>
+        <button (click)="toastTop.show()" class="btn">open toast-top</button>
+      </li>
+      <li>
+        <button (click)="toastBottom.show()" class="btn">open toast-bottom</button>
+      </li>
+    </ul>
+  </nav>
   <div class="bumper"></div>
   <h4>modifier</h4>
   <h6>overlay</h6>
@@ -88,4 +98,14 @@
 <ec-pop #drawerBottom class="ec-pop_drawer-bottom">
   <h2>YEHA!</h2>
   <button (click)="drawerBottom.hide()" class="btn">close</button>
+</ec-pop>
+
+<ec-pop #toastTop class="ec-pop_toast-top">
+  <h2>YEHA!</h2>
+  <button (click)="toastTop.hide()" class="btn">close</button>
+</ec-pop>
+
+<ec-pop #toastBottom class="ec-pop_toast-bottom">
+  <h2>YEHA!</h2>
+  <button (click)="toastBottom.hide()" class="btn">close</button>
 </ec-pop>
