@@ -1,18 +1,51 @@
-[ec-pop] {
-  &.drawer {
+%ec-drawer {
+  background-color: getColor(background);
+  z-index: 9999;
+  position: fixed;
+}
 
+ec-pop {
+  &.ec-pop_drawer-left {
+    .ec-pop-container {
+      .ec-pop {
+        @extend %ec-drawer;
+        height: 100vh;
+        top: 0;
+        left: 0;
+      }
+    }
   }
 
-  &.drawer-right {
-
+  &.ec-pop_drawer-right {
+    .ec-pop-container {
+      .ec-pop {
+        @extend %ec-drawer;
+        height: 100vh;
+        top: 0;
+        right: 0;
+      }
+    }
   }
 
-  &.drawer-top {
-
+  &.ec-pop_drawer-top {
+    .ec-pop-container {
+      .ec-pop {
+        @extend %ec-drawer;
+        width: 100vw;
+        top: 0;
+        left: 0;
+      }
+    }
   }
 
-  &.drawer-bottom {
-
+  &.ec-pop_drawer-bottom {
+    .ec-pop-container {
+      .ec-pop {
+        @extend %ec-drawer;
+        width: 100vw;
+        bottom: 0;
+        left: 0;
+      }
+    }
   }
-
 }
