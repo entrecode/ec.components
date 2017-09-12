@@ -1264,7 +1264,7 @@ export class CustomInputComponent extends InputComponent {
 export class AppModule {
 }</code></pre><h3 id="5-add-custominputcomponent-to-field-config-">5. Add CustomInputComponent to field config:</h3>
 <p>Now you can add the Component as input to your field config:</p>
-<pre class="line-numbers"><code class="language-none">this.modelConfig.set(&#39;muffin&#39;, {
+<pre class="line-numbers"><code class="language-js">this.modelConfig.set(&#39;muffin&#39;, {
       fields: {
         url: {
           label: &#39;URL&#39;,
@@ -1299,7 +1299,7 @@ import { InputComponent } from &#39;&#64;ec.components/ui&#39;;
 })
 export class OpeningHoursComponent extends InputComponent implements ControlValueAccessor {
 
-  writeValue(value: any[]) {
+  writeValue(value: any) {
     console.log(&#39;received value&#39;, value);
   }
 
