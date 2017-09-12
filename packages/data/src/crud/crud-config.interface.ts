@@ -24,4 +24,4 @@ export interface CrudConfig<T> extends ListConfig<T> {
   popClass?: string;
   /** The class that should be used for the nested resources pops, defaults to no class. */
   nestedPopClass?: string;
-}
+};

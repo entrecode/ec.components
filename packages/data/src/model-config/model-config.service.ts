@@ -1,7 +1,6 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import { Item } from '@ec.components/core/src/item/item';
-import EntryResource from "ec.sdk/src/resources/publicAPI/EntryResource";
-import { ItemConfig } from '@ec.components/core/src/item/item-config.interface';
+import EntryResource from 'ec.sdk/src/resources/publicAPI/EntryResource';
 import { CrudService } from '../crud/crud.service';
 import { Config } from '@ec.components/core/src/config/config';
 import { FieldConfig } from '@ec.components/core/src/config/field-config.interface';
@@ -9,17 +8,13 @@ import { FieldConfigProperty } from '@ec.components/core/src/config/field-config
 import { SdkService } from '../sdk/sdk.service';
 import { TypeConfigService } from './type-config.service';
 import { ListConfig } from '@ec.components/core/src/list/list-config.interface';
+import { CrudConfig } from '../crud/crud-config.interface';
 
 /** The main class for configuring the behaviour of a model.
  * By default, everything is auto generated from the model's schema but can be overriden via the
  * set method. */
 @Injectable()
 export class ModelConfigService extends Config {
-  /** Injects CrudService and SdkService. */
-  constructor(private crud: CrudService, private sdk: SdkService, private typeConfig: TypeConfigService) {
-    super();
-  }
-
   /** Array of property names that are omitted by default. */
   omittedFields: Array<string> = [
     'id',
@@ -29,13 +24,18 @@ export class ModelConfigService extends Config {
     'modified'
   ];
 
+  /** Injects CrudService and SdkService. */
+  constructor(private crud: CrudService, private sdk: SdkService, private typeConfig: TypeConfigService) {
+    super();
+  }
+
   /** Retrieves the given model config.
    * @example
    * ```typescript
    * ModelConfig.get('muffin'); //returns muffin config;
    * ```
    * */
-  get(property: string): ItemConfig<EntryResource> {
+  get(property: string): CrudConfig<EntryResource> {
     return this.configure('model', property);
   }
 
@@ -50,7 +50,7 @@ export class ModelConfigService extends Config {
    *  });
    * ```
    * */
-  set(property: string, config: ItemConfig<EntryResource>): ItemConfig<EntryResource> {
+  set(property: string, config: CrudConfig<EntryResource>): CrudConfig<EntryResource> {
     return this.configure('model', property, config);
   }
 
@@ -77,7 +77,7 @@ export class ModelConfigService extends Config {
   generateFieldConfig(model: string): Promise<FieldConfig<FieldConfigProperty>> {
     let fieldConfig;
     return Promise.resolve().then(() => {
-      //use global config, if given
+      // use global config, if given
       if (this.get(model) && this.get(model).fields) {
         return Promise.resolve(this.get(model).fields);
       }
@@ -112,11 +112,10 @@ export class ModelConfigService extends Config {
 
   /** Returns the given model's config and generates a field config from the schema if it is not configured. */
   generateConfig(model: string): Promise<ListConfig<EntryResource>> {
-    const config = Object.assign({}, this.get(model) || {}); //clone
+    const config = Object.assign({}, this.get(model) || {}); // clone
     Object.assign(config, {
       identifier: 'id',
       label: '_entryTitle',
-      //TODO add label _entryTitle (or similar) when generic entryTitle property is there
       onSave: (item: Item<EntryResource>, value) => this.crud.save(model, item.getBody(), value)
     });
     return this.generateFieldConfig(model).then((fieldConfig) => {
