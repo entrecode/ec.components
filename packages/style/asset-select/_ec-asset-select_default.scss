@@ -1,11 +1,60 @@
 .ec-asset-select {
-  padding: rem(16);
-  margin: rem(4) 0;
-  text-align: center;
-  border: 2px dashed getColor(divider);
-  transition: all .2s;
+  margin: rem(8) 0;
+
+  .ec-asset-select-upload {
+    padding: rem(16);
+    margin: rem(4) 0;
+    text-align: center;
+    border: 2px dashed getColor(divider);
+    transition: all .2s;
+
+    &:hover {
+      background-color: getColor(state, hover);
+    }
+  }
+}
+
+.ec-asset-selected {
+  margin: rem(8) 0;
+
+  .ec-asset-selected__items {
+    .ec-asset-selected__item {
+    }
+  }
+}
+
+.ec-asset-card {
+  padding: rem(4);
+  @include border-radius(rem(2));
+  position: relative;
+  border: 1px solid getColor(divider);
+  @include transition(all .2s);
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  .ec-asset-card-controls {
+    position: absolute;
+    right: rem(8);
+    top: rem(8);
+    z-index: 10;
+
+    a {
+      @extend .btn, .btn.small, .btn.minor;
+      margin: 0;
+    }
+
+    .ec-asset-card-controls__remove {
+    }
+  }
 
   &:hover {
     background-color: getColor(state, hover);
+
+    img {
+      mix-blend-mode: multiply;
+    }
   }
 }

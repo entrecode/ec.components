@@ -5,9 +5,9 @@
     <span *ngIf="canToggle()"> oder <a (click)="toggle(!active,true)">Mediathek</a></span>
   </div>
   <div *ngIf="selection.items.length" class="ec-asset-selected">
-    <ul class="ec-asset-selected__items">
+    <ul class="ec-asset-selected__items" data-flex="grid">
       <li *ngFor="let selected of selection.items" class="ec-asset-selected__item"
-          (click)="editItem(selected)">
+          (click)="editItem(selected)" data-col="3sm">
         <div class="ec-asset-card">
           <img [src]="selected.resolve('thumb')">
           <nav class="ec-asset-card-controls">

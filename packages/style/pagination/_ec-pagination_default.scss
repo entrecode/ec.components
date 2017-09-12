@@ -4,17 +4,14 @@
   margin: rem(8) 0;
 
   &__item {
-    @extend %btn !optional;
+    @extend .btn, .btn.clear !optional;
+    @include border-radius(rem($btn-radius));
     width: rem($btn-min-height);
     padding-left: 0;
     padding-right: 0;
 
-    &._active {
-      @include setText(state, active);
-    }
-
-    &:hover {
-      background-color: getColor(state, hover);
+    &.active {
+      @extend .btn.active !optional;
     }
   }
 }
@@ -26,7 +23,7 @@
   display: flex;
 
   .ec-pagination-control {
-    &._disabled {
+    &.disabled {
       .ec-pagination__item {
         color: getColor(state, disabled);
       }
@@ -56,3 +53,4 @@
     display: flex;
   }
 }
+

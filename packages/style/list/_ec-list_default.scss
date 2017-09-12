@@ -51,10 +51,8 @@
   }
 
   .btn {
-    position: relative;
-    @extend %btn%small, .btn._clear !optional;
+    @extend %btn%small, .btn.clear !optional;
     margin: 0;
-    z-index: 10;
   }
 }
 
@@ -73,10 +71,6 @@
 
 .ec-list-field-filter {
   flex-grow: 0;
-
-  .btn {
-    background-color: transparent;
-  }
 }
 
 .ec-list-field {
@@ -95,16 +89,25 @@
       }
     }
 
-    .ec-list-field-filter__pop {
+    .ec-list-field__filter-pop {
       .ec-pop-container {
         .ec-pop {
           position: absolute;
           top: 0;
           left: 0;
+          padding: .5em 1em;
           width: 100%;
           height: 100%;
           justify-content: space-between;
+          align-items: center;
           overflow: hidden;
+          background-color: getColor(background);
+          z-index: 10;
+        }
+
+        ec-input {
+          @include flex-grow(1);
+          margin-right: 8px;
         }
 
         &.visible {

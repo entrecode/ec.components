@@ -1,33 +1,36 @@
-<h2>ec-asset-select</h2>
-<h3>usage without form</h3>
-passed id:
-<pre>{{selectedAssets | json}}</pre>
+<div data-container>
+  <h2>ec-asset-select</h2>
+  <h6>usage without form</h6>
+  passed id:
+  <pre>{{selectedAssets | json}}</pre>
 
-<ec-asset-select model="muffin" [config]="{size:3}" #assetSelect [solo]="true"
-                 [(ngModel)]="selectedAssets"></ec-asset-select>
-<div *ngIf="assetSelect.selection?.items?.length">
-  <strong>Manual iteration over selected asset items</strong>
-  <ul>
-    <li class="pill" *ngFor="let asset of assetSelect.selection?.items">
-      <img [src]="asset.resolve('thumb')">
-      <!--<pre>{{asset | json}}</pre>-->
+  <ec-asset-select model="muffin" [config]="{size:3}" #assetSelect [solo]="true"
+                   [(ngModel)]="selectedAssets"></ec-asset-select>
+  <div *ngIf="assetSelect.selection?.items?.length">
+    <strong>Manual iteration over selected asset items</strong>
+    <ul class="unstyled">
+      <li *ngFor="let asset of assetSelect.selection?.items">
+        <img [src]="asset.resolve('thumb')">
+        <!--<pre>{{asset | json}}</pre>-->
 
-    </li>
-  </ul>
-  <strong>selected IDs:</strong>
-  <pre>{{assetSelect.selection?.getValue() | json}}</pre>
+      </li>
+    </ul>
+    <strong>selected IDs:</strong>
+    <pre>{{assetSelect.selection?.getValue() | json}}</pre>
+  </div>
+
+  <b>solo</b>
+  <ec-asset-select model="muffin" [config]="{size:3}" [solo]="true" #soloAsset></ec-asset-select>
+  <pre>{{soloAsset.selection?.getValue()}}</pre>
+  <!--
+  <h3>Usage with form</h3>
+  <ec-form #fieldTest>
+    <ec-asset-select *ngIf="fieldTest.group"
+                     [formControl]="fieldTest.group?.get('entries')"
+                     model="muffin"></ec-asset-select>
+    <ec-input [field]="fieldTest.form?.getField('entries')" [group]="fieldTest.group"></ec-input>
+  </ec-form>
+  -->
+  <!-- TODO -->
+
 </div>
-
-<b>solo</b>
-<ec-asset-select model="muffin" [config]="{size:3}" [solo]="true" #soloAsset></ec-asset-select>
-<pre>{{soloAsset.selection?.getValue()}}</pre>
-<!--
-<h3>Usage with form</h3>
-<ec-form #fieldTest>
-  <ec-asset-select *ngIf="fieldTest.group"
-                   [formControl]="fieldTest.group?.get('entries')"
-                   model="muffin"></ec-asset-select>
-  <ec-input [field]="fieldTest.form?.getField('entries')" [group]="fieldTest.group"></ec-input>
-</ec-form>
--->
-<!-- TODO -->

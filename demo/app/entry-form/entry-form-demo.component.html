@@ -1,21 +1,23 @@
-<h2>Simple</h2>
-<ec-entry-form model="muffin"></ec-entry-form>
+<div data-container>
+  <h2>Simple</h2>
+  <ec-entry-form model="muffin"></ec-entry-form>
 
-<h2>Complex</h2>
-<ec-entry-form model="field_test"></ec-entry-form>
+  <h2>Complex</h2>
+  <ec-entry-form model="field_test"></ec-entry-form>
 
-<h2>With entry</h2>
-<ec-entry id="SkXEhDZ5yW" model="muffin" #myMuffin></ec-entry>
-<ec-entry-form model="muffin" [entry]="myMuffin.entry"></ec-entry-form>
+  <h2>With entry</h2>
+  <ec-entry id="SkXEhDZ5yW" model="muffin" #myMuffin></ec-entry>
+  <ec-entry-form model="muffin" [entry]="myMuffin.entry"></ec-entry-form>
 
-<h2>Custom</h2>
+  <h2>Custom</h2>
 
-<ec-entry-form model="muffin" #muffinForm>
-  <ec-input [field]="muffinForm.form?.getField('name')" [group]="muffinForm.group"></ec-input>
-  <ec-input [field]="muffinForm.form?.getField('amazement_factor')"
-            [group]="muffinForm.group"></ec-input>
-  <button type="button" (click)="muffinForm.submit()" [disabled]="muffinForm.group?.invalid"
-          [class.disabled]="muffinForm.group?.invalid">
-    Na los
-  </button>
-</ec-entry-form>
+  <ec-entry-form model="muffin" #muffinForm>
+    <ec-input [field]="muffinForm.form?.getField('name')" [group]="muffinForm.group"></ec-input>
+    <ec-input [field]="muffinForm.form?.getField('amazement_factor')"
+              [group]="muffinForm.group"></ec-input>
+    <button type="button" (click)="muffinForm.submit()" [disabled]="muffinForm.group?.invalid"
+            [class.disabled]="muffinForm.group?.invalid">
+      Na los
+    </button>
+  </ec-entry-form>
+</div>
