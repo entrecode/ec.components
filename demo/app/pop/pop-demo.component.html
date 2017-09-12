@@ -1,44 +1,29 @@
 <div data-container>
 
-
   <h2>ec-pop styles</h2>
+  <p>Click the different class tags to try out how they look!</p>
   <h3>fullscreen</h3>
-  <p><span class="tag">.fullscreen</span></p>
-  <nav class="nav">
-    <ul>
-      <li>
-        <button (click)="popFull.show()" class="btn">open fullscreen</button>
-      </li>
-    </ul>
-  </nav>
-  <h3>pop</h3>
-  <p><span class="tag">.pop</span></p>
-  <nav class="nav">
-    <ul>
-      <li>
-        <button (click)="pop.show()" class="btn">open pop</button>
-      </li>
-    </ul>
-  </nav>
-  <h3>drawer</h3>
-  <span class="tag">.drawer</span> <span class="tag">.drawer-left</span> <span class="tag">.drawer-top</span>
-  <span class="tag">.drawer-bottom</span>
-  <h3>dialog</h3>
-  <span class="tag">.dialog</span>
-  <h3>toast</h3>
-  <span class="tag">.toast</span> <span class="tag">.toast-bottom</span>
+  <a class="tag" (click)="open('fullscreen')">.fullscreen</a>
 
+  <h3>pop</h3>
+  <a class="tag" (click)="open('pop overlay')">.pop.overlay</a>
+  <h3>drawer</h3>
+
+  <a *ngFor="let class of ['drawer','drawer-left','drawer-bottom']" class="tag"
+     (click)="open(class)">.{{class}}</a>
+
+  <h3>dialog</h3>
+  <a class="tag" (click)="open('dialog')">.dialog</a>
+  <h3>toast</h3>
+  <a *ngFor="let class of ['toast','toast-bottom']" class="tag"
+     (click)="open(class)">.{{class}}</a>
   <h3>modifier</h3>
   <span class="tag">.overlay</span>
 
+
+  <ec-pop #pop [ngClass]="popClass">
+    <h2>ec-pop!</h2>
+    <img src="https://unsplash.it/200/300">
+    <button (click)="pop.hide()" class="btn">close</button>
+  </ec-pop>
 </div>
-
-<ec-pop #pop class="pop overlay">
-  <h2>YEHA!</h2>
-  <button (click)="pop.hide()" class="btn">close</button>
-</ec-pop>
-
-<ec-pop #popFull class="fullscreen">
-  <h2>YEHA!</h2>
-  <button (click)="popFull.hide()" class="btn">close</button>
-</ec-pop>
