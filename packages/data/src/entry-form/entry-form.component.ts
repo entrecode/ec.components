@@ -16,9 +16,11 @@ import EntryResource from 'ec.sdk/src/resources/publicAPI/EntryResource';
   styleUrls: ['./entry-form.component.scss']
 })
 export class EntryFormComponent extends FormComponent {
-  /** The model of the form. It is used to extract the schema and generate the config from. */
+  /** The model of the form. It is used to extract the schema and generate the config from.
+   * If you do not pass any model, it is expected that an EntryResource is passed. */
   @Input() model: string;
-  /** The entry that should be edited. */
+  /** The entry that should be edited.
+   * If no model was passed, the model of the given entry is used which makes the form dynamic. */
   @Input() entry: EntryResource;
   /** This output fires when the entry has been deleted using deleteEntry(). */
   @Output() deleted: EventEmitter<any> = new EventEmitter();
@@ -34,7 +36,14 @@ export class EntryFormComponent extends FormComponent {
 
   /** As soon as the model is known, the config is generated to then instantiate the form with. */
   init(item: Item<any> = this.item, config: FormConfig<any> = this.config) {
+    if (!this.model && this.entry) {
+      this.model = this.entry._modelTitle; // use entry model if no model specified
+    }
     if (!this.model) {
+      return;
+    }
+    if (this.entry && this.entry._modelTitle !== this.model) { // warn if model does not match
+      console.error(`ec-entry-form: Tried to edit an entry of model "${this.entry._modelTitle}" while "${this.model}" was expected!"`);
       return;
     }
     Promise.resolve(config || this.modelConfig.generateConfig(this.model))
