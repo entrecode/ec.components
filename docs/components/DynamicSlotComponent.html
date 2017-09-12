@@ -76,6 +76,9 @@
                                 <li class="link for-chapter">
                                     <a href="../additional-documentation/project-setup-tutorial/authorization.html" >Authorization</a>
                                 </li>
+                                <li class="link for-chapter">
+                                    <a href="../additional-documentation/project-setup-tutorial/custom-fields.html" >Custom Fields</a>
+                                </li>
                                 <li class="link ">
                                     <a href="../additional-documentation/core-classes.html" >Core Classes</a>
                                 </li>
@@ -648,6 +651,9 @@
                                        </li>
                                        <li class="link for-chapter">
                                            <a href="../additional-documentation/project-setup-tutorial/authorization.html" >Authorization</a>
+                                       </li>
+                                       <li class="link for-chapter">
+                                           <a href="../additional-documentation/project-setup-tutorial/custom-fields.html" >Custom Fields</a>
                                        </li>
                                        <li class="link ">
                                            <a href="../additional-documentation/core-classes.html" >Core Classes</a>
@@ -1284,7 +1290,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">packages/ui/src/io/dynamic-slot/dynamic-slot.component.ts:13</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">packages/ui/src/io/dynamic-slot/dynamic-slot.component.ts:10</a></div>
                                 </td>
                             </tr>
     
@@ -1348,7 +1354,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">packages/ui/src/io/dynamic-slot/dynamic-slot.component.ts:20</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">packages/ui/src/io/dynamic-slot/dynamic-slot.component.ts:17</a></div>
                                 </td>
                             </tr>
     
@@ -1437,7 +1443,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">packages/ui/src/io/dynamic-slot/dynamic-slot.component.ts:13</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">packages/ui/src/io/dynamic-slot/dynamic-slot.component.ts:10</a></div>
                                 </td>
                             </tr>
     
@@ -1458,11 +1464,8 @@
         <pre class="line-numbers"><code class="language-typescript">import { Component, ComponentFactoryResolver, ComponentRef, Type, ViewChild } from &#x27;@angular/core&#x27;;
 import { SlotHostDirective } from &#x27;../slot-host.directive&#x27;;
 
-// import { CustomFieldComponent } from &#x27;./custom-field.component&#x27;;
-
 /** This directive can be used to display a field. It is used inside ec-form as well as ec-list. */
 @Component({
-  // selector: &#x27;ec-dynamic-field&#x27;,
   templateUrl: &#x27;./dynamic-slot.component.html&#x27;
 })
 export class DynamicSlotComponent {
@@ -1480,7 +1483,6 @@ export class DynamicSlotComponent {
     viewContainerRef.clear();
     const componentRef &#x3D; viewContainerRef.createComponent(componentFactory);
     Object.assign(componentRef.instance, data);
-    //custom field component is the component each custom field should inherit
     return componentRef;
   }
 }

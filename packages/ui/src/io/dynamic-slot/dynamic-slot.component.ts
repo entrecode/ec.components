@@ -1,11 +1,8 @@
 import { Component, ComponentFactoryResolver, ComponentRef, Type, ViewChild } from '@angular/core';
 import { SlotHostDirective } from '../slot-host.directive';
 
-// import { CustomFieldComponent } from './custom-field.component';
-
 /** This directive can be used to display a field. It is used inside ec-form as well as ec-list. */
 @Component({
-  // selector: 'ec-dynamic-field',
   templateUrl: './dynamic-slot.component.html'
 })
 export class DynamicSlotComponent {
@@ -23,7 +20,6 @@ export class DynamicSlotComponent {
     viewContainerRef.clear();
     const componentRef = viewContainerRef.createComponent(componentFactory);
     Object.assign(componentRef.instance, data);
-    //custom field component is the component each custom field should inherit
     return componentRef;
   }
 }

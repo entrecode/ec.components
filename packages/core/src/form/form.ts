@@ -11,7 +11,9 @@ export class Form<Object> extends Item<Object> {
   /** The configuration of the form. It is an extension of ItemConfig. */
   protected config: FormConfig<Object>;
 
-  /** The constructor will populate the fields array. If config.fields is set only the configured fields will be created. If not, all properties of the given body will be used as fields. */
+  /** The constructor will populate the fields array.
+   * If config.fields is set only the configured fields will be created.
+   * If not, all properties of the given body will be used as fields. */
   constructor(body: Object, config?: FormConfig<Object>) {
     super(body, config);
     this.fields = [];
@@ -35,7 +37,7 @@ export class Form<Object> extends Item<Object> {
   /** Returns the original value of the property, if any. */
   getValue(property: string) {
     if (!this.body && this.config.fields && this.config.fields[property]) {
-      //if no body is present, the prefills are used
+      // if no body is present, the prefills are used
       return this.config.fields[property].prefill;
     } else {
       return this.resolve(property);

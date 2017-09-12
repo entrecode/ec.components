@@ -76,6 +76,9 @@
                                 <li class="link for-chapter">
                                     <a href="../additional-documentation/project-setup-tutorial/authorization.html" >Authorization</a>
                                 </li>
+                                <li class="link for-chapter">
+                                    <a href="../additional-documentation/project-setup-tutorial/custom-fields.html" >Custom Fields</a>
+                                </li>
                                 <li class="link ">
                                     <a href="../additional-documentation/core-classes.html" >Core Classes</a>
                                 </li>
@@ -649,6 +652,9 @@
                                        <li class="link for-chapter">
                                            <a href="../additional-documentation/project-setup-tutorial/authorization.html" >Authorization</a>
                                        </li>
+                                       <li class="link for-chapter">
+                                           <a href="../additional-documentation/project-setup-tutorial/custom-fields.html" >Custom Fields</a>
+                                       </li>
                                        <li class="link ">
                                            <a href="../additional-documentation/core-classes.html" >Core Classes</a>
                                        </li>
@@ -1211,6 +1217,12 @@
             <code><a href="../components/DynamicSlotComponent.html" target="_self" >DynamicSlotComponent</a></code>
     </p>
 
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnChanges-interface.html" target="_blank" >OnChanges</a></code>
+    </p>
 
 
 <section>
@@ -1345,10 +1357,6 @@
                         <td class="col-md-10">
                             <div><p>Debounce time in ms before the changed event emits. </p>
 </div>
-                              <p>
-                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-
-                              </p>
                             <p>
                               <em>Default value: </em><code>0</code>
                             </p>
@@ -1502,7 +1510,7 @@
 
 
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { Component, EventEmitter, Input, Output } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { Component, EventEmitter, Input, Output, OnChanges } from &#x27;@angular/core&#x27;;
 
 import { FormControl, FormGroup } from &#x27;@angular/forms&#x27;;
 import { DynamicSlotComponent } from &#x27;../dynamic-slot/dynamic-slot.component&#x27;;
@@ -1515,7 +1523,7 @@ import { Item } from &#x27;@ec.components/core/src/item/item&#x27;;
   selector: &#x27;ec-input&#x27;,
   templateUrl: &#x27;../dynamic-slot/dynamic-slot.component.html&#x27;,
 })
-export class InputComponent extends DynamicSlotComponent {
+export class InputComponent extends DynamicSlotComponent implements OnChanges {
   /** The belonging form group */
   @Input() group: FormGroup;
   /** The belonging form control. This is not required if you pass in a field and group. */
@@ -1523,7 +1531,7 @@ export class InputComponent extends DynamicSlotComponent {
   /** The changed ouput emits whenever the form control of the input changes. */
   @Output() changed &#x3D; new EventEmitter();
   /** Debounce time in ms before the changed event emits. */
-  @Input() debounce: number &#x3D; 0;
+  @Input() debounce &#x3D; 0;
   /** The instance of field that should be used in the template */
   @Input() field: Field&lt;any&gt;;
   /** The belonging item */
