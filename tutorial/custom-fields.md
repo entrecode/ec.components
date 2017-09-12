@@ -118,7 +118,7 @@ export class AppModule {
 
 Now you can add the Component as input to your field config:
 
-```
+```js
 this.modelConfig.set('muffin', {
       fields: {
         url: {
