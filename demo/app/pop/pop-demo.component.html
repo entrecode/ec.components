@@ -1,111 +1,39 @@
 <div data-container>
   <h4>Standard markup for ec-pop content</h4>
-  <pre><code>
-&#60;header class="ec-pop_header"&#62;
-  ...
-&#60;/header&#62;
-&#60;div class="ec-pop_body"&#62;
-  ...
-&#60;/div&#62;
-&#60;footer class="ec-pop_footer"&#62;
-  ...
-&#60;/footer&#62;
-  </code></pre>
+  <pre><code>{{markup}}</code></pre>
   <div class="bumper"></div>
   <h4>ec-pop styles</h4>
   <h6>fullscreen</h6>
-  <p><span class="tag">.ec-pop_fullscreen</span></p>
-  <nav class="nav">
-    <ul>
-      <li>
-        <button (click)="fullscreen.show()" class="btn">open fullscreen</button>
-      </li>
-    </ul>
-  </nav>
+  <p><a (click)="open('fullscreen')" class="tag">.ec-pop_fullscreen</a></p>
   <h6>dialog</h6>
-  <p><span class="tag">.ec-pop_dialog</span></p>
-  <nav class="nav inline">
-    <ul>
-      <li>
-        <button (click)="dialog.show()" class="btn">open dialog</button>
-      </li>
-    </ul>
-  </nav>
+  <p><a (click)="open('dialog ec-pop_overlay')" class="tag">.ec-pop_dialog</a></p>
   <h6>drawer</h6>
-  <span class="tag">.ec-pop_drawer-left</span> <span class="tag">.ec-pop_drawer-right</span> <span class="tag">.ec-pop_drawer-top</span>
-  <span class="tag">.ec-pop_drawer-bottom</span>
-  <nav class="nav inline">
-    <ul>
-      <li>
-        <button (click)="drawerLeft.show()" class="btn">open drawer-left</button>
-      </li>
-      <li>
-        <button (click)="drawerRight.show()" class="btn">open drawer-right</button>
-      </li>
-      <li>
-        <button (click)="drawerTop.show()" class="btn">open drawer-top</button>
-      </li>
-      <li>
-        <button (click)="drawerBottom.show()" class="btn">open drawer-bottom</button>
-      </li>
-    </ul>
-  </nav>
+  <p>
+    <a (click)="open('drawer-left')" class="tag">.ec-pop_drawer-left</a>
+    <a (click)="open('drawer-right')" class="tag">.ec-pop_drawer-right</a>
+    <a (click)="open('drawer-top')" class="tag">.ec-pop_drawer-top</a>
+    <a (click)="open('drawer-bottom')" class="tag">.ec-pop_drawer-bottom</a>
+  </p>
   <h6>toast</h6>
-  <p><span class="tag">.ec-pop_toast-top</span> <span class="tag">.ec-pop_toast-bottom</span></p>
-  <nav class="nav inline">
-    <ul>
-      <li>
-        <button (click)="toastTop.show()" class="btn">open toast-top</button>
-      </li>
-      <li>
-        <button (click)="toastBottom.show()" class="btn">open toast-bottom</button>
-      </li>
-    </ul>
-  </nav>
+  <p>
+    <a (click)="open('toast-top')" class="tag">.ec-pop_toast-top</a>
+    <a (click)="open('toast-bottom')" class="tag">.ec-pop_toast-bottom</a>
+  </p>
   <div class="bumper"></div>
   <h4>modifier</h4>
   <h6>overlay</h6>
   <p>activates a backdrop for ec-pop</p>
   <p><span class="tag">.ec-pop_overlay</span></p>
-
 </div>
-
-<ec-pop #fullscreen class="ec-pop_fullscreen">
-  <h2>YEHA!</h2>
-  <button (click)="fullscreen.hide()" class="btn">close</button>
-</ec-pop>
-
-<ec-pop #dialog class="ec-pop_dialog ec-pop_overlay">
-  <h2>YEHA!</h2>
-  <button (click)="dialog.hide()" class="btn">close</button>
-</ec-pop>
-
-<ec-pop #drawerLeft class="ec-pop_drawer-left">
-  <h2>YEHA!</h2>
-  <button (click)="drawerLeft.hide()" class="btn">close</button>
-</ec-pop>
-
-<ec-pop #drawerRight class="ec-pop_drawer-right">
-  <h2>YEHA!</h2>
-  <button (click)="drawerRight.hide()" class="btn">close</button>
-</ec-pop>
-
-<ec-pop #drawerTop class="ec-pop_drawer-top">
-  <h2>YEHA!</h2>
-  <button (click)="drawerTop.hide()" class="btn">close</button>
-</ec-pop>
-
-<ec-pop #drawerBottom class="ec-pop_drawer-bottom">
-  <h2>YEHA!</h2>
-  <button (click)="drawerBottom.hide()" class="btn">close</button>
-</ec-pop>
-
-<ec-pop #toastTop class="ec-pop_toast-top">
-  <h2>YEHA!</h2>
-  <button (click)="toastTop.hide()" class="btn">close</button>
-</ec-pop>
-
-<ec-pop #toastBottom class="ec-pop_toast-bottom">
-  <h2>YEHA!</h2>
-  <button (click)="toastBottom.hide()" class="btn">close</button>
+<ec-pop #pop [ngClass]="popClass">
+  <header class="ec-pop_header">
+    <button (click)="pop.hide()" class="btn">close</button>
+  </header>
+  <div class="ec-pop_body">
+    <h1>.{{popClass}}</h1>
+    <img src="https://unsplash.it/300">
+  </div>
+  <footer class="ec-pop_footer">
+    <strong>Footer</strong>
+  </footer>
 </ec-pop>
