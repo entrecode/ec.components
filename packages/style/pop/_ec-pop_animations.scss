@@ -1,69 +1,69 @@
 // slide to the right animation
 // -----------------------------------------
 
-@include keyframes(popSlideRight) {
+@include keyframes(slideInRight) {
   0% {
     @include transform(translateX(-100%));
   }
 
   100% {
-    @include transform(translateX(0));
+    @include transform(unset);
   }
 }
 
-%pop-slide-right {
-  @include animation(popSlideRight .4s forwards)
+%slide-in-right {
+  @include animation(slideInRight .4s forwards)
 }
 
 // slide to the left animation
 // -----------------------------------------
 
-@include keyframes(popSlideLeft) {
+@include keyframes(slideInLeft) {
   0% {
     @include transform(translateX(100%));
   }
 
   100% {
-    @include transform(translateX(0));
+    @include transform(unset);
   }
 }
 
-%pop-slide-left {
-  @include animation(popSlideLeft .4s forwards)
+%slide-in-left {
+  @include animation(slideInLeft .4s forwards)
 }
 
 // slide up animation
 // -----------------------------------------
 
-@include keyframes(popSlideUp) {
+@include keyframes(slideInUp) {
   0% {
     @include transform(translateY(100%));
   }
 
   100% {
-    @include transform(translateY(0));
+    @include transform(unset);
   }
 }
 
-%pop-slide-up {
-  @include animation(popSlideUp .4s forwards)
+%slide-in-up {
+  @include animation(slideInUp .4s forwards)
 }
 
 // slide down animation
 // -----------------------------------------
 
-@include keyframes(popSlideDown) {
+@include keyframes(slideInDown) {
   0% {
     @include transform(translateY(-100%));
   }
 
   100% {
-    @include transform(translateY(0));
+    @include transform(unset);
   }
 }
 
-%pop-slide-down {
-  @include animation(popSlideDown .4s forwards)
+%slide-in-down {
+  @include animation(slideInDown .4s forwards)
 }
 
 // fade in animation

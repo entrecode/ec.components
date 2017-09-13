@@ -29,13 +29,19 @@ ec-pop {
   &.ec-pop_dialog {
     > .ec-pop-container {
       position: fixed;
+      z-index: 9999;
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+
+      &.visible {
+        display: flex !important;
+      }
 
       > .ec-pop {
-        z-index: 9999;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate3d(-50%, -50%, 0);
       }
     }
   }
@@ -44,14 +50,17 @@ ec-pop {
   // -----------------------------------------
 
   %basic-drawer {
-    position: fixed;
+
     z-index: 9999;
   }
 
   &.ec-pop_drawer-left {
     > .ec-pop-container {
+      position: fixed;
+      z-index: 9999;
+
       > .ec-pop {
-        @extend %basic-drawer;
+        position: fixed;
         height: 100vh;
         top: 0;
         left: 0;
@@ -61,8 +70,11 @@ ec-pop {
 
   &.ec-pop_drawer-right {
     > .ec-pop-container {
+      position: fixed;
+      z-index: 9999;
+
       > .ec-pop {
-        @extend %basic-drawer;
+        position: fixed;
         height: 100vh;
         top: 0;
         right: 0;
@@ -72,8 +84,11 @@ ec-pop {
 
   &.ec-pop_drawer-top {
     > .ec-pop-container {
+      position: fixed;
+      z-index: 9999;
+
       > .ec-pop {
-        @extend %basic-drawer;
+        position: fixed;
         width: 100vw;
         top: 0;
         left: 0;
@@ -83,8 +98,11 @@ ec-pop {
 
   &.ec-pop_drawer-bottom {
     > .ec-pop-container {
+      position: fixed;
+      z-index: 9999;
+
       > .ec-pop {
-        @extend %basic-drawer;
+        position: fixed;
         width: 100vw;
         bottom: 0;
         left: 0;
@@ -98,6 +116,8 @@ ec-pop {
 
   &.ec-pop_fullscreen {
     > .ec-pop-container {
+      z-index: 9999;
+
       > .ec-pop {
         width: 100vw;
         height: 100vh;
