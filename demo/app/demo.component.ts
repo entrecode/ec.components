@@ -4,7 +4,7 @@ import * as moment from 'moment';
 import { demoRoutes } from './demo.routes';
 
 @Component({
-  selector: 'demo-root',
+  selector: 'ec-demo-root',
   templateUrl: './demo.component.html',
   styleUrls: ['./demo.component.scss'],
   encapsulation: ViewEncapsulation.None,

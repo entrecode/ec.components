@@ -3,37 +3,33 @@
   <pre><code>{{markup}}</code></pre>
   <div class="bumper"></div>
   <h4>ec-pop styles</h4>
-  <h6>fullscreen</h6>
-  <p><a (click)="open('fullscreen')" class="tag">.ec-pop_fullscreen</a></p>
-  <h6>dialog</h6>
-  <p><a (click)="open('dialog ec-pop_overlay')" class="tag">.ec-pop_dialog</a></p>
-  <h6>drawer</h6>
-  <p>
-    <a (click)="open('drawer-left')" class="tag">.ec-pop_drawer-left</a>
-    <a (click)="open('drawer-right')" class="tag">.ec-pop_drawer-right</a>
-    <a (click)="open('drawer-top')" class="tag">.ec-pop_drawer-top</a>
-    <a (click)="open('drawer-bottom')" class="tag">.ec-pop_drawer-bottom</a>
-  </p>
-  <h6>toast</h6>
-  <p>
-    <a (click)="open('toast-top')" class="tag">.ec-pop_toast-top</a>
-    <a (click)="open('toast-bottom')" class="tag">.ec-pop_toast-bottom</a>
-  </p>
-  <div class="bumper"></div>
-  <h4>modifier</h4>
-  <h6>overlay</h6>
-  <p>activates a backdrop for ec-pop</p>
-  <p><span class="tag">.ec-pop_overlay</span></p>
+  <ec-pop-trigger #outer>
+    <header class="ec-pop_header">
+      <button (click)="outer.pop.hide()" class="btn">
+        <i class="ec-icon close"></i>
+      </button>
+      <h2>.{{outer.popClass}}</h2>
+    </header>
+    <div class="ec-pop_body">
+      <img src="https://unsplash.it/300">
+      <ec-pop-trigger #inner>
+        <header class="ec-pop_header">
+          <h2>.{{inner.popClass}}</h2>
+          <button (click)="inner.pop.hide()" class="btn">
+            <i class="ec-icon close"></i>
+          </button>
+        </header>
+        <div class="ec-pop_body">
+          <p>This pop is nested!</p>
+          <img src="https://unsplash.it/200">
+        </div>
+        <footer class="ec-pop_footer">
+          <strong>Nested Footer</strong>
+        </footer>
+      </ec-pop-trigger>
+    </div>
+    <footer class="ec-pop_footer">
+      <strong>Footer</strong>
+    </footer>
+  </ec-pop-trigger>
 </div>
-<ec-pop #pop [ngClass]="popClass">
-  <header class="ec-pop_header">
-    <button (click)="pop.hide()" class="btn">close</button>
-  </header>
-  <div class="ec-pop_body">
-    <h1>.{{popClass}}</h1>
-    <img src="https://unsplash.it/300">
-  </div>
-  <footer class="ec-pop_footer">
-    <strong>Footer</strong>
-  </footer>
-</ec-pop>
