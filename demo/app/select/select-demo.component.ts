@@ -10,13 +10,10 @@ import { mocked } from '../../../mocks/data';
 export class SelectDemoComponent {
 
   songs = songs.songs;
-  products = mocked.products;
-  productConfig = {
-    identifier: 'id',
-    label: 'name'
-  };
+  products = mocked.lists.products;
 
   constructor() {
+    console.log('list', this.products);
   }
 
   log(x) {

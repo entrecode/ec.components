@@ -1,5 +1,5 @@
 <div *ngIf="selection" class="ec-entry-select">
-  <a (click)="toggle(!active,true)" class="ec-entry-select__placeholder" *ngIf="canToggle()">
+  <a (click)="toggle(!active,true)" class="ec-entry-select__placeholder">
     - Auswählen -
   </a>
   <ul class="ec-entry-select-selected">
@@ -13,9 +13,7 @@
   <span class="caret"></span>
   <!-- TODO use entry pop when ready-->
   <ec-pop [ngClass]="getPopClass()" #crudPop>
-    <!--<button type="button" (click)="crudPop.hide()">
-      <i class="ec-icon close"></i> &lt;!&ndash; TODO unified pop header component &ndash;&gt;
-    </button>-->
+    <!-- TODO find way to embed close button to the pops that need it -->
     <ec-crud [model]="model" *ngIf="selection&&crudPop.active"
              [config]="config" [selection]="selection" (select)="select($event)" #crud></ec-crud>
   </ec-pop>

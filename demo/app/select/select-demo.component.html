@@ -1,45 +1,9 @@
 <h1>ec-select</h1>
 
-TBD
+<h3>Default</h3>
+<ec-select [list]="products" [config]="products.config" #ecSelect></ec-select>
+<pre><code>{{ecSelect.selection.getValue() | json}}</code></pre>
 
-<!--<ec-select [value]="products" [config]="productConfig" #ecSelect></ec-select>-->
-
-<!--{{ecSelect.selection.getValue() | json}}-->
-
-<!--<ec-selection [items]="products" [config]="{label:'name',identifier:'id'}" [ids]="['x1']"
-              (toggle)="testPop.toggle()" #mySelection></ec-selection>-->
-
-<!--<ec-pop #testPop class="sidebar-right">
-  <ec-list [items]="mySelection.items" [config]="mySelection.config"
-           [selection]="mySelection.selection"></ec-list>
-</ec-pop>-->
-
-<!--<h2>Entry Selection</h2>-->
-<!--{{myCrud.list?.selection?.items?.length}}-->
-
-<!--<ec-selection (toggle)="crudPop.toggle()" #crudSelection></ec-selection>-->
-<!--<ec-pop #crudPop class="dropdown">
-  <ec-crud *ngIf="crudPop.active" model="muffin" (selected)="crudSelection.add($event)"
-           [config]="{selection:crudSelection?.selection}"></ec-crud>
-</ec-pop>-->
-
-
-<!--<button (click)="log(myCrud?.entryList)">LOG</button>
-
-<ec-selection [list]="myCrud?.entryList?.list"></ec-selection>
-
-<ec-crud model="muffin" #myCrud></ec-crud>
--->
-
-
-<!--
-<h2>entry-select</h2>
-
-<ec-selection [items]="nestedEntries" [config]="{label:'name',identifier:'id'}" [ids]="['x1']"
-              (toggle)="testPop.toggle()" #entrySelect></ec-selection>
-
-<ec-pop #entryPop class="sidebar-right">
-  <ec-list [items]="entrySelect.items" [config]="entrySelect.config"
-           [selection]="entrySelect.selection"></ec-list>
-</ec-pop>
--->
+<h3>Solo</h3>
+<ec-select [list]="products" [config]="products.config" [solo]="true" #ecSelectSolo></ec-select>
+<pre><code>{{ecSelectSolo.selection.getValue() | json}}</code></pre>

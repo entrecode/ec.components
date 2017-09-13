@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewEncapsulation, OnChanges } from '@angular/core';
 import { Collection, List, ListConfig, Selection } from '@ec.components/core';
 import { Item } from '@ec.components/core/src/item/item';
 
@@ -11,7 +11,7 @@ import { Item } from '@ec.components/core/src/item/item';
   styleUrls: ['./list.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class ListComponent<T> {
+export class ListComponent<T> implements OnChanges {
   /** The current list config */
   config: ListConfig<T> = {};
   /** Config input for List */

@@ -7,14 +7,14 @@ import { Field } from '@ec.components/core/src/field/field';
 import { Item } from '@ec.components/core/src/item/item';
 import { FileService, Upload } from '../file.service';
 import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
-import { SelectComponent } from '@ec.components/ui/src/form/select/select.component';
+import { SelectComponent } from '@ec.components/ui';
 import PublicAssetResource from 'ec.sdk/src/resources/publicAPI/PublicAssetResource';
 
 /** Shows assets of a selection and is able to pick new ones from a crud list */
 @Component({
   selector: 'ec-asset-select',
   templateUrl: './asset-select.component.html',
-  styleUrls: ['../../../../ui/src/form/select/select.component.scss'],
+  styleUrls: ['../../../../ui/src/select/select.component.scss'],
 
   encapsulation: ViewEncapsulation.None,
   providers: [
@@ -73,15 +73,6 @@ export class AssetSelectComponent extends SelectComponent<PublicAssetResource> i
       this.pop.toggle(false);
       this.active = false;
     }
-  }
-
-  toggle(active: boolean = !this.active, emit: boolean = false) {
-    super.toggle(active, emit);
-    this.pop.toggle();
-  }
-
-  canToggle() {
-    return true;
   }
 
   selectUpload(upload: Upload) {

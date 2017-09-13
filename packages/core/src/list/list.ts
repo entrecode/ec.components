@@ -46,11 +46,12 @@ export class List<T> extends Collection<Item<T>> {
     this.fields = this.getFields();
     this.pagination = pagination || new Pagination(this.config, this.items.length);
     this.pagination.change$.debounceTime(200)
-    .subscribe(config => this.load(config));
+    .subscribe(_config => this.load(_config));
     this.load();
   }
 
-  /** Loads the list page with the given config or, if none given, uses the current config. Reapplies grouping (if any) and calls the change Subject. */
+  /** Loads the list page with the given config or, if none given, uses the current config.
+   * Reapplies grouping (if any) and calls the change Subject. */
   public load(config?: ListConfig<T>) {
     if (config) {
       Object.assign(this.config, config);
@@ -104,7 +105,7 @@ export class List<T> extends Collection<Item<T>> {
 
   /** Filters the list after the given property and value */
   public filter(property: string, value: any = '', operator: string = 'exact') {
-    //TODO find way to filter with pagination and without loosing filtered out items
+    // TODO find way to filter with pagination and without loosing filtered out items
     this.page = this.items.filter((item) => {
       return item.resolve(property).includes(value);
     }).slice(0, this.config.size || 100);
