@@ -4,8 +4,7 @@ import { HttpModule } from '@angular/http';
 import { FormComponent } from './form.component';
 import { DefaultInputComponent } from './default-input/default-input.component';
 import { DefaultOutputComponent } from './default-output/default-output.component';
-import { ReactiveFormsModule } from "@angular/forms";
-import { SelectComponent } from './select/select.component';
+import { ReactiveFormsModule } from '@angular/forms';
 import { PopModule } from '../pop/pop.module';
 import { FormService } from './form.service';
 import { VisibleFieldsPipe } from './visible-fields.pipe';
@@ -23,23 +22,21 @@ import { DatetimePipe } from './datetime/datetime.pipe';
     FormComponent,
     DefaultInputComponent,
     DefaultOutputComponent,
-    SelectComponent,
     DatetimeComponent,
     DatetimePipe,
     MonthComponent,
-    VisibleFieldsPipe,
+    VisibleFieldsPipe
   ],
   imports: [
     CommonModule,
     HttpModule,
     ReactiveFormsModule,
     PopModule,
-    IoModule,
+    IoModule
   ],
   exports: [
     FormComponent,
     ReactiveFormsModule,
-    SelectComponent,
     DatetimeComponent,
     DatetimePipe,
     MonthComponent,

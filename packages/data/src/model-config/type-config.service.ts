@@ -6,11 +6,19 @@ import * as moment from 'moment';
 import { FieldConfig } from '@ec.components/core/src/config/field-config.interface';
 import { FieldConfigProperty } from '@ec.components/core/src/config/field-config-property.interface';
 import { Injectable } from '@angular/core';
-import { AssetInputComponent } from '../files/asset-input/asset-input.component';
+import { CrudConfig } from '../crud/crud-config.interface';
+import EntryResource from 'ec.sdk/src/resources/publicAPI/EntryResource';
 
 /** The TypeConfig holds each field type's specific behaviour in certain situations */
 @Injectable()
 export class TypeConfigService {
+  /** The default config for nested crud lists, as passed to entry-select */
+  private nestedCrudConfig: CrudConfig<EntryResource> = {
+    size: 10,
+    // methods: ['read'],
+    popClass: 'ec-pop_fullscreen'
+  };
+
   /** Defines the base configuration of each type.*/
   private types: FieldConfig<FieldConfigProperty> = {
     id: {
@@ -46,7 +54,7 @@ export class TypeConfigService {
     },
     asset: {
       view: 'avatar',
-      input: AssetInputComponent,
+      input: DefaultEntryInputComponent,
       filterOperator: 'exact',
       filterable: true,
       display: (value, entry, property) => entry.getImageThumbUrl(property, 100),
@@ -54,7 +62,7 @@ export class TypeConfigService {
     },
     assets: {
       view: 'avatars',
-      input: AssetInputComponent,
+      input: DefaultEntryInputComponent,
       display: (value, entry, property) => entry.getImageThumbUrl(property, 100),
       prefill: [],
       filterOperator: 'any',
@@ -87,7 +95,8 @@ export class TypeConfigService {
       display: (value, entry, property) => entry.getTitle(property),
       filterable: true,
       filterOperator: 'exact',
-      filterPopClass: 'ec-pop_toast-top'
+      filterPopClass: 'ec-pop_toast-top',
+      nestedCrudConfig: this.nestedCrudConfig
     },
     entries: {
       view: 'tags',
@@ -98,7 +107,8 @@ export class TypeConfigService {
       filterOperator: 'any',
       prefill: [],
       queryFilter: (value) => value.split(','),
-      filterPopClass: 'ec-pop_toast-top'
+      filterPopClass: 'ec-pop_toast-top',
+      nestedCrudConfig: this.nestedCrudConfig
     },
     json: {
       input: DefaultEntryInputComponent,

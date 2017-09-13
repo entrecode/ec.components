@@ -4,27 +4,29 @@ import { CoolStringComponent } from '../demo/app/form/cool-string.component';
 import { songs } from '../demo/assets/songs';
 import { UnsplashImageComponent } from '../demo/app/list/unsplash-image.component';
 
+export const products = [
+  {
+    id: 'x1',
+    name: 'Brush',
+    price: 2,
+    tags: ['tool', 'plastic', 'dirty']
+  },
+  {
+    id: 'x2',
+    name: 'Toilet',
+    price: 100,
+    tags: ['tool', 'water']
+  },
+  {
+    id: 'x3',
+    name: 'Toilet Seat',
+    price: 20,
+    tags: ['utility', 'plastic']
+  }
+];
+
 export const mocked = {
-  products: [
-    {
-      id: 'x1',
-      name: 'Brush',
-      price: 2,
-      tags: ['tool', 'plastic', 'dirty']
-    },
-    {
-      id: 'x2',
-      name: 'Toilet',
-      price: 100,
-      tags: ['tool', 'water']
-    },
-    {
-      id: 'x3',
-      name: 'Toilet Seat',
-      price: 20,
-      tags: ['utility', 'plastic']
-    }
-  ],
+  products,
   muffins: [
     {
       value: {
@@ -50,6 +52,7 @@ export const mocked = {
     model: 'muffin'
   },
   lists: {
+    products: new List(products, { identifier: 'id', label: 'name' }),
     songs: new List(songs.songs, {
       size: 10,
       fields: {

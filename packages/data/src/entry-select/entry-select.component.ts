@@ -16,7 +16,7 @@ import { ModelConfigService } from '../model-config/model-config.service';
 import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
 import { Item } from '@ec.components/core/src/item/item';
 import { CrudConfig } from '../crud/crud-config.interface';
-import { SelectComponent } from '@ec.components/ui/src/form/select/select.component';
+import { SelectComponent } from '@ec.components/ui';
 import EntryResource from 'ec.sdk/src/resources/publicAPI/EntryResource';
 
 // import LiteEntryResource from "ec.sdk/src/resources/publicAPI/LiteEntryResource";
@@ -25,7 +25,7 @@ import EntryResource from 'ec.sdk/src/resources/publicAPI/EntryResource';
 @Component({
   selector: 'ec-entry-select',
   templateUrl: './entry-select.component.html',
-  styleUrls: ['../../../ui/src/form/select/select.component.scss'],
+  styleUrls: ['../../../ui/src/select/select.component.scss'],
   encapsulation: ViewEncapsulation.None,
   providers: [
     {
@@ -81,23 +81,6 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
       this.config = Object.assign(config, { size: 10 }, this.crudConfig, { solo: this.solo });
       this.useConfig(this.config);
     });
-  }
-
-  select(item: Item<EntryResource>) {
-    this.selection.toggle(item);
-    if (this.config.solo) {
-      this.pop.toggle(false);
-      this.active = false;
-    }
-  }
-
-  toggle(active: boolean = !this.active, emit: boolean = false) {
-    super.toggle(active, emit);
-    this.pop.toggle();
-  }
-
-  canToggle() {
-    return true;
   }
 
   /** Is called when a selected item has been clicked. */

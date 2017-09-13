@@ -1,0 +1,14 @@
+<div class="ec-select" *ngIf="selection&&list">
+  <a (click)="pop.toggle()" class="ec-select__placeholder">
+    - Auswählen --
+  </a>
+  <div class="ec-select-selected">
+    <li *ngFor="let selected of selection.items" class="pill" (click)="clickItem(selected)">
+      {{selected.display()}} <a (click)="selection.remove(selected)">&times;</a>
+    </li>
+  </div>
+  <span class="caret"></span>
+  <ec-pop>
+    <ec-list [list]="list" (select)="select($event)" [selection]="selection"></ec-list>
+  </ec-pop>
+</div>

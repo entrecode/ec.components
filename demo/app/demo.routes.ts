@@ -58,10 +58,13 @@ export const demoRoutes: Routes = [
       {
         path: 'form',
         component: FormDemoComponent
+      }, {
+        path: 'select',
+        component: SelectDemoComponent,
       },
       {
-        path: 'login',
-        component: LoginComponent
+        path: 'datetime',
+        component: DatetimeDemoComponent
       },
       {
         path: 'pop',
@@ -80,16 +83,12 @@ export const demoRoutes: Routes = [
         component: TabsDemoComponent
       },
       {
-        path: 'select',
-        component: SelectDemoComponent,
+        path: 'login',
+        component: LoginComponent
       },
       {
         path: 'mockups',
         component: MockupComponent
-      },
-      {
-        path: 'datetime',
-        component: DatetimeDemoComponent
       },
     ]
   },

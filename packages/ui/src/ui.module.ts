@@ -7,6 +7,7 @@ import { PopModule } from './pop/pop.module';
 import { LoaderModule } from './loader/loader.module';
 import { NotificationsModule } from './notifications/notifications.module';
 import { UtilityModule } from './utility/utility.module';
+import { SelectModule } from './select/select.module';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { UtilityModule } from './utility/utility.module';
     LoaderModule,
     FormModule,
     ListModule,
+    SelectModule,
   ],
   exports: [
     ReactiveFormsModule,
@@ -29,6 +31,7 @@ import { UtilityModule } from './utility/utility.module';
     LoaderModule,
     ListModule,
     FormModule,
+    SelectModule,
   ]
 })
 export class UiModule {

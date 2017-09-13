@@ -36,7 +36,7 @@ export abstract class Sorter<T> {
     }
     const types = items
     .map(item => typeof item.sort(property))
-    .filter((item, index, items) => items.indexOf(item) === index);
+    .filter((item, index, _items) => _items.indexOf(item) === index);
     if (types.length > 1) {
       console.warn('cannot sort items because they contain multiple types:', types);
       return;

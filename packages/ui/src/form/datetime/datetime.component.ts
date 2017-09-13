@@ -23,7 +23,7 @@ export class DatetimeComponent implements ControlValueAccessor {
   /** The form control that holds the date */
   @Input() formControl: FormControl;
   /** The current value of the input */
-  value: string = '';
+  value = '';
   /** The calendar view child. */
   @ViewChild('calendar') calendar: MonthComponent;
   /** The dropdown pop with the calendar*/
@@ -31,7 +31,7 @@ export class DatetimeComponent implements ControlValueAccessor {
   /** Array of the days of a week. */
   public weekdays: string[];
   /** The input's placeholder */
-  @Input() placeholder: string = '';
+  @Input() placeholder = '';
   /** If true, the time will not be displayed nor will be editable. */
   @Input() disableTime: boolean;
   /** Allowed date input patterns. The first one will be standard. */
@@ -49,8 +49,8 @@ export class DatetimeComponent implements ControlValueAccessor {
     }
   }
 
-  getPattern(moment) {
-    const format = moment.creationData().format;
+  getPattern(_moment) {
+    const format = _moment.creationData().format;
     if (this.patterns.indexOf(format) !== -1) {
       return format;
     }
@@ -61,7 +61,6 @@ export class DatetimeComponent implements ControlValueAccessor {
   select(selected) {
     this.value = selected.format(this.getPattern(selected));
     this.propagateChange(selected.toISOString() || 'invalid');
-    // this.propagateChange(selected.toDate());
   }
 
   /** Called upon input value change by the user. */
@@ -74,9 +73,7 @@ export class DatetimeComponent implements ControlValueAccessor {
     } else if (value === '') {
       this.calendar.clearSelection();
       this.propagateChange(null);
-    }
-    else {
-      // this.propagateChange(typed.toDate());
+    } else {
       this.propagateChange(typed.toISOString() || 'invalid');
     }
   }

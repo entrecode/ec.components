@@ -3,12 +3,16 @@ import {
   EventEmitter,
   forwardRef,
   Input,
+  OnChanges,
+  OnInit,
   Output,
+  ViewChild,
   ViewEncapsulation
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { List, ListConfig, Selection } from '@ec.components/core';
 import { Item } from '@ec.components/core/src/item/item';
+import { PopComponent } from '../pop/pop.component';
 
 /**
  * The SelectComponent will render a dropdown of a given list.
@@ -26,28 +30,25 @@ import { Item } from '@ec.components/core/src/item/item';
     }
   ]
 })
-export class SelectComponent<T> implements ControlValueAccessor {
+export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChanges {
   /** Configuration Object for List */
   @Input() config: ListConfig<T>;
   /** The visible items */
-  @Input() value: Array<any>;
+  @Input() value: Array<T>;
   /** The used selection */
   @Input() selection: Selection<T>;
   /** Event emitter on item selection */
   @Output() change: EventEmitter<Selection<T>> = new EventEmitter();
   /** Event emitter on selected item click */
   @Output() itemClick: EventEmitter<Item<T>> = new EventEmitter();
-  /** Event that emits when the plus is clicked. */
-  @Output('toggle') _toggle: EventEmitter<Selection<T>> = new EventEmitter();
   /** The Instance of the List */
   @Input() list: List<T>;
-  /** True if the selection is active */
-  @Input() active: boolean;
+  /** Available Items */
+  @Input() values: Array<T>;
   /** Wether or not the selection should be solo */
   @Input() solo: boolean;
-
-  /** is emitted when a new value has been written from the outside */
-  // written: EventEmitter<any> = new EventEmitter();
+  /** The selection pop */
+  @ViewChild(PopComponent) pop: PopComponent;
 
   ngOnInit() {
     this.initSelection();
@@ -59,9 +60,19 @@ export class SelectComponent<T> implements ControlValueAccessor {
 
   /** creates the collection from the config */
   initSelection() {
+    if (this.values) {
+      if (this.list) {
+        console.warn('ec-select: list is overwritten by values', this.list);
+      }
+      this.list = new List(this.values, this.config);
+    }
+    if (this.list && !this.config) {
+      this.config = this.list.config;
+    }
     if (!this.config || this.config.disableSelection) {
       return;
     }
+    this.config = Object.assign({ solo: this.solo }, this.config);
     this.selection = new Selection(this.value || [], this.config);
     this.selection.update$.subscribe(() => {
       this.changed();
@@ -72,10 +83,10 @@ export class SelectComponent<T> implements ControlValueAccessor {
   writeValue(value: any) {
     this.value = Array.isArray(value) ? value : (value ? [value] : []);
     Object.assign(this.config || {}, { solo: this.solo });
-    this.list = new List(this.value, this.config);
     if (this.selection && this.value && this.value.length) {
       Object.assign(this.config, { selection: this.selection });
-      this.selection.replaceWith(this.list.items);
+      const list = new List(this.value, this.config);
+      this.selection.replaceWith(list.items);
     }
   }
 
@@ -86,38 +97,24 @@ export class SelectComponent<T> implements ControlValueAccessor {
     this.writeValue(this.value);
   }
 
-  /** Returns true if the toggle button should be shown.
-   * Is hidden when all items are selection and the toggle output has no observers. */
-  canToggle() {
-    return this._toggle.observers.length || !this.selection.hasAll(this.list.items);
-  }
-
-  /** Called when clicking the toggle button. emits toggle event with current selection. */
-  toggle(active: boolean = !this.active, emit: boolean = false) {
-    this.active = active;
-    this._toggle.emit(this.selection);
-  }
-
   /** Is called when a selected item is clicked*/
   private clickItem(item) {
     this.itemClick.emit(item);
   }
 
-  /** Column click handler. Triggers onSelect.emit(item) with fallback to selection.toggle*/
+  /** Column click handler. Toggles selection. */
   columnClick(item) {
     if (this.selection) {
       this.selection.toggle(item);
     }
+    // TODO emit event?
   }
 
-  private addItem(item) {
+  public select(item) {
     this.selection.toggle(item);
-    this.changed();
-  }
-
-  private removeItem(item) {
-    this.selection.remove(item);
-    this.changed();
+    if (this.config.solo) {
+      this.pop.hide();
+    }
   }
 
   changed() {

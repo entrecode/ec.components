@@ -4,6 +4,8 @@ import { ItemConfig } from '../item/item-config.interface';
  *  Configuration for List Classes.
  * */
 export interface ListConfig<T> extends ItemConfig<T> {
+  /** For lists with primitive values only: the title of the list header */
+  title?: string;
   /** The property name that is sorted after */
   sortBy?: string;
   /** Array of properties that is sorted after, experimental... */

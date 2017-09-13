@@ -22,7 +22,6 @@ import { UnsplashImageComponent } from './list/unsplash-image.component';
 import { demoRoutes } from './demo.routes'
 import { EntrySelectDemoComponent } from './entry-select/entry-select-demo.component';
 import { AssetListDemoComponent } from './asset-list/asset-list.demo.component';
-import { AssetInputComponent } from '../../packages/data/src/files/asset-input/asset-input.component';
 import { ListTransformsDemoComponent } from './list-transforms/list-transforms-demo.component';
 import { DatamanagerListDemoComponent } from './datamanager-list/datamanager-list.demo.component';
 import { ModelListDemoComponent } from './model-list/model-list.demo.component';
@@ -72,7 +71,6 @@ demoRoutes.unshift(
   entryComponents: [
     CoolStringComponent,
     UnsplashImageComponent,
-    AssetInputComponent,
   ],
   imports: [
     BrowserModule,

@@ -80,4 +80,6 @@ export interface FieldConfigProperty {
   prefill?: any;
   /** Possible Values e.g. for a select */
   values?: any[];
+  /** Any other configuration properties*/
+  [key: string]: any;
 }

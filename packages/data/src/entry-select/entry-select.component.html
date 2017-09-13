@@ -3,17 +3,17 @@
     <li *ngFor="let selected of selection?.items">
       <span class="pill removeable" (click)="editItem(selected)">
         {{selected.display()}}
-        <a (click)="removeItem(selected)" class="pill_remove">&times;</a>
+        <a (click)="selection.remove(selected)" class="pill_remove">&times;</a>
       </span>
     </li>
   </ul>
-  <a (click)="toggle(!active,true)" class="ec-entry-select__placeholder" *ngIf="canToggle()">- Auswählen -</a>
+  <a (click)="pop.toggle()" class="ec-entry-select__placeholder">
+    - Auswählen -
+  </a>
   <span class="caret"></span>
   <!-- TODO use entry pop when ready-->
   <ec-pop [ngClass]="getPopClass()" #crudPop>
-    <!--<button type="button" (click)="crudPop.hide()">
-      <i class="ec-icon close"></i> &lt;!&ndash; TODO unified pop header component &ndash;&gt;
-    </button>-->
+    <!-- TODO find way to embed close button to the pops that need it -->
     <ec-crud [model]="model" *ngIf="selection&&crudPop.active"
              [config]="config" [selection]="selection" (select)="select($event)" #crud></ec-crud>
   </ec-pop>

@@ -50,7 +50,7 @@ export class NotificationsDemoComponent implements OnInit {
         },
         type: {
           label: 'Type',
-          view: 'select',
+          view: 'array',
           values: this.types
         },
       }
