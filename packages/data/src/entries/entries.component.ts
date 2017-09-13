@@ -1,23 +1,23 @@
 /**
  * Created by felix on 23.05.17.
  */
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { SdkService } from '../sdk/sdk.service';
 
-// import { filterOptions } from 'ec.sdk/typings/interfaces'
+// import { filterOptions } from 'ec.sdk/src/resources/ListResource';
 
 /** Loads an entryList of a given model with the given config. */
 @Component({
   selector: 'ec-entries',
   templateUrl: './entries.component.html'
 })
-export class EntriesComponent {
+export class EntriesComponent implements OnChanges {
   /** The promise of the entryList call. */
   private promise: any;
   /** The model to load from. */
   @Input() model: string;
   /** The config (filterOptions) for loading. */
-  @Input() config;//: filterOptions; //TODO why cannot import?
+  @Input() config; // TODO cannot import #simibug : filterOptions;
   /** The current loaded entryList */
   private entryList: any;
 

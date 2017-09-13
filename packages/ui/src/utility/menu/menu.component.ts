@@ -2,7 +2,7 @@
  * Created by felix on 26.05.17.
  */
 import { Component, Input, OnChanges } from '@angular/core';
-import { Router } from '@angular/router'; // TODO find way to import Route without getting warning
+import { Router } from '@angular/router'; // TODO cannot import Route...
 
 /** Renders a nested menu from a given routes Array (the same you would use for angular routing). */
 @Component({
@@ -12,9 +12,9 @@ import { Router } from '@angular/router'; // TODO find way to import Route witho
 })
 export class MenuComponent implements OnChanges {
   /** Routes that should be used for the menu. You can use your angular router routes here. */
-  @Input() routes; // Route[];
+  @Input() routes; // : Route[];
   /** The currently active route */
-  @Input() route; // Route;
+  @Input() route; // : Route;
   /** The title of the menu */
   @Input() title: string;
   /** Parent Menu (when nested) */
@@ -26,7 +26,7 @@ export class MenuComponent implements OnChanges {
   /** Delay before menu is shown on mouseover. */
   @Input() hoverDelay = 50;
   /** The currently hovered Route*/
-  public hover; // Route;
+  public hover; // : Route;
   /** The timeout for delay handling */
   private timeout;
 
@@ -75,7 +75,7 @@ export class MenuComponent implements OnChanges {
   }
 
   /** Hovers the item after hoverDelay timeout. */
-  hoverItem(item) { // Route
+  hoverItem(item) { // : Route
     if (!this.hover) {
       this.hover = item;
     }

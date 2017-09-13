@@ -58,7 +58,7 @@ export class FormComponent implements OnChanges {
     if (config) {
       this.form = new Form(null, config);
     }
-    if (item && item.getBody) { // TODO find cleaner way to check if is item
+    if (item instanceof Item) {
       this.form = new Form(item.getBody(), item.getConfig());
     }
     if (this.form) {

@@ -85,13 +85,13 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
 
   /** Is called when a selected item has been clicked. */
   editItem(item) {
-    // if (!item.getBody().save) { //TODO find out if LiteEntryResource or not
+    if (item.getBody() instanceof EntryResource) {
+      console.log('already got full entry', item.getBody());
+      return;
+    }
     item.getBody().resolve().then((entry) => {
       console.log('resolved', entry);
     });
-    // } else {
-    //   console.log('edit', item.getBody());
-    // }
     // TODO open edit pop
   }
 

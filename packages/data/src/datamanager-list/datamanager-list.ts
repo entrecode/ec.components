@@ -19,7 +19,7 @@ export class DatamanagerList extends ResourceList<DataManagerResource> {
         if (datamanager instanceof DataManagerResource) {
           return datamanager.save();
         }
-        return value; //TODO create
+        return value; // TODO create
       },
       fields: {
         hexColor: {
