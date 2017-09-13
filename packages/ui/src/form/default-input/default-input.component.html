@@ -1,5 +1,4 @@
 <div [ngSwitch]="field.view" *ngIf="group" [formGroup]="group">
-  <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>
   <input *ngSwitchCase="'string'" type="text" [formControl]="control"
          [placeholder]="field.getPlaceholder()" class="input">
 
@@ -28,4 +27,5 @@
     <ec-output [field]="field" [item]="item"></ec-output>
     <!--<marquee>🚂🚃🚃🚃 {{field.type}}/{{field.view}} input coming soon</marquee>-->
   </div>
+  <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>
 </div>

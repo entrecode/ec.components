@@ -1,15 +1,13 @@
 <div *ngIf="selection" class="ec-entry-select">
-  <a (click)="toggle(!active,true)" class="ec-entry-select__placeholder" *ngIf="canToggle()">
-    - Auswählen -
-  </a>
   <ul class="ec-entry-select-selected">
     <li *ngFor="let selected of selection?.items">
-      <span class="pill" (click)="editItem(selected)">
+      <span class="pill removeable" (click)="editItem(selected)">
         {{selected.display()}}
-        <a (click)="removeItem(selected)">&times;</a>
+        <a (click)="removeItem(selected)" class="pill_remove">&times;</a>
       </span>
     </li>
   </ul>
+  <a (click)="toggle(!active,true)" class="ec-entry-select__placeholder" *ngIf="canToggle()">- Auswählen -</a>
   <span class="caret"></span>
   <!-- TODO use entry pop when ready-->
   <ec-pop [ngClass]="getPopClass()" #crudPop>
