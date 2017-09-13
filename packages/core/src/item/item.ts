@@ -22,7 +22,9 @@ export class Item<T> {
         type: typeof this.body[property],
       };
       if (config.fields[property].view === 'object' && Array.isArray(this.body[property])) {
-        config.fields[property].view = 'array'
+        config.fields[property].view = 'array';
+        config.fields[property].values = this.body[property];
+        // config.fields[property].solo = true;
       }
     });
     return config;

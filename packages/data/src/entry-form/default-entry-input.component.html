@@ -1,18 +1,20 @@
 <fieldset [ngSwitch]="field.type" *ngIf="group" [formGroup]="group">
   <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>
-  <!--<div *ngSwitchCase="'asset'">
-    <img [src]="item?.display(field.property)">
-  </div>
-  <div *ngSwitchCase="'assets'">
-    <img [src]="url" *ngFor="let url of item?.display(field.property)">
-  </div>-->
   <div *ngSwitchCase="'entry'">
     <ec-entry-select [formControl]="group.get(field.property)" [field]="field"
-                     [solo]="true" [config]="entrySelectConfig"></ec-entry-select>
+                     [solo]="true" [config]="field.nestedCrudConfig"></ec-entry-select>
   </div>
   <div *ngSwitchCase="'entries'">
     <ec-entry-select [formControl]="group.get(field.property)" [field]="field"
-                     [config]="entrySelectConfig"></ec-entry-select>
+                     [config]="field.nestedCrudConfig"></ec-entry-select>
+  </div>
+  <div *ngSwitchCase="'asset'">
+    <ec-asset-select [formControl]="group.get(field.property)" [field]="field"
+                     [solo]="true" [item]="item"></ec-asset-select>
+  </div>
+  <div *ngSwitchCase="'assets'">
+    <ec-asset-select [formControl]="group.get(field.property)" [field]="field"
+                     [item]="item"></ec-asset-select>
   </div>
   <input *ngSwitchCase="'phone'" type="text" [placeholder]="field.placeholder">
   <div *ngSwitchDefault>
