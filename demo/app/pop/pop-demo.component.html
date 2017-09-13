@@ -4,31 +4,31 @@
   <div class="bumper"></div>
   <h4>ec-pop styles</h4>
   <ec-pop-trigger #outer>
-    <header class="ec-pop_header">
+    <header class="ec-pop-header">
       <button (click)="outer.pop.hide()" class="btn">
         <i class="ec-icon close"></i>
       </button>
       <h2>.{{outer.popClass}}</h2>
     </header>
-    <div class="ec-pop_body">
+    <div class="ec-pop-body">
       <img src="https://unsplash.it/300">
       <ec-pop-trigger #inner>
-        <header class="ec-pop_header">
+        <header class="ec-pop-header">
           <h2>.{{inner.popClass}}</h2>
           <button (click)="inner.pop.hide()" class="btn">
             <i class="ec-icon close"></i>
           </button>
         </header>
-        <div class="ec-pop_body">
+        <div class="ec-pop-body">
           <p>This pop is nested!</p>
           <img src="https://unsplash.it/200">
         </div>
-        <footer class="ec-pop_footer">
+        <footer class="ec-pop-footer">
           <strong>Nested Footer</strong>
         </footer>
       </ec-pop-trigger>
     </div>
-    <footer class="ec-pop_footer">
+    <footer class="ec-pop-footer">
       <strong>Footer</strong>
     </footer>
   </ec-pop-trigger>
