@@ -28,6 +28,8 @@ export class FormComponent implements OnChanges {
   @Input() empty: boolean;
   /** If set to true, the form will be rendered without a submit button. */
   @Input() submitButton: boolean;
+  /** If true, no notifications will be emitted. */
+  @Input() silent: boolean;
   /** The loader that should be used. */
   @Input() loader: LoaderComponent;
   /** Emits when the form is submitted. The form can only be submitted if all Validators succeeded. */
@@ -91,12 +93,18 @@ export class FormComponent implements OnChanges {
     .then((form) => {
       this.submitted.emit(this.form);
       this.edit(form);
+      if (this.silent) {
+        return;
+      }
       this.notificationService.emit({ // TODO pull out to entry-form?
         title: 'Eintrag gespeichert',
         type: 'success'
       });
     }).catch((err) => {
       console.error(err, err.errors);
+      if (this.silent) {
+        return;
+      }
       this.notificationService.emit({
         title: 'Fehler beim Speichern',
         error: err
@@ -106,8 +114,11 @@ export class FormComponent implements OnChanges {
     return submit;
   }
 
-  /** Returns the current value of the form control group. */
-  getValue() {
+  /** Returns the current value of the form control group. When passing a property, it directly returns the property value. */
+  getValue(property?: string) {
+    if (property) {
+      return this.group.value[property];
+    }
     return this.group.value;
   }
 

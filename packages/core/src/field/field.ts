@@ -29,6 +29,8 @@ export class Field<T> implements FieldConfigProperty {
   filterPopClass?: string;
   /** Wether or not the field should appear in default forms */
   form?: boolean;
+  /** Possible Values e.g. in a select */
+  values: T[];
 
   /** A Field is constructed by assigning the given config and the property to itself*/
   constructor(property: string, config: FieldConfigProperty = {}) {
