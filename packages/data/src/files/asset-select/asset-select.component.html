@@ -6,7 +6,7 @@
     <span> oder <a (click)="pop.toggle()">Mediathek</a></span>
   </div>
   <div *ngIf="selection.items.length" class="ec-asset-selected">
-    <ul class="ec-asset-selected__items" data-flex="grid">
+    <ul class="ec-asset-selected__items" data-flex="small-grid">
       <li *ngFor="let selected of selection.items" class="ec-asset-selected__item"
           (click)="editItem(selected)" data-col="3sm">
         <div class="ec-asset-card">
