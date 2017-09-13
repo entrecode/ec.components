@@ -4,6 +4,8 @@ import { FieldConfig } from '../config/field-config.interface';
 
 /** An ItemConfig describes an abstract entity with certain properties.*/
 export interface ItemConfig<T> {
+  /** For primitive values only: the title for the item */
+  title?: string;
   /** The Property that is used to identify items from another (e.g. in a selection). */
   identifier?: string;
   /** The Property that is used to display the item for humans */

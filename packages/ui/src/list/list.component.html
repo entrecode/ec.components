@@ -1,18 +1,24 @@
 <ec-pagination [pagination]="list?.pagination"
                *ngIf="list?.pagination?.getPages()>1"></ec-pagination>
 <div class="ec-list">
-  <ec-list-header [list]="list" [selection]="selection"></ec-list-header>
+  <ec-list-header [list]="list" [selection]="selection"
+                  *ngIf="list?.fields.length||list?.config.title"></ec-list-header>
 
   <div class="ec-list-body">
     <div class="ec-list-group" *ngFor="let group of list?.groups">
-      <div class="ec-list-group-header ec-list__row" *ngIf="group.value" (click)="selection?.toggleAll(listItems?.items)">
-        <div class="ec-list__cell ec-list__select" *ngIf="selection"><input type="checkbox" [checked]="selection?.hasAll(listItems?.items)"></div>
+      <div class="ec-list-group-header ec-list__row" *ngIf="group.value"
+           (click)="selection?.toggleAll(listItems?.items)">
+        <div class="ec-list__cell ec-list__select" *ngIf="selection"><input type="checkbox"
+                                                                            [checked]="selection?.hasAll(listItems?.items)">
+        </div>
         <div class="ec-list__cell">
           <span class="ec-list-group-header__title">{{group.value}}</span>
         </div>
       </div>
-      <ec-list-items [host]="this" #listItems [items]="list?.page | group: group.property: group.value"></ec-list-items>
+      <ec-list-items [host]="this" #listItems
+                     [items]="list?.page | group: group.property: group.value"></ec-list-items>
     </div>
   </div>
 </div>
-<ec-pagination [pagination]="list?.pagination" *ngIf="list?.pagination?.getPages()>1"></ec-pagination>
+<ec-pagination [pagination]="list?.pagination"
+               *ngIf="list?.pagination?.getPages()>1"></ec-pagination>

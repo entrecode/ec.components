@@ -83,19 +83,6 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
     });
   }
 
-  select(item: Item<EntryResource>) {
-    this.selection.toggle(item);
-    if (this.config.solo) {
-      this.pop.toggle(false);
-      this.active = false;
-    }
-  }
-
-  toggle(active: boolean = !this.active, emit: boolean = false) {
-    super.toggle(active, emit);
-    this.pop.toggle();
-  }
-
   /** Is called when a selected item has been clicked. */
   editItem(item) {
     // if (!item.getBody().save) { //TODO find out if LiteEntryResource or not

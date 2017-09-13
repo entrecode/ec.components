@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-
-import { songs } from '../../assets/songs';
 import { mocked } from '../../../mocks/data';
 
 @Component({
@@ -9,7 +7,7 @@ import { mocked } from '../../../mocks/data';
 })
 export class SelectDemoComponent {
 
-  songs = songs.songs;
+  values = [];
   products = mocked.lists.products;
 
   constructor() {

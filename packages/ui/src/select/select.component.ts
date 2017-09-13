@@ -34,26 +34,21 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   /** Configuration Object for List */
   @Input() config: ListConfig<T>;
   /** The visible items */
-  @Input() value: Array<any>;
+  @Input() value: Array<T>;
   /** The used selection */
   @Input() selection: Selection<T>;
   /** Event emitter on item selection */
   @Output() change: EventEmitter<Selection<T>> = new EventEmitter();
   /** Event emitter on selected item click */
   @Output() itemClick: EventEmitter<Item<T>> = new EventEmitter();
-  /** Event that emits when the plus is clicked. */
-  @Output('toggle') _toggle: EventEmitter<Selection<T>> = new EventEmitter();
   /** The Instance of the List */
   @Input() list: List<T>;
-  /** True if the selection is active */
-  @Input() active: boolean;
+  /** Available Items */
+  @Input() values: Array<T>;
   /** Wether or not the selection should be solo */
   @Input() solo: boolean;
   /** The selection pop */
   @ViewChild(PopComponent) pop: PopComponent;
-
-  /** is emitted when a new value has been written from the outside */
-  // written: EventEmitter<any> = new EventEmitter();
 
   ngOnInit() {
     this.initSelection();
@@ -65,6 +60,12 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
 
   /** creates the collection from the config */
   initSelection() {
+    if (this.values) {
+      if (this.list) {
+        console.warn('ec-select: list is overwritten by values', this.list);
+      }
+      this.list = new List(this.values, this.config);
+    }
     if (this.list && !this.config) {
       this.config = this.list.config;
     }
@@ -82,10 +83,10 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   writeValue(value: any) {
     this.value = Array.isArray(value) ? value : (value ? [value] : []);
     Object.assign(this.config || {}, { solo: this.solo });
-    this.list = new List(this.value, this.config);
     if (this.selection && this.value && this.value.length) {
       Object.assign(this.config, { selection: this.selection });
-      this.selection.replaceWith(this.list.items);
+      const list = new List(this.value, this.config);
+      this.selection.replaceWith(list.items);
     }
   }
 
@@ -96,33 +97,24 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
     this.writeValue(this.value);
   }
 
-  /** Called when clicking the toggle button. emits toggle event with current selection. */
-  toggle(active: boolean = !this.active, emit: boolean = false) {
-    this.active = active;
-    this.pop.toggle();
-    this._toggle.emit(this.selection);
-  }
-
   /** Is called when a selected item is clicked*/
   private clickItem(item) {
     this.itemClick.emit(item);
   }
 
-  /** Column click handler. Triggers onSelect.emit(item) with fallback to selection.toggle*/
+  /** Column click handler. Toggles selection. */
   columnClick(item) {
     if (this.selection) {
       this.selection.toggle(item);
     }
+    // TODO emit event?
   }
 
-  private addItem(item) {
+  public select(item) {
     this.selection.toggle(item);
-    this.changed();
-  }
-
-  private removeItem(item) {
-    this.selection.remove(item);
-    this.changed();
+    if (this.config.solo) {
+      this.pop.hide();
+    }
   }
 
   changed() {

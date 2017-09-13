@@ -1,9 +1,17 @@
 <h1>ec-select</h1>
 
 <h3>Default</h3>
-<ec-select [list]="products" [config]="products.config" #ecSelect></ec-select>
-<pre><code>{{ecSelect.selection.getValue() | json}}</code></pre>
+<ec-select [list]="products" [(ngModel)]="values"></ec-select>
+<pre><code>{{values | json}}</code></pre>
 
 <h3>Solo</h3>
-<ec-select [list]="products" [config]="products.config" [solo]="true" #ecSelectSolo></ec-select>
+<ec-select [list]="products" [solo]="true" #ecSelectSolo></ec-select>
 <pre><code>{{ecSelectSolo.selection.getValue() | json}}</code></pre>
+
+<h3>Primitive Solo</h3>
+<ec-select [values]="['one','two','three']" #primitiveSelectSolo [solo]="true"></ec-select>
+<pre><code>{{primitiveSelectSolo.selection.getValue() | json}}</code></pre>
+
+<h3>Primitive</h3>
+<ec-select [values]="['one','two','three']" #primitiveSelect></ec-select>
+<pre><code>{{primitiveSelect.selection.getValue() | json}}</code></pre>

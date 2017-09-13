@@ -3,11 +3,11 @@
     <li *ngFor="let selected of selection?.items">
       <span class="pill removeable" (click)="editItem(selected)">
         {{selected.display()}}
-        <a (click)="removeItem(selected)" class="pill_remove">&times;</a>
+        <a (click)="selection.remove(selected)" class="pill_remove">&times;</a>
       </span>
     </li>
   </ul>
-  <a (click)="toggle(!active,true)" class="ec-entry-select__placeholder">
+  <a (click)="pop.toggle()" class="ec-entry-select__placeholder">
     - Auswählen -
   </a>
   <span class="caret"></span>

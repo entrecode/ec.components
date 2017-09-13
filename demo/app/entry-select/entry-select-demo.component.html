@@ -18,7 +18,7 @@
 <pre>{{soloEntry.selection?.getValue()}}</pre>
 <h3>Usage with form</h3>
 <ec-entry-form model="field_test" #fieldTest>
-  <ec-entry-select *ngIf="fieldTest.group"
+  <ec-entry-select *ngIf="fieldTest.group" [solo]="true"
                    [formControl]="fieldTest.group?.get('entries')"
                    model="muffin"></ec-entry-select>
   <ec-input [field]="fieldTest.form?.getField('entries')" [group]="fieldTest.group"></ec-input>

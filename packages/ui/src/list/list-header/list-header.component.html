@@ -6,9 +6,12 @@
 
   <ec-form [config]="list?.config" [empty]="true" #filterForm></ec-form>
 
-  <div class="ec-list__cell" *ngFor="let field of list?.fields" [class.hidden]="field.hidden" [ngClass]="'ec-list-field_' + field.view" [class.ec-list-field_sortable]="field.sortable" [class.ec-list-field_sortable_active]="list.config?.sortBy===field.property" [class.ec-list-field_filterable]="field.filterable">
+  <div class="ec-list__cell" *ngFor="let field of list?.fields" [class.hidden]="field.hidden"
+       [ngClass]="'ec-list-field_' + field.view" [class.ec-list-field_sortable]="field.sortable"
+       [class.ec-list-field_sortable_active]="list.config?.sortBy===field.property"
+       [class.ec-list-field_filterable]="field.filterable">
 
-    <span class="ec-list-field__title" (click)="field.sortable&&list.toggleSort(field.property)" >
+    <span class="ec-list-field__title" (click)="field.sortable&&list.toggleSort(field.property)">
       {{field.label || field.property}}
     </span>
 
@@ -16,7 +19,8 @@
       <ec-input [field]="field" [group]="filterForm?.group" [debounce]="200"
                 *ngIf="filterForm?.group.get(field?.property)"
                 (changed)="applyFilter(field.property, $event)"></ec-input>
-      <a (click)="removeFilter(field.property, filterForm.group.get(field.property));filterPop.hide()" class="btn">
+      <a (click)="removeFilter(field.property, filterForm.group.get(field.property));filterPop.hide()"
+         class="btn">
         &times;
       </a>
     </ec-pop>

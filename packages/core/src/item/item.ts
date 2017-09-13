@@ -56,6 +56,9 @@ export class Item<T> {
   /** Returns an Array of properties possessed by the body. */
   getProperties(): Array<string> {
     if (!this.body || typeof this.body !== 'object') {
+      if (typeof this.body !== 'object') {
+        return [this.config.title || ''];
+      }
       return [];
     }
     return Object.keys(this.body);
@@ -74,6 +77,9 @@ export class Item<T> {
   resolve(property?: string): any {
     if (!this.hasBody()) {
       return;
+    }
+    if (typeof this.body !== 'object') {
+      return this.body;
     }
     if (!this.config) {
       return property ? this.body[property] : this.body;

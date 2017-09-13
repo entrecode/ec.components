@@ -67,14 +67,6 @@ export class AssetSelectComponent extends SelectComponent<PublicAssetResource> i
     });
   }
 
-  select(item: Item<any>) {
-    this.selection.toggle(item);
-    if (this.config.solo) {
-      this.pop.toggle(false);
-      this.active = false;
-    }
-  }
-
   selectUpload(upload: Upload) {
     if (this.solo) {
       this.selection.select(upload.item);
