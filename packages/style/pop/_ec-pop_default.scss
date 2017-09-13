@@ -1,0 +1,21 @@
+.ec-pop {
+  @include flexbox;
+  @include flex-direction(column);
+  @include justify-content(space-between);
+
+  .ec-pop-header {
+    @include flex-grow(0);
+  }
+
+  .ec-pop-body {
+    @include flex-grow(1);
+    @include flex-basis(auto);
+    height: 100%;
+    overflow-y: auto;
+    padding: rem($pop-body-padding);
+  }
+
+  .ec-pop-footer {
+    @include flex-grow(0);
+  }
+}

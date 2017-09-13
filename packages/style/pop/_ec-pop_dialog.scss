@@ -5,6 +5,7 @@ ec-pop {
         background-color: getColor(background);
         @include border-radius(rem($pop-radius));
         @extend %dialog-appear;
+        @include box-shadow(0 4px 8px getColor(shadow), 0 4px 16px getColor(shadow));
       }
     }
   }

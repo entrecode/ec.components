@@ -7,10 +7,11 @@ ec-pop {
     > .ec-pop-container {
       > .ec-pop {
         @extend %ec-drawer;
-        @extend %pop-slide-down;
+        @extend %slide-in-down;
         width: 100vw;
         top: 0;
         left: 0;
+        @include box-shadow(0 4px 8px getColor(shadow), 0 4px 16px getColor(shadow));
       }
     }
   }
@@ -19,10 +20,11 @@ ec-pop {
     > .ec-pop-container {
       > .ec-pop {
         @extend %ec-drawer;
-        @extend %pop-slide-up;
+        @extend %slide-in-up;
         width: 100vw;
         bottom: 0;
         left: 0;
+        @include box-shadow(0 -4px 8px getColor(shadow), 0 -4px 16px getColor(shadow));
       }
     }
   }

@@ -7,10 +7,11 @@ ec-pop {
     > .ec-pop-container {
       > .ec-pop {
         @extend %ec-drawer;
-        @extend %pop-slide-right;
+        @extend %slide-in-right;
         height: 100vh;
         top: 0;
         left: 0;
+        @include box-shadow(4px 0 8px getColor(shadow), 4px 0 16px getColor(shadow));
       }
     }
   }
@@ -19,10 +20,11 @@ ec-pop {
     > .ec-pop-container {
       > .ec-pop {
         @extend %ec-drawer;
-        @extend %pop-slide-left;
+        @extend %slide-in-left;
         height: 100vh;
         top: 0;
         right: 0;
+        @include box-shadow(-4px 0 8px getColor(shadow), -4px 0 16px getColor(shadow));
       }
     }
   }
@@ -31,10 +33,11 @@ ec-pop {
     > .ec-pop-container {
       > .ec-pop {
         @extend %ec-drawer;
-        @extend %pop-slide-down;
+        @extend %slide-in-down;
         width: 100vw;
         top: 0;
         left: 0;
+        @include box-shadow(0 4px 8px getColor(shadow), 0 4px 16px getColor(shadow));
       }
     }
   }
@@ -43,10 +46,11 @@ ec-pop {
     > .ec-pop-container {
       > .ec-pop {
         @extend %ec-drawer;
-        @extend %pop-slide-up;
+        @extend %slide-in-up;
         width: 100vw;
         bottom: 0;
         left: 0;
+        @include box-shadow(0 -4px 8px getColor(shadow), 0 -4px 16px getColor(shadow));
       }
     }
   }
