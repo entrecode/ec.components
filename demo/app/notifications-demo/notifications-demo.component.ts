@@ -5,7 +5,6 @@ import { FormComponent } from '../../../packages/ui/src/form/form.component';
 
 @Component({
   templateUrl: './notifications-demo.component.html',
-  styleUrls: ['./notifications-demo.component.css']
 })
 export class NotificationsDemoComponent implements OnInit {
   public classes = ['toast', 'bread'];
@@ -28,7 +27,7 @@ export class NotificationsDemoComponent implements OnInit {
     }, {
       fields: {
         time: {
-          label: 'Zeit',
+          label: 'Zeit in ms',
           view: 'number'
         },
         hostClass: {

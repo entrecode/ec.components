@@ -22,6 +22,7 @@ import { VcDemoComponent } from './vc/vc-demo.component';
 import { CrudComponent } from '../../packages/data/src/crud/crud.component';
 import { AssetSelectDemoComponent } from './asset-select/asset-select-demo.component';
 import { NotificationsDemoComponent } from './notifications-demo/notifications-demo.component';
+import { LoaderDemoComponent } from './loader-demo/loader-demo.component';
 
 export const demoRoutes: Routes = [
   /*  {
@@ -45,27 +46,18 @@ export const demoRoutes: Routes = [
             redirectTo: 'list',
           },
           {
-            path: 'list',
-            component: ListDemoComponent,
-            data: {
-              title: 'basic'
-            }
+            path: 'basic',
+            component: ListDemoComponent
           },
           {
-            path: 'list-transforms',
-            component: ListTransformsDemoComponent,
-            data: {
-              title: 'transforms'
-            }
+            path: 'transforms',
+            component: ListTransformsDemoComponent
           }
         ]
       },
       {
         path: 'form',
-        component: FormDemoComponent,
-        data: {
-          title: 'form'
-        }
+        component: FormDemoComponent
       },
       {
         path: 'login',
@@ -73,21 +65,19 @@ export const demoRoutes: Routes = [
       },
       {
         path: 'pop',
-        component: PopDemoComponent,
-        data: {
-          title: 'ec-pop'
-        }
+        component: PopDemoComponent
       },
       {
         path: 'notifications',
         component: NotificationsDemoComponent
       },
       {
+        path: 'loader',
+        component: LoaderDemoComponent
+      },
+      {
         path: 'tabs',
-        component: TabsDemoComponent,
-        data: {
-          title: 'tabs'
-        }
+        component: TabsDemoComponent
       },
       {
         path: 'select',
@@ -95,10 +85,7 @@ export const demoRoutes: Routes = [
       },
       {
         path: 'mockups',
-        component: MockupComponent,
-        data: {
-          title: 'Mockups'
-        }
+        component: MockupComponent
       },
       {
         path: 'datetime',
@@ -111,31 +98,19 @@ export const demoRoutes: Routes = [
     children: [
       {
         path: 'entries',
-        component: DataDemoComponent,
-        data: {
-          title: 'entries'
-        }
+        component: DataDemoComponent
       },
       {
         path: 'entry-list',
-        component: EntryListDemoComponent,
-        data: {
-          title: 'entry-list'
-        }
+        component: EntryListDemoComponent
       },
       {
         path: 'entry-form',
-        component: EntryFormDemoComponent,
-        data: {
-          title: 'entry-form'
-        }
+        component: EntryFormDemoComponent
       },
       {
         path: 'entry-select',
-        component: EntrySelectDemoComponent,
-        data: {
-          title: 'entry-select'
-        }
+        component: EntrySelectDemoComponent
       },
       {
         path: 'crud',
@@ -186,10 +161,7 @@ export const demoRoutes: Routes = [
     ]
   },
   {
-    path: 'vc',
-    component: VcDemoComponent,
-    data: {
-      title: 'ec-vc'
-    }
+    path: 'ec-vc',
+    component: VcDemoComponent
   }
 ];
