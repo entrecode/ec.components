@@ -30,6 +30,7 @@ import { DatetimeDemoComponent } from './form/datetime-demo.component';
 import { DemoDashboardComponent } from './dashboard.component';
 import { AssetSelectDemoComponent } from './asset-select/asset-select-demo.component';
 import { PopTriggerComponent } from './pop/pop-trigger.component';
+import { NotificationsDemoComponent } from './notifications-demo/notifications-demo.component';
 
 demoRoutes.unshift(
   {
@@ -64,6 +65,7 @@ demoRoutes.unshift(
     DatamanagerListDemoComponent,
     DatetimeDemoComponent,
     ModelListDemoComponent,
+    NotificationsDemoComponent,
   ],
   entryComponents: [
     CoolStringComponent,

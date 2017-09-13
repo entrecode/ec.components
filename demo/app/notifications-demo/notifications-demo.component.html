@@ -1,0 +1,33 @@
+<div data-container>
+
+  <h2>Notifications</h2>
+  <p>Just add the ec-notifications tag anywhere in your template and emit notifications via
+    NotificationService. You will also receive notifications from components like form.</p>
+  <h3>Options</h3>
+  <label>
+    Duration
+    <input type="number" [(ngModel)]="notifications.time">
+  </label>
+  <label>
+    Class
+    <select (change)="notificationsClass=$event.target.value">
+      <option *ngFor="let class of classes" [value]="class"
+              [selected]="notificationsClass===class">
+        .{{class}}
+      </option>
+    </select>
+  </label>
+
+  <label>
+    <input type="checkbox" [(ngModel)]="desktop">
+    Use Desktop Notifications
+  </label>
+
+  <p *ngFor="let type of ['success','info','error']">
+    <a (click)="emit(type)" class="tag">
+      {{type}}
+    </a>
+  </p>
+
+  <ec-notifications [ngClass]="notificationsClass" #notifications></ec-notifications>
+</div>

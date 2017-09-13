@@ -21,6 +21,7 @@ import { AuthDemoComponent } from './auth/auth-demo.component';
 import { VcDemoComponent } from './vc/vc-demo.component';
 import { CrudComponent } from '../../packages/data/src/crud/crud.component';
 import { AssetSelectDemoComponent } from './asset-select/asset-select-demo.component';
+import { NotificationsDemoComponent } from './notifications-demo/notifications-demo.component';
 
 export const demoRoutes: Routes = [
   /*  {
@@ -56,7 +57,8 @@ export const demoRoutes: Routes = [
             data: {
               title: 'transforms'
             }
-          },]
+          }
+        ]
       },
       {
         path: 'form',
@@ -75,6 +77,10 @@ export const demoRoutes: Routes = [
         data: {
           title: 'ec-pop'
         }
+      },
+      {
+        path: 'notifications',
+        component: NotificationsDemoComponent
       },
       {
         path: 'tabs',
