@@ -1,10 +1,10 @@
 ec-pop {
   &.ec-pop_dialog {
-    .ec-pop-container {
-      .ec-pop {
+    > .ec-pop-container {
+      > .ec-pop {
         background-color: getColor(background);
         @include border-radius(rem($pop-radius));
-        @extend %pop-appear;
+        @extend %dialog-appear;
       }
     }
   }
