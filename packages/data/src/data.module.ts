@@ -64,6 +64,7 @@ import { FilesModule } from './files/files.module';
     ResourceListComponent,
     RouterModule,
     EditorComponent,
+    UiModule,
     SdkModule,
     FilesModule,
   ],

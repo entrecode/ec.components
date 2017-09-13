@@ -1589,7 +1589,7 @@
     
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-description"><p>Returns the pop class that should be used, either uses config.popClass or defaults to sidebar-left. </p>
+                                <div class="io-description"><p>Returns the pop class that should be used, either uses config.popClass or defaults to ec-pop_drawer-left. </p>
     </div>
     
                                 <div class="io-description">
@@ -2345,11 +2345,12 @@ export class CrudComponent&lt;T&gt; {
     this.loaderService.wait(this.loadEntry(item), this.loader);
   }
 
-  /** Returns the pop class that should be used, either uses config.popClass or defaults to sidebar-left. */
+  /** Returns the pop class that should be used, either uses config.popClass or defaults to ec-pop_drawer-left. */
   getPopClass() {
-    return this.config &amp;&amp; this.config.popClass ? this.config.popClass : &#x27;sidebar-left&#x27;;
+    return this.config &amp;&amp; this.config.popClass ? this.config.popClass : &#x27;ec-pop_drawer-left&#x27;;
   }
-}</code></pre>
+}
+</code></pre>
     </div>
 
     <div class="tab-pane fade" id="templateData">
