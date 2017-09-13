@@ -78,4 +78,6 @@ export interface FieldConfigProperty {
   form?: boolean;
   /** If a prefill value is set, it will be used at creation in a form. */
   prefill?: any;
+  /** Possible Values e.g. for a select */
+  values?: any[];
 }

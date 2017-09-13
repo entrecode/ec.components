@@ -1,0 +1,14 @@
+<div data-container>
+  <h2>Loader</h2>
+  <p>Just add the ec-loader tag and pass a promise + your loader to LoaderService.wait.</p>
+  <h3>Options</h3>
+  <ec-form [item]="options" #optionsForm (submit)="emit(optionsForm.group.value)"
+           [silent]="true" [submitButton]="false"></ec-form>
+  <a class="btn" (click)="optionsForm.submit()">LOAD</a>
+
+  <pre><code>{{optionsForm.group?.value | json}}</code></pre>
+  <ec-loader [ngClass]="optionsForm.getValue('hostClass')" #loader>
+    <h1>{{optionsForm.getValue('time')}}ms loader</h1>
+    <img src="https://unsplash.it/300">
+  </ec-loader>
+</div>

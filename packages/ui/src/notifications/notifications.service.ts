@@ -1,6 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 import { Notification } from './notification';
-import { Subject, Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 
 declare const window;
 
@@ -21,7 +22,7 @@ export class NotificationsService {
   /** Observable that is nexted when a new notification comes in. */
   public emitter$: Observable<Notification> = this.emitter.asObservable();
   /** The default view time for a notification. */
-  public defaultTime: number = 5000;
+  public defaultTime = 5000;
 
   /** The constructors injects the useDesktopNotifications flag from the module.
    * If true, all notifications will be shown as desktop notifications instead. */

@@ -22,6 +22,13 @@
   <ec-datetime *ngSwitchCase="'date'" [formControl]="control"
                [placeholder]="field.getPlaceholder()"></ec-datetime>
 
+  <select *ngSwitchCase="'select'" (change)="control.patchValue($event.target.value)">
+    <option *ngFor="let option of field.values" [selected]="control.value===option"
+            [value]="option">
+      {{option}}
+    </option>
+  </select>
+
   <!--<ec-select *ngSwitchCase="'array'" [formControl]="control"></ec-select>-->
   <div *ngSwitchDefault>
     <ec-output [field]="field" [item]="item"></ec-output>
