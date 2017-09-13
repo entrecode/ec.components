@@ -1,9 +1,9 @@
 # Select
 
-Work in progress. You can pass an array of [items] that will be used for a selection instance.
+Work in progress. You can pass an array of items that will be used for a selection instance.
 
 ```html
-<ec-select [items]="products" [config]="productConfig" #ecSelect></ec-select>
+<ec-select [list]="products" [(ngModel)]="values"></ec-select>
 
-{{ecSelect.selection.getValue() | json}}
+{{values | json}}
 ```

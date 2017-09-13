@@ -33,3 +33,13 @@ Create a src folder and add your super cool typescript code.
 ## 7. add package to lerna.json
 
 - This integrates the package to the bootstrap/publish cycle of lerna.
+
+## 8. Manually Publish package the first time
+
+Before being able to publish with lerna, you have to publish it manually the first time:
+
+```sh
+npm publish --access=public
+```
+
+see https://docs.npmjs.com/cli/access#details.

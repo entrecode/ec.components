@@ -79,6 +79,9 @@
                                 <li class="link for-chapter">
                                     <a href="../additional-documentation/project-setup-tutorial/custom-fields.html" >Custom Fields</a>
                                 </li>
+                                <li class="link for-chapter">
+                                    <a href="../additional-documentation/project-setup-tutorial/adding-new-packages.html" >Adding New Packages</a>
+                                </li>
                                 <li class="link ">
                                     <a href="../additional-documentation/core-classes.html" >Core Classes</a>
                                 </li>
@@ -174,6 +177,9 @@
                                     <a href="../modules/LoaderModule.html" >LoaderModule</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../modules/MediumModule.html" >MediumModule</a>
+                                </li>
+                                <li class="link">
                                     <a href="../modules/NotificationsModule.html" >NotificationsModule</a>
                                 </li>
                                 <li class="link">
@@ -181,6 +187,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../modules/SdkModule.html" >SdkModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/SelectModule.html" >SelectModule</a>
                                 </li>
                                 <li class="link">
                                     <a href="../modules/UiModule.html" >UiModule</a>
@@ -210,9 +219,6 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/AdminSignupComponent.html" >AdminSignupComponent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../components/AssetInputComponent.html" >AssetInputComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/AssetListComponent.html" >AssetListComponent</a>
@@ -357,6 +363,9 @@
                         <ul class="links collapse "
                                 id="xs-directives-links"
                             >
+                                <li class="link">
+                                    <a href="../directives/MediumEditorDirective.html" >MediumEditorDirective</a>
+                                </li>
                                 <li class="link">
                                     <a href="../directives/SlotHostDirective.html" >SlotHostDirective</a>
                                 </li>
@@ -655,6 +664,9 @@
                                        <li class="link for-chapter">
                                            <a href="../additional-documentation/project-setup-tutorial/custom-fields.html" >Custom Fields</a>
                                        </li>
+                                       <li class="link for-chapter">
+                                           <a href="../additional-documentation/project-setup-tutorial/adding-new-packages.html" >Adding New Packages</a>
+                                       </li>
                                        <li class="link ">
                                            <a href="../additional-documentation/core-classes.html" >Core Classes</a>
                                        </li>
@@ -750,6 +762,9 @@
                                            <a href="../modules/LoaderModule.html" >LoaderModule</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../modules/MediumModule.html" >MediumModule</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../modules/NotificationsModule.html" >NotificationsModule</a>
                                        </li>
                                        <li class="link">
@@ -757,6 +772,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../modules/SdkModule.html" >SdkModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/SelectModule.html" >SelectModule</a>
                                        </li>
                                        <li class="link">
                                            <a href="../modules/UiModule.html" >UiModule</a>
@@ -786,9 +804,6 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/AdminSignupComponent.html" >AdminSignupComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../components/AssetInputComponent.html" >AssetInputComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/AssetListComponent.html" >AssetListComponent</a>
@@ -933,6 +948,9 @@
                                <ul class="links collapse "
                                        id="directives-links"
                    >
+                                       <li class="link">
+                                           <a href="../directives/MediumEditorDirective.html" >MediumEditorDirective</a>
+                                       </li>
                                        <li class="link">
                                            <a href="../directives/SlotHostDirective.html" >SlotHostDirective</a>
                                        </li>
@@ -1454,7 +1472,6 @@ export class DefaultInputComponent {
 
     <div class="tab-pane fade" id="templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div [ngSwitch]&#x3D;&quot;field.view&quot; *ngIf&#x3D;&quot;group&quot; [formGroup]&#x3D;&quot;group&quot;&gt;
-  &lt;ec-input-errors [control]&#x3D;&quot;group.get(field.property)&quot;&gt;&lt;/ec-input-errors&gt;
   &lt;input *ngSwitchCase&#x3D;&quot;&#x27;string&#x27;&quot; type&#x3D;&quot;text&quot; [formControl]&#x3D;&quot;control&quot;
          [placeholder]&#x3D;&quot;field.getPlaceholder()&quot; class&#x3D;&quot;input&quot;&gt;
 
@@ -1478,11 +1495,18 @@ export class DefaultInputComponent {
   &lt;ec-datetime *ngSwitchCase&#x3D;&quot;&#x27;date&#x27;&quot; [formControl]&#x3D;&quot;control&quot;
                [placeholder]&#x3D;&quot;field.getPlaceholder()&quot;&gt;&lt;/ec-datetime&gt;
 
-  &lt;!--&lt;ec-select *ngSwitchCase&#x3D;&quot;&#x27;array&#x27;&quot; [formControl]&#x3D;&quot;control&quot;&gt;&lt;/ec-select&gt;--&gt;
+  &lt;select *ngSwitchCase&#x3D;&quot;&#x27;select&#x27;&quot; (change)&#x3D;&quot;control.patchValue($event.target.value)&quot;&gt;
+    &lt;option *ngFor&#x3D;&quot;let option of field.values&quot; [selected]&#x3D;&quot;control.value&#x3D;&#x3D;&#x3D;option&quot;
+            [value]&#x3D;&quot;option&quot;&gt;
+      {{option}}
+    &lt;/option&gt;
+  &lt;/select&gt;
+
   &lt;div *ngSwitchDefault&gt;
     &lt;ec-output [field]&#x3D;&quot;field&quot; [item]&#x3D;&quot;item&quot;&gt;&lt;/ec-output&gt;
     &lt;!--&lt;marquee&gt;🚂🚃🚃🚃 {{field.type}}/{{field.view}} input coming soon&lt;/marquee&gt;--&gt;
   &lt;/div&gt;
+  &lt;ec-input-errors [control]&#x3D;&quot;group.get(field.property)&quot;&gt;&lt;/ec-input-errors&gt;
 &lt;/div&gt;</code></pre>
     </div>
 
@@ -1509,9 +1533,9 @@ export class DefaultInputComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div [ngSwitch]="field.view" *ngIf="group" [formGroup]="group">  <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>  <input *ngSwitchCase="\'string\'" type="text" [formControl]="control"         [placeholder]="field.getPlaceholder()" class="input">  <textarea *ngSwitchCase="\'textarea\'" type="text" [formControl]="control"            [placeholder]="field.getPlaceholder()" class="input"></textarea>  <input *ngSwitchCase="\'number\'" type="number" [formControl]="control"         [placeholder]="field.getPlaceholder()" class="input">  <input *ngSwitchCase="\'color\'" type="color" [formControl]="control">  <input *ngSwitchCase="\'boolean\'" type="checkbox" [formControl]="control"         [placeholder]="field.getPlaceholder()">  <input *ngSwitchCase="\'email\'" type="email" [formControl]="control"         [placeholder]="field.getPlaceholder()" class="input">  <input *ngSwitchCase="\'url\'" type="url" [formControl]="control"         [placeholder]="field.getPlaceholder()" class="input">  <ec-datetime *ngSwitchCase="\'date\'" [formControl]="control"               [placeholder]="field.getPlaceholder()"></ec-datetime>  <!--<ec-select *ngSwitchCase="\'array\'" [formControl]="control"></ec-select>-->  <div *ngSwitchDefault>    <ec-output [field]="field" [item]="item"></ec-output>    <!--<marquee>🚂🚃🚃🚃 {{field.type}}/{{field.view}} input coming soon</marquee>-->  </div></div></div>'
-    var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'AssetInputComponent', 'selector': ''},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
-    var DIRECTIVES = [{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
+        var COMPONENT_TEMPLATE = '<div><div [ngSwitch]="field.view" *ngIf="group" [formGroup]="group">  <input *ngSwitchCase="\'string\'" type="text" [formControl]="control"         [placeholder]="field.getPlaceholder()" class="input">  <textarea *ngSwitchCase="\'textarea\'" type="text" [formControl]="control"            [placeholder]="field.getPlaceholder()" class="input"></textarea>  <input *ngSwitchCase="\'number\'" type="number" [formControl]="control"         [placeholder]="field.getPlaceholder()" class="input">  <input *ngSwitchCase="\'color\'" type="color" [formControl]="control">  <input *ngSwitchCase="\'boolean\'" type="checkbox" [formControl]="control"         [placeholder]="field.getPlaceholder()">  <input *ngSwitchCase="\'email\'" type="email" [formControl]="control"         [placeholder]="field.getPlaceholder()" class="input">  <input *ngSwitchCase="\'url\'" type="url" [formControl]="control"         [placeholder]="field.getPlaceholder()" class="input">  <ec-datetime *ngSwitchCase="\'date\'" [formControl]="control"               [placeholder]="field.getPlaceholder()"></ec-datetime>  <select *ngSwitchCase="\'select\'" (change)="control.patchValue($event.target.value)">    <option *ngFor="let option of field.values" [selected]="control.value===option"            [value]="option">      {{option}}    </option>  </select>  <div *ngSwitchDefault>    <ec-output [field]="field" [item]="item"></ec-output>    <!--<marquee>🚂🚃🚃🚃 {{field.type}}/{{field.view}} input coming soon</marquee>-->  </div>  <ec-input-errors [control]="group.get(field.property)"></ec-input-errors></div></div>'
+    var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
+    var DIRECTIVES = [{'name': 'MediumEditorDirective', 'selector': '[ecMediumEditor]'},{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'DefaultInputComponent'};
 </script>
 <script src="../js/tree.js"></script>
