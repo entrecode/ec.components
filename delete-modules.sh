@@ -7,3 +7,5 @@ cd ../data
 rm -rf node_modules
 cd ../style
 rm -rf node_modules
+cd ../medium-editor
+rm -rf node_modules

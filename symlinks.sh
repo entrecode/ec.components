@@ -11,3 +11,6 @@ ln -s ../../packages/data
 
 rm -rf style
 ln -s ../../packages/style
+
+rm -rf medium-editor
+ln -s ../../packages/medium-editor

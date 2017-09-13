@@ -31,6 +31,8 @@ import { AssetSelectDemoComponent } from './asset-select/asset-select-demo.compo
 import { PopTriggerComponent } from './pop/pop-trigger.component';
 import { NotificationsDemoComponent } from './notifications-demo/notifications-demo.component';
 import { LoaderDemoComponent } from './loader-demo/loader-demo.component';
+import { MediumModule } from '../../packages/medium-editor/src/medium.module';
+import { MediumEditorDemoComponent } from './medium-editor-demo/medium-editor-demo.component';
 
 demoRoutes.unshift(
   {
@@ -67,6 +69,7 @@ demoRoutes.unshift(
     ModelListDemoComponent,
     NotificationsDemoComponent,
     LoaderDemoComponent,
+    MediumEditorDemoComponent,
   ],
   entryComponents: [
     CoolStringComponent,
@@ -77,7 +80,8 @@ demoRoutes.unshift(
     UiModule,
     DataModule,
     VcModule,
-    RouterModule.forRoot(demoRoutes)
+    RouterModule.forRoot(demoRoutes),
+    MediumModule,
   ],
   providers: [
     {

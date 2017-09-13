@@ -23,6 +23,7 @@ import { CrudComponent } from '../../packages/data/src/crud/crud.component';
 import { AssetSelectDemoComponent } from './asset-select/asset-select-demo.component';
 import { NotificationsDemoComponent } from './notifications-demo/notifications-demo.component';
 import { LoaderDemoComponent } from './loader-demo/loader-demo.component';
+import { MediumEditorDemoComponent } from './medium-editor-demo/medium-editor-demo.component';
 
 export const demoRoutes: Routes = [
   /*  {
@@ -157,6 +158,15 @@ export const demoRoutes: Routes = [
         path: 'auth',
         component: AuthDemoComponent
       },
+    ]
+  },
+  {
+    path: 'misc',
+    children: [
+      {
+        path: 'medium-editor',
+        component: MediumEditorDemoComponent
+      }
     ]
   },
   {

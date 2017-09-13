@@ -1,0 +1,35 @@
+# Adding a new package
+
+To add a new package to @ec.components, follow this guide!
+
+## 1. Create folder in packages
+
+Create a new folder, e.g. ```mkdir packages/medium-editor```
+
+## 2. init npm
+
+```cd packages/medium-editor && npm init```
+
+- Make sure to name the package scoped: ```@ec.components/*```
+
+## 3. Create src folder
+
+Create a src folder and add your super cool typescript code.
+- Make sure your package.json main file is correct.
+- Make sure you have all dependencies up to date.
+
+## 4. add package to symlinks.sh
+
+- Add your package name to the symlinks script.
+
+## 5. add package to delete-modules.sh script
+
+- Add your package name to the delete-modules script.
+
+## 6. add package to main package.json dependencies
+
+- Keep version up to date
+
+## 7. add package to lerna.json
+
+- This integrates the package to the bootstrap/publish cycle of lerna.
