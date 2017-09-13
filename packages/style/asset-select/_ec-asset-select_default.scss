@@ -40,9 +40,11 @@
     right: rem(8);
     top: rem(8);
     z-index: 10;
+    display: none;
+    opacity: 0;
 
     a {
-      @extend .btn, .btn.small, .btn.minor;
+      @extend .btn, .btn.small, .btn.mono !optional;
       margin: 0;
     }
 
@@ -55,6 +57,11 @@
 
     img {
       mix-blend-mode: multiply;
+    }
+
+    .ec-asset-card-controls {
+      display: inherit;
+      opacity: 1;
     }
   }
 }

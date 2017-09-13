@@ -9,6 +9,18 @@
     color: getColor(text, light);
     @include flex-grow(1);
     font-size: 1em;
+    @include order(2);
+  }
+
+  .ec-entry-select-selected {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    @include flexbox;
+    @include flex-wrap(wrap);
+    @include align-items(center);
+    @include flex-grow(0);
+    @include order(1);
   }
 }
 
