@@ -13,7 +13,7 @@ import { ListConfig } from '@ec.components/core/src/list/list-config.interface';
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent */
 @Component({
   selector: 'ec-entry-list',
-  templateUrl: '../../../ui/src/list/list.component.html', // TODO avoid relative paths => wont build
+  templateUrl: '../../../ui/src/list/list.component.html', // TODO avoid relative paths
   styleUrls: ['./entry-list.component.scss']
 })
 export class EntryListComponent extends ResourceListComponent<EntryResource> {
@@ -58,7 +58,7 @@ export class EntryListComponent extends ResourceListComponent<EntryResource> {
     .subscribe((update) => {
       this.list.load();
     });
-    return this.modelConfig.generateConfig(this.model)
+    return this.modelConfig.generateConfig(this.model, this.config)
     .then((config: ListConfig<EntryResource>) => {
       this.config = Object.assign(this.config || {}, config);
       this.initFilter();

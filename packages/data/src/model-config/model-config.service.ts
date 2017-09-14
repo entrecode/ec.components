@@ -74,14 +74,16 @@ export class ModelConfigService extends Config {
    * If no local fieldConfig is given, the global model's field config is used.
    * If no global field config is found for that model, it will be generated from the model schema.
    * */
-  generateFieldConfig(model: string): Promise<FieldConfig<FieldConfigProperty>> {
+  generateFieldConfig(model: string, fields?): Promise<FieldConfig<FieldConfigProperty>> {
     let fieldConfig;
     return Promise.resolve().then(() => {
+      if (fields) {
+        return fields;
+      }
       // use global config, if given
       if (this.get(model) && this.get(model).fields) {
-        return Promise.resolve(this.get(model).fields);
+        return this.get(model).fields;
       }
-      return;
     }).then((config) => {
       fieldConfig = config;
       return this.sdk.getSchema(model);
@@ -111,14 +113,14 @@ export class ModelConfigService extends Config {
   }
 
   /** Returns the given model's config and generates a field config from the schema if it is not configured. */
-  generateConfig(model: string): Promise<ListConfig<EntryResource>> {
-    const config = Object.assign({}, this.get(model) || {}); // clone
+  generateConfig(model: string, config?): Promise<ListConfig<EntryResource>> {
+    config = Object.assign({}, config || this.get(model) || {}); // clone
     Object.assign(config, {
       identifier: 'id',
       label: '_entryTitle',
       onSave: (item: Item<EntryResource>, value) => this.crud.save(model, item.getBody(), value)
     });
-    return this.generateFieldConfig(model).then((fieldConfig) => {
+    return this.generateFieldConfig(model, config.fields).then((fieldConfig) => {
       Object.assign(config, { fields: fieldConfig });
       return Promise.resolve(config);
     });
