@@ -3,7 +3,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AdminSignupComponent } from './admin-signup.component';
 import { UiModule } from '@ec.components/ui/src/ui.module';
-import { DataModule } from '../../data.module';
+import { DataModule } from '../../../data.module';
 
 describe('AdminSignupComponent', () => {
   let component: AdminSignupComponent;

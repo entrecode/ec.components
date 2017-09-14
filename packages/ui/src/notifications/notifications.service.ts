@@ -58,6 +58,12 @@ export class NotificationsService {
     }
     this.getPermission().then(() => {
       const message = new window.Notification(notification.title, { body: notification.message });
+      if (notification.sticky) {
+        if (notification.time) {
+          console.warn('notification.time is ignored because it was set sticky');
+        }
+        return;
+      }
       setTimeout(() => message.close(), notification.time || this.defaultTime)
     });
   }

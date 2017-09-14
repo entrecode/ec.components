@@ -1,8 +1,8 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { emailAvailable } from '../email-available.validator';
+import { emailAvailable } from '../../email-available.validator';
 import { Observable } from 'rxjs';
-import { AdminService } from '../../sdk/admin.service';
+import { AdminService } from '../../../sdk/admin.service';
 
 @Component({
   selector: 'ec-auth-admin-signup',

@@ -302,6 +302,9 @@
                                     <a href="../components/LoginComponent.html" >LoginComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/LoginFormComponent.html" >LoginFormComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/MenuComponent.html" >MenuComponent</a>
                                 </li>
                                 <li class="link">
@@ -321,6 +324,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/PaginationComponent.html" >PaginationComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/PasswordResetComponent.html" >PasswordResetComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/PopComponent.html" >PopComponent</a>
@@ -533,6 +539,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/Upload.html" >Upload</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/WithLoader.html" >WithLoader</a>
                                 </li>
                         </ul>
                     </li>
@@ -887,6 +896,9 @@
                                            <a href="../components/LoginComponent.html" >LoginComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/LoginFormComponent.html" >LoginFormComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/MenuComponent.html" >MenuComponent</a>
                                        </li>
                                        <li class="link">
@@ -906,6 +918,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/PaginationComponent.html" >PaginationComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/PasswordResetComponent.html" >PasswordResetComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/PopComponent.html" >PopComponent</a>
@@ -1118,6 +1133,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/Upload.html" >Upload</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/WithLoader.html" >WithLoader</a>
                                        </li>
                                </ul>
                            </li>
@@ -1341,7 +1359,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">packages/ui/src/form/form.service.ts:29</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">packages/ui/src/form/form.service.ts:31</a></div>
                                         </td>
                                     </tr>
             
@@ -1404,7 +1422,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">packages/ui/src/form/form.service.ts:41</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">packages/ui/src/form/form.service.ts:43</a></div>
                                         </td>
                                     </tr>
             
@@ -1465,7 +1483,7 @@ import {
   ValidationErrors,
   ValidatorFn,
   Validators
-} from &quot;@angular/forms&quot;;
+} from &#x27;@angular/forms&#x27;;
 import { Field } from &#x27;@ec.components/core/src/field/field&#x27;;
 
 /** This service is the interface between Angular Forms and ec.components core classes. */
@@ -1479,6 +1497,8 @@ export class FormService {
     .forEach((field) &#x3D;&gt; {
       const validators &#x3D; this.getValidators(field);
       control[field.property] &#x3D; new FormControl(form.getValue(field.property), validators)
+      // TODO use { updateOn: blur } when updating to angular 5.0.0
+      // see https://github.com/angular/angular/commit/333a708bb632d4258ecb5fd4a0e86229fe9d26e4
     });
     return new FormGroup(control);
   }

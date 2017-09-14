@@ -24,6 +24,12 @@ export class NotificationsComponent {
     this.notificationService.emitter$.subscribe((notification: Notification) => {
       if (!notification.host || notification.host === this) {
         this.notifications.add(notification);
+        if (notification.sticky) {
+          if (notification.time) {
+            console.warn('notification.time is ignored because it was set sticky');
+          }
+          return;
+        }
         setTimeout(() => this.notifications.remove(notification), notification.time || this.time)
       }
     });

@@ -15,7 +15,7 @@ export interface Update {
   /** The list where it happened. */
   list?: EntryList,
   /** The type of update. (create/read/update/delete) */
-  type?: string
+  type?: 'post' | 'get' | 'put' | 'delete'
 }
 
 /** The CRUD service is meant to be used when modifying entries.
@@ -65,7 +65,7 @@ export class CrudService {
     Object.keys(value).forEach((key) => oldValues[key] = entry[key]);
     Object.assign(entry, this.clean(value)); // assign new form values
     return entry.save().then((_entry) => {
-      this.changes.next({ model, entry: _entry, type: 'update' });
+      this.changes.next({ model, entry: _entry, type: 'put' });
       return _entry;
     })
     .catch((err) => {
@@ -93,7 +93,7 @@ export class CrudService {
     .then((entry) => {
       // console.log('created entry', entry);
       // TODO make sure leveled entries are returned leveled
-      this.changes.next({ model, entry, type: 'create' });
+      this.changes.next({ model, entry, type: 'post' });
       return entry;
     }).catch((err) => {
       return Promise.reject(err);

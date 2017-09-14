@@ -6,7 +6,7 @@ import { TabsComponent } from './tabs/tabs.component';
 import { TabComponent } from './tab/tab.component';
 import { MockupComponent } from './mockup/mockup.component';
 import { MenuComponent } from './menu/menu.component';
-import { LoginComponent } from './login/login.component';
+import { LoginFormComponent } from './login-form/login-form.component';
 import { IoModule } from '../io/io.module';
 
 @NgModule({
@@ -16,7 +16,7 @@ import { IoModule } from '../io/io.module';
     TabComponent,
     MockupComponent,
     MenuComponent,
-    LoginComponent,
+    LoginFormComponent,
   ],
   imports: [
     FormsModule,
@@ -33,7 +33,7 @@ import { IoModule } from '../io/io.module';
     TabComponent,
     MockupComponent,
     MenuComponent,
-    LoginComponent,
+    LoginFormComponent,
     RouterModule,
   ],
   providers: [],

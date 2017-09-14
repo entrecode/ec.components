@@ -1,5 +1,10 @@
 # Changelog
 
+<a name="0.8.0"></a>
+## 0.8.0
+BREAKING CHANGES:
+- removed PublicService and AdminService, you should use sdk methods instead.
+
 <a name="0.7.0"></a>
 ## 0.7.0
 BREAKING CHANGES:

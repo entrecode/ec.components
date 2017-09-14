@@ -54,7 +54,7 @@ export class EntryListComponent extends ResourceListComponent<EntryResource> {
     if (!this.model || !this.config) {
       return;
     }
-    this.crud.change({ model: this.model }) // , type: 'create'
+    this.crud.change({ model: this.model }) // , type: 'post'
     .subscribe((update) => {
       this.list.load();
     });

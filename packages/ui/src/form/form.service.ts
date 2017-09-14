@@ -7,7 +7,7 @@ import {
   ValidationErrors,
   ValidatorFn,
   Validators
-} from "@angular/forms";
+} from '@angular/forms';
 import { Field } from '@ec.components/core/src/field/field';
 
 /** This service is the interface between Angular Forms and ec.components core classes. */
@@ -21,6 +21,8 @@ export class FormService {
     .forEach((field) => {
       const validators = this.getValidators(field);
       control[field.property] = new FormControl(form.getValue(field.property), validators)
+      // TODO use { updateOn: blur } when updating to angular 5.0.0
+      // see https://github.com/angular/angular/commit/333a708bb632d4258ecb5fd4a0e86229fe9d26e4
     });
     return new FormGroup(control);
   }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie';
-import { Observable } from 'rxjs';
-import { backendErrorCodes } from './errors';
+import { Observable } from 'rxjs/Observable';
+import { backendErrorCodes } from '../errors';
 
 @Injectable()
 export class AuthorizationService {
@@ -19,7 +19,7 @@ export class AuthorizationService {
   clearToken() {
     this.cookie.remove('ec-token');
     delete this.token;
-    //TODO: logout in backend to invalidate token
+    // TODO: logout in backend to invalidate token
   }
 
   getToken() {

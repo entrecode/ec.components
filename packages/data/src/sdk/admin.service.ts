@@ -2,13 +2,12 @@ import { Injectable } from '@angular/core';
 import { SdkService } from './sdk.service';
 import AccountResource from 'ec.sdk/src/resources/accounts/AccountResource';
 
-//TODO move to auth?
-
 /** This service handles the auth flow for admin accounts. */
 @Injectable()
 export class AdminService {
   /** Injects the sdk  */
   constructor(private sdk: SdkService) {
+    console.warn('AdminService is deprecated. Use SdkService instead.');
   }
 
   /** Logs in with the given credentials */

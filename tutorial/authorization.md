@@ -28,6 +28,6 @@ import { SdkService } from '@ec.components/data';
 Use this in your login.component.html template:
 
 ```html
-<ec-login (success)="login($event)"></ec-login>
+<ec-login-form (success)="login($event)"></ec-login-form>
 ```
 

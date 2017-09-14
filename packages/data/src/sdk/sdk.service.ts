@@ -59,16 +59,13 @@ export class SdkService {
     }
     this.session = new Session(<env>environment.environment);
     this.accounts = new Accounts(<env>environment.environment);
-    this.api = new PublicAPI(environment.datamanagerID, <env>environment.environment, true); //true
+    this.api = new PublicAPI(environment.datamanagerID, <env>environment.environment, true);
     if (environment.clientID) {
       this.api.setClientID(environment.clientID);
       this.session.setClientID(environment.clientID);
     }
-    this.ready = this.accounts.me().then((account) => {
-      return account || this.api.me();
-    }).catch((err) => {
-      return this.api.me();
-    }).then((user) => {
+    this.ready = this.getAccount()
+    .then((user) => {
       this.user = user;
       return this.user;
     });
@@ -83,41 +80,86 @@ export class SdkService {
   }
 
   /** Generic login that works with both public and admin API. */
-  login(credentials: { email: string, password: string, invite: string }) {
+  login({ email, password }, api?) {
     if (this.noClientID()) {
       return Promise.reject(this.noClientID());
     }
-    return this.api.login(credentials.email, credentials.password)
-    .catch(() => this.session.login(credentials.email, credentials.password))
-    .then((token) => {
+    return Promise.resolve(api || this.getApi(email))
+    .then((resolvedAPI) => {
+      const _api = resolvedAPI || this.session;
+      return !_api ? Promise.reject('api_not_found') : _api.login(email, password);
+    }).then(() => {
+      return this.init();
+    });
+  }
+
+  /** Generic Signup, works for accounts API and PublicAPI */
+  signup({ email, password, invite }, api?) {
+    if (this.noClientID()) {
+      return Promise.reject(this.noClientID());
+    }
+    return api ? api.signup() : this.api.signup(email, password, invite)
+    .catch(() => this.accounts.signup(email, password, invite))
+    .then((res) => {
       return this.init();
     })
   }
 
-  /** Generic logout that works with both public and admin API. */
-  logout() {
+  /** Returns the current account. Works for all apis */
+  getAccount(api = this.api) {
+    return api.me().then((account) => {
+      return account || this.accounts.me();
+    }).catch((err) => {
+      return this.api.me();
+    });
+  }
+
+  checkPermission(permission: string, api?) {
+    return this.ready.then((user) => {
+      const _api = api || user instanceof AccountResource ? user : this.api;
+      return _api.checkPermission(permission); // TODO
+    })
+  }
+
+  /** Generic password reset that works with both public and admin API. */
+  resetPassword(email, api?) {
     if (this.noClientID()) {
       return Promise.reject(this.noClientID());
     }
-    return this.api.logout().catch(() => this.session.logout())
+    return Promise.resolve(api || this.getApi(email))
+    .then((resolvedAPI) => {
+      const _api = resolvedAPI || this.accounts;
+      return !_api ? Promise.reject('api_not_found') : api.resetPassword(email);
+    });
+  }
+
+  /** Generic logout that works with both public and admin API. */
+  logout(api?) {
+    if (this.noClientID()) {
+      return Promise.reject(this.noClientID());
+    }
+    return api ? api.logout() : this.api.logout().catch(() => this.session.logout())
     .then(() => {
       return this.init();
     });
   }
 
-  /** Returns the current account. Returns ec user or public user if any found. */
-  getAccount(): Promise<AccountResource> {
-    return this.accounts.me().then((account) => {
-      return account || this.api.me();
-    }).catch((err) => {
-      return this.api.me();
-    })
+  getApi(email: string) {
+    if (!this.api && !this.accounts) {
+      return Promise.reject('no_api_found');
+    }
+    return this.api.emailAvailable(email)
+    .then((available) => {
+      if (!available) {
+        return this.api;
+      }
+    });
   }
 
   noDatamanagerID() {
     if (!this.environment.datamanagerID) {
       return `
-No datamangerID is set in your environment! You can only use the SdkService if you provide an environment like this in your module's provide section: 
+No datamangerID is set in your environment! You can only use the SdkService if you provide an environment like this in your module's provide section:
 
 providers: [
   {
@@ -136,7 +178,7 @@ providers: [
     if (!this.environment.clientID) {
       return `
 No clientID set in environment! To enable all auth related functionalities, you can create a client in your datamanager settings and provide it with your environment:
-  
+
   providers: [
     {
       provide: 'environment',
