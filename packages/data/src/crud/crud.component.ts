@@ -66,7 +66,7 @@ export class CrudComponent<T> implements OnInit {
   getAllowedMethods(): Promise<string[]> {
     return ['get', 'post', 'put', 'delete']
     .map((method) => (results) =>
-      this.sdk.checkPermission(`${this.model}:${method}`)
+      this.sdk.checkPublicPermission(`${this.model}:${method}`)
       .then(res => {
         if (res) {
           results.push(method);
@@ -83,14 +83,11 @@ export class CrudComponent<T> implements OnInit {
 
   ngOnInit() {
     this.config.methods = this.config.methods || ['post', 'put', 'delete', 'get'];
-    this.methods = this.config.methods;
-    // TODO wait for ec user permission backend bugfix
-    /*this.getAllowedMethods().then((methods) => {
+    this.getAllowedMethods().then((methods) => {
       this.methods = this.config.methods.filter((method) => {
         return methods.indexOf(method) !== -1;
       });
-      console.log('methods', this.methods);
-    });*/
+    });
   }
 
   /** Logs the current form (Developer help). */

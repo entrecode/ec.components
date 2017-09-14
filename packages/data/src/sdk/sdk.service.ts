@@ -114,10 +114,10 @@ export class SdkService {
     });
   }
 
-  checkPermission(permission: string, api?) {
+  /** checks given public permission for given api, defaults to this.api. Also works as ec user */
+  checkPublicPermission(permission: string, api = this.api) {
     return this.ready.then((user) => {
-      const _api = api || user instanceof AccountResource ? user : this.api;
-      return _api.checkPermission(permission); // TODO
+      return api.checkPermission(permission);
     })
   }
 
@@ -153,6 +153,8 @@ export class SdkService {
       if (!available) {
         return this.api;
       }
+    }).catch(() => {
+      return;
     });
   }
 
