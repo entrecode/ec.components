@@ -1666,7 +1666,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="140" class="link-to-prism">packages/data/src/crud/crud.component.ts:140</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="154" class="link-to-prism">packages/data/src/crud/crud.component.ts:154</a></div>
                                 </td>
                             </tr>
     
@@ -1701,7 +1701,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">packages/data/src/crud/crud.component.ts:88</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">packages/data/src/crud/crud.component.ts:102</a></div>
                                 </td>
                             </tr>
     
@@ -1765,7 +1765,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">packages/data/src/crud/crud.component.ts:106</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="120" class="link-to-prism">packages/data/src/crud/crud.component.ts:120</a></div>
                                 </td>
                             </tr>
     
@@ -1828,7 +1828,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">packages/data/src/crud/crud.component.ts:83</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">packages/data/src/crud/crud.component.ts:97</a></div>
                                 </td>
                             </tr>
     
@@ -1891,7 +1891,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">packages/data/src/crud/crud.component.ts:93</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">packages/data/src/crud/crud.component.ts:107</a></div>
                                 </td>
                             </tr>
     
@@ -1955,7 +1955,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">packages/data/src/crud/crud.component.ts:99</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="113" class="link-to-prism">packages/data/src/crud/crud.component.ts:113</a></div>
                                 </td>
                             </tr>
     
@@ -2017,7 +2017,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">packages/data/src/crud/crud.component.ts:73</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">packages/data/src/crud/crud.component.ts:84</a></div>
                                 </td>
                             </tr>
     
@@ -2050,7 +2050,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="128" class="link-to-prism">packages/data/src/crud/crud.component.ts:128</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="142" class="link-to-prism">packages/data/src/crud/crud.component.ts:142</a></div>
                                 </td>
                             </tr>
     
@@ -2441,19 +2441,33 @@ export class CrudComponent&lt;T&gt; implements OnInit {
   }
 
   getAllowedMethods(): Promise&lt;string[]&gt; {
-    return Promise.all([&#x27;post&#x27;, &#x27;put&#x27;, &#x27;delete&#x27;, &#x27;get&#x27;].map((method) &#x3D;&gt; {
-      return this.sdk.checkPermission(&#x60;${this.model}:${method}&#x60;)
-      .then((res) &#x3D;&gt; ( res ? method : false ));
-    })).then((methods) &#x3D;&gt; &lt;string[]&gt;methods.filter((method) &#x3D;&gt; !!method));
+    return [&#x27;get&#x27;, &#x27;post&#x27;, &#x27;put&#x27;, &#x27;delete&#x27;]
+    .map((method) &#x3D;&gt; (results) &#x3D;&gt;
+      this.sdk.checkPermission(&#x60;${this.model}:${method}&#x60;)
+      .then(res &#x3D;&gt; {
+        if (res) {
+          results.push(method);
+        }
+        return results;
+      })
+    )
+    .reduce((a, b) &#x3D;&gt; a.then(r &#x3D;&gt; b(r)), Promise.resolve([]))
+    .then(methods &#x3D;&gt; {
+      methods.filter(x &#x3D;&gt; !!x);
+      return methods;
+    });
   }
 
   ngOnInit() {
     this.config.methods &#x3D; this.config.methods || [&#x27;post&#x27;, &#x27;put&#x27;, &#x27;delete&#x27;, &#x27;get&#x27;];
-    this.getAllowedMethods().then((methods) &#x3D;&gt; {
+    this.methods &#x3D; this.config.methods;
+    // TODO wait for ec user permission backend bugfix
+    /*this.getAllowedMethods().then((methods) &#x3D;&gt; {
       this.methods &#x3D; this.config.methods.filter((method) &#x3D;&gt; {
         return methods.indexOf(method) !&#x3D;&#x3D; -1;
       });
-    });
+      console.log(&#x27;methods&#x27;, this.methods);
+    });*/
   }
 
   /** Logs the current form (Developer help). */
@@ -2462,8 +2476,8 @@ export class CrudComponent&lt;T&gt; implements OnInit {
   }
 
   /** Returns true if the given method is part of the methods array (or if there is no methods array) */
-  public hasMethod(method: string) {
-    return !this.config.methods || this.config.methods.indexOf(method) !&#x3D;&#x3D; -1;
+  public hasMethod(method: string) { // !this.methods?
+    return this.methods &amp;&amp; this.methods.indexOf(method) !&#x3D;&#x3D; -1;
   }
 
   /** Determines if the current form can be saved, based on the allowed method (edit/update). */

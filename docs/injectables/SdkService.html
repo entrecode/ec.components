@@ -2418,7 +2418,7 @@ export class SdkService {
 
   checkPermission(permission: string, api?) {
     return this.ready.then((user) &#x3D;&gt; {
-      const _api &#x3D; api || user instanceof AccountResource ? this.session : this.api;
+      const _api &#x3D; api || user instanceof AccountResource ? user : this.api;
       return _api.checkPermission(permission); // TODO
     })
   }
