@@ -18,11 +18,20 @@
       </li>
     </ul>
   </div>
-  <ec-pop [ngClass]="config?.popClass" #assetPop>
-    <ec-loader #assetLoader class="blend"></ec-loader>
-    <ec-upload [placeholder]="field?.getPlaceholder()" [loader]="assetLoader"
-               (success)="selectUpload($event)"></ec-upload>
-    <ec-asset-list [selection]="selection" [config]="config" [loader]="assetLoader"
-                   *ngIf="selection&&assetPop.active" (select)="select($event)"></ec-asset-list>
+  <ec-pop [ngClass]="config?.popClass" class="ec-pop_dialog" #assetPop>
+    <div class="ec-pop-header">
+      <div class="toolbar">
+        <nav class="nav">
+          <button class="btn btn_abort">&times;</button>
+        </nav>
+      </div>
+    </div>
+    <div class="ec-pop-body">
+      <ec-loader #assetLoader class="blend"></ec-loader>
+      <ec-upload [placeholder]="field?.getPlaceholder()" [loader]="assetLoader"
+                 (success)="selectUpload($event)"></ec-upload>
+      <ec-asset-list [selection]="selection" [config]="config" [loader]="assetLoader"
+                     *ngIf="selection&&assetPop.active" (select)="select($event)"></ec-asset-list>
+    </div>
   </ec-pop>
 </div>
