@@ -153,6 +153,8 @@ export class SdkService {
       if (!available) {
         return this.api;
       }
+    }).catch(() => {
+      return;
     });
   }
 
