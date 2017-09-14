@@ -1301,7 +1301,7 @@ setClientID.</p>
                             <td class="col-md-4">
                                 <ul class="index-list">
                                     <li>
-                                         <a href="#checkPermission">checkPermission</a>
+                                         <a href="#checkPublicPermission">checkPublicPermission</a>
                                     </li>
                                     <li>
                                          <a href="#getAccount">getAccount</a>
@@ -1397,25 +1397,27 @@ setClientID.</p>
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <a name="checkPermission"></a>
-                                    <span class="name"><b> checkPermission</b><a href="#checkPermission"><span class="fa fa-link"></span></a></span>
+                                    <a name="checkPublicPermission"></a>
+                                    <span class="name"><b> checkPublicPermission</b><a href="#checkPublicPermission"><span class="fa fa-link"></span></a></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>checkPermission(permission: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, api?: )</code>
+            <code>checkPublicPermission(permission: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, api: )</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="117" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:117</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="118" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:118</a></div>
                                         </td>
                                     </tr>
             
                             <tr>
                                 <td class="col-md-4">
+                                        <div class="io-description"><p>checks given public permission for given api, defaults to this.api. Also works as ec user </p>
+            </div>
             
                                         <div class="io-description">
                                                 <b>Parameters :</b>
@@ -1443,7 +1445,6 @@ setClientID.</p>
                                                               <td>
                                                               </td>
                                                               <td>
-                                                                  true
                                                               </td>
                                                               <td></td>
                                                             </tr>
@@ -2416,10 +2417,10 @@ export class SdkService {
     });
   }
 
-  checkPermission(permission: string, api?) {
+  /** checks given public permission for given api, defaults to this.api. Also works as ec user */
+  checkPublicPermission(permission: string, api &#x3D; this.api) {
     return this.ready.then((user) &#x3D;&gt; {
-      const _api &#x3D; api || user instanceof AccountResource ? user : this.api;
-      return _api.checkPermission(permission); // TODO
+      return api.checkPermission(permission);
     })
   }
 

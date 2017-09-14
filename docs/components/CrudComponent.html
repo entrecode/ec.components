@@ -1666,7 +1666,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="154" class="link-to-prism">packages/data/src/crud/crud.component.ts:154</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="151" class="link-to-prism">packages/data/src/crud/crud.component.ts:151</a></div>
                                 </td>
                             </tr>
     
@@ -1701,7 +1701,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">packages/data/src/crud/crud.component.ts:102</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">packages/data/src/crud/crud.component.ts:99</a></div>
                                 </td>
                             </tr>
     
@@ -1765,7 +1765,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="120" class="link-to-prism">packages/data/src/crud/crud.component.ts:120</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="117" class="link-to-prism">packages/data/src/crud/crud.component.ts:117</a></div>
                                 </td>
                             </tr>
     
@@ -1828,7 +1828,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">packages/data/src/crud/crud.component.ts:97</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">packages/data/src/crud/crud.component.ts:94</a></div>
                                 </td>
                             </tr>
     
@@ -1891,7 +1891,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">packages/data/src/crud/crud.component.ts:107</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">packages/data/src/crud/crud.component.ts:104</a></div>
                                 </td>
                             </tr>
     
@@ -1955,7 +1955,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="113" class="link-to-prism">packages/data/src/crud/crud.component.ts:113</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">packages/data/src/crud/crud.component.ts:110</a></div>
                                 </td>
                             </tr>
     
@@ -2050,7 +2050,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="142" class="link-to-prism">packages/data/src/crud/crud.component.ts:142</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="139" class="link-to-prism">packages/data/src/crud/crud.component.ts:139</a></div>
                                 </td>
                             </tr>
     
@@ -2443,7 +2443,7 @@ export class CrudComponent&lt;T&gt; implements OnInit {
   getAllowedMethods(): Promise&lt;string[]&gt; {
     return [&#x27;get&#x27;, &#x27;post&#x27;, &#x27;put&#x27;, &#x27;delete&#x27;]
     .map((method) &#x3D;&gt; (results) &#x3D;&gt;
-      this.sdk.checkPermission(&#x60;${this.model}:${method}&#x60;)
+      this.sdk.checkPublicPermission(&#x60;${this.model}:${method}&#x60;)
       .then(res &#x3D;&gt; {
         if (res) {
           results.push(method);
@@ -2460,14 +2460,11 @@ export class CrudComponent&lt;T&gt; implements OnInit {
 
   ngOnInit() {
     this.config.methods &#x3D; this.config.methods || [&#x27;post&#x27;, &#x27;put&#x27;, &#x27;delete&#x27;, &#x27;get&#x27;];
-    this.methods &#x3D; this.config.methods;
-    // TODO wait for ec user permission backend bugfix
-    /*this.getAllowedMethods().then((methods) &#x3D;&gt; {
+    this.getAllowedMethods().then((methods) &#x3D;&gt; {
       this.methods &#x3D; this.config.methods.filter((method) &#x3D;&gt; {
         return methods.indexOf(method) !&#x3D;&#x3D; -1;
       });
-      console.log(&#x27;methods&#x27;, this.methods);
-    });*/
+    });
   }
 
   /** Logs the current form (Developer help). */
