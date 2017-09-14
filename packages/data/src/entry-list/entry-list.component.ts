@@ -58,7 +58,7 @@ export class EntryListComponent extends ResourceListComponent<EntryResource> {
     .subscribe((update) => {
       this.list.load();
     });
-    return this.modelConfig.generateConfig(this.model, this.config)
+    return this.modelConfig.generateConfig(this.model,  (this.config || {}).fields)
     .then((config: ListConfig<EntryResource>) => {
       this.config = Object.assign(this.config || {}, config);
       this.initFilter();

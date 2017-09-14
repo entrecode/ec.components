@@ -46,7 +46,7 @@ export class EntryFormComponent extends FormComponent {
       console.error(`ec-entry-form: Tried to edit an entry of model "${this.entry._modelTitle}" while "${this.model}" was expected!"`);
       return;
     }
-    Promise.resolve(config || this.modelConfig.generateConfig(this.model))
+    Promise.resolve(this.modelConfig.generateConfig(this.model, (this.config || {}).fields))
     .then((_config) => {
       if (this.entry) {
         item = new Item(this.entry, _config);

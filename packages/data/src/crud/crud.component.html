@@ -28,7 +28,7 @@
       </div>
     </header>
     <div class="ec-pop-body">
-      <ec-entry-form [model]="model" [submitButton]="false" [loader]="popLoader"
+      <ec-entry-form [model]="model" [submitButton]="false" [loader]="popLoader" [config]="config"
                      (submit)="!this.config?.keepPopOpen&&formPop.hide()" (deleted)="formPop.hide()"
                      #crudForm></ec-entry-form>
     </div>
@@ -39,7 +39,7 @@
             <button (click)="log(crudForm)" *ngIf="config?.develop" class="btn">code</button>
           </li>
           <li class="nav__item">
-            <button (click)="crudForm.deleteEntry()" class="btn btn_delete"
+            <button (click)="crudForm.deleteEntry()" class="btn btn_delete" type="button"
                     *ngIf="hasMethod('delete')&&crudForm.isEditing()">
               löschen
             </button>

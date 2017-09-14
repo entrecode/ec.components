@@ -74,13 +74,19 @@ export class CrudService {
     });
   }
 
+  /** Returns true if the given field key is an immutable system property */
+  isImmutableProperty(key: string) {
+    return key[0] === '_' ||
+      ['id', 'created', 'modified'].indexOf(key) !== -1;
+  }
+
   /** Removes all null or undefined values from the given object */
   clean(value: Object): Object {
     for (const key in value) {
       if (value[key] === '') { // clear empty strings
         value[key] = null;
       }
-      if (key[0] === '_') { // filter system properties
+      if (this.isImmutableProperty(key)) { // filter system properties
         delete value[key];
       }
     }
