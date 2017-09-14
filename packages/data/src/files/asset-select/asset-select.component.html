@@ -1,10 +1,5 @@
 <div *ngIf="selection" class="ec-asset-select" [class.ec-asset-select_solo]="solo"
      [class.empty]="!selection.items.length">
-  <div class="ec-asset-select-upload" *ngIf="!selection.items.length || !solo">
-    Datei hier ablegen
-    <a href="">Hochladen</a>
-    <span> oder <a (click)="pop.toggle()">Mediathek</a></span>
-  </div>
   <div *ngIf="selection.items.length" class="ec-asset-selected">
     <ul class="ec-asset-selected__items" data-flex="small-grid">
       <li *ngFor="let selected of selection.items" class="ec-asset-selected__item"
@@ -17,6 +12,11 @@
         </div>
       </li>
     </ul>
+  </div>
+  <div class="ec-asset-select-upload" *ngIf="!selection.items.length || !solo">
+    Datei hier ablegen
+    <a href="">Hochladen</a>
+    <span> oder <a (click)="pop.toggle()">Mediathek</a></span>
   </div>
   <ec-pop [ngClass]="config?.popClass" #assetPop>
     <ec-loader #assetLoader class="blend"></ec-loader>
