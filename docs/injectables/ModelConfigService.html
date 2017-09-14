@@ -1379,14 +1379,14 @@ set method. </p>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>generateConfig(model: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+            <code>generateConfig(model: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, fieldConfig?: )</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">packages/data/src/model-config/model-config.service.ts:114</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="116" class="link-to-prism">packages/data/src/model-config/model-config.service.ts:116</a></div>
                                         </td>
                                     </tr>
             
@@ -1416,6 +1416,15 @@ set method. </p>
                                                               </td>
                                                               <td></td>
                                                             </tr>
+                                                            <tr>
+                                                              <td>fieldConfig</td>
+                                                              <td>
+                                                              </td>
+                                                              <td>
+                                                                  true
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
                                                     </tbody>
                                                 </table>
                                         </div>
@@ -1442,7 +1451,7 @@ set method. </p>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>generateFieldConfig(model: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+            <code>generateFieldConfig(model: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, fields?: )</code>
                                 </td>
                             </tr>
             
@@ -1479,6 +1488,15 @@ set method. </p>
                                                                       <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                                               </td>
                                                               <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>fields</td>
+                                                              <td>
+                                                              </td>
+                                                              <td>
+                                                                  true
                                                               </td>
                                                               <td></td>
                                                             </tr>
@@ -1895,14 +1913,16 @@ export class ModelConfigService extends Config {
    * If no local fieldConfig is given, the global model&#x27;s field config is used.
    * If no global field config is found for that model, it will be generated from the model schema.
    * */
-  generateFieldConfig(model: string): Promise&lt;FieldConfig&lt;FieldConfigProperty&gt;&gt; {
+  generateFieldConfig(model: string, fields?): Promise&lt;FieldConfig&lt;FieldConfigProperty&gt;&gt; {
     let fieldConfig;
     return Promise.resolve().then(() &#x3D;&gt; {
+      if (fields) {
+        return fields;
+      }
       // use global config, if given
       if (this.get(model) &amp;&amp; this.get(model).fields) {
-        return Promise.resolve(this.get(model).fields);
+        return this.get(model).fields;
       }
-      return;
     }).then((config) &#x3D;&gt; {
       fieldConfig &#x3D; config;
       return this.sdk.getSchema(model);
@@ -1932,15 +1952,15 @@ export class ModelConfigService extends Config {
   }
 
   /** Returns the given model&#x27;s config and generates a field config from the schema if it is not configured. */
-  generateConfig(model: string): Promise&lt;ListConfig&lt;EntryResource&gt;&gt; {
+  generateConfig(model: string, fieldConfig?): Promise&lt;ListConfig&lt;EntryResource&gt;&gt; {
     const config &#x3D; Object.assign({}, this.get(model) || {}); // clone
     Object.assign(config, {
       identifier: &#x27;id&#x27;,
       label: &#x27;_entryTitle&#x27;,
       onSave: (item: Item&lt;EntryResource&gt;, value) &#x3D;&gt; this.crud.save(model, item.getBody(), value)
     });
-    return this.generateFieldConfig(model).then((fieldConfig) &#x3D;&gt; {
-      Object.assign(config, { fields: fieldConfig });
+    return this.generateFieldConfig(model, fieldConfig).then((fields) &#x3D;&gt; {
+      Object.assign(config, { fields });
       return Promise.resolve(config);
     });
   }

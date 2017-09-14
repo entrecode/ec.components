@@ -1519,13 +1519,19 @@ export class CrudService {
     });
   }
 
+  /** Returns true if the given field key is an immutable system property */
+  isImmutableProperty(key: string) {
+    return key[0] &#x3D;&#x3D;&#x3D; &#x27;_&#x27; ||
+      [&#x27;id&#x27;, &#x27;created&#x27;, &#x27;modified&#x27;].indexOf(key) !&#x3D;&#x3D; -1;
+  }
+
   /** Removes all null or undefined values from the given object */
   clean(value: Object): Object {
     for (const key in value) {
       if (value[key] &#x3D;&#x3D;&#x3D; &#x27;&#x27;) { // clear empty strings
         value[key] &#x3D; null;
       }
-      if (key[0] &#x3D;&#x3D;&#x3D; &#x27;_&#x27;) { // filter system properties
+      if (this.isImmutableProperty(key)) { // filter system properties
         delete value[key];
       }
     }

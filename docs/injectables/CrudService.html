@@ -1286,6 +1286,9 @@ changes.</p>
                                          <a href="#del">del</a>
                                     </li>
                                     <li>
+                                         <a href="#isImmutableProperty">isImmutableProperty</a>
+                                    </li>
+                                    <li>
                                          <a href="#matches">matches</a>
                                     </li>
                                     <li>
@@ -1436,7 +1439,7 @@ changes.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">packages/data/src/crud/crud.service.ts:78</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">packages/data/src/crud/crud.service.ts:84</a></div>
                                         </td>
                                     </tr>
             
@@ -1499,7 +1502,7 @@ changes.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">packages/data/src/crud/crud.service.ts:91</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">packages/data/src/crud/crud.service.ts:97</a></div>
                                         </td>
                                     </tr>
             
@@ -1571,7 +1574,7 @@ changes.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">packages/data/src/crud/crud.service.ts:104</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">packages/data/src/crud/crud.service.ts:110</a></div>
                                         </td>
                                     </tr>
             
@@ -1617,6 +1620,69 @@ changes.</p>
                                         </div>
                                         <div class="io-description">
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="isImmutableProperty"></a>
+                                    <span class="name"><b> isImmutableProperty</b><a href="#isImmutableProperty"><span class="fa fa-link"></span></a></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>isImmutableProperty(key: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">packages/data/src/crud/crud.service.ts:78</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Returns true if the given field key is an immutable system property </p>
+            </div>
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>key</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
             
                                         </div>
                                             <div class="io-description">
@@ -1982,13 +2048,19 @@ export class CrudService {
     });
   }
 
+  /** Returns true if the given field key is an immutable system property */
+  isImmutableProperty(key: string) {
+    return key[0] &#x3D;&#x3D;&#x3D; &#x27;_&#x27; ||
+      [&#x27;id&#x27;, &#x27;created&#x27;, &#x27;modified&#x27;].indexOf(key) !&#x3D;&#x3D; -1;
+  }
+
   /** Removes all null or undefined values from the given object */
   clean(value: Object): Object {
     for (const key in value) {
       if (value[key] &#x3D;&#x3D;&#x3D; &#x27;&#x27;) { // clear empty strings
         value[key] &#x3D; null;
       }
-      if (key[0] &#x3D;&#x3D;&#x3D; &#x27;_&#x27;) { // filter system properties
+      if (this.isImmutableProperty(key)) { // filter system properties
         delete value[key];
       }
     }

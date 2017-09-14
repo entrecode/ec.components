@@ -2029,7 +2029,7 @@ export class EntrySelectComponent extends SelectComponent&lt;EntryResource&gt; i
       super.useConfig(this.config);
       return;
     }
-    this.modelConfig.generateConfig(this.model)
+    this.modelConfig.generateConfig(this.model) //, (this.config || {}).fields
     .then((config) &#x3D;&gt; {
       this.config &#x3D; Object.assign(config, { size: 10 }, this.crudConfig, { solo: this.solo });
       this.useConfig(this.config);

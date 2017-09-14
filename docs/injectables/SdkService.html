@@ -1861,7 +1861,7 @@ setClientID.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="177" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:177</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="179" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:179</a></div>
                                         </td>
                                     </tr>
             
@@ -1893,7 +1893,7 @@ setClientID.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="159" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:159</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="161" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:161</a></div>
                                         </td>
                                     </tr>
             
@@ -2456,6 +2456,8 @@ export class SdkService {
       if (!available) {
         return this.api;
       }
+    }).catch(() &#x3D;&gt; {
+      return;
     });
   }
 
