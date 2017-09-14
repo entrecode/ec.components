@@ -1,4 +1,3 @@
-import { LoginComponent } from '../../packages/ui/src/utility/login/login.component';
 import { Routes } from '@angular/router';
 import { PopDemoComponent } from './pop/pop-demo.component';
 import { DataDemoComponent } from './data/data-demo.component';
@@ -16,7 +15,6 @@ import { DatamanagerListDemoComponent } from './datamanager-list/datamanager-lis
 import { ModelListDemoComponent } from './model-list/model-list.demo.component';
 import { DatetimeDemoComponent } from './form/datetime-demo.component';
 import { AssetListDemoComponent } from './asset-list/asset-list.demo.component';
-// import { PublicLoginComponent } from '@ec.components/data';
 import { AuthDemoComponent } from './auth/auth-demo.component';
 import { VcDemoComponent } from './vc/vc-demo.component';
 import { CrudComponent } from '../../packages/data/src/crud/crud.component';
@@ -24,6 +22,7 @@ import { AssetSelectDemoComponent } from './asset-select/asset-select-demo.compo
 import { NotificationsDemoComponent } from './notifications-demo/notifications-demo.component';
 import { LoaderDemoComponent } from './loader-demo/loader-demo.component';
 import { MediumEditorDemoComponent } from './medium-editor-demo/medium-editor-demo.component';
+import { LoginFormComponent } from '../../packages/ui/src/utility/login-form/login-form.component';
 
 export const demoRoutes: Routes = [
   /*  {
@@ -85,7 +84,7 @@ export const demoRoutes: Routes = [
       },
       {
         path: 'login',
-        component: LoginComponent
+        component: LoginFormComponent
       },
       {
         path: 'mockups',

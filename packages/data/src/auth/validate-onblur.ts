@@ -1,6 +1,6 @@
-//taken from
+// taken from
 // http://stackoverflow.com/questions/33866824/angular2-control-validation-on-blur/41973780#41973780
-//check https://github.com/angular/angular/issues/7113
+// check https://github.com/angular/angular/issues/7113
 import { Directive } from '@angular/core';
 import { NgControl } from '@angular/forms';
 

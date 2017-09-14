@@ -10,6 +10,8 @@ export class Notification {
   host?: NotificationsComponent;
   /** The amount of ms it should be visible */
   time?: number;
+  /** If true, the notification will stay forever */
+  sticky?: boolean;
   /** Determines the looks. Currently info, error and success are defined. */
   type?: string;
   /** If an error is given, the type will automatically be set to error. The error will be displayed inside the notification via ec-error.*/

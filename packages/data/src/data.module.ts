@@ -20,6 +20,7 @@ import { ModelListComponent } from './model-list/model-list.component';
 import { EditorComponent } from './editor.component';
 import { SdkModule } from './sdk/sdk.module';
 import { FilesModule } from './files/files.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   entryComponents: [
@@ -51,6 +52,7 @@ import { FilesModule } from './files/files.module';
     UiModule,
     SdkModule,
     FilesModule,
+    AuthModule,
   ],
   exports: [
     EntryListComponent,
@@ -67,6 +69,7 @@ import { FilesModule } from './files/files.module';
     UiModule,
     SdkModule,
     FilesModule,
+    AuthModule,
   ],
   providers: [
     CrudService,

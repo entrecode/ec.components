@@ -3,8 +3,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AdminLoginComponent } from './admin-login.component';
 import { UiModule } from '@ec.components/ui/src/ui.module';
-import { AdminService } from '../../sdk/admin.service';
-import { DataModule } from '../../data.module';
+import { AdminService } from '../../../sdk/admin.service';
+import { DataModule } from '../../../data.module';
 
 describe('AdminLoginComponent', () => {
   let component: AdminLoginComponent;

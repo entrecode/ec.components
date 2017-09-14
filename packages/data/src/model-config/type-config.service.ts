@@ -15,7 +15,7 @@ export class TypeConfigService {
   /** The default config for nested crud lists, as passed to entry-select */
   private nestedCrudConfig: CrudConfig<EntryResource> = {
     size: 10,
-    // methods: ['read'],
+    // methods: ['get'],
     popClass: 'ec-pop_fullscreen'
   };
 

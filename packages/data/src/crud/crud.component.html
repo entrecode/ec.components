@@ -3,14 +3,14 @@
     <nav class="nav">
 
     </nav>
-    <a (click)="crudForm.create();formPop.show()" *ngIf="hasMethod('create')" class="btn">
+    <a (click)="crudForm.create();formPop.show()" *ngIf="hasMethod('post')" class="btn">
       <span *ngIf="this.config?.createLabel">{{this.config?.createLabel}}</span>
       <span *ngIf="!this.config?.createLabel">+</span>
     </a>
   </header>
   <div class="ec-crud-body">
     <ec-entry-list [model]="model" [config]="config" [solo]="true"
-                   *ngIf="hasMethod('read')" [selection]="selection"
+                   *ngIf="hasMethod('get')" [selection]="selection"
                    [loader]="config?.loader||listLoader"
                    (select)="selectEntry($event,crudForm)">
     </ec-entry-list>

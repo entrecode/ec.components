@@ -1,7 +1,7 @@
 /**
  * Created by felix on 26.05.17.
  */
-import { Component, EventEmitter, Input, Optional, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Optional, Output, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CrudConfig } from './crud-config.interface';
 import { EntryFormComponent } from '../entry-form/entry-form.component';
@@ -14,7 +14,7 @@ import { LoaderComponent } from '@ec.components/ui/src/loader/loader.component';
 import { LoaderService } from '@ec.components/ui/src/loader/loader.service';
 import { NotificationsService } from '@ec.components/ui/src/notifications/notifications.service';
 import 'rxjs/add/operator/switchMap';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 
 /** The CrudComponent takes at least a model name to render an entry list with create/edit/delete functionality out of the box.
  * ```html
@@ -26,9 +26,11 @@ import { Observable } from 'rxjs';
   templateUrl: './crud.component.html',
   styleUrls: ['./crud.component.scss']
 })
-export class CrudComponent<T> {
+export class CrudComponent<T> implements OnInit {
   /** The model that should be crud'ed. */
   @Input() model: string;
+  /** The calculated allowed methods. Derived from config.methods and user permissions */
+  methods: string[];
   /** CrudConfig for customization of the crud's UI.*/
   @Input() config: CrudConfig<T> = {};
   /** The selection that should be used */
@@ -61,20 +63,50 @@ export class CrudComponent<T> {
     }
   }
 
+  getAllowedMethods(): Promise<string[]> {
+    return ['get', 'post', 'put', 'delete']
+    .map((method) => (results) =>
+      this.sdk.checkPermission(`${this.model}:${method}`)
+      .then(res => {
+        if (res) {
+          results.push(method);
+        }
+        return results;
+      })
+    )
+    .reduce((a, b) => a.then(r => b(r)), Promise.resolve([]))
+    .then(methods => {
+      methods.filter(x => !!x);
+      return methods;
+    });
+  }
+
+  ngOnInit() {
+    this.config.methods = this.config.methods || ['post', 'put', 'delete', 'get'];
+    this.methods = this.config.methods;
+    // TODO wait for ec user permission backend bugfix
+    /*this.getAllowedMethods().then((methods) => {
+      this.methods = this.config.methods.filter((method) => {
+        return methods.indexOf(method) !== -1;
+      });
+      console.log('methods', this.methods);
+    });*/
+  }
+
   /** Logs the current form (Developer help). */
   private log(form) {
     console.dir(form);
   }
 
   /** Returns true if the given method is part of the methods array (or if there is no methods array) */
-  public hasMethod(method: string) {
-    return !this.config.methods || this.config.methods.indexOf(method) !== -1;
+  public hasMethod(method: string) { // !this.methods?
+    return this.methods && this.methods.indexOf(method) !== -1;
   }
 
   /** Determines if the current form can be saved, based on the allowed method (edit/update). */
   public maySave(form: EntryFormComponent) {
     const edit = form.isEditing();
-    return (!edit && this.hasMethod('create')) || (edit && this.hasMethod('update'))
+    return (!edit && this.hasMethod('post')) || (edit && this.hasMethod('put'))
   }
 
   /** Returns true if the visible fields in the list differ from the visible fields in the form*/

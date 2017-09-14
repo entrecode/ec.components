@@ -2,9 +2,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { PublicSignupComponent } from './public-signup.component';
-import { PublicService } from '../../sdk/public.service';
+import { PublicService } from '../../../sdk/public.service';
 import { UiModule } from '@ec.components/ui/src/ui.module';
-import { DataModule } from '../../data.module';
+import { DataModule } from '../../../data.module';
 
 describe('PublicSignupComponent', () => {
   let component: PublicSignupComponent;

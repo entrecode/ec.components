@@ -1,22 +1,22 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs/Observable';
-import { AdminService } from '../../sdk/admin.service';
-import { FieldValidators } from '@ec.components/ui/src/utility/validators/field-validators';
+import { Observable } from 'rxjs';
+import { FieldValidators } from '@ec.components/ui';
+import { SdkService } from '../../../sdk/sdk.service';
 
 @Component({
-  selector: 'ec-auth-admin-login',
-  templateUrl: './admin-login.component.html',
-  styleUrls: ['./admin-login.component.scss']
+  selector: 'ec-auth-public-login',
+  templateUrl: './public-login.component.html',
+  styleUrls: ['./public-login.component.scss']
 })
-export class AdminLoginComponent implements OnInit {
+export class PublicLoginComponent implements OnInit {
   public login: FormGroup;
   private submitted: boolean;
   public errorMessage: string;
   @Output() success: EventEmitter<any> = new EventEmitter();
   @Output() error: EventEmitter<any> = new EventEmitter();
 
-  constructor(private fb: FormBuilder, private admin: AdminService) {
+  constructor(private fb: FormBuilder, private sdk: SdkService) {
   }
 
   ngOnInit() {
@@ -39,8 +39,9 @@ export class AdminLoginComponent implements OnInit {
     if (!this.login.valid) {
       return;
     }
-    this.admin.login(this.login.value).then((token) => {
-      console.log(token);
+
+    this.sdk.login(this.login.value)
+    .then((res) => {
       this.login.reset();
       this.success.emit();
     });

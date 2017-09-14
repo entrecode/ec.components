@@ -1,26 +1,26 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { FieldValidators } from '@ec.components/ui';
-import { SdkService } from '../../sdk/sdk.service';
+import { PublicService } from '../../../sdk/public.service';
+import { FieldValidators } from '@ec.components/ui/src/utility/validators/field-validators';
 
 @Component({
-  selector: 'ec-auth-public-login',
-  templateUrl: './public-login.component.html',
-  styleUrls: ['./public-login.component.scss']
+  selector: 'ec-auth-public-signup',
+  templateUrl: './public-signup.component.html',
+  styleUrls: ['./public-signup.component.scss']
 })
-export class PublicLoginComponent implements OnInit {
-  public login: FormGroup;
+export class PublicSignupComponent implements OnInit {
+  public signup: FormGroup;
   private submitted: boolean;
   public errorMessage: string;
   @Output() success: EventEmitter<any> = new EventEmitter();
   @Output() error: EventEmitter<any> = new EventEmitter();
 
-  constructor(private fb: FormBuilder, private sdk: SdkService) {
+  constructor(private fb: FormBuilder, private pub: PublicService) {
   }
 
   ngOnInit() {
-    this.login = this.fb.group({
+    this.signup = this.fb.group({
       email: ['', [Validators.required, FieldValidators.email]], //emailAvailable
       password: ['', [Validators.required]],
     });
@@ -28,22 +28,19 @@ export class PublicLoginComponent implements OnInit {
 
   showError(err) {
     this.errorMessage = err.message;
-    this.login.get('password').setValue('');
     this.error.emit(err);
     Observable.throw(err);
   }
 
   onSubmit() {
     this.submitted = true;
-    delete this.errorMessage;
-    if (!this.login.valid) {
+    if (!this.signup.valid) {
       return;
     }
-
-    this.sdk.login(this.login.value)
-    .then((res) => {
-      this.login.reset();
+    this.pub.signup(this.signup.value).then((token) => {
+      this.signup.reset();
       this.success.emit();
-    });
+    })
+    //TODO error handling etc
   }
 }
