@@ -2,15 +2,26 @@
   background-color: getColor(background);
 }
 
+%ec-drawer-side {
+  width: rem(280);
+
+  @include media(tablet) {
+    width: rem(320);
+  }
+
+  @include media(desktop) {
+    min-width: rem(320);
+    width: auto;
+  }
+}
+
 ec-pop {
   &.ec-pop_drawer-left {
     > .ec-pop-container {
       > .ec-pop {
         @extend %ec-drawer;
+        @extend %ec-drawer-side;
         @extend %slide-in-right;
-        height: 100vh;
-        top: 0;
-        left: 0;
         @include box-shadow(4px 0 8px getColor(shadow), 4px 0 16px getColor(shadow));
       }
     }
@@ -20,10 +31,8 @@ ec-pop {
     > .ec-pop-container {
       > .ec-pop {
         @extend %ec-drawer;
+        @extend %ec-drawer-side;
         @extend %slide-in-left;
-        height: 100vh;
-        top: 0;
-        right: 0;
         @include box-shadow(-4px 0 8px getColor(shadow), -4px 0 16px getColor(shadow));
       }
     }
@@ -34,9 +43,6 @@ ec-pop {
       > .ec-pop {
         @extend %ec-drawer;
         @extend %slide-in-down;
-        width: 100vw;
-        top: 0;
-        left: 0;
         @include box-shadow(0 4px 8px getColor(shadow), 0 4px 16px getColor(shadow));
       }
     }
@@ -47,9 +53,6 @@ ec-pop {
       > .ec-pop {
         @extend %ec-drawer;
         @extend %slide-in-up;
-        width: 100vw;
-        bottom: 0;
-        left: 0;
         @include box-shadow(0 -4px 8px getColor(shadow), 0 -4px 16px getColor(shadow));
       }
     }
