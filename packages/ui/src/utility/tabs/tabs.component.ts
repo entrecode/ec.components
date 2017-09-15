@@ -1,5 +1,5 @@
 import { Component, ContentChildren, Input, QueryList } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { TabComponent } from '../tab/tab.component';
 
 class EventEmitter {
@@ -14,7 +14,23 @@ class EventEmitter {
 export class TabsComponent {
   @ContentChildren(TabComponent) tabs: QueryList<TabComponent>;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private route: ActivatedRoute) {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.selectByUrl(event.url);
+      }
+    });
+  }
+
+  selectByUrl(url: string) {
+    if (!url || !this.tabs) {
+      return;
+    }
+    const paths = url.split('/');
+    const match = this.tabs.find((tab) => tab.route === paths[paths.length - 1]);
+    if (match) {
+      this.select(match);
+    }
   }
 
   /** You can set the initially selected tab by passing a TabComponent in (e.g. via #variable) */
@@ -27,6 +43,7 @@ export class TabsComponent {
         this.select(tab);
       }
     });
+    this.selectByUrl(this.router.url);
   }
 
   select(tab: TabComponent) {
@@ -35,6 +52,9 @@ export class TabsComponent {
     }
     this.selected = tab;
     tab.activated.next();
+    if (tab.route) {
+      this.router.navigate([tab.route], { relativeTo: this.route });
+    }
   }
 
   isSelected(tab: TabComponent) {
