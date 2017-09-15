@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate } from '@angular/router';
-import { SdkService } from '@ec.components/data';
+import { SdkService } from '@ec.components/data/src/sdk/sdk.service';
 import { NotificationsService } from '@ec.components/ui/src/notifications/notifications.service';
 import { Subject } from 'rxjs/Subject';
 
