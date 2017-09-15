@@ -370,6 +370,9 @@
                                 id="xs-directives-links"
                             >
                                 <li class="link">
+                                    <a href="../directives/EntriesDirective.html" >EntriesDirective</a>
+                                </li>
+                                <li class="link">
                                     <a href="../directives/MediumEditorDirective.html" >MediumEditorDirective</a>
                                 </li>
                                 <li class="link">
@@ -409,6 +412,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../classes/EntryList.html" >EntryList</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/EventEmitter.html" >EventEmitter</a>
                                 </li>
                                 <li class="link">
                                     <a href="../classes/Field.html" >Field</a>
@@ -967,6 +973,9 @@
                                        id="directives-links"
                    >
                                        <li class="link">
+                                           <a href="../directives/EntriesDirective.html" >EntriesDirective</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../directives/MediumEditorDirective.html" >MediumEditorDirective</a>
                                        </li>
                                        <li class="link">
@@ -1006,6 +1015,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../classes/EntryList.html" >EntryList</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/EventEmitter.html" >EventEmitter</a>
                                        </li>
                                        <li class="link">
                                            <a href="../classes/Field.html" >Field</a>
@@ -1582,7 +1594,7 @@
                         <td class="col-md-10">
                             <div><p>Emits when a list element is clicked </p>
 </div>
-                            <em><code>$event</code> type:</em>    <code>EventEmitter&lt;any&gt;</code>
+                            <em><code>$event</code> type:</em>    <code><a href="../classes/EventEmitter.html" target="_self" >EventEmitter&lt;any&gt;</a></code>
 
                         </td>
                     </tr>
@@ -1603,7 +1615,7 @@
                         <td class="col-md-10">
                             <div><p>Emits when the selection has changed </p>
 </div>
-                            <em><code>$event</code> type:</em>    <code>EventEmitter&lt;any&gt;</code>
+                            <em><code>$event</code> type:</em>    <code><a href="../classes/EventEmitter.html" target="_self" >EventEmitter&lt;any&gt;</a></code>
 
                         </td>
                     </tr>
@@ -2397,7 +2409,7 @@ import { LoaderComponent } from &#x27;@ec.components/ui/src/loader/loader.compon
 import { LoaderService } from &#x27;@ec.components/ui/src/loader/loader.service&#x27;;
 import { NotificationsService } from &#x27;@ec.components/ui/src/notifications/notifications.service&#x27;;
 import &#x27;rxjs/add/operator/switchMap&#x27;;
-import { Observable } from &#x27;rxjs/Observable&#x27;;
+import { merge } from &#x27;rxjs/observable/merge&#x27;;
 
 /** The CrudComponent takes at least a model name to render an entry list with create/edit/delete functionality out of the box.
  * &#x60;&#x60;&#x60;html
@@ -2437,7 +2449,7 @@ export class CrudComponent&lt;T&gt; implements OnInit {
     @Optional() public router: Router,
     @Optional() public route: ActivatedRoute) {
     if (route) {
-      Observable.merge(route.data, route.params, route.queryParams)
+      merge(route.data, route.params, route.queryParams)
       .subscribe(({ model }) &#x3D;&gt; {
         if (model) {
           this.model &#x3D; model;
@@ -2626,7 +2638,7 @@ export class CrudComponent&lt;T&gt; implements OnInit {
 <script>
         var COMPONENT_TEMPLATE = '<div><div class="ec-crud">  <header class="ec-crud-header">    <nav class="nav">    </nav>    <a (click)="crudForm.create();formPop.show()" *ngIf="hasMethod(\'post\')" class="btn">      <span *ngIf="this.config?.createLabel">{{this.config?.createLabel}}</span>      <span *ngIf="!this.config?.createLabel">+</span>    </a>  </header>  <div class="ec-crud-body">    <ec-entry-list [model]="model" [config]="config" [solo]="true"                   *ngIf="hasMethod(\'get\')" [selection]="selection"                   [loader]="config?.loader||listLoader"                   (select)="selectEntry($event,crudForm)">    </ec-entry-list>  </div>  <ec-loader #listLoader class="blend"></ec-loader>  <!-- TODO wrap into entry-pop -->  <ec-pop #formPop [ngClass]="getPopClass()">    <header class="ec-pop-header">      <div class="toolbar">        <nav class="nav">          <button (click)="formPop.hide()" type="button" class="btn btn_abort">&times;</button>        </nav>      </div>    </header>    <div class="ec-pop-body">      <ec-entry-form [model]="model" [submitButton]="false" [loader]="popLoader" [config]="config"                     (submit)="!this.config?.keepPopOpen&&formPop.hide()" (deleted)="formPop.hide()"                     #crudForm></ec-entry-form>    </div>    <footer class="ec-pop-footer">      <nav class="nav inline">        <ul class="nav__items">          <li class="nav__item">            <button (click)="log(crudForm)" *ngIf="config?.develop" class="btn">code</button>          </li>          <li class="nav__item">            <button (click)="crudForm.deleteEntry()" class="btn btn_delete" type="button"                    *ngIf="hasMethod(\'delete\')&&crudForm.isEditing()">              löschen            </button>          </li>          <li class="nav__item">            <button (click)="crudForm.submit()" [disabled]="crudForm.group?.invalid" type="button"                    class="btn btn_save" [class.disabled]="crudForm.group?.invalid"                    *ngIf="maySave(crudForm)">              save            </button>          </li>        </ul>      </nav>    </footer>    <ec-loader #popLoader class="blend"></ec-loader>  </ec-pop>  <ec-notifications *ngIf="!this.config?.notifications"></ec-notifications></div></div>'
     var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
-    var DIRECTIVES = [{'name': 'MediumEditorDirective', 'selector': '[ecMediumEditor]'},{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
+    var DIRECTIVES = [{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'MediumEditorDirective', 'selector': '[ecMediumEditor]'},{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'CrudComponent'};
 </script>
 <script src="../js/tree.js"></script>
