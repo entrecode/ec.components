@@ -14,7 +14,7 @@ import { LoaderComponent } from '@ec.components/ui/src/loader/loader.component';
 import { LoaderService } from '@ec.components/ui/src/loader/loader.service';
 import { NotificationsService } from '@ec.components/ui/src/notifications/notifications.service';
 import 'rxjs/add/operator/switchMap';
-import { Observable } from 'rxjs/Observable';
+import { merge } from 'rxjs/observable/merge';
 
 /** The CrudComponent takes at least a model name to render an entry list with create/edit/delete functionality out of the box.
  * ```html
@@ -54,7 +54,7 @@ export class CrudComponent<T> implements OnInit {
     @Optional() public router: Router,
     @Optional() public route: ActivatedRoute) {
     if (route) {
-      Observable.merge(route.data, route.params, route.queryParams)
+      merge(route.data, route.params, route.queryParams)
       .subscribe(({ model }) => {
         if (model) {
           this.model = model;

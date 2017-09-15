@@ -139,4 +139,15 @@ Thats it! Now you can run the app using:
 npm run start
 ```
 
+
 now navigate to https://localhost:4200
+
+### 10. Add Notifications
+
+To your app.component, you can add a global notification component, outside of your routing:
+
+```html
+<ec-notifications></ec-notifications>
+```
+
+This will display all messages sent by the components or your own modules.

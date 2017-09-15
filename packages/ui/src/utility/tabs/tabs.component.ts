@@ -1,5 +1,4 @@
-import { Component, Input } from '@angular/core';
-import { Collection } from '@ec.components/core/src/collection/collection';
+import { Component, ContentChildren, Input, QueryList } from '@angular/core';
 import { TabComponent } from '../tab/tab.component';
 
 /** The TabsComponent holds serveral instances of TabComponent. */
@@ -9,20 +8,26 @@ import { TabComponent } from '../tab/tab.component';
   styleUrls: ['./tabs.component.scss']
 })
 export class TabsComponent {
-  public tabs: Collection<TabComponent>;
+  @ContentChildren(TabComponent) tabs: QueryList<TabComponent>;
+
   /** You can set the initially selected tab by passing a TabComponent in (e.g. via #variable) */
   @Input() selected: TabComponent;
 
-  /** The constructor inits the collection of tabs */
-  constructor() {
-    this.tabs = new Collection([]);
+  ngAfterContentInit() {
+    this.tabs.forEach((tab) => {
+      tab.parent = this;
+      if (tab.el.nativeElement.getAttribute('selected') !== null) {
+        this.select(tab);
+      }
+    });
   }
 
-  /** This method adds a new tab to the tabs collection and auto selects if it is the first. */
-  add(tab: TabComponent) {
-    this.tabs.add(tab);
-    if (!this.selected) {
-      this.selected = tab;
-    }
+  select(tab: TabComponent) {
+    this.selected = tab;
   }
+
+  isSelected(tab: TabComponent) {
+    return this.selected === tab;
+  }
+
 }
