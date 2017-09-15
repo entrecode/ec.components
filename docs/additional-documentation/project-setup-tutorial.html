@@ -458,6 +458,9 @@
                                     <a href="../injectables/AdminService.html" >AdminService</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../injectables/AuthGuard.html" >AuthGuard</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/AuthorizationService.html" >AuthorizationService</a>
                                 </li>
                                 <li class="link">
@@ -1052,6 +1055,9 @@
                                            <a href="../injectables/AdminService.html" >AdminService</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../injectables/AuthGuard.html" >AuthGuard</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/AuthorizationService.html" >AuthorizationService</a>
                                        </li>
                                        <li class="link">
@@ -1236,6 +1242,7 @@
 <li>@angular/cli: 1.3.2</li>
 <li>@angular/compiler-cli: 4.3.6</li>
 <li>@angular/language-service: 4.3.6</li>
+<li>typescript: 2.4.2</li>
 </ul>
 <p>You can lookup your versions with <code>ng --version</code></p>
 <h3 id="2-generate-new-project">2. Generate new Project</h3>
@@ -1243,8 +1250,15 @@
 <a href="https://github.com/angular/angular-cli/wiki/new">More info on the options for new</a>.</p>
 <h3 id="3-install-ec-components-data">3. Install @ec.components/data</h3>
 <pre class="line-numbers"><code class="language-sh">cd ec-project
-yarn install &#64;ec.components/data --save</code></pre><p>This will install the data package which depends on ui and core packages.</p>
-<h3 id="4-setup-environment">4. Setup environment</h3>
+yarn add &#64;ec.components/data --save
+yarn add &#64;ec.components/style --save</code></pre><p>This will install the data package which depends on ui and core packages.
+The style package contains styles for ui and data.</p>
+<h3 id="4-import-styles">4. Import Styles</h3>
+<p>Into your styles.scss, import the following styles:</p>
+<pre class="line-numbers"><code class="language-none">&#64;import &quot;~xlcss/sass/xlcss.scss&quot;;
+&#64;import &quot;~x.ui/src/_config&quot;;
+&#64;import &quot;~x.ui/src/x.ui-sandbox.scss&quot;;
+&#64;import &quot;~&#64;ec.components/style/components.scss&quot;;</code></pre><h3 id="5-setup-environment">5. Setup environment</h3>
 <p>In src/environments, you can find the different environment files.
 By Default, there is a dev and a prod environment. For this tutorial, those two should be enough. We will use the dev environment for dev and staging and the prod environment for live. You could also add more environments, for more information, <a href="https://github.com/angular/angular-cli/wiki/stories-application-environments">look here</a>. </p>
 <p><em>src/environments/environment.ts</em>:</p>
@@ -1261,7 +1275,7 @@ By Default, there is a dev and a prod environment. For this tutorial, those two 
   clientID: &#39;my-live-client&#39; // your clientID
 };</code></pre><p>The .prod environment will be used when running ng build for production.
 The client should use token method body. The callback URL does not matter.</p>
-<h3 id="5-add-datamodule">5. Add DataModule</h3>
+<h3 id="6-add-datamodule">6. Add DataModule</h3>
 <p>Go to src/app/app.module and add DataModule to your imports:</p>
 <pre class="line-numbers"><code class="language-js">import { DataModule } from &#39;&#64;ec.components/data&#39;;
 import { environment } from &#39;../environments/environment&#39;;
@@ -1279,13 +1293,13 @@ import { environment } from &#39;../environments/environment&#39;;
   bootstrap: [AppComponent]
 })
 export class AppModule { }</code></pre><p>Here we are importing the DataModule along with the environment to then import it into our AppModule with the forEnvironment method.</p>
-<h3 id="6-add-ssl-flag">6. Add --ssl flag</h3>
+<h3 id="7-add-ssl-flag">7. Add --ssl flag</h3>
 <p>in your package.json, edit your start script to look like this:</p>
 <pre class="line-numbers"><code class="language-none">&quot;start&quot;: &quot;ng serve --ssl&quot;,</code></pre><p>Without the --ssl flag, the authorization won&#39;t work, because it enforces https.</p>
-<h3 id="7-add-a-component">7. Add a component</h3>
+<h3 id="8-add-a-component">8. Add a component</h3>
 <p>e.g. add to <em>src/app/app.component.html</em>:</p>
 <pre class="line-numbers"><code class="language-html">&lt;ec-crud model=&quot;muffin&quot;&gt;&lt;/ec-crud&gt;</code></pre><p>This assumes that the model <em>muffin</em> exists inside the datamanager provided through your environment.</p>
-<h3 id="8-run-the-fun">8. Run the fun</h3>
+<h3 id="9-run-the-fun">9. Run the fun</h3>
 <p>Thats it! Now you can run the app using:</p>
 <pre class="line-numbers"><code class="language-sh">npm run start</code></pre><p>now navigate to <a href="https://localhost:4200">https://localhost:4200</a></p>
 
