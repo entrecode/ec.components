@@ -4,6 +4,7 @@
 ## 0.8.0
 BREAKING CHANGES:
 - removed PublicService and AdminService, you should use sdk methods instead.
+- login/signup + more auth methods have been moved from SdkService to new AuthService
 - former ec-login has been renamed to ec-login-form, the new ec-login handles login automatically.
 - crud methods have been renamend to 'get', 'put', 'post', 'delete'
 - ec-entry and ec-entries are now directives ecEntry and ecEntries
