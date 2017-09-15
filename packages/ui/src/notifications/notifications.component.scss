@@ -1,25 +1,15 @@
-:host {
-  &.toast {
-    position: fixed;
-    right: 10px;
-    top: 10px;
-    z-index: 10000;
-    ec-pop {
-      display: block;
-      padding: 10px;
-      border-radius: 2px;
-      border: 1px solid lightgray;
-      position: relative;
-      margin-top: 10px;
-      background-color: white;
-      &.info {
-        background-color: lightblue;
-      }
-      &.error {
-        background-color: lightsalmon;
-      }
-      &.success {
-        background-color: darkseagreen;
+.ec-notifications {
+  position: fixed;
+  z-index: 9999;
+  right: 0;
+  top: 0;
+
+  ec-pop {
+    display: flex;
+    flex-direction: column;
+
+    .ec-pop-container {
+      .ec-pop {
       }
     }
   }
