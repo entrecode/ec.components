@@ -5,7 +5,7 @@ import * as Text from 'visual-cms.core/classes/core/Text.js';
 import * as PhrasingElement from 'visual-cms.core/classes/core/PhrasingElement.js';
 import * as Block from 'visual-cms.core/classes/base/Block.js';
 import * as ListElement from 'visual-cms.core/classes/base/ListElement.js';
-import { Subject } from 'rxjs';
+import { Subject } from 'rxjs/Subject';
 
 declare const document;
 
@@ -17,8 +17,8 @@ declare const document;
 export class EditorComponent {
   @Input() json;
   @Output() change: EventEmitter<any> = new EventEmitter();
-  private element; //current edited element
-  public caret: any; //current edited branch in class
+  private element; // current edited element
+  public caret: any; // current edited branch in class
   private ecvc;
   public content: any;
 

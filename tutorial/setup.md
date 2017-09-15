@@ -24,6 +24,7 @@ The following versions have been used for this tutorial:
 - @angular/cli: 1.3.2
 - @angular/compiler-cli: 4.3.6
 - @angular/language-service: 4.3.6
+- typescript: 2.4.2
 
 You can lookup your versions with ```ng --version```
 
@@ -38,12 +39,25 @@ Make sure you replace _ec-project_ with your project name and the prefix _ec-adm
 
 ```sh
 cd ec-project
-yarn install @ec.components/data --save
+yarn add @ec.components/data --save
+yarn add @ec.components/style --save
 ```
 
 This will install the data package which depends on ui and core packages.
+The style package contains styles for ui and data.
 
-### 4. Setup environment
+### 4. Import Styles
+
+Into your styles.scss, import the following styles:
+
+```
+@import "~xlcss/sass/xlcss.scss";
+@import "~x.ui/src/_config";
+@import "~x.ui/src/x.ui-sandbox.scss";
+@import "~@ec.components/style/components.scss";
+```
+
+### 5. Setup environment
 
 In src/environments, you can find the different environment files.
 By Default, there is a dev and a prod environment. For this tutorial, those two should be enough. We will use the dev environment for dev and staging and the prod environment for live. You could also add more environments, for more information, [look here](https://github.com/angular/angular-cli/wiki/stories-application-environments). 
@@ -72,7 +86,7 @@ export const environment = {
 The .prod environment will be used when running ng build for production.
 The client should use token method body. The callback URL does not matter.
 
-### 5. Add DataModule
+### 6. Add DataModule
 
 Go to src/app/app.module and add DataModule to your imports:
 
@@ -96,7 +110,7 @@ export class AppModule { }
 ```
 Here we are importing the DataModule along with the environment to then import it into our AppModule with the forEnvironment method.
 
-### 6. Add --ssl flag
+### 7. Add --ssl flag
 
 in your package.json, edit your start script to look like this:
 
@@ -106,7 +120,7 @@ in your package.json, edit your start script to look like this:
 
 Without the --ssl flag, the authorization won't work, because it enforces https.
 
-### 7. Add a component
+### 8. Add a component
 
 e.g. add to _src/app/app.component.html_:
 
@@ -117,7 +131,7 @@ e.g. add to _src/app/app.component.html_:
 This assumes that the model _muffin_ exists inside the datamanager provided through your environment.
 
 
-### 8. Run the fun
+### 9. Run the fun
 
 Thats it! Now you can run the app using:
 
@@ -125,4 +139,15 @@ Thats it! Now you can run the app using:
 npm run start
 ```
 
+
 now navigate to https://localhost:4200
+
+### 10. Add Notifications
+
+To your app.component, you can add a global notification component, outside of your routing:
+
+```html
+<ec-notifications></ec-notifications>
+```
+
+This will display all messages sent by the components or your own modules.

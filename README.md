@@ -14,79 +14,16 @@ The dependencies stack up from core to data (data > ui > core).
 The packages sources are located at src/packages.
 
 There is also a fourth module called ```*@ec.components/styles*```.
-It contains more sophisticated styles for ui components using xlcss.
+It contains more sophisticated styles for ui components using x.ui.
 
 ## Documentation
 
 The main documentation is located at https://entrecode.github.io/ec.components/.
+You can find a getting started guide there
 
 ## Demo
 
 A Demo is available at https://components.entrecode.de/.
-
-## Get Started
-
-### Install:
-
-You can install all three modules like this:
-
-```shell
-npm i @ec.components/core @ec.components/ui @ec.components/data
-```
-
-Then you can import the ui and data modules to your app module:
-
-```typescript
-import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
-import { UiModule } from '@ec.components/ui';
-import { DataModule } from '@ec.components/data';
-
-@NgModule({
-  declarations: [
-    AppComponent,
-  ],
-  imports: [
-    UiModule,
-    DataModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule {
-}
-```
-
-### Using the Sdk
-
-You can access the [ec.datamanager SDK](https://github.com/entrecode/ec.datamanager.js) via the SdkService.
-
-```ts
- import { SdkService } from '@ec.components/data';
- class SomeComponent {
-    constructor(private sdk: SdkService) {
-        this.sdk.api.entryList('baker'); //use sdk Public API
-    }
- }
-```
-
-## Styles
-
-In main style.scss, import the following:
-
-```
-@import "../node_modules/xlcss/sass/xlcss";
-@import "../node_modules/@ec.components/ui/styles";
-```
-
-## Icons
-
-The ui and data packages both use [ec-icons](https://icons.entrecode.de/).
-Just add this to your index.html:
-
-```html
-<link rel="stylesheet" href="https://icons.entrecode.de/ec-icons-1.1.1.min.css"/>
-```
 
 # Development
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-rc.0.

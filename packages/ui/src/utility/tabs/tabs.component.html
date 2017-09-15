@@ -1,7 +1,7 @@
 <nav>
   <ul>
-    <li *ngFor="let tab of tabs.items;let i = index" (click)="selected=tab"
-        [class.selected]="selected===tab">
+    <li *ngFor="let tab of tabs;let i = index" (click)="select(tab)"
+        [class.selected]="isSelected(tab)">
       {{tab.label}}
     </li>
   </ul>

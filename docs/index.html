@@ -458,6 +458,9 @@
                                     <a href="./injectables/AdminService.html" >AdminService</a>
                                 </li>
                                 <li class="link">
+                                    <a href="./injectables/AuthGuard.html" >AuthGuard</a>
+                                </li>
+                                <li class="link">
                                     <a href="./injectables/AuthorizationService.html" >AuthorizationService</a>
                                 </li>
                                 <li class="link">
@@ -1052,6 +1055,9 @@
                                            <a href="./injectables/AdminService.html" >AdminService</a>
                                        </li>
                                        <li class="link">
+                                           <a href="./injectables/AuthGuard.html" >AuthGuard</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="./injectables/AuthorizationService.html" >AuthorizationService</a>
                                        </li>
                                        <li class="link">
@@ -1217,46 +1223,13 @@
 <p>The dependencies stack up from core to data (data &gt; ui &gt; core).
 The packages sources are located at src/packages.</p>
 <p>There is also a fourth module called <code>*@ec.components/styles*</code>.
-It contains more sophisticated styles for ui components using xlcss.</p>
+It contains more sophisticated styles for ui components using x.ui.</p>
 <h2 id="documentation">Documentation</h2>
-<p>The main documentation is located at <a href="https://entrecode.github.io/ec.components/">https://entrecode.github.io/ec.components/</a>.</p>
+<p>The main documentation is located at <a href="https://entrecode.github.io/ec.components/">https://entrecode.github.io/ec.components/</a>.
+You can find a getting started guide there</p>
 <h2 id="demo">Demo</h2>
 <p>A Demo is available at <a href="https://components.entrecode.de/">https://components.entrecode.de/</a>.</p>
-<h2 id="get-started">Get Started</h2>
-<h3 id="install-">Install:</h3>
-<p>You can install all three modules like this:</p>
-<pre class="line-numbers"><code class="language-shell">npm i &#64;ec.components/core &#64;ec.components/ui &#64;ec.components/data</code></pre><p>Then you can import the ui and data modules to your app module:</p>
-<pre class="line-numbers"><code class="language-typescript">import { NgModule } from &#39;&#64;angular/core&#39;;
-import { AppComponent } from &#39;./app.component&#39;;
-import { UiModule } from &#39;&#64;ec.components/ui&#39;;
-import { DataModule } from &#39;&#64;ec.components/data&#39;;
-
-&#64;NgModule({
-  declarations: [
-    AppComponent,
-  ],
-  imports: [
-    UiModule,
-    DataModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule {
-}</code></pre><h3 id="using-the-sdk">Using the Sdk</h3>
-<p>You can access the <a href="https://github.com/entrecode/ec.datamanager.js">ec.datamanager SDK</a> via the SdkService.</p>
-<pre class="line-numbers"><code class="language-ts"> import { SdkService } from &#39;&#64;ec.components/data&#39;;
- class SomeComponent {
-    constructor(private sdk: SdkService) {
-        this.sdk.api.entryList(&#39;baker&#39;); //use sdk Public API
-    }
- }</code></pre><h2 id="styles">Styles</h2>
-<p>In main style.scss, import the following:</p>
-<pre class="line-numbers"><code class="language-none">&#64;import &quot;../node_modules/xlcss/sass/xlcss&quot;;
-&#64;import &quot;../node_modules/&#64;ec.components/ui/styles&quot;;</code></pre><h2 id="icons">Icons</h2>
-<p>The ui and data packages both use <a href="https://icons.entrecode.de/">ec-icons</a>.
-Just add this to your index.html:</p>
-<pre class="line-numbers"><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://icons.entrecode.de/ec-icons-1.1.1.min.css&quot;/&gt;</code></pre><h1 id="development">Development</h1>
+<h1 id="development">Development</h1>
 <p>This project was generated with <a href="https://github.com/angular/angular-cli">Angular CLI</a> version 1.0.0-rc.0.</p>
 <h2 id="lerna">Lerna</h2>
 <p>The repository is a monorepo, managed by <a href="https://github.com/lerna/lerna">lerna</a>.</p>
