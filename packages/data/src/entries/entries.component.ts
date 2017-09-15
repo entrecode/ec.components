@@ -19,7 +19,7 @@ export class EntriesComponent implements OnChanges {
   /** The config (filterOptions) for loading. */
   @Input() config; // TODO cannot import #simibug : filterOptions;
   /** The current loaded entryList */
-  private entryList: any;
+  public entryList: any;
 
   /** Injects sdk */
   constructor(private sdk: SdkService) {

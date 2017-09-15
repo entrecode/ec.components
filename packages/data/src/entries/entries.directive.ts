@@ -1,0 +1,90 @@
+/**
+ * Created by felix on 23.05.17.
+ */
+import { Directive, Input, OnChanges } from '@angular/core';
+import { SdkService } from '../sdk/sdk.service';
+import EntryList from 'ec.sdk/src/resources/publicAPI/EntryList';
+import EntryResource from 'ec.sdk/src/resources/publicAPI/EntryResource';
+
+// import { filterOptions } from 'ec.sdk/src/resources/ListResource';
+
+/** Loads an entryList of a given model with the given config. */
+@Directive({
+  selector: '[ecEntries]',
+  exportAs: 'ecEntries'
+})
+export class EntriesDirective implements OnChanges {
+  /** The promise of the entryList call. */
+  private promise: any;
+  /** The model to load from. */
+  @Input() model: string;
+  /** The filterOptions for loading. */
+  @Input() options: any = {}; // TODO cannot import #simibug : filterOptions;
+  /** If true, calling next will append the next page to the items, making the list grow.*/
+  @Input() endless = false;
+  /** Should the entries be loaded immediately? Defaults to true */
+  @Input() autoload: boolean;
+  /** The current loaded entryList */
+  private entryList: EntryList;
+  public items: EntryResource[] = [];
+
+  /** Injects sdk */
+  constructor(private sdk: SdkService) {
+  }
+
+  /** When the model is known, the entryList will be loaded. */
+  ngOnChanges() {
+    if (!this.model) {
+      return;
+    }
+    if (this.endless && this.options.page && this.options.page > 1) {
+      console.warn('cannot init ecEntries on page!==1 with strategy=endless');
+    }
+    if (this.autoload !== false) {
+      this.load();
+    }
+  }
+
+  /** Loads the entries */
+  load() {
+    this.promise = this.sdk.api.entryList(this.model, this.options)
+    .then(list => this.useList(list));
+    return this.promise;
+  }
+
+  useList(entryList: EntryList) {
+    this.entryList = entryList;
+    if (this.endless) {
+      this.items = this.items.concat(this.entryList.getAllItems());
+    } else {
+      this.items = this.entryList.getAllItems();
+    }
+  }
+
+  next() {
+    this.entryList.followNextLink().then(list => this.useList(list))
+  }
+
+  prev() {
+    this.entryList.followPrevLink().then(list => this.useList(list))
+  }
+
+  isLast() {
+    return !this.entryList || !this.entryList.hasNextLink();
+  }
+
+  isFirst() {
+    if (this.endless) {
+      return true;
+    }
+    return !this.entryList || !this.entryList.hasFirstLink();
+  }
+
+  /** This helper returns all items of the current entryList. */
+  entries() {
+    if (!this.entryList) {
+      return [];
+    }
+    return this.entryList.getAllItems();
+  }
+}
