@@ -72,37 +72,12 @@ export class SdkService {
     return this.ready;
   }
 
+  /** Returns a schema for the given model. Caches the promise. */
   getSchema(model) {
     if (!this.schemaRequests[model]) {
       this.schemaRequests[model] = this.api.getSchema(model);
     }
     return this.schemaRequests[model];
-  }
-
-  /** Generic login that works with both public and admin API. */
-  login({ email, password }, api?) {
-    if (this.noClientID()) {
-      return Promise.reject(this.noClientID());
-    }
-    return Promise.resolve(api || this.getApi(email))
-    .then((resolvedAPI) => {
-      const _api = resolvedAPI || this.session;
-      return !_api ? Promise.reject('api_not_found') : _api.login(email, password);
-    }).then(() => {
-      return this.init();
-    });
-  }
-
-  /** Generic Signup, works for accounts API and PublicAPI */
-  signup({ email, password, invite }, api?) {
-    if (this.noClientID()) {
-      return Promise.reject(this.noClientID());
-    }
-    return api ? api.signup() : this.api.signup(email, password, invite)
-    .catch(() => this.accounts.signup(email, password, invite))
-    .then((res) => {
-      return this.init();
-    })
   }
 
   /** Returns the current account. Works for all apis */
@@ -114,54 +89,11 @@ export class SdkService {
     });
   }
 
-  /** checks given public permission for given api, defaults to this.api. Also works as ec user */
-  checkPublicPermission(permission: string, api = this.api) {
-    return this.ready.then((user) => {
-      return api.checkPermission(permission);
-    })
-  }
-
-  /** Generic password reset that works with both public and admin API. */
-  resetPassword(email, api?) {
-    if (this.noClientID()) {
-      return Promise.reject(this.noClientID());
-    }
-    return Promise.resolve(api || this.getApi(email))
-    .then((resolvedAPI) => {
-      const _api = resolvedAPI || this.accounts;
-      return !_api ? Promise.reject('api_not_found') : api.resetPassword(email);
-    });
-  }
-
-  /** Generic logout that works with both public and admin API. */
-  logout(api?) {
-    if (this.noClientID()) {
-      return Promise.reject(this.noClientID());
-    }
-    return api ? api.logout() : this.api.logout().catch(() => this.session.logout())
-    .then(() => {
-      return this.init();
-    });
-  }
-
-  getApi(email: string) {
-    if (!this.api && !this.accounts) {
-      return Promise.reject('no_api_found');
-    }
-    return this.api.emailAvailable(email)
-    .then((available) => {
-      if (!available) {
-        return this.api;
-      }
-    }).catch(() => {
-      return;
-    });
-  }
-
   noDatamanagerID() {
     if (!this.environment.datamanagerID) {
       return `
-No datamangerID is set in your environment! You can only use the SdkService if you provide an environment like this in your module's provide section:
+No datamangerID is set in your environment! You can only use the SdkService if you
+provide an environment like this in your module's provide section:
 
 providers: [
   {
@@ -173,24 +105,6 @@ providers: [
     }
   }
 ]`;
-    }
-  }
-
-  noClientID() {
-    if (!this.environment.clientID) {
-      return `
-No clientID set in environment! To enable all auth related functionalities, you can create a client in your datamanager settings and provide it with your environment:
-
-  providers: [
-    {
-      provide: 'environment',
-      useValue: {
-        datamanagerID: '83cc6374',
-        clientID: 'myClient',
-      }
-    }
-  ]
-`;
     }
   }
 }

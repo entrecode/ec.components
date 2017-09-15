@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import PublicAPI from 'ec.sdk/src/PublicAPI';
-import { SdkService } from '../../sdk/sdk.service';
 import { LoaderComponent, NotificationsService, WithLoader } from '@ec.components/ui';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'ec-password-reset',
@@ -15,11 +15,11 @@ export class PasswordResetComponent implements WithLoader {
   @Output() success: EventEmitter<void> = new EventEmitter();
   @ViewChild(LoaderComponent) loader;
 
-  constructor(public sdk: SdkService, public notifications: NotificationsService) {
+  constructor(public auth: AuthService, public notifications: NotificationsService) {
   }
 
   reset() {
-    const reset = this.sdk.resetPassword(this.email, this.api)
+    const reset = this.auth.resetPassword(this.email, this.api)
     .then(() => {
       this.notifications.emit({
         type: 'success',

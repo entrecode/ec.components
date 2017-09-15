@@ -1,16 +1,12 @@
 <div data-container>
-  <h2>ec-entry</h2>
-  <ec-entry model="muffin" id="SkXEhDZ5yW" #muffinEntry></ec-entry>
-  {{muffinEntry.entry?.getTitle()}}
+  <h2>ecEntry</h2>
+  <div ecEntry model="muffin" entryId="SkXEhDZ5yW" #muffinEntry="ecEntry"></div>
+  {{muffinEntry.entry?.name}}
 
-  <h2>ec-entries</h2>
-  <ec-entries model="muffin" [config]="{size:5}" #myMuffins></ec-entries>
-  {{myMuffins.entries().length}} MUFFINS!
-  <ul>
-    <li *ngFor="let m of myMuffins.entries()">
-      {{m.name}}
-    </li>
-  </ul>
+  <h2>ecEntry with autoload=false</h2>
+  <div ecEntry model="muffin" entryId="SkXEhDZ5yW" #lazyMuffin="ecEntry" [autoload]="false"></div>
+  <a (click)="lazyMuffin.load()" *ngIf="!lazyMuffin.entry">Laden</a>
+  {{lazyMuffin.entry?.name}}
 
   <h2>ecEntries</h2>
   <ul ecEntries model="muffin" #muffins="ecEntries" [options]="{size:10}">

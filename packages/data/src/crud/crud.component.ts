@@ -15,6 +15,7 @@ import { LoaderService } from '@ec.components/ui/src/loader/loader.service';
 import { NotificationsService } from '@ec.components/ui/src/notifications/notifications.service';
 import 'rxjs/add/operator/switchMap';
 import { merge } from 'rxjs/observable/merge';
+import { AuthService } from '../auth/auth.service';
 
 /** The CrudComponent takes at least a model name to render an entry list with create/edit/delete functionality out of the box.
  * ```html
@@ -49,6 +50,7 @@ export class CrudComponent<T> implements OnInit {
   @Output() selected: EventEmitter<any> = new EventEmitter();
 
   constructor(private sdk: SdkService,
+    private auth: AuthService,
     private loaderService: LoaderService,
     private notificationService: NotificationsService,
     @Optional() public router: Router,
@@ -66,7 +68,7 @@ export class CrudComponent<T> implements OnInit {
   getAllowedMethods(): Promise<string[]> {
     return ['get', 'post', 'put', 'delete']
     .map((method) => (results) =>
-      this.sdk.checkPublicPermission(`${this.model}:${method}`)
+      this.auth.checkPublicPermission(`${this.model}:${method}`)
       .then(res => {
         if (res) {
           results.push(method);

@@ -9,17 +9,14 @@ Make sure you have a project running that follows the Setup Tutorial.
 
 Refer to the routes tutorial. We create a route called login with a LoginComponent.
 
-### 2. Inject Sdk to login.component.ts:
+### 2. Add route redirect to login.component.ts:
 
 ```js
-import { SdkService } from '@ec.components/data';
-
-/** */
-  constructor(public sdk: SdkService) {
+  constructor(public router: Router) {
   }
 
-  login({email:string,password:string}) {
-  this.sdk.login(email,password);
+  redirect() {
+    this.router.navigate(['profile'])
   }
 ```
 
@@ -28,6 +25,6 @@ import { SdkService } from '@ec.components/data';
 Use this in your login.component.html template:
 
 ```html
-<ec-login-form (success)="login($event)"></ec-login-form>
+<ec-login (success)="redirect()"></ec-login>
 ```
 

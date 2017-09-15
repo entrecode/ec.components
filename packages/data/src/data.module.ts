@@ -7,8 +7,6 @@ import { ModelConfigService } from './model-config/model-config.service';
 import { CrudService } from './crud/crud.service';
 import { DefaultEntryInputComponent } from './entry-form/default-entry-input.component';
 import { EntryListComponent } from './entry-list/entry-list.component';
-import { EntryComponent } from './entry/entry.component';
-import { EntriesComponent } from './entries/entries.component';
 import { EntryFormComponent } from './entry-form/entry-form.component';
 import { CrudComponent } from './crud/crud.component';
 import { DefaultEntryOutputComponent } from './entry-form/default-entry-output.component';
@@ -22,6 +20,7 @@ import { SdkModule } from './sdk/sdk.module';
 import { FilesModule } from './files/files.module';
 import { AuthModule } from './auth/auth.module';
 import { EntriesDirective } from './entries/entries.directive';
+import { EntryDirective } from './entry/entry.directive';
 
 @NgModule({
   entryComponents: [
@@ -35,8 +34,7 @@ import { EntriesDirective } from './entries/entries.directive';
   ],
   declarations: [
     EntryListComponent,
-    EntryComponent,
-    EntriesComponent,
+    EntryDirective,
     EntriesDirective,
     EntryFormComponent,
     DatamanagerListComponent,
@@ -58,8 +56,7 @@ import { EntriesDirective } from './entries/entries.directive';
   ],
   exports: [
     EntryListComponent,
-    EntryComponent,
-    EntriesComponent,
+    EntryDirective,
     EntriesDirective,
     EntryFormComponent,
     CrudComponent,

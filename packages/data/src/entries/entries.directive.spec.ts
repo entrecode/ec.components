@@ -1,11 +1,12 @@
+/* // TODO
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DataModule } from '../../index';
 import { UiModule } from '@ec.components/ui';
-import { EntryComponent } from './entry.component';
+import { EntriesComponent } from './entries.component';
 
-describe('EntryComponent', () => {
-  let component: EntryComponent;
-  let fixture: ComponentFixture<EntryComponent>;
+describe('EntriesComponent', () => {
+  let component: EntriesComponent;
+  let fixture: ComponentFixture<EntriesComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -15,7 +16,7 @@ describe('EntryComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EntryComponent);
+    fixture = TestBed.createComponent(EntriesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -26,16 +27,15 @@ describe('EntryComponent', () => {
   });
 
   it('should load entry when setting model and id', () => {
-    //TODO mock new entry resource
-    /*const s = sinon.stub(Datamanager, 'entry');
-    const mockEntry = muffinList.entries[0];
-    s.returns(Promise.resolve(mockEntry));
+    /!*const s = sinon.stub(Datamanager, 'entries');
+    const mockEntries = muffinList.entries;
+    s.returns(Promise.resolve(mockEntries));
     component.model = 'muffin';
-    component.id = 'SkXEhDZ5yW';
     component.ngOnChanges();
     expect(component.promise).toBeDefined();
-    return component.promise.then((entry) => {
-      expect(component.entry).toBe(mockEntry);
-    });*/
+    return component.promise.then((entries) => {
+      expect(component.entries).toBe(mockEntries);
+    });*!/
   })
 });
+*/

@@ -1,8 +1,6 @@
 // import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { SdkService } from './sdk.service';
-import { PublicService } from './public.service';
-import { AdminService } from './admin.service';
 
 @NgModule({
   entryComponents: [],
@@ -10,9 +8,7 @@ import { AdminService } from './admin.service';
   imports: [],
   exports: [],
   providers: [
-    SdkService,
-    PublicService,
-    AdminService,
+    SdkService
   ],
 })
 export class SdkModule {
