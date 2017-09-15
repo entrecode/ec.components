@@ -1,0 +1,27 @@
+@include keyframes(loaderDefault) {
+  0% {
+    @include transform(rotate(0));
+  }
+
+  100% {
+    @include transform(rotate(360deg));
+  }
+}
+
+.ec-loader {
+  @include flexbox;
+  @include align-items(center);
+  @include justify-content(center);
+  margin: rem(16);
+
+  &:after {
+    content:'';
+    display: block;
+    height: em(24);
+    width: em(24);
+    @include border-radius(50%);
+    border: em(4) solid transparent;
+    border-right-color: getColor(state, active);
+    @include animation(loaderDefault 2s infinite);
+  }
+}

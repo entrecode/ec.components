@@ -7,8 +7,6 @@
   <a class="btn" (click)="optionsForm.submit()">LOAD</a>
 
   <pre><code>{{optionsForm.group?.value | json}}</code></pre>
-  <ec-loader [ngClass]="optionsForm.getValue('hostClass')" #loader>
-    <h1>{{optionsForm.getValue('time')}}ms loader</h1>
-    <img src="https://unsplash.it/300">
+  <ec-loader [ngClass]="optionsForm.getValue('hostClass')" class="ec-loader" #loader>
   </ec-loader>
 </div>
