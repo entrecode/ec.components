@@ -370,6 +370,9 @@
                                 id="xs-directives-links"
                             >
                                 <li class="link">
+                                    <a href="../directives/EntriesDirective.html" >EntriesDirective</a>
+                                </li>
+                                <li class="link">
                                     <a href="../directives/MediumEditorDirective.html" >MediumEditorDirective</a>
                                 </li>
                                 <li class="link">
@@ -409,6 +412,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../classes/EntryList.html" >EntryList</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/EventEmitter.html" >EventEmitter</a>
                                 </li>
                                 <li class="link">
                                     <a href="../classes/Field.html" >Field</a>
@@ -967,6 +973,9 @@
                                        id="directives-links"
                    >
                                        <li class="link">
+                                           <a href="../directives/EntriesDirective.html" >EntriesDirective</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../directives/MediumEditorDirective.html" >MediumEditorDirective</a>
                                        </li>
                                        <li class="link">
@@ -1006,6 +1015,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../classes/EntryList.html" >EntryList</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/EventEmitter.html" >EventEmitter</a>
                                        </li>
                                        <li class="link">
                                            <a href="../classes/Field.html" >Field</a>
@@ -2374,24 +2386,23 @@ export class SelectComponent&lt;T&gt; implements ControlValueAccessor, OnInit, O
   }
 
   registerOnTouched() {
-
   }
 }
 </code></pre>
     </div>
 
     <div class="tab-pane fade" id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;ec-select&quot; *ngIf&#x3D;&quot;selection&amp;&amp;list&quot;&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;ec-select&quot; *ngIf&#x3D;&quot;selection&amp;&amp;list&quot; [class.ec-select_solo]&#x3D;&quot;solo&quot; [class.ec-select_dirty]&#x3D;&quot;selection.items.length&quot;&gt;
   &lt;a (click)&#x3D;&quot;pop.toggle()&quot; class&#x3D;&quot;ec-select__placeholder&quot;&gt;
-    - Auswählen --
+    - Auswählen -
   &lt;/a&gt;
-  &lt;div class&#x3D;&quot;ec-select-selected&quot;&gt;
-    &lt;li *ngFor&#x3D;&quot;let selected of selection.items&quot; class&#x3D;&quot;pill&quot; (click)&#x3D;&quot;clickItem(selected)&quot;&gt;
-      {{selected.display()}} &lt;a (click)&#x3D;&quot;selection.remove(selected)&quot;&gt;&amp;times;&lt;/a&gt;
+  &lt;ul class&#x3D;&quot;ec-select-selected&quot;&gt;
+    &lt;li *ngFor&#x3D;&quot;let selected of selection.items&quot;&gt;
+      &lt;span [class.pill]&#x3D;&quot;!solo&quot; class&#x3D;&quot;pill_removable&quot; (click)&#x3D;&quot;clickItem(selected)&quot;&gt;{{selected.display()}} &lt;a (click)&#x3D;&quot;selection.remove(selected)&quot; class&#x3D;&quot;pill_remove&quot;&gt;&amp;times;&lt;/a&gt;&lt;/span&gt;
     &lt;/li&gt;
-  &lt;/div&gt;
-  &lt;span class&#x3D;&quot;caret&quot;&gt;&lt;/span&gt;
-  &lt;ec-pop&gt;
+  &lt;/ul&gt;
+  &lt;span (click)&#x3D;&quot;pop.toggle()&quot; class&#x3D;&quot;ec-select__toggle&quot;&gt;&lt;/span&gt;
+  &lt;ec-pop class&#x3D;&quot;ec-select-dropdown&quot;&gt;
     &lt;ec-list [list]&#x3D;&quot;list&quot; (select)&#x3D;&quot;select($event)&quot; [selection]&#x3D;&quot;selection&quot;&gt;&lt;/ec-list&gt;
   &lt;/ec-pop&gt;
 &lt;/div&gt;</code></pre>
@@ -2420,9 +2431,9 @@ export class SelectComponent&lt;T&gt; implements ControlValueAccessor, OnInit, O
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="ec-select" *ngIf="selection&&list">  <a (click)="pop.toggle()" class="ec-select__placeholder">    - Auswählen --  </a>  <div class="ec-select-selected">    <li *ngFor="let selected of selection.items" class="pill" (click)="clickItem(selected)">      {{selected.display()}} <a (click)="selection.remove(selected)">&times;</a>    </li>  </div>  <span class="caret"></span>  <ec-pop>    <ec-list [list]="list" (select)="select($event)" [selection]="selection"></ec-list>  </ec-pop></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="ec-select" *ngIf="selection&&list" [class.ec-select_solo]="solo" [class.ec-select_dirty]="selection.items.length">  <a (click)="pop.toggle()" class="ec-select__placeholder">    - Auswählen -  </a>  <ul class="ec-select-selected">    <li *ngFor="let selected of selection.items">      <span [class.pill]="!solo" class="pill_removable" (click)="clickItem(selected)">{{selected.display()}} <a (click)="selection.remove(selected)" class="pill_remove">&times;</a></span>    </li>  </ul>  <span (click)="pop.toggle()" class="ec-select__toggle"></span>  <ec-pop class="ec-select-dropdown">    <ec-list [list]="list" (select)="select($event)" [selection]="selection"></ec-list>  </ec-pop></div></div>'
     var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
-    var DIRECTIVES = [{'name': 'MediumEditorDirective', 'selector': '[ecMediumEditor]'},{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
+    var DIRECTIVES = [{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'MediumEditorDirective', 'selector': '[ecMediumEditor]'},{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'SelectComponent'};
 </script>
 <script src="../js/tree.js"></script>

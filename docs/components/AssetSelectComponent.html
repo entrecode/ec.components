@@ -370,6 +370,9 @@
                                 id="xs-directives-links"
                             >
                                 <li class="link">
+                                    <a href="../directives/EntriesDirective.html" >EntriesDirective</a>
+                                </li>
+                                <li class="link">
                                     <a href="../directives/MediumEditorDirective.html" >MediumEditorDirective</a>
                                 </li>
                                 <li class="link">
@@ -409,6 +412,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../classes/EntryList.html" >EntryList</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/EventEmitter.html" >EventEmitter</a>
                                 </li>
                                 <li class="link">
                                     <a href="../classes/Field.html" >Field</a>
@@ -967,6 +973,9 @@
                                        id="directives-links"
                    >
                                        <li class="link">
+                                           <a href="../directives/EntriesDirective.html" >EntriesDirective</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../directives/MediumEditorDirective.html" >MediumEditorDirective</a>
                                        </li>
                                        <li class="link">
@@ -1006,6 +1015,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../classes/EntryList.html" >EntryList</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/EventEmitter.html" >EventEmitter</a>
                                        </li>
                                        <li class="link">
                                            <a href="../classes/Field.html" >Field</a>
@@ -2032,7 +2044,7 @@ export class AssetSelectComponent extends SelectComponent&lt;PublicAssetResource
 <script>
         var COMPONENT_TEMPLATE = '<div><div *ngIf="selection" class="ec-asset-select" [class.ec-asset-select_solo]="solo"     [class.empty]="!selection.items.length">  <div class="ec-asset-select-upload" *ngIf="!selection.items.length || !solo">    Datei hier ablegen    <a href="">Hochladen</a>    <span> oder <a (click)="pop.toggle()">Mediathek</a></span>  </div>  <div *ngIf="selection.items.length" class="ec-asset-selected">    <ul class="ec-asset-selected__items" data-flex="small-grid">      <li *ngFor="let selected of selection.items" class="ec-asset-selected__item"          (click)="editItem(selected)" data-col="3sm">        <div class="ec-asset-card">          <img [src]="selected.resolve(\'thumb\')">          <nav class="ec-asset-card-controls">            <a (click)="selection.remove(selected)" class="ec-asset-card-controls__remove">&times;</a>          </nav>        </div>      </li>    </ul>  </div>  <ec-pop [ngClass]="config?.popClass" class="ec-pop_dialog" #assetPop>    <div class="ec-pop-header">      <div class="toolbar">        <nav class="nav">          <button type="button" class="btn btn_abort" (click)="assetPop.hide()">&times;</button>        </nav>      </div>    </div>    <div class="ec-pop-body">      <ec-loader #assetLoader class="blend"></ec-loader>      <ec-upload [placeholder]="field?.getPlaceholder()" [loader]="assetLoader"                 (success)="selectUpload($event)"></ec-upload>      <ec-asset-list [selection]="selection" [config]="config" [loader]="assetLoader"                     *ngIf="selection&&assetPop.active" (select)="select($event)"></ec-asset-list>    </div>  </ec-pop></div></div>'
     var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntriesComponent', 'selector': 'ec-entries'},{'name': 'EntryComponent', 'selector': 'ec-entry'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
-    var DIRECTIVES = [{'name': 'MediumEditorDirective', 'selector': '[ecMediumEditor]'},{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
+    var DIRECTIVES = [{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'MediumEditorDirective', 'selector': '[ecMediumEditor]'},{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'AssetSelectComponent'};
 </script>
 <script src="../js/tree.js"></script>
