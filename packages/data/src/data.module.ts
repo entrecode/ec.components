@@ -21,6 +21,7 @@ import { EditorComponent } from './editor.component';
 import { SdkModule } from './sdk/sdk.module';
 import { FilesModule } from './files/files.module';
 import { AuthModule } from './auth/auth.module';
+import { EntriesDirective } from './entries/entries.directive';
 
 @NgModule({
   entryComponents: [
@@ -36,6 +37,7 @@ import { AuthModule } from './auth/auth.module';
     EntryListComponent,
     EntryComponent,
     EntriesComponent,
+    EntriesDirective,
     EntryFormComponent,
     DatamanagerListComponent,
     ModelListComponent,
@@ -58,6 +60,7 @@ import { AuthModule } from './auth/auth.module';
     EntryListComponent,
     EntryComponent,
     EntriesComponent,
+    EntriesDirective,
     EntryFormComponent,
     CrudComponent,
     EntrySelectComponent,

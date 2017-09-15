@@ -11,4 +11,28 @@
       {{m.name}}
     </li>
   </ul>
+
+  <h2>ecEntries</h2>
+  <ul ecEntries model="muffin" #muffins="ecEntries" [options]="{size:10}">
+    <li *ngIf="!muffins.isFirst()">
+      <a (click)="muffins.prev()">prev</a>
+    </li>
+    <li *ngFor="let muffin of muffins.items">
+      {{muffin.name}}
+    </li>
+    <li *ngIf="!muffins.isLast()">
+      <a (click)="muffins.next()">NEXT</a>
+    </li>
+  </ul>
+
+  <h2>ecEntries endless</h2>
+  <ul ecEntries model="muffin" #endlessMuffins="ecEntries" [options]="{size:10}" [endless]="true">
+    <li *ngFor="let muffin of endlessMuffins.items">
+      {{muffin.name}}
+    </li>
+    <li *ngIf="!endlessMuffins.isLast()">
+      <a (click)="endlessMuffins.next()">NEXT</a>
+    </li>
+  </ul>
+
 </div>
