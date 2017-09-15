@@ -130,6 +130,5 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   }
 
   registerOnTouched() {
-
   }
 }

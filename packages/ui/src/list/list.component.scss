@@ -1,19 +1,37 @@
 .ec-list {
 
-  .ec-list__row {
+  .ec-list-row {
     display: flex;
   }
 
-  .ec-list__cell {
+  .ec-list-cell {
     flex-grow: 1;
     flex-basis: 100/12*1%;
-    display: flex;
-    align-items: center;
   }
 
   .ec-list__select {
     flex-grow: 0;
     flex-basis: 0;
+  }
+}
+
+.ec-list-cell {
+  display: flex;
+  align-items: center;
+
+  &.ec-list-field {
+    &_number {
+      text-align: right;
+      justify-content: flex-end;
+    }
+
+    &_string {
+      flex-grow: 4;
+    }
+
+    &_tags {
+      flex-grow: 4;
+    }
   }
 }
 
@@ -56,23 +74,6 @@
     .ec-list-group-header__title {
       width: 100%;
       text-align: center;
-    }
-  }
-}
-
-.ec-list__cell {
-  &.ec-list-field {
-    &_number {
-      text-align: right;
-      justify-content: flex-end;
-    }
-
-    &_string {
-      flex-grow: 4;
-    }
-
-    &_tags {
-      flex-grow: 4;
     }
   }
 }
