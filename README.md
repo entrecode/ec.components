@@ -13,7 +13,7 @@ There are three main modules:
 The dependencies stack up from core to data (data > ui > core).
 The packages sources are located at src/packages.
 
-There is also a fourth module called ```*@ec.components/styles*```.
+There is also a fourth module called ```*@ec.components/style*```.
 It contains more sophisticated styles for ui components using x.ui.
 
 ## Documentation

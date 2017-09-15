@@ -23,6 +23,7 @@ import { NotificationsDemoComponent } from './notifications-demo/notifications-d
 import { LoaderDemoComponent } from './loader-demo/loader-demo.component';
 import { MediumEditorDemoComponent } from './medium-editor-demo/medium-editor-demo.component';
 import { LoginFormComponent } from '../../packages/ui/src/utility/login-form/login-form.component';
+import { EntryPopDemoComponent } from './entry-pop-demo/entry-pop-demo.component';
 
 export const demoRoutes: Routes = [
   /*  {
@@ -106,6 +107,10 @@ export const demoRoutes: Routes = [
       {
         path: 'entry-form',
         component: EntryFormDemoComponent
+      },
+      {
+        path: 'entry-pop',
+        component: EntryPopDemoComponent
       },
       {
         path: 'entry-select',

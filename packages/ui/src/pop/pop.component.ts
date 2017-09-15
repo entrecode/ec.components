@@ -18,7 +18,7 @@ export class PopComponent {
   /** Emits the value of visible on change. */
   @Output('toggle') _toggle: EventEmitter<boolean> = new EventEmitter();
   /** The amount of time between setting active and visible. Defaults to 0. */
-  delay: number = 0;
+  delay = 0;
 
   /** Shows if not visible, hides if visible. */
   public toggle(visible: boolean = !this.visible, emit: boolean = false) {

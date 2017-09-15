@@ -21,6 +21,7 @@ import { FilesModule } from './files/files.module';
 import { AuthModule } from './auth/auth.module';
 import { EntriesDirective } from './entries/entries.directive';
 import { EntryDirective } from './entry/entry.directive';
+import { EntryPopComponent } from './entry-pop/entry-pop.component';
 
 @NgModule({
   entryComponents: [
@@ -37,6 +38,7 @@ import { EntryDirective } from './entry/entry.directive';
     EntryDirective,
     EntriesDirective,
     EntryFormComponent,
+    EntryPopComponent,
     DatamanagerListComponent,
     ModelListComponent,
     ResourceListComponent,
@@ -59,6 +61,7 @@ import { EntryDirective } from './entry/entry.directive';
     EntryDirective,
     EntriesDirective,
     EntryFormComponent,
+    EntryPopComponent,
     CrudComponent,
     EntrySelectComponent,
     DatamanagerListComponent,
