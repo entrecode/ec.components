@@ -30,7 +30,9 @@ export class TabsComponent {
   }
 
   select(tab: TabComponent) {
-    this.selected.deactivated.next();
+    if (this.selected) {
+      this.selected.deactivated.next();
+    }
     this.selected = tab;
     tab.activated.next();
   }
