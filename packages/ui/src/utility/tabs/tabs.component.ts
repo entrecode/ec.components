@@ -1,5 +1,9 @@
 import { Component, ContentChildren, Input, QueryList } from '@angular/core';
+import { Router } from '@angular/router';
 import { TabComponent } from '../tab/tab.component';
+
+class EventEmitter {
+}
 
 /** The TabsComponent holds serveral instances of TabComponent. */
 @Component({
@@ -9,6 +13,9 @@ import { TabComponent } from '../tab/tab.component';
 })
 export class TabsComponent {
   @ContentChildren(TabComponent) tabs: QueryList<TabComponent>;
+
+  constructor(private router: Router) {
+  }
 
   /** You can set the initially selected tab by passing a TabComponent in (e.g. via #variable) */
   @Input() selected: TabComponent;
@@ -23,7 +30,9 @@ export class TabsComponent {
   }
 
   select(tab: TabComponent) {
+    this.selected.deactivated.next();
     this.selected = tab;
+    tab.activated.next();
   }
 
   isSelected(tab: TabComponent) {

@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output } from '@angular/core';
 import { TabsComponent } from '../tabs/tabs.component';
 
 /** A Tab is meant to be placed inside TabsComponent */
@@ -12,6 +12,9 @@ export class TabComponent {
   @Input() label: string;
   /** If set to true, the tab will be selected at start. */
   @Input() selected: boolean;
+  @Input() route: string;
+  @Output() activated: EventEmitter<void> = new EventEmitter();
+  @Output() deactivated: EventEmitter<void> = new EventEmitter();
 
   parent: TabsComponent;
 
