@@ -6,9 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CrudConfig } from './crud-config.interface';
 import { EntryFormComponent } from '../entry-form/entry-form.component';
 import { EntryListComponent } from '../entry-list/entry-list.component';
-import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
 import { SdkService } from '../sdk/sdk.service';
-import { Item } from '@ec.components/core/src/item/item';
 import { Selection } from '@ec.components/core/src/selection/selection';
 import { LoaderComponent } from '@ec.components/ui/src/loader/loader.component';
 import { LoaderService } from '@ec.components/ui/src/loader/loader.service';
@@ -16,6 +14,7 @@ import { NotificationsService } from '@ec.components/ui/src/notifications/notifi
 import 'rxjs/add/operator/switchMap';
 import { merge } from 'rxjs/observable/merge';
 import { AuthService } from '../auth/auth.service';
+import { EntryPopComponent } from '../entry-pop/entry-pop.component';
 
 /** The CrudComponent takes at least a model name to render an entry list with create/edit/delete functionality out of the box.
  * ```html
@@ -30,18 +29,14 @@ import { AuthService } from '../auth/auth.service';
 export class CrudComponent<T> implements OnInit {
   /** The model that should be crud'ed. */
   @Input() model: string;
-  /** The calculated allowed methods. Derived from config.methods and user permissions */
-  methods: string[];
   /** CrudConfig for customization of the crud's UI.*/
   @Input() config: CrudConfig<T> = {};
   /** The selection that should be used */
   @Input() selection: Selection<T>;
-  /** The EntryForm inside the template. */
-  @ViewChild(EntryFormComponent) form: EntryFormComponent;
   /** The EntryList inside the template. */
   @ViewChild(EntryListComponent) list: EntryListComponent;
   /** The Pop inside the template. */
-  @ViewChild(PopComponent) pop: PopComponent;
+  @ViewChild(EntryPopComponent) entryPop: EntryPopComponent;
   /** The lists loader */
   @ViewChild('listLoader') loader: LoaderComponent;
   /** Emits when a list element is clicked */
@@ -65,30 +60,10 @@ export class CrudComponent<T> implements OnInit {
     }
   }
 
-  getAllowedMethods(): Promise<string[]> {
-    return ['get', 'post', 'put', 'delete']
-    .map((method) => (results) =>
-      this.auth.checkPublicPermission(`${this.model}:${method}`)
-      .then(res => {
-        if (res) {
-          results.push(method);
-        }
-        return results;
-      })
-    )
-    .reduce((a, b) => a.then(r => b(r)), Promise.resolve([]))
-    .then(methods => {
-      methods.filter(x => !!x);
-      return methods;
-    });
-  }
-
   ngOnInit() {
-    this.config.methods = this.config.methods || ['post', 'put', 'delete', 'get'];
-    this.getAllowedMethods().then((methods) => {
-      this.methods = this.config.methods.filter((method) => {
-        return methods.indexOf(method) !== -1;
-      });
+    this.auth.getAllowedMethods(this.model, this.config.methods)
+    .then((methods) => {
+      this.config.methods = methods;
     });
   }
 
@@ -98,14 +73,8 @@ export class CrudComponent<T> implements OnInit {
   }
 
   /** Returns true if the given method is part of the methods array (or if there is no methods array) */
-  public hasMethod(method: string) { // !this.methods?
-    return this.methods && this.methods.indexOf(method) !== -1;
-  }
-
-  /** Determines if the current form can be saved, based on the allowed method (edit/update). */
-  public maySave(form: EntryFormComponent) {
-    const edit = form.isEditing();
-    return (!edit && this.hasMethod('post')) || (edit && this.hasMethod('put'))
+  public hasMethod(method: string) {
+    return this.config.methods && this.config.methods.indexOf(method) !== -1;
   }
 
   /** Returns true if the visible fields in the list differ from the visible fields in the form*/
@@ -119,17 +88,13 @@ export class CrudComponent<T> implements OnInit {
   private loadEntry(item) {
     return Promise.resolve().then(() => {
       if (!this.config.alwaysLoadEntry && !this.mustReload(item) && (!this.config.levels || this.config.levels === 1)) {
-        return item;
+        return item.getBody();
       }
       return this.sdk.api.entry(this.model, item.id(), { levels: this.config.levels || 1 })
-      .then((leveledEntry) => {
-        return new Item(leveledEntry, item.config);
-      });
     }).then((loadedEntry) => {
-      this.form.edit(loadedEntry);
-      this.pop.show();
+      this.entryPop.edit(loadedEntry);
     }).catch((err) => {
-      console.log('err', err);
+      console.log('error while loading entry to edit', err);
       this.notificationService.emit({
         title: 'Fehler beim Laden',
         error: err
@@ -138,7 +103,7 @@ export class CrudComponent<T> implements OnInit {
   }
 
   /** Is called when an item in the list is clicked. */
-  private selectEntry(item, form) {
+  private selectEntry(item) {
     if (!item) {
       return;
     }

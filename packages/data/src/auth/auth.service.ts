@@ -67,6 +67,28 @@ export class AuthService {
     })
   }
 
+  /** Returns an array of all allowed methods for the given model */
+  getAllowedMethods(model: string, methods?: string[]): Promise<string[]> {
+    if (methods) {
+      return Promise.resolve(methods);
+    }
+    return ['get', 'post', 'put', 'delete']
+    .map((method) => (results) =>
+      this.checkPublicPermission(`${model}:${method}`)
+      .then(res => {
+        if (res) {
+          results.push(method);
+        }
+        return results;
+      })
+    )
+    .reduce((a, b) => a.then(r => b(r)), Promise.resolve([]))
+    .then(_methods => {
+      _methods.filter(x => !!x);
+      return _methods;
+    });
+  }
+
   /** Generic password reset that works with both public and admin API. */
   resetPassword(email, api?) {
     if (this.noClientID()) {
