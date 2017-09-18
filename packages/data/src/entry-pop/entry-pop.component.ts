@@ -60,4 +60,9 @@ export class EntryPopComponent extends PopComponent implements OnInit {
       this.config.methods = methods;
     });
   }
+
+  /** Logs the current form (Developer help). */
+  private log(form) {
+    console.dir(form);
+  }
 }

@@ -67,11 +67,6 @@ export class CrudComponent<T> implements OnInit {
     });
   }
 
-  /** Logs the current form (Developer help). */
-  private log(form) {
-    console.dir(form);
-  }
-
   /** Returns true if the given method is part of the methods array (or if there is no methods array) */
   public hasMethod(method: string) {
     return this.config.methods && this.config.methods.indexOf(method) !== -1;
