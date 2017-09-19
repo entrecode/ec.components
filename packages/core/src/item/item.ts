@@ -174,8 +174,8 @@ export class Item<T> {
     if (this.config.onSave) {
       return Promise.resolve(this.config.onSave(this, value))
       // return Promise.resolve(this.config.onSave(this, this.serialize(value)))
-      .then((value: T) => {
-        this.body = value;
+      .then((_value: T) => {
+        this.body = _value;
         return this;
       });
     }

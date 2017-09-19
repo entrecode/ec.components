@@ -1,5 +1,13 @@
 # Changelog
 
+<a name="0.8.2"></a>
+## 0.8.2
+- added ec-toggle to default inputs (use view: 'toggle' in field config)
+
+<a name="0.8.1"></a>
+## 0.8.1
+- added ec-entry-pop
+
 <a name="0.8.0"></a>
 ## 0.8.0
 BREAKING CHANGES:

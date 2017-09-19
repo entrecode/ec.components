@@ -32,7 +32,6 @@ export class EntryDirective implements OnChanges {
 
   /** as soon as model and id are known, the entry will be loaded. */
   ngOnChanges() {
-    console.log('ecentry..',this);
     if (this.autoload === false) {
       return;
     }

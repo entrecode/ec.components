@@ -12,6 +12,7 @@ import { IoModule } from '../io/io.module';
 import { DatetimeComponent } from './datetime/datetime.component';
 import { MonthComponent } from './datetime/month.component';
 import { DatetimePipe } from './datetime/datetime.pipe';
+import { ToggleComponent } from './toggle/toggle.component';
 
 @NgModule({
   entryComponents: [
@@ -25,7 +26,8 @@ import { DatetimePipe } from './datetime/datetime.pipe';
     DatetimeComponent,
     DatetimePipe,
     MonthComponent,
-    VisibleFieldsPipe
+    VisibleFieldsPipe,
+    ToggleComponent,
   ],
   imports: [
     CommonModule,
@@ -43,6 +45,7 @@ import { DatetimePipe } from './datetime/datetime.pipe';
     PopModule,
     VisibleFieldsPipe,
     IoModule,
+    ToggleComponent,
   ],
   providers: [
     FormService
