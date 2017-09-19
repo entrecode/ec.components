@@ -1372,7 +1372,7 @@
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">packages/core/src/field/field.ts:33</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">packages/core/src/field/field.ts:35</a></div>
                                         </td>
                                     </tr>
             
@@ -1441,7 +1441,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">packages/core/src/field/field.ts:42</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">packages/core/src/field/field.ts:44</a></div>
                                         </td>
                                     </tr>
             
@@ -1460,6 +1460,24 @@
                     </table>
             </section>
 
+            <section>
+                <h3 id="inputs">Indexable</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <code>[key: string]:    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+            </code>
+                                </td>
+                            </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">packages/core/src/field/field.ts:33</a></div>
+                                        </td>
+                                    </tr>
+                        </tbody>
+                    </table>
+            </section>
 
             <section>
                 
@@ -2017,6 +2035,8 @@ export class Field&lt;T&gt; implements FieldConfigProperty {
   form?: boolean;
   /** Possible Values e.g. in a select */
   values: T[];
+  /** wildcard for custom config values */
+  [key: string]: any;
 
   /** A Field is constructed by assigning the given config and the property to itself*/
   constructor(property: string, config: FieldConfigProperty &#x3D; {}) {
