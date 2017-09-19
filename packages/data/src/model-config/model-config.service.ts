@@ -102,8 +102,8 @@ export class ModelConfigService extends Config {
             label: property,
             schema: schema.properties[property],
             model: type.model,
-            readOnly: schema.properties[property].readOnly,
-            // required: schema.required.indexOf(property) !== -1,
+            readOnly: schema.properties[property].readOnly || this.isSystemProperty(property),
+            // required: schema.required.indexOf(property) !== -1, // TODO
             display: ((value) => value)
           }, this.typeConfig.get(type.name),
           fieldConfig[property] ? fieldConfig[property] : {});

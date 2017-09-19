@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import * as moment from 'moment';
 
 /** Interface for a day inside the a month. */
@@ -19,13 +19,13 @@ export interface Day {
   styleUrls: ['month.component.scss'],
   templateUrl: 'month.component.html'
 })
-export class MonthComponent {
+export class MonthComponent implements OnInit, OnChanges {
   /** The current selected date */
   @Input() selected: moment.Moment;
   /** The current date (for showing month) */
   @Input() date: moment.Moment;
   /** The current month as string */
-  private formatted: string;
+  public formatted: string;
   /** The cells containing the days */
   public cells: Array<Day>;
   /** Emits when the selected day changes. */
@@ -68,20 +68,20 @@ export class MonthComponent {
     const days = this.getDays(date.clone(), 'current');
     const start = date.clone().startOf('month');
     const end = date.clone().endOf('month');
-    const head = start.weekday(); //how many days should be shown ahead of the first?
-    let tail = 7 - end.weekday() - 1; //how many days are needed to fill the week after the last?
-    const fill = 42 - tail - days.length - head; //days to fill to get 42 total
-    tail += fill; //fill up till 42 days (6 rows)
+    const head = start.weekday(); // how many days should be shown ahead of the first?
+    let tail = 7 - end.weekday() - 1; // how many days are needed to fill the week after the last?
+    const fill = 42 - tail - days.length - head; // days to fill to get 42 total
+    tail += fill; // fill up till 42 days (6 rows)
     const before = head ? this.getDays(date.clone().subtract(1, 'month')).slice(-head) : [];
     const after = this.getDays(date.clone().add(1, 'month')).slice(0, tail);
     this.cells = [...before, ...days, ...after];
   }
 
   /** Selects the day of the given moment. */
-  selectDay(moment: moment.Moment): void {
-    this.setDate(moment);
-    this.selected = moment;
-    this.select.emit(moment);
+  selectDay(_moment: moment.Moment): void {
+    this.setDate(_moment);
+    this.selected = _moment;
+    this.select.emit(_moment);
   }
 
   /** Clears the current selected date*/
@@ -90,11 +90,11 @@ export class MonthComponent {
   }
 
   /** Returns true if the given moment is currently selected (on a day basis) */
-  isSelected(moment: moment.Moment): boolean {
+  isSelected(_moment: moment.Moment): boolean {
     if (!this.selected) {
       return;
     }
-    return this.selected.startOf('day').diff(moment, 'days') === 0;
+    return this.selected.startOf('day').diff(_moment, 'days') === 0;
   }
 
   /** Updates the viewed date to reflect the given relative changes. */

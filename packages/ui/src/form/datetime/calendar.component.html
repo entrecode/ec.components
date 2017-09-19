@@ -1,0 +1,18 @@
+<div class="ec-calendar">
+  <header class="controls">
+    <ul>
+      <li><a (click)="grid.change(-1, 'months')"><span class="ec-icon chevron-left"></span></a>
+      </li>
+      <li><h6>{{grid.formatted}}</h6></li>
+      <li><a (click)="grid.today()">&bull;</a></li>
+      <li><a (click)="grid.change(1, 'months')"><span class="ec-icon chevron-right"></span></a>
+      </li>
+    </ul>
+  </header>
+  <ul class="days">
+    <li *ngFor="let weekday of weekdays">
+      {{weekday}}
+    </li>
+  </ul>
+  <ec-month [date]="date" (select)="select($event)" #grid></ec-month>
+</div>

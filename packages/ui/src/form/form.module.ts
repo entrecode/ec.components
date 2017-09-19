@@ -13,6 +13,7 @@ import { DatetimeComponent } from './datetime/datetime.component';
 import { MonthComponent } from './datetime/month.component';
 import { DatetimePipe } from './datetime/datetime.pipe';
 import { ToggleComponent } from './toggle/toggle.component';
+import { CalendarComponent } from './datetime/calendar.component';
 
 @NgModule({
   entryComponents: [
@@ -26,6 +27,7 @@ import { ToggleComponent } from './toggle/toggle.component';
     DatetimeComponent,
     DatetimePipe,
     MonthComponent,
+    CalendarComponent,
     VisibleFieldsPipe,
     ToggleComponent,
   ],
@@ -41,6 +43,7 @@ import { ToggleComponent } from './toggle/toggle.component';
     ReactiveFormsModule,
     DatetimeComponent,
     DatetimePipe,
+    CalendarComponent,
     MonthComponent,
     PopModule,
     VisibleFieldsPipe,

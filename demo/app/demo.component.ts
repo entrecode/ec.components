@@ -29,7 +29,6 @@ export class DemoComponent {
         },
         _created: {
           label: 'Erstellt',
-          form: false,
           group: (value) => moment(value).format('YYYY')
         },
         amazement_factor: {
@@ -66,7 +65,6 @@ export class DemoComponent {
         },
         modified: {
           label: 'Letzte Änderung',
-          readOnly: true
         },
         picture: {
           label: 'Bilder',

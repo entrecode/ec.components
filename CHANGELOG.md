@@ -3,6 +3,8 @@
 <a name="0.8.2"></a>
 ## 0.8.2
 - added ec-toggle to default inputs (use view: 'toggle' in field config)
+- added ec-calendar
+- system fields (id, created, modified etc) are now readOnly by default
 
 <a name="0.8.1"></a>
 ## 0.8.1
