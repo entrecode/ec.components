@@ -31,6 +31,8 @@ export class Field<T> implements FieldConfigProperty {
   form?: boolean;
   /** Possible Values e.g. in a select */
   values: T[];
+  /** wildcard for custom config values */
+  [key: string]: any;
 
   /** A Field is constructed by assigning the given config and the property to itself*/
   constructor(property: string, config: FieldConfigProperty = {}) {
