@@ -2,7 +2,7 @@
  * Created by felix on 23.05.17.
  */
 import { Directive, ElementRef, Input, OnChanges } from '@angular/core';
-import { PublicAssetDirective } from '../public-asset/public-asset.directive';
+import { AssetDirective } from '../asset/asset.directive';
 import { SdkService } from '../../sdk/sdk.service';
 
 /** Loads an public asset image by id to the template. It can be used with img's to auto load the url to the src. */
@@ -10,7 +10,7 @@ import { SdkService } from '../../sdk/sdk.service';
   selector: '[ecImage]',
   exportAs: 'ecImage'
 })
-export class ImageDirective extends PublicAssetDirective implements OnChanges {
+export class ImageDirective extends AssetDirective implements OnChanges {
   @Input() thumb: boolean;
   @Input() size = 200;
   @Input() ecImage: string;

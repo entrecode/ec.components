@@ -145,7 +145,7 @@ export class List<T> extends Collection<Item<T>> {
     }
     const groups = [];
     this.page.forEach(item => {
-      let value = item.group(property);
+      const value = item.group(property);
       if (!groups.find((g) => g.value === value)) {
         groups.push({
           value,

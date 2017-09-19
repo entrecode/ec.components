@@ -81,6 +81,11 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
 
   /** Called when the model changes */
   writeValue(value: any) {
+    this.use(value);
+  }
+
+  /** Uses the given value as selection items */
+  use(value) {
     this.value = Array.isArray(value) ? value : (value ? [value] : []);
     Object.assign(this.config || {}, { solo: this.solo });
     if (this.selection && this.value && this.value.length) {

@@ -40,7 +40,7 @@ export class Selection<T> extends List<T> {
       this.add(item, event);
     } else if (solo) {
       if (this.items.length > 1) {
-        //if multiple are selected => keep item
+        // if multiple are selected => keep item
         return this.replaceWith([item], event);
       }
       this.removeAll();

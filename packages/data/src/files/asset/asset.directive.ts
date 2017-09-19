@@ -7,14 +7,16 @@ import { SdkService } from '../../sdk/sdk.service';
 
 /** Loads an public asset by id to the template. */
 @Directive({
-  selector: '[ecPublicAsset]',
-  exportAs: 'ecPublicAsset'
+  selector: '[ecAsset]',
+  exportAs: 'ecAsset'
 })
-export class PublicAssetDirective implements OnChanges {
+export class AssetDirective implements OnChanges {
   /** The loading promise */
   promise: any;
   /** The asset id that should be loaded*/
   @Input() assetId: string;
+  /** The asset id that should be loaded*/
+  @Input() ecAsset: string;
   /** Should the asset be loaded immediately? Defaults to true */
   @Input() autoload: boolean;
   /** The levels to use. */
@@ -30,6 +32,9 @@ export class PublicAssetDirective implements OnChanges {
 
   /** as soon as model and id are known, the asset will be loaded. */
   ngOnChanges() {
+    if (this.ecAsset) {
+      this.assetId = this.ecAsset;
+    }
     if (this.autoload === false) {
       return;
     }

@@ -1,5 +1,11 @@
 # Changelog
 
+<a name="0.9.0"></a>
+## 0.9.0
+- added use method to selection.component to write the model from outside
+BREAKING CHANGES:
+- ecPublicAsset has been renamed to ecAsset and now supports direct id binding to directive.
+
 <a name="0.8.2"></a>
 ## 0.8.2
 - added ec-toggle to default inputs (use view: 'toggle' in field config)
