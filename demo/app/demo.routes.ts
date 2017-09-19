@@ -86,11 +86,7 @@ export const demoRoutes: Routes = [
       {
         path: 'login',
         component: LoginFormComponent
-      },
-      {
-        path: 'mockups',
-        component: MockupComponent
-      },
+      }
     ]
   },
   {

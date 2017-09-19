@@ -31,7 +31,7 @@ import { EntryPopComponent } from './entry-pop/entry-pop.component';
     ModelListComponent,
     ResourceListComponent,
     EntrySelectComponent,
-    EditorComponent,
+    EditorComponent
   ],
   declarations: [
     EntryListComponent,
