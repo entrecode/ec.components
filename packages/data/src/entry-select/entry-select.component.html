@@ -10,8 +10,7 @@
     </li>
   </ul>
   <span (click)="pop.toggle()" class="ec-select__toggle"></span>
-  <!-- TODO use entry pop when ready-->
-  <ec-pop [ngClass]="config?.nestedPopClass || 'ec-select-dropdown'" #crudPop>
+  <ec-pop [ngClass]="field?.nestedPopClass || 'ec-select-dropdown'" #crudPop>
     <!-- TODO find way to embed close button to the pops that need it -->
     <ec-crud [model]="model" *ngIf="selection&&crudPop.active"
              [config]="config" [selection]="selection" (select)="select($event)" #crud></ec-crud>

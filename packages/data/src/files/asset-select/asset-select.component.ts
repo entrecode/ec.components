@@ -5,7 +5,7 @@ import { Component, forwardRef, Input, OnInit, ViewChild, ViewEncapsulation } fr
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Field } from '@ec.components/core/src/field/field';
 import { Item } from '@ec.components/core/src/item/item';
-import { FileService, Upload } from '../file.service';
+import { FileService } from '../file.service';
 import { SelectComponent } from '@ec.components/ui';
 import PublicAssetResource from 'ec.sdk/src/resources/publicAPI/PublicAssetResource';
 import { CrudConfig } from '../../crud/crud-config.interface';
@@ -29,7 +29,7 @@ import { AssetListPopComponent } from '../asset-list-pop/asset-list-pop.componen
 export class AssetSelectComponent extends SelectComponent<PublicAssetResource> implements OnInit {
   /** The formControl that is used. */
   @Input() formControl: FormControl;
-  /** The used field, which should contain a model property (when not using model input) */
+  /** The used field. Is used for its config properties like nestedPopClass. */
   @Input() field: Field<PublicAssetResource>;
   /** The form group that is used */
   protected group: FormGroup;
@@ -37,8 +37,6 @@ export class AssetSelectComponent extends SelectComponent<PublicAssetResource> i
   protected control: FormControl;
   /** The used item */
   @Input() item: Item<any>;
-  /** The model to pick from, alternative to field with model property set. */
-  @Input() model: string;
   /** The asset list pop with the list to select from */
   @ViewChild(AssetListPopComponent) pop: AssetListPopComponent;
   /** Configuration Object for List */

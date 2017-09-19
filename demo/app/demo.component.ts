@@ -19,6 +19,7 @@ export class DemoComponent {
       fields: {
         pictures: {
           label: 'Bilder',
+          // nestedPopClass: 'none'
         },
         name: {
           label: 'Muffin Name',

@@ -9,8 +9,7 @@
     </header>
     <div class="ec-pop-body">
       <ec-entry-form [model]="model" [submitButton]="false" [loader]="popLoader" [config]="config"
-                     (submit)="!this.config?.keepPopOpen&&hide()" [entry]="entry"
-                     (deleted)="hide()"
+                     (submit)="!this.config?.keepPopOpen&&hide()" [entry]="entry" (deleted)="hide()"
                      #crudForm></ec-entry-form>
     </div>
     <footer class="ec-pop-footer">
