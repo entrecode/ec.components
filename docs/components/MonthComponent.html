@@ -227,6 +227,9 @@
                                     <a href="../components/AssetSelectComponent.html" >AssetSelectComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/CalendarComponent.html" >CalendarComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/CrudComponent.html" >CrudComponent</a>
                                 </li>
                                 <li class="link">
@@ -347,6 +350,9 @@
                                     <a href="../components/TabsComponent.html" >TabsComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/ToggleComponent.html" >ToggleComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/ToolbarComponent.html" >ToolbarComponent</a>
                                 </li>
                                 <li class="link">
@@ -374,6 +380,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../directives/MediumEditorDirective.html" >MediumEditorDirective</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../directives/PublicAssetDirective.html" >PublicAssetDirective</a>
                                 </li>
                                 <li class="link">
                                     <a href="../directives/SlotHostDirective.html" >SlotHostDirective</a>
@@ -824,6 +833,9 @@
                                            <a href="../components/AssetSelectComponent.html" >AssetSelectComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/CalendarComponent.html" >CalendarComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/CrudComponent.html" >CrudComponent</a>
                                        </li>
                                        <li class="link">
@@ -944,6 +956,9 @@
                                            <a href="../components/TabsComponent.html" >TabsComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/ToggleComponent.html" >ToggleComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/ToolbarComponent.html" >ToolbarComponent</a>
                                        </li>
                                        <li class="link">
@@ -971,6 +986,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../directives/MediumEditorDirective.html" >MediumEditorDirective</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../directives/PublicAssetDirective.html" >PublicAssetDirective</a>
                                        </li>
                                        <li class="link">
                                            <a href="../directives/SlotHostDirective.html" >SlotHostDirective</a>
@@ -1253,6 +1271,13 @@
     </p>
 
 
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnInit-interface.html" target="_blank" >OnInit</a></code>
+                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnChanges-interface.html" target="_blank" >OnChanges</a></code>
+    </p>
 
 
 <section>
@@ -1309,7 +1334,7 @@
                                 <span class="modifier">Public</span> <a href="#cells">cells</a>
                             </li>
                             <li>
-                                <span class="modifier">Private</span> <a href="#formatted">formatted</a>
+                                <span class="modifier">Public</span> <a href="#formatted">formatted</a>
                             </li>
                         </ul>
                     </td>
@@ -1649,7 +1674,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-    <code>isSelected(moment: undefined)</code>
+    <code>isSelected(_moment: undefined)</code>
                         </td>
                     </tr>
     
@@ -1678,7 +1703,7 @@
                                             </thead>
                                             <tbody>
                                                     <tr>
-                                                      <td>moment</td>
+                                                      <td>_moment</td>
                                                       <td>
                                                       </td>
                                                       <td>
@@ -1807,7 +1832,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-    <code>selectDay(moment: undefined)</code>
+    <code>selectDay(_moment: undefined)</code>
                         </td>
                     </tr>
     
@@ -1836,7 +1861,7 @@
                                             </thead>
                                             <tbody>
                                                     <tr>
-                                                      <td>moment</td>
+                                                      <td>_moment</td>
                                                       <td>
                                                       </td>
                                                       <td>
@@ -2002,12 +2027,12 @@
                     <tr>
                         <td class="col-md-4">
                             <a name="formatted"></a>
-                            <span class="name"><b><span class="modifier">Private</span> formatted</b><a href="#formatted"><span class="fa fa-link"></span></a></span>
+                            <span class="name"><b><span class="modifier">Public</span> formatted</b><a href="#formatted"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <span class="modifier-icon fa fa-lock"></span><code>formatted:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                            <span class="modifier-icon fa fa-reset"></span><code>formatted:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
     </code>
                         </td>
                     </tr>
@@ -2037,7 +2062,7 @@
 
 
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { Component, EventEmitter, Input, Output } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from &#x27;@angular/core&#x27;;
 import * as moment from &#x27;moment&#x27;;
 
 /** Interface for a day inside the a month. */
@@ -2058,13 +2083,13 @@ export interface Day {
   styleUrls: [&#x27;month.component.scss&#x27;],
   templateUrl: &#x27;month.component.html&#x27;
 })
-export class MonthComponent {
+export class MonthComponent implements OnInit, OnChanges {
   /** The current selected date */
   @Input() selected: moment.Moment;
   /** The current date (for showing month) */
   @Input() date: moment.Moment;
   /** The current month as string */
-  private formatted: string;
+  public formatted: string;
   /** The cells containing the days */
   public cells: Array&lt;Day&gt;;
   /** Emits when the selected day changes. */
@@ -2107,20 +2132,20 @@ export class MonthComponent {
     const days &#x3D; this.getDays(date.clone(), &#x27;current&#x27;);
     const start &#x3D; date.clone().startOf(&#x27;month&#x27;);
     const end &#x3D; date.clone().endOf(&#x27;month&#x27;);
-    const head &#x3D; start.weekday(); //how many days should be shown ahead of the first?
-    let tail &#x3D; 7 - end.weekday() - 1; //how many days are needed to fill the week after the last?
-    const fill &#x3D; 42 - tail - days.length - head; //days to fill to get 42 total
-    tail +&#x3D; fill; //fill up till 42 days (6 rows)
+    const head &#x3D; start.weekday(); // how many days should be shown ahead of the first?
+    let tail &#x3D; 7 - end.weekday() - 1; // how many days are needed to fill the week after the last?
+    const fill &#x3D; 42 - tail - days.length - head; // days to fill to get 42 total
+    tail +&#x3D; fill; // fill up till 42 days (6 rows)
     const before &#x3D; head ? this.getDays(date.clone().subtract(1, &#x27;month&#x27;)).slice(-head) : [];
     const after &#x3D; this.getDays(date.clone().add(1, &#x27;month&#x27;)).slice(0, tail);
     this.cells &#x3D; [...before, ...days, ...after];
   }
 
   /** Selects the day of the given moment. */
-  selectDay(moment: moment.Moment): void {
-    this.setDate(moment);
-    this.selected &#x3D; moment;
-    this.select.emit(moment);
+  selectDay(_moment: moment.Moment): void {
+    this.setDate(_moment);
+    this.selected &#x3D; _moment;
+    this.select.emit(_moment);
   }
 
   /** Clears the current selected date*/
@@ -2129,11 +2154,11 @@ export class MonthComponent {
   }
 
   /** Returns true if the given moment is currently selected (on a day basis) */
-  isSelected(moment: moment.Moment): boolean {
+  isSelected(_moment: moment.Moment): boolean {
     if (!this.selected) {
       return;
     }
-    return this.selected.startOf(&#x27;day&#x27;).diff(moment, &#x27;days&#x27;) &#x3D;&#x3D;&#x3D; 0;
+    return this.selected.startOf(&#x27;day&#x27;).diff(_moment, &#x27;days&#x27;) &#x3D;&#x3D;&#x3D; 0;
   }
 
   /** Updates the viewed date to reflect the given relative changes. */
@@ -2185,8 +2210,8 @@ export class MonthComponent {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><ul class="calendar">  <li *ngFor="let day of cells"      [class.other]="day.type!==\'current\'"      [class.today]="day.today"      [class.selected]="isSelected(day.date)"      (click)="selectDay(day.date)">    {{day.format}}  </li></ul></div>'
-    var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
-    var DIRECTIVES = [{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'MediumEditorDirective', 'selector': '[ecMediumEditor]'},{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
+    var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
+    var DIRECTIVES = [{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'MediumEditorDirective', 'selector': '[ecMediumEditor]'},{'name': 'PublicAssetDirective', 'selector': '[ecPublicAsset]'},{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'MonthComponent'};
 </script>
 <script src="../js/tree.js"></script>

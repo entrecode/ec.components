@@ -227,6 +227,9 @@
                                     <a href="../components/AssetSelectComponent.html" >AssetSelectComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/CalendarComponent.html" >CalendarComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/CrudComponent.html" >CrudComponent</a>
                                 </li>
                                 <li class="link">
@@ -347,6 +350,9 @@
                                     <a href="../components/TabsComponent.html" >TabsComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/ToggleComponent.html" >ToggleComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/ToolbarComponent.html" >ToolbarComponent</a>
                                 </li>
                                 <li class="link">
@@ -374,6 +380,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../directives/MediumEditorDirective.html" >MediumEditorDirective</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../directives/PublicAssetDirective.html" >PublicAssetDirective</a>
                                 </li>
                                 <li class="link">
                                     <a href="../directives/SlotHostDirective.html" >SlotHostDirective</a>
@@ -824,6 +833,9 @@
                                            <a href="../components/AssetSelectComponent.html" >AssetSelectComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/CalendarComponent.html" >CalendarComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/CrudComponent.html" >CrudComponent</a>
                                        </li>
                                        <li class="link">
@@ -944,6 +956,9 @@
                                            <a href="../components/TabsComponent.html" >TabsComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/ToggleComponent.html" >ToggleComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/ToolbarComponent.html" >ToolbarComponent</a>
                                        </li>
                                        <li class="link">
@@ -971,6 +986,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../directives/MediumEditorDirective.html" >MediumEditorDirective</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../directives/PublicAssetDirective.html" >PublicAssetDirective</a>
                                        </li>
                                        <li class="link">
                                            <a href="../directives/SlotHostDirective.html" >SlotHostDirective</a>
@@ -1443,7 +1461,7 @@
 
 
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { Component, EventEmitter, Input, Output } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from &#x27;@angular/core&#x27;;
 import * as moment from &#x27;moment&#x27;;
 
 /** Interface for a day inside the a month. */
@@ -1464,13 +1482,13 @@ export interface Day {
   styleUrls: [&#x27;month.component.scss&#x27;],
   templateUrl: &#x27;month.component.html&#x27;
 })
-export class MonthComponent {
+export class MonthComponent implements OnInit, OnChanges {
   /** The current selected date */
   @Input() selected: moment.Moment;
   /** The current date (for showing month) */
   @Input() date: moment.Moment;
   /** The current month as string */
-  private formatted: string;
+  public formatted: string;
   /** The cells containing the days */
   public cells: Array&lt;Day&gt;;
   /** Emits when the selected day changes. */
@@ -1513,20 +1531,20 @@ export class MonthComponent {
     const days &#x3D; this.getDays(date.clone(), &#x27;current&#x27;);
     const start &#x3D; date.clone().startOf(&#x27;month&#x27;);
     const end &#x3D; date.clone().endOf(&#x27;month&#x27;);
-    const head &#x3D; start.weekday(); //how many days should be shown ahead of the first?
-    let tail &#x3D; 7 - end.weekday() - 1; //how many days are needed to fill the week after the last?
-    const fill &#x3D; 42 - tail - days.length - head; //days to fill to get 42 total
-    tail +&#x3D; fill; //fill up till 42 days (6 rows)
+    const head &#x3D; start.weekday(); // how many days should be shown ahead of the first?
+    let tail &#x3D; 7 - end.weekday() - 1; // how many days are needed to fill the week after the last?
+    const fill &#x3D; 42 - tail - days.length - head; // days to fill to get 42 total
+    tail +&#x3D; fill; // fill up till 42 days (6 rows)
     const before &#x3D; head ? this.getDays(date.clone().subtract(1, &#x27;month&#x27;)).slice(-head) : [];
     const after &#x3D; this.getDays(date.clone().add(1, &#x27;month&#x27;)).slice(0, tail);
     this.cells &#x3D; [...before, ...days, ...after];
   }
 
   /** Selects the day of the given moment. */
-  selectDay(moment: moment.Moment): void {
-    this.setDate(moment);
-    this.selected &#x3D; moment;
-    this.select.emit(moment);
+  selectDay(_moment: moment.Moment): void {
+    this.setDate(_moment);
+    this.selected &#x3D; _moment;
+    this.select.emit(_moment);
   }
 
   /** Clears the current selected date*/
@@ -1535,11 +1553,11 @@ export class MonthComponent {
   }
 
   /** Returns true if the given moment is currently selected (on a day basis) */
-  isSelected(moment: moment.Moment): boolean {
+  isSelected(_moment: moment.Moment): boolean {
     if (!this.selected) {
       return;
     }
-    return this.selected.startOf(&#x27;day&#x27;).diff(moment, &#x27;days&#x27;) &#x3D;&#x3D;&#x3D; 0;
+    return this.selected.startOf(&#x27;day&#x27;).diff(_moment, &#x27;days&#x27;) &#x3D;&#x3D;&#x3D; 0;
   }
 
   /** Updates the viewed date to reflect the given relative changes. */

@@ -22,7 +22,7 @@ export class PublicAssetDirective implements OnChanges {
   /** Fires as soon as the asset has been loaded. */
   @Output() loaded: EventEmitter<PublicAssetResource> = new EventEmitter();
   /** The current loaded asset */
-  asset: any;
+  public asset: any;
 
   /** Injects the sdk */
   constructor(private sdk: SdkService) {

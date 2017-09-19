@@ -8,6 +8,7 @@ import { AssetSelectComponent } from './asset-select/asset-select.component';
 import { FileService } from './file.service';
 import { UploadComponent } from './upload/upload.component';
 import { SdkModule } from '../sdk/sdk.module';
+import { PublicAssetDirective } from './public-asset/public-asset.directive';
 
 @NgModule({
   entryComponents: [
@@ -18,6 +19,7 @@ import { SdkModule } from '../sdk/sdk.module';
   declarations: [
     AssetListComponent,
     AssetSelectComponent,
+    PublicAssetDirective,
     UploadComponent,
   ],
   imports: [
@@ -29,6 +31,7 @@ import { SdkModule } from '../sdk/sdk.module';
   exports: [
     AssetListComponent,
     AssetSelectComponent,
+    PublicAssetDirective,
     UploadComponent,
     SdkModule,
   ],
