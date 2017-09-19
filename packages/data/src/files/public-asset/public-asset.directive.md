@@ -1,9 +1,15 @@
 # ecPublicAsset
 
-This directive can be used to load a single entry directly from the template:
+This directive can be used to load a single asset directly from the template:
 
 ```html
-<div ecPublicAsset assetId="f663ba74-d33b-499f-a37c-9a5b4cf94543"
-     #myAsset="ecPublicAsset"></div>
-<img [src]="myAsset.asset?.getImageThumbUrl()" *ngIf="myAsset.asset">
+<ul ecPublicAsset assetId="f663ba74-d33b-499f-a37c-9a5b4cf94543"
+    #myAsset="ecPublicAsset">
+  <li>id: {{myAsset.asset?.assetID}}</li>
+  <li>title: {{myAsset.asset?.title}}</li>
+  <li>tags: {{myAsset.asset?.tags}}</li>
+  <li>created: {{myAsset.asset?.created}}</li>
+  <li>type: {{myAsset.asset?.type}}</li>
+  <li>files: {{myAsset.asset?.files?.length}}</li>
+</ul>
 ```

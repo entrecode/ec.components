@@ -5,7 +5,7 @@ import { Directive, ElementRef, Input, OnChanges } from '@angular/core';
 import { PublicAssetDirective } from '../public-asset/public-asset.directive';
 import { SdkService } from '../../sdk/sdk.service';
 
-/** Loads an public asset by id to the template. */
+/** Loads an public asset image by id to the template. It can be used with img's to auto load the url to the src. */
 @Directive({
   selector: '[ecImage]',
   exportAs: 'ecImage'
@@ -21,6 +21,7 @@ export class ImageDirective extends PublicAssetDirective implements OnChanges {
 
   }
 
+  /** Reads ecImage input as assetId and loads if autoload is not false */
   ngOnChanges() {
     if (this.ecImage) {
       this.assetId = this.ecImage;
@@ -30,6 +31,7 @@ export class ImageDirective extends PublicAssetDirective implements OnChanges {
     }
   }
 
+  /** Calls super.load, then resolves the image url and assigns it to the native element src (only if it is an img) */
   load(id?: string) {
     return super.load(id).then((asset) => {
       if (asset.type !== 'image') {
