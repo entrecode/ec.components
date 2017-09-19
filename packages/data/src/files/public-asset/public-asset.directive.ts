@@ -25,7 +25,7 @@ export class PublicAssetDirective implements OnChanges {
   public asset: any;
 
   /** Injects the sdk */
-  constructor(private sdk: SdkService) {
+  constructor(public sdk: SdkService) {
   }
 
   /** as soon as model and id are known, the asset will be loaded. */
@@ -37,7 +37,8 @@ export class PublicAssetDirective implements OnChanges {
   }
 
   /** Loads the asset. Can be called from template when using autoload=false */
-  load() {
+  load(id?: string) {
+    this.assetId = id || this.assetId;
     if (!this.assetId) {
       return;
     }
@@ -46,6 +47,7 @@ export class PublicAssetDirective implements OnChanges {
       this.asset = asset;
       this.loaded.emit(asset);
       return asset;
-    })
+    });
+    return this.promise;
   }
 }

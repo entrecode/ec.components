@@ -9,6 +9,7 @@ import { FileService } from './file.service';
 import { UploadComponent } from './upload/upload.component';
 import { SdkModule } from '../sdk/sdk.module';
 import { PublicAssetDirective } from './public-asset/public-asset.directive';
+import { ImageDirective } from './image/image.directive';
 
 @NgModule({
   entryComponents: [
@@ -20,6 +21,7 @@ import { PublicAssetDirective } from './public-asset/public-asset.directive';
     AssetListComponent,
     AssetSelectComponent,
     PublicAssetDirective,
+    ImageDirective,
     UploadComponent,
   ],
   imports: [
@@ -32,6 +34,7 @@ import { PublicAssetDirective } from './public-asset/public-asset.directive';
     AssetListComponent,
     AssetSelectComponent,
     PublicAssetDirective,
+    ImageDirective,
     UploadComponent,
     SdkModule,
   ],
