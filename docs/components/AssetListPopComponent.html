@@ -224,7 +224,7 @@
                                     <a href="../components/AssetListComponent.html" >AssetListComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/AssetListPopComponent.html" >AssetListPopComponent</a>
+                                    <a href="../components/AssetListPopComponent.html"  data-type="entity-link" class="active" >AssetListPopComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/AssetSelectComponent.html" >AssetSelectComponent</a>
@@ -356,7 +356,7 @@
                                     <a href="../components/ToggleComponent.html" >ToggleComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/ToolbarComponent.html"  data-type="entity-link" class="active" >ToolbarComponent</a>
+                                    <a href="../components/ToolbarComponent.html" >ToolbarComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/UploadComponent.html" >UploadComponent</a>
@@ -836,7 +836,7 @@
                                            <a href="../components/AssetListComponent.html" >AssetListComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/AssetListPopComponent.html" >AssetListPopComponent</a>
+                                           <a href="../components/AssetListPopComponent.html"  data-type="entity-link" class="active" >AssetListPopComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/AssetSelectComponent.html" >AssetSelectComponent</a>
@@ -968,7 +968,7 @@
                                            <a href="../components/ToggleComponent.html" >ToggleComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/ToolbarComponent.html"  data-type="entity-link" class="active" >ToolbarComponent</a>
+                                           <a href="../components/ToolbarComponent.html" >ToolbarComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/UploadComponent.html" >UploadComponent</a>
@@ -1246,7 +1246,7 @@
 
 <ol class="breadcrumb">
   <li>Components</li>
-  <li>ToolbarComponent</li>
+  <li>AssetListPopComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -1271,10 +1271,26 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>packages/vc/src/toolbar/toolbar.component.ts</code>
+    <code>packages/data/src/files/asset-list-pop/asset-list-pop.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Entry Pop is an extension of Pop component to host an entry-form.
+You can use it like a normal pop but with the extra handling of an entry form inside.
+You can call edit with an entry object to edit an entry, or just call show.
+It is also possible to bind an entry directly which will then be bound to the form.</p>
 
+    </p>
+
+    <p class="comment">
+        <h3>Extends</h3>
+    </p>
+    <p class="comment">
+            <code><a href="../components/PopComponent.html" target="_self" >PopComponent</a></code>
+    </p>
 
 
 
@@ -1296,19 +1312,19 @@
 
             <tr>
                 <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>ec-vc-toolbar</code></td>
+                <td class="col-md-9"><code>ec-asset-list-pop</code></td>
             </tr>
 
             <tr>
                 <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>toolbar.component.scss</code></td>
+                <td class="col-md-9"><code>asset-list-pop.component.scss</code></td>
             </tr>
 
 
 
             <tr>
                 <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>./toolbar.component.html</code></td>
+                <td class="col-md-9"><code>./asset-list-pop.component.html</code></td>
             </tr>
 
 
@@ -1329,10 +1345,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                 <a href="#blockEvent">blockEvent</a>
-                            </li>
-                            <li>
-                                 <a href="#ngOnChanges">ngOnChanges</a>
+                                 <a href="#selectUpload">selectUpload</a>
                             </li>
                         </ul>
                     </td>
@@ -1346,24 +1359,10 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#editor">editor</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>HostListeners</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                <a href="#click">click</a>
+                                <a href="#config">config</a>
                             </li>
                             <li>
-                                <a href="#focusout">focusout</a>
+                                <a href="#selection">selection</a>
                             </li>
                         </ul>
                     </td>
@@ -1378,15 +1377,43 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor()</code>
+                            <code>constructor(auth: <a href="../injectables/AuthService.html">AuthService</a>)</code>
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">packages/vc/src/toolbar/toolbar.component.ts:28</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">packages/data/src/files/asset-list-pop/asset-list-pop.component.ts:24</a></div>
                                 </td>
                             </tr>
     
+                    <tr>
+                        <td class="col-md-4">
+                                <div>
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Type</td>
+                                                    <td>Optional</td>
+                                                    <td>Description</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                      <td>auth</td>
+                                                      <td>
+                                                                <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
     </section>
@@ -1397,85 +1424,52 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
-                            <a name="editor"></a>
-                            <code>editor</code>
+                            <a name="config"></a>
+                            <code>config</code>
                         </td>
                         <td class="col-md-10">
+                            <div><p>CrudConfig for customizing the entry-form and the pop.</p>
+</div>
                               <p>
-                                <em>Type:</em>    <code><a href="../components/EditorComponent.html" target="_self" >EditorComponent</a></code>
+                                <em>Type:</em>    <code><a href="../interfaces/CrudConfig.html" target="_self" >CrudConfig&lt;PublicAssetResource&gt;</a></code>
 
                               </p>
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">packages/vc/src/toolbar/toolbar.component.ts:18</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">packages/data/src/files/asset-list-pop/asset-list-pop.component.ts:22</a></div>
                                 </td>
                             </tr>
-                </tbody>
-            </table>
-    </section>
-
-
-
-    <section>
-        <h3>HostListeners</h3>        <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="click"></a>
-                            <span class="name"><b> click</b><a href="#click"><span class="fa fa-link"></span></a></span>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Arguments : </i><code>'$event' </code>
-                            </td>
-                        </tr>
-                    <tr>
-                        <td class="col-md-4">
-    <code>click(e: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
-                        </td>
-                    </tr>
-    
-    
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">packages/vc/src/toolbar/toolbar.component.ts:21</a></div>
-                                </td>
-                            </tr>
-    
                 </tbody>
             </table>
             <table class="table table-sm table-bordered">
                 <tbody>
                     <tr>
-                        <td class="col-md-4">
-                            <a name="focusout"></a>
-                            <span class="name"><b> focusout</b><a href="#focusout"><span class="fa fa-link"></span></a></span>
+                        <td class="col-md-2">
+                            <a name="selection"></a>
+                            <code>selection</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>The used selection </p>
+</div>
+                              <p>
+                                <em>Type:</em>    <code><a href="../classes/Selection.html" target="_self" >Selection&lt;PublicAssetResource&gt;</a></code>
+
+                              </p>
                         </td>
                     </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <i>Arguments : </i><code>'$event' </code>
-                            </td>
-                        </tr>
-                    <tr>
-                        <td class="col-md-4">
-    <code>focusout(e: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
-                        </td>
-                    </tr>
-    
-    
                             <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">packages/vc/src/toolbar/toolbar.component.ts:26</a></div>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">packages/data/src/files/asset-list-pop/asset-list-pop.component.ts:24</a></div>
                                 </td>
                             </tr>
-    
                 </tbody>
             </table>
     </section>
+
+
+
 
     <section>
         
@@ -1486,20 +1480,20 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <a name="blockEvent"></a>
-                            <span class="name"><b> blockEvent</b><a href="#blockEvent"><span class="fa fa-link"></span></a></span>
+                            <a name="selectUpload"></a>
+                            <span class="name"><b> selectUpload</b><a href="#selectUpload"><span class="fa fa-link"></span></a></span>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-    <code>blockEvent(e: )</code>
+    <code>selectUpload(upload: <a href="../interfaces/Upload.html">Upload</a>)</code>
                         </td>
                     </tr>
     
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">packages/vc/src/toolbar/toolbar.component.ts:11</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">packages/data/src/files/asset-list-pop/asset-list-pop.component.ts:30</a></div>
                                 </td>
                             </tr>
     
@@ -1519,8 +1513,9 @@
                                             </thead>
                                             <tbody>
                                                     <tr>
-                                                      <td>e</td>
+                                                      <td>upload</td>
                                                       <td>
+                                                              <code><a href="../interfaces/Upload.html" target="_self" >Upload</a></code>
                                                       </td>
                                                       <td>
                                                       </td>
@@ -1532,44 +1527,12 @@
                                 <div>
                                 </div>
                                 <div class="io-description">
-                                    <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
     
                                 </div>
                                     <div class="io-description">
                                         
                                     </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-4">
-                            <a name="ngOnChanges"></a>
-                            <span class="name"><b> ngOnChanges</b><a href="#ngOnChanges"><span class="fa fa-link"></span></a></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-    <code>ngOnChanges()</code>
-                        </td>
-                    </tr>
-    
-    
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">packages/vc/src/toolbar/toolbar.component.ts:33</a></div>
-                                </td>
-                            </tr>
-    
-                    <tr>
-                        <td class="col-md-4">
-    
-                                <div class="io-description">
-                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-    
-                                </div>
                         </td>
                     </tr>
                 </tbody>
@@ -1580,75 +1543,85 @@
 
 
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { Component, HostListener, Input } from &#x27;@angular/core&#x27;;
-import { EditorComponent } from &#x27;../editor/editor.component&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { Component, Input } from &#x27;@angular/core&#x27;;
+import PublicAssetResource from &#x27;ec.sdk/src/resources/publicAPI/PublicAssetResource&#x27;;
+import { PopComponent } from &#x27;@ec.components/ui/src/pop/pop.component&#x27;;
+import { Selection } from &#x27;@ec.components/core&#x27;;
+import { CrudConfig } from &#x27;../../crud/crud-config.interface&#x27;;
+import { AuthService } from &#x27;../../auth/auth.service&#x27;;
+import { Upload } from &#x27;../file.service&#x27;;
 
+/** Entry Pop is an extension of Pop component to host an entry-form.
+ * You can use it like a normal pop but with the extra handling of an entry form inside.
+ * You can call edit with an entry object to edit an entry, or just call show.
+ * It is also possible to bind an entry directly which will then be bound to the form.
+ * */
 @Component({
-  selector: &#x27;ec-vc-toolbar&#x27;,
-  templateUrl: &#x27;./toolbar.component.html&#x27;,
-  styleUrls: [&#x27;./toolbar.component.scss&#x27;]
+  selector: &#x27;ec-asset-list-pop&#x27;,
+  templateUrl: &#x27;./asset-list-pop.component.html&#x27;,
+  styleUrls: [&#x27;./asset-list-pop.component.scss&#x27;]
 })
-export class ToolbarComponent {
 
-  blockEvent(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    e.stopImmediatePropagation();
-    return false;
+export class AssetListPopComponent extends PopComponent {
+  /** CrudConfig for customizing the entry-form and the pop.*/
+  @Input() config: CrudConfig&lt;PublicAssetResource&gt; &#x3D; {};
+  /** The used selection */
+  @Input() selection: Selection&lt;PublicAssetResource&gt;;
+
+  constructor(private auth: AuthService) {
+    super();
   }
 
-  @Input() editor: EditorComponent;
-
-  @HostListener(&#x27;click&#x27;, [&#x27;$event&#x27;])
-  click(e: any) {
-    return this.blockEvent(e);
+  selectUpload(upload: Upload) {
+    if (this.config.solo) {
+      this.selection.select(upload.item);
+    } else {
+      this.selection.toggleAll(upload.items);
+    }
   }
-
-  @HostListener(&#x27;focusout&#x27;, [&#x27;$event&#x27;])
-  focusOut(e: any) {
-    return this.blockEvent(e);
-  }
-
-  constructor() {
-  }
-
-  ngOnChanges() {
-    // console.log(&#x27;instance&#x27;, this.editor);
-
-  }
-
 }
 </code></pre>
     </div>
 
     <div class="tab-pane fade" id="templateData">
-        <pre class="line-numbers"><code class="language-html">{{editor?.caret?.phrasing?.type || &#x27;-&#x27;}}
-&lt;div class&#x3D;&quot;ec-vc-toolbar&quot; *ngIf&#x3D;&quot;editor&quot;&gt;
-  &lt;ul&gt;
-    &lt;li *ngFor&#x3D;&quot;let el of editor.flowElements&quot;&gt;
-      &lt;a (mousedown)&#x3D;&quot;editor.setFlowElement(el,$event)&quot; class&#x3D;&quot;ecvc-modifier&quot;
-         [class.active]&#x3D;&quot;editor.isFlowActive(el)&quot;&gt;
-        {{el.tag}}
-      &lt;/a&gt;
-    &lt;/li&gt;
-  &lt;/ul&gt;
-  &lt;ul [class.disabled]&#x3D;&quot;editor?.caret?.flow&#x3D;&#x3D;&#x3D;editor?.caret?.phrasing&quot;&gt;
-    &lt;li *ngFor&#x3D;&quot;let el of editor.phrasingElements&quot;&gt;
-      &lt;a (mousedown)&#x3D;&quot;editor.setPhrasingElement(el,$event)&quot; class&#x3D;&quot;ecvc-modifier&quot;
-         [class.active]&#x3D;&quot;editor.isPhrasingActive(el)&quot;&gt;
-        {{el.tag}}
-      &lt;/a&gt;
-    &lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/div&gt;
-
-&lt;!--
-&lt;div *ngIf&#x3D;&quot;editor.caret&quot;&gt;
-  {{editor.caret?.flow?.type || &#x27;-&#x27;}} &gt;
-  {{editor.caret?.phrasing?.type || &#x27;-&#x27;}}
-&lt;/div&gt;
---&gt;
-</code></pre>
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;ec-pop-container&quot; [class.active]&#x3D;&quot;active&quot; [class.visible]&#x3D;&quot;visible&quot;&gt;
+  &lt;div class&#x3D;&quot;ec-pop&quot; *ngIf&#x3D;&quot;active&quot;&gt;
+    &lt;header class&#x3D;&quot;ec-pop-header&quot;&gt;
+      &lt;div class&#x3D;&quot;toolbar&quot;&gt;
+        &lt;nav class&#x3D;&quot;nav&quot;&gt;
+          &lt;button (click)&#x3D;&quot;hide()&quot; type&#x3D;&quot;button&quot; class&#x3D;&quot;btn btn_abort&quot;&gt;&amp;times;&lt;/button&gt;
+        &lt;/nav&gt;
+      &lt;/div&gt;
+    &lt;/header&gt;
+    &lt;div class&#x3D;&quot;ec-pop-body&quot;&gt;
+      &lt;ec-upload [loader]&#x3D;&quot;popLoader&quot; (success)&#x3D;&quot;selectUpload($event)&quot;&gt;&lt;/ec-upload&gt;
+      &lt;ec-asset-list [selection]&#x3D;&quot;selection&quot; [config]&#x3D;&quot;config&quot; [loader]&#x3D;&quot;popLoader&quot;&gt;&lt;/ec-asset-list&gt;
+    &lt;/div&gt;
+    &lt;!--&lt;footer class&#x3D;&quot;ec-pop-footer&quot;&gt;
+      &lt;nav class&#x3D;&quot;nav inline&quot;&gt;
+        &lt;ul class&#x3D;&quot;nav__items&quot;&gt;
+          &lt;li class&#x3D;&quot;nav__item&quot;&gt;
+            &lt;button (click)&#x3D;&quot;log(crudForm)&quot; *ngIf&#x3D;&quot;config?.develop&quot; class&#x3D;&quot;btn&quot;&gt;code&lt;/button&gt;
+          &lt;/li&gt;
+          &lt;li class&#x3D;&quot;nav__item&quot;&gt;
+            &lt;button (click)&#x3D;&quot;crudForm.deleteEntry()&quot; class&#x3D;&quot;btn btn_delete&quot; type&#x3D;&quot;button&quot;
+                    *ngIf&#x3D;&quot;hasMethod(&#x27;delete&#x27;)&amp;&amp;crudForm.isEditing()&quot;&gt;
+              löschen
+            &lt;/button&gt;
+          &lt;/li&gt;
+          &lt;li class&#x3D;&quot;nav__item&quot;&gt;
+            &lt;button (click)&#x3D;&quot;crudForm.submit()&quot; [disabled]&#x3D;&quot;crudForm.group?.invalid&quot; type&#x3D;&quot;button&quot;
+                    class&#x3D;&quot;btn btn_save&quot; [class.disabled]&#x3D;&quot;crudForm.group?.invalid&quot;
+                    *ngIf&#x3D;&quot;maySave(crudForm)&quot;&gt;
+              speichern
+            &lt;/button&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/nav&gt;
+    &lt;/footer&gt;--&gt;
+    &lt;ec-loader #popLoader class&#x3D;&quot;blend&quot;&gt;&lt;/ec-loader&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
     </div>
 
     <div class="tab-pane fade" id="tree">
@@ -1674,10 +1647,10 @@ export class ToolbarComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div>{{editor?.caret?.phrasing?.type || \'-\'}}<div class="ec-vc-toolbar" *ngIf="editor">  <ul>    <li *ngFor="let el of editor.flowElements">      <a (mousedown)="editor.setFlowElement(el,$event)" class="ecvc-modifier"         [class.active]="editor.isFlowActive(el)">        {{el.tag}}      </a>    </li>  </ul>  <ul [class.disabled]="editor?.caret?.flow===editor?.caret?.phrasing">    <li *ngFor="let el of editor.phrasingElements">      <a (mousedown)="editor.setPhrasingElement(el,$event)" class="ecvc-modifier"         [class.active]="editor.isPhrasingActive(el)">        {{el.tag}}      </a>    </li>  </ul></div><!--<div *ngIf="editor.caret">  {{editor.caret?.flow?.type || \'-\'}} >  {{editor.caret?.phrasing?.type || \'-\'}}</div>--></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="ec-pop-container" [class.active]="active" [class.visible]="visible">  <div class="ec-pop" *ngIf="active">    <header class="ec-pop-header">      <div class="toolbar">        <nav class="nav">          <button (click)="hide()" type="button" class="btn btn_abort">&times;</button>        </nav>      </div>    </header>    <div class="ec-pop-body">      <ec-upload [loader]="popLoader" (success)="selectUpload($event)"></ec-upload>      <ec-asset-list [selection]="selection" [config]="config" [loader]="popLoader"></ec-asset-list>    </div>    <!--<footer class="ec-pop-footer">      <nav class="nav inline">        <ul class="nav__items">          <li class="nav__item">            <button (click)="log(crudForm)" *ngIf="config?.develop" class="btn">code</button>          </li>          <li class="nav__item">            <button (click)="crudForm.deleteEntry()" class="btn btn_delete" type="button"                    *ngIf="hasMethod(\'delete\')&&crudForm.isEditing()">              löschen            </button>          </li>          <li class="nav__item">            <button (click)="crudForm.submit()" [disabled]="crudForm.group?.invalid" type="button"                    class="btn btn_save" [class.disabled]="crudForm.group?.invalid"                    *ngIf="maySave(crudForm)">              speichern            </button>          </li>        </ul>      </nav>    </footer>-->    <ec-loader #popLoader class="blend"></ec-loader>  </div></div></div>'
     var COMPONENTS = [{'name': 'AdminLoginComponent', 'selector': 'ec-auth-admin-login'},{'name': 'AdminSignupComponent', 'selector': 'ec-auth-admin-signup'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'PublicLoginComponent', 'selector': 'ec-auth-public-login'},{'name': 'PublicSignupComponent', 'selector': 'ec-auth-public-signup'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
     var DIRECTIVES = [{'name': 'AssetDirective', 'selector': '[ecAsset]'},{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'ImageDirective', 'selector': '[ecImage]'},{'name': 'MediumEditorDirective', 'selector': '[ecMediumEditor]'},{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
-    var ACTUAL_COMPONENT = {'name': 'ToolbarComponent'};
+    var ACTUAL_COMPONENT = {'name': 'AssetListPopComponent'};
 </script>
 <script src="../js/tree.js"></script>
 

@@ -224,6 +224,9 @@
                                     <a href="../components/AssetListComponent.html" >AssetListComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/AssetListPopComponent.html" >AssetListPopComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/AssetSelectComponent.html" >AssetSelectComponent</a>
                                 </li>
                                 <li class="link">
@@ -373,6 +376,9 @@
                                 id="xs-directives-links"
                             >
                                 <li class="link">
+                                    <a href="../directives/AssetDirective.html" >AssetDirective</a>
+                                </li>
+                                <li class="link">
                                     <a href="../directives/EntriesDirective.html" >EntriesDirective</a>
                                 </li>
                                 <li class="link">
@@ -383,9 +389,6 @@
                                 </li>
                                 <li class="link">
                                     <a href="../directives/MediumEditorDirective.html" >MediumEditorDirective</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../directives/PublicAssetDirective.html" >PublicAssetDirective</a>
                                 </li>
                                 <li class="link">
                                     <a href="../directives/SlotHostDirective.html" >SlotHostDirective</a>
@@ -833,6 +836,9 @@
                                            <a href="../components/AssetListComponent.html" >AssetListComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/AssetListPopComponent.html" >AssetListPopComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/AssetSelectComponent.html" >AssetSelectComponent</a>
                                        </li>
                                        <li class="link">
@@ -982,6 +988,9 @@
                                        id="directives-links"
                    >
                                        <li class="link">
+                                           <a href="../directives/AssetDirective.html" >AssetDirective</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../directives/EntriesDirective.html" >EntriesDirective</a>
                                        </li>
                                        <li class="link">
@@ -992,9 +1001,6 @@
                                        </li>
                                        <li class="link">
                                            <a href="../directives/MediumEditorDirective.html" >MediumEditorDirective</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../directives/PublicAssetDirective.html" >PublicAssetDirective</a>
                                        </li>
                                        <li class="link">
                                            <a href="../directives/SlotHostDirective.html" >SlotHostDirective</a>
@@ -1666,7 +1672,7 @@
 
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { Directive, ElementRef, Input, OnChanges } from &#x27;@angular/core&#x27;;
-import { PublicAssetDirective } from &#x27;../public-asset/public-asset.directive&#x27;;
+import { AssetDirective } from &#x27;../asset/asset.directive&#x27;;
 import { SdkService } from &#x27;../../sdk/sdk.service&#x27;;
 
 /** Loads an public asset image by id to the template. It can be used with img&#x27;s to auto load the url to the src. */
@@ -1674,7 +1680,7 @@ import { SdkService } from &#x27;../../sdk/sdk.service&#x27;;
   selector: &#x27;[ecImage]&#x27;,
   exportAs: &#x27;ecImage&#x27;
 })
-export class ImageDirective extends PublicAssetDirective implements OnChanges {
+export class ImageDirective extends AssetDirective implements OnChanges {
   @Input() thumb: boolean;
   @Input() size &#x3D; 200;
   @Input() ecImage: string;
