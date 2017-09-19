@@ -25,6 +25,8 @@ export class DatetimeComponent implements ControlValueAccessor {
   @ViewChild(CalendarComponent) calendar: CalendarComponent;
   /** Array of the days of a week. */
   public weekdays: string[];
+  /** If true, the time will not be displayed nor will be editable. */
+  @Input() disableTime: boolean;
   /** The input's placeholder */
   @Input() placeholder = '';
 

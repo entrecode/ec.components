@@ -18,7 +18,7 @@ export class DemoComponent {
     this.modelConfig.set('muffin', {
       fields: {
         pictures: {
-          label: 'Bilder'
+          label: 'Bilder',
         },
         name: {
           label: 'Muffin Name',
