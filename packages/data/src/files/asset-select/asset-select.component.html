@@ -19,6 +19,7 @@
       </li>
     </ul>
   </div>
-  <ec-asset-list-pop [config]="config" [selection]="selection"
+  <ec-asset-list-pop [config]="config" [selection]="selection" [active]="field?.nestedPopActive"
+                     [visible]="field?.nestedPopVisible"
                      [ngClass]="field?.nestedPopClass || 'ec-pop_dialog'"></ec-asset-list-pop>
 </div>
