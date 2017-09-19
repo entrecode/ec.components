@@ -4,7 +4,7 @@
   passed id:
   <pre>{{selectedAssets | json}}</pre>
 
-  <ec-asset-select model="muffin" [config]="{size:3}" #assetSelect [solo]="true"
+  <ec-asset-select model="muffin" [config]="{size:3}" #assetSelect
                    [(ngModel)]="selectedAssets"></ec-asset-select>
   <div *ngIf="assetSelect.selection?.items?.length">
     <strong>Manual iteration over selected asset items</strong>

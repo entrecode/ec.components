@@ -12,26 +12,13 @@
         <div class="ec-asset-card">
           <img [src]="selected.resolve('thumb')">
           <nav class="ec-asset-card-controls">
-            <a (click)="selection.remove(selected)" class="ec-asset-card-controls__remove">&times;</a>
+            <a (click)="selection.remove(selected)"
+               class="ec-asset-card-controls__remove">&times;</a>
           </nav>
         </div>
       </li>
     </ul>
   </div>
-  <ec-pop [ngClass]="config?.popClass" class="ec-pop_dialog" #assetPop>
-    <div class="ec-pop-header">
-      <div class="toolbar">
-        <nav class="nav">
-          <button type="button" class="btn btn_abort" (click)="assetPop.hide()">&times;</button>
-        </nav>
-      </div>
-    </div>
-    <div class="ec-pop-body">
-      <ec-loader #assetLoader class="blend"></ec-loader>
-      <ec-upload [placeholder]="field?.getPlaceholder()" [loader]="assetLoader"
-                 (success)="selectUpload($event)"></ec-upload>
-      <ec-asset-list [selection]="selection" [config]="config" [loader]="assetLoader"
-                     *ngIf="selection&&assetPop.active" (select)="select($event)"></ec-asset-list>
-    </div>
-  </ec-pop>
+  <ec-asset-list-pop [config]="config" [selection]="selection"
+                     [ngClass]="config?.nestedPopClass || 'ec-pop_dialog'"></ec-asset-list-pop>
 </div>

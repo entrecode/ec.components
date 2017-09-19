@@ -94,9 +94,4 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
     });
     // TODO open edit pop
   }
-
-  /** Returns pop class for entry picker, defaults to no class. */
-  getPopClass() {
-    return this.config && this.config.nestedPopClass ? this.config.nestedPopClass : 'ec-select-dropdown';
-  }
 }

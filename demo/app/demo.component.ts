@@ -68,7 +68,7 @@ export class DemoComponent {
         },
         picture: {
           label: 'Bilder',
-          list: false
+          nestedPopClass: 'ec-pop_drawer-right'
         },
         name: {
           label: 'Bäcker'

@@ -10,6 +10,7 @@ import { UploadComponent } from './upload/upload.component';
 import { SdkModule } from '../sdk/sdk.module';
 import { AssetDirective } from './asset/asset.directive';
 import { ImageDirective } from './image/image.directive';
+import { AssetListPopComponent } from './asset-list-pop/asset-list-pop.component';
 
 @NgModule({
   entryComponents: [
@@ -19,6 +20,7 @@ import { ImageDirective } from './image/image.directive';
   ],
   declarations: [
     AssetListComponent,
+    AssetListPopComponent,
     AssetSelectComponent,
     AssetDirective,
     ImageDirective,
@@ -32,6 +34,7 @@ import { ImageDirective } from './image/image.directive';
   ],
   exports: [
     AssetListComponent,
+    AssetListPopComponent,
     AssetSelectComponent,
     AssetDirective,
     ImageDirective,

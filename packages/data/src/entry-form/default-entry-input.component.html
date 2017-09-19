@@ -10,11 +10,11 @@
   </div>
   <div *ngSwitchCase="'asset'">
     <ec-asset-select [formControl]="group.get(field.property)" [field]="field"
-                     [solo]="true" [item]="item"></ec-asset-select>
+                     [solo]="true" [item]="item" [config]="field?.config"></ec-asset-select>
   </div>
   <div *ngSwitchCase="'assets'">
     <ec-asset-select [formControl]="group.get(field.property)" [field]="field"
-                     [item]="item"></ec-asset-select>
+                     [item]="item" [config]="field?.config"></ec-asset-select>
   </div>
   <input *ngSwitchCase="'phone'" type="text" [placeholder]="field.placeholder">
   <div *ngSwitchDefault>

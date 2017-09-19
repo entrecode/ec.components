@@ -6,9 +6,10 @@ import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Field } from '@ec.components/core/src/field/field';
 import { Item } from '@ec.components/core/src/item/item';
 import { FileService, Upload } from '../file.service';
-import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
 import { SelectComponent } from '@ec.components/ui';
 import PublicAssetResource from 'ec.sdk/src/resources/publicAPI/PublicAssetResource';
+import { CrudConfig } from '../../crud/crud-config.interface';
+import { AssetListPopComponent } from '../asset-list-pop/asset-list-pop.component';
 
 /** Shows assets of a selection and is able to pick new ones from a crud list */
 @Component({
@@ -39,7 +40,9 @@ export class AssetSelectComponent extends SelectComponent<PublicAssetResource> i
   /** The model to pick from, alternative to field with model property set. */
   @Input() model: string;
   /** The asset list pop with the list to select from */
-  @ViewChild('assetPop') pop: PopComponent;
+  @ViewChild(AssetListPopComponent) pop: AssetListPopComponent;
+  /** Configuration Object for List */
+  @Input() config: CrudConfig<PublicAssetResource>;
 
   constructor(private fileService: FileService) {
     super();
@@ -67,21 +70,13 @@ export class AssetSelectComponent extends SelectComponent<PublicAssetResource> i
     });
   }
 
-  selectUpload(upload: Upload) {
-    if (this.solo) {
-      this.selection.select(upload.item);
-    } else {
-      this.selection.toggleAll(upload.items);
-    }
-  }
-
   editItem(item) {
     if (!item.getBody().isResolved) {
       item.getBody().resolve().then((asset) => {
-        console.log('resolved', asset);
+        // console.log('resolved', asset);
       })
     } else {
-      console.log('edit', item.getBody());
+      // console.log('edit', item.getBody());
     }
     // TODO open edit pop
   }

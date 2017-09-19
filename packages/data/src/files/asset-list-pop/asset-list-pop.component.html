@@ -1,0 +1,38 @@
+<div class="ec-pop-container" [class.active]="active" [class.visible]="visible">
+  <div class="ec-pop" *ngIf="active">
+    <header class="ec-pop-header">
+      <div class="toolbar">
+        <nav class="nav">
+          <button (click)="hide()" type="button" class="btn btn_abort">&times;</button>
+        </nav>
+      </div>
+    </header>
+    <div class="ec-pop-body">
+      <ec-upload [loader]="popLoader" (success)="selectUpload($event)"></ec-upload>
+      <ec-asset-list [selection]="selection" [config]="config" [loader]="popLoader"></ec-asset-list>
+    </div>
+    <!--<footer class="ec-pop-footer">
+      <nav class="nav inline">
+        <ul class="nav__items">
+          <li class="nav__item">
+            <button (click)="log(crudForm)" *ngIf="config?.develop" class="btn">code</button>
+          </li>
+          <li class="nav__item">
+            <button (click)="crudForm.deleteEntry()" class="btn btn_delete" type="button"
+                    *ngIf="hasMethod('delete')&&crudForm.isEditing()">
+              löschen
+            </button>
+          </li>
+          <li class="nav__item">
+            <button (click)="crudForm.submit()" [disabled]="crudForm.group?.invalid" type="button"
+                    class="btn btn_save" [class.disabled]="crudForm.group?.invalid"
+                    *ngIf="maySave(crudForm)">
+              speichern
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </footer>-->
+    <ec-loader #popLoader class="blend"></ec-loader>
+  </div>
+</div>
