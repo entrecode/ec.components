@@ -7,7 +7,7 @@
     "ng": "ng",
     "start": "npm run symlinks && npm run delete-modules && ng serve --ssl --port 1337",
     "aot": "npm run symlinks && npm run delete-modules && ng serve --aot --ssl",
-    "build": "ng build --prod --env=prod",
+    "build": "ng build --prod --env=prod --aot=false",
     "test": "ng test --cc",
     "lint": "ng lint",
     "symlinks": "sh ./symlinks.sh",
@@ -44,7 +44,7 @@
     "tinymce": "^4.6.7"
   },
   "devDependencies": {
-    "@angular/cli": "^1.4.2",
+    "@angular/cli": "1.5.0-beta.0",
     "@angular/compiler-cli": "^4.0.0",
     "@compodoc/compodoc": "^1.0.0-beta.14",
     "@types/jasmine": "^2.6.0",
