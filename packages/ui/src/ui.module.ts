@@ -35,7 +35,4 @@ import { SelectModule } from './select/select.module';
   ]
 })
 export class UiModule {
-  forRoot() {
-
-  }
 }

@@ -14,3 +14,6 @@ ln -s ../../packages/style
 
 rm -rf medium-editor
 ln -s ../../packages/medium-editor
+
+rm -rf tinymce
+ln -s ../../packages/tinymce

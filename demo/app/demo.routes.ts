@@ -6,7 +6,6 @@ import { EntryListDemoComponent } from './entry-list/entry-list.demo.component';
 import { FormDemoComponent } from './form/form-demo.component';
 import { TabsDemoComponent } from './tabs/tabs-demo.component';
 import { EntryFormDemoComponent } from './entry-form/entry-form.demo.component';
-import { MockupComponent } from '../../packages/ui/src/utility/mockup/mockup.component';
 import { CrudDemoComponent } from './crud/crud-demo.component';
 import { SelectDemoComponent } from './select/select-demo.component';
 import { EntrySelectDemoComponent } from './entry-select/entry-select-demo.component';
@@ -24,6 +23,7 @@ import { LoaderDemoComponent } from './loader-demo/loader-demo.component';
 import { MediumEditorDemoComponent } from './medium-editor-demo/medium-editor-demo.component';
 import { LoginFormComponent } from '../../packages/ui/src/utility/login-form/login-form.component';
 import { EntryPopDemoComponent } from './entry-pop-demo/entry-pop-demo.component';
+import { TinymceDemoComponent } from './tinymce-demo/tinymce-demo.component';
 
 export const demoRoutes: Routes = [
   /*  {
@@ -166,6 +166,10 @@ export const demoRoutes: Routes = [
       {
         path: 'medium-editor',
         component: MediumEditorDemoComponent
+      },
+      {
+        path: 'tinymce',
+        component: TinymceDemoComponent
       }
     ]
   },

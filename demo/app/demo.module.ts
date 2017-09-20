@@ -34,6 +34,8 @@ import { LoaderDemoComponent } from './loader-demo/loader-demo.component';
 import { MediumModule } from '../../packages/medium-editor/src/medium.module';
 import { MediumEditorDemoComponent } from './medium-editor-demo/medium-editor-demo.component';
 import { EntryPopDemoComponent } from './entry-pop-demo/entry-pop-demo.component';
+import { TinymceModule } from '../../packages/tinymce/src/tinymce.module';
+import { TinymceDemoComponent } from './tinymce-demo/tinymce-demo.component';
 
 demoRoutes.unshift(
   {
@@ -72,6 +74,7 @@ demoRoutes.unshift(
     NotificationsDemoComponent,
     LoaderDemoComponent,
     MediumEditorDemoComponent,
+    TinymceDemoComponent,
   ],
   entryComponents: [
     CoolStringComponent,
@@ -84,6 +87,7 @@ demoRoutes.unshift(
     VcModule,
     RouterModule.forRoot(demoRoutes),
     MediumModule,
+    TinymceModule,
   ],
   providers: [
     {

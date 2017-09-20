@@ -11,6 +11,7 @@ Create a new folder, e.g. ```mkdir packages/medium-editor```
 ```cd packages/medium-editor && npm init```
 
 - Make sure to name the package scoped: ```@ec.components/*```
+- Add dependencies according to your needs, e.g. angular etc.
 
 ## 3. Create src folder
 
@@ -28,7 +29,8 @@ Create a src folder and add your super cool typescript code.
 
 ## 6. add package to main package.json dependencies
 
-- Keep version up to date
+- Keep version up to date (or use * as wildcard)
+- run ```npm i```
 
 ## 7. add package to lerna.json
 
@@ -43,3 +45,5 @@ npm publish --access=public
 ```
 
 see https://docs.npmjs.com/cli/access#details.
+
+## 9. Add Demo
