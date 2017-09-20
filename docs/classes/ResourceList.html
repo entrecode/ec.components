@@ -1338,7 +1338,7 @@ method to call the SDK method for loading the desired list! (see EntryList for e
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">packages/data/src/resource-list/resource-list.ts:24</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">packages/data/src/resource-list/resource-list.ts:33</a></div>
                                         </td>
                                     </tr>
             
@@ -1408,7 +1408,7 @@ method to call the SDK method for loading the desired list! (see EntryList for e
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="117" class="link-to-prism">packages/data/src/resource-list/resource-list.ts:117</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">packages/data/src/resource-list/resource-list.ts:119</a></div>
                                         </td>
                                     </tr>
             
@@ -1480,7 +1480,7 @@ method to call the SDK method for loading the desired list! (see EntryList for e
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">packages/data/src/resource-list/resource-list.ts:101</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">packages/data/src/resource-list/resource-list.ts:103</a></div>
                                         </td>
                                     </tr>
             
@@ -1553,7 +1553,7 @@ method to call the SDK method for loading the desired list! (see EntryList for e
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">packages/data/src/resource-list/resource-list.ts:92</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">packages/data/src/resource-list/resource-list.ts:27</a></div>
                                         </td>
                                     </tr>
             
@@ -1626,7 +1626,7 @@ method to call the SDK method for loading the desired list! (see EntryList for e
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">packages/data/src/resource-list/resource-list.ts:67</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">packages/data/src/resource-list/resource-list.ts:76</a></div>
                                         </td>
                                     </tr>
             
@@ -1689,7 +1689,7 @@ method to call the SDK method for loading the desired list! (see EntryList for e
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">packages/data/src/resource-list/resource-list.ts:85</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">packages/data/src/resource-list/resource-list.ts:96</a></div>
                                         </td>
                                     </tr>
             
@@ -1763,7 +1763,7 @@ method to call the SDK method for loading the desired list! (see EntryList for e
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">packages/data/src/resource-list/resource-list.ts:46</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">packages/data/src/resource-list/resource-list.ts:55</a></div>
                                         </td>
                                     </tr>
             
@@ -1826,7 +1826,7 @@ method to call the SDK method for loading the desired list! (see EntryList for e
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">packages/data/src/resource-list/resource-list.ts:34</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">packages/data/src/resource-list/resource-list.ts:43</a></div>
                                         </td>
                                     </tr>
             
@@ -2074,6 +2074,15 @@ export class ResourceList&lt;T&gt; extends List&lt;T&gt; {
   /** Observable that is nexted when the list has an error. */
   public error$: Observable&lt;Error&gt; &#x3D; this.error.asObservable();
 
+  /** Returns the operator to use for filtering the given property. Defaults to search. */
+  protected static getFilterOperator(property: string, fields: Array&lt;Field&gt;): string {
+    if (!fields) {
+      return &#x27;search&#x27;;
+    }
+    const field &#x3D; fields.find((_field) &#x3D;&gt; _field.property &#x3D;&#x3D;&#x3D; property);
+    return field &amp;&amp; field.filterOperator ? field.filterOperator : &#x27;search&#x27;;
+  }
+
   /** The constructor will init the List and Pagination instances.
    * Make sure the config is already complete when initiating an EntryList instance. */
   constructor(config: ListConfig&lt;T&gt;, protected sdk: SdkService) {
@@ -2121,12 +2130,14 @@ export class ResourceList&lt;T&gt; extends List&lt;T&gt; {
       Object.assign(options, { sort: [(desc ? &#x27;-&#x27; : &#x27;&#x27;) + sortBy] });
     }
     if (filter) {
-      for (let property in filter) {
-        Object.assign(options, {
-          [property]: {
-            [ResourceList.getFilterOperator(property, this.fields)]: filter[property]
-          }
-        });
+      for (const property in filter) {
+        if (filter.hasOwnProperty(property)) {
+          Object.assign(options, {
+            [property]: {
+              [ResourceList.getFilterOperator(property, this.fields)]: filter[property]
+            }
+          });
+        }
       }
     }
     return options;
@@ -2139,21 +2150,12 @@ export class ResourceList&lt;T&gt; extends List&lt;T&gt; {
     this.load();
   }
 
-  /** Returns the operator to use for filtering the given property. Defaults to search. */
-  protected static getFilterOperator(property: string, fields: Array&lt;Field&lt;any&gt;&gt;): string {
-    if (!fields) {
-      return &#x27;search&#x27;;
-    }
-    const field &#x3D; fields.find((field) &#x3D;&gt; field.property &#x3D;&#x3D;&#x3D; property);
-    return field &amp;&amp; field.filterOperator ? field.filterOperator : &#x27;search&#x27;;
-  }
-
   /** Updates the config.filter with the given property filter. */
   filterProperty(property: string, value: any &#x3D; &#x27;&#x27;) {
     const currentFilter &#x3D; this.config.filter || {};
     if (value &#x3D;&#x3D;&#x3D; &#x27;&#x27; || value &#x3D;&#x3D;&#x3D; null || value &#x3D;&#x3D;&#x3D; undefined || (Array.isArray(value) &amp;&amp; !value.length)) {
       if (!currentFilter[property]) {
-        return; //filter is already empty &#x3D;&gt; no need to load again
+        return; // filter is already empty &#x3D;&gt; no need to load again
       }
       delete currentFilter[property];
     } else {

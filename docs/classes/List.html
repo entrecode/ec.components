@@ -2363,7 +2363,7 @@ export class List&lt;T&gt; extends Collection&lt;Item&lt;T&gt;&gt; {
    * Array of Properties that are relevant for each item. The fields are populated on construction
    * via getFields method.
    */
-  public fields: Array&lt;Field&lt;T&gt;&gt;;
+  public fields: Array&lt;Field&gt;;
   /**
    * The List Configuration, click on ListConfig for details. Can be given an optional ListConfig.
    */
@@ -2419,7 +2419,7 @@ export class List&lt;T&gt; extends Collection&lt;Item&lt;T&gt;&gt; {
    * Distills Array of item properties. Either uses keys of config.fields or parses the item
    * properties directly.
    */
-  protected getFields(): Array&lt;Field&lt;T&gt;&gt; {
+  protected getFields(): Array&lt;Field&gt; {
     if (this.config &amp;&amp; this.config.fields) {
       return Object.keys(this.config.fields)
       .filter((key) &#x3D;&gt; this.config.fields[key].list !&#x3D;&#x3D; false)

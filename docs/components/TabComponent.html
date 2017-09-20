@@ -1499,7 +1499,7 @@
                             <code>activated</code>
                         </td>
                         <td class="col-md-10">
-                            <em><code>$event</code> type:</em>    <code><a href="../classes/EventEmitter.html" target="_self" >EventEmitter&lt;void&gt;</a></code>
+                            <em><code>$event</code> type:</em>    <code><a href="../classes/EventEmitter.html" target="_self" >EventEmitter&lt;any&gt;</a></code>
 
                         </td>
                     </tr>
@@ -1518,7 +1518,7 @@
                             <code>deactivated</code>
                         </td>
                         <td class="col-md-10">
-                            <em><code>$event</code> type:</em>    <code><a href="../classes/EventEmitter.html" target="_self" >EventEmitter&lt;void&gt;</a></code>
+                            <em><code>$event</code> type:</em>    <code><a href="../classes/EventEmitter.html" target="_self" >EventEmitter&lt;any&gt;</a></code>
 
                         </td>
                     </tr>
@@ -1657,8 +1657,8 @@ export class TabComponent {
   /** If set to true, the tab will be selected at start. */
   @Input() selected: boolean;
   @Input() route: string;
-  @Output() activated: EventEmitter&lt;void&gt; &#x3D; new EventEmitter();
-  @Output() deactivated: EventEmitter&lt;void&gt; &#x3D; new EventEmitter();
+  @Output() activated: EventEmitter&lt;any&gt; &#x3D; new EventEmitter();
+  @Output() deactivated: EventEmitter&lt;any&gt; &#x3D; new EventEmitter();
 
   parent: TabsComponent;
 

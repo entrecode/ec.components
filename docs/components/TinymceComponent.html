@@ -2047,10 +2047,10 @@ export class TinymceComponent implements OnInit, OnDestroy, ControlValueAccessor
 
   /** Initializes the editor */
   ngOnInit() {
-    this.ready &#x3D; tinymce.init(
+    this.ready &#x3D; Promise.resolve(tinymce.init(
       Object.assign(editorSettings, {
         target: this.container.nativeElement
-      }, this.settings)).then((editor) &#x3D;&gt; {
+      }, this.settings))).then((editor) &#x3D;&gt; {
       this.editor &#x3D; editor[0];
       this.editor.setContent(this.value || &#x27;&#x27;);
       this.editor.on(&#x27;dblclick&#x27;, (e) &#x3D;&gt; {

@@ -1,7 +1,8 @@
-import { Field } from '../../index';
 /**
  * Created by felix on 09.05.17.
  */
+import { Field } from './field';
+
 describe('Field', () => {
 
   it('should construct without config', () => {

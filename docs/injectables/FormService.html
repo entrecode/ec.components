@@ -1358,7 +1358,7 @@
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>getValidators(field: <a href="../classes/Field.html">Field<any></a>)</code>
+            <code>getValidators(field: <a href="../classes/Field.html">Field</a>)</code>
                                 </td>
                             </tr>
             
@@ -1389,7 +1389,7 @@
                                                             <tr>
                                                               <td>field</td>
                                                               <td>
-                                                                      <code><a href="../classes/Field.html" target="_self" >Field&lt;any&gt;</a></code>
+                                                                      <code><a href="../classes/Field.html" target="_self" >Field</a></code>
                                                               </td>
                                                               <td>
                                                               </td>
@@ -1421,7 +1421,7 @@
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>validateFactory(field: <a href="../classes/Field.html">Field<any></a>)</code>
+            <code>validateFactory(field: <a href="../classes/Field.html">Field</a>)</code>
                                 </td>
                             </tr>
             
@@ -1452,7 +1452,7 @@
                                                             <tr>
                                                               <td>field</td>
                                                               <td>
-                                                                      <code><a href="../classes/Field.html" target="_self" >Field&lt;any&gt;</a></code>
+                                                                      <code><a href="../classes/Field.html" target="_self" >Field</a></code>
                                                               </td>
                                                               <td>
                                                               </td>
@@ -1510,7 +1510,7 @@ export class FormService {
   }
 
   /** Extracts all validators from a given Field instance. */
-  getValidators(field: Field&lt;any&gt;): ValidatorFn[] {
+  getValidators(field: Field): ValidatorFn[] {
     const validators &#x3D; [];
     if (field.required) {
       validators.push(Validators.required);
@@ -1522,7 +1522,7 @@ export class FormService {
   }
 
   /** Returns a Validation function from the given field (using field.validate) */
-  validateFactory(field: Field&lt;any&gt;): ValidationErrors | null {
+  validateFactory(field: Field): ValidationErrors | null {
     return (control: AbstractControl) &#x3D;&gt; {
       if (!field.validate) {
         return;
