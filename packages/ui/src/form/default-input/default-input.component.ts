@@ -9,7 +9,7 @@ import { Item } from '@ec.components/core/src/item/item';
 })
 export class DefaultInputComponent {
   /** The field for which the input is meant. */
-  public field: Field<any>;
+  public field: Field;
   /** The item that is targeted by the input */
   public item: Item<any>;
   /** The form group that is used */

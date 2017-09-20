@@ -6,7 +6,7 @@ import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  redirect: Subject<void> = new Subject();
+  redirect: Subject<any> = new Subject();
 
   constructor(private sdk: SdkService, private notifications: NotificationsService) {
   }

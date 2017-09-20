@@ -23,6 +23,15 @@ export class ResourceList<T> extends List<T> {
   /** Observable that is nexted when the list has an error. */
   public error$: Observable<Error> = this.error.asObservable();
 
+  /** Returns the operator to use for filtering the given property. Defaults to search. */
+  protected static getFilterOperator(property: string, fields: Array<Field>): string {
+    if (!fields) {
+      return 'search';
+    }
+    const field = fields.find((_field) => _field.property === property);
+    return field && field.filterOperator ? field.filterOperator : 'search';
+  }
+
   /** The constructor will init the List and Pagination instances.
    * Make sure the config is already complete when initiating an EntryList instance. */
   constructor(config: ListConfig<T>, protected sdk: SdkService) {
@@ -70,12 +79,14 @@ export class ResourceList<T> extends List<T> {
       Object.assign(options, { sort: [(desc ? '-' : '') + sortBy] });
     }
     if (filter) {
-      for (let property in filter) {
-        Object.assign(options, {
-          [property]: {
-            [ResourceList.getFilterOperator(property, this.fields)]: filter[property]
-          }
-        });
+      for (const property in filter) {
+        if (filter.hasOwnProperty(property)) {
+          Object.assign(options, {
+            [property]: {
+              [ResourceList.getFilterOperator(property, this.fields)]: filter[property]
+            }
+          });
+        }
       }
     }
     return options;
@@ -88,21 +99,12 @@ export class ResourceList<T> extends List<T> {
     this.load();
   }
 
-  /** Returns the operator to use for filtering the given property. Defaults to search. */
-  protected static getFilterOperator(property: string, fields: Array<Field<any>>): string {
-    if (!fields) {
-      return 'search';
-    }
-    const field = fields.find((field) => field.property === property);
-    return field && field.filterOperator ? field.filterOperator : 'search';
-  }
-
   /** Updates the config.filter with the given property filter. */
   filterProperty(property: string, value: any = '') {
     const currentFilter = this.config.filter || {};
     if (value === '' || value === null || value === undefined || (Array.isArray(value) && !value.length)) {
       if (!currentFilter[property]) {
-        return; //filter is already empty => no need to load again
+        return; // filter is already empty => no need to load again
       }
       delete currentFilter[property];
     } else {

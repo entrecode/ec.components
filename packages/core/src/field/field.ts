@@ -2,7 +2,7 @@
 
 import { FieldConfigProperty } from '../config/field-config-property.interface';
 
-export class Field<T> implements FieldConfigProperty {
+export class Field implements FieldConfigProperty {
   /** Tells if the field is required in forms */
   required?: boolean;
   /** The name of the field's property */
@@ -30,13 +30,15 @@ export class Field<T> implements FieldConfigProperty {
   /** Wether or not the field should appear in default forms */
   form?: boolean;
   /** Possible Values e.g. in a select */
-  values: T[];
+  values: any[];
   /** wildcard for custom config values */
   [key: string]: any;
 
   /** A Field is constructed by assigning the given config and the property to itself*/
-  constructor(property: string, config: FieldConfigProperty = {}) {
-    Object.assign(this, config);
+  constructor(property: string, config: FieldConfigProperty) {
+    if (config) {
+      Object.assign(this, config);
+    }
     Object.assign(this, { property: property });
   }
 

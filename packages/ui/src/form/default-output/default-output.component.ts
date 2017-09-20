@@ -10,7 +10,7 @@ import { Item } from '@ec.components/core/src/item/item';
 })
 export class DefaultOutputComponent {
   /** The field that should be displayed */
-  field: Field<any>;
+  field: Field;
   /** The item that is targeted by the input */
   item: Item<any>;
 }

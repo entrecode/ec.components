@@ -13,8 +13,8 @@ export class TabComponent {
   /** If set to true, the tab will be selected at start. */
   @Input() selected: boolean;
   @Input() route: string;
-  @Output() activated: EventEmitter<void> = new EventEmitter();
-  @Output() deactivated: EventEmitter<void> = new EventEmitter();
+  @Output() activated: EventEmitter<any> = new EventEmitter();
+  @Output() deactivated: EventEmitter<any> = new EventEmitter();
 
   parent: TabsComponent;
 

@@ -8,5 +8,5 @@ import { Field } from '@ec.components/core/src/field/field';
 })
 export class DefaultEntryOutputComponent {
   /** The field to output. */
-  field: Field<any>;
+  field: Field;
 }

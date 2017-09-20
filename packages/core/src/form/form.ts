@@ -7,7 +7,7 @@ import { FormConfig } from './form-config.interface';
 /** The Form class is an Item with additional info about its properties (Fields). */
 export class Form<Object> extends Item<Object> {
   /** Array of fields. It will be populated automatically when the form is constructed. */
-  fields: Field<Object>[];
+  fields: Field[];
   /** The configuration of the form. It is an extension of ItemConfig. */
   protected config: FormConfig<Object>;
 

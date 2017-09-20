@@ -28,7 +28,7 @@ export class FormService {
   }
 
   /** Extracts all validators from a given Field instance. */
-  getValidators(field: Field<any>): ValidatorFn[] {
+  getValidators(field: Field): ValidatorFn[] {
     const validators = [];
     if (field.required) {
       validators.push(Validators.required);
@@ -40,7 +40,7 @@ export class FormService {
   }
 
   /** Returns a Validation function from the given field (using field.validate) */
-  validateFactory(field: Field<any>): ValidationErrors | null {
+  validateFactory(field: Field): ValidationErrors | null {
     return (control: AbstractControl) => {
       if (!field.validate) {
         return;

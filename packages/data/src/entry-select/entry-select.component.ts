@@ -37,7 +37,7 @@ import EntryResource from 'ec.sdk/src/resources/publicAPI/EntryResource';
 })
 export class EntrySelectComponent extends SelectComponent<EntryResource> implements OnChanges {
   /** The field for which the input is meant. */
-  @Input() field: Field<any>;
+  @Input() field: Field;
   /** The item that is targeted by the input */
   protected item: Item<any>;
   /** The form group that is used */

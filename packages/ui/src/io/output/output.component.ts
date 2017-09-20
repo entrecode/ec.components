@@ -12,7 +12,7 @@ import { Item } from '@ec.components/core/src/item/item';
 })
 export class OutputComponent extends DynamicSlotComponent {
   /** The instance of field that should be used in the template */
-  @Input() field: Field<any>;
+  @Input() field: Field;
   /** The belonging item */
   @Input() item: Item<any>;
 

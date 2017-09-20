@@ -30,7 +30,7 @@ export class AssetSelectComponent extends SelectComponent<PublicAssetResource> i
   /** The formControl that is used. */
   @Input() formControl: FormControl;
   /** The used field. Is used for its config properties like nestedPopClass. */
-  @Input() field: Field<PublicAssetResource>;
+  @Input() field: Field;
   /** The form group that is used */
   protected group: FormGroup;
   /** The form control that is used */

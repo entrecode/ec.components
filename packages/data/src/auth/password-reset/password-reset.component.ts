@@ -12,7 +12,7 @@ export class PasswordResetComponent implements WithLoader {
   lockForm: boolean;
   email: string;
   @Input() api: PublicAPI;
-  @Output() success: EventEmitter<void> = new EventEmitter();
+  @Output() success: EventEmitter<any> = new EventEmitter();
   @ViewChild(LoaderComponent) loader;
 
   constructor(public auth: AuthService, public notifications: NotificationsService) {

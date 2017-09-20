@@ -15,7 +15,7 @@ export class List<T> extends Collection<Item<T>> {
    * Array of Properties that are relevant for each item. The fields are populated on construction
    * via getFields method.
    */
-  public fields: Array<Field<T>>;
+  public fields: Array<Field>;
   /**
    * The List Configuration, click on ListConfig for details. Can be given an optional ListConfig.
    */
@@ -71,7 +71,7 @@ export class List<T> extends Collection<Item<T>> {
    * Distills Array of item properties. Either uses keys of config.fields or parses the item
    * properties directly.
    */
-  protected getFields(): Array<Field<T>> {
+  protected getFields(): Array<Field> {
     if (this.config && this.config.fields) {
       return Object.keys(this.config.fields)
       .filter((key) => this.config.fields[key].list !== false)

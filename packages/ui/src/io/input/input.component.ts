@@ -21,7 +21,7 @@ export class InputComponent extends DynamicSlotComponent implements OnChanges {
   /** Debounce time in ms before the changed event emits. */
   @Input() debounce = 0;
   /** The instance of field that should be used in the template */
-  @Input() field: Field<any>;
+  @Input() field: Field;
   /** The belonging item */
   @Input() item: Item<any>;
 
