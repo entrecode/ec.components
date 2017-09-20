@@ -24,7 +24,13 @@ export class AppModule {
 }
 ```
 
-3. Use it
+3. Add Styles
+
+```
+@import '~@ec.components/medium-editor/style.scss'
+```
+
+4. Use it
 
 ```html
  <div ecMediumEditor [(model)]="myHTML"

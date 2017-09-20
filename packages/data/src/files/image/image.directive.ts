@@ -7,7 +7,7 @@ import { SdkService } from '../../sdk/sdk.service';
 
 /** Loads an public asset image by id to the template. It can be used with img's to auto load the url to the src. */
 @Directive({
-  selector: '[ecImage]',
+  selector: 'img [ecImage]',
   exportAs: 'ecImage'
 })
 export class ImageDirective extends AssetDirective implements OnChanges {
@@ -44,9 +44,7 @@ export class ImageDirective extends AssetDirective implements OnChanges {
       return asset.getImageUrl(this.size)
     }).then((url) => {
       this.url = url;
-      if (this.elementRef.nativeElement.nodeName === 'IMG') {
-        this.elementRef.nativeElement.src = this.url;
-      }
+      this.elementRef.nativeElement.src = this.url;
     });
   }
 }
