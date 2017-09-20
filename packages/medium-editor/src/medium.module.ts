@@ -1,12 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-
-import { MediumEditorDirective } from './medium-editor.directive';
+import { MediumEditorComponent } from './medium-editor.component';
 
 @NgModule({
   imports: [CommonModule],
-  exports: [MediumEditorDirective],
-  declarations: [MediumEditorDirective],
+  exports: [MediumEditorComponent],
+  declarations: [MediumEditorComponent],
   providers: [],
 })
 export class MediumModule {

@@ -24,15 +24,9 @@ export class AppModule {
 }
 ```
 
-3. Add Styles
-
-```
-@import '~@ec.components/medium-editor/style.scss'
-```
-
-4. Use it
+3. Use it
 
 ```html
- <div ecMediumEditor [(model)]="myHTML"
-         [options]="{'toolbar': {'buttons': ['bold', 'italic', 'underline', 'h1', 'h2', 'h3']}}"></div>
+ <ec-medium-editor [(model)]="myHTML"
+         [options]="{'toolbar': {'buttons': ['bold', 'italic', 'underline', 'h1', 'h2', 'h3']}}"></ec-medium-editor>
 ```

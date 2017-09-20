@@ -1,5 +1,5 @@
 import {
-  Directive,
+  Component,
   ElementRef,
   EventEmitter,
   Input,
@@ -7,28 +7,34 @@ import {
   OnDestroy,
   OnInit,
   Output,
-  SimpleChanges
+  SimpleChanges,
+  ViewChild,
+  ViewEncapsulation
 } from '@angular/core';
 
 import * as MediumEditor from 'medium-editor/dist/js/medium-editor';
 
-@Directive({
-  selector: '[ecMediumEditor]'
+@Component({
+  selector: 'ec-medium-editor',
+  styleUrls: ['./medium-editor.component.scss'],
+  templateUrl: 'medium-editor.component.html',
+  encapsulation: ViewEncapsulation.None,
 })
-export class MediumEditorDirective implements OnInit, OnChanges, OnDestroy {
+export class MediumEditorComponent implements OnInit, OnChanges, OnDestroy {
   @Input() model: any;
   @Input() options: any;
   @Input() placeholder: string;
   @Output() modelChange: EventEmitter<any> = new EventEmitter();
+  @ViewChild('container') container: ElementRef;
   private editor: MediumEditor;
 
-  constructor(private el: ElementRef) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.el.nativeElement.innerHTML = this.model || '';
+    this.container.nativeElement.innerHTML = this.model || '';
     this.options.placeholder = this.placeholder;
-    this.editor = new MediumEditor(this.el.nativeElement, this.options);
+    this.editor = new MediumEditor(this.container.nativeElement, this.options);
     this.editor.subscribe('editableInput', () => this.modelChange.emit(this.editor.getContent()));
 
   }
