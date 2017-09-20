@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MediumEditorDemoComponent implements OnInit {
 
-  model = '<p>MEDIUM WORKS</p>';
+  html = '<p>MEDIUM WORKS</p>';
   options = { 'toolbar': { 'buttons': ['bold', 'italic', 'underline', 'h1', 'h2', 'h3'] } };
 
   constructor() {
