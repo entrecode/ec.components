@@ -13,7 +13,6 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subject } from 'rxjs/Subject';
-
 import * as tinymce from 'tinymce';
 import 'tinymce/themes/modern';
 import 'tinymce/plugins/fullscreen';
@@ -31,6 +30,7 @@ import 'tinymce/plugins/textcolor';
 import 'tinymce/plugins/colorpicker';
 import { editorSettings } from './tinymce-settings';
 
+/** Wraps tinymce as a control input. */
 @Component({
   selector: 'ec-tinymce',
   templateUrl: './tinymce.component.html',
@@ -45,14 +45,24 @@ import { editorSettings } from './tinymce-settings';
   ]
 })
 export class TinymceComponent implements OnInit, OnDestroy, ControlValueAccessor {
+  /** Promise that resolves when the editor has been initialized */
   ready: Promise<any>;
+  /** The current editor instance */
   private editor: any;
+  /** The container where the editor is rendered */
   @ViewChild('container') container: ElementRef;
+  /** Subject that is nexted on editor change */
   update: Subject<any> = new Subject();
+  /** Debounce time for value change processing */
   @Input() debounce = 200;
+  /** TinyMCE Settings. Get Object.assigned to the default settings */
+  @Input() settings: any = {};
+  /** Output that emits when the value has been changed by the user */
   @Output() change: EventEmitter<string> = new EventEmitter();
+  /** Current value */
   public value = '';
 
+  /** Subscribes for changes and propagates them + calling application tick manually :( */
   constructor(private app: ApplicationRef) {
     this.update.asObservable()
     .debounceTime(this.debounce)
@@ -64,11 +74,12 @@ export class TinymceComponent implements OnInit, OnDestroy, ControlValueAccessor
     })
   }
 
+  /** Initializes the editor */
   ngOnInit() {
     this.ready = tinymce.init(
       Object.assign(editorSettings, {
         target: this.container.nativeElement
-      })).then((editor) => {
+      }, this.settings)).then((editor) => {
       this.editor = editor[0];
       this.editor.setContent(this.value || '');
       this.editor.on('dblclick', (e) => {
@@ -81,6 +92,7 @@ export class TinymceComponent implements OnInit, OnDestroy, ControlValueAccessor
     });
   }
 
+  /** Destroys the editor. */
   ngOnDestroy() {
     if (this.editor) {
       this.ready.then((editor) => {
@@ -89,6 +101,7 @@ export class TinymceComponent implements OnInit, OnDestroy, ControlValueAccessor
     }
   }
 
+  /** Writes value to editor on outside model change. */
   writeValue(value: any) {
     this.value = value || '';
     this.ready.then((editor) => {
