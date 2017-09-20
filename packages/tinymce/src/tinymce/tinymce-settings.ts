@@ -20,18 +20,7 @@ export const editorSettings = {
   table_class_list: [
     { title: 'grid', value: 'table-grid' },
   ],
-  templates: [
-    {
-      title: 'Programm Eintrag',
-      description: 'Tabelle zur Auflistung von z.B. Messeprogramm',
-      url: '/assets/templates/event-schedule.html'
-    },
-    {
-      title: 'Pille mit Haken',
-      description: 'Für Aufzählungen',
-      content: '<div class="cms-pill"><span class="ec-icon checkmark">Text eintragen...</span> </div>'
-    }
-  ],
+  // templates: [],
   textcolor_map: [
     '37474F', 'Text',
     '879195', 'Text Light',
@@ -102,11 +91,10 @@ export const editorSettings = {
       }
     });
 
-    editor.addButton('image', {
+    // TODO
+    /*editor.addButton('image', {
       icon: 'image',
       onclick: function (edit, element) {
-        // const uploadScope;
-        // const upload;
         const id = Date.now();
         const window = editor.windowManager.open({
           title: 'Bild/Datei einfügen',
@@ -123,6 +111,6 @@ export const editorSettings = {
           }],
         });
       }
-    });
+    });*/
   }
 };
