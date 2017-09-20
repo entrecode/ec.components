@@ -12,4 +12,5 @@ export * from './src/sdk/sdk.module'
 export * from './src/crud/crud.service'
 export * from './src/crud/crud.component'
 export * from './src/data.module';
+export * from './src/auth/auth.service'
 export * from './src/auth/auth.module';
