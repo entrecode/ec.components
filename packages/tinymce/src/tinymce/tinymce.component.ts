@@ -1,8 +1,20 @@
-import { Component, ElementRef, forwardRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {
+  ApplicationRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  forwardRef,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+  ViewChild,
+  ViewEncapsulation
+} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Subject } from 'rxjs/Subject';
 
 import * as tinymce from 'tinymce';
-import { SdkService } from '../../../data/src/sdk/sdk.service';
 import 'tinymce/themes/modern';
 import 'tinymce/plugins/fullscreen';
 import 'tinymce/plugins/paste';
@@ -17,14 +29,13 @@ import 'tinymce/plugins/lists';
 import 'tinymce/plugins/contextmenu';
 import 'tinymce/plugins/textcolor';
 import 'tinymce/plugins/colorpicker';
-// import 'tinymce/skins/lightgray/skin.min.css'; // todo
-// import 'tinymce/skins/lightgray/content.min.css';
 import { editorSettings } from './tinymce-settings';
 
 @Component({
   selector: 'ec-tinymce',
   templateUrl: './tinymce.component.html',
   styleUrls: ['./tinymce.component.scss'],
+  encapsulation: ViewEncapsulation.None,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -37,9 +48,20 @@ export class TinymceComponent implements OnInit, OnDestroy, ControlValueAccessor
   ready: Promise<any>;
   private editor: any;
   @ViewChild('container') container: ElementRef;
+  update: Subject<any> = new Subject();
+  @Input() debounce = 200;
+  @Output() change: EventEmitter<string> = new EventEmitter();
   public value = '';
 
-  constructor(private elementRef: ElementRef, private sdk: SdkService) {
+  constructor(private app: ApplicationRef) {
+    this.update.asObservable()
+    .debounceTime(this.debounce)
+    .subscribe((value) => {
+      this.value = value;
+      this.propagateChange(value);
+      this.change.emit(value);
+      this.app.tick();
+    })
   }
 
   ngOnInit() {
@@ -54,11 +76,10 @@ export class TinymceComponent implements OnInit, OnDestroy, ControlValueAccessor
           this.editor.buttons.image.onclick(true, e.toElement);
         }
       });
+      this.editor.on('change', () => this.update.next(this.editor.getContent()));
       return this.editor;
     });
   }
-
-  // editor.getContent() // todo on change
 
   ngOnDestroy() {
     if (this.editor) {
@@ -71,7 +92,6 @@ export class TinymceComponent implements OnInit, OnDestroy, ControlValueAccessor
   writeValue(value: any) {
     this.value = value || '';
     this.ready.then((editor) => {
-      console.log('write', this.value, editor);
       editor.setContent(this.value);
     });
   }

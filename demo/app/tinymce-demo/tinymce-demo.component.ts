@@ -11,6 +11,10 @@ export class TinymceDemoComponent implements OnInit {
   constructor() {
   }
 
+  change(value) {
+    console.log('change', value);
+  }
+
   ngOnInit() {
   }
 

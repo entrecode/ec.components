@@ -10,8 +10,6 @@ export const editorSettings = {
   autoresize_min_height: 300,
   autoresize_max_height: 800,
   content_css: [
-    // '/assets/css/style.css',
-    // '/assets/css/_vendor.css',
     'https://icons.entrecode.de/ec-icons-1.1.15.min.css'
   ],
   paste_as_text: true,
