@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 cd ./packages/
 cd core
 rm -rf node_modules
