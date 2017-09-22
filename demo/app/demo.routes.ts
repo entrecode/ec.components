@@ -24,6 +24,7 @@ import { MediumEditorDemoComponent } from './medium-editor-demo/medium-editor-de
 import { LoginFormComponent } from '../../packages/ui/src/utility/login-form/login-form.component';
 import { EntryPopDemoComponent } from './entry-pop-demo/entry-pop-demo.component';
 import { TinymceDemoComponent } from './tinymce-demo/tinymce-demo.component';
+import { AceDemoComponent } from './ace-demo/ace-demo.component';
 
 export const demoRoutes: Routes = [
   /*  {
@@ -170,6 +171,10 @@ export const demoRoutes: Routes = [
       {
         path: 'tinymce',
         component: TinymceDemoComponent
+      },
+      {
+        path: 'ace',
+        component: AceDemoComponent
       }
     ]
   },

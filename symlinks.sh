@@ -18,3 +18,6 @@ ln -s ../../packages/medium-editor
 #
 rm -rf tinymce
 ln -s ../../packages/tinymce
+#
+rm -rf ace
+ln -s ../../packages/ace
