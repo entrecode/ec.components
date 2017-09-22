@@ -107,7 +107,20 @@ export const demoRoutes: Routes = [
       },
       {
         path: 'entry-pop',
-        component: EntryPopDemoComponent
+        children: [
+          {
+            path: '',
+            component: EntryPopDemoComponent
+          },
+          {
+            path: 'muffin/:muffinID',
+            component: EntryPopDemoComponent
+          },
+          {
+            path: 'muffin/create',
+            component: EntryPopDemoComponent
+          }
+        ]
       },
       {
         path: 'entry-select',

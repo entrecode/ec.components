@@ -12,5 +12,5 @@ cd ../medium-editor
 rm -rf node_modules
 cd ../tinymce
 rm -rf node_modules
-cd ../ace-editor
+cd ../ace
 rm -rf node_modules

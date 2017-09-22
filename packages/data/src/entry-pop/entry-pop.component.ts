@@ -4,6 +4,7 @@ import EntryResource from 'ec.sdk/src/resources/publicAPI/EntryResource';
 import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
 import { EntryFormComponent } from '../entry-form/entry-form.component';
 import { AuthService } from '../auth/auth.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 /** Entry Pop is an extension of Pop component to host an entry-form.
  * You can use it like a normal pop but with the extra handling of an entry form inside.
@@ -25,8 +26,12 @@ export class EntryPopComponent extends PopComponent implements OnInit {
   @Input() model: string;
   /** The entry that should be used in the form. Is also set by edit.*/
   @Input() entry: EntryResource;
+  /** Route that should be headed to when an entry is edited. Navigates to route/:entryID */
+  @Input() editRoute: string;
+  /** Route that should be headed to when an entry is created. */
+  @Input() createRoute: string;
 
-  constructor(private auth: AuthService) {
+  constructor(private auth: AuthService, private router: Router, private route: ActivatedRoute) {
     super();
   }
 
@@ -41,8 +46,33 @@ export class EntryPopComponent extends PopComponent implements OnInit {
     return (!edit && this.hasMethod('post')) || (edit && this.hasMethod('put'))
   }
 
+  /*   public getUrlUntil(url: string, stop: string[]): string {
+      const parts = url.split('/');
+      return parts.reduce((state, part) => {
+        if (state.done || [this.editRoute, this.createRoute].includes(part)) {
+          state.done = true;
+          return state;
+        }
+        state.url += part;
+        return state;
+      }, { url: '', done: false }).url;
+    } */
+  /** escapes the given string to be usable in a regex */
+  escapeRegExp(str) {
+    return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&');
+  }
+
+  pathRegExp(path) {
+    return path.split('/').map(subpath => this.escapeRegExp(subpath)).join('/');
+  }
+
   /** Edit the given entry. */
   edit(entry: EntryResource) {
+    if (this.editRoute) {
+      const matcher = '(' + this.pathRegExp(this.editRoute) + '|' + this.pathRegExp(this.createRoute) + ').*';
+      const trimmed = this.router.url.replace(new RegExp(matcher, 'g'), '');
+      this.router.navigate([trimmed, this.editRoute, entry.id]);
+    }
     this.entry = entry;
     this.show();
   }
@@ -50,15 +80,20 @@ export class EntryPopComponent extends PopComponent implements OnInit {
   /** Opens the pop after deleting the current bound entry from the instance. */
   create() {
     delete this.entry;
+    if (this.createRoute) {
+      const matcher = '(' + this.pathRegExp(this.editRoute) + '|' + this.pathRegExp(this.createRoute) + ').*';
+      const trimmed = this.router.url.replace(new RegExp(matcher, 'g'), '');
+      this.router.navigate([trimmed, this.createRoute]);
+    }
     this.show();
   }
 
   /** Initialize the allowed methods to determine which buttons should be shown. */
   ngOnInit() {
     this.auth.getAllowedMethods(this.model, this.config.methods)
-    .then((methods) => {
-      this.config.methods = methods;
-    });
+      .then((methods) => {
+        this.config.methods = methods;
+      });
   }
 
   /** Logs the current form (Developer help). */
