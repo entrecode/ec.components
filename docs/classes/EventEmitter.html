@@ -1311,7 +1311,7 @@
     </div>
 
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { Component, ContentChildren, Input, QueryList } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { Component, ContentChildren, Input, QueryList, AfterContentInit } from &#x27;@angular/core&#x27;;
 import { ActivatedRoute, NavigationEnd, Router } from &#x27;@angular/router&#x27;;
 import { TabComponent } from &#x27;../tab/tab.component&#x27;;
 
@@ -1324,8 +1324,11 @@ class EventEmitter {
   templateUrl: &#x27;./tabs.component.html&#x27;,
   styleUrls: [&#x27;./tabs.component.scss&#x27;]
 })
-export class TabsComponent {
+export class TabsComponent implements AfterContentInit {
+  /** The nested Tabs */
   @ContentChildren(TabComponent) tabs: QueryList&lt;TabComponent&gt;;
+  /** You can set the initially selected tab by passing a TabComponent in (e.g. via #variable) */
+  @Input() selected: TabComponent;
 
   constructor(private router: Router, private route: ActivatedRoute) {
     this.router.events.subscribe((event) &#x3D;&gt; {
@@ -1335,6 +1338,7 @@ export class TabsComponent {
     });
   }
 
+  /** Selects the tab associated with the route present in the given url */
   selectByUrl(url: string) {
     if (!url || !this.tabs) {
       return;
@@ -1345,9 +1349,6 @@ export class TabsComponent {
       this.select(match);
     }
   }
-
-  /** You can set the initially selected tab by passing a TabComponent in (e.g. via #variable) */
-  @Input() selected: TabComponent;
 
   ngAfterContentInit() {
     this.tabs.forEach((tab) &#x3D;&gt; {

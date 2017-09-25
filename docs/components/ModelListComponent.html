@@ -1446,7 +1446,7 @@ import ModelResource from &#x27;ec.sdk/src/resources/datamanager/ModelResource&#
   templateUrl: &#x27;../../../ui/src/list/list.component.html&#x27;
 })
 export class ModelListComponent extends ResourceListComponent&lt;ModelResource&gt; {
-  @Input() datamanager: string | DataManagerResource;//: DataManagerResource;
+  @Input() datamanager: string | DataManagerResource;
 
   createList() {
     if (!this.datamanager) {

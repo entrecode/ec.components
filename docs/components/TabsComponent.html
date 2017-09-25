@@ -1286,6 +1286,12 @@
     </p>
 
 
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code><a href="https://angular.io/docs/ts/latest/api/core/index/AfterContentInit-interface.html" target="_blank" >AfterContentInit</a></code>
+    </p>
 
 
 <section>
@@ -1396,7 +1402,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">packages/ui/src/utility/tabs/tabs.component.ts:15</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">packages/ui/src/utility/tabs/tabs.component.ts:18</a></div>
                                 </td>
                             </tr>
     
@@ -1461,7 +1467,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">packages/ui/src/utility/tabs/tabs.component.ts:37</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">packages/ui/src/utility/tabs/tabs.component.ts:18</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1493,7 +1499,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">packages/ui/src/utility/tabs/tabs.component.ts:60</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">packages/ui/src/utility/tabs/tabs.component.ts:61</a></div>
                                 </td>
                             </tr>
     
@@ -1554,7 +1560,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">packages/ui/src/utility/tabs/tabs.component.ts:39</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">packages/ui/src/utility/tabs/tabs.component.ts:40</a></div>
                                 </td>
                             </tr>
     
@@ -1586,7 +1592,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">packages/ui/src/utility/tabs/tabs.component.ts:49</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">packages/ui/src/utility/tabs/tabs.component.ts:50</a></div>
                                 </td>
                             </tr>
     
@@ -1647,12 +1653,14 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">packages/ui/src/utility/tabs/tabs.component.ts:25</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">packages/ui/src/utility/tabs/tabs.component.ts:29</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
+                                <div class="io-description"><p>Selects the tab associated with the route present in the given url </p>
+    </div>
     
                                 <div class="io-description">
                                         <b>Parameters :</b>
@@ -1725,10 +1733,16 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">packages/ui/src/utility/tabs/tabs.component.ts:15</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">packages/ui/src/utility/tabs/tabs.component.ts:16</a></div>
                                 </td>
                             </tr>
     
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-description"><p>The nested Tabs </p>
+    </div>
+                        </td>
+                    </tr>
     
                 </tbody>
             </table>
@@ -1760,7 +1774,7 @@
     </div>
 
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { Component, ContentChildren, Input, QueryList } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { Component, ContentChildren, Input, QueryList, AfterContentInit } from &#x27;@angular/core&#x27;;
 import { ActivatedRoute, NavigationEnd, Router } from &#x27;@angular/router&#x27;;
 import { TabComponent } from &#x27;../tab/tab.component&#x27;;
 
@@ -1773,8 +1787,11 @@ class EventEmitter {
   templateUrl: &#x27;./tabs.component.html&#x27;,
   styleUrls: [&#x27;./tabs.component.scss&#x27;]
 })
-export class TabsComponent {
+export class TabsComponent implements AfterContentInit {
+  /** The nested Tabs */
   @ContentChildren(TabComponent) tabs: QueryList&lt;TabComponent&gt;;
+  /** You can set the initially selected tab by passing a TabComponent in (e.g. via #variable) */
+  @Input() selected: TabComponent;
 
   constructor(private router: Router, private route: ActivatedRoute) {
     this.router.events.subscribe((event) &#x3D;&gt; {
@@ -1784,6 +1801,7 @@ export class TabsComponent {
     });
   }
 
+  /** Selects the tab associated with the route present in the given url */
   selectByUrl(url: string) {
     if (!url || !this.tabs) {
       return;
@@ -1794,9 +1812,6 @@ export class TabsComponent {
       this.select(match);
     }
   }
-
-  /** You can set the initially selected tab by passing a TabComponent in (e.g. via #variable) */
-  @Input() selected: TabComponent;
 
   ngAfterContentInit() {
     this.tabs.forEach((tab) &#x3D;&gt; {
