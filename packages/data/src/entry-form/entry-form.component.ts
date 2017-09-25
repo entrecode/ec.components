@@ -47,12 +47,12 @@ export class EntryFormComponent extends FormComponent {
       return;
     }
     Promise.resolve(this.modelConfig.generateConfig(this.model, (this.config || {}).fields))
-    .then((_config) => {
-      if (this.entry) {
-        item = new Item(this.entry, _config);
-      }
-      super.init(item, _config);
-    });
+      .then((_config) => {
+        if (this.entry) {
+          item = new Item(this.entry, _config);
+        }
+        super.init(item, _config);
+      });
   }
 
   /** Yields true if the current edited entry is already existing in the backend. */

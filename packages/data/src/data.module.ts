@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { UiModule } from '../../ui/src/ui.module';
+import { UiModule } from '@ec.components/ui/src/ui.module';
 import { ModelConfigService } from './model-config/model-config.service';
 import { CrudService } from './crud/crud.service';
 import { DefaultEntryInputComponent } from './entry-form/default-entry-input.component';

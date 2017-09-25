@@ -1,7 +1,6 @@
-<div *ngIf="selection" class="ec-select ec-entry-select" [class.ec-select_solo]="solo"
-     [class.ec-select_dirty]="selection.items.length">
+<div *ngIf="selection" class="ec-select ec-entry-select" [class.ec-select_solo]="solo" [class.ec-select_dirty]="selection.items.length">
   <a (click)="pop.toggle()" class="ec-select__placeholder">
-    - Auswählen -
+    {{placeholder||'Auswählen'}
   </a>
   <ul class="ec-select-selected">
     <li *ngFor="let selected of selection?.items">
@@ -10,11 +9,9 @@
     </li>
   </ul>
   <span (click)="pop.toggle()" class="ec-select__toggle"></span>
-  <ec-pop [ngClass]="field?.nestedPopClass || 'ec-select-dropdown'" #crudPop
-          [active]="field?.nestedPopActive"
-          [visible]="field?.nestedPopVisible">
+  <ec-pop [ngClass]="field?.nestedPopClass || 'ec-select-dropdown'" #crudPop [active]="field?.nestedPopActive" [visible]="field?.nestedPopVisible">
     <!-- TODO find way to embed close button to the pops that need it -->
-    <ec-crud [model]="model" *ngIf="selection&&crudPop.active"
-             [config]="config" [selection]="selection" (select)="select($event)" #crud></ec-crud>
+    <ec-crud [model]="model" *ngIf="selection&&crudPop.active" [config]="config" [selection]="selection" (select)="select($event)"
+      #crud></ec-crud>
   </ec-pop>
 </div>

@@ -6,6 +6,7 @@ import * as PhrasingElement from 'visual-cms.core/classes/core/PhrasingElement.j
 import * as Block from 'visual-cms.core/classes/base/Block.js';
 import * as ListElement from 'visual-cms.core/classes/base/ListElement.js';
 import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/debounceTime';
 
 declare const document;
 
@@ -77,7 +78,7 @@ export class EditorComponent {
       json: {
         type: 'quote'
       }
-    }]; //'img','ul','ol','li'
+    }]; // 'img','ul','ol','li'
   private phrasingElements = [
     {
       tag: 'a',

@@ -1,4 +1,4 @@
-import { Component, ContentChildren, Input, QueryList } from '@angular/core';
+import { Component, ContentChildren, Input, QueryList, AfterContentInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { TabComponent } from '../tab/tab.component';
 
@@ -11,8 +11,11 @@ class EventEmitter {
   templateUrl: './tabs.component.html',
   styleUrls: ['./tabs.component.scss']
 })
-export class TabsComponent {
+export class TabsComponent implements AfterContentInit {
+  /** The nested Tabs */
   @ContentChildren(TabComponent) tabs: QueryList<TabComponent>;
+  /** You can set the initially selected tab by passing a TabComponent in (e.g. via #variable) */
+  @Input() selected: TabComponent;
 
   constructor(private router: Router, private route: ActivatedRoute) {
     this.router.events.subscribe((event) => {
@@ -22,6 +25,7 @@ export class TabsComponent {
     });
   }
 
+  /** Selects the tab associated with the route present in the given url */
   selectByUrl(url: string) {
     if (!url || !this.tabs) {
       return;
@@ -32,9 +36,6 @@ export class TabsComponent {
       this.select(match);
     }
   }
-
-  /** You can set the initially selected tab by passing a TabComponent in (e.g. via #variable) */
-  @Input() selected: TabComponent;
 
   ngAfterContentInit() {
     this.tabs.forEach((tab) => {

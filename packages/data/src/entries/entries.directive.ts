@@ -48,14 +48,16 @@ export class EntriesDirective implements OnChanges {
   /** Loads the entries */
   load() {
     this.promise = this.sdk.api.entryList(this.model, this.options)
-    .then(list => this.useList(list));
+      .then(list => this.useList(list));
     return this.promise;
   }
 
   useList(entryList: EntryList) {
     this.entryList = entryList;
+    const items = this.entryList.getAllItems();
     if (this.endless) {
-      this.items = this.items.concat(this.entryList.getAllItems());
+      this.items = this.items.filter(item => items.find(_item => item.id === _item.id))
+        .concat(items);
     } else {
       this.items = this.entryList.getAllItems();
     }

@@ -69,10 +69,6 @@
   }
 }
 
-.ec-list-field-filter {
-  flex-grow: 0;
-}
-
 .ec-list-field {
   &_sortable {
     &_active {
@@ -95,25 +91,42 @@
           position: absolute;
           top: 0;
           left: 0;
-          padding: 0 1em;
-          width: 100%;
-          height: 100%;
-          justify-content: space-between;
-          align-items: center;
-          flex-direction: row;
-          overflow: hidden;
+          right: 0;
+          bottom: 0;
+          padding: 0 1em !important;
           background-color: getColor(background);
+          align-items: center;
           z-index: 10;
+
+          .ec-list-field-filter {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+          }
+
+          .ec-list-field-filter__dismiss {
+            @extend %btn, %btn%small;
+            align-self: center;
+            margin: 0;
+          }
+
+          ec-input {
+            display: inline-block;
+            flex-grow: 1;
+            align-self: center;
+
+            .input {
+              margin: 0;
+            }
+          }
         }
 
-        ec-input {
-          @include flex-grow(1);
-          margin-right: 8px;
-        }
 
         &.visible {
           .ec-pop {
-            display: flex;
+            display: flex !important;
           }
         }
       }

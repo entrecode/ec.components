@@ -13,6 +13,7 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/debounceTime';
 import * as tinymce from 'tinymce';
 import 'tinymce/themes/modern';
 import 'tinymce/plugins/fullscreen';

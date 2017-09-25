@@ -82,6 +82,9 @@
                                 <li class="link for-chapter">
                                     <a href="../additional-documentation/project-setup-tutorial/adding-new-packages.html" >Adding New Packages</a>
                                 </li>
+                                <li class="link for-chapter">
+                                    <a href="../additional-documentation/project-setup-tutorial/publishing.html" >Publishing</a>
+                                </li>
                                 <li class="link ">
                                     <a href="../additional-documentation/core-classes.html" >Core Classes</a>
                                 </li>
@@ -134,7 +137,13 @@
                                     <a href="../additional-documentation/data.html" >Data</a>
                                 </li>
                                 <li class="link ">
-                                    <a href="../additional-documentation/publishing.html" >Publishing</a>
+                                    <a href="../additional-documentation/medium.html" >Medium</a>
+                                </li>
+                                <li class="link ">
+                                    <a href="../additional-documentation/tinymce.html" >TinyMCE</a>
+                                </li>
+                                <li class="link ">
+                                    <a href="../additional-documentation/ace.html" >Ace</a>
                                 </li>
                         </ul>
                     </li>
@@ -152,6 +161,9 @@
                         <ul class="links collapse "
                                 id="xs-modules-links"
                             >
+                                <li class="link">
+                                    <a href="../modules/AceModule.html" >AceModule</a>
+                                </li>
                                 <li class="link">
                                     <a href="../modules/AuthModule.html" >AuthModule</a>
                                 </li>
@@ -217,6 +229,9 @@
                         <ul class="links collapse "
                                 id="xs-components-links"
                             >
+                                <li class="link">
+                                    <a href="../components/AceComponent.html" >AceComponent</a>
+                                </li>
                                 <li class="link">
                                     <a href="../components/AssetListComponent.html" >AssetListComponent</a>
                                 </li>
@@ -679,6 +694,9 @@
                                        <li class="link for-chapter">
                                            <a href="../additional-documentation/project-setup-tutorial/adding-new-packages.html" >Adding New Packages</a>
                                        </li>
+                                       <li class="link for-chapter">
+                                           <a href="../additional-documentation/project-setup-tutorial/publishing.html" >Publishing</a>
+                                       </li>
                                        <li class="link ">
                                            <a href="../additional-documentation/core-classes.html" >Core Classes</a>
                                        </li>
@@ -731,7 +749,13 @@
                                            <a href="../additional-documentation/data.html" >Data</a>
                                        </li>
                                        <li class="link ">
-                                           <a href="../additional-documentation/publishing.html" >Publishing</a>
+                                           <a href="../additional-documentation/medium.html" >Medium</a>
+                                       </li>
+                                       <li class="link ">
+                                           <a href="../additional-documentation/tinymce.html" >TinyMCE</a>
+                                       </li>
+                                       <li class="link ">
+                                           <a href="../additional-documentation/ace.html" >Ace</a>
                                        </li>
                                </ul>
                            </li>
@@ -749,6 +773,9 @@
                                <ul class="links collapse "
                                        id="modules-links"
                    >
+                                       <li class="link">
+                                           <a href="../modules/AceModule.html" >AceModule</a>
+                                       </li>
                                        <li class="link">
                                            <a href="../modules/AuthModule.html" >AuthModule</a>
                                        </li>
@@ -814,6 +841,9 @@
                                <ul class="links collapse "
                                        id="components-links"
                    >
+                                       <li class="link">
+                                           <a href="../components/AceComponent.html" >AceComponent</a>
+                                       </li>
                                        <li class="link">
                                            <a href="../components/AssetListComponent.html" >AssetListComponent</a>
                                        </li>
@@ -2192,7 +2222,7 @@ export class MonthComponent implements OnInit, OnChanges {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><ul class="calendar">  <li *ngFor="let day of cells"      [class.other]="day.type!==\'current\'"      [class.today]="day.today"      [class.selected]="isSelected(day.date)"      (click)="selectDay(day.date)">    {{day.format}}  </li></ul></div>'
-    var COMPONENTS = [{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
+    var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
     var DIRECTIVES = [{'name': 'AssetDirective', 'selector': '[ecAsset]'},{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'ImageDirective', 'selector': 'img [ecImage]'},{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'MonthComponent'};
 </script>
