@@ -9,7 +9,7 @@
 
   <section *ngIf="sdk.user">
     <p><strong>Logged in as {{sdk.user.email}}</strong></p>
-    <button (click)="sdk.logout()">Logout</button>
+    <button (click)="auth.logout()">Logout</button>
     <pre>
     {{sdk.user | json}}
     </pre>
