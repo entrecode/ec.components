@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   template: `<h2>Datamanager List</h2>
-  <ec-loader #listLoader class="blend"></ec-loader>
+  <ec-loader #listLoader class="ec-loader ec-loader_overlay ec-loader_global"></ec-loader>
   <ec-notifications class="toast"></ec-notifications>
   <ec-datamanager-list [loader]="listLoader" [config]="{size:9,disableSelection:true}"
   (select)="select($event)" #dmList></ec-datamanager-list>

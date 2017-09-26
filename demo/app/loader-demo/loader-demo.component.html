@@ -7,6 +7,6 @@
   <a class="btn" (click)="optionsForm.submit()">LOAD</a>
 
   <pre><code>{{optionsForm.group?.value | json}}</code></pre>
-  <ec-loader [ngClass]="optionsForm.getValue('hostClass')" class="ec-loader ec-loader_global ec-loader_overlay" #loader>
+  <ec-loader [ngClass]="optionsForm.getValue('hostClass')" class="ec-loader" #loader>
   </ec-loader>
 </div>
