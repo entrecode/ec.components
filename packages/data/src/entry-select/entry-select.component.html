@@ -1,6 +1,6 @@
 <div *ngIf="selection" class="ec-select ec-entry-select" [class.ec-select_solo]="solo" [class.ec-select_dirty]="selection.items.length">
   <a (click)="pop.toggle()" class="ec-select__placeholder">
-    {{placeholder||'Auswählen'}
+    {{placeholder||'Auswählen'}}
   </a>
   <ul class="ec-select-selected">
     <li *ngFor="let selected of selection?.items">
