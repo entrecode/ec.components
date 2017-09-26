@@ -87,10 +87,6 @@ import { EntryPopComponent } from './entry-pop/entry-pop.component';
   ],
 })
 export class DataModule {
-
-  constructor() {
-  }
-
   static forEnvironment(environment): ModuleWithProviders {
     return {
       ngModule: DataModule,
@@ -105,5 +101,7 @@ export class DataModule {
         }
       ]
     }
+  }
+  constructor() {
   }
 }

@@ -14,6 +14,7 @@ import { MonthComponent } from './datetime/month.component';
 import { DatetimePipe } from './datetime/datetime.pipe';
 import { ToggleComponent } from './toggle/toggle.component';
 import { CalendarComponent } from './datetime/calendar.component';
+import { LoaderModule } from '../loader/loader.module';
 
 @NgModule({
   entryComponents: [
@@ -36,7 +37,8 @@ import { CalendarComponent } from './datetime/calendar.component';
     HttpModule,
     ReactiveFormsModule,
     PopModule,
-    IoModule
+    IoModule,
+    LoaderModule,
   ],
   exports: [
     FormComponent,

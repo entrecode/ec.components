@@ -3,14 +3,13 @@
     <ng-content></ng-content>
   </div>
   <div *ngIf="!wrapper.children.length&&!empty">
-    <div *ngFor="let field of form?.fields | visibleFields" [ngClass]="'input-group_' + field.view"
-         [ngSwitch]="field.view" class="input-group">
+    <div *ngFor="let field of form?.fields | visibleFields" [ngClass]="'form-group_' + field.view" [ngSwitch]="field.view" class="form-group">
       <label>{{field.label || field.property}}</label>
       <ec-input *ngIf="!field.readOnly" [field]="field" [group]="group" [item]="form"></ec-input>
       <ec-output *ngIf="field.readOnly" [field]="field" [item]="form"></ec-output>
     </div>
-    <button type="button" (click)="submit()" *ngIf="submitButton!==false" [disabled]="group.invalid"
-            class="btn">Speichern
+    <button type="button" (click)="submit()" *ngIf="submitButton!==false" [disabled]="group.invalid" class="btn">Speichern
     </button>
+    <ec-loader class="ec-loader ec-loader_overlay ec-loader_global" #formLoader></ec-loader>
   </div>
 </form>

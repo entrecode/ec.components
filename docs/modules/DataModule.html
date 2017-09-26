@@ -1975,10 +1975,6 @@ import { EntryPopComponent } from &#x27;./entry-pop/entry-pop.component&#x27;;
   ],
 })
 export class DataModule {
-
-  constructor() {
-  }
-
   static forEnvironment(environment): ModuleWithProviders {
     return {
       ngModule: DataModule,
@@ -1994,7 +1990,10 @@ export class DataModule {
       ]
     }
   }
-}</code></pre>
+  constructor() {
+  }
+}
+</code></pre>
     </div>
 </div>
 

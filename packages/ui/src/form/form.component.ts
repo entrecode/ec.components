@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Form, FormConfig, Item } from '@ec.components/core';
 import { ItemConfig } from '@ec.components/core/src/item/item-config.interface';
@@ -36,6 +36,8 @@ export class FormComponent implements OnChanges {
   @Output('submit') submitted: EventEmitter<Form<any>> = new EventEmitter();
   /** Emits when a new instance of Form is present */
   @Output() change: EventEmitter<FormComponent> = new EventEmitter();
+  /** The forms default loader. it is used when no loader is passed via the loader input */
+  @ViewChild(LoaderComponent) defaultLoader: LoaderComponent;
 
   /** Injects the services. */
   constructor(protected loaderService: LoaderService,
@@ -90,27 +92,27 @@ export class FormComponent implements OnChanges {
   /** Method that is invoked when the form is submitted.*/
   submit() {
     const submit = this.form.save(this.group.value)
-    .then((form) => {
-      this.submitted.emit(this.form);
-      this.edit(form);
-      if (this.silent) {
-        return;
-      }
-      this.notificationService.emit({ // TODO pull out to entry-form?
-        title: 'Eintrag gespeichert',
-        type: 'success'
+      .then((form) => {
+        this.submitted.emit(this.form);
+        this.edit(form);
+        if (this.silent) {
+          return;
+        }
+        this.notificationService.emit({ // TODO pull out to entry-form?
+          title: 'Eintrag gespeichert',
+          type: 'success'
+        });
+      }).catch((err) => {
+        console.error(err, err.errors);
+        if (this.silent) {
+          return;
+        }
+        this.notificationService.emit({
+          title: 'Fehler beim Speichern',
+          error: err
+        });
       });
-    }).catch((err) => {
-      console.error(err, err.errors);
-      if (this.silent) {
-        return;
-      }
-      this.notificationService.emit({
-        title: 'Fehler beim Speichern',
-        error: err
-      });
-    });
-    this.loaderService.wait(submit, this.loader);
+    this.loaderService.wait(submit, this.loader || this.defaultLoader);
     return submit;
   }
 

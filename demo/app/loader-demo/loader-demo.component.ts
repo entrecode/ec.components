@@ -7,7 +7,7 @@ import { Form } from '@ec.components/core';
 })
 export class LoaderDemoComponent implements OnInit {
 
-  public classes = ['blend', 'no class'];
+  public classes = ['', 'ec-loader_global', 'ec-loader_overlay ec-loader_global'];
   @ViewChild('loader') loader: LoaderComponent;
   public options: Form<any>;
   @ViewChild('optionsForm') optionsForm: FormComponent;
@@ -24,18 +24,18 @@ export class LoaderDemoComponent implements OnInit {
       message: 'The temperature of your white bread has risen to improve its crisp factor to the optimum!',
       type: 'success'
     }, {
-      fields: {
-        time: {
-          label: 'Zeit in ms',
-          view: 'number'
-        },
-        hostClass: {
-          label: 'Klasse',
-          view: 'select',
-          values: this.classes
+        fields: {
+          time: {
+            label: 'Zeit in ms',
+            view: 'number'
+          },
+          hostClass: {
+            label: 'Klasse',
+            view: 'select',
+            values: this.classes
+          }
         }
-      }
-    });
+      });
   }
 
   emit({ type, title, message, time }) {

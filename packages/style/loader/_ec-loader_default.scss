@@ -20,8 +20,8 @@
     height: em(24);
     width: em(24);
     @include border-radius(50%);
-    border: em(4) solid transparent;
-    border-right-color: getColor(state, active);
+    border: em(4) solid getColor(state, active);
+    border-right-color: getColor(state, disabled);
     @include animation(loaderDefault 2s infinite);
   }
 }
