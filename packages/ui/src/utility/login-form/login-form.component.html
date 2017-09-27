@@ -2,18 +2,18 @@
   <p class="error" *ngIf="errorMessage">
     {{errorMessage}}
   </p>
-  <div class="form-group">
+  <div class="form-group form-group_email">
     <label>E-Mail</label>
     <!-- TODO wait for FormControl updateOn: blur -->
     <input type="email" formControlName="email" validate-onblur class="input">
     <ec-input-errors [control]="form.get('email')"></ec-input-errors>
   </div>
-  <div class="form-group">
+  <div class="form-group form-group_password">
     <label>Passwort</label>
     <input type="password" formControlName="password" validate-onblur class="input">
     <ec-input-errors [control]="form.get('password')"></ec-input-errors>
   </div>
-  <button type="submit" [disabled]="form.invalid" [class.disabled]="form.invalid" class="btn">
+  <button type="submit" [disabled]="form.invalid" [class.disabled]="form.invalid" class="btn ec-login-form__login">
     Login
   </button>
 </form>
