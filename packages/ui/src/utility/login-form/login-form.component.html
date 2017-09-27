@@ -14,6 +14,6 @@
     <ec-input-errors [control]="form.get('password')"></ec-input-errors>
   </div>
   <button type="submit" [disabled]="form.invalid" [class.disabled]="form.invalid" class="btn ec-login-form__login">
-    Login
+    {{buttonLabel || 'Login'}}
   </button>
 </form>

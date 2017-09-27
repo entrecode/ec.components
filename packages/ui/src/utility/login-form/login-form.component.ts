@@ -23,6 +23,8 @@ export class LoginFormComponent implements OnInit {
   @Output() error: EventEmitter<any> = new EventEmitter();
   /** The loader that should be shown during login */
   @Input() loader: LoaderComponent;
+  /** The Label of the submit button. Defaults to Login */
+  @Input() buttonLabel: string;
 
   /** Injects the FormBuilder*/
   constructor(private fb: FormBuilder) {
@@ -57,10 +59,10 @@ export class LoginFormComponent implements OnInit {
       return;
     }
     const login = this.login(this.form.value)
-    .then((res) => {
-      this.form.reset();
-      this.success.emit(res);
-    });
+      .then((res) => {
+        this.form.reset();
+        this.success.emit(res);
+      });
     if (this.loader) {
       this.loader.wait(login);
     }
