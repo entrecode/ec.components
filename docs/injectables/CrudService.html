@@ -1538,7 +1538,7 @@ changes.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">packages/data/src/crud/crud.service.ts:97</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">packages/data/src/crud/crud.service.ts:99</a></div>
                                         </td>
                                     </tr>
             
@@ -1610,7 +1610,7 @@ changes.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">packages/data/src/crud/crud.service.ts:110</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">packages/data/src/crud/crud.service.ts:112</a></div>
                                         </td>
                                     </tr>
             
@@ -2045,7 +2045,7 @@ export class CrudService {
   /** Gives true if the given change fits all property values of the filter. */
   matches(change: Update, filter: Update): boolean {
     return Object.keys(filter)
-    .reduce((match, key) &#x3D;&gt; match &amp;&amp; change[key] &#x3D;&#x3D;&#x3D; filter[key], true);
+      .reduce((match, key) &#x3D;&gt; match &amp;&amp; change[key] &#x3D;&#x3D;&#x3D; filter[key], true);
   }
 
   /** Yields an observable that emits for all updates that match the given filter */
@@ -2062,11 +2062,11 @@ export class CrudService {
       return this.update(model, entry, value);
     }
     return this.create(model, value)
-    .then((_entry) &#x3D;&gt; {
-      return _entry;
-    }).catch((err) &#x3D;&gt; {
-      return Promise.reject(err);
-    });
+      .then((_entry) &#x3D;&gt; {
+        return _entry;
+      }).catch((err) &#x3D;&gt; {
+        return Promise.reject(err);
+      });
   }
 
   /** Updates the given entry with the new value. Fires the &quot;update&quot; change. */
@@ -2078,10 +2078,10 @@ export class CrudService {
       this.changes.next({ model, entry: _entry, type: &#x27;put&#x27; });
       return _entry;
     })
-    .catch((err) &#x3D;&gt; {
-      Object.assign(entry, this.clean(oldValues)); // fall back to old values
-      return Promise.reject(err);
-    });
+      .catch((err) &#x3D;&gt; {
+        Object.assign(entry, this.clean(oldValues)); // fall back to old values
+        return Promise.reject(err);
+      });
   }
 
   /** Returns true if the given field key is an immutable system property */
@@ -2093,11 +2093,13 @@ export class CrudService {
   /** Removes all null or undefined values from the given object */
   clean(value: Object): Object {
     for (const key in value) {
-      if (value[key] &#x3D;&#x3D;&#x3D; &#x27;&#x27;) { // clear empty strings
-        value[key] &#x3D; null;
-      }
-      if (this.isImmutableProperty(key)) { // filter system properties
-        delete value[key];
+      if (value.hasOwnProperty(key)) {
+        if (value[key] &#x3D;&#x3D;&#x3D; &#x27;&#x27;) { // clear empty strings
+          value[key] &#x3D; null;
+        }
+        if (this.isImmutableProperty(key)) { // filter system properties
+          delete value[key];
+        }
       }
     }
     return value;
@@ -2106,14 +2108,14 @@ export class CrudService {
   /** Creates a new entry with the given value for the given model. Fires the &quot;create&quot; change. */
   create(model: string, value: Object): Promise&lt;EntryResource&gt; {
     return this.sdk.api.createEntry(model, this.clean(value))
-    .then((entry) &#x3D;&gt; {
-      // console.log(&#x27;created entry&#x27;, entry);
-      // TODO make sure leveled entries are returned leveled
-      this.changes.next({ model, entry, type: &#x27;post&#x27; });
-      return entry;
-    }).catch((err) &#x3D;&gt; {
-      return Promise.reject(err);
-    });
+      .then((entry) &#x3D;&gt; {
+        // console.log(&#x27;created entry&#x27;, entry);
+        // TODO make sure leveled entries are returned leveled
+        this.changes.next({ model, entry, type: &#x27;post&#x27; });
+        return entry;
+      }).catch((err) &#x3D;&gt; {
+        return Promise.reject(err);
+      });
   }
 
   /** deletes the given entry and emits the &quot;delete&quot; change. */
