@@ -19,9 +19,9 @@ export class Form<Object> extends Item<Object> {
     this.fields = [];
     if (this.config.fields) {
       Object.keys(this.config.fields)
-      .forEach((property) => {
-        this.fields.push(new Field(property, this.config.fields[property]));
-      });
+        .forEach((property) => {
+          this.fields.push(new Field(property, this.config.fields[property]));
+        });
     } else {
       this.getProperties().forEach((property) => {
         this.fields.push(new Field(property, { type: typeof this.resolve(property) }));
@@ -37,6 +37,12 @@ export class Form<Object> extends Item<Object> {
   /** Returns the original value of the property, if any. */
   getValue(property: string) {
     if (!this.body && this.config.fields && this.config.fields[property]) {
+      // If the prefill is not a primitive, return a clone to stay pristine
+      if (Array.isArray(this.config.fields[property].prefill)) {
+        return this.config.fields[property].prefill.slice(0);
+      } else if (typeof this.config.fields[property].prefill === 'object') {
+        return Object.assign({}, this.config.fields[property].prefill);
+      }
       // if no body is present, the prefills are used
       return this.config.fields[property].prefill;
     } else {
