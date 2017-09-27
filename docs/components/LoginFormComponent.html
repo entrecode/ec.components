@@ -1388,6 +1388,9 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#buttonLabel">buttonLabel</a>
+                            </li>
+                            <li>
                                 <a href="#loader">loader</a>
                             </li>
                         </ul>
@@ -1425,7 +1428,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">packages/ui/src/utility/login-form/login-form.component.ts:25</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">packages/ui/src/utility/login-form/login-form.component.ts:27</a></div>
                                 </td>
                             </tr>
     
@@ -1465,6 +1468,29 @@
 
     <section>
         <h3 id="inputs">Inputs</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="buttonLabel"></a>
+                            <code>buttonLabel</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>The Label of the submit button. Defaults to Login </p>
+</div>
+                              <p>
+                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                              </p>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">packages/ui/src/utility/login-form/login-form.component.ts:27</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
             <table class="table table-sm table-bordered">
                 <tbody>
                     <tr>
@@ -1560,7 +1586,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">packages/ui/src/utility/login-form/login-form.component.ts:48</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">packages/ui/src/utility/login-form/login-form.component.ts:50</a></div>
                                 </td>
                             </tr>
     
@@ -1622,7 +1648,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">packages/ui/src/utility/login-form/login-form.component.ts:32</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">packages/ui/src/utility/login-form/login-form.component.ts:34</a></div>
                                 </td>
                             </tr>
     
@@ -1656,7 +1682,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">packages/ui/src/utility/login-form/login-form.component.ts:53</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">packages/ui/src/utility/login-form/login-form.component.ts:55</a></div>
                                 </td>
                             </tr>
     
@@ -1690,7 +1716,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">packages/ui/src/utility/login-form/login-form.component.ts:40</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">packages/ui/src/utility/login-form/login-form.component.ts:42</a></div>
                                 </td>
                             </tr>
     
@@ -1882,6 +1908,8 @@ export class LoginFormComponent implements OnInit {
   @Output() error: EventEmitter&lt;any&gt; &#x3D; new EventEmitter();
   /** The loader that should be shown during login */
   @Input() loader: LoaderComponent;
+  /** The Label of the submit button. Defaults to Login */
+  @Input() buttonLabel: string;
 
   /** Injects the FormBuilder*/
   constructor(private fb: FormBuilder) {
@@ -1916,10 +1944,10 @@ export class LoginFormComponent implements OnInit {
       return;
     }
     const login &#x3D; this.login(this.form.value)
-    .then((res) &#x3D;&gt; {
-      this.form.reset();
-      this.success.emit(res);
-    });
+      .then((res) &#x3D;&gt; {
+        this.form.reset();
+        this.success.emit(res);
+      });
     if (this.loader) {
       this.loader.wait(login);
     }
@@ -1929,23 +1957,23 @@ export class LoginFormComponent implements OnInit {
     </div>
 
     <div class="tab-pane fade" id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;form novalidate [formGroup]&#x3D;&quot;form&quot; (ngSubmit)&#x3D;&quot;onSubmit()&quot;&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;form novalidate [formGroup]&#x3D;&quot;form&quot; (ngSubmit)&#x3D;&quot;onSubmit()&quot; class&#x3D;&quot;ec-login-form&quot;&gt;
   &lt;p class&#x3D;&quot;error&quot; *ngIf&#x3D;&quot;errorMessage&quot;&gt;
     {{errorMessage}}
   &lt;/p&gt;
-  &lt;label&gt;
-    E-Mail
-    &lt;ec-input-errors [control]&#x3D;&quot;form.get(&#x27;email&#x27;)&quot;&gt;&lt;/ec-input-errors&gt;
-    &lt;input type&#x3D;&quot;email&quot; formControlName&#x3D;&quot;email&quot; validate-onblur&gt;
+  &lt;div class&#x3D;&quot;form-group form-group_email&quot;&gt;
+    &lt;label&gt;E-Mail&lt;/label&gt;
     &lt;!-- TODO wait for FormControl updateOn: blur --&gt;
-  &lt;/label&gt;
-  &lt;label&gt;
-    Passwort
+    &lt;input type&#x3D;&quot;email&quot; formControlName&#x3D;&quot;email&quot; validate-onblur class&#x3D;&quot;input&quot;&gt;
+    &lt;ec-input-errors [control]&#x3D;&quot;form.get(&#x27;email&#x27;)&quot;&gt;&lt;/ec-input-errors&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;form-group form-group_password&quot;&gt;
+    &lt;label&gt;Passwort&lt;/label&gt;
+    &lt;input type&#x3D;&quot;password&quot; formControlName&#x3D;&quot;password&quot; validate-onblur class&#x3D;&quot;input&quot;&gt;
     &lt;ec-input-errors [control]&#x3D;&quot;form.get(&#x27;password&#x27;)&quot;&gt;&lt;/ec-input-errors&gt;
-    &lt;input type&#x3D;&quot;password&quot; formControlName&#x3D;&quot;password&quot; validate-onblur&gt;
-  &lt;/label&gt;
-  &lt;button type&#x3D;&quot;submit&quot; [disabled]&#x3D;&quot;form.invalid&quot; [class.disabled]&#x3D;&quot;form.invalid&quot;&gt;
-    Login
+  &lt;/div&gt;
+  &lt;button type&#x3D;&quot;submit&quot; [disabled]&#x3D;&quot;form.invalid&quot; [class.disabled]&#x3D;&quot;form.invalid&quot; class&#x3D;&quot;btn ec-login-form__login&quot;&gt;
+    {{buttonLabel || &#x27;Login&#x27;}}
   &lt;/button&gt;
 &lt;/form&gt;
 </code></pre>
@@ -1974,7 +2002,7 @@ export class LoginFormComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><form novalidate [formGroup]="form" (ngSubmit)="onSubmit()">  <p class="error" *ngIf="errorMessage">    {{errorMessage}}  </p>  <label>    E-Mail    <ec-input-errors [control]="form.get(\'email\')"></ec-input-errors>    <input type="email" formControlName="email" validate-onblur>    <!-- TODO wait for FormControl updateOn: blur -->  </label>  <label>    Passwort    <ec-input-errors [control]="form.get(\'password\')"></ec-input-errors>    <input type="password" formControlName="password" validate-onblur>  </label>  <button type="submit" [disabled]="form.invalid" [class.disabled]="form.invalid">    Login  </button></form></div>'
+        var COMPONENT_TEMPLATE = '<div><form novalidate [formGroup]="form" (ngSubmit)="onSubmit()" class="ec-login-form">  <p class="error" *ngIf="errorMessage">    {{errorMessage}}  </p>  <div class="form-group form-group_email">    <label>E-Mail</label>    <!-- TODO wait for FormControl updateOn: blur -->    <input type="email" formControlName="email" validate-onblur class="input">    <ec-input-errors [control]="form.get(\'email\')"></ec-input-errors>  </div>  <div class="form-group form-group_password">    <label>Passwort</label>    <input type="password" formControlName="password" validate-onblur class="input">    <ec-input-errors [control]="form.get(\'password\')"></ec-input-errors>  </div>  <button type="submit" [disabled]="form.invalid" [class.disabled]="form.invalid" class="btn ec-login-form__login">    {{buttonLabel || \'Login\'}}  </button></form></div>'
     var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
     var DIRECTIVES = [{'name': 'AssetDirective', 'selector': '[ecAsset]'},{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'ImageDirective', 'selector': 'img [ecImage]'},{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'LoginFormComponent'};

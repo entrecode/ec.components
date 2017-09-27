@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SdkService } from '../../../packages/data/index';
+import { AuthService } from '../../../index';
 
 @Component({
   selector: 'ec-auth-demo',
@@ -8,7 +9,7 @@ import { SdkService } from '../../../packages/data/index';
 export class AuthDemoComponent {
   private user: any;
 
-  constructor(public sdk: SdkService) {
+  constructor(public sdk: SdkService, public auth: AuthService) {
     this.sdk.getAccount().then((user) => {
       console.log('me', user);
     });

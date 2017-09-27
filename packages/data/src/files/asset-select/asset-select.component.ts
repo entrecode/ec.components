@@ -15,8 +15,7 @@ import { AssetListPopComponent } from '../asset-list-pop/asset-list-pop.componen
 @Component({
   selector: 'ec-asset-select',
   templateUrl: './asset-select.component.html',
-  styleUrls: ['../../../../ui/src/select/select.component.scss'],
-
+  styleUrls: ['../../../../ui/src/select/select.component.scss', './asset-select.component.scss'],
   encapsulation: ViewEncapsulation.None,
   providers: [
     {
