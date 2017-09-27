@@ -85,6 +85,9 @@ export class EntryPopComponent extends PopComponent implements OnInit {
       const trimmed = this.router.url.replace(new RegExp(matcher, 'g'), '');
       this.router.navigate([trimmed, this.createRoute]);
     }
+    if (this.form) { // clears form if already used before
+      this.form.create();
+    }
     this.show();
   }
 
