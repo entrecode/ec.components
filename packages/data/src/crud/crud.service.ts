@@ -35,7 +35,7 @@ export class CrudService {
   /** Gives true if the given change fits all property values of the filter. */
   matches(change: Update, filter: Update): boolean {
     return Object.keys(filter)
-    .reduce((match, key) => match && change[key] === filter[key], true);
+      .reduce((match, key) => match && change[key] === filter[key], true);
   }
 
   /** Yields an observable that emits for all updates that match the given filter */
@@ -52,11 +52,11 @@ export class CrudService {
       return this.update(model, entry, value);
     }
     return this.create(model, value)
-    .then((_entry) => {
-      return _entry;
-    }).catch((err) => {
-      return Promise.reject(err);
-    });
+      .then((_entry) => {
+        return _entry;
+      }).catch((err) => {
+        return Promise.reject(err);
+      });
   }
 
   /** Updates the given entry with the new value. Fires the "update" change. */
@@ -68,10 +68,10 @@ export class CrudService {
       this.changes.next({ model, entry: _entry, type: 'put' });
       return _entry;
     })
-    .catch((err) => {
-      Object.assign(entry, this.clean(oldValues)); // fall back to old values
-      return Promise.reject(err);
-    });
+      .catch((err) => {
+        Object.assign(entry, this.clean(oldValues)); // fall back to old values
+        return Promise.reject(err);
+      });
   }
 
   /** Returns true if the given field key is an immutable system property */
@@ -83,11 +83,13 @@ export class CrudService {
   /** Removes all null or undefined values from the given object */
   clean(value: Object): Object {
     for (const key in value) {
-      if (value[key] === '') { // clear empty strings
-        value[key] = null;
-      }
-      if (this.isImmutableProperty(key)) { // filter system properties
-        delete value[key];
+      if (value.hasOwnProperty(key)) {
+        if (value[key] === '') { // clear empty strings
+          value[key] = null;
+        }
+        if (this.isImmutableProperty(key)) { // filter system properties
+          delete value[key];
+        }
       }
     }
     return value;
@@ -96,14 +98,14 @@ export class CrudService {
   /** Creates a new entry with the given value for the given model. Fires the "create" change. */
   create(model: string, value: Object): Promise<EntryResource> {
     return this.sdk.api.createEntry(model, this.clean(value))
-    .then((entry) => {
-      // console.log('created entry', entry);
-      // TODO make sure leveled entries are returned leveled
-      this.changes.next({ model, entry, type: 'post' });
-      return entry;
-    }).catch((err) => {
-      return Promise.reject(err);
-    });
+      .then((entry) => {
+        // console.log('created entry', entry);
+        // TODO make sure leveled entries are returned leveled
+        this.changes.next({ model, entry, type: 'post' });
+        return entry;
+      }).catch((err) => {
+        return Promise.reject(err);
+      });
   }
 
   /** deletes the given entry and emits the "delete" change. */

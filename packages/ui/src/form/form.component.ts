@@ -72,7 +72,7 @@ export class FormComponent implements OnChanges {
   }
 
   /* clears the form and uses the given config (falls back to existing one). Renders an empty form. */
-  create(config?: ItemConfig<any>) {
+  create(config: ItemConfig<any> = this.config) {
     this.dirtyTalk();
     this.init(null, config);
   }
