@@ -1,12 +1,11 @@
 <div class="ec-crud">
   <header class="ec-crud-header">
     <nav class="nav">
-
+      <a (click)="entryPop.create()" *ngIf="hasMethod('post')" class="btn">
+        <span *ngIf="this.config?.createLabel">{{this.config?.createLabel}}</span>
+        <span *ngIf="!this.config?.createLabel">+</span>
+      </a>
     </nav>
-    <a (click)="entryPop.create()" *ngIf="hasMethod('post')" class="btn">
-      <span *ngIf="this.config?.createLabel">{{this.config?.createLabel}}</span>
-      <span *ngIf="!this.config?.createLabel">+</span>
-    </a>
   </header>
   <div class="ec-crud-body">
     <ec-entry-list [model]="model" [config]="config" [solo]="true"
