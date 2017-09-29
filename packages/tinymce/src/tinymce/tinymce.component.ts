@@ -66,13 +66,13 @@ export class TinymceComponent implements OnInit, OnDestroy, ControlValueAccessor
   /** Subscribes for changes and propagates them + calling application tick manually :( */
   constructor(private app: ApplicationRef) {
     this.update.asObservable()
-    .debounceTime(this.debounce)
-    .subscribe((value) => {
-      this.value = value;
-      this.propagateChange(value);
-      this.change.emit(value);
-      this.app.tick();
-    })
+      .debounceTime(this.debounce)
+      .subscribe((value) => {
+        this.value = value;
+        this.propagateChange(value);
+        this.change.emit(value);
+        this.app.tick();
+      })
   }
 
   /** Initializes the editor */
@@ -81,16 +81,16 @@ export class TinymceComponent implements OnInit, OnDestroy, ControlValueAccessor
       Object.assign(editorSettings, {
         target: this.container.nativeElement
       }, this.settings))).then((editor) => {
-      this.editor = editor[0];
-      this.editor.setContent(this.value || '');
-      this.editor.on('dblclick', (e) => {
-        if (e.target.localName === 'img') {
-          this.editor.buttons.image.onclick(true, e.toElement);
-        }
+        this.editor = editor[0];
+        this.editor.setContent(this.value || '');
+        this.editor.on('dblclick', (e) => {
+          if (e.target.localName === 'img') {
+            this.editor.buttons.image.onclick(true, e.toElement);
+          }
+        });
+        this.editor.on('change', () => this.update.next(this.editor.getContent()));
+        return this.editor;
       });
-      this.editor.on('change', () => this.update.next(this.editor.getContent()));
-      return this.editor;
-    });
   }
 
   /** Destroys the editor. */
@@ -105,6 +105,9 @@ export class TinymceComponent implements OnInit, OnDestroy, ControlValueAccessor
   /** Writes value to editor on outside model change. */
   writeValue(value: any) {
     this.value = value || '';
+    if (!this.ready) {
+      return;
+    }
     this.ready.then((editor) => {
       editor.setContent(this.value);
     });
