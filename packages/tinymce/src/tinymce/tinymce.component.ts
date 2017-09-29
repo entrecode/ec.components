@@ -6,7 +6,7 @@ import {
   forwardRef,
   Input,
   OnDestroy,
-  OnInit,
+  AfterViewInit,
   Output,
   ViewChild,
   ViewEncapsulation
@@ -45,7 +45,7 @@ import { editorSettings } from './tinymce-settings';
     }
   ]
 })
-export class TinymceComponent implements OnInit, OnDestroy, ControlValueAccessor {
+export class TinymceComponent implements AfterViewInit, OnDestroy, ControlValueAccessor {
   /** Promise that resolves when the editor has been initialized */
   ready: Promise<any>;
   /** The current editor instance */
@@ -76,7 +76,7 @@ export class TinymceComponent implements OnInit, OnDestroy, ControlValueAccessor
   }
 
   /** Initializes the editor */
-  ngOnInit() {
+  ngAfterViewInit() {
     this.ready = Promise.resolve(tinymce.init(
       Object.assign(editorSettings, {
         target: this.container.nativeElement
