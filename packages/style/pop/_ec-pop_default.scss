@@ -1,6 +1,7 @@
 .ec-pop {
   @include flexbox;
   @include flex-direction(column);
+  position: relative;
 
   .ec-pop-header {
     @include flex-grow(0);
@@ -20,4 +21,12 @@
 
 ec-pop {
   @include theme-modifier('.ec-pop');
+
+  .ec-pop__close {
+    position: absolute;
+    @extend %btn !optional;
+    right: rem(2);
+    top: rem(2);
+    z-index: 10;
+  }
 }

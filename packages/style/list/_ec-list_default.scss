@@ -1,8 +1,13 @@
 .ec-list {
   font-size: 1em;
+  border: 1px solid getColor(divider);
 
   .ec-list-row {
     border-bottom: 1px solid getColor(divider);
+
+    &:last-child {
+      border-bottom: none;
+    }
   }
 
   .ec-list-cell {
@@ -39,10 +44,11 @@
 }
 
 .ec-list-header {
+  background-color: getColor(background, lightest);
+  font-size: em(14);
 
   .ec-list-cell {
     justify-content: space-between;
-    border-top: 1px solid getColor(divider);
     border-bottom: 1px solid getColor(divider);
 
     .ec-list-field__title {
