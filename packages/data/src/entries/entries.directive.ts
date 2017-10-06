@@ -56,8 +56,8 @@ export class EntriesDirective implements OnChanges {
     this.entryList = entryList;
     const items = this.entryList.getAllItems();
     if (this.endless) {
-      this.items = this.items.filter(item => items.find(_item => item.id === _item.id))
-        .concat(items);
+      this.items = this.items.concat(items);
+      this.items = this.items.filter((item) => this.items.find((_item) => _item.id === item.id));
     } else {
       this.items = this.entryList.getAllItems();
     }
