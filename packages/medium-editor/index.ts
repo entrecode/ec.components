@@ -1,1 +1,1 @@
-export * from './src/medium.module'
+export { MediumModule } from './src/medium.module'

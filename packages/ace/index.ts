@@ -1,1 +1,1 @@
-export * from './src/ace.module';
+export { AceModule } from './src/ace.module';

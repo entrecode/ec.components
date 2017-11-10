@@ -1,4 +1,5 @@
-import { Observable, Subject } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 import { ListConfig } from '../list/list-config.interface';
 
 /** This class can be used to control the loading behaviour of external data. */

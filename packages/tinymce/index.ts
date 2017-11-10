@@ -1,1 +1,1 @@
-export * from './src/tinymce.module';
+export { TinymceModule } from './src/tinymce.module'

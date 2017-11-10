@@ -2,8 +2,10 @@ import { Component } from '@angular/core';
 import { adjektive } from '../../../mocks/adjektive';
 import { irregular_verbs } from '../../../mocks/irregular_verbs';
 import { regular_verbs } from '../../../mocks/regular_verbs';
-import { List } from "../../../index";
+import { List } from '@ec.components/core';
 import { substantives } from '../../../mocks/substantives';
+
+const percent = (value) => Math.round(100 * value) + '%';
 
 @Component({
   template: `
@@ -17,8 +19,9 @@ import { substantives } from '../../../mocks/substantives';
 </ul>
 `
 })
+
+
 export class ListTransformsDemoComponent {
-  private percent = (value) => Math.round(100 * value) + '%';
   private german = [...irregular_verbs, ...regular_verbs, ...adjektive, ...substantives];
   public words = new List(this.german.filter(word => !!word)
     .map((word) => {
@@ -50,7 +53,7 @@ export class ListTransformsDemoComponent {
         vocality: {
           label: 'Vokalität',
           resolve: (body, item) => item.sort('vocales') / body.word.length,
-          display: this.percent,
+          display: percent,
           sortable: true
         },
         vocale_diversity: {
@@ -80,20 +83,18 @@ export class ListTransformsDemoComponent {
         speed: {
           label: 'Konsonanz',
           resolve: (body, item) => item.sort('fast_consonants') / body.word.length,
-          display: this.percent,
+          display: percent,
           sortable: true
         },
         flow: {
           label: 'Fluss',
           resolve: (body, item) => (item.sort('vocales') * item.sort('fast_consonants')) / Math.max(1, body.word.length * item.sort('fast_consonant_diversity') * item.sort('vocale_diversity')),
-          display: this.percent,
+          display: percent,
           sortable: true
         }
       }
     }
-  )
-  ;
-
+  );
   log(wort) {
     console.log('log', wort);
   }

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { SdkService } from '../../../packages/data/index';
-import { AuthService } from '../../../index';
+import { SdkService, AuthService } from '@ec.components/data';
 
 @Component({
   selector: 'ec-auth-demo',

@@ -1,2 +1,2 @@
-export * from './auth-guard.service';
-export * from './auth.module';
+export { AuthGuard } from './auth-guard.service';
+export { AuthModule } from './auth.module';

@@ -1,5 +1,5 @@
-export * from './files.module';
-export * from './file.service';
-export * from './asset-list/asset-list.component';
-export * from './asset-select/asset-select.component';
-export * from './upload/upload.component';
+export { FilesModule } from './files.module';
+export { FileService } from './file.service';
+export { AssetListComponent } from './asset-list/asset-list.component';
+export { AssetSelectComponent } from './asset-select/asset-select.component';
+export { UploadComponent } from './upload/upload.component';
