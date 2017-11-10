@@ -19,7 +19,7 @@ $background: white;
 $text: #2D3A47;
 $link: #E74A7A;
 $super: #FC6563;
-$minor: rgba($text, .2);
+$minor: #D5DDE4;
 $highlight: #A7FFEB;
 
 $setDark: $text !default;
@@ -31,18 +31,31 @@ $setLight: $background !default;
   $setLight: $text;
 }
 
+$divider-opacity: .1;
+
 /// if your template supports display:flex
 $flex-support: true;
+
+/// if your template uses ec-icon
+$ec-icon-support: true;
 
 //
 /// TYPO
 /// ------------------------------------------------------
+
+/// font-weight config
+$light: 300;
+$normal: 400;
+$bold: 700;
 
 /// @prop {number} $root-size [16] - default size used for global size calculations
 $root-size: 16;
 
 /// @prop {number} $font-size [16] - default font-size
 $font-size: 14;
+
+/// @prop {number} $responsive-headings-ratio [.8] - ratio to downscale headings on mobile devices
+$responsive-headings-ratio: .8;
 
 $headings-weight: $bold;
 
@@ -80,9 +93,9 @@ $btn-font-family: $body-font;
 /// --------------------
 
 /// metrics of default btn
-$btn-font-size: 14;
-$btn-line-height: 18;
-$btn-min-height: 32;
+$btn-font-size: 16;
+$btn-line-height: 20;
+$btn-min-height: 40;
 
 /// font-weight of btn
 $btn-weight: $bold;
@@ -92,32 +105,32 @@ $btn-weight: $bold;
   /// put styles here...
 }
 
-/// Style for .btn._small
+/// Style for .btn.small
 /// --------------------
 
-/// metrics of btn._small
+/// metrics of btn.small
 $btn-small-font-size: 14;
 $btn-small-line-height: 18;
 $btn-small-min-height: 32;
 
 /// font-weight of btn
-$btn-small-weight: $bold;
+$btn-small-weight: $btn-weight;
 
 /// additional styles for .btn
 %btn-small-style {
   /// put styles here...
 }
 
-/// Style for .btn._big
+/// Style for .btn.big
 /// --------------------
 
-/// metrics of btn._big
+/// metrics of btn.big
 $btn-big-font-size: 18;
 $btn-big-line-height: 24;
 $btn-big-min-height: 48;
 
 /// font-weight of btn
-$btn-big-weight: $bold;
+$btn-big-weight: $btn-weight;
 
 /// additional styles for .btn
 %btn-big-style {
@@ -138,14 +151,14 @@ $btn-big-radius: 4 !default;
 /// min width for .wide buttons
 $btn-wide: 240px;
 
-/// min width for .wide._small buttons
+/// min width for .wide.small buttons
 $btn-small-wide: 160px;
 
-/// min width for .wide._big buttons
+/// min width for .wide.big buttons
 $btn-big-wide: 240px;
 
-/// sets border-width for btn._outlined
-$btn-outline: 1 !default;
+/// sets border-width for btn.outlined
+$btn-outline: 2 !default;
 
 /// radius of dropdown-elements
 $dropdown-radius: 4 !default;
@@ -168,7 +181,7 @@ $input-small-font-size: 14 !default;
 $input-small-line-height: 18 !default;
 $input-small-min-height: 28 !default;
 
-/// additional styles for .input._small
+/// additional styles for .input.small
 %input-small-style {
   /// put styles here...
 }
@@ -178,7 +191,7 @@ $input-big-font-size: 18 !default;
 $input-big-line-height: 24 !default;
 $input-big-min-height: 40 !default;
 
-/// additional styles for .input._big
+/// additional styles for .input.big
 %input-big-style {
   /// put styles here...
 }
@@ -205,7 +218,7 @@ $alert-line-height: 20 !default;
 $alert-min-height: 40 !default;
 
 /// font-weight of .alert
-$alert-weight: $bold !default;
+$alert-weight: $normal !default;
 
 /// additional styles for .alert
 %alert-style {
@@ -217,10 +230,10 @@ $alert-small-font-size: 14 !default;
 $alert-small-line-height: 18 !default;
 $alert-small-min-height: 32 !default;
 
-/// font-weight of .alert._small
-$alert-small-weight: $bold !default;
+/// font-weight of .alert.small
+$alert-small-weight: $alert-weight !default;
 
-/// additional styles for .alert._small
+/// additional styles for .alert.small
 %alert-small-style {
   /// put styles here...
 }
@@ -230,10 +243,10 @@ $alert-big-font-size: 18 !default;
 $alert-big-line-height: 24 !default;
 $alert-big-min-height: 48 !default;
 
-/// font-weight of .alert._big
-$alert-big-weight: $bold;
+/// font-weight of .alert.big
+$alert-big-weight: $alert-weight;
 
-/// additional styles for .alert._big
+/// additional styles for .alert.big
 %alert-big-style {
   /// put styles here...
 }
@@ -271,10 +284,10 @@ $bubble-small-font-size: 10 !default;
 $bubble-small-line-height: 12 !default;
 $bubble-small-min-height: 24 !default;
 
-/// font-weight of .bubble._small
-$bubble-small-weight: $bold !default;
+/// font-weight of .bubble.small
+$bubble-small-weight: $bubble-weight !default;
 
-/// additional styles for .bubble._small
+/// additional styles for .bubble.small
 %bubble-small-style {
   /// put styles here...
 }
@@ -284,10 +297,10 @@ $bubble-big-font-size: 12 !default;
 $bubble-big-line-height: 16 !default;
 $bubble-big-min-height: 32 !default;
 
-/// font-weight of .bubble._big
-$bubble-big-weight: $bold !default;
+/// font-weight of .bubble.big
+$bubble-big-weight: $bubble-weight !default;
 
-/// additional styles for .bubble._big
+/// additional styles for .bubble.big
 %bubble-big-style {
   /// put styles here...
 }
@@ -325,10 +338,10 @@ $tag-small-font-size: 10 !default;
 $tag-small-line-height: 12 !default;
 $tag-small-min-height: 20 !default;
 
-/// font-weight of .tag._small
+/// font-weight of .tag.small
 $tag-small-weight: $bold !default;
 
-/// additional styles for .tag._small
+/// additional styles for .tag.small
 %tag-small-style {
   /// put styles here...
 }
@@ -338,10 +351,10 @@ $tag-big-font-size: 12 !default;
 $tag-big-line-height: 16 !default;
 $tag-big-min-height: 32 !default;
 
-/// font-weight of .tag._big
+/// font-weight of .tag.big
 $tag-big-weight: $bold !default;
 
-/// additional styles for .tag._big
+/// additional styles for .tag.big
 %tag-big-style {
   /// put styles here...
 }
@@ -379,10 +392,10 @@ $pill-small-font-size: 10 !default;
 $pill-small-line-height: 12 !default;
 $pill-small-min-height: 20 !default;
 
-/// font-weight of .pill._small
+/// font-weight of .pill.small
 $pill-small-weight: $bold !default;
 
-/// additional styles for .pill._small
+/// additional styles for .pill.small
 %pill-small-style {
   /// put styles here...
 }
@@ -392,10 +405,10 @@ $pill-big-font-size: 12 !default;
 $pill-big-line-height: 16 !default;
 $pill-big-min-height: 32 !default;
 
-/// font-weight of .pill._big
+/// font-weight of .pill.big
 $pill-big-weight: $bold !default;
 
-/// additional styles for .pill._big
+/// additional styles for .pill.big
 %pill-big-style {
   /// put styles here...
 }
