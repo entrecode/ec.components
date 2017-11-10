@@ -1,4 +1,4 @@
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs/Rx';
 
 /**
  * A Collection is a more sophisticated Array. It is fundamental for other classes like List.
