@@ -9,7 +9,12 @@
             "request": "launch",
             "name": "Launch Chrome against localhost:1337",
             "url": "https://localhost:1337",
-            "webRoot": "${workspaceRoot}"
+            "webRoot": "${workspaceRoot}",
+            "sourceMaps": true,
+            "sourceMapPathOverrides": {
+                "webpack:///*": "${workspaceRoot}/src/*"
+            },
+            "runtimeExecutable": "/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary"
         }
     ]
 }
