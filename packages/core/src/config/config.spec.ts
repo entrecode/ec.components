@@ -1,13 +1,16 @@
 import { Config } from '../../index';
 
+class ConfigTest extends Config { }
+
 describe('Config', () => {
 
   it('should be injected', () => {
-    expect(Config).toBeTruthy();
+    expect(ConfigTest).toBeTruthy();
   });
 
-  /*it('should be able to configure', () => {
-    Config.configure('test', 'duck', { fields: { name: 'Custom Name' } });
-    expect(Config.configure('test', 'duck').fields.name).toBe('Custom Name');
-  });*/
+  it('should be able to configure', () => {
+    const config = new ConfigTest();
+    config.configure('test', 'duck', { fields: { name: 'Custom Name' } });
+    expect(config.configure('test', 'duck').fields.name).toBe('Custom Name');
+  });
 });

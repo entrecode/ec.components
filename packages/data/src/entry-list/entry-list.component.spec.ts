@@ -10,7 +10,7 @@ describe('EntryListComponent', () => {
     TestBed.configureTestingModule({
       imports: [UiModule, DataModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -23,4 +23,11 @@ describe('EntryListComponent', () => {
     expect(component).toBeTruthy();
     component.ngOnChanges();
   });
+
+  /* it('should init list', () => {
+    component.model = 'muffin';
+    return component.createList().then((list) => {
+      return expect(list).toBeDefined();
+    });
+  }); */
 });

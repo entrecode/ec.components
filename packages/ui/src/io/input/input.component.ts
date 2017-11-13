@@ -39,7 +39,7 @@ export class InputComponent extends DynamicSlotComponent implements OnChanges {
     }
     const data = {
       group: this.group,
-      control: this.control || this.group.get(this.field.property),
+      control: this.control || this.group ? this.group.get(this.field.property) : null,
       item: this.item,
       field: this.field
     };

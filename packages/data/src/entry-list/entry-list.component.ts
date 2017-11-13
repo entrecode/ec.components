@@ -51,7 +51,7 @@ export class EntryListComponent extends ResourceListComponent<EntryResource> {
   }
 
   createList(): Promise<EntryList> {
-    if (!this.model || !this.config) {
+    if (!this.model) {
       return;
     }
     this.crud.change({ model: this.model }) // , type: 'post'

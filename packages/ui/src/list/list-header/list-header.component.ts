@@ -21,17 +21,17 @@ export class ListHeaderComponent {
   @ViewChild('filterForm') filter: FormComponent;
 
   /** opens the given filter pop and closes all others */
-  private editFilter(pop) {
+  public editFilter(pop) {
     pop.toggle();
     // this.pops.forEach((pop) => pop.hide());
   }
 
   /** Applies the given filter to the list. */
-  private applyFilter(property, value) {
+  public applyFilter(property, value) {
     this.list.filter(property, value);
   }
 
-  private removeFilter(property, control) {
+  public removeFilter(property, control) {
     control.reset();
   }
 }
