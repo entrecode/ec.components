@@ -6,7 +6,7 @@ import { Field } from './field';
 describe('Field', () => {
 
   it('should construct without config', () => {
-    const field = new Field('name');
+    const field = new Field('name', {});
     expect(field['property']).toBe('name');
   });
 

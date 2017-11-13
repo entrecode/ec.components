@@ -9,6 +9,13 @@ import { CrudService } from './crud.service';
 import { SdkService } from '../sdk/sdk.service';
 import { TypeConfigService } from '../model-config/type-config.service';
 import EntryResource from 'ec.sdk/src/resources/publicAPI/EntryResource';
+import { EntryPopComponent } from '../entry-pop/entry-pop.component';
+import { AuthModule } from '../auth/auth.module';
+import { demoRoutes } from '../../../../demo/app/demo.routes';
+import { FormsModule } from '@angular/forms';
+import { SdkModule } from '../sdk/sdk.module';
+import { FilesModule } from '../files/files.module';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('CrudComponent', () => {
   let component: CrudComponent<EntryResource>;
@@ -16,8 +23,14 @@ describe('CrudComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [UiModule, RouterModule],
-      declarations: [EntryFormComponent, EntryListComponent, CrudComponent],
+      imports: [
+        RouterTestingModule,
+        FormsModule,
+        UiModule,
+        SdkModule,
+        FilesModule,
+        AuthModule],
+      declarations: [EntryPopComponent, EntryFormComponent, EntryListComponent, CrudComponent],
       providers: [ModelConfigService, CrudService, SdkService, TypeConfigService,
         {
           provide: 'environment',
@@ -26,7 +39,7 @@ describe('CrudComponent', () => {
           }
         }]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
