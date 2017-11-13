@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "npm run symlinks && npm run delete-modules && ng serve --ssl --port 1337",
+    "start": "npm run symlinks && npm run delete-modules && ng serve --ssl --aot --port 1337",
     "aot": "npm run symlinks && npm run delete-modules && ng serve --aot --ssl",
     "build": "ng build --env=prod --aot=false -sm",
     "test": "ng test --cc",

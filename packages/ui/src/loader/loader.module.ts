@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
 import { LoaderComponent } from './loader.component';
 import { LoaderService } from './loader.service';
 
@@ -10,7 +9,6 @@ import { LoaderService } from './loader.service';
   ],
   imports: [
     CommonModule,
-    HttpModule,
   ],
   exports: [
     LoaderComponent,

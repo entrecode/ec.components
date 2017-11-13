@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
 import { DynamicSlotComponent } from './dynamic-slot/dynamic-slot.component';
 import { SlotHostDirective } from './slot-host.directive';
 import { DefaultInputComponent } from '../form/default-input/default-input.component';
@@ -29,7 +28,6 @@ import { DynamicRackComponent } from './dynamic-rack/dynamic-rack.component';
   ],
   imports: [
     CommonModule,
-    HttpModule,
     ReactiveFormsModule,
   ],
   exports: [

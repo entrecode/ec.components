@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
 import { FormComponent } from './form.component';
 import { DefaultInputComponent } from './default-input/default-input.component';
 import { DefaultOutputComponent } from './default-output/default-output.component';
@@ -34,7 +33,6 @@ import { LoaderModule } from '../loader/loader.module';
   ],
   imports: [
     CommonModule,
-    HttpModule,
     ReactiveFormsModule,
     PopModule,
     IoModule,

@@ -1,5 +1,4 @@
 import { CommonModule } from '@angular/common';
-import { HttpModule } from '@angular/http';
 import { ListComponent } from './list.component';
 import { ListItemsComponent } from './list-items/list-items.component';
 import { ListHeaderComponent } from './list-header/list-header.component';
@@ -18,7 +17,6 @@ import { NgModule } from '@angular/core';
   ],
   imports: [
     CommonModule,
-    HttpModule,
     FormModule,
   ],
   exports: [

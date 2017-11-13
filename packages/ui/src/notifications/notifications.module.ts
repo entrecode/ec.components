@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
 import { NotificationsComponent } from './notifications.component';
 import { NotificationsService } from './notifications.service';
 import { PopModule } from '../pop/pop.module';
@@ -13,7 +12,6 @@ import { ErrorComponent } from './error/error.component';
   ],
   imports: [
     CommonModule,
-    HttpModule,
     PopModule,
   ],
   exports: [

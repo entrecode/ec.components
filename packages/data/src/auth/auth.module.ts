@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CookieModule } from 'ngx-cookie';
 import { ValidationOnBlurDirective } from './validate-onblur';
@@ -25,7 +24,6 @@ export function cookieFactory(): ModuleWithProviders {
     cookieFactory(),
     CommonModule,
     ReactiveFormsModule,
-    HttpModule,
     UiModule
   ],
   exports: [
