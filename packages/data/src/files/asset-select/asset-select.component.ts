@@ -3,8 +3,8 @@
  */
 import { Component, forwardRef, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Field } from '@ec.components/core/field/field';
-import { Item } from '@ec.components/core/item/item';
+import { Field } from '@ec.components/core/src/field/field';
+import { Item } from '@ec.components/core/src/item/item';
 import { FileService } from '../file.service';
 import { SelectComponent } from '@ec.components/ui';
 import PublicAssetResource from 'ec.sdk/lib/resources/publicAPI/PublicAssetResource';

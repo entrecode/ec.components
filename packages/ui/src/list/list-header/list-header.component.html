@@ -18,9 +18,9 @@
     <ec-pop #filterPop class="ec-list-field__filter-pop" [ngClass]="field.filterPopClass">
       <div class="ec-list-field-filter">
       <ec-input [field]="field" [group]="filterForm?.group" [debounce]="200"
-                *ngIf="filterForm?.group.get(field?.property)"
+                *ngIf="filterForm?.group?.get(field?.property)"
                 (changed)="applyFilter(field.property, $event)"></ec-input>
-      <a (click)="removeFilter(field.property, filterForm.group.get(field.property));filterPop.hide()"
+      <a (click)="removeFilter(field.property, filterForm?.group?.get(field.property));filterPop.hide()"
          class="ec-list-field-filter__dismiss">&times;</a>
       </div>
     </ec-pop>

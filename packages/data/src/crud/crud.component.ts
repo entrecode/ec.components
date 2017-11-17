@@ -7,7 +7,7 @@ import { CrudConfig } from './crud-config.interface';
 import { EntryFormComponent } from '../entry-form/entry-form.component';
 import { EntryListComponent } from '../entry-list/entry-list.component';
 import { SdkService } from '../sdk/sdk.service';
-import { Selection } from '@ec.components/core/selection/selection';
+import { Selection } from '@ec.components/core/src/selection/selection';
 import { LoaderComponent } from '@ec.components/ui/src/loader/loader.component';
 import { LoaderService } from '@ec.components/ui/src/loader/loader.service';
 import { NotificationsService } from '@ec.components/ui/src/notifications/notifications.service';

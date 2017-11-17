@@ -10,11 +10,11 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Field } from '@ec.components/core/field/field';
+import { Field } from '@ec.components/core/src/field/field';
 import { CrudComponent } from '../crud/crud.component';
 import { ModelConfigService } from '../model-config/model-config.service';
 import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
-import { Item } from '@ec.components/core/item/item';
+import { Item } from '@ec.components/core/src/item/item';
 import { CrudConfig } from '../crud/crud-config.interface';
 import { SelectComponent } from '@ec.components/ui';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';

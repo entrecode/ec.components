@@ -4,7 +4,7 @@ import { ListComponent } from './list.component';
 import { ListItemsComponent } from './list-items/list-items.component';
 import { ListHeaderComponent } from './list-header/list-header.component';
 import { GroupPipe } from './group.pipe';
-import { Item } from '@ec.components/core/item/item';
+import { Item } from '@ec.components/core/src/item/item';
 import { PaginationComponent } from './pagination/pagination.component';
 import { FormModule } from '../form/form.module';
 import { PopModule } from '../pop/pop.module';
@@ -12,7 +12,7 @@ import { NotificationsModule } from '../notifications/notifications.module';
 import { LoaderModule } from '../loader/loader.module';
 
 // import { mocked } from '../../../../mocks/data';
-// import { Collection } from '@ec.components/core/collection/collection';
+// import { Collection } from '@ec.components/core/src/collection/collection';
 
 describe('ListComponent', () => {
   let component: ListComponent<Item<string>>;

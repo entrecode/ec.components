@@ -4,8 +4,8 @@ import PublicAssetList from 'ec.sdk/lib/resources/publicAPI/PublicAssetList';
 import { SdkService } from '../sdk/sdk.service';
 import { AssetList } from './asset-list/asset-list';
 import { TypeConfigService } from '../model-config/type-config.service';
-import * as moment from 'moment';
-import { Item } from '@ec.components/core/item/item';
+import moment from 'moment-es6';
+import { Item } from '@ec.components/core/src/item/item';
 
 /** Instances of Update are emitted by the changes EventEmitter of the CrudService. */
 export interface Upload {

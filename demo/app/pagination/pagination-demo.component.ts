@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Pagination } from '@ec.components/core/pagination/pagination';
+import { Pagination } from '@ec.components/core/src/pagination/pagination';
 import 'rxjs/add/operator/debounceTime';
 
 @Component({

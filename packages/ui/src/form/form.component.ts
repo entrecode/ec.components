@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, Output, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Form, FormConfig, Item } from '@ec.components/core';
-import { ItemConfig } from '@ec.components/core/item/item-config.interface';
+import { ItemConfig } from '@ec.components/core/src/item/item-config.interface';
 import { LoaderComponent } from '../loader/loader.component';
 import { LoaderService } from '../loader/loader.service';
 import { NotificationsService } from '../notifications/notifications.service';
