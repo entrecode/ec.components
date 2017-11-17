@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
-import PublicAPI from 'ec.sdk/src/PublicAPI';
-import AccountResource from 'ec.sdk/src/resources/accounts/AccountResource';
+import PublicAPI from 'ec.sdk/lib/PublicAPI';
+import AccountResource from 'ec.sdk/lib/resources/accounts/AccountResource';
 import { LoaderComponent, NotificationsService, WithLoader } from '@ec.components/ui';
 import { AuthService } from '../auth.service';
 

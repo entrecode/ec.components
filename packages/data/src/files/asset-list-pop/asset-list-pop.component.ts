@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import PublicAssetResource from 'ec.sdk/src/resources/publicAPI/PublicAssetResource';
+import PublicAssetResource from 'ec.sdk/lib/resources/publicAPI/PublicAssetResource';
 import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
 import { Selection } from '@ec.components/core';
 import { CrudConfig } from '../../crud/crud-config.interface';

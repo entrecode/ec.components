@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import PublicAssetResource from 'ec.sdk/src/resources/publicAPI/PublicAssetResource';
-import PublicAssetList from 'ec.sdk/src/resources/publicAPI/PublicAssetList';
+import PublicAssetResource from 'ec.sdk/lib/resources/publicAPI/PublicAssetResource';
+import PublicAssetList from 'ec.sdk/lib/resources/publicAPI/PublicAssetList';
 import { SdkService } from '../sdk/sdk.service';
 import { AssetList } from './asset-list/asset-list';
 import { TypeConfigService } from '../model-config/type-config.service';

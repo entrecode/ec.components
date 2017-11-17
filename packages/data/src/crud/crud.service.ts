@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import EntryResource from 'ec.sdk/src/resources/publicAPI/EntryResource';
-import EntryList from 'ec.sdk/src/resources/publicAPI/EntryList';
+import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
+import EntryList from 'ec.sdk/lib/resources/publicAPI/EntryList';
 import { SdkService } from '../sdk/sdk.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/filter';

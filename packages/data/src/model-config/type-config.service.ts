@@ -7,7 +7,7 @@ import { FieldConfig } from '@ec.components/core/src/config/field-config.interfa
 import { FieldConfigProperty } from '@ec.components/core/src/config/field-config-property.interface';
 import { Injectable } from '@angular/core';
 import { CrudConfig } from '../crud/crud-config.interface';
-import EntryResource from 'ec.sdk/src/resources/publicAPI/EntryResource';
+import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 
 /** The TypeConfig holds each field type's specific behaviour in certain situations */
 @Injectable()

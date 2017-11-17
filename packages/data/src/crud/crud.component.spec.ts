@@ -8,7 +8,7 @@ import { ModelConfigService } from '../model-config/model-config.service';
 import { CrudService } from './crud.service';
 import { SdkService } from '../sdk/sdk.service';
 import { TypeConfigService } from '../model-config/type-config.service';
-import EntryResource from 'ec.sdk/src/resources/publicAPI/EntryResource';
+import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { EntryPopComponent } from '../entry-pop/entry-pop.component';
 import { AuthModule } from '../auth/auth.module';
 import { demoRoutes } from '../../../../demo/app/demo.routes';

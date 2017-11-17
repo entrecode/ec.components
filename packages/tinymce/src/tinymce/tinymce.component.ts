@@ -49,7 +49,7 @@ export class TinymceComponent implements AfterViewInit, OnDestroy, ControlValueA
   /** Promise that resolves when the editor has been initialized */
   ready: Promise<any>;
   /** The current editor instance */
-  private editor: any;
+  public editor: any;
   /** The container where the editor is rendered */
   @ViewChild('container') container: ElementRef;
   /** Subject that is nexted on editor change */

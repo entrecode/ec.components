@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Item } from '@ec.components/core/src/item/item';
-import EntryResource from 'ec.sdk/src/resources/publicAPI/EntryResource';
+import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { CrudService } from '../crud/crud.service';
 import { Config } from '@ec.components/core/src/config/config';
 import { FieldConfig } from '@ec.components/core/src/config/field-config.interface';

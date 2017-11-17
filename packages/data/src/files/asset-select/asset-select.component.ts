@@ -7,7 +7,7 @@ import { Field } from '@ec.components/core/src/field/field';
 import { Item } from '@ec.components/core/src/item/item';
 import { FileService } from '../file.service';
 import { SelectComponent } from '@ec.components/ui';
-import PublicAssetResource from 'ec.sdk/src/resources/publicAPI/PublicAssetResource';
+import PublicAssetResource from 'ec.sdk/lib/resources/publicAPI/PublicAssetResource';
 import { CrudConfig } from '../../crud/crud-config.interface';
 import { AssetListPopComponent } from '../asset-list-pop/asset-list-pop.component';
 

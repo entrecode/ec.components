@@ -2,7 +2,7 @@
  * Created by felix on 23.05.17.
  */
 import { Directive, EventEmitter, Input, OnChanges, Output } from '@angular/core';
-import PublicAssetResource from 'ec.sdk/src/resources/publicAPI/PublicAssetResource';
+import PublicAssetResource from 'ec.sdk/lib/resources/publicAPI/PublicAssetResource';
 import { SdkService } from '../../sdk/sdk.service';
 
 /** Loads an public asset by id to the template. */

@@ -3,10 +3,10 @@
  */
 import { Directive, Input, OnChanges } from '@angular/core';
 import { SdkService } from '../sdk/sdk.service';
-import EntryList from 'ec.sdk/src/resources/publicAPI/EntryList';
-import EntryResource from 'ec.sdk/src/resources/publicAPI/EntryResource';
+import EntryList from 'ec.sdk/lib/resources/publicAPI/EntryList';
+import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 
-// import { filterOptions } from 'ec.sdk/src/resources/ListResource';
+// import { filterOptions } from 'ec.sdk/lib/resources/ListResource';
 
 /** Loads an entryList of a given model with the given config. */
 @Directive({

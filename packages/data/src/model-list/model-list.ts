@@ -1,8 +1,8 @@
 import { ResourceList } from '../resource-list/resource-list';
 import { SdkService } from '../sdk/sdk.service';
 import * as moment from 'moment';
-import DataManagerResource from 'ec.sdk/src/resources/datamanager/DataManagerResource';
-import ModelResource from 'ec.sdk/src/resources/datamanager/ModelResource';
+import DataManagerResource from 'ec.sdk/lib/resources/datamanager/DataManagerResource';
+import ModelResource from 'ec.sdk/lib/resources/datamanager/ModelResource';
 import { ListConfig } from '@ec.components/core/src/list/list-config.interface';
 
 /**
