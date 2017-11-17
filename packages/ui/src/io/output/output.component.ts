@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { DefaultOutputComponent } from '../../form/default-output/default-output.component';
 import { DynamicSlotComponent } from '../dynamic-slot/dynamic-slot.component';
-import { Field } from '@ec.components/core/src/field/field';
-import { Item } from '@ec.components/core/src/item/item';
+import { Field } from '@ec.components/core/field/field';
+import { Item } from '@ec.components/core/item/item';
 
 /** Outputs the given field of the given item, rendering the component dynamically. */
 @Component({

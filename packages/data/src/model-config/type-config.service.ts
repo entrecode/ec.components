@@ -3,8 +3,8 @@ import { DefaultEntryOutputComponent } from '../entry-form/default-entry-output.
 import { DefaultOutputComponent } from '@ec.components/ui/src/form/default-output/default-output.component';
 import { DefaultInputComponent } from '@ec.components/ui/src/form/default-input/default-input.component';
 import * as moment from 'moment';
-import { FieldConfig } from '@ec.components/core/src/config/field-config.interface';
-import { FieldConfigProperty } from '@ec.components/core/src/config/field-config-property.interface';
+import { FieldConfig } from '@ec.components/core/config/field-config.interface';
+import { FieldConfigProperty } from '@ec.components/core/config/field-config-property.interface';
 import { Injectable } from '@angular/core';
 import { CrudConfig } from '../crud/crud-config.interface';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';

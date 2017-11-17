@@ -3,7 +3,7 @@
  */
 import { Component, Input } from '@angular/core';
 import { Notification } from './notification';
-import { Collection } from '@ec.components/core/src/collection/collection';
+import { Collection } from '@ec.components/core/collection/collection';
 import { NotificationsService } from './notifications.service';
 
 /** Displays any kind of Notification inside the DOM. It listens on the notificationService.$emitter for notifications. */

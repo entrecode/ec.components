@@ -4,8 +4,8 @@ import { ModelConfigService } from '../model-config/model-config.service';
 import { LoaderService } from '@ec.components/ui/src/loader/loader.service';
 import { NotificationsService } from '@ec.components/ui/src/notifications/notifications.service';
 import { CrudService } from '../crud/crud.service';
-import { Item } from '@ec.components/core/src/item/item';
-import { FormConfig } from '@ec.components/core/src/form/form-config.interface';
+import { Item } from '@ec.components/core/item/item';
+import { FormConfig } from '@ec.components/core/form/form-config.interface';
 import { FormService } from '@ec.components/ui/src/form/form.service';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 

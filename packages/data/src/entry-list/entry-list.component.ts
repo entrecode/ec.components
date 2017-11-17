@@ -8,7 +8,7 @@ import { CrudService } from '../crud/crud.service';
 import { NotificationsService } from '@ec.components/ui/src/notifications/notifications.service';
 import { ResourceListComponent } from '../resource-list/resource-list.component';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
-import { ListConfig } from '@ec.components/core/src/list/list-config.interface';
+import { ListConfig } from '@ec.components/core/list/list-config.interface';
 
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent */
 @Component({

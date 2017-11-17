@@ -4,7 +4,7 @@ import { SdkService } from '../sdk/sdk.service';
 import { LoaderComponent } from '@ec.components/ui/src/loader/loader.component';
 import { LoaderService } from '@ec.components/ui/src/loader/loader.service';
 import { ListComponent } from '@ec.components/ui/src/list/list.component';
-import { Selection } from '@ec.components/core/src/selection/selection';
+import { Selection } from '@ec.components/core/selection/selection';
 import { NotificationsService } from '@ec.components/ui/src/notifications/notifications.service';
 import { ResourceList } from './resource-list';
 

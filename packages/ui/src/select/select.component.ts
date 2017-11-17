@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { List, ListConfig, Selection } from '@ec.components/core';
-import { Item } from '@ec.components/core/src/item/item';
+import { Item } from '@ec.components/core/item/item';
 import { PopComponent } from '../pop/pop.component';
 
 /**
