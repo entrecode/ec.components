@@ -1,10 +1,10 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import PublicAssetResource from 'ec.sdk/src/resources/publicAPI/PublicAssetResource';
-import PublicAssetList from 'ec.sdk/src/resources/publicAPI/PublicAssetList';
+import PublicAssetResource from 'ec.sdk/lib/resources/publicAPI/PublicAssetResource';
+import PublicAssetList from 'ec.sdk/lib/resources/publicAPI/PublicAssetList';
 import { SdkService } from '../sdk/sdk.service';
 import { AssetList } from './asset-list/asset-list';
 import { TypeConfigService } from '../model-config/type-config.service';
-import * as moment from 'moment';
+import moment from 'moment-es6';
 import { Item } from '@ec.components/core/src/item/item';
 
 /** Instances of Update are emitted by the changes EventEmitter of the CrudService. */

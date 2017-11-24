@@ -1,10 +1,12 @@
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 import { Collection } from '../collection/collection';
 import { Item } from '../item/item';
 import { Field } from '../field/field';
 import { ListConfig } from './list-config.interface';
 import { Pagination } from '../pagination/pagination';
 import { Sorter } from '../sorter/sorter';
+import 'rxjs/add/operator/debounceTime';
 
 /**
  * A more sophisticated Collection of Objects with arbitrary content.

@@ -16,6 +16,9 @@ export class Item<T> {
   /** Generates a config from the body by setting view to the properties type. */
   private generateConfig(): ItemConfig<T> {
     const config = { fields: {} };
+    if (this.body === undefined) {
+      return config;
+    }
     this.getProperties().forEach((property) => {
       config.fields[property] = {
         view: typeof this.body[property],
@@ -59,7 +62,7 @@ export class Item<T> {
   getProperties(): Array<string> {
     if (!this.body || typeof this.body !== 'object') {
       if (typeof this.body !== 'object') {
-        return [this.config.title || ''];
+        return [this.config && this.config.title ? this.config.title : 'body'];
       }
       return [];
     }
@@ -137,14 +140,14 @@ export class Item<T> {
   }
 
   /** Returns value with all readOnly properties removed */
-  pickWriteOnly(value) {
+  pickWriteOnly(value = this.body) {
     return Object.assign({}, ...Object.keys(value)
-    .map(property => {
-      if (this.config.fields[property].readOnly) {
-        return;
-      }
-      return { [property]: value[property] }
-    }).filter(v => !!v));
+      .map(property => {
+        if (this.config.fields[property].readOnly) {
+          return;
+        }
+        return { [property]: value[property] }
+      }).filter(v => !!v));
 
   }
 
@@ -173,11 +176,11 @@ export class Item<T> {
   save(value: T = this.body): Promise<Item<T>> {
     if (this.config.onSave) {
       return Promise.resolve(this.config.onSave(this, value))
-      // return Promise.resolve(this.config.onSave(this, this.serialize(value)))
-      .then((_value: T) => {
-        this.body = _value;
-        return this;
-      });
+        // return Promise.resolve(this.config.onSave(this, this.serialize(value)))
+        .then((_value: T) => {
+          this.body = _value;
+          return this;
+        });
     }
     Object.assign(this.resolve() || {}, value);
     // Object.assign(this.resolve() || {}, this.serialize(value));

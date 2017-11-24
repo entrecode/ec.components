@@ -8,7 +8,7 @@ import { mocked } from '../../../mocks/data';
 })
 export class PopDemoComponent {
   private popClass: string;
-  private markup = require('./pop.markup.html');
+  public markup = require('./pop.markup.html');
   @ViewChild('pop') pop: PopComponent;
 
   public listHeader = mocked.lists.pop_test;

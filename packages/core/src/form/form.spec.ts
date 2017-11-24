@@ -4,19 +4,19 @@
 import { Form, Item } from '../../index';
 
 describe('Form', () => {
-  let person = new Item({
+  const person = new Item({
     name: 'Tom',
     age: 10,
     dead: false
   }, {
-    fields: {
-      name: {
-        type: 'string'
-      }, age: {
-        type: 'number'
+      fields: {
+        name: {
+          type: 'string'
+        }, age: {
+          type: 'number'
+        }
       }
-    }
-  });
+    });
 
   it('should construct empty', () => {
     const form = new Form({});
@@ -35,6 +35,7 @@ describe('Form', () => {
     const form = new Form({}, person['config']);
     expect(form.fields.map(f => f.property)).toEqual(['name', 'age']);
     expect(form.fields.map(f => f.type)).toEqual(['string', 'number']);
+    expect(form.getField('name').property).toBe('name');
   });
 
   it('should construct with both and config is prefered', () => {
@@ -42,4 +43,17 @@ describe('Form', () => {
     expect(form.fields.map(f => f.property)).toEqual(['name', 'age']);
     expect(form.fields.map(f => f.type)).toEqual(['string', 'number']);
   });
+
+  it('should getValue', () => {
+    const form = new Form(person['body'], person['config']);
+    expect(form.getValue('name')).toBe(person.resolve('name'));
+    const emptyForm = new Form(null, person['config']);
+    expect(emptyForm.getValue('name')).toBeUndefined();
+    const prefilledForm = new Form(null, { fields: { name: { prefill: 'prefilled' } } });
+    expect(prefilledForm.getValue('name')).toBe('prefilled');
+    const prefilledArray = new Form(null, { fields: { name: { prefill: ['a', 'b'] } } });
+    expect(prefilledArray.getValue('name')).toEqual(['a', 'b']);
+    const prefilledObject = new Form(null, { fields: { name: { prefill: { test: true } } } });
+    expect(prefilledObject.getValue('name')).toEqual({ test: true });
+  })
 });

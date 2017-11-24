@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Pagination } from '../../../packages/core/src/pagination/pagination';
+import { Pagination } from '@ec.components/core/src/pagination/pagination';
+import 'rxjs/add/operator/debounceTime';
 
 @Component({
   selector: 'ec-pagination-demo',
@@ -12,8 +13,8 @@ export class PaginationDemoComponent {
   constructor() {
     this.pagination.setTotal(5100);
     this.pagination.change$.debounceTime(500)
-    .subscribe((p) => {
-      this.currentPage = this.pagination.getPage();
-    });
+      .subscribe((p) => {
+        this.currentPage = this.pagination.getPage();
+      });
   }
 }

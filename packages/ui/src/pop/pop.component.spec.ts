@@ -10,7 +10,7 @@ describe('PopComponent', () => {
     TestBed.configureTestingModule({
       imports: [UiModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -21,5 +21,19 @@ describe('PopComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should toggle', () => {
+    expect(component.active).toBeUndefined();
+    component.toggle();
+    expect(component.active).toBe(true);
+    component.toggle();
+  });
+  it('should hide', () => {
+    expect(component.active).toBeUndefined();
+    component.show();
+    expect(component.active).toBe(true);
+    component.hide();
+    expect(component.visible).toBe(false);
   });
 });

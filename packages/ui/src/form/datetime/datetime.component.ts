@@ -1,6 +1,6 @@
 import { Component, forwardRef, Input, ViewChild } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
-import * as moment from 'moment';
+import moment from 'moment-es6';
 import { CalendarComponent } from './calendar.component';
 
 /** Input for a datetime. */

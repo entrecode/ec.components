@@ -6,9 +6,17 @@ describe('Item', () => {
     const body = { id: 'a' };
     const i = new Item(body);
     expect(i['body']).toBe(body);
+    expect(i.getBody()).toBe(body);
     expect(i.resolve()).toBe(body);
     expect(i.resolve('id')).toBe('a');
+    i.clear();
+    expect(i.getBody()).toBeUndefined();
   });
+
+  it('resolve', () => {
+    const item = new Item(undefined);
+    expect(item.resolve()).toBeUndefined();
+  })
 
   it('should support getProperties', () => {
     const body = { id: 'a' };
@@ -58,9 +66,23 @@ describe('Item', () => {
   });
 
   it('should support onSave', () => {
-    const n = new Item(1, { onSave: (item, body) => body + 1 });
+    const config = { onSave: (item, body) => body + 1 };
+    const n = new Item(1, config);
+    expect(n.getConfig()).toBe(config);
     return n.save().then(() => {
       return expect(n.resolve()).toBe(2);
     });
+  });
+
+  it('display', () => {
+    const item = new Item(6);
+    expect(item.display()).toBe(6);
   })
+
+  it('pickWriteOnly', () => {
+    const item = new Item({ name: 'Tobsen', age: 10 }, { fields: { name: {}, age: { readOnly: true } } });
+    const writeOnly = item.pickWriteOnly();
+    expect(writeOnly.name).toBe('Tobsen');
+    expect(writeOnly.age).toBeUndefined();
+  });
 });

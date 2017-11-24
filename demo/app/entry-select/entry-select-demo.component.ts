@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
   templateUrl: 'entry-select-demo.component.html',
 })
 export class EntrySelectDemoComponent {
+  selectedMuffins: Array<any>;
   constructor() {
   }
 }

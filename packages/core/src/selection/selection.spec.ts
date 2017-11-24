@@ -8,13 +8,13 @@ describe('Selection', () => {
     const c = new Item('c');
     expect(selection.items.length).toBe(0);
     selection.select(a);
-    expect(selection.has(a)).toBe(true); //a should now be selected
-    expect(selection.has(b)).toBe(false); //b was never selected
-    selection.select(b, true); //solo select b
-    expect(selection.has(a)).toBe(false); //a should have vanished
+    expect(selection.has(a)).toBe(true); // a should now be selected
+    expect(selection.has(b)).toBe(false); // b was never selected
+    selection.select(b, true); // solo select b
+    expect(selection.has(a)).toBe(false); // a should have vanished
     expect(selection.has(b)).toBe(true);
-    selection.select(c); //multi select c
-    expect(selection.has(c)).toBe(true); //b should be kept
+    selection.select(c); // multi select c
+    expect(selection.has(c)).toBe(true); // b should be kept
     expect(selection.has(c)).toBe(true);
   });
   it('should toggle items', () => {

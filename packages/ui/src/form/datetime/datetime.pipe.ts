@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import * as moment from 'moment';
+import moment from 'moment-es6';
 
 /** The GroupPipe filters an array of Item instances by a given property value.
  * It is meant to be used to get only the items with the exact same value. */

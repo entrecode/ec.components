@@ -17,16 +17,13 @@ export class Form<Object> extends Item<Object> {
   constructor(body: Object, config?: FormConfig<Object>) {
     super(body, config);
     this.fields = [];
-    if (this.config.fields) {
-      Object.keys(this.config.fields)
-        .forEach((property) => {
-          this.fields.push(new Field(property, this.config.fields[property]));
-        });
-    } else {
-      this.getProperties().forEach((property) => {
-        this.fields.push(new Field(property, { type: typeof this.resolve(property) }));
-      })
+    if (!this.config || !this.config.fields) {
+      return;
     }
+    Object.keys(this.config.fields)
+      .forEach((property) => {
+        this.fields.push(new Field(property, this.config.fields[property]));
+      });
   }
 
   /** returns the field instance of the given property */

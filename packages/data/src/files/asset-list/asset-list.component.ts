@@ -6,8 +6,8 @@ import { FileService } from '../file.service';
 import { LoaderService } from '@ec.components/ui/src/loader/loader.service';
 import { NotificationsService } from '@ec.components/ui/src/notifications/notifications.service';
 import { SdkService } from '../../sdk/sdk.service';
-import AssetResource from 'ec.sdk/src/resources/datamanager/AssetResource';
-import PublicAssetResource from 'ec.sdk/src/resources/publicAPI/PublicAssetResource';
+import AssetResource from 'ec.sdk/lib/resources/datamanager/AssetResource';
+import PublicAssetResource from 'ec.sdk/lib/resources/publicAPI/PublicAssetResource';
 
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent */
 @Component({

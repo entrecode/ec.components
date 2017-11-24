@@ -1,4 +1,5 @@
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 
 /**
  * A Collection is a more sophisticated Array. It is fundamental for other classes like List.
@@ -53,7 +54,7 @@ export class Collection<T> {
   hasAll(items: Array<T> = []): boolean {
     if (items === null) {
       // console.warn('has all fail', this, items);
-      return;
+      return false;
     }
     return items.reduce((has, item) => {
       return has && this.has(item);

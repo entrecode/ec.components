@@ -1,5 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 import { SdkService } from '../sdk/sdk.service';
+import AccountResource from 'ec.sdk/lib/resources/accounts/AccountResource';
+import PublicAPI from 'ec.sdk/lib/PublicAPI';
 
 /** The SdkService exposes all instances of the ec.sdk APIs.
  * To be able to use it, you have to provide an environment like this in your module's providers:

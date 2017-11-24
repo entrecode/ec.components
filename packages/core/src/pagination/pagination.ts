@@ -1,4 +1,5 @@
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 import { ListConfig } from '../list/list-config.interface';
 
 /** This class can be used to control the loading behaviour of external data. */
@@ -37,7 +38,7 @@ export class Pagination<T> {
   /** Loads the next page. Throws error if already on last page. */
   next(): void {
     if (this.isLast()) {
-      return; //already last page
+      return; // already last page
     }
     this.config.page += 1;
     this.load();
@@ -46,7 +47,7 @@ export class Pagination<T> {
   /** Loads the previous page. Throws error if already on first page. */
   prev(): void {
     if (this.isFirst()) {
-      return; //already first page
+      return; // already first page
     }
     this.config.page -= 1;
     this.load();

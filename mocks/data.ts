@@ -1,4 +1,3 @@
-// import { List } from '../../packages/core/index';
 import { List } from '@ec.components/core';
 import { CoolStringComponent } from '../demo/app/form/cool-string.component';
 import { songs } from '../demo/assets/songs';

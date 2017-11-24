@@ -1739,7 +1739,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-    <code>create(config?: <a href="../interfaces/ItemConfig.html">ItemConfig<any></a>)</code>
+    <code>create(config: <a href="../interfaces/ItemConfig.html">ItemConfig<any></a>)</code>
                         </td>
                     </tr>
     
@@ -1771,7 +1771,6 @@
                                                               <code><a href="../interfaces/ItemConfig.html" target="_self" >ItemConfig&lt;any&gt;</a></code>
                                                       </td>
                                                       <td>
-                                                          true
                                                       </td>
                                                       <td></td>
                                                     </tr>
@@ -2378,7 +2377,7 @@ export class FormComponent implements OnChanges {
   }
 
   /* clears the form and uses the given config (falls back to existing one). Renders an empty form. */
-  create(config?: ItemConfig&lt;any&gt;) {
+  create(config: ItemConfig&lt;any&gt; &#x3D; this.config) {
     this.dirtyTalk();
     this.init(null, config);
   }

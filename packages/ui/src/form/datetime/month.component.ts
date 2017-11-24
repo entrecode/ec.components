@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
-import * as moment from 'moment';
+import moment from 'moment-es6';
 
 /** Interface for a day inside the a month. */
 export interface Day {

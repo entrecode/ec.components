@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { CrudConfig } from '../crud/crud-config.interface';
-import EntryResource from 'ec.sdk/src/resources/publicAPI/EntryResource';
+import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
 import { EntryFormComponent } from '../entry-form/entry-form.component';
 import { AuthService } from '../auth/auth.service';

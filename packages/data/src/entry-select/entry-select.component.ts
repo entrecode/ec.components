@@ -17,9 +17,9 @@ import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
 import { Item } from '@ec.components/core/src/item/item';
 import { CrudConfig } from '../crud/crud-config.interface';
 import { SelectComponent } from '@ec.components/ui';
-import EntryResource from 'ec.sdk/src/resources/publicAPI/EntryResource';
+import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 
-// import LiteEntryResource from "ec.sdk/src/resources/publicAPI/LiteEntryResource";
+// import LiteEntryResource from "ec.sdk/lib/resources/publicAPI/LiteEntryResource";
 
 /** Shows entries of a selection and is able to pick new ones from a crud list */
 @Component({

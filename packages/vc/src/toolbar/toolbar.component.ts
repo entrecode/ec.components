@@ -8,6 +8,11 @@ import { EditorComponent } from '../editor/editor.component';
 })
 export class ToolbarComponent {
 
+
+  @Input() editor: EditorComponent;
+
+  @HostListener('click', ['$event'])
+
   blockEvent(e) {
     e.preventDefault();
     e.stopPropagation();
@@ -15,9 +20,6 @@ export class ToolbarComponent {
     return false;
   }
 
-  @Input() editor: EditorComponent;
-
-  @HostListener('click', ['$event'])
   click(e: any) {
     return this.blockEvent(e);
   }
@@ -28,11 +30,6 @@ export class ToolbarComponent {
   }
 
   constructor() {
-  }
-
-  ngOnChanges() {
-    // console.log('instance', this.editor);
-
   }
 
 }
