@@ -48,8 +48,8 @@
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="../changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
@@ -514,6 +514,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -660,8 +661,8 @@
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="../changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
@@ -1126,6 +1127,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
                                        data-target="#interfaces-links"
@@ -1448,7 +1450,7 @@ changes.</p>
                                         <div>
                                         </div>
                                         <div class="io-description">
-                                            <b>Returns : </b>    <code>Observable&lt;&gt;</code>
+                                            <b>Returns : </b>    <code><a href="../interfaces/Update.html" target="_self" >Observable&lt;Update&gt;</a></code>
             
                                         </div>
                                             <div class="io-description">
@@ -1583,7 +1585,7 @@ changes.</p>
                                         <div>
                                         </div>
                                         <div class="io-description">
-                                            <b>Returns : </b>    <code>Promise&lt;&gt;</code>
+                                            <b>Returns : </b>    <code>Promise&lt;EntryResource&gt;</code>
             
                                         </div>
                                             <div class="io-description">
@@ -1951,7 +1953,7 @@ changes.</p>
                                         <div>
                                         </div>
                                         <div class="io-description">
-                                            <b>Returns : </b>    <code>Promise&lt;&gt;</code>
+                                            <b>Returns : </b>    <code>Promise&lt;EntryResource&gt;</code>
             
                                         </div>
                                             <div class="io-description">
@@ -2004,13 +2006,14 @@ changes.</p>
                         </tbody>
                     </table>
             </section>
+
     </div>
 
 
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
-import EntryResource from &#x27;ec.sdk/src/resources/publicAPI/EntryResource&#x27;;
-import EntryList from &#x27;ec.sdk/src/resources/publicAPI/EntryList&#x27;;
+import EntryResource from &#x27;ec.sdk/lib/resources/publicAPI/EntryResource&#x27;;
+import EntryList from &#x27;ec.sdk/lib/resources/publicAPI/EntryList&#x27;;
 import { SdkService } from &#x27;../sdk/sdk.service&#x27;;
 import { Observable } from &#x27;rxjs/Observable&#x27;;
 import &#x27;rxjs/add/operator/filter&#x27;;
@@ -2129,6 +2132,7 @@ export class CrudService {
 </code></pre>
     </div>
 </div>
+
 
 
 

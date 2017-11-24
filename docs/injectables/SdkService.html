@@ -48,8 +48,8 @@
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="../changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
@@ -514,6 +514,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -660,8 +661,8 @@
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="../changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
@@ -1126,6 +1127,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
                                        data-target="#interfaces-links"
@@ -1585,7 +1587,7 @@ setClientID.</p>
                                         <div>
                                         </div>
                                         <div class="io-description">
-                                            <b>Returns : </b>    <code>Promise&lt;&gt;</code>
+                                            <b>Returns : </b>    <code>Promise&lt;AccountResource&gt;</code>
             
                                         </div>
                                             <div class="io-description">
@@ -1874,17 +1876,18 @@ setClientID.</p>
                         </tbody>
                     </table>
             </section>
+
     </div>
 
 
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { Inject, Injectable } from &#x27;@angular/core&#x27;;
-import DataManager from &#x27;ec.sdk/src/DataManager&#x27;;
-import Accounts from &#x27;ec.sdk/src/Accounts&#x27;;
-import PublicAPI from &#x27;ec.sdk/src/PublicAPI&#x27;;
-import Session from &#x27;ec.sdk/src/Session&#x27;;
-import AccountResource from &#x27;ec.sdk/src/resources/accounts/AccountResource&#x27;;
-import { environment as env } from &#x27;ec.sdk/src/Core&#x27;;
+import DataManager from &#x27;ec.sdk/lib/DataManager&#x27;;
+import Accounts from &#x27;ec.sdk/lib/Accounts&#x27;;
+import PublicAPI from &#x27;ec.sdk/lib/PublicAPI&#x27;;
+import Session from &#x27;ec.sdk/lib/Session&#x27;;
+import AccountResource from &#x27;ec.sdk/lib/resources/accounts/AccountResource&#x27;;
+import { environment as env } from &#x27;ec.sdk/lib/Core&#x27;;
 
 /** The SdkService exposes all instances of the ec.sdk APIs.
  * To be able to use it, you have to provide an environment like this in your module&#x27;s providers:
@@ -1991,6 +1994,7 @@ providers: [
 </code></pre>
     </div>
 </div>
+
 
 
 

@@ -48,8 +48,8 @@
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="../changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
@@ -514,6 +514,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -660,8 +661,8 @@
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="../changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
@@ -1126,6 +1127,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
                                        data-target="#interfaces-links"
@@ -1296,7 +1298,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
         <h3>Implements</h3>
     </p>
     <p class="comment">
-                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnInit-interface.html" target="_blank" >OnInit</a></code>
+                <code><a href="https://angular.io/docs/ts/latest/api/api/core/OnInit" target="_blank" >OnInit</a></code>
     </p>
 
 
@@ -1427,7 +1429,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(auth: <a href="../injectables/AuthService.html">AuthService</a>, router: <a href="https://angular.io/docs/ts/latest/api/router/index/Router-class.html" target="_blank">Router</a>, route: <a href="https://angular.io/docs/ts/latest/api/router/index/ActivatedRoute-interface.html" target="_blank">ActivatedRoute</a>)</code>
+                            <code>constructor(auth: <a href="../injectables/AuthService.html">AuthService</a>, router: <a href="https://angular.io/docs/ts/latest/api/api/router/Router" target="_blank">Router</a>, route: <a href="https://angular.io/docs/ts/latest/api/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>)</code>
                         </td>
                     </tr>
                             <tr>
@@ -1462,7 +1464,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
                                                     <tr>
                                                       <td>router</td>
                                                       <td>
-                                                                <code><a href="https://angular.io/docs/ts/latest/api/router/index/Router-class.html" target="_blank" >Router</a></code>
+                                                                <code><a href="https://angular.io/docs/ts/latest/api/api/router/Router" target="_blank" >Router</a></code>
                                                       </td>
                                                       <td>
                                                       </td>
@@ -1471,7 +1473,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
                                                     <tr>
                                                       <td>route</td>
                                                       <td>
-                                                                <code><a href="https://angular.io/docs/ts/latest/api/router/index/ActivatedRoute-interface.html" target="_blank" >ActivatedRoute</a></code>
+                                                                <code><a href="https://angular.io/docs/ts/latest/api/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
                                                       </td>
                                                       <td>
                                                       </td>
@@ -2105,13 +2107,14 @@ It is also possible to bind an entry directly which will then be bound to the fo
                 </tbody>
             </table>
     </section>
+
 </div>
 
 
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { Component, Input, OnInit, ViewChild } from &#x27;@angular/core&#x27;;
 import { CrudConfig } from &#x27;../crud/crud-config.interface&#x27;;
-import EntryResource from &#x27;ec.sdk/src/resources/publicAPI/EntryResource&#x27;;
+import EntryResource from &#x27;ec.sdk/lib/resources/publicAPI/EntryResource&#x27;;
 import { PopComponent } from &#x27;@ec.components/ui/src/pop/pop.component&#x27;;
 import { EntryFormComponent } from &#x27;../entry-form/entry-form.component&#x27;;
 import { AuthService } from &#x27;../auth/auth.service&#x27;;
@@ -2290,6 +2293,7 @@ export class EntryPopComponent extends PopComponent implements OnInit {
     var ACTUAL_COMPONENT = {'name': 'EntryPopComponent'};
 </script>
 <script src="../js/tree.js"></script>
+
 
 
 

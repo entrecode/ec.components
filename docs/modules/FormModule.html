@@ -48,8 +48,8 @@
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="../changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
@@ -514,6 +514,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -660,8 +661,8 @@
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="../changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
@@ -1126,6 +1127,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
                                        data-target="#interfaces-links"
@@ -1248,7 +1250,7 @@
   <li>FormModule</li>
 </ol>
 
-      <div class="text-center">
+      <div class="text-center module-graph-container">
           <div id="module-graph-svg">
               <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -1566,6 +1568,7 @@
 </svg>
 
           </div>
+          <i id="fullscreen" class="fa fa-expand module-graph-fullscreen-btn" aria-hidden="true"></i>
           <div class="btn-group">
               <button id="zoom-in" class="btn btn-default btn-sm">Zoom in</button>
               <button id="reset" class="btn btn-default btn-sm">Reset</button>
@@ -1635,7 +1638,7 @@
                     <h3>Providers<a href="https://angular.io/api/core/NgModule#providers" target="_blank" title="Official documentation about module providers"><span class="fa fa-info-circle"></a></h3>
                     <ul class="list-group">
                             <li class="list-group-item">
-                                <a href="../injectables/FormService.html" >FormService</a>
+                                     <a href="../injectables/FormService.html" >FormService</a>
                             </li>
                     </ul>
                 </div>
@@ -1693,7 +1696,6 @@
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { CommonModule } from &#x27;@angular/common&#x27;;
 import { NgModule } from &#x27;@angular/core&#x27;;
-import { HttpModule } from &#x27;@angular/http&#x27;;
 import { FormComponent } from &#x27;./form.component&#x27;;
 import { DefaultInputComponent } from &#x27;./default-input/default-input.component&#x27;;
 import { DefaultOutputComponent } from &#x27;./default-output/default-output.component&#x27;;
@@ -1727,7 +1729,6 @@ import { LoaderModule } from &#x27;../loader/loader.module&#x27;;
   ],
   imports: [
     CommonModule,
-    HttpModule,
     ReactiveFormsModule,
     PopModule,
     IoModule,
@@ -1754,6 +1755,7 @@ export class FormModule {
 </code></pre>
     </div>
 </div>
+
 
 
 

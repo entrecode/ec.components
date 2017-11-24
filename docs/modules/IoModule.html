@@ -48,8 +48,8 @@
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="../changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
@@ -514,6 +514,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -660,8 +661,8 @@
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="../changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
@@ -1126,6 +1127,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
                                        data-target="#interfaces-links"
@@ -1248,7 +1250,7 @@
   <li>IoModule</li>
 </ol>
 
-      <div class="text-center">
+      <div class="text-center module-graph-container">
           <div id="module-graph-svg">
               <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
@@ -1438,6 +1440,7 @@
 </svg>
 
           </div>
+          <i id="fullscreen" class="fa fa-expand module-graph-fullscreen-btn" aria-hidden="true"></i>
           <div class="btn-group">
               <button id="zoom-in" class="btn btn-default btn-sm">Zoom in</button>
               <button id="reset" class="btn btn-default btn-sm">Reset</button>
@@ -1525,7 +1528,6 @@
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { CommonModule } from &#x27;@angular/common&#x27;;
 import { NgModule } from &#x27;@angular/core&#x27;;
-import { HttpModule } from &#x27;@angular/http&#x27;;
 import { DynamicSlotComponent } from &#x27;./dynamic-slot/dynamic-slot.component&#x27;;
 import { SlotHostDirective } from &#x27;./slot-host.directive&#x27;;
 import { DefaultInputComponent } from &#x27;../form/default-input/default-input.component&#x27;;
@@ -1554,7 +1556,6 @@ import { DynamicRackComponent } from &#x27;./dynamic-rack/dynamic-rack.component
   ],
   imports: [
     CommonModule,
-    HttpModule,
     ReactiveFormsModule,
   ],
   exports: [
@@ -1573,6 +1574,7 @@ export class IoModule {
 </code></pre>
     </div>
 </div>
+
 
 
 

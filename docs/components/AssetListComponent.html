@@ -48,8 +48,8 @@
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="../changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
@@ -514,6 +514,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -660,8 +661,8 @@
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="../changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
@@ -1126,6 +1127,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
                                        data-target="#interfaces-links"
@@ -1353,7 +1355,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(loaderService: <a href="../injectables/LoaderService.html">LoaderService</a>, sdk: <a href="../injectables/SdkService.html">SdkService</a>, notificationService: <a href="../injectables/NotificationsService.html">NotificationsService</a>, fileService: <a href="../injectables/FileService.html">FileService</a>, route: <a href="https://angular.io/docs/ts/latest/api/router/index/ActivatedRoute-interface.html" target="_blank">ActivatedRoute</a>)</code>
+                            <code>constructor(loaderService: <a href="../injectables/LoaderService.html">LoaderService</a>, sdk: <a href="../injectables/SdkService.html">SdkService</a>, notificationService: <a href="../injectables/NotificationsService.html">NotificationsService</a>, fileService: <a href="../injectables/FileService.html">FileService</a>, route: <a href="https://angular.io/docs/ts/latest/api/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>)</code>
                         </td>
                     </tr>
                             <tr>
@@ -1415,7 +1417,7 @@
                                                     <tr>
                                                       <td>route</td>
                                                       <td>
-                                                                <code><a href="https://angular.io/docs/ts/latest/api/router/index/ActivatedRoute-interface.html" target="_blank" >ActivatedRoute</a></code>
+                                                                <code><a href="https://angular.io/docs/ts/latest/api/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
                                                       </td>
                                                       <td>
                                                       </td>
@@ -1473,6 +1475,7 @@
             </table>
     </section>
 
+
 </div>
 
 
@@ -1485,8 +1488,8 @@ import { FileService } from &#x27;../file.service&#x27;;
 import { LoaderService } from &#x27;@ec.components/ui/src/loader/loader.service&#x27;;
 import { NotificationsService } from &#x27;@ec.components/ui/src/notifications/notifications.service&#x27;;
 import { SdkService } from &#x27;../../sdk/sdk.service&#x27;;
-import AssetResource from &#x27;ec.sdk/src/resources/datamanager/AssetResource&#x27;;
-import PublicAssetResource from &#x27;ec.sdk/src/resources/publicAPI/PublicAssetResource&#x27;;
+import AssetResource from &#x27;ec.sdk/lib/resources/datamanager/AssetResource&#x27;;
+import PublicAssetResource from &#x27;ec.sdk/lib/resources/publicAPI/PublicAssetResource&#x27;;
 
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent */
 @Component({
@@ -1514,30 +1517,26 @@ export class AssetListComponent extends ResourceListComponent&lt;PublicAssetReso
     </div>
 
     <div class="tab-pane fade" id="templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;ec-pagination [pagination]&#x3D;&quot;list?.pagination&quot;
-               *ngIf&#x3D;&quot;list?.pagination?.getPages()&gt;1&quot;&gt;&lt;/ec-pagination&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;ec-pagination [pagination]&#x3D;&quot;list?.pagination&quot; *ngIf&#x3D;&quot;list?.pagination?.getPages()&gt;1&quot;&gt;&lt;/ec-pagination&gt;
 &lt;div class&#x3D;&quot;ec-list&quot;&gt;
-  &lt;ec-list-header [list]&#x3D;&quot;list&quot; [selection]&#x3D;&quot;selection&quot;
-                  *ngIf&#x3D;&quot;list?.fields.length||list?.config.title&quot;&gt;&lt;/ec-list-header&gt;
+  &lt;ec-list-header [list]&#x3D;&quot;list&quot; [selection]&#x3D;&quot;selection&quot; *ngIf&#x3D;&quot;list?.fields.length||list?.config.title&quot;&gt;&lt;/ec-list-header&gt;
 
   &lt;div class&#x3D;&quot;ec-list-body&quot;&gt;
     &lt;div class&#x3D;&quot;ec-list-group&quot; *ngFor&#x3D;&quot;let group of list?.groups&quot;&gt;
-      &lt;div class&#x3D;&quot;ec-list-group-header ec-list-row&quot; *ngIf&#x3D;&quot;group.value&quot;
-           (click)&#x3D;&quot;selection?.toggleAll(listItems?.items)&quot;&gt;
-        &lt;div class&#x3D;&quot;ec-list-cell ec-list__select&quot; *ngIf&#x3D;&quot;selection&quot;&gt;&lt;input type&#x3D;&quot;checkbox&quot;
-                                                                            [checked]&#x3D;&quot;selection?.hasAll(listItems?.items)&quot;&gt;
+      &lt;div class&#x3D;&quot;ec-list-group-header ec-list-row&quot; *ngIf&#x3D;&quot;group.value&quot; (click)&#x3D;&quot;selection?.toggleAll(listItems?.items)&quot;&gt;
+        &lt;div class&#x3D;&quot;ec-list-cell ec-list__select&quot; *ngIf&#x3D;&quot;selection&quot;&gt;
+          &lt;input type&#x3D;&quot;checkbox&quot; [checked]&#x3D;&quot;selection?.hasAll(listItems?.items)&quot;&gt;
         &lt;/div&gt;
         &lt;div class&#x3D;&quot;ec-list-cell&quot;&gt;
           &lt;span class&#x3D;&quot;ec-list-group-header__title&quot;&gt;{{group.value}}&lt;/span&gt;
         &lt;/div&gt;
       &lt;/div&gt;
-      &lt;ec-list-items [host]&#x3D;&quot;this&quot; #listItems
-                     [items]&#x3D;&quot;list?.page | group: group.property: group.value&quot;&gt;&lt;/ec-list-items&gt;
+      &lt;ec-list-items [host]&#x3D;&quot;this&quot; #listItems [items]&#x3D;&quot;list?.page | group: group.property: group.value&quot;&gt;&lt;/ec-list-items&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
-&lt;ec-pagination [pagination]&#x3D;&quot;list?.pagination&quot;
-               *ngIf&#x3D;&quot;list?.pagination?.getPages()&gt;1&quot;&gt;&lt;/ec-pagination&gt;</code></pre>
+&lt;ec-pagination [pagination]&#x3D;&quot;list?.pagination&quot; *ngIf&#x3D;&quot;list?.pagination?.getPages()&gt;1&quot;&gt;&lt;/ec-pagination&gt;
+</code></pre>
     </div>
 
     <div class="tab-pane fade" id="tree">
@@ -1563,12 +1562,13 @@ export class AssetListComponent extends ResourceListComponent&lt;PublicAssetReso
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ec-pagination [pagination]="list?.pagination"               *ngIf="list?.pagination?.getPages()>1"></ec-pagination><div class="ec-list">  <ec-list-header [list]="list" [selection]="selection"                  *ngIf="list?.fields.length||list?.config.title"></ec-list-header>  <div class="ec-list-body">    <div class="ec-list-group" *ngFor="let group of list?.groups">      <div class="ec-list-group-header ec-list-row" *ngIf="group.value"           (click)="selection?.toggleAll(listItems?.items)">        <div class="ec-list-cell ec-list__select" *ngIf="selection"><input type="checkbox"                                                                            [checked]="selection?.hasAll(listItems?.items)">        </div>        <div class="ec-list-cell">          <span class="ec-list-group-header__title">{{group.value}}</span>        </div>      </div>      <ec-list-items [host]="this" #listItems                     [items]="list?.page | group: group.property: group.value"></ec-list-items>    </div>  </div></div><ec-pagination [pagination]="list?.pagination"               *ngIf="list?.pagination?.getPages()>1"></ec-pagination></div>'
+        var COMPONENT_TEMPLATE = '<div><ec-pagination [pagination]="list?.pagination" *ngIf="list?.pagination?.getPages()>1"></ec-pagination><div class="ec-list">  <ec-list-header [list]="list" [selection]="selection" *ngIf="list?.fields.length||list?.config.title"></ec-list-header>  <div class="ec-list-body">    <div class="ec-list-group" *ngFor="let group of list?.groups">      <div class="ec-list-group-header ec-list-row" *ngIf="group.value" (click)="selection?.toggleAll(listItems?.items)">        <div class="ec-list-cell ec-list__select" *ngIf="selection">          <input type="checkbox" [checked]="selection?.hasAll(listItems?.items)">        </div>        <div class="ec-list-cell">          <span class="ec-list-group-header__title">{{group.value}}</span>        </div>      </div>      <ec-list-items [host]="this" #listItems [items]="list?.page | group: group.property: group.value"></ec-list-items>    </div>  </div></div><ec-pagination [pagination]="list?.pagination" *ngIf="list?.pagination?.getPages()>1"></ec-pagination></div>'
     var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
     var DIRECTIVES = [{'name': 'AssetDirective', 'selector': '[ecAsset]'},{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'ImageDirective', 'selector': 'img [ecImage]'},{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'AssetListComponent'};
 </script>
 <script src="../js/tree.js"></script>
+
 
 
 

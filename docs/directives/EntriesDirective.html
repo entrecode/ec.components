@@ -48,8 +48,8 @@
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="../changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
@@ -514,6 +514,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -660,8 +661,8 @@
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="../changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
@@ -1126,6 +1127,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
                                        data-target="#interfaces-links"
@@ -1286,7 +1288,7 @@
                 <h3>Implements</h3>
             </p>
             <p class="comment">
-                        <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnChanges-interface.html" target="_blank" >OnChanges</a></code>
+                        <code><a href="https://angular.io/docs/ts/latest/api/api/core/OnChanges" target="_blank" >OnChanges</a></code>
             </p>
 
 
@@ -1941,6 +1943,7 @@
                     </table>
             </section>
 
+
     </div>
 
     <div class="tab-pane fade" id="readme">
@@ -1956,10 +1959,10 @@
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { Directive, Input, OnChanges } from &#x27;@angular/core&#x27;;
 import { SdkService } from &#x27;../sdk/sdk.service&#x27;;
-import EntryList from &#x27;ec.sdk/src/resources/publicAPI/EntryList&#x27;;
-import EntryResource from &#x27;ec.sdk/src/resources/publicAPI/EntryResource&#x27;;
+import EntryList from &#x27;ec.sdk/lib/resources/publicAPI/EntryList&#x27;;
+import EntryResource from &#x27;ec.sdk/lib/resources/publicAPI/EntryResource&#x27;;
 
-// import { filterOptions } from &#x27;ec.sdk/src/resources/ListResource&#x27;;
+// import { filterOptions } from &#x27;ec.sdk/lib/resources/ListResource&#x27;;
 
 /** Loads an entryList of a given model with the given config. */
 @Directive({
@@ -2009,8 +2012,8 @@ export class EntriesDirective implements OnChanges {
     this.entryList &#x3D; entryList;
     const items &#x3D; this.entryList.getAllItems();
     if (this.endless) {
-      this.items &#x3D; this.items.filter(item &#x3D;&gt; items.find(_item &#x3D;&gt; item.id &#x3D;&#x3D;&#x3D; _item.id))
-        .concat(items);
+      this.items &#x3D; this.items.concat(items);
+      this.items &#x3D; this.items.filter((item) &#x3D;&gt; this.items.find((_item) &#x3D;&gt; _item.id &#x3D;&#x3D;&#x3D; item.id));
     } else {
       this.items &#x3D; this.entryList.getAllItems();
     }
@@ -2047,6 +2050,7 @@ export class EntriesDirective implements OnChanges {
     </div>
 
 </div>
+
 
 
 

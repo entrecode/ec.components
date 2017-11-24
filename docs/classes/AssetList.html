@@ -48,8 +48,8 @@
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="../changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
@@ -514,6 +514,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -660,8 +661,8 @@
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="../changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
@@ -1126,6 +1127,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
                                        data-target="#interfaces-links"
@@ -1248,6 +1250,7 @@
 
 
 
+
 <ol class="breadcrumb">
   <li>Classes</li>
   <li>AssetList</li>
@@ -1318,7 +1321,7 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <code>constructor(config: <a href="../interfaces/ListConfig.html">ListConfig<></a>, sdk: <a href="../injectables/SdkService.html">SdkService</a>, fileService: <a href="../injectables/FileService.html">FileService</a>)</code>
+                                    <code>constructor(config: <a href="../interfaces/ListConfig.html">ListConfig<PublicAssetResource | AssetResource></a>, sdk: <a href="../injectables/SdkService.html">SdkService</a>, fileService: <a href="../injectables/FileService.html">FileService</a>)</code>
                                 </td>
                             </tr>
                                     <tr>
@@ -1344,7 +1347,7 @@
                                                             <tr>
                                                               <td>config</td>
                                                               <td>
-                                                                        <code><a href="../interfaces/ListConfig.html" target="_self" >ListConfig&lt;&gt;</a></code>
+                                                                        <code><a href="../interfaces/ListConfig.html" target="_self" >ListConfig&lt;PublicAssetResource | AssetResource&gt;</a></code>
                                                               </td>
                                                               <td>
                                                               </td>
@@ -1393,7 +1396,7 @@
                             <tr>
                                 <td class="col-md-4">
                                         <span class="modifier-icon fa fa-reset"></span>
-                                    <code>load(config?: <a href="../interfaces/ListConfig.html">ListConfig<></a>)</code>
+                                    <code>load(config?: <a href="../interfaces/ListConfig.html">ListConfig<PublicAssetResource | AssetResource></a>)</code>
                                 </td>
                             </tr>
             
@@ -1424,7 +1427,7 @@
                                                             <tr>
                                                               <td>config</td>
                                                               <td>
-                                                                      <code><a href="../interfaces/ListConfig.html" target="_self" >ListConfig&lt;&gt;</a></code>
+                                                                      <code><a href="../interfaces/ListConfig.html" target="_self" >ListConfig&lt;PublicAssetResource | AssetResource&gt;</a></code>
                                                               </td>
                                                               <td>
                                                                   true
@@ -1450,6 +1453,7 @@
             </section>
 
 
+
     </div>
 
 
@@ -1458,8 +1462,8 @@
 import { SdkService } from &#x27;../../sdk/sdk.service&#x27;;
 import { FileService } from &#x27;../file.service&#x27;;
 import { ListConfig } from &#x27;@ec.components/core/src/list/list-config.interface&#x27;;
-import PublicAssetResource from &#x27;ec.sdk/src/resources/publicAPI/PublicAssetResource&#x27;;
-import AssetResource from &#x27;ec.sdk/src/resources/datamanager/AssetResource&#x27;;
+import PublicAssetResource from &#x27;ec.sdk/lib/resources/publicAPI/PublicAssetResource&#x27;;
+import AssetResource from &#x27;ec.sdk/lib/resources/datamanager/AssetResource&#x27;;
 
 /**
  * Extension of List for Datamanager Assets.

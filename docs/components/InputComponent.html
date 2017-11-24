@@ -48,8 +48,8 @@
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="../changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
@@ -514,6 +514,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -660,8 +661,8 @@
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="../changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
@@ -1126,6 +1127,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
                                        data-target="#interfaces-links"
@@ -1293,7 +1295,7 @@
         <h3>Implements</h3>
     </p>
     <p class="comment">
-                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnChanges-interface.html" target="_blank" >OnChanges</a></code>
+                <code><a href="https://angular.io/docs/ts/latest/api/api/core/OnChanges" target="_blank" >OnChanges</a></code>
     </p>
 
 
@@ -1630,6 +1632,7 @@
             </table>
     </section>
 
+
 </div>
 
 
@@ -1675,7 +1678,7 @@ export class InputComponent extends DynamicSlotComponent implements OnChanges {
     }
     const data &#x3D; {
       group: this.group,
-      control: this.control || this.group.get(this.field.property),
+      control: this.control || this.group ? this.group.get(this.field.property) : null,
       item: this.item,
       field: this.field
     };
@@ -1726,6 +1729,7 @@ export class InputComponent extends DynamicSlotComponent implements OnChanges {
     var ACTUAL_COMPONENT = {'name': 'InputComponent'};
 </script>
 <script src="../js/tree.js"></script>
+
 
 
 

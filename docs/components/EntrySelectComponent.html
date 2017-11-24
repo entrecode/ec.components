@@ -48,8 +48,8 @@
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="../changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
@@ -514,6 +514,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -660,8 +661,8 @@
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="../changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
@@ -1126,6 +1127,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
                                        data-target="#interfaces-links"
@@ -1293,7 +1295,7 @@
         <h3>Implements</h3>
     </p>
     <p class="comment">
-                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnChanges-interface.html" target="_blank" >OnChanges</a></code>
+                <code><a href="https://angular.io/docs/ts/latest/api/api/core/OnChanges" target="_blank" >OnChanges</a></code>
     </p>
 
 
@@ -1319,7 +1321,9 @@
                 <td class="col-md-3">providers</td>
                 <td class="col-md-9">
                     <code>
-                        { provide: NG_VALUE_ACCESSOR, useExisting: , multi:  }
+                        {
+    : , : (() &#x3D;&gt; ), : true
+}
                     </code>
                 </td>
             </tr>
@@ -1949,6 +1953,7 @@
                 </tbody>
             </table>
     </section>
+
 </div>
 
 
@@ -1969,9 +1974,9 @@ import { PopComponent } from &#x27;@ec.components/ui/src/pop/pop.component&#x27;
 import { Item } from &#x27;@ec.components/core/src/item/item&#x27;;
 import { CrudConfig } from &#x27;../crud/crud-config.interface&#x27;;
 import { SelectComponent } from &#x27;@ec.components/ui&#x27;;
-import EntryResource from &#x27;ec.sdk/src/resources/publicAPI/EntryResource&#x27;;
+import EntryResource from &#x27;ec.sdk/lib/resources/publicAPI/EntryResource&#x27;;
 
-// import LiteEntryResource from &quot;ec.sdk/src/resources/publicAPI/LiteEntryResource&quot;;
+// import LiteEntryResource from &quot;ec.sdk/lib/resources/publicAPI/LiteEntryResource&quot;;
 
 /** Shows entries of a selection and is able to pick new ones from a crud list */
 @Component({
@@ -2100,6 +2105,7 @@ export class EntrySelectComponent extends SelectComponent&lt;EntryResource&gt; i
     var ACTUAL_COMPONENT = {'name': 'EntrySelectComponent'};
 </script>
 <script src="../js/tree.js"></script>
+
 
 
 

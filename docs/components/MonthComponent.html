@@ -48,8 +48,8 @@
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="../changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
@@ -514,6 +514,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -660,8 +661,8 @@
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="../changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
@@ -1126,6 +1127,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
                                        data-target="#interfaces-links"
@@ -1287,8 +1289,8 @@
         <h3>Implements</h3>
     </p>
     <p class="comment">
-                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnInit-interface.html" target="_blank" >OnInit</a></code>
-                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnChanges-interface.html" target="_blank" >OnChanges</a></code>
+                <code><a href="https://angular.io/docs/ts/latest/api/api/core/OnInit" target="_blank" >OnInit</a></code>
+                <code><a href="https://angular.io/docs/ts/latest/api/api/core/OnChanges" target="_blank" >OnChanges</a></code>
     </p>
 
 
@@ -1437,6 +1439,10 @@
                         <td class="col-md-10">
                             <div><p>The current date (for showing month) </p>
 </div>
+                              <p>
+                                <em>Type:</em>    <code>moment.Moment</code>
+
+                              </p>
                         </td>
                     </tr>
                             <tr>
@@ -1456,6 +1462,10 @@
                         <td class="col-md-10">
                             <div><p>The current selected date </p>
 </div>
+                              <p>
+                                <em>Type:</em>    <code>moment.Moment</code>
+
+                              </p>
                         </td>
                     </tr>
                             <tr>
@@ -1666,7 +1676,7 @@
                                 <div>
                                 </div>
                                 <div class="io-description">
-                                    <b>Returns : </b>    <code>Array&lt;&gt;</code>
+                                    <b>Returns : </b>    <code><a href="../interfaces/Day.html" target="_self" >Array&lt;Day&gt;</a></code>
     
                                 </div>
                                     <div class="io-description">
@@ -1686,7 +1696,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-    <code>isSelected(_moment: undefined)</code>
+    <code>isSelected(_moment: moment.Moment)</code>
                         </td>
                     </tr>
     
@@ -1717,6 +1727,7 @@
                                                     <tr>
                                                       <td>_moment</td>
                                                       <td>
+                                                              <code>moment.Moment</code>
                                                       </td>
                                                       <td>
                                                       </td>
@@ -1844,7 +1855,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-    <code>selectDay(_moment: undefined)</code>
+    <code>selectDay(_moment: moment.Moment)</code>
                         </td>
                     </tr>
     
@@ -1875,6 +1886,7 @@
                                                     <tr>
                                                       <td>_moment</td>
                                                       <td>
+                                                              <code>moment.Moment</code>
                                                       </td>
                                                       <td>
                                                       </td>
@@ -1906,7 +1918,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-    <code>setDate(date: undefined)</code>
+    <code>setDate(date: moment.Moment)</code>
                         </td>
                     </tr>
     
@@ -1937,6 +1949,7 @@
                                                     <tr>
                                                       <td>date</td>
                                                       <td>
+                                                              <code>moment.Moment</code>
                                                       </td>
                                                       <td>
                                                       </td>
@@ -2070,12 +2083,13 @@
                 </tbody>
             </table>
     </section>
+
 </div>
 
 
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from &#x27;@angular/core&#x27;;
-import * as moment from &#x27;moment&#x27;;
+import moment from &#x27;moment-es6&#x27;;
 
 /** Interface for a day inside the a month. */
 export interface Day {
@@ -2227,6 +2241,7 @@ export class MonthComponent implements OnInit, OnChanges {
     var ACTUAL_COMPONENT = {'name': 'MonthComponent'};
 </script>
 <script src="../js/tree.js"></script>
+
 
 
 

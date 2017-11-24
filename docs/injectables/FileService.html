@@ -48,8 +48,8 @@
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="../changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
@@ -514,6 +514,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -660,8 +661,8 @@
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="../changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
@@ -1126,6 +1127,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
                                        data-target="#interfaces-links"
@@ -1464,7 +1466,7 @@ changes.</p>
                             <tr>
                                 <td class="col-md-4">
                                         <span class="modifier-icon fa fa-reset"></span>
-                                    <code>resolveAssets(assets: Array<>)</code>
+                                    <code>resolveAssets(assets: Array<string | PublicAssetResource>)</code>
                                 </td>
                             </tr>
             
@@ -1495,7 +1497,7 @@ changes.</p>
                                                             <tr>
                                                               <td>assets</td>
                                                               <td>
-                                                                      <code>Array&lt;&gt;</code>
+                                                                      <code>Array&lt;string | PublicAssetResource&gt;</code>
                                                               </td>
                                                               <td>
                                                               </td>
@@ -1507,7 +1509,7 @@ changes.</p>
                                         <div>
                                         </div>
                                         <div class="io-description">
-                                            <b>Returns : </b>    <code>Promise&lt;&gt;</code>
+                                            <b>Returns : </b>    <code>Promise&lt;Array&lt;PublicAssetResource&gt;&gt;</code>
             
                                         </div>
                                             <div class="io-description">
@@ -1568,7 +1570,7 @@ changes.</p>
                                         <div>
                                         </div>
                                         <div class="io-description">
-                                            <b>Returns : </b>    <code>Promise&lt;&gt;</code>
+                                            <b>Returns : </b>    <code><a href="../interfaces/Upload.html" target="_self" >Promise&lt;Upload&gt;</a></code>
             
                                         </div>
                                             <div class="io-description">
@@ -1650,17 +1652,18 @@ changes.</p>
                         </tbody>
                     </table>
             </section>
+
     </div>
 
 
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { EventEmitter, Injectable } from &#x27;@angular/core&#x27;;
-import PublicAssetResource from &#x27;ec.sdk/src/resources/publicAPI/PublicAssetResource&#x27;;
-import PublicAssetList from &#x27;ec.sdk/src/resources/publicAPI/PublicAssetList&#x27;;
+import PublicAssetResource from &#x27;ec.sdk/lib/resources/publicAPI/PublicAssetResource&#x27;;
+import PublicAssetList from &#x27;ec.sdk/lib/resources/publicAPI/PublicAssetList&#x27;;
 import { SdkService } from &#x27;../sdk/sdk.service&#x27;;
 import { AssetList } from &#x27;./asset-list/asset-list&#x27;;
 import { TypeConfigService } from &#x27;../model-config/type-config.service&#x27;;
-import * as moment from &#x27;moment&#x27;;
+import moment from &#x27;moment-es6&#x27;;
 import { Item } from &#x27;@ec.components/core/src/item/item&#x27;;
 
 /** Instances of Update are emitted by the changes EventEmitter of the CrudService. */
@@ -1810,6 +1813,7 @@ export class FileService {
 </code></pre>
     </div>
 </div>
+
 
 
 

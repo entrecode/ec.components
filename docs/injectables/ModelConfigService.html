@@ -48,8 +48,8 @@
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="../changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
@@ -514,6 +514,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -660,8 +661,8 @@
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="../changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
@@ -1126,6 +1127,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
                                        data-target="#interfaces-links"
@@ -1467,7 +1469,7 @@ set method. </p>
                                         <div>
                                         </div>
                                         <div class="io-description">
-                                            <b>Returns : </b>    <code>Promise&lt;&gt;</code>
+                                            <b>Returns : </b>    <code><a href="../interfaces/ListConfig.html" target="_self" >Promise&lt;ListConfig&lt;EntryResource&gt;&gt;</a></code>
             
                                         </div>
                                             <div class="io-description">
@@ -1542,7 +1544,7 @@ set method. </p>
                                         <div>
                                         </div>
                                         <div class="io-description">
-                                            <b>Returns : </b>    <code>Promise&lt;&gt;</code>
+                                            <b>Returns : </b>    <code><a href="../interfaces/FieldConfigProperty.html" target="_self" >Promise&lt;FieldConfig&lt;FieldConfigProperty&gt;&gt;</a></code>
             
                                         </div>
                                             <div class="io-description">
@@ -1609,7 +1611,7 @@ set method. </p>
                                                     </div>
                                         </div>
                                         <div class="io-description">
-                                            <b>Returns : </b>    <code><a href="../interfaces/CrudConfig.html" target="_self" >CrudConfig&lt;&gt;</a></code>
+                                            <b>Returns : </b>    <code><a href="../interfaces/CrudConfig.html" target="_self" >CrudConfig&lt;EntryResource&gt;</a></code>
             
                                         </div>
                                             <div class="io-description">
@@ -1816,7 +1818,7 @@ set method. </p>
                                                     </div>
                                         </div>
                                         <div class="io-description">
-                                            <b>Returns : </b>    <code><a href="../interfaces/CrudConfig.html" target="_self" >CrudConfig&lt;&gt;</a></code>
+                                            <b>Returns : </b>    <code><a href="../interfaces/CrudConfig.html" target="_self" >CrudConfig&lt;EntryResource&gt;</a></code>
             
                                         </div>
                                             <div class="io-description">
@@ -1869,13 +1871,14 @@ set method. </p>
                         </tbody>
                     </table>
             </section>
+
     </div>
 
 
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 import { Item } from &#x27;@ec.components/core/src/item/item&#x27;;
-import EntryResource from &#x27;ec.sdk/src/resources/publicAPI/EntryResource&#x27;;
+import EntryResource from &#x27;ec.sdk/lib/resources/publicAPI/EntryResource&#x27;;
 import { CrudService } from &#x27;../crud/crud.service&#x27;;
 import { Config } from &#x27;@ec.components/core/src/config/config&#x27;;
 import { FieldConfig } from &#x27;@ec.components/core/src/config/field-config.interface&#x27;;
@@ -2004,6 +2007,7 @@ export class ModelConfigService extends Config {
 </code></pre>
     </div>
 </div>
+
 
 
 

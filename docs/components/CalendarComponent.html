@@ -48,8 +48,8 @@
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="../changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
@@ -514,6 +514,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -660,8 +661,8 @@
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="../changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
@@ -1126,6 +1127,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
                                        data-target="#interfaces-links"
@@ -1287,7 +1289,7 @@
         <h3>Implements</h3>
     </p>
     <p class="comment">
-                <code><a href="https://angular.io/docs/ts/latest/api/forms/index/ControlValueAccessor-interface.html" target="_blank" >ControlValueAccessor</a></code>
+                <code><a href="https://angular.io/docs/ts/latest/api/api/forms/ControlValueAccessor" target="_blank" >ControlValueAccessor</a></code>
     </p>
 
 
@@ -1309,7 +1311,9 @@
                 <td class="col-md-3">providers</td>
                 <td class="col-md-9">
                     <code>
-                        { provide: NG_VALUE_ACCESSOR, useExisting: , multi:  }
+                        {
+    : , : (() &#x3D;&gt; ), : true
+}
                     </code>
                 </td>
             </tr>
@@ -1460,6 +1464,10 @@
                         <td class="col-md-10">
                             <div><p>The date that should be displayed at start. </p>
 </div>
+                              <p>
+                                <em>Type:</em>    <code>moment.Moment</code>
+
+                              </p>
                         </td>
                     </tr>
                             <tr>
@@ -2131,13 +2139,14 @@
                 </tbody>
             </table>
     </section>
+
 </div>
 
 
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">import { Component, forwardRef, Input, ViewChild } from &#x27;@angular/core&#x27;;
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from &#x27;@angular/forms&#x27;;
-import * as moment from &#x27;moment&#x27;;
+import moment from &#x27;moment-es6&#x27;;
 import { MonthComponent } from &#x27;./month.component&#x27;;
 import { PopComponent } from &#x27;../../pop/pop.component&#x27;;
 
@@ -2294,6 +2303,7 @@ export class CalendarComponent implements ControlValueAccessor {
     var ACTUAL_COMPONENT = {'name': 'CalendarComponent'};
 </script>
 <script src="../js/tree.js"></script>
+
 
 
 

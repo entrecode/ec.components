@@ -48,8 +48,8 @@
                                   <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                 </li>
                                 <li class="link">
-                                    <a href="./changelog.html"
-                                        >
+                                        <a href="../changelog.html"
+                                    >
                                         <span class="fa fa-file-text-o"></span>CHANGELOG
                                     </a>
                                 </li>
@@ -514,6 +514,7 @@
                         </ul>
                     </li>
             
+            
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse"
                                 data-target="#xs-interfaces-links"
@@ -660,8 +661,8 @@
                                          <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
                                        </li>
                                        <li class="link">
-                                           <a href="./changelog.html"
-                                               >
+                                               <a href="../changelog.html"
+                                           >
                                                <span class="fa fa-file-text-o"></span>CHANGELOG
                                            </a>
                                        </li>
@@ -1126,6 +1127,7 @@
                                </ul>
                            </li>
                    
+                   
                            <li class="chapter">
                                <div class="simple menu-toggler" data-toggle="collapse"
                                        data-target="#interfaces-links"
@@ -1293,7 +1295,7 @@
         <h3>Implements</h3>
     </p>
     <p class="comment">
-                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnInit-interface.html" target="_blank" >OnInit</a></code>
+                <code><a href="https://angular.io/docs/ts/latest/api/api/core/OnInit" target="_blank" >OnInit</a></code>
     </p>
 
 
@@ -1319,7 +1321,9 @@
                 <td class="col-md-3">providers</td>
                 <td class="col-md-9">
                     <code>
-                        { provide: NG_VALUE_ACCESSOR, useExisting: , multi:  }
+                        {
+    : , : (() &#x3D;&gt; ), : true
+}
                     </code>
                 </td>
             </tr>
@@ -1841,6 +1845,7 @@
                 </tbody>
             </table>
     </section>
+
 </div>
 
 
@@ -1851,7 +1856,7 @@ import { Field } from &#x27;@ec.components/core/src/field/field&#x27;;
 import { Item } from &#x27;@ec.components/core/src/item/item&#x27;;
 import { FileService } from &#x27;../file.service&#x27;;
 import { SelectComponent } from &#x27;@ec.components/ui&#x27;;
-import PublicAssetResource from &#x27;ec.sdk/src/resources/publicAPI/PublicAssetResource&#x27;;
+import PublicAssetResource from &#x27;ec.sdk/lib/resources/publicAPI/PublicAssetResource&#x27;;
 import { CrudConfig } from &#x27;../../crud/crud-config.interface&#x27;;
 import { AssetListPopComponent } from &#x27;../asset-list-pop/asset-list-pop.component&#x27;;
 
@@ -1980,6 +1985,7 @@ export class AssetSelectComponent extends SelectComponent&lt;PublicAssetResource
     var ACTUAL_COMPONENT = {'name': 'AssetSelectComponent'};
 </script>
 <script src="../js/tree.js"></script>
+
 
 
 
