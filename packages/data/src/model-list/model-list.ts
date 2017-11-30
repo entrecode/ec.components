@@ -65,7 +65,7 @@ export class ModelList extends ResourceList<ModelResource> {
       this.resolveDatamanager()
       .then((datamanager) => {
         this.datamanager = datamanager;
-        return this.datamanager.modelList(this.getFilterOptions(this.config));
+        return this.datamanager.modelList(Object.assign(this.getFilterOptions(this.config), { dataManagerID: this.datamanager.dataManagerID}));
       }).then((list) => {
         this.use(list);
       }).catch((err) => {
