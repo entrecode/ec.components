@@ -12,7 +12,7 @@ export class ModelList extends ResourceList<ModelResource> {
   private datamanager: DataManagerResource | string;
 
   constructor(datamanager: DataManagerResource | string, config: ListConfig<ModelResource>, sdk: SdkService) {
-    super(Object.assign(config, {
+    super(Object.assign({
       identifier: 'modelID',
       onSave: (item, value) => {
         const model = item.getBody();
@@ -48,7 +48,7 @@ export class ModelList extends ResourceList<ModelResource> {
           form: false
         }
       }
-    }), sdk);
+    }, config), sdk);
     this.datamanager = datamanager;
     this.sdk.ready.then(() => {
       this.load();
