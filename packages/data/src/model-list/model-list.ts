@@ -21,7 +21,7 @@ export class ModelList extends ResourceList<ModelResource> {
         if (model instanceof model) {
           return model.save();
         }
-        return value; //TODO create
+        return value; // TODO create
       },
       fields: {
         hexColor: {
