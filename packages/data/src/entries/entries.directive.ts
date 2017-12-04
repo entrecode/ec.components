@@ -5,6 +5,7 @@ import { Directive, Input, OnChanges } from '@angular/core';
 import { SdkService } from '../sdk/sdk.service';
 import EntryList from 'ec.sdk/lib/resources/publicAPI/EntryList';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
+import { LoaderComponent } from '../../../ui/src/loader/loader.component';
 
 // import { filterOptions } from 'ec.sdk/lib/resources/ListResource';
 
@@ -24,6 +25,8 @@ export class EntriesDirective implements OnChanges {
   @Input() endless = false;
   /** Should the entries be loaded immediately? Defaults to true */
   @Input() autoload: boolean;
+  /** The loader that should be used. */
+  @Input() loader: LoaderComponent;
   /** The current loaded entryList */
   private entryList: EntryList;
   public items: EntryResource[] = [];
@@ -49,6 +52,9 @@ export class EntriesDirective implements OnChanges {
   load() {
     this.promise = this.sdk.api.entryList(this.model, this.options)
       .then(list => this.useList(list));
+    if (this.loader) {
+      this.loader.wait(this.promise);
+    }
     return this.promise;
   }
 
@@ -64,11 +70,17 @@ export class EntriesDirective implements OnChanges {
   }
 
   next() {
-    this.entryList.followNextLink().then(list => this.useList(list))
+    this.promise = this.entryList.followNextLink().then(list => this.useList(list));
+    if (this.loader) {
+      this.loader.wait(this.promise);
+    }
   }
 
   prev() {
-    this.entryList.followPrevLink().then(list => this.useList(list))
+    this.promise = this.entryList.followPrevLink().then(list => this.useList(list));
+    if (this.loader) {
+      this.loader.wait(this.promise);
+    }
   }
 
   isLast() {

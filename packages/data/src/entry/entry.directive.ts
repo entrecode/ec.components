@@ -4,6 +4,7 @@
 import { Directive, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { SdkService } from '../sdk/sdk.service';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
+import { LoaderComponent } from '../../../ui/index';
 
 /** Loads an entry by id to the template. */
 @Directive({
@@ -23,6 +24,8 @@ export class EntryDirective implements OnChanges {
   @Input() levels: number;
   /** Fires as soon as the entry has been loaded. */
   @Output() loaded: EventEmitter<EntryResource> = new EventEmitter();
+  /** The loader that should be used. */
+  @Input() loader: LoaderComponent;
   /** The current loaded entry */
   entry: any;
 
@@ -44,10 +47,14 @@ export class EntryDirective implements OnChanges {
       return;
     }
     this.promise = this.sdk.api.entry(this.model, this.entryId, this.levels)
-    .then((entry) => {
-      this.entry = entry;
-      this.loaded.emit(entry);
-      return entry;
-    })
+      .then((entry) => {
+        this.entry = entry;
+        this.loaded.emit(entry);
+        return entry;
+      });
+    if (this.loader) {
+      this.loader.wait(this.promise);
+    }
+    return this.promise;
   }
 }
