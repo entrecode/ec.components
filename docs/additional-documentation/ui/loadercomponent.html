@@ -1289,8 +1289,10 @@ export class MyApp {
   }
   localLoader() {
     this.loaderService.wait(new Promise((resolve) =&gt; setTimeout(resolve, 2000)), this.localLoader);
+    // this.localLoader.wait(new Promise((resolve) =&gt; setTimeout(resolve, 2000))); // alternative way
   }
-}</code></pre><p>The advantage of local loaders is that you can place them in specific places of your template to only &quot;disable&quot; a part of your site while loading and not the whole page.</p>
+}</code></pre><p>The advantage of local loaders is that you can place them in specific places of your template to only &quot;disable&quot; a part of your site while loading and not the whole page.
+See the commented out line in localLoader for a direct way to trigger a loader without the service.</p>
 <h1 id="how-it-works">How it works</h1>
 <p>Each time .wait is called on the LoaderService, the target loader throws the given promise on a stack. When all promises on the stack have been resolved, the loader is hidden. This is better than just a boolean switch because multiple loading activies do not interfere with each other.</p>
 
