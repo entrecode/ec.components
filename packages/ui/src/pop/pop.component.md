@@ -2,7 +2,21 @@
 
 A Pop is not just a modal, but a section of markup that appears (pops) anywhere and with any style on your page.
 
-TBD new pop classes
+## Usage
 
-By using CSS classes, you can define your own styling and behaviour of the pop.
-The default classes can be looked up in pop.component.scss.
+```html
+<ec-pop class="ec-pop_dialog" #myPop>
+    <header class="ec-pop-header">
+        <a (click)="myPop.hide()">Close</a>
+    </header>
+    <div class="ec-pop-body">
+        Some body content
+    </div>
+    <footer class="ec-pop-footer">
+        This is the footer
+    </footer>
+</ec-pop>
+<button (click)="myPop.show()">Show pop</button>
+```
+
+The default pop classes [can be looked up here](https://github.com/entrecode/ec.components/blob/master/packages/style/pop/ec-pop.scss).
