@@ -1711,7 +1711,7 @@ export class ImageDirective extends AssetDirective implements OnChanges {
     if (this.ecImage) {
       this.assetId &#x3D; this.ecImage;
     }
-    if (this.autoload !&#x3D;&#x3D; false) {
+    if (this.autoload !&#x3D;&#x3D; false &amp;&amp; this.assetId) {
       this.load();
     }
   }
