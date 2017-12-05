@@ -14,6 +14,7 @@ import { DatamanagerListDemoComponent } from './datamanager-list/datamanager-lis
 import { ModelListDemoComponent } from './model-list/model-list.demo.component';
 import { DatetimeDemoComponent } from './form/datetime-demo.component';
 import { AssetListDemoComponent } from './asset-list/asset-list.demo.component';
+import { AssetDemoComponent } from './asset/asset.demo.component';
 import { AuthDemoComponent } from './auth/auth-demo.component';
 import { VcDemoComponent } from './vc/vc-demo.component';
 import { CrudComponent } from '../../packages/data/src/crud/crud.component';
@@ -129,6 +130,10 @@ export const demoRoutes: Routes = [
       {
         path: 'crud',
         component: CrudDemoComponent
+      },
+      {
+        path: 'asset',
+        component: AssetDemoComponent
       },
       {
         path: 'asset-list',

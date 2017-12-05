@@ -1844,7 +1844,7 @@ export class AssetDirective implements OnChanges {
   load(id?: string) {
     this.assetId &#x3D; id || this.assetId;
     if (!this.assetId) {
-      return;
+      return Promise.reject(&#x27;cannot load asset: no assetId is set&#x27;);
     }
     this.promise &#x3D; this.sdk.api.asset(this.assetId)
     .then((asset) &#x3D;&gt; {

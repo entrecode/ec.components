@@ -30,11 +30,13 @@ export class MyApp {
   }
   localLoader() {
     this.loaderService.wait(new Promise((resolve) => setTimeout(resolve, 2000)), this.localLoader);
+    // this.localLoader.wait(new Promise((resolve) => setTimeout(resolve, 2000))); // alternative way
   }
 }
 ```
 
 The advantage of local loaders is that you can place them in specific places of your template to only "disable" a part of your site while loading and not the whole page.
+See the commented out line in localLoader for a direct way to trigger a loader without the service.
 
 # How it works
 

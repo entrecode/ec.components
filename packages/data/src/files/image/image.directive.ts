@@ -26,7 +26,7 @@ export class ImageDirective extends AssetDirective implements OnChanges {
     if (this.ecImage) {
       this.assetId = this.ecImage;
     }
-    if (this.autoload !== false) {
+    if (this.autoload !== false && this.assetId) {
       this.load();
     }
   }
