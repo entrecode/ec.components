@@ -1315,6 +1315,10 @@
 
 
 
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>ec-dynamic-slot</code></td>
+            </tr>
 
 
 
@@ -1376,7 +1380,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">packages/ui/src/io/dynamic-slot/dynamic-slot.component.ts:10</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">packages/ui/src/io/dynamic-slot/dynamic-slot.component.ts:11</a></div>
                                 </td>
                             </tr>
     
@@ -1440,7 +1444,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">packages/ui/src/io/dynamic-slot/dynamic-slot.component.ts:17</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">packages/ui/src/io/dynamic-slot/dynamic-slot.component.ts:18</a></div>
                                 </td>
                             </tr>
     
@@ -1529,7 +1533,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">packages/ui/src/io/dynamic-slot/dynamic-slot.component.ts:10</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">packages/ui/src/io/dynamic-slot/dynamic-slot.component.ts:11</a></div>
                                 </td>
                             </tr>
     
@@ -1553,6 +1557,7 @@ import { SlotHostDirective } from &#x27;../slot-host.directive&#x27;;
 
 /** This directive can be used to display a field. It is used inside ec-form as well as ec-list. */
 @Component({
+  selector: &#x27;ec-dynamic-slot&#x27;,
   templateUrl: &#x27;./dynamic-slot.component.html&#x27;
 })
 export class DynamicSlotComponent {
@@ -1604,7 +1609,7 @@ export class DynamicSlotComponent {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><ng-template ec-slot-host></ng-template></div>'
-    var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
+    var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EditorComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
     var DIRECTIVES = [{'name': 'AssetDirective', 'selector': '[ecAsset]'},{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'ImageDirective', 'selector': 'img [ecImage]'},{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'DynamicSlotComponent'};
 </script>

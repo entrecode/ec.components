@@ -1473,7 +1473,7 @@ import { ListConfig } from &#x27;@ec.components/core/src/list/list-config.interf
 export class DatamanagerList extends ResourceList&lt;DataManagerResource&gt; {
 
   constructor(config: ListConfig&lt;DataManagerResource&gt;, protected sdk: SdkService) {
-    super(Object.assign(config, {
+    super(Object.assign({
       identifier: &#x27;datamanagerID&#x27;,
       onSave: (item, value) &#x3D;&gt; {
         const datamanager &#x3D; item.getBody();
@@ -1510,7 +1510,7 @@ export class DatamanagerList extends ResourceList&lt;DataManagerResource&gt; {
           form: false
         }
       }
-    }), sdk);
+    }, config), sdk);
     this.sdk.ready.then(() &#x3D;&gt; {
       this.load();
     });

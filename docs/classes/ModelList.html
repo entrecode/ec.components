@@ -1569,7 +1569,7 @@ export class ModelList extends ResourceList&lt;ModelResource&gt; {
   private datamanager: DataManagerResource | string;
 
   constructor(datamanager: DataManagerResource | string, config: ListConfig&lt;ModelResource&gt;, sdk: SdkService) {
-    super(Object.assign(config, {
+    super(Object.assign({
       identifier: &#x27;modelID&#x27;,
       onSave: (item, value) &#x3D;&gt; {
         const model &#x3D; item.getBody();
@@ -1605,7 +1605,7 @@ export class ModelList extends ResourceList&lt;ModelResource&gt; {
           form: false
         }
       }
-    }), sdk);
+    }, config), sdk);
     this.datamanager &#x3D; datamanager;
     this.sdk.ready.then(() &#x3D;&gt; {
       this.load();
@@ -1622,7 +1622,7 @@ export class ModelList extends ResourceList&lt;ModelResource&gt; {
       this.resolveDatamanager()
       .then((datamanager) &#x3D;&gt; {
         this.datamanager &#x3D; datamanager;
-        return this.datamanager.modelList(this.getFilterOptions(this.config));
+        return this.datamanager.modelList(Object.assign(this.getFilterOptions(this.config), { dataManagerID: this.datamanager.dataManagerID}));
       }).then((list) &#x3D;&gt; {
         this.use(list);
       }).catch((err) &#x3D;&gt; {

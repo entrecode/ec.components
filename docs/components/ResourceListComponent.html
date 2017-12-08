@@ -1387,6 +1387,9 @@ It is meant to be extended and overriden the createList method. See e.g. AssetLi
                             <li>
                                  <a href="#ngOnChanges">ngOnChanges</a>
                             </li>
+                            <li>
+                                 <a href="#update">update</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -1597,7 +1600,7 @@ It is meant to be extended and overriden the createList method. See e.g. AssetLi
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">packages/data/src/resource-list/resource-list.component.ts:76</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">packages/data/src/resource-list/resource-list.component.ts:81</a></div>
                                 </td>
                             </tr>
     
@@ -1669,7 +1672,7 @@ It is meant to be extended and overriden the createList method. See e.g. AssetLi
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">packages/data/src/resource-list/resource-list.component.ts:80</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">packages/data/src/resource-list/resource-list.component.ts:85</a></div>
                                 </td>
                             </tr>
     
@@ -1730,13 +1733,47 @@ It is meant to be extended and overriden the createList method. See e.g. AssetLi
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">packages/data/src/resource-list/resource-list.component.ts:44</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">packages/data/src/resource-list/resource-list.component.ts:76</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
                                 <div class="io-description"><p>When changing the model or the config, the list config will be (re)generated, using the model&#39;s schema</p>
+    </div>
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="update"></a>
+                            <span class="name"><b> update</b><a href="#update"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>update()</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">packages/data/src/resource-list/resource-list.component.ts:44</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Creates/Updates the list and subscribes Observables.  </p>
     </div>
     
                                 <div class="io-description">
@@ -1871,36 +1908,41 @@ export class ResourceListComponent&lt;T&gt; extends ListComponent&lt;T&gt; imple
     return new ResourceList(this.config, this.sdk);
   }
 
-  /** When changing the model or the config, the list config will be (re)generated, using the model&#x27;s schema*/
-  ngOnChanges() {
+  /** Creates/Updates the list and subscribes Observables.  */
+  update() {
     Object.assign(this.config || {}, this.configInput || {});
     if (!this.sdk) {
       return;
     }
     Promise.resolve(this.createList())
-    .then((list) &#x3D;&gt; {
-      if (!list) {
-        return;
-      }
-      this.list &#x3D; list;
-      this.list.change$.subscribe(() &#x3D;&gt; {
-        if (!this.selection &amp;&amp; this.list.config &amp;&amp; !this.list.config.disableSelection) {
-          this.selection &#x3D; new Selection([], this.list.config);
+      .then((list) &#x3D;&gt; {
+        if (!list) {
+          return;
         }
-        // console.log(&#x27;changed list&#x27;, this.list.config.filter);
-        // TODO update route to reflect the filter settings
+        this.list &#x3D; list;
+        this.list.change$.subscribe(() &#x3D;&gt; {
+          if (!this.selection &amp;&amp; this.list.config &amp;&amp; !this.list.config.disableSelection) {
+            this.selection &#x3D; new Selection([], this.list.config);
+          }
+          // console.log(&#x27;changed list&#x27;, this.list.config.filter);
+          // TODO update route to reflect the filter settings
 
-      });
-      this.list.loading$.subscribe((promise: Promise&lt;any&gt;) &#x3D;&gt; {
-        this.loaderService.wait(promise, this.loader);
-      });
-      this.list.error$.subscribe((err) &#x3D;&gt; {
-        this.notificationService.emit({
-          title: &#x27;Fehler beim laden der Liste&#x27;,
-          error: err
+        });
+        this.list.loading$.subscribe((promise: Promise&lt;any&gt;) &#x3D;&gt; {
+          this.loaderService.wait(promise, this.loader);
+        });
+        this.list.error$.subscribe((err) &#x3D;&gt; {
+          this.notificationService.emit({
+            title: &#x27;Fehler beim laden der Liste&#x27;,
+            error: err
+          });
         });
       });
-    });
+  }
+
+  /** When changing the model or the config, the list config will be (re)generated, using the model&#x27;s schema*/
+  ngOnChanges() {
+    this.update()
   }
 
   /** This method will filter the list by a given property value and optional operator. */
@@ -1913,18 +1955,18 @@ export class ResourceListComponent&lt;T&gt; extends ListComponent&lt;T&gt; imple
       return;
     }
     Object.keys(this.config.query)
-    .filter((property) &#x3D;&gt;
-      fieldFilter(property, this.config.query[property]))
-    .map((property) &#x3D;&gt;
-      fieldFilter(property, this.config.query[property]))
-    .filter((filter) &#x3D;&gt; {
-      return Object.keys(this.config.fields).indexOf(filter.property) !&#x3D;&#x3D; -1
-    })
-    .forEach((filter) &#x3D;&gt; {
-      this.config.filter &#x3D; Object.assign(this.config.filter || {}, {
-        [filter.property]: filter.value
+      .filter((property) &#x3D;&gt;
+        fieldFilter(property, this.config.query[property]))
+      .map((property) &#x3D;&gt;
+        fieldFilter(property, this.config.query[property]))
+      .filter((filter) &#x3D;&gt; {
+        return Object.keys(this.config.fields).indexOf(filter.property) !&#x3D;&#x3D; -1
+      })
+      .forEach((filter) &#x3D;&gt; {
+        this.config.filter &#x3D; Object.assign(this.config.filter || {}, {
+          [filter.property]: filter.value
+        });
       });
-    });
   }
 }
 </code></pre>
@@ -1977,7 +2019,7 @@ export class ResourceListComponent&lt;T&gt; extends ListComponent&lt;T&gt; imple
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><ec-pagination [pagination]="list?.pagination" *ngIf="list?.pagination?.getPages()>1"></ec-pagination><div class="ec-list">  <ec-list-header [list]="list" [selection]="selection" *ngIf="list?.fields.length||list?.config.title"></ec-list-header>  <div class="ec-list-body">    <div class="ec-list-group" *ngFor="let group of list?.groups">      <div class="ec-list-group-header ec-list-row" *ngIf="group.value" (click)="selection?.toggleAll(listItems?.items)">        <div class="ec-list-cell ec-list__select" *ngIf="selection">          <input type="checkbox" [checked]="selection?.hasAll(listItems?.items)">        </div>        <div class="ec-list-cell">          <span class="ec-list-group-header__title">{{group.value}}</span>        </div>      </div>      <ec-list-items [host]="this" #listItems [items]="list?.page | group: group.property: group.value"></ec-list-items>    </div>  </div></div><ec-pagination [pagination]="list?.pagination" *ngIf="list?.pagination?.getPages()>1"></ec-pagination></div>'
-    var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
+    var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EditorComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
     var DIRECTIVES = [{'name': 'AssetDirective', 'selector': '[ecAsset]'},{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'ImageDirective', 'selector': 'img [ecImage]'},{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'ResourceListComponent'};
 </script>
