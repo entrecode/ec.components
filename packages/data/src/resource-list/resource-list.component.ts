@@ -40,36 +40,41 @@ export class ResourceListComponent<T> extends ListComponent<T> implements OnChan
     return new ResourceList(this.config, this.sdk);
   }
 
-  /** When changing the model or the config, the list config will be (re)generated, using the model's schema*/
-  ngOnChanges() {
+  /** Creates/Updates the list and subscribes Observables.  */
+  update() {
     Object.assign(this.config || {}, this.configInput || {});
     if (!this.sdk) {
       return;
     }
     Promise.resolve(this.createList())
-    .then((list) => {
-      if (!list) {
-        return;
-      }
-      this.list = list;
-      this.list.change$.subscribe(() => {
-        if (!this.selection && this.list.config && !this.list.config.disableSelection) {
-          this.selection = new Selection([], this.list.config);
+      .then((list) => {
+        if (!list) {
+          return;
         }
-        // console.log('changed list', this.list.config.filter);
-        // TODO update route to reflect the filter settings
+        this.list = list;
+        this.list.change$.subscribe(() => {
+          if (!this.selection && this.list.config && !this.list.config.disableSelection) {
+            this.selection = new Selection([], this.list.config);
+          }
+          // console.log('changed list', this.list.config.filter);
+          // TODO update route to reflect the filter settings
 
-      });
-      this.list.loading$.subscribe((promise: Promise<any>) => {
-        this.loaderService.wait(promise, this.loader);
-      });
-      this.list.error$.subscribe((err) => {
-        this.notificationService.emit({
-          title: 'Fehler beim laden der Liste',
-          error: err
+        });
+        this.list.loading$.subscribe((promise: Promise<any>) => {
+          this.loaderService.wait(promise, this.loader);
+        });
+        this.list.error$.subscribe((err) => {
+          this.notificationService.emit({
+            title: 'Fehler beim laden der Liste',
+            error: err
+          });
         });
       });
-    });
+  }
+
+  /** When changing the model or the config, the list config will be (re)generated, using the model's schema*/
+  ngOnChanges() {
+    this.update()
   }
 
   /** This method will filter the list by a given property value and optional operator. */
@@ -82,17 +87,17 @@ export class ResourceListComponent<T> extends ListComponent<T> implements OnChan
       return;
     }
     Object.keys(this.config.query)
-    .filter((property) =>
-      fieldFilter(property, this.config.query[property]))
-    .map((property) =>
-      fieldFilter(property, this.config.query[property]))
-    .filter((filter) => {
-      return Object.keys(this.config.fields).indexOf(filter.property) !== -1
-    })
-    .forEach((filter) => {
-      this.config.filter = Object.assign(this.config.filter || {}, {
-        [filter.property]: filter.value
+      .filter((property) =>
+        fieldFilter(property, this.config.query[property]))
+      .map((property) =>
+        fieldFilter(property, this.config.query[property]))
+      .filter((filter) => {
+        return Object.keys(this.config.fields).indexOf(filter.property) !== -1
+      })
+      .forEach((filter) => {
+        this.config.filter = Object.assign(this.config.filter || {}, {
+          [filter.property]: filter.value
+        });
       });
-    });
   }
 }
