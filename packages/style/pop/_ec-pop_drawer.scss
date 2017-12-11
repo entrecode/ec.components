@@ -5,11 +5,11 @@
 %ec-drawer-side {
   width: rem(280);
 
-  @include media(tablet) {
+  @media (min-width: getBreakpoint(md)){
     width: rem(320);
   }
 
-  @include media(desktop) {
+  @media (min-width: getBreakpoint(lg)){
     min-width: rem(320);
     width: auto;
   }
@@ -22,7 +22,7 @@ ec-pop, ec-entry-pop, ec-asset-list-pop {
         @extend %ec-drawer;
         @extend %ec-drawer-side;
         @extend %slide-in-right;
-        @include box-shadow(4px 0 8px getColor(shadow), 4px 0 16px getColor(shadow));
+        box-shadow: 4px 0 8px getColor(shadow), 4px 0 16px getColor(shadow);
       }
     }
   }
@@ -33,7 +33,7 @@ ec-pop, ec-entry-pop, ec-asset-list-pop {
         @extend %ec-drawer;
         @extend %ec-drawer-side;
         @extend %slide-in-left;
-        @include box-shadow(-4px 0 8px getColor(shadow), -4px 0 16px getColor(shadow));
+        box-shadow: -4px 0 8px getColor(shadow), -4px 0 16px getColor(shadow);
       }
     }
   }
@@ -43,7 +43,7 @@ ec-pop, ec-entry-pop, ec-asset-list-pop {
       > .ec-pop {
         @extend %ec-drawer;
         @extend %slide-in-down;
-        @include box-shadow(0 4px 8px getColor(shadow), 0 4px 16px getColor(shadow));
+        box-shadow: 0 4px 8px getColor(shadow), 0 4px 16px getColor(shadow);
       }
     }
   }
@@ -53,7 +53,7 @@ ec-pop, ec-entry-pop, ec-asset-list-pop {
       > .ec-pop {
         @extend %ec-drawer;
         @extend %slide-in-up;
-        @include box-shadow(0 -4px 8px getColor(shadow), 0 -4px 16px getColor(shadow));
+        box-shadow: 0 -4px 8px getColor(shadow), 0 -4px 16px getColor(shadow);
       }
     }
   }

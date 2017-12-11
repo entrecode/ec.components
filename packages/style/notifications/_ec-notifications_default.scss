@@ -1,15 +1,15 @@
-@include keyframes(notification) {
+@keyframes notification {
   0% {
-    @include transform(translateX(rem(80)));
+    transform: translateX(rem(80));
     opacity: 0;
   }
 
   80% {
-    @include transform(translateX(rem(-16)));
+    transform: translateX(rem(-16));
   }
 
   100% {
-    @include transform(none);
+    transform: none;
     opacity: 1;
   }
 }
@@ -19,9 +19,9 @@
     .ec-pop {
       background-color: getColor(background);
       padding: rem(8) rem(16);
-      @include box-shadow(0 2px 4px getColor(shadow));
-      @include border-radius(rem(4));
-      @include animation(notification .2s);
+      box-shadow: 0 2px 4px getColor(shadow);
+      border-radius: rem(4);
+      animation: notification .2s;
       margin: rem(4);
       max-width: rem(320);
       position: relative;
@@ -35,7 +35,6 @@
       }
 
       .ec-notification__dismiss {
-        @extend .btn, .btn.clear, .btn.small !optional;
         margin: 0;
         position: absolute;
         right: rem(4);
@@ -46,7 +45,7 @@
 
   .info {
     .ec-pop {
-      @include set-colors(getColor(state, info));
+      @include set-theme-colors(getColor(state, info));
 
       .ec-notification__dismiss  {
         color: setContrast(getColor(state, info), getColor(link))
@@ -56,7 +55,7 @@
 
   .error {
     .ec-pop {
-      @include set-colors(getColor(state, error));
+      @include set-theme-colors(getColor(state, error));
 
       .ec-notification__dismiss  {
         color: setContrast(getColor(state, error), getColor(link))
@@ -66,7 +65,7 @@
 
   .success {
     .ec-pop {
-      @include set-colors(getColor(state, success));
+      @include set-theme-colors(getColor(state, success));
 
       .ec-notification__dismiss  {
         color: setContrast(getColor(state, success), getColor(link))
@@ -76,7 +75,7 @@
 
   .warning {
     .ec-pop {
-      @include set-colors(getColor(state, warning));
+      @include set-theme-colors(getColor(state, warning));
 
       .ec-notification__dismiss  {
         color: setContrast(getColor(state, warning), getColor(link))

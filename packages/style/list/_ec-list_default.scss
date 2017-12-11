@@ -55,11 +55,6 @@
       flex-grow: 1;
     }
   }
-
-  .btn {
-    @extend %btn%small, .btn.clear !optional;
-    margin: 0;
-  }
 }
 
 .ec-list-items {
@@ -86,9 +81,7 @@
     position: relative;
 
     .ec-list-field__filter-control {
-      .btn {
-        @extend .btn.clear !optional;
-      }
+
     }
 
     .ec-list-field__filter-pop {
@@ -113,9 +106,7 @@
           }
 
           .ec-list-field-filter__dismiss {
-            @extend %btn, %btn%small;
             align-self: center;
-            margin: 0;
           }
 
           ec-input {

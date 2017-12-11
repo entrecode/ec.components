@@ -1,75 +1,75 @@
 // slide to the right animation
 // -----------------------------------------
 
-@include keyframes(slideInRight) {
+@keyframes slideInRight {
   0% {
-    @include transform(translateX(-100%));
+    transform: translateX(-100%);
   }
 
   100% {
-    @include transform(unset);
+    transform: unset;
   }
 }
 
 %slide-in-right {
-  @include animation(slideInRight .4s forwards)
+  animation: slideInRight .4s forwards;
 }
 
 // slide to the left animation
 // -----------------------------------------
 
-@include keyframes(slideInLeft) {
+@keyframes slideInLeft {
   0% {
-    @include transform(translateX(100%));
+    transform: translateX(100%);
   }
 
   100% {
-    @include transform(unset);
+    transform: unset;
   }
 }
 
 %slide-in-left {
-  @include animation(slideInLeft .4s forwards)
+  animation: slideInLeft .4s forwards;
 }
 
 // slide up animation
 // -----------------------------------------
 
-@include keyframes(slideInUp) {
+@keyframes slideInUp {
   0% {
-    @include transform(translateY(100%));
+    transform: translateY(100%);
   }
 
   100% {
-    @include transform(unset);
+    transform: unset;
   }
 }
 
 %slide-in-up {
-  @include animation(slideInUp .4s forwards)
+  animation: slideInUp .4s forwards;
 }
 
 // slide down animation
 // -----------------------------------------
 
-@include keyframes(slideInDown) {
+@keyframes slideInDown {
   0% {
-    @include transform(translateY(-100%));
+    transform: translateY(-100%);
   }
 
   100% {
-    @include transform(unset);
+    transform: unset;
   }
 }
 
 %slide-in-down {
-  @include animation(slideInDown .4s forwards)
+  animation: slideInDown .4s forwards;
 }
 
 // fade in animation
 // -----------------------------------------
 
-@include keyframes(popfadeIn) {
+@keyframes popfadeIn {
   0% {
     opacity: 0;
   }
@@ -80,13 +80,13 @@
 }
 
 %pop-fade-in {
-  @include animation(popfadeIn .4s forwards)
+  animation: popfadeIn .4s forwards;
 }
 
 // appear animation - fade and slide
 // -----------------------------------------
 
-@include keyframes(dialogAppear) {
+@keyframes dialogAppear {
   0% {
     opacity: 0;
     margin-top: rem(48);
@@ -99,5 +99,5 @@
 }
 
 %dialog-appear {
-  @include animation(dialogAppear .4s forwards)
+  animation: dialogAppear .4s forwards;
 }

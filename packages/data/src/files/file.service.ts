@@ -52,9 +52,9 @@ export class FileService {
           if (typeof asset === 'string') {
             return false;
           }
-          return asset.getImageThumbUrl(200)
+          return asset.getImageUrl(200)
         },
-        view: 'avatar',
+        view: 'assetPreview',
         readOnly: true
       },
       title: {
