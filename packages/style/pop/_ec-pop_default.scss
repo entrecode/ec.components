@@ -1,30 +1,28 @@
 .ec-pop {
-  @include flexbox;
-  @include flex-direction(column);
+  display: flex;
+  flex-direction: column;
   position: relative;
 
   .ec-pop-header {
-    @include flex-grow(0);
+    flex-grow: 0;
   }
 
   .ec-pop-body {
-    @include flex-grow(1);
+    flex-grow: 1;
     overflow-y: auto;
     padding: rem($pop-body-padding);
   }
 
   .ec-pop-footer {
-    @include flex-grow(0);
+    flex-grow: 0;
     padding: rem($pop-body-padding/2) rem($pop-body-padding);
   }
 }
 
 ec-pop {
-  @include theme-modifier('.ec-pop');
 
   .ec-pop__close {
     position: absolute;
-    @extend %btn !optional;
     right: rem(2);
     top: rem(2);
     z-index: 10;

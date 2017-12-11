@@ -35,6 +35,10 @@
     <img [src]="item?.display(field.property)">
   </div>
 
+  <div class="ec-output_asset-preview" *ngSwitchCase="'assetPreview'">
+    <img [src]="item?.display(field.property)">
+  </div>
+
   <ul class="ec-output_avatars-list" *ngSwitchCase="'avatars'">
     <li *ngFor="let url of item?.display(field.property)">
       <div class="ec-output_avatar">
