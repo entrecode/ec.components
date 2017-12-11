@@ -1281,7 +1281,7 @@
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
     <h3>File</h3>
 </p>
 <p class="comment">
@@ -1352,7 +1352,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                 <a href="#createList">createList</a>
+                                <a href="#createList">createList</a>
                             </li>
                         </ul>
                     </td>
@@ -1376,7 +1376,12 @@
                     <tr>
                         <td class="col-md-4">
                             <a name="createList"></a>
-                            <span class="name"><b> createList</b><a href="#createList"><span class="fa fa-link"></span></a></span>
+                            <span class="name">
+                                <b>
+                                createList
+                                </b>
+                                <a href="#createList"><span class="fa fa-link"></span></a>
+                            </span>
                         </td>
                     </tr>
                     <tr>
@@ -1409,7 +1414,7 @@
 </div>
 
 
-    <div class="tab-pane fade tab-source-code" id="source">
+    <div class="tab-pane fade tab-source-code" id="c-source">
         <pre class="line-numbers"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 import { DatamanagerList } from &#x27;./datamanager-list&#x27;;
 import { ResourceListComponent } from &#x27;../resource-list/resource-list.component&#x27;;
@@ -1429,7 +1434,7 @@ export class DatamanagerListComponent extends ResourceListComponent&lt;DataManag
 </code></pre>
     </div>
 
-    <div class="tab-pane fade" id="templateData">
+    <div class="tab-pane fade" id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;ec-pagination [pagination]&#x3D;&quot;list?.pagination&quot; *ngIf&#x3D;&quot;list?.pagination?.getPages()&gt;1&quot;&gt;&lt;/ec-pagination&gt;
 &lt;div class&#x3D;&quot;ec-list&quot;&gt;
   &lt;ec-list-header [list]&#x3D;&quot;list&quot; [selection]&#x3D;&quot;selection&quot; *ngIf&#x3D;&quot;list?.fields.length||list?.config.title&quot;&gt;&lt;/ec-list-header&gt;
@@ -1452,7 +1457,7 @@ export class DatamanagerListComponent extends ResourceListComponent&lt;DataManag
 </code></pre>
     </div>
 
-    <div class="tab-pane fade" id="tree">
+    <div class="tab-pane fade" id="c-tree">
         <div id="tree-container"></div>
         <div class="tree-legend">
             <div class="title">

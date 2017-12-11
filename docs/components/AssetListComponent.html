@@ -1281,7 +1281,7 @@
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
     <h3>File</h3>
 </p>
 <p class="comment">
@@ -1352,7 +1352,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                 <a href="#createList">createList</a>
+                                <a href="#createList">createList</a>
                             </li>
                         </ul>
                     </td>
@@ -1367,7 +1367,7 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(loaderService: <a href="../injectables/LoaderService.html">LoaderService</a>, sdk: <a href="../injectables/SdkService.html">SdkService</a>, notificationService: <a href="../injectables/NotificationsService.html">NotificationsService</a>, fileService: <a href="../injectables/FileService.html">FileService</a>, route: <a href="https://angular.io/docs/ts/latest/api/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>)</code>
+                            <code>constructor(loaderService: <a href="../injectables/LoaderService.html">LoaderService</a>, sdk: <a href="../injectables/SdkService.html">SdkService</a>, notificationService: <a href="../injectables/NotificationsService.html">NotificationsService</a>, fileService: <a href="../injectables/FileService.html">FileService</a>, route: <a href="https://angular.io/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>)</code>
                         </td>
                     </tr>
                             <tr>
@@ -1429,7 +1429,7 @@
                                                     <tr>
                                                       <td>route</td>
                                                       <td>
-                                                                <code><a href="https://angular.io/docs/ts/latest/api/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
+                                                                <code><a href="https://angular.io/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
                                                       </td>
                                                       <td>
                                                       </td>
@@ -1458,7 +1458,12 @@
                     <tr>
                         <td class="col-md-4">
                             <a name="createList"></a>
-                            <span class="name"><b> createList</b><a href="#createList"><span class="fa fa-link"></span></a></span>
+                            <span class="name">
+                                <b>
+                                createList
+                                </b>
+                                <a href="#createList"><span class="fa fa-link"></span></a>
+                            </span>
                         </td>
                     </tr>
                     <tr>
@@ -1491,7 +1496,7 @@
 </div>
 
 
-    <div class="tab-pane fade tab-source-code" id="source">
+    <div class="tab-pane fade tab-source-code" id="c-source">
         <pre class="line-numbers"><code class="language-typescript">import { Component, Optional } from &#x27;@angular/core&#x27;;
 import { ActivatedRoute } from &#x27;@angular/router&#x27;;
 import { AssetList } from &#x27;./asset-list&#x27;;
@@ -1528,7 +1533,7 @@ export class AssetListComponent extends ResourceListComponent&lt;PublicAssetReso
 </code></pre>
     </div>
 
-    <div class="tab-pane fade" id="templateData">
+    <div class="tab-pane fade" id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;ec-pagination [pagination]&#x3D;&quot;list?.pagination&quot; *ngIf&#x3D;&quot;list?.pagination?.getPages()&gt;1&quot;&gt;&lt;/ec-pagination&gt;
 &lt;div class&#x3D;&quot;ec-list&quot;&gt;
   &lt;ec-list-header [list]&#x3D;&quot;list&quot; [selection]&#x3D;&quot;selection&quot; *ngIf&#x3D;&quot;list?.fields.length||list?.config.title&quot;&gt;&lt;/ec-list-header&gt;
@@ -1551,7 +1556,7 @@ export class AssetListComponent extends ResourceListComponent&lt;PublicAssetReso
 </code></pre>
     </div>
 
-    <div class="tab-pane fade" id="tree">
+    <div class="tab-pane fade" id="c-tree">
         <div id="tree-container"></div>
         <div class="tree-legend">
             <div class="title">

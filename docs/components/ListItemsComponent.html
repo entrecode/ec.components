@@ -1281,7 +1281,7 @@
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
     <h3>File</h3>
 </p>
 <p class="comment">
@@ -1351,10 +1351,11 @@ It can either be given an Array of Items or just the list parent to control the 
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                 <a href="#columnClick">columnClick</a>
+                                <a href="#columnClick">columnClick</a>
                             </li>
                             <li>
-                                <span class="modifier">Private</span> <a href="#ngOnChanges">ngOnChanges</a>
+                                    <span class="modifier">Private</span>
+                                <a href="#ngOnChanges">ngOnChanges</a>
                             </li>
                         </ul>
                     </td>
@@ -1522,7 +1523,12 @@ It can either be given an Array of Items or just the list parent to control the 
                     <tr>
                         <td class="col-md-4">
                             <a name="columnClick"></a>
-                            <span class="name"><b> columnClick</b><a href="#columnClick"><span class="fa fa-link"></span></a></span>
+                            <span class="name">
+                                <b>
+                                columnClick
+                                </b>
+                                <a href="#columnClick"><span class="fa fa-link"></span></a>
+                            </span>
                         </td>
                     </tr>
                     <tr>
@@ -1585,12 +1591,18 @@ It can either be given an Array of Items or just the list parent to control the 
                     <tr>
                         <td class="col-md-4">
                             <a name="ngOnChanges"></a>
-                            <span class="name"><b><span class="modifier">Private</span> ngOnChanges</b><a href="#ngOnChanges"><span class="fa fa-link"></span></a></span>
+                            <span class="name">
+                                <b>
+                                    <span class="modifier">Private</span>
+                                ngOnChanges
+                                </b>
+                                <a href="#ngOnChanges"><span class="fa fa-link"></span></a>
+                            </span>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                                <span class="modifier-icon fa fa-lock"></span>
+                                <span class="modifier-icon fa fa-reset"></span>
                             <code>ngOnChanges()</code>
                         </td>
                     </tr>
@@ -1621,7 +1633,7 @@ It can either be given an Array of Items or just the list parent to control the 
 </div>
 
 
-    <div class="tab-pane fade tab-source-code" id="source">
+    <div class="tab-pane fade tab-source-code" id="c-source">
         <pre class="line-numbers"><code class="language-typescript">import { Component, Input } from &#x27;@angular/core&#x27;;
 import { Item, List, Selection } from &#x27;@ec.components/core&#x27;;
 import { ListComponent } from &#x27;../list.component&#x27;;
@@ -1668,7 +1680,7 @@ export class ListItemsComponent&lt;T&gt; {
 </code></pre>
     </div>
 
-    <div class="tab-pane fade" id="templateData">
+    <div class="tab-pane fade" id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;ul class&#x3D;&quot;ec-list-items&quot;&gt;
   &lt;li *ngFor&#x3D;&quot;let item of items;trackBy:list?.trackItem&quot; (click)&#x3D;&quot;columnClick(item)&quot;
       class&#x3D;&quot;ec-list-row&quot;&gt;
@@ -1687,7 +1699,7 @@ export class ListItemsComponent&lt;T&gt; {
 &lt;/ul&gt;</code></pre>
     </div>
 
-    <div class="tab-pane fade" id="tree">
+    <div class="tab-pane fade" id="c-tree">
         <div id="tree-container"></div>
         <div class="tree-legend">
             <div class="title">

@@ -1281,7 +1281,7 @@
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
     <h3>File</h3>
 </p>
 <p class="comment">
@@ -1350,10 +1350,10 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                 <a href="#filter">filter</a>
+                                <a href="#filter">filter</a>
                             </li>
                             <li>
-                                 <a href="#pops">pops</a>
+                                <a href="#pops">pops</a>
                             </li>
                         </ul>
                     </td>
@@ -1367,13 +1367,16 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <span class="modifier">Public</span> <a href="#applyFilter">applyFilter</a>
+                                    <span class="modifier">Public</span>
+                                <a href="#applyFilter">applyFilter</a>
                             </li>
                             <li>
-                                <span class="modifier">Public</span> <a href="#editFilter">editFilter</a>
+                                    <span class="modifier">Public</span>
+                                <a href="#editFilter">editFilter</a>
                             </li>
                             <li>
-                                <span class="modifier">Public</span> <a href="#removeFilter">removeFilter</a>
+                                    <span class="modifier">Public</span>
+                                <a href="#removeFilter">removeFilter</a>
                             </li>
                         </ul>
                     </td>
@@ -1463,7 +1466,13 @@
                     <tr>
                         <td class="col-md-4">
                             <a name="applyFilter"></a>
-                            <span class="name"><b><span class="modifier">Public</span> applyFilter</b><a href="#applyFilter"><span class="fa fa-link"></span></a></span>
+                            <span class="name">
+                                <b>
+                                    <span class="modifier">Public</span>
+                                applyFilter
+                                </b>
+                                <a href="#applyFilter"><span class="fa fa-link"></span></a>
+                            </span>
                         </td>
                     </tr>
                     <tr>
@@ -1534,7 +1543,13 @@
                     <tr>
                         <td class="col-md-4">
                             <a name="editFilter"></a>
-                            <span class="name"><b><span class="modifier">Public</span> editFilter</b><a href="#editFilter"><span class="fa fa-link"></span></a></span>
+                            <span class="name">
+                                <b>
+                                    <span class="modifier">Public</span>
+                                editFilter
+                                </b>
+                                <a href="#editFilter"><span class="fa fa-link"></span></a>
+                            </span>
                         </td>
                     </tr>
                     <tr>
@@ -1597,7 +1612,13 @@
                     <tr>
                         <td class="col-md-4">
                             <a name="removeFilter"></a>
-                            <span class="name"><b><span class="modifier">Public</span> removeFilter</b><a href="#removeFilter"><span class="fa fa-link"></span></a></span>
+                            <span class="name">
+                                <b>
+                                    <span class="modifier">Public</span>
+                                removeFilter
+                                </b>
+                                <a href="#removeFilter"><span class="fa fa-link"></span></a>
+                            </span>
                         </td>
                     </tr>
                     <tr>
@@ -1673,7 +1694,12 @@
                     <tr>
                         <td class="col-md-4">
                             <a name="filter"></a>
-                            <span class="name"><b> filter</b><a href="#filter"><span class="fa fa-link"></span></a></span>
+                            <span class="name">
+                                <b>
+                                filter
+                                </b>
+                                <a href="#filter"><span class="fa fa-link"></span></a>
+                            </span>
                         </td>
                     </tr>
                     <tr>
@@ -1713,7 +1739,12 @@
                     <tr>
                         <td class="col-md-4">
                             <a name="pops"></a>
-                            <span class="name"><b> pops</b><a href="#pops"><span class="fa fa-link"></span></a></span>
+                            <span class="name">
+                                <b>
+                                pops
+                                </b>
+                                <a href="#pops"><span class="fa fa-link"></span></a>
+                            </span>
                         </td>
                     </tr>
                     <tr>
@@ -1753,7 +1784,7 @@
 </div>
 
 
-    <div class="tab-pane fade tab-source-code" id="source">
+    <div class="tab-pane fade tab-source-code" id="c-source">
         <pre class="line-numbers"><code class="language-typescript">import { Component, Input, QueryList, ViewChild, ViewChildren } from &#x27;@angular/core&#x27;;
 import { PopComponent } from &#x27;../../pop/pop.component&#x27;;
 import { FormComponent } from &#x27;../../form/form.component&#x27;;
@@ -1794,7 +1825,7 @@ export class ListHeaderComponent {
 </code></pre>
     </div>
 
-    <div class="tab-pane fade" id="templateData">
+    <div class="tab-pane fade" id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;ec-list-header&quot;&gt;
   &lt;div class&#x3D;&quot;ec-list-cell ec-list__select&quot; *ngIf&#x3D;&quot;selection&amp;&amp;!list?.isEmpty()&quot;&gt;
     &lt;input type&#x3D;&quot;checkbox&quot; (click)&#x3D;&quot;selection?.toggleAll(list?.page)&quot;
@@ -1823,7 +1854,7 @@ export class ListHeaderComponent {
     &lt;/ec-pop&gt;
 
     &lt;span class&#x3D;&quot;ec-list-field__filter-control&quot; *ngIf&#x3D;&quot;field.filterable&quot;&gt;
-      &lt;a (click)&#x3D;&quot;editFilter(filterPop)&quot; class&#x3D;&quot;btn&quot;&gt;
+      &lt;a (click)&#x3D;&quot;editFilter(filterPop)&quot; class&#x3D;&quot;btn btn_clear&quot;&gt;
         &lt;span class&#x3D;&quot;ec-icon find&quot;&gt;&lt;/span&gt;
       &lt;/a&gt;
     &lt;/span&gt;
@@ -1832,7 +1863,7 @@ export class ListHeaderComponent {
 </code></pre>
     </div>
 
-    <div class="tab-pane fade" id="tree">
+    <div class="tab-pane fade" id="c-tree">
         <div id="tree-container"></div>
         <div class="tree-legend">
             <div class="title">
@@ -1855,7 +1886,7 @@ export class ListHeaderComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="ec-list-header">  <div class="ec-list-cell ec-list__select" *ngIf="selection&&!list?.isEmpty()">    <input type="checkbox" (click)="selection?.toggleAll(list?.page)"           [checked]="selection?.hasAll(list?.page)" [disabled]="selection.config?.solo">  </div>  <ec-form [config]="list?.config" [empty]="true" #filterForm></ec-form>  <div class="ec-list-cell" *ngFor="let field of list?.fields" [class.hidden]="field.hidden"       [ngClass]="\'ec-list-field_\' + field.view" [class.ec-list-field_sortable]="field.sortable"       [class.ec-list-field_sortable_active]="list.config?.sortBy===field.property"       [class.ec-list-field_filterable]="field.filterable">    <span class="ec-list-field__title" (click)="field.sortable&&list.toggleSort(field.property)">      {{field.label || field.property}}    </span>    <ec-pop #filterPop class="ec-list-field__filter-pop" [ngClass]="field.filterPopClass">      <div class="ec-list-field-filter">      <ec-input [field]="field" [group]="filterForm?.group" [debounce]="200"                *ngIf="filterForm?.group?.get(field?.property)"                (changed)="applyFilter(field.property, $event)"></ec-input>      <a (click)="removeFilter(field.property, filterForm?.group?.get(field.property));filterPop.hide()"         class="ec-list-field-filter__dismiss">&times;</a>      </div>    </ec-pop>    <span class="ec-list-field__filter-control" *ngIf="field.filterable">      <a (click)="editFilter(filterPop)" class="btn">        <span class="ec-icon find"></span>      </a>    </span>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="ec-list-header">  <div class="ec-list-cell ec-list__select" *ngIf="selection&&!list?.isEmpty()">    <input type="checkbox" (click)="selection?.toggleAll(list?.page)"           [checked]="selection?.hasAll(list?.page)" [disabled]="selection.config?.solo">  </div>  <ec-form [config]="list?.config" [empty]="true" #filterForm></ec-form>  <div class="ec-list-cell" *ngFor="let field of list?.fields" [class.hidden]="field.hidden"       [ngClass]="\'ec-list-field_\' + field.view" [class.ec-list-field_sortable]="field.sortable"       [class.ec-list-field_sortable_active]="list.config?.sortBy===field.property"       [class.ec-list-field_filterable]="field.filterable">    <span class="ec-list-field__title" (click)="field.sortable&&list.toggleSort(field.property)">      {{field.label || field.property}}    </span>    <ec-pop #filterPop class="ec-list-field__filter-pop" [ngClass]="field.filterPopClass">      <div class="ec-list-field-filter">      <ec-input [field]="field" [group]="filterForm?.group" [debounce]="200"                *ngIf="filterForm?.group?.get(field?.property)"                (changed)="applyFilter(field.property, $event)"></ec-input>      <a (click)="removeFilter(field.property, filterForm?.group?.get(field.property));filterPop.hide()"         class="ec-list-field-filter__dismiss">&times;</a>      </div>    </ec-pop>    <span class="ec-list-field__filter-control" *ngIf="field.filterable">      <a (click)="editFilter(filterPop)" class="btn btn_clear">        <span class="ec-icon find"></span>      </a>    </span>  </div></div></div>'
     var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EditorComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
     var DIRECTIVES = [{'name': 'AssetDirective', 'selector': '[ecAsset]'},{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'ImageDirective', 'selector': 'img [ecImage]'},{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'ListHeaderComponent'};
