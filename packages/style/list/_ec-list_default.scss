@@ -1,6 +1,5 @@
 .ec-list {
-  font-size: 1em;
-  border: 1px solid getColor(divider);
+  font-size: 14px;
 
   .ec-list-row {
     border-bottom: 1px solid getColor(divider);
@@ -13,8 +12,7 @@
   .ec-list-cell {
     display: flex;
     align-items: center;
-    padding: .5em 1em;
-    border-right: 1px solid getColor(divider);
+    padding: em(8);
 
     &:last-child {
       border-right: none;
@@ -22,18 +20,17 @@
   }
 
   .ec-list__select {
-    padding: .5em;
+    padding: em(8);
   }
 
   .ec-output_avatar {
-    width: 2em;
-    height: 2em;
+    width: em(32);
+    height: em(32);
   }
 }
 
 .ec-list-group {
   .ec-list-group-header {
-
     .ec-list-group-header__title {
       font-weight: $bold;
       text-align: center;
@@ -44,12 +41,10 @@
 }
 
 .ec-list-header {
-  background-color: getColor(background, lightest);
-  font-size: em(14);
-
   .ec-list-cell {
     justify-content: space-between;
     border-bottom: 1px solid getColor(divider);
+    font-weight: $bold;
 
     .ec-list-field__title {
       flex-grow: 1;
