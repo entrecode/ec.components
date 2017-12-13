@@ -1280,7 +1280,7 @@
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="info">
+    <div class="tab-pane fade active in" id="c-info">
         <p class="comment">
             <h3>File</h3>
         </p>
@@ -1300,7 +1300,7 @@
                 <h3>Implements</h3>
             </p>
             <p class="comment">
-                        <code><a href="https://angular.io/docs/ts/latest/api/api/core/OnChanges" target="_blank" >OnChanges</a></code>
+                        <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
             </p>
 
 
@@ -1331,10 +1331,11 @@
                             <td class="col-md-4">
                                 <ul class="index-list">
                                     <li>
-                                        <span class="modifier">Public</span> <a href="#sdk">sdk</a>
+                                            <span class="modifier">Public</span>
+                                        <a href="#sdk">sdk</a>
                                     </li>
                                     <li>
-                                         <a href="#url">url</a>
+                                        <a href="#url">url</a>
                                     </li>
                                 </ul>
                             </td>
@@ -1348,10 +1349,10 @@
                             <td class="col-md-4">
                                 <ul class="index-list">
                                     <li>
-                                         <a href="#load">load</a>
+                                        <a href="#load">load</a>
                                     </li>
                                     <li>
-                                         <a href="#ngOnChanges">ngOnChanges</a>
+                                        <a href="#ngOnChanges">ngOnChanges</a>
                                     </li>
                                 </ul>
                             </td>
@@ -1386,7 +1387,7 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <code>constructor(sdk: <a href="../injectables/SdkService.html">SdkService</a>, elementRef: <a href="https://angular.io/docs/ts/latest/api/api/core/ElementRef" target="_blank">ElementRef</a>)</code>
+                                    <code>constructor(sdk: <a href="../injectables/SdkService.html">SdkService</a>, elementRef: <a href="https://angular.io/api/core/ElementRef" target="_blank">ElementRef</a>)</code>
                                 </td>
                             </tr>
                                     <tr>
@@ -1421,7 +1422,7 @@
                                                             <tr>
                                                               <td>elementRef</td>
                                                               <td>
-                                                                        <code><a href="https://angular.io/docs/ts/latest/api/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+                                                                        <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
                                                               </td>
                                                               <td>
                                                               </td>
@@ -1515,7 +1516,12 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="load"></a>
-                                    <span class="name"><b> load</b><a href="#load"><span class="fa fa-link"></span></a></span>
+                                    <span class="name">
+                                        <b>
+                                        load
+                                        </b>
+                                        <a href="#load"><span class="fa fa-link"></span></a>
+                                    </span>
                                 </td>
                             </tr>
                             <tr>
@@ -1579,7 +1585,12 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="ngOnChanges"></a>
-                                    <span class="name"><b> ngOnChanges</b><a href="#ngOnChanges"><span class="fa fa-link"></span></a></span>
+                                    <span class="name">
+                                        <b>
+                                        ngOnChanges
+                                        </b>
+                                        <a href="#ngOnChanges"><span class="fa fa-link"></span></a>
+                                    </span>
                                 </td>
                             </tr>
                             <tr>
@@ -1620,7 +1631,13 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="sdk"></a>
-                                    <span class="name"><b><span class="modifier">Public</span> sdk</b><a href="#sdk"><span class="fa fa-link"></span></a></span>
+                                    <span class="name">
+                                        <b>
+                                            <span class="modifier">Public</span>
+                                        sdk
+                                        </b>
+                                        <a href="#sdk"><span class="fa fa-link"></span></a>
+                                    </span>
                                 </td>
                             </tr>
                             <tr>
@@ -1649,7 +1666,12 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="url"></a>
-                                    <span class="name"><b> url</b><a href="#url"><span class="fa fa-link"></span></a></span>
+                                    <span class="name">
+                                        <b>
+                                        url
+                                        </b>
+                                        <a href="#url"><span class="fa fa-link"></span></a>
+                                    </span>
                                 </td>
                             </tr>
                             <tr>
@@ -1678,14 +1700,14 @@
 
     </div>
 
-    <div class="tab-pane fade" id="readme">
+    <div class="tab-pane fade" id="c-readme">
         <p><h1 id="ecimage">ecImage</h1>
 <p>This directive can be used to load an image:</p>
 <pre class="line-numbers"><code class="language-html">&lt;img ecImage=&quot;f663ba74-d33b-499f-a37c-9a5b4cf94543&quot; #myImage=&quot;ecImage&quot;&gt;
 &lt;p&gt;ID: {{myImage.asset?.assetID}}&lt;/p&gt;</code></pre></p>
     </div>
 
-    <div class="tab-pane fade tab-source-code" id="source">
+    <div class="tab-pane fade tab-source-code" id="c-source">
         <pre class="line-numbers"><code class="language-typescript">import { Directive, ElementRef, Input, OnChanges } from &#x27;@angular/core&#x27;;
 import { AssetDirective } from &#x27;../asset/asset.directive&#x27;;
 import { SdkService } from &#x27;../../sdk/sdk.service&#x27;;

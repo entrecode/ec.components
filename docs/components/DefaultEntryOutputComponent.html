@@ -1281,7 +1281,7 @@
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
     <h3>File</h3>
 </p>
 <p class="comment">
@@ -1346,7 +1346,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                 <a href="#field">field</a>
+                                <a href="#field">field</a>
                             </li>
                         </ul>
                     </td>
@@ -1371,7 +1371,12 @@
                     <tr>
                         <td class="col-md-4">
                             <a name="field"></a>
-                            <span class="name"><b> field</b><a href="#field"><span class="fa fa-link"></span></a></span>
+                            <span class="name">
+                                <b>
+                                field
+                                </b>
+                                <a href="#field"><span class="fa fa-link"></span></a>
+                            </span>
                         </td>
                     </tr>
                     <tr>
@@ -1406,7 +1411,7 @@
 </div>
 
 
-    <div class="tab-pane fade tab-source-code" id="source">
+    <div class="tab-pane fade tab-source-code" id="c-source">
         <pre class="line-numbers"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
 import { Field } from &#x27;@ec.components/core/src/field/field&#x27;;
 
@@ -1422,7 +1427,7 @@ export class DefaultEntryOutputComponent {
 </code></pre>
     </div>
 
-    <div class="tab-pane fade" id="templateData">
+    <div class="tab-pane fade" id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div [ngSwitch]&#x3D;&quot;field.type&quot;&gt;
   &lt;pre *ngSwitchCase&#x3D;&quot;&#x27;json&#x27;&quot;&gt;
     {{item?.display(field.property)}}
@@ -1434,7 +1439,7 @@ export class DefaultEntryOutputComponent {
 &lt;/div&gt;</code></pre>
     </div>
 
-    <div class="tab-pane fade" id="tree">
+    <div class="tab-pane fade" id="c-tree">
         <div id="tree-container"></div>
         <div class="tree-legend">
             <div class="title">

@@ -1281,7 +1281,7 @@
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
     <h3>File</h3>
 </p>
 <p class="comment">
@@ -1359,7 +1359,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                 <a href="#selectUpload">selectUpload</a>
+                                <a href="#selectUpload">selectUpload</a>
                             </li>
                         </ul>
                     </td>
@@ -1448,6 +1448,9 @@ It is also possible to bind an entry directly which will then be bound to the fo
                                 <em>Type:</em>    <code><a href="../interfaces/CrudConfig.html" target="_self" >CrudConfig&lt;PublicAssetResource&gt;</a></code>
 
                               </p>
+                            <p>
+                              <em>Default value: </em><code>{}</code>
+                            </p>
                         </td>
                     </tr>
                             <tr>
@@ -1495,7 +1498,12 @@ It is also possible to bind an entry directly which will then be bound to the fo
                     <tr>
                         <td class="col-md-4">
                             <a name="selectUpload"></a>
-                            <span class="name"><b> selectUpload</b><a href="#selectUpload"><span class="fa fa-link"></span></a></span>
+                            <span class="name">
+                                <b>
+                                selectUpload
+                                </b>
+                                <a href="#selectUpload"><span class="fa fa-link"></span></a>
+                            </span>
                         </td>
                     </tr>
                     <tr>
@@ -1557,7 +1565,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
 </div>
 
 
-    <div class="tab-pane fade tab-source-code" id="source">
+    <div class="tab-pane fade tab-source-code" id="c-source">
         <pre class="line-numbers"><code class="language-typescript">import { Component, Input } from &#x27;@angular/core&#x27;;
 import PublicAssetResource from &#x27;ec.sdk/lib/resources/publicAPI/PublicAssetResource&#x27;;
 import { PopComponent } from &#x27;@ec.components/ui/src/pop/pop.component&#x27;;
@@ -1598,7 +1606,7 @@ export class AssetListPopComponent extends PopComponent {
 </code></pre>
     </div>
 
-    <div class="tab-pane fade" id="templateData">
+    <div class="tab-pane fade" id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;ec-pop-container&quot; [class.active]&#x3D;&quot;active&quot; [class.visible]&#x3D;&quot;visible&quot;&gt;
   &lt;div class&#x3D;&quot;ec-pop&quot; *ngIf&#x3D;&quot;active&quot;&gt;
     &lt;header class&#x3D;&quot;ec-pop-header&quot;&gt;
@@ -1617,7 +1625,7 @@ export class AssetListPopComponent extends PopComponent {
 &lt;/div&gt;</code></pre>
     </div>
 
-    <div class="tab-pane fade" id="tree">
+    <div class="tab-pane fade" id="c-tree">
         <div id="tree-container"></div>
         <div class="tree-legend">
             <div class="title">

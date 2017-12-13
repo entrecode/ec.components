@@ -1281,7 +1281,7 @@
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
     <h3>File</h3>
 </p>
 <p class="comment">
@@ -1345,13 +1345,15 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <span class="modifier">Public</span> <a href="#auth">auth</a>
+                                    <span class="modifier">Public</span>
+                                <a href="#auth">auth</a>
                             </li>
                             <li>
-                                 <a href="#loader">loader</a>
+                                <a href="#loader">loader</a>
                             </li>
                             <li>
-                                <span class="modifier">Public</span> <a href="#notifications">notifications</a>
+                                    <span class="modifier">Public</span>
+                                <a href="#notifications">notifications</a>
                             </li>
                         </ul>
                     </td>
@@ -1365,7 +1367,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                 <a href="#login">login</a>
+                                <a href="#login">login</a>
                             </li>
                         </ul>
                     </td>
@@ -1518,7 +1520,12 @@
                     <tr>
                         <td class="col-md-4">
                             <a name="login"></a>
-                            <span class="name"><b> login</b><a href="#login"><span class="fa fa-link"></span></a></span>
+                            <span class="name">
+                                <b>
+                                login
+                                </b>
+                                <a href="#login"><span class="fa fa-link"></span></a>
+                            </span>
                         </td>
                     </tr>
                     <tr>
@@ -1585,7 +1592,13 @@
                     <tr>
                         <td class="col-md-4">
                             <a name="auth"></a>
-                            <span class="name"><b><span class="modifier">Public</span> auth</b><a href="#auth"><span class="fa fa-link"></span></a></span>
+                            <span class="name">
+                                <b>
+                                    <span class="modifier">Public</span>
+                                auth
+                                </b>
+                                <a href="#auth"><span class="fa fa-link"></span></a>
+                            </span>
                         </td>
                     </tr>
                     <tr>
@@ -1614,7 +1627,12 @@
                     <tr>
                         <td class="col-md-4">
                             <a name="loader"></a>
-                            <span class="name"><b> loader</b><a href="#loader"><span class="fa fa-link"></span></a></span>
+                            <span class="name">
+                                <b>
+                                loader
+                                </b>
+                                <a href="#loader"><span class="fa fa-link"></span></a>
+                            </span>
                         </td>
                     </tr>
                     <tr>
@@ -1642,7 +1660,13 @@
                     <tr>
                         <td class="col-md-4">
                             <a name="notifications"></a>
-                            <span class="name"><b><span class="modifier">Public</span> notifications</b><a href="#notifications"><span class="fa fa-link"></span></a></span>
+                            <span class="name">
+                                <b>
+                                    <span class="modifier">Public</span>
+                                notifications
+                                </b>
+                                <a href="#notifications"><span class="fa fa-link"></span></a>
+                            </span>
                         </td>
                     </tr>
                     <tr>
@@ -1671,7 +1695,7 @@
 </div>
 
 
-    <div class="tab-pane fade tab-source-code" id="source">
+    <div class="tab-pane fade tab-source-code" id="c-source">
         <pre class="line-numbers"><code class="language-typescript">import { Component, EventEmitter, Input, Output, ViewChild } from &#x27;@angular/core&#x27;;
 import PublicAPI from &#x27;ec.sdk/lib/PublicAPI&#x27;;
 import AccountResource from &#x27;ec.sdk/lib/resources/accounts/AccountResource&#x27;;
@@ -1714,12 +1738,12 @@ export class LoginComponent implements WithLoader {
 </code></pre>
     </div>
 
-    <div class="tab-pane fade" id="templateData">
+    <div class="tab-pane fade" id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;ec-loader class&#x3D;&quot;ec-loader ec-loader_overlay ec-loader_global&quot;&gt;&lt;/ec-loader&gt;
 &lt;ec-login-form (success)&#x3D;&quot;login($event)&quot;&gt;&lt;/ec-login-form&gt;</code></pre>
     </div>
 
-    <div class="tab-pane fade" id="tree">
+    <div class="tab-pane fade" id="c-tree">
         <div id="tree-container"></div>
         <div class="tree-legend">
             <div class="title">

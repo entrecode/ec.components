@@ -1284,7 +1284,7 @@
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
     <h3>File</h3>
 </p>
 <p class="comment">
@@ -1354,7 +1354,7 @@ It can be used e.g as dialog, drawer or dialog.</p>
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                 <a href="#delay">delay</a>
+                                <a href="#delay">delay</a>
                             </li>
                         </ul>
                     </td>
@@ -1368,13 +1368,16 @@ It can be used e.g as dialog, drawer or dialog.</p>
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <span class="modifier">Public</span> <a href="#hide">hide</a>
+                                    <span class="modifier">Public</span>
+                                <a href="#hide">hide</a>
                             </li>
                             <li>
-                                <span class="modifier">Public</span> <a href="#show">show</a>
+                                    <span class="modifier">Public</span>
+                                <a href="#show">show</a>
                             </li>
                             <li>
-                                <span class="modifier">Public</span> <a href="#toggle">toggle</a>
+                                    <span class="modifier">Public</span>
+                                <a href="#toggle">toggle</a>
                             </li>
                         </ul>
                     </td>
@@ -1502,7 +1505,13 @@ It can be used e.g as dialog, drawer or dialog.</p>
                     <tr>
                         <td class="col-md-4">
                             <a name="hide"></a>
-                            <span class="name"><b><span class="modifier">Public</span> hide</b><a href="#hide"><span class="fa fa-link"></span></a></span>
+                            <span class="name">
+                                <b>
+                                    <span class="modifier">Public</span>
+                                hide
+                                </b>
+                                <a href="#hide"><span class="fa fa-link"></span></a>
+                            </span>
                         </td>
                     </tr>
                     <tr>
@@ -1537,7 +1546,13 @@ It can be used e.g as dialog, drawer or dialog.</p>
                     <tr>
                         <td class="col-md-4">
                             <a name="show"></a>
-                            <span class="name"><b><span class="modifier">Public</span> show</b><a href="#show"><span class="fa fa-link"></span></a></span>
+                            <span class="name">
+                                <b>
+                                    <span class="modifier">Public</span>
+                                show
+                                </b>
+                                <a href="#show"><span class="fa fa-link"></span></a>
+                            </span>
                         </td>
                     </tr>
                     <tr>
@@ -1572,7 +1587,13 @@ It can be used e.g as dialog, drawer or dialog.</p>
                     <tr>
                         <td class="col-md-4">
                             <a name="toggle"></a>
-                            <span class="name"><b><span class="modifier">Public</span> toggle</b><a href="#toggle"><span class="fa fa-link"></span></a></span>
+                            <span class="name">
+                                <b>
+                                    <span class="modifier">Public</span>
+                                toggle
+                                </b>
+                                <a href="#toggle"><span class="fa fa-link"></span></a>
+                            </span>
                         </td>
                     </tr>
                     <tr>
@@ -1652,7 +1673,12 @@ It can be used e.g as dialog, drawer or dialog.</p>
                     <tr>
                         <td class="col-md-4">
                             <a name="delay"></a>
-                            <span class="name"><b> delay</b><a href="#delay"><span class="fa fa-link"></span></a></span>
+                            <span class="name">
+                                <b>
+                                delay
+                                </b>
+                                <a href="#delay"><span class="fa fa-link"></span></a>
+                            </span>
                         </td>
                     </tr>
                     <tr>
@@ -1685,7 +1711,7 @@ It can be used e.g as dialog, drawer or dialog.</p>
 
 </div>
 
-    <div class="tab-pane fade" id="readme">
+    <div class="tab-pane fade" id="c-readme">
         <p><h1 id="pop">Pop</h1>
 <p>A Pop is not just a modal, but a section of markup that appears (pops) anywhere and with any style on your page.</p>
 <h2 id="usage">Usage</h2>
@@ -1704,7 +1730,7 @@ It can be used e.g as dialog, drawer or dialog.</p>
 </p>
     </div>
 
-    <div class="tab-pane fade tab-source-code" id="source">
+    <div class="tab-pane fade tab-source-code" id="c-source">
         <pre class="line-numbers"><code class="language-typescript">import { Component, EventEmitter, Input, Output } from &#x27;@angular/core&#x27;;
 
 /** A Pop is an area of content whose visibility can be toggled.
@@ -1757,7 +1783,7 @@ export class PopComponent {
 }</code></pre>
     </div>
 
-    <div class="tab-pane fade" id="templateData">
+    <div class="tab-pane fade" id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;ec-pop-container&quot; [class.active]&#x3D;&quot;active&quot; [class.visible]&#x3D;&quot;visible&quot;&gt;
   &lt;div class&#x3D;&quot;ec-pop&quot; *ngIf&#x3D;&quot;active&quot;&gt;
     &lt;ng-content&gt;&lt;/ng-content&gt;
@@ -1767,7 +1793,7 @@ export class PopComponent {
 </code></pre>
     </div>
 
-    <div class="tab-pane fade" id="tree">
+    <div class="tab-pane fade" id="c-tree">
         <div id="tree-container"></div>
         <div class="tree-legend">
             <div class="title">

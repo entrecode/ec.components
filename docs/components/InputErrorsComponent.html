@@ -1281,7 +1281,7 @@
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
     <h3>File</h3>
 </p>
 <p class="comment">
@@ -1350,7 +1350,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                 <a href="#errors">errors</a>
+                                <a href="#errors">errors</a>
                             </li>
                         </ul>
                     </td>
@@ -1364,7 +1364,8 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <span class="modifier">Private</span> <a href="#getErrors">getErrors</a>
+                                    <span class="modifier">Private</span>
+                                <a href="#getErrors">getErrors</a>
                             </li>
                         </ul>
                     </td>
@@ -1428,12 +1429,18 @@
                     <tr>
                         <td class="col-md-4">
                             <a name="getErrors"></a>
-                            <span class="name"><b><span class="modifier">Private</span> getErrors</b><a href="#getErrors"><span class="fa fa-link"></span></a></span>
+                            <span class="name">
+                                <b>
+                                    <span class="modifier">Private</span>
+                                getErrors
+                                </b>
+                                <a href="#getErrors"><span class="fa fa-link"></span></a>
+                            </span>
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                                <span class="modifier-icon fa fa-lock"></span>
+                                <span class="modifier-icon fa fa-reset"></span>
                             <code>getErrors()</code>
                         </td>
                     </tr>
@@ -1470,7 +1477,12 @@
                     <tr>
                         <td class="col-md-4">
                             <a name="errors"></a>
-                            <span class="name"><b> errors</b><a href="#errors"><span class="fa fa-link"></span></a></span>
+                            <span class="name">
+                                <b>
+                                errors
+                                </b>
+                                <a href="#errors"><span class="fa fa-link"></span></a>
+                            </span>
                         </td>
                     </tr>
                     <tr>
@@ -1504,7 +1516,7 @@
 </div>
 
 
-    <div class="tab-pane fade tab-source-code" id="source">
+    <div class="tab-pane fade tab-source-code" id="c-source">
         <pre class="line-numbers"><code class="language-typescript">import { Component, Input } from &#x27;@angular/core&#x27;;
 import { FormControl } from &#x27;@angular/forms&#x27;;
 import { errors } from &#x27;./input-errors&#x27;;
@@ -1543,13 +1555,13 @@ export class InputErrorsComponent {
 </code></pre>
     </div>
 
-    <div class="tab-pane fade" id="templateData">
+    <div class="tab-pane fade" id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;ul *ngIf&#x3D;&quot;control?.errors&amp;&amp;control.dirty&quot; class&#x3D;&quot;input-errors&quot;&gt;
   &lt;li *ngFor&#x3D;&quot;let error of getErrors()&quot; class&#x3D;&quot;input-error&quot;&gt;{{error.message}}&lt;/li&gt;
 &lt;/ul&gt;</code></pre>
     </div>
 
-    <div class="tab-pane fade" id="tree">
+    <div class="tab-pane fade" id="c-tree">
         <div id="tree-container"></div>
         <div class="tree-legend">
             <div class="title">

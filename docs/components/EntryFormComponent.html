@@ -1284,7 +1284,7 @@
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
     <h3>File</h3>
 </p>
 <p class="comment">
@@ -1359,13 +1359,13 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                 <a href="#deleteEntry">deleteEntry</a>
+                                <a href="#deleteEntry">deleteEntry</a>
                             </li>
                             <li>
-                                 <a href="#init">init</a>
+                                <a href="#init">init</a>
                             </li>
                             <li>
-                                 <a href="#isEditing">isEditing</a>
+                                <a href="#isEditing">isEditing</a>
                             </li>
                         </ul>
                     </td>
@@ -1579,7 +1579,12 @@ If you do not pass any model, it is expected that an EntryResource is passed. </
                     <tr>
                         <td class="col-md-4">
                             <a name="deleteEntry"></a>
-                            <span class="name"><b> deleteEntry</b><a href="#deleteEntry"><span class="fa fa-link"></span></a></span>
+                            <span class="name">
+                                <b>
+                                deleteEntry
+                                </b>
+                                <a href="#deleteEntry"><span class="fa fa-link"></span></a>
+                            </span>
                         </td>
                     </tr>
                     <tr>
@@ -1613,7 +1618,12 @@ If you do not pass any model, it is expected that an EntryResource is passed. </
                     <tr>
                         <td class="col-md-4">
                             <a name="init"></a>
-                            <span class="name"><b> init</b><a href="#init"><span class="fa fa-link"></span></a></span>
+                            <span class="name">
+                                <b>
+                                init
+                                </b>
+                                <a href="#init"><span class="fa fa-link"></span></a>
+                            </span>
                         </td>
                     </tr>
                     <tr>
@@ -1685,7 +1695,12 @@ If you do not pass any model, it is expected that an EntryResource is passed. </
                     <tr>
                         <td class="col-md-4">
                             <a name="isEditing"></a>
-                            <span class="name"><b> isEditing</b><a href="#isEditing"><span class="fa fa-link"></span></a></span>
+                            <span class="name">
+                                <b>
+                                isEditing
+                                </b>
+                                <a href="#isEditing"><span class="fa fa-link"></span></a>
+                            </span>
                         </td>
                     </tr>
                     <tr>
@@ -1719,13 +1734,13 @@ If you do not pass any model, it is expected that an EntryResource is passed. </
 
 </div>
 
-    <div class="tab-pane fade" id="readme">
+    <div class="tab-pane fade" id="c-readme">
         <p><h1 id="entry-form">Entry Form</h1>
 <p>TODO</p>
 </p>
     </div>
 
-    <div class="tab-pane fade tab-source-code" id="source">
+    <div class="tab-pane fade tab-source-code" id="c-source">
         <pre class="line-numbers"><code class="language-typescript">import { Component, EventEmitter, Input, Output } from &#x27;@angular/core&#x27;;
 import { FormComponent } from &#x27;@ec.components/ui/src/form/form.component&#x27;;
 import { ModelConfigService } from &#x27;../model-config/model-config.service&#x27;;
@@ -1815,7 +1830,7 @@ export class EntryFormComponent extends FormComponent {
 </code></pre>
     </div>
 
-    <div class="tab-pane fade" id="templateData">
+    <div class="tab-pane fade" id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;form novalidate [formGroup]&#x3D;&quot;group&quot; (ngSubmit)&#x3D;&quot;submit()&quot; *ngIf&#x3D;&quot;group&quot;&gt;
   &lt;div #wrapper&gt;
     &lt;ng-content&gt;&lt;/ng-content&gt;
@@ -1834,7 +1849,7 @@ export class EntryFormComponent extends FormComponent {
 </code></pre>
     </div>
 
-    <div class="tab-pane fade" id="tree">
+    <div class="tab-pane fade" id="c-tree">
         <div id="tree-container"></div>
         <div class="tree-legend">
             <div class="title">

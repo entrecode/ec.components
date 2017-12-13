@@ -1280,7 +1280,7 @@
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="info">
+    <div class="tab-pane fade active in" id="c-info">
         <p class="comment">
             <h3>File</h3>
         </p>
@@ -1300,7 +1300,7 @@
                 <h3>Implements</h3>
             </p>
             <p class="comment">
-                        <code><a href="https://angular.io/docs/ts/latest/api/api/core/OnChanges" target="_blank" >OnChanges</a></code>
+                        <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
             </p>
 
 
@@ -1331,10 +1331,10 @@
                             <td class="col-md-4">
                                 <ul class="index-list">
                                     <li>
-                                         <a href="#entry">entry</a>
+                                        <a href="#entry">entry</a>
                                     </li>
                                     <li>
-                                         <a href="#promise">promise</a>
+                                        <a href="#promise">promise</a>
                                     </li>
                                 </ul>
                             </td>
@@ -1348,10 +1348,10 @@
                             <td class="col-md-4">
                                 <ul class="index-list">
                                     <li>
-                                         <a href="#load">load</a>
+                                        <a href="#load">load</a>
                                     </li>
                                     <li>
-                                         <a href="#ngOnChanges">ngOnChanges</a>
+                                        <a href="#ngOnChanges">ngOnChanges</a>
                                     </li>
                                 </ul>
                             </td>
@@ -1605,7 +1605,12 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="load"></a>
-                                    <span class="name"><b> load</b><a href="#load"><span class="fa fa-link"></span></a></span>
+                                    <span class="name">
+                                        <b>
+                                        load
+                                        </b>
+                                        <a href="#load"><span class="fa fa-link"></span></a>
+                                    </span>
                                 </td>
                             </tr>
                             <tr>
@@ -1639,7 +1644,12 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="ngOnChanges"></a>
-                                    <span class="name"><b> ngOnChanges</b><a href="#ngOnChanges"><span class="fa fa-link"></span></a></span>
+                                    <span class="name">
+                                        <b>
+                                        ngOnChanges
+                                        </b>
+                                        <a href="#ngOnChanges"><span class="fa fa-link"></span></a>
+                                    </span>
                                 </td>
                             </tr>
                             <tr>
@@ -1680,7 +1690,12 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="entry"></a>
-                                    <span class="name"><b> entry</b><a href="#entry"><span class="fa fa-link"></span></a></span>
+                                    <span class="name">
+                                        <b>
+                                        entry
+                                        </b>
+                                        <a href="#entry"><span class="fa fa-link"></span></a>
+                                    </span>
                                 </td>
                             </tr>
                             <tr>
@@ -1715,7 +1730,12 @@
                             <tr>
                                 <td class="col-md-4">
                                     <a name="promise"></a>
-                                    <span class="name"><b> promise</b><a href="#promise"><span class="fa fa-link"></span></a></span>
+                                    <span class="name">
+                                        <b>
+                                        promise
+                                        </b>
+                                        <a href="#promise"><span class="fa fa-link"></span></a>
+                                    </span>
                                 </td>
                             </tr>
                             <tr>
@@ -1750,14 +1770,14 @@
 
     </div>
 
-    <div class="tab-pane fade" id="readme">
+    <div class="tab-pane fade" id="c-readme">
         <p><h1 id="ec-entry">ec-entry</h1>
 <p>This directive can be used to load a single entry directly from the template:</p>
 <pre class="line-numbers"><code class="language-html">&lt;h1 ecEntry model=&quot;muffin&quot; entryId=&quot;SkXEhDZ5yW&quot; #muffin=&quot;ecEntry&quot;&gt;&lt;/h1&gt;
 {{muffin.entry?.name}}</code></pre></p>
     </div>
 
-    <div class="tab-pane fade tab-source-code" id="source">
+    <div class="tab-pane fade tab-source-code" id="c-source">
         <pre class="line-numbers"><code class="language-typescript">import { Directive, EventEmitter, Input, OnChanges, Output } from &#x27;@angular/core&#x27;;
 import { SdkService } from &#x27;../sdk/sdk.service&#x27;;
 import EntryResource from &#x27;ec.sdk/lib/resources/publicAPI/EntryResource&#x27;;
