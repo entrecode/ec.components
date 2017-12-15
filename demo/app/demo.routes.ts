@@ -26,6 +26,7 @@ import { LoginFormComponent } from '../../packages/ui/src/utility/login-form/log
 import { EntryPopDemoComponent } from './entry-pop-demo/entry-pop-demo.component';
 import { TinymceDemoComponent } from './tinymce-demo/tinymce-demo.component';
 import { AceDemoComponent } from './ace-demo/ace-demo.component';
+import { ActionbarDemoComponent } from './actionbar-demo/actionbar-demo.component';
 
 export const demoRoutes: Routes = [
   /*  {
@@ -88,7 +89,11 @@ export const demoRoutes: Routes = [
       {
         path: 'login',
         component: LoginFormComponent
-      }
+      },
+      {
+        path: 'actionbar',
+        component: ActionbarDemoComponent,
+      },
     ]
   },
   {

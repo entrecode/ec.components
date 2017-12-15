@@ -8,6 +8,7 @@ import { LoaderModule } from './loader/loader.module';
 import { NotificationsModule } from './notifications/notifications.module';
 import { UtilityModule } from './utility/utility.module';
 import { SelectModule } from './select/select.module';
+import { ActionbarModule } from './actionbar/actionbar.module';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { SelectModule } from './select/select.module';
     FormModule,
     ListModule,
     SelectModule,
+    ActionbarModule,
   ],
   exports: [
     ReactiveFormsModule,
@@ -32,6 +34,7 @@ import { SelectModule } from './select/select.module';
     ListModule,
     FormModule,
     SelectModule,
+    ActionbarModule,
   ]
 })
 export class UiModule {
