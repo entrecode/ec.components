@@ -1,1 +1,10 @@
-<b>Actionbar works!</b>
+<input type="text" [(ngModel)]="query" (ngModelChange)="typed($event)">
+
+<ec-list [items]="displayedActions" (select)="perform(action)"></ec-list>
+<ul>
+  <li *ngFor="let action of displayedActions" (click)="perform(action)">
+    {{action.label}}
+  </li>
+</ul>
+<ec-loader #loader class="ec-loader"></ec-loader>
+<a (click)="goBack()" *ngIf="path.length>1">BACK</a>

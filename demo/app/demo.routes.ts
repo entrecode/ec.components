@@ -27,6 +27,7 @@ import { EntryPopDemoComponent } from './entry-pop-demo/entry-pop-demo.component
 import { TinymceDemoComponent } from './tinymce-demo/tinymce-demo.component';
 import { AceDemoComponent } from './ace-demo/ace-demo.component';
 import { ActionbarDemoComponent } from './actionbar-demo/actionbar-demo.component';
+import { InteractionDemoComponent } from './interaction-demo/interaction-demo.component';
 
 export const demoRoutes: Routes = [
   /*  {
@@ -40,6 +41,10 @@ export const demoRoutes: Routes = [
         path: '',
         pathMatch: 'full',
         redirectTo: 'form',
+      },
+      {
+        path: 'interaction',
+        component: InteractionDemoComponent,
       },
       {
         path: 'list',

@@ -40,6 +40,8 @@ import { TinymceModule } from '../../packages/tinymce/src/tinymce.module';
 import { TinymceDemoComponent } from './tinymce-demo/tinymce-demo.component';
 import { AceDemoComponent } from './ace-demo/ace-demo.component';
 import { AceModule } from '../../packages/ace/index';
+import { InteractionDemoComponent } from './interaction-demo/interaction-demo.component';
+import { ActionbarModule } from '../../packages/ui/src/actionbar/actionbar.module';
 
 demoRoutes.unshift(
   {
@@ -73,6 +75,7 @@ demoRoutes.unshift(
     UnsplashImageComponent,
     AssetListDemoComponent,
     ActionbarDemoComponent,
+    InteractionDemoComponent,
     AssetDemoComponent,
     DatamanagerListDemoComponent,
     DatetimeDemoComponent,
@@ -90,6 +93,7 @@ demoRoutes.unshift(
   imports: [
     BrowserModule,
     UiModule,
+    ActionbarModule,
     DataModule,
     VcModule,
     RouterModule.forRoot(demoRoutes),
