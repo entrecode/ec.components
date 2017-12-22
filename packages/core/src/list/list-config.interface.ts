@@ -14,6 +14,8 @@ export interface ListConfig<T> extends ItemConfig<T> {
   desc?: boolean;
   /** If true, the list will have no checkboxes and selection feature. */
   disableSelection?: boolean
+  /** If true, the list will have no header. */
+  disableHeader?: boolean
   /** The current active page */
   page?: number,
   /** The number of items per page */

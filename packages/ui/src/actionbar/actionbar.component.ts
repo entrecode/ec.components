@@ -28,6 +28,7 @@ export class ActionbarComponent implements OnInit {
     @ViewChild(LoaderComponent) loader: LoaderComponent;
     path = [];
     query = '';
+    listConfig = { disableSelection: true, disableHeader: true, fields: { label: { label: '' } } };
 
     private change = new Subject();
     /** Observable that is nexted when the query has changed. */
@@ -56,7 +57,12 @@ export class ActionbarComponent implements OnInit {
         }
     }
 
+    select(item) {
+        this.perform(item.getBody());
+    }
+
     perform(action, skip = false) {
+        console.log('perform', action);
         this.action = action;
         if (!skip) {
             action.path = [].concat(this.path);

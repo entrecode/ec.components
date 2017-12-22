@@ -65,4 +65,8 @@ export class ListComponent<T> implements OnChanges {
       this.selection.toggle(item, this.solo);
     }
   }
+
+  showHeader() {
+    return (this.list.fields.length || this.list.config.title) && !this.list.config.disableHeader;
+  }
 }
