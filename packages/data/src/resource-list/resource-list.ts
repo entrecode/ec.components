@@ -50,8 +50,9 @@ export class ResourceList<T> extends List<T> {
     if (!this.api || !this.relation) {
       return;
     }
+    const options = this.getFilterOptions(this.config);
     const loading = this.api
-      .resourceList(this.relation, this.getFilterOptions(config))
+      .resourceList(this.relation, options)
       .then(list => this.use(list));
     this.loading.next(loading);
   }

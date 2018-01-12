@@ -60,7 +60,7 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
         sortable: true
       },
       title: {
-        label: 'Name!',
+        label: 'Model',
         view: 'string',
         filterable: true,
         sortable: true
@@ -99,6 +99,23 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
         view: 'boolean',
         filterable: true,
         sortable: true
+      }
+    }
+  },
+  template: {
+    identifier: 'templateID',
+    fields: {
+      name: {
+        label: 'Template',
+        view: 'string',
+        filterable: true,
+        sortable: true
+      },
+      version: {
+        label: 'Datum',
+        display: value => moment(value).format('DD.MM.YY'),
+        group: value => moment(value).format('MMMM YYYY'),
+        form: false
       }
     }
   }
