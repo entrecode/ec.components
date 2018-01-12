@@ -42,6 +42,7 @@ import { AceDemoComponent } from './ace-demo/ace-demo.component';
 import { AceModule } from '../../packages/ace/index';
 import { InteractionDemoComponent } from './interaction-demo/interaction-demo.component';
 import { ActionbarModule } from '../../packages/ui/src/actionbar/actionbar.module';
+import { ResourceListDemoComponent } from './resource-list/resource-list-demo.component';
 
 demoRoutes.unshift(
   {
@@ -62,6 +63,7 @@ demoRoutes.unshift(
     ListTransformsDemoComponent,
     PaginationDemoComponent,
     EntryListDemoComponent,
+    ResourceListDemoComponent,
     FormDemoComponent,
     TabsDemoComponent,
     EntryFormDemoComponent,

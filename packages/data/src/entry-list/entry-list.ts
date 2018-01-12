@@ -14,7 +14,7 @@ export class EntryList extends ResourceList<EntryResource> {
   /** The constructor will init the List and Pagination instances.
    * Make sure the config is already complete when initiating an EntryList instance. */
   constructor(model: string, config: ListConfig<EntryResource>, protected sdk: SdkService) {
-    super(config, sdk);
+    super(config);
     this.model = model;
     this.load();
   }

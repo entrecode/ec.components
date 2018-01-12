@@ -28,6 +28,7 @@ import { TinymceDemoComponent } from './tinymce-demo/tinymce-demo.component';
 import { AceDemoComponent } from './ace-demo/ace-demo.component';
 import { ActionbarDemoComponent } from './actionbar-demo/actionbar-demo.component';
 import { InteractionDemoComponent } from './interaction-demo/interaction-demo.component';
+import { ResourceListDemoComponent } from './resource-list/resource-list-demo.component';
 
 export const demoRoutes: Routes = [
   /*  {
@@ -104,6 +105,10 @@ export const demoRoutes: Routes = [
   {
     path: 'data',
     children: [
+      {
+        path: 'resource-list',
+        component: ResourceListDemoComponent
+      },
       {
         path: 'entries',
         component: DataDemoComponent

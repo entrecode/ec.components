@@ -1,5 +1,11 @@
 # Changelog
 
+<a name="1.0.0">
+
+BREAKING CHANGES:
+* list.component (and all extending components): renamed select output to columnClicked. (Global replace "(select)" to "(columnClicked)").
+
+
 <a name="0.9.0"></a>
 ## 0.9.0
 - added use method to selection.component to write the model from outside
