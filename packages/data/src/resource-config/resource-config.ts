@@ -6,6 +6,7 @@ import { ListConfig } from '../../../core/src/list/list-config.interface';
 export const resourceConfig: { [key: string]: ListConfig<any> } = {
   dataManager: {
     identifier: 'datamanagerID',
+    label: 'title',
     /* onSave: (item, value) => {
             const datamanager = item.getBody();
             item.serialize(value, datamanager instanceof DataManagerResource);
@@ -44,6 +45,7 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
   },
   model: {
     identifier: 'modelID',
+    label: 'title',
     /* onSave: (item, value) => {
           const model = item.getBody();
           item.serialize(value, model instanceof ModelResource);
@@ -81,6 +83,7 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
   },
   account: {
     identifier: 'accountID',
+    label: 'email',
     fields: {
       email: {
         label: 'Email',
@@ -104,6 +107,7 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
   },
   template: {
     identifier: 'templateID',
+    label: 'name',
     fields: {
       name: {
         label: 'Template',

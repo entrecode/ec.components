@@ -53,8 +53,9 @@ export class ResourceListComponent<T> extends ListComponent<T>
       // return Promise.reject(`cannot create ResourceList: no relation or api given. Relation: ${this.relation} API: ${this.api}`);
     }
     this.config = Object.assign(
-      resourceConfig[this.relation] || {},
-      this.config
+      {},
+      this.config,
+      resourceConfig[this.relation] || {}
     );
 
     return new ResourceList(this.config, this.api, this.relation);
@@ -62,7 +63,6 @@ export class ResourceListComponent<T> extends ListComponent<T>
 
   /** Creates/Updates the list and subscribes Observables.  */
   update() {
-    Object.assign(this.config || {}, this.configInput || {});
     Promise.resolve(this.createList()).then(list => {
       if (!list) {
         return;

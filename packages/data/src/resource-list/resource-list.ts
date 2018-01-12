@@ -55,7 +55,7 @@ export class ResourceList<T> extends List<T> {
 
   load(config?: ListConfig<T>) {
     if (config) {
-      Object.assign(this.config, config);
+      this.config = Object.assign(this.config, config);
     }
     if (!this.api || !this.relation) {
       return;
