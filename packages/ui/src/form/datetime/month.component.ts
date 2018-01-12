@@ -29,7 +29,7 @@ export class MonthComponent implements OnInit, OnChanges {
   /** The cells containing the days */
   public cells: Array<Day>;
   /** Emits when the selected day changes. */
-  @Output() select: EventEmitter<any> = new EventEmitter();
+  @Output() dayClicked: EventEmitter<any> = new EventEmitter();
 
   /** Initializes the calendar. */
   ngOnInit() {
@@ -81,7 +81,7 @@ export class MonthComponent implements OnInit, OnChanges {
   selectDay(_moment: moment.Moment): void {
     this.setDate(_moment);
     this.selected = _moment;
-    this.select.emit(_moment);
+    this.dayClicked.emit(_moment);
   }
 
   /** Clears the current selected date*/

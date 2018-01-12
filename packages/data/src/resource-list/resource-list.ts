@@ -38,9 +38,19 @@ export class ResourceList<T> extends List<T> {
 
   /** The constructor will init the List and Pagination instances.
    * Make sure the config is already complete when initiating an EntryList instance. */
-  constructor(config: ListConfig<T>, public api?: Core, public relation?) {
+  constructor(
+    config: ListConfig<T>,
+    public api?: Core,
+    public relation?,
+    listResource?: ListResource
+  ) {
     super([], config);
-    this.load();
+    if (listResource) {
+      // list was already preloaded outside of this instance
+      this.use(listResource);
+    } else {
+      this.load();
+    }
   }
 
   load(config?: ListConfig<T>) {
