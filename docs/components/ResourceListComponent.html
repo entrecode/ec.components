@@ -1907,7 +1907,7 @@ It is meant to be extended and overriden the createList method. See e.g. AssetLi
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">packages/data/src/resource-list/resource-list.component.ts:64</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">packages/data/src/resource-list/resource-list.component.ts:65</a></div>
                                 </td>
                             </tr>
     
@@ -2072,8 +2072,9 @@ export class ResourceListComponent&lt;T&gt; extends ListComponent&lt;T&gt;
       // return Promise.reject(&#x60;cannot create ResourceList: no relation or api given. Relation: ${this.relation} API: ${this.api}&#x60;);
     }
     this.config &#x3D; Object.assign(
-      resourceConfig[this.relation] || {},
-      this.config
+      {},
+      this.config,
+      resourceConfig[this.relation] || {}
     );
 
     return new ResourceList(this.config, this.api, this.relation);
@@ -2081,7 +2082,6 @@ export class ResourceListComponent&lt;T&gt; extends ListComponent&lt;T&gt;
 
   /** Creates/Updates the list and subscribes Observables.  */
   update() {
-    Object.assign(this.config || {}, this.configInput || {});
     Promise.resolve(this.createList()).then(list &#x3D;&gt; {
       if (!list) {
         return;

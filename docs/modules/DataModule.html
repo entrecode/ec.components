@@ -2035,7 +2035,7 @@ import { EntryPopComponent } from &#x27;./entry-pop/entry-pop.component&#x27;;
     DefaultEntryOutputComponent,
     CrudComponent,
     EntrySelectComponent,
-    EditorComponent,
+    EditorComponent
   ],
   imports: [
     CommonModule,
@@ -2043,7 +2043,7 @@ import { EntryPopComponent } from &#x27;./entry-pop/entry-pop.component&#x27;;
     UiModule,
     SdkModule,
     FilesModule,
-    AuthModule,
+    AuthModule
   ],
   exports: [
     EntryListComponent,
@@ -2061,7 +2061,7 @@ import { EntryPopComponent } from &#x27;./entry-pop/entry-pop.component&#x27;;
     UiModule,
     SdkModule,
     FilesModule,
-    AuthModule,
+    AuthModule
   ],
   providers: [
     CrudService,
@@ -2073,7 +2073,7 @@ import { EntryPopComponent } from &#x27;./entry-pop/entry-pop.component&#x27;;
         environment: &#x27;live&#x27;
       }
     }
-  ],
+  ]
 })
 export class DataModule {
   static forEnvironment(environment): ModuleWithProviders {
@@ -2086,13 +2086,13 @@ export class DataModule {
             {
               environment: &#x27;live&#x27;
             },
-            environment)
+            environment
+          )
         }
       ]
-    }
+    };
   }
-  constructor() {
-  }
+  constructor() {}
 }
 </code></pre>
     </div>

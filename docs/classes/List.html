@@ -2607,7 +2607,7 @@ export class List&lt;T&gt; extends Collection&lt;Item&lt;T&gt;&gt; {
   constructor(values?: Array&lt;T&gt;, config: ListConfig&lt;T&gt; &#x3D; {}, pagination?: Pagination&lt;T&gt;) {
     super([]);
     if (values) {
-      super.addAll(values.map(value &#x3D;&gt; new Item(value, config)), false, false);
+      super.addAll(values.map(value &#x3D;&gt; new Item(value, Object.assign({}, config))), false, false);
     }
     this.config &#x3D; config || {};
     this.config.page &#x3D; 1;
