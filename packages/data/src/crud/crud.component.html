@@ -11,7 +11,7 @@
     <ec-entry-list [model]="model" [config]="config" [solo]="true"
                    *ngIf="hasMethod('get')" [selection]="selection"
                    [loader]="config?.loader||listLoader"
-                   (select)="selectEntry($event)">
+                   (columnClicked)="selectEntry($event)">
     </ec-entry-list>
   </div>
 

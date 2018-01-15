@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   <ec-loader #listLoader class="ec-loader ec-loader_overlay ec-loader_global"></ec-loader>
   <ec-notifications class="toast"></ec-notifications>
   <ec-datamanager-list [loader]="listLoader" [config]="{size:9,disableSelection:true}"
-  (select)="select($event)" #dmList></ec-datamanager-list>
+  (columnClicked)="select($event)" #dmList></ec-datamanager-list>
   <ec-pop class="ec-pop_drawer-right" #dmPop>
     <button type="button" (click)="dmPop.hide()">
       <i class="ec-icon close"></i>

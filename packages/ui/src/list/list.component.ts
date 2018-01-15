@@ -25,7 +25,7 @@ export class ListComponent<T> implements OnChanges {
   /** If true, only one item is selectable next */
   @Input() solo: boolean;
   /** Event emitter on item selection */
-  @Output() select: EventEmitter<Item<T>> = new EventEmitter();
+  @Output() columnClicked: EventEmitter<Item<T>> = new EventEmitter();
   /** Event emitter on selection change */
   @Output() selected: EventEmitter<Selection<T>> = new EventEmitter();
   /** The Instance of the List */
@@ -58,11 +58,15 @@ export class ListComponent<T> implements OnChanges {
 
   /** Column click handler. Triggers select.emit(item) with fallback to selection.toggle*/
   columnClick(item) {
-    if (this.select.observers.length) {
-      return this.select.emit(item);
+    if (this.columnClicked.observers.length) {
+      return this.columnClicked.emit(item);
     }
     if (this.selection) {
       this.selection.toggle(item, this.solo);
     }
+  }
+  /** Decides if the header should be visible or not */
+  showHeader() {
+    return this.list && this.list.config && !this.list.config.disableHeader && (this.list.fields.length || this.list.config.title);
   }
 }

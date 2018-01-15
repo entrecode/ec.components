@@ -9,6 +9,6 @@
   </ul>
   <span (click)="pop.toggle()" class="ec-select__toggle"></span>
   <ec-pop class="ec-select-dropdown">
-    <ec-list [list]="list" (select)="select($event)" [selection]="selection"></ec-list>
+    <ec-list [list]="list" (columnClicked)="select($event)" [selection]="selection"></ec-list>
   </ec-pop>
 </div>

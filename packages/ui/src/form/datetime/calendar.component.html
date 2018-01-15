@@ -14,5 +14,5 @@
       {{weekday}}
     </li>
   </ul>
-  <ec-month [date]="date" (select)="select($event)" #grid></ec-month>
+  <ec-month [date]="date" (dayClicked)="select($event)" #grid></ec-month>
 </div>

@@ -45,7 +45,8 @@ import { editorSettings } from './tinymce-settings';
     }
   ]
 })
-export class TinymceComponent implements AfterViewInit, OnDestroy, ControlValueAccessor {
+export class TinymceComponent
+  implements AfterViewInit, OnDestroy, ControlValueAccessor {
   /** Promise that resolves when the editor has been initialized */
   ready: Promise<any>;
   /** The current editor instance */
@@ -65,38 +66,46 @@ export class TinymceComponent implements AfterViewInit, OnDestroy, ControlValueA
 
   /** Subscribes for changes and propagates them + calling application tick manually :( */
   constructor(private app: ApplicationRef) {
-    this.update.asObservable()
+    this.update
+      .asObservable()
       .debounceTime(this.debounce)
-      .subscribe((value) => {
-        this.value = value;
-        this.propagateChange(value);
-        this.change.emit(value);
+      .subscribe(editor => {
+        this.value = editor.getContent();
+        this.propagateChange(this.value);
+        this.change.emit(this.value);
         this.app.tick();
-      })
+      });
   }
 
   /** Initializes the editor */
   ngAfterViewInit() {
-    this.ready = Promise.resolve(tinymce.init(
-      Object.assign(editorSettings, {
-        target: this.container.nativeElement
-      }, this.settings))).then((editor) => {
-        this.editor = editor[0];
-        this.editor.setContent(this.value || '');
-        this.editor.on('dblclick', (e) => {
-          if (e.target.localName === 'img') {
-            this.editor.buttons.image.onclick(true, e.toElement);
-          }
-        });
-        this.editor.on('change', () => this.update.next(this.editor.getContent()));
-        return this.editor;
+    this.ready = Promise.resolve(
+      tinymce.init(
+        Object.assign(
+          editorSettings,
+          {
+            target: this.container.nativeElement
+          },
+          this.settings
+        )
+      )
+    ).then(editor => {
+      this.editor = editor[0];
+      this.editor.setContent(this.value || '');
+      this.editor.on('dblclick', e => {
+        if (e.target.localName === 'img') {
+          this.editor.buttons.image.onclick(true, e.toElement);
+        }
       });
+      this.editor.on('change keyup', res => this.update.next(this.editor));
+      return this.editor;
+    });
   }
 
   /** Destroys the editor. */
   ngOnDestroy() {
     if (this.editor) {
-      this.ready.then((editor) => {
+      this.ready.then(editor => {
         editor.destroy();
       });
     }
@@ -108,18 +117,16 @@ export class TinymceComponent implements AfterViewInit, OnDestroy, ControlValueA
     if (!this.ready) {
       return;
     }
-    this.ready.then((editor) => {
+    this.ready.then(editor => {
       editor.setContent(this.value);
     });
   }
 
-  propagateChange = (_: any) => {
-  };
+  propagateChange = (_: any) => {};
 
   registerOnChange(fn) {
     this.propagateChange = fn;
   }
 
-  registerOnTouched() {
-  }
+  registerOnTouched() {}
 }

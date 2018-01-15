@@ -11,7 +11,7 @@ import AssetResource from 'ec.sdk/lib/resources/datamanager/AssetResource';
 export class AssetList extends ResourceList<PublicAssetResource | AssetResource> {
 
   constructor(config: ListConfig<PublicAssetResource | AssetResource>, protected sdk: SdkService, protected fileService: FileService) {
-    super(Object.assign(config, fileService.assetListConfig), sdk);
+    super(Object.assign(config, fileService.assetListConfig));
   }
 
   /** Overrides the List load method. Instead of slicing the page out of all items, a datamanager request is made using the config.*/

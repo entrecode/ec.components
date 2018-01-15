@@ -1,0 +1,9 @@
+<ec-form [item]="api"></ec-form>
+<ec-resource-list [config]="config" [api]="api" [relation]="relation" (columnClicked)="select($event)"></ec-resource-list>
+<h3>API Relations</h3>
+<ul>
+  <li *ngFor="let symbol of symbols">
+    <a (click)="useRelation(symbol)">{{symbol}}</a>
+  </li>
+</ul>
+<ec-notifications></ec-notifications>

@@ -46,7 +46,7 @@ import { EntryPopComponent } from './entry-pop/entry-pop.component';
     DefaultEntryOutputComponent,
     CrudComponent,
     EntrySelectComponent,
-    EditorComponent,
+    EditorComponent
   ],
   imports: [
     CommonModule,
@@ -54,7 +54,7 @@ import { EntryPopComponent } from './entry-pop/entry-pop.component';
     UiModule,
     SdkModule,
     FilesModule,
-    AuthModule,
+    AuthModule
   ],
   exports: [
     EntryListComponent,
@@ -72,7 +72,7 @@ import { EntryPopComponent } from './entry-pop/entry-pop.component';
     UiModule,
     SdkModule,
     FilesModule,
-    AuthModule,
+    AuthModule
   ],
   providers: [
     CrudService,
@@ -84,7 +84,7 @@ import { EntryPopComponent } from './entry-pop/entry-pop.component';
         environment: 'live'
       }
     }
-  ],
+  ]
 })
 export class DataModule {
   static forEnvironment(environment): ModuleWithProviders {
@@ -97,11 +97,11 @@ export class DataModule {
             {
               environment: 'live'
             },
-            environment)
+            environment
+          )
         }
       ]
-    }
+    };
   }
-  constructor() {
-  }
+  constructor() {}
 }

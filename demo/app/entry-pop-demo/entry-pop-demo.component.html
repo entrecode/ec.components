@@ -2,4 +2,4 @@
 <a (click)="muffinPop.create()">create muffin</a>
 <ec-notifications class="toast"></ec-notifications>
 <ec-entry-pop model="muffin" #muffinPop class="ec-pop_dialog" editRoute="muffin" createRoute="muffin/create"></ec-entry-pop>
-<ec-entry-list model="muffin" (select)="muffinPop.edit($event.getBody())"></ec-entry-list>
+<ec-entry-list model="muffin" (columnClicked)="muffinPop.edit($event.getBody())"></ec-entry-list>

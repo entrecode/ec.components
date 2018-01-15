@@ -7,15 +7,14 @@ describe('ResourceList', () => {
 
     it('should construct', () => {
         const sdk = new SdkService(environment);
-        const list = new ResourceList({}, sdk);
+        const list = new ResourceList({});
         expect(list).toBeDefined();
-        expect(list.items).toBeDefined();
-        expect(list.page).toBeDefined();
+        // TODO test with new relation + api properties
     });
 
     it('should support filter options', () => {
         const sdk = new SdkService(environment);
-        const list = new ResourceList({}, sdk);
+        const list = new ResourceList({});
         const o = list['getFilterOptions']({ size: 10, page: 1, filter: { name: 'Pandora' }, sortBy: 'name' });
         const options = {
             name: { search: 'Pandora' },
