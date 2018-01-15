@@ -1,6 +1,6 @@
 # Changelog
 
-<a name="1.0.0">
+<a name="0.10.0">
 
 BREAKING CHANGES:
 
