@@ -54,8 +54,8 @@ export class ResourceListComponent<T> extends ListComponent<T>
     }
     this.config = Object.assign(
       {},
-      this.config,
-      resourceConfig[this.relation] || {}
+      resourceConfig[this.relation] || {},
+      this.config || {}
     );
 
     return new ResourceList(this.config, this.api, this.relation);
