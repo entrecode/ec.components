@@ -36,7 +36,6 @@ export class ResourceListDemoComponent {
   useRelation(symbol) {
     console.log('symbol', symbol);
     this.relation = symbol;
-    this.config = resourceConfig[this.relation];
     // TODO set config.fields
     if (!this.config) {
       console.error(`no resource config found for ${this.relation}`);

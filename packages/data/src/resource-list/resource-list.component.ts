@@ -63,6 +63,7 @@ export class ResourceListComponent<T> extends ListComponent<T>
 
   /** Creates/Updates the list and subscribes Observables.  */
   update() {
+    this.config = Object.assign(this.config || {}, this.configInput || {});
     Promise.resolve(this.createList()).then(list => {
       if (!list) {
         return;
