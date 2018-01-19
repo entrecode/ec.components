@@ -102,8 +102,8 @@ export class CrudComponent<T> implements OnInit {
     if (!item) {
       return;
     }
-    if (this.select.observers.length) {
-      this.select.emit(item);
+    if (this.columnClicked.observers.length) {
+      this.columnClicked.emit(item);
       return;
     }
     this.loaderService.wait(this.loadEntry(item), this.loader);
