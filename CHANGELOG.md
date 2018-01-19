@@ -1,6 +1,6 @@
 # Changelog
 
-<a name="0.11.0">
+<a name="0.12.0">
 BREAKING CHANGE:
 
 * form.component (and all children): renamed (submit) output to (submitted)
