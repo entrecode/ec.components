@@ -122,5 +122,34 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
         form: false
       }
     }
+  },
+  app: {
+    identifier: 'appID',
+    fields: {
+      hexColor: {
+        label: '#',
+        view: 'color',
+        sortable: true
+      },
+      shortID: {
+        label: 'shortID'
+      },
+      appID: {
+        label: 'ID'
+      },
+      title: {
+        label: 'App',
+        view: 'string',
+        filterable: true,
+        sortable: true,
+      },
+      created: {
+        label: 'Datum',
+        sortable: true,
+        display: value => moment(value).format('DD.MM.YY'),
+        group: value => moment(value).format('MMMM YYYY'),
+        form: false
+      }
+    }
   }
 };
