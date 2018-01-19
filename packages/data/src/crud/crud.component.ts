@@ -40,7 +40,7 @@ export class CrudComponent<T> implements OnInit {
   /** The lists loader */
   @ViewChild('listLoader') loader: LoaderComponent;
   /** Emits when a list element is clicked */
-  @Output() select: EventEmitter<any> = new EventEmitter();
+  @Output() columnClicked: EventEmitter<any> = new EventEmitter();
   /** Emits when the selection has changed */
   @Output() selected: EventEmitter<any> = new EventEmitter();
 
