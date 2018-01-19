@@ -1513,7 +1513,7 @@
                                 <a href="#change">change</a>
                             </li>
                             <li>
-                                <a href="#submit">submit</a>
+                                <a href="#submitted">submitted</a>
                             </li>
                         </ul>
                     </td>
@@ -1781,8 +1781,8 @@
                 <tbody>
                     <tr>
                         <td class="col-md-2">
-                            <a name="submit"></a>
-                            <code>submit</code>
+                            <a name="submitted"></a>
+                            <code>submitted</code>
                         </td>
                         <td class="col-md-10">
                             <div><p>Emits when the form is submitted. The form can only be submitted if all Validators succeeded. </p>
@@ -1829,7 +1829,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">packages/ui/src/form/form.component.ts:75</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">packages/ui/src/form/form.component.ts:74</a></div>
                                 </td>
                             </tr>
     
@@ -1897,7 +1897,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="128" class="link-to-prism">packages/ui/src/form/form.component.ts:128</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="127" class="link-to-prism">packages/ui/src/form/form.component.ts:127</a></div>
                                 </td>
                             </tr>
     
@@ -1936,7 +1936,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">packages/ui/src/form/form.component.ts:81</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">packages/ui/src/form/form.component.ts:80</a></div>
                                 </td>
                             </tr>
     
@@ -2004,7 +2004,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">packages/ui/src/form/form.component.ts:87</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">packages/ui/src/form/form.component.ts:86</a></div>
                                 </td>
                             </tr>
     
@@ -2080,7 +2080,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="120" class="link-to-prism">packages/ui/src/form/form.component.ts:120</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">packages/ui/src/form/form.component.ts:119</a></div>
                                 </td>
                             </tr>
     
@@ -2269,7 +2269,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">packages/ui/src/form/form.component.ts:93</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">packages/ui/src/form/form.component.ts:92</a></div>
                                 </td>
                             </tr>
     
@@ -2476,7 +2476,7 @@ export class FormComponent implements OnChanges {
   /** The loader that should be used. */
   @Input() loader: LoaderComponent;
   /** Emits when the form is submitted. The form can only be submitted if all Validators succeeded. */
-  @Output(&#x27;submit&#x27;) submitted: EventEmitter&lt;Form&lt;any&gt;&gt; &#x3D; new EventEmitter();
+  @Output() submitted: EventEmitter&lt;Form&lt;any&gt;&gt; &#x3D; new EventEmitter();
   /** Emits when a new instance of Form is present */
   @Output() change: EventEmitter&lt;FormComponent&gt; &#x3D; new EventEmitter();
   /** The forms default loader. it is used when no loader is passed via the loader input */
@@ -2500,11 +2500,10 @@ export class FormComponent implements OnChanges {
     if (this.value) { // if value is set, create item from value only
       this.form &#x3D; new Form(this.value, config);
     }
-    if (config) {
-      this.form &#x3D; new Form(null, config);
-    }
     if (item instanceof Item) {
-      this.form &#x3D; new Form(item.getBody(), item.getConfig());
+      this.form &#x3D; new Form(item.getBody(), item.getConfig() || config || {});
+    } else if (config) {
+      this.form &#x3D; new Form(null, config);
     }
     if (this.form) {
       this.group &#x3D; this.formService.getGroup(this.form);

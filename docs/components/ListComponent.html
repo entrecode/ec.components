@@ -1972,7 +1972,7 @@ export class ListComponent&lt;T&gt; implements OnChanges {
   /** Changing items or collection will trigger reconstructing the list with the new items.
    * Changing the selection will reconstruct the selection */
   ngOnChanges() {
-    Object.assign(this.config || {}, this.configInput || {});
+    this.config &#x3D; Object.assign(this.config || {}, this.configInput || {});
     if (this.items) {
       this.list &#x3D; new List(this.items, this.config);
     } else if (this.collection) {

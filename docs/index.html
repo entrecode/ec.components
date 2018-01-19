@@ -1367,7 +1367,28 @@ Make sure you update the symlinks.sh and delete-modules.sh scripts to make it wo
 Use the <code>--env=prod</code> or <code>--env=stag</code> for environment builds.
 CAUTION: you may have to &quot;es2015&quot; in tsconfig.json / lib to make UglifyJS work
 see <a href="https://github.com/mishoo/UglifyJS2/issues/659">https://github.com/mishoo/UglifyJS2/issues/659</a></p>
-<h2 id="running-unit-tests">Running unit tests</h2>
+<h3 id="build-trouble-shooting">Build Trouble Shooting</h3>
+<p>Errors like this (or similar):</p>
+<pre class="line-numbers"><code class="language-none">ERROR in ./node_modules/&#64;ec.components/data/src/auth/auth.service.ts
+Module build failed: Error: /Users/kon/workspace/0.entrecode/nwb.admin/node_modules/&#64;ec.components/data/src/auth/auth.service.ts is missing from the TypeScript compilation. Please make sure it is in your tsconfig via the &#39;files&#39; or &#39;include&#39; property.</code></pre><p>can be fixed by including the ec.components files explicitly (+excluding the test files):</p>
+<pre class="line-numbers"><code class="language-json">{
+  &quot;extends&quot;: &quot;../tsconfig.json&quot;,
+  &quot;compilerOptions&quot;: {
+    &quot;outDir&quot;: &quot;../out-tsc/app&quot;,
+    &quot;baseUrl&quot;: &quot;./&quot;,
+    &quot;module&quot;: &quot;es2015&quot;,
+    &quot;types&quot;: []
+  },
+  &quot;exclude&quot;: [
+    &quot;test.ts&quot;,
+    &quot;**/*.spec.ts&quot;,
+    &quot;../node_modules/&#64;ec.components/**/*.spec.ts&quot;
+  ],
+  &quot;include&quot;: [
+    &quot;**/*.ts&quot;,
+    &quot;../node_modules/&#64;ec.components/**/*.ts&quot;
+  ]
+}</code></pre><h2 id="running-unit-tests">Running unit tests</h2>
 <p>Run <code>ng test</code> to execute the unit tests via <a href="https://karma-runner.github.io">Karma</a>.</p>
 <h2 id="running-end-to-end-tests">Running end-to-end tests</h2>
 <p>Run <code>ng e2e</code> to execute the end-to-end tests via <a href="http://www.protractortest.org/">Protractor</a>.

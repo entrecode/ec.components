@@ -1392,6 +1392,10 @@ setClientID.</p>
                                     </li>
                                     <li>
                                             <span class="modifier">Public</span>
+                                        <a href="#environment">environment</a>
+                                    </li>
+                                    <li>
+                                            <span class="modifier">Public</span>
                                         <a href="#ready">ready</a>
                                     </li>
                                     <li>
@@ -1864,6 +1868,40 @@ setClientID.</p>
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
+                                    <a name="environment"></a>
+                                    <span class="name">
+                                        <b>
+                                            <span class="modifier">Public</span>
+                                        environment
+                                        </b>
+                                        <a href="#environment"><span class="fa fa-link"></span></a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <span class="modifier-icon fa fa-reset"></span><code>environment:     <code></code>
+            </code>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <i>Decorators : </i><code>Inject</code>
+                                    </td>
+                                </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:49</a></div>
+                                        </td>
+                                    </tr>
+            
+            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
                                     <a name="ready"></a>
                                     <span class="name">
                                         <b>
@@ -2077,7 +2115,7 @@ export class SdkService {
   public ready: Promise&lt;AccountResource&gt;;
 
   /** Calls init and sets ready to true when finished. */
-  constructor(@Inject(&#x27;environment&#x27;) private environment) {
+  constructor(@Inject(&#x27;environment&#x27;) public environment) {
     this.init().then((account) &#x3D;&gt; {
       this.datamanager &#x3D; new DataManager(&lt;env&gt;environment.environment);
     });
