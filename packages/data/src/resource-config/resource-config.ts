@@ -1,13 +1,11 @@
 import moment from 'moment-es6';
 import { FieldConfig } from '../../../core/index';
 import { ListConfig } from '../../../core/src/list/list-config.interface';
-import Resource from 'ec.sdk/lib/resources/resource';
-import DataManagerResource from 'ec.sdk/lib/resources/datamanager/DataManagerResource';
 
 function onSave(form, value) {
   console.log('save resource form', form);
   const resource = form.getBody();
-  form.serialize(value, resource instanceof Resource);
+  form.serialize(value, resource);
   if ('save' in resource) {
     Object.assign(resource, value);
     return resource.save();
