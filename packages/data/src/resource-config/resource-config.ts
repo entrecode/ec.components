@@ -5,7 +5,7 @@ import { ListConfig } from '../../../core/src/list/list-config.interface';
 
 export const resourceConfig: { [key: string]: ListConfig<any> } = {
   dataManager: {
-    identifier: 'datamanagerID',
+    identifier: 'dataManagerID',
     label: 'title',
     /* onSave: (item, value) => {
             const datamanager = item.getBody();
