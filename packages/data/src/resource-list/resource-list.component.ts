@@ -10,7 +10,7 @@ import { ResourceList } from './resource-list';
 import Core from 'ec.sdk/lib/Core';
 import { resourceConfig } from '../resource-config/resource-config';
 import { ListConfig } from '../../../core';
-import { filterOptions } from 'ec.sdk/lib/resources/ListResource';
+import ListResource, { filterOptions } from 'ec.sdk/lib/resources/ListResource';
 
 /** The ResourceListComponent is an extension of ListComponent for SDK ListResources.
  * It is meant to be extended and overriden the createList method. See e.g. AssetListComponent. */
@@ -20,6 +20,8 @@ import { filterOptions } from 'ec.sdk/lib/resources/ListResource';
 })
 export class ResourceListComponent<T> extends ListComponent<T>
   implements OnChanges {
+  /** If listResource input is set, the given ListResource will be used directly and loading will be skipped. */
+  @Input() listResource: ListResource;
   /** If true, only one item is selectable next */
   @Input() solo: boolean;
   /** The instance of an EntryList */
@@ -58,7 +60,7 @@ export class ResourceListComponent<T> extends ListComponent<T>
       this.config || {}
     );
 
-    return new ResourceList(this.config, this.api, this.relation);
+    return new ResourceList(this.config, this.api, this.relation, this.listResource);
   }
 
   /** Creates/Updates the list and subscribes Observables.  */
