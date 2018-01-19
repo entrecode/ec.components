@@ -56,8 +56,7 @@ export class FormComponent implements OnChanges {
   protected init(item: Item<any> = this.item, config: FormConfig<any> = this.config) {
     if (this.value) { // if value is set, create item from value only
       this.form = new Form(this.value, config);
-    }
-    if (item instanceof Item) {
+    } else if (item instanceof Item) {
       this.form = new Form(item.getBody(), item.getConfig() || config || {});
     } else if (config) {
       this.form = new Form(null, config);
