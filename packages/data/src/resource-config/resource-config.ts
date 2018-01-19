@@ -131,12 +131,13 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
         view: 'color',
         sortable: true
       },
+      /*
       shortID: {
         label: 'shortID'
       },
       appID: {
         label: 'ID'
-      },
+      }, */
       title: {
         label: 'App',
         view: 'string',
@@ -150,6 +151,19 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
         group: value => moment(value).format('MMMM YYYY'),
         form: false
       }
+    }
+  },
+  platform: {
+    identifier: 'platformID',
+    fields: {
+      title: {
+        label: 'Platform',
+        view: 'string'
+      },
+      platformType: {
+        label: 'Type',
+        view: 'string'
+      },
     }
   }
 };
