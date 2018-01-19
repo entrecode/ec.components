@@ -101,13 +101,15 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
         label: 'Passwort',
         view: 'boolean',
         filterable: true,
-        sortable: true
+        sortable: true,
+        readOnly: true
       },
       isPending: {
         label: 'Pending',
         view: 'boolean',
         filterable: true,
-        sortable: true
+        sortable: true,
+        readOnly: true
       }
     }
   },
