@@ -3,13 +3,13 @@
 <h3>Default Form</h3>
 <p>If the ec-form element has no contents, the default form will be rendered, which is a list
   containing all fields and a submit button</p>
-<ec-form [item]="mocked.lists.trees.id(0)" (submit)="logValue($event)"></ec-form>
+<ec-form [item]="mocked.lists.trees.id(0)" (submitted)="logValue($event)"></ec-form>
 
 <h3>Custom Content</h3>
 <p>As soon as you put something inside the ec-form element, the default content will be omitted.
   You can utilize the ec-input element to automatically render certain fields.</p>
 
-<ec-form [item]="mocked.lists.trees.id(0)" (submit)="logValue($event)" #treeForm>
+<ec-form [item]="mocked.lists.trees.id(0)" (submitted)="logValue($event)" #treeForm>
   <ec-input [field]="treeForm.form.getField('name')" [group]="treeForm.group"></ec-input>
   <ec-input [field]="treeForm.form.getField('height')" [group]="treeForm.group"></ec-input>
   <ec-input [field]="treeForm.form.getField('fruits')"
@@ -30,7 +30,7 @@
   type.</p>
 <!--<ec-form [config]="mocked.lists.songs.config" [item]="mocked.lists.songs.id(0)" #songForm></ec-form>-->
 
-<ec-form [value]="mocked.products[0]" #productForm (submit)="logValue($event)"></ec-form>
+<ec-form [value]="mocked.products[0]" #productForm (submitted)="logValue($event)"></ec-form>
 <!--<button (click)="productForm.create()">Create new...</button>-->
 
 <!-- TODO: VALIDATORS DEMO/TEST -->

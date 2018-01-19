@@ -33,7 +33,7 @@ export class FormComponent implements OnChanges {
   /** The loader that should be used. */
   @Input() loader: LoaderComponent;
   /** Emits when the form is submitted. The form can only be submitted if all Validators succeeded. */
-  @Output('submit') submitted: EventEmitter<Form<any>> = new EventEmitter();
+  @Output() submitted: EventEmitter<Form<any>> = new EventEmitter();
   /** Emits when a new instance of Form is present */
   @Output() change: EventEmitter<FormComponent> = new EventEmitter();
   /** The forms default loader. it is used when no loader is passed via the loader input */
@@ -57,11 +57,10 @@ export class FormComponent implements OnChanges {
     if (this.value) { // if value is set, create item from value only
       this.form = new Form(this.value, config);
     }
-    if (config) {
-      this.form = new Form(null, config);
-    }
     if (item instanceof Item) {
-      this.form = new Form(item.getBody(), item.getConfig());
+      this.form = new Form(item.getBody(), item.getConfig() || config || {});
+    } else if (config) {
+      this.form = new Form(null, config);
     }
     if (this.form) {
       this.group = this.formService.getGroup(this.form);

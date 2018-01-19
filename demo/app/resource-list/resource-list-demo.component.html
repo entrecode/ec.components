@@ -1,5 +1,6 @@
-<ec-form [item]="api"></ec-form>
-<ec-resource-list [config]="{disableSelection:true}" [api]="api" [relation]="relation" (columnClicked)="select($event)"></ec-resource-list>
+<ec-form #resourceForm></ec-form>
+
+<ec-resource-list #resourceList [config]="{disableSelection:true,disableHeader:true}" [api]="api" [relation]="relation" (columnClicked)="select($event)"></ec-resource-list>
 <h3>API Relations</h3>
 <ul>
   <li *ngFor="let symbol of symbols">

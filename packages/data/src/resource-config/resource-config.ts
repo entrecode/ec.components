@@ -1,21 +1,27 @@
-import { Resource } from 'halfred';
 import moment from 'moment-es6';
 import { FieldConfig } from '../../../core/index';
 import { ListConfig } from '../../../core/src/list/list-config.interface';
+import Resource from 'ec.sdk/lib/resources/resource';
+import DataManagerResource from 'ec.sdk/lib/resources/datamanager/DataManagerResource';
+
+function onSave(form, value) {
+  console.log('save resource form', form);
+  const resource = form.getBody();
+  form.serialize(value, resource instanceof Resource);
+  if ('save' in resource) {
+    Object.assign(resource, value);
+    return resource.save();
+  } else {
+    console.log('create', resource);
+  }
+  return value; // TODO create
+}
 
 export const resourceConfig: { [key: string]: ListConfig<any> } = {
   dataManager: {
     identifier: 'dataManagerID',
     label: 'title',
-    /* onSave: (item, value) => {
-            const datamanager = item.getBody();
-            item.serialize(value, datamanager instanceof DataManagerResource);
-            Object.assign(datamanager, value);
-            if (datamanager instanceof DataManagerResource) {
-                return datamanager.save();
-            }
-            return value; // TODO create
-        }, */
+    onSave,
     fields: {
       hexColor: {
         label: '#',
@@ -46,6 +52,7 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
   model: {
     identifier: 'modelID',
     label: 'title',
+    onSave,
     /* onSave: (item, value) => {
           const model = item.getBody();
           item.serialize(value, model instanceof ModelResource);
@@ -84,6 +91,7 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
   account: {
     identifier: 'accountID',
     label: 'email',
+    onSave,
     fields: {
       email: {
         label: 'Email',
@@ -108,6 +116,7 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
   template: {
     identifier: 'templateID',
     label: 'name',
+    onSave,
     fields: {
       name: {
         label: 'Template',
@@ -125,6 +134,7 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
   },
   app: {
     identifier: 'appID',
+    onSave,
     fields: {
       hexColor: {
         label: '#',
@@ -155,6 +165,7 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
   },
   platform: {
     identifier: 'platformID',
+    onSave,
     fields: {
       title: {
         label: 'Platform',

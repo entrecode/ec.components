@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { SdkService } from '../../../packages/data/src/sdk/sdk.service';
 import DataManager from 'ec.sdk/lib/DataManager';
 import Core from 'ec.sdk/lib/Core';
 import { resourceConfig } from '../../../packages/data/src/resource-config/resource-config';
 import { ListConfig } from '../../../packages/core/index';
+import { FormComponent } from '../../../packages/ui/src/form/form.component';
 
 @Component({
   selector: 'ec-resource-list-demo',
@@ -14,6 +15,7 @@ export class ResourceListDemoComponent {
   symbols: string[];
   relation: string;
   api: any;
+  @ViewChild('resourceForm') form: FormComponent;
 
   constructor(public sdk: SdkService) {
     this.sdk.ready.then(() => {
@@ -23,6 +25,8 @@ export class ResourceListDemoComponent {
 
   select(item) {
     this.use(item.getBody());
+    console.log('edit', item);
+    this.form.edit(item);
   }
 
   use(resource) {
