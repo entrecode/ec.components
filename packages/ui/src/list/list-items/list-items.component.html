@@ -1,7 +1,7 @@
 <ul class="ec-list-items">
   <li *ngFor="let item of items;trackBy:list?.trackItem" (click)="columnClick(item)"
       class="ec-list-row">
-    <div class="ec-list-item" [class._selected]="selection?.has(item)">
+    <div class="ec-list-item" [class.is-selected]="selection?.has(item)">
       <div class="ec-list-cell ec-list__select" *ngIf="selection">
         <input type="checkbox" [checked]="selection?.has(item)">
       </div>

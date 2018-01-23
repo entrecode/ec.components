@@ -1,14 +1,21 @@
-<div class="ec-select" *ngIf="selection&&list" [class.ec-select_solo]="solo" [class.ec-select_dirty]="selection.items.length">
-  <a (click)="pop.toggle()" class="ec-select__placeholder">
-    - Auswählen -
-  </a>
-  <ul class="ec-select-selected">
+<div *ngIf="selection&&list"
+     class="ec-select"
+     [class.ec-select_solo]="solo"
+     [class.ec-select_dirty]="selection.items.length"
+     [class.is-focus]="pop?.visible"
+     (click)="pop.toggle()">
+  <span class="select__placeholder" *ngIf="!selection.items.length">
+    {{placeholder||'Auswählen'}}
+  </span>
+  <ul class="select-selected" *ngIf="selection.items.length">
     <li *ngFor="let selected of selection.items">
-      <span [class.pill]="!solo" class="pill_removable" (click)="clickItem(selected)">{{selected.display()}} <a (click)="selection.remove(selected)" class="pill_remove">&times;</a></span>
+      <span [class.tag]="!solo" (mousedown)="clickItem(selected)">
+        {{selected.display()}}
+        <a (mousedown)="selection.remove(selected)" *ngIf="!solo">&times;</a>
+      </span>
     </li>
   </ul>
-  <span (click)="pop.toggle()" class="ec-select__toggle"></span>
-  <ec-pop class="ec-select-dropdown">
+  <ec-pop class="select-options">
     <ec-list [list]="list" (columnClicked)="select($event)" [selection]="selection"></ec-list>
   </ec-pop>
 </div>
