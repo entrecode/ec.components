@@ -17,7 +17,7 @@ export class LoaderDemoComponent implements OnInit {
 
   ngOnInit() {
     this.options = new Form({
-      time: 2000,
+      time: 20000,
       hostClass: this.classes[0],
       desktop: false,
       title: 'The Toast is hot',
