@@ -1,10 +1,11 @@
-<ec-pagination [pagination]="list?.pagination" *ngIf="list?.pagination?.getPages()>1"></ec-pagination>
+<!--TODO pagination only at bottom -->
+<!--<ec-pagination [pagination]="list?.pagination" *ngIf="list?.pagination?.getPages()>1"></ec-pagination>-->
 <div class="ec-list">
   <ec-list-header [list]="list" [selection]="selection" *ngIf="showHeader()"></ec-list-header>
 
   <div class="ec-list-body">
     <div class="ec-list-group" *ngFor="let group of list?.groups">
-      <div class="ec-list-group-header ec-list-row" *ngIf="group.value" (click)="selection?.toggleAll(listItems?.items)">
+      <div class="ec-list-group-header" *ngIf="group.value" (click)="selection?.toggleAll(listItems?.items)">
         <div class="ec-list-cell ec-list__select" *ngIf="selection">
           <input type="checkbox" [checked]="selection?.hasAll(listItems?.items)">
         </div>

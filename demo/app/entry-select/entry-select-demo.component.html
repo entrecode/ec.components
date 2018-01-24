@@ -1,27 +1,25 @@
-<div data-container="">
-  <h2 class="mega">ec-entry-select</h2>
-  <strong>usage without form</strong>
-  <ec-entry-select model="muffin" [config]="{size:3}" #entrySelect
-                   [(ngModel)]="selectedMuffins"></ec-entry-select>
-  <div *ngIf="entrySelect.selection?.items?.length">
-    {{selectedMuffins.length}} items in ngModel
-    <strong>Manual iteration over selected entry items</strong>
-    <ul>
-      <li class="pill" *ngFor="let entry of entrySelect.selection?.items">
-        {{entry.resolve('name')}}
-      </li>
-    </ul>
-    <strong>selected IDs:</strong>
-    <pre>{{entrySelect.selection?.getValue() | json}}</pre>
-  </div>
-  <strong>solo</strong>
-  <ec-entry-select model="muffin" [config]="{size:3}" [solo]="true" #soloEntry></ec-entry-select>
-  <pre>{{soloEntry.selection?.getValue()}}</pre>
-  <strong>Usage with form</strong>
-  <ec-entry-form model="field_test" #fieldTest>
-    <ec-entry-select *ngIf="fieldTest.group" [solo]="true"
-                     [formControl]="fieldTest.group?.get('entries')"
-                     model="muffin"></ec-entry-select>
-    <ec-input [field]="fieldTest.form?.getField('entries')" [group]="fieldTest.group"></ec-input>
-  </ec-entry-form>
+<h2 class="mega">ec-entry-select</h2>
+<strong>usage without form</strong>
+<ec-entry-select model="muffin" [config]="{size:3}" #entrySelect
+                 [(ngModel)]="selectedMuffins"></ec-entry-select>
+<div *ngIf="entrySelect.selection?.items?.length">
+  {{selectedMuffins.length}} items in ngModel
+  <strong>Manual iteration over selected entry items</strong>
+  <ul>
+    <li class="pill" *ngFor="let entry of entrySelect.selection?.items">
+      {{entry.resolve('name')}}
+    </li>
+  </ul>
+  <strong>selected IDs:</strong>
+  <pre>{{entrySelect.selection?.getValue() | json}}</pre>
 </div>
+<strong>solo</strong>
+<ec-entry-select model="muffin" [config]="{size:3}" [solo]="true" #soloEntry></ec-entry-select>
+<pre>{{soloEntry.selection?.getValue()}}</pre>
+<strong>Usage with form</strong>
+<ec-entry-form model="field_test" #fieldTest>
+  <ec-entry-select *ngIf="fieldTest.group" [solo]="true"
+                   [formControl]="fieldTest.group?.get('entries')"
+                   model="muffin"></ec-entry-select>
+  <ec-input [field]="fieldTest.form?.getField('entries')" [group]="fieldTest.group"></ec-input>
+</ec-entry-form>

@@ -1,18 +1,10 @@
 .ec-list {
   font-size: 14px;
 
-  .ec-list-row {
-    border-bottom: 1px solid getColor(divider);
-
-    &:last-child {
-      border-bottom: none;
-    }
-  }
-
   .ec-list-cell {
     display: flex;
     align-items: center;
-    padding: em(8);
+    padding: rem(8);
 
     &:last-child {
       border-right: none;
@@ -20,7 +12,7 @@
   }
 
   .ec-list__select {
-    padding: em(8);
+    padding: rem(8);
   }
 
   .ec-output_avatar {
@@ -31,29 +23,38 @@
 
 .ec-list-group {
   .ec-list-group-header {
+    margin-top: rem($base-padding);
+
     .ec-list-group-header__title {
       font-weight: $bold;
       text-align: center;
-      align-items: center;
-      padding: em(8) 0;
+      font-size: .875em;
     }
   }
 }
 
 .ec-list-header {
+  font-size: .875em;
+  position: relative;
+
   .ec-list-cell {
     justify-content: space-between;
-    border-bottom: 1px solid getColor(divider);
     font-weight: $bold;
 
     .ec-list-field__title {
       flex-grow: 1;
+      display: flex;
     }
-  }
-}
 
-.ec-list-items {
-  .ec-list-row {
+    &.is-sortable {
+      &-active {
+        font-weight: $bold;
+      }
+    }
+
+    &.is-filterable {
+      cursor: pointer;
+    }
   }
 }
 
@@ -65,63 +66,29 @@
   }
 }
 
-.ec-list-field {
-  &_sortable {
-    &_active {
-      font-weight: $bold;
-    }
+.ec-list-sortable-indicator {
+  margin-left: rem(8);
+  height: rem(12);
+  position: relative;
+  width: rem(12);
+  align-self: center;
+
+  &:after,
+  &:before {
+    content: '';
+    position: absolute;
+    border: rem(4) solid transparent;
+    left: 50%;
+    margin-left: rem(-4);
   }
 
-  &_filterable {
-    position: relative;
+  &:before {
+    border-bottom-color: getColor(text, lightest);
+    top: rem(-4);
+  }
 
-    .ec-list-field__filter-control {
-
-    }
-
-    .ec-list-field__filter-pop {
-      .ec-pop-container {
-        .ec-pop {
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          padding: 0 1em !important;
-          background-color: getColor(background);
-          align-items: center;
-          z-index: 10;
-
-          .ec-list-field-filter {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 100%;
-            width: 100%;
-          }
-
-          .ec-list-field-filter__dismiss {
-            align-self: center;
-          }
-
-          ec-input {
-            display: inline-block;
-            flex-grow: 1;
-            align-self: center;
-
-            .input {
-              margin: 0;
-            }
-          }
-        }
-
-
-        &.visible {
-          .ec-pop {
-            display: flex !important;
-          }
-        }
-      }
-    }
+  &:after {
+    border-top-color: getColor(text, lightest);
+    bottom: rem(-4);
   }
 }
