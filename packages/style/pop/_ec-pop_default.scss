@@ -19,12 +19,18 @@
   }
 }
 
-ec-pop {
+.ec-pop__dismiss {
+  @extend %btn !optional;
+  padding-left: 0;
+  padding-right: 0;
+  position: absolute;
+  right: rem(2);
+  top: rem(2);
+  z-index: 1;
+  color: getColor(text, lighter);
+  animation: all .2s;
 
-  .ec-pop__close {
-    position: absolute;
-    right: rem(2);
-    top: rem(2);
-    z-index: 10;
+  &:hover {
+    color: getColor(text, light);
   }
 }

@@ -1,34 +1,29 @@
 <div class="ec-pop-container" [class.active]="active" [class.visible]="visible">
   <div class="ec-pop" *ngIf="active">
-    <header class="ec-pop-header">
-      <div class="toolbar">
-        <nav class="nav">
-          <button (click)="hide()" type="button" class="btn btn_abort">&times;</button>
-        </nav>
-      </div>
-    </header>
+    <button (click)="hide()" type="button" class="ec-pop__dismiss">&times;</button>
     <div class="ec-pop-body">
       <ec-entry-form [model]="model" [submitButton]="false" [loader]="popLoader" [config]="config"
                      (submitted)="!this.config?.keepPopOpen&&hide()" [entry]="entry" (deleted)="hide()"
                      #crudForm></ec-entry-form>
     </div>
     <footer class="ec-pop-footer">
-      <nav class="nav inline">
+      <nav class="nav">
         <ul class="nav__items">
-          <li class="nav__item">
-            <button (click)="log(crudForm)" *ngIf="config?.develop" class="btn">code</button>
+          <li class="nav__item" *ngIf="config?.develop">
+            <!--TODO placeholder config for 'code'-->
+            <button (click)="log(crudForm)" class="btn">code</button>
           </li>
-          <li class="nav__item">
-            <button (click)="crudForm.deleteEntry()" class="btn btn_delete" type="button"
-                    *ngIf="hasMethod('delete')&&crudForm.isEditing()">
-              löschen
+          <li class="nav__item" *ngIf="hasMethod('delete')&&crudForm.isEditing()">
+            <!--TODO placeholder config for 'löschen'-->
+            <button (click)="crudForm.deleteEntry()" class="btn" type="button">
+              Löschen
             </button>
           </li>
-          <li class="nav__item">
+          <li class="nav__item" *ngIf="maySave(crudForm)">
+            <!--TODO placeholder config for 'speichern'-->
             <button (click)="crudForm.submit()" [disabled]="crudForm.group?.invalid" type="button"
-                    class="btn btn_save" [class.disabled]="crudForm.group?.invalid"
-                    *ngIf="maySave(crudForm)">
-              speichern
+                    class="btn btn_save" [class.disabled]="crudForm.group?.invalid">
+              Speichern
             </button>
           </li>
         </ul>
