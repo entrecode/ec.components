@@ -1,8 +1,7 @@
+@import 'list-header/list-header.component';
+@import 'list-items/list-items.component';
+
 .ec-list {
-  .ec-list-cell {
-    flex-grow: 1;
-    flex-basis: 100/12*1%;
-  }
 
   .ec-list__select {
     flex-grow: 0;
@@ -14,6 +13,9 @@
 .ec-list-cell {
   display: flex;
   align-items: center;
+  overflow: hidden;
+  flex: 1;
+  flex-basis: 100/12*1%;
 
   &.ec-list-field {
     &_number {
@@ -28,36 +30,14 @@
     &_tags {
       flex-grow: 4;
     }
+
+    &_string,
+    &_email,
+    &_url {
+      overflow: hidden;
+      white-space: nowrap;
+    }
   }
-}
-
-.ec-list-header {
-  display: flex;
-
-  .ec-list-field-title {
-
-  }
-
-  .ec-list-field-sort {
-    position: relative;
-  }
-}
-
-.ec-list-body {
-}
-
-.ec-list-items {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  min-width: 100%;
-}
-
-.ec-list-item {
-  display: flex;
-  min-width: 100%;
 }
 
 .ec-list-group {
@@ -70,3 +50,4 @@
     }
   }
 }
+

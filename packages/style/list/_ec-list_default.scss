@@ -1,16 +1,4 @@
 .ec-list {
-  font-size: 14px;
-
-  .ec-list-cell {
-    display: flex;
-    align-items: center;
-    padding: rem(8);
-
-    &:last-child {
-      border-right: none;
-    }
-  }
-
   .ec-list__select {
     padding: rem(8);
   }
@@ -19,6 +7,10 @@
     width: em(32);
     height: em(32);
   }
+}
+
+.ec-list-cell {
+  padding: rem(8);
 }
 
 .ec-list-group {
@@ -88,5 +80,13 @@
   &:after {
     border-top-color: getColor(text, lightest);
     bottom: rem(-4);
+  }
+}
+
+.ec-list {
+  .ec-output_tags-list {
+    .tag {
+      font-size: .75em;
+    }
   }
 }
