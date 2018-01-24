@@ -3,16 +3,22 @@
     {{errorMessage}}
   </p>
   <div class="form-group form-group_email">
+    <!--TODO add config for show label and label value-->
     <label>E-Mail</label>
     <!-- TODO wait for FormControl updateOn: blur -->
-    <input type="email" formControlName="email" validate-onblur class="input">
+    <!--TODO add config for placeholder-->
+    <input type="email" formControlName="email" validate-onblur class="input" placeholder="E-Mail Adresse">
     <ec-input-errors [control]="form.get('email')"></ec-input-errors>
   </div>
   <div class="form-group form-group_password">
+    <!--TODO add config for show label and label value-->
     <label>Passwort</label>
-    <input type="password" formControlName="password" validate-onblur class="input">
+    <!--TODO add config for placeholder-->
+    <input type="password" formControlName="password" validate-onblur class="input" placeholder="Passwort">
     <ec-input-errors [control]="form.get('password')"></ec-input-errors>
   </div>
+
+  <!--TODO add config for additional button classes-->
   <button type="submit" [disabled]="form.invalid" [class.disabled]="form.invalid" class="btn ec-login-form__login">
     {{buttonLabel || 'Login'}}
   </button>
