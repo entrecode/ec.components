@@ -15,70 +15,76 @@
 }
 
 .ec-notifications {
-  .ec-pop-container {
-    .ec-pop {
-      background-color: getColor(background);
-      padding: rem(8) rem(16);
-      box-shadow: 0 2px 4px getColor(shadow);
-      border-radius: rem(4);
-      animation: notification .2s;
-      margin: rem(4);
-      max-width: rem(320);
-      position: relative;
+  .ec-notification {
+    transition: all .2s;
+    
+    .ec-pop-container {
+      .ec-pop {
+        background-color: getColor(background);
+        padding: rem(8) rem(16);
+        box-shadow: 0 8px 16px -4px rgba(black, .2);
+        border-radius: rem(4);
+        animation: notification .2s;
+        margin: rem(4);
+        max-width: rem(320);
+        position: relative;
+        font-size: .875em;
+        user-select: none;
+        cursor: pointer;
 
-      @include headings {
-        margin: rem(4) 0;
-      }
+        .ec-notification__title {
+          font-size: 1em;
+          line-height: 1.25em;
+          margin: 0;
+        }
 
-      p {
-        margin: rem(4) 0;
-      }
+        .ec-notification__message {
+          line-height: 1.25em;
+          margin: 0;
+        }
 
-      .ec-notification__dismiss {
-        margin: 0;
-        position: absolute;
-        right: rem(4);
-        top: rem(4);
-      }
-    }
-  }
-
-  .info {
-    .ec-pop {
-      @include set-theme-colors(getColor(state, info));
-
-      .ec-notification__dismiss  {
-        color: setContrast(getColor(state, info), getColor(link))
-      }
-    }
-  }
-
-  .error {
-    .ec-pop {
-      @include set-theme-colors(getColor(state, error));
-
-      .ec-notification__dismiss  {
-        color: setContrast(getColor(state, error), getColor(link))
+        .ec-notification__dismiss {
+          position: absolute;
+          right: 0;
+          top: rem(4);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: rem(20);
+          height: rem(20);
+          text-align: center;
+          margin: 0;
+          color: getColor(text, light);
+        }
       }
     }
-  }
 
-  .success {
-    .ec-pop {
-      @include set-theme-colors(getColor(state, success));
+    &:hover {
+      opacity: .8;
+    }
 
-      .ec-notification__dismiss  {
-        color: setContrast(getColor(state, success), getColor(link))
+
+    &.is-info {
+      .ec-pop {
+        border-left: rem(8) solid getColor(state, info);
       }
     }
-  }
 
-  .warning {
-    .ec-pop {
-      @include set-theme-colors(getColor(state, warning));
+    &.is-error {
+      .ec-pop {
+        border-left: rem(8) solid getColor(state, error);
+      }
+    }
 
-      .ec-notification__dismiss  {
-        color: setContrast(getColor(state, warning), getColor(link))
+    &.is-success {
+      .ec-pop {
+        border-left: rem(8) solid getColor(state, success);
+      }
+    }
+
+    &.is-warning {
+      .ec-pop {
+        border-left: rem(8) solid getColor(state, warning);
       }
     }
   }

@@ -9,7 +9,6 @@
   <a class="btn" (click)="optionsForm.submit()">EMIT</a>
 
   <pre><code>{{optionsForm.group?.value | json}}</code></pre>
-  <ec-notifications [ngClass]="optionsForm.getValue('hostClass')"
-                    [time]="optionsForm.getValue('time')"
+  <ec-notifications [time]="optionsForm.getValue('time')"
                     #notifications></ec-notifications>
 </div>
