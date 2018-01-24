@@ -1,25 +1,32 @@
-<div *ngIf="selection"
-     class="ec-select ec-entry-select"
-     [class.ec-select_solo]="solo"
-     [class.ec-select_dirty]="selection.items.length"
-     [class.is-focus]="pop?.visible"
-     (click)="pop.toggle()">
+<div class="ec-entry-select" *ngIf="selection">
+  <div class="ec-select ec-entry-select"
+       [class.ec-select_solo]="solo"
+       [class.ec-select_dirty]="selection.items.length"
+       [class.is-focus]="pop?.visible"
+       (click)="pop.toggle()">
   <span class="select__placeholder" *ngIf="!selection.items.length">
     {{placeholder||'Auswählen'}}
   </span>
-  <ul class="select-selected" *ngIf="selection.items.length">
-    <li *ngFor="let selected of selection?.items">
+    <ul class="select-selected" *ngIf="selection.items.length">
+      <li *ngFor="let selected of selection?.items">
       <span [class.tag]="!solo" (mousedown)="clickItem(selected)">
         {{selected.display()}}
         <a (mousedown)="selection.remove(selected)" *ngIf="!solo">&times;</a>
       </span>
-    </li>
-  </ul>
-  <ec-pop [ngClass]="field?.nestedPopClass || 'select-options'" #crudPop [active]="field?.nestedPopActive"
-          [visible]="field?.nestedPopVisible">
-    <!-- TODO find way to embed close button to the pops that need it -->
-    <ec-crud [model]="model" *ngIf="selection&&crudPop.active" [config]="config" [selection]="selection"
-             (columnClicked)="select($event)"
-             #crud></ec-crud>
-  </ec-pop>
+      </li>
+    </ul>
+    <ec-pop [ngClass]="field?.nestedPopClass || 'select-options'" #crudPop [active]="field?.nestedPopActive"
+            [visible]="field?.nestedPopVisible">
+      <!-- TODO find way to embed close button to the pops that need it -->
+      <ec-crud [model]="model" *ngIf="selection&&crudPop.active" [config]="config" [selection]="selection"
+               (columnClicked)="select($event)"
+               #crud></ec-crud>
+    </ec-pop>
+  </div>
+  <!--TODO link to open a ec-pop with an ec-list like now in .select-options-->
+  <nav class="ec-entry-select__controls">
+    <a href="" class="btn btn_clear">
+      <span class="ec-icon list-bullets"></span>
+    </a>
+  </nav>
 </div>
