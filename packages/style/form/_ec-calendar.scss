@@ -1,0 +1,58 @@
+.ec-calendar {
+  margin-bottom: rem(16);
+}
+
+.ec-calendar-controls {
+  margin: 0 rem(-8);
+  margin-bottom: rem(8);
+
+  li {
+    padding: 0 rem(8);
+  }
+
+  .ec-calendar-controls__prev,
+  .ec-calendar-controls__current,
+  .ec-calendar-controls__next {
+    @extend %btn;
+  }
+}
+
+.ec-calendar-month-weekdays {
+  li {
+    font-size: .875em;
+    font-weight: bold;
+    line-height: rem($btn-min-height);
+    color: getColor(text, light);
+  }
+}
+
+.ec-calendar-month-day {
+  @extend %btn !optional;
+  border-radius: rem($btn-min-height / 2);
+  padding-left: 0;
+  padding-right: 0;
+  transition: all .4s;
+
+  &.is-today {
+    color: getColor(link);
+  }
+
+  &.is-other {
+    color: getColor(text, lighter);
+  }
+
+  &.is-selected {
+    background-color: getColor(link);
+    color: setContrast(getColor(link));
+
+    &:hover {
+      background-color: setHover(getColor(link));
+      color: setContrast(getColor(link));
+    }
+  }
+
+  &:hover {
+    background-color: getColor(state, hover);
+    color: getColor(link);
+  }
+}

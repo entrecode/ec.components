@@ -1,51 +1,12 @@
-:host {
-  &.other {
-    color: #cccccc;
-  }
-  ul {
-    margin: 0;
-    padding: 0;
+.ec-calendar-month-days {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
 
-    &.days {
-      font-weight: bold;
-    }
-
-    &.calendar {
-      &:after {
-        clear: left;
-        content: '';
-        display: block;
-      }
-    }
-
-    &.calendar, &.days {
-      //padding: 1em;
-      user-select: none;
-      list-style: none;
-
-      li {
-        cursor: pointer;
-        text-align: center;
-        line-height: 30px;
-        width: 14.2%;
-        float: left;
-
-        &:nth-child(7n+1) {
-          clear: left;
-        }
-
-        &.other {
-          color: #cccccc;
-        }
-        &.today {
-          color: #f06;
-          font-weight: bolder;
-        }
-        &.selected {
-          font-weight: bolder;
-          background-color: #97c2fc;
-        }
-      }
-    }
+  li {
+    width: 100 / 7 * 1%;
+    text-align: center;
   }
 }

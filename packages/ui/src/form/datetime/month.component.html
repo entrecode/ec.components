@@ -1,9 +1,11 @@
-<ul class="calendar">
-  <li *ngFor="let day of cells"
-      [class.other]="day.type!=='current'"
-      [class.today]="day.today"
-      [class.selected]="isSelected(day.date)"
-      (click)="selectDay(day.date)">
-    {{day.format}}
+<ul class="ec-calendar-month-days">
+  <li *ngFor="let day of cells">
+    <div class="ec-calendar-month-day"
+         [class.is-other]="day.type!=='current'"
+         [class.is-today]="day.today"
+         [class.is-selected]="isSelected(day.date)"
+         (click)="selectDay(day.date)">
+      {{day.format}}
+    </div>
   </li>
 </ul>
