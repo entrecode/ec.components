@@ -5,12 +5,14 @@
   overflow: hidden;
 
   .ec-pop-header {
+    @extend .title !optional;
     flex-grow: 0;
   }
 
   .ec-pop-body {
     flex-grow: 1;
     overflow-y: auto;
+    overscroll-behavior-y: contain
   }
 
   .ec-pop-footer {
