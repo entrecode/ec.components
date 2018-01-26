@@ -44,7 +44,7 @@ import { InteractionDemoComponent } from './interaction-demo/interaction-demo.co
 import { ActionbarModule } from '../../packages/ui/src/actionbar/actionbar.module';
 import { ResourceListDemoComponent } from './resource-list/resource-list-demo.component';
 import { IconDemoComponent } from './icon-demo/icon-demo.component';
-import { StringPipe } from './icon-demo/string.pipe';
+import { IconPipe } from './icon-demo/icon.pipe';
 
 demoRoutes.unshift(
   {
@@ -90,7 +90,7 @@ demoRoutes.unshift(
     TinymceDemoComponent,
     AceDemoComponent,
     IconDemoComponent,
-    StringPipe
+    IconPipe
   ],
   entryComponents: [
     CoolStringComponent,

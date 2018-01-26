@@ -1,6 +1,7 @@
 import { Component, OnInit, PipeTransform, Pipe, Injectable } from '@angular/core';
 import { IconService } from '@ec.components/ui/src/icon/icon.service';
 import { ecIcons } from '@ec.components/ui/src/icon/ec-icons';
+import { emojiIcons } from '@ec.components/ui/src/icon/emoji-icons';
 
 
 @Component({
@@ -10,17 +11,10 @@ import { ecIcons } from '@ec.components/ui/src/icon/ec-icons';
 
 export class IconDemoComponent implements OnInit {
     icons: string[];
+    sets = [{ label: 'Emoji Icons', set: emojiIcons }, { label: 'ec-icons', set: ecIcons }];
     query = '';
     constructor(public iconService: IconService) {
-        this.iconService.use([{
-            name: 'add',
-            content: '+'
-        }, {
-            name: 'close',
-            content: 'x'
-        }]);
-        this.icons = this.iconService.icons.map(icon => icon.name);
-        console.log('icons', this.icons);
+        this.iconService.use(emojiIcons);
     }
 
     ngOnInit() { }
