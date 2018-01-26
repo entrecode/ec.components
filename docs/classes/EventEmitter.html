@@ -1456,6 +1456,7 @@ export class TabsComponent implements AfterContentInit {
     }
   }
 
+  /** After the content has been inited, the tab children will be processed. */
   ngAfterContentInit() {
     this.tabs.forEach((tab) &#x3D;&gt; {
       tab.parent &#x3D; this;
@@ -1465,7 +1466,7 @@ export class TabsComponent implements AfterContentInit {
     });
     this.selectByUrl(this.router.url);
   }
-
+  /** Selects the given tab (Component). */
   select(tab: TabComponent) {
     if (this.selected) {
       this.selected.deactivated.next();
@@ -1476,7 +1477,7 @@ export class TabsComponent implements AfterContentInit {
       this.router.navigate([tab.route], { relativeTo: this.route });
     }
   }
-
+  /** Returns true if the given TabComponent is selected. */
   isSelected(tab: TabComponent) {
     return this.selected &#x3D;&#x3D;&#x3D; tab;
   }

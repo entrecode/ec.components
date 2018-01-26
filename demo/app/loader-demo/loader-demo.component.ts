@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormComponent, LoaderComponent, LoaderService } from '@ec.components/ui';
+import { FormComponent, LoaderComponent, LoaderService, WithLoader } from '@ec.components/ui';
 import { Form } from '@ec.components/core';
 
 @Component({
   templateUrl: './loader-demo.component.html',
 })
-export class LoaderDemoComponent implements OnInit {
+export class LoaderDemoComponent implements OnInit, WithLoader {
 
   public classes = ['', 'ec-loader_global', 'ec-loader_overlay ec-loader_global'];
   @ViewChild('loader') loader: LoaderComponent;

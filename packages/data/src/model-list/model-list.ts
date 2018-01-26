@@ -6,7 +6,7 @@ import ModelResource from 'ec.sdk/lib/resources/datamanager/ModelResource';
 import { ListConfig } from '@ec.components/core/src/list/list-config.interface';
 
 /**
- * Extension of List for Datamanagers
+ * Extension of List for Models. Deprecated due to ResourceList (model relation).
  */
 export class ModelList extends ResourceList<ModelResource> {
   private datamanager: DataManagerResource | string;
@@ -63,14 +63,14 @@ export class ModelList extends ResourceList<ModelResource> {
     this.useConfig(config);
     const loading =
       this.resolveDatamanager()
-      .then((datamanager) => {
-        this.datamanager = datamanager;
-        return this.datamanager.modelList(this.getFilterOptions(this.config));
-      }).then((list) => {
-        this.use(list);
-      }).catch((err) => {
-        this.error.next(err);
-      });
+        .then((datamanager) => {
+          this.datamanager = datamanager;
+          return this.datamanager.modelList(this.getFilterOptions(this.config));
+        }).then((list) => {
+          this.use(list);
+        }).catch((err) => {
+          this.error.next(err);
+        });
     this.loading.next(loading);
     return loading;
   }

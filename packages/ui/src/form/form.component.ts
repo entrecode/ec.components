@@ -6,6 +6,7 @@ import { LoaderComponent } from '../loader/loader.component';
 import { LoaderService } from '../loader/loader.service';
 import { NotificationsService } from '../notifications/notifications.service';
 import { FormService } from './form.service';
+import { WithLoader } from '../loader/with-loader.interface';
 
 /** This component renders a form using a FieldConfig Object. */
 @Component({
@@ -13,7 +14,7 @@ import { FormService } from './form.service';
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss']
 })
-export class FormComponent implements OnChanges {
+export class FormComponent implements OnChanges, WithLoader {
   /** The instance of Form that is used. */
   protected form: Form<any>;
   /** The current (angular) form group. */

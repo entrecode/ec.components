@@ -183,9 +183,6 @@
                                     <a href="../modules/DataModule.html" >DataModule</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../modules/DataRoutingModule.html" >DataRoutingModule</a>
-                                </li>
-                                <li class="link">
                                     <a href="../modules/FilesModule.html" >FilesModule</a>
                                 </li>
                                 <li class="link">
@@ -291,9 +288,6 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/DynamicSlotComponent.html" >DynamicSlotComponent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../components/EditorComponent.html" >EditorComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/EditorComponent.html" >EditorComponent</a>
@@ -429,9 +423,6 @@
                                 <li class="link">
                                     <a href="../directives/SlotHostDirective.html" >SlotHostDirective</a>
                                 </li>
-                                <li class="link">
-                                    <a href="../directives/ValidationOnBlurDirective.html" >ValidationOnBlurDirective</a>
-                                </li>
                         </ul>
                     </li>
             
@@ -460,9 +451,6 @@
                                 </li>
                                 <li class="link">
                                     <a href="../classes/EntryList.html" >EntryList</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../classes/EventEmitter.html" >EventEmitter</a>
                                 </li>
                                 <li class="link">
                                     <a href="../classes/Field.html" >Field</a>
@@ -847,9 +835,6 @@
                                            <a href="../modules/DataModule.html" >DataModule</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../modules/DataRoutingModule.html" >DataRoutingModule</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../modules/FilesModule.html" >FilesModule</a>
                                        </li>
                                        <li class="link">
@@ -955,9 +940,6 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/DynamicSlotComponent.html" >DynamicSlotComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../components/EditorComponent.html" >EditorComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/EditorComponent.html" >EditorComponent</a>
@@ -1093,9 +1075,6 @@
                                        <li class="link">
                                            <a href="../directives/SlotHostDirective.html" >SlotHostDirective</a>
                                        </li>
-                                       <li class="link">
-                                           <a href="../directives/ValidationOnBlurDirective.html" >ValidationOnBlurDirective</a>
-                                       </li>
                                </ul>
                            </li>
                    
@@ -1124,9 +1103,6 @@
                                        </li>
                                        <li class="link">
                                            <a href="../classes/EntryList.html" >EntryList</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../classes/EventEmitter.html" >EventEmitter</a>
                                        </li>
                                        <li class="link">
                                            <a href="../classes/Field.html" >Field</a>
@@ -1466,7 +1442,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">packages/core/src/sorter/sorter.ts:28</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">packages/core/src/sorter/sorter.ts:32</a></div>
                                         </td>
                                     </tr>
             
@@ -1546,7 +1522,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">packages/core/src/sorter/sorter.ts:58</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">packages/core/src/sorter/sorter.ts:62</a></div>
                                         </td>
                                     </tr>
             
@@ -1654,7 +1630,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">packages/core/src/sorter/sorter.ts:21</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">packages/core/src/sorter/sorter.ts:25</a></div>
                                         </td>
                                     </tr>
             
@@ -1680,16 +1656,20 @@
     <div class="tab-pane fade tab-source-code" id="c-source">
         <pre class="line-numbers"><code class="language-typescript">import { Item } from &#x27;../item/item&#x27;;
 
+/** Used for natural sorting of strings */
 const collator &#x3D; new Intl.Collator(undefined, { numeric: true, sensitivity: &#x27;base&#x27; });
 
+/** Sorts strings (naturally) */
 export function sortString(a, b) {
   return collator.compare(a, b);
 }
 
+/** Sorts numbers */
 export function sortNumber(a, b) {
   return a - b;
 }
 
+/** Sorts booleans */
 export function sortBoolean(a, b) {
   return a ? -1 : 1;
 }
@@ -1715,8 +1695,8 @@ export abstract class Sorter&lt;T&gt; {
       return;
     }
     const types &#x3D; items
-    .map(item &#x3D;&gt; typeof item.sort(property))
-    .filter((item, index, _items) &#x3D;&gt; _items.indexOf(item) &#x3D;&#x3D;&#x3D; index);
+      .map(item &#x3D;&gt; typeof item.sort(property))
+      .filter((item, index, _items) &#x3D;&gt; _items.indexOf(item) &#x3D;&#x3D;&#x3D; index);
     if (types.length &gt; 1) {
       console.warn(&#x27;cannot sort items because they contain multiple types:&#x27;, types);
       return;

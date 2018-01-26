@@ -24,3 +24,18 @@ export class SomeModule  {
     }
 }
 ```
+
+## Overriding icons
+
+You can also override the current icon registry:
+
+```js
+import { emojiIcons } from '@ec.components/ui/src/icon/emoji-icons';
+export class SomeModule  {
+    constructor(public iconService: IconService) {
+        this.iconService.set(emojiIcons);
+    }
+}
+```
+
+This will override the icon registry with the given icons, but keep the rest.

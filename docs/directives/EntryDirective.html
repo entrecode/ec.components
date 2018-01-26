@@ -183,9 +183,6 @@
                                     <a href="../modules/DataModule.html" >DataModule</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../modules/DataRoutingModule.html" >DataRoutingModule</a>
-                                </li>
-                                <li class="link">
                                     <a href="../modules/FilesModule.html" >FilesModule</a>
                                 </li>
                                 <li class="link">
@@ -291,9 +288,6 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/DynamicSlotComponent.html" >DynamicSlotComponent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../components/EditorComponent.html" >EditorComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/EditorComponent.html" >EditorComponent</a>
@@ -429,9 +423,6 @@
                                 <li class="link">
                                     <a href="../directives/SlotHostDirective.html" >SlotHostDirective</a>
                                 </li>
-                                <li class="link">
-                                    <a href="../directives/ValidationOnBlurDirective.html" >ValidationOnBlurDirective</a>
-                                </li>
                         </ul>
                     </li>
             
@@ -460,9 +451,6 @@
                                 </li>
                                 <li class="link">
                                     <a href="../classes/EntryList.html" >EntryList</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../classes/EventEmitter.html" >EventEmitter</a>
                                 </li>
                                 <li class="link">
                                     <a href="../classes/Field.html" >Field</a>
@@ -847,9 +835,6 @@
                                            <a href="../modules/DataModule.html" >DataModule</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../modules/DataRoutingModule.html" >DataRoutingModule</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../modules/FilesModule.html" >FilesModule</a>
                                        </li>
                                        <li class="link">
@@ -955,9 +940,6 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/DynamicSlotComponent.html" >DynamicSlotComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../components/EditorComponent.html" >EditorComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/EditorComponent.html" >EditorComponent</a>
@@ -1093,9 +1075,6 @@
                                        <li class="link">
                                            <a href="../directives/SlotHostDirective.html" >SlotHostDirective</a>
                                        </li>
-                                       <li class="link">
-                                           <a href="../directives/ValidationOnBlurDirective.html" >ValidationOnBlurDirective</a>
-                                       </li>
                                </ul>
                            </li>
                    
@@ -1124,9 +1103,6 @@
                                        </li>
                                        <li class="link">
                                            <a href="../classes/EntryList.html" >EntryList</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../classes/EventEmitter.html" >EventEmitter</a>
                                        </li>
                                        <li class="link">
                                            <a href="../classes/Field.html" >Field</a>
@@ -1391,6 +1367,7 @@
             </p>
             <p class="comment">
                         <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
+                        <code><a href="../interfaces/WithLoader.html" target="_self" >WithLoader</a></code>
             </p>
 
 
@@ -1670,7 +1647,7 @@
                                 <td class="col-md-10">
                                     <div><p>Fires as soon as the entry has been loaded. </p>
 </div>
-                                    <em><code>$event</code> type:</em>    <code><a href="../classes/EventEmitter.html" target="_self" >EventEmitter&lt;EntryResource&gt;</a></code>
+                                    <em><code>$event</code> type:</em>    <code>EventEmitter&lt;EntryResource&gt;</code>
 
                                 </td>
                             </tr>
@@ -1871,14 +1848,14 @@
         <pre class="line-numbers"><code class="language-typescript">import { Directive, EventEmitter, Input, OnChanges, Output } from &#x27;@angular/core&#x27;;
 import { SdkService } from &#x27;../sdk/sdk.service&#x27;;
 import EntryResource from &#x27;ec.sdk/lib/resources/publicAPI/EntryResource&#x27;;
-import { LoaderComponent } from &#x27;../../../ui/index&#x27;;
+import { WithLoader, LoaderComponent } from &#x27;@ec.components/ui&#x27;;
 
 /** Loads an entry by id to the template. */
 @Directive({
   selector: &#x27;[ecEntry]&#x27;,
   exportAs: &#x27;ecEntry&#x27;
 })
-export class EntryDirective implements OnChanges {
+export class EntryDirective implements OnChanges, WithLoader {
   /** The loading promise */
   promise: any;
   /** The entry id that should be loaded*/

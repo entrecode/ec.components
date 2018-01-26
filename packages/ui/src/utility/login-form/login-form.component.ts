@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { FieldValidators } from '../validators/field-validators';
 import { LoaderComponent } from '../../loader/loader.component';
+import { WithLoader } from '../../loader/with-loader.interface';
 
 /** Login Form Component with validation. Fires success event with credentials on submit. */
 @Component({
@@ -10,7 +11,7 @@ import { LoaderComponent } from '../../loader/loader.component';
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.scss']
 })
-export class LoginFormComponent implements OnInit {
+export class LoginFormComponent implements OnInit, WithLoader {
   /** The login's form group.*/
   public form: FormGroup;
   /** Flips true when submitted. */

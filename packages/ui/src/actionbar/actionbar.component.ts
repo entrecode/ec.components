@@ -3,6 +3,7 @@ import { LoaderComponent } from '../loader/loader.component';
 import 'rxjs/add/operator/debounceTime';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
+import { WithLoader } from '../loader/with-loader.interface';
 
 export type PromisedChildren = ((data: any, query: string) => Promise<Array<Action>>);
 export type ActionLabel = string | ((resource: any) => string);
@@ -21,7 +22,7 @@ export interface Action {
     templateUrl: './actionbar.component.html'
 })
 
-export class ActionbarComponent implements OnInit {
+export class ActionbarComponent implements OnInit, WithLoader {
     displayedActions: any;
     actions: any;
     @Input() action;

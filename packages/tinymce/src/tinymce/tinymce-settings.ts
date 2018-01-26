@@ -1,3 +1,4 @@
+/** Default settings for tinymce editor. */
 export const editorSettings = {
   theme: 'modern',
   menubar: false,

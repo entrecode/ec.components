@@ -1,3 +1,4 @@
+/** Contains fonts using emojis. */
 export const emojiIcons = [
     { name: 'add', content: '➕' },
     { name: 'close', content: '❌' },

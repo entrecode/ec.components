@@ -2,9 +2,6 @@ import { Component, ContentChildren, Input, QueryList, AfterContentInit } from '
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { TabComponent } from '../tab/tab.component';
 
-class EventEmitter {
-}
-
 /** The TabsComponent holds serveral instances of TabComponent. */
 @Component({
   selector: 'ec-tabs',
@@ -37,6 +34,7 @@ export class TabsComponent implements AfterContentInit {
     }
   }
 
+  /** After the content has been inited, the tab children will be processed. */
   ngAfterContentInit() {
     this.tabs.forEach((tab) => {
       tab.parent = this;
@@ -46,7 +44,7 @@ export class TabsComponent implements AfterContentInit {
     });
     this.selectByUrl(this.router.url);
   }
-
+  /** Selects the given tab (Component). */
   select(tab: TabComponent) {
     if (this.selected) {
       this.selected.deactivated.next();
@@ -57,7 +55,7 @@ export class TabsComponent implements AfterContentInit {
       this.router.navigate([tab.route], { relativeTo: this.route });
     }
   }
-
+  /** Returns true if the given TabComponent is selected. */
   isSelected(tab: TabComponent) {
     return this.selected === tab;
   }

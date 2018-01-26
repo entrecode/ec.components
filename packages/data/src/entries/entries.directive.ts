@@ -6,6 +6,7 @@ import { SdkService } from '../sdk/sdk.service';
 import EntryList from 'ec.sdk/lib/resources/publicAPI/EntryList';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { LoaderComponent } from '../../../ui/src/loader/loader.component';
+import { WithLoader } from '@ec.components/ui';
 
 // import { filterOptions } from 'ec.sdk/lib/resources/ListResource';
 
@@ -14,7 +15,7 @@ import { LoaderComponent } from '../../../ui/src/loader/loader.component';
   selector: '[ecEntries]',
   exportAs: 'ecEntries'
 })
-export class EntriesDirective implements OnChanges {
+export class EntriesDirective implements OnChanges, WithLoader {
   /** The promise of the entryList call. */
   private promise: any;
   /** The model to load from. */

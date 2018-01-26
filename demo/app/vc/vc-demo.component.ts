@@ -15,6 +15,7 @@ export class VcDemoComponent {
   }
 
   editor: EditorComponent;
+  // tslint:disable-next-line:member-ordering
   json = {
     type: 'block',
     content: [
