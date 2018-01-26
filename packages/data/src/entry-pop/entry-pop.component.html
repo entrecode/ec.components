@@ -22,7 +22,7 @@
           <li class="nav__item" *ngIf="maySave(crudForm)">
             <!--TODO placeholder config for 'speichern'-->
             <button (click)="crudForm.submit()" [disabled]="crudForm.group?.invalid" type="button"
-                    class="btn btn_save" [class.disabled]="crudForm.group?.invalid">
+                    class="btn btn_save" [class.is-disabled]="crudForm.group?.invalid">
               Speichern
             </button>
           </li>

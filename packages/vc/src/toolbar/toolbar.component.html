@@ -8,7 +8,7 @@
       </a>
     </li>
   </ul>
-  <ul [class.disabled]="editor?.caret?.flow===editor?.caret?.phrasing">
+  <ul [class.is-disabled]="editor?.caret?.flow===editor?.caret?.phrasing">
     <li *ngFor="let el of editor.phrasingElements">
       <a (mousedown)="editor.setPhrasingElement(el,$event)" class="ecvc-modifier"
          [class.is-active]="editor.isPhrasingActive(el)">

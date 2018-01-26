@@ -15,7 +15,7 @@
   <ec-input [field]="treeForm.form.getField('fruits')"
             [group]="treeForm.group"></ec-input>
   <button type="button" (click)="treeForm.submit()" [disabled]="treeForm.group?.invalid"
-          [class.disabled]="treeForm.group?.invalid">
+          [class.is-disabled]="treeForm.group?.invalid">
     Na los
   </button>
 </ec-form>
