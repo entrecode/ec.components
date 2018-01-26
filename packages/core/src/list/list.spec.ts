@@ -1,6 +1,6 @@
 import { List } from '../../';
 import { mocked } from '../../../../mocks/data';
-describe('List', () => {
+fdescribe('List', () => {
 
   it('should support identifiers', () => {
     const products = new List(mocked.products, { identifier: 'id' });
@@ -33,7 +33,12 @@ describe('List', () => {
     expect(people.config.desc).toBe(false);
     expect(people.id(0).resolve('age')).toBe(17);
     people.toggleSort('age');
+    expect(people.config.desc).toBe(true);
     expect(people.id(0).resolve('age')).toBe(58);
+    expect(people.isSorted('age')).toBe(true);
+    expect(people.isSorted('age', true)).toBe(true);
+    expect(people.isSorted('age', false)).toBe(false);
+    expect(people.isSorted('name')).toBe(false);
   });
   it('should support resolve functions', () => {
     const muffins = new List(mocked.muffins, { resolve: m => m.value });
