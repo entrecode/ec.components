@@ -7,7 +7,11 @@ export class IconService {
     public icons: Icon[] = ecIcons;
     constructor() { }
 
-    use(icons: Icon[]) {
+    use(icons: Icon[] = ecIcons) {
         this.icons = icons;
+    }
+
+    get(name: string) {
+        return this.icons.find(icon => icon.name === name);
     }
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { IconService } from './icon.service';
+import { Icon } from './icon.interface';
 
 @Component({
     selector: 'ec-icon',
@@ -6,9 +8,16 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 
 export class IconComponent implements OnInit {
-    @Input() type: string;
+    icon: Icon;
+    @Input() name: string;
 
-    constructor() { }
+    constructor(private iconService: IconService) {
+    }
 
-    ngOnInit() { }
+    ngOnInit() {
+        this.icon = this.iconService.get(this.name);
+        if (!this.icon) {
+            console.warn(`Icon ${this.name} cannot be found. Using the following icons:`, this.iconService.icons);
+        }
+    }
 }

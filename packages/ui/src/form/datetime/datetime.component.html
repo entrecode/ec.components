@@ -3,7 +3,7 @@
   <input class="input" [value]="calendar.value" (input)="calendar.input($event.target.value)"
          (focus)="calendarPop.show()" (blur)="calendarPop.hide()" [placeholder]="placeholder">
     <a class="input-group__icon" (click)="calendarPop.toggle()">
-      <ec-icon type="calendar"></ec-icon>
+      <ec-icon name="calendar"></ec-icon>
     </a>
   </div>
   <ec-pop class="datetime-select" #calendarPop (mousedown)="$event.preventDefault()">

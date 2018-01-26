@@ -9,9 +9,18 @@ import { ecIcons } from '@ec.components/ui/src/icon/ec-icons';
 })
 
 export class IconDemoComponent implements OnInit {
-    allIcons = ecIcons.map(icon => icon.type);
+    icons: string[];
     query = '';
     constructor(public iconService: IconService) {
+        this.iconService.use([{
+            name: 'add',
+            content: '+'
+        }, {
+            name: 'close',
+            content: 'x'
+        }]);
+        this.icons = this.iconService.icons.map(icon => icon.name);
+        console.log('icons', this.icons);
     }
 
     ngOnInit() { }

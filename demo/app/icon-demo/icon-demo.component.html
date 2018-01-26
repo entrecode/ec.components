@@ -9,8 +9,8 @@
     <div data-col="12 8-lg">
 
         <ul data-grid="small">
-            <li *ngFor="let icon of allIcons | stringPipe:query" class="list" data-col="3">
-                <ec-icon [type]="icon"></ec-icon>
+            <li *ngFor="let icon of icons | stringPipe:query" class="list" data-col="3">
+                <ec-icon [name]="icon"></ec-icon>
                 {{icon}}
             </li>
         </ul>
