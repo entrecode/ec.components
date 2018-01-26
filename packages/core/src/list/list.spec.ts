@@ -1,6 +1,6 @@
 import { List } from '../../';
 import { mocked } from '../../../../mocks/data';
-fdescribe('List', () => {
+describe('List', () => {
 
   it('should support identifiers', () => {
     const products = new List(mocked.products, { identifier: 'id' });

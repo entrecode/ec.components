@@ -3,7 +3,7 @@
  */
 import { Field } from './field';
 
-describe('Field', () => {
+fdescribe('Field', () => {
 
   it('should construct without config', () => {
     const field = new Field('name', {});
@@ -14,5 +14,6 @@ describe('Field', () => {
     const field = new Field('name', { type: 'string' });
     expect(field['property']).toBe('name');
     expect(field['type']).toBe('string');
+    expect(field['id']).toBeDefined();
   });
 });

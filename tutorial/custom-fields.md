@@ -89,7 +89,7 @@ Now we can decide which custom input should be used, based on e.g. the fields vi
 <div [ngSwitch]="field.view" *ngIf="group" [formGroup]="group">
   <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>
   <div *ngSwitchCase="'speakingurl'">
-    <input type="text" [formControl]="control">
+    <input [id]="field.id" type="text" [formControl]="control">
   </div>
   <div *ngSwitchCase="'openingHours'">
     <!-- <ec-opening-hours [formControl]="control"></ec-opening-hours> -->
@@ -98,6 +98,7 @@ Now we can decide which custom input should be used, based on e.g. the fields vi
 ```
 
 Of course you could also switch based on property name or type, depending on your application.
+The id property of field is referenced in the label of the form. By adding it to the input makes sure your label click enters the input.
 
 ### 4. Add CustomInputComponent to entryComponents:
 
