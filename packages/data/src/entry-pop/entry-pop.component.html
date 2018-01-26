@@ -1,4 +1,4 @@
-<div class="ec-pop-container" [class.active]="active" [class.visible]="visible">
+<div class="ec-pop-container" [class.is-active]="active" [class.is-visible]="visible">
   <div class="ec-pop" *ngIf="active">
     <button (click)="hide()" type="button" class="ec-pop__dismiss">&times;</button>
     <div class="ec-pop-body">
@@ -22,7 +22,7 @@
           <li class="nav__item" *ngIf="maySave(crudForm)">
             <!--TODO placeholder config for 'speichern'-->
             <button (click)="crudForm.submit()" [disabled]="crudForm.group?.invalid" type="button"
-                    class="btn btn_save" [class.disabled]="crudForm.group?.invalid">
+                    class="btn btn_save" [class.is-disabled]="crudForm.group?.invalid">
               Speichern
             </button>
           </li>

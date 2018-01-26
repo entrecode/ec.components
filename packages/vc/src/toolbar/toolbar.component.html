@@ -3,15 +3,15 @@
   <ul>
     <li *ngFor="let el of editor.flowElements">
       <a (mousedown)="editor.setFlowElement(el,$event)" class="ecvc-modifier"
-         [class.active]="editor.isFlowActive(el)">
+         [class.is-active]="editor.isFlowActive(el)">
         {{el.tag}}
       </a>
     </li>
   </ul>
-  <ul [class.disabled]="editor?.caret?.flow===editor?.caret?.phrasing">
+  <ul [class.is-disabled]="editor?.caret?.flow===editor?.caret?.phrasing">
     <li *ngFor="let el of editor.phrasingElements">
       <a (mousedown)="editor.setPhrasingElement(el,$event)" class="ecvc-modifier"
-         [class.active]="editor.isPhrasingActive(el)">
+         [class.is-active]="editor.isPhrasingActive(el)">
         {{el.tag}}
       </a>
     </li>

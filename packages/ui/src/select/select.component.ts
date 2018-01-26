@@ -1,16 +1,16 @@
-import {Component, EventEmitter, forwardRef, Input, OnChanges, OnInit, Output, ViewChild, ViewEncapsulation} from "@angular/core";
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
-import {List, ListConfig, Selection} from "@ec.components/core";
-import {Item} from "@ec.components/core/src/item/item";
-import {PopComponent} from "../pop/pop.component";
+import { Component, EventEmitter, forwardRef, Input, OnChanges, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { List, ListConfig, Selection } from '@ec.components/core';
+import { Item } from '@ec.components/core/src/item/item';
+import { PopComponent } from '../pop/pop.component';
 
 /**
  * The SelectComponent will render a dropdown of a given list.
  * */
 @Component({
-  selector: "ec-select",
-  templateUrl: "./select.component.html",
-  styleUrls: ["./select.component.scss"],
+  selector: 'ec-select',
+  templateUrl: './select.component.html',
+  styleUrls: ['./select.component.scss'],
   encapsulation: ViewEncapsulation.None,
   providers: [
     {
@@ -52,7 +52,7 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   initSelection() {
     if (this.values) {
       if (this.list) {
-        console.warn("ec-select: list is overwritten by values", this.list);
+        console.warn('ec-select: list is overwritten by values', this.list);
       }
       this.list = new List(this.values, this.config);
     }
@@ -62,7 +62,7 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
     if (!this.config || this.config.disableSelection) {
       return;
     }
-    this.config = Object.assign({solo: this.solo}, this.config);
+    this.config = Object.assign({ solo: this.solo }, this.config);
     this.selection = new Selection(this.value || [], this.config);
     this.selection.update$.subscribe(() => {
       this.changed();
@@ -77,9 +77,9 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   /** Uses the given value as selection items */
   use(value) {
     this.value = Array.isArray(value) ? value : (value ? [value] : []);
-    Object.assign(this.config || {}, {solo: this.solo});
+    Object.assign(this.config || {}, { solo: this.solo });
     if (this.selection && this.value && this.value.length) {
-      Object.assign(this.config, {selection: this.selection});
+      Object.assign(this.config, { selection: this.selection });
       const list = new List(this.value, this.config);
       this.selection.replaceWith(list.items);
     }

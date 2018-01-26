@@ -23,8 +23,20 @@ export class LoginFormComponent implements OnInit {
   @Output() error: EventEmitter<any> = new EventEmitter();
   /** The loader that should be shown during login */
   @Input() loader: LoaderComponent;
+  /** If true, email and password wont have labels */
+  @Input() showLabels = true;
+  /** The Label of the Mail field */
+  @Input() emailLabel = 'E-Mail';
+  /** The Placeholder of the mail Field */
+  @Input() emailPlaceholder = 'E-Mail Adresse';
+  /** The Label of the password field. */
+  @Input() passwordLabel = 'Passwort';
+  /** The Placeholder of the password field */
+  @Input() passwordPlaceholder = 'Passwort';
   /** The Label of the submit button. Defaults to Login */
-  @Input() buttonLabel: string;
+  @Input() buttonLabel = 'Login';
+  /** Additional Button classes */
+  @Input() buttonClasses = '';
 
   /** Injects the FormBuilder*/
   constructor(private fb: FormBuilder) {

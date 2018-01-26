@@ -16,7 +16,7 @@
     <ec-input [field]="muffinForm.form?.getField('amazement_factor')"
               [group]="muffinForm.group"></ec-input>
     <button type="button" (click)="muffinForm.submit()" [disabled]="muffinForm.group?.invalid"
-            [class.disabled]="muffinForm.group?.invalid">
+            [class.is-disabled]="muffinForm.group?.invalid">
       Na los
     </button>
   </ec-entry-form>

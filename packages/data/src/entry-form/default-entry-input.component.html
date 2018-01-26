@@ -1,22 +1,18 @@
 <fieldset [ngSwitch]="field.type" *ngIf="group" [formGroup]="group">
   <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>
   <div *ngSwitchCase="'entry'">
-    <ec-entry-select [formControl]="group.get(field.property)" [field]="field"
-                     [solo]="true" [config]="field.nestedCrudConfig"></ec-entry-select>
+    <ec-entry-select [formControl]="group.get(field.property)" [field]="field" [id]="field.id" [solo]="true" [config]="field.nestedCrudConfig"></ec-entry-select>
   </div>
   <div *ngSwitchCase="'entries'">
-    <ec-entry-select [formControl]="group.get(field.property)" [field]="field"
-                     [config]="field.nestedCrudConfig"></ec-entry-select>
+    <ec-entry-select [formControl]="group.get(field.property)" [field]="field" [id]="field.id" [config]="field.nestedCrudConfig"></ec-entry-select>
   </div>
   <div *ngSwitchCase="'asset'">
-    <ec-asset-select [formControl]="group.get(field.property)" [field]="field"
-                     [solo]="true" [item]="item"></ec-asset-select>
+    <ec-asset-select [formControl]="group.get(field.property)" [field]="field" [id]="field.id" [solo]="true" [item]="item"></ec-asset-select>
   </div>
   <div *ngSwitchCase="'assets'">
-    <ec-asset-select [formControl]="group.get(field.property)" [field]="field"
-                     [item]="item"></ec-asset-select>
+    <ec-asset-select [formControl]="group.get(field.property)" [field]="field" [id]="field.id" [item]="item"></ec-asset-select>
   </div>
-  <input *ngSwitchCase="'phone'" type="text" [placeholder]="field.placeholder">
+  <input *ngSwitchCase="'phone'" type="text" [placeholder]="field.placeholder" [id]="field.id">
   <div *ngSwitchDefault>
     <marquee>🚂🚃🚃🚃 {{field.type}} input coming soon..</marquee>
     <ec-output [field]="field" [item]="item"></ec-output>

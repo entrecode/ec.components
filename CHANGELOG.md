@@ -1,5 +1,13 @@
 # Changelog
 
+<a name="0.13.0">
+
+* added auto generated id to all fields. Those ids are used in label#for and input#id. You should also reference this id in custom inputs to make the label clickable.
+
+BREAKING CHANGES:
+* COM-98: active/visible classes: renamed active to is-active, visible to is-visible and disabled to is-disabled
+* COM-95: renamed is-sortable-active to is-sorted + added is-sorted-asc and is-sorted-desc
+
 <a name="0.12.0">
 BREAKING CHANGE:
 

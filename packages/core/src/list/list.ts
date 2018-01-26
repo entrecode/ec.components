@@ -48,7 +48,7 @@ export class List<T> extends Collection<Item<T>> {
     this.fields = this.getFields();
     this.pagination = pagination || new Pagination(this.config, this.items.length);
     this.pagination.change$.debounceTime(200)
-    .subscribe(_config => this.load(_config));
+      .subscribe(_config => this.load(_config));
     this.load();
   }
 
@@ -76,8 +76,8 @@ export class List<T> extends Collection<Item<T>> {
   protected getFields(): Array<Field> {
     if (this.config && this.config.fields) {
       return Object.keys(this.config.fields)
-      .filter((key) => this.config.fields[key].list !== false)
-      .map((field) => new Field(field, this.config.fields[field]));
+        .filter((key) => this.config.fields[key].list !== false)
+        .map((field) => new Field(field, this.config.fields[field]));
     }
     const fields = [];
     this.items.forEach((item) => {
@@ -115,15 +115,19 @@ export class List<T> extends Collection<Item<T>> {
 
   /** Changes the config's sort variables to reflect the given sorting */
   protected sortProperty(property: string, desc?: boolean) {
-    /* if (this.config.desc && property === this.config.sortBy) {
-       delete this.config.sortBy;
-       return;
-     }*/
     if (property !== this.config.sortBy) {
       delete this.config.desc;
     }
     this.config.sortBy = property;
     this.config.desc = this.config.desc === undefined ? desc || false : !this.config.desc;
+  }
+
+  /** Returns true if the given sort state is active. You can either just check for a property + desc flag */
+  public isSorted(property: string, desc?: boolean) {
+    if (typeof desc === 'undefined') {
+      return this.config.sortBy === property;
+    }
+    return this.config.sortBy === property && this.config.desc === desc;
   }
 
   /** Sorts with given sorting, using the Sorter */

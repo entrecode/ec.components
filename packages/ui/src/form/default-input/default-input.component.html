@@ -1,31 +1,31 @@
 <div [ngSwitch]="field.view" *ngIf="group" [formGroup]="group">
-  <input *ngSwitchCase="'string'" type="text" [formControl]="control"
+  <input [id]="field.id" *ngSwitchCase="'string'" type="text" [formControl]="control"
          [placeholder]="field.getPlaceholder()" class="input">
 
-  <textarea *ngSwitchCase="'textarea'" type="text" [formControl]="control"
+  <textarea [id]="field.id" *ngSwitchCase="'textarea'" type="text" [formControl]="control"
             [placeholder]="field.getPlaceholder()" class="input"></textarea>
 
-  <input *ngSwitchCase="'number'" type="number" [formControl]="control"
+  <input [id]="field.id" *ngSwitchCase="'number'" type="number" [formControl]="control"
          [placeholder]="field.getPlaceholder()" class="input">
 
-  <input *ngSwitchCase="'color'" type="color" [formControl]="control">
+  <input [id]="field.id" *ngSwitchCase="'color'" type="color" [formControl]="control">
 
-  <input *ngSwitchCase="'boolean'" type="checkbox" [formControl]="control"
+  <input [id]="field.id" *ngSwitchCase="'boolean'" type="checkbox" [formControl]="control"
          [placeholder]="field.getPlaceholder()">
 
-  <input *ngSwitchCase="'email'" type="email" [formControl]="control"
+  <input [id]="field.id" *ngSwitchCase="'email'" type="email" [formControl]="control"
          [placeholder]="field.getPlaceholder()" class="input">
 
-  <input *ngSwitchCase="'url'" type="url" [formControl]="control"
+  <input [id]="field.id" *ngSwitchCase="'url'" type="url" [formControl]="control"
          [placeholder]="field.getPlaceholder()" class="input">
 
-  <ec-toggle *ngSwitchCase="'toggle'" [formControl]="control"
+  <ec-toggle [id]="field.id" *ngSwitchCase="'toggle'" [formControl]="control"
              [placeholder]="field.getPlaceholder()"></ec-toggle>
 
   <ec-datetime *ngSwitchCase="'date'" [formControl]="control"
                [placeholder]="field.getPlaceholder()"></ec-datetime>
 
-  <select *ngSwitchCase="'select'" (change)="control.patchValue($event.target.value)">
+  <select [id]="field.id" *ngSwitchCase="'select'" (change)="control.patchValue($event.target.value)">
     <option *ngFor="let option of field.values" [selected]="control.value===option"
             [value]="option">
       {{option}}
