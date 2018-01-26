@@ -86,12 +86,12 @@ $base-spacing: 16;
 
 /// @param {map} $breakpoints
 $breakpoints: (
-  'xs': 0, // smartphone
-  'sm': 480, // smartphone landscape
-  'md': 720, // tablet
-  'lg': 1024, // tablet landscape
-  'xl': 1280, // desktop
-  'xxl': 1920 // large
+        'xs': 0, // smartphone
+        'sm': 480, // smartphone landscape
+        'md': 720, // tablet
+        'lg': 1024, // tablet landscape
+        'xl': 1280, // desktop
+        'xxl': 1920 // large
 );
 
 ///
@@ -113,14 +113,14 @@ $bp-type-scale-small: 0;
 /// @param {map} $type-scale-small - modular scale for small devices
 /// @link http://www.modularscale.com/?0.875&rem&1.25
 $type-scale-small: (
-  h1: 2.67em,
-  h2: 2.136em,
-  h3: 1.709em,
-  h4: 1.367em,
-  h5: 1.094em,
-  h6: .875em,
-  lead: 1.094em,
-  p: .875em
+        h1: 2.67em,
+        h2: 2.136em,
+        h3: 1.709em,
+        h4: 1.367em,
+        h5: 1.094em,
+        h6: .875em,
+        lead: 1.094em,
+        p: .875em
 );
 
 /// @param {value} $bp-type-scale-normal - breakpoint modular scale for normal devices
@@ -129,14 +129,14 @@ $bp-type-scale-normal: getBreakpoint(md);
 /// @param {map} $type-scale-normal - modular scale for normal devices
 /// @link http://www.modularscale.com/?1&em&1.25
 $type-scale-normal: (
-  h1: 3.052em,
-  h2: 2.441em,
-  h3: 1.953em,
-  h4: 1.563em,
-  h5: 1.25em,
-  h6: 1em,
-  lead: 1.25em,
-  p: 1em
+        h1: 3.052em,
+        h2: 2.441em,
+        h3: 1.953em,
+        h4: 1.563em,
+        h5: 1.25em,
+        h6: 1em,
+        lead: 1.25em,
+        p: 1em
 );
 
 /// @param {value} $bp-type-scale-large - breakpoint modular scale for large devices
@@ -145,14 +145,14 @@ $bp-type-scale-large: getBreakpoint(xxl);
 /// @param {map} $type-scale-large - modular scale for large devices
 /// @link http://www.modularscale.com/?1.125&em&1.25
 $type-scale-large: (
-  h1: 3.433em,
-  h2: 2.747em,
-  h3: 2.197em,
-  h4: 1.758em,
-  h5: 1.406em,
-  h6: 1.125em,
-  lead: 1.406em,
-  p: 1.125em
+        h1: 3.433em,
+        h2: 2.747em,
+        h3: 2.197em,
+        h4: 1.758em,
+        h5: 1.406em,
+        h6: 1.125em,
+        lead: 1.406em,
+        p: 1.125em
 );
 
 /// @param {value} $headings-weight [$bold]
@@ -676,3 +676,19 @@ $fab-spacing: 16;
 
 /// @param {number} $list-item-radius [4]
 $list-item-radius: 4;
+
+///
+/// OVERLAY
+/// ------------------------------------------------------
+
+/// @param {px} $overlay-radius [4]
+$overlay-radius: 4;
+
+/// @param {number} $overlay-padding [4]
+$overlay-padding: 4;
+
+/// @param {color} $overlay-background
+$overlay-background: $background;
+
+/// @param {value} $overlay-shadow
+$overlay-shadow: 0 8px 16px -4px rgba(black, .16), 0 4px 24px 0px rgba(black, 0.1);

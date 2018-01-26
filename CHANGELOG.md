@@ -1,5 +1,9 @@
 # Changelog
 
+<a name="0.13.0">
+
+* active/visible classes: renamed active to is-active and visible to is-visible (COM-98)
+
 <a name="0.12.0">
 BREAKING CHANGE:
 

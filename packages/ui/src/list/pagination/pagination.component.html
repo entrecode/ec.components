@@ -10,7 +10,7 @@
   <div [style.maxWidth.px]="containerWidth" #container class="ec-pagination-pages">
     <ul [style.transform]="translation" #pages *ngIf="pagination?.pages">
       <li *ngFor="let page of pagination.pages;let i = index">
-        <a (click)="pagination.select(i+1)" [class.active]="pagination.isActive(i+1)"
+        <a (click)="pagination.select(i+1)" [class.is-active]="pagination.isActive(i+1)"
            class="ec-pagination__item btn btn_clear" ><span>{{i+1}}</span></a>
       </li>
     </ul>
