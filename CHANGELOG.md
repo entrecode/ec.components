@@ -2,7 +2,9 @@
 
 <a name="0.13.0">
 
-* active/visible classes: renamed active to is-active, visible to is-visible and disabled to is-disabled (COM-98)
+BREAKING CHANGES:
+* COM-98: active/visible classes: renamed active to is-active, visible to is-visible and disabled to is-disabled
+* COM-95: renamed is-sortable-active to is-sorted + added is-sorted-asc and is-sorted-desc
 
 <a name="0.12.0">
 BREAKING CHANGE:
