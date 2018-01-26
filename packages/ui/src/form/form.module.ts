@@ -14,6 +14,7 @@ import { DatetimePipe } from './datetime/datetime.pipe';
 import { ToggleComponent } from './toggle/toggle.component';
 import { CalendarComponent } from './datetime/calendar.component';
 import { LoaderModule } from '../loader/loader.module';
+import { IconModule } from '../icon/icon.module';
 
 @NgModule({
   entryComponents: [
@@ -37,6 +38,7 @@ import { LoaderModule } from '../loader/loader.module';
     PopModule,
     IoModule,
     LoaderModule,
+    IconModule,
   ],
   exports: [
     FormComponent,

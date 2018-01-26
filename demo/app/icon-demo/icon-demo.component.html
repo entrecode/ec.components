@@ -1,0 +1,25 @@
+<h1>Icon Demo</h1>
+<div data-grid="center">
+    <div class="input-group">
+        <span class="ec-icon find input-group__icon"></span>
+        <input type="text" placeholder="search for icon class..." class="input input_clear input_big is-lifted input_round" [(ngModel)]="query">
+    </div>
+</div>
+<div class="spacer"></div>
+<div data-grid="center">
+    <div data-col="12 8-lg">
+        <ul>
+            <li *ngFor="let set of sets">
+                <a (click)="iconService.use(set.set)">
+                    {{set.label}}
+                </a>
+            </li>
+        </ul>
+        <ul data-grid="small">
+            <li *ngFor="let icon of iconService.registry | iconPipe:query" class="list" data-col="3">
+                <ec-icon [name]="icon.name"></ec-icon>
+                {{icon.name}}
+            </li>
+        </ul>
+    </div>
+</div>

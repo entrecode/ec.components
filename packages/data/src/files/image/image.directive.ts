@@ -11,9 +11,13 @@ import { SdkService } from '../../sdk/sdk.service';
   exportAs: 'ecImage'
 })
 export class ImageDirective extends AssetDirective implements OnChanges {
+  /** If true, the image will be requested as thumb (square) */
   @Input() thumb: boolean;
+  /** The size that should be requested. */
   @Input() size = 200;
+  /** The assetID that should be loaded */
   @Input() ecImage: string;
+  /** Resolved asset url. */
   url: string;
 
   constructor(public sdk: SdkService, private elementRef: ElementRef) {

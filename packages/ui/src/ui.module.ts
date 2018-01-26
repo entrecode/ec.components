@@ -9,6 +9,7 @@ import { NotificationsModule } from './notifications/notifications.module';
 import { UtilityModule } from './utility/utility.module';
 import { SelectModule } from './select/select.module';
 import { InteractionModule } from './interaction/interaction.module';
+import { IconModule } from './icon/icon.module';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { InteractionModule } from './interaction/interaction.module';
     ListModule,
     SelectModule,
     InteractionModule,
+    IconModule,
   ],
   exports: [
     ReactiveFormsModule,
@@ -35,6 +37,7 @@ import { InteractionModule } from './interaction/interaction.module';
     FormModule,
     SelectModule,
     InteractionModule,
+    IconModule,
   ]
 })
 export class UiModule {

@@ -29,6 +29,7 @@ import { AceDemoComponent } from './ace-demo/ace-demo.component';
 import { ActionbarDemoComponent } from './actionbar-demo/actionbar-demo.component';
 import { InteractionDemoComponent } from './interaction-demo/interaction-demo.component';
 import { ResourceListDemoComponent } from './resource-list/resource-list-demo.component';
+import { IconDemoComponent } from './icon-demo/icon-demo.component';
 
 export const demoRoutes: Routes = [
   /*  {
@@ -43,9 +44,14 @@ export const demoRoutes: Routes = [
         pathMatch: 'full',
         redirectTo: 'form',
       },
+      /*
       {
         path: 'interaction',
         component: InteractionDemoComponent,
+      }, */
+      {
+        path: 'icons',
+        component: IconDemoComponent,
       },
       {
         path: 'list',

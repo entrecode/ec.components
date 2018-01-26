@@ -1,15 +1,19 @@
 import { Item } from '../item/item';
 
+/** Used for natural sorting of strings */
 const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
 
+/** Sorts strings (naturally) */
 export function sortString(a, b) {
   return collator.compare(a, b);
 }
 
+/** Sorts numbers */
 export function sortNumber(a, b) {
   return a - b;
 }
 
+/** Sorts booleans */
 export function sortBoolean(a, b) {
   return a ? -1 : 1;
 }
@@ -35,8 +39,8 @@ export abstract class Sorter<T> {
       return;
     }
     const types = items
-    .map(item => typeof item.sort(property))
-    .filter((item, index, _items) => _items.indexOf(item) === index);
+      .map(item => typeof item.sort(property))
+      .filter((item, index, _items) => _items.indexOf(item) === index);
     if (types.length > 1) {
       console.warn('cannot sort items because they contain multiple types:', types);
       return;

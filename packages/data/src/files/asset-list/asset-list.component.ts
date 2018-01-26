@@ -9,7 +9,7 @@ import { SdkService } from '../../sdk/sdk.service';
 import AssetResource from 'ec.sdk/lib/resources/datamanager/AssetResource';
 import PublicAssetResource from 'ec.sdk/lib/resources/publicAPI/PublicAssetResource';
 
-/** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent */
+/** Displays an AssetList. Subscribes to uploads from the fileServices and reloads the List. Extends ResourceList */
 @Component({
   selector: 'ec-asset-list',
   templateUrl: '../../../../ui/src/list/list.component.html'
@@ -26,7 +26,7 @@ export class AssetListComponent extends ResourceListComponent<PublicAssetResourc
       this.list.load();
     })
   }
-
+  /** Creates the AssetList */
   createList(): AssetList {
     return new AssetList(this.config, this.sdk, this.fileService);
   }

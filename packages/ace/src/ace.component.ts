@@ -1,8 +1,8 @@
 import { Component, OnInit, ElementRef, ViewChild, Input, OnChanges, forwardRef } from '@angular/core';
 // import 'ace-builds/src-noconflict/ace.js';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+/** Workaround that expects ace to be imported somewhere else... */
 declare const ace: any;
-/** Wraps ace editor as angular component. Implements ControlValueAccessor! */
 @Component({
     selector: 'ec-ace',
     templateUrl: 'ace.component.html',
@@ -15,6 +15,7 @@ declare const ace: any;
         }
     ]
 })
+/** Wraps ace editor as angular component. Implements ControlValueAccessor! */
 export class AceComponent implements OnInit, OnChanges, ControlValueAccessor {
     /** The ace editor instance */
     editor: any;

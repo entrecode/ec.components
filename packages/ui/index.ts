@@ -25,4 +25,6 @@ export { WithLoader } from './src/loader/with-loader.interface'
 export { NotificationsComponent } from './src/notifications/notifications.component'
 export { NotificationsService } from './src/notifications/notifications.service'
 export { ErrorComponent } from './src/notifications/error/error.component'
+export { IconService } from './src/icon/icon.service'
 export { UiModule } from './src/ui.module'
+

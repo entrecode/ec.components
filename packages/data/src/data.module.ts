@@ -15,7 +15,6 @@ import { TypeConfigService } from './model-config/type-config.service';
 import { DatamanagerListComponent } from './datamanager-list/datamanager-list.component';
 import { ResourceListComponent } from './resource-list/resource-list.component';
 import { ModelListComponent } from './model-list/model-list.component';
-import { EditorComponent } from './editor.component';
 import { SdkModule } from './sdk/sdk.module';
 import { FilesModule } from './files/files.module';
 import { AuthModule } from './auth/auth.module';
@@ -31,7 +30,6 @@ import { EntryPopComponent } from './entry-pop/entry-pop.component';
     ModelListComponent,
     ResourceListComponent,
     EntrySelectComponent,
-    EditorComponent
   ],
   declarations: [
     EntryListComponent,
@@ -46,7 +44,6 @@ import { EntryPopComponent } from './entry-pop/entry-pop.component';
     DefaultEntryOutputComponent,
     CrudComponent,
     EntrySelectComponent,
-    EditorComponent
   ],
   imports: [
     CommonModule,
@@ -68,7 +65,6 @@ import { EntryPopComponent } from './entry-pop/entry-pop.component';
     ModelListComponent,
     ResourceListComponent,
     RouterModule,
-    EditorComponent,
     UiModule,
     SdkModule,
     FilesModule,

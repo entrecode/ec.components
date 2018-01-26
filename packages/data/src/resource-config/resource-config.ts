@@ -2,6 +2,7 @@ import moment from 'moment-es6';
 import { FieldConfig } from '../../../core/index';
 import { ListConfig } from '../../../core/src/list/list-config.interface';
 
+/** Save callback for resources. TBD */
 function onSave(form, value) {
   console.log('save resource form', form);
   const resource = form.getBody();
@@ -15,6 +16,7 @@ function onSave(form, value) {
   return value; // TODO create
 }
 
+/** Contains default configurations for all kinds of resources. Used by ResourceList and ResourceForm.  */
 export const resourceConfig: { [key: string]: ListConfig<any> } = {
   dataManager: {
     identifier: 'dataManagerID',

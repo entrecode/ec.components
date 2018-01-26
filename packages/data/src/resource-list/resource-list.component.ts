@@ -1,16 +1,13 @@
 import { Component, Input, OnChanges, Optional } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SdkService } from '../sdk/sdk.service';
-import { LoaderComponent } from '@ec.components/ui/src/loader/loader.component';
-import { LoaderService } from '@ec.components/ui/src/loader/loader.service';
-import { ListComponent } from '@ec.components/ui/src/list/list.component';
 import { Selection } from '@ec.components/core/src/selection/selection';
-import { NotificationsService } from '@ec.components/ui/src/notifications/notifications.service';
 import { ResourceList } from './resource-list';
 import Core from 'ec.sdk/lib/Core';
 import { resourceConfig } from '../resource-config/resource-config';
 import { ListConfig } from '../../../core';
 import ListResource, { filterOptions } from 'ec.sdk/lib/resources/ListResource';
+import { WithLoader, LoaderComponent, ListComponent, LoaderService, NotificationsService } from '@ec.components/ui';
 
 /** The ResourceListComponent is an extension of ListComponent for SDK ListResources.
  * It is meant to be extended and overriden the createList method. See e.g. AssetListComponent. */
@@ -19,7 +16,7 @@ import ListResource, { filterOptions } from 'ec.sdk/lib/resources/ListResource';
   templateUrl: '../../../ui/src/list/list.component.html'
 })
 export class ResourceListComponent<T> extends ListComponent<T>
-  implements OnChanges {
+  implements OnChanges, WithLoader {
   /** If listResource input is set, the given ListResource will be used directly and loading will be skipped. */
   @Input() listResource: ListResource;
   /** If true, only one item is selectable next */
