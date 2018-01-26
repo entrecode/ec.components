@@ -1,6 +1,8 @@
 <div class="ec-pop-container" [class.is-active]="active" [class.is-visible]="visible">
   <div class="ec-pop" *ngIf="active">
-    <button (click)="hide()" type="button" class="ec-pop__dismiss">&times;</button>
+    <button (click)="hide()" type="button" class="ec-pop__dismiss">
+      <ec-icon name="close-x-big"></ec-icon>
+    </button>
     <div class="ec-pop-body">
       <ec-entry-form [model]="model" [submitButton]="false" [loader]="popLoader" [config]="config"
                      (submitted)="!this.config?.keepPopOpen&&hide()" [entry]="entry" (deleted)="hide()"
@@ -11,19 +13,21 @@
         <ul class="nav__items">
           <li class="nav__item" *ngIf="config?.develop">
             <!--TODO placeholder config for 'code'-->
-            <button (click)="log(crudForm)" class="btn">code</button>
+            <button (click)="log(crudForm)" class="btn">
+              <ec-icon name="brackets"></ec-icon>
+            </button>
           </li>
           <li class="nav__item" *ngIf="hasMethod('delete')&&crudForm.isEditing()">
             <!--TODO placeholder config for 'löschen'-->
             <button (click)="crudForm.deleteEntry()" class="btn" type="button">
-              Löschen
+              <ec-icon name="trash"></ec-icon>
             </button>
           </li>
           <li class="nav__item" *ngIf="maySave(crudForm)">
             <!--TODO placeholder config for 'speichern'-->
             <button (click)="crudForm.submit()" [disabled]="crudForm.group?.invalid" type="button"
                     class="btn btn_save" [class.is-disabled]="crudForm.group?.invalid">
-              Speichern
+              <ec-icon name="save"></ec-icon>
             </button>
           </li>
         </ul>
