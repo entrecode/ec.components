@@ -3,7 +3,9 @@
     <nav class="nav">
       <a (click)="entryPop.create()" *ngIf="hasMethod('post')" class="btn">
         <span *ngIf="this.config?.createLabel">{{this.config?.createLabel}}</span>
-        <span *ngIf="!this.config?.createLabel">+</span>
+        <span *ngIf="!this.config?.createLabel">
+          <ec-icon name="add"></ec-icon>
+        </span>
       </a>
     </nav>
   </header>
