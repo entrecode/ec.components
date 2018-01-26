@@ -9,7 +9,7 @@ Displays an icon:
 The default icon set uses [ec-icons](https://icons.entrecode.de/). You have to embedd them to your index.html (or similar):
 
 ```html
-  <link rel="stylesheet" href="https://icons.entrecode.de/ec-icons-1.1.19.min.css" />
+  <link rel="stylesheet" href="https://icons.entrecode.de/ec-icons-3.0.0.min.css" />
 ```
 
 ## Using another icon set

@@ -6,7 +6,7 @@
                (columnClicked)="assetForm.edit($event);assetPop.show()" #assetList></ec-asset-list>
 <ec-pop class="ec-pop_drawer-right" #assetPop>
   <button type="button" (click)="assetPop.hide()">
-    <ec-icon name="close"></ec-icon>
+    <ec-icon name="close-x-big"></ec-icon>
   </button>
   <ec-form [config]="assetList.list?.config" #assetForm></ec-form>
 </ec-pop>
