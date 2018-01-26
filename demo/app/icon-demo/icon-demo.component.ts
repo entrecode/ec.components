@@ -1,5 +1,6 @@
 import { Component, OnInit, PipeTransform, Pipe, Injectable } from '@angular/core';
-import { types } from './types';
+import { IconService } from '@ec.components/ui/src/icon/icon.service';
+import { ecIcons } from '@ec.components/ui/src/icon/ec-icons';
 
 
 @Component({
@@ -8,9 +9,9 @@ import { types } from './types';
 })
 
 export class IconDemoComponent implements OnInit {
-    allIcons = types;
+    allIcons = ecIcons.map(icon => icon.type);
     query = '';
-    constructor() {
+    constructor(public iconService: IconService) {
     }
 
     ngOnInit() { }
