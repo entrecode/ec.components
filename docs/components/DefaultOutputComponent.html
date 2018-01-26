@@ -89,6 +89,9 @@
                                     <a href="../additional-documentation/ui.html" >UI</a>
                                 </li>
                                 <li class="link for-chapter">
+                                    <a href="../additional-documentation/ui/icons.html" >Icons</a>
+                                </li>
+                                <li class="link for-chapter">
                                     <a href="../additional-documentation/ui/notificationscomponent.html" >NotificationsComponent</a>
                                 </li>
                                 <li class="link for-chapter">
@@ -187,6 +190,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../modules/FormModule.html" >FormModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/IconModule.html" >IconModule</a>
                                 </li>
                                 <li class="link">
                                     <a href="../modules/InteractionModule.html" >InteractionModule</a>
@@ -309,6 +315,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/FormComponent.html" >FormComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/IconComponent.html" >IconComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/InputComponent.html" >InputComponent</a>
@@ -521,6 +530,9 @@
                                     <a href="../injectables/FormService.html" >FormService</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../injectables/IconService.html" >IconService</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/LoaderService.html" >LoaderService</a>
                                 </li>
                                 <li class="link">
@@ -567,6 +579,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/FormConfig.html" >FormConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/Icon.html" >Icon</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/InteractionConfig.html" >InteractionConfig</a>
@@ -738,6 +753,9 @@
                                            <a href="../additional-documentation/ui.html" >UI</a>
                                        </li>
                                        <li class="link for-chapter">
+                                           <a href="../additional-documentation/ui/icons.html" >Icons</a>
+                                       </li>
+                                       <li class="link for-chapter">
                                            <a href="../additional-documentation/ui/notificationscomponent.html" >NotificationsComponent</a>
                                        </li>
                                        <li class="link for-chapter">
@@ -836,6 +854,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../modules/FormModule.html" >FormModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/IconModule.html" >IconModule</a>
                                        </li>
                                        <li class="link">
                                            <a href="../modules/InteractionModule.html" >InteractionModule</a>
@@ -958,6 +979,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/FormComponent.html" >FormComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/IconComponent.html" >IconComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/InputComponent.html" >InputComponent</a>
@@ -1170,6 +1194,9 @@
                                            <a href="../injectables/FormService.html" >FormService</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../injectables/IconService.html" >IconService</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/LoaderService.html" >LoaderService</a>
                                        </li>
                                        <li class="link">
@@ -1216,6 +1243,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/FormConfig.html" >FormConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/Icon.html" >Icon</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/InteractionConfig.html" >InteractionConfig</a>
@@ -1556,8 +1586,8 @@ export class DefaultOutputComponent {
   &lt;span class&#x3D;&quot;ec-output_tag&quot; *ngSwitchCase&#x3D;&quot;&#x27;tag&#x27;&quot;&gt;{{item?.display(field.property)}}&lt;/span&gt;
 
   &lt;div *ngSwitchCase&#x3D;&quot;&#x27;boolean&#x27;&quot; class&#x3D;&quot;ec-output_boolean&quot; [class._true]&#x3D;&quot;item?.resolve(field.property)&quot;&gt;
-    &lt;span class&#x3D;&quot;ec-icon check&quot; *ngIf&#x3D;&quot;item?.resolve(field.property)&quot;&gt;&lt;/span&gt;
-    &lt;span class&#x3D;&quot;ec-icon subtract&quot; *ngIf&#x3D;&quot;!item?.resolve(field.property)&quot;&gt;&lt;/span&gt;
+    &lt;ec-icon name&#x3D;&quot;check&quot; *ngIf&#x3D;&quot;item?.resolve(field.property)&quot;&gt;&lt;/ec-icon&gt;
+    &lt;ec-icon name&#x3D;&quot;subtract&quot; *ngIf&#x3D;&quot;!item?.resolve(field.property)&quot;&gt;&lt;/ec-icon&gt;
   &lt;/div&gt;
 
   &lt;div class&#x3D;&quot;ec-output_mail&quot; *ngSwitchCase&#x3D;&quot;&#x27;email&#x27;&quot;&gt;
@@ -1590,8 +1620,7 @@ export class DefaultOutputComponent {
   &lt;span *ngSwitchDefault&gt;
     {{item?.display(field.property)}}
   &lt;/span&gt;
-&lt;/div&gt;
-</code></pre>
+&lt;/div&gt;</code></pre>
     </div>
 
     <div class="tab-pane fade" id="c-tree">
@@ -1617,8 +1646,8 @@ export class DefaultOutputComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div *ngIf="!item?.display(field.property)">  <!-- empty --></div><div [ngSwitch]="field.view" *ngIf="item&&item?.display(field.property)">  <!--<div [attr.view]="field.view" [attr.property]="field.property" #cells>-->  <ul class="ec-output_tags-list" *ngSwitchCase="\'tags\'">    <li *ngFor="let label of item?.display(field.property)">      <div class="tag">        {{label}}      </div>    </li>  </ul>  <span class="ec-output_tag" *ngSwitchCase="\'tag\'">{{item?.display(field.property)}}</span>  <div *ngSwitchCase="\'boolean\'" class="ec-output_boolean" [class._true]="item?.resolve(field.property)">    <span class="ec-icon check" *ngIf="item?.resolve(field.property)"></span>    <span class="ec-icon subtract" *ngIf="!item?.resolve(field.property)"></span>  </div>  <div class="ec-output_mail" *ngSwitchCase="\'email\'">    <a [href]="\'mailto:\'+item?.display(field.property)">{{item?.display(field.property)}}</a>  </div>  <div class="ec-output_url" *ngSwitchCase="\'url\'">    <a [href]="item?.display(field.property)">{{item?.display(field.property)}}</a>  </div>  <div class="ec-output_color" *ngSwitchCase="\'color\'">    <span class="ec-output_color-sample" [style.backgroundColor]="item?.display(field.property)"></span>    <span class="ec-output_color-property">{{item?.display(field.property)}}</span>  </div>  <div class="ec-output_avatar" *ngSwitchCase="\'avatar\'">    <img [src]="item?.display(field.property)">  </div>  <div class="ec-output_asset-preview" *ngSwitchCase="\'assetPreview\'">    <img [src]="item?.display(field.property)">  </div>  <ul class="ec-output_avatars-list" *ngSwitchCase="\'avatars\'">    <li *ngFor="let url of item?.display(field.property)">      <div class="ec-output_avatar">        <img [src]="url">      </div>    </li>  </ul>  <span *ngSwitchDefault>    {{item?.display(field.property)}}  </span></div></div>'
-    var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'ActionbarComponent', 'selector': 'ec-actionbar'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EditorComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'InteractionComponent', 'selector': 'ec-interaction'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
+        var COMPONENT_TEMPLATE = '<div><div *ngIf="!item?.display(field.property)">  <!-- empty --></div><div [ngSwitch]="field.view" *ngIf="item&&item?.display(field.property)">  <!--<div [attr.view]="field.view" [attr.property]="field.property" #cells>-->  <ul class="ec-output_tags-list" *ngSwitchCase="\'tags\'">    <li *ngFor="let label of item?.display(field.property)">      <div class="tag">        {{label}}      </div>    </li>  </ul>  <span class="ec-output_tag" *ngSwitchCase="\'tag\'">{{item?.display(field.property)}}</span>  <div *ngSwitchCase="\'boolean\'" class="ec-output_boolean" [class._true]="item?.resolve(field.property)">    <ec-icon name="check" *ngIf="item?.resolve(field.property)"></ec-icon>    <ec-icon name="subtract" *ngIf="!item?.resolve(field.property)"></ec-icon>  </div>  <div class="ec-output_mail" *ngSwitchCase="\'email\'">    <a [href]="\'mailto:\'+item?.display(field.property)">{{item?.display(field.property)}}</a>  </div>  <div class="ec-output_url" *ngSwitchCase="\'url\'">    <a [href]="item?.display(field.property)">{{item?.display(field.property)}}</a>  </div>  <div class="ec-output_color" *ngSwitchCase="\'color\'">    <span class="ec-output_color-sample" [style.backgroundColor]="item?.display(field.property)"></span>    <span class="ec-output_color-property">{{item?.display(field.property)}}</span>  </div>  <div class="ec-output_avatar" *ngSwitchCase="\'avatar\'">    <img [src]="item?.display(field.property)">  </div>  <div class="ec-output_asset-preview" *ngSwitchCase="\'assetPreview\'">    <img [src]="item?.display(field.property)">  </div>  <ul class="ec-output_avatars-list" *ngSwitchCase="\'avatars\'">    <li *ngFor="let url of item?.display(field.property)">      <div class="ec-output_avatar">        <img [src]="url">      </div>    </li>  </ul>  <span *ngSwitchDefault>    {{item?.display(field.property)}}  </span></div></div>'
+    var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'ActionbarComponent', 'selector': 'ec-actionbar'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EditorComponent', 'selector': ''},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'IconComponent', 'selector': 'ec-icon'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'InteractionComponent', 'selector': 'ec-interaction'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
     var DIRECTIVES = [{'name': 'AssetDirective', 'selector': '[ecAsset]'},{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'ImageDirective', 'selector': 'img [ecImage]'},{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'},{'name': 'ValidationOnBlurDirective', 'selector': '[validate-onblur]'}];
     var ACTUAL_COMPONENT = {'name': 'DefaultOutputComponent'};
 </script>

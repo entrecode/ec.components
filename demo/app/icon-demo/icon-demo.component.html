@@ -16,7 +16,7 @@
             </li>
         </ul>
         <ul data-grid="small">
-            <li *ngFor="let icon of iconService.icons | iconPipe:query" class="list" data-col="3">
+            <li *ngFor="let icon of iconService.registry | iconPipe:query" class="list" data-col="3">
                 <ec-icon [name]="icon.name"></ec-icon>
                 {{icon.name}}
             </li>

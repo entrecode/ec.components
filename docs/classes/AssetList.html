@@ -89,6 +89,9 @@
                                     <a href="../additional-documentation/ui.html" >UI</a>
                                 </li>
                                 <li class="link for-chapter">
+                                    <a href="../additional-documentation/ui/icons.html" >Icons</a>
+                                </li>
+                                <li class="link for-chapter">
                                     <a href="../additional-documentation/ui/notificationscomponent.html" >NotificationsComponent</a>
                                 </li>
                                 <li class="link for-chapter">
@@ -187,6 +190,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../modules/FormModule.html" >FormModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../modules/IconModule.html" >IconModule</a>
                                 </li>
                                 <li class="link">
                                     <a href="../modules/InteractionModule.html" >InteractionModule</a>
@@ -309,6 +315,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/FormComponent.html" >FormComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/IconComponent.html" >IconComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/InputComponent.html" >InputComponent</a>
@@ -521,6 +530,9 @@
                                     <a href="../injectables/FormService.html" >FormService</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../injectables/IconService.html" >IconService</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/LoaderService.html" >LoaderService</a>
                                 </li>
                                 <li class="link">
@@ -567,6 +579,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/FormConfig.html" >FormConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/Icon.html" >Icon</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/InteractionConfig.html" >InteractionConfig</a>
@@ -738,6 +753,9 @@
                                            <a href="../additional-documentation/ui.html" >UI</a>
                                        </li>
                                        <li class="link for-chapter">
+                                           <a href="../additional-documentation/ui/icons.html" >Icons</a>
+                                       </li>
+                                       <li class="link for-chapter">
                                            <a href="../additional-documentation/ui/notificationscomponent.html" >NotificationsComponent</a>
                                        </li>
                                        <li class="link for-chapter">
@@ -836,6 +854,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../modules/FormModule.html" >FormModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/IconModule.html" >IconModule</a>
                                        </li>
                                        <li class="link">
                                            <a href="../modules/InteractionModule.html" >InteractionModule</a>
@@ -958,6 +979,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/FormComponent.html" >FormComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/IconComponent.html" >IconComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/InputComponent.html" >InputComponent</a>
@@ -1170,6 +1194,9 @@
                                            <a href="../injectables/FormService.html" >FormService</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../injectables/IconService.html" >IconService</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/LoaderService.html" >LoaderService</a>
                                        </li>
                                        <li class="link">
@@ -1216,6 +1243,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/FormConfig.html" >FormConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/Icon.html" >Icon</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/InteractionConfig.html" >InteractionConfig</a>
@@ -1482,7 +1512,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">packages/data/src/files/asset-list/asset-list.ts:18</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">packages/data/src/files/asset-list/asset-list.ts:19</a></div>
                                         </td>
                                     </tr>
             
@@ -1550,7 +1580,8 @@ import AssetResource from &#x27;ec.sdk/lib/resources/datamanager/AssetResource&#
 export class AssetList extends ResourceList&lt;PublicAssetResource | AssetResource&gt; {
 
   constructor(config: ListConfig&lt;PublicAssetResource | AssetResource&gt;, protected sdk: SdkService, protected fileService: FileService) {
-    super(Object.assign(config, fileService.assetListConfig));
+    super(Object.assign({}, fileService.assetListConfig, config));
+    this.load(this.config);
   }
 
   /** Overrides the List load method. Instead of slicing the page out of all items, a datamanager request is made using the config.*/
@@ -1560,11 +1591,11 @@ export class AssetList extends ResourceList&lt;PublicAssetResource | AssetResour
     }
     this.useConfig(config);
     const loading &#x3D; this.sdk.api.assetList(this.getFilterOptions(this.config))
-    .then((list) &#x3D;&gt; {
-      this.use(list);
-    }).catch((err) &#x3D;&gt; {
-      this.error.next(err);
-    });
+      .then((list) &#x3D;&gt; {
+        this.use(list);
+      }).catch((err) &#x3D;&gt; {
+        this.error.next(err);
+      });
     this.loading.next(loading);
     return loading;
   }

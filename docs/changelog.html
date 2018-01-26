@@ -89,6 +89,9 @@
                                     <a href="./additional-documentation/ui.html" >UI</a>
                                 </li>
                                 <li class="link for-chapter">
+                                    <a href="./additional-documentation/ui/icons.html" >Icons</a>
+                                </li>
+                                <li class="link for-chapter">
                                     <a href="./additional-documentation/ui/notificationscomponent.html" >NotificationsComponent</a>
                                 </li>
                                 <li class="link for-chapter">
@@ -187,6 +190,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="./modules/FormModule.html" >FormModule</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./modules/IconModule.html" >IconModule</a>
                                 </li>
                                 <li class="link">
                                     <a href="./modules/InteractionModule.html" >InteractionModule</a>
@@ -309,6 +315,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="./components/FormComponent.html" >FormComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./components/IconComponent.html" >IconComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="./components/InputComponent.html" >InputComponent</a>
@@ -521,6 +530,9 @@
                                     <a href="./injectables/FormService.html" >FormService</a>
                                 </li>
                                 <li class="link">
+                                    <a href="./injectables/IconService.html" >IconService</a>
+                                </li>
+                                <li class="link">
                                     <a href="./injectables/LoaderService.html" >LoaderService</a>
                                 </li>
                                 <li class="link">
@@ -567,6 +579,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="./interfaces/FormConfig.html" >FormConfig</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./interfaces/Icon.html" >Icon</a>
                                 </li>
                                 <li class="link">
                                     <a href="./interfaces/InteractionConfig.html" >InteractionConfig</a>
@@ -738,6 +753,9 @@
                                            <a href="./additional-documentation/ui.html" >UI</a>
                                        </li>
                                        <li class="link for-chapter">
+                                           <a href="./additional-documentation/ui/icons.html" >Icons</a>
+                                       </li>
+                                       <li class="link for-chapter">
                                            <a href="./additional-documentation/ui/notificationscomponent.html" >NotificationsComponent</a>
                                        </li>
                                        <li class="link for-chapter">
@@ -836,6 +854,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="./modules/FormModule.html" >FormModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./modules/IconModule.html" >IconModule</a>
                                        </li>
                                        <li class="link">
                                            <a href="./modules/InteractionModule.html" >InteractionModule</a>
@@ -958,6 +979,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="./components/FormComponent.html" >FormComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./components/IconComponent.html" >IconComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="./components/InputComponent.html" >InputComponent</a>
@@ -1170,6 +1194,9 @@
                                            <a href="./injectables/FormService.html" >FormService</a>
                                        </li>
                                        <li class="link">
+                                           <a href="./injectables/IconService.html" >IconService</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="./injectables/LoaderService.html" >LoaderService</a>
                                        </li>
                                        <li class="link">
@@ -1216,6 +1243,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="./interfaces/FormConfig.html" >FormConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./interfaces/Icon.html" >Icon</a>
                                        </li>
                                        <li class="link">
                                            <a href="./interfaces/InteractionConfig.html" >InteractionConfig</a>
@@ -1316,7 +1346,18 @@
                    <div class="content-data">
 
 <h1 id="changelog">Changelog</h1>
-<p><a name="0.11.0">
+<p><a name="0.13.0"></p>
+<ul>
+<li>added auto generated id to all fields. Those ids are used in label#for and input#id. You should also reference this id in custom inputs to make the label clickable.</li>
+<li>added ec-icon component for more flexible icons.</li>
+</ul>
+<p>BREAKING CHANGES:</p>
+<ul>
+<li>COM-98: active/visible classes: renamed active to is-active, visible to is-visible and disabled to is-disabled</li>
+<li>COM-95: renamed is-sortable-active to is-sorted + added is-sorted-asc and is-sorted-desc</li>
+<li>COM-96: replaced all usages of ec-icon with new ec-icon component (nests one level deeper)</li>
+</ul>
+<p><a name="0.12.0">
 BREAKING CHANGE:</p>
 <ul>
 <li>form.component (and all children): renamed (submit) output to (submitted)</li>
