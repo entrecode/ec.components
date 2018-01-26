@@ -43,6 +43,8 @@ import { AceModule } from '../../packages/ace/index';
 import { InteractionDemoComponent } from './interaction-demo/interaction-demo.component';
 import { ActionbarModule } from '../../packages/ui/src/actionbar/actionbar.module';
 import { ResourceListDemoComponent } from './resource-list/resource-list-demo.component';
+import { IconDemoComponent } from './icon-demo/icon-demo.component';
+import { StringPipe } from './icon-demo/string.pipe';
 
 demoRoutes.unshift(
   {
@@ -87,6 +89,8 @@ demoRoutes.unshift(
     MediumEditorDemoComponent,
     TinymceDemoComponent,
     AceDemoComponent,
+    IconDemoComponent,
+    StringPipe
   ],
   entryComponents: [
     CoolStringComponent,

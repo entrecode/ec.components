@@ -16,7 +16,7 @@
        [class.is-filterable]="field.filterable">
 
     <a (click)="editFilter(filterPop)" class="ec-list-field-filterable-control" *ngIf="field.filterable">
-      <span class="ec-icon find"></span>
+      <ec-icon type="find"></ec-icon>
     </a>
 
     <span class="ec-list-field__title" (click)="field.sortable&&list.toggleSort(field.property)">

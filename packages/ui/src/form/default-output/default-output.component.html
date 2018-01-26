@@ -15,8 +15,8 @@
   <span class="ec-output_tag" *ngSwitchCase="'tag'">{{item?.display(field.property)}}</span>
 
   <div *ngSwitchCase="'boolean'" class="ec-output_boolean" [class._true]="item?.resolve(field.property)">
-    <span class="ec-icon check" *ngIf="item?.resolve(field.property)"></span>
-    <span class="ec-icon subtract" *ngIf="!item?.resolve(field.property)"></span>
+    <ec-icon type="check" *ngIf="item?.resolve(field.property)"></ec-icon>
+    <ec-icon type="subtract" *ngIf="!item?.resolve(field.property)"></ec-icon>
   </div>
 
   <div class="ec-output_mail" *ngSwitchCase="'email'">

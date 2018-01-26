@@ -6,6 +6,7 @@ import { GroupPipe } from './group.pipe';
 import { PaginationComponent } from './pagination/pagination.component';
 import { FormModule } from '../form/form.module';
 import { NgModule } from '@angular/core';
+import { IconModule } from '../icon/icon.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { NgModule } from '@angular/core';
   imports: [
     CommonModule,
     FormModule,
+    IconModule,
   ],
   exports: [
     ListComponent,

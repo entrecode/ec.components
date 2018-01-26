@@ -1,0 +1,18 @@
+<h1>Icon Demo</h1>
+<div data-grid="center">
+    <div class="input-group">
+        <span class="ec-icon find input-group__icon"></span>
+        <input type="text" placeholder="search for icon class..." class="input input_clear input_big is-lifted input_round" [(ngModel)]="query">
+    </div>
+</div>
+<div data-grid="center">
+    <div data-col="12 8-lg">
+
+        <ul data-grid="small">
+            <li *ngFor="let icon of allIcons | stringPipe:query" class="list" data-col="3">
+                <ec-icon [type]="icon"></ec-icon>
+                {{icon}}
+            </li>
+        </ul>
+    </div>
+</div>
