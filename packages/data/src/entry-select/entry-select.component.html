@@ -17,10 +17,20 @@
       <ec-crud [model]="model" *ngIf="selection&&crudPop.active" [config]="config" [selection]="selection" (columnClicked)="select($event)"
         #crud></ec-crud>
     </ec-pop>
+    <ec-pop class="ec-pop_dialog" #listPop>
+      <!-- TODO: make pop configurable -->
+      <nav>
+        <a (click)="listPop.hide()" class="btn btn_clear">
+          <ec-icon name="close-x-big"></ec-icon>
+        </a>
+      </nav>
+      <!-- TODO find way to embed close button to the pops that need it -->
+      <ec-crud [model]="model" *ngIf="listPop.active" [config]="config" [selection]="selection" (columnClicked)="select($event)"></ec-crud>
+    </ec-pop>
   </div>
   <!--TODO link to open a ec-pop with an ec-list like now in .select-options-->
   <nav class="ec-entry-select__controls">
-    <a href="" class="btn btn_clear">
+    <a (click)="listPop.show()" class="btn btn_clear">
       <ec-icon name="list-bullets"></ec-icon>
     </a>
   </nav>
