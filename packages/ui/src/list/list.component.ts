@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output, ViewEncapsulation, OnChanges } from '@angular/core';
 import { Collection, List, ListConfig, Selection } from '@ec.components/core';
 import { Item } from '@ec.components/core/src/item/item';
+import { PaginationConfig } from './pagination/pagination-config.interface';
 
 /**
  * The ListComponent will render a list containing the given items or collection.
@@ -30,6 +31,8 @@ export class ListComponent<T> implements OnChanges {
   @Output() selected: EventEmitter<Selection<T>> = new EventEmitter();
   /** The Instance of the List */
   @Input() list: List<T>;
+  /** Custom PaginationConfig */
+  @Input() paginationConfig: PaginationConfig;
 
   /** Changing items or collection will trigger reconstructing the list with the new items.
    * Changing the selection will reconstruct the selection */
@@ -51,9 +54,6 @@ export class ListComponent<T> implements OnChanges {
         this.selected.emit(selection);
       })
     }
-    /*this.list.update$.subscribe(() => {
-      this.list.load();
-    });*/
   }
 
   /** Column click handler. Triggers select.emit(item) with fallback to selection.toggle*/

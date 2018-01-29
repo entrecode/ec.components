@@ -5,6 +5,7 @@
 * can now configure the maximum visible items for 'tags' view via the maxItems option in the field config. The default value is 10.
 * added auto generated id to all fields. Those ids are used in label#for and input#id. You should also reference this id in custom inputs to make the label clickable.
 * added ec-icon component for more flexible icons.
+* added paginationConfig Input to ListComponent (+ all children like ResourceListComponent)
 
 BREAKING CHANGES:
 * COM-98: active/visible classes: renamed active to is-active, visible to is-visible and disabled to is-disabled

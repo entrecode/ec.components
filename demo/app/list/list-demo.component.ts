@@ -6,7 +6,7 @@ import { songs } from '../../assets/songs';
   selector: 'ec-list-demo',
   template: `
 <h2>Simple List</h2>
-<ec-list class="ec-list-card" [list]="mocked.lists.trees" #treeList [solo]="true"></ec-list>
+<ec-list class="ec-list-card" [list]="mocked.lists.trees" #treeList [solo]="true" [paginationConfig]="paginationConfig"></ec-list>
 <pre>
   {{treeList.list.config | json}}
 </pre>
@@ -22,7 +22,9 @@ export class ListDemoComponent {
   public mocked = mocked;
   public songs = mocked.lists.songs;
   private songArray = songs.songs;
-
+  public paginationConfig = {
+    hideFirstLast: true
+  }
   constructor() {
   }
 
