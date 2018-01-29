@@ -21,14 +21,14 @@ export class AssetList extends ResourceList<PublicAssetResource | AssetResource>
       return;
     }
     this.useConfig(config);
-    const loading = this.sdk.api.assetList(this.getFilterOptions(this.config))
+    this.promise = this.sdk.api.assetList(this.getFilterOptions(this.config))
       .then((list) => {
         this.use(list);
       }).catch((err) => {
         this.error.next(err);
       });
-    this.loading.next(loading);
-    return loading;
+    this.loading.next(this.promise);
+    return this.promise;
   }
 
 }

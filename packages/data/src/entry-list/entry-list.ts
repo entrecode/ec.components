@@ -32,12 +32,12 @@ export class EntryList extends ResourceList<EntryResource> {
       return;
     }
     this.useConfig(config);
-    const loading = this.sdk.api.entryList(this.model, this.getFilterOptions(this.config))
+    this.promise = this.sdk.api.entryList(this.model, this.getFilterOptions(this.config))
     .then((list) => {
       this.use(list);
     }).catch((err) => {
       this.error.next(err);
     });
-    this.loading.next(loading);
+    this.loading.next(this.promise);
   }
 }

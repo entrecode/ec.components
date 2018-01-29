@@ -61,7 +61,7 @@ export class ModelList extends ResourceList<ModelResource> {
       return;
     }
     this.useConfig(config);
-    const loading =
+    this.promise =
       this.resolveDatamanager()
         .then((datamanager) => {
           this.datamanager = datamanager;
@@ -71,8 +71,8 @@ export class ModelList extends ResourceList<ModelResource> {
         }).catch((err) => {
           this.error.next(err);
         });
-    this.loading.next(loading);
-    return loading;
+    this.loading.next(this.promise);
+    return this.promise;
   }
 
   public resolveDatamanager(): Promise<DataManagerResource> {

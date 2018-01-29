@@ -59,14 +59,14 @@ export class DatamanagerList extends ResourceList<DataManagerResource> {
       return;
     }
     this.useConfig(config);
-    const loading = this.sdk.datamanager.dataManagerList(this.getFilterOptions(this.config))
-    .then((list) => {
-      this.use(list);
-    }).catch((err) => {
-      this.error.next(err);
-    });
-    this.loading.next(loading);
-    return loading;
+    this.promise = this.sdk.datamanager.dataManagerList(this.getFilterOptions(this.config))
+      .then((list) => {
+        this.use(list);
+      }).catch((err) => {
+        this.error.next(err);
+      });
+    this.loading.next(this.promise);
+    return this.promise;
   }
 
 }

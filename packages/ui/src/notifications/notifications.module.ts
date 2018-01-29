@@ -4,6 +4,7 @@ import { NotificationsComponent } from './notifications.component';
 import { NotificationsService } from './notifications.service';
 import { PopModule } from '../pop/pop.module';
 import { ErrorComponent } from './error/error.component';
+import { IconModule } from '../icon/icon.module';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { ErrorComponent } from './error/error.component';
   imports: [
     CommonModule,
     PopModule,
+    IconModule,
   ],
   exports: [
     NotificationsComponent,

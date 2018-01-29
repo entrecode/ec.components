@@ -68,6 +68,9 @@ export class ResourceListComponent<T> extends ListComponent<T>
         return;
       }
       this.list = list;
+      if (this.list.promise) {
+        this.loaderService.wait(this.list.promise, this.loader);
+      }
       this.list.loading$.subscribe((promise: Promise<any>) => {
         this.loaderService.wait(promise, this.loader);
       });

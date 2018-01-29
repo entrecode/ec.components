@@ -3,16 +3,17 @@
           [active]="true"
           [visible]="true"
           class="ec-notification"
-          [ngClass]="'is-' + notification.type"
-          (click)="notifications.remove(notification)">
+          [ngClass]="'is-' + notification.type">
     <h6 class="ec-notification__title">{{notification.title}}</h6>
     <p class="ec-notification__message">{{notification.message}}</p>
-    <ec-error [error]="notification.error"></ec-error>
+    <ec-error *ngIf="notification.error" [error]="notification.error"></ec-error>
     <ul *ngIf="notification.error?.errors">
       <li *ngFor="let error of notification.error?.errors">
         <ec-error [error]="error"></ec-error>
       </li>
     </ul>
-    <a class="ec-notification__dismiss" (click)="notifications.remove(notification)">&times;</a>
+    <a class="ec-notification__dismiss" (click)="notifications.remove(notification)">
+      <ec-icon name="close-x"></ec-icon>
+    </a>
   </ec-pop>
 </div>

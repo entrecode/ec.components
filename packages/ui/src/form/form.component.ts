@@ -108,7 +108,8 @@ export class FormComponent implements OnChanges, WithLoader {
         }
         this.notificationService.emit({
           title: 'Fehler beim Speichern',
-          error: err
+          error: err,
+          sticky: true
         });
       });
     this.loaderService.wait(submit, this.loader || this.defaultLoader);

@@ -39,7 +39,7 @@ export class CrudComponent<T> implements OnInit, WithLoader {
   /** The Pop inside the template. */
   @ViewChild(EntryPopComponent) entryPop: EntryPopComponent;
   /** The lists loader */
-  @ViewChild('listLoader') loader: LoaderComponent;
+  @ViewChild(LoaderComponent) loader: LoaderComponent;
   /** Emits when a list element is clicked */
   @Output() columnClicked: EventEmitter<any> = new EventEmitter();
   /** Emits when the selection has changed */

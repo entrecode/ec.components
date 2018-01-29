@@ -17,6 +17,8 @@ export class ResourceList<T> extends List<T> {
   protected listResource: ListResource;
   /** Subject that should be nexted when loading begins */
   public loading: Subject<Promise<any>> = new Subject();
+  /** latest loading promise */
+  public promise: Promise<any>;
   /** Observable that is nexted when the list begins loading. */
   public loading$ = this.loading.asObservable();
   /** Subject that should be nexted when an error occurs */
@@ -61,10 +63,10 @@ export class ResourceList<T> extends List<T> {
       return;
     }
     const options = this.getFilterOptions(this.config);
-    const loading = this.api
+    this.promise = this.api
       .resourceList(this.relation, options)
       .then(list => this.use(list));
-    this.loading.next(loading);
+    this.loading.next(this.promise);
   }
 
   /** deletes all undefined values from given config and assigns it to this.config */
