@@ -15,6 +15,7 @@ import { ToggleComponent } from './toggle/toggle.component';
 import { CalendarComponent } from './datetime/calendar.component';
 import { LoaderModule } from '../loader/loader.module';
 import { IconModule } from '../icon/icon.module';
+import { MaxItemsPipe } from './max-items.pipe';
 
 @NgModule({
   entryComponents: [
@@ -30,6 +31,7 @@ import { IconModule } from '../icon/icon.module';
     MonthComponent,
     CalendarComponent,
     VisibleFieldsPipe,
+    MaxItemsPipe,
     ToggleComponent,
   ],
   imports: [
@@ -49,6 +51,7 @@ import { IconModule } from '../icon/icon.module';
     MonthComponent,
     PopModule,
     VisibleFieldsPipe,
+    MaxItemsPipe,
     IoModule,
     ToggleComponent,
   ],

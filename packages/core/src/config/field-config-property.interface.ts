@@ -80,6 +80,8 @@ export interface FieldConfigProperty {
   prefill?: any;
   /** Possible Values e.g. for a select */
   values?: any[];
+  /** Defines the maximum of visible item (for tags view or similar). Defaults to 10 */
+  maxItems?: number;
   /** Any other configuration properties*/
   [key: string]: any;
 }

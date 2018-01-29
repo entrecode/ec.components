@@ -4,11 +4,15 @@
 <div [ngSwitch]="field.view" *ngIf="item&&item?.display(field.property)">
   <!--<div [attr.view]="field.view" [attr.property]="field.property" #cells>-->
 
+
   <ul class="ec-output_tags-list" *ngSwitchCase="'tags'">
-    <li *ngFor="let label of item?.display(field.property)">
+    <li *ngFor="let label of item?.display(field.property) | maxItems:field.maxItems||10">
       <div class="tag">
         {{label}}
       </div>
+    </li>
+    <li class="tag" *ngIf="item?.display(field.property)?.length>(field.maxItems||10)">
+      ...
     </li>
   </ul>
 
