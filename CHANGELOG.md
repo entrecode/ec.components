@@ -10,6 +10,9 @@ BREAKING CHANGES:
 * COM-98: active/visible classes: renamed active to is-active, visible to is-visible and disabled to is-disabled
 * COM-95: renamed is-sortable-active to is-sorted + added is-sorted-asc and is-sorted-desc
 * COM-96: replaced all usages of ec-icon with new ec-icon component (nests one level deeper)
+* COM-45: removed range input from pagination, replaced with PaginationConfig with additional options (see docs)
+
+see attachment
 
 <a name="0.12.0">
 BREAKING CHANGE:

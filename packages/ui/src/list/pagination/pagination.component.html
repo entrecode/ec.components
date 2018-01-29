@@ -1,26 +1,35 @@
 <nav class="ec-pagination">
   <ul class="ec-pagination-controls">
-    <li class="ec-pagination-control ec-pagination-control_first"[class.is-disabled]="pagination?.isFirst()" #item>
-      <a (click)="pagination.first()" class="ec-pagination__item btn btn_clear"><span>&laquo;</span></a>
+    <li class="ec-pagination-control ec-pagination-control_first" [class.is-disabled]="pagination?.isFirst()" [hidden]="config.hideFirstLast">
+      <a (click)="pagination.first()" class="ec-pagination__item btn btn_clear">
+        <span>{{config?.firstLabel}}</span>
+      </a>
     </li>
-    <li class="ec-pagination-control ec-pagination-control_prev" [class.is-disabled]="pagination?.isFirst()" #item>
-      <a (click)="pagination.prev()" class="ec-pagination__item btn btn_clear"><span>&lsaquo;</span></a>
+    <li class="ec-pagination-control ec-pagination-control_prev" [class.is-disabled]="pagination?.isFirst()">
+      <a (click)="pagination.prev()" class="ec-pagination__item btn btn_clear">
+        <span>{{config?.prevLabel}}</span>
+      </a>
     </li>
   </ul>
-  <div [style.maxWidth.px]="containerWidth" #container class="ec-pagination-pages">
-    <ul [style.transform]="translation" #pages *ngIf="pagination?.pages">
-      <li *ngFor="let page of pagination.pages;let i = index">
-        <a (click)="pagination.select(i+1)" [class.is-active]="pagination.isActive(i+1)"
-           class="ec-pagination__item btn btn_clear" ><span>{{i+1}}</span></a>
+  <div #container class="ec-pagination-pages" [hidden]="config?.hidePages">
+    <ul #pageContainer *ngIf="pagination?.pages">
+      <li *ngFor="let page of pagination.pages;let i = index" #page>
+        <a (click)="pagination.select(i+1)" [class.is-active]="pagination.isActive(i+1)" class="ec-pagination__item btn btn_clear">
+          <span>{{i+1}}</span>
+        </a>
       </li>
     </ul>
   </div>
   <ul class="ec-pagination-controls">
-    <li class="ec-pagination-control ec-pagination-control_next" [class.is-disabled]="pagination?.isLast()" #item>
-      <a (click)="pagination.next()" class="ec-pagination__item btn btn_clear"><span>&rsaquo;</span></a>
+    <li class="ec-pagination-control ec-pagination-control_next" [class.is-disabled]="pagination?.isLast()">
+      <a (click)="pagination.next()" class="ec-pagination__item btn btn_clear">
+        <span>{{config?.nextLabel}}</span>
+      </a>
     </li>
-    <li class="ec-pagination-control ec-pagination-control_last" [class.is-disabled]="pagination?.isLast()">
-      <a (click)="pagination.last()" class="ec-pagination__item btn btn_clear"><span>&raquo;</span></a>
+    <li class="ec-pagination-control ec-pagination-control_last" [class.is-disabled]="pagination?.isLast()" [hidden]="config.hideFirstLast">
+      <a (click)="pagination.last()" class="ec-pagination__item btn btn_clear">
+        <span>{{config?.lastLabel}}</span>
+      </a>
     </li>
   </ul>
 </nav>

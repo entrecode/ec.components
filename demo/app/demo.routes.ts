@@ -30,6 +30,7 @@ import { ActionbarDemoComponent } from './actionbar-demo/actionbar-demo.componen
 import { InteractionDemoComponent } from './interaction-demo/interaction-demo.component';
 import { ResourceListDemoComponent } from './resource-list/resource-list-demo.component';
 import { IconDemoComponent } from './icon-demo/icon-demo.component';
+import { PaginationDemoComponent } from './pagination/pagination-demo.component';
 
 export const demoRoutes: Routes = [
   /*  {
@@ -68,6 +69,10 @@ export const demoRoutes: Routes = [
           {
             path: 'transforms',
             component: ListTransformsDemoComponent
+          },
+          {
+            path: 'pagination',
+            component: PaginationDemoComponent
           }
         ]
       },
