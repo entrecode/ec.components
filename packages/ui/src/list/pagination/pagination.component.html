@@ -1,12 +1,12 @@
 <nav class="ec-pagination">
   <ul class="ec-pagination-controls">
     <li class="ec-pagination-control ec-pagination-control_first" [class.is-disabled]="pagination?.isFirst()" [hidden]="config.hideFirstLast">
-      <a (click)="pagination.first()" class="ec-pagination__item btn btn_clear">
+      <a (click)="pagination.first()" class="ec-pagination__item">
         <span>{{config?.firstLabel}}</span>
       </a>
     </li>
     <li class="ec-pagination-control ec-pagination-control_prev" [class.is-disabled]="pagination?.isFirst()">
-      <a (click)="pagination.prev()" class="ec-pagination__item btn btn_clear">
+      <a (click)="pagination.prev()" class="ec-pagination__item">
         <span>{{config?.prevLabel}}</span>
       </a>
     </li>
@@ -14,7 +14,7 @@
   <div #container class="ec-pagination-pages" [hidden]="config?.hidePages">
     <ul #pageContainer *ngIf="pagination?.pages">
       <li *ngFor="let page of pagination.pages;let i = index" #page>
-        <a (click)="pagination.select(i+1)" [class.is-active]="pagination.isActive(i+1)" class="ec-pagination__item btn btn_clear">
+        <a (click)="pagination.select(i+1)" [class.is-active]="pagination.isActive(i+1)" class="ec-pagination__item">
           <span>{{i+1}}</span>
         </a>
       </li>
@@ -22,12 +22,12 @@
   </div>
   <ul class="ec-pagination-controls">
     <li class="ec-pagination-control ec-pagination-control_next" [class.is-disabled]="pagination?.isLast()">
-      <a (click)="pagination.next()" class="ec-pagination__item btn btn_clear">
+      <a (click)="pagination.next()" class="ec-pagination__item">
         <span>{{config?.nextLabel}}</span>
       </a>
     </li>
     <li class="ec-pagination-control ec-pagination-control_last" [class.is-disabled]="pagination?.isLast()" [hidden]="config.hideFirstLast">
-      <a (click)="pagination.last()" class="ec-pagination__item btn btn_clear">
+      <a (click)="pagination.last()" class="ec-pagination__item">
         <span>{{config?.lastLabel}}</span>
       </a>
     </li>

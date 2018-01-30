@@ -3,7 +3,9 @@
   display: flex;
   margin: rem(8) 0;
 
-  &__item {}
+  &__item {
+    @extend .btn, .btn.btn_clear !optional;
+  }
 }
 
 .ec-pagination-controls {
@@ -41,6 +43,11 @@
     margin: 0;
     padding: 0;
     display: flex;
+  }
+
+  .ec-pagination__item {
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 

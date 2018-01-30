@@ -37,7 +37,7 @@
     }
 
     &.is-sortable {
-      &-active {
+      &.is-sorted {
         font-weight: bold;
       }
     }
@@ -80,6 +80,24 @@
   &:after {
     border-top-color: getColor(text, lightest);
     bottom: rem(-4);
+  }
+}
+
+.ec-list {
+  .is-sorted-asc {
+    .ec-list-sortable-indicator {
+      &:after {
+        border-top-color: getColor(text);
+      }
+    }
+  }
+
+  .is-sorted-desc {
+    .ec-list-sortable-indicator {
+      &:before {
+        border-bottom-color: getColor(text);
+      }
+    }
   }
 }
 

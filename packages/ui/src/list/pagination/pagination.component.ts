@@ -1,9 +1,8 @@
-import { Component, ElementRef, Input, ViewChild, ViewChildren, QueryList } from '@angular/core';
+import {Component, ElementRef, Input, ViewChild, ViewChildren, QueryList, AfterViewInit} from '@angular/core';
 import { Pagination } from '@ec.components/core';
 import { OnInit } from '@angular/core';
 import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 import { PaginationConfig } from './pagination-config.interface';
-import { AfterViewInit } from '../../../../vc/node_modules/@angular/core/src/metadata/lifecycle_hooks';
 
 /**
  * The Pagination component renders a given instance of the Pagination class.
