@@ -33,7 +33,9 @@
     font-weight: bold;
 
     .ec-list-field__title {
-      display: flex;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     &.is-sortable {
@@ -62,6 +64,7 @@
   position: relative;
   width: rem(12);
   align-self: center;
+  flex-grow: 0;
 
   &:after,
   &:before {

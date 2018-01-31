@@ -7,6 +7,16 @@
   .ec-pop-header {
     @extend .title !optional;
     flex-grow: 0;
+
+    .ec-pop__dismiss {
+      position: initial;
+      right: auto;
+      left: auto;
+
+      &:only-child {
+        margin-left: auto;
+      }
+    }
   }
 
   .ec-pop-body {
