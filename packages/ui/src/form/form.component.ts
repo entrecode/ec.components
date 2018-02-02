@@ -20,7 +20,7 @@ export class FormComponent implements OnChanges, WithLoader {
   /** The current (angular) form group. */
   public group: FormGroup;
   /** You can also use a FormConfig/ItemConfig as input (with defined fields property) */
-  @Input() readonly config: FormConfig<any>;
+  @Input() config: FormConfig<any>;
   /** You can also use an Item as input */
   @Input() readonly item: Item<any>;
   /** If you pass an object to value, the form will generate an item from it. */

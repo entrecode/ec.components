@@ -1,19 +1,18 @@
 import moment from 'moment-es6';
-import { FieldConfig } from '../../../core/index';
-import { ListConfig } from '../../../core/src/list/list-config.interface';
+import { FieldConfig, Form, ListConfig } from '@ec.components/core/index';
 
 /** Save callback for resources. TBD */
 function onSave(form, value) {
-  console.log('save resource form', form);
   const resource = form.getBody();
   form.serialize(value, resource);
   if ('save' in resource) {
+    console.log('save', resource);
     Object.assign(resource, value);
     return resource.save();
   } else {
     console.log('create', resource);
   }
-  return value; // TODO create
+  return resource; // TODO create
 }
 
 /** Contains default configurations for all kinds of resources. Used by ResourceList and ResourceForm.  */

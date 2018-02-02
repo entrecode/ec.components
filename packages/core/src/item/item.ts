@@ -174,6 +174,7 @@ export class Item<T> {
 
   /** Saves the given value. Run serializers before assigning the new value. */
   save(value: T = this.body): Promise<Item<T>> {
+    this.body = Object.assign(this.resolve() || {}, value);
     if (this.config.onSave) {
       return Promise.resolve(this.config.onSave(this, value))
         // return Promise.resolve(this.config.onSave(this, this.serialize(value)))
@@ -182,7 +183,6 @@ export class Item<T> {
           return this;
         });
     }
-    Object.assign(this.resolve() || {}, value);
     // Object.assign(this.resolve() || {}, this.serialize(value));
     return Promise.resolve(this);
   }
