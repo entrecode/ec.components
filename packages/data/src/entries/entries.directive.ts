@@ -5,8 +5,7 @@ import { Directive, Input, OnChanges } from '@angular/core';
 import { SdkService } from '../sdk/sdk.service';
 import EntryList from 'ec.sdk/lib/resources/publicAPI/EntryList';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
-import { LoaderComponent } from '../../../ui/src/loader/loader.component';
-import { WithLoader } from '@ec.components/ui';
+import { WithLoader, LoaderComponent } from '@ec.components/ui';
 
 // import { filterOptions } from 'ec.sdk/lib/resources/ListResource';
 

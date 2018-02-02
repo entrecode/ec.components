@@ -3,7 +3,7 @@
  */
 import { Field } from './field';
 
-fdescribe('Field', () => {
+describe('Field', () => {
 
   it('should construct without config', () => {
     const field = new Field('name', {});
