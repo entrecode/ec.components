@@ -52,15 +52,6 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
     identifier: 'modelID',
     label: 'title',
     onSave,
-    /* onSave: (item, value) => {
-          const model = item.getBody();
-          item.serialize(value, model instanceof ModelResource);
-          Object.assign(model, value);
-          if (model instanceof model) {
-            return model.save();
-          }
-          return value; // TODO create
-        }, */
     fields: {
       hexColor: {
         label: '#',
@@ -142,13 +133,10 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
         view: 'color',
         sortable: true
       },
-      /*
       shortID: {
-        label: 'shortID'
+        label: 'shortID',
+        list: false
       },
-      appID: {
-        label: 'ID'
-      }, */
       title: {
         label: 'App',
         view: 'string',
@@ -184,6 +172,7 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
   },
   asset: {
     identifier: 'assetID',
+    onSave,
     fields: {
       assetID: {
         label: 'assetID',
@@ -223,6 +212,7 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
     }
   },
   client: {
+    onSave,
     identifier: 'clientID',
     fields: {
       hexColor: {
@@ -231,10 +221,16 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
         sortable: true
       },
       clientID: {
-        label: 'clientID'
+        label: 'clientID',
+        view: 'string'
       },
       callbackURL: {
-        label: 'Callback'
+        label: 'Callback URL',
+        view: 'string',
+      },
+      tokenMethod: {
+        label: 'Token Method',
+        view: 'tags'
       },
       disableStrategies: {
         view: 'tags'
@@ -242,6 +238,7 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
     }
   },
   role: {
+    onSave,
     identifier: 'roleID',
     fields: {
       roleID: {
@@ -250,6 +247,7 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
     }
   },
   codeSource: {
+    onSave,
     identifier: 'codeSourceID',
     fields: {
       codeSourceID: {
@@ -266,6 +264,7 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
     }
   },
   dataSource: {
+    onSave,
     identifier: 'dataSourceID',
     fields: {
       dataSourceID: {
@@ -274,6 +273,7 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
     }
   },
   target: {
+    onSave,
     identifier: 'targetID',
     fields: {
       targetType: {
@@ -287,6 +287,7 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
     }
   },
   group: {
+    onSave,
     identifier: 'groupID',
     fields: {
       name: {

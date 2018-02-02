@@ -27,8 +27,8 @@ export class ResourceListDemoComponent implements OnInit {
 
   ngOnInit() {
     this.sdk.ready.then(() => {
-      /* const resource = this.sdk.datamanager; */
-      const resource = new Apps('stage');
+      const resource = this.sdk.datamanager;
+      /* const resource = new Apps('stage'); */
       /* const resource = new Accounts('stage'); */
       this.use(resource);
     });
