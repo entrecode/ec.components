@@ -4,10 +4,18 @@
 <ec-form #resourceForm></ec-form>
 
 <ec-tabs *ngIf="symbols&&symbols.length&&relation">
-  <ec-tab [label]="symbol" *ngFor="let symbol of symbols" (activated)="useRelation(symbol)"></ec-tab>
+  <ec-tab [label]="symbol" *ngFor="let symbol of symbols" (activated)="useRelation(symbol)" [selected]="symbol===relation"></ec-tab>
 </ec-tabs>
 
+<ec-pop class="ec-pop_dialog" #createPop>
+  <a (click)="createPop.hide()" class="btn">
+    <ec-icon name="close-x"></ec-icon>
+  </a>
+  <ec-resource-form [api]="api" [relation]="relation"></ec-resource-form>
+</ec-pop>
+<a class="btn outline" (click)="createPop.show()">
+  <ec-icon name="add"></ec-icon>
+</a>
 <ec-resource-list #resourceList [config]="{disableSelection:true}" [api]="api" [relation]="relation" (columnClicked)="select($event)"></ec-resource-list>
-
 
 <ec-notifications></ec-notifications>

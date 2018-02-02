@@ -10,7 +10,7 @@ function onSave(form, value) {
     Object.assign(resource, value);
     return resource.save();
   } else {
-    console.log('create', resource);
+    console.log('would now create', resource);
   }
   return resource; // TODO create
 }
@@ -56,7 +56,8 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
       hexColor: {
         label: '#',
         view: 'color',
-        sortable: true
+        sortable: true,
+        prefill: '#ffffff'
       },
       title: {
         label: 'Model',
@@ -69,6 +70,17 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
         view: 'string',
         filterable: true /*,
             sortable: true,*/
+      },
+      locales: {
+        list: false,
+        prefill: []
+      },
+      fields: {
+        view: 'tags',
+        display: (value) => {
+          return value.map(field => field.title)
+        },
+        prefill: []
       },
       created: {
         label: 'Datum',
@@ -180,7 +192,8 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
         form: false
       },
       title: {
-        label: 'Titel'
+        label: 'Titel',
+        view: 'string'
       },
       created: {
         label: 'Datum',
@@ -192,6 +205,7 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
       files: {
         label: 'Dateien',
         view: 'tag',
+        form: false,
         display: value => value.length
       },
       thumb: {
@@ -211,9 +225,32 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
       },
     }
   },
-  client: {
+  assetGroup: { // https://doc.entrecode.de/en/develop/resources/dm-assetgroup/
+    identifier: 'assetGroupID',
     onSave,
+    fields: {
+      assetGroupID: {
+        label: 'assetGroupID',
+        view: 'string'
+      },
+      public: {
+        view: 'boolean'
+      },
+      settings: {
+        view: 'json',
+        display: (json) => JSON.stringify(json),
+        prefill: {}
+      },
+      policies: {
+        view: 'tags',
+        display: (policies) => policies.map(p => p.method),
+        prefill: []
+      }
+    }
+  },
+  client: {
     identifier: 'clientID',
+    onSave,
     fields: {
       hexColor: {
         label: '#',
@@ -238,17 +275,39 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
     }
   },
   role: {
-    onSave,
     identifier: 'roleID',
+    onSave,
     fields: {
-      roleID: {
-        label: 'roleID'
+      name: {
+        label: 'Name',
+        view: 'string',
+        filterable: true,
+        sortable: true
+      },
+      label: {
+        label: 'Label',
+        view: 'string'
+      },
+      accounts: {
+        label: 'accounts',
+        view: 'tags',
+        prefill: []
+      },
+      addRegistered: {
+        label: 'addRegistered',
+        view: 'boolean'/* ,
+        prefill: false */
+      },
+      addUnregistered: {
+        label: 'addUnregistered',
+        view: 'boolean'/* ,
+        prefill: false */
       }
     }
   },
   codeSource: {
-    onSave,
     identifier: 'codeSourceID',
+    onSave,
     fields: {
       codeSourceID: {
         label: 'ID'
@@ -264,8 +323,8 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
     }
   },
   dataSource: {
-    onSave,
     identifier: 'dataSourceID',
+    onSave,
     fields: {
       dataSourceID: {
         label: 'ID'
@@ -273,8 +332,8 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
     }
   },
   target: {
-    onSave,
     identifier: 'targetID',
+    onSave,
     fields: {
       targetType: {
         label: 'Typ',
@@ -287,8 +346,8 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
     }
   },
   group: {
-    onSave,
     identifier: 'groupID',
+    onSave,
     fields: {
       name: {
         label: 'Name'

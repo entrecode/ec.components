@@ -50,7 +50,7 @@ export class Item<T> {
 
   /** Assigns the given config to the existing via Object.assign */
   useConfig(config: ItemConfig<T>) {
-    Object.assign(this.config, config);
+    this.config = Object.assign(this.config, config);
   }
 
   /** Returns the item's config */

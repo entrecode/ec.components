@@ -19,8 +19,10 @@ export class FormComponent implements OnChanges, WithLoader {
   protected form: Form<any>;
   /** The current (angular) form group. */
   public group: FormGroup;
+  /** The current form config */
+  public config: FormConfig<any>;
   /** You can also use a FormConfig/ItemConfig as input (with defined fields property) */
-  @Input() config: FormConfig<any>;
+  @Input('config') configInput: FormConfig<any>;
   /** You can also use an Item as input */
   @Input() readonly item: Item<any>;
   /** If you pass an object to value, the form will generate an item from it. */
@@ -49,7 +51,8 @@ export class FormComponent implements OnChanges, WithLoader {
   /** On change, the form instance is (re)created by combining all inputs.
    * If no item is given, an empty form is created using the config.
    * You can also pass just an item to use its config and body.*/
-  ngOnChanges() {
+  ngOnChanges(changes?) {
+    this.config = Object.assign({}, this.config || {}, this.configInput || {});
     this.init();
   }
 

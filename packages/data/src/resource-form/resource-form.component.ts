@@ -25,8 +25,26 @@ export class ResourceFormComponent extends FormComponent implements OnInit, OnCh
     ngOnInit() {
         this.initConfig();
     }
-    ngOnChanges() {
+    ngOnChanges(changes?) {
+        /* if (changes && changes.relation) {
+            delete this.config;
+        } */
         this.initConfig();
+    }
+
+    saveResource(api, relation) {
+        return (form, value) => {
+            const resource = form.getBody();
+            form.serialize(value, resource);
+            if ('save' in resource) {
+                Object.assign(resource, value);
+                return resource.save();
+            } else {
+                return api.create(relation, value).then(created => {
+                    return created;
+                });
+            }
+        }
     }
 
     initConfig() {
@@ -37,9 +55,16 @@ export class ResourceFormComponent extends FormComponent implements OnInit, OnCh
         }
         this.config = Object.assign(
             {},
+            this.config || {},
             resourceConfig[this.relation] || {},
-            this.config || {}
+            this.configInput || {},
+            {
+                onSave: this.saveResource(this.api, this.relation)
+            }
         );
+/*         if (this.form) {
+            this.form.useConfig(this.config);
+        } */
         super.init();
     }
 }
