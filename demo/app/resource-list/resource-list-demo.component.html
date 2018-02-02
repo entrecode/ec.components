@@ -1,7 +1,7 @@
 <!-- <ul>
   <li *ngFor="let resource of history" (click)="goBack(resource)">{{resource}}</li>
 </ul> -->
-<ec-form #resourceForm></ec-form>
+<ec-resource-form [value]="api" [relation]="symbol" #resourceForm></ec-resource-form>
 
 <ec-tabs *ngIf="symbols&&symbols.length&&relation">
   <ec-tab [label]="symbol" *ngFor="let symbol of symbols" (activated)="useRelation(symbol)" [selected]="symbol===relation"></ec-tab>

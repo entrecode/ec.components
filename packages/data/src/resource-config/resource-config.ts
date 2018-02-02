@@ -1,26 +1,11 @@
 import moment from 'moment-es6';
 import { FieldConfig, Form, ListConfig } from '@ec.components/core/index';
 
-/** Save callback for resources. TBD */
-function onSave(form, value) {
-  const resource = form.getBody();
-  form.serialize(value, resource);
-  if ('save' in resource) {
-    console.log('save', resource);
-    Object.assign(resource, value);
-    return resource.save();
-  } else {
-    console.log('would now create', resource);
-  }
-  return resource; // TODO create
-}
-
 /** Contains default configurations for all kinds of resources. Used by ResourceList and ResourceForm.  */
 export const resourceConfig: { [key: string]: ListConfig<any> } = {
   dataManager: {
     identifier: 'dataManagerID',
     label: 'title',
-    onSave,
     fields: {
       hexColor: {
         label: '#',
@@ -51,7 +36,6 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
   model: {
     identifier: 'modelID',
     label: 'title',
-    onSave,
     fields: {
       hexColor: {
         label: '#',
@@ -93,7 +77,6 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
   account: {
     identifier: 'accountID',
     label: 'email',
-    onSave,
     fields: {
       email: {
         label: 'Email',
@@ -120,7 +103,6 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
   template: {
     identifier: 'templateID',
     label: 'name',
-    onSave,
     fields: {
       name: {
         label: 'Template',
@@ -138,7 +120,6 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
   },
   app: {
     identifier: 'appID',
-    onSave,
     fields: {
       hexColor: {
         label: '#',
@@ -166,7 +147,6 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
   },
   platform: {
     identifier: 'platformID',
-    onSave,
     fields: {
       title: {
         label: 'Platform',
@@ -184,12 +164,12 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
   },
   asset: {
     identifier: 'assetID',
-    onSave,
     fields: {
       assetID: {
         label: 'assetID',
         list: false,
-        form: false
+        form: false,
+        immutable: true
       },
       title: {
         label: 'Titel',
@@ -200,15 +180,18 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
         sortable: true,
         display: value => moment(value).format('DD.MM.YY'),
         group: value => moment(value).format('MMMM YYYY'),
-        form: false
+        form: false,
+        immutable: true
       },
       files: {
         label: 'Dateien',
         view: 'tag',
         form: false,
-        display: value => value.length
+        display: value => value.length,
+        immutable: true
       },
       thumb: {
+        form: false,
         label: 'Vorschau',
         view: 'avatar',
         resolve: (asset) => {
@@ -217,7 +200,7 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
           }
           return asset.getImageUrl(200);
         },
-        readOnly: true
+        immutable: true
       },
       tags: {
         label: 'Tags',
@@ -227,7 +210,6 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
   },
   assetGroup: { // https://doc.entrecode.de/en/develop/resources/dm-assetgroup/
     identifier: 'assetGroupID',
-    onSave,
     fields: {
       assetGroupID: {
         label: 'assetGroupID',
@@ -250,7 +232,6 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
   },
   client: {
     identifier: 'clientID',
-    onSave,
     fields: {
       hexColor: {
         label: '#',
@@ -276,7 +257,6 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
   },
   role: {
     identifier: 'roleID',
-    onSave,
     fields: {
       name: {
         label: 'Name',
@@ -307,7 +287,6 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
   },
   codeSource: {
     identifier: 'codeSourceID',
-    onSave,
     fields: {
       codeSourceID: {
         label: 'ID'
@@ -324,7 +303,6 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
   },
   dataSource: {
     identifier: 'dataSourceID',
-    onSave,
     fields: {
       dataSourceID: {
         label: 'ID'
@@ -333,7 +311,6 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
   },
   target: {
     identifier: 'targetID',
-    onSave,
     fields: {
       targetType: {
         label: 'Typ',
@@ -347,7 +324,6 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
   },
   group: {
     identifier: 'groupID',
-    onSave,
     fields: {
       name: {
         label: 'Name'

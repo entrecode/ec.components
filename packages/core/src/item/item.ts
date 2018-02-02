@@ -151,11 +151,20 @@ export class Item<T> {
 
   }
 
+  deleteImmutableProperties(value = this.body) {
+    Object.keys(this.config.fields).forEach(property => {
+      if (this.config.fields[property].immutable) {
+        delete value[property];
+      }
+    });
+  }
+
   /** Transforms the given field's value for serialization when saving. */
-  serialize(value, put: boolean = false): any {
+  serialize(value = this.body, put: boolean = false): any {
     if (put) {
       value = this.pickWriteOnly(value);
     }
+    this.deleteImmutableProperties(value);
     /** Run the remaining properties through serializers */
     Object.keys(value).map((property) => {
       Object.assign(value, {

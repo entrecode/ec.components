@@ -14,6 +14,7 @@ import { Apps, Accounts } from 'ec.sdk';
   templateUrl: 'resource-list-demo.component.html'
 })
 export class ResourceListDemoComponent implements OnInit {
+  symbol: string;
   history: any[] = [];
   activeTab: TabComponent;
   config: ListConfig<any>;
@@ -47,6 +48,7 @@ export class ResourceListDemoComponent implements OnInit {
 
   use(resource) {
     this.api = resource;
+    this.symbol = this.relation;
     console.log('use api', this.api);
     this.symbols = Object.keys(this.api[Symbol.for('relations')]);
     console.log('symbols', this.symbols);
