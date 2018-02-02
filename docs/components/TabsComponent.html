@@ -1457,6 +1457,9 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#initTabs">initTabs</a>
+                            </li>
+                            <li>
                                 <a href="#isSelected">isSelected</a>
                             </li>
                             <li>
@@ -1584,6 +1587,43 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
+                            <a name="initTabs"></a>
+                            <span class="name">
+                                <b>
+                                initTabs
+                                </b>
+                                <a href="#initTabs"><span class="fa fa-link"></span></a>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>initTabs()</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">packages/ui/src/utility/tabs/tabs.component.ts:37</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
                             <a name="isSelected"></a>
                             <span class="name">
                                 <b>
@@ -1602,7 +1642,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">packages/ui/src/utility/tabs/tabs.component.ts:59</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">packages/ui/src/utility/tabs/tabs.component.ts:63</a></div>
                                 </td>
                             </tr>
     
@@ -1670,14 +1710,12 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">packages/ui/src/utility/tabs/tabs.component.ts:38</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">packages/ui/src/utility/tabs/tabs.component.ts:47</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-description"><p>After the content has been inited, the tab children will be processed. </p>
-    </div>
     
                                 <div class="io-description">
                                     <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -1709,7 +1747,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">packages/ui/src/utility/tabs/tabs.component.ts:48</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">packages/ui/src/utility/tabs/tabs.component.ts:52</a></div>
                                 </td>
                             </tr>
     
@@ -1940,8 +1978,7 @@ export class TabsComponent implements AfterContentInit {
     }
   }
 
-  /** After the content has been inited, the tab children will be processed. */
-  ngAfterContentInit() {
+  initTabs() {
     this.tabs.forEach((tab) &#x3D;&gt; {
       tab.parent &#x3D; this;
       if (tab.el.nativeElement.getAttribute(&#x27;selected&#x27;) !&#x3D;&#x3D; null) {
@@ -1950,6 +1987,11 @@ export class TabsComponent implements AfterContentInit {
     });
     this.selectByUrl(this.router.url);
   }
+
+  ngAfterContentInit() {
+    this.initTabs();
+  }
+
   /** Selects the given tab (Component). */
   select(tab: TabComponent) {
     if (this.selected) {

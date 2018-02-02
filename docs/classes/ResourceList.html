@@ -1587,7 +1587,7 @@ method to call the SDK method for loading the desired list! (see EntryList for e
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="162" class="link-to-prism">packages/data/src/resource-list/resource-list.ts:162</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="163" class="link-to-prism">packages/data/src/resource-list/resource-list.ts:163</a></div>
                                         </td>
                                     </tr>
             
@@ -1664,7 +1664,7 @@ method to call the SDK method for loading the desired list! (see EntryList for e
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="141" class="link-to-prism">packages/data/src/resource-list/resource-list.ts:141</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="142" class="link-to-prism">packages/data/src/resource-list/resource-list.ts:142</a></div>
                                         </td>
                                     </tr>
             
@@ -1823,7 +1823,7 @@ method to call the SDK method for loading the desired list! (see EntryList for e
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">packages/data/src/resource-list/resource-list.ts:103</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">packages/data/src/resource-list/resource-list.ts:104</a></div>
                                         </td>
                                     </tr>
             
@@ -1958,7 +1958,7 @@ method to call the SDK method for loading the desired list! (see EntryList for e
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="132" class="link-to-prism">packages/data/src/resource-list/resource-list.ts:132</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">packages/data/src/resource-list/resource-list.ts:133</a></div>
                                         </td>
                                     </tr>
             
@@ -2038,7 +2038,7 @@ method to call the SDK method for loading the desired list! (see EntryList for e
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">packages/data/src/resource-list/resource-list.ts:85</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">packages/data/src/resource-list/resource-list.ts:86</a></div>
                                         </td>
                                     </tr>
             
@@ -2107,7 +2107,7 @@ method to call the SDK method for loading the desired list! (see EntryList for e
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">packages/data/src/resource-list/resource-list.ts:73</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">packages/data/src/resource-list/resource-list.ts:74</a></div>
                                         </td>
                                     </tr>
             
@@ -2559,7 +2559,8 @@ export class ResourceList&lt;T&gt; extends List&lt;T&gt; {
     const options &#x3D; this.getFilterOptions(this.config);
     this.promise &#x3D; this.api
       .resourceList(this.relation, options)
-      .then(list &#x3D;&gt; this.use(list));
+      .then(list &#x3D;&gt; this.use(list))
+      .catch(err &#x3D;&gt; this.error.next(err));
     this.loading.next(this.promise);
   }
 

@@ -1776,7 +1776,7 @@ It is meant to be extended and overriden the createList method. See e.g. AssetLi
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">packages/data/src/resource-list/resource-list.component.ts:102</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">packages/data/src/resource-list/resource-list.component.ts:105</a></div>
                                 </td>
                             </tr>
     
@@ -1853,7 +1853,7 @@ It is meant to be extended and overriden the createList method. See e.g. AssetLi
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">packages/data/src/resource-list/resource-list.component.ts:106</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="109" class="link-to-prism">packages/data/src/resource-list/resource-list.component.ts:109</a></div>
                                 </td>
                             </tr>
     
@@ -1912,7 +1912,7 @@ It is meant to be extended and overriden the createList method. See e.g. AssetLi
                     </tr>
                     <tr>
                         <td class="col-md-4">
-    <code>ngOnChanges()</code>
+    <code>ngOnChanges(changes?: )</code>
                         </td>
                     </tr>
     
@@ -1929,9 +1929,38 @@ It is meant to be extended and overriden the createList method. See e.g. AssetLi
     </div>
     
                                 <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Type</td>
+                                                    <td>Optional</td>
+                                                    <td>Description</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                      <td>changes</td>
+                                                      <td>
+                                                      </td>
+                                                      <td>
+                                                          true
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
                                     <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
     
                                 </div>
+                                    <div class="io-description">
+                                        
+                                    </div>
                         </td>
                     </tr>
                 </tbody>
@@ -2164,7 +2193,10 @@ export class ResourceListComponent&lt;T&gt; extends ListComponent&lt;T&gt;
   }
 
   /** When changing the model or the config, the list will update*/
-  ngOnChanges() {
+  ngOnChanges(changes?) {
+    if (changes &amp;&amp; changes.relation) {
+      this.config &#x3D; this.configInput;
+    }
     this.update();
   }
 

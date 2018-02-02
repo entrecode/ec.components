@@ -2621,6 +2621,126 @@
             label: &#x27;Type&#x27;,
             view: &#x27;string&#x27;
           },
+          config: {
+            label: &#x27;Config&#x27;,
+            list: false
+          }
+        }
+      },
+      asset: {
+        identifier: &#x27;assetID&#x27;,
+        fields: {
+          assetID: {
+            label: &#x27;assetID&#x27;,
+            list: false,
+            form: false
+          },
+          title: {
+            label: &#x27;Titel&#x27;
+          },
+          created: {
+            label: &#x27;Datum&#x27;,
+            sortable: true,
+            display: value &#x3D;&gt; moment(value).format(&#x27;DD.MM.YY&#x27;),
+            group: value &#x3D;&gt; moment(value).format(&#x27;MMMM YYYY&#x27;),
+            form: false
+          },
+          files: {
+            label: &#x27;Dateien&#x27;,
+            view: &#x27;tag&#x27;,
+            display: value &#x3D;&gt; value.length
+          },
+          thumb: {
+            label: &#x27;Vorschau&#x27;,
+            view: &#x27;avatar&#x27;,
+            resolve: (asset) &#x3D;&gt; {
+              if (asset.type !&#x3D;&#x3D; &#x27;image&#x27;) {
+                return &#x27;&#x27;;
+              }
+              return asset.getImageUrl(200);
+            },
+            readOnly: true
+          },
+          tags: {
+            label: &#x27;Tags&#x27;,
+            view: &#x27;tags&#x27;
+          },
+        }
+      },
+      client: {
+        identifier: &#x27;clientID&#x27;,
+        fields: {
+          hexColor: {
+            label: &#x27;#&#x27;,
+            view: &#x27;color&#x27;,
+            sortable: true
+          },
+          clientID: {
+            label: &#x27;clientID&#x27;
+          },
+          callbackURL: {
+            label: &#x27;Callback&#x27;
+          },
+          disableStrategies: {
+            view: &#x27;tags&#x27;
+          }
+        }
+      },
+      role: {
+        identifier: &#x27;roleID&#x27;,
+        fields: {
+          roleID: {
+            label: &#x27;roleID&#x27;
+          }
+        }
+      },
+      codeSource: {
+        identifier: &#x27;codeSourceID&#x27;,
+        fields: {
+          codeSourceID: {
+            label: &#x27;ID&#x27;
+          },
+          codeSourceType: {
+            label: &#x27;Typ&#x27;,
+            view: &#x27;tag&#x27;
+          },
+          config: {
+            label: &#x27;config&#x27;,
+            list: false
+          }
+        }
+      },
+      dataSource: {
+        identifier: &#x27;dataSourceID&#x27;,
+        fields: {
+          dataSourceID: {
+            label: &#x27;ID&#x27;
+          }
+        }
+      },
+      target: {
+        identifier: &#x27;targetID&#x27;,
+        fields: {
+          targetType: {
+            label: &#x27;Typ&#x27;,
+            view: &#x27;tag&#x27;
+          },
+          config: {
+            label: &#x27;Config&#x27;,
+            list: false
+          }
+        }
+      },
+      group: {
+        identifier: &#x27;groupID&#x27;,
+        fields: {
+          name: {
+            label: &#x27;Name&#x27;
+          },
+          permissions: {
+            label: &#x27;Permissions&#x27;,
+            view: &#x27;tags&#x27;
+          }
         }
       }
     }</code>
