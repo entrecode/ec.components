@@ -65,7 +65,8 @@ export class ResourceList<T> extends List<T> {
     const options = this.getFilterOptions(this.config);
     this.promise = this.api
       .resourceList(this.relation, options)
-      .then(list => this.use(list));
+      .then(list => this.use(list))
+      .catch(err => this.error.next(err));
     this.loading.next(this.promise);
   }
 

@@ -7,13 +7,14 @@ import { ListConfig } from '../../../packages/core/index';
 import { FormComponent } from '../../../packages/ui/src/form/form.component';
 import { TabComponent } from '../../../packages/ui/src/utility/tab/tab.component';
 import { TabsComponent } from '../../../packages/ui/src/utility/tabs/tabs.component';
-import { Apps } from 'ec.sdk';
+import { Apps, Accounts } from 'ec.sdk';
 
 @Component({
   selector: 'ec-resource-list-demo',
   templateUrl: 'resource-list-demo.component.html'
 })
-export class ResourceListDemoComponent {
+export class ResourceListDemoComponent implements OnInit {
+  history: any[] = [];
   activeTab: TabComponent;
   config: ListConfig<any>;
   symbols: string[];
@@ -22,17 +23,26 @@ export class ResourceListDemoComponent {
   @ViewChild('resourceForm') form: FormComponent;
 
   constructor(public sdk: SdkService) {
-    /* this.sdk.ready.then(() => {
-      this.use(this.sdk.datamanager);
-    }); */
-    const apps = new Apps('stage');
-    this.use(apps);
+  }
+
+  ngOnInit() {
+    this.sdk.ready.then(() => {
+      /* const resource = this.sdk.datamanager; */
+      const resource = new Apps('stage');
+      /* const resource = new Accounts('stage'); */
+      this.use(resource);
+    });
   }
 
   select(item) {
     this.use(item.getBody());
-    console.log('edit', item);
     this.form.edit(item);
+    this.history.push(item);
+  }
+
+  goBack(item) {
+    this.history = this.history.slice(0, this.history.indexOf(item));
+    this.select(item);
   }
 
   use(resource) {

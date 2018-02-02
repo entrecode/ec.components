@@ -37,7 +37,7 @@ export class TabsComponent implements AfterContentInit {
   initTabs() {
     this.tabs.forEach((tab) => {
       tab.parent = this;
-      if (tab.el.nativeElement.getAttribute('selected') !== null || tab.selected) {
+      if (tab.el.nativeElement.getAttribute('selected') !== null) {
         this.select(tab);
       }
     });

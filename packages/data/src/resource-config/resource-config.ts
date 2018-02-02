@@ -265,6 +265,14 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
       }
     }
   },
+  dataSource: {
+    identifier: 'dataSourceID',
+    fields: {
+      dataSourceID: {
+        label: 'ID'
+      }
+    }
+  },
   target: {
     identifier: 'targetID',
     fields: {
@@ -275,6 +283,18 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
       config: {
         label: 'Config',
         list: false
+      }
+    }
+  },
+  group: {
+    identifier: 'groupID',
+    fields: {
+      name: {
+        label: 'Name'
+      },
+      permissions: {
+        label: 'Permissions',
+        view: 'tags'
       }
     }
   }
