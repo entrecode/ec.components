@@ -94,7 +94,10 @@ export class ResourceListComponent<T> extends ListComponent<T>
   }
 
   /** When changing the model or the config, the list will update*/
-  ngOnChanges() {
+  ngOnChanges(changes) {
+    if (changes.relation) {
+      this.config = this.configInput;
+    }
     this.update();
   }
 

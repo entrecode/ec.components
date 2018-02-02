@@ -176,6 +176,106 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
         label: 'Type',
         view: 'string'
       },
+      config: {
+        label: 'Config',
+        list: false
+      }
+    }
+  },
+  asset: {
+    identifier: 'assetID',
+    fields: {
+      assetID: {
+        label: 'assetID',
+        list: false,
+        form: false
+      },
+      title: {
+        label: 'Titel'
+      },
+      created: {
+        label: 'Datum',
+        sortable: true,
+        display: value => moment(value).format('DD.MM.YY'),
+        group: value => moment(value).format('MMMM YYYY'),
+        form: false
+      },
+      files: {
+        label: 'Dateien',
+        view: 'tag',
+        display: value => value.length
+      },
+      thumb: {
+        label: 'Vorschau',
+        view: 'avatar',
+        resolve: (asset) => {
+          if (asset.type !== 'image') {
+            return '';
+          }
+          return asset.getImageUrl(200);
+        },
+        readOnly: true
+      },
+      tags: {
+        label: 'Tags',
+        view: 'tags'
+      },
+    }
+  },
+  client: {
+    identifier: 'clientID',
+    fields: {
+      hexColor: {
+        label: '#',
+        view: 'color',
+        sortable: true
+      },
+      clientID: {
+        label: 'clientID'
+      },
+      callbackURL: {
+        label: 'Callback'
+      },
+      disableStrategies: {
+        view: 'tags'
+      }
+    }
+  },
+  role: {
+    identifier: 'roleID',
+    fields: {
+      roleID: {
+        label: 'roleID'
+      }
+    }
+  },
+  codeSource: {
+    identifier: 'codeSourceID',
+    fields: {
+      codeSourceID: {
+        label: 'ID'
+      },
+      codeSourceType: {
+        label: 'Typ',
+        view: 'tag'
+      },
+      config: {
+        label: 'config',
+        list: false
+      }
+    }
+  },
+  target: {
+    identifier: 'targetID',
+    fields: {
+      targetType: {
+        label: 'Typ',
+        view: 'tag'
+      },
+      config: {
+        label: 'Config',
+        list: false
+      }
     }
   }
-};
+}

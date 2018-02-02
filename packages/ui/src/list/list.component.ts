@@ -36,7 +36,7 @@ export class ListComponent<T> implements OnChanges {
 
   /** Changing items or collection will trigger reconstructing the list with the new items.
    * Changing the selection will reconstruct the selection */
-  ngOnChanges() {
+  ngOnChanges(changes) {
     this.config = Object.assign(this.config || {}, this.configInput || {});
     if (this.items) {
       this.list = new List(this.items, this.config);

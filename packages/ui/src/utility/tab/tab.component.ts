@@ -23,6 +23,13 @@ export class TabComponent {
   constructor(public el: ElementRef) {
   }
 
+  select() {
+    this.selected = true;
+    if (this.parent) {
+      this.parent.select(this);
+    }
+  }
+
   /** Returns true if the tab is currently selected. */
   isSelected() {
     return this.parent && this.parent.isSelected(this);

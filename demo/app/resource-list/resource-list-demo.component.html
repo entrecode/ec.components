@@ -1,10 +1,10 @@
 <ec-form #resourceForm></ec-form>
 
-<ec-resource-list #resourceList [config]="{disableSelection:true,disableHeader:true}" [api]="api" [relation]="relation" (columnClicked)="select($event)"></ec-resource-list>
-<h3>API Relations</h3>
-<ul>
-  <li *ngFor="let symbol of symbols">
-    <a (click)="useRelation(symbol)">{{symbol}}</a>
-  </li>
-</ul>
+<ec-tabs *ngIf="symbols&&symbols.length">
+  <ec-tab [label]="symbol" *ngFor="let symbol of symbols" (activated)="useRelation(symbol)"></ec-tab>
+</ec-tabs>
+
+<ec-resource-list #resourceList [config]="{disableSelection:true}" [api]="api" [relation]="relation" (columnClicked)="select($event)"></ec-resource-list>
+
+
 <ec-notifications></ec-notifications>
