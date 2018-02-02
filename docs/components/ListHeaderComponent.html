@@ -371,6 +371,9 @@
                                     <a href="../components/PopComponent.html" >PopComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/ResourceFormComponent.html" >ResourceFormComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/ResourceListComponent.html" >ResourceListComponent</a>
                                 </li>
                                 <li class="link">
@@ -475,6 +478,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../classes/Pagination.html" >Pagination</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/PaginationConfig.html" >PaginationConfig</a>
                                 </li>
                                 <li class="link">
                                     <a href="../classes/ResourceList.html" >ResourceList</a>
@@ -617,6 +623,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../pipes/GroupPipe.html" >GroupPipe</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../pipes/MaxItemsPipe.html" >MaxItemsPipe</a>
                                 </li>
                                 <li class="link">
                                     <a href="../pipes/SafeHtmlPipe.html" >SafeHtmlPipe</a>
@@ -1023,6 +1032,9 @@
                                            <a href="../components/PopComponent.html" >PopComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/ResourceFormComponent.html" >ResourceFormComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/ResourceListComponent.html" >ResourceListComponent</a>
                                        </li>
                                        <li class="link">
@@ -1127,6 +1139,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../classes/Pagination.html" >Pagination</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/PaginationConfig.html" >PaginationConfig</a>
                                        </li>
                                        <li class="link">
                                            <a href="../classes/ResourceList.html" >ResourceList</a>
@@ -1269,6 +1284,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../pipes/GroupPipe.html" >GroupPipe</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../pipes/MaxItemsPipe.html" >MaxItemsPipe</a>
                                        </li>
                                        <li class="link">
                                            <a href="../pipes/SafeHtmlPipe.html" >SafeHtmlPipe</a>
@@ -1915,8 +1933,8 @@ export class ListHeaderComponent {
 
     &lt;span class&#x3D;&quot;ec-list-field__title&quot; (click)&#x3D;&quot;field.sortable&amp;&amp;list.toggleSort(field.property)&quot;&gt;
       {{field.label || field.property}}
-      &lt;span class&#x3D;&quot;ec-list-sortable-indicator&quot;&gt;&lt;/span&gt;
     &lt;/span&gt;
+    &lt;span class&#x3D;&quot;ec-list-sortable-indicator&quot;&gt;&lt;/span&gt;
 
     &lt;ec-pop #filterPop class&#x3D;&quot;ec-list-field-filter-pop&quot; [ngClass]&#x3D;&quot;field.filterPopClass&quot;&gt;
       &lt;div class&#x3D;&quot;ec-list-field-filter&quot;&gt;
@@ -1956,8 +1974,8 @@ export class ListHeaderComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="ec-list-header">  <div class="ec-list-cell ec-list__select" *ngIf="selection&&!list?.isEmpty()">    <input type="checkbox" (click)="selection?.toggleAll(list?.page)"           [checked]="selection?.hasAll(list?.page)" [disabled]="selection.config?.solo">  </div>  <ec-form [config]="list?.config" [empty]="true" #filterForm></ec-form>  <div class="ec-list-cell" *ngFor="let field of list?.fields"       [class.hidden]="field.hidden"       [ngClass]="\'ec-list-field_\' + field.view"       [class.is-sortable]="field.sortable"       [class.is-sorted]="list.isSorted(field.property)"       [class.is-sorted-asc]="list.isSorted(field.property, false)"       [class.is-sorted-desc]="list.isSorted(field.property, true)"       [class.is-filterable]="field.filterable">    <a (click)="editFilter(filterPop)" class="ec-list-field-filterable-control" *ngIf="field.filterable">      <ec-icon name="find"></ec-icon>    </a>    <span class="ec-list-field__title" (click)="field.sortable&&list.toggleSort(field.property)">      {{field.label || field.property}}      <span class="ec-list-sortable-indicator"></span>    </span>    <ec-pop #filterPop class="ec-list-field-filter-pop" [ngClass]="field.filterPopClass">      <div class="ec-list-field-filter">        <ec-input [field]="field" [group]="filterForm?.group" [debounce]="200"                  *ngIf="filterForm?.group?.get(field?.property)"                  (changed)="applyFilter(field.property, $event)"></ec-input>        <a (click)="removeFilter(field.property, filterForm?.group?.get(field.property));filterPop.hide()"           class="ec-list-field-filter__dismiss">&times;</a>      </div>    </ec-pop>  </div></div></div>'
-    var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'ActionbarComponent', 'selector': 'ec-actionbar'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'IconComponent', 'selector': 'ec-icon'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'InteractionComponent', 'selector': 'ec-interaction'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
+        var COMPONENT_TEMPLATE = '<div><div class="ec-list-header">  <div class="ec-list-cell ec-list__select" *ngIf="selection&&!list?.isEmpty()">    <input type="checkbox" (click)="selection?.toggleAll(list?.page)"           [checked]="selection?.hasAll(list?.page)" [disabled]="selection.config?.solo">  </div>  <ec-form [config]="list?.config" [empty]="true" #filterForm></ec-form>  <div class="ec-list-cell" *ngFor="let field of list?.fields"       [class.hidden]="field.hidden"       [ngClass]="\'ec-list-field_\' + field.view"       [class.is-sortable]="field.sortable"       [class.is-sorted]="list.isSorted(field.property)"       [class.is-sorted-asc]="list.isSorted(field.property, false)"       [class.is-sorted-desc]="list.isSorted(field.property, true)"       [class.is-filterable]="field.filterable">    <a (click)="editFilter(filterPop)" class="ec-list-field-filterable-control" *ngIf="field.filterable">      <ec-icon name="find"></ec-icon>    </a>    <span class="ec-list-field__title" (click)="field.sortable&&list.toggleSort(field.property)">      {{field.label || field.property}}    </span>    <span class="ec-list-sortable-indicator"></span>    <ec-pop #filterPop class="ec-list-field-filter-pop" [ngClass]="field.filterPopClass">      <div class="ec-list-field-filter">        <ec-input [field]="field" [group]="filterForm?.group" [debounce]="200"                  *ngIf="filterForm?.group?.get(field?.property)"                  (changed)="applyFilter(field.property, $event)"></ec-input>        <a (click)="removeFilter(field.property, filterForm?.group?.get(field.property));filterPop.hide()"           class="ec-list-field-filter__dismiss">&times;</a>      </div>    </ec-pop>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'ActionbarComponent', 'selector': 'ec-actionbar'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'IconComponent', 'selector': 'ec-icon'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'InteractionComponent', 'selector': 'ec-interaction'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceFormComponent', 'selector': 'ec-resource-form'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
     var DIRECTIVES = [{'name': 'AssetDirective', 'selector': '[ecAsset]'},{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'ImageDirective', 'selector': 'img [ecImage]'},{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'}];
     var ACTUAL_COMPONENT = {'name': 'ListHeaderComponent'};
 </script>
