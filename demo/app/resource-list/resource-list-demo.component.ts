@@ -8,6 +8,7 @@ import { FormComponent } from '../../../packages/ui/src/form/form.component';
 import { TabComponent } from '../../../packages/ui/src/utility/tab/tab.component';
 import { TabsComponent } from '../../../packages/ui/src/utility/tabs/tabs.component';
 import { Apps, Accounts } from 'ec.sdk';
+import { ResourceFormComponent } from '../../../packages/data/src/resource-form/resource-form.component';
 
 @Component({
   selector: 'ec-resource-list-demo',
@@ -22,7 +23,7 @@ export class ResourceListDemoComponent implements OnInit {
   relation: string;
   api: any;
   resource: any;
-  @ViewChild('resourceForm') form: FormComponent;
+  @ViewChild('resourceForm') form: ResourceFormComponent;
 
   constructor(public sdk: SdkService) {
   }

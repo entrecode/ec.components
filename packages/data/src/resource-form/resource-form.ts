@@ -23,8 +23,11 @@ export class ResourceForm extends Form<Resource> {
         // TODO: find out why it does not work when using helper properties (like thumb in asset form)
         /* this.serialize(value); */
         if (body && 'save' in body) {
-            Object.assign(body, value);
-            return body.save().then(() => this);
+            this.body = Object.assign(body, value); // {}, // find way to remember old body state (to reset on error)
+            return body.save().catch(err => {
+                /* this.body = body; */ // TODO: assign old body value (before put)
+                return Promise.reject(err);
+            }).then(() => this);
         } else {
             if (!this.api || !this.relation) {
                 return Promise.reject('Cannot create resource: api or relation are unknown');
