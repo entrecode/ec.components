@@ -43,7 +43,6 @@ export class ResourceFormComponent extends FormComponent<Resource> implements On
         if (!this.relation || (!this.api && !this.value)) {
             return;
         }
-        console.log('init', item);
         this.form = new ResourceForm(item ? item.getBody() : this.value || null, this.config, this.api, this.relation);
         this.initGroup();
     }

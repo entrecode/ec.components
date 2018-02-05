@@ -22,7 +22,7 @@
     <span class="ec-list-field__title" (click)="field.sortable&&list.toggleSort(field.property)">
       {{field.label || field.property}}
     </span>
-    <span class="ec-list-sortable-indicator"></span>
+    <span class="ec-list-sortable-indicator" *ngIf="field.sortable"></span>
 
     <ec-pop #filterPop class="ec-list-field-filter-pop" [ngClass]="field.filterPopClass">
       <div class="ec-list-field-filter">

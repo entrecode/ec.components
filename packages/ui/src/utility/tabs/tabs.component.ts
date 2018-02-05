@@ -51,17 +51,13 @@ export class TabsComponent implements AfterContentInit {
   /** Selects the given tab (Component). */
   select(tab: TabComponent) {
     if (this.selected) {
-      this.selected.deactivated.next();
+      this.selected.deactivate();
     }
     this.selected = tab;
-    tab.activated.next();
+    tab.activate();
     if (tab.route) {
       this.router.navigate([tab.route], { relativeTo: this.route });
     }
-  }
-  /** Returns true if the given TabComponent is selected. */
-  isSelected(tab: TabComponent) {
-    return this.selected === tab;
   }
 
 }
