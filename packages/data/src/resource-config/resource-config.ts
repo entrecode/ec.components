@@ -30,12 +30,6 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
         display: value => moment(value).format('DD.MM.YY'),
         group: value => moment(value).format('MMMM YYYY'),
         form: false
-      },
-      options: {
-        label: ' ',
-        sortable: false,
-        display: () => '...',
-        view: 'dropdown'
       }
     }
   },
