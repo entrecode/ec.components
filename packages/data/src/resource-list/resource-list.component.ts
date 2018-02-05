@@ -1,11 +1,10 @@
 import { Component, Input, OnChanges, Optional } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SdkService } from '../sdk/sdk.service';
-import { Selection } from '@ec.components/core/src/selection/selection';
 import { ResourceList } from './resource-list';
 import Core from 'ec.sdk/lib/Core';
 import { resourceConfig } from '../resource-config/resource-config';
-import { ListConfig } from '../../../core';
+import { ListConfig, Selection } from '@ec.components/core';
 import ListResource, { filterOptions } from 'ec.sdk/lib/resources/ListResource';
 import { WithLoader, LoaderComponent, ListComponent, LoaderService, NotificationsService } from '@ec.components/ui';
 import Resource from 'ec.sdk/lib/resources/Resource';
@@ -81,16 +80,9 @@ export class ResourceListComponent extends ListComponent<Resource>
           error: err
         });
       });
-      this.list.change$.subscribe(() => {
-        if (
-          !this.selection &&
-          this.list.config &&
-          !this.list.config.disableSelection
-        ) {
-          this.selection = new Selection([], this.list.config);
-        }
-        // TODO update route to reflect the filter settings
-      });
+      if (!this.selection) {
+        this.selection = new Selection([], this.list.config);
+      }
     });
   }
 
@@ -98,6 +90,7 @@ export class ResourceListComponent extends ListComponent<Resource>
   ngOnChanges(changes?) {
     if (changes && changes.relation) {
       this.config = this.configInput;
+      delete this.selection;
     }
     this.update();
   }

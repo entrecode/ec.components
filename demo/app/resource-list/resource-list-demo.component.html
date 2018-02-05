@@ -13,6 +13,7 @@
   </a>
   <ec-resource-form [value]="resource" [relation]="symbol" #resourceForm></ec-resource-form>
 </ec-pop>
+<ec-loader class="ec-loader ec-loader_global" #loader></ec-loader>
 
 
 <ec-tabs *ngIf="symbols&&symbols.length&&relation">
@@ -28,6 +29,9 @@
 <a class="btn outline" (click)="createPop.show()">
   <ec-icon name="add"></ec-icon>
 </a>
-<ec-resource-list #resourceList [config]="{disableSelection:true}" [api]="api" [relation]="relation" (columnClicked)="select($event, editPop)"></ec-resource-list>
-
+<a class="btn outline" (click)="resourceList.list.toggleSelectMode()">
+  <ec-icon name="check-box"></ec-icon>
+</a>
+<ec-resource-list [loader]="loader" #resourceList [config]="{disableSelection:true}" [api]="api" [relation]="relation" (columnClicked)="select($event, editPop)"></ec-resource-list>
+{{resourceList.selection?.items.length}} items selected
 <ec-notifications></ec-notifications>

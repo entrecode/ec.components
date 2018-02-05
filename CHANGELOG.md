@@ -12,6 +12,7 @@ BREAKING CHANGES:
 * COM-95: renamed is-sortable-active to is-sorted + added is-sorted-asc and is-sorted-desc
 * COM-96: replaced all usages of ec-icon with new ec-icon component (nests one level deeper)
 * COM-45: removed range input from pagination, replaced with PaginationConfig with additional options (see docs)
+* removed [host] input from ListItemsComponent due to incompatibilities.
 
 see attachment
 

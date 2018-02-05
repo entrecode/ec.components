@@ -136,6 +136,12 @@ export class List<T> extends Collection<Item<T>> {
     Sorter.sort(this.items, property, this.config.desc);
     this.load(this.config);
   }
+  /** Toggles disableSelection of list config */
+  toggleSelectMode() {
+    this.config = Object.assign({}, this.config, {
+      disableSelection: !this.config.disableSelection
+    });
+  }
 
   /** Returns an Array of all unique values of the given property */
   groupBy(property) {

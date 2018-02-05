@@ -46,7 +46,7 @@ export class ListComponent<T> implements OnChanges {
     if (!this.list) {
       return;
     }
-    if (!this.selection && this.list.config && !this.list.config.disableSelection) {
+    if (!this.selection) {
       this.selection = new Selection([], this.list.config);
     }
     if (this.selection) {
@@ -58,11 +58,10 @@ export class ListComponent<T> implements OnChanges {
 
   /** Column click handler. Triggers select.emit(item) with fallback to selection.toggle*/
   columnClick(item) {
-    if (this.columnClicked.observers.length) {
-      return this.columnClicked.emit(item);
-    }
-    if (this.selection) {
+    if (!this.list.config.disableSelection && this.selection) {
       this.selection.toggle(item, this.solo);
+    } else if (this.columnClicked.observers.length) {
+      return this.columnClicked.emit(item);
     }
   }
   /** Decides if the header should be visible or not */

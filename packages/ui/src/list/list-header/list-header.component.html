@@ -1,7 +1,7 @@
 <div class="ec-list-header">
-  <div class="ec-list-cell ec-list__select" *ngIf="selection&&!list?.isEmpty()">
+  <div class="ec-list-cell ec-list__select" *ngIf="!list?.config?.disableSelection&&!list?.isEmpty()">
     <input type="checkbox" (click)="selection?.toggleAll(list?.page)"
-           [checked]="selection?.hasAll(list?.page)" [disabled]="selection.config?.solo">
+           [checked]="selection?.hasAll(list?.page)" [disabled]="selection?.config?.solo">
   </div>
 
   <ec-form [config]="list?.config" [empty]="true" #filterForm></ec-form>
