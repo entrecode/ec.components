@@ -2,22 +2,23 @@
   <header class="ec-crud-header">
     <nav class="nav">
       <a (click)="entryPop.create()" *ngIf="hasMethod('post')" class="btn">
-        <span *ngIf="this.config?.createLabel">{{this.config?.createLabel}}</span>
-        <span *ngIf="!this.config?.createLabel">
+        <span *ngIf="config?.createLabel">{{config?.createLabel}}</span>
+        <span *ngIf="!config?.createLabel">
           <ec-icon name="add"></ec-icon>
         </span>
+      </a>
+      <a (click)="list.list?.toggleSelectMode()" class="btn">
+        <ec-icon name="check-box"></ec-icon>
       </a>
     </nav>
   </header>
   <div class="ec-crud-body">
-    <ec-entry-list [model]="model" [config]="config" [solo]="true"
-                   *ngIf="hasMethod('get')" [selection]="selection"
-                   [loader]="config?.loader||loader"
-                   (columnClicked)="selectEntry($event)">
+    <ec-entry-list [model]="model" [config]="config" [solo]="true" *ngIf="hasMethod('get')" [selection]="selection" [loader]="config?.loader||loader"
+      (columnClicked)="selectEntry($event)">
     </ec-entry-list>
   </div>
 
   <ec-loader class="ec-loader ec-loader_overlay ec-loader_global"></ec-loader>
   <ec-entry-pop [model]="model" [ngClass]="getPopClass()" [config]="config"></ec-entry-pop>
-  <ec-notifications *ngIf="!this.config?.notifications"></ec-notifications>
+  <ec-notifications *ngIf="!config?.notifications"></ec-notifications>
 </div>
