@@ -10,7 +10,6 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
       hexColor: {
         label: '#',
         view: 'color',
-        sortable: true
       },
       title: {
         label: 'Name',
@@ -21,8 +20,7 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
       description: {
         label: 'Beschreibung',
         view: 'string',
-        filterable: true /*,
-                sortable: true,*/
+        filterable: true
       },
       created: {
         label: 'Datum',
@@ -38,9 +36,8 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
     label: 'title',
     fields: {
       hexColor: {
-        label: '#',
+        label: ' ',
         view: 'color',
-        sortable: true,
         prefill: '#ffffff'
       },
       title: {
@@ -52,8 +49,7 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
       description: {
         label: 'Beschreibung',
         view: 'string',
-        filterable: true /*,
-            sortable: true,*/
+        filterable: true,
       },
       locales: {
         list: false,
@@ -67,6 +63,7 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
         prefill: []
       },
       created: {
+        sortable: true,
         label: 'Datum',
         display: value => moment(value).format('DD.MM.YY'),
         group: value => moment(value).format('MMMM YYYY'),
@@ -124,7 +121,6 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
       hexColor: {
         label: '#',
         view: 'color',
-        sortable: true
       },
       shortID: {
         label: 'shortID',
@@ -236,7 +232,6 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
       hexColor: {
         label: '#',
         view: 'color',
-        sortable: true
       },
       clientID: {
         label: 'clientID',

@@ -118,7 +118,7 @@ export const demoRoutes: Routes = [
     path: 'data',
     children: [
       {
-        path: 'resource-list',
+        path: 'api-explorer',
         component: ResourceListDemoComponent
       },
       {
