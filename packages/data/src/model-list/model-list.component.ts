@@ -4,6 +4,7 @@ import { ResourceListComponent } from '../resource-list/resource-list.component'
 
 import DataManagerResource from 'ec.sdk/lib/resources/datamanager/DataManagerResource';
 import ModelResource from 'ec.sdk/lib/resources/datamanager/ModelResource';
+import { ListConfig } from '@ec.components/core';
 
 /** The ModelListComponent is a thin holder of an ModelList instance. It extends the ResourceListComponent.
  * Deprecated due to ResourceList (use model relation on a Datamanager api).
@@ -12,7 +13,8 @@ import ModelResource from 'ec.sdk/lib/resources/datamanager/ModelResource';
   selector: 'ec-model-list',
   templateUrl: '../../../ui/src/list/list.component.html'
 })
-export class ModelListComponent extends ResourceListComponent<ModelResource> {
+export class ModelListComponent extends ResourceListComponent {
+  config: ListConfig<ModelResource> = {};
   @Input() datamanager: string | DataManagerResource;
 
   createList() {

@@ -3,15 +3,16 @@ import { FormComponent, LoaderService, NotificationsService, FormService, Loader
 import Core from 'ec.sdk/lib/Core';
 import { resourceConfig } from '../resource-config/resource-config';
 import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
-import { Item, FormConfig } from '@ec.components/core';
+import { Item, FormConfig, Form } from '@ec.components/core';
 import Resource from 'ec.sdk/lib/resources/Resource';
+import { ResourceForm } from './resource-form';
 
 @Component({
     selector: 'ec-resource-form',
     templateUrl: '../../../ui/src/form/form.component.html'
 })
 
-export class ResourceFormComponent extends FormComponent implements OnInit, OnChanges {
+export class ResourceFormComponent extends FormComponent<Resource> implements OnInit, OnChanges {
     /** The API Connector that possesses the resource list, see https://entrecode.github.io/ec.sdk/#api-connectors */
     @Input() api: Core; // sdk api connector
     /** The name of the resource. If given, the generic ListResource loading will be used (api.resourceList) */
@@ -31,45 +32,19 @@ export class ResourceFormComponent extends FormComponent implements OnInit, OnCh
         this.initConfig();
     }
 
-    saveResource(resource, relation, api) {
-        if (this.configInput && this.configInput.onSave) {
-            console.warn(`setting custom onSave callback on resources is currently not implemented!
-            It is overwritten by the default Resource save method.`);
-        }
-        return (form, value) => {
-            const body = form.getBody(); // Resource
-            /* form.deleteImmutableProperties(body); */
-            // TODO: find out why it does not work when using helper properties (like thumb in asset form)
-            form.serialize(value);
-            if ('save' in body) {
-                Object.assign(body, value);
-                return body.save();
-            } else {
-                return api.create(relation, value).then(created => {
-                    return created;
-                });
-            }
-        }
-    }
-
     initConfig() {
+        this.config = Object.assign(
+            {}, this.config || {}, resourceConfig[this.relation] || {}, this.configInput || {}
+        );
         this.init();
     }
 
-    protected init(item: Item<any> = this.item, config: FormConfig<any> = this.config) {
+    protected init(item: Item<Resource> = this.item, config: FormConfig<Resource> = this.config) {
         if (!this.relation || (!this.api && !this.value)) {
-            /* console.log('no relation or api/value given', this); */
             return;
         }
-        this.config = Object.assign(
-            {},
-            this.config || {},
-            resourceConfig[this.relation] || {},
-            this.configInput || {},
-            {
-                onSave: this.saveResource(this.value, this.relation, this.api)
-            }
-        );
-        super.init();
+        console.log('init', item);
+        this.form = new ResourceForm(item ? item.getBody() : this.value || null, this.config, this.api, this.relation);
+        this.initGroup();
     }
 }

@@ -8,7 +8,9 @@ import AssetResource from 'ec.sdk/lib/resources/datamanager/AssetResource';
 /**
  * Extension of List for Datamanager Assets.
  */
-export class AssetList extends ResourceList<PublicAssetResource | AssetResource> {
+export class AssetList extends ResourceList {
+  /** Overrides the Config of ResourceList with a ListConfig containing an EntryResource */
+  config: ListConfig<AssetResource | PublicAssetResource>;
 
   constructor(config: ListConfig<PublicAssetResource | AssetResource>, protected sdk: SdkService, protected fileService: FileService) {
     super(Object.assign({}, fileService.assetListConfig, config));

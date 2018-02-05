@@ -16,9 +16,11 @@ import { ListConfig } from '@ec.components/core/src/list/list-config.interface';
   templateUrl: '../../../ui/src/list/list.component.html', // TODO avoid relative paths
   styleUrls: ['./entry-list.component.scss']
 })
-export class EntryListComponent extends ResourceListComponent<EntryResource> {
+export class EntryListComponent extends ResourceListComponent {
   /** The model whose entries should be shown.*/
   @Input() model: string;
+  /** Overrides the Config of ResourceList with a ListConfig containing an EntryResource */
+  config: ListConfig<EntryResource> = {};
 
   /** The constructor will just call super of List*/
   constructor(protected loaderService: LoaderService,
@@ -55,15 +57,15 @@ export class EntryListComponent extends ResourceListComponent<EntryResource> {
       return;
     }
     this.crud.change({ model: this.model })
-    .subscribe((update) => {
-      this.list.load();
-    });
-    return this.modelConfig.generateConfig(this.model,  (this.config || {}).fields)
-    .then((config: ListConfig<EntryResource>) => {
-      this.config = Object.assign(this.config || {}, config);
-      this.initFilter();
-      return new EntryList(this.model, this.config, this.sdk);
-    });
+      .subscribe((update) => {
+        this.list.load();
+      });
+    return this.modelConfig.generateConfig(this.model, (this.config || {}).fields)
+      .then((config: ListConfig<EntryResource>) => {
+        this.config = Object.assign(this.config || {}, config);
+        this.initFilter();
+        return new EntryList(this.model, this.config, this.sdk);
+      });
 
   }
 }

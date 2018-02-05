@@ -21,6 +21,7 @@ export class ResourceListDemoComponent implements OnInit {
   symbols: string[];
   relation: string;
   api: any;
+  resource: any;
   @ViewChild('resourceForm') form: FormComponent;
 
   constructor(public sdk: SdkService) {
@@ -35,9 +36,14 @@ export class ResourceListDemoComponent implements OnInit {
     });
   }
 
-  select(item) {
-    this.use(item.getBody());
+  select(item, pop?) {
+    /* this.use(item.getBody()); */
+    this.resource = item.getBody();
+    this.symbol = this.relation;
     this.form.edit(item);
+    if (pop) {
+      pop.show();
+    }
     this.history.push(item);
   }
 
@@ -46,7 +52,19 @@ export class ResourceListDemoComponent implements OnInit {
     this.select(item);
   }
 
-  use(resource) {
+  hasChildren(resource) {
+    if (!this.api) {
+      return;
+    }
+    const symbols = Object.keys(this.api[Symbol.for('relations')]);
+    /* console.log('symbols', symbols); */
+    return symbols.length && symbols[0] !== 'dummy';
+  }
+
+  use(resource = this.resource, pop?) {
+    if (pop) {
+      pop.hide();
+    }
     this.api = resource;
     this.symbol = this.relation;
     console.log('use api', this.api);

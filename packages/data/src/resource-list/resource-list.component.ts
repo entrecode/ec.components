@@ -8,6 +8,7 @@ import { resourceConfig } from '../resource-config/resource-config';
 import { ListConfig } from '../../../core';
 import ListResource, { filterOptions } from 'ec.sdk/lib/resources/ListResource';
 import { WithLoader, LoaderComponent, ListComponent, LoaderService, NotificationsService } from '@ec.components/ui';
+import Resource from 'ec.sdk/lib/resources/Resource';
 
 /** The ResourceListComponent is an extension of ListComponent for SDK ListResources.
  * It is meant to be extended and overriden the createList method. See e.g. AssetListComponent. */
@@ -15,14 +16,14 @@ import { WithLoader, LoaderComponent, ListComponent, LoaderService, Notification
   selector: 'ec-resource-list',
   templateUrl: '../../../ui/src/list/list.component.html'
 })
-export class ResourceListComponent<T> extends ListComponent<T>
+export class ResourceListComponent extends ListComponent<Resource>
   implements OnChanges, WithLoader {
   /** If listResource input is set, the given ListResource will be used directly and loading will be skipped. */
   @Input() listResource: ListResource;
   /** If true, only one item is selectable next */
   @Input() solo: boolean;
   /** The instance of an EntryList */
-  list: ResourceList<T>;
+  list: ResourceList;
   /** The API Connector that possesses the resource list, see https://entrecode.github.io/ec.sdk/#api-connectors */
   @Input() api: Core; // sdk api connector
   /** The name of the resource. If given, the generic ListResource loading will be used (api.resourceList) */
@@ -46,7 +47,7 @@ export class ResourceListComponent<T> extends ListComponent<T>
   }
 
   /** The method to create the list*/
-  protected createList(): Promise<ResourceList<T> | void> | ResourceList<T> {
+  protected createList(): Promise<ResourceList | void> | ResourceList {
     if (!this.relation || !this.api) {
       return;
       // return Promise.reject(`cannot create ResourceList: no relation or api given. Relation: ${this.relation} API: ${this.api}`);
