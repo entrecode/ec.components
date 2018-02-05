@@ -33,5 +33,7 @@
   <ec-icon name="check-box"></ec-icon>
 </a>
 <ec-resource-list [loader]="loader" #resourceList [config]="{disableSelection:true}" [api]="api" [relation]="relation" (columnClicked)="select($event, editPop)"></ec-resource-list>
-{{resourceList.selection?.items.length}} items selected
+<hr>
+<p *ngIf="resourceList.list?.listResource?.total">{{resourceList.list?.listResource?.count}} items loaded</p>
+<p *ngIf="!resourceList.list?.config?.disableSelection">{{resourceList.selection?.items.length}} items selected</p>
 <ec-notifications></ec-notifications>
