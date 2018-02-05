@@ -371,6 +371,9 @@
                                     <a href="../components/PopComponent.html" >PopComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/ResourceFormComponent.html" >ResourceFormComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/ResourceListComponent.html" >ResourceListComponent</a>
                                 </li>
                                 <li class="link">
@@ -475,6 +478,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../classes/Pagination.html" >Pagination</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/PaginationConfig.html" >PaginationConfig</a>
                                 </li>
                                 <li class="link">
                                     <a href="../classes/ResourceList.html" >ResourceList</a>
@@ -617,6 +623,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../pipes/GroupPipe.html" >GroupPipe</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../pipes/MaxItemsPipe.html" >MaxItemsPipe</a>
                                 </li>
                                 <li class="link">
                                     <a href="../pipes/SafeHtmlPipe.html" >SafeHtmlPipe</a>
@@ -1023,6 +1032,9 @@
                                            <a href="../components/PopComponent.html" >PopComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/ResourceFormComponent.html" >ResourceFormComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/ResourceListComponent.html" >ResourceListComponent</a>
                                        </li>
                                        <li class="link">
@@ -1127,6 +1139,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../classes/Pagination.html" >Pagination</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/PaginationConfig.html" >PaginationConfig</a>
                                        </li>
                                        <li class="link">
                                            <a href="../classes/ResourceList.html" >ResourceList</a>
@@ -1269,6 +1284,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../pipes/GroupPipe.html" >GroupPipe</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../pipes/MaxItemsPipe.html" >MaxItemsPipe</a>
                                        </li>
                                        <li class="link">
                                            <a href="../pipes/SafeHtmlPipe.html" >SafeHtmlPipe</a>
@@ -2355,10 +2373,12 @@ export class EntryPopComponent extends PopComponent implements OnInit {
 
     <div class="tab-pane fade" id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;ec-pop-container&quot; [class.is-active]&#x3D;&quot;active&quot; [class.is-visible]&#x3D;&quot;visible&quot;&gt;
-  &lt;div class&#x3D;&quot;ec-pop&quot; *ngIf&#x3D;&quot;active&quot;&gt;
-    &lt;button (click)&#x3D;&quot;hide()&quot; type&#x3D;&quot;button&quot; class&#x3D;&quot;ec-pop__dismiss&quot;&gt;
-      &lt;ec-icon name&#x3D;&quot;close-x-big&quot;&gt;&lt;/ec-icon&gt;
-    &lt;/button&gt;
+  &lt;div class&#x3D;&quot;ec-pop ec-entry-pop&quot; *ngIf&#x3D;&quot;active&quot;&gt;
+    &lt;header class&#x3D;&quot;ec-pop-header&quot;&gt;
+      &lt;button (click)&#x3D;&quot;hide()&quot; type&#x3D;&quot;button&quot; class&#x3D;&quot;ec-pop__dismiss&quot;&gt;
+        &lt;ec-icon name&#x3D;&quot;close-x-big&quot;&gt;&lt;/ec-icon&gt;
+      &lt;/button&gt;
+    &lt;/header&gt;
     &lt;div class&#x3D;&quot;ec-pop-body&quot;&gt;
       &lt;ec-entry-form [model]&#x3D;&quot;model&quot; [submitButton]&#x3D;&quot;false&quot; [loader]&#x3D;&quot;popLoader&quot; [config]&#x3D;&quot;config&quot;
                      (submitted)&#x3D;&quot;!this.config?.keepPopOpen&amp;&amp;hide()&quot; [entry]&#x3D;&quot;entry&quot; (deleted)&#x3D;&quot;hide()&quot;
@@ -2418,8 +2438,8 @@ export class EntryPopComponent extends PopComponent implements OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="ec-pop-container" [class.is-active]="active" [class.is-visible]="visible">  <div class="ec-pop" *ngIf="active">    <button (click)="hide()" type="button" class="ec-pop__dismiss">      <ec-icon name="close-x-big"></ec-icon>    </button>    <div class="ec-pop-body">      <ec-entry-form [model]="model" [submitButton]="false" [loader]="popLoader" [config]="config"                     (submitted)="!this.config?.keepPopOpen&&hide()" [entry]="entry" (deleted)="hide()"                     #crudForm></ec-entry-form>    </div>    <footer class="ec-pop-footer">      <nav class="nav">        <ul class="nav__items">          <li class="nav__item" *ngIf="config?.develop">            <!--TODO placeholder config for \'code\'-->            <button (click)="log(crudForm)" class="btn">              <ec-icon name="brackets"></ec-icon>            </button>          </li>          <li class="nav__item" *ngIf="hasMethod(\'delete\')&&crudForm.isEditing()">            <!--TODO placeholder config for \'löschen\'-->            <button (click)="crudForm.deleteEntry()" class="btn" type="button">              <ec-icon name="trash"></ec-icon>            </button>          </li>          <li class="nav__item" *ngIf="maySave(crudForm)">            <!--TODO placeholder config for \'speichern\'-->            <button (click)="crudForm.submit()" [disabled]="crudForm.group?.invalid" type="button"                    class="btn btn_save" [class.is-disabled]="crudForm.group?.invalid">              <ec-icon name="save"></ec-icon>            </button>          </li>        </ul>      </nav>    </footer>    <ec-loader #popLoader class="ec-loader ec-loader_overlay ec-loader_global"></ec-loader>  </div></div></div>'
-    var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'ActionbarComponent', 'selector': 'ec-actionbar'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'IconComponent', 'selector': 'ec-icon'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'InteractionComponent', 'selector': 'ec-interaction'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
+        var COMPONENT_TEMPLATE = '<div><div class="ec-pop-container" [class.is-active]="active" [class.is-visible]="visible">  <div class="ec-pop ec-entry-pop" *ngIf="active">    <header class="ec-pop-header">      <button (click)="hide()" type="button" class="ec-pop__dismiss">        <ec-icon name="close-x-big"></ec-icon>      </button>    </header>    <div class="ec-pop-body">      <ec-entry-form [model]="model" [submitButton]="false" [loader]="popLoader" [config]="config"                     (submitted)="!this.config?.keepPopOpen&&hide()" [entry]="entry" (deleted)="hide()"                     #crudForm></ec-entry-form>    </div>    <footer class="ec-pop-footer">      <nav class="nav">        <ul class="nav__items">          <li class="nav__item" *ngIf="config?.develop">            <!--TODO placeholder config for \'code\'-->            <button (click)="log(crudForm)" class="btn">              <ec-icon name="brackets"></ec-icon>            </button>          </li>          <li class="nav__item" *ngIf="hasMethod(\'delete\')&&crudForm.isEditing()">            <!--TODO placeholder config for \'löschen\'-->            <button (click)="crudForm.deleteEntry()" class="btn" type="button">              <ec-icon name="trash"></ec-icon>            </button>          </li>          <li class="nav__item" *ngIf="maySave(crudForm)">            <!--TODO placeholder config for \'speichern\'-->            <button (click)="crudForm.submit()" [disabled]="crudForm.group?.invalid" type="button"                    class="btn btn_save" [class.is-disabled]="crudForm.group?.invalid">              <ec-icon name="save"></ec-icon>            </button>          </li>        </ul>      </nav>    </footer>    <ec-loader #popLoader class="ec-loader ec-loader_overlay ec-loader_global"></ec-loader>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'ActionbarComponent', 'selector': 'ec-actionbar'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'IconComponent', 'selector': 'ec-icon'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'InteractionComponent', 'selector': 'ec-interaction'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceFormComponent', 'selector': 'ec-resource-form'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
     var DIRECTIVES = [{'name': 'AssetDirective', 'selector': '[ecAsset]'},{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'ImageDirective', 'selector': 'img [ecImage]'},{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'}];
     var ACTUAL_COMPONENT = {'name': 'EntryPopComponent'};
 </script>

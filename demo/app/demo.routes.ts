@@ -31,6 +31,7 @@ import { InteractionDemoComponent } from './interaction-demo/interaction-demo.co
 import { ResourceListDemoComponent } from './resource-list/resource-list-demo.component';
 import { IconDemoComponent } from './icon-demo/icon-demo.component';
 import { PaginationDemoComponent } from './pagination/pagination-demo.component';
+import { ResourceFormDemoComponent } from './resource-form/resource-form-demo.component';
 
 export const demoRoutes: Routes = [
   /*  {
@@ -119,6 +120,10 @@ export const demoRoutes: Routes = [
       {
         path: 'resource-list',
         component: ResourceListDemoComponent
+      },
+      {
+        path: 'resource-form',
+        component: ResourceFormDemoComponent
       },
       {
         path: 'entries',

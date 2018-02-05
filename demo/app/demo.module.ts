@@ -45,6 +45,7 @@ import { ActionbarModule } from '../../packages/ui/src/actionbar/actionbar.modul
 import { ResourceListDemoComponent } from './resource-list/resource-list-demo.component';
 import { IconDemoComponent } from './icon-demo/icon-demo.component';
 import { IconPipe } from './icon-demo/icon.pipe';
+import { ResourceFormDemoComponent } from './resource-form/resource-form-demo.component';
 
 demoRoutes.unshift(
   {
@@ -66,6 +67,7 @@ demoRoutes.unshift(
     PaginationDemoComponent,
     EntryListDemoComponent,
     ResourceListDemoComponent,
+    ResourceFormDemoComponent,
     FormDemoComponent,
     TabsDemoComponent,
     EntryFormDemoComponent,

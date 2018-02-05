@@ -50,6 +50,11 @@
       </div>
     </li>
   </ul>
+  <code *ngSwitchCase="'json'">
+    <pre>
+        {{item?.display(field.property)}}
+    </pre>
+  </code>
   <span *ngSwitchDefault>
     {{item?.display(field.property)}}
   </span>

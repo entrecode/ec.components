@@ -34,8 +34,7 @@ export class TabsComponent implements AfterContentInit {
     }
   }
 
-  /** After the content has been inited, the tab children will be processed. */
-  ngAfterContentInit() {
+  initTabs() {
     this.tabs.forEach((tab) => {
       tab.parent = this;
       if (tab.el.nativeElement.getAttribute('selected') !== null) {
@@ -44,6 +43,11 @@ export class TabsComponent implements AfterContentInit {
     });
     this.selectByUrl(this.router.url);
   }
+
+  ngAfterContentInit() {
+    this.initTabs();
+  }
+
   /** Selects the given tab (Component). */
   select(tab: TabComponent) {
     if (this.selected) {

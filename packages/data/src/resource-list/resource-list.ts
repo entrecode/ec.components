@@ -65,7 +65,8 @@ export class ResourceList<T> extends List<T> {
     const options = this.getFilterOptions(this.config);
     this.promise = this.api
       .resourceList(this.relation, options)
-      .then(list => this.use(list));
+      .then(list => this.use(list))
+      .catch(err => this.error.next(err));
     this.loading.next(this.promise);
   }
 
@@ -81,13 +82,13 @@ export class ResourceList<T> extends List<T> {
     }
   }
 
-  /** Takes the entryList and dumps the items into the the current page. Then it applies grouping if present. */
+  /** Takes the listResource and dumps the items into the the current page. Then it applies grouping if present. */
   protected use(listResource) {
     this.listResource = listResource;
     this.removeAll();
     this.addAll(
       listResource.getAllItems().map(value => {
-        return new Item(value, this.config);
+        return new Item(value, this.config); // TODO: use ResourceItem to add save callback!?
       }),
       true
     );

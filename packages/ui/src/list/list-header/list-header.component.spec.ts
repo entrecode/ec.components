@@ -7,6 +7,7 @@ import { NotificationsModule } from '../../notifications/notifications.module';
 import { PopModule } from '../../pop/pop.module';
 import { PopComponent } from '../../pop/pop.component';
 import { List } from '@ec.components/core';
+import { IconModule } from '../../icon/icon.module';
 
 describe('ListHeaderComponent', () => {
   let component: ListHeaderComponent;
@@ -14,7 +15,7 @@ describe('ListHeaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule, FormModule, LoaderModule, PopModule, NotificationsModule],
+      imports: [ReactiveFormsModule, IconModule, FormModule, LoaderModule, PopModule, NotificationsModule],
       declarations: [ListHeaderComponent],
       providers: []
     })

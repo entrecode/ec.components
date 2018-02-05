@@ -1,27 +1,11 @@
 import moment from 'moment-es6';
-import { FieldConfig } from '../../../core/index';
-import { ListConfig } from '../../../core/src/list/list-config.interface';
-
-/** Save callback for resources. TBD */
-function onSave(form, value) {
-  console.log('save resource form', form);
-  const resource = form.getBody();
-  form.serialize(value, resource);
-  if ('save' in resource) {
-    Object.assign(resource, value);
-    return resource.save();
-  } else {
-    console.log('create', resource);
-  }
-  return value; // TODO create
-}
+import { FieldConfig, Form, ListConfig } from '@ec.components/core/index';
 
 /** Contains default configurations for all kinds of resources. Used by ResourceList and ResourceForm.  */
 export const resourceConfig: { [key: string]: ListConfig<any> } = {
   dataManager: {
     identifier: 'dataManagerID',
     label: 'title',
-    onSave,
     fields: {
       hexColor: {
         label: '#',
@@ -52,21 +36,12 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
   model: {
     identifier: 'modelID',
     label: 'title',
-    onSave,
-    /* onSave: (item, value) => {
-          const model = item.getBody();
-          item.serialize(value, model instanceof ModelResource);
-          Object.assign(model, value);
-          if (model instanceof model) {
-            return model.save();
-          }
-          return value; // TODO create
-        }, */
     fields: {
       hexColor: {
         label: '#',
         view: 'color',
-        sortable: true
+        sortable: true,
+        prefill: '#ffffff'
       },
       title: {
         label: 'Model',
@@ -80,6 +55,17 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
         filterable: true /*,
             sortable: true,*/
       },
+      locales: {
+        list: false,
+        prefill: []
+      },
+      fields: {
+        view: 'tags',
+        display: (value) => {
+          return value.map(field => field.title)
+        },
+        prefill: []
+      },
       created: {
         label: 'Datum',
         display: value => moment(value).format('DD.MM.YY'),
@@ -91,7 +77,6 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
   account: {
     identifier: 'accountID',
     label: 'email',
-    onSave,
     fields: {
       email: {
         label: 'Email',
@@ -118,7 +103,6 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
   template: {
     identifier: 'templateID',
     label: 'name',
-    onSave,
     fields: {
       name: {
         label: 'Template',
@@ -136,20 +120,16 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
   },
   app: {
     identifier: 'appID',
-    onSave,
     fields: {
       hexColor: {
         label: '#',
         view: 'color',
         sortable: true
       },
-      /*
       shortID: {
-        label: 'shortID'
+        label: 'shortID',
+        list: false
       },
-      appID: {
-        label: 'ID'
-      }, */
       title: {
         label: 'App',
         view: 'string',
@@ -167,7 +147,6 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
   },
   platform: {
     identifier: 'platformID',
-    onSave,
     fields: {
       title: {
         label: 'Platform',
@@ -177,6 +156,182 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
         label: 'Type',
         view: 'string'
       },
+      config: {
+        label: 'Config',
+        list: false
+      }
+    }
+  },
+  asset: {
+    identifier: 'assetID',
+    fields: {
+      assetID: {
+        label: 'assetID',
+        list: false,
+        form: false,
+        immutable: true
+      },
+      title: {
+        label: 'Titel',
+        view: 'string'
+      },
+      created: {
+        label: 'Datum',
+        sortable: true,
+        display: value => moment(value).format('DD.MM.YY'),
+        group: value => moment(value).format('MMMM YYYY'),
+        form: false,
+        immutable: true
+      },
+      files: {
+        label: 'Dateien',
+        view: 'tag',
+        form: false,
+        display: value => value.length,
+        immutable: true
+      },
+      thumb: {
+        form: false,
+        label: 'Vorschau',
+        view: 'avatar',
+        resolve: (asset) => {
+          if (asset.type !== 'image') {
+            return '';
+          }
+          return asset.getImageUrl(200);
+        },
+        immutable: true
+      },
+      tags: {
+        label: 'Tags',
+        view: 'tags'
+      },
+    }
+  },
+  assetGroup: { // https://doc.entrecode.de/en/develop/resources/dm-assetgroup/
+    identifier: 'assetGroupID',
+    fields: {
+      assetGroupID: {
+        label: 'assetGroupID',
+        view: 'string'
+      },
+      public: {
+        view: 'boolean'
+      },
+      settings: {
+        view: 'json',
+        display: (json) => JSON.stringify(json),
+        prefill: {}
+      },
+      policies: {
+        view: 'tags',
+        display: (policies) => policies.map(p => p.method),
+        prefill: []
+      }
+    }
+  },
+  client: {
+    identifier: 'clientID',
+    fields: {
+      hexColor: {
+        label: '#',
+        view: 'color',
+        sortable: true
+      },
+      clientID: {
+        label: 'clientID',
+        view: 'string'
+      },
+      callbackURL: {
+        label: 'Callback URL',
+        view: 'string',
+      },
+      tokenMethod: {
+        label: 'Token Method',
+        view: 'tags'
+      },
+      disableStrategies: {
+        view: 'tags'
+      }
+    }
+  },
+  role: {
+    identifier: 'roleID',
+    fields: {
+      name: {
+        label: 'Name',
+        view: 'string',
+        filterable: true,
+        sortable: true
+      },
+      label: {
+        label: 'Label',
+        view: 'string'
+      },
+      accounts: {
+        label: 'accounts',
+        view: 'tags',
+        prefill: []
+      },
+      addRegistered: {
+        label: 'addRegistered',
+        view: 'boolean'/* ,
+        prefill: false */
+      },
+      addUnregistered: {
+        label: 'addUnregistered',
+        view: 'boolean'/* ,
+        prefill: false */
+      }
+    }
+  },
+  codeSource: {
+    identifier: 'codeSourceID',
+    fields: {
+      codeSourceID: {
+        label: 'ID'
+      },
+      codeSourceType: {
+        label: 'Typ',
+        view: 'tag'
+      },
+      config: {
+        label: 'config',
+        list: false
+      }
+    }
+  },
+  dataSource: {
+    identifier: 'dataSourceID',
+    fields: {
+      dataSourceID: {
+        label: 'ID'
+      }
+    }
+  },
+  target: {
+    identifier: 'targetID',
+    fields: {
+      targetType: {
+        label: 'Typ',
+        view: 'tag'
+      },
+      config: {
+        label: 'Config',
+        list: false
+      }
+    }
+  },
+  group: {
+    identifier: 'groupID',
+    fields: {
+      name: {
+        label: 'Name'
+      },
+      permissions: {
+        label: 'Permissions',
+        view: 'tags'
+      }
     }
   }
-};
+}

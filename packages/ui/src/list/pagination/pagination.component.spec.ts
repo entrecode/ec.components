@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PaginationComponent } from '../../../index';
 import { Pagination } from '@ec.components/core';
+import { IconModule } from '../../icon/icon.module';
 
 describe('PaginationComponent', () => {
   let component: PaginationComponent<number>;
@@ -9,9 +10,10 @@ describe('PaginationComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [IconModule],
       declarations: [PaginationComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -29,7 +31,6 @@ describe('PaginationComponent', () => {
     component['ngOnChanges']();
     component.pagination.setTotal(1000);
     component.pagination.next();
-    expect(component['translation']).toBeDefined();
     expect(component.isVisible(1)).toBe(true);
     expect(component.isVisible(10)).toBe(false);
   });

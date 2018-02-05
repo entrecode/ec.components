@@ -21,6 +21,7 @@ import { AuthModule } from './auth/auth.module';
 import { EntriesDirective } from './entries/entries.directive';
 import { EntryDirective } from './entry/entry.directive';
 import { EntryPopComponent } from './entry-pop/entry-pop.component';
+import { ResourceFormComponent } from './resource-form/resource-form.component';
 
 @NgModule({
   entryComponents: [
@@ -40,6 +41,7 @@ import { EntryPopComponent } from './entry-pop/entry-pop.component';
     DatamanagerListComponent,
     ModelListComponent,
     ResourceListComponent,
+    ResourceFormComponent,
     DefaultEntryInputComponent,
     DefaultEntryOutputComponent,
     CrudComponent,
@@ -64,6 +66,7 @@ import { EntryPopComponent } from './entry-pop/entry-pop.component';
     DatamanagerListComponent,
     ModelListComponent,
     ResourceListComponent,
+    ResourceFormComponent,
     RouterModule,
     UiModule,
     SdkModule,
@@ -99,5 +102,5 @@ export class DataModule {
       ]
     };
   }
-  constructor() {}
+  constructor() { }
 }
