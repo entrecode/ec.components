@@ -160,7 +160,7 @@ export class Item<T> {
   }
 
   /** Transforms the given field's value for serialization when saving. */
-  serialize(value = this.body, put: boolean = false): any {
+  serialize(value, put: boolean = false): any {
     if (put) {
       value = this.pickWriteOnly(value);
     }
@@ -168,7 +168,7 @@ export class Item<T> {
     /** Run the remaining properties through serializers */
     Object.keys(value).map((property) => {
       Object.assign(value, {
-        [property]: this.transform('serialize', property, value[property])
+        [property]: this.transform('serialize', property, value[property]) // TODO: fix
       })
     });
     return value;

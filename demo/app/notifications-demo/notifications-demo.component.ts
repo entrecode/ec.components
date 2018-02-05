@@ -11,7 +11,7 @@ export class NotificationsDemoComponent implements OnInit {
   public types = ['success', 'info', 'error'];
   @ViewChild('notifications') notifications: NotificationsComponent;
   public options: Form<any>;
-  @ViewChild('optionsForm') optionsForm: FormComponent;
+  @ViewChild('optionsForm') optionsForm: FormComponent<any>;
 
   constructor(private notificationService: NotificationsService) {
   }

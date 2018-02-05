@@ -14,19 +14,19 @@ import { WithLoader } from '../loader/with-loader.interface';
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss']
 })
-export class FormComponent implements OnChanges, WithLoader {
+export class FormComponent<T> implements OnChanges, WithLoader {
   /** The instance of Form that is used. */
-  protected form: Form<any>;
+  protected form: Form<T>;
   /** The current (angular) form group. */
   public group: FormGroup;
   /** The current form config */
-  public config: FormConfig<any>;
+  public config: FormConfig<T>;
   /** You can also use a FormConfig/ItemConfig as input (with defined fields property) */
-  @Input('config') configInput: FormConfig<any>;
+  @Input('config') configInput: FormConfig<T>;
   /** You can also use an Item as input */
-  @Input() readonly item: Item<any>;
+  @Input() readonly item: Item<T>;
   /** If you pass an object to value, the form will generate an item from it. */
-  @Input() value: any;
+  @Input() value: T;
   /** If set to true, the form will be rendered empty, to be referenced from the outside. */
   @Input() empty: boolean;
   /** If set to true, the form will be rendered without a submit button. */
@@ -38,7 +38,7 @@ export class FormComponent implements OnChanges, WithLoader {
   /** Emits when the form is submitted. The form can only be submitted if all Validators succeeded. */
   @Output() submitted: EventEmitter<Form<any>> = new EventEmitter();
   /** Emits when a new instance of Form is present */
-  @Output() change: EventEmitter<FormComponent> = new EventEmitter();
+  @Output() change: EventEmitter<FormComponent<T>> = new EventEmitter();
   /** The forms default loader. it is used when no loader is passed via the loader input */
   @ViewChild(LoaderComponent) defaultLoader: LoaderComponent;
 
@@ -65,12 +65,17 @@ export class FormComponent implements OnChanges, WithLoader {
     } else if (config) {
       this.form = new Form(null, config);
     }
-    if (this.form) {
-      this.group = this.formService.getGroup(this.form);
-      this.group.valueChanges.subscribe((change) => {
-        this.change.emit(this);
-      });
+    this.initGroup();
+  }
+  /** Initializes the FormGroup which is generated from the current form instance. Sets valueChanges listener */
+  protected initGroup() {
+    if (!this.form) {
+      return;
     }
+    this.group = this.formService.getGroup(this.form);
+    this.group.valueChanges.subscribe((change) => {
+      this.change.emit(this);
+    });
   }
 
   /* clears the form and uses the given config (falls back to existing one). Renders an empty form. */

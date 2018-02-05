@@ -18,7 +18,7 @@ export class ListHeaderComponent {
   /** The pop dropdowns that contain the filtering */
   @ViewChildren('filterPop') pops: QueryList<PopComponent>;
   /** The form that holds the current filter information */
-  @ViewChild('filterForm') filter: FormComponent;
+  @ViewChild('filterForm') filter: FormComponent<any>;
 
   /** opens the given filter pop and closes all others */
   public editFilter(pop) {

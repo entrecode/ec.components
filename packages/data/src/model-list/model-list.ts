@@ -8,7 +8,7 @@ import { ListConfig } from '@ec.components/core/src/list/list-config.interface';
 /**
  * Extension of List for Models. Deprecated due to ResourceList (model relation).
  */
-export class ModelList extends ResourceList<ModelResource> {
+export class ModelList extends ResourceList {
   private datamanager: DataManagerResource | string;
 
   constructor(datamanager: DataManagerResource | string, config: ListConfig<ModelResource>, public sdk: SdkService) {

@@ -7,12 +7,13 @@ import ListResource, { filterOptions } from 'ec.sdk/lib/resources/ListResource';
 import { Field } from '@ec.components/core/src/field/field';
 import { ListConfig } from '@ec.components/core/src/list/list-config.interface';
 import Core from 'ec.sdk/lib/Core';
+import Resource from 'ec.sdk/lib/resources/Resource';
 
 /**
  * Extension of List for SDK ListResource. Each each implementation should implement the load
  * method to call the SDK method for loading the desired list! (see EntryList for example)
  */
-export class ResourceList<T> extends List<T> {
+export class ResourceList extends List<Resource> {
   /** The current loaded ListResource */
   protected listResource: ListResource;
   /** Subject that should be nexted when loading begins */
@@ -41,7 +42,7 @@ export class ResourceList<T> extends List<T> {
   /** The constructor will init the List and Pagination instances.
    * Make sure the config is already complete when initiating an EntryList instance. */
   constructor(
-    config: ListConfig<T>,
+    config: ListConfig<Resource>,
     public api?: Core,
     public relation?,
     listResource?: ListResource
@@ -55,7 +56,7 @@ export class ResourceList<T> extends List<T> {
     }
   }
 
-  load(config?: ListConfig<T>) {
+  load(config?: ListConfig<Resource>) {
     if (config) {
       this.config = Object.assign(this.config, config);
     }
@@ -71,7 +72,7 @@ export class ResourceList<T> extends List<T> {
   }
 
   /** deletes all undefined values from given config and assigns it to this.config */
-  protected useConfig(config?: ListConfig<T>) {
+  protected useConfig(config?: ListConfig<Resource>) {
     if (config) {
       Object.keys(config).forEach(key => {
         if (config[key] === undefined) {
@@ -88,7 +89,7 @@ export class ResourceList<T> extends List<T> {
     this.removeAll();
     this.addAll(
       listResource.getAllItems().map(value => {
-        return new Item(value, this.config); // TODO: use ResourceItem to add save callback!?
+        return new Item(value, this.config);
       }),
       true
     );
@@ -108,7 +109,7 @@ export class ResourceList<T> extends List<T> {
     sortBy,
     desc,
     sort = []
-  }: ListConfig<T> = {}): filterOptions {
+  }: ListConfig<Resource> = {}): filterOptions {
     const options = { size, page };
     if (sortBy) {
       Object.assign(options, { sort: [(desc ? '-' : '') + sortBy] });

@@ -483,6 +483,9 @@
                                     <a href="../classes/PaginationConfig.html" >PaginationConfig</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../classes/ResourceForm.html" >ResourceForm</a>
+                                </li>
+                                <li class="link">
                                     <a href="../classes/ResourceList.html" >ResourceList</a>
                                 </li>
                                 <li class="link">
@@ -1142,6 +1145,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../classes/PaginationConfig.html" >PaginationConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/ResourceForm.html" >ResourceForm</a>
                                        </li>
                                        <li class="link">
                                            <a href="../classes/ResourceList.html" >ResourceList</a>
@@ -2465,7 +2471,6 @@
       dataManager: {
         identifier: &#x27;dataManagerID&#x27;,
         label: &#x27;title&#x27;,
-        onSave,
         fields: {
           hexColor: {
             label: &#x27;#&#x27;,
@@ -2496,21 +2501,12 @@
       model: {
         identifier: &#x27;modelID&#x27;,
         label: &#x27;title&#x27;,
-        onSave,
-        /* onSave: (item, value) &#x3D;&gt; {
-              const model &#x3D; item.getBody();
-              item.serialize(value, model instanceof ModelResource);
-              Object.assign(model, value);
-              if (model instanceof model) {
-                return model.save();
-              }
-              return value; // TODO create
-            }, */
         fields: {
           hexColor: {
             label: &#x27;#&#x27;,
             view: &#x27;color&#x27;,
-            sortable: true
+            sortable: true,
+            prefill: &#x27;#ffffff&#x27;
           },
           title: {
             label: &#x27;Model&#x27;,
@@ -2524,6 +2520,17 @@
             filterable: true /*,
                 sortable: true,*/
           },
+          locales: {
+            list: false,
+            prefill: []
+          },
+          fields: {
+            view: &#x27;tags&#x27;,
+            display: (value) &#x3D;&gt; {
+              return value.map(field &#x3D;&gt; field.title)
+            },
+            prefill: []
+          },
           created: {
             label: &#x27;Datum&#x27;,
             display: value &#x3D;&gt; moment(value).format(&#x27;DD.MM.YY&#x27;),
@@ -2535,7 +2542,6 @@
       account: {
         identifier: &#x27;accountID&#x27;,
         label: &#x27;email&#x27;,
-        onSave,
         fields: {
           email: {
             label: &#x27;Email&#x27;,
@@ -2562,7 +2568,6 @@
       template: {
         identifier: &#x27;templateID&#x27;,
         label: &#x27;name&#x27;,
-        onSave,
         fields: {
           name: {
             label: &#x27;Template&#x27;,
@@ -2580,20 +2585,16 @@
       },
       app: {
         identifier: &#x27;appID&#x27;,
-        onSave,
         fields: {
           hexColor: {
             label: &#x27;#&#x27;,
             view: &#x27;color&#x27;,
             sortable: true
           },
-          /*
           shortID: {
-            label: &#x27;shortID&#x27;
+            label: &#x27;shortID&#x27;,
+            list: false
           },
-          appID: {
-            label: &#x27;ID&#x27;
-          }, */
           title: {
             label: &#x27;App&#x27;,
             view: &#x27;string&#x27;,
@@ -2611,7 +2612,6 @@
       },
       platform: {
         identifier: &#x27;platformID&#x27;,
-        onSave,
         fields: {
           title: {
             label: &#x27;Platform&#x27;,
@@ -2633,24 +2633,30 @@
           assetID: {
             label: &#x27;assetID&#x27;,
             list: false,
-            form: false
+            form: false,
+            immutable: true
           },
           title: {
-            label: &#x27;Titel&#x27;
+            label: &#x27;Titel&#x27;,
+            view: &#x27;string&#x27;
           },
           created: {
             label: &#x27;Datum&#x27;,
             sortable: true,
             display: value &#x3D;&gt; moment(value).format(&#x27;DD.MM.YY&#x27;),
             group: value &#x3D;&gt; moment(value).format(&#x27;MMMM YYYY&#x27;),
-            form: false
+            form: false,
+            immutable: true
           },
           files: {
             label: &#x27;Dateien&#x27;,
             view: &#x27;tag&#x27;,
-            display: value &#x3D;&gt; value.length
+            form: false,
+            display: value &#x3D;&gt; value.length,
+            immutable: true
           },
           thumb: {
+            form: false,
             label: &#x27;Vorschau&#x27;,
             view: &#x27;avatar&#x27;,
             resolve: (asset) &#x3D;&gt; {
@@ -2659,12 +2665,34 @@
               }
               return asset.getImageUrl(200);
             },
-            readOnly: true
+            immutable: true
           },
           tags: {
             label: &#x27;Tags&#x27;,
             view: &#x27;tags&#x27;
           },
+        }
+      },
+      assetGroup: { // https://doc.entrecode.de/en/develop/resources/dm-assetgroup/
+        identifier: &#x27;assetGroupID&#x27;,
+        fields: {
+          assetGroupID: {
+            label: &#x27;assetGroupID&#x27;,
+            view: &#x27;string&#x27;
+          },
+          public: {
+            view: &#x27;boolean&#x27;
+          },
+          settings: {
+            view: &#x27;json&#x27;,
+            display: (json) &#x3D;&gt; JSON.stringify(json),
+            prefill: {}
+          },
+          policies: {
+            view: &#x27;tags&#x27;,
+            display: (policies) &#x3D;&gt; policies.map(p &#x3D;&gt; p.method),
+            prefill: []
+          }
         }
       },
       client: {
@@ -2676,10 +2704,16 @@
             sortable: true
           },
           clientID: {
-            label: &#x27;clientID&#x27;
+            label: &#x27;clientID&#x27;,
+            view: &#x27;string&#x27;
           },
           callbackURL: {
-            label: &#x27;Callback&#x27;
+            label: &#x27;Callback URL&#x27;,
+            view: &#x27;string&#x27;,
+          },
+          tokenMethod: {
+            label: &#x27;Token Method&#x27;,
+            view: &#x27;tags&#x27;
           },
           disableStrategies: {
             view: &#x27;tags&#x27;
@@ -2689,8 +2723,30 @@
       role: {
         identifier: &#x27;roleID&#x27;,
         fields: {
-          roleID: {
-            label: &#x27;roleID&#x27;
+          name: {
+            label: &#x27;Name&#x27;,
+            view: &#x27;string&#x27;,
+            filterable: true,
+            sortable: true
+          },
+          label: {
+            label: &#x27;Label&#x27;,
+            view: &#x27;string&#x27;
+          },
+          accounts: {
+            label: &#x27;accounts&#x27;,
+            view: &#x27;tags&#x27;,
+            prefill: []
+          },
+          addRegistered: {
+            label: &#x27;addRegistered&#x27;,
+            view: &#x27;boolean&#x27;/* ,
+            prefill: false */
+          },
+          addUnregistered: {
+            label: &#x27;addUnregistered&#x27;,
+            view: &#x27;boolean&#x27;/* ,
+            prefill: false */
           }
         }
       },

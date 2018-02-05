@@ -7,7 +7,7 @@ import { ListConfig } from '@ec.components/core/src/list/list-config.interface';
 /**
  * Extension of List for Datamanagers
  */
-export class DatamanagerList extends ResourceList<DataManagerResource> {
+export class DatamanagerList extends ResourceList {
 
   constructor(config: ListConfig<DataManagerResource>, protected sdk: SdkService) {
     super(Object.assign({

@@ -483,6 +483,9 @@
                                     <a href="../classes/PaginationConfig.html" >PaginationConfig</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../classes/ResourceForm.html" >ResourceForm</a>
+                                </li>
+                                <li class="link">
                                     <a href="../classes/ResourceList.html" >ResourceList</a>
                                 </li>
                                 <li class="link">
@@ -1144,6 +1147,9 @@
                                            <a href="../classes/PaginationConfig.html" >PaginationConfig</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../classes/ResourceForm.html" >ResourceForm</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../classes/ResourceList.html" >ResourceList</a>
                                        </li>
                                        <li class="link">
@@ -1691,8 +1697,9 @@ export class NotificationsComponent {
           [ngClass]&#x3D;&quot;&#x27;is-&#x27; + notification.type&quot;&gt;
     &lt;h6 class&#x3D;&quot;ec-notification__title&quot;&gt;{{notification.title}}&lt;/h6&gt;
     &lt;p class&#x3D;&quot;ec-notification__message&quot;&gt;{{notification.message}}&lt;/p&gt;
+    &lt;!--TODO what is this--&gt;
     &lt;ec-error *ngIf&#x3D;&quot;notification.error&quot; [error]&#x3D;&quot;notification.error&quot;&gt;&lt;/ec-error&gt;
-    &lt;ul *ngIf&#x3D;&quot;notification.error?.errors&quot;&gt;
+    &lt;ul *ngIf&#x3D;&quot;notification.error?.errors&quot; class&#x3D;&quot;ec-notification-errors-list&quot;&gt;
       &lt;li *ngFor&#x3D;&quot;let error of notification.error?.errors&quot;&gt;
         &lt;ec-error [error]&#x3D;&quot;error&quot;&gt;&lt;/ec-error&gt;
       &lt;/li&gt;
@@ -1728,7 +1735,7 @@ export class NotificationsComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="ec-notifications">  <ec-pop *ngFor="let notification of notifications?.items"          [active]="true"          [visible]="true"          class="ec-notification"          [ngClass]="\'is-\' + notification.type">    <h6 class="ec-notification__title">{{notification.title}}</h6>    <p class="ec-notification__message">{{notification.message}}</p>    <ec-error *ngIf="notification.error" [error]="notification.error"></ec-error>    <ul *ngIf="notification.error?.errors">      <li *ngFor="let error of notification.error?.errors">        <ec-error [error]="error"></ec-error>      </li>    </ul>    <a class="ec-notification__dismiss" (click)="notifications.remove(notification)">      <ec-icon name="close-x"></ec-icon>    </a>  </ec-pop></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="ec-notifications">  <ec-pop *ngFor="let notification of notifications?.items"          [active]="true"          [visible]="true"          class="ec-notification"          [ngClass]="\'is-\' + notification.type">    <h6 class="ec-notification__title">{{notification.title}}</h6>    <p class="ec-notification__message">{{notification.message}}</p>    <!--TODO what is this-->    <ec-error *ngIf="notification.error" [error]="notification.error"></ec-error>    <ul *ngIf="notification.error?.errors" class="ec-notification-errors-list">      <li *ngFor="let error of notification.error?.errors">        <ec-error [error]="error"></ec-error>      </li>    </ul>    <a class="ec-notification__dismiss" (click)="notifications.remove(notification)">      <ec-icon name="close-x"></ec-icon>    </a>  </ec-pop></div></div>'
     var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'ActionbarComponent', 'selector': 'ec-actionbar'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'IconComponent', 'selector': 'ec-icon'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'InteractionComponent', 'selector': 'ec-interaction'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceFormComponent', 'selector': 'ec-resource-form'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
     var DIRECTIVES = [{'name': 'AssetDirective', 'selector': '[ecAsset]'},{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'ImageDirective', 'selector': 'img [ecImage]'},{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'}];
     var ACTUAL_COMPONENT = {'name': 'NotificationsComponent'};

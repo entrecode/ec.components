@@ -9,8 +9,8 @@ import { NotificationsModule } from '../notifications/notifications.module';
 import { VisibleFieldsPipe } from './visible-fields.pipe';
 
 describe('FormComponent', () => {
-  let component: FormComponent;
-  let fixture: ComponentFixture<FormComponent>;
+  let component: FormComponent<any>;
+  let fixture: ComponentFixture<FormComponent<any>>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

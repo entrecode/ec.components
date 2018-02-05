@@ -483,6 +483,9 @@
                                     <a href="../classes/PaginationConfig.html" >PaginationConfig</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../classes/ResourceForm.html" >ResourceForm</a>
+                                </li>
+                                <li class="link">
                                     <a href="../classes/ResourceList.html" >ResourceList</a>
                                 </li>
                                 <li class="link">
@@ -1144,6 +1147,9 @@
                                            <a href="../classes/PaginationConfig.html" >PaginationConfig</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../classes/ResourceForm.html" >ResourceForm</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../classes/ResourceList.html" >ResourceList</a>
                                        </li>
                                        <li class="link">
@@ -1561,7 +1567,7 @@ import { ListConfig } from &#x27;@ec.components/core/src/list/list-config.interf
 /**
  * Extension of List for Datamanagers
  */
-export class DatamanagerList extends ResourceList&lt;DataManagerResource&gt; {
+export class DatamanagerList extends ResourceList {
 
   constructor(config: ListConfig&lt;DataManagerResource&gt;, protected sdk: SdkService) {
     super(Object.assign({
