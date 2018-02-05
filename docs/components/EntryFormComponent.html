@@ -483,6 +483,9 @@
                                     <a href="../classes/PaginationConfig.html" >PaginationConfig</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../classes/ResourceForm.html" >ResourceForm</a>
+                                </li>
+                                <li class="link">
                                     <a href="../classes/ResourceList.html" >ResourceList</a>
                                 </li>
                                 <li class="link">
@@ -1142,6 +1145,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../classes/PaginationConfig.html" >PaginationConfig</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/ResourceForm.html" >ResourceForm</a>
                                        </li>
                                        <li class="link">
                                            <a href="../classes/ResourceList.html" >ResourceList</a>
@@ -1842,7 +1848,7 @@ import EntryResource from &#x27;ec.sdk/lib/resources/publicAPI/EntryResource&#x2
   templateUrl: &#x27;../../../ui/src/form/form.component.html&#x27;,
   styleUrls: [&#x27;./entry-form.component.scss&#x27;]
 })
-export class EntryFormComponent extends FormComponent {
+export class EntryFormComponent extends FormComponent&lt;EntryResource&gt; {
   /** The model of the form. It is used to extract the schema and generate the config from.
    * If you do not pass any model, it is expected that an EntryResource is passed. */
   @Input() model: string;

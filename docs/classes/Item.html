@@ -483,6 +483,9 @@
                                     <a href="../classes/PaginationConfig.html" >PaginationConfig</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../classes/ResourceForm.html" >ResourceForm</a>
+                                </li>
+                                <li class="link">
                                     <a href="../classes/ResourceList.html" >ResourceList</a>
                                 </li>
                                 <li class="link">
@@ -1144,6 +1147,9 @@
                                            <a href="../classes/PaginationConfig.html" >PaginationConfig</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../classes/ResourceForm.html" >ResourceForm</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../classes/ResourceList.html" >ResourceList</a>
                                        </li>
                                        <li class="link">
@@ -1421,6 +1427,9 @@
                                         <a href="#clear">clear</a>
                                     </li>
                                     <li>
+                                        <a href="#deleteImmutableProperties">deleteImmutableProperties</a>
+                                    </li>
+                                    <li>
                                         <a href="#display">display</a>
                                     </li>
                                     <li>
@@ -1573,6 +1582,71 @@
                                             <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
             
                                         </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="deleteImmutableProperties"></a>
+                                    <span class="name">
+                                        <b>
+                                        deleteImmutableProperties
+                                        </b>
+                                        <a href="#deleteImmutableProperties"><span class="fa fa-link"></span></a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>deleteImmutableProperties(value: )</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="154" class="link-to-prism">packages/core/src/item/item.ts:154</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>value</td>
+                                                              <td>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -2111,7 +2185,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="176" class="link-to-prism">packages/core/src/item/item.ts:176</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="185" class="link-to-prism">packages/core/src/item/item.ts:185</a></div>
                                         </td>
                                     </tr>
             
@@ -2179,7 +2253,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="155" class="link-to-prism">packages/core/src/item/item.ts:155</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="163" class="link-to-prism">packages/core/src/item/item.ts:163</a></div>
                                         </td>
                                     </tr>
             
@@ -2646,7 +2720,7 @@ export class Item&lt;T&gt; {
 
   /** Assigns the given config to the existing via Object.assign */
   useConfig(config: ItemConfig&lt;T&gt;) {
-    Object.assign(this.config, config);
+    this.config &#x3D; Object.assign(this.config, config);
   }
 
   /** Returns the item&#x27;s config */
@@ -2747,15 +2821,24 @@ export class Item&lt;T&gt; {
 
   }
 
+  deleteImmutableProperties(value &#x3D; this.body) {
+    Object.keys(this.config.fields).forEach(property &#x3D;&gt; {
+      if (this.config.fields[property].immutable) {
+        delete value[property];
+      }
+    });
+  }
+
   /** Transforms the given field&#x27;s value for serialization when saving. */
   serialize(value, put: boolean &#x3D; false): any {
     if (put) {
       value &#x3D; this.pickWriteOnly(value);
     }
+    this.deleteImmutableProperties(value);
     /** Run the remaining properties through serializers */
     Object.keys(value).map((property) &#x3D;&gt; {
       Object.assign(value, {
-        [property]: this.transform(&#x27;serialize&#x27;, property, value[property])
+        [property]: this.transform(&#x27;serialize&#x27;, property, value[property]) // TODO: fix
       })
     });
     return value;
