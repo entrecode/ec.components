@@ -26,4 +26,6 @@ export interface ListConfig<T> extends ItemConfig<T> {
   filter?: { [key: string]: any },
   /** a query that will be turned in to a filter */
   query?: { [key: string]: any },
+  /** Maximal visible columns. Defaults to 8 */
+  maxColumns?: number
 }

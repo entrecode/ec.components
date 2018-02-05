@@ -4,9 +4,9 @@
       <div class="ec-list-cell ec-list__select" *ngIf="!list?.config?.disableSelection">
         <input type="checkbox" [checked]="selection?.has(item)">
       </div>
-      <div *ngFor="let field of list?.fields" class="ec-list-cell"
+      <div *ngFor="let field of list?.fields;let i = index" class="ec-list-cell"
            [ngClass]="'ec-list-field_' + field.view" [ngSwitch]="field.view"
-           [class.hide]="field.hide" [class.ec-list-field_sortable]="field.sortable"
+           [class.hide]="field.hide||i>=list.config?.maxColumns" [class.ec-list-field_sortable]="field.sortable"
            [class.ec-list-field_sortable_active]="list.config?.sortBy===field.property">
         <ec-output [field]="field" [item]="item"></ec-output>
       </div>
