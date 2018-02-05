@@ -62,7 +62,7 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
       fields: {
         view: 'tags',
         display: (value) => {
-          return value.map(field => field.title)
+          return value.map(field => field.title).filter(field => field[0] !== '_')
         },
         prefill: []
       },
