@@ -182,3 +182,23 @@ export class OpeningHoursComponent extends InputComponent implements ControlValu
 Now you can implement your own logic and call propagateChange when you change the value from your component, and react to change via the writeValue method!
 You now could also use your component with ngModel or formControl in another context!
 More information on this pattern: https://blog.thoughtram.io/angular/2016/07/27/custom-form-controls-in-angular-2.html
+
+## UPDATE: Custom Fields without wrapper
+
+You can now also use custom components as input directly without needing to wrap them explicitly.
+The only thing you need to do is 1. add the input component:
+
+```js
+/** Form input component */
+input: InputComponent;
+```
+
+and propagate the change:
+
+```js
+if (this.input) {
+ this.input.propagateChange(this.editor.getValue());
+}
+```
+
+input will be defined when the component is used as input component inside ec-form.

@@ -6,6 +6,7 @@ import { AceComponent } from './ace.component';
     imports: [],
     exports: [AceComponent],
     declarations: [AceComponent],
+    entryComponents: [AceComponent],
     providers: [],
 })
 export class AceModule { }

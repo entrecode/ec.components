@@ -6,17 +6,14 @@
   <ec-entry-form model="field_test"></ec-entry-form>
 
   <h2>With entry</h2>
-  <ec-entry-form model="muffin" [entry]="myMuffin.entry" ecEntry entry-id="SkXEhDZ5yW"
-                 #myMuffin="ecEntry"></ec-entry-form>
+  <ec-entry-form model="muffin" [entry]="myMuffin.entry" ecEntry entryId="SkXEhDZ5yW" #myMuffin="ecEntry"></ec-entry-form>
 
   <h2>Custom</h2>
 
   <ec-entry-form model="muffin" #muffinForm>
     <ec-input [field]="muffinForm.form?.getField('name')" [group]="muffinForm.group"></ec-input>
-    <ec-input [field]="muffinForm.form?.getField('amazement_factor')"
-              [group]="muffinForm.group"></ec-input>
-    <button type="button" (click)="muffinForm.submit()" [disabled]="muffinForm.group?.invalid"
-            [class.is-disabled]="muffinForm.group?.invalid">
+    <ec-input [field]="muffinForm.form?.getField('amazement_factor')" [group]="muffinForm.group"></ec-input>
+    <button type="button" (click)="muffinForm.submit()" [disabled]="muffinForm.group?.invalid" [class.is-disabled]="muffinForm.group?.invalid">
       Na los
     </button>
   </ec-entry-form>

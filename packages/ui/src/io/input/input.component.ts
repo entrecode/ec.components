@@ -1,18 +1,25 @@
-import { Component, EventEmitter, Input, Output, OnChanges, Type } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnChanges, Type, ComponentRef, forwardRef } from '@angular/core';
 
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DynamicSlotComponent } from '../dynamic-slot/dynamic-slot.component';
 import { DefaultInputComponent } from '../../form/default-input/default-input.component';
 import { Field } from '@ec.components/core/src/field/field';
 import { Item } from '@ec.components/core/src/item/item';
 import { Form } from '@ec.components/core/src/form/form';
-
+import { OnInit } from '../../../../vc/node_modules/@angular/core/src/metadata/lifecycle_hooks';
 /** This directive can be used to display a field. It is used inside ec-form as well as ec-list. */
 @Component({
   selector: 'ec-input',
   templateUrl: '../dynamic-slot/dynamic-slot.component.html',
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => InputComponent),
+      multi: true
+    }
+  ]
 })
-export class InputComponent extends DynamicSlotComponent implements OnChanges {
+export class InputComponent extends DynamicSlotComponent implements ControlValueAccessor, OnChanges {
   /** The belonging form group */
   @Input() group: FormGroup;
   /** The belonging form control. This is not required if you pass in a field and group. */
@@ -29,6 +36,9 @@ export class InputComponent extends DynamicSlotComponent implements OnChanges {
   @Input() item: Item<any>;
   /** Overrides the default component */
   @Input() component: Type<any>;
+  /** Holds a reference to the component instance. This is helpful when you want to modify the component after form intialization.
+   * You can access a form's InputComponents via FormComponent#inputs */
+  componentInstance: Component
 
   ngOnChanges() {
     if (this.property && this.item instanceof Form) {
@@ -41,16 +51,41 @@ export class InputComponent extends DynamicSlotComponent implements OnChanges {
       group: this.group,
       control: this.control || this.group ? this.group.get(this.field.property) : null,
       item: this.item,
-      field: this.field
+      field: this.field,
+      input: this
     };
 
     const componentRef = this.loadComponent(this.component || this.field.input || DefaultInputComponent, data);
+    this.componentInstance = componentRef.instance;
     if (componentRef.instance.control) {
       componentRef.instance.control.valueChanges
         .debounceTime(this.debounce)
         .subscribe((change) => {
+          console.log('value change');
           this.changed.emit(change);
+          this.propagateChange(change);
         });
     }
+    if (this.field && typeof this.field.init === 'function') {
+      this.field.init(this.componentInstance, this);
+    }
+  }
+
+  /** writes value to editor on outside model change. */
+  writeValue(value: any) {
+    if (this.componentInstance && this.componentInstance['writeValue']) {
+      this.componentInstance['writeValue'](value); // TODO: this is pretty hacky
+    }
+  }
+
+  propagateChange = (_: any) => {
+  };
+
+  /** Registers change callback */
+  registerOnChange(fn) {
+    this.propagateChange = fn;
+  }
+
+  registerOnTouched() {
   }
 }

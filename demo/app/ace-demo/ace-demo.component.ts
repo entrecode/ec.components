@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AceComponent } from '../../../packages/ace/src/ace.component';
 // import 'ace-builds/src-noconflict/ace.js';
 
 @Component({
@@ -15,8 +16,8 @@ import { Component, OnInit } from '@angular/core';
     <strong>JSON</strong>
     <ec-ace mode="json" theme="monokai" [(ngModel)]="json"></ec-ace>
     <pre><code>{{json}}</code></pre>
+    <ec-form [config]="jsonFormConfig" (submitted)="submitForm($event)"></ec-form>
     `
-
 })
 
 export class AceDemoComponent implements OnInit {
@@ -24,6 +25,23 @@ export class AceDemoComponent implements OnInit {
     html = '<h1>Hello There</h1>';
     css = 'h1 { color: red }';
     json;
+    jsonFormConfig = {
+        fields: {
+            json: {
+                label: 'JSON',
+                input: AceComponent,
+                prefill: '{"test":1}',
+                init: (component: AceComponent) => {
+                    component.setMode('json');
+                    component.setTheme('monokai');
+                }
+            }
+        }
+    }
+
+    submitForm(e) {
+        console.log('submit', e);
+    }
 
     fixDoubleQuotes() {
         this.javascript = 'console.log(\'double quotes are awful\');';

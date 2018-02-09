@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Form, FormConfig, Item } from '@ec.components/core';
 import { ItemConfig } from '@ec.components/core/src/item/item-config.interface';
@@ -7,6 +7,7 @@ import { LoaderService } from '../loader/loader.service';
 import { NotificationsService } from '../notifications/notifications.service';
 import { FormService } from './form.service';
 import { WithLoader } from '../loader/with-loader.interface';
+import { InputComponent } from '../io/input/input.component';
 
 /** This component renders a form using a FieldConfig Object. */
 @Component({
@@ -41,6 +42,8 @@ export class FormComponent<T> implements OnChanges, WithLoader {
   @Output() change: EventEmitter<FormComponent<T>> = new EventEmitter();
   /** The forms default loader. it is used when no loader is passed via the loader input */
   @ViewChild(LoaderComponent) defaultLoader: LoaderComponent;
+  /** The InputComponents that are used to control the fields */
+  @ViewChildren(InputComponent) inputs: QueryList<InputComponent>;
 
   /** Injects the services. */
   constructor(protected loaderService: LoaderService,
