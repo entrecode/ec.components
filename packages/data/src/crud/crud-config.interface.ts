@@ -25,5 +25,5 @@ export interface CrudConfig<T> extends ListConfig<T> {
   /** The class that should be used for the nested resources pops, defaults to no class. */
   nestedPopClass?: string;
   /** maps the permissions to the methods post put create delete */
-  permissions?: { put?: string, post?: string, get?: string, delete?: string }
+  permissions?: { put?: string | boolean, post?: string | boolean, get?: string | boolean, delete?: string | boolean }
 }

@@ -88,17 +88,18 @@ export class AuthService {
       return Promise.resolve(['get', 'post', 'put', 'delete']);
     }
     const permissions = resourceConfig[relation].permissions;
-
     return Object.keys(permissions)
-      .map((method) => (results) =>
-        this.checkPermission(`${this.resolveVariables(permissions[method], variables)}`)
-          .then(res => {
-            if (res) {
-              results.push(method);
-            }
-            return results;
-          })
-      )
+      .map((method) => (results) => {
+        return !permissions[method] ? Promise.resolve(results) :
+          permissions[method] ? Promise.resolve(results.concat(method)) :
+            this.checkPermission(`${this.resolveVariables(permissions[method], variables)}`)
+              .then(res => {
+                if (res) {
+                  results.push(method);
+                }
+                return results;
+              })
+      })
       .reduce((a, b) => a.then(r => b(r)), Promise.resolve([]))
       .then(_methods => {
         _methods.filter(x => !!x);
