@@ -266,9 +266,6 @@
                                     <a href="../components/CrudComponent.html" >CrudComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/DatamanagerListComponent.html" >DatamanagerListComponent</a>
-                                </li>
-                                <li class="link">
                                     <a href="../components/DatetimeComponent.html" >DatetimeComponent</a>
                                 </li>
                                 <li class="link">
@@ -348,9 +345,6 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/MockupComponent.html" >MockupComponent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../components/ModelListComponent.html" >ModelListComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/MonthComponent.html" >MonthComponent</a>
@@ -450,9 +444,6 @@
                                     <a href="../classes/Config.html" >Config</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../classes/DatamanagerList.html" >DatamanagerList</a>
-                                </li>
-                                <li class="link">
                                     <a href="../classes/EntryList.html" >EntryList</a>
                                 </li>
                                 <li class="link">
@@ -469,9 +460,6 @@
                                 </li>
                                 <li class="link">
                                     <a href="../classes/List.html" >List</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../classes/ModelList.html" >ModelList</a>
                                 </li>
                                 <li class="link">
                                     <a href="../classes/Notification.html" >Notification</a>
@@ -930,9 +918,6 @@
                                            <a href="../components/CrudComponent.html" >CrudComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/DatamanagerListComponent.html" >DatamanagerListComponent</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../components/DatetimeComponent.html" >DatetimeComponent</a>
                                        </li>
                                        <li class="link">
@@ -1012,9 +997,6 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/MockupComponent.html" >MockupComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../components/ModelListComponent.html" >ModelListComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/MonthComponent.html" >MonthComponent</a>
@@ -1114,9 +1096,6 @@
                                            <a href="../classes/Config.html" >Config</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../classes/DatamanagerList.html" >DatamanagerList</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../classes/EntryList.html" >EntryList</a>
                                        </li>
                                        <li class="link">
@@ -1133,9 +1112,6 @@
                                        </li>
                                        <li class="link">
                                            <a href="../classes/List.html" >List</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../classes/ModelList.html" >ModelList</a>
                                        </li>
                                        <li class="link">
                                            <a href="../classes/Notification.html" >Notification</a>
@@ -1424,6 +1400,9 @@
                             <td class="col-md-4">
                                 <ul class="index-list">
                                     <li>
+                                        <a href="#action">action</a>
+                                    </li>
+                                    <li>
                                         <a href="#clear">clear</a>
                                     </li>
                                     <li>
@@ -1489,7 +1468,7 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <code>constructor(body: T, config?: <a href="../interfaces/ItemConfig.html">ItemConfig<T></a>)</code>
+                                    <code>constructor(body: T, config: <a href="../interfaces/ItemConfig.html">ItemConfig<T></a>)</code>
                                 </td>
                             </tr>
                                     <tr>
@@ -1529,7 +1508,6 @@
                                                                         <code><a href="../interfaces/ItemConfig.html" target="_self" >ItemConfig&lt;T&gt;</a></code>
                                                               </td>
                                                               <td>
-                                                                      true
                                                               </td>
                                                               <td></td>
                                                             </tr>
@@ -1547,6 +1525,82 @@
                     <h3 id="methods">
                         Methods
                     </h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="action"></a>
+                                    <span class="name">
+                                        <b>
+                                        action
+                                        </b>
+                                        <a href="#action"><span class="fa fa-link"></span></a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>action(property: , e: )</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="200" class="link-to-prism">packages/core/src/item/item.ts:200</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Action method that is meant to be called on a button click or similar.
+            Calls the config#action method with the item and the property name </p>
+            </div>
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>property</td>
+                                                              <td>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>e</td>
+                                                              <td>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                     <table class="table table-sm table-bordered">
                         <tbody>
                             <tr>
@@ -2678,7 +2732,7 @@ export class Item&lt;T&gt; {
   protected config: ItemConfig&lt;T&gt;;
 
   /** Each item is constructed with its body and an optional config. */
-  constructor(body: T, config?: ItemConfig&lt;T&gt;) {
+  constructor(body: T, config: ItemConfig&lt;T&gt; &#x3D; {}) {
     this.body &#x3D; body;
     this.config &#x3D; config || this.generateConfig();
   }
@@ -2864,6 +2918,16 @@ export class Item&lt;T&gt; {
     }
     // Object.assign(this.resolve() || {}, this.serialize(value));
     return Promise.resolve(this);
+  }
+  /** Action method that is meant to be called on a button click or similar.
+   * Calls the config#action method with the item and the property name */
+  action(property, e) {
+    e.preventDefault();
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+    if (this.config.fields[property].action) {
+      this.config.fields[property].action(this, property);
+    }
   }
 }
 </code></pre>

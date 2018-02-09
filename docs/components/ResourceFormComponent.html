@@ -266,9 +266,6 @@
                                     <a href="../components/CrudComponent.html" >CrudComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/DatamanagerListComponent.html" >DatamanagerListComponent</a>
-                                </li>
-                                <li class="link">
                                     <a href="../components/DatetimeComponent.html" >DatetimeComponent</a>
                                 </li>
                                 <li class="link">
@@ -348,9 +345,6 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/MockupComponent.html" >MockupComponent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../components/ModelListComponent.html" >ModelListComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/MonthComponent.html" >MonthComponent</a>
@@ -450,9 +444,6 @@
                                     <a href="../classes/Config.html" >Config</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../classes/DatamanagerList.html" >DatamanagerList</a>
-                                </li>
-                                <li class="link">
                                     <a href="../classes/EntryList.html" >EntryList</a>
                                 </li>
                                 <li class="link">
@@ -469,9 +460,6 @@
                                 </li>
                                 <li class="link">
                                     <a href="../classes/List.html" >List</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../classes/ModelList.html" >ModelList</a>
                                 </li>
                                 <li class="link">
                                     <a href="../classes/Notification.html" >Notification</a>
@@ -930,9 +918,6 @@
                                            <a href="../components/CrudComponent.html" >CrudComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/DatamanagerListComponent.html" >DatamanagerListComponent</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../components/DatetimeComponent.html" >DatetimeComponent</a>
                                        </li>
                                        <li class="link">
@@ -1012,9 +997,6 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/MockupComponent.html" >MockupComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../components/ModelListComponent.html" >ModelListComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/MonthComponent.html" >MonthComponent</a>
@@ -1114,9 +1096,6 @@
                                            <a href="../classes/Config.html" >Config</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../classes/DatamanagerList.html" >DatamanagerList</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../classes/EntryList.html" >EntryList</a>
                                        </li>
                                        <li class="link">
@@ -1133,9 +1112,6 @@
                                        </li>
                                        <li class="link">
                                            <a href="../classes/List.html" >List</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../classes/ModelList.html" >ModelList</a>
                                        </li>
                                        <li class="link">
                                            <a href="../classes/Notification.html" >Notification</a>
@@ -1896,7 +1872,6 @@ export class ResourceFormComponent extends FormComponent&lt;Resource&gt; impleme
         if (!this.relation || (!this.api &amp;&amp; !this.value)) {
             return;
         }
-        console.log(&#x27;init&#x27;, item);
         this.form &#x3D; new ResourceForm(item ? item.getBody() : this.value || null, this.config, this.api, this.relation);
         this.initGroup();
     }
@@ -1912,15 +1887,14 @@ export class ResourceFormComponent extends FormComponent&lt;Resource&gt; impleme
   &lt;div *ngIf&#x3D;&quot;!wrapper.children.length&amp;&amp;!empty&quot;&gt;
     &lt;div *ngFor&#x3D;&quot;let field of form?.fields | visibleFields&quot; [ngClass]&#x3D;&quot;&#x27;form-group_&#x27; + field.view&quot; [ngSwitch]&#x3D;&quot;field.view&quot; class&#x3D;&quot;form-group&quot;&gt;
       &lt;label [for]&#x3D;&quot;field.id&quot;&gt;{{field.label || field.property}}&lt;/label&gt;
-      &lt;ec-input *ngIf&#x3D;&quot;!field.readOnly&quot; [field]&#x3D;&quot;field&quot; [group]&#x3D;&quot;group&quot; [item]&#x3D;&quot;form&quot;&gt;&lt;/ec-input&gt;
+      &lt;ec-input *ngIf&#x3D;&quot;!field.readOnly&quot; [field]&#x3D;&quot;field&quot; [group]&#x3D;&quot;group&quot; [item]&#x3D;&quot;form&quot; [formControl]&#x3D;&quot;group.get(field.property)&quot;&gt;&lt;/ec-input&gt;
       &lt;ec-output *ngIf&#x3D;&quot;field.readOnly&quot; [field]&#x3D;&quot;field&quot; [item]&#x3D;&quot;form&quot;&gt;&lt;/ec-output&gt;
     &lt;/div&gt;
     &lt;button type&#x3D;&quot;button&quot; (click)&#x3D;&quot;submit()&quot; *ngIf&#x3D;&quot;submitButton!&#x3D;&#x3D;false&quot; [disabled]&#x3D;&quot;group.invalid&quot; class&#x3D;&quot;btn&quot;&gt;Speichern
     &lt;/button&gt;
     &lt;ec-loader class&#x3D;&quot;ec-loader ec-loader_overlay ec-loader_global&quot; #formLoader&gt;&lt;/ec-loader&gt;
   &lt;/div&gt;
-&lt;/form&gt;
-</code></pre>
+&lt;/form&gt;</code></pre>
     </div>
 
     <div class="tab-pane fade" id="c-tree">
@@ -1946,8 +1920,8 @@ export class ResourceFormComponent extends FormComponent&lt;Resource&gt; impleme
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><form novalidate [formGroup]="group" (ngSubmit)="submit()" *ngIf="group">  <div #wrapper>    <ng-content></ng-content>  </div>  <div *ngIf="!wrapper.children.length&&!empty">    <div *ngFor="let field of form?.fields | visibleFields" [ngClass]="\'form-group_\' + field.view" [ngSwitch]="field.view" class="form-group">      <label [for]="field.id">{{field.label || field.property}}</label>      <ec-input *ngIf="!field.readOnly" [field]="field" [group]="group" [item]="form"></ec-input>      <ec-output *ngIf="field.readOnly" [field]="field" [item]="form"></ec-output>    </div>    <button type="button" (click)="submit()" *ngIf="submitButton!==false" [disabled]="group.invalid" class="btn">Speichern    </button>    <ec-loader class="ec-loader ec-loader_overlay ec-loader_global" #formLoader></ec-loader>  </div></form></div>'
-    var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'ActionbarComponent', 'selector': 'ec-actionbar'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'IconComponent', 'selector': 'ec-icon'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'InteractionComponent', 'selector': 'ec-interaction'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceFormComponent', 'selector': 'ec-resource-form'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
+        var COMPONENT_TEMPLATE = '<div><form novalidate [formGroup]="group" (ngSubmit)="submit()" *ngIf="group">  <div #wrapper>    <ng-content></ng-content>  </div>  <div *ngIf="!wrapper.children.length&&!empty">    <div *ngFor="let field of form?.fields | visibleFields" [ngClass]="\'form-group_\' + field.view" [ngSwitch]="field.view" class="form-group">      <label [for]="field.id">{{field.label || field.property}}</label>      <ec-input *ngIf="!field.readOnly" [field]="field" [group]="group" [item]="form" [formControl]="group.get(field.property)"></ec-input>      <ec-output *ngIf="field.readOnly" [field]="field" [item]="form"></ec-output>    </div>    <button type="button" (click)="submit()" *ngIf="submitButton!==false" [disabled]="group.invalid" class="btn">Speichern    </button>    <ec-loader class="ec-loader ec-loader_overlay ec-loader_global" #formLoader></ec-loader>  </div></form></div>'
+    var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'ActionbarComponent', 'selector': 'ec-actionbar'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'IconComponent', 'selector': 'ec-icon'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'InteractionComponent', 'selector': 'ec-interaction'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceFormComponent', 'selector': 'ec-resource-form'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
     var DIRECTIVES = [{'name': 'AssetDirective', 'selector': '[ecAsset]'},{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'ImageDirective', 'selector': 'img [ecImage]'},{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'}];
     var ACTUAL_COMPONENT = {'name': 'ResourceFormComponent'};
 </script>

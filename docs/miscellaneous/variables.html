@@ -266,9 +266,6 @@
                                     <a href="../components/CrudComponent.html" >CrudComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/DatamanagerListComponent.html" >DatamanagerListComponent</a>
-                                </li>
-                                <li class="link">
                                     <a href="../components/DatetimeComponent.html" >DatetimeComponent</a>
                                 </li>
                                 <li class="link">
@@ -348,9 +345,6 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/MockupComponent.html" >MockupComponent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../components/ModelListComponent.html" >ModelListComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/MonthComponent.html" >MonthComponent</a>
@@ -450,9 +444,6 @@
                                     <a href="../classes/Config.html" >Config</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../classes/DatamanagerList.html" >DatamanagerList</a>
-                                </li>
-                                <li class="link">
                                     <a href="../classes/EntryList.html" >EntryList</a>
                                 </li>
                                 <li class="link">
@@ -469,9 +460,6 @@
                                 </li>
                                 <li class="link">
                                     <a href="../classes/List.html" >List</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../classes/ModelList.html" >ModelList</a>
                                 </li>
                                 <li class="link">
                                     <a href="../classes/Notification.html" >Notification</a>
@@ -930,9 +918,6 @@
                                            <a href="../components/CrudComponent.html" >CrudComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/DatamanagerListComponent.html" >DatamanagerListComponent</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../components/DatetimeComponent.html" >DatetimeComponent</a>
                                        </li>
                                        <li class="link">
@@ -1012,9 +997,6 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/MockupComponent.html" >MockupComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../components/ModelListComponent.html" >ModelListComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/MonthComponent.html" >MonthComponent</a>
@@ -1114,9 +1096,6 @@
                                            <a href="../classes/Config.html" >Config</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../classes/DatamanagerList.html" >DatamanagerList</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../classes/EntryList.html" >EntryList</a>
                                        </li>
                                        <li class="link">
@@ -1133,9 +1112,6 @@
                                        </li>
                                        <li class="link">
                                            <a href="../classes/List.html" >List</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../classes/ModelList.html" >ModelList</a>
                                        </li>
                                        <li class="link">
                                            <a href="../classes/Notification.html" >Notification</a>
@@ -2475,7 +2451,6 @@
           hexColor: {
             label: &#x27;#&#x27;,
             view: &#x27;color&#x27;,
-            sortable: true
           },
           title: {
             label: &#x27;Name&#x27;,
@@ -2486,8 +2461,7 @@
           description: {
             label: &#x27;Beschreibung&#x27;,
             view: &#x27;string&#x27;,
-            filterable: true /*,
-                    sortable: true,*/
+            filterable: true
           },
           created: {
             label: &#x27;Datum&#x27;,
@@ -2503,9 +2477,8 @@
         label: &#x27;title&#x27;,
         fields: {
           hexColor: {
-            label: &#x27;#&#x27;,
+            label: &#x27; &#x27;,
             view: &#x27;color&#x27;,
-            sortable: true,
             prefill: &#x27;#ffffff&#x27;
           },
           title: {
@@ -2517,8 +2490,7 @@
           description: {
             label: &#x27;Beschreibung&#x27;,
             view: &#x27;string&#x27;,
-            filterable: true /*,
-                sortable: true,*/
+            filterable: true,
           },
           locales: {
             list: false,
@@ -2527,11 +2499,12 @@
           fields: {
             view: &#x27;tags&#x27;,
             display: (value) &#x3D;&gt; {
-              return value.map(field &#x3D;&gt; field.title)
+              return value.map(field &#x3D;&gt; field.title).filter(field &#x3D;&gt; field[0] !&#x3D;&#x3D; &#x27;_&#x27;)
             },
             prefill: []
           },
           created: {
+            sortable: true,
             label: &#x27;Datum&#x27;,
             display: value &#x3D;&gt; moment(value).format(&#x27;DD.MM.YY&#x27;),
             group: value &#x3D;&gt; moment(value).format(&#x27;MMMM YYYY&#x27;),
@@ -2589,7 +2562,6 @@
           hexColor: {
             label: &#x27;#&#x27;,
             view: &#x27;color&#x27;,
-            sortable: true
           },
           shortID: {
             label: &#x27;shortID&#x27;,
@@ -2701,7 +2673,6 @@
           hexColor: {
             label: &#x27;#&#x27;,
             view: &#x27;color&#x27;,
-            sortable: true
           },
           clientID: {
             label: &#x27;clientID&#x27;,

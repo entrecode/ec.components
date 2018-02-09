@@ -266,9 +266,6 @@
                                     <a href="../components/CrudComponent.html" >CrudComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/DatamanagerListComponent.html" >DatamanagerListComponent</a>
-                                </li>
-                                <li class="link">
                                     <a href="../components/DatetimeComponent.html" >DatetimeComponent</a>
                                 </li>
                                 <li class="link">
@@ -348,9 +345,6 @@
                                 </li>
                                 <li class="link">
                                     <a href="../components/MockupComponent.html" >MockupComponent</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../components/ModelListComponent.html" >ModelListComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/MonthComponent.html" >MonthComponent</a>
@@ -450,9 +444,6 @@
                                     <a href="../classes/Config.html" >Config</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../classes/DatamanagerList.html" >DatamanagerList</a>
-                                </li>
-                                <li class="link">
                                     <a href="../classes/EntryList.html" >EntryList</a>
                                 </li>
                                 <li class="link">
@@ -469,9 +460,6 @@
                                 </li>
                                 <li class="link">
                                     <a href="../classes/List.html" >List</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../classes/ModelList.html" >ModelList</a>
                                 </li>
                                 <li class="link">
                                     <a href="../classes/Notification.html" >Notification</a>
@@ -930,9 +918,6 @@
                                            <a href="../components/CrudComponent.html" >CrudComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/DatamanagerListComponent.html" >DatamanagerListComponent</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../components/DatetimeComponent.html" >DatetimeComponent</a>
                                        </li>
                                        <li class="link">
@@ -1012,9 +997,6 @@
                                        </li>
                                        <li class="link">
                                            <a href="../components/MockupComponent.html" >MockupComponent</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../components/ModelListComponent.html" >ModelListComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/MonthComponent.html" >MonthComponent</a>
@@ -1114,9 +1096,6 @@
                                            <a href="../classes/Config.html" >Config</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../classes/DatamanagerList.html" >DatamanagerList</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../classes/EntryList.html" >EntryList</a>
                                        </li>
                                        <li class="link">
@@ -1133,9 +1112,6 @@
                                        </li>
                                        <li class="link">
                                            <a href="../classes/List.html" >List</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../classes/ModelList.html" >ModelList</a>
                                        </li>
                                        <li class="link">
                                            <a href="../classes/Notification.html" >Notification</a>
@@ -1388,6 +1364,12 @@ It can either be given an Array of Items or just the list parent to control the 
     </p>
 
 
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
+    </p>
 
 
 <section>
@@ -1444,7 +1426,6 @@ It can either be given an Array of Items or just the list parent to control the 
                                 <a href="#columnClick">columnClick</a>
                             </li>
                             <li>
-                                    <span class="modifier">Private</span>
                                 <a href="#ngOnChanges">ngOnChanges</a>
                             </li>
                         </ul>
@@ -1458,9 +1439,6 @@ It can either be given an Array of Items or just the list parent to control the 
                 <tr>
                     <td class="col-md-4">
                         <ul class="index-list">
-                            <li>
-                                <a href="#host">host</a>
-                            </li>
                             <li>
                                 <a href="#items">items</a>
                             </li>
@@ -1476,6 +1454,20 @@ It can either be given an Array of Items or just the list parent to control the 
                         </ul>
                     </td>
                 </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#columnClicked">columnClicked</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </section>
@@ -1483,29 +1475,6 @@ It can either be given an Array of Items or just the list parent to control the 
 
     <section>
         <h3 id="inputs">Inputs</h3>
-            <table class="table table-sm table-bordered">
-                <tbody>
-                    <tr>
-                        <td class="col-md-2">
-                            <a name="host"></a>
-                            <code>host</code>
-                        </td>
-                        <td class="col-md-10">
-                            <div><p>You pass in the entire parent list component </p>
-</div>
-                              <p>
-                                <em>Type:</em>    <code><a href="../classes/List.html" target="_self" >ListComponent&lt;T&gt;</a></code>
-
-                              </p>
-                        </td>
-                    </tr>
-                            <tr>
-                                <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">packages/ui/src/list/list-items/list-items.component.ts:20</a></div>
-                                </td>
-                            </tr>
-                </tbody>
-            </table>
             <table class="table table-sm table-bordered">
                 <tbody>
                     <tr>
@@ -1524,7 +1493,7 @@ It can either be given an Array of Items or just the list parent to control the 
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">packages/ui/src/list/list-items/list-items.component.ts:18</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">packages/ui/src/list/list-items/list-items.component.ts:19</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1547,7 +1516,7 @@ It can either be given an Array of Items or just the list parent to control the 
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">packages/ui/src/list/list-items/list-items.component.ts:14</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">packages/ui/src/list/list-items/list-items.component.ts:15</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1570,7 +1539,7 @@ It can either be given an Array of Items or just the list parent to control the 
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">packages/ui/src/list/list-items/list-items.component.ts:16</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">packages/ui/src/list/list-items/list-items.component.ts:17</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1593,13 +1562,37 @@ It can either be given an Array of Items or just the list parent to control the 
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">packages/ui/src/list/list-items/list-items.component.ts:22</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">packages/ui/src/list/list-items/list-items.component.ts:21</a></div>
                                 </td>
                             </tr>
                 </tbody>
             </table>
     </section>
 
+    <section>
+        <h3 id="outputs">Outputs</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="columnClicked"></a>
+                            <code>columnClicked</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>Event emitter on item clicked </p>
+</div>
+                            <em><code>$event</code> type:</em>    <code><a href="../classes/Item.html" target="_self" >EventEmitter&lt;Item&lt;T&gt;&gt;</a></code>
+
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">packages/ui/src/list/list-items/list-items.component.ts:23</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+    </section>
 
 
 
@@ -1623,14 +1616,14 @@ It can either be given an Array of Items or just the list parent to control the 
                     </tr>
                     <tr>
                         <td class="col-md-4">
-    <code>columnClick(item: <a href="../classes/Item.html">Item<any></a>)</code>
+    <code>columnClick(item: <a href="../classes/Item.html">Item<T></a>)</code>
                         </td>
                     </tr>
     
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">packages/ui/src/list/list-items/list-items.component.ts:36</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">packages/ui/src/list/list-items/list-items.component.ts:33</a></div>
                                 </td>
                             </tr>
     
@@ -1654,7 +1647,7 @@ It can either be given an Array of Items or just the list parent to control the 
                                                     <tr>
                                                       <td>item</td>
                                                       <td>
-                                                              <code><a href="../classes/Item.html" target="_self" >Item&lt;any&gt;</a></code>
+                                                              <code><a href="../classes/Item.html" target="_self" >Item&lt;T&gt;</a></code>
                                                       </td>
                                                       <td>
                                                       </td>
@@ -1683,7 +1676,6 @@ It can either be given an Array of Items or just the list parent to control the 
                             <a name="ngOnChanges"></a>
                             <span class="name">
                                 <b>
-                                    <span class="modifier">Private</span>
                                 ngOnChanges
                                 </b>
                                 <a href="#ngOnChanges"><span class="fa fa-link"></span></a>
@@ -1692,15 +1684,14 @@ It can either be given an Array of Items or just the list parent to control the 
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                                <span class="modifier-icon fa fa-reset"></span>
-                            <code>ngOnChanges()</code>
+    <code>ngOnChanges()</code>
                         </td>
                     </tr>
     
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">packages/ui/src/list/list-items/list-items.component.ts:25</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">packages/ui/src/list/list-items/list-items.component.ts:26</a></div>
                                 </td>
                             </tr>
     
@@ -1724,9 +1715,10 @@ It can either be given an Array of Items or just the list parent to control the 
 
 
     <div class="tab-pane fade tab-source-code" id="c-source">
-        <pre class="line-numbers"><code class="language-typescript">import { Component, Input } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { Component, Input, Output, EventEmitter } from &#x27;@angular/core&#x27;;
 import { Item, List, Selection } from &#x27;@ec.components/core&#x27;;
 import { ListComponent } from &#x27;../list.component&#x27;;
+import { OnChanges } from &#x27;@angular/core/src/metadata/lifecycle_hooks&#x27;;
 
 /** The ListItemsComponent displays the actual list, without all peripherals (header, pagination etc.).
  * It can either be given an Array of Items or just the list parent to control the shown items. */
@@ -1735,35 +1727,31 @@ import { ListComponent } from &#x27;../list.component&#x27;;
   templateUrl: &#x27;./list-items.component.html&#x27;,
   styleUrls: [&#x27;./list-items.component.scss&#x27;]
 })
-export class ListItemsComponent&lt;T&gt; {
+export class ListItemsComponent&lt;T&gt; implements OnChanges {
   /** The list instance */
   @Input() list: List&lt;T&gt;;
   /** The selection instance. This is optional. If It is not provided, no checkbox will be visible.*/
   @Input() selection: Selection&lt;T&gt;;
   /** An Optional Array of Item&#x27;s that should be displayed. If none are provded, the list Items are used.*/
   @Input() items: Item&lt;T&gt;[];
-  /** You pass in the entire parent list component */
-  @Input() host: ListComponent&lt;T&gt;;
   /** If true, only one item is selectable next */
   @Input() solo: boolean;
+  /** Event emitter on item clicked */
+  @Output() columnClicked: EventEmitter&lt;Item&lt;T&gt;&gt; &#x3D; new EventEmitter();
 
   /** Checks for host and uses its list. */
-  private ngOnChanges() {
-    if (this.host) {
-      this.list &#x3D; this.host.list;
-      this.selection &#x3D; this.host.selection;
-    }
+  ngOnChanges() {
     if (!this.items &amp;&amp; this.list) {
       this.items &#x3D; this.list.page;
     }
   }
 
   /** Propagate clicked item to host or toggle selection. */
-  columnClick(item: Item&lt;any&gt;) {
-    if (this.host) {
-      this.host.columnClick(item);
-    } else if (this.selection) {
+  columnClick(item: Item&lt;T&gt;) {
+    if (this.selection &amp;&amp; this.list &amp;&amp; this.list.config.selectMode) {
       this.selection.toggle(item, this.solo);
+    } else if (this.columnClicked.observers.length) {
+      this.columnClicked.emit(item);
     }
   }
 }
@@ -1774,12 +1762,12 @@ export class ListItemsComponent&lt;T&gt; {
         <pre class="line-numbers"><code class="language-html">&lt;ul class&#x3D;&quot;ec-list-items&quot;&gt;
   &lt;li *ngFor&#x3D;&quot;let item of items;trackBy:list?.trackItem&quot; (click)&#x3D;&quot;columnClick(item)&quot;&gt;
     &lt;div class&#x3D;&quot;ec-list-item&quot; [class.is-selected]&#x3D;&quot;selection?.has(item)&quot;&gt;
-      &lt;div class&#x3D;&quot;ec-list-cell ec-list__select&quot; *ngIf&#x3D;&quot;selection&quot;&gt;
+      &lt;div class&#x3D;&quot;ec-list-cell ec-list__select&quot; *ngIf&#x3D;&quot;list?.config?.selectMode&quot;&gt;
         &lt;input type&#x3D;&quot;checkbox&quot; [checked]&#x3D;&quot;selection?.has(item)&quot;&gt;
       &lt;/div&gt;
-      &lt;div *ngFor&#x3D;&quot;let field of list?.fields&quot; class&#x3D;&quot;ec-list-cell&quot;
+      &lt;div *ngFor&#x3D;&quot;let field of list?.fields;let i &#x3D; index&quot; class&#x3D;&quot;ec-list-cell&quot;
            [ngClass]&#x3D;&quot;&#x27;ec-list-field_&#x27; + field.view&quot; [ngSwitch]&#x3D;&quot;field.view&quot;
-           [class.hide]&#x3D;&quot;field.hide&quot; [class.ec-list-field_sortable]&#x3D;&quot;field.sortable&quot;
+           [class.hidden]&#x3D;&quot;field.hide||i&gt;&#x3D;list.config?.maxColumns&quot; [class.ec-list-field_sortable]&#x3D;&quot;field.sortable&quot;
            [class.ec-list-field_sortable_active]&#x3D;&quot;list.config?.sortBy&#x3D;&#x3D;&#x3D;field.property&quot;&gt;
         &lt;ec-output [field]&#x3D;&quot;field&quot; [item]&#x3D;&quot;item&quot;&gt;&lt;/ec-output&gt;
       &lt;/div&gt;
@@ -1812,8 +1800,8 @@ export class ListItemsComponent&lt;T&gt; {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ul class="ec-list-items">  <li *ngFor="let item of items;trackBy:list?.trackItem" (click)="columnClick(item)">    <div class="ec-list-item" [class.is-selected]="selection?.has(item)">      <div class="ec-list-cell ec-list__select" *ngIf="selection">        <input type="checkbox" [checked]="selection?.has(item)">      </div>      <div *ngFor="let field of list?.fields" class="ec-list-cell"           [ngClass]="\'ec-list-field_\' + field.view" [ngSwitch]="field.view"           [class.hide]="field.hide" [class.ec-list-field_sortable]="field.sortable"           [class.ec-list-field_sortable_active]="list.config?.sortBy===field.property">        <ec-output [field]="field" [item]="item"></ec-output>      </div>    </div>  </li></ul></div>'
-    var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'ActionbarComponent', 'selector': 'ec-actionbar'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatamanagerListComponent', 'selector': 'ec-datamanager-list'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'IconComponent', 'selector': 'ec-icon'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'InteractionComponent', 'selector': 'ec-interaction'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModelListComponent', 'selector': 'ec-model-list'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceFormComponent', 'selector': 'ec-resource-form'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
+        var COMPONENT_TEMPLATE = '<div><ul class="ec-list-items">  <li *ngFor="let item of items;trackBy:list?.trackItem" (click)="columnClick(item)">    <div class="ec-list-item" [class.is-selected]="selection?.has(item)">      <div class="ec-list-cell ec-list__select" *ngIf="list?.config?.selectMode">        <input type="checkbox" [checked]="selection?.has(item)">      </div>      <div *ngFor="let field of list?.fields;let i = index" class="ec-list-cell"           [ngClass]="\'ec-list-field_\' + field.view" [ngSwitch]="field.view"           [class.hidden]="field.hide||i>=list.config?.maxColumns" [class.ec-list-field_sortable]="field.sortable"           [class.ec-list-field_sortable_active]="list.config?.sortBy===field.property">        <ec-output [field]="field" [item]="item"></ec-output>      </div>    </div>  </li></ul></div>'
+    var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'ActionbarComponent', 'selector': 'ec-actionbar'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'IconComponent', 'selector': 'ec-icon'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'InteractionComponent', 'selector': 'ec-interaction'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceFormComponent', 'selector': 'ec-resource-form'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
     var DIRECTIVES = [{'name': 'AssetDirective', 'selector': '[ecAsset]'},{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'ImageDirective', 'selector': 'img [ecImage]'},{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'}];
     var ACTUAL_COMPONENT = {'name': 'ListItemsComponent'};
 </script>
