@@ -6,7 +6,6 @@ import { DefaultInputComponent } from '../../form/default-input/default-input.co
 import { Field } from '@ec.components/core/src/field/field';
 import { Item } from '@ec.components/core/src/item/item';
 import { Form } from '@ec.components/core/src/form/form';
-import { OnInit } from '../../../../vc/node_modules/@angular/core/src/metadata/lifecycle_hooks';
 /** This directive can be used to display a field. It is used inside ec-form as well as ec-list. */
 @Component({
   selector: 'ec-input',
