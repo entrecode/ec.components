@@ -1,14 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  forwardRef,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-  ViewChild,
-  ViewEncapsulation
-} from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, OnChanges, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { List, ListConfig, Selection } from '@ec.components/core';
 import { Item } from '@ec.components/core/src/item/item';
@@ -69,7 +59,7 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
     if (this.list && !this.config) {
       this.config = this.list.config;
     }
-    if (!this.config || this.config.disableSelection) {
+    if (!this.config) { // || !this.config.selectMode
       return;
     }
     this.config = Object.assign({ solo: this.solo }, this.config);
@@ -117,9 +107,9 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
 
   public select(item) {
     this.selection.toggle(item);
-    if (this.config.solo) {
-      this.pop.hide();
-    }
+    // if (this.config.solo) {
+    // this.pop.hide();
+    //}
   }
 
   changed() {

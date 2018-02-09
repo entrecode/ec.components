@@ -8,6 +8,8 @@ import { LoaderModule } from './loader/loader.module';
 import { NotificationsModule } from './notifications/notifications.module';
 import { UtilityModule } from './utility/utility.module';
 import { SelectModule } from './select/select.module';
+import { InteractionModule } from './interaction/interaction.module';
+import { IconModule } from './icon/icon.module';
 
 @NgModule({
   imports: [
@@ -21,6 +23,8 @@ import { SelectModule } from './select/select.module';
     FormModule,
     ListModule,
     SelectModule,
+    InteractionModule,
+    IconModule,
   ],
   exports: [
     ReactiveFormsModule,
@@ -32,6 +36,8 @@ import { SelectModule } from './select/select.module';
     ListModule,
     FormModule,
     SelectModule,
+    InteractionModule,
+    IconModule,
   ]
 })
 export class UiModule {

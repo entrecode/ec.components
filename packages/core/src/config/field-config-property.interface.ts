@@ -61,6 +61,8 @@ export interface FieldConfigProperty {
   output?: Type<any>;
   /** If true, an ec-output will be rendered inside each form which prevents editing the field. */
   readOnly?: boolean;
+  /** If true, the property will be omitted when saving (edit and create) */
+  immutable?: boolean;
   /** if false, the field will not be filterable in a list */
   filterable?: boolean;
   /** The operator to use for filtering: exact, search, any etc.. see ec.sdk doc */
@@ -80,6 +82,9 @@ export interface FieldConfigProperty {
   prefill?: any;
   /** Possible Values e.g. for a select */
   values?: any[];
+  /** Defines the maximum of visible item (for tags view or similar). Defaults to 10 */
+  maxItems?: number;
   /** Any other configuration properties*/
+  action?: (item: any, property: string) => any;
   [key: string]: any;
 }

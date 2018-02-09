@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { FieldValidators } from '../validators/field-validators';
 import { LoaderComponent } from '../../loader/loader.component';
+import { WithLoader } from '../../loader/with-loader.interface';
 
 /** Login Form Component with validation. Fires success event with credentials on submit. */
 @Component({
@@ -10,7 +11,7 @@ import { LoaderComponent } from '../../loader/loader.component';
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.scss']
 })
-export class LoginFormComponent implements OnInit {
+export class LoginFormComponent implements OnInit, WithLoader {
   /** The login's form group.*/
   public form: FormGroup;
   /** Flips true when submitted. */
@@ -23,8 +24,20 @@ export class LoginFormComponent implements OnInit {
   @Output() error: EventEmitter<any> = new EventEmitter();
   /** The loader that should be shown during login */
   @Input() loader: LoaderComponent;
+  /** If true, email and password wont have labels */
+  @Input() showLabels = true;
+  /** The Label of the Mail field */
+  @Input() emailLabel = 'E-Mail';
+  /** The Placeholder of the mail Field */
+  @Input() emailPlaceholder = 'E-Mail Adresse';
+  /** The Label of the password field. */
+  @Input() passwordLabel = 'Passwort';
+  /** The Placeholder of the password field */
+  @Input() passwordPlaceholder = 'Passwort';
   /** The Label of the submit button. Defaults to Login */
-  @Input() buttonLabel: string;
+  @Input() buttonLabel = 'Login';
+  /** Additional Button classes */
+  @Input() buttonClasses = '';
 
   /** Injects the FormBuilder*/
   constructor(private fb: FormBuilder) {

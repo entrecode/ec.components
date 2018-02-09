@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { mocked } from '../../../mocks/data';
-import { Item } from '@ec.components/core';
+import { Item, Form } from '@ec.components/core';
 
 @Component({
   selector: 'ec-form-demo',
@@ -14,7 +14,7 @@ export class FormDemoComponent {
     this.tree = mocked.lists.trees.id(0);
   }
 
-  logValue(form) {
-    console.log('form value', form.value);
+  logValue(form: Form<any>) {
+    console.log('form value', form.resolve());
   }
 }

@@ -776,36 +776,47 @@ export const mocked = {
         height: 20,
         fruits: false
       }], {
-      size: 19,
-      fields: {
-        name: {
-          label: 'Name',
-          view: 'string',
-          required: true,
-          input: CoolStringComponent,
-          output: CoolStringComponent,
-          sortable: true
-        },
-        height: {
-          label: 'Höhe',
-          group: (h) => h > 10 ? 'Höher als 10m' : 'Niedriger als 10m',
-          view: 'number',
-          required: true,
-          validate: (value) => {
-            if (value < 1) {
-              return 'Der Wert muss positiv sein.'
-            }
+        size: 19,
+        selectMode: true,
+        fields: {
+          name: {
+            label: 'Name',
+            view: 'string',
+            required: true,
+            input: CoolStringComponent,
+            output: CoolStringComponent,
+            sortable: true
           },
-          sortable: true
+          height: {
+            label: 'Höhe',
+            group: (h) => h > 10 ? 'Höher als 10m' : 'Niedriger als 10m',
+            view: 'number',
+            required: true,
+            validate: (value) => {
+              if (value < 1) {
+                return 'Der Wert muss positiv sein.'
+              }
+            },
+            sortable: true
+          },
+          fruits: {
+            label: 'Früchte',
+            display: (value) => value ? 'ja' : 'nein',
+            view: 'toggle',
+            sortable: true
+          },
+          button: {
+            label: 'Action',
+            form: false,
+            resolve: () => ' ',
+            view: 'button',
+            icon: 'binoculars',
+            action: (item, property) => {
+              console.log('clicked button', item, property);
+            }
+          }
         },
-        fruits: {
-          label: 'Früchte',
-          display: (value) => value ? 'ja' : 'nein',
-          view: 'toggle',
-          sortable: true
-        },
-      },
-    }),
+      }),
     pop_test: new List([], {
       fields: {
         defaultClass: {

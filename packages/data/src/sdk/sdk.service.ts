@@ -46,7 +46,7 @@ export class SdkService {
   public ready: Promise<AccountResource>;
 
   /** Calls init and sets ready to true when finished. */
-  constructor(@Inject('environment') private environment) {
+  constructor(@Inject('environment') public environment) {
     this.init().then((account) => {
       this.datamanager = new DataManager(<env>environment.environment);
     });

@@ -1,16 +1,14 @@
 import { Component, EventEmitter, Input, Output, ElementRef, ViewChild } from '@angular/core';
 import { SdkService } from '../../sdk/sdk.service';
 import { FileService, Upload } from '../file.service';
-import { LoaderComponent } from '@ec.components/ui/src/loader/loader.component';
-import { LoaderService } from '@ec.components/ui/src/loader/loader.service';
-import { NotificationsService } from '@ec.components/ui/src/notifications/notifications.service';
+import { LoaderComponent, WithLoader, LoaderService, NotificationsService } from '@ec.components/ui';
 
 /** This component will render an input field to upload files to the datamanager. */
 @Component({
   selector: 'ec-upload',
   template: `<input type="file" (change)="upload($event)" multiple #fileInput>`,
 })
-export class UploadComponent {
+export class UploadComponent implements WithLoader {
   /** The input placeholder*/
   @Input() placeholder: string;
   /** The loader that should be used while uploading*/

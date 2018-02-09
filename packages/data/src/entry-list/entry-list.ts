@@ -7,14 +7,16 @@ import { ListConfig } from '@ec.components/core/src/list/list-config.interface';
 /**
  * Extension of List for Datamanager Entries.
  */
-export class EntryList extends ResourceList<EntryResource> {
+export class EntryList extends ResourceList {
   /** The model that is loaded from. */
   private model: string;
+  /** Overrides the Config of ResourceList with a ListConfig containing an EntryResource */
+  config: ListConfig<EntryResource>;
 
   /** The constructor will init the List and Pagination instances.
    * Make sure the config is already complete when initiating an EntryList instance. */
   constructor(model: string, config: ListConfig<EntryResource>, protected sdk: SdkService) {
-    super(config, sdk);
+    super(config);
     this.model = model;
     this.load();
   }
@@ -22,7 +24,7 @@ export class EntryList extends ResourceList<EntryResource> {
   /** Generates the filterOptions for loading the entries. Sets the _fields option. */
   getFilterOptions(config: ListConfig<EntryResource>): filterOptions {
     const _fields = Object.keys(this.config.fields)
-    .filter((field) => this.config.fields[field].list !== false);
+      .filter((field) => this.config.fields[field].list !== false);
     return Object.assign(super.getFilterOptions(config), { _fields });
   }
 
@@ -32,12 +34,12 @@ export class EntryList extends ResourceList<EntryResource> {
       return;
     }
     this.useConfig(config);
-    const loading = this.sdk.api.entryList(this.model, this.getFilterOptions(this.config))
-    .then((list) => {
-      this.use(list);
-    }).catch((err) => {
-      this.error.next(err);
-    });
-    this.loading.next(loading);
+    this.promise = this.sdk.api.entryList(this.model, this.getFilterOptions(this.config))
+      .then((list) => {
+        this.use(list);
+      }).catch((err) => {
+        this.error.next(err);
+      });
+    this.loading.next(this.promise);
   }
 }

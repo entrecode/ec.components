@@ -6,16 +6,20 @@ import { Subject } from 'rxjs/Subject';
 import ListResource, { filterOptions } from 'ec.sdk/lib/resources/ListResource';
 import { Field } from '@ec.components/core/src/field/field';
 import { ListConfig } from '@ec.components/core/src/list/list-config.interface';
+import Core from 'ec.sdk/lib/Core';
+import Resource from 'ec.sdk/lib/resources/Resource';
 
 /**
  * Extension of List for SDK ListResource. Each each implementation should implement the load
  * method to call the SDK method for loading the desired list! (see EntryList for example)
  */
-export class ResourceList<T> extends List<T> {
-  /** The current loaded assetList */
+export class ResourceList extends List<Resource> {
+  /** The current loaded ListResource */
   protected listResource: ListResource;
   /** Subject that should be nexted when loading begins */
-  protected loading = new Subject();
+  public loading: Subject<Promise<any>> = new Subject();
+  /** latest loading promise */
+  public promise: Promise<any>;
   /** Observable that is nexted when the list begins loading. */
   public loading$ = this.loading.asObservable();
   /** Subject that should be nexted when an error occurs */
@@ -24,25 +28,53 @@ export class ResourceList<T> extends List<T> {
   public error$: Observable<Error> = this.error.asObservable();
 
   /** Returns the operator to use for filtering the given property. Defaults to search. */
-  protected static getFilterOperator(property: string, fields: Array<Field>): string {
+  protected static getFilterOperator(
+    property: string,
+    fields: Array<Field>
+  ): string {
     if (!fields) {
       return 'search';
     }
-    const field = fields.find((_field) => _field.property === property);
+    const field = fields.find(_field => _field.property === property);
     return field && field.filterOperator ? field.filterOperator : 'search';
   }
 
   /** The constructor will init the List and Pagination instances.
    * Make sure the config is already complete when initiating an EntryList instance. */
-  constructor(config: ListConfig<T>, protected sdk: SdkService) {
+  constructor(
+    config: ListConfig<Resource>,
+    public api?: Core,
+    public relation?,
+    listResource?: ListResource
+  ) {
     super([], config);
-    this.load();
+    if (listResource) {
+      // list was already preloaded outside of this instance
+      this.use(listResource);
+    } else {
+      this.load();
+    }
+  }
+
+  load(config?: ListConfig<Resource>) {
+    if (config) {
+      this.config = Object.assign(this.config, config);
+    }
+    if (!this.api || !this.relation) {
+      return;
+    }
+    const options = this.getFilterOptions(this.config);
+    this.promise = this.api
+      .resourceList(this.relation, options)
+      .then(list => this.use(list))
+      .catch(err => this.error.next(err));
+    this.loading.next(this.promise);
   }
 
   /** deletes all undefined values from given config and assigns it to this.config */
-  protected useConfig(config?: ListConfig<T>) {
+  protected useConfig(config?: ListConfig<Resource>) {
     if (config) {
-      Object.keys(config).forEach((key) => {
+      Object.keys(config).forEach(key => {
         if (config[key] === undefined) {
           delete config[key];
         }
@@ -51,19 +83,16 @@ export class ResourceList<T> extends List<T> {
     }
   }
 
-  /** Takes the entryList and dumps the items into the the current page. Then it applies grouping if present. */
+  /** Takes the listResource and dumps the items into the the current page. Then it applies grouping if present. */
   protected use(listResource) {
     this.listResource = listResource;
     this.removeAll();
-    this.addAll(listResource.getAllItems().map((value) => {
-      return new Item(value, this.config);
-    }), true);
-
-    // this.removeAll();
-    /*this.replaceWith(listResource.getAllItems().map((value) => {
-      return new Item(value, this.config);
-    }), true);*/
-
+    this.addAll(
+      listResource.getAllItems().map(value => {
+        return new Item(value, this.config);
+      }),
+      true
+    );
     this.page = this.items;
     if (this.pagination) {
       this.pagination.setTotal(listResource.total);
@@ -73,7 +102,14 @@ export class ResourceList<T> extends List<T> {
   }
 
   /** Returns SDK filterOptions from a given ListConfig. */
-  protected getFilterOptions({ size = 20, page = 1, filter, sortBy, desc, sort = [] }: ListConfig<T>): filterOptions {
+  protected getFilterOptions({
+    size = 20,
+    page = 1,
+    filter,
+    sortBy,
+    desc,
+    sort = []
+  }: ListConfig<Resource> = {}): filterOptions {
     const options = { size, page };
     if (sortBy) {
       Object.assign(options, { sort: [(desc ? '-' : '') + sortBy] });
@@ -83,7 +119,9 @@ export class ResourceList<T> extends List<T> {
         if (filter.hasOwnProperty(property)) {
           Object.assign(options, {
             [property]: {
-              [ResourceList.getFilterOperator(property, this.fields)]: filter[property]
+              [ResourceList.getFilterOperator(property, this.fields)]: filter[
+                property
+              ]
             }
           });
         }
@@ -95,14 +133,21 @@ export class ResourceList<T> extends List<T> {
   /** Toggles sorting of the given property. Overloads list method to reload with the new sort setup*/
   toggleSort(property: string, desc?: boolean) {
     this.sortProperty(property, desc);
-    Object.assign(this.config, { sort: [(this.config.desc ? '-' : '') + this.config.sortBy] });
+    Object.assign(this.config, {
+      sort: [(this.config.desc ? '-' : '') + this.config.sortBy]
+    });
     this.load();
   }
 
   /** Updates the config.filter with the given property filter. */
   filterProperty(property: string, value: any = '') {
     const currentFilter = this.config.filter || {};
-    if (value === '' || value === null || value === undefined || (Array.isArray(value) && !value.length)) {
+    if (
+      value === '' ||
+      value === null ||
+      value === undefined ||
+      (Array.isArray(value) && !value.length)
+    ) {
       if (!currentFilter[property]) {
         return; // filter is already empty => no need to load again
       }

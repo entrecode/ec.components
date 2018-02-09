@@ -2,10 +2,8 @@ ec-pop, ec-entry-pop, ec-asset-list-pop {
   &.ec-pop_dialog {
     > .ec-pop-container {
       > .ec-pop {
-        background-color: getColor(background);
-        border-radius: rem($pop-radius);
+        @extend .overlay !optional;
         @extend %dialog-appear;
-        box-shadow: 0 4px 8px getColor(shadow), 0 4px 16px getColor(shadow);
       }
     }
   }

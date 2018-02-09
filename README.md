@@ -72,6 +72,36 @@ Use the `--env=prod` or `--env=stag` for environment builds.
 CAUTION: you may have to "es2015" in tsconfig.json / lib to make UglifyJS work
 see https://github.com/mishoo/UglifyJS2/issues/659
 
+### Build Trouble Shooting
+Errors like this (or similar):
+
+```
+ERROR in ./node_modules/@ec.components/data/src/auth/auth.service.ts
+Module build failed: Error: /Users/kon/workspace/0.entrecode/nwb.admin/node_modules/@ec.components/data/src/auth/auth.service.ts is missing from the TypeScript compilation. Please make sure it is in your tsconfig via the 'files' or 'include' property.
+```
+
+can be fixed by including the ec.components files explicitly (+excluding the test files):
+
+```json
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/app",
+    "baseUrl": "./",
+    "module": "es2015",
+    "types": []
+  },
+  "exclude": [
+    "test.ts",
+    "**/*.spec.ts",
+    "../node_modules/@ec.components/**/*.spec.ts"
+  ],
+  "include": [
+    "**/*.ts",
+    "../node_modules/@ec.components/**/*.ts"
+  ]
+}
+```
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).

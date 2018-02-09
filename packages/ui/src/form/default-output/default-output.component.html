@@ -1,22 +1,20 @@
-<div *ngIf="!item?.display(field.property)">
-  <!-- empty -->
-</div>
 <div [ngSwitch]="field.view" *ngIf="item&&item?.display(field.property)">
-  <!--<div [attr.view]="field.view" [attr.property]="field.property" #cells>-->
-
   <ul class="ec-output_tags-list" *ngSwitchCase="'tags'">
-    <li *ngFor="let label of item?.display(field.property)">
+    <li *ngFor="let label of item?.display(field.property) | maxItems:field.maxItems||10">
       <div class="tag">
         {{label}}
       </div>
+    </li>
+    <li class="tag" *ngIf="item?.display(field.property)?.length>(field.maxItems||10)">
+      ...
     </li>
   </ul>
 
   <span class="ec-output_tag" *ngSwitchCase="'tag'">{{item?.display(field.property)}}</span>
 
   <div *ngSwitchCase="'boolean'" class="ec-output_boolean" [class._true]="item?.resolve(field.property)">
-    <span class="ec-icon check" *ngIf="item?.resolve(field.property)"></span>
-    <span class="ec-icon subtract" *ngIf="!item?.resolve(field.property)"></span>
+    <ec-icon name="check" *ngIf="item?.resolve(field.property)"></ec-icon>
+    <ec-icon name="minus" *ngIf="!item?.resolve(field.property)"></ec-icon>
   </div>
 
   <div class="ec-output_mail" *ngSwitchCase="'email'">
@@ -46,6 +44,15 @@
       </div>
     </li>
   </ul>
+  <a *ngSwitchCase="'button'" (click)="item?.action(field.property, $event)" class="btn">
+    {{item?.display(field.property)}}
+    <ec-icon *ngIf="field.icon" [name]="field.icon"></ec-icon>
+  </a>
+  <code *ngSwitchCase="'json'">
+    <pre>
+        {{item?.display(field.property)}}
+    </pre>
+  </code>
   <span *ngSwitchDefault>
     {{item?.display(field.property)}}
   </span>

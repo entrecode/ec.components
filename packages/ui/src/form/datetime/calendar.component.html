@@ -1,18 +1,35 @@
 <div class="ec-calendar">
-  <header class="controls">
+  <nav class="ec-calendar-controls">
     <ul>
-      <li><a (click)="grid.change(-1, 'months')"><span class="ec-icon chevron-left"></span></a>
+      <li data-flex-item="fit-self">
+        <a (click)="grid.change(-1, 'months')" class="ec-calendar-controls__prev">
+          <!--TODO add .ec-icon fallback config-->
+          <ec-icon name="chevron-left"></ec-icon>
+        </a>
       </li>
-      <li><h6>{{grid.formatted}}</h6></li>
-      <li><a (click)="grid.today()">&bull;</a></li>
-      <li><a (click)="grid.change(1, 'months')"><span class="ec-icon chevron-right"></span></a>
+      <li data-flex-item="grow">
+        <h6 class="ec-calendar-controls__title">{{grid.formatted}}</h6>
+      </li>
+      <li data-flex-item="fit-self">
+        <a (click)="grid.today()" class="ec-calendar-controls__current">
+          <!--TODO add fallback config for bull-->
+          &bull;
+        </a>
+      </li>
+      <li data-flex-item="fit-self">
+        <a (click)="grid.change(1, 'months')" class="ec-calendar-controls__next">
+          <!--TODO add .ec-icon fallback config-->
+          <ec-icon name="chevron-right"></ec-icon>
+        </a>
       </li>
     </ul>
-  </header>
-  <ul class="days">
-    <li *ngFor="let weekday of weekdays">
-      {{weekday}}
-    </li>
-  </ul>
-  <ec-month [date]="date" (select)="select($event)" #grid></ec-month>
+  </nav>
+  <div class="ec-calendar-month">
+    <ul class="ec-calendar-month-weekdays">
+      <li *ngFor="let weekday of weekdays">
+        {{weekday}}
+      </li>
+    </ul>
+    <ec-month [date]="date" (dayClicked)="select($event)" #grid></ec-month>
+  </div>
 </div>

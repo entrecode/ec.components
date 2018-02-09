@@ -61,6 +61,9 @@ export class ModelConfigService extends Config {
 
   /** Parses the property type (as contained in the property schema's title field). */
   parseType(type: string) {
+    if (!type) {
+      return null;
+    }
     const match = type.match(/^(\w*)(<(\w*)>)?/i);
     return !match.length ? null : {
       raw: type,
@@ -93,7 +96,16 @@ export class ModelConfigService extends Config {
       .filter(property => (!fieldConfig && !this.isSystemProperty(property)) || (fieldConfig && !!fieldConfig[property]));
       fieldConfig = fieldConfig || {};
       properties.forEach(property => {
-        const type = this.parseType(schema.properties[property].title);
+        let type;
+        if (property === '_entryTitle') {
+          type = {
+            raw: 'text',
+            name: 'text',
+            model: null
+          };
+        } else {
+          type = this.parseType(schema.properties[property].title);
+        }
         if (!type) {
           console.error('Model Property Schema title ', schema.properties[property].title, ' was unexpected, ignoring property', property)
           return;

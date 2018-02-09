@@ -1,0 +1,53 @@
+.ec-list-field-filter-pop {
+  .ec-pop-container {
+    .ec-pop {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0 1em !important;
+      background-color: getColor(background);
+      align-items: center;
+      z-index: 10;
+
+      .ec-list-field-filter {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+      }
+
+      .ec-list-field-filter__dismiss {
+        @extend %btn !optional;
+        align-self: center;
+      }
+
+      ec-input {
+        display: inline-block;
+        flex-grow: 1;
+        align-self: center;
+
+        .input {
+          margin: 0;
+        }
+      }
+    }
+
+
+    &.is-visible {
+      .ec-pop {
+        display: flex !important;
+      }
+    }
+  }
+}
+
+
+.ec-list-field-filterable-control {
+  text-align: center;
+  min-width: rem(16);
+  min-height: rem(16);
+  margin-right: rem(8);
+}

@@ -10,8 +10,6 @@ import { CrudDemoComponent } from './crud/crud-demo.component';
 import { SelectDemoComponent } from './select/select-demo.component';
 import { EntrySelectDemoComponent } from './entry-select/entry-select-demo.component';
 import { ListTransformsDemoComponent } from './list-transforms/list-transforms-demo.component';
-import { DatamanagerListDemoComponent } from './datamanager-list/datamanager-list.demo.component';
-import { ModelListDemoComponent } from './model-list/model-list.demo.component';
 import { DatetimeDemoComponent } from './form/datetime-demo.component';
 import { AssetListDemoComponent } from './asset-list/asset-list.demo.component';
 import { AssetDemoComponent } from './asset/asset.demo.component';
@@ -26,6 +24,12 @@ import { LoginFormComponent } from '../../packages/ui/src/utility/login-form/log
 import { EntryPopDemoComponent } from './entry-pop-demo/entry-pop-demo.component';
 import { TinymceDemoComponent } from './tinymce-demo/tinymce-demo.component';
 import { AceDemoComponent } from './ace-demo/ace-demo.component';
+import { ActionbarDemoComponent } from './actionbar-demo/actionbar-demo.component';
+import { InteractionDemoComponent } from './interaction-demo/interaction-demo.component';
+import { ResourceListDemoComponent } from './resource-list/resource-list-demo.component';
+import { IconDemoComponent } from './icon-demo/icon-demo.component';
+import { PaginationDemoComponent } from './pagination/pagination-demo.component';
+import { ResourceFormDemoComponent } from './resource-form/resource-form-demo.component';
 
 export const demoRoutes: Routes = [
   /*  {
@@ -39,6 +43,15 @@ export const demoRoutes: Routes = [
         path: '',
         pathMatch: 'full',
         redirectTo: 'form',
+      },
+      /*
+      {
+        path: 'interaction',
+        component: InteractionDemoComponent,
+      }, */
+      {
+        path: 'icons',
+        component: IconDemoComponent,
       },
       {
         path: 'list',
@@ -55,6 +68,10 @@ export const demoRoutes: Routes = [
           {
             path: 'transforms',
             component: ListTransformsDemoComponent
+          },
+          {
+            path: 'pagination',
+            component: PaginationDemoComponent
           }
         ]
       },
@@ -88,12 +105,24 @@ export const demoRoutes: Routes = [
       {
         path: 'login',
         component: LoginFormComponent
-      }
+      },
+      {
+        path: 'actionbar',
+        component: ActionbarDemoComponent,
+      },
     ]
   },
   {
     path: 'data',
     children: [
+      {
+        path: 'api-explorer',
+        component: ResourceListDemoComponent
+      },
+      {
+        path: 'resource-form',
+        component: ResourceFormDemoComponent
+      },
       {
         path: 'entries',
         component: DataDemoComponent
@@ -142,23 +171,6 @@ export const demoRoutes: Routes = [
       {
         path: 'asset-select',
         component: AssetSelectDemoComponent
-      },
-    ]
-  },
-  {
-    path: 'editor',
-    children: [
-      {
-        path: 'data',
-        component: DatamanagerListDemoComponent,
-      },
-      {
-        path: 'data/:datamanagerID',
-        component: ModelListDemoComponent
-      },
-      {
-        path: 'data/:datamanagerID/:model',
-        component: CrudComponent,
       },
     ]
   },

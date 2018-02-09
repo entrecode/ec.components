@@ -89,7 +89,7 @@ Now we can decide which custom input should be used, based on e.g. the fields vi
 <div [ngSwitch]="field.view" *ngIf="group" [formGroup]="group">
   <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>
   <div *ngSwitchCase="'speakingurl'">
-    <input type="text" [formControl]="control">
+    <input [id]="field.id" type="text" [formControl]="control">
   </div>
   <div *ngSwitchCase="'openingHours'">
     <!-- <ec-opening-hours [formControl]="control"></ec-opening-hours> -->
@@ -98,6 +98,7 @@ Now we can decide which custom input should be used, based on e.g. the fields vi
 ```
 
 Of course you could also switch based on property name or type, depending on your application.
+The id property of field is referenced in the label of the form. By adding it to the input makes sure your label click enters the input.
 
 ### 4. Add CustomInputComponent to entryComponents:
 
@@ -181,3 +182,23 @@ export class OpeningHoursComponent extends InputComponent implements ControlValu
 Now you can implement your own logic and call propagateChange when you change the value from your component, and react to change via the writeValue method!
 You now could also use your component with ngModel or formControl in another context!
 More information on this pattern: https://blog.thoughtram.io/angular/2016/07/27/custom-form-controls-in-angular-2.html
+
+## UPDATE: Custom Fields without wrapper
+
+You can now also use custom components as input directly without needing to wrap them explicitly.
+The only thing you need to do is 1. add the input component:
+
+```js
+/** Form input component */
+input: InputComponent;
+```
+
+and propagate the change:
+
+```js
+if (this.input) {
+ this.input.propagateChange(this.editor.getValue());
+}
+```
+
+input will be defined when the component is used as input component inside ec-form.

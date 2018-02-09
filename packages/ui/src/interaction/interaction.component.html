@@ -1,0 +1,8 @@
+<input type="text" [(ngModel)]="interaction.data.query" (ngModelChange)="typed($event)">
+<ul>
+  <li *ngFor="let child of interaction.state.children" (click)="interaction.state.go(child)">
+    {{child.label}}
+  </li>
+</ul>
+<ec-loader #loader class="ec-loader"></ec-loader>
+<a (click)="interaction.undo()" *ngIf="interaction.path.length>1">BACK</a>

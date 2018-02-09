@@ -10,6 +10,7 @@ import { FormModule } from '../form/form.module';
 import { PopModule } from '../pop/pop.module';
 import { NotificationsModule } from '../notifications/notifications.module';
 import { LoaderModule } from '../loader/loader.module';
+import { IconModule } from '../icon/icon.module';
 
 // import { mocked } from '../../../../mocks/data';
 // import { Collection } from '@ec.components/core/src/collection/collection';
@@ -20,11 +21,11 @@ describe('ListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [LoaderModule, FormModule, PopModule, NotificationsModule, ReactiveFormsModule],
+      imports: [LoaderModule, FormModule, IconModule, PopModule, NotificationsModule, ReactiveFormsModule],
       declarations: [PaginationComponent, ListComponent, ListItemsComponent, ListHeaderComponent, GroupPipe],
       providers: []
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

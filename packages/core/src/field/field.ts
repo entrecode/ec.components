@@ -40,6 +40,7 @@ export class Field implements FieldConfigProperty {
       Object.assign(this, config);
     }
     Object.assign(this, { property: property });
+    this.id = `${this.property}_${Date.now()}`;
   }
 
   /** Returns placeholder if any */

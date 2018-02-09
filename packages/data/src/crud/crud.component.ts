@@ -15,6 +15,7 @@ import 'rxjs/add/operator/switchMap';
 import { merge } from 'rxjs/observable/merge';
 import { AuthService } from '../auth/auth.service';
 import { EntryPopComponent } from '../entry-pop/entry-pop.component';
+import { WithLoader } from '@ec.components/ui';
 
 /** The CrudComponent takes at least a model name to render an entry list with create/edit/delete functionality out of the box.
  * ```html
@@ -26,7 +27,7 @@ import { EntryPopComponent } from '../entry-pop/entry-pop.component';
   templateUrl: './crud.component.html',
   styleUrls: ['./crud.component.scss']
 })
-export class CrudComponent<T> implements OnInit {
+export class CrudComponent<T> implements OnInit, WithLoader {
   /** The model that should be crud'ed. */
   @Input() model: string;
   /** CrudConfig for customization of the crud's UI.*/
@@ -38,9 +39,9 @@ export class CrudComponent<T> implements OnInit {
   /** The Pop inside the template. */
   @ViewChild(EntryPopComponent) entryPop: EntryPopComponent;
   /** The lists loader */
-  @ViewChild('listLoader') loader: LoaderComponent;
+  @ViewChild(LoaderComponent) loader: LoaderComponent;
   /** Emits when a list element is clicked */
-  @Output() select: EventEmitter<any> = new EventEmitter();
+  @Output() columnClicked: EventEmitter<any> = new EventEmitter();
   /** Emits when the selection has changed */
   @Output() selected: EventEmitter<any> = new EventEmitter();
 
@@ -52,19 +53,19 @@ export class CrudComponent<T> implements OnInit {
     @Optional() public route: ActivatedRoute) {
     if (route) {
       merge(route.data, route.params, route.queryParams)
-      .subscribe(({ model }) => {
-        if (model) {
-          this.model = model;
-        }
-      });
+        .subscribe(({ model }) => {
+          if (model) {
+            this.model = model;
+          }
+        });
     }
   }
 
   ngOnInit() {
     this.auth.getAllowedMethods(this.model, this.config.methods)
-    .then((methods) => {
-      this.config.methods = methods;
-    });
+      .then((methods) => {
+        this.config.methods = methods;
+      });
   }
 
   /** Returns true if the given method is part of the methods array (or if there is no methods array) */
@@ -102,8 +103,8 @@ export class CrudComponent<T> implements OnInit {
     if (!item) {
       return;
     }
-    if (this.select.observers.length) {
-      this.select.emit(item);
+    if (this.columnClicked.observers.length) {
+      this.columnClicked.emit(item);
       return;
     }
     this.loaderService.wait(this.loadEntry(item), this.loader);

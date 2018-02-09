@@ -1,13 +1,20 @@
 <div class="ec-notifications">
-  <ec-pop *ngFor="let notification of notifications?.items" [active]="true" [visible]="true" [ngClass]="notification.type">
-    <h6>{{notification.title}}</h6>
-    <p>{{notification.message}}</p>
-    <ec-error [error]="notification.error"></ec-error>
-    <ul *ngIf="notification.error">
+  <ec-pop *ngFor="let notification of notifications?.items"
+          [active]="true"
+          [visible]="true"
+          class="ec-notification"
+          [ngClass]="'is-' + notification.type">
+    <h6 class="ec-notification__title">{{notification.title}}</h6>
+    <p class="ec-notification__message">{{notification.message}}</p>
+    <!--TODO what is this-->
+    <ec-error *ngIf="notification.error" [error]="notification.error"></ec-error>
+    <ul *ngIf="notification.error?.errors" class="ec-notification-errors-list">
       <li *ngFor="let error of notification.error?.errors">
         <ec-error [error]="error"></ec-error>
       </li>
     </ul>
-    <a class="ec-notification__dismiss" (click)="notifications.remove(notification)">&times;</a>
+    <a class="ec-notification__dismiss" (click)="notifications.remove(notification)">
+      <ec-icon name="close-x"></ec-icon>
+    </a>
   </ec-pop>
 </div>

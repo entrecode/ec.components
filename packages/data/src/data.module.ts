@@ -12,26 +12,21 @@ import { CrudComponent } from './crud/crud.component';
 import { DefaultEntryOutputComponent } from './entry-form/default-entry-output.component';
 import { EntrySelectComponent } from './entry-select/entry-select.component';
 import { TypeConfigService } from './model-config/type-config.service';
-import { DatamanagerListComponent } from './datamanager-list/datamanager-list.component';
 import { ResourceListComponent } from './resource-list/resource-list.component';
-import { ModelListComponent } from './model-list/model-list.component';
-import { EditorComponent } from './editor.component';
 import { SdkModule } from './sdk/sdk.module';
 import { FilesModule } from './files/files.module';
 import { AuthModule } from './auth/auth.module';
 import { EntriesDirective } from './entries/entries.directive';
 import { EntryDirective } from './entry/entry.directive';
 import { EntryPopComponent } from './entry-pop/entry-pop.component';
+import { ResourceFormComponent } from './resource-form/resource-form.component';
 
 @NgModule({
   entryComponents: [
     DefaultEntryInputComponent,
     DefaultEntryOutputComponent,
-    DatamanagerListComponent,
-    ModelListComponent,
     ResourceListComponent,
     EntrySelectComponent,
-    EditorComponent
   ],
   declarations: [
     EntryListComponent,
@@ -39,14 +34,12 @@ import { EntryPopComponent } from './entry-pop/entry-pop.component';
     EntriesDirective,
     EntryFormComponent,
     EntryPopComponent,
-    DatamanagerListComponent,
-    ModelListComponent,
     ResourceListComponent,
+    ResourceFormComponent,
     DefaultEntryInputComponent,
     DefaultEntryOutputComponent,
     CrudComponent,
     EntrySelectComponent,
-    EditorComponent,
   ],
   imports: [
     CommonModule,
@@ -54,7 +47,7 @@ import { EntryPopComponent } from './entry-pop/entry-pop.component';
     UiModule,
     SdkModule,
     FilesModule,
-    AuthModule,
+    AuthModule
   ],
   exports: [
     EntryListComponent,
@@ -64,15 +57,13 @@ import { EntryPopComponent } from './entry-pop/entry-pop.component';
     EntryPopComponent,
     CrudComponent,
     EntrySelectComponent,
-    DatamanagerListComponent,
-    ModelListComponent,
     ResourceListComponent,
+    ResourceFormComponent,
     RouterModule,
-    EditorComponent,
     UiModule,
     SdkModule,
     FilesModule,
-    AuthModule,
+    AuthModule
   ],
   providers: [
     CrudService,
@@ -84,7 +75,7 @@ import { EntryPopComponent } from './entry-pop/entry-pop.component';
         environment: 'live'
       }
     }
-  ],
+  ]
 })
 export class DataModule {
   static forEnvironment(environment): ModuleWithProviders {
@@ -97,11 +88,11 @@ export class DataModule {
             {
               environment: 'live'
             },
-            environment)
+            environment
+          )
         }
       ]
-    }
+    };
   }
-  constructor() {
-  }
+  constructor() { }
 }

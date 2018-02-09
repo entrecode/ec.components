@@ -14,5 +14,6 @@ describe('Field', () => {
     const field = new Field('name', { type: 'string' });
     expect(field['property']).toBe('name');
     expect(field['type']).toBe('string');
+    expect(field['id']).toBeDefined();
   });
 });

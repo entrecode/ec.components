@@ -4,14 +4,14 @@
 import { Directive, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { SdkService } from '../sdk/sdk.service';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
-import { LoaderComponent } from '../../../ui/index';
+import { WithLoader, LoaderComponent } from '@ec.components/ui';
 
 /** Loads an entry by id to the template. */
 @Directive({
   selector: '[ecEntry]',
   exportAs: 'ecEntry'
 })
-export class EntryDirective implements OnChanges {
+export class EntryDirective implements OnChanges, WithLoader {
   /** The loading promise */
   promise: any;
   /** The entry id that should be loaded*/

@@ -7,18 +7,18 @@ import { FormComponent } from '../../../packages/ui/src/form/form.component';
   templateUrl: './notifications-demo.component.html',
 })
 export class NotificationsDemoComponent implements OnInit {
-  public classes = ['toast', 'bread'];
+  public classes = ['ec-notifications_default', 'ec-notifications_toast'];
   public types = ['success', 'info', 'error'];
   @ViewChild('notifications') notifications: NotificationsComponent;
   public options: Form<any>;
-  @ViewChild('optionsForm') optionsForm: FormComponent;
+  @ViewChild('optionsForm') optionsForm: FormComponent<any>;
 
   constructor(private notificationService: NotificationsService) {
   }
 
   ngOnInit() {
     this.options = new Form({
-      time: 2000,
+      time: 8000,
       hostClass: this.classes[0],
       desktop: false,
       title: 'The Toast is hot',

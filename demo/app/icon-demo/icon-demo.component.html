@@ -1,0 +1,36 @@
+<h1>Icon Demo</h1>
+<div data-grid="">
+  <div data-col="6-sm">
+    <div class="input-group">
+      <ec-icon name="find" class="input-group__icon"></ec-icon>
+      <input type="text" placeholder="search for icon class..." class="input"
+             [(ngModel)]="query">
+    </div>
+  </div>
+  <div data-col="6-sm">
+    <nav class="xui-select" tabindex="0">
+      <div class="xui-select__placeholder">Set auswählen</div>
+      <ul class="xui-select-options">
+        <li class="xui-select-option" *ngFor="let set of sets" tabindex="0">
+          <a (click)="useSet(set.set)">
+            {{set.label}}
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+<div class="spacer"></div>
+<ul class="is-hidden">
+  <li *ngFor="let set of sets">
+    <a (click)="useSet(set.set)">
+      {{set.label}}
+    </a>
+  </li>
+</ul>
+<ul data-grid="small">
+  <li *ngFor="let icon of iconService.registry | iconPipe:query" class="list" data-col="3">
+    <ec-icon [name]="icon.name">{{icon.name}}</ec-icon>
+  </li>
+</ul>
+<ec-notifications></ec-notifications>

@@ -1,3 +1,14 @@
-<ec-pagination [pagination]="pagination" [range]="2"></ec-pagination>
 <p>Active Page Live: {{pagination.getPage()}}</p>
 <p>Active Page Debounced: {{currentPage}}</p>
+<h3>Default Pagination</h3>
+<ec-pagination [pagination]="pagination" #paginationA></ec-pagination>
+<h3>Higher Range</h3>
+<p>This pagination has a range of 4. There are always range*2+1 pages visible.</p>
+<ec-pagination [pagination]="pagination" #paginationB [config]="{range:4}"></ec-pagination>
+<h3>Disable last buttons</h3>
+<ec-pagination [pagination]="pagination" [config]="{hideFirstLast:true}"></ec-pagination>
+<h3>Disable pages</h3>
+<ec-pagination [pagination]="pagination" [config]="{hidePages:true}"></ec-pagination>
+<ec-pagination [pagination]="pagination" [config]="{range:0}"></ec-pagination>
+<h3>Custom Labels</h3>
+<ec-pagination [pagination]="pagination" [config]="{prevLabel:'Previous',nextLabel:'Next',hideFirstLast:true,firstLabel:'Erste',lastLabel:'Letzte'}"></ec-pagination>

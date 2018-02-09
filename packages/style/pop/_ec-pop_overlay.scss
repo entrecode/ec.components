@@ -1,20 +1,11 @@
-ec-pop, ec-entry-pop, ec-asset-list-pop {
-  &.ec-pop_overlay {
-    > .ec-pop-container {
-      background-color: getColor(background, backdrop);
-      position: fixed;
-      width: 100vw;
-      height: 100vh;
-      top: 0;
-      left: 0;
-      display: none;
-      opacity: 0;
-      @extend %pop-fade-in;
-
-      &.visible {
-        display: inherit;
-        opacity: 1;
-      }
-    }
+.ec-pop_overlay {
+  > .ec-pop-container {
+    background-color: getColor(background, backdrop);
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    @extend %pop-fade-in;
   }
 }

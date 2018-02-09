@@ -15,7 +15,7 @@ import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
   templateUrl: '../../../ui/src/form/form.component.html',
   styleUrls: ['./entry-form.component.scss']
 })
-export class EntryFormComponent extends FormComponent {
+export class EntryFormComponent extends FormComponent<EntryResource> {
   /** The model of the form. It is used to extract the schema and generate the config from.
    * If you do not pass any model, it is expected that an EntryResource is passed. */
   @Input() model: string;

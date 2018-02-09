@@ -16,7 +16,9 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   ]
 })
 export class ToggleComponent implements ControlValueAccessor {
+  /** The current value */
   value: boolean;
+  /** The toggles placeholder (currently not in use) */
   @Input() placeholder: string;
 
   /** Toggles the value */
@@ -24,18 +26,18 @@ export class ToggleComponent implements ControlValueAccessor {
     this.value = !this.value;
     this.propagateChange(this.value);
   }
-
+  /** writes incoming value */
   writeValue(value: boolean) {
     this.value = value;
   }
-
+  /* Propagates change*/
   propagateChange = (_: any) => {
   };
-
+  /** Registers change callback */
   registerOnChange(fn) {
     this.propagateChange = fn;
   }
-
+  /** Register Touch */
   registerOnTouched() {
   }
 

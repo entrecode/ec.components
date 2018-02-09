@@ -1,57 +1,38 @@
+.ec-calendar {
+  display: flex;
+  flex-direction: column;
+}
 
-  .datetime-select {
-    //position: absolute;
-    background-color: white;
-    z-index: 100;
-    margin-bottom: 1em;
+.ec-calendar-controls {
+
+  ul {
+    list-style: none;
+    margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    width: 100%;
-
-    header {
-      ul {
-        display: table;
-        width: 100%;
-
-        li {
-          display: table-cell;
-          text-align: center;
-          &:nth-child(3) {
-            font-weight: bold;
-          }
-          h6 {
-            margin: 0;
-          }
-        }
-      }
-    }
-
-    ul {
-      margin: 0;
-      padding: 0;
-
-      &.days {
-        font-weight: bold;
-      }
-      &.days {
-        padding: 0;
-        user-select: none;
-        list-style: none;
-
-        li {
-          cursor: pointer;
-          text-align: center;
-          line-height: 30px;
-          width: 14.2%;
-          float: left;
-
-          &:nth-child(7n+1) {
-            clear: left;
-          }
-
-          &.other {
-          }
-        }
-      }
-    }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
+
+  .ec-calendar-controls__title {
+    margin: 0;
+    text-align: center;
+  }
+}
+
+.ec-calendar-month {
+  display: flex;
+  flex-direction: column;
+}
+
+.ec-calendar-month-weekdays {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+
+  li {
+    flex: 1;
+    text-align: center;
+  }
+}

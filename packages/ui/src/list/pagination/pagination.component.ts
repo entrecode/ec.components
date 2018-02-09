@@ -1,5 +1,8 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import {Component, ElementRef, Input, ViewChild, ViewChildren, QueryList, AfterViewInit} from '@angular/core';
 import { Pagination } from '@ec.components/core';
+import { OnInit } from '@angular/core';
+import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
+import { PaginationConfig } from './pagination-config.interface';
 
 /**
  * The Pagination component renders a given instance of the Pagination class.
@@ -9,47 +12,55 @@ import { Pagination } from '@ec.components/core';
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.scss']
 })
-export class PaginationComponent<T> {
+export class PaginationComponent<T> implements OnInit, OnChanges, AfterViewInit {
   /** A Pagination Instance */
   @Input() pagination: Pagination<T>;
-  /** Range of displayed pages in the UI. Controls the number of pages before and after the current page. Defaults to 3.
-   * NOTE: For a smoother UX, there are minimum ```2 * range + 1``` pages visible.*/
-  @Input() range: number = 2;
-  /** The container for the pages*/
+  /** The div container for the pages*/
   @ViewChild('container') private container: ElementRef;
-  /** The item ViewChild is used to determine the size of the pagination buttons to calculate the offset for animation. */
-  @ViewChild('item') private item: ElementRef;
-  /** The current translation of the pagination page list. The current page is always in the middle. */
-  private translation: string;
-  /** The containerWidth of all pages. Needed for animation */
-  public containerWidth: number;
+  /** The ul around pages */
+  @ViewChild('pageContainer') private pageContainer: ElementRef;
+  /** The pages li elements. The first one is used to determine the container translation. */
+  @ViewChildren('page') private page: QueryList<ElementRef>;
+  /** The config that is used */
+  @Input() config: PaginationConfig;
 
-  /** When intitializing, the containerWidth is saved. */
-  private ngOnInit() {
-    this.containerWidth = (1 + 2 * this.range) * this.item.nativeElement.clientWidth;
+  /** Init config. */
+  ngOnInit() {
+    this.config = new PaginationConfig(this.config);
   }
 
   /** As soon as the pagination is known, the change$ event is subscribed to translate the container on change.*/
-  private ngOnChanges() {
+  ngOnChanges() {
     if (!this.pagination) {
       return;
     }
     this.pagination.change$.subscribe((config) => {
-      this.translateContainer(this.pagination.getPage());
+      this.translateContainer();
     });
+    this.config = new PaginationConfig(this.config);
+  }
+  /** When the view is ready, the container is translated.  */
+  ngAfterViewInit() {
+    this.translateContainer();
   }
 
   /** Translates the page container that the current page is in the middle */
-  translateContainer(page) {
-    const itemWidth = this.item.nativeElement.clientWidth;
-    let translation = Math.max(0, itemWidth * (page - this.range - 1));
-    translation = Math.min(translation, (this.pagination.getPages() - (2 * this.range) - 1) * itemWidth);
-    this.translation = `translateX(-${translation}px)`;
+  translateContainer() {
+    if (!this.page || !this.pageContainer) {
+      // console.warn('pages not ready');
+      return;
+    }
+    const itemWidth = this.page.first.nativeElement.clientWidth;
+    const page = this.pagination.getPage();
+    let translation = Math.max(0, itemWidth * (page - this.config.range - 1));
+    translation = Math.min(translation, (this.pagination.getPages() - (2 * this.config.range) - 1) * itemWidth);
+    this.pageContainer.nativeElement.style = `transform:translateX(-${translation}px)`;
+    this.container.nativeElement.style = `max-width:${(1 + 2 * this.config.range) * itemWidth}px`;
   }
 
   /** Determines if a page should be visible */
   isVisible(page) {
     const current = this.pagination.getPage();
-    return Math.abs(current - page) < this.range + 1 + Math.max(0, this.range - current + 1) + Math.max(0, current - this.pagination.getPages() + this.range);
+    return Math.abs(current - page) < this.config.range + 1 + Math.max(0, this.config.range - current + 1) + Math.max(0, current - this.pagination.getPages() + this.config.range);
   }
 }

@@ -24,11 +24,10 @@ import { EntrySelectDemoComponent } from './entry-select/entry-select-demo.compo
 import { AssetListDemoComponent } from './asset-list/asset-list.demo.component';
 import { AssetDemoComponent } from './asset/asset.demo.component';
 import { ListTransformsDemoComponent } from './list-transforms/list-transforms-demo.component';
-import { DatamanagerListDemoComponent } from './datamanager-list/datamanager-list.demo.component';
-import { ModelListDemoComponent } from './model-list/model-list.demo.component';
 import { DatetimeDemoComponent } from './form/datetime-demo.component';
 import { DemoDashboardComponent } from './dashboard.component';
 import { AssetSelectDemoComponent } from './asset-select/asset-select-demo.component';
+import { ActionbarDemoComponent } from './actionbar-demo/actionbar-demo.component';
 import { PopTriggerComponent } from './pop/pop-trigger.component';
 import { NotificationsDemoComponent } from './notifications-demo/notifications-demo.component';
 import { LoaderDemoComponent } from './loader-demo/loader-demo.component';
@@ -39,6 +38,12 @@ import { TinymceModule } from '../../packages/tinymce/src/tinymce.module';
 import { TinymceDemoComponent } from './tinymce-demo/tinymce-demo.component';
 import { AceDemoComponent } from './ace-demo/ace-demo.component';
 import { AceModule } from '../../packages/ace/index';
+import { InteractionDemoComponent } from './interaction-demo/interaction-demo.component';
+import { ActionbarModule } from '../../packages/ui/src/actionbar/actionbar.module';
+import { ResourceListDemoComponent } from './resource-list/resource-list-demo.component';
+import { IconDemoComponent } from './icon-demo/icon-demo.component';
+import { IconPipe } from './icon-demo/icon.pipe';
+import { ResourceFormDemoComponent } from './resource-form/resource-form-demo.component';
 
 demoRoutes.unshift(
   {
@@ -59,6 +64,8 @@ demoRoutes.unshift(
     ListTransformsDemoComponent,
     PaginationDemoComponent,
     EntryListDemoComponent,
+    ResourceListDemoComponent,
+    ResourceFormDemoComponent,
     FormDemoComponent,
     TabsDemoComponent,
     EntryFormDemoComponent,
@@ -71,15 +78,17 @@ demoRoutes.unshift(
     CoolStringComponent,
     UnsplashImageComponent,
     AssetListDemoComponent,
+    ActionbarDemoComponent,
+    InteractionDemoComponent,
     AssetDemoComponent,
-    DatamanagerListDemoComponent,
     DatetimeDemoComponent,
-    ModelListDemoComponent,
     NotificationsDemoComponent,
     LoaderDemoComponent,
     MediumEditorDemoComponent,
     TinymceDemoComponent,
     AceDemoComponent,
+    IconDemoComponent,
+    IconPipe
   ],
   entryComponents: [
     CoolStringComponent,
@@ -88,6 +97,7 @@ demoRoutes.unshift(
   imports: [
     BrowserModule,
     UiModule,
+    ActionbarModule,
     DataModule,
     VcModule,
     RouterModule.forRoot(demoRoutes),

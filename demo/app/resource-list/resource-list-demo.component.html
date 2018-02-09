@@ -1,0 +1,43 @@
+<h2>API Explorer</h2>
+<p>This demo utilises ResourceList and ResourceForm to explore all ec.apis. You can open a resource and then click the
+  <ec-icon
+    name="database"></ec-icon> icon to load its child relations.</p>
+<!-- <ul>
+  <li *ngFor="let resource of history" (click)="goBack(resource)">{{resource}}</li>
+</ul> -->
+
+<!-- <ec-resource-form [value]="api" [relation]="symbol" #resourceForm></ec-resource-form> -->
+
+<ec-pop class="ec-pop_dialog" #editPop>
+  <a (click)="editPop.hide()" class="btn">
+    <ec-icon name="close-x"></ec-icon>
+  </a>
+  <a (click)="use(resource,editPop)" class="btn" *ngIf="hasChildren(resource)">
+    <ec-icon name="database"></ec-icon>
+  </a>
+  <ec-resource-form [value]="resource" [relation]="symbol" #resourceForm></ec-resource-form>
+</ec-pop>
+<ec-loader class="ec-loader ec-loader_global" #loader></ec-loader>
+
+
+<ec-tabs *ngIf="symbols&&symbols.length&&relation">
+  <ec-tab [label]="symbol" *ngFor="let symbol of symbols" (activated)="useRelation(symbol)" [selected]="symbol===relation"></ec-tab>
+</ec-tabs>
+
+<ec-pop class="ec-pop_dialog" #createPop>
+  <a (click)="createPop.hide()" class="btn">
+    <ec-icon name="close-x"></ec-icon>
+  </a>
+  <ec-resource-form [api]="api" [relation]="relation"></ec-resource-form>
+</ec-pop>
+<a class="btn outline" (click)="createPop.show()">
+  <ec-icon name="add"></ec-icon>
+</a>
+<a class="btn outline" (click)="resourceList.list.toggleSelectMode()">
+  <ec-icon name="check-box"></ec-icon>
+</a>
+<ec-resource-list [loader]="loader" #resourceList [api]="api" [relation]="relation" (columnClicked)="select($event, editPop)"></ec-resource-list>
+<hr>
+<p *ngIf="resourceList.list?.listResource?.total">{{resourceList.list?.listResource?.count}} items loaded</p>
+<p *ngIf="resourceList.list?.config?.selectMode">{{resourceList.selection?.items.length}} items selected</p>
+<ec-notifications></ec-notifications>

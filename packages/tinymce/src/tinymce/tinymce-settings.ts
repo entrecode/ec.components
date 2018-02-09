@@ -1,3 +1,4 @@
+/** Default settings for tinymce editor. */
 export const editorSettings = {
   theme: 'modern',
   menubar: false,
@@ -10,7 +11,7 @@ export const editorSettings = {
   autoresize_min_height: 300,
   autoresize_max_height: 800,
   content_css: [
-    'https://icons.entrecode.de/ec-icons-1.1.15.min.css'
+    'https://icons.entrecode.de/ec-icons-3.0.0.min.css'
   ],
   paste_as_text: true,
   table_toolbar: false,

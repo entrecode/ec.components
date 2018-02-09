@@ -1,5 +1,5 @@
-<h2>ec-entry-select</h2>
-<h3>usage without form</h3>
+<h2 class="mega">ec-entry-select</h2>
+<strong>usage without form</strong>
 <ec-entry-select model="muffin" [config]="{size:3}" #entrySelect
                  [(ngModel)]="selectedMuffins"></ec-entry-select>
 <div *ngIf="entrySelect.selection?.items?.length">
@@ -13,10 +13,10 @@
   <strong>selected IDs:</strong>
   <pre>{{entrySelect.selection?.getValue() | json}}</pre>
 </div>
-<b>solo</b>
+<strong>solo</strong>
 <ec-entry-select model="muffin" [config]="{size:3}" [solo]="true" #soloEntry></ec-entry-select>
 <pre>{{soloEntry.selection?.getValue()}}</pre>
-<h3>Usage with form</h3>
+<strong>Usage with form</strong>
 <ec-entry-form model="field_test" #fieldTest>
   <ec-entry-select *ngIf="fieldTest.group" [solo]="true"
                    [formControl]="fieldTest.group?.get('entries')"

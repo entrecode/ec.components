@@ -41,10 +41,8 @@ $hover-shading: -4;
 /// @param {color} $divider-color [rgba($text,.1)] -  color if divider used by e.b. .bumper
 $divider-color: rgba($text, .1);
 
-/// @param {color} $input-border-color [ mix($text, $background, 25%)]
-$input-border-color: mix($text, $background, 25%);
-
 /// used for theme coloring, colors are used in the x-ui-colormap an adapted to fit to theme colors
+$state-hover: rgba(mix($link, $text), .04);
 $state-info: cyan;
 $state-error: red;
 $state-success: green;
@@ -88,12 +86,12 @@ $base-spacing: 16;
 
 /// @param {map} $breakpoints
 $breakpoints: (
-  'xs': 0, // smartphone
-  'sm': 480, // smartphone landscape
-  'md': 720, // tablet
-  'lg': 1024, // tablet landscape
-  'xl': 1280, // desktop
-  'xxl': 1920 // large
+        'xs': 0, // smartphone
+        'sm': 480, // smartphone landscape
+        'md': 720, // tablet
+        'lg': 1024, // tablet landscape
+        'xl': 1280, // desktop
+        'xxl': 1920 // large
 );
 
 ///
@@ -109,52 +107,52 @@ $base-line-height: 1.4;
 /// @param {number} $vertical-rhythm [$base-line-height * $base-font-size] - set margin-bottom a smooth typeface
 $vertical-rhythm: $base-line-height * $base-font-size;
 
-/// @param {value} $bp-type-scale-xs - breakpoint modular scale for mobile
-$bp-type-scale-xs: 0;
+/// @param {value} $bp-type-scale-small - breakpoint modular scale for small devices
+$bp-type-scale-small: 0;
 
-/// @param {map} $type-scale-xs - modular scale for mobile
+/// @param {map} $type-scale-small - modular scale for small devices
 /// @link http://www.modularscale.com/?0.875&rem&1.25
-$type-scale-xs: (
-  h1: 2.67em,
-  h2: 2.136em,
-  h3: 1.709em,
-  h4: 1.367em,
-  h5: 1.094em,
-  h6: .875em,
-  lead: 1.094em,
-  p: .875em
+$type-scale-small: (
+        h1: 2.67em,
+        h2: 2.136em,
+        h3: 1.709em,
+        h4: 1.367em,
+        h5: 1.094em,
+        h6: .875em,
+        lead: 1.094em,
+        p: .875em
 );
 
-/// @param {value} $bp-type-scale-md - breakpoint modular scale for tablet
-$bp-type-scale-md: getBreakpoint(md);
+/// @param {value} $bp-type-scale-normal - breakpoint modular scale for normal devices
+$bp-type-scale-normal: getBreakpoint(md);
 
-/// @param {map} $type-scale-md - modular scale for tablet
+/// @param {map} $type-scale-normal - modular scale for normal devices
 /// @link http://www.modularscale.com/?1&em&1.25
-$type-scale-md: (
-  h1: 3.052em,
-  h2: 2.441em,
-  h3: 1.953em,
-  h4: 1.563em,
-  h5: 1.25em,
-  h6: 1em,
-  lead: 1.25em,
-  p: 1em
+$type-scale-normal: (
+        h1: 3.052em,
+        h2: 2.441em,
+        h3: 1.953em,
+        h4: 1.563em,
+        h5: 1.25em,
+        h6: 1em,
+        lead: 1.25em,
+        p: 1em
 );
 
-/// @param {value} $bp-type-scale-lg - breakpoint modular scale for desktop
-$bp-type-scale-lg: getBreakpoint(lg);
+/// @param {value} $bp-type-scale-large - breakpoint modular scale for large devices
+$bp-type-scale-large: getBreakpoint(xxl);
 
-/// @param {map} $type-scale-lg - modular scale for desktop
+/// @param {map} $type-scale-large - modular scale for large devices
 /// @link http://www.modularscale.com/?1.125&em&1.25
-$type-scale-lg: (
-  h1: 3.433em,
-  h2: 2.747em,
-  h3: 2.197em,
-  h4: 1.758em,
-  h5: 1.406em,
-  h6: 1.125em,
-  lead: 1.406em,
-  p: 1.125em
+$type-scale-large: (
+        h1: 3.433em,
+        h2: 2.747em,
+        h3: 2.197em,
+        h4: 1.758em,
+        h5: 1.406em,
+        h6: 1.125em,
+        lead: 1.406em,
+        p: 1.125em
 );
 
 /// @param {value} $headings-weight [$bold]
@@ -191,15 +189,18 @@ $inline-small-size: .875;
 /// Avatars
 /// ------------------------------------------------------
 
-/// @param {px} $avatar-size [48]
-/// @param {px} $avatar-small-size-size [32]
-/// @param {px} $avatar-big-size-size [48]
+/// @param {number} $avatar-size [48]
+/// @param {number} $avatar-small-size-size [32]
+/// @param {number} $avatar-big-size-size [48]
 $avatar-size: 40;
 $avatar-small-size: 32;
 $avatar-big-size: 48;
 
-/// @param {px} $avatar-border [2]
-$avatar-border: 2;
+/// @param {number} $avatar-border [0]
+$avatar-border: 0;
+
+/// @param {number} $avatar-square-radius [4]
+$avatar-square-radius: 4;
 
 ///
 /// BUTTONS
@@ -291,6 +292,16 @@ $btn-group-divider: true;
 /// @param {px} $dropdown-radius [4]
 $dropdown-radius: 4;
 
+/// @param {number} $dropdown-padding [4]
+$dropdown-padding: 4;
+
+/// @param {color} $dropdown-background
+$dropdown-background: $background;
+
+/// @param {value} $dropdown-shadow
+$dropdown-shadow: 0 8px 16px -4px rgba(black, .16), 0 4px 24px 0px rgba(black, 0.1);
+
+
 ///
 /// INPUT
 /// ------------------------------------------------------
@@ -345,8 +356,43 @@ $input-big-radius: 4;
 /// @param {number} $input-border [1]
 $input-border: 1;
 
+/// @param {color} $input-border-color [ mix($text, $background, 25%)]
+$input-border-color: mix($text, $background, 25%);
+
 /// param {color} $input-raised-shadow
 $input-raised-shadow: rgba(black, .1);
+
+///
+/// SELECT
+/// ------------------------------------------------------
+
+/// @param {number} $select-font-size [16]
+/// @param {number} $select-line-height [24]
+/// @param {number} $select-min-height [32]
+$select-font-size: 16;
+$select-line-height: 24;
+$select-min-height: 32;
+
+/// additional styles for .input
+%select-style {
+  /// put styles here...
+}
+
+/// @param {boolean} $select-round [false] - sets border-radius to 50% of input height
+$select-round: false;
+
+/// radius of input - if $select-round === false
+/// @param {number} $select-radius [4]
+$select-radius: 4;
+
+/// @param {number} $select-border [1]
+$select-border: 1;
+
+/// @param {color} $select-border-color [ mix($text, $background, 25%)]
+$select-border-color: mix($text, $background, 25%);
+
+/// param {color} $select-raised-shadow
+$select-raised-shadow: rgba(black, .1);
 
 /// Alerts
 /// ------------------------------------------------------
@@ -623,3 +669,26 @@ $is-rounded-max-radius: 8;
 
 /// @param {number} $fab-spacing [16]
 $fab-spacing: 16;
+
+
+/// list
+/// ------------------------------------------------------
+
+/// @param {number} $list-item-radius [4]
+$list-item-radius: 4;
+
+///
+/// OVERLAY
+/// ------------------------------------------------------
+
+/// @param {px} $overlay-radius [4]
+$overlay-radius: 4;
+
+/// @param {number} $overlay-padding [4]
+$overlay-padding: 4;
+
+/// @param {color} $overlay-background
+$overlay-background: $background;
+
+/// @param {value} $overlay-shadow
+$overlay-shadow: 0 8px 16px -4px rgba(black, .16), 0 4px 24px 0px rgba(black, 0.1);

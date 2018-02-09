@@ -76,6 +76,7 @@ export class DemoComponent {
         },
         muffins: {
           label: 'Muffins',
+          maxItems: 4,
           filterPopClass: 'ec-pop_drawer-right',
           display: (value, item) => {
             let muffins = item.getTitle('muffins') || [];

@@ -22,13 +22,13 @@ export class LoaderComponent {
   /** Shows the loader by setting .visible to the host. This method is NOT meant to be used from outside, */
   private show() {
     this.visible = true; // show loader
-    this.host.nativeElement.classList.add('visible');
+    this.host.nativeElement.classList.add('is-active');
   }
 
   /** Hide the loader by removing .visible from the host. This method is NOT meant to be used from outside, */
   private hide() {
     this.visible = false; // show loader
-    this.host.nativeElement.classList.remove('visible');
+    this.host.nativeElement.classList.remove('is-active');
   }
 
   /** Tells loader to show until the given promise resolves. (includes all other promises that are waited upon)

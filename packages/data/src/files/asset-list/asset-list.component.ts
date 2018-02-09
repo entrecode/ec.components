@@ -8,13 +8,15 @@ import { NotificationsService } from '@ec.components/ui/src/notifications/notifi
 import { SdkService } from '../../sdk/sdk.service';
 import AssetResource from 'ec.sdk/lib/resources/datamanager/AssetResource';
 import PublicAssetResource from 'ec.sdk/lib/resources/publicAPI/PublicAssetResource';
+import { ListConfig } from '@ec.components/core';
 
-/** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent */
+/** Displays an AssetList. Subscribes to uploads from the fileServices and reloads the List. Extends ResourceList */
 @Component({
   selector: 'ec-asset-list',
   templateUrl: '../../../../ui/src/list/list.component.html'
 })
-export class AssetListComponent extends ResourceListComponent<PublicAssetResource | AssetResource> {
+export class AssetListComponent extends ResourceListComponent {
+  config: ListConfig<AssetResource | PublicAssetResource> = {};
 
   constructor(protected loaderService: LoaderService,
     protected sdk: SdkService,
@@ -26,7 +28,7 @@ export class AssetListComponent extends ResourceListComponent<PublicAssetResourc
       this.list.load();
     })
   }
-
+  /** Creates the AssetList */
   createList(): AssetList {
     return new AssetList(this.config, this.sdk, this.fileService);
   }

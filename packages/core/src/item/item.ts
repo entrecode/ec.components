@@ -8,7 +8,7 @@ export class Item<T> {
   protected config: ItemConfig<T>;
 
   /** Each item is constructed with its body and an optional config. */
-  constructor(body: T, config?: ItemConfig<T>) {
+  constructor(body: T, config: ItemConfig<T> = {}) {
     this.body = body;
     this.config = config || this.generateConfig();
   }
@@ -50,7 +50,7 @@ export class Item<T> {
 
   /** Assigns the given config to the existing via Object.assign */
   useConfig(config: ItemConfig<T>) {
-    Object.assign(this.config, config);
+    this.config = Object.assign(this.config, config);
   }
 
   /** Returns the item's config */
@@ -151,15 +151,24 @@ export class Item<T> {
 
   }
 
+  deleteImmutableProperties(value = this.body) {
+    Object.keys(this.config.fields).forEach(property => {
+      if (this.config.fields[property].immutable) {
+        delete value[property];
+      }
+    });
+  }
+
   /** Transforms the given field's value for serialization when saving. */
   serialize(value, put: boolean = false): any {
     if (put) {
       value = this.pickWriteOnly(value);
     }
+    this.deleteImmutableProperties(value);
     /** Run the remaining properties through serializers */
     Object.keys(value).map((property) => {
       Object.assign(value, {
-        [property]: this.transform('serialize', property, value[property])
+        [property]: this.transform('serialize', property, value[property]) // TODO: fix
       })
     });
     return value;
@@ -174,6 +183,7 @@ export class Item<T> {
 
   /** Saves the given value. Run serializers before assigning the new value. */
   save(value: T = this.body): Promise<Item<T>> {
+    this.body = Object.assign(this.resolve() || {}, value);
     if (this.config.onSave) {
       return Promise.resolve(this.config.onSave(this, value))
         // return Promise.resolve(this.config.onSave(this, this.serialize(value)))
@@ -182,8 +192,17 @@ export class Item<T> {
           return this;
         });
     }
-    Object.assign(this.resolve() || {}, value);
     // Object.assign(this.resolve() || {}, this.serialize(value));
     return Promise.resolve(this);
+  }
+  /** Action method that is meant to be called on a button click or similar.
+   * Calls the config#action method with the item and the property name */
+  action(property, e) {
+    e.preventDefault();
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+    if (this.config.fields[property].action) {
+      this.config.fields[property].action(this, property);
+    }
   }
 }

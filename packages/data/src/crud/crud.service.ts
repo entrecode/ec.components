@@ -98,7 +98,7 @@ export class CrudService {
   /** Creates a new entry with the given value for the given model. Fires the "create" change. */
   create(model: string, value: Object): Promise<EntryResource> {
     return this.sdk.api.createEntry(model, this.clean(value))
-      .then((entry) => {
+      .then((entry: EntryResource) => {
         // console.log('created entry', entry);
         // TODO make sure leveled entries are returned leveled
         this.changes.next({ model, entry, type: 'post' });

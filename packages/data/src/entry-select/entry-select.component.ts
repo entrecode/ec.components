@@ -77,10 +77,10 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
       return;
     }
     this.modelConfig.generateConfig(this.model) // , (this.config || {}).fields
-    .then((config) => {
-      this.config = Object.assign(config, { size: 10 }, this.crudConfig, { solo: this.solo });
-      this.useConfig(this.config);
-    });
+      .then((config) => {
+        this.config = Object.assign(config, { size: 10 }, this.crudConfig, { solo: this.solo });
+        this.useConfig(this.config);
+      });
   }
 
   /** Is called when a selected item has been clicked. */
