@@ -85,5 +85,6 @@ export interface FieldConfigProperty {
   /** Defines the maximum of visible item (for tags view or similar). Defaults to 10 */
   maxItems?: number;
   /** Any other configuration properties*/
+  action?: (item: any, property: string) => any;
   [key: string]: any;
 }

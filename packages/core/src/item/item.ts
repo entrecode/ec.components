@@ -8,7 +8,7 @@ export class Item<T> {
   protected config: ItemConfig<T>;
 
   /** Each item is constructed with its body and an optional config. */
-  constructor(body: T, config?: ItemConfig<T>) {
+  constructor(body: T, config: ItemConfig<T> = {}) {
     this.body = body;
     this.config = config || this.generateConfig();
   }
@@ -194,5 +194,15 @@ export class Item<T> {
     }
     // Object.assign(this.resolve() || {}, this.serialize(value));
     return Promise.resolve(this);
+  }
+  /** Action method that is meant to be called on a button click or similar.
+   * Calls the config#action method with the item and the property name */
+  action(property, e) {
+    e.preventDefault();
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+    if (this.config.fields[property].action) {
+      this.config.fields[property].action(this, property);
+    }
   }
 }

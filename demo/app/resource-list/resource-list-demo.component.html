@@ -1,6 +1,7 @@
 <h2>API Explorer</h2>
-<p>This demo utilises ResourceList and ResourceForm to explore all ec.apis. 
-  You can open a resource and then click the <ec-icon name="database"></ec-icon> icon to load its child relations.</p>
+<p>This demo utilises ResourceList and ResourceForm to explore all ec.apis. You can open a resource and then click the
+  <ec-icon
+    name="database"></ec-icon> icon to load its child relations.</p>
 <!-- <ul>
   <li *ngFor="let resource of history" (click)="goBack(resource)">{{resource}}</li>
 </ul> -->
@@ -35,8 +36,8 @@
 <a class="btn outline" (click)="resourceList.list.toggleSelectMode()">
   <ec-icon name="check-box"></ec-icon>
 </a>
-<ec-resource-list [loader]="loader" #resourceList [config]="{disableSelection:true}" [api]="api" [relation]="relation" (columnClicked)="select($event, editPop)"></ec-resource-list>
+<ec-resource-list [loader]="loader" #resourceList [api]="api" [relation]="relation" (columnClicked)="select($event, editPop)"></ec-resource-list>
 <hr>
 <p *ngIf="resourceList.list?.listResource?.total">{{resourceList.list?.listResource?.count}} items loaded</p>
-<p *ngIf="!resourceList.list?.config?.disableSelection">{{resourceList.selection?.items.length}} items selected</p>
+<p *ngIf="resourceList.list?.config?.selectMode">{{resourceList.selection?.items.length}} items selected</p>
 <ec-notifications></ec-notifications>

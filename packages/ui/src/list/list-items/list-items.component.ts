@@ -31,7 +31,7 @@ export class ListItemsComponent<T> implements OnChanges {
 
   /** Propagate clicked item to host or toggle selection. */
   columnClick(item: Item<T>) {
-    if (this.selection && this.list && !this.list.config.disableSelection) {
+    if (this.selection && this.list && this.list.config.selectMode) {
       this.selection.toggle(item, this.solo);
     } else if (this.columnClicked.observers.length) {
       this.columnClicked.emit(item);

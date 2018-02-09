@@ -29,7 +29,7 @@ export class ActionbarComponent implements OnInit, WithLoader {
     @ViewChild(LoaderComponent) loader: LoaderComponent;
     path = [];
     query = '';
-    listConfig = { disableSelection: true, disableHeader: true, fields: { label: { label: '' } } };
+    listConfig = { disableHeader: true, fields: { label: { label: '' } } };
 
     private change = new Subject();
     /** Observable that is nexted when the query has changed. */

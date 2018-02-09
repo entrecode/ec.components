@@ -14,6 +14,7 @@ BREAKING CHANGES:
 * COM-96: replaced all usages of ec-icon with new ec-icon component (nests one level deeper)
 * COM-45: removed range input from pagination, replaced with PaginationConfig with additional options (see docs)
 * removed [host] input from ListItemsComponent due to incompatibilities.
+* renamed list config property disableSelection to selectMode and inverted its value meaning. When selectMode is true, the checkboxes are shown and the columnClicked event is ignored as long as selectMode is active. You can toggle the selectMode via list#toggleSelectMode.
 
 see attachment
 

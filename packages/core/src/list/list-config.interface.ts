@@ -12,8 +12,9 @@ export interface ListConfig<T> extends ItemConfig<T> {
   sort?: string[];
   /** If set to true, the sorting will be descending */
   desc?: boolean;
-  /** If true, the list will have no checkboxes and selection feature. */
-  disableSelection?: boolean
+  /** If true, the list will show its checkboxes and will select on column click.
+   * The columnClicked output will be ignored as long selectMode is active */
+  selectMode?: boolean
   /** If true, the list will have no header. */
   disableHeader?: boolean
   /** The current active page */

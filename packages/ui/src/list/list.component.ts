@@ -58,7 +58,7 @@ export class ListComponent<T> implements OnChanges {
 
   /** Column click handler. Triggers select.emit(item) with fallback to selection.toggle*/
   columnClick(item) {
-    if (!this.list.config.disableSelection && this.selection) {
+    if (this.list.config.selectMode && this.selection) {
       this.selection.toggle(item, this.solo);
     } else if (this.columnClicked.observers.length) {
       return this.columnClicked.emit(item);

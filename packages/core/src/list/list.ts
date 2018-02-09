@@ -43,7 +43,7 @@ export class List<T> extends Collection<Item<T>> {
     if (values) {
       super.addAll(values.map(value => new Item(value, Object.assign({}, config))), false, false);
     }
-    this.config = Object.assign({ page: 1, maxColumns: 8, disableSelection: true }, config || {});
+    this.config = Object.assign({ page: 1, maxColumns: 8 }, config || {});
     this.fields = this.getFields();
     this.pagination = pagination || new Pagination(this.config, this.items.length);
     this.pagination.change$.debounceTime(200)
@@ -135,10 +135,10 @@ export class List<T> extends Collection<Item<T>> {
     Sorter.sort(this.items, property, this.config.desc);
     this.load(this.config);
   }
-  /** Toggles disableSelection of list config */
+  /** Toggles selectMode of list config */
   toggleSelectMode() {
     this.config = Object.assign({}, this.config, {
-      disableSelection: !this.config.disableSelection
+      selectMode: !this.config.selectMode
     });
   }
 
