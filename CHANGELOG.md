@@ -1,6 +1,6 @@
 # Changelog
 
-<a name="0.13.0">
+<a name="0.13.0"></a>
 
 * can now configure the maximum visible items for 'tags' view via the maxItems option in the field config. The default value is 10.
 * added auto generated id to all fields. Those ids are used in label#for and input#id. You should also reference this id in custom inputs to make the label clickable.
@@ -19,12 +19,12 @@ BREAKING CHANGES:
 
 see attachment
 
-<a name="0.12.0">
+<a name="0.12.0"></a>
 BREAKING CHANGE:
 
 * form.component (and all children): renamed (submit) output to (submitted)
 
-<a name="0.10.0">
+<a name="0.10.0"></a>
 
 BREAKING CHANGES:
 
