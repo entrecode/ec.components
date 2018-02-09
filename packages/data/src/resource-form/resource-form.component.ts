@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { FormComponent, LoaderService, NotificationsService, FormService, LoaderComponent } from '@ec.components/ui';
 import Core from 'ec.sdk/lib/Core';
 import { resourceConfig } from '../resource-config/resource-config';
@@ -19,6 +19,9 @@ export class ResourceFormComponent extends FormComponent<Resource> implements On
     @Input() relation: string;
     /** The loader that should be shown while the list is loaded. */
     @Input() loader: LoaderComponent;
+    /** This output fires when the resource has been deleted using deleteResource(). */
+    @Output() deleted: EventEmitter<any> = new EventEmitter();
+
     constructor(protected loaderService: LoaderService,
         protected notificationService: NotificationsService,
         protected formService: FormService) {
@@ -43,7 +46,44 @@ export class ResourceFormComponent extends FormComponent<Resource> implements On
         if (!this.relation || (!this.api && !this.value)) {
             return;
         }
-        this.form = new ResourceForm(item ? item.getBody() : this.value || null, this.config, this.api, this.relation);
+        if (this.value) { // if value is set, create item from value only
+            this.form = new ResourceForm(this.value, config, this.api, this.relation);
+        } else if (item instanceof Item) {
+            this.form = new ResourceForm(item.getBody(), item.getConfig() || config || {}, this.api, this.relation);
+        } else if (config) {
+            this.form = new ResourceForm(null, config, this.api, this.relation);
+        }
         this.initGroup();
+    }
+
+    /** Yields true if the current edited resiource is already existing in the backend. */
+    isEditing() {
+        if (!this.form) {
+            return;
+        }
+        const entry = this.form.getBody();
+        return entry && entry.save;
+    }
+
+    /** Deletes the edited entry. Fires the deleted Output. */
+    deleteResource() {
+        if (!this.form || !this.isEditing()) {
+            return;
+        }
+        console.log('would now delete');
+        /* const deletion = this.crud.del(this.model, this.form.getBody()).then(() => {
+            this.deleted.emit();
+            this.create();
+            this.notificationService.emit({
+                title: 'Eintrag gelöscht', type: 'success'
+            });
+        }).catch((error) => {
+            this.notificationService.emit({
+                title: 'Fehler beim Löschen', error
+            });
+        });
+
+        this.loaderService.wait(deletion, this.loader);
+        return deletion; */
     }
 }

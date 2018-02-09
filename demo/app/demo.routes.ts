@@ -113,7 +113,7 @@ export const demoRoutes: Routes = [
     ]
   },
   {
-    path: 'data',
+    path: 'resources',
     children: [
       {
         path: 'api-explorer',
@@ -122,7 +122,12 @@ export const demoRoutes: Routes = [
       {
         path: 'resource-form',
         component: ResourceFormDemoComponent
-      },
+      }
+    ]
+  },
+  {
+    path: 'entries',
+    children: [
       {
         path: 'entries',
         component: DataDemoComponent
@@ -160,6 +165,11 @@ export const demoRoutes: Routes = [
         path: 'crud',
         component: CrudDemoComponent
       },
+    ]
+  },
+  {
+    path: 'assets',
+    children: [
       {
         path: 'asset',
         component: AssetDemoComponent
@@ -173,7 +183,8 @@ export const demoRoutes: Routes = [
         component: AssetSelectDemoComponent
       },
     ]
-  },
+
+  }
   {
     path: 'auth',
     children: [

@@ -81,9 +81,15 @@ export class FormComponent<T> implements OnChanges, WithLoader {
     });
   }
 
+  /** Clears the current value */
+  clear() {
+    delete this.value;
+  }
+
   /* clears the form and uses the given config (falls back to existing one). Renders an empty form. */
   create(config: ItemConfig<any> = this.config) {
     this.dirtyTalk();
+    this.clear();
     this.init(null, config);
   }
 

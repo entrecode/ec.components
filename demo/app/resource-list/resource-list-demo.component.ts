@@ -9,6 +9,7 @@ import { TabComponent } from '../../../packages/ui/src/utility/tab/tab.component
 import { TabsComponent } from '../../../packages/ui/src/utility/tabs/tabs.component';
 import { Apps, Accounts } from 'ec.sdk';
 import { ResourceFormComponent } from '../../../packages/data/src/resource-form/resource-form.component';
+import { ResourcePopComponent } from '../../../packages/data/src/resource-pop/resource-pop.component';
 
 @Component({
   selector: 'ec-resource-list-demo',
@@ -23,7 +24,7 @@ export class ResourceListDemoComponent implements OnInit {
   relation: string;
   api: any;
   resource: any;
-  @ViewChild('resourceForm') form: ResourceFormComponent;
+  @ViewChild(ResourcePopComponent) pop: ResourcePopComponent;
 
   constructor(public sdk: SdkService) {
   }
@@ -37,14 +38,11 @@ export class ResourceListDemoComponent implements OnInit {
     });
   }
 
-  select(item, pop?) {
+  select(item) {
     /* this.use(item.getBody()); */
     this.resource = item.getBody();
     this.symbol = this.relation;
-    this.form.edit(item);
-    if (pop) {
-      pop.show();
-    }
+    this.pop.edit(this.resource);
     this.history.push(item);
   }
 
@@ -62,10 +60,7 @@ export class ResourceListDemoComponent implements OnInit {
     return symbols.length && symbols[0] !== 'dummy';
   }
 
-  use(resource = this.resource, pop?) {
-    if (pop) {
-      pop.hide();
-    }
+  use(resource = this.resource) {
     this.api = resource;
     this.symbol = this.relation;
     console.log('use api', this.api);

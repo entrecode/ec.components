@@ -1,0 +1,30 @@
+<div class="ec-pop-container" [class.is-active]="active" [class.is-visible]="visible">
+    <div class="ec-pop ec-resource-pop" *ngIf="active">
+        <header class="ec-pop-header">
+            <button (click)="hide()" type="button" class="ec-pop__dismiss">
+                <ec-icon name="close-x-big"></ec-icon>
+            </button>
+        </header>
+        <div class="ec-pop-body">
+            <ec-resource-form [api]="api" [relation]="relation" [submitButton]="false" [config]="config" [loader]="popLoader" [value]="resource"
+                (deleted)="hide()" (submitted)="!this.config?.keepPopOpen&&hide()" #resourceForm></ec-resource-form>
+        </div>
+        <footer class="ec-pop-footer">
+            <nav class="nav">
+                <ul class="nav__items">
+                    <li class="nav__item" *ngIf="hasMethod('delete')&&resourceForm.isEditing()">
+                        <button (click)="resourceForm.deleteResource()" class="btn" type="button">
+                            <ec-icon name="trash"></ec-icon>
+                        </button>
+                    </li>
+                    <li class="nav__item" *ngIf="maySave(resourceForm)">
+                        <button (click)="resourceForm.submit()" [disabled]="resourceForm.group?.invalid" type="button" class="btn btn_save" [class.is-disabled]="resourceForm.group?.invalid">
+                            <ec-icon name="save"></ec-icon>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </footer>
+        <ec-loader #popLoader class="ec-loader ec-loader_overlay ec-loader_global"></ec-loader>
+    </div>
+</div>
