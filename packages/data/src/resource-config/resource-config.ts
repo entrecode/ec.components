@@ -110,6 +110,10 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
   template: {
     identifier: 'templateID',
     label: 'name',
+    permissions: {
+      post: 'dm-template-create',
+      get: 'dm-template:<templateID>:view'
+    },
     fields: {
       name: {
         label: 'Template',
@@ -127,6 +131,11 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
   },
   app: {
     identifier: 'appID',
+    permissions: {
+      post: 'app-create',
+      delete: 'app:<appID>:delete',
+      put: 'app:<appID>:edit'
+    },
     fields: {
       hexColor: {
         label: '#',
