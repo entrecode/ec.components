@@ -44,6 +44,7 @@ import { ResourceListDemoComponent } from './resource-list/resource-list-demo.co
 import { IconDemoComponent } from './icon-demo/icon-demo.component';
 import { IconPipe } from './icon-demo/icon.pipe';
 import { ResourceFormDemoComponent } from './resource-form/resource-form-demo.component';
+import { ResourceCrudDemoComponent } from './resource-crud/resource-crud-demo.component';
 
 demoRoutes.unshift(
   {
@@ -66,6 +67,7 @@ demoRoutes.unshift(
     EntryListDemoComponent,
     ResourceListDemoComponent,
     ResourceFormDemoComponent,
+    ResourceCrudDemoComponent,
     FormDemoComponent,
     TabsDemoComponent,
     EntryFormDemoComponent,

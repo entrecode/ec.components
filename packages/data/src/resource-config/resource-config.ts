@@ -11,6 +11,7 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
       post: 'dm-create',
       put: 'dm:<dataManagerID>:edit',
       delete: 'dm:<dataManagerID>:delete',
+      get: true
     },
     fields: {
       hexColor: {

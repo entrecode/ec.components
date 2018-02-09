@@ -21,6 +21,7 @@ import { EntryDirective } from './entry/entry.directive';
 import { EntryPopComponent } from './entry-pop/entry-pop.component';
 import { ResourceFormComponent } from './resource-form/resource-form.component';
 import { ResourcePopComponent } from './resource-pop/resource-pop.component';
+import { ResourceCrudComponent } from './resource-crud/resource-crud.component';
 
 @NgModule({
   entryComponents: [
@@ -38,6 +39,7 @@ import { ResourcePopComponent } from './resource-pop/resource-pop.component';
     ResourceListComponent,
     ResourceFormComponent,
     ResourcePopComponent,
+    ResourceCrudComponent,
     DefaultEntryInputComponent,
     DefaultEntryOutputComponent,
     CrudComponent,
@@ -62,6 +64,7 @@ import { ResourcePopComponent } from './resource-pop/resource-pop.component';
     ResourceListComponent,
     ResourceFormComponent,
     ResourcePopComponent,
+    ResourceCrudComponent,
     RouterModule,
     UiModule,
     SdkModule,

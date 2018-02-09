@@ -107,7 +107,7 @@ export class ResourcePopComponent extends PopComponent {
             [form.config.identifier]: form.form.id()
         } : {};
         // TODO: find a way to resolve parent resource variables e.g. dm:<dataManagerID>:model:entries:<modelID>
-        this.auth.getAllowedResourceMethods(this.relation, variables) // this.config.methods
+        this.auth.getAllowedResourceMethods(this.relation, variables, this.config.methods) // this.config.methods
             .then((methods) => {
                 this.config.methods = methods;
             });

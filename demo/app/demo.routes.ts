@@ -30,6 +30,7 @@ import { ResourceListDemoComponent } from './resource-list/resource-list-demo.co
 import { IconDemoComponent } from './icon-demo/icon-demo.component';
 import { PaginationDemoComponent } from './pagination/pagination-demo.component';
 import { ResourceFormDemoComponent } from './resource-form/resource-form-demo.component';
+import { ResourceCrudDemoComponent } from './resource-crud/resource-crud-demo.component';
 
 export const demoRoutes: Routes = [
   /*  {
@@ -122,6 +123,10 @@ export const demoRoutes: Routes = [
       {
         path: 'resource-form',
         component: ResourceFormDemoComponent
+      },
+      {
+        path: 'resource-crud',
+        component: ResourceCrudDemoComponent
       }
     ]
   },

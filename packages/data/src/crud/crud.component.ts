@@ -62,7 +62,7 @@ export class CrudComponent<T> implements OnInit, WithLoader {
   }
 
   ngOnInit() {
-    this.auth.getAllowedMethods(this.model, this.config.methods)
+    this.auth.getAllowedModelMethods(this.model, this.config.methods)
       .then((methods) => {
         this.config.methods = methods;
       });
