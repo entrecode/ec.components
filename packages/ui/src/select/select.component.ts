@@ -87,7 +87,7 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
 
   /** Initializes either with values, collection or list. Creates Selection with config. */
   useConfig(config = {}) {
-    this.config = Object.assign(this.config || {}, config);
+    this.config = Object.assign({ selectMode: true }, this.config || {}, config);
     this.initSelection();
     this.writeValue(this.value);
   }
