@@ -1,11 +1,17 @@
 import moment from 'moment-es6';
 import { FieldConfig, Form, ListConfig } from '@ec.components/core/index';
+import { CrudConfig } from '../crud/crud-config.interface';
 
 /** Contains default configurations for all kinds of resources. Used by ResourceList and ResourceForm.  */
-export const resourceConfig: { [key: string]: ListConfig<any> } = {
+export const resourceConfig: { [key: string]: CrudConfig<any> } = {
   dataManager: {
     identifier: 'dataManagerID',
     label: 'title',
+    permissions: {
+      post: 'dm-create',
+      put: 'dm:<dataManagerID>:edit',
+      delete: 'dm:<dataManagerID>:delete',
+    },
     fields: {
       hexColor: {
         label: '#',
@@ -74,6 +80,10 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
   account: {
     identifier: 'accountID',
     label: 'email',
+    permissions: {
+      get: 'acc:list',
+      put: 'acc:edit:<accountID>'
+    },
     fields: {
       email: {
         label: 'Email',

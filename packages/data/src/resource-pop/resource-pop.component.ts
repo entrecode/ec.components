@@ -7,7 +7,9 @@ import Core from 'ec.sdk/lib/Core';
 import { CrudConfig } from '../crud/crud-config.interface';
 import { ResourceFormComponent } from '../resource-form/resource-form.component';
 import { AuthService } from '../auth/auth.service';
-import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
+import { OnChanges, AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import { SdkService } from '../sdk/sdk.service';
+import { FormComponent } from '../../../ui/src/form/form.component';
 
 /** Entry Pop is an extension of Pop component to host an entry-form.
  * You can use it like a normal pop but with the extra handling of an entry form inside.
@@ -20,11 +22,11 @@ import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
     styleUrls: ['./resource-pop.component.scss']
 })
 
-export class ResourcePopComponent extends PopComponent implements OnInit {
+export class ResourcePopComponent extends PopComponent {
     /** CrudConfig for customizing the entry-form and the pop.*/
     @Input() config: CrudConfig<Resource> = {};
     /** The entry form inside the view */
-    @ViewChild(ResourcePopComponent) form: ResourceFormComponent;
+    @ViewChild(ResourceFormComponent) form: ResourceFormComponent;
     /** The API Connector that possesses the resource list, see https://entrecode.github.io/ec.sdk/#api-connectors */
     @Input() api: Core; // sdk api connector
     /** The name of the resource. If given, the generic ListResource loading will be used (api.resourceList) */
@@ -36,7 +38,7 @@ export class ResourcePopComponent extends PopComponent implements OnInit {
     /** Route that should be headed to when a resource is created. */
     /* @Input() createRoute: string; */
 
-    constructor(private auth: AuthService, private router: Router, private route: ActivatedRoute) {
+    constructor(private auth: AuthService, private router: Router, private route: ActivatedRoute, private sdk: SdkService) {
         super();
     }
 
@@ -97,13 +99,18 @@ export class ResourcePopComponent extends PopComponent implements OnInit {
     }
 
     /** Initialize the allowed methods to determine which buttons should be shown. */
-    ngOnInit() {
-        console.log('init ', this.api);
-        this.config.methods = ['post', 'get', 'put', 'delete'];
-        /* this.auth.getAllowedMethods(this.relation, this.config.methods)
+    initMethods(form: ResourceFormComponent) {
+        if (!form || !this.relation) {
+            return
+        }
+        const variables = form.config.identifier ? {
+            [form.config.identifier]: form.form.id()
+        } : {};
+        // TODO: find a way to resolve parent resource variables e.g. dm:<dataManagerID>:model:entries:<modelID>
+        this.auth.getAllowedResourceMethods(this.relation, variables) // this.config.methods
             .then((methods) => {
                 this.config.methods = methods;
-            }); */
+            });
     }
 
     /** Logs the current form (Developer help). */

@@ -17,7 +17,7 @@ import { InputComponent } from '../io/input/input.component';
 })
 export class FormComponent<T> implements OnChanges, WithLoader {
   /** The instance of Form that is used. */
-  protected form: Form<T>;
+  public form: Form<T>;
   /** The current (angular) form group. */
   public group: FormGroup;
   /** The current form config */
@@ -37,7 +37,9 @@ export class FormComponent<T> implements OnChanges, WithLoader {
   /** The loader that should be used. */
   @Input() loader: LoaderComponent;
   /** Emits when the form is submitted. The form can only be submitted if all Validators succeeded. */
-  @Output() submitted: EventEmitter<Form<any>> = new EventEmitter();
+  @Output() submitted: EventEmitter<Form<T>> = new EventEmitter();
+  /** Emits when the form has been initialized.  */
+  @Output() ready: EventEmitter<FormComponent<T>> = new EventEmitter();
   /** Emits when a new instance of Form is present */
   @Output() change: EventEmitter<FormComponent<T>> = new EventEmitter();
   /** The forms default loader. it is used when no loader is passed via the loader input */
@@ -60,7 +62,7 @@ export class FormComponent<T> implements OnChanges, WithLoader {
   }
 
   /** Inits the form (if ready) */
-  protected init(item: Item<any> = this.item, config: FormConfig<any> = this.config) {
+  protected init(item: Item<T> = this.item, config: FormConfig<T> = this.config) {
     if (this.value) { // if value is set, create item from value only
       this.form = new Form(this.value, config);
     } else if (item instanceof Item) {
@@ -79,6 +81,7 @@ export class FormComponent<T> implements OnChanges, WithLoader {
     this.group.valueChanges.subscribe((change) => {
       this.change.emit(this);
     });
+    this.ready.emit(this);
   }
 
   /** Clears the current value */
@@ -87,20 +90,20 @@ export class FormComponent<T> implements OnChanges, WithLoader {
   }
 
   /* clears the form and uses the given config (falls back to existing one). Renders an empty form. */
-  create(config: ItemConfig<any> = this.config) {
+  create(config: ItemConfig<T> = this.config) {
     this.dirtyTalk();
     this.clear();
     this.init(null, config);
   }
 
   /** edits a given Item instance by using its config and body. */
-  edit(item: Item<any>) {
+  edit(item: Item<T>) {
     this.dirtyTalk();
     this.init(item);
   }
 
   /** edits a given value by creating an item and calling edit. */
-  editValue(value: any, config = this.config) {
+  editValue(value: T, config = this.config) {
     const item = new Item(value, config);
     this.edit(item);
   }

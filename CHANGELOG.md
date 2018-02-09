@@ -1,5 +1,13 @@
 # Changelog
 
+<a name="0.14.0"></a>
+
+## 0.14.0
+
+* added ready event to FormComponent when initialization is complete.
+* add ResourcePopComponent for creating and editing resources.
+* added permissions option to resource-config to automatically show only allowed actions.
+
 <a name="0.13.0"></a>
 
 ## 0.13.0

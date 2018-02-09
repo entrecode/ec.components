@@ -2,6 +2,7 @@ import { Inject, Injectable } from '@angular/core';
 import { SdkService } from '../sdk/sdk.service';
 import AccountResource from 'ec.sdk/lib/resources/accounts/AccountResource';
 import PublicAPI from 'ec.sdk/lib/PublicAPI';
+import { resourceConfig } from '../resource-config/resource-config';
 
 /** The SdkService exposes all instances of the ec.sdk APIs.
  * To be able to use it, you have to provide an environment like this in your module's providers:
@@ -24,7 +25,7 @@ import PublicAPI from 'ec.sdk/lib/PublicAPI';
 export class AuthService {
 
   /** Calls init and sets ready to true when finished. */
-  constructor(@Inject('environment') private environment, private sdk: SdkService) {
+  constructor( @Inject('environment') private environment, private sdk: SdkService) {
   }
 
   /** Generic login that works with both public and admin API. */
@@ -33,12 +34,12 @@ export class AuthService {
       return Promise.reject(this.noClientID());
     }
     return Promise.resolve(api || this.getApi(email))
-    .then((resolvedAPI) => {
-      const _api = resolvedAPI || this.sdk.session;
-      return !_api ? Promise.reject('api_not_found') : _api.login(email, password);
-    }).then(() => {
-      return this.sdk.init();
-    });
+      .then((resolvedAPI) => {
+        const _api = resolvedAPI || this.sdk.session;
+        return !_api ? Promise.reject('api_not_found') : _api.login(email, password);
+      }).then(() => {
+        return this.sdk.init();
+      });
   }
 
   /** Generic Signup, works for accounts API and PublicAPI */
@@ -47,10 +48,10 @@ export class AuthService {
       return Promise.reject(this.noClientID());
     }
     return api ? api.signup() : this.sdk.api.signup(email, password, invite)
-    .catch(() => this.sdk.accounts.signup(email, password, invite))
-    .then((res) => {
-      return this.sdk.init();
-    })
+      .catch(() => this.sdk.accounts.signup(email, password, invite))
+      .then((res) => {
+        return this.sdk.init();
+      })
   }
 
   /** Returns the current account. Works for all apis */
@@ -63,32 +64,68 @@ export class AuthService {
   }
 
   /** checks given public permission for given api, defaults to this.sdk.api. Also works as ec user */
-  checkPublicPermission(permission: string, api = this.sdk.api) {
+  checkPermission(permission: string, api?) {
     return this.sdk.ready.then((user) => {
+      api = api || this.sdk.user;
       return api.checkPermission(permission);
     })
   }
+  /** replaces all variables by values in a string */
+  resolveVariables(string: string, variables: Object) {
+    Object.keys(variables).forEach((key) => {
+      string = string.replace(`<${key}>`, variables[key]);
+    });
+    return string;
+  }
 
-  /** Returns an array of all allowed methods for the given model */
-  getAllowedMethods(model: string, methods?: string[]): Promise<string[]> {
+  /** Returns only the allowed methods for a given relation. Uses the permissions config option from resource-config. */
+  getAllowedResourceMethods(relation: string, variables: Object = {}, methods?: string[]): Promise<string[]> {
+    if (methods) {
+      return Promise.resolve(methods);
+    }
+    if (!resourceConfig[relation] || !resourceConfig[relation].permissions) {
+      console.warn(`relation ${relation} has no defined permissions, defaulting to all methods available`);
+      return Promise.resolve(['get', 'post', 'put', 'delete']);
+    }
+    const permissions = resourceConfig[relation].permissions;
+
+    return Object.keys(permissions)
+      .map((method) => (results) =>
+        this.checkPermission(`${this.resolveVariables(permissions[method], variables)}`)
+          .then(res => {
+            if (res) {
+              results.push(method);
+            }
+            return results;
+          })
+      )
+      .reduce((a, b) => a.then(r => b(r)), Promise.resolve([]))
+      .then(_methods => {
+        _methods.filter(x => !!x);
+        return _methods;
+      });
+  }
+
+  /** Returns an array of all allowed methods for the given relation */
+  getAllowedModelMethods(model: string, methods?: string[]): Promise<string[]> {
     if (methods) {
       return Promise.resolve(methods);
     }
     return ['get', 'post', 'put', 'delete']
-    .map((method) => (results) =>
-      this.checkPublicPermission(`${model}:${method}`)
-      .then(res => {
-        if (res) {
-          results.push(method);
-        }
-        return results;
-      })
-    )
-    .reduce((a, b) => a.then(r => b(r)), Promise.resolve([]))
-    .then(_methods => {
-      _methods.filter(x => !!x);
-      return _methods;
-    });
+      .map((method) => (results) =>
+        this.checkPermission(`${model}:${method}`, this.sdk.api)
+          .then(res => {
+            if (res) {
+              results.push(method);
+            }
+            return results;
+          })
+      )
+      .reduce((a, b) => a.then(r => b(r)), Promise.resolve([]))
+      .then(_methods => {
+        _methods.filter(x => !!x);
+        return _methods;
+      });
   }
 
   /** Generic password reset that works with both public and admin API. */
@@ -97,10 +134,10 @@ export class AuthService {
       return Promise.reject(this.noClientID());
     }
     return Promise.resolve(api || this.getApi(email))
-    .then((resolvedAPI) => {
-      const _api = resolvedAPI || this.sdk.accounts;
-      return !_api ? Promise.reject('api_not_found') : api.resetPassword(email);
-    });
+      .then((resolvedAPI) => {
+        const _api = resolvedAPI || this.sdk.accounts;
+        return !_api ? Promise.reject('api_not_found') : api.resetPassword(email);
+      });
   }
 
   /** Generic logout that works with both public and admin API. */
@@ -109,9 +146,9 @@ export class AuthService {
       return Promise.reject(this.noClientID());
     }
     return api ? api.logout() : this.sdk.api.logout().catch(() => this.sdk.session.logout())
-    .then(() => {
-      return this.sdk.init();
-    });
+      .then(() => {
+        return this.sdk.init();
+      });
   }
 
   getApi(email: string) {
@@ -119,13 +156,13 @@ export class AuthService {
       return Promise.reject('no_api_found');
     }
     return this.sdk.api.emailAvailable(email)
-    .then((available) => {
-      if (!available) {
-        return this.sdk.api;
-      }
-    }).catch(() => {
-      return;
-    });
+      .then((available) => {
+        if (!available) {
+          return this.sdk.api;
+        }
+      }).catch(() => {
+        return;
+      });
   }
 
   noClientID() {

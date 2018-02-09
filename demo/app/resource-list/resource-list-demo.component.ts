@@ -63,6 +63,8 @@ export class ResourceListDemoComponent implements OnInit {
   use(resource = this.resource) {
     this.api = resource;
     this.symbol = this.relation;
+    delete this.resource;
+    this.pop.hide();
     console.log('use api', this.api);
     this.symbols = Object.keys(this.api[Symbol.for('relations')]);
     console.log('symbols', this.symbols);

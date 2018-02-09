@@ -6,8 +6,8 @@
             </button>
         </header>
         <div class="ec-pop-body">
-            <ec-resource-form [api]="api" [relation]="relation" [submitButton]="false" [config]="config" [loader]="popLoader" [value]="resource"
-                (deleted)="hide()" (submitted)="!this.config?.keepPopOpen&&hide()" #resourceForm></ec-resource-form>
+            <ec-resource-form (ready)="initMethods($event)" [api]="api" [relation]="relation" [submitButton]="false" [config]="config"
+                [loader]="popLoader" [value]="resource" (deleted)="hide()" (submitted)="!this.config?.keepPopOpen&&hide()" #resourceForm></ec-resource-form>
         </div>
         <footer class="ec-pop-footer">
             <nav class="nav">
@@ -21,6 +21,9 @@
                         <button (click)="resourceForm.submit()" [disabled]="resourceForm.group?.invalid" type="button" class="btn btn_save" [class.is-disabled]="resourceForm.group?.invalid">
                             <ec-icon name="save"></ec-icon>
                         </button>
+                    </li>
+                    <li class="nav__item">
+                        <ng-content></ng-content>
                     </li>
                 </ul>
             </nav>
