@@ -2,6 +2,8 @@
 
 <a name="0.13.0"></a>
 
+## 0.13.0
+
 * can now configure the maximum visible items for 'tags' view via the maxItems option in the field config. The default value is 10.
 * added auto generated id to all fields. Those ids are used in label#for and input#id. You should also reference this id in custom inputs to make the label clickable.
 * added ec-icon component for more flexible icons.
@@ -17,14 +19,16 @@ BREAKING CHANGES:
 * renamed list config property disableSelection to selectMode and inverted its value meaning. When selectMode is true, the checkboxes are shown and the columnClicked event is ignored as long as selectMode is active. You can toggle the selectMode via list#toggleSelectMode.
 * removed DatamanagerListComponent and ModelListComponent. You can use ResourceList for both now.
 
-see attachment
-
 <a name="0.12.0"></a>
+
+## 0.12.0
+
 BREAKING CHANGE:
 
 * form.component (and all children): renamed (submit) output to (submitted)
 
 <a name="0.10.0"></a>
+## 0.10.0
 
 BREAKING CHANGES:
 
