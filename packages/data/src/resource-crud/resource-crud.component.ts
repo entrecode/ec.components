@@ -83,37 +83,8 @@ export class ResourceCrudComponent<T> implements OnInit, WithLoader {
         return this.config.methods && this.config.methods.indexOf(method) !== -1;
     }
 
-    /** Returns true if the visible fields in the list differ from the visible fields in the form*/
-    public mustReload(item) {
-        return !Object.keys(item.config.fields).reduce((equal, property) => {
-            return equal && (item.config.fields[property].list !== false || item.config.fields[property].form === false);
-        }, true);
-    }
-
+    /** Called on list columnClicked */
     select(item) {
-        this.pop.edit(item.getBody());
-    }
-    /** Loads the clicked resource item, depending on the configured levels. Reloads the resource if the form has fields the which list has not. */
-
-    /* private loadEntry(item) {
-        return Promise.resolve().then(() => {
-            if (!this.config.alwaysLoadEntry && !this.mustReload(item) && (!this.config.levels || this.config.levels === 1)) {
-                return item.getBody();
-            }
-            return this.sdk.api.entry(this.model, item.id(), { levels: this.config.levels || 1 })
-        }).then((loadedEntry) => {
-            this.pop.edit(loadedEntry);
-        }).catch((err) => {
-            console.log('error while loading entry to edit', err);
-            this.notificationService.emit({
-                title: 'Fehler beim Laden',
-                error: err
-            })
-        });
-    } */
-
-    /** Is called when an item in the list is clicked. */
-    private selectEntry(item) {
         if (!item) {
             return;
         }
@@ -121,11 +92,12 @@ export class ResourceCrudComponent<T> implements OnInit, WithLoader {
             this.columnClicked.emit(item);
             return;
         }
-        this.loaderService.wait(this.loadEntry(item), this.loader);
+        this.pop.edit(item.getBody());
+        // TODO: check CrudComponent#loadEntry for further inspiration
     }
 
     /** Returns the pop class that should be used, either uses config.popClass or defaults to ec-pop_drawer-left. */
     getPopClass() {
-        return this.config && this.config.popClass ? this.config.popClass : 'ec-pop_drawer-left';
+        return this.config && this.config.popClass ? this.config.popClass : 'ec-pop_dialog';
     }
 }

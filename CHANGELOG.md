@@ -5,8 +5,9 @@
 ## 0.14.0
 
 * added ready event to FormComponent when initialization is complete.
-* add ResourcePopComponent for creating and editing resources.
+* added ResourcePopComponent for creating and editing resources.
 * added permissions option to resource-config to automatically show only allowed actions.
+* added ResourceCrudComponent for easy create/read/update/delete of any resource.
 
 <a name="0.13.0"></a>
 

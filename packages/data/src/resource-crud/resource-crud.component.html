@@ -17,6 +17,6 @@
             *ngIf="hasMethod('get')" [config]="config"></ec-resource-list>
     </div>
     <ec-loader class="ec-loader ec-loader_global" #loader></ec-loader>
-    <ec-resource-pop class="ec-pop ec-pop_dialog" [api]="api" [config]="config" [resource]="resource" [relation]="relation" #resourcePop></ec-resource-pop>
+    <ec-resource-pop [ngClass]="getPopClass()" [api]="api" [config]="config" [resource]="resource" [relation]="relation" #resourcePop></ec-resource-pop>
     <ec-notifications></ec-notifications>
 </div>
