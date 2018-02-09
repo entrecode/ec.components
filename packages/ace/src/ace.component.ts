@@ -24,7 +24,7 @@ export class AceComponent extends DefaultInputComponent implements ControlValueA
     /**
      * The current value of the editor
      */
-    value: string;
+    value = '';
     /**
      * Promise that resolves when the editor has been initialized.
      */

@@ -61,7 +61,6 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
       componentRef.instance.control.valueChanges
         .debounceTime(this.debounce)
         .subscribe((change) => {
-          console.log('value change');
           this.changed.emit(change);
           this.propagateChange(change);
         });
