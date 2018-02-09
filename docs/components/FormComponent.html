@@ -365,10 +365,16 @@
                                     <a href="../components/PopComponent.html" >PopComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/ResourceCrudComponent.html" >ResourceCrudComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/ResourceFormComponent.html" >ResourceFormComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/ResourceListComponent.html" >ResourceListComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/ResourcePopComponent.html" >ResourcePopComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/SelectComponent.html" >SelectComponent</a>
@@ -1017,10 +1023,16 @@
                                            <a href="../components/PopComponent.html" >PopComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/ResourceCrudComponent.html" >ResourceCrudComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/ResourceFormComponent.html" >ResourceFormComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/ResourceListComponent.html" >ResourceListComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/ResourcePopComponent.html" >ResourcePopComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/SelectComponent.html" >SelectComponent</a>
@@ -1433,7 +1445,7 @@
                                 <a href="#defaultLoader">defaultLoader</a>
                             </li>
                             <li>
-                                    <span class="modifier">Protected</span>
+                                    <span class="modifier">Public</span>
                                 <a href="#form">form</a>
                             </li>
                             <li>
@@ -1454,6 +1466,9 @@
                 <tr>
                     <td class="col-md-4">
                         <ul class="index-list">
+                            <li>
+                                <a href="#clear">clear</a>
+                            </li>
                             <li>
                                 <a href="#create">create</a>
                             </li>
@@ -1531,6 +1546,9 @@
                                 <a href="#change">change</a>
                             </li>
                             <li>
+                                <a href="#ready">ready</a>
+                            </li>
+                            <li>
                                 <a href="#submitted">submitted</a>
                             </li>
                         </ul>
@@ -1551,7 +1569,7 @@
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">packages/ui/src/form/form.component.ts:46</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">packages/ui/src/form/form.component.ts:48</a></div>
                                 </td>
                             </tr>
     
@@ -1790,6 +1808,27 @@
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">packages/ui/src/form/form.component.ts:44</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="ready"></a>
+                            <code>ready</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>Emits when the form has been initialized.  </p>
+</div>
+                            <em><code>$event</code> type:</em>    <code><a href="../classes/Form.html" target="_self" >EventEmitter&lt;FormComponent&lt;T&gt;&gt;</a></code>
+
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
                                     <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">packages/ui/src/form/form.component.ts:42</a></div>
                                 </td>
                             </tr>
@@ -1805,7 +1844,7 @@
                         <td class="col-md-10">
                             <div><p>Emits when the form is submitted. The form can only be submitted if all Validators succeeded. </p>
 </div>
-                            <em><code>$event</code> type:</em>    <code><a href="../classes/Form.html" target="_self" >EventEmitter&lt;Form&lt;any&gt;&gt;</a></code>
+                            <em><code>$event</code> type:</em>    <code><a href="../classes/Form.html" target="_self" >EventEmitter&lt;Form&lt;T&gt;&gt;</a></code>
 
                         </td>
                     </tr>
@@ -1829,6 +1868,45 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
+                            <a name="clear"></a>
+                            <span class="name">
+                                <b>
+                                clear
+                                </b>
+                                <a href="#clear"><span class="fa fa-link"></span></a>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>clear()</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">packages/ui/src/form/form.component.ts:88</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Clears the current value </p>
+    </div>
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
                             <a name="create"></a>
                             <span class="name">
                                 <b>
@@ -1840,14 +1918,14 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-    <code>create(config: <a href="../interfaces/ItemConfig.html">ItemConfig<any></a>)</code>
+    <code>create(config: <a href="../interfaces/ItemConfig.html">ItemConfig<T></a>)</code>
                         </td>
                     </tr>
     
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">packages/ui/src/form/form.component.ts:85</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">packages/ui/src/form/form.component.ts:93</a></div>
                                 </td>
                             </tr>
     
@@ -1869,7 +1947,7 @@
                                                     <tr>
                                                       <td>config</td>
                                                       <td>
-                                                              <code><a href="../interfaces/ItemConfig.html" target="_self" >ItemConfig&lt;any&gt;</a></code>
+                                                              <code><a href="../interfaces/ItemConfig.html" target="_self" >ItemConfig&lt;T&gt;</a></code>
                                                       </td>
                                                       <td>
                                                       </td>
@@ -1915,7 +1993,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="139" class="link-to-prism">packages/ui/src/form/form.component.ts:139</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="148" class="link-to-prism">packages/ui/src/form/form.component.ts:148</a></div>
                                 </td>
                             </tr>
     
@@ -1947,14 +2025,14 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-    <code>edit(item: <a href="../classes/Item.html">Item<any></a>)</code>
+    <code>edit(item: <a href="../classes/Item.html">Item<T></a>)</code>
                         </td>
                     </tr>
     
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">packages/ui/src/form/form.component.ts:91</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">packages/ui/src/form/form.component.ts:100</a></div>
                                 </td>
                             </tr>
     
@@ -1978,7 +2056,7 @@
                                                     <tr>
                                                       <td>item</td>
                                                       <td>
-                                                              <code><a href="../classes/Item.html" target="_self" >Item&lt;any&gt;</a></code>
+                                                              <code><a href="../classes/Item.html" target="_self" >Item&lt;T&gt;</a></code>
                                                       </td>
                                                       <td>
                                                       </td>
@@ -2015,14 +2093,14 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-    <code>editValue(value: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, config: )</code>
+    <code>editValue(value: T, config: )</code>
                         </td>
                     </tr>
     
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">packages/ui/src/form/form.component.ts:97</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">packages/ui/src/form/form.component.ts:106</a></div>
                                 </td>
                             </tr>
     
@@ -2046,7 +2124,7 @@
                                                     <tr>
                                                       <td>value</td>
                                                       <td>
-                                                              <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                              <code>T</code>
                                                       </td>
                                                       <td>
                                                       </td>
@@ -2098,7 +2176,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="131" class="link-to-prism">packages/ui/src/form/form.component.ts:131</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="140" class="link-to-prism">packages/ui/src/form/form.component.ts:140</a></div>
                                 </td>
                             </tr>
     
@@ -2162,14 +2240,14 @@
                     <tr>
                         <td class="col-md-4">
                                 <span class="modifier-icon fa fa-reset"></span>
-                            <code>init(item: <a href="../classes/Item.html">Item<any></a>, config: <a href="../interfaces/FormConfig.html">FormConfig<any></a>)</code>
+                            <code>init(item: <a href="../classes/Item.html">Item<T></a>, config: <a href="../interfaces/FormConfig.html">FormConfig<T></a>)</code>
                         </td>
                     </tr>
     
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">packages/ui/src/form/form.component.ts:63</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">packages/ui/src/form/form.component.ts:65</a></div>
                                 </td>
                             </tr>
     
@@ -2193,7 +2271,7 @@
                                                     <tr>
                                                       <td>item</td>
                                                       <td>
-                                                              <code><a href="../classes/Item.html" target="_self" >Item&lt;any&gt;</a></code>
+                                                              <code><a href="../classes/Item.html" target="_self" >Item&lt;T&gt;</a></code>
                                                       </td>
                                                       <td>
                                                       </td>
@@ -2202,7 +2280,7 @@
                                                     <tr>
                                                       <td>config</td>
                                                       <td>
-                                                              <code><a href="../interfaces/FormConfig.html" target="_self" >FormConfig&lt;any&gt;</a></code>
+                                                              <code><a href="../interfaces/FormConfig.html" target="_self" >FormConfig&lt;T&gt;</a></code>
                                                       </td>
                                                       <td>
                                                       </td>
@@ -2248,7 +2326,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">packages/ui/src/form/form.component.ts:74</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">packages/ui/src/form/form.component.ts:76</a></div>
                                 </td>
                             </tr>
     
@@ -2287,7 +2365,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">packages/ui/src/form/form.component.ts:57</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">packages/ui/src/form/form.component.ts:59</a></div>
                                 </td>
                             </tr>
     
@@ -2357,7 +2435,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">packages/ui/src/form/form.component.ts:103</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">packages/ui/src/form/form.component.ts:112</a></div>
                                 </td>
                             </tr>
     
@@ -2454,7 +2532,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">packages/ui/src/form/form.component.ts:44</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">packages/ui/src/form/form.component.ts:46</a></div>
                                 </td>
                             </tr>
     
@@ -2474,7 +2552,7 @@
                             <a name="form"></a>
                             <span class="name">
                                 <b>
-                                    <span class="modifier">Protected</span>
+                                    <span class="modifier">Public</span>
                                 form
                                 </b>
                                 <a href="#form"><span class="fa fa-link"></span></a>
@@ -2581,7 +2659,7 @@
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">packages/ui/src/form/form.component.ts:46</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">packages/ui/src/form/form.component.ts:48</a></div>
                                 </td>
                             </tr>
     
@@ -2634,7 +2712,7 @@ import { InputComponent } from &#x27;../io/input/input.component&#x27;;
 })
 export class FormComponent&lt;T&gt; implements OnChanges, WithLoader {
   /** The instance of Form that is used. */
-  protected form: Form&lt;T&gt;;
+  public form: Form&lt;T&gt;;
   /** The current (angular) form group. */
   public group: FormGroup;
   /** The current form config */
@@ -2654,7 +2732,9 @@ export class FormComponent&lt;T&gt; implements OnChanges, WithLoader {
   /** The loader that should be used. */
   @Input() loader: LoaderComponent;
   /** Emits when the form is submitted. The form can only be submitted if all Validators succeeded. */
-  @Output() submitted: EventEmitter&lt;Form&lt;any&gt;&gt; &#x3D; new EventEmitter();
+  @Output() submitted: EventEmitter&lt;Form&lt;T&gt;&gt; &#x3D; new EventEmitter();
+  /** Emits when the form has been initialized.  */
+  @Output() ready: EventEmitter&lt;FormComponent&lt;T&gt;&gt; &#x3D; new EventEmitter();
   /** Emits when a new instance of Form is present */
   @Output() change: EventEmitter&lt;FormComponent&lt;T&gt;&gt; &#x3D; new EventEmitter();
   /** The forms default loader. it is used when no loader is passed via the loader input */
@@ -2677,7 +2757,7 @@ export class FormComponent&lt;T&gt; implements OnChanges, WithLoader {
   }
 
   /** Inits the form (if ready) */
-  protected init(item: Item&lt;any&gt; &#x3D; this.item, config: FormConfig&lt;any&gt; &#x3D; this.config) {
+  protected init(item: Item&lt;T&gt; &#x3D; this.item, config: FormConfig&lt;T&gt; &#x3D; this.config) {
     if (this.value) { // if value is set, create item from value only
       this.form &#x3D; new Form(this.value, config);
     } else if (item instanceof Item) {
@@ -2696,22 +2776,29 @@ export class FormComponent&lt;T&gt; implements OnChanges, WithLoader {
     this.group.valueChanges.subscribe((change) &#x3D;&gt; {
       this.change.emit(this);
     });
+    this.ready.emit(this);
+  }
+
+  /** Clears the current value */
+  clear() {
+    delete this.value;
   }
 
   /* clears the form and uses the given config (falls back to existing one). Renders an empty form. */
-  create(config: ItemConfig&lt;any&gt; &#x3D; this.config) {
+  create(config: ItemConfig&lt;T&gt; &#x3D; this.config) {
     this.dirtyTalk();
+    this.clear();
     this.init(null, config);
   }
 
   /** edits a given Item instance by using its config and body. */
-  edit(item: Item&lt;any&gt;) {
+  edit(item: Item&lt;T&gt;) {
     this.dirtyTalk();
     this.init(item);
   }
 
   /** edits a given value by creating an item and calling edit. */
-  editValue(value: any, config &#x3D; this.config) {
+  editValue(value: T, config &#x3D; this.config) {
     const item &#x3D; new Item(value, config);
     this.edit(item);
   }
@@ -2805,7 +2892,7 @@ export class FormComponent&lt;T&gt; implements OnChanges, WithLoader {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><form novalidate [formGroup]="group" (ngSubmit)="submit()" *ngIf="group">  <div #wrapper>    <ng-content></ng-content>  </div>  <div *ngIf="!wrapper.children.length&&!empty">    <div *ngFor="let field of form?.fields | visibleFields" [ngClass]="\'form-group_\' + field.view" [ngSwitch]="field.view" class="form-group">      <label [for]="field.id">{{field.label || field.property}}</label>      <ec-input *ngIf="!field.readOnly" [field]="field" [group]="group" [item]="form" [formControl]="group.get(field.property)"></ec-input>      <ec-output *ngIf="field.readOnly" [field]="field" [item]="form"></ec-output>    </div>    <button type="button" (click)="submit()" *ngIf="submitButton!==false" [disabled]="group.invalid" class="btn">Speichern    </button>    <ec-loader class="ec-loader ec-loader_overlay ec-loader_global" #formLoader></ec-loader>  </div></form></div>'
-    var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'ActionbarComponent', 'selector': 'ec-actionbar'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'IconComponent', 'selector': 'ec-icon'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'InteractionComponent', 'selector': 'ec-interaction'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceFormComponent', 'selector': 'ec-resource-form'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
+    var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'ActionbarComponent', 'selector': 'ec-actionbar'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'IconComponent', 'selector': 'ec-icon'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'InteractionComponent', 'selector': 'ec-interaction'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceCrudComponent', 'selector': 'ec-resource-crud'},{'name': 'ResourceFormComponent', 'selector': 'ec-resource-form'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'ResourcePopComponent', 'selector': 'ec-resource-pop'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
     var DIRECTIVES = [{'name': 'AssetDirective', 'selector': '[ecAsset]'},{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'ImageDirective', 'selector': 'img [ecImage]'},{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'}];
     var ACTUAL_COMPONENT = {'name': 'FormComponent'};
 </script>

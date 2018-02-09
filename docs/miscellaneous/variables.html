@@ -365,10 +365,16 @@
                                     <a href="../components/PopComponent.html" >PopComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/ResourceCrudComponent.html" >ResourceCrudComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/ResourceFormComponent.html" >ResourceFormComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/ResourceListComponent.html" >ResourceListComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/ResourcePopComponent.html" >ResourcePopComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/SelectComponent.html" >SelectComponent</a>
@@ -1017,10 +1023,16 @@
                                            <a href="../components/PopComponent.html" >PopComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/ResourceCrudComponent.html" >ResourceCrudComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/ResourceFormComponent.html" >ResourceFormComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/ResourceListComponent.html" >ResourceListComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/ResourcePopComponent.html" >ResourcePopComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/SelectComponent.html" >SelectComponent</a>
@@ -2447,6 +2459,12 @@
       dataManager: {
         identifier: &#x27;dataManagerID&#x27;,
         label: &#x27;title&#x27;,
+        permissions: {
+          post: &#x27;dm-create&#x27;,
+          put: &#x27;dm:&lt;dataManagerID&gt;:edit&#x27;,
+          delete: &#x27;dm:&lt;dataManagerID&gt;:delete&#x27;,
+          get: true
+        },
         fields: {
           hexColor: {
             label: &#x27;#&#x27;,
@@ -2515,6 +2533,10 @@
       account: {
         identifier: &#x27;accountID&#x27;,
         label: &#x27;email&#x27;,
+        permissions: {
+          get: &#x27;acc:list&#x27;,
+          put: &#x27;acc:edit:&lt;accountID&gt;&#x27;
+        },
         fields: {
           email: {
             label: &#x27;Email&#x27;,
@@ -2541,6 +2563,10 @@
       template: {
         identifier: &#x27;templateID&#x27;,
         label: &#x27;name&#x27;,
+        permissions: {
+          post: &#x27;dm-template-create&#x27;,
+          get: &#x27;dm-template:&lt;templateID&gt;:view&#x27;
+        },
         fields: {
           name: {
             label: &#x27;Template&#x27;,
@@ -2558,6 +2584,11 @@
       },
       app: {
         identifier: &#x27;appID&#x27;,
+        permissions: {
+          post: &#x27;app-create&#x27;,
+          delete: &#x27;app:&lt;appID&gt;:delete&#x27;,
+          put: &#x27;app:&lt;appID&gt;:edit&#x27;
+        },
         fields: {
           hexColor: {
             label: &#x27;#&#x27;,

@@ -365,10 +365,16 @@
                                     <a href="../components/PopComponent.html" >PopComponent</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../components/ResourceCrudComponent.html" >ResourceCrudComponent</a>
+                                </li>
+                                <li class="link">
                                     <a href="../components/ResourceFormComponent.html" >ResourceFormComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/ResourceListComponent.html" >ResourceListComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/ResourcePopComponent.html" >ResourcePopComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/SelectComponent.html" >SelectComponent</a>
@@ -1017,10 +1023,16 @@
                                            <a href="../components/PopComponent.html" >PopComponent</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../components/ResourceCrudComponent.html" >ResourceCrudComponent</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../components/ResourceFormComponent.html" >ResourceFormComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/ResourceListComponent.html" >ResourceListComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/ResourcePopComponent.html" >ResourcePopComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/SelectComponent.html" >SelectComponent</a>
@@ -1385,13 +1397,16 @@ setClientID.</p>
                             <td class="col-md-4">
                                 <ul class="index-list">
                                     <li>
-                                        <a href="#checkPublicPermission">checkPublicPermission</a>
+                                        <a href="#checkPermission">checkPermission</a>
                                     </li>
                                     <li>
                                         <a href="#getAccount">getAccount</a>
                                     </li>
                                     <li>
-                                        <a href="#getAllowedMethods">getAllowedMethods</a>
+                                        <a href="#getAllowedModelMethods">getAllowedModelMethods</a>
+                                    </li>
+                                    <li>
+                                        <a href="#getAllowedResourceMethods">getAllowedResourceMethods</a>
                                     </li>
                                     <li>
                                         <a href="#getApi">getApi</a>
@@ -1407,6 +1422,9 @@ setClientID.</p>
                                     </li>
                                     <li>
                                         <a href="#resetPassword">resetPassword</a>
+                                    </li>
+                                    <li>
+                                        <a href="#resolveVariables">resolveVariables</a>
                                     </li>
                                     <li>
                                         <a href="#signup">signup</a>
@@ -1429,7 +1447,7 @@ setClientID.</p>
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">packages/data/src/auth/auth.service.ts:24</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">packages/data/src/auth/auth.service.ts:25</a></div>
                                         </td>
                                     </tr>
             
@@ -1484,25 +1502,25 @@ setClientID.</p>
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <a name="checkPublicPermission"></a>
+                                    <a name="checkPermission"></a>
                                     <span class="name">
                                         <b>
-                                        checkPublicPermission
+                                        checkPermission
                                         </b>
-                                        <a href="#checkPublicPermission"><span class="fa fa-link"></span></a>
+                                        <a href="#checkPermission"><span class="fa fa-link"></span></a>
                                     </span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>checkPublicPermission(permission: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, api: )</code>
+            <code>checkPermission(permission: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, api?: )</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">packages/data/src/auth/auth.service.ts:66</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">packages/data/src/auth/auth.service.ts:67</a></div>
                                         </td>
                                     </tr>
             
@@ -1537,6 +1555,7 @@ setClientID.</p>
                                                               <td>
                                                               </td>
                                                               <td>
+                                                                  true
                                                               </td>
                                                               <td></td>
                                                             </tr>
@@ -1578,7 +1597,7 @@ setClientID.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">packages/data/src/auth/auth.service.ts:57</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">packages/data/src/auth/auth.service.ts:58</a></div>
                                         </td>
                                     </tr>
             
@@ -1627,31 +1646,31 @@ setClientID.</p>
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <a name="getAllowedMethods"></a>
+                                    <a name="getAllowedModelMethods"></a>
                                     <span class="name">
                                         <b>
-                                        getAllowedMethods
+                                        getAllowedModelMethods
                                         </b>
-                                        <a href="#getAllowedMethods"><span class="fa fa-link"></span></a>
+                                        <a href="#getAllowedModelMethods"><span class="fa fa-link"></span></a>
                                     </span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>getAllowedMethods(model: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, methods?: string[])</code>
+            <code>getAllowedModelMethods(model: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, methods?: string[])</code>
                                 </td>
                             </tr>
             
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">packages/data/src/auth/auth.service.ts:73</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">packages/data/src/auth/auth.service.ts:111</a></div>
                                         </td>
                                     </tr>
             
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-description"><p>Returns an array of all allowed methods for the given model </p>
+                                        <div class="io-description"><p>Returns an array of all allowed methods for the given relation </p>
             </div>
             
                                         <div class="io-description">
@@ -1705,6 +1724,93 @@ setClientID.</p>
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
+                                    <a name="getAllowedResourceMethods"></a>
+                                    <span class="name">
+                                        <b>
+                                        getAllowedResourceMethods
+                                        </b>
+                                        <a href="#getAllowedResourceMethods"><span class="fa fa-link"></span></a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>getAllowedResourceMethods(relation: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, variables: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank">Object</a>, methods?: string[])</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">packages/data/src/auth/auth.service.ts:82</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Returns only the allowed methods for a given relation. Uses the permissions config option from resource-config. </p>
+            </div>
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>relation</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>variables</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank" >Object</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>methods</td>
+                                                              <td>
+                                                                      <code>string[]</code>
+                                                              </td>
+                                                              <td>
+                                                                  true
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code>Promise&lt;string[]&gt;</code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
                                     <a name="getApi"></a>
                                     <span class="name">
                                         <b>
@@ -1723,7 +1829,7 @@ setClientID.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="117" class="link-to-prism">packages/data/src/auth/auth.service.ts:117</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="155" class="link-to-prism">packages/data/src/auth/auth.service.ts:155</a></div>
                                         </td>
                                     </tr>
             
@@ -1789,7 +1895,7 @@ setClientID.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">packages/data/src/auth/auth.service.ts:31</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">packages/data/src/auth/auth.service.ts:32</a></div>
                                         </td>
                                     </tr>
             
@@ -1865,7 +1971,7 @@ setClientID.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">packages/data/src/auth/auth.service.ts:107</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="145" class="link-to-prism">packages/data/src/auth/auth.service.ts:145</a></div>
                                         </td>
                                     </tr>
             
@@ -1933,7 +2039,7 @@ setClientID.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="131" class="link-to-prism">packages/data/src/auth/auth.service.ts:131</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="169" class="link-to-prism">packages/data/src/auth/auth.service.ts:169</a></div>
                                         </td>
                                     </tr>
             
@@ -1970,7 +2076,7 @@ setClientID.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">packages/data/src/auth/auth.service.ts:95</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">packages/data/src/auth/auth.service.ts:133</a></div>
                                         </td>
                                     </tr>
             
@@ -2028,6 +2134,83 @@ setClientID.</p>
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
+                                    <a name="resolveVariables"></a>
+                                    <span class="name">
+                                        <b>
+                                        resolveVariables
+                                        </b>
+                                        <a href="#resolveVariables"><span class="fa fa-link"></span></a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>resolveVariables(string: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, variables: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank">Object</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">packages/data/src/auth/auth.service.ts:74</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>replaces all variables by values in a string </p>
+            </div>
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Type</td>
+                                                            <td>Optional</td>
+                                                            <td>Description</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                              <td>string</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                            <tr>
+                                                              <td>variables</td>
+                                                              <td>
+                                                                      <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank" >Object</a></code>
+                                                              </td>
+                                                              <td>
+                                                              </td>
+                                                              <td></td>
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
                                     <a name="signup"></a>
                                     <span class="name">
                                         <b>
@@ -2046,7 +2229,7 @@ setClientID.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">packages/data/src/auth/auth.service.ts:45</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">packages/data/src/auth/auth.service.ts:46</a></div>
                                         </td>
                                     </tr>
             
@@ -2111,6 +2294,7 @@ setClientID.</p>
 import { SdkService } from &#x27;../sdk/sdk.service&#x27;;
 import AccountResource from &#x27;ec.sdk/lib/resources/accounts/AccountResource&#x27;;
 import PublicAPI from &#x27;ec.sdk/lib/PublicAPI&#x27;;
+import { resourceConfig } from &#x27;../resource-config/resource-config&#x27;;
 
 /** The SdkService exposes all instances of the ec.sdk APIs.
  * To be able to use it, you have to provide an environment like this in your module&#x27;s providers:
@@ -2133,7 +2317,7 @@ import PublicAPI from &#x27;ec.sdk/lib/PublicAPI&#x27;;
 export class AuthService {
 
   /** Calls init and sets ready to true when finished. */
-  constructor(@Inject(&#x27;environment&#x27;) private environment, private sdk: SdkService) {
+  constructor( @Inject(&#x27;environment&#x27;) private environment, private sdk: SdkService) {
   }
 
   /** Generic login that works with both public and admin API. */
@@ -2142,12 +2326,12 @@ export class AuthService {
       return Promise.reject(this.noClientID());
     }
     return Promise.resolve(api || this.getApi(email))
-    .then((resolvedAPI) &#x3D;&gt; {
-      const _api &#x3D; resolvedAPI || this.sdk.session;
-      return !_api ? Promise.reject(&#x27;api_not_found&#x27;) : _api.login(email, password);
-    }).then(() &#x3D;&gt; {
-      return this.sdk.init();
-    });
+      .then((resolvedAPI) &#x3D;&gt; {
+        const _api &#x3D; resolvedAPI || this.sdk.session;
+        return !_api ? Promise.reject(&#x27;api_not_found&#x27;) : _api.login(email, password);
+      }).then(() &#x3D;&gt; {
+        return this.sdk.init();
+      });
   }
 
   /** Generic Signup, works for accounts API and PublicAPI */
@@ -2156,10 +2340,10 @@ export class AuthService {
       return Promise.reject(this.noClientID());
     }
     return api ? api.signup() : this.sdk.api.signup(email, password, invite)
-    .catch(() &#x3D;&gt; this.sdk.accounts.signup(email, password, invite))
-    .then((res) &#x3D;&gt; {
-      return this.sdk.init();
-    })
+      .catch(() &#x3D;&gt; this.sdk.accounts.signup(email, password, invite))
+      .then((res) &#x3D;&gt; {
+        return this.sdk.init();
+      })
   }
 
   /** Returns the current account. Works for all apis */
@@ -2172,32 +2356,69 @@ export class AuthService {
   }
 
   /** checks given public permission for given api, defaults to this.sdk.api. Also works as ec user */
-  checkPublicPermission(permission: string, api &#x3D; this.sdk.api) {
+  checkPermission(permission: string, api?) {
     return this.sdk.ready.then((user) &#x3D;&gt; {
+      api &#x3D; api || this.sdk.user;
       return api.checkPermission(permission);
     })
   }
+  /** replaces all variables by values in a string */
+  resolveVariables(string: string, variables: Object) {
+    Object.keys(variables).forEach((key) &#x3D;&gt; {
+      string &#x3D; string.replace(&#x60;&lt;${key}&gt;&#x60;, variables[key]);
+    });
+    return string;
+  }
 
-  /** Returns an array of all allowed methods for the given model */
-  getAllowedMethods(model: string, methods?: string[]): Promise&lt;string[]&gt; {
+  /** Returns only the allowed methods for a given relation. Uses the permissions config option from resource-config. */
+  getAllowedResourceMethods(relation: string, variables: Object &#x3D; {}, methods?: string[]): Promise&lt;string[]&gt; {
+    if (methods) {
+      return Promise.resolve(methods);
+    }
+    if (!resourceConfig[relation] || !resourceConfig[relation].permissions) {
+      console.warn(&#x60;relation ${relation} has no defined permissions, defaulting to all methods available&#x60;);
+      return Promise.resolve([&#x27;get&#x27;, &#x27;post&#x27;, &#x27;put&#x27;, &#x27;delete&#x27;]);
+    }
+    const permissions &#x3D; resourceConfig[relation].permissions;
+    return Object.keys(permissions)
+      .map((method) &#x3D;&gt; (results) &#x3D;&gt; {
+        return !permissions[method] ? Promise.resolve(results) :
+          permissions[method] ? Promise.resolve(results.concat(method)) :
+            this.checkPermission(&#x60;${this.resolveVariables(permissions[method], variables)}&#x60;)
+              .then(res &#x3D;&gt; {
+                if (res) {
+                  results.push(method);
+                }
+                return results;
+              })
+      })
+      .reduce((a, b) &#x3D;&gt; a.then(r &#x3D;&gt; b(r)), Promise.resolve([]))
+      .then(_methods &#x3D;&gt; {
+        _methods.filter(x &#x3D;&gt; !!x);
+        return _methods;
+      });
+  }
+
+  /** Returns an array of all allowed methods for the given relation */
+  getAllowedModelMethods(model: string, methods?: string[]): Promise&lt;string[]&gt; {
     if (methods) {
       return Promise.resolve(methods);
     }
     return [&#x27;get&#x27;, &#x27;post&#x27;, &#x27;put&#x27;, &#x27;delete&#x27;]
-    .map((method) &#x3D;&gt; (results) &#x3D;&gt;
-      this.checkPublicPermission(&#x60;${model}:${method}&#x60;)
-      .then(res &#x3D;&gt; {
-        if (res) {
-          results.push(method);
-        }
-        return results;
-      })
-    )
-    .reduce((a, b) &#x3D;&gt; a.then(r &#x3D;&gt; b(r)), Promise.resolve([]))
-    .then(_methods &#x3D;&gt; {
-      _methods.filter(x &#x3D;&gt; !!x);
-      return _methods;
-    });
+      .map((method) &#x3D;&gt; (results) &#x3D;&gt;
+        this.checkPermission(&#x60;${model}:${method}&#x60;, this.sdk.api)
+          .then(res &#x3D;&gt; {
+            if (res) {
+              results.push(method);
+            }
+            return results;
+          })
+      )
+      .reduce((a, b) &#x3D;&gt; a.then(r &#x3D;&gt; b(r)), Promise.resolve([]))
+      .then(_methods &#x3D;&gt; {
+        _methods.filter(x &#x3D;&gt; !!x);
+        return _methods;
+      });
   }
 
   /** Generic password reset that works with both public and admin API. */
@@ -2206,10 +2427,10 @@ export class AuthService {
       return Promise.reject(this.noClientID());
     }
     return Promise.resolve(api || this.getApi(email))
-    .then((resolvedAPI) &#x3D;&gt; {
-      const _api &#x3D; resolvedAPI || this.sdk.accounts;
-      return !_api ? Promise.reject(&#x27;api_not_found&#x27;) : api.resetPassword(email);
-    });
+      .then((resolvedAPI) &#x3D;&gt; {
+        const _api &#x3D; resolvedAPI || this.sdk.accounts;
+        return !_api ? Promise.reject(&#x27;api_not_found&#x27;) : api.resetPassword(email);
+      });
   }
 
   /** Generic logout that works with both public and admin API. */
@@ -2218,9 +2439,9 @@ export class AuthService {
       return Promise.reject(this.noClientID());
     }
     return api ? api.logout() : this.sdk.api.logout().catch(() &#x3D;&gt; this.sdk.session.logout())
-    .then(() &#x3D;&gt; {
-      return this.sdk.init();
-    });
+      .then(() &#x3D;&gt; {
+        return this.sdk.init();
+      });
   }
 
   getApi(email: string) {
@@ -2228,13 +2449,13 @@ export class AuthService {
       return Promise.reject(&#x27;no_api_found&#x27;);
     }
     return this.sdk.api.emailAvailable(email)
-    .then((available) &#x3D;&gt; {
-      if (!available) {
-        return this.sdk.api;
-      }
-    }).catch(() &#x3D;&gt; {
-      return;
-    });
+      .then((available) &#x3D;&gt; {
+        if (!available) {
+          return this.sdk.api;
+        }
+      }).catch(() &#x3D;&gt; {
+        return;
+      });
   }
 
   noClientID() {
