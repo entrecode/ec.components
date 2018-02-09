@@ -10,8 +10,6 @@ import { CrudDemoComponent } from './crud/crud-demo.component';
 import { SelectDemoComponent } from './select/select-demo.component';
 import { EntrySelectDemoComponent } from './entry-select/entry-select-demo.component';
 import { ListTransformsDemoComponent } from './list-transforms/list-transforms-demo.component';
-import { DatamanagerListDemoComponent } from './datamanager-list/datamanager-list.demo.component';
-import { ModelListDemoComponent } from './model-list/model-list.demo.component';
 import { DatetimeDemoComponent } from './form/datetime-demo.component';
 import { AssetListDemoComponent } from './asset-list/asset-list.demo.component';
 import { AssetDemoComponent } from './asset/asset.demo.component';
@@ -173,23 +171,6 @@ export const demoRoutes: Routes = [
       {
         path: 'asset-select',
         component: AssetSelectDemoComponent
-      },
-    ]
-  },
-  {
-    path: 'editor',
-    children: [
-      {
-        path: 'data',
-        component: DatamanagerListDemoComponent,
-      },
-      {
-        path: 'data/:datamanagerID',
-        component: ModelListDemoComponent
-      },
-      {
-        path: 'data/:datamanagerID/:model',
-        component: CrudComponent,
       },
     ]
   },

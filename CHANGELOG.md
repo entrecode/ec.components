@@ -15,6 +15,7 @@ BREAKING CHANGES:
 * COM-45: removed range input from pagination, replaced with PaginationConfig with additional options (see docs)
 * removed [host] input from ListItemsComponent due to incompatibilities.
 * renamed list config property disableSelection to selectMode and inverted its value meaning. When selectMode is true, the checkboxes are shown and the columnClicked event is ignored as long as selectMode is active. You can toggle the selectMode via list#toggleSelectMode.
+* removed DatamanagerListComponent and ModelListComponent. You can use ResourceList for both now.
 
 see attachment
 

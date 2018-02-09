@@ -12,9 +12,7 @@ import { CrudComponent } from './crud/crud.component';
 import { DefaultEntryOutputComponent } from './entry-form/default-entry-output.component';
 import { EntrySelectComponent } from './entry-select/entry-select.component';
 import { TypeConfigService } from './model-config/type-config.service';
-import { DatamanagerListComponent } from './datamanager-list/datamanager-list.component';
 import { ResourceListComponent } from './resource-list/resource-list.component';
-import { ModelListComponent } from './model-list/model-list.component';
 import { SdkModule } from './sdk/sdk.module';
 import { FilesModule } from './files/files.module';
 import { AuthModule } from './auth/auth.module';
@@ -27,8 +25,6 @@ import { ResourceFormComponent } from './resource-form/resource-form.component';
   entryComponents: [
     DefaultEntryInputComponent,
     DefaultEntryOutputComponent,
-    DatamanagerListComponent,
-    ModelListComponent,
     ResourceListComponent,
     EntrySelectComponent,
   ],
@@ -38,8 +34,6 @@ import { ResourceFormComponent } from './resource-form/resource-form.component';
     EntriesDirective,
     EntryFormComponent,
     EntryPopComponent,
-    DatamanagerListComponent,
-    ModelListComponent,
     ResourceListComponent,
     ResourceFormComponent,
     DefaultEntryInputComponent,
@@ -63,8 +57,6 @@ import { ResourceFormComponent } from './resource-form/resource-form.component';
     EntryPopComponent,
     CrudComponent,
     EntrySelectComponent,
-    DatamanagerListComponent,
-    ModelListComponent,
     ResourceListComponent,
     ResourceFormComponent,
     RouterModule,
