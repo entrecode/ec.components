@@ -93,7 +93,7 @@ export class EntryPopComponent extends PopComponent implements OnInit {
 
   /** Initialize the allowed methods to determine which buttons should be shown. */
   ngOnInit() {
-    this.auth.getAllowedMethods(this.model, this.config.methods)
+    this.auth.getAllowedModelMethods(this.model, this.config.methods)
       .then((methods) => {
         this.config.methods = methods;
       });
