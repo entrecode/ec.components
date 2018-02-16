@@ -10,7 +10,9 @@
     </li>
   </ul>
 
-  <span class="ec-output_tag" *ngSwitchCase="'tag'">{{item?.display(field.property)}}</span>
+  <div class="ec-output_tag" *ngSwitchCase="'tag'">
+    <span class="tag">{{item?.display(field.property)}}</span>
+  </div>
 
   <div *ngSwitchCase="'boolean'" class="ec-output_boolean" [class.is-true]="item?.resolve(field.property)">
     <ec-icon name="check" *ngIf="item?.resolve(field.property)"></ec-icon>
@@ -29,30 +31,38 @@
     <span class="ec-output_color-property">{{item?.display(field.property)}}</span>
   </div>
 
+  <div class="ec-output_asset" *ngSwitchCase="'asset'" [class.is-true]="item?.resolve(field.property)">
+    <ec-icon name="img"></ec-icon>
+  </div>
+
+  <div class="ec-output_assets" *ngSwitchCase="'assets'" [class.is-true]="item?.resolve(field.property)">
+    <!--<ul class="ec-output_assets-list">
+      <li *ngFor="let url of item?.display(field.property)">
+        <img [src]="url">
+      </li>
+    </ul>-->
+    <ec-icon name="img"></ec-icon><strong>{{item?.display(field.property)?.length}}</strong>
+  </div>
+
   <div class="ec-output_avatar" *ngSwitchCase="'avatar'">
     <img [src]="item?.display(field.property)">
   </div>
 
-  <div class="ec-output_asset-preview" *ngSwitchCase="'assetPreview'">
-    <img [src]="item?.display(field.property)">
-  </div>
-
-  <ul class="ec-output_avatars-list" *ngSwitchCase="'avatars'">
-    <li *ngFor="let url of item?.display(field.property)">
-      <div class="ec-output_avatar">
-        <img [src]="url">
-      </div>
-    </li>
-  </ul>
   <a *ngSwitchCase="'button'" (click)="item?.action(field.property, $event)" class="btn">
     {{item?.display(field.property)}}
     <ec-icon *ngIf="field.icon" [name]="field.icon"></ec-icon>
   </a>
-  <code *ngSwitchCase="'json'">
-    <pre>
-        {{item?.display(field.property)}}
-    </pre>
+  <div *ngSwitchCase="'textarea'" class="ec-output_textarea">
+    <!--{{item?.display(field.property)}}-->
+    <span class="tag tag_small">text</span>
+  </div>
+  <code *ngSwitchCase="'json'" class="ec-output_json">
+    <!--<pre>{{item?.display(field.property)}}</pre>-->
+    <span class="tag">JSON</span>
   </code>
+  <div *ngSwitchCase="'string'" class="ec-output_string">
+    {{item?.display(field.property)}}
+  </div>
   <span *ngSwitchDefault>
     {{item?.display(field.property)}}
   </span>

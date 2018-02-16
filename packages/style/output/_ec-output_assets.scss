@@ -1,0 +1,28 @@
+$ecOutputAssetsPadding: ($tag-small-min-height - $tag-small-line-height) / 2;
+.ec-output_assets {
+  background-color: getColor(background, lighter);
+  border-radius: rem($tag-small-radius);
+  padding: em($ecOutputAssetsPadding, $tag-small-font-size) rem(8);
+  font-size: em($tag-small-font-size);
+  line-height: em($tag-small-line-height, $tag-small-font-size);
+  display: inline-flex;
+  align-items: center;
+  flex-grow: 0;
+
+  .ec-icon {
+    margin-right: rem(4);
+    font-size: rem(14);
+    line-height: 1em;
+
+    &:before {
+      font-size: inherit;
+      line-height: inherit;
+    }
+  }
+
+  strong {
+    display: inline-block;
+    background-color: getColor(background);
+    padding: 0 rem(4);
+  }
+}

@@ -1,7 +1,8 @@
 <div [ngSwitch]="field.type">
-  <pre *ngSwitchCase="'json'">
-    {{item?.display(field.property)}}
-  </pre>
+  <div *ngSwitchCase="'json'" class="ec-entry-output_json">
+    <!--{{item?.display(field.property)}}-->
+    <span class="tag">JSON</span>
+  </div>
   <div *ngSwitchDefault>
     <!--<marquee>🚂🚃🚃🚃 {{field.type}} output coming soon!</marquee>-->
     {{item?.display(field.property)}}

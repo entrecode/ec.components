@@ -30,8 +30,6 @@ export class TypeConfigService {
       sortable: true,
     },
     boolean: {
-      filterable: true,
-      filterOperator: 'exact',
       prefill: false,
     },
     formattedText: {
@@ -53,22 +51,22 @@ export class TypeConfigService {
       filterable: true,
     },
     asset: {
-      view: 'avatar',
+      view: 'asset',
       input: DefaultEntryInputComponent,
       filterOperator: 'exact',
       filterable: true,
       display: (value, entry, property) => entry.getImageThumbUrl(property, 100),
-      filterPopClass: 'ec-pop_toast-top'
+      filterPopClass: 'ec-pop_dialog'
     },
     assets: {
-      view: 'avatars',
+      view: 'assets',
       input: DefaultEntryInputComponent,
       display: (value, entry, property) => entry.getImageThumbUrl(property, 100),
       prefill: [],
       filterOperator: 'any',
       filterable: true,
       queryFilter: (value) => value.split(','),
-      filterPopClass: 'ec-pop_toast-top'
+      filterPopClass: 'ec-pop_dialog'
     },
     email: {},
     phone: {
@@ -84,7 +82,7 @@ export class TypeConfigService {
         }
         return;
       },
-      filterPopClass: 'ec-pop_toast-top'
+      filterPopClass: 'ec-pop_dialog'
       /*,
       prefill: new Date(0)*/
     },
@@ -95,7 +93,7 @@ export class TypeConfigService {
       display: (value, entry, property) => entry.getTitle(property),
       filterable: true,
       filterOperator: 'exact',
-      filterPopClass: 'ec-pop_toast-top',
+      filterPopClass: 'ec-pop_dialog',
       nestedCrudConfig: this.nestedCrudConfig
     },
     entries: {
@@ -107,10 +105,11 @@ export class TypeConfigService {
       filterOperator: 'any',
       prefill: [],
       queryFilter: (value) => value.split(','),
-      filterPopClass: 'ec-pop_toast-top',
+      filterPopClass: 'ec-pop_dialog',
       nestedCrudConfig: this.nestedCrudConfig
     },
     json: {
+      view: 'json',
       input: DefaultEntryInputComponent,
       output: DefaultEntryOutputComponent,
       display: (value) => value ? JSON.stringify(value) : ''
@@ -119,17 +118,17 @@ export class TypeConfigService {
       input: DefaultEntryInputComponent,
       output: DefaultEntryOutputComponent,
       display: (value) => value ? value.longitude + ',' + value.latitude : '',
-      filterPopClass: 'ec-pop_toast-top'
+      filterPopClass: 'ec-pop_dialog'
     },
     account: {
       input: DefaultEntryInputComponent,
       output: DefaultEntryOutputComponent,
-      filterPopClass: 'ec-pop_toast-top'
+      filterPopClass: 'ec-pop_dialog'
     },
     role: {
       input: DefaultEntryInputComponent,
       output: DefaultEntryOutputComponent,
-      filterPopClass: 'ec-pop_toast-top'
+      filterPopClass: 'ec-pop_dialog'
     }
   };
 
