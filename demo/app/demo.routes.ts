@@ -189,7 +189,7 @@ export const demoRoutes: Routes = [
       },
     ]
 
-  }
+  },
   {
     path: 'auth',
     children: [
