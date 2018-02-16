@@ -12,9 +12,9 @@
 
   <span class="ec-output_tag" *ngSwitchCase="'tag'">{{item?.display(field.property)}}</span>
 
-  <div *ngSwitchCase="'boolean'" class="ec-output_boolean" [class._true]="item?.resolve(field.property)">
+  <div *ngSwitchCase="'boolean'" class="ec-output_boolean" [class.is-true]="item?.resolve(field.property)">
     <ec-icon name="check" *ngIf="item?.resolve(field.property)"></ec-icon>
-    <ec-icon name="minus" *ngIf="!item?.resolve(field.property)"></ec-icon>
+    <ec-icon name="substract" *ngIf="!item?.resolve(field.property)"></ec-icon>
   </div>
 
   <div class="ec-output_mail" *ngSwitchCase="'email'">

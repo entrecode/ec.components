@@ -1,6 +1,5 @@
 /** Contains all icons that are available in ec-icons font. */
 export const ecIcons = [
-
   { name: 'add' },
   { name: 'add-circle' },
   { name: 'alarm' },
@@ -389,5 +388,5 @@ export const ecIcons = [
   { name: 'img-full' },
   { name: 'img-left' },
   { name: 'smaller-text' },
-  { name: 'checkmark-2' }
+  { name: 'checkmark-2'}
 ];
