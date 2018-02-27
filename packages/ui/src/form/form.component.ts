@@ -24,6 +24,7 @@ export class FormComponent<T> implements OnChanges, WithLoader {
   /** The current form config */
   public config: FormConfig<T>;
   /** You can also use a FormConfig/ItemConfig as input (with defined fields property) */
+  // tslint:disable-next-line:no-input-rename
   @Input('config') configInput: FormConfig<T>;
   /** You can also use an Item as input */
   @Input() readonly item: Item<T>;
@@ -120,7 +121,7 @@ export class FormComponent<T> implements OnChanges, WithLoader {
           return;
         }
         this.notificationService.emit({ // TODO pull out to entry-form?
-          title: this.symbol.resolve('entry_saved'),
+          title: this.symbol.resolve('success.save'),
           type: 'success'
         });
       }).catch((err) => {
@@ -129,7 +130,7 @@ export class FormComponent<T> implements OnChanges, WithLoader {
           return;
         }
         this.notificationService.emit({
-          title: this.symbol.resolve('save_error'),
+          title: this.symbol.resolve('error.save'),
           error: err,
           sticky: true
         });

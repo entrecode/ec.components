@@ -9,7 +9,7 @@ import { SymbolService } from '../../../packages/ui/src/symbol/symbol.service';
 export class SymbolDemoComponent implements OnInit {
     constructor(public symbol: SymbolService) {
 
-        console.log('symbol', this.symbol.resolve('entry_saved'));
+        console.log('symbol', this.symbol.resolve('success.save'));
     }
 
     ngOnInit() { }

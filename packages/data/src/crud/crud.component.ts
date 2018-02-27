@@ -16,6 +16,7 @@ import { merge } from 'rxjs/observable/merge';
 import { AuthService } from '../auth/auth.service';
 import { EntryPopComponent } from '../entry-pop/entry-pop.component';
 import { WithLoader } from '@ec.components/ui';
+import { SymbolService } from '../../../ui/src/symbol/symbol.service';
 
 /** The CrudComponent takes at least a model name to render an entry list with create/edit/delete functionality out of the box.
  * ```html
@@ -49,6 +50,7 @@ export class CrudComponent<T> implements OnInit, WithLoader {
     private auth: AuthService,
     private loaderService: LoaderService,
     private notificationService: NotificationsService,
+    private symbol: SymbolService,
     @Optional() public router: Router,
     @Optional() public route: ActivatedRoute) {
     if (route) {
@@ -92,7 +94,7 @@ export class CrudComponent<T> implements OnInit, WithLoader {
     }).catch((err) => {
       console.log('error while loading entry to edit', err);
       this.notificationService.emit({
-        title: 'Fehler beim Laden',
+        title: this.symbol.resolve('error.load'),
         error: err
       })
     });

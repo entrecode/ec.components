@@ -23,7 +23,7 @@ export class SymbolService {
         if (symbol) {
             return symbol.content;
         }
-        return name;
+        return null;
     }
 
     /** Uses the given symbol set to enhance the current registry. All duplicates will be overriden. Non specified symbols will stay in the registry. */

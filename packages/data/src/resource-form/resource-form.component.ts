@@ -77,11 +77,11 @@ export class ResourceFormComponent extends FormComponent<Resource> implements On
             this.deleted.emit();
             this.create();
             this.notificationService.emit({
-                title: 'Eintrag gelöscht', type: 'success'
+                title: this.symbol.resolve('success.delete'), type: 'success'
             });
         }).catch((error) => {
             this.notificationService.emit({
-                title: 'Fehler beim Löschen', error
+                title: this.symbol.resolve('error.delete'), error
             });
         });
 
