@@ -802,8 +802,9 @@ export const mocked = {
           fruits: {
             label: 'Früchte',
             display: (value) => value ? 'ja' : 'nein',
-            view: 'toggle',
-            sortable: true
+            view: 'boolean',
+            sortable: true,
+            /* readOnly: true */
           },
           button: {
             label: 'Action',
