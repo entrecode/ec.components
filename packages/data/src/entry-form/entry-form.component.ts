@@ -8,6 +8,7 @@ import { Item } from '@ec.components/core/src/item/item';
 import { FormConfig } from '@ec.components/core/src/form/form-config.interface';
 import { FormService } from '@ec.components/ui/src/form/form.service';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
+import { SymbolService } from '../../../ui/src/symbol/symbol.service';
 
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent */
 @Component({
@@ -30,8 +31,9 @@ export class EntryFormComponent extends FormComponent<EntryResource> {
     private modelConfig: ModelConfigService,
     protected notificationService: NotificationsService,
     protected crud: CrudService,
-    protected formService: FormService) {
-    super(loaderService, notificationService, formService);
+    protected formService: FormService,
+    protected symbol: SymbolService) {
+    super(loaderService, notificationService, formService, symbol);
   }
 
   /** As soon as the model is known, the config is generated to then instantiate the form with. */

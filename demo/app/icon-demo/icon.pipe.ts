@@ -1,13 +1,12 @@
 import { Pipe, Injectable, PipeTransform } from '@angular/core';
-import { Icon } from '../../../packages/ui/src/icon/icon.interface';
-
+import { Symbol } from '@ec.components/ui/src/symbol/symbol.interface';
 
 @Pipe({
     name: 'iconPipe'
 })
 @Injectable()
 export class IconPipe implements PipeTransform {
-    transform(array: Icon[], string: any): any {
+    transform(array: Symbol[], string: any): any {
         if (!string) {
             return array;
         }

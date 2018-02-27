@@ -8,7 +8,8 @@
       <ec-input *ngIf="!field.readOnly" [field]="field" [group]="group" [item]="form" [formControl]="group.get(field.property)"></ec-input>
       <ec-output *ngIf="field.readOnly" [field]="field" [item]="form"></ec-output>
     </div>
-    <button type="button" (click)="submit()" *ngIf="submitButton!==false" [disabled]="group.invalid" class="btn">Speichern
+    <button type="button" (click)="submit()" *ngIf="submitButton!==false" [disabled]="group.invalid" class="btn btn_save">
+      <ec-icon name="save"></ec-icon>
     </button>
     <ec-loader class="ec-loader ec-loader_overlay ec-loader_global" #formLoader></ec-loader>
   </div>

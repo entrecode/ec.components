@@ -46,6 +46,7 @@ import { IconPipe } from './icon-demo/icon.pipe';
 import { ResourceFormDemoComponent } from './resource-form/resource-form-demo.component';
 import { ResourceCrudDemoComponent } from './resource-crud/resource-crud-demo.component';
 import { PasswordResetDemoComponent } from './password-reset/password-reset-demo.component';
+import { SymbolDemoComponent } from './symbol/symbol-demo.component';
 
 demoRoutes.unshift(
   {
@@ -92,7 +93,8 @@ demoRoutes.unshift(
     TinymceDemoComponent,
     AceDemoComponent,
     IconDemoComponent,
-    IconPipe
+    IconPipe,
+    SymbolDemoComponent
   ],
   entryComponents: [
     CoolStringComponent,

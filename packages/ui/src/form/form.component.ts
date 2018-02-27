@@ -8,6 +8,7 @@ import { NotificationsService } from '../notifications/notifications.service';
 import { FormService } from './form.service';
 import { WithLoader } from '../loader/with-loader.interface';
 import { InputComponent } from '../io/input/input.component';
+import { SymbolService } from '../symbol/symbol.service';
 
 /** This component renders a form using a FieldConfig Object. */
 @Component({
@@ -50,7 +51,8 @@ export class FormComponent<T> implements OnChanges, WithLoader {
   /** Injects the services. */
   constructor(protected loaderService: LoaderService,
     protected notificationService: NotificationsService,
-    protected formService: FormService) {
+    protected formService: FormService,
+    protected symbol: SymbolService) {
   }
 
   /** On change, the form instance is (re)created by combining all inputs.
@@ -118,7 +120,7 @@ export class FormComponent<T> implements OnChanges, WithLoader {
           return;
         }
         this.notificationService.emit({ // TODO pull out to entry-form?
-          title: 'Eintrag gespeichert',
+          title: this.symbol.resolve('entry_saved'),
           type: 'success'
         });
       }).catch((err) => {
@@ -127,7 +129,7 @@ export class FormComponent<T> implements OnChanges, WithLoader {
           return;
         }
         this.notificationService.emit({
-          title: 'Fehler beim Speichern',
+          title: this.symbol.resolve('save_error'),
           error: err,
           sticky: true
         });

@@ -7,6 +7,8 @@ import { LoaderModule } from '../loader/loader.module';
 import { FormService } from './form.service';
 import { NotificationsModule } from '../notifications/notifications.module';
 import { VisibleFieldsPipe } from './visible-fields.pipe';
+import { IconModule } from '../icon/icon.module';
+import { SymbolModule } from '../symbol/symbol.module';
 
 describe('FormComponent', () => {
   let component: FormComponent<any>;
@@ -14,11 +16,11 @@ describe('FormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule, LoaderModule, NotificationsModule],
+      imports: [ReactiveFormsModule, LoaderModule, NotificationsModule, IconModule, SymbolModule],
       declarations: [OutputComponent, FormComponent, InputComponent, InputErrorsComponent, VisibleFieldsPipe],
       providers: [FormService]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

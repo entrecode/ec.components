@@ -32,6 +32,7 @@ import { ResourceFormDemoComponent } from './resource-form/resource-form-demo.co
 import { ResourceCrudDemoComponent } from './resource-crud/resource-crud-demo.component';
 import { PasswordResetDemoComponent } from './password-reset/password-reset-demo.component';
 import { ApiExplorerComponent } from './api-explorer/api-explorer.component';
+import { SymbolDemoComponent } from './symbol/symbol-demo.component';
 
 export const demoRoutes: Routes = [
   /*  {
@@ -52,8 +53,12 @@ export const demoRoutes: Routes = [
         component: InteractionDemoComponent,
       }, */
       {
-        path: 'icons',
+        path: 'iconfs',
         component: IconDemoComponent,
+      },
+      {
+        path: 'symbols',
+        component: SymbolDemoComponent,
       },
       {
         path: 'list',

@@ -6,6 +6,7 @@ import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Item, FormConfig, Form } from '@ec.components/core';
 import Resource from 'ec.sdk/lib/resources/Resource';
 import { ResourceForm } from './resource-form';
+import { SymbolService } from '../../../ui/src/symbol/symbol.service';
 
 @Component({
     selector: 'ec-resource-form',
@@ -24,8 +25,9 @@ export class ResourceFormComponent extends FormComponent<Resource> implements On
 
     constructor(protected loaderService: LoaderService,
         protected notificationService: NotificationsService,
-        protected formService: FormService) {
-        super(loaderService, notificationService, formService);
+        protected formService: FormService,
+        protected symbol: SymbolService) {
+        super(loaderService, notificationService, formService, symbol);
     }
 
     ngOnInit() {

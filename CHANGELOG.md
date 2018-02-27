@@ -11,6 +11,7 @@
 * can now set field config label to false to show an empty label. (COM-89)
 * optimized ec-select toggle behaviour (COM-92, COM-93)
 * can now set placeholder for ec-password-reset (COM-101)
+* added SymbolService for localization
 
 <a name="0.13.0"></a>
 
