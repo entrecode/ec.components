@@ -1,17 +1,32 @@
 import { Injectable } from '@angular/core';
 import { Symbol } from './symbol.interface';
-import { locales } from './de';
+import de from './de';
+import en from './en';
 /** Service to register symbols for localization. The default set is de. */
 @Injectable()
 export class SymbolService {
     /** The current symbol set that is registered to the service. It will be used to resolve strings from. */
-    public registry: Symbol[] = locales;
-    constructor() { }
+    public registry: Symbol[];
+    public sets: { [key: string]: Symbol[] } = {
+        de, en
+    }
+    constructor() {
+        this.registry = Object.keys(this.sets).length ? this.sets[Object.keys(this.sets)[0]] : [];
+    }
 
     /** Uses the given symbol set. Replaces registry. */
-    use(symbols: Symbol[] = locales) {
+    use(symbols: Symbol[]) {
         this.registry = symbols;
     }
+
+    /** uses the set with the given key */
+    useSet(key: string) {
+        if (!this.sets[key]) {
+            throw new Error('the symbol set with the key "' + key + '" does not exist');
+        }
+        this.use(this.sets[key]);
+    }
+
     /** finds a symbol in the registry by name */
     get(name: string): Symbol {
         return this.registry.find(symbol => symbol.name === name);

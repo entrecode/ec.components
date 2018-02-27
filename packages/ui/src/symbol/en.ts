@@ -2,59 +2,59 @@ import { Symbol } from './symbol.interface';
 
 export default [{
     name: 'success.save',
-    content: 'Der Eintrag wurde gespeichert'
+    content: 'Entry saved'
 },
 {
     name: 'success.delete',
-    content: 'Eintrag gelöscht'
+    content: 'Entry deleted'
 },
 {
     name: 'error.delete',
-    content: 'Fehler beim Löschen'
+    content: 'Error while deleting'
 },
 {
     name: 'error.save',
-    content: 'Fehler beim Speichern'
+    content: 'Error while saving'
 },
 {
     name: 'error.load',
-    content: 'Fehler beim Laden'
+    content: 'Error while loading'
 },
 {
     name: 'success.upload',
-    content: 'Upload erfolgreich'
+    content: 'Upload successful'
 },
 {
     name: 'error.upload',
-    content: 'Fehler beim hochladen'
+    content: 'Error while uploading'
 },
 {
     name: 'error.input.emailUnavailable',
-    content: 'Diese Email ist schon vergeben'
+    content: 'This Email is already in use'
 },
 {
     name: 'error.input.required',
-    content: 'Dieses Feld ist ein Pflichtfeld'
+    content: 'Field is required'
 },
 {
     name: 'error.input.pattern',
-    content: 'Ungültige Eingabe'
+    content: 'Invalid Input'
 },
 {
     name: 'error.input.minlength',
-    content: 'Die Eingabe ist kurz'
+    content: 'Input is too short'
 },
 {
     name: 'error.input.invalid',
-    content: 'Ungültige Eingabe'
+    content: 'Invalid Input'
 },
 {
     name: 'error.2460.account_not_found',
-    content: 'Der Login war ungültig.'
+    content: 'Invalid Login Data'
 },
 {
     name: 'error.2211',
-    content: 'Validierungsfehler'
+    content: 'Validation Error'
 },
 ];
 

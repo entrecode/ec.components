@@ -53,7 +53,7 @@ export const demoRoutes: Routes = [
         component: InteractionDemoComponent,
       }, */
       {
-        path: 'iconfs',
+        path: 'icons',
         component: IconDemoComponent,
       },
       {

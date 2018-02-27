@@ -1,15 +1,17 @@
 import { Pipe, Injectable, PipeTransform } from '@angular/core';
 import { Symbol } from './symbol.interface';
+import { SymbolService } from './symbol.service';
 
 @Pipe({
-    name: 'localePipe'
+    name: 'symbol'
 })
 @Injectable()
-export class LocalePipe implements PipeTransform {
+export class SymbolPipe implements PipeTransform {
+    constructor(private symbol: SymbolService) { }
     transform(name: string): string {
         if (!name) {
             return '';
         }
-        return '';
+        return this.symbol.resolve(name);
     }
 };
