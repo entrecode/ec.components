@@ -5,8 +5,8 @@ import { Type } from '@angular/core';
 export interface FieldConfigProperty {
   /** Property name */
   property?: string;
-  /** Human readable field label*/
-  label?: string;
+  /** Human readable field label. Defaults to property name. If false, the label is empty. */
+  label?: string | boolean;
   /** Placeholder in inputs */
   placeholder?: string;
   /** Custom resolve transformation function.
