@@ -9,6 +9,7 @@ import { NotificationsService } from '@ec.components/ui/src/notifications/notifi
 import { ResourceListComponent } from '../resource-list/resource-list.component';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { ListConfig } from '@ec.components/core/src/list/list-config.interface';
+import { SymbolService } from '../../../ui/src/symbol/symbol.service';
 
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent */
 @Component({
@@ -28,8 +29,9 @@ export class EntryListComponent extends ResourceListComponent {
     protected notificationService: NotificationsService,
     protected modelConfig: ModelConfigService,
     protected crud: CrudService,
+    protected symbol: SymbolService,
     @Optional() public route: ActivatedRoute) {
-    super(loaderService, sdk, notificationService, route);
+    super(loaderService, sdk, notificationService, symbol, route);
     /*if (route) {
       route.params.subscribe(({ model }) => {
         if (model) {
