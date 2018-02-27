@@ -31,6 +31,7 @@ import { IconDemoComponent } from './icon-demo/icon-demo.component';
 import { PaginationDemoComponent } from './pagination/pagination-demo.component';
 import { ResourceFormDemoComponent } from './resource-form/resource-form-demo.component';
 import { ResourceCrudDemoComponent } from './resource-crud/resource-crud-demo.component';
+import { PasswordResetDemoComponent } from './password-reset/password-reset-demo.component';
 
 export const demoRoutes: Routes = [
   /*  {
@@ -204,6 +205,10 @@ export const demoRoutes: Routes = [
       {
         path: 'auth',
         component: AuthDemoComponent
+      },
+      {
+        path: 'password-reset',
+        component: PasswordResetDemoComponent
       },
     ]
   },

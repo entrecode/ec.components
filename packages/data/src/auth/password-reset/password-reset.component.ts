@@ -16,6 +16,8 @@ export class PasswordResetComponent implements WithLoader {
   email: string;
   /** Optional api to be used (if not using sdk.api instance) */
   @Input() api: PublicAPI;
+  /** Custom placeholder for email field */
+  @Input() placeholder = 'E-Mail Adresse...';
   /** Event after request was successful */
   @Output() success: EventEmitter<any> = new EventEmitter();
   /** The loader */

@@ -137,7 +137,7 @@ export class AuthService {
     return Promise.resolve(api || this.getApi(email))
       .then((resolvedAPI) => {
         const _api = resolvedAPI || this.sdk.accounts;
-        return !_api ? Promise.reject('api_not_found') : api.resetPassword(email);
+        return !_api ? Promise.reject('api_not_found') : _api.resetPassword(email);
       });
   }
 
