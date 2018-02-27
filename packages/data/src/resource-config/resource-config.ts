@@ -78,7 +78,7 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
       }
     }
   },
-  account: {
+  account: { // TODO: seperate ec and dm account resources (same name, different boat) (COM-111)
     identifier: 'accountID',
     label: 'email',
     permissions: {
@@ -105,7 +105,11 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
         filterable: true,
         sortable: true,
         readOnly: true
-      }
+      }/* ,
+      groups: {
+        label: 'Gruppen',
+        view: 'tags'
+      } */
     }
   },
   template: {

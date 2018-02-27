@@ -12,10 +12,10 @@ import { ResourceFormComponent } from '../../../packages/data/src/resource-form/
 import { ResourcePopComponent } from '../../../packages/data/src/resource-pop/resource-pop.component';
 
 @Component({
-  selector: 'ec-resource-list-demo',
-  templateUrl: 'resource-list-demo.component.html'
+  selector: 'ec-api-explorer',
+  templateUrl: 'api-explorer.component.html'
 })
-export class ResourceListDemoComponent implements OnInit {
+export class ApiExplorerComponent implements OnInit {
   symbol: string;
   history: any[] = [];
   activeTab: TabComponent;
