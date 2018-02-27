@@ -49,6 +49,10 @@ export const locales: Symbol[] = [{
     content: 'Die Eingabe ist kurz'
 },
 {
+    name: 'error.input.invalid',
+    content: 'Ungültige Eingabe'
+},
+{
     name: 'error.2460.account_not_found',
     content: 'Der Login war ungültig.'
 },

@@ -22,7 +22,7 @@ export class InputErrorsComponent {
       if (key === 'custom') {
         message = this.control.errors[key];
       } else {
-        message = this.symbol.resolve('error.input.' + key) || 'Ungültige Eingabe';
+        message = this.symbol.resolve('error.input.' + key) || this.symbol.resolve('error.input.invalid');
       }
       errs.push({
         key: key,
