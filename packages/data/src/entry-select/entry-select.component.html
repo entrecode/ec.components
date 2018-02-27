@@ -1,5 +1,5 @@
 <div class="ec-entry-select" *ngIf="selection">
-  <div class="ec-select" [class.ec-select_solo]="solo" [class.ec-select_dirty]="selection.items.length" (click)="pop.toggle()">
+  <div class="ec-select" [class.ec-select_solo]="solo" [class.ec-select_dirty]="selection.items.length" (click)="pop.toggle()&&clickInside($event)">
     <!-- [class.is-focus]="pop?.visible": currently throws error... -->
     <span class="ec-select__placeholder" *ngIf="!selection.items.length">
       {{placeholder||'Auswählen'}}
@@ -12,12 +12,13 @@
         </span>
       </li>
     </ul>
-    <ec-pop [ngClass]="field?.nestedPopClass || 'ec-select-options'" #crudPop [active]="field?.nestedPopActive" [visible]="field?.nestedPopVisible">
+    <ec-pop (click)="clickInside($event)" [ngClass]="field?.nestedPopClass || 'ec-select-options'" #crudPop [active]="field?.nestedPopActive"
+      [visible]="field?.nestedPopVisible">
       <!-- TODO find way to embed close button to the pops that need it -->
       <ec-crud [model]="model" *ngIf="selection&&crudPop.active" [config]="config" [selection]="selection" (columnClicked)="select($event)"
         #crud></ec-crud>
     </ec-pop>
-    <ec-pop class="ec-pop_dialog" #listPop>
+    <ec-pop (click)="clickInside($event)" class="ec-pop_dialog" #listPop>
       <!-- TODO: make pop configurable -->
       <header class="ec-pop-header">
         <button (click)="listPop.hide()" type="button" class="ec-pop__dismiss">
