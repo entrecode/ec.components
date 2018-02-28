@@ -186,18 +186,27 @@ More information on this pattern: https://blog.thoughtram.io/angular/2016/07/27/
 ## UPDATE: Custom Fields without wrapper
 
 You can now also use custom components as input directly without needing to wrap them explicitly.
-The only thing you need to do is 1. add the input component:
+What you need to is:
+
+1. Extend DefaultInputComponent
+
+```js
+export class JsonEditorComponent extends extends DefaultInputComponent
+```
+
+2. add the input component as member variable:
 
 ```js
 /** Form input component */
 input: InputComponent;
 ```
 
-and propagate the change:
+and propagate the change to the input as well:
 
 ```js
-if (this.input) {
- this.input.propagateChange(this.editor.getValue());
+this.propagateChange(this.value);
+if (this.input) { // this is the important part
+ this.input.propagateChange(this.value);
 }
 ```
 
