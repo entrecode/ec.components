@@ -16,6 +16,7 @@ export class ListComponent<T> implements OnChanges {
   /** The current list config */
   config: ListConfig<T> = {};
   /** Config input for List */
+  // tslint:disable-next-line:no-input-rename
   @Input('config') configInput: ListConfig<T>;
   /** The visible items */
   @Input() items: Array<T>;

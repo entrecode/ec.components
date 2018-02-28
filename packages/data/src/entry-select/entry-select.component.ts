@@ -57,6 +57,7 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   /** Wether or not the selection should be solo */
   @Input() solo: boolean;
   /** The config that should be merged into the generated config */
+  // tslint:disable-next-line:no-input-rename
   @Input('config') crudConfig: CrudConfig<EntryResource>;
   /** The crud pop with the list to select from */
   @ViewChild('crudPop') pop: PopComponent;
