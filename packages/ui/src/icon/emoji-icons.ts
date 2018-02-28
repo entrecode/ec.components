@@ -1,5 +1,7 @@
+import { Symbol } from '../symbol/symbol.interface';
+
 /** Contains fonts using emojis. */
-export const emojiIcons = [
+export const emojiIcons: Symbol[] = [
     { name: 'add', content: '➕' },
     { name: 'close', content: '❌' },
     { name: 'bitcoin-coin', content: '💰' },

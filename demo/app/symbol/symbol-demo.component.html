@@ -1,0 +1,22 @@
+<h3>Symbols</h3>
+
+<div data-col="6-sm">
+    <nav class="xui-select" tabindex="0">
+        <div class="xui-select__placeholder">Set auswählen</div>
+        <ul class="xui-select-options">
+            <li class="xui-select-option" *ngFor="let set of sets" tabindex="0">
+                <a (click)="symbol.useSet(set)">
+                    {{set}}
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<ul data-grid="small">
+    <li *ngFor="let symbol of symbol.registry" class="list" data-col="3">
+        {{symbol.name}}
+        <br>
+        <small>{{symbol.content}}</small>
+    </li>
+</ul>

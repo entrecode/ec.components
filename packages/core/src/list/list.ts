@@ -116,8 +116,10 @@ export class List<T> extends Collection<Item<T>> {
   protected sortProperty(property: string, desc?: boolean) {
     if (property !== this.config.sortBy) {
       delete this.config.desc;
+      this.config.sortBy = property;
+    } else if (this.config.desc) {
+      delete this.config.sortBy;
     }
-    this.config.sortBy = property;
     this.config.desc = this.config.desc === undefined ? desc || false : !this.config.desc;
   }
 

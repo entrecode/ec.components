@@ -40,11 +40,13 @@ import { AceDemoComponent } from './ace-demo/ace-demo.component';
 import { AceModule } from '../../packages/ace/index';
 import { InteractionDemoComponent } from './interaction-demo/interaction-demo.component';
 import { ActionbarModule } from '../../packages/ui/src/actionbar/actionbar.module';
-import { ResourceListDemoComponent } from './resource-list/resource-list-demo.component';
+import { ApiExplorerComponent } from './api-explorer/api-explorer.component';
 import { IconDemoComponent } from './icon-demo/icon-demo.component';
 import { IconPipe } from './icon-demo/icon.pipe';
 import { ResourceFormDemoComponent } from './resource-form/resource-form-demo.component';
 import { ResourceCrudDemoComponent } from './resource-crud/resource-crud-demo.component';
+import { PasswordResetDemoComponent } from './password-reset/password-reset-demo.component';
+import { SymbolDemoComponent } from './symbol/symbol-demo.component';
 
 demoRoutes.unshift(
   {
@@ -65,7 +67,7 @@ demoRoutes.unshift(
     ListTransformsDemoComponent,
     PaginationDemoComponent,
     EntryListDemoComponent,
-    ResourceListDemoComponent,
+    ApiExplorerComponent,
     ResourceFormDemoComponent,
     ResourceCrudDemoComponent,
     FormDemoComponent,
@@ -77,6 +79,7 @@ demoRoutes.unshift(
     CrudDemoComponent,
     SelectDemoComponent,
     AuthDemoComponent,
+    PasswordResetDemoComponent,
     CoolStringComponent,
     UnsplashImageComponent,
     AssetListDemoComponent,
@@ -90,7 +93,8 @@ demoRoutes.unshift(
     TinymceDemoComponent,
     AceDemoComponent,
     IconDemoComponent,
-    IconPipe
+    IconPipe,
+    SymbolDemoComponent
   ],
   entryComponents: [
     CoolStringComponent,

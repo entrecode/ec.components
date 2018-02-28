@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { InputErrorsComponent } from '../../../index';
+import { SymbolService } from '../../symbol/symbol.service';
 
 describe('InputErrorsComponent', () => {
   let component: InputErrorsComponent;
@@ -7,9 +8,10 @@ describe('InputErrorsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [InputErrorsComponent]
+      declarations: [InputErrorsComponent],
+      providers: [SymbolService]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

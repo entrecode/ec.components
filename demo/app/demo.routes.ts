@@ -26,11 +26,13 @@ import { TinymceDemoComponent } from './tinymce-demo/tinymce-demo.component';
 import { AceDemoComponent } from './ace-demo/ace-demo.component';
 import { ActionbarDemoComponent } from './actionbar-demo/actionbar-demo.component';
 import { InteractionDemoComponent } from './interaction-demo/interaction-demo.component';
-import { ResourceListDemoComponent } from './resource-list/resource-list-demo.component';
 import { IconDemoComponent } from './icon-demo/icon-demo.component';
 import { PaginationDemoComponent } from './pagination/pagination-demo.component';
 import { ResourceFormDemoComponent } from './resource-form/resource-form-demo.component';
 import { ResourceCrudDemoComponent } from './resource-crud/resource-crud-demo.component';
+import { PasswordResetDemoComponent } from './password-reset/password-reset-demo.component';
+import { ApiExplorerComponent } from './api-explorer/api-explorer.component';
+import { SymbolDemoComponent } from './symbol/symbol-demo.component';
 
 export const demoRoutes: Routes = [
   /*  {
@@ -53,6 +55,10 @@ export const demoRoutes: Routes = [
       {
         path: 'icons',
         component: IconDemoComponent,
+      },
+      {
+        path: 'symbols',
+        component: SymbolDemoComponent,
       },
       {
         path: 'list',
@@ -118,7 +124,7 @@ export const demoRoutes: Routes = [
     children: [
       {
         path: 'api-explorer',
-        component: ResourceListDemoComponent
+        component: ApiExplorerComponent
       },
       {
         path: 'resource-form',
@@ -204,6 +210,10 @@ export const demoRoutes: Routes = [
       {
         path: 'auth',
         component: AuthDemoComponent
+      },
+      {
+        path: 'password-reset',
+        component: PasswordResetDemoComponent
       },
     ]
   },
