@@ -810,7 +810,8 @@ export const mocked = {
             label: 'Action',
             form: false,
             resolve: () => ' ',
-            view: 'button',
+            view: 'link',
+            class: 'btn btn_outlined',
             icon: 'binoculars',
             action: (item, property) => {
               console.log('clicked button', item, property);

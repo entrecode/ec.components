@@ -86,5 +86,8 @@ export interface FieldConfigProperty {
   maxItems?: number;
   /** Any other configuration properties*/
   action?: (item: any, property: string) => any;
+  /** Class string */
+  class?: string;
+  /** wildcard for custom config values */
   [key: string]: any;
 }

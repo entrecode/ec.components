@@ -31,6 +31,8 @@ export class Field implements FieldConfigProperty {
   form?: boolean;
   /** Possible Values e.g. in a select */
   values: any[];
+  /** Class string */
+  class: string;
   /** wildcard for custom config values */
   [key: string]: any;
 
