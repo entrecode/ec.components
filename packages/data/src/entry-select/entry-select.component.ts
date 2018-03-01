@@ -79,7 +79,8 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
     }
     this.modelConfig.generateConfig(this.model) // , (this.config || {}).fields
       .then((config) => {
-        this.config = Object.assign(config, { size: 10 }, this.crudConfig, { solo: this.solo });
+        this.config = Object.assign(config, { size: 10 }, this.crudConfig,
+          { solo: this.solo, selectMode: true, disableSelectSwitch: true });
         this.useConfig(this.config);
       });
   }
