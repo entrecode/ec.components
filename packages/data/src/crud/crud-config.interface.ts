@@ -26,4 +26,6 @@ export interface CrudConfig<T> extends ListConfig<T> {
   nestedPopClass?: string;
   /** maps the permissions to the methods post put create delete */
   permissions?: { put?: string | boolean, post?: string | boolean, get?: string | boolean, delete?: string | boolean }
+  /** If true, no select mode switch will be shown */
+  disableSelectSwitch?: boolean;
 }
