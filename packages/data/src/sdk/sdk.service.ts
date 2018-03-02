@@ -4,7 +4,7 @@ import Accounts from 'ec.sdk/lib/Accounts';
 import PublicAPI from 'ec.sdk/lib/PublicAPI';
 import Session from 'ec.sdk/lib/Session';
 import AccountResource from 'ec.sdk/lib/resources/accounts/AccountResource';
-import { environment as env } from 'ec.sdk/lib/Core';
+import Core, { environment as env } from 'ec.sdk/lib/Core';
 
 /** The SdkService exposes all instances of the ec.sdk APIs.
  * To be able to use it, you have to provide an environment like this in your module's providers:
@@ -30,7 +30,14 @@ export class SdkService {
   /** Current Accounts instance */
   public accounts: Accounts;
   /** Current Public API instance */
-  public api: PublicAPI;
+  public _api: PublicAPI;
+  /** getter for api. Throws error if no api present. */
+  get api(): PublicAPI {
+    if (this.noApi()) {
+      throw new Error('get api: ' + this.noApi());
+    }
+    return this._api;
+  }
   /** Current DataManager instance */
   public datamanager: DataManager;
   /** Current User */
@@ -54,57 +61,54 @@ export class SdkService {
 
   /** Creates all the API instances and determines the current user. */
   public init(environment = this.environment): Promise<AccountResource> {
-    if (this.noDatamanagerID()) {
-      return Promise.reject(this.noDatamanagerID());
-    }
     this.session = new Session(<env>environment.environment);
     this.accounts = new Accounts(<env>environment.environment);
-    this.api = new PublicAPI(environment.datamanagerID, <env>environment.environment, true);
-    if (environment.clientID) {
-      this.api.setClientID(environment.clientID);
-      this.session.setClientID(environment.clientID);
+    if (environment.datamanagerID) {
+      this.useDatamanager(environment.datamanagerID);
     }
     this.ready = this.getAccount()
-    .then((user) => {
-      this.user = user;
-      return this.user;
-    });
+      .then((user) => {
+        this.user = user;
+        return this.user;
+      });
     return this.ready;
+  }
+  /** Uses the given datamanager and optional short id to init api. If you set "datamanagerID" in your environment, this method is called automatically. */
+  useDatamanager(shortID: string, environment = this.environment) {
+    this._api = new PublicAPI(shortID, <env>environment.environment, true);
+    if (environment.clientID) {
+      this._api.setClientID(environment.clientID);
+      this.session.setClientID(environment.clientID);
+    }
   }
 
   /** Returns a schema for the given model. Caches the promise. */
-  getSchema(model) {
+  getSchema(model, api = this._api) {
+    if (this.noApi(api)) {
+      return Promise.reject('getSchema: ' + this.noApi(api));
+    }
     if (!this.schemaRequests[model]) {
-      this.schemaRequests[model] = this.api.getSchema(model);
+      this.schemaRequests[model] = api.getSchema(model);
     }
     return this.schemaRequests[model];
   }
 
   /** Returns the current account. Works for all apis */
-  getAccount(api = this.api) {
+  getAccount(api = this.accounts) {
+    if (this.noApi(api)) {
+      /* return Promise.reject('getAccount: ' + this.noApi(api)); */
+      return Promise.resolve();
+    }
     return api.me().then((account) => {
-      return account || this.accounts.me();
+      return account || this._api.me();
     }).catch((err) => {
-      return this.api.me();
+      return null;
     });
   }
 
-  noDatamanagerID() {
-    if (!this.environment.datamanagerID) {
-      return `
-No datamangerID is set in your environment! You can only use the SdkService if you
-provide an environment like this in your module's provide section:
-
-providers: [
-  {
-    provide: 'environment',
-    useValue: {
-      datamanagerID: '83cc6374',
-      environment: 'stage',
-      clientID: 'rest'
-    }
-  }
-]`;
+  noApi(api: Core = this._api) {
+    if (!api) {
+      return `No API was initialized. Either set datamanagerID in your environment or call useDatamanager with your shortID`;
     }
   }
 }
