@@ -175,4 +175,8 @@ export class List<T> extends Collection<Item<T>> {
   public trackItem(index, item) {
     return index;
   }
+  /** Returns an array of all sortable fields */
+  public sortableFields() {
+    return this.fields.filter(field => field.sortable);
+  }
 }
