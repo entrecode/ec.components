@@ -1,4 +1,9 @@
 # Changelog
+<a name="0.14.0"></a>
+
+## 0.15.0
+
+* can now use SdkService without datamanagerID.
 
 <a name="0.14.0"></a>
 
