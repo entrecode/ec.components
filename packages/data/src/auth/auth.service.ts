@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@angular/core';
+import { Inject, Injectable, pipeDef } from '@angular/core';
 import { SdkService } from '../sdk/sdk.service';
 import AccountResource from 'ec.sdk/lib/resources/accounts/AccountResource';
 import PublicAPI from 'ec.sdk/lib/PublicAPI';
@@ -25,7 +25,7 @@ import { resourceConfig } from '../resource-config/resource-config';
 export class AuthService {
 
   /** Calls init and sets ready to true when finished. */
-  constructor( @Inject('environment') private environment, private sdk: SdkService) {
+  constructor(@Inject('environment') private environment, private sdk: SdkService) {
   }
 
   /** Generic login that works with both public and admin API. */
@@ -146,7 +146,7 @@ export class AuthService {
     if (this.noClientID()) {
       return Promise.reject(this.noClientID());
     }
-    return api ? api.logout() : this.sdk.api.logout().catch(() => this.sdk.session.logout())
+    return api ? api.logout() : this.sdk.session.logout().catch(() => this.sdk.api.logout())
       .then(() => {
         return this.sdk.init();
       });

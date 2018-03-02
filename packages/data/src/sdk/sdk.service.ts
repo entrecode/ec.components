@@ -66,6 +66,9 @@ export class SdkService {
   /** Creates all the API instances and determines the current user. */
   public init(environment = this.environment): Promise<AccountResource> {
     this.session = new Session(<env>environment.environment);
+    if (environment.clientID) {
+      this.session.setClientID(environment.clientID);
+    }
     this.accounts = new Accounts(<env>environment.environment);
     if (environment.datamanagerID) {
       this.useDatamanager(environment.datamanagerID);
@@ -82,7 +85,6 @@ export class SdkService {
     this._api = new PublicAPI(shortID, <env>environment.environment, true);
     if (environment.clientID) {
       this._api.setClientID(environment.clientID);
-      this.session.setClientID(environment.clientID);
     }
   }
 
