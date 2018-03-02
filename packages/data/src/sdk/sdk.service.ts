@@ -38,6 +38,10 @@ export class SdkService {
     }
     return this._api;
   }
+  /** Sets the public api */
+  set api(api: PublicAPI) {
+    this._api = api;
+  }
   /** Current DataManager instance */
   public datamanager: DataManager;
   /** Current User */
