@@ -1,4 +1,4 @@
-import { Inject, Injectable, pipeDef } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { SdkService } from '../sdk/sdk.service';
 import AccountResource from 'ec.sdk/lib/resources/accounts/AccountResource';
 import PublicAPI from 'ec.sdk/lib/PublicAPI';
