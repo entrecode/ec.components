@@ -56,5 +56,17 @@ export default [{
     name: 'error.2211',
     content: 'Validierungsfehler'
 },
+{
+    name: 'resource.delete.question',
+    content: 'Wirklich löschen?'
+},
+{
+    name: 'resource.delete.yes',
+    content: 'Ja'
+},
+{
+    name: 'resource.delete.no',
+    content: 'Nein'
+}
 ];
 

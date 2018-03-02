@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output, ElementRef, ViewChild } from '@
 import { SdkService } from '../../sdk/sdk.service';
 import { FileService, Upload } from '../file.service';
 import { LoaderComponent, WithLoader, LoaderService, NotificationsService } from '@ec.components/ui';
-import { SymbolService } from '../../../../ui/src/symbol/symbol.service';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 
 /** This component will render an input field to upload files to the datamanager. */
 @Component({

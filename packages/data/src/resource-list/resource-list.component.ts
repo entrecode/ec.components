@@ -8,7 +8,7 @@ import { ListConfig, Selection } from '@ec.components/core';
 import ListResource, { filterOptions } from 'ec.sdk/lib/resources/ListResource';
 import { WithLoader, LoaderComponent, ListComponent, LoaderService, NotificationsService } from '@ec.components/ui';
 import Resource from 'ec.sdk/lib/resources/Resource';
-import { SymbolService } from '../../../ui/src/symbol/symbol.service';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 
 /** The ResourceListComponent is an extension of ListComponent for SDK ListResources.
  * It is meant to be extended and overriden the createList method. See e.g. AssetListComponent. */

@@ -9,7 +9,7 @@ import { ResourceFormComponent } from '../resource-form/resource-form.component'
 import { AuthService } from '../auth/auth.service';
 import { OnChanges, AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { SdkService } from '../sdk/sdk.service';
-import { FormComponent } from '../../../ui/src/form/form.component';
+import { FormComponent } from '@ec.components/ui/src/form/form.component';
 
 /** Entry Pop is an extension of Pop component to host an entry-form.
  * You can use it like a normal pop but with the extra handling of an entry form inside.

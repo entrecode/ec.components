@@ -8,7 +8,7 @@ import { Item } from '@ec.components/core/src/item/item';
 import { FormConfig } from '@ec.components/core/src/form/form-config.interface';
 import { FormService } from '@ec.components/ui/src/form/form.service';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
-import { SymbolService } from '../../../ui/src/symbol/symbol.service';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent */
 @Component({

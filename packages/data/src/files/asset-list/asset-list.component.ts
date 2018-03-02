@@ -9,7 +9,7 @@ import { SdkService } from '../../sdk/sdk.service';
 import AssetResource from 'ec.sdk/lib/resources/datamanager/AssetResource';
 import PublicAssetResource from 'ec.sdk/lib/resources/publicAPI/PublicAssetResource';
 import { ListConfig } from '@ec.components/core';
-import { SymbolService } from '../../../../ui/src/symbol/symbol.service';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 
 /** Displays an AssetList. Subscribes to uploads from the fileServices and reloads the List. Extends ResourceList */
 @Component({

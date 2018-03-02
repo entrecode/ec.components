@@ -16,7 +16,7 @@ import { merge } from 'rxjs/observable/merge';
 import { AuthService } from '../auth/auth.service';
 import { EntryPopComponent } from '../entry-pop/entry-pop.component';
 import { WithLoader } from '@ec.components/ui';
-import { SymbolService } from '../../../ui/src/symbol/symbol.service';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 
 /** The CrudComponent takes at least a model name to render an entry list with create/edit/delete functionality out of the box.
  * ```html

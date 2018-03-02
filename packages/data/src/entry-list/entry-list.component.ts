@@ -9,7 +9,7 @@ import { NotificationsService } from '@ec.components/ui/src/notifications/notifi
 import { ResourceListComponent } from '../resource-list/resource-list.component';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { ListConfig } from '@ec.components/core/src/list/list-config.interface';
-import { SymbolService } from '../../../ui/src/symbol/symbol.service';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent */
 @Component({
