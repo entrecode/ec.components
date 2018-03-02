@@ -16,7 +16,6 @@
 <ul data-grid="small">
     <li *ngFor="let symbol of symbol.registry" class="list" data-col="3">
         {{symbol.name}}
-        <br>
-        <small>{{symbol.content}}</small>
+        {{symbol.name | symbol}}
     </li>
 </ul>

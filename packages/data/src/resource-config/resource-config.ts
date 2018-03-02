@@ -1,6 +1,7 @@
 import moment from 'moment-es6';
 import { FieldConfig, Form, ListConfig } from '@ec.components/core/index';
 import { CrudConfig } from '../crud/crud-config.interface';
+import localeFr from '@angular/common/locales/fr';
 
 /** Contains default configurations for all kinds of resources. Used by ResourceList and ResourceForm.  */
 export const resourceConfig: { [key: string]: CrudConfig<any> } = {
@@ -35,6 +36,11 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
         display: value => moment(value).format('DD.MM.YY'),
         group: value => moment(value).format('MMMM YYYY'),
         form: false
+      },
+      config: {
+        label: 'Config',
+        view: 'json',
+        list: false
       }
     }
   },
@@ -178,6 +184,7 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
       },
       config: {
         label: 'Config',
+        view: 'json',
         list: false
       }
     }

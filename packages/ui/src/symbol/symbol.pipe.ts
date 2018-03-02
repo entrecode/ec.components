@@ -12,6 +12,6 @@ export class SymbolPipe implements PipeTransform {
         if (!name) {
             return '';
         }
-        return this.symbol.resolve(name);
+        return this.symbol.resolve(name) || '';
     }
 };
