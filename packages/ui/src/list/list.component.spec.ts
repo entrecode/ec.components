@@ -18,8 +18,8 @@ import { SymbolModule } from '../symbol/symbol.module';
 // import { Collection } from '@ec.components/core/src/collection/collection';
 
 describe('ListComponent', () => {
-  let component: ListComponent<Item<string>>;
-  let fixture: ComponentFixture<ListComponent<Item<string>>>;
+  let component: ListComponent<any>;
+  let fixture: ComponentFixture<ListComponent<any>>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
