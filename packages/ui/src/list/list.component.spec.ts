@@ -11,6 +11,8 @@ import { PopModule } from '../pop/pop.module';
 import { NotificationsModule } from '../notifications/notifications.module';
 import { LoaderModule } from '../loader/loader.module';
 import { IconModule } from '../icon/icon.module';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import { SymbolModule } from '../symbol/symbol.module';
 
 // import { mocked } from '../../../../mocks/data';
 // import { Collection } from '@ec.components/core/src/collection/collection';
@@ -21,7 +23,7 @@ describe('ListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [LoaderModule, FormModule, IconModule, PopModule, NotificationsModule, ReactiveFormsModule],
+      imports: [SymbolModule, LoaderModule, FormModule, IconModule, PopModule, NotificationsModule, ReactiveFormsModule],
       declarations: [PaginationComponent, ListComponent, ListItemsComponent, ListHeaderComponent, GroupPipe],
       providers: []
     })
@@ -47,7 +49,7 @@ describe('ListComponent', () => {
     expect(component.selection).toBeDefined();
   });
 
-  //TODO fix
+  // TODO fix
   /*it('should use collection input', () => {
     component.collection = new Collection(mocked.muffins);
     component.ngOnChanges();
