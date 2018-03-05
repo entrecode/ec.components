@@ -16,7 +16,6 @@ export class PaginationDemoComponent {
       name: 'pagination.next',
       content: 'NEGSCHT'
     }]);
-    console.log(symbol.registry);
     this.pagination.setTotal(5100);
     this.pagination.change$.debounceTime(500)
       .subscribe((p) => {
