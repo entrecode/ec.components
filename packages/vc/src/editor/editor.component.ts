@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, Output, OnInit } from '@angular/core';
 import visualCMS from 'visual-cms.core';
 import * as FlowElement from 'visual-cms.core/classes/core/FlowElement.js';
 import * as Text from 'visual-cms.core/classes/core/Text.js';
@@ -9,17 +9,21 @@ import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/debounceTime';
 
 declare const document;
-
+/** ecvc editor component. */
 @Component({
   selector: 'ec-vc-editor,[ec-vc-editor]',
   templateUrl: './editor.component.html',
   styleUrls: ['./editor.component.scss']
 })
-export class EditorComponent {
+export class EditorComponent implements OnInit {
+  /** Input json */
   @Input() json;
+  /** emits on change */
   @Output() change: EventEmitter<any> = new EventEmitter();
-  private element; // current edited element
-  public caret: any; // current edited branch in class
+  /** current edited element */
+  private element;
+  /** current edited branch in class */
+  public caret: any;
   private ecvc;
   public content: any;
 
@@ -157,7 +161,7 @@ export class EditorComponent {
 
   @HostListener('paste', ['$event'])
   paste(e: any) {
-    //TODO eventually split
+    // TODO eventually split
     e.preventDefault();
     return false;
   }
@@ -169,7 +173,7 @@ export class EditorComponent {
     }
     const parent = this.getParent(this.caret.flow);
     const parentNode = this.getElement(parent);
-    if (e.keyCode === 13) { //enter //TODO twice enter
+    if (e.keyCode === 13) { // enter //TODO twice enter
       const branch = visualCMS.parse({
         type: this.caret.flow.type,
         settings: this.caret.flow.settings,
@@ -264,7 +268,7 @@ export class EditorComponent {
       return;
     }
 
-    //replace instance in parent
+    // replace instance in parent
     const parent = this.getParent(instance);
     if (Array.isArray(parent.content)) {
       const index = parent.content.indexOf(instance);
@@ -273,7 +277,7 @@ export class EditorComponent {
       parent.content = replacer;
     }
 
-    //replace html
+    // replace html
     this.getElement(parent).replaceChild(replacedNode, this.getElement(instance));
 
     focus = focus ? this.getElement(focus) : null;
@@ -282,7 +286,7 @@ export class EditorComponent {
     return replacedNode;
   }
 
-  setFlowElement(element, e ?) {
+  setFlowElement(element, e?) {
     this.blockEvent(e);
     if (!this.caret || !this.caret.flow || !this.caret.phrasing) {
       return;
@@ -324,7 +328,7 @@ export class EditorComponent {
       id: this.caret.phrasing.id
     });
     this.replaceInstance(this.caret.phrasing, visualCMS.parse(replacedJSON));
-    //first Child is text node
+    // first Child is text node
   }
 
   focus(element = this.element) {
@@ -336,14 +340,14 @@ export class EditorComponent {
     this.element = element;
   }
 
-  getElement(instance ?): HTMLElement {
+  getElement(instance?): HTMLElement {
     if (instance) {
       return <HTMLElement>document.querySelector(`[data-ec-id="${instance.id}"]`);
     }
-    return <HTMLElement>document.getSelection().anchorNode.parentNode; //TODO
+    return <HTMLElement>document.getSelection().anchorNode.parentNode; // TODO
   }
 
-  //walks the dom at the root of instance
+  // walks the dom at the root of instance
   skyWalker(instance, f) {
     const root = this.getElement(instance);
     const treeWalker: any = document.createTreeWalker(root, NodeFilter.SHOW_ALL);
@@ -362,8 +366,7 @@ export class EditorComponent {
         const el = <HTMLElement>document.getSelection().anchorNode.parentNode.cloneNode(true);
         el.innerText = treeWalker.currentNode.nodeValue;
         elements.push(el);
-      }
-      else if (treeWalker.currentNode.nodeType === 3) {
+      } else if (treeWalker.currentNode.nodeType === 3) {
         console.log(treeWalker.currentNode.parentElement);
         elements.push(treeWalker.currentNode.parentElement);
       } else {
@@ -429,18 +432,18 @@ export class EditorComponent {
         this.selectNode(this.getElement(parent.content[1] || parent.content[0]));
       }
       else if (treeWalker.currentNode.nodeType === 3) {
-        //TODO
+        // TODO
         elements.push(treeWalker.currentNode.parentElement);
       } else {
-        //TODO
+        // TODO
         elements.push(treeWalker.currentNode);
       }
     }
   }
 
   getCaret() {
-    const element = this.getElement(); //element where cursor is at
-    const block = this.getBlock(element); //surrounding block
+    const element = this.getElement(); // element where cursor is at
+    const block = this.getBlock(element); // surrounding block
     let flow = this.getInstance(block);
     let phrasing = this.getInstance(element);
     if (this.isFlow(phrasing) || this.isBlock(phrasing)) {
@@ -566,7 +569,7 @@ export class EditorComponent {
     this.setCaret(el.textContent.length, el);
   }
 
-  updateBlock(instance) { //TODO reduce text nodes that are direct siblings to one!!
+  updateBlock(instance) { // TODO reduce text nodes that are direct siblings to one!!
     const element = this.getElement(instance);
     const children = Array.from(element.childNodes);
     if (!children || !children.length) {
@@ -577,23 +580,23 @@ export class EditorComponent {
       instance.content = [instance.content];
     }
     instance.content = children
-    .map((child, index) => {
-      if (child.nodeType === 3) {
-        const node = visualCMS.parse(child.textContent);
-        const el = this.createElement(node);
-        //replace html
-        child.parentNode.replaceChild(el, child);
-        this.caretToEnd(el);
-        return node;
-      }
-      const id = child['getAttribute']('data-ec-id');
-      const match = instance.content.find(node => node.id === id);
-      if (!match) {
-        return;
-      }
-      return match;
-    })
-    .filter((child) => child);
+      .map((child, index) => {
+        if (child.nodeType === 3) {
+          const node = visualCMS.parse(child.textContent);
+          const el = this.createElement(node);
+          // replace html
+          child.parentNode.replaceChild(el, child);
+          this.caretToEnd(el);
+          return node;
+        }
+        const id = child['getAttribute']('data-ec-id');
+        const match = instance.content.find(node => node.id === id);
+        if (!match) {
+          return;
+        }
+        return match;
+      })
+      .filter((child) => child);
     //
     /*.reduce((nodes, child, index) => {
      const latest = nodes.length ? nodes[index - 1] : null;

@@ -67,6 +67,21 @@ export default [{
 {
     name: 'resource.delete.no',
     content: 'Nein'
-}
+},
+{
+    name: 'pagination.first',
+    content: '«'
+},
+{
+    name: 'pagination.prev',
+    content: '‹'
+},
+{
+    name: 'pagination.next',
+    content: '›'
+},
+{
+    name: 'pagination.last',
+    content: '»'
+},
 ];
-

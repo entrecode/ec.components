@@ -2,12 +2,12 @@
   <ul class="ec-pagination-controls">
     <li class="ec-pagination-control ec-pagination-control_first" [class.is-disabled]="pagination?.isFirst()" [hidden]="config.hideFirstLast">
       <a (click)="pagination.first()" class="ec-pagination__item">
-        <span>{{config?.firstLabel}}</span>
+        <span>{{'pagination.first' | symbol}}</span>
       </a>
     </li>
     <li class="ec-pagination-control ec-pagination-control_prev" [class.is-disabled]="pagination?.isFirst()">
       <a (click)="pagination.prev()" class="ec-pagination__item">
-        <span>{{config?.prevLabel}}</span>
+        <span>{{'pagination.prev' | symbol}}</span>
       </a>
     </li>
   </ul>
@@ -23,12 +23,12 @@
   <ul class="ec-pagination-controls">
     <li class="ec-pagination-control ec-pagination-control_next" [class.is-disabled]="pagination?.isLast()">
       <a (click)="pagination.next()" class="ec-pagination__item">
-        <span>{{config?.nextLabel}}</span>
+        <span>{{'pagination.next' | symbol}}</span>
       </a>
     </li>
     <li class="ec-pagination-control ec-pagination-control_last" [class.is-disabled]="pagination?.isLast()" [hidden]="config.hideFirstLast">
       <a (click)="pagination.last()" class="ec-pagination__item">
-        <span>{{config?.lastLabel}}</span>
+        <span>{{'pagination.last' | symbol}}</span>
       </a>
     </li>
   </ul>

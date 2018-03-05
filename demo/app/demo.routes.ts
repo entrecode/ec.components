@@ -25,7 +25,6 @@ import { EntryPopDemoComponent } from './entry-pop-demo/entry-pop-demo.component
 import { TinymceDemoComponent } from './tinymce-demo/tinymce-demo.component';
 import { AceDemoComponent } from './ace-demo/ace-demo.component';
 import { ActionbarDemoComponent } from './actionbar-demo/actionbar-demo.component';
-import { InteractionDemoComponent } from './interaction-demo/interaction-demo.component';
 import { IconDemoComponent } from './icon-demo/icon-demo.component';
 import { PaginationDemoComponent } from './pagination/pagination-demo.component';
 import { ResourceFormDemoComponent } from './resource-form/resource-form-demo.component';
@@ -48,11 +47,6 @@ export const demoRoutes: Routes = [
         pathMatch: 'full',
         redirectTo: 'form',
       },
-      /*
-      {
-        path: 'interaction',
-        component: InteractionDemoComponent,
-      }, */
       {
         path: 'icons',
         component: IconDemoComponent,

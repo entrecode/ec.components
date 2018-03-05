@@ -24,11 +24,12 @@ export class AssetListPopComponent extends PopComponent {
   @Input() selection: Selection<PublicAssetResource>;
   /** Event emitter on item selection */
   @Output() columnClicked: EventEmitter<Item<PublicAssetResource>> = new EventEmitter();
-
+  /** Injects auth service and calls super constructor. */
   constructor(private auth: AuthService) {
     super();
   }
 
+  /** method that is called after the upload to select the uploaded item(s). */
   selectUpload(upload: Upload) {
     if (this.config.solo) {
       this.selection.select(upload.item);
@@ -36,7 +37,7 @@ export class AssetListPopComponent extends PopComponent {
       this.selection.toggleAll(upload.items);
     }
   }
-
+  /** emits columnClicked event or toggles selection if no observers. */
   select($event) {
     if (this.columnClicked.observers.length) {
       this.columnClicked.emit($event);

@@ -17,8 +17,9 @@ import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
   templateUrl: '../../../../ui/src/list/list.component.html'
 })
 export class AssetListComponent extends ResourceListComponent {
+  /** list config  */
   config: ListConfig<AssetResource | PublicAssetResource> = {};
-
+  /** Injects services and listens for uploads to reload the list. */
   constructor(protected loaderService: LoaderService,
     protected sdk: SdkService,
     protected notificationService: NotificationsService,

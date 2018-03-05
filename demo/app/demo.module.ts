@@ -38,7 +38,6 @@ import { TinymceModule } from '../../packages/tinymce/src/tinymce.module';
 import { TinymceDemoComponent } from './tinymce-demo/tinymce-demo.component';
 import { AceDemoComponent } from './ace-demo/ace-demo.component';
 import { AceModule } from '../../packages/ace/index';
-import { InteractionDemoComponent } from './interaction-demo/interaction-demo.component';
 import { ActionbarModule } from '../../packages/ui/src/actionbar/actionbar.module';
 import { ApiExplorerComponent } from './api-explorer/api-explorer.component';
 import { IconDemoComponent } from './icon-demo/icon-demo.component';
@@ -85,7 +84,6 @@ demoRoutes.unshift(
     UnsplashImageComponent,
     AssetListDemoComponent,
     ActionbarDemoComponent,
-    InteractionDemoComponent,
     AssetDemoComponent,
     DatetimeDemoComponent,
     NotificationsDemoComponent,
