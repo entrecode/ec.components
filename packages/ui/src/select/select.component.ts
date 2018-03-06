@@ -43,9 +43,10 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   @ViewChild(PopComponent) pop: PopComponent;
 
   @HostListener('document:click', ['$event']) clickedOutside($event) {
-    this.pop.hide();
+    if (this.pop) {
+      this.pop.hide();
+    }
   }
-
   clickInside(e) {
     e.preventDefault();
     e.stopPropagation();

@@ -132,6 +132,9 @@ export class ModelConfigService extends Config {
       label: '_entryTitle',
       onSave: (item: Item<EntryResource>, value) => this.crud.save(model, item.getBody(), value)
     });
+    if (!model) {
+      return Promise.resolve(config);
+    }
     return this.generateFieldConfig(model, fieldConfig).then((fields) => {
       Object.assign(config, { fields });
       return Promise.resolve(config);
