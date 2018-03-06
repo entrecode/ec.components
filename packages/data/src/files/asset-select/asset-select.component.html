@@ -14,11 +14,11 @@
             <a (click)="selection.remove(selected)" class="ec-asset-card-controls__remove">
               <ec-icon name="close-x"></ec-icon>
             </a>
-          </nav>
+          </nav>  
         </div>
       </li>
     </ul>
   </div>
-  <ec-asset-list-pop [config]="config" [selection]="selection" [active]="field?.nestedPopActive" [visible]="field?.nestedPopVisible"
+  <ec-asset-list-pop (click)="clickInside($event)" (columnClicked)="select($event)" [config]="config" [selection]="selection" [active]="field?.nestedPopActive" [visible]="field?.nestedPopVisible"
     [ngClass]="field?.nestedPopClass || 'ec-pop_dialog'" #assetListPop></ec-asset-list-pop>
 </div>

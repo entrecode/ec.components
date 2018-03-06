@@ -25,11 +25,14 @@ import { EntryPopDemoComponent } from './entry-pop-demo/entry-pop-demo.component
 import { TinymceDemoComponent } from './tinymce-demo/tinymce-demo.component';
 import { AceDemoComponent } from './ace-demo/ace-demo.component';
 import { ActionbarDemoComponent } from './actionbar-demo/actionbar-demo.component';
-import { InteractionDemoComponent } from './interaction-demo/interaction-demo.component';
-import { ResourceListDemoComponent } from './resource-list/resource-list-demo.component';
 import { IconDemoComponent } from './icon-demo/icon-demo.component';
 import { PaginationDemoComponent } from './pagination/pagination-demo.component';
 import { ResourceFormDemoComponent } from './resource-form/resource-form-demo.component';
+import { ResourceCrudDemoComponent } from './resource-crud/resource-crud-demo.component';
+import { PasswordResetDemoComponent } from './password-reset/password-reset-demo.component';
+import { ApiExplorerComponent } from './api-explorer/api-explorer.component';
+import { SymbolDemoComponent } from './symbol/symbol-demo.component';
+import { ResourceDeletePopDemoComponent } from './resource-delete-pop/resource-delete-pop-demo.component';
 
 export const demoRoutes: Routes = [
   /*  {
@@ -44,14 +47,13 @@ export const demoRoutes: Routes = [
         pathMatch: 'full',
         redirectTo: 'form',
       },
-      /*
-      {
-        path: 'interaction',
-        component: InteractionDemoComponent,
-      }, */
       {
         path: 'icons',
         component: IconDemoComponent,
+      },
+      {
+        path: 'symbols',
+        component: SymbolDemoComponent,
       },
       {
         path: 'list',
@@ -113,16 +115,29 @@ export const demoRoutes: Routes = [
     ]
   },
   {
-    path: 'data',
+    path: 'resources',
     children: [
       {
         path: 'api-explorer',
-        component: ResourceListDemoComponent
+        component: ApiExplorerComponent
       },
       {
         path: 'resource-form',
         component: ResourceFormDemoComponent
       },
+      {
+        path: 'resource-crud',
+        component: ResourceCrudDemoComponent
+      },
+      {
+        path: 'resource-delete-pop',
+        component: ResourceDeletePopDemoComponent
+      }
+    ]
+  },
+  {
+    path: 'entries',
+    children: [
       {
         path: 'entries',
         component: DataDemoComponent
@@ -160,6 +175,11 @@ export const demoRoutes: Routes = [
         path: 'crud',
         component: CrudDemoComponent
       },
+    ]
+  },
+  {
+    path: 'assets',
+    children: [
       {
         path: 'asset',
         component: AssetDemoComponent
@@ -173,6 +193,7 @@ export const demoRoutes: Routes = [
         component: AssetSelectDemoComponent
       },
     ]
+
   },
   {
     path: 'auth',
@@ -188,6 +209,10 @@ export const demoRoutes: Routes = [
       {
         path: 'auth',
         component: AuthDemoComponent
+      },
+      {
+        path: 'password-reset',
+        component: PasswordResetDemoComponent
       },
     ]
   },

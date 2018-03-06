@@ -21,8 +21,8 @@ export class Field implements FieldConfigProperty {
   output?: any;
   /** Placeholder in inputs */
   placeholder?: string;
-  /** Label for Inputs */
-  label?: string;
+  /** Label for Inputs. Defaults to property name. If false, the label is empty. */
+  label?: string | boolean;
   /** The operator to use for filtering: exact, search, any etc.. see ec.sdk doc */
   filterOperator?: string;
   /** Defines the class for the filter pop, e.g. in list header. */
@@ -31,6 +31,8 @@ export class Field implements FieldConfigProperty {
   form?: boolean;
   /** Possible Values e.g. in a select */
   values: any[];
+  /** Class string */
+  class: string;
   /** wildcard for custom config values */
   [key: string]: any;
 

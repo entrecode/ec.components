@@ -8,6 +8,7 @@ import { ListConfig, Selection } from '@ec.components/core';
 import ListResource, { filterOptions } from 'ec.sdk/lib/resources/ListResource';
 import { WithLoader, LoaderComponent, ListComponent, LoaderService, NotificationsService } from '@ec.components/ui';
 import Resource from 'ec.sdk/lib/resources/Resource';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 
 /** The ResourceListComponent is an extension of ListComponent for SDK ListResources.
  * It is meant to be extended and overriden the createList method. See e.g. AssetListComponent. */
@@ -35,6 +36,7 @@ export class ResourceListComponent extends ListComponent<Resource>
     protected loaderService: LoaderService,
     protected sdk: SdkService,
     protected notificationService: NotificationsService,
+    protected symbol: SymbolService,
     @Optional() public route: ActivatedRoute
   ) {
     super();
@@ -76,7 +78,7 @@ export class ResourceListComponent extends ListComponent<Resource>
       });
       this.list.error$.subscribe(err => {
         this.notificationService.emit({
-          title: 'Fehler beim laden der Liste',
+          title: this.symbol.resolve('error.load'),
           error: err
         });
       });

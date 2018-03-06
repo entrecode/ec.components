@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, ViewChild, ViewChildren, QueryList, AfterViewInit} from '@angular/core';
+import { Component, ElementRef, Input, ViewChild, ViewChildren, QueryList, AfterViewInit } from '@angular/core';
 import { Pagination } from '@ec.components/core';
 import { OnInit } from '@angular/core';
 import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
@@ -12,7 +12,7 @@ import { PaginationConfig } from './pagination-config.interface';
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.scss']
 })
-export class PaginationComponent<T> implements OnInit, OnChanges, AfterViewInit {
+export class PaginationComponent<T> implements OnChanges, AfterViewInit, OnInit {
   /** A Pagination Instance */
   @Input() pagination: Pagination<T>;
   /** The div container for the pages*/
@@ -23,6 +23,7 @@ export class PaginationComponent<T> implements OnInit, OnChanges, AfterViewInit 
   @ViewChildren('page') private page: QueryList<ElementRef>;
   /** The config that is used */
   @Input() config: PaginationConfig;
+  /** Init config. */
 
   /** Init config. */
   ngOnInit() {

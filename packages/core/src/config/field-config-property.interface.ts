@@ -5,8 +5,8 @@ import { Type } from '@angular/core';
 export interface FieldConfigProperty {
   /** Property name */
   property?: string;
-  /** Human readable field label*/
-  label?: string;
+  /** Human readable field label. Defaults to property name. If false, the label is empty. */
+  label?: string | boolean;
   /** Placeholder in inputs */
   placeholder?: string;
   /** Custom resolve transformation function.
@@ -86,5 +86,8 @@ export interface FieldConfigProperty {
   maxItems?: number;
   /** Any other configuration properties*/
   action?: (item: any, property: string) => any;
+  /** Class string */
+  class?: string;
+  /** wildcard for custom config values */
   [key: string]: any;
 }

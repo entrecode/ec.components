@@ -1,9 +1,23 @@
+:host {
+  display: flex;
+}
+
 .ec-output_avatar {
   img {
     height: 100%;
     width: 100%;
     object-fit: cover;
   }
+}
+
+.ec-output_string {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.ec-output_textarea {
+  font-family: monospace;
 }
 
 .ec-output_tags-list {
@@ -15,19 +29,6 @@
 
   li {
     padding: 2px;
-  }
-}
-
-.ec-output_asset-preview {
-  display: flex;
-  overflow: hidden;
-  align-items: center;
-  justify-content: center;
-  padding: rem(16);
-
-  img {
-    width: 100%;
-    height: auto;
   }
 }
 

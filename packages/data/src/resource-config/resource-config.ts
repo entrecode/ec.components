@@ -1,11 +1,19 @@
 import moment from 'moment-es6';
 import { FieldConfig, Form, ListConfig } from '@ec.components/core/index';
+import { CrudConfig } from '../crud/crud-config.interface';
+import localeFr from '@angular/common/locales/fr';
 
 /** Contains default configurations for all kinds of resources. Used by ResourceList and ResourceForm.  */
-export const resourceConfig: { [key: string]: ListConfig<any> } = {
+export const resourceConfig: { [key: string]: CrudConfig<any> } = {
   dataManager: {
     identifier: 'dataManagerID',
     label: 'title',
+    permissions: {
+      post: 'dm-create',
+      put: 'dm:<dataManagerID>:edit',
+      delete: 'dm:<dataManagerID>:delete',
+      get: true
+    },
     fields: {
       hexColor: {
         label: '#',
@@ -28,6 +36,11 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
         display: value => moment(value).format('DD.MM.YY'),
         group: value => moment(value).format('MMMM YYYY'),
         form: false
+      },
+      config: {
+        label: 'Config',
+        view: 'json',
+        list: false
       }
     }
   },
@@ -71,9 +84,13 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
       }
     }
   },
-  account: {
+  account: { // TODO: seperate ec and dm account resources (same name, different boat) (COM-111)
     identifier: 'accountID',
     label: 'email',
+    permissions: {
+      get: 'acc:list',
+      put: 'acc:edit:<accountID>'
+    },
     fields: {
       email: {
         label: 'Email',
@@ -94,12 +111,20 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
         filterable: true,
         sortable: true,
         readOnly: true
-      }
+      }/* ,
+      groups: {
+        label: 'Gruppen',
+        view: 'tags'
+      } */
     }
   },
   template: {
     identifier: 'templateID',
     label: 'name',
+    permissions: {
+      post: 'dm-template-create',
+      get: 'dm-template:<templateID>:view'
+    },
     fields: {
       name: {
         label: 'Template',
@@ -117,6 +142,11 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
   },
   app: {
     identifier: 'appID',
+    permissions: {
+      post: 'app-create',
+      delete: 'app:<appID>:delete',
+      put: 'app:<appID>:edit'
+    },
     fields: {
       hexColor: {
         label: '#',
@@ -154,6 +184,7 @@ export const resourceConfig: { [key: string]: ListConfig<any> } = {
       },
       config: {
         label: 'Config',
+        view: 'json',
         list: false
       }
     }

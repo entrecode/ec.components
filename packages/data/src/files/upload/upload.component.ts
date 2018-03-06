@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output, ElementRef, ViewChild } from '@
 import { SdkService } from '../../sdk/sdk.service';
 import { FileService, Upload } from '../file.service';
 import { LoaderComponent, WithLoader, LoaderService, NotificationsService } from '@ec.components/ui';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 
 /** This component will render an input field to upload files to the datamanager. */
 @Component({
@@ -21,7 +22,8 @@ export class UploadComponent implements WithLoader {
   constructor(private sdk: SdkService,
     private fileService: FileService,
     private loaderService: LoaderService,
-    private notificationService: NotificationsService) {
+    private notificationService: NotificationsService,
+    private symbol: SymbolService) {
   }
   /** opens the system upload window by triggering the input */
   trigger() {
@@ -38,13 +40,13 @@ export class UploadComponent implements WithLoader {
       .then((_upload) => {
         this.success.emit(_upload);
         this.notificationService.emit({
-          title: 'Upload erfolgreich',
+          title: this.symbol.resolve('sucess.upload'),
           type: 'success'
         });
       }).catch((err) => {
         console.log('error', err);
         this.notificationService.emit({
-          title: 'Fehler beim Upload',
+          title: this.symbol.resolve('error.upload'),
           error: err
         });
       });

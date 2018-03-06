@@ -10,6 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
  * You can use it like a normal pop but with the extra handling of an entry form inside.
  * You can call edit with an entry object to edit an entry, or just call show.
  * It is also possible to bind an entry directly which will then be bound to the form.
+ * <example-url>https://components.entrecode.de/data/entry-pop/muffin/create</example-url>
  * */
 @Component({
   selector: 'ec-entry-pop',
@@ -93,7 +94,7 @@ export class EntryPopComponent extends PopComponent implements OnInit {
 
   /** Initialize the allowed methods to determine which buttons should be shown. */
   ngOnInit() {
-    this.auth.getAllowedMethods(this.model, this.config.methods)
+    this.auth.getAllowedModelMethods(this.model, this.config.methods)
       .then((methods) => {
         this.config.methods = methods;
       });

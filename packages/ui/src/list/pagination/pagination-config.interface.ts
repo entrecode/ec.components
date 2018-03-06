@@ -1,3 +1,5 @@
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+
 /** Configuration for a pagination component */
 export class PaginationConfig {
     /** Range of displayed pages in the UI. Controls the number of pages before and after the current page. Defaults to 3.
@@ -7,12 +9,7 @@ export class PaginationConfig {
     hideFirstLast: boolean;
     /** Hides pages */
     hidePages: boolean;
-    firstLabel = '«';
-    prevLabel = '‹';
-    nextLabel = '›';
-    lastLabel = '»';
-
-
+    /** The constructor assigns the config */
     constructor(config: PaginationConfig) {
         Object.assign(this, config);
     }

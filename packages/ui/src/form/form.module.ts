@@ -16,6 +16,7 @@ import { CalendarComponent } from './datetime/calendar.component';
 import { LoaderModule } from '../loader/loader.module';
 import { IconModule } from '../icon/icon.module';
 import { MaxItemsPipe } from './max-items.pipe';
+import { SymbolModule } from '../symbol/symbol.module';
 
 @NgModule({
   entryComponents: [
@@ -41,6 +42,7 @@ import { MaxItemsPipe } from './max-items.pipe';
     IoModule,
     LoaderModule,
     IconModule,
+    SymbolModule
   ],
   exports: [
     FormComponent,

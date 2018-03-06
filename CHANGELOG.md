@@ -1,5 +1,26 @@
 # Changelog
 
+<a name="0.15.0"></a>
+
+## 0.15.0
+
+* can now use SdkService without datamanagerID.
+* added resource-delete-pop
+* removed labels config from pagination-config. now using symbol.service
+
+<a name="0.14.0"></a>
+
+## 0.14.0
+
+* added ready event to FormComponent when initialization is complete.
+* added ResourcePopComponent for creating and editing resources.
+* added permissions option to resource-config to automatically show only allowed actions.
+* added ResourceCrudComponent for easy create/read/update/delete of any resource.
+* can now set field config label to false to show an empty label. (COM-89)
+* optimized ec-select toggle behaviour (COM-92, COM-93)
+* can now set placeholder for ec-password-reset (COM-101)
+* added SymbolService for localization
+
 <a name="0.13.0"></a>
 
 ## 0.13.0

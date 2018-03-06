@@ -802,14 +802,16 @@ export const mocked = {
           fruits: {
             label: 'Früchte',
             display: (value) => value ? 'ja' : 'nein',
-            view: 'toggle',
-            sortable: true
+            view: 'boolean',
+            sortable: true,
+            /* readOnly: true */
           },
           button: {
             label: 'Action',
             form: false,
             resolve: () => ' ',
-            view: 'button',
+            view: 'link',
+            class: 'btn btn_outlined',
             icon: 'binoculars',
             action: (item, property) => {
               console.log('clicked button', item, property);

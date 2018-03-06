@@ -3,7 +3,9 @@ import { Form, FormConfig } from '@ec.components/core';
 import { Item } from '@ec.components/core/src/item/item';
 import Core from 'ec.sdk/lib/Core';
 
+/** Form for any kind of SDK Resource. */
 export class ResourceForm extends Form<Resource> {
+    /** Constructs the form. Can be given an api (Core) and a fitting relation name. */
     constructor(body: Resource, config?: FormConfig<Resource>, public api?: Core, public relation?: string) {
         super(body, config);
     }

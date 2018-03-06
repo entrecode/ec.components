@@ -1,6 +1,7 @@
-/** Contains all icons that are available in ec-icons font. */
-export const ecIcons = [
+import { Symbol } from '../symbol/symbol.interface';
 
+/** Contains all icons that are available in ec-icons font. */
+export const ecIcons: Symbol[] = [
   { name: 'add' },
   { name: 'add-circle' },
   { name: 'alarm' },

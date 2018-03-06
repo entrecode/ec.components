@@ -3,14 +3,15 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { PaginationComponent } from '../../../index';
 import { Pagination } from '@ec.components/core';
 import { IconModule } from '../../icon/icon.module';
+import { SymbolModule } from '../../symbol/symbol.module';
 
 describe('PaginationComponent', () => {
-  let component: PaginationComponent<number>;
-  let fixture: ComponentFixture<PaginationComponent<number>>;
+  let component: PaginationComponent<any>;
+  let fixture: ComponentFixture<PaginationComponent<any>>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [IconModule],
+      imports: [IconModule, SymbolModule],
       declarations: [PaginationComponent]
     })
       .compileComponents();

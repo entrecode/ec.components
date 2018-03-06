@@ -1,7 +1,9 @@
 import { Component, ElementRef } from '@angular/core';
 import { Collection } from '@ec.components/core/src/collection/collection';
 
-/** The ec-loader can be plugged into various components to be triggered when they load stuff. */
+/** The ec-loader can be plugged into various components to be triggered when they load stuff.
+ * <example-url>https://components.entrecode.de/ui/loader</example-url>
+*/
 @Component({
   selector: 'ec-loader',
   templateUrl: './loader.component.html',
@@ -39,12 +41,12 @@ export class LoaderComponent {
     const timestamp = Date.now();
     this.timestamp = timestamp; // get timestamp
     Promise.all(this.stack.items)
-    .then(() => {
-      if (timestamp === this.timestamp) {
-        this.hide();
-        this.stack.removeAll();
-      }
-    });
+      .then(() => {
+        if (timestamp === this.timestamp) {
+          this.hide();
+          this.stack.removeAll();
+        }
+      });
     return promise;
   }
 }

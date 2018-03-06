@@ -14,7 +14,7 @@ export class AuthDemoComponent {
     });
     this.sdk.ready.then(() => {
       console.log('ready...');
-      this.sdk.api.checkPermission('muffin:post').then((res) => {
+      this.auth.checkPermission('muffin:post').then((res) => {
         console.log('permission', res);
       }).catch((err) => {
         console.log('check permissino fail', err);
@@ -23,7 +23,7 @@ export class AuthDemoComponent {
   }
 
   log(event) {
-    this.sdk.api.me().then((user) => {
+    this.sdk.getAccount().then((user) => {
       console.log('me', user);
     })
   }

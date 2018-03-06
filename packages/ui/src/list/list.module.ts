@@ -7,6 +7,7 @@ import { PaginationComponent } from './pagination/pagination.component';
 import { FormModule } from '../form/form.module';
 import { NgModule } from '@angular/core';
 import { IconModule } from '../icon/icon.module';
+import { SymbolModule } from '../symbol/symbol.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { IconModule } from '../icon/icon.module';
     CommonModule,
     FormModule,
     IconModule,
+    SymbolModule
   ],
   exports: [
     ListComponent,

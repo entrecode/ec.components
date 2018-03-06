@@ -2,7 +2,9 @@ import { Component, ContentChildren, Input, QueryList, AfterContentInit } from '
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { TabComponent } from '../tab/tab.component';
 
-/** The TabsComponent holds serveral instances of TabComponent. */
+/** The TabsComponent holds serveral instances of TabComponent.
+ * <example-url>https://components.entrecode.de/ui/tabs</example-url>
+*/
 @Component({
   selector: 'ec-tabs',
   templateUrl: './tabs.component.html',

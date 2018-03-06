@@ -1,4 +1,4 @@
-import { Component, EventEmitter, forwardRef, Input, OnChanges, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, OnChanges, OnInit, Output, ViewChild, ViewEncapsulation, HostListener } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { List, ListConfig, Selection } from '@ec.components/core';
 import { Item } from '@ec.components/core/src/item/item';
@@ -6,6 +6,8 @@ import { PopComponent } from '../pop/pop.component';
 
 /**
  * The SelectComponent will render a dropdown of a given list.
+ *
+ * <example-url>https://components.entrecode.de/ui/select</example-url>
  * */
 @Component({
   selector: 'ec-select',
@@ -39,6 +41,15 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   @Input() solo: boolean;
   /** The selection pop */
   @ViewChild(PopComponent) pop: PopComponent;
+
+  @HostListener('document:click', ['$event']) clickedOutside($event) {
+    this.pop.hide();
+  }
+
+  clickInside(e) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
 
   ngOnInit() {
     this.initSelection();
@@ -107,9 +118,9 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
 
   public select(item) {
     this.selection.toggle(item);
-    // if (this.config.solo) {
-    // this.pop.hide();
-    //}
+    if (this.config.solo) {
+      this.pop.hide();
+    }
   }
 
   changed() {

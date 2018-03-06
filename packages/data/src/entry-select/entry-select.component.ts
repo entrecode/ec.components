@@ -21,7 +21,9 @@ import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 
 // import LiteEntryResource from "ec.sdk/lib/resources/publicAPI/LiteEntryResource";
 
-/** Shows entries of a selection and is able to pick new ones from a crud list */
+/** Shows entries of a selection and is able to pick new ones from a crud list
+ * <example-url>https://components.entrecode.de/data/entry-select</example-url>
+*/
 @Component({
   selector: 'ec-entry-select',
   templateUrl: './entry-select.component.html',
@@ -57,6 +59,7 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   /** Wether or not the selection should be solo */
   @Input() solo: boolean;
   /** The config that should be merged into the generated config */
+  // tslint:disable-next-line:no-input-rename
   @Input('config') crudConfig: CrudConfig<EntryResource>;
   /** The crud pop with the list to select from */
   @ViewChild('crudPop') pop: PopComponent;
@@ -78,7 +81,8 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
     }
     this.modelConfig.generateConfig(this.model) // , (this.config || {}).fields
       .then((config) => {
-        this.config = Object.assign(config, { size: 10 }, this.crudConfig, { solo: this.solo });
+        this.config = Object.assign(config, { size: 10 }, this.crudConfig,
+          { solo: this.solo, selectMode: true, disableSelectSwitch: true });
         this.useConfig(this.config);
       });
   }

@@ -9,7 +9,7 @@
     </header>
     <div class="ec-pop-body">
       <ec-upload [loader]="popLoader" (success)="selectUpload($event)"></ec-upload>
-      <ec-asset-list [selection]="selection" [config]="config" [loader]="popLoader"></ec-asset-list>
+      <ec-asset-list [selection]="selection" (columnClicked)="select($event)" [config]="config" [loader]="popLoader"></ec-asset-list>
     </div>
     <ec-loader #popLoader class="ec-loader ec-loader_overlay ec-loader_global"></ec-loader>
   </div>

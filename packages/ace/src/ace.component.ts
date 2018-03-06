@@ -5,6 +5,10 @@ import { DefaultInputComponent, InputComponent } from '@ec.components/ui';
 
 /** Workaround that expects ace to be imported somewhere else... */
 declare const ace: any;
+/** Wraps ace editor as angular component. Implements ControlValueAccessor!
+ *
+ * <example-url>https://components.entrecode.de/misc/ace</example-url>
+*/
 @Component({
     selector: 'ec-ace',
     templateUrl: 'ace.component.html',
@@ -17,7 +21,6 @@ declare const ace: any;
         }
     ]
 })
-/** Wraps ace editor as angular component. Implements ControlValueAccessor! */
 export class AceComponent extends DefaultInputComponent implements ControlValueAccessor, OnInit, OnChanges {
     /** The ace editor instance */
     editor: any;

@@ -1,8 +1,8 @@
-<div *ngIf="selection&&list"
-     class="ec-select"
-     [class.ec-select_solo]="solo"
-     [class.ec-select_dirty]="selection.items.length"
-     (click)="pop.toggle()"><!-- [class.is-focus]="pop?.visible" -->
+<div *ngIf="selection&&list" class="ec-select" 
+  [class.ec-select_solo]="solo" 
+  [class.ec-select_dirty]="selection.items.length"
+  (click)="pop.toggle()&&clickInside($event)">
+  <!-- [class.is-focus]="pop?.visible" -->
   <span class="ec-select__placeholder" *ngIf="!selection.items.length">
     {{placeholder||'Auswählen'}}
   </span>
@@ -14,7 +14,7 @@
       </span>
     </li>
   </ul>
-  <ec-pop class="ec-select-options">
+  <ec-pop class="ec-select-options" (click)="clickInside($event)">
     <ec-list [list]="list" (columnClicked)="select($event)" [selection]="selection"></ec-list>
   </ec-pop>
 </div>

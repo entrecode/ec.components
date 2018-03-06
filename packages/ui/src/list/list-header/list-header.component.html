@@ -20,7 +20,7 @@
     </a>
 
     <span class="ec-list-field__title" (click)="field.sortable&&list.toggleSort(field.property)">
-      {{field.label || field.property}}
+      {{fieldLabel(field)}}
     </span>
     <span class="ec-list-sortable-indicator" *ngIf="field.sortable"></span>
 

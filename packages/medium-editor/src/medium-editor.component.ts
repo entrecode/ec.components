@@ -14,6 +14,9 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import * as MediumEditor from 'medium-editor/dist/js/medium-editor';
 
+/** Wraps medium-editor to a reactive form component.
+ * <example-url>https://components.entrecode.de/misc/medium-editor</example-url>
+*/
 @Component({
   selector: 'ec-medium-editor',
   styleUrls: ['./medium-editor.component.scss'],
@@ -28,18 +31,24 @@ import * as MediumEditor from 'medium-editor/dist/js/medium-editor';
   ]
 })
 export class MediumEditorComponent implements OnInit, OnDestroy, ControlValueAccessor {
+  /** data model */
   @Input() model: any;
+  /** MediumEditor [options](https://github.com/yabwe/medium-editor#mediumeditor-options) */
   @Input() options: any;
+  /** empty placeholder */
   @Input() placeholder: string;
+  /** change emitter */
   @Output() modelChange: EventEmitter<any> = new EventEmitter();
+  /** container element */
   @ViewChild('container') container: ElementRef;
+  /** current value */
   value: any;
+  /** editor instance */
   private editor: MediumEditor;
+  /** ready promise */
   public ready: Promise<MediumEditor>;
 
-  constructor() {
-  }
-
+  /** inits editor */
   ngOnInit() {
     this.container.nativeElement.innerHTML = this.model || '';
     this.options.placeholder = this.placeholder;
@@ -50,7 +59,7 @@ export class MediumEditorComponent implements OnInit, OnDestroy, ControlValueAcc
     });
     this.ready = Promise.resolve(this.editor);
   }
-
+  /** destroys editor */
   ngOnDestroy(): void {
     this.editor.destroy();
   }

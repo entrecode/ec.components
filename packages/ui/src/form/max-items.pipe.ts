@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-
+/** This pipe slices an array after the nth item */
 @Pipe({
     name: 'maxItems'
 })

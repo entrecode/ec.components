@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { errors } from './input-errors';
+import { SymbolService } from '../../symbol/symbol.service';
 
 /** This component keeps track of a form control's errors and displays them. It is meant to be used beneath a form control. */
 @Component({
@@ -12,7 +12,8 @@ export class InputErrorsComponent {
   /** The form control that should be tracked */
   @Input() control: FormControl;
   /** Imported error messages. */
-  errors = errors;
+  constructor(public symbol: SymbolService) {
+  }
 
   /** This method will iterate over the control errors and generate objects for the template. */
   private getErrors() {
@@ -21,7 +22,7 @@ export class InputErrorsComponent {
       if (key === 'custom') {
         message = this.control.errors[key];
       } else {
-        message = errors[key] || 'Ungültige Eingabe';
+        message = this.symbol.resolve('error.input.' + key) || this.symbol.resolve('error.input.invalid');
       }
       errs.push({
         key: key,
