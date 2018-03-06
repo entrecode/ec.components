@@ -6,7 +6,10 @@ import { Notification } from './notification';
 import { Collection } from '@ec.components/core/src/collection/collection';
 import { NotificationsService } from './notifications.service';
 
-/** Displays any kind of Notification inside the DOM. It listens on the notificationService.$emitter for notifications. */
+/** Displays any kind of Notification inside the DOM.
+ * It listens on the notificationService.$emitter for notifications.
+ * <example-url>https://components.entrecode.de/ui/notifications</example-url>
+ * */
 @Component({
   selector: 'ec-notifications',
   templateUrl: './notifications.component.html',

@@ -3,7 +3,11 @@ import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/f
 import moment from 'moment-es6';
 import { CalendarComponent } from './calendar.component';
 
-/** Input for a datetime. */
+/** Input for a datetime.
+ *
+ * <example-url>https://components.entrecode.de/ui/datetime</example-url>
+ *
+*/
 @Component({
   selector: 'ec-datetime',
   templateUrl: 'datetime.component.html',

@@ -11,7 +11,9 @@ import PublicAssetResource from 'ec.sdk/lib/resources/publicAPI/PublicAssetResou
 import { ListConfig } from '@ec.components/core';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 
-/** Displays an AssetList. Subscribes to uploads from the fileServices and reloads the List. Extends ResourceList */
+/** Displays an AssetList. Subscribes to uploads from the fileServices and reloads the List. Extends ResourceList
+ * <example-url>https://components.entrecode.de/data/asset-list</example-url>
+*/
 @Component({
   selector: 'ec-asset-list',
   templateUrl: '../../../../ui/src/list/list.component.html'

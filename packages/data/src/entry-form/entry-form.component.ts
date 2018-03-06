@@ -10,7 +10,9 @@ import { FormService } from '@ec.components/ui/src/form/form.service';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 
-/** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent */
+/** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent.
+ * <example-url>https://components.entrecode.de/data/entry-form</example-url>
+*/
 @Component({
   selector: 'ec-entry-form',
   templateUrl: '../../../ui/src/form/form.component.html',

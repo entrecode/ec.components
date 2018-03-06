@@ -10,7 +10,12 @@ import { WithLoader } from '../loader/with-loader.interface';
 import { InputComponent } from '../io/input/input.component';
 import { SymbolService } from '../symbol/symbol.service';
 
-/** This component renders a form using a FieldConfig Object. */
+/** This component renders a form using a FieldConfig Object.
+ *
+ * Example:
+ *
+ * <example-url>https://components.entrecode.de/ui/form</example-url>
+*/
 @Component({
   selector: 'ec-form',
   templateUrl: './form.component.html',

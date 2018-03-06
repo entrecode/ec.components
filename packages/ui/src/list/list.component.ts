@@ -5,6 +5,13 @@ import { PaginationConfig } from './pagination/pagination-config.interface';
 
 /**
  * The ListComponent will render a list containing the given items or collection.
+ *
+ * Basic Example:
+ *
+ * <example-url>https://components.entrecode.de/ui/list/basic</example-url>
+ *
+ * With Tranforms:
+ * <example-url>https://components.entrecode.de/ui/list/transforms</example-url>
  * */
 @Component({
   selector: 'ec-list',

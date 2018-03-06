@@ -11,7 +11,9 @@ import PublicAssetResource from 'ec.sdk/lib/resources/publicAPI/PublicAssetResou
 import { CrudConfig } from '../../crud/crud-config.interface';
 import { AssetListPopComponent } from '../asset-list-pop/asset-list-pop.component';
 
-/** Shows assets of a selection and is able to pick new ones from a crud list */
+/** Shows assets of a selection and is able to pick new ones from a crud list.
+ * <example-url>https://components.entrecode.de/data/asset-select</example-url>
+*/
 @Component({
   selector: 'ec-asset-select',
   templateUrl: './asset-select.component.html',

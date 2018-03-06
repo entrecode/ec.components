@@ -5,7 +5,9 @@ import { FieldValidators } from '../validators/field-validators';
 import { LoaderComponent } from '../../loader/loader.component';
 import { WithLoader } from '../../loader/with-loader.interface';
 
-/** Login Form Component with validation. Fires success event with credentials on submit. */
+/** Login Form Component with validation. Fires success event with credentials on submit.
+ * <example-url>https://components.entrecode.de/ui/login</example-url>
+*/
 @Component({
   selector: 'ec-login-form',
   templateUrl: './login-form.component.html',

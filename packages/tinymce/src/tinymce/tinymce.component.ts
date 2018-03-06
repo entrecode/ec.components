@@ -31,7 +31,9 @@ import 'tinymce/plugins/textcolor';
 import 'tinymce/plugins/colorpicker';
 import { editorSettings } from './tinymce-settings';
 
-/** Wraps tinymce as a control input. */
+/** Wraps tinymce as a control input.
+ * <example-url>https://components.entrecode.de/misc/tinymce</example-url>
+*/
 @Component({
   selector: 'ec-tinymce',
   templateUrl: './tinymce.component.html',
@@ -122,11 +124,11 @@ export class TinymceComponent
     });
   }
 
-  propagateChange = (_: any) => {};
+  propagateChange = (_: any) => { };
 
   registerOnChange(fn) {
     this.propagateChange = fn;
   }
 
-  registerOnTouched() {}
+  registerOnTouched() { }
 }

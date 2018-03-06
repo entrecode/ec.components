@@ -9,7 +9,9 @@ import { WithLoader, LoaderComponent } from '@ec.components/ui';
 
 // import { filterOptions } from 'ec.sdk/lib/resources/ListResource';
 
-/** Loads an entryList of a given model with the given config. */
+/** Loads an entryList of a given model with the given config.
+ * <example-url>https://components.entrecode.de/data/entries</example-url>
+*/
 @Directive({
   selector: '[ecEntries]',
   exportAs: 'ecEntries'

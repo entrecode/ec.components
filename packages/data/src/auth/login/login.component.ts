@@ -4,7 +4,9 @@ import AccountResource from 'ec.sdk/lib/resources/accounts/AccountResource';
 import { LoaderComponent, NotificationsService, WithLoader } from '@ec.components/ui';
 import { AuthService } from '../auth.service';
 
-/** Uses LoginFormComponent. Tries to login via AuthService. Shows notifications and nexts success Subject if login was successful. */
+/** Uses LoginFormComponent. Tries to login via AuthService. Shows notifications and nexts success Subject if login was successful.
+ * <example-url>https://components.entrecode.de/auth/auth</example-url>
+*/
 @Component({
   selector: 'ec-login',
   templateUrl: 'login.component.html'

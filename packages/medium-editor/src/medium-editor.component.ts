@@ -14,7 +14,9 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import * as MediumEditor from 'medium-editor/dist/js/medium-editor';
 
-/** Wraps medium-editor to a reactive form component. */
+/** Wraps medium-editor to a reactive form component.
+ * <example-url>https://components.entrecode.de/misc/medium-editor</example-url>
+*/
 @Component({
   selector: 'ec-medium-editor',
   styleUrls: ['./medium-editor.component.scss'],

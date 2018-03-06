@@ -4,7 +4,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 /** A Pop is an area of content whose visibility can be toggled.
- * It can be used e.g as dialog, drawer or dialog.*/
+ * It can be used e.g as dialog, drawer or dialog.
+ * <example-url>https://components.entrecode.de/ui/pop</example-url>
+ * */
 @Component({
   selector: 'ec-pop',
   templateUrl: './pop.component.html',
@@ -16,6 +18,7 @@ export class PopComponent {
   /** If true, .visible is set on .ec-pop-container.  */
   @Input() visible: boolean;
   /** Emits the value of visible on change. */
+  // tslint:disable-next-line:no-output-rename
   @Output('toggle') _toggle: EventEmitter<boolean> = new EventEmitter();
   /** The amount of time between setting active and visible. Defaults to 0. */
   delay = 0;

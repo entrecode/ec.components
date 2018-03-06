@@ -6,7 +6,9 @@ import { SdkService } from '../sdk/sdk.service';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { WithLoader, LoaderComponent } from '@ec.components/ui';
 
-/** Loads an entry by id to the template. */
+/** Loads an entry by id to the template.
+ * <example-url>https://components.entrecode.de/data/entries</example-url>
+ * */
 @Directive({
   selector: '[ecEntry]',
   exportAs: 'ecEntry'

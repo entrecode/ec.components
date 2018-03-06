@@ -11,7 +11,9 @@ import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { ListConfig } from '@ec.components/core/src/list/list-config.interface';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 
-/** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent */
+/** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent
+ * <example-url>https://components.entrecode.de/data/entry-list</example-url>
+*/
 @Component({
   selector: 'ec-entry-list',
   templateUrl: '../../../ui/src/list/list.component.html', // TODO avoid relative paths

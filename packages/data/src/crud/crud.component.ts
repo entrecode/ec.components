@@ -22,6 +22,7 @@ import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
  * ```html
  * <ec-crud model="muffin"></ec-crud>
  * ```
+ * <example-url>https://components.entrecode.de/data/crud</example-url>
  * */
 @Component({
   selector: 'ec-crud',

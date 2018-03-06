@@ -21,7 +21,9 @@ import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 
 // import LiteEntryResource from "ec.sdk/lib/resources/publicAPI/LiteEntryResource";
 
-/** Shows entries of a selection and is able to pick new ones from a crud list */
+/** Shows entries of a selection and is able to pick new ones from a crud list
+ * <example-url>https://components.entrecode.de/data/entry-select</example-url>
+*/
 @Component({
   selector: 'ec-entry-select',
   templateUrl: './entry-select.component.html',
