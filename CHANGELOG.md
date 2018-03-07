@@ -7,6 +7,7 @@
 * can now use SdkService without datamanagerID.
 * added resource-delete-pop
 * removed labels config from pagination-config. now using symbol.service
+* added ec-resource-select
 
 <a name="0.14.0"></a>
 

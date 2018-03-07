@@ -9,7 +9,7 @@ import { List } from '../list/list';
 export class Selection<T> extends List<T> {
 
   /** Adds item to selection. If solo is true, all other items will be removed. */
-  select(item: Item<T>, solo: boolean = this.config.solo) {
+  select(item: Item<T>, solo = this.config.solo) {
     if (solo) {
       this.removeAll();
       this.add(item);
@@ -26,9 +26,13 @@ export class Selection<T> extends List<T> {
     return this.items.indexOf(this.items.find(i => i.resolve() === item.resolve()));
   }
 
+  /* has(item: Item<T>) {
+    return super.has(item) || this.index(item) !== -1;
+  } */
+
   /** Toggle item in and out of selection.
    * The solo property will change the behaviour like you would expect it to behave :) */
-  toggle(item: Item<T>, solo: boolean = this.config.solo, event: boolean = true) {
+  toggle(item: Item<T>, solo= this.config.solo, event: boolean = true) {
     if (!item) {
       console.warn('toggle malicious item', item);
       return;

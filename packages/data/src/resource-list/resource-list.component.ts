@@ -90,7 +90,7 @@ export class ResourceListComponent extends ListComponent<Resource>
 
   /** When changing the model or the config, the list will update*/
   ngOnChanges(changes?) {
-    if (changes && changes.relation) {
+    if (changes && changes.relation && changes.relation.previousValue) {
       this.config = this.configInput;
       delete this.selection;
     }

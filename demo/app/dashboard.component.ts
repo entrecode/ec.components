@@ -3,9 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { demoRoutes } from './demo.routes';
 
 @Component({
-  selector: 'demo-dashboard',
+  selector: 'ec-demo-dashboard',
   template: `<h2>ec.components demos</h2>
-<p>Welcome to the ec.components demos! 
+<p>Welcome to the ec.components demos!
 You can select a demo from the menu above or load a <a [routerLink]="randomDemo">random demo</a>!</p>
 <p>Other Resources: </p>
 <ul>

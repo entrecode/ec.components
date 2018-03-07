@@ -23,6 +23,7 @@ import { ResourceFormComponent } from './resource-form/resource-form.component';
 import { ResourcePopComponent } from './resource-pop/resource-pop.component';
 import { ResourceCrudComponent } from './resource-crud/resource-crud.component';
 import { ResourceDeletePopComponent } from './resource-delete-pop/resource-delete-pop.component';
+import { ResourceSelectComponent } from './resource-select/resource-select.component';
 
 @NgModule({
   entryComponents: [
@@ -41,6 +42,7 @@ import { ResourceDeletePopComponent } from './resource-delete-pop/resource-delet
     ResourceFormComponent,
     ResourcePopComponent,
     ResourceCrudComponent,
+    ResourceSelectComponent,
     ResourceDeletePopComponent,
     DefaultEntryInputComponent,
     DefaultEntryOutputComponent,
@@ -68,6 +70,7 @@ import { ResourceDeletePopComponent } from './resource-delete-pop/resource-delet
     ResourcePopComponent,
     ResourceCrudComponent,
     ResourceDeletePopComponent,
+    ResourceSelectComponent,
     RouterModule,
     UiModule,
     SdkModule,

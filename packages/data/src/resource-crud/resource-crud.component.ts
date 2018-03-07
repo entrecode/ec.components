@@ -54,14 +54,6 @@ export class ResourceCrudComponent<T> implements OnInit, WithLoader {
         private notificationService: NotificationsService,
         @Optional() public router: Router,
         @Optional() public route: ActivatedRoute) {
-        /* if (route) {
-            merge(route.data, route.params, route.queryParams)
-                .subscribe(({ model }) => {
-                    if (model) {
-                        this.model = model;
-                    }
-                });
-        } */
     }
 
     ngOnInit() {

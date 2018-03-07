@@ -47,6 +47,7 @@ import { ResourceCrudDemoComponent } from './resource-crud/resource-crud-demo.co
 import { PasswordResetDemoComponent } from './password-reset/password-reset-demo.component';
 import { SymbolDemoComponent } from './symbol/symbol-demo.component';
 import { ResourceDeletePopDemoComponent } from './resource-delete-pop/resource-delete-pop-demo.component';
+import { ResourceSelectDemoComponent } from './resource-select/resource-select-demo.component';
 
 demoRoutes.unshift(
   {
@@ -94,7 +95,8 @@ demoRoutes.unshift(
     IconDemoComponent,
     IconPipe,
     SymbolDemoComponent,
-    ResourceDeletePopDemoComponent
+    ResourceDeletePopDemoComponent,
+    ResourceSelectDemoComponent
   ],
   entryComponents: [
     CoolStringComponent,
