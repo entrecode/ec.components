@@ -8,6 +8,7 @@ import { FieldConfigProperty } from '@ec.components/core/src/config/field-config
 import { Injectable } from '@angular/core';
 import { CrudConfig } from '../crud/crud-config.interface';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
+import { AdminEntryInputComponent } from '../entry-form/admin-entry-input.component';
 
 /** The TypeConfig holds each field type's specific behaviour in certain situations */
 @Injectable()
@@ -121,12 +122,12 @@ export class TypeConfigService {
       filterPopClass: 'ec-pop_dialog'
     },
     account: {
-      input: DefaultEntryInputComponent,
+      input: AdminEntryInputComponent,
       output: DefaultEntryOutputComponent,
       filterPopClass: 'ec-pop_dialog'
     },
     role: {
-      input: DefaultEntryInputComponent,
+      input: AdminEntryInputComponent,
       output: DefaultEntryOutputComponent,
       filterPopClass: 'ec-pop_dialog'
     }

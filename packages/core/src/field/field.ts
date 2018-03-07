@@ -39,6 +39,8 @@ export class Field implements FieldConfigProperty {
   nestedPopActive: boolean;
   /** If true, eventual pops will be visible*/
   nestedPopVisible: boolean;
+  /** id for form labels */
+  id: string;
   /** wildcard for custom config values */
   [key: string]: any;
 

@@ -283,6 +283,7 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
   },
   role: {
     identifier: 'roleID',
+    label: 'name',
     fields: {
       name: {
         label: 'Name',

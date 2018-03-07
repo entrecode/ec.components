@@ -5,6 +5,7 @@ import PublicAPI from 'ec.sdk/lib/PublicAPI';
 import Session from 'ec.sdk/lib/Session';
 import AccountResource from 'ec.sdk/lib/resources/accounts/AccountResource';
 import Core, { environment as env } from 'ec.sdk/lib/Core';
+import DataManagerResource from 'ec.sdk/lib/resources/datamanager/DataManagerResource';
 
 /** The SdkService exposes all instances of the ec.sdk APIs.
  * To be able to use it, you have to provide an environment like this in your module's providers:
@@ -25,6 +26,16 @@ import Core, { environment as env } from 'ec.sdk/lib/Core';
  */
 @Injectable()
 export class SdkService {
+  roots: { [id: string]: Promise<DataManagerResource> } = {};
+  get root(): Promise<DataManagerResource> {
+    if (!this._api) {
+      throw new Error('no api');
+    }
+    if (!this.roots[this._api.dataManagerID]) {
+      this.roots[this._api.dataManagerID] = this.ready.then(() => this.datamanager.dataManager(this._api.dataManagerID));
+    }
+    return this.roots[this._api.dataManagerID];
+  };
   /** Current Session instance */
   public session: Session;
   /** Current Accounts instance */
