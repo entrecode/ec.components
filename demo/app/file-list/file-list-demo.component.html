@@ -1,8 +1,8 @@
 <ec-resource-crud [api]="datamanager" relation="assetGroup" (columnClicked)="select($event)"></ec-resource-crud>
 
-<ec-resource-crud [api]="group" relation="asset" (createClicked)="upload()"></ec-resource-crud>
+<ec-resource-crud *ngIf="group" [api]="group" relation="asset" (createClicked)="upload()"></ec-resource-crud>
 
-<ec-upload *ngIf="group" [assetGroup]="group.assetGroupID" [loader]="loader"></ec-upload>
+<ec-upload *ngIf="group" [assetGroup]="group.assetGroupID" [loader]="loader" [api]="api"></ec-upload>
 
 <ec-notifications class="toast"></ec-notifications>
 

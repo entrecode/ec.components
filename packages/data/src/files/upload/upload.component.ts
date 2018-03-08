@@ -4,11 +4,12 @@ import { SdkService } from '../../sdk/sdk.service';
 import { FileService, Upload } from '../file.service';
 import { LoaderComponent, WithLoader, LoaderService, NotificationsService } from '@ec.components/ui';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import PublicAPI from 'ec.sdk/lib/PublicAPI';
 
 /** This component will render an input field to upload files to the datamanager. */
 @Component({
   selector: 'ec-upload',
-  template: `<input type="file" (change)="upload($event)" multiple #fileInput>`,
+  template: `<input type="file" (change)="upload($event, api)" multiple #fileInput>`,
 })
 export class UploadComponent implements WithLoader {
   /** The input placeholder*/
@@ -19,6 +20,8 @@ export class UploadComponent implements WithLoader {
   @Input() assetGroup: string;
   /** Upload options */
   @Input() options: FileOptions;
+  /** The api to use for the upload. Defaults to sdk.api */
+  @Input() api: PublicAPI;
   /** Emits when an upload is complete. */
   @Output() success: EventEmitter<Upload> = new EventEmitter();
   /** Reference to the input[type=file] element */
@@ -42,10 +45,10 @@ export class UploadComponent implements WithLoader {
   // https://datamanager.cachena.entrecode.de/a/b2be0156/test?page=1&size=20
 
   /** Uploads the files from the input event. Handles loader and notifications. */
-  upload(e) {
+  upload(e, api = this.sdk.api) {
     // TODO: make this.options.customNames settable (like in editor)
     const upload = (this.assetGroup ?
-      this.fileService.uploadAssets(e, this.assetGroup, this.options) :
+      this.fileService.uploadAssets(e, this.assetGroup, this.options, api) :
       this.fileService.uploadFiles(e))
       .then((_upload) => {
         this.success.emit(_upload);

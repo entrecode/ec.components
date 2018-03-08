@@ -139,12 +139,12 @@ export class FileService {
   }
 
   /** Upload New Assets */
-  public uploadAssets(e, assetGroupID, options: FileOptions = {}): Promise<Upload> {
+  public uploadAssets(e, assetGroupID, options: FileOptions = {}, api = this.sdk.api): Promise<Upload> {
     const files = e.target.files;
     if (!files.length) {
       return;
     }
-    return this.sdk.api.createDMAssets(assetGroupID, this.getFormData(files, options))
+    return api.createDMAssets(assetGroupID, this.getFormData(files, options))
       .then((assetList: DMAssetList) => {
         const assets = assetList.getAllItems();
         return {
