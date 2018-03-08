@@ -90,7 +90,7 @@ export default [{
 },
 {
     name: 'upload.preserveFilenames',
-    content: 'Dateinamen bewahren'
+    content: 'Dateinamen einkochen'
 },
 {
     name: 'upload.includeAssetIDInPath',
