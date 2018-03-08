@@ -7,16 +7,17 @@ import Core from 'ec.sdk/lib/Core';
 import { Item } from '@ec.components/core';
 import Resource from 'ec.sdk/lib/resources/Resource';
 import DMAssetResource from 'ec.sdk/lib/resources/publicAPI/DMAssetResource';
+import AssetGroupResource from 'ec.sdk/lib/resources/datamanager/AssetGroupResource';
 
 @Component({
     selector: 'ec-file-list-demo',
     templateUrl: 'file-list-demo.component.html'
 })
 
-export class FileListDemoComponent implements OnInit {
-    assets: DMAssetResource;
+export class FileListDemoComponent {
+    public custom = true;
     api: PublicAPI;
-    group: any;
+    group: AssetGroupResource;
     datamanager: DataManagerResource;
     constructor(public sdk: SdkService) {
         this.sdk.ready.then(() => {
@@ -24,14 +25,10 @@ export class FileListDemoComponent implements OnInit {
                 .then(dm => {
                     this.datamanager = dm;
                     return dm.getPublicAPI();
-                }).then(api => {
-                    this.api = api;
-                    /* this.sdk.useDatamanager(api.shortID); */
-                });
+                }).then(api => this.api = api);
         })
     }
 
-    ngOnInit() { }
 
     selected(selection) {
         if (selection.items.length) {
@@ -39,15 +36,12 @@ export class FileListDemoComponent implements OnInit {
         }
     }
 
-    select(assetGroup: Item<Resource>) {
+    select(assetGroup: Item<AssetGroupResource>) {
         const group = assetGroup.getBody();
         if (this.group && group.assetGroupID === this.group.assetGroupID) {
             return;
         }
         this.group = group;
-        /* group.assetList().then(assetList => {
-            this.assets = assetList.getAllItems();
-        }) */
     }
 
     upload() {

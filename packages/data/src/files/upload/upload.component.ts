@@ -25,7 +25,12 @@ export class UploadComponent implements WithLoader {
   /** If true, a pop to rename files + customize flags will appear before uploading. */
   @Input() custom: boolean;
   /** Upload options */
-  @Input() options: FileOptions;
+  @Input() options: FileOptions = {
+    preserveFilenames: true,
+    includeAssetIDInPath: true,
+    ignoreDuplicates: false,
+    customNames: []
+  };
   /** The api to use for the upload. Defaults to sdk.api */
   @Input() api: PublicAPI;
   /** Emits when an upload is complete. */
@@ -49,19 +54,14 @@ export class UploadComponent implements WithLoader {
     }
     this.fileInput.nativeElement.click();
   }
-  // https://datamanager.cachena.entrecode.de/a/b2be0156/test
-  // https://datamanager.cachena.entrecode.de/a/b2be0156/test?page=1&size=20
 
   /** Uploads the files from the input event. Handles loader and notifications. */
   change(e, api = this.sdk.api) {
+    if (!e || !e.target || !e.target.files || !e.target.files.length) {
+      return;
+    }
+    this.filesToUpload = e.target.files;
     if (this.custom) {
-      this.filesToUpload = e.target.files;
-      this.options = this.options || {
-        preserveFilenames: true,
-        includeAssetIDInPath: true,
-        ignoreDuplicates: false,
-        customNames: []
-      };
       this.event = e;
       this.pop.show();
       return;
@@ -69,6 +69,15 @@ export class UploadComponent implements WithLoader {
     return this.upload(e, api);
   }
 
+  /** clears the file input */
+  clear() {
+    if (!this.fileInput) {
+      return;
+    }
+    this.fileInput.nativeElement.value = ''; // clear input to eventually trigger change on same file
+  }
+
+  /** Triggers upload of current selected files */
   upload(e, api = this.sdk.api) {
     this.uploadPromise = (this.assetGroup ?
       this.fileService.uploadAssets(e, this.assetGroup, this.options, api) :

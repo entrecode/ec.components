@@ -1,4 +1,4 @@
-<input type="file" (change)="change($event, api)" multiple #fileInput>
+<input type="file" (change)="change($event, api)" multiple #fileInput (click)="clear()">
 <ec-pop class="ec-pop ec-pop_dialog">
     <div *ngIf="filesToUpload?.length">
         <div class="xui-toggle">

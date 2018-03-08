@@ -1,22 +1,18 @@
 <!-- <ec-resource-crud [api]="datamanager" relation="assetGroup" (columnClicked)="select($event)"></ec-resource-crud> -->
 <ec-resource-select [api]="datamanager" relation="assetGroup" (change)="selected($event)" [solo]="true" [config]="{methods:['get'],disableListPop:true}"></ec-resource-select>
 
-<ec-upload *ngIf="group" [assetGroup]="group.assetGroupID" [loader]="loader" [api]="api" [custom]="true"></ec-upload>
-
-<ec-notifications class="toast"></ec-notifications>
-
-<ec-loader class="ec-loader" #loader></ec-loader>
-
-<div data-grid>
-  <div *ngFor="let asset of assets" data-col="2-sm" class="has-margin-bottom is-relative">
-    <img [ecImage]="asset" [api]="api" thumb="true" size="200" class="img_full is-lifted is-rounded">
-    <a class="btn btn_round btn_outlined btn_warning is-absolute is-positioned-ne" (click)="delete(asset)">
-      <ec-icon name="trash"></ec-icon>
-    </a>
+<div *ngIf="group">
+  <ec-upload [assetGroup]="group.assetGroupID" [loader]="loader" [api]="api" [custom]="custom"></ec-upload>
+  <div class="xui-toggle">
+    <input id="ignoreDuplicates" type="checkbox" [(ngModel)]="custom">
+    <label for="ignoreDuplicates">
+      <div class="xui-toggle__switch"></div>
+      Custom
+    </label>
   </div>
+  <ec-notifications class="toast"></ec-notifications>
+  <ec-loader class="ec-loader" #loader></ec-loader>
+  <ec-file-list [api]="group"></ec-file-list>
 </div>
-
-<ec-file-list [api]="group" *ngIf="group"></ec-file-list>
-
 <!-- <ec-resource-list [api]="group" relation="dmAsset" *ngIf="group"></ec-resource-list> -->
 <!-- TODO: use when SDK renamed asset to dmAsset -->
