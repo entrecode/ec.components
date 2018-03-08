@@ -244,7 +244,8 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
         filterable: true
       },
       public: {
-        view: 'boolean'
+        view: 'boolean',
+        prefill: false
       },
       settings: {
         view: 'json',
@@ -264,7 +265,9 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
       file: {
         label: 'File',
         display: value => value.url,
-        view: 'avatar'
+        view: 'avatar',
+        immutable: true,
+        form: false
       },
       assetID: {
         label: 'assetID',
@@ -285,16 +288,20 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
       duplicates: {
         label: 'Duplikate',
         view: 'number',
-        list: false
+        list: false,
+        form: false
       },
       thumbnails: {
         label: 'Thumb',
         display: values => values.map(value => value.url),
-        list: false
+        list: false,
+        form: false
       },
       type: {
         label: 'Typ',
-        view: 'string'
+        view: 'string',
+        immutable: true,
+        form: false
       },
       created: {
         label: 'Datum',

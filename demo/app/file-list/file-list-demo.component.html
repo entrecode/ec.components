@@ -12,7 +12,6 @@
   </div>
   <ec-notifications class="toast"></ec-notifications>
   <ec-loader class="ec-loader" #loader></ec-loader>
-  <ec-file-list [api]="group" [config]="{size:10}"></ec-file-list>
+  <ec-resource-crud [api]="group" relation="dmAsset" [config]="{size:10,methods:['get','put','delete']}"></ec-resource-crud>
 </div>
-<!-- <ec-resource-list [api]="group" relation="dmAsset" *ngIf="group"></ec-resource-list> -->
 <!-- TODO: use when SDK renamed asset to dmAsset -->

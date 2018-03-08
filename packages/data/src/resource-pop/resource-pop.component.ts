@@ -113,6 +113,12 @@ export class ResourcePopComponent extends PopComponent {
             });
     }
 
+
+    /** Fires when the resource has been deleted. */
+    private deletedResource() {
+        this.hide();
+    }
+
     /** Logs the current form (Developer help). */
     private log(form) {
         console.dir(form);

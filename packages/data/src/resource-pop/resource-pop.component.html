@@ -7,13 +7,13 @@
         </header>
         <div class="ec-pop-body">
             <ec-resource-form (ready)="initMethods($event)" [api]="api" [relation]="relation" [submitButton]="false" [config]="config"
-                [loader]="popLoader" [value]="resource" (deleted)="hide()" (submitted)="!this.config?.keepPopOpen&&hide()" #resourceForm></ec-resource-form>
+                [loader]="popLoader" [value]="resource" (deleted)="hide()" (submitted)="!config?.keepPopOpen&&hide()" #resourceForm></ec-resource-form>
         </div>
         <footer class="ec-pop-footer">
             <nav class="nav">
                 <ul class="nav__items">
                     <li class="nav__item" *ngIf="hasMethod('delete')&&resourceForm.isEditing()">
-                        <button (click)="resourceForm.deleteResource()" class="btn" type="button">
+                        <button (click)="delete.confirm(resource)" class="btn" type="button">
                             <ec-icon name="trash"></ec-icon>
                         </button>
                     </li>
@@ -29,5 +29,6 @@
             </nav>
         </footer>
         <ec-loader #popLoader class="ec-loader ec-loader_overlay ec-loader_global"></ec-loader>
+        <ec-resource-delete-pop (deleted)="deletedResource()" #delete></ec-resource-delete-pop>
     </div>
 </div>
