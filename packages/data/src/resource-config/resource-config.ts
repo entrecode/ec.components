@@ -275,7 +275,8 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
       title: {
         label: 'Titel',
         view: 'string',
-        sortable: true
+        sortable: true,
+        filterable: true
       },
       caption: {
         label: 'Caption',
