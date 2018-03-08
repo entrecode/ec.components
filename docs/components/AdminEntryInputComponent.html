@@ -258,7 +258,7 @@
                                     <a href="../components/ActionbarComponent.html" >ActionbarComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/AdminEntryInputComponent.html" >AdminEntryInputComponent</a>
+                                    <a href="../components/AdminEntryInputComponent.html"  data-type="entity-link" class="active" >AdminEntryInputComponent</a>
                                 </li>
                                 <li class="link">
                                     <a href="../components/AssetListComponent.html" >AssetListComponent</a>
@@ -496,7 +496,7 @@
                                     <a href="../classes/Selection.html" >Selection</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../classes/Sorter.html"  data-type="entity-link" class="active" >Sorter</a>
+                                    <a href="../classes/Sorter.html" >Sorter</a>
                                 </li>
                         </ul>
                     </li>
@@ -929,7 +929,7 @@
                                            <a href="../components/ActionbarComponent.html" >ActionbarComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/AdminEntryInputComponent.html" >AdminEntryInputComponent</a>
+                                           <a href="../components/AdminEntryInputComponent.html"  data-type="entity-link" class="active" >AdminEntryInputComponent</a>
                                        </li>
                                        <li class="link">
                                            <a href="../components/AssetListComponent.html" >AssetListComponent</a>
@@ -1167,7 +1167,7 @@
                                            <a href="../classes/Selection.html" >Selection</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../classes/Sorter.html"  data-type="entity-link" class="active" >Sorter</a>
+                                           <a href="../classes/Sorter.html" >Sorter</a>
                                        </li>
                                </ul>
                            </li>
@@ -1356,20 +1356,15 @@
                    
                    </nav>
                </div>
-               <div class="content class">
+               <div class="content component">
                    <div class="content-data">
 
 
 
 
-
-
-
-
-
 <ol class="breadcrumb">
-  <li>Classes</li>
-  <li>Sorter</li>
+  <li>Components</li>
+  <li>AdminEntryInputComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -1378,431 +1373,304 @@
     </li>
 
     <li>
-        <a href="#readme" role="tab" id="readme-tab" data-toggle="tab" data-link="readme">README</a>
+        <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
     </li>
 
     <li>
-        <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+    </li>
+    <li>
+        <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
     </li>
 </ul>
 
 <div class="tab-content">
-    <div class="tab-pane fade active in" id="c-info">
-        <p class="comment">
-            <h3>File</h3>
-        </p>
-        <p class="comment">
-            <code>packages/core/src/sorter/sorter.ts</code>
-        </p>
-
-            <p class="comment">
-                <h3>Description</h3>
-            </p>
-            <p class="comment">
-                <p>The Sorter is a singleton that handles all kinds of sorting operations. </p>
-
-            </p>
-
-
-
-
-            <section>
-                <h3 id="index">Index</h3>
-                <table class="table table-sm table-bordered index-table">
-                    <tbody>
-                        <tr>
-                            <td class="col-md-4">
-                                <h6><b>Properties</b></h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <ul class="index-list">
-                                    <li>
-                                            <span class="modifier">Static</span>
-                                        <a href="#sortType">sortType</a>
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <h6><b>Methods</b></h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <ul class="index-list">
-                                    <li>
-                                            <span class="modifier">Static</span>
-                                            <span class="modifier">Private</span>
-                                        <a href="#getAlgorithm">getAlgorithm</a>
-                                    </li>
-                                    <li>
-                                            <span class="modifier">Static</span>
-                                        <a href="#sort">sort</a>
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-
-
-            <section>
-                
-                    <h3 id="methods">
-                        Methods
-                    </h3>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="getAlgorithm"></a>
-                                    <span class="name">
-                                        <b>
-                                            <span class="modifier">Static</span>
-                                            <span class="modifier">Private</span>
-                                        getAlgorithm
-                                        </b>
-                                        <a href="#getAlgorithm"><span class="fa fa-link"></span></a>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                        <span class="modifier-icon fa fa-reset"></span>
-                                    <code>getAlgorithm(items: <a href="../classes/Item.html">Array<Item<any>></a>, property?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">packages/core/src/sorter/sorter.ts:32</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description"><p>Returns the sorting algorithm for the given item array. </p>
-            </div>
-            
-                                        <div class="io-description">
-                                                <b>Parameters :</b>
-                                                <table class="params">
-                                                    <thead>
-                                                        <tr>
-                                                            <td>Name</td>
-                                                                <td>Type</td>
-                                                            <td>Optional</td>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                            <tr>
-                                                                <td>items</td>
-                                                                
-                                                                    <td>
-                                                                                <code><a href="../classes/Item.html" target="_self" >Array&lt;Item&lt;any&gt;&gt;</a></code>
-                                                                    </td>
-                                                                
-                                                                <td>
-                                                                        no
-                                                                </td>
-                                                                
-            
-                                                            </tr>
-                                                            <tr>
-                                                                <td>property</td>
-                                                                
-                                                                    <td>
-                                                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                                                    </td>
-                                                                
-                                                                <td>
-                                                                        yes
-                                                                </td>
-                                                                
-            
-                                                            </tr>
-                                                    </tbody>
-                                                </table>
-                                        </div>
-                                        <div>
-                                        </div>
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-            
-                                        </div>
-                                            <div class="io-description">
-                                                
-                                            </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="sort"></a>
-                                    <span class="name">
-                                        <b>
-                                            <span class="modifier">Static</span>
-                                        sort
-                                        </b>
-                                        <a href="#sort"><span class="fa fa-link"></span></a>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                        <span class="modifier-icon fa fa-reset"></span>
-                                    <code>sort(items: <a href="../classes/Item.html">Array<Item<any>></a>, property?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, desc?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">packages/core/src/sorter/sorter.ts:62</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description"><p>Sorts a given Array of items after a given property.</p>
-            </div>
-            
-                                        <div class="io-description">
-                                                <b>Parameters :</b>
-                                                <table class="params">
-                                                    <thead>
-                                                        <tr>
-                                                            <td>Name</td>
-                                                                <td>Type</td>
-                                                            <td>Optional</td>
-                                                                <td>Description</td>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                            <tr>
-                                                                <td>items</td>
-                                                                
-                                                                    <td>
-                                                                                <code><a href="../classes/Item.html" target="_self" >Array&lt;Item&lt;any&gt;&gt;</a></code>
-                                                                    </td>
-                                                                
-                                                                <td>
-                                                                        no
-                                                                </td>
-                                                                
-            
-                                                                    <td>
-                                                                            <code><p>Array of arbitrary content.</p>
-            </code>
-                                                                    </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>property</td>
-                                                                
-                                                                    <td>
-                                                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                                                    </td>
-                                                                
-                                                                <td>
-                                                                        yes
-                                                                </td>
-                                                                
-            
-                                                                    <td>
-                                                                            <code><p>Optional property to sort after (For Objects)</p>
-            </code>
-                                                                    </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>desc</td>
-                                                                
-                                                                    <td>
-                                                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-                                                                    </td>
-                                                                
-                                                                <td>
-                                                                        yes
-                                                                </td>
-                                                                
-            
-                                                                    <td>
-                                                                            <code><p>Optional Flag that will reverse sort the result (descending).</p>
-            </code>
-                                                                    </td>
-                                                            </tr>
-                                                    </tbody>
-                                                </table>
-                                        </div>
-                                        <div>
-                                        </div>
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code>Array&lt;any&gt;</code>
-            
-                                        </div>
-                                            <div class="io-description">
-                                                
-                                            </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-            </section>
-
-
-            <section>
-                
-                    <h3 id="inputs">
-                        Properties
-                    </h3>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="sortType"></a>
-                                    <span class="name">
-                                        <b>
-                                            <span class="modifier">Static</span>
-                                        sortType
-                                        </b>
-                                        <a href="#sortType"><span class="fa fa-link"></span></a>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-reset"></span><code>sortType:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
-            </code>
-                                </td>
-                            </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
-            
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-4">
-                                        <i>Default value : </i><code>{
-                &#x27;string&#x27;: sortString,
-                &#x27;number&#x27;: sortNumber,
-                &#x27;boolean&#x27;: sortBoolean
-              }</code>
-                                    </td>
-                                </tr>
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">packages/core/src/sorter/sorter.ts:25</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-description"><p>Contains sorting methods for different value types. </p>
-            </div>
-                                </td>
-                            </tr>
-            
-                        </tbody>
-                    </table>
-            </section>
-
-    </div>
-
-    <div class="tab-pane fade" id="c-readme">
-        <p><h1 id="sorter">Sorter</h1>
-<p>The Sorter is a static class that acts as a helper to sort different primitive types. See the tests for example usage.</p>
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
 </p>
-    </div>
+<p class="comment">
+    <code>packages/data/src/entry-form/admin-entry-input.component.ts</code>
+</p>
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>This component holds the input templates for all field types that require having the DatamanagerResource as api.
+This is currently relevant for account and role fields which come from the ec.api.</p>
+
+    </p>
+
+    <p class="comment">
+        <h3>Extends</h3>
+    </p>
+    <p class="comment">
+            <code><a href="../components/InputComponent.html" target="_self" >DefaultInputComponent</a></code>
+    </p>
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./admin-entry-input.component.html</code></td>
+            </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+        <h3 id="index">Index</h3>
+        <table class="table table-sm table-bordered index-table">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#api">api</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#sdk">sdk</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h3 id="constructor">Constructor</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+    <code>constructor(sdk: <a href="../injectables/SdkService.html">SdkService</a>)</code>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">packages/data/src/entry-form/admin-entry-input.component.ts:13</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div>
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                        <td>sdk</td>
+                                                      
+                                                            <td>
+                                                                        <code><a href="../injectables/SdkService.html" target="_self" >SdkService</a></code>
+                                                            </td>
+                                                      
+                                                        <td>
+                                                                no
+                                                        </td>
+                                                        
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </section>
+
+
+
+
+
+
+    <section>
+        
+            <h3 id="inputs">
+                Properties
+            </h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="api"></a>
+                            <span class="name">
+                                <b>
+                                api
+                                </b>
+                                <a href="#api"><span class="fa fa-link"></span></a>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>api:     <code>DataManagerResource</code>
+    </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code>DataManagerResource</code>
+    
+                            </td>
+                        </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">packages/data/src/entry-form/admin-entry-input.component.ts:13</a></div>
+                                </td>
+                            </tr>
+    
+    
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="sdk"></a>
+                            <span class="name">
+                                <b>
+                                    <span class="modifier">Public</span>
+                                sdk
+                                </b>
+                                <a href="#sdk"><span class="fa fa-link"></span></a>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-reset"></span><code>sdk:     <code><a href="../injectables/SdkService.html" target="_self" >SdkService</a></code>
+    </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code><a href="../injectables/SdkService.html" target="_self" >SdkService</a></code>
+    
+                            </td>
+                        </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">packages/data/src/entry-form/admin-entry-input.component.ts:14</a></div>
+                                </td>
+                            </tr>
+    
+    
+                </tbody>
+            </table>
+    </section>
+
+</div>
+
 
     <div class="tab-pane fade tab-source-code" id="c-source">
-        <pre class="line-numbers"><code class="language-typescript">import { Item } from &#x27;../item/item&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { SdkService } from &#x27;@ec.components/data/src/sdk/sdk.service&#x27;;
+import { Component } from &#x27;@angular/core&#x27;;
+import { DefaultInputComponent } from &#x27;@ec.components/ui/src/form/default-input/default-input.component&#x27;;
+import DataManagerResource from &#x27;ec.sdk/lib/resources/datamanager/DataManagerResource&#x27;;
 
-/** Used for natural sorting of strings */
-const collator &#x3D; new Intl.Collator(undefined, { numeric: true, sensitivity: &#x27;base&#x27; });
-
-/** Sorts strings (naturally) */
-export function sortString(a, b) {
-  return collator.compare(a, b);
-}
-
-/** Sorts numbers */
-export function sortNumber(a, b) {
-  return a - b;
-}
-
-/** Sorts booleans */
-export function sortBoolean(a, b) {
-  return a ? -1 : 1;
-}
-
-/** The Sorter is a singleton that handles all kinds of sorting operations. */
-export abstract class Sorter&lt;T&gt; {
-
-  /** Contains sorting methods for different value types. */
-  static sortType &#x3D; {
-    &#x27;string&#x27;: sortString,
-    &#x27;number&#x27;: sortNumber,
-    &#x27;boolean&#x27;: sortBoolean
-  };
-
-  /** Returns the sorting algorithm for the given item array. */
-  private static getAlgorithm(items: Array&lt;Item&lt;any&gt;&gt;, property?: string): (a, b) &#x3D;&gt; number {
-    if (!items.length) {
-      return;
+/** This component holds the input templates for all field types that require having the DatamanagerResource as api.
+ * This is currently relevant for account and role fields which come from the ec.api.
+ */
+@Component({
+    templateUrl: &#x27;./admin-entry-input.component.html&#x27;,
+})
+export class AdminEntryInputComponent extends DefaultInputComponent {
+    api: DataManagerResource;
+    constructor(public sdk: SdkService) {
+        super();
+        this.sdk.root.then((root) &#x3D;&gt; this.api &#x3D; root);
     }
-    if (property &amp;&amp; !items
-      .reduce((has, item) &#x3D;&gt; has &amp;&amp; item.sort(property) !&#x3D;&#x3D; undefined, true)) {
-      console.warn(&#x27;cannot sort property &quot;&#x27; + property + &#x27;&quot; because not all items have that property&#x27;, items);
-      return;
-    }
-    const types &#x3D; items
-      .map(item &#x3D;&gt; typeof item.sort(property))
-      .filter((item, index, _items) &#x3D;&gt; _items.indexOf(item) &#x3D;&#x3D;&#x3D; index);
-    if (types.length &gt; 1) {
-      console.warn(&#x27;cannot sort items because they contain multiple types:&#x27;, types);
-      return;
-    }
-    if (!this.sortType[types[0]]) {
-      console.warn(&#x27;cannot sort items because no algorithm was found for type&#x27;, types[0]);
-      return;
-    }
-    return this.sortType[types[0]];
-  }
-
-  /** Sorts a given Array of items after a given property.
-   * @param items Array of arbitrary content.
-   * @param property Optional property to sort after (For Objects)
-   * @param desc Optional Flag that will reverse sort the result (descending).
-   * @param resolve Optional resolve function to expose relevant the part of object that contains
-   *   the given property. */
-
-  static sort(items: Array&lt;Item&lt;any&gt;&gt;, property?: string, desc?: boolean): Array&lt;any&gt; {
-    const algorithm &#x3D; this.getAlgorithm(items, property);
-    if (!algorithm) {
-      return;
-    }
-    items.sort((a, b) &#x3D;&gt; {
-      if (!property) {
-        return algorithm(a.resolve(), b.resolve());
-      }
-      return algorithm(a.sort(property), b.sort(property));
-    });
-    if (desc) {
-      items.reverse();
-    }
-  }
 }
 </code></pre>
     </div>
+
+    <div class="tab-pane fade" id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;fieldset [ngSwitch]&#x3D;&quot;field.type&quot; *ngIf&#x3D;&quot;group&quot; [formGroup]&#x3D;&quot;group&quot;&gt;
+    &lt;ec-input-errors [control]&#x3D;&quot;group.get(field.property)&quot;&gt;&lt;/ec-input-errors&gt;
+    &lt;div *ngSwitchCase&#x3D;&quot;&#x27;account&#x27;&quot;&gt;
+      &lt;ec-resource-select [api]&#x3D;&quot;api&quot; relation&#x3D;&quot;account&quot; [formControl]&#x3D;&quot;group.get(field.property)&quot; [field]&#x3D;&quot;field&quot; [id]&#x3D;&quot;field.id&quot;&gt;&lt;/ec-resource-select&gt;
+    &lt;/div&gt;
+    &lt;div *ngSwitchCase&#x3D;&quot;&#x27;role&#x27;&quot;&gt;
+      &lt;ec-resource-select [solo]&#x3D;&quot;true&quot; [api]&#x3D;&quot;api&quot; relation&#x3D;&quot;role&quot; [formControl]&#x3D;&quot;group.get(field.property)&quot; [field]&#x3D;&quot;field&quot; [id]&#x3D;&quot;field.id&quot;&gt;&lt;/ec-resource-select&gt;
+    &lt;/div&gt;
+    &lt;div *ngSwitchDefault&gt;
+      &lt;marquee&gt;🚂🚃🚃🚃 {{field.type}} input coming soon..&lt;/marquee&gt;
+      &lt;ec-output [field]&#x3D;&quot;field&quot; [item]&#x3D;&quot;item&quot;&gt;&lt;/ec-output&gt;
+    &lt;/div&gt;
+  &lt;/fieldset&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade" id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
 </div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><fieldset [ngSwitch]="field.type" *ngIf="group" [formGroup]="group">    <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>    <div *ngSwitchCase="\'account\'">      <ec-resource-select [api]="api" relation="account" [formControl]="group.get(field.property)" [field]="field" [id]="field.id"></ec-resource-select>    </div>    <div *ngSwitchCase="\'role\'">      <ec-resource-select [solo]="true" [api]="api" relation="role" [formControl]="group.get(field.property)" [field]="field" [id]="field.id"></ec-resource-select>    </div>    <div *ngSwitchDefault>      <marquee>🚂🚃🚃🚃 {{field.type}} input coming soon..</marquee>      <ec-output [field]="field" [item]="item"></ec-output>    </div>  </fieldset></div>'
+    var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'ActionbarComponent', 'selector': 'ec-actionbar'},{'name': 'AdminEntryInputComponent', 'selector': ''},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'IconComponent', 'selector': 'ec-icon'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceCrudComponent', 'selector': 'ec-resource-crud'},{'name': 'ResourceDeletePopComponent', 'selector': 'ec-resource-delete-pop'},{'name': 'ResourceFormComponent', 'selector': 'ec-resource-form'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'ResourcePopComponent', 'selector': 'ec-resource-pop'},{'name': 'ResourceSelectComponent', 'selector': 'ec-resource-select'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
+    var DIRECTIVES = [{'name': 'AssetDirective', 'selector': '[ecAsset]'},{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'ImageDirective', 'selector': 'img [ecImage]'},{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'}];
+    var ACTUAL_COMPONENT = {'name': 'AdminEntryInputComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
 
 
 

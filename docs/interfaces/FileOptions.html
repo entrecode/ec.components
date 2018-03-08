@@ -496,7 +496,7 @@
                                     <a href="../classes/Selection.html" >Selection</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../classes/Sorter.html"  data-type="entity-link" class="active" >Sorter</a>
+                                    <a href="../classes/Sorter.html" >Sorter</a>
                                 </li>
                         </ul>
                     </li>
@@ -585,7 +585,7 @@
                                     <a href="../interfaces/FieldConfigProperty.html" >FieldConfigProperty</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../interfaces/FileOptions.html" >FileOptions</a>
+                                    <a href="../interfaces/FileOptions.html"  data-type="entity-link" class="active" >FileOptions</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/FormConfig.html" >FormConfig</a>
@@ -1167,7 +1167,7 @@
                                            <a href="../classes/Selection.html" >Selection</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../classes/Sorter.html"  data-type="entity-link" class="active" >Sorter</a>
+                                           <a href="../classes/Sorter.html" >Sorter</a>
                                        </li>
                                </ul>
                            </li>
@@ -1256,7 +1256,7 @@
                                            <a href="../interfaces/FieldConfigProperty.html" >FieldConfigProperty</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../interfaces/FileOptions.html" >FileOptions</a>
+                                           <a href="../interfaces/FileOptions.html"  data-type="entity-link" class="active" >FileOptions</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/FormConfig.html" >FormConfig</a>
@@ -1356,7 +1356,7 @@
                    
                    </nav>
                </div>
-               <div class="content class">
+               <div class="content interface">
                    <div class="content-data">
 
 
@@ -1367,9 +1367,10 @@
 
 
 
+
 <ol class="breadcrumb">
-  <li>Classes</li>
-  <li>Sorter</li>
+  <li>Interfaces</li>
+  <li>FileOptions</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -1377,9 +1378,6 @@
         <a href="#info" id="info-tab" role="tab" data-toggle="tab" data-link="info">Info</a>
     </li>
 
-    <li>
-        <a href="#readme" role="tab" id="readme-tab" data-toggle="tab" data-link="readme">README</a>
-    </li>
 
     <li>
         <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
@@ -1392,418 +1390,505 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>packages/core/src/sorter/sorter.ts</code>
+            <code>packages/data/src/files/file.service.ts</code>
         </p>
 
             <p class="comment">
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>The Sorter is a singleton that handles all kinds of sorting operations. </p>
+                <p>Interface for file options used by new assets </p>
 
             </p>
 
 
+        <section>
+            <h3 id="index">Index</h3>
+            <table class="table table-sm table-bordered index-table">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Properties</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                        <a href="#customNames">customNames</a>
+                                </li>
+                                <li>
+                                        <a href="#fieldName">fieldName</a>
+                                </li>
+                                <li>
+                                        <a href="#ignoreDuplicates">ignoreDuplicates</a>
+                                </li>
+                                <li>
+                                        <a href="#includeAssetIDInPath">includeAssetIDInPath</a>
+                                </li>
+                                <li>
+                                        <a href="#preserveFilenames">preserveFilenames</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
 
-
-            <section>
-                <h3 id="index">Index</h3>
-                <table class="table table-sm table-bordered index-table">
-                    <tbody>
-                        <tr>
-                            <td class="col-md-4">
-                                <h6><b>Properties</b></h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <ul class="index-list">
-                                    <li>
-                                            <span class="modifier">Static</span>
-                                        <a href="#sortType">sortType</a>
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <h6><b>Methods</b></h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <ul class="index-list">
-                                    <li>
-                                            <span class="modifier">Static</span>
-                                            <span class="modifier">Private</span>
-                                        <a href="#getAlgorithm">getAlgorithm</a>
-                                    </li>
-                                    <li>
-                                            <span class="modifier">Static</span>
-                                        <a href="#sort">sort</a>
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
 
 
             <section>
-                
-                    <h3 id="methods">
-                        Methods
-                    </h3>
+                <h3 id="inputs">Properties</h3>
                     <table class="table table-sm table-bordered">
                         <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="getAlgorithm"></a>
-                                    <span class="name">
-                                        <b>
-                                            <span class="modifier">Static</span>
-                                            <span class="modifier">Private</span>
-                                        getAlgorithm
-                                        </b>
-                                        <a href="#getAlgorithm"><span class="fa fa-link"></span></a>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                        <span class="modifier-icon fa fa-reset"></span>
-                                    <code>getAlgorithm(items: <a href="../classes/Item.html">Array<Item<any>></a>, property?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">packages/core/src/sorter/sorter.ts:32</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description"><p>Returns the sorting algorithm for the given item array. </p>
-            </div>
-            
-                                        <div class="io-description">
-                                                <b>Parameters :</b>
-                                                <table class="params">
-                                                    <thead>
-                                                        <tr>
-                                                            <td>Name</td>
-                                                                <td>Type</td>
-                                                            <td>Optional</td>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                            <tr>
-                                                                <td>items</td>
-                                                                
-                                                                    <td>
-                                                                                <code><a href="../classes/Item.html" target="_self" >Array&lt;Item&lt;any&gt;&gt;</a></code>
-                                                                    </td>
-                                                                
-                                                                <td>
-                                                                        no
-                                                                </td>
-                                                                
-            
-                                                            </tr>
-                                                            <tr>
-                                                                <td>property</td>
-                                                                
-                                                                    <td>
-                                                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                                                    </td>
-                                                                
-                                                                <td>
-                                                                        yes
-                                                                </td>
-                                                                
-            
-                                                            </tr>
-                                                    </tbody>
-                                                </table>
-                                        </div>
-                                        <div>
-                                        </div>
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-            
-                                        </div>
-                                            <div class="io-description">
-                                                
-                                            </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="sort"></a>
-                                    <span class="name">
-                                        <b>
-                                            <span class="modifier">Static</span>
-                                        sort
-                                        </b>
-                                        <a href="#sort"><span class="fa fa-link"></span></a>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                        <span class="modifier-icon fa fa-reset"></span>
-                                    <code>sort(items: <a href="../classes/Item.html">Array<Item<any>></a>, property?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, desc?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
-                                </td>
-                            </tr>
-            
-            
-                                    <tr>
-                                        <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">packages/core/src/sorter/sorter.ts:62</a></div>
-                                        </td>
-                                    </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div class="io-description"><p>Sorts a given Array of items after a given property.</p>
-            </div>
-            
-                                        <div class="io-description">
-                                                <b>Parameters :</b>
-                                                <table class="params">
-                                                    <thead>
-                                                        <tr>
-                                                            <td>Name</td>
-                                                                <td>Type</td>
-                                                            <td>Optional</td>
-                                                                <td>Description</td>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                            <tr>
-                                                                <td>items</td>
-                                                                
-                                                                    <td>
-                                                                                <code><a href="../classes/Item.html" target="_self" >Array&lt;Item&lt;any&gt;&gt;</a></code>
-                                                                    </td>
-                                                                
-                                                                <td>
-                                                                        no
-                                                                </td>
-                                                                
-            
-                                                                    <td>
-                                                                            <code><p>Array of arbitrary content.</p>
-            </code>
-                                                                    </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>property</td>
-                                                                
-                                                                    <td>
-                                                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                                                    </td>
-                                                                
-                                                                <td>
-                                                                        yes
-                                                                </td>
-                                                                
-            
-                                                                    <td>
-                                                                            <code><p>Optional property to sort after (For Objects)</p>
-            </code>
-                                                                    </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>desc</td>
-                                                                
-                                                                    <td>
-                                                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-                                                                    </td>
-                                                                
-                                                                <td>
-                                                                        yes
-                                                                </td>
-                                                                
-            
-                                                                    <td>
-                                                                            <code><p>Optional Flag that will reverse sort the result (descending).</p>
-            </code>
-                                                                    </td>
-                                                            </tr>
-                                                    </tbody>
-                                                </table>
-                                        </div>
-                                        <div>
-                                        </div>
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code>Array&lt;any&gt;</code>
-            
-                                        </div>
-                                            <div class="io-description">
-                                                
-                                            </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-            </section>
-
-
-            <section>
-                
-                    <h3 id="inputs">
-                        Properties
-                    </h3>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="sortType"></a>
-                                    <span class="name">
-                                        <b>
-                                            <span class="modifier">Static</span>
-                                        sortType
-                                        </b>
-                                        <a href="#sortType"><span class="fa fa-link"></span></a>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <span class="modifier-icon fa fa-reset"></span><code>sortType:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
-            </code>
-                                </td>
-                            </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
-            
+                                        <a name="customNames"></a>
+                                        <span class="name"><b>customNames</b><a href="#customNames"><span class="fa fa-link"></span></a></span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <i>Default value : </i><code>{
-                &#x27;string&#x27;: sortString,
-                &#x27;number&#x27;: sortNumber,
-                &#x27;boolean&#x27;: sortBoolean
-              }</code>
+                                        <code>customNames:     <code>string[]</code>
+</code>
                                     </td>
                                 </tr>
+
+
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">packages/core/src/sorter/sorter.ts:25</a></div>
+                                            <i>Type : </i>    <code>string[]</code>
+
                                         </td>
                                     </tr>
-            
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">packages/data/src/files/file.service.ts:34</a></div>
+                                        </td>
+                                    </tr>
+
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>Contains sorting methods for different value types. </p>
-            </div>
+                                    <div class="io-description"><p>Optional custom names for assets. Mapped by indices to assets. </p>
+</div>
                                 </td>
                             </tr>
-            
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="fieldName"></a>
+                                        <span class="name"><b>fieldName</b><a href="#fieldName"><span class="fa fa-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>fieldName:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">packages/data/src/files/file.service.ts:36</a></div>
+                                        </td>
+                                    </tr>
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Custom file form fieldName </p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="ignoreDuplicates"></a>
+                                        <span class="name"><b>ignoreDuplicates</b><a href="#ignoreDuplicates"><span class="fa fa-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>ignoreDuplicates:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">packages/data/src/files/file.service.ts:32</a></div>
+                                        </td>
+                                    </tr>
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Ignores duplicates </p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="includeAssetIDInPath"></a>
+                                        <span class="name"><b>includeAssetIDInPath</b><a href="#includeAssetIDInPath"><span class="fa fa-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>includeAssetIDInPath:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">packages/data/src/files/file.service.ts:30</a></div>
+                                        </td>
+                                    </tr>
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Includes assetID in path </p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="preserveFilenames"></a>
+                                        <span class="name"><b>preserveFilenames</b><a href="#preserveFilenames"><span class="fa fa-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>preserveFilenames:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">packages/data/src/files/file.service.ts:28</a></div>
+                                        </td>
+                                    </tr>
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Preserves Filenames </p>
+</div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
             </section>
-
     </div>
 
-    <div class="tab-pane fade" id="c-readme">
-        <p><h1 id="sorter">Sorter</h1>
-<p>The Sorter is a static class that acts as a helper to sort different primitive types. See the tests for example usage.</p>
-</p>
-    </div>
 
     <div class="tab-pane fade tab-source-code" id="c-source">
-        <pre class="line-numbers"><code class="language-typescript">import { Item } from &#x27;../item/item&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { EventEmitter, Injectable } from &#x27;@angular/core&#x27;;
+import PublicAssetResource from &#x27;ec.sdk/lib/resources/publicAPI/PublicAssetResource&#x27;;
+import PublicAssetList from &#x27;ec.sdk/lib/resources/publicAPI/PublicAssetList&#x27;;
+import { SdkService } from &#x27;../sdk/sdk.service&#x27;;
+import { AssetList } from &#x27;./asset-list/asset-list&#x27;;
+import { TypeConfigService } from &#x27;../model-config/type-config.service&#x27;;
+import moment from &#x27;moment-es6&#x27;;
+import { Item } from &#x27;@ec.components/core/src/item/item&#x27;;
+import DMAssetList from &#x27;ec.sdk/lib/resources/publicAPI/DMAssetList&#x27;;
 
-/** Used for natural sorting of strings */
-const collator &#x3D; new Intl.Collator(undefined, { numeric: true, sensitivity: &#x27;base&#x27; });
-
-/** Sorts strings (naturally) */
-export function sortString(a, b) {
-  return collator.compare(a, b);
+/** Instances of Update are emitted by the changes EventEmitter of the CrudService. */
+export interface Upload {
+  /** The relevant asset. */
+  asset?: PublicAssetResource,
+  /** The relevant assets (when uploading multiple). */
+  assets?: PublicAssetResource[],
+  /** The uploaded asset as item */
+  item?: Item&lt;PublicAssetResource&gt;
+  /** The uploaded asset as item */
+  items?: Array&lt;Item&lt;PublicAssetResource&gt;&gt;
+  /** The list where it happened. */
+  list?: AssetList,
 }
 
-/** Sorts numbers */
-export function sortNumber(a, b) {
-  return a - b;
+/** Interface for file options used by new assets */
+export interface FileOptions {
+  /** Preserves Filenames */
+  preserveFilenames?: boolean
+  /** Includes assetID in path */
+  includeAssetIDInPath?: boolean
+  /** Ignores duplicates */
+  ignoreDuplicates?: boolean
+  /** Optional custom names for assets. Mapped by indices to assets. */
+  customNames?: string[]
+  /** Custom file form fieldName */
+  fieldName?: string
 }
 
-/** Sorts booleans */
-export function sortBoolean(a, b) {
-  return a ? -1 : 1;
-}
-
-/** The Sorter is a singleton that handles all kinds of sorting operations. */
-export abstract class Sorter&lt;T&gt; {
-
-  /** Contains sorting methods for different value types. */
-  static sortType &#x3D; {
-    &#x27;string&#x27;: sortString,
-    &#x27;number&#x27;: sortNumber,
-    &#x27;boolean&#x27;: sortBoolean
+/** The CRUD service is meant to be used when modifying entries.
+ * As the letters state it should be used to create update and delete entries.
+ * Each action fires up a change that can be subscribed upon in any component to react to relevant
+ * changes.
+ * */
+@Injectable()
+export class FileService {
+  /** The changes event is emitted everytime an entry is created or updated. */
+  public uploads: EventEmitter&lt;Upload&gt; &#x3D; new EventEmitter();
+  /** The default config for asset lists */
+  public assetListConfig &#x3D; {
+    label: &#x27;title&#x27;,
+    size: 5,
+    identifier: &#x27;assetID&#x27;,
+    onSave: (item, value) &#x3D;&gt; {
+      const asset &#x3D; item.getBody();
+      // TODO use crud.service for Resource?
+      value &#x3D; item.serialize(value, asset instanceof PublicAssetResource);
+      Object.assign(asset, value);
+      if (asset instanceof PublicAssetResource) {
+        return asset.save();
+      }
+      return value;
+    },
+    fields: {
+      thumb: {
+        label: &#x27;Vorschau&#x27;,
+        resolve: (asset, item, property) &#x3D;&gt; {
+          if (typeof asset &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
+            return false;
+          }
+          return asset.getImageUrl(200)
+        },
+        view: &#x27;avatar&#x27;,
+        readOnly: true
+      },
+      title: {
+        label: &#x27;Titel&#x27;,
+        sortable: true,
+        filterable: true,
+        type: &#x27;text&#x27;,
+        view: &#x27;string&#x27;,
+      },
+      tags: {
+        label: &#x27;Tags&#x27;,
+        view: &#x27;tags&#x27;
+      },
+      type: {
+        label: &#x27;Typ&#x27;,
+        view: &#x27;label&#x27;,
+        sortable: true,
+        readOnly: true,
+      },
+      created: {
+        label: &#x27;Datum&#x27;,
+        view: &#x27;date&#x27;,
+        sortable: true,
+        readOnly: true,
+        display: (value) &#x3D;&gt; moment(value).format(&#x27;DD.MM.YY&#x27;),
+        group: (value) &#x3D;&gt; moment(value).format(&#x27;MMMM YYYY&#x27;)
+      }
+    }
   };
 
-  /** Returns the sorting algorithm for the given item array. */
-  private static getAlgorithm(items: Array&lt;Item&lt;any&gt;&gt;, property?: string): (a, b) &#x3D;&gt; number {
-    if (!items.length) {
-      return;
+  public newAssetListConfig &#x3D; { // TODO: extend
+    label: &#x27;title&#x27;,
+    identifier: &#x27;assetID&#x27;,
+    fields: {
+      title: {
+        label: &#x27;Titel&#x27;,
+        sortable: true,
+        filterable: true,
+        type: &#x27;text&#x27;,
+        view: &#x27;string&#x27;,
+      },
     }
-    if (property &amp;&amp; !items
-      .reduce((has, item) &#x3D;&gt; has &amp;&amp; item.sort(property) !&#x3D;&#x3D; undefined, true)) {
-      console.warn(&#x27;cannot sort property &quot;&#x27; + property + &#x27;&quot; because not all items have that property&#x27;, items);
-      return;
-    }
-    const types &#x3D; items
-      .map(item &#x3D;&gt; typeof item.sort(property))
-      .filter((item, index, _items) &#x3D;&gt; _items.indexOf(item) &#x3D;&#x3D;&#x3D; index);
-    if (types.length &gt; 1) {
-      console.warn(&#x27;cannot sort items because they contain multiple types:&#x27;, types);
-      return;
-    }
-    if (!this.sortType[types[0]]) {
-      console.warn(&#x27;cannot sort items because no algorithm was found for type&#x27;, types[0]);
-      return;
-    }
-    return this.sortType[types[0]];
   }
 
-  /** Sorts a given Array of items after a given property.
-   * @param items Array of arbitrary content.
-   * @param property Optional property to sort after (For Objects)
-   * @param desc Optional Flag that will reverse sort the result (descending).
-   * @param resolve Optional resolve function to expose relevant the part of object that contains
-   *   the given property. */
+  /** Injects sdk */
+  constructor(private sdk: SdkService, private typeConfig: TypeConfigService) {
+  }
 
-  static sort(items: Array&lt;Item&lt;any&gt;&gt;, property?: string, desc?: boolean): Array&lt;any&gt; {
-    const algorithm &#x3D; this.getAlgorithm(items, property);
-    if (!algorithm) {
+  /** Returns form data for a file list. You have to append options (even if empty) to get formData for new assets! */
+  public getFormData(files: FileList, options?: FileOptions): FormData {
+    const formData: FormData &#x3D; new FormData();
+    for (let i &#x3D; 0; i &lt; files.length; i++) {
+      const name &#x3D; options &amp;&amp; options.customNames &amp;&amp; options.customNames[i] ? options.customNames[i] : files.item(i).name;
+      const fieldname &#x3D; options &amp;&amp; options.preserveFilenames &amp;&amp; options.fieldName ? options.fieldName : &#x27;file&#x27;;
+      formData.append(fieldname, files.item(i), name);
+    }
+    if (options &amp;&amp; !options.preserveFilenames) {
+      formData.append(&#x27;preserveFilenames&#x27;, &#x27;false&#x27;);
+    }
+    if (options &amp;&amp; !options.includeAssetIDInPath) {
+      formData.append(&#x27;includeAssetIDInPath&#x27;, &#x27;false&#x27;);
+    }
+    if (options &amp;&amp; options.ignoreDuplicates) {
+      formData.append(&#x27;ignoreDuplicates&#x27;, &#x27;true&#x27;);
+    }
+    return formData;
+  }
+
+  /** Upload New Assets */
+  public uploadAssets(e, assetGroupID, options: FileOptions &#x3D; {}, api &#x3D; this.sdk.api): Promise&lt;Upload&gt; {
+    const files &#x3D; e.target.files;
+    if (!files.length) {
       return;
     }
-    items.sort((a, b) &#x3D;&gt; {
-      if (!property) {
-        return algorithm(a.resolve(), b.resolve());
-      }
-      return algorithm(a.sort(property), b.sort(property));
-    });
-    if (desc) {
-      items.reverse();
+    return api.createDMAssets(assetGroupID, this.getFormData(files, options))
+      .then((assetList: DMAssetList) &#x3D;&gt; {
+        const assets &#x3D; assetList.getAllItems();
+        return {
+          asset: assets[0],
+          assets,
+          item: new Item(assets[0], this.newAssetListConfig),
+          items: assets.map(asset &#x3D;&gt; new Item(asset, this.newAssetListConfig))
+        }
+      }).then((upload: Upload) &#x3D;&gt; {
+        this.uploads.emit(upload);
+        return upload;
+      });
+  }
+
+  /** Upload old assets */
+  public uploadFiles(e): Promise&lt;Upload&gt; {
+    const files &#x3D; e.target.files;
+    if (!files.length) {
+      return;
     }
+    const data &#x3D; this.getFormData(files);
+    return Promise.resolve().then((): Promise&lt;() &#x3D;&gt; Promise&lt;(PublicAssetList | PublicAssetResource)&gt;&gt; &#x3D;&gt; {
+      if (files.length &#x3D;&#x3D;&#x3D; 1) {
+        return this.sdk.api.createAsset(data, {})
+      }
+      return this.sdk.api.createAssets(data, {})
+    })
+      .then(res &#x3D;&gt; res())
+      .then((response) &#x3D;&gt; {
+        if (response[&#x27;getAllItems&#x27;]) {
+          return response[&#x27;getAllItems&#x27;]();
+        }
+        return [response];
+      }).then((assets) &#x3D;&gt; {
+        return {
+          asset: assets[0],
+          assets,
+          item: new Item(assets[0], this.assetListConfig),
+          items: assets.map(asset &#x3D;&gt; new Item(asset, this.assetListConfig))
+        }
+      }).then((upload: Upload) &#x3D;&gt; {
+        this.uploads.emit(upload);
+        return upload;
+      });
+  }
+
+  /** Resolves all assetIDs to PublicAssetResources */
+  public resolveAssets(assets: Array&lt;string | PublicAssetResource&gt;): Promise&lt;Array&lt;PublicAssetResource&gt;&gt; {
+    const unresolved &#x3D; assets.reduce((ids, asset) &#x3D;&gt; {
+      if (typeof asset &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
+        ids.push(asset);
+      }
+      return ids;
+    }, []);
+    if (unresolved.length &#x3D;&#x3D;&#x3D; 0) {
+      return Promise.resolve(&lt;Array&lt;PublicAssetResource&gt;&gt;assets);
+    }
+    if (unresolved.length &#x3D;&#x3D;&#x3D; 1) {
+      unresolved.push(unresolved[0]); // :) TODO remove when backend bug is fixed
+    }
+    return this.sdk.api.assetList({ assetID: { any: unresolved } })
+      .then((assetList) &#x3D;&gt; {
+        const resolved &#x3D; assetList.getAllItems();
+        return assets.map((asset) &#x3D;&gt;
+          typeof asset &#x3D;&#x3D;&#x3D; &#x27;string&#x27; ?
+            resolved.find((resource) &#x3D;&gt; resource.assetID &#x3D;&#x3D;&#x3D; asset) : asset)
+      });
   }
 }
 </code></pre>
     </div>
 </div>
-
 
 
 
