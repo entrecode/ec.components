@@ -1,3 +1,4 @@
+import { FileOptions } from './../file.service';
 import { Component, EventEmitter, Input, Output, ElementRef, ViewChild } from '@angular/core';
 import { SdkService } from '../../sdk/sdk.service';
 import { FileService, Upload } from '../file.service';
@@ -14,6 +15,10 @@ export class UploadComponent implements WithLoader {
   @Input() placeholder: string;
   /** The loader that should be used while uploading*/
   @Input() loader: LoaderComponent;
+  /** The asset group to upload into. If not defined, old assets will be used! */
+  @Input() assetGroup: string;
+  /** Upload options */
+  @Input() options: FileOptions;
   /** Emits when an upload is complete. */
   @Output() success: EventEmitter<Upload> = new EventEmitter();
   /** Reference to the input[type=file] element */
@@ -33,26 +38,30 @@ export class UploadComponent implements WithLoader {
     }
     this.fileInput.nativeElement.click();
   }
+  // https://datamanager.cachena.entrecode.de/a/b2be0156/test
+  // https://datamanager.cachena.entrecode.de/a/b2be0156/test?page=1&size=20
 
   /** Uploads the files from the input event. Handles loader and notifications. */
   upload(e) {
-    const upload = this.fileService.uploadFiles(e)
+    // TODO: make this.options.customNames settable (like in editor)
+    const upload = (this.assetGroup ?
+      this.fileService.uploadAssets(e, this.assetGroup, this.options) :
+      this.fileService.uploadFiles(e))
       .then((_upload) => {
         this.success.emit(_upload);
         this.notificationService.emit({
-          title: this.symbol.resolve('sucess.upload'),
+          title: this.symbol.resolve('success.upload'),
           type: 'success'
         });
       }).catch((err) => {
-        console.log('error', err);
+        console.error(err);
         this.notificationService.emit({
           title: this.symbol.resolve('error.upload'),
-          error: err
+          error: err,
+          sticky: true
         });
       });
     this.loaderService.wait(upload, this.loader);
     return upload;
   }
 }
-
-

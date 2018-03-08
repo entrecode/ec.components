@@ -19,8 +19,8 @@ export class FileListDemoComponent implements OnInit {
     ngOnInit() { }
 
     select(assetGroup) {
-        console.log('assetGrpiü', assetGroup);
         this.group = assetGroup.getBody();
+        console.log('group', this.group);
     }
 
     upload() {
