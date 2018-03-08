@@ -45,8 +45,6 @@ export class ResourceFormComponent extends FormComponent<Resource> implements On
     @Input() relation: string;
     /** The loader that should be shown while the list is loaded. */
     @Input() loader: LoaderComponent;
-    /** This output fires when the resource has been deleted using deleteResource(). */
-    @Output() deleted: EventEmitter<any> = new EventEmitter();
 
     /** Injects services and calls super constructor. */
     constructor(protected loaderService: LoaderService,
@@ -92,27 +90,5 @@ export class ResourceFormComponent extends FormComponent<Resource> implements On
         }
         const entry = this.form.getBody();
         return entry && entry.save;
-    }
-
-    /** Deletes the edited entry. Fires the deleted Output. */
-    deleteResource() {
-        if (!this.form || !this.isEditing()) {
-            return;
-        }
-        console.log('would now delete');
-        /* const deletion = this.crud.del(this.model, this.form.getBody()).then(() => {
-            this.deleted.emit();
-            this.create();
-            this.notificationService.emit({
-                title: this.symbol.resolve('success.delete'), type: 'success'
-            });
-        }).catch((error) => {
-            this.notificationService.emit({
-                title: this.symbol.resolve('error.delete'), error
-            });
-        });
-
-        this.loaderService.wait(deletion, this.loader);
-        return deletion; */
     }
 }

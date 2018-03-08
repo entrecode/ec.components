@@ -26,7 +26,7 @@ export default [{
 },
 {
     name: 'error.upload',
-    content: 'Fehler beim hochladen'
+    content: 'Fehler beim Hochladen'
 },
 {
     name: 'error.input.emailUnavailable',
@@ -57,6 +57,10 @@ export default [{
     content: 'Validierungsfehler'
 },
 {
+    name: 'error.2375',
+    content: 'Die Datei existiert bereits. Duplikate werden ignoriert.'
+},
+{
     name: 'resource.delete.question',
     content: 'Wirklich löschen?'
 },
@@ -84,4 +88,16 @@ export default [{
     name: 'pagination.last',
     content: '»'
 },
+{
+    name: 'upload.preserveFilenames',
+    content: 'Dateinamen einkochen'
+},
+{
+    name: 'upload.includeAssetIDInPath',
+    content: 'AssetID in Pfad'
+},
+{
+    name: 'upload.ignoreDuplicates',
+    content: 'Duplikate ignorieren'
+}
 ];

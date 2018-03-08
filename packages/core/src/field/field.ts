@@ -33,6 +33,14 @@ export class Field implements FieldConfigProperty {
   values: any[];
   /** Class string */
   class: string;
+  /** Pop Class(es) of eventually nested pops */
+  nestedPopClass: string;
+  /** If true, eventual pops will be active */
+  nestedPopActive: boolean;
+  /** If true, eventual pops will be visible*/
+  nestedPopVisible: boolean;
+  /** id for form labels */
+  id: string;
   /** wildcard for custom config values */
   [key: string]: any;
 

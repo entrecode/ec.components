@@ -6,6 +6,7 @@ import { AssetList } from './asset-list/asset-list';
 import { TypeConfigService } from '../model-config/type-config.service';
 import moment from 'moment-es6';
 import { Item } from '@ec.components/core/src/item/item';
+import DMAssetList from 'ec.sdk/lib/resources/publicAPI/DMAssetList';
 
 /** Instances of Update are emitted by the changes EventEmitter of the CrudService. */
 export interface Upload {
@@ -18,7 +19,21 @@ export interface Upload {
   /** The uploaded asset as item */
   items?: Array<Item<PublicAssetResource>>
   /** The list where it happened. */
-  list?: AssetList
+  list?: AssetList,
+}
+
+/** Interface for file options used by new assets */
+export interface FileOptions {
+  /** Preserves Filenames */
+  preserveFilenames?: boolean
+  /** Includes assetID in path */
+  includeAssetIDInPath?: boolean
+  /** Ignores duplicates */
+  ignoreDuplicates?: boolean
+  /** Optional custom names for assets. Mapped by indices to assets. */
+  customNames?: string[]
+  /** Custom file form fieldName */
+  fieldName?: string
 }
 
 /** The CRUD service is meant to be used when modifying entries.
@@ -54,7 +69,7 @@ export class FileService {
           }
           return asset.getImageUrl(200)
         },
-        view: 'assetPreview',
+        view: 'avatar',
         readOnly: true
       },
       title: {
@@ -85,18 +100,66 @@ export class FileService {
     }
   };
 
+  public newAssetListConfig = { // TODO: extend
+    label: 'title',
+    identifier: 'assetID',
+    fields: {
+      title: {
+        label: 'Titel',
+        sortable: true,
+        filterable: true,
+        type: 'text',
+        view: 'string',
+      },
+    }
+  }
+
   /** Injects sdk */
   constructor(private sdk: SdkService, private typeConfig: TypeConfigService) {
   }
 
-  public getFormData(files: FileList): FormData {
+  /** Returns form data for a file list. You have to append options (even if empty) to get formData for new assets! */
+  public getFormData(files: FileList, options?: FileOptions): FormData {
     const formData: FormData = new FormData();
     for (let i = 0; i < files.length; i++) {
-      formData.append('file', files.item(i), files.item(i).name);
+      const name = options && options.customNames && options.customNames[i] ? options.customNames[i] : files.item(i).name;
+      const fieldname = options && options.preserveFilenames && options.fieldName ? options.fieldName : 'file';
+      formData.append(fieldname, files.item(i), name);
+    }
+    if (options && !options.preserveFilenames) {
+      formData.append('preserveFilenames', 'false');
+    }
+    if (options && !options.includeAssetIDInPath) {
+      formData.append('includeAssetIDInPath', 'false');
+    }
+    if (options && options.ignoreDuplicates) {
+      formData.append('ignoreDuplicates', 'true');
     }
     return formData;
   }
 
+  /** Upload New Assets */
+  public uploadAssets(e, assetGroupID, options: FileOptions = {}, api = this.sdk.api): Promise<Upload> {
+    const files = e.target.files;
+    if (!files.length) {
+      return;
+    }
+    return api.createDMAssets(assetGroupID, this.getFormData(files, options))
+      .then((assetList: DMAssetList) => {
+        const assets = assetList.getAllItems();
+        return {
+          asset: assets[0],
+          assets,
+          item: new Item(assets[0], this.newAssetListConfig),
+          items: assets.map(asset => new Item(asset, this.newAssetListConfig))
+        }
+      }).then((upload: Upload) => {
+        this.uploads.emit(upload);
+        return upload;
+      });
+  }
+
+  /** Upload old assets */
   public uploadFiles(e): Promise<Upload> {
     const files = e.target.files;
     if (!files.length) {
@@ -109,23 +172,23 @@ export class FileService {
       }
       return this.sdk.api.createAssets(data, {})
     })
-    .then(res => res())
-    .then((response) => {
-      if (response['getAllItems']) {
-        return response['getAllItems']();
-      }
-      return [response];
-    }).then((assets) => {
-      return {
-        asset: assets[0],
-        assets,
-        item: new Item(assets[0], this.assetListConfig),
-        items: assets.map(asset => new Item(asset, this.assetListConfig))
-      }
-    }).then((upload: Upload) => {
-      this.uploads.emit(upload);
-      return upload;
-    });
+      .then(res => res())
+      .then((response) => {
+        if (response['getAllItems']) {
+          return response['getAllItems']();
+        }
+        return [response];
+      }).then((assets) => {
+        return {
+          asset: assets[0],
+          assets,
+          item: new Item(assets[0], this.assetListConfig),
+          items: assets.map(asset => new Item(asset, this.assetListConfig))
+        }
+      }).then((upload: Upload) => {
+        this.uploads.emit(upload);
+        return upload;
+      });
   }
 
   /** Resolves all assetIDs to PublicAssetResources */
@@ -143,11 +206,11 @@ export class FileService {
       unresolved.push(unresolved[0]); // :) TODO remove when backend bug is fixed
     }
     return this.sdk.api.assetList({ assetID: { any: unresolved } })
-    .then((assetList) => {
-      const resolved = assetList.getAllItems();
-      return assets.map((asset) =>
-        typeof asset === 'string' ?
-          resolved.find((resource) => resource.assetID === asset) : asset)
-    });
+      .then((assetList) => {
+        const resolved = assetList.getAllItems();
+        return assets.map((asset) =>
+          typeof asset === 'string' ?
+            resolved.find((resource) => resource.assetID === asset) : asset)
+      });
   }
 }

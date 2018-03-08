@@ -1,3 +1,6 @@
+import { FileListDemoComponent } from './file-list/file-list-demo.component';
+import { ResourceSelectDemoComponent } from './resource-select/resource-select-demo.component';
+import { DemoDashboardComponent } from './dashboard.component';
 import { Routes } from '@angular/router';
 import { PopDemoComponent } from './pop/pop-demo.component';
 import { DataDemoComponent } from './data/data-demo.component';
@@ -35,10 +38,6 @@ import { SymbolDemoComponent } from './symbol/symbol-demo.component';
 import { ResourceDeletePopDemoComponent } from './resource-delete-pop/resource-delete-pop-demo.component';
 
 export const demoRoutes: Routes = [
-  /*  {
-      path: 'ec',
-      loadChildren: () => DataModule,
-    },*/
   {
     path: 'ui',
     children: [
@@ -132,6 +131,10 @@ export const demoRoutes: Routes = [
       {
         path: 'resource-delete-pop',
         component: ResourceDeletePopDemoComponent
+      },
+      {
+        path: 'resource-select',
+        component: ResourceSelectDemoComponent
       }
     ]
   },
@@ -191,6 +194,10 @@ export const demoRoutes: Routes = [
       {
         path: 'asset-select',
         component: AssetSelectDemoComponent
+      },
+      {
+        path: 'file-list',
+        component: FileListDemoComponent
       },
     ]
 

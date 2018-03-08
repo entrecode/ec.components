@@ -29,6 +29,8 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   @Input() value: Array<T>;
   /** The used selection */
   @Input() selection: Selection<T>;
+  /** Input placeholder */
+  @Input() placeholder: string;
   /** Event emitter on item selection */
   @Output() change: EventEmitter<Selection<T>> = new EventEmitter();
   /** Event emitter on selected item click */
@@ -43,9 +45,10 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   @ViewChild(PopComponent) pop: PopComponent;
 
   @HostListener('document:click', ['$event']) clickedOutside($event) {
-    this.pop.hide();
+    if (this.pop) {
+      this.pop.hide();
+    }
   }
-
   clickInside(e) {
     e.preventDefault();
     e.stopPropagation();
@@ -108,23 +111,17 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
     this.itemClick.emit(item);
   }
 
-  /** Column click handler. Toggles selection. */
-  columnClick(item) {
-    if (this.selection) {
-      this.selection.toggle(item);
-    }
-    // TODO emit event?
-  }
-
+  /** Select handler. Toggles selection. */
   public select(item) {
     this.selection.toggle(item);
-    if (this.config.solo) {
-      this.pop.hide();
-    }
   }
 
+  /** Fires on selection change. Hides pop if solo */
   changed() {
     this.change.emit(this.selection);
+    if (this.config.solo && this.pop) {
+      this.pop.hide();
+    }
     return this.propagateChange(this.selection.getValue());
   }
 

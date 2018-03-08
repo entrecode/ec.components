@@ -47,6 +47,8 @@ export class ResourceCrudComponent<T> implements OnInit, WithLoader {
     @Output() columnClicked: EventEmitter<any> = new EventEmitter();
     /** Emits when the selection has changed */
     @Output() selected: EventEmitter<any> = new EventEmitter();
+    /** Output that is nexted when pressing the create button */
+    @Output() createClicked: EventEmitter<any> = new EventEmitter();
 
     constructor(private sdk: SdkService,
         private auth: AuthService,
@@ -54,14 +56,6 @@ export class ResourceCrudComponent<T> implements OnInit, WithLoader {
         private notificationService: NotificationsService,
         @Optional() public router: Router,
         @Optional() public route: ActivatedRoute) {
-        /* if (route) {
-            merge(route.data, route.params, route.queryParams)
-                .subscribe(({ model }) => {
-                    if (model) {
-                        this.model = model;
-                    }
-                });
-        } */
     }
 
     ngOnInit() {
@@ -99,5 +93,13 @@ export class ResourceCrudComponent<T> implements OnInit, WithLoader {
     /** Returns the pop class that should be used, either uses config.popClass or defaults to ec-pop_drawer-left. */
     getPopClass() {
         return this.config && this.config.popClass ? this.config.popClass : 'ec-pop_dialog';
+    }
+    /** Method that is invoked when pressing the create button. Default behaviour is opening the resource-pop. */
+    create() {
+        if (this.createClicked.observers.length) {
+            this.createClicked.next();
+        } else if (this.pop) {
+            this.pop.create()
+        }
     }
 }
