@@ -1,5 +1,5 @@
 <!-- <ec-resource-crud [api]="datamanager" relation="assetGroup" (columnClicked)="select($event)"></ec-resource-crud> -->
-<ec-resource-select [api]="datamanager" relation="assetGroup" (change)="selected($event)" [solo]="true" [config]="{methods:['get']}"></ec-resource-select>
+<ec-resource-select [api]="datamanager" relation="assetGroup" (change)="selected($event)" [solo]="true" [config]="{methods:['get'],disableListPop:true}"></ec-resource-select>
 
 <ec-upload *ngIf="group" [assetGroup]="group.assetGroupID" [loader]="loader" [api]="api" [custom]="true"></ec-upload>
 

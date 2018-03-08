@@ -34,7 +34,7 @@
     </div>
     <!--TODO link to open a ec-pop with an ec-list like now in .select-options-->
     <nav class="ec-entry-select__controls">
-        <a (click)="listPop.show()" class="btn btn_clear">
+        <a (click)="listPop.show()" class="btn btn_clear" *ngIf="!config||!config.disableListPop">
             <ec-icon name="list-bullets"></ec-icon>
         </a>
     </nav>

@@ -28,4 +28,6 @@ export interface CrudConfig<T> extends ListConfig<T> {
   permissions?: { put?: string | boolean, post?: string | boolean, get?: string | boolean, delete?: string | boolean }
   /** If true, no select mode switch will be shown */
   disableSelectSwitch?: boolean;
+  /** If true, no list pop will be available at selects */
+  disableListPop?: boolean;
 }
