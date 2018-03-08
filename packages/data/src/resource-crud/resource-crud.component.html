@@ -1,7 +1,7 @@
 <div class="ec-crud">
     <header class="ec-crud-header">
         <nav class="nav">
-            <a (click)="resourcePop.create()" *ngIf="hasMethod('post')" class="btn">
+            <a (click)="create()" *ngIf="hasMethod('post')" class="btn">
                 <span *ngIf="config?.createLabel">{{config?.createLabel}}</span>
                 <span *ngIf="!config?.createLabel">
                     <ec-icon name="add"></ec-icon>

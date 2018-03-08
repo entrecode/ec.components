@@ -1,3 +1,4 @@
+import { FileListDemoComponent } from './file-list/file-list-demo.component';
 import { ResourceSelectDemoComponent } from './resource-select/resource-select-demo.component';
 import { DemoDashboardComponent } from './dashboard.component';
 import { Routes } from '@angular/router';
@@ -193,6 +194,10 @@ export const demoRoutes: Routes = [
       {
         path: 'asset-select',
         component: AssetSelectDemoComponent
+      },
+      {
+        path: 'file-list',
+        component: FileListDemoComponent
       },
     ]
 
