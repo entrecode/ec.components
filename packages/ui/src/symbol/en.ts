@@ -56,5 +56,45 @@ export default [{
     name: 'error.2211',
     content: 'Validation Error'
 },
+{
+    name: 'resource.delete.question',
+    content: 'Really Delete?'
+},
+{
+    name: 'resource.delete.yes',
+    content: 'Yes'
+},
+{
+    name: 'resource.delete.no',
+    content: 'No'
+},
+{
+    name: 'pagination.first',
+    content: '«'
+},
+{
+    name: 'pagination.prev',
+    content: '‹'
+},
+{
+    name: 'pagination.next',
+    content: '›'
+},
+{
+    name: 'pagination.last',
+    content: '»'
+},
+{
+    name: 'upload.preserveFilenames',
+    content: 'Preserve Filenames'
+},
+{
+    name: 'upload.includeAssetIDInPath',
+    content: 'Include AssetID in Path'
+},
+{
+    name: 'upload.ignoreDuplicates',
+    content: 'Ignore Duplicates'
+}
 ];
 

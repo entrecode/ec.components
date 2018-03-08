@@ -1,3 +1,4 @@
+import { PopComponent } from './../../../../ui/src/pop/pop.component';
 import { FileOptions } from './../file.service';
 import { Component, EventEmitter, Input, Output, ElementRef, ViewChild } from '@angular/core';
 import { SdkService } from '../../sdk/sdk.service';
@@ -9,15 +10,20 @@ import PublicAPI from 'ec.sdk/lib/PublicAPI';
 /** This component will render an input field to upload files to the datamanager. */
 @Component({
   selector: 'ec-upload',
-  template: `<input type="file" (change)="upload($event, api)" multiple #fileInput>`,
+  templateUrl: './upload.component.html',
 })
 export class UploadComponent implements WithLoader {
+  event: any;
+  uploadPromise: Promise<Upload | void>;
+  public filesToUpload: any;
   /** The input placeholder*/
   @Input() placeholder: string;
   /** The loader that should be used while uploading*/
   @Input() loader: LoaderComponent;
   /** The asset group to upload into. If not defined, old assets will be used! */
   @Input() assetGroup: string;
+  /** If true, a pop to rename files + customize flags will appear before uploading. */
+  @Input() custom: boolean;
   /** Upload options */
   @Input() options: FileOptions;
   /** The api to use for the upload. Defaults to sdk.api */
@@ -26,6 +32,8 @@ export class UploadComponent implements WithLoader {
   @Output() success: EventEmitter<Upload> = new EventEmitter();
   /** Reference to the input[type=file] element */
   @ViewChild('fileInput') fileInput: ElementRef;
+  /** Pop child for new asset options. */
+  @ViewChild(PopComponent) pop: PopComponent;
 
   constructor(private sdk: SdkService,
     private fileService: FileService,
@@ -45,9 +53,24 @@ export class UploadComponent implements WithLoader {
   // https://datamanager.cachena.entrecode.de/a/b2be0156/test?page=1&size=20
 
   /** Uploads the files from the input event. Handles loader and notifications. */
+  change(e, api = this.sdk.api) {
+    if (this.custom) {
+      this.filesToUpload = e.target.files;
+      this.options = this.options || {
+        preserveFilenames: true,
+        includeAssetIDInPath: true,
+        ignoreDuplicates: false,
+        customNames: []
+      };
+      this.event = e;
+      this.pop.show();
+      return;
+    }
+    return this.upload(e, api);
+  }
+
   upload(e, api = this.sdk.api) {
-    // TODO: make this.options.customNames settable (like in editor)
-    const upload = (this.assetGroup ?
+    this.uploadPromise = (this.assetGroup ?
       this.fileService.uploadAssets(e, this.assetGroup, this.options, api) :
       this.fileService.uploadFiles(e))
       .then((_upload) => {
@@ -56,6 +79,8 @@ export class UploadComponent implements WithLoader {
           title: this.symbol.resolve('success.upload'),
           type: 'success'
         });
+        this.pop.hide();
+        return _upload;
       }).catch((err) => {
         console.error(err);
         this.notificationService.emit({
@@ -64,7 +89,10 @@ export class UploadComponent implements WithLoader {
           sticky: true
         });
       });
-    this.loaderService.wait(upload, this.loader);
-    return upload;
+    this.loaderService.wait(this.uploadPromise, this.loader);
+    this.uploadPromise.then(() => {
+      delete this.uploadPromise;
+    })
+    return this.uploadPromise;
   }
 }

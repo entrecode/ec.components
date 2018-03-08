@@ -1,14 +1,12 @@
-<ec-resource-crud [api]="datamanager" relation="assetGroup" (columnClicked)="select($event)"></ec-resource-crud>
+<!-- <ec-resource-crud [api]="datamanager" relation="assetGroup" (columnClicked)="select($event)"></ec-resource-crud> -->
+<ec-resource-select [api]="datamanager" relation="assetGroup" (change)="selected($event)" [solo]="true" [config]="{methods:['get']}"></ec-resource-select>
 
-<ec-upload *ngIf="group" [assetGroup]="group.assetGroupID" [loader]="loader" [api]="api"></ec-upload>
+<ec-upload *ngIf="group" [assetGroup]="group.assetGroupID" [loader]="loader" [api]="api" [custom]="true"></ec-upload>
 
 <ec-notifications class="toast"></ec-notifications>
 
 <ec-loader class="ec-loader" #loader></ec-loader>
 
-<!-- <ec-resource-crud *ngIf="group" [api]="group" relation="asset"></ec-resource-crud> -->
-
-<h5>{{group?.assetGroupID}}</h5>
 <div data-grid>
   <div *ngFor="let asset of assets" data-col="2-sm" class="has-margin-bottom is-relative">
     <img [ecImage]="asset" [api]="api" thumb="true" size="200" class="img_full is-lifted is-rounded">
@@ -19,3 +17,6 @@
 </div>
 
 <ec-file-list [api]="group" *ngIf="group"></ec-file-list>
+
+<!-- <ec-resource-list [api]="group" relation="dmAsset" *ngIf="group"></ec-resource-list> -->
+<!-- TODO: use when SDK renamed asset to dmAsset -->

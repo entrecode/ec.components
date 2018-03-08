@@ -84,4 +84,16 @@ export default [{
     name: 'pagination.last',
     content: '»'
 },
+{
+    name: 'upload.preserveFilenames',
+    content: 'Dateinamen bewahren'
+},
+{
+    name: 'upload.includeAssetIDInPath',
+    content: 'AssetID in Pfad'
+},
+{
+    name: 'upload.ignoreDuplicates',
+    content: 'Duplikate ignorieren'
+}
 ];

@@ -33,6 +33,12 @@ export class FileListDemoComponent implements OnInit {
 
     ngOnInit() { }
 
+    selected(selection) {
+        if (selection.items.length) {
+            this.select(selection.items[0]);
+        }
+    }
+
     select(assetGroup: Item<Resource>) {
         const group = assetGroup.getBody();
         if (this.group && group.assetGroupID === this.group.assetGroupID) {
