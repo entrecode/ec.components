@@ -20,6 +20,15 @@ export function hexColor() {
   }
 };
 
+export function tagsField(label, list = true) {
+  return {
+    label,
+    view: 'tags',
+    display: (value) => value || [],
+    list
+  };
+}
+
 export function stringField(label, filterable = true, sortable = true) {
   return {
     label,
@@ -42,6 +51,10 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
     },
     fields: {
       hexColor: hexColor(),
+      shortID: {
+        immutable: true,
+        list: false
+      },
       title: stringField('Name'),
       description: {
         label: 'Beschreibung',
@@ -53,6 +66,12 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
         view: 'json',
         list: false
       },
+      defaultLocale: {
+        list: false
+      },
+      locales: tagsField('Locales', false),
+      publicAssetRights: tagsField('publicAssetRights', false),
+      rights: tagsField('rights', false),
       created,
     }
   },
@@ -74,10 +93,48 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
       fields: {
         view: 'tags',
         display: (value) => {
-          return value.map(field => field.title).filter(field => field[0] !== '_')
+          return (value || []).map(field => field.title).filter(field => field[0] !== '_')
         },
         prefill: []
       },
+      titleField: {
+        view: 'string',
+        list: false
+      },
+      config: {
+        list: false,
+        view: 'json'
+      },
+      hasEntries: {
+        immutable: true,
+        view: 'boolean'
+      },
+      hooks: {
+        display: (value) => {
+          return (value || []).map(hook => (hook.methods || []).join(', '))
+        },
+        view: 'tags'
+      },
+      policies: {
+        display: (value) => {
+          return (value || []).map(policy => policy.method)
+        },
+        view: 'tags'
+      },
+      sync: {
+        list: false,
+        view: 'json'
+      },
+      /* lastSyncs: {
+        label: 'Zuletzt synchronisiert',
+        display: (values) => {
+          if (values) {
+            console.log('values', values);
+          }
+          return (values || []).map(value => value && value.finished ? moment(value.finished).format('DD.MM.YY') : '-')
+        },
+        view: 'tags'
+      }, */
       created,
     }
   },
@@ -118,11 +175,7 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
       openID: {
         list: false
       },
-      permissions: {
-        view: 'tags',
-        display: (value) => value || [],
-        list: false
-      },
+      permissions: tagsField('Permissions', false),
       groups: {
         label: 'Gruppen',
         view: 'tags',
@@ -156,14 +209,16 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
         sortable: true,
         readOnly: true
       },
-      isPending: {
+      pending: {
         label: 'Pending',
         view: 'boolean',
         filterable: true,
         sortable: true,
         readOnly: true
       },
-      created,
+      oauth: {
+        list: false
+      }
     }
   },
   template: {
@@ -181,12 +236,11 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
         sortable: true
       },
       version: {
-        label: 'Datum',
+        label: 'Version',
         display: value => moment(value).format('DD.MM.YY'),
         group: value => moment(value).format('MMMM YYYY'),
         form: false
-      },
-      created,
+      }
     }
   },
   app: {
@@ -262,10 +316,7 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
         display: value => value.length,
         immutable: true
       },
-      tags: {
-        label: 'Tags',
-        view: 'tags'
-      },
+      tags: tagsField('Tags'),
       created,
     }
   },
@@ -288,7 +339,7 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
       },
       policies: {
         view: 'tags',
-        display: (policies) => policies.map(p => p.method),
+        display: (policies) => (policies || []).map(p => p.method),
         prefill: []
       },
       created,
@@ -352,13 +403,8 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
         label: 'Callback URL',
         view: 'string',
       },
-      tokenMethod: {
-        label: 'Token Method',
-        view: 'tags'
-      },
-      disableStrategies: {
-        view: 'tags'
-      },
+      tokenMethod: tagsField('Token Method'),
+      disableStrategies: tagsField('disableStrategies'),
       created,
     }
   },
@@ -379,7 +425,8 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
       accounts: {
         label: 'accounts',
         view: 'tags',
-        prefill: []
+        prefill: [],
+        list: false
       },
       addRegistered: {
         label: 'addRegistered',
@@ -441,8 +488,9 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
         label: 'Name'
       },
       permissions: {
-        label: 'Permissions',
-        view: 'tags'
+        view: 'tags',
+        display: (value) => value || [],
+        list: false
       },
       created,
     }
