@@ -8,6 +8,7 @@
 * added resource-delete-pop
 * removed labels config from pagination-config. now using symbol.service
 * added ec-resource-select
+* added support for new assets
 
 <a name="0.14.0"></a>
 
