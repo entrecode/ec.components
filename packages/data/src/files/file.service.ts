@@ -154,7 +154,6 @@ export class FileService {
           items: assets.map(asset => new Item(asset, this.newAssetListConfig))
         }
       }).then((upload: Upload) => {
-        console.log('upload', upload);
         this.uploads.emit(upload);
         return upload;
       });
