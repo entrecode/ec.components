@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges } from '@angular/core';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 
 /** The CrudComponent takes at least a model name to render an entry list with create/edit/delete functionality out of the box.  */
 @Component({
@@ -6,16 +7,28 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './error.component.html'
 })
 /** Displays an error thrown by the SDK. */
-export class ErrorComponent implements OnInit {
+export class ErrorComponent implements OnInit, OnChanges {
   /** The error that should be displayed */
   @Input() error: any;
 
+  constructor(private symbol: SymbolService) {
+  }
+
   ngOnInit() {
+    this.update();
+  }
+
+  ngOnChanges() {
+    this.update();
+  }
+
+  update() {
     if (!this.error) {
       return;
     }
-    if (this.error.code === 2211) { // TODO: use some errors.ts file with all codes mapped to messages
-      this.error.message = 'Validierungsfehler';
+    const message = this.symbol.resolve('error.' + this.error.code);
+    if (message) {
+      this.error.message = message;
     }
   }
 }

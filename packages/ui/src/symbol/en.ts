@@ -57,6 +57,10 @@ export default [{
     content: 'Validation Error'
 },
 {
+    name: 'error.2375',
+    content: 'The File already exists. Duplicates are ignored.'
+},
+{
     name: 'resource.delete.question',
     content: 'Really Delete?'
 },

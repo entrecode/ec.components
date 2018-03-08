@@ -26,7 +26,7 @@ export default [{
 },
 {
     name: 'error.upload',
-    content: 'Fehler beim hochladen'
+    content: 'Fehler beim Hochladen'
 },
 {
     name: 'error.input.emailUnavailable',
@@ -55,6 +55,10 @@ export default [{
 {
     name: 'error.2211',
     content: 'Validierungsfehler'
+},
+{
+    name: 'error.2375',
+    content: 'Die Datei existiert bereits. Duplikate werden ignoriert.'
 },
 {
     name: 'resource.delete.question',

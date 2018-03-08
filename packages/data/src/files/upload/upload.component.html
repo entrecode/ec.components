@@ -1,6 +1,11 @@
 <input type="file" (change)="change($event, api)" multiple #fileInput (click)="clear()">
 <ec-pop class="ec-pop ec-pop_dialog">
-    <div *ngIf="filesToUpload?.length">
+    <header class="ec-pop-header">
+        <button (click)="pop.hide()" type="button" class="ec-pop__dismiss">
+            <ec-icon name="close-x-big"></ec-icon>
+        </button>
+    </header>
+    <div *ngIf="filesToUpload?.length" class="ec-pop-body">
         <div class="xui-toggle">
             <input id="preserveFilenames" type="checkbox" [(ngModel)]="options.preserveFilenames">
             <label for="preserveFilenames">
