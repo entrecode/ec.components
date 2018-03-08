@@ -240,7 +240,8 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
     fields: {
       assetGroupID: {
         label: 'assetGroupID',
-        view: 'string'
+        view: 'string',
+        filterable: true
       },
       public: {
         view: 'boolean'
@@ -255,6 +256,53 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
         display: (policies) => policies.map(p => p.method),
         prefill: []
       }
+    }
+  },
+  dmAsset: {
+    identifier: 'assetID',
+    fields: {
+      file: {
+        label: 'File',
+        display: value => value.url,
+        view: 'avatar'
+      },
+      assetID: {
+        label: 'assetID',
+        list: false,
+        form: false,
+        immutable: true
+      },
+      title: {
+        label: 'Titel',
+        view: 'string',
+        sortable: true
+      },
+      caption: {
+        label: 'Caption',
+        view: 'string'
+      },
+      duplicates: {
+        label: 'Duplikate',
+        view: 'number',
+        list: false
+      },
+      thumbnails: {
+        label: 'Thumb',
+        display: values => values.map(value => value.url),
+        list: false
+      },
+      type: {
+        label: 'Typ',
+        view: 'string'
+      },
+      created: {
+        label: 'Datum',
+        sortable: true,
+        display: value => moment(value).format('DD.MM.YY'),
+        group: value => moment(value).format('MMMM YYYY'),
+        form: false,
+        immutable: true
+      },  // creator, creatorType
     }
   },
   client: {

@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import Core from 'ec.sdk/lib/Core';
 import { Item } from '@ec.components/core';
 import Resource from 'ec.sdk/lib/resources/Resource';
+import DMAssetResource from 'ec.sdk/lib/resources/publicAPI/DMAssetResource';
 
 @Component({
     selector: 'ec-file-list-demo',
@@ -13,6 +14,7 @@ import Resource from 'ec.sdk/lib/resources/Resource';
 })
 
 export class FileListDemoComponent implements OnInit {
+    assets: DMAssetResource;
     api: PublicAPI;
     group: any;
     datamanager: DataManagerResource;
@@ -20,12 +22,11 @@ export class FileListDemoComponent implements OnInit {
         this.sdk.ready.then(() => {
             this.sdk.datamanager.dataManager('f3e16924-7781-4f5d-ad67-66e99bb941c6')
                 .then(dm => {
-                    console.log('dm', dm);
                     this.datamanager = dm;
                     return dm.getPublicAPI();
                 }).then(api => {
-                    console.log('api', api);
                     this.api = api;
+                    /* this.sdk.useDatamanager(api.shortID); */
                 });
         })
     }
@@ -34,11 +35,20 @@ export class FileListDemoComponent implements OnInit {
 
     select(assetGroup: Item<Resource>) {
         const group = assetGroup.getBody();
-        console.log('group', group);
+        if (this.group && group.assetGroupID === this.group.assetGroupID) {
+            return;
+        }
         this.group = group;
+        /* group.assetList().then(assetList => {
+            this.assets = assetList.getAllItems();
+        }) */
     }
 
     upload() {
         console.log('upload!');
+    }
+
+    delete(asset) {
+        console.log('delete', asset);
     }
 }

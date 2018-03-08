@@ -1,9 +1,7 @@
-/**
- * Created by felix on 23.05.17.
- */
 import { Directive, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import PublicAssetResource from 'ec.sdk/lib/resources/publicAPI/PublicAssetResource';
 import { SdkService } from '../../sdk/sdk.service';
+import PublicAPI from 'ec.sdk/lib/PublicAPI';
 
 /** Loads an public asset by id to the template. */
 @Directive({
@@ -21,6 +19,8 @@ export class AssetDirective implements OnChanges {
   @Input() autoload: boolean;
   /** The levels to use. */
   @Input() levels: number;
+  /** The api to use. Defaults to sdk.api */
+  @Input() api: PublicAPI;
   /** Fires as soon as the asset has been loaded. */
   @Output() loaded: EventEmitter<PublicAssetResource> = new EventEmitter();
   /** The current loaded asset */
@@ -47,12 +47,16 @@ export class AssetDirective implements OnChanges {
     if (!this.assetId) {
       return Promise.reject('cannot load asset: no assetId is set');
     }
-    this.promise = this.sdk.api.asset(this.assetId)
-    .then((asset) => {
-      this.asset = asset;
-      this.loaded.emit(asset);
-      return asset;
-    });
+    const api = this.api || this.sdk.api;
+    if (!api) {
+      throw new Error('cannot load asset: no api was set!');
+    }
+    this.promise = api.asset(this.assetId)
+      .then((asset) => {
+        this.asset = asset;
+        this.loaded.emit(asset);
+        return asset;
+      });
     return this.promise;
   }
 }

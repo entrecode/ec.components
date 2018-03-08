@@ -69,7 +69,7 @@ export class FileService {
           }
           return asset.getImageUrl(200)
         },
-        view: 'assetPreview',
+        view: 'avatar',
         readOnly: true
       },
       title: {
@@ -100,7 +100,7 @@ export class FileService {
     }
   };
 
-  public newAssetLisConfig = { // TODO: extend
+  public newAssetListConfig = { // TODO: extend
     label: 'title',
     identifier: 'assetID',
     fields: {
@@ -150,8 +150,8 @@ export class FileService {
         return {
           asset: assets[0],
           assets,
-          item: new Item(assets[0], this.newAssetLisConfig),
-          items: assets.map(asset => new Item(asset, this.newAssetLisConfig))
+          item: new Item(assets[0], this.newAssetListConfig),
+          items: assets.map(asset => new Item(asset, this.newAssetListConfig))
         }
       }).then((upload: Upload) => {
         console.log('upload', upload);

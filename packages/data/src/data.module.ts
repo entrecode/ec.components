@@ -25,6 +25,7 @@ import { ResourceCrudComponent } from './resource-crud/resource-crud.component';
 import { ResourceDeletePopComponent } from './resource-delete-pop/resource-delete-pop.component';
 import { ResourceSelectComponent } from './resource-select/resource-select.component';
 import { AdminEntryInputComponent } from './entry-form/admin-entry-input.component';
+import { FileListComponent } from './files/file-list/file-list.component';
 
 @NgModule({
   entryComponents: [
@@ -51,6 +52,7 @@ import { AdminEntryInputComponent } from './entry-form/admin-entry-input.compone
     AdminEntryInputComponent,
     CrudComponent,
     EntrySelectComponent,
+    FileListComponent,
   ],
   imports: [
     CommonModule,
@@ -74,6 +76,7 @@ import { AdminEntryInputComponent } from './entry-form/admin-entry-input.compone
     ResourceCrudComponent,
     ResourceDeletePopComponent,
     ResourceSelectComponent,
+    FileListComponent,
     RouterModule,
     UiModule,
     SdkModule,

@@ -1,9 +1,21 @@
 <ec-resource-crud [api]="datamanager" relation="assetGroup" (columnClicked)="select($event)"></ec-resource-crud>
 
-<ec-resource-crud *ngIf="group" [api]="group" relation="asset" (createClicked)="upload()"></ec-resource-crud>
-
 <ec-upload *ngIf="group" [assetGroup]="group.assetGroupID" [loader]="loader" [api]="api"></ec-upload>
 
 <ec-notifications class="toast"></ec-notifications>
 
 <ec-loader class="ec-loader" #loader></ec-loader>
+
+<!-- <ec-resource-crud *ngIf="group" [api]="group" relation="asset"></ec-resource-crud> -->
+
+<h5>{{group?.assetGroupID}}</h5>
+<div data-grid>
+  <div *ngFor="let asset of assets" data-col="2-sm" class="has-margin-bottom is-relative">
+    <img [ecImage]="asset" [api]="api" thumb="true" size="200" class="img_full is-lifted is-rounded">
+    <a class="btn btn_round btn_outlined btn_warning is-absolute is-positioned-ne" (click)="delete(asset)">
+      <ec-icon name="trash"></ec-icon>
+    </a>
+  </div>
+</div>
+
+<ec-file-list [api]="group" *ngIf="group"></ec-file-list>
