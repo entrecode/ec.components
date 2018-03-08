@@ -31,9 +31,9 @@ export class ApiExplorerComponent implements OnInit {
 
   ngOnInit() {
     this.sdk.ready.then(() => {
-      const resource = this.sdk.datamanager;
+      /* const resource = this.sdk.datamanager; */
       /* const resource = new Apps('stage'); */
-      /* const resource = new Accounts('stage'); */
+      const resource = new Accounts('stage');
       this.use(resource);
     });
   }

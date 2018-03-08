@@ -3,6 +3,32 @@ import { FieldConfig, Form, ListConfig } from '@ec.components/core/index';
 import { CrudConfig } from '../crud/crud-config.interface';
 import localeFr from '@angular/common/locales/fr';
 
+export const created = {
+  label: 'Datum',
+  sortable: true,
+  display: value => moment(value).format('DD.MM.YY'),
+  group: value => moment(value).format('MMMM YYYY'),
+  form: false,
+  immutable: true
+};
+
+export function hexColor() {
+  return {
+    label: '#',
+    view: 'color',
+    prefill: '#ffffff'
+  }
+};
+
+export function stringField(label, filterable = true, sortable = true) {
+  return {
+    label,
+    view: 'string',
+    filterable,
+    sortable
+  };
+}
+
 /** Contains default configurations for all kinds of resources. Used by ResourceList and ResourceForm.  */
 export const resourceConfig: { [key: string]: CrudConfig<any> } = {
   dataManager: {
@@ -15,50 +41,27 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
       get: true
     },
     fields: {
-      hexColor: {
-        label: '#',
-        view: 'color',
-      },
-      title: {
-        label: 'Name',
-        view: 'string',
-        filterable: true,
-        sortable: true
-      },
+      hexColor: hexColor(),
+      title: stringField('Name'),
       description: {
         label: 'Beschreibung',
         view: 'string',
         filterable: true
       },
-      created: {
-        label: 'Datum',
-        sortable: true,
-        display: value => moment(value).format('DD.MM.YY'),
-        group: value => moment(value).format('MMMM YYYY'),
-        form: false
-      },
       config: {
         label: 'Config',
         view: 'json',
         list: false
-      }
+      },
+      created,
     }
   },
   model: {
     identifier: 'modelID',
     label: 'title',
     fields: {
-      hexColor: {
-        label: ' ',
-        view: 'color',
-        prefill: '#ffffff'
-      },
-      title: {
-        label: 'Model',
-        view: 'string',
-        filterable: true,
-        sortable: true
-      },
+      hexColor: hexColor(),
+      title: stringField('Model'),
       description: {
         label: 'Beschreibung',
         view: 'string',
@@ -75,16 +78,64 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
         },
         prefill: []
       },
-      created: {
-        sortable: true,
-        label: 'Datum',
-        display: value => moment(value).format('DD.MM.YY'),
-        group: value => moment(value).format('MMMM YYYY'),
-        form: false
-      }
+      created,
     }
   },
-  account: { // TODO: seperate ec and dm account resources (same name, different boat) (COM-111)
+  account: {
+    identifier: 'accountID',
+    label: 'email',
+    permissions: {
+      get: 'acc:list',
+      put: 'acc:edit:<accountID>'
+    },
+    fields: {
+      name: stringField('Name'),
+      email: {
+        label: 'Email',
+        view: 'string',
+        filterable: true,
+        sortable: true
+      },
+      hasPassword: {
+        label: 'Passwort',
+        view: 'boolean',
+        filterable: true,
+        sortable: true,
+        readOnly: true
+      },
+      hasPendingEmail: {
+        label: 'Pending',
+        view: 'boolean',
+        filterable: true,
+        sortable: true,
+        readOnly: true
+      },
+      language: {
+        label: 'Sprache',
+        view: 'string',
+        list: false
+      },
+      openID: {
+        list: false
+      },
+      permissions: {
+        view: 'tags',
+        display: (value) => value || [],
+        list: false
+      },
+      groups: {
+        label: 'Gruppen',
+        view: 'tags',
+        list: false,
+        display: (value) => value ? value.map(group => group.name) : []
+      },
+      state: {
+        label: 'Status'
+      },
+      created,
+    }
+  },
+  dmAccount: {
     identifier: 'accountID',
     label: 'email',
     permissions: {
@@ -111,11 +162,8 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
         filterable: true,
         sortable: true,
         readOnly: true
-      }/* ,
-      groups: {
-        label: 'Gruppen',
-        view: 'tags'
-      } */
+      },
+      created,
     }
   },
   template: {
@@ -137,7 +185,8 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
         display: value => moment(value).format('DD.MM.YY'),
         group: value => moment(value).format('MMMM YYYY'),
         form: false
-      }
+      },
+      created,
     }
   },
   app: {
@@ -148,10 +197,7 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
       put: 'app:<appID>:edit'
     },
     fields: {
-      hexColor: {
-        label: '#',
-        view: 'color',
-      },
+      hexColor: hexColor(),
       shortID: {
         label: 'shortID',
         list: false
@@ -162,13 +208,7 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
         filterable: true,
         sortable: true,
       },
-      created: {
-        label: 'Datum',
-        sortable: true,
-        display: value => moment(value).format('DD.MM.YY'),
-        group: value => moment(value).format('MMMM YYYY'),
-        form: false
-      }
+      created,
     }
   },
   platform: {
@@ -186,37 +226,13 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
         label: 'Config',
         view: 'json',
         list: false
-      }
+      },
+      created,
     }
   },
   asset: {
     identifier: 'assetID',
     fields: {
-      assetID: {
-        label: 'assetID',
-        list: false,
-        form: false,
-        immutable: true
-      },
-      title: {
-        label: 'Titel',
-        view: 'string'
-      },
-      created: {
-        label: 'Datum',
-        sortable: true,
-        display: value => moment(value).format('DD.MM.YY'),
-        group: value => moment(value).format('MMMM YYYY'),
-        form: false,
-        immutable: true
-      },
-      files: {
-        label: 'Dateien',
-        view: 'tag',
-        form: false,
-        display: value => value.length,
-        immutable: true
-      },
       thumb: {
         form: false,
         label: 'Vorschau',
@@ -229,10 +245,28 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
         },
         immutable: true
       },
+      assetID: {
+        label: 'assetID',
+        list: false,
+        form: false,
+        immutable: true
+      },
+      title: {
+        label: 'Titel',
+        view: 'string'
+      },
+      files: {
+        label: 'Dateien',
+        view: 'tag',
+        form: false,
+        display: value => value.length,
+        immutable: true
+      },
       tags: {
         label: 'Tags',
         view: 'tags'
       },
+      created,
     }
   },
   assetGroup: { // https://doc.entrecode.de/en/develop/resources/dm-assetgroup/
@@ -256,7 +290,8 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
         view: 'tags',
         display: (policies) => policies.map(p => p.method),
         prefill: []
-      }
+      },
+      created,
     }
   },
   dmAsset: {
@@ -303,23 +338,12 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
         immutable: true,
         form: false
       },
-      created: {
-        label: 'Datum',
-        sortable: true,
-        display: value => moment(value).format('DD.MM.YY'),
-        group: value => moment(value).format('MMMM YYYY'),
-        form: false,
-        immutable: true
-      },  // creator, creatorType
+      created,
     }
   },
   client: {
     identifier: 'clientID',
     fields: {
-      hexColor: {
-        label: '#',
-        view: 'color',
-      },
       clientID: {
         label: 'clientID',
         view: 'string'
@@ -334,7 +358,8 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
       },
       disableStrategies: {
         view: 'tags'
-      }
+      },
+      created,
     }
   },
   role: {
@@ -365,7 +390,8 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
         label: 'addUnregistered',
         view: 'boolean'/* ,
         prefill: false */
-      }
+      },
+      created,
     }
   },
   codeSource: {
@@ -381,7 +407,8 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
       config: {
         label: 'config',
         list: false
-      }
+      },
+      created,
     }
   },
   dataSource: {
@@ -389,7 +416,8 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
     fields: {
       dataSourceID: {
         label: 'ID'
-      }
+      },
+      created,
     }
   },
   target: {
@@ -402,7 +430,8 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
       config: {
         label: 'Config',
         list: false
-      }
+      },
+      created,
     }
   },
   group: {
@@ -414,7 +443,8 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
       permissions: {
         label: 'Permissions',
         view: 'tags'
-      }
+      },
+      created,
     }
   }
 }
