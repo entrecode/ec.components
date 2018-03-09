@@ -4,6 +4,7 @@
 <ec-upload [loader]="listLoader"></ec-upload>
 <ec-asset-list [loader]="listLoader" [config]="{size:9}"
                (columnClicked)="assetForm.edit($event);assetPop.show()" #assetList></ec-asset-list>
+
 <ec-pop class="ec-pop_drawer-right" #assetPop>
   <button type="button" (click)="assetPop.hide()">
     <ec-icon name="close-x-big"></ec-icon>
@@ -14,3 +15,5 @@
 <h2>Asset List Pop</h2>
 <a class="btn" (click)="assetListPop.show()">Öffnen</a>
 <ec-asset-list-pop #assetListPop class="ec-pop_toast-top"></ec-asset-list-pop>
+<h2>Using resource list</h2>
+<ec-resource-list [api]="api" relation="asset" [config]="{size:9}"></ec-resource-list>
