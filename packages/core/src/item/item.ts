@@ -5,7 +5,7 @@ export class Item<T> {
   /** The value body of the item. This can be either a primitive value or an Object. */
   public body: T;
   /** The config of the item. */
-  protected config: ItemConfig<T>;
+  public config: ItemConfig<T>;
 
   /** Each item is constructed with its body and an optional config. */
   constructor(body: T, config: ItemConfig<T> = {}) {
@@ -151,9 +151,9 @@ export class Item<T> {
 
   }
 
-  deleteImmutableProperties(value = this.body) {
+  deleteImmutableProperties(value: Object = this.body) {
     Object.keys(this.config.fields).forEach(property => {
-      if (this.config.fields[property].immutable) {
+      if (value.hasOwnProperty(property) && this.config.fields[property].immutable) {
         delete value[property];
       }
     });

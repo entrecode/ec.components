@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild, ViewChildren, QueryList } from '@angular/
 import { SdkService } from '../../../packages/data/src/sdk/sdk.service';
 import DataManager from 'ec.sdk/lib/DataManager';
 import Core from 'ec.sdk/lib/Core';
-import { resourceConfig } from '../../../packages/data/src/resource-config/resource-config';
 import { ListConfig } from '../../../packages/core/index';
 import { FormComponent } from '../../../packages/ui/src/form/form.component';
 import { TabComponent } from '../../../packages/ui/src/utility/tab/tab.component';

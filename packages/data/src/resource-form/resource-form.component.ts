@@ -7,6 +7,7 @@ import { Item, FormConfig, Form } from '@ec.components/core';
 import Resource from 'ec.sdk/lib/resources/Resource';
 import { ResourceForm } from './resource-form';
 import { SymbolService } from '../../../ui/src/symbol/symbol.service';
+import { ResourceService } from '../resource-config/resource.service';
 
 /** ResourceFormComponent can be used to edit or create any [SDK Resource](https://entrecode.github.io/ec.sdk/#resource).
  * The form needs the [api](https://entrecode.github.io/ec.sdk/#core) and the relation name.
@@ -50,7 +51,9 @@ export class ResourceFormComponent extends FormComponent<Resource> implements On
     constructor(protected loaderService: LoaderService,
         protected notificationService: NotificationsService,
         protected formService: FormService,
-        protected symbol: SymbolService) {
+        protected symbol: SymbolService,
+        public resourceService: ResourceService
+    ) {
         super(loaderService, notificationService, formService, symbol);
     }
     /** Inits config */
@@ -74,11 +77,11 @@ export class ResourceFormComponent extends FormComponent<Resource> implements On
             return;
         }
         if (this.value) { // if value is set, create item from value only
-            this.form = new ResourceForm(this.value, config, this.api, this.relation);
+            this.form = new ResourceForm(this.value, config, this.api, this.relation, this.resourceService);
         } else if (item instanceof Item) {
-            this.form = new ResourceForm(item.getBody(), item.getConfig() || config || {}, this.api, this.relation);
+            this.form = new ResourceForm(item.getBody(), item.getConfig() || config || {}, this.api, this.relation, this.resourceService);
         } else if (config) {
-            this.form = new ResourceForm(null, config, this.api, this.relation);
+            this.form = new ResourceForm(null, config, this.api, this.relation, this.resourceService);
         }
         this.initGroup();
     }

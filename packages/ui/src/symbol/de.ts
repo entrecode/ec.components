@@ -61,6 +61,10 @@ export default [{
     content: 'Die Datei existiert bereits. Duplikate werden ignoriert.'
 },
 {
+    name: 'error.2353',
+    content: 'Der eingegebene Name ist bereits vorhanden'
+},
+{
     name: 'resource.delete.question',
     content: 'Wirklich löschen?'
 },

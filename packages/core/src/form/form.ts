@@ -7,9 +7,9 @@ import { FormConfig } from './form-config.interface';
 /** The Form class is an Item with additional info about its properties (Fields). */
 export class Form<T> extends Item<T> {
   /** Array of fields. It will be populated automatically when the form is constructed. */
-  fields: Field[];
+  public fields: Field[];
   /** The configuration of the form. It is an extension of ItemConfig. */
-  protected config: FormConfig<T>;
+  public config: FormConfig<T>;
 
   /** The constructor will populate the fields array.
    * If config.fields is set only the configured fields will be created.

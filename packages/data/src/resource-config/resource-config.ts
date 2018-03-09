@@ -55,7 +55,7 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
         immutable: true,
         list: false
       },
-      title: stringField('Name'),
+      title: Object.assign(stringField('Name'), { required: true }),
       description: {
         label: 'Beschreibung',
         view: 'string',
@@ -64,14 +64,16 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
       config: {
         label: 'Config',
         view: 'json',
-        list: false
+        list: false,
+        immutable: true
       },
       defaultLocale: {
-        list: false
+        list: false,
+        immutable: true
       },
       locales: tagsField('Locales', false),
-      publicAssetRights: tagsField('publicAssetRights', false),
-      rights: tagsField('rights', false),
+      publicAssetRights: Object.assign(tagsField('publicAssetRights', false), { immutable: true }),
+      rights: Object.assign(tagsField('rights', false), { immutable: true }),
       created,
     }
   },
@@ -80,7 +82,7 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
     label: 'title',
     fields: {
       hexColor: hexColor(),
-      title: stringField('Model'),
+      title: Object.assign(stringField('Model'), { required: true }),
       description: {
         label: 'Beschreibung',
         view: 'string',
@@ -123,7 +125,8 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
       },
       sync: {
         list: false,
-        view: 'json'
+        view: 'json',
+        immutable: true
       },
       /* lastSyncs: {
         label: 'Zuletzt synchronisiert',
@@ -133,7 +136,8 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
           }
           return (values || []).map(value => value && value.finished ? moment(value.finished).format('DD.MM.YY') : '-')
         },
-        view: 'tags'
+        view: 'tags',
+        immutable: true,
       }, */
       created,
     }
@@ -195,6 +199,7 @@ export const resourceConfig: { [key: string]: CrudConfig<any> } = {
       get: 'acc:list',
       put: 'acc:edit:<accountID>'
     },
+    methods: ['get', 'put', 'delete'],
     fields: {
       email: {
         label: 'Email',
