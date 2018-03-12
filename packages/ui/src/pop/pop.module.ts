@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { PopComponent } from './pop.component';
+import { PopService } from './pop.service';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,7 @@ import { PopComponent } from './pop.component';
   exports: [
     PopComponent
   ],
-  providers: []
+  providers: [PopService]
 })
 export class PopModule {
 }

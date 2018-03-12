@@ -5,6 +5,7 @@ import { Selection, Item } from '@ec.components/core';
 import { CrudConfig } from '../../crud/crud-config.interface';
 import { AuthService } from '../../auth/auth.service';
 import { Upload } from '../file.service';
+import { PopService } from '@ec.components/ui/src/pop/pop.service';
 
 /** Entry Pop is an extension of Pop component to host an entry-form.
  * You can use it like a normal pop but with the extra handling of an entry form inside.
@@ -25,8 +26,8 @@ export class AssetListPopComponent extends PopComponent {
   /** Event emitter on item selection */
   @Output() columnClicked: EventEmitter<Item<PublicAssetResource>> = new EventEmitter();
   /** Injects auth service and calls super constructor. */
-  constructor(private auth: AuthService) {
-    super();
+  constructor(protected popService: PopService, private auth: AuthService) {
+    super(popService);
   }
 
   /** method that is called after the upload to select the uploaded item(s). */
