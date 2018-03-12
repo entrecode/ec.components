@@ -3,13 +3,13 @@ import { ActivatedRoute } from '@angular/router';
 import { SdkService } from '../sdk/sdk.service';
 import { ResourceList } from './resource-list';
 import Core from 'ec.sdk/lib/Core';
-import { resourceConfig } from '../resource-config/resource-config';
 import { ListConfig, Selection } from '@ec.components/core';
 import ListResource, { filterOptions } from 'ec.sdk/lib/resources/ListResource';
 import { WithLoader, LoaderComponent, ListComponent, LoaderService, NotificationsService } from '@ec.components/ui';
 import Resource from 'ec.sdk/lib/resources/Resource';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 import { ResourceService } from '../resource-config/resource.service';
+import { ResourceConfig } from '../resource-config/resource-config.service';
 
 /** The ResourceListComponent is an extension of ListComponent for SDK ListResources.
  * It is meant to be extended and overriden the createList method. See e.g. AssetListComponent. */
@@ -19,6 +19,7 @@ import { ResourceService } from '../resource-config/resource.service';
 })
 export class ResourceListComponent extends ListComponent<Resource>
   implements OnChanges, WithLoader {
+  resourceConfig: ResourceConfig;
   /** If listResource input is set, the given ListResource will be used directly and loading will be skipped. */
   @Input() listResource: ListResource;
   /** If true, only one item is selectable next */
@@ -42,6 +43,7 @@ export class ResourceListComponent extends ListComponent<Resource>
     @Optional() public route: ActivatedRoute
   ) {
     super();
+    this.resourceConfig = this.resourceService.config;
     if (route) {
       route.queryParams.subscribe(query => {
         this.config.query = Object.assign({}, query);
@@ -57,7 +59,7 @@ export class ResourceListComponent extends ListComponent<Resource>
     }
     this.config = Object.assign(
       {},
-      resourceConfig[this.relation] || {},
+      this.resourceConfig.config[this.relation] || {},
       this.config || {}
     );
 

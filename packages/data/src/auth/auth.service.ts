@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@angular/core';
 import { SdkService } from '../sdk/sdk.service';
 import AccountResource from 'ec.sdk/lib/resources/accounts/AccountResource';
 import PublicAPI from 'ec.sdk/lib/PublicAPI';
-import { resourceConfig } from '../resource-config/resource-config';
+import { ResourceConfig } from '../resource-config/resource-config.service';
 
 /** The SdkService exposes all instances of the ec.sdk APIs.
  * To be able to use it, you have to provide an environment like this in your module's providers:
@@ -25,7 +25,7 @@ import { resourceConfig } from '../resource-config/resource-config';
 export class AuthService {
 
   /** Calls init and sets ready to true when finished. */
-  constructor(@Inject('environment') private environment, private sdk: SdkService) {
+  constructor(private resourceConfig: ResourceConfig, @Inject('environment') private environment, private sdk: SdkService) {
   }
 
   /** Generic login that works with both public and admin API. */
@@ -83,11 +83,11 @@ export class AuthService {
     if (methods) {
       return Promise.resolve(methods);
     }
-    if (!resourceConfig[relation] || !resourceConfig[relation].permissions) {
+    if (!this.resourceConfig.config[relation] || !this.resourceConfig.config[relation].permissions) {
       console.warn(`relation ${relation} has no defined permissions, defaulting to all methods available`);
       return Promise.resolve(['get', 'post', 'put', 'delete']);
     }
-    const permissions = resourceConfig[relation].permissions;
+    const permissions = this.resourceConfig.config[relation].permissions;
     return Object.keys(permissions)
       .map((method) => (results) => {
         return !permissions[method] ? Promise.resolve(results) :

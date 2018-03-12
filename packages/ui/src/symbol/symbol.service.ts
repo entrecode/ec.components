@@ -8,7 +8,7 @@ export class SymbolService {
     /** The current symbol set that is registered to the service. It will be used to resolve strings from. */
     public registry: Symbol[];
     public sets: { [key: string]: Symbol[] } = {
-        de, en
+        en, de
     }
     constructor() {
         this.registry = Object.keys(this.sets).length ? this.sets[Object.keys(this.sets)[0]] : [];

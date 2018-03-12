@@ -26,6 +26,7 @@ import { ResourceDeletePopComponent } from './resource-delete-pop/resource-delet
 import { ResourceSelectComponent } from './resource-select/resource-select.component';
 import { AdminEntryInputComponent } from './entry-form/admin-entry-input.component';
 import { ResourceService } from './resource-config/resource.service';
+import { ResourceConfig } from './resource-config/resource-config.service';
 
 @NgModule({
   entryComponents: [
@@ -86,6 +87,7 @@ import { ResourceService } from './resource-config/resource.service';
     TypeConfigService,
     ModelConfigService,
     ResourceService,
+    ResourceConfig,
     {
       provide: 'environment',
       useValue: {

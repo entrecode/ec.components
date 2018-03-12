@@ -7,6 +7,7 @@ import Resource from 'ec.sdk/lib/resources/Resource';
 import { ResourceList } from '../resource-list/resource-list';
 import Core from 'ec.sdk/lib/Core';
 import { Item } from '@ec.components/core';
+import { ResourceConfig } from './resource-config.service';
 
 /** Instances of Update are emitted by the changes EventEmitter of the CrudService. */
 export interface Update {
@@ -31,7 +32,7 @@ export class ResourceService {
     public changes: Subject<Update> = new Subject();
 
     /** Injects sdk */
-    constructor(private sdk: SdkService) {
+    constructor(private sdk: SdkService, public config: ResourceConfig) {
     }
 
     /** Gives true if the given change fits all property values of the filter. */
