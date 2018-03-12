@@ -322,8 +322,10 @@ export class ResourceConfig {
             immutable: true
           },
           title: {
-            label: 'Titel',
-            view: 'string'
+            label: this.symbol.resolve('field.label.title'),
+            view: 'string',
+            sortable: true,
+            filterable: true
           },
           files: {
             label: this.symbol.resolve('asset.field.label.files'),

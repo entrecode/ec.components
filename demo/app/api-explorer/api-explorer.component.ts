@@ -72,7 +72,6 @@ export class ApiExplorerComponent implements OnInit {
   }
 
   useRelation(symbol) {
-    console.log('symbol', symbol);
     this.relation = symbol;
   }
 }
