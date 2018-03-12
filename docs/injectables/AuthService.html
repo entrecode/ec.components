@@ -540,6 +540,12 @@
                                     <a href="../injectables/NotificationsService.html" >NotificationsService</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../injectables/PopService.html" >PopService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ResourceConfig.html" >ResourceConfig</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/ResourceService.html" >ResourceService</a>
                                 </li>
                                 <li class="link">
@@ -1217,6 +1223,12 @@
                                            <a href="../injectables/NotificationsService.html" >NotificationsService</a>
                                        </li>
                                        <li class="link">
+                                           <a href="../injectables/PopService.html" >PopService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ResourceConfig.html" >ResourceConfig</a>
+                                       </li>
+                                       <li class="link">
                                            <a href="../injectables/ResourceService.html" >ResourceService</a>
                                        </li>
                                        <li class="link">
@@ -1480,7 +1492,7 @@ setClientID.</p>
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-            <code>constructor(environment: , sdk: <a href="../injectables/SdkService.html">SdkService</a>)</code>
+            <code>constructor(resourceConfig: <a href="../injectables/ResourceConfig.html">ResourceConfig</a>, environment: , sdk: <a href="../injectables/SdkService.html">SdkService</a>)</code>
                                 </td>
                             </tr>
                                     <tr>
@@ -1504,6 +1516,18 @@ setClientID.</p>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                            <tr>
+                                                                <td>resourceConfig</td>
+                                                              
+                                                                    <td>
+                                                                                <code><a href="../injectables/ResourceConfig.html" target="_self" >ResourceConfig</a></code>
+                                                                    </td>
+                                                              
+                                                                <td>
+                                                                        no
+                                                                </td>
+                                                                
+                                                            </tr>
                                                             <tr>
                                                                 <td>environment</td>
                                                               
@@ -2383,7 +2407,7 @@ setClientID.</p>
 import { SdkService } from &#x27;../sdk/sdk.service&#x27;;
 import AccountResource from &#x27;ec.sdk/lib/resources/accounts/AccountResource&#x27;;
 import PublicAPI from &#x27;ec.sdk/lib/PublicAPI&#x27;;
-import { resourceConfig } from &#x27;../resource-config/resource-config&#x27;;
+import { ResourceConfig } from &#x27;../resource-config/resource-config.service&#x27;;
 
 /** The SdkService exposes all instances of the ec.sdk APIs.
  * To be able to use it, you have to provide an environment like this in your module&#x27;s providers:
@@ -2406,7 +2430,7 @@ import { resourceConfig } from &#x27;../resource-config/resource-config&#x27;;
 export class AuthService {
 
   /** Calls init and sets ready to true when finished. */
-  constructor(@Inject(&#x27;environment&#x27;) private environment, private sdk: SdkService) {
+  constructor(private resourceConfig: ResourceConfig, @Inject(&#x27;environment&#x27;) private environment, private sdk: SdkService) {
   }
 
   /** Generic login that works with both public and admin API. */
@@ -2464,11 +2488,11 @@ export class AuthService {
     if (methods) {
       return Promise.resolve(methods);
     }
-    if (!resourceConfig[relation] || !resourceConfig[relation].permissions) {
+    if (!this.resourceConfig.config[relation] || !this.resourceConfig.config[relation].permissions) {
       console.warn(&#x60;relation ${relation} has no defined permissions, defaulting to all methods available&#x60;);
       return Promise.resolve([&#x27;get&#x27;, &#x27;post&#x27;, &#x27;put&#x27;, &#x27;delete&#x27;]);
     }
-    const permissions &#x3D; resourceConfig[relation].permissions;
+    const permissions &#x3D; this.resourceConfig.config[relation].permissions;
     return Object.keys(permissions)
       .map((method) &#x3D;&gt; (results) &#x3D;&gt; {
         return !permissions[method] ? Promise.resolve(results) :

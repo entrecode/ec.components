@@ -540,6 +540,12 @@
                                     <a href="../injectables/NotificationsService.html" >NotificationsService</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../injectables/PopService.html" >PopService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/ResourceConfig.html" >ResourceConfig</a>
+                                </li>
+                                <li class="link">
                                     <a href="../injectables/ResourceService.html" >ResourceService</a>
                                 </li>
                                 <li class="link">
@@ -1215,6 +1221,12 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/NotificationsService.html" >NotificationsService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/PopService.html" >PopService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/ResourceConfig.html" >ResourceConfig</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/ResourceService.html" >ResourceService</a>
@@ -1923,7 +1935,7 @@
                                 <tr>
                                     <td class="col-md-4">
                                         <i>Default value : </i><code>{
-                    de, en
+                    en, de
                 }</code>
                                     </td>
                                 </tr>
@@ -1952,7 +1964,7 @@ export class SymbolService {
     /** The current symbol set that is registered to the service. It will be used to resolve strings from. */
     public registry: Symbol[];
     public sets: { [key: string]: Symbol[] } &#x3D; {
-        de, en
+        en, de
     }
     constructor() {
         this.registry &#x3D; Object.keys(this.sets).length ? this.sets[Object.keys(this.sets)[0]] : [];
