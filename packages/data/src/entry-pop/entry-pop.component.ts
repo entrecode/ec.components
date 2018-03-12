@@ -5,6 +5,7 @@ import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
 import { EntryFormComponent } from '../entry-form/entry-form.component';
 import { AuthService } from '../auth/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { PopService } from '@ec.components/ui/src/pop/pop.service';
 
 /** Entry Pop is an extension of Pop component to host an entry-form.
  * You can use it like a normal pop but with the extra handling of an entry form inside.
@@ -32,8 +33,8 @@ export class EntryPopComponent extends PopComponent implements OnInit {
   /** Route that should be headed to when an entry is created. */
   @Input() createRoute: string;
 
-  constructor(private auth: AuthService, private router: Router, private route: ActivatedRoute) {
-    super();
+  constructor(protected popService: PopService, private auth: AuthService, private router: Router, private route: ActivatedRoute) {
+    super(popService);
   }
 
   /** Returns true if the given method is part of the methods array (or if there is no methods array) */

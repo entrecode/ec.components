@@ -10,6 +10,7 @@ import { AuthService } from '../auth/auth.service';
 import { OnChanges, AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { SdkService } from '../sdk/sdk.service';
 import { FormComponent } from '@ec.components/ui/src/form/form.component';
+import { PopService } from '@ec.components/ui/src/pop/pop.service';
 
 /** Entry Pop is an extension of Pop component to host an entry-form.
  * You can use it like a normal pop but with the extra handling of an entry form inside.
@@ -38,8 +39,8 @@ export class ResourcePopComponent extends PopComponent {
     /** Route that should be headed to when a resource is created. */
     /* @Input() createRoute: string; */
 
-    constructor(private auth: AuthService, private router: Router, private route: ActivatedRoute, private sdk: SdkService) {
-        super();
+    constructor(protected popService: PopService, private auth: AuthService, private router: Router, private route: ActivatedRoute, private sdk: SdkService) {
+        super(popService);
     }
 
     /** Returns true if the given method is part of the methods array (or if there is no methods array) */

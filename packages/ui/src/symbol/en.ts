@@ -61,6 +61,10 @@ export default [{
     content: 'The File already exists. Duplicates are ignored.'
 },
 {
+    name: 'error.2353',
+    content: 'The entered name is already in use'
+},
+{
     name: 'resource.delete.question',
     content: 'Really Delete?'
 },
@@ -99,6 +103,173 @@ export default [{
 {
     name: 'upload.ignoreDuplicates',
     content: 'Ignore Duplicates'
+},
+{
+    name: 'field.label.id',
+    content: 'ID'
+},
+{
+    name: 'field.label.created',
+    content: 'Date'
+},
+{
+    name: 'field.label.type',
+    content: 'Type'
+},
+{
+    name: 'field.label.title',
+    content: 'Title'
+},
+{
+    name: 'field.label.name',
+    content: 'Name'
+},
+{
+    name: 'field.label.label',
+    content: 'Label'
+},
+{
+    name: 'field.label.description',
+    content: 'Description'
+},
+{
+    name: 'field.label.config',
+    content: 'Config'
+},
+{
+    name: 'field.label.locales',
+    content: 'Locales'
+},
+{
+    name: 'field.label.email',
+    content: 'Mail'
+},
+{
+    name: 'field.label.password',
+    content: 'Password'
+},
+{
+    name: 'field.label.shortID',
+    content: 'Short ID'
+},
+{
+    name: 'datamanager.field.label.publicAssetRights',
+    content: 'publicAssetRights'
+},
+{
+    name: 'account.field.label.hasPendingEmail',
+    content: 'Pending'
+},
+{
+    name: 'account.field.label.language',
+    content: 'Language'
+},
+{
+    name: 'account.field.label.permissions',
+    content: 'Permissions'
+},
+{
+    name: 'account.field.label.groups',
+    content: 'Groups'
+},
+{
+    name: 'account.field.label.state',
+    content: 'Status'
+},
+{
+    name: 'dmAccount.field.label.hasPasswort',
+    content: 'Password'
+},
+{
+    name: 'dmAccount.field.label.pending',
+    content: 'Pending'
+},
+{
+    name: 'template.field.label.template',
+    content: 'Template'
+},
+{
+    name: 'template.field.label.version',
+    content: 'Version'
+},
+{
+    name: 'app.field.label.app',
+    content: 'App'
+},
+{
+    name: 'platform.field.label.platform',
+    content: 'Platform'
+},
+{
+    name: 'platform.field.label.platformType',
+    content: 'Type'
+},
+{
+    name: 'asset.field.label.thumb',
+    content: 'Preview'
+},
+{
+    name: 'asset.field.label.files',
+    content: 'Files'
+},
+{
+    name: 'asset.field.label.tags',
+    content: 'Tags'
+},
+{
+    name: 'assetGroup.field.label.assetGroupID',
+    content: 'assetGroupID'
+},
+{
+    name: 'dmAsset.field.label.file',
+    content: 'Preview'
+},
+{
+    name: 'dmAsset.field.label.assetID',
+    content: 'ID'
+},
+{
+    name: 'dmAsset.field.label.caption',
+    content: 'Caption'
+},
+{
+    name: 'dmAsset.field.label.duplicates',
+    content: 'Duplicates'
+},
+{
+    name: 'dmAsset.field.label.thumbnails',
+    content: 'Thumbnails'
+},
+{
+    name: 'dmAsset.field.label.type',
+    content: 'Type'
+},
+{
+    name: 'client.field.label.clientID',
+    content: 'ID'
+},
+{
+    name: 'client.field.label.callbackURL',
+    content: 'Callback URL'
+},
+{
+    name: 'client.field.label.tokenMethod',
+    content: 'Token Method'
+},
+{
+    name: 'client.field.label.disableStrategies',
+    content: 'disableStrategies'
+},
+{
+    name: 'role.field.label.accounts',
+    content: 'Accounts'
+},
+{
+    name: 'role.field.label.addRegistered',
+    content: 'addRegistered'
+},
+{
+    name: 'role.field.label.addUnregistered',
+    content: 'addUnregistered'
 }
 ];
-

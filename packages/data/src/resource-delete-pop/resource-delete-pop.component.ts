@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, Output, EventEmitter, Input } from '@angu
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 import { PopComponent, LoaderService } from '@ec.components/ui';
 import Resource from 'ec.sdk/lib/resources/Resource';
+import { ResourceService } from '../resource-config/resource.service';
 /** This component can be used to delete all kinds of resources with a confirmation pop.
  *
  * ```html
@@ -20,17 +21,19 @@ export class ResourceDeletePopComponent {
     @ViewChild(PopComponent) pop: PopComponent;
     /** The resource to delete */
     @Input() resource: Resource;
+    /** The relation where it happened */
+    @Input() relation: string;
     /** Output that is after the deletion was successful. */
     @Output() deleted: EventEmitter<any> = new EventEmitter();
     /** Injects SymbolService and LoaderService */
-    constructor(public symbol: SymbolService, public loader: LoaderService) { }
+    constructor(public symbol: SymbolService, public loader: LoaderService, private resourceService: ResourceService) { }
     /** The delete method calls del() of the given resource. You can also pass a resource to delete directly to set it.  */
     delete(resource: Resource = this.resource) {
         if (!resource) {
             console.error('cannot delete: no resource given!');
             return;
         }
-        const deletion = this.resource.del().then(res => {
+        const deletion = this.resourceService.del(this.relation, this.resource).then(res => {
             this.pop.hide();
             this.deleted.next(res);
         });

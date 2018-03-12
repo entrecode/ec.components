@@ -1,12 +1,13 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { FormComponent, LoaderService, NotificationsService, FormService, LoaderComponent } from '@ec.components/ui';
 import Core from 'ec.sdk/lib/Core';
-import { resourceConfig } from '../resource-config/resource-config';
 import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Item, FormConfig, Form } from '@ec.components/core';
 import Resource from 'ec.sdk/lib/resources/Resource';
 import { ResourceForm } from './resource-form';
 import { SymbolService } from '../../../ui/src/symbol/symbol.service';
+import { ResourceService } from '../resource-config/resource.service';
+import { ResourceConfig } from '../resource-config/resource-config.service';
 
 /** ResourceFormComponent can be used to edit or create any [SDK Resource](https://entrecode.github.io/ec.sdk/#resource).
  * The form needs the [api](https://entrecode.github.io/ec.sdk/#core) and the relation name.
@@ -39,6 +40,7 @@ import { SymbolService } from '../../../ui/src/symbol/symbol.service';
     templateUrl: '../../../ui/src/form/form.component.html'
 })
 export class ResourceFormComponent extends FormComponent<Resource> implements OnInit, OnChanges {
+    resourceConfig: ResourceConfig;
     /** The API Connector that possesses the resource list, see https://entrecode.github.io/ec.sdk/#api-connectors */
     @Input() api: Core; // sdk api connector
     /** The name of the resource. If given, the generic ListResource loading will be used (api.resourceList) */
@@ -50,8 +52,11 @@ export class ResourceFormComponent extends FormComponent<Resource> implements On
     constructor(protected loaderService: LoaderService,
         protected notificationService: NotificationsService,
         protected formService: FormService,
-        protected symbol: SymbolService) {
+        protected symbol: SymbolService,
+        public resourceService: ResourceService,
+    ) {
         super(loaderService, notificationService, formService, symbol);
+        this.resourceConfig = this.resourceService.config;
     }
     /** Inits config */
     ngOnInit() {
@@ -64,7 +69,7 @@ export class ResourceFormComponent extends FormComponent<Resource> implements On
     /** Merges current config default config and config input  */
     initConfig() {
         this.config = Object.assign(
-            {}, this.config || {}, resourceConfig[this.relation] || {}, this.configInput || {}
+            {}, this.config || {}, this.resourceConfig.config[this.relation] || {}, this.configInput || {}
         );
         this.init();
     }
@@ -74,11 +79,11 @@ export class ResourceFormComponent extends FormComponent<Resource> implements On
             return;
         }
         if (this.value) { // if value is set, create item from value only
-            this.form = new ResourceForm(this.value, config, this.api, this.relation);
+            this.form = new ResourceForm(this.value, config, this.api, this.relation, this.resourceService);
         } else if (item instanceof Item) {
-            this.form = new ResourceForm(item.getBody(), item.getConfig() || config || {}, this.api, this.relation);
+            this.form = new ResourceForm(item.getBody(), item.getConfig() || config || {}, this.api, this.relation, this.resourceService);
         } else if (config) {
-            this.form = new ResourceForm(null, config, this.api, this.relation);
+            this.form = new ResourceForm(null, config, this.api, this.relation, this.resourceService);
         }
         this.initGroup();
     }

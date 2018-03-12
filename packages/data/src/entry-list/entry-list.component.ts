@@ -10,6 +10,7 @@ import { ResourceListComponent } from '../resource-list/resource-list.component'
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { ListConfig } from '@ec.components/core/src/list/list-config.interface';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import { ResourceService } from '../resource-config/resource.service';
 
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent
  * <example-url>https://components.entrecode.de/data/entry-list</example-url>
@@ -32,8 +33,9 @@ export class EntryListComponent extends ResourceListComponent {
     protected modelConfig: ModelConfigService,
     protected crud: CrudService,
     protected symbol: SymbolService,
+    protected resourceService: ResourceService,
     @Optional() public route: ActivatedRoute) {
-    super(loaderService, sdk, notificationService, symbol, route);
+    super(loaderService, sdk, notificationService, symbol, resourceService, route);
     /*if (route) {
       route.params.subscribe(({ model }) => {
         if (model) {

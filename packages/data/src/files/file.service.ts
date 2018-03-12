@@ -7,6 +7,7 @@ import { TypeConfigService } from '../model-config/type-config.service';
 import moment from 'moment-es6';
 import { Item } from '@ec.components/core/src/item/item';
 import DMAssetList from 'ec.sdk/lib/resources/publicAPI/DMAssetList';
+import { ResourceService } from '../resource-config/resource.service';
 
 /** Instances of Update are emitted by the changes EventEmitter of the CrudService. */
 export interface Upload {
@@ -115,7 +116,7 @@ export class FileService {
   }
 
   /** Injects sdk */
-  constructor(private sdk: SdkService, private typeConfig: TypeConfigService) {
+  constructor(private sdk: SdkService, private typeConfig: TypeConfigService, private resourceService: ResourceService) {
   }
 
   /** Returns form data for a file list. You have to append options (even if empty) to get formData for new assets! */
@@ -155,6 +156,7 @@ export class FileService {
         }
       }).then((upload: Upload) => {
         this.uploads.emit(upload);
+        this.resourceService.changes.next({ relation: 'dmAsset', type: 'post' });
         return upload;
       });
   }

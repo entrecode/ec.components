@@ -2,6 +2,7 @@
  * Created by felix on 26.05.17.
  */
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { PopService } from './pop.service';
 
 /** A Pop is an area of content whose visibility can be toggled.
  * It can be used e.g as dialog, drawer or dialog.
@@ -23,6 +24,9 @@ export class PopComponent {
   /** The amount of time between setting active and visible. Defaults to 0. */
   delay = 0;
 
+  constructor(protected popService: PopService) {
+  }
+
   /** Shows if not visible, hides if visible. */
   public toggle(visible: boolean = !this.visible, emit: boolean = false) {
     if (!visible) {
@@ -38,6 +42,7 @@ export class PopComponent {
   /** Shows the pop. First sets active and after the delay it sets visible. */
   public show() {
     this.active = true;
+    this.popService.stack.add(this);
     setTimeout(() => {
       this.visible = true;
     }, this.delay);
@@ -46,6 +51,7 @@ export class PopComponent {
   /** Hides the pop. First removes visible and after the delay it removes active. */
   public hide() {
     this.visible = false;
+    this.popService.stack.remove(this);
     if (!this.delay) {
       return;
     }
