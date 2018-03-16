@@ -626,6 +626,9 @@
                                 <li class="link">
                                     <a href="../interfaces/WithLoader.html" >WithLoader</a>
                                 </li>
+                                <li class="link">
+                                    <a href="../interfaces/WithNotifications.html" >WithNotifications</a>
+                                </li>
                         </ul>
                     </li>
             
@@ -1309,6 +1312,9 @@
                                        <li class="link">
                                            <a href="../interfaces/WithLoader.html" >WithLoader</a>
                                        </li>
+                                       <li class="link">
+                                           <a href="../interfaces/WithNotifications.html" >WithNotifications</a>
+                                       </li>
                                </ul>
                            </li>
                    
@@ -1692,7 +1698,36 @@ It listens on the notificationService.$emitter for notifications.</p>
         host: host
       });
   }
-}</code></pre></p>
+}</code></pre><h2 id="hiding-previous-errors">Hiding previous errors</h2>
+<p>Here is an example usage of a typical success/error handling.
+It features hiding previous notifications. We recommended you to use the <em>WithNotifications</em> interface for that case.</p>
+<pre class="line-numbers"><code class="language-ts">export class MuffinComponent implements WithNotifications {
+  /** Recent Error notification */
+  notifications: Notification[] = [];
+
+constructor(
+    public bakery:BakeryService,
+    public notificationService: NotificationsService,
+    )
+
+  bake() {
+    this.bakery.bake().then(()=&gt; {
+        this.notificationService.emit({
+            title: &#39;Muffin was baken!&#39;,
+            hide: this.notifications // this will hide all preceding notifications
+        })
+    }).catch(error=&gt;{
+        this.notificationService.emit({
+            title: &#39;Error while baking&#39;,
+            sticky: true,
+            hide: this.notifications, // this will hide all preceding notifications
+            replace: this.notifications // this will replace the given array with the new notification
+        })
+    });
+  }
+}</code></pre><p>The hide option is useful to hide obsolete errors. E.g. If you successfully log in after one failiure, the sticky error notification of the first attempt will be hidden. This enables you to keep errors messages as long as they are needed.
+Instead of replace, you could also use append (see notification.component.ts for implementation).</p>
+</p>
     </div>
 
     <div class="tab-pane fade tab-source-code" id="c-source">
@@ -1720,6 +1755,19 @@ export class NotificationsComponent {
   constructor(private notificationService: NotificationsService) {
     this.time &#x3D; this.time || this.notificationService.defaultTime;
     this.notificationService.emitter$.subscribe((notification: Notification) &#x3D;&gt; {
+      if (notification.hide) {
+        this.notifications.removeAll(notification.hide);
+      }
+      if (!notification.title &amp;&amp; !notification.message) {
+        return;
+      }
+      if (notification.append) {
+        notification.append.push(notification);
+      }
+      if (notification.replace) {
+        notification.replace.length &#x3D; 0;
+        notification.replace.push(notification);
+      }
       if (!notification.host || notification.host &#x3D;&#x3D;&#x3D; this) {
         this.notifications.add(notification);
         if (notification.sticky) {

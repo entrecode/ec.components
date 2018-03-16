@@ -626,6 +626,9 @@
                                 <li class="link">
                                     <a href="../interfaces/WithLoader.html" >WithLoader</a>
                                 </li>
+                                <li class="link">
+                                    <a href="../interfaces/WithNotifications.html" >WithNotifications</a>
+                                </li>
                         </ul>
                     </li>
             
@@ -1309,6 +1312,9 @@
                                        <li class="link">
                                            <a href="../interfaces/WithLoader.html" >WithLoader</a>
                                        </li>
+                                       <li class="link">
+                                           <a href="../interfaces/WithNotifications.html" >WithNotifications</a>
+                                       </li>
                                </ul>
                            </li>
                    
@@ -1553,7 +1559,7 @@ useValue: true
             
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">packages/ui/src/notifications/notifications.service.ts:56</a></div>
+                                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">packages/ui/src/notifications/notifications.service.ts:58</a></div>
                                         </td>
                                     </tr>
             
@@ -1676,7 +1682,7 @@ useValue: true
                                         <div>
                                         </div>
                                         <div class="io-description">
-                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
             
                                         </div>
                                             <div class="io-description">
@@ -1708,7 +1714,7 @@ useValue: true
             
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">packages/ui/src/notifications/notifications.service.ts:43</a></div>
+                                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">packages/ui/src/notifications/notifications.service.ts:45</a></div>
                                         </td>
                                     </tr>
             
@@ -1905,16 +1911,18 @@ export class NotificationsService {
 
   /** The constructors injects the useDesktopNotifications flag from the module.
    * If true, all notifications will be shown as desktop notifications instead. */
-  constructor( @Inject(&#x27;useDesktopNotifications&#x27;) private useDesktopNotifications) {
+  constructor(@Inject(&#x27;useDesktopNotifications&#x27;) private useDesktopNotifications) {
   }
 
   /** Emits a notification to all ec-notification components. If host is set, it is only pushed to the specified host.*/
   emit(notification: Notification, desktop?: boolean) {
+    const instance &#x3D; new Notification(notification);
     if (desktop || this.useDesktopNotifications) {
-      this.desktopNotification(new Notification(notification));
+      this.desktopNotification(instance);
     } else {
-      this.emitter.next(new Notification(notification));
+      this.emitter.next(instance);
     }
+    return instance;
   }
 
   /** Asks for permission to show desktop notifications, if not already granted. */
