@@ -7,7 +7,7 @@
   <ec-form [config]="list?.config" [empty]="true" #filterForm></ec-form>
 
   <div class="ec-list-cell" *ngFor="let field of list?.fields;let i = index"
-       [class.hidden]="field.hidden||list.isOverTheMax(field)"
+       [class.hidden]="field.hidden"
        [ngClass]="'ec-list-field_' + field.view"
        [class.is-sortable]="field.sortable"
        [class.is-sorted]="list.isSorted(field.property)"

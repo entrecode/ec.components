@@ -45,6 +45,7 @@ export class List<T> extends Collection<Item<T>> {
     }
     this.config = Object.assign({ page: 1, maxColumns: 8 }, config || {});
     this.fields = this.getFields();
+    this.hideOverflowFields();
     this.pagination = pagination || new Pagination(this.config, this.items.length);
     this.pagination.change$.debounceTime(200)
       .subscribe(_config => this.load(_config));
@@ -87,6 +88,17 @@ export class List<T> extends Collection<Item<T>> {
       });
     });
     return fields;
+  }
+
+  /** Sets all fields that exceed the maxColumns to hidden */
+  protected hideOverflowFields() {
+    if (this.config && this.config.maxColumns) {
+      this.fields.filter(f => !f.hidden).forEach((field, index) => {
+        if (index >= this.config.maxColumns) {
+          field.hidden = true;
+        }
+      });
+    }
   }
 
   /**

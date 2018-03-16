@@ -6,7 +6,7 @@
       </div>
       <div *ngFor="let field of list?.fields;let i = index" class="ec-list-cell" 
         [ngClass]="'ec-list-field_' + field.view" [ngSwitch]="field.view"
-        [class.hidden]="field.hidden||list.isOverTheMax(field)" 
+        [class.hidden]="field.hidden" 
         [class.ec-list-field_sortable]="field.sortable" 
         [class.ec-list-field_sortable_active]="list.config?.sortBy===field.property">
         <ec-output [field]="field" [item]="item"></ec-output>

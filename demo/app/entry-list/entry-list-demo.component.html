@@ -11,11 +11,9 @@
     </span>
     <ul class="dropdown-options">
         <li class="dropdown-option" *ngFor="let field of bakers.list?.fields" [class.is-active]="!field.hidden">
-            <span *ngIf="bakers.list.isOverTheMax(field)">hidden</span>
             <a (click)="field.hidden=!field.hidden">
-                <ec-icon name="check" *ngIf="!field.hidden"></ec-icon>
-                <ec-icon name="substract" *ngIf="field.hidden"></ec-icon>
-                <span>{{field.property}}</span>
+                <ec-icon name="check" *ngIf="!field.hidden">{{field.property}}</ec-icon>
+                <ec-icon name="substract" *ngIf="field.hidden">{{field.property}}</ec-icon>
             </a>
         </li>
     </ul>
