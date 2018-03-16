@@ -59,6 +59,12 @@ export class CalendarComponent implements ControlValueAccessor {
 
   /** Updates the value with the given moment and propagates the change. */
   select(selected) {
+    console.log('selected', this.date);
+    if (this.value) {
+      const previous = moment(this.value, this.patterns, true);
+      selected.hour(previous.hour());
+      selected.minute(previous.minute());
+    }
     this.value = selected.format(this.getPattern(selected));
     this.propagateChange(selected.toISOString() || 'invalid');
   }
