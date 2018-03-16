@@ -35,8 +35,7 @@ export class TypeConfigService {
     },
     formattedText: {
       view: 'textarea',
-      filterable: true,
-      sortable: true,
+      filterable: true
     },
     number: {
       sortable: true,

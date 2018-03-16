@@ -94,7 +94,7 @@ export class List<T> extends Collection<Item<T>> {
   protected hideOverflowFields() {
     if (this.config && this.config.maxColumns) {
       this.fields.filter(f => !f.hidden).forEach((field, index) => {
-        if (index >= this.config.maxColumns) {
+        if (index >= this.config.maxColumns && field.hidden === undefined) {
           field.hidden = true;
         }
       });
