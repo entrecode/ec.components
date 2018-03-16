@@ -3,5 +3,21 @@
 <ec-entry-list model="muffin" [config]="{size:10}" [solo]="true" #muffinList></ec-entry-list>
 -->
 
-<h2>Bakers</h2>
-<ec-entry-list model="baker" [config]="{size:3}"></ec-entry-list>
+<h2> Bakers</h2>
+
+<nav class="dropdown dropdown_center" tabindex="0">
+    <span class="btn btn_clear btn_minor">
+        <ec-icon name="binoculars"></ec-icon>
+    </span>
+    <ul class="dropdown-options">
+        <li class="dropdown-option" *ngFor="let field of bakers.list?.fields" [class.is-active]="!field.hidden">
+            <a (click)="field.hidden=!field.hidden">
+                <ec-icon name="check" *ngIf="!field.hidden"></ec-icon>
+                <ec-icon name="substract" *ngIf="field.hidden"></ec-icon>
+                <span>{{field.property}}</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+<ec-entry-list #bakers model="baker" [config]="{size:3}"></ec-entry-list>
