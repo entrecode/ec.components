@@ -116,6 +116,13 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
     this.selection.toggle(item);
   }
 
+  public toggle(e) {
+    if (this.pop) {
+      this.pop.toggle();
+    }
+    this.clickInside(e);
+  }
+
   /** Fires on selection change. Hides pop if solo */
   changed() {
     this.change.emit(this.selection);
