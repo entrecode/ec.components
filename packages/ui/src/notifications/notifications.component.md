@@ -64,3 +64,40 @@ export class MyComponent {
   }
 }
 ```
+
+## Hiding previous errors
+
+Here is an example usage of a typical success/error handling.
+It features hiding previous notifications. We recommended you to use the _WithNotifications_ interface for that case.
+
+
+```ts
+export class MuffinComponent implements WithNotifications {
+  /** Recent Error notification */
+  notifications: Notification[] = [];
+
+constructor(
+    public bakery:BakeryService,
+    public notificationService: NotificationsService,
+    )
+
+  bake() {
+    this.bakery.bake().then(()=> {
+        this.notificationService.emit({
+            title: 'Muffin was baken!',
+            hide: this.notifications // this will hide all preceding notifications
+        })
+    }).catch(error=>{
+        this.notificationService.emit({
+            title: 'Error while baking',
+            sticky: true,
+            hide: this.notifications, // this will hide all preceding notifications
+            replace: this.notifications // this will replace the given array with the new notification
+        })
+    });
+  }
+}
+```
+
+The hide option is useful to hide obsolete errors. E.g. If you successfully log in after one failiure, the sticky error notification of the first attempt will be hidden. This enables you to keep errors messages as long as they are needed.
+Instead of replace, you could also use append (see notification.component.ts for implementation).

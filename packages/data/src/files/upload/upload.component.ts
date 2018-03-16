@@ -1,4 +1,4 @@
-import { PopComponent } from './../../../../ui/src/pop/pop.component';
+import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
 import { FileOptions } from './../file.service';
 import { Component, EventEmitter, Input, Output, ElementRef, ViewChild } from '@angular/core';
 import { SdkService } from '../../sdk/sdk.service';
@@ -6,13 +6,15 @@ import { FileService, Upload } from '../file.service';
 import { LoaderComponent, WithLoader, LoaderService, NotificationsService } from '@ec.components/ui';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 import PublicAPI from 'ec.sdk/lib/PublicAPI';
+import { WithNotifications } from '@ec.components/ui/src/notifications/with-notifications.interface';
+import { Notification } from '@ec.components/ui/src/notifications/notification';
 
 /** This component will render an input field to upload files to the datamanager. */
 @Component({
   selector: 'ec-upload',
   templateUrl: './upload.component.html',
 })
-export class UploadComponent implements WithLoader {
+export class UploadComponent implements WithLoader, WithNotifications {
   event: any;
   uploadPromise: Promise<Upload | void>;
   public filesToUpload: any;
@@ -39,6 +41,8 @@ export class UploadComponent implements WithLoader {
   @ViewChild('fileInput') fileInput: ElementRef;
   /** Pop child for new asset options. */
   @ViewChild(PopComponent) pop: PopComponent;
+  /** Error Notifications */
+  notifications: Notification[] = [];
 
   constructor(private sdk: SdkService,
     private fileService: FileService,
@@ -87,7 +91,8 @@ export class UploadComponent implements WithLoader {
         this.success.emit(_upload);
         this.notificationService.emit({
           title: this.symbol.resolve('success.upload'),
-          type: 'success'
+          type: 'success',
+          hide: this.notifications
         });
         this.pop.hide();
         return _upload;
@@ -96,7 +101,9 @@ export class UploadComponent implements WithLoader {
         this.notificationService.emit({
           title: this.symbol.resolve('error.upload'),
           error: err,
-          sticky: true
+          sticky: true,
+          hide: this.notifications,
+          append: this.notifications
         });
       });
     this.loaderService.wait(this.uploadPromise, this.loader);

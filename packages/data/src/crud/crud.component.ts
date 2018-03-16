@@ -17,6 +17,8 @@ import { AuthService } from '../auth/auth.service';
 import { EntryPopComponent } from '../entry-pop/entry-pop.component';
 import { WithLoader } from '@ec.components/ui';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import { WithNotifications } from '@ec.components/ui/src/notifications/with-notifications.interface';
+import { Notification } from '@ec.components/ui/src/notifications/notification';
 
 /** The CrudComponent takes at least a model name to render an entry list with create/edit/delete functionality out of the box.
  * ```html
@@ -29,7 +31,7 @@ import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
   templateUrl: './crud.component.html',
   styleUrls: ['./crud.component.scss']
 })
-export class CrudComponent<T> implements OnInit, WithLoader {
+export class CrudComponent<T> implements OnInit, WithLoader, WithNotifications {
   /** The model that should be crud'ed. */
   @Input() model: string;
   /** CrudConfig for customization of the crud's UI.*/
@@ -46,6 +48,8 @@ export class CrudComponent<T> implements OnInit, WithLoader {
   @Output() columnClicked: EventEmitter<any> = new EventEmitter();
   /** Emits when the selection has changed */
   @Output() selected: EventEmitter<any> = new EventEmitter();
+  /** Emitted Notifications */
+  notifications: Notification[] = []
 
   constructor(private sdk: SdkService,
     private auth: AuthService,
@@ -92,11 +96,15 @@ export class CrudComponent<T> implements OnInit, WithLoader {
       return this.sdk.api.entry(this.model, item.id(), { levels: this.config.levels || 1 })
     }).then((loadedEntry) => {
       this.entryPop.edit(loadedEntry);
+      this.notificationService.emit({ hide: this.notifications });
     }).catch((err) => {
       console.log('error while loading entry to edit', err);
       this.notificationService.emit({
         title: this.symbol.resolve('error.load'),
-        error: err
+        error: err,
+        sticky: true,
+        hide: this.notifications,
+        replace: this.notifications
       })
     });
   }
