@@ -14,12 +14,10 @@
         </ul>
         <ec-pop (click)="clickInside($event)" [ngClass]="field?.nestedPopClass || 'ec-select-options'" #crudPop [active]="field?.nestedPopActive"
             [visible]="field?.nestedPopVisible">
-            <!-- TODO find way to embed close button to the pops that need it -->
-            <ec-resource-crud [relation]="relation" [api]="api" *ngIf="selection&&crudPop.active" [config]="config" [selection]="selection"
+            <ec-resource-crud [relation]="relation" [api]="api" *ngIf="selection&&crudPop.active" [config]="dropdownConfig" [selection]="selection"
                 (columnClicked)="select($event)" #crud></ec-resource-crud>
         </ec-pop>
-        <ec-pop (click)="clickInside($event)" class="ec-pop_dialog" #listPop>
-            <!-- TODO: make pop configurable -->
+        <ec-pop (click)="clickInside($event)" [ngClass]="getPopClass()" #listPop>
             <header class="ec-pop-header">
                 <button (click)="listPop.hide()" type="button" class="ec-pop__dismiss">
                     <ec-icon name="close-x-big"></ec-icon>
@@ -32,10 +30,14 @@
             </div>
         </ec-pop>
     </div>
+    <ec-resource-pop #resourcePop [api]="api" [relation]="relation" [ngClass]="getPopClass()" [config]="config" (submitted)="formSubmitted($event,resourcePop)"></ec-resource-pop>
     <!--TODO link to open a ec-pop with an ec-list like now in .select-options-->
     <nav class="ec-entry-select__controls">
         <a (click)="listPop.show()" class="btn btn_clear" *ngIf="!config||!config.disableListPop">
             <ec-icon name="list-bullets"></ec-icon>
+        </a>
+        <a (click)="resourcePop.show()" class="btn btn_clear" *ngIf="!config.disableCreatePop">
+            <ec-icon name="add"></ec-icon>
         </a>
     </nav>
 </div>

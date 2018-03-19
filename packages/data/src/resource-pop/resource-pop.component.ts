@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -11,6 +11,7 @@ import { OnChanges, AfterViewInit } from '@angular/core/src/metadata/lifecycle_h
 import { SdkService } from '../sdk/sdk.service';
 import { FormComponent } from '@ec.components/ui/src/form/form.component';
 import { PopService } from '@ec.components/ui/src/pop/pop.service';
+import { ResourceForm } from '../resource-form/resource-form';
 
 /** Entry Pop is an extension of Pop component to host an entry-form.
  * You can use it like a normal pop but with the extra handling of an entry form inside.
@@ -38,6 +39,8 @@ export class ResourcePopComponent extends PopComponent {
     /* @Input() editRoute: string; */
     /** Route that should be headed to when a resource is created. */
     /* @Input() createRoute: string; */
+    /** Emits when the entry-form is submitted. */
+    @Output() submitted: EventEmitter<ResourceForm> = new EventEmitter();
 
     constructor(protected popService: PopService, private auth: AuthService, private router: Router, private route: ActivatedRoute, private sdk: SdkService) {
         super(popService);
@@ -123,5 +126,12 @@ export class ResourcePopComponent extends PopComponent {
     /** Logs the current form (Developer help). */
     private log(form) {
         console.dir(form);
+    }
+    /** Is called when the nested form was submitted */
+    formSubmitted(form: ResourceForm) {
+        this.submitted.next(form);
+        if (!this.config.keepPopOpen) {
+            this.hide();
+        }
     }
 }

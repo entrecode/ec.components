@@ -2501,7 +2501,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-    <code>useConfig(config: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank">object</a>)</code>
+    <code>useConfig(config: <a href="../interfaces/ListConfig.html">ListConfig<T></a>)</code>
                         </td>
                     </tr>
     
@@ -2533,7 +2533,7 @@
                                                         <td>config</td>
                                                         
                                                             <td>
-                                                                        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+                                                                        <code><a href="../interfaces/ListConfig.html" target="_self" >ListConfig&lt;T&gt;</a></code>
                                                             </td>
                                                         
                                                         <td>
@@ -2833,7 +2833,7 @@ export class SelectComponent&lt;T&gt; implements ControlValueAccessor, OnInit, O
   }
 
   /** Initializes either with values, collection or list. Creates Selection with config. */
-  useConfig(config &#x3D; {}) {
+  useConfig(config: ListConfig&lt;T&gt; &#x3D; {}) {
     this.config &#x3D; Object.assign(this.config || {}, config);
     this.initSelection();
     this.writeValue(this.value);

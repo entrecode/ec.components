@@ -30,4 +30,6 @@ export interface CrudConfig<T> extends ListConfig<T> {
   disableSelectSwitch?: boolean;
   /** If true, no list pop will be available at selects */
   disableListPop?: boolean;
+  /** If true, no create pop will be available at selects */
+  disableCreatePop?: boolean;
 }

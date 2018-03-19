@@ -2987,8 +2987,8 @@ export class FormComponent&lt;T&gt; implements OnChanges, WithLoader, WithNotifi
   submit() {
     const submit &#x3D; this.form.save(this.group.value)
       .then((form) &#x3D;&gt; {
-        this.submitted.emit(this.form);
         this.edit(form);
+        this.submitted.emit(this.form);
         if (this.silent) {
           return;
         }

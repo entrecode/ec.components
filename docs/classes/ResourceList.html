@@ -1580,7 +1580,15 @@ method to call the SDK method for loading the desired list! (see EntryList for e
                                         <a href="#groupBy">groupBy</a>
                                     </li>
                                     <li>
+                                            <span class="modifier">Protected</span>
+                                        <a href="#hideOverflowFields">hideOverflowFields</a>
+                                    </li>
+                                    <li>
                                         <a href="#id">id</a>
+                                    </li>
+                                    <li>
+                                            <span class="modifier">Public</span>
+                                        <a href="#isOverTheMax">isOverTheMax</a>
                                     </li>
                                     <li>
                                             <span class="modifier">Public</span>
@@ -2401,7 +2409,7 @@ method to call the SDK method for loading the desired list! (see EntryList for e
                                         </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in List:66</div>
+                                                <div class="io-line">Defined in List:67</div>
                                         </td>
                                     </tr>
             
@@ -2514,7 +2522,7 @@ method to call the SDK method for loading the desired list! (see EntryList for e
                                         </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in List:108</div>
+                                                <div class="io-line">Defined in List:120</div>
                                         </td>
                                     </tr>
             
@@ -2628,7 +2636,7 @@ method to call the SDK method for loading the desired list! (see EntryList for e
                                         </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in List:75</div>
+                                                <div class="io-line">Defined in List:76</div>
                                         </td>
                                     </tr>
             
@@ -2674,7 +2682,7 @@ method to call the SDK method for loading the desired list! (see EntryList for e
                                         </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in List:148</div>
+                                                <div class="io-line">Defined in List:160</div>
                                         </td>
                                     </tr>
             
@@ -2723,6 +2731,53 @@ method to call the SDK method for loading the desired list! (see EntryList for e
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
+                                    <a name="hideOverflowFields"></a>
+                                    <span class="name">
+                                        <b>
+                                            <span class="modifier">Protected</span>
+                                        hideOverflowFields
+                                        </b>
+                                        <a href="#hideOverflowFields"><span class="fa fa-link"></span></a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon fa fa-reset"></span>
+                                    <code>hideOverflowFields()</code>
+                                </td>
+                            </tr>
+            
+            
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Inherited from     <code><a href="../classes/List.html" target="_self" >List</a></code>
+            </div>
+                                            </td>
+                                        </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                                <div class="io-line">Defined in List:94</div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Sets all fields that exceed the maxColumns to hidden </p>
+            </div>
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
                                     <a name="id"></a>
                                     <span class="name">
                                         <b>
@@ -2747,7 +2802,7 @@ method to call the SDK method for loading the desired list! (see EntryList for e
                                         </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in List:95</div>
+                                                <div class="io-line">Defined in List:107</div>
                                         </td>
                                     </tr>
             
@@ -2800,6 +2855,85 @@ method to call the SDK method for loading the desired list! (see EntryList for e
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
+                                    <a name="isOverTheMax"></a>
+                                    <span class="name">
+                                        <b>
+                                            <span class="modifier">Public</span>
+                                        isOverTheMax
+                                        </b>
+                                        <a href="#isOverTheMax"><span class="fa fa-link"></span></a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon fa fa-reset"></span>
+                                    <code>isOverTheMax(field: <a href="../classes/Field.html">Field</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Inherited from     <code><a href="../classes/List.html" target="_self" >List</a></code>
+            </div>
+                                            </td>
+                                        </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                                <div class="io-line">Defined in List:195</div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Returns true if the given field index in the visible fields is higher than maxColumns.  </p>
+            </div>
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                                <td>Type</td>
+                                                            <td>Optional</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                                <td>field</td>
+                                                                
+                                                                    <td>
+                                                                                <code><a href="../classes/Field.html" target="_self" >Field</a></code>
+                                                                    </td>
+                                                                
+                                                                <td>
+                                                                        no
+                                                                </td>
+                                                                
+            
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
                                     <a name="isSorted"></a>
                                     <span class="name">
                                         <b>
@@ -2826,7 +2960,7 @@ method to call the SDK method for loading the desired list! (see EntryList for e
                                         </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in List:127</div>
+                                                <div class="io-line">Defined in List:139</div>
                                         </td>
                                     </tr>
             
@@ -2918,7 +3052,7 @@ method to call the SDK method for loading the desired list! (see EntryList for e
                                         </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in List:56</div>
+                                                <div class="io-line">Defined in List:57</div>
                                         </td>
                                     </tr>
             
@@ -2998,7 +3132,7 @@ method to call the SDK method for loading the desired list! (see EntryList for e
                                         </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in List:179</div>
+                                                <div class="io-line">Defined in List:191</div>
                                         </td>
                                     </tr>
             
@@ -3045,7 +3179,7 @@ method to call the SDK method for loading the desired list! (see EntryList for e
                                         </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in List:116</div>
+                                                <div class="io-line">Defined in List:128</div>
                                         </td>
                                     </tr>
             
@@ -3135,7 +3269,7 @@ method to call the SDK method for loading the desired list! (see EntryList for e
                                         </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in List:141</div>
+                                                <div class="io-line">Defined in List:153</div>
                                         </td>
                                     </tr>
             
@@ -3180,7 +3314,7 @@ method to call the SDK method for loading the desired list! (see EntryList for e
                                         </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in List:135</div>
+                                                <div class="io-line">Defined in List:147</div>
                                         </td>
                                     </tr>
             
@@ -3272,7 +3406,7 @@ method to call the SDK method for loading the desired list! (see EntryList for e
                                         </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in List:175</div>
+                                                <div class="io-line">Defined in List:187</div>
                                         </td>
                                     </tr>
             

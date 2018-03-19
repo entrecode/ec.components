@@ -124,8 +124,8 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
   submit() {
     const submit = this.form.save(this.group.value)
       .then((form) => {
-        this.submitted.emit(this.form);
         this.edit(form);
+        this.submitted.emit(this.form);
         if (this.silent) {
           return;
         }

@@ -7,7 +7,8 @@ import {
   Input,
   OnChanges,
   ViewChild,
-  ViewEncapsulation
+  ViewEncapsulation,
+  OnInit
 } from '@angular/core';
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Field } from '@ec.components/core/src/field/field';
@@ -18,6 +19,8 @@ import { Item } from '@ec.components/core/src/item/item';
 import { CrudConfig } from '../crud/crud-config.interface';
 import { SelectComponent } from '@ec.components/ui';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
+import { Form } from '@ec.components/core';
+import { EntryPopComponent } from '../entry-pop/entry-pop.component';
 
 // import LiteEntryResource from "ec.sdk/lib/resources/publicAPI/LiteEntryResource";
 
@@ -56,6 +59,8 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   @ViewChild('crud') crud: CrudComponent<EntryResource>;
   /** The config that is being generated. */
   public config: CrudConfig<EntryResource>;
+  /** The config for the dropdown crud list */
+  public dropdownConfig: CrudConfig<EntryResource>;
   /** Wether or not the selection should be solo */
   @Input() solo: boolean;
   /** The config that should be merged into the generated config */
@@ -68,6 +73,20 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
     super();
   }
 
+  /** Calls super.useConfig and then creates special dropdownConfig with just entryTitle as field  */
+  useConfig(config: CrudConfig<EntryResource> = {}) {
+    config.methods = !config.methods ? ['get', 'post'] :
+      config.methods.filter(method => method.toLocaleLowerCase() !== 'post');
+    super.useConfig(config);
+    this.dropdownConfig = Object.assign({}, this.config, {
+      methods: ['get'],
+      fields: {
+        [this.config.label]: Object.assign({}, this.config.fields[this.config.label])
+      }
+    });
+  }
+
+  /** Generates the config and sets up form control */
   ngOnChanges() {
     if (!this.formControl) {
       this.formControl = new FormControl(this.value || []);
@@ -76,7 +95,7 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
       this.model = this.model || this.field['model'];
     }
     if (this.config) {
-      super.useConfig(this.config);
+      this.useConfig(this.config);
       return;
     }
     this.modelConfig.generateConfig(this.model) // , (this.config || {}).fields
@@ -97,5 +116,15 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
       console.log('resolved', entry);
     });
     // TODO open edit pop
+  }
+
+  /** Returns the pop class that should be used, either uses config.popClass or defaults to ec-pop_dialog. */
+  getPopClass() {
+    return this.config && this.config.popClass ? this.config.popClass : 'ec-pop_dialog';
+  }
+  /** Is called when the nested entry-form has been saved. Selects the fresh entry and clears the form */
+  formSubmitted(form: Form<EntryResource>, entryPop: EntryPopComponent) {
+    this.select(form);
+    entryPop.form.create();
   }
 }
