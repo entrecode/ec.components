@@ -78,7 +78,9 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   }
 
   /** Calls super.useConfig and then creates special dropdownConfig with just entryTitle as field  */
-  useConfig(config = {}) {
+  useConfig(config: CrudConfig<EntryResource> = {}) {
+    config.methods = !config.methods ? ['get'] :
+      config.methods.filter(method => method.toLocaleLowerCase() !== 'post');
     super.useConfig(config);
     this.dropdownConfig = Object.assign({}, this.config, {
       methods: ['get'],
@@ -97,7 +99,7 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
       this.model = this.model || this.field['model'];
     }
     if (this.config) {
-      super.useConfig(this.config);
+      this.useConfig(this.config);
       return;
     }
     this.modelConfig.generateConfig(this.model) // , (this.config || {}).fields
