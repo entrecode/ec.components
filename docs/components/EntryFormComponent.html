@@ -3391,7 +3391,7 @@ export class EntryFormComponent extends FormComponent&lt;EntryResource&gt; imple
       return;
     }
     if (this.entry &amp;&amp; this.entry._modelTitle !&#x3D;&#x3D; this.model) { // warn if model does not match
-      console.error(&#x60;ec-entry-form: Tried to edit an entry of model &quot;${this.entry._modelTitle}&quot; while &quot;${this.model}&quot; was expected!&quot;&#x60;);
+      console.error(&#x60;ec-entry-form: Tried to edit an entry of model &quot;${this.entry._modelTitle}&quot; while &quot;${this.model}&quot; was expected! Entry: &#x60;, this.entry);
       return;
     }
     Promise.resolve(this.modelConfig.generateConfig(this.model, (this.config || {}).fields))
