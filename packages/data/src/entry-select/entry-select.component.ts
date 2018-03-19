@@ -63,10 +63,6 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   public dropdownConfig: CrudConfig<EntryResource>;
   /** Wether or not the selection should be solo */
   @Input() solo: boolean;
-  /** hides the button to show the whole list */
-  @Input() hideListButton: boolean;
-  /** hides the button to create a new entry */
-  @Input() hideCreateButton: boolean;
   /** The config that should be merged into the generated config */
   // tslint:disable-next-line:no-input-rename
   @Input('config') crudConfig: CrudConfig<EntryResource>;
@@ -79,7 +75,7 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
 
   /** Calls super.useConfig and then creates special dropdownConfig with just entryTitle as field  */
   useConfig(config: CrudConfig<EntryResource> = {}) {
-    config.methods = !config.methods ? ['get'] :
+    config.methods = !config.methods ? ['get', 'post'] :
       config.methods.filter(method => method.toLocaleLowerCase() !== 'post');
     super.useConfig(config);
     this.dropdownConfig = Object.assign({}, this.config, {

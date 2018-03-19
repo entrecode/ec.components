@@ -21,6 +21,9 @@ import { SelectComponent } from '@ec.components/ui';
 import Core from 'ec.sdk/lib/Core';
 import Resource from 'ec.sdk/lib/resources/Resource';
 import { ResourceConfig } from '../resource-config/resource-config.service';
+import { Form } from '@ec.components/core';
+import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
+import { ResourcePopComponent } from '../resource-pop/resource-pop.component';
 /** Shows resources of a selection and is able to pick new ones from a crud list
 */
 
@@ -65,6 +68,8 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
     @Input('config') crudConfig: CrudConfig<Resource>;
     /** The crud pop with the list to select from */
     @ViewChild('crudPop') pop: PopComponent;
+    /** The config of the dropdown pop */
+    dropdownConfig: CrudConfig<Resource>;
 
     constructor(private resourceConfig: ResourceConfig) {
         super();
@@ -76,6 +81,19 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
 
     ngOnChanges() {
         this.init()
+    }
+
+    /** Calls super.useConfig and then creates special dropdownConfig with just entryTitle as field  */
+    useConfig(config: CrudConfig<Resource> = {}) {
+        config.methods = !config.methods ? ['get', 'post'] :
+            config.methods.filter(method => method.toLocaleLowerCase() !== 'post');
+        super.useConfig(config);
+        this.dropdownConfig = Object.assign({}, this.config, {
+            methods: ['get'],
+            fields: {
+                [this.config.label]: Object.assign({}, this.config.fields[this.config.label])
+            }
+        });
     }
 
     init() {
@@ -95,5 +113,15 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
         this.config = Object.assign(this.resourceConfig.config[this.relation], { size: 10 },
             this.crudConfig, { solo: this.solo, selectMode: true, disableSelectSwitch: true });
         this.useConfig(this.config);
+    }
+
+    /** Returns the pop class that should be used, either uses config.popClass or defaults to ec-pop_dialog. */
+    getPopClass() {
+        return this.config && this.config.popClass ? this.config.popClass : 'ec-pop_dialog';
+    }
+    /** Is called when the nested resource-form has been saved. Selects the fresh resource and clears the form */
+    formSubmitted(form: Form<EntryResource>, resourcePop: ResourcePopComponent) {
+        this.select(form);
+        resourcePop.form.create();
     }
 }

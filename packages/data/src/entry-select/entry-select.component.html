@@ -33,10 +33,10 @@
   </div>
   <ec-entry-pop #entryPop [model]="model" [ngClass]="getPopClass()" [config]="config" (submitted)="formSubmitted($event,entryPop)"></ec-entry-pop>
   <nav class="ec-entry-select__controls">
-    <a (click)="listPop.show()" class="btn btn_clear" *ngIf="!hideListButton">
+    <a (click)="listPop.show()" class="btn btn_clear" *ngIf="!config.disableListPop">
       <ec-icon name="list-bullets"></ec-icon>
     </a>
-    <a (click)="entryPop.show()" class="btn btn_clear" *ngIf="!hideCreateButton">
+    <a (click)="entryPop.show()" class="btn btn_clear" *ngIf="!config.disableCreatePop">
       <ec-icon name="add"></ec-icon>
     </a>
   </nav>

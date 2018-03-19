@@ -7,7 +7,7 @@
         </header>
         <div class="ec-pop-body">
             <ec-resource-form (ready)="initMethods($event)" [api]="api" [relation]="relation" [submitButton]="false" [config]="config"
-                [loader]="popLoader" [value]="resource" (deleted)="hide()" (submitted)="!config?.keepPopOpen&&hide()" #resourceForm></ec-resource-form>
+                [loader]="popLoader" [value]="resource" (deleted)="hide()" (submitted)="formSubmitted($event)" #resourceForm></ec-resource-form>
         </div>
         <footer class="ec-pop-footer">
             <nav class="nav">
