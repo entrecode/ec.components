@@ -12,29 +12,32 @@
         </span>
       </li>
     </ul>
+    <!-- Dropdown -->
     <ec-pop (click)="clickInside($event)" [ngClass]="field?.nestedPopClass || 'ec-select-options'" #crudPop [active]="field?.nestedPopActive"
       [visible]="field?.nestedPopVisible">
       <!-- TODO find way to embed close button to the pops that need it -->
-      <ec-crud [model]="model" *ngIf="selection&&crudPop.active" [config]="config" [selection]="selection" (columnClicked)="select($event)"
+      <ec-crud [model]="model" *ngIf="selection&&crudPop.active" [config]="dropdownConfig" [selection]="selection" (columnClicked)="select($event)"
         #crud></ec-crud>
     </ec-pop>
-    <ec-pop (click)="clickInside($event)" class="ec-pop_dialog" #listPop>
-      <!-- TODO: make pop configurable -->
+    <!-- popup -->
+    <ec-pop (click)="clickInside($event)" [ngClass]="getPopClass()" #listPop>
       <header class="ec-pop-header">
         <button (click)="listPop.hide()" type="button" class="ec-pop__dismiss">
           <ec-icon name="close-x-big"></ec-icon>
         </button>
       </header>
       <div class="ec-pop-body">
-        <!-- TODO find way to embed close button to the pops that need it -->
         <ec-crud [model]="model" *ngIf="listPop.active" [config]="config" [selection]="selection" (columnClicked)="select($event)"></ec-crud>
       </div>
     </ec-pop>
   </div>
-  <!--TODO link to open a ec-pop with an ec-list like now in .select-options-->
+  <ec-entry-pop #entryPop [model]="model" [ngClass]="getPopClass()" [config]="config" (submitted)="formSubmitted($event,entryPop)"></ec-entry-pop>
   <nav class="ec-entry-select__controls">
-    <a (click)="listPop.show()" class="btn btn_clear">
+    <a (click)="listPop.show()" class="btn btn_clear" *ngIf="!hideListButton">
       <ec-icon name="list-bullets"></ec-icon>
+    </a>
+    <a (click)="entryPop.show()" class="btn btn_clear" *ngIf="!hideCreateButton">
+      <ec-icon name="add"></ec-icon>
     </a>
   </nav>
 </div>

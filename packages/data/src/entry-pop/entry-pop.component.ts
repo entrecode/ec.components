@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import { CrudConfig } from '../crud/crud-config.interface';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
@@ -6,6 +6,7 @@ import { EntryFormComponent } from '../entry-form/entry-form.component';
 import { AuthService } from '../auth/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PopService } from '@ec.components/ui/src/pop/pop.service';
+import { Form } from '@ec.components/core';
 
 /** Entry Pop is an extension of Pop component to host an entry-form.
  * You can use it like a normal pop but with the extra handling of an entry form inside.
@@ -32,6 +33,8 @@ export class EntryPopComponent extends PopComponent implements OnInit {
   @Input() editRoute: string;
   /** Route that should be headed to when an entry is created. */
   @Input() createRoute: string;
+  /** Emits when the entry-form is submitted. */
+  @Output() submitted: EventEmitter<Form<EntryResource>> = new EventEmitter();
 
   constructor(protected popService: PopService, private auth: AuthService, private router: Router, private route: ActivatedRoute) {
     super(popService);
@@ -104,5 +107,12 @@ export class EntryPopComponent extends PopComponent implements OnInit {
   /** Logs the current form (Developer help). */
   private log(form) {
     console.dir(form);
+  }
+  /** Called when the form has been submitted and saved */
+  formSubmitted(form: Form<EntryResource>) {
+    this.submitted.next(form);
+    if (!this.config.keepPopOpen) {
+      this.hide();
+    }
   }
 }
