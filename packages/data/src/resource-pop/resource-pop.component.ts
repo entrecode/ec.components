@@ -12,6 +12,7 @@ import { SdkService } from '../sdk/sdk.service';
 import { FormComponent } from '@ec.components/ui/src/form/form.component';
 import { PopService } from '@ec.components/ui/src/pop/pop.service';
 import { ResourceForm } from '../resource-form/resource-form';
+import { Form } from '@ec.components/core';
 
 /** Entry Pop is an extension of Pop component to host an entry-form.
  * You can use it like a normal pop but with the extra handling of an entry form inside.
@@ -41,6 +42,8 @@ export class ResourcePopComponent extends PopComponent {
     /* @Input() createRoute: string; */
     /** Emits when the entry-form is submitted. */
     @Output() submitted: EventEmitter<ResourceForm> = new EventEmitter();
+    /** Emits when the resource has been deleted. */
+    @Output() deleted: EventEmitter<ResourceForm | Form<Resource>> = new EventEmitter();
 
     constructor(protected popService: PopService, private auth: AuthService, private router: Router, private route: ActivatedRoute, private sdk: SdkService) {
         super(popService);
@@ -78,7 +81,10 @@ export class ResourcePopComponent extends PopComponent {
     }
 
     /** Edit the given entry. */
-    edit(resource: Resource) {
+    edit(resource: Resource, config?: CrudConfig<Resource>) {
+        if (config) {
+            this.config = Object.assign(this.config, config);
+        }
         /* if (this.editRoute) {
             const matcher = '(' + this.pathRegExp(this.editRoute) + '|' + this.pathRegExp(this.createRoute) + ').*';
             const trimmed = this.router.url.replace(new RegExp(matcher, 'g'), '');
@@ -112,15 +118,14 @@ export class ResourcePopComponent extends PopComponent {
         } : {};
         // TODO: find a way to resolve parent resource variables e.g. dm:<dataManagerID>:model:entries:<modelID>
         this.auth.getAllowedResourceMethods(this.relation, variables, this.config.methods) // this.config.methods
-            .then((methods) => {
-                this.config.methods = methods;
-            });
+            .then((methods) => this.config.methods = methods);
     }
 
 
     /** Fires when the resource has been deleted. */
     private deletedResource() {
         this.hide();
+        this.deleted.emit(this.form.form);
     }
 
     /** Logs the current form (Developer help). */

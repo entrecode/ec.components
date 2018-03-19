@@ -21,7 +21,7 @@
           </li>
           <li class="nav__item" *ngIf="hasMethod('delete')&&crudForm.isEditing()">
             <!--TODO placeholder config for 'löschen'-->
-            <button (click)="crudForm.deleteEntry()" class="btn" type="button">
+            <button (click)="delete.confirm(entry)" class="btn" type="button">
               <ec-icon name="trash"></ec-icon>
             </button>
           </li>
@@ -36,5 +36,6 @@
       </nav>
     </footer>
     <ec-loader #popLoader class="ec-loader ec-loader_overlay ec-loader_global"></ec-loader>
+    <ec-resource-delete-pop (deleted)="deletedEntry()" [relation]="model" #delete></ec-resource-delete-pop>
   </div>
 </div>

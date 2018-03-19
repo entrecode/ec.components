@@ -65,6 +65,10 @@ export class EntryListComponent extends ResourceListComponent {
     this.crud.change({ model: this.model })
       .subscribe((update) => {
         this.list.load();
+      }); // TODO: remove crud service or similar
+    this.resourceService.change({ relation: this.model })
+      .subscribe((update) => {
+        this.list.load();
       });
     return this.modelConfig.generateConfig(this.model, (this.config || {}).fields)
       .then((config: ListConfig<EntryResource>) => {

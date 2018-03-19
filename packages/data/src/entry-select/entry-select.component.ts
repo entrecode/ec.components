@@ -22,6 +22,7 @@ import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { Form } from '@ec.components/core';
 import { EntryPopComponent } from '../entry-pop/entry-pop.component';
 import { AuthService } from '../auth/auth.service';
+import LiteEntryResource from 'ec.sdk/lib/resources/publicAPI/LiteEntryResource';
 
 // import LiteEntryResource from "ec.sdk/lib/resources/publicAPI/LiteEntryResource";
 
@@ -65,12 +66,19 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   /** The config that should be merged into the generated config */
   // tslint:disable-next-line:no-input-rename
   @Input('config') crudConfig: CrudConfig<EntryResource>;
-  /** The crud pop with the list to select from */
-  @ViewChild('crudPop') pop: PopComponent;
+  /** The dropdown pop with the list to select from */
+  @ViewChild('dropdown') pop: PopComponent;
+  /** The nested entry pop */
+  @ViewChild(EntryPopComponent) entryPop: EntryPopComponent;
 
   constructor(private modelConfig: ModelConfigService,
     private auth: AuthService) {
     super();
+    // TODO: listen to change events and remove deleted selected items 
+    /* this.resourceService.change({ relation: this.model })
+      .subscribe((update) => {
+        this.list.load();
+      }); */
   }
 
   /** Calls super.useConfig and then creates special dropdownConfig with just entryTitle as field  */
@@ -81,7 +89,7 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
         [this.config.label]: Object.assign({}, this.config.fields[this.config.label])
       }
     });
-    this.auth.getAllowedModelMethods(this.model)
+    this.auth.getAllowedModelMethods(this.model, this.config.methods)
       .then((methods) => {
         this.config.methods = methods
       });
@@ -113,15 +121,15 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   }
 
   /** Is called when a selected item has been clicked. */
-  editItem(item) {
-    if (item.getBody() instanceof EntryResource) {
-      console.log('already got full entry', item.getBody());
+  editItem(item: Item<EntryResource>, e) {
+    if (!this.hasMethod('put')) {
       return;
     }
-    item.getBody().resolve().then((entry) => {
-      console.log('resolved', entry);
-    });
-    // TODO open edit pop
+    item.getBody().resolve()
+      .then(entry => {
+        this.entryPop.edit(entry);
+      });
+    this.clickInside(e);
   }
 
   /** Returns the pop class that should be used, either uses config.popClass or defaults to ec-pop_dialog. */
@@ -129,8 +137,12 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
     return this.config && this.config.popClass ? this.config.popClass : 'ec-pop_dialog';
   }
   /** Is called when the nested entry-form has been saved. Selects the fresh entry and clears the form */
-  formSubmitted(form: Form<EntryResource>, entryPop: EntryPopComponent) {
-    this.select(form);
-    entryPop.form.create();
+  formSubmitted(form: Form<EntryResource>) {
+    if (!this.selection.has(form)) {
+      this.select(form);
+    } else { // already in selection => update body
+      const index = this.selection.index(form);
+      this.selection.items[index].body = form.getBody();
+    }
   }
 }

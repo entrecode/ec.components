@@ -67,7 +67,9 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
     // tslint:disable-next-line:no-input-rename
     @Input('config') crudConfig: CrudConfig<Resource>;
     /** The crud pop with the list to select from */
-    @ViewChild('crudPop') pop: PopComponent;
+    @ViewChild('dropdown') pop: PopComponent;
+    /** The nested resource pop for editing and creating */
+    @ViewChild(ResourcePopComponent) resourcePop: ResourcePopComponent;
     /** The config of the dropdown pop */
     dropdownConfig: CrudConfig<Resource>;
 
@@ -94,10 +96,14 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
                 [this.config.label]: Object.assign({}, this.config.fields[this.config.label])
             }
         });
-        this.auth.getAllowedResourceMethods(this.relation, {}, null, this.sdk.session)
-            .then((methods) => {
-                this.config.methods = methods
-            });
+        this.auth.getAllowedResourceMethods(this.relation) // init permissions
+            .then((methods) => this.config.methods = methods);
+        this.selection.update$.subscribe(change => {
+            if (this.solo && !this.selection.isEmpty()) { // update permissions for selected item
+                this.auth.getAllowedResourceMethods(this.relation, { [this.config.identifier]: this.selection.getValue() })
+                    .then((methods) => this.config.methods = methods);
+            }
+        });
     }
 
     /** Returns true if the given method is part of the methods array (or if there is no methods array) */
@@ -130,8 +136,29 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
         return this.config && this.config.popClass ? this.config.popClass : 'ec-pop_dialog';
     }
     /** Is called when the nested resource-form has been saved. Selects the fresh resource and clears the form */
-    formSubmitted(form: Form<EntryResource>, resourcePop: ResourcePopComponent) {
-        this.select(form);
-        resourcePop.form.create();
+    formSubmitted(form: Form<EntryResource>) {
+        if (!this.selection.has(form)) {
+            this.select(form);
+        } else { // already in selection => update body
+            const index = this.selection.index(form);
+            this.selection.items[index].body = form.getBody();
+        }
+    }
+
+    /** Is called when a selected item has been clicked. */
+    editItem(item: Item<Resource>, e) {
+        this.auth.getAllowedResourceMethods(this.relation, { [this.config.identifier]: item.id() })
+            .then(methods => {
+                if (methods.indexOf('put') === -1) {
+                    console.log('cannote put');
+                    return;
+                }
+                this.resourcePop.edit(item.getBody(), { methods });
+                this.clickInside(e);
+                /* return item.getBody().resolve()
+            }).then(resolved => {
+                console.log('resource', resolved);
+                this.resourcePop.edit(resolved); */
+            });
     }
 }

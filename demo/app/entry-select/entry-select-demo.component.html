@@ -13,11 +13,12 @@
   <pre>{{entrySelect.selection?.getValue() | json}}</pre>
 </div>
 <strong>solo</strong>
-<ec-entry-select model="muffin" [solo]="true" #soloEntry [config]="{size:10,popClass:'ec-pop_drawer-left',disableListPop:true}"></ec-entry-select>
+<ec-entry-select model="muffin" [solo]="true" #soloEntry></ec-entry-select>
+<!--   [config]="{size:10,popClass:'ec-pop_drawer-left'}"-->
 <pre>{{soloEntry.selection?.getValue()}}</pre>
-<strong>Usage with form</strong>
+<!-- <strong>Usage with form</strong>
 <ec-entry-form model="field_test" #fieldTest>
   <ec-entry-select *ngIf="fieldTest.group" [solo]="true" [formControl]="fieldTest.group?.get('entries')" model="muffin"></ec-entry-select>
   <ec-input [field]="fieldTest.form?.getField('entries')" [group]="fieldTest.group"></ec-input>
-</ec-entry-form>
+</ec-entry-form> -->
 <ec-notifications></ec-notifications>

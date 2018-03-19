@@ -5,16 +5,16 @@
     </span>
     <ul class="ec-select-selected" *ngIf="selection.items.length">
       <li *ngFor="let selected of selection?.items">
-        <span [class.tag]="!solo" (mousedown)="clickItem(selected)">
+        <span [class.tag]="!solo" (click)="!solo&&editItem(selected,$event)">
           {{selected.display()}}
-          <a (mousedown)="selection.remove(selected)" *ngIf="!solo">&times;</a>
+          <a (click)="removeItem(selected,$event)" *ngIf="!solo">&times;</a>
         </span>
       </li>
     </ul>
     <!-- Dropdown -->
-    <ec-pop (click)="clickInside($event)" [ngClass]="field?.nestedPopClass || 'ec-select-options'" #crudPop [active]="field?.nestedPopActive"
+    <ec-pop (click)="clickInside($event)" [ngClass]="field?.nestedPopClass || 'ec-select-options'" #dropdown [active]="field?.nestedPopActive"
       [visible]="field?.nestedPopVisible">
-      <ec-entry-list [model]="model" *ngIf="selection&&crudPop.active" [config]="dropdownConfig" [selection]="selection" (columnClicked)="select($event)"></ec-entry-list>
+      <ec-entry-list [model]="model" *ngIf="selection&&dropdown.active" [config]="dropdownConfig" [selection]="selection" (columnClicked)="select($event)"></ec-entry-list>
     </ec-pop>
     <!-- popup -->
     <ec-pop (click)="clickInside($event)" [ngClass]="getPopClass()" #listPop>
@@ -28,12 +28,15 @@
       </div>
     </ec-pop>
   </div>
-  <ec-entry-pop #entryPop [model]="model" [ngClass]="getPopClass()" [config]="config" (submitted)="formSubmitted($event,entryPop)"></ec-entry-pop>
+  <ec-entry-pop #entryPop [model]="model" [ngClass]="getPopClass()" [config]="config" (submitted)="formSubmitted($event)" (deleted)="removeItem($event)"></ec-entry-pop>
   <nav class="ec-entry-select__controls">
+    <a (click)="editItem(selection.items[0],$event)" class="btn btn_clear" *ngIf="solo&&!config.disableCreatePop&&hasMethod('put')&&!selection.isEmpty()">
+      <ec-icon name="pencil"></ec-icon>
+    </a>
     <a (click)="listPop.show()" class="btn btn_clear" *ngIf="!config.disableListPop&&hasMethod('get')">
       <ec-icon name="list-bullets"></ec-icon>
     </a>
-    <a (click)="entryPop.show()" class="btn btn_clear" *ngIf="!config.disableCreatePop&&hasMethod('post')">
+    <a (click)="entryPop.create()" class="btn btn_clear" *ngIf="!config.disableCreatePop&&hasMethod('post')">
       <ec-icon name="add"></ec-icon>
     </a>
   </nav>

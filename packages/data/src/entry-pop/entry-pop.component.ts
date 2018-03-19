@@ -35,6 +35,8 @@ export class EntryPopComponent extends PopComponent implements OnInit {
   @Input() createRoute: string;
   /** Emits when the entry-form is submitted. */
   @Output() submitted: EventEmitter<Form<EntryResource>> = new EventEmitter();
+  /** Emits when the resource has been deleted. */
+  @Output() deleted: EventEmitter<Form<EntryResource>> = new EventEmitter();
 
   constructor(protected popService: PopService, private auth: AuthService, private router: Router, private route: ActivatedRoute) {
     super(popService);
@@ -114,5 +116,11 @@ export class EntryPopComponent extends PopComponent implements OnInit {
     if (!this.config.keepPopOpen) {
       this.hide();
     }
+  }
+
+  /** Fires when the resource has been deleted. */
+  private deletedEntry() {
+    this.hide();
+    this.deleted.emit(this.form.form);
   }
 }

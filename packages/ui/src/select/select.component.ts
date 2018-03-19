@@ -49,7 +49,11 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
       this.pop.hide();
     }
   }
+  /** is intended to be called when clicking inside and the dropdown should not toggle */
   clickInside(e) {
+    if (!e) {
+      return;
+    }
     e.preventDefault();
     e.stopPropagation();
   }
@@ -86,6 +90,12 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   /** Called when the model changes */
   writeValue(value: any) {
     this.use(value);
+  }
+
+  /** Removes the given item from selection + triggers clickInside */
+  removeItem(item: Item<any>, e?) {
+    this.selection.remove(item);
+    this.clickInside(e);
   }
 
   /** Uses the given value as selection items */

@@ -80,7 +80,7 @@ export class AuthService {
   }
 
   /** Returns only the allowed methods for a given relation. Uses the permissions config option from resource-config. */
-  getAllowedResourceMethods(relation: string, variables: Object = {}, methods: string[] = [], api?: Core): Promise<string[]> {
+  getAllowedResourceMethods(relation: string, variables: Object = {}, methods?: string[], api?: Core): Promise<string[]> {
     if (methods) {
       return Promise.resolve(methods);
     }

@@ -51,7 +51,7 @@ export class EntryFormComponent extends FormComponent<EntryResource> implements 
       return;
     }
     if (this.entry && this.entry._modelTitle !== this.model) { // warn if model does not match
-      console.error(`ec-entry-form: Tried to edit an entry of model "${this.entry._modelTitle}" while "${this.model}" was expected!"`);
+      console.error(`ec-entry-form: Tried to edit an entry of model "${this.entry._modelTitle}" while "${this.model}" was expected! Entry: `, this.entry);
       return;
     }
     Promise.resolve(this.modelConfig.generateConfig(this.model, (this.config || {}).fields))

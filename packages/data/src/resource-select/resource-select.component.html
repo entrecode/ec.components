@@ -5,15 +5,15 @@
         </span>
         <ul class="ec-select-selected" *ngIf="selection.items.length">
             <li *ngFor="let selected of selection?.items">
-                <span [class.tag]="!solo" (mousedown)="clickItem(selected)">
+                <span [class.tag]="!solo" (click)="!solo&&editItem(selected,$event)">
                     {{selected.display()}}
-                    <a (mousedown)="selection.remove(selected)" *ngIf="!solo">&times;</a>
+                    <a (click)="removeItem(selected,$event)" *ngIf="!solo">&times;</a>
                 </span>
             </li>
         </ul>
-        <ec-pop (click)="clickInside($event)" [ngClass]="field?.nestedPopClass || 'ec-select-options'" #crudPop [active]="field?.nestedPopActive"
+        <ec-pop (click)="clickInside($event)" [ngClass]="field?.nestedPopClass || 'ec-select-options'" #dropdown [active]="field?.nestedPopActive"
             [visible]="field?.nestedPopVisible">
-            <ec-resource-list [relation]="relation" [api]="api" *ngIf="selection&&crudPop.active" [config]="dropdownConfig" [selection]="selection"
+            <ec-resource-list [relation]="relation" [api]="api" *ngIf="selection&&dropdown.active" [config]="dropdownConfig" [selection]="selection"
                 (columnClicked)="select($event)"></ec-resource-list>
         </ec-pop>
         <ec-pop (click)="clickInside($event)" [ngClass]="getPopClass()" #listPop>
@@ -28,12 +28,15 @@
             </div>
         </ec-pop>
     </div>
-    <ec-resource-pop #resourcePop [api]="api" [relation]="relation" [ngClass]="getPopClass()" [config]="config" (submitted)="formSubmitted($event,resourcePop)"></ec-resource-pop>
+    <ec-resource-pop #resourcePop [api]="api" [relation]="relation" [ngClass]="getPopClass()" [config]="config" (submitted)="formSubmitted($event)" (deleted)="removeItem($event)"></ec-resource-pop>
     <nav class="ec-entry-select__controls">
+        <a (click)="editItem(selection.items[0],$event)" class="btn btn_clear" *ngIf="solo&&!config.disableCreatePop&&hasMethod('put')&&!selection.isEmpty()">
+            <ec-icon name="pencil"></ec-icon>
+        </a>
         <a (click)="listPop.show()" class="btn btn_clear" *ngIf="!config?.disableListPop&&hasMethod('get')">
             <ec-icon name="list-bullets"></ec-icon>
         </a>
-        <a (click)="resourcePop.show()" class="btn btn_clear" *ngIf="!config?.disableCreatePop&&hasMethod('post')">
+        <a (click)="resourcePop.create()" class="btn btn_clear" *ngIf="!config?.disableCreatePop&&hasMethod('post')">
             <ec-icon name="add"></ec-icon>
         </a>
     </nav>
