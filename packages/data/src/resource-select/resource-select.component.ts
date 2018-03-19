@@ -24,6 +24,8 @@ import { ResourceConfig } from '../resource-config/resource-config.service';
 import { Form } from '@ec.components/core';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { ResourcePopComponent } from '../resource-pop/resource-pop.component';
+import { AuthService } from '../auth/auth.service';
+import { SdkService } from '@ec.components/data';
 /** Shows resources of a selection and is able to pick new ones from a crud list
 */
 
@@ -57,8 +59,6 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
     @Input() relation: string;
     /** The api to use */
     @Input() api: Core;
-    /** The ec-crud inside the view template */
-    @ViewChild('crud') crud: CrudComponent<Resource>;
     /** The config that is being generated. */
     public config: CrudConfig<Resource>;
     /** Wether or not the selection should be solo */
@@ -71,7 +71,10 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
     /** The config of the dropdown pop */
     dropdownConfig: CrudConfig<Resource>;
 
-    constructor(private resourceConfig: ResourceConfig) {
+    constructor(private resourceConfig: ResourceConfig,
+        private auth: AuthService,
+        private sdk: SdkService,
+    ) {
         super();
     }
 
@@ -85,17 +88,24 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
 
     /** Calls super.useConfig and then creates special dropdownConfig with just entryTitle as field  */
     useConfig(config: CrudConfig<Resource> = {}) {
-        config.methods = !config.methods ? ['get', 'post'] :
-            config.methods.filter(method => method.toLocaleLowerCase() !== 'post');
         super.useConfig(config);
         this.dropdownConfig = Object.assign({}, this.config, {
-            methods: ['get'],
             fields: {
                 [this.config.label]: Object.assign({}, this.config.fields[this.config.label])
             }
         });
+        this.auth.getAllowedResourceMethods(this.relation, {}, null, this.sdk.session)
+            .then((methods) => {
+                this.config.methods = methods
+            });
     }
 
+    /** Returns true if the given method is part of the methods array (or if there is no methods array) */
+    public hasMethod(method: string) {
+        return this.config && this.config.methods && this.config.methods.indexOf(method) !== -1;
+    }
+
+    /** Inits the select with api, relation and config setup */
     init() {
         if (!this.api || !this.relation) {
             return;

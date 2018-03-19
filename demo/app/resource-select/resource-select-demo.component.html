@@ -3,3 +3,4 @@
 <span *ngIf="multi?.length">{{multi?.length}} items selected</span>
 <ec-resource-select relation="dataManager" [api]="sdk?.datamanager" [solo]="true" [(ngModel)]="solo"></ec-resource-select>
 <span *ngIf="solo">selected: {{solo}}</span>
+<ec-notifications class="toast"></ec-notifications>

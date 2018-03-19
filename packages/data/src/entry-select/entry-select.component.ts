@@ -21,6 +21,7 @@ import { SelectComponent } from '@ec.components/ui';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { Form } from '@ec.components/core';
 import { EntryPopComponent } from '../entry-pop/entry-pop.component';
+import { AuthService } from '../auth/auth.service';
 
 // import LiteEntryResource from "ec.sdk/lib/resources/publicAPI/LiteEntryResource";
 
@@ -55,8 +56,6 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   @Input() value: Array<EntryResource>;
   /** The model to pick from, alternative to field with model property set. */
   @Input() model: string;
-  /** The ec-crud inside the view template */
-  @ViewChild('crud') crud: CrudComponent<EntryResource>;
   /** The config that is being generated. */
   public config: CrudConfig<EntryResource>;
   /** The config for the dropdown crud list */
@@ -69,21 +68,28 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   /** The crud pop with the list to select from */
   @ViewChild('crudPop') pop: PopComponent;
 
-  constructor(private modelConfig: ModelConfigService) {
+  constructor(private modelConfig: ModelConfigService,
+    private auth: AuthService) {
     super();
   }
 
   /** Calls super.useConfig and then creates special dropdownConfig with just entryTitle as field  */
   useConfig(config: CrudConfig<EntryResource> = {}) {
-    config.methods = !config.methods ? ['get', 'post'] :
-      config.methods.filter(method => method.toLocaleLowerCase() !== 'post');
     super.useConfig(config);
     this.dropdownConfig = Object.assign({}, this.config, {
-      methods: ['get'],
       fields: {
         [this.config.label]: Object.assign({}, this.config.fields[this.config.label])
       }
     });
+    this.auth.getAllowedModelMethods(this.model)
+      .then((methods) => {
+        this.config.methods = methods
+      });
+  }
+
+  /** Returns true if the given method is part of the methods array (or if there is no methods array) */
+  public hasMethod(method: string) {
+    return this.config && this.config.methods && this.config.methods.indexOf(method) !== -1;
   }
 
   /** Generates the config and sets up form control */
