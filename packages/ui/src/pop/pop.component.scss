@@ -11,7 +11,7 @@
   }
 }
 
-// basic drawer style
+// basic dialopg style
 // -----------------------------------------
 
 .ec-pop_dialog {
@@ -20,8 +20,8 @@
     z-index: 9999;
     top: 0;
     left: 0;
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     justify-content: center;
     flex-direction: column;
     align-items: center;
@@ -31,7 +31,7 @@
     }
 
     > .ec-pop {
-      min-width: 240px;
+      max-width: 100%;
     }
   }
 }
@@ -50,7 +50,7 @@
 
     > .ec-pop {
       position: fixed;
-      height: 100vh;
+      height: 100%;
       top: 0;
       left: 0;
     }
@@ -64,7 +64,7 @@
 
     > .ec-pop {
       position: fixed;
-      height: 100vh;
+      height: 100%;
       top: 0;
       right: 0;
     }
@@ -78,7 +78,7 @@
 
     > .ec-pop {
       position: fixed;
-      width: 100vw;
+      width: 100%;
       top: 0;
       left: 0;
     }
@@ -92,7 +92,7 @@
 
     > .ec-pop {
       position: fixed;
-      width: 100vw;
+      width: 100%;
       bottom: 0;
       left: 0;
     }
@@ -107,8 +107,8 @@
     z-index: 9999;
 
     > .ec-pop {
-      width: 100vw;
-      height: 100vh;
+      width: 100%;
+      height: 100%;
       position: fixed;
       z-index: 9999;
       top: 0;
@@ -129,7 +129,7 @@
   > .ec-pop-container {
     > .ec-pop {
       @extend %basic-toast;
-      width: 100vw;
+      width: 100%;
       top: 0;
       left: 0;
     }
@@ -140,7 +140,7 @@
   > .ec-pop-container {
     > .ec-pop {
       @extend %basic-toast;
-      width: 100vw;
+      width: 100%;
       bottom: 0;
       left: 0;
     }
