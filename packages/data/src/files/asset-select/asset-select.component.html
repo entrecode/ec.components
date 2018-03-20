@@ -6,15 +6,15 @@
     <span> oder <a (click)="pop.toggle()">Mediathek</a></span>
   </div>
   <div *ngIf="selection.items.length" class="ec-asset-selected">
-    <ul class="ec-asset-selected__items" data-flex="small-grid">
-      <li *ngFor="let selected of selection.items" class="ec-asset-selected__item" (click)="editItem(selected)" data-col="3sm">
+    <ul class="ec-asset-selected__items" data-grid="is-small">
+      <li *ngFor="let selected of selection.items" class="ec-asset-selected__item" (click)="editItem(selected)" data-col="3-sm">
         <div class="ec-asset-card">
           <img [src]="selected.resolve('thumb')">
           <nav class="ec-asset-card-controls">
             <a (click)="selection.remove(selected)" class="ec-asset-card-controls__remove">
               <ec-icon name="close-x"></ec-icon>
             </a>
-          </nav>  
+          </nav>
         </div>
       </li>
     </ul>
