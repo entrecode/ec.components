@@ -8,7 +8,7 @@
   <input [id]="field.id" *ngSwitchCase="'number'" type="number" [formControl]="control"
          [placeholder]="field.getPlaceholder()" class="input">
 
-  <label class="ec-default-input_color" [style.backgroundColor]="control.value" *ngSwitchCase="'color'">
+  <label class="ec-input_color" [style.backgroundColor]="control.value" *ngSwitchCase="'color'">
     <input [id]="field.id" type="color" [formControl]="control">
   </label>
 

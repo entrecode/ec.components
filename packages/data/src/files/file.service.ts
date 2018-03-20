@@ -70,7 +70,7 @@ export class FileService {
           }
           return asset.getImageUrl(200)
         },
-        view: 'avatar',
+        view: 'preview',
         readOnly: true
       },
       title: {
