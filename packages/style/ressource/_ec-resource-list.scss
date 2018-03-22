@@ -7,7 +7,15 @@
 
       > li  {
         padding: 0 rem($grid-gutter / 4) rem($grid-gutter / 2);
-        width: 100 / 12 * 3%;
+        width: 100 / 12 * 4%;
+
+        @media (min-width: getBreakpoint(md)) {
+          width: 100 / 12 * 3%;
+        }
+
+        @media (min-width: getBreakpoint(xl)) {
+          width: 100 / 12 * 2%;
+        }
       }
     }
   }
