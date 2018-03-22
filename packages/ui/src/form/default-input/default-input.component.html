@@ -8,9 +8,11 @@
   <input [id]="field.id" *ngSwitchCase="'number'" type="number" [formControl]="control"
          [placeholder]="field.getPlaceholder()" class="input">
 
-  <label class="ec-input_color" [style.backgroundColor]="control.value" *ngSwitchCase="'color'">
-    <input [id]="field.id" type="color" [formControl]="control">
-  </label>
+  <div class="ec-input_color" *ngSwitchCase="'color'">
+    <label [style.backgroundColor]="control.value">
+      <input [id]="field.id" type="color" [formControl]="control">
+    </label>
+  </div>
 
   <input [id]="field.id" *ngSwitchCase="'boolean'" type="checkbox" [formControl]="control"
          [placeholder]="field.getPlaceholder()">
