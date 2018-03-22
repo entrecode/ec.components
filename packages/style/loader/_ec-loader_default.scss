@@ -1,9 +1,15 @@
 @keyframes loaderDefault {
   0% {
     transform: rotate(0);
+    border-right-color: getColor(link);
+  }
+
+  50% {
+    border-right-color: getColor(super);
   }
 
   100% {
+    border-right-color: getColor(link);
     transform: rotate(360deg);
   }
 }
@@ -20,8 +26,8 @@
     height: em(24);
     width: em(24);
     border-radius: 50%;
-    border: em(4) solid getColor(state, active);
-    border-right-color: getColor(state, disabled);
-    animation: loaderDefault 2s infinite ease-in-out;
+    border: em(4) solid getColor(divider);
+    border-right-color: getColor(link);
+    animation: loaderDefault 1s infinite linear;
   }
 }
