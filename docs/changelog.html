@@ -1396,11 +1396,17 @@
                    <div class="content-data">
 
 <h1 id="changelog">Changelog</h1>
-<p><a name="0.16.0"></a></p>
-<h2 id="0-16-0">0.16.0</h2>
+<p><a name="0.17.0"></a></p>
+<h2 id="0-17-0">0.17.0</h2>
 <ul>
 <li>added resource module with all resource related components and services</li>
 <li>can now add delete and modify entries and resource through the selects</li>
+<li>asset select now supports old and new assets. When you pass [assetGroupID] to select (or list/upload), new assets will be used.</li>
+<li>deprecated asset-list, because ec.sdk now supports public api relations.</li>
+</ul>
+<p>BREAKING CHANGE:</p>
+<ul>
+<li>removed [field] input from selects</li>
 </ul>
 <p><a name="0.15.0"></a></p>
 <h2 id="0-15-0">0.15.0</h2>

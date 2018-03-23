@@ -2275,7 +2275,7 @@
                                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-line">Defined in ResourceListComponent:110</div>
+                                        <div class="io-line">Defined in ResourceListComponent:111</div>
                                 </td>
                             </tr>
     
@@ -2365,7 +2365,7 @@
                                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-line">Defined in ResourceListComponent:114</div>
+                                        <div class="io-line">Defined in ResourceListComponent:115</div>
                                 </td>
                             </tr>
     
@@ -2440,7 +2440,7 @@
                                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-line">Defined in ResourceListComponent:101</div>
+                                        <div class="io-line">Defined in ResourceListComponent:102</div>
                                 </td>
                             </tr>
     
@@ -2513,7 +2513,7 @@
                                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-line">Defined in ResourceListComponent:75</div>
+                                        <div class="io-line">Defined in ResourceListComponent:76</div>
                                 </td>
                             </tr>
     
@@ -3002,6 +3002,7 @@ export class AssetListComponent extends ResourceListComponent {
   }
   /** Creates the AssetList */
   createList(): AssetList {
+    console.warn(&#x27;asset list component is deprecated!&#x27;);
     return new AssetList(this.config, this.sdk, this.fileService);
   }
 }

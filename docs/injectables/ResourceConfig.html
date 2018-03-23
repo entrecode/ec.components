@@ -1810,7 +1810,45 @@ export class ResourceConfig {
           created: created(this.symbol.resolve(&#x27;field.label.created&#x27;)),
         }
       },
-      asset: {
+      asset: { // old ec.asset
+        identifier: &#x27;assetID&#x27;,
+        fields: {
+          thumb: {
+            form: false,
+            label: this.symbol.resolve(&#x27;asset.field.label.thumb&#x27;),
+            view: &#x27;preview&#x27;,
+            resolve: (asset) &#x3D;&gt; {
+              if (asset.type !&#x3D;&#x3D; &#x27;image&#x27;) {
+                return &#x27;&#x27;;
+              }
+              return asset.getImageUrl(200);
+            },
+            immutable: true
+          },
+          assetID: {
+            label: &#x27;assetID&#x27;,
+            list: false,
+            form: false,
+            immutable: true
+          },
+          title: {
+            label: this.symbol.resolve(&#x27;field.label.title&#x27;),
+            view: &#x27;string&#x27;,
+            sortable: true,
+            filterable: true
+          },
+          files: {
+            label: this.symbol.resolve(&#x27;asset.field.label.files&#x27;),
+            view: &#x27;tag&#x27;,
+            form: false,
+            display: value &#x3D;&gt; value.length,
+            immutable: true
+          },
+          tags: tagsField(this.symbol.resolve(&#x27;asset.field.label.tags&#x27;)),
+          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;)),
+        }
+      },
+      legacyAsset: { // old public assets
         identifier: &#x27;assetID&#x27;,
         fields: {
           thumb: {
@@ -1873,7 +1911,7 @@ export class ResourceConfig {
           created: created(this.symbol.resolve(&#x27;field.label.created&#x27;)),
         }
       },
-      dmAsset: {
+      dmAsset: { // new assets
         identifier: &#x27;assetID&#x27;,
         fields: {
           file: {
@@ -1882,6 +1920,19 @@ export class ResourceConfig {
             view: &#x27;preview&#x27;,
             immutable: true,
             form: false
+          },
+          thumb: {
+            form: false,
+            list: false,
+            label: this.symbol.resolve(&#x27;asset.field.label.thumb&#x27;),
+            view: &#x27;preview&#x27;,
+            resolve: (asset) &#x3D;&gt; {
+              if (asset.type !&#x3D;&#x3D; &#x27;image&#x27; || !asset.thumbnails || !asset.thumbnails.length) {
+                return &#x27;&#x27;;
+              }
+              return asset.thumbnails[0].url;
+            },
+            immutable: true
           },
           assetID: {
             label: this.symbol.resolve(&#x27;dmAsset.field.label.assetID&#x27;),

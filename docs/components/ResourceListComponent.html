@@ -2180,7 +2180,7 @@ It is meant to be extended and overriden the createList method. See e.g. AssetLi
     
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">packages/data/src/resource-list/resource-list.component.ts:110</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">packages/data/src/resource-list/resource-list.component.ts:111</a></div>
                                 </td>
                             </tr>
     
@@ -2264,7 +2264,7 @@ It is meant to be extended and overriden the createList method. See e.g. AssetLi
     
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">packages/data/src/resource-list/resource-list.component.ts:114</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="115" class="link-to-prism">packages/data/src/resource-list/resource-list.component.ts:115</a></div>
                                 </td>
                             </tr>
     
@@ -2333,7 +2333,7 @@ It is meant to be extended and overriden the createList method. See e.g. AssetLi
     
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">packages/data/src/resource-list/resource-list.component.ts:101</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">packages/data/src/resource-list/resource-list.component.ts:102</a></div>
                                 </td>
                             </tr>
     
@@ -2400,7 +2400,7 @@ It is meant to be extended and overriden the createList method. See e.g. AssetLi
     
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">packages/data/src/resource-list/resource-list.component.ts:75</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">packages/data/src/resource-list/resource-list.component.ts:76</a></div>
                                 </td>
                             </tr>
     
@@ -2846,13 +2846,14 @@ export class ResourceListComponent extends ListComponent&lt;Resource&gt;
       return;
       // return Promise.reject(&#x60;cannot create ResourceList: no relation or api given. Relation: ${this.relation} API: ${this.api}&#x60;);
     }
+    const namespace &#x3D; this.relation.split(&#x27;.&#x27;)[0];
     this.config &#x3D; Object.assign(
       {},
-      this.resourceConfig.config[this.relation] || {},
+      this.resourceConfig.config[namespace] || {},
       this.config || {}
     );
 
-    this.resourceService.change({ relation: this.relation })
+    this.resourceService.change({ relation: namespace })
       .subscribe((update) &#x3D;&gt; {
         this.list.load();
       });

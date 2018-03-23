@@ -1943,7 +1943,7 @@ set method. </p>
                                         <div>
                                         </div>
                                         <div class="io-description">
-                                            <b>Returns : </b>    <code>{ raw: string; name: any; model: any; }</code>
+                                            <b>Returns : </b>    <code>{ raw: string; name: any; relation: any; }</code>
             
                                         </div>
                                             <div class="io-description">
@@ -2180,7 +2180,7 @@ export class ModelConfigService extends Config {
     return !match.length ? null : {
       raw: type,
       name: match[1],
-      model: match.length &gt; 2 ? match[3] : null
+      relation: match.length &gt; 2 ? match[3] : null
     };
   }
 
@@ -2225,7 +2225,7 @@ export class ModelConfigService extends Config {
         fieldConfig[property] &#x3D; Object.assign({
             label: property,
             schema: schema.properties[property],
-            model: type.model,
+            relation: type.relation,
             readOnly: schema.properties[property].readOnly || this.isSystemProperty(property),
             // required: schema.required.indexOf(property) !&#x3D;&#x3D; -1, // TODO
             display: ((value) &#x3D;&gt; value)

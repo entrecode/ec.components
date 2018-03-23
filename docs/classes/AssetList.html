@@ -1764,7 +1764,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">packages/data/src/files/asset-list/asset-list.ts:21</a></div>
+                                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">packages/data/src/files/asset-list/asset-list.ts:22</a></div>
                                         </td>
                                     </tr>
             
@@ -5333,6 +5333,7 @@ export class AssetList extends ResourceList {
   constructor(config: ListConfig&lt;PublicAssetResource | AssetResource&gt;, protected sdk: SdkService, protected fileService: FileService) {
     super(Object.assign({}, fileService.assetListConfig, config));
     this.load(this.config);
+    console.warn(&#x27;asset list component is deprecated!&#x27;);
   }
 
   /** Overrides the List load method. Instead of slicing the page out of all items, a datamanager request is made using the config.*/
