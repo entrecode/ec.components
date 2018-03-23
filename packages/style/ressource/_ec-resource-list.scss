@@ -1,0 +1,22 @@
+.ec-resource-list {
+  .ec-list-body {
+    .ec-list-items {
+      flex-wrap: wrap;
+      flex-direction: row;
+      margin: 0 rem(-$grid-gutter / 4);
+
+      > li  {
+        padding: 0 rem($grid-gutter / 4) rem($grid-gutter / 2);
+        width: 100 / 12 * 4%;
+
+        @media (min-width: getBreakpoint(md)) {
+          width: 100 / 12 * 3%;
+        }
+
+        @media (min-width: getBreakpoint(xl)) {
+          width: 100 / 12 * 2%;
+        }
+      }
+    }
+  }
+}

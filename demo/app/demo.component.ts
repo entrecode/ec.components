@@ -55,6 +55,7 @@ export class DemoComponent {
     });
 
     this.modelConfig.set('baker', {
+      nestedPopClass: 'ec-pop_drawer-right',
       fields: {
         id: {
           label: 'ID',
@@ -68,8 +69,7 @@ export class DemoComponent {
           label: 'Letzte Änderung',
         },
         picture: {
-          label: 'Bilder',
-          nestedPopClass: 'ec-pop_drawer-right'
+          label: 'Bilder'
         },
         name: {
           label: 'Bäcker'

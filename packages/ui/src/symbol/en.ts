@@ -2,11 +2,11 @@ import { Symbol } from './symbol.interface';
 
 export default [{
     name: 'success.save',
-    content: 'Entry saved'
+    content: 'Saved successfully'
 },
 {
     name: 'success.delete',
-    content: 'Entry deleted'
+    content: 'Deleted successfully'
 },
 {
     name: 'error.delete',
@@ -53,6 +53,14 @@ export default [{
     content: 'Invalid Login Data'
 },
 {
+    name: 'error.1404',
+    content: 'Invalid Login Data'
+},
+{
+    name: 'error.2213',
+    content: 'Wrong File Format'
+},
+{
     name: 'error.2211',
     content: 'Validation Error'
 },
@@ -63,6 +71,14 @@ export default [{
 {
     name: 'error.2353',
     content: 'The entered name is already in use'
+},
+{
+    name: 'login.success',
+    content: 'Login was successful'
+},
+{
+    name: 'login.error',
+    content: 'Could not login'
 },
 {
     name: 'resource.delete.question',

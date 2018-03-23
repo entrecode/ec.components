@@ -222,14 +222,12 @@ export class ResourceConfig {
             label: this.symbol.resolve('dmAccount.field.label.hasPassword'),
             view: 'boolean',
             filterable: true,
-            sortable: true,
             readOnly: true
           },
           pending: {
             label: this.symbol.resolve('dmAccount.field.label.pending'),
             view: 'boolean',
             filterable: true,
-            sortable: true,
             readOnly: true
           },
           oauth: {
@@ -300,13 +298,51 @@ export class ResourceConfig {
           created: created(this.symbol.resolve('field.label.created')),
         }
       },
-      asset: {
+      asset: { // old ec.asset
         identifier: 'assetID',
         fields: {
           thumb: {
             form: false,
             label: this.symbol.resolve('asset.field.label.thumb'),
-            view: 'avatar',
+            view: 'preview',
+            resolve: (asset) => {
+              if (asset.type !== 'image') {
+                return '';
+              }
+              return asset.getImageUrl(200);
+            },
+            immutable: true
+          },
+          assetID: {
+            label: 'assetID',
+            list: false,
+            form: false,
+            immutable: true
+          },
+          title: {
+            label: this.symbol.resolve('field.label.title'),
+            view: 'string',
+            sortable: true,
+            filterable: true
+          },
+          files: {
+            label: this.symbol.resolve('asset.field.label.files'),
+            view: 'tag',
+            form: false,
+            display: value => value.length,
+            immutable: true
+          },
+          tags: tagsField(this.symbol.resolve('asset.field.label.tags')),
+          created: created(this.symbol.resolve('field.label.created')),
+        }
+      },
+      legacyAsset: { // old public assets
+        identifier: 'assetID',
+        fields: {
+          thumb: {
+            form: false,
+            label: this.symbol.resolve('asset.field.label.thumb'),
+            view: 'preview',
             resolve: (asset) => {
               if (asset.type !== 'image') {
                 return '';
@@ -363,15 +399,28 @@ export class ResourceConfig {
           created: created(this.symbol.resolve('field.label.created')),
         }
       },
-      dmAsset: {
+      dmAsset: { // new assets
         identifier: 'assetID',
         fields: {
           file: {
             label: this.symbol.resolve('dmAsset.field.label.file'),
             display: value => value.url,
-            view: 'avatar',
+            view: 'preview',
             immutable: true,
             form: false
+          },
+          thumb: {
+            form: false,
+            list: false,
+            label: this.symbol.resolve('asset.field.label.thumb'),
+            view: 'preview',
+            resolve: (asset) => {
+              if (asset.type !== 'image' || !asset.thumbnails || !asset.thumbnails.length) {
+                return '';
+              }
+              return asset.thumbnails[0].url;
+            },
+            immutable: true
           },
           assetID: {
             label: this.symbol.resolve('dmAsset.field.label.assetID'),
@@ -410,7 +459,7 @@ export class ResourceConfig {
           created: created(this.symbol.resolve('field.label.created')),
         }
       },
-      client: {
+      dmClient: {
         identifier: 'clientID',
         fields: {
           clientID: {

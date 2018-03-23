@@ -217,6 +217,9 @@
                                     <a href="../modules/PopModule.html" >PopModule</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../modules/ResourceModule.html" >ResourceModule</a>
+                                </li>
+                                <li class="link">
                                     <a href="../modules/SdkModule.html" >SdkModule</a>
                                 </li>
                                 <li class="link">
@@ -626,6 +629,9 @@
                                 <li class="link">
                                     <a href="../interfaces/WithLoader.html" >WithLoader</a>
                                 </li>
+                                <li class="link">
+                                    <a href="../interfaces/WithNotifications.html" >WithNotifications</a>
+                                </li>
                         </ul>
                     </li>
             
@@ -898,6 +904,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../modules/PopModule.html" >PopModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/ResourceModule.html" >ResourceModule</a>
                                        </li>
                                        <li class="link">
                                            <a href="../modules/SdkModule.html" >SdkModule</a>
@@ -1309,6 +1318,9 @@
                                        <li class="link">
                                            <a href="../interfaces/WithLoader.html" >WithLoader</a>
                                        </li>
+                                       <li class="link">
+                                           <a href="../interfaces/WithNotifications.html" >WithNotifications</a>
+                                       </li>
                                </ul>
                            </li>
                    
@@ -1673,7 +1685,7 @@ changes.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="197" class="link-to-prism">packages/data/src/files/file.service.ts:197</a></div>
+                                                <div class="io-line">Defined in <a href="" data-line="198" class="link-to-prism">packages/data/src/files/file.service.ts:198</a></div>
                                         </td>
                                     </tr>
             
@@ -1946,7 +1958,7 @@ changes.</p>
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <i>Default value : </i><code>{
+                                        <i>Default value : </i><code>{ // TODO: delete when asset list is dead
                 label: &#x27;title&#x27;,
                 size: 5,
                 identifier: &#x27;assetID&#x27;,
@@ -1969,7 +1981,7 @@ changes.</p>
                       }
                       return asset.getImageUrl(200)
                     },
-                    view: &#x27;avatar&#x27;,
+                    view: &#x27;preview&#x27;,
                     readOnly: true
                   },
                   title: {
@@ -2044,7 +2056,7 @@ changes.</p>
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <i>Default value : </i><code>{ // TODO: extend
+                                        <i>Default value : </i><code>{ // TODO: dont use
                 label: &#x27;title&#x27;,
                 identifier: &#x27;assetID&#x27;,
                 fields: {
@@ -2169,7 +2181,7 @@ export class FileService {
   /** The changes event is emitted everytime an entry is created or updated. */
   public uploads: EventEmitter&lt;Upload&gt; &#x3D; new EventEmitter();
   /** The default config for asset lists */
-  public assetListConfig &#x3D; {
+  public assetListConfig &#x3D; { // TODO: delete when asset list is dead
     label: &#x27;title&#x27;,
     size: 5,
     identifier: &#x27;assetID&#x27;,
@@ -2192,7 +2204,7 @@ export class FileService {
           }
           return asset.getImageUrl(200)
         },
-        view: &#x27;avatar&#x27;,
+        view: &#x27;preview&#x27;,
         readOnly: true
       },
       title: {
@@ -2223,7 +2235,7 @@ export class FileService {
     }
   };
 
-  public newAssetListConfig &#x3D; { // TODO: extend
+  public newAssetListConfig &#x3D; { // TODO: dont use
     label: &#x27;title&#x27;,
     identifier: &#x27;assetID&#x27;,
     fields: {
@@ -2311,6 +2323,7 @@ export class FileService {
         }
       }).then((upload: Upload) &#x3D;&gt; {
         this.uploads.emit(upload);
+        this.resourceService.changes.next({ relation: &#x27;legacyAsset&#x27;, type: &#x27;post&#x27; });
         return upload;
       });
   }

@@ -3,6 +3,7 @@ import { SdkService } from '../sdk/sdk.service';
 import AccountResource from 'ec.sdk/lib/resources/accounts/AccountResource';
 import PublicAPI from 'ec.sdk/lib/PublicAPI';
 import { ResourceConfig } from '../resource-config/resource-config.service';
+import Core from 'ec.sdk/lib/Core';
 
 /** The SdkService exposes all instances of the ec.sdk APIs.
  * To be able to use it, you have to provide an environment like this in your module's providers:
@@ -79,7 +80,7 @@ export class AuthService {
   }
 
   /** Returns only the allowed methods for a given relation. Uses the permissions config option from resource-config. */
-  getAllowedResourceMethods(relation: string, variables: Object = {}, methods?: string[]): Promise<string[]> {
+  getAllowedResourceMethods(relation: string, variables: Object = {}, methods?: string[], api?: Core): Promise<string[]> {
     if (methods) {
       return Promise.resolve(methods);
     }
@@ -91,12 +92,14 @@ export class AuthService {
     return Object.keys(permissions)
       .map((method) => (results) => {
         return !permissions[method] ? Promise.resolve(results) :
-          permissions[method] ? Promise.resolve(results.concat(method)) :
-            this.checkPermission(`${this.resolveVariables(permissions[method], variables)}`)
+          permissions[method] === true ? Promise.resolve(results.concat(method)) :
+            this.checkPermission(`${this.resolveVariables(permissions[method], variables)}`, api)
               .then(res => {
                 if (res) {
                   results.push(method);
                 }
+                return results;
+              }).catch(err => {
                 return results;
               })
       })

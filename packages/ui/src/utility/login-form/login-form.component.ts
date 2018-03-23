@@ -40,6 +40,8 @@ export class LoginFormComponent implements OnInit, WithLoader {
   @Input() buttonLabel = 'Login';
   /** Additional Button classes */
   @Input() buttonClasses = '';
+  /** Recent error Notifications */
+  notifications: Notification[];
 
   /** Injects the FormBuilder*/
   constructor(private fb: FormBuilder) {

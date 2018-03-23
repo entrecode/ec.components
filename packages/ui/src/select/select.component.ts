@@ -49,7 +49,11 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
       this.pop.hide();
     }
   }
+  /** is intended to be called when clicking inside and the dropdown should not toggle */
   clickInside(e) {
+    if (!e) {
+      return;
+    }
     e.preventDefault();
     e.stopPropagation();
   }
@@ -88,6 +92,12 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
     this.use(value);
   }
 
+  /** Removes the given item from selection + triggers clickInside */
+  removeItem(item: Item<any>, e?) {
+    this.selection.remove(item);
+    this.clickInside(e);
+  }
+
   /** Uses the given value as selection items */
   use(value) {
     this.value = Array.isArray(value) ? value : (value ? [value] : []);
@@ -100,8 +110,8 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   }
 
   /** Initializes either with values, collection or list. Creates Selection with config. */
-  useConfig(config = {}) {
-    this.config = Object.assign({ selectMode: true }, this.config || {}, config);
+  useConfig(config: ListConfig<T> = {}) {
+    this.config = Object.assign(this.config || {}, config);
     this.initSelection();
     this.writeValue(this.value);
   }
@@ -114,6 +124,13 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   /** Select handler. Toggles selection. */
   public select(item) {
     this.selection.toggle(item);
+  }
+
+  public toggle(e) {
+    if (this.pop) {
+      this.pop.toggle();
+    }
+    this.clickInside(e);
   }
 
   /** Fires on selection change. Hides pop if solo */

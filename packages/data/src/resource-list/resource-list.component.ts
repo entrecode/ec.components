@@ -57,13 +57,14 @@ export class ResourceListComponent extends ListComponent<Resource>
       return;
       // return Promise.reject(`cannot create ResourceList: no relation or api given. Relation: ${this.relation} API: ${this.api}`);
     }
+    const namespace = this.relation.split('.')[0];
     this.config = Object.assign(
       {},
-      this.resourceConfig.config[this.relation] || {},
+      this.resourceConfig.config[namespace] || {},
       this.config || {}
     );
 
-    this.resourceService.change({ relation: this.relation })
+    this.resourceService.change({ relation: namespace })
       .subscribe((update) => {
         this.list.load();
       });

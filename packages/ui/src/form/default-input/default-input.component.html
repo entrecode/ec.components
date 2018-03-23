@@ -8,7 +8,11 @@
   <input [id]="field.id" *ngSwitchCase="'number'" type="number" [formControl]="control"
          [placeholder]="field.getPlaceholder()" class="input">
 
-  <input [id]="field.id" *ngSwitchCase="'color'" type="color" [formControl]="control">
+  <div class="ec-input_color" *ngSwitchCase="'color'">
+    <label [style.backgroundColor]="control.value">
+      <input [id]="field.id" type="color" [formControl]="control">
+    </label>
+  </div>
 
   <input [id]="field.id" *ngSwitchCase="'boolean'" type="checkbox" [formControl]="control"
          [placeholder]="field.getPlaceholder()">
@@ -25,7 +29,7 @@
   <ec-datetime *ngSwitchCase="'date'" [formControl]="control"
                [placeholder]="field.getPlaceholder()"></ec-datetime>
 
-  <select [id]="field.id" *ngSwitchCase="'select'" (change)="control.patchValue($event.target.value)">
+  <select [id]="field.id" *ngSwitchCase="'select'" (change)="control.patchValue($event.target.value)" class="input">
     <option *ngFor="let option of field.values" [selected]="control.value===option"
             [value]="option">
       {{option}}

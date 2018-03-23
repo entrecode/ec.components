@@ -7,7 +7,8 @@ import {
   Input,
   OnChanges,
   ViewChild,
-  ViewEncapsulation
+  ViewEncapsulation,
+  OnInit
 } from '@angular/core';
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Field } from '@ec.components/core/src/field/field';
@@ -18,6 +19,10 @@ import { Item } from '@ec.components/core/src/item/item';
 import { CrudConfig } from '../crud/crud-config.interface';
 import { SelectComponent } from '@ec.components/ui';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
+import { Form } from '@ec.components/core';
+import { EntryPopComponent } from '../entry-pop/entry-pop.component';
+import { AuthService } from '../auth/auth.service';
+import LiteEntryResource from 'ec.sdk/lib/resources/publicAPI/LiteEntryResource';
 
 // import LiteEntryResource from "ec.sdk/lib/resources/publicAPI/LiteEntryResource";
 
@@ -38,8 +43,6 @@ import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
   ]
 })
 export class EntrySelectComponent extends SelectComponent<EntryResource> implements OnChanges {
-  /** The field for which the input is meant. */
-  @Input() field: Field;
   /** The item that is targeted by the input */
   protected item: Item<any>;
   /** The form group that is used */
@@ -52,31 +55,56 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   @Input() value: Array<EntryResource>;
   /** The model to pick from, alternative to field with model property set. */
   @Input() model: string;
-  /** The ec-crud inside the view template */
-  @ViewChild('crud') crud: CrudComponent<EntryResource>;
   /** The config that is being generated. */
   public config: CrudConfig<EntryResource>;
+  /** The config for the dropdown crud list */
+  public dropdownConfig: CrudConfig<EntryResource>;
   /** Wether or not the selection should be solo */
   @Input() solo: boolean;
   /** The config that should be merged into the generated config */
   // tslint:disable-next-line:no-input-rename
   @Input('config') crudConfig: CrudConfig<EntryResource>;
-  /** The crud pop with the list to select from */
-  @ViewChild('crudPop') pop: PopComponent;
+  /** The dropdown pop with the list to select from */
+  @ViewChild('dropdown') pop: PopComponent;
+  /** The nested entry pop */
+  @ViewChild(EntryPopComponent) entryPop: EntryPopComponent;
 
-  constructor(private modelConfig: ModelConfigService) {
+  constructor(private modelConfig: ModelConfigService,
+    private auth: AuthService) {
     super();
+    // TODO: listen to change events and remove deleted selected items
+    /* this.resourceService.change({ relation: this.model })
+      .subscribe((update) => {
+        this.list.load();
+      }); */
   }
 
+  /** Calls super.useConfig and then creates special dropdownConfig with just entryTitle as field  */
+  useConfig(config: CrudConfig<EntryResource> = {}) {
+    super.useConfig(config);
+    this.dropdownConfig = Object.assign({}, this.config, {
+      fields: {
+        [this.config.label]: Object.assign({}, (this.config.fields || {})[this.config.label])
+      }
+    });
+    this.auth.getAllowedModelMethods(this.model, this.config.methods)
+      .then((methods) => {
+        this.config.methods = methods
+      });
+  }
+
+  /** Returns true if the given method is part of the methods array (or if there is no methods array) */
+  public hasMethod(method: string) {
+    return this.config && this.config.methods && this.config.methods.indexOf(method) !== -1;
+  }
+
+  /** Generates the config and sets up form control */
   ngOnChanges() {
     if (!this.formControl) {
       this.formControl = new FormControl(this.value || []);
     }
-    if (this.field) {
-      this.model = this.model || this.field['model'];
-    }
     if (this.config) {
-      super.useConfig(this.config);
+      this.useConfig(this.config);
       return;
     }
     this.modelConfig.generateConfig(this.model) // , (this.config || {}).fields
@@ -88,14 +116,28 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   }
 
   /** Is called when a selected item has been clicked. */
-  editItem(item) {
-    if (item.getBody() instanceof EntryResource) {
-      console.log('already got full entry', item.getBody());
+  editItem(item: Item<EntryResource>, e) {
+    if (!this.hasMethod('put')) {
       return;
     }
-    item.getBody().resolve().then((entry) => {
-      console.log('resolved', entry);
-    });
-    // TODO open edit pop
+    item.getBody().resolve()
+      .then(entry => {
+        this.entryPop.edit(entry);
+      });
+    this.clickInside(e);
+  }
+
+  /** Returns the pop class that should be used, either uses config.popClass or defaults to ec-pop_dialog. */
+  getPopClass() {
+    return this.config && this.config.popClass ? this.config.popClass : 'ec-pop_dialog';
+  }
+  /** Is called when the nested entry-form has been saved. Selects the fresh entry and clears the form */
+  formSubmitted(form: Form<EntryResource>) {
+    if (!this.selection.has(form)) {
+      this.select(form);
+    } else { // already in selection => update body
+      const index = this.selection.index(form);
+      this.selection.items[index].body = form.getBody();
+    }
   }
 }

@@ -2,11 +2,11 @@ import { Symbol } from './symbol.interface';
 
 export default [{
     name: 'success.save',
-    content: 'Der Eintrag wurde gespeichert'
+    content: 'Speichern erfolgreich'
 },
 {
     name: 'success.delete',
-    content: 'Eintrag gelöscht'
+    content: 'Löschen erfolgreich'
 },
 {
     name: 'error.delete',
@@ -50,7 +50,15 @@ export default [{
 },
 {
     name: 'error.2460.account_not_found',
-    content: 'Der Login war ungültig.'
+    content: 'Der Login war ungültig'
+},
+{
+    name: 'error.1404',
+    content: 'Der Login war ungültig'
+},
+{
+    name: 'error.2213',
+    content: 'Falsches Dateiformat'
 },
 {
     name: 'error.2211',
@@ -63,6 +71,14 @@ export default [{
 {
     name: 'error.2353',
     content: 'Der eingegebene Name ist bereits vorhanden'
+},
+{
+    name: 'login.success',
+    content: 'Erfolgreich eingeloggt'
+},
+{
+    name: 'login.error',
+    content: 'Fehler beim Login'
 },
 {
     name: 'resource.delete.question',

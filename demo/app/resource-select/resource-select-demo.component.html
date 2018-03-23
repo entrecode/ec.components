@@ -3,3 +3,6 @@
 <span *ngIf="multi?.length">{{multi?.length}} items selected</span>
 <ec-resource-select relation="dataManager" [api]="sdk?.datamanager" [solo]="true" [(ngModel)]="solo"></ec-resource-select>
 <span *ngIf="solo">selected: {{solo}}</span>
+<ec-notifications class="toast"></ec-notifications>
+<h3>Without buttons</h3>
+<ec-resource-select [config]="{disableListPop:true,disableCreatePop:true}" relation="dataManager" [api]="sdk?.datamanager" [solo]="true"></ec-resource-select>

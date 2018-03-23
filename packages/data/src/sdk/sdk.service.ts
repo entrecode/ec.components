@@ -26,6 +26,9 @@ import DataManagerResource from 'ec.sdk/lib/resources/datamanager/DataManagerRes
  */
 @Injectable()
 export class SdkService {
+  /** Flips to true as soon as the PublicAPI instance was resolved (now contains model and asset relations) */
+  apiResolved: boolean;
+  /** Collects different datamanager root instances */
   roots: { [id: string]: Promise<DataManagerResource> } = {};
   get root(): Promise<DataManagerResource> {
     if (!this._api) {
@@ -93,7 +96,11 @@ export class SdkService {
   }
   /** Uses the given datamanager and optional short id to init api. If you set "datamanagerID" in your environment, this method is called automatically. */
   useDatamanager(shortID: string, environment = this.environment) {
+    this.apiResolved = false;
     this._api = new PublicAPI(shortID, <env>environment.environment, true);
+    console.log('api', this._api);
+
+    this._api.resolve().then(api => this.apiResolved = true);
     if (environment.clientID) {
       this._api.setClientID(environment.clientID);
     }

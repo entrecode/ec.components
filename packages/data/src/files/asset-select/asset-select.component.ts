@@ -10,6 +10,8 @@ import { SelectComponent } from '@ec.components/ui';
 import PublicAssetResource from 'ec.sdk/lib/resources/publicAPI/PublicAssetResource';
 import { CrudConfig } from '../../crud/crud-config.interface';
 import { AssetListPopComponent } from '../asset-list-pop/asset-list-pop.component';
+import { ResourceConfig } from '../../resource-config/resource-config.service';
+import Resource from 'ec.sdk/lib/resources/Resource';
 
 /** Shows assets of a selection and is able to pick new ones from a crud list.
  * <example-url>https://components.entrecode.de/data/asset-select</example-url>
@@ -27,7 +29,7 @@ import { AssetListPopComponent } from '../asset-list-pop/asset-list-pop.componen
     }
   ]
 })
-export class AssetSelectComponent extends SelectComponent<PublicAssetResource> implements OnInit {
+export class AssetSelectComponent extends SelectComponent<Resource> implements OnInit {
   /** The formControl that is used. */
   @Input() formControl: FormControl;
   /** The used field. Is used for its config properties like nestedPopClass. */
@@ -38,12 +40,14 @@ export class AssetSelectComponent extends SelectComponent<PublicAssetResource> i
   protected control: FormControl;
   /** The used item */
   @Input() item: Item<any>;
+  /** The assetGroupID that should be picked from. If empty, legacy assets are used */
+  @Input() assetGroupID: string;
   /** The asset list pop with the list to select from */
   @ViewChild(AssetListPopComponent) pop: AssetListPopComponent;
   /** Configuration Object for List */
-  @Input() config: CrudConfig<PublicAssetResource>;
+  @Input() config: CrudConfig<Resource>;
 
-  constructor(private fileService: FileService) {
+  constructor(private fileService: FileService, public resourceConfig: ResourceConfig) {
     super();
   }
 
@@ -55,8 +59,12 @@ export class AssetSelectComponent extends SelectComponent<PublicAssetResource> i
         'is currently not supported. Ask your favorite frontend dev to fix it.');
       // TODO
     }
-
-    this.config = Object.assign({}, this.fileService.assetListConfig);
+    if (!this.assetGroupID) { // legacy assets
+      /* this.config = Object.assign({}, this.fileService.assetListConfig); */
+      this.config = Object.assign({}, this.resourceConfig.config['legacyAsset']);
+    } else {
+      this.config = Object.assign({}, this.resourceConfig.config['dmAsset']);
+    }
     Object.assign(this.config, { solo: this.solo });
     this.useConfig(this.config);
   }

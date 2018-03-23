@@ -9,6 +9,8 @@ import { FormService } from './form.service';
 import { WithLoader } from '../loader/with-loader.interface';
 import { InputComponent } from '../io/input/input.component';
 import { SymbolService } from '../symbol/symbol.service';
+import { WithNotifications } from '../notifications/with-notifications.interface';
+import { Notification } from '../notifications/notification';
 
 /** This component renders a form using a FieldConfig Object.
  *
@@ -21,13 +23,15 @@ import { SymbolService } from '../symbol/symbol.service';
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss']
 })
-export class FormComponent<T> implements OnChanges, WithLoader {
+export class FormComponent<T> implements OnChanges, WithLoader, WithNotifications {
   /** The instance of Form that is used. */
   public form: Form<T>;
   /** The current (angular) form group. */
   public group: FormGroup;
   /** The current form config */
   public config: FormConfig<T>;
+  /** Recent Error notification */
+  notifications: Notification[] = [];
   /** You can also use a FormConfig/ItemConfig as input (with defined fields property) */
   // tslint:disable-next-line:no-input-rename
   @Input('config') configInput: FormConfig<T>;
@@ -120,14 +124,15 @@ export class FormComponent<T> implements OnChanges, WithLoader {
   submit() {
     const submit = this.form.save(this.group.value)
       .then((form) => {
-        this.submitted.emit(this.form);
         this.edit(form);
+        this.submitted.emit(this.form);
         if (this.silent) {
           return;
         }
         this.notificationService.emit({ // TODO pull out to entry-form?
           title: this.symbol.resolve('success.save'),
-          type: 'success'
+          type: 'success',
+          hide: this.notifications
         });
       }).catch((err) => {
         console.error(err, err.errors);
@@ -137,7 +142,9 @@ export class FormComponent<T> implements OnChanges, WithLoader {
         this.notificationService.emit({
           title: this.symbol.resolve('error.save'),
           error: err,
-          sticky: true
+          sticky: true,
+          hide: this.notifications,
+          replace: this.notifications
         });
       });
     this.loaderService.wait(submit, this.loader || this.defaultLoader);

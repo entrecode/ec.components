@@ -217,6 +217,9 @@
                                     <a href="../modules/PopModule.html" >PopModule</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../modules/ResourceModule.html" >ResourceModule</a>
+                                </li>
+                                <li class="link">
                                     <a href="../modules/SdkModule.html" >SdkModule</a>
                                 </li>
                                 <li class="link">
@@ -626,6 +629,9 @@
                                 <li class="link">
                                     <a href="../interfaces/WithLoader.html" >WithLoader</a>
                                 </li>
+                                <li class="link">
+                                    <a href="../interfaces/WithNotifications.html" >WithNotifications</a>
+                                </li>
                         </ul>
                     </li>
             
@@ -898,6 +904,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../modules/PopModule.html" >PopModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/ResourceModule.html" >ResourceModule</a>
                                        </li>
                                        <li class="link">
                                            <a href="../modules/SdkModule.html" >SdkModule</a>
@@ -1309,6 +1318,9 @@
                                        <li class="link">
                                            <a href="../interfaces/WithLoader.html" >WithLoader</a>
                                        </li>
+                                       <li class="link">
+                                           <a href="../interfaces/WithNotifications.html" >WithNotifications</a>
+                                       </li>
                                </ul>
                            </li>
                    
@@ -1517,6 +1529,9 @@ It is also possible to bind an entry directly which will then be bound to the fo
                                 <a href="#escapeRegExp">escapeRegExp</a>
                             </li>
                             <li>
+                                <a href="#formSubmitted">formSubmitted</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Public</span>
                                 <a href="#hasMethod">hasMethod</a>
                             </li>
@@ -1587,6 +1602,12 @@ It is also possible to bind an entry directly which will then be bound to the fo
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#deleted">deleted</a>
+                            </li>
+                            <li>
+                                <a href="#submitted">submitted</a>
+                            </li>
+                            <li>
                                 <a href="#toggle">toggle</a>
                             </li>
                         </ul>
@@ -1607,15 +1628,12 @@ It is also possible to bind an entry directly which will then be bound to the fo
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:36</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:46</a></div>
                                 </td>
                             </tr>
     
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-description"><p>Route that should be headed to when a resource is edited. Navigates to route/:entryID 
-    Route that should be headed to when a resource is created. </p>
-    </div>
                                 <div>
                                         <b>Parameters :</b>
                                         <table class="params">
@@ -1716,7 +1734,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                        <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:32</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:34</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1742,7 +1760,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                        <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:28</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:30</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1765,7 +1783,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                        <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:34</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:36</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1788,7 +1806,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                        <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:36</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:38</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1859,6 +1877,50 @@ It is also possible to bind an entry directly which will then be bound to the fo
                 <tbody>
                     <tr>
                         <td class="col-md-2">
+                            <a name="deleted"></a>
+                            <code>deleted</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>Emits when the resource has been deleted. </p>
+</div>
+                            <em><code>$event</code> type:</em>    <code><a href="../classes/ResourceForm.html" target="_self" >EventEmitter&lt;ResourceForm | Form&gt;</a></code>
+
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                        <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:46</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="submitted"></a>
+                            <code>submitted</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>Route that should be headed to when a resource is edited. Navigates to route/:entryID 
+Route that should be headed to when a resource is created. 
+Emits when the entry-form is submitted. </p>
+</div>
+                            <em><code>$event</code> type:</em>    <code><a href="../classes/ResourceForm.html" target="_self" >EventEmitter&lt;ResourceForm&gt;</a></code>
+
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                        <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:44</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
                             <a name="toggle"></a>
                             <code>toggle</code>
                         </td>
@@ -1913,7 +1975,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
     
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:89</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:98</a></div>
                                 </td>
                             </tr>
     
@@ -1954,7 +2016,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
     
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:119</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:126</a></div>
                                 </td>
                             </tr>
     
@@ -1986,14 +2048,14 @@ It is also possible to bind an entry directly which will then be bound to the fo
                     </tr>
                     <tr>
                         <td class="col-md-4">
-    <code>edit(resource: Resource)</code>
+    <code>edit(resource: Resource, config?: <a href="../interfaces/CrudConfig.html">CrudConfig<Resource></a>)</code>
                         </td>
                     </tr>
     
     
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:78</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:84</a></div>
                                 </td>
                             </tr>
     
@@ -2022,6 +2084,19 @@ It is also possible to bind an entry directly which will then be bound to the fo
                                                         
                                                         <td>
                                                                 no
+                                                        </td>
+                                                        
+    
+                                                    </tr>
+                                                    <tr>
+                                                        <td>config</td>
+                                                        
+                                                            <td>
+                                                                        <code><a href="../interfaces/CrudConfig.html" target="_self" >CrudConfig&lt;Resource&gt;</a></code>
+                                                            </td>
+                                                        
+                                                        <td>
+                                                                yes
                                                         </td>
                                                         
     
@@ -2064,7 +2139,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
     
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:69</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:75</a></div>
                                 </td>
                             </tr>
     
@@ -2113,6 +2188,77 @@ It is also possible to bind an entry directly which will then be bound to the fo
                 <tbody>
                     <tr>
                         <td class="col-md-4">
+                            <a name="formSubmitted"></a>
+                            <span class="name">
+                                <b>
+                                formSubmitted
+                                </b>
+                                <a href="#formSubmitted"><span class="fa fa-link"></span></a>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>formSubmitted(form: <a href="../classes/ResourceForm.html">ResourceForm</a>)</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-line">Defined in <a href="" data-line="136" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:136</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Is called when the nested form was submitted </p>
+    </div>
+    
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                        <td>form</td>
+                                                        
+                                                            <td>
+                                                                        <code><a href="../classes/ResourceForm.html" target="_self" >ResourceForm</a></code>
+                                                            </td>
+                                                        
+                                                        <td>
+                                                                no
+                                                        </td>
+                                                        
+    
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                                    <div class="io-description">
+                                        
+                                    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
                             <a name="hasMethod"></a>
                             <span class="name">
                                 <b>
@@ -2133,7 +2279,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
     
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:47</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:53</a></div>
                                 </td>
                             </tr>
     
@@ -2204,7 +2350,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
     
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:103</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:112</a></div>
                                 </td>
                             </tr>
     
@@ -2277,7 +2423,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
     
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:124</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="132" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:132</a></div>
                                 </td>
                             </tr>
     
@@ -2346,7 +2492,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
     
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:52</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:58</a></div>
                                 </td>
                             </tr>
     
@@ -2417,7 +2563,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
     
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:73</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:79</a></div>
                                 </td>
                             </tr>
     
@@ -2692,7 +2838,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:30</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:32</a></div>
                                 </td>
                             </tr>
     
@@ -2762,7 +2908,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
 
 
     <div class="tab-pane fade tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input, OnInit, ViewChild } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input, OnInit, ViewChild, Output, EventEmitter } from &#x27;@angular/core&#x27;;
 import EntryResource from &#x27;ec.sdk/lib/resources/publicAPI/EntryResource&#x27;;
 import { PopComponent } from &#x27;@ec.components/ui/src/pop/pop.component&#x27;;
 import { Router, ActivatedRoute } from &#x27;@angular/router&#x27;;
@@ -2775,6 +2921,8 @@ import { OnChanges, AfterViewInit } from &#x27;@angular/core/src/metadata/lifecy
 import { SdkService } from &#x27;../sdk/sdk.service&#x27;;
 import { FormComponent } from &#x27;@ec.components/ui/src/form/form.component&#x27;;
 import { PopService } from &#x27;@ec.components/ui/src/pop/pop.service&#x27;;
+import { ResourceForm } from &#x27;../resource-form/resource-form&#x27;;
+import { Form } from &#x27;@ec.components/core&#x27;;
 
 /** Entry Pop is an extension of Pop component to host an entry-form.
  * You can use it like a normal pop but with the extra handling of an entry form inside.
@@ -2802,6 +2950,10 @@ export class ResourcePopComponent extends PopComponent {
     /* @Input() editRoute: string; */
     /** Route that should be headed to when a resource is created. */
     /* @Input() createRoute: string; */
+    /** Emits when the entry-form is submitted. */
+    @Output() submitted: EventEmitter&lt;ResourceForm&gt; &#x3D; new EventEmitter();
+    /** Emits when the resource has been deleted. */
+    @Output() deleted: EventEmitter&lt;ResourceForm | Form&lt;Resource&gt;&gt; &#x3D; new EventEmitter();
 
     constructor(protected popService: PopService, private auth: AuthService, private router: Router, private route: ActivatedRoute, private sdk: SdkService) {
         super(popService);
@@ -2839,7 +2991,10 @@ export class ResourcePopComponent extends PopComponent {
     }
 
     /** Edit the given entry. */
-    edit(resource: Resource) {
+    edit(resource: Resource, config?: CrudConfig&lt;Resource&gt;) {
+        if (config) {
+            this.config &#x3D; Object.assign(this.config, config);
+        }
         /* if (this.editRoute) {
             const matcher &#x3D; &#x27;(&#x27; + this.pathRegExp(this.editRoute) + &#x27;|&#x27; + this.pathRegExp(this.createRoute) + &#x27;).*&#x27;;
             const trimmed &#x3D; this.router.url.replace(new RegExp(matcher, &#x27;g&#x27;), &#x27;&#x27;);
@@ -2873,20 +3028,26 @@ export class ResourcePopComponent extends PopComponent {
         } : {};
         // TODO: find a way to resolve parent resource variables e.g. dm:&lt;dataManagerID&gt;:model:entries:&lt;modelID&gt;
         this.auth.getAllowedResourceMethods(this.relation, variables, this.config.methods) // this.config.methods
-            .then((methods) &#x3D;&gt; {
-                this.config.methods &#x3D; methods;
-            });
+            .then((methods) &#x3D;&gt; this.config.methods &#x3D; methods);
     }
 
 
     /** Fires when the resource has been deleted. */
     private deletedResource() {
         this.hide();
+        this.deleted.emit(this.form.form);
     }
 
     /** Logs the current form (Developer help). */
     private log(form) {
         console.dir(form);
+    }
+    /** Is called when the nested form was submitted */
+    formSubmitted(form: ResourceForm) {
+        this.submitted.next(form);
+        if (!this.config.keepPopOpen) {
+            this.hide();
+        }
     }
 }
 </code></pre>
@@ -2902,7 +3063,7 @@ export class ResourcePopComponent extends PopComponent {
         &lt;/header&gt;
         &lt;div class&#x3D;&quot;ec-pop-body&quot;&gt;
             &lt;ec-resource-form (ready)&#x3D;&quot;initMethods($event)&quot; [api]&#x3D;&quot;api&quot; [relation]&#x3D;&quot;relation&quot; [submitButton]&#x3D;&quot;false&quot; [config]&#x3D;&quot;config&quot;
-                [loader]&#x3D;&quot;popLoader&quot; [value]&#x3D;&quot;resource&quot; (deleted)&#x3D;&quot;hide()&quot; (submitted)&#x3D;&quot;!config?.keepPopOpen&amp;&amp;hide()&quot; #resourceForm&gt;&lt;/ec-resource-form&gt;
+                [loader]&#x3D;&quot;popLoader&quot; [value]&#x3D;&quot;resource&quot; (deleted)&#x3D;&quot;hide()&quot; (submitted)&#x3D;&quot;formSubmitted($event)&quot; #resourceForm&gt;&lt;/ec-resource-form&gt;
         &lt;/div&gt;
         &lt;footer class&#x3D;&quot;ec-pop-footer&quot;&gt;
             &lt;nav class&#x3D;&quot;nav&quot;&gt;
@@ -2952,7 +3113,7 @@ export class ResourcePopComponent extends PopComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="ec-pop-container" [class.is-active]="active" [class.is-visible]="visible">    <div class="ec-pop ec-resource-pop" *ngIf="active">        <header class="ec-pop-header">            <button (click)="hide()" type="button" class="ec-pop__dismiss">                <ec-icon name="close-x-big"></ec-icon>            </button>        </header>        <div class="ec-pop-body">            <ec-resource-form (ready)="initMethods($event)" [api]="api" [relation]="relation" [submitButton]="false" [config]="config"                [loader]="popLoader" [value]="resource" (deleted)="hide()" (submitted)="!config?.keepPopOpen&&hide()" #resourceForm></ec-resource-form>        </div>        <footer class="ec-pop-footer">            <nav class="nav">                <ul class="nav__items">                    <li class="nav__item" *ngIf="hasMethod(\'delete\')&&resourceForm.isEditing()">                        <button (click)="delete.confirm(resource)" class="btn" type="button">                            <ec-icon name="trash"></ec-icon>                        </button>                    </li>                    <li class="nav__item" *ngIf="maySave(resourceForm)">                        <button (click)="resourceForm.submit()" [disabled]="resourceForm.group?.invalid" type="button" class="btn btn_save" [class.is-disabled]="resourceForm.group?.invalid">                            <ec-icon name="save"></ec-icon>                        </button>                    </li>                    <li class="nav__item">                        <ng-content></ng-content>                    </li>                </ul>            </nav>        </footer>        <ec-loader #popLoader class="ec-loader ec-loader_overlay ec-loader_global"></ec-loader>        <ec-resource-delete-pop (deleted)="deletedResource()" [relation]="relation" #delete></ec-resource-delete-pop>    </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="ec-pop-container" [class.is-active]="active" [class.is-visible]="visible">    <div class="ec-pop ec-resource-pop" *ngIf="active">        <header class="ec-pop-header">            <button (click)="hide()" type="button" class="ec-pop__dismiss">                <ec-icon name="close-x-big"></ec-icon>            </button>        </header>        <div class="ec-pop-body">            <ec-resource-form (ready)="initMethods($event)" [api]="api" [relation]="relation" [submitButton]="false" [config]="config"                [loader]="popLoader" [value]="resource" (deleted)="hide()" (submitted)="formSubmitted($event)" #resourceForm></ec-resource-form>        </div>        <footer class="ec-pop-footer">            <nav class="nav">                <ul class="nav__items">                    <li class="nav__item" *ngIf="hasMethod(\'delete\')&&resourceForm.isEditing()">                        <button (click)="delete.confirm(resource)" class="btn" type="button">                            <ec-icon name="trash"></ec-icon>                        </button>                    </li>                    <li class="nav__item" *ngIf="maySave(resourceForm)">                        <button (click)="resourceForm.submit()" [disabled]="resourceForm.group?.invalid" type="button" class="btn btn_save" [class.is-disabled]="resourceForm.group?.invalid">                            <ec-icon name="save"></ec-icon>                        </button>                    </li>                    <li class="nav__item">                        <ng-content></ng-content>                    </li>                </ul>            </nav>        </footer>        <ec-loader #popLoader class="ec-loader ec-loader_overlay ec-loader_global"></ec-loader>        <ec-resource-delete-pop (deleted)="deletedResource()" [relation]="relation" #delete></ec-resource-delete-pop>    </div></div></div>'
     var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'ActionbarComponent', 'selector': 'ec-actionbar'},{'name': 'AdminEntryInputComponent', 'selector': ''},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'IconComponent', 'selector': 'ec-icon'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceCrudComponent', 'selector': 'ec-resource-crud'},{'name': 'ResourceDeletePopComponent', 'selector': 'ec-resource-delete-pop'},{'name': 'ResourceFormComponent', 'selector': 'ec-resource-form'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'ResourcePopComponent', 'selector': 'ec-resource-pop'},{'name': 'ResourceSelectComponent', 'selector': 'ec-resource-select'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
     var DIRECTIVES = [{'name': 'AssetDirective', 'selector': '[ecAsset]'},{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'ImageDirective', 'selector': 'img [ecImage]'},{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'}];
     var ACTUAL_COMPONENT = {'name': 'ResourcePopComponent'};

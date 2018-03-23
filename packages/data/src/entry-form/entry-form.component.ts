@@ -9,6 +9,8 @@ import { FormConfig } from '@ec.components/core/src/form/form-config.interface';
 import { FormService } from '@ec.components/ui/src/form/form.service';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import { WithNotifications } from '@ec.components/ui/src/notifications/with-notifications.interface';
+import { Notification } from '@ec.components/ui/src/notifications/notification';
 
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent.
  * <example-url>https://components.entrecode.de/data/entry-form</example-url>
@@ -18,7 +20,7 @@ import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
   templateUrl: '../../../ui/src/form/form.component.html',
   styleUrls: ['./entry-form.component.scss']
 })
-export class EntryFormComponent extends FormComponent<EntryResource> {
+export class EntryFormComponent extends FormComponent<EntryResource> implements WithNotifications {
   /** The model of the form. It is used to extract the schema and generate the config from.
    * If you do not pass any model, it is expected that an EntryResource is passed. */
   @Input() model: string;
@@ -27,6 +29,8 @@ export class EntryFormComponent extends FormComponent<EntryResource> {
   @Input() entry: EntryResource;
   /** This output fires when the entry has been deleted using deleteEntry(). */
   @Output() deleted: EventEmitter<any> = new EventEmitter();
+  /** Error Notifications */
+  notifications: Notification[] = [];
 
   /** Injects the required services. */
   constructor(protected loaderService: LoaderService,
@@ -47,7 +51,7 @@ export class EntryFormComponent extends FormComponent<EntryResource> {
       return;
     }
     if (this.entry && this.entry._modelTitle !== this.model) { // warn if model does not match
-      console.error(`ec-entry-form: Tried to edit an entry of model "${this.entry._modelTitle}" while "${this.model}" was expected!"`);
+      console.error(`ec-entry-form: Tried to edit an entry of model "${this.entry._modelTitle}" while "${this.model}" was expected! Entry: `, this.entry);
       return;
     }
     Promise.resolve(this.modelConfig.generateConfig(this.model, (this.config || {}).fields))
@@ -78,12 +82,16 @@ export class EntryFormComponent extends FormComponent<EntryResource> {
       this.create();
       this.notificationService.emit({
         title: this.symbol.resolve('success.delete'),
-        type: 'success'
+        type: 'success',
+        hide: this.notifications
       });
     }).catch((error) => {
       this.notificationService.emit({
         title: this.symbol.resolve('error.delete'),
-        error
+        error,
+        hide: this.notifications,
+        replace: this.notifications,
+        sticky: true
       });
     });
     this.loaderService.wait(deletion, this.loader);

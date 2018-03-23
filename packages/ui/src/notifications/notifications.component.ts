@@ -25,6 +25,19 @@ export class NotificationsComponent {
   constructor(private notificationService: NotificationsService) {
     this.time = this.time || this.notificationService.defaultTime;
     this.notificationService.emitter$.subscribe((notification: Notification) => {
+      if (notification.hide) {
+        this.notifications.removeAll(notification.hide);
+      }
+      if (!notification.title && !notification.message) {
+        return;
+      }
+      if (notification.append) {
+        notification.append.push(notification);
+      }
+      if (notification.replace) {
+        notification.replace.length = 0;
+        notification.replace.push(notification);
+      }
       if (!notification.host || notification.host === this) {
         this.notifications.add(notification);
         if (notification.sticky) {

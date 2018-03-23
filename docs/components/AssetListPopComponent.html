@@ -217,6 +217,9 @@
                                     <a href="../modules/PopModule.html" >PopModule</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../modules/ResourceModule.html" >ResourceModule</a>
+                                </li>
+                                <li class="link">
                                     <a href="../modules/SdkModule.html" >SdkModule</a>
                                 </li>
                                 <li class="link">
@@ -626,6 +629,9 @@
                                 <li class="link">
                                     <a href="../interfaces/WithLoader.html" >WithLoader</a>
                                 </li>
+                                <li class="link">
+                                    <a href="../interfaces/WithNotifications.html" >WithNotifications</a>
+                                </li>
                         </ul>
                     </li>
             
@@ -898,6 +904,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../modules/PopModule.html" >PopModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/ResourceModule.html" >ResourceModule</a>
                                        </li>
                                        <li class="link">
                                            <a href="../modules/SdkModule.html" >SdkModule</a>
@@ -1309,6 +1318,9 @@
                                        <li class="link">
                                            <a href="../interfaces/WithLoader.html" >WithLoader</a>
                                        </li>
+                                       <li class="link">
+                                           <a href="../interfaces/WithNotifications.html" >WithNotifications</a>
+                                       </li>
                                </ul>
                            </li>
                    
@@ -1487,6 +1499,10 @@ It is also possible to bind an entry directly which will then be bound to the fo
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#sdk">sdk</a>
+                            </li>
+                            <li>
                                 <a href="#delay">delay</a>
                             </li>
                         </ul>
@@ -1530,6 +1546,9 @@ It is also possible to bind an entry directly which will then be bound to the fo
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#assetGroupID">assetGroupID</a>
+                            </li>
+                            <li>
                                 <a href="#config">config</a>
                             </li>
                             <li>
@@ -1571,12 +1590,12 @@ It is also possible to bind an entry directly which will then be bound to the fo
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-    <code>constructor(popService: <a href="../injectables/PopService.html">PopService</a>, auth: <a href="../injectables/AuthService.html">AuthService</a>)</code>
+    <code>constructor(popService: <a href="../injectables/PopService.html">PopService</a>, auth: <a href="../injectables/AuthService.html">AuthService</a>, sdk: <a href="../injectables/SdkService.html">SdkService</a>)</code>
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">packages/data/src/files/asset-list-pop/asset-list-pop.component.ts:27</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">packages/data/src/files/asset-list-pop/asset-list-pop.component.ts:30</a></div>
                                 </td>
                             </tr>
     
@@ -1619,6 +1638,18 @@ It is also possible to bind an entry directly which will then be bound to the fo
                                                         </td>
                                                         
                                                     </tr>
+                                                    <tr>
+                                                        <td>sdk</td>
+                                                      
+                                                            <td>
+                                                                        <code><a href="../injectables/SdkService.html" target="_self" >SdkService</a></code>
+                                                            </td>
+                                                      
+                                                        <td>
+                                                                no
+                                                        </td>
+                                                        
+                                                    </tr>
                                             </tbody>
                                         </table>
                                 </div>
@@ -1630,6 +1661,29 @@ It is also possible to bind an entry directly which will then be bound to the fo
 
     <section>
         <h3 id="inputs">Inputs</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="assetGroupID"></a>
+                            <code>assetGroupID</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>The assetGroupID that should be picked from. If empty, legacy assets are used </p>
+</div>
+                              <p>
+                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                              </p>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                        <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">packages/data/src/files/asset-list-pop/asset-list-pop.component.ts:28</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
             <table class="table table-sm table-bordered">
                 <tbody>
                     <tr>
@@ -1651,7 +1705,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                        <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">packages/data/src/files/asset-list-pop/asset-list-pop.component.ts:23</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">packages/data/src/files/asset-list-pop/asset-list-pop.component.ts:24</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1674,7 +1728,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                        <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">packages/data/src/files/asset-list-pop/asset-list-pop.component.ts:25</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">packages/data/src/files/asset-list-pop/asset-list-pop.component.ts:26</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1757,7 +1811,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                        <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">packages/data/src/files/asset-list-pop/asset-list-pop.component.ts:27</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">packages/data/src/files/asset-list-pop/asset-list-pop.component.ts:30</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1820,7 +1874,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
     
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">packages/data/src/files/asset-list-pop/asset-list-pop.component.ts:42</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">packages/data/src/files/asset-list-pop/asset-list-pop.component.ts:47</a></div>
                                 </td>
                             </tr>
     
@@ -1887,7 +1941,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
     
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">packages/data/src/files/asset-list-pop/asset-list-pop.component.ts:34</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">packages/data/src/files/asset-list-pop/asset-list-pop.component.ts:39</a></div>
                                 </td>
                             </tr>
     
@@ -2140,6 +2194,41 @@ It is also possible to bind an entry directly which will then be bound to the fo
                 <tbody>
                     <tr>
                         <td class="col-md-4">
+                            <a name="sdk"></a>
+                            <span class="name">
+                                <b>
+                                    <span class="modifier">Public</span>
+                                sdk
+                                </b>
+                                <a href="#sdk"><span class="fa fa-link"></span></a>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-reset"></span><code>sdk:     <code><a href="../injectables/SdkService.html" target="_self" >SdkService</a></code>
+    </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code><a href="../injectables/SdkService.html" target="_self" >SdkService</a></code>
+    
+                            </td>
+                        </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">packages/data/src/files/asset-list-pop/asset-list-pop.component.ts:34</a></div>
+                                </td>
+                            </tr>
+    
+    
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
                             <a name="delay"></a>
                             <span class="name">
                                 <b>
@@ -2201,6 +2290,7 @@ import { CrudConfig } from &#x27;../../crud/crud-config.interface&#x27;;
 import { AuthService } from &#x27;../../auth/auth.service&#x27;;
 import { Upload } from &#x27;../file.service&#x27;;
 import { PopService } from &#x27;@ec.components/ui/src/pop/pop.service&#x27;;
+import { SdkService } from &#x27;@ec.components/data&#x27;;
 
 /** Entry Pop is an extension of Pop component to host an entry-form.
  * You can use it like a normal pop but with the extra handling of an entry form inside.
@@ -2218,10 +2308,14 @@ export class AssetListPopComponent extends PopComponent {
   @Input() config: CrudConfig&lt;PublicAssetResource&gt; &#x3D; {};
   /** The used selection */
   @Input() selection: Selection&lt;PublicAssetResource&gt;;
+  /** The assetGroupID that should be picked from. If empty, legacy assets are used */
+  @Input() assetGroupID: string;
   /** Event emitter on item selection */
   @Output() columnClicked: EventEmitter&lt;Item&lt;PublicAssetResource&gt;&gt; &#x3D; new EventEmitter();
   /** Injects auth service and calls super constructor. */
-  constructor(protected popService: PopService, private auth: AuthService) {
+  constructor(protected popService: PopService,
+    private auth: AuthService,
+    public sdk: SdkService) {
     super(popService);
   }
 
@@ -2238,7 +2332,8 @@ export class AssetListPopComponent extends PopComponent {
     if (this.columnClicked.observers.length) {
       this.columnClicked.emit($event);
     } else if (this.selection) {
-      this.selection.toggle($event);
+      console.log(&#x27;selection&#x27;, this.selection);
+      // this.selection.toggle($event);
     }
   }
 }
@@ -2256,10 +2351,18 @@ export class AssetListPopComponent extends PopComponent {
       &lt;/div&gt;
     &lt;/header&gt;
     &lt;div class&#x3D;&quot;ec-pop-body&quot;&gt;
-      &lt;ec-upload [loader]&#x3D;&quot;popLoader&quot; (success)&#x3D;&quot;selectUpload($event)&quot;&gt;&lt;/ec-upload&gt;
-      &lt;ec-asset-list [selection]&#x3D;&quot;selection&quot; (columnClicked)&#x3D;&quot;select($event)&quot; [config]&#x3D;&quot;config&quot; [loader]&#x3D;&quot;popLoader&quot;&gt;&lt;/ec-asset-list&gt;
+      &lt;div class&#x3D;&quot;ec-asset-upload&quot;&gt;
+        &lt;ec-upload #uploader [assetGroupID]&#x3D;&quot;assetGroupID&quot; [loader]&#x3D;&quot;popLoader&quot; (success)&#x3D;&quot;selectUpload($event)&quot;&gt;&lt;/ec-upload&gt;
+        &lt;a (click)&#x3D;&quot;uploader.trigger()&quot;&gt;Hochladen&lt;/a&gt;
+      &lt;/div&gt;
+      &lt;!-- legacy asset list --&gt;
+      &lt;ec-resource-list *ngIf&#x3D;&quot;!assetGroupID&amp;&amp;sdk.apiResolved&quot; relation&#x3D;&quot;legacyAsset&quot; [api]&#x3D;&quot;sdk.api&quot; [selection]&#x3D;&quot;selection&quot; (columnClicked)&#x3D;&quot;select($event)&quot;
+        [config]&#x3D;&quot;config&quot; [loader]&#x3D;&quot;popLoader&quot;&gt;&lt;/ec-resource-list&gt;
+      &lt;!-- new asset list --&gt;
+      &lt;ec-resource-list *ngIf&#x3D;&quot;assetGroupID&amp;&amp;sdk.apiResolved&quot; [relation]&#x3D;&quot;&#x27;dmAsset.&#x27;+assetGroupID&quot; [api]&#x3D;&quot;sdk.api&quot; [selection]&#x3D;&quot;selection&quot;
+        (columnClicked)&#x3D;&quot;select($event)&quot; [loader]&#x3D;&quot;popLoader&quot;&gt;&lt;/ec-resource-list&gt;
     &lt;/div&gt;
-    &lt;ec-loader #popLoader class&#x3D;&quot;ec-loader ec-loader_overlay ec-loader_global&quot;&gt;&lt;/ec-loader&gt;
+    &lt;ec-loader #popLoader class&#x3D;&quot;ec-loader ec-loader_global&quot;&gt;&lt;/ec-loader&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
     </div>
@@ -2287,7 +2390,7 @@ export class AssetListPopComponent extends PopComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="ec-pop-container" [class.is-active]="active" [class.is-visible]="visible">  <div class="ec-pop" *ngIf="active">    <header class="ec-pop-header">      <div class="toolbar">        <nav class="nav">          <button (click)="hide()" type="button" class="btn btn_abort">&times;</button>        </nav>      </div>    </header>    <div class="ec-pop-body">      <ec-upload [loader]="popLoader" (success)="selectUpload($event)"></ec-upload>      <ec-asset-list [selection]="selection" (columnClicked)="select($event)" [config]="config" [loader]="popLoader"></ec-asset-list>    </div>    <ec-loader #popLoader class="ec-loader ec-loader_overlay ec-loader_global"></ec-loader>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="ec-pop-container" [class.is-active]="active" [class.is-visible]="visible">  <div class="ec-pop" *ngIf="active">    <header class="ec-pop-header">      <div class="toolbar">        <nav class="nav">          <button (click)="hide()" type="button" class="btn btn_abort">&times;</button>        </nav>      </div>    </header>    <div class="ec-pop-body">      <div class="ec-asset-upload">        <ec-upload #uploader [assetGroupID]="assetGroupID" [loader]="popLoader" (success)="selectUpload($event)"></ec-upload>        <a (click)="uploader.trigger()">Hochladen</a>      </div>      <!-- legacy asset list -->      <ec-resource-list *ngIf="!assetGroupID&&sdk.apiResolved" relation="legacyAsset" [api]="sdk.api" [selection]="selection" (columnClicked)="select($event)"        [config]="config" [loader]="popLoader"></ec-resource-list>      <!-- new asset list -->      <ec-resource-list *ngIf="assetGroupID&&sdk.apiResolved" [relation]="\'dmAsset.\'+assetGroupID" [api]="sdk.api" [selection]="selection"        (columnClicked)="select($event)" [loader]="popLoader"></ec-resource-list>    </div>    <ec-loader #popLoader class="ec-loader ec-loader_global"></ec-loader>  </div></div></div>'
     var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'ActionbarComponent', 'selector': 'ec-actionbar'},{'name': 'AdminEntryInputComponent', 'selector': ''},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'IconComponent', 'selector': 'ec-icon'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceCrudComponent', 'selector': 'ec-resource-crud'},{'name': 'ResourceDeletePopComponent', 'selector': 'ec-resource-delete-pop'},{'name': 'ResourceFormComponent', 'selector': 'ec-resource-form'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'ResourcePopComponent', 'selector': 'ec-resource-pop'},{'name': 'ResourceSelectComponent', 'selector': 'ec-resource-select'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
     var DIRECTIVES = [{'name': 'AssetDirective', 'selector': '[ecAsset]'},{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'ImageDirective', 'selector': 'img [ecImage]'},{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'}];
     var ACTUAL_COMPONENT = {'name': 'AssetListPopComponent'};

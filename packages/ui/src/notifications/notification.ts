@@ -3,7 +3,7 @@ import { NotificationsComponent } from './notifications.component';
 /** A Notification is used inside NotificationService and NotificationComponent to display any information to the user.*/
 export class Notification {
   /** The title is the headline of a notification and the only value that is required. */
-  title: string;
+  title?: string;
   /** The message is shown below the title and is meant for further description. */
   message?: string;
   /** The host the is NotificationsComponent that should display the notification. */
@@ -16,6 +16,12 @@ export class Notification {
   type?: string;
   /** If an error is given, the type will automatically be set to error. The error will be displayed inside the notification via ec-error.*/
   error?: any;
+  /** Notifications that should be hidden when this one gets active */
+  hide?: this[];
+  /** If set, the notification will be appended to the given array of Notifications when activated */
+  append?: this[];
+  /** If set, the notification will replace all others in the given array of Notifications when activated */
+  replace?: this[];
 
   /** The constructor just looks if an error is set, and if yes, sets the type to error. */
   constructor(notification: Notification) {

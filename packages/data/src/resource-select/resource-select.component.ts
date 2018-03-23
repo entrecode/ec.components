@@ -21,6 +21,11 @@ import { SelectComponent } from '@ec.components/ui';
 import Core from 'ec.sdk/lib/Core';
 import Resource from 'ec.sdk/lib/resources/Resource';
 import { ResourceConfig } from '../resource-config/resource-config.service';
+import { Form } from '@ec.components/core';
+import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
+import { ResourcePopComponent } from '../resource-pop/resource-pop.component';
+import { AuthService } from '../auth/auth.service';
+import { SdkService } from '@ec.components/data';
 /** Shows resources of a selection and is able to pick new ones from a crud list
 */
 
@@ -38,8 +43,6 @@ import { ResourceConfig } from '../resource-config/resource-config.service';
     ]
 })
 export class ResourceSelectComponent extends SelectComponent<Resource> implements OnChanges, OnInit {
-    /** The field for which the input is meant. */
-    @Input() field: Field;
     /** The item that is targeted by the input */
     protected item: Item<any>;
     /** The form group that is used */
@@ -54,8 +57,6 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
     @Input() relation: string;
     /** The api to use */
     @Input() api: Core;
-    /** The ec-crud inside the view template */
-    @ViewChild('crud') crud: CrudComponent<Resource>;
     /** The config that is being generated. */
     public config: CrudConfig<Resource>;
     /** Wether or not the selection should be solo */
@@ -64,9 +65,16 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
     // tslint:disable-next-line:no-input-rename
     @Input('config') crudConfig: CrudConfig<Resource>;
     /** The crud pop with the list to select from */
-    @ViewChild('crudPop') pop: PopComponent;
+    @ViewChild('dropdown') pop: PopComponent;
+    /** The nested resource pop for editing and creating */
+    @ViewChild(ResourcePopComponent) resourcePop: ResourcePopComponent;
+    /** The config of the dropdown pop */
+    dropdownConfig: CrudConfig<Resource>;
 
-    constructor(private resourceConfig: ResourceConfig) {
+    constructor(private resourceConfig: ResourceConfig,
+        private auth: AuthService,
+        private sdk: SdkService,
+    ) {
         super();
     }
 
@@ -78,15 +86,36 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
         this.init()
     }
 
+    /** Calls super.useConfig and then creates special dropdownConfig with just entryTitle as field  */
+    useConfig(config: CrudConfig<Resource> = {}) {
+        super.useConfig(config);
+        this.dropdownConfig = Object.assign({}, this.config, {
+            fields: {
+                [this.config.label]: Object.assign({}, this.config.fields[this.config.label])
+            }
+        });
+        this.auth.getAllowedResourceMethods(this.relation) // init permissions
+            .then((methods) => this.config.methods = methods);
+        this.selection.update$.subscribe(change => {
+            if (this.solo && !this.selection.isEmpty()) { // update permissions for selected item
+                this.auth.getAllowedResourceMethods(this.relation, { [this.config.identifier]: this.selection.getValue() })
+                    .then((methods) => this.config.methods = methods);
+            }
+        });
+    }
+
+    /** Returns true if the given method is part of the methods array (or if there is no methods array) */
+    public hasMethod(method: string) {
+        return this.config && this.config.methods && this.config.methods.indexOf(method) !== -1;
+    }
+
+    /** Inits the select with api, relation and config setup */
     init() {
         if (!this.api || !this.relation) {
             return;
         }
         if (!this.formControl) {
             this.formControl = new FormControl(this.value || []);
-        }
-        if (this.field) {
-            this.relation = this.relation || this.field['relation'];
         }
         if (this.config) {
             super.useConfig(this.config);
@@ -95,5 +124,36 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
         this.config = Object.assign(this.resourceConfig.config[this.relation], { size: 10 },
             this.crudConfig, { solo: this.solo, selectMode: true, disableSelectSwitch: true });
         this.useConfig(this.config);
+    }
+
+    /** Returns the pop class that should be used, either uses config.popClass or defaults to ec-pop_dialog. */
+    getPopClass() {
+        return this.config && this.config.popClass ? this.config.popClass : 'ec-pop_dialog';
+    }
+    /** Is called when the nested resource-form has been saved. Selects the fresh resource and clears the form */
+    formSubmitted(form: Form<EntryResource>) {
+        if (!this.selection.has(form)) {
+            this.select(form);
+        } else { // already in selection => update body
+            const index = this.selection.index(form);
+            this.selection.items[index].body = form.getBody();
+        }
+    }
+
+    /** Is called when a selected item has been clicked. */
+    editItem(item: Item<Resource>, e) {
+        this.auth.getAllowedResourceMethods(this.relation, { [this.config.identifier]: item.id() })
+            .then(methods => {
+                if (methods.indexOf('put') === -1) {
+                    console.log('cannote put');
+                    return;
+                }
+                this.resourcePop.edit(item.getBody(), { methods });
+                this.clickInside(e);
+                /* return item.getBody().resolve()
+            }).then(resolved => {
+                console.log('resource', resolved);
+                this.resourcePop.edit(resolved); */
+            });
     }
 }

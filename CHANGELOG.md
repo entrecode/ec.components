@@ -1,5 +1,19 @@
 # Changelog
 
+
+<a name="0.17.0"></a>
+
+## 0.17.0
+
+* added resource module with all resource related components and services
+* can now add delete and modify entries and resource through the selects
+* asset select now supports old and new assets. When you pass [assetGroupID] to select (or list/upload), new assets will be used.
+* deprecated asset-list, because ec.sdk now supports public api relations.
+
+BREAKING CHANGE:
+
+* removed [field] input from selects
+
 <a name="0.15.0"></a>
 
 ## 0.15.0

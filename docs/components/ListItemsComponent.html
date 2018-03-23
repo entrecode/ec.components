@@ -217,6 +217,9 @@
                                     <a href="../modules/PopModule.html" >PopModule</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../modules/ResourceModule.html" >ResourceModule</a>
+                                </li>
+                                <li class="link">
                                     <a href="../modules/SdkModule.html" >SdkModule</a>
                                 </li>
                                 <li class="link">
@@ -626,6 +629,9 @@
                                 <li class="link">
                                     <a href="../interfaces/WithLoader.html" >WithLoader</a>
                                 </li>
+                                <li class="link">
+                                    <a href="../interfaces/WithNotifications.html" >WithNotifications</a>
+                                </li>
                         </ul>
                     </li>
             
@@ -898,6 +904,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../modules/PopModule.html" >PopModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/ResourceModule.html" >ResourceModule</a>
                                        </li>
                                        <li class="link">
                                            <a href="../modules/SdkModule.html" >SdkModule</a>
@@ -1308,6 +1317,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/WithLoader.html" >WithLoader</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/WithNotifications.html" >WithNotifications</a>
                                        </li>
                                </ul>
                            </li>
@@ -1830,16 +1842,16 @@ export class ListItemsComponent&lt;T&gt; implements OnChanges {
       &lt;div class&#x3D;&quot;ec-list-cell ec-list__select&quot; *ngIf&#x3D;&quot;list?.config?.selectMode&quot;&gt;
         &lt;input type&#x3D;&quot;checkbox&quot; [checked]&#x3D;&quot;selection?.has(item)&quot;&gt;
       &lt;/div&gt;
-      &lt;div *ngFor&#x3D;&quot;let field of list?.fields;let i &#x3D; index&quot; class&#x3D;&quot;ec-list-cell&quot;
-           [ngClass]&#x3D;&quot;&#x27;ec-list-field_&#x27; + field.view&quot; [ngSwitch]&#x3D;&quot;field.view&quot;
-           [class.hidden]&#x3D;&quot;field.hide||i&gt;&#x3D;list.config?.maxColumns&quot; [class.ec-list-field_sortable]&#x3D;&quot;field.sortable&quot;
-           [class.ec-list-field_sortable_active]&#x3D;&quot;list.config?.sortBy&#x3D;&#x3D;&#x3D;field.property&quot;&gt;
+      &lt;div *ngFor&#x3D;&quot;let field of list?.fields;let i &#x3D; index&quot; class&#x3D;&quot;ec-list-cell&quot; 
+        [ngClass]&#x3D;&quot;&#x27;ec-list-field_&#x27; + field.view&quot; [ngSwitch]&#x3D;&quot;field.view&quot;
+        [class.hidden]&#x3D;&quot;field.hidden&quot; 
+        [class.ec-list-field_sortable]&#x3D;&quot;field.sortable&quot; 
+        [class.ec-list-field_sortable_active]&#x3D;&quot;list.config?.sortBy&#x3D;&#x3D;&#x3D;field.property&quot;&gt;
         &lt;ec-output [field]&#x3D;&quot;field&quot; [item]&#x3D;&quot;item&quot;&gt;&lt;/ec-output&gt;
       &lt;/div&gt;
     &lt;/div&gt;
   &lt;/li&gt;
-&lt;/ul&gt;
-</code></pre>
+&lt;/ul&gt;</code></pre>
     </div>
 
     <div class="tab-pane fade" id="c-tree">
@@ -1865,7 +1877,7 @@ export class ListItemsComponent&lt;T&gt; implements OnChanges {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ul class="ec-list-items">  <li *ngFor="let item of items;trackBy:list?.trackItem" (click)="columnClick(item)">    <div class="ec-list-item" [class.is-selected]="selection?.has(item)">      <div class="ec-list-cell ec-list__select" *ngIf="list?.config?.selectMode">        <input type="checkbox" [checked]="selection?.has(item)">      </div>      <div *ngFor="let field of list?.fields;let i = index" class="ec-list-cell"           [ngClass]="\'ec-list-field_\' + field.view" [ngSwitch]="field.view"           [class.hidden]="field.hide||i>=list.config?.maxColumns" [class.ec-list-field_sortable]="field.sortable"           [class.ec-list-field_sortable_active]="list.config?.sortBy===field.property">        <ec-output [field]="field" [item]="item"></ec-output>      </div>    </div>  </li></ul></div>'
+        var COMPONENT_TEMPLATE = '<div><ul class="ec-list-items">  <li *ngFor="let item of items;trackBy:list?.trackItem" (click)="columnClick(item)">    <div class="ec-list-item" [class.is-selected]="selection?.has(item)">      <div class="ec-list-cell ec-list__select" *ngIf="list?.config?.selectMode">        <input type="checkbox" [checked]="selection?.has(item)">      </div>      <div *ngFor="let field of list?.fields;let i = index" class="ec-list-cell"         [ngClass]="\'ec-list-field_\' + field.view" [ngSwitch]="field.view"        [class.hidden]="field.hidden"         [class.ec-list-field_sortable]="field.sortable"         [class.ec-list-field_sortable_active]="list.config?.sortBy===field.property">        <ec-output [field]="field" [item]="item"></ec-output>      </div>    </div>  </li></ul></div>'
     var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'ActionbarComponent', 'selector': 'ec-actionbar'},{'name': 'AdminEntryInputComponent', 'selector': ''},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'IconComponent', 'selector': 'ec-icon'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceCrudComponent', 'selector': 'ec-resource-crud'},{'name': 'ResourceDeletePopComponent', 'selector': 'ec-resource-delete-pop'},{'name': 'ResourceFormComponent', 'selector': 'ec-resource-form'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'ResourcePopComponent', 'selector': 'ec-resource-pop'},{'name': 'ResourceSelectComponent', 'selector': 'ec-resource-select'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
     var DIRECTIVES = [{'name': 'AssetDirective', 'selector': '[ecAsset]'},{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'ImageDirective', 'selector': 'img [ecImage]'},{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'}];
     var ACTUAL_COMPONENT = {'name': 'ListItemsComponent'};

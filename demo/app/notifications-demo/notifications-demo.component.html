@@ -7,8 +7,8 @@
   <ec-form [item]="options" #optionsForm (submitted)="emit(optionsForm.group.value)"
            [silent]="true" [submitButton]="false"></ec-form>
   <a class="btn" (click)="optionsForm.submit()">EMIT</a>
+  <a class="btn" (click)="hide()">HIDE</a>
 
   <pre><code>{{optionsForm.group?.value | json}}</code></pre>
-  <ec-notifications [time]="optionsForm.getValue('time')"
-                    #notifications></ec-notifications>
+  <ec-notifications [time]="optionsForm.getValue('time')"></ec-notifications>
 </div>

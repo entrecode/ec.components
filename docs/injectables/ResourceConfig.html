@@ -217,6 +217,9 @@
                                     <a href="../modules/PopModule.html" >PopModule</a>
                                 </li>
                                 <li class="link">
+                                    <a href="../modules/ResourceModule.html" >ResourceModule</a>
+                                </li>
+                                <li class="link">
                                     <a href="../modules/SdkModule.html" >SdkModule</a>
                                 </li>
                                 <li class="link">
@@ -626,6 +629,9 @@
                                 <li class="link">
                                     <a href="../interfaces/WithLoader.html" >WithLoader</a>
                                 </li>
+                                <li class="link">
+                                    <a href="../interfaces/WithNotifications.html" >WithNotifications</a>
+                                </li>
                         </ul>
                     </li>
             
@@ -898,6 +904,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../modules/PopModule.html" >PopModule</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../modules/ResourceModule.html" >ResourceModule</a>
                                        </li>
                                        <li class="link">
                                            <a href="../modules/SdkModule.html" >SdkModule</a>
@@ -1308,6 +1317,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/WithLoader.html" >WithLoader</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/WithNotifications.html" >WithNotifications</a>
                                        </li>
                                </ul>
                            </li>
@@ -1722,14 +1734,12 @@ export class ResourceConfig {
             label: this.symbol.resolve(&#x27;dmAccount.field.label.hasPassword&#x27;),
             view: &#x27;boolean&#x27;,
             filterable: true,
-            sortable: true,
             readOnly: true
           },
           pending: {
             label: this.symbol.resolve(&#x27;dmAccount.field.label.pending&#x27;),
             view: &#x27;boolean&#x27;,
             filterable: true,
-            sortable: true,
             readOnly: true
           },
           oauth: {
@@ -1800,13 +1810,13 @@ export class ResourceConfig {
           created: created(this.symbol.resolve(&#x27;field.label.created&#x27;)),
         }
       },
-      asset: {
+      asset: { // old ec.asset
         identifier: &#x27;assetID&#x27;,
         fields: {
           thumb: {
             form: false,
             label: this.symbol.resolve(&#x27;asset.field.label.thumb&#x27;),
-            view: &#x27;avatar&#x27;,
+            view: &#x27;preview&#x27;,
             resolve: (asset) &#x3D;&gt; {
               if (asset.type !&#x3D;&#x3D; &#x27;image&#x27;) {
                 return &#x27;&#x27;;
@@ -1822,8 +1832,48 @@ export class ResourceConfig {
             immutable: true
           },
           title: {
-            label: &#x27;Titel&#x27;,
-            view: &#x27;string&#x27;
+            label: this.symbol.resolve(&#x27;field.label.title&#x27;),
+            view: &#x27;string&#x27;,
+            sortable: true,
+            filterable: true
+          },
+          files: {
+            label: this.symbol.resolve(&#x27;asset.field.label.files&#x27;),
+            view: &#x27;tag&#x27;,
+            form: false,
+            display: value &#x3D;&gt; value.length,
+            immutable: true
+          },
+          tags: tagsField(this.symbol.resolve(&#x27;asset.field.label.tags&#x27;)),
+          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;)),
+        }
+      },
+      legacyAsset: { // old public assets
+        identifier: &#x27;assetID&#x27;,
+        fields: {
+          thumb: {
+            form: false,
+            label: this.symbol.resolve(&#x27;asset.field.label.thumb&#x27;),
+            view: &#x27;preview&#x27;,
+            resolve: (asset) &#x3D;&gt; {
+              if (asset.type !&#x3D;&#x3D; &#x27;image&#x27;) {
+                return &#x27;&#x27;;
+              }
+              return asset.getImageUrl(200);
+            },
+            immutable: true
+          },
+          assetID: {
+            label: &#x27;assetID&#x27;,
+            list: false,
+            form: false,
+            immutable: true
+          },
+          title: {
+            label: this.symbol.resolve(&#x27;field.label.title&#x27;),
+            view: &#x27;string&#x27;,
+            sortable: true,
+            filterable: true
           },
           files: {
             label: this.symbol.resolve(&#x27;asset.field.label.files&#x27;),
@@ -1861,15 +1911,28 @@ export class ResourceConfig {
           created: created(this.symbol.resolve(&#x27;field.label.created&#x27;)),
         }
       },
-      dmAsset: {
+      dmAsset: { // new assets
         identifier: &#x27;assetID&#x27;,
         fields: {
           file: {
             label: this.symbol.resolve(&#x27;dmAsset.field.label.file&#x27;),
             display: value &#x3D;&gt; value.url,
-            view: &#x27;avatar&#x27;,
+            view: &#x27;preview&#x27;,
             immutable: true,
             form: false
+          },
+          thumb: {
+            form: false,
+            list: false,
+            label: this.symbol.resolve(&#x27;asset.field.label.thumb&#x27;),
+            view: &#x27;preview&#x27;,
+            resolve: (asset) &#x3D;&gt; {
+              if (asset.type !&#x3D;&#x3D; &#x27;image&#x27; || !asset.thumbnails || !asset.thumbnails.length) {
+                return &#x27;&#x27;;
+              }
+              return asset.thumbnails[0].url;
+            },
+            immutable: true
           },
           assetID: {
             label: this.symbol.resolve(&#x27;dmAsset.field.label.assetID&#x27;),
@@ -1908,7 +1971,7 @@ export class ResourceConfig {
           created: created(this.symbol.resolve(&#x27;field.label.created&#x27;)),
         }
       },
-      client: {
+      dmClient: {
         identifier: &#x27;clientID&#x27;,
         fields: {
           clientID: {
