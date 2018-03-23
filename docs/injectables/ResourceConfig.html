@@ -1728,14 +1728,12 @@ export class ResourceConfig {
             label: this.symbol.resolve(&#x27;dmAccount.field.label.hasPassword&#x27;),
             view: &#x27;boolean&#x27;,
             filterable: true,
-            sortable: true,
             readOnly: true
           },
           pending: {
             label: this.symbol.resolve(&#x27;dmAccount.field.label.pending&#x27;),
             view: &#x27;boolean&#x27;,
             filterable: true,
-            sortable: true,
             readOnly: true
           },
           oauth: {
@@ -1812,7 +1810,7 @@ export class ResourceConfig {
           thumb: {
             form: false,
             label: this.symbol.resolve(&#x27;asset.field.label.thumb&#x27;),
-            view: &#x27;avatar&#x27;,
+            view: &#x27;preview&#x27;,
             resolve: (asset) &#x3D;&gt; {
               if (asset.type !&#x3D;&#x3D; &#x27;image&#x27;) {
                 return &#x27;&#x27;;
@@ -1875,7 +1873,7 @@ export class ResourceConfig {
           file: {
             label: this.symbol.resolve(&#x27;dmAsset.field.label.file&#x27;),
             display: value &#x3D;&gt; value.url,
-            view: &#x27;avatar&#x27;,
+            view: &#x27;preview&#x27;,
             immutable: true,
             form: false
           },
