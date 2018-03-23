@@ -408,7 +408,7 @@ export class ResourceConfig {
           created: created(this.symbol.resolve('field.label.created')),
         }
       },
-      client: {
+      dmClient: {
         identifier: 'clientID',
         fields: {
           clientID: {
