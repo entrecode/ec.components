@@ -298,7 +298,45 @@ export class ResourceConfig {
           created: created(this.symbol.resolve('field.label.created')),
         }
       },
-      asset: {
+      asset: { // old ec.asset
+        identifier: 'assetID',
+        fields: {
+          thumb: {
+            form: false,
+            label: this.symbol.resolve('asset.field.label.thumb'),
+            view: 'preview',
+            resolve: (asset) => {
+              if (asset.type !== 'image') {
+                return '';
+              }
+              return asset.getImageUrl(200);
+            },
+            immutable: true
+          },
+          assetID: {
+            label: 'assetID',
+            list: false,
+            form: false,
+            immutable: true
+          },
+          title: {
+            label: this.symbol.resolve('field.label.title'),
+            view: 'string',
+            sortable: true,
+            filterable: true
+          },
+          files: {
+            label: this.symbol.resolve('asset.field.label.files'),
+            view: 'tag',
+            form: false,
+            display: value => value.length,
+            immutable: true
+          },
+          tags: tagsField(this.symbol.resolve('asset.field.label.tags')),
+          created: created(this.symbol.resolve('field.label.created')),
+        }
+      },
+      legacyAsset: { // old public assets
         identifier: 'assetID',
         fields: {
           thumb: {
@@ -361,7 +399,7 @@ export class ResourceConfig {
           created: created(this.symbol.resolve('field.label.created')),
         }
       },
-      dmAsset: {
+      dmAsset: { // new assets
         identifier: 'assetID',
         fields: {
           file: {
