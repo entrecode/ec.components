@@ -74,7 +74,7 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   constructor(private modelConfig: ModelConfigService,
     private auth: AuthService) {
     super();
-    // TODO: listen to change events and remove deleted selected items 
+    // TODO: listen to change events and remove deleted selected items
     /* this.resourceService.change({ relation: this.model })
       .subscribe((update) => {
         this.list.load();
@@ -86,7 +86,7 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
     super.useConfig(config);
     this.dropdownConfig = Object.assign({}, this.config, {
       fields: {
-        [this.config.label]: Object.assign({}, this.config.fields[this.config.label])
+        [this.config.label]: Object.assign({}, (this.config.fields || {})[this.config.label])
       }
     });
     this.auth.getAllowedModelMethods(this.model, this.config.methods)

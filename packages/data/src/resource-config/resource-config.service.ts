@@ -222,14 +222,12 @@ export class ResourceConfig {
             label: this.symbol.resolve('dmAccount.field.label.hasPassword'),
             view: 'boolean',
             filterable: true,
-            sortable: true,
             readOnly: true
           },
           pending: {
             label: this.symbol.resolve('dmAccount.field.label.pending'),
             view: 'boolean',
             filterable: true,
-            sortable: true,
             readOnly: true
           },
           oauth: {
