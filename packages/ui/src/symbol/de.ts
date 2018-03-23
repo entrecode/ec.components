@@ -2,11 +2,11 @@ import { Symbol } from './symbol.interface';
 
 export default [{
     name: 'success.save',
-    content: 'Der Eintrag wurde gespeichert'
+    content: 'Speichern erfolgreich'
 },
 {
     name: 'success.delete',
-    content: 'Eintrag gelöscht'
+    content: 'Löschen erfolgreich'
 },
 {
     name: 'error.delete',
