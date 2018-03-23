@@ -1,9 +1,9 @@
 # Changelog
 
 
-<a name="0.16.0"></a>
+<a name="0.17.0"></a>
 
-## 0.16.0
+## 0.17.0
 
 * added resource module with all resource related components and services
 * can now add delete and modify entries and resource through the selects
