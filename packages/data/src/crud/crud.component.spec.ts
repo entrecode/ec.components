@@ -16,10 +16,12 @@ import { FormsModule } from '@angular/forms';
 import { SdkModule } from '../sdk/sdk.module';
 import { FilesModule } from '../files/files.module';
 import { RouterTestingModule } from '@angular/router/testing';
+import { ResourceDeletePopComponent } from '../resource-delete-pop/resource-delete-pop.component';
+import { ResourceConfig } from '../resource-config/resource-config.service';
 
 describe('CrudComponent', () => {
-  let component: CrudComponent<EntryResource>;
-  let fixture: ComponentFixture<CrudComponent<EntryResource>>;
+  let component: CrudComponent<any>;
+  let fixture: ComponentFixture<CrudComponent<any>>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -30,8 +32,8 @@ describe('CrudComponent', () => {
         SdkModule,
         FilesModule,
         AuthModule],
-      declarations: [EntryPopComponent, EntryFormComponent, EntryListComponent, CrudComponent],
-      providers: [ModelConfigService, CrudService, SdkService, TypeConfigService,
+      declarations: [EntryPopComponent, EntryFormComponent, EntryListComponent, CrudComponent, ResourceDeletePopComponent],
+      providers: [ModelConfigService, CrudService, SdkService, TypeConfigService, ResourceConfig,
         {
           provide: 'environment',
           useValue: {

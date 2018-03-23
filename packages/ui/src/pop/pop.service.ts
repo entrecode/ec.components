@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { PopComponent } from '@ec.components/ui';
+import { PopComponent } from './pop.component';
 import { Collection } from '@ec.components/core';
 
 @Injectable()
