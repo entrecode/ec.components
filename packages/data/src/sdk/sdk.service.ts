@@ -55,6 +55,7 @@ export class SdkService {
   /** Sets the public api */
   set api(api: PublicAPI) {
     this._api = api;
+    this._api.resolve().then(() => this.apiResolved = true);
   }
   /** Current DataManager instance */
   public datamanager: DataManager;
@@ -98,8 +99,6 @@ export class SdkService {
   useDatamanager(shortID: string, environment = this.environment) {
     this.apiResolved = false;
     this._api = new PublicAPI(shortID, <env>environment.environment, true);
-    console.log('api', this._api);
-
     this._api.resolve().then(api => this.apiResolved = true);
     if (environment.clientID) {
       this._api.setClientID(environment.clientID);
