@@ -25,15 +25,13 @@ import { ResourceCrudComponent } from './resource-crud/resource-crud.component';
 import { ResourceDeletePopComponent } from './resource-delete-pop/resource-delete-pop.component';
 import { ResourceSelectComponent } from './resource-select/resource-select.component';
 import { AdminEntryInputComponent } from './entry-form/admin-entry-input.component';
-import { ResourceService } from './resource-config/resource.service';
-import { ResourceConfig } from './resource-config/resource-config.service';
+import { ResourceModule } from './resource/resource.module';
 
 @NgModule({
   entryComponents: [
     DefaultEntryInputComponent,
     DefaultEntryOutputComponent,
     AdminEntryInputComponent,
-    ResourceListComponent,
     EntrySelectComponent,
   ],
   declarations: [
@@ -42,12 +40,6 @@ import { ResourceConfig } from './resource-config/resource-config.service';
     EntriesDirective,
     EntryFormComponent,
     EntryPopComponent,
-    ResourceListComponent,
-    ResourceFormComponent,
-    ResourcePopComponent,
-    ResourceCrudComponent,
-    ResourceSelectComponent,
-    ResourceDeletePopComponent,
     DefaultEntryInputComponent,
     DefaultEntryOutputComponent,
     AdminEntryInputComponent,
@@ -60,7 +52,8 @@ import { ResourceConfig } from './resource-config/resource-config.service';
     UiModule,
     SdkModule,
     FilesModule,
-    AuthModule
+    AuthModule,
+    ResourceModule,
   ],
   exports: [
     EntryListComponent,
@@ -70,24 +63,17 @@ import { ResourceConfig } from './resource-config/resource-config.service';
     EntryPopComponent,
     CrudComponent,
     EntrySelectComponent,
-    ResourceListComponent,
-    ResourceFormComponent,
-    ResourcePopComponent,
-    ResourceCrudComponent,
-    ResourceDeletePopComponent,
-    ResourceSelectComponent,
     RouterModule,
     UiModule,
     SdkModule,
     FilesModule,
-    AuthModule
+    AuthModule,
+    ResourceModule
   ],
   providers: [
     CrudService,
     TypeConfigService,
     ModelConfigService,
-    ResourceService,
-    ResourceConfig,
     {
       provide: 'environment',
       useValue: {

@@ -11,6 +11,7 @@ import { SdkModule } from '../sdk/sdk.module';
 import { AssetDirective } from './asset/asset.directive';
 import { ImageDirective } from './image/image.directive';
 import { AssetListPopComponent } from './asset-list-pop/asset-list-pop.component';
+import { ResourceModule } from '../resource/resource.module';
 
 @NgModule({
   entryComponents: [
@@ -31,6 +32,7 @@ import { AssetListPopComponent } from './asset-list-pop/asset-list-pop.component
     FormsModule,
     UiModule,
     SdkModule,
+    ResourceModule
   ],
   exports: [
     AssetListComponent,
