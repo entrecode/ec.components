@@ -47,7 +47,7 @@ export class FileService {
   /** The changes event is emitted everytime an entry is created or updated. */
   public uploads: EventEmitter<Upload> = new EventEmitter();
   /** The default config for asset lists */
-  public assetListConfig = {
+  public assetListConfig = { // TODO: delete when asset list is dead
     label: 'title',
     size: 5,
     identifier: 'assetID',
@@ -101,7 +101,7 @@ export class FileService {
     }
   };
 
-  public newAssetListConfig = { // TODO: extend
+  public newAssetListConfig = { // TODO: dont use
     label: 'title',
     identifier: 'assetID',
     fields: {
@@ -189,6 +189,7 @@ export class FileService {
         }
       }).then((upload: Upload) => {
         this.uploads.emit(upload);
+        this.resourceService.changes.next({ relation: 'legacyAsset', type: 'post' });
         return upload;
       });
   }

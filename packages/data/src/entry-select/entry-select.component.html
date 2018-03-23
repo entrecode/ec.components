@@ -12,8 +12,8 @@
       </li>
     </ul>
     <!-- Dropdown -->
-    <ec-pop (click)="clickInside($event)" [ngClass]="field?.nestedPopClass || 'ec-select-options'" #dropdown [active]="field?.nestedPopActive"
-      [visible]="field?.nestedPopVisible">
+    <ec-pop (click)="clickInside($event)" [ngClass]="config?.nestedPopClass || 'ec-select-options'" #dropdown [active]="config?.nestedPopActive"
+      [visible]="config?.nestedPopVisible">
       <ec-entry-list [model]="model" *ngIf="selection&&dropdown.active" [config]="dropdownConfig" [selection]="selection" (columnClicked)="select($event)"></ec-entry-list>
     </ec-pop>
     <!-- popup -->

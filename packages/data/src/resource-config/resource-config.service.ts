@@ -409,6 +409,19 @@ export class ResourceConfig {
             immutable: true,
             form: false
           },
+          thumb: {
+            form: false,
+            list: false,
+            label: this.symbol.resolve('asset.field.label.thumb'),
+            view: 'preview',
+            resolve: (asset) => {
+              if (asset.type !== 'image' || !asset.thumbnails || !asset.thumbnails.length) {
+                return '';
+              }
+              return asset.thumbnails[0].url;
+            },
+            immutable: true
+          },
           assetID: {
             label: this.symbol.resolve('dmAsset.field.label.assetID'),
             list: false,

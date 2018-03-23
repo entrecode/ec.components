@@ -43,8 +43,6 @@ import LiteEntryResource from 'ec.sdk/lib/resources/publicAPI/LiteEntryResource'
   ]
 })
 export class EntrySelectComponent extends SelectComponent<EntryResource> implements OnChanges {
-  /** The field for which the input is meant. */
-  @Input() field: Field;
   /** The item that is targeted by the input */
   protected item: Item<any>;
   /** The form group that is used */
@@ -104,9 +102,6 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   ngOnChanges() {
     if (!this.formControl) {
       this.formControl = new FormControl(this.value || []);
-    }
-    if (this.field) {
-      this.model = this.model || this.field['model'];
     }
     if (this.config) {
       this.useConfig(this.config);

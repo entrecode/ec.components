@@ -6,6 +6,7 @@ import { CrudConfig } from '../../crud/crud-config.interface';
 import { AuthService } from '../../auth/auth.service';
 import { Upload } from '../file.service';
 import { PopService } from '@ec.components/ui/src/pop/pop.service';
+import { SdkService } from '@ec.components/data';
 
 /** Entry Pop is an extension of Pop component to host an entry-form.
  * You can use it like a normal pop but with the extra handling of an entry form inside.
@@ -23,10 +24,14 @@ export class AssetListPopComponent extends PopComponent {
   @Input() config: CrudConfig<PublicAssetResource> = {};
   /** The used selection */
   @Input() selection: Selection<PublicAssetResource>;
+  /** The assetGroupID that should be picked from. If empty, legacy assets are used */
+  @Input() assetGroupID: string;
   /** Event emitter on item selection */
   @Output() columnClicked: EventEmitter<Item<PublicAssetResource>> = new EventEmitter();
   /** Injects auth service and calls super constructor. */
-  constructor(protected popService: PopService, private auth: AuthService) {
+  constructor(protected popService: PopService,
+    private auth: AuthService,
+    public sdk: SdkService) {
     super(popService);
   }
 
@@ -43,7 +48,8 @@ export class AssetListPopComponent extends PopComponent {
     if (this.columnClicked.observers.length) {
       this.columnClicked.emit($event);
     } else if (this.selection) {
-      this.selection.toggle($event);
+      console.log('selection', this.selection);
+      // this.selection.toggle($event);
     }
   }
 }

@@ -43,8 +43,6 @@ import { SdkService } from '@ec.components/data';
     ]
 })
 export class ResourceSelectComponent extends SelectComponent<Resource> implements OnChanges, OnInit {
-    /** The field for which the input is meant. */
-    @Input() field: Field;
     /** The item that is targeted by the input */
     protected item: Item<any>;
     /** The form group that is used */
@@ -118,9 +116,6 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
         }
         if (!this.formControl) {
             this.formControl = new FormControl(this.value || []);
-        }
-        if (this.field) {
-            this.relation = this.relation || this.field['relation'];
         }
         if (this.config) {
             super.useConfig(this.config);

@@ -23,6 +23,8 @@ export class UploadComponent implements WithLoader, WithNotifications {
   /** The loader that should be used while uploading*/
   @Input() loader: LoaderComponent;
   /** The asset group to upload into. If not defined, old assets will be used! */
+  @Input() assetGroupID: string;
+  /** The asset group to upload into. If not defined, old assets will be used! DEPRECATED! */
   @Input() assetGroup: string;
   /** If true, a pop to rename files + customize flags will appear before uploading. */
   @Input() custom: boolean;
@@ -56,7 +58,7 @@ export class UploadComponent implements WithLoader, WithNotifications {
       console.error('cannot trigger upload: file input element not found!');
       return;
     }
-    this.clear();
+    /* this.clear(); */
     this.fileInput.nativeElement.click();
   }
 
@@ -84,8 +86,9 @@ export class UploadComponent implements WithLoader, WithNotifications {
 
   /** Triggers upload of current selected files */
   upload(e, api = this.sdk.api) {
-    this.uploadPromise = (this.assetGroup ?
-      this.fileService.uploadAssets(e, this.assetGroup, this.options, api) :
+    const assetGroupID = this.assetGroupID || this.assetGroup;
+    this.uploadPromise = (assetGroupID ?
+      this.fileService.uploadAssets(e, assetGroupID, this.options, api) :
       this.fileService.uploadFiles(e))
       .then((_upload) => {
         this.success.emit(_upload);

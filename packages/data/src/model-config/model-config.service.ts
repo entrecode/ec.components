@@ -68,7 +68,7 @@ export class ModelConfigService extends Config {
     return !match.length ? null : {
       raw: type,
       name: match[1],
-      model: match.length > 2 ? match[3] : null
+      relation: match.length > 2 ? match[3] : null
     };
   }
 
@@ -113,7 +113,7 @@ export class ModelConfigService extends Config {
         fieldConfig[property] = Object.assign({
             label: property,
             schema: schema.properties[property],
-            model: type.model,
+            relation: type.relation,
             readOnly: schema.properties[property].readOnly || this.isSystemProperty(property),
             // required: schema.required.indexOf(property) !== -1, // TODO
             display: ((value) => value)

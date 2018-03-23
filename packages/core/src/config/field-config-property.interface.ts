@@ -90,6 +90,8 @@ export interface FieldConfigProperty {
   class?: string;
   /** Icon name that should be associated with the field */
   icon?: string;
+  /** Related identifier e.g. model name or assetGroupID */
+  relation?: string;
   /** wildcard for custom config values */
   [key: string]: any;
 }

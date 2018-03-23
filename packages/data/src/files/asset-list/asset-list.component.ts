@@ -37,6 +37,7 @@ export class AssetListComponent extends ResourceListComponent {
   }
   /** Creates the AssetList */
   createList(): AssetList {
+    console.warn('asset list component is deprecated!');
     return new AssetList(this.config, this.sdk, this.fileService);
   }
 }

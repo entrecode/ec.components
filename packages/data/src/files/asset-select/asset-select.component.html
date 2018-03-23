@@ -1,9 +1,11 @@
 <div *ngIf="selection" class="ec-asset-select" [class.ec-asset-select_solo]="solo" [class.empty]="!selection.items.length">
   <div class="ec-asset-upload" *ngIf="!selection.items.length || !solo">
-    <ec-upload #upload [loader]="popLoader" (success)="assetListPop.selectUpload($event)" class="hide"></ec-upload>
+    <ec-upload #upload [loader]="popLoader" [assetGroupID]="assetGroupID" (success)="assetListPop.selectUpload($event)" class="hide"></ec-upload>
     <!-- Datei hier ablegen TODO -->
     <a (click)="upload.trigger()">Hochladen</a>
-    <span> oder <a (click)="pop.toggle()">Mediathek</a></span>
+    <span> oder
+      <a (click)="pop.toggle()">Mediathek</a>
+    </span>
   </div>
   <div *ngIf="selection.items.length" class="ec-asset-selected">
     <ul class="ec-asset-selected__items" data-grid="is-small">
@@ -19,6 +21,7 @@
       </li>
     </ul>
   </div>
-  <ec-asset-list-pop (click)="clickInside($event)" (columnClicked)="select($event)" [config]="config" [selection]="selection" [active]="field?.nestedPopActive" [visible]="field?.nestedPopVisible"
-    [ngClass]="field?.nestedPopClass || 'ec-pop_dialog'" #assetListPop></ec-asset-list-pop>
+  <ec-asset-list-pop [assetGroupID]="assetGroupID" (click)="clickInside($event)" (columnClicked)="select($event)" [config]="config"
+    [selection]="selection" [active]="config?.nestedPopActive" [visible]="config?.nestedPopVisible" [ngClass]="config?.nestedPopClass || 'ec-pop_dialog'"
+    #assetListPop></ec-asset-list-pop>
 </div>

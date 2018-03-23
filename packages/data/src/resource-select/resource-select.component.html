@@ -11,8 +11,8 @@
                 </span>
             </li>
         </ul>
-        <ec-pop (click)="clickInside($event)" [ngClass]="field?.nestedPopClass || 'ec-select-options'" #dropdown [active]="field?.nestedPopActive"
-            [visible]="field?.nestedPopVisible">
+        <ec-pop (click)="clickInside($event)" [ngClass]="config?.nestedPopClass || 'ec-select-options'" #dropdown [active]="config?.nestedPopActive"
+            [visible]="config?.nestedPopVisible">
             <ec-resource-list [relation]="relation" [api]="api" *ngIf="selection&&dropdown.active" [config]="dropdownConfig" [selection]="selection"
                 (columnClicked)="select($event)"></ec-resource-list>
         </ec-pop>
