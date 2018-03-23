@@ -4,7 +4,7 @@
   <div class="ec-list-body">
     <div class="ec-list-group" *ngFor="let group of list?.groups">
       <div class="ec-list-group-header" *ngIf="group.value" (click)="selection?.toggleAll(listItems?.items)">
-        <div class="ec-list-cell ec-list__select" *ngIf="list?.config?.selectMode">
+        <div class="ec-list-cell ec-list__select" *ngIf="!list?.config?.disableSelection">
           <input type="checkbox" [checked]="selection?.hasAll(listItems?.items)">
         </div>
         <div class="ec-list-cell">

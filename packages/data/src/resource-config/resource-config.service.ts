@@ -304,7 +304,7 @@ export class ResourceConfig {
           thumb: {
             form: false,
             label: this.symbol.resolve('asset.field.label.thumb'),
-            view: 'avatar',
+            view: 'preview',
             resolve: (asset) => {
               if (asset.type !== 'image') {
                 return '';
@@ -367,7 +367,7 @@ export class ResourceConfig {
           file: {
             label: this.symbol.resolve('dmAsset.field.label.file'),
             display: value => value.url,
-            view: 'avatar',
+            view: 'preview',
             immutable: true,
             form: false
           },
