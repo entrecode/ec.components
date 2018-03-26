@@ -56,9 +56,6 @@ export class ResourceService {
             return Promise.resolve(item.config.onSave(item, value))
         }
         item.deleteImmutableProperties(value);
-        if (item.config && item.config.identifier) {
-            delete value[item.config.identifier];
-        }
         if (resource && resource.save) {
             return this.update(relation, resource, value);
         }
