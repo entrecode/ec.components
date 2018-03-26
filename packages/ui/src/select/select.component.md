@@ -7,3 +7,5 @@ You can pass an array of items that will be used for a selection instance.
 
 {{values | json}}
 ```
+
+TODO: update

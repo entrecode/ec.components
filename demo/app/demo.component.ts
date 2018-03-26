@@ -51,6 +51,9 @@ export class DemoComponent {
             }
           }
         },
+        new_asset: {
+          relation: 'test'
+        }
       }
     });
 
