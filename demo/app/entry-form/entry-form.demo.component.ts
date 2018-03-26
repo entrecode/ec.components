@@ -6,6 +6,44 @@ import { DefaultEntryInputComponent } from '@ec.components/data';
   templateUrl: 'entry-form-demo.component.html',
 })
 export class EntryFormDemoComponent {
+  fieldForm = {
+    fields: {
+      property: {
+        label: 'Property',
+        view: 'string'
+      },
+      label: {
+        label: 'Label',
+        view: 'string'
+      },
+      type: {
+        label: 'Typ',
+        view: 'select',
+        values: [
+          'text',
+          'entry',
+          'entries',
+          'asset',
+          'assets',
+          'formattedText',
+          'number',
+          'decimal',
+          'boolean',
+          'datetime',
+          'email',
+          'url',
+          'phone',
+          'json',
+          'account',
+          'role',
+          'location']
+      },
+      relation: {
+        label: 'Relation',
+        view: 'string'
+      },
+    }
+  }
   formConfig = {
     fields: {
       name: {
@@ -28,5 +66,11 @@ export class EntryFormDemoComponent {
     }
   }
   constructor() {
+  }
+  addField(item, form, pop) {
+    const field = item.getBody();
+    form.addField(field.property, item.getBody());
+    console.log('field', item);
+    pop.hide();
   }
 }

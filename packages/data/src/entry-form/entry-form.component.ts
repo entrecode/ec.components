@@ -11,6 +11,8 @@ import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 import { WithNotifications } from '@ec.components/ui/src/notifications/with-notifications.interface';
 import { Notification } from '@ec.components/ui/src/notifications/notification';
+import { FieldConfigProperty } from '@ec.components/core';
+import { TypeConfigService } from '../model-config/type-config.service';
 
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent.
  * <example-url>https://components.entrecode.de/data/entry-form</example-url>
@@ -38,6 +40,7 @@ export class EntryFormComponent extends FormComponent<EntryResource> implements 
     protected notificationService: NotificationsService,
     protected crud: CrudService,
     protected formService: FormService,
+    protected typeConfig: TypeConfigService,
     protected symbol: SymbolService) {
     super(loaderService, notificationService, formService, symbol);
   }
@@ -61,6 +64,12 @@ export class EntryFormComponent extends FormComponent<EntryResource> implements 
         }
         super.init(item, _config);
       });
+  }
+
+  /** Adds field to entry form. Automatically applies typeconfig */
+  addField(property: string, config: FieldConfigProperty) {
+    config = Object.assign({}, this.typeConfig.get(config.type), config);
+    super.addField(property, config);
   }
 
   /** Yields true if the current edited entry is already existing in the backend. */

@@ -30,6 +30,7 @@
                [placeholder]="field.getPlaceholder()"></ec-datetime>
 
   <select [id]="field.id" *ngSwitchCase="'select'" (change)="control.patchValue($event.target.value)" class="input">
+    <option></option>
     <option *ngFor="let option of field.values" [selected]="control.value===option"
             [value]="option">
       {{option}}

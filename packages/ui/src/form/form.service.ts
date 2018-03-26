@@ -18,13 +18,20 @@ export class FormService {
   public getGroup(form: Form<any>) {
     const control = {};
     form.fields.filter((field) => field.form !== false)
-    .forEach((field) => {
-      const validators = this.getValidators(field);
-      control[field.property] = new FormControl(form.getValue(field.property), validators)
-      // TODO use { updateOn: blur } when updating to angular 5.0.0
-      // see https://github.com/angular/angular/commit/333a708bb632d4258ecb5fd4a0e86229fe9d26e4
-    });
+      .forEach((field) => {
+        const validators = this.getValidators(field);
+        control[field.property] = new FormControl(form.getValue(field.property), validators)
+        // TODO use { updateOn: blur } when updating to angular 5.0.0
+        // see https://github.com/angular/angular/commit/333a708bb632d4258ecb5fd4a0e86229fe9d26e4
+      });
     return new FormGroup(control);
+  }
+
+  /** adds a new field to a form. handles form group and control */
+  public addField(field: Field, form: Form<any>, group: FormGroup) {
+    const validators = this.getValidators(field);
+    const control = new FormControl(form.getValue(field.property), validators);
+    group.addControl(field.property, control);
   }
 
   /** Extracts all validators from a given Field instance. */

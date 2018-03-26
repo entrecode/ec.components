@@ -3,6 +3,7 @@
 import { Item } from '../item/item';
 import { Field } from '../field/field';
 import { FormConfig } from './form-config.interface';
+import { FieldConfigProperty } from '@ec.components/core';
 
 /** The Form class is an Item with additional info about its properties (Fields). */
 export class Form<T> extends Item<T> {
@@ -24,6 +25,24 @@ export class Form<T> extends Item<T> {
       .forEach((property) => {
         this.fields.push(new Field(property, this.config.fields[property]));
       });
+  }
+
+  /** creates and adds a single field to the form */
+  createField(property: string, config: FieldConfigProperty): Field {
+    if (!config) {
+      return;
+    }
+    if (!property) {
+      return;
+    }
+    if (this.config.fields[property]) {
+      console.error('cannot create field "', property, '". Property name already taken.');
+      return;
+    }
+    this.config.fields[property] = config;
+    const field = new Field(property, this.config.fields[property]);
+    this.fields = this.fields.concat([field]);
+    return field;
   }
 
   /** returns the field instance of the given property */

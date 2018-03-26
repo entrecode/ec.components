@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, Output, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Form, FormConfig, Item } from '@ec.components/core';
+import { Form, FormConfig, Item, FieldConfigProperty } from '@ec.components/core';
 import { ItemConfig } from '@ec.components/core/src/item/item-config.interface';
 import { LoaderComponent } from '../loader/loader.component';
 import { LoaderService } from '../loader/loader.service';
@@ -94,6 +94,14 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
       this.change.emit(this);
     });
     this.ready.emit(this);
+  }
+
+  /** Adds a new field with the given config to the form */
+  public addField(property: string, config: FieldConfigProperty) {
+    const field = this.form.createField(property, config);
+    if (field) {
+      this.formService.addField(field, this.form, this.group);
+    }
   }
 
   /** Clears the current value */

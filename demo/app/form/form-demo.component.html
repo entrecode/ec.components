@@ -2,11 +2,11 @@
   Form</h2>
 <h3>Default Form</h3>
 <p>If the ec-form element has no contents, the default form will be rendered, which is a list containing all fields and a submit
-  button</p>
+  button
+</p>
 
 <h4>Empty Form</h4>
-<ec-form [config]="mocked.lists.trees.config" (submitted)="logValue($event)"></ec-form>
-
+<ec-form [config]="mocked.lists.trees.config" (submitted)="logValue($event)" #treeEmptyForm></ec-form>
 <h5>Prefilled Form</h5>
 <ec-form [item]="mocked.lists.trees.id(0)" (submitted)="logValue($event)"></ec-form>
 
@@ -34,6 +34,6 @@
 <!--<ec-form [config]="mocked.lists.songs.config" [item]="mocked.lists.songs.id(0)" #songForm></ec-form>-->
 
 <ec-form [value]="mocked.products[0]" #productForm (submitted)="logValue($event)"></ec-form>
-<!--<button (click)="productForm.create()">Create new...</button>-->
+<!-- <button (click)="productForm.create()">Create new...</button> -->
 
 <!-- TODO: VALIDATORS DEMO/TEST -->
