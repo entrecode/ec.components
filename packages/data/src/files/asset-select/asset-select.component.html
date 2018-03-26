@@ -1,5 +1,5 @@
 <div *ngIf="selection" class="ec-asset-select" [class.ec-asset-select_solo]="solo" [class.empty]="!selection.items.length">
-  <div class="ec-asset-upload" *ngIf="!selection.items.length || !solo">
+  <div class="ec-asset-upload" *ngIf="!config.readOnly&&(!selection.items.length || !solo)">
     <ec-upload #upload [loader]="popLoader" [assetGroupID]="assetGroupID" (success)="assetListPop.selectUpload($event)" class="hide"></ec-upload>
     <!-- Datei hier ablegen TODO -->
     <a (click)="upload.trigger()">Hochladen</a>
@@ -11,9 +11,9 @@
     <ul class="ec-asset-selected__items" data-grid="is-small">
       <li *ngFor="let selected of selection.items" class="ec-asset-selected__item" (click)="editItem(selected)" data-col="3-sm">
         <div class="ec-asset-card">
-          <img [src]="selected.resolve('thumb')">          
+          <img [src]="selected.resolve('thumb')">
           <nav class="ec-asset-card-controls">
-            <a (click)="selection.remove(selected)" class="ec-asset-card-controls__remove">
+            <a (click)="selection.remove(selected)" class="ec-asset-card-controls__remove" *ngIf="!config.readOnly">
               <ec-icon name="close-x"></ec-icon>
             </a>
           </nav>

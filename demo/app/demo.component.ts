@@ -52,6 +52,7 @@ export class DemoComponent {
           }
         },
         new_asset: {
+          label: 'Nu Asset',
           relation: 'test'
         }
       }
