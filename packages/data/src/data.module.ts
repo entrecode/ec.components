@@ -26,6 +26,7 @@ import { ResourceDeletePopComponent } from './resource-delete-pop/resource-delet
 import { ResourceSelectComponent } from './resource-select/resource-select.component';
 import { AdminEntryInputComponent } from './entry-form/admin-entry-input.component';
 import { ResourceModule } from './resource/resource.module';
+import { HistoryService } from './sdk/history.service';
 
 @NgModule({
   entryComponents: [
@@ -74,6 +75,7 @@ import { ResourceModule } from './resource/resource.module';
     CrudService,
     TypeConfigService,
     ModelConfigService,
+    HistoryService,
     {
       provide: 'environment',
       useValue: {
