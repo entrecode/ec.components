@@ -2153,7 +2153,8 @@ export class ListComponent&lt;T&gt; implements OnChanges {
   }
   /** Decides if the header should be visible or not */
   showHeader() {
-    return this.list &amp;&amp; this.list.config &amp;&amp; !this.list.config.disableHeader &amp;&amp; (this.list.fields.length || this.list.config.title);
+    return this.list &amp;&amp; this.list.config &amp;&amp; !this.list.config.disableHeader &amp;&amp; (this.list.fields.length || this.list.config.title)
+      &amp;&amp; (this.list.config.alwaysShowHeader || !this.list.isEmpty());
   }
 }
 </code></pre>

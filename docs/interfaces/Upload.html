@@ -1832,6 +1832,14 @@ export class FileService {
   constructor(private sdk: SdkService, private typeConfig: TypeConfigService, private resourceService: ResourceService) {
   }
 
+  /** returns true if the given asset is a new one (DMAssetResource) */
+  public isNewAsset(asset) {
+    if (Array.isArray(asset)) {
+      return asset.length ? this.isNewAsset(asset[0]) : false;
+    }
+    return /^[a-zA-Z0-9\-_]{22}$/.test(asset.assetID)
+  }
+
   /** Returns form data for a file list. You have to append options (even if empty) to get formData for new assets! */
   public getFormData(files: FileList, options?: FileOptions): FormData {
     const formData: FormData &#x3D; new FormData();

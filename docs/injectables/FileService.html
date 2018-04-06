@@ -1478,6 +1478,10 @@ changes.</p>
                                     </li>
                                     <li>
                                             <span class="modifier">Public</span>
+                                        <a href="#isNewAsset">isNewAsset</a>
+                                    </li>
+                                    <li>
+                                            <span class="modifier">Public</span>
                                         <a href="#resolveAssets">resolveAssets</a>
                                     </li>
                                     <li>
@@ -1599,7 +1603,7 @@ changes.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="123" class="link-to-prism">packages/data/src/files/file.service.ts:123</a></div>
+                                                <div class="io-line">Defined in <a href="" data-line="131" class="link-to-prism">packages/data/src/files/file.service.ts:131</a></div>
                                         </td>
                                     </tr>
             
@@ -1665,6 +1669,75 @@ changes.</p>
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
+                                    <a name="isNewAsset"></a>
+                                    <span class="name">
+                                        <b>
+                                            <span class="modifier">Public</span>
+                                        isNewAsset
+                                        </b>
+                                        <a href="#isNewAsset"><span class="fa fa-link"></span></a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon fa fa-reset"></span>
+                                    <code>isNewAsset(asset: )</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="123" class="link-to-prism">packages/data/src/files/file.service.ts:123</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>returns true if the given asset is a new one (DMAssetResource) </p>
+            </div>
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Optional</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                                <td>asset</td>
+                                                                
+                                                                
+                                                                <td>
+                                                                        no
+                                                                </td>
+                                                                
+            
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
                                     <a name="resolveAssets"></a>
                                     <span class="name">
                                         <b>
@@ -1685,7 +1758,7 @@ changes.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="198" class="link-to-prism">packages/data/src/files/file.service.ts:198</a></div>
+                                                <div class="io-line">Defined in <a href="" data-line="206" class="link-to-prism">packages/data/src/files/file.service.ts:206</a></div>
                                         </td>
                                     </tr>
             
@@ -1758,7 +1831,7 @@ changes.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="143" class="link-to-prism">packages/data/src/files/file.service.ts:143</a></div>
+                                                <div class="io-line">Defined in <a href="" data-line="151" class="link-to-prism">packages/data/src/files/file.service.ts:151</a></div>
                                         </td>
                                     </tr>
             
@@ -1878,7 +1951,7 @@ changes.</p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="165" class="link-to-prism">packages/data/src/files/file.service.ts:165</a></div>
+                                                <div class="io-line">Defined in <a href="" data-line="173" class="link-to-prism">packages/data/src/files/file.service.ts:173</a></div>
                                         </td>
                                     </tr>
             
@@ -2251,6 +2324,14 @@ export class FileService {
 
   /** Injects sdk */
   constructor(private sdk: SdkService, private typeConfig: TypeConfigService, private resourceService: ResourceService) {
+  }
+
+  /** returns true if the given asset is a new one (DMAssetResource) */
+  public isNewAsset(asset) {
+    if (Array.isArray(asset)) {
+      return asset.length ? this.isNewAsset(asset[0]) : false;
+    }
+    return /^[a-zA-Z0-9\-_]{22}$/.test(asset.assetID)
   }
 
   /** Returns form data for a file list. You have to append options (even if empty) to get formData for new assets! */

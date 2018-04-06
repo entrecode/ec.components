@@ -1544,6 +1544,9 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#addField">addField</a>
+                            </li>
+                            <li>
                                 <a href="#deleteEntry">deleteEntry</a>
                             </li>
                             <li>
@@ -1551,6 +1554,10 @@
                             </li>
                             <li>
                                 <a href="#isEditing">isEditing</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#addField">addField</a>
                             </li>
                             <li>
                                 <a href="#clear">clear</a>
@@ -1659,12 +1666,12 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-    <code>constructor(loaderService: <a href="../injectables/LoaderService.html">LoaderService</a>, modelConfig: <a href="../injectables/ModelConfigService.html">ModelConfigService</a>, notificationService: <a href="../injectables/NotificationsService.html">NotificationsService</a>, crud: <a href="../injectables/CrudService.html">CrudService</a>, formService: <a href="../injectables/FormService.html">FormService</a>, symbol: <a href="../injectables/SymbolService.html">SymbolService</a>)</code>
+    <code>constructor(loaderService: <a href="../injectables/LoaderService.html">LoaderService</a>, modelConfig: <a href="../injectables/ModelConfigService.html">ModelConfigService</a>, notificationService: <a href="../injectables/NotificationsService.html">NotificationsService</a>, crud: <a href="../injectables/CrudService.html">CrudService</a>, formService: <a href="../injectables/FormService.html">FormService</a>, typeConfig: <a href="../injectables/TypeConfigService.html">TypeConfigService</a>, symbol: <a href="../injectables/SymbolService.html">SymbolService</a>)</code>
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">packages/data/src/entry-form/entry-form.component.ts:33</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">packages/data/src/entry-form/entry-form.component.ts:35</a></div>
                                 </td>
                             </tr>
     
@@ -1744,6 +1751,18 @@
                                                         
                                                     </tr>
                                                     <tr>
+                                                        <td>typeConfig</td>
+                                                      
+                                                            <td>
+                                                                        <code><a href="../injectables/TypeConfigService.html" target="_self" >TypeConfigService</a></code>
+                                                            </td>
+                                                      
+                                                        <td>
+                                                                no
+                                                        </td>
+                                                        
+                                                    </tr>
+                                                    <tr>
                                                         <td>symbol</td>
                                                       
                                                             <td>
@@ -1785,7 +1804,7 @@ If no model was passed, the model of the given entry is used which makes the for
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                        <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">packages/data/src/entry-form/entry-form.component.ts:29</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">packages/data/src/entry-form/entry-form.component.ts:31</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1809,7 +1828,7 @@ If you do not pass any model, it is expected that an EntryResource is passed. </
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                        <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">packages/data/src/entry-form/entry-form.component.ts:26</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">packages/data/src/entry-form/entry-form.component.ts:28</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -2037,7 +2056,7 @@ If you do not pass any model, it is expected that an EntryResource is passed. </
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                        <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">packages/data/src/entry-form/entry-form.component.ts:31</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">packages/data/src/entry-form/entry-form.component.ts:33</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -2136,6 +2155,90 @@ If you do not pass any model, it is expected that an EntryResource is passed. </
                 <tbody>
                     <tr>
                         <td class="col-md-4">
+                            <a name="addField"></a>
+                            <span class="name">
+                                <b>
+                                addField
+                                </b>
+                                <a href="#addField"><span class="fa fa-link"></span></a>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>addField(property: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, config: <a href="../interfaces/FieldConfigProperty.html">FieldConfigProperty</a>)</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">packages/data/src/entry-form/entry-form.component.ts:70</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Adds field to entry form. Automatically applies typeconfig </p>
+    </div>
+    
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                        <td>property</td>
+                                                        
+                                                            <td>
+                                                                        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                            </td>
+                                                        
+                                                        <td>
+                                                                no
+                                                        </td>
+                                                        
+    
+                                                    </tr>
+                                                    <tr>
+                                                        <td>config</td>
+                                                        
+                                                            <td>
+                                                                        <code><a href="../interfaces/FieldConfigProperty.html" target="_self" >FieldConfigProperty</a></code>
+                                                            </td>
+                                                        
+                                                        <td>
+                                                                no
+                                                        </td>
+                                                        
+    
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                                    <div class="io-description">
+                                        
+                                    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
                             <a name="deleteEntry"></a>
                             <span class="name">
                                 <b>
@@ -2154,7 +2257,7 @@ If you do not pass any model, it is expected that an EntryResource is passed. </
     
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">packages/data/src/entry-form/entry-form.component.ts:76</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">packages/data/src/entry-form/entry-form.component.ts:85</a></div>
                                 </td>
                             </tr>
     
@@ -2193,7 +2296,7 @@ If you do not pass any model, it is expected that an EntryResource is passed. </
     
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">packages/data/src/entry-form/entry-form.component.ts:46</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">packages/data/src/entry-form/entry-form.component.ts:49</a></div>
                                 </td>
                             </tr>
     
@@ -2284,7 +2387,7 @@ If you do not pass any model, it is expected that an EntryResource is passed. </
     
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">packages/data/src/entry-form/entry-form.component.ts:67</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">packages/data/src/entry-form/entry-form.component.ts:76</a></div>
                                 </td>
                             </tr>
     
@@ -2297,6 +2400,98 @@ If you do not pass any model, it is expected that an EntryResource is passed. </
                                     <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
     
                                 </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="addField"></a>
+                            <span class="name">
+                                <b>
+                                    <span class="modifier">Public</span>
+                                addField
+                                </b>
+                                <a href="#addField"><span class="fa fa-link"></span></a>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <span class="modifier-icon fa fa-reset"></span>
+                            <code>addField(property: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, config: <a href="../interfaces/FieldConfigProperty.html">FieldConfigProperty</a>)</code>
+                        </td>
+                    </tr>
+    
+    
+                                <tr>
+                                    <td class="col-md-4">
+                                        <div class="io-line">Inherited from     <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
+    </div>
+                                    </td>
+                                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-line">Defined in FormComponent:100</div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Adds a new field with the given config to the form </p>
+    </div>
+    
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                        <td>property</td>
+                                                        
+                                                            <td>
+                                                                        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                            </td>
+                                                        
+                                                        <td>
+                                                                no
+                                                        </td>
+                                                        
+    
+                                                    </tr>
+                                                    <tr>
+                                                        <td>config</td>
+                                                        
+                                                            <td>
+                                                                        <code><a href="../interfaces/FieldConfigProperty.html" target="_self" >FieldConfigProperty</a></code>
+                                                            </td>
+                                                        
+                                                        <td>
+                                                                no
+                                                        </td>
+                                                        
+    
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                                    <div class="io-description">
+                                        
+                                    </div>
                         </td>
                     </tr>
                 </tbody>
@@ -2329,7 +2524,7 @@ If you do not pass any model, it is expected that an EntryResource is passed. </
                                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-line">Defined in FormComponent:100</div>
+                                        <div class="io-line">Defined in FormComponent:108</div>
                                 </td>
                             </tr>
     
@@ -2374,7 +2569,7 @@ If you do not pass any model, it is expected that an EntryResource is passed. </
                                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-line">Defined in FormComponent:105</div>
+                                        <div class="io-line">Defined in FormComponent:113</div>
                                 </td>
                             </tr>
     
@@ -2455,7 +2650,7 @@ If you do not pass any model, it is expected that an EntryResource is passed. </
                                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-line">Defined in FormComponent:163</div>
+                                        <div class="io-line">Defined in FormComponent:171</div>
                                 </td>
                             </tr>
     
@@ -2500,7 +2695,7 @@ If you do not pass any model, it is expected that an EntryResource is passed. </
                                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-line">Defined in FormComponent:112</div>
+                                        <div class="io-line">Defined in FormComponent:120</div>
                                 </td>
                             </tr>
     
@@ -2577,7 +2772,7 @@ If you do not pass any model, it is expected that an EntryResource is passed. </
                                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-line">Defined in FormComponent:118</div>
+                                        <div class="io-line">Defined in FormComponent:126</div>
                                 </td>
                             </tr>
     
@@ -2672,7 +2867,7 @@ If you do not pass any model, it is expected that an EntryResource is passed. </
                                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-line">Defined in FormComponent:155</div>
+                                        <div class="io-line">Defined in FormComponent:163</div>
                                 </td>
                             </tr>
     
@@ -2970,7 +3165,7 @@ If you do not pass any model, it is expected that an EntryResource is passed. </
                                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-line">Defined in FormComponent:124</div>
+                                        <div class="io-line">Defined in FormComponent:132</div>
                                 </td>
                             </tr>
     
@@ -3026,7 +3221,7 @@ If you do not pass any model, it is expected that an EntryResource is passed. </
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">packages/data/src/entry-form/entry-form.component.ts:33</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">packages/data/src/entry-form/entry-form.component.ts:35</a></div>
                                 </td>
                             </tr>
     
@@ -3357,6 +3552,8 @@ import EntryResource from &#x27;ec.sdk/lib/resources/publicAPI/EntryResource&#x2
 import { SymbolService } from &#x27;@ec.components/ui/src/symbol/symbol.service&#x27;;
 import { WithNotifications } from &#x27;@ec.components/ui/src/notifications/with-notifications.interface&#x27;;
 import { Notification } from &#x27;@ec.components/ui/src/notifications/notification&#x27;;
+import { FieldConfigProperty } from &#x27;@ec.components/core&#x27;;
+import { TypeConfigService } from &#x27;../model-config/type-config.service&#x27;;
 
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent.
  * &lt;example-url&gt;https://components.entrecode.de/data/entry-form&lt;/example-url&gt;
@@ -3384,6 +3581,7 @@ export class EntryFormComponent extends FormComponent&lt;EntryResource&gt; imple
     protected notificationService: NotificationsService,
     protected crud: CrudService,
     protected formService: FormService,
+    protected typeConfig: TypeConfigService,
     protected symbol: SymbolService) {
     super(loaderService, notificationService, formService, symbol);
   }
@@ -3407,6 +3605,12 @@ export class EntryFormComponent extends FormComponent&lt;EntryResource&gt; imple
         }
         super.init(item, _config);
       });
+  }
+
+  /** Adds field to entry form. Automatically applies typeconfig */
+  addField(property: string, config: FieldConfigProperty) {
+    config &#x3D; Object.assign({}, this.typeConfig.get(config.type), config);
+    super.addField(property, config);
   }
 
   /** Yields true if the current edited entry is already existing in the backend. */
