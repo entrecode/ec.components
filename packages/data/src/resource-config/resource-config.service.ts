@@ -6,12 +6,12 @@ import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 import Resource from 'ec.sdk/lib/resources/Resource';
 import { Injectable } from '@angular/core';
 
-export function created(label = 'Date') {
+export function created(label = 'Date', symbol: SymbolService) {
   return {
     label,
     sortable: true,
-    display: value => moment(value).format(this.symbol.resolve('moment.format.date')),
-    group: value => moment(value).format(this.symbol.resolve('moment.format.month')),
+    display: value => moment(value).format(symbol.resolve('moment.format.date')),
+    group: value => moment(value).format(symbol.resolve('moment.format.month')),
     form: false,
     immutable: true
   }
@@ -85,7 +85,7 @@ export class ResourceConfig {
             tagsField(this.symbol.resolve('datamanager.field.label.publicAssetRights'), false),
             { immutable: true }),
           rights: Object.assign(tagsField('rights', false), { immutable: true }),
-          created: created(this.symbol.resolve('field.label.created')),
+          created: created(this.symbol.resolve('field.label.created'), this.symbol),
         }
       },
       model: {
@@ -150,7 +150,7 @@ export class ResourceConfig {
             view: 'tags',
             immutable: true,
           }, */
-          created: created(this.symbol.resolve('field.label.created')),
+          created: created(this.symbol.resolve('field.label.created'), this.symbol),
         }
       },
       account: {
@@ -200,7 +200,7 @@ export class ResourceConfig {
           state: {
             label: this.symbol.resolve('account.field.label.state')
           },
-          created: created(this.symbol.resolve('field.label.created')),
+          created: created(this.symbol.resolve('field.label.created'), this.symbol),
         }
       },
       dmAccount: {
@@ -276,7 +276,7 @@ export class ResourceConfig {
             filterable: true,
             sortable: true,
           },
-          created: created(this.symbol.resolve('field.label.created')),
+          created: created(this.symbol.resolve('field.label.created'), this.symbol),
         }
       },
       platform: {
@@ -295,7 +295,7 @@ export class ResourceConfig {
             view: 'json',
             list: false
           },
-          created: created(this.symbol.resolve('field.label.created')),
+          created: created(this.symbol.resolve('field.label.created'), this.symbol),
         }
       },
       asset: { // old ec.asset
@@ -333,7 +333,7 @@ export class ResourceConfig {
             immutable: true
           },
           tags: tagsField(this.symbol.resolve('asset.field.label.tags')),
-          created: created(this.symbol.resolve('field.label.created')),
+          created: created(this.symbol.resolve('field.label.created'), this.symbol),
         }
       },
       legacyAsset: { // old public assets
@@ -371,7 +371,7 @@ export class ResourceConfig {
             immutable: true
           },
           tags: tagsField(this.symbol.resolve('asset.field.label.tags')),
-          created: created(this.symbol.resolve('field.label.created')),
+          created: created(this.symbol.resolve('field.label.created'), this.symbol),
         }
       },
       assetGroup: { // https://doc.entrecode.de/en/develop/resources/dm-assetgroup/
@@ -396,7 +396,7 @@ export class ResourceConfig {
             display: (policies) => (policies || []).map(p => p.method),
             prefill: []
           },
-          created: created(this.symbol.resolve('field.label.created')),
+          created: created(this.symbol.resolve('field.label.created'), this.symbol),
         }
       },
       dmAsset: { // new assets
@@ -456,7 +456,7 @@ export class ResourceConfig {
             immutable: true,
             form: false
           },
-          created: created(this.symbol.resolve('field.label.created')),
+          created: created(this.symbol.resolve('field.label.created'), this.symbol),
         }
       },
       dmClient: {
@@ -472,7 +472,7 @@ export class ResourceConfig {
           },
           tokenMethod: tagsField(this.symbol.resolve('client.field.label.tokenMethod')),
           disableStrategies: tagsField(this.symbol.resolve('client.field.label.disableStrategies')),
-          created: created(this.symbol.resolve('field.label.created')),
+          created: created(this.symbol.resolve('field.label.created'), this.symbol),
         }
       },
       role: {
@@ -505,7 +505,7 @@ export class ResourceConfig {
             view: 'boolean'/* ,
         prefill: false */
           },
-          created: created(this.symbol.resolve('field.label.created')),
+          created: created(this.symbol.resolve('field.label.created'), this.symbol),
         }
       },
       codeSource: {
@@ -522,7 +522,7 @@ export class ResourceConfig {
             label: this.symbol.resolve('field.label.config'),
             list: false
           },
-          created: created(this.symbol.resolve('field.label.created')),
+          created: created(this.symbol.resolve('field.label.created'), this.symbol),
         }
       },
       dataSource: {
@@ -531,7 +531,7 @@ export class ResourceConfig {
           dataSourceID: {
             label: this.symbol.resolve('field.label.id'),
           },
-          created: created(this.symbol.resolve('field.label.created')),
+          created: created(this.symbol.resolve('field.label.created'), this.symbol),
         }
       },
       target: {
@@ -545,7 +545,7 @@ export class ResourceConfig {
             label: this.symbol.resolve('field.label.config'),
             list: false
           },
-          created: created(this.symbol.resolve('field.label.created')),
+          created: created(this.symbol.resolve('field.label.created'), this.symbol),
         }
       },
       group: {
@@ -559,7 +559,7 @@ export class ResourceConfig {
             display: (value) => value || [],
             list: false
           },
-          created: created(this.symbol.resolve('field.label.created')),
+          created: created(this.symbol.resolve('field.label.created'), this.symbol),
         }
       }
     }

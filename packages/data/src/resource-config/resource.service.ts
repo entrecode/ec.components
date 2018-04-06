@@ -18,7 +18,9 @@ export interface Update {
     /** The list where it happened. */
     list?: ResourceList,
     /** The type of update. (create/read/update/delete) */
-    type?: 'post' | 'get' | 'put' | 'delete'
+    type?: 'post' | 'get' | 'put' | 'delete',
+    /** An identifier associated with the update e.g. an entryID */
+    identifier?: string
 }
 
 /** The CRUD service is meant to be used when modifying entries.
