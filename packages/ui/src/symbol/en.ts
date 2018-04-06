@@ -143,7 +143,7 @@ export default [
     },
     {
         name: 'field.label.modified',
-        content: 'Date'
+        content: 'Modified'
     },
     {
         name: 'field.label.creator',

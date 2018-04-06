@@ -72,26 +72,32 @@ export class ModelConfigService extends Config {
         view: 'string',
         form: false,
         immutable: true,
+        hidden: true
       },
-      created: {
+      _created: {
         label: this.symbol.resolve('field.label.created'),
         display: value => moment(value).format(this.symbol.resolve('moment.format.date')),
         group: value => moment(value).format(this.symbol.resolve('moment.format.month')),
         form: false,
         immutable: true,
+        sortable: true,
+        hidden: true
       },
-      modified: {
+      _modified: {
         label: this.symbol.resolve('field.label.modified'),
         display: value => moment(value).format(this.symbol.resolve('moment.format.date')),
         group: value => moment(value).format(this.symbol.resolve('moment.format.month')),
         form: false,
         immutable: true,
+        sortable: true,
+        hidden: false
       },
       creator: {
         label: this.symbol.resolve('field.label.creator'),
         view: 'account',
         form: false,
         immutable: true,
+        hidden: true
       }
     };
     Object.keys(defaultConfig).forEach(property =>
@@ -136,6 +142,7 @@ export class ModelConfigService extends Config {
       const properties = Object.keys(schema.properties)
         .filter(property => (!fieldConfig && !this.isSystemProperty(property)) || (fieldConfig && !!fieldConfig[property]));
       fieldConfig = fieldConfig || {};
+      this.addSystemPropertiesToFieldConfig(fieldConfig); // prepends system fields
       properties.forEach(property => {
         let type;
         if (property === '_entryTitle') {
@@ -161,7 +168,6 @@ export class ModelConfigService extends Config {
         }, this.typeConfig.get(type.name),
           fieldConfig[property] ? fieldConfig[property] : {});
       });
-      this.addSystemPropertiesToFieldConfig(fieldConfig);
       return fieldConfig;
     });
   }

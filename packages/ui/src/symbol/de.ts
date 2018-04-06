@@ -143,7 +143,7 @@ export default [
     },
     {
         name: 'field.label.modified',
-        content: 'Bearbeitet'
+        content: 'Stand'
     },
     {
         name: 'field.label.creator',
