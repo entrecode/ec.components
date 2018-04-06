@@ -264,9 +264,6 @@
                                     <a href="../components/AdminEntryInputComponent.html" >AdminEntryInputComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/AssetListComponent.html" >AssetListComponent</a>
-                                </li>
-                                <li class="link">
                                     <a href="../components/AssetListPopComponent.html" >AssetListPopComponent</a>
                                 </li>
                                 <li class="link">
@@ -456,9 +453,6 @@
                         <ul class="links collapse "
                                 id="xs-classes-links"
                             >
-                                <li class="link">
-                                    <a href="../classes/AssetList.html" >AssetList</a>
-                                </li>
                                 <li class="link">
                                     <a href="../classes/Collection.html" >Collection</a>
                                 </li>
@@ -953,9 +947,6 @@
                                            <a href="../components/AdminEntryInputComponent.html" >AdminEntryInputComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/AssetListComponent.html" >AssetListComponent</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../components/AssetListPopComponent.html" >AssetListPopComponent</a>
                                        </li>
                                        <li class="link">
@@ -1145,9 +1136,6 @@
                                <ul class="links collapse "
                                        id="classes-links"
                    >
-                                       <li class="link">
-                                           <a href="../classes/AssetList.html" >AssetList</a>
-                                       </li>
                                        <li class="link">
                                            <a href="../classes/Collection.html" >Collection</a>
                                        </li>
@@ -1514,7 +1502,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">packages/data/src/files/file.service.ts:35</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">packages/data/src/files/file.service.ts:36</a></div>
                                         </td>
                                     </tr>
 
@@ -1559,7 +1547,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">packages/data/src/files/file.service.ts:37</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">packages/data/src/files/file.service.ts:38</a></div>
                                         </td>
                                     </tr>
 
@@ -1604,7 +1592,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">packages/data/src/files/file.service.ts:33</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">packages/data/src/files/file.service.ts:34</a></div>
                                         </td>
                                     </tr>
 
@@ -1649,7 +1637,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">packages/data/src/files/file.service.ts:31</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">packages/data/src/files/file.service.ts:32</a></div>
                                         </td>
                                     </tr>
 
@@ -1694,7 +1682,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">packages/data/src/files/file.service.ts:29</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">packages/data/src/files/file.service.ts:30</a></div>
                                         </td>
                                     </tr>
 
@@ -1715,12 +1703,13 @@
 import PublicAssetResource from &#x27;ec.sdk/lib/resources/publicAPI/PublicAssetResource&#x27;;
 import PublicAssetList from &#x27;ec.sdk/lib/resources/publicAPI/PublicAssetList&#x27;;
 import { SdkService } from &#x27;../sdk/sdk.service&#x27;;
-import { AssetList } from &#x27;./asset-list/asset-list&#x27;;
 import { TypeConfigService } from &#x27;../model-config/type-config.service&#x27;;
 import moment from &#x27;moment-es6&#x27;;
 import { Item } from &#x27;@ec.components/core/src/item/item&#x27;;
 import DMAssetList from &#x27;ec.sdk/lib/resources/publicAPI/DMAssetList&#x27;;
 import { ResourceService } from &#x27;../resource-config/resource.service&#x27;;
+import { ResourceList } from &#x27;../resource-list/resource-list&#x27;;
+import { ResourceConfig } from &#x27;../resource-config/resource-config.service&#x27;;
 
 /** Instances of Update are emitted by the changes EventEmitter of the CrudService. */
 export interface Upload {
@@ -1733,7 +1722,7 @@ export interface Upload {
   /** The uploaded asset as item */
   items?: Array&lt;Item&lt;PublicAssetResource&gt;&gt;
   /** The list where it happened. */
-  list?: AssetList,
+  list?: ResourceList,
 }
 
 /** Interface for file options used by new assets */
@@ -1759,60 +1748,6 @@ export interface FileOptions {
 export class FileService {
   /** The changes event is emitted everytime an entry is created or updated. */
   public uploads: EventEmitter&lt;Upload&gt; &#x3D; new EventEmitter();
-  /** The default config for asset lists */
-  public assetListConfig &#x3D; { // TODO: delete when asset list is dead
-    label: &#x27;title&#x27;,
-    size: 5,
-    identifier: &#x27;assetID&#x27;,
-    onSave: (item, value) &#x3D;&gt; {
-      const asset &#x3D; item.getBody();
-      // TODO use crud.service for Resource?
-      value &#x3D; item.serialize(value, asset instanceof PublicAssetResource);
-      Object.assign(asset, value);
-      if (asset instanceof PublicAssetResource) {
-        return asset.save();
-      }
-      return value;
-    },
-    fields: {
-      thumb: {
-        label: &#x27;Vorschau&#x27;,
-        resolve: (asset, item, property) &#x3D;&gt; {
-          if (typeof asset &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
-            return false;
-          }
-          return asset.getImageUrl(200)
-        },
-        view: &#x27;preview&#x27;,
-        readOnly: true
-      },
-      title: {
-        label: &#x27;Titel&#x27;,
-        sortable: true,
-        filterable: true,
-        type: &#x27;text&#x27;,
-        view: &#x27;string&#x27;,
-      },
-      tags: {
-        label: &#x27;Tags&#x27;,
-        view: &#x27;tags&#x27;
-      },
-      type: {
-        label: &#x27;Typ&#x27;,
-        view: &#x27;label&#x27;,
-        sortable: true,
-        readOnly: true,
-      },
-      created: {
-        label: &#x27;Datum&#x27;,
-        view: &#x27;date&#x27;,
-        sortable: true,
-        readOnly: true,
-        display: (value) &#x3D;&gt; moment(value).format(&#x27;DD.MM.YY&#x27;),
-        group: (value) &#x3D;&gt; moment(value).format(&#x27;MMMM YYYY&#x27;)
-      }
-    }
-  };
 
   public newAssetListConfig &#x3D; { // TODO: dont use
     label: &#x27;title&#x27;,
@@ -1829,7 +1764,10 @@ export class FileService {
   }
 
   /** Injects sdk */
-  constructor(private sdk: SdkService, private typeConfig: TypeConfigService, private resourceService: ResourceService) {
+  constructor(private sdk: SdkService,
+    private typeConfig: TypeConfigService,
+    private resourceService: ResourceService,
+    private resourceConfig: ResourceConfig) {
   }
 
   /** returns true if the given asset is a new one (DMAssetResource) */
@@ -1905,12 +1843,13 @@ export class FileService {
         return {
           asset: assets[0],
           assets,
-          item: new Item(assets[0], this.assetListConfig),
-          items: assets.map(asset &#x3D;&gt; new Item(asset, this.assetListConfig))
+          item: new Item(assets[0], this.resourceConfig.config[&#x27;legacyAsset&#x27;]),
+          items: assets.map(asset &#x3D;&gt; new Item(asset, this.resourceConfig.config[&#x27;legacyAsset&#x27;]))
         }
       }).then((upload: Upload) &#x3D;&gt; {
         this.uploads.emit(upload);
         this.resourceService.changes.next({ relation: &#x27;legacyAsset&#x27;, type: &#x27;post&#x27; });
+        this.resourceService.changes.next({ relation: &#x27;asset&#x27;, type: &#x27;post&#x27; });
         return upload;
       });
   }

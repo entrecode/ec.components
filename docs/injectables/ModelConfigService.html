@@ -264,9 +264,6 @@
                                     <a href="../components/AdminEntryInputComponent.html" >AdminEntryInputComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/AssetListComponent.html" >AssetListComponent</a>
-                                </li>
-                                <li class="link">
                                     <a href="../components/AssetListPopComponent.html" >AssetListPopComponent</a>
                                 </li>
                                 <li class="link">
@@ -456,9 +453,6 @@
                         <ul class="links collapse "
                                 id="xs-classes-links"
                             >
-                                <li class="link">
-                                    <a href="../classes/AssetList.html" >AssetList</a>
-                                </li>
                                 <li class="link">
                                     <a href="../classes/Collection.html" >Collection</a>
                                 </li>
@@ -953,9 +947,6 @@
                                            <a href="../components/AdminEntryInputComponent.html" >AdminEntryInputComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/AssetListComponent.html" >AssetListComponent</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../components/AssetListPopComponent.html" >AssetListPopComponent</a>
                                        </li>
                                        <li class="link">
@@ -1145,9 +1136,6 @@
                                <ul class="links collapse "
                                        id="classes-links"
                    >
-                                       <li class="link">
-                                           <a href="../classes/AssetList.html" >AssetList</a>
-                                       </li>
                                        <li class="link">
                                            <a href="../classes/Collection.html" >Collection</a>
                                        </li>
@@ -1463,6 +1451,9 @@ set method. </p>
                             <td class="col-md-4">
                                 <ul class="index-list">
                                     <li>
+                                        <a href="#addSystemPropertiesToFieldConfig">addSystemPropertiesToFieldConfig</a>
+                                    </li>
+                                    <li>
                                         <a href="#generateConfig">generateConfig</a>
                                     </li>
                                     <li>
@@ -1493,12 +1484,12 @@ set method. </p>
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-            <code>constructor(crud: <a href="../injectables/CrudService.html">CrudService</a>, sdk: <a href="../injectables/SdkService.html">SdkService</a>, typeConfig: <a href="../injectables/TypeConfigService.html">TypeConfigService</a>)</code>
+            <code>constructor(crud: <a href="../injectables/CrudService.html">CrudService</a>, sdk: <a href="../injectables/SdkService.html">SdkService</a>, typeConfig: <a href="../injectables/TypeConfigService.html">TypeConfigService</a>, symbol: <a href="../injectables/SymbolService.html">SymbolService</a>)</code>
                                 </td>
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">packages/data/src/model-config/model-config.service.ts:25</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">packages/data/src/model-config/model-config.service.ts:27</a></div>
                                         </td>
                                     </tr>
             
@@ -1553,6 +1544,18 @@ set method. </p>
                                                                 </td>
                                                                 
                                                             </tr>
+                                                            <tr>
+                                                                <td>symbol</td>
+                                                              
+                                                                    <td>
+                                                                                <code><a href="../injectables/SymbolService.html" target="_self" >SymbolService</a></code>
+                                                                    </td>
+                                                              
+                                                                <td>
+                                                                        no
+                                                                </td>
+                                                                
+                                                            </tr>
                                                     </tbody>
                                                 </table>
                                         </div>
@@ -1567,6 +1570,95 @@ set method. </p>
                     <h3 id="methods">
                         Methods
                     </h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="addSystemPropertiesToFieldConfig"></a>
+                                    <span class="name">
+                                        <b>
+                                        addSystemPropertiesToFieldConfig
+                                        </b>
+                                        <a href="#addSystemPropertiesToFieldConfig"><span class="fa fa-link"></span></a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>addSystemPropertiesToFieldConfig(config: <a href="../interfaces/FieldConfigProperty.html">FieldConfig<FieldConfigProperty></a>, override: )</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">packages/data/src/model-config/model-config.service.ts:68</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Assigns default system fields to given config. Does not override by default </p>
+            </div>
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                                <td>Type</td>
+                                                            <td>Optional</td>
+                                                                <td>Default value</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                                <td>config</td>
+                                                                
+                                                                    <td>
+                                                                                <code><a href="../interfaces/FieldConfigProperty.html" target="_self" >FieldConfig&lt;FieldConfigProperty&gt;</a></code>
+                                                                    </td>
+                                                                
+                                                                <td>
+                                                                        no
+                                                                </td>
+                                                                
+                                                                    <td>
+                                                                    </td>
+            
+                                                            </tr>
+                                                            <tr>
+                                                                <td>override</td>
+                                                                
+                                                                    <td>
+                                                                    </td>
+                                                                
+                                                                <td>
+                                                                        no
+                                                                </td>
+                                                                
+                                                                    <td>
+                                                                            <code>false</code>
+                                                                    </td>
+            
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                     <table class="table table-sm table-bordered">
                         <tbody>
                             <tr>
@@ -1589,7 +1681,7 @@ set method. </p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="128" class="link-to-prism">packages/data/src/model-config/model-config.service.ts:128</a></div>
+                                                <div class="io-line">Defined in <a href="" data-line="176" class="link-to-prism">packages/data/src/model-config/model-config.service.ts:176</a></div>
                                         </td>
                                     </tr>
             
@@ -1672,7 +1764,7 @@ set method. </p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">packages/data/src/model-config/model-config.service.ts:80</a></div>
+                                                <div class="io-line">Defined in <a href="" data-line="127" class="link-to-prism">packages/data/src/model-config/model-config.service.ts:127</a></div>
                                         </td>
                                     </tr>
             
@@ -1758,7 +1850,7 @@ set method. </p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">packages/data/src/model-config/model-config.service.ts:38</a></div>
+                                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">packages/data/src/model-config/model-config.service.ts:43</a></div>
                                         </td>
                                     </tr>
             
@@ -1833,7 +1925,7 @@ set method. </p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">packages/data/src/model-config/model-config.service.ts:58</a></div>
+                                                <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">packages/data/src/model-config/model-config.service.ts:63</a></div>
                                         </td>
                                     </tr>
             
@@ -1904,7 +1996,7 @@ set method. </p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">packages/data/src/model-config/model-config.service.ts:63</a></div>
+                                                <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">packages/data/src/model-config/model-config.service.ts:110</a></div>
                                         </td>
                                     </tr>
             
@@ -1975,7 +2067,7 @@ set method. </p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">packages/data/src/model-config/model-config.service.ts:53</a></div>
+                                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">packages/data/src/model-config/model-config.service.ts:58</a></div>
                                         </td>
                                     </tr>
             
@@ -2091,7 +2183,7 @@ set method. </p>
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">packages/data/src/model-config/model-config.service.ts:19</a></div>
+                                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">packages/data/src/model-config/model-config.service.ts:21</a></div>
                                         </td>
                                     </tr>
             
@@ -2121,6 +2213,8 @@ import { SdkService } from &#x27;../sdk/sdk.service&#x27;;
 import { TypeConfigService } from &#x27;./type-config.service&#x27;;
 import { ListConfig } from &#x27;@ec.components/core/src/list/list-config.interface&#x27;;
 import { CrudConfig } from &#x27;../crud/crud-config.interface&#x27;;
+import { SymbolService } from &#x27;@ec.components/ui/src/symbol/symbol.service&#x27;;
+import moment from &#x27;moment-es6&#x27;;
 
 /** The main class for configuring the behaviour of a model.
  * By default, everything is auto generated from the model&#x27;s schema but can be overriden via the
@@ -2137,7 +2231,10 @@ export class ModelConfigService extends Config {
   ];
 
   /** Injects CrudService and SdkService. */
-  constructor(private crud: CrudService, private sdk: SdkService, private typeConfig: TypeConfigService) {
+  constructor(private crud: CrudService,
+    private sdk: SdkService,
+    private typeConfig: TypeConfigService,
+    private symbol: SymbolService) {
     super();
   }
 
@@ -2169,6 +2266,48 @@ export class ModelConfigService extends Config {
   /** Checks if a given property name is a system property (either part of omittedFields or beginning with _).*/
   isSystemProperty(property: string) {
     return property[0] &#x3D;&#x3D;&#x3D; &#x27;_&#x27; || this.omittedFields.indexOf(property) !&#x3D;&#x3D; -1;
+  }
+
+  /** Assigns default system fields to given config. Does not override by default */
+  addSystemPropertiesToFieldConfig(config: FieldConfig&lt;FieldConfigProperty&gt;, override &#x3D; false) {
+    const defaultConfig &#x3D; {
+      id: {
+        label: this.symbol.resolve(&#x27;field.label.id&#x27;),
+        view: &#x27;string&#x27;,
+        form: false,
+        immutable: true,
+        hidden: true
+      },
+      _created: {
+        label: this.symbol.resolve(&#x27;field.label.created&#x27;),
+        display: value &#x3D;&gt; moment(value).format(this.symbol.resolve(&#x27;moment.format.date&#x27;)),
+        group: value &#x3D;&gt; moment(value).format(this.symbol.resolve(&#x27;moment.format.month&#x27;)),
+        form: false,
+        immutable: true,
+        sortable: true,
+        hidden: true
+      },
+      _modified: {
+        label: this.symbol.resolve(&#x27;field.label.modified&#x27;),
+        display: value &#x3D;&gt; moment(value).format(this.symbol.resolve(&#x27;moment.format.date&#x27;)),
+        group: value &#x3D;&gt; moment(value).format(this.symbol.resolve(&#x27;moment.format.month&#x27;)),
+        form: false,
+        immutable: true,
+        sortable: true,
+        hidden: false
+      },
+      creator: {
+        label: this.symbol.resolve(&#x27;field.label.creator&#x27;),
+        view: &#x27;account&#x27;,
+        form: false,
+        immutable: true,
+        hidden: true
+      }
+    };
+    Object.keys(defaultConfig).forEach(property &#x3D;&gt;
+      Object.assign(config, {
+        [property]: override ? defaultConfig[property] : config[property] || defaultConfig[property]
+      }));
   }
 
   /** Parses the property type (as contained in the property schema&#x27;s title field). */
@@ -2205,8 +2344,9 @@ export class ModelConfigService extends Config {
     }).then((schema) &#x3D;&gt; {
       schema &#x3D; schema.allOf[1];
       const properties &#x3D; Object.keys(schema.properties)
-      .filter(property &#x3D;&gt; (!fieldConfig &amp;&amp; !this.isSystemProperty(property)) || (fieldConfig &amp;&amp; !!fieldConfig[property]));
+        .filter(property &#x3D;&gt; (!fieldConfig &amp;&amp; !this.isSystemProperty(property)) || (fieldConfig &amp;&amp; !!fieldConfig[property]));
       fieldConfig &#x3D; fieldConfig || {};
+      this.addSystemPropertiesToFieldConfig(fieldConfig); // prepends system fields
       properties.forEach(property &#x3D;&gt; {
         let type;
         if (property &#x3D;&#x3D;&#x3D; &#x27;_entryTitle&#x27;) {
@@ -2223,13 +2363,13 @@ export class ModelConfigService extends Config {
           return;
         }
         fieldConfig[property] &#x3D; Object.assign({
-            label: property,
-            schema: schema.properties[property],
-            relation: type.relation,
-            readOnly: schema.properties[property].readOnly || this.isSystemProperty(property),
-            // required: schema.required.indexOf(property) !&#x3D;&#x3D; -1, // TODO
-            display: ((value) &#x3D;&gt; value)
-          }, this.typeConfig.get(type.name),
+          label: property,
+          schema: schema.properties[property],
+          relation: type.relation,
+          readOnly: schema.properties[property].readOnly || this.isSystemProperty(property),
+          // required: schema.required.indexOf(property) !&#x3D;&#x3D; -1, // TODO
+          display: ((value) &#x3D;&gt; value)
+        }, this.typeConfig.get(type.name),
           fieldConfig[property] ? fieldConfig[property] : {});
       });
       return fieldConfig;
