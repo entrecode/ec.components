@@ -36,13 +36,16 @@ export class CalendarComponent implements ControlValueAccessor {
   /** If true, the time will not be displayed nor will be editable. */
   @Input() disableTime: boolean;
   /** Allowed date input patterns. The first one will be standard. */
-  private patterns;
+  private patterns = ['DD.MM.YYYY', 'DD.MM', 'DD.MM.YY', 'MM-DD-YYYY', 'YYYY-MM-DD', 'YYYY-MM-DD'];
   /** Sets the input format of the time */
   private timeFormat = 'HH:mm';
 
   /** The constructor gets the weekdays for the calendar header and instantiates the allowed input patterns.*/
   constructor(private symbol: SymbolService) {
-    this.patterns = ['DD.MM.YYYY', 'DD.MM', 'DD.MM.YY', 'MM-DD-YYYY', 'YYYY-MM-DD', 'YYYY-MM-DD'];
+    // pattern localization
+    this.patterns = this.symbol.resolve('moment.format.date') ? [this.symbol.resolve('moment.format.date')] : this.patterns;
+    this.timeFormat = this.symbol.resolve('moment.format.time') || this.timeFormat;
+
     // TODO: find way to localize
     this.weekdays = moment.weekdaysMin(true);
     if (!this.disableTime) {
