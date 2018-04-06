@@ -61,7 +61,7 @@ export class TypeConfigService {
     assets: {
       view: 'assets',
       input: DefaultEntryInputComponent,
-      display: (value, entry, property) => entry.getImageThumbUrl(property, 100),
+      /* display: (value, entry, property) => entry.getImageThumbUrl(property, 100), */
       prefill: [],
       filterOperator: 'any',
       filterable: true,
