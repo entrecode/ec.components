@@ -3,6 +3,7 @@ import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/f
 import moment from 'moment-es6';
 import { MonthComponent } from './month.component';
 import { PopComponent } from '../../pop/pop.component';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 
 /** Input for a datetime. */
 @Component({
@@ -35,12 +36,14 @@ export class CalendarComponent implements ControlValueAccessor {
   /** If true, the time will not be displayed nor will be editable. */
   @Input() disableTime: boolean;
   /** Allowed date input patterns. The first one will be standard. */
-  private patterns = ['DD.MM.YYYY', 'DD.MM', 'DD.MM.YY', 'MM-DD-YYYY', 'YYYY-MM-DD', 'YYYY-MM-DD'];
+  private patterns;
   /** Sets the input format of the time */
   private timeFormat = 'HH:mm';
 
   /** The constructor gets the weekdays for the calendar header and instantiates the allowed input patterns.*/
-  constructor() {
+  constructor(private symbol: SymbolService) {
+    this.patterns = ['DD.MM.YYYY', 'DD.MM', 'DD.MM.YY', 'MM-DD-YYYY', 'YYYY-MM-DD', 'YYYY-MM-DD'];
+    // TODO: find way to localize
     this.weekdays = moment.weekdaysMin(true);
     if (!this.disableTime) {
       this.patterns = this.patterns.map((pattern) => {

@@ -10,8 +10,8 @@ export function created(label = 'Date') {
   return {
     label,
     sortable: true,
-    display: value => moment(value).format('DD.MM.YY'),
-    group: value => moment(value).format('MMMM YYYY'),
+    display: value => moment(value).format(this.symbol.resolve('moment.format.date')),
+    group: value => moment(value).format(this.symbol.resolve('moment.format.group')),
     form: false,
     immutable: true
   }
@@ -145,7 +145,7 @@ export class ResourceConfig {
               if (values) {
                 console.log('values', values);
               }
-              return (values || []).map(value => value && value.finished ? moment(value.finished).format('DD.MM.YY') : '-')
+              return (values || []).map(value => value && value.finished ? moment(value.finished).format(this.symbol.resolve('moment.format.date')) : '-')
             },
             view: 'tags',
             immutable: true,
@@ -251,8 +251,8 @@ export class ResourceConfig {
           },
           version: {
             label: this.symbol.resolve('template.field.label.version'),
-            display: value => moment(value).format('DD.MM.YY'),
-            group: value => moment(value).format('MMMM YYYY'),
+            display: value => moment(value).format(this.symbol.resolve('moment.format.date')),
+            group: value => moment(value).format(this.symbol.resolve('moment.format.group')),
             form: false
           }
         }
