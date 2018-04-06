@@ -76,14 +76,14 @@ export class ModelConfigService extends Config {
       created: {
         label: this.symbol.resolve('field.label.created'),
         display: value => moment(value).format(this.symbol.resolve('moment.format.date')),
-        group: value => moment(value).format(this.symbol.resolve('moment.format.group')),
+        group: value => moment(value).format(this.symbol.resolve('moment.format.month')),
         form: false,
         immutable: true,
       },
       modified: {
         label: this.symbol.resolve('field.label.modified'),
         display: value => moment(value).format(this.symbol.resolve('moment.format.date')),
-        group: value => moment(value).format(this.symbol.resolve('moment.format.group')),
+        group: value => moment(value).format(this.symbol.resolve('moment.format.month')),
         form: false,
         immutable: true,
       },

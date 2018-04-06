@@ -11,7 +11,7 @@ export function created(label = 'Date') {
     label,
     sortable: true,
     display: value => moment(value).format(this.symbol.resolve('moment.format.date')),
-    group: value => moment(value).format(this.symbol.resolve('moment.format.group')),
+    group: value => moment(value).format(this.symbol.resolve('moment.format.month')),
     form: false,
     immutable: true
   }
@@ -252,7 +252,7 @@ export class ResourceConfig {
           version: {
             label: this.symbol.resolve('template.field.label.version'),
             display: value => moment(value).format(this.symbol.resolve('moment.format.date')),
-            group: value => moment(value).format(this.symbol.resolve('moment.format.group')),
+            group: value => moment(value).format(this.symbol.resolve('moment.format.month')),
             form: false
           }
         }

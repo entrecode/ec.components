@@ -6,7 +6,7 @@ export default [
         content: 'MM/DD/YY'
     },
     {
-        name: 'moment.format.group',
+        name: 'moment.format.month',
         content: 'MMMM YYYY'
     },
     {

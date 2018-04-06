@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import moment from 'moment-es6';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 
 /** Interface for a day inside the a month. */
 export interface Day {
@@ -28,8 +29,14 @@ export class MonthComponent implements OnInit, OnChanges {
   public formatted: string;
   /** The cells containing the days */
   public cells: Array<Day>;
+  /** Format for month in header */
+  public monthFormat = 'MMMM YYYY';
   /** Emits when the selected day changes. */
   @Output() dayClicked: EventEmitter<any> = new EventEmitter();
+
+  constructor(private symbol: SymbolService) {
+    this.monthFormat = this.symbol.resolve('moment.format.month') || this.monthFormat;
+  }
 
   /** Initializes the calendar. */
   ngOnInit() {
@@ -51,20 +58,20 @@ export class MonthComponent implements OnInit, OnChanges {
   getDays(day = moment(), type?: string): Array<Day> {
     const begin = day.startOf('month');
     return new Array(day.daysInMonth())
-    .fill(0)
-    .map((d, index) => begin.clone().add(index, 'days'))
-    .map((date) => ({
-      date,
-      type,
-      format: date.format('DD'),
-      today: moment().startOf('day').diff(date, 'days') === 0,
-    }));
+      .fill(0)
+      .map((d, index) => begin.clone().add(index, 'days'))
+      .map((date) => ({
+        date,
+        type,
+        format: date.format('DD'),
+        today: moment().startOf('day').diff(date, 'days') === 0,
+      }));
   }
 
   /** Sets the calendars viewed date to the given moment's month. Renders always 42 cells to keep the layout consistent. */
   setDate(date: moment.Moment = this.selected || this.date || moment()) {
     this.date = date.clone();
-    this.formatted = date.format('MMMM YYYY');
+    this.formatted = date.format(this.monthFormat);
     const days = this.getDays(date.clone(), 'current');
     const start = date.clone().startOf('month');
     const end = date.clone().endOf('month');
