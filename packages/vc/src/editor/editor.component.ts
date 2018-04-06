@@ -418,9 +418,9 @@ export class EditorComponent implements OnInit {
         console.dir(container);
         const start = Math.min(selection.anchorOffset, selection.focusOffset);
         // const content = this.getText(this.caret.phrasing);
-        const content = this.getText(el);
+        const text = this.getText(el);
 
-        const split = this.splitAt(start)(content);
+        const split = this.splitAt(start)(text);
         split[1] = split[1].substr(selection.toString().length);
         const json = Object.assign(phrasing.json, { content: treeWalker.currentNode.nodeValue });
         split.splice(1, 0, json);
@@ -430,8 +430,7 @@ export class EditorComponent implements OnInit {
 
         this.flushInstance(parent);
         this.selectNode(this.getElement(parent.content[1] || parent.content[0]));
-      }
-      else if (treeWalker.currentNode.nodeType === 3) {
+      } else if (treeWalker.currentNode.nodeType === 3) {
         // TODO
         elements.push(treeWalker.currentNode.parentElement);
       } else {
@@ -444,7 +443,7 @@ export class EditorComponent implements OnInit {
   getCaret() {
     const element = this.getElement(); // element where cursor is at
     const block = this.getBlock(element); // surrounding block
-    let flow = this.getInstance(block);
+    const flow = this.getInstance(block);
     let phrasing = this.getInstance(element);
     if (this.isFlow(phrasing) || this.isBlock(phrasing)) {
       phrasing = flow.content[0];
