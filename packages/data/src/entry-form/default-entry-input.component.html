@@ -7,10 +7,10 @@
     <ec-entry-select [formControl]="group.get(field.property)" [model]="field['relation']" [id]="field.id" [config]="field.nestedCrudConfig"></ec-entry-select>
   </div>
   <div *ngSwitchCase="'asset'">
-    <ec-asset-select [formControl]="group.get(field.property)" [assetGroupID]="field['relation']" [id]="field.id" [solo]="true" [item]="item"></ec-asset-select>
+    <ec-asset-select [formControl]="group.get(field.property)" [assetGroupID]="field['relation']" [id]="field.id" [solo]="true"></ec-asset-select>
   </div>
   <div *ngSwitchCase="'assets'">
-    <ec-asset-select [formControl]="group.get(field.property)" [assetGroupID]="field['relation']" [id]="field.id" [item]="item"></ec-asset-select>
+    <ec-asset-select [formControl]="group.get(field.property)" [assetGroupID]="field['relation']" [id]="field.id"></ec-asset-select>
   </div>
   <input *ngSwitchCase="'phone'" type="text" [placeholder]="field.placeholder" [id]="field.id">
   <div *ngSwitchDefault>

@@ -6,6 +6,7 @@ import { EditorComponent } from '../../../packages/vc/index';
   templateUrl: './vc-demo.component.html',
 })
 export class VcDemoComponent {
+  editor: EditorComponent;
   constructor() {
     console.log('vc demo');
   }
@@ -14,7 +15,6 @@ export class VcDemoComponent {
     this.editor = editor;
   }
 
-  editor: EditorComponent;
   // tslint:disable-next-line:member-ordering
   json = {
     type: 'block',

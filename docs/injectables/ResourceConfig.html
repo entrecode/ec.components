@@ -264,9 +264,6 @@
                                     <a href="../components/AdminEntryInputComponent.html" >AdminEntryInputComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/AssetListComponent.html" >AssetListComponent</a>
-                                </li>
-                                <li class="link">
                                     <a href="../components/AssetListPopComponent.html" >AssetListPopComponent</a>
                                 </li>
                                 <li class="link">
@@ -457,9 +454,6 @@
                                 id="xs-classes-links"
                             >
                                 <li class="link">
-                                    <a href="../classes/AssetList.html" >AssetList</a>
-                                </li>
-                                <li class="link">
                                     <a href="../classes/Collection.html" >Collection</a>
                                 </li>
                                 <li class="link">
@@ -529,6 +523,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/FormService.html" >FormService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/HistoryService.html" >HistoryService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/IconService.html" >IconService</a>
@@ -953,9 +950,6 @@
                                            <a href="../components/AdminEntryInputComponent.html" >AdminEntryInputComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/AssetListComponent.html" >AssetListComponent</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../components/AssetListPopComponent.html" >AssetListPopComponent</a>
                                        </li>
                                        <li class="link">
@@ -1146,9 +1140,6 @@
                                        id="classes-links"
                    >
                                        <li class="link">
-                                           <a href="../classes/AssetList.html" >AssetList</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../classes/Collection.html" >Collection</a>
                                        </li>
                                        <li class="link">
@@ -1218,6 +1209,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/FormService.html" >FormService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/HistoryService.html" >HistoryService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/IconService.html" >IconService</a>
@@ -1518,12 +1512,12 @@ import { SymbolService } from &#x27;@ec.components/ui/src/symbol/symbol.service&
 import Resource from &#x27;ec.sdk/lib/resources/Resource&#x27;;
 import { Injectable } from &#x27;@angular/core&#x27;;
 
-export function created(label &#x3D; &#x27;Date&#x27;) {
+export function created(label &#x3D; &#x27;Date&#x27;, symbol: SymbolService) {
   return {
     label,
     sortable: true,
-    display: value &#x3D;&gt; moment(value).format(&#x27;DD.MM.YY&#x27;),
-    group: value &#x3D;&gt; moment(value).format(&#x27;MMMM YYYY&#x27;),
+    display: value &#x3D;&gt; moment(value).format(symbol.resolve(&#x27;moment.format.date&#x27;)),
+    group: value &#x3D;&gt; moment(value).format(symbol.resolve(&#x27;moment.format.month&#x27;)),
     form: false,
     immutable: true
   }
@@ -1597,7 +1591,7 @@ export class ResourceConfig {
             tagsField(this.symbol.resolve(&#x27;datamanager.field.label.publicAssetRights&#x27;), false),
             { immutable: true }),
           rights: Object.assign(tagsField(&#x27;rights&#x27;, false), { immutable: true }),
-          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;)),
+          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
         }
       },
       model: {
@@ -1657,12 +1651,12 @@ export class ResourceConfig {
               if (values) {
                 console.log(&#x27;values&#x27;, values);
               }
-              return (values || []).map(value &#x3D;&gt; value &amp;&amp; value.finished ? moment(value.finished).format(&#x27;DD.MM.YY&#x27;) : &#x27;-&#x27;)
+              return (values || []).map(value &#x3D;&gt; value &amp;&amp; value.finished ? moment(value.finished).format(this.symbol.resolve(&#x27;moment.format.date&#x27;)) : &#x27;-&#x27;)
             },
             view: &#x27;tags&#x27;,
             immutable: true,
           }, */
-          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;)),
+          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
         }
       },
       account: {
@@ -1712,7 +1706,7 @@ export class ResourceConfig {
           state: {
             label: this.symbol.resolve(&#x27;account.field.label.state&#x27;)
           },
-          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;)),
+          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
         }
       },
       dmAccount: {
@@ -1763,8 +1757,8 @@ export class ResourceConfig {
           },
           version: {
             label: this.symbol.resolve(&#x27;template.field.label.version&#x27;),
-            display: value &#x3D;&gt; moment(value).format(&#x27;DD.MM.YY&#x27;),
-            group: value &#x3D;&gt; moment(value).format(&#x27;MMMM YYYY&#x27;),
+            display: value &#x3D;&gt; moment(value).format(this.symbol.resolve(&#x27;moment.format.date&#x27;)),
+            group: value &#x3D;&gt; moment(value).format(this.symbol.resolve(&#x27;moment.format.month&#x27;)),
             form: false
           }
         }
@@ -1788,7 +1782,7 @@ export class ResourceConfig {
             filterable: true,
             sortable: true,
           },
-          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;)),
+          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
         }
       },
       platform: {
@@ -1807,7 +1801,7 @@ export class ResourceConfig {
             view: &#x27;json&#x27;,
             list: false
           },
-          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;)),
+          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
         }
       },
       asset: { // old ec.asset
@@ -1845,7 +1839,7 @@ export class ResourceConfig {
             immutable: true
           },
           tags: tagsField(this.symbol.resolve(&#x27;asset.field.label.tags&#x27;)),
-          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;)),
+          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
         }
       },
       legacyAsset: { // old public assets
@@ -1883,7 +1877,7 @@ export class ResourceConfig {
             immutable: true
           },
           tags: tagsField(this.symbol.resolve(&#x27;asset.field.label.tags&#x27;)),
-          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;)),
+          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
         }
       },
       assetGroup: { // https://doc.entrecode.de/en/develop/resources/dm-assetgroup/
@@ -1908,7 +1902,7 @@ export class ResourceConfig {
             display: (policies) &#x3D;&gt; (policies || []).map(p &#x3D;&gt; p.method),
             prefill: []
           },
-          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;)),
+          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
         }
       },
       dmAsset: { // new assets
@@ -1968,7 +1962,7 @@ export class ResourceConfig {
             immutable: true,
             form: false
           },
-          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;)),
+          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
         }
       },
       dmClient: {
@@ -1984,7 +1978,7 @@ export class ResourceConfig {
           },
           tokenMethod: tagsField(this.symbol.resolve(&#x27;client.field.label.tokenMethod&#x27;)),
           disableStrategies: tagsField(this.symbol.resolve(&#x27;client.field.label.disableStrategies&#x27;)),
-          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;)),
+          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
         }
       },
       role: {
@@ -2017,7 +2011,7 @@ export class ResourceConfig {
             view: &#x27;boolean&#x27;/* ,
         prefill: false */
           },
-          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;)),
+          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
         }
       },
       codeSource: {
@@ -2034,7 +2028,7 @@ export class ResourceConfig {
             label: this.symbol.resolve(&#x27;field.label.config&#x27;),
             list: false
           },
-          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;)),
+          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
         }
       },
       dataSource: {
@@ -2043,7 +2037,7 @@ export class ResourceConfig {
           dataSourceID: {
             label: this.symbol.resolve(&#x27;field.label.id&#x27;),
           },
-          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;)),
+          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
         }
       },
       target: {
@@ -2057,7 +2051,7 @@ export class ResourceConfig {
             label: this.symbol.resolve(&#x27;field.label.config&#x27;),
             list: false
           },
-          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;)),
+          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
         }
       },
       group: {
@@ -2071,7 +2065,7 @@ export class ResourceConfig {
             display: (value) &#x3D;&gt; value || [],
             list: false
           },
-          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;)),
+          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
         }
       }
     }

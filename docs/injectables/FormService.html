@@ -264,9 +264,6 @@
                                     <a href="../components/AdminEntryInputComponent.html" >AdminEntryInputComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/AssetListComponent.html" >AssetListComponent</a>
-                                </li>
-                                <li class="link">
                                     <a href="../components/AssetListPopComponent.html" >AssetListPopComponent</a>
                                 </li>
                                 <li class="link">
@@ -457,9 +454,6 @@
                                 id="xs-classes-links"
                             >
                                 <li class="link">
-                                    <a href="../classes/AssetList.html" >AssetList</a>
-                                </li>
-                                <li class="link">
                                     <a href="../classes/Collection.html" >Collection</a>
                                 </li>
                                 <li class="link">
@@ -529,6 +523,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/FormService.html"  data-type="entity-link" class="active" >FormService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/HistoryService.html" >HistoryService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/IconService.html" >IconService</a>
@@ -953,9 +950,6 @@
                                            <a href="../components/AdminEntryInputComponent.html" >AdminEntryInputComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/AssetListComponent.html" >AssetListComponent</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../components/AssetListPopComponent.html" >AssetListPopComponent</a>
                                        </li>
                                        <li class="link">
@@ -1146,9 +1140,6 @@
                                        id="classes-links"
                    >
                                        <li class="link">
-                                           <a href="../classes/AssetList.html" >AssetList</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../classes/Collection.html" >Collection</a>
                                        </li>
                                        <li class="link">
@@ -1218,6 +1209,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/FormService.html"  data-type="entity-link" class="active" >FormService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/HistoryService.html" >HistoryService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/IconService.html" >IconService</a>
@@ -1448,6 +1442,10 @@
                                 <ul class="index-list">
                                     <li>
                                             <span class="modifier">Public</span>
+                                        <a href="#addField">addField</a>
+                                    </li>
+                                    <li>
+                                            <span class="modifier">Public</span>
                                         <a href="#getGroup">getGroup</a>
                                     </li>
                                     <li>
@@ -1469,6 +1467,105 @@
                     <h3 id="methods">
                         Methods
                     </h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="addField"></a>
+                                    <span class="name">
+                                        <b>
+                                            <span class="modifier">Public</span>
+                                        addField
+                                        </b>
+                                        <a href="#addField"><span class="fa fa-link"></span></a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                        <span class="modifier-icon fa fa-reset"></span>
+                                    <code>addField(field: <a href="../classes/Field.html">Field</a>, form: <a href="../classes/Form.html">Form<any></a>, group: <a href="../classes/Form.html">FormGroup</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">packages/ui/src/form/form.service.ts:31</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>adds a new field to a form. handles form group and control </p>
+            </div>
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                                <td>Type</td>
+                                                            <td>Optional</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                                <td>field</td>
+                                                                
+                                                                    <td>
+                                                                                <code><a href="../classes/Field.html" target="_self" >Field</a></code>
+                                                                    </td>
+                                                                
+                                                                <td>
+                                                                        no
+                                                                </td>
+                                                                
+            
+                                                            </tr>
+                                                            <tr>
+                                                                <td>form</td>
+                                                                
+                                                                    <td>
+                                                                                <code><a href="../classes/Form.html" target="_self" >Form&lt;any&gt;</a></code>
+                                                                    </td>
+                                                                
+                                                                <td>
+                                                                        no
+                                                                </td>
+                                                                
+            
+                                                            </tr>
+                                                            <tr>
+                                                                <td>group</td>
+                                                                
+                                                                    <td>
+                                                                                <code><a href="../classes/Form.html" target="_self" >FormGroup</a></code>
+                                                                    </td>
+                                                                
+                                                                <td>
+                                                                        no
+                                                                </td>
+                                                                
+            
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                     <table class="table table-sm table-bordered">
                         <tbody>
                             <tr>
@@ -1564,7 +1661,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">packages/ui/src/form/form.service.ts:31</a></div>
+                                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">packages/ui/src/form/form.service.ts:38</a></div>
                                         </td>
                                     </tr>
             
@@ -1635,7 +1732,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">packages/ui/src/form/form.service.ts:43</a></div>
+                                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">packages/ui/src/form/form.service.ts:50</a></div>
                                         </td>
                                     </tr>
             
@@ -1711,13 +1808,20 @@ export class FormService {
   public getGroup(form: Form&lt;any&gt;) {
     const control &#x3D; {};
     form.fields.filter((field) &#x3D;&gt; field.form !&#x3D;&#x3D; false)
-    .forEach((field) &#x3D;&gt; {
-      const validators &#x3D; this.getValidators(field);
-      control[field.property] &#x3D; new FormControl(form.getValue(field.property), validators)
-      // TODO use { updateOn: blur } when updating to angular 5.0.0
-      // see https://github.com/angular/angular/commit/333a708bb632d4258ecb5fd4a0e86229fe9d26e4
-    });
+      .forEach((field) &#x3D;&gt; {
+        const validators &#x3D; this.getValidators(field);
+        control[field.property] &#x3D; new FormControl(form.getValue(field.property), validators)
+        // TODO use { updateOn: blur } when updating to angular 5.0.0
+        // see https://github.com/angular/angular/commit/333a708bb632d4258ecb5fd4a0e86229fe9d26e4
+      });
     return new FormGroup(control);
+  }
+
+  /** adds a new field to a form. handles form group and control */
+  public addField(field: Field, form: Form&lt;any&gt;, group: FormGroup) {
+    const validators &#x3D; this.getValidators(field);
+    const control &#x3D; new FormControl(form.getValue(field.property), validators);
+    group.addControl(field.property, control);
   }
 
   /** Extracts all validators from a given Field instance. */

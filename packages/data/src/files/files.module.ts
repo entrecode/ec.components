@@ -2,7 +2,6 @@
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { AssetListComponent } from './asset-list/asset-list.component';
 import { UiModule } from '@ec.components/ui/src/ui.module';
 import { AssetSelectComponent } from './asset-select/asset-select.component';
 import { FileService } from './file.service';
@@ -15,12 +14,10 @@ import { ResourceModule } from '../resource/resource.module';
 
 @NgModule({
   entryComponents: [
-    AssetListComponent,
     AssetSelectComponent,
     UploadComponent,
   ],
   declarations: [
-    AssetListComponent,
     AssetListPopComponent,
     AssetSelectComponent,
     AssetDirective,
@@ -35,7 +32,6 @@ import { ResourceModule } from '../resource/resource.module';
     ResourceModule
   ],
   exports: [
-    AssetListComponent,
     AssetListPopComponent,
     AssetSelectComponent,
     AssetDirective,

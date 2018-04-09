@@ -37,6 +37,10 @@ export class AssetListPopComponent extends PopComponent {
 
   /** method that is called after the upload to select the uploaded item(s). */
   selectUpload(upload: Upload) {
+    if (!this.selection) {
+      console.warn('no selection.');
+      return;
+    }
     if (this.config.solo) {
       this.selection.select(upload.item);
     } else {

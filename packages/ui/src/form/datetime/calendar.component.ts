@@ -3,6 +3,7 @@ import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/f
 import moment from 'moment-es6';
 import { MonthComponent } from './month.component';
 import { PopComponent } from '../../pop/pop.component';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 
 /** Input for a datetime. */
 @Component({
@@ -40,7 +41,12 @@ export class CalendarComponent implements ControlValueAccessor {
   private timeFormat = 'HH:mm';
 
   /** The constructor gets the weekdays for the calendar header and instantiates the allowed input patterns.*/
-  constructor() {
+  constructor(private symbol: SymbolService) {
+    // pattern localization
+    this.patterns = this.symbol.resolve('moment.format.date') ? [this.symbol.resolve('moment.format.date')] : this.patterns;
+    this.timeFormat = this.symbol.resolve('moment.format.time') || this.timeFormat;
+
+    // TODO: find way to localize
     this.weekdays = moment.weekdaysMin(true);
     if (!this.disableTime) {
       this.patterns = this.patterns.map((pattern) => {

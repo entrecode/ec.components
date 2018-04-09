@@ -9,6 +9,8 @@ import { SdkService } from '../sdk/sdk.service';
 import { TypeConfigService } from './type-config.service';
 import { ListConfig } from '@ec.components/core/src/list/list-config.interface';
 import { CrudConfig } from '../crud/crud-config.interface';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import moment from 'moment-es6';
 
 /** The main class for configuring the behaviour of a model.
  * By default, everything is auto generated from the model's schema but can be overriden via the
@@ -25,7 +27,10 @@ export class ModelConfigService extends Config {
   ];
 
   /** Injects CrudService and SdkService. */
-  constructor(private crud: CrudService, private sdk: SdkService, private typeConfig: TypeConfigService) {
+  constructor(private crud: CrudService,
+    private sdk: SdkService,
+    private typeConfig: TypeConfigService,
+    private symbol: SymbolService) {
     super();
   }
 
@@ -57,6 +62,48 @@ export class ModelConfigService extends Config {
   /** Checks if a given property name is a system property (either part of omittedFields or beginning with _).*/
   isSystemProperty(property: string) {
     return property[0] === '_' || this.omittedFields.indexOf(property) !== -1;
+  }
+
+  /** Assigns default system fields to given config. Does not override by default */
+  addSystemPropertiesToFieldConfig(config: FieldConfig<FieldConfigProperty>, override = false) {
+    const defaultConfig = {
+      id: {
+        label: this.symbol.resolve('field.label.id'),
+        view: 'string',
+        form: false,
+        immutable: true,
+        hidden: true
+      },
+      _created: {
+        label: this.symbol.resolve('field.label.created'),
+        display: value => moment(value).format(this.symbol.resolve('moment.format.date')),
+        group: value => moment(value).format(this.symbol.resolve('moment.format.month')),
+        form: false,
+        immutable: true,
+        sortable: true,
+        hidden: true
+      },
+      _modified: {
+        label: this.symbol.resolve('field.label.modified'),
+        display: value => moment(value).format(this.symbol.resolve('moment.format.date')),
+        group: value => moment(value).format(this.symbol.resolve('moment.format.month')),
+        form: false,
+        immutable: true,
+        sortable: true,
+        hidden: false
+      },
+      creator: {
+        label: this.symbol.resolve('field.label.creator'),
+        view: 'account',
+        form: false,
+        immutable: true,
+        hidden: true
+      }
+    };
+    Object.keys(defaultConfig).forEach(property =>
+      Object.assign(config, {
+        [property]: override ? defaultConfig[property] : config[property] || defaultConfig[property]
+      }));
   }
 
   /** Parses the property type (as contained in the property schema's title field). */
@@ -93,8 +140,9 @@ export class ModelConfigService extends Config {
     }).then((schema) => {
       schema = schema.allOf[1];
       const properties = Object.keys(schema.properties)
-      .filter(property => (!fieldConfig && !this.isSystemProperty(property)) || (fieldConfig && !!fieldConfig[property]));
+        .filter(property => (!fieldConfig && !this.isSystemProperty(property)) || (fieldConfig && !!fieldConfig[property]));
       fieldConfig = fieldConfig || {};
+      this.addSystemPropertiesToFieldConfig(fieldConfig); // prepends system fields
       properties.forEach(property => {
         let type;
         if (property === '_entryTitle') {
@@ -111,13 +159,13 @@ export class ModelConfigService extends Config {
           return;
         }
         fieldConfig[property] = Object.assign({
-            label: property,
-            schema: schema.properties[property],
-            relation: type.relation,
-            readOnly: schema.properties[property].readOnly || this.isSystemProperty(property),
-            // required: schema.required.indexOf(property) !== -1, // TODO
-            display: ((value) => value)
-          }, this.typeConfig.get(type.name),
+          label: property,
+          schema: schema.properties[property],
+          relation: type.relation,
+          readOnly: schema.properties[property].readOnly || this.isSystemProperty(property),
+          // required: schema.required.indexOf(property) !== -1, // TODO
+          display: ((value) => value)
+        }, this.typeConfig.get(type.name),
           fieldConfig[property] ? fieldConfig[property] : {});
       });
       return fieldConfig;

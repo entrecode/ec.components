@@ -264,9 +264,6 @@
                                     <a href="../components/AdminEntryInputComponent.html" >AdminEntryInputComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/AssetListComponent.html" >AssetListComponent</a>
-                                </li>
-                                <li class="link">
                                     <a href="../components/AssetListPopComponent.html" >AssetListPopComponent</a>
                                 </li>
                                 <li class="link">
@@ -457,9 +454,6 @@
                                 id="xs-classes-links"
                             >
                                 <li class="link">
-                                    <a href="../classes/AssetList.html" >AssetList</a>
-                                </li>
-                                <li class="link">
                                     <a href="../classes/Collection.html" >Collection</a>
                                 </li>
                                 <li class="link">
@@ -529,6 +523,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/FormService.html" >FormService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/HistoryService.html" >HistoryService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/IconService.html" >IconService</a>
@@ -953,9 +950,6 @@
                                            <a href="../components/AdminEntryInputComponent.html" >AdminEntryInputComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/AssetListComponent.html" >AssetListComponent</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../components/AssetListPopComponent.html" >AssetListPopComponent</a>
                                        </li>
                                        <li class="link">
@@ -1146,9 +1140,6 @@
                                        id="classes-links"
                    >
                                        <li class="link">
-                                           <a href="../classes/AssetList.html" >AssetList</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../classes/Collection.html" >Collection</a>
                                        </li>
                                        <li class="link">
@@ -1218,6 +1209,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/FormService.html" >FormService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/HistoryService.html" >HistoryService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/IconService.html" >IconService</a>
@@ -1478,6 +1472,54 @@
                 </table>
             </section>
 
+            <section>
+                <h3 id="constructor">Constructor</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+            <code>constructor(symbol: <a href="../injectables/SymbolService.html">SymbolService</a>)</code>
+                                </td>
+                            </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <div class="io-line">Defined in <a href="" data-line="134" class="link-to-prism">packages/data/src/model-config/type-config.service.ts:134</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div>
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                                <td>Type</td>
+                                                            <td>Optional</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                                <td>symbol</td>
+                                                              
+                                                                    <td>
+                                                                                <code><a href="../injectables/SymbolService.html" target="_self" >SymbolService</a></code>
+                                                                    </td>
+                                                              
+                                                                <td>
+                                                                        no
+                                                                </td>
+                                                                
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </section>
 
             <section>
                 
@@ -1506,7 +1548,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="136" class="link-to-prism">packages/data/src/model-config/type-config.service.ts:136</a></div>
+                                                <div class="io-line">Defined in <a href="" data-line="138" class="link-to-prism">packages/data/src/model-config/type-config.service.ts:138</a></div>
                                         </td>
                                     </tr>
             
@@ -1577,7 +1619,7 @@
             
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="152" class="link-to-prism">packages/data/src/model-config/type-config.service.ts:152</a></div>
+                                                <div class="io-line">Defined in <a href="" data-line="154" class="link-to-prism">packages/data/src/model-config/type-config.service.ts:154</a></div>
                                         </td>
                                     </tr>
             
@@ -1683,7 +1725,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">packages/data/src/model-config/type-config.service.ts:17</a></div>
+                                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">packages/data/src/model-config/type-config.service.ts:18</a></div>
                                         </td>
                                     </tr>
             
@@ -1764,7 +1806,7 @@
                 assets: {
                   view: &#x27;assets&#x27;,
                   input: DefaultEntryInputComponent,
-                  display: (value, entry, property) &#x3D;&gt; entry.getImageThumbUrl(property, 100),
+                  /* display: (value, entry, property) &#x3D;&gt; entry.getImageThumbUrl(property, 100), */
                   prefill: [],
                   filterOperator: &#x27;any&#x27;,
                   filterable: true,
@@ -1778,7 +1820,7 @@
                 datetime: {
                   view: &#x27;date&#x27;,
                   sortable: true,
-                  display: (value) &#x3D;&gt; value ? moment(value).format(&#x27;DD.MM.YY&#x27;) : &#x27;&#x27;,
+                  display: (value) &#x3D;&gt; value ? moment(value).format(this.symbol.resolve(&#x27;moment.format.date&#x27;)) : &#x27;&#x27;,
                   validate: (value) &#x3D;&gt; {
                     if (value &amp;&amp; (value &#x3D;&#x3D;&#x3D; &#x27;invalid&#x27; || !moment(value).isValid())) {
                       return &#x27;Ungültiges Datum&#x27;;
@@ -1838,7 +1880,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">packages/data/src/model-config/type-config.service.ts:24</a></div>
+                                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">packages/data/src/model-config/type-config.service.ts:25</a></div>
                                         </td>
                                     </tr>
             
@@ -1868,6 +1910,7 @@ import { Injectable } from &#x27;@angular/core&#x27;;
 import { CrudConfig } from &#x27;../crud/crud-config.interface&#x27;;
 import EntryResource from &#x27;ec.sdk/lib/resources/publicAPI/EntryResource&#x27;;
 import { AdminEntryInputComponent } from &#x27;../entry-form/admin-entry-input.component&#x27;;
+import { SymbolService } from &#x27;@ec.components/ui/src/symbol/symbol.service&#x27;;
 
 /** The TypeConfig holds each field type&#x27;s specific behaviour in certain situations */
 @Injectable()
@@ -1920,7 +1963,7 @@ export class TypeConfigService {
     assets: {
       view: &#x27;assets&#x27;,
       input: DefaultEntryInputComponent,
-      display: (value, entry, property) &#x3D;&gt; entry.getImageThumbUrl(property, 100),
+      /* display: (value, entry, property) &#x3D;&gt; entry.getImageThumbUrl(property, 100), */
       prefill: [],
       filterOperator: &#x27;any&#x27;,
       filterable: true,
@@ -1934,7 +1977,7 @@ export class TypeConfigService {
     datetime: {
       view: &#x27;date&#x27;,
       sortable: true,
-      display: (value) &#x3D;&gt; value ? moment(value).format(&#x27;DD.MM.YY&#x27;) : &#x27;&#x27;,
+      display: (value) &#x3D;&gt; value ? moment(value).format(this.symbol.resolve(&#x27;moment.format.date&#x27;)) : &#x27;&#x27;,
       validate: (value) &#x3D;&gt; {
         if (value &amp;&amp; (value &#x3D;&#x3D;&#x3D; &#x27;invalid&#x27; || !moment(value).isValid())) {
           return &#x27;Ungültiges Datum&#x27;;
@@ -1990,6 +2033,7 @@ export class TypeConfigService {
       filterPopClass: &#x27;ec-pop_dialog&#x27;
     }
   };
+  constructor(private symbol: SymbolService) { }
 
   /** Returns the base FieldConfig for the given type. */
   get(type: string): FieldConfigProperty {

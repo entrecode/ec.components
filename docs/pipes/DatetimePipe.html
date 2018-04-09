@@ -264,9 +264,6 @@
                                     <a href="../components/AdminEntryInputComponent.html" >AdminEntryInputComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/AssetListComponent.html" >AssetListComponent</a>
-                                </li>
-                                <li class="link">
                                     <a href="../components/AssetListPopComponent.html" >AssetListPopComponent</a>
                                 </li>
                                 <li class="link">
@@ -457,9 +454,6 @@
                                 id="xs-classes-links"
                             >
                                 <li class="link">
-                                    <a href="../classes/AssetList.html" >AssetList</a>
-                                </li>
-                                <li class="link">
                                     <a href="../classes/Collection.html" >Collection</a>
                                 </li>
                                 <li class="link">
@@ -529,6 +523,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/FormService.html" >FormService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/HistoryService.html" >HistoryService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/IconService.html" >IconService</a>
@@ -953,9 +950,6 @@
                                            <a href="../components/AdminEntryInputComponent.html" >AdminEntryInputComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/AssetListComponent.html" >AssetListComponent</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../components/AssetListPopComponent.html" >AssetListPopComponent</a>
                                        </li>
                                        <li class="link">
@@ -1146,9 +1140,6 @@
                                        id="classes-links"
                    >
                                        <li class="link">
-                                           <a href="../classes/AssetList.html" >AssetList</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../classes/Collection.html" >Collection</a>
                                        </li>
                                        <li class="link">
@@ -1218,6 +1209,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/FormService.html" >FormService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/HistoryService.html" >HistoryService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/IconService.html" >IconService</a>
@@ -1478,7 +1472,7 @@ It is meant to be used to get only the items with the exact same value. </p>
             
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">packages/ui/src/form/datetime/datetime.pipe.ts:10</a></div>
+                                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">packages/ui/src/form/datetime/datetime.pipe.ts:12</a></div>
                                         </td>
                                     </tr>
             
@@ -1524,7 +1518,7 @@ It is meant to be used to get only the items with the exact same value. </p>
                                                                 </td>
                                                                 
                                                                     <td>
-                                                                            <code>&#x27;DD.MM.YYYY&#x27;</code>
+                                                                            <code>this.symbol.resolve(&#x27;moment.format.date&#x27;)</code>
                                                                     </td>
             
                                                             </tr>
@@ -1568,6 +1562,7 @@ It is meant to be used to get only the items with the exact same value. </p>
     <div class="tab-pane fade tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Pipe, PipeTransform } from &#x27;@angular/core&#x27;;
 import moment from &#x27;moment-es6&#x27;;
+import { SymbolService } from &#x27;@ec.components/ui/src/symbol/symbol.service&#x27;;
 
 /** The GroupPipe filters an array of Item instances by a given property value.
  * It is meant to be used to get only the items with the exact same value. */
@@ -1575,7 +1570,12 @@ import moment from &#x27;moment-es6&#x27;;
   name: &#x27;datetime&#x27;
 })
 export class DatetimePipe implements PipeTransform {
-  transform(value: Date | string, pattern: string | string[] &#x3D; &#x27;DD.MM.YYYY&#x27;, raw?: string): string {
+  constructor(private symbol: SymbolService) { }
+  transform(
+    value: Date | string,
+    pattern: string | string[] &#x3D; this.symbol.resolve(&#x27;moment.format.date&#x27;),
+    raw?: string
+  ): string {
     if (!value) {
       return &#x27;&#x27;;
     }

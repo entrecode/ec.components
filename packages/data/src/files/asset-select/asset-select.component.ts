@@ -32,8 +32,6 @@ import Resource from 'ec.sdk/lib/resources/Resource';
 export class AssetSelectComponent extends SelectComponent<Resource> implements OnInit {
   /** The formControl that is used. */
   @Input() formControl: FormControl;
-  /** The used field. Is used for its config properties like nestedPopClass. */
-  @Input() field: Field;
   /** The form group that is used */
   protected group: FormGroup;
   /** The form control that is used */
@@ -59,11 +57,15 @@ export class AssetSelectComponent extends SelectComponent<Resource> implements O
         'is currently not supported. Ask your favorite frontend dev to fix it.');
       // TODO
     }
-    if (!this.assetGroupID) { // legacy assets
-      /* this.config = Object.assign({}, this.fileService.assetListConfig); */
-      this.config = Object.assign({}, this.resourceConfig.config['legacyAsset']);
+    if (this.assetGroupID || (this.formControl.value && this.fileService.isNewAsset(this.formControl.value))) {
+      this.config = Object.assign({}, this.resourceConfig.config['dmAsset'],
+        { readOnly: !this.assetGroupID });
+      if (!this.assetGroupID) {
+        console.warn('asset select has new asset but no assetGroupID was given. Switching to readOnly mode.')
+      }
     } else {
-      this.config = Object.assign({}, this.resourceConfig.config['dmAsset']);
+      // legacy assets
+      this.config = Object.assign({}, this.resourceConfig.config['legacyAsset']);
     }
     Object.assign(this.config, { solo: this.solo });
     this.useConfig(this.config);

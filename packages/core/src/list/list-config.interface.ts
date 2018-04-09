@@ -17,6 +17,8 @@ export interface ListConfig<T> extends ItemConfig<T> {
   selectMode?: boolean
   /** If true, the list will have no header. */
   disableHeader?: boolean
+  /** If true, the header will also be shown when the list is empty. Defaults to false */
+  alwaysShowHeader?: boolean
   /** The current active page */
   page?: number,
   /** The number of items per page */

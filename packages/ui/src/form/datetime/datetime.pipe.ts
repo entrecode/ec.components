@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import moment from 'moment-es6';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 
 /** The GroupPipe filters an array of Item instances by a given property value.
  * It is meant to be used to get only the items with the exact same value. */
@@ -7,7 +8,12 @@ import moment from 'moment-es6';
   name: 'datetime'
 })
 export class DatetimePipe implements PipeTransform {
-  transform(value: Date | string, pattern: string | string[] = 'DD.MM.YYYY', raw?: string): string {
+  constructor(private symbol: SymbolService) { }
+  transform(
+    value: Date | string,
+    pattern: string | string[] = this.symbol.resolve('moment.format.date'),
+    raw?: string
+  ): string {
     if (!value) {
       return '';
     }

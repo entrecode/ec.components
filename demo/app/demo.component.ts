@@ -51,6 +51,14 @@ export class DemoComponent {
             }
           }
         },
+        new_asset: {
+          label: 'Nu Asset',
+          relation: 'test'
+        },
+        new_assets: {
+          label: 'Nu Assets',
+          relation: 'test'
+        }
       }
     });
 

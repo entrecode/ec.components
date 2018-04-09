@@ -264,9 +264,6 @@
                                     <a href="../components/AdminEntryInputComponent.html" >AdminEntryInputComponent</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../components/AssetListComponent.html" >AssetListComponent</a>
-                                </li>
-                                <li class="link">
                                     <a href="../components/AssetListPopComponent.html" >AssetListPopComponent</a>
                                 </li>
                                 <li class="link">
@@ -457,9 +454,6 @@
                                 id="xs-classes-links"
                             >
                                 <li class="link">
-                                    <a href="../classes/AssetList.html" >AssetList</a>
-                                </li>
-                                <li class="link">
                                     <a href="../classes/Collection.html" >Collection</a>
                                 </li>
                                 <li class="link">
@@ -529,6 +523,9 @@
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/FormService.html" >FormService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/HistoryService.html" >HistoryService</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/IconService.html" >IconService</a>
@@ -953,9 +950,6 @@
                                            <a href="../components/AdminEntryInputComponent.html" >AdminEntryInputComponent</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../components/AssetListComponent.html" >AssetListComponent</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../components/AssetListPopComponent.html" >AssetListPopComponent</a>
                                        </li>
                                        <li class="link">
@@ -1146,9 +1140,6 @@
                                        id="classes-links"
                    >
                                        <li class="link">
-                                           <a href="../classes/AssetList.html" >AssetList</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../classes/Collection.html" >Collection</a>
                                        </li>
                                        <li class="link">
@@ -1218,6 +1209,9 @@
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/FormService.html" >FormService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/HistoryService.html" >HistoryService</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/IconService.html" >IconService</a>
@@ -1537,6 +1531,10 @@
                 <tr>
                     <td class="col-md-4">
                         <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#addField">addField</a>
+                            </li>
                             <li>
                                 <a href="#clear">clear</a>
                             </li>
@@ -1959,6 +1957,92 @@
                 <tbody>
                     <tr>
                         <td class="col-md-4">
+                            <a name="addField"></a>
+                            <span class="name">
+                                <b>
+                                    <span class="modifier">Public</span>
+                                addField
+                                </b>
+                                <a href="#addField"><span class="fa fa-link"></span></a>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <span class="modifier-icon fa fa-reset"></span>
+                            <code>addField(property: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, config: <a href="../interfaces/FieldConfigProperty.html">FieldConfigProperty</a>)</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">packages/ui/src/form/form.component.ts:100</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Adds a new field with the given config to the form </p>
+    </div>
+    
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                        <td>property</td>
+                                                        
+                                                            <td>
+                                                                        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                            </td>
+                                                        
+                                                        <td>
+                                                                no
+                                                        </td>
+                                                        
+    
+                                                    </tr>
+                                                    <tr>
+                                                        <td>config</td>
+                                                        
+                                                            <td>
+                                                                        <code><a href="../interfaces/FieldConfigProperty.html" target="_self" >FieldConfigProperty</a></code>
+                                                            </td>
+                                                        
+                                                        <td>
+                                                                no
+                                                        </td>
+                                                        
+    
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                                    <div class="io-description">
+                                        
+                                    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
                             <a name="clear"></a>
                             <span class="name">
                                 <b>
@@ -1977,7 +2061,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">packages/ui/src/form/form.component.ts:100</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">packages/ui/src/form/form.component.ts:108</a></div>
                                 </td>
                             </tr>
     
@@ -2016,7 +2100,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">packages/ui/src/form/form.component.ts:105</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="113" class="link-to-prism">packages/ui/src/form/form.component.ts:113</a></div>
                                 </td>
                             </tr>
     
@@ -2091,7 +2175,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="163" class="link-to-prism">packages/ui/src/form/form.component.ts:163</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="171" class="link-to-prism">packages/ui/src/form/form.component.ts:171</a></div>
                                 </td>
                             </tr>
     
@@ -2130,7 +2214,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">packages/ui/src/form/form.component.ts:112</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="120" class="link-to-prism">packages/ui/src/form/form.component.ts:120</a></div>
                                 </td>
                             </tr>
     
@@ -2201,7 +2285,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="118" class="link-to-prism">packages/ui/src/form/form.component.ts:118</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">packages/ui/src/form/form.component.ts:126</a></div>
                                 </td>
                             </tr>
     
@@ -2290,7 +2374,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="155" class="link-to-prism">packages/ui/src/form/form.component.ts:155</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="163" class="link-to-prism">packages/ui/src/form/form.component.ts:163</a></div>
                                 </td>
                             </tr>
     
@@ -2564,7 +2648,7 @@
     
                             <tr>
                                 <td class="col-md-4">
-                                        <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">packages/ui/src/form/form.component.ts:124</a></div>
+                                        <div class="io-line">Defined in <a href="" data-line="132" class="link-to-prism">packages/ui/src/form/form.component.ts:132</a></div>
                                 </td>
                             </tr>
     
@@ -2852,24 +2936,14 @@
 
     <div class="tab-pane fade" id="c-readme">
         <p><h1 id="form">Form</h1>
-<pre class="line-numbers"><code class="language-html">&lt;ec-form [config]=&quot;mocked.lists.trees.config&quot; [item]=&quot;mocked.lists.trees.id(0)&quot;&gt;&lt;/ec-form&gt;</code></pre><h2 id="templated">Templated</h2>
-<pre class="line-numbers"><code class="language-html">&lt;ec-form [config]=&quot;mocked.lists.trees.config&quot;
-         [item]=&quot;mocked.lists.trees.id(0)&quot;&gt;
-  &lt;ec-input property=&quot;name&quot;&gt;
-    &lt;ng-template let-field=&quot;field&quot; let-group=&quot;group&quot; let-value=&quot;value&quot;&gt;
-      &lt;label [formGroup]=&quot;group&quot;&gt;
-        Custom Input
-        &lt;input type=&quot;text&quot; [formControlName]=&quot;field.property&quot;&gt;
-      &lt;/label&gt;
-    &lt;/ng-template&gt;
-  &lt;/ec-input&gt;
-&lt;/ec-form&gt;</code></pre></p>
+<pre class="line-numbers"><code class="language-html">&lt;ec-form [config]=&quot;mocked.lists.trees.config&quot; [item]=&quot;mocked.lists.trees.id(0)&quot;&gt;&lt;/ec-form&gt;</code></pre><p>TBD</p>
+</p>
     </div>
 
     <div class="tab-pane fade tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, EventEmitter, Input, OnChanges, Output, ViewChild, ViewChildren, QueryList } from &#x27;@angular/core&#x27;;
 import { FormGroup } from &#x27;@angular/forms&#x27;;
-import { Form, FormConfig, Item } from &#x27;@ec.components/core&#x27;;
+import { Form, FormConfig, Item, FieldConfigProperty } from &#x27;@ec.components/core&#x27;;
 import { ItemConfig } from &#x27;@ec.components/core/src/item/item-config.interface&#x27;;
 import { LoaderComponent } from &#x27;../loader/loader.component&#x27;;
 import { LoaderService } from &#x27;../loader/loader.service&#x27;;
@@ -2963,6 +3037,14 @@ export class FormComponent&lt;T&gt; implements OnChanges, WithLoader, WithNotifi
       this.change.emit(this);
     });
     this.ready.emit(this);
+  }
+
+  /** Adds a new field with the given config to the form */
+  public addField(property: string, config: FieldConfigProperty) {
+    const field &#x3D; this.form.createField(property, config);
+    if (field) {
+      this.formService.addField(field, this.form, this.group);
+    }
   }
 
   /** Clears the current value */
@@ -3088,7 +3170,7 @@ export class FormComponent&lt;T&gt; implements OnChanges, WithLoader, WithNotifi
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><form novalidate [formGroup]="group" (ngSubmit)="submit()" *ngIf="group">  <div #wrapper>    <ng-content></ng-content>  </div>  <div *ngIf="!wrapper.children.length&&!empty">    <div *ngFor="let field of form?.fields | visibleFields" [ngClass]="\'form-group_\' + field.view" [ngSwitch]="field.view" class="form-group" [attr.data-type]="field.type">      <label [for]="field.id">{{field.label || field.property}}</label>      <ec-input *ngIf="!field.readOnly" [field]="field" [group]="group" [item]="form" [formControl]="group.get(field.property)"></ec-input>      <ec-output *ngIf="field.readOnly" [field]="field" [item]="form"></ec-output>    </div>    <button type="button" (click)="submit()" *ngIf="submitButton!==false" [disabled]="group.invalid" class="btn btn_save">      <ec-icon name="save"></ec-icon>    </button>    <ec-loader class="ec-loader ec-loader_overlay ec-loader_global" #formLoader></ec-loader>  </div></form></div>'
-    var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'ActionbarComponent', 'selector': 'ec-actionbar'},{'name': 'AdminEntryInputComponent', 'selector': ''},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'IconComponent', 'selector': 'ec-icon'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceCrudComponent', 'selector': 'ec-resource-crud'},{'name': 'ResourceDeletePopComponent', 'selector': 'ec-resource-delete-pop'},{'name': 'ResourceFormComponent', 'selector': 'ec-resource-form'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'ResourcePopComponent', 'selector': 'ec-resource-pop'},{'name': 'ResourceSelectComponent', 'selector': 'ec-resource-select'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
+    var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'ActionbarComponent', 'selector': 'ec-actionbar'},{'name': 'AdminEntryInputComponent', 'selector': ''},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'IconComponent', 'selector': 'ec-icon'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceCrudComponent', 'selector': 'ec-resource-crud'},{'name': 'ResourceDeletePopComponent', 'selector': 'ec-resource-delete-pop'},{'name': 'ResourceFormComponent', 'selector': 'ec-resource-form'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'ResourcePopComponent', 'selector': 'ec-resource-pop'},{'name': 'ResourceSelectComponent', 'selector': 'ec-resource-select'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
     var DIRECTIVES = [{'name': 'AssetDirective', 'selector': '[ecAsset]'},{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'ImageDirective', 'selector': 'img [ecImage]'},{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'}];
     var ACTUAL_COMPONENT = {'name': 'FormComponent'};
 </script>

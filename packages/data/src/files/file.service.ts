@@ -2,12 +2,13 @@ import { EventEmitter, Injectable } from '@angular/core';
 import PublicAssetResource from 'ec.sdk/lib/resources/publicAPI/PublicAssetResource';
 import PublicAssetList from 'ec.sdk/lib/resources/publicAPI/PublicAssetList';
 import { SdkService } from '../sdk/sdk.service';
-import { AssetList } from './asset-list/asset-list';
 import { TypeConfigService } from '../model-config/type-config.service';
 import moment from 'moment-es6';
 import { Item } from '@ec.components/core/src/item/item';
 import DMAssetList from 'ec.sdk/lib/resources/publicAPI/DMAssetList';
 import { ResourceService } from '../resource-config/resource.service';
+import { ResourceList } from '../resource-list/resource-list';
+import { ResourceConfig } from '../resource-config/resource-config.service';
 
 /** Instances of Update are emitted by the changes EventEmitter of the CrudService. */
 export interface Upload {
@@ -20,7 +21,7 @@ export interface Upload {
   /** The uploaded asset as item */
   items?: Array<Item<PublicAssetResource>>
   /** The list where it happened. */
-  list?: AssetList,
+  list?: ResourceList,
 }
 
 /** Interface for file options used by new assets */
@@ -46,60 +47,6 @@ export interface FileOptions {
 export class FileService {
   /** The changes event is emitted everytime an entry is created or updated. */
   public uploads: EventEmitter<Upload> = new EventEmitter();
-  /** The default config for asset lists */
-  public assetListConfig = { // TODO: delete when asset list is dead
-    label: 'title',
-    size: 5,
-    identifier: 'assetID',
-    onSave: (item, value) => {
-      const asset = item.getBody();
-      // TODO use crud.service for Resource?
-      value = item.serialize(value, asset instanceof PublicAssetResource);
-      Object.assign(asset, value);
-      if (asset instanceof PublicAssetResource) {
-        return asset.save();
-      }
-      return value;
-    },
-    fields: {
-      thumb: {
-        label: 'Vorschau',
-        resolve: (asset, item, property) => {
-          if (typeof asset === 'string') {
-            return false;
-          }
-          return asset.getImageUrl(200)
-        },
-        view: 'preview',
-        readOnly: true
-      },
-      title: {
-        label: 'Titel',
-        sortable: true,
-        filterable: true,
-        type: 'text',
-        view: 'string',
-      },
-      tags: {
-        label: 'Tags',
-        view: 'tags'
-      },
-      type: {
-        label: 'Typ',
-        view: 'label',
-        sortable: true,
-        readOnly: true,
-      },
-      created: {
-        label: 'Datum',
-        view: 'date',
-        sortable: true,
-        readOnly: true,
-        display: (value) => moment(value).format('DD.MM.YY'),
-        group: (value) => moment(value).format('MMMM YYYY')
-      }
-    }
-  };
 
   public newAssetListConfig = { // TODO: dont use
     label: 'title',
@@ -116,7 +63,18 @@ export class FileService {
   }
 
   /** Injects sdk */
-  constructor(private sdk: SdkService, private typeConfig: TypeConfigService, private resourceService: ResourceService) {
+  constructor(private sdk: SdkService,
+    private typeConfig: TypeConfigService,
+    private resourceService: ResourceService,
+    private resourceConfig: ResourceConfig) {
+  }
+
+  /** returns true if the given asset is a new one (DMAssetResource) */
+  public isNewAsset(asset) {
+    if (Array.isArray(asset)) {
+      return asset.length ? this.isNewAsset(asset[0]) : false;
+    }
+    return /^[a-zA-Z0-9\-_]{22}$/.test(asset.assetID)
   }
 
   /** Returns form data for a file list. You have to append options (even if empty) to get formData for new assets! */
@@ -184,12 +142,13 @@ export class FileService {
         return {
           asset: assets[0],
           assets,
-          item: new Item(assets[0], this.assetListConfig),
-          items: assets.map(asset => new Item(asset, this.assetListConfig))
+          item: new Item(assets[0], this.resourceConfig.config['legacyAsset']),
+          items: assets.map(asset => new Item(asset, this.resourceConfig.config['legacyAsset']))
         }
       }).then((upload: Upload) => {
         this.uploads.emit(upload);
         this.resourceService.changes.next({ relation: 'legacyAsset', type: 'post' });
+        this.resourceService.changes.next({ relation: 'asset', type: 'post' });
         return upload;
       });
   }

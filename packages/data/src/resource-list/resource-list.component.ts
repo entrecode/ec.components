@@ -1,15 +1,15 @@
-import { Component, Input, OnChanges, Optional } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Optional, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { List, Selection } from '@ec.components/core';
+import { ListComponent, LoaderComponent, LoaderService, NotificationsService, WithLoader } from '@ec.components/ui';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import Core from 'ec.sdk/lib/Core';
+import ListResource from 'ec.sdk/lib/resources/ListResource';
+import Resource from 'ec.sdk/lib/resources/Resource';
+import { ResourceConfig } from '../resource-config/resource-config.service';
+import { ResourceService } from '../resource-config/resource.service';
 import { SdkService } from '../sdk/sdk.service';
 import { ResourceList } from './resource-list';
-import Core from 'ec.sdk/lib/Core';
-import { ListConfig, Selection } from '@ec.components/core';
-import ListResource, { filterOptions } from 'ec.sdk/lib/resources/ListResource';
-import { WithLoader, LoaderComponent, ListComponent, LoaderService, NotificationsService } from '@ec.components/ui';
-import Resource from 'ec.sdk/lib/resources/Resource';
-import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
-import { ResourceService } from '../resource-config/resource.service';
-import { ResourceConfig } from '../resource-config/resource-config.service';
 
 /** The ResourceListComponent is an extension of ListComponent for SDK ListResources.
  * It is meant to be extended and overriden the createList method. See e.g. AssetListComponent. */
@@ -32,6 +32,8 @@ export class ResourceListComponent extends ListComponent<Resource>
   @Input() relation: string;
   /** The loader that should be shown while the list is loaded. */
   @Input() loader: LoaderComponent;
+  /** emits when the list changed (after loading) */
+  @Output() change: EventEmitter<List<Resource>> = new EventEmitter();
 
   /** The constructor will just call super of List*/
   constructor(
@@ -80,6 +82,7 @@ export class ResourceListComponent extends ListComponent<Resource>
         return;
       }
       this.list = list;
+      this.list.change$.subscribe(newList => this.change.next(newList));
       if (this.list.promise) {
         this.loaderService.wait(this.list.promise, this.loader);
       }

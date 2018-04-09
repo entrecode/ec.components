@@ -9,6 +9,7 @@ import { Injectable } from '@angular/core';
 import { CrudConfig } from '../crud/crud-config.interface';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { AdminEntryInputComponent } from '../entry-form/admin-entry-input.component';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 
 /** The TypeConfig holds each field type's specific behaviour in certain situations */
 @Injectable()
@@ -61,7 +62,7 @@ export class TypeConfigService {
     assets: {
       view: 'assets',
       input: DefaultEntryInputComponent,
-      display: (value, entry, property) => entry.getImageThumbUrl(property, 100),
+      /* display: (value, entry, property) => entry.getImageThumbUrl(property, 100), */
       prefill: [],
       filterOperator: 'any',
       filterable: true,
@@ -75,7 +76,7 @@ export class TypeConfigService {
     datetime: {
       view: 'date',
       sortable: true,
-      display: (value) => value ? moment(value).format('DD.MM.YY') : '',
+      display: (value) => value ? moment(value).format(this.symbol.resolve('moment.format.date')) : '',
       validate: (value) => {
         if (value && (value === 'invalid' || !moment(value).isValid())) {
           return 'Ungültiges Datum';
@@ -131,6 +132,7 @@ export class TypeConfigService {
       filterPopClass: 'ec-pop_dialog'
     }
   };
+  constructor(private symbol: SymbolService) { }
 
   /** Returns the base FieldConfig for the given type. */
   get(type: string): FieldConfigProperty {

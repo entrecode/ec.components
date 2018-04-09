@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { DefaultOutputComponent } from '../../form/default-output/default-output.component';
 import { DynamicSlotComponent } from '../dynamic-slot/dynamic-slot.component';
 import { Field } from '@ec.components/core/src/field/field';
@@ -10,7 +10,7 @@ import { Item } from '@ec.components/core/src/item/item';
   templateUrl: '../dynamic-slot/dynamic-slot.component.html',
   styleUrls: ['./output.component.scss']
 })
-export class OutputComponent extends DynamicSlotComponent {
+export class OutputComponent extends DynamicSlotComponent implements OnChanges {
   /** The instance of field that should be used in the template */
   @Input() field: Field;
   /** The belonging item */

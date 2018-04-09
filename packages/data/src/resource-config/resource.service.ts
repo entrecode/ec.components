@@ -18,7 +18,9 @@ export interface Update {
     /** The list where it happened. */
     list?: ResourceList,
     /** The type of update. (create/read/update/delete) */
-    type?: 'post' | 'get' | 'put' | 'delete'
+    type?: 'post' | 'get' | 'put' | 'delete',
+    /** An identifier associated with the update e.g. an entryID */
+    identifier?: string
 }
 
 /** The CRUD service is meant to be used when modifying entries.
@@ -56,9 +58,6 @@ export class ResourceService {
             return Promise.resolve(item.config.onSave(item, value))
         }
         item.deleteImmutableProperties(value);
-        if (item.config && item.config.identifier) {
-            delete value[item.config.identifier];
-        }
         if (resource && resource.save) {
             return this.update(relation, resource, value);
         }
