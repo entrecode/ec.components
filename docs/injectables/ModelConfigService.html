@@ -2286,8 +2286,8 @@ export class ModelConfigService extends Config {
       },
       _created: {
         label: this.symbol.resolve(&#x27;field.label.created&#x27;),
-        display: value &#x3D;&gt; moment(value).format(this.symbol.resolve(&#x27;moment.format.date&#x27;)),
-        group: value &#x3D;&gt; moment(value).format(this.symbol.resolve(&#x27;moment.format.month&#x27;)),
+        display: this.typeConfig.displayDate(),
+        group: this.typeConfig.groupDate(),
         form: false,
         immutable: true,
         sortable: true,
@@ -2295,8 +2295,8 @@ export class ModelConfigService extends Config {
       },
       _modified: {
         label: this.symbol.resolve(&#x27;field.label.modified&#x27;),
-        display: value &#x3D;&gt; moment(value).format(this.symbol.resolve(&#x27;moment.format.date&#x27;)),
-        group: value &#x3D;&gt; moment(value).format(this.symbol.resolve(&#x27;moment.format.month&#x27;)),
+        display: this.typeConfig.displayDate(),
+        group: this.typeConfig.groupDate(),
         form: false,
         immutable: true,
         sortable: true,

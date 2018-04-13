@@ -1421,6 +1421,50 @@
 
 
 
+            <section>
+                <h3 id="index">Index</h3>
+                <table class="table table-sm table-bordered index-table">
+                    <tbody>
+                        <tr>
+                            <td class="col-md-4">
+                                <h6><b>Methods</b></h6>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <ul class="index-list">
+                                    <li>
+                                        <a href="#created">created</a>
+                                    </li>
+                                    <li>
+                                        <a href="#hexColor">hexColor</a>
+                                    </li>
+                                    <li>
+                                        <a href="#stringField">stringField</a>
+                                    </li>
+                                    <li>
+                                        <a href="#tagsField">tagsField</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <h6><b>Accessors</b></h6>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <ul class="index-list">
+                                    <li>
+                                        <a href="#config">config</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
 
             <section>
                 <h3 id="constructor">Constructor</h3>
@@ -1428,12 +1472,12 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-            <code>constructor(symbol: <a href="../injectables/SymbolService.html">SymbolService</a>)</code>
+            <code>constructor(symbol: <a href="../injectables/SymbolService.html">SymbolService</a>, typeConfig: <a href="../injectables/TypeConfigService.html">TypeConfigService</a>)</code>
                                 </td>
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">packages/data/src/resource-config/resource-config.service.ts:48</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">packages/data/src/resource-config/resource-config.service.ts:51</a></div>
                                         </td>
                                     </tr>
             
@@ -1462,6 +1506,18 @@
                                                                 </td>
                                                                 
                                                             </tr>
+                                                            <tr>
+                                                                <td>typeConfig</td>
+                                                              
+                                                                    <td>
+                                                                                <code><a href="../injectables/TypeConfigService.html" target="_self" >TypeConfigService</a></code>
+                                                                    </td>
+                                                              
+                                                                <td>
+                                                                        no
+                                                                </td>
+                                                                
+                                                            </tr>
                                                     </tbody>
                                                 </table>
                                         </div>
@@ -1471,6 +1527,312 @@
                     </table>
             </section>
 
+            <section>
+                
+                    <h3 id="methods">
+                        Methods
+                    </h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="created"></a>
+                                    <span class="name">
+                                        <b>
+                                        created
+                                        </b>
+                                        <a href="#created"><span class="fa fa-link"></span></a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>created(label: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, symbol: <a href="../injectables/SymbolService.html">SymbolService</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">packages/data/src/resource-config/resource-config.service.ts:15</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                                <td>Type</td>
+                                                            <td>Optional</td>
+                                                                <td>Default value</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                                <td>label</td>
+                                                                
+                                                                    <td>
+                                                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                                    </td>
+                                                                
+                                                                <td>
+                                                                        no
+                                                                </td>
+                                                                
+                                                                    <td>
+                                                                            <code>&#x27;Date&#x27;</code>
+                                                                    </td>
+            
+                                                            </tr>
+                                                            <tr>
+                                                                <td>symbol</td>
+                                                                
+                                                                    <td>
+                                                                                <code><a href="../injectables/SymbolService.html" target="_self" >SymbolService</a></code>
+                                                                    </td>
+                                                                
+                                                                <td>
+                                                                        no
+                                                                </td>
+                                                                
+                                                                    <td>
+                                                                    </td>
+            
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code>{ label: string; sortable: boolean; view: string; display: any; group: any; form: boolean; immuta...</code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="hexColor"></a>
+                                    <span class="name">
+                                        <b>
+                                        hexColor
+                                        </b>
+                                        <a href="#hexColor"><span class="fa fa-link"></span></a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>hexColor()</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">packages/data/src/resource-config/resource-config.service.ts:27</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code>{ label: string; view: string; prefill: string; }</code>
+            
+                                        </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="stringField"></a>
+                                    <span class="name">
+                                        <b>
+                                        stringField
+                                        </b>
+                                        <a href="#stringField"><span class="fa fa-link"></span></a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>stringField(label: , filterable: , sortable: )</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">packages/data/src/resource-config/resource-config.service.ts:44</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Optional</td>
+                                                                <td>Default value</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                                <td>label</td>
+                                                                
+                                                                
+                                                                <td>
+                                                                        no
+                                                                </td>
+                                                                
+                                                                    <td>
+                                                                    </td>
+            
+                                                            </tr>
+                                                            <tr>
+                                                                <td>filterable</td>
+                                                                
+                                                                
+                                                                <td>
+                                                                        no
+                                                                </td>
+                                                                
+                                                                    <td>
+                                                                            <code>true</code>
+                                                                    </td>
+            
+                                                            </tr>
+                                                            <tr>
+                                                                <td>sortable</td>
+                                                                
+                                                                
+                                                                <td>
+                                                                        no
+                                                                </td>
+                                                                
+                                                                    <td>
+                                                                            <code>true</code>
+                                                                    </td>
+            
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code>{ label: any; view: string; filterable: boolean; sortable: boolean; }</code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="tagsField"></a>
+                                    <span class="name">
+                                        <b>
+                                        tagsField
+                                        </b>
+                                        <a href="#tagsField"><span class="fa fa-link"></span></a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>tagsField(label: , list: )</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">packages/data/src/resource-config/resource-config.service.ts:35</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Optional</td>
+                                                                <td>Default value</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                                <td>label</td>
+                                                                
+                                                                
+                                                                <td>
+                                                                        no
+                                                                </td>
+                                                                
+                                                                    <td>
+                                                                    </td>
+            
+                                                            </tr>
+                                                            <tr>
+                                                                <td>list</td>
+                                                                
+                                                                
+                                                                <td>
+                                                                        no
+                                                                </td>
+                                                                
+                                                                    <td>
+                                                                            <code>true</code>
+                                                                    </td>
+            
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code>{ label: any; view: string; display: (value: any) &#x3D;&gt; any; list: boolean; }</code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </section>
 
 
             <section>
@@ -1493,7 +1855,7 @@
                             </tr>
                                         <tr>
                                             <td class="col-md-4">
-                                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">packages/data/src/resource-config/resource-config.service.ts:50</a></div>
+                                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">packages/data/src/resource-config/resource-config.service.ts:53</a></div>
                                             </td>
                                         </tr>
             
@@ -1511,48 +1873,51 @@ import localeFr from &#x27;@angular/common/locales/fr&#x27;;
 import { SymbolService } from &#x27;@ec.components/ui/src/symbol/symbol.service&#x27;;
 import Resource from &#x27;ec.sdk/lib/resources/Resource&#x27;;
 import { Injectable } from &#x27;@angular/core&#x27;;
+import { TypeConfigService } from &#x27;../model-config/type-config.service&#x27;;
 
-export function created(label &#x3D; &#x27;Date&#x27;, symbol: SymbolService) {
-  return {
-    label,
-    sortable: true,
-    display: value &#x3D;&gt; moment(value).format(symbol.resolve(&#x27;moment.format.date&#x27;)),
-    group: value &#x3D;&gt; moment(value).format(symbol.resolve(&#x27;moment.format.month&#x27;)),
-    form: false,
-    immutable: true
-  }
-};
-
-export function hexColor() {
-  return {
-    label: &#x27;#&#x27;,
-    view: &#x27;color&#x27;,
-    prefill: &#x27;#ffffff&#x27;
-  }
-};
-
-export function tagsField(label, list &#x3D; true) {
-  return {
-    label,
-    view: &#x27;tags&#x27;,
-    display: (value) &#x3D;&gt; value || [],
-    list
-  };
-}
-
-export function stringField(label, filterable &#x3D; true, sortable &#x3D; true) {
-  return {
-    label,
-    view: &#x27;string&#x27;,
-    filterable,
-    sortable
-  };
-}
 
 @Injectable()
 /** Contains default configurations for all kinds of resources. Used by ResourceList and ResourceForm.  */
 export class ResourceConfig {
-  constructor(private symbol: SymbolService) { }
+
+  created(label &#x3D; &#x27;Date&#x27;, symbol: SymbolService) {
+    return {
+      label,
+      sortable: true,
+      view: &#x27;date&#x27;,
+      display: this.typeConfig.displayDate(),
+      group: this.typeConfig.groupDate(),
+      form: false,
+      immutable: true
+    }
+  };
+
+  hexColor() {
+    return {
+      label: &#x27;#&#x27;,
+      view: &#x27;color&#x27;,
+      prefill: &#x27;#ffffff&#x27;
+    }
+  };
+
+  tagsField(label, list &#x3D; true) {
+    return {
+      label,
+      view: &#x27;tags&#x27;,
+      display: (value) &#x3D;&gt; value || [],
+      list
+    };
+  }
+
+  stringField(label, filterable &#x3D; true, sortable &#x3D; true) {
+    return {
+      label,
+      view: &#x27;string&#x27;,
+      filterable,
+      sortable
+    };
+  }
+  constructor(private symbol: SymbolService, private typeConfig: TypeConfigService) { }
   get config(): { [key: string]: CrudConfig&lt;Resource&gt; } {
     return {
       dataManager: {
@@ -1565,12 +1930,12 @@ export class ResourceConfig {
           get: true
         },
         fields: {
-          hexColor: hexColor(),
+          hexColor: this.hexColor(),
           shortID: {
             immutable: true,
             list: false
           },
-          title: Object.assign(stringField(&#x27;Name&#x27;), { required: true }),
+          title: Object.assign(this.stringField(&#x27;Name&#x27;), { required: true }),
           description: {
             label: this.symbol.resolve(&#x27;field.label.description&#x27;),
             view: &#x27;string&#x27;,
@@ -1586,20 +1951,20 @@ export class ResourceConfig {
             list: false,
             immutable: true
           },
-          locales: tagsField(this.symbol.resolve(&#x27;field.label.locales&#x27;), false),
+          locales: this.tagsField(this.symbol.resolve(&#x27;field.label.locales&#x27;), false),
           publicAssetRights: Object.assign(
-            tagsField(this.symbol.resolve(&#x27;datamanager.field.label.publicAssetRights&#x27;), false),
+            this.tagsField(this.symbol.resolve(&#x27;datamanager.field.label.publicAssetRights&#x27;), false),
             { immutable: true }),
-          rights: Object.assign(tagsField(&#x27;rights&#x27;, false), { immutable: true }),
-          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
+          rights: Object.assign(this.tagsField(&#x27;rights&#x27;, false), { immutable: true }),
+          created: this.created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
         }
       },
       model: {
         identifier: &#x27;modelID&#x27;,
         label: &#x27;title&#x27;,
         fields: {
-          hexColor: hexColor(),
-          title: Object.assign(stringField(&#x27;Model&#x27;), { required: true }),
+          hexColor: this.hexColor(),
+          title: Object.assign(this.stringField(&#x27;Model&#x27;), { required: true }),
           description: {
             label: this.symbol.resolve(&#x27;field.label.description&#x27;),
             view: &#x27;string&#x27;,
@@ -1645,18 +2010,7 @@ export class ResourceConfig {
             view: &#x27;json&#x27;,
             immutable: true
           },
-          /* lastSyncs: {
-            label: &#x27;Zuletzt synchronisiert&#x27;,
-            display: (values) &#x3D;&gt; {
-              if (values) {
-                console.log(&#x27;values&#x27;, values);
-              }
-              return (values || []).map(value &#x3D;&gt; value &amp;&amp; value.finished ? moment(value.finished).format(this.symbol.resolve(&#x27;moment.format.date&#x27;)) : &#x27;-&#x27;)
-            },
-            view: &#x27;tags&#x27;,
-            immutable: true,
-          }, */
-          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
+          created: this.created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
         }
       },
       account: {
@@ -1667,7 +2021,7 @@ export class ResourceConfig {
           put: &#x27;acc:edit:&lt;accountID&gt;&#x27;
         },
         fields: {
-          name: stringField(this.symbol.resolve(&#x27;field.label.name&#x27;)),
+          name: this.stringField(this.symbol.resolve(&#x27;field.label.name&#x27;)),
           email: {
             label: this.symbol.resolve(&#x27;field.label.email&#x27;),
             view: &#x27;string&#x27;,
@@ -1696,7 +2050,7 @@ export class ResourceConfig {
           openID: {
             list: false
           },
-          permissions: tagsField(this.symbol.resolve(&#x27;account.field.label.permissions&#x27;), false),
+          permissions: this.tagsField(this.symbol.resolve(&#x27;account.field.label.permissions&#x27;), false),
           groups: {
             label: this.symbol.resolve(&#x27;account.field.label.groups&#x27;),
             view: &#x27;tags&#x27;,
@@ -1706,7 +2060,7 @@ export class ResourceConfig {
           state: {
             label: this.symbol.resolve(&#x27;account.field.label.state&#x27;)
           },
-          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
+          created: this.created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
         }
       },
       dmAccount: {
@@ -1757,8 +2111,8 @@ export class ResourceConfig {
           },
           version: {
             label: this.symbol.resolve(&#x27;template.field.label.version&#x27;),
-            display: value &#x3D;&gt; moment(value).format(this.symbol.resolve(&#x27;moment.format.date&#x27;)),
-            group: value &#x3D;&gt; moment(value).format(this.symbol.resolve(&#x27;moment.format.month&#x27;)),
+            display: this.typeConfig.displayDate(),
+            group: this.typeConfig.groupDate(),
             form: false
           }
         }
@@ -1771,7 +2125,7 @@ export class ResourceConfig {
           put: &#x27;app:&lt;appID&gt;:edit&#x27;
         },
         fields: {
-          hexColor: hexColor(),
+          hexColor: this.hexColor(),
           shortID: {
             label: this.symbol.resolve(&#x27;field.label.shortID&#x27;),
             list: false
@@ -1782,7 +2136,7 @@ export class ResourceConfig {
             filterable: true,
             sortable: true,
           },
-          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
+          created: this.created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
         }
       },
       platform: {
@@ -1801,7 +2155,7 @@ export class ResourceConfig {
             view: &#x27;json&#x27;,
             list: false
           },
-          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
+          created: this.created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
         }
       },
       asset: { // old ec.asset
@@ -1838,8 +2192,8 @@ export class ResourceConfig {
             display: value &#x3D;&gt; value.length,
             immutable: true
           },
-          tags: tagsField(this.symbol.resolve(&#x27;asset.field.label.tags&#x27;)),
-          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
+          tags: this.tagsField(this.symbol.resolve(&#x27;asset.field.label.tags&#x27;)),
+          created: this.created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
         }
       },
       legacyAsset: { // old public assets
@@ -1876,8 +2230,8 @@ export class ResourceConfig {
             display: value &#x3D;&gt; value.length,
             immutable: true
           },
-          tags: tagsField(this.symbol.resolve(&#x27;asset.field.label.tags&#x27;)),
-          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
+          tags: this.tagsField(this.symbol.resolve(&#x27;asset.field.label.tags&#x27;)),
+          created: this.created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
         }
       },
       assetGroup: { // https://doc.entrecode.de/en/develop/resources/dm-assetgroup/
@@ -1902,7 +2256,7 @@ export class ResourceConfig {
             display: (policies) &#x3D;&gt; (policies || []).map(p &#x3D;&gt; p.method),
             prefill: []
           },
-          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
+          created: this.created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
         }
       },
       dmAsset: { // new assets
@@ -1962,7 +2316,7 @@ export class ResourceConfig {
             immutable: true,
             form: false
           },
-          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
+          created: this.created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
         }
       },
       dmClient: {
@@ -1976,9 +2330,9 @@ export class ResourceConfig {
             label: this.symbol.resolve(&#x27;client.field.label.callbackURL&#x27;),
             view: &#x27;string&#x27;,
           },
-          tokenMethod: tagsField(this.symbol.resolve(&#x27;client.field.label.tokenMethod&#x27;)),
-          disableStrategies: tagsField(this.symbol.resolve(&#x27;client.field.label.disableStrategies&#x27;)),
-          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
+          tokenMethod: this.tagsField(this.symbol.resolve(&#x27;client.field.label.tokenMethod&#x27;)),
+          disableStrategies: this.tagsField(this.symbol.resolve(&#x27;client.field.label.disableStrategies&#x27;)),
+          created: this.created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
         }
       },
       role: {
@@ -2011,7 +2365,7 @@ export class ResourceConfig {
             view: &#x27;boolean&#x27;/* ,
         prefill: false */
           },
-          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
+          created: this.created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
         }
       },
       codeSource: {
@@ -2028,7 +2382,7 @@ export class ResourceConfig {
             label: this.symbol.resolve(&#x27;field.label.config&#x27;),
             list: false
           },
-          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
+          created: this.created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
         }
       },
       dataSource: {
@@ -2037,7 +2391,7 @@ export class ResourceConfig {
           dataSourceID: {
             label: this.symbol.resolve(&#x27;field.label.id&#x27;),
           },
-          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
+          created: this.created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
         }
       },
       target: {
@@ -2051,7 +2405,7 @@ export class ResourceConfig {
             label: this.symbol.resolve(&#x27;field.label.config&#x27;),
             list: false
           },
-          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
+          created: this.created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
         }
       },
       group: {
@@ -2065,7 +2419,7 @@ export class ResourceConfig {
             display: (value) &#x3D;&gt; value || [],
             list: false
           },
-          created: created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
+          created: this.created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
         }
       }
     }
