@@ -1511,6 +1511,9 @@
                                         <a href="#load">load</a>
                                     </li>
                                     <li>
+                                        <a href="#clearFilter">clearFilter</a>
+                                    </li>
+                                    <li>
                                         <a href="#filter">filter</a>
                                     </li>
                                     <li>
@@ -1524,6 +1527,12 @@
                                     <li>
                                             <span class="modifier">Protected</span>
                                         <a href="#getFilterOptions">getFilterOptions</a>
+                                    </li>
+                                    <li>
+                                        <a href="#isEmptyFilter">isEmptyFilter</a>
+                                    </li>
+                                    <li>
+                                        <a href="#isFiltered">isFiltered</a>
                                     </li>
                                     <li>
                                         <a href="#load">load</a>
@@ -1775,6 +1784,83 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
+                                    <a name="clearFilter"></a>
+                                    <span class="name">
+                                        <b>
+                                        clearFilter
+                                        </b>
+                                        <a href="#clearFilter"><span class="fa fa-link"></span></a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>clearFilter(property?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Inherited from     <code><a href="../classes/ResourceList.html" target="_self" >ResourceList</a></code>
+            </div>
+                                            </td>
+                                        </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                                <div class="io-line">Defined in ResourceList:187</div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Clears the filter for given property or all properties if none given. </p>
+            </div>
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                                <td>Type</td>
+                                                            <td>Optional</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                                <td>property</td>
+                                                                
+                                                                    <td>
+                                                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                                    </td>
+                                                                
+                                                                <td>
+                                                                        yes
+                                                                </td>
+                                                                
+            
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
                                     <a name="filter"></a>
                                     <span class="name">
                                         <b>
@@ -1799,7 +1885,7 @@
                                         </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in ResourceList:164</div>
+                                                <div class="io-line">Defined in ResourceList:177</div>
                                         </td>
                                     </tr>
             
@@ -1895,7 +1981,7 @@
                                         </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                                <div class="io-line">Defined in ResourceList:143</div>
+                                                <div class="io-line">Defined in ResourceList:164</div>
                                         </td>
                                     </tr>
             
@@ -2130,6 +2216,160 @@
                                         </div>
                                         <div class="io-description">
                                             <b>Returns : </b>    <code>filterOptions</code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="isEmptyFilter"></a>
+                                    <span class="name">
+                                        <b>
+                                        isEmptyFilter
+                                        </b>
+                                        <a href="#isEmptyFilter"><span class="fa fa-link"></span></a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>isEmptyFilter(query: null | undefined | string | Array<any>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Inherited from     <code><a href="../classes/ResourceList.html" target="_self" >ResourceList</a></code>
+            </div>
+                                            </td>
+                                        </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                                <div class="io-line">Defined in ResourceList:143</div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Helper function. Returns true if the given query value is empty (also recognizes empty array) </p>
+            </div>
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                                <td>Type</td>
+                                                            <td>Optional</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                                <td>query</td>
+                                                                
+                                                                    <td>
+                                                                                <code>null | undefined | string | Array&lt;any&gt;</code>
+                                                                    </td>
+                                                                
+                                                                <td>
+                                                                        no
+                                                                </td>
+                                                                
+            
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="isFiltered"></a>
+                                    <span class="name">
+                                        <b>
+                                        isFiltered
+                                        </b>
+                                        <a href="#isFiltered"><span class="fa fa-link"></span></a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>isFiltered(property?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                                </td>
+                            </tr>
+            
+            
+                                        <tr>
+                                            <td class="col-md-4">
+                                                <div class="io-line">Inherited from     <code><a href="../classes/ResourceList.html" target="_self" >ResourceList</a></code>
+            </div>
+                                            </td>
+                                        </tr>
+                                    <tr>
+                                        <td class="col-md-4">
+                                                <div class="io-line">Defined in ResourceList:151</div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Returns true if the given property has a filter set. If no property is given it returns true when no property has a filter. </p>
+            </div>
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                                <td>Type</td>
+                                                            <td>Optional</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                                <td>property</td>
+                                                                
+                                                                    <td>
+                                                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                                    </td>
+                                                                
+                                                                <td>
+                                                                        yes
+                                                                </td>
+                                                                
+            
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
             
                                         </div>
                                             <div class="io-description">

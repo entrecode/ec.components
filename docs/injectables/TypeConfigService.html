@@ -1460,7 +1460,13 @@
                             <td class="col-md-4">
                                 <ul class="index-list">
                                     <li>
+                                        <a href="#displayDate">displayDate</a>
+                                    </li>
+                                    <li>
                                         <a href="#get">get</a>
+                                    </li>
+                                    <li>
+                                        <a href="#groupDate">groupDate</a>
                                     </li>
                                     <li>
                                         <a href="#set">set</a>
@@ -1530,6 +1536,77 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
+                                    <a name="displayDate"></a>
+                                    <span class="name">
+                                        <b>
+                                        displayDate
+                                        </b>
+                                        <a href="#displayDate"><span class="fa fa-link"></span></a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>displayDate(time: )</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="163" class="link-to-prism">packages/data/src/model-config/type-config.service.ts:163</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Returns a date display function. If time is true, the time will be displayed too. Usese &#39;moment.format.date&#39; and &#39;moment.format.time&#39; symbols. </p>
+            </div>
+            
+                                        <div class="io-description">
+                                                <b>Parameters :</b>
+                                                <table class="params">
+                                                    <thead>
+                                                        <tr>
+                                                            <td>Name</td>
+                                                            <td>Optional</td>
+                                                                <td>Default value</td>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                            <tr>
+                                                                <td>time</td>
+                                                                
+                                                                
+                                                                <td>
+                                                                        no
+                                                                </td>
+                                                                
+                                                                    <td>
+                                                                            <code>true</code>
+                                                                    </td>
+            
+                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <div>
+                                        </div>
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code>(value: any) &#x3D;&gt; any</code>
+            
+                                        </div>
+                                            <div class="io-description">
+                                                
+                                            </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
                                     <a name="get"></a>
                                     <span class="name">
                                         <b>
@@ -1593,6 +1670,45 @@
                                             <div class="io-description">
                                                 
                                             </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                            <tr>
+                                <td class="col-md-4">
+                                    <a name="groupDate"></a>
+                                    <span class="name">
+                                        <b>
+                                        groupDate
+                                        </b>
+                                        <a href="#groupDate"><span class="fa fa-link"></span></a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-md-4">
+            <code>groupDate()</code>
+                                </td>
+                            </tr>
+            
+            
+                                    <tr>
+                                        <td class="col-md-4">
+                                                <div class="io-line">Defined in <a href="" data-line="169" class="link-to-prism">packages/data/src/model-config/type-config.service.ts:169</a></div>
+                                        </td>
+                                    </tr>
+            
+                            <tr>
+                                <td class="col-md-4">
+                                        <div class="io-description"><p>Returns a date group function. Uses &#39;moment.format.month&#39; symbol </p>
+            </div>
+            
+                                        <div class="io-description">
+                                            <b>Returns : </b>    <code>(value: any) &#x3D;&gt; any</code>
+            
+                                        </div>
                                 </td>
                             </tr>
                         </tbody>
@@ -1820,7 +1936,7 @@
                 datetime: {
                   view: &#x27;date&#x27;,
                   sortable: true,
-                  display: (value) &#x3D;&gt; value ? moment(value).format(this.symbol.resolve(&#x27;moment.format.date&#x27;)) : &#x27;&#x27;,
+                  display: this.displayDate(true),
                   validate: (value) &#x3D;&gt; {
                     if (value &amp;&amp; (value &#x3D;&#x3D;&#x3D; &#x27;invalid&#x27; || !moment(value).isValid())) {
                       return &#x27;Ungültiges Datum&#x27;;
@@ -1977,7 +2093,7 @@ export class TypeConfigService {
     datetime: {
       view: &#x27;date&#x27;,
       sortable: true,
-      display: (value) &#x3D;&gt; value ? moment(value).format(this.symbol.resolve(&#x27;moment.format.date&#x27;)) : &#x27;&#x27;,
+      display: this.displayDate(true),
       validate: (value) &#x3D;&gt; {
         if (value &amp;&amp; (value &#x3D;&#x3D;&#x3D; &#x27;invalid&#x27; || !moment(value).isValid())) {
           return &#x27;Ungültiges Datum&#x27;;
@@ -2058,6 +2174,17 @@ export class TypeConfigService {
       return;
     }
     Object.assign(this.types[type], config);
+  }
+
+  /** Returns a date display function. If time is true, the time will be displayed too. Usese &#x27;moment.format.date&#x27; and &#x27;moment.format.time&#x27; symbols. */
+  displayDate(time &#x3D; true) {
+    const format &#x3D; this.symbol.resolve(&#x27;moment.format.date&#x27;) + (time ? &#x27; &#x27; + this.symbol.resolve(&#x27;moment.format.time&#x27;) : &#x27;&#x27;);
+    return (value) &#x3D;&gt; value ? moment(value).format(format) : &#x27;&#x27;;
+  }
+
+  /** Returns a date group function. Uses &#x27;moment.format.month&#x27; symbol */
+  groupDate() {
+    return (value) &#x3D;&gt; moment(value).format(this.symbol.resolve(&#x27;moment.format.month&#x27;));
   }
 }
 </code></pre>

@@ -69,13 +69,6 @@ export class DemoComponent {
           label: 'ID',
           // readOnly: true
         },
-        created: {
-          label: 'Datum',
-          readOnly: true
-        },
-        modified: {
-          label: 'Letzte Änderung',
-        },
         picture: {
           label: 'Bilder'
         },

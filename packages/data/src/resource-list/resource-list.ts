@@ -139,18 +139,31 @@ export class ResourceList extends List<Resource> {
     this.load();
   }
 
+  /** Helper function. Returns true if the given query value is empty (also recognizes empty array) */
+  isEmptyFilter(query: null | undefined | string | Array<any>) {
+    return query === '' ||
+      query === null ||
+      query === undefined ||
+      (Array.isArray(query) && !query.length)
+  }
+
+  /** Returns true if the given property has a filter set. If no property is given it returns true when no property has a filter. */
+  isFiltered(property?: string) {
+    if (!this.config.filter) {
+      return false;
+    }
+    if (!property) {
+      return Object.keys(this.config.filter)
+        .filter(key => !this.isEmptyFilter(this.config.filter[key]))
+        .length > 0
+    }
+    return !this.isEmptyFilter(this.config.filter[property]);
+  }
+
   /** Updates the config.filter with the given property filter. */
   filterProperty(property: string, value: any = '') {
     const currentFilter = this.config.filter || {};
-    if (
-      value === '' ||
-      value === null ||
-      value === undefined ||
-      (Array.isArray(value) && !value.length)
-    ) {
-      if (!currentFilter[property]) {
-        return; // filter is already empty => no need to load again
-      }
+    if (this.isEmptyFilter(value)) {
       delete currentFilter[property];
     } else {
       Object.assign(currentFilter, {
@@ -162,8 +175,21 @@ export class ResourceList extends List<Resource> {
 
   /** Filters the entry list by a given property value. Triggers load. */
   filter(property: string, value: any = '') {
+    if (this.isEmptyFilter(value) && !this.isFiltered(property)) {
+      return; // filter is already empty => no need to load again
+    }
     return this.load({
       filter: this.filterProperty(property, value)
+    });
+  }
+
+  /** Clears the filter for given property or all properties if none given. */
+  clearFilter(property?: string) {
+    if (property) {
+      return this.filter(property, null);
+    }
+    this.load({
+      filter: {}
     });
   }
 }

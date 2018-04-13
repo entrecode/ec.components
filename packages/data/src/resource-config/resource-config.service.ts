@@ -5,48 +5,51 @@ import localeFr from '@angular/common/locales/fr';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 import Resource from 'ec.sdk/lib/resources/Resource';
 import { Injectable } from '@angular/core';
+import { TypeConfigService } from '../model-config/type-config.service';
 
-export function created(label = 'Date', symbol: SymbolService) {
-  return {
-    label,
-    sortable: true,
-    display: value => moment(value).format(symbol.resolve('moment.format.date')),
-    group: value => moment(value).format(symbol.resolve('moment.format.month')),
-    form: false,
-    immutable: true
-  }
-};
-
-export function hexColor() {
-  return {
-    label: '#',
-    view: 'color',
-    prefill: '#ffffff'
-  }
-};
-
-export function tagsField(label, list = true) {
-  return {
-    label,
-    view: 'tags',
-    display: (value) => value || [],
-    list
-  };
-}
-
-export function stringField(label, filterable = true, sortable = true) {
-  return {
-    label,
-    view: 'string',
-    filterable,
-    sortable
-  };
-}
 
 @Injectable()
 /** Contains default configurations for all kinds of resources. Used by ResourceList and ResourceForm.  */
 export class ResourceConfig {
-  constructor(private symbol: SymbolService) { }
+
+  created(label = 'Date', symbol: SymbolService) {
+    return {
+      label,
+      sortable: true,
+      view: 'date',
+      display: this.typeConfig.displayDate(),
+      group: this.typeConfig.groupDate(),
+      form: false,
+      immutable: true
+    }
+  };
+
+  hexColor() {
+    return {
+      label: '#',
+      view: 'color',
+      prefill: '#ffffff'
+    }
+  };
+
+  tagsField(label, list = true) {
+    return {
+      label,
+      view: 'tags',
+      display: (value) => value || [],
+      list
+    };
+  }
+
+  stringField(label, filterable = true, sortable = true) {
+    return {
+      label,
+      view: 'string',
+      filterable,
+      sortable
+    };
+  }
+  constructor(private symbol: SymbolService, private typeConfig: TypeConfigService) { }
   get config(): { [key: string]: CrudConfig<Resource> } {
     return {
       dataManager: {
@@ -59,12 +62,12 @@ export class ResourceConfig {
           get: true
         },
         fields: {
-          hexColor: hexColor(),
+          hexColor: this.hexColor(),
           shortID: {
             immutable: true,
             list: false
           },
-          title: Object.assign(stringField('Name'), { required: true }),
+          title: Object.assign(this.stringField('Name'), { required: true }),
           description: {
             label: this.symbol.resolve('field.label.description'),
             view: 'string',
@@ -80,20 +83,20 @@ export class ResourceConfig {
             list: false,
             immutable: true
           },
-          locales: tagsField(this.symbol.resolve('field.label.locales'), false),
+          locales: this.tagsField(this.symbol.resolve('field.label.locales'), false),
           publicAssetRights: Object.assign(
-            tagsField(this.symbol.resolve('datamanager.field.label.publicAssetRights'), false),
+            this.tagsField(this.symbol.resolve('datamanager.field.label.publicAssetRights'), false),
             { immutable: true }),
-          rights: Object.assign(tagsField('rights', false), { immutable: true }),
-          created: created(this.symbol.resolve('field.label.created'), this.symbol),
+          rights: Object.assign(this.tagsField('rights', false), { immutable: true }),
+          created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
         }
       },
       model: {
         identifier: 'modelID',
         label: 'title',
         fields: {
-          hexColor: hexColor(),
-          title: Object.assign(stringField('Model'), { required: true }),
+          hexColor: this.hexColor(),
+          title: Object.assign(this.stringField('Model'), { required: true }),
           description: {
             label: this.symbol.resolve('field.label.description'),
             view: 'string',
@@ -139,18 +142,7 @@ export class ResourceConfig {
             view: 'json',
             immutable: true
           },
-          /* lastSyncs: {
-            label: 'Zuletzt synchronisiert',
-            display: (values) => {
-              if (values) {
-                console.log('values', values);
-              }
-              return (values || []).map(value => value && value.finished ? moment(value.finished).format(this.symbol.resolve('moment.format.date')) : '-')
-            },
-            view: 'tags',
-            immutable: true,
-          }, */
-          created: created(this.symbol.resolve('field.label.created'), this.symbol),
+          created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
         }
       },
       account: {
@@ -161,7 +153,7 @@ export class ResourceConfig {
           put: 'acc:edit:<accountID>'
         },
         fields: {
-          name: stringField(this.symbol.resolve('field.label.name')),
+          name: this.stringField(this.symbol.resolve('field.label.name')),
           email: {
             label: this.symbol.resolve('field.label.email'),
             view: 'string',
@@ -190,7 +182,7 @@ export class ResourceConfig {
           openID: {
             list: false
           },
-          permissions: tagsField(this.symbol.resolve('account.field.label.permissions'), false),
+          permissions: this.tagsField(this.symbol.resolve('account.field.label.permissions'), false),
           groups: {
             label: this.symbol.resolve('account.field.label.groups'),
             view: 'tags',
@@ -200,7 +192,7 @@ export class ResourceConfig {
           state: {
             label: this.symbol.resolve('account.field.label.state')
           },
-          created: created(this.symbol.resolve('field.label.created'), this.symbol),
+          created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
         }
       },
       dmAccount: {
@@ -251,8 +243,8 @@ export class ResourceConfig {
           },
           version: {
             label: this.symbol.resolve('template.field.label.version'),
-            display: value => moment(value).format(this.symbol.resolve('moment.format.date')),
-            group: value => moment(value).format(this.symbol.resolve('moment.format.month')),
+            display: this.typeConfig.displayDate(),
+            group: this.typeConfig.groupDate(),
             form: false
           }
         }
@@ -265,7 +257,7 @@ export class ResourceConfig {
           put: 'app:<appID>:edit'
         },
         fields: {
-          hexColor: hexColor(),
+          hexColor: this.hexColor(),
           shortID: {
             label: this.symbol.resolve('field.label.shortID'),
             list: false
@@ -276,7 +268,7 @@ export class ResourceConfig {
             filterable: true,
             sortable: true,
           },
-          created: created(this.symbol.resolve('field.label.created'), this.symbol),
+          created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
         }
       },
       platform: {
@@ -295,7 +287,7 @@ export class ResourceConfig {
             view: 'json',
             list: false
           },
-          created: created(this.symbol.resolve('field.label.created'), this.symbol),
+          created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
         }
       },
       asset: { // old ec.asset
@@ -332,8 +324,8 @@ export class ResourceConfig {
             display: value => value.length,
             immutable: true
           },
-          tags: tagsField(this.symbol.resolve('asset.field.label.tags')),
-          created: created(this.symbol.resolve('field.label.created'), this.symbol),
+          tags: this.tagsField(this.symbol.resolve('asset.field.label.tags')),
+          created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
         }
       },
       legacyAsset: { // old public assets
@@ -370,8 +362,8 @@ export class ResourceConfig {
             display: value => value.length,
             immutable: true
           },
-          tags: tagsField(this.symbol.resolve('asset.field.label.tags')),
-          created: created(this.symbol.resolve('field.label.created'), this.symbol),
+          tags: this.tagsField(this.symbol.resolve('asset.field.label.tags')),
+          created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
         }
       },
       assetGroup: { // https://doc.entrecode.de/en/develop/resources/dm-assetgroup/
@@ -396,7 +388,7 @@ export class ResourceConfig {
             display: (policies) => (policies || []).map(p => p.method),
             prefill: []
           },
-          created: created(this.symbol.resolve('field.label.created'), this.symbol),
+          created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
         }
       },
       dmAsset: { // new assets
@@ -456,7 +448,7 @@ export class ResourceConfig {
             immutable: true,
             form: false
           },
-          created: created(this.symbol.resolve('field.label.created'), this.symbol),
+          created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
         }
       },
       dmClient: {
@@ -470,9 +462,9 @@ export class ResourceConfig {
             label: this.symbol.resolve('client.field.label.callbackURL'),
             view: 'string',
           },
-          tokenMethod: tagsField(this.symbol.resolve('client.field.label.tokenMethod')),
-          disableStrategies: tagsField(this.symbol.resolve('client.field.label.disableStrategies')),
-          created: created(this.symbol.resolve('field.label.created'), this.symbol),
+          tokenMethod: this.tagsField(this.symbol.resolve('client.field.label.tokenMethod')),
+          disableStrategies: this.tagsField(this.symbol.resolve('client.field.label.disableStrategies')),
+          created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
         }
       },
       role: {
@@ -505,7 +497,7 @@ export class ResourceConfig {
             view: 'boolean'/* ,
         prefill: false */
           },
-          created: created(this.symbol.resolve('field.label.created'), this.symbol),
+          created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
         }
       },
       codeSource: {
@@ -522,7 +514,7 @@ export class ResourceConfig {
             label: this.symbol.resolve('field.label.config'),
             list: false
           },
-          created: created(this.symbol.resolve('field.label.created'), this.symbol),
+          created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
         }
       },
       dataSource: {
@@ -531,7 +523,7 @@ export class ResourceConfig {
           dataSourceID: {
             label: this.symbol.resolve('field.label.id'),
           },
-          created: created(this.symbol.resolve('field.label.created'), this.symbol),
+          created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
         }
       },
       target: {
@@ -545,7 +537,7 @@ export class ResourceConfig {
             label: this.symbol.resolve('field.label.config'),
             list: false
           },
-          created: created(this.symbol.resolve('field.label.created'), this.symbol),
+          created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
         }
       },
       group: {
@@ -559,7 +551,7 @@ export class ResourceConfig {
             display: (value) => value || [],
             list: false
           },
-          created: created(this.symbol.resolve('field.label.created'), this.symbol),
+          created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
         }
       }
     }

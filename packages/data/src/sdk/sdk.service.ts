@@ -95,7 +95,8 @@ export class SdkService {
       });
     return this.ready;
   }
-  /** Uses the given datamanager and optional short id to init api. If you set "datamanagerID" in your environment, this method is called automatically. */
+  /** Uses the given datamanager and optional short id to init api. 
+   * If you set "datamanagerID" in your environment, this method is called automatically. */
   useDatamanager(shortID: string, environment = this.environment) {
     this.apiResolved = false;
     this._api = new PublicAPI(shortID, <env>environment.environment, true);

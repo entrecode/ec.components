@@ -76,7 +76,7 @@ export class TypeConfigService {
     datetime: {
       view: 'date',
       sortable: true,
-      display: (value) => value ? moment(value).format(this.symbol.resolve('moment.format.date')) : '',
+      display: this.displayDate(true),
       validate: (value) => {
         if (value && (value === 'invalid' || !moment(value).isValid())) {
           return 'Ungültiges Datum';
@@ -157,5 +157,16 @@ export class TypeConfigService {
       return;
     }
     Object.assign(this.types[type], config);
+  }
+
+  /** Returns a date display function. If time is true, the time will be displayed too. Usese 'moment.format.date' and 'moment.format.time' symbols. */
+  displayDate(time = true) {
+    const format = this.symbol.resolve('moment.format.date') + (time ? ' ' + this.symbol.resolve('moment.format.time') : '');
+    return (value) => value ? moment(value).format(format) : '';
+  }
+
+  /** Returns a date group function. Uses 'moment.format.month' symbol */
+  groupDate() {
+    return (value) => moment(value).format(this.symbol.resolve('moment.format.month'));
   }
 }
