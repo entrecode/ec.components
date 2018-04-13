@@ -168,7 +168,6 @@ export class ModelConfigService extends Config {
         }, this.typeConfig.get(type.name),
           fieldConfig[property] ? fieldConfig[property] : {});
       });
-      console.log('field config', fieldConfig);
       return fieldConfig;
     });
   }
