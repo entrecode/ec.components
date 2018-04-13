@@ -85,7 +85,7 @@ export class AuthService {
       return Promise.resolve(methods);
     }
     if (!this.resourceConfig.config[relation] || !this.resourceConfig.config[relation].permissions) {
-      console.warn(`relation ${relation} has no defined permissions, defaulting to all methods available`);
+      /* console.warn(`relation ${relation} has no defined permissions, defaulting to all methods available`); */
       return Promise.resolve(['get', 'post', 'put', 'delete']);
     }
     const permissions = this.resourceConfig.config[relation].permissions;
