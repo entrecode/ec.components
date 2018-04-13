@@ -76,8 +76,8 @@ export class ModelConfigService extends Config {
       },
       _created: {
         label: this.symbol.resolve('field.label.created'),
-        display: value => moment(value).format(this.symbol.resolve('moment.format.date')),
-        group: value => moment(value).format(this.symbol.resolve('moment.format.month')),
+        display: this.typeConfig.displayDate(),
+        group: this.typeConfig.groupDate(),
         form: false,
         immutable: true,
         sortable: true,
@@ -85,8 +85,8 @@ export class ModelConfigService extends Config {
       },
       _modified: {
         label: this.symbol.resolve('field.label.modified'),
-        display: value => moment(value).format(this.symbol.resolve('moment.format.date')),
-        group: value => moment(value).format(this.symbol.resolve('moment.format.month')),
+        display: this.typeConfig.displayDate(),
+        group: this.typeConfig.groupDate(),
         form: false,
         immutable: true,
         sortable: true,
@@ -168,6 +168,7 @@ export class ModelConfigService extends Config {
         }, this.typeConfig.get(type.name),
           fieldConfig[property] ? fieldConfig[property] : {});
       });
+      console.log('field config', fieldConfig);
       return fieldConfig;
     });
   }

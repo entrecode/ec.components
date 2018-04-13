@@ -17,6 +17,9 @@
   <div *ngSwitchCase="'boolean'" class="ec-output_boolean" [class.is-true]="item?.resolve(field.property)">
     <span>&#10004;</span>
   </div>
+  <div *ngSwitchCase="'date'" class="ec-output_date" [title]="item?.display(field.property)">
+    {{item?.display(field.property)}}
+  </div>
 
   <div class="ec-output_mail" *ngSwitchCase="'email'">
     <a [href]="'mailto:'+item?.display(field.property)">{{item?.display(field.property)}}</a>
@@ -64,10 +67,10 @@
     <!--<pre>{{item?.display(field.property)}}</pre>-->
     <span class="tag">JSON</span>
   </code>
-  <div *ngSwitchCase="'string'" class="ec-output_string">
-    {{item?.display(field.property)}}
+  <div *ngSwitchCase="'string'" class="ec-output_string" [title]="item?.display(field.property)">
+    {{item?.display(field.property)}}  <!-- {{field.view}} -->
   </div>
-  <span *ngSwitchDefault>
-    {{item?.display(field.property)}}
+  <span *ngSwitchDefault [title]="item?.display(field.property)">
+    {{item?.display(field.property)}} <!-- {{field.view}} -->
   </span>
 </div>
