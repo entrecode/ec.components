@@ -157,7 +157,7 @@ export class ResourceList extends List<Resource> {
         .filter(key => !this.isEmptyFilter(this.config.filter[key]))
         .length > 0
     }
-    return this.isEmptyFilter(this.config.filter[property]);
+    return !this.isEmptyFilter(this.config.filter[property]);
   }
 
   /** Updates the config.filter with the given property filter. */
