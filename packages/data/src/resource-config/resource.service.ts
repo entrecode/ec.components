@@ -51,7 +51,8 @@ export class ResourceService {
         return this.changes.asObservable().filter((change: Update) => this.matches(change, filter));
     }
 
-    /** Saves the given resource with the given value. If the resource is not yet existing, it will be created. Otherwise it will be updated. */
+    /** Saves the given resource with the given value. If the resource is not yet existing,
+     * it will be created.Otherwise it will be updated. */
     save(item: Item<Resource>, value: Object, relation: string, api: Core): Promise<Resource> {
         const resource = item.getBody();
         if (item.config.onSave) {
