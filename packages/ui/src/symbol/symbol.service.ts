@@ -41,7 +41,8 @@ export class SymbolService {
         return null;
     }
 
-    /** Uses the given symbol set to enhance the current registry. All duplicates will be overriden. Non specified symbols will stay in the registry. */
+    /** Uses the given symbol set to enhance the current registry. 
+     * All duplicates will be overriden. Non specified symbols will stay in the registry. */
     set(symbols: Symbol[] = []) {
         symbols.map(symbol => {
             const index = this.registry.indexOf(this.get(symbol.name));
