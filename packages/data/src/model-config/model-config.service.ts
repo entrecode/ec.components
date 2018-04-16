@@ -92,8 +92,9 @@ export class ModelConfigService extends Config {
         sortable: true,
         hidden: false
       },
-      creator: {
+      _creator: {
         label: this.symbol.resolve('field.label.creator'),
+        display: this.typeConfig.displayAccount(),
         view: 'account',
         form: false,
         immutable: true,

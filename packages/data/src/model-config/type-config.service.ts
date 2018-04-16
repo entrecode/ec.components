@@ -165,6 +165,11 @@ export class TypeConfigService {
     return (value) => value ? moment(value).format(format) : '';
   }
 
+  /** Returns an account display function */
+  displayAccount() {
+    return (value, entry, property) => entry.getTitle(property) || 'Ec User';
+  }
+
   /** Returns a date group function. Uses 'moment.format.month' symbol */
   groupDate() {
     return (value) => moment(value).format(this.symbol.resolve('moment.format.month'));
