@@ -150,6 +150,10 @@ export default [
         content: 'Creator'
     },
     {
+        name: 'field.creator.ecuser',
+        content: 'Admin'
+    },
+    {
         name: 'field.label.type',
         content: 'Type'
     },

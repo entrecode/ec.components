@@ -167,7 +167,7 @@ export class TypeConfigService {
 
   /** Returns an account display function */
   displayAccount() {
-    return (value, entry, property) => entry.getTitle(property) || 'Ec User';
+    return (value, entry, property) => entry.getTitle(property) || this.symbol.resolve('field.creator.ecuser');
   }
 
   /** Returns a date group function. Uses 'moment.format.month' symbol */
