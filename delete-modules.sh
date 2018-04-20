@@ -14,3 +14,5 @@ cd ../tinymce
 rm -rf node_modules
 cd ../ace
 rm -rf node_modules
+cd ../location
+rm -rf node_modules

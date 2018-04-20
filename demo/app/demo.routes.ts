@@ -36,6 +36,7 @@ import { PasswordResetDemoComponent } from './password-reset/password-reset-demo
 import { ApiExplorerComponent } from './api-explorer/api-explorer.component';
 import { SymbolDemoComponent } from './symbol/symbol-demo.component';
 import { ResourceDeletePopDemoComponent } from './resource-delete-pop/resource-delete-pop-demo.component';
+import { LocationPickerDemoComponent } from './location/location-picker-demo.component';
 
 export const demoRoutes: Routes = [
   {
@@ -237,6 +238,10 @@ export const demoRoutes: Routes = [
       {
         path: 'ace',
         component: AceDemoComponent
+      },
+      {
+        path: 'location',
+        component: LocationPickerDemoComponent
       }
     ]
   },

@@ -49,6 +49,8 @@ import { SymbolDemoComponent } from './symbol/symbol-demo.component';
 import { ResourceDeletePopDemoComponent } from './resource-delete-pop/resource-delete-pop-demo.component';
 import { ResourceSelectDemoComponent } from './resource-select/resource-select-demo.component';
 import { FileListDemoComponent } from './file-list/file-list-demo.component';
+import { LocationModule } from '../../packages/location/src/location.module';
+import { LocationPickerDemoComponent } from './location/location-picker-demo.component';
 
 demoRoutes.unshift(
   {
@@ -98,7 +100,8 @@ demoRoutes.unshift(
     SymbolDemoComponent,
     ResourceDeletePopDemoComponent,
     ResourceSelectDemoComponent,
-    FileListDemoComponent
+    FileListDemoComponent,
+    LocationPickerDemoComponent
   ],
   entryComponents: [
     CoolStringComponent,
@@ -114,6 +117,7 @@ demoRoutes.unshift(
     MediumModule,
     TinymceModule,
     AceModule,
+    LocationModule
   ],
   providers: [
     {

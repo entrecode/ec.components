@@ -21,3 +21,6 @@ ln -s ../../packages/tinymce
 #
 rm -rf ace
 ln -s ../../packages/ace
+#
+rm -rf location
+ln -s ../../packages/location
