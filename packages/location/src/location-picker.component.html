@@ -1,1 +1,3 @@
-<p>LOCATION PICKER COMING SOON</p>
+<agm-map [latitude]="value?.latitude" [longitude]="value?.longitude">
+    <agm-marker (mapClick)="clickedMap($event)" [latitude]="value?.latitude" [longitude]="value?.longitude"></agm-marker>
+</agm-map>

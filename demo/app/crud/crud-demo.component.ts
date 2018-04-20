@@ -3,6 +3,7 @@ import { ModelConfigService } from '@ec.components/data';
 import { TypeConfigService } from '../../../packages/data/src/model-config/type-config.service';
 import { ResourceConfig } from '../../../packages/data/src/resource-config/resource-config.service';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import { LocationPickerComponent } from '../../../packages/location/src/location-picker.component';
 
 @Component({
   selector: 'ec-crud-demo',
@@ -14,6 +15,9 @@ export class CrudDemoComponent {
     public symbol: SymbolService) {
     /* this.modelConfig.set('field_test', {
       fields: {
+        location: {
+          input: LocationPickerComponent
+        },
         role: {
           identifier: 'roleID',
           label: 'name',

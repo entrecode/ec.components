@@ -7,7 +7,7 @@
   </ec-pop>
   <!-- <a (click)="simpleMuffin.addField('quark',{label:'quarkk',type:'entry',relation:'muffin'})">add field</a> -->
   <a (click)="fieldPop.show()">add field</a>
-
+  
   <h2>With Config</h2>
   <ec-entry-form model="muffin" [config]="formConfig"></ec-entry-form>
 
@@ -16,6 +16,11 @@
 
   <h2>With entry</h2>
   <ec-entry-form model="muffin" [entry]="myMuffin.entry" ecEntry entryId="SkXEhDZ5yW" #myMuffin="ecEntry"></ec-entry-form>
+  
+
+  <h2>With complex Entry</h2>
+  <ec-notifications></ec-notifications>
+  <ec-entry-form model="field_test" [entry]="fieldTest.entry" ecEntry entryId="H1f3tKR85f" #fieldTest="ecEntry"></ec-entry-form>
 
   <h2>Custom</h2>
 

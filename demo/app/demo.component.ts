@@ -2,6 +2,8 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { ModelConfigService } from '../../packages/data/index';
 import moment from 'moment-es6';
 import { demoRoutes } from './demo.routes';
+import { TypeConfigService } from '../../packages/data/src/model-config/type-config.service';
+import { LocationPickerComponent } from '../../packages/location/src/location-picker.component';
 
 @Component({
   selector: 'ec-demo-root',
@@ -12,8 +14,13 @@ import { demoRoutes } from './demo.routes';
 export class DemoComponent {
   public demos = demoRoutes;
 
-  constructor(private modelConfig: ModelConfigService) {
+  constructor(private modelConfig: ModelConfigService,
+    private typeConfig: TypeConfigService) {
     moment.locale('de');
+
+    this.typeConfig.set('location', {
+      input: LocationPickerComponent
+    });
 
     this.modelConfig.set('muffin', {
       fields: {
