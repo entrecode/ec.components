@@ -1,3 +1,4 @@
 <agm-map [latitude]="value?.latitude" [longitude]="value?.longitude">
-    <agm-marker (mapClick)="clickedMap($event)" [latitude]="value?.latitude" [longitude]="value?.longitude"></agm-marker>
+    <agm-marker #marker [markerDraggable]="!readOnly" (dragEnd)="markerDragEnd($event?.coords)" [latitude]="value?.latitude"
+        [longitude]="value?.longitude"></agm-marker>
 </agm-map>
