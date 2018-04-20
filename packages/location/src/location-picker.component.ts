@@ -1,6 +1,7 @@
-import { Component, OnInit, forwardRef, Input } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+import { Component, OnInit, forwardRef, Input, ViewChild } from '@angular/core';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormControl } from '@angular/forms';
 import { DefaultInputComponent, InputComponent } from '@ec.components/ui';
+import { LocationMapComponent } from './location-map.component';
 
 @Component({
     selector: 'ec-location-picker',
@@ -15,31 +16,23 @@ import { DefaultInputComponent, InputComponent } from '@ec.components/ui';
     ]
 })
 
-export class LocationPickerComponent extends DefaultInputComponent implements OnInit, ControlValueAccessor {
-    @Input() readOnly: boolean;
+export class LocationPickerComponent extends DefaultInputComponent implements ControlValueAccessor, OnInit {
+    /** The form control that holds the location */
+    @Input() formControl: FormControl;
+    @ViewChild(LocationMapComponent) map: LocationMapComponent;
     /** Form input component */
     input: InputComponent;
-    defaultValue = {
-        longitude: 6.963059734375065,
-        latitude: 50.93323460234276
-    };
-    value: {
-        longitude: number,
-        latitude: number
-    } = this.defaultValue;
+    value;
 
-    ngOnInit() { }
 
-    markerDragEnd(coords) {
-        if (!coords) {
-            console.warn('no coords');
-            return;
-        }
-        const position = { longitude: coords.lng, latitude: coords.lat };
-        this.value = position; // centers map
-        this.propagateChange(position);
+    ngOnInit() {
+    }
+
+    setValue(value) {
+        this.map.value = value;
+        this.propagateChange(value);
         if (this.input) {
-            this.input.propagateChange(position);
+            this.input.propagateChange(value);
         }
     }
 
