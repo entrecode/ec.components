@@ -13,14 +13,44 @@ export class CrudDemoComponent {
   constructor(public modelConfig: ModelConfigService,
     public resourceConfig: ResourceConfig,
     public symbol: SymbolService) {
-    /* this.modelConfig.set('field_test', {
+    this.modelConfig.set('field_test', {
       fields: {
         location: {
           input: LocationPickerComponent
         },
+        account: {
+          identifier: 'accountID',
+          permissions: {
+            get: 'acc:list',
+            put: 'acc:edit:<accountID>'
+          },
+          methods: ['get', 'put', 'delete'],
+          fields: {
+            email: {
+              label: this.symbol.resolve('field.label.email'),
+              view: 'string',
+              filterable: true,
+              sortable: true
+            },
+            hasPassword: {
+              label: this.symbol.resolve('dmAccount.field.label.hasPassword'),
+              view: 'boolean',
+              filterable: true,
+              readOnly: true
+            },
+            pending: {
+              label: this.symbol.resolve('dmAccount.field.label.pending'),
+              view: 'boolean',
+              filterable: true,
+              readOnly: true
+            },
+            oauth: {
+              list: false
+            }
+          }
+        },
         role: {
           identifier: 'roleID',
-          label: 'name',
           display: (liteRole) => liteRole ? liteRole.name : '',
           fields: {
             name: {
@@ -50,7 +80,7 @@ export class CrudDemoComponent {
           }
         }
       }
-    }); */
+    });
   }
 
   log(entry) {
