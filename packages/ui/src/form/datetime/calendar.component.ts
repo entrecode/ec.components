@@ -1,4 +1,4 @@
-import { Component, forwardRef, Input, ViewChild } from '@angular/core';
+import { Component, forwardRef, Input, ViewChild, EventEmitter, Output } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import moment from 'moment-es6';
 import { MonthComponent } from './month.component';
@@ -21,6 +21,8 @@ import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 export class CalendarComponent implements ControlValueAccessor {
   /** The date that should be displayed at start. */
   @Input() date: moment.Moment;
+  /** Output that emits when the value changes */
+  @Output() change: EventEmitter<any> = new EventEmitter();
   /** The form control that holds the date */
   @Input() formControl: FormControl;
   /** The current value of the input */
@@ -71,7 +73,7 @@ export class CalendarComponent implements ControlValueAccessor {
       selected.minute(previous.minute());
     }
     this.value = selected.format(this.getPattern(selected));
-    this.propagateChange(selected.toISOString() || 'invalid');
+    this.setValue(selected.toISOString() || 'invalid');
   }
 
   /** Called upon input value change by the user. */
@@ -82,10 +84,16 @@ export class CalendarComponent implements ControlValueAccessor {
       this.grid.selectDay(typed);
     } else if (value === '') {
       this.grid.clearSelection();
-      this.propagateChange(null);
+      this.setValue(null);
     } else {
-      this.propagateChange(typed.toISOString() || 'invalid');
+      this.setValue(typed.toISOString() || 'invalid');
     }
+  }
+
+  /** called when the value should be changed from inside the component. calls propagateChange and emits the change output */
+  setValue(value) {
+    this.propagateChange(value);
+    this.change.emit(value);
   }
 
   /** Selects the given Date when the model changes. */
