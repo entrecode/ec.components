@@ -197,7 +197,7 @@ export class ResourceConfig {
       },
       dmAccount: {
         identifier: 'accountID',
-        label: 'email',
+        label: 'title',
         permissions: {
           get: 'acc:list',
           put: 'acc:edit:<accountID>'

@@ -122,11 +122,13 @@ export class TypeConfigService {
       filterPopClass: 'ec-pop_dialog'
     },
     account: {
+      display: (value) => value ? value.title : '',
       input: AdminEntryInputComponent,
       output: DefaultEntryOutputComponent,
       filterPopClass: 'ec-pop_dialog'
     },
     role: {
+      display: (value) => value ? value.name : '',
       input: AdminEntryInputComponent,
       output: DefaultEntryOutputComponent,
       filterPopClass: 'ec-pop_dialog'
