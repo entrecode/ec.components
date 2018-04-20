@@ -2,6 +2,7 @@ import { Component, OnInit, forwardRef, Input, ViewChild } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormControl } from '@angular/forms';
 import { DefaultInputComponent, InputComponent } from '@ec.components/ui';
 import { LocationMapComponent } from './location-map.component';
+import { LocationSearchComponent } from './location-search.component';
 
 @Component({
     selector: 'ec-location-picker',
@@ -20,16 +21,19 @@ export class LocationPickerComponent extends DefaultInputComponent implements Co
     /** The form control that holds the location */
     @Input() formControl: FormControl;
     @ViewChild(LocationMapComponent) map: LocationMapComponent;
+    @ViewChild(LocationSearchComponent) search: LocationSearchComponent;
     /** Form input component */
     input: InputComponent;
-    value;
 
 
     ngOnInit() {
     }
 
     setValue(value) {
-        this.map.value = value;
+        if (!value) {
+            this.search.clear();
+        }
+        this.map.setValue(value);
         this.propagateChange(value);
         if (this.input) {
             this.input.propagateChange(value);
@@ -38,7 +42,7 @@ export class LocationPickerComponent extends DefaultInputComponent implements Co
 
     /** Writes value to editor on outside model change. */
     writeValue(value: any) {
-        this.value = value;
+        this.map.setValue(value);
     }
 
     propagateChange = (_: any) => { };

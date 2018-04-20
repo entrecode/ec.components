@@ -26,6 +26,12 @@ export class LocationSearchComponent implements AfterViewInit {
     ) {
     }
 
+    clear() {
+        if (this.searchInput) {
+            this.searchInput.nativeElement.value = '';
+        }
+    }
+
     ngAfterViewInit() {
         this.geocodeService.autocompleteAddress(this.searchInput.nativeElement)
             .subscribe(

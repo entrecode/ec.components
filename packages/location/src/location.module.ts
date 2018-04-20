@@ -6,6 +6,7 @@ import { GeocodeService } from './geocode.service';
 import { LocationPickerComponent } from './location-picker.component';
 import { LocationSearchComponent } from './location-search.component';
 import { LocationMapComponent } from './location-map.component';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -16,6 +17,7 @@ const LOCATION_COMPONENTS = [
 ];
 @NgModule({
     imports: [
+        CommonModule,
         ReactiveFormsModule,
         UiModule,
         AgmCoreModule.forRoot({

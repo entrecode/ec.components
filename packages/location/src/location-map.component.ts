@@ -9,18 +9,23 @@ import { DefaultInputComponent, InputComponent } from '@ec.components/ui';
 })
 
 export class LocationMapComponent implements OnInit {
+    @Input() center: { longitude: any; latitude: any; } = { latitude: 48.8093253, longitude: 9.159388100000001 };
     @Input() readOnly: boolean;
     @Output() change: EventEmitter<any> = new EventEmitter();
     /** Form input component */
     @Input() value: {
         longitude: number,
         latitude: number
-    } = {
-            longitude: 6.963059734375065,
-            latitude: 50.93323460234276
-        }
+    };
 
     ngOnInit() { }
+
+    setValue(value) {
+        this.value = value;
+        if (value) {
+            this.center = value;
+        }
+    }
 
     markerDragEnd(coords) {
         if (!coords) {
@@ -29,6 +34,7 @@ export class LocationMapComponent implements OnInit {
         }
         const position = { longitude: coords.lng, latitude: coords.lat };
         this.value = position; // centers map
+        this.center = position;
         this.change.emit(position);
     }
 }

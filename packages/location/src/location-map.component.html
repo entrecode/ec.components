@@ -1,4 +1,4 @@
-<agm-map [latitude]="value?.latitude" [longitude]="value?.longitude">
-        <agm-marker #marker [markerDraggable]="!readOnly" (dragEnd)="markerDragEnd($event?.coords)" [latitude]="value?.latitude"
-            [longitude]="value?.longitude"></agm-marker>
-    </agm-map>
+<agm-map [latitude]="center?.latitude" [longitude]="center?.longitude">
+    <agm-marker #marker [markerDraggable]="!readOnly" (dragEnd)="markerDragEnd($event?.coords)" [latitude]="value?.latitude"
+        [longitude]="value?.longitude" *ngIf="value"></agm-marker>
+</agm-map>
