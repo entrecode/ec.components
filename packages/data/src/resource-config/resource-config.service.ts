@@ -6,6 +6,7 @@ import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 import Resource from 'ec.sdk/lib/resources/Resource';
 import { Injectable } from '@angular/core';
 import { TypeConfigService } from '../model-config/type-config.service';
+import { AdminEntryInputComponent } from '../entry-form/admin-entry-input.component';
 
 
 @Injectable()
@@ -204,6 +205,10 @@ export class ResourceConfig {
         },
         methods: ['get', 'put', 'delete'],
         fields: {
+          accountID: {
+            label: this.symbol.resolve('field.label.id'),
+            view: 'string'
+          },
           email: {
             label: this.symbol.resolve('field.label.email'),
             view: 'string',
@@ -483,9 +488,12 @@ export class ResourceConfig {
           },
           accounts: {
             label: this.symbol.resolve('role.field.label.accounts'),
-            view: 'tags',
+            type: 'accounts',
             prefill: [],
-            list: false
+            list: false,
+            display: (value) => value ? value.title : '',
+            input: AdminEntryInputComponent,
+            filterPopClass: 'ec-pop_dialog'
           },
           addRegistered: {
             label: this.symbol.resolve('role.field.label.addRegistered'),
