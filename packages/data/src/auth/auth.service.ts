@@ -84,11 +84,11 @@ export class AuthService {
     if (methods) {
       return Promise.resolve(methods);
     }
-    if (!this.resourceConfig.config[relation] || !this.resourceConfig.config[relation].permissions) {
+    if (!this.resourceConfig.get(relation) || !this.resourceConfig.get(relation).permissions) {
       /* console.warn(`relation ${relation} has no defined permissions, defaulting to all methods available`); */
       return Promise.resolve(['get', 'post', 'put', 'delete']);
     }
-    const permissions = this.resourceConfig.config[relation].permissions;
+    const permissions = this.resourceConfig.get(relation).permissions;
     return Object.keys(permissions)
       .map((method) => (results) => {
         return !permissions[method] ? Promise.resolve(results) :

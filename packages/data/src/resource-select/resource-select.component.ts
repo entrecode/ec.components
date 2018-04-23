@@ -121,7 +121,7 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
             super.useConfig(this.config);
             return;
         }
-        this.config = Object.assign(this.resourceConfig.config[this.relation], { size: 10 },
+        this.config = Object.assign(this.resourceConfig.get(this.relation), { size: 10 },
             this.crudConfig, { solo: this.solo, selectMode: true, disableSelectSwitch: true });
         this.useConfig(this.config);
     }

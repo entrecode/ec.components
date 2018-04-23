@@ -58,14 +58,14 @@ export class AssetSelectComponent extends SelectComponent<Resource> implements O
       // TODO
     }
     if (this.assetGroupID || (this.formControl.value && this.fileService.isNewAsset(this.formControl.value))) {
-      this.config = Object.assign({}, this.resourceConfig.config['dmAsset'],
+      this.config = Object.assign({}, this.resourceConfig.get('dmAsset'),
         { readOnly: !this.assetGroupID });
       if (!this.assetGroupID) {
         console.warn('asset select has new asset but no assetGroupID was given. Switching to readOnly mode.')
       }
     } else {
       // legacy assets
-      this.config = Object.assign({}, this.resourceConfig.config['legacyAsset']);
+      this.config = Object.assign({}, this.resourceConfig.get('legacyAsset'));
     }
     Object.assign(this.config, { solo: this.solo });
     this.useConfig(this.config);

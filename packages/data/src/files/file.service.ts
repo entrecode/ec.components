@@ -142,8 +142,8 @@ export class FileService {
         return {
           asset: assets[0],
           assets,
-          item: new Item(assets[0], this.resourceConfig.config['legacyAsset']),
-          items: assets.map(asset => new Item(asset, this.resourceConfig.config['legacyAsset']))
+          item: new Item(assets[0], this.resourceConfig.get('legacyAsset')),
+          items: assets.map(asset => new Item(asset, this.resourceConfig.get('legacyAsset')))
         }
       }).then((upload: Upload) => {
         this.uploads.emit(upload);

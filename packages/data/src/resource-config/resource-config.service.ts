@@ -8,11 +8,22 @@ import { Injectable } from '@angular/core';
 import { TypeConfigService } from '../model-config/type-config.service';
 import { AdminEntryInputComponent } from '../entry-form/admin-entry-input.component';
 
-
 @Injectable()
 /** Contains default configurations for all kinds of resources. Used by ResourceList and ResourceForm.  */
 export class ResourceConfig {
 
+  constructor(private symbol: SymbolService, private typeConfig: TypeConfigService) { }
+  /** Returns the CrudConfig for the given relation name. */
+  get(relationName: string): CrudConfig<Resource> {
+    if (!this.config[relationName]) {
+      console.error(`${relationName} could not be found in the resource-config.
+      Use one of ${Object.keys(this.config[relationName])}`);
+      return;
+    } // TODO enrich fields with type with type-config?
+    return this.config[relationName];
+  }
+
+  /** returns the config for a created field */
   created(label = 'Date', symbol: SymbolService) {
     return {
       label,
@@ -24,7 +35,7 @@ export class ResourceConfig {
       immutable: true
     }
   };
-
+  /** returns the config for a hexColor field */
   hexColor() {
     return {
       label: '#',
@@ -32,7 +43,7 @@ export class ResourceConfig {
       prefill: '#ffffff'
     }
   };
-
+  /** returns the config for a tags field */
   tagsField(label, list = true) {
     return {
       label,
@@ -41,7 +52,7 @@ export class ResourceConfig {
       list
     };
   }
-
+  /** returns the config for a string field */
   stringField(label, filterable = true, sortable = true) {
     return {
       label,
@@ -50,7 +61,7 @@ export class ResourceConfig {
       sortable
     };
   }
-  constructor(private symbol: SymbolService, private typeConfig: TypeConfigService) { }
+  /** Returns the whole resource-config, which maps a resource relation name to a CrudConfig. */
   get config(): { [key: string]: CrudConfig<Resource> } {
     return {
       dataManager: {
@@ -371,7 +382,8 @@ export class ResourceConfig {
           created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
         }
       },
-      assetGroup: { // https://doc.entrecode.de/en/develop/resources/dm-assetgroup/
+      // https://doc.entrecode.de/en/develop/resources/dm-assetgroup/
+      assetGroup: {
         identifier: 'assetGroupID',
         fields: {
           assetGroupID: {
@@ -387,11 +399,22 @@ export class ResourceConfig {
             view: 'json',
             display: (json) => JSON.stringify(json),
             prefill: {}
+            /*
+            urlExpiration: string
+            disabledTypes: Array<string>
+            imageSizes: Array<integer>
+            thumbSizes: Array<integer>
+            */
           },
           policies: {
             view: 'tags',
             display: (policies) => (policies || []).map(p => p.method),
             prefill: []
+            /*
+            method: get, put, post, delete
+            user: public, dmUser
+            conditions: JSON or null (https://entrecode.de/schema/dm-assetgroup#definitions/conditions)
+            */
           },
           created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
         }

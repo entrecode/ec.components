@@ -62,7 +62,7 @@ export class ResourceListComponent extends ListComponent<Resource>
     const namespace = this.relation.split('.')[0];
     this.config = Object.assign(
       {},
-      this.resourceConfig.config[namespace] || {},
+      this.resourceConfig.get(namespace) || {},
       this.config || {}
     );
 

@@ -69,7 +69,7 @@ export class ResourceFormComponent extends FormComponent<Resource> implements On
     /** Merges current config default config and config input  */
     initConfig() {
         this.config = Object.assign(
-            {}, this.config || {}, this.resourceConfig.config[this.relation] || {}, this.configInput || {}
+            {}, this.config || {}, this.resourceConfig.get(this.relation) || {}, this.configInput || {}
         );
         this.init();
     }
