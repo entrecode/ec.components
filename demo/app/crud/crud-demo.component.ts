@@ -13,7 +13,7 @@ export class CrudDemoComponent {
   constructor(public modelConfig: ModelConfigService,
     public resourceConfig: ResourceConfig,
     public symbol: SymbolService) {
-    this.modelConfig.set('field_test', {
+    /* this.modelConfig.set('field_test', {
       fields: {
         location: {
           input: LocationPickerComponent
@@ -80,7 +80,7 @@ export class CrudDemoComponent {
           }
         }
       }
-    });
+    }) */;
   }
 
   log(entry) {

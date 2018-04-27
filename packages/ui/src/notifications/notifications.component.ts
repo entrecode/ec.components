@@ -29,6 +29,7 @@ export class NotificationsComponent {
         this.notifications.removeAll(notification.hide);
       }
       if (!notification.title && !notification.message) {
+        console.warn('tried to emit notification without message and title', notification);
         return;
       }
       if (notification.append) {
