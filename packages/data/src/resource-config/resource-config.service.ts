@@ -70,6 +70,10 @@ export class ResourceConfig {
     return /^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i;
   }
 
+  base64uuid(): RegExp {
+    return /^[a-zA-Z0-9\\-_]{22}$/;
+  }
+
   /** Returns the whole resource-config, which maps a resource relation name to a CrudConfig. */
   get config(): { [key: string]: CrudConfig<Resource> } {
     return {
@@ -439,7 +443,7 @@ export class ResourceConfig {
       },
       dmAsset: { // new assets
         identifier: 'assetID',
-        identifierPattern: this.uuid(),
+        identifierPattern: this.base64uuid(),
         fields: {
           file: {
             label: this.symbol.resolve('dmAsset.field.label.file'),
