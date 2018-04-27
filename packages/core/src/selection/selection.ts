@@ -32,7 +32,7 @@ export class Selection<T> extends List<T> {
 
   /** Toggle item in and out of selection.
    * The solo property will change the behaviour like you would expect it to behave :) */
-  toggle(item: Item<T>, solo= this.config.solo, event: boolean = true) {
+  toggle(item: Item<T>, solo = this.config.solo, event: boolean = true) {
     if (!item) {
       console.warn('toggle malicious item', item);
       return;

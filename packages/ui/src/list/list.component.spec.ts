@@ -13,8 +13,7 @@ import { LoaderModule } from '../loader/loader.module';
 import { IconModule } from '../icon/icon.module';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 import { SymbolModule } from '../symbol/symbol.module';
-
-// import { mocked } from '../../../../mocks/data';
+import { mocked } from '../../../../mocks/data';
 // import { Collection } from '@ec.components/core/src/collection/collection';
 
 describe('ListComponent', () => {
@@ -48,6 +47,27 @@ describe('ListComponent', () => {
     expect(component.list.items.length).toBe(component.items.length);
     expect(component.selection).toBeDefined();
   });
+
+  it('should support selectNext and selectPrevious', () => {
+    component.list = mocked.lists.trees;
+    component.ngOnChanges();
+    expect(component.list.items[0].getBody().name).toBe('Appletree');
+    expect(component.selection.items.length).toBe(0);
+    component.selectNext();
+    expect(component.selection.items.length).toBe(1);
+    expect(component.selection.items[0].getBody().name).toBe('Appletree');
+    component.selectNext();
+    expect(component.selection.items.length).toBe(1);
+    expect(component.selection.items[0].getBody().name).toBe('Lemontree');
+    component.selectPrev();
+    expect(component.selection.items.length).toBe(1);
+    expect(component.selection.items[0].getBody().name).toBe('Appletree');
+    component.selection.removeAll();
+    expect(component.selection.items.length).toBe(0);
+    component.selectPrev();
+    expect(component.selection.items.length).toBe(1);
+    expect(component.selection.items[0].getBody().name).toBe('ba');
+  })
 
   // TODO fix
   /*it('should use collection input', () => {

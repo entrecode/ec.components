@@ -77,4 +77,32 @@ export class ListComponent<T> implements OnChanges {
     return this.list && this.list.config && !this.list.config.disableHeader && (this.list.fields.length || this.list.config.title)
       && (this.list.config.alwaysShowHeader || !this.list.isEmpty());
   }
+
+  /** Selects the item with the given index */
+  selectIndex(index: number) {
+    if (!this.selection || this.list.isEmpty() || !this.list.items[index]) {
+      return;
+    }
+    this.selection.select(this.list.items[index]);
+  }
+
+  /** Selects the next item */
+  selectNext() {
+    let index = 0;
+    if (!this.selection.isEmpty()) {
+      index = this.list.items.indexOf(this.selection.items[0]) + 1;
+    }
+    this.selection.removeAll();
+    this.selectIndex(index % this.list.items.length);
+  }
+
+  /** Selects the previous item */
+  selectPrev() {
+    let index = this.list.items.length - 1;
+    if (!this.selection.isEmpty()) {
+      index = this.list.items.indexOf(this.selection.items[0]) + this.list.items.length - 1;
+    }
+    this.selection.removeAll();
+    this.selectIndex(index % this.list.items.length);
+  }
 }

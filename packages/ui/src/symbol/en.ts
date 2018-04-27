@@ -3,7 +3,7 @@ import { Symbol } from './symbol.interface';
 export default [
     {
         name: 'moment.format.date',
-        content: 'MM/DD/YY'
+        content: 'DD.MM.YYYY'
     },
     {
         name: 'moment.format.month',
