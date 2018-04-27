@@ -67,6 +67,9 @@ describe('ListComponent', () => {
     component.selectPrev();
     expect(component.selection.items.length).toBe(1);
     expect(component.selection.items[0].getBody().name).toBe('ba');
+    component.selectPrev();
+    expect(component.selection.items.length).toBe(1);
+    expect(component.selection.items[0].getBody().name).toBe('aa');
   })
 
   // TODO fix

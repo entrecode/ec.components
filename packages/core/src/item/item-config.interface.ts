@@ -8,6 +8,8 @@ export interface ItemConfig<T> {
   title?: string;
   /** The Property that is used to identify items from another (e.g. in a selection). */
   identifier?: string;
+  /** Pattern of the identifier field. Is used e.g. in the searchbar */
+  identifierPattern?: RegExp;
   /** The Property that is used to display the item for humans */
   label?: string;
   /** The Items field Config */

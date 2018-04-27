@@ -178,6 +178,7 @@ export class ModelConfigService extends Config {
     const config = Object.assign({}, this.get(model) || {}); // clone
     Object.assign(config, {
       identifier: 'id',
+      identifierPattern: /^[0-9A-Za-z-_]{7,14}$/, // shortID pattern
       label: '_entryTitle',
       onSave: (item: Item<EntryResource>, value) => this.crud.save(model, item.getBody(), value)
     });

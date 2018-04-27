@@ -61,11 +61,21 @@ export class ResourceConfig {
       sortable
     };
   }
+
+  shortID(): RegExp {
+    return /^[0-9A-Za-z-_]{7,14}$/;
+  }
+
+  uuid(): RegExp {
+    return /^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i;
+  }
+
   /** Returns the whole resource-config, which maps a resource relation name to a CrudConfig. */
   get config(): { [key: string]: CrudConfig<Resource> } {
     return {
       dataManager: {
         identifier: 'dataManagerID',
+        identifierPattern: this.uuid(),
         label: 'title',
         permissions: {
           post: 'dm-create',
@@ -105,6 +115,7 @@ export class ResourceConfig {
       },
       model: {
         identifier: 'modelID',
+        identifierPattern: this.uuid(),
         label: 'title',
         fields: {
           hexColor: this.hexColor(),
@@ -159,6 +170,7 @@ export class ResourceConfig {
       },
       account: {
         identifier: 'accountID',
+        identifierPattern: this.uuid(),
         label: 'email',
         permissions: {
           get: 'acc:list',
@@ -209,6 +221,7 @@ export class ResourceConfig {
       },
       dmAccount: {
         identifier: 'accountID',
+        identifierPattern: this.uuid(),
         label: 'title',
         permissions: {
           get: 'acc:list',
@@ -245,6 +258,7 @@ export class ResourceConfig {
       },
       template: {
         identifier: 'templateID',
+        identifierPattern: this.uuid(),
         label: 'name',
         permissions: {
           post: 'dm-template-create',
@@ -267,6 +281,7 @@ export class ResourceConfig {
       },
       app: {
         identifier: 'appID',
+        identifierPattern: this.uuid(),
         permissions: {
           post: 'app-create',
           delete: 'app:<appID>:delete',
@@ -289,6 +304,7 @@ export class ResourceConfig {
       },
       platform: {
         identifier: 'platformID',
+        identifierPattern: this.uuid(),
         fields: {
           title: {
             label: this.symbol.resolve('platform.field.label.platform'),
@@ -308,6 +324,7 @@ export class ResourceConfig {
       },
       asset: { // old ec.asset
         identifier: 'assetID',
+        identifierPattern: this.uuid(),
         fields: {
           thumb: {
             form: false,
@@ -346,6 +363,7 @@ export class ResourceConfig {
       },
       legacyAsset: { // old public assets
         identifier: 'assetID',
+        identifierPattern: this.uuid(),
         fields: {
           thumb: {
             form: false,
@@ -421,6 +439,7 @@ export class ResourceConfig {
       },
       dmAsset: { // new assets
         identifier: 'assetID',
+        identifierPattern: this.uuid(),
         fields: {
           file: {
             label: this.symbol.resolve('dmAsset.field.label.file'),
@@ -497,6 +516,7 @@ export class ResourceConfig {
       },
       role: {
         identifier: 'roleID',
+        identifierPattern: this.uuid(),
         label: 'name',
         fields: {
           name: {
@@ -533,6 +553,7 @@ export class ResourceConfig {
       },
       codeSource: {
         identifier: 'codeSourceID',
+        identifierPattern: this.uuid(),
         fields: {
           codeSourceID: {
             label: this.symbol.resolve('field.label.id'),
@@ -550,6 +571,7 @@ export class ResourceConfig {
       },
       dataSource: {
         identifier: 'dataSourceID',
+        identifierPattern: this.uuid(),
         fields: {
           dataSourceID: {
             label: this.symbol.resolve('field.label.id'),
@@ -559,6 +581,7 @@ export class ResourceConfig {
       },
       target: {
         identifier: 'targetID',
+        identifierPattern: this.uuid(),
         fields: {
           targetType: {
             label: this.symbol.resolve('field.label.type'),
@@ -573,6 +596,7 @@ export class ResourceConfig {
       },
       group: {
         identifier: 'groupID',
+        identifierPattern: this.uuid(),
         fields: {
           name: {
             label: this.symbol.resolve('field.label.name'),
