@@ -3,6 +3,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormControl } from '@angular/f
 import { DefaultInputComponent, InputComponent } from '@ec.components/ui';
 import { LocationMapComponent } from './location-map.component';
 import { LocationSearchComponent } from './location-search.component';
+import { GeocodeService } from './geocode.service';
 
 @Component({
     selector: 'ec-location-picker',
@@ -25,15 +26,23 @@ export class LocationPickerComponent extends DefaultInputComponent implements Co
     /** Form input component */
     input: InputComponent;
 
+    constructor(
+        private geocodeService: GeocodeService,
+    ) {
+        super();
+    }
 
     ngOnInit() {
     }
 
-    setValue(value) {
+    setValue(value, fromSearch?: boolean) {
         if (!value) {
             this.search.clear();
         }
         this.map.setValue(value);
+        if (!fromSearch) {
+            this.updateAddress();
+        }
         this.propagateChange(value);
         if (this.input) {
             this.input.propagateChange(value);
@@ -43,6 +52,23 @@ export class LocationPickerComponent extends DefaultInputComponent implements Co
     /** Writes value to editor on outside model change. */
     writeValue(value: any) {
         this.map.setValue(value);
+        this.updateAddress();
+    }
+
+    updateAddress() {
+        const value = this.map.value;
+        if (!value) {
+            this.search.searchInput.nativeElement.value = '';
+            return;
+        }
+        this.geocodeService.getNearestAddress(value)
+            .then(results => {
+                if (results.length) {
+                    this.search.searchInput.nativeElement.value = results[0].formatted_address;
+                } else {
+                    this.search.searchInput.nativeElement.value = '';
+                }
+            });
     }
 
     propagateChange = (_: any) => { };

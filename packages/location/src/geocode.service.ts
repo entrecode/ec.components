@@ -44,4 +44,27 @@ export class GeocodeService {
         return fromPromise(this.mapLoader.load())
             .pipe(switchMap(() => this.observeElement(el)));
     }
+
+    geocodeLatLng(geocoder, location): Promise<any> {
+        return new Promise((resolve, reject) => {
+            geocoder.geocode({ location }, (results, status) => {
+                if (status === 'OK') {
+                    resolve(results);
+                } else {
+                    reject(status);
+                }
+            });
+        });
+    }
+
+    public getNearestAddress(location: { latitude: number, longitude: number }): Promise<Array<any>> {
+        return this.mapLoader.load().then(() => {
+            return this.geocodeLatLng(
+                new google.maps.Geocoder, {
+                    lat: location.latitude,
+                    lng: location.longitude
+                }
+            );
+        })
+    }
 };
