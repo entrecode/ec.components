@@ -29,7 +29,7 @@ export class LocationPickerComponent extends DefaultInputComponent implements Co
     input: InputComponent;
 
     constructor(
-        private geocodeService: GeocodeService,
+        public geocodeService: GeocodeService,
     ) {
         super();
     }
