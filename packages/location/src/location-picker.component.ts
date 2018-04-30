@@ -21,6 +21,8 @@ import { GeocodeService } from './geocode.service';
 export class LocationPickerComponent extends DefaultInputComponent implements ControlValueAccessor, OnInit {
     /** The form control that holds the location */
     @Input() formControl: FormControl;
+    /** If true, the raw location value will be visible*/
+    @Input() showRawValue = true;
     @ViewChild(LocationMapComponent) map: LocationMapComponent;
     @ViewChild(LocationSearchComponent) search: LocationSearchComponent;
     /** Form input component */
