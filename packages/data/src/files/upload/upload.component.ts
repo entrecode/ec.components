@@ -86,6 +86,8 @@ export class UploadComponent implements WithLoader, WithNotifications {
 
   /** Triggers upload of current selected files */
   upload(e, api = this.sdk.api) {
+    e.preventDefault();
+    e.stopPropagation();
     const assetGroupID = this.assetGroupID || this.assetGroup;
     this.uploadPromise = (assetGroupID ?
       this.fileService.uploadAssets(e, assetGroupID, this.options, api) :

@@ -11,6 +11,7 @@ import { AssetDirective } from './asset/asset.directive';
 import { ImageDirective } from './image/image.directive';
 import { AssetListPopComponent } from './asset-list-pop/asset-list-pop.component';
 import { ResourceModule } from '../resource/resource.module';
+import { DropzoneDirective } from './dropzone/dropzone.directive';
 
 @NgModule({
   entryComponents: [
@@ -21,6 +22,7 @@ import { ResourceModule } from '../resource/resource.module';
     AssetListPopComponent,
     AssetSelectComponent,
     AssetDirective,
+    DropzoneDirective,
     ImageDirective,
     UploadComponent,
   ],
@@ -35,6 +37,7 @@ import { ResourceModule } from '../resource/resource.module';
     AssetListPopComponent,
     AssetSelectComponent,
     AssetDirective,
+    DropzoneDirective,
     ImageDirective,
     UploadComponent,
     SdkModule,

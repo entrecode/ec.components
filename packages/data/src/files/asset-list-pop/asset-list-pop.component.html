@@ -1,16 +1,18 @@
 <div class="ec-pop-container" [class.is-active]="active" [class.is-visible]="visible">
   <div class="ec-pop" *ngIf="active">
     <header class="ec-pop-header">
-      <div class="toolbar">
-        <nav class="nav">
-          <button (click)="hide()" type="button" class="btn btn_abort">&times;</button>
-        </nav>
-      </div>
+      <button (click)="hide()" class="ec-pop__dismiss" type="button">
+        <ec-icon name="close-x-big"></ec-icon>
+      </button>
     </header>
-    <div class="ec-pop-body">
-      <div class="ec-asset-upload">
+    <div class="ec-pop-body ec-dropzone" (ecDropzone)="uploader?.upload($event)">
+      <div class="ec-dropzone-info">
+        Drop to upload!
+      </div>
+      <div class="ec-asset-upload ec-dropzone">
         <ec-upload #uploader [assetGroupID]="assetGroupID" [loader]="popLoader" (success)="selectUpload($event)"></ec-upload>
         <a (click)="uploader.trigger()">Hochladen</a>
+
       </div>
       <!-- legacy asset list -->
       <ec-resource-list *ngIf="!assetGroupID&&sdk.apiResolved" relation="legacyAsset" [api]="sdk.api" [selection]="selection" (columnClicked)="select($event)"
