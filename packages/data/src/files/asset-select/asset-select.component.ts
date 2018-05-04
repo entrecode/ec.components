@@ -94,8 +94,4 @@ export class AssetSelectComponent extends SelectComponent<Resource> implements O
     }
     // TODO open edit pop
   }
-
-  canUpload() {
-    return !this.readOnly && (!this.selection.items.length || !this.solo)
-  }
 }

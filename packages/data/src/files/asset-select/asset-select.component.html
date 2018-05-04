@@ -1,7 +1,7 @@
-<div *ngIf="selection" class="ec-asset-select ec-dropzone" (ecDropzone)="uploader?.upload($event)" [disabled]="!canUpload()" [class.ec-asset-select_solo]="solo"
+<div *ngIf="selection" class="ec-asset-select ec-dropzone" (ecDropzone)="uploader?.upload($event)" [disabled]="readOnly" [class.ec-asset-select_solo]="solo"
   [class.empty]="!selection.items.length">
   <div class="ec-dropzone-info">Loslassen zum Hochladen</div>
-  <div class="ec-asset-upload" *ngIf="canUpload()">
+  <div class="ec-asset-upload" *ngIf="!readOnly">
     <ec-upload #uploader [loader]="popLoader" [assetGroupID]="assetGroupID" (success)="assetListPop.selectUpload($event)" class="hide"></ec-upload>
     <a (click)="uploader.trigger()">Hochladen</a>
     <span> oder
