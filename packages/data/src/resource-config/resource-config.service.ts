@@ -7,6 +7,7 @@ import Resource from 'ec.sdk/lib/resources/Resource';
 import { Injectable } from '@angular/core';
 import { TypeConfigService } from '../model-config/type-config.service';
 import { AdminEntryInputComponent } from '../entry-form/admin-entry-input.component';
+import { DefaultEntryInputComponent } from '@ec.components/data/src/entry-form/default-entry-input.component';
 
 @Injectable()
 /** Contains default configurations for all kinds of resources. Used by ResourceList and ResourceForm.  */
@@ -172,6 +173,7 @@ export class ResourceConfig {
           created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
         }
       },
+      // ec accounts
       account: {
         identifier: 'accountID',
         identifierPattern: this.uuid(),
@@ -213,7 +215,8 @@ export class ResourceConfig {
           permissions: this.tagsField(this.symbol.resolve('account.field.label.permissions'), false),
           groups: {
             label: this.symbol.resolve('account.field.label.groups'),
-            view: 'tags',
+            type: 'groups',
+            input: DefaultEntryInputComponent,
             list: false,
             display: (value) => value ? value.map(group => group.name) : []
           },
@@ -601,6 +604,7 @@ export class ResourceConfig {
       group: {
         identifier: 'groupID',
         identifierPattern: this.uuid(),
+        label: 'name',
         fields: {
           name: {
             label: this.symbol.resolve('field.label.name'),
