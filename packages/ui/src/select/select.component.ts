@@ -89,7 +89,7 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
 
   /** Called when the model changes */
   writeValue(value: any) {
-    this.use(value);
+    this.use(value, false);
   }
 
   /** Removes the given item from selection + triggers clickInside */
@@ -99,13 +99,13 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   }
 
   /** Uses the given value as selection items */
-  use(value) {
+  use(value, event = true) {
     this.value = Array.isArray(value) ? value : (value ? [value] : []);
     Object.assign(this.config || {}, { solo: this.solo });
     if (this.selection && this.value && this.value.length) {
       Object.assign(this.config, { selection: this.selection });
       const list = new List(this.value, this.config);
-      this.selection.replaceWith(list.items);
+      this.selection.replaceWith(list.items, event);
     }
   }
 
