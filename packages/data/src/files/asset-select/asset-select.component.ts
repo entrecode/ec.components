@@ -12,6 +12,7 @@ import { CrudConfig } from '../../crud/crud-config.interface';
 import { AssetListPopComponent } from '../asset-list-pop/asset-list-pop.component';
 import { ResourceConfig } from '../../resource-config/resource-config.service';
 import Resource from 'ec.sdk/lib/resources/Resource';
+import { UploadComponent } from '../upload/upload.component';
 
 /** Shows assets of a selection and is able to pick new ones from a crud list.
  * <example-url>https://components.entrecode.de/data/asset-select</example-url>
@@ -38,10 +39,14 @@ export class AssetSelectComponent extends SelectComponent<Resource> implements O
   protected control: FormControl;
   /** The used item */
   @Input() item: Item<any>;
+  /** If true, the selection cannot be changed and no uploads can be made. */
+  @Input() readOnly = false;
   /** The assetGroupID that should be picked from. If empty, legacy assets are used */
   @Input() assetGroupID: string;
   /** The asset list pop with the list to select from */
   @ViewChild(AssetListPopComponent) pop: AssetListPopComponent;
+  /** The nested upload component */
+  @ViewChild(UploadComponent) uploader: UploadComponent;
   /** Configuration Object for List */
   @Input() config: CrudConfig<Resource>;
 
@@ -88,5 +93,9 @@ export class AssetSelectComponent extends SelectComponent<Resource> implements O
       // console.log('edit', item.getBody());
     }
     // TODO open edit pop
+  }
+
+  canUpload() {
+    return !this.readOnly && (!this.selection.items.length || !this.solo)
   }
 }

@@ -23,8 +23,8 @@
 
       <b>solo</b>
       <ec-asset-select [solo]="true" #soloAsset></ec-asset-select>
-        <pre>{{soloAsset.selection?.getValue()}}</pre>
-        <!--
+      <pre>{{soloAsset.selection?.getValue()}}</pre>
+      <!--
         <h3>Usage with form</h3>
         <ec-form #fieldTest>
           <ec-asset-select *ngIf="fieldTest.group"
@@ -33,7 +33,9 @@
           <ec-input [field]="fieldTest.form?.getField('entries')" [group]="fieldTest.group"></ec-input>
         </ec-form>
         -->
-        <!-- TODO -->
+      <!-- TODO -->
+      <b>readOnly</b>
+      <ec-asset-select [readOnly]="true" [(ngModel)]="selectedAssets"></ec-asset-select>
     </ec-tab>
     <ec-tab label="new assets">
       <ec-asset-select assetGroupID="test" [(ngModel)]="selectedNewAssets"></ec-asset-select>
