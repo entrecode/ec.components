@@ -24,7 +24,7 @@ export class DatetimeComponent implements ControlValueAccessor {
   /** The date that should be displayed at start. */
   @Input() date: moment.Moment;
   /** The form control that holds the date */
-  @Input() formControl: FormControl;
+  @Input() formControl: FormControl = new FormControl();
   /** The used calendar component */
   @ViewChild(CalendarComponent) calendar: CalendarComponent;
   /** Array of the days of a week. */

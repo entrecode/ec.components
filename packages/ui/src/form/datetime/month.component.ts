@@ -23,6 +23,10 @@ export interface Day {
 export class MonthComponent implements OnInit, OnChanges {
   /** The current selected date */
   @Input() selected: moment.Moment;
+  /** Color array for day cells. E.g. to view a month heatmap */
+  @Input() colors: Object;
+  /** Array of timestamps that should be turned into a heatmap */
+  @Input() timestamps: string[] = [];
   /** The current date (for showing month) */
   @Input() date: moment.Moment;
   /** The current month as string */
@@ -38,9 +42,16 @@ export class MonthComponent implements OnInit, OnChanges {
     this.monthFormat = this.symbol.resolve('moment.format.month') || this.monthFormat;
   }
 
+  getDayColor(_moment: moment.Moment) {
+    if (this.colors && this.colors[_moment.toISOString()]) {
+      return this.colors[_moment.toISOString()];
+    }
+  }
+
   /** Initializes the calendar. */
   ngOnInit() {
     this.setDate();
+    this.updateHeatmap();
   }
 
   /** When changing the date or selected input, the calendar will update its view to display the month containing it. */
@@ -51,6 +62,9 @@ export class MonthComponent implements OnInit, OnChanges {
     }
     if (change.date) {
       this.setDate(this.date);
+    }
+    if (change.timestamps) {
+      this.updateHeatmap();
     }
   }
 
@@ -112,5 +126,35 @@ export class MonthComponent implements OnInit, OnChanges {
   /** Sets the current viewed date to today. */
   today(): void {
     this.setDate(moment());
+  }
+
+  toShade(count, max = 100, digits = 2) {
+    if (max === 0) {
+      return 0;
+    }
+    const grain = Math.pow(10, digits);
+    return Math.floor((1 - count / max) * grain) / grain * 100;
+  }
+
+  getHeatMap(timestamps, hue = 67, saturation = 50, factor = 1.5) { // iso timestamps
+    const dates = timestamps
+      .map(timestamp => moment(timestamp).startOf('day').toISOString())
+      .reduce((counts, date) => Object.assign(counts, {
+        [date]: ++counts[date] || 0
+      }), {});
+    const max = dates[Object.keys(dates).sort((a, b) => dates[a] > dates[b] ? -1 : 1)[0]];
+    return Object.keys(dates).reduce((colors, date) => {
+      return Object.assign(colors, {
+        [date]: `hsl(${hue},${saturation}%,${this.toShade(dates[date], max * factor)}%)`
+      })
+    }, {});
+  }
+
+  updateHeatmap() {
+    if (!this.timestamps) {
+      this.colors = [];
+      return;
+    }
+    this.colors = this.getHeatMap(this.timestamps);
   }
 }

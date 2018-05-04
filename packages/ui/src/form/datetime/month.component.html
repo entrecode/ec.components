@@ -1,6 +1,7 @@
 <ul class="ec-calendar-month-days">
-  <li *ngFor="let day of cells">
+  <li *ngFor="let day of cells;let i = index">
     <div class="ec-calendar-month-day"
+          [style.background-color]="getDayColor(day.date)"
          [class.is-other]="day.type!=='current'"
          [class.is-today]="day.today"
          [class.is-selected]="isSelected(day.date)"

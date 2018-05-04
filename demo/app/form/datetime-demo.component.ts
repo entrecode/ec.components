@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { events } from './events';
+import moment from 'moment-es6';
 
 @Component({
   template: `
@@ -13,9 +15,14 @@ import { Component } from '@angular/core';
   <p>Just month grid</p>
   <ec-month #month></ec-month>
   {{month.date}}
+  <h2>Month Heatmap</h2>
+  <ec-month [timestamps]="timestamps"></ec-month>
 `
 })
 export class DatetimeDemoComponent {
+  timestamps;
+
   constructor() {
+    this.timestamps = events.map(e => e.timestamp);
   }
 }
