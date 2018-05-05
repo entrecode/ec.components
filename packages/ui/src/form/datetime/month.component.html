@@ -1,11 +1,19 @@
 <ul class="ec-calendar-month-days">
-  <li *ngFor="let day of cells;let i = index">
+  <li *ngFor="let day of cells;let i = index" 
+    [class.is-active]="day.active"
+    [class.is-last]="day.last"
+    [class.is-first]="day.first"
+    [class.is-disabled]="day.disabled"
+    [draggable]="day.first||day.last"
+    (dragstart)="dragStart(day, $event)"
+    (click)="selectDay(day.date)"
+    (mouseover)="mouseOver(day, $event)"
+    (mouseup)="mouseUp(day, $event)">
     <div class="ec-calendar-month-day"
-          [style.background-color]="getDayColor(day.date)"
+         [style.background-color]="day.color"
          [class.is-other]="day.type!=='current'"
          [class.is-today]="day.today"
-         [class.is-selected]="isSelected(day.date)"
-         (click)="selectDay(day.date)">
+         [class.is-selected]="isSelected(day.date)">
       {{day.format}}
     </div>
   </li>

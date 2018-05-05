@@ -3,6 +3,8 @@
 <ec-entry-list model="muffin" [config]="{size:10}" [solo]="true" #muffinList></ec-entry-list>
 -->
 
+
+
 <h2>Field_test</h2>
 
 <nav class="dropdown dropdown_center" tabindex="0">
@@ -18,5 +20,7 @@
         </li>
     </ul>
 </nav>
+<ec-heatmap #heatmap (spanChanged)="updateFilter($event,bakers)" style="width:400px;display:block" [timestamps]="timestamps"></ec-heatmap>
+<!-- <ec-daterange [timespan]="timespan" (spanChanged)="updateFilter($event,bakers)"></ec-daterange> -->
 
-<ec-entry-list #bakers model="field_test"></ec-entry-list>
+<ec-entry-list (change)="updateList($event)" #bakers model="muffin" [config]="{sortBy:heatProperty,desc:true,rawFilter:true}"></ec-entry-list>

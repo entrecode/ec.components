@@ -17,6 +17,8 @@ import { LoaderModule } from '../loader/loader.module';
 import { IconModule } from '../icon/icon.module';
 import { MaxItemsPipe } from './max-items.pipe';
 import { SymbolModule } from '../symbol/symbol.module';
+import { HeatmapComponent } from './datetime/heatmap.component';
+import { DaterangeComponent } from './datetime/daterange.component';
 
 @NgModule({
   entryComponents: [
@@ -30,6 +32,8 @@ import { SymbolModule } from '../symbol/symbol.module';
     DatetimeComponent,
     DatetimePipe,
     MonthComponent,
+    HeatmapComponent,
+    DaterangeComponent,
     CalendarComponent,
     VisibleFieldsPipe,
     MaxItemsPipe,
@@ -50,6 +54,8 @@ import { SymbolModule } from '../symbol/symbol.module';
     DatetimeComponent,
     DatetimePipe,
     CalendarComponent,
+    HeatmapComponent,
+    DaterangeComponent,
     MonthComponent,
     PopModule,
     VisibleFieldsPipe,

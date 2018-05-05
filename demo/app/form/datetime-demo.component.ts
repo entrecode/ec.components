@@ -16,7 +16,7 @@ import moment from 'moment-es6';
   <ec-month #month></ec-month>
   {{month.date}}
   <h2>Month Heatmap</h2>
-  <ec-month [timestamps]="timestamps"></ec-month>
+  <ec-heatmap [timestamps]="timestamps"></ec-heatmap>
 `
 })
 export class DatetimeDemoComponent {

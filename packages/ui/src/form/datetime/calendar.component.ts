@@ -18,9 +18,7 @@ import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
     }
   ]
 })
-export class CalendarComponent implements ControlValueAccessor {
-  /** The date that should be displayed at start. */
-  @Input() date: moment.Moment;
+export class CalendarComponent extends MonthComponent implements ControlValueAccessor {
   /** Output that emits when the value changes */
   @Output() change: EventEmitter<any> = new EventEmitter();
   /** The form control that holds the date */
@@ -43,7 +41,8 @@ export class CalendarComponent implements ControlValueAccessor {
   private timeFormat = 'HH:mm';
 
   /** The constructor gets the weekdays for the calendar header and instantiates the allowed input patterns.*/
-  constructor(private symbol: SymbolService) {
+  constructor(public symbol: SymbolService) {
+    super(symbol);
     // pattern localization
     this.patterns = this.symbol.resolve('moment.format.date') ? [this.symbol.resolve('moment.format.date')] : this.patterns;
     this.timeFormat = this.symbol.resolve('moment.format.time') || this.timeFormat;

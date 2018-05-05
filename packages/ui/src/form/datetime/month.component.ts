@@ -1,9 +1,13 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import moment from 'moment-es6';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/debounceTime';
 
 /** Interface for a day inside the a month. */
 export interface Day {
+  /** The cell index */
+  index: number,
   /** The moment that is represented by the day. */
   date: moment.Moment;
   /** Can be given a type, to set a class. */
@@ -12,6 +16,10 @@ export interface Day {
   format: string;
   /** Flag that is true if the day is today. */
   today: boolean;
+  /** if the day is the first in the timespan */
+  first: boolean;
+  /** if the day is the last in the timespan */
+  last: boolean;
 }
 
 /** Displays the days of a month in a calendarish table. */
@@ -21,14 +29,17 @@ export interface Day {
   templateUrl: 'month.component.html'
 })
 export class MonthComponent implements OnInit, OnChanges {
+  dragged: any;
   /** The current selected date */
   @Input() selected: moment.Moment;
   /** Color array for day cells. E.g. to view a month heatmap */
   @Input() colors: Object;
-  /** Array of timestamps that should be turned into a heatmap */
-  @Input() timestamps: string[] = [];
+  /** Timespan that is reflected. Marks days inside the span */
+  @Input() timespan: moment.Moment[];
   /** The current date (for showing month) */
   @Input() date: moment.Moment;
+  /** The color of days that are inside the timespan */
+  @Input() spancolor = '#ccc'
   /** The current month as string */
   public formatted: string;
   /** The cells containing the days */
@@ -37,9 +48,61 @@ export class MonthComponent implements OnInit, OnChanges {
   public monthFormat = 'MMMM YYYY';
   /** Emits when the selected day changes. */
   @Output() dayClicked: EventEmitter<any> = new EventEmitter();
+  /** Changed Timespan selection */
+  @Output() spanChanged: EventEmitter<any> = new EventEmitter();
 
-  constructor(private symbol: SymbolService) {
+  protected drag: Subject<Day> = new Subject();
+  protected changeSpan: Subject<moment.Moment[]> = new Subject();
+
+  constructor(public symbol: SymbolService) {
     this.monthFormat = this.symbol.resolve('moment.format.month') || this.monthFormat;
+    this.drag.asObservable().debounceTime(100)
+      .subscribe((day) => this.dropDay(day));
+    this.changeSpan.asObservable().debounceTime(800)
+      .subscribe(timespan => this.spanChanged.emit(this.timespan))
+  }
+
+  dropDay(day: Day) {
+    if (!this.dragged || (day.first && this.dragged.first || day.last && this.dragged.last)) {
+      return;
+    }
+    const newTimespan = [].concat(this.timespan);
+    newTimespan[this.dragged.first ? 0 : 1] = day.date.clone();
+    if (newTimespan[0].isAfter(newTimespan[1])) {
+      this.dragged.first = !this.dragged.first;
+      this.dragged.last = !this.dragged.last;
+      newTimespan.reverse();
+    }
+    this.timespan = newTimespan;
+    this.changeSpan.next(this.timespan);
+    /* if (this.cells[0] === day || this.cells[this.cells.length - 1] === day) {
+      // change month if dragging to edge
+      this.setDate(day.date.clone().subtract(1, 'days'));
+    } else {
+      this.setDate();
+    } */
+    this.setDate();
+  }
+
+  dragStart(day, e) {
+    this.dragged = day;
+    e.preventDefault();
+  }
+
+  mouseUp(day, e) {
+    if (!this.dragged) {
+      return;
+    }
+    delete this.dragged;
+    e.preventDefault();
+  }
+
+  mouseOver(day, e) {
+    if (!this.dragged || this.dragged === day) {
+      return;
+    }
+    e.preventDefault();
+    this.drag.next(day);
   }
 
   getDayColor(_moment: moment.Moment) {
@@ -51,7 +114,6 @@ export class MonthComponent implements OnInit, OnChanges {
   /** Initializes the calendar. */
   ngOnInit() {
     this.setDate();
-    this.updateHeatmap();
   }
 
   /** When changing the date or selected input, the calendar will update its view to display the month containing it. */
@@ -59,43 +121,40 @@ export class MonthComponent implements OnInit, OnChanges {
     if (change.selected) {
       this.setDate(this.selected);
       return;
-    }
-    if (change.date) {
+    } else if (change.date) {
       this.setDate(this.date);
-    }
-    if (change.timestamps) {
-      this.updateHeatmap();
+    } else if (change.timespan) {
+      this.setDate();
+    } else if (change.colors) {
+      this.cells = this.getMonth(this.date.clone(), 'current');
     }
   }
 
-  /** Returns an Array of days in the given moment's month. */
-  getDays(day = moment(), type?: string): Array<Day> {
-    const begin = day.startOf('month');
-    return new Array(day.daysInMonth())
+  /** Returns days of current month */
+  getMonth(day = moment(), type?: string): Array<Day> {
+    const begin = day.clone().startOf('month').startOf('week'); // .subtract(weeksbefore * 7, 'days');
+    return new Array(42)
       .fill(0)
       .map((d, index) => begin.clone().add(index, 'days'))
-      .map((date) => ({
+      .map((date, index) => ({
+        index,
         date,
-        type,
+        type: date.format('MM YYYY') === day.format('MM YYYY') ? 'current' : 'other',
+        active: this.timespan && date.isBetween(this.timespan[0], this.timespan[1], 'days', '[]'),
+        last: this.timespan && date.clone().startOf('day').isSame(this.timespan[1].clone().startOf('day')),
+        first: this.timespan && date.clone().startOf('day').isSame(this.timespan[0].clone().startOf('day')),
+        color: this.getDayColor(date),
         format: date.format('DD'),
         today: moment().startOf('day').diff(date, 'days') === 0,
       }));
   }
 
+
   /** Sets the calendars viewed date to the given moment's month. Renders always 42 cells to keep the layout consistent. */
   setDate(date: moment.Moment = this.selected || this.date || moment()) {
     this.date = date.clone();
     this.formatted = date.format(this.monthFormat);
-    const days = this.getDays(date.clone(), 'current');
-    const start = date.clone().startOf('month');
-    const end = date.clone().endOf('month');
-    const head = start.weekday(); // how many days should be shown ahead of the first?
-    let tail = 7 - end.weekday() - 1; // how many days are needed to fill the week after the last?
-    const fill = 42 - tail - days.length - head; // days to fill to get 42 total
-    tail += fill; // fill up till 42 days (6 rows)
-    const before = head ? this.getDays(date.clone().subtract(1, 'month')).slice(-head) : [];
-    const after = this.getDays(date.clone().add(1, 'month')).slice(0, tail);
-    this.cells = [...before, ...days, ...after];
+    this.cells = this.getMonth(date.clone(), 'current');
   }
 
   /** Selects the day of the given moment. */
@@ -118,43 +177,24 @@ export class MonthComponent implements OnInit, OnChanges {
     return this.selected.startOf('day').diff(_moment, 'days') === 0;
   }
 
+  canAlter(value, span: string) {
+    if (!this.timespan) {
+      return true;
+    }
+    const newDate = this.date.clone().add(value, span);
+    return newDate.isBetween(this.timespan[0], this.timespan[1], 'months', '[]');
+  }
+
   /** Updates the viewed date to reflect the given relative changes. */
-  change(value, span: string): void {
+  alter(value, span: string): void {
+    if (!this.canAlter(value, span)) {
+      return;
+    }
     this.setDate(this.date.clone().add(value, span));
   }
 
   /** Sets the current viewed date to today. */
   today(): void {
     this.setDate(moment());
-  }
-
-  toShade(count, max = 100, digits = 2) {
-    if (max === 0) {
-      return 0;
-    }
-    const grain = Math.pow(10, digits);
-    return Math.floor((1 - count / max) * grain) / grain * 100;
-  }
-
-  getHeatMap(timestamps, hue = 67, saturation = 50, factor = 1.5) { // iso timestamps
-    const dates = timestamps
-      .map(timestamp => moment(timestamp).startOf('day').toISOString())
-      .reduce((counts, date) => Object.assign(counts, {
-        [date]: ++counts[date] || 0
-      }), {});
-    const max = dates[Object.keys(dates).sort((a, b) => dates[a] > dates[b] ? -1 : 1)[0]];
-    return Object.keys(dates).reduce((colors, date) => {
-      return Object.assign(colors, {
-        [date]: `hsl(${hue},${saturation}%,${this.toShade(dates[date], max * factor)}%)`
-      })
-    }, {});
-  }
-
-  updateHeatmap() {
-    if (!this.timestamps) {
-      this.colors = [];
-      return;
-    }
-    this.colors = this.getHeatMap(this.timestamps);
   }
 }

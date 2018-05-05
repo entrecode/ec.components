@@ -39,6 +39,18 @@ export class ResourceList extends List<Resource> {
     return field && field.filterOperator ? field.filterOperator : 'search';
   }
 
+  /** Returns true if the field of the given property has rawFilter set to true */
+  protected static isRawFilter(
+    property: string,
+    fields: Array<Field>
+  ): boolean {
+    if (!fields) {
+      return false;
+    }
+    const field = fields.find(_field => _field.property === property);
+    return field && field.rawFilter;
+  }
+
   /** The constructor will init the List and Pagination instances.
    * Make sure the config is already complete when initiating an EntryList instance. */
   constructor(
@@ -118,11 +130,13 @@ export class ResourceList extends List<Resource> {
       for (const property in filter) {
         if (filter.hasOwnProperty(property)) {
           Object.assign(options, {
-            [property]: {
-              [ResourceList.getFilterOperator(property, this.fields)]: filter[
-                property
-              ]
-            }
+            [property]: ResourceList.isRawFilter(property, this.fields)
+              ? filter[property]
+              : {
+                [ResourceList.getFilterOperator(property, this.fields)]: filter[
+                  property
+                ]
+              }
           });
         }
       }

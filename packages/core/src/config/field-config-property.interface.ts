@@ -92,6 +92,8 @@ export interface FieldConfigProperty {
   icon?: string;
   /** Related identifier e.g. model name or assetGroupID */
   relation?: string;
+  /** If true, the field will be filtered raw (no filterOperator magic) */
+  rawFilter?: boolean;
   /** wildcard for custom config values */
   [key: string]: any;
 }

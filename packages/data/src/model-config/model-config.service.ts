@@ -81,7 +81,8 @@ export class ModelConfigService extends Config {
         form: false,
         immutable: true,
         sortable: true,
-        hidden: true
+        hidden: true,
+        rawFilter: true
       },
       _modified: {
         label: this.symbol.resolve('field.label.modified'),
@@ -90,7 +91,8 @@ export class ModelConfigService extends Config {
         form: false,
         immutable: true,
         sortable: true,
-        hidden: false
+        hidden: false,
+        rawFilter: true
       },
       _creator: {
         label: this.symbol.resolve('field.label.creator'),
