@@ -12,6 +12,8 @@ export class HeatmapComponent extends MonthComponent implements OnInit, OnChange
     stats: { count: number; dayspan: number; density: number; timespan: moment.Moment[] };
     /** Array of timestamps that should be turned into a heatmap */
     @Input() timestamps: string[] = [];
+    /** If true, the timespan of the first given timestamps will be kept, no matter what follows */
+    @Input() keepTimespan = false;
 
     ngOnInit() {
         this.updateHeatmap();
@@ -23,7 +25,7 @@ export class HeatmapComponent extends MonthComponent implements OnInit, OnChange
             const sorted = this.timestamps.sort((a, b) => {
                 return moment(a).isAfter(moment(b)) ? -1 : 1;
             });
-            this.timespan = this.timespan || [moment(sorted[sorted.length - 1]), moment(sorted[0])];
+            this.timespan = this.keepTimespan && this.timespan ? this.timespan : [moment(sorted[sorted.length - 1]), moment(sorted[0])];
             this.date = this.timespan[1];
             this.stats = this.statsInfo();
             this.updateHeatmap();
