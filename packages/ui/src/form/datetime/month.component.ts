@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
-import moment from 'moment-es6';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import moment from 'moment-es6';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/debounceTime';
 
@@ -20,6 +20,8 @@ export interface Day {
   first: boolean;
   /** if the day is the last in the timespan */
   last: boolean;
+  /** determines if the day can be dragged to change the timespan */
+  draggable: boolean;
 }
 
 /** Displays the days of a month in a calendarish table. */
@@ -40,6 +42,10 @@ export class MonthComponent implements OnInit, OnChanges {
   @Input() date: moment.Moment;
   /** The color of days that are inside the timespan */
   @Input() spancolor = '#ccc'
+  /** If true, the timespan start cannot be dragged */
+  @Input() disableDragStart = false;
+  /** If true, the timespan end cannot be dragged */
+  @Input() disableDragEnd = false;
   /** The current month as string */
   public formatted: string;
   /** The cells containing the days */
@@ -85,6 +91,9 @@ export class MonthComponent implements OnInit, OnChanges {
   }
 
   dragStart(day, e) {
+    if ((this.disableDragStart && day.first) || (this.disableDragEnd && day.last)) {
+      return;
+    }
     this.dragged = day;
     e.preventDefault();
   }
@@ -136,17 +145,22 @@ export class MonthComponent implements OnInit, OnChanges {
     return new Array(42)
       .fill(0)
       .map((d, index) => begin.clone().add(index, 'days'))
-      .map((date, index) => ({
-        index,
-        date,
-        type: date.format('MM YYYY') === day.format('MM YYYY') ? 'current' : 'other',
-        active: this.timespan && date.isBetween(this.timespan[0], this.timespan[1], 'days', '[]'),
-        last: this.timespan && date.clone().startOf('day').isSame(this.timespan[1].clone().startOf('day')),
-        first: this.timespan && date.clone().startOf('day').isSame(this.timespan[0].clone().startOf('day')),
-        color: this.getDayColor(date),
-        format: date.format('DD'),
-        today: moment().startOf('day').diff(date, 'days') === 0,
-      }));
+      .map((date, index) => {
+        const isStart = this.timespan && date.clone().startOf('day').isSame(this.timespan[0].clone().startOf('day'));
+        const isEnd = this.timespan && date.clone().startOf('day').isSame(this.timespan[1].clone().startOf('day'));
+        return {
+          index,
+          date,
+          type: date.format('MM YYYY') === day.format('MM YYYY') ? 'current' : 'other',
+          active: this.timespan && date.isBetween(this.timespan[0], this.timespan[1], 'days', '[]'),
+          first: isStart,
+          last: isEnd,
+          draggable: (!this.disableDragStart && isStart) || (!this.disableDragEnd && isEnd),
+          color: this.getDayColor(date),
+          format: date.format('DD'),
+          today: moment().startOf('day').diff(date, 'days') === 0,
+        }
+      });
   }
 
 
