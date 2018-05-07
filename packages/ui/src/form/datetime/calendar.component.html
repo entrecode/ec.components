@@ -1,8 +1,7 @@
 <div class="ec-calendar">
   <nav class="ec-calendar-controls">
     <ul>
-      <li data-flex-item="fit-self"
-        [class.is-disabled]="!grid.canAlter(-1,'month')">
+      <li data-flex-item="fit-self" [class.is-disabled]="!grid.canAlter(-1,'month')">
         <a (click)="grid.alter(-1, 'months')" class="ec-calendar-controls__prev">
           <!--TODO add .ec-icon fallback config-->
           <ec-icon name="chevron-left"></ec-icon>
@@ -17,8 +16,7 @@
           &bull;
         </a>
       </li>
-      <li data-flex-item="fit-self" 
-        [class.is-disabled]="!grid.canAlter(1,'month')">
+      <li data-flex-item="fit-self" [class.is-disabled]="!grid.canAlter(1,'month')">
         <a (click)="grid.alter(1, 'months')" class="ec-calendar-controls__next">
           <!--TODO add .ec-icon fallback config-->
           <ec-icon name="chevron-right"></ec-icon>
@@ -32,6 +30,7 @@
         {{weekday}}
       </li>
     </ul>
-    <ec-month (spanChanged)="spanChanged.emit($event)" [timespan]="timespan " [colors]="colors " [date]="date " (dayClicked)="select($event) " #grid></ec-month>
+    <ec-month [disableDragStart]="disableDragStart" [disableDragEnd]="disableDragEnd" (spanChanged)="spanChanged.emit($event)"
+      [timespan]="timespan " [colors]="colors " [date]="date " (dayClicked)="select($event) " #grid></ec-month>
   </div>
 </div>
