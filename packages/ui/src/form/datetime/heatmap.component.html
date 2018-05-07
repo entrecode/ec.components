@@ -1,4 +1,3 @@
 <div class="ec-heatmap">
-    <b>{{timestamps?.length}} Entries in einem Zeitraum von {{dayspan}} Tagen = {{density}} pro Tag</b>
     <ec-calendar (spanChanged)="spanChanged.emit($event)" [colors]="colors" [timespan]="timespan" [date]="date"></ec-calendar>
 </div>

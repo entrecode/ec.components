@@ -1,9 +1,6 @@
-import { Component, OnInit, OnChanges, ViewChild, Input, Output } from '@angular/core';
-import { MonthComponent } from './month.component';
-import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import moment from 'moment-es6';
-import { CalendarComponent } from './calendar.component';
-import { months } from 'moment';
+import { MonthComponent } from './month.component';
 
 @Component({
     selector: 'ec-heatmap',
@@ -11,9 +8,8 @@ import { months } from 'moment';
 })
 
 export class HeatmapComponent extends MonthComponent implements OnInit, OnChanges {
-    density: number;
-    /** The span of days which is reflected by the timestamps */
-    dayspan: number;
+    /** stats of current timestamps */
+    stats: { count: number; dayspan: number; density: number; timespan: moment.Moment[] };
     /** Array of timestamps that should be turned into a heatmap */
     @Input() timestamps: string[] = [];
 
@@ -29,9 +25,7 @@ export class HeatmapComponent extends MonthComponent implements OnInit, OnChange
             });
             this.timespan = this.timespan || [moment(sorted[sorted.length - 1]), moment(sorted[0])];
             this.date = this.timespan[1];
-            this.dayspan = this.timespan[1].diff(this.timespan[0], 'days');
-            const digits = 3;
-            this.density = Math.floor(this.timestamps.length / this.dayspan * Math.pow(10, digits)) / Math.pow(10, digits);
+            this.stats = this.statsInfo();
             this.updateHeatmap();
         }
     }
@@ -58,6 +52,17 @@ export class HeatmapComponent extends MonthComponent implements OnInit, OnChange
                 [date]: `hsl(${hue},${heat}%,${100 - heat}%)`
             })
         }, {});
+    }
+
+    /** Returns json with additional infos about the timestamps */
+    statsInfo(digits = 3) {
+        const dayspan = this.timespan[1].diff(this.timespan[0], 'days');
+        return {
+            timespan: this.timespan,
+            count: this.timestamps.length,
+            dayspan,
+            density: Math.floor(this.timestamps.length / dayspan * Math.pow(10, digits)) / Math.pow(10, digits)
+        };
     }
 
     updateHeatmap() {
