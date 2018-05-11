@@ -1,10 +1,10 @@
 import { Inject, Injectable } from '@angular/core';
-import DataManager from 'ec.sdk/lib/DataManager';
 import Accounts from 'ec.sdk/lib/Accounts';
+import Core, { environment as env } from 'ec.sdk/lib/Core';
+import DataManager from 'ec.sdk/lib/DataManager';
 import PublicAPI from 'ec.sdk/lib/PublicAPI';
 import Session from 'ec.sdk/lib/Session';
 import AccountResource from 'ec.sdk/lib/resources/accounts/AccountResource';
-import Core, { environment as env } from 'ec.sdk/lib/Core';
 import DataManagerResource from 'ec.sdk/lib/resources/datamanager/DataManagerResource';
 
 /** The SdkService exposes all instances of the ec.sdk APIs.
@@ -73,24 +73,24 @@ export class SdkService {
 
   /** Calls init and sets ready to true when finished. */
   constructor(@Inject('environment') public environment) {
-    this.init().then((account) => {
-      this.datamanager = new DataManager(<env>environment.environment);
-    });
+    this.init();
   }
 
   /** Creates all the API instances and determines the current user. */
   public init(environment = this.environment): Promise<AccountResource> {
+    this.environment = environment;
     this.session = new Session(<env>environment.environment);
     if (environment.clientID) {
       this.session.setClientID(environment.clientID);
     }
     this.accounts = new Accounts(<env>environment.environment);
     if (environment.datamanagerID) {
-      this.useDatamanager(environment.datamanagerID);
+      this.useDatamanager(environment.datamanagerID, environment);
     }
     this.ready = this.getAccount()
       .then((user) => {
         this.user = user;
+        this.datamanager = new DataManager(<env>environment.environment);
         return this.user;
       });
     return this.ready;
