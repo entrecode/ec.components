@@ -1,10 +1,11 @@
-import { Component, OnInit, forwardRef, Input, ViewChild } from '@angular/core';
-import { NG_VALUE_ACCESSOR, ControlValueAccessor, FormControl } from '@angular/forms';
+import { Component, Input, ViewChild, forwardRef } from '@angular/core';
+import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { DefaultInputComponent, InputComponent } from '@ec.components/ui';
+import { GeocodeService } from './geocode.service';
 import { LocationMapComponent } from './location-map.component';
 import { LocationSearchComponent } from './location-search.component';
-import { GeocodeService } from './geocode.service';
 
+/** Component with map and autocomplete input to pick a location. Implements ControlValueAccessor */
 @Component({
     selector: 'ec-location-picker',
     templateUrl: './location-picker.component.html',
@@ -18,12 +19,14 @@ import { GeocodeService } from './geocode.service';
     ]
 })
 
-export class LocationPickerComponent extends DefaultInputComponent implements ControlValueAccessor, OnInit {
+export class LocationPickerComponent extends DefaultInputComponent implements ControlValueAccessor {
     /** The form control that holds the location */
     @Input() formControl: FormControl;
     /** If true, the raw location value will be visible*/
     @Input() showRawValue = true;
+    /** The nested LocationMapComponent */
     @ViewChild(LocationMapComponent) map: LocationMapComponent;
+    /** The nested LocationSearchComponent */
     @ViewChild(LocationSearchComponent) search: LocationSearchComponent;
     /** Form input component */
     input: InputComponent;
@@ -34,9 +37,7 @@ export class LocationPickerComponent extends DefaultInputComponent implements Co
         super();
     }
 
-    ngOnInit() {
-    }
-
+    /** Sets value of map and propagates change */
     setValue(value, fromSearch?: boolean) {
         if (!value) {
             this.search.clear();
@@ -57,6 +58,7 @@ export class LocationPickerComponent extends DefaultInputComponent implements Co
         this.updateAddress();
     }
 
+    /** updates the address string by reverse geo lookup  */
     updateAddress() {
         const value = this.map.value;
         if (!value) {

@@ -1,20 +1,19 @@
 import { AgmCoreModule } from '@agm/core';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UiModule } from '@ec.components/ui';
 import { GeocodeService } from './geocode.service';
+import { LocationMapComponent } from './location-map.component';
 import { LocationPickerComponent } from './location-picker.component';
 import { LocationSearchComponent } from './location-search.component';
-import { LocationMapComponent } from './location-map.component';
-import { CommonModule } from '@angular/common';
-
-
-
+/** The components of this module */
 const LOCATION_COMPONENTS = [
     LocationMapComponent,
     LocationSearchComponent,
     LocationPickerComponent,
 ];
+/** This module holds all location/map related components and services */
 @NgModule({
     imports: [
         CommonModule,

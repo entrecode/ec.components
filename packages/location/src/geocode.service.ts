@@ -1,21 +1,20 @@
-import { Injectable, NgZone } from '@angular/core';
 import { MapsAPILoader } from '@agm/core';
+import { Injectable, NgZone } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
-import { of } from 'rxjs/observable/of';
-import { filter, catchError, tap, map, switchMap } from 'rxjs/operators';
 import { fromPromise } from 'rxjs/observable/fromPromise';
+import { switchMap } from 'rxjs/operators';
 
+/** declares google namespace */
 declare var google: any;
 
+/** Wraps google maps api to handle geocode operations */
 @Injectable()
 export class GeocodeService {
-    private geocoder: any;
 
     constructor(private mapLoader: MapsAPILoader,
         private ngZone: NgZone) { }
 
-
+    /** Observes a given input element, transforming it into an autocomplete */
     public observeElement(el) {
         return new Observable(observer => {
             const autocomplete = new google.maps.places.Autocomplete(el, {
@@ -40,11 +39,13 @@ export class GeocodeService {
         });
     }
 
+    /** Turns an input element to an maps autocomplete searchbar. */
     public autocompleteAddress(el): Observable<any> {
         return fromPromise(this.mapLoader.load())
             .pipe(switchMap(() => this.observeElement(el)));
     }
 
+    /** Reverse address lookup for a given location */
     geocodeLatLng(geocoder, location): Promise<any> {
         return new Promise((resolve, reject) => {
             geocoder.geocode({ location }, (results, status) => {
@@ -57,6 +58,7 @@ export class GeocodeService {
         });
     }
 
+    /** Returns the nearest address for a given location */
     public getNearestAddress(location: { latitude: number, longitude: number }): Promise<Array<any>> {
         return this.mapLoader.load().then(() => {
             return this.geocodeLatLng(

@@ -1,13 +1,10 @@
-import moment from 'moment-es6';
-import { FieldConfig, Form, ListConfig } from '@ec.components/core/index';
-import { CrudConfig } from '../crud/crud-config.interface';
-import localeFr from '@angular/common/locales/fr';
+import { Injectable } from '@angular/core';
+import { DefaultEntryInputComponent } from '@ec.components/data/src/entry-form/default-entry-input.component';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 import Resource from 'ec.sdk/lib/resources/Resource';
-import { Injectable } from '@angular/core';
-import { TypeConfigService } from '../model-config/type-config.service';
+import { CrudConfig } from '../crud/crud-config.interface';
 import { AdminEntryInputComponent } from '../entry-form/admin-entry-input.component';
-import { DefaultEntryInputComponent } from '@ec.components/data/src/entry-form/default-entry-input.component';
+import { TypeConfigService } from '../model-config/type-config.service';
 
 @Injectable()
 /** Contains default configurations for all kinds of resources. Used by ResourceList and ResourceForm.  */
@@ -62,15 +59,15 @@ export class ResourceConfig {
       sortable
     };
   }
-
+  /** returns regex for a shortID */
   shortID(): RegExp {
     return /^[0-9A-Za-z-_]{7,14}$/;
   }
-
+  /** returns regex for a uuid */
   uuid(): RegExp {
     return /^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i;
   }
-
+  /** regex for base64 uuid */
   base64uuid(): RegExp {
     return /^[a-zA-Z0-9\\-_]{22}$/;
   }

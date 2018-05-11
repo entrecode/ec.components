@@ -1,13 +1,14 @@
-import { Component, ElementRef, EventEmitter, HostListener, Input, Output, OnInit } from '@angular/core';
-import visualCMS from 'visual-cms.core';
-import * as FlowElement from 'visual-cms.core/classes/core/FlowElement.js';
-import * as Text from 'visual-cms.core/classes/core/Text.js';
-import * as PhrasingElement from 'visual-cms.core/classes/core/PhrasingElement.js';
-import * as Block from 'visual-cms.core/classes/base/Block.js';
-import * as ListElement from 'visual-cms.core/classes/base/ListElement.js';
+import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/debounceTime';
+import visualCMS from 'visual-cms.core';
+import * as Block from 'visual-cms.core/classes/base/Block.js';
+import * as ListElement from 'visual-cms.core/classes/base/ListElement.js';
+import * as FlowElement from 'visual-cms.core/classes/core/FlowElement.js';
+import * as PhrasingElement from 'visual-cms.core/classes/core/PhrasingElement.js';
+import * as Text from 'visual-cms.core/classes/core/Text.js';
 
+/** declares document */
 declare const document;
 /** ecvc editor component. */
 @Component({

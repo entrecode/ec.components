@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 
 /** The CrudComponent takes at least a model name to render an entry list with create/edit/delete functionality out of the box.  */
@@ -14,14 +14,15 @@ export class ErrorComponent implements OnInit, OnChanges {
   constructor(private symbol: SymbolService) {
   }
 
+  /** initial update */
   ngOnInit() {
     this.update();
   }
-
+  /** change update */
   ngOnChanges() {
     this.update();
   }
-
+  /** updates error message  */
   update() {
     if (!this.error) {
       return;

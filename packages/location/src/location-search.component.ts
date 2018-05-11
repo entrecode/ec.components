@@ -1,23 +1,19 @@
-import { MapsAPILoader, GoogleMapsAPIWrapper } from '@agm/core';
-import { } from 'googlemaps';
-import { google } from '@agm/core/services/google-maps-types';
-import { Component, ElementRef, Input, NgZone, OnInit, ViewChild, AfterViewInit, forwardRef, Output, EventEmitter } from '@angular/core';
-import { FormControl, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, NgZone, Output, ViewChild } from '@angular/core';
+import from 'googlemaps';
 import { GeocodeService } from './geocode.service';
-import { LocationMapComponent } from './location-map.component';
 
+/** Google Maps Location Searchbar */
 @Component({
     selector: 'ec-location-search',
     templateUrl: './location-search.component.html'
 })
 
 export class LocationSearchComponent implements AfterViewInit {
-
-    public latitude: number;
-    public longitude: number;
+    /** Placeholder for input */
     @Input() placeholder = 'Search Location';
-    public zoom: number;
+    /** The search input element */
     @ViewChild('search') searchInput: ElementRef;
+    /** emits when the coords have been changed (after selecting a match) */
     @Output() change: EventEmitter<any> = new EventEmitter();
 
     constructor(
@@ -25,13 +21,13 @@ export class LocationSearchComponent implements AfterViewInit {
         private ngZone: NgZone
     ) {
     }
-
+    /** Clears the searchbar input value */
     clear() {
         if (this.searchInput) {
             this.searchInput.nativeElement.value = '';
         }
     }
-
+    /** subscribes to changes from the inputs autocomplete using geocodeService. */
     ngAfterViewInit() {
         this.geocodeService.autocompleteAddress(this.searchInput.nativeElement)
             .subscribe(

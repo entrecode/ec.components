@@ -1,4 +1,0 @@
-<input type="text" [(ngModel)]="query" (ngModelChange)="typed($event)">
-<ec-list [items]="displayedActions" (columnClicked)="select($event)" [config]="listConfig"></ec-list>
-<ec-loader #loader class="ec-loader"></ec-loader>
-<a (click)="goBack()" *ngIf="path.length>1">BACK</a>
