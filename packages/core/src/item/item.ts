@@ -50,7 +50,7 @@ export class Item<T> {
 
   /** Assigns the given config to the existing via Object.assign */
   useConfig(config: ItemConfig<T>) {
-    this.config = Object.assign(this.config, config);
+    this.config = (<any>Object).assign(this.config, config);
   }
 
   /** Returns the item's config */
@@ -141,7 +141,7 @@ export class Item<T> {
 
   /** Returns value with all readOnly properties removed */
   pickWriteOnly(value = this.body) {
-    return Object.assign({}, ...Object.keys(value)
+    return (<any>Object).assign({}, ...Object.keys(value)
       .map(property => {
         if (this.config.fields[property].readOnly) {
           return;
@@ -151,9 +151,16 @@ export class Item<T> {
 
   }
 
+  isImmutableProperty(property: string): boolean {
+    if (this.config && this.config.fields && this.config.fields[property] && typeof this.config.fields[property].immutable === 'function') {
+      return this.config.fields[property].immutable(this);
+    }
+    return this.config.fields[property].immutable;
+  }
+
   deleteImmutableProperties(value: Object = this.body) {
     Object.keys(this.config.fields).forEach(property => {
-      if (value.hasOwnProperty(property) && this.config.fields[property].immutable) {
+      if (value.hasOwnProperty(property) && this.isImmutableProperty(property)) {
         delete value[property];
       }
     });
@@ -167,7 +174,7 @@ export class Item<T> {
     this.deleteImmutableProperties(value);
     /** Run the remaining properties through serializers */
     Object.keys(value).map((property) => {
-      Object.assign(value, {
+      (<any>Object).assign(value, {
         [property]: this.transform('serialize', property, value[property]) // TODO: fix
       })
     });
@@ -183,7 +190,7 @@ export class Item<T> {
 
   /** Saves the given value. Run serializers before assigning the new value. */
   save(value: T = this.body): Promise<Item<T>> {
-    this.body = Object.assign(this.resolve() || {}, value);
+    this.body = (<any>Object).assign(this.resolve() || {}, value);
     if (this.config.onSave) {
       return Promise.resolve(this.config.onSave(this, value))
         // return Promise.resolve(this.config.onSave(this, this.serialize(value)))

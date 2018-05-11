@@ -62,7 +62,7 @@ export interface FieldConfigProperty {
   /** If true, an ec-output will be rendered inside each form which prevents editing the field. */
   readOnly?: boolean;
   /** If true, the property will be omitted when saving (edit and create) */
-  immutable?: boolean;
+  immutable?: boolean | any;
   /** if false, the field will not be filterable in a list */
   filterable?: boolean;
   /** The operator to use for filtering: exact, search, any etc.. see ec.sdk doc */

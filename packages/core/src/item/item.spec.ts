@@ -85,4 +85,21 @@ describe('Item', () => {
     expect(writeOnly.name).toBe('Tobsen');
     expect(writeOnly.age).toBeUndefined();
   });
+
+  it('immutable properties', () => {
+    const config = {
+      fields: {
+        name: {}, age: {
+          immutable: (item) => {
+            return item.getBody().age > 10;
+          }
+        }
+      }
+    };
+    const itemA = new Item({ name: 'Tobsen', age: 10 }, config);
+    const itemB = new Item({ name: 'Tobsen', age: 11 }, config);
+
+    expect(itemA.isImmutableProperty('age')).toBe(false);
+    expect(itemB.isImmutableProperty('age')).toBe(true);
+  });
 });
