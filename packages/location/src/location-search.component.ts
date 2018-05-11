@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, NgZone, Output, ViewChild } from '@angular/core';
-import from 'googlemaps';
+import { } from 'googlemaps';
 import { GeocodeService } from './geocode.service';
 
 /** Google Maps Location Searchbar */
