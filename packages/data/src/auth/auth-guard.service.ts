@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate } from '@angular/router';
 import { SdkService } from '@ec.components/data/src/sdk/sdk.service';
 import { NotificationsService } from '@ec.components/ui/src/notifications/notifications.service';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 
 /** This guard can be used on routes that only can be activated when a user is present in the SdkService.
  * If no user is found, an error message is shown. You can then react via the redirect output. */

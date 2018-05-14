@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Pagination } from '@ec.components/core/src/pagination/pagination';
-import 'rxjs/add/operator/debounceTime';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'ec-pagination-demo',
@@ -17,7 +17,8 @@ export class PaginationDemoComponent {
       content: 'NEGSCHT'
     }]);
     this.pagination.setTotal(5100);
-    this.pagination.change$.debounceTime(500)
+    this.pagination.change$
+      .pipe(debounceTime(500))
       .subscribe((p) => {
         this.currentPage = this.pagination.getPage();
       });

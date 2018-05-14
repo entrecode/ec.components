@@ -1,34 +1,22 @@
-import {
-  ApplicationRef,
-  Component,
-  ElementRef,
-  EventEmitter,
-  forwardRef,
-  Input,
-  OnDestroy,
-  AfterViewInit,
-  Output,
-  ViewChild,
-  ViewEncapsulation
-} from '@angular/core';
+import { AfterViewInit, ApplicationRef, Component, ElementRef, EventEmitter, Input, OnDestroy, Output, ViewChild, ViewEncapsulation, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Subject } from 'rxjs/Subject';
-import 'rxjs/add/operator/debounceTime';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 import * as tinymce from 'tinymce';
-import 'tinymce/themes/modern';
-import 'tinymce/plugins/fullscreen';
-import 'tinymce/plugins/paste';
-import 'tinymce/plugins/template';
+import 'tinymce/plugins/autolink';
 import 'tinymce/plugins/autoresize';
 import 'tinymce/plugins/code';
-import 'tinymce/plugins/link';
-import 'tinymce/plugins/table';
-import 'tinymce/plugins/visualblocks';
-import 'tinymce/plugins/autolink';
-import 'tinymce/plugins/lists';
-import 'tinymce/plugins/contextmenu';
-import 'tinymce/plugins/textcolor';
 import 'tinymce/plugins/colorpicker';
+import 'tinymce/plugins/contextmenu';
+import 'tinymce/plugins/fullscreen';
+import 'tinymce/plugins/link';
+import 'tinymce/plugins/lists';
+import 'tinymce/plugins/paste';
+import 'tinymce/plugins/table';
+import 'tinymce/plugins/template';
+import 'tinymce/plugins/textcolor';
+import 'tinymce/plugins/visualblocks';
+import 'tinymce/themes/modern';
 import { editorSettings } from './tinymce-settings';
 
 /** Wraps tinymce as a control input.
@@ -70,7 +58,7 @@ export class TinymceComponent
   constructor(private app: ApplicationRef) {
     this.update
       .asObservable()
-      .debounceTime(this.debounce)
+      .pipe(debounceTime(this.debounce))
       .subscribe(editor => {
         this.value = editor.getContent();
         this.propagateChange(this.value);

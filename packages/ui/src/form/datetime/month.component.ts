@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 import moment from 'moment-es6';
-import { Subject } from 'rxjs/Subject';
-import 'rxjs/add/operator/debounceTime';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 /** Interface for a day inside the a month. */
 export interface Day {
@@ -62,9 +62,11 @@ export class MonthComponent implements OnInit, OnChanges {
 
   constructor(public symbol: SymbolService) {
     this.monthFormat = this.symbol.resolve('moment.format.month') || this.monthFormat;
-    this.drag.asObservable().debounceTime(100)
+    this.drag.asObservable()
+      .pipe(debounceTime(100))
       .subscribe((day) => this.dropDay(day));
-    this.changeSpan.asObservable().debounceTime(800)
+    this.changeSpan.asObservable()
+      .pipe(debounceTime(800))
       .subscribe(timespan => this.spanChanged.emit(this.timespan))
   }
 

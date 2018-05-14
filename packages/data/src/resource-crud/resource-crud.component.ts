@@ -3,20 +3,17 @@
  */
 import { Component, EventEmitter, Input, OnInit, Optional, Output, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SdkService } from '../sdk/sdk.service';
 import { Selection } from '@ec.components/core/src/selection/selection';
+import { WithLoader } from '@ec.components/ui';
 import { LoaderComponent } from '@ec.components/ui/src/loader/loader.component';
 import { LoaderService } from '@ec.components/ui/src/loader/loader.service';
 import { NotificationsService } from '@ec.components/ui/src/notifications/notifications.service';
-import 'rxjs/add/operator/switchMap';
-import { merge } from 'rxjs/observable/merge';
+import Core from 'ec.sdk/lib/Core';
 import { AuthService } from '../auth/auth.service';
-import { WithLoader } from '@ec.components/ui';
 import { CrudConfig } from '../crud/crud-config.interface';
 import { ResourceListComponent } from '../resource-list/resource-list.component';
 import { ResourcePopComponent } from '../resource-pop/resource-pop.component';
-import Core from 'ec.sdk/lib/Core';
-import { ResourceFormComponent } from '../resource-form/resource-form.component';
+import { SdkService } from '../sdk/sdk.service';
 
 /** The ResourceCrudComponent takes a relation name and api to render a resource list with create/edit/delete functionality out of the box.
  * ```html

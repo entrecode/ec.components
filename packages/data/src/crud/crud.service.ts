@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import EntryList from 'ec.sdk/lib/resources/publicAPI/EntryList';
+import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
+import { Observable, Subject } from 'rxjs';
+import { filter } from 'rxjs/operators';
 import { SdkService } from '../sdk/sdk.service';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/filter';
-import { Subject } from 'rxjs/Subject';
 
 /** Instances of Update are emitted by the changes EventEmitter of the CrudService. */
 export interface Update {
@@ -33,17 +32,17 @@ export class CrudService {
   }
 
   /** Gives true if the given change fits all property values of the filter. */
-  matches(change: Update, filter: Update): boolean {
-    return Object.keys(filter)
-      .reduce((match, key) => match && change[key] === filter[key], true);
+  matches(change: Update, _filter: Update): boolean {
+    return Object.keys(_filter)
+      .reduce((match, key) => match && change[key] === _filter[key], true);
   }
 
   /** Yields an observable that emits for all updates that match the given filter */
-  change(filter?: Update): Observable<Update> {
-    if (!filter) {
+  change(_filter?: Update): Observable<Update> {
+    if (!_filter) {
       return this.changes.asObservable();
     }
-    return this.changes.asObservable().filter((change: Update) => this.matches(change, filter));
+    return this.changes.asObservable().pipe(filter((change: Update) => this.matches(change, _filter)));
   }
 
   /** Saves the given entry with the given value. If the entry is not yet existing, it will be created. Otherwise it will be updated. */

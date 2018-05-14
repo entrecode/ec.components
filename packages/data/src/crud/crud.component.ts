@@ -3,22 +3,20 @@
  */
 import { Component, EventEmitter, Input, OnInit, Optional, Output, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CrudConfig } from './crud-config.interface';
-import { EntryFormComponent } from '../entry-form/entry-form.component';
-import { EntryListComponent } from '../entry-list/entry-list.component';
-import { SdkService } from '../sdk/sdk.service';
 import { Selection } from '@ec.components/core/src/selection/selection';
+import { WithLoader } from '@ec.components/ui';
 import { LoaderComponent } from '@ec.components/ui/src/loader/loader.component';
 import { LoaderService } from '@ec.components/ui/src/loader/loader.service';
-import { NotificationsService } from '@ec.components/ui/src/notifications/notifications.service';
-import 'rxjs/add/operator/switchMap';
-import { merge } from 'rxjs/observable/merge';
-import { AuthService } from '../auth/auth.service';
-import { EntryPopComponent } from '../entry-pop/entry-pop.component';
-import { WithLoader } from '@ec.components/ui';
-import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
-import { WithNotifications } from '@ec.components/ui/src/notifications/with-notifications.interface';
 import { Notification } from '@ec.components/ui/src/notifications/notification';
+import { NotificationsService } from '@ec.components/ui/src/notifications/notifications.service';
+import { WithNotifications } from '@ec.components/ui/src/notifications/with-notifications.interface';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import { merge } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
+import { EntryListComponent } from '../entry-list/entry-list.component';
+import { EntryPopComponent } from '../entry-pop/entry-pop.component';
+import { SdkService } from '../sdk/sdk.service';
+import { CrudConfig } from './crud-config.interface';
 
 /** The CrudComponent takes at least a model name to render an entry list with create/edit/delete functionality out of the box.
  * ```html

@@ -1,7 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 import { Notification } from './notification';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
 
 /** Workaround to get window without typescript complaining */
 declare const window;

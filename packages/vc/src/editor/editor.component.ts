@@ -1,6 +1,5 @@
 import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
-import 'rxjs/add/operator/debounceTime';
+import { Subject } from 'rxjs';
 import visualCMS from 'visual-cms.core';
 import * as Block from 'visual-cms.core/classes/base/Block.js';
 import * as ListElement from 'visual-cms.core/classes/base/ListElement.js';

@@ -1,12 +1,11 @@
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
+import { Observable, Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 import { Collection } from '../collection/collection';
-import { Item } from '../item/item';
 import { Field } from '../field/field';
-import { ListConfig } from './list-config.interface';
+import { Item } from '../item/item';
 import { Pagination } from '../pagination/pagination';
 import { Sorter } from '../sorter/sorter';
-import 'rxjs/add/operator/debounceTime';
+import { ListConfig } from './list-config.interface';
 
 /**
  * A more sophisticated Collection of Objects with arbitrary content.
@@ -25,11 +24,11 @@ export class List<T> extends Collection<Item<T>> {
   /**
    * Current Value Groups (Different Unique Values).
    */
-  groups: any[];
+  groups: any[] = [];
   /** The list's pagination (Optional) */
   public pagination: Pagination<T>;
   /** The items of the current page */
-  public page: Array<Item<T>>;
+  public page: Array<Item<T>> = [];
   /** Subject that should be nexted when loading is finished */
   protected change: Subject<List<T>> = new Subject();
   /** Observable that is nexted when the list has changed. */
@@ -47,7 +46,8 @@ export class List<T> extends Collection<Item<T>> {
     this.fields = this.getFields();
     this.hideOverflowFields();
     this.pagination = pagination || new Pagination(this.config, this.items.length);
-    this.pagination.change$.debounceTime(200)
+    this.pagination.change$
+      .pipe(debounceTime(200))
       .subscribe(_config => this.load(_config));
     this.load();
   }

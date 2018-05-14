@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { DataModule } from '@ec.components/data';
 import { UiModule } from '@ec.components/ui';
 import { AceModule } from '../../packages/ace/index';
-import { LocationModule } from '../../packages/location/src/location.module';
+/* import { LocationModule } from '../../packages/location/src/location.module'; */
 import { MediumModule } from '../../packages/medium-editor/src/medium.module';
 import { TinymceModule } from '../../packages/tinymce/src/tinymce.module';
 import { VcModule } from '../../packages/vc/src/vc.module';
@@ -113,7 +113,7 @@ demoRoutes.unshift(
     MediumModule,
     TinymceModule,
     AceModule,
-    LocationModule
+/*     LocationModule */
   ],
   providers: [
     {

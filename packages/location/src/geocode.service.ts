@@ -1,9 +1,7 @@
 import { MapsAPILoader } from '@agm/core';
 import { Injectable, NgZone } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { fromPromise } from 'rxjs/observable/fromPromise';
+import { Observable, from } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-
 /** declares google namespace */
 declare var google: any;
 
@@ -41,7 +39,7 @@ export class GeocodeService {
 
     /** Turns an input element to an maps autocomplete searchbar. */
     public autocompleteAddress(el): Observable<any> {
-        return fromPromise(this.mapLoader.load())
+        return from(this.mapLoader.load())
             .pipe(switchMap(() => this.observeElement(el)));
     }
 

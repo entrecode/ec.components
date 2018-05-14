@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs/Observable';
-import { FieldValidators } from '../validators/field-validators';
+import { Observable } from 'rxjs';
 import { LoaderComponent } from '../../loader/loader.component';
 import { WithLoader } from '../../loader/with-loader.interface';
+import { FieldValidators } from '../validators/field-validators';
 
 /** Login Form Component with validation. Fires success event with credentials on submit.
  * <example-url>https://components.entrecode.de/ui/login</example-url>
