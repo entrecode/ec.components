@@ -1,16 +1,16 @@
-import { Component, EventEmitter, Input, OnChanges, Output, ViewChild, ViewChildren, QueryList } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Form, FormConfig, Item, FieldConfigProperty } from '@ec.components/core';
+import { FieldConfigProperty, Form, FormConfig, Item } from '@ec.components/core';
 import { ItemConfig } from '@ec.components/core/src/item/item-config.interface';
+import { InputComponent } from '../io/input/input.component';
 import { LoaderComponent } from '../loader/loader.component';
 import { LoaderService } from '../loader/loader.service';
-import { NotificationsService } from '../notifications/notifications.service';
-import { FormService } from './form.service';
 import { WithLoader } from '../loader/with-loader.interface';
-import { InputComponent } from '../io/input/input.component';
-import { SymbolService } from '../symbol/symbol.service';
-import { WithNotifications } from '../notifications/with-notifications.interface';
 import { Notification } from '../notifications/notification';
+import { NotificationsService } from '../notifications/notifications.service';
+import { WithNotifications } from '../notifications/with-notifications.interface';
+import { SymbolService } from '../symbol/symbol.service';
+import { FormService } from './form.service';
 
 /** This component renders a form using a FieldConfig Object.
  *
@@ -111,14 +111,12 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
 
   /* clears the form and uses the given config (falls back to existing one). Renders an empty form. */
   create(config: ItemConfig<T> = this.config) {
-    this.dirtyTalk();
     this.clear();
     this.init(null, config);
   }
 
   /** edits a given Item instance by using its config and body. */
   edit(item: Item<T>) {
-    this.dirtyTalk();
     this.init(item);
   }
 
@@ -131,8 +129,9 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
   /** Method that is invoked when the form is submitted.*/
   submit() {
     const submit = this.form.save(this.group.value)
-      .then((form) => {
+      .then((form: Form<T>) => {
         this.edit(form);
+        this.group.markAsPristine();
         this.submitted.emit(this.form);
         if (this.silent) {
           return;
@@ -165,13 +164,5 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
       return this.group.value[property];
     }
     return this.group.value;
-  }
-
-  /** If dirty, opens a dialog that forces the user to decide if the current form should be saved or discarded. */
-  protected dirtyTalk() {
-    if (this.group && this.group.dirty) {
-      // console.warn('form is dirty');
-      // TODO open dialog to either save or discard changes
-    }
   }
 }
