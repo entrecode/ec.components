@@ -1,7 +1,6 @@
-import { Component, ElementRef, Input, ViewChild, ViewChildren, QueryList, AfterViewInit } from '@angular/core';
-import { Pagination } from '@ec.components/core';
-import { OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
+import { Pagination } from '@ec.components/core';
 import { PaginationConfig } from './pagination-config.interface';
 
 /**
@@ -63,5 +62,13 @@ export class PaginationComponent<T> implements OnChanges, AfterViewInit, OnInit 
   isVisible(page) {
     const current = this.pagination.getPage();
     return Math.abs(current - page) < this.config.range + 1 + Math.max(0, this.config.range - current + 1) + Math.max(0, current - this.pagination.getPages() + this.config.range);
+  }
+
+  updateSize(value: string) {
+    if (!value) {
+      return;
+    }
+    // tslint:disable-next-line:radix
+    this.pagination.updateSize(parseInt(value));
   }
 }

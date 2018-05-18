@@ -1,4 +1,3 @@
-import { Symbol } from './symbol.interface';
 
 export default [
     {
@@ -120,6 +119,14 @@ export default [
     {
         name: 'pagination.last',
         content: '»'
+    },
+    {
+        name: 'pagination.of',
+        content: 'von'
+    },
+    {
+        name: 'pagination.size',
+        content: 'Pro Seite'
     },
     {
         name: 'upload.preserveFilenames',

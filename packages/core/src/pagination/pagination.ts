@@ -20,6 +20,11 @@ export class Pagination<T> {
   constructor(config?: ListConfig<T>, total?: number) {
     this.config = { page: 1, size: 25 };
     Object.assign(this.config, config);
+    Object.assign(this.config, {
+      availableSizes: Array.from(new Set([this.config.size]
+        .concat(this.config.availableSizes || [], [10, 25, 50, 100], [this.config.size])
+        .sort(((a, b) => a - b))))
+    });
     if (total) {
       this.setTotal(total);
     }
@@ -116,5 +121,24 @@ export class Pagination<T> {
   /** slices a given array according to the current pagination state */
   slice(items: Array<any>): Array<any> {
     return items.slice((this.config.page - 1) * this.config.size, (this.config.page) * this.config.size);
+  }
+
+  /** Returns an object with all relevant infos about the current state of pagination */
+  params() {
+    return {
+      page: this.getPage(),
+      pages: this.getPages(),
+      total: this.total,
+      from: (this.getPage() - 1) * this.config.size + 1,
+      to: Math.min(this.getPage() * this.config.size, this.total),
+      size: this.config.size
+    }
+  }
+  /** updates the size of the pages.  */
+  updateSize(size: number) {
+    if (!size) {
+      return;
+    }
+    this.load({ size, page: 1 });
   }
 }

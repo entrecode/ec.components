@@ -23,6 +23,8 @@ export interface ListConfig<T> extends ItemConfig<T> {
   page?: number,
   /** The number of items per page */
   size?: number,
+  /** The available sizes. If not set, the size cannot be changed */
+  availableSizes?: number[],
   /** Should the selection be solo? */
   solo?: boolean,
   /** tells the list to show only items that match the filter */

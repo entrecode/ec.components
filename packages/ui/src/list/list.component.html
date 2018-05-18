@@ -1,6 +1,5 @@
 <div class="ec-list">
   <ec-list-header [list]="list" [selection]="selection" *ngIf="showHeader()"></ec-list-header>
-
   <div class="ec-list-body">
     <div class="ec-list-group" *ngFor="let group of list?.groups">
       <div class="ec-list-group-header" *ngIf="group.value" (click)="selection?.toggleAll(listItems?.items)">
@@ -15,4 +14,4 @@
     </div>
   </div>
 </div>
-<ec-pagination [config]="paginationConfig" [pagination]="list?.pagination" *ngIf="list?.pagination?.getPages()>1"></ec-pagination>
+<ec-pagination [config]="paginationConfig" [pagination]="list?.pagination"></ec-pagination>
