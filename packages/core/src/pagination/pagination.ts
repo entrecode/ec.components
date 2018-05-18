@@ -131,7 +131,8 @@ export class Pagination<T> {
       total: this.total,
       from: (this.getPage() - 1) * this.config.size + 1,
       to: Math.min(this.getPage() * this.config.size, this.total),
-      size: this.config.size
+      size: this.config.size,
+      availableSizes: this.config.availableSizes,
     }
   }
   /** updates the size of the pages.  */
