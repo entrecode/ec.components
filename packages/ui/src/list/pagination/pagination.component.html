@@ -34,7 +34,7 @@
       </li>
     </ul>
   </div>
-  <div class="pagination-info" *ngIf="pagination?.params()">
+  <div class="pagination-info" *ngIf="pagination?.params()?.total">
     <span>{{pagination.params().from}} - {{pagination.params().to}} {{ 'pagination.of' | symbol}} {{pagination.params().total}}</span>
   </div>
   <div class="pagination-size-select">
