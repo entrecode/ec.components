@@ -22,7 +22,7 @@ export class Pagination<T> {
     Object.assign(this.config, config);
     Object.assign(this.config, {
       availableSizes: Array.from(new Set([this.config.size]
-        .concat(this.config.availableSizes || [], [10, 25, 50, 100], [this.config.size])
+        .concat(this.config.availableSizes || [10, 25, 50, 100], [this.config.size])
         .sort(((a, b) => a - b))))
     });
     if (total) {

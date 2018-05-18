@@ -39,7 +39,7 @@
   </div>
   <div class="pagination-size-select">
     <select *ngIf="pagination?.params()?.availableSizes?.length > 1" (change)="updateSize($event.target.value)" class="input">
-      <option *ngFor="let size of pagination?.params()?.availableSizes" [value]="size" [selected]="pagination.getPage()===size">
+      <option *ngFor="let size of pagination?.params()?.availableSizes" [value]="size" [attr.selected]="pagination.params().size===size?'selected':null">
         {{size}} {{'pagination.size' | symbol}}
       </option>
     </select>
