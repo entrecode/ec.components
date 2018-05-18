@@ -2,7 +2,7 @@
 export abstract class Config {
   // TODO use Map !!!! (like simi did in EventEmitter.ts)
   /** The config object. */
-  private config?: {
+  private config: {
     [key: string]: Object,
   } = {};
 

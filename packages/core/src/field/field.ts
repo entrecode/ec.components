@@ -30,9 +30,9 @@ export class Field implements FieldConfigProperty {
   /** Wether or not the field should appear in default forms */
   form?: boolean;
   /** Possible Values e.g. in a select */
-  values: any[];
+  values: any[] = [];
   /** Class string */
-  class: string;
+  class = '';
   /** id for form labels */
   id: string;
   /** if false, the field will not be sortable in a list */

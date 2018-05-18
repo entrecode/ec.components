@@ -138,7 +138,7 @@ export class Collection<T> {
   /** Replaces all current items with the given items. */
   replaceWith(items: Array<T>, event: boolean = true) {
     if (this.items && this.items.length) {
-      this.removeAll(null, false);
+      this.removeAll(undefined, false);
     }
     if (items.length) {
       this.addAll(items, false, false);

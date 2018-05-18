@@ -1,9 +1,9 @@
 /** A Form is an extension of an Item. In advance to an Item it will create an Array of fields that is either extracted from config.fields or directly from the item body.*/
 
-import { Item } from '../item/item';
-import { Field } from '../field/field';
-import { FormConfig } from './form-config.interface';
 import { FieldConfigProperty } from '@ec.components/core';
+import { Field } from '../field/field';
+import { Item } from '../item/item';
+import { FormConfig } from './form-config.interface';
 
 /** The Form class is an Item with additional info about its properties (Fields). */
 export class Form<T> extends Item<T> {
@@ -28,7 +28,7 @@ export class Form<T> extends Item<T> {
   }
 
   /** creates and adds a single field to the form */
-  createField(property: string, config: FieldConfigProperty): Field {
+  createField(property: string, config: FieldConfigProperty): Field | undefined {
     if (!config) {
       return;
     }
