@@ -1,14 +1,8 @@
-import { Component, OnInit, ViewChild, ViewChildren, QueryList } from '@angular/core';
-import { SdkService } from '../../../packages/data/src/sdk/sdk.service';
-import DataManager from 'ec.sdk/lib/DataManager';
-import Core from 'ec.sdk/lib/Core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ListConfig } from '../../../packages/core/index';
-import { FormComponent } from '../../../packages/ui/src/form/form.component';
-import { TabComponent } from '../../../packages/ui/src/utility/tab/tab.component';
-import { TabsComponent } from '../../../packages/ui/src/utility/tabs/tabs.component';
-import { Apps, Accounts } from 'ec.sdk';
-import { ResourceFormComponent } from '../../../packages/data/src/resource-form/resource-form.component';
 import { ResourcePopComponent } from '../../../packages/data/src/resource-pop/resource-pop.component';
+import { SdkService } from '../../../packages/data/src/sdk/sdk.service';
+import { TabComponent } from '../../../packages/ui/src/utility/tab/tab.component';
 
 @Component({
   selector: 'ec-api-explorer',
@@ -30,9 +24,9 @@ export class ApiExplorerComponent implements OnInit {
 
   ngOnInit() {
     this.sdk.ready.then(() => {
-      /* const resource = this.sdk.datamanager; */
+      const resource = this.sdk.datamanager;
       /* const resource = new Apps('stage'); */
-      const resource = new Accounts('stage');
+      /* const resource = new Accounts('stage'); */
       this.use(resource);
     });
   }
