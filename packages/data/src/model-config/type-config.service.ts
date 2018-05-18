@@ -1,15 +1,15 @@
+import { Injectable } from '@angular/core';
+import { FieldConfigProperty } from '@ec.components/core/src/config/field-config-property.interface';
+import { FieldConfig } from '@ec.components/core/src/config/field-config.interface';
+import { DefaultInputComponent } from '@ec.components/ui/src/form/default-input/default-input.component';
+import { DefaultOutputComponent } from '@ec.components/ui/src/form/default-output/default-output.component';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
+import moment from 'moment-es6';
+import { CrudConfig } from '../crud/crud-config.interface';
+import { AdminEntryInputComponent } from '../entry-form/admin-entry-input.component';
 import { DefaultEntryInputComponent } from '../entry-form/default-entry-input.component';
 import { DefaultEntryOutputComponent } from '../entry-form/default-entry-output.component';
-import { DefaultOutputComponent } from '@ec.components/ui/src/form/default-output/default-output.component';
-import { DefaultInputComponent } from '@ec.components/ui/src/form/default-input/default-input.component';
-import moment from 'moment-es6';
-import { FieldConfig } from '@ec.components/core/src/config/field-config.interface';
-import { FieldConfigProperty } from '@ec.components/core/src/config/field-config-property.interface';
-import { Injectable } from '@angular/core';
-import { CrudConfig } from '../crud/crud-config.interface';
-import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
-import { AdminEntryInputComponent } from '../entry-form/admin-entry-input.component';
-import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 
 /** The TypeConfig holds each field type's specific behaviour in certain situations */
 @Injectable()
@@ -83,7 +83,8 @@ export class TypeConfigService {
         }
         return;
       },
-      filterPopClass: 'ec-pop_dialog'
+      filterPopClass: 'ec-pop_dialog',
+      placeholder: moment(new Date()).format(this.symbol.resolve('moment.format.date'))
       /*,
       prefill: new Date(0)*/
     },
