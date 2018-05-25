@@ -1,5 +1,12 @@
 # Changelog
 
+<a name="0.23.0"></a>
+
+## @ec.componentss/data 0.23.0
+
+BREAKING CHANGE:
+
+* added useLegacyAssets flag to use old assets. All projects still using old assets need to set this flag to migrate! The flag can be used in the field config or directly in the asset-select config.
 
 <a name="0.17.0"></a>
 

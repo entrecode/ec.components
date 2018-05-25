@@ -52,6 +52,23 @@ export class AssetSelectComponent extends SelectComponent<Resource> implements O
     super();
   }
 
+  initGroup() {
+    if (this.assetGroupID || (this.formControl.value && this.fileService.isNewAsset(this.formControl.value))) {
+      this.config = Object.assign({}, this.config || {}, this.resourceConfig.get('dmAsset'),
+        { readOnly: !this.assetGroupID });
+      if (!this.assetGroupID) {
+        console.warn('asset select has new asset but no assetGroupID was given. Switching to readOnly mode.')
+      }
+    } else if (this.config.useLegacyAssets) {
+      // legacy assets
+      this.config = Object.assign({}, this.config || {}, this.resourceConfig.get('legacyAsset'));
+    } else {
+      return;
+    }
+    Object.assign(this.config, { solo: this.solo });
+    this.useConfig(this.config);
+  }
+
   ngOnInit() {
     if (!this.formControl) {
       this.formControl = new FormControl(this.value || []);
@@ -60,22 +77,21 @@ export class AssetSelectComponent extends SelectComponent<Resource> implements O
         'is currently not supported. Ask your favorite frontend dev to fix it.');
       // TODO
     }
-    if (this.assetGroupID || (this.formControl.value && this.fileService.isNewAsset(this.formControl.value))) {
-      this.config = Object.assign({}, this.resourceConfig.get('dmAsset'),
-        { readOnly: !this.assetGroupID });
-      if (!this.assetGroupID) {
-        console.warn('asset select has new asset but no assetGroupID was given. Switching to readOnly mode.')
-      }
-    } else {
-      // legacy assets
-      this.config = Object.assign({}, this.resourceConfig.get('legacyAsset'));
-    }
-    Object.assign(this.config, { solo: this.solo });
-    this.useConfig(this.config);
+    this.initGroup();
+  }
+
+  useGroup(value) {
+    this.assetGroupID = value;
+    this.initGroup();
   }
 
   /** writeValue is overridden to fetch unresolved assetID's */
   writeValue(value) {
+    if (!this.assetGroupID && (!this.config || !this.config.useLegacyAssets)) {
+      /* console.log('have to wait for assetGroupID'); */
+      return;
+    }
+
     value = value ? !Array.isArray(value) ? [value] : value : [];
     this.fileService.resolveAssets(value, this.assetGroupID).then((assets) => {
       super.writeValue(assets);

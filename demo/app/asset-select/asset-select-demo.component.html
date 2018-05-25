@@ -5,25 +5,24 @@
 
       <h6>usage without form</h6>
 
-      <ec-asset-select #assetSelect [(ngModel)]="selectedAssets"></ec-asset-select>
-      <div *ngIf="assetSelect.selection?.items?.length">
+      <ec-asset-select [config]="{useLegacyAssets:true}" #assetSelect [(ngModel)]="selectedAssets"></ec-asset-select>
+      <!-- <div *ngIf="assetSelect.selection?.items?.length">
         <strong>Manual iteration over selected asset items</strong>
         <ul class="unstyled">
           <li *ngFor="let asset of assetSelect.selection?.items">
             <img [src]="asset.resolve('thumb')">
-            <!--<pre>{{asset | json}}</pre>-->
-
           </li>
         </ul>
         passed id:
         <pre>{{selectedAssets | json}}</pre>
         <strong>selected IDs:</strong>
         <pre>{{assetSelect.selection?.getValue() | json}}</pre>
-      </div>
+      </div> -->
 
       <b>solo</b>
 
-      <ec-asset-select [solo]="true" #soloAsset></ec-asset-select>
+      <ec-asset-select [solo]="true" [config]="{useLegacyAssets:true}" #soloAsset></ec-asset-select>
+
       <!-- <pre>{{soloAsset.selection?.getValue()}}</pre> -->
       <!--
         <h3>Usage with form</h3>
@@ -35,10 +34,16 @@
         </ec-form>
         -->
       <!-- TODO -->
+
       <b>readOnly</b>
-      <ec-asset-select [readOnly]="true" [(ngModel)]="selectedAssets"></ec-asset-select>
+      <ec-asset-select [readOnly]="true" [(ngModel)]="selectedAssets" [config]="{useLegacyAssets:true}"></ec-asset-select>
     </ec-tab>
-    <ec-tab label="new assets" selected>
+
+
+    <ec-tab label="new assets without assetGroupID" selected>
+      <ec-asset-select [(ngModel)]="selectedNewAssets"></ec-asset-select>
+    </ec-tab>
+    <ec-tab label="new assets">
       <ec-asset-select assetGroupID="test" [(ngModel)]="selectedNewAssets"></ec-asset-select>
 
       <pre>{{selectedNewAssets | json}}</pre>
