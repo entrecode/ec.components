@@ -2662,16 +2662,16 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { EventEmitter, Injectable } from &#x27;@angular/core&#x27;;
-import PublicAssetResource from &#x27;ec.sdk/lib/resources/publicAPI/PublicAssetResource&#x27;;
-import PublicAssetList from &#x27;ec.sdk/lib/resources/publicAPI/PublicAssetList&#x27;;
-import { SdkService } from &#x27;../sdk/sdk.service&#x27;;
-import { TypeConfigService } from &#x27;../model-config/type-config.service&#x27;;
-import moment from &#x27;moment-es6&#x27;;
 import { Item } from &#x27;@ec.components/core/src/item/item&#x27;;
 import DMAssetList from &#x27;ec.sdk/lib/resources/publicAPI/DMAssetList&#x27;;
+import DMAssetResource from &#x27;ec.sdk/lib/resources/publicAPI/DMAssetResource&#x27;;
+import PublicAssetList from &#x27;ec.sdk/lib/resources/publicAPI/PublicAssetList&#x27;;
+import PublicAssetResource from &#x27;ec.sdk/lib/resources/publicAPI/PublicAssetResource&#x27;;
+import { TypeConfigService } from &#x27;../model-config/type-config.service&#x27;;
+import { ResourceConfig } from &#x27;../resource-config/resource-config.service&#x27;;
 import { ResourceService } from &#x27;../resource-config/resource.service&#x27;;
 import { ResourceList } from &#x27;../resource-list/resource-list&#x27;;
-import { ResourceConfig } from &#x27;../resource-config/resource-config.service&#x27;;
+import { SdkService } from &#x27;../sdk/sdk.service&#x27;;
 
 /** Instances of Update are emitted by the changes EventEmitter of the CrudService. */
 export interface Upload {
@@ -2817,7 +2817,7 @@ export class FileService {
   }
 
   /** Resolves all assetIDs to PublicAssetResources */
-  public resolveAssets(assets: Array&lt;string | PublicAssetResource&gt;): Promise&lt;Array&lt;PublicAssetResource&gt;&gt; {
+  public resolveAssets(assets: Array&lt;string | PublicAssetResource | DMAssetResource&gt;, assetGroupID?: string): Promise&lt;Array&lt;PublicAssetResource | DMAssetResource&gt;&gt; {
     const unresolved &#x3D; assets.reduce((ids, asset) &#x3D;&gt; {
       if (typeof asset &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
         ids.push(asset);
@@ -2825,18 +2825,27 @@ export class FileService {
       return ids;
     }, []);
     if (unresolved.length &#x3D;&#x3D;&#x3D; 0) {
-      return Promise.resolve(&lt;Array&lt;PublicAssetResource&gt;&gt;assets);
+      return Promise.resolve(&lt;Array&lt;PublicAssetResource | DMAssetResource&gt;&gt;assets);
     }
-    if (unresolved.length &#x3D;&#x3D;&#x3D; 1) {
-      unresolved.push(unresolved[0]); // :) TODO remove when backend bug is fixed
+    if (assetGroupID) { // new assets
+      return this.sdk.api.dmAssetList(assetGroupID, { assetID: { any: unresolved }, size: 100 })
+        .then(dmAssetList &#x3D;&gt; dmAssetList.getAllItems());
     }
-    return this.sdk.api.assetList({ assetID: { any: unresolved } })
-      .then((assetList) &#x3D;&gt; {
-        const resolved &#x3D; assetList.getAllItems();
-        return assets.map((asset) &#x3D;&gt;
-          typeof asset &#x3D;&#x3D;&#x3D; &#x27;string&#x27; ?
-            resolved.find((resource) &#x3D;&gt; resource.assetID &#x3D;&#x3D;&#x3D; asset) : asset)
-      });
+    return Promise.resolve().then((): any &#x3D;&gt; {
+      if (unresolved.length &#x3D;&#x3D;&#x3D; 1) {
+        return this.sdk.api.asset(unresolved[0]).then(asset &#x3D;&gt; {
+          return [asset]
+        });
+      }
+      return this.sdk.api.assetList({ assetID: { any: unresolved }, page: 1 })
+        .then((assetList) &#x3D;&gt; {
+          const resolved &#x3D; assetList.getAllItems();
+          return assets.map((asset) &#x3D;&gt;
+            typeof asset &#x3D;&#x3D;&#x3D; &#x27;string&#x27; ?
+              resolved.find((resource) &#x3D;&gt; resource.assetID &#x3D;&#x3D;&#x3D; asset) : asset)
+        });
+
+    })
   }
 }
 </code></pre>
