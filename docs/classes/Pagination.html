@@ -3261,7 +3261,7 @@ If no config is provided, it will default to <code>{page: 1, size: 25}</code>. <
 </div>
 
                             <div class="io-description">
-                                <b>Returns : </b>    <code>{ page: number; pages: number; total: number; from: number; to: any; size: any; }</code>
+                                <b>Returns : </b>    <code>{ page: number; pages: number; total: number; from: number; to: any; size: any; availableSizes: a...</code>
 
                             </div>
                     </td>
@@ -3543,7 +3543,7 @@ If no config is provided, it will default to <code>{page: 1, size: 25}</code>. <
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="138" class="link-to-prism">packages/core/src/pagination/pagination.ts:138</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="139" class="link-to-prism">packages/core/src/pagination/pagination.ts:139</a></div>
                             </td>
                         </tr>
 
@@ -3635,7 +3635,7 @@ export class Pagination&lt;T&gt; {
     Object.assign(this.config, config);
     Object.assign(this.config, {
       availableSizes: Array.from(new Set([this.config.size]
-        .concat(this.config.availableSizes || [], [10, 25, 50, 100], [this.config.size])
+        .concat(this.config.availableSizes || [10, 25, 50, 100], [this.config.size])
         .sort(((a, b) &#x3D;&gt; a - b))))
     });
     if (total) {
@@ -3744,7 +3744,8 @@ export class Pagination&lt;T&gt; {
       total: this.total,
       from: (this.getPage() - 1) * this.config.size + 1,
       to: Math.min(this.getPage() * this.config.size, this.total),
-      size: this.config.size
+      size: this.config.size,
+      availableSizes: this.config.availableSizes,
     }
   }
   /** updates the size of the pages.  */
