@@ -1,6 +1,6 @@
+import { ListConfig } from '@ec.components/core/src/list/list-config.interface';
 import { LoaderComponent } from '@ec.components/ui/src/loader/loader.component';
 import { NotificationsComponent } from '@ec.components/ui/src/notifications/notifications.component';
-import { ListConfig } from '@ec.components/core/src/list/list-config.interface';
 
 /** The CrudConfig allows a quick customization of an ec-crud component. */
 export interface CrudConfig<T> extends ListConfig<T> {
@@ -32,4 +32,6 @@ export interface CrudConfig<T> extends ListConfig<T> {
   disableListPop?: boolean;
   /** If true, no create pop will be available at selects */
   disableCreatePop?: boolean;
+  /** If true, legacy assets will be used instead of new assets */
+  useLegacyAssets?: boolean;
 }

@@ -1,14 +1,14 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import PublicAssetResource from 'ec.sdk/lib/resources/publicAPI/PublicAssetResource';
-import PublicAssetList from 'ec.sdk/lib/resources/publicAPI/PublicAssetList';
-import { SdkService } from '../sdk/sdk.service';
-import { TypeConfigService } from '../model-config/type-config.service';
-import moment from 'moment-es6';
 import { Item } from '@ec.components/core/src/item/item';
 import DMAssetList from 'ec.sdk/lib/resources/publicAPI/DMAssetList';
+import DMAssetResource from 'ec.sdk/lib/resources/publicAPI/DMAssetResource';
+import PublicAssetList from 'ec.sdk/lib/resources/publicAPI/PublicAssetList';
+import PublicAssetResource from 'ec.sdk/lib/resources/publicAPI/PublicAssetResource';
+import { TypeConfigService } from '../model-config/type-config.service';
+import { ResourceConfig } from '../resource-config/resource-config.service';
 import { ResourceService } from '../resource-config/resource.service';
 import { ResourceList } from '../resource-list/resource-list';
-import { ResourceConfig } from '../resource-config/resource-config.service';
+import { SdkService } from '../sdk/sdk.service';
 
 /** Instances of Update are emitted by the changes EventEmitter of the CrudService. */
 export interface Upload {
@@ -154,7 +154,7 @@ export class FileService {
   }
 
   /** Resolves all assetIDs to PublicAssetResources */
-  public resolveAssets(assets: Array<string | PublicAssetResource>): Promise<Array<PublicAssetResource>> {
+  public resolveAssets(assets: Array<string | PublicAssetResource | DMAssetResource>, assetGroupID?: string): Promise<Array<PublicAssetResource | DMAssetResource>> {
     const unresolved = assets.reduce((ids, asset) => {
       if (typeof asset === 'string') {
         ids.push(asset);
@@ -162,17 +162,26 @@ export class FileService {
       return ids;
     }, []);
     if (unresolved.length === 0) {
-      return Promise.resolve(<Array<PublicAssetResource>>assets);
+      return Promise.resolve(<Array<PublicAssetResource | DMAssetResource>>assets);
     }
-    if (unresolved.length === 1) {
-      unresolved.push(unresolved[0]); // :) TODO remove when backend bug is fixed
+    if (assetGroupID) { // new assets
+      return this.sdk.api.dmAssetList(assetGroupID, { assetID: { any: unresolved }, size: 100 })
+        .then(dmAssetList => dmAssetList.getAllItems();
     }
-    return this.sdk.api.assetList({ assetID: { any: unresolved } })
-      .then((assetList) => {
-        const resolved = assetList.getAllItems();
-        return assets.map((asset) =>
-          typeof asset === 'string' ?
-            resolved.find((resource) => resource.assetID === asset) : asset)
-      });
+    return Promise.resolve().then((): any => {
+      if (unresolved.length === 1) {
+        return this.sdk.api.asset(unresolved[0]).then(asset => {
+          return [asset]
+        });
+      }
+      return this.sdk.api.assetList({ assetID: { any: unresolved }, page: 1 })
+        .then((assetList) => {
+          const resolved = assetList.getAllItems();
+          return assets.map((asset) =>
+            typeof asset === 'string' ?
+              resolved.find((resource) => resource.assetID === asset) : asset)
+        });
+
+    })
   }
 }

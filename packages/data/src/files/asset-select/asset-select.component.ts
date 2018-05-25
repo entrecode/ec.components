@@ -1,17 +1,15 @@
 /**
  * Created by felix on 23.05.17.
  */
-import { Component, forwardRef, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, ViewEncapsulation, forwardRef } from '@angular/core';
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Field } from '@ec.components/core/src/field/field';
 import { Item } from '@ec.components/core/src/item/item';
-import { FileService } from '../file.service';
 import { SelectComponent } from '@ec.components/ui';
-import PublicAssetResource from 'ec.sdk/lib/resources/publicAPI/PublicAssetResource';
-import { CrudConfig } from '../../crud/crud-config.interface';
-import { AssetListPopComponent } from '../asset-list-pop/asset-list-pop.component';
-import { ResourceConfig } from '../../resource-config/resource-config.service';
 import Resource from 'ec.sdk/lib/resources/Resource';
+import { CrudConfig } from '../../crud/crud-config.interface';
+import { ResourceConfig } from '../../resource-config/resource-config.service';
+import { AssetListPopComponent } from '../asset-list-pop/asset-list-pop.component';
+import { FileService } from '../file.service';
 import { UploadComponent } from '../upload/upload.component';
 
 /** Shows assets of a selection and is able to pick new ones from a crud list.
@@ -48,7 +46,7 @@ export class AssetSelectComponent extends SelectComponent<Resource> implements O
   /** The nested upload component */
   @ViewChild(UploadComponent) uploader: UploadComponent;
   /** Configuration Object for List */
-  @Input() config: CrudConfig<Resource>;
+  @Input() config: CrudConfig<Resource> = {};
 
   constructor(private fileService: FileService, public resourceConfig: ResourceConfig) {
     super();
@@ -79,7 +77,7 @@ export class AssetSelectComponent extends SelectComponent<Resource> implements O
   /** writeValue is overridden to fetch unresolved assetID's */
   writeValue(value) {
     value = value ? !Array.isArray(value) ? [value] : value : [];
-    this.fileService.resolveAssets(value).then((assets) => {
+    this.fileService.resolveAssets(value, this.assetGroupID).then((assets) => {
       super.writeValue(assets);
     });
   }
