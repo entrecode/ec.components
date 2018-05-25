@@ -1,16 +1,18 @@
-<div *ngIf="!config?.useLegacyAssets&&!assetGroupID">
-  <span>select assetgroup or <a (click)="useLegacyAssets()">use legacy assets</a></span>
+<div *ngIf="!groupReady()">
+  <span>select assetgroup or
+    <a (click)="useLegacyAssets()">use legacy assets</a>
+  </span>
   <input type="text" #assetGroupInput>
   <a class="btn" (click)="useGroup(assetGroupInput.value)">Use</a>
 </div>
-<div *ngIf="selection" class="ec-asset-select ec-dropzone" (ecDropzone)="uploader?.upload($event)" [disabled]="readOnly"
+<div *ngIf="groupReady()&&selection" class="ec-asset-select ec-dropzone" (ecDropzone)="uploader?.upload($event)" [disabled]="readOnly"
   [class.ec-asset-select_solo]="solo" [class.empty]="!selection.items.length">
   <div class="ec-dropzone-info">Loslassen zum Hochladen</div>
   <div class="ec-asset-upload" *ngIf="!readOnly">
     <ec-upload #uploader [loader]="popLoader" [assetGroupID]="assetGroupID" (success)="assetListPop.selectUpload($event)" class="hide"></ec-upload>
     <a (click)="uploader.trigger()">Hochladen</a>
     <span *ngIf="!config?.disableListPop"> oder
-      <a (click)="pop.toggle()">Mediathek</a>
+      <a (click)="pop.toggle()">Mediathek ({{assetGroupID}})</a>
     </span>
   </div>
   <div *ngIf="selection.items.length" class="ec-asset-selected">

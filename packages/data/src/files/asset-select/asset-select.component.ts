@@ -69,6 +69,10 @@ export class AssetSelectComponent extends SelectComponent<Resource> implements O
     this.useConfig(this.config);
   }
 
+  groupReady() {
+    return this.assetGroupID || (this.config && this.config.useLegacyAssets);
+  }
+
   ngOnInit() {
     if (!this.formControl) {
       this.formControl = new FormControl(this.value || []);
@@ -92,7 +96,7 @@ export class AssetSelectComponent extends SelectComponent<Resource> implements O
 
   /** writeValue is overridden to fetch unresolved assetID's */
   writeValue(value) {
-    if (!this.assetGroupID && (!this.config || !this.config.useLegacyAssets)) {
+    if (!this.groupReady()) {
       /* console.log('have to wait for assetGroupID'); */
       return;
     }
