@@ -80,6 +80,11 @@ export class AssetSelectComponent extends SelectComponent<Resource> implements O
     this.initGroup();
   }
 
+  useLegacyAssets() {
+    this.config = Object.assign({}, this.config || {}, { useLegacyAssets: true });
+    this.initGroup();
+  }
+
   useGroup(value) {
     this.assetGroupID = value;
     this.initGroup();

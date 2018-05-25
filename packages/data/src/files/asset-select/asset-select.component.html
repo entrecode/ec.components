@@ -1,5 +1,5 @@
 <div *ngIf="!config?.useLegacyAssets&&!assetGroupID">
-  select assetgroup
+  <span>select assetgroup or <a (click)="useLegacyAssets()">use legacy assets</a></span>
   <input type="text" #assetGroupInput>
   <a class="btn" (click)="useGroup(assetGroupInput.value)">Use</a>
 </div>

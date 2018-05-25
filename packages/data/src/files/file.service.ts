@@ -166,7 +166,7 @@ export class FileService {
     }
     if (assetGroupID) { // new assets
       return this.sdk.api.dmAssetList(assetGroupID, { assetID: { any: unresolved }, size: 100 })
-        .then(dmAssetList => dmAssetList.getAllItems();
+        .then(dmAssetList => dmAssetList.getAllItems());
     }
     return Promise.resolve().then((): any => {
       if (unresolved.length === 1) {
