@@ -7,7 +7,7 @@
       <li *ngFor="let selected of selection?.items">
         <span [class.tag]="!solo" (click)="!solo&&editItem(selected,$event)">
           {{selected.display()}}
-          <a (click)="removeItem(selected,$event)" *ngIf="!solo">&times;</a>
+          <a (click)="removeItem(selected,$event)">&times;</a>
         </span>
       </li>
     </ul>

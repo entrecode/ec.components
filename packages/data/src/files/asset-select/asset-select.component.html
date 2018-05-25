@@ -4,7 +4,7 @@
   <div class="ec-asset-upload" *ngIf="!readOnly">
     <ec-upload #uploader [loader]="popLoader" [assetGroupID]="assetGroupID" (success)="assetListPop.selectUpload($event)" class="hide"></ec-upload>
     <a (click)="uploader.trigger()">Hochladen</a>
-    <span> oder
+    <span *ngIf="!config?.disableListPop"> oder
       <a (click)="pop.toggle()">Mediathek</a>
     </span>
   </div>
