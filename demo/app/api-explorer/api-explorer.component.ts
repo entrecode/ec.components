@@ -45,10 +45,10 @@ export class ApiExplorerComponent implements OnInit {
   }
 
   hasChildren(resource) {
-    if (!this.api) {
+    if (!resource || !resource.getAvailableRelations()) {
       return;
     }
-    const symbols = Object.keys(this.api.getAvailableRelations());
+    const symbols = Object.keys(resource.getAvailableRelations());
     /* console.log('symbols', symbols); */
     return symbols.length && symbols[0] !== 'dummy';
   }
