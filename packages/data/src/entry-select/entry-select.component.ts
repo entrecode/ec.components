@@ -1,28 +1,17 @@
 /**
  * Created by felix on 23.05.17.
  */
-import {
-  Component,
-  forwardRef,
-  Input,
-  OnChanges,
-  ViewChild,
-  ViewEncapsulation,
-  OnInit
-} from '@angular/core';
+import { Component, Input, OnChanges, ViewChild, ViewEncapsulation, forwardRef } from '@angular/core';
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Field } from '@ec.components/core/src/field/field';
-import { CrudComponent } from '../crud/crud.component';
-import { ModelConfigService } from '../model-config/model-config.service';
-import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
-import { Item } from '@ec.components/core/src/item/item';
-import { CrudConfig } from '../crud/crud-config.interface';
-import { SelectComponent } from '@ec.components/ui';
-import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { Form } from '@ec.components/core';
-import { EntryPopComponent } from '../entry-pop/entry-pop.component';
+import { Item } from '@ec.components/core/src/item/item';
+import { SelectComponent } from '@ec.components/ui';
+import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
+import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { AuthService } from '../auth/auth.service';
-import LiteEntryResource from 'ec.sdk/lib/resources/publicAPI/LiteEntryResource';
+import { CrudConfig } from '../crud/crud-config.interface';
+import { EntryPopComponent } from '../entry-pop/entry-pop.component';
+import { ModelConfigService } from '../model-config/model-config.service';
 
 // import LiteEntryResource from "ec.sdk/lib/resources/publicAPI/LiteEntryResource";
 
@@ -84,7 +73,8 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
     super.useConfig(config);
     this.dropdownConfig = Object.assign({}, this.config, {
       fields: {
-        [this.config.label]: Object.assign({}, (this.config.fields || {})[this.config.label])
+        [this.config.label]: Object.assign({}, (this.config.fields || {})[this.config.label]),
+        _modified: { hidden: true }
       }
     });
     this.auth.getAllowedModelMethods(this.model, this.config.methods)
