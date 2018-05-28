@@ -29,6 +29,8 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
   @Input() assetGroupID: string;
   /** Event emitter on item selection */
   @Output() columnClicked: EventEmitter<Item<PublicAssetResource>> = new EventEmitter();
+  /** Emits when the group changes */
+  @Output() groupChanged: EventEmitter<string> = new EventEmitter();
   /** Subject that is nexted when the items update */
   public groupChange: Subject<string> = new Subject();
   /** The loaded assetGroups */
@@ -48,10 +50,7 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
     if (!group) {
       return;
     }
-    if (group === '_legacy') {
-      delete this.assetGroupID;
-      return;
-    }
+    this.groupChanged.emit(group);
     this.assetGroupID = group;
   }
 
@@ -59,7 +58,7 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
     this.fileService.assetGroupList().then(assetGroups => {
       this.assetGroups = assetGroups
       if (!this.assetGroupID) {
-        this.assetGroupID = assetGroups[0] || '_legacy';
+        this.assetGroupID = assetGroups[0] || 'legacyAsset';
       }
     });
   }

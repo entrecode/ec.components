@@ -112,8 +112,8 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   /** Initializes either with values, collection or list. Creates Selection with config. */
   useConfig(config: ListConfig<T> = {}) {
     this.config = Object.assign(this.config || {}, config);
-    this.initSelection();
     this.use(this.value, false);
+    this.initSelection();
   }
 
   /** Is called when a selected item is clicked*/
@@ -139,8 +139,7 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
     if (this.config.solo && this.pop) {
       this.pop.hide();
     }
-    // this.value = [].concat(this.selection.items);
-    this.value = this.selection.items.map(i => i.getBody());
+    this.value = this.selection.getValue();
     return this.propagateChange(this.value);
   }
 

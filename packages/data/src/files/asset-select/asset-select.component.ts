@@ -41,6 +41,8 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
   @Input() item: Item<any>;
   /** If true, the selection cannot be changed and no uploads can be made. */
   @Input() readOnly = false;
+  /** If true, the asset group cannot be changed */
+  @Input() forceGroup = false;
   /** The assetGroupID that should be picked from. If empty, legacy assets are used */
   @Input() assetGroupID: string;
   /** The asset list pop with the list to select from */
@@ -52,7 +54,7 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
   /** config for new assets */
   public dmAssetConfig = Object.assign({}, this.resourceConfig.get('dmAsset'));
   /** config for legacy assets */
-  public legacyAssetConfig = Object.assign({}, this.resourceConfig.get('legacyAsset'));
+  public legacyAssetConfig = Object.assign({}, this.resourceConfig.get('legacyAsset'), { forceGroup: true });
 
   constructor(
     private fileService: FileService,
@@ -63,31 +65,16 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
   }
 
   setGroup(group) {
-    console.log('set group', group);
     if (!group) {
       return;
     }
-    if (group === '_legacy') {
-      this.useLegacyAssets();
-      return;
+    let config;
+    if (group === 'legacyAsset') {
+      config = Object.assign({}, this.legacyAssetConfig);
     }
-    const config = Object.assign(this.config, this.initConfig());
-    if (this.containsOldAssets()) {
-      console.error('cannot switch to new assets: old assets detected');
-      return;
-    }
+    config = Object.assign({}, this.initConfig());
     this.assetGroupID = group;
     this.useConfig(config);
-  }
-
-  useLegacyAssets() {
-    if (this.containsNewAssets()) {
-      console.error('cannot switch to legacy assets: new assets detected');
-      return;
-    }
-    delete this.assetGroupID;
-    this.config = Object.assign(this.config || {}, { useLegacyAssets: true });
-    this.useConfig(Object.assign(this.config, this.initConfig()));
   }
 
   containsNewAssets() {
@@ -106,22 +93,23 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
       console.error('Mixed Content!', this.formControl.value)
       return;
     }
-    if (this.containsNewAssets() || this.assetGroupID) {
+    if (this.containsNewAssets() || (this.assetGroupID && this.assetGroupID !== 'legacyAsset')) {
       config = this.dmAssetConfig;
-    } else if (this.containsOldAssets() || (this.config && this.config.useLegacyAssets)) {
+      // this.assetGroupID = this.assetGroupID || this.value[0].
+    } else if (this.containsOldAssets() || this.assetGroupID === 'legacyAsset') {
       // legacy assets
       config = this.legacyAssetConfig;
+      this.assetGroupID = 'legacyAsset';
     }
     return Object.assign(config, { solo: !!this.solo });
   }
 
   groupReady() {
-    return this.assetGroupID || (this.config && this.config.useLegacyAssets);
+    return this.assetGroupID;
   }
 
   /** Called when the model changes */
   writeValue(value: any) {
-    console.log('write', value);
     this.value = value;
     this.useConfig(this.initConfig());
     this.use(value, false);

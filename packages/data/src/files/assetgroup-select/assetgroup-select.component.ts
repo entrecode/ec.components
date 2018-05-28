@@ -10,7 +10,8 @@ export class AssetgroupSelectComponent implements OnInit {
     @Input() placeholder = 'select assetgroup..';
     @Input() assetGroupID: string;
     @Input() assetGroups: string[];
-    @Input() hideLegacy: boolean;
+    @Input() disableLegacy: boolean;
+    @Input() readOnly: boolean;
     @Output() groupChanged: EventEmitter<string> = new EventEmitter();
 
     constructor(

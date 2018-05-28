@@ -24,7 +24,7 @@
       </li>
     </ul>
   </div>
-  <ec-asset-list-pop [assetGroupID]="assetGroupID" (click)="clickInside($event)" (columnClicked)="select($event)" [config]="config"
+  <ec-asset-list-pop (groupChanged)="setGroup($event)" [assetGroupID]="assetGroupID" (click)="clickInside($event)" (columnClicked)="select($event)" [config]="config"
     [selection]="selection" [active]="config?.nestedPopActive" [visible]="config?.nestedPopVisible" [ngClass]="config?.nestedPopClass || 'ec-pop_dialog'"
     #assetListPop></ec-asset-list-pop>
 </div>

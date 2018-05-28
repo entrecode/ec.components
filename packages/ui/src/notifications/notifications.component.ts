@@ -2,8 +2,8 @@
  * Created by felix on 26.05.17.
  */
 import { Component, Input } from '@angular/core';
-import { Notification } from './notification';
 import { Collection } from '@ec.components/core/src/collection/collection';
+import { Notification } from './notification';
 import { NotificationsService } from './notifications.service';
 
 /** Displays any kind of Notification inside the DOM.
@@ -29,7 +29,7 @@ export class NotificationsComponent {
         this.notifications.removeAll(notification.hide);
       }
       if (!notification.title && !notification.message) {
-        console.warn('tried to emit notification without message and title', notification);
+        // console.warn('tried to emit notification without message and title', notification);
         return;
       }
       if (notification.append) {

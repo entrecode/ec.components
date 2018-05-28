@@ -32,6 +32,4 @@ export interface CrudConfig<T> extends ListConfig<T> {
   disableListPop?: boolean;
   /** If true, no create pop will be available at selects */
   disableCreatePop?: boolean;
-  /** If true, legacy assets will be used instead of new assets */
-  useLegacyAssets?: boolean;
 }
