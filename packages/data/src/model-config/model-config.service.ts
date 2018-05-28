@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Item } from '@ec.components/core/src/item/item';
-import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
-import { CrudService } from '../crud/crud.service';
 import { Config } from '@ec.components/core/src/config/config';
-import { FieldConfig } from '@ec.components/core/src/config/field-config.interface';
 import { FieldConfigProperty } from '@ec.components/core/src/config/field-config-property.interface';
+import { FieldConfig } from '@ec.components/core/src/config/field-config.interface';
+import { Item } from '@ec.components/core/src/item/item';
+import { ListConfig } from '@ec.components/core/src/list/list-config.interface';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
+import { CrudConfig } from '../crud/crud-config.interface';
+import { CrudService } from '../crud/crud.service';
 import { SdkService } from '../sdk/sdk.service';
 import { TypeConfigService } from './type-config.service';
-import { ListConfig } from '@ec.components/core/src/list/list-config.interface';
-import { CrudConfig } from '../crud/crud-config.interface';
-import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
-import moment from 'moment-es6';
 
 /** The main class for configuring the behaviour of a model.
  * By default, everything is auto generated from the model's schema but can be overriden via the

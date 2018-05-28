@@ -1,13 +1,13 @@
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { LoaderComponent, LoaderService, NotificationsService, WithLoader } from '@ec.components/ui';
+import { Notification } from '@ec.components/ui/src/notifications/notification';
+import { WithNotifications } from '@ec.components/ui/src/notifications/with-notifications.interface';
 import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
-import { FileOptions } from './../file.service';
-import { Component, EventEmitter, Input, Output, ElementRef, ViewChild } from '@angular/core';
-import { SdkService } from '../../sdk/sdk.service';
-import { FileService, Upload } from '../file.service';
-import { LoaderComponent, WithLoader, LoaderService, NotificationsService } from '@ec.components/ui';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 import PublicAPI from 'ec.sdk/lib/PublicAPI';
-import { WithNotifications } from '@ec.components/ui/src/notifications/with-notifications.interface';
-import { Notification } from '@ec.components/ui/src/notifications/notification';
+import { SdkService } from '../../sdk/sdk.service';
+import { FileService, Upload } from '../file.service';
+import { FileOptions } from './../file.service';
 
 /** This component will render an input field to upload files to the datamanager. */
 @Component({
@@ -39,6 +39,8 @@ export class UploadComponent implements WithLoader, WithNotifications {
   @Input() api: PublicAPI;
   /** Emits when an upload is complete. */
   @Output() success: EventEmitter<Upload> = new EventEmitter();
+  /** emits when the group has been set from the upload pop */
+  @Output() groupChanged: EventEmitter<string> = new EventEmitter();
   /** Reference to the input[type=file] element */
   @ViewChild('fileInput') fileInput: ElementRef;
   /** Pop child for new asset options. */
@@ -62,13 +64,20 @@ export class UploadComponent implements WithLoader, WithNotifications {
     this.fileInput.nativeElement.click();
   }
 
+  /** Sets the asset group to upload to */
+  setGroup(group) {
+    this.assetGroupID = group;
+    this.groupChanged.emit(group);
+  }
+
   /** Uploads the files from the input event. Handles loader and notifications. */
   change(e, api = this.sdk.api) {
     if (!e || !e.target || !e.target.files || !e.target.files.length) {
       return;
     }
     this.filesToUpload = e.target.files;
-    if (this.custom) {
+
+    if (this.custom || !this.assetGroupID) {
       this.event = e;
       this.pop.show();
       return;

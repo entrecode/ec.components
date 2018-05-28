@@ -129,6 +129,10 @@ export default [
         content: 'Pro Seite'
     },
     {
+        name: 'upload.assetGroup',
+        content: 'Gruppe'
+    },
+    {
         name: 'upload.preserveFilenames',
         content: 'Dateinamen einkochen'
     },

@@ -1,9 +1,9 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { ModelConfigService } from '../../packages/data/index';
 import moment from 'moment-es6';
-import { demoRoutes } from './demo.routes';
+import { ModelConfigService } from '../../packages/data/index';
 import { TypeConfigService } from '../../packages/data/src/model-config/type-config.service';
 import { LocationPickerComponent } from '../../packages/location/src/location-picker.component';
+import { demoRoutes } from './demo.routes';
 
 @Component({
   selector: 'ec-demo-root',
@@ -22,7 +22,7 @@ export class DemoComponent {
       input: LocationPickerComponent
     });
 
-    this.modelConfig.set('muffin', {
+    /* this.modelConfig.set('muffin', {
       fields: {
         pictures: {
           label: 'Bilder'
@@ -95,7 +95,7 @@ export class DemoComponent {
           }
         }
       }
-    });
+    }); */
   }
 
 }

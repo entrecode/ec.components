@@ -1,4 +1,4 @@
-import { Component, EventEmitter, forwardRef, Input, OnChanges, OnInit, Output, ViewChild, ViewEncapsulation, HostListener } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnChanges, OnInit, Output, ViewChild, ViewEncapsulation, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { List, ListConfig, Selection } from '@ec.components/core';
 import { Item } from '@ec.components/core/src/item/item';
@@ -113,7 +113,7 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   useConfig(config: ListConfig<T> = {}) {
     this.config = Object.assign(this.config || {}, config);
     this.initSelection();
-    this.writeValue(this.value);
+    this.use(this.value, false);
   }
 
   /** Is called when a selected item is clicked*/
@@ -139,7 +139,9 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
     if (this.config.solo && this.pop) {
       this.pop.hide();
     }
-    return this.propagateChange(this.selection.getValue());
+    // this.value = [].concat(this.selection.items);
+    this.value = this.selection.items.map(i => i.getBody());
+    return this.propagateChange(this.value);
   }
 
   propagateChange = (_: any) => {

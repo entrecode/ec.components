@@ -1,0 +1,5 @@
+<select class="input assetgroup-select" (change)="groupChanged.emit($event.target.value)">
+    <option *ngIf="!assetGroupID">{{placeholder}}</option>
+    <option *ngFor="let assetGroup of assetGroups" [selected]="assetGroupID===assetGroup">{{assetGroup}}</option>
+    <option *ngIf="!hideLegacy" value="_legacy" [selected]="assetGroupID==='_legacy'">legacy Assets</option>
+</select>

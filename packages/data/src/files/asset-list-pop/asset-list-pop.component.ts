@@ -1,12 +1,13 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import PublicAssetResource from 'ec.sdk/lib/resources/publicAPI/PublicAssetResource';
-import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
-import { Selection, Item } from '@ec.components/core';
-import { CrudConfig } from '../../crud/crud-config.interface';
-import { AuthService } from '../../auth/auth.service';
-import { Upload } from '../file.service';
-import { PopService } from '@ec.components/ui/src/pop/pop.service';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Item, Selection } from '@ec.components/core';
 import { SdkService } from '@ec.components/data';
+import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
+import { PopService } from '@ec.components/ui/src/pop/pop.service';
+import PublicAssetResource from 'ec.sdk/lib/resources/publicAPI/PublicAssetResource';
+import { Subject } from 'rxjs/Subject';
+import { AuthService } from '../../auth/auth.service';
+import { CrudConfig } from '../../crud/crud-config.interface';
+import { FileService, Upload } from '../file.service';
 
 /** Entry Pop is an extension of Pop component to host an entry-form.
  * You can use it like a normal pop but with the extra handling of an entry form inside.
@@ -19,7 +20,7 @@ import { SdkService } from '@ec.components/data';
   styleUrls: ['./asset-list-pop.component.scss']
 })
 
-export class AssetListPopComponent extends PopComponent {
+export class AssetListPopComponent extends PopComponent implements OnInit {
   /** CrudConfig for customizing the entry-form and the pop.*/
   @Input() config: CrudConfig<PublicAssetResource> = {};
   /** The used selection */
@@ -28,11 +29,39 @@ export class AssetListPopComponent extends PopComponent {
   @Input() assetGroupID: string;
   /** Event emitter on item selection */
   @Output() columnClicked: EventEmitter<Item<PublicAssetResource>> = new EventEmitter();
+  /** Subject that is nexted when the items update */
+  public groupChange: Subject<string> = new Subject();
+  /** The loaded assetGroups */
+  public assetGroups: string[];
+
   /** Injects auth service and calls super constructor. */
+
   constructor(protected popService: PopService,
     private auth: AuthService,
+    private fileService: FileService,
     public sdk: SdkService) {
     super(popService);
+  }
+
+
+  setGroup(group) {
+    if (!group) {
+      return;
+    }
+    if (group === '_legacy') {
+      delete this.assetGroupID;
+      return;
+    }
+    this.assetGroupID = group;
+  }
+
+  ngOnInit() {
+    this.fileService.assetGroupList().then(assetGroups => {
+      this.assetGroups = assetGroups
+      if (!this.assetGroupID) {
+        this.assetGroupID = assetGroups[0] || '_legacy';
+      }
+    });
   }
 
   /** method that is called after the upload to select the uploaded item(s). */
@@ -41,6 +70,7 @@ export class AssetListPopComponent extends PopComponent {
       console.warn('no selection.');
       return;
     }
+    console.log('upload', upload);
     if (this.config.solo) {
       this.selection.select(upload.item);
     } else {

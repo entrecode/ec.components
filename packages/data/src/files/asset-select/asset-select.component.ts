@@ -4,8 +4,10 @@
 import { Component, Input, OnInit, ViewChild, ViewEncapsulation, forwardRef } from '@angular/core';
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Item } from '@ec.components/core/src/item/item';
+import { SdkService } from '@ec.components/data';
 import { SelectComponent } from '@ec.components/ui';
-import Resource from 'ec.sdk/lib/resources/Resource';
+import DMAssetResource from 'ec.sdk/lib/resources/publicAPI/DMAssetResource';
+import PublicAssetResource from 'ec.sdk/lib/resources/publicAPI/PublicAssetResource';
 import { CrudConfig } from '../../crud/crud-config.interface';
 import { ResourceConfig } from '../../resource-config/resource-config.service';
 import { AssetListPopComponent } from '../asset-list-pop/asset-list-pop.component';
@@ -28,7 +30,7 @@ import { UploadComponent } from '../upload/upload.component';
     }
   ]
 })
-export class AssetSelectComponent extends SelectComponent<Resource> implements OnInit {
+export class AssetSelectComponent extends SelectComponent<DMAssetResource | PublicAssetResource> implements OnInit {
   /** The formControl that is used. */
   @Input() formControl: FormControl;
   /** The form group that is used */
@@ -46,65 +48,83 @@ export class AssetSelectComponent extends SelectComponent<Resource> implements O
   /** The nested upload component */
   @ViewChild(UploadComponent) uploader: UploadComponent;
   /** Configuration Object for List */
-  @Input() config: CrudConfig<Resource> = {};
+  @Input() config: CrudConfig<DMAssetResource | PublicAssetResource> = {};
+  /** config for new assets */
+  public dmAssetConfig = Object.assign({}, this.resourceConfig.get('dmAsset'));
+  /** config for legacy assets */
+  public legacyAssetConfig = Object.assign({}, this.resourceConfig.get('legacyAsset'));
 
-  constructor(private fileService: FileService, public resourceConfig: ResourceConfig) {
+  constructor(
+    private fileService: FileService,
+    public resourceConfig: ResourceConfig,
+    public sdk: SdkService
+  ) {
     super();
   }
 
-  initGroup() {
-    if (this.assetGroupID || (this.formControl.value && this.fileService.isNewAsset(this.formControl.value))) {
-      this.config = Object.assign({}, this.config || {}, this.resourceConfig.get('dmAsset'),
-        { readOnly: !this.assetGroupID });
-      if (!this.assetGroupID) {
-        console.warn('asset select has new asset but no assetGroupID was given. Switching to readOnly mode.')
-      }
-    } else if (this.config.useLegacyAssets) {
-      // legacy assets
-      this.config = Object.assign({}, this.config || {}, this.resourceConfig.get('legacyAsset'));
-    } else {
+  setGroup(group) {
+    console.log('set group', group);
+    if (!group) {
       return;
     }
-    Object.assign(this.config, { solo: this.solo });
-    this.useConfig(this.config);
+    if (group === '_legacy') {
+      this.useLegacyAssets();
+      return;
+    }
+    const config = Object.assign(this.config, this.initConfig());
+    if (this.containsOldAssets()) {
+      console.error('cannot switch to new assets: old assets detected');
+      return;
+    }
+    this.assetGroupID = group;
+    this.useConfig(config);
+  }
+
+  useLegacyAssets() {
+    if (this.containsNewAssets()) {
+      console.error('cannot switch to legacy assets: new assets detected');
+      return;
+    }
+    delete this.assetGroupID;
+    this.config = Object.assign(this.config || {}, { useLegacyAssets: true });
+    this.useConfig(Object.assign(this.config, this.initConfig()));
+  }
+
+  containsNewAssets() {
+    return (this.value && this.fileService.isNewAsset(this.value));
+  }
+  containsOldAssets() {
+    return (this.value && !this.fileService.isNewAsset(this.value, true));
+  }
+
+  initConfig(): CrudConfig<DMAssetResource | PublicAssetResource> {
+    let config = {};
+    if (!this.formControl) {
+      this.formControl = new FormControl(this.value || []);
+    }
+    if (this.containsOldAssets() && this.containsNewAssets()) {
+      console.error('Mixed Content!', this.formControl.value)
+      return;
+    }
+    if (this.containsNewAssets() || this.assetGroupID) {
+      config = this.dmAssetConfig;
+    } else if (this.containsOldAssets() || (this.config && this.config.useLegacyAssets)) {
+      // legacy assets
+      config = this.legacyAssetConfig;
+    }
+    return Object.assign(config, { solo: !!this.solo });
   }
 
   groupReady() {
     return this.assetGroupID || (this.config && this.config.useLegacyAssets);
   }
 
-  ngOnInit() {
-    if (!this.formControl) {
-      this.formControl = new FormControl(this.value || []);
-    } else if (this.value) {
-      console.warn('asset-select: setting a value to a asset-select with given formControl ' +
-        'is currently not supported. Ask your favorite frontend dev to fix it.');
-      // TODO
-    }
-    this.initGroup();
-  }
-
-  useLegacyAssets() {
-    this.config = Object.assign({}, this.config || {}, { useLegacyAssets: true });
-    this.initGroup();
-  }
-
-  useGroup(value) {
-    this.assetGroupID = value;
-    this.initGroup();
-  }
-
-  /** writeValue is overridden to fetch unresolved assetID's */
-  writeValue(value) {
-    if (!this.groupReady()) {
-      /* console.log('have to wait for assetGroupID'); */
-      return;
-    }
-
-    value = value ? !Array.isArray(value) ? [value] : value : [];
-    this.fileService.resolveAssets(value, this.assetGroupID).then((assets) => {
-      super.writeValue(assets);
-    });
+  /** Called when the model changes */
+  writeValue(value: any) {
+    console.log('write', value);
+    this.value = value;
+    this.useConfig(this.initConfig());
+    this.use(value, false);
   }
 
   editItem(item) {

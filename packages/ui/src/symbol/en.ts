@@ -129,6 +129,10 @@ export default [
         content: 'per page'
     },
     {
+        name: 'upload.assetGroup',
+        content: 'Group'
+    },
+    {
         name: 'upload.preserveFilenames',
         content: 'Preserve Filenames'
     },

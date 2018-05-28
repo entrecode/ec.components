@@ -45,6 +45,8 @@ export interface FileOptions {
  * */
 @Injectable()
 export class FileService {
+  /** Promise that resolves assetGroupList from sdk */
+  assetGroupListPromise: Promise<any>;
   /** The changes event is emitted everytime an entry is created or updated. */
   public uploads: EventEmitter<Upload> = new EventEmitter();
 
@@ -70,11 +72,16 @@ export class FileService {
   }
 
   /** returns true if the given asset is a new one (DMAssetResource) */
-  public isNewAsset(asset) {
+  public isNewAsset(asset: Array<any> | string | DMAssetResource | PublicAssetResource, only = false) {
     if (Array.isArray(asset)) {
-      return asset.length ? this.isNewAsset(asset[0]) : false;
+      return asset.reduce(
+        (match, a) =>
+          ((only && (match && this.isNewAsset(a)) ||
+            (!only && (match || this.isNewAsset(a)))))
+        , only);
     }
-    return /^[a-zA-Z0-9\-_]{22}$/.test(asset.assetID)
+    const id = typeof asset === 'string' ? asset : asset.assetID;
+    return /^[a-zA-Z0-9\-_]{22}$/.test(id)
   }
 
   /** Returns form data for a file list. You have to append options (even if empty) to get formData for new assets! */
@@ -161,8 +168,13 @@ export class FileService {
       }
       return ids;
     }, []);
+    console.log('resolve', unresolved, this.isNewAsset(unresolved));
     if (unresolved.length === 0) {
       return Promise.resolve(<Array<PublicAssetResource | DMAssetResource>>assets);
+    }
+    if (!assetGroupID && this.isNewAsset(unresolved)) {
+      console.warn('wont resolve new asset without knowing assetGroupID');
+      return Promise.resolve([]);
     }
     if (assetGroupID) { // new assets
       return this.sdk.api.dmAssetList(assetGroupID, { assetID: { any: unresolved }, size: 100 })
@@ -171,6 +183,7 @@ export class FileService {
     return Promise.resolve().then((): any => {
       if (unresolved.length === 1) {
         return this.sdk.api.asset(unresolved[0]).then(asset => {
+          console.log('old asset', asset);
           return [asset]
         });
       }
@@ -183,5 +196,9 @@ export class FileService {
         });
 
     })
+  }
+
+  public assetGroupList(forceReload = false) {
+    return (!forceReload && this.assetGroupListPromise) || this.sdk.api.assetGroupList();
   }
 }

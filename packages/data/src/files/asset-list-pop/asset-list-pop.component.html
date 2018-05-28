@@ -6,11 +6,14 @@
       </button>
     </header>
     <div class="ec-pop-body ec-dropzone" (ecDropzone)="uploader?.upload($event)">
+
+      <ec-assetgroup-select [assetGroupID]="assetGroupID" (groupChanged)="setGroup($event)"></ec-assetgroup-select>
+
       <div class="ec-dropzone-info">
         Drop to upload!
       </div>
       <div class="ec-asset-upload ec-dropzone">
-        <ec-upload #uploader [assetGroupID]="assetGroupID" [loader]="popLoader" (success)="selectUpload($event)"></ec-upload>
+        <ec-upload (groupChanged)="setGroup($event)" #uploader [assetGroupID]="assetGroupID" [loader]="popLoader" (success)="selectUpload($event)"></ec-upload>
         <a (click)="uploader.trigger()">Hochladen</a>
 
       </div>
