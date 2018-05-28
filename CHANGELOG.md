@@ -1,8 +1,8 @@
 # Changelog
 
-<a name="0.24.0"></a>
+<a name="0.25.0"></a>
 
-## @ec.components/data 0.24.0
+## @ec.components/data 0.25.0
 
 BREAKING CHANGE:
 
