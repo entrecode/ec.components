@@ -98,7 +98,7 @@ export class UploadComponent implements WithLoader, WithNotifications {
     e.preventDefault();
     e.stopPropagation();
     const assetGroupID = this.assetGroupID || this.assetGroup;
-    this.uploadPromise = (assetGroupID ?
+    this.uploadPromise = (assetGroupID !== 'legacyAsset' ?
       this.fileService.uploadAssets(e, assetGroupID, this.options, api) :
       this.fileService.uploadFiles(e))
       .then((_upload) => {
@@ -125,5 +125,18 @@ export class UploadComponent implements WithLoader, WithNotifications {
       delete this.uploadPromise;
     })
     return this.uploadPromise;
+  }
+
+
+  /** method that can be called after the upload to select the uploaded item(s). */
+  selectUpload(upload: Upload, selection, solo = false) {
+    if (!selection) {
+      return;
+    }
+    if (solo) {
+      selection.select(upload.item);
+    } else {
+      selection.toggleAll(upload.items);
+    }
   }
 }

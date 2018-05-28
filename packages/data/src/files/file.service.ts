@@ -50,20 +50,6 @@ export class FileService {
   /** The changes event is emitted everytime an entry is created or updated. */
   public uploads: EventEmitter<Upload> = new EventEmitter();
 
-  public newAssetListConfig = { // TODO: dont use
-    label: 'title',
-    identifier: 'assetID',
-    fields: {
-      title: {
-        label: 'Titel',
-        sortable: true,
-        filterable: true,
-        type: 'text',
-        view: 'string',
-      },
-    }
-  }
-
   /** Injects sdk */
   constructor(private sdk: SdkService,
     private typeConfig: TypeConfigService,
@@ -116,8 +102,8 @@ export class FileService {
         return {
           asset: assets[0],
           assets,
-          item: new Item(assets[0], this.newAssetListConfig),
-          items: assets.map(asset => new Item(asset, this.newAssetListConfig))
+          item: new Item(assets[0], this.resourceConfig.get('dmAsset')),
+          items: assets.map(asset => new Item(asset, this.resourceConfig.get('dmAsset')))
         }
       }).then((upload: Upload) => {
         this.uploads.emit(upload);

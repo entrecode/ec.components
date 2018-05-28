@@ -7,7 +7,7 @@ import PublicAssetResource from 'ec.sdk/lib/resources/publicAPI/PublicAssetResou
 import { Subject } from 'rxjs/Subject';
 import { AuthService } from '../../auth/auth.service';
 import { CrudConfig } from '../../crud/crud-config.interface';
-import { FileService, Upload } from '../file.service';
+import { FileService } from '../file.service';
 
 /** Entry Pop is an extension of Pop component to host an entry-form.
  * You can use it like a normal pop but with the extra handling of an entry form inside.
@@ -57,25 +57,13 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
   ngOnInit() {
     this.fileService.assetGroupList().then(assetGroups => {
       this.assetGroups = assetGroups
-      if (!this.assetGroupID) {
+      /* if (!this.assetGroupID) {
         this.assetGroupID = assetGroups[0] || 'legacyAsset';
-      }
+        this.groupChanged.emit(this.assetGroupID);
+      } */
     });
   }
 
-  /** method that is called after the upload to select the uploaded item(s). */
-  selectUpload(upload: Upload) {
-    if (!this.selection) {
-      console.warn('no selection.');
-      return;
-    }
-    console.log('upload', upload);
-    if (this.config.solo) {
-      this.selection.select(upload.item);
-    } else {
-      this.selection.toggleAll(upload.items);
-    }
-  }
   /** emits columnClicked event or toggles selection if no observers. */
   select($event) {
     if (this.columnClicked.observers.length) {

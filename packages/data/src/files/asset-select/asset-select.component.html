@@ -3,7 +3,7 @@
   [class.ec-asset-select_solo]="solo" [class.empty]="!selection?.items?.length">
   <div class="ec-dropzone-info">Loslassen zum Hochladen</div>
   <div class="ec-asset-upload" *ngIf="!readOnly">
-    <ec-upload #uploader (groupChanged)="setGroup($event)" [loader]="popLoader" [assetGroupID]="assetGroupID" (success)="assetListPop.selectUpload($event)"
+    <ec-upload #uploader (groupChanged)="setGroup($event)" [loader]="popLoader" [assetGroupID]="assetGroupID" (success)="uploader.selectUpload($event, selection, config.solo)"
       class="hide"></ec-upload>
     <a (click)="uploader.trigger()">Hochladen</a>
     <span *ngIf="!config?.disableListPop"> oder
@@ -24,7 +24,7 @@
       </li>
     </ul>
   </div>
-  <ec-asset-list-pop (groupChanged)="setGroup($event)" [assetGroupID]="assetGroupID" (click)="clickInside($event)" (columnClicked)="select($event)" [config]="config"
-    [selection]="selection" [active]="config?.nestedPopActive" [visible]="config?.nestedPopVisible" [ngClass]="config?.nestedPopClass || 'ec-pop_dialog'"
+  <ec-asset-list-pop (groupChanged)="setGroup($event)" [assetGroupID]="assetGroupID" (click)="clickInside($event)" (columnClicked)="select($event)"
+    [config]="config" [selection]="selection" [active]="config?.nestedPopActive" [visible]="config?.nestedPopVisible" [ngClass]="config?.nestedPopClass || 'ec-pop_dialog'"
     #assetListPop></ec-asset-list-pop>
 </div>

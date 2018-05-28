@@ -13,8 +13,8 @@
       <div class="ec-dropzone-info">
         Drop to upload!
       </div>
-      <div class="ec-asset-upload ec-dropzone">
-        <ec-upload (groupChanged)="setGroup($event)" #uploader [assetGroupID]="assetGroupID" [loader]="popLoader" (success)="selectUpload($event)"></ec-upload>
+      <div class="ec-asset-upload ec-dropzone" *ngIf="assetGroupID">
+        <ec-upload (groupChanged)="setGroup($event)" #uploader [assetGroupID]="assetGroupID" [loader]="popLoader" (success)="uploader.selectUpload($event, selection, config.solo)"></ec-upload>
         <a (click)="uploader.trigger()">Hochladen</a>
 
       </div>
@@ -22,8 +22,8 @@
       <ec-resource-list *ngIf="assetGroupID==='legacyAsset'&&sdk.apiResolved" relation="legacyAsset" [api]="sdk.api" [selection]="selection"
         (columnClicked)="select($event)" [config]="config" [loader]="popLoader"></ec-resource-list>
       <!-- new asset list -->
-      <ec-resource-list *ngIf="assetGroupID!=='legacyAsset'&&sdk.apiResolved" [relation]="'dmAsset.'+assetGroupID" [api]="sdk.api"
-        [selection]="selection" (columnClicked)="select($event)" [config]="config" [loader]="popLoader"></ec-resource-list>
+      <ec-resource-list *ngIf="assetGroupID&&assetGroupID!=='legacyAsset'&&sdk.apiResolved" [relation]="'dmAsset.'+assetGroupID"
+        [api]="sdk.api" [selection]="selection" (columnClicked)="select($event)" [config]="config" [loader]="popLoader"></ec-resource-list>
     </div>
     <ec-loader #popLoader class="ec-loader ec-loader_global"></ec-loader>
   </div>
