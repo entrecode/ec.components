@@ -1,8 +1,16 @@
 # Changelog
 
+<a name="0.24.0"></a>
+
+## @ec.components/data 0.24.0
+
+BREAKING CHANGE:
+
+* asset-select now contains asset-group selects in the list-pop and when uploading
+
 <a name="0.23.0"></a>
 
-## @ec.componentss/data 0.23.0
+## @ec.components/data 0.23.0
 
 BREAKING CHANGE:
 
