@@ -91,8 +91,7 @@ export class FileService {
   }
 
   /** Upload New Assets */
-  public uploadAssets(e, assetGroupID, options: FileOptions = {}, api = this.sdk.api): Promise<Upload> {
-    const files = e.target.files || e.dataTransfer.files;
+  public uploadAssets(files, assetGroupID, options: FileOptions = {}, api = this.sdk.api): Promise<Upload> {
     if (!files.length) {
       return;
     }
@@ -113,8 +112,7 @@ export class FileService {
   }
 
   /** Upload old assets */
-  public uploadFiles(e): Promise<Upload> {
-    const files = e.target.files || e.dataTransfer.files;
+  public uploadFiles(files): Promise<Upload> {
     if (!files.length) {
       return;
     }

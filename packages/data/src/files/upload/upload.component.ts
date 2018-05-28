@@ -24,8 +24,6 @@ export class UploadComponent implements WithLoader, WithNotifications {
   @Input() loader: LoaderComponent;
   /** The asset group to upload into. If not defined, old assets will be used! */
   @Input() assetGroupID: string;
-  /** The asset group to upload into. If not defined, old assets will be used! DEPRECATED! */
-  @Input() assetGroup: string;
   /** If true, a pop to rename files + customize flags will appear before uploading. */
   @Input() custom: boolean;
   /** Upload options */
@@ -60,6 +58,7 @@ export class UploadComponent implements WithLoader, WithNotifications {
       console.error('cannot trigger upload: file input element not found!');
       return;
     }
+    console.log('triggr.');
     /* this.clear(); */
     this.fileInput.nativeElement.click();
   }
@@ -75,14 +74,7 @@ export class UploadComponent implements WithLoader, WithNotifications {
     if (!e || !e.target || !e.target.files || !e.target.files.length) {
       return;
     }
-    this.filesToUpload = e.target.files;
-
-    if (this.custom || !this.assetGroupID) {
-      this.event = e;
-      this.pop.show();
-      return;
-    }
-    return this.upload(e, api);
+    return this.uploadFiles(e.target.files, e, api);
   }
 
   /** clears the file input */
@@ -93,14 +85,23 @@ export class UploadComponent implements WithLoader, WithNotifications {
     this.fileInput.nativeElement.value = ''; // clear input to eventually trigger change on same file
   }
 
-  /** Triggers upload of current selected files */
-  upload(e, api = this.sdk.api) {
+  uploadFiles(files, e, api = this.sdk.api) {
+    this.filesToUpload = files;
     e.preventDefault();
     e.stopPropagation();
-    const assetGroupID = this.assetGroupID || this.assetGroup;
-    this.uploadPromise = (assetGroupID !== 'legacyAsset' ?
-      this.fileService.uploadAssets(e, assetGroupID, this.options, api) :
-      this.fileService.uploadFiles(e))
+    if (this.custom || !this.assetGroupID) {
+      this.event = e;
+      this.pop.show();
+      return;
+    }
+    this.upload(files, api);
+  }
+
+  /** Triggers upload of current selected files */
+  upload(files, api = this.sdk.api) {
+    this.uploadPromise = (this.assetGroupID !== 'legacyAsset' ?
+      this.fileService.uploadAssets(files, this.assetGroupID, this.options, api) :
+      this.fileService.uploadFiles(files))
       .then((_upload) => {
         this.success.emit(_upload);
         this.notificationService.emit({

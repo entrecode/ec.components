@@ -2,7 +2,7 @@
 <ec-resource-select [api]="datamanager" relation="assetGroup" (change)="selected($event)" [solo]="true" [config]="{methods:['get'],disableListPop:true}"></ec-resource-select>
 
 <div *ngIf="group">
-  <ec-upload [assetGroup]="group.assetGroupID" [loader]="loader" [api]="api" [custom]="custom"></ec-upload>
+  <ec-upload [assetGroupID]="group.assetGroupID" [loader]="loader" [api]="api" [custom]="custom"></ec-upload>
   <div class="xui-toggle">
     <input id="ignoreDuplicates" type="checkbox" [(ngModel)]="custom">
     <label for="ignoreDuplicates">
