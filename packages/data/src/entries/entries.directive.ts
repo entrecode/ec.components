@@ -2,10 +2,10 @@
  * Created by felix on 23.05.17.
  */
 import { Directive, Input, OnChanges } from '@angular/core';
-import { SdkService } from '../sdk/sdk.service';
+import { LoaderComponent, WithLoader } from '@ec.components/ui';
 import EntryList from 'ec.sdk/lib/resources/publicAPI/EntryList';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
-import { WithLoader, LoaderComponent } from '@ec.components/ui';
+import { SdkService } from '../sdk/sdk.service';
 
 // import { filterOptions } from 'ec.sdk/lib/resources/ListResource';
 
@@ -60,7 +60,7 @@ export class EntriesDirective implements OnChanges, WithLoader {
     return this.promise;
   }
 
-  useList(entryList: EntryList) {
+  useList(entryList) {
     this.entryList = entryList;
     const items = this.entryList.getAllItems();
     if (this.endless) {
