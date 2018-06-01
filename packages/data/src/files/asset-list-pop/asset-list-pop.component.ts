@@ -1,10 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Item, Selection } from '@ec.components/core';
 import { SdkService } from '@ec.components/data';
 import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
 import { PopService } from '@ec.components/ui/src/pop/pop.service';
 import PublicAssetResource from 'ec.sdk/lib/resources/publicAPI/PublicAssetResource';
 import { Subject } from 'rxjs/Subject';
+import { SearchbarComponent } from '../../../../ui/src/list/searchbar/searchbar.component';
 import { AuthService } from '../../auth/auth.service';
 import { CrudConfig } from '../../crud/crud-config.interface';
 import { FileService } from '../file.service';
@@ -35,6 +36,8 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
   public groupChange: Subject<string> = new Subject();
   /** The loaded assetGroups */
   public assetGroups: string[];
+  /** The nested searchbar */
+  @ViewChild(SearchbarComponent) searchbar: SearchbarComponent;
 
   /** Injects auth service and calls super constructor. */
   constructor(protected popService: PopService,
@@ -50,6 +53,9 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
       return;
     }
     this.groupChanged.emit(group);
+    if (this.searchbar) {
+      this.searchbar.focusEvent.emit(true);
+    }
     this.assetGroupID = group;
   }
 

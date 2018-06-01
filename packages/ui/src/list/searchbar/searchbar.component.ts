@@ -55,7 +55,9 @@ export class SearchbarComponent implements AfterViewInit, Focus {
 
     this.route.params
       .subscribe(() => {
-        this.focusEvent.emit(true);
+        if (this.autofocus) {
+          this.focusEvent.emit(true);
+        }
         this.query = '';
       })
   }

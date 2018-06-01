@@ -9,7 +9,6 @@
     <ec-resource-list [api]="api" relation="asset"></ec-resource-list>
   </ec-tab>
   <ec-tab label="old public asset">
-    <ec-asset-list-pop #assetListPop class="ec-pop_toast-top"></ec-asset-list-pop>
     <p>Using asset relation on PublicAPI</p>
     <ec-resource-list [api]="sdk.api" *ngIf="sdk.apiResolved" relation="legacyAsset"></ec-resource-list>
   </ec-tab>
