@@ -62,9 +62,9 @@ export class Pagination<T> {
    * Sets the total number of items and calculcates the page count.
    * */
   setTotal(total: number) {
-    if (this.total !== total) {
+    /* if (this.total !== total) {
       this.change.next(this.config);
-    }
+    } */
     this.total = total;
     this.pages = new Array(Math.ceil(this.total / this.config.size));
     if (this.config.page !== 1 && this.config.page > this.pages.length) {

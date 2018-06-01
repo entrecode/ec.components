@@ -152,27 +152,6 @@ export class ResourceList extends List<Resource> {
     this.load();
   }
 
-  /** Helper function. Returns true if the given query value is empty (also recognizes empty array) */
-  isEmptyFilter(query: null | undefined | string | Array<any>) {
-    return query === '' ||
-      query === null ||
-      query === undefined ||
-      (Array.isArray(query) && !query.length)
-  }
-
-  /** Returns true if the given property has a filter set. If no property is given it returns true when no property has a filter. */
-  isFiltered(property?: string) {
-    if (!this.config.filter) {
-      return false;
-    }
-    if (!property) {
-      return Object.keys(this.config.filter)
-        .filter(key => !this.isEmptyFilter(this.config.filter[key]))
-        .length > 0
-    }
-    return !this.isEmptyFilter(this.config.filter[property]);
-  }
-
   /** Updates the config.filter with the given property filter. */
   filterProperty(property: string, value: any = '') {
     const currentFilter = this.config.filter || {};

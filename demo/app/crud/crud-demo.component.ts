@@ -8,6 +8,12 @@ import { ResourceConfig } from '../../../packages/data/src/resource-config/resou
   templateUrl: './crud-demo.component.html',
 })
 export class CrudDemoComponent {
+  public muffinConfig = {
+    develop: true, createLabel: 'Neuer Muffin', size: 5, levels: 2,
+    filter: {
+      amazement_factor: 10
+    }
+  };
   constructor(public modelConfig: ModelConfigService,
     public resourceConfig: ResourceConfig,
     public symbol: SymbolService) {

@@ -124,6 +124,27 @@ export class List<T> extends Collection<Item<T>> {
     }).slice(0, this.config.size || 100);
   }
 
+  /** Helper function. Returns true if the given query value is empty (also recognizes empty array) */
+  isEmptyFilter(query: null | undefined | string | Array<any>) {
+    return query === '' ||
+      query === null ||
+      query === undefined ||
+      (Array.isArray(query) && !query.length)
+  }
+
+  /** Returns true if the given property has a filter set. If no property is given it returns true when no property has a filter. */
+  isFiltered(property?: string) {
+    if (!this.config.filter) {
+      return false;
+    }
+    if (!property) {
+      return Object.keys(this.config.filter)
+        .filter(key => !this.isEmptyFilter(this.config.filter[key]))
+        .length > 0
+    }
+    return !this.isEmptyFilter(this.config.filter[property]);
+  }
+
   /** Changes the config's sort variables to reflect the given sorting */
   protected sortProperty(property: string, desc?: boolean) {
     if (property !== this.config.sortBy) {
