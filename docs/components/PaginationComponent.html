@@ -2631,7 +2631,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">packages/ui/src/list/pagination/pagination.component.ts:62</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">packages/ui/src/list/pagination/pagination.component.ts:64</a></div>
                             </td>
                         </tr>
 
@@ -2698,7 +2698,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">packages/ui/src/list/pagination/pagination.component.ts:43</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">packages/ui/src/list/pagination/pagination.component.ts:45</a></div>
                             </td>
                         </tr>
 
@@ -2818,7 +2818,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">packages/ui/src/list/pagination/pagination.component.ts:48</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">packages/ui/src/list/pagination/pagination.component.ts:50</a></div>
                             </td>
                         </tr>
 
@@ -2858,7 +2858,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">packages/ui/src/list/pagination/pagination.component.ts:67</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">packages/ui/src/list/pagination/pagination.component.ts:69</a></div>
                             </td>
                         </tr>
 
@@ -3098,7 +3098,9 @@ export class PaginationComponent&lt;T&gt; implements OnChanges, AfterViewInit, O
       return;
     }
     this.pagination.change$.subscribe((config) &#x3D;&gt; {
-      this.translateContainer();
+      setTimeout(() &#x3D;&gt; {
+        this.translateContainer();
+      })
     });
     this.config &#x3D; new PaginationConfig(this.config);
   }
@@ -3110,7 +3112,7 @@ export class PaginationComponent&lt;T&gt; implements OnChanges, AfterViewInit, O
   /** Translates the page container that the current page is in the middle */
   translateContainer() {
     if (!this.page || !this.pageContainer) {
-      // console.warn(&#x27;pages not ready&#x27;);
+      // console.warn(&#x27;pages not ready&#x27;, this.page, this.pageContainer);
       return;
     }
     const itemWidth &#x3D; this.page.first.nativeElement.clientWidth;

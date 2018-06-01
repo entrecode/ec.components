@@ -3007,7 +3007,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>useList(entryList: <a href="../classes/List.html">EntryList</a>)</code>
+<code>useList(entryList: )</code>
                     </td>
                 </tr>
 
@@ -3028,16 +3028,12 @@
                                         <thead>
                                             <tr>
                                                 <td>Name</td>
-                                                    <td>Type</td>
                                                 <td>Optional</td>
                                             </tr>
                                         </thead>
                                         <tbody>
                                                 <tr>
                                                         <td>entryList</td>
-                                                        <td>
-                                                                    <code><a href="../classes/List.html" target="_self" >EntryList</a></code>
-                                                        </td>
                                                     
                                                     <td>
                                                             no
@@ -3207,10 +3203,10 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Directive, Input, OnChanges } from &#x27;@angular/core&#x27;;
-import { SdkService } from &#x27;../sdk/sdk.service&#x27;;
+import { LoaderComponent, WithLoader } from &#x27;@ec.components/ui&#x27;;
 import EntryList from &#x27;ec.sdk/lib/resources/publicAPI/EntryList&#x27;;
 import EntryResource from &#x27;ec.sdk/lib/resources/publicAPI/EntryResource&#x27;;
-import { WithLoader, LoaderComponent } from &#x27;@ec.components/ui&#x27;;
+import { SdkService } from &#x27;../sdk/sdk.service&#x27;;
 
 // import { filterOptions } from &#x27;ec.sdk/lib/resources/ListResource&#x27;;
 
@@ -3265,7 +3261,7 @@ export class EntriesDirective implements OnChanges, WithLoader {
     return this.promise;
   }
 
-  useList(entryList: EntryList) {
+  useList(entryList) {
     this.entryList &#x3D; entryList;
     const items &#x3D; this.entryList.getAllItems();
     if (this.endless) {

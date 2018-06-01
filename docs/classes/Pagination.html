@@ -2832,7 +2832,7 @@ If no config is provided, it will default to <code>{page: 1, size: 25}</code>. <
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">packages/core/src/pagination/pagination.ts:90</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">packages/core/src/pagination/pagination.ts:93</a></div>
                             </td>
                         </tr>
 
@@ -2952,7 +2952,7 @@ If no config is provided, it will default to <code>{page: 1, size: 25}</code>. <
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">packages/core/src/pagination/pagination.ts:104</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">packages/core/src/pagination/pagination.ts:107</a></div>
                             </td>
                         </tr>
 
@@ -3023,7 +3023,7 @@ If no config is provided, it will default to <code>{page: 1, size: 25}</code>. <
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="109" class="link-to-prism">packages/core/src/pagination/pagination.ts:109</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">packages/core/src/pagination/pagination.ts:112</a></div>
                             </td>
                         </tr>
 
@@ -3063,7 +3063,7 @@ If no config is provided, it will default to <code>{page: 1, size: 25}</code>. <
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">packages/core/src/pagination/pagination.ts:114</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="117" class="link-to-prism">packages/core/src/pagination/pagination.ts:117</a></div>
                             </td>
                         </tr>
 
@@ -3103,7 +3103,7 @@ If no config is provided, it will default to <code>{page: 1, size: 25}</code>. <
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">packages/core/src/pagination/pagination.ts:95</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">packages/core/src/pagination/pagination.ts:98</a></div>
                             </td>
                         </tr>
 
@@ -3145,7 +3145,7 @@ If no config is provided, it will default to <code>{page: 1, size: 25}</code>. <
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">packages/core/src/pagination/pagination.ts:74</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">packages/core/src/pagination/pagination.ts:77</a></div>
                             </td>
                         </tr>
 
@@ -3256,7 +3256,7 @@ If no config is provided, it will default to <code>{page: 1, size: 25}</code>. <
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="127" class="link-to-prism">packages/core/src/pagination/pagination.ts:127</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="130" class="link-to-prism">packages/core/src/pagination/pagination.ts:130</a></div>
                             </td>
                         </tr>
 
@@ -3336,7 +3336,7 @@ If no config is provided, it will default to <code>{page: 1, size: 25}</code>. <
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">packages/core/src/pagination/pagination.ts:82</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">packages/core/src/pagination/pagination.ts:85</a></div>
                             </td>
                         </tr>
 
@@ -3478,7 +3478,7 @@ If no config is provided, it will default to <code>{page: 1, size: 25}</code>. <
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="122" class="link-to-prism">packages/core/src/pagination/pagination.ts:122</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="125" class="link-to-prism">packages/core/src/pagination/pagination.ts:125</a></div>
                             </td>
                         </tr>
 
@@ -3549,7 +3549,7 @@ If no config is provided, it will default to <code>{page: 1, size: 25}</code>. <
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="139" class="link-to-prism">packages/core/src/pagination/pagination.ts:139</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="142" class="link-to-prism">packages/core/src/pagination/pagination.ts:142</a></div>
                             </td>
                         </tr>
 
@@ -3681,6 +3681,9 @@ export class Pagination&lt;T&gt; {
    * Sets the total number of items and calculcates the page count.
    * */
   setTotal(total: number) {
+    if (this.total !&#x3D;&#x3D; total) {
+      this.change.next(this.config);
+    }
     this.total &#x3D; total;
     this.pages &#x3D; new Array(Math.ceil(this.total / this.config.size));
     if (this.config.page !&#x3D;&#x3D; 1 &amp;&amp; this.config.page &gt; this.pages.length) {
