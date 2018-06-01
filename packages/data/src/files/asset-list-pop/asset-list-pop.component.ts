@@ -54,6 +54,7 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
     }
     this.groupChanged.emit(group);
     if (this.searchbar) {
+      this.searchbar.clear();
       this.searchbar.focusEvent.emit(true);
     }
     this.assetGroupID = group;

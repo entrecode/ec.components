@@ -58,8 +58,13 @@ export class SearchbarComponent implements AfterViewInit, Focus {
         if (this.autofocus) {
           this.focusEvent.emit(true);
         }
-        this.query = '';
+        this.clear();
       })
+  }
+
+  /** clears the input query */
+  clear() {
+    this.query = '';
   }
 
   /** prevents the event default and disables propagation */
