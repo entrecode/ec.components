@@ -1,5 +1,5 @@
 <h2>Asset List</h2>
-<ec-asset-list-pop #oldAssetListPop class="ec-pop_toast-top"></ec-asset-list-pop>
+<ec-asset-list-pop assetGroupID="legacyAsset" #oldAssetListPop class="ec-pop_toast-top"></ec-asset-list-pop>
 <ec-asset-list-pop assetGroupID="test" #newAssetListPop class="ec-pop_toast-top"></ec-asset-list-pop>
 <a class="btn" (click)="oldAssetListPop.show()">legacy asset pop</a>
 <a class="btn" (click)="newAssetListPop.show()">new asset pop</a>
@@ -19,6 +19,9 @@
   </ec-tab> -->
   <ec-tab label="New public assets">
     <p>Using dmAsset.* relation on PublicAPI</p>
-    <ec-resource-list [api]="sdk.api" *ngIf="sdk.apiResolved" relation="dmAsset.test"></ec-resource-list>
+<!--     <ec-searchbar [list]="newAssetList"></ec-searchbar> -->
+
+    <ec-resource-list #newAssetList [api]="sdk.api" *ngIf="sdk.apiResolved" relation="dmAsset.test"></ec-resource-list>
+
   </ec-tab>
 </ec-tabs>

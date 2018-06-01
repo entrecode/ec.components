@@ -37,7 +37,6 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
   public assetGroups: string[];
 
   /** Injects auth service and calls super constructor. */
-
   constructor(protected popService: PopService,
     private auth: AuthService,
     private fileService: FileService,
@@ -45,7 +44,7 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
     super(popService);
   }
 
-
+  /** Changes the assetGroupID to the given value, emits groupChange */
   setGroup(group) {
     if (!group) {
       return;
@@ -72,5 +71,11 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
       console.log('selection', this.selection);
       // this.selection.toggle($event);
     }
+  }
+
+  /** Returns the full resource relation name based on the current assetGroupID  */
+  getGroupRelation() {
+    return !this.assetGroupID || this.assetGroupID === 'legacyAsset' ? 'legacyAsset'
+      : 'dmAsset.' + this.assetGroupID;
   }
 }

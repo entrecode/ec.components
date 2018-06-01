@@ -1,13 +1,15 @@
 import { CommonModule } from '@angular/common';
-import { ListComponent } from './list.component';
-import { ListItemsComponent } from './list-items/list-items.component';
-import { ListHeaderComponent } from './list-header/list-header.component';
-import { GroupPipe } from './group.pipe';
-import { PaginationComponent } from './pagination/pagination.component';
-import { FormModule } from '../form/form.module';
 import { NgModule } from '@angular/core';
+import { FormModule } from '../form/form.module';
 import { IconModule } from '../icon/icon.module';
 import { SymbolModule } from '../symbol/symbol.module';
+import { UtilityModule } from '../utility/utility.module';
+import { GroupPipe } from './group.pipe';
+import { ListHeaderComponent } from './list-header/list-header.component';
+import { ListItemsComponent } from './list-items/list-items.component';
+import { ListComponent } from './list.component';
+import { PaginationComponent } from './pagination/pagination.component';
+import { SearchbarComponent } from './searchbar/searchbar.component';
 
 @NgModule({
   declarations: [
@@ -15,19 +17,22 @@ import { SymbolModule } from '../symbol/symbol.module';
     ListItemsComponent,
     ListHeaderComponent,
     PaginationComponent,
+    SearchbarComponent,
     GroupPipe,
   ],
   imports: [
     CommonModule,
     FormModule,
     IconModule,
-    SymbolModule
+    SymbolModule,
+    UtilityModule
   ],
   exports: [
     ListComponent,
     ListItemsComponent,
     ListHeaderComponent,
     PaginationComponent,
+    SearchbarComponent,
     GroupPipe,
     FormModule,
   ],

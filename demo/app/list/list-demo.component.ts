@@ -12,7 +12,8 @@ import { songs } from '../../assets/songs';
 </pre>
 
 <h2>Templated List</h2>
-<ec-list [list]="songs" [solo]="true" #songList class="ec-list_dense ec-list_multiline"></ec-list>
+<ec-searchbar (selected)="select($event)" placeholder="Suche.." [list]="songlist" property="title"></ec-searchbar>
+<ec-list #songlist [list]="songs" [solo]="true" #songList class="ec-list_dense ec-list_multiline"></ec-list>
 <pre>
   {{songList.list.config | json}}
 </pre>
@@ -30,5 +31,8 @@ export class ListDemoComponent {
 
   log(wort) {
     console.log('log', wort);
+  }
+  select(item) {
+    console.log('select', item);
   }
 }

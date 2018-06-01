@@ -7,6 +7,7 @@ import DataManagerResource from 'ec.sdk/lib/resources/datamanager/DataManagerRes
 })
 export class AssetListDemoComponent {
   api: DataManagerResource;
+
   constructor(public sdk: SdkService) {
     this.sdk.ready.then(() => {
       return this.sdk.datamanager.dataManager(this.sdk.api.dataManagerID);

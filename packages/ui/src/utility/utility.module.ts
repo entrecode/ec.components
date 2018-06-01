@@ -1,13 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { TabsComponent } from './tabs/tabs.component';
-import { TabComponent } from './tab/tab.component';
-import { MockupComponent } from './mockup/mockup.component';
-import { MenuComponent } from './menu/menu.component';
-import { LoginFormComponent } from './login-form/login-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { IoModule } from '../io/io.module';
+import { FocusDirective } from './focus/focus.directive';
+import { LoginFormComponent } from './login-form/login-form.component';
+import { MenuComponent } from './menu/menu.component';
+import { MockupComponent } from './mockup/mockup.component';
+import { TabComponent } from './tab/tab.component';
+import { TabsComponent } from './tabs/tabs.component';
 
 @NgModule({
   entryComponents: [],
@@ -17,6 +18,7 @@ import { IoModule } from '../io/io.module';
     MockupComponent,
     MenuComponent,
     LoginFormComponent,
+    FocusDirective,
   ],
   imports: [
     FormsModule,
@@ -34,6 +36,7 @@ import { IoModule } from '../io/io.module';
     MockupComponent,
     MenuComponent,
     LoginFormComponent,
+    FocusDirective,
     RouterModule,
   ],
   providers: [],

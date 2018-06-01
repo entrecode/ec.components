@@ -1,0 +1,3 @@
+<input #inputField [ecFocus]="focusEvent" type="text" [placeholder]="placeholder || defaultPlaceholder"
+    class="input input_clear" (keyup)="keyup.next($event.target.value);preventDefault($event)" (keydown)="arrowNavigation($event)"
+    (paste)="paste.next($event)" [(ngModel)]="query">

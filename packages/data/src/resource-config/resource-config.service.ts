@@ -368,6 +368,7 @@ export class ResourceConfig {
       legacyAsset: { // old public assets
         identifier: 'assetID',
         identifierPattern: this.uuid(),
+        label: 'title',
         fields: {
           thumb: {
             form: false,
@@ -444,6 +445,7 @@ export class ResourceConfig {
       dmAsset: { // new assets
         identifier: 'assetID',
         identifierPattern: this.base64uuid(),
+        label: 'title',
         fields: {
           file: {
             label: this.symbol.resolve('dmAsset.field.label.file'),

@@ -125,6 +125,10 @@ export default [
         content: 'von'
     },
     {
+        name: 'searchbar.placeholder',
+        content: 'Suchen..'
+    },
+    {
         name: 'pagination.size',
         content: 'Pro Seite'
     },

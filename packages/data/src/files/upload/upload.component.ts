@@ -58,7 +58,6 @@ export class UploadComponent implements WithLoader, WithNotifications {
       console.error('cannot trigger upload: file input element not found!');
       return;
     }
-    console.log('triggr.');
     /* this.clear(); */
     this.fileInput.nativeElement.click();
   }

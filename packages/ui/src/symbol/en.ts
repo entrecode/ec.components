@@ -129,6 +129,10 @@ export default [
         content: 'per page'
     },
     {
+        name: 'searchbar.placeholder',
+        content: 'Search..'
+    },
+    {
         name: 'upload.assetGroup',
         content: 'Group'
     },
