@@ -17,10 +17,19 @@
     flex-wrap: wrap;
     padding: 0;
     margin: rem(-2) rem(8) rem(-2) rem(-2);
-
+    width:100%;
     li {
       padding: rem(2);
-
+      &.drag-placeholder {
+        border: 1px dashed getColor(background, light);
+        width: 80px;
+        background: getColor(background, lighter);
+        min-height: 20px;
+      }
+      &.is-dragged {
+        opacity: 0.6;
+        
+      }
       .tag {
         @extend .tag.tag_link;
 

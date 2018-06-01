@@ -23,6 +23,8 @@ import { PopComponent } from '../pop/pop.component';
   ]
 })
 export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChanges {
+  /** the current dragged element */
+  dragged: Item<T>;
   /** Configuration Object for List */
   @Input() config: ListConfig<T>;
   /** The visible items */
@@ -117,8 +119,11 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   }
 
   /** Is called when a selected item is clicked*/
-  private clickItem(item) {
-    this.itemClick.emit(item);
+  private clickItem(item, e?) {
+    if (this.itemClick.observers.length) {
+      this.itemClick.emit(item);
+      this.clickInside(e);
+    }
   }
 
   /** Select handler. Toggles selection. */
@@ -151,5 +156,26 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   }
 
   registerOnTouched() {
+  }
+
+  onDragStart(item, e) {
+    this.dragged = item;
+    window.requestAnimationFrame(function () { e.target.style.display = 'none'; });
+  }
+
+  onDrop(e) {
+    if (e.isExternal) {
+      return;
+    }
+    let index = e.index;
+    if (this.selection.index(this.dragged) < e.index) {
+      index -= 1;
+    }
+    this.selection.move(this.dragged, index);
+  }
+
+  cancelDrag(item, e) {
+    delete this.dragged;
+    window.requestAnimationFrame(function () { e.target.style.display = 'inherit'; });
   }
 }

@@ -85,4 +85,15 @@ export class Selection<T> extends List<T> {
     }
     return value;
   }
+
+  /** Moves the given item to the given array index. */
+  move(item: Item<T>, index: number, event: boolean = true) {
+    if (!this.has(item) || this.items.indexOf(item) === index) {
+      return;
+    }
+    this.items.splice(index, 0, this.items.splice(this.items.indexOf(item), 1)[0]);
+    if (event) {
+      this.update.next(this);
+    }
+  }
 }
