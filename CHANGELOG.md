@@ -1,5 +1,13 @@
 # Changelog
 
+<a name="0.22.0"></a>
+
+## @ec.components/ui 0.22.0
+
+BREAKING CHANGE:
+
+* now requires ngx-drag-drop packages for new drag and drop feature
+
 <a name="0.25.0"></a>
 
 ## @ec.components/data 0.25.0
