@@ -19,6 +19,8 @@ export interface ListConfig<T> extends ItemConfig<T> {
   disableHeader?: boolean
   /** If true, the header will also be shown when the list is empty. Defaults to false */
   alwaysShowHeader?: boolean
+  /** If true, the default pagination will not be visible. */
+  hidePagination?: boolean;
   /** The current active page */
   page?: number,
   /** The number of items per page */

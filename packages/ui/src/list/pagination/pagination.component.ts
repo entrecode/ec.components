@@ -35,7 +35,9 @@ export class PaginationComponent<T> implements OnChanges, AfterViewInit, OnInit 
       return;
     }
     this.pagination.change$.subscribe((config) => {
-      this.translateContainer();
+      setTimeout(() => {
+        this.translateContainer();
+      })
     });
     this.config = new PaginationConfig(this.config);
   }
@@ -47,7 +49,7 @@ export class PaginationComponent<T> implements OnChanges, AfterViewInit, OnInit 
   /** Translates the page container that the current page is in the middle */
   translateContainer() {
     if (!this.page || !this.pageContainer) {
-      // console.warn('pages not ready');
+      // console.warn('pages not ready', this.page, this.pageContainer);
       return;
     }
     const itemWidth = this.page.first.nativeElement.clientWidth;
