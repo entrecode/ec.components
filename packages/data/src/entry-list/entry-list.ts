@@ -1,8 +1,8 @@
-import { SdkService } from '../sdk/sdk.service';
-import { ResourceList } from '../resource-list/resource-list';
+import { ListConfig } from '@ec.components/core/src/list/list-config.interface';
 import { filterOptions } from 'ec.sdk/lib/resources/ListResource';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
-import { ListConfig } from '@ec.components/core/src/list/list-config.interface';
+import { ResourceList } from '../resource-list/resource-list';
+import { SdkService } from '../sdk/sdk.service';
 
 /**
  * Extension of List for Datamanager Entries.

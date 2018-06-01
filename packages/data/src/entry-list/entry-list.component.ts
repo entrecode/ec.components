@@ -1,16 +1,16 @@
 import { Component, Input, Optional } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { SdkService } from '../sdk/sdk.service';
-import { ModelConfigService } from '../model-config/model-config.service';
-import { LoaderService } from '@ec.components/ui/src/loader/loader.service';
-import { EntryList } from './entry-list';
-import { CrudService } from '../crud/crud.service';
-import { NotificationsService } from '@ec.components/ui/src/notifications/notifications.service';
-import { ResourceListComponent } from '../resource-list/resource-list.component';
-import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { ListConfig } from '@ec.components/core/src/list/list-config.interface';
+import { LoaderService } from '@ec.components/ui/src/loader/loader.service';
+import { NotificationsService } from '@ec.components/ui/src/notifications/notifications.service';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
+import { CrudService } from '../crud/crud.service';
+import { ModelConfigService } from '../model-config/model-config.service';
 import { ResourceService } from '../resource-config/resource.service';
+import { ResourceListComponent } from '../resource-list/resource-list.component';
+import { SdkService } from '../sdk/sdk.service';
+import { EntryList } from './entry-list';
 
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent
  * <example-url>https://components.entrecode.de/data/entry-list</example-url>
