@@ -840,14 +840,14 @@
                         <a href="modules/SelectModule.html" data-type="entity-link">SelectModule</a>
                             <li class="chapter inner">
                                 <div class="simple menu-toggler" data-toggle="collapse"
-                                        data-target="#xs-components-links-module-SelectModule-8755b12f66dd54007bb2b871f31f8d65"
+                                        data-target="#xs-components-links-module-SelectModule-21b67eddc23d175dc752ad1925701041"
                                     >
                                     <span class="fa fa-fw fa-cogs"></span>
                                     <span>Components</span>
                                     <span class="fa fa-angle-down"></span>
                                 </div>
                                 <ul class="links collapse"
-                                        id="xs-components-links-module-SelectModule-8755b12f66dd54007bb2b871f31f8d65"
+                                        id="xs-components-links-module-SelectModule-21b67eddc23d175dc752ad1925701041"
                                     >
                                         <li class="link">
                                             <a href="components/SelectComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">SelectComponent</a>
@@ -2042,14 +2042,14 @@
                         <a href="modules/SelectModule.html" data-type="entity-link">SelectModule</a>
                             <li class="chapter inner">
                                 <div class="simple menu-toggler" data-toggle="collapse"
-                                        data-target="#components-links-module-SelectModule-8755b12f66dd54007bb2b871f31f8d65"
+                                        data-target="#components-links-module-SelectModule-21b67eddc23d175dc752ad1925701041"
 >
                                     <span class="fa fa-fw fa-cogs"></span>
                                     <span>Components</span>
                                     <span class="fa fa-angle-down"></span>
                                 </div>
                                 <ul class="links collapse"
-                                        id="components-links-module-SelectModule-8755b12f66dd54007bb2b871f31f8d65"
+                                        id="components-links-module-SelectModule-21b67eddc23d175dc752ad1925701041"
 >
                                         <li class="link">
                                             <a href="components/SelectComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">SelectComponent</a>
@@ -3652,7 +3652,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>cancelDrag(item: , e: )</code>
+<code>cancelDrag(item: , e: , target: )</code>
                     </td>
                 </tr>
 
@@ -3680,6 +3680,7 @@
                                             <tr>
                                                 <td>Name</td>
                                                 <td>Optional</td>
+                                                    <td>Default value</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -3690,6 +3691,8 @@
                                                             no
                                                     </td>
                                                     
+                                                        <td>
+                                                        </td>
 
                                                 </tr>
                                                 <tr>
@@ -3699,6 +3702,20 @@
                                                             no
                                                     </td>
                                                     
+                                                        <td>
+                                                        </td>
+
+                                                </tr>
+                                                <tr>
+                                                        <td>target</td>
+                                                    
+                                                    <td>
+                                                            no
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>e.target</code>
+                                                        </td>
 
                                                 </tr>
                                         </tbody>
@@ -4069,7 +4086,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>onDragStart(item: , e: )</code>
+<code>onDragStart(item: , e: , target: )</code>
                     </td>
                 </tr>
 
@@ -4097,6 +4114,7 @@
                                             <tr>
                                                 <td>Name</td>
                                                 <td>Optional</td>
+                                                    <td>Default value</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -4107,6 +4125,8 @@
                                                             no
                                                     </td>
                                                     
+                                                        <td>
+                                                        </td>
 
                                                 </tr>
                                                 <tr>
@@ -4116,6 +4136,20 @@
                                                             no
                                                     </td>
                                                     
+                                                        <td>
+                                                        </td>
+
+                                                </tr>
+                                                <tr>
+                                                        <td>target</td>
+                                                    
+                                                    <td>
+                                                            no
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>e.target</code>
+                                                        </td>
 
                                                 </tr>
                                         </tbody>
@@ -5416,8 +5450,10 @@ export class AssetSelectComponent extends SelectComponent&lt;DMAssetResource | P
     &lt;/span&gt;
   &lt;/div&gt;
   &lt;div *ngIf&#x3D;&quot;selection.items.length&quot; class&#x3D;&quot;ec-asset-selected&quot;&gt;
-    &lt;ul class&#x3D;&quot;ec-asset-selected__items&quot; data-grid&#x3D;&quot;is-small&quot;&gt;
-      &lt;li *ngFor&#x3D;&quot;let selected of selection.items&quot; class&#x3D;&quot;ec-asset-selected__item&quot; (click)&#x3D;&quot;editItem(selected)&quot; data-col&#x3D;&quot;3-sm&quot;&gt;
+    &lt;ul class&#x3D;&quot;ec-asset-selected__items&quot; data-grid&#x3D;&quot;is-small&quot; dndDropzone (dndDrop)&#x3D;&quot;onDrop($event)&quot;&gt;
+      &lt;li *ngFor&#x3D;&quot;let selected of selection.items&quot; class&#x3D;&quot;ec-asset-selected__item&quot; (click)&#x3D;&quot;editItem(selected)&quot; data-col&#x3D;&quot;3-sm&quot;
+        [dndDisableIf]&#x3D;&quot;solo||config?.disableDrag&quot; [class.is-dragged]&#x3D;&quot;selected&#x3D;&#x3D;&#x3D;dragged&quot; dndEffectAllowed&#x3D;&quot;move&quot; [dndDraggable]&#x3D;&quot;selected&quot;
+        (dndStart)&#x3D;&quot;onDragStart(selected,$event,item)&quot; (dndCanceled)&#x3D;&quot;cancelDrag(selected,$event,item)&quot; (dndEnd)&#x3D;&quot;cancelDrag(selected,$event,item)&quot; #item&gt;
         &lt;div class&#x3D;&quot;ec-asset-card&quot;&gt;
           &lt;img [src]&#x3D;&quot;selected.resolve(&#x27;thumb&#x27;)&quot;&gt;
           &lt;nav class&#x3D;&quot;ec-asset-card-controls&quot;&gt;
@@ -5425,6 +5461,12 @@ export class AssetSelectComponent extends SelectComponent&lt;DMAssetResource | P
               &lt;ec-icon name&#x3D;&quot;close-x&quot;&gt;&lt;/ec-icon&gt;
             &lt;/a&gt;
           &lt;/nav&gt;
+        &lt;/div&gt;
+      &lt;/li&gt;
+      &lt;li dndPlaceholderRef class&#x3D;&quot;ec-asset-selected__item&quot; data-col&#x3D;&quot;3-sm&quot;&gt;
+        &lt;div class&#x3D;&quot;ec-asset-card&quot;&gt;
+          &lt;!-- &lt;img class&#x3D;&quot;drag-placeholder&quot; [src]&#x3D;&quot;dragged?.resolve(&#x27;thumb&#x27;)&quot;/&gt; --&gt;
+          &lt;div class&#x3D;&quot;drag-placeholder&quot;&gt;&lt;/div&gt;
         &lt;/div&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
@@ -5465,7 +5507,7 @@ export class AssetSelectComponent extends SelectComponent&lt;DMAssetResource | P
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><!-- <ec-assetgroup-select [assetGroupID]="assetGroupID" (groupChanged)="setGroup($event)"></ec-assetgroup-select> --><div *ngIf="selection" class="ec-asset-select ec-dropzone" (ecDropzone)="uploader?.uploadFiles($event.dataTransfer.files,$event)"  [disabled]="readOnly" [class.ec-asset-select_solo]="solo" [class.empty]="!selection?.items?.length">  <div class="ec-dropzone-info">Loslassen zum Hochladen</div>  <div class="ec-asset-upload" *ngIf="!readOnly">    <ec-upload #uploader (groupChanged)="setGroup($event)" [loader]="popLoader" [assetGroupID]="assetGroupID" (success)="uploader.selectUpload($event, selection, config.solo)"      class="hide"></ec-upload>    <a (click)="uploader.trigger()">Hochladen</a>    <span *ngIf="!config?.disableListPop"> oder      <a (click)="pop.toggle()">Mediathek</a>    </span>  </div>  <div *ngIf="selection.items.length" class="ec-asset-selected">    <ul class="ec-asset-selected__items" data-grid="is-small">      <li *ngFor="let selected of selection.items" class="ec-asset-selected__item" (click)="editItem(selected)" data-col="3-sm">        <div class="ec-asset-card">          <img [src]="selected.resolve(\'thumb\')">          <nav class="ec-asset-card-controls">            <a (click)="selection.remove(selected)" class="ec-asset-card-controls__remove" *ngIf="!readOnly">              <ec-icon name="close-x"></ec-icon>            </a>          </nav>        </div>      </li>    </ul>  </div>  <ec-asset-list-pop (groupChanged)="setGroup($event)" [assetGroupID]="assetGroupID" (click)="clickInside($event)" (columnClicked)="select($event)"    [config]="config" [selection]="selection" [active]="config?.nestedPopActive" [visible]="config?.nestedPopVisible" [ngClass]="config?.nestedPopClass || \'ec-pop_dialog\'"    #assetListPop></ec-asset-list-pop></div></div>'
+        var COMPONENT_TEMPLATE = '<div><!-- <ec-assetgroup-select [assetGroupID]="assetGroupID" (groupChanged)="setGroup($event)"></ec-assetgroup-select> --><div *ngIf="selection" class="ec-asset-select ec-dropzone" (ecDropzone)="uploader?.uploadFiles($event.dataTransfer.files,$event)"  [disabled]="readOnly" [class.ec-asset-select_solo]="solo" [class.empty]="!selection?.items?.length">  <div class="ec-dropzone-info">Loslassen zum Hochladen</div>  <div class="ec-asset-upload" *ngIf="!readOnly">    <ec-upload #uploader (groupChanged)="setGroup($event)" [loader]="popLoader" [assetGroupID]="assetGroupID" (success)="uploader.selectUpload($event, selection, config.solo)"      class="hide"></ec-upload>    <a (click)="uploader.trigger()">Hochladen</a>    <span *ngIf="!config?.disableListPop"> oder      <a (click)="pop.toggle()">Mediathek</a>    </span>  </div>  <div *ngIf="selection.items.length" class="ec-asset-selected">    <ul class="ec-asset-selected__items" data-grid="is-small" dndDropzone (dndDrop)="onDrop($event)">      <li *ngFor="let selected of selection.items" class="ec-asset-selected__item" (click)="editItem(selected)" data-col="3-sm"        [dndDisableIf]="solo||config?.disableDrag" [class.is-dragged]="selected===dragged" dndEffectAllowed="move" [dndDraggable]="selected"        (dndStart)="onDragStart(selected,$event,item)" (dndCanceled)="cancelDrag(selected,$event,item)" (dndEnd)="cancelDrag(selected,$event,item)" #item>        <div class="ec-asset-card">          <img [src]="selected.resolve(\'thumb\')">          <nav class="ec-asset-card-controls">            <a (click)="selection.remove(selected)" class="ec-asset-card-controls__remove" *ngIf="!readOnly">              <ec-icon name="close-x"></ec-icon>            </a>          </nav>        </div>      </li>      <li dndPlaceholderRef class="ec-asset-selected__item" data-col="3-sm">        <div class="ec-asset-card">          <!-- <img class="drag-placeholder" [src]="dragged?.resolve(\'thumb\')"/> -->          <div class="drag-placeholder"></div>        </div>      </li>    </ul>  </div>  <ec-asset-list-pop (groupChanged)="setGroup($event)" [assetGroupID]="assetGroupID" (click)="clickInside($event)" (columnClicked)="select($event)"    [config]="config" [selection]="selection" [active]="config?.nestedPopActive" [visible]="config?.nestedPopVisible" [ngClass]="config?.nestedPopClass || \'ec-pop_dialog\'"    #assetListPop></ec-asset-list-pop></div></div>'
     var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'AdminEntryInputComponent', 'selector': ''},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'AssetgroupSelectComponent', 'selector': 'ec-assetgroup-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DaterangeComponent', 'selector': 'ec-daterange'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'HeatmapComponent', 'selector': 'ec-heatmap'},{'name': 'IconComponent', 'selector': 'ec-icon'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LocationMapComponent', 'selector': 'ec-location-map'},{'name': 'LocationPickerComponent', 'selector': 'ec-location-picker'},{'name': 'LocationSearchComponent', 'selector': 'ec-location-search'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceCrudComponent', 'selector': 'ec-resource-crud'},{'name': 'ResourceDeletePopComponent', 'selector': 'ec-resource-delete-pop'},{'name': 'ResourceFormComponent', 'selector': 'ec-resource-form'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'ResourcePopComponent', 'selector': 'ec-resource-pop'},{'name': 'ResourceSelectComponent', 'selector': 'ec-resource-select'},{'name': 'SearchbarComponent', 'selector': 'ec-searchbar'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
     var DIRECTIVES = [{'name': 'AssetDirective', 'selector': '[ecAsset]'},{'name': 'DropzoneDirective', 'selector': '[ecDropzone]'},{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'FocusDirective', 'selector': '[ecFocus]'},{'name': 'ImageDirective', 'selector': 'img [ecImage]'},{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'}];
     var ACTUAL_COMPONENT = {'name': 'AssetSelectComponent'};

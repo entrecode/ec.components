@@ -840,14 +840,14 @@
                         <a href="modules/SelectModule.html" data-type="entity-link">SelectModule</a>
                             <li class="chapter inner">
                                 <div class="simple menu-toggler" data-toggle="collapse"
-                                        data-target="#xs-components-links-module-SelectModule-8755b12f66dd54007bb2b871f31f8d65"
+                                        data-target="#xs-components-links-module-SelectModule-21b67eddc23d175dc752ad1925701041"
                                     >
                                     <span class="fa fa-fw fa-cogs"></span>
                                     <span>Components</span>
                                     <span class="fa fa-angle-down"></span>
                                 </div>
                                 <ul class="links collapse"
-                                        id="xs-components-links-module-SelectModule-8755b12f66dd54007bb2b871f31f8d65"
+                                        id="xs-components-links-module-SelectModule-21b67eddc23d175dc752ad1925701041"
                                     >
                                         <li class="link">
                                             <a href="components/SelectComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">SelectComponent</a>
@@ -2042,14 +2042,14 @@
                         <a href="modules/SelectModule.html" data-type="entity-link">SelectModule</a>
                             <li class="chapter inner">
                                 <div class="simple menu-toggler" data-toggle="collapse"
-                                        data-target="#components-links-module-SelectModule-8755b12f66dd54007bb2b871f31f8d65"
+                                        data-target="#components-links-module-SelectModule-21b67eddc23d175dc752ad1925701041"
 >
                                     <span class="fa fa-fw fa-cogs"></span>
                                     <span>Components</span>
                                     <span class="fa fa-angle-down"></span>
                                 </div>
                                 <ul class="links collapse"
-                                        id="components-links-module-SelectModule-8755b12f66dd54007bb2b871f31f8d65"
+                                        id="components-links-module-SelectModule-21b67eddc23d175dc752ad1925701041"
 >
                                         <li class="link">
                                             <a href="components/SelectComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">SelectComponent</a>
@@ -2958,7 +2958,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>cancelDrag(item: , e: )</code>
+<code>cancelDrag(item: , e: , target: )</code>
                     </td>
                 </tr>
 
@@ -2980,6 +2980,7 @@
                                             <tr>
                                                 <td>Name</td>
                                                 <td>Optional</td>
+                                                    <td>Default value</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -2990,6 +2991,8 @@
                                                             no
                                                     </td>
                                                     
+                                                        <td>
+                                                        </td>
 
                                                 </tr>
                                                 <tr>
@@ -2999,6 +3002,20 @@
                                                             no
                                                     </td>
                                                     
+                                                        <td>
+                                                        </td>
+
+                                                </tr>
+                                                <tr>
+                                                        <td>target</td>
+                                                    
+                                                    <td>
+                                                            no
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>e.target</code>
+                                                        </td>
 
                                                 </tr>
                                         </tbody>
@@ -3333,7 +3350,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>onDragStart(item: , e: )</code>
+<code>onDragStart(item: , e: , target: )</code>
                     </td>
                 </tr>
 
@@ -3355,6 +3372,7 @@
                                             <tr>
                                                 <td>Name</td>
                                                 <td>Optional</td>
+                                                    <td>Default value</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -3365,6 +3383,8 @@
                                                             no
                                                     </td>
                                                     
+                                                        <td>
+                                                        </td>
 
                                                 </tr>
                                                 <tr>
@@ -3374,6 +3394,20 @@
                                                             no
                                                     </td>
                                                     
+                                                        <td>
+                                                        </td>
+
+                                                </tr>
+                                                <tr>
+                                                        <td>target</td>
+                                                    
+                                                    <td>
+                                                            no
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>e.target</code>
+                                                        </td>
 
                                                 </tr>
                                         </tbody>
@@ -4306,9 +4340,9 @@ export class SelectComponent&lt;T&gt; implements ControlValueAccessor, OnInit, O
   registerOnTouched() {
   }
 
-  onDragStart(item, e) {
+  onDragStart(item, e, target &#x3D; e.target) {
     this.dragged &#x3D; item;
-    window.requestAnimationFrame(function () { e.target.style.display &#x3D; &#x27;none&#x27;; });
+    window.requestAnimationFrame(function () { target.style.display &#x3D; &#x27;none&#x27;; });
   }
 
   onDrop(e) {
@@ -4322,9 +4356,9 @@ export class SelectComponent&lt;T&gt; implements ControlValueAccessor, OnInit, O
     this.selection.move(this.dragged, index);
   }
 
-  cancelDrag(item, e) {
+  cancelDrag(item, e, target &#x3D; e.target) {
     delete this.dragged;
-    window.requestAnimationFrame(function () { e.target.style.display &#x3D; &#x27;inherit&#x27;; });
+    window.requestAnimationFrame(function () { target.style.display &#x3D; &#x27;inherit&#x27;; });
   }
 }
 </code></pre>
@@ -4341,8 +4375,8 @@ export class SelectComponent&lt;T&gt; implements ControlValueAccessor, OnInit, O
   &lt;/span&gt;
   &lt;ul class&#x3D;&quot;ec-select-selected&quot; *ngIf&#x3D;&quot;selection.items.length&quot; dndDropzone (dndDrop)&#x3D;&quot;onDrop($event)&quot;&gt;
     &lt;li [dndDisableIf]&#x3D;&quot;solo||config?.disableDrag&quot; [class.is-dragged]&#x3D;&quot;selected&#x3D;&#x3D;&#x3D;dragged&quot; dndEffectAllowed&#x3D;&quot;move&quot; [dndDraggable]&#x3D;&quot;selected&quot;
-      *ngFor&#x3D;&quot;let selected of selection.items&quot; (dndStart)&#x3D;&quot;onDragStart(selected,$event)&quot; (dndCanceled)&#x3D;&quot;cancelDrag(selected,$event)&quot;
-      (dndEnd)&#x3D;&quot;cancelDrag(selected,$event)&quot;&gt;
+      *ngFor&#x3D;&quot;let selected of selection.items&quot; (dndStart)&#x3D;&quot;onDragStart(selected,$event,item)&quot; (dndCanceled)&#x3D;&quot;cancelDrag(selected,$event,item)&quot;
+      (dndEnd)&#x3D;&quot;cancelDrag(selected,$event,item)&quot; #item&gt;
       &lt;span [class.tag]&#x3D;&quot;!solo&quot; (click)&#x3D;&quot;clickItem(selected,$event)&quot;&gt;
         {{selected.display()}}
         &lt;a (click)&#x3D;&quot;removeItem(selected,$event)&quot;&gt;&amp;times;&lt;/a&gt;
@@ -4386,7 +4420,7 @@ export class SelectComponent&lt;T&gt; implements ControlValueAccessor, OnInit, O
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div *ngIf="selection&&list" class="ec-select" [class.ec-select_solo]="solo" [class.ec-select_dirty]="selection.items.length"  (click)="toggle($event)">  <!-- [class.is-focus]="pop?.visible" -->  <span class="ec-select__placeholder" *ngIf="!selection.items.length">    {{placeholder||\'Auswählen\'}}  </span>  <ul class="ec-select-selected" *ngIf="selection.items.length" dndDropzone (dndDrop)="onDrop($event)">    <li [dndDisableIf]="solo||config?.disableDrag" [class.is-dragged]="selected===dragged" dndEffectAllowed="move" [dndDraggable]="selected"      *ngFor="let selected of selection.items" (dndStart)="onDragStart(selected,$event)" (dndCanceled)="cancelDrag(selected,$event)"      (dndEnd)="cancelDrag(selected,$event)">      <span [class.tag]="!solo" (click)="clickItem(selected,$event)">        {{selected.display()}}        <a (click)="removeItem(selected,$event)">&times;</a>      </span>    </li>    <li dndPlaceholderRef class="drag-placeholder"></li>  </ul>  <ec-pop class="ec-select-options" (click)="clickInside($event)">    <ec-list [list]="list" (columnClicked)="select($event)" [selection]="selection"></ec-list>  </ec-pop></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div *ngIf="selection&&list" class="ec-select" [class.ec-select_solo]="solo" [class.ec-select_dirty]="selection.items.length"  (click)="toggle($event)">  <!-- [class.is-focus]="pop?.visible" -->  <span class="ec-select__placeholder" *ngIf="!selection.items.length">    {{placeholder||\'Auswählen\'}}  </span>  <ul class="ec-select-selected" *ngIf="selection.items.length" dndDropzone (dndDrop)="onDrop($event)">    <li [dndDisableIf]="solo||config?.disableDrag" [class.is-dragged]="selected===dragged" dndEffectAllowed="move" [dndDraggable]="selected"      *ngFor="let selected of selection.items" (dndStart)="onDragStart(selected,$event,item)" (dndCanceled)="cancelDrag(selected,$event,item)"      (dndEnd)="cancelDrag(selected,$event,item)" #item>      <span [class.tag]="!solo" (click)="clickItem(selected,$event)">        {{selected.display()}}        <a (click)="removeItem(selected,$event)">&times;</a>      </span>    </li>    <li dndPlaceholderRef class="drag-placeholder"></li>  </ul>  <ec-pop class="ec-select-options" (click)="clickInside($event)">    <ec-list [list]="list" (columnClicked)="select($event)" [selection]="selection"></ec-list>  </ec-pop></div></div>'
     var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'AdminEntryInputComponent', 'selector': ''},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'AssetgroupSelectComponent', 'selector': 'ec-assetgroup-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DaterangeComponent', 'selector': 'ec-daterange'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'HeatmapComponent', 'selector': 'ec-heatmap'},{'name': 'IconComponent', 'selector': 'ec-icon'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LocationMapComponent', 'selector': 'ec-location-map'},{'name': 'LocationPickerComponent', 'selector': 'ec-location-picker'},{'name': 'LocationSearchComponent', 'selector': 'ec-location-search'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceCrudComponent', 'selector': 'ec-resource-crud'},{'name': 'ResourceDeletePopComponent', 'selector': 'ec-resource-delete-pop'},{'name': 'ResourceFormComponent', 'selector': 'ec-resource-form'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'ResourcePopComponent', 'selector': 'ec-resource-pop'},{'name': 'ResourceSelectComponent', 'selector': 'ec-resource-select'},{'name': 'SearchbarComponent', 'selector': 'ec-searchbar'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
     var DIRECTIVES = [{'name': 'AssetDirective', 'selector': '[ecAsset]'},{'name': 'DropzoneDirective', 'selector': '[ecDropzone]'},{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'FocusDirective', 'selector': '[ecFocus]'},{'name': 'ImageDirective', 'selector': 'img [ecImage]'},{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'}];
     var ACTUAL_COMPONENT = {'name': 'SelectComponent'};
