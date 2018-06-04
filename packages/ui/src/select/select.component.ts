@@ -158,9 +158,9 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   registerOnTouched() {
   }
 
-  onDragStart(item, e) {
+  onDragStart(item, e, target = e.target) {
     this.dragged = item;
-    window.requestAnimationFrame(function () { e.target.style.display = 'none'; });
+    window.requestAnimationFrame(function () { target.style.display = 'none'; });
   }
 
   onDrop(e) {
@@ -174,8 +174,8 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
     this.selection.move(this.dragged, index);
   }
 
-  cancelDrag(item, e) {
+  cancelDrag(item, e, target = e.target) {
     delete this.dragged;
-    window.requestAnimationFrame(function () { e.target.style.display = 'inherit'; });
+    window.requestAnimationFrame(function () { target.style.display = 'inherit'; });
   }
 }

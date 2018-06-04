@@ -11,7 +11,11 @@ import { SelectComponent } from './select.component';
     DndModule
   ],
   declarations: [SelectComponent],
-  exports: [ListModule, SelectComponent],
+  exports: [
+    ListModule,
+    SelectComponent,
+    DndModule
+  ],
   providers: [],
 })
 export class SelectModule {

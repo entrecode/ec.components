@@ -6,7 +6,7 @@
 
 BREAKING CHANGE:
 
-* now requires ngx-drag-drop packages for new drag and drop feature
+* now requires ngx-drag-drop packages for new drag and drop features
 
 <a name="0.25.0"></a>
 

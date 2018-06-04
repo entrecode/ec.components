@@ -6,7 +6,6 @@
       </button>
     </header>
     <div class="ec-pop-body ec-dropzone" (ecDropzone)="uploader?.uploadFiles($event.dataTransfer.files,$event)">
-
       <ec-assetgroup-select *ngIf="!config.hideGroupSelect" [readOnly]="config.forceGroup||(assetGroupID==='legacyAsset')" [disableLegacy]="assetGroupID!=='legacyAsset'&&!selection?.isEmpty()"
         [assetGroupID]="assetGroupID" (groupChanged)="setGroup($event)"></ec-assetgroup-select>
 

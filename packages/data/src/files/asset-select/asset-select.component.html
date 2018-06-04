@@ -11,8 +11,10 @@
     </span>
   </div>
   <div *ngIf="selection.items.length" class="ec-asset-selected">
-    <ul class="ec-asset-selected__items" data-grid="is-small">
-      <li *ngFor="let selected of selection.items" class="ec-asset-selected__item" (click)="editItem(selected)" data-col="3-sm">
+    <ul class="ec-asset-selected__items" data-grid="is-small" dndDropzone (dndDrop)="onDrop($event)">
+      <li *ngFor="let selected of selection.items" class="ec-asset-selected__item" (click)="editItem(selected)" data-col="3-sm"
+        [dndDisableIf]="solo||config?.disableDrag" [class.is-dragged]="selected===dragged" dndEffectAllowed="move" [dndDraggable]="selected"
+        (dndStart)="onDragStart(selected,$event,item)" (dndCanceled)="cancelDrag(selected,$event,item)" (dndEnd)="cancelDrag(selected,$event,item)" #item>
         <div class="ec-asset-card">
           <img [src]="selected.resolve('thumb')">
           <nav class="ec-asset-card-controls">
@@ -20,6 +22,12 @@
               <ec-icon name="close-x"></ec-icon>
             </a>
           </nav>
+        </div>
+      </li>
+      <li dndPlaceholderRef class="ec-asset-selected__item" data-col="3-sm">
+        <div class="ec-asset-card">
+          <!-- <img class="drag-placeholder" [src]="dragged?.resolve('thumb')"/> -->
+          <div class="drag-placeholder"></div>
         </div>
       </li>
     </ul>

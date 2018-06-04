@@ -8,8 +8,8 @@
   </span>
   <ul class="ec-select-selected" *ngIf="selection.items.length" dndDropzone (dndDrop)="onDrop($event)">
     <li [dndDisableIf]="solo||config?.disableDrag" [class.is-dragged]="selected===dragged" dndEffectAllowed="move" [dndDraggable]="selected"
-      *ngFor="let selected of selection.items" (dndStart)="onDragStart(selected,$event)" (dndCanceled)="cancelDrag(selected,$event)"
-      (dndEnd)="cancelDrag(selected,$event)">
+      *ngFor="let selected of selection.items" (dndStart)="onDragStart(selected,$event,item)" (dndCanceled)="cancelDrag(selected,$event,item)"
+      (dndEnd)="cancelDrag(selected,$event,item)" #item>
       <span [class.tag]="!solo" (click)="clickItem(selected,$event)">
         {{selected.display()}}
         <a (click)="removeItem(selected,$event)">&times;</a>
