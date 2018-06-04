@@ -3665,13 +3665,15 @@
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in SelectComponent:177</div>
+                                    <div class="io-line">Defined in SelectComponent:180</div>
                             </td>
                         </tr>
 
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>is called when the drag stops in any kind of way. </p>
+</div>
 
                             <div class="io-description">
                                     <b>Parameters :</b>
@@ -4099,13 +4101,15 @@
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in SelectComponent:161</div>
+                                    <div class="io-line">Defined in SelectComponent:163</div>
                             </td>
                         </tr>
 
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>is called when an element is dragged by the user. hides element in selection </p>
+</div>
 
                             <div class="io-description">
                                     <b>Parameters :</b>
@@ -4196,13 +4200,15 @@
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in SelectComponent:166</div>
+                                    <div class="io-line">Defined in SelectComponent:168</div>
                             </td>
                         </tr>
 
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>called when the element is dropped. moves item in selection. </p>
+</div>
 
                             <div class="io-description">
                                     <b>Parameters :</b>
@@ -4267,13 +4273,15 @@
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in SelectComponent:154</div>
+                                    <div class="io-line">Defined in SelectComponent:155</div>
                             </td>
                         </tr>
 
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>registers change method. (handled by angular) </p>
+</div>
 
                             <div class="io-description">
                                     <b>Parameters :</b>
@@ -4338,7 +4346,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in SelectComponent:158</div>
+                                    <div class="io-line">Defined in SelectComponent:159</div>
                             </td>
                         </tr>
 
@@ -5295,10 +5303,16 @@
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in SelectComponent:151</div>
+                                    <div class="io-line">Defined in SelectComponent:152</div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Propagates formControl/ngModel changes </p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -5465,7 +5479,6 @@ export class AssetSelectComponent extends SelectComponent&lt;DMAssetResource | P
       &lt;/li&gt;
       &lt;li dndPlaceholderRef class&#x3D;&quot;ec-asset-selected__item&quot; data-col&#x3D;&quot;3-sm&quot;&gt;
         &lt;div class&#x3D;&quot;ec-asset-card&quot;&gt;
-          &lt;!-- &lt;img class&#x3D;&quot;drag-placeholder&quot; [src]&#x3D;&quot;dragged?.resolve(&#x27;thumb&#x27;)&quot;/&gt; --&gt;
           &lt;div class&#x3D;&quot;drag-placeholder&quot;&gt;&lt;/div&gt;
         &lt;/div&gt;
       &lt;/li&gt;
@@ -5507,7 +5520,7 @@ export class AssetSelectComponent extends SelectComponent&lt;DMAssetResource | P
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><!-- <ec-assetgroup-select [assetGroupID]="assetGroupID" (groupChanged)="setGroup($event)"></ec-assetgroup-select> --><div *ngIf="selection" class="ec-asset-select ec-dropzone" (ecDropzone)="uploader?.uploadFiles($event.dataTransfer.files,$event)"  [disabled]="readOnly" [class.ec-asset-select_solo]="solo" [class.empty]="!selection?.items?.length">  <div class="ec-dropzone-info">Loslassen zum Hochladen</div>  <div class="ec-asset-upload" *ngIf="!readOnly">    <ec-upload #uploader (groupChanged)="setGroup($event)" [loader]="popLoader" [assetGroupID]="assetGroupID" (success)="uploader.selectUpload($event, selection, config.solo)"      class="hide"></ec-upload>    <a (click)="uploader.trigger()">Hochladen</a>    <span *ngIf="!config?.disableListPop"> oder      <a (click)="pop.toggle()">Mediathek</a>    </span>  </div>  <div *ngIf="selection.items.length" class="ec-asset-selected">    <ul class="ec-asset-selected__items" data-grid="is-small" dndDropzone (dndDrop)="onDrop($event)">      <li *ngFor="let selected of selection.items" class="ec-asset-selected__item" (click)="editItem(selected)" data-col="3-sm"        [dndDisableIf]="solo||config?.disableDrag" [class.is-dragged]="selected===dragged" dndEffectAllowed="move" [dndDraggable]="selected"        (dndStart)="onDragStart(selected,$event,item)" (dndCanceled)="cancelDrag(selected,$event,item)" (dndEnd)="cancelDrag(selected,$event,item)" #item>        <div class="ec-asset-card">          <img [src]="selected.resolve(\'thumb\')">          <nav class="ec-asset-card-controls">            <a (click)="selection.remove(selected)" class="ec-asset-card-controls__remove" *ngIf="!readOnly">              <ec-icon name="close-x"></ec-icon>            </a>          </nav>        </div>      </li>      <li dndPlaceholderRef class="ec-asset-selected__item" data-col="3-sm">        <div class="ec-asset-card">          <!-- <img class="drag-placeholder" [src]="dragged?.resolve(\'thumb\')"/> -->          <div class="drag-placeholder"></div>        </div>      </li>    </ul>  </div>  <ec-asset-list-pop (groupChanged)="setGroup($event)" [assetGroupID]="assetGroupID" (click)="clickInside($event)" (columnClicked)="select($event)"    [config]="config" [selection]="selection" [active]="config?.nestedPopActive" [visible]="config?.nestedPopVisible" [ngClass]="config?.nestedPopClass || \'ec-pop_dialog\'"    #assetListPop></ec-asset-list-pop></div></div>'
+        var COMPONENT_TEMPLATE = '<div><!-- <ec-assetgroup-select [assetGroupID]="assetGroupID" (groupChanged)="setGroup($event)"></ec-assetgroup-select> --><div *ngIf="selection" class="ec-asset-select ec-dropzone" (ecDropzone)="uploader?.uploadFiles($event.dataTransfer.files,$event)"  [disabled]="readOnly" [class.ec-asset-select_solo]="solo" [class.empty]="!selection?.items?.length">  <div class="ec-dropzone-info">Loslassen zum Hochladen</div>  <div class="ec-asset-upload" *ngIf="!readOnly">    <ec-upload #uploader (groupChanged)="setGroup($event)" [loader]="popLoader" [assetGroupID]="assetGroupID" (success)="uploader.selectUpload($event, selection, config.solo)"      class="hide"></ec-upload>    <a (click)="uploader.trigger()">Hochladen</a>    <span *ngIf="!config?.disableListPop"> oder      <a (click)="pop.toggle()">Mediathek</a>    </span>  </div>  <div *ngIf="selection.items.length" class="ec-asset-selected">    <ul class="ec-asset-selected__items" data-grid="is-small" dndDropzone (dndDrop)="onDrop($event)">      <li *ngFor="let selected of selection.items" class="ec-asset-selected__item" (click)="editItem(selected)" data-col="3-sm"        [dndDisableIf]="solo||config?.disableDrag" [class.is-dragged]="selected===dragged" dndEffectAllowed="move" [dndDraggable]="selected"        (dndStart)="onDragStart(selected,$event,item)" (dndCanceled)="cancelDrag(selected,$event,item)" (dndEnd)="cancelDrag(selected,$event,item)" #item>        <div class="ec-asset-card">          <img [src]="selected.resolve(\'thumb\')">          <nav class="ec-asset-card-controls">            <a (click)="selection.remove(selected)" class="ec-asset-card-controls__remove" *ngIf="!readOnly">              <ec-icon name="close-x"></ec-icon>            </a>          </nav>        </div>      </li>      <li dndPlaceholderRef class="ec-asset-selected__item" data-col="3-sm">        <div class="ec-asset-card">          <div class="drag-placeholder"></div>        </div>      </li>    </ul>  </div>  <ec-asset-list-pop (groupChanged)="setGroup($event)" [assetGroupID]="assetGroupID" (click)="clickInside($event)" (columnClicked)="select($event)"    [config]="config" [selection]="selection" [active]="config?.nestedPopActive" [visible]="config?.nestedPopVisible" [ngClass]="config?.nestedPopClass || \'ec-pop_dialog\'"    #assetListPop></ec-asset-list-pop></div></div>'
     var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'AdminEntryInputComponent', 'selector': ''},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'AssetgroupSelectComponent', 'selector': 'ec-assetgroup-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DaterangeComponent', 'selector': 'ec-daterange'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'HeatmapComponent', 'selector': 'ec-heatmap'},{'name': 'IconComponent', 'selector': 'ec-icon'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LocationMapComponent', 'selector': 'ec-location-map'},{'name': 'LocationPickerComponent', 'selector': 'ec-location-picker'},{'name': 'LocationSearchComponent', 'selector': 'ec-location-search'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceCrudComponent', 'selector': 'ec-resource-crud'},{'name': 'ResourceDeletePopComponent', 'selector': 'ec-resource-delete-pop'},{'name': 'ResourceFormComponent', 'selector': 'ec-resource-form'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'ResourcePopComponent', 'selector': 'ec-resource-pop'},{'name': 'ResourceSelectComponent', 'selector': 'ec-resource-select'},{'name': 'SearchbarComponent', 'selector': 'ec-searchbar'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
     var DIRECTIVES = [{'name': 'AssetDirective', 'selector': '[ecAsset]'},{'name': 'DropzoneDirective', 'selector': '[ecDropzone]'},{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'FocusDirective', 'selector': '[ecFocus]'},{'name': 'ImageDirective', 'selector': 'img [ecImage]'},{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'}];
     var ACTUAL_COMPONENT = {'name': 'AssetSelectComponent'};

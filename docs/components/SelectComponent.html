@@ -2965,13 +2965,15 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="177" class="link-to-prism">packages/ui/src/select/select.component.ts:177</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="180" class="link-to-prism">packages/ui/src/select/select.component.ts:180</a></div>
                             </td>
                         </tr>
 
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>is called when the drag stops in any kind of way. </p>
+</div>
 
                             <div class="io-description">
                                     <b>Parameters :</b>
@@ -3357,13 +3359,15 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="161" class="link-to-prism">packages/ui/src/select/select.component.ts:161</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="163" class="link-to-prism">packages/ui/src/select/select.component.ts:163</a></div>
                             </td>
                         </tr>
 
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>is called when an element is dragged by the user. hides element in selection </p>
+</div>
 
                             <div class="io-description">
                                     <b>Parameters :</b>
@@ -3448,13 +3452,15 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="166" class="link-to-prism">packages/ui/src/select/select.component.ts:166</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="168" class="link-to-prism">packages/ui/src/select/select.component.ts:168</a></div>
                             </td>
                         </tr>
 
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>called when the element is dropped. moves item in selection. </p>
+</div>
 
                             <div class="io-description">
                                     <b>Parameters :</b>
@@ -3513,13 +3519,15 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="154" class="link-to-prism">packages/ui/src/select/select.component.ts:154</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="155" class="link-to-prism">packages/ui/src/select/select.component.ts:155</a></div>
                             </td>
                         </tr>
 
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>registers change method. (handled by angular) </p>
+</div>
 
                             <div class="io-description">
                                     <b>Parameters :</b>
@@ -3578,7 +3586,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="158" class="link-to-prism">packages/ui/src/select/select.component.ts:158</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="159" class="link-to-prism">packages/ui/src/select/select.component.ts:159</a></div>
                             </td>
                         </tr>
 
@@ -4159,10 +4167,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="151" class="link-to-prism">packages/ui/src/select/select.component.ts:151</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="152" class="link-to-prism">packages/ui/src/select/select.component.ts:152</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Propagates formControl/ngModel changes </p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -4330,9 +4344,10 @@ export class SelectComponent&lt;T&gt; implements ControlValueAccessor, OnInit, O
     return this.propagateChange(this.value);
   }
 
+  /** Propagates formControl/ngModel changes */
   propagateChange &#x3D; (_: any) &#x3D;&gt; {
   };
-
+  /** registers change method. (handled by angular) */
   registerOnChange(fn) {
     this.propagateChange &#x3D; fn;
   }
@@ -4340,11 +4355,12 @@ export class SelectComponent&lt;T&gt; implements ControlValueAccessor, OnInit, O
   registerOnTouched() {
   }
 
+  /** is called when an element is dragged by the user. hides element in selection */
   onDragStart(item, e, target &#x3D; e.target) {
     this.dragged &#x3D; item;
     window.requestAnimationFrame(function () { target.style.display &#x3D; &#x27;none&#x27;; });
   }
-
+  /** called when the element is dropped. moves item in selection. */
   onDrop(e) {
     if (e.isExternal) {
       return;
@@ -4356,6 +4372,7 @@ export class SelectComponent&lt;T&gt; implements ControlValueAccessor, OnInit, O
     this.selection.move(this.dragged, index);
   }
 
+  /** is called when the drag stops in any kind of way. */
   cancelDrag(item, e, target &#x3D; e.target) {
     delete this.dragged;
     window.requestAnimationFrame(function () { target.style.display &#x3D; &#x27;inherit&#x27;; });

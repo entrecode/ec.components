@@ -148,9 +148,10 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
     return this.propagateChange(this.value);
   }
 
+  /** Propagates formControl/ngModel changes */
   propagateChange = (_: any) => {
   };
-
+  /** registers change method. (handled by angular) */
   registerOnChange(fn) {
     this.propagateChange = fn;
   }
@@ -158,11 +159,12 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   registerOnTouched() {
   }
 
+  /** is called when an element is dragged by the user. hides element in selection */
   onDragStart(item, e, target = e.target) {
     this.dragged = item;
     window.requestAnimationFrame(function () { target.style.display = 'none'; });
   }
-
+  /** called when the element is dropped. moves item in selection. */
   onDrop(e) {
     if (e.isExternal) {
       return;
@@ -174,6 +176,7 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
     this.selection.move(this.dragged, index);
   }
 
+  /** is called when the drag stops in any kind of way. */
   cancelDrag(item, e, target = e.target) {
     delete this.dragged;
     window.requestAnimationFrame(function () { target.style.display = 'inherit'; });
