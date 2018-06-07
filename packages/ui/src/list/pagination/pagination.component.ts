@@ -9,7 +9,6 @@ import { PaginationConfig } from './pagination-config.interface';
 @Component({
   selector: 'ec-pagination',
   templateUrl: './pagination.component.html',
-  styleUrls: ['./pagination.component.scss']
 })
 export class PaginationComponent<T> implements OnChanges, AfterViewInit, OnInit {
   /** A Pagination Instance */
