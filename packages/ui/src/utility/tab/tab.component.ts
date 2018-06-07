@@ -5,7 +5,6 @@ import { TabsComponent } from '../tabs/tabs.component';
 @Component({
   selector: 'ec-tab',
   templateUrl: './tab.component.html',
-  styleUrls: ['./tab.component.scss']
 })
 export class TabComponent {
   /** The tab's label */

@@ -21,7 +21,6 @@ import { ModelConfigService } from '../model-config/model-config.service';
 @Component({
   selector: 'ec-entry-select',
   templateUrl: './entry-select.component.html',
-  styleUrls: ['../../../ui/src/select/select.component.scss'],
   encapsulation: ViewEncapsulation.None,
   providers: [
     {
