@@ -1,10 +1,13 @@
-ec-pop, ec-entry-pop, ec-asset-list-pop, ec-resource-pop {
-  &.ec-pop_dialog {
-    > .ec-pop-container {
-      > .ec-pop {
-        @extend .xui-overlay !optional;
-        @extend %dialog-appear;
-      }
+.ec-pop_dialog {
+  > .ec-pop-container {
+    > .ec-pop {
+      @extend %dialog-appear !optional;
+      padding: arrayMagic($overlay-padding);
+      box-shadow: arrayMagic($overlay-shadow);
+      border-radius: rem($overlay-radius);
+      background-color: $overlay-background;
+      color: setContrast($overlay-background);
+      position: relative;
     }
   }
 }

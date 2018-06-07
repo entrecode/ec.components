@@ -2,27 +2,19 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  //overflow: hidden;
 
   .ec-pop-header {
-    @extend .title !optional;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin: arrayMagic($ec-pop-header-spacing);
     flex-grow: 0;
-
-    .ec-pop__dismiss {
-      position: initial;
-      right: auto;
-      left: auto;
-
-      &:only-child {
-        margin-left: auto;
-      }
-    }
   }
 
   .ec-pop-body {
     flex-grow: 1;
-    overflow-y: auto;
-    overscroll-behavior-y: contain
+    @include is-scrollable(y, contain);
   }
 
   .ec-pop-footer {
@@ -39,7 +31,11 @@
   top: rem(2);
   z-index: 1;
   color: getColor(text, lighter);
-  animation: all .2s;
+  animation: all 0.2s;
+
+  &:only-child {
+    margin-left: auto;
+  }
 
   &:hover {
     color: getColor(text, light);

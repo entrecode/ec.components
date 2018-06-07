@@ -1,3 +1,5 @@
+//scss-lint:disable NestingDepth
+
 .ec-list {
   .ec-list__select {
     padding: rem(8);
@@ -6,6 +8,28 @@
   .ec-output_avatar {
     width: em(32);
     height: em(32);
+  }
+
+  .is-sorted-asc {
+    .ec-list-sortable-indicator {
+      &::after {
+        border-top-color: getColor(text);
+      }
+    }
+  }
+
+  .is-sorted-desc {
+    .ec-list-sortable-indicator {
+      &::before {
+        border-bottom-color: getColor(text);
+      }
+    }
+  }
+
+  .ec-output_tags-list {
+    .tag {
+      font-size: 0.75em;
+    }
   }
 }
 
@@ -20,13 +44,13 @@
     .ec-list-group-header__title {
       font-weight: bold;
       text-align: center;
-      font-size: .875em;
+      font-size: 0.875em;
     }
   }
 }
 
 .ec-list-header {
-  font-size: .875em;
+  font-size: 0.875em;
   position: relative;
 
   .ec-list-cell {
@@ -51,7 +75,7 @@
 }
 
 .ec-list-item {
-  transition: all .4s;
+  transition: all 0.4s;
 
   &.is-selected,
   &:hover {
@@ -67,8 +91,8 @@
   align-self: center;
   flex-grow: 0;
 
-  &:after,
-  &:before {
+  &::after,
+  &::before {
     content: '';
     position: absolute;
     border: rem(4) solid transparent;
@@ -76,39 +100,13 @@
     margin-left: rem(-4);
   }
 
-  &:before {
+  &::before {
     border-bottom-color: getColor(text, lightest);
     top: rem(-4);
   }
 
-  &:after {
+  &::after {
     border-top-color: getColor(text, lightest);
     bottom: rem(-4);
-  }
-}
-
-.ec-list {
-  .is-sorted-asc {
-    .ec-list-sortable-indicator {
-      &:after {
-        border-top-color: getColor(text);
-      }
-    }
-  }
-
-  .is-sorted-desc {
-    .ec-list-sortable-indicator {
-      &:before {
-        border-bottom-color: getColor(text);
-      }
-    }
-  }
-}
-
-.ec-list {
-  .ec-output_tags-list {
-    .tag {
-      font-size: .75em;
-    }
   }
 }

@@ -1,18 +1,20 @@
 .ec-asset-upload {
-    padding: rem(16);
-    margin: rem(4) 0;
-    text-align: center;
-    border: 2px dashed getColor(divider);
-    transition: all .2s;
-    &:hover {
-        background-color: getColor(state, hover);
-    }
-    input[type="file"] {
-        opacity: 0;
-        overflow: hidden;
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        z-index: -1;
-    }
+  padding: rem(16);
+  margin: rem(4) 0;
+  text-align: center;
+  border: 2px dashed getColor(divider);
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: getColor(state, hover);
+  }
+
+  input[type='file'] {
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    z-index: -1;
+  }
 }

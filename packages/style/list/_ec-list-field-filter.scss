@@ -1,3 +1,5 @@
+//scss-lint:disable NestingDepth
+
 .ec-list-field-filter-pop {
   .ec-pop-container {
     .ec-pop {
@@ -10,35 +12,35 @@
       background-color: getColor(background);
       align-items: center;
       z-index: 10;
-
-      .ec-list-field-filter {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        height: 100%;
-        width: 100%;
-      }
-
-      .ec-list-field-filter__dismiss {
-        @extend %btn !optional;
-        align-self: center;
-      }
-
-      ec-input {
-        display: inline-block;
-        flex-grow: 1;
-        align-self: center;
-
-        .input {
-          margin: 0;
-        }
-      }
     }
 
     &.is-visible {
       .ec-pop {
-        display: flex !important;
+        display: flex;
       }
+    }
+  }
+
+  .ec-list-field-filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+
+  .ec-list-field-filter__dismiss {
+    @extend %btn !optional;
+    align-self: center;
+  }
+
+  ec-input {
+    display: inline-block;
+    flex-grow: 1;
+    align-self: center;
+
+    .input {
+      margin: 0;
     }
   }
 }

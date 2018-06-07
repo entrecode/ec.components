@@ -4,7 +4,16 @@
   margin: rem(8) 0;
 
   &__item {
-    @extend .btn, .btn.btn_clear !optional;
+    @extend %btn !optional;
+    background-color: transparent;
+    color: getColor(link);
+
+    &.is-active,
+    &:hover,
+    &:focus {
+      background-color: getColor(state, hover);
+      color: setHover($link);
+    }
   }
 }
 
@@ -13,24 +22,12 @@
   margin: 0;
   padding: 0;
   display: flex;
+}
 
-  .ec-pagination-control {
-    &.disabled {
-      .ec-pagination__item {
-        color: getColor(state, disabled);
-      }
-    }
-
-    &_first {
-    }
-
-    &_prev {
-    }
-
-    &_next {
-    }
-
-    &_last {
+.ec-pagination-control {
+  &.is-disabled {
+    .ec-pagination__item {
+      color: getColor(state, disabled);
     }
   }
 }
@@ -50,4 +47,3 @@
     padding-right: 0;
   }
 }
-

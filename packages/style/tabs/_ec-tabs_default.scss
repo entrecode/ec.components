@@ -1,17 +1,14 @@
 .ec-tabs-nav {
-  @extend %tabsNav !optional;
-
-  .ec-tabs-nav__items {
-  }
+  @extend %tabs-nav !optional;
 
   .ec-tabs-nav__item {
     &.is-selected {
-      @extend %tabsNavSelected !optional;
+      @extend %tabs-nav-selected !optional;
     }
   }
 
   a {
-    @extend %tabsNavItem !optional;
+    @extend %tabs-nav-item !optional;
   }
 }
 
@@ -25,9 +22,6 @@
   }
 }
 
-.ec-tabs {
-}
-
 .ec-tab {
-  animation: ecTabSlide .4s forwards;
+  animation: ecTabSlide 0.4s forwards;
 }
