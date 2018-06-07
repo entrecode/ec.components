@@ -35,18 +35,18 @@
     &.is-dragged {
       opacity: 0.6;
     }
+  }
 
-    .tag {
-      @include set-theme-colors(getColor(link));
+  .tag {
+    @include set-theme-colors(getColor(link));
 
-      a {
-        padding-left: rem(4);
-        margin-right: rem(-4);
-      }
+    a {
+      padding-left: rem(4);
+      margin-right: rem(-4);
+    }
 
-      &:only-child {
-        margin: 0;
-      }
+    &:only-child {
+      margin: 0;
     }
   }
 }
@@ -68,10 +68,10 @@
       width: 100%;
       padding: rem(8) rem(16);
       box-shadow: none;
+    }
 
-      .ec-list-cell {
-        padding: 0;
-      }
+    .ec-list-cell {
+      padding: 0;
     }
   }
 }
@@ -83,19 +83,19 @@
     li {
       display: flex;
       flex: 1;
+    }
 
-      span {
-        display: flex;
-        flex: 1;
-        justify-content: space-between;
+    span {
+      display: flex;
+      flex: 1;
+      justify-content: space-between;
 
-        a {
-          color: getColor(text, lighter);
-          padding-left: rem(4);
+      a {
+        color: getColor(text, lighter);
+        padding-left: rem(4);
 
-          &:hover {
-            color: getColor(text, light);
-          }
+        &:hover {
+          color: getColor(text, light);
         }
       }
     }
