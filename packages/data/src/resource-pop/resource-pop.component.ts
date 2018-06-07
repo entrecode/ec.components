@@ -22,7 +22,6 @@ import { Form } from '@ec.components/core';
 @Component({
     selector: 'ec-resource-pop',
     templateUrl: './resource-pop.component.html',
-    styleUrls: ['./resource-pop.component.scss']
 })
 
 export class ResourcePopComponent extends PopComponent {

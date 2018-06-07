@@ -5,7 +5,6 @@ import { MonthComponent } from './month.component';
 @Component({
     selector: 'ec-daterange',
     templateUrl: './daterange.component.html',
-    styleUrls: ['./daterange.component.scss']
 })
 
 export class DaterangeComponent extends MonthComponent implements OnInit {

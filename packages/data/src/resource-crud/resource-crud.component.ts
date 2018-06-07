@@ -26,7 +26,6 @@ import { ResourceFormComponent } from '../resource-form/resource-form.component'
 @Component({
     selector: 'ec-resource-crud',
     templateUrl: './resource-crud.component.html',
-    styleUrls: ['./resource-crud.component.scss']
 })
 export class ResourceCrudComponent<T> implements OnInit, WithLoader {
     /** The API Connector that possesses the resource list, see https://entrecode.github.io/ec.sdk/#api-connectors */

@@ -11,7 +11,6 @@ import { CalendarComponent } from './calendar.component';
 @Component({
   selector: 'ec-datetime',
   templateUrl: 'datetime.component.html',
-  styleUrls: ['datetime.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

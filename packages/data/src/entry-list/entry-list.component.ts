@@ -18,7 +18,6 @@ import { EntryList } from './entry-list';
 @Component({
   selector: 'ec-entry-list',
   templateUrl: '../../../ui/src/list/list.component.html', // TODO avoid relative paths
-  styleUrls: ['./entry-list.component.scss']
 })
 export class EntryListComponent extends ResourceListComponent {
   /** The model whose entries should be shown.*/

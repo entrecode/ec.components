@@ -29,7 +29,6 @@ import { Notification } from '@ec.components/ui/src/notifications/notification';
 @Component({
   selector: 'ec-crud',
   templateUrl: './crud.component.html',
-  styleUrls: ['./crud.component.scss']
 })
 export class CrudComponent<T> implements OnInit, WithLoader, WithNotifications {
   /** The model that should be crud'ed. */
