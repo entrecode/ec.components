@@ -1,0 +1,21 @@
+.ec-list-item {
+  display: flex;
+  min-width: 100%;
+  transition: all 0.4s;
+
+  &.is-hidden {
+    display: none;
+  }
+
+  &.is-selected,
+  &:hover {
+    background-color: getColor(state, hover);
+  }
+
+  .ec-list-item__selector {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: initial;
+    padding: rem(8);
+  }
+}

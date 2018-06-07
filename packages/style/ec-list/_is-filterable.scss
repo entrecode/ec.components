@@ -1,6 +1,14 @@
 //scss-lint:disable NestingDepth
 
-.ec-list-field-filter-pop {
+.is-filterable-control {
+  text-align: center;
+  min-width: rem(16);
+  min-height: rem(16);
+  margin-right: rem(8);
+}
+
+
+.is-filterable-pop {
   .ec-pop-container {
     .ec-pop {
       position: absolute;
@@ -21,7 +29,7 @@
     }
   }
 
-  .ec-list-field-filter {
+  .is-filterable-filter {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -29,7 +37,7 @@
     width: 100%;
   }
 
-  .ec-list-field-filter__dismiss {
+  .is-filterable-filter__reset {
     @extend %btn !optional;
     align-self: center;
   }
@@ -43,11 +51,4 @@
       margin: 0;
     }
   }
-}
-
-.ec-list-field-filterable-control {
-  text-align: center;
-  min-width: rem(16);
-  min-height: rem(16);
-  margin-right: rem(8);
 }

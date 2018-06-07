@@ -1,14 +1,14 @@
 <ul class="ec-list-items">
   <li *ngFor="let item of items;trackBy:list?.trackItem" (click)="columnClick(item,$event)">
     <div class="ec-list-item" [class.is-selected]="selection?.has(item)">
-      <div class="ec-list-cell ec-list__select" *ngIf="list?.config?.selectMode">
+      <div class="ec-list-cell ec-list-item__selector" *ngIf="list?.config?.selectMode">
         <input type="checkbox" [checked]="selection?.has(item)">
       </div>
       <div *ngFor="let field of list?.fields;let i = index" class="ec-list-cell" 
-        [ngClass]="'ec-list-field_' + field.view" [ngSwitch]="field.view"
-        [class.hidden]="field.hidden" 
-        [class.ec-list-field_sortable]="field.sortable" 
-        [class.ec-list-field_sortable_active]="list.config?.sortBy===field.property">
+        [ngClass]="'ec-list-cell_' + field.view" [ngSwitch]="field.view"
+        [class.is-hidden]="field.hidden" 
+        [class.is-sortable]="field.sortable" 
+        [class.is-sorted]="list.config?.sortBy===field.property">
         <ec-output [field]="field" [item]="item"></ec-output>
       </div>
     </div>
