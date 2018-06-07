@@ -1,16 +1,17 @@
-$ecOutputAssetPadding: ($tag-small-min-height - $tag-small-line-height) / 2;
+$ecOutputAssetsPadding: ($tag-small-min-height - $tag-small-line-height) / 2;
 
-.ec-output_asset {
+.ec-output-assets {
   background-color: getColor(background, lighter);
   border-radius: rem($tag-small-radius);
-  padding: em($ecOutputAssetPadding, $tag-small-font-size) rem(8);
+  padding: em($ecOutputAssetsPadding, $tag-small-font-size) rem(8);
   font-size: em($tag-small-font-size);
   line-height: em($tag-small-line-height, $tag-small-font-size);
   display: inline-flex;
   align-items: center;
-  opacity: .2;
+  flex-grow: 0;
 
   .ec-icon {
+    margin-right: rem(4);
     font-size: rem(14);
     line-height: 1em;
 
@@ -20,8 +21,9 @@ $ecOutputAssetPadding: ($tag-small-min-height - $tag-small-line-height) / 2;
     }
   }
 
-  &.is-true {
-    opacity: 1;
+  strong {
+    display: inline-block;
+    background-color: getColor(background);
+    padding: 0 rem(4);
   }
 }
-

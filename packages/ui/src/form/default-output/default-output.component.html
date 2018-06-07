@@ -1,43 +1,41 @@
 <div [ngSwitch]="field.view" *ngIf="item">
-  <ul class="ec-output_tags-list" *ngSwitchCase="'tags'">
+  <ul class="ec-output-tags" *ngSwitchCase="'tags'">
     <li *ngFor="let label of item?.display(field.property) | maxItems:field.maxItems||10">
-      <div class="tag">
-        {{label}}
-      </div>
+      <span class="tag">{{label}}</span>
     </li>
     <li class="tag" *ngIf="item?.display(field.property)?.length>(field.maxItems||10)">
       ...
     </li>
   </ul>
 
-  <div class="ec-output_tag" *ngSwitchCase="'tag'">
+  <div class="ec-output-tag" *ngSwitchCase="'tag'">
     <span class="tag" *ngIf="item?.display(field.property)">{{item?.display(field.property)}}</span>
   </div>
 
-  <div *ngSwitchCase="'boolean'" class="ec-output_boolean" [class.is-true]="item?.resolve(field.property)">
+  <div *ngSwitchCase="'boolean'" class="ec-output-boolean" [class.is-true]="item?.resolve(field.property)">
     <span>&#10004;</span>
   </div>
-  <div *ngSwitchCase="'date'" class="ec-output_date" [title]="item?.display(field.property)">
+  <div *ngSwitchCase="'date'" class="ec-output-date" [title]="item?.display(field.property)">
     {{item?.display(field.property)}}
   </div>
 
-  <div class="ec-output_mail" *ngSwitchCase="'email'">
+  <div class="ec-output-mail" *ngSwitchCase="'email'">
     <a [href]="'mailto:'+item?.display(field.property)">{{item?.display(field.property)}}</a>
   </div>
-  <div class="ec-output_url" *ngSwitchCase="'url'">
+  <div class="ec-output-url" *ngSwitchCase="'url'">
     <a [href]="item?.display(field.property)">{{item?.display(field.property)}}</a>
   </div>
 
-  <div class="ec-output_color" *ngSwitchCase="'color'">
-    <span class="ec-output_color-sample" [style.backgroundColor]="item?.display(field.property)"></span>
-    <span class="ec-output_color-property">{{item?.display(field.property)}}</span>
+  <div class="ec-output-color" *ngSwitchCase="'color'">
+    <span class="ec-output-color__sample" [style.backgroundColor]="item?.display(field.property)"></span>
+    <span class="ec-output-color__property">{{item?.display(field.property)}}</span>
   </div>
 
-  <div class="ec-output_asset" *ngSwitchCase="'asset'" [class.is-true]="item?.resolve(field.property)">
+  <div class="ec-output-asset" *ngSwitchCase="'asset'" [class.is-true]="item?.resolve(field.property)">
     <ec-icon name="img"></ec-icon>
   </div>
 
-  <div class="ec-output_assets" *ngSwitchCase="'assets'" [class.is-true]="item?.resolve(field.property)">
+  <div class="ec-output-assets" *ngSwitchCase="'assets'" [class.is-true]="item?.resolve(field.property)">
     <!--<ul class="ec-output_assets-list">
       <li *ngFor="let url of item?.display(field.property)">
         <img [src]="url">
@@ -47,11 +45,11 @@
     <strong>{{item?.display(field.property)?.length}}</strong>
   </div>
 
-  <div class="ec-output_avatar" *ngSwitchCase="'avatar'">
+  <div class="ec-output-avatar" *ngSwitchCase="'avatar'">
     <img [src]="item?.display(field.property)">
   </div>
 
-  <div class="ec-output_preview" *ngSwitchCase="'preview'">
+  <div class="ec-output-preview" *ngSwitchCase="'preview'">
     <img [src]="item?.display(field.property)">
   </div>
 
@@ -59,18 +57,21 @@
     {{item?.display(field.property)}}
     <ec-icon *ngIf="field.icon" [name]="field.icon"></ec-icon>
   </a>
-  <div *ngSwitchCase="'textarea'" class="ec-output_textarea">
+
+  <div *ngSwitchCase="'textarea'" class="ec-output-textarea">
     <!--{{item?.display(field.property)}}-->
     <span class="tag tag_small">text</span>
   </div>
-  <code *ngSwitchCase="'json'" class="ec-output_json">
+  <code *ngSwitchCase="'json'" class="ec-output-json">
     <!--<pre>{{item?.display(field.property)}}</pre>-->
     <span class="tag">JSON</span>
   </code>
-  <div *ngSwitchCase="'string'" class="ec-output_string" [title]="item?.display(field.property)">
-    {{item?.display(field.property)}}  <!-- {{field.view}} -->
+  <div *ngSwitchCase="'string'" class="ec-output-string" [title]="item?.display(field.property)">
+    {{item?.display(field.property)}}
+    <!-- {{field.view}} -->
   </div>
   <span *ngSwitchDefault [title]="item?.display(field.property)">
-    {{item?.display(field.property)}} <!-- {{field.view}} -->
+    {{item?.display(field.property)}}
+    <!-- {{field.view}} -->
   </span>
 </div>
