@@ -1,11 +1,13 @@
 %ec-toast {
   background-color: getColor(background);
+  position: fixed;
+  z-index: 9999;
 }
 
 .ec-pop_toast-top {
   > .ec-pop-container {
     > .ec-pop {
-      @extend %ec-drawer;
+      @extend %ec-toast;
       @extend %slide-in-down;
       width: 100vw;
       top: 0;
@@ -18,7 +20,7 @@
 .ec-pop_toast-bottom {
   > .ec-pop-container {
     > .ec-pop {
-      @extend %ec-drawer;
+      @extend %ec-toast;
       @extend %slide-in-up;
       width: 100vw;
       bottom: 0;

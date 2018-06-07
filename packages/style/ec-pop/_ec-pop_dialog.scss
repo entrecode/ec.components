@@ -1,5 +1,19 @@
 .ec-pop_dialog {
   > .ec-pop-container {
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    &.is-visible {
+      display: flex;
+    }
+
     > .ec-pop {
       @extend %dialog-appear !optional;
       padding: arrayMagic($overlay-padding);
@@ -8,6 +22,7 @@
       background-color: $overlay-background;
       color: setContrast($overlay-background);
       position: relative;
+      max-width: 100%;
     }
   }
 }
