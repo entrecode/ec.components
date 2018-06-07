@@ -9,7 +9,6 @@ import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 @Component({
   selector: 'ec-calendar',
   templateUrl: 'calendar.component.html',
-  styleUrls: ['calendar.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
