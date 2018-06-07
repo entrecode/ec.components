@@ -21,7 +21,6 @@ import { FormService } from './form.service';
 @Component({
   selector: 'ec-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss']
 })
 export class FormComponent<T> implements OnChanges, WithLoader, WithNotifications {
   /** The instance of Form that is used. */
