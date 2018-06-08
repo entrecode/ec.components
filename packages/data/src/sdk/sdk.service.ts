@@ -6,6 +6,7 @@ import PublicAPI from 'ec.sdk/lib/PublicAPI';
 import Session from 'ec.sdk/lib/Session';
 import AccountResource from 'ec.sdk/lib/resources/accounts/AccountResource';
 import DataManagerResource from 'ec.sdk/lib/resources/datamanager/DataManagerResource';
+import { Subject } from 'rxjs/Subject';
 
 /** The SdkService exposes all instances of the ec.sdk APIs.
  * To be able to use it, you have to provide an environment like this in your module's providers:
@@ -45,6 +46,8 @@ export class SdkService {
   public accounts: Accounts;
   /** Current Public API instance */
   public _api: PublicAPI;
+  /** Emits when the env changes */
+  public changesEnvironment: Subject<any> = new Subject();
   /** getter for api. Throws error if no api present. */
   get api(): PublicAPI {
     if (this.noApi()) {
@@ -78,6 +81,9 @@ export class SdkService {
 
   /** Creates all the API instances and determines the current user. */
   public init(environment = this.environment): Promise<AccountResource> {
+    if (environment !== this.environment) {
+      this.changesEnvironment.next(environment);
+    }
     this.environment = environment;
     this.session = new Session(<env>environment.environment);
     if (environment.clientID) {
