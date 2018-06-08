@@ -1,0 +1,33 @@
+.ec-calendar-controls {
+  margin: 0 rem(-8);
+  margin-bottom: rem(8);
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  li {
+    padding: 0 rem(8);
+
+    &.is-disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  .ec-calendar-controls__title {
+    margin: 0;
+    text-align: center;
+  }
+
+  .ec-calendar-controls__prev,
+  .ec-calendar-controls__current,
+  .ec-calendar-controls__next {
+    @extend %btn !optional;
+  }
+}

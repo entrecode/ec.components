@@ -32,7 +32,6 @@ import { SdkService } from '@ec.components/data';
 @Component({
     selector: 'ec-resource-select',
     templateUrl: './resource-select.component.html',
-    styleUrls: ['../../../ui/src/select/select.component.scss'],
     encapsulation: ViewEncapsulation.None,
     providers: [
         {

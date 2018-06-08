@@ -1,0 +1,43 @@
+.ec-pop {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  .ec-pop-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin: arrayMagic($ec-pop-header-spacing);
+    flex-grow: 0;
+  }
+
+  .ec-pop-body {
+    flex-grow: 1;
+    @include is-scrollable(y, contain);
+  }
+
+  .ec-pop-footer {
+    flex-grow: 0;
+  }
+}
+
+.ec-pop__dismiss {
+  @extend %btn !optional;
+  padding-left: 0;
+  padding-right: 0;
+  position: absolute;
+  right: rem(2);
+  top: rem(2);
+  z-index: 1;
+  color: getColor(text, lighter);
+  animation: all 0.2s;
+
+  &:only-child {
+    margin-left: auto;
+  }
+
+  &:hover {
+    color: getColor(text, light);
+  }
+}

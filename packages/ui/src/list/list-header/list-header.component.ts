@@ -9,7 +9,6 @@ import { Field } from '@ec.components/core';
 @Component({
   selector: 'ec-list-header',
   templateUrl: './list-header.component.html',
-  styleUrls: ['./list-header.component.scss']
 })
 export class ListHeaderComponent {
   /** The list instance */

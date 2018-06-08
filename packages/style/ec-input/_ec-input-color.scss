@@ -1,0 +1,38 @@
+//scss-lint:disable NestingDepth
+
+.ec-input-color {
+  label {
+    width: rem($input-small-min-height);
+    height: rem($input-small-min-height);
+    padding: 0;
+    margin: 0;
+    border: $input-border-color solid rem($input-border);
+    border-radius: rem($input-radius);
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(#000, 0.04);
+      mix-blend-mode: multiply;
+      opacity: 0;
+      transition: all 0.2s;
+    }
+
+    [type='color'] {
+      @extend %is-hidden-input !optional;
+    }
+
+    &:hover {
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+}

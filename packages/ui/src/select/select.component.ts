@@ -12,7 +12,6 @@ import { PopComponent } from '../pop/pop.component';
 @Component({
   selector: 'ec-select',
   templateUrl: './select.component.html',
-  styleUrls: ['./select.component.scss'],
   encapsulation: ViewEncapsulation.None,
   providers: [
     {

@@ -1,15 +1,20 @@
+// TODO remove this
+
 :host {
   position: relative;
   z-index: 9999;
+
   > div {
     &.root {
       background-color: cornflowerblue;
       color: white;
       position: relative;
     }
+
     &:not(.root) {
       background-color: #e6db74;
     }
+
     > .ec-menu {
       position: relative;
       top: 0;
@@ -19,10 +24,11 @@
     ul {
       width: 100vw;
       top: 0;
-      padding: 5px 5px 0 5px;
+      padding: 5px 5px 0;
       overflow: scroll;
       margin: 0;
       white-space: nowrap;
+
       li {
         display: inline-block;
         margin: 0;
@@ -30,7 +36,10 @@
         text-align: center;
         text-transform: uppercase;
         //border-radius: 10px 10px 0 0;
-        > a, > span, > strong {
+
+        > a,
+        > span,
+        > strong {
           margin: 0;
           white-space: nowrap;
           display: block;
@@ -38,13 +47,9 @@
           padding: 10px;
           min-width: 100px;
         }
+
         &.active {
           background-color: lightgoldenrodyellow;
-        }
-        > a, > span {
-          &:hover {
-            //background-color: lightgoldenrodyellow;
-          }
         }
       }
     }

@@ -1,0 +1,54 @@
+//scss-lint:disable NestingDepth
+
+.is-filterable-control {
+  text-align: center;
+  min-width: rem(16);
+  min-height: rem(16);
+  margin-right: rem(8);
+}
+
+
+.is-filterable-pop {
+  .ec-pop-container {
+    .ec-pop {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: rem(4) rem(8);
+      background-color: getColor(background);
+      align-items: center;
+      z-index: 10;
+    }
+
+    &.is-visible {
+      .ec-pop {
+        display: flex;
+      }
+    }
+  }
+
+  .is-filterable-filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+
+  .is-filterable-filter__reset {
+    @extend %btn !optional;
+    align-self: center;
+  }
+
+  ec-input {
+    display: inline-block;
+    flex-grow: 1;
+    align-self: center;
+
+    .input {
+      margin: 0;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+.ec-list-cell {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  flex: 1;
+  padding: rem(8);
+
+  &.is-hidden {
+    display: none;
+  }
+
+  &.is-filtered {
+    background-color: getColor(state, hover);
+  }
+
+  &.is-sorted {
+    font-weight: bold;
+  }
+
+  &.is-filterable {
+    cursor: pointer;
+  }
+
+  &_number {
+    text-align: right;
+    justify-content: flex-end;
+  }
+
+  &_string,
+  &_email,
+  &_url {
+    overflow: hidden;
+    white-space: nowrap;
+  }
+}

@@ -20,7 +20,6 @@ import { UploadComponent } from '../upload/upload.component';
 @Component({
   selector: 'ec-asset-select',
   templateUrl: './asset-select.component.html',
-  styleUrls: ['../../../../ui/src/select/select.component.scss', './asset-select.component.scss'],
   encapsulation: ViewEncapsulation.None,
   providers: [
     {

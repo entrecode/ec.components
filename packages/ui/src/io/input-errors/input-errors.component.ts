@@ -6,7 +6,6 @@ import { SymbolService } from '../../symbol/symbol.service';
 @Component({
   selector: 'ec-input-errors',
   templateUrl: './input-errors.component.html',
-  styleUrls: ['./input-errors.component.scss']
 })
 export class InputErrorsComponent {
   /** The form control that should be tracked */

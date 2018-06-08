@@ -11,7 +11,6 @@ import { WithLoader } from '../../loader/with-loader.interface';
 @Component({
   selector: 'ec-login-form',
   templateUrl: './login-form.component.html',
-  styleUrls: ['./login-form.component.scss']
 })
 export class LoginFormComponent implements OnInit, WithLoader {
   /** The login's form group.*/

@@ -1,0 +1,19 @@
+.ec-dropzone {
+  .ec-dropzone-info {
+    display: none;
+  }
+
+  &.is-active {
+    .ec-dropzone-info {
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      width: 100%;
+      height: 100%;
+      background-color: getColor(state, hover);
+      opacity: 0.5;
+    }
+  }
+}

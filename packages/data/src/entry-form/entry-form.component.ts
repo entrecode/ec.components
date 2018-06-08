@@ -20,7 +20,6 @@ import { TypeConfigService } from '../model-config/type-config.service';
 @Component({
   selector: 'ec-entry-form',
   templateUrl: '../../../ui/src/form/form.component.html',
-  styleUrls: ['./entry-form.component.scss']
 })
 export class EntryFormComponent extends FormComponent<EntryResource> implements WithNotifications {
   /** The model of the form. It is used to extract the schema and generate the config from.

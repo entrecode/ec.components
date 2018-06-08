@@ -8,7 +8,6 @@ import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 @Component({
   selector: 'ec-list-items',
   templateUrl: './list-items.component.html',
-  styleUrls: ['./list-items.component.scss']
 })
 export class ListItemsComponent<T> implements OnChanges {
   /** The list instance */

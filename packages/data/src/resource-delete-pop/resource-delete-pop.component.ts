@@ -14,7 +14,6 @@ import { ResourceService } from '../resource-config/resource.service';
 @Component({
     selector: 'ec-resource-delete-pop',
     templateUrl: './resource-delete-pop.component.html',
-    styleUrls: ['./resource-delete-pop.component.scss']
 })
 export class ResourceDeletePopComponent {
     /** The pop inside the view. */

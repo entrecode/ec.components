@@ -11,7 +11,6 @@ import { PopService } from './pop.service';
 @Component({
   selector: 'ec-pop',
   templateUrl: './pop.component.html',
-  styleUrls: ['./pop.component.scss']
 })
 export class PopComponent {
   /** If true, .ec-pop is part of the DOM (*ngIf) + .active is set on .ec-pop-container.  */

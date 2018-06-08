@@ -6,7 +6,6 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 @Component({
   selector: 'ec-toggle',
   templateUrl: './toggle.component.html',
-  styleUrls: ['./toggle.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

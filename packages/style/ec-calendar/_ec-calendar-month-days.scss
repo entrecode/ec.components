@@ -1,0 +1,43 @@
+.ec-calendar-month-days {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+
+  li {
+    cursor: pointer;
+    width: 100 / 7 * 1%;
+    text-align: center;
+    transition: all 0.2s linear;
+
+    .ec-calendar-month-day {
+      pointer-events: none;
+    }
+  }
+
+  .is-disabled {
+    opacity: 0.2;
+  }
+
+  .is-active {
+    background-color: getColor(link);
+  }
+
+  .is-draggable {
+    &.is-last,
+    &.is-first {
+      cursor: move;
+    }
+
+    &.is-first {
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+    }
+
+    &.is-last {
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+  }
+}

@@ -13,7 +13,6 @@ import { NotificationsService } from './notifications.service';
 @Component({
   selector: 'ec-notifications',
   templateUrl: './notifications.component.html',
-  styleUrls: ['./notifications.component.scss']
 })
 export class NotificationsComponent {
   /** The current stack of notifications that are visible. */

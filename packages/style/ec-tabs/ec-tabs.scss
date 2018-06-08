@@ -1,0 +1,27 @@
+.ec-tabs-nav {
+  @extend %tabs-nav !optional;
+
+  .ec-tabs-nav__item {
+    &.is-selected {
+      @extend %tabs-nav-selected !optional;
+    }
+  }
+
+  a {
+    @extend %tabs-nav-item !optional;
+  }
+}
+
+@keyframes ecTabSlide {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.ec-tab {
+  animation: ecTabSlide 0.4s forwards;
+}

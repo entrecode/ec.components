@@ -8,7 +8,6 @@ import { Item } from '@ec.components/core/src/item/item';
 @Component({
   selector: 'ec-output',
   templateUrl: '../dynamic-slot/dynamic-slot.component.html',
-  styleUrls: ['./output.component.scss']
 })
 export class OutputComponent extends DynamicSlotComponent implements OnChanges {
   /** The instance of field that should be used in the template */

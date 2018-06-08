@@ -1,0 +1,22 @@
+.ec-datetime-picker {
+  position: relative;
+
+  .datetime-select {
+    .ec-pop {
+      padding: arrayMagic($overlay-padding);
+      box-shadow: arrayMagic($overlay-shadow);
+      border-radius: rem($overlay-radius);
+      background-color: $overlay-background;
+      color: setContrast($overlay-background);
+      position: absolute;
+      top: 100%;
+      z-index: 10;
+      margin-bottom: 1em;
+      width: rem(320);
+    }
+  }
+
+  .ec-calendar {
+    margin: rem(8) 0;
+  }
+}

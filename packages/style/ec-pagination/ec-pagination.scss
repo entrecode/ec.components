@@ -1,0 +1,54 @@
+.ec-pagination {
+  display: flex;
+  user-select: none;
+  margin: rem(8) 0;
+
+  &__item {
+    @extend %btn !optional;
+    background-color: transparent;
+    color: getColor(link);
+
+    &.is-active,
+    &:hover,
+    &:focus {
+      background-color: getColor(state, hover);
+      color: setHover($link);
+    }
+  }
+}
+
+.ec-pagination-controls {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.ec-pagination-control {
+  &.is-disabled {
+    .ec-pagination__item {
+      color: getColor(state, disabled);
+    }
+  }
+}
+
+.ec-pagination-pages {
+  overflow: hidden;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    transition: all 0.2s linear;
+
+    li {
+      width: 40px;
+    }
+  }
+
+  .ec-pagination__item {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
