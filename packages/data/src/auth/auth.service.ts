@@ -168,7 +168,7 @@ export class AuthService {
   }
 
   noClientID() {
-    if (!this.sdk.environment || this.sdk.environment.clientID) {
+    if (!this.sdk.environment || !this.sdk.environment.clientID) {
       return `
 No clientID set in environment! To enable all auth related functionalities,
 you can create a client in your datamanager settings and provide it with your environment:
