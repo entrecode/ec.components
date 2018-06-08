@@ -11,7 +11,7 @@ export class DynamicSlotComponent {
   @ViewChild(SlotHostDirective) fieldHost: SlotHostDirective;
 
   /** The constructor provides the instance of ViewContainerRef which is later used to create embedded views*/
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) {
+  constructor(public componentFactoryResolver: ComponentFactoryResolver) {
   }
 
   /** Loads the given component inside the fieldHost. Sets current item and field by default. */
