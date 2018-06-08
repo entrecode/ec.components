@@ -1,9 +1,7 @@
-import { Inject, Injectable } from '@angular/core';
-import { SdkService } from '../sdk/sdk.service';
-import AccountResource from 'ec.sdk/lib/resources/accounts/AccountResource';
-import PublicAPI from 'ec.sdk/lib/PublicAPI';
-import { ResourceConfig } from '../resource-config/resource-config.service';
+import { Injectable } from '@angular/core';
 import Core from 'ec.sdk/lib/Core';
+import { ResourceConfig } from '../resource-config/resource-config.service';
+import { SdkService } from '../sdk/sdk.service';
 
 /** The SdkService exposes all instances of the ec.sdk APIs.
  * To be able to use it, you have to provide an environment like this in your module's providers:
@@ -26,7 +24,7 @@ import Core from 'ec.sdk/lib/Core';
 export class AuthService {
 
   /** Calls init and sets ready to true when finished. */
-  constructor(private resourceConfig: ResourceConfig, @Inject('environment') private environment, private sdk: SdkService) {
+  constructor(private resourceConfig: ResourceConfig, private sdk: SdkService) {
   }
 
   /** Generic login that works with both public and admin API. */
@@ -170,7 +168,7 @@ export class AuthService {
   }
 
   noClientID() {
-    if (!this.environment.clientID) {
+    if (!this.sdk.environment || this.sdk.environment.clientID) {
       return `
 No clientID set in environment! To enable all auth related functionalities,
 you can create a client in your datamanager settings and provide it with your environment:

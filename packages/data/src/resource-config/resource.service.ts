@@ -37,11 +37,11 @@ export class ResourceService {
 
     /** Injects sdk */
     constructor(private sdk: SdkService, public config: ResourceConfig) {
-        this.sdk.changesEnvironment.subscribe(env =>
+        /* this.sdk.changesEnvironment.subscribe(env =>
             this.changes.next({
                 relation: 'environment',
                 broadcast: true
-            }))
+            })) */
     }
 
     /** Gives true if the given change fits all property values of the filter. */
