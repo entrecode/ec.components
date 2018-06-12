@@ -1,6 +1,9 @@
+// @param {color} $ec-calendar-day-active-background [$link]
+// @param {color} $ec-calendar-day-active-color [setContrast($link)]
+
 //scss-lint:disable NestingDepth
 
-.ec-calendar-month-days {
+.ec-calendar-days {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -12,10 +15,6 @@
     width: 100 / 7 * 1%;
     text-align: center;
     transition: all 0.2s linear;
-
-    .ec-calendar-month-day {
-      pointer-events: none;
-    }
 
     &:nth-child(7n) {
       &::after {
@@ -37,16 +36,16 @@
   .is-active {
     position: relative;
 
-    .ec-calendar-month-day {
-      background-color: getColor(link);
-      color: setContrast(getColor(link));
+    .ec-calendar-day {
+      background-color: $ec-calendar-day-active-background;
+      color: $ec-calendar-day-active-color;
     }
 
     &::after,
     &::before {
       content: '';
       position: absolute;
-      background-color: getColor(link);
+      background-color: $ec-calendar-day-active-background;
       top: 0;
       height: 100%;
       width: 50%;

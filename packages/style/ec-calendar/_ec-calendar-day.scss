@@ -1,0 +1,40 @@
+// @param {color} $ec-calendar-day-color [$text]
+// @param {color} $ec-calendar-day-background [transparent]
+// @param {color} $ec-calendar-day-today-color [$link]
+// @param {color} $ec-calendar-day-today-background [$state-hover]
+// @param {color} $ec-calendar-day-active-color [setContrast($link)]
+// @param {color} $ec-calendar-day-active-background [$link]
+// @param {color} $ec-calendar-day-hover-color [$link]
+// @param {color} $ec-calendar-day-hover-background [$state-hover]
+// @param {color} $ec-calendar-day-other-color [$text-lighter]
+// @param {color} $ec-calendar-day-other-background [transparent]
+
+.ec-calendar-day {
+  @extend %btn !optional;
+  border-radius: rem($btn-min-height / 2);
+  padding-left: 0;
+  padding-right: 0;
+  transition: all 0.4s;
+  background-color: $ec-calendar-day-background;
+  color: $ec-calendar-day-color;
+
+  &:hover {
+    background-color: $ec-calendar-day-hover-background;
+    color: $ec-calendar-day-hover-color;
+  }
+
+  &.is-today {
+    background-color: $ec-calendar-day-today-background;
+    color: $ec-calendar-day-today-color;
+  }
+
+  &.is-other {
+    background-color: $ec-calendar-day-other-background;
+    color: $ec-calendar-day-other-color;
+  }
+
+  &.is-selected {
+    background-color: $ec-calendar-day-active-background;
+    color: $ec-calendar-day-active-color;
+  }
+}

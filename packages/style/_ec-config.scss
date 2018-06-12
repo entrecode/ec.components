@@ -1,4 +1,55 @@
 //
+// ui/form
+// ------------------------------------------------------------------------------------------------------------
+
+//
+// EC-CALENDAR
+// ------------------------------------------------------
+// @param {em} $ec-output-tag-font-size [1]
+// @param {value} $ec-calendar-title-weight [$is-bold]
+// @param {color} $ec-calendar-title-color [getColor(text, light)]
+$ec-calendar-title-size: 1;
+$ec-calendar-title-weight: $is-bold;
+$ec-calendar-title-color: getColor(text, light);
+
+%ec-calendar-controls-style {
+  // put additional styles here...
+};
+
+// @param {em} $ec-calendar-weekdays-size [.875]
+// @param {value} $ec-calendar-weekdays-weight [$is-bold]
+// @param {color} $ec-calendar-month-weekdays-color [getColor(text, light)]
+$ec-calendar-weekdays-size: .875;
+$ec-calendar-weekdays-weight: $is-bold;
+$ec-calendar-weekdays-color: getColor(text, light);
+
+// @param {color} $ec-calendar-day-color [$text]
+// @param {color} $ec-calendar-day-background [transparent]
+$ec-calendar-day-color: $text;
+$ec-calendar-day-background: transparent;
+
+// @param {color} $ec-calendar-day-today-color [$link]
+// @param {color} $ec-calendar-day-today-background [$state-hover]
+$ec-calendar-day-today-color: $link;
+$ec-calendar-day-today-background: $state-hover;
+
+// @param {color} $ec-calendar-day-active-color [setContrast($link)]
+// @param {color} $ec-calendar-day-active-background [$link]
+$ec-calendar-day-active-color: setContrast($link);
+$ec-calendar-day-active-background: $link;
+
+// @param {color} $ec-calendar-day-hover-color [$link]
+// @param {color} $ec-calendar-day-hover-background [$state-hover]
+$ec-calendar-day-hover-color: $link;
+$ec-calendar-day-hover-background: $state-hover;
+
+// @param {color} $ec-calendar-day-other-color [$text-lighter]
+// @param {color} $ec-calendar-day-other-background [transparent]
+$ec-calendar-day-other-color: $text-lighter;
+$ec-calendar-day-other-background: transparent;
+
+
+//
 // EC-OUTPUT
 // ------------------------------------------------------
 
@@ -21,5 +72,8 @@ $ec-pop-header-spacing: 0 !default;
 //
 // EC-DROPZONE
 // ------------------------------------------------------
+// @param {color} $ec-dropzone-background [getColor(link)]
+// @param {color} $ec-dropzone-color [setContrast(getColor(link))]
 $ec-dropzone-background: getColor(link);
 $ec-dropzone-color: setContrast(getColor(link));
+

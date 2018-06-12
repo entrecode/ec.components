@@ -1,4 +1,4 @@
-<ul class="ec-calendar-month-days">
+<ul class="ec-calendar-days">
   <li *ngFor="let day of cells;let i = index" 
     [class.is-active]="day.active"
     [class.is-last]="day.last"
@@ -10,7 +10,7 @@
     (click)="selectDay(day.date)"
     (mouseover)="mouseOver(day, $event)"
     (mouseup)="mouseUp(day, $event)">
-    <div class="ec-calendar-month-day"
+    <div class="ec-calendar-day"
          [style.background-color]="day.color"
          [class.is-other]="day.type!=='current'"
          [class.is-today]="day.today"

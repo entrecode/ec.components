@@ -1,33 +1,39 @@
+// @param {em} $ec-output-tag-font-size [1]
+// @param {value} $ec-calendar-title-weight [$is-bold]
+// @param {color} $ec-calendar-title-color [getColor(text, light)]
+
 .ec-calendar-controls {
-  margin: 0 rem(-8);
-  margin-bottom: rem(8);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 rem(8);
 
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+  @extend %ec-calendar-controls-style !optional;
 
-  li {
-    padding: 0 rem(8);
-
-    &.is-disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-  }
-
-  .ec-calendar-controls__title {
-    margin: 0;
-    text-align: center;
+  .is-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 
   .ec-calendar-controls__prev,
   .ec-calendar-controls__current,
   .ec-calendar-controls__next {
-    @extend %btn !optional;
+    flex-grow: 0;
   }
+
+  .ec-calendar-controls__title,
+  .ec-calendar-controls__prev,
+  .ec-calendar-controls__current,
+  .ec-calendar-controls__next {
+    margin: 0 rem(4);
+  }
+}
+
+.ec-calendar-title {
+  font-weight: $ec-calendar-title-weight;
+  font-size: arrayMagic($ec-calendar-title-size, em);
+  text-align: center;
+  color: $ec-calendar-title-color;
+  flex-grow: 1;
+  padding-left: rem(40);
 }
