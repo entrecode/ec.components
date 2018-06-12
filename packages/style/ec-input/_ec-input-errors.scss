@@ -1,8 +1,11 @@
+// @param {array} $ec-input-errors-spacing [8 0 0]
+// @param {em} $ec-input-errors-size [.875]
+// @param {color} $ec-input-errors-color [$state-error]
+
 .ec-input-errors {
   list-style: none;
-  margin: rem(8) 0 rem(-8);
   padding: 0;
-  font-size: 0.875em;
-  line-height: 1.125em;
-  color: getColor(text, light);
+  margin: arrayMagic($ec-input-errors-spacing);
+  font-size: arrayMagic($ec-input-errors-size, em);
+  color: $ec-input-errors-color;
 }
