@@ -8,7 +8,6 @@ import { TabComponent } from '../tab/tab.component';
 @Component({
   selector: 'ec-tabs',
   templateUrl: './tabs.component.html',
-  styleUrls: ['./tabs.component.scss']
 })
 export class TabsComponent implements AfterContentInit {
   /** The nested Tabs */
