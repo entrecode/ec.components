@@ -1,19 +1,35 @@
 .ec-dropzone {
-  .ec-dropzone-info {
-    display: none;
-  }
-
   &.is-active {
-    .ec-dropzone-info {
-      display: block;
-      position: fixed;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      width: 100%;
-      height: 100%;
-      background-color: getColor(state, hover);
-      opacity: 0.5;
+    .ec-dropzone__info {
+      display: flex;
     }
+  }
+}
+
+.ec-dropzone__info {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  background-color: $ec-dropzone-background;
+  color: $ec-dropzone-color;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  mix-blend-mode: multiply;
+  animation: fadeIn .2s forwards;
+  @include get-font-size(h1);
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: rem($base-spacing);
+    right: rem($base-spacing);
+    bottom: rem($base-spacing);
+    left: rem($base-spacing);
+    border: 2px dashed $ec-dropzone-color;
   }
 }

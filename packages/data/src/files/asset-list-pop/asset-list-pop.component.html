@@ -7,12 +7,9 @@
     </header>
     <div class="ec-pop-body ec-dropzone" (ecDropzone)="uploader?.uploadFiles($event.dataTransfer.files,$event)">
       <ec-assetgroup-select *ngIf="!config.hideGroupSelect" [readOnly]="config.forceGroup||(assetGroupID==='legacyAsset')" [disableLegacy]="assetGroupID!=='legacyAsset'&&!selection?.isEmpty()"
-        [assetGroupID]="assetGroupID" (groupChanged)="setGroup($event)"></ec-assetgroup-select>
-
-      <div class="ec-dropzone-info">
-        Drop to upload!
-      </div>
-      <div class="ec-asset-upload ec-dropzone" *ngIf="assetGroupID">
+        [assetGroupID]="assetGroupID" (groupChanged)="setGroup($event)"></ec-assetgroup-select>™
+      <div class="ec-dropzone__info">Drop to upload</div>
+      <div class="ec-asset-upload" *ngIf="assetGroupID">
         <ec-upload (groupChanged)="setGroup($event)" #uploader [assetGroupID]="assetGroupID" [loader]="popLoader" (success)="uploader.selectUpload($event, selection, config.solo)"></ec-upload>
         <a (click)="uploader.trigger()">Hochladen</a>
       </div>
