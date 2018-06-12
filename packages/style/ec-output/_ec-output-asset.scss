@@ -1,17 +1,15 @@
-$ecOutputAssetPadding: ($tag-small-min-height - $tag-small-line-height) / 2;
-
 .ec-output-asset {
-  background-color: getColor(background, lighter);
-  border-radius: rem($tag-small-radius);
-  padding: em($ecOutputAssetPadding, $tag-small-font-size) rem(8);
-  font-size: em($tag-small-font-size);
-  line-height: em($tag-small-line-height, $tag-small-font-size);
+  border-radius: rem($ec-output-asset-radius);
+  padding: arrayMagic($ec-output-asset-padding);
+  font-size: em($ec-output-asset-font-size);
+  line-height: em($ec-output-asset-line-height, $ec-output-asset-font-size);
+  background-color: $ec-output-asset-background;
   display: inline-flex;
   align-items: center;
   opacity: .2;
 
   .ec-icon {
-    font-size: rem(14);
+    font-size: 1em;
     line-height: 1em;
 
     &::before {
