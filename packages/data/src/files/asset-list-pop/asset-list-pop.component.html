@@ -1,23 +1,27 @@
 <div class="ec-pop-container" [class.is-active]="active" [class.is-visible]="visible">
-  <div class="ec-pop" *ngIf="active">
-    <header class="ec-pop-header">
-      <button (click)="hide()" class="ec-pop__dismiss" type="button">
-        <ec-icon name="close-x-big"></ec-icon>
-      </button>
-    </header>
-    <div class="ec-pop-body ec-dropzone" (ecDropzone)="uploader?.uploadFiles($event.dataTransfer.files,$event)">
-      <ec-assetgroup-select *ngIf="!config.hideGroupSelect" [readOnly]="config.forceGroup||(assetGroupID==='legacyAsset')" [disableLegacy]="assetGroupID!=='legacyAsset'&&!selection?.isEmpty()"
-        [assetGroupID]="assetGroupID" (groupChanged)="setGroup($event)"></ec-assetgroup-select>™
-      <div class="ec-dropzone__info">Drop to upload</div>
+  <div class="ec-pop ec-asset-list-pop ec-dropzone" *ngIf="active" (ecDropzone)="uploader?.uploadFiles($event.dataTransfer.files,$event)">
+    <button (click)="hide()" class="ec-pop__dismiss" type="button">
+      <ec-icon name="close-x-big"></ec-icon>
+    </button>
+    <div class="ec-dropzone__info">Drop to upload</div>
+    <div class="ec-asset-list-pop-header">
       <div class="ec-asset-upload" *ngIf="assetGroupID">
         <ec-upload (groupChanged)="setGroup($event)" #uploader [assetGroupID]="assetGroupID" [loader]="popLoader" (success)="uploader.selectUpload($event, selection, config.solo)"></ec-upload>
-        <a (click)="uploader.trigger()">Hochladen</a>
+        <a (click)="uploader.trigger()">upload file</a>
       </div>
-      <div *ngIf="active&&assetGroupID&&sdk.apiResolved">
-        <ec-searchbar [list]="resourceList"></ec-searchbar>
-        <ec-resource-list #resourceList [relation]="getGroupRelation()" [api]="sdk.api" [selection]="selection" (columnClicked)="select($event)"
-          [config]="config" [loader]="popLoader"></ec-resource-list>
+      <div data-grid *ngIf="active&&assetGroupID&&sdk.apiResolved">
+        <div data-col='6-sm'>
+          <ec-searchbar [list]="resourceList"></ec-searchbar>
+        </div>
+        <div data-col='6-sm'>
+          <ec-assetgroup-select *ngIf="!config.hideGroupSelect" [readOnly]="config.forceGroup||(assetGroupID==='legacyAsset')" [disableLegacy]="assetGroupID!=='legacyAsset'&&!selection?.isEmpty()"
+            [assetGroupID]="assetGroupID" (groupChanged)="setGroup($event)"></ec-assetgroup-select>
+        </div>
       </div>
+    </div>
+    <div class="ec-asset-list-pop-body">
+      <ec-resource-list #resourceList [relation]="getGroupRelation()" [api]="sdk.api" [selection]="selection" (columnClicked)="select($event)"
+        [config]="config" [loader]="popLoader" class="ec-resource-list"></ec-resource-list>
     </div>
     <ec-loader #popLoader class="ec-loader ec-loader_global"></ec-loader>
   </div>

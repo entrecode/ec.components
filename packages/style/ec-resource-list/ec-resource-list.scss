@@ -1,24 +1,66 @@
 //scss-lint:disable SelectorDepth NestingDepth
 
 .ec-resource-list {
-  .ec-list-body {
-    .ec-list-items {
-      flex-wrap: wrap;
-      flex-direction: row;
-      margin: 0 rem(-$grid-gutter / 4);
+  display: grid;
+  grid-template-areas: 'list' 'pagination';
+  grid-template-rows: 1fr auto;
+  height: 100%;
 
-      > li {
-        padding: 0 rem($grid-gutter / 4) rem($grid-gutter / 2);
-        width: 100 / 12 * 4%;
+  .ec-list {
+    grid-area: list;
+    @include is-scrollable(y, contain);
+  }
 
-        @media (min-width: getBreakpoint(md)) {
-          width: 100 / 12 * 3%;
-        }
+  .ec-list-header {
+    display: none;
+  }
 
-        @media (min-width: getBreakpoint(xl)) {
-          width: 100 / 12 * 2%;
-        }
+  ec-pagination {
+    grid-area: pagination;
+  }
+
+  .ec-list-items {
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 0 rem(-$grid-gutter / 4);
+
+    > li {
+      padding: 0 rem($grid-gutter / 4) rem($grid-gutter / 4);
+      width: 100 / 3 * 1%;
+
+      @media (min-width: getBreakpoint(md)) {
+        width: 100 / 4 * 1%;
       }
+
+      @media (min-width: getBreakpoint(xl)) {
+        width: 100 / 5 * 1%;
+      }
+    }
+  }
+
+  .ec-list-item {
+    position: relative;
+    padding-top: 100%;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    .ec-list-cell {
+      background: rgba(getColor(background, invert), .8);
+      color: getColor(text, invert);
+      padding: 0 rem(8);
+      font-size: .875em;
+    }
+
+    .ec-output-preview {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: -1;
     }
   }
 }
