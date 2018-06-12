@@ -14,6 +14,18 @@
     .ec-calendar-month-day {
       pointer-events: none;
     }
+
+    &:nth-child(7n) {
+      &::after {
+        display: none;
+      }
+    }
+
+    &:nth-child(7n + 1) {
+      &::before {
+        display: none;
+      }
+    }
   }
 
   .is-disabled {
@@ -21,7 +33,31 @@
   }
 
   .is-active {
-    background-color: getColor(link);
+    position: relative;
+
+    .ec-calendar-month-day {
+      background-color: getColor(link);
+      color: setContrast(getColor(link));
+    }
+
+    &::after,
+    &::before {
+      content: '';
+      position: absolute;
+      background-color: getColor(link);
+      top: 0;
+      height: 100%;
+      width: 50%;
+      z-index: -1;
+    }
+
+    &::before {
+      left: 0;
+    }
+
+    &::after {
+      right: 0;
+    }
   }
 
   .is-draggable {
@@ -31,13 +67,15 @@
     }
 
     &.is-first {
-      border-top-left-radius: 10px;
-      border-bottom-left-radius: 10px;
+      &::before {
+        display: none;
+      }
     }
 
     &.is-last {
-      border-top-right-radius: 10px;
-      border-bottom-right-radius: 10px;
+      &::after {
+        display: none;
+      }
     }
   }
 }
