@@ -139,3 +139,4 @@ export class ResourcePopComponent extends PopComponent {
         }
     }
 }
+

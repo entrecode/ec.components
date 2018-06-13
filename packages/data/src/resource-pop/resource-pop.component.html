@@ -1,10 +1,10 @@
 <div class="ec-pop-container" [class.is-active]="active" [class.is-visible]="visible">
     <div class="ec-pop ec-resource-pop" *ngIf="active">
-        <header class="ec-pop-header">
+        <div class="ec-pop-header">
             <button (click)="hide()" type="button" class="ec-pop__dismiss">
                 <ec-icon name="close-x-big"></ec-icon>
             </button>
-        </header>
+        </div>
         <div class="ec-pop-body">
             <ec-resource-form (ready)="initMethods($event)" [api]="api" [relation]="relation" [submitButton]="false" [config]="config"
                 [loader]="popLoader" [value]="resource" (deleted)="hide()" (submitted)="formSubmitted($event)" #resourceForm></ec-resource-form>
@@ -13,15 +13,18 @@
             <nav class="nav">
                 <ul class="nav__items">
                     <li class="nav__item" *ngIf="hasMethod('delete')&&resourceForm.isEditing()">
-                        <button (click)="delete.confirm(resource)" class="btn" type="button">
-                            <ec-icon name="trash"></ec-icon>
+                        <button (click)="delete.confirm(resource)" class="btn btn_minor" type="button">
+                            <!-- TODO add config for label -->
+                            <span>delete</span>
                         </button>
                     </li>
                     <li class="nav__item" *ngIf="maySave(resourceForm)">
                         <button (click)="resourceForm.submit()" [disabled]="resourceForm.group?.invalid" type="button" class="btn btn_save" [class.is-disabled]="resourceForm.group?.invalid">
-                            <ec-icon name="save"></ec-icon>
+                            <!-- TODO add config for label -->
+                            <span>save</span>
                         </button>
                     </li>
+                    <!-- TODO check if used -->
                     <li class="nav__item">
                         <ng-content></ng-content>
                     </li>
