@@ -1,0 +1,20 @@
+// @param {array} $ec-pop-header-spacing [0]
+// @param {array} $ec-pop-header-padding [8]
+
+.ec-pop-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 0;
+  flex-shrink: 0;
+  margin: arrayMagic($ec-pop-header-spacing);
+  padding: arrayMagic($ec-pop-header-padding);
+
+  @extend %ec-pop-header-style !optional;
+
+  .ec-pop__dismiss {
+    position: relative;
+    top: auto;
+    right: auto;
+  }
+}

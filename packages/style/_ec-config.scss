@@ -2,6 +2,14 @@
 // ui/form
 // ------------------------------------------------------------------------------------------------------------
 
+%ec-btn-save-style {
+  // add style...
+}
+
+%ec-btn-delete-style {
+  // add style...
+}
+
 //
 // EC-CALENDAR
 // ------------------------------------------------------
@@ -118,8 +126,85 @@ $ec-list-item-spacing: 0 !default;
 //
 // EC-POP
 // ------------------------------------------------------
+// @param {color} $ec-pop-background [$background]
+// @param {color} $ec-pop-color [$text]
+// @param {array} $ec-pop-spacing [$base-spacing]
+// @param {array} $ec-pop-radius [$overlay-radius]
+// @param {array} $ec-pop-shadow [$overlay-shadow]
+$ec-pop-background: $background;
+$ec-pop-color: $text;
+$ec-pop-spacing: $base-spacing;
+$ec-pop-radius: $overlay-radius;
+$ec-pop-shadow: $overlay-shadow;
+
+%ec-pop-style {
+  // add styles..
+}
+
 // @param {array} $ec-pop-header-spacing [0]
+// @param {array} $ec-pop-header-padding [8]
 $ec-pop-header-spacing: 0 !default;
+$ec-pop-header-padding: 8 !default;
+
+%ec-pop-header-style {
+  // add styles..
+}
+
+// @param {array} $ec-pop-body-spacing [0]
+// @param {array} $ec-pop-body-padding [8]
+$ec-pop-body-spacing: 0 !default;
+$ec-pop-body-padding: 8 !default;
+
+%ec-pop-body-style {
+  // add styles..
+}
+
+// @param {array} $ec-pop-footer-spacing [0]
+// @param {array} $ec-pop-footer-padding [8]
+$ec-pop-footer-spacing: 0 !default;
+$ec-pop-footer-padding: 8 !default;
+
+%ec-pop-footer-style {
+  // add styles..
+}
+
+//
+// EC-POP_DIALOG
+// ------------------------------------------------------
+// @param {color} $ec-pop-dialog-background [$ec-pop-background]
+// @param {color} $ec-pop-dialog-color [$ec-pop-color]
+// @param {array} $ec-pop-dialog-spacing [$base-spacing]
+// @param {array} $ec-pop-dialog-radius [$ec-pop-radius]
+// @param {array} $ec-pop-dialog-shadow [$ec-pop-shadow]
+// @param {px} $ec-pop-dialog-min-width [320]
+$ec-pop-dialog-background: $ec-pop-background;
+$ec-pop-dialog-color: $ec-pop-color;
+$ec-pop-dialog-spacing: $ec-pop-spacing;
+$ec-pop-dialog-radius: $ec-pop-radius;
+$ec-pop-dialog-shadow: $ec-pop-shadow;
+$ec-pop-dialog-min-width: 320;
+
+%ec-pop-dialog-style {
+  // add styles..
+}
+
+//
+// EC-POP_FULLSCREEN
+// ------------------------------------------------------
+// @param {color} $ec-pop-fullscreen-background [$ec-pop-background]
+// @param {color} $ec-pop-fullscreen-color [$ec-pop-color]
+// @param {array} $ec-pop-fullscreen-spacing [$base-spacing]
+// @param {array} $ec-pop-fullscreen-radius [$ec-pop-radius]
+// @param {array} $ec-pop-fullscreen-shadow [$ec-pop-shadow]
+$ec-pop-fullscreen-background: $ec-pop-background;
+$ec-pop-fullscreen-color: $ec-pop-color;
+$ec-pop-fullscreen-spacing: $ec-pop-spacing;
+$ec-pop-fullscreen-radius: $ec-pop-radius;
+$ec-pop-fullscreen-shadow: $ec-pop-shadow;
+
+%ec-pop-fullscreen-style {
+  // add styles..
+}
 
 //
 // data/files

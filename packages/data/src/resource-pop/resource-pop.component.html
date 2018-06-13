@@ -13,13 +13,13 @@
             <nav class="nav">
                 <ul class="nav__items">
                     <li class="nav__item" *ngIf="hasMethod('delete')&&resourceForm.isEditing()">
-                        <button (click)="delete.confirm(resource)" class="btn btn_minor" type="button">
+                        <button (click)="delete.confirm(resource)" class="btn ec-btn_delete" type="button">
                             <!-- TODO add config for label -->
                             <span>delete</span>
                         </button>
                     </li>
                     <li class="nav__item" *ngIf="maySave(resourceForm)">
-                        <button (click)="resourceForm.submit()" [disabled]="resourceForm.group?.invalid" type="button" class="btn btn_save" [class.is-disabled]="resourceForm.group?.invalid">
+                        <button (click)="resourceForm.submit()" [disabled]="resourceForm.group?.invalid" type="button" class="btn ec-btn_save" [class.is-disabled]="resourceForm.group?.invalid">
                             <!-- TODO add config for label -->
                             <span>save</span>
                         </button>

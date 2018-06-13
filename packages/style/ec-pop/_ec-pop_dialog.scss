@@ -1,5 +1,14 @@
+// @param {color} $ec-pop-dialog-background [$ec-pop-background]
+// @param {color} $ec-pop-dialog-color [$ec-pop-color]
+// @param {array} $ec-pop-dialog-spacing [$base-spacing]
+// @param {array} $ec-pop-dialog-radius [$ec-pop-radius]
+// @param {array} $ec-pop-dialog-shadow [$ec-pop-shadow]
+// @param {px} $ec-pop-dialog-min-width [320]
+
 .ec-pop_dialog {
   > .ec-pop-container {
+    position: fixed;
+    z-index: 9999;
     top: 0;
     left: 0;
     height: 100%;
@@ -8,7 +17,7 @@
     flex-direction: column;
     align-items: center;
     align-content: center;
-    padding: rem($base-spacing);
+    padding: arrayMagic($ec-pop-dialog-spacing);
 
     &.is-visible {
       display: flex;
@@ -16,12 +25,15 @@
 
     > .ec-pop {
       @extend %dialog-appear !optional;
-      // padding: arrayMagic($overlay-padding);
-      box-shadow: arrayMagic($overlay-shadow);
-      border-radius: rem($overlay-radius);
-      background-color: $overlay-background;
-      color: setContrast($overlay-background);
-      min-width: rem(320);
+      box-shadow: arrayMagic($ec-pop-dialog-shadow);
+      border-radius: arrayMagic($ec-pop-dialog-radius);
+      background-color: $ec-pop-dialog-background;
+      color: $ec-pop-dialog-color;
+      @extend %ec-pop-dialog-style !optional;
+
+      @media (min-width: ($ec-pop-dialog-min-width + 2 * $ec-pop-dialog-spacing * 1px)) {
+        min-width: rem($ec-pop-dialog-min-width);
+      }
     }
   }
 }

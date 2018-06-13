@@ -1,0 +1,8 @@
+.ec-pop-body {
+  flex-grow: 1;
+  margin: arrayMagic($ec-pop-header-spacing);
+  padding: arrayMagic($ec-pop-header-padding);
+  @include is-scrollable(y, contain);
+
+  @extend %ec-pop-body-style !optional;
+}

@@ -21,15 +21,15 @@
           </li>
           <li class="nav__item" *ngIf="hasMethod('delete')&&crudForm.isEditing()">
             <!--TODO placeholder config for 'löschen'-->
-            <button (click)="delete.confirm(entry)" class="btn" type="button">
-              <ec-icon name="trash"></ec-icon>
+            <button (click)="delete.confirm(entry)" class="btn ec-btn_delete" type="button">
+              <span>delete</span>
             </button>
           </li>
           <li class="nav__item" *ngIf="maySave(crudForm)">
             <!--TODO placeholder config for 'speichern'-->
             <button (click)="crudForm.submit()" [disabled]="crudForm.group?.invalid" type="button"
-                    class="btn btn_save" [class.is-disabled]="crudForm.group?.invalid">
-              <ec-icon name="save"></ec-icon>
+                    class="btn ec-btn_save" [class.is-disabled]="crudForm.group?.invalid">
+              <span>save</span>
             </button>
           </li>
         </ul>

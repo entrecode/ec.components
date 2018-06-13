@@ -1,55 +1,17 @@
+// @param {color} $ec-pop-background [$background]
+// @param {color} $ec-pop-color [$text]
+// @param {array} $ec-pop-spacing [$base-spacing]
+// @param {array} $ec-pop-radius [$overlay-radius]
+// @param {array} $ec-pop-shadow [$overlay-shadow]
+
 .ec-pop {
   display: flex;
   flex-direction: column;
   position: relative;
-}
+  border-radius: arrayMagic($ec-pop-fullscreen-radius);
+  background-color: $ec-pop-fullscreen-background;
+  color: $ec-pop-fullscreen-color;
+  box-shadow: arrayMagic($ec-pop-shadow);
 
-.ec-pop-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0;
-  margin: arrayMagic($ec-pop-header-spacing);
-  flex-grow: 0;
-  flex-shrink: 0;
-
-  .ec-pop__dismiss {
-    position: relative;
-    top: auto;
-    right: auto;
-  }
-}
-
-.ec-pop-body {
-  flex-grow: 1;
-  @include is-scrollable(y, contain);
-}
-
-.ec-pop-footer {
-  flex-shrink: 0;
-  flex-grow: 0;
-
-  .nav {
-    .nav__items {
-      justify-content: center;
-    }
-  }
-}
-
-.ec-pop__dismiss {
-  @extend %btn !optional;
-  position: absolute;
-  right: rem(2);
-  top: rem(2);
-  z-index: 1;
-  color: getColor(text, lighter);
-  animation: all 0.2s;
-
-  &:only-child {
-    margin-left: auto;
-  }
-
-  &:hover {
-    color: getColor(text, light);
-  }
+  @extend %ec-pop-style !optional;
 }

@@ -17,7 +17,6 @@ import { Form } from '@ec.components/core';
 @Component({
   selector: 'ec-entry-pop',
   templateUrl: './entry-pop.component.html',
-  styleUrls: ['./entry-pop.component.scss']
 })
 
 export class EntryPopComponent extends PopComponent implements OnInit {
