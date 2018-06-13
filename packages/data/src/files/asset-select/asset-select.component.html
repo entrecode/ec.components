@@ -1,13 +1,13 @@
 <!-- <ec-assetgroup-select [assetGroupID]="assetGroupID" (groupChanged)="setGroup($event)"></ec-assetgroup-select> -->
 <div *ngIf="selection" class="ec-asset-select ec-dropzone" (ecDropzone)="uploader?.uploadFiles($event.dataTransfer.files,$event)"
   [disabled]="readOnly" [class.ec-asset-select_solo]="solo" [class.empty]="!selection?.items?.length">
-  <div class="ec-dropzone-info">Loslassen zum Hochladen</div>
+  <div class="ec-dropzone__info">drop to upload</div>
   <div class="ec-asset-upload" *ngIf="!readOnly">
     <ec-upload #uploader (groupChanged)="setGroup($event)" [loader]="popLoader" [assetGroupID]="assetGroupID" (success)="uploader.selectUpload($event, selection, config.solo)"
       class="hide"></ec-upload>
-    <a (click)="uploader.trigger()">Hochladen</a>
-    <span *ngIf="!config?.disableListPop"> oder
-      <a (click)="pop.toggle()">Mediathek</a>
+    <a (click)="uploader.trigger()">upload</a>
+    <span *ngIf="!config?.disableListPop"> or
+      <a (click)="pop.toggle()">browse</a>
     </span>
   </div>
   <div *ngIf="selection.items.length" class="ec-asset-selected">
