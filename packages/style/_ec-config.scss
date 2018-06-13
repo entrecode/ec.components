@@ -14,12 +14,12 @@ $ec-calendar-title-color: getColor(text, light) !default;
 
 %ec-calendar-controls-style {
   // put additional styles here...
-};
+}
 
 // @param {em} $ec-calendar-weekdays-size [.875]
 // @param {value} $ec-calendar-weekdays-weight [$is-bold]
 // @param {color} $ec-calendar-month-weekdays-color [getColor(text, light)]
-$ec-calendar-weekdays-size: .875 !default;
+$ec-calendar-weekdays-size: 0.875 !default;
 $ec-calendar-weekdays-weight: $is-bold !default;
 $ec-calendar-weekdays-color: getColor(text, light) !default;
 
@@ -75,8 +75,45 @@ $ec-output-tags-font-size: $ec-output-tag-font-size !default;
 // @param {em} $ec-input-errors-size [.875]
 // @param {color} $ec-input-errors-color [$state-error]
 $ec-input-errors-spacing: 8 0 0 !default;
-$ec-input-errors-size: .875 !default;
+$ec-input-errors-size: 0.875 !default;
 $ec-input-errors-color: $state-error !default;
+
+//
+// ui/list
+// ------------------------------------------------------------------------------------------------------------
+// @param {px} $ec-list-header-size [$base-font-size * 0.875]
+// @param {value} $ec-list-header-weight [$is-bold]
+// @param {color} $ec-list-header-color [$text-light]
+// @param {color} $ec-list-header-background [transparent]
+// @param {array} $ec-list-header-padding [0]
+// @param {array} $ec-list-header-spacing [0 0 8]
+$ec-list-header-size: $base-font-size * 0.875 !default;
+$ec-list-header-weight: $is-bold !default;
+$ec-list-header-color: $text-light !default;
+$ec-list-header-background: transparent !default;
+$ec-list-header-padding: 0 !default;
+$ec-list-header-spacing: 0 0 8 !default;
+
+%ec-list-header-style {
+  // add style here....
+}
+
+// @param {px} $ec-list-item-size [$base-font-size]
+// @param {value} $ec-list-item-weight [$bold]
+// @param {color} $ec-list-item-color [$text]
+// @param {color} $ec-list-item-background [transparent]
+// @param {array} $ec-list-item-padding [0]
+// @param {array} $ec-list-item-spacing [0]
+$ec-list-item-size: $base-font-size !default;
+$ec-list-item-weight: $is-bold !default;
+$ec-list-item-color: $text !default;
+$ec-list-item-background: transparent !default;
+$ec-list-item-padding: 0 !default;
+$ec-list-item-spacing: 0 !default;
+
+%ec-list-item-style {
+  // add style here....
+}
 
 //
 // EC-POP
@@ -95,4 +132,3 @@ $ec-pop-header-spacing: 0 !default;
 // @param {color} $ec-dropzone-color [setContrast(getColor(link))]
 $ec-dropzone-background: getColor(link) !default;
 $ec-dropzone-color: setContrast(getColor(link)) !default;
-

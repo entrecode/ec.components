@@ -1,7 +1,17 @@
+// @param {color} $ec-list-item-color [$text]
+// @param {color} $ec-list-item-background [transparent]
+// @param {array} $ec-list-item-padding [0]
+// @param {array} $ec-list-item-spacing [0]
+
 .ec-list-item {
   display: flex;
   min-width: 100%;
   transition: all 0.4s;
+  padding: arrayMagic($ec-list-item-padding);
+  margin: arrayMagic($ec-list-item-spacing);
+  color: $ec-list-item-color;
+  background-color: $ec-list-item-background;
+  font-size: arrayMagic($ec-list-item-size, xem);
 
   &.is-hidden {
     display: none;
@@ -9,8 +19,10 @@
 
   &.is-selected,
   &:hover {
-    background-color: getColor(state, hover);
+    background-color: mix(getColor(state, hover), $ec-list-item-background);
   }
+
+  @extend %ec-list-item-style;
 
   .ec-list-item__selector {
     flex-grow: 0;
