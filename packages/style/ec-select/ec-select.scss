@@ -1,8 +1,27 @@
 //scss-lint:disable SelectorDepth NestingDepth
+$padding: (($ec-select-min-height - $ec-select-line-height) / 2) - $ec-select-border-width;
 
 .ec-select {
-  @extend %select !optional;
-  flex: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  outline: none;
+  border-style: solid;
+  text-align: left;
+  width: 100%;
+  background-color: $ec-select-background;
+  color: $ec-select-color;
+  border-color: $ec-select-border-color;
+  border-width: rem($ec-select-border-width);
+  border-radius: arrayMagic($ec-select-radius);
+  font-size: em($ec-select-font-size);
+  line-height: em($ec-select-line-height, $ec-select-font-size);
+  min-height: em($ec-select-min-height, $ec-select-font-size);
+  padding: em($padding, $ec-select-font-size) em(($padding * $ec-select-padding-ratio), $ec-select-font-size);
+  margin: arrayMagic($ec-select-spacing);
+
+  /// additional styles via config
+  @extend %ec-select-style !optional;
 
   &.is-focus {
     &::after {
@@ -12,6 +31,23 @@
       margin-bottom: rem(4);
     }
   }
+
+  &:focus,
+  &:hover {
+    box-shadow: inset 0 0 0 2px getColor(state, hover);
+
+    .ec-select__placeholder {
+      color: $ec-select-color;
+    }
+  }
+
+  &.is-dirty {
+    padding: em($padding, $ec-select-font-size);
+  }
+}
+
+.ec-select__placeholder {
+  color: $ec-select-placeholder;
 }
 
 .ec-select-selected {
@@ -19,11 +55,11 @@
   display: flex;
   flex-wrap: wrap;
   padding: 0;
-  margin: rem(-2) rem(8) rem(-2) rem(-2);
+  margin: em($padding * -1, $ec-select-font-size) rem(-2);
   width: 100%;
 
   li {
-    padding: rem(2);
+    // padding: rem(2);
   }
 
   .is-draggable {
@@ -48,7 +84,7 @@
 
   .tag {
     @include set-theme-colors(getColor(link));
-    margin: 0;
+    margin: rem(2);
 
     a {
       color: setContrast(getColor(link));
@@ -83,7 +119,7 @@
   }
 }
 
-.ec-select_solo {
+.ec-select.is-solo {
   .ec-select-selected {
     flex-grow: 1;
 
@@ -105,12 +141,6 @@
           color: getColor(text, light);
         }
       }
-    }
-  }
-
-  &.ec-select_dirty {
-    .ec-select__placeholder {
-      display: none;
     }
   }
 }

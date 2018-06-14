@@ -1,39 +1,37 @@
 <nav class="ec-pagination">
-  <div data-flex>
-    <ul class=" ec-pagination-controls " *ngIf="pagination?.getPages()>1&&!pagination?.isFirst()">
-      <li class="ec-pagination-control ec-pagination-control_first" [class.is-disabled]="pagination?.isFirst()" [hidden]="config.hideFirstLast">
-        <a (click)="pagination.first()" class="ec-pagination__item">
-          <span>{{'pagination.first' | symbol}}</span>
-        </a>
-      </li>
-      <li class="ec-pagination-control ec-pagination-control_prev" *ngIf="!pagination?.isFirst()">
-        <a (click)="pagination.prev()" class="ec-pagination__item">
-          <span>{{'pagination.prev' | symbol}}</span>
-        </a>
-      </li>
-    </ul>
-    <div #container class="ec-pagination-pages" [hidden]="config?.hidePages" *ngIf="pagination?.getPages()>1">
-      <ul #pageContainer *ngIf="pagination?.pages">
-        <li *ngFor="let page of pagination.pages;let i = index" #page>
-          <a (click)="pagination.select(i+1)" [class.is-active]="pagination.isActive(i+1)" class="ec-pagination__item">
-            <span>{{i+1}}</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-    <ul class="ec-pagination-controls" *ngIf="pagination?.getPages()>1&&!pagination?.isLast()">
-      <li class="ec-pagination-control ec-pagination-control_next" [class.is-disabled]="pagination?.isLast()">
-        <a (click)="pagination.next()" class="ec-pagination__item">
-          <span>{{'pagination.next' | symbol}}</span>
-        </a>
-      </li>
-      <li class="ec-pagination-control ec-pagination-control_last" *ngIf="!pagination?.isLast()" [hidden]="config.hideFirstLast">
-        <a (click)="pagination.last()" class="ec-pagination__item">
-          <span>{{'pagination.last' | symbol}}</span>
+  <ul class=" ec-pagination-controls" *ngIf="pagination?.getPages()>1&&!pagination?.isFirst()">
+    <li class="ec-pagination-control ec-pagination-control_first" [class.is-disabled]="pagination?.isFirst()" [hidden]="config.hideFirstLast">
+      <a (click)="pagination.first()" class="ec-pagination__item">
+        <span>{{'pagination.first' | symbol}}</span>
+      </a>
+    </li>
+    <li class="ec-pagination-control ec-pagination-control_prev" *ngIf="!pagination?.isFirst()">
+      <a (click)="pagination.prev()" class="ec-pagination__item">
+        <span>{{'pagination.prev' | symbol}}</span>
+      </a>
+    </li>
+  </ul>
+  <div #container class="ec-pagination-pages" [hidden]="config?.hidePages" *ngIf="pagination?.getPages()>1">
+    <ul #pageContainer *ngIf="pagination?.pages">
+      <li *ngFor="let page of pagination.pages;let i = index" #page>
+        <a (click)="pagination.select(i+1)" [class.is-active]="pagination.isActive(i+1)" class="ec-pagination__item">
+          <span>{{i+1}}</span>
         </a>
       </li>
     </ul>
   </div>
+  <ul class="ec-pagination-controls" *ngIf="pagination?.getPages()>1&&!pagination?.isLast()">
+    <li class="ec-pagination-control ec-pagination-control_next" [class.is-disabled]="pagination?.isLast()">
+      <a (click)="pagination.next()" class="ec-pagination__item">
+        <span>{{'pagination.next' | symbol}}</span>
+      </a>
+    </li>
+    <li class="ec-pagination-control ec-pagination-control_last" *ngIf="!pagination?.isLast()" [hidden]="config.hideFirstLast">
+      <a (click)="pagination.last()" class="ec-pagination__item">
+        <span>{{'pagination.last' | symbol}}</span>
+      </a>
+    </li>
+  </ul>
   <div class="ec-pagination-info" *ngIf="pagination?.params()?.total">
     <span>{{pagination.params().from}} - {{pagination.params().to}} {{ 'pagination.of' | symbol}} {{pagination.params().total}}</span>
   </div>
