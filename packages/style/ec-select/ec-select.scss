@@ -24,29 +24,36 @@
 
   li {
     padding: rem(2);
+  }
 
-    &.drag-placeholder {
-      border: 1px dashed getColor(background, light);
-      width: 80px;
-      background: getColor(background, lighter);
-      min-height: 20px;
-    }
+  .is-draggable {
+    cursor: grab;
 
-    &.is-dragged {
-      opacity: 0.6;
+    &:active {
+      cursor: grabbing;
     }
+  }
+
+  .is-dragged {
+    opacity: 0.6;
+    cursor: grabbing;
+    z-index: 1;
+  }
+
+  .drag-placeholder {
+    height: 100%;
+    border: 1px dashed getColor(link);
+    border-radius: rem($tag-radius);
   }
 
   .tag {
     @include set-theme-colors(getColor(link));
+    margin: 0;
 
     a {
+      color: setContrast(getColor(link));
+      opacity: 0.8;
       padding-left: rem(4);
-      margin-right: rem(-4);
-    }
-
-    &:only-child {
-      margin: 0;
     }
   }
 }

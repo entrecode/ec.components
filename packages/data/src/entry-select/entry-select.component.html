@@ -4,15 +4,17 @@
       {{placeholder||'Auswählen'}}
     </span>
     <ul class="ec-select-selected" *ngIf="selection.items.length" dndDropzone (dndDrop)="onDrop($event)">
-      <li [dndDisableIf]="solo||config?.disableDrag" [class.is-dragged]="selected===dragged" dndEffectAllowed="move" [dndDraggable]="selected"
-        *ngFor="let selected of selection?.items" (dndStart)="onDragStart(selected,$event)" (dndCanceled)="cancelDrag(selected,$event)"
-        (dndEnd)="cancelDrag(selected,$event)">
+      <li [dndDisableIf]="solo||config?.disableDrag" [class.is-dragged]="selected===dragged" [class.is-draggable]="solo||!config?.disableDrag" dndEffectAllowed="move" [dndDraggable]="selected"
+        *ngFor="let selected of selection?.items" (dndStart)="onDragStart(selected,$event)" (dndCanceled)="cancelDrag(selected,$event)" (dndEnd)="cancelDrag(selected,$event)">
         <span [class.tag]="!solo" (click)="!solo&&editItem(selected,$event)">
           {{selected.display()}}
           <a (click)="removeItem(selected,$event)">&times;</a>
         </span>
       </li>
-      <li dndPlaceholderRef class="drag-placeholder"></li>
+      <li dndPlaceholderRef>
+         <!-- TODO change to width of dragged element -->
+         <div class="drag-placeholder" style="width: 48px;"></div>
+      </li>
     </ul>
     <!-- Dropdown -->
     <ec-pop (click)="clickInside($event)" [ngClass]="config?.nestedPopClass || 'ec-select-options'" #dropdown [active]="config?.nestedPopActive"
