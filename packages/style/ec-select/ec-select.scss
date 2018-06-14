@@ -1,8 +1,10 @@
 //scss-lint:disable SelectorDepth NestingDepth
-$padding: (($ec-select-min-height - $ec-select-line-height) / 2) - $ec-select-border-width;
+$padding: (($ec-select-min-height - $ec-select-line-height) / 2) -
+  $ec-select-border-width;
 
 .ec-select {
   cursor: pointer;
+  position: relative;
   display: flex;
   align-items: center;
   outline: none;
@@ -17,7 +19,8 @@ $padding: (($ec-select-min-height - $ec-select-line-height) / 2) - $ec-select-bo
   font-size: em($ec-select-font-size);
   line-height: em($ec-select-line-height, $ec-select-font-size);
   min-height: em($ec-select-min-height, $ec-select-font-size);
-  padding: em($padding, $ec-select-font-size) em(($padding * $ec-select-padding-ratio), $ec-select-font-size);
+  padding: em($padding, $ec-select-font-size)
+    em(($padding * $ec-select-padding-ratio), $ec-select-font-size);
   margin: arrayMagic($ec-select-spacing);
 
   /// additional styles via config
@@ -44,6 +47,11 @@ $padding: (($ec-select-min-height - $ec-select-line-height) / 2) - $ec-select-bo
   &.is-dirty {
     padding: em($padding, $ec-select-font-size);
   }
+
+  &.is-solo {
+    padding: em($padding, $ec-select-font-size)
+      em(($padding * $ec-select-padding-ratio), $ec-select-font-size);
+  }
 }
 
 .ec-select__placeholder {
@@ -51,16 +59,60 @@ $padding: (($ec-select-min-height - $ec-select-line-height) / 2) - $ec-select-bo
 }
 
 .ec-select-selected {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  white-space: nowrap;
+  width: 100%;
+
+  a {
+    opacity: 0.6;
+    padding-left: rem(8);
+    color: $ec-select-color;
+  }
+
+  &:hover {
+    a {
+      opacity: 1;
+    }
+  }
+}
+
+.ec-select-selection {
+  .ec-select-selected {
+    width: auto;
+    margin: rem(2);
+    font-weight: $ec-select-selected-weight;
+    background-color: $ec-select-selected-background;
+    color: $ec-select-selected-color;
+    border-radius: rem($tag-radius);
+    @include macro-metrics(
+      $ec-select-selected-font-size,
+      $ec-select-selected-line-height,
+      $ec-select-selected-min-height,
+      $padding-ratio: $ec-select-selected-padding-ratio
+    );
+
+    a {
+      color: $ec-select-selected-color;
+    }
+
+    &:hover {
+      background-color: setHover($ec-select-selected-background);
+    }
+
+
+    @extend %ec-select-selected-style !optional;
+  }
+}
+
+.ec-select-selection {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
   padding: 0;
   margin: em($padding * -1, $ec-select-font-size) rem(-2);
   width: 100%;
-
-  li {
-    // padding: rem(2);
-  }
 
   .is-draggable {
     cursor: grab;
@@ -80,17 +132,6 @@ $padding: (($ec-select-min-height - $ec-select-line-height) / 2) - $ec-select-bo
     height: 100%;
     border: 1px dashed getColor(link);
     border-radius: rem($tag-radius);
-  }
-
-  .tag {
-    @include set-theme-colors(getColor(link));
-    margin: rem(2);
-
-    a {
-      color: setContrast(getColor(link));
-      opacity: 0.8;
-      padding-left: rem(4);
-    }
   }
 }
 
@@ -115,32 +156,6 @@ $padding: (($ec-select-min-height - $ec-select-line-height) / 2) - $ec-select-bo
 
     .ec-list-cell {
       padding: 0;
-    }
-  }
-}
-
-.ec-select.is-solo {
-  .ec-select-selected {
-    flex-grow: 1;
-
-    li {
-      display: flex;
-      flex: 1;
-    }
-
-    span {
-      display: flex;
-      flex: 1;
-      justify-content: space-between;
-
-      a {
-        color: getColor(text, lighter);
-        padding-left: rem(4);
-
-        &:hover {
-          color: getColor(text, light);
-        }
-      }
     }
   }
 }

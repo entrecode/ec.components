@@ -3,10 +3,13 @@
     <span class="ec-select__placeholder" *ngIf="!selection.items.length">
       {{placeholder||'make your selection...'}}
     </span>
-    <ul class="ec-select-selected" *ngIf="selection.items.length" dndDropzone (dndDrop)="onDrop($event)">
-      <li [dndDisableIf]="solo||config?.disableDrag" [class.is-dragged]="selected===dragged" [class.is-draggable]="solo||!config?.disableDrag" dndEffectAllowed="move" [dndDraggable]="selected"
-        *ngFor="let selected of selection?.items" (dndStart)="onDragStart(selected,$event)" (dndCanceled)="cancelDrag(selected,$event)" (dndEnd)="cancelDrag(selected,$event)">
-        <span [class.tag]="!solo" (click)="!solo&&editItem(selected,$event)">
+    <span class="ec-select-selected" (click)="clickItem(selection.items[0],$event)" *ngIf="selection.items.length&&solo">
+      {{selection.items[0].display()}}
+      <a (click)="removeItem(selection.items[0],$event)">&times;</a>
+    </span>
+    <ul class="ec-select-selection" *ngIf="selection.items.length&&!solo" dndDropzone (dndDrop)="onDrop($event)">
+      <li [dndDisableIf]="solo||config?.disableDrag" [class.is-dragged]="selected===dragged" [class.is-draggable]="solo||!config?.disableDrag" dndEffectAllowed="move" [dndDraggable]="selected" *ngFor="let selected of selection?.items" (dndStart)="onDragStart(selected,$event)" (dndCanceled)="cancelDrag(selected,$event)" (dndEnd)="cancelDrag(selected,$event)">
+        <span class="ec-select-selected" (click)="!solo&&editItem(selected,$event)">
           {{selected.display()}}
           <a (click)="removeItem(selected,$event)">&times;</a>
         </span>

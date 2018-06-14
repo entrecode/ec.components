@@ -243,6 +243,33 @@ $ec-select-placeholder: $input-placeholder !default;
 }
 
 //
+// EC-SELECT-SELECTED
+// ------------------------------------------------------
+// @param {color} $ec-select-selected-background [$tag-background]
+// @param {color} $ec-select-selected-color [setContrast($ec-select-selected-background)]
+// @param {number} $ec-select-selected-padding-ratio [$tag-padding-ratio]
+// @param {px} $ec-select-selected-font-size [$tag-font-size]
+// @param {px} $ec-select-selected-line-height [$tag-line-height]
+// @param {px} $ec-select-selected-min-height [$tag-min-height]
+// @param {value} $ec-select-selected-weight [$tag-weight]
+// @param {rem} $ec-select-selected-radius [$tag-radius]
+$ec-select-selected-background: $link !default;
+$ec-select-selected-color: setContrast($ec-select-selected-background) !default;
+$ec-select-selected-padding-ratio: $tag-padding-ratio !default;
+$ec-select-selected-font-size: $tag-font-size !default;
+$ec-select-selected-line-height: $tag-line-height !default;
+$ec-select-selected-min-height: $tag-min-height !default;
+$ec-select-selected-weight: $tag-weight !default;
+$ec-select-selected-radius: $tag-radius !default;
+
+// @param {boolean} $ec-select-selected-round [$tag-round]
+$ec-select-selected-round: $tag-round !default;
+
+%ec-select-selected-style {
+  // put additional styles here...
+}
+
+//
 // data/files
 // ------------------------------------------------------------------------------------------------------------
 
