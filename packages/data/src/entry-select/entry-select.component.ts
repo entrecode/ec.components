@@ -9,6 +9,7 @@ import { ResourceService } from '@ec.components/data/src/resource-config/resourc
 import { SelectComponent } from '@ec.components/ui';
 import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
+import 'rxjs/add/operator/debounceTime';
 import { SearchbarComponent } from '../../../ui/src/list/searchbar/searchbar.component';
 import { AuthService } from '../auth/auth.service';
 import { CrudConfig } from '../crud/crud-config.interface';
