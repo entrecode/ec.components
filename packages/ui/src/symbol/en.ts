@@ -149,6 +149,22 @@ export default [
         content: 'Ignore Duplicates'
     },
     {
+        name: 'upload.dropToUpload',
+        content: 'drop to upload'
+    },
+    {
+        name: 'upload.link',
+        content: 'upload'
+    },
+    {
+        name: 'upload.or',
+        content: 'or'
+    },
+    {
+        name: 'upload.browse',
+        content: 'browse'
+    },
+    {
         name: 'field.label.id',
         content: 'ID'
     },

@@ -22,6 +22,8 @@
     <div class="ec-asset-list-pop-body">
       <ec-resource-list #resourceList [relation]="getGroupRelation()" [api]="sdk.api" [selection]="selection" (columnClicked)="select($event)"
         [config]="config" [loader]="popLoader" class="ec-resource-list"></ec-resource-list>
+      <!-- <ec-asset-list #resourceList [relation]="getGroupRelation()" [api]="sdk.api" [selection]="selection" (columnClicked)="select($event)"
+        [config]="config" [loader]="popLoader" class="ec-resource-list"></ec-asset-list> -->
     </div>
     <ec-loader #popLoader class="ec-loader ec-loader_global"></ec-loader>
   </div>

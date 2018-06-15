@@ -452,11 +452,12 @@ export class ResourceConfig {
             display: value => value.url,
             view: 'preview',
             immutable: true,
-            form: false
+            form: false,
+            list: false
           },
           thumb: {
             form: false,
-            list: false,
+            list: true,
             label: this.symbol.resolve('asset.field.label.thumb'),
             view: 'preview',
             resolve: (asset) => {
