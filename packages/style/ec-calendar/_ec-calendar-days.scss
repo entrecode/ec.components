@@ -39,6 +39,8 @@
     .ec-calendar-day {
       background-color: $ec-calendar-day-active-background;
       color: $ec-calendar-day-active-color;
+      z-index: 1;
+      position: relative;
     }
 
     &::after,
@@ -49,7 +51,7 @@
       top: 0;
       height: 100%;
       width: 50%;
-      z-index: -1;
+      z-index: 0;
     }
 
     &::before {
@@ -61,22 +63,20 @@
     }
   }
 
-  .is-draggable {
-    &.is-last,
-    &.is-first {
-      cursor: move;
-    }
+  .is-last,
+  .is-first {
+    cursor: move;
+  }
 
-    &.is-first {
-      &::before {
-        display: none;
-      }
+  .is-first {
+    &::before {
+      display: none;
     }
+  }
 
-    &.is-last {
-      &::after {
-        display: none;
-      }
+  .is-last {
+    &::after {
+      display: none;
     }
   }
 }
