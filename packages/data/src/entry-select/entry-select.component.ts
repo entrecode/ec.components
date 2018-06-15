@@ -5,9 +5,11 @@ import { Component, forwardRef, Input, OnChanges, ViewChild, ViewEncapsulation }
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Form } from '@ec.components/core';
 import { Item } from '@ec.components/core/src/item/item';
+import { ResourceService } from '@ec.components/data/src/resource-config/resource.service';
 import { SelectComponent } from '@ec.components/ui';
 import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
+import 'rxjs/add/operator/debounceTime';
 import { SearchbarComponent } from '../../../ui/src/list/searchbar/searchbar.component';
 import { AuthService } from '../auth/auth.service';
 import { CrudConfig } from '../crud/crud-config.interface';
@@ -15,6 +17,7 @@ import { EntryListPopComponent } from '../entry-list-pop/entry-list-pop.componen
 import { EntryListComponent } from '../entry-list/entry-list.component';
 import { EntryPopComponent } from '../entry-pop/entry-pop.component';
 import { ModelConfigService } from '../model-config/model-config.service';
+import { ResourceDeletePopComponent } from '../resource-delete-pop/resource-delete-pop.component';
 
 // import LiteEntryResource from "ec.sdk/lib/resources/publicAPI/LiteEntryResource";
 
@@ -65,30 +68,52 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   @ViewChild('entryList') entryList: EntryListComponent;
   /** The nested searchbar */
   @ViewChild(SearchbarComponent) searchbar: SearchbarComponent;
+  /** THe nested delete confirmation pop */
+  @ViewChild(ResourceDeletePopComponent) confirmDelete: ResourceDeletePopComponent;
   /** The current lightModel (part of root response) */
   lightModel: any;
 
   constructor(private modelConfig: ModelConfigService,
+    public resourceService: ResourceService,
     private auth: AuthService) {
     super();
-    // TODO: listen to change events and remove deleted selected items
-    /* this.resourceService.change({ relation: this.model })
-      .subscribe((update) => {
-        this.list.load();
-      }); */
+    this.resourceService.change({ relation: this.model })
+      .debounceTime(500).subscribe((update) => {
+        if (this.entryList) {
+          this.entryList.list.load(); // TODO: use load delegation to channel equal loading requests to one
+        }
+      });
+  }
+
+  removeItem(item, e?) {
+    super.removeItem(item, e);
+    if (this.config.deleteOnRemove) {
+      if (this.config.safeDelete) {
+        this.confirmDelete.confirm(item.getBody());
+      } else {
+        item.getBody().delete();
+      }
+    }
   }
 
   activate($event) {
     if (this.pop && !this.config.disableSelect) {
       this.pop.toggle();
       this.clickInside($event);
-    } else if (this.entryListPop) {
+    } else if (this.entryListPop && !this.config.disableListPop) {
       this.entryListPop.show();
       this.clickInside($event);
-    } else if (this.entryPop) {
+    } else if (this.entryPop && !this.config.disableCreatePop) {
       this.entryPop.show();
       this.clickInside($event);
     }
+  }
+
+  defaultPlaceholder() {
+    if (this.config.disableSelect && this.config.disableListPop) {
+      return 'add new...'
+    }
+    return 'make your selection';
   }
 
   /** Calls super.useConfig and then creates special dropdownConfig with just entryTitle as field  */
