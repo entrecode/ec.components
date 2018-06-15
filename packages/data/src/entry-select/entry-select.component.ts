@@ -1,15 +1,17 @@
 /**
  * Created by felix on 23.05.17.
  */
-import { Component, Input, OnChanges, ViewChild, ViewEncapsulation, forwardRef } from '@angular/core';
+import { Component, forwardRef, Input, OnChanges, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Form } from '@ec.components/core';
 import { Item } from '@ec.components/core/src/item/item';
 import { SelectComponent } from '@ec.components/ui';
 import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
+import { SearchbarComponent } from '../../../ui/src/list/searchbar/searchbar.component';
 import { AuthService } from '../auth/auth.service';
 import { CrudConfig } from '../crud/crud-config.interface';
+import { EntryListComponent } from '../entry-list/entry-list.component';
 import { EntryPopComponent } from '../entry-pop/entry-pop.component';
 import { ModelConfigService } from '../model-config/model-config.service';
 
@@ -56,6 +58,12 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   @ViewChild('dropdown') pop: PopComponent;
   /** The nested entry pop */
   @ViewChild(EntryPopComponent) entryPop: EntryPopComponent;
+  /** The nested full EntryListComponent */
+  @ViewChild('entryList') entryList: EntryListComponent;
+  /** The nested searchbar */
+  @ViewChild(SearchbarComponent) searchbar: SearchbarComponent;
+  /** The current lightModel (part of root response) */
+  lightModel: any;
 
   constructor(private modelConfig: ModelConfigService,
     private auth: AuthService) {
@@ -96,6 +104,10 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
       this.useConfig(this.config);
       return;
     }
+
+    this.modelConfig.getLightModel(this.model)
+      .then(model => this.lightModel = model);
+
     this.modelConfig.generateConfig(this.model) // , (this.config || {}).fields
       .then((config) => {
         this.config = Object.assign(config, { size: 10 }, this.crudConfig,

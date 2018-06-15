@@ -12,6 +12,7 @@ import { AdminEntryInputComponent } from './entry-form/admin-entry-input.compone
 import { DefaultEntryInputComponent } from './entry-form/default-entry-input.component';
 import { DefaultEntryOutputComponent } from './entry-form/default-entry-output.component';
 import { EntryFormComponent } from './entry-form/entry-form.component';
+import { EntryListPopComponent } from './entry-list-pop/entry-list-pop.component';
 import { EntryListComponent } from './entry-list/entry-list.component';
 import { EntryPopComponent } from './entry-pop/entry-pop.component';
 import { EntrySelectComponent } from './entry-select/entry-select.component';
@@ -29,6 +30,7 @@ import { SdkModule } from './sdk/sdk.module';
     DefaultEntryOutputComponent,
     AdminEntryInputComponent,
     EntrySelectComponent,
+    EntryListPopComponent,
   ],
   declarations: [
     EntryListComponent,
@@ -41,6 +43,7 @@ import { SdkModule } from './sdk/sdk.module';
     AdminEntryInputComponent,
     CrudComponent,
     EntrySelectComponent,
+    EntryListPopComponent,
   ],
   imports: [
     CommonModule,
@@ -60,6 +63,7 @@ import { SdkModule } from './sdk/sdk.module';
     EntryPopComponent,
     CrudComponent,
     EntrySelectComponent,
+    EntryListPopComponent,
     RouterModule,
     UiModule,
     SdkModule,

@@ -191,4 +191,8 @@ export class ModelConfigService extends Config {
       return Promise.resolve(config);
     });
   }
+
+  getLightModel(model) {
+    return this.sdk.ready.then(() => this.sdk.api.modelList()).then((models) => models[model]);
+  }
 }

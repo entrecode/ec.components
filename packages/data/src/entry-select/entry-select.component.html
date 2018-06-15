@@ -8,15 +8,17 @@
       <a (click)="removeItem(selection.items[0],$event)">&times;</a>
     </span>
     <ul class="ec-select-selection" *ngIf="selection.items.length&&!solo" dndDropzone (dndDrop)="onDrop($event)">
-      <li [dndDisableIf]="solo||config?.disableDrag" [class.is-dragged]="selected===dragged" [class.is-draggable]="solo||!config?.disableDrag" dndEffectAllowed="move" [dndDraggable]="selected" *ngFor="let selected of selection?.items" (dndStart)="onDragStart(selected,$event)" (dndCanceled)="cancelDrag(selected,$event)" (dndEnd)="cancelDrag(selected,$event)">
+      <li [dndDisableIf]="solo||config?.disableDrag" [class.is-dragged]="selected===dragged" [class.is-draggable]="solo||!config?.disableDrag"
+        dndEffectAllowed="move" [dndDraggable]="selected" *ngFor="let selected of selection?.items" (dndStart)="onDragStart(selected,$event)"
+        (dndCanceled)="cancelDrag(selected,$event)" (dndEnd)="cancelDrag(selected,$event)">
         <span class="ec-select-selected" (click)="!solo&&editItem(selected,$event)">
           {{selected.display()}}
           <a (click)="removeItem(selected,$event)">&times;</a>
         </span>
       </li>
       <li dndPlaceholderRef>
-         <!-- TODO change to width of dragged element -->
-         <div class="drag-placeholder" style="width: 48px;"></div>
+        <!-- TODO change to width of dragged element -->
+        <div class="drag-placeholder" style="width: 48px;"></div>
       </li>
     </ul>
     <!-- Dropdown -->
@@ -25,16 +27,18 @@
       <ec-entry-list [model]="model" *ngIf="selection&&dropdown.active" [config]="dropdownConfig" [selection]="selection" (columnClicked)="select($event)"></ec-entry-list>
     </ec-pop>
     <!-- popup -->
-    <ec-pop (click)="clickInside($event)" [ngClass]="getPopClass()" #listPop>
+    <!-- <ec-pop (click)="clickInside($event)" [ngClass]="getPopClass()" #listPop>
       <header class="ec-pop-header">
         <button (click)="listPop.hide()" type="button" class="ec-pop__dismiss">
           <ec-icon name="close-x-big"></ec-icon>
         </button>
       </header>
-      <div class="ec-pop-body">
-        <ec-entry-list [model]="model" *ngIf="listPop.active" [config]="config" [selection]="selection" (columnClicked)="select($event)"></ec-entry-list>
+      <div class="ec-pop-body" *ngIf="listPop.active&&lightModel">
+        <ec-searchbar placeholder="Suche.." [list]="entryList" *ngIf="entryList" [property]="lightModel.titleField"></ec-searchbar>
+        <ec-entry-list [model]="model" [config]="config" [selection]="selection" (columnClicked)="select($event)" #entryList></ec-entry-list>
       </div>
-    </ec-pop>
+    </ec-pop> -->
+    <ec-entry-list-pop (click)="clickInside($event)" [model]="model" [ngClass]="getPopClass()" [config]="config" [selection]="selection" #listPop></ec-entry-list-pop>
   </div>
   <ec-entry-pop #entryPop [model]="model" [ngClass]="getPopClass()" [config]="config" (submitted)="formSubmitted($event)" (deleted)="removeItem($event)"></ec-entry-pop>
   <nav class="ec-entry-select__controls">
