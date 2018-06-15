@@ -1,8 +1,16 @@
+// @param {px} $ec-list-cell-size [$base-font-size]
+// @param {value} $ec-list-cell-weight [$is-bold]
+// @param {color} $ec-list-cell-color [$text]
+// @param {array} $ec-list-cell-padding [8]
+
 .ec-list-cell {
   display: flex;
   align-items: center;
   overflow: hidden;
   flex: 1;
+  color: $ec-list-cell-color;
+  font-size: arrayMagic($ec-list-cell-size, xem);
+  font-weight: $ec-list-cell-weight;
   padding: arrayMagic($ec-list-cell-padding);
 
   &.is-hidden {
