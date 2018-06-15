@@ -1,8 +1,9 @@
-import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, ViewChild } from '@angular/core';
 import { Item, ListConfig, Selection } from '@ec.components/core';
 import { PopComponent } from '@ec.components/ui';
 import { PopService } from '@ec.components/ui/src/pop/pop.service';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
+import { SearchbarComponent } from '../../../ui/src/list/searchbar/searchbar.component';
 import { ModelConfigService } from '../model-config/model-config.service';
 
 @Component({
@@ -16,6 +17,7 @@ export class EntryListPopComponent extends PopComponent implements OnChanges {
     @Input() config: ListConfig<EntryResource>;
     @Input() selection: Selection<EntryResource>;
     @Output() columnClicked: EventEmitter<Item<EntryResource>> = new EventEmitter();
+    @ViewChild(SearchbarComponent) searchbar: SearchbarComponent;
     lightModel: any;
 
     constructor(
