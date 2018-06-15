@@ -40,20 +40,19 @@ export class HeatmapComponent extends MonthComponent implements OnInit, OnChange
         return Math.floor((count / max) * grain) / grain * 100;
     }
 
-    getHeatMap(timestamps, hue = 67, saturation = 50, factor = 1.5) { // iso timestamps
+    getHeatMap(timestamps) {
         const dates = timestamps
             .map(timestamp => moment(timestamp).startOf('day').toISOString())
             .reduce((counts, date) => Object.assign(counts, {
                 [date]: ++counts[date] || 0
             }), {});
         const max = dates[Object.keys(dates).sort((a, b) => dates[a] > dates[b] ? -1 : 1)[0]];
-        return Object.keys(dates).reduce((colors, date) => {
-            const heat = this.toShade(dates[date], max * factor);
-            return Object.assign(colors, {
-                // [date]: `hsl(${hue},${saturation}%,${this.toShade(dates[date], max * factor)}%)`
-                [date]: `hsl(${hue},${heat}%,${100 - heat}%)`
+        return Object.keys(dates).reduce((classes, date) => {
+            return Object.assign(classes, {
+                [date]: Math.floor(dates[date] / max * 100)
             })
         }, {});
+
     }
 
     /** Returns json with additional infos about the timestamps */
@@ -69,10 +68,10 @@ export class HeatmapComponent extends MonthComponent implements OnInit, OnChange
 
     updateHeatmap() {
         if (!this.timestamps) {
-            this.colors = [];
+            this.heatmap = [];
             return;
         }
-        this.colors = this.getHeatMap(this.timestamps);
+        this.heatmap = this.getHeatMap(this.timestamps);
     }
 
 }

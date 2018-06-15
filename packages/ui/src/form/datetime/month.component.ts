@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 import moment from 'moment-es6';
-import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/debounceTime';
+import { Subject } from 'rxjs/Subject';
 
 /** Interface for a day inside the a month. */
 export interface Day {
@@ -22,6 +22,8 @@ export interface Day {
   last: boolean;
   /** determines if the day can be dragged to change the timespan */
   draggable: boolean;
+  /** custom class */
+  heat?: string;
 }
 
 /** Displays the days of a month in a calendarish table. */
@@ -33,8 +35,10 @@ export class MonthComponent implements OnInit, OnChanges {
   dragged: any;
   /** The current selected date */
   @Input() selected: moment.Moment;
-  /** Color array for day cells. E.g. to view a month heatmap */
+  /** Color mapping for day cells. E.g. to view a month heatmap */
   @Input() colors: Object;
+  /** Class mapping for day cells. E.g. to apply different background classes */
+  @Input() heatmap: Object;
   /** Timespan that is reflected. Marks days inside the span */
   @Input() timespan: moment.Moment[];
   /** The current date (for showing month) */
@@ -119,6 +123,12 @@ export class MonthComponent implements OnInit, OnChanges {
     }
   }
 
+  getDayHeat(_moment: moment.Moment) {
+    if (this.heatmap && this.heatmap[_moment.toISOString()]) {
+      return this.heatmap[_moment.toISOString()];
+    }
+  }
+
   /** Initializes the calendar. */
   ngOnInit() {
     this.setDate();
@@ -133,7 +143,7 @@ export class MonthComponent implements OnInit, OnChanges {
       this.setDate(this.date);
     } else if (change.timespan) {
       this.setDate();
-    } else if (change.colors) {
+    } if (change.colors || change.heatmap) {
       this.cells = this.getMonth(this.date.clone(), 'current');
     }
   }
@@ -156,6 +166,7 @@ export class MonthComponent implements OnInit, OnChanges {
           last: isEnd,
           draggable: (!this.disableDragStart && isStart) || (!this.disableDragEnd && isEnd),
           color: this.getDayColor(date),
+          heat: this.getDayHeat(date),
           format: date.format('DD'),
           today: moment().startOf('day').diff(date, 'days') === 0,
         }
