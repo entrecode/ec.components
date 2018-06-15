@@ -5,7 +5,7 @@
     </span>
     <span class="ec-select-selected" (click)="clickItem(selection.items[0],$event)" *ngIf="selection.items.length&&solo">
       {{selection.items[0].display()}}
-      <a (click)="removeItem(selection.items[0],$event)">&times;</a>
+      <a (click)="removeItem(selection.items[0],false,$event)">&times;</a>
     </span>
     <ul class="ec-select-selection" *ngIf="selection.items.length&&!solo" dndDropzone (dndDrop)="onDrop($event)">
       <li [dndDisableIf]="solo||config?.disableDrag" [class.is-dragged]="selected===dragged" [class.is-draggable]="solo||!config?.disableDrag"
@@ -13,7 +13,7 @@
         (dndCanceled)="cancelDrag(selected,$event)" (dndEnd)="cancelDrag(selected,$event)">
         <span class="ec-select-selected" (click)="!solo&&editItem(selected,$event)">
           {{selected.display()}}
-          <a (click)="removeItem(selected,$event)">&times;</a>
+          <a (click)="removeItem(selected,false,$event)">&times;</a>
         </span>
       </li>
       <li dndPlaceholderRef>
@@ -30,10 +30,10 @@
     <!-- Fully fledged entryListPop -->
     <ec-entry-list-pop (click)="clickInside($event)" [model]="model" [ngClass]="getPopClass()" class="ec-entry-list-pop" [config]="config"
       [selection]="selection" #entryListPop></ec-entry-list-pop>
-    <ec-resource-delete-pop [question]="'entry.select.delete.question' | symbol" #confirmDelete></ec-resource-delete-pop>
+    <ec-resource-delete-pop (click)="clickInside($event)" [question]="'entry.select.delete.question' | symbol" #confirmDelete></ec-resource-delete-pop>
 
   </div>
-  <ec-entry-pop #entryPop [model]="model" [ngClass]="getPopClass()" [config]="config" (submitted)="formSubmitted($event)" (deleted)="removeItem($event)"></ec-entry-pop>
+  <ec-entry-pop #entryPop [model]="model" [ngClass]="getPopClass()" [config]="config" (submitted)="formSubmitted($event)" (deleted)="removeItem($event,true)"></ec-entry-pop>
   <nav class="ec-entry-select__controls">
     <a (click)="editItem(selection.items[0],$event)" class="btn btn_clear" *ngIf="solo&&!config.disableCreatePop&&hasMethod('put')&&!selection.isEmpty()">
       <ec-icon name="pencil"></ec-icon>

@@ -85,9 +85,9 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
       });
   }
 
-  removeItem(item, e?) {
+  removeItem(item, skipDelete, e?) {
     super.removeItem(item, e);
-    if (this.config.deleteOnRemove) {
+    if (!skipDelete && this.config.deleteOnRemove) {
       if (this.config.safeDelete) {
         this.confirmDelete.confirm(item.getBody());
       } else {
