@@ -13,16 +13,16 @@
   <pre>{{entrySelect.selection?.getValue() | json}}</pre>
 </div>
 <strong>solo</strong>
-<ec-entry-select model="muffin" [solo]="true" #soloEntry></ec-entry-select>
-<!--   [config]="{size:10,popClass:'ec-pop_drawer-left'}"-->
+<ec-entry-select model="muffin" [solo]="true" #soloEntry [config]="{disableSelect:true}"></ec-entry-select>
+<!--   [config]=" {size:10,popClass: 'ec-pop_drawer-left'} "-->
 <pre>{{soloEntry.selection?.getValue()}}</pre>
 <!-- <strong>Usage with form</strong>
-<ec-entry-form model="field_test" #fieldTest>
-  <ec-entry-select *ngIf="fieldTest.group" [solo]="true" [formControl]="fieldTest.group?.get('entries')" model="muffin"></ec-entry-select>
-  <ec-input [field]="fieldTest.form?.getField('entries')" [group]="fieldTest.group"></ec-input>
+<ec-entry-form model="field_test " #fieldTest>
+  <ec-entry-select *ngIf="fieldTest.group " [solo]="true " [formControl]="fieldTest.group?.get( 'entries') " model="muffin "></ec-entry-select>
+  <ec-input [field]="fieldTest.form?.getField( 'entries') " [group]="fieldTest.group "></ec-input>
 </ec-entry-form> -->
 <ec-notifications></ec-notifications>
 
-<a (click)="entryListPop.toggle()">TOGGLE ENTRY LIST POP</a>
+<a (click)="entryListPop.toggle() ">TOGGLE ENTRY LIST POP</a>
 
-<ec-entry-list-pop model="field_test" [config]="{size:5}" #entryListPop class="ec-pop_dialog"></ec-entry-list-pop>
+<ec-entry-list-pop model="field_test " [config]="{size:5} " #entryListPop class="ec-pop_dialog "></ec-entry-list-pop>
