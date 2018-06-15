@@ -1,0 +1,44 @@
+.ec-select-options {
+  font-size: rem($base-font-size);
+
+  .ec-list {
+    .ec-list-header {
+      display: none;
+    }
+
+    .ec-list-item__selector {
+      display: none;
+    }
+
+    .ec-list-item {
+      @extend %select-option !optional;
+      color: getColor(link);
+      display: flex;
+      width: 100%;
+      padding: rem(8) rem(16);
+      box-shadow: none;
+    }
+
+    .ec-list-cell {
+      padding: 0;
+    }
+  }
+
+  .ec-pagination {
+    margin: getSpace(2);
+
+    .ec-pagination-size-select {
+      display: none;
+    }
+
+    .ec-pagination-info {
+      text-align: right;
+    }
+  }
+}
+
+ec-pop.ec-select-options {
+  .ec-pop {
+    @extend %select-options !optional;
+  }
+}

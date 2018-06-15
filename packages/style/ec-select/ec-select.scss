@@ -1,7 +1,19 @@
-//scss-lint:disable SelectorDepth NestingDepth
-$padding: (($ec-select-min-height - $ec-select-line-height) / 2) -
-  $ec-select-border-width;
+// @param {color} $ec-select-background [$input-background]
+// @param {color} $ec-select-color [$input-color]
+// @param {array} $ec-select-spacing [$input-spacing]
+// @param {array} $ec-select-padding-ratio [$input-padding-ratio]
+// @param {array} $ec-select-radius [$input-radius]
+// @param {color} $ec-select-border-color [$input-border-color]
+// @param {array} $ec-select-border-width [$input-border-width]
+// @param {em} $ec-select-font-size [$input-font-size]
+// @param {em} $ec-select-line-height [$input-line-height]
+// @param {em} $ec-select-min-height [$input-min-height]
+// @param {color} $ec-select-placeholder [$input-placeholder]
 
+@import 'ec-select-selection';
+@import 'ec-select-options';
+
+//scss-lint:disable SelectorDepth NestingDepth
 .ec-select {
   cursor: pointer;
   position: relative;
@@ -88,100 +100,5 @@ $padding: (($ec-select-min-height - $ec-select-line-height) / 2) -
     a {
       opacity: 1;
     }
-  }
-}
-
-.ec-select-selection {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0;
-  margin: em($padding * -1, $ec-select-font-size) rem(-2);
-  width: 100%;
-
-  .ec-select-selected {
-    width: auto;
-    margin: rem(2);
-    font-weight: $ec-select-selected-weight;
-    background-color: $ec-select-selected-background;
-    color: $ec-select-selected-color;
-    border-radius: rem($tag-radius);
-    @include macro-metrics(
-      $ec-select-selected-font-size,
-      $ec-select-selected-line-height,
-      $ec-select-selected-min-height,
-      $padding-ratio: $ec-select-selected-padding-ratio
-    );
-
-    a {
-      color: $ec-select-selected-color;
-    }
-
-    &:hover {
-      background-color: setHover($ec-select-selected-background);
-    }
-
-    @extend %ec-select-selected-style !optional;
-  }
-
-  .is-draggable {
-    cursor: grab;
-
-    &:active {
-      cursor: grabbing;
-    }
-  }
-
-  .is-dragged {
-    opacity: 0.6;
-    cursor: grabbing;
-    z-index: 1;
-  }
-
-  .drag-placeholder {
-    height: 100%;
-    border: 1px dashed getColor(link);
-    border-radius: rem($tag-radius);
-  }
-}
-
-.ec-select-options {
-  font-size: rem($base-font-size);
-
-  .ec-list {
-    .ec-list-header {
-      display: none;
-    }
-
-    .ec-list-item__selector {
-      display: none;
-    }
-
-    .ec-list-item {
-      @extend %select-option !optional;
-      color: getColor(link);
-      display: flex;
-      width: 100%;
-      padding: rem(8) rem(16);
-      box-shadow: none;
-    }
-
-    .ec-list-cell {
-      padding: 0;
-    }
-  }
-
-  .ec-pagination {
-    flex-direction: column;
-
-    .ec-pagination-size-select {
-      display: none;
-    }
-  }
-}
-
-ec-pop.ec-select-options {
-  .ec-pop {
-    @extend %select-options !optional;
   }
 }
