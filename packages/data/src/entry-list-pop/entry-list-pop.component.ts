@@ -29,6 +29,9 @@ export class EntryListPopComponent extends PopComponent implements OnChanges {
         if (this.model) {
             this.modelConfig.getLightModel(this.model).then(model => this.lightModel = model);
         }
+        if (this.config) {
+            this.config = Object.assign({ hidePagination: true, disableHeader: true }, this.config);
+        }
     }
 
     /** emits columnClicked event or toggles selection if no observers. */
