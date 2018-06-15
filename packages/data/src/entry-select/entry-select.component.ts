@@ -11,6 +11,7 @@ import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { SearchbarComponent } from '../../../ui/src/list/searchbar/searchbar.component';
 import { AuthService } from '../auth/auth.service';
 import { CrudConfig } from '../crud/crud-config.interface';
+import { EntryListPopComponent } from '../entry-list-pop/entry-list-pop.component';
 import { EntryListComponent } from '../entry-list/entry-list.component';
 import { EntryPopComponent } from '../entry-pop/entry-pop.component';
 import { ModelConfigService } from '../model-config/model-config.service';
@@ -58,6 +59,8 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   @ViewChild('dropdown') pop: PopComponent;
   /** The nested entry pop */
   @ViewChild(EntryPopComponent) entryPop: EntryPopComponent;
+  /** The nested entry list pop */
+  @ViewChild(EntryListPopComponent) entryListPop: EntryListPopComponent;
   /** The nested full EntryListComponent */
   @ViewChild('entryList') entryList: EntryListComponent;
   /** The nested searchbar */
@@ -73,6 +76,19 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
       .subscribe((update) => {
         this.list.load();
       }); */
+  }
+
+  activate($event) {
+    if (this.pop && !this.config.disableSelect) {
+      this.pop.toggle();
+      this.clickInside($event);
+    } else if (this.entryListPop) {
+      this.entryListPop.show();
+      this.clickInside($event);
+    } else if (this.entryPop) {
+      this.entryPop.show();
+      this.clickInside($event);
+    }
   }
 
   /** Calls super.useConfig and then creates special dropdownConfig with just entryTitle as field  */

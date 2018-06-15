@@ -4,11 +4,12 @@
             <button (click)="hide()" type="button" class="ec-pop__dismiss">
                 <ec-icon name="close-x-big"></ec-icon>
             </button>
-            <ec-searchbar placeholder="Search.." [list]="entryList" *ngIf="entryList" [property]="lightModel?.titleField"></ec-searchbar>
+            <ec-searchbar (selected)="hide()" placeholder="Search.." [list]="entryList" #searchbar *ngIf="entryList" [property]="lightModel?.titleField"></ec-searchbar>
             <ec-list-header [list]="entryList?.list" [selection]="selection"></ec-list-header>
         </header>
         <div class="ec-pop-body">
-            <ec-entry-list [model]="model" [config]="config" [selection]="selection" (columnClicked)="select($event)" #entryList></ec-entry-list>
+            <ec-entry-list (change)="searchbar.focusEvent.emit(true)" [model]="model" [config]="config" [selection]="selection" (columnClicked)="select($event)"
+                #entryList></ec-entry-list>
         </div>
         <div class="ec-pop-footer">
             <ec-pagination [pagination]="entryList?.list?.pagination"></ec-pagination>

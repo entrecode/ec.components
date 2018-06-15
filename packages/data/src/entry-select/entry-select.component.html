@@ -1,5 +1,5 @@
 <div class="ec-entry-select" *ngIf="selection">
-  <div class="ec-select" [class.is-solo]="solo" [class.is-dirty]="selection.items.length" (click)="pop.toggle()&&clickInside($event)">
+  <div class="ec-select" [class.is-solo]="solo" [class.is-dirty]="selection.items.length" (click)="activate()">
     <span class="ec-select__placeholder" *ngIf="!selection.items.length">
       {{placeholder||'make your selection...'}}
     </span>
@@ -23,29 +23,19 @@
     </ul>
     <!-- Dropdown -->
     <ec-pop (click)="clickInside($event)" [ngClass]="config?.nestedPopClass || 'ec-select-options'" #dropdown [active]="config?.nestedPopActive"
-      [visible]="config?.nestedPopVisible">
+      [visible]="config?.nestedPopVisible" *ngIf="!config.disableSelect">
       <ec-entry-list [model]="model" *ngIf="selection&&dropdown.active" [config]="dropdownConfig" [selection]="selection" (columnClicked)="select($event)"></ec-entry-list>
     </ec-pop>
-    <!-- popup -->
-    <!-- <ec-pop (click)="clickInside($event)" [ngClass]="getPopClass()" #listPop>
-      <header class="ec-pop-header">
-        <button (click)="listPop.hide()" type="button" class="ec-pop__dismiss">
-          <ec-icon name="close-x-big"></ec-icon>
-        </button>
-      </header>
-      <div class="ec-pop-body" *ngIf="listPop.active&&lightModel">
-        <ec-searchbar placeholder="Suche.." [list]="entryList" *ngIf="entryList" [property]="lightModel.titleField"></ec-searchbar>
-        <ec-entry-list [model]="model" [config]="config" [selection]="selection" (columnClicked)="select($event)" #entryList></ec-entry-list>
-      </div>
-    </ec-pop> -->
-    <ec-entry-list-pop (click)="clickInside($event)" [model]="model" [ngClass]="getPopClass()" [config]="config" [selection]="selection" #listPop class="ec-entry-list-pop"></ec-entry-list-pop>
+    <!-- Fully fledged entryListPop -->
+    <ec-entry-list-pop (click)="clickInside($event)" [model]="model" [ngClass]="getPopClass()" [config]="config" [selection]="selection"
+      #entryListPop class="ec-entry-list-pop"></ec-entry-list-pop>
   </div>
   <ec-entry-pop #entryPop [model]="model" [ngClass]="getPopClass()" [config]="config" (submitted)="formSubmitted($event)" (deleted)="removeItem($event)"></ec-entry-pop>
   <nav class="ec-entry-select__controls">
     <a (click)="editItem(selection.items[0],$event)" class="btn btn_clear" *ngIf="solo&&!config.disableCreatePop&&hasMethod('put')&&!selection.isEmpty()">
       <ec-icon name="pencil"></ec-icon>
     </a>
-    <a (click)="listPop.show()" class="btn btn_clear" *ngIf="!config.disableListPop&&hasMethod('get')">
+    <a (click)="entryListPop.show()" class="btn btn_clear" *ngIf="!config.disableListPop&&hasMethod('get')">
       <ec-icon name="list-bullets"></ec-icon>
     </a>
     <a (click)="entryPop.create()" class="btn btn_clear" *ngIf="!config.disableCreatePop&&hasMethod('post')">

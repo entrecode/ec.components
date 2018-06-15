@@ -97,8 +97,20 @@ export default [
         content: 'Really Delete?'
     },
     {
+        name: 'resource.delete.safety',
+        content: 'To confirm deletion, enter the safety word'
+    },
+    {
         name: 'resource.delete.yes',
         content: 'Yes'
+    },
+    {
+        name: 'resource.delete.confirm',
+        content: 'Delete'
+    },
+    {
+        name: 'resource.delete.cancel',
+        content: 'Cancel'
     },
     {
         name: 'resource.delete.no',

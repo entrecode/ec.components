@@ -97,6 +97,10 @@ export default [
         content: 'Wirklich löschen?'
     },
     {
+        name: 'resource.delete.safety',
+        content: 'Gib zum Bestätigen das Sicherheitswort ein'
+    },
+    {
         name: 'resource.delete.yes',
         content: 'Ja'
     },
