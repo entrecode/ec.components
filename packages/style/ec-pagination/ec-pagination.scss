@@ -1,20 +1,76 @@
+// @param {array} $ec-pagination-spacing [8 0]
+
 .ec-pagination {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: rem(8) 0;
+  margin: arrayMagic($ec-pagination-spacing);
+}
 
-  &__item {
-    @extend %btn !optional;
-    background-color: transparent;
-    color: getColor(link);
+// @param {number} $ec-pagination-item-padding-ratio [$btn-padding-ratio]
+// @param {array} $ec-pagination-item-spacing [$btn-spacing]
+// @param {variable} $ec-pagination-item-font-family [$btn-font-family]
+// @param {number} $ec-pagination-item-font-size [$btn-font-size]
+// @param {number} $ec-pagination-item-line-height [$btn-line-height]
+// @param {number} $ec-pagination-item-min-height [$btn-min-height]
+// @param {value} $ec-pagination-item-weight [$btn-weight]
+// @param {boolean} $ec-pagination-item-round [$btn-round]
+// @param {rem} $ec-pagination-item-big-radius [$btn-radius]
+// @param {color} $ec-pagination-item-background [transparent]
+// @param {color} $ec-pagination-item-color [$link]
 
-    &.is-active,
-    &:hover,
-    &:focus {
-      background-color: getColor(state, hover);
-      color: setHover($link);
-    }
+.ec-pagination__item {
+  cursor: pointer;
+  appearance: none;
+  user-select: none;
+  outline: none;
+  touch-action: manipulation;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  position: relative;
+  height: auto;
+  border: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $ec-pagination-item-background;
+  color: $ec-pagination-item-color;
+  font-family: $ec-pagination-item-font-family;
+  font-weight: $ec-pagination-item-weight;
+  margin: arrayMagic($ec-pagination-item-spacing);
+  border-radius: arrayMagic($ec-pagination-item-radius);
+  transition: $btn-transition;
+
+  @if $ec-pagination-item-round == true {
+    border-radius: arrayMagic($ec-pagination-item-min-height / 2);
+  }
+
+  @include macro-metrics(
+    $ec-pagination-item-font-size,
+    $ec-pagination-item-line-height,
+    $ec-pagination-item-min-height,
+    $padding-ratio: $ec-pagination-item-padding-ratio
+  );
+
+  @extend %ec-pagination-item-style !optional;
+
+  // @param {color} $ec-pagination-item-active-background [transparent]
+  // @param {color} $ec-pagination-item-active-color [setHover($link)]
+
+  &.is-active,
+  &:hover,
+  &:focus {
+    background-color: $ec-pagination-item-active-background;
+    color: $ec-pagination-item-active-color;
+  }
+
+  // @param {color} $ec-pagination-item-disabled-background [transparent]
+  // @param {color} $ec-pagination-item-disabled-color [setHover($link)]
+
+  &.is-disabled {
+    background-color: $ec-pagination-item-disabled-background;
+    color: $ec-pagination-item-disabled-color;
   }
 }
 
@@ -23,14 +79,6 @@
   margin: 0;
   padding: 0;
   display: flex;
-}
-
-.ec-pagination-control {
-  &.is-disabled {
-    .ec-pagination__item {
-      color: getColor(state, disabled);
-    }
-  }
 }
 
 .ec-pagination-pages {
@@ -42,22 +90,18 @@
     padding: 0;
     display: flex;
     transition: all 0.2s linear;
-
-    li {
-      width: 40px;
-    }
-  }
-
-  .ec-pagination__item {
-    padding-left: 0;
-    padding-right: 0;
   }
 }
 
+// @param {px} $ec-pagination-info-size [$base-font-size * 0.875]
+// @param {color} $ec-pagination-info-color [$link]
 .ec-pagination-info {
   flex-grow: 1;
-  font-size: 0.875em;
+  font-size: arrayMagic($ec-pagination-info-size, xem);
+  color: $ec-pagination-info-color;
   text-align: center;
+
+  @extend %ec-pagination-info-style !optional;
 }
 
 .ec-pagination-size-select {

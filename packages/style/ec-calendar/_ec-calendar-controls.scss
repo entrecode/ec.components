@@ -1,7 +1,3 @@
-// @param {em} $ec-output-tag-font-size [1]
-// @param {value} $ec-calendar-title-weight [$is-bold]
-// @param {color} $ec-calendar-title-color [getColor(text, light)]
-
 .ec-calendar-controls {
   display: flex;
   justify-content: space-between;
@@ -29,9 +25,13 @@
   }
 }
 
+// @param {px} $ec-calendar-title-size [$base-font-size]
+// @param {value} $ec-calendar-title-weight [$is-bold]
+// @param {color} $ec-calendar-title-color [getColor(text, light)]
+
 .ec-calendar-title {
   font-weight: $ec-calendar-title-weight;
-  font-size: arrayMagic($ec-calendar-title-size, em);
+  font-size: arrayMagic($ec-calendar-title-size, xem);
   text-align: center;
   color: $ec-calendar-title-color;
   flex-grow: 1;
