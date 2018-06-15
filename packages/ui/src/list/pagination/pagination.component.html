@@ -13,7 +13,7 @@
   </ul>
   <div #container class="ec-pagination-pages" [hidden]="config?.hidePages" *ngIf="pagination?.getPages()>1">
     <ul #pageContainer *ngIf="pagination?.pages">
-      <li *ngFor="let page of pagination.pages;let i = index" #page>
+      <li *ngFor="let page of pagination.pages;let i = index" #page [hidden]="!isVisible(i+1)">
         <a (click)="pagination.select(i+1)" [class.is-active]="pagination.isActive(i+1)" class="ec-pagination__item">
           <span>{{i+1}}</span>
         </a>

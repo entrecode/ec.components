@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Pagination } from '@ec.components/core';
 import { PaginationConfig } from './pagination-config.interface';
@@ -10,7 +10,7 @@ import { PaginationConfig } from './pagination-config.interface';
   selector: 'ec-pagination',
   templateUrl: './pagination.component.html',
 })
-export class PaginationComponent<T> implements OnChanges, AfterViewInit, OnInit {
+export class PaginationComponent<T> implements OnChanges, OnInit {
   /** A Pagination Instance */
   @Input() pagination: Pagination<T>;
   /** The div container for the pages*/
@@ -33,20 +33,20 @@ export class PaginationComponent<T> implements OnChanges, AfterViewInit, OnInit 
     if (!this.pagination) {
       return;
     }
-    this.pagination.change$.subscribe((config) => {
-      setTimeout(() => {
-        this.translateContainer();
-      })
-    });
+    /*  this.pagination.change$.subscribe((config) => {
+       setTimeout(() => {
+         this.translateContainer();
+       })
+     }); */
     this.config = new PaginationConfig(this.config);
   }
   /** When the view is ready, the container is translated.  */
-  ngAfterViewInit() {
-    this.translateContainer();
-  }
+  /*   ngAfterViewInit() {
+      this.translateContainer();
+    } */
 
   /** Translates the page container that the current page is in the middle */
-  translateContainer() {
+  /* translateContainer() {
     if (!this.page || !this.pageContainer) {
       // console.warn('pages not ready', this.page, this.pageContainer);
       return;
@@ -57,7 +57,7 @@ export class PaginationComponent<T> implements OnChanges, AfterViewInit, OnInit 
     translation = Math.min(translation, (this.pagination.getPages() - (2 * this.config.range) - 1) * itemWidth);
     this.pageContainer.nativeElement.style = `transform:translateX(-${translation}px)`;
     this.container.nativeElement.style = `max-width:${(1 + 2 * this.config.range) * itemWidth}px`;
-  }
+  } */
 
   /** Determines if a page should be visible */
   isVisible(page) {
