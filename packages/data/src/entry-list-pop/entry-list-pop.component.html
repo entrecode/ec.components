@@ -1,14 +1,11 @@
 <div class="ec-pop-container" [class.is-active]="active" [class.is-visible]="visible">
-    <div class="ec-pop" *ngIf="active">
-        <header class="ec-pop-header" data-flex="is-wrap">
+    <div class="ec-pop" *ngIf="active" data-col="8-sm">
+        <header class="ec-pop-header">
             <button (click)="hide()" type="button" class="ec-pop__dismiss">
                 <ec-icon name="close-x-big"></ec-icon>
             </button>
-            <div data-col="12">
-                <ec-searchbar (selected)="hide()" placeholder="Search.." [list]="entryList" #searchbar *ngIf="entryList" [property]="lightModel?.titleField"></ec-searchbar>
-                <ec-list-header [list]="entryList?.list" [selection]="selection"></ec-list-header>
-                <!-- (selected)="select($event)"  -->
-            </div>
+            <ec-searchbar (selected)="hide()" placeholder="Search.." [list]="entryList" #searchbar *ngIf="entryList" [property]="lightModel?.titleField"></ec-searchbar>
+            <ec-list-header [list]="entryList?.list" [selection]="selection"></ec-list-header>
         </header>
         <div class="ec-pop-body">
             <ec-entry-list (change)="searchbar.focusEvent.emit(true)" [model]="model" [config]="config" [selection]="selection" (columnClicked)="select($event)"

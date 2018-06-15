@@ -24,11 +24,12 @@
     <!-- Dropdown -->
     <ec-pop (click)="clickInside($event)" [ngClass]="config?.nestedPopClass || 'ec-select-options'" #dropdown [active]="config?.nestedPopActive"
       [visible]="config?.nestedPopVisible" *ngIf="!config.disableSelect">
-      <ec-entry-list #entryList [model]="model" *ngIf="selection&&dropdown.active" [config]="dropdownConfig" [selection]="selection" (columnClicked)="select($event)"></ec-entry-list>
+      <ec-entry-list #entryList [model]="model" *ngIf="selection&&dropdown.active" [config]="dropdownConfig" [selection]="selection"
+        (columnClicked)="select($event)"></ec-entry-list>
     </ec-pop>
     <!-- Fully fledged entryListPop -->
-    <ec-entry-list-pop (click)="clickInside($event)" [model]="model" [ngClass]="getPopClass()" [config]="config" [selection]="selection"
-      #entryListPop></ec-entry-list-pop>
+    <ec-entry-list-pop (click)="clickInside($event)" [model]="model" [ngClass]="getPopClass()" class="ec-entry-list-pop" [config]="config"
+      [selection]="selection" #entryListPop></ec-entry-list-pop>
     <ec-resource-delete-pop [question]="'entry.select.delete.question' | symbol" #confirmDelete></ec-resource-delete-pop>
 
   </div>
