@@ -13,10 +13,10 @@
 //
 // EC-CALENDAR
 // ------------------------------------------------------
-// @param {em} $ec-output-tag-font-size [1]
+// @param {px} $ec-calendar-title-size [$base-font-size]
 // @param {value} $ec-calendar-title-weight [$is-bold]
 // @param {color} $ec-calendar-title-color [getColor(text, light)]
-$ec-calendar-title-size: 1 !default;
+$ec-calendar-title-size: $base-font-size !default;
 $ec-calendar-title-weight: $is-bold !default;
 $ec-calendar-title-color: getColor(text, light) !default;
 
@@ -24,10 +24,10 @@ $ec-calendar-title-color: getColor(text, light) !default;
   // put additional styles here...
 }
 
-// @param {em} $ec-calendar-weekdays-size [.875]
+// @param {px} $ec-calendar-weekdays-size [$base-font-size * 0.875]
 // @param {value} $ec-calendar-weekdays-weight [$is-bold]
 // @param {color} $ec-calendar-month-weekdays-color [getColor(text, light)]
-$ec-calendar-weekdays-size: 0.875 !default;
+$ec-calendar-weekdays-size: $base-font-size * 0.875 !default;
 $ec-calendar-weekdays-weight: $is-bold !default;
 $ec-calendar-weekdays-color: getColor(text, light) !default;
 
@@ -70,8 +70,8 @@ $ec-output-asset-background: $background-lighter !default;
 $ec-output-asset-font-size: $tag-small-font-size !default;
 $ec-output-asset-line-height: $tag-small-line-height !default;
 
-// @param {em} $ec-output-tag-font-size [.875]
-$ec-output-tag-font-size: 0.875 !default;
+// @param {em} $ec-output-tag-font-size [$base-font-size * 0.875]
+$ec-output-tag-font-size: $base-font-size * 0.875 !default;
 
 // @param {em} $ec-output-tags-font-size [$ec-output-tag-font-size]
 $ec-output-tags-font-size: $ec-output-tag-font-size !default;
@@ -80,15 +80,19 @@ $ec-output-tags-font-size: $ec-output-tag-font-size !default;
 // EC-INPUT
 // ------------------------------------------------------
 // @param {array} $ec-input-errors-spacing [8 0 0]
-// @param {em} $ec-input-errors-size [.875]
+// @param {em} $ec-input-errors-size [$base-font-size * 0.875]
 // @param {color} $ec-input-errors-color [$state-error]
 $ec-input-errors-spacing: 8 0 0 !default;
-$ec-input-errors-size: 0.875 !default;
+$ec-input-errors-size: $base-font-size * 0.875 !default;
 $ec-input-errors-color: $state-error !default;
 
 //
 // ui/list
 // ------------------------------------------------------------------------------------------------------------
+
+//
+// EC-INPUT
+// ------------------------------------------------------
 // @param {px} $ec-list-header-size [$base-font-size * 0.875]
 // @param {value} $ec-list-header-weight [$is-bold]
 // @param {color} $ec-list-header-color [$text-light]
@@ -147,6 +151,59 @@ $ec-list-cell-size: $base-font-size !default;
 $ec-list-cell-weight: $is-bold !default;
 $ec-list-cell-color: $text !default;
 $ec-list-cell-padding: 8 !default;
+
+//
+// EC-PAGINATION
+// ------------------------------------------------------
+// @param {array} $ec-pagination-spacing [8 0]
+$ec-pagination-spacing: 8 0 !default;
+
+// @param {number} $ec-pagination-item-padding-ratio [0]
+// @param {array} $ec-pagination-item-spacing [$btn-spacing]
+// @param {variable} $ec-pagination-item-font-family [$btn-font-family]
+// @param {number} $ec-pagination-item-font-size [$btn-font-size]
+// @param {number} $ec-pagination-item-line-height [$btn-line-height]
+// @param {number} $ec-pagination-item-min-height [$btn-min-height]
+// @param {value} $ec-pagination-item-weight [$btn-weight]
+// @param {rem} $ec-pagination-item-big-radius [$btn-radius]
+$ec-pagination-item-padding-ratio: 0 !default;
+$ec-pagination-item-spacing: $btn-spacing !default;
+$ec-pagination-item-font-family: $btn-font-family;
+$ec-pagination-item-font-size: $btn-font-size !default;
+$ec-pagination-item-line-height: $btn-line-height !default;
+$ec-pagination-item-min-height: $btn-min-height !default;
+$ec-pagination-item-weight: $btn-weight !default;
+$ec-pagination-item-radius: $btn-radius !default;
+
+// @param {color} $ec-pagination-item-background [transparent]
+// @param {color} $ec-pagination-item-color [$link]
+// @param {color} $ec-pagination-item-active-background [transparent]
+// @param {color} $ec-pagination-item-active-color [setHover($link)]
+// @param {color} $ec-pagination-item-disabled-background [transparent]
+// @param {color} $ec-pagination-item-disabled-color [setHover($link)]
+$ec-pagination-item-background: transparent;
+$ec-pagination-item-color: $link;
+$ec-pagination-item-active-background: $state-hover;
+$ec-pagination-item-active-color: setHover($link);
+$ec-pagination-item-disabled-background: transparent;
+$ec-pagination-item-disabled-color: $state-disabled;
+
+
+// @param {boolean} $ec-pagination-item-round [$btn-round]
+$ec-pagination-item-round: $btn-round !default;
+
+%ec-pagination-item-style {
+  // put additional styles here...
+}
+
+// @param {px} $ec-pagination-info-size [$base-font-size * 0.875]
+// @param {color} $ec-pagination-info-color [$link]
+$ec-pagination-info-size: $base-font-size * 0.875 !default;
+$ec-pagination-info-color: $text-light;
+
+%ec-pagination-info-style {
+  // put additional styles here...
+}
 
 //
 // EC-POP
