@@ -1,20 +1,19 @@
 <div class="ec-list-header">
   <div class="ec-list-cell ec-list-item__selector" *ngIf="list?.config?.selectMode&&!list?.isEmpty()">
-    <input type="checkbox" (click)="selection?.toggleAll(list?.page)"
-           [checked]="selection?.hasAll(list?.page)" [disabled]="selection?.config?.solo">
+    <input type="checkbox" (click)="selection?.toggleAll(list?.page)" [checked]="selection?.hasAll(list?.page)" [disabled]="selection?.config?.solo">
   </div>
 
   <ec-form [config]="list?.config" [value]="list?.config?.filter" [empty]="true" #filterForm></ec-form>
 
-  <div class="ec-list-cell" *ngFor="let field of list?.fields;let i = index"
-      [ngClass]="'ec-list-cell_' + field.view"
-      [class.is-hidden]="field.hidden"
-      [class.is-sortable]="field.sortable"
-      [class.is-sorted]="list.isSorted(field.property)"
-      [class.is-filterable]="field.filterable"
-      [class.is-filtered]="list.isFiltered(field.property)"
-      [class.is-sorted-asc]="list.isSorted(field.property, false)"
-      [class.is-sorted-desc]="list.isSorted(field.property, true)">
+  <div class="ec-list-cell" *ngFor="let field of list?.fields;let i = index" 
+    [ngClass]="'ec-list-cell_' + field.view" 
+    [class.is-hidden]="field.hidden"
+    [class.is-sortable]="field.sortable" 
+    [class.is-sorted]="list.isSorted(field.property)" 
+    [class.is-filterable]="field.filterable"
+    [class.is-filtered]="list.isFiltered(field.property)" 
+    [class.is-sorted-asc]="list.isSorted(field.property, false)" 
+    [class.is-sorted-desc]="list.isSorted(field.property, true)">
 
     <a (click)="editFilter(filterPop)" class="is-filterable-control" *ngIf="field.filterable">
       <ec-icon name="find"></ec-icon>
@@ -25,29 +24,24 @@
     </span>
     <span class="is-sortable-indicator" *ngIf="field.sortable"></span>
 
-    <ec-pop #filterPop class="is-filterable-pop" [ngClass]="field.filterPopClass">
-      <div class="is-filterable-filter">
-        <ec-input [field]="field" [group]="filterForm?.group" [debounce]="200"
-                  *ngIf="filterForm?.group?.get(field?.property)"
-                  (changed)="applyFilter(field.property, $event)"></ec-input>
-        <a (click)="removeFilter(field.property, filterForm?.group?.get(field.property));filterPop.hide()"
-           class="is-filterable-filter__reset">&times;</a>
-      </div>
+    <ec-pop #filterPop class="is-filterable-pop">
+       <!-- [ngClass]="field.filterPopClass" -->
+      <ec-input [field]="field" [group]="filterForm?.group" [debounce]="200" *ngIf="filterForm?.group?.get(field?.property)" (changed)="applyFilter(field.property, $event)"></ec-input>
+      <a (click)="removeFilter(field.property, filterForm?.group?.get(field.property));filterPop.hide()" class="is-filterable-filter__reset">&times;</a>
     </ec-pop>
   </div>
 
   <!-- TODO see T5-2289 - move field-filter to ec-list-header -->
   <div class="ec-list-column-filter" tabindex="0">
-     <span>&#9776;</span>
-     <div class="ec-list-column-filter-options">
-       <ul>
-         <li class="ec-list-column-filter-option">
-           <label>
-             <input type="checkbox">
-             option
-           </label>
-         </li>
-       </ul>
-     </div>
+    <span>&#9776;</span>
+    <div class="ec-list-column-filter-options">
+      <ul>
+        <li class="ec-list-column-filter-option">
+          <label>
+            <input type="checkbox"> option
+          </label>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>

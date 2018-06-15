@@ -79,6 +79,13 @@ $padding: (($ec-select-min-height - $ec-select-line-height) / 2) -
 }
 
 .ec-select-selection {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: em($padding * -1, $ec-select-font-size) rem(-2);
+  width: 100%;
+
   .ec-select-selected {
     width: auto;
     margin: rem(2);
@@ -101,18 +108,8 @@ $padding: (($ec-select-min-height - $ec-select-line-height) / 2) -
       background-color: setHover($ec-select-selected-background);
     }
 
-
     @extend %ec-select-selected-style !optional;
   }
-}
-
-.ec-select-selection {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0;
-  margin: em($padding * -1, $ec-select-font-size) rem(-2);
-  width: 100%;
 
   .is-draggable {
     cursor: grab;
@@ -136,6 +133,8 @@ $padding: (($ec-select-min-height - $ec-select-line-height) / 2) -
 }
 
 .ec-select-options {
+  font-size: rem($base-font-size);
+
   .ec-list {
     .ec-list-header {
       display: none;
@@ -156,6 +155,14 @@ $padding: (($ec-select-min-height - $ec-select-line-height) / 2) -
 
     .ec-list-cell {
       padding: 0;
+    }
+  }
+
+  .ec-pagination {
+    flex-direction: column;
+
+    .ec-pagination-size-select {
+      display: none;
     }
   }
 }

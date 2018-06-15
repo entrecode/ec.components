@@ -11,6 +11,7 @@
 
   > span {
     color: $ec-list-header-color;
+    font-size: $ec-list-header-size;
     opacity: 0.8;
     transition: all 0.2s;
   }
@@ -23,6 +24,10 @@
 
   &:focus,
   &:focus-within {
+    > span {
+      opacity: 1;
+    }
+
     > .ec-list-column-filter-options {
       visibility: visible;
       opacity: 1;

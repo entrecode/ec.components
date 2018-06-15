@@ -1,7 +1,11 @@
-// @param {color} $ec-list-item-color [$text]
 // @param {color} $ec-list-item-background [transparent]
 // @param {array} $ec-list-item-padding [0]
 // @param {array} $ec-list-item-spacing [0]
+// @param {color} $ec-list-filterable-control-color [$link]
+// @param {color} $ec-list-item-clickable-color [$link]
+// @param {color} $ec-list-item-clickable-background [$state-hover]
+// @param {color} $ec-list-item-selected-color [$ec-list-item-clickable-color]
+// @param {color} $ec-list-item-selected-background [$ec-list-item-clickable-background]
 
 .ec-list-item {
   display: flex;
@@ -9,17 +13,42 @@
   transition: all 0.4s;
   padding: arrayMagic($ec-list-item-padding);
   margin: arrayMagic($ec-list-item-spacing);
-  color: $ec-list-item-color;
   background-color: $ec-list-item-background;
-  font-size: arrayMagic($ec-list-item-size, xem);
 
   &.is-hidden {
     display: none;
   }
 
-  &.is-selected,
-  &:hover {
-    background-color: mix(getColor(state, hover), $ec-list-item-background);
+  &.is-clickable {
+    cursor: pointer;
+
+    &:hover {
+      color: $ec-list-item-clickable-color;
+      background-color: flattenColor(
+        $ec-list-item-clickable-background,
+        $ec-list-item-background
+      );
+
+      @extend %ec-list-item-clickable-style !optional;
+
+      .ec-list-cell {
+        color: $ec-list-item-clickable-color;
+      }
+    }
+  }
+
+  &.is-selected {
+    color: $ec-list-item-selected-color;
+    background-color: flattenColor(
+      $ec-list-item-selected-background,
+      $ec-list-item-background
+    );
+
+    @extend %ec-list-item-selected-style !optional;
+
+    .ec-list-cell {
+      color: $ec-list-item-selected-color;
+    }
   }
 
   @extend %ec-list-item-style !optional;

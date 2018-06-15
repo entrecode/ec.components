@@ -92,13 +92,13 @@ $ec-input-errors-color: $state-error !default;
 // @param {px} $ec-list-header-size [$base-font-size * 0.875]
 // @param {value} $ec-list-header-weight [$is-bold]
 // @param {color} $ec-list-header-color [$text-light]
-// @param {color} $ec-list-header-background [transparent]
+// @param {color} $ec-list-header-background [$background]
 // @param {array} $ec-list-header-padding [0]
 // @param {array} $ec-list-header-spacing [0 0 8]
 $ec-list-header-size: $base-font-size * 0.875 !default;
 $ec-list-header-weight: $is-bold !default;
 $ec-list-header-color: $text-light !default;
-$ec-list-header-background: transparent !default;
+$ec-list-header-background: $background !default;
 $ec-list-header-padding: 0 !default;
 $ec-list-header-spacing: 0 0 8 !default;
 
@@ -106,15 +106,13 @@ $ec-list-header-spacing: 0 0 8 !default;
   // add style here....
 }
 
-// @param {px} $ec-list-item-size [$base-font-size]
-// @param {value} $ec-list-item-weight [$bold]
-// @param {color} $ec-list-item-color [$text]
+// @param {color} $ec-list-filterable-control-color [$ec-list-header-color]
+$ec-list-filterable-control-color: $ec-list-header-color;
+
 // @param {color} $ec-list-item-background [transparent]
 // @param {array} $ec-list-item-padding [0]
 // @param {array} $ec-list-item-spacing [0]
-$ec-list-item-size: $base-font-size !default;
-$ec-list-item-weight: $is-bold !default;
-$ec-list-item-color: $text !default;
+
 $ec-list-item-background: transparent !default;
 $ec-list-item-padding: 0 !default;
 $ec-list-item-spacing: 0 !default;
@@ -123,10 +121,32 @@ $ec-list-item-spacing: 0 !default;
   // add style here....
 }
 
+// @param {color} $ec-list-item-clickable-color [$link]
+// @param {color} $ec-list-item-clickable-background [$state-hover]
+$ec-list-item-clickable-color: $link !default;
+$ec-list-item-clickable-background: $state-hover !default;
+
+%ec-list-item-clickable-style {
+  // add style here....
+}
+
+// @param {color} $ec-list-item-selected-color [$ec-list-item-clickable-color]
+// @param {color} $ec-list-item-selected-background [$ec-list-item-clickable-background]
+$ec-list-item-selected-color: $ec-list-item-clickable-color !default;
+$ec-list-item-selected-background: $ec-list-item-clickable-background !default;
+
+%ec-list-item-selected-style {
+  // add style here....
+}
+
+// @param {px} $ec-list-cell-size [$base-font-size]
+// @param {value} $ec-list-cell-weight [$is-bold]
+// @param {color} $ec-list-cell-color [$text]
 // @param {array} $ec-list-cell-padding [8]
+$ec-list-cell-size: $base-font-size !default;
+$ec-list-cell-weight: $is-bold !default;
+$ec-list-cell-color: $text !default;
 $ec-list-cell-padding: 8 !default;
-
-
 
 //
 // EC-POP
@@ -136,11 +156,11 @@ $ec-list-cell-padding: 8 !default;
 // @param {array} $ec-pop-spacing [$base-spacing]
 // @param {array} $ec-pop-radius [$overlay-radius]
 // @param {array} $ec-pop-shadow [$overlay-shadow]
-$ec-pop-background: $background;
-$ec-pop-color: $text;
-$ec-pop-spacing: $base-spacing;
-$ec-pop-radius: $overlay-radius;
-$ec-pop-shadow: $overlay-shadow;
+$ec-pop-background: $background !default;
+$ec-pop-color: $text !default;
+$ec-pop-spacing: $base-spacing !default;
+$ec-pop-radius: $overlay-radius !default;
+$ec-pop-shadow: $overlay-shadow !default;
 
 %ec-pop-style {
   // add styles..
@@ -182,12 +202,12 @@ $ec-pop-footer-padding: 8 !default;
 // @param {array} $ec-pop-dialog-radius [$ec-pop-radius]
 // @param {array} $ec-pop-dialog-shadow [$ec-pop-shadow]
 // @param {px} $ec-pop-dialog-min-width [320]
-$ec-pop-dialog-background: $ec-pop-background;
-$ec-pop-dialog-color: $ec-pop-color;
-$ec-pop-dialog-spacing: $ec-pop-spacing;
-$ec-pop-dialog-radius: $ec-pop-radius;
-$ec-pop-dialog-shadow: $ec-pop-shadow;
-$ec-pop-dialog-min-width: 320;
+$ec-pop-dialog-background: $ec-pop-background !default;
+$ec-pop-dialog-color: $ec-pop-color !default;
+$ec-pop-dialog-spacing: $ec-pop-spacing !default;
+$ec-pop-dialog-radius: $ec-pop-radius !default;
+$ec-pop-dialog-shadow: $ec-pop-shadow !default;
+$ec-pop-dialog-min-width: 320 !default;
 
 %ec-pop-dialog-style {
   // add styles..
@@ -201,11 +221,11 @@ $ec-pop-dialog-min-width: 320;
 // @param {array} $ec-pop-fullscreen-spacing [$base-spacing]
 // @param {array} $ec-pop-fullscreen-radius [$ec-pop-radius]
 // @param {array} $ec-pop-fullscreen-shadow [$ec-pop-shadow]
-$ec-pop-fullscreen-background: $ec-pop-background;
-$ec-pop-fullscreen-color: $ec-pop-color;
-$ec-pop-fullscreen-spacing: $ec-pop-spacing;
-$ec-pop-fullscreen-radius: $ec-pop-radius;
-$ec-pop-fullscreen-shadow: $ec-pop-shadow;
+$ec-pop-fullscreen-background: $ec-pop-background !default;
+$ec-pop-fullscreen-color: $ec-pop-color !default;
+$ec-pop-fullscreen-spacing: $ec-pop-spacing !default;
+$ec-pop-fullscreen-radius: $ec-pop-radius !default;
+$ec-pop-fullscreen-shadow: $ec-pop-shadow !default;
 
 %ec-pop-fullscreen-style {
   // add styles..
