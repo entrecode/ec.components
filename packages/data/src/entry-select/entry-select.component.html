@@ -38,7 +38,7 @@
         <ec-entry-list [model]="model" [config]="config" [selection]="selection" (columnClicked)="select($event)" #entryList></ec-entry-list>
       </div>
     </ec-pop> -->
-    <ec-entry-list-pop (click)="clickInside($event)" [model]="model" [ngClass]="getPopClass()" [config]="config" [selection]="selection" #listPop></ec-entry-list-pop>
+    <ec-entry-list-pop (click)="clickInside($event)" [model]="model" [ngClass]="getPopClass()" [config]="config" [selection]="selection" #listPop class="ec-entry-list-pop"></ec-entry-list-pop>
   </div>
   <ec-entry-pop #entryPop [model]="model" [ngClass]="getPopClass()" [config]="config" (submitted)="formSubmitted($event)" (deleted)="removeItem($event)"></ec-entry-pop>
   <nav class="ec-entry-select__controls">
