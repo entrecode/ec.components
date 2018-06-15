@@ -20,6 +20,12 @@ export class ResourceDeletePopComponent {
     confirmInput = '';
     /** The pop inside the view. */
     @ViewChild(PopComponent) pop: PopComponent;
+    /** The question inside the pop */
+    @Input() question: string;
+    /** The label for confirmation */
+    @Input() yes: string;
+    /** The label for canceling */
+    @Input() no: string;
     /** The resource to delete */
     @Input() resource: Resource;
     /** The relation where it happened */

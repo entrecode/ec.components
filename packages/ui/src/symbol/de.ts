@@ -347,5 +347,9 @@ export default [
     {
         name: 'role.field.label.addUnregistered',
         content: 'addUnregistered'
+    },
+    {
+        name: 'entry.select.delete.question',
+        content: 'Soll der Entry auch gelöscht werden?'
     }
 ];

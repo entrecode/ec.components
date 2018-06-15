@@ -1,12 +1,12 @@
 <ec-pop class="ec-pop ec-pop_dialog">
-    {{!safetyWord?'resource.delete.question':'resource.delete.safety' | symbol}}
-    <label>"{{safetyWord}}"
-        <input type="text" class="input" *ngIf="safetyWord" [(ngModel)]="confirmInput" />
+    {{question||((!safetyWord?'resource.delete.question':'resource.delete.safety') | symbol)}}
+    <label *ngIf="safetyWord">"{{safetyWord}}"
+        <input type="text" class="input" [(ngModel)]="confirmInput" />
     </label>
     <a class="btn" (click)="delete()" [class.is-disabled]="!canDelete()">
-        {{!safetyWord?'resource.delete.yes':'resource.delete.confirm' | symbol}}
+        {{yes||((!safetyWord?'resource.delete.yes':'resource.delete.confirm') | symbol)}}
     </a>
     <a class="btn btn_minor" (click)="hide()">
-        {{!safetyWord?'resource.delete.no':'resource.delete.cancel' | symbol}}
+        {{no||((!safetyWord?'resource.delete.no':'resource.delete.cancel') | symbol)}}
     </a>
 </ec-pop>
