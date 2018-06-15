@@ -16,12 +16,14 @@ $padding: (($ec-select-min-height - $ec-select-line-height) / 2) -
   border-color: $ec-select-border-color;
   border-width: rem($ec-select-border-width);
   border-radius: arrayMagic($ec-select-radius);
-  font-size: em($ec-select-font-size);
-  line-height: em($ec-select-line-height, $ec-select-font-size);
-  min-height: em($ec-select-min-height, $ec-select-font-size);
-  padding: em($padding, $ec-select-font-size)
-    em(($padding * $ec-select-padding-ratio), $ec-select-font-size);
   margin: arrayMagic($ec-select-spacing);
+  @include macro-metrics(
+    $ec-select-font-size,
+    $ec-select-line-height,
+    $ec-select-min-height,
+    $padding-ratio: $ec-select-padding-ratio,
+    $inline-styles: false
+  );
 
   /// additional styles via config
   @extend %ec-select-style !optional;
@@ -45,12 +47,23 @@ $padding: (($ec-select-min-height - $ec-select-line-height) / 2) -
   }
 
   &.is-dirty {
-    padding: em($padding, $ec-select-font-size);
+    @include macro-metrics(
+      $ec-select-font-size,
+      $ec-select-line-height,
+      $ec-select-min-height,
+      $padding-ratio: 1,
+      $inline-styles: false
+    );
   }
 
   &.is-solo {
-    padding: em($padding, $ec-select-font-size)
-      em(($padding * $ec-select-padding-ratio), $ec-select-font-size);
+    @include macro-metrics(
+      $ec-select-font-size,
+      $ec-select-line-height,
+      $ec-select-min-height,
+      $padding-ratio: $ec-select-padding-ratio,
+      $inline-styles: false
+    );
   }
 }
 
