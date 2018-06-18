@@ -114,11 +114,28 @@ $ec-output-color-border: 0 !default;
 
 // EC-OUTPUT-TAG
 // @param {em} $ec-output-tag-font-size [$base-font-size * 0.875]
+// @param {px} $tag-line-height [$tag-line-height]
+// @param {value} $ec-output-tag-weight [$tag-weight]
+// @param {color} $ec-output-tag-background [$tag-background]
+// @param {color} $ec-output-tag-color [setContrast($tag-background)]
+// @param {px} $ec-output-tag-min-height [$tag-min-height]
+// @param {number} $ec-output-tag-padding-ratio [$tag-padding-ratio]
 $ec-output-tag-font-size: $base-font-size * 0.875 !default;
+$ec-output-tag-line-height: $tag-line-height !default;
+$ec-output-tag-weight: $tag-weight !default;
+$ec-output-tag-background: $tag-background !default;
+$ec-output-tag-color: setContrast($tag-background) !default;
+$ec-output-tag-min-height: $tag-min-height !default;
+$ec-output-tag-padding-ratio: $tag-padding-ratio !default;
 
-// EC-OUTPUT-TAGS
-// @param {em} $ec-output-tags-font-size [$ec-output-tag-font-size]
-$ec-output-tags-font-size: $ec-output-tag-font-size !default;
+// @param {boolean} $ec-output-tag-round [$tag-round]
+// @param {array} $ec-output-tag-radius [$tag-ratio]
+$ec-output-tag-round: $tag-round !default;
+$ec-output-tag-radius: $tag-radius !default;
+
+%ec-output-tag-style {
+  // add styles...
+}
 
 //
 // EC-INPUT
@@ -231,7 +248,6 @@ $ec-pagination-item-active-background: $state-hover;
 $ec-pagination-item-active-color: setHover($link);
 $ec-pagination-item-disabled-background: transparent;
 $ec-pagination-item-disabled-color: $state-disabled;
-
 
 // @param {boolean} $ec-pagination-item-round [$btn-round]
 $ec-pagination-item-round: $btn-round !default;
