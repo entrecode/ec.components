@@ -1,3 +1,9 @@
+// @param {array} $ec-output-asset-padding [8 16]
+// @param {px} $ec-output-asset-radius [$tag-radius]
+// @param {color} $ec-output-asset-background [$background-lighter]
+// @param {px} $ec-output-asset-font-size [$tag-small-font-size]
+// @param {px} $ec-output-asset-line-height [$tag-small-line-height]
+
 .ec-output-asset {
   display: inline-flex;
   align-items: center;
@@ -7,6 +13,8 @@
   border-radius: arrayMagic($ec-output-asset-radius);
   padding: arrayMagic($ec-output-asset-padding);
   opacity: .2;
+
+  @extend %ec-output-asset-style !optional;
 
   .ec-icon {
     font-size: 1em;
@@ -22,4 +30,3 @@
     opacity: 1;
   }
 }
-

@@ -65,6 +65,7 @@ $ec-calendar-day-other-background: transparent !default;
 //
 // EC-OUTPUT
 // ------------------------------------------------------
+
 // @param {array} $ec-output-asset-padding [8 16]
 // @param {px} $ec-output-asset-radius [$tag-radius]
 // @param {color} $ec-output-asset-background [$background-lighter]
@@ -75,6 +76,19 @@ $ec-output-asset-radius: $tag-radius !default;
 $ec-output-asset-background: $background-lighter !default;
 $ec-output-asset-font-size: $tag-small-font-size !default;
 $ec-output-asset-line-height: $tag-small-line-height !default;
+
+%ec-output-asset-style {
+  // add styles...
+}
+
+// @param {px} $ec-output-avatar-size [32]
+// @param {array} $ec-output-avatar-border [2 solid $background]
+$ec-output-avatar-size: 32 !default;
+$ec-output-avatar-border: 2 solid $background !default;
+
+%ec-output-avatar-style {
+  // add styles...
+}
 
 // @param {em} $ec-output-tag-font-size [$base-font-size * 0.875]
 $ec-output-tag-font-size: $base-font-size * 0.875 !default;
