@@ -1,15 +1,21 @@
+// @param {px} $ec-loader-size [24]
+// @param {px} $ec-loader-track-width [24]
+// @param {color} $ec-loader-track-color [$divider-color]
+// @param {color} $ec-loader-racer-color [$link]
+// @param {color} $ec-loader-racer-speed [1s]
+
 @keyframes loaderDefault {
   0% {
     transform: rotate(0);
-    border-right-color: getColor(link);
+    border-right-color: $ec-loader-racer-color;
   }
 
   50% {
-    border-right-color: getColor(super);
+    border-right-color: invert($ec-loader-racer-color);
   }
 
   100% {
-    border-right-color: getColor(link);
+    border-right-color: $ec-loader-racer-color;
     transform: rotate(360deg);
   }
 }
@@ -26,9 +32,9 @@
     height: em(24);
     width: em(24);
     border-radius: 50%;
-    border: em(4) solid getColor(divider);
-    border-right-color: getColor(link);
-    animation: loaderDefault 1s infinite linear;
+    border: em($ec-loader-track-width) solid $ec-loader-track-color;
+    border-right-color: $ec-loader-racer-color;
+    animation: loaderDefault $ec-loader-racer-speed infinite linear;
   }
 }
 
