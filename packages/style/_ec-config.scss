@@ -198,8 +198,24 @@ $ec-list-header-spacing: 0 0 8 !default;
   // add style here....
 }
 
+// @param {px} $ec-list-group-header-font-size [$base-font-size * 0.875]
+// @param {value} $ec-list-group-header-weight [$is-bold]
+// @param {array} $ec-list-group-header-spacing [0 0 16]
+$ec-list-group-header-font-size: $base-font-size * 0.875;
+$ec-list-group-header-weight: $is-bold;
+$ec-list-group-header-spacing: 0 0 16;
+
+%ec-list-group-header-weight {
+  // add style here...
+}
+
 // @param {color} $ec-list-filterable-control-color [$ec-list-header-color]
 $ec-list-filterable-control-color: $ec-list-header-color;
+
+// @param {color} $ec-list-sortable-color [$text-lightest]
+// @param {color} $ec-list-sortable-active-color [$text]
+$ec-list-sortable-color: $text-lightest;
+$ec-list-sortable-active-color: $text;
 
 // @param {color} $ec-list-item-background [transparent]
 // @param {array} $ec-list-item-padding [0]
@@ -210,7 +226,7 @@ $ec-list-item-padding: 0 !default;
 $ec-list-item-spacing: 0 !default;
 
 %ec-list-item-style {
-  // add style here....
+  // add style here...
 }
 
 // @param {color} $ec-list-item-clickable-color [$link]

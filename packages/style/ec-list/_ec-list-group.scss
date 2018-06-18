@@ -1,13 +1,19 @@
+// @param {px} $ec-list-group-header-font-size [$base-font-size * 0.875]
+// @param {value} $ec-list-group-header-weight [$is-bold]
+// @param {array} $ec-list-group-header-spacing [0 0 16]
+
 .ec-list-group {
   .ec-list-group-header {
     display: flex;
-    margin-top: rem($base-spacing);
+    margin: arrayMagic($ec-list-group-header-spacing);
 
     .ec-list-group-header__title {
       width: 100%;
       text-align: center;
-      font-weight: bold;
-      font-size: 0.875em;
+      font-weight: $ec-list-group-header-weight;
+      font-size: em($base-font-size * 0.875);
     }
+
+    @extend %ec-list-group-header-weight !optional;
   }
 }
