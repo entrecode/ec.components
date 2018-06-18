@@ -1,22 +1,26 @@
 .ec-datetime-picker {
   position: relative;
 
-  .datetime-select {
-    .ec-pop {
-      padding: arrayMagic($overlay-padding);
-      box-shadow: arrayMagic($overlay-shadow);
-      border-radius: arrayMagic($overlay-radius);
-      background-color: $overlay-background;
-      color: setContrast($overlay-background);
-      position: absolute;
-      top: 100%;
-      z-index: 10;
-      margin-bottom: 1em;
-      width: rem(320);
-    }
-  }
-
   .ec-calendar {
     margin: rem(8) 0;
+  }
+}
+// @param {color} $ec-datetinme-select-background [$overlay-background]
+// @param {px} $ec-datetinme-select-max-width [320]
+// @param {array} $ec-datetinme-select-padding [$overlay-padding]
+// @param {array} $ec-datetinme-select-radius [$overlay-radius]
+// @param {array} $ec-datetinme-select-shadow [$overlay-shadow]
+
+.ec-datetime-select {
+  .ec-pop {
+    position: absolute;
+    top: 100%;
+    z-index: 10;
+    width: 100%;
+    max-width: rem($ec-datetinme-select-max-width);
+    padding: arrayMagic($ec-datetinme-select-padding);
+    box-shadow: arrayMagic($ec-datetinme-select-shadow);
+    border-radius: arrayMagic($ec-datetinme-select-radius);
+    background-color: $ec-datetinme-select-background;
   }
 }
