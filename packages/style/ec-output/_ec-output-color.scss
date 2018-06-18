@@ -1,8 +1,12 @@
+// @param {px} $ec-output-color-size [20]
+// @param {array} $ec-output-color-border [0]
+
 .ec-output-color__sample {
-  width: 20px;
-  height: 20px;
   display: block;
   border-radius: 50%;
+  width: arrayMagic($ec-output-color-size, xem);
+  height: arrayMagic($ec-output-color-size, xem);
+  border: arrayMagic($ec-output-color-border);
 }
 
 .ec-output-color__property {
