@@ -4,7 +4,7 @@
   right: 0;
   top: 0;
   z-index: 1;
-  color: getColor(text, lighter);
+  color: rgba(setContrast($ec-pop-fullscreen-background), 0.6);
   animation: all 0.2s;
 
   &:only-child {
@@ -12,6 +12,6 @@
   }
 
   &:hover {
-    color: getColor(text, light);
+    color: rgba(setContrast($ec-pop-fullscreen-background), 1);
   }
 }

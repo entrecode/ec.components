@@ -163,16 +163,16 @@ $ec-input-errors-color: $state-error !default;
 //
 // EC-DATTIME-PICKER
 // ------------------------------------------------------
-// @param {color} $ec-datetinme-select-background [$overlay-background]
-// @param {px} $ec-datetinme-select-max-width [320]
-// @param {array} $ec-datetinme-select-padding [$overlay-padding]
-// @param {array} $ec-datetinme-select-radius [$overlay-radius]
-// @param {array} $ec-datetinme-select-shadow [$overlay-shadow]
-$ec-datetinme-select-background: $overlay-background !default;
-$ec-datetinme-select-max-width: 320 !default;
-$ec-datetinme-select-padding: $overlay-padding !default;
-$ec-datetinme-select-radius: $overlay-radius !default;
-$ec-datetinme-select-shadow: $overlay-shadow !default;
+// @param {color} $ec-datetime-select-background [$overlay-background]
+// @param {px} $ec-datetime-select-max-width [320]
+// @param {array} $ec-datetime-select-padding [$overlay-padding]
+// @param {array} $ec-datetime-select-radius [$overlay-radius]
+// @param {array} $ec-datetime-select-shadow [$overlay-shadow]
+$ec-datetime-select-background: $overlay-background !default;
+$ec-datetime-select-max-width: 320 !default;
+$ec-datetime-select-padding: $overlay-padding !default;
+$ec-datetime-select-radius: $overlay-radius !default;
+$ec-datetime-select-shadow: $overlay-shadow !default;
 
 //
 // ui/list
@@ -450,7 +450,6 @@ $ec-pop-fullscreen-shadow: $ec-pop-shadow !default;
 // @param {color} $ec-select-color [$input-color]
 // @param {array} $ec-select-spacing [$input-spacing]
 // @param {array} $ec-select-padding-ratio [$input-padding-ratio]
-// @param {array} $ec-select-radius [$input-radius]
 // @param {color} $ec-select-border-color [$input-border-color]
 // @param {array} $ec-select-border-width [$input-border-width]
 // @param {em} $ec-select-font-size [$input-font-size]
@@ -460,12 +459,16 @@ $ec-select-background: $input-background !default;
 $ec-select-color: $input-color !default;
 $ec-select-spacing: $input-spacing !default;
 $ec-select-padding-ratio: $input-padding-ratio !default;
-$ec-select-radius: $input-radius !default;
 $ec-select-border-color: $input-border-color !default;
 $ec-select-border-width: $input-border-width !default;
 $ec-select-font-size: $input-font-size !default;
 $ec-select-line-height: $input-line-height !default;
 $ec-select-min-height: $input-min-height !default;
+
+// @param {boolean} $ec-select-round [$input-round]
+// @param {array} $ec-select-radius [$input-radius]
+$ec-select-round: $input-round !default;
+$ec-select-radius: $input-radius !default;
 
 // @param {color} $ec-select-placeholder [$input-placeholder]
 $ec-select-placeholder: $input-placeholder !default;
@@ -500,6 +503,30 @@ $ec-select-selected-round: $tag-round !default;
 %ec-select-selected-style {
   // put additional styles here...
 }
+
+
+//
+// EC-SELECT-OPTIONS
+// ------------------------------------------------------
+// @param {color} $ec-select-options-background [$overlay-background]
+// @param {array} $ec-select-options-padding [$overlay-padding]
+// @param {array} $ec-select-options-radius [$overlay-radius]
+// @param {array} $ec-select-options-shadow [$overlay-shadow]
+$ec-select-options-background: $overlay-background !default;
+$ec-select-options-padding: $overlay-padding !default;
+$ec-select-options-radius: $overlay-radius !default;
+$ec-select-options-shadow: $overlay-shadow !default;
+
+// @param {array} $ec-select-option-padding [8 16]
+// @param {color} $ec-select-option-color [$link]
+// @param {color} $ec-select-option-background [transparent]
+// @param {color} $ec-select-option-color [$ec-select-option-color]
+// @param {color} $ec-select-option-background [$state-hover]
+$ec-select-option-padding: 8 16 !default;
+$ec-select-option-color: $link !default;
+$ec-select-option-background: transparent !default;
+$ec-select-option-hover-color: $ec-select-option-color !default;
+$ec-select-option-hover-background: $state-hover !default;
 
 //
 // data/files

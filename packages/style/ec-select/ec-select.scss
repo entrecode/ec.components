@@ -27,7 +27,6 @@
   color: $ec-select-color;
   border-color: $ec-select-border-color;
   border-width: rem($ec-select-border-width);
-  border-radius: arrayMagic($ec-select-radius);
   margin: arrayMagic($ec-select-spacing);
   @include macro-metrics(
     $ec-select-font-size,
@@ -36,6 +35,12 @@
     $padding-ratio: $ec-select-padding-ratio,
     $inline-styles: false
   );
+
+  border-radius: arrayMagic($ec-select-radius);
+
+  @if $ec-select-round == true {
+    border-radius: arrayMagic($ec-select-min-height / 2);
+  }
 
   /// additional styles via config
   @extend %ec-select-style !optional;

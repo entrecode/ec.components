@@ -10,13 +10,25 @@
       display: none;
     }
 
+    // @param {array} $ec-select-option-padding [8 16]
+    // @param {color} $ec-select-option-color [$link]
+    // @param {color} $ec-select-option-background [transparent]
+    // @param {color} $ec-select-option-color [$ec-select-option-color]
+    // @param {color} $ec-select-option-background [$state-hover]
     .ec-list-item {
-      @extend %select-option !optional;
-      color: getColor(link);
       display: flex;
       width: 100%;
-      padding: rem(8) rem(16);
       box-shadow: none;
+      outline: none;
+      color: $ec-select-option-color;
+      background-color: $ec-select-option-background;
+      padding: arrayMagic($ec-select-option-padding);
+
+      &:hover,
+      &.is-selected {
+        color: $ec-select-option-hover-color;
+        background-color: $ec-select-option-hover-background;
+      }
     }
 
     .ec-list-cell {
@@ -37,8 +49,22 @@
   }
 }
 
+// @param {color} $ec-select-options-background [$overlay-background]
+// @param {array} $ec-select-options-padding [$overlay-padding]
+// @param {array} $ec-select-options-radius [$overlay-radius]
+// @param {array} $ec-select-options-shadow [$overlay-shadow]
 ec-pop.ec-select-options {
   .ec-pop {
-    @extend %select-options !optional;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    z-index: 10;
+    width: 100%;
+    margin: 0;
+    margin-top: rem($ec-select-border-width);
+    padding: arrayMagic($ec-select-options-padding);
+    box-shadow: arrayMagic($ec-select-options-shadow);
+    border-radius: arrayMagic($ec-select-options-radius);
+    background-color: $ec-select-options-background;
   }
 }
