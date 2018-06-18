@@ -46,11 +46,12 @@ export class AuthService {
     if (this.noClientID()) {
       return Promise.reject(this.noClientID());
     }
-    return api ? api.signup() : this.sdk.api.signup(email, password, invite)
-      .catch(() => this.sdk.accounts.signup(email, password, invite))
-      .then((res) => {
-        return this.sdk.init();
-      })
+    return api ? api.signup(email, password, invite) :
+      this.sdk.api.signup(email, password, invite)
+        .catch(() => this.sdk.accounts.signup(email, password, invite))
+        .then((res) => {
+          return this.sdk.init();
+        })
   }
 
   /** Returns the current account. Works for all apis */

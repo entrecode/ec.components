@@ -85,12 +85,44 @@ export default [
         content: 'The entered name is already in use'
     },
     {
+        name: 'login.email.label',
+        content: 'E-Mail'
+    },
+    {
+        name: 'login.email.placeholder',
+        content: 'E-Mail Adresse'
+    },
+    {
+        name: 'login.password.label',
+        content: 'Passwort'
+    },
+    {
+        name: 'login.password.placeholder',
+        content: 'Passwort'
+    },
+    {
+        name: 'login.button.label',
+        content: 'Login'
+    },
+    {
         name: 'login.success',
         content: 'Login was successful'
     },
     {
         name: 'login.error',
         content: 'Could not login'
+    },
+    {
+        name: 'signup.invite.placeholder',
+        content: 'Invite Code'
+    },
+    {
+        name: 'signup.success',
+        content: 'Registration was successful'
+    },
+    {
+        name: 'signup.error',
+        content: 'Registration failed'
     },
     {
         name: 'passwordReset.button',

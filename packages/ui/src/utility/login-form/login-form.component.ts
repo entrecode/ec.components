@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
-import { FieldValidators } from '../validators/field-validators';
 import { LoaderComponent } from '../../loader/loader.component';
 import { WithLoader } from '../../loader/with-loader.interface';
+import { SymbolService } from '../../symbol/symbol.service';
+import { FieldValidators } from '../validators/field-validators';
 
 /** Login Form Component with validation. Fires success event with credentials on submit.
  * <example-url>https://components.entrecode.de/ui/login</example-url>
@@ -16,7 +17,7 @@ export class LoginFormComponent implements OnInit, WithLoader {
   /** The login's form group.*/
   public form: FormGroup;
   /** Flips true when submitted. */
-  private submitted: boolean;
+  protected submitted: boolean;
   /** Contains possible error messages. */
   public errorMessage: string;
   /** Event that emits on succesful submit of the form, passing the login credentials. */
@@ -28,22 +29,22 @@ export class LoginFormComponent implements OnInit, WithLoader {
   /** If true, email and password wont have labels */
   @Input() showLabels = true;
   /** The Label of the Mail field */
-  @Input() emailLabel = 'E-Mail';
+  @Input() emailLabel = this.symbol.resolve('login.email.label');
   /** The Placeholder of the mail Field */
-  @Input() emailPlaceholder = 'E-Mail Adresse';
+  @Input() emailPlaceholder = this.symbol.resolve('login.email.placeholder');
   /** The Label of the password field. */
-  @Input() passwordLabel = 'Passwort';
+  @Input() passwordLabel = this.symbol.resolve('login.password.label');
   /** The Placeholder of the password field */
-  @Input() passwordPlaceholder = 'Passwort';
+  @Input() passwordPlaceholder = this.symbol.resolve('login.password.placeholder');
   /** The Label of the submit button. Defaults to Login */
-  @Input() buttonLabel = 'Login';
+  @Input() buttonLabel = this.symbol.resolve('login.button.label');
   /** Additional Button classes */
   @Input() buttonClasses = '';
   /** Recent error Notifications */
   notifications: Notification[];
 
   /** Injects the FormBuilder*/
-  constructor(private fb: FormBuilder) {
+  constructor(protected fb: FormBuilder, public symbol: SymbolService) {
   }
 
   /** Initializes the form */

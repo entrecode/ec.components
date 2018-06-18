@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CookieModule } from 'ngx-cookie';
 import { UiModule } from '@ec.components/ui/src/ui.module';
-import { PasswordResetComponent } from './password-reset/password-reset.component';
-import { LoginComponent } from './login/login.component';
+import { CookieModule } from 'ngx-cookie';
 import { AuthGuard } from './auth-guard.service';
 import { AuthService } from './auth.service';
+import { LoginComponent } from './login/login.component';
+import { PasswordResetComponent } from './password-reset/password-reset.component';
+import { SignupComponent } from './signup/signup.component';
 
 /** loads CookieModule */
 export function cookieFactory(): ModuleWithProviders {
@@ -17,7 +18,8 @@ export function cookieFactory(): ModuleWithProviders {
 @NgModule({
   declarations: [
     PasswordResetComponent,
-    LoginComponent
+    LoginComponent,
+    SignupComponent,
   ],
   imports: [
     cookieFactory(),
@@ -29,6 +31,7 @@ export function cookieFactory(): ModuleWithProviders {
     ReactiveFormsModule,
     PasswordResetComponent,
     LoginComponent,
+    SignupComponent,
   ],
   providers: [AuthGuard, AuthService]
 })
