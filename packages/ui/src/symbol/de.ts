@@ -93,6 +93,10 @@ export default [
         content: 'Fehler beim Login'
     },
     {
+        name: 'passwordReset.button',
+        content: 'Passwort zurücksetzen'
+    },
+    {
         name: 'resource.delete.question',
         content: 'Wirklich löschen?'
     },

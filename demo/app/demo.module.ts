@@ -45,6 +45,7 @@ import { ResourceDeletePopDemoComponent } from './resource-delete-pop/resource-d
 import { ResourceFormDemoComponent } from './resource-form/resource-form-demo.component';
 import { ResourceSelectDemoComponent } from './resource-select/resource-select-demo.component';
 import { SelectDemoComponent } from './select/select-demo.component';
+import { SignupDemoComponent } from './signup/signup-demo.component';
 import { SymbolDemoComponent } from './symbol/symbol-demo.component';
 import { TabsDemoComponent } from './tabs/tabs-demo.component';
 import { TinymceDemoComponent } from './tinymce-demo/tinymce-demo.component';
@@ -82,6 +83,7 @@ demoRoutes.unshift(
     SelectDemoComponent,
     AuthDemoComponent,
     PasswordResetDemoComponent,
+    SignupDemoComponent,
     CoolStringComponent,
     UnsplashImageComponent,
     AssetListDemoComponent,

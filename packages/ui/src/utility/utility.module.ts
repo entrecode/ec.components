@@ -7,6 +7,7 @@ import { FocusDirective } from './focus/focus.directive';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { MenuComponent } from './menu/menu.component';
 import { MockupComponent } from './mockup/mockup.component';
+import { SignupFormComponent } from './signup-form/signup-form.component';
 import { TabComponent } from './tab/tab.component';
 import { TabsComponent } from './tabs/tabs.component';
 
@@ -18,6 +19,7 @@ import { TabsComponent } from './tabs/tabs.component';
     MockupComponent,
     MenuComponent,
     LoginFormComponent,
+    SignupFormComponent,
     FocusDirective,
   ],
   imports: [
@@ -36,6 +38,7 @@ import { TabsComponent } from './tabs/tabs.component';
     MockupComponent,
     MenuComponent,
     LoginFormComponent,
+    SignupFormComponent,
     FocusDirective,
     RouterModule,
   ],
