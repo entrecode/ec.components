@@ -66,6 +66,7 @@ $ec-calendar-day-other-background: transparent !default;
 // EC-OUTPUT
 // ------------------------------------------------------
 
+// EC-OUTPUT-ASSET
 // @param {array} $ec-output-asset-padding [8 16]
 // @param {px} $ec-output-asset-radius [$tag-radius]
 // @param {color} $ec-output-asset-background [$background-lighter]
@@ -81,6 +82,7 @@ $ec-output-asset-line-height: $tag-small-line-height !default;
   // add styles...
 }
 
+// EC-OUTPUT-AVATR
 // @param {px} $ec-output-avatar-size [32]
 // @param {array} $ec-output-avatar-border [2 solid $background]
 $ec-output-avatar-size: 32 !default;
@@ -90,9 +92,21 @@ $ec-output-avatar-border: 2 solid $background !default;
   // add styles...
 }
 
+// EC-OUTPUT-BOOLEAN
+// @param {color} $ec-output-boolean-color [$text-lightest]
+// @param {color} $ec-output-boolean-true-color [$text]
+$ec-output-boolean-color: $text-lightest !default;
+$ec-output-boolean-true-color: $text !default;
+
+%ec-output-boolean-style {
+  // add styles...
+}
+
+// EC-OUTPUT-TAG
 // @param {em} $ec-output-tag-font-size [$base-font-size * 0.875]
 $ec-output-tag-font-size: $base-font-size * 0.875 !default;
 
+// EC-OUTPUT-TAGS
 // @param {em} $ec-output-tags-font-size [$ec-output-tag-font-size]
 $ec-output-tags-font-size: $ec-output-tag-font-size !default;
 
@@ -164,11 +178,11 @@ $ec-list-item-selected-background: $ec-list-item-clickable-background !default;
 }
 
 // @param {px} $ec-list-cell-size [$base-font-size]
-// @param {value} $ec-list-cell-weight [$is-bold]
+// @param {value} $ec-list-cell-weight [$is-normal]
 // @param {color} $ec-list-cell-color [$text]
 // @param {array} $ec-list-cell-padding [8]
 $ec-list-cell-size: $base-font-size !default;
-$ec-list-cell-weight: $is-bold !default;
+$ec-list-cell-weight: $is-normal !default;
 $ec-list-cell-color: $text !default;
 $ec-list-cell-padding: 8 !default;
 

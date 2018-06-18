@@ -1,7 +1,11 @@
+// @param {color} $ec-output-boolean-color [$text-lightest]
+// @param {color} $ec-output-boolean-true-color [$text]
+
 .ec-output-boolean {
-  color: getColor(text, lightest);
+  color: $ec-output-boolean-color;
+  @extend %ec-output-boolean-style !optional;
 
   &.is-true {
-    color: getColor(text);
+    color: $ec-output-boolean-true-color;
   }
 }
