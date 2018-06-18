@@ -201,21 +201,21 @@ $ec-list-header-spacing: 0 0 8 !default;
 // @param {px} $ec-list-group-header-font-size [$base-font-size * 0.875]
 // @param {value} $ec-list-group-header-weight [$is-bold]
 // @param {array} $ec-list-group-header-spacing [0 0 16]
-$ec-list-group-header-font-size: $base-font-size * 0.875;
-$ec-list-group-header-weight: $is-bold;
-$ec-list-group-header-spacing: 0 0 16;
+$ec-list-group-header-font-size: $base-font-size * 0.875 !default;
+$ec-list-group-header-weight: $is-bold !default;
+$ec-list-group-header-spacing: 0 0 16 !default;
 
 %ec-list-group-header-weight {
   // add style here...
 }
 
 // @param {color} $ec-list-filterable-control-color [$ec-list-header-color]
-$ec-list-filterable-control-color: $ec-list-header-color;
+$ec-list-filterable-control-color: $ec-list-header-color !default;
 
 // @param {color} $ec-list-sortable-color [$text-lightest]
 // @param {color} $ec-list-sortable-active-color [$text]
-$ec-list-sortable-color: $text-lightest;
-$ec-list-sortable-active-color: $text;
+$ec-list-sortable-color: $text-lightest !default;
+$ec-list-sortable-active-color: $text !default;
 
 // @param {color} $ec-list-item-background [transparent]
 // @param {array} $ec-list-item-padding [0]
@@ -285,12 +285,12 @@ $ec-pagination-item-radius: $btn-radius !default;
 // @param {color} $ec-pagination-item-active-color [setHover($link)]
 // @param {color} $ec-pagination-item-disabled-background [transparent]
 // @param {color} $ec-pagination-item-disabled-color [setHover($link)]
-$ec-pagination-item-background: transparent;
-$ec-pagination-item-color: $link;
-$ec-pagination-item-active-background: $state-hover;
-$ec-pagination-item-active-color: setHover($link);
-$ec-pagination-item-disabled-background: transparent;
-$ec-pagination-item-disabled-color: $state-disabled;
+$ec-pagination-item-background: transparent !default;
+$ec-pagination-item-color: $link !default;
+$ec-pagination-item-active-background: $state-hover !default;
+$ec-pagination-item-active-color: setHover($link) !default;
+$ec-pagination-item-disabled-background: transparent !default;
+$ec-pagination-item-disabled-color: $state-disabled !default;
 
 // @param {boolean} $ec-pagination-item-round [$btn-round]
 $ec-pagination-item-round: $btn-round !default;
@@ -302,7 +302,7 @@ $ec-pagination-item-round: $btn-round !default;
 // @param {px} $ec-pagination-info-size [$base-font-size * 0.875]
 // @param {color} $ec-pagination-info-color [$link]
 $ec-pagination-info-size: $base-font-size * 0.875 !default;
-$ec-pagination-info-color: $text-light;
+$ec-pagination-info-color: $text-light !default;
 
 %ec-pagination-info-style {
   // put additional styles here...
@@ -317,12 +317,44 @@ $ec-pagination-info-color: $text-light;
 // @param {color} $ec-loader-racer-color [$link]
 // @param {duration} $ec-loader-racer-speed [1s]
 // @param {color} $ec-loader-overlay-background [rgba($background, 0.6)]
-$ec-loader-size: 24;
-$ec-loader-track-width: 4;
-$ec-loader-track-color: $divider-color;
-$ec-loader-racer-color: $link;
-$ec-loader-racer-speed: 1s;
-$ec-loader-overlay-background: rgba($background, 0.6);
+$ec-loader-size: 24 !default;
+$ec-loader-track-width: 4 !default;
+$ec-loader-track-color: $divider-color !default;
+$ec-loader-racer-color: $link !default;
+$ec-loader-racer-speed: 1s !default;
+$ec-loader-overlay-background: rgba($background, 0.6) !default;
+
+//
+// EC-NOTIFICATION
+// ------------------------------------------------------
+// @param {color} $ec-notification-background [$background]
+// @param {array} $ec-notification-padding [8 16]
+// @param {array} $ec-notification-spacing [4]
+// @param {px} $ec-notification-max-width [320]
+// @param {array} $ec-notification-radius [$overlay-radius]
+// @param {px} $ec-notification-font-size [$base-font-size * 0.875]
+// @param {array} $ec-notification-shadow [0 8 16 -4px rgba(#000, 0.2)]
+$ec-notification-background: $background !default;
+$ec-notification-padding: 8 16 !default;
+$ec-notification-spacing: 4 !default;
+$ec-notification-max-width: 320 !default;
+$ec-notification-radius: $overlay-radius !default;
+$ec-notification-font-size: $base-font-size * 0.875 !default;
+$ec-notification-shadow: 0 8 16 -4px rgba(#000, 0.2) !default;
+
+// @param {px} $ec-notification-title-font-size [$ec-notification-font-size]
+$ec-notification-title-font-size: $ec-notification-font-size !default;
+
+// @param {px} $ec-notification-flag-width [8]
+// @param {color} $ec-notification-flag-info [$state-info]
+// @param {color} $ec-notification-flag-error [$state-error]
+// @param {color} $ec-notification-flag-success [$state-success]
+// @param {color} $ec-notification-flag-warning [$state-warning]
+$ec-notification-flag-width: 8 !default;
+$ec-notification-flag-info: $state-info !default;
+$ec-notification-flag-error: $state-error !default;
+$ec-notification-flag-success: $state-success !default;
+$ec-notification-flag-warning: $state-warning !default;
 
 //
 // EC-POP
