@@ -17,11 +17,13 @@
     flex-grow: 0;
   }
 
+  // @param {array} $ec-calendar-controls-spacing [0 4]
+
   .ec-calendar-controls__title,
   .ec-calendar-controls__prev,
   .ec-calendar-controls__current,
   .ec-calendar-controls__next {
-    margin: 0 rem(4);
+    margin: arrayMagic($ec-calendar-controls-spacing);
   }
 }
 

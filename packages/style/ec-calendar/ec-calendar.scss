@@ -4,8 +4,10 @@
 @import 'ec-calendar-days';
 @import 'ec-calendar-day';
 
+// @param {array} $ec-calendar-spacing [0 0 16]
+
 .ec-calendar {
   display: flex;
   flex-direction: column;
-  margin-bottom: rem(16);
+  margin-bottom: arrayMagic($ec-calendar-spacing);
 }
