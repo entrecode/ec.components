@@ -7,7 +7,6 @@ import { Collection } from '@ec.components/core/src/collection/collection';
 @Component({
   selector: 'ec-loader',
   templateUrl: './loader.component.html',
-  styleUrls: ['./loader.component.scss']
 })
 export class LoaderComponent {
   /** The current stack of loading promises.*/

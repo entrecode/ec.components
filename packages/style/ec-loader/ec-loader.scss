@@ -21,10 +21,15 @@
 }
 
 .ec-loader {
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
-  margin: rem(16);
+  align-self: center;
+  margin: 0 auto;
+
+  &.is-active {
+    display: flex;
+  }
 
   &::after {
     content: '';
