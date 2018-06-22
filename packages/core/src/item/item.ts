@@ -14,7 +14,7 @@ export class Item<T> {
   }
 
   /** Generates a config from the body by setting view to the properties type. */
-  private generateConfig(): ItemConfig<T> {
+  protected generateConfig(): ItemConfig<T> {
     const config = { fields: {} };
     if (this.body === undefined) {
       return config;

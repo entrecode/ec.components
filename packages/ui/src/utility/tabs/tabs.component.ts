@@ -1,4 +1,4 @@
-import { Component, ContentChildren, Input, QueryList, AfterContentInit } from '@angular/core';
+import { AfterContentInit, Component, ContentChildren, Input, QueryList } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { TabComponent } from '../tab/tab.component';
 
@@ -31,7 +31,7 @@ export class TabsComponent implements AfterContentInit {
     const paths = url.split('/');
     const match = this.tabs.find((tab) => tab.route === paths[paths.length - 1]);
     if (match) {
-      this.select(match);
+      this.select(match, true);
     }
   }
 
@@ -50,14 +50,14 @@ export class TabsComponent implements AfterContentInit {
   }
 
   /** Selects the given tab (Component). */
-  select(tab: TabComponent) {
+  select(tab: TabComponent, skipRoute = false) {
     if (this.selected) {
       this.selected.deactivate();
     }
     this.selected = tab;
     tab.activate();
-    if (tab.route) {
-      this.router.navigate([tab.route], { relativeTo: this.route });
+    if (tab.route && !skipRoute) {
+      this.router.navigate(['../' + tab.route], { relativeTo: this.route });
     }
   }
 

@@ -33,7 +33,7 @@
     </li>
   </ul>
   <div class="ec-pagination-info" *ngIf="pagination?.params()?.total">
-    <span>{{pagination.params().from}} - {{pagination.params().to}} {{ 'pagination.of' | symbol}} {{pagination.params().total}}</span>
+    <span>{{pagination?.params()?.from}} - {{pagination?.params()?.to}} {{ 'pagination.of' | symbol}} {{pagination?.params()?.total}}</span>
   </div>
   <div class="ec-pagination-size-select" *ngIf="pagination?.params()?.total">
     <select *ngIf="pagination?.params()?.availableSizes?.length > 1" (change)="updateSize($event.target.value)" class="input">
