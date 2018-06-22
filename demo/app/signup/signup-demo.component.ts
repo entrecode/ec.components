@@ -8,7 +8,8 @@ import { SdkService } from '../../../packages/data';
 
 export class SignupDemoComponent implements OnInit {
 
-    invite = 'lahsdlkajshld';
+    invite = 'asdgdg';
+    // invite = 'asdfasdf';
 
     constructor(public sdk: SdkService) { }
 

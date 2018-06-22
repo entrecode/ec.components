@@ -86,19 +86,19 @@ export default [
     },
     {
         name: 'login.email.label',
-        content: 'E-Mail'
+        content: 'Mail'
     },
     {
         name: 'login.email.placeholder',
-        content: 'E-Mail Adresse'
+        content: 'Mail Address'
     },
     {
         name: 'login.password.label',
-        content: 'Passwort'
+        content: 'Password'
     },
     {
         name: 'login.password.placeholder',
-        content: 'Passwort'
+        content: 'Password'
     },
     {
         name: 'login.button.label',
@@ -111,6 +111,10 @@ export default [
     {
         name: 'login.error',
         content: 'Could not login'
+    },
+    {
+        name: 'signup.button.label',
+        content: 'Signup'
     },
     {
         name: 'signup.invite.placeholder',

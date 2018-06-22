@@ -85,12 +85,48 @@ export default [
         content: 'Der eingegebene Name ist bereits vorhanden'
     },
     {
+        name: 'login.email.label',
+        content: 'E-Mail'
+    },
+    {
+        name: 'login.email.placeholder',
+        content: 'E-Mail Adresse'
+    },
+    {
+        name: 'login.password.label',
+        content: 'Passwort'
+    },
+    {
+        name: 'login.password.placeholder',
+        content: 'Passwort'
+    },
+    {
+        name: 'login.button.label',
+        content: 'Login'
+    },
+    {
         name: 'login.success',
         content: 'Erfolgreich eingeloggt'
     },
     {
         name: 'login.error',
         content: 'Fehler beim Login'
+    },
+    {
+        name: 'signup.button.label',
+        content: 'Signup'
+    },
+    {
+        name: 'signup.invite.placeholder',
+        content: 'Einladungs Code'
+    },
+    {
+        name: 'signup.success',
+        content: 'Die Registrierung war erfolgreich'
+    },
+    {
+        name: 'signup.error',
+        content: 'Die Registrierung ist fehlgeschlagen'
     },
     {
         name: 'passwordReset.button',

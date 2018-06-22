@@ -13,6 +13,8 @@ import { LoginFormComponent } from '../login-form/login-form.component';
 })
 export class SignupFormComponent extends LoginFormComponent implements OnInit, WithLoader {
 
+  /** The Label of the submit button. Defaults to Login */
+  @Input() buttonLabel = this.symbol.resolve('signup.button.label');
   /** The Placeholder of the mail Field */
   @Input() invitePlaceholder = this.symbol.resolve('signup.invite.placeholder');
   /** If set, the invite field will be hidden and the given code will be used for signup */
