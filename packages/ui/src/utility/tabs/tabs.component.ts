@@ -29,7 +29,7 @@ export class TabsComponent implements AfterContentInit {
       return;
     }
     const paths = url.split('/');
-    const match = this.tabs.find((tab) => tab.route === paths[paths.length - 1]);
+    const match = this.tabs.find((tab) => paths[paths.length - 1].indexOf(tab.route) !== -1);
     if (match) {
       this.select(match, true);
     }
