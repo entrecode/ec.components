@@ -161,7 +161,7 @@ export class ModelConfigService extends Config {
           return;
         }
         fieldConfig[property] = Object.assign({
-          label: property,
+          label: property + (type.name === 'datetime' ? ` ${this.symbol.resolve('datetime.local')}` : ''),
           schema: schema.properties[property],
           relation: type.relation,
           readOnly: schema.properties[property].readOnly || this.isSystemProperty(property),

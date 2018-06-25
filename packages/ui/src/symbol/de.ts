@@ -13,6 +13,10 @@ export default [
         content: 'HH:mm'
     },
     {
+        name: 'datetime.local',
+        content: '(Lokalzeit)'
+    },
+    {
         name: 'success.save',
         content: 'Speichern erfolgreich'
     },

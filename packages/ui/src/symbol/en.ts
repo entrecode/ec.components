@@ -13,6 +13,10 @@ export default [
         content: 'HH:mm'
     },
     {
+        name: 'datetime.local',
+        content: '(local time)'
+    },
+    {
         name: 'success.save',
         content: 'Saved successfully'
     },
