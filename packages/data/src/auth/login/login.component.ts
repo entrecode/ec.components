@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { LoaderComponent, NotificationsService, WithLoader } from '@ec.components/ui';
+import { Notification } from '@ec.components/ui/src/notifications/notification';
+import { WithNotifications } from '@ec.components/ui/src/notifications/with-notifications.interface';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 import PublicAPI from 'ec.sdk/lib/PublicAPI';
 import AccountResource from 'ec.sdk/lib/resources/accounts/AccountResource';
-import { LoaderComponent, NotificationsService, WithLoader } from '@ec.components/ui';
 import { AuthService } from '../auth.service';
-import { WithNotifications } from '@ec.components/ui/src/notifications/with-notifications.interface';
-import { Notification } from '@ec.components/ui/src/notifications/notification';
-import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 
 /** Uses LoginFormComponent. Tries to login via AuthService. Shows notifications and nexts success Subject if login was successful.
  * <example-url>https://components.entrecode.de/auth/auth</example-url>
@@ -20,6 +20,8 @@ export class LoginComponent implements WithLoader, WithNotifications {
   @Input() api: PublicAPI;
   /** Subject that is nexted when the login was successful. Meant to be used for redirecting to another page (or similar). */
   @Output() success: EventEmitter<AccountResource> = new EventEmitter();
+  /** Subject that is nexted when an error occurs. For custom error reactions */
+  @Output() error: EventEmitter<AccountResource> = new EventEmitter();
   /** The included loader. */
   @ViewChild(LoaderComponent) loader;
   /** Error notifications */
@@ -48,6 +50,7 @@ export class LoginComponent implements WithLoader, WithNotifications {
           hide: this.notifications,
           replace: this.notifications
         });
+        this.error.next(error);
         console.log('could not login', error);
       });
     this.loader.wait(login);

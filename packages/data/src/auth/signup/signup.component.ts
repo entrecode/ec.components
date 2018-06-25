@@ -45,6 +45,7 @@ export class SignupComponent extends LoginComponent implements WithLoader, WithN
           hide: this.notifications,
           replace: this.notifications
         });
+        this.error.next(error);
         console.log('could not signup', error);
       });
     this.loader.wait(registration);
