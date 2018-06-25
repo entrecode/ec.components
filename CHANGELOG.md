@@ -1,8 +1,16 @@
 # Changelog
 
-<a name="0.24.0"></a>
+<a name="0.29.0"></a>
 
-## @ec.components/ui 0.24.0
+## @ec.components/data 0.29.0
+
+BREAKING CHANGE:
+
+* all (change) outputs have been renamed to (changed) to avoid getting also the dom events fired by angular.
+
+<a name="0.25.0"></a>
+
+## @ec.components/ui 0.25.0
 
 BREAKING CHANGE:
 
