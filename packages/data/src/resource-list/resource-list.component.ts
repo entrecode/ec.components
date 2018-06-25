@@ -33,7 +33,7 @@ export class ResourceListComponent extends ListComponent<Resource>
   /** The loader that should be shown while the list is loaded. */
   @Input() loader: LoaderComponent;
   /** emits when the list changed (after loading) */
-  @Output() change: EventEmitter<List<Resource>> = new EventEmitter();
+  @Output() changed: EventEmitter<List<Resource>> = new EventEmitter();
 
   /** The constructor will just call super of List*/
   constructor(
@@ -82,7 +82,7 @@ export class ResourceListComponent extends ListComponent<Resource>
         return;
       }
       this.list = list;
-      this.list.change$.subscribe(newList => this.change.next(newList));
+      this.list.change$.subscribe(newList => this.changed.next(newList));
       if (this.list.promise) {
         this.loaderService.wait(this.list.promise, this.loader);
       }

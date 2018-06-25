@@ -8,7 +8,7 @@
             <ec-list-header [list]="entryList?.list" [selection]="selection"></ec-list-header>
         </header>
         <div class="ec-pop-body">
-            <ec-entry-list (change)="searchbar.focusEvent.emit(true)" [model]="model" [config]="config" [selection]="selection" (columnClicked)="select($event)"
+            <ec-entry-list (changed)="searchbar.focusEvent.emit(true)" [model]="model" [config]="config" [selection]="selection" (columnClicked)="select($event)"
                 #entryList></ec-entry-list>
         </div>
         <div class="ec-pop-footer">

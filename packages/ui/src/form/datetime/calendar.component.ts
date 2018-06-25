@@ -1,9 +1,9 @@
-import { Component, forwardRef, Input, ViewChild, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, Output, ViewChild } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
-import moment from 'moment-es6';
-import { MonthComponent } from './month.component';
-import { PopComponent } from '../../pop/pop.component';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import moment from 'moment-es6';
+import { PopComponent } from '../../pop/pop.component';
+import { MonthComponent } from './month.component';
 
 /** Input for a datetime. */
 @Component({
@@ -19,7 +19,7 @@ import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 })
 export class CalendarComponent extends MonthComponent implements ControlValueAccessor {
   /** Output that emits when the value changes */
-  @Output() change: EventEmitter<any> = new EventEmitter();
+  @Output() changed: EventEmitter<any> = new EventEmitter();
   /** The form control that holds the date */
   @Input() formControl: FormControl;
   /** The current value of the input */
@@ -91,7 +91,7 @@ export class CalendarComponent extends MonthComponent implements ControlValueAcc
   /** called when the value should be changed from inside the component. calls propagateChange and emits the change output */
   setValue(value) {
     this.propagateChange(value);
-    this.change.emit(value);
+    this.changed.emit(value);
   }
 
   /** Selects the given Date when the model changes. */

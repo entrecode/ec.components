@@ -14,7 +14,7 @@ export class LocationSearchComponent implements AfterViewInit {
     /** The search input element */
     @ViewChild('search') searchInput: ElementRef;
     /** emits when the coords have been changed (after selecting a match) */
-    @Output() change: EventEmitter<any> = new EventEmitter();
+    @Output() changed: EventEmitter<any> = new EventEmitter();
 
     constructor(
         private geocodeService: GeocodeService,
@@ -32,7 +32,7 @@ export class LocationSearchComponent implements AfterViewInit {
         this.geocodeService.autocompleteAddress(this.searchInput.nativeElement)
             .subscribe(
                 coords => {
-                    this.change.emit(coords);
+                    this.changed.emit(coords);
                 }
             );
     }

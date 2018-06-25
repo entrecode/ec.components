@@ -1,5 +1,5 @@
-<ec-location-search (change)="setValue($event,true)"></ec-location-search>
-<ec-location-map (change)="setValue($event)"></ec-location-map>
+<ec-location-search (changed)="setValue($event,true)"></ec-location-search>
+<ec-location-map (changed)="setValue($event)"></ec-location-map>
 <a class="btn" (click)="setValue(null)" *ngIf="map.value">
     <ec-icon name="trash"></ec-icon>
 </a>

@@ -13,7 +13,7 @@ export class LocationMapComponent {
     /** If true, no markers can be changed or set */
     @Input() readOnly: boolean;
     /** Emits when the marker has been changed */
-    @Output() change: EventEmitter<any> = new EventEmitter();
+    @Output() changed: EventEmitter<any> = new EventEmitter();
     /** Form input component */
     @Input() value: {
         longitude: number,
@@ -35,6 +35,6 @@ export class LocationMapComponent {
         }
         const position = { longitude: coords.lng, latitude: coords.lat };
         this.setValue(position);
-        this.change.emit(position);
+        this.changed.emit(position);
     }
 }

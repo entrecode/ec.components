@@ -1,34 +1,22 @@
-import {
-  ApplicationRef,
-  Component,
-  ElementRef,
-  EventEmitter,
-  forwardRef,
-  Input,
-  OnDestroy,
-  AfterViewInit,
-  Output,
-  ViewChild,
-  ViewEncapsulation
-} from '@angular/core';
+import { AfterViewInit, ApplicationRef, Component, ElementRef, EventEmitter, forwardRef, Input, OnDestroy, Output, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/debounceTime';
+import { Subject } from 'rxjs/Subject';
 import * as tinymce from 'tinymce';
-import 'tinymce/themes/modern';
-import 'tinymce/plugins/fullscreen';
-import 'tinymce/plugins/paste';
-import 'tinymce/plugins/template';
+import 'tinymce/plugins/autolink';
 import 'tinymce/plugins/autoresize';
 import 'tinymce/plugins/code';
-import 'tinymce/plugins/link';
-import 'tinymce/plugins/table';
-import 'tinymce/plugins/visualblocks';
-import 'tinymce/plugins/autolink';
-import 'tinymce/plugins/lists';
-import 'tinymce/plugins/contextmenu';
-import 'tinymce/plugins/textcolor';
 import 'tinymce/plugins/colorpicker';
+import 'tinymce/plugins/contextmenu';
+import 'tinymce/plugins/fullscreen';
+import 'tinymce/plugins/link';
+import 'tinymce/plugins/lists';
+import 'tinymce/plugins/paste';
+import 'tinymce/plugins/table';
+import 'tinymce/plugins/template';
+import 'tinymce/plugins/textcolor';
+import 'tinymce/plugins/visualblocks';
+import 'tinymce/themes/modern';
 import { editorSettings } from './tinymce-settings';
 
 /** Wraps tinymce as a control input.
@@ -62,7 +50,7 @@ export class TinymceComponent
   /** TinyMCE Settings. Get Object.assigned to the default settings */
   @Input() settings: any = {};
   /** Output that emits when the value has been changed by the user */
-  @Output() change: EventEmitter<string> = new EventEmitter();
+  @Output() changed: EventEmitter<string> = new EventEmitter();
   /** Current value */
   public value = '';
 
@@ -74,7 +62,7 @@ export class TinymceComponent
       .subscribe(editor => {
         this.value = editor.getContent();
         this.propagateChange(this.value);
-        this.change.emit(this.value);
+        this.changed.emit(this.value);
         this.app.tick();
       });
   }

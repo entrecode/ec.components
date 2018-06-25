@@ -51,7 +51,7 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
   /** Emits when the form has been initialized.  */
   @Output() ready: EventEmitter<FormComponent<T>> = new EventEmitter();
   /** Emits when a new instance of Form is present */
-  @Output() change: EventEmitter<FormComponent<T>> = new EventEmitter();
+  @Output() changed: EventEmitter<FormComponent<T>> = new EventEmitter();
   /** The forms default loader. it is used when no loader is passed via the loader input */
   @ViewChild(LoaderComponent) defaultLoader: LoaderComponent;
   /** The InputComponents that are used to control the fields */
@@ -90,7 +90,7 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
     }
     this.group = this.formService.getGroup(this.form);
     this.group.valueChanges.subscribe((change) => {
-      this.change.emit(this);
+      this.changed.emit(this);
     });
     this.ready.emit(this);
   }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostListener, Input, OnChanges, OnInit, Output, ViewChild, ViewEncapsulation, forwardRef } from '@angular/core';
+import { Component, EventEmitter, forwardRef, HostListener, Input, OnChanges, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { List, ListConfig, Selection } from '@ec.components/core';
 import { Item } from '@ec.components/core/src/item/item';
@@ -33,7 +33,7 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   /** Input placeholder */
   @Input() placeholder: string;
   /** Event emitter on item selection */
-  @Output() change: EventEmitter<Selection<T>> = new EventEmitter();
+  @Output() changed: EventEmitter<Selection<T>> = new EventEmitter();
   /** Event emitter on selected item click */
   @Output() itemClick: EventEmitter<Item<T>> = new EventEmitter();
   /** The Instance of the List */
@@ -84,7 +84,7 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
     this.config = Object.assign({ solo: this.solo }, this.config);
     this.selection = new Selection(this.value || [], this.config);
     this.selection.update$.subscribe(() => {
-      this.changed();
+      this.onChange();
     });
   }
 
@@ -138,8 +138,8 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   }
 
   /** Fires on selection change. Hides pop if solo */
-  changed() {
-    this.change.emit(this.selection);
+  onChange() {
+    this.changed.emit(this.selection);
     if (this.config.solo && this.pop) {
       this.pop.hide();
     }

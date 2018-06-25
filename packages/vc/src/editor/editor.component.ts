@@ -1,6 +1,6 @@
 import { Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/debounceTime';
+import { Subject } from 'rxjs/Subject';
 import visualCMS from 'visual-cms.core';
 import * as Block from 'visual-cms.core/classes/base/Block.js';
 import * as ListElement from 'visual-cms.core/classes/base/ListElement.js';
@@ -20,7 +20,7 @@ export class EditorComponent implements OnInit {
   /** Input json */
   @Input() json;
   /** emits on change */
-  @Output() change: EventEmitter<any> = new EventEmitter();
+  @Output() changed: EventEmitter<any> = new EventEmitter();
   /** current edited element */
   private element;
   /** current edited branch in class */
@@ -716,7 +716,7 @@ export class EditorComponent implements OnInit {
     // console.log(this.getJSON(this.ecvc));
     this.change$.debounceTime(100).subscribe((ecvc) => {
       this.json = this.getJSON(ecvc);
-      this.change.next(this);
+      this.changed.next(this);
     });
   }
 }
