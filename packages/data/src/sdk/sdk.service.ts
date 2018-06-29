@@ -117,10 +117,10 @@ export class SdkService {
     if (this.noApi(api)) {
       return Promise.reject('getSchema: ' + this.noApi(api));
     }
-    if (!this.schemaRequests[model]) {
-      this.schemaRequests[model] = api.getSchema(model);
+    if (!this.schemaRequests[model] || this.schemaRequests[model].api !== api) {
+      this.schemaRequests[model] = { request: api.getSchema(model), api };
     }
-    return this.schemaRequests[model];
+    return this.schemaRequests[model].request;
   }
 
   /** Returns the current account. Works for all apis */
