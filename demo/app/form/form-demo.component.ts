@@ -11,7 +11,18 @@ import { mocked } from '../../../mocks/data';
 export class FormDemoComponent {
   tree: Item<any>;
   public mocked = mocked;
-
+  myString;
+  myNumber;
+  myTextarea;
+  myColor;
+  myBoolean;
+  myEmail;
+  myUrl;
+  myToggle;
+  myDate;
+  mySelect;
+  myEntry;
+  myNan;
   testField = new Field('test', {
     view: 'string',
     input: DefaultInputComponent
