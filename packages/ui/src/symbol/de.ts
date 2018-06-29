@@ -395,5 +395,13 @@ export default [
     {
         name: 'entry.select.delete.question',
         content: 'Soll der Entry auch gelöscht werden?'
+    },
+    {
+        name: 'entry.select.placeholder.new',
+        content: 'Hinzufügen...'
+    },
+    {
+        name: 'entry.select.placeholder.select',
+        content: 'Auswählen...'
     }
 ];

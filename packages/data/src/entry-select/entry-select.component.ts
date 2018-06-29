@@ -8,6 +8,7 @@ import { Item } from '@ec.components/core/src/item/item';
 import { ResourceService } from '@ec.components/data/src/resource-config/resource.service';
 import { SelectComponent } from '@ec.components/ui';
 import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import 'rxjs/add/operator/debounceTime';
 import { SearchbarComponent } from '../../../ui/src/list/searchbar/searchbar.component';
@@ -75,6 +76,7 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
 
   constructor(private modelConfig: ModelConfigService,
     public resourceService: ResourceService,
+    public symbol: SymbolService,
     private auth: AuthService) {
     super();
     this.resourceService.change({ relation: this.model })
@@ -111,9 +113,9 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
 
   defaultPlaceholder() {
     if (this.config.disableSelect && this.config.disableListPop) {
-      return 'add new...'
+      return this.symbol.resolve('entry.select.placeholder.new');
     }
-    return 'make your selection';
+    return this.symbol.resolve('entry.select.placeholder.select');
   }
 
   /** Calls super.useConfig and then creates special dropdownConfig with just entryTitle as field  */

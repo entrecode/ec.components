@@ -403,5 +403,13 @@ export default [
     {
         name: 'entry.select.delete.question',
         content: 'Should the entry also be deleted?'
+    },
+    {
+        name: 'entry.select.placeholder.new',
+        content: 'add new...'
+    },
+    {
+        name: 'entry.select.placeholder.select',
+        content: 'select...'
     }
 ];
