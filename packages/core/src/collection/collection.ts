@@ -135,6 +135,15 @@ export class Collection<T> {
     }
   }
 
+  /** Toggles the item in and out of collection */
+  toggle(item: T, event: boolean = true) {
+    if (this.has(item)) {
+      this.remove(item, event);
+    } else {
+      this.add(item, event);
+    }
+  }
+
   /** Replaces all current items with the given items. */
   replaceWith(items: Array<T>, event: boolean = true) {
     if (this.items && this.items.length) {
@@ -151,5 +160,16 @@ export class Collection<T> {
   /** Returns true if the collection is empty */
   isEmpty() {
     return this.items.length === 0;
+  }
+
+  /** Moves the given item to the given array index. */
+  move(item: T, index: number, event: boolean = true) {
+    if (!this.has(item) || this.items.indexOf(item) === index) {
+      return;
+    }
+    this.items.splice(index, 0, this.items.splice(this.items.indexOf(item), 1)[0]);
+    if (event) {
+      this.update.next(this);
+    }
   }
 }
