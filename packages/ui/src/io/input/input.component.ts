@@ -56,12 +56,12 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
     }
     if (!this.group) {
       this.group = new FormGroup({
-        [this.property || this.field.property || 'input']: new FormControl()
+        [this.property || this.field.property || 'input']: this.control
       });
     }
     const data = {
       group: this.group,
-      control: this.control || this.group ? this.group.get(this.field.property) : null,
+      control: this.control,
       item: this.item,
       field: this.field,
       input: this
