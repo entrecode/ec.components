@@ -143,7 +143,6 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   }
 
   useModel(model) {
-    console.log('use model', model);
     this.model = model;
     this.initConfig();
   }
