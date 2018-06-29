@@ -2933,7 +2933,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">packages/ui/src/io/input/input.component.ts:92</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">packages/ui/src/io/input/input.component.ts:95</a></div>
                             </td>
                         </tr>
 
@@ -3000,7 +3000,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">packages/ui/src/io/input/input.component.ts:96</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">packages/ui/src/io/input/input.component.ts:99</a></div>
                             </td>
                         </tr>
 
@@ -3257,7 +3257,7 @@ You can access a form&#39;s InputComponents via FormComponent#inputs </p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">packages/ui/src/io/input/input.component.ts:88</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">packages/ui/src/io/input/input.component.ts:91</a></div>
                             </td>
                         </tr>
 
@@ -3446,6 +3446,9 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
   writeValue(value: any) {
     if (this.componentInstance &amp;&amp; this.componentInstance[&#x27;writeValue&#x27;]) {
       this.componentInstance[&#x27;writeValue&#x27;](value); // TODO: this is pretty hacky
+    }
+    if (this.componentInstance &amp;&amp; this.componentInstance[&#x27;control&#x27;] &amp;&amp; this.componentInstance[&#x27;control&#x27;].patchValue) {
+      this.componentInstance[&#x27;control&#x27;].patchValue(value); // TODO: this is pretty hacky
     }
   }
 
