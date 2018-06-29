@@ -1,5 +1,5 @@
 import { Component, EventEmitter, forwardRef, Input, OnChanges, Output, Type } from '@angular/core';
-import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, AbstractControl } from '@angular/forms';
 import { FieldConfigProperty } from '@ec.components/core';
 import { Field } from '@ec.components/core/src/field/field';
 import { Form } from '@ec.components/core/src/form/form';
@@ -23,7 +23,7 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
   /** The belonging form group */
   @Input() group: FormGroup;
   /** The belonging form control. This is not required if you pass in a field and group. */
-  @Input() control: FormControl;
+  @Input() control: AbstractControl;
   /** The changed ouput emits whenever the form control of the input changes. */
   @Output() changed = new EventEmitter();
   /** Debounce time in ms before the changed event emits. */
@@ -50,6 +50,9 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
     }
     if (!this.field) {
       return;
+    }
+    if (!this.control) {
+      this.control = this.group ? this.group.get(this.field.property) : new FormControl();
     }
     if (!this.group) {
       this.group = new FormGroup({
