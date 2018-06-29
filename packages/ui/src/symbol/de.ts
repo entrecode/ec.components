@@ -403,5 +403,9 @@ export default [
     {
         name: 'entry.select.placeholder.select',
         content: 'Auswählen...'
+    },
+    {
+        name: 'entry.select.placeholder.model',
+        content: 'Model wählen...'
     }
 ];

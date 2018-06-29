@@ -1,3 +1,11 @@
+<div *ngIf="!model">
+  <select class="input" (change)="useModel($event.target.value)">
+    <option>{{'entry.select.placeholder.model'|symbol}}</option>
+    <option *ngFor="let model of models" [value]="model.title">
+      {{model.title}}
+    </option>
+  </select>
+</div>
 <div class="ec-entry-select" *ngIf="selection">
   <div class="ec-select" [class.is-solo]="solo" [class.is-dirty]="selection.items.length" (click)="activate()">
     <span class="ec-select__placeholder" *ngIf="!selection.items.length">

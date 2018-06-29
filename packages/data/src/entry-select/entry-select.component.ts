@@ -1,11 +1,12 @@
 /**
  * Created by felix on 23.05.17.
  */
-import { Component, forwardRef, Input, OnChanges, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, forwardRef, Input, OnChanges, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Form } from '@ec.components/core';
 import { Item } from '@ec.components/core/src/item/item';
 import { ResourceService } from '@ec.components/data/src/resource-config/resource.service';
+import { SdkService } from '@ec.components/data/src/sdk/sdk.service';
 import { SelectComponent } from '@ec.components/ui';
 import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
@@ -37,7 +38,7 @@ import { ResourceDeletePopComponent } from '../resource-delete-pop/resource-dele
     }
   ]
 })
-export class EntrySelectComponent extends SelectComponent<EntryResource> implements OnChanges {
+export class EntrySelectComponent extends SelectComponent<EntryResource> implements OnChanges, OnInit {
   /** The item that is targeted by the input */
   protected item: Item<any>;
   /** The form group that is used */
@@ -73,10 +74,13 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   @ViewChild(ResourceDeletePopComponent) confirmDelete: ResourceDeletePopComponent;
   /** The current lightModel (part of root response) */
   lightModel: any;
+  /** Model list that is only loaded when needing to pick the model first. */
+  models;
 
   constructor(private modelConfig: ModelConfigService,
     public resourceService: ResourceService,
     public symbol: SymbolService,
+    public sdk: SdkService,
     private auth: AuthService) {
     super();
     this.resourceService.change({ relation: this.model })
@@ -138,8 +142,14 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
     return this.config && this.config.methods && this.config.methods.indexOf(method) !== -1;
   }
 
+  useModel(model) {
+    console.log('use model', model);
+    this.model = model;
+    this.initConfig();
+  }
+
   /** Generates the config and sets up form control */
-  ngOnChanges() {
+  initConfig() {
     if (!this.formControl) {
       this.formControl = new FormControl(this.value || []);
     }
@@ -147,7 +157,12 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
       this.useConfig(this.config);
       return;
     }
-
+    if (!this.model && this.sdk.api) {
+      this.sdk.api.modelList().then(modelList => {
+        this.models = Object.keys(modelList).map(model => modelList[model]);
+      });
+      return;
+    }
     this.modelConfig.getLightModel(this.model)
       .then(model => this.lightModel = model);
 
@@ -157,6 +172,16 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
           { solo: this.solo, selectMode: true, disableSelectSwitch: true });
         this.useConfig(this.config);
       });
+  }
+
+  /** Fires initConfig */
+  ngOnInit() {
+    this.initConfig();
+  }
+
+  /** Fires initConfig */
+  ngOnChanges() {
+    this.initConfig();
   }
 
   /** Is called when a selected item has been clicked. */

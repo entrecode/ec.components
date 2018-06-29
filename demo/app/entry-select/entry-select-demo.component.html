@@ -1,4 +1,8 @@
 <h2 class="mega">ec-entry-select</h2>
+<strong>without model</strong>
+<ec-entry-select></ec-entry-select>
+<hr>
+
 <strong>default usage</strong>
 <ec-entry-select model="muffin" #entrySelect [(ngModel)]="selectedMuffins"></ec-entry-select>
 <div *ngIf="entrySelect.selection?.items?.length">
@@ -30,7 +34,3 @@
 <ec-entry-select model="muffin" [solo]="true" [config]="{deleteOnRemove:true,safeDelete:false}"></ec-entry-select>
 
 <ec-notifications></ec-notifications>
-
-<!-- <a (click)="entryListPop.toggle() ">TOGGLE ENTRY LIST POP</a>
-
-<ec-entry-list-pop model="field_test " [config]="{size:5} " #entryListPop class="ec-pop_dialog "></ec-entry-list-pop> -->

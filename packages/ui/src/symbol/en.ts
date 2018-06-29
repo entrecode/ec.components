@@ -411,5 +411,9 @@ export default [
     {
         name: 'entry.select.placeholder.select',
         content: 'select...'
+    },
+    {
+        name: 'entry.select.placeholder.model',
+        content: 'select model...'
     }
 ];
