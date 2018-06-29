@@ -83,6 +83,9 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
     if (this.componentInstance && this.componentInstance['writeValue']) {
       this.componentInstance['writeValue'](value); // TODO: this is pretty hacky
     }
+    if (this.componentInstance && this.componentInstance['control'] && this.componentInstance['control'].patchValue) {
+      this.componentInstance['control'].patchValue(value); // TODO: this is pretty hacky
+    }
   }
 
   propagateChange = (_: any) => {
