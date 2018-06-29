@@ -1,5 +1,45 @@
 <h2>
   Form</h2>
+<h3>ec-field with just config and ngModel</h3>
+<label>string {{myString}}
+  <ec-input [config]="{view:'string'}" [(ngModel)]="myString"></ec-input>
+</label>
+<label>number {{myNumber}}
+  <ec-input [config]="{view:'number'}" [(ngModel)]="myNumber"></ec-input>
+</label>
+<label>textarea {{myTextarea}}
+  <ec-input [config]="{view:'textarea'}" [(ngModel)]="myTextarea"></ec-input>
+</label>
+<label>color {{myColor}}
+  <ec-input [config]="{view:'color'}" [(ngModel)]="myColor"></ec-input>
+</label>
+<label>boolean {{myBoolean}}
+  <ec-input [config]="{view:'boolean'}" [(ngModel)]="myBoolean"></ec-input>
+</label>
+<label>email {{myEmail}}
+  <ec-input [config]="{view:'email'}" [(ngModel)]="myEmail"></ec-input>
+</label>
+<label>url {{myUrl}}
+  <ec-input [config]="{view:'url'}" [(ngModel)]="myUrl"></ec-input>
+</label>
+<label>toggle {{myToggle}}
+  <ec-input [config]="{view:'toggle'}" [(ngModel)]="myToggle"></ec-input>
+</label>
+<label>date {{myDate}}
+  <ec-input [config]="{view:'date'}" [(ngModel)]="myDate"></ec-input>
+</label>
+<label>select {{mySelect}}
+  <ec-input [config]="{view:'select',values:['a','b','c']}" [(ngModel)]="mySelect"></ec-input>
+</label>
+<label>entry {{myEntry}}
+  <ec-input [config]="entryConfig" [(ngModel)]="myEntry"></ec-input>
+</label>
+<label>not existing {{myNan}}
+  <ec-input [config]="{view:'not_existing'}" [(ngModel)]="myNan"></ec-input>
+</label>
+<label>with field object</label>
+<ec-input [field]="testField"></ec-input>
+
 <h3>Default Form</h3>
 <p>If the ec-form element has no contents, the default form will be rendered, which is a list containing all fields and a submit
   button

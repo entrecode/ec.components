@@ -1,11 +1,12 @@
-import { Component, EventEmitter, Input, Output, OnChanges, Type, ComponentRef, forwardRef } from '@angular/core';
-
-import { FormControl, FormGroup, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { DynamicSlotComponent } from '../dynamic-slot/dynamic-slot.component';
-import { DefaultInputComponent } from '../../form/default-input/default-input.component';
+import { Component, EventEmitter, forwardRef, Input, OnChanges, Output, Type } from '@angular/core';
+import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { FieldConfigProperty } from '@ec.components/core';
 import { Field } from '@ec.components/core/src/field/field';
-import { Item } from '@ec.components/core/src/item/item';
 import { Form } from '@ec.components/core/src/form/form';
+import { Item } from '@ec.components/core/src/item/item';
+import { DefaultInputComponent } from '../../form/default-input/default-input.component';
+import { DynamicSlotComponent } from '../dynamic-slot/dynamic-slot.component';
+
 /** This directive can be used to display a field. It is used inside ec-form as well as ec-list. */
 @Component({
   selector: 'ec-input',
@@ -33,6 +34,8 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
   @Input() property: string;
   /** The belonging item */
   @Input() item: Item<any>;
+  /** Config that should be used, only needed when not using field input */
+  @Input() config: FieldConfigProperty;
   /** Overrides the default component */
   @Input() component: Type<any>;
   /** Holds a reference to the component instance. This is helpful when you want to modify the component after form intialization.
@@ -42,9 +45,16 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
   ngOnChanges() {
     if (this.property && this.item instanceof Form) {
       this.field = this.item.getField(this.property);
+    } else if (!this.field && this.config) {
+      this.field = new Field(this.property || 'input', this.config);
     }
     if (!this.field) {
       return;
+    }
+    if (!this.group) {
+      this.group = new FormGroup({
+        [this.property || this.field.property || 'input']: new FormControl()
+      });
     }
     const data = {
       group: this.group,
@@ -53,7 +63,6 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
       field: this.field,
       input: this
     };
-
     const componentRef = this.loadComponent(this.component || this.field.input || DefaultInputComponent, data);
     this.componentInstance = componentRef.instance;
     if (componentRef.instance.control) {
