@@ -390,5 +390,9 @@ export const ecIcons: Symbol[] = [
   { name: 'img-full' },
   { name: 'img-left' },
   { name: 'smaller-text' },
-  { name: 'checkmark-2' }
+  { name: 'checkmark-2' },
+  { name: 'json' },
+  { name: 'required' },
+  { name: 'validate' },
+  { name: 'fingerprint' }
 ];
