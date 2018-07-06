@@ -5,6 +5,7 @@ import Resource from 'ec.sdk/lib/resources/Resource';
 import { CrudConfig } from '../crud/crud-config.interface';
 import { AdminEntryInputComponent } from '../entry-form/admin-entry-input.component';
 import { TypeConfigService } from '../model-config/type-config.service';
+import { DefaultInputComponent } from '../../../../node_modules/@ec.components/ui';
 
 @Injectable()
 /** Contains default configurations for all kinds of resources. Used by ResourceList and ResourceForm.  */
@@ -608,13 +609,14 @@ export class ResourceConfig {
         fields: {
           name: {
             label: this.symbol.resolve('field.label.name'),
+            view: 'string'
           },
           permissions: {
             view: 'tags',
             display: (value) => value || [],
             list: false
           },
-          created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
+          /* created: this.created(this.symbol.resolve('field.label.created'), this.symbol), */
         }
       }
     }
