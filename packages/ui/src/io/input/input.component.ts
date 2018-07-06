@@ -61,7 +61,7 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
     }
     const data = {
       group: this.group,
-      control: this.control,
+      control: this.control || this.group ? this.group.get(this.field.property) : null,
       item: this.item,
       field: this.field,
       input: this
