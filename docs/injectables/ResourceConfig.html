@@ -83,6 +83,9 @@
                         <a href="additional-documentation/project-setup-tutorial/authorization.html" data-type="entity-link" data-context-id="additional">Authorization</a>
                     </li>
                     <li class="link for-chapter2">
+                        <a href="additional-documentation/project-setup-tutorial/model-config.html" data-type="entity-link" data-context-id="additional">Model Config</a>
+                    </li>
+                    <li class="link for-chapter2">
                         <a href="additional-documentation/project-setup-tutorial/custom-fields.html" data-type="entity-link" data-context-id="additional">Custom Fields</a>
                     </li>
                     <li class="link for-chapter2">
@@ -1295,6 +1298,9 @@
                     </li>
                     <li class="link for-chapter2">
                         <a href="additional-documentation/project-setup-tutorial/authorization.html" data-type="entity-link" data-context-id="additional">Authorization</a>
+                    </li>
+                    <li class="link for-chapter2">
+                        <a href="additional-documentation/project-setup-tutorial/model-config.html" data-type="entity-link" data-context-id="additional">Model Config</a>
                     </li>
                     <li class="link for-chapter2">
                         <a href="additional-documentation/project-setup-tutorial/custom-fields.html" data-type="entity-link" data-context-id="additional">Custom Fields</a>
@@ -3742,13 +3748,31 @@ export class ResourceConfig {
         fields: {
           name: {
             label: this.symbol.resolve(&#x27;field.label.name&#x27;),
+            view: &#x27;string&#x27;
           },
           permissions: {
             view: &#x27;tags&#x27;,
             display: (value) &#x3D;&gt; value || [],
             list: false
           },
-          created: this.created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
+          /* created: this.created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol), */
+        }
+      },
+      invite: {
+        identifier: &#x27;invite&#x27;,
+        identifierPattern: this.uuid(),
+        label: &#x27;invite&#x27;,
+        fields: {
+          invite: {
+            view: &#x27;string&#x27;
+          },
+          permissions: {
+            view: &#x27;tags&#x27;
+          },
+          groups: {
+            view: &#x27;tags&#x27;,
+            display: (group &#x3D;&gt; group ? group.map(g &#x3D;&gt; g.name) : [])
+          }
         }
       }
     }

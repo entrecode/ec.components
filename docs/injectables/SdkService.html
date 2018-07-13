@@ -83,6 +83,9 @@
                         <a href="additional-documentation/project-setup-tutorial/authorization.html" data-type="entity-link" data-context-id="additional">Authorization</a>
                     </li>
                     <li class="link for-chapter2">
+                        <a href="additional-documentation/project-setup-tutorial/model-config.html" data-type="entity-link" data-context-id="additional">Model Config</a>
+                    </li>
+                    <li class="link for-chapter2">
                         <a href="additional-documentation/project-setup-tutorial/custom-fields.html" data-type="entity-link" data-context-id="additional">Custom Fields</a>
                     </li>
                     <li class="link for-chapter2">
@@ -1295,6 +1298,9 @@
                     </li>
                     <li class="link for-chapter2">
                         <a href="additional-documentation/project-setup-tutorial/authorization.html" data-type="entity-link" data-context-id="additional">Authorization</a>
+                    </li>
+                    <li class="link for-chapter2">
+                        <a href="additional-documentation/project-setup-tutorial/model-config.html" data-type="entity-link" data-context-id="additional">Model Config</a>
                     </li>
                     <li class="link for-chapter2">
                         <a href="additional-documentation/project-setup-tutorial/custom-fields.html" data-type="entity-link" data-context-id="additional">Custom Fields</a>
@@ -3723,10 +3729,10 @@ export class SdkService {
     if (this.noApi(api)) {
       return Promise.reject(&#x27;getSchema: &#x27; + this.noApi(api));
     }
-    if (!this.schemaRequests[model]) {
-      this.schemaRequests[model] &#x3D; api.getSchema(model);
+    if (!this.schemaRequests[model] || this.schemaRequests[model].api !&#x3D;&#x3D; api) {
+      this.schemaRequests[model] &#x3D; { request: api.getSchema(model), api };
     }
-    return this.schemaRequests[model];
+    return this.schemaRequests[model].request;
   }
 
   /** Returns the current account. Works for all apis */

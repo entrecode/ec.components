@@ -83,6 +83,9 @@
                         <a href="additional-documentation/project-setup-tutorial/authorization.html" data-type="entity-link" data-context-id="additional">Authorization</a>
                     </li>
                     <li class="link for-chapter2">
+                        <a href="additional-documentation/project-setup-tutorial/model-config.html" data-type="entity-link" data-context-id="additional">Model Config</a>
+                    </li>
+                    <li class="link for-chapter2">
                         <a href="additional-documentation/project-setup-tutorial/custom-fields.html" data-type="entity-link" data-context-id="additional">Custom Fields</a>
                     </li>
                     <li class="link for-chapter2">
@@ -1295,6 +1298,9 @@
                     </li>
                     <li class="link for-chapter2">
                         <a href="additional-documentation/project-setup-tutorial/authorization.html" data-type="entity-link" data-context-id="additional">Authorization</a>
+                    </li>
+                    <li class="link for-chapter2">
+                        <a href="additional-documentation/project-setup-tutorial/model-config.html" data-type="entity-link" data-context-id="additional">Model Config</a>
                     </li>
                     <li class="link for-chapter2">
                         <a href="additional-documentation/project-setup-tutorial/custom-fields.html" data-type="entity-link" data-context-id="additional">Custom Fields</a>
@@ -2715,7 +2721,7 @@
                         <div><p>The belonging form control. This is not required if you pass in a field and group. </p>
 </div>
                             <p>
-                            <em>Type:</em>    <code><a href="../classes/Form.html" target="_self" >FormControl</a></code>
+                            <em>Type:</em>    <code><a href="https://angular.io/api/forms/AbstractControl" target="_blank" >AbstractControl</a></code>
 
                             </p>
                     </td>
@@ -3038,7 +3044,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">packages/ui/src/io/input/input.component.ts:82</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">packages/ui/src/io/input/input.component.ts:85</a></div>
                             </td>
                         </tr>
 
@@ -3363,7 +3369,7 @@ You can access a form&#39;s InputComponents via FormComponent#inputs </p>
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, EventEmitter, forwardRef, Input, OnChanges, Output, Type } from &#x27;@angular/core&#x27;;
-import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR } from &#x27;@angular/forms&#x27;;
+import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, AbstractControl } from &#x27;@angular/forms&#x27;;
 import { FieldConfigProperty } from &#x27;@ec.components/core&#x27;;
 import { Field } from &#x27;@ec.components/core/src/field/field&#x27;;
 import { Form } from &#x27;@ec.components/core/src/form/form&#x27;;
@@ -3387,7 +3393,7 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
   /** The belonging form group */
   @Input() group: FormGroup;
   /** The belonging form control. This is not required if you pass in a field and group. */
-  @Input() control: FormControl;
+  @Input() control: AbstractControl;
   /** The changed ouput emits whenever the form control of the input changes. */
   @Output() changed &#x3D; new EventEmitter();
   /** Debounce time in ms before the changed event emits. */
@@ -3415,9 +3421,12 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
     if (!this.field) {
       return;
     }
+    if (!this.control) {
+      this.control &#x3D; this.group ? this.group.get(this.field.property) : new FormControl();
+    }
     if (!this.group) {
       this.group &#x3D; new FormGroup({
-        [this.property || this.field.property || &#x27;input&#x27;]: new FormControl()
+        [this.property || this.field.property || &#x27;input&#x27;]: this.control
       });
     }
     const data &#x3D; {
@@ -3446,9 +3455,6 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
   writeValue(value: any) {
     if (this.componentInstance &amp;&amp; this.componentInstance[&#x27;writeValue&#x27;]) {
       this.componentInstance[&#x27;writeValue&#x27;](value); // TODO: this is pretty hacky
-    }
-    if (this.componentInstance &amp;&amp; this.componentInstance[&#x27;control&#x27;] &amp;&amp; this.componentInstance[&#x27;control&#x27;].patchValue) {
-      this.componentInstance[&#x27;control&#x27;].patchValue(value); // TODO: this is pretty hacky
     }
   }
 

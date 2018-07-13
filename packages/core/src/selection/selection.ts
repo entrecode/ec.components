@@ -26,9 +26,9 @@ export class Selection<T> extends List<T> {
     return this.items.indexOf(this.items.find(i => i.resolve() === item.resolve()));
   }
 
-  /* has(item: Item<T>) {
+  has(item: Item<T>) {
     return super.has(item) || this.index(item) !== -1;
-  } */
+  }
 
   /** Toggle item in and out of selection.
    * The solo property will change the behaviour like you would expect it to behave :) */
