@@ -33,6 +33,7 @@ export class TypeConfigService {
     },
     boolean: {
       prefill: false,
+      filterOperator: 'exact'
     },
     formattedText: {
       view: 'textarea',
