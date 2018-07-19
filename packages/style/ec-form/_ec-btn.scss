@@ -1,7 +1,10 @@
+// @param {array} $ec-btn-save-style
+// @param {array} $ec-btn-delete-style
+
 .ec-btn_delete {
-  @extend %ec-btn-delete-style !optional;
+  @include inject-style($ec-btn-delete-style);
 }
 
 .ec-btn_save {
-  @extend %ec-btn-save-style !optional;
+  @include inject-style($ec-btn-save-style);
 }

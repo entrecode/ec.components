@@ -1,9 +1,11 @@
 // @param {px} $ec-loader-size [24]
+// @param {array} $ec-loader-overlay-style
 // @param {px} $ec-loader-track-width [24]
 // @param {color} $ec-loader-track-color [$divider-color]
 // @param {color} $ec-loader-racer-color [$link]
-// @param {color} $ec-loader-racer-speed [1s]
-
+// @param {duration} $ec-loader-racer-animation [loaderDefault]
+// @param {duration} $ec-loader-racer-animation-speed [1s]
+// @param {value} $ec-loader-racer-animation-behavior [infinite linear]
 @keyframes loaderDefault {
   0% {
     transform: rotate(0);
@@ -32,14 +34,15 @@
   }
 
   &::after {
-    content: '';
-    display: block;
-    height: em(24);
-    width: em(24);
-    border-radius: 50%;
+    @include inject-style($ec-loader-style);
+    height: em($ec-loader-size);
     border: em($ec-loader-track-width) solid $ec-loader-track-color;
     border-right-color: $ec-loader-racer-color;
-    animation: loaderDefault $ec-loader-racer-speed infinite linear;
+    animation: $ec-loader-racer-animation $ec-loader-racer-animation-speed $ec-loader-racer-animation-behavior;
+    width: em($ec-loader-size);
+    content: '';
+    display: block;
+    border-radius: 50%;
   }
 }
 

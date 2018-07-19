@@ -7,8 +7,8 @@
   height: 100%;
 
   .ec-list {
-    grid-area: list;
     @include is-scrollable(y, contain);
+    grid-area: list;
   }
 
   .ec-list-header {
@@ -45,10 +45,10 @@
     justify-content: flex-end;
 
     .ec-list-cell {
-      background: rgba(getColor(background, invert), .8);
+      background: rgba(getColor(background, invert), 0.8);
       color: getColor(text, invert);
       padding: 0 rem(8);
-      font-size: .875em;
+      font-size: 0.875em;
       z-index: 2;
     }
 

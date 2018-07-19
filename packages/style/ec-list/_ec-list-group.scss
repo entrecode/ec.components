@@ -1,19 +1,21 @@
+// @param {array} $ec-list-group-style
 // @param {px} $ec-list-group-header-font-size [$base-font-size * 0.875]
 // @param {value} $ec-list-group-header-weight [$is-bold]
 // @param {array} $ec-list-group-header-spacing [0 0 16]
-
+// @param {array} $ec-list-group-header-style
 .ec-list-group {
+  @include inject-style($ec-list-group-style);
+
   .ec-list-group-header {
+    @include inject-style($ec-list-group-header-style);
     display: flex;
     margin: arrayMagic($ec-list-group-header-spacing);
 
     .ec-list-group-header__title {
+      font-weight: $ec-list-group-header-weight;
+      font-size: rem($ec-list-group-header-font-size);
       width: 100%;
       text-align: center;
-      font-weight: $ec-list-group-header-weight;
-      font-size: em($base-font-size * 0.875);
     }
-
-    @extend %ec-list-group-header-weight !optional;
   }
 }

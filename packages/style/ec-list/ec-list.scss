@@ -7,3 +7,14 @@
 @import 'ec-list-group';
 @import 'is-sortable';
 @import 'is-filterable';
+
+// @param {value} $ec-list-background [transparent]
+// @param {array} $ec-list-padding [0]
+// @param {array} $ec-list-spacing [0]
+// @param {array} $ec-list-style
+.ec-list {
+  @include inject-style($ec-list-style);
+  background: $ec-list-background;
+  margin: arrayMagic($ec-list-spacing);
+  padding: arrayMagic($ec-list-padding);
+}

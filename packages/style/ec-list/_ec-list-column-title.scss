@@ -1,4 +1,6 @@
+// @param {array} $ec-list-column-title-style
 .ec-list-column-title {
+  @include inject-style($ec-list-column-title-style);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

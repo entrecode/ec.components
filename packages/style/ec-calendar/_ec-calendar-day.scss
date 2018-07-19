@@ -1,40 +1,62 @@
+// @param {px} $ec-calendar-day-size [$btn-min-height]
+// @param {px} $ec-calendar-font-size [$btn-font-size]
+// @param {px} $ec-calendar-line-height [$btn-line-height]
 // @param {color} $ec-calendar-day-color [$text]
 // @param {color} $ec-calendar-day-background [transparent]
-// @param {color} $ec-calendar-day-today-color [$link]
-// @param {color} $ec-calendar-day-today-background [$state-hover]
-// @param {color} $ec-calendar-day-active-color [setContrast($link)]
-// @param {color} $ec-calendar-day-active-background [$link]
-// @param {color} $ec-calendar-day-hover-color [$link]
-// @param {color} $ec-calendar-day-hover-background [$state-hover]
-// @param {color} $ec-calendar-day-other-color [$text-lighter]
-// @param {color} $ec-calendar-day-other-background [transparent]
-
+// @param {array} $ec-calendar-day-style
 .ec-calendar-day {
-  @extend %btn !optional;
-  border-radius: arrayMagic($btn-min-height / 2);
+  @include inject-style($ec-calendar-day-style);
+  @include macro-metrics(
+    $ec-calendar-day-font-size,
+    $ec-calendar-day-line-height,
+    $ec-calendar-day-size,
+    $padding-ratio: 0
+  );
+  background: $ec-calendar-day-background;
+  color: $ec-calendar-day-color;
+  border-radius: rem($ec-calendar-day-size / 2);
+  width: rem($ec-calendar-day-size);
+  height: rem($ec-calendar-day-size);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding-left: 0;
   padding-right: 0;
   transition: all 0.4s;
-  background-color: $ec-calendar-day-background;
-  color: $ec-calendar-day-color;
 
+  // @param {color} $ec-calendar-day-hover-color [$link]
+  // @param {color} $ec-calendar-day-hover-background [$state-hover]
+  // @param {array} $ec-calendar-day-hoverstyle
   &:hover {
-    background-color: $ec-calendar-day-hover-background;
+    @include inject-style($ec-calendar-day-hover-style);
+    background: $ec-calendar-day-hover-background;
     color: $ec-calendar-day-hover-color;
   }
 
+  // @param {color} $ec-calendar-day-is-today-color [$link]
+  // @param {color} $ec-calendar-day-is-today-background [$state-hover]
+  // @param {array} $ec-calendar-day-is-today-style
   &.is-today {
-    background-color: $ec-calendar-day-today-background;
-    color: $ec-calendar-day-today-color;
+    @include inject-style($ec-calendar-day-is-today-style);
+    background: $ec-calendar-day-is-today-background;
+    color: $ec-calendar-day-is-today-color;
   }
 
+  // @param {color} $ec-calendar-day-is-other-color [$text-lighter]
+  // @param {color} $ec-calendar-day-is-other-background [transparent]
+  // @param {array} $ec-calendar-day-is-other-style
   &.is-other {
-    background-color: $ec-calendar-day-other-background;
-    color: $ec-calendar-day-other-color;
+    @include inject-style($ec-calendar-day-is-other-style);
+    background: $ec-calendar-day-is-other-background;
+    color: $ec-calendar-day-is-other-color;
   }
 
+  // @param {color} $ec-calendar-day-is-selected-color [setContrast($link)]
+  // @param {color} $ec-calendar-day-is-selected-background [$link]
+  // @param {array} $ec-calendar-day-is-selected-style
   &.is-selected {
-    background-color: $ec-calendar-day-active-background;
-    color: $ec-calendar-day-active-color;
+    @include inject-style($ec-calendar-day-is-selected-style);
+    background: $ec-calendar-day-is-selected-background;
+    color: $ec-calendar-day-is-selected-color;
   }
 }

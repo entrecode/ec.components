@@ -1,4 +1,6 @@
+// @param {array} $ec-output-string-style
 .ec-output-string {
+  @include inject-style($ec-output-string-style);
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;

@@ -18,11 +18,14 @@
 // @param {array} $ec-notification-padding [8 16]
 // @param {array} $ec-notification-spacing [4]
 // @param {px} $ec-notification-max-width [320]
-// @param {array} $ec-notification-radius [$overlay-radius]
+// @param {array} $ec-notification-radius [$xui-overlay-radius]
 // @param {px} $ec-notification-font-size [$base-font-size * 0.875]
 // @param {array} $ec-notification-shadow [0 8 16 -4px rgba(#000, 0.2)]
 // @param {px} $ec-notification-flag-width [8]
-
+// @param {value} $ec-notification-animation [notification]
+// @param {time} $ec-notification-animation-speed [0.2s]
+// @param {time} $ec-notification-animation-behavior
+// @param {array} $ec-notification-style
 .ec-notifications {
   position: fixed;
   z-index: 9999;
@@ -37,19 +40,20 @@
 
   .ec-pop-container {
     .ec-pop {
+      @include inject-style($ec-notification-style);
+      font-size: em($ec-notification-font-size);
+      background: $ec-notification-background;
+      padding: arrayMagic($ec-notification-padding);
+      box-shadow: arrayMagix($ec-notification-shadow);
+      border-radius: arrayMagic($ec-notification-radius);
+      margin: arrayMagic($ec-notification-spacing);
+      max-width: rem($ec-notification-max-width);
+      animation: $ec-notification-animation $ec-notification-animation-speed $ec-notification-animation-behavior;
+      border-left-width: rem($ec-notification-flag-width);
       cursor: pointer;
       position: relative;
       user-select: none;
       width: 100%;
-      animation: notification 0.2s;
-      font-size: em($ec-notification-font-size);
-      background-color: $ec-notification-background;
-      padding: arrayMagic($ec-notification-padding);
-      box-shadow: arrayMagix($ec-notification-shadow);
-      border-radius: arrayMagic($overlay-radius);
-      margin: arrayMagic($ec-notification-spacing);
-      max-width: rem($ec-notification-max-width);
-      border-left-width: rem($ec-notification-flag-width);
       border-left-style: solid;
     }
   }
@@ -67,6 +71,7 @@
   }
 
   .ec-notification__dismiss {
+    color: setContrast($ec-notification-background);
     position: absolute;
     right: 0;
     top: rem(4);
@@ -78,7 +83,6 @@
     text-align: center;
     margin: 0;
     opacity: 0.6;
-    color: setContrast($ec-notification-background);
 
     &:hover {
       opacity: 1;

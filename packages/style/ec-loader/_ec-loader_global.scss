@@ -1,3 +1,4 @@
+// @param {px} $ec-loader-size [24]
 .ec-loader_global {
   position: fixed;
   top: 0;
@@ -12,7 +13,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-left: rem(-12);
-    margin-top: rem(-12);
+    margin-left: rem($ec-loader-size / -2);
+    margin-top: rem($ec-loader-size / -2);
   }
 }

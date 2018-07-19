@@ -4,54 +4,64 @@
 // @param {array} $ec-list-item-padding [0]
 // @param {array} $ec-list-item-spacing [0]
 // @param {color} $ec-list-filterable-control-color [$link]
-// @param {color} $ec-list-item-clickable-color [$link]
-// @param {color} $ec-list-item-clickable-background [$state-hover]
 // @param {color} $ec-list-item-selected-color [$ec-list-item-clickable-color]
 // @param {color} $ec-list-item-selected-background [$ec-list-item-clickable-background]
-
+// @param {array} $ec-list-item-style
 .ec-list-item {
+  @include inject-style($ec-list-item-style);
+  padding: arrayMagic($ec-list-item-padding);
+  margin: arrayMagic($ec-list-item-spacing);
+  background: $ec-list-item-background;
   display: flex;
   min-width: 100%;
   transition: all 0.4s;
-  padding: arrayMagic($ec-list-item-padding);
-  margin: arrayMagic($ec-list-item-spacing);
-  background-color: $ec-list-item-background;
 
   &.is-hidden {
     display: none;
   }
 
+  // @param {color} $ec-list-item-is-clickable-color [inherit]
+  // @param {color} $ec-list-item-is-clickable-background []
+  // @param {array} $ec-list-item-is-clickable-style
   &.is-clickable {
+    @include inject-style($ec-list-item-is-clickable-style);
+    background: $ec-list-item-is-clickable-background;
+    color: $ec-list-item-is-clickable-color;
     cursor: pointer;
 
+    // @param {color} $ec-list-item-is-clickable-hover-color [$link]
+    // @param {color} $ec-list-item-is-clickable-hover-background [$state-hover]
+    // @param {array} $ec-list-item-is-clickable-hover-style
     &:hover {
-      color: $ec-list-item-clickable-color;
-      background-color: flattenColor(
-        $ec-list-item-clickable-background,
-        $ec-list-item-background
-      );
-
-      @extend %ec-list-item-clickable-style !optional;
+      @include inject-style($ec-list-item-is-clickable-hover-style);
+      background: $ec-list-item-is-clickable-hover-background;
+      color: $ec-list-item-is-clickable-hover-color;
 
       .ec-list-cell {
-        color: $ec-list-item-clickable-color;
+        color: $ec-list-item-is-clickable-hover-color;
       }
     }
   }
 
+  // @param {color} $ec-list-item-is-selected-color [$link]
+  // @param {color} $ec-list-item-is-selected-background [$state-hover]
+  // @param {array} $ec-list-item-is-selected-style
   &.is-selected {
-    color: $ec-list-item-selected-color;
-    background-color: flattenColor(
-      $ec-list-item-selected-background,
-      $ec-list-item-background
-    );
-
-    @extend %ec-list-item-selected-style !optional;
+    @include inject-style($ec-list-item-is-selected-style);
+    color: $ec-list-item-is-selected-color;
+    background: $ec-list-item-is-selected-background;
 
     .ec-list-cell {
-      color: $ec-list-item-selected-color;
+      color: $ec-list-item-is-selected-color;
+    }
+
+    // @param {color} $ec-list-item-is-selected-hover-color [inherit]
+    // @param {color} $ec-list-item-is-selected-hover-background [inherit]
+    // @param {array} $ec-list-item-is-selected-hover-style
+    &:hover {
+      @include inject-style($ec-list-item-is-selected-hover-style);
+      color: $ec-list-item-is-selected-hover-color;
+      background: $ec-list-item-is-selected-hover-background;
     }
   }
-
-  @extend %ec-list-item-style !optional;
 }
