@@ -1,10 +1,26 @@
+.ec-list-cell {
+  // @param {array} $ec-list-cell-is-sortable-style
+  &.is-sortable {
+    @include inject-style($ec-list-cell-is-sortable-style);
+  }
+
+  // @param {color} $ec-list-cell-is-sorted-background [inherit]
+  // @param {color} $ec-list-cell-is-sorted-color [inherit]
+  // @param {array} $ec-list-cell-is-sorted-style
+  &.is-sorted {
+    @include inject-style($ec-list-cell-is-sorted-style);
+    background: $ec-list-cell-is-sorted-background;
+    color: $ec-list-cell-is-sorted-color;
+  }
+}
+
 .is-sortable-indicator {
-  margin-left: rem(8);
-  height: rem(12);
   position: relative;
-  width: rem(12);
   align-self: center;
   flex-grow: 0;
+  margin-left: rem(8);
+  height: rem(12);
+  width: rem(12);
 
   &::after,
   &::before {
@@ -15,14 +31,14 @@
     margin-left: rem(-4);
   }
 
-  // @param {color} $ec-list-sortable-color [$text-lightest]
+  // @param {color} $is-sortable-indicator-color [$text-lightest]
   &::before {
-    border-bottom-color: $ec-list-sortable-color;
+    border-bottom-color: $is-sortable-indicator-color;
     top: rem(-4);
   }
 
   &::after {
-    border-top-color: $ec-list-sortable-color;
+    border-top-color: $is-sortable-indicator-color;
     bottom: rem(-4);
   }
 }
@@ -38,11 +54,11 @@
   }
 }
 
-// @param {color} $ec-list-sortable-active-color [$text]
+// @param {color} $is-sortable-indicator-active-color [$text]
 .is-sorted-desc {
   .is-sortable-indicator {
     &::before {
-      border-bottom-color: $ec-list-sortable-active-color;
+      border-bottom-color: $is-sortable-indicator-active-color;
     }
   }
 }
@@ -50,7 +66,7 @@
 .is-sorted-asc {
   .is-sortable-indicator {
     &::after {
-      border-top-color: $ec-list-sortable-active-color;
+      border-top-color: $is-sortable-indicator-active-color;
     }
   }
 }

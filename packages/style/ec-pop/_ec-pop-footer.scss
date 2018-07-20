@@ -1,13 +1,12 @@
 // @param {array} $ec-pop-footer-spacing [0]
 // @param {array} $ec-pop-footer-padding [8]
-
+// @param {array} $ec-pop-footer-style
 .ec-pop-footer {
-  flex-shrink: 0;
-  flex-grow: 0;
+  @include inject-style($ec-pop-footer-style);
   margin: arrayMagic($ec-pop-footer-spacing);
   padding: arrayMagic($ec-pop-footer-padding);
-
-  @extend %ec-pop-footer-style !optional;
+  flex-shrink: 0;
+  flex-grow: 0;
 
   .nav {
     .nav__items {

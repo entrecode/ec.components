@@ -1,22 +1,22 @@
-// @param {px} $ec-input-color-size [$ec-input-color-size]
-// @param {array} $ec-input-color-border [$input-border-width solid $input-border-color ]
+// scss-lint:disable NestingDepth
 
-//scss-lint:disable NestingDepth
-
+// @param {px} $ec-input-color-size [24]
+// @param {array} $ec-input-color-border [$input-border-width solid $input-border-color]
+// @param {array} $ec-input-color-style
 .ec-input-color {
   label {
+    @include inject-style($ec-input-color-style);
+    width: rem($ec-input-color-size);
+    height: rem($ec-input-color-size);
+    border: arrayMagic($ec-input-color-border);
     cursor: pointer;
     overflow: hidden;
     position: relative;
     padding: 0;
     margin: 0;
-    width: rem($ec-input-color-size);
-    height: rem($ec-input-color-size);
-    border: arrayMagic($ec-input-color-border);
 
     // @param {boolean} $ec-input-color-round [$input-round]
     // @param {px} $ec-input-color-radius [$input-radius]
-
     border-radius: arrayMagic($ec-input-color-radius);
     @if $ec-input-color-round == true {
       border-radius: arrayMagic($ec-input-color-size / 2);
@@ -29,7 +29,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(#000, 0.04);
+      background: rgba(#000, 0.04);
       mix-blend-mode: multiply;
       opacity: 0;
       transition: all 0.2s;

@@ -3,18 +3,17 @@
 // @param {color} $ec-output-asset-background [$background-lighter]
 // @param {px} $ec-output-asset-font-size [$tag-small-font-size]
 // @param {px} $ec-output-asset-line-height [$tag-small-line-height]
-
+// @param {array} $ec-output-asset-style
 .ec-output-asset {
-  display: inline-flex;
-  align-items: center;
+  @include inject-style($ec-output-asset-style);
   font-size: em($ec-output-asset-font-size);
   line-height: em($ec-output-asset-line-height, $ec-output-asset-font-size);
-  background-color: $ec-output-asset-background;
+  background: $ec-output-asset-background;
   border-radius: arrayMagic($ec-output-asset-radius);
   padding: arrayMagic($ec-output-asset-padding);
-  opacity: .2;
-
-  @extend %ec-output-asset-style !optional;
+  display: inline-flex;
+  align-items: center;
+  opacity: 0.2;
 
   .ec-icon {
     font-size: 1em;

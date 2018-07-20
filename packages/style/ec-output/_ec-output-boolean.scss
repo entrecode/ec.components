@@ -1,11 +1,11 @@
 // @param {color} $ec-output-boolean-color [$text-lightest]
-// @param {color} $ec-output-boolean-true-color [$text]
-
+// @param {color} $ec-output-boolean-is-true-color [$text]
+// @param {array} $ec-output-boolean-style
 .ec-output-boolean {
+  @include inject-style($ec-output-boolean-style);
   color: $ec-output-boolean-color;
-  @extend %ec-output-boolean-style !optional;
 
   &.is-true {
-    color: $ec-output-boolean-true-color;
+    color: $ec-output-boolean-is-true-color;
   }
 }

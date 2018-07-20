@@ -1,35 +1,52 @@
 //scss-lint:disable NestingDepth
 
-.is-filterable {
-  position: relative;
+.ec-list-cell {
+  // @param {array} $ec-list-cell-is-filtered-style
+  &.is-filterable {
+    @include inject-style($ec-list-cell-is-filtered-style);
+    position: relative;
+    cursor: pointer;
+  }
+
+  // @param {color} $ec-list-cell-is-filtered-background [$state-hover]
+  // @param {color} $ec-list-cell-is-filtered-color [inherit]
+  // @param {array} $ec-list-cell-is-filterable-style
+  &.is-filtered {
+    @include inject-style($ec-list-cell-is-filterable-style);
+    background: $ec-list-cell-is-filtered-background;
+    color: $ec-list-cell-is-filtered-color;
+  }
 }
 
+// @param {color} $ec-list-is-filterable-control-color [$ec-list-header-color]
+// @param {array} $ec-list-is-filterable-control-style
 .is-filterable-control {
+  @include inject-style($ec-list-is-filterable-control-style);
+  color: $ec-list-is-filterable-control-color;
   text-align: center;
   min-width: rem(16);
   min-height: rem(16);
   margin-right: rem(8);
-  color: $ec-list-filterable-control-color;
 
   &:hover {
-    color: setHover($ec-list-filterable-control-color);
+    color: setHover($ec-list-is-filterable-control-color);
   }
 }
 
 .is-filterable-pop {
   > .ec-pop-container {
     > .ec-pop {
+      padding: arrayMagic($ec-list-cell-padding);
+      font-size: rem($ec-list-header-size);
       position: absolute;
       top: 0;
       left: 0;
       height: 100%;
       width: 100%;
-      padding: arrayMagic($ec-list-cell-padding);
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
       z-index: 10;
-      font-size: rem($ec-list-header-size);
       box-shadow: initial;
     }
 

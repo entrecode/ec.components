@@ -5,9 +5,10 @@
 @import 'ec-calendar-day';
 
 // @param {array} $ec-calendar-spacing [0 0 16]
-
+// @param {array} $ec-calendar-style
 .ec-calendar {
+  @include inject-style($ec-calendar-style);
+  margin: arrayMagic($ec-calendar-spacing);
   display: flex;
   flex-direction: column;
-  margin-bottom: arrayMagic($ec-calendar-spacing);
 }

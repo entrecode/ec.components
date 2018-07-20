@@ -1,11 +1,16 @@
+// @param {color} $ec-asset-list-pop-background [inherit]
+// @param {color} $ec-asset-list-pop-color [inherit]
+// @param {array} $ec-asset-list-pop-style
 .ec-asset-list-pop {
+  @include inject-style($ec-asset-list-pop-style);
+  background: $ec-asset-list-pop-background;
+  color: $ec-asset-list-pop-color;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 9999;
-  background: getColor(background);
   display: grid;
   align-content: start;
   grid-template-areas: 'header' 'body';
@@ -32,6 +37,5 @@
   .ec-pagination {
     padding: rem(8) rem(16);
     margin: 0;
-    background-color: getColor(background, lightest);
   }
 }

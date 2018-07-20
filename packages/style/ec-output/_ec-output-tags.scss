@@ -1,13 +1,15 @@
-// @param {px} $ec-output-tags-font-size [$ec-output-tag-font-size]
-
+// @param {array} $ec-output-tags-spacing [0 -2]
+// @param {array} $ec-output-tags-gutter [2]
+// @param {array} $ec-output-tags-style
 .ec-output-tags {
+  @include inject-style($ec-output-tags-style);
+  margin: arrayMagic($ec-output-tags-spacing);
   list-style: none;
-  margin: -2px;
   padding: 0;
   display: flex;
   flex-wrap: wrap;
 
   li {
-    padding: 2px;
+    padding: arrayMagic($ec-output-tags-gutter);
   }
 }

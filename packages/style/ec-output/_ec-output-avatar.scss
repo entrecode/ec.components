@@ -1,14 +1,14 @@
 // @param {px} $ec-output-avatar-size [32]
 // @param {array} $ec-output-avatar-border [2 solid $background]
+// @param {array} $ec-output-avatar-style
 
 .ec-output-avatar {
+  @include inject-style($ec-output-avatar-style);
   width: arrayMagic($ec-output-avatar-size, xem);
   height: arrayMagic($ec-output-avatar-size, xem);
   border: arrayMagic($ec-output-avatar-border, xem);
   border-radius: 50%;
   overflow: hidden;
-
-  @extend %ec-output-avatar-style !optional;
 
   img {
     height: 100%;

@@ -1,5 +1,5 @@
 <nav class="ec-pagination">
-  <ul class=" ec-pagination-controls" *ngIf="pagination?.getPages()>1&&!pagination?.isFirst()">
+  <ul class="ec-pagination-controls" *ngIf="pagination?.getPages()>1&&!pagination?.isFirst()">
     <li class="ec-pagination-control ec-pagination-control_first" [class.is-disabled]="pagination?.isFirst()" [hidden]="config.hideFirstLast">
       <a (click)="pagination.first()" class="ec-pagination__item">
         <span>{{'pagination.first' | symbol}}</span>

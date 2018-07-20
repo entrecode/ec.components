@@ -1,12 +1,7 @@
-// @param {color} $ec-pop-dialog-background [$ec-pop-background]
-// @param {color} $ec-pop-dialog-color [$ec-pop-color]
 // @param {array} $ec-pop-dialog-spacing [$base-spacing]
-// @param {array} $ec-pop-dialog-radius [$ec-pop-radius]
-// @param {array} $ec-pop-dialog-shadow [$ec-pop-shadow]
-// @param {px} $ec-pop-dialog-min-width [320]
-
 .ec-pop_dialog {
   > .ec-pop-container {
+    padding: arrayMagic($ec-pop-dialog-spacing);
     position: fixed;
     z-index: 9999;
     top: 0;
@@ -17,19 +12,28 @@
     flex-direction: column;
     align-items: center;
     align-content: center;
-    padding: arrayMagic($ec-pop-dialog-spacing);
 
     &.is-visible {
       display: flex;
     }
 
+    // @param {color} $ec-pop-dialog-background [$ec-pop-background]
+    // @param {color} $ec-pop-dialog-color [$ec-pop-color]
+    // @param {array} $ec-pop-dialog-radius [$ec-pop-radius]
+    // @param {array} $ec-pop-dialog-shadow [$ec-pop-shadow]
+    // @param {px} $ec-pop-dialog-min-width [320]
+    // @param {value} $ec-pop-dialog-animation [dialogAppear]
+    // @param {time} $ec-pop-dialog-animation-speed [0.4s]
+    // @param {value} $ec-pop-dialog-animation-behavior [forwards]
+    // @param {array} $ec-pop-dialog-style
     > .ec-pop {
-      @extend %dialog-appear !optional;
+      @include inject-style($ec-pop-dialog-style);
+      animation: $ec-pop-dialog-animation $ec-pop-dialog-animation-speed
+        $ec-pop-dialog-animation-behavior;
       box-shadow: arrayMagic($ec-pop-dialog-shadow);
       border-radius: arrayMagic($ec-pop-dialog-radius);
-      background-color: $ec-pop-dialog-background;
+      background: $ec-pop-dialog-background;
       color: $ec-pop-dialog-color;
-      @extend %ec-pop-dialog-style !optional;
 
       @media (min-width: ($ec-pop-dialog-min-width + 2 * $ec-pop-dialog-spacing * 1px)) {
         min-width: rem($ec-pop-dialog-min-width);

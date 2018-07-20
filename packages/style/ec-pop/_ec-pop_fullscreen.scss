@@ -1,11 +1,7 @@
-// @param {color} $ec-pop-fullscreen-background [$ec-pop-background]
-// @param {color} $ec-pop-fullscreen-color [$ec-pop-color]
 // @param {array} $ec-pop-fullscreen-spacing [$base-spacing]
-// @param {array} $ec-pop-fullscreen-radius [$ec-pop-radius]
-// @param {array} $ec-pop-fullscreen-shadow [$ec-pop-shadow]
-
 .ec-pop_fullscreen {
   > .ec-pop-container {
+    padding: arrayMagic($ec-pop-fullscreen-spacing);
     position: fixed;
     z-index: 9999;
     top: 0;
@@ -16,18 +12,25 @@
     flex-direction: column;
     align-items: center;
     align-content: center;
-    padding: arrayMagic($ec-pop-fullscreen-spacing);
 
+    // @param {color} $ec-pop-fullscreen-background [$ec-pop-background]
+    // @param {color} $ec-pop-fullscreen-color [$ec-pop-color]
+    // @param {array} $ec-pop-fullscreen-radius [$ec-pop-radius]
+    // @param {array} $ec-pop-fullscreen-shadow [$ec-pop-shadow]
+    // @param {value} $ec-pop-fullscreen-animation [popfadeIn]
+    // @param {time} $ec-pop-fullscreen-animation-speed [0.4s]
+    // @param {value} $ec-pop-fullscreen-animation-behavior [forwards]
+    // @param {array} $ec-pop-fullscreen-style
     > .ec-pop {
-      @extend %pop-fade-in;
+      @include inject-style($ec-pop-fullscreen-style);
+      animation: $ec-pop-fullscreen-animation $ec-pop-fullscreen-animation-speed
+        $ec-pop-fullscreen-animation-behavior;
+      box-shadow: arrayMagic($xui-overlay-shadow);
+      border-radius: arrayMagic($ec-pop-fullscreen-radius);
+      background: $ec-pop-fullscreen-background;
+      color: $ec-pop-fullscreen-color;
       width: 100%;
       height: 100%;
-      box-shadow: arrayMagic($overlay-shadow);
-      border-radius: arrayMagic($ec-pop-fullscreen-radius);
-      background-color: $ec-pop-fullscreen-background;
-      color: $ec-pop-fullscreen-color;
-
-      @extend %ec-pop-fullscreen-style !optional;
     }
   }
 }
