@@ -35,7 +35,6 @@ export class ListTransformsDemoComponent {
         } else {
           return 'short';
         }
-        return ''
       },
       fields: {
         word: {
