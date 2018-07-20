@@ -1,5 +1,7 @@
 # ec-entry-list
 
+Entry Lists load multiple entries from a model and display them in a paginated list. It supports load error notifications, loader, filtering, sorting and automatic reloading + many customizations.
+
 ## Default Usage
 
 ```html
@@ -14,6 +16,20 @@ The following snippet will assign the given config to the model/schema config:
 
 ```html
 <ec-entry-list model="muffin" [config]="muffinListConfig"></ec-entry-list>
+```
+
+## columnClicked output
+
+You can react to column clicks via the columnClicked output:
+
+```html
+<ec-entry-list model="muffin" (columnClicked)="select($event)"></ec-entry-list>
+```
+
+```ts
+select(item) {
+    console.log('entry',item.getBody(),item.id());
+}
 ```
 
 ## Seperated header/items/pagination markup
@@ -37,7 +53,7 @@ If you want to custom cell values that do not require a custom markup, you can u
 ### display
 
 The display transform method is used to display the value (say what?).
-It is called from inside ec-ouput, which is used in list-cells and form readOnly fields.
+It is called from inside ec-output, which is used in list-cells and form readOnly fields.
 You can change the display behaviour like this:
 
 ```ts
@@ -141,6 +157,46 @@ In your strong.component.ts, you can inherit OutputComponent, giving you access 
   template: `<strong>{{item.resolve(field.property)}}</strong>`
 })
 export class StrongComponent extends OutputComponent {}
-```.
+```
 
 NOTE: customizing the output component will also change the look of forms using that config, if the property is set readOnly.
+
+## Filtering Lists
+
+By default, each column that hosts a filterable property contains a search icon in its header. If the property is filterable is defined either by the field config (filterable) or falls back to the backend types that support filters. The search icon will open a pop with a field type specific filter input inside.
+
+### Custom Filtering
+
+If you do not want that (currently pretty clunky) pop filters, you can set filterable to false and manually call list.load with the desired filter:
+
+```html
+<a (click)="muffinList.list.load({filter:{amazement_factor:10}})">
+    show amazing muffins
+</a>
+<ec-entry-list #muffinList model="muffin"></ec-entry-list>
+```
+
+Clicking the link will now show all muffins with exactly amazement_factor 10.
+
+### Custom filter operators
+
+By default, the entry-list will filter the property by its default filterOperator (see type config). If you want to change the default operator you can set it in the config:
+
+```ts
+this.modelConfig.set('muffin', {
+    fields: {
+        amazement_factor: {
+            filterOperator: 'from'
+        }
+    }
+});
+```
+
+```html
+<a (click)="muffinList.list.load({filter:{amazement_factor:5}})">
+    show amazing muffins
+</a>
+<ec-entry-list #muffinList model="muffin"></ec-entry-list>
+```
+
+If you now click the link, all muffins with amazement_factor>=5 will be loaded.

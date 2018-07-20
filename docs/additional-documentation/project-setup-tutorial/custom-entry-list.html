@@ -2473,11 +2473,16 @@
 
 
 <h1 id="ec-entry-list">ec-entry-list</h1>
+<p>Entry Lists load multiple entries from a model and display them in a paginated list. It supports load error notifications, loader, filtering, sorting and automatic reloading + many customizations.</p>
 <h2 id="default-usage">Default Usage</h2>
 <div><pre class="line-numbers"><code class="language-html">&lt;ec-entry-list model=&quot;muffin&quot;&gt;&lt;/ec-entry-list&gt;</code></pre></div><p>The above snippet will either consume the config for muffin in ModelConfigService, or if no config is found, generate one from the model schema.</p>
 <h2 id="passing-a-config">Passing a Config</h2>
 <p>The following snippet will assign the given config to the model/schema config:</p>
-<div><pre class="line-numbers"><code class="language-html">&lt;ec-entry-list model=&quot;muffin&quot; [config]=&quot;muffinListConfig&quot;&gt;&lt;/ec-entry-list&gt;</code></pre></div><h2 id="seperated-header-items-pagination-markup">Seperated header/items/pagination markup</h2>
+<div><pre class="line-numbers"><code class="language-html">&lt;ec-entry-list model=&quot;muffin&quot; [config]=&quot;muffinListConfig&quot;&gt;&lt;/ec-entry-list&gt;</code></pre></div><h2 id="columnclicked-output">columnClicked output</h2>
+<p>You can react to column clicks via the columnClicked output:</p>
+<div><pre class="line-numbers"><code class="language-html">&lt;ec-entry-list model=&quot;muffin&quot; (columnClicked)=&quot;select($event)&quot;&gt;&lt;/ec-entry-list&gt;</code></pre></div><div><pre class="line-numbers"><code class="language-ts">select(item) {
+    console.log(&#39;entry&#39;,item.getBody(),item.id());
+}</code></pre></div><h2 id="seperated-header-items-pagination-markup">Seperated header/items/pagination markup</h2>
 <p>If you need a seperation of the list-header -items and -pagination, you can use the sub components of list.component:</p>
 <div><pre class="line-numbers"><code class="language-html">&lt;ec-list-header [list]=&quot;dealList?.list&quot;&gt;&lt;/ec-list-header&gt;
 &lt;!-- --&gt;
@@ -2489,7 +2494,7 @@
 <p>If you want to custom cell values that do not require a custom markup, you can use transforms</p>
 <h3 id="display">display</h3>
 <p>The display transform method is used to display the value (say what?).
-It is called from inside ec-ouput, which is used in list-cells and form readOnly fields.
+It is called from inside ec-output, which is used in list-cells and form readOnly fields.
 You can change the display behaviour like this:</p>
 <div><pre class="line-numbers"><code class="language-ts">this.modelConfig.set(&#39;muffin&#39;, {
     fields: {
@@ -2553,13 +2558,31 @@ You can change the display behaviour like this:</p>
         }
     }
 });</code></pre></div><p>In your strong.component.ts, you can inherit OutputComponent, giving you access to the field and item of your cell:</p>
-<p><code>ts
-@Component({
+<div><pre class="line-numbers"><code class="language-ts">&#64;Component({
   selector: &#39;app-strong&#39;,
   template: `&lt;strong&gt;{{item.resolve(field.property)}}&lt;/strong&gt;`
 })
-export class StrongComponent extends OutputComponent {}</code>.</p>
-<p>NOTE: customizing the output component will also change the look of forms using that config, if the property is set readOnly.</p>
+export class StrongComponent extends OutputComponent {}</code></pre></div><p>NOTE: customizing the output component will also change the look of forms using that config, if the property is set readOnly.</p>
+<h2 id="filtering-lists">Filtering Lists</h2>
+<p>By default, each column that hosts a filterable property contains a search icon in its header. If the property is filterable is defined either by the field config (filterable) or falls back to the backend types that support filters. The search icon will open a pop with a field type specific filter input inside.</p>
+<h3 id="custom-filtering">Custom Filtering</h3>
+<p>If you do not want that (currently pretty clunky) pop filters, you can set filterable to false and manually call list.load with the desired filter:</p>
+<div><pre class="line-numbers"><code class="language-html">&lt;a (click)=&quot;muffinList.list.load({filter:{amazement_factor:10}})&quot;&gt;
+    show amazing muffins
+&lt;/a&gt;
+&lt;ec-entry-list #muffinList model=&quot;muffin&quot;&gt;&lt;/ec-entry-list&gt;</code></pre></div><p>Clicking the link will now show all muffins with exactly amazement_factor 10.</p>
+<h3 id="custom-filter-operators">Custom filter operators</h3>
+<p>By default, the entry-list will filter the property by its default filterOperator (see type config). If you want to change the default operator you can set it in the config:</p>
+<div><pre class="line-numbers"><code class="language-ts">this.modelConfig.set(&#39;muffin&#39;, {
+    fields: {
+        amazement_factor: {
+            filterOperator: &#39;from&#39;
+        }
+    }
+});</code></pre></div><div><pre class="line-numbers"><code class="language-html">&lt;a (click)=&quot;muffinList.list.load({filter:{amazement_factor:5}})&quot;&gt;
+    show amazing muffins
+&lt;/a&gt;
+&lt;ec-entry-list #muffinList model=&quot;muffin&quot;&gt;&lt;/ec-entry-list&gt;</code></pre></div><p>If you now click the link, all muffins with amazement_factor&gt;=5 will be loaded.</p>
 
                    </div><div class="search-results">
     <div class="has-results">
