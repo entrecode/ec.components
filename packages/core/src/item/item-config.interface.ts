@@ -22,4 +22,6 @@ export interface ItemConfig<T> {
   parent?: any;
   /** Callback that is invoked when the item is saved */
   onSave?: (item?: Item<T>, value?: Object) => Promise<T> | T; // TODO rename to save
+  /** This method can be used to set custom classes based on item contents. Used e.g. in list-items for row class */
+  classes?: (item?: Item<T>) => string;
 }

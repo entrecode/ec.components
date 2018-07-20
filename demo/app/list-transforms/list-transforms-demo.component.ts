@@ -29,12 +29,28 @@ export class ListTransformsDemoComponent {
     }), {
       identifier: 'word',
       size: 100,
+      classes: (item) => {
+        if (item.resolve('length') > 8) {
+          return 'long'
+        } else {
+          return 'short';
+        }
+        return ''
+      },
       fields: {
         word: {
           label: 'Wort',
           sortable: true,
           filterable: true,
-          view: 'string'
+          view: 'string',
+          classes: (value) => {
+            if (value.length > 8) {
+              return 'long'
+            } else {
+              return 'short';
+            }
+            return ''
+          },
         },
         length: {
           label: 'Länge',
