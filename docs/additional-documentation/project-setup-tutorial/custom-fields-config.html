@@ -2473,9 +2473,17 @@
 
 
 <h1 id="custom-field-configuration">Custom Field Configuration</h1>
-<h2 id="add-a-model-config">Add a model config</h2>
+<p>Related Doc:</p>
+<ul>
+<li><a href="../../interfaces/FieldConfigProperty.html">All Possible field config properties</a></li>
+<li><a href="../../injectables/TypeConfigService.html#source">Default Type Config</a></li>
+<li><a href="../../interfaces/ListConfig.html">ListConfig</a> (also see ItemConfig parent)</li>
+<li><a href="../core-classes/item.html">Item Doc</a></li>
+</ul>
+<h2 id="example">Example</h2>
 <p>You can configure a models behaviour over the ModelConfigService.
 It is recommended to configure a model in a parent component of all possible ec-crud lists or nested forms.</p>
+<p>See the related doc links for default values / possible config values.</p>
 <div><pre class="line-numbers"><code class="language-js">export class MuffinsComponent {
   constructor(private modelConfig: ModelConfigService) {
     moment.locale(&#39;de&#39;); //set moment locale
@@ -2518,112 +2526,7 @@ It is recommended to configure a model in a parent component of all possible ec-
         },
       }
     });
-}</code></pre></div><h2 id="using-custom-inputs-and-outputs">Using custom inputs and outputs</h2>
-<h3 id="1-create-custom-input-component">1. Create Custom Input Component</h3>
-<div><pre class="line-numbers"><code class="language-sh">ng g c custom-input</code></pre></div><p>This component will serve as a container for all possible custom input fields.</p>
-<h3 id="2-extend-inputcomponent-custom-input-component-ts-">2. Extend InputComponent (custom-input.component.ts)</h3>
-<p>To make the current field information available to the template, you need to extend InputComponent from @ec.components/ui:</p>
-<div><pre class="line-numbers"><code class="language-js">import { Component } from &#39;&#64;angular/core&#39;;
-import { InputComponent } from &#39;&#64;ec.components/ui&#39;;
-
-&#64;Component({
-  selector: &#39;clubapp-custom-input&#39;,
-  templateUrl: &#39;./custom-input.component.html&#39;,
-  styleUrls: [&#39;./custom-input.component.scss&#39;]
-})
-export class CustomInputComponent extends InputComponent {
-}</code></pre></div><p>CMD+Click on InputComponent to see which properties you can now use!</p>
-<h3 id="3-add-markup-custom-input-component-html-">3. Add Markup (custom-input.component.html)</h3>
-<p>Now we can decide which custom input should be used, based on e.g. the fields view value:</p>
-<div><pre class="line-numbers"><code class="language-html">&lt;div [ngSwitch]=&quot;field.view&quot; *ngIf=&quot;group&quot; [formGroup]=&quot;group&quot;&gt;
-  &lt;ec-input-errors [control]=&quot;group.get(field.property)&quot;&gt;&lt;/ec-input-errors&gt;
-  &lt;div *ngSwitchCase=&quot;&#39;speakingurl&#39;&quot;&gt;
-    &lt;input [id]=&quot;field.id&quot; type=&quot;text&quot; [formControl]=&quot;control&quot;&gt;
-  &lt;/div&gt;
-  &lt;div *ngSwitchCase=&quot;&#39;openingHours&#39;&quot;&gt;
-    &lt;!-- &lt;ec-opening-hours [formControl]=&quot;control&quot;&gt;&lt;/ec-opening-hours&gt; --&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre></div><p>Of course you could also switch based on property name or type, depending on your application.
-The id property of field is referenced in the label of the form. By adding it to the input makes sure your label click enters the input.</p>
-<h3 id="4-add-custominputcomponent-to-entrycomponents-">4. Add CustomInputComponent to entryComponents:</h3>
-<p>Because the custom component will be loaded dynamically, your module needs to declare it as entryComponent:</p>
-<div><pre class="line-numbers"><code class="language-js">&#64;NgModule({
-  entryComponents: [
-    CustomInputComponent
-  ]
-  /** more stuff **/
-})
-export class AppModule {
-}</code></pre></div><h3 id="5-add-custominputcomponent-to-field-config-">5. Add CustomInputComponent to field config:</h3>
-<p>Now you can add the Component as input to your field config:</p>
-<div><pre class="line-numbers"><code class="language-js">this.modelConfig.set(&#39;muffin&#39;, {
-      fields: {
-        url: {
-          label: &#39;URL&#39;,
-          view: &#39;speakingurl&#39;,
-          input: CustomInputComponent
-        },
-        openingHours: {
-          label: &#39;Öffnungszeiten&#39;,
-          view: &#39;openingHours&#39;,
-          input: CustomInputComponent
-        }
-})</code></pre></div><p>By changing the view option, we can now decide which case will be met!</p>
-<h2 id="custom-form-controls">Custom Form Controls</h2>
-<p>Now what if you want to use a custom form control that does not rely on primitve inputs like number or text?
-In the above custom-input.component template, we use <ec-opening-hours> with a formControl input.
-To have access to the form control&#39;s value, you need to provide a ControlValueAccessor:</p>
-<div><pre class="line-numbers"><code class="language-js">import { Component, forwardRef } from &#39;&#64;angular/core&#39;;
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from &#39;&#64;angular/forms&#39;;
-import { InputComponent } from &#39;&#64;ec.components/ui&#39;;
-
-&#64;Component({
-  selector: &#39;ec-opening-hours&#39;,
-  templateUrl: &#39;./opening-hours.component.html&#39;,
-  styleUrls: [&#39;./opening-hours.component.scss&#39;],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() =&gt; OpeningHoursComponent),
-      multi: true
-    }
-  ]
-})
-export class OpeningHoursComponent extends InputComponent implements ControlValueAccessor {
-
-  writeValue(value: any) {
-    console.log(&#39;received value&#39;, value);
-  }
-
-  propagateChange = (_: any) =&gt; {
-  };
-
-  registerOnChange(fn) {
-    this.propagateChange = fn;
-  }
-
-  registerOnTouched() {
-  }
-
-}</code></pre></div><p>Now you can implement your own logic and call propagateChange when you change the value from your component, and react to change via the writeValue method!
-You now could also use your component with ngModel or formControl in another context!
-More information on this pattern: <a href="https://blog.thoughtram.io/angular/2016/07/27/custom-form-controls-in-angular-2.html">https://blog.thoughtram.io/angular/2016/07/27/custom-form-controls-in-angular-2.html</a></p>
-<h2 id="experimental-custom-fields-without-wrapper">EXPERIMENTAL: Custom Fields without wrapper</h2>
-<p>You can now also use custom components as input directly without needing to wrap them explicitly.
-What you need to is:</p>
-<ol>
-<li>Extend DefaultInputComponent</li>
-</ol>
-<div><pre class="line-numbers"><code class="language-js">export class JsonEditorComponent extends extends DefaultInputComponent</code></pre></div><ol start="2">
-<li>add the input component as member variable:</li>
-</ol>
-<div><pre class="line-numbers"><code class="language-js">/** Form input component */
-input: InputComponent;</code></pre></div><p>and propagate the change to the input as well:</p>
-<div><pre class="line-numbers"><code class="language-js">this.propagateChange(this.value);
-if (this.input) { // this is the important part
- this.input.propagateChange(this.value);
-}</code></pre></div><p>input will be defined when the component is used as input component inside ec-form.</p>
-
+}</code></pre></div>
                    </div><div class="search-results">
     <div class="has-results">
         <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>

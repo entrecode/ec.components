@@ -1,5 +1,11 @@
 # ec-entry-list
 
+Related Doc:
+- [All Possible field config properties](../../interfaces/FieldConfigProperty.html)
+- [Default Type Config](../../injectables/TypeConfigService.html#source)
+- [ListConfig](../../interfaces/ListConfig.html) (also see ItemConfig parent)
+- [Item Doc](../core-classes/item.html)
+
 Entry Lists load multiple entries from a model and display them in a paginated list. It supports load error notifications, loader, filtering, sorting and automatic reloading + many customizations.
 
 ## Default Usage
