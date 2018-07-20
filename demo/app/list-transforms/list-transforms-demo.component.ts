@@ -42,15 +42,7 @@ export class ListTransformsDemoComponent {
           label: 'Wort',
           sortable: true,
           filterable: true,
-          view: 'string',
-          classes: (value) => {
-            if (value.length > 8) {
-              return 'long'
-            } else {
-              return 'short';
-            }
-            return ''
-          },
+          view: 'string'
         },
         length: {
           label: 'Länge',
