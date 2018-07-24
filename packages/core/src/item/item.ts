@@ -109,20 +109,32 @@ export class Item<T> {
    * If you dont set the third parameter, the current item value will be used.
    * The third parameter can be used to transform a value that is not yet possesed (e.g. to
    * serialize) */
-  private transform(action: string, property: string, value: any = this.resolve(property)) {
+  private transform(action: string, property: string, value: any = this.resolve(property), defaultValue: any = this.resolve(property)) {
     if (!this.hasBody()) {
       return;
     }
     if (this.config.fields && this.config.fields[property] && this.config.fields[property][action]) {
       return this.config.fields[property][action](value, this.body, property);
     }
-    return value;
+    return defaultValue;
   }
 
   /** Returns the output of the config.group transformation function with the given property value.
    * If no group function is set, it will just return the property value.*/
   group(property: string): any {
     return this.transform('group', property);
+  }
+
+  /** If no property given: Returns the output of the config.classes method or ''.
+   * If property given: Returns the output of the config.fields[property].classes method or '' */
+  classes(property?: string): string {
+    if (property) {
+      return this.transform('classes', property, this.resolve(property), '') || '';
+    }
+    if (!this.config || !this.config.classes) {
+      return '';
+    }
+    return this.config.classes(this);
   }
 
   /** Returns the output of the config.display transformation function with the given property value.

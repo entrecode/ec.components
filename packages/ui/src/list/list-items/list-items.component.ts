@@ -31,7 +31,7 @@ export class ListItemsComponent<T> implements OnChanges {
   isClickable() {
     return this.columnClicked.observers.length || (this.selection && this.list && this.list.config.selectMode);
   }
-  
+
   /** Propagate clicked item to host or toggle selection. */
   columnClick(item: Item<T>, e: Event) {
     e.stopPropagation();

@@ -29,6 +29,13 @@ export class ListTransformsDemoComponent {
     }), {
       identifier: 'word',
       size: 100,
+      classes: (item) => {
+        if (item.resolve('length') > 8) {
+          return 'long'
+        } else {
+          return 'short';
+        }
+      },
       fields: {
         word: {
           label: 'Wort',

@@ -83,16 +83,13 @@
                         <a href="additional-documentation/project-setup-tutorial/authorization.html" data-type="entity-link" data-context-id="additional">Authorization</a>
                     </li>
                     <li class="link for-chapter2">
-                        <a href="additional-documentation/project-setup-tutorial/model-config.html" data-type="entity-link" data-context-id="additional">Model Config</a>
+                        <a href="additional-documentation/project-setup-tutorial/custom-fields-config.html" data-type="entity-link" data-context-id="additional">Custom Fields Config</a>
                     </li>
                     <li class="link for-chapter2">
-                        <a href="additional-documentation/project-setup-tutorial/custom-fields.html" data-type="entity-link" data-context-id="additional">Custom Fields</a>
+                        <a href="additional-documentation/project-setup-tutorial/custom-entry-list.html" data-type="entity-link" data-context-id="additional">Custom Entry List</a>
                     </li>
                     <li class="link for-chapter2">
-                        <a href="additional-documentation/project-setup-tutorial/adding-new-packages.html" data-type="entity-link" data-context-id="additional">Adding New Packages</a>
-                    </li>
-                    <li class="link for-chapter2">
-                        <a href="additional-documentation/project-setup-tutorial/publishing.html" data-type="entity-link" data-context-id="additional">Publishing</a>
+                        <a href="additional-documentation/project-setup-tutorial/custom-entry-forms.html" data-type="entity-link" data-context-id="additional">Custom Entry Forms</a>
                     </li>
                     <li class="link ">
                         <a href="additional-documentation/ui.html" data-type="entity-link" data-context-id="additional">UI</a>
@@ -162,6 +159,12 @@
                     </li>
                     <li class="link for-chapter2">
                         <a href="additional-documentation/core-classes/sorter.html" data-type="entity-link" data-context-id="additional">Sorter</a>
+                    </li>
+                    <li class="link ">
+                        <a href="additional-documentation/adding-new-packages.html" data-type="entity-link" data-context-id="additional">Adding New Packages</a>
+                    </li>
+                    <li class="link ">
+                        <a href="additional-documentation/publishing.html" data-type="entity-link" data-context-id="additional">Publishing</a>
                     </li>
             </ul>
         </li>
@@ -1300,16 +1303,13 @@
                         <a href="additional-documentation/project-setup-tutorial/authorization.html" data-type="entity-link" data-context-id="additional">Authorization</a>
                     </li>
                     <li class="link for-chapter2">
-                        <a href="additional-documentation/project-setup-tutorial/model-config.html" data-type="entity-link" data-context-id="additional">Model Config</a>
+                        <a href="additional-documentation/project-setup-tutorial/custom-fields-config.html" data-type="entity-link" data-context-id="additional">Custom Fields Config</a>
                     </li>
                     <li class="link for-chapter2">
-                        <a href="additional-documentation/project-setup-tutorial/custom-fields.html" data-type="entity-link" data-context-id="additional">Custom Fields</a>
+                        <a href="additional-documentation/project-setup-tutorial/custom-entry-list.html" data-type="entity-link" data-context-id="additional">Custom Entry List</a>
                     </li>
                     <li class="link for-chapter2">
-                        <a href="additional-documentation/project-setup-tutorial/adding-new-packages.html" data-type="entity-link" data-context-id="additional">Adding New Packages</a>
-                    </li>
-                    <li class="link for-chapter2">
-                        <a href="additional-documentation/project-setup-tutorial/publishing.html" data-type="entity-link" data-context-id="additional">Publishing</a>
+                        <a href="additional-documentation/project-setup-tutorial/custom-entry-forms.html" data-type="entity-link" data-context-id="additional">Custom Entry Forms</a>
                     </li>
                     <li class="link ">
                         <a href="additional-documentation/ui.html" data-type="entity-link" data-context-id="additional">UI</a>
@@ -1379,6 +1379,12 @@
                     </li>
                     <li class="link for-chapter2">
                         <a href="additional-documentation/core-classes/sorter.html" data-type="entity-link" data-context-id="additional">Sorter</a>
+                    </li>
+                    <li class="link ">
+                        <a href="additional-documentation/adding-new-packages.html" data-type="entity-link" data-context-id="additional">Adding New Packages</a>
+                    </li>
+                    <li class="link ">
+                        <a href="additional-documentation/publishing.html" data-type="entity-link" data-context-id="additional">Publishing</a>
                     </li>
             </ul>
         </li>
@@ -3124,7 +3130,7 @@ export class PaginationComponent&lt;T&gt; implements OnChanges, OnInit {
 
     <div class="tab-pane fade " id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;nav class&#x3D;&quot;ec-pagination&quot;&gt;
-  &lt;ul class&#x3D;&quot; ec-pagination-controls&quot; *ngIf&#x3D;&quot;pagination?.getPages()&gt;1&amp;&amp;!pagination?.isFirst()&quot;&gt;
+  &lt;ul class&#x3D;&quot;ec-pagination-controls&quot; *ngIf&#x3D;&quot;pagination?.getPages()&gt;1&amp;&amp;!pagination?.isFirst()&quot;&gt;
     &lt;li class&#x3D;&quot;ec-pagination-control ec-pagination-control_first&quot; [class.is-disabled]&#x3D;&quot;pagination?.isFirst()&quot; [hidden]&#x3D;&quot;config.hideFirstLast&quot;&gt;
       &lt;a (click)&#x3D;&quot;pagination.first()&quot; class&#x3D;&quot;ec-pagination__item&quot;&gt;
         &lt;span&gt;{{&#x27;pagination.first&#x27; | symbol}}&lt;/span&gt;
@@ -3195,7 +3201,7 @@ export class PaginationComponent&lt;T&gt; implements OnChanges, OnInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><nav class="ec-pagination">  <ul class=" ec-pagination-controls" *ngIf="pagination?.getPages()>1&&!pagination?.isFirst()">    <li class="ec-pagination-control ec-pagination-control_first" [class.is-disabled]="pagination?.isFirst()" [hidden]="config.hideFirstLast">      <a (click)="pagination.first()" class="ec-pagination__item">        <span>{{\'pagination.first\' | symbol}}</span>      </a>    </li>    <li class="ec-pagination-control ec-pagination-control_prev" *ngIf="!pagination?.isFirst()">      <a (click)="pagination.prev()" class="ec-pagination__item">        <span>{{\'pagination.prev\' | symbol}}</span>      </a>    </li>  </ul>  <div #container class="ec-pagination-pages" [hidden]="config?.hidePages" *ngIf="pagination?.getPages()>1">    <ul #pageContainer *ngIf="pagination?.pages">      <li *ngFor="let page of pagination.pages;let i = index" #page [hidden]="!isVisible(i+1)">        <a (click)="pagination.select(i+1)" [class.is-active]="pagination.isActive(i+1)" class="ec-pagination__item">          <span>{{i+1}}</span>        </a>      </li>    </ul>  </div>  <ul class="ec-pagination-controls" *ngIf="pagination?.getPages()>1&&!pagination?.isLast()">    <li class="ec-pagination-control ec-pagination-control_next" [class.is-disabled]="pagination?.isLast()">      <a (click)="pagination.next()" class="ec-pagination__item">        <span>{{\'pagination.next\' | symbol}}</span>      </a>    </li>    <li class="ec-pagination-control ec-pagination-control_last" *ngIf="!pagination?.isLast()" [hidden]="config.hideFirstLast">      <a (click)="pagination.last()" class="ec-pagination__item">        <span>{{\'pagination.last\' | symbol}}</span>      </a>    </li>  </ul>  <div class="ec-pagination-info" *ngIf="pagination?.params()?.total">    <span>{{pagination?.params()?.from}} - {{pagination?.params()?.to}} {{ \'pagination.of\' | symbol}} {{pagination?.params()?.total}}</span>  </div>  <div class="ec-pagination-size-select" *ngIf="pagination?.params()?.total">    <select *ngIf="pagination?.params()?.availableSizes?.length > 1" (change)="updateSize($event.target.value)" class="input">      <option *ngFor="let size of pagination?.params()?.availableSizes" [value]="size" [attr.selected]="pagination.params().size===size?\'selected\':null">        {{size}} {{\'pagination.size\' | symbol}}      </option>    </select>  </div></nav></div>'
+        var COMPONENT_TEMPLATE = '<div><nav class="ec-pagination">  <ul class="ec-pagination-controls" *ngIf="pagination?.getPages()>1&&!pagination?.isFirst()">    <li class="ec-pagination-control ec-pagination-control_first" [class.is-disabled]="pagination?.isFirst()" [hidden]="config.hideFirstLast">      <a (click)="pagination.first()" class="ec-pagination__item">        <span>{{\'pagination.first\' | symbol}}</span>      </a>    </li>    <li class="ec-pagination-control ec-pagination-control_prev" *ngIf="!pagination?.isFirst()">      <a (click)="pagination.prev()" class="ec-pagination__item">        <span>{{\'pagination.prev\' | symbol}}</span>      </a>    </li>  </ul>  <div #container class="ec-pagination-pages" [hidden]="config?.hidePages" *ngIf="pagination?.getPages()>1">    <ul #pageContainer *ngIf="pagination?.pages">      <li *ngFor="let page of pagination.pages;let i = index" #page [hidden]="!isVisible(i+1)">        <a (click)="pagination.select(i+1)" [class.is-active]="pagination.isActive(i+1)" class="ec-pagination__item">          <span>{{i+1}}</span>        </a>      </li>    </ul>  </div>  <ul class="ec-pagination-controls" *ngIf="pagination?.getPages()>1&&!pagination?.isLast()">    <li class="ec-pagination-control ec-pagination-control_next" [class.is-disabled]="pagination?.isLast()">      <a (click)="pagination.next()" class="ec-pagination__item">        <span>{{\'pagination.next\' | symbol}}</span>      </a>    </li>    <li class="ec-pagination-control ec-pagination-control_last" *ngIf="!pagination?.isLast()" [hidden]="config.hideFirstLast">      <a (click)="pagination.last()" class="ec-pagination__item">        <span>{{\'pagination.last\' | symbol}}</span>      </a>    </li>  </ul>  <div class="ec-pagination-info" *ngIf="pagination?.params()?.total">    <span>{{pagination?.params()?.from}} - {{pagination?.params()?.to}} {{ \'pagination.of\' | symbol}} {{pagination?.params()?.total}}</span>  </div>  <div class="ec-pagination-size-select" *ngIf="pagination?.params()?.total">    <select *ngIf="pagination?.params()?.availableSizes?.length > 1" (change)="updateSize($event.target.value)" class="input">      <option *ngFor="let size of pagination?.params()?.availableSizes" [value]="size" [attr.selected]="pagination.params().size===size?\'selected\':null">        {{size}} {{\'pagination.size\' | symbol}}      </option>    </select>  </div></nav></div>'
     var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'AdminEntryInputComponent', 'selector': ''},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'AssetgroupSelectComponent', 'selector': 'ec-assetgroup-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DaterangeComponent', 'selector': 'ec-daterange'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryListPopComponent', 'selector': 'ec-entry-list-pop'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'HeatmapComponent', 'selector': 'ec-heatmap'},{'name': 'IconComponent', 'selector': 'ec-icon'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LocationMapComponent', 'selector': 'ec-location-map'},{'name': 'LocationPickerComponent', 'selector': 'ec-location-picker'},{'name': 'LocationSearchComponent', 'selector': 'ec-location-search'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceCrudComponent', 'selector': 'ec-resource-crud'},{'name': 'ResourceDeletePopComponent', 'selector': 'ec-resource-delete-pop'},{'name': 'ResourceFormComponent', 'selector': 'ec-resource-form'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'ResourcePopComponent', 'selector': 'ec-resource-pop'},{'name': 'ResourceSelectComponent', 'selector': 'ec-resource-select'},{'name': 'SearchbarComponent', 'selector': 'ec-searchbar'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SignupComponent', 'selector': 'ec-signup'},{'name': 'SignupFormComponent', 'selector': 'ec-signup-form'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'}];
     var DIRECTIVES = [{'name': 'AssetDirective', 'selector': '[ecAsset]'},{'name': 'DropzoneDirective', 'selector': '[ecDropzone]'},{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'FocusDirective', 'selector': '[ecFocus]'},{'name': 'ImageDirective', 'selector': 'img [ecImage]'},{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'}];
     var ACTUAL_COMPONENT = {'name': 'PaginationComponent'};

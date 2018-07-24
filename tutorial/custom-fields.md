@@ -183,7 +183,7 @@ Now you can implement your own logic and call propagateChange when you change th
 You now could also use your component with ngModel or formControl in another context!
 More information on this pattern: https://blog.thoughtram.io/angular/2016/07/27/custom-form-controls-in-angular-2.html
 
-## UPDATE: Custom Fields without wrapper
+## EXPERIMENTAL: Custom Fields without wrapper
 
 You can now also use custom components as input directly without needing to wrap them explicitly.
 What you need to is:
