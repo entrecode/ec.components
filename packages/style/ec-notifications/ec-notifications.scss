@@ -40,6 +40,11 @@
 
   .ec-pop-container {
     .ec-pop {
+      cursor: pointer;
+      position: relative;
+      user-select: none;
+      width: 100%;
+      border-left-style: solid;
       @include inject-style($ec-notification-style);
       font-size: em($ec-notification-font-size);
       background: $ec-notification-background;
@@ -50,11 +55,6 @@
       max-width: rem($ec-notification-max-width);
       animation: $ec-notification-animation $ec-notification-animation-speed $ec-notification-animation-behavior;
       border-left-width: rem($ec-notification-flag-width);
-      cursor: pointer;
-      position: relative;
-      user-select: none;
-      width: 100%;
-      border-left-style: solid;
     }
   }
 
@@ -71,18 +71,18 @@
   }
 
   .ec-notification__dismiss {
-    color: setContrast($ec-notification-background);
-    position: absolute;
-    right: 0;
-    top: rem(4);
     display: flex;
     align-items: center;
     justify-content: center;
+    position: absolute;
+    right: 0;
+    top: rem(4);
     width: rem(20);
     height: rem(20);
     text-align: center;
     margin: 0;
     opacity: 0.6;
+    color: setContrast($ec-notification-background);
 
     &:hover {
       opacity: 1;

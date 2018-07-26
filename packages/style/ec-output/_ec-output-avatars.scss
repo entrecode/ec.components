@@ -2,11 +2,11 @@
 // @param {array} $ec-output-avatars-gutter [0 -4 0 0]
 // @param {array} $ec-output-avatars-style
 .ec-output-avatars {
-  @include inject-style($ec-output-avatars-style);
-  margin: arrayMagic($ec-output-avatars-spacing);
+  display: flex;
   list-style: none;
   padding: 0;
-  display: flex;
+  @include inject-style($ec-output-avatars-style);
+  margin: arrayMagic($ec-output-avatars-spacing);
 
   li {
     margin: arrayMagic($ec-output-avatars-gutter);

@@ -44,9 +44,9 @@
 
 // @param {array} $ec-tabs-nav-items-gutter [$xui-tabs-nav-item-gutter]
 .ec-tabs-nav-item {
-  padding: arrayMagic($ec-tabs-nav-items-gutter);
   position: relative;
   text-align: center;
+  padding: arrayMagic($ec-tabs-nav-items-gutter);
 
   @supports not (display: flex) {
     display: inline-block;
@@ -59,15 +59,15 @@
   // @param {color} $ec-tabs-nav-item-color [$xui-tabs-nav-item-color]
   // @param {array} $ec-tabs-nav-item-style [$xui-tabs-nav-item-style]
   a {
+    cursor: pointer;
+    display: block;
+    text-align: center;
     @include inject-style($ec-tabs-nav-item-style);
     border-radius: arrayMagic($ec-tabs-nav-item-radius);
     background: $ec-tabs-nav-item-background;
     color: $ec-tabs-nav-item-color;
     font-weight: $ec-tabs-nav-item-weight;
     padding: arrayMagic($ec-tabs-nav-item-padding);
-    cursor: pointer;
-    display: block;
-    text-align: center;
 
     // @param {color} $ec-tabs-nav-item-hover-background [$xui-tabs-nav-item-hover-background]
     // @param {color} $ec-tabs-nav-item-hover-color [$xui-tabs-nav-item-hover-color]

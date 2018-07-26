@@ -1,4 +1,4 @@
-<fieldset [ngSwitch]="field.type" *ngIf="group" [formGroup]="group">
+<div [ngSwitch]="field.type" *ngIf="group" [formGroup]="group">
   <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>
   <div *ngSwitchCase="'entry'">
     <ec-entry-select [formControl]="group.get(field.property)" [model]="field['relation']" [id]="field.id" [solo]="true" [config]="field.nestedCrudConfig"></ec-entry-select>
@@ -22,4 +22,4 @@
     <marquee>🚂🚃🚃🚃 {{field.type}} input coming soon..</marquee>
     <ec-output [field]="field" [item]="item"></ec-output>
   </div>
-</fieldset>
+</div>

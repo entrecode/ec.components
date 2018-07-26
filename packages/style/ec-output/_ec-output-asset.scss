@@ -5,15 +5,15 @@
 // @param {px} $ec-output-asset-line-height [$tag-small-line-height]
 // @param {array} $ec-output-asset-style
 .ec-output-asset {
+  display: inline-flex;
+  align-items: center;
+  opacity: 0.2;
   @include inject-style($ec-output-asset-style);
   font-size: em($ec-output-asset-font-size);
   line-height: em($ec-output-asset-line-height, $ec-output-asset-font-size);
   background: $ec-output-asset-background;
   border-radius: arrayMagic($ec-output-asset-radius);
   padding: arrayMagic($ec-output-asset-padding);
-  display: inline-flex;
-  align-items: center;
-  opacity: 0.2;
 
   .ec-icon {
     font-size: 1em;

@@ -2,12 +2,12 @@
 
 // @param {array} $ec-calendar-days-style
 .ec-calendar-days {
-  @include inject-style($ec-calendar-days-style);
+  display: flex;
+  flex-wrap: wrap;
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex;
-  flex-wrap: wrap;
+  @include inject-style($ec-calendar-days-style);
 
   li {
     cursor: pointer;
@@ -39,10 +39,10 @@
     // @param {color} $ec-calendar-day-is-selected-background [$link]
 
     .ec-calendar-day {
-      background: $ec-calendar-day-is-selected-background;
-      color: $ec-calendar-day-is-selected-color;
       z-index: 1;
       position: relative;
+      background: $ec-calendar-day-is-selected-background;
+      color: $ec-calendar-day-is-selected-color;
     }
 
     &::after,
