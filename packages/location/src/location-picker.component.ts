@@ -1,6 +1,6 @@
 import { Component, Input, ViewChild, forwardRef } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { DefaultInputComponent, InputComponent } from '@ec.components/ui';
+import { DefaultInputComponent, InputComponent } from '../../ui';
 import { GeocodeService } from './geocode.service';
 import { LocationMapComponent } from './location-map.component';
 import { LocationSearchComponent } from './location-search.component';

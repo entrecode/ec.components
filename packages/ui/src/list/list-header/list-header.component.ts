@@ -1,9 +1,9 @@
 import { Component, Input, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { PopComponent } from '../../pop/pop.component';
 import { FormComponent } from '../../form/form.component';
-import { List } from '@ec.components/core/src/list/list';
-import { Selection } from '@ec.components/core/src/selection/selection';
-import { Field } from '@ec.components/core';
+import { List } from '../../../../core/src/list/list';
+import { Selection } from '../../../../core/src/selection/selection';
+import { Field } from '../../../../core';
 
 /** This component renders, as the name states, the header of a list.*/
 @Component({

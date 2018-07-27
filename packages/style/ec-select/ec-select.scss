@@ -16,6 +16,13 @@
 // @param {value} $ec-select-border-style [$xui-select-border-style]
 // @param {array} $ec-select-style [$xui-select-style]
 .ec-select {
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  outline: none;
+  text-align: left;
+  width: 100%;
   @include inject-style($ec-select-style);
   @include macro-metrics(
     $ec-select-font-size,
@@ -30,13 +37,6 @@
   border-width: rem($ec-select-border-width);
   border-style: $ec-select-border-style;
   margin: arrayMagic($ec-select-spacing);
-  cursor: pointer;
-  position: relative;
-  display: flex;
-  align-items: center;
-  outline: none;
-  text-align: left;
-  width: 100%;
 
   // @param {boolean} $ec-select-round [$input-round]
   // @param {array} $ec-select-radius [$xui-select-radius]

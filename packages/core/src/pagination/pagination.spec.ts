@@ -1,4 +1,4 @@
-import { Pagination } from '../../index';
+import { Pagination } from '../..';
 describe('Pagination', () => {
   beforeEach(() => {
     /*TestBed.configureTestingModule({

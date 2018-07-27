@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { DataModule, EntryListComponent } from '../../index';
-import { UiModule } from '@ec.components/ui';
+import { DataModule, EntryListComponent } from '../..';
+import { UiModule } from '../../../ui';
 import { ResourceModule } from '../resource/resource.module';
 import { AuthModule } from '../auth';
 import { FilesModule } from '../files';
@@ -8,7 +8,7 @@ import { SdkModule } from '../sdk/sdk.module';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ResourceService } from '../resource-config/resource.service';
-import { SdkService } from '@ec.components/data/src/sdk/sdk.service';
+import { SdkService } from '../sdk/sdk.service';
 import { ModelConfigService } from '../model-config/model-config.service';
 import { CrudService } from '../crud/crud.service';
 import { TypeConfigService } from '../model-config/type-config.service';

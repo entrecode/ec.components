@@ -1,12 +1,12 @@
 // @param {array} $ec-list-items-style
 .ec-list-items {
-  @include inject-style($ec-list-items-style);
+  display: flex;
+  flex-direction: column;
   list-style: none;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
   min-width: 100%;
+  @include inject-style($ec-list-items-style);
 
   .ec-list-cell {
     ec-default-output,

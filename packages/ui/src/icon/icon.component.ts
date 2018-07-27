@@ -2,7 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { IconService } from './icon.service';
 import { Symbol } from '../symbol/symbol.interface';
 
-/** Displays icons by name. If the matching Icon (from registry contains a content, the content is shown. If not, is is expected to be a ec-icon. */
+/** Displays icons by name. If the matching Icon (from registry contains a content, the content is shown. If not, is is expected to be a ec-icon.
+ * <example-url>https://components.entrecode.de/ui/icons?e=1</example-url>
+ */
 @Component({
     selector: 'ec-icon',
     templateUrl: './icon.component.html'

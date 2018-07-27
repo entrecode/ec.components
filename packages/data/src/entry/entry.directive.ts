@@ -4,7 +4,7 @@
 import { Directive, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { SdkService } from '../sdk/sdk.service';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
-import { WithLoader, LoaderComponent } from '@ec.components/ui';
+import { WithLoader, LoaderComponent } from '../../../ui';
 
 /** Loads an entry by id to the template.
  * <example-url>https://components.entrecode.de/data/entries</example-url>

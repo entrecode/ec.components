@@ -1,10 +1,11 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import moment from 'moment-es6';
-import { ModelConfigService } from '../../packages/data/index';
+import { ModelConfigService } from '../../packages/data';
 import { TypeConfigService } from '../../packages/data/src/model-config/type-config.service';
 import { LocationPickerComponent } from '../../packages/location/src/location-picker.component';
 import { demoRoutes } from './demo.routes';
-
+import { Route, ActivatedRoute, Router, NavigationEnd, ChildActivationEnd } from '@angular/router';
+import { filter, map, switchMap, take } from 'rxjs/operators';
 @Component({
   selector: 'ec-demo-root',
   templateUrl: './demo.component.html',
@@ -13,10 +14,33 @@ import { demoRoutes } from './demo.routes';
 })
 export class DemoComponent {
   public demos = demoRoutes;
+  hideMenu = false;
+  paths = [];
+  links = [];
 
   constructor(private modelConfig: ModelConfigService,
-    private typeConfig: TypeConfigService) {
+    private route: ActivatedRoute,
+    private router: Router,
+    private typeConfig: TypeConfigService,
+    private activatedRoute: ActivatedRoute) {
     moment.locale('de');
+
+    this.router.events.pipe(
+      filter(event => event instanceof ChildActivationEnd),
+      /* take(1), */
+    ).subscribe(event => {
+      const data = event['snapshot'].firstChild.data;
+      if (data.paths) {
+        this.paths = data.paths;
+      }
+      if (data.links) {
+        this.links = data.links;
+      }
+    })
+    this.route.queryParams
+      .subscribe(params => {
+        this.hideMenu = !!params['e'];
+      });
 
     this.typeConfig.set('location', {
       input: LocationPickerComponent

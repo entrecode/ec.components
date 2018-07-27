@@ -2,7 +2,7 @@ import { AgmCoreModule } from '@agm/core';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { UiModule } from '@ec.components/ui';
+import { UiModule } from '../../ui';
 import { GeocodeService } from './geocode.service';
 import { LocationMapComponent } from './location-map.component';
 import { LocationPickerComponent } from './location-picker.component';

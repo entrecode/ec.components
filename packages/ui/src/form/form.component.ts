@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, Output, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { FieldConfigProperty, Form, FormConfig, Item } from '@ec.components/core';
-import { ItemConfig } from '@ec.components/core/src/item/item-config.interface';
+import { FieldConfigProperty, Form, FormConfig, Item } from '../../../core';
+import { ItemConfig } from '../../../core/src/item/item-config.interface';
 import { InputComponent } from '../io/input/input.component';
 import { LoaderComponent } from '../loader/loader.component';
 import { LoaderService } from '../loader/loader.service';

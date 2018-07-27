@@ -1,4 +1,4 @@
-import { Config } from '../../index';
+import { Config } from '../..';
 
 class ConfigTest extends Config { }
 

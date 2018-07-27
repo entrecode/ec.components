@@ -1,4 +1,4 @@
-// @param {px} $ec-output-tag-font-size [$base-font-size * 0.875]
+// @param {px} $ec-output-tag-font-size [$tag-font-size]
 // @param {px} $ec-output-tag-line-height [$tag-line-height]
 // @param {value} $ec-output-tag-weight [$tag-weight]
 // @param {color} $ec-output-tag-background [$tag-background]
@@ -8,6 +8,9 @@
 // @param {array} $ec-output-tag-style
 .ec-output-tag {
   &:not(:empty) {
+    white-space: nowrap;
+    display: inline-block;
+    text-align: center;
     @include inject-style($ec-output-tag-style);
     @include macro-metrics(
       $ec-output-tag-font-size,
@@ -15,9 +18,6 @@
       $ec-output-tag-min-height,
       $padding-ratio: $ec-output-tag-padding-ratio
     );
-    white-space: nowrap;
-    display: inline-block;
-    text-align: center;
     background: $ec-output-tag-background;
     color: $ec-output-tag-color;
     font-weight: $ec-output-tag-weight;

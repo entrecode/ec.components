@@ -1,5 +1,5 @@
 import { Pipe, Injectable, PipeTransform } from '@angular/core';
-import { Symbol } from '@ec.components/ui/src/symbol/symbol.interface';
+import { Symbol } from '../../../packages/ui/src/symbol/symbol.interface';
 
 @Pipe({
     name: 'iconPipe'

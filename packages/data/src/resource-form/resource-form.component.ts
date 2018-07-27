@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { FormComponent, LoaderService, NotificationsService, FormService, LoaderComponent } from '@ec.components/ui';
+import { FormComponent, LoaderService, NotificationsService, FormService, LoaderComponent } from '../../../ui';
 import Core from 'ec.sdk/lib/Core';
 import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
-import { Item, FormConfig, Form } from '@ec.components/core';
+import { Item, FormConfig, Form } from '../../../core';
 import Resource from 'ec.sdk/lib/resources/Resource';
 import { ResourceForm } from './resource-form';
 import { SymbolService } from '../../../ui/src/symbol/symbol.service';

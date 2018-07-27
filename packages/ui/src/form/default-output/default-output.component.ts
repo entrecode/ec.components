@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Field } from '@ec.components/core/src/field/field';
-import { Item } from '@ec.components/core/src/item/item';
+import { Field } from '../../../../core/src/field/field';
+import { Item } from '../../../../core/src/item/item';
 
 /** Holds the templates to output item field values. */
 @Component({

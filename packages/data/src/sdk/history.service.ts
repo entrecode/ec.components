@@ -3,8 +3,8 @@ import { Resource } from 'halfred';
 import ModelResource from 'ec.sdk/lib/resources/datamanager/ModelResource';
 import DataManagerResource from 'ec.sdk/lib/resources/datamanager/DataManagerResource';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
-import { ResourceService } from '@ec.components/data/src/resource-config/resource.service';
-import { NotificationsService, LoaderService } from '@ec.components/ui';
+import { ResourceService } from '../resource-config/resource.service';
+import { NotificationsService, LoaderService } from '../../../ui';
 import { Router } from '@angular/router';
 
 /** The HistoryService keeps track of live updates for models entries and datamanagers. */

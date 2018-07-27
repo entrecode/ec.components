@@ -1,21 +1,21 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormComponent } from '@ec.components/ui/src/form/form.component';
+import { FormComponent } from '../../../ui/src/form/form.component';
 import { ModelConfigService } from '../model-config/model-config.service';
-import { LoaderService } from '@ec.components/ui/src/loader/loader.service';
-import { NotificationsService } from '@ec.components/ui/src/notifications/notifications.service';
+import { LoaderService } from '../../../ui/src/loader/loader.service';
+import { NotificationsService } from '../../../ui/src/notifications/notifications.service';
 import { CrudService } from '../crud/crud.service';
-import { Item } from '@ec.components/core/src/item/item';
-import { FormConfig } from '@ec.components/core/src/form/form-config.interface';
-import { FormService } from '@ec.components/ui/src/form/form.service';
+import { Item } from '../../../core/src/item/item';
+import { FormConfig } from '../../../core/src/form/form-config.interface';
+import { FormService } from '../../../ui/src/form/form.service';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
-import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
-import { WithNotifications } from '@ec.components/ui/src/notifications/with-notifications.interface';
-import { Notification } from '@ec.components/ui/src/notifications/notification';
-import { FieldConfigProperty } from '@ec.components/core';
+import { SymbolService } from '../../../ui/src/symbol/symbol.service';
+import { WithNotifications } from '../../../ui/src/notifications/with-notifications.interface';
+import { Notification } from '../../../ui/src/notifications/notification';
+import { FieldConfigProperty } from '../../../core';
 import { TypeConfigService } from '../model-config/type-config.service';
 
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent.
- * <example-url>https://components.entrecode.de/data/entry-form</example-url>
+ * <example-url>https://components.entrecode.de/entries/entry-form</example-url>
 */
 @Component({
   selector: 'ec-entry-form',

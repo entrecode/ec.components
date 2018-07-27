@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { InputErrorsComponent } from '../../../index';
+import { InputErrorsComponent } from '../../..';
 import { SymbolService } from '../../symbol/symbol.service';
 
 describe('InputErrorsComponent', () => {

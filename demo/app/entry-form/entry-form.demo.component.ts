@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DefaultEntryInputComponent } from '@ec.components/data';
+import { DefaultEntryInputComponent } from '../../../packages/data';
 
 @Component({
   selector: 'ec-entry-form-demo',

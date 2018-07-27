@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormComponent, LoaderComponent, LoaderService, WithLoader } from '@ec.components/ui';
-import { Form } from '@ec.components/core';
+import { FormComponent, LoaderComponent, LoaderService, WithLoader } from '../../../packages/ui';
+import { Form } from '../../../packages/core';
 
 @Component({
   templateUrl: './loader-demo.component.html',

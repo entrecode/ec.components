@@ -1,3 +1,13 @@
+<ec-github-sources [paths]="['asset-list/asset-list-demo.component.html','asset-list/asset-list.demo.component.ts']"></ec-github-sources>
+
+<h2>Asset list</h2>
+<ec-asset-list relation="dmAsset.test" [api]="sdk.api" *ngIf="sdk.api"></ec-asset-list>
+<a (click)="assetPop.show()">SHOW</a>
+<ec-pop #assetPop>
+<ec-resource-list #resourceList relation="dmAsset.test" [api]="sdk.api" *ngIf="sdk.api" class="ec-resource-list"></ec-resource-list>
+</ec-pop>
+
+
 <!-- <h2>Asset List</h2>
 <ec-asset-list-pop assetGroupID="legacyAsset" #oldAssetListPop class="ec-pop_toast-top"></ec-asset-list-pop>
 <ec-asset-list-pop assetGroupID="test" #newAssetListPop></ec-asset-list-pop>
@@ -24,9 +34,3 @@
   </ec-tab>
 </ec-tabs>
  -->
-<h2>Asset list</h2>
-<ec-asset-list relation="dmAsset.test" [api]="sdk.api" *ngIf="sdk.api"></ec-asset-list>
-<a (click)="assetPop.show()">SHOW</a>
-<ec-pop #assetPop>
-<ec-resource-list #resourceList relation="dmAsset.test" [api]="sdk.api" *ngIf="sdk.api" class="ec-resource-list"></ec-resource-list>
-</ec-pop>

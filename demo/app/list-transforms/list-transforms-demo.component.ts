@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { adjektive } from '../../../mocks/adjektive';
 import { irregular_verbs } from '../../../mocks/irregular_verbs';
 import { regular_verbs } from '../../../mocks/regular_verbs';
-import { List } from '@ec.components/core';
+import { List } from '../../../packages/core';
 import { substantives } from '../../../mocks/substantives';
 
 const percent = (value) => Math.round(100 * value) + '%';

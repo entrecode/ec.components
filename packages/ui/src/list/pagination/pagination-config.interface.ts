@@ -1,4 +1,4 @@
-import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import { SymbolService } from '../../symbol/symbol.service';
 
 /** Configuration for a pagination component */
 export class PaginationConfig {

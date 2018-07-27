@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { Item, Selection } from '@ec.components/core';
-import { SdkService } from '@ec.components/data';
-import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
-import { PopService } from '@ec.components/ui/src/pop/pop.service';
+import { Item, Selection } from '../../../../core';
+import { SdkService } from '../../..';
+import { PopComponent } from '../../../../ui/src/pop/pop.component';
+import { PopService } from '../../../../ui/src/pop/pop.service';
 import PublicAssetResource from 'ec.sdk/lib/resources/publicAPI/PublicAssetResource';
 import { Subject } from 'rxjs/Subject';
 import { SearchbarComponent } from '../../../../ui/src/list/searchbar/searchbar.component';

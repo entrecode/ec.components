@@ -2,7 +2,7 @@
  * Created by felix on 23.05.17.
  */
 import { Directive, Input, OnChanges } from '@angular/core';
-import { LoaderComponent, WithLoader } from '@ec.components/ui';
+import { LoaderComponent, WithLoader } from '../../../ui';
 import EntryList from 'ec.sdk/lib/resources/publicAPI/EntryList';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { SdkService } from '../sdk/sdk.service';

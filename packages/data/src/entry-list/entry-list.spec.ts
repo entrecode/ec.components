@@ -1,4 +1,4 @@
-import { EntryList } from '../../index';
+import { EntryList } from '../..';
 
 describe('EntryList', () => {
   it('should construct', () => {

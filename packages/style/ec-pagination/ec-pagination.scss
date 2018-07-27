@@ -3,13 +3,13 @@
 // @param {array} $ec-pagination-spacing [8 0]
 // @param {array} $ec-pagination-style
 .ec-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   @include inject-style($ec-pagination-style);
   background: $ec-pagination-background;
   margin: arrayMagic($ec-pagination-spacing);
   padding: arrayMagic($ec-pagination-padding);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 // @param {number} $ec-pagination-item-padding-ratio [$btn-padding-ratio]
@@ -25,20 +25,6 @@
 // @param {color} $ec-pagination-item-color [$link]
 // @param {array} $ec-pagination-item-style
 .ec-pagination__item {
-  @include inject-style($ec-pagination-item-style);
-  @include macro-metrics(
-    $ec-pagination-item-font-size,
-    $ec-pagination-item-line-height,
-    $ec-pagination-item-min-height,
-    $padding-ratio: $ec-pagination-item-padding-ratio
-  );
-  background: $ec-pagination-item-background;
-  color: $ec-pagination-item-color;
-  font-family: $ec-pagination-item-font-family;
-  font-weight: $ec-pagination-item-weight;
-  margin: arrayMagic($ec-pagination-item-spacing);
-  border-radius: arrayMagic($ec-pagination-item-radius);
-  transition: $btn-transition;
   cursor: pointer;
   appearance: none;
   user-select: none;
@@ -54,6 +40,21 @@
   align-items: center;
   justify-content: center;
 
+  @include inject-style($ec-pagination-item-style);
+  @include macro-metrics(
+    $ec-pagination-item-font-size,
+    $ec-pagination-item-line-height,
+    $ec-pagination-item-min-height,
+    $padding-ratio: $ec-pagination-item-padding-ratio
+  );
+  background: $ec-pagination-item-background;
+  color: $ec-pagination-item-color;
+  font-family: $ec-pagination-item-font-family;
+  font-weight: $ec-pagination-item-weight;
+  margin: arrayMagic($ec-pagination-item-spacing);
+  border-radius: arrayMagic($ec-pagination-item-radius);
+  transition: $btn-transition;
+  
   @if $ec-pagination-item-round == true {
     border-radius: arrayMagic($ec-pagination-item-min-height / 2);
   }
@@ -127,11 +128,11 @@
 // @param {color} $ec-pagination-info-color [$link]
 // @param {array} $ec-pagination-info-style
 .ec-pagination-info {
+  flex-grow: 1;
+  text-align: center;
   @include inject-style($ec-pagination-info-style);
   font-size: arrayMagic($ec-pagination-info-size, xem);
   color: $ec-pagination-info-color;
-  flex-grow: 1;
-  text-align: center;
 }
 
 .ec-pagination-size-select {

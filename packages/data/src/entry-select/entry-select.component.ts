@@ -3,13 +3,13 @@
  */
 import { Component, forwardRef, Input, OnChanges, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Form } from '@ec.components/core';
-import { Item } from '@ec.components/core/src/item/item';
-import { ResourceService } from '@ec.components/data/src/resource-config/resource.service';
-import { SdkService } from '@ec.components/data/src/sdk/sdk.service';
-import { SelectComponent } from '@ec.components/ui';
-import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
-import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import { Form } from '../../../core';
+import { Item } from '../../../core/src/item/item';
+import { ResourceService } from '../resource-config/resource.service';
+import { SdkService } from '../sdk/sdk.service';
+import { SelectComponent } from '../../../ui';
+import { PopComponent } from '../../../ui/src/pop/pop.component';
+import { SymbolService } from '../../../ui/src/symbol/symbol.service';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import 'rxjs/add/operator/debounceTime';
 import { SearchbarComponent } from '../../../ui/src/list/searchbar/searchbar.component';

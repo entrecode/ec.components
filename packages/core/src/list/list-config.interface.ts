@@ -34,5 +34,7 @@ export interface ListConfig<T> extends ItemConfig<T> {
   /** a query that will be turned in to a filter */
   query?: { [key: string]: any },
   /** Maximal visible columns. Defaults to 8 */
-  maxColumns?: number
+  maxColumns?: number,
+  /** If true, the list will automatically load on change */
+  autoload?: boolean;
 }

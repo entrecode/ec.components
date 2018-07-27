@@ -47,9 +47,11 @@ export class List<T> extends Collection<Item<T>> {
     this.fields = this.getFields();
     this.hideOverflowFields();
     this.pagination = pagination || new Pagination(this.config, this.items.length);
-    this.pagination.change$.debounceTime(200)
-      .subscribe(_config => this.load(_config));
-    this.load();
+    if (!pagination) { // load if no custom pagination was given
+      this.pagination.change$.debounceTime(200)
+        .subscribe(_config => this.load(_config));
+      this.load();
+    }
   }
 
   /** Loads the list page with the given config or, if none given, uses the current config.

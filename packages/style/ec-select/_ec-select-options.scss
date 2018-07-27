@@ -18,14 +18,14 @@
   // @param {color} $ec-select-option-background [$state-hover]
   // @param {array} $ec-select-option-style
   .ec-list-item {
-    @include inject-style($ec-select-option-style);
-    color: $ec-select-option-color;
-    background: $ec-select-option-background;
-    padding: arrayMagic($ec-select-option-padding);
     display: flex;
     width: 100%;
     box-shadow: none;
     outline: none;
+    @include inject-style($ec-select-option-style);
+    color: $ec-select-option-color;
+    background: $ec-select-option-background;
+    padding: arrayMagic($ec-select-option-padding);
 
     &:hover,
     &.is-selected {
@@ -59,6 +59,11 @@
   // @param {array} $ec-select-options-style [$xui-select-options-style]
   .ec-pop-container {
     .ec-pop {
+      position: absolute;
+      left: 0;
+      top: 100%;
+      z-index: 10;
+      width: 100%;
       @include inject-style($ec-select-options-style);
       @include is-scrollable(y, contain, auto);
       max-height: rem($ec-select-options-max-height);
@@ -67,11 +72,6 @@
       box-shadow: arrayMagic($ec-select-options-shadow);
       border-radius: arrayMagic($ec-select-options-radius);
       background: $ec-select-options-background;
-      position: absolute;
-      left: 0;
-      top: 100%;
-      z-index: 10;
-      width: 100%;
     }
   }
 }

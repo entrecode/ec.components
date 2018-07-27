@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ListConfig } from '../../../packages/core/index';
+import { ListConfig } from '../../../packages/core';
 import { ResourcePopComponent } from '../../../packages/data/src/resource-pop/resource-pop.component';
 import { SdkService } from '../../../packages/data/src/sdk/sdk.service';
 import { TabComponent } from '../../../packages/ui/src/utility/tab/tab.component';

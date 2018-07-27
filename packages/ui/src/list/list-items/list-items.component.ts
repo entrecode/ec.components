@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Item, List, Selection } from '@ec.components/core';
+import { Item, List, Selection } from '../../../../core';
 import { ListComponent } from '../list.component';
 import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 

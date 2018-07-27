@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ModelConfigService } from '@ec.components/data';
-import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import { ModelConfigService } from '../../../packages/data';
+import { SymbolService } from '../../../packages/ui/src/symbol/symbol.service';
 import { ResourceConfig } from '../../../packages/data/src/resource-config/resource-config.service';
 
 @Component({

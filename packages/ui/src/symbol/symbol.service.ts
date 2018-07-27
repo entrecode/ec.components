@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { Symbol } from './symbol.interface';
 import de from './de';
 import en from './en';
-/** Service to register symbols for localization. The default set is de. */
+/** Service to register symbols for localization. The default set is de.
+ * <example-url>https://components.entrecode.de/ui/symbols?e=1</example-url>
+*/
 @Injectable()
 export class SymbolService {
     /** The current symbol set that is registered to the service. It will be used to resolve strings from. */

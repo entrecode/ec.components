@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate } from '@angular/router';
-import { SdkService } from '@ec.components/data/src/sdk/sdk.service';
-import { NotificationsService } from '@ec.components/ui/src/notifications/notifications.service';
+import { SdkService } from '../sdk/sdk.service';
+import { NotificationsService } from '../../../ui/src/notifications/notifications.service';
 import { Subject } from 'rxjs/Subject';
 
 /** This guard can be used on routes that only can be activated when a user is present in the SdkService.

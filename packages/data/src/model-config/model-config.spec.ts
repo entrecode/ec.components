@@ -1,4 +1,4 @@
-import { ModelConfigService } from '../../index';
+import { ModelConfigService } from '../..';
 
 describe('ModelConfig', () => {
 

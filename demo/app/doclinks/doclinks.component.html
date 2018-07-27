@@ -1,0 +1,9 @@
+<div *ngIf="links.length">
+    <h3>Related Docs</h3>
+    <ul>
+        <li *ngFor="let link of links">
+            <a [href]="getUrl(link)">{{link}}</a>
+            <!--  target="_blank" -->
+        </li>
+    </ul>
+</div>

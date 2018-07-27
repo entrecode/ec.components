@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { FieldConfigProperty } from '@ec.components/core/src/config/field-config-property.interface';
-import { FieldConfig } from '@ec.components/core/src/config/field-config.interface';
-import { DefaultInputComponent } from '@ec.components/ui/src/form/default-input/default-input.component';
-import { DefaultOutputComponent } from '@ec.components/ui/src/form/default-output/default-output.component';
-import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import { FieldConfigProperty } from '../../../core/src/config/field-config-property.interface';
+import { FieldConfig } from '../../../core/src/config/field-config.interface';
+import { DefaultInputComponent } from '../../../ui/src/form/default-input/default-input.component';
+import { DefaultOutputComponent } from '../../../ui/src/form/default-output/default-output.component';
+import { SymbolService } from '../../../ui/src/symbol/symbol.service';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import moment from 'moment-es6';
 import { CrudConfig } from '../crud/crud-config.interface';

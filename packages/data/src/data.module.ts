@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { UiModule } from '@ec.components/ui/src/ui.module';
+import { UiModule } from '../../ui/src/ui.module';
 import { DndModule } from 'ngx-drag-drop';
 import { AuthModule } from './auth/auth.module';
 import { CrudComponent } from './crud/crud.component';

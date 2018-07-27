@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { EditorComponent } from '../../../packages/vc/index';
+import { EditorComponent } from '../../../packages/vc';
 
 @Component({
   selector: 'ec-vc-demo',

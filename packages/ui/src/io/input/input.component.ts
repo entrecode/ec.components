@@ -1,9 +1,9 @@
 import { Component, EventEmitter, forwardRef, Input, OnChanges, Output, Type } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, AbstractControl } from '@angular/forms';
-import { FieldConfigProperty } from '@ec.components/core';
-import { Field } from '@ec.components/core/src/field/field';
-import { Form } from '@ec.components/core/src/form/form';
-import { Item } from '@ec.components/core/src/item/item';
+import { FieldConfigProperty } from '../../../../core';
+import { Field } from '../../../../core/src/field/field';
+import { Form } from '../../../../core/src/form/form';
+import { Item } from '../../../../core/src/item/item';
 import { DefaultInputComponent } from '../../form/default-input/default-input.component';
 import { DynamicSlotComponent } from '../dynamic-slot/dynamic-slot.component';
 

@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PaginationComponent } from '../../../index';
-import { Pagination } from '@ec.components/core';
+import { PaginationComponent } from '../../..';
+import { Pagination } from '../../../../core';
 import { IconModule } from '../../icon/icon.module';
 import { SymbolModule } from '../../symbol/symbol.module';
 

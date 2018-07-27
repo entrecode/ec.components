@@ -4,15 +4,15 @@
 // @param {array} $ec-list-cell-padding [8]
 // @param {array} $ec-list-cell-style
 .ec-list-cell {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  flex: 1;
   @include inject-style($ec-list-cell-style);
   color: $ec-list-cell-color;
   font-size: arrayMagic($ec-list-cell-size, xem);
   font-weight: $ec-list-cell-weight;
   padding: arrayMagic($ec-list-cell-padding);
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  flex: 1;
 
   &.is-hidden {
     display: none;
