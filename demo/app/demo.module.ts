@@ -50,6 +50,8 @@ import { SymbolDemoComponent } from './symbol/symbol-demo.component';
 import { TabsDemoComponent } from './tabs/tabs-demo.component';
 import { TinymceDemoComponent } from './tinymce-demo/tinymce-demo.component';
 import { VcDemoComponent } from './vc/vc-demo.component';
+import { GithubSourceComponent } from './github-source/github-source.component';
+import { GithubSourcesComponent } from './github-source/github-sources.componen';
 
 demoRoutes.unshift(
   {
@@ -60,6 +62,8 @@ demoRoutes.unshift(
 
 @NgModule({
   declarations: [
+    GithubSourceComponent,
+    GithubSourcesComponent,
     DemoDashboardComponent,
     DemoComponent,
     VcDemoComponent,
@@ -104,7 +108,7 @@ demoRoutes.unshift(
   ],
   entryComponents: [
     CoolStringComponent,
-    UnsplashImageComponent,
+    UnsplashImageComponent
   ],
   imports: [
     BrowserModule,

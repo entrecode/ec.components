@@ -1,0 +1,6 @@
+<ec-tabs *ngIf="paths?.length">
+    <!-- <ec-tab label="sources"></ec-tab> -->
+    <ec-tab #tab *ngFor="let path of paths;let index = index" [label]="getFileName(path)">
+        <ec-github-source *ngIf="tab.selected" [path]="path" [mode]="getFileMode(path)"></ec-github-source>
+    </ec-tab>
+</ec-tabs>

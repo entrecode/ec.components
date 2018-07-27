@@ -1,7 +1,7 @@
 <div data-container>
   <ec-notifications class="ec-notifications"></ec-notifications>
   <ec-tabs>
-    <ec-tab label="Simple">
+    <ec-tab label="Simple" selected>
       <ec-entry-form model="muffin" [config]="formConfig"></ec-entry-form>
     </ec-tab>
     <ec-tab label="Dynamic Fields">
@@ -17,12 +17,12 @@
     <ec-tab label="complex">
       <ec-entry-form model="field_test"></ec-entry-form>
     </ec-tab>
-    <ec-tab label="with entry">
+<!--     <ec-tab label="with entry">
       <ec-entry-form model="muffin" [entry]="myMuffin.entry" ecEntry entryId="SkXEhDZ5yW" #myMuffin="ecEntry"></ec-entry-form>
     </ec-tab>
     <ec-tab label="with complex entry">
       <ec-entry-form model="field_test" [entry]="fieldTest.entry" ecEntry entryId="H1f3tKR85f" #fieldTest="ecEntry"></ec-entry-form>
-    </ec-tab>
+    </ec-tab> -->
     <ec-tab label="custom">
       <ec-entry-form model="muffin" #muffinForm>
         <ec-input [field]="muffinForm.form?.getField('name')" [group]="muffinForm.group"></ec-input>

@@ -1,4 +1,3 @@
-<!-- <ec-resource-crud [api]="datamanager" relation="assetGroup" (columnClicked)="select($event)"></ec-resource-crud> -->
 <ec-resource-select [api]="datamanager" relation="assetGroup" (changed)="selected($event)" [solo]="true" [config]="{methods:['get'],disableListPop:true}"></ec-resource-select>
 
 <div *ngIf="group">
@@ -15,3 +14,5 @@
   <ec-resource-crud [api]="group" relation="dmAsset" [config]="{size:12,methods:['get','put','delete'],disableSelectSwitch:true}"></ec-resource-crud>
 </div>
 <!-- TODO: use when SDK renamed asset to dmAsset -->
+
+<!-- <ec-resource-crud [api]="datamanager" relation="assetGroup" (columnClicked)="select($event)"></ec-resource-crud> -->

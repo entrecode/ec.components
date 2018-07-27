@@ -48,10 +48,14 @@ export const demoRoutes: Routes = [
       {
         path: 'icons',
         component: IconDemoComponent,
+        data: { paths: ['icon-demo/icon-demo.component.html', 'icon-demo/icon-demo.component.ts', 'icon-demo/icon.pipe.ts'] }
       },
       {
         path: 'symbols',
         component: SymbolDemoComponent,
+        data: {
+          paths: ['symbol/symbol-demo.component.html', 'symbol/symbol-demo.component.ts']
+        }
       },
       {
         path: 'list',
@@ -63,48 +67,81 @@ export const demoRoutes: Routes = [
           },
           {
             path: 'basic',
-            component: ListDemoComponent
+            component: ListDemoComponent,
+            data: {
+              paths: ['list/list-demo.component.ts', 'list/unsplash-image.component.ts']
+            }
           },
           {
             path: 'transforms',
-            component: ListTransformsDemoComponent
+            component: ListTransformsDemoComponent,
+            data: {
+              paths: ['list-transforms/list-transforms-demo.component.ts']
+            }
           },
           {
             path: 'pagination',
-            component: PaginationDemoComponent
+            component: PaginationDemoComponent,
+            data: {
+              paths: ['pagination/pagination-demo.component.html', 'pagination/pagination-demo.component.ts']
+            }
           }
         ]
       },
       {
         path: 'form',
-        component: FormDemoComponent
+        component: FormDemoComponent,
+        data: {
+          paths: ['form/form-demo.component.ts', 'form/form-demo.component.html', 'form/cool-string.component.ts', 'form/cool-string.component.html']
+        }
       }, {
         path: 'select',
         component: SelectDemoComponent,
+        data: {
+          paths: ['select/select-demo.component.html', 'select/select-demo.component.ts']
+        }
       },
       {
         path: 'datetime',
-        component: DatetimeDemoComponent
+        component: DatetimeDemoComponent,
+        data: {
+          paths: ['form/datetime-demo.component.ts']
+        }
       },
       {
         path: 'pop',
-        component: PopDemoComponent
+        component: PopDemoComponent,
+        data: {
+          paths: ['pop/pop-demo.component.html', 'pop/pop-demo.component.ts', 'pop/pop-trigger.component.ts', 'pop/pop.markup.html']
+        }
       },
       {
         path: 'notifications',
-        component: NotificationsDemoComponent
+        component: NotificationsDemoComponent,
+        data: {
+          paths: ['notifications-demo/notifications-demo.component.html', 'notifications-demo/notifications-demo.component.ts']
+        }
       },
       {
         path: 'loader',
-        component: LoaderDemoComponent
+        component: LoaderDemoComponent,
+        data: {
+          paths: ['loader-demo/loader-demo.component.html', 'loader-demo/loader-demo.component.ts']
+        }
       },
       {
         path: 'tabs',
-        component: TabsDemoComponent
+        component: TabsDemoComponent,
+        data: {
+          paths: ['tabs/tabs-demo.component.html', 'tabs/tabs-demo.component.ts']
+        }
       },
       {
         path: 'login',
-        component: LoginFormComponent
+        component: LoginFormComponent,
+        data: {
+          paths: []
+        }
       },
     ]
   },
@@ -113,23 +150,38 @@ export const demoRoutes: Routes = [
     children: [
       {
         path: 'api-explorer',
-        component: ApiExplorerComponent
+        component: ApiExplorerComponent,
+        data: {
+          paths: ['api-explorer/api-explorer.component.html', 'api-explorer/api-explorer.component.ts']
+        }
       },
       {
         path: 'resource-form',
-        component: ResourceFormDemoComponent
+        component: ResourceFormDemoComponent,
+        data: {
+          paths: ['resource-form/resource-form-demo.component.html', 'resource-form/resource-form-demo.component.ts']
+        }
       },
       {
         path: 'resource-crud',
-        component: ResourceCrudDemoComponent
+        component: ResourceCrudDemoComponent,
+        data: {
+          paths: ['resource-crud/resource-crud-demo.component.html', 'resource-crud/resource-crud-demo.component.ts']
+        }
       },
       {
         path: 'resource-delete-pop',
-        component: ResourceDeletePopDemoComponent
+        component: ResourceDeletePopDemoComponent,
+        data: {
+          paths: ['resource-delete-pop/resource-delete-pop-demo.component.html', 'resource-delete-pop/resource-delete-pop-demo.component.ts']
+        }
       },
       {
         path: 'resource-select',
-        component: ResourceSelectDemoComponent
+        component: ResourceSelectDemoComponent,
+        data: {
+          paths: ['resource-select/resource-select-demo.component.html', 'resource-select/resource-select-demo.component.ts']
+        }
       }
     ]
   },
@@ -138,40 +190,64 @@ export const demoRoutes: Routes = [
     children: [
       {
         path: 'entries',
-        component: DataDemoComponent
+        component: DataDemoComponent,
+        data: {
+          paths: ['data/data-demo.component.html', 'data/data-demo.component.ts']
+        }
       },
       {
         path: 'entry-list',
-        component: EntryListDemoComponent
+        component: EntryListDemoComponent,
+        data: {
+          paths: ['entry-list/entry-list-demo.component.html', 'entry-list/entry-list.demo.component.ts']
+        }
       },
       {
         path: 'entry-form',
-        component: EntryFormDemoComponent
+        component: EntryFormDemoComponent,
+        data: {
+          paths: ['entry-form/entry-form-demo.component.html', 'entry-form/entry-form.demo.component.ts']
+        }
       },
       {
         path: 'entry-pop',
         children: [
           {
             path: '',
-            component: EntryPopDemoComponent
+            component: EntryPopDemoComponent,
+            data: {
+              paths: ['entry-pop-demo/entry-pop-demo.component.html', 'entry-pop-demo/entry-pop-demo.component.ts']
+            }
           },
           {
             path: 'muffin/:muffinID',
-            component: EntryPopDemoComponent
+            component: EntryPopDemoComponent,
+            data: {
+              paths: ['entry-pop-demo/entry-pop-demo.component.html', 'entry-pop-demo/entry-pop-demo.component.ts']
+            }
           },
           {
             path: 'muffin/create',
-            component: EntryPopDemoComponent
+            component: EntryPopDemoComponent,
+            data: {
+              paths: ['entry-pop-demo/entry-pop-demo.component.html', 'entry-pop-demo/entry-pop-demo.component.ts']
+            }
           }
         ]
       },
       {
         path: 'entry-select',
-        component: EntrySelectDemoComponent
+        component: EntrySelectDemoComponent,
+        data: {
+          paths: ['entry-select/entry-select-demo.component.html', 'entry-select/entry-select-demo.component.ts']
+        }
       },
       {
         path: 'crud',
-        component: CrudDemoComponent
+        component: CrudDemoComponent,
+        data: {
+          paths: ['crud/crud-demo.component.html', 'crud/crud-demo.component.ts']
+        }
       },
     ]
   },
@@ -180,19 +256,31 @@ export const demoRoutes: Routes = [
     children: [
       {
         path: 'asset',
-        component: AssetDemoComponent
+        component: AssetDemoComponent,
+        data: {
+          paths: ['asset/asset-demo.component.html', 'asset/asset.demo.component.ts']
+        }
       },
       {
         path: 'asset-list',
-        component: AssetListDemoComponent
+        component: AssetListDemoComponent,
+        data: {
+          paths: ['asset-list/asset-list-demo.component.html', 'asset-list/asset-list.demo.component.ts']
+        }
       },
       {
         path: 'asset-select',
-        component: AssetSelectDemoComponent
+        component: AssetSelectDemoComponent,
+        data: {
+          paths: ['asset-select/asset-select-demo.component.html', 'asset-select/asset-select-demo.component.ts']
+        }
       },
       {
         path: 'file-list',
-        component: FileListDemoComponent
+        component: FileListDemoComponent,
+        data: {
+          paths: ['file-list/file-list-demo.component.html', 'file-list/file-list-demo.component.ts']
+        }
       },
     ]
 
@@ -210,15 +298,24 @@ export const demoRoutes: Routes = [
        },*/
       {
         path: 'auth',
-        component: AuthDemoComponent
+        component: AuthDemoComponent,
+        data: {
+          paths: ['auth/auth-demo.component.html', 'auth/auth-demo.component.ts']
+        }
       },
       {
         path: 'password-reset',
-        component: PasswordResetDemoComponent
+        component: PasswordResetDemoComponent,
+        data: {
+          paths: ['password-reset/password-reset-demo.component.html', 'password-reset/password-reset-demo.component.ts']
+        }
       },
       {
         path: 'signup',
-        component: SignupDemoComponent
+        component: SignupDemoComponent,
+        data: {
+          paths: ['signup/signup-demo.component.html', 'signup/signup-demo.component.ts']
+        }
       },
     ]
   },
@@ -227,24 +324,39 @@ export const demoRoutes: Routes = [
     children: [
       {
         path: 'medium-editor',
-        component: MediumEditorDemoComponent
+        component: MediumEditorDemoComponent,
+        data: {
+          paths: ['medium-editor-demo/medium-editor-demo.component.html', 'medium-editor-demo/medium-editor-demo.component.ts']
+        }
       },
       {
         path: 'tinymce',
-        component: TinymceDemoComponent
+        component: TinymceDemoComponent,
+        data: {
+          paths: ['tinymce-demo/tinymce-demo.component.html', 'tinymce-demo/tinymce-demo.component.ts']
+        }
       },
       {
         path: 'ace',
-        component: AceDemoComponent
+        component: AceDemoComponent,
+        data: {
+          paths: ['ace-demo/ace-demo.component.ts']
+        }
       },
       {
         path: 'location',
-        component: LocationPickerDemoComponent
+        component: LocationPickerDemoComponent,
+        data: {
+          paths: ['location/location-picker-demo.component.html', 'location/location-picker-demo.component.ts']
+        }
       }
     ]
   },
   {
     path: 'ec-vc',
-    component: VcDemoComponent
+    component: VcDemoComponent,
+    data: {
+      paths: ['vc/vc-demo.component.html', 'vc/vc-demo.component.ts']
+    }
   }
 ];

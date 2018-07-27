@@ -8,7 +8,9 @@
   </a>
 
   <section *ngIf="sdk.user">
-    <p><strong>Logged in as {{sdk.user.email}}</strong></p>
+    <p>
+      <strong>Logged in as {{sdk.user.email}}</strong>
+    </p>
     <button (click)="auth.logout()">Logout</button>
     <pre>
     {{sdk.user | json}}
@@ -30,4 +32,3 @@
     <ec-password-reset [api]="sdk.session" (success)="log($event)"></ec-password-reset>
   </section>
 </ec-pop>
-
