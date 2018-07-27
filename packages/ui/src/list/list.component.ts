@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, Output, ViewEncapsulation } from '@angular/core';
-import { Collection, List, ListConfig, Selection } from '@ec.components/core';
+import { Collection, List, ListConfig, Selection, Pagination } from '@ec.components/core';
 import { Item } from '@ec.components/core/src/item/item';
 import { PaginationConfig } from './pagination/pagination-config.interface';
 
@@ -38,6 +38,8 @@ export class ListComponent<T> implements OnChanges {
   @Output() selected: EventEmitter<Selection<T>> = new EventEmitter();
   /** The Instance of the List */
   @Input() list: List<T>;
+  /** Pagination that should be used */
+  @Input() pagination: Pagination<T>;
   /** Custom PaginationConfig */
   @Input() paginationConfig: PaginationConfig;
 
@@ -46,9 +48,9 @@ export class ListComponent<T> implements OnChanges {
   ngOnChanges(changes?) {
     this.config = Object.assign(this.config || {}, this.configInput || {});
     if (this.items) {
-      this.list = new List(this.items, this.config);
+      this.list = new List(this.items, this.config, this.pagination);
     } else if (this.collection) {
-      this.list = new List(this.collection.items, this.config);
+      this.list = new List(this.collection.items, this.config, this.pagination);
     }
     if (!this.list) {
       return;

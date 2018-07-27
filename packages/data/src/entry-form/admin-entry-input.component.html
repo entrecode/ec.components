@@ -9,6 +9,12 @@
   <div *ngSwitchCase="'role'">
     <ec-resource-select [api]="api" relation="role" [formControl]="group.get(field.property)" [id]="field.id" [solo]="true"></ec-resource-select>
   </div>
+  <div *ngSwitchCase="'resource'">
+    <ec-resource-select [api]="field.api" [relation]="field.relation" [formControl]="group.get(field.property)" [id]="field.id" [solo]="true"></ec-resource-select>
+  </div>
+  <div *ngSwitchCase="'resources'">
+    <ec-resource-select [api]="field.api" [relation]="field.relation" [formControl]="group.get(field.property)" [id]="field.id"></ec-resource-select>
+  </div>
   <div *ngSwitchDefault>
     <marquee>🚂🚃🚃🚃 {{field.type}} input coming soon..</marquee>
     <ec-output [field]="field" [item]="item"></ec-output>
