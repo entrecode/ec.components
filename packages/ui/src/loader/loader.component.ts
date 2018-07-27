@@ -2,7 +2,7 @@ import { Component, ElementRef } from '@angular/core';
 import { Collection } from '../../../core/src/collection/collection';
 
 /** The ec-loader can be plugged into various components to be triggered when they load stuff.
- * <example-url>https://components.entrecode.de/ui/loader</example-url>
+ * <example-url>https://components.entrecode.de/ui/loader?e=1</example-url>
 */
 @Component({
   selector: 'ec-loader',

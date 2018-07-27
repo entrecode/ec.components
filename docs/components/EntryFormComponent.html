@@ -109,21 +109,6 @@
                     <li class="link for-chapter2">
                         <a href="additional-documentation/ui/listcomponent.html" data-type="entity-link" data-context-id="additional">ListComponent</a>
                     </li>
-                    <li class="link for-chapter2">
-                        <a href="additional-documentation/ui/formcomponent.html" data-type="entity-link" data-context-id="additional">FormComponent</a>
-                    </li>
-                    <li class="link for-chapter2">
-                        <a href="additional-documentation/ui/logincomponent.html" data-type="entity-link" data-context-id="additional">LoginComponent</a>
-                    </li>
-                    <li class="link for-chapter2">
-                        <a href="additional-documentation/ui/popcomponent.html" data-type="entity-link" data-context-id="additional">PopComponent</a>
-                    </li>
-                    <li class="link for-chapter2">
-                        <a href="additional-documentation/ui/tabscomponent.html" data-type="entity-link" data-context-id="additional">TabsComponent</a>
-                    </li>
-                    <li class="link for-chapter2">
-                        <a href="additional-documentation/ui/selectcomponent.html" data-type="entity-link" data-context-id="additional">SelectComponent</a>
-                    </li>
                     <li class="link ">
                         <a href="additional-documentation/data.html" data-type="entity-link" data-context-id="additional">Data</a>
                     </li>
@@ -1332,21 +1317,6 @@
                     <li class="link for-chapter2">
                         <a href="additional-documentation/ui/listcomponent.html" data-type="entity-link" data-context-id="additional">ListComponent</a>
                     </li>
-                    <li class="link for-chapter2">
-                        <a href="additional-documentation/ui/formcomponent.html" data-type="entity-link" data-context-id="additional">FormComponent</a>
-                    </li>
-                    <li class="link for-chapter2">
-                        <a href="additional-documentation/ui/logincomponent.html" data-type="entity-link" data-context-id="additional">LoginComponent</a>
-                    </li>
-                    <li class="link for-chapter2">
-                        <a href="additional-documentation/ui/popcomponent.html" data-type="entity-link" data-context-id="additional">PopComponent</a>
-                    </li>
-                    <li class="link for-chapter2">
-                        <a href="additional-documentation/ui/tabscomponent.html" data-type="entity-link" data-context-id="additional">TabsComponent</a>
-                    </li>
-                    <li class="link for-chapter2">
-                        <a href="additional-documentation/ui/selectcomponent.html" data-type="entity-link" data-context-id="additional">SelectComponent</a>
-                    </li>
                     <li class="link ">
                         <a href="additional-documentation/data.html" data-type="entity-link" data-context-id="additional">Data</a>
                     </li>
@@ -2506,7 +2476,7 @@
     </p>
     <p class="comment">
         <p>The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent.</p>
-<p><example-url><a href="https://components.entrecode.de/entries/entry-form">https://components.entrecode.de/entries/entry-form</a></example-url></p>
+<p><example-url><a href="https://components.entrecode.de/entries/entry-form?e=1">https://components.entrecode.de/entries/entry-form?e=1</a></example-url></p>
 
     </p>
 
@@ -4548,8 +4518,180 @@ You can also pass just an item to use its config and body.</p>
 </div>
 
     <div class="tab-pane fade " id="c-readme">
-        <p><h1 id="entry-form">Entry Form</h1>
-<p>TODO</p>
+        <p><h1 id="entry-forms">Entry Forms</h1>
+<p>Related Doc:</p>
+<ul>
+<li><a href="../../interfaces/FieldConfigProperty.html">All Possible field config properties</a></li>
+<li><a href="../../injectables/TypeConfigService.html#source">Default Type Config</a></li>
+<li><a href="../../interfaces/ListConfig.html">ListConfig</a> (also see ItemConfig parent)</li>
+<li><a href="../core-classes/item.html">Item Doc</a></li>
+</ul>
+<p>Entry forms can edit and create entries. They support notifications, loader, validation error handling and dynamic config generation out of the box.
+NOTE: it is expected you have placed a ec-notifications tag somewhere in your root component.</p>
+<h2 id="default-behaviour">Default Behaviour</h2>
+<h3 id="create">Create</h3>
+<div><pre class="line-numbers"><code class="language-html">&lt;ec-entry-form model=&quot;muffin&quot;&gt;&lt;/ec-entry-form&gt;</code></pre></div><p>submitting the form will create a new entry and then switch to edit mode.</p>
+<h3 id="edit">Edit</h3>
+<div><pre class="line-numbers"><code class="language-html">&lt;ec-entry-form model=&quot;muffin&quot; [entry]=&quot;muffinEntry&quot;&gt;&lt;/ec-entry-form&gt;</code></pre></div><h3 id="dynamic-edit-create-from-template">Dynamic Edit/Create from template</h3>
+<p>You can also access the form from the template and call edit or create:</p>
+<div><pre class="line-numbers"><code class="language-html">&lt;ec-entry-form model=&quot;muffin&quot; #muffinForm&gt;&lt;/ec-entry-form&gt;
+&lt;ul ecEntries model=&quot;muffin&quot; #muffinList=&quot;ecEntries&quot;&gt;
+    &lt;li *ngFor=&quot;let muffin of muffinList.items&quot;&gt;
+      &lt;a (click)=&quot;muffinForm.edit(muffin)&quot;&gt;{{muffin.name}}&lt;/a&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;a class=&quot;btn&quot; (click)=&quot;muffinForm.create()&quot;&gt;Create new Muffin&lt;/a&gt;</code></pre></div><h2 id="configuration">Configuration</h2>
+<p>If nothing else is configured, the form will parse the schema of muffin and generate a generic field config.
+If you configured the model via ModelConfigService (see <a href="./custom-fields.html">Custom Fields</a>), the form will use that config.
+Alternatively, you can also pass a config directly:</p>
+<div><pre class="line-numbers"><code class="language-html">&lt;ec-entry-form model=&quot;muffin&quot; [config]=&quot;formConfig&quot;&gt;&lt;/ec-entry-form&gt;</code></pre></div><p>The given config will be Object.assigned to the possible preexisting modelConfig.</p>
+<h2 id="custom-markup-with-ec-input-ec-output">Custom Markup with ec-input/ec-output</h2>
+<p>Most times, you&#39;ll want more freedom over your forms markup etc. This is where ec-input and ec-output come into play:</p>
+<div><pre class="line-numbers"><code class="language-html">  &lt;ec-entry-form model=&quot;muffin&quot; #form&gt;
+    &lt;!-- input --&gt;
+    &lt;label&gt;Title
+        &lt;ec-input property=&quot;title&quot; [item]=&quot;form.form&quot; [group]=&quot;form.group&quot;&gt;&lt;/ec-input&gt;
+    &lt;/label&gt;
+    &lt;!-- output --&gt;
+    &lt;label&gt;Amazement Factor&lt;/label&gt;
+    &lt;ec-output property=&quot;amazement_factor&quot; [item]=&quot;form.form&quot; [group]=&quot;form.group&quot;&gt;&lt;/ec-output&gt;
+    &lt;a class=&quot;btn&quot; (click)=&quot;form.submit()&quot;&gt;Submit&lt;/a&gt;
+  &lt;/ec-entry-form&gt;</code></pre></div><p>As soon as the ec-entry-form contains elements (or you pass empty=true, as meantioned below), the contents will be rendered instead of the default form.</p>
+<p>Features you have to add manually (if needed)</p>
+<ul>
+<li>submit button</li>
+<li>field.readOnly handling (show ec-output instead of ec-input)</li>
+<li>local ec-loader</li>
+</ul>
+<p>NOTE: dont wrap labels around complex input components, because they fire ghost clicks!</p>
+<h2 id="custom-input-output-markup">Custom input/output markup</h2>
+<p>Of course you can remove another layer of abstraction to further customize the form:</p>
+<div><pre class="line-numbers"><code class="language-html">  &lt;ec-entry-form model=&quot;muffin&quot; #form&gt;
+    &lt;!-- input --&gt;
+    &lt;label&gt;Title&lt;/label&gt;
+    &lt;input type=&quot;text&quot; [formControl]=&quot;form.group.get(&#39;title&#39;)&quot;/&gt;
+    &lt;ec-input-errors [control]=&quot;form.group.get(&#39;title&#39;)&quot;&gt;&lt;/ec-input-errors&gt;
+    &lt;!-- output --&gt;
+    &lt;label&gt;Amazement Factor&lt;/label&gt;
+    {{form.display(&#39;amazement_factor&#39;)}}
+
+    &lt;a class=&quot;btn&quot; (click)=&quot;form.submit()&quot;&gt;Submit&lt;/a&gt;
+  &lt;/ec-entry-form&gt;</code></pre></div><p>Features you have to add manually:</p>
+<ul>
+<li>handling of input errors (ec-input-errors)</li>
+<li>making sure your markup handles the field type correctly</li>
+<li>making sure your markup handles the field value correctly</li>
+</ul>
+<p>It is generally recommended to use ec-input over hard coded forms.</p>
+<h3 id="the-empty-flag">The empty flag</h3>
+<p>You can also place the ec-input elements somewhere else and just tell the ec-entry-form that it shouldn&#39;t render the default form with the empty flag:</p>
+<div><pre class="line-numbers"><code class="language-html">&lt;ec-entry-form model=&quot;muffin&quot; [empty]=&quot;true&quot; #form&gt;&lt;/ec-entry-form&gt;
+&lt;ec-input property=&quot;title&quot; [item]=&quot;form.form&quot; [group]=&quot;form.group&quot;&gt;&lt;/ec-input&gt;</code></pre></div><p>NOTE: Always make sure the property accessed by ec-input is also present in your config (or you dont use a config at all). Otherwise, the input wont know what to render.</p>
+<h2 id="creating-custom-inputs">Creating custom inputs</h2>
+<h3 id="1-create-custom-input-component">1. Create Custom Input Component</h3>
+<div><pre class="line-numbers"><code class="language-sh">ng g c custom-input</code></pre></div><p>This component will serve as a container for all possible custom input fields.</p>
+<h3 id="2-extend-inputcomponent-custom-input-component-ts-">2. Extend InputComponent (custom-input.component.ts)</h3>
+<p>To make the current field information available to the template, you need to extend InputComponent from @ec.components/ui:</p>
+<div><pre class="line-numbers"><code class="language-js">import { Component } from &#39;&#64;angular/core&#39;;
+import { InputComponent } from &#39;&#64;ec.components/ui&#39;;
+
+&#64;Component({
+  selector: &#39;clubapp-custom-input&#39;,
+  templateUrl: &#39;./custom-input.component.html&#39;,
+  styleUrls: [&#39;./custom-input.component.scss&#39;]
+})
+export class CustomInputComponent extends InputComponent {
+}</code></pre></div><p>CMD+Click on InputComponent to see which properties you can now use!</p>
+<h3 id="3-add-markup-custom-input-component-html-">3. Add Markup (custom-input.component.html)</h3>
+<p>Now we can decide which custom input should be used, based on e.g. the fields view value:</p>
+<div><pre class="line-numbers"><code class="language-html">&lt;div [ngSwitch]=&quot;field.view&quot; *ngIf=&quot;group&quot; [formGroup]=&quot;group&quot;&gt;
+  &lt;ec-input-errors [control]=&quot;group.get(field.property)&quot;&gt;&lt;/ec-input-errors&gt;
+  &lt;div *ngSwitchCase=&quot;&#39;speakingurl&#39;&quot;&gt;
+    &lt;input [id]=&quot;field.id&quot; type=&quot;text&quot; [formControl]=&quot;control&quot;&gt;
+  &lt;/div&gt;
+  &lt;div *ngSwitchCase=&quot;&#39;openingHours&#39;&quot;&gt;
+    &lt;!-- &lt;ec-opening-hours [formControl]=&quot;control&quot;&gt;&lt;/ec-opening-hours&gt; --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></div><p>Of course you could also switch based on property name or type, depending on your application.
+The id property of field is referenced in the label of the form. By adding it to the input makes sure your label click enters the input.</p>
+<h3 id="4-add-custominputcomponent-to-entrycomponents-">4. Add CustomInputComponent to entryComponents:</h3>
+<p>Because the custom component will be loaded dynamically, your module needs to declare it as entryComponent:</p>
+<div><pre class="line-numbers"><code class="language-js">&#64;NgModule({
+  entryComponents: [
+    CustomInputComponent
+  ]
+  /** more stuff **/
+})
+export class AppModule {
+}</code></pre></div><h3 id="5-add-custominputcomponent-to-field-config-">5. Add CustomInputComponent to field config:</h3>
+<p>Now you can add the Component as input to your field config:</p>
+<div><pre class="line-numbers"><code class="language-js">this.modelConfig.set(&#39;muffin&#39;, {
+      fields: {
+        url: {
+          label: &#39;URL&#39;,
+          view: &#39;speakingurl&#39;,
+          input: CustomInputComponent
+        },
+        openingHours: {
+          label: &#39;Öffnungszeiten&#39;,
+          view: &#39;openingHours&#39;,
+          input: CustomInputComponent
+        }
+})</code></pre></div><p>By changing the view option, we can now decide which case will be met!</p>
+<h2 id="custom-form-controls">Custom Form Controls</h2>
+<p>Now what if you want to use a custom form control that does not rely on primitve inputs like number or text?
+In the above custom-input.component template, we use <ec-opening-hours> with a formControl input.
+To have access to the form control&#39;s value, you need to provide a ControlValueAccessor:</p>
+<div><pre class="line-numbers"><code class="language-js">import { Component, forwardRef } from &#39;&#64;angular/core&#39;;
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from &#39;&#64;angular/forms&#39;;
+import { InputComponent } from &#39;&#64;ec.components/ui&#39;;
+
+&#64;Component({
+  selector: &#39;ec-opening-hours&#39;,
+  templateUrl: &#39;./opening-hours.component.html&#39;,
+  styleUrls: [&#39;./opening-hours.component.scss&#39;],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() =&gt; OpeningHoursComponent),
+      multi: true
+    }
+  ]
+})
+export class OpeningHoursComponent extends InputComponent implements ControlValueAccessor {
+
+  writeValue(value: any) {
+    console.log(&#39;received value&#39;, value);
+  }
+
+  propagateChange = (_: any) =&gt; {
+  };
+
+  registerOnChange(fn) {
+    this.propagateChange = fn;
+  }
+
+  registerOnTouched() {
+  }
+
+}</code></pre></div><p>Now you can implement your own logic and call propagateChange when you change the value from your component, and react to change via the writeValue method!
+You now could also use your component with ngModel or formControl in another context!
+More information on this pattern: <a href="https://blog.thoughtram.io/angular/2016/07/27/custom-form-controls-in-angular-2.html">https://blog.thoughtram.io/angular/2016/07/27/custom-form-controls-in-angular-2.html</a></p>
+<h2 id="experimental-custom-fields-without-wrapper">EXPERIMENTAL: Custom Fields without wrapper</h2>
+<p>You can now also use custom components as input directly without needing to wrap them explicitly.
+What you need to is:</p>
+<ol>
+<li>Extend DefaultInputComponent</li>
+</ol>
+<div><pre class="line-numbers"><code class="language-js">export class JsonEditorComponent extends extends DefaultInputComponent</code></pre></div><ol start="2">
+<li>add the input component as member variable:</li>
+</ol>
+<div><pre class="line-numbers"><code class="language-js">/** Form input component */
+input: InputComponent;</code></pre></div><p>and propagate the change to the input as well:</p>
+<div><pre class="line-numbers"><code class="language-js">this.propagateChange(this.value);
+if (this.input) { // this is the important part
+ this.input.propagateChange(this.value);
+}</code></pre></div><p>input will be defined when the component is used as input component inside ec-form.</p>
 </p>
     </div>
 
@@ -4571,7 +4713,7 @@ import { FieldConfigProperty } from &#x27;../../../core&#x27;;
 import { TypeConfigService } from &#x27;../model-config/type-config.service&#x27;;
 
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent.
- * &lt;example-url&gt;https://components.entrecode.de/entries/entry-form&lt;/example-url&gt;
+ * &lt;example-url&gt;https://components.entrecode.de/entries/entry-form?e&#x3D;1&lt;/example-url&gt;
 */
 @Component({
   selector: &#x27;ec-entry-form&#x27;,
@@ -4703,7 +4845,7 @@ export class EntryFormComponent extends FormComponent&lt;EntryResource&gt; imple
     </div>
 
     <div class="tab-pane fade " id="c-example">
-            <iframe src="https://components.entrecode.de/entries/entry-form">
+            <iframe src="https://components.entrecode.de/entries/entry-form?e&#x3D;1">
                 <p>Your browser does not support iframes.</p>
             </iframe>
     </div>

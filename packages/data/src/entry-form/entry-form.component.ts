@@ -15,7 +15,7 @@ import { FieldConfigProperty } from '../../../core';
 import { TypeConfigService } from '../model-config/type-config.service';
 
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent.
- * <example-url>https://components.entrecode.de/entries/entry-form</example-url>
+ * <example-url>https://components.entrecode.de/entries/entry-form?e=1</example-url>
 */
 @Component({
   selector: 'ec-entry-form',

@@ -3,7 +3,10 @@ import PublicAPI from 'ec.sdk/lib/PublicAPI';
 import { LoaderComponent, NotificationsService, WithLoader } from '../../../../ui';
 import { AuthService } from '../auth.service';
 
-/** Form to send password reset request. */
+/** Form to send password reset request.
+ * <example-url>https://components.entrecode.de/auth/password-reset?e=1</example-url>
+ *
+*/
 @Component({
   selector: 'ec-password-reset',
   templateUrl: 'password-reset.component.html'

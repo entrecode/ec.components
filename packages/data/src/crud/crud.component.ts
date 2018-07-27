@@ -24,7 +24,7 @@ import { Notification } from '../../../ui/src/notifications/notification';
  * ```html
  * <ec-crud model="muffin"></ec-crud>
  * ```
- * <example-url>https://components.entrecode.de/data/crud</example-url>
+ * <example-url>https://components.entrecode.de/data/crud?e=1</example-url>
  * */
 @Component({
   selector: 'ec-crud',

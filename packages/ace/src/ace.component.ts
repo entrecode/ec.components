@@ -7,7 +7,7 @@ import { DefaultInputComponent, InputComponent } from '../../ui';
 declare const ace: any;
 /** Wraps ace editor as angular component. Implements ControlValueAccessor!
  *
- * <example-url>https://components.entrecode.de/misc/ace</example-url>
+ * <example-url>https://components.entrecode.de/misc/ace?e=1</example-url>
 */
 @Component({
     selector: 'ec-ace',

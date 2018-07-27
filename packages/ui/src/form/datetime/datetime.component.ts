@@ -5,7 +5,7 @@ import { CalendarComponent } from './calendar.component';
 
 /** Input for a datetime.
  *
- * <example-url>https://components.entrecode.de/ui/datetime</example-url>
+ * <example-url>https://components.entrecode.de/ui/datetime?e=1</example-url>
  *
 */
 @Component({

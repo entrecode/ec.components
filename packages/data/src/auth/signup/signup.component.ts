@@ -7,7 +7,7 @@ import PublicAPI from 'ec.sdk/lib/PublicAPI';
 import AccountResource from 'ec.sdk/lib/resources/accounts/AccountResource';
 
 /** Uses LoginFormComponent. Tries to login via AuthService. Shows notifications and nexts success Subject if login was successful.
- * <example-url>https://components.entrecode.de/auth/auth</example-url>
+ * <example-url>https://components.entrecode.de/auth/signup?e=1</example-url>
 */
 @Component({
   selector: 'ec-signup',

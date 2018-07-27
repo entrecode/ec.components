@@ -7,7 +7,7 @@ import { PopComponent } from '../pop/pop.component';
 /**
  * The SelectComponent will render a dropdown of a given list.
  *
- * <example-url>https://components.entrecode.de/ui/select</example-url>
+ * <example-url>https://components.entrecode.de/ui/select?e=1</example-url>
  * */
 @Component({
   selector: 'ec-select',

@@ -78,21 +78,32 @@ export const demoRoutes: Routes = [
             path: 'basic',
             component: ListDemoComponent,
             data: {
-              paths: ['list/list-demo.component.ts', 'list/unsplash-image.component.ts']
+              paths: ['list/list-demo.component.ts', 'list/unsplash-image.component.ts'],
+              links: [
+                'components/ListComponent.html#readme',
+                'modules/ListModule.html'
+              ]
             }
           },
           {
             path: 'transforms',
             component: ListTransformsDemoComponent,
             data: {
-              paths: ['list-transforms/list-transforms-demo.component.ts']
+              paths: ['list-transforms/list-transforms-demo.component.ts'],
+              links: [
+                'additional-documentation/project-setup-tutorial/custom-entry-list.html#create-custom-cells-via-transform-methods',
+                'modules/ListModule.html'
+              ]
             }
           },
           {
             path: 'pagination',
             component: PaginationDemoComponent,
             data: {
-              paths: ['pagination/pagination-demo.component.html', 'pagination/pagination-demo.component.ts']
+              paths: ['pagination/pagination-demo.component.html', 'pagination/pagination-demo.component.ts'],
+              links: [
+                'additional-documentation/project-setup-tutorial/custom-entry-list.html#seperated-header-items-pagination-markup',
+                'modules/ListModule.html']
             }
           }
         ]
@@ -101,13 +112,19 @@ export const demoRoutes: Routes = [
         path: 'form',
         component: FormDemoComponent,
         data: {
-          paths: ['form/form-demo.component.ts', 'form/form-demo.component.html', 'form/cool-string.component.ts', 'form/cool-string.component.html']
+          paths: ['form/form-demo.component.ts', 'form/form-demo.component.html', 'form/cool-string.component.ts', 'form/cool-string.component.html'],
+          links: ['modules/FormModule.html',
+            'components/DefaultInputComponent.html#template',
+            'additional-documentation/project-setup-tutorial/custom-entry-forms.html']
         }
       }, {
         path: 'select',
         component: SelectDemoComponent,
         data: {
-          paths: ['select/select-demo.component.html', 'select/select-demo.component.ts']
+          paths: ['select/select-demo.component.html', 'select/select-demo.component.ts'],
+          links: [
+            'modules/SelectModule.html'
+          ]
         }
       },
       {
@@ -121,35 +138,39 @@ export const demoRoutes: Routes = [
         path: 'pop',
         component: PopDemoComponent,
         data: {
-          paths: ['pop/pop-demo.component.html', 'pop/pop-demo.component.ts', 'pop/pop-trigger.component.ts', 'pop/pop.markup.html']
+          paths: ['pop/pop-demo.component.html', 'pop/pop-demo.component.ts', 'pop/pop-trigger.component.ts', 'pop/pop.markup.html'],
+          links: ['components/PopComponent.html#readme', 'modules/PopModule.html'] // TODO: enhance readme
         }
       },
       {
         path: 'notifications',
         component: NotificationsDemoComponent,
         data: {
-          paths: ['notifications-demo/notifications-demo.component.html', 'notifications-demo/notifications-demo.component.ts']
+          paths: ['notifications-demo/notifications-demo.component.html', 'notifications-demo/notifications-demo.component.ts'],
+          links: ['components/NotificationsComponent.html#readme', 'modules/NotificationsModule.html'] // TODO: enhance readme
         }
       },
       {
         path: 'loader',
         component: LoaderDemoComponent,
         data: {
-          paths: ['loader-demo/loader-demo.component.html', 'loader-demo/loader-demo.component.ts']
+          paths: ['loader-demo/loader-demo.component.html', 'loader-demo/loader-demo.component.ts'],
+          links: ['components/LoaderComponent.html#readme', 'modules/LoaderModule.html'] // TODO: enhance readme
         }
       },
       {
         path: 'tabs',
         component: TabsDemoComponent,
         data: {
-          paths: ['tabs/tabs-demo.component.html', 'tabs/tabs-demo.component.ts']
+          paths: ['tabs/tabs-demo.component.html', 'tabs/tabs-demo.component.ts'],
+          links: ['components/TabsComponent.html#readme', 'modules/UtilityModule.html'] // TODO: enhance readme
         }
       },
       {
         path: 'login',
         component: LoginFormComponent,
         data: {
-          paths: []
+          paths: ['modules/AuthModule.html'] // TODO: add readme
         }
       },
     ]
@@ -161,35 +182,40 @@ export const demoRoutes: Routes = [
         path: 'api-explorer',
         component: ApiExplorerComponent,
         data: {
-          paths: ['api-explorer/api-explorer.component.html', 'api-explorer/api-explorer.component.ts']
+          paths: ['api-explorer/api-explorer.component.html', 'api-explorer/api-explorer.component.ts'],
+          links: ['components/ResourceListComponent.html', 'components/ResourceFormComponent.html', 'modules/ResourceModule.html']
         }
       },
       {
         path: 'resource-form',
         component: ResourceFormDemoComponent,
         data: {
-          paths: ['resource-form/resource-form-demo.component.html', 'resource-form/resource-form-demo.component.ts']
+          paths: ['resource-form/resource-form-demo.component.html', 'resource-form/resource-form-demo.component.ts'],
+          links: ['components/ResourceFormComponent.html', 'modules/ResourceModule.html']
         }
       },
       {
         path: 'resource-crud',
         component: ResourceCrudDemoComponent,
         data: {
-          paths: ['resource-crud/resource-crud-demo.component.html', 'resource-crud/resource-crud-demo.component.ts']
+          paths: ['resource-crud/resource-crud-demo.component.html', 'resource-crud/resource-crud-demo.component.ts'],
+          links: ['components/ResourceCrudComponent.html', 'modules/ResourceModule.html']
         }
       },
       {
         path: 'resource-delete-pop',
         component: ResourceDeletePopDemoComponent,
         data: {
-          paths: ['resource-delete-pop/resource-delete-pop-demo.component.html', 'resource-delete-pop/resource-delete-pop-demo.component.ts']
+          paths: ['resource-delete-pop/resource-delete-pop-demo.component.html', 'resource-delete-pop/resource-delete-pop-demo.component.ts'],
+          links: ['components/ResourceDeletePopComponent.html', 'modules/ResourceModule.html']
         }
       },
       {
         path: 'resource-select',
         component: ResourceSelectDemoComponent,
         data: {
-          paths: ['resource-select/resource-select-demo.component.html', 'resource-select/resource-select-demo.component.ts']
+          paths: ['resource-select/resource-select-demo.component.html', 'resource-select/resource-select-demo.component.ts'],
+          links: ['components/ResourceSelectComponent.html']
         }
       }
     ]
@@ -201,21 +227,24 @@ export const demoRoutes: Routes = [
         path: 'entries',
         component: DataDemoComponent,
         data: {
-          paths: ['data/data-demo.component.html', 'data/data-demo.component.ts']
+          paths: ['data/data-demo.component.html', 'data/data-demo.component.ts'],
+          links: ['directives/EntriesDirective.html#readme', 'directives/EntryDirective.html#readme']
         }
       },
       {
         path: 'entry-list',
         component: EntryListDemoComponent,
         data: {
-          paths: ['entry-list/entry-list-demo.component.html', 'entry-list/entry-list.demo.component.ts']
+          paths: ['entry-list/entry-list-demo.component.html', 'entry-list/entry-list.demo.component.ts'],
+          links: ['components/EntryListComponent.html#readme', 'modules/DataModule.html']
         }
       },
       {
         path: 'entry-form',
         component: EntryFormDemoComponent,
         data: {
-          paths: ['entry-form/entry-form-demo.component.html', 'entry-form/entry-form.demo.component.ts']
+          paths: ['entry-form/entry-form-demo.component.html', 'entry-form/entry-form.demo.component.ts'],
+          links: ['components/EntryFormComponent.html#readme', 'modules/DataModule.html']
         }
       },
       {

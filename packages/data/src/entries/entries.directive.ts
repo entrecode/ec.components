@@ -10,7 +10,7 @@ import { SdkService } from '../sdk/sdk.service';
 // import { filterOptions } from 'ec.sdk/lib/resources/ListResource';
 
 /** Loads an entryList of a given model with the given config.
- * <example-url>https://components.entrecode.de/data/entries</example-url>
+ * <example-url>https://components.entrecode.de/entries/entries?e=1</example-url>
 */
 @Directive({
   selector: '[ecEntries]',

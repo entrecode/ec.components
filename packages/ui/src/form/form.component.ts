@@ -16,7 +16,7 @@ import { FormService } from './form.service';
  *
  * Example:
  *
- * <example-url>https://components.entrecode.de/ui/form</example-url>
+ * <example-url>https://components.entrecode.de/ui/form?e=1</example-url>
 */
 @Component({
   selector: 'ec-form',

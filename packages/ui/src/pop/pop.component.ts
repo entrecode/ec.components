@@ -6,7 +6,7 @@ import { PopService } from './pop.service';
 
 /** A Pop is an area of content whose visibility can be toggled.
  * It can be used e.g as dialog, drawer or dialog.
- * <example-url>https://components.entrecode.de/ui/pop</example-url>
+ * <example-url>https://components.entrecode.de/ui/pop?e=1</example-url>
  * */
 @Component({
   selector: 'ec-pop',

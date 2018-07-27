@@ -16,7 +16,7 @@ import { FileService } from '../file.service';
 import { UploadComponent } from '../upload/upload.component';
 
 /** Shows assets of a selection and is able to pick new ones from a crud list.
- * <example-url>https://components.entrecode.de/data/asset-select</example-url>
+ * <example-url>https://components.entrecode.de/data/asset-select?e=1</example-url>
 */
 @Component({
   selector: 'ec-asset-select',

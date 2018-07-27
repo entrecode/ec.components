@@ -24,7 +24,7 @@ import { ResourceDeletePopComponent } from '../resource-delete-pop/resource-dele
 // import LiteEntryResource from "ec.sdk/lib/resources/publicAPI/LiteEntryResource";
 
 /** Shows entries of a selection and is able to pick new ones from a crud list
- * <example-url>https://components.entrecode.de/data/entry-select</example-url>
+ * <example-url>https://components.entrecode.de/data/entry-select?e=1</example-url>
 */
 @Component({
   selector: 'ec-entry-select',

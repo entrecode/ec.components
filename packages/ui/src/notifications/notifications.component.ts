@@ -8,7 +8,7 @@ import { NotificationsService } from './notifications.service';
 
 /** Displays any kind of Notification inside the DOM.
  * It listens on the notificationService.$emitter for notifications.
- * <example-url>https://components.entrecode.de/ui/notifications</example-url>
+ * <example-url>https://components.entrecode.de/ui/notifications?e=1</example-url>
  * */
 @Component({
   selector: 'ec-notifications',

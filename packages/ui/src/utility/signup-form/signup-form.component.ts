@@ -5,7 +5,7 @@ import { WithLoader } from '../../loader/with-loader.interface';
 import { LoginFormComponent } from '../login-form/login-form.component';
 
 /** Login Form Component with validation. Fires success event with credentials on submit.
- * <example-url>https://components.entrecode.de/ui/login</example-url>
+ * <example-url>https://components.entrecode.de/ui/login?e=1</example-url>
 */
 @Component({
   selector: 'ec-signup-form',

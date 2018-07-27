@@ -20,7 +20,7 @@ import 'tinymce/themes/modern';
 import { editorSettings } from './tinymce-settings';
 
 /** Wraps tinymce as a control input.
- * <example-url>https://components.entrecode.de/misc/tinymce</example-url>
+ * <example-url>https://components.entrecode.de/misc/tinymce?e=1</example-url>
 */
 @Component({
   selector: 'ec-tinymce',
