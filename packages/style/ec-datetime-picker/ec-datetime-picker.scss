@@ -1,7 +1,7 @@
 // @param {array} $ec-datetime-picker-style
 .ec-datetime-picker {
-  @include inject-style($ec-datetime-picker-style);
   position: relative;
+  @include inject-style($ec-datetime-picker-style);
 }
 
 // @param {color} $ec-datetime-select-background [$xui-overlay-background]
@@ -12,15 +12,15 @@
 // @param {array} $ec-datetime-select-style
 .ec-datetime-select {
   .ec-pop {
+    position: absolute;
+    top: 100%;
+    z-index: 10;
+    width: 100%;
     @include inject-style($ec-datetime-select-style);
     max-width: rem($ec-datetime-select-max-width);
     padding: arrayMagic($ec-datetime-select-padding);
     box-shadow: arrayMagic($ec-datetime-select-shadow);
     border-radius: arrayMagic($ec-datetime-select-radius);
     background: $ec-datetime-select-background;
-    position: absolute;
-    top: 100%;
-    z-index: 10;
-    width: 100%;
   }
 }

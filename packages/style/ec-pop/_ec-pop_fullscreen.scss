@@ -1,7 +1,6 @@
 // @param {array} $ec-pop-fullscreen-spacing [$base-spacing]
 .ec-pop_fullscreen {
   > .ec-pop-container {
-    padding: arrayMagic($ec-pop-fullscreen-spacing);
     position: fixed;
     z-index: 9999;
     top: 0;
@@ -12,6 +11,7 @@
     flex-direction: column;
     align-items: center;
     align-content: center;
+    padding: arrayMagic($ec-pop-fullscreen-spacing);
 
     // @param {color} $ec-pop-fullscreen-background [$ec-pop-background]
     // @param {color} $ec-pop-fullscreen-color [$ec-pop-color]

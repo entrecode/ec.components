@@ -34,15 +34,15 @@
   }
 
   &::after {
+    content: '';
+    display: block;
+    border-radius: 50%;
     @include inject-style($ec-loader-style);
     height: em($ec-loader-size);
     border: em($ec-loader-track-width) solid $ec-loader-track-color;
     border-right-color: $ec-loader-racer-color;
     animation: $ec-loader-racer-animation $ec-loader-racer-animation-speed $ec-loader-racer-animation-behavior;
     width: em($ec-loader-size);
-    content: '';
-    display: block;
-    border-radius: 50%;
   }
 }
 

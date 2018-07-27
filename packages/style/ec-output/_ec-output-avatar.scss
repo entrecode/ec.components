@@ -3,12 +3,12 @@
 // @param {array} $ec-output-avatar-style
 
 .ec-output-avatar {
+  border-radius: 50%;
+  overflow: hidden;
   @include inject-style($ec-output-avatar-style);
   width: arrayMagic($ec-output-avatar-size, xem);
   height: arrayMagic($ec-output-avatar-size, xem);
   border: arrayMagic($ec-output-avatar-border, xem);
-  border-radius: 50%;
-  overflow: hidden;
 
   img {
     height: 100%;

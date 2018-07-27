@@ -7,15 +7,15 @@
   @include inject-style($ec-list-group-style);
 
   .ec-list-group-header {
-    @include inject-style($ec-list-group-header-style);
     display: flex;
+    @include inject-style($ec-list-group-header-style);
     margin: arrayMagic($ec-list-group-header-spacing);
 
     .ec-list-group-header__title {
-      font-weight: $ec-list-group-header-weight;
-      font-size: rem($ec-list-group-header-font-size);
       width: 100%;
       text-align: center;
+      font-weight: $ec-list-group-header-weight;
+      font-size: rem($ec-list-group-header-font-size);
     }
   }
 }

@@ -2,9 +2,6 @@
 // @param {color} $ec-asset-list-pop-color [inherit]
 // @param {array} $ec-asset-list-pop-style
 .ec-asset-list-pop {
-  @include inject-style($ec-asset-list-pop-style);
-  background: $ec-asset-list-pop-background;
-  color: $ec-asset-list-pop-color;
   position: fixed;
   top: 0;
   left: 0;
@@ -15,6 +12,9 @@
   align-content: start;
   grid-template-areas: 'header' 'body';
   grid-template-rows: auto 1fr;
+  @include inject-style($ec-asset-list-pop-style);
+  background: $ec-asset-list-pop-background;
+  color: $ec-asset-list-pop-color;
 }
 
 .ec-asset-list-pop-header {

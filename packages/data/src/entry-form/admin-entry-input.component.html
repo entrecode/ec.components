@@ -1,4 +1,4 @@
-<fieldset [ngSwitch]="field.type" *ngIf="group" [formGroup]="group">
+<div [ngSwitch]="field.type" *ngIf="group" [formGroup]="group">
   <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>
   <div *ngSwitchCase="'account'">
     <ec-resource-select [api]="api" relation="dmAccount" [formControl]="group.get(field.property)" [id]="field.id" [solo]="true"></ec-resource-select>
@@ -19,4 +19,4 @@
     <marquee>🚂🚃🚃🚃 {{field.type}} input coming soon..</marquee>
     <ec-output [field]="field" [item]="item"></ec-output>
   </div>
-</fieldset>
+</div>

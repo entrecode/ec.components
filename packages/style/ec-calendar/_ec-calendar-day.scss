@@ -5,6 +5,12 @@
 // @param {color} $ec-calendar-day-background [transparent]
 // @param {array} $ec-calendar-day-style
 .ec-calendar-day {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 0;
+  padding-right: 0;
+  transition: all 0.4s;
   @include inject-style($ec-calendar-day-style);
   @include macro-metrics(
     $ec-calendar-day-font-size,
@@ -17,12 +23,6 @@
   border-radius: rem($ec-calendar-day-size / 2);
   width: rem($ec-calendar-day-size);
   height: rem($ec-calendar-day-size);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding-left: 0;
-  padding-right: 0;
-  transition: all 0.4s;
 
   // @param {color} $ec-calendar-day-hover-color [$link]
   // @param {color} $ec-calendar-day-hover-background [$state-hover]

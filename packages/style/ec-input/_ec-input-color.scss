@@ -5,15 +5,15 @@
 // @param {array} $ec-input-color-style
 .ec-input-color {
   label {
-    @include inject-style($ec-input-color-style);
-    width: rem($ec-input-color-size);
-    height: rem($ec-input-color-size);
-    border: arrayMagic($ec-input-color-border);
     cursor: pointer;
     overflow: hidden;
     position: relative;
     padding: 0;
     margin: 0;
+    @include inject-style($ec-input-color-style);
+    width: rem($ec-input-color-size);
+    height: rem($ec-input-color-size);
+    border: arrayMagic($ec-input-color-border);
 
     // @param {boolean} $ec-input-color-round [$input-round]
     // @param {px} $ec-input-color-radius [$input-radius]

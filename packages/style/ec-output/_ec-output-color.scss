@@ -2,12 +2,12 @@
 // @param {array} $ec-output-color-border [0]
 // @param {array} $ec-output-color-style
 .ec-output-color__sample {
+  display: block;
+  border-radius: 50%;
   @include inject-style($ec-output-color-style);
   width: arrayMagic($ec-output-color-size, xem);
   height: arrayMagic($ec-output-color-size, xem);
   border: arrayMagic($ec-output-color-border);
-  display: block;
-  border-radius: 50%;
 }
 
 .ec-output-color__property {
