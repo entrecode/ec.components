@@ -1,6 +1,6 @@
-import { SdkService } from '@ec.components/data/src/sdk/sdk.service';
+import { SdkService } from '../sdk/sdk.service';
 import { Component } from '@angular/core';
-import { DefaultInputComponent } from '@ec.components/ui/src/form/default-input/default-input.component';
+import { DefaultInputComponent } from '../../../ui/src/form/default-input/default-input.component';
 import DataManagerResource from 'ec.sdk/lib/resources/datamanager/DataManagerResource';
 
 /** This component holds the input templates for all field types that require having the DatamanagerResource as api.

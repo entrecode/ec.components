@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { SdkService } from '@ec.components/data';
+import { SdkService } from '../../../packages/data';
 
 @Component({
     selector: 'ec-resource-crud-demo',

@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FormComponent, InputErrorsComponent } from '../../index';
+import { FormComponent, InputErrorsComponent } from '../..';
 import { InputComponent } from '../io/input/input.component';
 import { OutputComponent } from '../io/output/output.component';
 import { LoaderModule } from '../loader/loader.module';

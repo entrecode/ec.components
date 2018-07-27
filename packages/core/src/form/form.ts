@@ -1,6 +1,6 @@
 /** A Form is an extension of an Item. In advance to an Item it will create an Array of fields that is either extracted from config.fields or directly from the item body.*/
 
-import { FieldConfigProperty } from '@ec.components/core';
+import { FieldConfigProperty } from '../..';
 import { Field } from '../field/field';
 import { Item } from '../item/item';
 import { FormConfig } from './form-config.interface';

@@ -2,7 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
     selector: 'ec-github-sources',
-    templateUrl: './github-sources.component.html'
+    templateUrl: './github-sources.component.html',
+    styleUrls: ['./github-sources.component.scss']
 })
 
 export class GithubSourcesComponent implements OnInit {

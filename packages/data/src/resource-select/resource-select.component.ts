@@ -11,21 +11,21 @@ import {
     ViewEncapsulation
 } from '@angular/core';
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Field } from '@ec.components/core/src/field/field';
+import { Field } from '../../../core/src/field/field';
 import { CrudComponent } from '../crud/crud.component';
 import { ModelConfigService } from '../model-config/model-config.service';
-import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
-import { Item } from '@ec.components/core/src/item/item';
+import { PopComponent } from '../../../ui/src/pop/pop.component';
+import { Item } from '../../../core/src/item/item';
 import { CrudConfig } from '../crud/crud-config.interface';
-import { SelectComponent } from '@ec.components/ui';
+import { SelectComponent } from '../../../ui';
 import Core from 'ec.sdk/lib/Core';
 import Resource from 'ec.sdk/lib/resources/Resource';
 import { ResourceConfig } from '../resource-config/resource-config.service';
-import { Form } from '@ec.components/core';
+import { Form } from '../../../core';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { ResourcePopComponent } from '../resource-pop/resource-pop.component';
 import { AuthService } from '../auth/auth.service';
-import { SdkService } from '@ec.components/data';
+import { SdkService } from '../..';
 /** Shows resources of a selection and is able to pick new ones from a crud list
 */
 

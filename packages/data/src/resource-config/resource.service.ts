@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Item } from '@ec.components/core';
+import { Item } from '../../../core';
 import Core from 'ec.sdk/lib/Core';
 import Resource from 'ec.sdk/lib/resources/Resource';
 import { Observable } from 'rxjs/Observable';

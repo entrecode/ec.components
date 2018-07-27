@@ -1,9 +1,9 @@
 import { Component, Input, Optional } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ListConfig } from '@ec.components/core/src/list/list-config.interface';
-import { LoaderService } from '@ec.components/ui/src/loader/loader.service';
-import { NotificationsService } from '@ec.components/ui/src/notifications/notifications.service';
-import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import { ListConfig } from '../../../core/src/list/list-config.interface';
+import { LoaderService } from '../../../ui/src/loader/loader.service';
+import { NotificationsService } from '../../../ui/src/notifications/notifications.service';
+import { SymbolService } from '../../../ui/src/symbol/symbol.service';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { CrudService } from '../crud/crud.service';
 import { ModelConfigService } from '../model-config/model-config.service';

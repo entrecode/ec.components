@@ -1,7 +1,7 @@
 import { Component, EventEmitter, forwardRef, HostListener, Input, OnChanges, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { List, ListConfig, Selection } from '@ec.components/core';
-import { Item } from '@ec.components/core/src/item/item';
+import { List, ListConfig, Selection } from '../../../core';
+import { Item } from '../../../core/src/item/item';
 import { PopComponent } from '../pop/pop.component';
 
 /**

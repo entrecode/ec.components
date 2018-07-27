@@ -3,10 +3,10 @@
  */
 import { Component, forwardRef, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Item } from '@ec.components/core/src/item/item';
-import { SdkService } from '@ec.components/data';
-import { SelectComponent } from '@ec.components/ui';
-import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import { Item } from '../../../../core/src/item/item';
+import { SdkService } from '../../..';
+import { SelectComponent } from '../../../../ui';
+import { SymbolService } from '../../../../ui/src/symbol/symbol.service';
 import DMAssetResource from 'ec.sdk/lib/resources/publicAPI/DMAssetResource';
 import PublicAssetResource from 'ec.sdk/lib/resources/publicAPI/PublicAssetResource';
 import { CrudConfig } from '../../crud/crud-config.interface';

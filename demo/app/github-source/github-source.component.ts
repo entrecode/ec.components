@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { NotificationsService } from '../../../node_modules/@ec.components/ui';
+import { NotificationsService } from '../../../packages/ui';
 
 @Component({
     selector: 'ec-github-source',

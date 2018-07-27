@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import moment from 'moment-es6';
-import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import { SymbolService } from '../../symbol/symbol.service';
 
 /** The GroupPipe filters an array of Item instances by a given property value.
  * It is meant to be used to get only the items with the exact same value. */

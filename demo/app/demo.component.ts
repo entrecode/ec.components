@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import moment from 'moment-es6';
-import { ModelConfigService } from '../../packages/data/index';
+import { ModelConfigService } from '../../packages/data';
 import { TypeConfigService } from '../../packages/data/src/model-config/type-config.service';
 import { LocationPickerComponent } from '../../packages/location/src/location-picker.component';
 import { demoRoutes } from './demo.routes';
@@ -16,7 +16,7 @@ export class DemoComponent {
   public demos = demoRoutes;
   hideMenu = false;
   paths = [];
-
+  links = [];
 
   constructor(private modelConfig: ModelConfigService,
     private route: ActivatedRoute,
@@ -32,6 +32,9 @@ export class DemoComponent {
       const data = event['snapshot'].firstChild.data;
       if (data.paths) {
         this.paths = data.paths;
+      }
+      if (data.links) {
+        this.links = data.links;
       }
     })
     this.route.queryParams

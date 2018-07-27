@@ -1,5 +1,7 @@
 # Icon
 
+[Open Demo](https://components.entrecode.de/ui/icons?e=1)
+
 Displays an icon:
 
 ```html

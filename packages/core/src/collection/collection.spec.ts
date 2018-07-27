@@ -1,4 +1,4 @@
-import { Collection } from '../../index';
+import { Collection } from '../..';
 import { mocked } from '../../../../mocks/data';
 
 describe('Collection', () => {

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
-import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import { SymbolService } from '../../symbol/symbol.service';
 import moment from 'moment-es6';
 import 'rxjs/add/operator/debounceTime';
 import { Subject } from 'rxjs/Subject';

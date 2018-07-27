@@ -1,16 +1,12 @@
 import { Component, EventEmitter, Input, OnChanges, Output, ViewEncapsulation } from '@angular/core';
-import { Collection, List, ListConfig, Selection, Pagination } from '@ec.components/core';
-import { Item } from '@ec.components/core/src/item/item';
+import { Collection, List, ListConfig, Selection, Pagination } from '../../../core';
+import { Item } from '../../../core/src/item/item';
 import { PaginationConfig } from './pagination/pagination-config.interface';
 
 /**
  * The ListComponent will render a list containing the given items or collection.
  *
- * Basic Example:
- *
  * <example-url>https://components.entrecode.de/ui/list/basic</example-url>
- *
- * With Tranforms:
  * <example-url>https://components.entrecode.de/ui/list/transforms</example-url>
  * */
 @Component({

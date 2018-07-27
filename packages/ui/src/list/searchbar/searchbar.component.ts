@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, EventEmitter, Input, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Item } from '@ec.components/core';
-import { ListComponent } from '@ec.components/ui';
-import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import { Item } from '../../../../core';
+import { ListComponent } from '../../..';
+import { SymbolService } from '../../symbol/symbol.service';
 import { Subject } from 'rxjs/Subject';
 import { distinctUntilChanged } from 'rxjs/operators';
 import { Focus } from '../../utility/focus/focus.interface';

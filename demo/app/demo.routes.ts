@@ -48,13 +48,22 @@ export const demoRoutes: Routes = [
       {
         path: 'icons',
         component: IconDemoComponent,
-        data: { paths: ['icon-demo/icon-demo.component.html', 'icon-demo/icon-demo.component.ts', 'icon-demo/icon.pipe.ts'] }
+        data: {
+          paths: ['icon-demo/icon-demo.component.html', 'icon-demo/icon-demo.component.ts', 'icon-demo/icon.pipe.ts'],
+          links: [
+            'modules/IconModule.html',
+            'additional-documentation/ui/icons.html',
+          ]
+        },
       },
       {
         path: 'symbols',
         component: SymbolDemoComponent,
         data: {
-          paths: ['symbol/symbol-demo.component.html', 'symbol/symbol-demo.component.ts']
+          paths: ['symbol/symbol-demo.component.html', 'symbol/symbol-demo.component.ts'],
+          links: [
+            'modules/SymbolModule.html'
+          ]
         }
       },
       {

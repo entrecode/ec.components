@@ -1,4 +1,4 @@
-import { Item, Sorter } from '../../index';
+import { Item, Sorter } from '../..';
 
 describe('Sorter', () => {
   beforeEach(() => {

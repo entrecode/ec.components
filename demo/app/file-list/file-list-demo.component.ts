@@ -1,10 +1,10 @@
 import DataManagerResource from 'ec.sdk/lib/resources/datamanager/DataManagerResource';
 import PublicAPI from 'ec.sdk/lib/PublicAPI';
-import { ResourceList } from './../../../packages/data/src/resource-list/resource-list';
-import { SdkService } from './../../../packages/data/src/sdk/sdk.service';
+import { ResourceList } from '../../../packages/data/src/resource-list/resource-list';
+import { SdkService } from '../../../packages/data/src/sdk/sdk.service';
 import { Component, OnInit } from '@angular/core';
 import Core from 'ec.sdk/lib/Core';
-import { Item } from '@ec.components/core';
+import { Item } from '../../../packages/core';
 import Resource from 'ec.sdk/lib/resources/Resource';
 import DMAssetResource from 'ec.sdk/lib/resources/publicAPI/DMAssetResource';
 import AssetGroupResource from 'ec.sdk/lib/resources/datamanager/AssetGroupResource';

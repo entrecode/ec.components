@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { UiModule } from '@ec.components/ui';
+import { UiModule } from '../..';
 import { PopComponent } from './pop.component';
 
 describe('PopComponent', () => {

@@ -1,4 +1,4 @@
-import { List } from '../../';
+import { List } from '../..';
 import { mocked } from '../../../../mocks/data';
 describe('List', () => {
 

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, forwardRef, Input, Output, ViewChild } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import { SymbolService } from '../../symbol/symbol.service';
 import moment from 'moment-es6';
 import { PopComponent } from '../../pop/pop.component';
 import { MonthComponent } from './month.component';

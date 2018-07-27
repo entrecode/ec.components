@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { InputComponent } from '../../../index';
-import { Form } from '@ec.components/core';
+import { InputComponent } from '../../..';
+import { Form } from '../../../../core';
 import { DynamicSlotComponent } from '../dynamic-slot/dynamic-slot.component';
 import { ComponentFactoryResolver } from '@angular/core';
 

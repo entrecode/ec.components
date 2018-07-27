@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { DataModule } from '@ec.components/data';
-import { UiModule } from '@ec.components/ui';
-import { AceModule } from '../../packages/ace/index';
+import { DataModule } from '../../packages/data';
+import { UiModule } from '../../packages/ui';
+import { AceModule } from '../../packages/ace';
 import { LocationModule } from '../../packages/location/src/location.module';
 import { MediumModule } from '../../packages/medium-editor/src/medium.module';
 import { TinymceModule } from '../../packages/tinymce/src/tinymce.module';
@@ -51,7 +51,8 @@ import { TabsDemoComponent } from './tabs/tabs-demo.component';
 import { TinymceDemoComponent } from './tinymce-demo/tinymce-demo.component';
 import { VcDemoComponent } from './vc/vc-demo.component';
 import { GithubSourceComponent } from './github-source/github-source.component';
-import { GithubSourcesComponent } from './github-source/github-sources.componen';
+import { GithubSourcesComponent } from './github-source/github-sources.component';
+import { DoclinksComponent } from './doclinks/doclinks.component';
 
 demoRoutes.unshift(
   {
@@ -64,6 +65,7 @@ demoRoutes.unshift(
   declarations: [
     GithubSourceComponent,
     GithubSourcesComponent,
+    DoclinksComponent,
     DemoDashboardComponent,
     DemoComponent,
     VcDemoComponent,

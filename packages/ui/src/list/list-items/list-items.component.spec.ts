@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ListItemsComponent } from '../../../index';
+import { ListItemsComponent } from '../../..';
 import { InputComponent } from '../../io/input/input.component';
 import { OutputComponent } from '../../io/output/output.component';
 

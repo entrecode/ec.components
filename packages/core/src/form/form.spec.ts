@@ -1,7 +1,7 @@
 /**
  * Created by felix on 09.05.17.
  */
-import { Form, Item } from '../../index';
+import { Form, Item } from '../..';
 
 describe('Form', () => {
   const person = new Item({

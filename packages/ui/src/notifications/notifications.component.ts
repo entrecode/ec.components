@@ -2,7 +2,7 @@
  * Created by felix on 26.05.17.
  */
 import { Component, Input } from '@angular/core';
-import { Collection } from '@ec.components/core/src/collection/collection';
+import { Collection } from '../../../core/src/collection/collection';
 import { Notification } from './notification';
 import { NotificationsService } from './notifications.service';
 

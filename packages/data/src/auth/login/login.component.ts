@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
-import { LoaderComponent, NotificationsService, WithLoader } from '@ec.components/ui';
-import { Notification } from '@ec.components/ui/src/notifications/notification';
-import { WithNotifications } from '@ec.components/ui/src/notifications/with-notifications.interface';
-import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import { LoaderComponent, NotificationsService, WithLoader } from '../../../../ui';
+import { Notification } from '../../../../ui/src/notifications/notification';
+import { WithNotifications } from '../../../../ui/src/notifications/with-notifications.interface';
+import { SymbolService } from '../../../../ui/src/symbol/symbol.service';
 import PublicAPI from 'ec.sdk/lib/PublicAPI';
 import AccountResource from 'ec.sdk/lib/resources/accounts/AccountResource';
 import { AuthService } from '../auth.service';
