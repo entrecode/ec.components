@@ -6,12 +6,12 @@ import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { SearchbarComponent } from '../../../ui/src/list/searchbar/searchbar.component';
 import { ModelConfigService } from '../model-config/model-config.service';
 
+/** A Pop that contains an entry list. TODO: add demo */
 @Component({
     selector: 'ec-entry-list-pop',
     templateUrl: './entry-list-pop.component.html',
 
 })
-
 export class EntryListPopComponent extends PopComponent implements OnChanges {
     @Input() model: string;
     @Input() config: ListConfig<EntryResource>;

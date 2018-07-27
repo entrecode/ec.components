@@ -9,7 +9,7 @@ import { SdkService } from '../../sdk/sdk.service';
 import { FileService, Upload } from '../file.service';
 import { FileOptions } from '../file.service';
 
-/** This component will render an input field to upload files to the datamanager. */
+/** This component will render an input field to upload files to the datamanager. TODO: demo */
 @Component({
   selector: 'ec-upload',
   templateUrl: './upload.component.html',

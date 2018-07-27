@@ -3,7 +3,10 @@ import PublicAssetResource from 'ec.sdk/lib/resources/publicAPI/PublicAssetResou
 import { SdkService } from '../../sdk/sdk.service';
 import PublicAPI from 'ec.sdk/lib/PublicAPI';
 
-/** Loads an public asset by id to the template. */
+/** Loads an public asset by id to the template.
+ * assets/asset
+ * <example-url>https://components.entrecode.de/assets/asset?e=1</example-url>
+ */
 @Directive({
   selector: '[ecAsset]',
   exportAs: 'ecAsset'

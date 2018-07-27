@@ -12,7 +12,7 @@ import { Form } from '../../../core';
  * You can use it like a normal pop but with the extra handling of an entry form inside.
  * You can call edit with an entry object to edit an entry, or just call show.
  * It is also possible to bind an entry directly which will then be bound to the form.
- * <example-url>https://components.entrecode.de/data/entry-pop/muffin/create?e=1</example-url>
+ * <example-url>https://components.entrecode.de/entries/entry-pop/muffin/create?e=1</example-url>
  * */
 @Component({
   selector: 'ec-entry-pop',

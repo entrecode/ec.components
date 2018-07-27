@@ -13,7 +13,7 @@ import { SdkService } from '../sdk/sdk.service';
 import { EntryList } from './entry-list';
 
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent
- * <example-url>https://components.entrecode.de/data/entry-list?e=1</example-url>
+ * <example-url>https://components.entrecode.de/entries/entry-list?e=1</example-url>
 */
 @Component({
   selector: 'ec-entry-list',

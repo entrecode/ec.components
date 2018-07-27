@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FileService } from '..';
 
+// TODO: add demo + doc
+
 @Component({
     selector: 'ec-assetgroup-select',
     templateUrl: './assetgroup-select.component.html',

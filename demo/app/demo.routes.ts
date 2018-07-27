@@ -131,7 +131,8 @@ export const demoRoutes: Routes = [
         path: 'datetime',
         component: DatetimeDemoComponent,
         data: {
-          paths: ['form/datetime-demo.component.ts']
+          paths: ['form/datetime-demo.component.ts'],
+          links: ['components/CalendarComponent.html', 'components/DatetimeComponent.html', 'components/MonthComponent.html', 'components/HeatmapComponent.html']
         }
       },
       {
@@ -254,21 +255,24 @@ export const demoRoutes: Routes = [
             path: '',
             component: EntryPopDemoComponent,
             data: {
-              paths: ['entry-pop-demo/entry-pop-demo.component.html', 'entry-pop-demo/entry-pop-demo.component.ts']
+              paths: ['entry-pop-demo/entry-pop-demo.component.html', 'entry-pop-demo/entry-pop-demo.component.ts'],
+              links: ['components/EntryPopComponent.html']
             }
           },
           {
             path: 'muffin/:muffinID',
             component: EntryPopDemoComponent,
             data: {
-              paths: ['entry-pop-demo/entry-pop-demo.component.html', 'entry-pop-demo/entry-pop-demo.component.ts']
+              paths: ['entry-pop-demo/entry-pop-demo.component.html', 'entry-pop-demo/entry-pop-demo.component.ts'],
+              links: ['components/EntryPopComponent.html']
             }
           },
           {
             path: 'muffin/create',
             component: EntryPopDemoComponent,
             data: {
-              paths: ['entry-pop-demo/entry-pop-demo.component.html', 'entry-pop-demo/entry-pop-demo.component.ts']
+              paths: ['entry-pop-demo/entry-pop-demo.component.html', 'entry-pop-demo/entry-pop-demo.component.ts'],
+              links: ['components/EntryPopComponent.html']
             }
           }
         ]
@@ -277,14 +281,16 @@ export const demoRoutes: Routes = [
         path: 'entry-select',
         component: EntrySelectDemoComponent,
         data: {
-          paths: ['entry-select/entry-select-demo.component.html', 'entry-select/entry-select-demo.component.ts']
+          paths: ['entry-select/entry-select-demo.component.html', 'entry-select/entry-select-demo.component.ts'],
+          links: ['components/EntrySelectComponent.html']
         }
       },
       {
         path: 'crud',
         component: CrudDemoComponent,
         data: {
-          paths: ['crud/crud-demo.component.html', 'crud/crud-demo.component.ts']
+          paths: ['crud/crud-demo.component.html', 'crud/crud-demo.component.ts'],
+          links: ['components/CrudComponent.html']
         }
       },
     ]
@@ -296,21 +302,24 @@ export const demoRoutes: Routes = [
         path: 'asset',
         component: AssetDemoComponent,
         data: {
-          paths: ['asset/asset-demo.component.html', 'asset/asset.demo.component.ts']
+          paths: ['asset/asset-demo.component.html', 'asset/asset.demo.component.ts'],
+          links: ['directives/AssetDirective.html#readme', 'directives/ImageDirective.html#info', 'modules/FilesModule.html']
         }
       },
       {
         path: 'asset-list',
         component: AssetListDemoComponent,
         data: {
-          paths: ['asset-list/asset-list-demo.component.html', 'asset-list/asset-list.demo.component.ts']
+          paths: ['asset-list/asset-list-demo.component.html', 'asset-list/asset-list.demo.component.ts'],
+          links: ['components/AssetListComponent.html', 'modules/FilesModule.html']
         }
       },
       {
         path: 'asset-select',
         component: AssetSelectDemoComponent,
         data: {
-          paths: ['asset-select/asset-select-demo.component.html', 'asset-select/asset-select-demo.component.ts']
+          paths: ['asset-select/asset-select-demo.component.html', 'asset-select/asset-select-demo.component.ts'],
+          links: ['components/AssetSelectComponent.html']
         }
       },
       {
@@ -338,21 +347,24 @@ export const demoRoutes: Routes = [
         path: 'auth',
         component: AuthDemoComponent,
         data: {
-          paths: ['auth/auth-demo.component.html', 'auth/auth-demo.component.ts']
+          paths: ['auth/auth-demo.component.html', 'auth/auth-demo.component.ts'],
+          links: ['modules/AuthModule.html']
         }
       },
       {
         path: 'password-reset',
         component: PasswordResetDemoComponent,
         data: {
-          paths: ['password-reset/password-reset-demo.component.html', 'password-reset/password-reset-demo.component.ts']
+          paths: ['password-reset/password-reset-demo.component.html', 'password-reset/password-reset-demo.component.ts'],
+          links: ['components/PasswordResetComponent.html', 'modules/AuthModule.html']
         }
       },
       {
         path: 'signup',
         component: SignupDemoComponent,
         data: {
-          paths: ['signup/signup-demo.component.html', 'signup/signup-demo.component.ts']
+          paths: ['signup/signup-demo.component.html', 'signup/signup-demo.component.ts'],
+          links: ['components/SignupComponent.html', 'modules/AuthModule.html']
         }
       },
     ]

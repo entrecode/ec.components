@@ -2465,6 +2465,13 @@
     <code>packages/data/src/entry-list-pop/entry-list-pop.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>A Pop that contains an entry list. TODO: add demo </p>
+
+    </p>
 
     <p class="comment">
         <h3>Extends</h3>
@@ -3344,12 +3351,12 @@ import EntryResource from &#x27;ec.sdk/lib/resources/publicAPI/EntryResource&#x2
 import { SearchbarComponent } from &#x27;../../../ui/src/list/searchbar/searchbar.component&#x27;;
 import { ModelConfigService } from &#x27;../model-config/model-config.service&#x27;;
 
+/** A Pop that contains an entry list. TODO: add demo */
 @Component({
     selector: &#x27;ec-entry-list-pop&#x27;,
     templateUrl: &#x27;./entry-list-pop.component.html&#x27;,
 
 })
-
 export class EntryListPopComponent extends PopComponent implements OnChanges {
     @Input() model: string;
     @Input() config: ListConfig&lt;EntryResource&gt;;
