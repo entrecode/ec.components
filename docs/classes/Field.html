@@ -2580,6 +2580,9 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#getColumns">getColumns</a>
+                            </li>
+                            <li>
                                 <a href="#getPlaceholder">getPlaceholder</a>
                             </li>
                         </ul>
@@ -3500,6 +3503,46 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
+                        <a name="getColumns"></a>
+                        <span class="name">
+                            <b>
+                            getColumns
+                            </b>
+                            <a href="#getColumns"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getColumns()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">packages/core/src/field/field.ts:63</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Returns the column class for data-col, based on configured columns </p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
                         <a name="getPlaceholder"></a>
                         <span class="name">
                             <b>
@@ -3654,6 +3697,10 @@ export class Field implements FieldConfigProperty {
   /** Returns placeholder if any */
   getPlaceholder() {
     return this.placeholder || this.label || this.property;
+  }
+  /** Returns the column class for data-col, based on configured columns */
+  getColumns() {
+    return (this.columns || 12) + &#x27;-sm&#x27;;
   }
 }
 </code></pre>
