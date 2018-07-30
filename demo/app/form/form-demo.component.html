@@ -34,6 +34,10 @@
 <label>select {{mySelect}}
   <ec-input [config]="{view:'select',values:['a','b','c']}" [(ngModel)]="mySelect"></ec-input>
 </label>
+<label>select with labels {{mySelect2}}
+  <ec-input [config]="{view:'select',values:[{value:'male',label:'Männlich'},{value:'female',label:'Weiblich'}]}"
+    [(ngModel)]="mySelect2"></ec-input>
+</label>
 <label>entry {{myEntry}}
   <ec-input [config]="entryConfig" [(ngModel)]="myEntry"></ec-input>
 </label>

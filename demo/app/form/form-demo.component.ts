@@ -21,6 +21,7 @@ export class FormDemoComponent {
   myToggle;
   myDate;
   mySelect;
+  mySelect2;
   myEntry;
   myNan;
   testField = new Field('test', {
