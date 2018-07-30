@@ -27,6 +27,30 @@ export class FormDemoComponent {
     view: 'string',
     input: DefaultInputComponent
   });
+  layoutDemoConfig = {
+    fields: {
+      forename: {
+        view: 'string',
+        columns: 6
+      },
+      lastname: {
+        view: 'string',
+        columns: 6
+      },
+      street: {
+        view: 'string',
+        columns: 4
+      },
+      plz: {
+        view: 'string',
+        columns: 4
+      },
+      city: {
+        view: 'string',
+        columns: 4
+      }
+    }
+  }
 
   entryConfig = {
     type: 'entry',

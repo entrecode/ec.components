@@ -1,5 +1,8 @@
-<h2>
-  Form</h2>
+<h2>Form</h2>
+
+<h3>Form Layout</h3>
+<ec-form [config]="layoutDemoConfig" (submitted)="logValue($event)"></ec-form>
+
 <h3>ec-field with just config and ngModel</h3>
 <label>string {{myString}}
   <ec-input [config]="{view:'string'}" [(ngModel)]="myString"></ec-input>
@@ -66,14 +69,3 @@
 <pre>
 {{treeForm.group?.value | json}}
 </pre>
-
-<h3>By Object</h3>
-<p>You can also generate a form by just passing an object to the value input. The form will analyze the object's properties
-  and determine which form inputs should be shown by type.
-</p>
-<!--<ec-form [config]="mocked.lists.songs.config" [item]="mocked.lists.songs.id(0)" #songForm></ec-form>-->
-
-<ec-form [value]="mocked.products[0]" #productForm (submitted)="logValue($event)"></ec-form>
-<!-- <button (click)="productForm.create()">Create new...</button> -->
-
-<!-- TODO: VALIDATORS DEMO/TEST -->
