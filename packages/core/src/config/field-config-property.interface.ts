@@ -94,6 +94,8 @@ export interface FieldConfigProperty {
   relation?: string;
   /** If true, the field will be filtered raw (no filterOperator magic) */
   rawFilter?: boolean;
+  /** Columns that the field should inhabit in the form grid. */
+  columns?: number;
   /** wildcard for custom config values */
   [key: string]: any;
 }
