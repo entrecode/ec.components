@@ -1,7 +1,7 @@
 <span *ngIf="error?.code">{{error.code}}</span>
 <span *ngIf="error?.dataPath">{{error.dataPath}}</span>
 {{error?.message}}
-<small>{{error.detail}}</small>
+<small>{{error.detail}}{{error.verbose?': '+error.verbose:''}}</small>
 <ul *ngIf="error?.subErrors">
   <li *ngFor="let subError of error.subErrors">
     <ec-error [error]="subError"></ec-error>
