@@ -1,4 +1,5 @@
 import { ItemConfig } from '../item/item-config.interface';
+import { List } from '@ec.components/core';
 
 /**
  *  Configuration for List Classes.
@@ -37,4 +38,7 @@ export interface ListConfig<T> extends ItemConfig<T> {
   maxColumns?: number,
   /** If true, the list will automatically load on change */
   autoload?: boolean;
+  /** The key that should store the lists config in the local storage.
+   * If set, the key will be populated on config changes. */
+  storageKey?: string | ((list: List<T>) => string);
 }

@@ -37,9 +37,10 @@
     <span>&#9776;</span>
     <div class="ec-list-column-filter-options">
       <ul>
-        <li class="ec-list-column-filter-option">
+        <li class="ec-list-column-filter-option" *ngFor="let field of list?.fields" [class.is-active]="!field.hidden">
           <label>
-            <input type="checkbox"> option
+            <input (click)="toggleVisibility(field)" [checked]="!field.hidden" type="checkbox"> 
+            {{fieldLabel(field)}}
           </label>
         </li>
       </ul>

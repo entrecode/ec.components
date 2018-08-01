@@ -10,6 +10,7 @@ import { ListItemsComponent } from './list-items/list-items.component';
 import { ListComponent } from './list.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
+import { ListConfigService } from './list-config.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,9 @@ import { SearchbarComponent } from './searchbar/searchbar.component';
     GroupPipe,
     FormModule,
   ],
-  providers: []
+  providers: [
+    ListConfigService
+  ]
 })
 export class ListModule {
 }

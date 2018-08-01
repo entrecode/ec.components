@@ -778,6 +778,7 @@ export const mocked = {
       }], {
         size: 19,
         selectMode: true,
+        storageKey: 'treeListConfig',
         fields: {
           name: {
             label: 'Name',

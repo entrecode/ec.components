@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, Output, ViewEncapsulation } 
 import { Collection, List, ListConfig, Selection, Pagination } from '../../../core';
 import { Item } from '../../../core/src/item/item';
 import { PaginationConfig } from './pagination/pagination-config.interface';
+import { ListConfigService } from './list-config.service';
 
 /**
  * The ListComponent will render a list containing the given items or collection.
@@ -39,6 +40,9 @@ export class ListComponent<T> implements OnChanges {
   /** Custom PaginationConfig */
   @Input() paginationConfig: PaginationConfig;
 
+  constructor(public listConfig: ListConfigService) {
+  }
+
   /** Changing items or collection will trigger reconstructing the list with the new items.
    * Changing the selection will reconstruct the selection */
   ngOnChanges(changes?) {
@@ -51,6 +55,7 @@ export class ListComponent<T> implements OnChanges {
     if (!this.list) {
       return;
     }
+    this.listConfig.applyConfig(this.list);
     if (!this.selection) {
       this.selection = new Selection([], this.list.config);
     }
