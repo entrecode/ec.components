@@ -4,6 +4,8 @@ import { List } from '@ec.components/core';
 @Injectable()
 export class ListConfigService {
 
+    public storageKeyResolver: (list: List<any>) => string;
+
     retrieve(key) {
         const config = localStorage.getItem(key);
         return config ? JSON.parse(config) : null;
@@ -23,8 +25,9 @@ export class ListConfigService {
             // console.log('cannot apply config: no storage key or list set');
             return;
         }
-        if (typeof list.config.storageKey === 'function') {
-            return list.config.storageKey(list);
+        const resolveFn = list.config.storageKey = list.config.storageKey || this.storageKeyResolver;
+        if (typeof resolveFn === 'function') {
+            return resolveFn(list);
         }
         return list.config.storageKey;
     }
