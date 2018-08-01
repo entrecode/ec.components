@@ -33,7 +33,7 @@
   </div>
 
   <!-- TODO see T5-2289 - move field-filter to ec-list-header -->
-  <div class="ec-list-column-filter" tabindex="0">
+  <div class="ec-list-column-filter" tabindex="0" *ngIf="!list?.config?.disableColumnFilter">
     <span>&#9776;</span>
     <div class="ec-list-column-filter-options">
       <ul>
