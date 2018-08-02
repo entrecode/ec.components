@@ -14,10 +14,22 @@ import { Field } from '../../../core/src/field/field';
 @Injectable()
 export class FormService {
 
+  /** Returns true if the field should be included in the form.
+   * Decides based on field config values form, edit and create */
+  public shouldBePartOfForm(field, form) {
+    if (field.create === false && !form.getBody()) {
+      return false;
+    }
+    if (field.edit === false && !!form.getBody()) {
+      return false;
+    }
+    return field.form !== false;
+  }
+
   /** Initializes the form group from the form fields*/
   public getGroup(form: Form<any>) {
     const control = {};
-    form.fields.filter((field) => field.form !== false)
+    form.fields.filter((field) => this.shouldBePartOfForm(field, form))
       .forEach((field) => {
         const validators = this.getValidators(field);
         control[field.property] = new FormControl(form.getValue(field.property), validators)

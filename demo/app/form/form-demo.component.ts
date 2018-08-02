@@ -49,6 +49,10 @@ export class FormDemoComponent {
       city: {
         view: 'string',
         columns: 4
+      },
+      count: {
+        view: 'number',
+        create: false
       }
     }
   }
