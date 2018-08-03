@@ -21,7 +21,6 @@ export class PaginationComponent<T> implements OnChanges, OnInit {
   @ViewChildren('page') private page: QueryList<ElementRef>;
   /** The config that is used */
   @Input() config: PaginationConfig;
-  /** Init config. */
 
   /** Init config. */
   ngOnInit() {
@@ -33,31 +32,8 @@ export class PaginationComponent<T> implements OnChanges, OnInit {
     if (!this.pagination) {
       return;
     }
-    /*  this.pagination.change$.subscribe((config) => {
-       setTimeout(() => {
-         this.translateContainer();
-       })
-     }); */
     this.config = new PaginationConfig(this.config);
   }
-  /** When the view is ready, the container is translated.  */
-  /*   ngAfterViewInit() {
-      this.translateContainer();
-    } */
-
-  /** Translates the page container that the current page is in the middle */
-  /* translateContainer() {
-    if (!this.page || !this.pageContainer) {
-      // console.warn('pages not ready', this.page, this.pageContainer);
-      return;
-    }
-    const itemWidth = this.page.first.nativeElement.clientWidth;
-    const page = this.pagination.getPage();
-    let translation = Math.max(0, itemWidth * (page - this.config.range - 1));
-    translation = Math.min(translation, (this.pagination.getPages() - (2 * this.config.range) - 1) * itemWidth);
-    this.pageContainer.nativeElement.style = `transform:translateX(-${translation}px)`;
-    this.container.nativeElement.style = `max-width:${(1 + 2 * this.config.range) * itemWidth}px`;
-  } */
 
   /** Determines if a page should be visible */
   isVisible(page) {

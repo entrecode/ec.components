@@ -1,8 +1,6 @@
-import { OnInit } from '@angular/core';
-/**
- * Created by felix on 23.05.17.
- */
 import {
+    OnInit,
+    ElementRef,
     Component,
     forwardRef,
     Input,
@@ -11,9 +9,6 @@ import {
     ViewEncapsulation
 } from '@angular/core';
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Field } from '../../../core/src/field/field';
-import { CrudComponent } from '../crud/crud.component';
-import { ModelConfigService } from '../model-config/model-config.service';
 import { PopComponent } from '../../../ui/src/pop/pop.component';
 import { Item } from '../../../core/src/item/item';
 import { CrudConfig } from '../crud/crud-config.interface';
@@ -70,11 +65,12 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
     /** The config of the dropdown pop */
     dropdownConfig: CrudConfig<Resource>;
 
-    constructor(private resourceConfig: ResourceConfig,
+    constructor(
+        private resourceConfig: ResourceConfig,
         private auth: AuthService,
-        private sdk: SdkService,
+        public elementRef: ElementRef
     ) {
-        super();
+        super(elementRef);
     }
 
     ngOnInit() {
@@ -148,11 +144,6 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
                     return;
                 }
                 this.resourcePop.edit(item.getBody(), { methods });
-                this.clickInside(e);
-                /* return item.getBody().resolve()
-            }).then(resolved => {
-                console.log('resource', resolved);
-                this.resourcePop.edit(resolved); */
             });
     }
 }

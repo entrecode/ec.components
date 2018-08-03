@@ -9,6 +9,7 @@ import { ResourceConfig } from '../resource-config/resource-config.service';
 import { ResourceService } from '../resource-config/resource.service';
 import { ResourceList } from '../resource-list/resource-list';
 import { SdkService } from '../sdk/sdk.service';
+import { mimeTypes } from './mime-types'
 
 /** Instances of Update are emitted by the changes EventEmitter of the CrudService. */
 export interface Upload {
@@ -147,13 +148,13 @@ export class FileService {
 
   /** Resolves all assetIDs to PublicAssetResources */
   public resolveAssets(assets: Array<string | PublicAssetResource | DMAssetResource>, assetGroupID?: string): Promise<Array<PublicAssetResource | DMAssetResource>> {
+    console.warn('FileService#resolveAssets is deprecated. I doubt somebody ever used it but if you see this, stop it. please.');
     const unresolved = assets.reduce((ids, asset) => {
       if (typeof asset === 'string') {
         ids.push(asset);
       }
       return ids;
     }, []);
-    console.log('resolve', unresolved, this.isNewAsset(unresolved));
     if (unresolved.length === 0) {
       return Promise.resolve(<Array<PublicAssetResource | DMAssetResource>>assets);
     }
@@ -168,7 +169,6 @@ export class FileService {
     return Promise.resolve().then((): any => {
       if (unresolved.length === 1) {
         return this.sdk.api.asset(unresolved[0]).then(asset => {
-          console.log('old asset', asset);
           return [asset]
         });
       }
@@ -185,5 +185,18 @@ export class FileService {
 
   public assetGroupList(forceReload = false) {
     return (!forceReload && this.assetGroupListPromise) || this.sdk.api.assetGroupList();
+  }
+
+  /** method that can be called after the upload to select the uploaded item(s). */
+  selectUpload(upload: Upload, selection: any) {
+    if (!selection) {
+      console.warn('no selection');
+      return;
+    }
+    if (selection.config.solo) {
+      selection.select(upload.item);
+    } else {
+      selection.toggleAll(upload.items);
+    }
   }
 }

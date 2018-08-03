@@ -1,7 +1,7 @@
 /**
  * Created by felix on 23.05.17.
  */
-import { Component, forwardRef, Input, OnInit, ViewChild, ViewEncapsulation, EventEmitter } from '@angular/core';
+import { Component, forwardRef, Input, OnInit, ViewChild, ViewEncapsulation, EventEmitter, ElementRef } from '@angular/core';
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Item } from '@ec.components/core/src/item/item';
 import { SdkService } from '../../..';
@@ -12,8 +12,9 @@ import PublicAssetResource from 'ec.sdk/lib/resources/publicAPI/PublicAssetResou
 import { CrudConfig } from '../../crud/crud-config.interface';
 import { ResourceConfig } from '../../resource-config/resource-config.service';
 import { AssetListPopComponent } from '../asset-list-pop/asset-list-pop.component';
-import { FileService } from '../file.service';
+import { FileService, Upload } from '../file.service';
 import { UploadComponent } from '../upload/upload.component';
+import { UploadSelectComponent } from '../upload-select/upload-select.component';
 
 /** Shows assets of a selection and is able to pick new ones from a crud list.
  * <example-url>https://components.entrecode.de/data/asset-select?e=1</example-url>
@@ -49,8 +50,6 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
   @Input() assetGroupID: string;
   /** The asset list pop with the list to select from */
   @ViewChild(AssetListPopComponent) pop: AssetListPopComponent;
-  /** The nested upload component */
-  @ViewChild(UploadComponent) uploader: UploadComponent;
   /** Configuration Object for List */
   @Input() config: CrudConfig<DMAssetResource | PublicAssetResource> = {};
   /** config for new assets */
@@ -68,9 +67,10 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
     private fileService: FileService,
     public resourceConfig: ResourceConfig,
     public sdk: SdkService,
-    public symbol: SymbolService
+    public symbol: SymbolService,
+    public elementRef: ElementRef
   ) {
-    super();
+    super(elementRef);
   }
 
   setGroup(group) {
@@ -124,27 +124,5 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
     this.use(value, false);
   }
 
-  editItem(item) {
-    if (!item.getBody().isResolved) {
-      /* item.getBody().resolve().then((asset) => {
-        // console.log('resolved', asset);
-      }) */
-    } else {
-      // console.log('edit', item.getBody());
-    }
-  }
 
-  toggleUrlInput() {
-    this.showUrlInput = !this.showUrlInput;
-    setTimeout(() => {
-      this.focusEvent.emit(true);
-    })
-  }
-
-  uploadFromUrls(urls, e) {
-    this.uploader.uploadFiles(urls, e).then(() => {
-      this.urlsToUpload = '';
-      this.showUrlInput = false;
-    });
-  }
 }

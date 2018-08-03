@@ -1,14 +1,14 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { Item, Selection } from '../../../../core';
+import { Item, Selection } from '@ec.components/core';
 import { SdkService } from '../../..';
-import { PopComponent } from '../../../../ui/src/pop/pop.component';
-import { PopService } from '../../../../ui/src/pop/pop.service';
+import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
+import { PopService } from '@ec.components/ui/src/pop/pop.service';
 import PublicAssetResource from 'ec.sdk/lib/resources/publicAPI/PublicAssetResource';
 import { Subject } from 'rxjs/Subject';
-import { SearchbarComponent } from '../../../../ui/src/list/searchbar/searchbar.component';
-import { AuthService } from '../../auth/auth.service';
+import { SearchbarComponent } from '@ec.components/ui/src/list/searchbar/searchbar.component';
 import { CrudConfig } from '../../crud/crud-config.interface';
 import { FileService } from '../file.service';
+import { UploadComponent } from '@ec.components/data/src/files/upload/upload.component';
 
 /** Entry Pop is an extension of Pop component to host an entry-form.
  * You can use it like a normal pop but with the extra handling of an entry form inside.
@@ -37,10 +37,10 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
   public assetGroups: string[];
   /** The nested searchbar */
   @ViewChild(SearchbarComponent) searchbar: SearchbarComponent;
+  uploadConfig: CrudConfig<PublicAssetResource> & { disableListPop: boolean; };
 
   /** Injects auth service and calls super constructor. */
   constructor(protected popService: PopService,
-    private auth: AuthService,
     private fileService: FileService,
     public sdk: SdkService) {
     super(popService);
@@ -67,6 +67,7 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
         this.groupChanged.emit(this.assetGroupID);
       } */
     });
+    this.uploadConfig = Object.assign({}, this.config, { disableListPop: true })
   }
 
   /** emits columnClicked event or toggles selection if no observers. */
@@ -74,8 +75,7 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
     if (this.columnClicked.observers.length) {
       this.columnClicked.emit($event);
     } else if (this.selection) {
-      console.log('selection', this.selection);
-      // this.selection.toggle($event);
+      this.selection.toggle($event);
     }
   }
 

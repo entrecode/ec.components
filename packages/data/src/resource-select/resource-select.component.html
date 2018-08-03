@@ -1,5 +1,5 @@
 <div class="ec-entry-select" *ngIf="selection">
-    <div class="ec-select" [class.ec-select_solo]="solo" [class.ec-select_dirty]="selection.items.length" (click)="pop.toggle()&&clickInside($event)">
+    <div class="ec-select" [class.ec-select_solo]="solo" [class.ec-select_dirty]="selection.items.length" (click)="pop.toggle()">
         <span class="ec-select__placeholder" *ngIf="!selection.items.length">
             {{placeholder||'Auswählen'}}
         </span>
@@ -11,13 +11,13 @@
                 </span>
             </li>
         </ul>
-        <ec-pop (click)="clickInside($event)" [ngClass]="config?.nestedPopClass || 'ec-select-options'" #dropdown [active]="config?.nestedPopActive"
+        <ec-pop [ngClass]="config?.nestedPopClass || 'ec-select-options'" #dropdown [active]="config?.nestedPopActive"
             [visible]="config?.nestedPopVisible">
             <ec-resource-list [relation]="relation" [api]="api" *ngIf="selection&&dropdown.active" [config]="dropdownConfig" [selection]="selection"
                 (columnClicked)="select($event)"></ec-resource-list>
         </ec-pop>
         
-        <ec-resource-list-pop #listPop (click)="clickInside($event)" [ngClass]="getPopClass()" class="ec-resource-list-pop" #resourceListPop
+        <ec-resource-list-pop #listPop [ngClass]="getPopClass()" class="ec-resource-list-pop" #resourceListPop
             [api]="api" [relation]="relation" [config]="config" [selection]="selection"></ec-resource-list-pop>
 
     </div>

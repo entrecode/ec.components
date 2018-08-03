@@ -1,4 +1,4 @@
-import { Component, EventEmitter, forwardRef, HostListener, Input, OnChanges, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, forwardRef, HostListener, Input, OnChanges, OnInit, Output, ViewChild, ViewEncapsulation, ElementRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { List, ListConfig, Selection } from '../../../core';
 import { Item } from '../../../core/src/item/item';
@@ -45,18 +45,20 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   /** The selection pop */
   @ViewChild(PopComponent) pop: PopComponent;
 
+  constructor(public elementRef: ElementRef) {
+  }
+
+  getParentTree(el, tree = []) {
+    if (el.parentNode) {
+      return tree.concat([el.parentNode]);
+    }
+    return tree;
+  }
+
   @HostListener('document:click', ['$event']) clickedOutside($event) {
-    if (this.pop) {
+    if (this.pop && this.elementRef && !this.elementRef.nativeElement.contains($event.target)) {
       this.pop.hide();
     }
-  }
-  /** is intended to be called when clicking inside and the dropdown should not toggle */
-  clickInside(e) {
-    if (!e) {
-      return;
-    }
-    e.preventDefault();
-    e.stopPropagation();
   }
 
   ngOnInit() {
@@ -93,10 +95,9 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
     this.use(value, false);
   }
 
-  /** Removes the given item from selection + triggers clickInside */
+  /** Removes the given item from selection */
   removeItem(item: Item<any>, e?) {
     this.selection.remove(item);
-    this.clickInside(e);
   }
 
   /** Uses the given value as selection items */
@@ -121,7 +122,6 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   private clickItem(item, e?) {
     if (this.itemClick.observers.length) {
       this.itemClick.emit(item);
-      this.clickInside(e);
     }
   }
 
@@ -134,7 +134,6 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
     if (this.pop) {
       this.pop.toggle();
     }
-    this.clickInside(e);
   }
 
   /** Fires on selection change. Hides pop if solo */

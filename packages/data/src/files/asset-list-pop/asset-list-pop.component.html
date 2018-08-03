@@ -1,14 +1,12 @@
 <div class="ec-pop-container" [class.is-active]="active" [class.is-visible]="visible">
-  <div class="ec-pop ec-asset-list-pop ec-dropzone" *ngIf="active" (ecDropzone)="uploader?.uploadFiles($event.dataTransfer.files,$event)">
+  <div class="ec-pop ec-asset-list-pop ec-dropzone" *ngIf="active" (ecDropzone)="uploadSelect?.uploader?.uploadFiles($event.dataTransfer.files,$event)">
     <button (click)="hide()" class="ec-pop__dismiss" type="button">
       <ec-icon name="close-x-big"></ec-icon>
     </button>
     <div class="ec-dropzone__info">Drop to upload</div>
     <div class="ec-asset-list-pop-header">
-      <div class="ec-asset-upload" *ngIf="assetGroupID">
-        <ec-upload (groupChanged)="setGroup($event)" #uploader [assetGroupID]="assetGroupID" [loader]="popLoader" (success)="uploader.selectUpload($event, selection, config.solo)"></ec-upload>
-        <a (click)="uploader.trigger()">upload file</a>
-      </div>
+      <ec-upload-select (uploaded)="fileService.selectUpload($event,selection)" #uploadSelect [disableDrop]="true" [config]="uploadConfig"
+        [assetGroupID]="assetGroupID"></ec-upload-select>
       <div data-grid *ngIf="active&&assetGroupID&&sdk.apiResolved">
         <div data-col='6-sm'>
           <ec-searchbar [list]="resourceList"></ec-searchbar>

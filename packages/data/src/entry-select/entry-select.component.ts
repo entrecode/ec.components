@@ -1,7 +1,7 @@
 /**
  * Created by felix on 23.05.17.
  */
-import { Component, forwardRef, Input, OnChanges, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, forwardRef, Input, OnChanges, OnInit, ViewChild, ViewEncapsulation, ElementRef } from '@angular/core';
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Form } from '../../../core';
 import { Item } from '../../../core/src/item/item';
@@ -81,8 +81,9 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
     public resourceService: ResourceService,
     public symbol: SymbolService,
     public sdk: SdkService,
+    public elementRef: ElementRef,
     private auth: AuthService) {
-    super();
+    super(elementRef);
   }
 
   removeItem(item, skipDelete, e?) {
@@ -97,15 +98,13 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   }
 
   activate($event) {
+    console.log('activate');
     if (this.pop && !this.config.disableSelect) {
       this.pop.toggle();
-      this.clickInside($event);
     } else if (this.entryListPop && !this.config.disableListPop) {
       this.entryListPop.show();
-      this.clickInside($event);
     } else if (this.entryPop && !this.config.disableCreatePop) {
       this.entryPop.show();
-      this.clickInside($event);
     }
   }
 
@@ -182,11 +181,12 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
     if (!this.hasMethod('put')) {
       return;
     }
+    e.preventDefault();
+    e.stopPropagation();
     item.getBody().resolve()
       .then(entry => {
         this.entryPop.edit(entry);
       });
-    this.clickInside(e);
   }
 
   /** Returns the pop class that should be used, either uses config.popClass or defaults to ec-pop_dialog. */
