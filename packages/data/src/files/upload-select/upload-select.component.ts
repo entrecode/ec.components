@@ -51,7 +51,6 @@ export class UploadSelectComponent implements OnInit {
     }
 
     uploadFromUrls(urls, e) {
-        console.log('upload urls', urls);
         this.uploader.uploadFiles(urls, e).then(() => {
             this.urlsToUpload = '';
             this.showUrlInput = false;
