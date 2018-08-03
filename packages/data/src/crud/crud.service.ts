@@ -55,15 +55,13 @@ export class CrudService {
     const oldValues = {}; // save old values
     Object.keys(value).forEach((key) => oldValues[key] = entry[key]);
     Object.assign(entry, this.clean(value)); // assign new form values
-    console.log('safePut', safePut);
     return entry.save(safePut).then((_entry) => {
       this.resourceService.changes.next({ relation: `model.${model}`, resource: _entry, type: 'put' });
       return _entry;
-    })
-      .catch((err) => {
-        Object.assign(entry, this.clean(oldValues)); // fall back to old values
-        return Promise.reject(err);
-      });
+    }).catch((err) => {
+      Object.assign(entry, this.clean(oldValues)); // fall back to old values
+      return Promise.reject(err);
+    });
   }
 
   /** Returns true if the given field key is an immutable system property */
