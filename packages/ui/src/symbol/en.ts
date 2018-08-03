@@ -1,6 +1,14 @@
 
 export default [
     {
+        name: 'symbol.language',
+        content: 'English'
+    },
+    {
+        name: 'moment.locale',
+        content: 'en'
+    },
+    {
         name: 'moment.format.date',
         content: 'DD.MM.YYYY'
     },

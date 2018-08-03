@@ -1,11 +1,12 @@
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
-import moment from 'moment-es6';
 import { ModelConfigService } from '../../packages/data';
 import { TypeConfigService } from '../../packages/data/src/model-config/type-config.service';
 import { LocationPickerComponent } from '../../packages/location/src/location-picker.component';
 import { demoRoutes } from './demo.routes';
 import { Route, ActivatedRoute, Router, NavigationEnd, ChildActivationEnd } from '@angular/router';
 import { filter, map, switchMap, take } from 'rxjs/operators';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import de from '@ec.components/ui/src/symbol/de';
 @Component({
   selector: 'ec-demo-root',
   templateUrl: './demo.component.html',
@@ -18,12 +19,10 @@ export class DemoComponent {
   paths = [];
   links = [];
 
-  constructor(private modelConfig: ModelConfigService,
+  constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private typeConfig: TypeConfigService,
-    private activatedRoute: ActivatedRoute) {
-    moment.locale('de');
+    private typeConfig: TypeConfigService) {
 
     this.router.events.pipe(
       filter(event => event instanceof ChildActivationEnd),

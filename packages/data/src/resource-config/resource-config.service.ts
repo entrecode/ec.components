@@ -408,6 +408,7 @@ export class ResourceConfig {
       // https://doc.entrecode.de/en/develop/resources/dm-assetgroup/
       assetGroup: {
         identifier: 'assetGroupID',
+        label: 'assetGroupID',
         fields: {
           assetGroupID: {
             label: this.symbol.resolve('asset.field.label.assetGroupID'),

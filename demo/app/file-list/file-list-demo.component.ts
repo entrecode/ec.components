@@ -1,12 +1,8 @@
 import DataManagerResource from 'ec.sdk/lib/resources/datamanager/DataManagerResource';
 import PublicAPI from 'ec.sdk/lib/PublicAPI';
-import { ResourceList } from '../../../packages/data/src/resource-list/resource-list';
-import { SdkService } from '../../../packages/data/src/sdk/sdk.service';
-import { Component, OnInit } from '@angular/core';
-import Core from 'ec.sdk/lib/Core';
-import { Item } from '../../../packages/core';
-import Resource from 'ec.sdk/lib/resources/Resource';
-import DMAssetResource from 'ec.sdk/lib/resources/publicAPI/DMAssetResource';
+import { SdkService } from '@ec.components/data/src/sdk/sdk.service';
+import { Component } from '@angular/core';
+import { Item } from '@ec.components/core';
 import AssetGroupResource from 'ec.sdk/lib/resources/datamanager/AssetGroupResource';
 
 @Component({
@@ -21,7 +17,7 @@ export class FileListDemoComponent {
     datamanager: DataManagerResource;
     constructor(public sdk: SdkService) {
         this.sdk.ready.then(() => {
-            this.sdk.datamanager.dataManager('f3e16924-7781-4f5d-ad67-66e99bb941c6')
+            this.sdk.datamanager.dataManager('73538731-4ac3-4a1a-b3b5-e31d09e94d42')
                 .then(dm => {
                     this.datamanager = dm;
                     return dm.getPublicAPI();

@@ -5,9 +5,9 @@
   <div class="ec-asset-upload" *ngIf="!readOnly">
     <ec-upload #uploader (groupChanged)="setGroup($event)" [loader]="popLoader" [assetGroupID]="assetGroupID" (success)="uploader.selectUpload($event, selection, config.solo)"
       class="hide"></ec-upload>
-    <a (click)="uploader.trigger()">upload</a>
-    <span *ngIf="!config?.disableListPop"> or
-      <a (click)="pop.toggle()">browse</a>
+    <a (click)="uploader.trigger()">{{'upload.link' | symbol}}</a>
+    <span *ngIf="!config?.disableListPop"> {{'upload.or' | symbol}}
+      <a (click)="pop.toggle()">{{'upload.browse' | symbol}}</a>
     </span>
   </div>
   <div *ngIf="selection.items.length" class="ec-asset-selected">
