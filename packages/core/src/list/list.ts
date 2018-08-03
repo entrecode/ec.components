@@ -107,10 +107,13 @@ export class List<T> extends Collection<Item<T>> {
    * Resolves the item with the given Array index or identifier (if configured)
    */
   id(identifier: any): Item<T> {
-    if (!identifier) {
+    if (identifier === undefined) {
       throw new Error(`cannot get item with identifier "${identifier}"`);
     }
     return this.items.find((item, key) => {
+      if (!item.config.identifier) {
+        return false;
+      }
       return item.id() === identifier;
     }) || this.items[identifier];
   }

@@ -36,6 +36,6 @@
       </nav>
     </footer>
     <ec-loader #popLoader class="ec-loader ec-loader_overlay ec-loader_global"></ec-loader>
-    <ec-resource-delete-pop (deleted)="deletedEntry()" [relation]="model" #delete></ec-resource-delete-pop>
+    <ec-resource-delete-pop (deleted)="deletedEntry()" [relation]="'model.'+model" #delete></ec-resource-delete-pop>
   </div>
 </div>

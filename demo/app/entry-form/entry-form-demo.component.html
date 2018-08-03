@@ -2,10 +2,10 @@
   <ec-notifications class="ec-notifications"></ec-notifications>
   <ec-tabs>
     <ec-tab label="Simple" selected>
-      <ec-entry-form model="muffin" [config]="formConfig"></ec-entry-form>
+      <ec-entry-form model="muffin"></ec-entry-form>
     </ec-tab>
     <ec-tab label="Dynamic Fields">
-      <ec-entry-form model="muffin" [config]="formConfig" #simpleMuffin></ec-entry-form>
+      <ec-entry-form model="muffin" #simpleMuffin></ec-entry-form>
       <ec-pop class="ec-pop ec-pop_dialog" #fieldPop>
         <ec-form [config]="fieldForm" (submitted)="addField($event,simpleMuffin,fieldPop)"></ec-form>
       </ec-pop>
