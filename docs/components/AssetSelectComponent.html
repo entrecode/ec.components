@@ -2670,6 +2670,9 @@
                                 <a href="#containsOldAssets">containsOldAssets</a>
                             </li>
                             <li>
+                                <a href="#getAssetGroupID">getAssetGroupID</a>
+                            </li>
+                            <li>
                                 <a href="#groupReady">groupReady</a>
                             </li>
                             <li>
@@ -3248,7 +3251,7 @@
                         <div><p>The visible items </p>
 </div>
                             <p>
-                            <em>Type:</em>    <code>Array&lt;T&gt;</code>
+                            <em>Type:</em>    <code>Array&lt;T&gt; | T</code>
 
                             </p>
                     </td>
@@ -3482,6 +3485,44 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
+                        <a name="getAssetGroupID"></a>
+                        <span class="name">
+                            <b>
+                            getAssetGroupID
+                            </b>
+                            <a href="#getAssetGroupID"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getAssetGroupID()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">packages/data/src/files/asset-select/asset-select.component.ts:96</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
                         <a name="groupReady"></a>
                         <span class="name">
                             <b>
@@ -3500,7 +3541,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="116" class="link-to-prism">packages/data/src/files/asset-select/asset-select.component.ts:116</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="125" class="link-to-prism">packages/data/src/files/asset-select/asset-select.component.ts:125</a></div>
                             </td>
                         </tr>
 
@@ -3538,7 +3579,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">packages/data/src/files/asset-select/asset-select.component.ts:96</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">packages/data/src/files/asset-select/asset-select.component.ts:105</a></div>
                             </td>
                         </tr>
 
@@ -3641,7 +3682,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="121" class="link-to-prism">packages/data/src/files/asset-select/asset-select.component.ts:121</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="130" class="link-to-prism">packages/data/src/files/asset-select/asset-select.component.ts:130</a></div>
                             </td>
                         </tr>
 
@@ -5682,6 +5723,15 @@ export class AssetSelectComponent extends SelectComponent&lt;DMAssetResource | P
     return (this.value &amp;&amp; !this.fileService.isNewAsset(this.value, true));
   }
 
+  getAssetGroupID() {
+    if (!this.value || (Array.isArray(this.value) &amp;&amp; this.value.length &#x3D;&#x3D;&#x3D; 0)) {
+      return &#x27;legacyAssets&#x27;;
+    } else if (Array.isArray(this.value)) {
+      return this.value[0].assetGroupID || &#x27;legacyAssets&#x27;;
+    }
+    return this.value.assetGroupID;
+  }
+
   initConfig(): CrudConfig&lt;DMAssetResource | PublicAssetResource&gt; {
     let config &#x3D; {};
     if (!this.formControl) {
@@ -5693,7 +5743,7 @@ export class AssetSelectComponent extends SelectComponent&lt;DMAssetResource | P
     }
     if (this.containsNewAssets() || (this.assetGroupID &amp;&amp; this.assetGroupID !&#x3D;&#x3D; &#x27;legacyAsset&#x27;)) {
       config &#x3D; this.dmAssetConfig;
-      // this.assetGroupID &#x3D; this.assetGroupID || this.value[0].
+      this.assetGroupID &#x3D; this.assetGroupID || this.getAssetGroupID();
     } else if (this.containsOldAssets() || this.assetGroupID &#x3D;&#x3D;&#x3D; &#x27;legacyAsset&#x27;) {
       // legacy assets
       config &#x3D; this.legacyAssetConfig;

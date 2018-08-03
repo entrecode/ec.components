@@ -2923,7 +2923,7 @@
                         <div><p>The visible items </p>
 </div>
                             <p>
-                            <em>Type:</em>    <code>Array&lt;T&gt;</code>
+                            <em>Type:</em>    <code>Array&lt;T&gt; | T</code>
 
                             </p>
                     </td>
@@ -4381,7 +4381,7 @@ export class SelectComponent&lt;T&gt; implements ControlValueAccessor, OnInit, O
   /** Configuration Object for List */
   @Input() config: ListConfig&lt;T&gt;;
   /** The visible items */
-  @Input() value: Array&lt;T&gt;;
+  @Input() value: Array&lt;T&gt; | T;
   /** The used selection */
   @Input() selection: Selection&lt;T&gt;;
   /** Input placeholder */

@@ -3357,7 +3357,7 @@ via getFields method.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">packages/core/src/list/list.ts:119</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="122" class="link-to-prism">packages/core/src/list/list.ts:122</a></div>
                             </td>
                         </tr>
 
@@ -3504,7 +3504,7 @@ properties directly.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="180" class="link-to-prism">packages/core/src/list/list.ts:180</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="183" class="link-to-prism">packages/core/src/list/list.ts:183</a></div>
                             </td>
                         </tr>
 
@@ -3684,7 +3684,7 @@ properties directly.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="127" class="link-to-prism">packages/core/src/list/list.ts:127</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="130" class="link-to-prism">packages/core/src/list/list.ts:130</a></div>
                             </td>
                         </tr>
 
@@ -3755,7 +3755,7 @@ properties directly.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="135" class="link-to-prism">packages/core/src/list/list.ts:135</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="138" class="link-to-prism">packages/core/src/list/list.ts:138</a></div>
                             </td>
                         </tr>
 
@@ -3828,7 +3828,7 @@ properties directly.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="215" class="link-to-prism">packages/core/src/list/list.ts:215</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="218" class="link-to-prism">packages/core/src/list/list.ts:218</a></div>
                             </td>
                         </tr>
 
@@ -3901,7 +3901,7 @@ properties directly.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="159" class="link-to-prism">packages/core/src/list/list.ts:159</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="162" class="link-to-prism">packages/core/src/list/list.ts:162</a></div>
                             </td>
                         </tr>
 
@@ -4060,7 +4060,7 @@ Reapplies grouping (if any) and calls the change Subject. </p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="211" class="link-to-prism">packages/core/src/list/list.ts:211</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="214" class="link-to-prism">packages/core/src/list/list.ts:214</a></div>
                             </td>
                         </tr>
 
@@ -4102,7 +4102,7 @@ Reapplies grouping (if any) and calls the change Subject. </p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="148" class="link-to-prism">packages/core/src/list/list.ts:148</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="151" class="link-to-prism">packages/core/src/list/list.ts:151</a></div>
                             </td>
                         </tr>
 
@@ -4185,7 +4185,7 @@ Reapplies grouping (if any) and calls the change Subject. </p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="173" class="link-to-prism">packages/core/src/list/list.ts:173</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="176" class="link-to-prism">packages/core/src/list/list.ts:176</a></div>
                             </td>
                         </tr>
 
@@ -4225,7 +4225,7 @@ Reapplies grouping (if any) and calls the change Subject. </p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="167" class="link-to-prism">packages/core/src/list/list.ts:167</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="170" class="link-to-prism">packages/core/src/list/list.ts:170</a></div>
                             </td>
                         </tr>
 
@@ -4310,7 +4310,7 @@ Reapplies grouping (if any) and calls the change Subject. </p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="207" class="link-to-prism">packages/core/src/list/list.ts:207</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="210" class="link-to-prism">packages/core/src/list/list.ts:210</a></div>
                             </td>
                         </tr>
 
@@ -5562,10 +5562,13 @@ export class List&lt;T&gt; extends Collection&lt;Item&lt;T&gt;&gt; {
    * Resolves the item with the given Array index or identifier (if configured)
    */
   id(identifier: any): Item&lt;T&gt; {
-    if (!identifier) {
+    if (identifier &#x3D;&#x3D;&#x3D; undefined) {
       throw new Error(&#x60;cannot get item with identifier &quot;${identifier}&quot;&#x60;);
     }
     return this.items.find((item, key) &#x3D;&gt; {
+      if (!item.config.identifier) {
+        return false;
+      }
       return item.id() &#x3D;&#x3D;&#x3D; identifier;
     }) || this.items[identifier];
   }
