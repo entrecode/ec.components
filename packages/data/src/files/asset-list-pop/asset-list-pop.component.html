@@ -7,7 +7,7 @@
     <div class="ec-asset-list-pop-header">
       <ec-upload-select (uploaded)="fileService.selectUpload($event,selection)" #uploadSelect [disableDrop]="true" [config]="uploadConfig"
         [assetGroupID]="assetGroupID"></ec-upload-select>
-      <div data-grid *ngIf="active&&assetGroupID&&sdk.apiResolved">
+      <div data-grid *ngIf="active&&sdk.apiResolved"><!-- &&assetGroupID -->
         <div data-col='6-sm'>
           <ec-searchbar [list]="resourceList"></ec-searchbar>
         </div>

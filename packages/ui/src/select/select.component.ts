@@ -27,7 +27,7 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   /** Configuration Object for List */
   @Input() config: ListConfig<T>;
   /** The visible items */
-  @Input() value: Array<T>;
+  @Input() value: Array<T> | T;
   /** The used selection */
   @Input() selection: Selection<T>;
   /** Input placeholder */

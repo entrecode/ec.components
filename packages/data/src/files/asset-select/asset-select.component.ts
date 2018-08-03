@@ -93,6 +93,15 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
     return (this.value && !this.fileService.isNewAsset(this.value, true));
   }
 
+  getAssetGroupID() {
+    if (!this.value || (Array.isArray(this.value) && this.value.length === 0)) {
+      return 'legacyAssets';
+    } else if (Array.isArray(this.value)) {
+      return this.value[0].assetGroupID || 'legacyAssets';
+    }
+    return this.value.assetGroupID;
+  }
+
   initConfig(): CrudConfig<DMAssetResource | PublicAssetResource> {
     let config = {};
     if (!this.formControl) {
@@ -104,7 +113,7 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
     }
     if (this.containsNewAssets() || (this.assetGroupID && this.assetGroupID !== 'legacyAsset')) {
       config = this.dmAssetConfig;
-      // this.assetGroupID = this.assetGroupID || this.value[0].
+      this.assetGroupID = this.assetGroupID || this.getAssetGroupID();
     } else if (this.containsOldAssets() || this.assetGroupID === 'legacyAsset') {
       // legacy assets
       config = this.legacyAssetConfig;
