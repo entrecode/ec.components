@@ -1,12 +1,12 @@
 /**
  * Created by felix on 23.05.17.
  */
-import { Component, forwardRef, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, forwardRef, Input, OnInit, ViewChild, ViewEncapsulation, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Item } from '../../../../core/src/item/item';
+import { Item } from '@ec.components/core/src/item/item';
 import { SdkService } from '../../..';
-import { SelectComponent } from '../../../../ui';
-import { SymbolService } from '../../../../ui/src/symbol/symbol.service';
+import { SelectComponent } from '@ec.components/ui';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 import DMAssetResource from 'ec.sdk/lib/resources/publicAPI/DMAssetResource';
 import PublicAssetResource from 'ec.sdk/lib/resources/publicAPI/PublicAssetResource';
 import { CrudConfig } from '../../crud/crud-config.interface';
@@ -37,6 +37,8 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
   protected group: FormGroup;
   /** The form control that is used */
   protected control: FormControl;
+  /** If true, a pop will open that can be used to rename files before upload */
+  @Input() custom: boolean;
   /** The used item */
   @Input() item: Item<any>;
   /** If true, the selection cannot be changed and no uploads can be made. */
@@ -55,6 +57,12 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
   public dmAssetConfig = Object.assign({}, this.resourceConfig.get('dmAsset'));
   /** config for legacy assets */
   public legacyAssetConfig = Object.assign({}, this.resourceConfig.get('legacyAsset'), { forceGroup: true });
+  /** The Url to upload from */
+  urlsToUpload = '';
+  /** Wether or not the url input should be visible */
+  showUrlInput = false;
+  /** The event that focuses the url input */
+  public focusEvent: EventEmitter<boolean> = new EventEmitter();
 
   constructor(
     private fileService: FileService,
@@ -118,12 +126,25 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
 
   editItem(item) {
     if (!item.getBody().isResolved) {
-      item.getBody().resolve().then((asset) => {
+      /* item.getBody().resolve().then((asset) => {
         // console.log('resolved', asset);
-      })
+      }) */
     } else {
       // console.log('edit', item.getBody());
     }
-    // TODO open edit pop
+  }
+
+  toggleUrlInput() {
+    this.showUrlInput = !this.showUrlInput;
+    setTimeout(() => {
+      this.focusEvent.emit(true);
+    })
+  }
+
+  uploadFromUrls(urls, e) {
+    this.uploader.uploadFiles(urls, e).then(() => {
+      this.urlsToUpload = '';
+      this.showUrlInput = false;
+    });
   }
 }

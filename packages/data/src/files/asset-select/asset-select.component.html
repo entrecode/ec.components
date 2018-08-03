@@ -3,18 +3,26 @@
   [disabled]="readOnly" [class.ec-asset-select_solo]="solo" [class.empty]="!selection?.items?.length">
   <div class="ec-dropzone__info">drop to upload</div>
   <div class="ec-asset-upload" *ngIf="!readOnly">
-    <ec-upload #uploader (groupChanged)="setGroup($event)" [loader]="popLoader" [assetGroupID]="assetGroupID" (success)="uploader.selectUpload($event, selection, config.solo)"
-      class="hide"></ec-upload>
+    <ec-upload [custom]="custom" #uploader (groupChanged)="setGroup($event)" [loader]="popLoader" [assetGroupID]="assetGroupID"
+      (success)="uploader.selectUpload($event, selection, config.solo)" class="hide"></ec-upload>
     <a (click)="uploader.trigger()">{{'upload.link' | symbol}}</a>
+    <span *ngIf="!config?.disableUrlUpload"> {{'upload.or' | symbol}}
+      <a (click)="toggleUrlInput()">{{'upload.url' | symbol}}</a>
+    </span>
     <span *ngIf="!config?.disableListPop"> {{'upload.or' | symbol}}
       <a (click)="pop.toggle()">{{'upload.browse' | symbol}}</a>
     </span>
+    <div [class.is-hidden]="!showUrlInput">
+      <textarea [(ngModel)]="urlsToUpload" class="input" [ecFocus]="focusEvent"></textarea>
+      <a class="btn" (click)="uploadFromUrls(urlsToUpload,$event)">{{'upload.url.start' | symbol}}</a>
+    </div>
   </div>
   <div *ngIf="selection.items.length" class="ec-asset-selected">
     <ul class="ec-asset-selected__items" data-grid="is-small" dndDropzone (dndDrop)="onDrop($event)">
       <li *ngFor="let selected of selection.items" class="ec-asset-selected__item" (click)="editItem(selected)" data-col="3-sm"
         [dndDisableIf]="solo||config?.disableDrag" [class.is-dragged]="selected===dragged" dndEffectAllowed="move" [dndDraggable]="selected.id()"
-        (dndStart)="onDragStart(selected,$event,item)" (dndCanceled)="cancelDrag(selected,$event,item)" (dndEnd)="cancelDrag(selected,$event,item)" #item>
+        (dndStart)="onDragStart(selected,$event,item)" (dndCanceled)="cancelDrag(selected,$event,item)" (dndEnd)="cancelDrag(selected,$event,item)"
+        #item>
         <div class="ec-asset-card">
           <img [src]="selected.resolve('thumb')">
           <nav class="ec-asset-card-controls">

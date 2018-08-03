@@ -31,7 +31,7 @@ export class UploadComponent implements WithLoader, WithNotifications {
     preserveFilenames: true,
     includeAssetIDInPath: true,
     ignoreDuplicates: false,
-    customNames: []
+    fileName: []
   };
   /** The api to use for the upload. Defaults to sdk.api */
   @Input() api: PublicAPI;
@@ -85,6 +85,9 @@ export class UploadComponent implements WithLoader, WithNotifications {
   }
 
   uploadFiles(files, e, api = this.sdk.api) {
+    files = typeof files === 'string'
+      ? files.split('\n').map(url => ({ name: url, url }))
+      : files;
     this.filesToUpload = files;
     e.preventDefault();
     e.stopPropagation();
@@ -93,7 +96,7 @@ export class UploadComponent implements WithLoader, WithNotifications {
       this.pop.show();
       return;
     }
-    this.upload(files, api);
+    return this.upload(files, api);
   }
 
   /** Triggers upload of current selected files */

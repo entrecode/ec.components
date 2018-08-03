@@ -33,7 +33,7 @@ export interface FileOptions {
   /** Ignores duplicates */
   ignoreDuplicates?: boolean
   /** Optional custom names for assets. Mapped by indices to assets. */
-  customNames?: string[]
+  fileName?: string[]
   /** Custom file form fieldName */
   fieldName?: string
 }
@@ -74,7 +74,7 @@ export class FileService {
   public getFormData(files: FileList, options?: FileOptions): FormData {
     const formData: FormData = new FormData();
     for (let i = 0; i < files.length; i++) {
-      const name = options && options.customNames && options.customNames[i] ? options.customNames[i] : files.item(i).name;
+      const name = options && options.fileName && options.fileName[i] ? options.fileName[i] : files.item(i).name;
       const fieldname = options && options.preserveFilenames && options.fieldName ? options.fieldName : 'file';
       formData.append(fieldname, files.item(i), name);
     }
@@ -95,7 +95,8 @@ export class FileService {
     if (!files.length) {
       return;
     }
-    return api.createDMAssets(assetGroupID, this.getFormData(files, options))
+    const data = files[0].url ? files.map(f => f.url) : this.getFormData(files, options);
+    return api.createDMAssets(assetGroupID, data, options)
       .then((assetList: DMAssetList) => {
         const assets = assetList.getAllItems();
         return {

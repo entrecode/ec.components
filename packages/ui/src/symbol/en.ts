@@ -229,6 +229,14 @@ export default [
         content: 'browse'
     },
     {
+        name: 'upload.url',
+        content: 'enter URL'
+    },
+    {
+        name: 'upload.url.start',
+        content: 'upload'
+    },
+    {
         name: 'field.label.id',
         content: 'ID'
     },

@@ -51,11 +51,12 @@ export class CrudService {
   }
 
   /** Updates the given entry with the new value. Fires the "update" change. */
-  update(model, entry: EntryResource, value: Object): Promise<EntryResource> {
+  update(model, entry: EntryResource, value: Object, safePut = true): Promise<EntryResource> {
     const oldValues = {}; // save old values
     Object.keys(value).forEach((key) => oldValues[key] = entry[key]);
     Object.assign(entry, this.clean(value)); // assign new form values
-    return entry.save().then((_entry) => {
+    console.log('safePut', safePut);
+    return entry.save(safePut).then((_entry) => {
       this.resourceService.changes.next({ relation: `model.${model}`, resource: _entry, type: 'put' });
       return _entry;
     })

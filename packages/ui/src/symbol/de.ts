@@ -221,6 +221,14 @@ export default [
         content: 'durchsuchen'
     },
     {
+        name: 'upload.url',
+        content: 'URL eingeben'
+    },
+    {
+        name: 'upload.url.start',
+        content: 'Upload'
+    },
+    {
         name: 'field.label.id',
         content: 'ID'
     },
