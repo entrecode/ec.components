@@ -29,3 +29,6 @@
 <p *ngIf="resourceList.list?.listResource?.total">{{resourceList.list?.listResource?.count}} items loaded</p>
 <p *ngIf="resourceList.list?.config?.selectMode">{{resourceList.selection?.items.length}} items selected</p>
 <ec-notifications class="toast"></ec-notifications>
+<!-- TODO: move to own demo -->
+<a (click)="resourceListPop.show()">show list pop</a>
+<ec-resource-list-pop class="ec-resource-list-pop" #resourceListPop [api]="api" [relation]="relation"></ec-resource-list-pop>

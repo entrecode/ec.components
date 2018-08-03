@@ -1,5 +1,5 @@
 import { ItemConfig } from '../item/item-config.interface';
-import { List } from '@ec.components/core';
+import { List } from '../..';
 
 /**
  *  Configuration for List Classes.

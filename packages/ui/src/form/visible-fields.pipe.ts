@@ -1,7 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Field } from '../../../core/src/field/field';
-import { FormService } from '@ec.components/ui/src/form/form.service';
-import { Form } from '@ec.components/core';
+import { Field, Form } from '@ec.components/core';
+import { FormService } from './form.service';
 
 /** The VisibleFieldsPipe filters an array of Fields to only give back the ones that have form NOT set to false. */
 @Pipe({

@@ -1,0 +1,18 @@
+<div class="ec-pop-container" [class.is-active]="active" [class.is-visible]="visible">
+    <div class="ec-pop" *ngIf="active" data-col="8-sm">
+        <header class="ec-pop-header">
+            <button (click)="hide()" type="button" class="ec-pop__dismiss">
+                <ec-icon name="close-x-big"></ec-icon>
+            </button>
+            <ec-searchbar (selected)="hide()" placeholder="Search.." [list]="resourceList" #searchbar *ngIf="resourceList" [property]="config?.label"></ec-searchbar>
+            <ec-list-header [list]="resourceList?.list" [selection]="selection"></ec-list-header>
+        </header>
+        <div class="ec-pop-body">
+            <ec-resource-list (changed)="searchbar.focusEvent.emit(true)" [api]="api" [relation]="relation" [config]="config" [selection]="selection"
+                (columnClicked)="select($event)" #resourceList></ec-resource-list>
+        </div>
+        <div class="ec-pop-footer">
+            <ec-pagination [pagination]="resourceList?.list?.pagination"></ec-pagination>
+        </div>
+    </div>
+</div>

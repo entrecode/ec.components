@@ -16,19 +16,13 @@
             <ec-resource-list [relation]="relation" [api]="api" *ngIf="selection&&dropdown.active" [config]="dropdownConfig" [selection]="selection"
                 (columnClicked)="select($event)"></ec-resource-list>
         </ec-pop>
-        <ec-pop (click)="clickInside($event)" [ngClass]="getPopClass()" #listPop>
-            <header class="ec-pop-header">
-                <button (click)="listPop.hide()" type="button" class="ec-pop__dismiss">
-                    <ec-icon name="close-x-big"></ec-icon>
-                </button>
-            </header>
-            <div class="ec-pop-body">
-                <ec-resource-list [relation]="relation" [api]="api" *ngIf="selection&&listPop.active" [config]="config" [selection]="selection"
-                    (columnClicked)="select($event)"></ec-resource-list>
-            </div>
-        </ec-pop>
+        
+        <ec-resource-list-pop #listPop (click)="clickInside($event)" [ngClass]="getPopClass()" class="ec-resource-list-pop" #resourceListPop
+            [api]="api" [relation]="relation" [config]="config" [selection]="selection"></ec-resource-list-pop>
+
     </div>
-    <ec-resource-pop #resourcePop [api]="api" [relation]="relation" [ngClass]="getPopClass()" [config]="config" (submitted)="formSubmitted($event)" (deleted)="removeItem($event)"></ec-resource-pop>
+    <ec-resource-pop #resourcePop [api]="api" [relation]="relation" [ngClass]="getPopClass()" [config]="config" (submitted)="formSubmitted($event)"
+        (deleted)="removeItem($event)"></ec-resource-pop>
     <nav class="ec-entry-select__controls">
         <a (click)="editItem(selection.items[0],$event)" class="btn btn_clear" *ngIf="solo&&!config.disableCreatePop&&hasMethod('put')&&!selection.isEmpty()">
             <ec-icon name="pencil"></ec-icon>
