@@ -83,12 +83,6 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
     public sdk: SdkService,
     private auth: AuthService) {
     super();
-    this.resourceService.change({ relation: this.model })
-      .debounceTime(500).subscribe((update) => {
-        if (this.entryList) {
-          this.entryList.list.load(); // TODO: use load delegation to channel equal loading requests to one
-        }
-      });
   }
 
   removeItem(item, skipDelete, e?) {

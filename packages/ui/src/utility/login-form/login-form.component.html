@@ -4,7 +4,6 @@
   </p>
   <div class="form-group form-group_email">
     <label *ngIf="showLabels">{{emailLabel}}</label>
-    <!-- TODO: wait for FormControl updateOn: blur -->
     <input type="email" formControlName="email" class="input" [placeholder]="emailPlaceholder">
     <ec-input-errors [control]="form.get('email')"></ec-input-errors>
   </div>
