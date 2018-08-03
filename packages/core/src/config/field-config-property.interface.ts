@@ -96,6 +96,8 @@ export interface FieldConfigProperty {
   rawFilter?: boolean;
   /** Columns that the field should inhabit in the form grid. */
   columns?: number;
+  /** If true, the field wont be shown in the list column filter. */
+  hideInColumnFilter?: boolean;
   /** wildcard for custom config values */
   [key: string]: any;
 }
