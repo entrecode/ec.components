@@ -88,6 +88,9 @@ export class UploadComponent implements WithLoader, WithNotifications {
     files = typeof files === 'string'
       ? files.split('\n').map(url => ({ name: url, url }))
       : files;
+    if (files[0].url && this.assetGroupID === 'legacyAsset') {
+      delete this.assetGroupID;
+    }
     this.filesToUpload = files;
     e.preventDefault();
     e.stopPropagation();
