@@ -1,6 +1,14 @@
 
 export default [
     {
+        name: 'symbol.language',
+        content: 'English'
+    },
+    {
+        name: 'moment.locale',
+        content: 'en'
+    },
+    {
         name: 'moment.format.date',
         content: 'DD.MM.YYYY'
     },
@@ -219,6 +227,14 @@ export default [
     {
         name: 'upload.browse',
         content: 'browse'
+    },
+    {
+        name: 'upload.url',
+        content: 'enter URL'
+    },
+    {
+        name: 'upload.url.start',
+        content: 'upload'
     },
     {
         name: 'field.label.id',

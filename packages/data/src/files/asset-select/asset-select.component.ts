@@ -1,19 +1,20 @@
 /**
  * Created by felix on 23.05.17.
  */
-import { Component, forwardRef, Input, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, forwardRef, Input, OnInit, ViewChild, ViewEncapsulation, EventEmitter, ElementRef } from '@angular/core';
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Item } from '../../../../core/src/item/item';
+import { Item } from '@ec.components/core/src/item/item';
 import { SdkService } from '../../..';
-import { SelectComponent } from '../../../../ui';
-import { SymbolService } from '../../../../ui/src/symbol/symbol.service';
+import { SelectComponent } from '@ec.components/ui';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 import DMAssetResource from 'ec.sdk/lib/resources/publicAPI/DMAssetResource';
 import PublicAssetResource from 'ec.sdk/lib/resources/publicAPI/PublicAssetResource';
 import { CrudConfig } from '../../crud/crud-config.interface';
 import { ResourceConfig } from '../../resource-config/resource-config.service';
 import { AssetListPopComponent } from '../asset-list-pop/asset-list-pop.component';
-import { FileService } from '../file.service';
+import { FileService, Upload } from '../file.service';
 import { UploadComponent } from '../upload/upload.component';
+import { UploadSelectComponent } from '../upload-select/upload-select.component';
 
 /** Shows assets of a selection and is able to pick new ones from a crud list.
  * <example-url>https://components.entrecode.de/assets/asset-select?e=1</example-url>
@@ -37,6 +38,8 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
   protected group: FormGroup;
   /** The form control that is used */
   protected control: FormControl;
+  /** If true, a pop will open that can be used to rename files before upload */
+  @Input() custom: boolean;
   /** The used item */
   @Input() item: Item<any>;
   /** If true, the selection cannot be changed and no uploads can be made. */
@@ -47,22 +50,27 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
   @Input() assetGroupID: string;
   /** The asset list pop with the list to select from */
   @ViewChild(AssetListPopComponent) pop: AssetListPopComponent;
-  /** The nested upload component */
-  @ViewChild(UploadComponent) uploader: UploadComponent;
   /** Configuration Object for List */
   @Input() config: CrudConfig<DMAssetResource | PublicAssetResource> = {};
   /** config for new assets */
   public dmAssetConfig = Object.assign({}, this.resourceConfig.get('dmAsset'));
   /** config for legacy assets */
   public legacyAssetConfig = Object.assign({}, this.resourceConfig.get('legacyAsset'), { forceGroup: true });
+  /** The Url to upload from */
+  urlsToUpload = '';
+  /** Wether or not the url input should be visible */
+  showUrlInput = false;
+  /** The event that focuses the url input */
+  public focusEvent: EventEmitter<boolean> = new EventEmitter();
 
   constructor(
     private fileService: FileService,
     public resourceConfig: ResourceConfig,
     public sdk: SdkService,
-    public symbol: SymbolService
+    public symbol: SymbolService,
+    public elementRef: ElementRef
   ) {
-    super();
+    super(elementRef);
   }
 
   setGroup(group) {
@@ -85,6 +93,15 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
     return (this.value && !this.fileService.isNewAsset(this.value, true));
   }
 
+  getAssetGroupID() {
+    if (!this.value || (Array.isArray(this.value) && this.value.length === 0)) {
+      return 'legacyAssets';
+    } else if (Array.isArray(this.value)) {
+      return this.value[0].assetGroupID || 'legacyAssets';
+    }
+    return this.value.assetGroupID;
+  }
+
   initConfig(): CrudConfig<DMAssetResource | PublicAssetResource> {
     let config = {};
     if (!this.formControl) {
@@ -96,7 +113,7 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
     }
     if (this.containsNewAssets() || (this.assetGroupID && this.assetGroupID !== 'legacyAsset')) {
       config = this.dmAssetConfig;
-      // this.assetGroupID = this.assetGroupID || this.value[0].
+      this.assetGroupID = this.assetGroupID || this.getAssetGroupID();
     } else if (this.containsOldAssets() || this.assetGroupID === 'legacyAsset') {
       // legacy assets
       config = this.legacyAssetConfig;
@@ -116,14 +133,5 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
     this.use(value, false);
   }
 
-  editItem(item) {
-    if (!item.getBody().isResolved) {
-      item.getBody().resolve().then((asset) => {
-        // console.log('resolved', asset);
-      })
-    } else {
-      // console.log('edit', item.getBody());
-    }
-    // TODO open edit pop
-  }
+
 }

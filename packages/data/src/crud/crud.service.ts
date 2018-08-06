@@ -5,18 +5,7 @@ import { SdkService } from '../sdk/sdk.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/filter';
 import { Subject } from 'rxjs/Subject';
-
-/** Instances of Update are emitted by the changes EventEmitter of the CrudService. */
-export interface Update {
-  /** The model that has been updated. */
-  model: string | string[],
-  /** The relevant entry. */
-  entry?: EntryResource,
-  /** The list where it happened. */
-  list?: EntryList,
-  /** The type of update. (create/read/update/delete) */
-  type?: 'post' | 'get' | 'put' | 'delete'
-}
+import { ResourceService } from '@ec.components/data/src/resource-config/resource.service';
 
 /** The CRUD service is meant to be used when modifying entries.
  * As the letters state it should be used to create update and delete entries.
@@ -25,25 +14,27 @@ export interface Update {
  * */
 @Injectable()
 export class CrudService {
-  /** The changes event is emitted everytime an entry is created or updated. */
-  private changes: Subject<Update> = new Subject();
 
   /** Injects sdk */
-  constructor(private sdk: SdkService) {
-  }
-
-  /** Gives true if the given change fits all property values of the filter. */
-  matches(change: Update, filter: Update): boolean {
-    return Object.keys(filter)
-      .reduce((match, key) => match && change[key] === filter[key], true);
+  constructor(private sdk: SdkService, public resourceService: ResourceService) {
   }
 
   /** Yields an observable that emits for all updates that match the given filter */
-  change(filter?: Update): Observable<Update> {
-    if (!filter) {
-      return this.changes.asObservable();
+  change(filter?: any): Observable<any> {
+    if (filter.model) {
+      filter.relation = `model.${filter.model}`;
+      delete filter.model;
     }
-    return this.changes.asObservable().filter((change: Update) => this.matches(change, filter));
+    console.warn(`CrudService.change is deprecated! Use ResourceService.change instead!
+    Make sure to change the "model" property to "relation" with prefix "model.":
+
+    this.crud.change({model:'muffin'}) // OLD
+    // CHANGE TO
+    this.resourceService.change({relation:'model.muffin'}) // NEW
+
+    The CrudService#change method will be removed in a future release!
+    `)
+    return this.resourceService.change(filter)
   }
 
   /** Saves the given entry with the given value. If the entry is not yet existing, it will be created. Otherwise it will be updated. */
@@ -60,18 +51,17 @@ export class CrudService {
   }
 
   /** Updates the given entry with the new value. Fires the "update" change. */
-  update(model, entry: EntryResource, value: Object): Promise<EntryResource> {
+  update(model, entry: EntryResource, value: Object, safePut = true): Promise<EntryResource> {
     const oldValues = {}; // save old values
     Object.keys(value).forEach((key) => oldValues[key] = entry[key]);
     Object.assign(entry, this.clean(value)); // assign new form values
-    return entry.save().then((_entry) => {
-      this.changes.next({ model, entry: _entry, type: 'put' });
+    return entry.save(safePut).then((_entry) => {
+      this.resourceService.changes.next({ relation: `model.${model}`, resource: _entry, type: 'put' });
       return _entry;
-    })
-      .catch((err) => {
-        Object.assign(entry, this.clean(oldValues)); // fall back to old values
-        return Promise.reject(err);
-      });
+    }).catch((err) => {
+      Object.assign(entry, this.clean(oldValues)); // fall back to old values
+      return Promise.reject(err);
+    });
   }
 
   /** Returns true if the given field key is an immutable system property */
@@ -99,9 +89,8 @@ export class CrudService {
   create(model: string, value: Object): Promise<EntryResource> {
     return this.sdk.api.createEntry(model, this.clean(value))
       .then((entry: EntryResource) => {
-        // console.log('created entry', entry);
-        // TODO make sure leveled entries are returned leveled
-        this.changes.next({ model, entry, type: 'post' });
+        // TODO: make sure leveled entries are returned leveled
+        this.resourceService.changes.next({ relation: `model.${model}`, resource: entry, type: 'post' });
         return entry;
       }).catch((err) => {
         return Promise.reject(err);
@@ -111,7 +100,7 @@ export class CrudService {
   /** deletes the given entry and emits the "delete" change. */
   del(model: string, entry: EntryResource) {
     return entry.del().then((res) => {
-      this.changes.next({ model, entry, type: 'delete' });
+      this.resourceService.changes.next({ relation: `model.${model}`, resource: entry, type: 'delete' });
       return res;
     });
   }

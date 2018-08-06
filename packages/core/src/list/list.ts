@@ -107,15 +107,15 @@ export class List<T> extends Collection<Item<T>> {
    * Resolves the item with the given Array index or identifier (if configured)
    */
   id(identifier: any): Item<T> {
-    if (!this.config.identifier && typeof identifier === 'number') {
-      return this.items[identifier];
-    }
-    if (!this.config.identifier) {
-      throw new Error(`cannot get item with id ${identifier} => config is missing idenfier`);
+    if (identifier === undefined) {
+      throw new Error(`cannot get item with identifier "${identifier}"`);
     }
     return this.items.find((item, key) => {
+      if (!item.config.identifier) {
+        return false;
+      }
       return item.id() === identifier;
-    });
+    }) || this.items[identifier];
   }
 
   /** Filters the list after the given property and value */

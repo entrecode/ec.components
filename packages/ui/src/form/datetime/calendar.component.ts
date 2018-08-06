@@ -48,8 +48,6 @@ export class CalendarComponent extends MonthComponent implements ControlValueAcc
     // pattern localization
     this.patterns = this.symbol.resolve('moment.format.date') ? [this.symbol.resolve('moment.format.date')] : this.patterns;
     this.timeFormat = this.symbol.resolve('moment.format.time') || this.timeFormat;
-
-    // TODO: find way to localize
     this.weekdays = moment.weekdaysMin(true);
     if (!this.disableTime) {
       this.patterns = this.patterns.map((pattern) => {

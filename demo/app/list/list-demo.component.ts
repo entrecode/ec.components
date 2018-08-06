@@ -6,6 +6,7 @@ import { songs } from '../../assets/songs';
   selector: 'ec-list-demo',
   template: `
 <h2>Simple List</h2>
+<a (click)="toggleColumnFilter(treeList.list)">toggle column filter</a>
 <ec-list class="ec-list-card" [list]="mocked.lists.trees" #treeList [solo]="true" [paginationConfig]="paginationConfig"></ec-list>
 <pre>
   {{treeList.list.config | json}}
@@ -34,5 +35,9 @@ export class ListDemoComponent {
   }
   select(item) {
     console.log('select', item);
+  }
+
+  toggleColumnFilter(list) {
+    list.config.disableColumnFilter = !list.config.disableColumnFilter;
   }
 }

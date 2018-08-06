@@ -1,4 +1,5 @@
 import { ItemConfig } from '../item/item-config.interface';
+import { List } from '../..';
 
 /**
  *  Configuration for List Classes.
@@ -19,6 +20,8 @@ export interface ListConfig<T> extends ItemConfig<T> {
   disableHeader?: boolean
   /** If true, the header will also be shown when the list is empty. Defaults to false */
   alwaysShowHeader?: boolean
+  /** If true, no column filter will be shown in the list header */
+  disableColumnFilter?: boolean;
   /** If true, the default pagination will not be visible. */
   hidePagination?: boolean;
   /** The current active page */
@@ -37,4 +40,7 @@ export interface ListConfig<T> extends ItemConfig<T> {
   maxColumns?: number,
   /** If true, the list will automatically load on change */
   autoload?: boolean;
+  /** The key that should store the lists config in the local storage.
+   * If set, the key will be populated on config changes. */
+  storageKey?: string | ((list: List<T>) => string);
 }

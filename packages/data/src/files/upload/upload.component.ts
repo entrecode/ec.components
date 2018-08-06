@@ -1,9 +1,9 @@
 import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
-import { LoaderComponent, LoaderService, NotificationsService, WithLoader } from '../../../../ui';
-import { Notification } from '../../../../ui/src/notifications/notification';
-import { WithNotifications } from '../../../../ui/src/notifications/with-notifications.interface';
-import { PopComponent } from '../../../../ui/src/pop/pop.component';
-import { SymbolService } from '../../../../ui/src/symbol/symbol.service';
+import { LoaderComponent, LoaderService, NotificationsService, WithLoader } from '@ec.components/ui';
+import { Notification } from '@ec.components/ui/src/notifications/notification';
+import { WithNotifications } from '@ec.components/ui/src/notifications/with-notifications.interface';
+import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 import PublicAPI from 'ec.sdk/lib/PublicAPI';
 import { SdkService } from '../../sdk/sdk.service';
 import { FileService, Upload } from '../file.service';
@@ -31,7 +31,7 @@ export class UploadComponent implements WithLoader, WithNotifications {
     preserveFilenames: true,
     includeAssetIDInPath: true,
     ignoreDuplicates: false,
-    customNames: []
+    fileName: []
   };
   /** The api to use for the upload. Defaults to sdk.api */
   @Input() api: PublicAPI;
@@ -53,7 +53,7 @@ export class UploadComponent implements WithLoader, WithNotifications {
     private symbol: SymbolService) {
   }
   /** opens the system upload window by triggering the input */
-  trigger() {
+  trigger(e) {
     if (!this.fileInput) {
       console.error('cannot trigger upload: file input element not found!');
       return;
@@ -85,15 +85,18 @@ export class UploadComponent implements WithLoader, WithNotifications {
   }
 
   uploadFiles(files, e, api = this.sdk.api) {
+    files = typeof files === 'string'
+      ? files.split('\n').map(url => ({ name: url, url }))
+      : files;
     this.filesToUpload = files;
     e.preventDefault();
     e.stopPropagation();
     if (this.custom || !this.assetGroupID) {
       this.event = e;
       this.pop.show();
-      return;
+      return Promise.resolve();
     }
-    this.upload(files, api);
+    return this.upload(files, api);
   }
 
   /** Triggers upload of current selected files */
@@ -125,18 +128,5 @@ export class UploadComponent implements WithLoader, WithNotifications {
       delete this.uploadPromise;
     })
     return this.uploadPromise;
-  }
-
-
-  /** method that can be called after the upload to select the uploaded item(s). */
-  selectUpload(upload: Upload, selection, solo = false) {
-    if (!selection) {
-      return;
-    }
-    if (solo) {
-      selection.select(upload.item);
-    } else {
-      selection.toggleAll(upload.items);
-    }
   }
 }

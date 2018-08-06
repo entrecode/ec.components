@@ -14,6 +14,7 @@ import { DropzoneDirective } from './dropzone/dropzone.directive';
 import { FileService } from './file.service';
 import { ImageDirective } from './image/image.directive';
 import { UploadComponent } from './upload/upload.component';
+import { UploadSelectComponent } from './upload-select/upload-select.component';
 
 @NgModule({
   entryComponents: [
@@ -30,6 +31,7 @@ import { UploadComponent } from './upload/upload.component';
     DropzoneDirective,
     ImageDirective,
     UploadComponent,
+    UploadSelectComponent
   ],
   imports: [
     CommonModule,
@@ -47,6 +49,7 @@ import { UploadComponent } from './upload/upload.component';
     DropzoneDirective,
     ImageDirective,
     UploadComponent,
+    UploadSelectComponent,
     SdkModule,
   ],
   providers: [

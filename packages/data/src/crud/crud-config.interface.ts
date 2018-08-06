@@ -30,6 +30,8 @@ export interface CrudConfig<T> extends ListConfig<T> {
   disableSelectSwitch?: boolean;
   /** If true, no list pop will be available at selects */
   disableListPop?: boolean;
+  /** If true, assets cannot be upload via url */
+  disableUrlUpload?: boolean;
   /** If true, no create pop will be available at selects */
   disableCreatePop?: boolean;
   /** If true, no dropdown will be accessible */

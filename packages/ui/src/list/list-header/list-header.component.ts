@@ -1,9 +1,10 @@
-import { Component, Input, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { Component, Input, QueryList, ViewChild, ViewChildren, OnChanges, OnInit } from '@angular/core';
 import { PopComponent } from '../../pop/pop.component';
 import { FormComponent } from '../../form/form.component';
-import { List } from '../../../../core/src/list/list';
-import { Selection } from '../../../../core/src/selection/selection';
-import { Field } from '../../../../core';
+import { List } from '@ec.components/core/src/list/list';
+import { Selection } from '@ec.components/core/src/selection/selection';
+import { Field } from '@ec.components/core';
+import { ListConfigService } from '../list-config.service';
 
 /** This component renders, as the name states, the header of a list.*/
 @Component({
@@ -20,6 +21,9 @@ export class ListHeaderComponent {
   /** The form that holds the current filter information */
   @ViewChild('filterForm') filter: FormComponent<any>;
 
+  constructor(public listConfig: ListConfigService) {
+  }
+
   /** opens the given filter pop and closes all others */
   public editFilter(pop) {
     pop.toggle();
@@ -31,14 +35,22 @@ export class ListHeaderComponent {
     this.list.filter(property, value);
   }
 
+  /** Resets the fields filter */
   public removeFilter(property, control) {
     control.reset();
   }
 
+  /** Returns the fields label */
   public fieldLabel(field: Field) {
     if (field.label === false) {
       return '';
     }
     return field.label || field.property;
+  }
+
+  /** Toggles the fields visibility in the list */
+  public toggleVisibility(field: Field) {
+    field.hidden = !field.hidden;
+    this.listConfig.storeConfig(this.list);
   }
 }

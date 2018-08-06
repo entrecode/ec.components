@@ -778,6 +778,7 @@ export const mocked = {
       }], {
         size: 19,
         selectMode: true,
+        storageKey: 'treeListConfig',
         fields: {
           name: {
             label: 'Name',
@@ -804,6 +805,7 @@ export const mocked = {
             display: (value) => value ? 'ja' : 'nein',
             view: 'boolean',
             sortable: true,
+            hideInColumnFilter: true,
             /* readOnly: true */
           },
           button: {

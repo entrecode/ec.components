@@ -20,8 +20,8 @@ export class Selection<T> extends List<T> {
 
   /** Returns the index of the given item or an item that has the same identifier or value. */
   index(item: Item<T>): number {
-    if (this.config.identifier) {
-      return this.items.indexOf(this.id(item.resolve(this.config.identifier)));
+    if (item.config.identifier) {
+      return this.items.indexOf(this.id(item.resolve(item.config.identifier)));
     }
     return this.items.indexOf(this.items.find(i => i.resolve() === item.resolve()));
   }

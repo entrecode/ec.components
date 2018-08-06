@@ -20,8 +20,6 @@ export class PopComponent {
   /** Emits the value of visible on change. */
   // tslint:disable-next-line:no-output-rename
   @Output('toggle') _toggle: EventEmitter<boolean> = new EventEmitter();
-  /** The amount of time between setting active and visible. Defaults to 0. */
-  delay = 0;
 
   constructor(protected popService: PopService) {
   }
@@ -42,20 +40,13 @@ export class PopComponent {
   public show() {
     this.active = true;
     this.popService.stack.add(this);
-    setTimeout(() => {
-      this.visible = true;
-    }, this.delay);
+    this.visible = true;
   }
 
   /** Hides the pop. First removes visible and after the delay it removes active. */
   public hide() {
     this.visible = false;
     this.popService.stack.remove(this);
-    if (!this.delay) {
-      return;
-    }
-    setTimeout(() => {
-      this.active = false;
-    }, this.delay);
+    this.active = false;
   }
 }

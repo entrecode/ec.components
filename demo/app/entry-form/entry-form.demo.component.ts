@@ -64,7 +64,8 @@ export class EntryFormDemoComponent {
         label: 'Neue Assets',
         type: 'assets',
         relation: 'test',
-        input: DefaultEntryInputComponent
+        input: DefaultEntryInputComponent,
+        create: false
       }
     },
     onSave: (item) => {

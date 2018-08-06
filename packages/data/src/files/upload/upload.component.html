@@ -35,7 +35,7 @@
             <div *ngFor="let f of filesToUpload;let i = index" data-grid>
                 <div data-col="6-sm">{{ f.name }}</div>
                 <div data-col="6-sm">
-                    <input type="text" class="input" [(ngModel)]="options.customNames[i]" placeholder="{{ f.name }}" [disabled]="!options.preserveFilenames">
+                    <input type="text" class="input" [(ngModel)]="options.fileName[i]" placeholder="{{ f.name }}" [disabled]="!options.preserveFilenames">
                 </div>
             </div>
         </div>

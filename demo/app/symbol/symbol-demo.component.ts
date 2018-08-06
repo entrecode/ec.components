@@ -9,7 +9,7 @@ import { SymbolService } from '../../../packages/ui/src/symbol/symbol.service';
 export class SymbolDemoComponent implements OnInit {
     public sets: string[];
     constructor(public symbol: SymbolService) {
-        console.log('symbol', this.symbol.resolve('success.save'));
+        console.log('symbol', this.symbol.resolve('symbol.language'));
         this.sets = Object.keys(this.symbol.sets);
     }
 

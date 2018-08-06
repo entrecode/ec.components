@@ -57,7 +57,7 @@ export class NotificationsDemoComponent implements OnInit, WithNotifications {
           },
           type: {
             label: 'Type',
-            view: 'array',
+            view: 'select',
             values: this.types
           },
         }

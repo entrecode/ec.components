@@ -21,6 +21,7 @@ export class FormDemoComponent {
   myToggle;
   myDate;
   mySelect;
+  mySelect2;
   myEntry;
   myNan;
   testField = new Field('test', {
@@ -48,6 +49,10 @@ export class FormDemoComponent {
       city: {
         view: 'string',
         columns: 4
+      },
+      count: {
+        view: 'number',
+        create: false
       }
     }
   }

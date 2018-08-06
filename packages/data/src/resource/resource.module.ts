@@ -12,6 +12,7 @@ import { ResourceDeletePopComponent } from '../resource-delete-pop/resource-dele
 import { ResourceSelectComponent } from '../resource-select/resource-select.component';
 import { ResourceService } from '../resource-config/resource.service';
 import { ResourceConfig } from '../resource-config/resource-config.service';
+import { ResourceListPopComponent } from '../resource-list-pop/resource-list-pop.component';
 
 @NgModule({
   entryComponents: [
@@ -19,6 +20,7 @@ import { ResourceConfig } from '../resource-config/resource-config.service';
   ],
   declarations: [
     ResourceListComponent,
+    ResourceListPopComponent,
     ResourceFormComponent,
     ResourcePopComponent,
     ResourceCrudComponent,
@@ -35,6 +37,7 @@ import { ResourceConfig } from '../resource-config/resource-config.service';
     UiModule,
     SdkModule,
     ResourceListComponent,
+    ResourceListPopComponent,
     ResourceFormComponent,
     ResourcePopComponent,
     ResourceCrudComponent,

@@ -10,6 +10,7 @@ import { ResourceConfig } from '../resource-config/resource-config.service';
 import { ResourceService } from '../resource-config/resource.service';
 import { SdkService } from '../sdk/sdk.service';
 import { ResourceList } from './resource-list';
+import { ListConfigService } from '@ec.components/ui/src/list/list-config.service';
 
 /** The ResourceListComponent is an extension of ListComponent for SDK ListResources.
  * It is meant to be extended and overriden the createList method. See e.g. AssetListComponent. */
@@ -42,9 +43,10 @@ export class ResourceListComponent extends ListComponent<Resource>
     protected notificationService: NotificationsService,
     protected symbol: SymbolService,
     protected resourceService: ResourceService,
+    public listConfig: ListConfigService,
     @Optional() public route: ActivatedRoute
   ) {
-    super();
+    super(listConfig);
     this.resourceConfig = this.resourceService.config;
     if (route) {
       route.queryParams.subscribe(query => {
@@ -82,6 +84,7 @@ export class ResourceListComponent extends ListComponent<Resource>
         return;
       }
       this.list = list;
+      this.listConfig.applyConfig(this.list);
       this.list.change$.subscribe(newList => this.changed.next(newList));
       if (this.list.promise) {
         this.loaderService.wait(this.list.promise, this.loader);

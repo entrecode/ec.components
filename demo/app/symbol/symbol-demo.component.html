@@ -1,5 +1,4 @@
 <h3>Symbols</h3>
-
 <div data-col="6-sm">
     <nav class="xui-select" tabindex="0">
         <div class="xui-select__placeholder">Set auswählen</div>
@@ -15,7 +14,6 @@
 
 <ul data-grid="small">
     <li *ngFor="let symbol of symbol.registry" class="list" data-col="3">
-        {{symbol.name}}
-        {{symbol.name | symbol}}
+        {{symbol.name}} {{symbol.name | symbol}}
     </li>
 </ul>

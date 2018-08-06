@@ -53,6 +53,10 @@ import { VcDemoComponent } from './vc/vc-demo.component';
 import { GithubSourceComponent } from './github-source/github-source.component';
 import { GithubSourcesComponent } from './github-source/github-sources.component';
 import { DoclinksComponent } from './doclinks/doclinks.component';
+import moment from 'moment-es6';
+import de from '@ec.components/ui/src/symbol/de';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import en from '@ec.components/ui/src/symbol/en';
 
 demoRoutes.unshift(
   {
@@ -140,4 +144,10 @@ demoRoutes.unshift(
   bootstrap: [DemoComponent]
 })
 export class DemoModule {
+  constructor(
+    private symbol: SymbolService
+  ) {
+    this.symbol.use(en);
+    moment.locale(this.symbol.resolve('moment.locale'));
+  }
 }
