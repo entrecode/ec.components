@@ -111,6 +111,9 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
       console.error('Mixed Content!', this.formControl.value)
       return;
     }
+    if (this.assetGroupID === 'null') {
+      delete this.assetGroupID;
+    }
     if (this.containsNewAssets() || (this.assetGroupID && this.assetGroupID !== 'legacyAsset')) {
       config = this.dmAssetConfig;
       this.assetGroupID = this.assetGroupID || this.getAssetGroupID();
