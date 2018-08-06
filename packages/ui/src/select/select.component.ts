@@ -84,7 +84,8 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
       return;
     }
     this.config = Object.assign({ solo: this.solo }, this.config);
-    this.selection = new Selection(this.value || [], this.config);
+    const value: Array<T> = Array.isArray(this.value) ? this.value : [this.value];
+    this.selection = new Selection(value || [], this.config);
     this.selection.update$.subscribe(() => {
       this.onChange();
     });
