@@ -113,7 +113,7 @@ export class ModelConfigService extends Config {
     if (!type) {
       return null;
     }
-    const match = type.match(/^(\w*)(<(\w*)>)?/i);
+    const match = type.match(/^(\w*)(<(.*)>)?/i);
     return !match.length ? null : {
       raw: type,
       name: match[1],

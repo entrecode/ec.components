@@ -2,7 +2,11 @@
 <div data-container>
   <h2>ec-asset-select</h2>
   <ec-tabs>
-    <ec-tab label="legacy" selected>
+    <ec-tab label="neu" selected>
+      <h4>New Assets</h4>
+      <ec-asset-select [solo]="true" assetGroupID="test"></ec-asset-select>
+    </ec-tab>
+    <ec-tab label="legacy">
       <h4>Legacy Assets</h4>
       <ec-asset-select assetGroupID="legacyAsset"></ec-asset-select>
 
@@ -37,6 +41,7 @@
       <!-- <b>readOnly</b> -->
       <!-- <ec-asset-select [readOnly]="true" [(ngModel)]="selectedAssets" [config]="{useLegacyAssets:true}"></ec-asset-select> -->
     </ec-tab>
+
 
 
     <!-- <ec-tab label="new assets without assetGroupID" >
