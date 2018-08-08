@@ -40,4 +40,6 @@ export interface CrudConfig<T> extends ListConfig<T> {
   deleteOnRemove?: boolean;
   /** If true, delete operations need confirmation */
   safeDelete?: boolean;
+  /** Hides the assetGroup select in asset-list-pop */
+  hideAssetGroupSelect?: boolean;
 }

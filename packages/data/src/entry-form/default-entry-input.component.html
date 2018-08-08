@@ -7,9 +7,15 @@
     <ec-entry-select [formControl]="group.get(field.property)" [model]="field['relation']" [id]="field.id" [config]="field.nestedCrudConfig"></ec-entry-select>
   </div>
   <div *ngSwitchCase="'asset'">
-    <ec-asset-select [formControl]="group.get(field.property)" [id]="field.id" [solo]="true" [readOnly]="field.readOnly" [assetGroupID]="field['relation']"></ec-asset-select>
+    <ec-asset-select [formControl]="group.get(field.property)" [id]="field.id" [solo]="true" [readOnly]="field.readOnly" assetGroupID="legacyAsset"></ec-asset-select>
   </div>
   <div *ngSwitchCase="'assets'">
+    <ec-asset-select [formControl]="group.get(field.property)" [id]="field.id" [readOnly]="field.readOnly" assetGroupID="legacyAsset"></ec-asset-select>
+  </div>
+  <div *ngSwitchCase="'dmAsset'">
+    <ec-asset-select [formControl]="group.get(field.property)" [id]="field.id" [solo]="true" [readOnly]="field.readOnly" [assetGroupID]="field['relation']"></ec-asset-select>
+  </div>
+  <div *ngSwitchCase="'dmAssets'">
     <ec-asset-select [formControl]="group.get(field.property)" [id]="field.id" [readOnly]="field.readOnly" [assetGroupID]="field['relation']"></ec-asset-select>
   </div>
   <div *ngSwitchCase="'groups'">

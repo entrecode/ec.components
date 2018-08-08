@@ -95,9 +95,9 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
 
   getAssetGroupID() {
     if (!this.value || (Array.isArray(this.value) && this.value.length === 0)) {
-      return 'legacyAssets';
+      return 'legacyAsset';
     } else if (Array.isArray(this.value)) {
-      return this.value[0].assetGroupID || 'legacyAssets';
+      return this.value[0].assetGroupID || 'legacyAsset';
     }
     return this.value.assetGroupID;
   }
@@ -115,10 +115,17 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
       delete this.assetGroupID;
     }
     if (this.containsNewAssets() || (this.assetGroupID && this.assetGroupID !== 'legacyAsset')) {
+      const oldAssetTypes = ['image', 'video', 'audio', 'plain', 'document', 'spreadsheet'];
+      if (!this.assetGroupID || oldAssetTypes.concat('legacyAsset').includes(this.assetGroupID)) {
+        console.error('ALARM: asset picker hat neues asset aber assetGroupID "' + this.assetGroupID + '". Bitte füge im model die assetGroupID "' + this.getAssetGroupID() + '" als validation des feldes hinzu');
+      }
       config = this.dmAssetConfig;
-      this.assetGroupID = this.assetGroupID || this.getAssetGroupID();
+      this.assetGroupID = this.getAssetGroupID();
     } else if (this.containsOldAssets() || this.assetGroupID === 'legacyAsset') {
       // legacy assets
+      if (this.assetGroupID && this.assetGroupID !== 'legacyAsset') {
+        console.error('ALARM: asset picker hat altes asset aber assetGroupID "' + this.assetGroupID + '". Entweder asset entfernen oder validation rausnehmen.');
+      }
       config = this.legacyAssetConfig;
       this.assetGroupID = 'legacyAsset';
     }
