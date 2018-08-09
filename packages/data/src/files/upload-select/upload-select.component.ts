@@ -1,11 +1,11 @@
 import { Component, OnInit, Input, EventEmitter, Output, ViewChild } from '@angular/core';
 import { LoaderComponent } from '@ec.components/ui';
-import { CrudConfig } from '@ec.components/data/src/crud/crud-config.interface';
+import { CrudConfig } from '../../crud/crud-config.interface';
 import DMAssetResource from 'ec.sdk/lib/resources/publicAPI/DMAssetResource';
 import PublicAssetResource from 'ec.sdk/lib/resources/publicAPI/PublicAssetResource';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
-import { UploadComponent } from '@ec.components/data/src/files';
-import { Upload } from '@ec.components/data/src/files/file.service';
+import { UploadComponent } from '../';
+import { Upload } from '../file.service';
 
 @Component({
     selector: 'ec-upload-select',
