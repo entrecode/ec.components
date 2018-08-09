@@ -1,9 +1,6 @@
 import { Component, EventEmitter, forwardRef, Input, OnChanges, Output, Type } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, AbstractControl } from '@angular/forms';
-import { FieldConfigProperty } from '../../../../core';
-import { Field } from '../../../../core/src/field/field';
-import { Form } from '../../../../core/src/form/form';
-import { Item } from '../../../../core/src/item/item';
+import { FieldConfigProperty, Field, Form, Item } from '@ec.components/core';
 import { DefaultInputComponent } from '../../form/default-input/default-input.component';
 import { DynamicSlotComponent } from '../dynamic-slot/dynamic-slot.component';
 
@@ -40,7 +37,7 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
   @Input() component: Type<any>;
   /** Holds a reference to the component instance. This is helpful when you want to modify the component after form intialization.
    * You can access a form's InputComponents via FormComponent#inputs */
-  componentInstance: Component
+  componentInstance: InputComponent
 
   ngOnChanges() {
     if (this.property && this.item instanceof Form) {
@@ -66,8 +63,10 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
       field: this.field,
       input: this
     };
+
     const componentRef = this.loadComponent(this.component || this.field.input || DefaultInputComponent, data);
     this.componentInstance = componentRef.instance;
+    this.connectControl();
     if (componentRef.instance.control) {
       componentRef.instance.control.valueChanges
         .debounceTime(this.debounce)
@@ -81,10 +80,16 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
     }
   }
 
+  connectControl() {
+    if (this.componentInstance.registerOnChange && this.propagateChange) {
+      this.componentInstance.registerOnChange(this.propagateChange);
+    }
+  }
+
   /** writes value to editor on outside model change. */
   writeValue(value: any) {
-    if (this.componentInstance && this.componentInstance['writeValue']) {
-      this.componentInstance['writeValue'](value); // TODO: this is pretty hacky
+    if (this.componentInstance.writeValue) {
+      this.componentInstance.writeValue(value);
     }
   }
 
@@ -94,6 +99,7 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
   /** Registers change callback */
   registerOnChange(fn) {
     this.propagateChange = fn;
+    this.connectControl();
   }
 
   registerOnTouched() {

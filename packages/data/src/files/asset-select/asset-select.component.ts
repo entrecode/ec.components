@@ -120,7 +120,7 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
         console.error('ALARM: asset picker hat neues asset aber assetGroupID "' + this.assetGroupID + '". Bitte füge im model die assetGroupID "' + this.getAssetGroupID() + '" als validation des feldes hinzu');
       }
       config = this.dmAssetConfig;
-      this.assetGroupID = this.getAssetGroupID();
+      this.assetGroupID = this.assetGroupID || this.getAssetGroupID();
     } else if (this.containsOldAssets() || this.assetGroupID === 'legacyAsset') {
       // legacy assets
       if (this.assetGroupID && this.assetGroupID !== 'legacyAsset') {
