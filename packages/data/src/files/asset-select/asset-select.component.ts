@@ -118,6 +118,8 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
       if (!this.assetGroupID || oldAssetTypes.concat('legacyAsset').includes(this.assetGroupID)) {
         this.notificationService.emit({
           title: 'Falsche Assets',
+          type: 'error',
+          sticky: true,
           message: 'ALARM: asset picker hat neues asset aber assetGroupID "' + this.assetGroupID + '".Bitte füge im model die assetGroupID "' + this.getAssetGroupID() + '" als validation des feldes hinzu'
         });
       }
@@ -128,6 +130,8 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
       if (this.assetGroupID && this.assetGroupID !== 'legacyAsset') {
         this.notificationService.emit({
           title: 'Falsche Assets',
+          type: 'error',
+          sticky: true,
           message: 'ALARM: asset picker hat altes asset aber assetGroupID "' + this.assetGroupID + '". Entweder asset entfernen oder validation rausnehmen.'
         });
       }
