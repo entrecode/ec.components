@@ -47,9 +47,6 @@ export class LocationPickerComponent extends DefaultInputComponent implements Co
             this.updateAddress();
         }
         this.propagateChange(value);
-        if (this.input) {
-            this.input.propagateChange(value);
-        }
     }
 
     /** Writes value to editor on outside model change. */
