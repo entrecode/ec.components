@@ -52,9 +52,25 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   /** The model to pick from, alternative to field with model property set. */
   @Input() model: string;
   /** The config that is being generated. */
-  public config: CrudConfig<EntryResource>;
+  public config: CrudConfig<EntryResource> = {
+    label: '_entryTitle',
+    identifier: 'id',
+    fields: {
+      _entryTitle: {
+        view: 'string'
+      }
+    }
+  };
   /** The config for the dropdown crud list */
-  public dropdownConfig: CrudConfig<EntryResource>;
+  public dropdownConfig: CrudConfig<EntryResource> = {
+    label: '_entryTitle',
+    identifier: 'id',
+    fields: {
+      _entryTitle: {
+        view: 'string'
+      }
+    }
+  };
   /** Wether or not the selection should be solo */
   @Input() solo: boolean;
   /** The config that should be merged into the generated config */
@@ -76,7 +92,15 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   lightModel: any;
   /** Model list that is only loaded when needing to pick the model first. */
   models;
-
+  modelDropdownConfig = {
+    label: 'title',
+    identifier: 'modelID',
+    fields: {
+      title: {
+        view: 'string'
+      }
+    }
+  };
   constructor(private modelConfig: ModelConfigService,
     public resourceService: ResourceService,
     public symbol: SymbolService,
@@ -106,6 +130,14 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
       this.entryPop.show();
     }
   }
+  switchModel(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    delete this.model;
+  }
+  selectModel(modelItem) {
+    this.useModel(modelItem.getBody().title)
+  }
 
   defaultPlaceholder() {
     if (this.config.disableSelect && this.config.disableListPop) {
@@ -117,12 +149,12 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   /** Calls super.useConfig and then creates special dropdownConfig with just entryTitle as field  */
   useConfig(config: CrudConfig<EntryResource> = {}) {
     super.useConfig(config);
-    this.dropdownConfig = Object.assign({}, this.config, {
+    /* this.dropdownConfig = Object.assign({}, this.config, {
       fields: {
         [this.config.label]: Object.assign({}, (this.config.fields || {})[this.config.label]),
         _modified: { hidden: true }
       }
-    });
+    }); */
     this.auth.getAllowedModelMethods(this.model, this.config.methods)
       .then((methods) => {
         this.config.methods = methods
@@ -136,7 +168,7 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
 
   useModel(model) {
     this.model = model;
-    this.initConfig();
+    /* this.initConfig(); */
   }
 
   /** Generates the config and sets up form control */
@@ -144,25 +176,20 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
     if (!this.formControl) {
       this.formControl = new FormControl(this.value || []);
     }
+    if (!this.model && this.sdk.api) {
+      this.sdk.api.modelList().then(modelList => {
+        this.models = Object.keys(modelList).map(model => modelList[model])
+      });
+    }
     if (this.config) {
       this.useConfig(this.config);
       return;
     }
-    if (!this.model && this.sdk.api) {
-      this.sdk.api.modelList().then(modelList => {
-        this.models = Object.keys(modelList).map(model => modelList[model]);
-      });
-      return;
-    }
     this.modelConfig.getLightModel(this.model)
       .then(model => this.lightModel = model);
-
-    this.modelConfig.generateConfig(this.model) // , (this.config || {}).fields
-      .then((config) => {
-        this.config = Object.assign(config, { size: 10 }, this.crudConfig,
-          { solo: this.solo, selectMode: true, disableSelectSwitch: true });
-        this.useConfig(this.config);
-      });
+    this.config = Object.assign({}, this.dropdownConfig, { size: 10 }, this.crudConfig,
+      { solo: this.solo, selectMode: true, disableSelectSwitch: true });
+    this.useConfig(this.config);
   }
 
   /** Fires initConfig */

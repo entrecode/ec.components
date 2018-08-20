@@ -59,7 +59,7 @@
     <img [src]="item?.display(field.property)">
   </div>
 
-  <a *ngSwitchCase="'link'" (click)="item?.action(field.property, $event)" [ngClass]="field.class">
+  <a *ngSwitchCase="'link'" (click)="field.action(item, field, $event)" [ngClass]="field.class">
     {{item?.display(field.property)}}
     <ec-icon *ngIf="field.icon" [name]="field.icon"></ec-icon>
   </a>
