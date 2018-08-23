@@ -3,8 +3,11 @@
   <h2>ec-asset-select</h2>
   <ec-tabs>
     <ec-tab label="neu" selected>
-      <h4>New Assets</h4>
+
+      <h4>New Assets (solo, with assetGroupID)</h4>
       <ec-asset-select [solo]="true" assetGroupID="test"></ec-asset-select>
+      <h4>New Assets (custom + without assetGroupID)</h4>
+      <ec-asset-select [config]="{customUpload:true}" assetGroupID="test"></ec-asset-select>
     </ec-tab>
     <ec-tab label="legacy">
       <h4>Legacy Assets</h4>

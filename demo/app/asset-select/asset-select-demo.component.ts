@@ -8,6 +8,7 @@ export class AssetSelectDemoComponent {
   selectedAssets: string[];
   selectedAsset: string;
   selectedNewAssets: string[];
+  solo = false;
 
   constructor() {
 

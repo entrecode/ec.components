@@ -57,6 +57,7 @@ export class FileService {
     preserveFilenames: true,
     includeAssetIDInPath: true,
     ignoreDuplicates: false,
+    deduplicate: false,
     fileName: []
   };
 
@@ -88,17 +89,13 @@ export class FileService {
       const fieldname = options && options.preserveFilenames && options.fieldName ? options.fieldName : 'file';
       formData.append(fieldname, files.item(i), name);
     }
-    if (options && !options.preserveFilenames) {
-      formData.append('preserveFilenames', 'false');
-    }
-    if (options && !options.includeAssetIDInPath) {
-      formData.append('includeAssetIDInPath', 'false');
-    }
-    if (options && options.ignoreDuplicates) {
-      formData.append('ignoreDuplicates', 'true');
-    }
-    if (options && options.deduplicate) {
-      formData.append('deduplicate', 'true');
+    if (options) {
+      ['preserveFilenames', 'includeAssetIDInPath', 'ignoreDuplicates', 'deduplicate']
+        .forEach(key => {
+          if (key in options) {
+            formData.append(key, `${options[key]}`);
+          }
+        });
     }
     return formData;
   }
@@ -208,7 +205,7 @@ export class FileService {
     if (selection.config.solo) {
       selection.select(upload.item);
     } else {
-      selection.toggleAll(upload.items);
+      selection.toggleAll(upload.items, false, true);
     }
   }
 }

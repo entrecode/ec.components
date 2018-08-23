@@ -1,8 +1,8 @@
 <div *ngIf="selection" class="ec-asset-select ec-dropzone" (ecDropzone)="uploadSelect?.uploader?.uploadFiles($event.dataTransfer.files,$event)"
   [disabled]="readOnly" [class.ec-asset-select_solo]="solo" [class.empty]="!selection?.items?.length">
   <div class="ec-dropzone__info">drop to upload</div>
-  <ec-upload-select #uploadSelect (uploaded)="fileService.selectUpload($event,selection)" (browse)="assetListPop.show()" [config]="config"
-    [readOnly]="readOnly" [assetGroupID]="assetGroupID" [options]="config?.fileOptions"></ec-upload-select>
+  <ec-upload-select [custom]="config?.customUpload" #uploadSelect (uploaded)="fileService.selectUpload($event,selection)" (browse)="assetListPop.show()"
+    [config]="config" [readOnly]="readOnly" [assetGroupID]="assetGroupID" [options]="config?.fileOptions"></ec-upload-select>
   <div *ngIf="selection.items.length" class="ec-asset-selected">
     <ul class="ec-asset-selected__items" data-grid="is-small" dndDropzone (dndDrop)="onDrop($event)">
       <li *ngFor="let selected of selection.items" class="ec-asset-selected__item" data-col="3-sm" [dndDisableIf]="solo||config?.disableDrag"
@@ -24,7 +24,7 @@
       </li>
     </ul>
   </div>
-  <ec-asset-list-pop (groupChanged)="setGroup($event)"
-    [assetGroupID]="assetGroupID" (columnClicked)="selection.toggle($event)" [config]="config" [selection]="selection" [active]="config?.nestedPopActive"
-    [visible]="config?.nestedPopVisible" [ngClass]="config?.nestedPopClass || 'ec-pop_dialog'" #assetListPop></ec-asset-list-pop>
+  <ec-asset-list-pop (groupChanged)="setGroup($event)" [assetGroupID]="assetGroupID" (columnClicked)="selection.toggle($event)"
+    [config]="config" [selection]="selection" [active]="config?.nestedPopActive" [visible]="config?.nestedPopVisible" [ngClass]="config?.nestedPopClass || 'ec-pop_dialog'"
+    #assetListPop></ec-asset-list-pop>
 </div>

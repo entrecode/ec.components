@@ -45,4 +45,6 @@ export interface CrudConfig<T> extends ListConfig<T> {
   hideAssetGroupSelect?: boolean;
   /** Default options for file uploads */
   fileOptions?: FileOptions;
+  /** If true, a pop will open before upload to set up custom options */
+  customUpload?: boolean;
 }
