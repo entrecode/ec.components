@@ -213,6 +213,10 @@ export default [
         content: 'Ignore Duplicates'
     },
     {
+        name: 'upload.deduplicate',
+        content: 'Deduplicate'
+    },
+    {
         name: 'upload.dropToUpload',
         content: 'drop to upload'
     },

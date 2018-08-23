@@ -27,12 +27,7 @@ export class UploadComponent implements WithLoader, WithNotifications {
   /** If true, a pop to rename files + customize flags will appear before uploading. */
   @Input() custom: boolean;
   /** Upload options */
-  @Input() options: FileOptions = {
-    preserveFilenames: true,
-    includeAssetIDInPath: true,
-    ignoreDuplicates: false,
-    fileName: []
-  };
+  @Input() options: FileOptions = Object.assign({}, this.fileService.defaultOptions);
   /** The api to use for the upload. Defaults to sdk.api */
   @Input() api: PublicAPI;
   /** Emits when an upload is complete. */

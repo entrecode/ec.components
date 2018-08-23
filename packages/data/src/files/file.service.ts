@@ -36,7 +36,9 @@ export interface FileOptions {
   /** Optional custom names for assets. Mapped by indices to assets. */
   fileName?: string[]
   /** Custom file form fieldName */
-  fieldName?: string
+  fieldName?: string,
+  /** Deduplicate upload */
+  deduplicate?: boolean;
 }
 
 /** The CRUD service is meant to be used when modifying entries.
@@ -50,6 +52,13 @@ export class FileService {
   assetGroupListPromise: Promise<any>;
   /** The changes event is emitted everytime an entry is created or updated. */
   public uploads: EventEmitter<Upload> = new EventEmitter();
+  /** Default options for file upload */
+  public defaultOptions: FileOptions = {
+    preserveFilenames: true,
+    includeAssetIDInPath: true,
+    ignoreDuplicates: false,
+    fileName: []
+  };
 
   /** Injects sdk */
   constructor(private sdk: SdkService,
@@ -87,6 +96,9 @@ export class FileService {
     }
     if (options && options.ignoreDuplicates) {
       formData.append('ignoreDuplicates', 'true');
+    }
+    if (options && options.deduplicate) {
+      formData.append('deduplicate', 'true');
     }
     return formData;
   }

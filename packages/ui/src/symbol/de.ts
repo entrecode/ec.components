@@ -205,6 +205,10 @@ export default [
         content: 'Duplikate ignorieren'
     },
     {
+        name: 'upload.deduplicate',
+        content: 'Deduplizieren'
+    },
+    {
         name: 'upload.dropToUpload',
         content: 'Loslassen zum Hochladen'
     },

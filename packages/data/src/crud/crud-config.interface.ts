@@ -1,6 +1,7 @@
 import { ListConfig } from '../../../core/src/list/list-config.interface';
 import { LoaderComponent } from '../../../ui/src/loader/loader.component';
 import { NotificationsComponent } from '../../../ui/src/notifications/notifications.component';
+import { FileOptions } from '../files/file.service';
 
 /** The CrudConfig allows a quick customization of an ec-crud component. */
 export interface CrudConfig<T> extends ListConfig<T> {
@@ -42,4 +43,6 @@ export interface CrudConfig<T> extends ListConfig<T> {
   safeDelete?: boolean;
   /** Hides the assetGroup select in asset-list-pop */
   hideAssetGroupSelect?: boolean;
+  /** Default options for file uploads */
+  fileOptions?: FileOptions;
 }
