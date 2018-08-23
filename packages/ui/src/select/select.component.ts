@@ -132,7 +132,6 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   }
 
   public toggle(e) {
-    console.log('togle');
     if (this.pop) {
       this.pop.toggle();
     }

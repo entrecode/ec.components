@@ -1,3 +1,11 @@
+<div *ngIf="!model">
+  <select class="input" (change)="useModel($event.target.value)">
+    <option>{{'entry.select.placeholder.model'|symbol}}</option>
+    <option *ngFor="let model of models" [value]="model.title">
+      {{model.title}}
+    </option>
+  </select>
+</div>
 <div class="ec-entry-select" *ngIf="selection">
   <div class="ec-select" [class.is-solo]="solo" [class.is-dirty]="selection.items.length" (click)="activate()">
     <span class="ec-select__placeholder" *ngIf="!selection.items.length">
@@ -22,32 +30,27 @@
       </li>
     </ul>
     <!-- Dropdown -->
-    <ec-pop [ngClass]="config?.nestedPopClass || 'ec-select-options'" #dropdown *ngIf="!config.disableSelect">
-      <!-- [active]="config?.nestedPopActive" [visible]="config?.nestedPopVisible" -->
-      <ec-list [items]="models" *ngIf="!model" [config]="modelDropdownConfig" (columnClicked)="selectModel($event)"></ec-list>
-      <a (click)="switchModel($event)" *ngIf="model">{{model}}</a>
-      <ec-resource-list #entryList [relation]="'model.'+model" [api]="sdk.api" *ngIf="model" [config]="dropdownConfig" [selection]="selection"
-        (click)="$event.preventDefault();$event.stopPropagation()" (columnClicked)="select($event)"></ec-resource-list><!-- &&selection&&dropdown.active -->
+    <ec-pop [ngClass]="config?.nestedPopClass || 'ec-select-options'" #dropdown [active]="config?.nestedPopActive"
+      [visible]="config?.nestedPopVisible" *ngIf="!config.disableSelect">
+      <ec-entry-list #entryList [model]="model" *ngIf="selection&&dropdown.active" [config]="dropdownConfig" [selection]="selection"
+        (columnClicked)="select($event)"></ec-entry-list>
     </ec-pop>
   </div>
-  <div *ngIf="model">
-    <!-- Fully fledged entryListPop -->
-    <!-- [config]="config" -->
-    <ec-entry-list-pop [config]="{disableHeader:true,hidePagination:true}" [model]="model" [ngClass]="getPopClass()" class="ec-entry-list-pop"
-      [selection]="selection" #entryListPop></ec-entry-list-pop>
-    <ec-resource-delete-pop [question]="'entry.select.delete.question' | symbol" #confirmDelete></ec-resource-delete-pop>
-    <!--[config]="config"  -->
-    <ec-entry-pop #entryPop [model]="model" [ngClass]="getPopClass()" (submitted)="formSubmitted($event)" (deleted)="removeItem($event,true)"></ec-entry-pop>
-    <nav class="ec-entry-select__controls">
-      <a (click)="editItem(selection.items[0],$event)" class="btn btn_clear" *ngIf="solo&&!config.disableCreatePop&&hasMethod('put')&&!selection.isEmpty()">
-        <ec-icon name="pencil"></ec-icon>
-      </a>
-      <a (click)="entryListPop.show()" class="btn btn_clear" *ngIf="!config.disableListPop&&hasMethod('get')">
-        <ec-icon name="list-bullets"></ec-icon>
-      </a>
-      <a (click)="entryPop.create()" class="btn btn_clear" *ngIf="!config.disableCreatePop&&hasMethod('post')&&(!solo||selection.isEmpty())">
-        <ec-icon name="add"></ec-icon>
-      </a>
-    </nav>
-  </div>
+  <!-- Fully fledged entryListPop -->
+  <ec-entry-list-pop [model]="model" [ngClass]="getPopClass()" class="ec-entry-list-pop" [config]="config"
+    [selection]="selection" #entryListPop></ec-entry-list-pop>
+  <ec-resource-delete-pop [question]="'entry.select.delete.question' | symbol" #confirmDelete></ec-resource-delete-pop>
+
+  <ec-entry-pop #entryPop [model]="model" [ngClass]="getPopClass()" [config]="config" (submitted)="formSubmitted($event)" (deleted)="removeItem($event,true)"></ec-entry-pop>
+  <nav class="ec-entry-select__controls">
+    <a (click)="editItem(selection.items[0],$event)" class="btn btn_clear" *ngIf="solo&&!config.disableCreatePop&&hasMethod('put')&&!selection.isEmpty()">
+      <ec-icon name="pencil"></ec-icon>
+    </a>
+    <a (click)="entryListPop.show()" class="btn btn_clear" *ngIf="!config.disableListPop&&hasMethod('get')">
+      <ec-icon name="list-bullets"></ec-icon>
+    </a>
+    <a (click)="entryPop.create()" class="btn btn_clear" *ngIf="!config.disableCreatePop&&hasMethod('post')&&(!solo||selection.isEmpty())">
+      <ec-icon name="add"></ec-icon>
+    </a>
+  </nav>
 </div>
