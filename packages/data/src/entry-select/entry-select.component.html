@@ -23,9 +23,20 @@
     </ul>
     <!-- Dropdown -->
     <ec-pop [ngClass]="config?.nestedPopClass || 'ec-select-options'" #dropdown *ngIf="!config.disableSelect">
-      <!-- [active]="config?.nestedPopActive" [visible]="config?.nestedPopVisible" -->
       <ec-list [items]="models" *ngIf="!model" [config]="modelDropdownConfig" (columnClicked)="selectModel($event)"></ec-list>
-      <a (click)="switchModel($event)" *ngIf="model">{{model}}</a>
+      
+      <div class="ec-list" *ngIf="model">
+        <div class="ec-list-body">
+          <div class="ec-list-group">
+            <div class="ec-list-group-header">
+              <div class="ec-list-cell">
+                <a class="ec-list-group-header__title" (click)="switchModel($event)">{{model}}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <ec-resource-list #entryList [relation]="'model.'+model" [api]="sdk.api" *ngIf="model" [config]="dropdownConfig" [selection]="selection"
         (click)="$event.preventDefault();$event.stopPropagation()" (columnClicked)="select($event)"></ec-resource-list><!-- &&selection&&dropdown.active -->
     </ec-pop>

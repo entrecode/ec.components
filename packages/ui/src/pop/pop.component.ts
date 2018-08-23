@@ -1,7 +1,7 @@
 /**
  * Created by felix on 26.05.17.
  */
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, HostBinding } from '@angular/core';
 import { PopService } from './pop.service';
 
 /** A Pop is an area of content whose visibility can be toggled.
@@ -14,7 +14,7 @@ import { PopService } from './pop.service';
 })
 export class PopComponent {
   /** If true, .ec-pop is part of the DOM (*ngIf) + .active is set on .ec-pop-container.  */
-  @Input() active: boolean;
+  @Input() @HostBinding('class.is-active') active: boolean;
   /** If true, .visible is set on .ec-pop-container.  */
   @Input() visible: boolean;
   /** Emits the value of visible on change. */

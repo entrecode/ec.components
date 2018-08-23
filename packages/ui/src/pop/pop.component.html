@@ -1,6 +1,1 @@
-<div class="ec-pop-container" [class.is-active]="active" [class.is-visible]="visible">
-  <div class="ec-pop" *ngIf="active">
-    <ng-content></ng-content>
-  </div>
-</div>
-
+<ng-content *ngIf="active"></ng-content>
