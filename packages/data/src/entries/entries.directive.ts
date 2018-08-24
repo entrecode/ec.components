@@ -2,10 +2,11 @@
  * Created by felix on 23.05.17.
  */
 import { Directive, Input, OnChanges } from '@angular/core';
-import { LoaderComponent, WithLoader } from '../../../ui';
+import { LoaderComponent, WithLoader, NotificationsService } from '../../../ui';
 import EntryList from 'ec.sdk/lib/resources/publicAPI/EntryList';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { SdkService } from '../sdk/sdk.service';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 
 // import { filterOptions } from 'ec.sdk/lib/resources/ListResource';
 
@@ -34,7 +35,10 @@ export class EntriesDirective implements OnChanges, WithLoader {
   public items: EntryResource[] = [];
 
   /** Injects sdk */
-  constructor(private sdk: SdkService) {
+  constructor(
+    private sdk: SdkService,
+    public symbol: SymbolService,
+    public notificationService: NotificationsService) {
   }
 
   /** When the model is known, the entryList will be loaded. */
@@ -53,7 +57,11 @@ export class EntriesDirective implements OnChanges, WithLoader {
   /** Loads the entries */
   load() {
     this.promise = this.sdk.api.entryList(this.model, this.options)
-      .then(list => this.useList(list));
+      .then(list => this.useList(list))
+      .catch(error => this.notificationService.emit({
+        title: this.symbol.resolve('entries.load.error'),
+        error
+      }));
     if (this.loader) {
       this.loader.wait(this.promise);
     }

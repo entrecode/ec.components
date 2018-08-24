@@ -413,6 +413,14 @@ export default [
         content: 'addUnregistered'
     },
     {
+        name: 'entries.load.error',
+        content: 'Die Entries konnten nicht geladen werden'
+    },
+    {
+        name: 'entry.load.error',
+        content: 'Der Entry konnte nicht geladen werden'
+    },
+    {
         name: 'entry.select.delete.question',
         content: 'Soll der Entry auch gelöscht werden?'
     },
