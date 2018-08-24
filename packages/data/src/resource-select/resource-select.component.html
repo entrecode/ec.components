@@ -11,7 +11,7 @@
                 </span>
             </li>
         </ul>
-        <ec-pop [ngClass]="config?.nestedPopClass || 'ec-select-options'" #dropdown [active]="config?.nestedPopActive" [visible]="config?.nestedPopVisible">
+        <ec-pop class="ec-select-options" #dropdown>
             <ec-resource-list [relation]="relation" [api]="api" *ngIf="selection&&dropdown.active" [config]="dropdownConfig" [selection]="selection"
                 (columnClicked)="select($event)"></ec-resource-list>
         </ec-pop>
@@ -22,7 +22,7 @@
     </div>
     <ec-resource-pop #resourcePop [api]="api" [relation]="relation" [ngClass]="getPopClass()" [config]="config" (submitted)="formSubmitted($event)"
         (deleted)="removeItem($event)"></ec-resource-pop>
-    <nav class="ec-resource-select">
+    <nav class="ec-resource-select__controls">
         <a (click)="editItem(selection.items[0],$event)" class="btn btn_clear" *ngIf="solo&&!config.disableCreatePop&&hasMethod('put')&&!selection.isEmpty()">
             <ec-icon name="pencil"></ec-icon>
         </a>
