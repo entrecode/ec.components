@@ -2585,7 +2585,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="138" class="link-to-prism">packages/data/src/model-config/type-config.service.ts:138</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="156" class="link-to-prism">packages/data/src/model-config/type-config.service.ts:156</a></div>
                             </td>
                         </tr>
 
@@ -2650,7 +2650,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="173" class="link-to-prism">packages/data/src/model-config/type-config.service.ts:173</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="191" class="link-to-prism">packages/data/src/model-config/type-config.service.ts:191</a></div>
                             </td>
                         </tr>
 
@@ -2690,7 +2690,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="167" class="link-to-prism">packages/data/src/model-config/type-config.service.ts:167</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="185" class="link-to-prism">packages/data/src/model-config/type-config.service.ts:185</a></div>
                             </td>
                         </tr>
 
@@ -2761,7 +2761,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="142" class="link-to-prism">packages/data/src/model-config/type-config.service.ts:142</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="160" class="link-to-prism">packages/data/src/model-config/type-config.service.ts:160</a></div>
                             </td>
                         </tr>
 
@@ -2832,7 +2832,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="178" class="link-to-prism">packages/data/src/model-config/type-config.service.ts:178</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="196" class="link-to-prism">packages/data/src/model-config/type-config.service.ts:196</a></div>
                             </td>
                         </tr>
 
@@ -2872,7 +2872,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="158" class="link-to-prism">packages/data/src/model-config/type-config.service.ts:158</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="176" class="link-to-prism">packages/data/src/model-config/type-config.service.ts:176</a></div>
                             </td>
                         </tr>
 
@@ -3059,7 +3059,25 @@
     assets: {
       view: &#x27;assets&#x27;,
       input: DefaultEntryInputComponent,
-      /* display: (value, entry, property) &#x3D;&gt; entry.getImageThumbUrl(property, 100), */
+      display: (value, entry, property) &#x3D;&gt; entry.getImageThumbUrl(property, 100),
+      prefill: [],
+      filterOperator: &#x27;any&#x27;,
+      filterable: true,
+      queryFilter: (value) &#x3D;&gt; value.split(&#x27;,&#x27;),
+      filterPopClass: &#x27;ec-pop_dialog&#x27;
+    },
+    dmAsset: {
+      view: &#x27;dmAsset&#x27;,
+      input: DefaultEntryInputComponent,
+      filterOperator: &#x27;exact&#x27;,
+      filterable: true,
+      display: (value, entry, property) &#x3D;&gt; entry.getImageThumbUrl(property, 100),
+      filterPopClass: &#x27;ec-pop_dialog&#x27;
+    },
+    dmAssets: {
+      view: &#x27;dmAssets&#x27;,
+      input: DefaultEntryInputComponent,
+      display: (value, entry, property) &#x3D;&gt; entry.getImageThumbUrl(property, 100),
       prefill: [],
       filterOperator: &#x27;any&#x27;,
       filterable: true,
@@ -3220,7 +3238,25 @@ export class TypeConfigService {
     assets: {
       view: &#x27;assets&#x27;,
       input: DefaultEntryInputComponent,
-      /* display: (value, entry, property) &#x3D;&gt; entry.getImageThumbUrl(property, 100), */
+      display: (value, entry, property) &#x3D;&gt; entry.getImageThumbUrl(property, 100),
+      prefill: [],
+      filterOperator: &#x27;any&#x27;,
+      filterable: true,
+      queryFilter: (value) &#x3D;&gt; value.split(&#x27;,&#x27;),
+      filterPopClass: &#x27;ec-pop_dialog&#x27;
+    },
+    dmAsset: {
+      view: &#x27;dmAsset&#x27;,
+      input: DefaultEntryInputComponent,
+      filterOperator: &#x27;exact&#x27;,
+      filterable: true,
+      display: (value, entry, property) &#x3D;&gt; entry.getImageThumbUrl(property, 100),
+      filterPopClass: &#x27;ec-pop_dialog&#x27;
+    },
+    dmAssets: {
+      view: &#x27;dmAssets&#x27;,
+      input: DefaultEntryInputComponent,
+      display: (value, entry, property) &#x3D;&gt; entry.getImageThumbUrl(property, 100),
       prefill: [],
       filterOperator: &#x27;any&#x27;,
       filterable: true,

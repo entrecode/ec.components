@@ -2805,7 +2805,9 @@ export interface FileOptions {
   /** Optional custom names for assets. Mapped by indices to assets. */
   fileName?: string[]
   /** Custom file form fieldName */
-  fieldName?: string
+  fieldName?: string,
+  /** Deduplicate upload */
+  deduplicate?: boolean;
 }
 
 /** The CRUD service is meant to be used when modifying entries.
@@ -2819,6 +2821,14 @@ export class FileService {
   assetGroupListPromise: Promise&lt;any&gt;;
   /** The changes event is emitted everytime an entry is created or updated. */
   public uploads: EventEmitter&lt;Upload&gt; &#x3D; new EventEmitter();
+  /** Default options for file upload */
+  public defaultOptions: FileOptions &#x3D; {
+    preserveFilenames: true,
+    includeAssetIDInPath: true,
+    ignoreDuplicates: false,
+    deduplicate: false,
+    fileName: []
+  };
 
   /** Injects sdk */
   constructor(private sdk: SdkService,
@@ -2848,14 +2858,13 @@ export class FileService {
       const fieldname &#x3D; options &amp;&amp; options.preserveFilenames &amp;&amp; options.fieldName ? options.fieldName : &#x27;file&#x27;;
       formData.append(fieldname, files.item(i), name);
     }
-    if (options &amp;&amp; !options.preserveFilenames) {
-      formData.append(&#x27;preserveFilenames&#x27;, &#x27;false&#x27;);
-    }
-    if (options &amp;&amp; !options.includeAssetIDInPath) {
-      formData.append(&#x27;includeAssetIDInPath&#x27;, &#x27;false&#x27;);
-    }
-    if (options &amp;&amp; options.ignoreDuplicates) {
-      formData.append(&#x27;ignoreDuplicates&#x27;, &#x27;true&#x27;);
+    if (options) {
+      [&#x27;preserveFilenames&#x27;, &#x27;includeAssetIDInPath&#x27;, &#x27;ignoreDuplicates&#x27;, &#x27;deduplicate&#x27;]
+        .forEach(key &#x3D;&gt; {
+          if (key in options) {
+            formData.append(key, &#x60;${options[key]}&#x60;);
+          }
+        });
     }
     return formData;
   }
@@ -2965,7 +2974,7 @@ export class FileService {
     if (selection.config.solo) {
       selection.select(upload.item);
     } else {
-      selection.toggleAll(upload.items);
+      selection.toggleAll(upload.items, false, true);
     }
   }
 }

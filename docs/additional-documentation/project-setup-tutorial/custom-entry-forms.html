@@ -2631,42 +2631,49 @@ import { InputComponent } from &#39;&#64;ec.components/ui&#39;;
       multi: true
     }
   ]
-})
-export class OpeningHoursComponent extends InputComponent implements ControlValueAccessor {
-
-  writeValue(value: any) {
-    console.log(&#39;received value&#39;, value);
-  }
-
-  propagateChange = (_: any) =&gt; {
-  };
-
-  registerOnChange(fn) {
-    this.propagateChange = fn;
-  }
-
-  registerOnTouched() {
-  }
-
-}</code></pre></div><p>Now you can implement your own logic and call propagateChange when you change the value from your component, and react to change via the writeValue method!
+})</code></pre></div><p>Now you can implement your own logic and call propagateChange when you change the value from your component, and react to change via the writeValue method!
 You now could also use your component with ngModel or formControl in another context!
 More information on this pattern: <a href="https://blog.thoughtram.io/angular/2016/07/27/custom-form-controls-in-angular-2.html">https://blog.thoughtram.io/angular/2016/07/27/custom-form-controls-in-angular-2.html</a></p>
-<h2 id="experimental-custom-fields-without-wrapper">EXPERIMENTAL: Custom Fields without wrapper</h2>
-<p>You can now also use custom components as input directly without needing to wrap them explicitly.
-What you need to is:</p>
-<ol>
-<li>Extend DefaultInputComponent</li>
-</ol>
-<div><pre class="line-numbers"><code class="language-js">export class JsonEditorComponent extends extends DefaultInputComponent</code></pre></div><ol start="2">
-<li>add the input component as member variable:</li>
-</ol>
-<div><pre class="line-numbers"><code class="language-js">/** Form input component */
-input: InputComponent;</code></pre></div><p>and propagate the change to the input as well:</p>
-<div><pre class="line-numbers"><code class="language-js">this.propagateChange(this.value);
-if (this.input) { // this is the important part
- this.input.propagateChange(this.value);
-}</code></pre></div><p>input will be defined when the component is used as input component inside ec-form.</p>
+<h2 id="custom-fields-without-wrapper">Custom Fields without wrapper</h2>
+<p>You can also use custom components as input directly without needing to wrap them in &quot;CustomFieldsComponent&quot;.
+Just make sure you implement ControlValueAccessor like above. When changes occur from the template, call propagateChange. You can react to outside model changes in writeValue.</p>
+<div><pre class="line-numbers"><code class="language-typescript">import { Component, OnInit, Input } from &#39;&#64;angular/core&#39;;
+import { InputComponent } from &#39;../../../packages/ui&#39;;
+import { ControlValueAccessor } from &#39;&#64;angular/forms&#39;;
 
+&#64;Component({
+    selector: &#39;ec-counter&#39;,
+    templateUrl: &#39;./counter.component.html&#39;
+})
+
+export class CounterComponent extends InputComponent implements ControlValueAccessor {
+
+    value = 0;
+
+    increment() {
+        this.propagateChange(++this.value);
+    }
+
+    decrement() {
+        this.propagateChange(--this.value);
+    }
+
+    writeValue(value: any) {
+        this.value = value;
+        console.log(&#39;received value&#39;, value);
+    }
+
+    propagateChange = (_: any) =&gt; {
+    };
+
+    registerOnChange(fn) {
+        this.propagateChange = fn;
+    }
+
+    registerOnTouched() {
+    }
+
+}</code></pre></div>
                    </div><div class="search-results">
     <div class="has-results">
         <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
