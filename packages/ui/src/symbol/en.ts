@@ -213,6 +213,10 @@ export default [
         content: 'Ignore Duplicates'
     },
     {
+        name: 'upload.deduplicate',
+        content: 'Deduplicate'
+    },
+    {
         name: 'upload.dropToUpload',
         content: 'drop to upload'
     },
@@ -415,6 +419,14 @@ export default [
     {
         name: 'role.field.label.addUnregistered',
         content: 'addUnregistered'
+    },
+    {
+        name: 'entries.load.error',
+        content: 'Entries could not be loaded'
+    },
+    {
+        name: 'entry.load.error',
+        content: 'The entry could not be loaded'
     },
     {
         name: 'entry.select.delete.question',

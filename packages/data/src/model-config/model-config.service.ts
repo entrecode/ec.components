@@ -11,8 +11,6 @@ import { CrudService } from '../crud/crud.service';
 import { SdkService } from '../sdk/sdk.service';
 import { TypeConfigService } from './type-config.service';
 
-// TODO: use new getFieldConfig method of PublicAPI
-
 /** The main class for configuring the behaviour of a model.
  * By default, everything is auto generated from the model's schema but can be overriden via the
  * set method. */

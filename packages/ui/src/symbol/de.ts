@@ -205,6 +205,10 @@ export default [
         content: 'Duplikate ignorieren'
     },
     {
+        name: 'upload.deduplicate',
+        content: 'Deduplizieren'
+    },
+    {
         name: 'upload.dropToUpload',
         content: 'Loslassen zum Hochladen'
     },
@@ -407,6 +411,14 @@ export default [
     {
         name: 'role.field.label.addUnregistered',
         content: 'addUnregistered'
+    },
+    {
+        name: 'entries.load.error',
+        content: 'Die Entries konnten nicht geladen werden'
+    },
+    {
+        name: 'entry.load.error',
+        content: 'Der Entry konnte nicht geladen werden'
     },
     {
         name: 'entry.select.delete.question',

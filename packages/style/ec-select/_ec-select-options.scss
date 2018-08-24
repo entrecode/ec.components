@@ -1,5 +1,31 @@
+// @param {color} $ec-select-options-background [$xui-select-options-background]
+// @param {array} $ec-select-options-padding [$xui-select-options-padding]
+// @param {array} $ec-select-options-spacing [$ec-select-border-width 0 0]
+// @param {array} $ec-select-options-radius [$xui-select-options-radius]
+// @param {px | null} $ec-select-options-max-height [$xui-select-options-max-height]
+// @param {array} $ec-select-options-shadow [$xui-overlay-shadow]
+// @param {array} $ec-select-options-style [$xui-select-options-style]
+
 .ec-select-options {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  z-index: 10;
+  width: 100%;
+  display: none;
+  @include inject-style($ec-select-options-style);
+  @include is-scrollable(y, contain, auto);
   font-size: rem($base-font-size);
+  max-height: rem($ec-select-options-max-height);
+  margin: arrayMagic($ec-select-options-spacing);
+  padding: arrayMagic($ec-select-options-padding);
+  box-shadow: arrayMagic($ec-select-options-shadow);
+  border-radius: arrayMagic($ec-select-options-radius);
+  background: $ec-select-options-background;
+
+  &.is-active {
+    display: block;
+  }
 
   .ec-list {
     .ec-list-header {
@@ -47,31 +73,6 @@
 
     .ec-pagination-info {
       text-align: right;
-    }
-  }
-
-  // @param {color} $ec-select-options-background [$xui-select-options-background]
-  // @param {array} $ec-select-options-padding [$xui-select-options-padding]
-  // @param {array} $ec-select-options-spacing [$ec-select-border-width 0 0]
-  // @param {array} $ec-select-options-radius [$xui-select-options-radius]
-  // @param {px | null} $ec-select-options-max-height [$xui-select-options-max-height]
-  // @param {array} $ec-select-options-shadow [$xui-overlay-shadow]
-  // @param {array} $ec-select-options-style [$xui-select-options-style]
-  .ec-pop-container {
-    .ec-pop {
-      position: absolute;
-      left: 0;
-      top: 100%;
-      z-index: 10;
-      width: 100%;
-      @include inject-style($ec-select-options-style);
-      @include is-scrollable(y, contain, auto);
-      max-height: rem($ec-select-options-max-height);
-      margin: arrayMagic($ec-select-options-spacing);
-      padding: arrayMagic($ec-select-options-padding);
-      box-shadow: arrayMagic($ec-select-options-shadow);
-      border-radius: arrayMagic($ec-select-options-radius);
-      background: $ec-select-options-background;
     }
   }
 }
