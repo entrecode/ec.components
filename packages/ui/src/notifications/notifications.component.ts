@@ -38,6 +38,9 @@ export class NotificationsComponent {
         notification.replace.length = 0;
         notification.replace.push(notification);
       }
+
+      console.log(notification);
+
       if (!notification.host || notification.host === this) {
         this.notifications.add(notification);
         if (notification.sticky) {

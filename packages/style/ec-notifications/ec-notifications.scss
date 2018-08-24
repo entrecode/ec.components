@@ -34,28 +34,27 @@
 }
 
 .ec-notification {
-  display: flex;
   flex-direction: column;
   transition: all 0.2s;
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+  width: 100%;
+  border-left-style: solid;
+  @include inject-style($ec-notification-style);
+  font-size: em($ec-notification-font-size);
+  background: $ec-notification-background;
+  padding: arrayMagic($ec-notification-padding);
+  box-shadow: arrayMagix($ec-notification-shadow);
+  border-radius: arrayMagic($ec-notification-radius);
+  margin: arrayMagic($ec-notification-spacing);
+  max-width: rem($ec-notification-max-width);
+  animation: $ec-notification-animation $ec-notification-animation-speed
+    $ec-notification-animation-behavior;
+  border-left-width: rem($ec-notification-flag-width);
 
-  .ec-pop-container {
-    .ec-pop {
-      cursor: pointer;
-      position: relative;
-      user-select: none;
-      width: 100%;
-      border-left-style: solid;
-      @include inject-style($ec-notification-style);
-      font-size: em($ec-notification-font-size);
-      background: $ec-notification-background;
-      padding: arrayMagic($ec-notification-padding);
-      box-shadow: arrayMagix($ec-notification-shadow);
-      border-radius: arrayMagic($ec-notification-radius);
-      margin: arrayMagic($ec-notification-spacing);
-      max-width: rem($ec-notification-max-width);
-      animation: $ec-notification-animation $ec-notification-animation-speed $ec-notification-animation-behavior;
-      border-left-width: rem($ec-notification-flag-width);
-    }
+  &.is-active {
+    display: flex;
   }
 
   // @param {px} $ec-notification-title-font-size [$ec-notification-font-size]
@@ -75,12 +74,11 @@
     align-items: center;
     justify-content: center;
     position: absolute;
-    right: 0;
+    right: rem(4);
     top: rem(4);
-    width: rem(20);
-    height: rem(20);
+    width: rem(24);
+    height: rem(24);
     text-align: center;
-    margin: 0;
     opacity: 0.6;
     color: setContrast($ec-notification-background);
 
@@ -99,26 +97,18 @@
   // @param {color} $ec-notification-flag-warning [$state-warning
 
   &.is-info {
-    .ec-pop {
-      border-left-color: $ec-notification-flag-info;
-    }
+    border-left-color: $ec-notification-flag-info;
   }
 
   &.is-error {
-    .ec-pop {
-      border-left-color: $ec-notification-flag-error;
-    }
+    border-left-color: $ec-notification-flag-error;
   }
 
   &.is-success {
-    .ec-pop {
-      border-left-color: $ec-notification-flag-success;
-    }
+    border-left-color: $ec-notification-flag-success;
   }
 
   &.is-warning {
-    .ec-pop {
-      border-left-color: $ec-notification-flag-warning;
-    }
+    border-left-color: $ec-notification-flag-warning;
   }
 }
