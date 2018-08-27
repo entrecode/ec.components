@@ -1,11 +1,11 @@
 import { Component, OnInit, Input, EventEmitter, Output, ViewChild } from '@angular/core';
 import { LoaderComponent } from '@ec.components/ui';
-import { CrudConfig } from '@ec.components/data/src/crud/crud-config.interface';
+import { CrudConfig } from '../../crud/crud-config.interface';
 import DMAssetResource from 'ec.sdk/lib/resources/publicAPI/DMAssetResource';
 import PublicAssetResource from 'ec.sdk/lib/resources/publicAPI/PublicAssetResource';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
-import { UploadComponent } from '@ec.components/data/src/files';
-import { Upload } from '@ec.components/data/src/files/file.service';
+import { UploadComponent } from '../';
+import { Upload, FileOptions, FileService } from '../file.service';
 
 @Component({
     selector: 'ec-upload-select',
@@ -18,6 +18,7 @@ export class UploadSelectComponent implements OnInit {
     @Input() disableDrop: boolean;
     @Input() assetGroupID: string;
     @Input() loader: LoaderComponent;
+    @Input() options: FileOptions = Object.assign({}, this.fileService.defaultOptions);
     /** emits when the group has been set from the upload pop */
     @Output() groupChanged: EventEmitter<string> = new EventEmitter();
     /** Emits when an upload is complete. */
@@ -33,7 +34,7 @@ export class UploadSelectComponent implements OnInit {
     /** The event that focuses the url input */
     public focusEvent: EventEmitter<boolean> = new EventEmitter();
 
-    constructor(public symbol: SymbolService) { }
+    constructor(public symbol: SymbolService, public fileService: FileService) { }
 
     ngOnInit() { }
 

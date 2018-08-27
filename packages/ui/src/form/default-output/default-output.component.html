@@ -30,21 +30,29 @@
   </div>
 
   <div class="ec-output-asset" *ngSwitchCase="'asset'" [class.is-true]="item?.resolve(field.property)">
-    <ec-icon name="img"></ec-icon>
+    <ec-icon name="tape"></ec-icon>
   </div>
 
   <div class="ec-output-assets" *ngSwitchCase="'assets'" [class.is-true]="item?.resolve(field.property)">
-    <!--<ul class="ec-output_assets-list">
-      <li *ngFor="let url of item?.display(field.property)">
-        <img [src]="url">
-      </li>
-    </ul>-->
+    <ec-icon name="tape"></ec-icon>
+    <strong>{{item?.resolve(field.property)?.length}}</strong>
+  </div>
+
+  <div class="ec-output-asset" *ngSwitchCase="'dmAsset'" [class.is-true]="item?.resolve(field.property)">
     <ec-icon name="img"></ec-icon>
-    <strong>{{item?.display(field.property)?.length}}</strong>
+  </div>
+
+  <div data-flex class="ec-output-assets" *ngSwitchCase="'dmAssets'" [class.is-true]="item?.resolve(field.property)">
+    <ec-icon name="img"></ec-icon>
+    <strong>{{item?.resolve(field.property)?.length}}</strong>
   </div>
 
   <div class="ec-output-avatar" *ngSwitchCase="'avatar'">
-    <img [src]="item?.display(field.property)">
+    <img [src]="item?.display(field.property)" class="avatar">
+  </div>
+
+  <div class="ec-output-avatar" *ngSwitchCase="'avatars'">
+    <img *ngFor="let url of item?.display(field.property)" [src]="url" class="avatar">
   </div>
 
   <div class="ec-output-preview" *ngSwitchCase="'preview'">

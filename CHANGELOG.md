@@ -1,4 +1,25 @@
 # Changelog
+<a name="0.34.0"></a>
+
+## @ec.components/data 0.34.0
+
+BREAKING CHANGE:
+
+* ec-searchbar list input now expects a list instance instead of a list component. The component can now be passed to listComponent input to enable arrow navigation. 
+
+Change:
+
+```html
+<ec-searchbar [list]="resourceList"></ec-searchbar>
+```
+
+to
+
+```html
+<ec-searchbar [list]="resourceList?.list" [listComponent]="resourceList"></ec-searchbar>
+```
+
+The change was introduced to sync the list filter with the searchbar query.
 
 <a name="0.29.0"></a>
 

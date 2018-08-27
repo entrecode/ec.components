@@ -85,7 +85,9 @@ export class ResourceListComponent extends ListComponent<Resource>
       }
       this.list = list;
       this.listConfig.applyConfig(this.list);
-      this.list.change$.subscribe(newList => this.changed.next(newList));
+      this.list.change$.subscribe(newList => {
+        this.changed.next(newList)
+      });
       if (this.list.promise) {
         this.loaderService.wait(this.list.promise, this.loader);
       }

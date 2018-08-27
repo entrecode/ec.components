@@ -225,54 +225,53 @@ import { InputComponent } from '@ec.components/ui';
     }
   ]
 })
-export class OpeningHoursComponent extends InputComponent implements ControlValueAccessor {
-
-  writeValue(value: any) {
-    console.log('received value', value);
-  }
-
-  propagateChange = (_: any) => {
-  };
-
-  registerOnChange(fn) {
-    this.propagateChange = fn;
-  }
-
-  registerOnTouched() {
-  }
-
-}
 ```
 
 Now you can implement your own logic and call propagateChange when you change the value from your component, and react to change via the writeValue method!
 You now could also use your component with ngModel or formControl in another context!
 More information on this pattern: https://blog.thoughtram.io/angular/2016/07/27/custom-form-controls-in-angular-2.html
 
-## EXPERIMENTAL: Custom Fields without wrapper
+## Custom Fields without wrapper
 
-You can now also use custom components as input directly without needing to wrap them explicitly.
-What you need to is:
+You can also use custom components as input directly without needing to wrap them in "CustomFieldsComponent".
+Just make sure you implement ControlValueAccessor like above. When changes occur from the template, call propagateChange. You can react to outside model changes in writeValue.
 
-1. Extend DefaultInputComponent
+```typescript
+import { Component, OnInit, Input } from '@angular/core';
+import { InputComponent } from '../../../packages/ui';
+import { ControlValueAccessor } from '@angular/forms';
 
-```js
-export class JsonEditorComponent extends extends DefaultInputComponent
-```
+@Component({
+    selector: 'ec-counter',
+    templateUrl: './counter.component.html'
+})
 
-2. add the input component as member variable:
+export class CounterComponent extends InputComponent implements ControlValueAccessor {
 
-```js
-/** Form input component */
-input: InputComponent;
-```
+    value = 0;
 
-and propagate the change to the input as well:
+    increment() {
+        this.propagateChange(++this.value);
+    }
 
-```js
-this.propagateChange(this.value);
-if (this.input) { // this is the important part
- this.input.propagateChange(this.value);
+    decrement() {
+        this.propagateChange(--this.value);
+    }
+
+    writeValue(value: any) {
+        this.value = value;
+        console.log('received value', value);
+    }
+
+    propagateChange = (_: any) => {
+    };
+
+    registerOnChange(fn) {
+        this.propagateChange = fn;
+    }
+
+    registerOnTouched() {
+    }
+
 }
 ```
-
-input will be defined when the component is used as input component inside ec-form.

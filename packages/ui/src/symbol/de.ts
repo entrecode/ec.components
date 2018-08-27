@@ -205,6 +205,10 @@ export default [
         content: 'Duplikate ignorieren'
     },
     {
+        name: 'upload.deduplicate',
+        content: 'Deduplizieren'
+    },
+    {
         name: 'upload.dropToUpload',
         content: 'Loslassen zum Hochladen'
     },
@@ -409,6 +413,14 @@ export default [
         content: 'addUnregistered'
     },
     {
+        name: 'entries.load.error',
+        content: 'Die Entries konnten nicht geladen werden'
+    },
+    {
+        name: 'entry.load.error',
+        content: 'Der Entry konnte nicht geladen werden'
+    },
+    {
         name: 'entry.select.delete.question',
         content: 'Soll der Entry auch gelöscht werden?'
     },
@@ -423,5 +435,17 @@ export default [
     {
         name: 'entry.select.placeholder.model',
         content: 'Model wählen...'
+    },
+    {
+        name: 'list.empty',
+        content: 'Noch keine Einträge..'
+    },
+    {
+        name: 'list.filter.noResults',
+        content: 'Keine Einträge gefunden'
+    },
+    {
+        name: 'list.filter.reset',
+        content: 'Filter aufheben'
     }
 ];

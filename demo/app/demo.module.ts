@@ -54,9 +54,10 @@ import { GithubSourceComponent } from './github-source/github-source.component';
 import { GithubSourcesComponent } from './github-source/github-sources.component';
 import { DoclinksComponent } from './doclinks/doclinks.component';
 import moment from 'moment-es6';
-import de from '@ec.components/ui/src/symbol/de';
-import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
-import en from '@ec.components/ui/src/symbol/en';
+import de from '../../packages/ui/src/symbol/de';
+import { SymbolService } from '../../packages/ui/src/symbol/symbol.service';
+import en from '../../packages/ui/src/symbol/en';
+import { CounterComponent } from './form/counter.component';
 
 demoRoutes.unshift(
   {
@@ -110,11 +111,13 @@ demoRoutes.unshift(
     ResourceDeletePopDemoComponent,
     ResourceSelectDemoComponent,
     FileListDemoComponent,
-    LocationPickerDemoComponent
+    LocationPickerDemoComponent,
+    CounterComponent
   ],
   entryComponents: [
     CoolStringComponent,
-    UnsplashImageComponent
+    UnsplashImageComponent,
+    CounterComponent
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,7 @@ import { Field, Form, Item } from '../../../packages/core';
 import { DefaultEntryInputComponent } from '../../../packages/data';
 import { DefaultInputComponent } from '../../../packages/ui';
 import { mocked } from '../../../mocks/data';
+import { CounterComponent } from './counter.component';
 
 @Component({
   selector: 'ec-form-demo',
@@ -61,6 +62,14 @@ export class FormDemoComponent {
     type: 'entry',
     input: DefaultEntryInputComponent,
     relation: 'muffin'
+  }
+
+  customFormConfig = {
+    fields: {
+      count: {
+        input: CounterComponent
+      }
+    }
   }
 
   constructor() {

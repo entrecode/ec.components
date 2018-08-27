@@ -5,7 +5,7 @@ import { SdkService } from '../sdk/sdk.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/filter';
 import { Subject } from 'rxjs/Subject';
-import { ResourceService } from '@ec.components/data/src/resource-config/resource.service';
+import { ResourceService } from '../resource-config/resource.service';
 
 /** The CRUD service is meant to be used when modifying entries.
  * As the letters state it should be used to create update and delete entries.

@@ -84,4 +84,8 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
     return !this.assetGroupID || this.assetGroupID === 'legacyAsset' ? 'legacyAsset'
       : 'dmAsset.' + this.assetGroupID;
   }
+
+  showGroupSelect() {
+    return this.config.hideAssetGroupSelect === false;
+  }
 }

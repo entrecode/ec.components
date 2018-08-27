@@ -5,16 +5,14 @@ import { Component, forwardRef, Input, OnInit, ViewChild, ViewEncapsulation, Eve
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Item } from '@ec.components/core/src/item/item';
 import { SdkService } from '../../..';
-import { SelectComponent } from '@ec.components/ui';
+import { SelectComponent, NotificationsService } from '@ec.components/ui';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 import DMAssetResource from 'ec.sdk/lib/resources/publicAPI/DMAssetResource';
 import PublicAssetResource from 'ec.sdk/lib/resources/publicAPI/PublicAssetResource';
 import { CrudConfig } from '../../crud/crud-config.interface';
 import { ResourceConfig } from '../../resource-config/resource-config.service';
 import { AssetListPopComponent } from '../asset-list-pop/asset-list-pop.component';
-import { FileService, Upload } from '../file.service';
-import { UploadComponent } from '../upload/upload.component';
-import { UploadSelectComponent } from '../upload-select/upload-select.component';
+import { FileService } from '../file.service';
 
 /** Shows assets of a selection and is able to pick new ones from a crud list.
  * <example-url>https://components.entrecode.de/assets/asset-select?e=1</example-url>
@@ -66,6 +64,7 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
   constructor(
     private fileService: FileService,
     public resourceConfig: ResourceConfig,
+    public notificationService: NotificationsService,
     public sdk: SdkService,
     public symbol: SymbolService,
     public elementRef: ElementRef
@@ -95,9 +94,9 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
 
   getAssetGroupID() {
     if (!this.value || (Array.isArray(this.value) && this.value.length === 0)) {
-      return 'legacyAssets';
+      return 'legacyAsset';
     } else if (Array.isArray(this.value)) {
-      return this.value[0].assetGroupID || 'legacyAssets';
+      return this.value[0].assetGroupID || 'legacyAsset';
     }
     return this.value.assetGroupID;
   }
@@ -111,11 +110,31 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
       console.error('Mixed Content!', this.formControl.value)
       return;
     }
+    if (this.assetGroupID === 'null') {
+      delete this.assetGroupID;
+    }
     if (this.containsNewAssets() || (this.assetGroupID && this.assetGroupID !== 'legacyAsset')) {
+      const oldAssetTypes = ['image', 'video', 'audio', 'plain', 'document', 'spreadsheet'];
+      if (!this.assetGroupID || oldAssetTypes.concat('legacyAsset').includes(this.assetGroupID)) {
+        this.notificationService.emit({
+          title: 'Falsche Assets',
+          type: 'error',
+          sticky: true,
+          message: 'ALARM: asset picker hat neues asset aber assetGroupID "' + this.assetGroupID + '".Bitte füge im model die assetGroupID "' + this.getAssetGroupID() + '" als validation des feldes hinzu'
+        });
+      }
       config = this.dmAssetConfig;
       this.assetGroupID = this.assetGroupID || this.getAssetGroupID();
     } else if (this.containsOldAssets() || this.assetGroupID === 'legacyAsset') {
       // legacy assets
+      if (this.assetGroupID && this.assetGroupID !== 'legacyAsset') {
+        this.notificationService.emit({
+          title: 'Falsche Assets',
+          type: 'error',
+          sticky: true,
+          message: 'ALARM: asset picker hat altes asset aber assetGroupID "' + this.assetGroupID + '". Entweder asset entfernen oder validation rausnehmen.'
+        });
+      }
       config = this.legacyAssetConfig;
       this.assetGroupID = 'legacyAsset';
     }

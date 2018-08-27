@@ -34,6 +34,7 @@
     color: $ec-select-selected-color;
     opacity: 0.6;
     padding-left: rem(8);
+    flex-shrink: 0;
   }
 
   &:hover {
@@ -42,6 +43,24 @@
     a {
       opacity: 1;
     }
+  }
+}
+
+// @param {array} $ec-select-selected-solo-style
+
+.ec-select-selected_solo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-items: center;
+  white-space: nowrap;
+  @include inject-style($ec-select-selected-solo-style);
+
+  a {
+    color: $ec-select-color;
+    opacity: 0.6;
+    padding-left: rem(8);
+    flex-shrink: 0;
   }
 }
 

@@ -4,7 +4,7 @@
             <button (click)="hide()" type="button" class="ec-pop__dismiss">
                 <ec-icon name="close-x-big"></ec-icon>
             </button>
-            <ec-searchbar (selected)="hide()" placeholder="Search.." [list]="resourceList" #searchbar *ngIf="resourceList" [property]="config?.label"></ec-searchbar>
+            <ec-searchbar *ngIf="resourceList.list" [listComponent]="resourceList" (selected)="hide()" placeholder="Search.." [list]="resourceList.list" #searchbar [property]="config?.label"></ec-searchbar>
             <ec-list-header [list]="resourceList?.list" [selection]="selection"></ec-list-header>
         </header>
         <div class="ec-pop-body">

@@ -903,14 +903,14 @@
                         <a href="modules/TinymceModule.html" data-type="entity-link">TinymceModule</a>
                             <li class="chapter inner">
                                 <div class="simple menu-toggler" data-toggle="collapse"
-                                        data-target="#xs-components-links-module-TinymceModule-76adb5a26fdfe79b90574b0804cab876"
+                                        data-target="#xs-components-links-module-TinymceModule-b33ada019b508c2fa2d35e1bf94eea4f"
                                     >
                                     <span class="fa fa-fw fa-cogs"></span>
                                     <span>Components</span>
                                     <span class="fa fa-angle-down"></span>
                                 </div>
                                 <ul class="links collapse"
-                                        id="xs-components-links-module-TinymceModule-76adb5a26fdfe79b90574b0804cab876"
+                                        id="xs-components-links-module-TinymceModule-b33ada019b508c2fa2d35e1bf94eea4f"
                                     >
                                         <li class="link">
                                             <a href="components/TinymceComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">TinymceComponent</a>
@@ -2133,14 +2133,14 @@
                         <a href="modules/TinymceModule.html" data-type="entity-link">TinymceModule</a>
                             <li class="chapter inner">
                                 <div class="simple menu-toggler" data-toggle="collapse"
-                                        data-target="#components-links-module-TinymceModule-76adb5a26fdfe79b90574b0804cab876"
+                                        data-target="#components-links-module-TinymceModule-b33ada019b508c2fa2d35e1bf94eea4f"
 >
                                     <span class="fa fa-fw fa-cogs"></span>
                                     <span>Components</span>
                                     <span class="fa fa-angle-down"></span>
                                 </div>
                                 <ul class="links collapse"
-                                        id="components-links-module-TinymceModule-76adb5a26fdfe79b90574b0804cab876"
+                                        id="components-links-module-TinymceModule-b33ada019b508c2fa2d35e1bf94eea4f"
 >
                                         <li class="link">
                                             <a href="components/TinymceComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">TinymceComponent</a>
@@ -2782,7 +2782,7 @@ set method. </p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="178" class="link-to-prism">packages/data/src/model-config/model-config.service.ts:178</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="185" class="link-to-prism">packages/data/src/model-config/model-config.service.ts:185</a></div>
                             </td>
                         </tr>
 
@@ -2864,7 +2864,7 @@ set method. </p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">packages/data/src/model-config/model-config.service.ts:129</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="136" class="link-to-prism">packages/data/src/model-config/model-config.service.ts:136</a></div>
                             </td>
                         </tr>
 
@@ -3024,7 +3024,7 @@ If no global field config is found for that model, it will be generated from the
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="195" class="link-to-prism">packages/data/src/model-config/model-config.service.ts:195</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="202" class="link-to-prism">packages/data/src/model-config/model-config.service.ts:202</a></div>
                             </td>
                         </tr>
 
@@ -3480,11 +3480,18 @@ export class ModelConfigService extends Config {
     if (!type) {
       return null;
     }
-    const match &#x3D; type.match(/^(\w*)(&lt;(\w*)&gt;)?/i);
+    const match &#x3D; type.match(/^(\w*)(&lt;(.*)&gt;)?/i);
+    let name &#x3D; match[1];
+    let relation &#x3D; match.length &gt; 2 ? match[3] : null;
+    if (name.includes(&#x27;asset&#x27;) &amp;&amp; relation) {
+      const r &#x3D; relation.split(&#x27;:&#x27;);
+      if (r[0] &#x3D;&#x3D;&#x3D; &#x27;ag&#x27;) { // new asset
+        name &#x3D; name.replace(&#x27;a&#x27;, &#x27;dmA&#x27;);
+        relation &#x3D; r[1];
+      } // else: old asset with type validation
+    }
     return !match.length ? null : {
-      raw: type,
-      name: match[1],
-      relation: match.length &gt; 2 ? match[3] : null
+      raw: type, name, relation
     };
   }
 

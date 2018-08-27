@@ -903,14 +903,14 @@
                         <a href="modules/TinymceModule.html" data-type="entity-link">TinymceModule</a>
                             <li class="chapter inner">
                                 <div class="simple menu-toggler" data-toggle="collapse"
-                                        data-target="#xs-components-links-module-TinymceModule-76adb5a26fdfe79b90574b0804cab876"
+                                        data-target="#xs-components-links-module-TinymceModule-b33ada019b508c2fa2d35e1bf94eea4f"
                                     >
                                     <span class="fa fa-fw fa-cogs"></span>
                                     <span>Components</span>
                                     <span class="fa fa-angle-down"></span>
                                 </div>
                                 <ul class="links collapse"
-                                        id="xs-components-links-module-TinymceModule-76adb5a26fdfe79b90574b0804cab876"
+                                        id="xs-components-links-module-TinymceModule-b33ada019b508c2fa2d35e1bf94eea4f"
                                     >
                                         <li class="link">
                                             <a href="components/TinymceComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">TinymceComponent</a>
@@ -2133,14 +2133,14 @@
                         <a href="modules/TinymceModule.html" data-type="entity-link">TinymceModule</a>
                             <li class="chapter inner">
                                 <div class="simple menu-toggler" data-toggle="collapse"
-                                        data-target="#components-links-module-TinymceModule-76adb5a26fdfe79b90574b0804cab876"
+                                        data-target="#components-links-module-TinymceModule-b33ada019b508c2fa2d35e1bf94eea4f"
 >
                                     <span class="fa fa-fw fa-cogs"></span>
                                     <span>Components</span>
                                     <span class="fa fa-angle-down"></span>
                                 </div>
                                 <ul class="links collapse"
-                                        id="components-links-module-TinymceModule-76adb5a26fdfe79b90574b0804cab876"
+                                        id="components-links-module-TinymceModule-b33ada019b508c2fa2d35e1bf94eea4f"
 >
                                         <li class="link">
                                             <a href="components/TinymceComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">TinymceComponent</a>
@@ -3350,7 +3350,7 @@ It is meant to be extended and overriden the createList method. See e.g. AssetLi
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="117" class="link-to-prism">packages/data/src/resource-list/resource-list.component.ts:117</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">packages/data/src/resource-list/resource-list.component.ts:119</a></div>
                             </td>
                         </tr>
 
@@ -3433,7 +3433,7 @@ It is meant to be extended and overriden the createList method. See e.g. AssetLi
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="121" class="link-to-prism">packages/data/src/resource-list/resource-list.component.ts:121</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="123" class="link-to-prism">packages/data/src/resource-list/resource-list.component.ts:123</a></div>
                             </td>
                         </tr>
 
@@ -3502,7 +3502,7 @@ It is meant to be extended and overriden the createList method. See e.g. AssetLi
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">packages/data/src/resource-list/resource-list.component.ts:108</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">packages/data/src/resource-list/resource-list.component.ts:110</a></div>
                             </td>
                         </tr>
 
@@ -4290,7 +4290,9 @@ export class ResourceListComponent extends ListComponent&lt;Resource&gt;
       }
       this.list &#x3D; list;
       this.listConfig.applyConfig(this.list);
-      this.list.change$.subscribe(newList &#x3D;&gt; this.changed.next(newList));
+      this.list.change$.subscribe(newList &#x3D;&gt; {
+        this.changed.next(newList)
+      });
       if (this.list.promise) {
         this.loaderService.wait(this.list.promise, this.loader);
       }
@@ -4360,6 +4362,15 @@ export class ResourceListComponent extends ListComponent&lt;Resource&gt;
       &lt;/div&gt;
       &lt;ec-list-items [list]&#x3D;&quot;list&quot; [selection]&#x3D;&quot;selection&quot; (columnClicked)&#x3D;&quot;columnClick($event)&quot; #listItems [items]&#x3D;&quot;list?.page | group: group.property: group.value&quot;&gt;&lt;/ec-list-items&gt;
     &lt;/div&gt;
+    &lt;div class&#x3D;&quot;ec-list-empty&quot; *ngIf&#x3D;&quot;list?.isEmpty()&quot;&gt;
+      &lt;div *ngIf&#x3D;&quot;list.isFiltered()&quot;&gt;
+        {{&#x27;list.filter.noResults&#x27; | symbol}}
+        &lt;a (click)&#x3D;&quot;list.clearFilter()&quot;&gt;{{&#x27;list.filter.reset&#x27; | symbol}}&lt;/a&gt;
+      &lt;/div&gt;
+      &lt;div *ngIf&#x3D;&quot;!list.isFiltered()&quot;&gt;
+        {{&#x27;list.empty&#x27; | symbol}}
+      &lt;/div&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 &lt;ec-pagination [hidden]&#x3D;&quot;list?.config?.hidePagination&quot; [config]&#x3D;&quot;paginationConfig&quot; [pagination]&#x3D;&quot;list?.pagination&quot;&gt;&lt;/ec-pagination&gt;</code></pre>
@@ -4390,7 +4401,7 @@ export class ResourceListComponent extends ListComponent&lt;Resource&gt;
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="ec-list">  <ec-list-header [list]="list" [selection]="selection" *ngIf="showHeader()"></ec-list-header>  <div class="ec-list-body">    <div class="ec-list-group" *ngFor="let group of list?.groups">      <div class="ec-list-group-header" *ngIf="group.value" (click)="selection?.toggleAll(listItems?.items)">        <div class="ec-list-cell ec-list-item__selector" *ngIf="list?.config?.selectMode">          <input type="checkbox" [checked]="selection?.hasAll(listItems?.items)">        </div>        <div class="ec-list-cell">          <span class="ec-list-group-header__title">{{group.value}}</span>        </div>      </div>      <ec-list-items [list]="list" [selection]="selection" (columnClicked)="columnClick($event)" #listItems [items]="list?.page | group: group.property: group.value"></ec-list-items>    </div>  </div></div><ec-pagination [hidden]="list?.config?.hidePagination" [config]="paginationConfig" [pagination]="list?.pagination"></ec-pagination></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="ec-list">  <ec-list-header [list]="list" [selection]="selection" *ngIf="showHeader()"></ec-list-header>  <div class="ec-list-body">    <div class="ec-list-group" *ngFor="let group of list?.groups">      <div class="ec-list-group-header" *ngIf="group.value" (click)="selection?.toggleAll(listItems?.items)">        <div class="ec-list-cell ec-list-item__selector" *ngIf="list?.config?.selectMode">          <input type="checkbox" [checked]="selection?.hasAll(listItems?.items)">        </div>        <div class="ec-list-cell">          <span class="ec-list-group-header__title">{{group.value}}</span>        </div>      </div>      <ec-list-items [list]="list" [selection]="selection" (columnClicked)="columnClick($event)" #listItems [items]="list?.page | group: group.property: group.value"></ec-list-items>    </div>    <div class="ec-list-empty" *ngIf="list?.isEmpty()">      <div *ngIf="list.isFiltered()">        {{\'list.filter.noResults\' | symbol}}        <a (click)="list.clearFilter()">{{\'list.filter.reset\' | symbol}}</a>      </div>      <div *ngIf="!list.isFiltered()">        {{\'list.empty\' | symbol}}      </div>    </div>  </div></div><ec-pagination [hidden]="list?.config?.hidePagination" [config]="paginationConfig" [pagination]="list?.pagination"></ec-pagination></div>'
     var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'AdminEntryInputComponent', 'selector': ''},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'AssetgroupSelectComponent', 'selector': 'ec-assetgroup-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DaterangeComponent', 'selector': 'ec-daterange'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryListPopComponent', 'selector': 'ec-entry-list-pop'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'HeatmapComponent', 'selector': 'ec-heatmap'},{'name': 'IconComponent', 'selector': 'ec-icon'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LocationMapComponent', 'selector': 'ec-location-map'},{'name': 'LocationPickerComponent', 'selector': 'ec-location-picker'},{'name': 'LocationSearchComponent', 'selector': 'ec-location-search'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceCrudComponent', 'selector': 'ec-resource-crud'},{'name': 'ResourceDeletePopComponent', 'selector': 'ec-resource-delete-pop'},{'name': 'ResourceFormComponent', 'selector': 'ec-resource-form'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'ResourceListPopComponent', 'selector': 'ec-resource-list-pop'},{'name': 'ResourcePopComponent', 'selector': 'ec-resource-pop'},{'name': 'ResourceSelectComponent', 'selector': 'ec-resource-select'},{'name': 'SearchbarComponent', 'selector': 'ec-searchbar'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SignupComponent', 'selector': 'ec-signup'},{'name': 'SignupFormComponent', 'selector': 'ec-signup-form'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'},{'name': 'UploadSelectComponent', 'selector': 'ec-upload-select'}];
     var DIRECTIVES = [{'name': 'AssetDirective', 'selector': '[ecAsset]'},{'name': 'DropzoneDirective', 'selector': '[ecDropzone]'},{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'FocusDirective', 'selector': '[ecFocus]'},{'name': 'ImageDirective', 'selector': 'img [ecImage]'},{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'}];
     var ACTUAL_COMPONENT = {'name': 'ResourceListComponent'};

@@ -903,14 +903,14 @@
                         <a href="modules/TinymceModule.html" data-type="entity-link">TinymceModule</a>
                             <li class="chapter inner">
                                 <div class="simple menu-toggler" data-toggle="collapse"
-                                        data-target="#xs-components-links-module-TinymceModule-76adb5a26fdfe79b90574b0804cab876"
+                                        data-target="#xs-components-links-module-TinymceModule-b33ada019b508c2fa2d35e1bf94eea4f"
                                     >
                                     <span class="fa fa-fw fa-cogs"></span>
                                     <span>Components</span>
                                     <span class="fa fa-angle-down"></span>
                                 </div>
                                 <ul class="links collapse"
-                                        id="xs-components-links-module-TinymceModule-76adb5a26fdfe79b90574b0804cab876"
+                                        id="xs-components-links-module-TinymceModule-b33ada019b508c2fa2d35e1bf94eea4f"
                                     >
                                         <li class="link">
                                             <a href="components/TinymceComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">TinymceComponent</a>
@@ -2133,14 +2133,14 @@
                         <a href="modules/TinymceModule.html" data-type="entity-link">TinymceModule</a>
                             <li class="chapter inner">
                                 <div class="simple menu-toggler" data-toggle="collapse"
-                                        data-target="#components-links-module-TinymceModule-76adb5a26fdfe79b90574b0804cab876"
+                                        data-target="#components-links-module-TinymceModule-b33ada019b508c2fa2d35e1bf94eea4f"
 >
                                     <span class="fa fa-fw fa-cogs"></span>
                                     <span>Components</span>
                                     <span class="fa fa-angle-down"></span>
                                 </div>
                                 <ul class="links collapse"
-                                        id="components-links-module-TinymceModule-76adb5a26fdfe79b90574b0804cab876"
+                                        id="components-links-module-TinymceModule-b33ada019b508c2fa2d35e1bf94eea4f"
 >
                                         <li class="link">
                                             <a href="components/TinymceComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">TinymceComponent</a>
@@ -2525,6 +2525,8 @@ Supports autofocus and arrow navigation. </p>
     <p class="comment">
                 <code><a href="https://angular.io/api/core/AfterViewInit" target="_blank" >AfterViewInit</a></code>
                 <code><a href="../interfaces/Focus.html" target="_self" >Focus</a></code>
+                <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
     </p>
 
 
@@ -2615,7 +2617,16 @@ Supports autofocus and arrow navigation. </p>
                                 <a href="#filterList">filterList</a>
                             </li>
                             <li>
+                                <a href="#initList">initList</a>
+                            </li>
+                            <li>
                                 <a href="#ngAfterViewInit">ngAfterViewInit</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnChanges">ngOnChanges</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
                             </li>
                             <li>
                                 <a href="#preventDefault">preventDefault</a>
@@ -2643,6 +2654,9 @@ Supports autofocus and arrow navigation. </p>
                             </li>
                             <li>
                                 <a href="#list">list</a>
+                            </li>
+                            <li>
+                                <a href="#listComponent">listComponent</a>
                             </li>
                             <li>
                                 <a href="#placeholder">placeholder</a>
@@ -2689,7 +2703,7 @@ Supports autofocus and arrow navigation. </p>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">packages/ui/src/list/searchbar/searchbar.component.ts:39</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">packages/ui/src/list/searchbar/searchbar.component.ts:41</a></div>
                             </td>
                         </tr>
 
@@ -2819,7 +2833,7 @@ Supports autofocus and arrow navigation. </p>
                         <div><p>The list that should be filtered </p>
 </div>
                             <p>
-                            <em>Type:</em>    <code><a href="../classes/List.html" target="_self" >ListComponent&lt;any&gt;</a></code>
+                            <em>Type:</em>    <code><a href="../classes/List.html" target="_self" >List&lt;any&gt;</a></code>
 
                             </p>
                     </td>
@@ -2827,6 +2841,29 @@ Supports autofocus and arrow navigation. </p>
                         <tr>
                             <td class="col-md-2" colspan="2">
                                     <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">packages/ui/src/list/searchbar/searchbar.component.ts:37</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="listComponent"></a>
+                        <code>listComponent</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>The list component that should be controled </p>
+</div>
+                            <p>
+                            <em>Type:</em>    <code><a href="../classes/List.html" target="_self" >ListComponent&lt;any&gt;</a></code>
+
+                            </p>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">packages/ui/src/list/searchbar/searchbar.component.ts:39</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -2919,7 +2956,7 @@ Supports autofocus and arrow navigation. </p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">packages/ui/src/list/searchbar/searchbar.component.ts:39</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">packages/ui/src/list/searchbar/searchbar.component.ts:41</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -2954,7 +2991,7 @@ Supports autofocus and arrow navigation. </p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">packages/ui/src/list/searchbar/searchbar.component.ts:108</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="136" class="link-to-prism">packages/ui/src/list/searchbar/searchbar.component.ts:136</a></div>
                             </td>
                         </tr>
 
@@ -3021,7 +3058,7 @@ Supports autofocus and arrow navigation. </p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">packages/ui/src/list/searchbar/searchbar.component.ts:66</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">packages/ui/src/list/searchbar/searchbar.component.ts:94</a></div>
                             </td>
                         </tr>
 
@@ -3061,7 +3098,7 @@ Supports autofocus and arrow navigation. </p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">packages/ui/src/list/searchbar/searchbar.component.ts:87</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="115" class="link-to-prism">packages/ui/src/list/searchbar/searchbar.component.ts:115</a></div>
                             </td>
                         </tr>
 
@@ -3127,6 +3164,44 @@ select is emitted immediately with a pseudo item containing the value as item id
             <tbody>
                 <tr>
                     <td class="col-md-4">
+                        <a name="initList"></a>
+                        <span class="name">
+                            <b>
+                            initList
+                            </b>
+                            <a href="#initList"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>initList()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">packages/ui/src/list/searchbar/searchbar.component.ts:67</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
                         <a name="ngAfterViewInit"></a>
                         <span class="name">
                             <b>
@@ -3145,7 +3220,7 @@ select is emitted immediately with a pseudo item containing the value as item id
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">packages/ui/src/list/searchbar/searchbar.component.ts:78</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">packages/ui/src/list/searchbar/searchbar.component.ts:106</a></div>
                             </td>
                         </tr>
 
@@ -3154,6 +3229,82 @@ select is emitted immediately with a pseudo item containing the value as item id
                     <td class="col-md-4">
                             <div class="io-description"><p>After the view is ready, the searchbar needs to be focused (if autofocus is true) </p>
 </div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ngOnChanges"></a>
+                        <span class="name">
+                            <b>
+                            ngOnChanges
+                            </b>
+                            <a href="#ngOnChanges"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>ngOnChanges()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">packages/ui/src/list/searchbar/searchbar.component.ts:89</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ngOnInit"></a>
+                        <span class="name">
+                            <b>
+                            ngOnInit
+                            </b>
+                            <a href="#ngOnInit"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>ngOnInit()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">packages/ui/src/list/searchbar/searchbar.component.ts:85</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
 
                             <div class="io-description">
                                 <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -3185,7 +3336,7 @@ select is emitted immediately with a pseudo item containing the value as item id
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">packages/ui/src/list/searchbar/searchbar.component.ts:71</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">packages/ui/src/list/searchbar/searchbar.component.ts:99</a></div>
                             </td>
                         </tr>
 
@@ -3403,7 +3554,7 @@ select is emitted immediately with a pseudo item containing the value as item id
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">packages/ui/src/list/searchbar/searchbar.component.ts:41</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">packages/ui/src/list/searchbar/searchbar.component.ts:43</a></div>
                             </td>
                         </tr>
 
@@ -3438,7 +3589,7 @@ select is emitted immediately with a pseudo item containing the value as item id
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">packages/ui/src/list/searchbar/searchbar.component.ts:41</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">packages/ui/src/list/searchbar/searchbar.component.ts:43</a></div>
                             </td>
                         </tr>
 
@@ -3451,14 +3602,14 @@ select is emitted immediately with a pseudo item containing the value as item id
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { AfterViewInit, Component, EventEmitter, Input, Output } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { AfterViewInit, Component, EventEmitter, Input, Output, OnInit, OnChanges } from &#x27;@angular/core&#x27;;
 import { ActivatedRoute } from &#x27;@angular/router&#x27;;
-import { Item } from &#x27;../../../../core&#x27;;
-import { ListComponent } from &#x27;../../..&#x27;;
+import { Item, List } from &#x27;../../../../core&#x27;;
 import { SymbolService } from &#x27;../../symbol/symbol.service&#x27;;
 import { Subject } from &#x27;rxjs/Subject&#x27;;
 import { distinctUntilChanged } from &#x27;rxjs/operators&#x27;;
 import { Focus } from &#x27;../../utility/focus/focus.interface&#x27;;
+import { ListComponent } from &#x27;@ec.components/ui&#x27;;
 
 /** Genereic Searchbar component. Filters a given list its label property (or given property).
  * Supports autofocus and arrow navigation. */
@@ -3467,7 +3618,7 @@ import { Focus } from &#x27;../../utility/focus/focus.interface&#x27;;
   templateUrl: &#x27;searchbar.component.html&#x27;,
 })
 
-export class SearchbarComponent implements AfterViewInit, Focus {
+export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChanges {
   /** Searchbar placeholder */
   @Input() placeholder: string;
   /** Default placeholder when no placeholder is given */
@@ -3487,7 +3638,9 @@ export class SearchbarComponent implements AfterViewInit, Focus {
   /** Subject that is nexted when something is pasted */
   public paste: Subject&lt;any&gt; &#x3D; new Subject&lt;any&gt;();
   /** The list that should be filtered */
-  @Input() list: ListComponent&lt;any&gt;;
+  @Input() list: List&lt;any&gt;;
+  /** The list component that should be controled */
+  @Input() listComponent: ListComponent&lt;any&gt;;
   /** Output that emits when enter is pressed on a selected item */
   @Output() selected: EventEmitter&lt;any&gt; &#x3D; new EventEmitter();
 
@@ -3515,6 +3668,32 @@ export class SearchbarComponent implements AfterViewInit, Focus {
       })
   }
 
+  initList() {
+    if (!this.list) {
+      return;
+    }
+    this.property &#x3D; this.property || this.list.config.label;
+    if (!this.property) {
+      console.warn(&#x27;searchbar is missing property to filter..&#x27;);
+    }
+    const list &#x3D; this./* list. */list;
+    list.change$.subscribe(newList &#x3D;&gt; {
+      if (!this.list.config.filter || !this.list.config.filter[this.property]) {
+        this.clear();
+      } else if (this.list.config.filter[this.property]) {
+        this.query &#x3D; this.list.config.filter[this.property];
+      }
+    });
+  };
+
+  ngOnInit() {
+    this.initList();
+  }
+
+  ngOnChanges() {
+    this.initList();
+  }
+
   /** clears the input query */
   clear() {
     this.query &#x3D; &#x27;&#x27;;
@@ -3538,7 +3717,7 @@ export class SearchbarComponent implements AfterViewInit, Focus {
    * If paste is true and the value matches the list.config.identifierPattern,
    * select is emitted immediately with a pseudo item containing the value as item identifier. */
   filterList(value, paste &#x3D; false) {
-    if (!this.list || !this.list.list) {
+    if (!this.list) {
       console.warn(&#x27;could not search: no list given!&#x27;, this.list);
       return;
     }
@@ -3554,26 +3733,27 @@ export class SearchbarComponent implements AfterViewInit, Focus {
         /* return true; */
       }
     }
-    this.list.list.filter(this.property || this.list.config.label, value);
+    this.list.filter(this.property || this.list.config.label, value);
   }
 
   /** called on keydown. if arrow keys are pressed, toggle selection of next/prev elements of list */
   arrowNavigation(e) {
-    if (!this.list || !this.list.selection) {
+    if (!this.listComponent || !this.listComponent.selection) {
+      console.warn(&#x27;Arrow navigation is disabled: no listComponent given to searchbar&#x27;);
       return;
     }
     switch (e.key) {
       case &#x27;ArrowUp&#x27;:
-        this.list.selectPrev();
+        this.listComponent.selectPrev();
         e.preventDefault();
         break;
       case &#x27;ArrowDown&#x27;:
-        this.list.selectNext();
+        this.listComponent.selectNext();
         e.preventDefault();
         break;
       case &#x27;Enter&#x27;:
-        if (!this.list.selection.isEmpty()) {
-          this.selected.emit(this.list.selection.items[0]);
+        if (!this.listComponent.selection.isEmpty()) {
+          this.selected.emit(this.listComponent.selection.items[0]);
         }
         break;
     }
@@ -3585,7 +3765,8 @@ export class SearchbarComponent implements AfterViewInit, Focus {
     <div class="tab-pane fade " id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;ec-searchbar&quot;&gt;
     &lt;input #inputField [ecFocus]&#x3D;&quot;focusEvent&quot; type&#x3D;&quot;text&quot; [placeholder]&#x3D;&quot;placeholder || defaultPlaceholder&quot; class&#x3D;&quot;input&quot; (keyup)&#x3D;&quot;keyup.next($event.target.value);preventDefault($event)&quot;
-        (keydown)&#x3D;&quot;arrowNavigation($event)&quot; (paste)&#x3D;&quot;paste.next($event)&quot; [(ngModel)]&#x3D;&quot;query&quot;&gt;
+        (paste)&#x3D;&quot;paste.next($event)&quot; [(ngModel)]&#x3D;&quot;query&quot;&gt;
+    &lt;!-- (keydown)&#x3D;&quot;arrowNavigation($event)&quot; --&gt;
 &lt;/div&gt;</code></pre>
     </div>
 
@@ -3614,7 +3795,7 @@ export class SearchbarComponent implements AfterViewInit, Focus {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="ec-searchbar">    <input #inputField [ecFocus]="focusEvent" type="text" [placeholder]="placeholder || defaultPlaceholder" class="input" (keyup)="keyup.next($event.target.value);preventDefault($event)"        (keydown)="arrowNavigation($event)" (paste)="paste.next($event)" [(ngModel)]="query"></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="ec-searchbar">    <input #inputField [ecFocus]="focusEvent" type="text" [placeholder]="placeholder || defaultPlaceholder" class="input" (keyup)="keyup.next($event.target.value);preventDefault($event)"        (paste)="paste.next($event)" [(ngModel)]="query">    <!-- (keydown)="arrowNavigation($event)" --></div></div>'
     var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'AdminEntryInputComponent', 'selector': ''},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'AssetgroupSelectComponent', 'selector': 'ec-assetgroup-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DaterangeComponent', 'selector': 'ec-daterange'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EditorComponent', 'selector': 'ec-vc-editor,[ec-vc-editor]'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryListPopComponent', 'selector': 'ec-entry-list-pop'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'HeatmapComponent', 'selector': 'ec-heatmap'},{'name': 'IconComponent', 'selector': 'ec-icon'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LocationMapComponent', 'selector': 'ec-location-map'},{'name': 'LocationPickerComponent', 'selector': 'ec-location-picker'},{'name': 'LocationSearchComponent', 'selector': 'ec-location-search'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceCrudComponent', 'selector': 'ec-resource-crud'},{'name': 'ResourceDeletePopComponent', 'selector': 'ec-resource-delete-pop'},{'name': 'ResourceFormComponent', 'selector': 'ec-resource-form'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'ResourceListPopComponent', 'selector': 'ec-resource-list-pop'},{'name': 'ResourcePopComponent', 'selector': 'ec-resource-pop'},{'name': 'ResourceSelectComponent', 'selector': 'ec-resource-select'},{'name': 'SearchbarComponent', 'selector': 'ec-searchbar'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SignupComponent', 'selector': 'ec-signup'},{'name': 'SignupFormComponent', 'selector': 'ec-signup-form'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'ToolbarComponent', 'selector': 'ec-vc-toolbar'},{'name': 'UploadComponent', 'selector': 'ec-upload'},{'name': 'UploadSelectComponent', 'selector': 'ec-upload-select'}];
     var DIRECTIVES = [{'name': 'AssetDirective', 'selector': '[ecAsset]'},{'name': 'DropzoneDirective', 'selector': '[ecDropzone]'},{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'FocusDirective', 'selector': '[ecFocus]'},{'name': 'ImageDirective', 'selector': 'img [ecImage]'},{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'}];
     var ACTUAL_COMPONENT = {'name': 'SearchbarComponent'};

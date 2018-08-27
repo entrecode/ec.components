@@ -113,11 +113,18 @@ export class ModelConfigService extends Config {
     if (!type) {
       return null;
     }
-    const match = type.match(/^(\w*)(<(\w*)>)?/i);
+    const match = type.match(/^(\w*)(<(.*)>)?/i);
+    let name = match[1];
+    let relation = match.length > 2 ? match[3] : null;
+    if (name.includes('asset') && relation) {
+      const r = relation.split(':');
+      if (r[0] === 'ag') { // new asset
+        name = name.replace('a', 'dmA');
+        relation = r[1];
+      } // else: old asset with type validation
+    }
     return !match.length ? null : {
-      raw: type,
-      name: match[1],
-      relation: match.length > 2 ? match[3] : null
+      raw: type, name, relation
     };
   }
 

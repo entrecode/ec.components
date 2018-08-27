@@ -35,8 +35,7 @@
   <ec-input [config]="{view:'select',values:['a','b','c']}" [(ngModel)]="mySelect"></ec-input>
 </label>
 <label>select with labels {{mySelect2}}
-  <ec-input [config]="{view:'select',values:[{value:'male',label:'Männlich'},{value:'female',label:'Weiblich'}]}"
-    [(ngModel)]="mySelect2"></ec-input>
+  <ec-input [config]="{view:'select',values:[{value:'male',label:'Männlich'},{value:'female',label:'Weiblich'}]}" [(ngModel)]="mySelect2"></ec-input>
 </label>
 <label>entry {{myEntry}}
   <ec-input [config]="entryConfig" [(ngModel)]="myEntry"></ec-input>
@@ -70,7 +69,12 @@
     Na los
   </button>
 </ec-form>
-
 <pre>
 {{treeForm.group?.value | json}}
 </pre>
+
+<h4>Custom Fields without wrapper</h4>
+<strong>empty</strong>
+<ec-form (submitted)="logValue($event)" [config]="customFormConfig"></ec-form>
+<strong>with value</strong>
+<ec-form (submitted)="logValue($event)" [config]="customFormConfig" [value]="{count:2}"></ec-form>

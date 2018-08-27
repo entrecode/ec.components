@@ -65,10 +65,6 @@ export class AceComponent extends DefaultInputComponent implements ControlValueA
         this.ready.then((editor) => {
             editor.on('change', (e) => {
                 this.propagateChange(this.editor.getValue());
-                // TODO: find a way to omit this line in custom components and hook to change from input.component or form.component
-                if (this.input) {
-                    this.input.propagateChange(this.editor.getValue());
-                }
             });
         });
     }

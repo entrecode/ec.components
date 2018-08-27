@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Resource } from 'halfred';
 import ModelResource from 'ec.sdk/lib/resources/datamanager/ModelResource';
 import DataManagerResource from 'ec.sdk/lib/resources/datamanager/DataManagerResource';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';

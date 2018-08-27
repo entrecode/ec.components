@@ -1,9 +1,9 @@
 import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
-import { LoaderComponent, LoaderService, NotificationsService, WithLoader } from '@ec.components/ui';
-import { Notification } from '@ec.components/ui/src/notifications/notification';
-import { WithNotifications } from '@ec.components/ui/src/notifications/with-notifications.interface';
-import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
-import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import { LoaderComponent, LoaderService, NotificationsService, WithLoader } from '../../../../ui';
+import { Notification } from '../../../../ui/src/notifications/notification';
+import { WithNotifications } from '../../../../ui/src/notifications/with-notifications.interface';
+import { PopComponent } from '../../../../ui/src/pop/pop.component';
+import { SymbolService } from '../../../../ui/src/symbol/symbol.service';
 import PublicAPI from 'ec.sdk/lib/PublicAPI';
 import { SdkService } from '../../sdk/sdk.service';
 import { FileService, Upload } from '../file.service';
@@ -27,12 +27,7 @@ export class UploadComponent implements WithLoader, WithNotifications {
   /** If true, a pop to rename files + customize flags will appear before uploading. */
   @Input() custom: boolean;
   /** Upload options */
-  @Input() options: FileOptions = {
-    preserveFilenames: true,
-    includeAssetIDInPath: true,
-    ignoreDuplicates: false,
-    fileName: []
-  };
+  @Input() options: FileOptions = Object.assign({}, this.fileService.defaultOptions);
   /** The api to use for the upload. Defaults to sdk.api */
   @Input() api: PublicAPI;
   /** Emits when an upload is complete. */
@@ -88,6 +83,9 @@ export class UploadComponent implements WithLoader, WithNotifications {
     files = typeof files === 'string'
       ? files.split('\n').map(url => ({ name: url, url }))
       : files;
+    if (files[0].url && this.assetGroupID === 'legacyAsset') {
+      delete this.assetGroupID;
+    }
     this.filesToUpload = files;
     e.preventDefault();
     e.stopPropagation();

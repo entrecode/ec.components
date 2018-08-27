@@ -175,13 +175,4 @@ export class ResourceList extends List<Resource> {
     });
   }
 
-  /** Clears the filter for given property or all properties if none given. */
-  clearFilter(property?: string) {
-    if (property) {
-      return this.filter(property, null);
-    }
-    this.load({
-      filter: {}
-    });
-  }
 }

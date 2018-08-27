@@ -36,7 +36,9 @@ export interface FileOptions {
   /** Optional custom names for assets. Mapped by indices to assets. */
   fileName?: string[]
   /** Custom file form fieldName */
-  fieldName?: string
+  fieldName?: string,
+  /** Deduplicate upload */
+  deduplicate?: boolean;
 }
 
 /** The CRUD service is meant to be used when modifying entries.
@@ -50,6 +52,14 @@ export class FileService {
   assetGroupListPromise: Promise<any>;
   /** The changes event is emitted everytime an entry is created or updated. */
   public uploads: EventEmitter<Upload> = new EventEmitter();
+  /** Default options for file upload */
+  public defaultOptions: FileOptions = {
+    preserveFilenames: true,
+    includeAssetIDInPath: true,
+    ignoreDuplicates: false,
+    deduplicate: false,
+    fileName: []
+  };
 
   /** Injects sdk */
   constructor(private sdk: SdkService,
@@ -79,14 +89,13 @@ export class FileService {
       const fieldname = options && options.preserveFilenames && options.fieldName ? options.fieldName : 'file';
       formData.append(fieldname, files.item(i), name);
     }
-    if (options && !options.preserveFilenames) {
-      formData.append('preserveFilenames', 'false');
-    }
-    if (options && !options.includeAssetIDInPath) {
-      formData.append('includeAssetIDInPath', 'false');
-    }
-    if (options && options.ignoreDuplicates) {
-      formData.append('ignoreDuplicates', 'true');
+    if (options) {
+      ['preserveFilenames', 'includeAssetIDInPath', 'ignoreDuplicates', 'deduplicate']
+        .forEach(key => {
+          if (key in options) {
+            formData.append(key, `${options[key]}`);
+          }
+        });
     }
     return formData;
   }
@@ -196,7 +205,7 @@ export class FileService {
     if (selection.config.solo) {
       selection.select(upload.item);
     } else {
-      selection.toggleAll(upload.items);
+      selection.toggleAll(upload.items, false, true);
     }
   }
 }

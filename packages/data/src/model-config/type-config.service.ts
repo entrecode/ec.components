@@ -63,7 +63,25 @@ export class TypeConfigService {
     assets: {
       view: 'assets',
       input: DefaultEntryInputComponent,
-      /* display: (value, entry, property) => entry.getImageThumbUrl(property, 100), */
+      display: (value, entry, property) => entry.getImageThumbUrl(property, 100),
+      prefill: [],
+      filterOperator: 'any',
+      filterable: true,
+      queryFilter: (value) => value.split(','),
+      filterPopClass: 'ec-pop_dialog'
+    },
+    dmAsset: {
+      view: 'dmAsset',
+      input: DefaultEntryInputComponent,
+      filterOperator: 'exact',
+      filterable: true,
+      display: (value, entry, property) => entry.getImageThumbUrl(property, 100),
+      filterPopClass: 'ec-pop_dialog'
+    },
+    dmAssets: {
+      view: 'dmAssets',
+      input: DefaultEntryInputComponent,
+      display: (value, entry, property) => entry.getImageThumbUrl(property, 100),
       prefill: [],
       filterOperator: 'any',
       filterable: true,

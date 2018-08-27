@@ -903,14 +903,14 @@
                         <a href="modules/TinymceModule.html" data-type="entity-link">TinymceModule</a>
                             <li class="chapter inner">
                                 <div class="simple menu-toggler" data-toggle="collapse"
-                                        data-target="#xs-components-links-module-TinymceModule-76adb5a26fdfe79b90574b0804cab876"
+                                        data-target="#xs-components-links-module-TinymceModule-b33ada019b508c2fa2d35e1bf94eea4f"
                                     >
                                     <span class="fa fa-fw fa-cogs"></span>
                                     <span>Components</span>
                                     <span class="fa fa-angle-down"></span>
                                 </div>
                                 <ul class="links collapse"
-                                        id="xs-components-links-module-TinymceModule-76adb5a26fdfe79b90574b0804cab876"
+                                        id="xs-components-links-module-TinymceModule-b33ada019b508c2fa2d35e1bf94eea4f"
                                     >
                                         <li class="link">
                                             <a href="components/TinymceComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">TinymceComponent</a>
@@ -2133,14 +2133,14 @@
                         <a href="modules/TinymceModule.html" data-type="entity-link">TinymceModule</a>
                             <li class="chapter inner">
                                 <div class="simple menu-toggler" data-toggle="collapse"
-                                        data-target="#components-links-module-TinymceModule-76adb5a26fdfe79b90574b0804cab876"
+                                        data-target="#components-links-module-TinymceModule-b33ada019b508c2fa2d35e1bf94eea4f"
 >
                                     <span class="fa fa-fw fa-cogs"></span>
                                     <span>Components</span>
                                     <span class="fa fa-angle-down"></span>
                                 </div>
                                 <ul class="links collapse"
-                                        id="components-links-module-TinymceModule-76adb5a26fdfe79b90574b0804cab876"
+                                        id="components-links-module-TinymceModule-b33ada019b508c2fa2d35e1bf94eea4f"
 >
                                         <li class="link">
                                             <a href="components/TinymceComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">TinymceComponent</a>
@@ -2533,6 +2533,10 @@
                             <ul class="index-list">
                                 <li>
                                             <span class="modifier">Optional</span>
+                                        <a href="#deduplicate">deduplicate</a>
+                                </li>
+                                <li>
+                                            <span class="modifier">Optional</span>
                                         <a href="#fieldName">fieldName</a>
                                 </li>
                                 <li>
@@ -2562,6 +2566,46 @@
 
             <section>
                 <h3 id="inputs">Properties</h3>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="deduplicate"></a>
+                                        <span class="name"><b>deduplicate</b><a href="#deduplicate"><span class="fa fa-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>deduplicate:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>Deduplicate upload </p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                     <table class="table table-sm table-bordered">
                         <tbody>
                                 <tr>
@@ -2805,7 +2849,9 @@ export interface FileOptions {
   /** Optional custom names for assets. Mapped by indices to assets. */
   fileName?: string[]
   /** Custom file form fieldName */
-  fieldName?: string
+  fieldName?: string,
+  /** Deduplicate upload */
+  deduplicate?: boolean;
 }
 
 /** The CRUD service is meant to be used when modifying entries.
@@ -2819,6 +2865,14 @@ export class FileService {
   assetGroupListPromise: Promise&lt;any&gt;;
   /** The changes event is emitted everytime an entry is created or updated. */
   public uploads: EventEmitter&lt;Upload&gt; &#x3D; new EventEmitter();
+  /** Default options for file upload */
+  public defaultOptions: FileOptions &#x3D; {
+    preserveFilenames: true,
+    includeAssetIDInPath: true,
+    ignoreDuplicates: false,
+    deduplicate: false,
+    fileName: []
+  };
 
   /** Injects sdk */
   constructor(private sdk: SdkService,
@@ -2848,14 +2902,13 @@ export class FileService {
       const fieldname &#x3D; options &amp;&amp; options.preserveFilenames &amp;&amp; options.fieldName ? options.fieldName : &#x27;file&#x27;;
       formData.append(fieldname, files.item(i), name);
     }
-    if (options &amp;&amp; !options.preserveFilenames) {
-      formData.append(&#x27;preserveFilenames&#x27;, &#x27;false&#x27;);
-    }
-    if (options &amp;&amp; !options.includeAssetIDInPath) {
-      formData.append(&#x27;includeAssetIDInPath&#x27;, &#x27;false&#x27;);
-    }
-    if (options &amp;&amp; options.ignoreDuplicates) {
-      formData.append(&#x27;ignoreDuplicates&#x27;, &#x27;true&#x27;);
+    if (options) {
+      [&#x27;preserveFilenames&#x27;, &#x27;includeAssetIDInPath&#x27;, &#x27;ignoreDuplicates&#x27;, &#x27;deduplicate&#x27;]
+        .forEach(key &#x3D;&gt; {
+          if (key in options) {
+            formData.append(key, &#x60;${options[key]}&#x60;);
+          }
+        });
     }
     return formData;
   }
@@ -2965,7 +3018,7 @@ export class FileService {
     if (selection.config.solo) {
       selection.select(upload.item);
     } else {
-      selection.toggleAll(upload.items);
+      selection.toggleAll(upload.items, false, true);
     }
   }
 }
