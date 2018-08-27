@@ -77,7 +77,7 @@ export class ListComponent<T> implements OnChanges {
   /** Decides if the header should be visible or not */
   showHeader() {
     return this.list && this.list.config && !this.list.config.disableHeader && (this.list.fields.length || this.list.config.title)
-      /* && (this.list.config.alwaysShowHeader || !this.list.isEmpty()); */
+    /* && (this.list.config.alwaysShowHeader || !this.list.isEmpty()); */
   }
 
   /** Selects the item with the given index */
