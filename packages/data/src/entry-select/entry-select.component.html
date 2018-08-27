@@ -57,6 +57,7 @@
   <ec-resource-delete-pop [question]="'entry.select.delete.question' | symbol" #confirmDelete></ec-resource-delete-pop>
 
   <ec-entry-pop #entryPop [model]="model" [ngClass]="getPopClass()" [config]="config" (submitted)="formSubmitted($event)" (deleted)="removeItem($event,true)"></ec-entry-pop>
+  
   <nav class="ec-entry-select__controls">
     <a (click)="editItem(selection.items[0],$event)" class="btn btn_clear" *ngIf="solo&&!config.disableCreatePop&&hasMethod('put')&&!selection.isEmpty()">
       <ec-icon name="pencil"></ec-icon>
