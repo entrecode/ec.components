@@ -9,7 +9,7 @@
         [assetGroupID]="assetGroupID"></ec-upload-select>
       <div data-grid *ngIf="active&&sdk.apiResolved">
         <div [attr.data-col]="showGroupSelect()?'6-sm':'12-sm'">
-          <ec-searchbar [list]="resourceList"></ec-searchbar>
+          <ec-searchbar [listComponent]="resourceList" [list]="resourceList?.list"></ec-searchbar>
         </div>
         <div data-col='6-sm' *ngIf="showGroupSelect()">
           <ec-assetgroup-select [readOnly]="config.forceGroup" [assetGroupID]="assetGroupID" (groupChanged)="setGroup($event)"></ec-assetgroup-select>

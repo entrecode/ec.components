@@ -435,5 +435,17 @@ export default [
     {
         name: 'entry.select.placeholder.model',
         content: 'Model wählen...'
+    },
+    {
+        name: 'list.empty',
+        content: 'Noch keine Einträge..'
+    },
+    {
+        name: 'list.filter.noResults',
+        content: 'Keine Einträge gefunden'
+    },
+    {
+        name: 'list.filter.reset',
+        content: 'Filter aufheben'
     }
 ];

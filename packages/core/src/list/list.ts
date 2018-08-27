@@ -126,6 +126,16 @@ export class List<T> extends Collection<Item<T>> {
     }).slice(0, this.config.size || 100);
   }
 
+  /** Clears the filter for given property or all properties if none given. */
+  clearFilter(property?: string) {
+    if (property) {
+      return this.filter(property, null);
+    }
+    this.load({
+      filter: {}
+    });
+  }
+
   /** Helper function. Returns true if the given query value is empty (also recognizes empty array) */
   isEmptyFilter(query: null | undefined | string | Array<any>) {
     return query === '' ||

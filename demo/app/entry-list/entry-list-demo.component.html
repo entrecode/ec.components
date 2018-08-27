@@ -15,5 +15,5 @@
 </nav>
 <!-- <ec-heatmap #heatmap (spanChanged)="updateFilter($event,entryList)" style="width:400px;display:block" [timestamps]="timestamps"></ec-heatmap> -->
 <!-- <ec-daterange [timespan]="timespan" (spanChanged)="updateFilter($event,entryList)"></ec-daterange> -->
-<ec-searchbar [list]="entryList" property="name"></ec-searchbar>
+<ec-searchbar [listComponent]="entryList" [list]="entryList?.list" property="name"></ec-searchbar>
 <ec-entry-list (changed)="updateList($event)" #entryList model="muffin" [config]="{sortBy:heatProperty,desc:true,rawFilter:true}"></ec-entry-list>
