@@ -214,17 +214,17 @@ $ec-input-errors-style: () !default;
 // @param {array} $ec-datetime-picker-style
 $ec-datetime-picker-style: () !default;
 
-// @param {color} $ec-datetime-select-background [$xui-overlay-background]
-// @param {px} $ec-datetime-select x-width [320]
-// @param {array} $ec-datetime-select-padding [$xui-overlay-padding]
-// @param {array} $ec-datetime-select-radius [$xui-overlay-radius]
-// @param {array} $ec-datetime-select-shadow [$xui-overlay-shadow]
+// @param {color} $ec-datetime-select-background [$popover-background]
+// @param {px} $ec-datetime-select-max-width [320]
+// @param {array} $ec-datetime-select-padding [$popover-padding]
+// @param {array} $ec-datetime-select-radius [$popover-radius]
+// @param {array} $ec-datetime-select-shadow [$popover-shadow]
 // @param {array} $ec-datetime-select-style
-$ec-datetime-select-background: $xui-overlay-background !default;
+$ec-datetime-select-background: $popover-background !default;
 $ec-datetime-select-max-width: 320 !default;
-$ec-datetime-select-padding: $xui-overlay-padding !default;
-$ec-datetime-select-radius: $xui-overlay-radius !default;
-$ec-datetime-select-shadow: $xui-overlay-shadow !default;
+$ec-datetime-select-padding: $popover-padding !default;
+$ec-datetime-select-radius: $popover-radius !default;
+$ec-datetime-select-shadow: $popover-shadow !default;
 $ec-datetime-select-style: () !default;
 
 //
@@ -486,7 +486,7 @@ $ec-loader-overlay-style: () !default;
 // @param {array} $ec-notification-padding [8 16]
 // @param {array} $ec-notification-spacing [4]
 // @param {px} $ec-notification-max-width [320]
-// @param {array} $ec-notification-radius [$xui-overlay-radius]
+// @param {array} $ec-notification-radius [$dialog-radius]
 // @param {px} $ec-notification-font-size [$base-font-size * 0.875]
 // @param {array} $ec-notification-shadow [0 8 16 -4px rgba(#000, 0.2)]
 // @param {value} $ec-notification-animation [notification]
@@ -497,7 +497,7 @@ $ec-notification-background: $background !default;
 $ec-notification-padding: 8 16 !default;
 $ec-notification-spacing: 4 !default;
 $ec-notification-max-width: 320 !default;
-$ec-notification-radius: $xui-overlay-radius !default;
+$ec-notification-radius: $dialog-radius !default;
 $ec-notification-font-size: $base-font-size * 0.875 !default;
 $ec-notification-shadow: 0 8 16 -4px rgba(#000, 0.2) !default;
 $ec-notification-animation: notification !default;
@@ -519,97 +519,6 @@ $ec-notification-flag-error: $state-error !default;
 $ec-notification-flag-success: $state-success !default;
 $ec-notification-flag-warning: $state-warning !default;
 
-//
-// EC-POP
-// ------------------------------------------------------
-// @param {color} $ec-pop-background [$background]
-// @param {color} $ec-pop-color [$text]
-// @param {array} $ec-pop-spacing [$base-spacing]
-// @param {array} $ec-pop-radius [$xui-overlay-radius]
-// @param {array} $ec-pop-shadow [$xui-overlay-shadow]
-// @param {array} $ec-pop-style
-$ec-pop-background: $background !default;
-$ec-pop-color: $text !default;
-$ec-pop-spacing: $base-spacing !default;
-$ec-pop-radius: $xui-overlay-radius !default;
-$ec-pop-shadow: $xui-overlay-shadow !default;
-$ec-pop-style: () !default;
-
-//
-// EC-POP-HEADER
-// ------------------------------------------------------
-// @param {array} $ec-pop-header-spacing [0]
-// @param {array} $ec-pop-header-padding [8]
-// @param {array} $ec-pop-header-style
-$ec-pop-header-spacing: 0 !default;
-$ec-pop-header-padding: 8 !default;
-$ec-pop-header-style: () !default;
-
-//
-// EC-POP-BODY
-// ------------------------------------------------------
-// @param {array} $ec-pop-body-spacing [0]
-// @param {array} $ec-pop-body-padding [8]
-// @param {array} $ec-pop-body-style
-$ec-pop-body-spacing: 0 !default;
-$ec-pop-body-padding: 8 !default;
-$ec-pop-body-style: () !default;
-
-//
-// EC-POP-FOOTER
-// ------------------------------------------------------
-// @param {array} $ec-pop-footer-spacing [0]
-// @param {array} $ec-pop-footer-padding [8]
-// @param {array} $ec-pop-footer-style
-$ec-pop-footer-spacing: 0 !default;
-$ec-pop-footer-padding: 8 !default;
-$ec-pop-footer-style: () !default;
-
-//
-// EC-POP_DIALOG
-// ------------------------------------------------------
-// @param {color} $ec-pop-dialog-background [$ec-pop-background]
-// @param {color} $ec-pop-dialog-color [$ec-pop-color]
-// @param {array} $ec-pop-dialog-spacing [$base-spacing]
-// @param {array} $ec-pop-dialog-radius [$ec-pop-radius]
-// @param {array} $ec-pop-dialog-shadow [$ec-pop-shadow]
-// @param {px} $ec-pop-dialog-min-width [320]
-// @param {value} $ec-pop-dialog-animation [dialogAppear]
-// @param {time} $ec-pop-dialog-animation-speed [0.4s]
-// @param {value} $ec-pop-dialog-animation-behavior [forwards]
-// @param {array} $ec-pop-dialog-style
-$ec-pop-dialog-background: $ec-pop-background !default;
-$ec-pop-dialog-color: $ec-pop-color !default;
-$ec-pop-dialog-spacing: $ec-pop-spacing !default;
-$ec-pop-dialog-radius: $ec-pop-radius !default;
-$ec-pop-dialog-shadow: $ec-pop-shadow !default;
-$ec-pop-dialog-min-width: 320 !default;
-$ec-pop-dialog-animation: dialogAppear !default;
-$ec-pop-dialog-animation-speed: 0.4s !default;
-$ec-pop-dialog-animation-behavior: forwards !default;
-$ec-pop-dialog-style: () !default;
-
-//
-// EC-POP_FULLSCREEN
-// ------------------------------------------------------
-// @param {color} $ec-pop-fullscreen-background [$ec-pop-background]
-// @param {color} $ec-pop-fullscreen-color [$ec-pop-color]
-// @param {array} $ec-pop-fullscreen-spacing [$base-spacing]
-// @param {array} $ec-pop-fullscreen-radius [$ec-pop-radius]
-// @param {array} $ec-pop-fullscreen-shadow [$ec-pop-shadow]
-// @param {value} $ec-pop-fullscreen-animation [popfadeIn]
-// @param {time} $ec-pop-fullscreen-animation-speed [0.4s]
-// @param {value} $ec-pop-fullscreen-animation-behavior [forwards]
-// @param {array} $ec-pop-fullscreen-style
-$ec-pop-fullscreen-background: $ec-pop-background !default;
-$ec-pop-fullscreen-color: $ec-pop-color !default;
-$ec-pop-fullscreen-spacing: $ec-pop-spacing !default;
-$ec-pop-fullscreen-radius: $ec-pop-radius !default;
-$ec-pop-fullscreen-shadow: $ec-pop-shadow !default;
-$ec-pop-fullscreen-animation: popfadeIn !default;
-$ec-pop-fullscreen-animation-speed: 0.4s !default;
-$ec-pop-fullscreen-animation-behavior: forwards !default;
-$ec-pop-fullscreen-style: () !default;
 
 //
 // ui/select
@@ -716,7 +625,7 @@ $drag-placeholder-style: (
 // @param {array} $ec-select-options-spacing [$ec-select-border-width 0 0]
 // @param {array} $ec-select-options-radius [$xui-select-options-radius]
 // @param {px | null} $ec-select-options-max-height [$xui-select-options-max-height]
-// @param {array} $ec-select-options-shadow [$xui-overlay-shadow]
+// @param {array} $ec-select-options-shadow [$xui-select-options-shadow]
 // @param {array} $ec-select-options-style [$xui-select-options-style]
 $ec-select-options-background: $xui-select-options-background !default;
 $ec-select-options-padding: $xui-select-options-padding !default;
