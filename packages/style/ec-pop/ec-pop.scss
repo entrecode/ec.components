@@ -1,4 +1,4 @@
-@import 'ec-pop-container';
+/* @import 'ec-pop-container';
 @import 'ec-pop_default';
 @import 'ec-pop-header';
 @import 'ec-pop__dismiss';
@@ -10,3 +10,17 @@
 @import 'ec-pop_fullscreen';
 @import 'ec-pop_toast';
 @import 'ec-pop_overlay';
+ */
+
+ec-pop {
+  &.is-active {
+    > {
+      .dialog,
+      .overlay,
+      .toast,
+      .deck {
+        display: flex;
+      }
+    }
+  }
+}

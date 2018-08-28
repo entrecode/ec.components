@@ -121,9 +121,9 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
         this.useConfig(this.config);
     }
 
-    /** Returns the pop class that should be used, either uses config.popClass or defaults to ec-pop_dialog. */
+    /** Returns the pop class that should be used, either uses config.popClass or defaults to dialog-wrapper. */
     getPopClass() {
-        return this.config && this.config.popClass ? this.config.popClass : 'ec-pop_dialog';
+        return this.config && this.config.popClass ? this.config.popClass : 'dialog-wrapper';
     }
     /** Is called when the nested resource-form has been saved. Selects the fresh resource and clears the form */
     formSubmitted(form: Form<EntryResource>) {

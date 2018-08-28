@@ -5,7 +5,7 @@
   <li *ngFor="let resource of history" (click)="goBack(resource)">{{resource}}</li>
 </ul> -->
 
-<ec-resource-pop class="ec-pop ec-pop_dialog" [api]="api" [resource]="resource" [relation]="relation" #resourcePop>
+<ec-resource-pop class="dialog" [api]="api" [resource]="resource" [relation]="relation" #resourcePop>
   <a (click)="use(resource)" class="btn outline" *ngIf="resource&&hasChildren(resource)">
     <ec-icon name="database"></ec-icon>
   </a>

@@ -89,9 +89,9 @@ export class ResourceCrudComponent<T> implements OnInit, WithLoader {
         // TODO: check CrudComponent#loadEntry for further inspiration
     }
 
-    /** Returns the pop class that should be used, either uses config.popClass or defaults to ec-pop_drawer-left. */
+    /** Returns the pop class that should be used, either uses config.popClass or defaults to .dialog-wrapper */
     getPopClass() {
-        return this.config && this.config.popClass ? this.config.popClass : 'ec-pop_dialog';
+        return this.config && this.config.popClass ? this.config.popClass : 'dialog-wrapper';
     }
     /** Method that is invoked when pressing the create button. Default behaviour is opening the resource-pop. */
     create() {

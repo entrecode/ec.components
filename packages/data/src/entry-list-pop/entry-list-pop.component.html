@@ -1,18 +1,16 @@
-<div class="ec-pop-container" [class.is-active]="active" [class.is-visible]="visible">
-    <div class="ec-pop" *ngIf="active" data-col="8-sm">
-        <header class="ec-pop-header">
-            <button (click)="hide()" type="button" class="ec-pop__dismiss">
-                <ec-icon name="close-x-big"></ec-icon>
-            </button>
-            <ec-searchbar (selected)="hide()" placeholder="Search.." [list]="entryList" #searchbar *ngIf="entryList" [property]="lightModel?.titleField"></ec-searchbar>
-            <ec-list-header [list]="entryList?.list" [selection]="selection"></ec-list-header>
-        </header>
-        <div class="ec-pop-body">
-            <ec-entry-list (changed)="searchbar.focusEvent.emit(true)" [model]="model" [config]="config" [selection]="selection" (columnClicked)="select($event)"
-                #entryList></ec-entry-list>
-        </div>
-        <div class="ec-pop-footer">
-            <ec-pagination [pagination]="entryList?.list?.pagination"></ec-pagination>
-        </div>
+<div class="dialog ec-entry-list-pop" *ngIf="active">
+    <header class="dialog-header">
+        <button (click)="hide()" type="button" class="dialog-dismiss">
+            <ec-icon name="close-x-big"></ec-icon>
+        </button>
+        <ec-searchbar (selected)="hide()" placeholder="Search.." [list]="entryList" #searchbar *ngIf="entryList" [property]="lightModel?.titleField"></ec-searchbar>
+        <ec-list-header [list]="entryList?.list" [selection]="selection"></ec-list-header>
+    </header>
+    <div class="dialog-body">
+        <ec-entry-list (changed)="searchbar.focusEvent.emit(true)" [model]="model" [config]="config" [selection]="selection" (columnClicked)="select($event)"
+            #entryList></ec-entry-list>
+    </div>
+    <div class="dialog-footer">
+        <ec-pagination [pagination]="entryList?.list?.pagination"></ec-pagination>
     </div>
 </div>

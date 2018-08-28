@@ -1,37 +1,35 @@
-<div class="ec-pop-container" [class.is-active]="active" [class.is-visible]="visible">
-    <div class="ec-pop ec-resource-pop" *ngIf="active">
-        <div class="ec-pop-header">
-            <button (click)="hide()" type="button" class="ec-pop__dismiss">
-                <ec-icon name="close-x-big"></ec-icon>
-            </button>
-        </div>
-        <div class="ec-pop-body">
-            <ec-resource-form (ready)="initMethods($event)" [api]="api" [relation]="relation" [submitButton]="false" [config]="config"
-                [loader]="popLoader" [value]="resource" (deleted)="hide()" (submitted)="formSubmitted($event)" #resourceForm></ec-resource-form>
-        </div>
-        <footer class="ec-pop-footer">
-            <nav class="nav">
-                <ul class="nav__items">
-                    <li class="nav__item" *ngIf="hasMethod('delete')&&resourceForm.isEditing()">
-                        <button (click)="delete.confirm(resource)" class="btn ec-btn_delete" type="button">
-                            <!-- TODO add config for label -->
-                            <span>delete</span>
-                        </button>
-                    </li>
-                    <li class="nav__item" *ngIf="maySave(resourceForm)">
-                        <button (click)="resourceForm.submit()" [disabled]="resourceForm.group?.invalid" type="button" class="btn ec-btn_save" [class.is-disabled]="resourceForm.group?.invalid">
-                            <!-- TODO add config for label -->
-                            <span>save</span>
-                        </button>
-                    </li>
-                    <!-- TODO check if used -->
-                    <li class="nav__item">
-                        <ng-content></ng-content>
-                    </li>
-                </ul>
-            </nav>
-        </footer>
-        <ec-loader #popLoader class="ec-loader ec-loader_overlay ec-loader_global"></ec-loader>
-        <ec-resource-delete-pop (deleted)="deletedResource()" [relation]="relation" #delete></ec-resource-delete-pop>
+<div class="dialog" *ngIf="active">
+    <div class="dialog-header">
+        <button (click)="hide()" type="button" class="dialog-dismiss">
+            <ec-icon name="close-x-big"></ec-icon>
+        </button>
     </div>
+    <div class="dialog-body">
+        <ec-resource-form (ready)="initMethods($event)" [api]="api" [relation]="relation" [submitButton]="false" [config]="config"
+            [loader]="popLoader" [value]="resource" (deleted)="hide()" (submitted)="formSubmitted($event)" #resourceForm></ec-resource-form>
+    </div>
+    <footer class="dialog-footer">
+        <nav class="nav">
+            <ul class="nav__items">
+                <li class="nav__item" *ngIf="hasMethod('delete')&&resourceForm.isEditing()">
+                    <button (click)="delete.confirm(resource)" class="btn ec-btn_delete" type="button">
+                        <!-- TODO add config for label -->
+                        <span>delete</span>
+                    </button>
+                </li>
+                <li class="nav__item" *ngIf="maySave(resourceForm)">
+                    <button (click)="resourceForm.submit()" [disabled]="resourceForm.group?.invalid" type="button" class="btn ec-btn_save" [class.is-disabled]="resourceForm.group?.invalid">
+                        <!-- TODO add config for label -->
+                        <span>save</span>
+                    </button>
+                </li>
+                <!-- TODO check if used -->
+                <li class="nav__item">
+                    <ng-content></ng-content>
+                </li>
+            </ul>
+        </nav>
+    </footer>
+    <ec-loader #popLoader class="ec-loader ec-loader_overlay ec-loader_global"></ec-loader>
+    <ec-resource-delete-pop (deleted)="deletedResource()" [relation]="relation" #delete></ec-resource-delete-pop>
 </div>

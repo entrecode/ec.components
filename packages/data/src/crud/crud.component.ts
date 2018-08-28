@@ -120,8 +120,8 @@ export class CrudComponent<T> implements OnInit, WithLoader, WithNotifications {
     this.loaderService.wait(this.loadEntry(item), this.loader);
   }
 
-  /** Returns the pop class that should be used, either uses config.popClass or defaults to ec-pop_drawer-left. */
+  /** Returns the pop class that should be used, either uses config.popClass or defaults to .deck.opens-left. */
   getPopClass() {
-    return this.config && this.config.popClass ? this.config.popClass : 'ec-pop-drawer-left';
+    return this.config && this.config.popClass ? this.config.popClass : 'deck opens-left';
   }
 }

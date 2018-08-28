@@ -1,12 +1,12 @@
-<div class="dialog" *ngIf="active">
-  <button (click)="hide()" type="button" class="ec-pop__dismiss">
+<div class="dialog ec-entry-pop" *ngIf="active">
+  <button (click)="hide()" type="button" class="__dismiss">
     <ec-icon name="close-x-big"></ec-icon>
   </button>
-  <div class="ec-entry-pop-body">
+  <div class="dialog-body">
     <ec-entry-form [model]="model" [submitButton]="false" [loader]="popLoader" [config]="config" (submitted)="formSubmitted($event)"
       [entry]="entry" (deleted)="hide()" #crudForm></ec-entry-form>
   </div>
-  <footer class="ec-entry-pop-footer">
+  <footer class="dialog-footer">
     <nav class="nav">
       <ul class="nav__items">
         <li class="nav__item" *ngIf="config?.develop">
