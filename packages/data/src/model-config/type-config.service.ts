@@ -18,8 +18,10 @@ export class TypeConfigService {
   private nestedCrudConfig: CrudConfig<EntryResource> = {
     size: 10,
     // methods: ['get'],
-    popClass: 'ec-pop_fullscreen'
+    popClass: 'overlay'
   };
+
+  // TODO check if filterPopClass: '' is still needed
 
   /** Defines the base configuration of each type.*/
   private types: FieldConfig<FieldConfigProperty> = {
@@ -29,7 +31,7 @@ export class TypeConfigService {
     text: {
       view: 'string',
       filterable: true,
-      sortable: true,
+      sortable: true
     },
     boolean: {
       prefill: false,
@@ -46,47 +48,51 @@ export class TypeConfigService {
     },
     decimal: {
       view: 'number',
-      sortable: true,
+      sortable: true
     },
     url: {
       sortable: true,
-      filterable: true,
+      filterable: true
     },
     asset: {
       view: 'asset',
       input: DefaultEntryInputComponent,
       filterOperator: 'exact',
       filterable: true,
-      display: (value, entry, property) => entry.getImageThumbUrl(property, 100),
-      filterPopClass: 'ec-pop_dialog'
+      display: (value, entry, property) =>
+        entry.getImageThumbUrl(property, 100),
+      filterPopClass: ''
     },
     assets: {
       view: 'assets',
       input: DefaultEntryInputComponent,
-      display: (value, entry, property) => entry.getImageThumbUrl(property, 100),
+      display: (value, entry, property) =>
+        entry.getImageThumbUrl(property, 100),
       prefill: [],
       filterOperator: 'any',
       filterable: true,
-      queryFilter: (value) => value.split(','),
-      filterPopClass: 'ec-pop_dialog'
+      queryFilter: value => value.split(','),
+      filterPopClass: ''
     },
     dmAsset: {
       view: 'dmAsset',
       input: DefaultEntryInputComponent,
       filterOperator: 'exact',
       filterable: true,
-      display: (value, entry, property) => entry.getImageThumbUrl(property, 100),
-      filterPopClass: 'ec-pop_dialog'
+      display: (value, entry, property) =>
+        entry.getImageThumbUrl(property, 100),
+      filterPopClass: ''
     },
     dmAssets: {
       view: 'dmAssets',
       input: DefaultEntryInputComponent,
-      display: (value, entry, property) => entry.getImageThumbUrl(property, 100),
+      display: (value, entry, property) =>
+        entry.getImageThumbUrl(property, 100),
       prefill: [],
       filterOperator: 'any',
       filterable: true,
-      queryFilter: (value) => value.split(','),
-      filterPopClass: 'ec-pop_dialog'
+      queryFilter: value => value.split(','),
+      filterPopClass: ''
     },
     email: {},
     phone: {
@@ -96,14 +102,16 @@ export class TypeConfigService {
       view: 'date',
       sortable: true,
       display: this.displayDate(true),
-      validate: (value) => {
+      validate: value => {
         if (value && (value === 'invalid' || !moment(value).isValid())) {
           return 'Ungültiges Datum';
         }
         return;
       },
       filterPopClass: 'ec-pop_dialog',
-      placeholder: moment(new Date()).format(this.symbol.resolve('moment.format.date'))
+      placeholder: moment(new Date()).format(
+        this.symbol.resolve('moment.format.date')
+      )
       /*,
       prefill: new Date(0)*/
     },
@@ -125,7 +133,7 @@ export class TypeConfigService {
       filterable: true,
       filterOperator: 'any',
       prefill: [],
-      queryFilter: (value) => value.split(','),
+      queryFilter: value => value.split(','),
       filterPopClass: 'ec-pop_dialog',
       nestedCrudConfig: this.nestedCrudConfig
     },
@@ -133,28 +141,28 @@ export class TypeConfigService {
       view: 'json',
       input: DefaultEntryInputComponent,
       output: DefaultEntryOutputComponent,
-      display: (value) => value ? JSON.stringify(value) : ''
+      display: value => (value ? JSON.stringify(value) : '')
     },
     location: {
       input: DefaultEntryInputComponent,
       output: DefaultEntryOutputComponent,
-      display: (value) => value ? value.longitude + ',' + value.latitude : '',
+      display: value => (value ? value.longitude + ',' + value.latitude : ''),
       filterPopClass: 'ec-pop_dialog'
     },
     account: {
-      display: (value) => value ? value.title : '',
+      display: value => (value ? value.title : ''),
       input: AdminEntryInputComponent,
       output: DefaultEntryOutputComponent,
       filterPopClass: 'ec-pop_dialog'
     },
     role: {
-      display: (value) => value ? value.name : '',
+      display: value => (value ? value.name : ''),
       input: AdminEntryInputComponent,
       output: DefaultEntryOutputComponent,
       filterPopClass: 'ec-pop_dialog'
     }
   };
-  constructor(private symbol: SymbolService) { }
+  constructor(private symbol: SymbolService) {}
 
   /** Returns the base FieldConfig for the given type. */
   get(type: string): FieldConfigProperty {
@@ -167,7 +175,7 @@ export class TypeConfigService {
       type,
       view: config.view || type,
       input: config.input || DefaultInputComponent,
-      output: config.output || DefaultOutputComponent,
+      output: config.output || DefaultOutputComponent
     });
     return config;
   }
@@ -183,17 +191,21 @@ export class TypeConfigService {
 
   /** Returns a date display function. If time is true, the time will be displayed too. Usese 'moment.format.date' and 'moment.format.time' symbols. */
   displayDate(time = true) {
-    const format = this.symbol.resolve('moment.format.date') + (time ? ' ' + this.symbol.resolve('moment.format.time') : '');
-    return (value) => value ? moment(value).format(format) : '';
+    const format =
+      this.symbol.resolve('moment.format.date') +
+      (time ? ' ' + this.symbol.resolve('moment.format.time') : '');
+    return value => (value ? moment(value).format(format) : '');
   }
 
   /** Returns an account display function */
   displayAccount() {
-    return (value, entry, property) => entry.getTitle(property) || this.symbol.resolve('field.creator.ecuser');
+    return (value, entry, property) =>
+      entry.getTitle(property) || this.symbol.resolve('field.creator.ecuser');
   }
 
   /** Returns a date group function. Uses 'moment.format.month' symbol */
   groupDate() {
-    return (value) => moment(value).format(this.symbol.resolve('moment.format.month'));
+    return value =>
+      moment(value).format(this.symbol.resolve('moment.format.month'));
   }
 }

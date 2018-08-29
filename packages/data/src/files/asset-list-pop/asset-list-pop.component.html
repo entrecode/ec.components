@@ -1,25 +1,23 @@
-<div class="ec-pop-container" [class.is-active]="active" [class.is-visible]="visible">
-  <div class="ec-pop ec-asset-list-pop ec-dropzone" *ngIf="active" (ecDropzone)="uploadSelect?.uploader?.uploadFiles($event.dataTransfer.files,$event)">
-    <button (click)="hide()" class="ec-pop__dismiss" type="button">
-      <ec-icon name="close-x-big"></ec-icon>
-    </button>
-    <div class="ec-dropzone__info">Drop to upload</div>
-    <div class="ec-asset-list-pop-header">
-      <ec-upload-select (uploaded)="fileService.selectUpload($event,selection)" #uploadSelect [disableDrop]="true" [config]="uploadConfig"
-        [assetGroupID]="assetGroupID"></ec-upload-select>
-      <div data-grid *ngIf="active&&sdk.apiResolved">
-        <div [attr.data-col]="showGroupSelect()?'6-sm':'12-sm'">
-          <ec-searchbar [list]="resourceList"></ec-searchbar>
-        </div>
-        <div data-col='6-sm' *ngIf="showGroupSelect()">
-          <ec-assetgroup-select [readOnly]="config.forceGroup" [assetGroupID]="assetGroupID" (groupChanged)="setGroup($event)"></ec-assetgroup-select>
-        </div>
+<div class="ec-asset-list-pop ec-dropzone" *ngIf="active" (ecDropzone)="uploadSelect?.uploader?.uploadFiles($event.dataTransfer.files,$event)">
+  <button (click)="hide()" class="dialog-dismiss" type="button">
+    <ec-icon name="close-x-big"></ec-icon>
+  </button>
+  <div class="ec-dropzone__info">Drop to upload</div>
+  <div class="ec-asset-list-pop-header">
+    <ec-upload-select (uploaded)="fileService.selectUpload($event,selection)" #uploadSelect [disableDrop]="true" [config]="uploadConfig"
+      [assetGroupID]="assetGroupID"></ec-upload-select>
+    <div data-grid *ngIf="active&&sdk.apiResolved">
+      <div [attr.data-col]="showGroupSelect()?'6-sm':'12-sm'">
+        <ec-searchbar [list]="resourceList"></ec-searchbar>
+      </div>
+      <div data-col='6-sm' *ngIf="showGroupSelect()">
+        <ec-assetgroup-select [readOnly]="config.forceGroup" [assetGroupID]="assetGroupID" (groupChanged)="setGroup($event)"></ec-assetgroup-select>
       </div>
     </div>
-    <div class="ec-asset-list-pop-body">
-      <ec-resource-list #resourceList [relation]="getGroupRelation()" [api]="sdk.api" [selection]="selection" (columnClicked)="select($event)"
-        [config]="config" [loader]="popLoader" class="ec-resource-list"></ec-resource-list>
-    </div>
-    <ec-loader #popLoader class="ec-loader ec-loader_global"></ec-loader>
   </div>
+  <div class="ec-asset-list-pop-body">
+    <ec-resource-list #resourceList [relation]="getGroupRelation()" [api]="sdk.api" [selection]="selection" (columnClicked)="select($event)"
+      [config]="config" [loader]="popLoader" class="ec-resource-list"></ec-resource-list>
+  </div>
+  <ec-loader #popLoader class="ec-loader ec-loader_global"></ec-loader>
 </div>
