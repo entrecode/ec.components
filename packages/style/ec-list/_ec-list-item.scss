@@ -16,8 +16,15 @@
   margin: arrayMagic($ec-list-item-spacing);
   background: $ec-list-item-background;
 
-  &.is-hidden {
-    display: none;
+  // @param {array} $ec-list-item-even-style
+  // @param {array} $ec-list-item-odd-style
+
+  &:nth-child(odd) {
+    @include inject-style($ec-list-item-odd-style);
+  }
+
+  &:nth-child(even) {
+    @include inject-style($ec-list-item-even-style);
   }
 
   // @param {color} $ec-list-item-is-clickable-color [inherit]
