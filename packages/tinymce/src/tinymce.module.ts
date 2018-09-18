@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { TinymceComponent } from './tinymce/tinymce.component';
-import { UiModule } from '@ec.components/ui';
-import { DataModule } from '@ec.components/data';
+import { UiModule } from '../../ui/src/ui.module';
+import { DataModule } from '../../data/src/data.module';
 
 @NgModule({
   declarations: [TinymceComponent],
