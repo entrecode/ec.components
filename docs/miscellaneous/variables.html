@@ -903,14 +903,14 @@
                         <a href="modules/TinymceModule.html" data-type="entity-link">TinymceModule</a>
                             <li class="chapter inner">
                                 <div class="simple menu-toggler" data-toggle="collapse"
-                                        data-target="#xs-components-links-module-TinymceModule-b33ada019b508c2fa2d35e1bf94eea4f"
+                                        data-target="#xs-components-links-module-TinymceModule-d80b57ca242ac5b945c6d8ea4690ea9a"
                                     >
                                     <span class="fa fa-fw fa-cogs"></span>
                                     <span>Components</span>
                                     <span class="fa fa-angle-down"></span>
                                 </div>
                                 <ul class="links collapse"
-                                        id="xs-components-links-module-TinymceModule-b33ada019b508c2fa2d35e1bf94eea4f"
+                                        id="xs-components-links-module-TinymceModule-d80b57ca242ac5b945c6d8ea4690ea9a"
                                     >
                                         <li class="link">
                                             <a href="components/TinymceComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">TinymceComponent</a>
@@ -2133,14 +2133,14 @@
                         <a href="modules/TinymceModule.html" data-type="entity-link">TinymceModule</a>
                             <li class="chapter inner">
                                 <div class="simple menu-toggler" data-toggle="collapse"
-                                        data-target="#components-links-module-TinymceModule-b33ada019b508c2fa2d35e1bf94eea4f"
+                                        data-target="#components-links-module-TinymceModule-d80b57ca242ac5b945c6d8ea4690ea9a"
 >
                                     <span class="fa fa-fw fa-cogs"></span>
                                     <span>Components</span>
                                     <span class="fa fa-angle-down"></span>
                                 </div>
                                 <ul class="links collapse"
-                                        id="components-links-module-TinymceModule-b33ada019b508c2fa2d35e1bf94eea4f"
+                                        id="components-links-module-TinymceModule-d80b57ca242ac5b945c6d8ea4690ea9a"
 >
                                         <li class="link">
                                             <a href="components/TinymceComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">TinymceComponent</a>
@@ -3313,27 +3313,31 @@
     });
 
     // TODO
-    /*editor.addButton(&#x27;image&#x27;, {
+    /* editor.addButton(&#x27;image&#x27;, {
       icon: &#x27;image&#x27;,
       onclick: function (edit, element) {
         const id &#x3D; Date.now();
+        console.log(&#x27;image button clicked&#x27;, edit, element);
         const window &#x3D; editor.windowManager.open({
-          title: &#x27;Bild/Datei einfügen&#x27;,
+          title: &#x27;Bild einfügen&#x27;,
           body: [{
             type: &#x27;container&#x27;,
-            html: &#x27;&lt;ec-file-picker single&#x3D;&quot;true&quot; ng-model&#x3D;&quot;src&quot; event-key&#x3D;&quot;&#x27; + id + &#x27;&quot; &#x27; +
-            &#x27;editable&#x3D;&quot;true&quot;&gt;&lt;/ec-file-picker&gt;&#x27; +
-            &#x27;&lt;label ng-show&#x3D;&quot;asset.value.type &#x3D;&#x3D;&#x3D; \&#x27;image\&#x27;&quot;&gt;Alt-Text&#x27; +
-            &#x27;&lt;input ng-model&#x3D;&quot;alt&quot; type&#x3D;&quot;text&quot;&gt;&lt;/label&gt;&#x27; +
-            &#x27;&lt;label ng-show&#x3D;&quot;asset.value.type &#x3D;&#x3D;&#x3D; \&#x27;document\&#x27;&quot;&gt;Text&#x27; +
-            &#x27;&lt;input ng-model&#x3D;&quot;text&quot; type&#x3D;&quot;text&quot;&gt;&lt;/label&gt;&#x27; +
-            &#x27;&lt;label ng-show&#x3D;&quot;asset.value.type &#x3D;&#x3D;&#x3D; \&#x27;image\&#x27;&quot;&gt;&#x27; +
-            &#x27;&lt;input ng-model&#x3D;&quot;responsive&quot; type&#x3D;&quot;checkbox&quot;&gt; automatische Breite&lt;/label&gt;&#x27;
+            html: &#x60;&lt;ec-asset-select [solo]&#x3D;&quot;true&quot; [(ngModel)]&#x3D;&quot;src&quot;&gt;&lt;/ec-file-picker&gt;
+            src: {{src}}
+            &lt;label ng-show&#x3D;&quot;asset.value.type &#x3D;&#x3D;&#x3D; \&#x27;image\&#x27;&quot;&gt;Alt-Text
+            &lt;input ng-model&#x3D;&quot;alt&quot; type&#x3D;&quot;text&quot;&gt;&lt;/label&gt;
+            &lt;label ng-show&#x3D;&quot;asset.value.type &#x3D;&#x3D;&#x3D; \&#x27;document\&#x27;&quot;&gt;Text
+            &lt;input ng-model&#x3D;&quot;text&quot; type&#x3D;&quot;text&quot;&gt;&lt;/label&gt;
+            &lt;label ng-show&#x3D;&quot;asset.value.type &#x3D;&#x3D;&#x3D; \&#x27;image\&#x27;&quot;&gt;
+            &lt;input ng-model&#x3D;&quot;responsive&quot; type&#x3D;&quot;checkbox&quot;&gt; automatische Breite&lt;/label&gt;&#x60;
           }],
         });
       }
-    });*/
-  }
+    }); */
+  },
+  /* file_browser_callback: (field_name, url, type, win) &#x3D;&gt; {
+    console.log(&#x27;file browser&#x27;, field_name, url, type, win);
+  } */
 }</code>
                         </td>
                     </tr>
