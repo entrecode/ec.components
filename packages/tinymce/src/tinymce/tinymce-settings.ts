@@ -93,25 +93,29 @@ export const editorSettings = {
     });
 
     // TODO
-    /*editor.addButton('image', {
+    /* editor.addButton('image', {
       icon: 'image',
       onclick: function (edit, element) {
         const id = Date.now();
+        console.log('image button clicked', edit, element);
         const window = editor.windowManager.open({
-          title: 'Bild/Datei einfügen',
+          title: 'Bild einfügen',
           body: [{
             type: 'container',
-            html: '<ec-file-picker single="true" ng-model="src" event-key="' + id + '" ' +
-            'editable="true"></ec-file-picker>' +
-            '<label ng-show="asset.value.type === \'image\'">Alt-Text' +
-            '<input ng-model="alt" type="text"></label>' +
-            '<label ng-show="asset.value.type === \'document\'">Text' +
-            '<input ng-model="text" type="text"></label>' +
-            '<label ng-show="asset.value.type === \'image\'">' +
-            '<input ng-model="responsive" type="checkbox"> automatische Breite</label>'
+            html: `<ec-asset-select [solo]="true" [(ngModel)]="src"></ec-file-picker>
+            src: {{src}}
+            <label ng-show="asset.value.type === \'image\'">Alt-Text
+            <input ng-model="alt" type="text"></label>
+            <label ng-show="asset.value.type === \'document\'">Text
+            <input ng-model="text" type="text"></label>
+            <label ng-show="asset.value.type === \'image\'">
+            <input ng-model="responsive" type="checkbox"> automatische Breite</label>`
           }],
         });
       }
-    });*/
-  }
+    }); */
+  },
+  /* file_browser_callback: (field_name, url, type, win) => {
+    console.log('file browser', field_name, url, type, win);
+  } */
 };
