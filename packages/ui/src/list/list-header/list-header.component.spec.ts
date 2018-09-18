@@ -6,7 +6,7 @@ import { LoaderModule } from '../../loader/loader.module';
 import { NotificationsModule } from '../../notifications/notifications.module';
 import { PopModule } from '../../pop/pop.module';
 import { PopComponent } from '../../pop/pop.component';
-import { List } from '@ec.components/core';
+import { List } from '../../../../core';
 import { IconModule } from '../../icon/icon.module';
 
 describe('ListHeaderComponent', () => {

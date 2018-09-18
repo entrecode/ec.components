@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
-import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
+import { PopComponent } from '../../../ui/src/pop/pop.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import Resource from 'ec.sdk/lib/resources/Resource';
 import Core from 'ec.sdk/lib/Core';
@@ -9,10 +9,10 @@ import { ResourceFormComponent } from '../resource-form/resource-form.component'
 import { AuthService } from '../auth/auth.service';
 import { OnChanges, AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { SdkService } from '../sdk/sdk.service';
-import { FormComponent } from '@ec.components/ui/src/form/form.component';
-import { PopService } from '@ec.components/ui/src/pop/pop.service';
+import { FormComponent } from '../../../ui/src/form/form.component';
+import { PopService } from '../../../ui/src/pop/pop.service';
 import { ResourceForm } from '../resource-form/resource-form';
-import { Form } from '@ec.components/core';
+import { Form } from '../../../core';
 
 /** Entry Pop is an extension of Pop component to host an entry-form.
  * You can use it like a normal pop but with the extra handling of an entry form inside.

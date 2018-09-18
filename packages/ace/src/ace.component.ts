@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild, Input, OnChanges, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { DefaultInputComponent, InputComponent } from '@ec.components/ui';
+import { DefaultInputComponent, InputComponent } from '../../ui';
 // import 'ace-builds/src-noconflict/ace.js';
 
 /** Workaround that expects ace to be imported somewhere else... */

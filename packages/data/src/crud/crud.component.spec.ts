@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CrudComponent } from './crud.component';
 import { EntryListComponent } from '../entry-list/entry-list.component';
 import { EntryFormComponent } from '../entry-form/entry-form.component';
-import { UiModule } from '@ec.components/ui/src/ui.module';
+import { UiModule } from '../../../ui/src/ui.module';
 import { ModelConfigService } from '../model-config/model-config.service';
 import { CrudService } from './crud.service';
 import { SdkService } from '../sdk/sdk.service';

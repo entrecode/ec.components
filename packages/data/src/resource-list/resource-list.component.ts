@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnChanges, Optional, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { List, Selection } from '@ec.components/core';
-import { ListComponent, LoaderComponent, LoaderService, NotificationsService, WithLoader } from '@ec.components/ui';
-import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import { List, Selection } from '../../../core';
+import { ListComponent, LoaderComponent, LoaderService, NotificationsService, WithLoader } from '../../../ui';
+import { SymbolService } from '../../../ui/src/symbol/symbol.service';
 import Core from 'ec.sdk/lib/Core';
 import ListResource from 'ec.sdk/lib/resources/ListResource';
 import Resource from 'ec.sdk/lib/resources/Resource';

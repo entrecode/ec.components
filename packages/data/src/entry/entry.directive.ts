@@ -4,7 +4,7 @@
 import { Directive, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { SdkService } from '../sdk/sdk.service';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
-import { WithLoader, LoaderComponent, NotificationsService } from '@ec.components/ui';
+import { WithLoader, LoaderComponent, NotificationsService } from '../../../ui';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 
 /** Loads an entry by id to the template.

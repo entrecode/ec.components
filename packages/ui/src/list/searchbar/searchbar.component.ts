@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, EventEmitter, Input, Output, OnInit, OnChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Item, List } from '@ec.components/core';
+import { Item, List } from '../../../../core';
 import { SymbolService } from '../../symbol/symbol.service';
 import { Subject } from 'rxjs/Subject';
 import { distinctUntilChanged } from 'rxjs/operators';

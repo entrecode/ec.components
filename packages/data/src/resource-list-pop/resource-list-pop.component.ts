@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnChanges, Output, ViewChild } from '@angular/core';
-import { Item, ListConfig, Selection } from '@ec.components/core';
-import { PopComponent } from '@ec.components/ui';
-import { PopService } from '@ec.components/ui/src/pop/pop.service';
-import { SearchbarComponent } from '@ec.components/ui/src/list/searchbar/searchbar.component';
+import { Item, ListConfig, Selection } from '../../../core';
+import { PopComponent } from '../../../ui';
+import { PopService } from '../../../ui/src/pop/pop.service';
+import { SearchbarComponent } from '../../../ui/src/list/searchbar/searchbar.component';
 import Resource from 'ec.sdk/lib/resources/Resource';
 import { ResourceConfig } from '../resource-config/resource-config.service';
 import Core from 'ec.sdk/lib/Core';

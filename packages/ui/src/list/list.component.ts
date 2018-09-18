@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, Output, ViewEncapsulation } from '@angular/core';
-import { Collection, List, ListConfig, Selection, Pagination } from '@ec.components/core';
-import { Item } from '@ec.components/core/src/item/item';
+import { Collection, List, ListConfig, Selection, Pagination } from '../../../core';
+import { Item } from '../../../core/src/item/item';
 import { PaginationConfig } from './pagination/pagination-config.interface';
 import { ListConfigService } from './list-config.service';
 
