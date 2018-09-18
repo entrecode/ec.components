@@ -8,7 +8,7 @@ import { IconModule } from '@ec.components/ui/src/icon/icon.module';
   declarations: [TinymceComponent],
   entryComponents: [TinymceComponent],
   imports: [IconModule, PopModule, FilesModule],
-  exports: [TinymceComponent]
+  exports: [TinymceComponent, IconModule, PopModule, FilesModule]
 })
 export class TinymceModule {
 }
