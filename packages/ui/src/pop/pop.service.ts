@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Collection } from '../../../core';
+import { Collection } from '@ec.components/core';
 import { PopComponent } from './pop.component';
 
 /** Holds a stack of all open pops. listens for escape keydown events to close the latest opened pop. */

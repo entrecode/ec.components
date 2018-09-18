@@ -1,12 +1,12 @@
 import { Component, Input, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import { CrudConfig } from '../crud/crud-config.interface';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
-import { PopComponent } from '../../../ui/src/pop/pop.component';
+import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
 import { EntryFormComponent } from '../entry-form/entry-form.component';
 import { AuthService } from '../auth/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { PopService } from '../../../ui/src/pop/pop.service';
-import { Form } from '../../../core';
+import { PopService } from '@ec.components/ui/src/pop/pop.service';
+import { Form } from '@ec.components/core';
 
 /** Entry Pop is an extension of Pop component to host an entry-form.
  * You can use it like a normal pop but with the extra handling of an entry form inside.

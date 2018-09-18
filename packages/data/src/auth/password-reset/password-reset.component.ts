@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import PublicAPI from 'ec.sdk/lib/PublicAPI';
-import { LoaderComponent, NotificationsService, WithLoader } from '../../../../ui';
+import { LoaderComponent, NotificationsService, WithLoader } from '@ec.components/ui';
 import { AuthService } from '../auth.service';
 
 /** Form to send password reset request.

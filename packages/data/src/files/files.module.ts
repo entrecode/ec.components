@@ -2,7 +2,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { UiModule } from '../../../ui/src/ui.module';
+import { UiModule } from '@ec.components/ui/src/ui.module';
 import { AssetListComponent } from '../asset-list/asset-list.component';
 import { ResourceModule } from '../resource/resource.module';
 import { SdkModule } from '../sdk/sdk.module';

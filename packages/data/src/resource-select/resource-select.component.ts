@@ -9,14 +9,14 @@ import {
     ViewEncapsulation
 } from '@angular/core';
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { PopComponent } from '../../../ui/src/pop/pop.component';
-import { Item } from '../../../core/src/item/item';
+import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
+import { Item } from '@ec.components/core/src/item/item';
 import { CrudConfig } from '../crud/crud-config.interface';
-import { SelectComponent } from '../../../ui';
+import { SelectComponent } from '@ec.components/ui';
 import Core from 'ec.sdk/lib/Core';
 import Resource from 'ec.sdk/lib/resources/Resource';
 import { ResourceConfig } from '../resource-config/resource-config.service';
-import { Form } from '../../../core';
+import { Form } from '@ec.components/core';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { ResourcePopComponent } from '../resource-pop/resource-pop.component';
 import { AuthService } from '../auth/auth.service';
