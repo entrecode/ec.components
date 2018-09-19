@@ -18,8 +18,6 @@ import 'tinymce/plugins/textcolor';
 import 'tinymce/plugins/visualblocks';
 import 'tinymce/themes/modern';
 import { editorSettings } from './tinymce-settings';
-import { AssetSelectComponent } from '@ec.components/data/src/files';
-import { PopComponent } from '@ec.components/ui';
 
 /** Wraps tinymce as a control input.
  * <example-url>https://components.entrecode.de/misc/tinymce?e=1</example-url>
@@ -45,10 +43,6 @@ export class TinymceComponent
   public editor: any;
   /** The container where the editor is rendered */
   @ViewChild('container') container: ElementRef;
-  /** The nested asset select */
-  @ViewChild('assetSelect') assetSelect: AssetSelectComponent;
-  /** asset pop that will be opened when the image button is pressed */
-  @ViewChild('assetPop') assetPop: PopComponent;
   /** Subject that is nexted on editor change */
   update: Subject<any> = new Subject();
   /** Debounce time for value change processing */
@@ -57,10 +51,11 @@ export class TinymceComponent
   @Input() settings: any = {};
   /** Output that emits when the value has been changed by the user */
   @Output() changed: EventEmitter<string> = new EventEmitter();
+  /** Output that is emitted when the setup is being made.
+   * Passes the editor instance. Intended to be used for custom controls  */
+  @Output() onSetup: EventEmitter<tinymce.Editor> = new EventEmitter();
   /** Current value */
   public value = '';
-  /** The assetGroupID that is used in the image picker */
-  @Input() assetGroupID: string;
 
   /** Subscribes for changes and propagates them + calling application tick manually :( */
   constructor(private app: ApplicationRef) {
@@ -74,23 +69,8 @@ export class TinymceComponent
         this.app.tick();
       });
   }
-
-  addAsset(selection, pop) {
-    pop.hide();
-    const image = selection.getValue();
-    if (!image) {
-      return;
-    }
-    Promise.resolve(image.getImageUrl()).then(url => {
-      console.log('url', url);
-      console.log('add asset', selection.getValue(), this.editor);
-      this.editor.execCommand('mceInsertContent', false,
-        `<img alt="${image.title}" width="200" src="${url}"/>`);
-    });
-  }
   /** Initializes the editor */
   ngAfterViewInit() {
-    console.log('asset select', this.assetSelect);
     this.ready = Promise.resolve(
       tinymce.init(
         Object.assign({},
@@ -99,14 +79,7 @@ export class TinymceComponent
             target: this.container.nativeElement,
             setup: (editor) => {
               editorSettings.setup(editor);
-              editor.addButton('image', {
-                icon: 'image',
-                onclick: (edit, element) => {
-                  const id = Date.now();
-                  this.assetPop.show();
-                  this.assetSelect.selection.items = [];
-                }
-              });
+              this.onSetup.emit(editor);
             }
           },
           this.settings

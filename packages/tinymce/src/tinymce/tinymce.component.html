@@ -1,14 +1,1 @@
 <div class="ec-tinymce" #container></div>
-<ec-pop class="ec-pop ec-pop_dialog" #assetPop>
-    <div class="ec-pop-body">
-        <nav class="is-absolute is-positioned-ne">
-            <a class="btn btn_clear" (click)="assetPop.hide()">
-                <!-- <span class="ec-icon close-x"></span> -->
-                <ec-icon name="close-x-big"></ec-icon>
-            </a>
-        </nav>
-        <h4>Upload</h4>
-        <ec-asset-select [assetGroupID]="assetGroupID" (changed)="addAsset($event, assetPop)" [solo]="true"
-            #assetSelect></ec-asset-select>
-    </div>
-</ec-pop>
