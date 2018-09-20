@@ -53,7 +53,7 @@ export class TinymceComponent
   @Output() changed: EventEmitter<string> = new EventEmitter();
   /** Output that is emitted when the setup is being made.
    * Passes the editor instance. Intended to be used for custom controls  */
-  @Output() onSetup: EventEmitter<tinymce.Editor> = new EventEmitter();
+  @Output() setup: EventEmitter<tinymce.Editor> = new EventEmitter();
   /** Current value */
   public value = '';
 
@@ -75,14 +75,17 @@ export class TinymceComponent
       tinymce.init(
         Object.assign({},
           editorSettings,
+          this.settings,
           {
             target: this.container.nativeElement,
             setup: (editor) => {
               editorSettings.setup(editor);
-              this.onSetup.emit(editor);
+              if (this.settings && this.settings.setup) {
+                this.settings.setup(editor);
+              }
+              this.setup.emit(editor);
             }
-          },
-          this.settings
+          }
         )
       )
     ).then(editor => {
