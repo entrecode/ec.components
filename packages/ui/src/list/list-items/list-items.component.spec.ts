@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ListItemsComponent } from '../../..';
+import { ListItemsComponent } from '../../list/list-items/list-items.component';
 import { InputComponent } from '../../io/input/input.component';
 import { OutputComponent } from '../../io/output/output.component';
 
@@ -15,7 +15,7 @@ describe('ListItemsComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ListItemsComponent, InputComponent, OutputComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

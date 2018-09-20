@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Item, Selection } from '@ec.components/core';
-import { SdkService } from '../../..';
+import { SdkService } from '../../sdk/sdk.service';
 import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
 import { PopService } from '@ec.components/ui/src/pop/pop.service';
 import PublicAssetResource from 'ec.sdk/lib/resources/publicAPI/PublicAssetResource';
@@ -8,7 +8,6 @@ import { Subject } from 'rxjs/Subject';
 import { SearchbarComponent } from '@ec.components/ui/src/list/searchbar/searchbar.component';
 import { CrudConfig } from '../../crud/crud-config.interface';
 import { FileService } from '../file.service';
-import { UploadComponent } from '@ec.components/data/src/files/upload/upload.component';
 
 /** Entry Pop is an extension of Pop component to host an entry-form.
  * You can use it like a normal pop but with the extra handling of an entry form inside.
@@ -61,13 +60,13 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
 
   ngOnInit() {
     this.fileService.assetGroupList().then(assetGroups => {
-      this.assetGroups = assetGroups
+      this.assetGroups = assetGroups;
       /* if (!this.assetGroupID) {
         this.assetGroupID = assetGroups[0] || 'legacyAsset';
         this.groupChanged.emit(this.assetGroupID);
       } */
     });
-    this.uploadConfig = Object.assign({}, this.config, { disableListPop: true })
+    this.uploadConfig = Object.assign({}, this.config, { disableListPop: true });
   }
 
   /** emits columnClicked event or toggles selection if no observers. */

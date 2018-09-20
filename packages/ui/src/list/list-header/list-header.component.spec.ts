@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ListHeaderComponent } from '../../..';
+import { ListHeaderComponent } from '../../list/list-header/list-header.component';
 import { FormModule } from '../../form/form.module';
 import { LoaderModule } from '../../loader/loader.module';
 import { NotificationsModule } from '../../notifications/notifications.module';

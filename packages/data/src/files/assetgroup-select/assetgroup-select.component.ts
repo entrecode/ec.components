@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FileService } from '..';
+import { FileService } from '../file.service';
 
 // TODO: add demo + doc
 
