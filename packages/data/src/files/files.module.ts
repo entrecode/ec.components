@@ -15,7 +15,6 @@ import { FileService } from './file.service';
 import { ImageDirective } from './image/image.directive';
 import { UploadComponent } from './upload/upload.component';
 import { UploadSelectComponent } from './upload-select/upload-select.component';
-import { UploadSelectPopComponent } from '@ec.components/data/src/files/upload-select-pop/upload-select-pop.component';
 
 @NgModule({
   entryComponents: [
@@ -33,7 +32,6 @@ import { UploadSelectPopComponent } from '@ec.components/data/src/files/upload-s
     ImageDirective,
     UploadComponent,
     UploadSelectComponent,
-    UploadSelectPopComponent
   ],
   imports: [
     CommonModule,
@@ -52,7 +50,6 @@ import { UploadSelectPopComponent } from '@ec.components/data/src/files/upload-s
     ImageDirective,
     UploadComponent,
     UploadSelectComponent,
-    UploadSelectPopComponent,
     SdkModule,
   ],
   providers: [

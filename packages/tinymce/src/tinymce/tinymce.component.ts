@@ -98,6 +98,12 @@ export class TinymceComponent
     });
   }
 
+  /** adds an image by url to the editor */
+  addImageByUrl(url: string, caption = '', size = 200) {
+    this.editor.execCommand('mceInsertContent', false,
+      `<img alt="${caption}" width="${size}" src="${url}"/>`);
+  }
+
   /** Destroys the editor. */
   ngOnDestroy() {
     if (this.editor) {

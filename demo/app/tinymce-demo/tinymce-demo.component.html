@@ -3,5 +3,8 @@
 <ec-tinymce [(ngModel)]="html" (changed)="change($event)"></ec-tinymce>
 
 <pre><code>{{html}}</code></pre>
-<h2>With new assets</h2>
-<ec-tinymce assetGroupID="test"></ec-tinymce>
+<h2>With asset picker using onSetup</h2>
+<ec-tinymce #tinyWithAssets (onSetup)="initEditor($event)"></ec-tinymce>
+
+<ec-asset-list-pop class="ec-pop_dialog" assetGroupID="test" (columnClicked)="addAsset($event, tinyWithAssets)"
+    [selection]="selection" #assetListPop></ec-asset-list-pop>
