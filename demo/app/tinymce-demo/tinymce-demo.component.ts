@@ -1,8 +1,6 @@
 import { Component, OnInit, ViewChild, ApplicationRef, NgZone } from '@angular/core';
 import { AssetListPopComponent } from '@ec.components/data/src/files/asset-list-pop/asset-list-pop.component';
 import { TinymceComponent } from '@ec.components/tinymce/src/tinymce/tinymce.component';
-import { Editor } from 'tinymce';
-import { LoaderService } from '@ec.components/ui';
 
 @Component({
   selector: 'ec-tinymce-demo',
