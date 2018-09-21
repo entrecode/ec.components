@@ -69,6 +69,7 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
       } */
     });
     this.uploadConfig = Object.assign({}, this.config, { disableListPop: true });
+    this.config = Object.assign({ hidePagination: true, disableHeader: true }, this.config);
   }
 
   /** emits columnClicked event or toggles selection if no observers. */

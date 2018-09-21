@@ -19,5 +19,8 @@
     <ec-resource-list #resourceList [relation]="getGroupRelation()" [api]="sdk.api" [selection]="selection" (columnClicked)="select($event)"
       [config]="config" [loader]="popLoader" class="ec-resource-list"></ec-resource-list>
   </div>
+  <div class="dialog-footer">
+      <ec-pagination [pagination]="resourceList?.list?.pagination"></ec-pagination>
+  </div>
   <ec-loader #popLoader class="ec-loader ec-loader_global"></ec-loader>
 </div>
