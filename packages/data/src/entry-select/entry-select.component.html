@@ -14,7 +14,7 @@
     </span>
     <ul class="ec-select-selection" *ngIf="selection.items.length" dndDropzone (dndDrop)="onDrop($event)">
       <li [dndDisableIf]="solo||config?.disableDrag" [class.is-dragged]="selected===dragged" [class.is-draggable]="solo||!config?.disableDrag"
-        dndEffectAllowed="move" [dndDraggable]="selected" *ngFor="let selected of selection?.items" (dndStart)="onDragStart(selected,$event)"
+        dndEffectAllowed="move" [dndDraggable]="i" *ngFor="let selected of selection?.items;let i = index" (dndStart)="onDragStart(selected,$event)"
         (dndCanceled)="cancelDrag(selected,$event)" (dndEnd)="cancelDrag(selected,$event)">
         <span [class.ec-select-selected]="!solo" [class.ec-select-selected_solo]="solo" (click)="!solo&&editItem(selected,$event)">
           {{selected.display()}}
