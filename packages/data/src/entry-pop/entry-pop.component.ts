@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, Output, EventEmitter, HostBinding } from '@angular/core';
 import { CrudConfig } from '../crud/crud-config.interface';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { PopComponent } from '../../../ui/src/pop/pop.component';
@@ -36,6 +36,8 @@ export class EntryPopComponent extends PopComponent implements OnInit {
   @Output() submitted: EventEmitter<Form<EntryResource>> = new EventEmitter();
   /** Emits when the resource has been deleted. */
   @Output() deleted: EventEmitter<Form<EntryResource>> = new EventEmitter();
+  /** Set host class to make sure the type is used */
+  @HostBinding('class') class = 'dialog-wrapper';
 
   constructor(protected popService: PopService, private auth: AuthService, private router: Router, private route: ActivatedRoute) {
     super(popService);

@@ -1,7 +1,7 @@
 /**
  * Created by felix on 26.05.17.
  */
-import { Component, EventEmitter, Input, Output, HostBinding } from '@angular/core';
+import { Component, EventEmitter, Input, Output, HostBinding, OnInit } from '@angular/core';
 import { PopService } from './pop.service';
 
 /** A Pop is an area of content whose visibility can be toggled.
@@ -15,37 +15,34 @@ import { PopService } from './pop.service';
 export class PopComponent {
   /** If true, .ec-pop is part of the DOM (*ngIf) + .active is set on .ec-pop-container.  */
   @Input() @HostBinding('class.is-active') active: boolean;
-  /** If true, .visible is set on .ec-pop-container.  */
-  @Input() visible: boolean;
-  /** Emits the value of visible on change. */
+  /** The used type on the host element */
+  @Input() type: string;
   // tslint:disable-next-line:no-output-rename
   @Output('toggle') _toggle: EventEmitter<boolean> = new EventEmitter();
 
   constructor(protected popService: PopService) {
   }
 
-  /** Shows if not visible, hides if visible. */
-  public toggle(visible: boolean = !this.visible, emit: boolean = false) {
-    if (!visible) {
+  /** Shows if not active, hides if active. */
+  public toggle(active: boolean = !this.active, emit: boolean = false) {
+    if (!active) {
       this.hide();
     } else {
       this.show();
     }
     if (emit) {
-      this._toggle.emit(visible);
+      this._toggle.emit(active);
     }
   }
 
-  /** Shows the pop. First sets active and after the delay it sets visible. */
+  /** Shows the pop. Sets active true and adds pop to popService.stack */
   public show() {
     this.active = true;
     this.popService.stack.add(this);
-    this.visible = true;
   }
 
-  /** Hides the pop. First removes visible and after the delay it removes active. */
+  /** Hides the pop. Sets active false and removes pop from popService.stack */
   public hide() {
-    this.visible = false;
     this.popService.stack.remove(this);
     this.active = false;
   }

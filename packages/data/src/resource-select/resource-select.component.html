@@ -12,15 +12,14 @@
             </li>
         </ul>
         <ec-pop class="ec-select-options" #dropdown>
-            <ec-resource-list [relation]="relation" [api]="api" *ngIf="selection&&dropdown.active" [config]="dropdownConfig" [selection]="selection"
-                (columnClicked)="select($event)"></ec-resource-list>
+            <ec-resource-list [relation]="relation" [api]="api" *ngIf="selection&&dropdown.active" [config]="dropdownConfig"
+                [selection]="selection" (columnClicked)="select($event)"></ec-resource-list>
         </ec-pop>
 
-        <ec-resource-list-pop #listPop [ngClass]="getPopClass()" class="ec-resource-list-pop" #resourceListPop [api]="api" [relation]="relation"
-            [config]="config" [selection]="selection"></ec-resource-list-pop>
+        <ec-resource-list-pop #listPop #resourceListPop [api]="api" [relation]="relation" [config]="config" [selection]="selection"></ec-resource-list-pop>
 
     </div>
-    <ec-resource-pop #resourcePop [api]="api" [relation]="relation" [ngClass]="getPopClass()" [config]="config" (submitted)="formSubmitted($event)"
+    <ec-resource-pop #resourcePop [api]="api" [relation]="relation" [config]="config" (submitted)="formSubmitted($event)"
         (deleted)="removeItem($event)"></ec-resource-pop>
     <nav class="ec-resource-select__controls">
         <a (click)="editItem(selection.items[0],$event)" class="btn btn_clear" *ngIf="solo&&!config.disableCreatePop&&hasMethod('put')&&!selection.isEmpty()">

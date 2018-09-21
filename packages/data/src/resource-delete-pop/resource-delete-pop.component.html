@@ -1,11 +1,9 @@
-<!-- TODO add styles  -->
-<!-- TODO warum ist der Aufbau hier anders als bei den anderen ec-pop nutzungne? -->
-<ec-pop class="dialog ressource-delete-pop">
+<div class="ec-resource-delete-pop dialog" *ngIf="active">
     <div class="dialog-body">
         <p>{{question||((!safetyWord?'resource.delete.question':'resource.delete.safety') | symbol)}}</p>
         <div class="form-group safety-query" *ngIf="safetyWord">
             <label>"{{safetyWord}}"</label>
-            <input type="text" class="input" [(ngModel)]="confirmInput" />
+            <input [ecFocus]="focusEvent" type="text" class="input" [(ngModel)]="confirmInput" />
         </div>
     </div>
     <div class="dialog-footer">
@@ -24,4 +22,4 @@
             </ul>
         </div>
     </div>
-</ec-pop>
+</div>

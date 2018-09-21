@@ -65,4 +65,14 @@ export class Form<T> extends Item<T> {
       return this.resolve(property);
     }
   }
+
+  /** Returns true if the form is currently in edit mode (has a body set) */
+  isEditing() {
+    return !!this.getBody();
+  }
+
+  /** Returns true if the form is currently in create mode (has not a body set) */
+  isCreating() {
+    return !this.isEditing();
+  }
 }

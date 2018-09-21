@@ -1,7 +1,10 @@
-<div class="ec-entry-pop" *ngIf="active">
+<div class="ec-entry-pop dialog" *ngIf="active">
   <button (click)="hide()" type="button" class="dialog-dismiss">
     <ec-icon name="close-x-big"></ec-icon>
   </button>
+  <div class="dialog-header">
+    {{(crudForm.isEditing()?'Edit':'Create')+' Entry'}}
+  </div>
   <div class="dialog-body">
     <ec-entry-form [model]="model" [submitButton]="false" [loader]="popLoader" [config]="config" (submitted)="formSubmitted($event)"
       [entry]="entry" (deleted)="hide()" #crudForm></ec-entry-form>

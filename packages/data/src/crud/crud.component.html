@@ -10,11 +10,11 @@
     </nav>
   </header>
   <div class="ec-crud-body">
-    <ec-entry-list [model]="model" [config]="config" [solo]="true" *ngIf="hasMethod('get')" [selection]="selection" [loader]="config?.loader||loader"
-      (columnClicked)="selectEntry($event)">
+    <ec-entry-list [model]="model" [config]="config" [solo]="true" *ngIf="hasMethod('get')" [selection]="selection"
+      [loader]="config?.loader||loader" (columnClicked)="selectEntry($event)">
     </ec-entry-list>
   </div>
 
   <ec-loader class="ec-loader ec-loader_overlay ec-loader_global"></ec-loader>
-  <ec-entry-pop [model]="model" [ngClass]="getPopClass()" [config]="config"></ec-entry-pop>
+  <ec-entry-pop [model]="model" [config]="config"></ec-entry-pop>
 </div>

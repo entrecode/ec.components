@@ -4,4 +4,4 @@ import { FieldConfig, FieldConfigProperty } from '../../../core';
 export interface ModelConfig {
   /** Array of FieldConfigProperty Objects. Sets up the behaviour of each field. */
   fields?: FieldConfig<FieldConfigProperty>
-}
+};

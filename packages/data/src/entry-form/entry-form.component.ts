@@ -73,6 +73,7 @@ export class EntryFormComponent extends FormComponent<EntryResource> implements 
 
   /** Yields true if the current edited entry is already existing in the backend. */
   isEditing() {
+    // TODO: deprecate (see form#isEditing)
     if (!this.form) {
       return;
     }

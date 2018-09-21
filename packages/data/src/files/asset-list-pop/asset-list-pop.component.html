@@ -1,4 +1,4 @@
-<div class="ec-asset-list-pop ec-dropzone" *ngIf="active" (ecDropzone)="uploadSelect?.uploader?.uploadFiles($event.dataTransfer.files,$event)">
+<div class="dialog ec-dropzone" *ngIf="active" (ecDropzone)="uploadSelect?.uploader?.uploadFiles($event.dataTransfer.files,$event)">
   <button (click)="hide()" class="dialog-dismiss" type="button">
     <ec-icon name="close-x-big"></ec-icon>
   </button>

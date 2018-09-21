@@ -1,8 +1,9 @@
-import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, HostBinding } from '@angular/core';
 import { LoaderService, NotificationsService, PopComponent } from '../../../ui';
 import { SymbolService } from '../../../ui/src/symbol/symbol.service';
 import Resource from 'ec.sdk/lib/resources/Resource';
 import { ResourceService } from '../resource-config/resource.service';
+import { PopService } from '@ec.components/ui/src/pop/pop.service';
 /** This component can be used to delete all kinds of resources with a confirmation pop.
  *
  * ```html
@@ -15,11 +16,10 @@ import { ResourceService } from '../resource-config/resource.service';
     selector: 'ec-resource-delete-pop',
     templateUrl: './resource-delete-pop.component.html',
 })
-export class ResourceDeletePopComponent {
+export class ResourceDeletePopComponent extends PopComponent {
     /* The current value of the confirmation input */
     confirmInput = '';
-    /** The pop inside the view. */
-    @ViewChild(PopComponent) pop: PopComponent;
+    @HostBinding('class') type = 'dialog-wrapper';
     /** The question inside the pop */
     @Input() question: string;
     /** The label for confirmation */
@@ -34,11 +34,16 @@ export class ResourceDeletePopComponent {
     @Input() safetyWord: string;
     /** Output that is after the deletion was successful. */
     @Output() deleted: EventEmitter<any> = new EventEmitter();
+    /** to focus safety word input */
+    public focusEvent: EventEmitter<boolean> = new EventEmitter();
     /** Injects SymbolService and LoaderService */
     constructor(public symbol: SymbolService,
         public loader: LoaderService,
         private resourceService: ResourceService,
-        public notificationService: NotificationsService) { }
+        public notificationService: NotificationsService,
+        public popService: PopService) {
+        super(popService);
+    }
     /** The delete method calls del() of the given resource. You can also pass a resource to delete directly to set it.  */
     delete(resource: Resource = this.resource) {
         if (!resource) {
@@ -72,11 +77,18 @@ export class ResourceDeletePopComponent {
     /** The confirm method sets a given resource and shows the confirmation pop. */
     confirm(resource: Resource = this.resource) {
         this.resource = resource;
-        this.pop.show();
+        this.show();
+    }
+
+    show() {
+        super.show();
+        setTimeout(() => {
+            this.focusEvent.emit(true);
+        });
     }
 
     hide() {
-        this.pop.hide();
+        super.hide();
         this.confirmInput = '';
     }
 }

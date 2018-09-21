@@ -1,14 +1,15 @@
-<div class="dialog ressource-list-pop" *ngIf="active">
+<div class="dialog ec-resource-list-pop" *ngIf="active">
     <header class="dialog-header">
         <button (click)="hide()" type="button" class="dialog-dismiss">
             <ec-icon name="close-x-big"></ec-icon>
         </button>
-        <ec-searchbar (selected)="hide()" placeholder="Search.." [list]="resourceList" #searchbar *ngIf="resourceList" [property]="config?.label"></ec-searchbar>
+        <ec-searchbar (selected)="hide()" placeholder="Search.." [list]="resourceList" #searchbar *ngIf="resourceList"
+            [property]="config?.label"></ec-searchbar>
         <ec-list-header [list]="resourceList?.list" [selection]="selection"></ec-list-header>
     </header>
     <div class="dialog-body">
-        <ec-resource-list (changed)="searchbar.focusEvent.emit(true)" [api]="api" [relation]="relation" [config]="config" [selection]="selection"
-            (columnClicked)="select($event)" #resourceList></ec-resource-list>
+        <ec-resource-list (changed)="searchbar.focusEvent.emit(true)" [api]="api" [relation]="relation" [config]="config"
+            [selection]="selection" (columnClicked)="select($event)" #resourceList></ec-resource-list>
     </div>
     <div class="dialog-footer">
         <ec-pagination [pagination]="resourceList?.list?.pagination"></ec-pagination>

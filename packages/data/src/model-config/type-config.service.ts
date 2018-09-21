@@ -17,8 +17,7 @@ export class TypeConfigService {
   /** The default config for nested crud lists, as passed to entry-select */
   private nestedCrudConfig: CrudConfig<EntryResource> = {
     size: 10,
-    // methods: ['get'],
-    popClass: 'overlay'
+    // methods: ['get']
   };
 
   // TODO check if filterPopClass: '' is still needed
@@ -162,7 +161,7 @@ export class TypeConfigService {
       filterPopClass: 'ec-pop_dialog'
     }
   };
-  constructor(private symbol: SymbolService) {}
+  constructor(private symbol: SymbolService) { }
 
   /** Returns the base FieldConfig for the given type. */
   get(type: string): FieldConfigProperty {

@@ -1,12 +1,14 @@
-<div class="dialog" *ngIf="active">
+<div class="resource-pop dialog" *ngIf="active">
+    <button (click)="hide()" type="button" class="dialog-dismiss">
+        <ec-icon name="close-x-big"></ec-icon>
+    </button>
     <div class="dialog-header">
-        <button (click)="hide()" type="button" class="dialog-dismiss">
-            <ec-icon name="close-x-big"></ec-icon>
-        </button>
+        {{(resourceForm.isEditing()?'Edit':'Create')+' Resource'}}
     </div>
     <div class="dialog-body">
-        <ec-resource-form (ready)="initMethods($event)" [api]="api" [relation]="relation" [submitButton]="false" [config]="config"
-            [loader]="popLoader" [value]="resource" (deleted)="hide()" (submitted)="formSubmitted($event)" #resourceForm></ec-resource-form>
+        <ec-resource-form (ready)="initMethods($event)" [api]="api" [relation]="relation" [submitButton]="false"
+            [config]="config" [loader]="popLoader" [value]="resource" (deleted)="hide()" (submitted)="formSubmitted($event)"
+            #resourceForm></ec-resource-form>
     </div>
     <footer class="dialog-footer">
         <nav class="nav">
@@ -18,7 +20,8 @@
                     </button>
                 </li>
                 <li class="nav__item" *ngIf="maySave(resourceForm)">
-                    <button (click)="resourceForm.submit()" [disabled]="resourceForm.group?.invalid" type="button" class="btn ec-btn_save" [class.is-disabled]="resourceForm.group?.invalid">
+                    <button (click)="resourceForm.submit()" [disabled]="resourceForm.group?.invalid" type="button"
+                        class="btn ec-btn_save" [class.is-disabled]="resourceForm.group?.invalid">
                         <!-- TODO add config for label -->
                         <span>save</span>
                     </button>
