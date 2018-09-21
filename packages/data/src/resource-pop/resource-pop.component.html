@@ -3,7 +3,7 @@
         <ec-icon name="close-x-big"></ec-icon>
     </button>
     <div class="dialog-header">
-        {{(resourceForm.isEditing()?'Edit':'Create')+' Resource'}}
+        {{getHeader(resourceForm)}}
     </div>
     <div class="dialog-body">
         <ec-resource-form (ready)="initMethods($event)" [api]="api" [relation]="relation" [submitButton]="false"

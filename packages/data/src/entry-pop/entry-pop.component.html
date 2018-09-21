@@ -3,7 +3,7 @@
     <ec-icon name="close-x-big"></ec-icon>
   </button>
   <div class="dialog-header">
-    {{(crudForm.isEditing()?'Edit':'Create')+' Entry'}}
+      {{getHeader(crudForm)}}
   </div>
   <div class="dialog-body">
     <ec-entry-form [model]="model" [submitButton]="false" [loader]="popLoader" [config]="config" (submitted)="formSubmitted($event)"

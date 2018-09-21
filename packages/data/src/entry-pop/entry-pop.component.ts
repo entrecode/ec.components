@@ -7,6 +7,8 @@ import { AuthService } from '../auth/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PopService } from '@ec.components/ui/src/pop/pop.service';
 import { Form } from '@ec.components/core';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import { FormService } from '@ec.components/ui/src/form/form.service';
 
 /** Entry Pop is an extension of Pop component to host an entry-form.
  * You can use it like a normal pop but with the extra handling of an entry form inside.
@@ -39,7 +41,12 @@ export class EntryPopComponent extends PopComponent implements OnInit {
   /** Set host class to make sure the type is used */
   @HostBinding('class') class = 'dialog-wrapper';
 
-  constructor(protected popService: PopService, private auth: AuthService, private router: Router, private route: ActivatedRoute) {
+  constructor(protected popService: PopService,
+    private auth: AuthService,
+    private router: Router,
+    private route: ActivatedRoute,
+    public formService: FormService,
+    public symbol: SymbolService) {
     super(popService);
   }
 
@@ -123,5 +130,11 @@ export class EntryPopComponent extends PopComponent implements OnInit {
   private deletedEntry() {
     this.hide();
     this.deleted.emit(this.form.form);
+  }
+
+  /** Returns header for current form */
+  getHeader(form) {
+    const label = this.config.singularLabel || form.model;
+    return this.formService.getFormLabel(form, label);
   }
 }

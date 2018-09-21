@@ -169,6 +169,18 @@ export default [
         content: 'No'
     },
     {
+        name: 'resource.edit',
+        content: 'Edit'
+    },
+    {
+        name: 'resource.create',
+        content: 'Create'
+    },
+    {
+        name: 'resource.generic',
+        content: 'Resource'
+    },
+    {
         name: 'pagination.first',
         content: '«'
     },
@@ -443,6 +455,10 @@ export default [
     {
         name: 'entry.select.placeholder.model',
         content: 'select model...'
+    },
+    {
+        name: 'entry.generic',
+        content: 'Entry'
     },
     {
         name: 'list.empty',

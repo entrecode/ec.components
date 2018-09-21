@@ -1,5 +1,4 @@
 import { Component, Input, OnInit, ViewChild, Output, EventEmitter, HostBinding } from '@angular/core';
-import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import Resource from 'ec.sdk/lib/resources/Resource';
@@ -7,12 +6,12 @@ import Core from 'ec.sdk/lib/Core';
 import { CrudConfig } from '../crud/crud-config.interface';
 import { ResourceFormComponent } from '../resource-form/resource-form.component';
 import { AuthService } from '../auth/auth.service';
-import { OnChanges, AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { SdkService } from '../sdk/sdk.service';
-import { FormComponent } from '@ec.components/ui/src/form/form.component';
 import { PopService } from '@ec.components/ui/src/pop/pop.service';
 import { ResourceForm } from '../resource-form/resource-form';
 import { Form } from '@ec.components/core';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import { FormService } from '@ec.components/ui/src/form/form.service';
 
 /** Entry Pop is an extension of Pop component to host an entry-form.
  * You can use it like a normal pop but with the extra handling of an entry form inside.
@@ -46,7 +45,13 @@ export class ResourcePopComponent extends PopComponent {
     /** Set host class to make sure the type is used */
     @HostBinding('class') class = 'dialog-wrapper';
 
-    constructor(protected popService: PopService, private auth: AuthService, private router: Router, private route: ActivatedRoute, private sdk: SdkService) {
+    constructor(protected popService: PopService,
+        private auth: AuthService,
+        private router: Router,
+        private route: ActivatedRoute,
+        private sdk: SdkService,
+        public formService: FormService,
+        public symbol: SymbolService) {
         super(popService);
     }
 
@@ -139,6 +144,12 @@ export class ResourcePopComponent extends PopComponent {
         if (!this.config.keepPopOpen) {
             this.hide();
         }
+    }
+
+    /** Returns header for current form */
+    getHeader(form) {
+        const label = this.config.singularLabel || form.relation || this.symbol.resolve('resource.generic');
+        return this.formService.getFormLabel(form, label);
     }
 }
 

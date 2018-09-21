@@ -9,10 +9,16 @@ import {
   Validators
 } from '@angular/forms';
 import { Field } from '@ec.components/core/src/field/field';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import { FormComponent } from '@ec.components/ui/src/form/form.component';
 
 /** This service is the interface between Angular Forms and ec.components core classes. */
 @Injectable()
 export class FormService {
+
+  constructor(
+    public symbol: SymbolService
+  ) { }
 
   /** Returns true if the field should be included in the form.
    * Decides based on field config values form, edit and create */
@@ -71,6 +77,15 @@ export class FormService {
         }
       }
     }
+  }
+
+  /** Returns label for given form (e.g. Edit label) */
+  getFormLabel(form: FormComponent<any>, label = this.symbol.resolve('resource.generic')) {
+    if (!form) {
+      return '';
+    }
+    return `${this.symbol.resolve('resource.' + (form.form.isEditing() ? 'edit' : 'create'))}
+    ${label} ${form.form.display() ? `"${form.form.display()}"` : ''}`;
   }
 
 }

@@ -9,7 +9,9 @@ import { ResourceConfig } from '@ec.components/data/src/resource-config/resource
 })
 export class CrudDemoComponent {
   public muffinConfig = {
-    develop: true, createLabel: 'Neuer Muffin', size: 5, levels: 2,
+    develop: true,
+    singularLabel: 'Muffin',
+    createLabel: 'Neuer Muffin', size: 5, levels: 2,
     filter: {
       amazement_factor: 10
     }

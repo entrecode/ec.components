@@ -5,6 +5,10 @@ import { FileOptions } from '../files/file.service';
 
 /** The CrudConfig allows a quick customization of an ec-crud component. */
 export interface CrudConfig<T> extends ListConfig<T> {
+  /** The label for one entity */
+  singularLabel?: string;
+  /** The label for multiple entities */
+  pluralLabel?: string;
   /** The label for the entry create button */
   createLabel?: string;
   /** An Array of Methods that should be supported. Possible values are create, read, update and delete*/
