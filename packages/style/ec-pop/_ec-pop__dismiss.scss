@@ -1,0 +1,17 @@
+.ec-pop__dismiss {
+  @extend %btn !optional;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  color: rgba(setContrast($ec-pop-fullscreen-background), 0.6);
+  animation: all 0.2s;
+
+  &:only-child {
+    margin-left: auto;
+  }
+
+  &:hover {
+    color: rgba(setContrast($ec-pop-fullscreen-background), 1);
+  }
+}
