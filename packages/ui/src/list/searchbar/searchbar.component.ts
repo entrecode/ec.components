@@ -72,7 +72,11 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
     if (!this.property) {
       console.warn('searchbar is missing property to filter..');
     }
-    const list = this./* list. */list;
+    const list = this.list;
+    if (!list || !list.change$) {
+      // console.warn('no change listener', list);
+      return;
+    }
     list.change$.subscribe(newList => {
       if (!this.list.config.filter || !this.list.config.filter[this.property]) {
         this.clear();
