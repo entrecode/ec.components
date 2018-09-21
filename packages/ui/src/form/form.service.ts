@@ -81,7 +81,7 @@ export class FormService {
 
   /** Returns label for given form (e.g. Edit label) */
   getFormLabel(form: FormComponent<any>, label = this.symbol.resolve('resource.generic')) {
-    if (!form) {
+    if (!form || !form.form) {
       return '';
     }
     return `${this.symbol.resolve('resource.' + (form.form.isEditing() ? 'edit' : 'create'))}
