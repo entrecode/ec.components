@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, Output, EventEmitter, HostBinding } from '@angular/core';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -43,6 +43,8 @@ export class ResourcePopComponent extends PopComponent {
     @Output() submitted: EventEmitter<ResourceForm> = new EventEmitter();
     /** Emits when the resource has been deleted. */
     @Output() deleted: EventEmitter<ResourceForm | Form<Resource>> = new EventEmitter();
+    /** Set host class to make sure the type is used */
+    @HostBinding('class') class = 'dialog-wrapper';
 
     constructor(protected popService: PopService, private auth: AuthService, private router: Router, private route: ActivatedRoute, private sdk: SdkService) {
         super(popService);
