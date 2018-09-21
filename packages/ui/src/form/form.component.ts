@@ -102,6 +102,10 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
       this.formService.addField(field, this.form, this.group);
     }
   }
+  /** Returns true if the field should be readOnly, depending on its config and the form state. */
+  isReadOnly(field) {
+    return field.readOnly && !!this.form.getBody();
+  }
 
   /** Clears the current value */
   clear() {

@@ -52,7 +52,8 @@ export class EntryFormDemoComponent {
       },
       amazement_factor: {
         label: 'amazement factor',
-        type: 'number'
+        type: 'number',
+        readOnly: true
       },
       new_asset: {
         label: 'Neues Asset',

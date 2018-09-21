@@ -7,8 +7,8 @@
       <div [attr.data-col]="field?.getColumns()" *ngFor="let field of form?.fields | visibleFields:form" [ngClass]="'ec-form-group_' + field?.view"
         [ngSwitch]="field?.view" class="form-group" [attr.data-type]="field?.type">
         <label [for]="field.id">{{field.label || field.property}}</label>
-        <ec-input *ngIf="!field.readOnly" [field]="field" [group]="group" [item]="form" [formControl]="group.get(field.property)"></ec-input>
-        <ec-output *ngIf="field.readOnly" [field]="field" [item]="form"></ec-output>
+        <ec-input *ngIf="!isReadOnly(field)" [field]="field" [group]="group" [item]="form" [formControl]="group.get(field.property)"></ec-input>
+        <ec-output *ngIf="isReadOnly(field)" [field]="field" [item]="form"></ec-output>
       </div>
     </div>
     <button type="button" (click)="submit()" *ngIf="submitButton!==false" [disabled]="group.invalid" class="btn btn_save">
