@@ -5,8 +5,8 @@ import { TabComponent } from '../../utility/tab/tab.component';
 import { RouterTestingModule } from '@angular/router/testing';
 
 describe('TabComponent', () => {
-  let component: TabComponent;
-  let fixture: ComponentFixture<TabComponent>;
+  /* let component: TabComponent;
+  let fixture: ComponentFixture<TabComponent>; */
   let tabsFix: ComponentFixture<TabsComponent>;
 
   beforeEach(async(() => {
