@@ -7,7 +7,6 @@ import { AceModule } from '@ec.components/ace';
 import { LocationModule } from '@ec.components/location/src/location.module';
 import { MediumModule } from '@ec.components/medium-editor/src/medium.module';
 import { TinymceModule } from '@ec.components/tinymce/src/tinymce.module';
-import { VcModule } from '@ec.components/vc/src/vc.module';
 import { AceDemoComponent } from './ace-demo/ace-demo.component';
 import { ApiExplorerComponent } from './api-explorer/api-explorer.component';
 import { AssetListDemoComponent } from './asset-list/asset-list.demo.component';
@@ -49,7 +48,6 @@ import { SignupDemoComponent } from './signup/signup-demo.component';
 import { SymbolDemoComponent } from './symbol/symbol-demo.component';
 import { TabsDemoComponent } from './tabs/tabs-demo.component';
 import { TinymceDemoComponent } from './tinymce-demo/tinymce-demo.component';
-import { VcDemoComponent } from './vc/vc-demo.component';
 import { GithubSourceComponent } from './github-source/github-source.component';
 import { GithubSourcesComponent } from './github-source/github-sources.component';
 import { DoclinksComponent } from './doclinks/doclinks.component';
@@ -73,7 +71,6 @@ demoRoutes.unshift(
     DoclinksComponent,
     DemoDashboardComponent,
     DemoComponent,
-    VcDemoComponent,
     PopDemoComponent,
     PopTriggerComponent,
     DataDemoComponent,
@@ -123,7 +120,6 @@ demoRoutes.unshift(
     BrowserModule,
     UiModule,
     DataModule,
-    VcModule,
     RouterModule.forRoot(demoRoutes),
     MediumModule,
     TinymceModule,
