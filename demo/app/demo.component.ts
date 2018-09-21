@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { TypeConfigService } from '../../packages/data/src/model-config/type-config.service';
-import { LocationPickerComponent } from '../../packages/location/src/location-picker.component';
+import { TypeConfigService } from '@ec.components/data/src/model-config/type-config.service';
+import { LocationPickerComponent } from '@ec.components/location/src/location-picker.component';
 import { demoRoutes } from './demo.routes';
 import { ActivatedRoute, Router, ChildActivationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';

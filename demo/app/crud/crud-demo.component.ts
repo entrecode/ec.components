@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { ModelConfigService } from '../../../packages/data';
-import { SymbolService } from '../../../packages/ui/src/symbol/symbol.service';
-import { ResourceConfig } from '../../../packages/data/src/resource-config/resource-config.service';
+import { ModelConfigService } from '@ec.components/data';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import { ResourceConfig } from '@ec.components/data/src/resource-config/resource-config.service';
 
 @Component({
   selector: 'ec-crud-demo',

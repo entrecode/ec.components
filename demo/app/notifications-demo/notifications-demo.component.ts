@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NotificationsComponent, NotificationsService } from '../../../packages/ui';
-import { Form } from '../../../packages/core';
-import { FormComponent } from '../../../packages/ui/src/form/form.component';
-import { WithNotifications } from '../../../packages/ui/src/notifications/with-notifications.interface';
-import { Notification } from '../../../packages/ui/src/notifications/notification';
+import { NotificationsComponent, NotificationsService } from '@ec.components/ui';
+import { Form } from '@ec.components/core';
+import { FormComponent } from '@ec.components/ui/src/form/form.component';
+import { WithNotifications } from '@ec.components/ui/src/notifications/with-notifications.interface';
+import { Notification } from '@ec.components/ui/src/notifications/notification';
 
 @Component({
   templateUrl: './notifications-demo.component.html',

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Field } from '../../../../core/src/field/field';
-import { Item } from '../../../../core/src/item/item';
+import { Field } from '@ec.components/core/src/field/field';
+import { Item } from '@ec.components/core/src/item/item';
 
 /** This component holds the templates for all basic field types. */
 @Component({

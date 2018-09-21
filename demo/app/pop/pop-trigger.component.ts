@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { PopComponent } from '../../../packages/ui/src/pop/pop.component';
+import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
 
 @Component({
   selector: 'ec-pop-trigger',

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Config } from '../../../core/src/config/config';
-import { FieldConfigProperty } from '../../../core/src/config/field-config-property.interface';
-import { FieldConfig } from '../../../core/src/config/field-config.interface';
-import { Item } from '../../../core/src/item/item';
-import { ListConfig } from '../../../core/src/list/list-config.interface';
-import { SymbolService } from '../../../ui/src/symbol/symbol.service';
+import { Config } from '@ec.components/core/src/config/config';
+import { FieldConfigProperty } from '@ec.components/core/src/config/field-config-property.interface';
+import { FieldConfig } from '@ec.components/core/src/config/field-config.interface';
+import { Item } from '@ec.components/core/src/item/item';
+import { ListConfig } from '@ec.components/core/src/list/list-config.interface';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { CrudConfig } from '../crud/crud-config.interface';
 import { CrudService } from '../crud/crud.service';

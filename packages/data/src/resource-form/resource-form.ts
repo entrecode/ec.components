@@ -1,6 +1,6 @@
 import Resource from 'ec.sdk/lib/resources/Resource';
-import { Form, FormConfig } from '../../../core';
-import { Item } from '../../../core/src/item/item';
+import { Form, FormConfig } from '@ec.components/core';
+import { Item } from '@ec.components/core/src/item/item';
 import Core from 'ec.sdk/lib/Core';
 import { ResourceService } from '../resource-config/resource.service';
 

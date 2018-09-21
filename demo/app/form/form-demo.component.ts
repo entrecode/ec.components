@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Field, Form, Item } from '../../../packages/core';
-import { DefaultEntryInputComponent } from '../../../packages/data';
-import { DefaultInputComponent } from '../../../packages/ui';
+import { Field, Form, Item } from '@ec.components/core';
+import { DefaultEntryInputComponent } from '@ec.components/data';
+import { DefaultInputComponent } from '@ec.components/ui';
 import { mocked } from '../../../mocks/data';
 import { CounterComponent } from './counter.component';
 

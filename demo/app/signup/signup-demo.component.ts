@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SdkService } from '../../../packages/data';
+import { SdkService } from '@ec.components/data';
 
 @Component({
     selector: 'ec-signup-demo',

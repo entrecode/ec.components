@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { LoginFormComponent } from '../../packages/ui/src/utility/login-form/login-form.component';
+import { LoginFormComponent } from '@ec.components/ui/src/utility/login-form/login-form.component';
 import { AceDemoComponent } from './ace-demo/ace-demo.component';
 import { ApiExplorerComponent } from './api-explorer/api-explorer.component';
 import { AssetListDemoComponent } from './asset-list/asset-list.demo.component';
@@ -34,7 +34,6 @@ import { SignupDemoComponent } from './signup/signup-demo.component';
 import { SymbolDemoComponent } from './symbol/symbol-demo.component';
 import { TabsDemoComponent } from './tabs/tabs-demo.component';
 import { TinymceDemoComponent } from './tinymce-demo/tinymce-demo.component';
-import { VcDemoComponent } from './vc/vc-demo.component';
 
 export const demoRoutes: Routes = [
   {
@@ -401,12 +400,5 @@ export const demoRoutes: Routes = [
         }
       }
     ]
-  },
-  {
-    path: 'ec-vc',
-    component: VcDemoComponent,
-    data: {
-      paths: ['vc/vc-demo.component.html', 'vc/vc-demo.component.ts']
-    }
   }
 ];

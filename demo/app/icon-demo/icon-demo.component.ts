@@ -1,8 +1,8 @@
 import { Component, OnInit, PipeTransform, Pipe, Injectable } from '@angular/core';
-import { IconService } from '../../../packages/ui/src/icon/icon.service';
-import { ecIcons } from '../../../packages/ui/src/icon/ec-icons';
-import { emojiIcons } from '../../../packages/ui/src/icon/emoji-icons';
-import { NotificationsService } from '../../../packages/ui/src/notifications/notifications.service';
+import { IconService } from '@ec.components/ui/src/icon/icon.service';
+import { ecIcons } from '@ec.components/ui/src/icon/ec-icons';
+import { emojiIcons } from '@ec.components/ui/src/icon/emoji-icons';
+import { NotificationsService } from '@ec.components/ui/src/notifications/notifications.service';
 
 
 @Component({

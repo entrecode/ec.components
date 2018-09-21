@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { DataModule } from '../../packages/data';
-import { UiModule } from '../../packages/ui';
-import { AceModule } from '../../packages/ace';
-import { LocationModule } from '../../packages/location/src/location.module';
-import { MediumModule } from '../../packages/medium-editor/src/medium.module';
-import { TinymceModule } from '../../packages/tinymce/src/tinymce.module';
-import { VcModule } from '../../packages/vc/src/vc.module';
+import { DataModule } from '@ec.components/data';
+import { UiModule } from '@ec.components/ui';
+import { AceModule } from '@ec.components/ace';
+import { LocationModule } from '@ec.components/location/src/location.module';
+import { MediumModule } from '@ec.components/medium-editor/src/medium.module';
+import { TinymceModule } from '@ec.components/tinymce/src/tinymce.module';
+import { VcModule } from '@ec.components/vc/src/vc.module';
 import { AceDemoComponent } from './ace-demo/ace-demo.component';
 import { ApiExplorerComponent } from './api-explorer/api-explorer.component';
 import { AssetListDemoComponent } from './asset-list/asset-list.demo.component';
@@ -54,9 +54,9 @@ import { GithubSourceComponent } from './github-source/github-source.component';
 import { GithubSourcesComponent } from './github-source/github-sources.component';
 import { DoclinksComponent } from './doclinks/doclinks.component';
 import moment from 'moment-es6';
-import de from '../../packages/ui/src/symbol/de';
-import { SymbolService } from '../../packages/ui/src/symbol/symbol.service';
-import en from '../../packages/ui/src/symbol/en';
+import de from '@ec.components/ui/src/symbol/de';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import en from '@ec.components/ui/src/symbol/en';
 import { CounterComponent } from './form/counter.component';
 
 demoRoutes.unshift(

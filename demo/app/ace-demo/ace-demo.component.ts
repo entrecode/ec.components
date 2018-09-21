@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AceComponent } from '../../../packages/ace/src/ace.component';
+import { AceComponent } from '@ec.components/ace/src/ace.component';
 // import 'ace-builds/src-noconflict/ace.js';
 
 @Component({

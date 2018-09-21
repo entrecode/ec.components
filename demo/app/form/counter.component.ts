@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { InputComponent } from '../../../packages/ui';
+import { InputComponent } from '@ec.components/ui';
 import { ControlValueAccessor } from '@angular/forms';
 
 @Component({

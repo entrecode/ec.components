@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SymbolService } from '../../../packages/ui/src/symbol/symbol.service';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 
 @Component({
     selector: 'ec-symbol-demo',

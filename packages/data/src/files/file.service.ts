@@ -1,5 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { Item } from '../../../core/src/item/item';
+import { Item } from '@ec.components/core/src/item/item';
 import DMAssetList from 'ec.sdk/lib/resources/publicAPI/DMAssetList';
 import DMAssetResource from 'ec.sdk/lib/resources/publicAPI/DMAssetResource';
 import PublicAssetList from 'ec.sdk/lib/resources/publicAPI/PublicAssetList';

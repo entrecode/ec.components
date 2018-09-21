@@ -1,4 +1,4 @@
-import { ListConfig } from '../../../core/src/list/list-config.interface';
+import { ListConfig } from '@ec.components/core/src/list/list-config.interface';
 import { filterOptions } from 'ec.sdk/lib/resources/ListResource';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { ResourceList } from '../resource-list/resource-list';
