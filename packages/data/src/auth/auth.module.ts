@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { UiModule } from '../../../ui/src/ui.module';
+import { UiModule } from '@ec.components/ui/src/ui.module';
 import { CookieModule } from 'ngx-cookie';
 import { AuthGuard } from './auth-guard.service';
 import { AuthService } from './auth.service';

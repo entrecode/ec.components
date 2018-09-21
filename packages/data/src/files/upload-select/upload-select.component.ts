@@ -4,7 +4,7 @@ import { CrudConfig } from '../../crud/crud-config.interface';
 import DMAssetResource from 'ec.sdk/lib/resources/publicAPI/DMAssetResource';
 import PublicAssetResource from 'ec.sdk/lib/resources/publicAPI/PublicAssetResource';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
-import { UploadComponent } from '../';
+import { UploadComponent } from '../upload/upload.component';
 import { Upload, FileOptions, FileService } from '../file.service';
 
 @Component({

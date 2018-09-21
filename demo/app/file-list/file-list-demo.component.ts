@@ -1,8 +1,8 @@
 import DataManagerResource from 'ec.sdk/lib/resources/datamanager/DataManagerResource';
 import PublicAPI from 'ec.sdk/lib/PublicAPI';
-import { SdkService } from '../../../packages/data/src/sdk/sdk.service';
+import { SdkService } from '@ec.components/data/src/sdk/sdk.service';
 import { Component } from '@angular/core';
-import { Item } from '../../../packages/core';
+import { Item } from '@ec.components/core';
 import AssetGroupResource from 'ec.sdk/lib/resources/datamanager/AssetGroupResource';
 
 @Component({

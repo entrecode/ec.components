@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DefaultEntryInputComponent } from '../entry-form/default-entry-input.component';
-import { SymbolService } from '../../../ui/src/symbol/symbol.service';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 import Resource from 'ec.sdk/lib/resources/Resource';
 import { CrudConfig } from '../crud/crud-config.interface';
 import { AdminEntryInputComponent } from '../entry-form/admin-entry-input.component';

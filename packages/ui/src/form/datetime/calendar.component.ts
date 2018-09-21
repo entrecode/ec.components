@@ -5,7 +5,10 @@ import moment from 'moment-es6';
 import { PopComponent } from '../../pop/pop.component';
 import { MonthComponent } from './month.component';
 
-/** Input for a datetime. */
+/** Input for a datetime.
+ *
+ * <example-url>https://components.entrecode.de/ui/datetime?e=1</example-url>
+ */
 @Component({
   selector: 'ec-calendar',
   templateUrl: 'calendar.component.html',

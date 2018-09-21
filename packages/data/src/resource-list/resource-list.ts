@@ -1,7 +1,7 @@
-import { Field } from '../../../core/src/field/field';
-import { Item } from '../../../core/src/item/item';
-import { List } from '../../../core/src/list/list';
-import { ListConfig } from '../../../core/src/list/list-config.interface';
+import { Field } from '@ec.components/core/src/field/field';
+import { Item } from '@ec.components/core/src/item/item';
+import { List } from '@ec.components/core/src/list/list';
+import { ListConfig } from '@ec.components/core/src/list/list-config.interface';
 import Core from 'ec.sdk/lib/Core';
 import ListResource, { filterOptions } from 'ec.sdk/lib/resources/ListResource';
 import Resource from 'ec.sdk/lib/resources/Resource';
@@ -175,13 +175,4 @@ export class ResourceList extends List<Resource> {
     });
   }
 
-  /** Clears the filter for given property or all properties if none given. */
-  clearFilter(property?: string) {
-    if (property) {
-      return this.filter(property, null);
-    }
-    this.load({
-      filter: {}
-    });
-  }
 }

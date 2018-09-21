@@ -12,6 +12,26 @@
       </div>
       <ec-list-items [list]="list" [selection]="selection" (columnClicked)="columnClick($event)" #listItems [items]="list?.page | group: group.property: group.value"></ec-list-items>
     </div>
+
+    <div class="ec-list-empty" *ngIf="list?.isEmpty()">
+      <div *ngIf="list.isFiltered()">
+        <div #noResults>
+          <ng-content select=".ec-list-empty-filtered"></ng-content>
+        </div>
+        <p *ngIf="!noResults?.children?.length">
+          {{'list.filter.noResults' | symbol}}
+          <a (click)="list.clearFilter()">{{'list.filter.reset' | symbol}}</a>
+        </p>
+      </div>
+      <div *ngIf="!list.isFiltered()">
+        <div #emptySlot>
+          <ng-content select=".ec-list-empty"></ng-content>
+        </div>
+        <p *ngIf="!emptySlot?.children?.length">
+          {{'list.empty' | symbol}}
+        </p>
+      </div>
+    </div>
   </div>
 </div>
 <ec-pagination [hidden]="list?.config?.hidePagination" [config]="paginationConfig" [pagination]="list?.pagination"></ec-pagination>

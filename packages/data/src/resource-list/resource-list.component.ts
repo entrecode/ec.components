@@ -1,8 +1,11 @@
 import { Component, EventEmitter, Input, OnChanges, Optional, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { List, Selection } from '../../../core';
-import { ListComponent, LoaderComponent, LoaderService, NotificationsService, WithLoader } from '../../../ui';
-import { SymbolService } from '../../../ui/src/symbol/symbol.service';
+import { List } from '@ec.components/core/src/list/list';
+import { Selection } from '@ec.components/core/src/selection/selection';
+import { LoaderService } from '@ec.components/ui/src/loader/loader.service';
+import { NotificationsService } from '@ec.components/ui/src/notifications/notifications.service';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import { ListComponent, LoaderComponent, WithLoader } from '@ec.components/ui';
 import Core from 'ec.sdk/lib/Core';
 import ListResource from 'ec.sdk/lib/resources/ListResource';
 import Resource from 'ec.sdk/lib/resources/Resource';
@@ -85,7 +88,9 @@ export class ResourceListComponent extends ListComponent<Resource>
       }
       this.list = list;
       this.listConfig.applyConfig(this.list);
-      this.list.change$.subscribe(newList => this.changed.next(newList));
+      this.list.change$.subscribe(newList => {
+        this.changed.next(newList)
+      });
       if (this.list.promise) {
         this.loaderService.wait(this.list.promise, this.loader);
       }

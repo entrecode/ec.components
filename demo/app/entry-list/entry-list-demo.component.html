@@ -15,5 +15,13 @@
 </nav> -->
 <!-- <ec-heatmap #heatmap (spanChanged)="updateFilter($event,entryList)" style="width:400px;display:block" [timestamps]="timestamps"></ec-heatmap> -->
 <!-- <ec-daterange [timespan]="timespan" (spanChanged)="updateFilter($event,entryList)"></ec-daterange> -->
-<ec-searchbar [list]="entryList" property="name"></ec-searchbar>
-<ec-entry-list (changed)="updateList($event)" #entryList model="muffin" [config]="{sortBy:heatProperty,desc:true,rawFilter:true}"></ec-entry-list>
+<ec-searchbar [listComponent]="entryList" [list]="entryList?.list" property="name"></ec-searchbar>
+<ec-entry-list (changed)="updateList($event)" #entryList model="muffin" [config]="{sortBy:heatProperty,desc:true,rawFilter:true}">
+    <div class="ec-list-empty">
+        Die Demo Entry Liste ist noch leer..
+    </div>
+    <div class="ec-list-empty-filtered">
+        Filter greift nicht. Rezept:
+        <a (click)="entryList.list?.clearFilter()">Filter aufheben</a>
+    </div>
+</ec-entry-list>

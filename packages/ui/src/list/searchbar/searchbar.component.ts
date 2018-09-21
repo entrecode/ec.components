@@ -1,11 +1,11 @@
-import { AfterViewInit, Component, EventEmitter, Input, Output } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, Output, OnInit, OnChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Item } from '../../../../core';
-import { ListComponent } from '../../..';
+import { Item, List } from '@ec.components/core';
 import { SymbolService } from '../../symbol/symbol.service';
 import { Subject } from 'rxjs/Subject';
 import { distinctUntilChanged } from 'rxjs/operators';
 import { Focus } from '../../utility/focus/focus.interface';
+import { ListComponent } from '@ec.components/ui';
 
 /** Genereic Searchbar component. Filters a given list its label property (or given property).
  * Supports autofocus and arrow navigation. */
@@ -14,7 +14,7 @@ import { Focus } from '../../utility/focus/focus.interface';
   templateUrl: 'searchbar.component.html',
 })
 
-export class SearchbarComponent implements AfterViewInit, Focus {
+export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChanges {
   /** Searchbar placeholder */
   @Input() placeholder: string;
   /** Default placeholder when no placeholder is given */
@@ -34,7 +34,9 @@ export class SearchbarComponent implements AfterViewInit, Focus {
   /** Subject that is nexted when something is pasted */
   public paste: Subject<any> = new Subject<any>();
   /** The list that should be filtered */
-  @Input() list: ListComponent<any>;
+  @Input() list: List<any>;
+  /** The list component that should be controled */
+  @Input() listComponent: ListComponent<any>;
   /** Output that emits when enter is pressed on a selected item */
   @Output() selected: EventEmitter<any> = new EventEmitter();
 
@@ -62,6 +64,32 @@ export class SearchbarComponent implements AfterViewInit, Focus {
       })
   }
 
+  initList() {
+    if (!this.list) {
+      return;
+    }
+    this.property = this.property || this.list.config.label;
+    if (!this.property) {
+      console.warn('searchbar is missing property to filter..');
+    }
+    const list = this./* list. */list;
+    list.change$.subscribe(newList => {
+      if (!this.list.config.filter || !this.list.config.filter[this.property]) {
+        this.clear();
+      } else if (this.list.config.filter[this.property]) {
+        this.query = this.list.config.filter[this.property];
+      }
+    });
+  };
+
+  ngOnInit() {
+    this.initList();
+  }
+
+  ngOnChanges() {
+    this.initList();
+  }
+
   /** clears the input query */
   clear() {
     this.query = '';
@@ -85,7 +113,7 @@ export class SearchbarComponent implements AfterViewInit, Focus {
    * If paste is true and the value matches the list.config.identifierPattern,
    * select is emitted immediately with a pseudo item containing the value as item identifier. */
   filterList(value, paste = false) {
-    if (!this.list || !this.list.list) {
+    if (!this.list) {
       console.warn('could not search: no list given!', this.list);
       return;
     }
@@ -101,26 +129,27 @@ export class SearchbarComponent implements AfterViewInit, Focus {
         /* return true; */
       }
     }
-    this.list.list.filter(this.property || this.list.config.label, value);
+    this.list.filter(this.property || this.list.config.label, value);
   }
 
   /** called on keydown. if arrow keys are pressed, toggle selection of next/prev elements of list */
   arrowNavigation(e) {
-    if (!this.list || !this.list.selection) {
+    if (!this.listComponent || !this.listComponent.selection) {
+      console.warn('Arrow navigation is disabled: no listComponent given to searchbar');
       return;
     }
     switch (e.key) {
       case 'ArrowUp':
-        this.list.selectPrev();
+        this.listComponent.selectPrev();
         e.preventDefault();
         break;
       case 'ArrowDown':
-        this.list.selectNext();
+        this.listComponent.selectNext();
         e.preventDefault();
         break;
       case 'Enter':
-        if (!this.list.selection.isEmpty()) {
-          this.selected.emit(this.list.selection.items[0]);
+        if (!this.listComponent.selection.isEmpty()) {
+          this.selected.emit(this.listComponent.selection.items[0]);
         }
         break;
     }

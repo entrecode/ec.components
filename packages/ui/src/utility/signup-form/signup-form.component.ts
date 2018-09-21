@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { FieldValidators } from '../../..';
+import { FieldValidators } from '../../utility/validators/field-validators';
 import { WithLoader } from '../../loader/with-loader.interface';
 import { LoginFormComponent } from '../login-form/login-form.component';
 

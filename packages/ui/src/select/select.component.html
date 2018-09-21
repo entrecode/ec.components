@@ -7,10 +7,10 @@
     <a (click)="removeItem(selection.items[0],$event)">&times;</a>
   </span>
   <ul class="ec-select-selection" *ngIf="selection.items.length&&!solo" dndDropzone (dndDrop)="onDrop($event)">
-    <li *ngFor="let selected of selection.items;let i = index" [dndDisableIf]="solo||config?.disableDrag"
-      [class.is-dragged]="selected===dragged" [class.is-draggable]="solo||!config?.disableDrag" dndEffectAllowed="move"
-      [dndDraggable]="config.identifier?selected.id():i" (dndStart)="onDragStart(selected,$event,item)" (dndCanceled)="cancelDrag(selected,$event,item)"
-      (dndEnd)="cancelDrag(selected,$event,item)" #item>
+    <li *ngFor="let selected of selection.items;let i = index" [dndDisableIf]="solo||config?.disableDrag" [class.is-dragged]="selected===dragged"
+      [class.is-draggable]="solo||!config?.disableDrag" dndEffectAllowed="move" [dndDraggable]="i"
+      (dndStart)="onDragStart(selected,$event,item)" (dndCanceled)="cancelDrag(selected,$event,item)" (dndEnd)="cancelDrag(selected,$event,item)"
+      #item>
       <span class="ec-select-selected" (click)="clickItem(selected,$event)">
         {{selected.display()}}
         <a (click)="removeItem(selected,$event)">&times;</a>

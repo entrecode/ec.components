@@ -51,6 +51,9 @@ export class TinymceComponent
   @Input() settings: any = {};
   /** Output that emits when the value has been changed by the user */
   @Output() changed: EventEmitter<string> = new EventEmitter();
+  /** Output that is emitted when the setup is being made.
+   * Passes the editor instance. Intended to be used for custom controls  */
+  @Output() setup: EventEmitter<tinymce.Editor> = new EventEmitter();
   /** Current value */
   public value = '';
 
@@ -66,17 +69,23 @@ export class TinymceComponent
         this.app.tick();
       });
   }
-
   /** Initializes the editor */
   ngAfterViewInit() {
     this.ready = Promise.resolve(
       tinymce.init(
-        Object.assign(
+        Object.assign({},
           editorSettings,
+          this.settings,
           {
-            target: this.container.nativeElement
-          },
-          this.settings
+            target: this.container.nativeElement,
+            setup: (editor) => {
+              editorSettings.setup(editor);
+              if (this.settings && this.settings.setup) {
+                this.settings.setup(editor);
+              }
+              this.setup.emit(editor);
+            }
+          }
         )
       )
     ).then(editor => {
@@ -90,6 +99,12 @@ export class TinymceComponent
       this.editor.on('change keyup', res => this.update.next(this.editor));
       return this.editor;
     });
+  }
+
+  /** adds an image by url to the editor */
+  addImageByUrl(url: string, caption = '', size = 200) {
+    this.editor.execCommand('mceInsertContent', false,
+      `<img alt="${caption}" width="${size}" src="${url}"/>`);
   }
 
   /** Destroys the editor. */

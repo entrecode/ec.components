@@ -1,18 +1,18 @@
 import { Component, Input, OnInit, ViewChild, Output, EventEmitter, HostBinding } from '@angular/core';
 import { CrudConfig } from '../crud/crud-config.interface';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
-import { PopComponent } from '../../../ui/src/pop/pop.component';
+import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
 import { EntryFormComponent } from '../entry-form/entry-form.component';
 import { AuthService } from '../auth/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { PopService } from '../../../ui/src/pop/pop.service';
-import { Form } from '../../../core';
+import { PopService } from '@ec.components/ui/src/pop/pop.service';
+import { Form } from '@ec.components/core';
 
 /** Entry Pop is an extension of Pop component to host an entry-form.
  * You can use it like a normal pop but with the extra handling of an entry form inside.
  * You can call edit with an entry object to edit an entry, or just call show.
  * It is also possible to bind an entry directly which will then be bound to the form.
- * <example-url>https://components.entrecode.de/data/entry-pop/muffin/create?e=1</example-url>
+ * <example-url>https://components.entrecode.de/entries/entry-pop/muffin/create?e=1</example-url>
  * */
 @Component({
   selector: 'ec-entry-pop',

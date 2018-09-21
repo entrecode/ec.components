@@ -1,6 +1,6 @@
-import { ListConfig } from '../../../core/src/list/list-config.interface';
-import { LoaderComponent } from '../../../ui/src/loader/loader.component';
-import { NotificationsComponent } from '../../../ui/src/notifications/notifications.component';
+import { ListConfig } from '@ec.components/core/src/list/list-config.interface';
+import { LoaderComponent } from '@ec.components/ui/src/loader/loader.component';
+import { NotificationsComponent } from '@ec.components/ui/src/notifications/notifications.component';
 import { FileOptions } from '../files/file.service';
 
 /** The CrudConfig allows a quick customization of an ec-crud component. */

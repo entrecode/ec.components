@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, Output, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { FieldConfigProperty, Form, FormConfig, Item } from '../../../core';
-import { ItemConfig } from '../../../core/src/item/item-config.interface';
+import { FieldConfigProperty, Form, FormConfig, Item } from '@ec.components/core';
+import { ItemConfig } from '@ec.components/core/src/item/item-config.interface';
 import { InputComponent } from '../io/input/input.component';
 import { LoaderComponent } from '../loader/loader.component';
 import { LoaderService } from '../loader/loader.service';
@@ -40,7 +40,7 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
   @Input() value: T;
   /** If set to true, the form will be rendered empty, to be referenced from the outside. */
   @Input() empty: boolean;
-  /** If set to true, the form will be rendered without a submit button. */
+  /** If set to false, the form will be rendered without a submit button. Default: true */
   @Input() submitButton: boolean;
   /** If true, no notifications will be emitted. */
   @Input() silent: boolean;
@@ -101,6 +101,10 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
     if (field) {
       this.formService.addField(field, this.form, this.group);
     }
+  }
+  /** Returns true if the field should be readOnly, depending on its config and the form state. */
+  isReadOnly(field) {
+    return field.readOnly && !!this.form.getBody();
   }
 
   /** Clears the current value */

@@ -1,4 +1,4 @@
-import { List } from '../packages/core';
+import { List } from '@ec.components/core';
 import { CoolStringComponent } from '../demo/app/form/cool-string.component';
 import { songs } from '../demo/assets/songs';
 import { UnsplashImageComponent } from '../demo/app/list/unsplash-image.component';

@@ -4,7 +4,9 @@ import moment from 'moment-es6';
 import 'rxjs/add/operator/debounceTime';
 import { Subject } from 'rxjs/Subject';
 
-/** Interface for a day inside the a month. */
+/** Interface for a day inside the a month. 
+ * <example-url>https://components.entrecode.de/ui/datetime?e=1</example-url>
+ * */
 export interface Day {
   /** The cell index */
   index: number,

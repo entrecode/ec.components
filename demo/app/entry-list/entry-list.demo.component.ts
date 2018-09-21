@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import moment from 'moment-es6';
-import { EntryListComponent } from '../../../packages/data';
+import { EntryListComponent } from '@ec.components/data';
 
 @Component({
   selector: 'ec-entry-list-demo',

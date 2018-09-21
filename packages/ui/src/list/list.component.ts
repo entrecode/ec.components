@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, Output, ViewEncapsulation } from '@angular/core';
-import { Collection, List, ListConfig, Selection, Pagination } from '../../../core';
-import { Item } from '../../../core/src/item/item';
+import { Collection, List, ListConfig, Selection, Pagination } from '@ec.components/core';
+import { Item } from '@ec.components/core/src/item/item';
 import { PaginationConfig } from './pagination/pagination-config.interface';
 import { ListConfigService } from './list-config.service';
 
@@ -77,7 +77,7 @@ export class ListComponent<T> implements OnChanges {
   /** Decides if the header should be visible or not */
   showHeader() {
     return this.list && this.list.config && !this.list.config.disableHeader && (this.list.fields.length || this.list.config.title)
-      && (this.list.config.alwaysShowHeader || !this.list.isEmpty());
+    /* && (this.list.config.alwaysShowHeader || !this.list.isEmpty()); */
   }
 
   /** Selects the item with the given index */

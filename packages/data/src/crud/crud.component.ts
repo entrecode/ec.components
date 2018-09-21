@@ -7,24 +7,24 @@ import { CrudConfig } from './crud-config.interface';
 import { EntryFormComponent } from '../entry-form/entry-form.component';
 import { EntryListComponent } from '../entry-list/entry-list.component';
 import { SdkService } from '../sdk/sdk.service';
-import { Selection } from '../../../core/src/selection/selection';
-import { LoaderComponent } from '../../../ui/src/loader/loader.component';
-import { LoaderService } from '../../../ui/src/loader/loader.service';
-import { NotificationsService } from '../../../ui/src/notifications/notifications.service';
+import { Selection } from '@ec.components/core/src/selection/selection';
+import { LoaderComponent } from '@ec.components/ui/src/loader/loader.component';
+import { LoaderService } from '@ec.components/ui/src/loader/loader.service';
+import { NotificationsService } from '@ec.components/ui/src/notifications/notifications.service';
 import 'rxjs/add/operator/switchMap';
 import { merge } from 'rxjs/observable/merge';
 import { AuthService } from '../auth/auth.service';
 import { EntryPopComponent } from '../entry-pop/entry-pop.component';
-import { WithLoader } from '../../../ui';
-import { SymbolService } from '../../../ui/src/symbol/symbol.service';
-import { WithNotifications } from '../../../ui/src/notifications/with-notifications.interface';
-import { Notification } from '../../../ui/src/notifications/notification';
+import { WithLoader } from '@ec.components/ui';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import { WithNotifications } from '@ec.components/ui/src/notifications/with-notifications.interface';
+import { Notification } from '@ec.components/ui/src/notifications/notification';
 
 /** The CrudComponent takes at least a model name to render an entry list with create/edit/delete functionality out of the box.
  * ```html
  * <ec-crud model="muffin"></ec-crud>
  * ```
- * <example-url>https://components.entrecode.de/data/crud?e=1</example-url>
+ * <example-url>https://components.entrecode.de/entries/crud?e=1</example-url>
  * */
 @Component({
   selector: 'ec-crud',

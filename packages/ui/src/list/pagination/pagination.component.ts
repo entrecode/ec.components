@@ -1,6 +1,6 @@
 import { Component, ElementRef, Input, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
-import { Pagination } from '../../../../core';
+import { Pagination } from '@ec.components/core';
 import { PaginationConfig } from './pagination-config.interface';
 
 /**

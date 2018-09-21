@@ -4,7 +4,7 @@
 import { Component, forwardRef, Input, OnInit, ViewChild, ViewEncapsulation, EventEmitter, ElementRef } from '@angular/core';
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Item } from '@ec.components/core/src/item/item';
-import { SdkService } from '../../..';
+import { SdkService } from '../../sdk/sdk.service';
 import { SelectComponent, NotificationsService } from '@ec.components/ui';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 import DMAssetResource from 'ec.sdk/lib/resources/publicAPI/DMAssetResource';
@@ -15,7 +15,7 @@ import { AssetListPopComponent } from '../asset-list-pop/asset-list-pop.componen
 import { FileService } from '../file.service';
 
 /** Shows assets of a selection and is able to pick new ones from a crud list.
- * <example-url>https://components.entrecode.de/data/asset-select?e=1</example-url>
+ * <example-url>https://components.entrecode.de/assets/asset-select?e=1</example-url>
 */
 @Component({
   selector: 'ec-asset-select',

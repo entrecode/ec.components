@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SdkService } from '../../../packages/data';
+import { SdkService } from '@ec.components/data';
 import DataManagerResource from 'ec.sdk/lib/resources/datamanager/DataManagerResource';
 
 @Component({

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Pagination } from '../../../packages/core/src/pagination/pagination';
-import { SymbolService } from '../../../packages/ui/src/symbol/symbol.service';
+import { Pagination } from '@ec.components/core/src/pagination/pagination';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 import 'rxjs/add/operator/debounceTime';
 
 @Component({

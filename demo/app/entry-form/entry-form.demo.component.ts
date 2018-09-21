@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DefaultEntryInputComponent } from '../../../packages/data';
+import { DefaultEntryInputComponent } from '@ec.components/data';
 
 @Component({
   selector: 'ec-entry-form-demo',
@@ -52,7 +52,8 @@ export class EntryFormDemoComponent {
       },
       amazement_factor: {
         label: 'amazement factor',
-        type: 'number'
+        type: 'number',
+        readOnly: true
       },
       new_asset: {
         label: 'Neues Asset',

@@ -1,4 +1,4 @@
-import { SdkService } from '../../../packages/data/src/sdk/sdk.service';
+import { SdkService } from '@ec.components/data/src/sdk/sdk.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

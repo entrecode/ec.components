@@ -1,6 +1,6 @@
 import { Directive, ElementRef, EventEmitter, HostBinding, HostListener, Input, Output } from '@angular/core';
 
-/** Directive that turns any element into a zone to drop files. */
+/** Directive that turns any element into a zone to drop files. TODO: demo */
 @Directive({ selector: '[ecDropzone]' })
 export class DropzoneDirective {
     /** The is-active class is bound to the host when dragover is active */

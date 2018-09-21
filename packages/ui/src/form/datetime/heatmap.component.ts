@@ -1,7 +1,10 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import moment from 'moment-es6';
 import { MonthComponent } from './month.component';
-
+/**
+ * Displays a heatmap
+ * <example-url>https://components.entrecode.de/ui/datetime?e=1</example-url>
+ */
 @Component({
     selector: 'ec-heatmap',
     templateUrl: './heatmap.component.html'

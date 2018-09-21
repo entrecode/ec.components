@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output, ViewChild, HostBinding } from '@angular/core';
-import { LoaderService, NotificationsService, PopComponent } from '../../../ui';
-import { SymbolService } from '../../../ui/src/symbol/symbol.service';
+import { LoaderService, NotificationsService, PopComponent } from '@ec.components/ui';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 import Resource from 'ec.sdk/lib/resources/Resource';
 import { ResourceService } from '../resource-config/resource.service';
 import { PopService } from '@ec.components/ui/src/pop/pop.service';
