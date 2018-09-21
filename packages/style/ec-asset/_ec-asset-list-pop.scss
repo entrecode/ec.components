@@ -28,7 +28,7 @@
 
 .ec-asset-list-pop-body {
   grid-area: body;
-  overflow: hidden;
+  @include is-scrollable(y, contain);
 
   .ec-list-body {
     padding: rem(16);
