@@ -188,9 +188,9 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
       });
   }
 
-  /** Returns the pop class that should be used, either uses config.popClass or defaults to .dialog-wrapper. */
+  /** Returns the pop class that should be used, either uses config.popClass or defaults to .dialog */
   getPopClass() {
-    return this.config && this.config.popClass ? this.config.popClass : 'dialog-wrapper';
+    return this.config && this.config.popClass ? this.config.popClass : 'dialog';
   }
   /** Is called when the nested entry-form has been saved. Selects the fresh entry and clears the form */
   formSubmitted(form: Form<EntryResource>) {

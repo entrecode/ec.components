@@ -44,7 +44,7 @@
       <div class="btn" (click)="myDialogChild.toggle()">open child</div>
     </div>
     <ec-pop #myDialogChild class="dialog" data-col="8">
-      <button (click)="hide()" type="button" class="dialog-dismiss">&times;</button>
+      <button (click)="myDialogChild.hide()" type="button" class="dialog-dismiss">&times;</button>
       <div class="dialog-body">
         <h5>I'm a child dialog</h5>
       </div>

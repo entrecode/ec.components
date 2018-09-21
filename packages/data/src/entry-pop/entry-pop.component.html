@@ -1,4 +1,4 @@
-<div class="dialog ec-entry-pop" *ngIf="active">
+<div class="ec-entry-pop" *ngIf="active">
   <button (click)="hide()" type="button" class="dialog-dismiss">
     <ec-icon name="close-x-big"></ec-icon>
   </button>
@@ -23,7 +23,8 @@
         </li>
         <li class="nav__item" *ngIf="maySave(crudForm)">
           <!--TODO placeholder config for 'speichern'-->
-          <button (click)="crudForm.submit()" [disabled]="crudForm.group?.invalid" type="button" class="btn ec-btn_save" [class.is-disabled]="crudForm.group?.invalid">
+          <button (click)="crudForm.submit()" [disabled]="crudForm.group?.invalid" type="button" class="btn ec-btn_save"
+            [class.is-disabled]="crudForm.group?.invalid">
             <span>save</span>
           </button>
         </li>
