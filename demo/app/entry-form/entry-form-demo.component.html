@@ -1,30 +1,22 @@
 <h2>Entry Form</h2>
 <ec-notifications class="ec-notifications"></ec-notifications>
 <ec-tabs>
-  <ec-tab label="Simple" selected>
+  <ec-tab label="Default" selected>
     <ec-entry-form model="muffin"></ec-entry-form>
   </ec-tab>
-  <ec-tab label="Dynamic Fields">
-    <ec-entry-form model="muffin" #simpleMuffin></ec-entry-form>
-    <ec-pop class="dialog" #fieldPop>
-      <div class="dialog-body">
-        <ec-form [config]="fieldForm" (submitted)="addField($event,simpleMuffin,fieldPop)"></ec-form>
-      </div>
-    </ec-pop>
-    <a (click)="fieldPop.show()">add field</a>
-  </ec-tab>
+
   <ec-tab label="with config">
     <ec-entry-form model="muffin" [config]="formConfig"></ec-entry-form>
   </ec-tab>
   <ec-tab label="complex">
     <ec-entry-form model="field_test"></ec-entry-form>
   </ec-tab>
-  <!--     <ec-tab label="with entry">
+      <ec-tab label="edit">
       <ec-entry-form model="muffin" [entry]="myMuffin.entry" ecEntry entryId="SkXEhDZ5yW" #myMuffin="ecEntry"></ec-entry-form>
     </ec-tab>
-    <ec-tab label="with complex entry">
-      <ec-entry-form model="field_test" [entry]="fieldTest.entry" ecEntry entryId="H1f3tKR85f" #fieldTest="ecEntry"></ec-entry-form>
-    </ec-tab> -->
+    <ec-tab label="edit complex">
+      <ec-entry-form model="field_test" [entry]="fieldTest.entry" ecEntry entryId="SymjUybjd-" #fieldTest="ecEntry"></ec-entry-form>
+    </ec-tab>
   <ec-tab label="custom">
     <ec-entry-form model="muffin" #muffinForm>
       <ec-input [field]="muffinForm.form?.getField('name')" [group]="muffinForm.group"></ec-input>
@@ -33,5 +25,14 @@
         Na los
       </button>
     </ec-entry-form>
+  </ec-tab>
+  <ec-tab label="dynamic">
+    <ec-entry-form model="muffin" #simpleMuffin></ec-entry-form>
+    <ec-pop class="dialog" #fieldPop>
+      <div class="dialog-body">
+        <ec-form [config]="fieldForm" (submitted)="addField($event,simpleMuffin,fieldPop)"></ec-form>
+      </div>
+    </ec-pop>
+    <a (click)="fieldPop.show()">add field</a>
   </ec-tab>
 </ec-tabs>

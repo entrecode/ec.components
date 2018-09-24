@@ -58,12 +58,6 @@ export class FormDemoComponent {
     }
   }
 
-  entryConfig = {
-    type: 'entry',
-    input: DefaultEntryInputComponent,
-    relation: 'muffin'
-  }
-
   customFormConfig = {
     fields: {
       count: {
