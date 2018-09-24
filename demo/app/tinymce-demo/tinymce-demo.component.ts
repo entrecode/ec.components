@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ApplicationRef, NgZone } from '@angular/core';
 import { AssetListPopComponent } from '@ec.components/data/src/files/asset-list-pop/asset-list-pop.component';
 import { TinymceComponent } from '@ec.components/tinymce/src/tinymce/tinymce.component';
+import { PopComponent } from '@ec.components/ui';
 
 @Component({
   selector: 'ec-tinymce-demo',
@@ -13,6 +14,29 @@ export class TinymceDemoComponent {
   /** asset pop that will be opened when the image button is pressed */
   @ViewChild(AssetListPopComponent) assetListPop: AssetListPopComponent;
 
+  @ViewChild(PopComponent) imagePop: PopComponent;
+
+  imageForm = {
+    fields: {
+      alt: {
+        label: 'Alt Text',
+        view: 'string'
+      },
+      autoWidth: {
+        label: 'Automatische Breite',
+        view: 'boolean'
+      },
+      width: {
+        label: 'Breite',
+        view: 'number',
+      },
+      height: {
+        label: 'Höhe',
+        view: 'number'
+      }
+    }
+  }
+
   constructor(public zone: NgZone) {
   }
 
@@ -23,6 +47,7 @@ export class TinymceDemoComponent {
       onclick: (edit, element) => {
         this.zone.run(() => {
           const id = Date.now();
+          // this.imagePop.show();
           this.assetListPop.show();
         });
       }
