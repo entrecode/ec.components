@@ -84,6 +84,7 @@ export class EntryPopComponent extends PopComponent implements OnInit {
   /** Edit the given entry. */
   edit(entry: EntryResource) {
     if (this.editRoute) {
+      // TODO: find solution for automatic routing
       /* const matcher = '(' + this.pathRegExp(this.editRoute) + '|' + this.pathRegExp(this.createRoute) + ').*';
       const trimmed = this.router.url.replace(new RegExp(matcher, 'g'), '');
       this.router.navigate([trimmed, this.editRoute, entry.id]); */
