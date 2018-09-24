@@ -10,6 +10,7 @@ import { MockupComponent } from './mockup/mockup.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { TabComponent } from './tab/tab.component';
 import { TabsComponent } from './tabs/tabs.component';
+import { MenuLinkComponent } from './menu/menu-link.component';
 
 @NgModule({
   entryComponents: [],
@@ -18,6 +19,7 @@ import { TabsComponent } from './tabs/tabs.component';
     TabComponent,
     MockupComponent,
     MenuComponent,
+    MenuLinkComponent,
     LoginFormComponent,
     SignupFormComponent,
     FocusDirective,
@@ -37,6 +39,7 @@ import { TabsComponent } from './tabs/tabs.component';
     TabComponent,
     MockupComponent,
     MenuComponent,
+    MenuLinkComponent,
     LoginFormComponent,
     SignupFormComponent,
     FocusDirective,

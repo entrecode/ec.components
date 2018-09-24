@@ -34,6 +34,7 @@ import { SignupDemoComponent } from './signup/signup-demo.component';
 import { SymbolDemoComponent } from './symbol/symbol-demo.component';
 import { TabsDemoComponent } from './tabs/tabs-demo.component';
 import { TinymceDemoComponent } from './tinymce-demo/tinymce-demo.component';
+import { LoginDemoComponent } from './login-demo/login-demo.component';
 
 export const demoRoutes: Routes = [
   {
@@ -66,46 +67,36 @@ export const demoRoutes: Routes = [
         }
       },
       {
-        path: 'list',
-        children: [
-          {
-            path: '',
-            pathMatch: 'full',
-            redirectTo: 'list',
-          },
-          {
-            path: 'basic',
-            component: ListDemoComponent,
-            data: {
-              paths: ['list/list-demo.component.ts', 'list/unsplash-image.component.ts'],
-              links: [
-                'components/ListComponent.html#readme',
-                'modules/ListModule.html'
-              ]
-            }
-          },
-          {
-            path: 'transforms',
-            component: ListTransformsDemoComponent,
-            data: {
-              paths: ['list-transforms/list-transforms-demo.component.ts'],
-              links: [
-                'additional-documentation/project-setup-tutorial/custom-entry-list.html#create-custom-cells-via-transform-methods',
-                'modules/ListModule.html'
-              ]
-            }
-          },
-          {
-            path: 'pagination',
-            component: PaginationDemoComponent,
-            data: {
-              paths: ['pagination/pagination-demo.component.html', 'pagination/pagination-demo.component.ts'],
-              links: [
-                'additional-documentation/project-setup-tutorial/custom-entry-list.html#seperated-header-items-pagination-markup',
-                'modules/ListModule.html']
-            }
-          }
-        ]
+        path: 'list-basic',
+        component: ListDemoComponent,
+        data: {
+          paths: ['list/list-demo.component.ts', 'list/unsplash-image.component.ts'],
+          links: [
+            'components/ListComponent.html#readme',
+            'modules/ListModule.html'
+          ]
+        }
+      },
+      {
+        path: 'list-transforms',
+        component: ListTransformsDemoComponent,
+        data: {
+          paths: ['list-transforms/list-transforms-demo.component.ts'],
+          links: [
+            'additional-documentation/project-setup-tutorial/custom-entry-list.html#create-custom-cells-via-transform-methods',
+            'modules/ListModule.html'
+          ]
+        }
+      },
+      {
+        path: 'list-pagination',
+        component: PaginationDemoComponent,
+        data: {
+          paths: ['pagination/pagination-demo.component.html', 'pagination/pagination-demo.component.ts'],
+          links: [
+            'additional-documentation/project-setup-tutorial/custom-entry-list.html#seperated-header-items-pagination-markup',
+            'modules/ListModule.html']
+        }
       },
       {
         path: 'form',
@@ -167,8 +158,8 @@ export const demoRoutes: Routes = [
         }
       },
       {
-        path: 'login',
-        component: LoginFormComponent,
+        path: 'login-form',
+        component: LoginDemoComponent,
         data: {
           paths: ['modules/AuthModule.html'] // TODO: add readme
         }
@@ -178,6 +169,11 @@ export const demoRoutes: Routes = [
   {
     path: 'resources',
     children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'api-explorer'
+      },
       {
         path: 'api-explorer',
         component: ApiExplorerComponent,

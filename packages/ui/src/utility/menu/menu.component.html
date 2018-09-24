@@ -16,15 +16,36 @@
 
 <nav class="nav nav_stacked">
   <strong>{{title}}</strong>
+  <!-- <ec-menu-link  *ngFor="let item of routes" [item]="item"></ec-menu-link> -->
+
   <ul class="nav__items">
     <li class="nav__item" *ngFor="let item of routes">
-      <a [routerLink]="getPath(item)">{{item.data?.title || item.path}}</a>
+      <a [routerLink]="item.path">{{item.data?.title || item.path}}</a>
 
       <ul class="nav__items" *ngIf="item?.children">
         <li class="nav__item" *ngFor="let child of item.children">
-          <a>{{child.data?.title || child.path}}</a>
+          <a [routerLink]="item.path+'/'+child.path">{{child.data?.title || child.path}}</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+</nav>
+
+
+<!-- 
+
+<nav class="nav nav_stacked">
+  <strong>{{title}}</strong>
+  <ul class="nav__items">
+    <li class="nav__item" *ngFor="let item of routes">
+      <a [routerLink]="getPath(item)">{{item.data?.title || item.path}}</a>
+      <ul class="nav__items" *ngIf="item?.children">
+        <li class="nav__item" *ngFor="let child of item.children">
+          <a [routerLink]="getPath(child)">{{child.data?.title || child.path}}</a>
         </li>
       </ul>
     </li>
   </ul>
 </nav>
+ -->

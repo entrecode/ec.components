@@ -1,20 +1,17 @@
-<div data-container="">
-  <h1 class="mega">ec-select</h1>
+<h2 class="mega">ec-select</h2>
 
-  <strong>Default</strong>
-  <ec-select [list]="products" [(ngModel)]="values"></ec-select>
-  <pre><code>{{values | json}}</code></pre>
+<strong>Default</strong>
+<ec-select [list]="products" [(ngModel)]="values"></ec-select>
+<pre><code>{{values | json}}</code></pre>
 
-  <strong>Solo</strong>
-  <ec-select [list]="products" [solo]="true" #ecSelectSolo></ec-select>
-  <pre><code>{{ecSelectSolo.selection.getValue() | json}}</code></pre>
+<strong>Solo</strong>
+<ec-select [list]="products" [solo]="true" #ecSelectSolo></ec-select>
+<pre><code>{{ecSelectSolo.selection.getValue() | json}}</code></pre>
 
-  <strong>Primitive Solo</strong>
-  <ec-select [values]="['one','two','three']" #primitiveSelectSolo [solo]="true"></ec-select>
-  <pre><code>{{primitiveSelectSolo.selection.getValue() | json}}</code></pre>
+<strong>Primitive Solo</strong>
+<ec-select [values]="['one','two','three']" #primitiveSelectSolo [solo]="true"></ec-select>
+<pre><code>{{primitiveSelectSolo.selection.getValue() | json}}</code></pre>
 
-  <strong>Primitive</strong>
-  <ec-select [values]="['one','two','three']" #primitiveSelect></ec-select>
-  <pre><code>{{primitiveSelect.selection.getValue() | json}}</code></pre>
-
-</div>
+<strong>Primitive</strong>
+<ec-select [values]="['one','two','three']" #primitiveSelect></ec-select>
+<pre><code>{{primitiveSelect.selection.getValue() | json}}</code></pre>

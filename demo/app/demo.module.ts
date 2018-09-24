@@ -52,10 +52,10 @@ import { GithubSourceComponent } from './github-source/github-source.component';
 import { GithubSourcesComponent } from './github-source/github-sources.component';
 import { DoclinksComponent } from './doclinks/doclinks.component';
 import moment from 'moment-es6';
-import de from '@ec.components/ui/src/symbol/de';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 import en from '@ec.components/ui/src/symbol/en';
 import { CounterComponent } from './form/counter.component';
+import { LoginDemoComponent } from './login-demo/login-demo.component';
 
 demoRoutes.unshift(
   {
@@ -109,7 +109,8 @@ demoRoutes.unshift(
     ResourceSelectDemoComponent,
     FileListDemoComponent,
     LocationPickerDemoComponent,
-    CounterComponent
+    CounterComponent,
+    LoginDemoComponent
   ],
   entryComponents: [
     CoolStringComponent,

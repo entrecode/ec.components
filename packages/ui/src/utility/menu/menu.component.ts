@@ -38,8 +38,9 @@ export class MenuComponent implements OnChanges {
   ngOnChanges() {
     if (this.route) {
       this.routes = this.route.children
-      .filter(route => route.path && route.path.indexOf(':') === -1)
-      .filter(route => !route.data || !route.data.hidden);
+        .filter(route => route.path && route.path.indexOf(':') === -1)
+        .filter(route => !route.data || !route.data.hidden);
+      console.log('routes', this.routes);
     }
   }
 

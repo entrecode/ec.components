@@ -38,9 +38,9 @@
     <div class="dropdown-options ec-list-column-filter-options">
       <ul>
         <li class="ec-list-column-filter-option" *ngFor="let field of list?.fields" [class.is-active]="!field.hidden" [class.is-hidden]="field.hideInColumnFilter">
-          <div class="form-boolean">
+          <div class="form-boolean" (click)="fieldCheckbox.click()">
             <label>{{fieldLabel(field)}}</label>
-            <input (click)="toggleVisibility(field)" [checked]="!field.hidden" type="checkbox"/> 
+            <input (click)="toggleVisibility(field)" #fieldCheckbox [checked]="!field.hidden" type="checkbox"/> 
           </div>
         </li>
       </ul>
