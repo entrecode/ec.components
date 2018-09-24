@@ -1,29 +1,20 @@
 import { Component } from '@angular/core';
 import { mocked } from '../../../mocks/data';
-import { songs } from '../../assets/songs';
 
 @Component({
   selector: 'ec-list-demo',
   template: `
 <h2>Simple List</h2>
+<a (click)="toggleSelectMode(treeList.list)">toggle select mode</a> |
 <a (click)="toggleColumnFilter(treeList.list)">toggle column filter</a>
 <ec-list class="ec-list-card" [list]="mocked.lists.trees" #treeList [solo]="true" [paginationConfig]="paginationConfig"></ec-list>
 <pre>
   {{treeList.list.config | json}}
 </pre>
-
-<h2>Templated List</h2>
-<ec-searchbar (selected)="select($event)" placeholder="Suche.." [list]="songlist?.list" property="title"></ec-searchbar>
-<ec-list #songlist [list]="songs" [solo]="true" #songList class="ec-list_multiline"></ec-list>
-<pre>
-  {{songList.list.config | json}}
-</pre>
   `,
 })
 export class ListDemoComponent {
   public mocked = mocked;
-  public songs = mocked.lists.songs;
-  private songArray = songs.songs;
   public paginationConfig = {
     hideFirstLast: true
   }
@@ -39,5 +30,8 @@ export class ListDemoComponent {
 
   toggleColumnFilter(list) {
     list.config.disableColumnFilter = !list.config.disableColumnFilter;
+  }
+  toggleSelectMode(list) {
+    list.config.selectMode = !list.config.selectMode;
   }
 }
