@@ -43,7 +43,7 @@ export const demoRoutes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'form',
+        redirectTo: 'icons',
       },
       {
         path: 'icons',
@@ -220,6 +220,11 @@ export const demoRoutes: Routes = [
     path: 'entries',
     children: [
       {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'entries'
+      },
+      {
         path: 'entries',
         component: DataDemoComponent,
         data: {
@@ -294,6 +299,11 @@ export const demoRoutes: Routes = [
     path: 'assets',
     children: [
       {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'asset'
+      },
+      {
         path: 'asset',
         component: AssetDemoComponent,
         data: {
@@ -318,7 +328,7 @@ export const demoRoutes: Routes = [
         }
       },
       {
-        path: 'file-list',
+        path: 'asset-crud',
         component: FileListDemoComponent,
         data: {
           paths: ['file-list/file-list-demo.component.html', 'file-list/file-list-demo.component.ts']
@@ -330,6 +340,11 @@ export const demoRoutes: Routes = [
   {
     path: 'auth',
     children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'auth'
+      },
       /* {
          path: 'login',
          component: PublicLoginComponent
@@ -367,6 +382,11 @@ export const demoRoutes: Routes = [
   {
     path: 'misc',
     children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'medium-editor'
+      },
       {
         path: 'medium-editor',
         component: MediumEditorDemoComponent,

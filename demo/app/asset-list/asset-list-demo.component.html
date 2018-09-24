@@ -1,10 +1,13 @@
 <h2>Asset list</h2>
-<ec-asset-list relation="dmAsset.test" [api]="sdk.api" *ngIf="sdk.api"></ec-asset-list>
-<a (click)="assetPop.show()">SHOW</a>
-<ec-pop #assetPop>
-  <ec-resource-list #resourceList relation="dmAsset.test" [api]="sdk.api" *ngIf="sdk.api" class="ec-resource-list"></ec-resource-list>
-</ec-pop>
+<!-- <ec-asset-list relation="dmAsset.test" [api]="sdk.api" *ngIf="sdk.api"></ec-asset-list> -->
 
+<ec-resource-list class="ec-resource-list" #resourceList relation="dmAsset.test" [api]="sdk.api" class="ec-resource-list"></ec-resource-list>
+
+<!-- <a (click)="assetPop.show()">SHOW</a>
+<ec-pop #assetPop>
+  <ec-resource-list class="ec-resource-list" #resourceList relation="dmAsset.test" [api]="sdk.api" *ngIf="sdk.api" class="ec-resource-list"></ec-resource-list>
+</ec-pop>
+ -->
 
 <!-- <h2>Asset List</h2>
 <ec-asset-list-pop assetGroupID="legacyAsset" #oldAssetListPop class="ec-pop_toast-top"></ec-asset-list-pop>
