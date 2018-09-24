@@ -161,7 +161,7 @@ export const demoRoutes: Routes = [
         path: 'login-form',
         component: LoginDemoComponent,
         data: {
-          paths: ['modules/AuthModule.html'] // TODO: add readme
+          paths: ['login-demo/login-demo.component.ts']
         }
       },
     ]
