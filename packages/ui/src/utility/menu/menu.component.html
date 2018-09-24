@@ -1,30 +1,11 @@
-<!-- <div class="ec-menu" [class.root]="!parent" (mouseleave)="hoverOut()" (mouseover)="cancelTimeout()"
-     [style.background-color]="getColor()">
-  <ul>
-    <li *ngIf="title">
-      <strong>{{title}}</strong>
-    </li>
-    <li *ngFor="let item of routes" (mouseenter)="hoverItem(item)"
-        [style.background-color]="getItemColor(item)"
-        [class.leaf]="!item.children||!item.children.length">
-      <a *ngIf="item.component" [routerLink]="getPath(item)">{{item.data?.title || item.path}}</a>
-      <span *ngIf="!item.component">{{item.data?.title || item.path}}</span>
-    </li>
-  </ul>
-  <ec-menu *ngIf="hover?.children" [route]="hover" [parent]="this" #current></ec-menu>
-</div> -->
-
 <nav class="demo-menu">
-  <!-- <ec-menu-link  *ngFor="let item of routes" [item]="item"></ec-menu-link> -->
-
   <ul>
-    <li *ngFor="let item of routes">
+    <li *ngFor="let item of routes" [class.is-active]="isActive('/'+item.path)">
       <a [routerLink]="item.path">
         <strong>{{item.data?.title || item.path}}</strong>
       </a>
-
       <ul *ngIf="item?.children">
-        <li *ngFor="let child of item.children">
+        <li *ngFor="let child of item.children" [class.is-active]="isActive('/'+item.path+'/'+child.path)">
           <a [routerLink]="item.path+'/'+child.path">{{child.data?.title || child.path}}</a>
         </li>
       </ul>

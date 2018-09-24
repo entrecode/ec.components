@@ -16,7 +16,6 @@ import { CrudConfig } from '../crud/crud-config.interface';
 import { ResourceListComponent } from '../resource-list/resource-list.component';
 import { ResourcePopComponent } from '../resource-pop/resource-pop.component';
 import Core from 'ec.sdk/lib/Core';
-import { ResourceFormComponent } from '../resource-form/resource-form.component';
 
 /** The ResourceCrudComponent takes a relation name and api to render a resource list with create/edit/delete functionality out of the box.
  * ```html

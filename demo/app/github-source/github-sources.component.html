@@ -2,7 +2,9 @@
     <h3 class="is-h6">Sources</h3>
     <ul class="is-unstyled">
         <li *ngFor="let path of paths;let index = index">
-            <a (click)="showSource(path)">{{getFileName(path)}}</a>
+            <a (click)="showSource(path)">
+                <code>{{getFileName(path)}}</code>
+            </a>
         </li>
     </ul>
     <ec-pop class="dialog-wrapper" #sourcePop>

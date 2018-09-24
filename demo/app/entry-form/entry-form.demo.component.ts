@@ -47,26 +47,19 @@ export class EntryFormDemoComponent {
   formConfig = {
     fields: {
       name: {
-        label: 'name',
+        label: 'Name',
         type: 'text'
       },
       amazement_factor: {
-        label: 'amazement factor',
+        label: 'Amazement Faktor',
         type: 'number',
         readOnly: true
       },
-      new_asset: {
-        label: 'Neues Asset',
+      test_asset: {
+        label: 'Test Asset',
         type: 'asset',
         relation: 'test',
         input: DefaultEntryInputComponent
-      },
-      new_assets: {
-        label: 'Neue Assets',
-        type: 'assets',
-        relation: 'test',
-        input: DefaultEntryInputComponent,
-        create: false
       }
     },
     onSave: (item) => {

@@ -55,11 +55,6 @@ export class MenuComponent implements OnChanges {
     return path !== '/' && (path === this.router.url || this.router.url.indexOf(path) === 0);
   }
 
-  /** Returns true if the item is active. */
-  isActive(item) {
-    return this.hover === item || (!this.hover && this.isSelected(item));
-  }
-
   /** Returns the level of nesting (parent=0). */
   getLevel(level = 0) {
     return this.parent ? this.parent.getLevel(++level) : level;
@@ -106,5 +101,9 @@ export class MenuComponent implements OnChanges {
       return path;
     }
     return this.parent.getPath(this.route, path);
+  }
+
+  isActive(path) {
+    return path !== '/' && (path === this.router.url || this.router.url.indexOf(path) === 0);
   }
 }

@@ -14,7 +14,7 @@
     </header>
     <div class="ec-crud-body">
         <ec-resource-list [loader]="config?.loader||loader" [api]="api" [selection]="selection" [relation]="relation" (columnClicked)="select($event)"
-            *ngIf="hasMethod('get')" [config]="config" class="ec-resource-list"></ec-resource-list>
+            *ngIf="hasMethod('get')" [config]="config"></ec-resource-list>
     </div>
     <ec-loader class="ec-loader ec-loader_global" #loader></ec-loader>
     <!-- [resource]="resource"  -->

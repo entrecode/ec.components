@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { LoginFormComponent } from '@ec.components/ui/src/utility/login-form/login-form.component';
 import { AceDemoComponent } from './ace-demo/ace-demo.component';
 import { ApiExplorerComponent } from './api-explorer/api-explorer.component';
 import { AssetListDemoComponent } from './asset-list/asset-list.demo.component';
@@ -35,8 +34,14 @@ import { SymbolDemoComponent } from './symbol/symbol-demo.component';
 import { TabsDemoComponent } from './tabs/tabs-demo.component';
 import { TinymceDemoComponent } from './tinymce-demo/tinymce-demo.component';
 import { LoginDemoComponent } from './login-demo/login-demo.component';
+import { DemoDashboardComponent } from './dashboard.component';
 
 export const demoRoutes: Routes = [
+  {
+    path: '',
+    component: DemoDashboardComponent,
+    data: { title: 'ec.components' }
+  },
   {
     path: 'ui',
     children: [
@@ -161,7 +166,7 @@ export const demoRoutes: Routes = [
         path: 'login-form',
         component: LoginDemoComponent,
         data: {
-          paths: ['modules/AuthModule.html'] // TODO: add readme
+          paths: ['login-demo/login-demo.component.ts']
         }
       },
     ]
@@ -310,7 +315,7 @@ export const demoRoutes: Routes = [
           paths: ['asset/asset-demo.component.html', 'asset/asset.demo.component.ts'],
           links: ['directives/AssetDirective.html#readme', 'directives/ImageDirective.html#info', 'modules/FilesModule.html']
         }
-      },
+      },/* 
       {
         path: 'asset-list',
         component: AssetListDemoComponent,
@@ -318,7 +323,7 @@ export const demoRoutes: Routes = [
           paths: ['asset-list/asset-list-demo.component.html', 'asset-list/asset-list.demo.component.ts'],
           links: ['components/AssetListComponent.html', 'modules/FilesModule.html']
         }
-      },
+      }, */
       {
         path: 'asset-select',
         component: AssetSelectDemoComponent,

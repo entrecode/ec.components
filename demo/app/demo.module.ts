@@ -57,12 +57,12 @@ import en from '@ec.components/ui/src/symbol/en';
 import { CounterComponent } from './form/counter.component';
 import { LoginDemoComponent } from './login-demo/login-demo.component';
 
-demoRoutes.unshift(
-  {
-    path: '',
-    component: DemoDashboardComponent,
-    data: { title: 'ec.components' }
-  });
+/* const routes = [].concat(demoRoutes); */
+/* routes.unshift({
+  path: '',
+  component: DemoDashboardComponent,
+  data: { title: 'ec.components' }
+}); */
 
 @NgModule({
   declarations: [
