@@ -1,5 +1,5 @@
 <div *ngIf="paths?.length">
-    <!-- <h3>Source</h3> -->
+    <h3 class="is-h6">Sources</h3>
     <ec-tabs class="ec-github-sources">
         <!-- <ec-tab label="sources"></ec-tab> -->
         <ec-tab #tab *ngFor="let path of paths;let index = index" [label]="getFileName(path)">

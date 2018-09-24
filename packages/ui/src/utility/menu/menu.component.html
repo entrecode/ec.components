@@ -1,4 +1,4 @@
-<div class="ec-menu" [class.root]="!parent" (mouseleave)="hoverOut()" (mouseover)="cancelTimeout()"
+<!-- <div class="ec-menu" [class.root]="!parent" (mouseleave)="hoverOut()" (mouseover)="cancelTimeout()"
      [style.background-color]="getColor()">
   <ul>
     <li *ngIf="title">
@@ -12,4 +12,19 @@
     </li>
   </ul>
   <ec-menu *ngIf="hover?.children" [route]="hover" [parent]="this" #current></ec-menu>
-</div>
+</div> -->
+
+<nav class="nav nav_stacked">
+  <strong>{{title}}</strong>
+  <ul class="nav__items">
+    <li class="nav__item" *ngFor="let item of routes">
+      <a [routerLink]="getPath(item)">{{item.data?.title || item.path}}</a>
+
+      <ul class="nav__items" *ngIf="item?.children">
+        <li class="nav__item" *ngFor="let child of item.children">
+          <a>{{child.data?.title || child.path}}</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>

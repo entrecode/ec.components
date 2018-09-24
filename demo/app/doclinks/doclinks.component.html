@@ -1,8 +1,10 @@
-<div *ngIf="links.length">
-    <h3>Related Docs</h3>
-    <ul>
+<div *ngIf="links.length" class="has-padding-middle">
+    <h3 class="is-h6">Related Docs</h3>
+    <ul class="is-unstyled">
         <li *ngFor="let link of links">
-            <a [href]="getUrl(link)" target="_blank">{{link}}</a>
+            <a [href]="getUrl(link)" target="_blank">
+                <code>{{link}}</code>
+            </a>
         </li>
     </ul>
 </div>
