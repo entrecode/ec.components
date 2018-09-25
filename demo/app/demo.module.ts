@@ -56,6 +56,7 @@ import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 import en from '@ec.components/ui/src/symbol/en';
 import { CounterComponent } from './form/counter.component';
 import { LoginDemoComponent } from './login-demo/login-demo.component';
+import { ImageSelectPopDemoComponent } from './image-select-pop-demo/image-select-pop-demo.component';
 
 /* const routes = [].concat(demoRoutes); */
 /* routes.unshift({
@@ -110,7 +111,8 @@ import { LoginDemoComponent } from './login-demo/login-demo.component';
     FileListDemoComponent,
     LocationPickerDemoComponent,
     CounterComponent,
-    LoginDemoComponent
+    LoginDemoComponent,
+    ImageSelectPopDemoComponent
   ],
   entryComponents: [
     CoolStringComponent,

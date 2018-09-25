@@ -3,15 +3,9 @@
 <ec-tinymce [(ngModel)]="html"></ec-tinymce>
 
 <pre><code>{{html}}</code></pre>
-<h2>With asset picker using setup output</h2>
+<h2>With asset-select-pop</h2>
+<p>This example uses the setup output to add the image button which then opens the asset-select-pop.
+    The changed Output of the asset-select-pop then fires addImageByUrl of TinymceComponent.
+</p>
 <ec-tinymce #tinyWithAssets (setup)="initEditor($event)"></ec-tinymce>
-<ec-asset-list-pop class="ec-pop_dialog" assetGroupID="test" (columnClicked)="addAsset($event, tinyWithAssets)"
-    #assetListPop></ec-asset-list-pop>
-
-
-<!-- <ec-pop class="dialog-wrapper" #imagePop>
-    <div class="dialog">
-        <ec-upload-select></ec-upload-select>
-        <ec-form config="imageForm"></ec-form>
-    </div>
-</ec-pop> -->
+<ec-image-select-pop #imagePop assetGroupID="test" (changed)="addImage($event)"></ec-image-select-pop>

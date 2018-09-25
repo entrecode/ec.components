@@ -463,5 +463,29 @@ export default [
     {
         name: 'list.filter.reset',
         content: 'Filter aufheben'
+    },
+    {
+        name: 'image-select-pop.header',
+        content: 'Bild hinzufügen'
+    },
+    {
+        name: 'image-select-pop.submitButtonLabel',
+        content: 'Hinzufügen'
+    },
+    {
+        name: 'image-select-pop.alt',
+        content: 'Alternativ Text'
+    },
+    {
+        name: 'image-select-pop.keepRatio',
+        content: 'Seitenverhältnis beibehalten'
+    },
+    {
+        name: 'image-select-pop.width',
+        content: 'Breite'
+    },
+    {
+        name: 'image-select-pop.height',
+        content: 'Höhe'
     }
 ];

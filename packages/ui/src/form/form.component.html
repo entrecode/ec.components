@@ -11,8 +11,9 @@
         <ec-output *ngIf="isReadOnly(field)" [field]="field" [item]="form"></ec-output>
       </div>
     </div>
-    <button type="button" (click)="submit()" *ngIf="submitButton!==false" [disabled]="group.invalid" class="btn btn_save">
-      <ec-icon name="save"></ec-icon>
+    <button type="button" (click)="submit()" *ngIf="showSubmitButton()" [disabled]="group.invalid" class="btn btn_save">
+      <ec-icon name="save" *ngIf="!config?.submitButtonLabel"></ec-icon>
+      <span *ngIf="config?.submitButtonLabel">{{config.submitButtonLabel}}</span>
     </button>
     <ec-loader class="ec-loader ec-loader_overlay ec-loader_global" #formLoader></ec-loader>
   </div>

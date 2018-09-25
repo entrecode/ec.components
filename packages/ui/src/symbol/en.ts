@@ -471,5 +471,29 @@ export default [
     {
         name: 'list.filter.reset',
         content: 'Clear filter'
+    },
+    {
+        name: 'image-select-pop.header',
+        content: 'Add Image'
+    },
+    {
+        name: 'image-select-pop.submitButtonLabel',
+        content: 'Add'
+    },
+    {
+        name: 'image-select-pop.alt',
+        content: 'Alternative Text'
+    },
+    {
+        name: 'image-select-pop.keepRatio',
+        content: 'Keep Ratio'
+    },
+    {
+        name: 'image-select-pop.width',
+        content: 'Width'
+    },
+    {
+        name: 'image-select-pop.height',
+        content: 'Height'
     }
 ];

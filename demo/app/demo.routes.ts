@@ -35,6 +35,7 @@ import { TabsDemoComponent } from './tabs/tabs-demo.component';
 import { TinymceDemoComponent } from './tinymce-demo/tinymce-demo.component';
 import { LoginDemoComponent } from './login-demo/login-demo.component';
 import { DemoDashboardComponent } from './dashboard.component';
+import { ImageSelectPopDemoComponent } from './image-select-pop-demo/image-select-pop-demo.component';
 
 export const demoRoutes: Routes = [
   {
@@ -107,7 +108,7 @@ export const demoRoutes: Routes = [
         path: 'form',
         component: FormDemoComponent,
         data: {
-          paths: ['form/form-demo.component.ts', 'form/form-demo.component.html', 'form/cool-string.component.ts', 'form/cool-string.component.html'],
+          paths: ['form/form-demo.component.ts', 'form/form-demo.component.html', 'form/cool-string.component.ts', 'form/cool-string.component.html', 'form/counter.component.ts'],
           links: ['modules/FormModule.html',
             'components/DefaultInputComponent.html#template',
             'additional-documentation/project-setup-tutorial/custom-entry-forms.html']
@@ -315,8 +316,8 @@ export const demoRoutes: Routes = [
           paths: ['asset/asset-demo.component.html', 'asset/asset.demo.component.ts'],
           links: ['directives/AssetDirective.html#readme', 'directives/ImageDirective.html#info', 'modules/FilesModule.html']
         }
-      },/* 
-      {
+      },
+      /* {
         path: 'asset-list',
         component: AssetListDemoComponent,
         data: {
@@ -330,6 +331,14 @@ export const demoRoutes: Routes = [
         data: {
           paths: ['asset-select/asset-select-demo.component.html', 'asset-select/asset-select-demo.component.ts'],
           links: ['components/AssetSelectComponent.html']
+        }
+      },
+      {
+        path: 'image-select-pop',
+        component: ImageSelectPopDemoComponent,
+        data: {
+          paths: ['image-select-pop-demo/image-select-pop-demo.component.ts'],
+          links: ['components/ImageSelectPopComponent.html']
         }
       },
       {
