@@ -36,6 +36,7 @@ import { TinymceDemoComponent } from './tinymce-demo/tinymce-demo.component';
 import { LoginDemoComponent } from './login-demo/login-demo.component';
 import { DemoDashboardComponent } from './dashboard.component';
 import { ImageSelectPopDemoComponent } from './image-select-pop-demo/image-select-pop-demo.component';
+import { ResourceListPopDemoComponent } from './resource-list-pop/resource-list-pop-demo.component';
 
 export const demoRoutes: Routes = [
   {
@@ -76,7 +77,7 @@ export const demoRoutes: Routes = [
         path: 'list-basic',
         component: ListDemoComponent,
         data: {
-          paths: ['list/list-demo.component.ts', 'list/unsplash-image.component.ts'],
+          paths: ['list/list-demo.component.ts'], // , 'list/unsplash-image.component.ts'
           links: [
             'components/ListComponent.html#readme',
             'modules/ListModule.html'
@@ -218,6 +219,14 @@ export const demoRoutes: Routes = [
         data: {
           paths: ['resource-select/resource-select-demo.component.html', 'resource-select/resource-select-demo.component.ts'],
           links: ['components/ResourceSelectComponent.html']
+        }
+      },
+      {
+        path: 'resource-list-pop',
+        component: ResourceListPopDemoComponent,
+        data: {
+          paths: ['resource-list-pop/resource-list-pop-demo.component.ts', 'resource-list-pop/resource-list-pop-demo.component.html'],
+          links: ['components/ResourceListPopComponent.html']
         }
       }
     ]
