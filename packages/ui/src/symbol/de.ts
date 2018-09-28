@@ -161,6 +161,14 @@ export default [
         content: 'Nein'
     },
     {
+        name: 'resource.delete.confirm',
+        content: 'Löschen'
+    },
+    {
+        name: 'resource.delete.cancel',
+        content: 'Abbrechen'
+    },
+    {
         name: 'resource.edit',
         content: 'Bearbeiten:'
     },

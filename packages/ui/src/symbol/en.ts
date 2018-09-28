@@ -157,16 +157,16 @@ export default [
         content: 'Yes'
     },
     {
+        name: 'resource.delete.no',
+        content: 'No'
+    },
+    {
         name: 'resource.delete.confirm',
         content: 'Delete'
     },
     {
         name: 'resource.delete.cancel',
         content: 'Cancel'
-    },
-    {
-        name: 'resource.delete.no',
-        content: 'No'
     },
     {
         name: 'resource.edit',
