@@ -1,6 +1,6 @@
-<div data-grid>
+<div data-grid *ngIf="!hideMenu">
   <div data-col='3 2-md' class="is-bordered-right">
-    <ec-menu [routes]="demos" *ngIf="!hideMenu"></ec-menu>
+    <ec-menu [routes]="demos"></ec-menu>
   </div>
   <div data-col='9 10-md'>
     <div data-grid>
@@ -9,8 +9,14 @@
       </div>
       <div data-col='4-sm 2-xxl' class="has-padding-top">
         <ec-github-sources [paths]="paths"></ec-github-sources>
-        <ec-doclinks [links]="links" *ngIf="!hideMenu"></ec-doclinks>
+        <ec-doclinks [links]="links"></ec-doclinks>
       </div>
     </div>
+  </div>
+</div>
+<div *ngIf="hideMenu">
+  <router-outlet *ngIf="hideMenu"></router-outlet>
+  <div data-container class="has-padding-top">
+    <ec-github-sources [paths]="paths"></ec-github-sources>
   </div>
 </div>

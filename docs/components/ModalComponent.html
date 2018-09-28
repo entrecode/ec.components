@@ -7,13 +7,13 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="icon" type="image/x-icon" href="../../images/favicon.ico">
-	      <link rel="stylesheet" href="../../styles/style.css">
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
     </head>
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../../" class="navbar-brand">ec.components documentation</a>
+            <a href="../" class="navbar-brand">ec.components documentation</a>
             <button type="button" class="btn btn-default btn-menu fa fa-bars" id="btn-menu"></button>
         </div>
 
@@ -2443,12 +2443,68 @@
 </nav>
                </div>
                <!-- START CONTENT -->
-               <div class="content additional-page">
+               <div class="content component">
                    <div class="content-data">
 
 
 
 
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>ModalComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>packages/ui/src/modal/modal.component.ts</code>
+</p>
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>A modal is an extension of a pop. It adds different style options that apply x.ui markup.</p>
+
+    </p>
+
+    <p class="comment">
+        <h3>Extends</h3>
+    </p>
+    <p class="comment">
+            <code><a href="../components/PopComponent.html" target="_self" >PopComponent</a></code>
+    </p>
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
 
 
 
@@ -2460,42 +2516,978 @@
 
 
 
-<h1 id="item">Item</h1>
-<p>The foundation for all entities is the <a href="../../classes/Item.html">Item</a> class.
-It consists of a body (value) and a config (see <a href="../../interfaces/ItemConfig.html">ItemConfig</a>).
-It can be used with arbitrary body values but is mainly thought to be a wrapper for objects.</p>
-<p>Primitive use:</p>
-<div><pre class="line-numbers"><code class="language-ts">const primitive = new Item(&#39;a&#39;);
-primitive.resolve(); //&#39;a&#39;</code></pre></div><p>Default use:</p>
-<div><pre class="line-numbers"><code class="language-ts">const tommy = new Item({ name: &#39;tommy&#39; });
-tommy.resolve(&#39;name&#39;); //&#39;tommy&#39;
-tommy.display(&#39;name&#39;); //&#39;tommy&#39;
-tommy.group(&#39;name&#39;); //&#39;tommy&#39;
-tommy.sort(&#39;name&#39;); //&#39;tommy&#39;</code></pre></div><h3 id="item-with-fields-definition">Item with fields definition</h3>
-<p>When using it with objects, it can be passed a config (see <a href="../../interfaces/ItemConfig.html">ItemConfig</a>) to set up its field config (see <a href="../../interfaces/FieldConfig.html">FieldConfig</a>.
-Each item can call <em>directly</em> call a transformation function for a field:</p>
-<div><pre class="line-numbers"><code class="language-ts">const bobby = new Item({ value: { name: &#39;bobby&#39; } }, {
-  fields: {
-    name: {
-      resolve: (body) =&gt; body.value.name,
-      display: (value) =&gt; value.toUpperCase(),
-      group: (value) =&gt; value.length + &#39; Buchstaben&#39;,
-      sort: (value) =&gt; value.length
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>ec-modal</code></td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./modal.component.html</code></td>
+            </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#classes">classes</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#elementRef">elementRef</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#popService">popService</a>
+                            </li>
+                            <li>
+                                <a href="#types">types</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#initMode">initMode</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnChanges">ngOnChanges</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#hide">hide</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#show">show</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#toggle">toggle</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#backdrop">backdrop</a>
+                            </li>
+                            <li>
+                                <a href="#columns">columns</a>
+                            </li>
+                            <li>
+                                <a href="#mode">mode</a>
+                            </li>
+                            <li>
+                                <a href="#active">active</a>
+                            </li>
+                            <li>
+                                <a href="#type">type</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#toggle">toggle</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(popService: <a href="../injectables/PopService.html">PopService</a>, elementRef: <a href="https://angular.io/api/core/ElementRef" target="_blank">ElementRef</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">packages/ui/src/modal/modal.component.ts:30</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructs the modal, injects pop service </p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>popService</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../injectables/PopService.html" target="_self" >PopService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            no
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>elementRef</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            no
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="backdrop"></a>
+                        <code>backdrop</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>If true, the modal will have a dark backdrop that disables clicking outside. </p>
+</div>
+                        <p>
+                            <em>Default value: </em><code>false</code>
+                        </p>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">packages/ui/src/modal/modal.component.ts:26</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="columns"></a>
+                        <code>columns</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>Sets data-col. If specified, the width of the modal is fixed to the given value (1-12). </p>
+</div>
+                            <p>
+                            <em>Type:</em>    <code>number | string</code>
+
+                            </p>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">packages/ui/src/modal/modal.component.ts:28</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="mode"></a>
+                        <code>mode</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>This property sets the mode + additional options.
+It expects the type at first and non mandatory options like opens-left afterwards. </p>
+</div>
+                            <p>
+                            <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                            </p>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">packages/ui/src/modal/modal.component.ts:24</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="active"></a>
+                        <code>active</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>If true, .ec-pop is part of the DOM (*ngIf) + .active is set on .ec-pop-container.  </p>
+</div>
+                            <p>
+                            <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                            </p>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4" colspan="2">
+                                    <div class="io-line">Inherited from     <code><a href="../components/PopComponent.html" target="_self" >PopComponent</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in PopComponent:17</div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="type"></a>
+                        <code>type</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>The used type on the host element </p>
+</div>
+                            <p>
+                            <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                            </p>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4" colspan="2">
+                                    <div class="io-line">Inherited from     <code><a href="../components/PopComponent.html" target="_self" >PopComponent</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in PopComponent:19</div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+    <section>
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="toggle"></a>
+                        <code>toggle</code>
+                    </td>
+                    <td class="col-md-10">
+                        <em><code>$event</code> type:</em>    <code>EventEmitter&lt;boolean&gt;</code>
+
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4" colspan="2">
+                                    <div class="io-line">Inherited from     <code><a href="../components/PopComponent.html" target="_self" >PopComponent</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in PopComponent:21</div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section>
+    
+        <h3 id="methods">
+            Methods
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="initMode"></a>
+                        <span class="name">
+                            <b>
+                            initMode
+                            </b>
+                            <a href="#initMode"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>initMode()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">packages/ui/src/modal/modal.component.ts:36</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Is called on init and change. Parses mode input and throws warning if type is not supported. </p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ngOnChanges"></a>
+                        <span class="name">
+                            <b>
+                            ngOnChanges
+                            </b>
+                            <a href="#ngOnChanges"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>ngOnChanges()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">packages/ui/src/modal/modal.component.ts:60</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>calls initMode </p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ngOnInit"></a>
+                        <span class="name">
+                            <b>
+                            ngOnInit
+                            </b>
+                            <a href="#ngOnInit"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>ngOnInit()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">packages/ui/src/modal/modal.component.ts:56</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>calls initMode </p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="hide"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            hide
+                            </b>
+                            <a href="#hide"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon fa fa-reset"></span>
+                        <code>hide()</code>
+                    </td>
+                </tr>
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from     <code><a href="../components/PopComponent.html" target="_self" >PopComponent</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in PopComponent:45</div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Hides the pop. Sets active false and removes pop from popService.stack </p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="show"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            show
+                            </b>
+                            <a href="#show"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon fa fa-reset"></span>
+                        <code>show()</code>
+                    </td>
+                </tr>
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from     <code><a href="../components/PopComponent.html" target="_self" >PopComponent</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in PopComponent:39</div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Shows the pop. Sets active true and adds pop to popService.stack </p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="toggle"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            toggle
+                            </b>
+                            <a href="#toggle"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon fa fa-reset"></span>
+                        <code>toggle(active: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, emit: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                    </td>
+                </tr>
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from     <code><a href="../components/PopComponent.html" target="_self" >PopComponent</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in PopComponent:27</div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Shows if not active, hides if active. </p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>active</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            no
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>!this.active</code>
+                                                        </td>
+
+                                                </tr>
+                                                <tr>
+                                                        <td>emit</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            no
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>false</code>
+                                                        </td>
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="classes"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            classes
+                            </b>
+                            <a href="#classes"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon fa fa-reset"></span><code>classes:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">packages/ui/src/modal/modal.component.ts:30</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Will contain the classes (mode - type) </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="elementRef"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            elementRef
+                            </b>
+                            <a href="#elementRef"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon fa fa-reset"></span><code>elementRef:     <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">packages/ui/src/modal/modal.component.ts:32</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="popService"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            popService
+                            </b>
+                            <a href="#popService"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon fa fa-reset"></span><code>popService:     <code><a href="../injectables/PopService.html" target="_self" >PopService</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="../injectables/PopService.html" target="_self" >PopService</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">packages/ui/src/modal/modal.component.ts:32</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="types"></a>
+                        <span class="name">
+                            <b>
+                            types
+                            </b>
+                            <a href="#types"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>types:     <code>[]</code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[
+        &#x27;dialog&#x27;,
+        &#x27;overlay&#x27;,
+        &#x27;deck&#x27;,
+        &#x27;toast&#x27;,
+        &#x27;snackbar&#x27;
+    ]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">packages/ui/src/modal/modal.component.ts:15</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>all possible modes that can be set </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input, OnInit, ElementRef, OnChanges } from &#x27;@angular/core&#x27;;
+import { PopComponent } from &#x27;@ec.components/ui/src/pop/pop.component&#x27;;
+import { PopService } from &#x27;@ec.components/ui/src/pop/pop.service&#x27;;
+
+/**
+ * A modal is an extension of a pop. It adds different style options that apply x.ui markup.
+ */
+@Component({
+    selector: &#x27;ec-modal&#x27;,
+    templateUrl: &#x27;./modal.component.html&#x27;
+})
+
+export class ModalComponent extends PopComponent implements OnInit, OnChanges {
+    /** all possible modes that can be set */
+    types &#x3D; [
+        &#x27;dialog&#x27;,
+        &#x27;overlay&#x27;,
+        &#x27;deck&#x27;,
+        &#x27;toast&#x27;,
+        &#x27;snackbar&#x27;
+    ];
+    /** This property sets the mode + additional options.
+     * It expects the type at first and non mandatory options like opens-left afterwards. */
+    @Input() mode: string;
+    /** If true, the modal will have a dark backdrop that disables clicking outside. */
+    @Input() backdrop &#x3D; false;
+    /** Sets data-col. If specified, the width of the modal is fixed to the given value (1-12). */
+    @Input() columns: number | string;
+    /** Will contain the classes (mode - type) */
+    private classes: string;
+    /** Constructs the modal, injects pop service */
+    constructor(public popService: PopService, public elementRef: ElementRef) {
+        super(popService);
     }
-  }
-});
-bobby.resolve(&#39;name&#39;); //&#39;bobby&#39;
-bobby.display(&#39;name&#39;); //&#39;Bobby&#39;
-bobby.group(&#39;name&#39;); //&#39;5 Buchstaben&#39;
-bobby.sort(&#39;name&#39;); //5</code></pre></div><h3 id="identifiers-and-labels">Identifiers and labels</h3>
-<p>An Item also brings the concept of identifiers and labels:</p>
-<div><pre class="line-numbers"><code class="language-ts">const e = new Item({ nr: &#39;#AYQ&#39;, title: &#39;Wurst&#39; }, { identifier: &#39;nr&#39;, label: &#39;title&#39;);
-e.id(); //&#39;#AYQ&#39;
-e.display(); //&#39;Wurst&#39;</code></pre></div><h3 id="saving-items">Saving items</h3>
-<p>You can set up a callback that is invoked when calling item.save():</p>
-<div><pre class="line-numbers"><code class="language-ts">const n = new Item(1, { onSave: (item, body) =&gt; body+1 });
-n.save();
-n.resolve(); //2</code></pre></div>
+    /** Is called on init and change. Parses mode input and throws warning if type is not supported. */
+    initMode() {
+        this.mode &#x3D; this.mode || &#x27;dialog&#x27;;
+        this.type &#x3D; this.mode.split(&#x27; &#x27;)[0];
+        if (!this.types.includes(this.type)) {
+            const fallback &#x3D; this.mode.replace(this.type, &#x27;dialog&#x27;);
+            console.warn(&#x60;ec-modal does not support the mode &quot;${this.type}&quot;.
+            Use one of ${this.types.join(&#x27;, &#x27;)}.
+            Falling back to ${fallback}.&#x60;);
+            this.type &#x3D; fallback;
+        }
+        this.classes &#x3D; this.mode.split(&#x27; &#x27;).splice(1).join(&#x27; &#x27;);
+        this.types.forEach(type &#x3D;&gt; {
+            this.elementRef.nativeElement.classList.remove(&#x60;${type}-wrapper&#x60;);
+        })
+        if (this.backdrop) {
+            this.elementRef.nativeElement.classList.add(&#x60;${this.type}-wrapper&#x60;);
+        }
+    }
+
+    /** calls initMode */
+    ngOnInit() {
+        this.initMode();
+    }
+    /** calls initMode */
+    ngOnChanges() {
+        this.initMode();
+    }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div *ngIf&#x3D;&quot;active&quot; [ngClass]&#x3D;&quot;type+&#x27; &#x27;+classes&quot; [class.is-active]&#x3D;&quot;!backdrop&amp;&amp;active&quot; [attr.data-col]&#x3D;&quot;columns&quot;&gt;
+    &lt;button (click)&#x3D;&quot;hide()&quot; type&#x3D;&quot;button&quot; [ngClass]&#x3D;&quot;type+&#x27;-dismiss&#x27;&quot;&gt;
+        &lt;ec-icon name&#x3D;&quot;close-x-big&quot;&gt;&lt;/ec-icon&gt;
+    &lt;/button&gt;
+    &lt;div [ngClass]&#x3D;&quot;type+&#x27;-header&#x27;&quot;&gt;
+        &lt;ng-content select&#x3D;&quot;.modal-header&quot;&gt;&lt;/ng-content&gt;
+    &lt;/div&gt;
+    &lt;div [ngClass]&#x3D;&quot;type+&#x27;-body&#x27;&quot;&gt;
+        &lt;ng-content select&#x3D;&quot;.modal-body&quot;&gt;&lt;/ng-content&gt;
+    &lt;/div&gt;
+    &lt;div [ngClass]&#x3D;&quot;type+&#x27;-footer&#x27;&quot;&gt;
+        &lt;ng-content select&#x3D;&quot;.modal-footer&quot;&gt;&lt;/ng-content&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div *ngIf="active" [ngClass]="type+\' \'+classes" [class.is-active]="!backdrop&&active" [attr.data-col]="columns">    <button (click)="hide()" type="button" [ngClass]="type+\'-dismiss\'">        <ec-icon name="close-x-big"></ec-icon>    </button>    <div [ngClass]="type+\'-header\'">        <ng-content select=".modal-header"></ng-content>    </div>    <div [ngClass]="type+\'-body\'">        <ng-content select=".modal-body"></ng-content>    </div>    <div [ngClass]="type+\'-footer\'">        <ng-content select=".modal-footer"></ng-content>    </div></div></div>'
+    var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'AdminEntryInputComponent', 'selector': ''},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'AssetgroupSelectComponent', 'selector': 'ec-assetgroup-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DaterangeComponent', 'selector': 'ec-daterange'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryListPopComponent', 'selector': 'ec-entry-list-pop'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'HeatmapComponent', 'selector': 'ec-heatmap'},{'name': 'IconComponent', 'selector': 'ec-icon'},{'name': 'ImageSelectPopComponent', 'selector': 'ec-image-select-pop'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LocationMapComponent', 'selector': 'ec-location-map'},{'name': 'LocationPickerComponent', 'selector': 'ec-location-picker'},{'name': 'LocationSearchComponent', 'selector': 'ec-location-search'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModalComponent', 'selector': 'ec-modal'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceCrudComponent', 'selector': 'ec-resource-crud'},{'name': 'ResourceDeletePopComponent', 'selector': 'ec-resource-delete-pop'},{'name': 'ResourceFormComponent', 'selector': 'ec-resource-form'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'ResourceListPopComponent', 'selector': 'ec-resource-list-pop'},{'name': 'ResourcePopComponent', 'selector': 'ec-resource-pop'},{'name': 'ResourceSelectComponent', 'selector': 'ec-resource-select'},{'name': 'SearchbarComponent', 'selector': 'ec-searchbar'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SignupComponent', 'selector': 'ec-signup'},{'name': 'SignupFormComponent', 'selector': 'ec-signup-form'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'UploadComponent', 'selector': 'ec-upload'},{'name': 'UploadSelectComponent', 'selector': 'ec-upload-select'}];
+    var DIRECTIVES = [{'name': 'AssetDirective', 'selector': '[ecAsset]'},{'name': 'DropzoneDirective', 'selector': '[ecDropzone]'},{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'FocusDirective', 'selector': '[ecFocus]'},{'name': 'ImageDirective', 'selector': 'img [ecImage]'},{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'}];
+    var ACTUAL_COMPONENT = {'name': 'ModalComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
                    </div><div class="search-results">
     <div class="has-results">
         <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
@@ -2510,30 +3502,30 @@ n.resolve(); //2</code></pre></div>
            </div>
        </div>
 
-       <script src="../../js/libs/bootstrap-native.js"></script>
+       <script src="../js/libs/bootstrap-native.js"></script>
 
-       <script src="../../js/libs/es6-shim.min.js"></script>
-       <script src="../../js/libs/EventDispatcher.js"></script>
-       <script src="../../js/libs/promise.min.js"></script>
-       <script src="../../js/libs/zepto.min.js"></script>
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
 
-       <script src="../../js/compodoc.js"></script>
+       <script src="../js/compodoc.js"></script>
 
         <script>
-            var COMPODOC_CURRENT_PAGE_DEPTH = 2;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'additional-page';
-            var COMPODOC_CURRENT_PAGE_URL = 'item.html';
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ModalComponent.html';
         </script>
 
-       <script src="../../js/search/search.js"></script>
-       <script src="../../js/search/lunr.min.js"></script>
-       <script src="../../js/search/search-lunr.js"></script>
+       <script src="../js/search/search.js"></script>
+       <script src="../js/search/lunr.min.js"></script>
+       <script src="../js/search/search-lunr.js"></script>
 
-       <script src="../../js/tabs.js"></script>
-       <script src="../../js/menu.js"></script>
-       <script src="../../js/libs/prism.js"></script>
-       <script src="../../js/sourceCode.js"></script>
-       <script src="../../js/search/search_index.js"></script>
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+       <script src="../js/search/search_index.js"></script>
 
 
     </body>
