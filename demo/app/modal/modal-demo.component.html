@@ -2,19 +2,6 @@
   <h2>Modal</h2>
   <p>ec-modal is an ec-pop with extended styling options.</p>
 
-
-  <ec-modal [active]="true" mode="dialog">
-    <div class="modal-header">
-      <h4>Modal head</h4>
-    </div>
-    <div class="modal-body">
-      Modal Body
-    </div>
-    <div class="modal-footer">
-      Modal Footer
-    </div>
-  </ec-modal>
-
   <a class="btn" (click)="myModal.toggle()">toggle modal</a>
   <ec-modal [mode]="modalMode" [backdrop]="modalBackdrop" [columns]="modalColumns" #myModal>
     <div class="modal-header" *ngIf="showHeader">
