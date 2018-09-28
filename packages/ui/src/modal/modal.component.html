@@ -1,4 +1,5 @@
-<div *ngIf="active" [ngClass]="type+' '+classes" [class.is-active]="!backdrop&&active" [attr.data-col]="columns">
+<div *ngIf="active" [ngClass]="type+' '+classes" [class.is-active]="!backdrop&&active" [attr.data-col]="columns"
+    [attr.data-animate]="animation">
     <button (click)="hide()" type="button" [ngClass]="type+'-dismiss'">
         <ec-icon name="close-x-big"></ec-icon>
     </button>

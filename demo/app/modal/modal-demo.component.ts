@@ -5,13 +5,14 @@ import { Component, ViewChild, OnChanges, OnInit } from '@angular/core';
 })
 export class ModalDemoComponent implements OnChanges, OnInit {
   modalMode;
-  modalBackdrop;
+  modalBackdrop = true;
   modalColumns;
   modalMarkup;
   showFillText = false;
   showFooter = true;
   showHeader = true;
   showMarkup = false;
+  modalAnimate;
 
   ngOnChanges() {
     this.updateMarkup()

@@ -3,7 +3,7 @@
   <p>ec-modal is an ec-pop with extended styling options.</p>
 
   <a class="btn" (click)="myModal.toggle()">toggle modal</a>
-  <ec-modal [mode]="modalMode" [backdrop]="modalBackdrop" [columns]="modalColumns" #myModal>
+  <ec-modal [mode]="modalMode" [backdrop]="modalBackdrop" [columns]="modalColumns" [animation]="modalAnimate" #myModal>
     <div class="modal-header" *ngIf="showHeader">
       <h4>I am a {{myModal.type}}</h4>
     </div>
@@ -39,6 +39,22 @@
             <option>snackbar</option>
             <option>snackbar opens-bottom</option>
             <option>does-not-exist</option>
+          </select>
+        </label>
+      </div>
+      <div class="form-group">
+        <label>animation
+          <select class="input" (ngModelChange)="updateMarkup()" [(ngModel)]="modalAnimate">
+            <option></option>
+            <option>fadeIn 4</option>
+            <option>popIn 4</option>
+            <option>flipLeft 4</option>
+            <option>flipRight 4</option>
+            <option>slideLeft 4</option>
+            <option>slideRight 4</option>
+            <option>slideUp 4</option>
+            <option>slideDown 4</option>
+            <option>ambulance 4</option>
           </select>
         </label>
       </div>
