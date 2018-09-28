@@ -15,7 +15,7 @@ import { FileService } from './file.service';
 import { ImageDirective } from './image/image.directive';
 import { UploadComponent } from './upload/upload.component';
 import { UploadSelectComponent } from './upload-select/upload-select.component';
-import { ImageSelectPopComponent } from '@ec.components/data/src/image-select-pop/image-select-pop.component';
+import { ImageSelectPopComponent } from './image-select-pop/image-select-pop.component';
 
 @NgModule({
   entryComponents: [

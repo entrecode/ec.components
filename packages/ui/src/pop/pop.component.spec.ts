@@ -34,6 +34,6 @@ describe('PopComponent', () => {
     component.show();
     expect(component.active).toBe(true);
     component.hide();
-    expect(component.visible).toBe(false);
+    expect(component.active).toBe(false);
   });
 });

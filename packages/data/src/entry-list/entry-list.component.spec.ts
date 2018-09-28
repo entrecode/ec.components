@@ -1,17 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { DataModule, EntryListComponent } from '../..';
+import { EntryListComponent } from '../..';
 import { UiModule } from '@ec.components/ui';
 import { ResourceModule } from '../resource/resource.module';
-import { AuthModule } from '../auth';
-import { FilesModule } from '../files';
-import { SdkModule } from '../sdk/sdk.module';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { ResourceService } from '../resource-config/resource.service';
-import { SdkService } from '../sdk/sdk.service';
 import { ModelConfigService } from '../model-config/model-config.service';
 import { CrudService } from '../crud/crud.service';
 import { TypeConfigService } from '../model-config/type-config.service';
+import { ImageSelectPopComponent } from '@ec.components/data/src/files/image-select-pop/image-select-pop.component';
 
 describe('EntryListComponent', () => {
   let component: EntryListComponent;
@@ -22,7 +16,7 @@ describe('EntryListComponent', () => {
       imports: [
         UiModule,
         ResourceModule],
-      declarations: [EntryListComponent],
+      declarations: [ImageSelectPopComponent, EntryListComponent],
       providers: [
         ModelConfigService,
         CrudService,
