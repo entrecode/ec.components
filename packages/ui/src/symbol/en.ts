@@ -169,6 +169,18 @@ export default [
         content: 'No'
     },
     {
+        name: 'resource.edit',
+        content: 'Edit'
+    },
+    {
+        name: 'resource.create',
+        content: 'Create'
+    },
+    {
+        name: 'resource.generic',
+        content: 'Resource'
+    },
+    {
         name: 'pagination.first',
         content: '«'
     },
@@ -445,6 +457,10 @@ export default [
         content: 'select model...'
     },
     {
+        name: 'entry.generic',
+        content: 'Entry'
+    },
+    {
         name: 'list.empty',
         content: 'No Item yet..'
     },
@@ -455,5 +471,29 @@ export default [
     {
         name: 'list.filter.reset',
         content: 'Clear filter'
+    },
+    {
+        name: 'image-select-pop.header',
+        content: 'Add Image'
+    },
+    {
+        name: 'image-select-pop.submitButtonLabel',
+        content: 'Add'
+    },
+    {
+        name: 'image-select-pop.alt',
+        content: 'Alternative Text'
+    },
+    {
+        name: 'image-select-pop.keepRatio',
+        content: 'Keep Ratio'
+    },
+    {
+        name: 'image-select-pop.width',
+        content: 'Width'
+    },
+    {
+        name: 'image-select-pop.height',
+        content: 'Height'
     }
 ];

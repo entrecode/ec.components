@@ -1,34 +1,36 @@
 <h2>Auth Demo</h2>
-<a class="btn" (click)="loginPop.show()">{{sdk.user?.email || 'Login'}}</a>
 <ec-notifications class="toast"></ec-notifications>
-
-<ec-pop #loginPop class="ec-pop_drawer-left" active="true">
-  <a class="btn" (click)="loginPop.hide()">
-    <ec-icon name="close-x-big"></ec-icon>
-  </a>
-
-  <section *ngIf="sdk.user">
-    <p>
-      <strong>Logged in as {{sdk.user.email}}</strong>
-    </p>
-    <button (click)="auth.logout()">Logout</button>
+<div *ngIf="sdk.user">
+  <h3>Logged in as {{sdk.user.email}}</h3>
+  <a class="btn" (click)="auth.logout()">Logout</a>
     <pre>
-    {{sdk.user | json}}
-    </pre>
-  </section>
-  <section *ngIf="!sdk.user">
-    <h2>general login</h2>
+        {{sdk.user | json}}
+      </pre>
+</div>
+<section *ngIf="!sdk.user">
+  <h3>Login</h3>
+  <div class="well-small">
+    <h6>general login</h6>
     <ec-login (success)="log($event)"></ec-login>
-    <h2>public login</h2>
+  </div>
+  <div class="well-small">
+    <h6>public login</h6>
     <ec-login [api]="sdk.api" (success)="log($event)"></ec-login>
-    <h2>admin login</h2>
+  </div>
+  <div class="well-small">
+    <h6>admin login</h6>
     <ec-login [api]="sdk.session" (success)="log($event)"></ec-login>
-
-    <h2>general password reset</h2>
+  </div>
+  <div class="well-small">
+    <h6>general password reset</h6>
     <ec-password-reset (success)="log($event)"></ec-password-reset>
-    <h2>public password reset</h2>
+  </div>
+  <div class="well-small">
+    <h6>public password reset</h6>
     <ec-password-reset [api]="sdk.api" (success)="log($event)"></ec-password-reset>
-    <h2>ec password reset</h2>
+  </div>
+  <div class="well-small">
+    <h6>ec password reset</h6>
     <ec-password-reset [api]="sdk.session" (success)="log($event)"></ec-password-reset>
-  </section>
-</ec-pop>
+  </div>
+</section>

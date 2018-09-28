@@ -544,7 +544,7 @@ export class ResourceConfig {
             list: false,
             display: (value) => value ? value.title : '',
             input: AdminEntryInputComponent,
-            filterPopClass: 'ec-pop_dialog'
+            filterPopClass: 'dialog'
           },
           addRegistered: {
             label: this.symbol.resolve('role.field.label.addRegistered'),

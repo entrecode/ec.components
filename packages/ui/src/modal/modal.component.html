@@ -1,0 +1,14 @@
+<div *ngIf="active" [ngClass]="type+' '+classes" [class.is-active]="!backdrop&&active" [attr.data-col]="columns">
+    <button (click)="hide()" type="button" [ngClass]="type+'-dismiss'">
+        <ec-icon name="close-x-big"></ec-icon>
+    </button>
+    <div [ngClass]="type+'-header'">
+        <ng-content select=".modal-header"></ng-content>
+    </div>
+    <div [ngClass]="type+'-body'">
+        <ng-content select=".modal-body"></ng-content>
+    </div>
+    <div [ngClass]="type+'-footer'">
+        <ng-content select=".modal-footer"></ng-content>
+    </div>
+</div>

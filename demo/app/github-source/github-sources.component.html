@@ -1,9 +1,22 @@
 <div *ngIf="paths?.length">
-    <!-- <h3>Source</h3> -->
-    <ec-tabs class="ec-github-sources">
-        <!-- <ec-tab label="sources"></ec-tab> -->
-        <ec-tab #tab *ngFor="let path of paths;let index = index" [label]="getFileName(path)">
-            <ec-github-source *ngIf="tab.selected" [path]="path" [mode]="getFileMode(path)"></ec-github-source>
-        </ec-tab>
-    </ec-tabs>
+    <h3 class="is-h6">Sources</h3>
+    <ul class="is-unstyled">
+        <li *ngFor="let path of paths;let index = index">
+            <a (click)="showSource(path)">
+                <code>{{getFileName(path)}}</code>
+            </a>
+        </li>
+    </ul>
+    <ec-pop class="dialog-wrapper" #sourcePop>
+        <div class="dialog source-pop" data-col="8">
+            <div class="dialog-header">
+                <h3>{{getFileName(path)}}</h3>
+            </div>
+            <button (click)="sourcePop.hide()" type="button" class="dialog-dismiss">&times;</button>
+            <div *ngFor="let source of paths">
+                <ec-github-source *ngIf="path===source" [path]="path" [mode]="getFileMode(path)"></ec-github-source>
+            </div>
+
+        </div>
+    </ec-pop>
 </div>

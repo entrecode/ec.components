@@ -52,17 +52,20 @@ import { GithubSourceComponent } from './github-source/github-source.component';
 import { GithubSourcesComponent } from './github-source/github-sources.component';
 import { DoclinksComponent } from './doclinks/doclinks.component';
 import moment from 'moment-es6';
-import de from '@ec.components/ui/src/symbol/de';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 import en from '@ec.components/ui/src/symbol/en';
 import { CounterComponent } from './form/counter.component';
+import { LoginDemoComponent } from './login-demo/login-demo.component';
+import { ImageSelectPopDemoComponent } from './image-select-pop-demo/image-select-pop-demo.component';
+import { ResourceListPopDemoComponent } from './resource-list-pop/resource-list-pop-demo.component';
+import { ModalDemoComponent } from './modal/modal-demo.component';
 
-demoRoutes.unshift(
-  {
-    path: '',
-    component: DemoDashboardComponent,
-    data: { title: 'ec.components' }
-  });
+/* const routes = [].concat(demoRoutes); */
+/* routes.unshift({
+  path: '',
+  component: DemoDashboardComponent,
+  data: { title: 'ec.components' }
+}); */
 
 @NgModule({
   declarations: [
@@ -72,6 +75,7 @@ demoRoutes.unshift(
     DemoDashboardComponent,
     DemoComponent,
     PopDemoComponent,
+    ModalDemoComponent,
     PopTriggerComponent,
     DataDemoComponent,
     ListDemoComponent,
@@ -81,6 +85,7 @@ demoRoutes.unshift(
     ApiExplorerComponent,
     ResourceFormDemoComponent,
     ResourceCrudDemoComponent,
+    ResourceListPopDemoComponent,
     FormDemoComponent,
     TabsDemoComponent,
     EntryFormDemoComponent,
@@ -109,7 +114,9 @@ demoRoutes.unshift(
     ResourceSelectDemoComponent,
     FileListDemoComponent,
     LocationPickerDemoComponent,
-    CounterComponent
+    CounterComponent,
+    LoginDemoComponent,
+    ImageSelectPopDemoComponent
   ],
   entryComponents: [
     CoolStringComponent,

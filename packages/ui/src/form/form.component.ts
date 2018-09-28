@@ -11,6 +11,7 @@ import { NotificationsService } from '../notifications/notifications.service';
 import { WithNotifications } from '../notifications/with-notifications.interface';
 import { SymbolService } from '../symbol/symbol.service';
 import { FormService } from './form.service';
+import { distinctUntilChanged, debounceTime } from 'rxjs/operators';
 
 /** This component renders a form using a FieldConfig Object.
  *
@@ -52,6 +53,8 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
   @Output() ready: EventEmitter<FormComponent<T>> = new EventEmitter();
   /** Emits when a new instance of Form is present */
   @Output() changed: EventEmitter<FormComponent<T>> = new EventEmitter();
+  /** debounce time till changed event/callback will be fired */
+  @Input() debounceTime = 200;
   /** The forms default loader. it is used when no loader is passed via the loader input */
   @ViewChild(LoaderComponent) defaultLoader: LoaderComponent;
   /** The InputComponents that are used to control the fields */
@@ -89,9 +92,28 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
       return;
     }
     this.group = this.formService.getGroup(this.form);
-    this.group.valueChanges.subscribe((change) => {
-      this.changed.emit(this);
+
+    Object.keys(this.group.controls).forEach(property => {
+      const control = this.group.controls[property];
+      control.valueChanges
+        // TODO: remove when fixed: https://github.com/angular/angular/issues/12540
+        .pipe(distinctUntilChanged((a, b) => JSON.stringify(a) === JSON.stringify(b)))
+        .pipe(debounceTime(this.debounceTime))
+        .subscribe(value => {
+          const changedField = this.form.getField(property);
+          if (changedField.changed) {
+            changedField.changed(value, this);
+          }
+        });
     });
+
+    this.group.valueChanges
+      // TODO: remove when fixed: https://github.com/angular/angular/issues/12540
+      .pipe(distinctUntilChanged((a, b) => JSON.stringify(a) === JSON.stringify(b)))
+      .pipe(debounceTime(this.debounceTime))
+      .subscribe((change) => {
+        this.changed.emit(this);
+      });
     this.ready.emit(this);
   }
 
@@ -104,7 +126,7 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
   }
   /** Returns true if the field should be readOnly, depending on its config and the form state. */
   isReadOnly(field) {
-    return field.readOnly && !!this.form.getBody();
+    return field.immutable || (field.readOnly && !!this.form.getBody());
   }
 
   /** Clears the current value */
@@ -159,6 +181,11 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
       });
     this.loaderService.wait(submit, this.loader || this.defaultLoader);
     return submit;
+  }
+
+  /** Decides if the submit button should be rendered or not based on config */
+  showSubmitButton() {
+    return this.submitButton !== false && !this.config.hideSubmitButton;
   }
 
   /** Returns the current value of the form control group. When passing a property, it directly returns the property value. */

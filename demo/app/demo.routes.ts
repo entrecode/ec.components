@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { LoginFormComponent } from '@ec.components/ui/src/utility/login-form/login-form.component';
 import { AceDemoComponent } from './ace-demo/ace-demo.component';
 import { ApiExplorerComponent } from './api-explorer/api-explorer.component';
 import { AssetListDemoComponent } from './asset-list/asset-list.demo.component';
@@ -34,15 +33,25 @@ import { SignupDemoComponent } from './signup/signup-demo.component';
 import { SymbolDemoComponent } from './symbol/symbol-demo.component';
 import { TabsDemoComponent } from './tabs/tabs-demo.component';
 import { TinymceDemoComponent } from './tinymce-demo/tinymce-demo.component';
+import { LoginDemoComponent } from './login-demo/login-demo.component';
+import { DemoDashboardComponent } from './dashboard.component';
+import { ImageSelectPopDemoComponent } from './image-select-pop-demo/image-select-pop-demo.component';
+import { ResourceListPopDemoComponent } from './resource-list-pop/resource-list-pop-demo.component';
+import { ModalDemoComponent } from './modal/modal-demo.component';
 
 export const demoRoutes: Routes = [
+  {
+    path: '',
+    component: DemoDashboardComponent,
+    data: { title: 'ec.components' }
+  },
   {
     path: 'ui',
     children: [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'form',
+        redirectTo: 'icons',
       },
       {
         path: 'icons',
@@ -66,52 +75,42 @@ export const demoRoutes: Routes = [
         }
       },
       {
-        path: 'list',
-        children: [
-          {
-            path: '',
-            pathMatch: 'full',
-            redirectTo: 'list',
-          },
-          {
-            path: 'basic',
-            component: ListDemoComponent,
-            data: {
-              paths: ['list/list-demo.component.ts', 'list/unsplash-image.component.ts'],
-              links: [
-                'components/ListComponent.html#readme',
-                'modules/ListModule.html'
-              ]
-            }
-          },
-          {
-            path: 'transforms',
-            component: ListTransformsDemoComponent,
-            data: {
-              paths: ['list-transforms/list-transforms-demo.component.ts'],
-              links: [
-                'additional-documentation/project-setup-tutorial/custom-entry-list.html#create-custom-cells-via-transform-methods',
-                'modules/ListModule.html'
-              ]
-            }
-          },
-          {
-            path: 'pagination',
-            component: PaginationDemoComponent,
-            data: {
-              paths: ['pagination/pagination-demo.component.html', 'pagination/pagination-demo.component.ts'],
-              links: [
-                'additional-documentation/project-setup-tutorial/custom-entry-list.html#seperated-header-items-pagination-markup',
-                'modules/ListModule.html']
-            }
-          }
-        ]
+        path: 'list-basic',
+        component: ListDemoComponent,
+        data: {
+          paths: ['list/list-demo.component.ts'], // , 'list/unsplash-image.component.ts'
+          links: [
+            'components/ListComponent.html#readme',
+            'modules/ListModule.html'
+          ]
+        }
+      },
+      {
+        path: 'list-transforms',
+        component: ListTransformsDemoComponent,
+        data: {
+          paths: ['list-transforms/list-transforms-demo.component.ts'],
+          links: [
+            'additional-documentation/project-setup-tutorial/custom-entry-list.html#create-custom-cells-via-transform-methods',
+            'modules/ListModule.html'
+          ]
+        }
+      },
+      {
+        path: 'list-pagination',
+        component: PaginationDemoComponent,
+        data: {
+          paths: ['pagination/pagination-demo.component.html', 'pagination/pagination-demo.component.ts'],
+          links: [
+            'additional-documentation/project-setup-tutorial/custom-entry-list.html#seperated-header-items-pagination-markup',
+            'modules/ListModule.html']
+        }
       },
       {
         path: 'form',
         component: FormDemoComponent,
         data: {
-          paths: ['form/form-demo.component.ts', 'form/form-demo.component.html', 'form/cool-string.component.ts', 'form/cool-string.component.html'],
+          paths: ['form/form-demo.component.ts', 'form/form-demo.component.html', 'form/cool-string.component.ts', 'form/cool-string.component.html', 'form/counter.component.ts'],
           links: ['modules/FormModule.html',
             'components/DefaultInputComponent.html#template',
             'additional-documentation/project-setup-tutorial/custom-entry-forms.html']
@@ -143,6 +142,14 @@ export const demoRoutes: Routes = [
         }
       },
       {
+        path: 'modal',
+        component: ModalDemoComponent,
+        data: {
+          paths: ['modal/modal-demo.component.html', 'modal/modal-demo.component.ts'],
+          links: ['components/ModalComponent.html#readme', 'modules/PopModule.html'] // TODO: add readme
+        }
+      },
+      {
         path: 'notifications',
         component: NotificationsDemoComponent,
         data: {
@@ -167,10 +174,10 @@ export const demoRoutes: Routes = [
         }
       },
       {
-        path: 'login',
-        component: LoginFormComponent,
+        path: 'login-form',
+        component: LoginDemoComponent,
         data: {
-          paths: ['modules/AuthModule.html'] // TODO: add readme
+          paths: ['login-demo/login-demo.component.ts']
         }
       },
     ]
@@ -178,6 +185,11 @@ export const demoRoutes: Routes = [
   {
     path: 'resources',
     children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'api-explorer'
+      },
       {
         path: 'api-explorer',
         component: ApiExplorerComponent,
@@ -217,12 +229,25 @@ export const demoRoutes: Routes = [
           paths: ['resource-select/resource-select-demo.component.html', 'resource-select/resource-select-demo.component.ts'],
           links: ['components/ResourceSelectComponent.html']
         }
+      },
+      {
+        path: 'resource-list-pop',
+        component: ResourceListPopDemoComponent,
+        data: {
+          paths: ['resource-list-pop/resource-list-pop-demo.component.ts', 'resource-list-pop/resource-list-pop-demo.component.html'],
+          links: ['components/ResourceListPopComponent.html']
+        }
       }
     ]
   },
   {
     path: 'entries',
     children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'entries'
+      },
       {
         path: 'entries',
         component: DataDemoComponent,
@@ -298,6 +323,11 @@ export const demoRoutes: Routes = [
     path: 'assets',
     children: [
       {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'asset'
+      },
+      {
         path: 'asset',
         component: AssetDemoComponent,
         data: {
@@ -305,14 +335,14 @@ export const demoRoutes: Routes = [
           links: ['directives/AssetDirective.html#readme', 'directives/ImageDirective.html#info', 'modules/FilesModule.html']
         }
       },
-      {
+      /* {
         path: 'asset-list',
         component: AssetListDemoComponent,
         data: {
           paths: ['asset-list/asset-list-demo.component.html', 'asset-list/asset-list.demo.component.ts'],
           links: ['components/AssetListComponent.html', 'modules/FilesModule.html']
         }
-      },
+      }, */
       {
         path: 'asset-select',
         component: AssetSelectDemoComponent,
@@ -322,7 +352,15 @@ export const demoRoutes: Routes = [
         }
       },
       {
-        path: 'file-list',
+        path: 'image-select-pop',
+        component: ImageSelectPopDemoComponent,
+        data: {
+          paths: ['image-select-pop-demo/image-select-pop-demo.component.ts'],
+          links: ['components/ImageSelectPopComponent.html']
+        }
+      },
+      {
+        path: 'asset-crud',
         component: FileListDemoComponent,
         data: {
           paths: ['file-list/file-list-demo.component.html', 'file-list/file-list-demo.component.ts']
@@ -334,6 +372,11 @@ export const demoRoutes: Routes = [
   {
     path: 'auth',
     children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'auth'
+      },
       /* {
          path: 'login',
          component: PublicLoginComponent
@@ -371,6 +414,11 @@ export const demoRoutes: Routes = [
   {
     path: 'misc',
     children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'medium-editor'
+      },
       {
         path: 'medium-editor',
         component: MediumEditorDemoComponent,

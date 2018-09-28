@@ -1,34 +1,8 @@
 <h2>Asset list</h2>
-<ec-asset-list relation="dmAsset.test" [api]="sdk.api" *ngIf="sdk.api"></ec-asset-list>
-<a (click)="assetPop.show()">SHOW</a>
-<ec-pop #assetPop>
-  <ec-resource-list #resourceList relation="dmAsset.test" [api]="sdk.api" *ngIf="sdk.api" class="ec-resource-list"></ec-resource-list>
-</ec-pop>
+<ec-resource-list class="ec-resource-list" #resourceList relation="legacyAsset" [api]="sdk.api" class="ec-resource-list"></ec-resource-list>
 
+<!-- <ec-asset-list relation="dmAsset.test" [api]="sdk.api" *ngIf="sdk.api"></ec-asset-list> -->
 
-<!-- <h2>Asset List</h2>
-<ec-asset-list-pop assetGroupID="legacyAsset" #oldAssetListPop class="ec-pop_toast-top"></ec-asset-list-pop>
-<ec-asset-list-pop assetGroupID="test" #newAssetListPop></ec-asset-list-pop>
-<a class="btn" (click)="oldAssetListPop.show()">legacy asset pop</a>
-<a class="btn" (click)="newAssetListPop.show()">new asset pop</a>
-<ec-tabs>
-  <ec-tab label="old ec.asset">
-    <p>Using asset relation on DataManagerResource</p>
-    <ec-resource-list [api]="api" relation="asset"></ec-resource-list>
-  </ec-tab>
-  <ec-tab label="old public asset">
-    <p>Using asset relation on PublicAPI</p>
-    <ec-resource-list [api]="sdk.api" *ngIf="sdk.apiResolved" relation="legacyAsset"></ec-resource-list>
-  </ec-tab>
-  <!-- <ec-tab title="New ec.assets">
-      <p>Using asset relation on AssetGroup</p>
-      <ec-resource-list [api]="sdk.api" *ngIf="sdk.apiResolved" relation="dmAsset.test"></ec-resource-list>
-  </ec-tab>
-  <ec-tab label="New public assets">
-    <p>Using dmAsset.* relation on PublicAPI</p>
-
-    <ec-resource-list #newAssetList [api]="sdk.api" *ngIf="sdk.apiResolved" relation="dmAsset.test"></ec-resource-list>
-
-  </ec-tab>
-</ec-tabs>
+<!-- 
+  TODO: use ec-asset-list when ready
  -->

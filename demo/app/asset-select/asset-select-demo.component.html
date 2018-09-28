@@ -3,58 +3,17 @@
   <h2>ec-asset-select</h2>
   <ec-tabs>
     <ec-tab label="neu" selected>
-
-      <h4>New Assets (solo, with assetGroupID)</h4>
-      <ec-asset-select [solo]="true" assetGroupID="test"></ec-asset-select>
-      <h4>New Assets (custom + without assetGroupID)</h4>
+      <h3>New Assets</h3>
       <ec-asset-select [config]="{customUpload:true}" assetGroupID="test"></ec-asset-select>
+      <h4>solo</h4>
+      <ec-asset-select [solo]="true" assetGroupID="test"></ec-asset-select>
     </ec-tab>
     <ec-tab label="legacy">
-      <h4>Legacy Assets</h4>
+      <h3>Legacy Assets</h3>
       <ec-asset-select assetGroupID="legacyAsset"></ec-asset-select>
-
-
-      <h4>Configless</h4>
-      <!-- <strong>solo</strong>
-      <ec-asset-select [solo]="true"></ec-asset-select> -->
-      <strong>not solo</strong>
-      <ec-asset-select assetGroupID="legacyAsset"></ec-asset-select>
-
-
-      <!-- <h6>useLegacyAssets</h6>
+      <h4>solo</h4>
       <strong>solo</strong>
-      <ec-asset-select [solo]="true" [config]="{useLegacyAssets:true}"></ec-asset-select>
-      <strong>not solo</strong>
-      <ec-asset-select [config]="{useLegacyAssets:true}"></ec-asset-select> -->
-
-
-
-      <!-- <pre>{{soloAsset.selection?.getValue()}}</pre> -->
-      <!--
-        <h3>Usage with form</h3>
-        <ec-form #fieldTest>
-          <ec-asset-select *ngIf="fieldTest.group"
-                           [formControl]="fieldTest.group?.get('entries')"
-                           model="muffin"></ec-asset-select>
-          <ec-input [field]="fieldTest.form?.getField('entries')" [group]="fieldTest.group"></ec-input>
-        </ec-form>
-        -->
-      <!-- TODO -->
-
-      <!-- <b>readOnly</b> -->
-      <!-- <ec-asset-select [readOnly]="true" [(ngModel)]="selectedAssets" [config]="{useLegacyAssets:true}"></ec-asset-select> -->
+      <ec-asset-select [solo]="true" assetGroupID="legacyAsset"></ec-asset-select>
     </ec-tab>
-
-
-
-    <!-- <ec-tab label="new assets without assetGroupID" >
-      <ec-asset-select [(ngModel)]="selectedNewAssets"></ec-asset-select>
-    </ec-tab>
-    <ec-tab label="new assets">
-      <ec-asset-select assetGroupID="test" [(ngModel)]="selectedNewAssets"></ec-asset-select>
-
-      <pre>{{selectedNewAssets | json}}</pre>
-    </ec-tab> -->
   </ec-tabs>
-
 </div>

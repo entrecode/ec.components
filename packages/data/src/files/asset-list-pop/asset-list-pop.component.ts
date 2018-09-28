@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild, HostBinding } from '@angular/core';
 import { Item, Selection } from '@ec.components/core';
 import { SdkService } from '../../sdk/sdk.service';
 import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
@@ -37,6 +37,8 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
   /** The nested searchbar */
   @ViewChild(SearchbarComponent) searchbar: SearchbarComponent;
   uploadConfig: CrudConfig<PublicAssetResource> & { disableListPop: boolean; };
+  /** Set host class to make sure the type is used */
+  @HostBinding('class') class = 'dialog-wrapper';
 
   /** Injects auth service and calls super constructor. */
   constructor(protected popService: PopService,
@@ -67,6 +69,7 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
       } */
     });
     this.uploadConfig = Object.assign({}, this.config, { disableListPop: true });
+    this.config = Object.assign({ hidePagination: true, disableHeader: true }, this.config);
   }
 
   /** emits columnClicked event or toggles selection if no observers. */

@@ -1,56 +1,16 @@
-<!--
-<div class="menubar invert">
-  <strong class="menubar__brand">ec.components</strong>
-  <nav class="menu menu_dropbown">
-    <ul class="menu__items">
-      <li class="menu__item parent" tabindex="0">
-        <a href="" class="btn clear invert">ui</a>
-        <div class="sub-menu">
-          <ul class="sub-menu__items">
-            <li class="sub-menu__item level1 parent" tabindex="0">
-              <a href="" class="btn clear">list</a>
-              <div class="sub-menu">
-                <ul class="sub-menu__items">
-                  <li class="sub-menu__item level2">
-                    <a href="" class="btn clear">basic</a>
-                  </li>
-                  <li class="sub-menu__item level2">
-                    <a href="" class="btn clear">transforms</a>
-                  </li>
-                </ul>
-              </div>
-            </li>
-            <li class="sub-menu__item level1" tabindex="0">
-              <a href="" class="btn clear">form</a>
-            </li>
-            <li class="sub-menu__item level1" tabindex="0">
-              <a href="" class="btn clear">login</a>
-            </li>
-            <li class="sub-menu__item level1" tabindex="0">
-              <a href="" class="btn clear">pop</a>
-            </li>
-            <li class="sub-menu__item level1" tabindex="0">
-              <a href="" class="btn clear">tabs</a>
-            </li>
-            <li class="sub-menu__item level1" tabindex="0">
-              <a href="" class="btn clear">select</a>
-            </li>
-            <li class="sub-menu__item level1" tabindex="0">
-              <a href="" class="btn clear">mockups</a>
-            </li>
-            <li class="sub-menu__item level1" tabindex="0">
-              <a href="" class="btn clear">datetime</a>
-            </li>
-          </ul>
-        </div>
-      </li>
-    </ul>
-  </nav>
-</div>
--->
-<ec-menu [routes]="demos" *ngIf="!hideMenu"></ec-menu>
-<ec-doclinks [links]="links" *ngIf="!hideMenu"></ec-doclinks>
-<ec-github-sources [paths]="paths"></ec-github-sources>
-<div data-container="">
-  <router-outlet></router-outlet>
+<div data-grid>
+  <div data-col='3 2-md' class="is-bordered-right">
+    <ec-menu [routes]="demos" *ngIf="!hideMenu"></ec-menu>
+  </div>
+  <div data-col='9 10-md'>
+    <div data-grid>
+      <div data-col='8-sm 6-xxl' class="has-padding-top">
+        <router-outlet></router-outlet>
+      </div>
+      <div data-col='4-sm 2-xxl' class="has-padding-top">
+        <ec-github-sources [paths]="paths"></ec-github-sources>
+        <ec-doclinks [links]="links" *ngIf="!hideMenu"></ec-doclinks>
+      </div>
+    </div>
+  </div>
 </div>

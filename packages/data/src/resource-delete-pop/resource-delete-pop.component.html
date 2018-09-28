@@ -1,12 +1,25 @@
-<ec-pop class="ec-pop ec-pop_dialog">
-    {{question||((!safetyWord?'resource.delete.question':'resource.delete.safety') | symbol)}}
-    <label *ngIf="safetyWord">"{{safetyWord}}"
-        <input type="text" class="input" [(ngModel)]="confirmInput" />
-    </label>
-    <a class="btn" (click)="delete()" [class.is-disabled]="!canDelete()">
-        {{yes||((!safetyWord?'resource.delete.yes':'resource.delete.confirm') | symbol)}}
-    </a>
-    <a class="btn btn_minor" (click)="hide()">
-        {{no||((!safetyWord?'resource.delete.no':'resource.delete.cancel') | symbol)}}
-    </a>
-</ec-pop>
+<div class="ec-resource-delete-pop dialog" *ngIf="active">
+    <div class="dialog-body">
+        <p>{{question||((!safetyWord?'resource.delete.question':'resource.delete.safety') | symbol)}}</p>
+        <div class="form-group safety-query" *ngIf="safetyWord">
+            <label>"{{safetyWord}}"</label>
+            <input [ecFocus]="focusEvent" type="text" class="input" [(ngModel)]="confirmInput" />
+        </div>
+    </div>
+    <div class="dialog-footer">
+        <div class="nav">
+            <ul class="nav__items">
+                <li class="nav__item">
+                    <a class="btn" (click)="delete()" [class.is-disabled]="!canDelete()">
+                        {{yes||((!safetyWord?'resource.delete.yes':'resource.delete.confirm') | symbol)}}
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a class="btn btn_minor" (click)="hide()">
+                        {{no||((!safetyWord?'resource.delete.no':'resource.delete.cancel') | symbol)}}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

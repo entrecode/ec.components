@@ -1,5 +1,4 @@
 <div *ngIf="selection&&list" class="ec-select" [class.is-solo]="solo" [class.is-dirty]="selection.items.length" (click)="toggle($event)">
-  <!-- [class.is-focus]="pop?.visible" -->
   <span class="ec-select__placeholder" *ngIf="!selection.items.length">
     {{placeholder||'make your selection...'}}
   </span>

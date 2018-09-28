@@ -5,6 +5,10 @@ import { FileOptions } from '../files/file.service';
 
 /** The CrudConfig allows a quick customization of an ec-crud component. */
 export interface CrudConfig<T> extends ListConfig<T> {
+  /** The label for one entity */
+  singularLabel?: string;
+  /** The label for multiple entities */
+  pluralLabel?: string;
   /** The label for the entry create button */
   createLabel?: string;
   /** An Array of Methods that should be supported. Possible values are create, read, update and delete*/
@@ -21,10 +25,6 @@ export interface CrudConfig<T> extends ListConfig<T> {
   levels?: number;
   /** If true, an entry is always loaded when opened, even with lvl1 */
   alwaysLoadEntry?: boolean;
-  /** The class that should be used for the pop. */
-  popClass?: string;
-  /** The class that should be used for the nested resources pops, defaults to no class. */
-  nestedPopClass?: string;
   /** maps the permissions to the methods post put create delete */
   permissions?: { put?: string | boolean, post?: string | boolean, get?: string | boolean, delete?: string | boolean }
   /** If true, no select mode switch will be shown */

@@ -1,7 +1,8 @@
+<h2>Asset Crud</h2>
 <ec-resource-select [api]="datamanager" relation="assetGroup" (changed)="selected($event)" [solo]="true" [config]="{methods:['get'],disableListPop:true}"></ec-resource-select>
 
 <div *ngIf="group">
-  <ec-upload [assetGroupID]="group.assetGroupID" [loader]="loader" [api]="api" [custom]="custom"></ec-upload>
+  <ec-upload-select [custom]="custom" [config]="{disableListPop:true}" [assetGroupID]="group.assetGroupID"></ec-upload-select>
   <div class="xui-toggle">
     <input id="ignoreDuplicates" type="checkbox" [(ngModel)]="custom">
     <label for="ignoreDuplicates">

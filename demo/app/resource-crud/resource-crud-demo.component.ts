@@ -8,7 +8,7 @@ import { SdkService } from '@ec.components/data';
 export class ResourceCrudDemoComponent {
     crudConfig = {
         selectMode: false,
-        methods: ['get', 'put']
+        methods: ['get', 'put'] /** , 'post', 'delete' */
     }
     constructor(public sdk: SdkService) {
     }

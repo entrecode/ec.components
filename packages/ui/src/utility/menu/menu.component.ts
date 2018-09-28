@@ -38,8 +38,9 @@ export class MenuComponent implements OnChanges {
   ngOnChanges() {
     if (this.route) {
       this.routes = this.route.children
-      .filter(route => route.path && route.path.indexOf(':') === -1)
-      .filter(route => !route.data || !route.data.hidden);
+        .filter(route => route.path && route.path.indexOf(':') === -1)
+        .filter(route => !route.data || !route.data.hidden);
+      console.log('routes', this.routes);
     }
   }
 
@@ -52,11 +53,6 @@ export class MenuComponent implements OnChanges {
   isSelected(item) {
     const path = this.getPath(item);
     return path !== '/' && (path === this.router.url || this.router.url.indexOf(path) === 0);
-  }
-
-  /** Returns true if the item is active. */
-  isActive(item) {
-    return this.hover === item || (!this.hover && this.isSelected(item));
   }
 
   /** Returns the level of nesting (parent=0). */
@@ -105,5 +101,9 @@ export class MenuComponent implements OnChanges {
       return path;
     }
     return this.parent.getPath(this.route, path);
+  }
+
+  isActive(path) {
+    return path !== '/' && (path === this.router.url || this.router.url.indexOf(path) === 0);
   }
 }

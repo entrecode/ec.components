@@ -1,23 +1,24 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { demoRoutes } from './demo.routes';
+/* import { demoRoutes } from './demo.routes'; */
 
 @Component({
   selector: 'ec-demo-dashboard',
   template: `<h2>ec.components demos</h2>
-<p>Welcome to the ec.components demos!
-You can select a demo from the menu above or load a <a [routerLink]="randomDemo">random demo</a>!</p>
-<p>Other Resources: </p>
+<p>Welcome to the ec.components demos! You can select a demo from the menu on the side.</p>
+<p>Other Resources:</p>
 <ul>
-<li><a href="https://github.com/entrecode/ec.components/tree/master/demo/app">demo sources</a></li>
-<li><a href="https://github.com/entrecode/ec.components">Github</a></li>
-<li><a href="https://entrecode.github.io/ec.components">Documentation</a></li>
+<li><a href="https://entrecode.github.io/ec.components">ec.components docs</a></li>
+<li><a href="https://github.com/entrecode/ec.components">ec.components github</a></li>
+<li><a href="https://entrecode.github.io/ec.sdk/">ec.sdk docs</a></li>
+<li><a href="https://entrecode.github.io/x.ui/">x.ui docs</a></li>
+<li><a href="https://doc.entrecode.de/">entrecode API docs</a></li>
 </ul>
 `
 })
 export class DemoDashboardComponent {
-  private demos = demoRoutes.slice(1);
-  public randomDemo: any;
+  /* private demos = demoRoutes.slice(1); */
+  /* public randomDemo: any;
 
   randomRoute(routes, path = '') {
     const random = routes[Math.floor(Math.random() * routes.length)];
@@ -25,7 +26,7 @@ export class DemoDashboardComponent {
       return path + '/' + random.path;
     }
     return this.randomRoute(random.children, path + '/' + random.path);
-  }
+  } */
 
   appendChildRoute(route) {
     this.route.routeConfig.children = this.route.routeConfig.children || [];
@@ -42,6 +43,6 @@ export class DemoDashboardComponent {
   }
 
   constructor(private router: Router, private route: ActivatedRoute) {
-    this.randomDemo = [this.randomRoute(this.demos)];
+    /* this.randomDemo = [this.randomRoute(this.demos)]; */
   }
 }

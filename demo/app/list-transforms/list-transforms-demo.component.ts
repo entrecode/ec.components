@@ -10,7 +10,7 @@ const percent = (value) => Math.round(100 * value) + '%';
 
 @Component({
   template: `
-<h2>List Transforms Test</h2>
+<h2>List Transforms</h2>
 
 <ec-list class="ec-list-card" [list]="words" (selected)="log($event)" #wordList></ec-list>
 <ul>

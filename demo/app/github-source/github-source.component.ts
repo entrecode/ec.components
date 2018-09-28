@@ -3,7 +3,8 @@ import { NotificationsService } from '@ec.components/ui';
 
 @Component({
     selector: 'ec-github-source',
-    templateUrl: './github-source.component.html'
+    templateUrl: './github-source.component.html',
+    styleUrls: ['./github-source.component.scss'],
 })
 export class GithubSourceComponent implements OnInit/* , OnChanges */ {
     @Input() path;

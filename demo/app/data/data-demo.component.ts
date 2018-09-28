@@ -8,8 +8,4 @@ import { SdkService } from '@ec.components/data';
 export class DataDemoComponent {
   constructor(public sdk: SdkService) {
   }
-
-  changeEnv(env) {
-    this.sdk.init(env);
-  }
 }

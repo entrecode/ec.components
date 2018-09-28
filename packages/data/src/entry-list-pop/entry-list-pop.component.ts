@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, ViewChild, HostBinding } from '@angular/core';
 import { Item, ListConfig, Selection } from '@ec.components/core';
 import { PopComponent } from '@ec.components/ui';
 import { PopService } from '@ec.components/ui/src/pop/pop.service';
@@ -18,6 +18,8 @@ export class EntryListPopComponent extends PopComponent implements OnChanges {
     @Input() selection: Selection<EntryResource>;
     @Output() columnClicked: EventEmitter<Item<EntryResource>> = new EventEmitter();
     @ViewChild(SearchbarComponent) searchbar: SearchbarComponent;
+    /** Set host class to make sure the type is used */
+    @HostBinding('class') class = 'dialog-wrapper';
     lightModel: any;
 
     constructor(

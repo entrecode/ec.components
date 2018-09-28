@@ -16,7 +16,6 @@ import { CrudConfig } from '../crud/crud-config.interface';
 import { ResourceListComponent } from '../resource-list/resource-list.component';
 import { ResourcePopComponent } from '../resource-pop/resource-pop.component';
 import Core from 'ec.sdk/lib/Core';
-import { ResourceFormComponent } from '../resource-form/resource-form.component';
 
 /** The ResourceCrudComponent takes a relation name and api to render a resource list with create/edit/delete functionality out of the box.
  * ```html
@@ -89,10 +88,6 @@ export class ResourceCrudComponent<T> implements OnInit, WithLoader {
         // TODO: check CrudComponent#loadEntry for further inspiration
     }
 
-    /** Returns the pop class that should be used, either uses config.popClass or defaults to ec-pop_drawer-left. */
-    getPopClass() {
-        return this.config && this.config.popClass ? this.config.popClass : 'ec-pop_dialog';
-    }
     /** Method that is invoked when pressing the create button. Default behaviour is opening the resource-pop. */
     create() {
         if (this.createClicked.observers.length) {

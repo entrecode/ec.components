@@ -1,5 +1,197 @@
 <div data-container>
-  <h4>Standard markup for ec-pop content</h4>
+  <h2>Dialog</h2>
+  <div data-grid>
+    <div data-col='3'>
+      <h3 class="is-h6">simple dialog</h3>
+      <div class="btn" (click)="myDialogSimple.toggle()">open</div>
+      <pre><code>markup code here</code></pre>
+    </div>
+    <div data-col='3'>
+      <h3 class="is-h6">dialog with backdrop</h3>
+      <div class="btn" (click)="myDialogBackdrop.toggle()">open</div>
+      <pre><code>markup code here</code></pre>
+    </div>
+    <div data-col='3'>
+      <h3 class="is-h6">custom width dialog</h3>
+      <div class="btn" (click)="myDialogCustom.toggle()">open</div>
+      <pre><code>markup code here</code></pre>
+    </div>
+    <div data-col='3'>
+      <h3 class="is-h6">nested dialog</h3>
+      <div class="btn" (click)="myDialogNested.toggle()">open</div>
+      <pre><code>markup code here</code></pre>
+    </div>
+  </div>
+
+  <ec-pop #myDialogSimple class="dialog">
+    <button (click)="myDialogSimple.hide()" type="button" class="dialog-dismiss">&times;</button>
+    <div class="dialog-body">
+      <h4>I'm a dialog without backdrop</h4>
+    </div>
+  </ec-pop>
+
+  <ec-pop #myDialogCustom class="dialog" data-col="8">
+    <button (click)="myDialogCustom.hide()" type="button" class="dialog-dismiss">&times;</button>
+    <div class="dialog-body">
+      <h4>I'm a dialog with a custom width using <code>data-col</code></h4>
+    </div>
+  </ec-pop>
+
+  <ec-pop #myDialogNested class="dialog">
+    <button (click)="myDialogNested.hide()" type="button" class="dialog-dismiss">&times;</button>
+    <div class="dialog-body">
+      <h4>I'm a nested dialog</h4>
+      <div class="btn" (click)="myDialogChild.toggle()">open child</div>
+    </div>
+    <ec-pop #myDialogChild class="dialog" data-col="8">
+      <button (click)="myDialogChild.hide()" type="button" class="dialog-dismiss">&times;</button>
+      <div class="dialog-body">
+        <h5>I'm a child dialog</h5>
+      </div>
+    </ec-pop>
+  </ec-pop>
+
+  <ec-pop #myDialogBackdrop class="dialog-wrapper">
+    <div class="dialog">
+      <button (click)="myDialogBackdrop.hide()" type="button" class="dialog-dismiss">&times;</button>
+      <div class="dialog-header">
+        this is the header
+      </div>
+      <div class="dialog-body">
+        <h4>I'm a dialog</h4>
+      </div>
+      <div class="dialog-footer">
+        this is just a footer...
+      </div>
+    </div>
+  </ec-pop>
+
+  <div class="spacer"></div>
+
+  <h2>Overlay</h2>
+
+  <div data-grid>
+    <div data-col='3'>
+      <h3 class="is-h6">There can only be one kind of overlay.</h3>
+      <div class="btn" (click)="myOverlay.toggle()">open overlay</div>
+    </div>
+  </div>
+
+  <ec-pop #myOverlay class="overlay" data-animate="flipRight 8">
+    <h5>I'm a overlay</h5>
+  </ec-pop>
+
+  <div class="spacer"></div>
+
+  <h2>Deck</h2>
+
+  <div data-grid>
+    <div data-col='3'>
+      <h3 class="is-h6">deck opens-left</h3>
+      <div class="btn" (click)="myDeckLeft.toggle()">open deck</div>
+    </div>
+    <div data-col='3'>
+      <h3 class="is-h6">deck opens-right</h3>
+      <div class="btn" (click)="myDeckRight.toggle()">open deck</div>
+    </div>
+    <div data-col='3'>
+      <h3 class="is-h6">deck opens-left with backdrop</h3>
+      <div class="btn" (click)="myDeckLeftBackdrop.toggle()">open deck</div>
+    </div>
+    <div data-col='3'>
+      <h3 class="is-h6">deck opens-right with backdrop</h3>
+      <div class="btn" (click)="myDeckRightBackdrop.toggle()">open deck</div>
+    </div>
+  </div>
+
+  <ec-pop #myDeckLeft class="deck opens-left" data-animate="slideRight 4">
+    <button (click)="myDeckLeft.hide()" type="button" class="deck-dismiss">&times;</button>
+    <div class="deck-body">
+      <h5>I'm a deck</h5>
+    </div>
+  </ec-pop>
+
+  <ec-pop #myDeckRight class="deck opens-right" data-animate="slideLeft 4" data-col="8">
+    <button (click)="myDeckRight.hide()" type="button" class="deck-dismiss">&times;</button>
+    <div class="deck-body">
+      <h5>I'm a deck</h5>
+    </div>
+  </ec-pop>
+
+  <ec-pop #myDeckLeftBackdrop class="deck-wrapper">
+    <div class="deck opens-left" data-animate="slideRight 4">
+      <button (click)="myDeckLeftBackdrop.hide()" type="button" class="deck-dismiss">&times;</button>
+      <div class="deck-body">
+        <h5>I'm a deck</h5>
+      </div>
+    </div>
+  </ec-pop>
+
+  <ec-pop #myDeckRightBackdrop class="deck-wrapper">
+    <div class="deck opens-right" data-animate="slideLeft 4">
+      <button (click)="myDeckRightBackdrop.hide()" type="button" class="deck-dismiss">&times;</button>
+      <div class="deck-body">
+        <h5>I'm a deck</h5>
+      </div>
+    </div>
+  </ec-pop>
+
+  <h2>Toast</h2>
+
+  <div data-grid>
+    <div data-col='3'>
+      <h3 class="is-h6">toast opens-top</h3>
+      <div class="btn" (click)="myToastTop.toggle()">open toast</div>
+    </div>
+    <div data-col='3'>
+      <h3 class="is-h6">toast opens-bottom</h3>
+      <div class="btn" (click)="myToastBottom.toggle()">open toast</div>
+    </div>
+    <div data-col='3'>
+      <h3 class="is-h6">toast opens-top with backdrop</h3>
+      <div class="btn" (click)="myToastTopBackdrop.toggle()">open toast</div>
+    </div>
+    <div data-col='3'>
+      <h3 class="is-h6">toast opens-bottom with backdrop</h3>
+      <div class="btn" (click)="myToastBottomBackdrop.toggle()">open toast</div>
+    </div>
+  </div>
+
+  <ec-pop #myToastTop class="toast opens-top" data-animate="slideDown 4">
+    <button (click)="myToastTop.hide()" type="button" class="toast-dismiss">&times;</button>
+    <div class="toast-body">
+      <h5>I'm a toast</h5>
+    </div>
+  </ec-pop>
+
+  <ec-pop #myToastBottom class="toast opens-bottom" data-animate="slideUp 4">
+    <button (click)="myToastBottom.hide()" type="button" class="toast-dismiss">&times;</button>
+    <div class="toast-body">
+      <h5>I'm a toast</h5>
+    </div>
+  </ec-pop>
+
+  <ec-pop #myToastTopBackdrop class="toast-wrapper">
+    <div class="toast opens-top" data-animate="slideDown 4">
+      <button (click)="myToastTopBackdrop.hide()" type="button" class="toast-dismiss">&times;</button>
+      <div class="toast-body">
+        <h5>I'm a toast</h5>
+      </div>
+    </div>
+  </ec-pop>
+
+  <ec-pop #myToastBottomBackdrop class="toast-wrapper">
+    <div class="toast opens-bottom" data-animate="slideUp 4">
+      <button (click)="myToastBottomBackdrop.hide()" type="button" class="toast-dismiss">&times;</button>
+      <div class="toast-body">
+        <h5>I'm a toast</h5>
+      </div>
+    </div>
+  </ec-pop>
+
+  <div class="spacer"></div>
+
+  <!-- <h4>Standard markup for ec-pop content</h4>
   <pre><code>{{markup}}</code></pre>
   <div class="bumper"></div>
   <h4>ec-pop styles</h4>
@@ -34,5 +226,5 @@
   </ec-pop-trigger>
   <div class="bumper"></div>
   <h4>ec-pop in list-header</h4>
-  <ec-list-header [list]="listHeader"></ec-list-header>
+  <ec-list-header [list]="listHeader"></ec-list-header> -->
 </div>

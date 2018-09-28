@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, Output, EventEmitter, HostBinding } from '@angular/core';
 import { CrudConfig } from '../crud/crud-config.interface';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
@@ -7,6 +7,8 @@ import { AuthService } from '../auth/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PopService } from '@ec.components/ui/src/pop/pop.service';
 import { Form } from '@ec.components/core';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import { FormService } from '@ec.components/ui/src/form/form.service';
 
 /** Entry Pop is an extension of Pop component to host an entry-form.
  * You can use it like a normal pop but with the extra handling of an entry form inside.
@@ -36,8 +38,15 @@ export class EntryPopComponent extends PopComponent implements OnInit {
   @Output() submitted: EventEmitter<Form<EntryResource>> = new EventEmitter();
   /** Emits when the resource has been deleted. */
   @Output() deleted: EventEmitter<Form<EntryResource>> = new EventEmitter();
+  /** Set host class to make sure the type is used */
+  @HostBinding('class') class = 'dialog-wrapper';
 
-  constructor(protected popService: PopService, private auth: AuthService, private router: Router, private route: ActivatedRoute) {
+  constructor(protected popService: PopService,
+    private auth: AuthService,
+    private router: Router,
+    private route: ActivatedRoute,
+    public formService: FormService,
+    public symbol: SymbolService) {
     super(popService);
   }
 
@@ -75,9 +84,10 @@ export class EntryPopComponent extends PopComponent implements OnInit {
   /** Edit the given entry. */
   edit(entry: EntryResource) {
     if (this.editRoute) {
-      const matcher = '(' + this.pathRegExp(this.editRoute) + '|' + this.pathRegExp(this.createRoute) + ').*';
+      // TODO: find solution for automatic routing
+      /* const matcher = '(' + this.pathRegExp(this.editRoute) + '|' + this.pathRegExp(this.createRoute) + ').*';
       const trimmed = this.router.url.replace(new RegExp(matcher, 'g'), '');
-      this.router.navigate([trimmed, this.editRoute, entry.id]);
+      this.router.navigate([trimmed, this.editRoute, entry.id]); */
     }
     this.entry = entry;
     this.show();
@@ -121,5 +131,11 @@ export class EntryPopComponent extends PopComponent implements OnInit {
   private deletedEntry() {
     this.hide();
     this.deleted.emit(this.form.form);
+  }
+
+  /** Returns header for current form */
+  getHeader(form) {
+    const label = this.config.singularLabel || form.model;
+    return this.formService.getFormLabel(form, label);
   }
 }

@@ -202,16 +202,14 @@ export class Item<T> {
 
   /** Saves the given value. Run serializers before assigning the new value. */
   save(value: T = this.body): Promise<Item<T>> {
-    this.body = (<any>Object).assign(this.resolve() || {}, value);
     if (this.config.onSave) {
       return Promise.resolve(this.config.onSave(this, value))
-        // return Promise.resolve(this.config.onSave(this, this.serialize(value)))
         .then((_value: T) => {
           this.body = _value;
           return this;
         });
     }
-    // Object.assign(this.resolve() || {}, this.serialize(value));
+    this.body = (<any>Object).assign(this.resolve() || {}, value);
     return Promise.resolve(this);
   }
   /** Action method that is meant to be called on a button click or similar.

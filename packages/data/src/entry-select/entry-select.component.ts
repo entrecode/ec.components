@@ -187,11 +187,6 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
         this.entryPop.edit(entry);
       });
   }
-
-  /** Returns the pop class that should be used, either uses config.popClass or defaults to ec-pop_dialog. */
-  getPopClass() {
-    return this.config && this.config.popClass ? this.config.popClass : 'ec-pop_dialog';
-  }
   /** Is called when the nested entry-form has been saved. Selects the fresh entry and clears the form */
   formSubmitted(form: Form<EntryResource>) {
     if (!this.selection.has(form)) {

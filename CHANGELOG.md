@@ -1,4 +1,19 @@
 # Changelog
+
+<a name="ui0.32.0"></a>
+
+## @ec.components/ui 0.32.0
+
+BREAKING CHANGE:
+
+* ec-pop: removed visible attribute + simplified markup structure.
+  * removed ec-pop-container class
+  * removed ec-pop class
+  * is-active is now set on the ec-pop element itself
+
+DEPRECATED: please update all usages of classes ec-pop_* and use ec-modal or ec-pop with the correct classes.
+Refer to the pop demo or the modal demo for example usages.
+
 <a name="0.34.0"></a>
 
 ## @ec.components/data 0.34.0
