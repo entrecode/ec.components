@@ -37,6 +37,7 @@ import { LoginDemoComponent } from './login-demo/login-demo.component';
 import { DemoDashboardComponent } from './dashboard.component';
 import { ImageSelectPopDemoComponent } from './image-select-pop-demo/image-select-pop-demo.component';
 import { ResourceListPopDemoComponent } from './resource-list-pop/resource-list-pop-demo.component';
+import { ModalDemoComponent } from './modal/modal-demo.component';
 
 export const demoRoutes: Routes = [
   {
@@ -138,6 +139,14 @@ export const demoRoutes: Routes = [
         data: {
           paths: ['pop/pop-demo.component.html', 'pop/pop-demo.component.ts', 'pop/pop-trigger.component.ts', 'pop/pop.markup.html'],
           links: ['components/PopComponent.html#readme', 'modules/PopModule.html'] // TODO: enhance readme
+        }
+      },
+      {
+        path: 'modal',
+        component: ModalDemoComponent,
+        data: {
+          paths: ['modal/modal-demo.component.html', 'modal/modal-demo.component.ts'],
+          links: ['components/ModalComponent.html#readme', 'modules/PopModule.html'] // TODO: add readme
         }
       },
       {

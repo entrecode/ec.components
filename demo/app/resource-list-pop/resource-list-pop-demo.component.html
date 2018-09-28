@@ -3,7 +3,7 @@
     All you have to provide is the api (ec.sdk Core conncetor) and a relation name to render the list.
     If you pass no config, the default config of ResourceConfig service will be used.
     The demo contains a tiny api-explorer that enables you to navigate through different apis.</p>
-<h4>{{selectedRelation}} {{api?.name}} relations</h4>
+<h4>{{selectedRelation}} relations</h4>
 <a *ngIf="apis?.length>1" (click)="goBack()">back</a>
 <ul>
     <li *ngFor="let relation of availableRelations">

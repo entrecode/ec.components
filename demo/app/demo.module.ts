@@ -58,6 +58,7 @@ import { CounterComponent } from './form/counter.component';
 import { LoginDemoComponent } from './login-demo/login-demo.component';
 import { ImageSelectPopDemoComponent } from './image-select-pop-demo/image-select-pop-demo.component';
 import { ResourceListPopDemoComponent } from './resource-list-pop/resource-list-pop-demo.component';
+import { ModalDemoComponent } from './modal/modal-demo.component';
 
 /* const routes = [].concat(demoRoutes); */
 /* routes.unshift({
@@ -74,6 +75,7 @@ import { ResourceListPopDemoComponent } from './resource-list-pop/resource-list-
     DemoDashboardComponent,
     DemoComponent,
     PopDemoComponent,
+    ModalDemoComponent,
     PopTriggerComponent,
     DataDemoComponent,
     ListDemoComponent,
