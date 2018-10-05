@@ -1,11 +1,48 @@
 <h2>TinyMCE</h2>
-<a class="btn" (click)="html='<h1>Test</h1>'">Change value from outside</a>
-<ec-tinymce [(ngModel)]="html"></ec-tinymce>
-
-<pre><code>{{html}}</code></pre>
-<h2>With asset-select-pop</h2>
-<p>This example uses the setup output to add the image button which then opens the asset-select-pop.
-    The changed Output of the asset-select-pop then fires addImageByUrl of TinymceComponent.
-</p>
-<ec-tinymce #tinyWithAssets (setup)="initEditor($event)"></ec-tinymce>
-<ec-image-select-pop #imagePop assetGroupID="test" (changed)="addImage($event)"></ec-image-select-pop>
+<ec-tabs>
+    <ec-tab label="default" #tabA>
+        <a class="btn" (click)="html='<h1>Test</h1>'">Change value from outside</a>
+        <ec-tinymce *ngIf="tabA.selected" [(ngModel)]="html" #defaultTiny></ec-tinymce>
+        <pre><code>{{html}}</code></pre>
+    </ec-tab>
+    <ec-tab label="assets" #tabB>
+        <h2>With image-select-pop</h2>
+        <p>These example uses the setup output to add the image button which then opens the asset-select-pop.
+            The changed Output of the asset-select-pop then fires addImageByUrl of TinymceComponent.
+        </p>
+        <h3>new assets</h3>
+        <div *ngIf="tabB.selected">
+            <ec-tinymce #tinyWithAssets (setup)="initEditor($event, imagePop)"></ec-tinymce>
+            <ec-image-select-pop #imagePop assetGroupID="test" (changed)="addImage($event, tinyWithAssets)"></ec-image-select-pop>
+        </div>
+        <h3>legacyAssets</h3>
+        <div *ngIf="tabB.selected">
+            <ec-tinymce #tinyWithLegacyAssets (setup)="initEditor($event, legacyImagePop)"></ec-tinymce>
+            <ec-image-select-pop #legacyImagePop assetGroupID="legacyAsset" (changed)="addImage($event, tinyWithLegacyAssets)"></ec-image-select-pop>
+        </div>
+    </ec-tab>
+    <ec-tab label="lazy" #lazyTab (activated)="strategyA.init()" (deactivated)="strategyA.destroy()">
+        <h2>lazy init/destroy</h2>
+        <p>Problem: tinymce will crash if inited to early or reinited without proper destruction.</p>
+        <p>ec-tinymce will try to call destroy on angulars ngOnDestroy lifecycle hook, but in
+            <a href="https://github.com/angular/angular/issues/13059#issuecomment-264598276" target="_blank">some cases</a>
+            angular wont fire those, e.g. when using ng-content (like tabs and pops).
+            This will lead to elements being not present in the dom tree but still not being destroyed 💔</p>
+        <h3>Strategy A</h3>
+        <p>Use lazy=true and call init manually when ready + call destroy before
+            removing. When using a tabs, you can use (activated) and (deactivated) outputs to call init and destroy.
+            This requires a little more markup but keeps the value of the editor, event after reinit.
+        </p>
+        <ec-tinymce [(ngModel)]="html" #strategyA [lazy]="true" (setup)="initEditor($event, imagePopA)"></ec-tinymce>
+        <ec-image-select-pop #imagePopA assetGroupID="test" (changed)="addImage($event, strategyA)"></ec-image-select-pop>
+        <h3>Strategy B</h3>
+        <p>Wrap tinymce and all elements that need the reference into an ngIf.
+            This requires a little less markup than strategy A but also clears the editor on each init.
+            You can still use ngModel to keep the state.
+        </p>
+        <div *ngIf="lazyTab.selected">
+            <ec-tinymce [(ngModel)]="html" #strategyB (setup)="initEditor($event, imagePopB)"></ec-tinymce>
+            <ec-image-select-pop #imagePopB assetGroupID="test" (changed)="addImage($event, strategyB)"></ec-image-select-pop>
+        </div>
+    </ec-tab>
+</ec-tabs>

@@ -36,7 +36,7 @@ import { editorSettings } from './tinymce-settings';
   ]
 })
 export class TinymceComponent
-  implements AfterViewInit, OnDestroy, ControlValueAccessor {
+  implements AfterViewInit, OnDestroy, ControlValueAccessor, OnDestroy {
   /** Promise that resolves when the editor has been initialized */
   ready: Promise<any>;
   /** The current editor instance */
@@ -49,6 +49,8 @@ export class TinymceComponent
   @Input() debounce = 200;
   /** TinyMCE Settings. Get Object.assigned to the default settings */
   @Input() settings: any = {};
+  /** If true, the editor wont init by default. This can be useful when using tinymce inside tabs or pops where tiny breaks */
+  @Input() lazy = false;
   /** Output that emits when the value has been changed by the user */
   @Output() changed: EventEmitter<string> = new EventEmitter();
   /** Output that is emitted when the setup is being made.
@@ -63,16 +65,37 @@ export class TinymceComponent
       .asObservable()
       .debounceTime(this.debounce)
       .subscribe(editor => {
+        if (!this.editor) {
+          return;
+        }
         this.value = editor.getContent();
         this.propagateChange(this.value);
         this.changed.emit(this.value);
         this.app.tick();
       });
   }
-  /** Initializes the editor */
+  /** calls init */
   ngAfterViewInit() {
-    this.ready = Promise.resolve(
-      tinymce.init(
+    if (!this.lazy) {
+      this.init();
+    }
+  }
+  /** Destroys the editor. */
+  destroy() {
+    if (this.editor) {
+      this.editor.remove();
+      delete this.editor;
+    }
+  }
+  /** calls destroy */
+  ngOnDestroy() {
+    this.destroy();
+  }
+
+  /** Initializes the editor */
+  init() {
+    this.ready = new Promise((resolve, reject) =>
+      setTimeout(() => resolve(tinymce.init(
         Object.assign({},
           editorSettings,
           this.settings,
@@ -87,8 +110,9 @@ export class TinymceComponent
             }
           }
         )
-      )
-    ).then(editor => {
+      )))
+    );
+    this.ready.then(editor => {
       this.editor = editor[0];
       this.editor.setContent(this.value || '');
       this.editor.on('dblclick', e => {
@@ -106,25 +130,12 @@ export class TinymceComponent
     this.editor.execCommand('mceInsertContent', false,
       `<img alt="${caption}" width="${size}" src="${url}"/>`);
   }
-
-  /** Destroys the editor. */
-  ngOnDestroy() {
-    if (this.editor) {
-      this.ready.then(editor => {
-        editor.destroy();
-      });
-    }
-  }
-
   /** Writes value to editor on outside model change. */
   writeValue(value: any) {
     this.value = value || '';
-    if (!this.ready) {
-      return;
+    if (this.editor) {
+      this.editor.setContent(this.value);
     }
-    this.ready.then(editor => {
-      editor.setContent(this.value);
-    });
   }
 
   propagateChange = (_: any) => { };
