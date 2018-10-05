@@ -7,7 +7,7 @@ import { TinymceComponent } from '@ec.components/tinymce/src/tinymce/tinymce.com
     selector: 'ec-tiny-input',
     template: `
     <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>
-    <ec-tinymce #tiny [formControl]="group.get(field.property)" [settings]="editorSettings" (setup)="initEditor($event)"></ec-tinymce>
+    <ec-tinymce #tiny [formControl]="group.get(field.property)" (setup)="initEditor($event)"></ec-tinymce>
     <ec-image-select-pop #imagePop [assetGroupID]="field.relation" (changed)="addImage($event, tiny)"></ec-image-select-pop>
     `
 })
