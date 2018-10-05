@@ -38,6 +38,8 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
   /** Holds a reference to the component instance. This is helpful when you want to modify the component after form intialization.
    * You can access a form's InputComponents via FormComponent#inputs */
   componentInstance: InputComponent
+  /** The current value of the input. Needs to be saved for the case the component is not yet loaded */
+  value: any;
 
   ngOnChanges() {
     if (this.property && this.item instanceof Form) {
@@ -81,16 +83,24 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
   }
 
   connectControl() {
+    if (!this.componentInstance) {
+      console.warn('could not connect control: no instance loaded');
+      return;
+    }
     if (this.componentInstance.registerOnChange && this.propagateChange) {
       this.componentInstance.registerOnChange(this.propagateChange);
+    }
+    if (this.value !== undefined) {
+      this.writeValue(this.value);
     }
   }
 
   /** writes value to editor on outside model change. */
   writeValue(value: any) {
-    if (this.componentInstance.writeValue) {
+    if (this.componentInstance && this.componentInstance.writeValue) {
       this.componentInstance.writeValue(value);
     }
+    this.value = value;
   }
 
   propagateChange = (_: any) => {
