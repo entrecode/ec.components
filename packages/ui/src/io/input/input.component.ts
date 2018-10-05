@@ -84,7 +84,7 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
 
   connectControl() {
     if (!this.componentInstance) {
-      console.warn('could not connect control: no instance loaded');
+      // console.warn('could not connect control: no instance loaded');
       return;
     }
     if (this.componentInstance.registerOnChange && this.propagateChange) {
