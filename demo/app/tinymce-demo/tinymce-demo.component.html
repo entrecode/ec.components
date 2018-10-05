@@ -56,4 +56,7 @@
             </div>
         </ec-pop>
     </ec-tab>
+    <ec-tab label="form" #formTab>
+        <ec-form *ngIf="formTab.selected" [config]="tinyFormConfig"></ec-form>
+    </ec-tab>
 </ec-tabs>

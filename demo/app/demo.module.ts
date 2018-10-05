@@ -59,6 +59,7 @@ import { LoginDemoComponent } from './login-demo/login-demo.component';
 import { ImageSelectPopDemoComponent } from './image-select-pop-demo/image-select-pop-demo.component';
 import { ResourceListPopDemoComponent } from './resource-list-pop/resource-list-pop-demo.component';
 import { ModalDemoComponent } from './modal/modal-demo.component';
+import { TinyInputComponent } from './tinymce-demo/tiny-input.component';
 
 /* const routes = [].concat(demoRoutes); */
 /* routes.unshift({
@@ -106,6 +107,7 @@ import { ModalDemoComponent } from './modal/modal-demo.component';
     LoaderDemoComponent,
     MediumEditorDemoComponent,
     TinymceDemoComponent,
+    TinyInputComponent,
     AceDemoComponent,
     IconDemoComponent,
     IconPipe,
@@ -121,7 +123,8 @@ import { ModalDemoComponent } from './modal/modal-demo.component';
   entryComponents: [
     CoolStringComponent,
     UnsplashImageComponent,
-    CounterComponent
+    CounterComponent,
+    TinyInputComponent
   ],
   imports: [
     BrowserModule,
