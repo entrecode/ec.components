@@ -32,13 +32,16 @@ export class ImageSelectPopComponent extends PopComponent implements OnInit {
         this.imageForm = {
             submitButtonLabel: this.symbol.resolve('image-select-pop.submitButtonLabel'),
             onSave: (form, value: { img, height, width, alt }) => {
+                const size = Math.max(value.width, value.height);
                 if (!this.assetGroupID || this.assetGroupID === 'legacyAsset') {
                     this.sdk.api.asset(value.img)
-                        .then(asset => {
-                            console.warn('legacy asset not supported...', asset);
+                        .then(asset =>
+                            asset.getImageUrl(size, '')
+                        ).then(url => {
+                            this.hide();
+                            this.changed.emit({ url, alt: value.alt, size });
                         });
                 } else {
-                    const size = Math.max(value.width, value.height);
                     const loadImage = this.sdk.api.dmAsset(this.assetGroupID, value.img)
                         .then(asset =>
                             asset.getImageUrl(size)
@@ -57,21 +60,27 @@ export class ImageSelectPopComponent extends PopComponent implements OnInit {
                     relation: this.assetGroupID || 'legacyAsset',
                     required: true,
                     changed: (value, form) => {
-                        if (!this.assetGroupID || this.assetGroupID === 'legacyAsset') {
-                            this.sdk.api.asset(value).then(asset => {
-                                console.warn('legacy asset not supported', asset);
-                            });
-                        } else {
-                            const loadImg = this.sdk.api.dmAsset(this.assetGroupID, value).then(asset => {
-                                const resolution = asset.file.resolution;
-                                const ratio = resolution.width / resolution.height;
-                                const width = Math.min(this.defaultSize, resolution.width);
-                                form.group.controls.width.setValue(width);
-                                form.group.controls.alt.setValue(asset.title);
-                                form.group.controls.ratio.setValue(ratio);
-                            });
-                            this.imageLoader.wait(loadImg);
-                        }
+                        const loadImg = Promise.resolve().then(() => {
+                            if (!this.assetGroupID || this.assetGroupID === 'legacyAsset') {
+                                return this.sdk.api.asset(value).then(asset => {
+                                    const original = asset.getOriginalFile();
+                                    const resolution = original.resolution;
+                                    return { resolution, title: asset.title };
+                                });
+                            } else {
+                                return this.sdk.api.dmAsset(this.assetGroupID, value).then(asset => {
+                                    const resolution = asset.file.resolution;
+                                    return { resolution, title: asset.title };
+                                });
+                            }
+                        }).then(({ resolution, title }) => {
+                            const ratio = resolution.width / resolution.height;
+                            const width = Math.min(this.defaultSize, resolution.width);
+                            form.group.controls.width.setValue(width);
+                            form.group.controls.alt.setValue(title);
+                            form.group.controls.ratio.setValue(ratio);
+                        });
+                        this.imageLoader.wait(loadImg);
                     }
                 },
                 alt: {

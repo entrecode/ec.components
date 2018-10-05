@@ -6,8 +6,10 @@ import { Component, OnInit } from '@angular/core';
     <h2>image-select-pop</h2>
     <p>This component can be used to pick an image and set width/height + alt text.
     It can be used e.g. in a wysiwyg editor like tinymce (see tinymce demo)</p>
-    <a class="btn" (click)="imagePop.show()">open</a>
+    <a class="btn" (click)="imagePop.show()">new assets</a>
+    <a class="btn" (click)="imagePopLegacy.show()">legacy</a>
     <ec-image-select-pop #imagePop assetGroupID="test" (changed)="pickedImage($event)"></ec-image-select-pop>
+    <ec-image-select-pop #imagePopLegacy assetGroupID="legacyAsset" (changed)="pickedImage($event)"></ec-image-select-pop>
     <div>
         <img *ngIf="url" [src]="url" [alt]="alt" [width]="size"/>
     </div>
