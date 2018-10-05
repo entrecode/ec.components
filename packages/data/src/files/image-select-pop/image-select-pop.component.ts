@@ -8,16 +8,22 @@ import { LoaderComponent } from '@ec.components/ui';
 import { DefaultEntryInputComponent } from '@ec.components/data/src/entry-form/default-entry-input.component';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 
+/** This component is a pop with a form to add images. You can set an the alternative Text and the size. 
+ * The size inputs will keep the image ratio by default.  */
 @Component({
     selector: 'ec-image-select-pop',
     templateUrl: './image-select-pop.component.html'
 })
-
 export class ImageSelectPopComponent extends PopComponent implements OnInit {
+    /** The assetGroupID to pick from */
     @Input() assetGroupID;
+    /** The default size used */
     @Input() defaultSize = 400;
+    /** Ouput that emits when image changes  */
     @Output() changed: EventEmitter<any> = new EventEmitter();
+    /** The instance of the imageForm  */
     imageForm: FormConfig<any>;
+    /** The loader that is shown after an image has been selected  */
     @ViewChild('imageLoader') imageLoader: LoaderComponent;
     /** Set host class to make sure the type is used */
     @HostBinding('class') class = 'dialog-wrapper';
@@ -27,7 +33,7 @@ export class ImageSelectPopComponent extends PopComponent implements OnInit {
         public symbol: SymbolService) {
         super(popService);
     }
-
+    /** Inits the form */
     ngOnInit() {
         this.imageForm = {
             submitButtonLabel: this.symbol.resolve('image-select-pop.submitButtonLabel'),
