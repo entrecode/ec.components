@@ -2529,6 +2529,9 @@
                                 <a href="#propagateChange">propagateChange</a>
                             </li>
                             <li>
+                                <a href="#value">value</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Public</span>
                                 <a href="#componentFactoryResolver">componentFactoryResolver</a>
                             </li>
@@ -2866,7 +2869,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">packages/ui/src/io/input/input.component.ts:83</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">packages/ui/src/io/input/input.component.ts:85</a></div>
                             </td>
                         </tr>
 
@@ -2904,7 +2907,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">packages/ui/src/io/input/input.component.ts:42</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">packages/ui/src/io/input/input.component.ts:44</a></div>
                             </td>
                         </tr>
 
@@ -2942,7 +2945,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">packages/ui/src/io/input/input.component.ts:100</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">packages/ui/src/io/input/input.component.ts:110</a></div>
                             </td>
                         </tr>
 
@@ -3009,7 +3012,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">packages/ui/src/io/input/input.component.ts:105</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="115" class="link-to-prism">packages/ui/src/io/input/input.component.ts:115</a></div>
                             </td>
                         </tr>
 
@@ -3047,7 +3050,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">packages/ui/src/io/input/input.component.ts:90</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">packages/ui/src/io/input/input.component.ts:99</a></div>
                             </td>
                         </tr>
 
@@ -3266,10 +3269,50 @@ You can access a form&#39;s InputComponents via FormComponent#inputs </p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">packages/ui/src/io/input/input.component.ts:96</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">packages/ui/src/io/input/input.component.ts:106</a></div>
                             </td>
                         </tr>
 
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="value"></a>
+                        <span class="name">
+                            <b>
+                            value
+                            </b>
+                            <a href="#value"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>value:     <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">packages/ui/src/io/input/input.component.ts:42</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The current value of the input. Needs to be saved for the case the component is not yet loaded </p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -3411,6 +3454,8 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
   /** Holds a reference to the component instance. This is helpful when you want to modify the component after form intialization.
    * You can access a form&#x27;s InputComponents via FormComponent#inputs */
   componentInstance: InputComponent
+  /** The current value of the input. Needs to be saved for the case the component is not yet loaded */
+  value: any;
 
   ngOnChanges() {
     if (this.property &amp;&amp; this.item instanceof Form) {
@@ -3454,16 +3499,24 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
   }
 
   connectControl() {
+    if (!this.componentInstance) {
+      // console.warn(&#x27;could not connect control: no instance loaded&#x27;);
+      return;
+    }
     if (this.componentInstance.registerOnChange &amp;&amp; this.propagateChange) {
       this.componentInstance.registerOnChange(this.propagateChange);
+    }
+    if (this.value !&#x3D;&#x3D; undefined) {
+      this.writeValue(this.value);
     }
   }
 
   /** writes value to editor on outside model change. */
   writeValue(value: any) {
-    if (this.componentInstance.writeValue) {
+    if (this.componentInstance &amp;&amp; this.componentInstance.writeValue) {
       this.componentInstance.writeValue(value);
     }
+    this.value &#x3D; value;
   }
 
   propagateChange &#x3D; (_: any) &#x3D;&gt; {

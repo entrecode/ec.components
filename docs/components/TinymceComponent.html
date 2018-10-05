@@ -2465,6 +2465,7 @@
                 <code><a href="https://angular.io/api/core/AfterViewInit" target="_blank" >AfterViewInit</a></code>
                 <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
                 <code><a href="https://angular.io/api/forms/ControlValueAccessor" target="_blank" >ControlValueAccessor</a></code>
+                <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
     </p>
 
 
@@ -2565,6 +2566,12 @@
                                 <a href="#addImageByUrl">addImageByUrl</a>
                             </li>
                             <li>
+                                <a href="#destroy">destroy</a>
+                            </li>
+                            <li>
+                                <a href="#init">init</a>
+                            </li>
+                            <li>
                                 <a href="#ngAfterViewInit">ngAfterViewInit</a>
                             </li>
                             <li>
@@ -2593,6 +2600,9 @@
                         <ul class="index-list">
                             <li>
                                 <a href="#debounce">debounce</a>
+                            </li>
+                            <li>
+                                <a href="#lazy">lazy</a>
                             </li>
                             <li>
                                 <a href="#settings">settings</a>
@@ -2636,7 +2646,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">packages/tinymce/src/tinymce/tinymce.component.ts:58</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">packages/tinymce/src/tinymce/tinymce.component.ts:60</a></div>
                             </td>
                         </tr>
 
@@ -2704,6 +2714,28 @@
             <tbody>
                 <tr>
                     <td class="col-md-2">
+                        <a name="lazy"></a>
+                        <code>lazy</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>If true, the editor wont init by default. This can be useful when using tinymce inside tabs or pops where tiny breaks </p>
+</div>
+                        <p>
+                            <em>Default value: </em><code>false</code>
+                        </p>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">packages/tinymce/src/tinymce/tinymce.component.ts:53</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
                         <a name="settings"></a>
                         <code>settings</code>
                     </td>
@@ -2745,7 +2777,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">packages/tinymce/src/tinymce/tinymce.component.ts:53</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">packages/tinymce/src/tinymce/tinymce.component.ts:55</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -2767,7 +2799,7 @@ Passes the editor instance. Intended to be used for custom controls  </p>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">packages/tinymce/src/tinymce/tinymce.component.ts:56</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">packages/tinymce/src/tinymce/tinymce.component.ts:58</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -2802,7 +2834,7 @@ Passes the editor instance. Intended to be used for custom controls  </p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">packages/tinymce/src/tinymce/tinymce.component.ts:105</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">packages/tinymce/src/tinymce/tinymce.component.ts:129</a></div>
                             </td>
                         </tr>
 
@@ -2888,6 +2920,86 @@ Passes the editor instance. Intended to be used for custom controls  </p>
             <tbody>
                 <tr>
                     <td class="col-md-4">
+                        <a name="destroy"></a>
+                        <span class="name">
+                            <b>
+                            destroy
+                            </b>
+                            <a href="#destroy"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>destroy()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">packages/tinymce/src/tinymce/tinymce.component.ts:84</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Destroys the editor. </p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="init"></a>
+                        <span class="name">
+                            <b>
+                            init
+                            </b>
+                            <a href="#init"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>init()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">packages/tinymce/src/tinymce/tinymce.component.ts:96</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Initializes the editor </p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
                         <a name="ngAfterViewInit"></a>
                         <span class="name">
                             <b>
@@ -2906,14 +3018,14 @@ Passes the editor instance. Intended to be used for custom controls  </p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">packages/tinymce/src/tinymce/tinymce.component.ts:73</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">packages/tinymce/src/tinymce/tinymce.component.ts:78</a></div>
                             </td>
                         </tr>
 
 
                 <tr>
                     <td class="col-md-4">
-                            <div class="io-description"><p>Initializes the editor </p>
+                            <div class="io-description"><p>calls init </p>
 </div>
 
                             <div class="io-description">
@@ -2946,14 +3058,14 @@ Passes the editor instance. Intended to be used for custom controls  </p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">packages/tinymce/src/tinymce/tinymce.component.ts:111</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">packages/tinymce/src/tinymce/tinymce.component.ts:91</a></div>
                             </td>
                         </tr>
 
 
                 <tr>
                     <td class="col-md-4">
-                            <div class="io-description"><p>Destroys the editor. </p>
+                            <div class="io-description"><p>calls destroy </p>
 </div>
 
                             <div class="io-description">
@@ -2986,7 +3098,7 @@ Passes the editor instance. Intended to be used for custom controls  </p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="132" class="link-to-prism">packages/tinymce/src/tinymce/tinymce.component.ts:132</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="143" class="link-to-prism">packages/tinymce/src/tinymce/tinymce.component.ts:143</a></div>
                             </td>
                         </tr>
 
@@ -3051,7 +3163,7 @@ Passes the editor instance. Intended to be used for custom controls  </p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="136" class="link-to-prism">packages/tinymce/src/tinymce/tinymce.component.ts:136</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="147" class="link-to-prism">packages/tinymce/src/tinymce/tinymce.component.ts:147</a></div>
                             </td>
                         </tr>
 
@@ -3089,7 +3201,7 @@ Passes the editor instance. Intended to be used for custom controls  </p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="120" class="link-to-prism">packages/tinymce/src/tinymce/tinymce.component.ts:120</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="134" class="link-to-prism">packages/tinymce/src/tinymce/tinymce.component.ts:134</a></div>
                             </td>
                         </tr>
 
@@ -3257,7 +3369,7 @@ Passes the editor instance. Intended to be used for custom controls  </p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="130" class="link-to-prism">packages/tinymce/src/tinymce/tinymce.component.ts:130</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="141" class="link-to-prism">packages/tinymce/src/tinymce/tinymce.component.ts:141</a></div>
                             </td>
                         </tr>
 
@@ -3382,7 +3494,7 @@ Passes the editor instance. Intended to be used for custom controls  </p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">packages/tinymce/src/tinymce/tinymce.component.ts:58</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">packages/tinymce/src/tinymce/tinymce.component.ts:60</a></div>
                             </td>
                         </tr>
 
@@ -3439,7 +3551,7 @@ import { editorSettings } from &#x27;./tinymce-settings&#x27;;
   ]
 })
 export class TinymceComponent
-  implements AfterViewInit, OnDestroy, ControlValueAccessor {
+  implements AfterViewInit, OnDestroy, ControlValueAccessor, OnDestroy {
   /** Promise that resolves when the editor has been initialized */
   ready: Promise&lt;any&gt;;
   /** The current editor instance */
@@ -3452,6 +3564,8 @@ export class TinymceComponent
   @Input() debounce &#x3D; 200;
   /** TinyMCE Settings. Get Object.assigned to the default settings */
   @Input() settings: any &#x3D; {};
+  /** If true, the editor wont init by default. This can be useful when using tinymce inside tabs or pops where tiny breaks */
+  @Input() lazy &#x3D; false;
   /** Output that emits when the value has been changed by the user */
   @Output() changed: EventEmitter&lt;string&gt; &#x3D; new EventEmitter();
   /** Output that is emitted when the setup is being made.
@@ -3466,16 +3580,37 @@ export class TinymceComponent
       .asObservable()
       .debounceTime(this.debounce)
       .subscribe(editor &#x3D;&gt; {
+        if (!this.editor) {
+          return;
+        }
         this.value &#x3D; editor.getContent();
         this.propagateChange(this.value);
         this.changed.emit(this.value);
         this.app.tick();
       });
   }
-  /** Initializes the editor */
+  /** calls init */
   ngAfterViewInit() {
-    this.ready &#x3D; Promise.resolve(
-      tinymce.init(
+    if (!this.lazy) {
+      this.init();
+    }
+  }
+  /** Destroys the editor. */
+  destroy() {
+    if (this.editor) {
+      this.editor.remove();
+      delete this.editor;
+    }
+  }
+  /** calls destroy */
+  ngOnDestroy() {
+    this.destroy();
+  }
+
+  /** Initializes the editor */
+  init() {
+    this.ready &#x3D; new Promise((resolve, reject) &#x3D;&gt;
+      setTimeout(() &#x3D;&gt; resolve(tinymce.init(
         Object.assign({},
           editorSettings,
           this.settings,
@@ -3490,8 +3625,9 @@ export class TinymceComponent
             }
           }
         )
-      )
-    ).then(editor &#x3D;&gt; {
+      )))
+    );
+    this.ready.then(editor &#x3D;&gt; {
       this.editor &#x3D; editor[0];
       this.editor.setContent(this.value || &#x27;&#x27;);
       this.editor.on(&#x27;dblclick&#x27;, e &#x3D;&gt; {
@@ -3509,25 +3645,12 @@ export class TinymceComponent
     this.editor.execCommand(&#x27;mceInsertContent&#x27;, false,
       &#x60;&lt;img alt&#x3D;&quot;${caption}&quot; width&#x3D;&quot;${size}&quot; src&#x3D;&quot;${url}&quot;/&gt;&#x60;);
   }
-
-  /** Destroys the editor. */
-  ngOnDestroy() {
-    if (this.editor) {
-      this.ready.then(editor &#x3D;&gt; {
-        editor.destroy();
-      });
-    }
-  }
-
   /** Writes value to editor on outside model change. */
   writeValue(value: any) {
     this.value &#x3D; value || &#x27;&#x27;;
-    if (!this.ready) {
-      return;
+    if (this.editor) {
+      this.editor.setContent(this.value);
     }
-    this.ready.then(editor &#x3D;&gt; {
-      editor.setContent(this.value);
-    });
   }
 
   propagateChange &#x3D; (_: any) &#x3D;&gt; { };
