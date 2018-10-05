@@ -8,7 +8,7 @@ import { LoaderComponent } from '@ec.components/ui';
 import { DefaultEntryInputComponent } from '@ec.components/data/src/entry-form/default-entry-input.component';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 
-/** This component is a pop with a form to add images. You can set an the alternative Text and the size. 
+/** This component is a pop with a form to add images. You can set an the alternative Text and the size.
  * The size inputs will keep the image ratio by default.  */
 @Component({
     selector: 'ec-image-select-pop',
