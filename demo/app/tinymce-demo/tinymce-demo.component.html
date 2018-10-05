@@ -37,12 +37,23 @@
         <ec-image-select-pop #imagePopA assetGroupID="test" (changed)="addImage($event, strategyA)"></ec-image-select-pop>
         <h3>Strategy B</h3>
         <p>Wrap tinymce and all elements that need the reference into an ngIf.
-            This requires a little less markup than strategy A but also clears the editor on each init.
-            You can still use ngModel to keep the state.
+            This requires a little less markup than strategy A but also clears the editor state on each init.
+            You can still use ngModel to keep the value state. This works because ngIf will call ngOnDestroy.
         </p>
         <div *ngIf="lazyTab.selected">
             <ec-tinymce [(ngModel)]="html" #strategyB (setup)="initEditor($event, imagePopB)"></ec-tinymce>
             <ec-image-select-pop #imagePopB assetGroupID="test" (changed)="addImage($event, strategyB)"></ec-image-select-pop>
         </div>
+    </ec-tab>
+    <ec-tab label="pop">
+        <p>This demonstrates rendering a tinymce inside a pop. Like for tabs, the clou is the ngIf container to prevent
+            early init (see lazy demo for further explanation)</p>
+        <a (click)="tinyPop.toggle()">toggle pop</a>
+        <ec-pop #tinyPop>
+            <div *ngIf="tinyPop.active">
+                <ec-tinymce [(ngModel)]="html" #popTiny (setup)="initEditor($event, imagePopC)"></ec-tinymce>
+                <ec-image-select-pop #imagePopC assetGroupID="test" (changed)="addImage($event, popTiny)"></ec-image-select-pop>
+            </div>
+        </ec-pop>
     </ec-tab>
 </ec-tabs>
