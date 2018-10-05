@@ -7,7 +7,6 @@
 <strong>without model</strong>
 <ec-entry-select></ec-entry-select>
 
-<!-- 
 <hr>
 
 <strong>default usage</strong>
@@ -23,10 +22,10 @@
   <strong>selected IDs:</strong>
   <pre>{{entrySelect.selection?.getValue() | json}}</pre>
 </div>
-<strong>solo with disableSelect</strong>
-<ec-entry-select model="muffin" [solo]="true" #soloEntry [config]="{disableSelect:true}"></ec-entry-select>
+<strong>with disableSelect</strong>
+<ec-entry-select model="muffin" [config]="{disableSelect:true}"></ec-entry-select>
 
-<pre>{{soloEntry.selection?.getValue()}}</pre>
+<!-- <pre>{{soloEntry.selection?.getValue()}}</pre> -->
 
 <strong>solo with disableListPop</strong>
 <ec-entry-select model="muffin" [solo]="true" [config]="{disableListPop:true}"></ec-entry-select>
@@ -40,4 +39,4 @@
 <strong>solo with deleteOnRemove</strong>
 <ec-entry-select model="muffin" [solo]="true" [config]="{deleteOnRemove:true,safeDelete:false}"></ec-entry-select>
 
-<ec-notifications></ec-notifications>-->
+<ec-notifications></ec-notifications>

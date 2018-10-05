@@ -95,6 +95,10 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
         item.getBody().delete();
       }
     }
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
   }
 
   activate($event) {
