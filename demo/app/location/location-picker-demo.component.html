@@ -1,4 +1,4 @@
-<div> 
+<div>
     <h2>Location Picker</h2>
     <ec-location-picker [(ngModel)]="myLocation"></ec-location-picker>
     <!--     <h2>Location Search</h2>
@@ -8,4 +8,17 @@
     <ec-location-map [(ngModel)]="myLocation"></ec-location-map>
     {{myLocation | json}}
  -->
+
+    <ec-tabs>
+        <ec-tab label="tab test">
+            <ec-location-picker [(ngModel)]="myLocation"></ec-location-picker>
+        </ec-tab>
+        <ec-tab label="another tab">
+            <p>nothing here</p>
+        </ec-tab>
+    </ec-tabs>
+    <a (click)="locationPop.toggle()">toggle pop</a>
+    <ec-pop #locationPop>
+        <ec-location-picker [(ngModel)]="myLocation"></ec-location-picker>
+    </ec-pop>
 </div>
