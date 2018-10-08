@@ -758,14 +758,14 @@
                         <a href="modules/PopModule.html" data-type="entity-link">PopModule</a>
                             <li class="chapter inner">
                                 <div class="simple menu-toggler" data-toggle="collapse"
-                                        data-target="#xs-components-links-module-PopModule-58774d79188b758e0f6b9610340dbb38"
+                                        data-target="#xs-components-links-module-PopModule-bfd524b23c6a978f26c9b19465fb03db"
                                     >
                                     <span class="fa fa-fw fa-cogs"></span>
                                     <span>Components</span>
                                     <span class="fa fa-angle-down"></span>
                                 </div>
                                 <ul class="links collapse"
-                                        id="xs-components-links-module-PopModule-58774d79188b758e0f6b9610340dbb38"
+                                        id="xs-components-links-module-PopModule-bfd524b23c6a978f26c9b19465fb03db"
                                     >
                                         <li class="link">
                                             <a href="components/ModalComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">ModalComponent</a>
@@ -777,14 +777,14 @@
                             </li>
                             <li class="chapter inner">
                                 <div class="simple menu-toggler" data-toggle="collapse"
-                                        data-target="#xs-injectables-links-module-PopModule-58774d79188b758e0f6b9610340dbb38"
+                                        data-target="#xs-injectables-links-module-PopModule-bfd524b23c6a978f26c9b19465fb03db"
                                     >
                                     <span class="fa fa-fw fa-long-arrow-down"></span>
                                     <span>Injectables</span>
                                     <span class="fa fa-angle-down"></span>
                                 </div>
                                 <ul class="links collapse"
-                                        id="xs-injectables-links-module-PopModule-58774d79188b758e0f6b9610340dbb38"
+                                        id="xs-injectables-links-module-PopModule-bfd524b23c6a978f26c9b19465fb03db"
                                     >
                                         <li class="link">
                                             <a href="injectables/PopService.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules"}>PopService</a>
@@ -1956,14 +1956,14 @@
                         <a href="modules/PopModule.html" data-type="entity-link">PopModule</a>
                             <li class="chapter inner">
                                 <div class="simple menu-toggler" data-toggle="collapse"
-                                        data-target="#components-links-module-PopModule-58774d79188b758e0f6b9610340dbb38"
+                                        data-target="#components-links-module-PopModule-bfd524b23c6a978f26c9b19465fb03db"
 >
                                     <span class="fa fa-fw fa-cogs"></span>
                                     <span>Components</span>
                                     <span class="fa fa-angle-down"></span>
                                 </div>
                                 <ul class="links collapse"
-                                        id="components-links-module-PopModule-58774d79188b758e0f6b9610340dbb38"
+                                        id="components-links-module-PopModule-bfd524b23c6a978f26c9b19465fb03db"
 >
                                         <li class="link">
                                             <a href="components/ModalComponent.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules">ModalComponent</a>
@@ -1975,14 +1975,14 @@
                             </li>
                             <li class="chapter inner">
                                 <div class="simple menu-toggler" data-toggle="collapse"
-                                        data-target="#injectables-links-module-PopModule-58774d79188b758e0f6b9610340dbb38"
+                                        data-target="#injectables-links-module-PopModule-bfd524b23c6a978f26c9b19465fb03db"
 >
                                     <span class="fa fa-fw fa-long-arrow-down"></span>
                                     <span>Injectables</span>
                                     <span class="fa fa-angle-down"></span>
                                 </div>
                                 <ul class="links collapse"
-                                        id="injectables-links-module-PopModule-58774d79188b758e0f6b9610340dbb38"
+                                        id="injectables-links-module-PopModule-bfd524b23c6a978f26c9b19465fb03db"
 >
                                         <li class="link">
                                             <a href="injectables/PopService.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules"}>PopService</a>
@@ -3375,7 +3375,7 @@ export class EntryListPopComponent extends PopComponent implements OnChanges {
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;dialog ec-entry-list-pop&quot; *ngIf&#x3D;&quot;active&quot;&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;dialog ec-entry-list-pop&quot; *ngIf&#x3D;&quot;active&quot; [attr.data-col]&#x3D;&quot;config?.popColumns||popService.defaultColumns&quot;&gt;
     &lt;header class&#x3D;&quot;dialog-header&quot;&gt;
         &lt;button (click)&#x3D;&quot;hide()&quot; type&#x3D;&quot;button&quot; class&#x3D;&quot;dialog-dismiss&quot;&gt;
             &lt;ec-icon name&#x3D;&quot;close-x-big&quot;&gt;&lt;/ec-icon&gt;
@@ -3419,7 +3419,7 @@ export class EntryListPopComponent extends PopComponent implements OnChanges {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="dialog ec-entry-list-pop" *ngIf="active">    <header class="dialog-header">        <button (click)="hide()" type="button" class="dialog-dismiss">            <ec-icon name="close-x-big"></ec-icon>        </button>        <ec-searchbar (selected)="hide()" placeholder="Search.." [list]="entryList" #searchbar *ngIf="entryList"            [property]="lightModel?.titleField"></ec-searchbar>        <ec-list-header [list]="entryList?.list" [selection]="selection"></ec-list-header>    </header>    <div class="dialog-body">        <ec-entry-list (changed)="searchbar.focusEvent.emit(true)" [model]="model" [config]="config" [selection]="selection"            (columnClicked)="select($event)" #entryList></ec-entry-list>    </div>    <div class="dialog-footer">        <ec-pagination [pagination]="entryList?.list?.pagination"></ec-pagination>    </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="dialog ec-entry-list-pop" *ngIf="active" [attr.data-col]="config?.popColumns||popService.defaultColumns">    <header class="dialog-header">        <button (click)="hide()" type="button" class="dialog-dismiss">            <ec-icon name="close-x-big"></ec-icon>        </button>        <ec-searchbar (selected)="hide()" placeholder="Search.." [list]="entryList" #searchbar *ngIf="entryList"            [property]="lightModel?.titleField"></ec-searchbar>        <ec-list-header [list]="entryList?.list" [selection]="selection"></ec-list-header>    </header>    <div class="dialog-body">        <ec-entry-list (changed)="searchbar.focusEvent.emit(true)" [model]="model" [config]="config" [selection]="selection"            (columnClicked)="select($event)" #entryList></ec-entry-list>    </div>    <div class="dialog-footer">        <ec-pagination [pagination]="entryList?.list?.pagination"></ec-pagination>    </div></div></div>'
     var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'AdminEntryInputComponent', 'selector': ''},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'AssetgroupSelectComponent', 'selector': 'ec-assetgroup-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DaterangeComponent', 'selector': 'ec-daterange'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryListPopComponent', 'selector': 'ec-entry-list-pop'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'HeatmapComponent', 'selector': 'ec-heatmap'},{'name': 'IconComponent', 'selector': 'ec-icon'},{'name': 'ImageSelectPopComponent', 'selector': 'ec-image-select-pop'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LocationMapComponent', 'selector': 'ec-location-map'},{'name': 'LocationPickerComponent', 'selector': 'ec-location-picker'},{'name': 'LocationSearchComponent', 'selector': 'ec-location-search'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModalComponent', 'selector': 'ec-modal'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceCrudComponent', 'selector': 'ec-resource-crud'},{'name': 'ResourceDeletePopComponent', 'selector': 'ec-resource-delete-pop'},{'name': 'ResourceFormComponent', 'selector': 'ec-resource-form'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'ResourceListPopComponent', 'selector': 'ec-resource-list-pop'},{'name': 'ResourcePopComponent', 'selector': 'ec-resource-pop'},{'name': 'ResourceSelectComponent', 'selector': 'ec-resource-select'},{'name': 'SearchbarComponent', 'selector': 'ec-searchbar'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SignupComponent', 'selector': 'ec-signup'},{'name': 'SignupFormComponent', 'selector': 'ec-signup-form'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'UploadComponent', 'selector': 'ec-upload'},{'name': 'UploadSelectComponent', 'selector': 'ec-upload-select'}];
     var DIRECTIVES = [{'name': 'AssetDirective', 'selector': '[ecAsset]'},{'name': 'DropzoneDirective', 'selector': '[ecDropzone]'},{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'FocusDirective', 'selector': '[ecFocus]'},{'name': 'ImageDirective', 'selector': 'img [ecImage]'},{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'}];
     var ACTUAL_COMPONENT = {'name': 'EntryListPopComponent'};

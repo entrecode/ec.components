@@ -46,8 +46,6 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
   @Input() forceGroup = false;
   /** The assetGroupID that should be picked from. If empty, legacy assets are used */
   @Input() assetGroupID: string;
-  /** The asset list pop with the list to select from */
-  @ViewChild(AssetListPopComponent) pop: AssetListPopComponent;
   /** Configuration Object for List */
   @Input() config: CrudConfig<DMAssetResource | PublicAssetResource> = {};
   /** config for new assets */

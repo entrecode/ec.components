@@ -1,10 +1,12 @@
-import { Component, Input, OnInit, ElementRef, OnChanges } from '@angular/core';
+import { Component, Input, OnInit, ElementRef, OnChanges, TemplateRef, ContentChild, ContentChildren } from '@angular/core';
 import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
 import { PopService } from '@ec.components/ui/src/pop/pop.service';
 
 /**
  * A modal is an extension of a pop. It adds different style options that apply x.ui markup.
  * <example-url>https://components.entrecode.de/ui/modal?e=1</example-url>
+ *
+ * https://medium.com/claritydesignsystem/ng-content-the-hidden-docs-96a29d70d11b
  */
 @Component({
     selector: 'ec-modal',
@@ -26,7 +28,15 @@ export class ModalComponent extends PopComponent implements OnInit, OnChanges {
     /** If true, the modal will have a dark backdrop that disables clicking outside. */
     @Input() backdrop = false;
     /** Sets data-animate. */
-    @Input() animation = false;
+    @Input() animation = 'fadeIn 4';
+    /** Header Template */
+    @Input() header: TemplateRef<any>;
+    /** Body Template */
+    @Input() body: TemplateRef<any>;
+    /** Footer Template */
+    @Input() footer: TemplateRef<any>;
+    /** Templates for header body and footer */
+    @ContentChildren(TemplateRef) templates: TemplateRef<any>[];
     /** Sets data-col. If specified, the width of the modal is fixed to the given value (1-12). */
     @Input() columns: number | string;
     /** Will contain the classes (mode - type) */

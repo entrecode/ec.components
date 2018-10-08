@@ -5,6 +5,8 @@ import { PopComponent } from './pop.component';
 /** Holds a stack of all open pops. listens for escape keydown events to close the latest opened pop. */
 @Injectable()
 export class PopService {
+    /** default value for columns of any pop */
+    defaultColumns = 6;
     /** Stack of current opened pops */
     stack: Collection<PopComponent> = new Collection();
     /** Listens for escape keys and hides latest pop + removes the pop from stack */
