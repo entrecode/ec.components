@@ -8,7 +8,7 @@ import { IconModule } from '../icon/icon.module';
 @NgModule({
   declarations: [
     PopComponent,
-    ModalComponent
+    ModalComponent,
   ],
   imports: [
     CommonModule,
@@ -16,7 +16,7 @@ import { IconModule } from '../icon/icon.module';
   ],
   exports: [
     PopComponent,
-    ModalComponent
+    ModalComponent,
   ],
   providers: [PopService]
 })

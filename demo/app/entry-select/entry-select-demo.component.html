@@ -2,7 +2,7 @@
 <strong>without model</strong>
 <ec-entry-select model="muffin"></ec-entry-select>
 <strong>solo</strong>
-<ec-entry-select model="muffin" [solo]="true"></ec-entry-select>
+<ec-entry-select model="muffin" [config]="{popColumns:12}" [solo]="true"></ec-entry-select>
 
 <strong>without model</strong>
 <ec-entry-select></ec-entry-select>
@@ -40,3 +40,10 @@
 <ec-entry-select model="muffin" [solo]="true" [config]="{deleteOnRemove:true,safeDelete:false}"></ec-entry-select>
 
 <ec-notifications></ec-notifications>
+
+
+<ec-tabs>
+  <ec-tab label="Inside Tab" selected>
+    <ec-entry-select [solo]="true" model="muffin"></ec-entry-select>
+  </ec-tab>
+</ec-tabs>

@@ -15,3 +15,9 @@
 <strong>Primitive</strong>
 <ec-select [values]="['one','two','three']" #primitiveSelect></ec-select>
 <pre><code>{{primitiveSelect.selection.getValue() | json}}</code></pre>
+
+<ec-tabs>
+    <ec-tab label="Inside Tab" selected>
+        <ec-select [values]="['one','two','three']"></ec-select>
+    </ec-tab>
+</ec-tabs>

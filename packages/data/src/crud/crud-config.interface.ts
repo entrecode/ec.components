@@ -47,4 +47,6 @@ export interface CrudConfig<T> extends ListConfig<T> {
   fileOptions?: FileOptions;
   /** If true, a pop will open before upload to set up custom options */
   customUpload?: boolean;
+  /** Defines the column width of the pops used. Defaults to popService.defaultColumns */
+  popColumns?: number;
 }

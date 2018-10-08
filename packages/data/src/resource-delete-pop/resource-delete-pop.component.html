@@ -1,4 +1,4 @@
-<div class="ec-resource-delete-pop dialog" *ngIf="active">
+<div class="ec-resource-delete-pop dialog" *ngIf="active" [attr.data-col]="config?.popColumns||popService.defaultColumns">
     <div class="dialog-body">
         <p>{{question||((!safetyWord?'resource.delete.question':'resource.delete.safety') | symbol)}}</p>
         <div class="form-group safety-query" *ngIf="safetyWord">

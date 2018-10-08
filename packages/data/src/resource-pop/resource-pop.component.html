@@ -1,4 +1,4 @@
-<div class="resource-pop dialog" *ngIf="active">
+<div class="resource-pop dialog" *ngIf="active" [attr.data-col]="config?.popColumns||popService.defaultColumns">
     <button (click)="hide()" type="button" class="dialog-dismiss">
         <ec-icon name="close-x-big"></ec-icon>
     </button>
