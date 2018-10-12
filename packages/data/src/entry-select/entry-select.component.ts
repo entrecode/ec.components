@@ -200,4 +200,11 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
       this.selection.items[index].body = form.getBody();
     }
   }
+
+  onChange() {
+    super.onChange();
+    if (this.entryListPop) {
+      this.entryListPop.hide();
+    }
+  }
 }
