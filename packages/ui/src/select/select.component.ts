@@ -76,6 +76,7 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
         console.warn('ec-select: list is overwritten by values', this.list);
       }
       this.list = new List(this.values, this.config);
+      delete this.values;
     }
     if (this.list && !this.config) {
       this.config = this.list.config;

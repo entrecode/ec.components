@@ -7,6 +7,14 @@ import { mocked } from '../../../mocks/data';
 })
 export class SelectDemoComponent {
 
+  customDisplayConfig = {
+    display: (items) => {
+      return items.filter(item => item.getBody() !== 'four');
+    }
+  }
+
+  prefilledFour = ['four'];
+
   values = [];
   products = mocked.lists.products;
 

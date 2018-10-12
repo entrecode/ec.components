@@ -25,15 +25,23 @@ export class List<T> extends Collection<Item<T>> {
   /**
    * Current Value Groups (Different Unique Values).
    */
-  groups: any[];
+  groups = [];
   /** The list's pagination (Optional) */
   public pagination: Pagination<T>;
   /** The items of the current page */
-  public page: Array<Item<T>>;
+  public page: Array<Item<T>> = [];
   /** Subject that should be nexted when loading is finished */
   protected change: Subject<List<T>> = new Subject();
   /** Observable that is nexted when the list has changed. */
   public change$: Observable<List<T>> = this.change.asObservable();
+
+  /** Getter for items, calls transform */
+  get display() {
+    if (!this.config || !this.config.display) {
+      return this.items;
+    }
+    return this.config.display(this.items);
+  }
 
   /**
    * Constructs the List. Populates the items and instantiates the fields.
