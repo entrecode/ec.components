@@ -2515,6 +2515,10 @@ The size inputs will keep the image ratio by default.  </p>
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#elementRef">elementRef</a>
+                            </li>
+                            <li>
                                 <a href="#imageForm">imageForm</a>
                             </li>
                             <li>
@@ -2655,7 +2659,7 @@ The size inputs will keep the image ratio by default.  </p>
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(popService: <a href="../injectables/PopService.html">PopService</a>, sdk: <a href="../injectables/SdkService.html">SdkService</a>, symbol: <a href="../injectables/SymbolService.html">SymbolService</a>)</code>
+<code>constructor(popService: <a href="../injectables/PopService.html">PopService</a>, sdk: <a href="../injectables/SdkService.html">SdkService</a>, symbol: <a href="../injectables/SymbolService.html">SymbolService</a>, elementRef: <a href="https://angular.io/api/core/ElementRef" target="_blank">ElementRef</a>)</code>
                     </td>
                 </tr>
                         <tr>
@@ -2706,6 +2710,18 @@ The size inputs will keep the image ratio by default.  </p>
                                                   
                                                         <td>
                                                                     <code><a href="../injectables/SymbolService.html" target="_self" >SymbolService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            no
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>elementRef</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -3020,7 +3036,7 @@ The size inputs will keep the image ratio by default.  </p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">packages/data/src/files/image-select-pop/image-select-pop.component.ts:37</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">packages/data/src/files/image-select-pop/image-select-pop.component.ts:38</a></div>
                             </td>
                         </tr>
 
@@ -3068,7 +3084,7 @@ The size inputs will keep the image ratio by default.  </p>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in PopComponent:65</div>
+                                    <div class="io-line">Defined in PopComponent:66</div>
                             </td>
                         </tr>
 
@@ -3116,7 +3132,7 @@ The size inputs will keep the image ratio by default.  </p>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in PopComponent:54</div>
+                                    <div class="io-line">Defined in PopComponent:55</div>
                             </td>
                         </tr>
 
@@ -3191,7 +3207,7 @@ The size inputs will keep the image ratio by default.  </p>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in PopComponent:44</div>
+                                    <div class="io-line">Defined in PopComponent:45</div>
                             </td>
                         </tr>
 
@@ -3243,6 +3259,41 @@ The size inputs will keep the image ratio by default.  </p>
         <h3 id="inputs">
             Properties
         </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="elementRef"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            elementRef
+                            </b>
+                            <a href="#elementRef"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon fa fa-reset"></span><code>elementRef:     <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">packages/data/src/files/image-select-pop/image-select-pop.component.ts:34</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
@@ -3501,7 +3552,7 @@ The size inputs will keep the image ratio by default.  </p>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in PopComponent:40</div>
+                                    <div class="io-line">Defined in PopComponent:41</div>
                             </td>
                         </tr>
 
@@ -3514,7 +3565,7 @@ The size inputs will keep the image ratio by default.  </p>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input, ViewChild, Output, EventEmitter, HostBinding } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input, ViewChild, Output, EventEmitter, HostBinding, ElementRef } from &#x27;@angular/core&#x27;;
 import { FormComponent } from &#x27;@ec.components/ui/src/form/form.component&#x27;;
 import { FormConfig } from &#x27;@ec.components/core&#x27;;
 import { PopComponent } from &#x27;@ec.components/ui/src/pop/pop.component&#x27;;
@@ -3546,8 +3597,9 @@ export class ImageSelectPopComponent extends PopComponent implements OnInit {
 
     constructor(public popService: PopService,
         public sdk: SdkService,
-        public symbol: SymbolService) {
-        super(popService);
+        public symbol: SymbolService,
+        public elementRef: ElementRef) {
+        super(popService, elementRef);
     }
     /** Inits the form */
     ngOnInit() {
