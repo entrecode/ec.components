@@ -1,13 +1,3 @@
-@keyframes ecTabSlide {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
 // @param {color} $ec-tabs-background [$xui-tabs-background]
 // @param {array} $ec-tabs-spacing [$xui-tabs-spacing]
 // @param {array} $ec-tabs-padding [$xui-tabs-padding]
@@ -95,13 +85,9 @@
 // @param {array} $ec-tab-spacing [$xui-tab-spacing]
 // @param {array} $ec-tab-padding [$xui-tab-padding]
 // @param {array} $ec-tab-style [$xui-tab-style]
-// @param {value} $ec-tab-animation [ecTabSlide]
-// @param {time} $ec-tab-animation-speed [0.4s]
-// @param {value} $ec-tab-animation-behavior [forwards]
 .ec-tab {
   @include inject-style($ec-tab-style);
   background: $ec-tab-background;
   margin: arrayMagic($ec-tab-spacing);
   padding: arrayMagic($ec-tab-padding);
-  animation: $ec-tab-animation $ec-tab-animation-speed $ec-tab-animation-behavior;
 }
