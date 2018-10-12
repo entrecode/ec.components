@@ -24,6 +24,6 @@
       </li>
     </ul>
   </div>
-  <ec-asset-list-pop (groupChanged)="setGroup($event)" [assetGroupID]="assetGroupID" (columnClicked)="selection.toggle($event)"
+  <ec-asset-list-pop (groupChanged)="setGroup($event)" [assetGroupID]="assetGroupID" (columnClicked)="select($event)"
     [config]="config" [selection]="selection" [active]="config?.nestedPopActive" #assetListPop></ec-asset-list-pop>
 </div>

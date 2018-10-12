@@ -121,7 +121,6 @@ $ec-output-avatars-spacing: 0 !default;
 $ec-output-avatars-gutter: 0 -4 0 0 !default;
 $ec-output-avatars-style: () !default;
 
-
 // EC-OUTPUT-BOOLEAN
 // @param {color} $ec-output-boolean-color [$text-lightest]
 // @param {color} $ec-output-boolean-is-true-color [$text]
@@ -319,9 +318,13 @@ $ec-list-cell-is-sortable-style: () !default;
 // @param {array} $ec-list-cell-is-sorted-style
 $ec-list-cell-is-sorted-background: inherit;
 $ec-list-cell-is-sorted-color: inherit;
-$ec-list-cell-is-sorted-style: (
-  font-weight: $is-bold
-) !default;
+$ec-list-cell-is-sorted-style: () !default;
+$ec-list-cell-is-sorted-style: map-merge(
+  (
+    font-weight: $is-bold
+  ),
+  $ec-list-cell-is-sorted-style
+);
 
 //
 // EC-LIST-ITEMS
@@ -524,7 +527,6 @@ $ec-notification-flag-error: $state-error !default;
 $ec-notification-flag-success: $state-success !default;
 $ec-notification-flag-warning: $state-warning !default;
 
-
 //
 // ui/select
 // ------------------------------------------------------------------------------------------------------------
@@ -612,15 +614,24 @@ $ec-select-selected-round: $tag-round !default;
 $ec-select-selected-radius: $tag-radius !default;
 
 // @param {array} $ec-select-selected-is-dragged-style
-$ec-select-selected-is-dragged-style: (
-  opacity: 0.6
-) !default;
+$ec-select-selected-is-dragged-style: () !default;
+
+$ec-select-selected-is-dragged-style: map-merge(
+  (
+    opacity: 0.6
+  ),
+  $ec-select-selected-is-dragged-style
+);
 
 // @param {array} $drag-placeholder-style
-$drag-placeholder-style: (
-  border: 1px dashed $link,
-) !default;
+$drag-placeholder-style: () !default;
 
+$drag-placeholder-style: map-merge(
+  (
+    border: 1px dashed $link
+  ),
+  $drag-placeholder-style
+);
 
 //
 // EC-SELECT-OPTIONS
@@ -713,16 +724,10 @@ $ec-tabs-nav-item-active-style: $xui-tabs-nav-item-active-style !default;
 // @param {array} $ec-tab-spacing [$xui-tab-spacing]
 // @param {array} $ec-tab-padding [$xui-tab-padding]
 // @param {array} $ec-tab-style [$xui-tab-style]
-// @param {value} $ec-tab-animation [ecTabSlide]
-// @param {time} $ec-tab-animation-speed [0.4s]
-// @param {value} $ec-tab-animation-behavior [forwards]
 $ec-tab-background: $xui-tab-background !default;
 $ec-tab-spacing: $xui-tab-spacing !default;
 $ec-tab-padding: $xui-tab-padding !default;
 $ec-tab-style: $xui-tab-style !default;
-$ec-tab-animation: ecTabSlide !default;
-$ec-tab-animation-speed: 0.4s !default;
-$ec-tab-animation-behavior: forwards !default;
 
 //
 // data/files

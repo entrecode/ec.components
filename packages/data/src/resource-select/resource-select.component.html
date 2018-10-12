@@ -1,5 +1,5 @@
 <div class="ec-resource-select" *ngIf="selection">
-    <div class="ec-select" [class.ec-select_solo]="solo" [class.is-dirty]="selection.items.length" (click)="pop.toggle()">
+    <div class="ec-select" [class.ec-select_solo]="solo" [class.is-dirty]="selection.items.length" (click)="pop.toggle($event)">
         <span class="ec-select__placeholder" *ngIf="!selection.items.length">
             {{placeholder||'Auswählen'}}
         </span>
@@ -11,7 +11,7 @@
                 </span>
             </li>
         </ul>
-        <ec-pop class="ec-select-options" #dropdown>
+        <ec-pop class="ec-select-options" #dropdown [hideOnClickOutside]="true">
             <ec-resource-list [relation]="relation" [api]="api" *ngIf="selection&&dropdown.active" [config]="dropdownConfig"
                 [selection]="selection" (columnClicked)="select($event)"></ec-resource-list>
         </ec-pop>

@@ -5,6 +5,12 @@ import { Component } from '@angular/core';
 })
 export class EntrySelectDemoComponent {
   selectedMuffins: Array<any>;
+  customDisplay = {
+    display: (items) => {
+      return items.filter(item => item.getBody()._entryTitle !== 'best muffin ever');
+    }
+  }
+
   constructor() {
   }
 }

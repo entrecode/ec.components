@@ -1,5 +1,5 @@
 import { ItemConfig } from '../item/item-config.interface';
-import { List } from '../..';
+import { List, Item } from '../..';
 
 /**
  *  Configuration for List Classes.
@@ -43,4 +43,6 @@ export interface ListConfig<T> extends ItemConfig<T> {
   /** The key that should store the lists config in the local storage.
    * If set, the key will be populated on config changes. */
   storageKey?: string | ((list: List<T>) => string);
+  /** Transforms the Items before they are displayed, e.g. to apply a filter for the view **/
+  display?: (items: Item<T>[]) => Item<T>[];
 }

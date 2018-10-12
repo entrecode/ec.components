@@ -1,4 +1,4 @@
-import { Component, EventEmitter, forwardRef, HostListener, Input, OnChanges, OnInit, Output, ViewChild, ViewEncapsulation, ElementRef } from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, OnChanges, OnInit, Output, ViewChild, ViewEncapsulation, ElementRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { List, ListConfig, Selection } from '@ec.components/core';
 import { Item } from '@ec.components/core/src/item/item';
@@ -55,12 +55,6 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
     return tree;
   }
 
-  @HostListener('document:click', ['$event']) clickedOutside($event) {
-    if (this.pop && this.elementRef && !this.elementRef.nativeElement.contains($event.target)) {
-      this.pop.hide();
-    }
-  }
-
   ngOnInit() {
     this.initSelection();
   }
@@ -76,6 +70,7 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
         console.warn('ec-select: list is overwritten by values', this.list);
       }
       this.list = new List(this.values, this.config);
+      delete this.values;
     }
     if (this.list && !this.config) {
       this.config = this.list.config;
@@ -99,6 +94,11 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   /** Removes the given item from selection */
   removeItem(item: Item<any>, e?) {
     this.selection.remove(item);
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+    }
   }
 
   /** Uses the given value as selection items */
@@ -129,12 +129,6 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   /** Select handler. Toggles selection. */
   public select(item) {
     this.selection.toggle(item);
-  }
-
-  public toggle(e) {
-    if (this.pop) {
-      this.pop.toggle();
-    }
   }
 
   /** Fires on selection change. Hides pop if solo */

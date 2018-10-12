@@ -20,7 +20,7 @@ import { Form } from '@ec.components/core';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { ResourcePopComponent } from '../resource-pop/resource-pop.component';
 import { AuthService } from '../auth/auth.service';
-import { SdkService } from '../..';
+import { ResourceListPopComponent } from '@ec.components/data/src/resource-list-pop/resource-list-pop.component';
 /** Shows resources of a selection and is able to pick new ones from a crud list
 */
 
@@ -62,6 +62,8 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
     @ViewChild('dropdown') pop: PopComponent;
     /** The nested resource pop for editing and creating */
     @ViewChild(ResourcePopComponent) resourcePop: ResourcePopComponent;
+    /** The nested resource list pop */
+    @ViewChild(ResourceListPopComponent) resourceListPop: ResourceListPopComponent;
     /** The config of the dropdown pop */
     dropdownConfig: CrudConfig<Resource>;
 
@@ -141,5 +143,12 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
                 }
                 this.resourcePop.edit(item.getBody(), { methods });
             });
+    }
+
+    onChange() {
+        super.onChange();
+        if (this.resourceListPop) {
+            this.resourceListPop.hide();
+        }
     }
 }

@@ -4,7 +4,7 @@
     <ec-upload [custom]="custom" #uploaderChild (groupChanged)="setGroup($event)" [loader]="loader" [assetGroupID]="assetGroupID"
         (success)="uploaded.emit($event)"></ec-upload><!--  class="hide" -->
     <a (click)="triggerUpload($event)">{{'upload.link' | symbol}}</a>
-    <span *ngIf="!config?.disableUrlUpload"> {{'upload.or' | symbol}}
+    <span *ngIf="!config?.disableUrlUpload&&assetGroupID&&assetGroupID!=='legacyAsset'"> {{'upload.or' | symbol}}
         <a (click)="toggleUrlInput()">{{'upload.url' | symbol}}</a>
     </span>
     <span *ngIf="!config?.disableListPop"> {{'upload.or' | symbol}}
