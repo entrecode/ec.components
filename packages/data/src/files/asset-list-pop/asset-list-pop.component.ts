@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild, HostBinding } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild, HostBinding, ElementRef } from '@angular/core';
 import { Item, Selection } from '@ec.components/core';
 import { SdkService } from '../../sdk/sdk.service';
 import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
@@ -43,8 +43,9 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
   /** Injects auth service and calls super constructor. */
   constructor(protected popService: PopService,
     private fileService: FileService,
-    public sdk: SdkService) {
-    super(popService);
+    public sdk: SdkService,
+    public elementRef: ElementRef) {
+    super(popService, elementRef);
   }
 
   /** Changes the assetGroupID to the given value, emits groupChange */

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, Output, ViewChild, HostBinding } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, ViewChild, HostBinding, ElementRef } from '@angular/core';
 import { Item, ListConfig, Selection } from '@ec.components/core';
 import { PopComponent } from '@ec.components/ui';
 import { PopService } from '@ec.components/ui/src/pop/pop.service';
@@ -26,9 +26,10 @@ export class ResourceListPopComponent extends PopComponent implements OnChanges 
 
     constructor(
         public resourceConfig: ResourceConfig,
-        protected popService: PopService
+        protected popService: PopService,
+        public elementRef: ElementRef
     ) {
-        super(popService);
+        super(popService, elementRef);
     }
 
     ngOnChanges() {

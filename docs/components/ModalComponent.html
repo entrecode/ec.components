@@ -3076,7 +3076,7 @@ It expects the type at first and non mandatory options like opens-left afterward
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">packages/ui/src/modal/modal.component.ts:49</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">packages/ui/src/modal/modal.component.ts:51</a></div>
                             </td>
                         </tr>
 
@@ -3116,7 +3116,7 @@ It expects the type at first and non mandatory options like opens-left afterward
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">packages/ui/src/modal/modal.component.ts:73</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">packages/ui/src/modal/modal.component.ts:75</a></div>
                             </td>
                         </tr>
 
@@ -3156,7 +3156,7 @@ It expects the type at first and non mandatory options like opens-left afterward
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">packages/ui/src/modal/modal.component.ts:69</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">packages/ui/src/modal/modal.component.ts:71</a></div>
                             </td>
                         </tr>
 
@@ -3204,7 +3204,7 @@ It expects the type at first and non mandatory options like opens-left afterward
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in PopComponent:65</div>
+                                    <div class="io-line">Defined in PopComponent:66</div>
                             </td>
                         </tr>
 
@@ -3252,7 +3252,7 @@ It expects the type at first and non mandatory options like opens-left afterward
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in PopComponent:54</div>
+                                    <div class="io-line">Defined in PopComponent:55</div>
                             </td>
                         </tr>
 
@@ -3327,7 +3327,7 @@ It expects the type at first and non mandatory options like opens-left afterward
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in PopComponent:44</div>
+                                    <div class="io-line">Defined in PopComponent:45</div>
                             </td>
                         </tr>
 
@@ -3448,7 +3448,7 @@ It expects the type at first and non mandatory options like opens-left afterward
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">packages/ui/src/modal/modal.component.ts:45</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">packages/ui/src/modal/modal.component.ts:47</a></div>
                             </td>
                         </tr>
 
@@ -3483,7 +3483,7 @@ It expects the type at first and non mandatory options like opens-left afterward
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">packages/ui/src/modal/modal.component.ts:45</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">packages/ui/src/modal/modal.component.ts:46</a></div>
                             </td>
                         </tr>
 
@@ -3654,7 +3654,7 @@ It expects the type at first and non mandatory options like opens-left afterward
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in PopComponent:40</div>
+                                    <div class="io-line">Defined in PopComponent:41</div>
                             </td>
                         </tr>
 
@@ -3711,8 +3711,10 @@ export class ModalComponent extends PopComponent implements OnInit, OnChanges {
     /** Will contain the classes (mode - type) */
     private classes: string;
     /** Constructs the modal, injects pop service */
-    constructor(public popService: PopService, public elementRef: ElementRef) {
-        super(popService);
+    constructor(
+        public popService: PopService,
+        public elementRef: ElementRef) {
+        super(popService, elementRef);
     }
     /** Is called on init and change. Parses mode input and throws warning if type is not supported. */
     initMode() {

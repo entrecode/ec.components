@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild, HostBinding } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild, HostBinding, ElementRef } from '@angular/core';
 import { LoaderService, NotificationsService, PopComponent } from '@ec.components/ui';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 import Resource from 'ec.sdk/lib/resources/Resource';
@@ -41,8 +41,9 @@ export class ResourceDeletePopComponent extends PopComponent {
         public loader: LoaderService,
         private resourceService: ResourceService,
         public notificationService: NotificationsService,
-        public popService: PopService) {
-        super(popService);
+        public popService: PopService,
+        public elementRef: ElementRef) {
+        super(popService, elementRef);
     }
     /** The delete method calls del() of the given resource. You can also pass a resource to delete directly to set it.  */
     delete(resource: Resource = this.resource) {
