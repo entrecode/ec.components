@@ -29,6 +29,7 @@ export class PopComponent {
     if (
       this.hideOnClickOutside &&
       this.active &&
+      this.clickEvent &&
       $event !== this.clickEvent && // to ensure the show event wont hide immediately
       this.elementRef &&
       !this.elementRef.nativeElement.contains($event.target)) {
@@ -56,7 +57,7 @@ export class PopComponent {
     if (e) {
       this.clickEvent = e;
     } else if (this.hideOnClickOutside) {
-      console.error('To show a pop with hideOnClickOutside = true, you need to pass the click event to the show method!');
+      console.warn('To use hideOnClickOutside, you need to pass the click event to the show method of ec-pop!');
     }
   }
 
