@@ -101,9 +101,9 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
     }
   }
 
-  activate($event) {
+  toggle(e) {
     if (this.pop && !this.config.disableSelect) {
-      this.pop.toggle();
+      this.pop.toggle(e);
     } else if (this.entryListPop && !this.config.disableListPop) {
       this.entryListPop.show();
     } else if (this.entryPop && !this.config.disableCreatePop) {

@@ -25,6 +25,7 @@
 <strong>with disableSelect</strong>
 <ec-entry-select model="muffin" [solo]="true" [config]="{disableSelect:true}"></ec-entry-select>
 
+
 <!-- <pre>{{soloEntry.selection?.getValue()}}</pre> -->
 
 <strong>solo with disableListPop</strong>
@@ -38,6 +39,9 @@
 
 <strong>solo with deleteOnRemove</strong>
 <ec-entry-select model="muffin" [solo]="true" [config]="{deleteOnRemove:true,safeDelete:false}"></ec-entry-select>
+
+<strong>with display transformation</strong>
+<ec-entry-select model="muffin" [config]="customDisplay"></ec-entry-select>
 
 <ec-notifications></ec-notifications>
 

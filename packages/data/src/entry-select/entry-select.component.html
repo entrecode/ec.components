@@ -8,13 +8,13 @@
 </div>
 
 <div class="ec-entry-select" *ngIf="selection">
-  <div class="ec-select" [class.ec-select_solo]="solo" [class.is-dirty]="selection.items.length" (click)="activate()">
-    <span class="ec-select__placeholder" *ngIf="!selection.items.length">
+  <div class="ec-select" [class.ec-select_solo]="solo" [class.is-dirty]="selection.display.length" (click)="toggle($event)">
+    <span class="ec-select__placeholder" *ngIf="!selection.display.length">
       {{placeholder||defaultPlaceholder()}}
     </span>
-    <ul class="ec-select-selection" *ngIf="selection.items.length" dndDropzone (dndDrop)="onDrop($event)">
+    <ul class="ec-select-selection" *ngIf="selection.display.length" dndDropzone (dndDrop)="onDrop($event)">
       <li [dndDisableIf]="solo||config?.disableDrag" [class.is-dragged]="selected===dragged" [class.is-draggable]="solo||!config?.disableDrag"
-        dndEffectAllowed="move" [dndDraggable]="i" *ngFor="let selected of selection?.items;let i = index" (dndStart)="onDragStart(selected,$event)"
+        dndEffectAllowed="move" [dndDraggable]="i" *ngFor="let selected of selection?.display;let i = index" (dndStart)="onDragStart(selected,$event)"
         (dndCanceled)="cancelDrag(selected,$event)" (dndEnd)="cancelDrag(selected,$event)">
         <span [class.ec-select-selected]="!solo" [class.ec-select-selected_solo]="solo" (click)="!solo&&editItem(selected,$event)">
           {{selected.display()}}
@@ -46,7 +46,7 @@
       <ec-resource-list #entryList [relation]="'model.'+model" [api]="sdk.api" *ngIf="model" [config]="dropdownConfig" [selection]="selection"
         (click)="$event.preventDefault();$event.stopPropagation()" (columnClicked)="select($event)"></ec-resource-list> &&selection&&dropdown.active -->
 
-    <ec-pop class="ec-select-options" #dropdown *ngIf="!config.disableSelect">
+    <ec-pop class="ec-select-options" #dropdown *ngIf="!config.disableSelect" [hideOnClickOutside]="true">
       <ec-entry-list #entryList [model]="model" *ngIf="selection&&dropdown.active" [config]="dropdownConfig"
         [selection]="selection" (columnClicked)="select($event)"></ec-entry-list>
     </ec-pop>
@@ -58,7 +58,7 @@
   <ec-entry-pop #entryPop [model]="model" [config]="config" (submitted)="formSubmitted($event)" (deleted)="removeItem($event,true)"></ec-entry-pop>
 
   <nav class="ec-entry-select__controls">
-    <a (click)="editItem(selection.items[0],$event)" class="btn btn_clear" *ngIf="solo&&!config.disableCreatePop&&hasMethod('put')&&!selection.isEmpty()">
+    <a (click)="editItem(selection.display[0],$event)" class="btn btn_clear" *ngIf="solo&&!config.disableCreatePop&&hasMethod('put')&&!selection.isEmpty()">
       <ec-icon name="pencil"></ec-icon>
     </a>
     <a (click)="entryListPop.show()" class="btn btn_clear" *ngIf="!config.disableListPop&&hasMethod('get')">

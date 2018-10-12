@@ -1,4 +1,4 @@
-<div *ngIf="selection&&list" class="ec-select" [class.is-solo]="solo" [class.is-dirty]="selection.display.length" (click)="toggle($event)">
+<div *ngIf="selection&&list" class="ec-select" [class.is-solo]="solo" [class.is-dirty]="selection.display.length" (click)="dropdown?.toggle($event)">
   <span class="ec-select__placeholder" *ngIf="!selection.display.length">
     {{placeholder||'make your selection...'}}
   </span>
@@ -21,7 +21,7 @@
       <div class="drag-placeholder" style="width: 48px;"></div>
     </li>
   </ul>
-  <ec-pop class="ec-select-options">
+  <ec-pop class="ec-select-options" [hideOnClickOutside]="true" #dropdown>
     <ec-list [list]="list" (columnClicked)="select($event)" [selection]="selection"></ec-list>
   </ec-pop>
 </div>

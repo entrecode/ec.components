@@ -27,7 +27,6 @@ export class ListHeaderComponent {
   /** opens the given filter pop and closes all others */
   public editFilter(pop) {
     pop.toggle();
-    // this.pops.forEach((pop) => pop.hide());
   }
 
   /** Applies the given filter to the list. */
