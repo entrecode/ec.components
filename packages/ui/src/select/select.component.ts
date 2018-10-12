@@ -36,6 +36,8 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   @Output() changed: EventEmitter<Selection<T>> = new EventEmitter();
   /** Event emitter on selected item click */
   @Output() itemClick: EventEmitter<Item<T>> = new EventEmitter();
+  /** Emits when an item is being removed */
+  @Output() remove: EventEmitter<Item<T>> = new EventEmitter();
   /** The Instance of the List */
   @Input() list: List<T>;
   /** Available Items */
@@ -93,11 +95,15 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
 
   /** Removes the given item from selection */
   removeItem(item: Item<any>, e?) {
-    this.selection.remove(item);
     if (e) {
       e.preventDefault();
       e.stopPropagation();
       e.stopImmediatePropagation();
+    }
+    if (this.remove.observers.length) {
+      this.remove.emit(item);
+    } else {
+      this.selection.remove(item);
     }
   }
 

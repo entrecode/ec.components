@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { mocked } from '../../../mocks/data';
+import { NotificationsService } from '@ec.components/ui';
 
 @Component({
   selector: 'ec-select-demo',
@@ -18,8 +19,18 @@ export class SelectDemoComponent {
   values = [];
   products = mocked.lists.products;
 
-  constructor() {
+  constructor(public notificationService: NotificationsService) {
     console.log('list', this.products);
+  }
+
+  onRemove(item, selection) {
+    console.log('remove', item, selection);
+    this.notificationService.emit({
+      type: 'info',
+      title: 'Remove item ' + item.display(),
+      message: 'You could now run custom remove logic or forbid removing specific items etc.'
+    });
+    selection.remove(item);
   }
 
   log(x) {
