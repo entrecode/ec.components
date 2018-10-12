@@ -13,7 +13,7 @@
 <pre><code>{{primitiveSelectSolo.selection.getValue() | json}}</code></pre>
 
 <strong>Primitive</strong>
-<ec-select [values]="['one','two','three']" (remove)="onRemove($event,primitiveSelect?.selection)" #primitiveSelect></ec-select>
+<ec-select [values]="['one','two','three']" #primitiveSelect></ec-select>
 <pre><code>{{primitiveSelect.selection.getValue() | json}}</code></pre>
 
 <strong>Transformed</strong>
@@ -22,6 +22,10 @@
     #customDisplay></ec-select>
 <pre><code>{{customDisplay.selection.getValue() | json}}</code></pre>
 
+<strong>With remove/add outputs</strong>
+<ec-select [values]="['one','two','three']" (add)="toggle($event,primitiveSelect?.selection)" (remove)="toggle($event,primitiveSelect?.selection)"
+    #outputSelect></ec-select>
+<pre><code>{{outputSelect.selection.getValue() | json}}</code></pre>
 <ec-tabs>
     <ec-tab label="Inside Tab" selected>
         <ec-select [values]="['one','two','three']"></ec-select>

@@ -12,4 +12,8 @@ export class ResourceSelectDemoComponent implements OnInit {
     constructor(public sdk: SdkService) { }
 
     ngOnInit() { }
+
+    toggle(e) {
+        console.log('toggle', e);
+    }
 }

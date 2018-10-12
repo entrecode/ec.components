@@ -23,14 +23,14 @@ export class SelectDemoComponent {
     console.log('list', this.products);
   }
 
-  onRemove(item, selection) {
-    console.log('remove', item, selection);
+  toggle(item, selection) {
+    console.log('toggle', item, selection);
     this.notificationService.emit({
       type: 'info',
-      title: 'Remove item ' + item.display(),
+      title: 'Toggle item ' + item.display(),
       message: 'You could now run custom remove logic or forbid removing specific items etc.'
     });
-    selection.remove(item);
+    // selection.toggle(item);
   }
 
   log(x) {
