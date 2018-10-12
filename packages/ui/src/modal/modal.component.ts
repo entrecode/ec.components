@@ -42,8 +42,10 @@ export class ModalComponent extends PopComponent implements OnInit, OnChanges {
     /** Will contain the classes (mode - type) */
     private classes: string;
     /** Constructs the modal, injects pop service */
-    constructor(public popService: PopService, public elementRef: ElementRef) {
-        super(popService);
+    constructor(
+        public popService: PopService,
+        public elementRef: ElementRef) {
+        super(popService, elementRef);
     }
     /** Is called on init and change. Parses mode input and throws warning if type is not supported. */
     initMode() {

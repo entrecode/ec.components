@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild, Output, EventEmitter, HostBinding } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, Output, EventEmitter, HostBinding, ElementRef } from '@angular/core';
 import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import Resource from 'ec.sdk/lib/resources/Resource';
@@ -51,8 +51,9 @@ export class ResourcePopComponent extends PopComponent {
         private route: ActivatedRoute,
         private sdk: SdkService,
         public formService: FormService,
-        public symbol: SymbolService) {
-        super(popService);
+        public symbol: SymbolService,
+        public elementRef: ElementRef) {
+        super(popService, elementRef);
     }
 
     /** Returns true if the given method is part of the methods array (or if there is no methods array) */

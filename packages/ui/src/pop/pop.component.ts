@@ -37,7 +37,8 @@ export class PopComponent {
     }
   }
 
-  constructor(protected popService: PopService, public elementRef: ElementRef) {
+  constructor(protected popService: PopService,
+    public elementRef: ElementRef) {
   }
 
   /** Shows if not active, hides if active. */ // active: boolean = !this.active, emit: boolean = false
