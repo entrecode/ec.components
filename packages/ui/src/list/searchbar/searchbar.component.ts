@@ -42,10 +42,10 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
 
   constructor(public route: ActivatedRoute, public symbol: SymbolService) {
     this.defaultPlaceholder = this.symbol.resolve('searchbar.placeholder');
-    const paste = this.paste.asObservable();
     this.paste.asObservable()
       .subscribe((e) => {
         const pasted = (e.clipboardData).getData('text');
+        this.filterList(pasted, true);
       });
 
     this.keyup.asObservable().debounceTime(this.debounceTime)
