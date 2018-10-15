@@ -21,6 +21,8 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
   @Input() defaultPlaceholder: string;
   /** The input query that should be prefilled */
   @Input() public query: string;
+  /** The last query that was sent to the sdk. Helps deciding */
+  @Input() public lastSentQuery: string;
   /** Property that should be filtered */
   @Input() property: string;
   /** If true, the input will be autofocused */
@@ -80,7 +82,8 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
     list.change$.subscribe(newList => {
       if (!this.list.config.filter || !this.list.config.filter[this.property]) {
         this.clear();
-      } else if (this.list.config.filter[this.property]) {
+      } else if (this.list.config.filter[this.property] &&
+        this.query === this.lastSentQuery) {  // checks if user did not type new stuff
         this.query = this.list.config.filter[this.property];
       }
     });
@@ -133,6 +136,7 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
         /* return true; */
       }
     }
+    this.lastSentQuery = this.query;
     this.list.filter(this.property || this.list.config.label, value);
   }
 
