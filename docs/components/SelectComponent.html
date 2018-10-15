@@ -2532,11 +2532,11 @@
                                 <a href="#dragged">dragged</a>
                             </li>
                             <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#elementRef">elementRef</a>
+                                <a href="#dropdown">dropdown</a>
                             </li>
                             <li>
-                                <a href="#pop">pop</a>
+                                    <span class="modifier">Public</span>
+                                <a href="#elementRef">elementRef</a>
                             </li>
                             <li>
                                 <a href="#propagateChange">propagateChange</a>
@@ -2553,6 +2553,9 @@
                 <tr>
                     <td class="col-md-4">
                         <ul class="index-list">
+                            <li>
+                                <a href="#addItem">addItem</a>
+                            </li>
                             <li>
                                 <a href="#cancelDrag">cancelDrag</a>
                             </li>
@@ -2649,10 +2652,16 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#add">add</a>
+                            </li>
+                            <li>
                                 <a href="#changed">changed</a>
                             </li>
                             <li>
                                 <a href="#itemClick">itemClick</a>
+                            </li>
+                            <li>
+                                <a href="#remove">remove</a>
                             </li>
                         </ul>
                     </td>
@@ -2675,7 +2684,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">packages/ui/src/select/select.component.ts:46</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">packages/ui/src/select/select.component.ts:50</a></div>
                             </td>
                         </tr>
 
@@ -2756,7 +2765,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">packages/ui/src/select/select.component.ts:40</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">packages/ui/src/select/select.component.ts:44</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -2825,7 +2834,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">packages/ui/src/select/select.component.ts:44</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">packages/ui/src/select/select.component.ts:48</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -2871,7 +2880,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">packages/ui/src/select/select.component.ts:42</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">packages/ui/src/select/select.component.ts:46</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -2879,6 +2888,27 @@
 </section>
     <section>
     <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="add"></a>
+                        <code>add</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>Emits when an item is being added </p>
+</div>
+                        <em><code>$event</code> type:</em>    <code><a href="../classes/Item.html" target="_self" >EventEmitter&lt;Item&lt;T&gt;&gt;</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">packages/ui/src/select/select.component.ts:42</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
@@ -2921,6 +2951,27 @@
                         </tr>
             </tbody>
         </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="remove"></a>
+                        <code>remove</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>Emits when an item is being removed </p>
+</div>
+                        <em><code>$event</code> type:</em>    <code><a href="../classes/Item.html" target="_self" >EventEmitter&lt;Item&lt;T&gt;&gt;</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">packages/ui/src/select/select.component.ts:40</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
 </section>
 
 
@@ -2929,6 +2980,77 @@
         <h3 id="methods">
             Methods
         </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="addItem"></a>
+                        <span class="name">
+                            <b>
+                            addItem
+                            </b>
+                            <a href="#addItem"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>addItem(item: <a href="../classes/Item.html">Item<any></a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">packages/ui/src/select/select.component.ts:112</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Adds the given ite, emits add output if observed </p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>item</td>
+                                                        <td>
+                                                                    <code><a href="../classes/Item.html" target="_self" >Item&lt;any&gt;</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            no
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
@@ -2951,7 +3073,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="173" class="link-to-prism">packages/ui/src/select/select.component.ts:173</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="193" class="link-to-prism">packages/ui/src/select/select.component.ts:193</a></div>
                             </td>
                         </tr>
 
@@ -3046,7 +3168,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="123" class="link-to-prism">packages/ui/src/select/select.component.ts:123</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="139" class="link-to-prism">packages/ui/src/select/select.component.ts:139</a></div>
                             </td>
                         </tr>
 
@@ -3122,7 +3244,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">packages/ui/src/select/select.component.ts:51</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">packages/ui/src/select/select.component.ts:55</a></div>
                             </td>
                         </tr>
 
@@ -3208,7 +3330,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">packages/ui/src/select/select.component.ts:67</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">packages/ui/src/select/select.component.ts:71</a></div>
                             </td>
                         </tr>
 
@@ -3248,7 +3370,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">packages/ui/src/select/select.component.ts:62</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">packages/ui/src/select/select.component.ts:66</a></div>
                             </td>
                         </tr>
 
@@ -3286,7 +3408,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">packages/ui/src/select/select.component.ts:58</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">packages/ui/src/select/select.component.ts:62</a></div>
                             </td>
                         </tr>
 
@@ -3324,14 +3446,14 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="135" class="link-to-prism">packages/ui/src/select/select.component.ts:135</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="155" class="link-to-prism">packages/ui/src/select/select.component.ts:155</a></div>
                             </td>
                         </tr>
 
 
                 <tr>
                     <td class="col-md-4">
-                            <div class="io-description"><p>Fires on selection change. Hides pop if solo </p>
+                            <div class="io-description"><p>Fires on selection change. Hides dropdown if solo </p>
 </div>
 
                             <div class="io-description">
@@ -3364,7 +3486,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="156" class="link-to-prism">packages/ui/src/select/select.component.ts:156</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="176" class="link-to-prism">packages/ui/src/select/select.component.ts:176</a></div>
                             </td>
                         </tr>
 
@@ -3457,7 +3579,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="161" class="link-to-prism">packages/ui/src/select/select.component.ts:161</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="181" class="link-to-prism">packages/ui/src/select/select.component.ts:181</a></div>
                             </td>
                         </tr>
 
@@ -3524,7 +3646,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="148" class="link-to-prism">packages/ui/src/select/select.component.ts:148</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="168" class="link-to-prism">packages/ui/src/select/select.component.ts:168</a></div>
                             </td>
                         </tr>
 
@@ -3591,7 +3713,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="152" class="link-to-prism">packages/ui/src/select/select.component.ts:152</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="172" class="link-to-prism">packages/ui/src/select/select.component.ts:172</a></div>
                             </td>
                         </tr>
 
@@ -3629,7 +3751,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">packages/ui/src/select/select.component.ts:95</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">packages/ui/src/select/select.component.ts:99</a></div>
                             </td>
                         </tr>
 
@@ -3713,7 +3835,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="130" class="link-to-prism">packages/ui/src/select/select.component.ts:130</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="146" class="link-to-prism">packages/ui/src/select/select.component.ts:146</a></div>
                             </td>
                         </tr>
 
@@ -3780,7 +3902,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">packages/ui/src/select/select.component.ts:105</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="121" class="link-to-prism">packages/ui/src/select/select.component.ts:121</a></div>
                             </td>
                         </tr>
 
@@ -3862,7 +3984,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="116" class="link-to-prism">packages/ui/src/select/select.component.ts:116</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="132" class="link-to-prism">packages/ui/src/select/select.component.ts:132</a></div>
                             </td>
                         </tr>
 
@@ -3937,7 +4059,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">packages/ui/src/select/select.component.ts:90</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">packages/ui/src/select/select.component.ts:94</a></div>
                             </td>
                         </tr>
 
@@ -4037,6 +4159,51 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
+                        <a name="dropdown"></a>
+                        <span class="name">
+                            <b>
+                            dropdown
+                            </b>
+                            <a href="#dropdown"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>dropdown:     <code><a href="../components/PopComponent.html" target="_self" >PopComponent</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="../components/PopComponent.html" target="_self" >PopComponent</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Decorators : </i><code>ViewChild</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">packages/ui/src/select/select.component.ts:50</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The selection dropdown </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
                         <a name="elementRef"></a>
                         <span class="name">
                             <b>
@@ -4061,55 +4228,10 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">packages/ui/src/select/select.component.ts:48</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">packages/ui/src/select/select.component.ts:52</a></div>
                             </td>
                         </tr>
 
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="pop"></a>
-                        <span class="name">
-                            <b>
-                            pop
-                            </b>
-                            <a href="#pop"><span class="fa fa-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <code>pop:     <code><a href="../components/PopComponent.html" target="_self" >PopComponent</a></code>
-</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>    <code><a href="../components/PopComponent.html" target="_self" >PopComponent</a></code>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Decorators : </i><code>ViewChild</code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">packages/ui/src/select/select.component.ts:46</a></div>
-                            </td>
-                        </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>The selection pop </p>
-</div>
-                    </td>
-                </tr>
 
             </tbody>
         </table>
@@ -4140,7 +4262,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="145" class="link-to-prism">packages/ui/src/select/select.component.ts:145</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="165" class="link-to-prism">packages/ui/src/select/select.component.ts:165</a></div>
                             </td>
                         </tr>
 
@@ -4205,14 +4327,18 @@ export class SelectComponent&lt;T&gt; implements ControlValueAccessor, OnInit, O
   @Output() changed: EventEmitter&lt;Selection&lt;T&gt;&gt; &#x3D; new EventEmitter();
   /** Event emitter on selected item click */
   @Output() itemClick: EventEmitter&lt;Item&lt;T&gt;&gt; &#x3D; new EventEmitter();
+  /** Emits when an item is being removed */
+  @Output() remove: EventEmitter&lt;Item&lt;T&gt;&gt; &#x3D; new EventEmitter();
+  /** Emits when an item is being added */
+  @Output() add: EventEmitter&lt;Item&lt;T&gt;&gt; &#x3D; new EventEmitter();
   /** The Instance of the List */
   @Input() list: List&lt;T&gt;;
   /** Available Items */
   @Input() values: Array&lt;T&gt;;
   /** Wether or not the selection should be solo */
   @Input() solo: boolean;
-  /** The selection pop */
-  @ViewChild(PopComponent) pop: PopComponent;
+  /** The selection dropdown */
+  @ViewChild(&#x27;dropdown&#x27;) dropdown: PopComponent;
 
   constructor(public elementRef: ElementRef) {
   }
@@ -4262,11 +4388,23 @@ export class SelectComponent&lt;T&gt; implements ControlValueAccessor, OnInit, O
 
   /** Removes the given item from selection */
   removeItem(item: Item&lt;any&gt;, e?) {
-    this.selection.remove(item);
     if (e) {
       e.preventDefault();
       e.stopPropagation();
       e.stopImmediatePropagation();
+    }
+    if (this.remove.observers.length) {
+      this.remove.emit(item);
+    } else {
+      this.selection.remove(item);
+    }
+  }
+  /** Adds the given ite, emits add output if observed */
+  addItem(item: Item&lt;any&gt;) {
+    if (this.add.observers.length) {
+      this.add.emit(item);
+    } else {
+      this.selection.toggle(item);
     }
   }
 
@@ -4297,14 +4435,18 @@ export class SelectComponent&lt;T&gt; implements ControlValueAccessor, OnInit, O
 
   /** Select handler. Toggles selection. */
   public select(item) {
-    this.selection.toggle(item);
+    if (this.selection.has(item)) {
+      this.removeItem(item);
+    } else {
+      this.addItem(item);
+    }
   }
 
-  /** Fires on selection change. Hides pop if solo */
+  /** Fires on selection change. Hides dropdown if solo */
   onChange() {
     this.changed.emit(this.selection);
-    if (this.config.solo &amp;&amp; this.pop) {
-      this.pop.hide();
+    if (this.config.solo &amp;&amp; this.dropdown) {
+      this.dropdown.hide();
     }
     this.value &#x3D; this.selection.getValue();
     return this.propagateChange(this.value);
