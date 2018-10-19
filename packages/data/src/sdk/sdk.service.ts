@@ -13,11 +13,14 @@ import { Subject } from 'rxjs/Subject';
  *
  *```json
  {
-   provide: "environment",
+   provide: 'environment',
    useValue: {
-     datamanagerID: "83cc6374",
-     environment: "stage",
-     clientID: "rest"
+     datamanagerID: '83cc6374',
+     environment: 'stage',
+     clientID: 'rest',
+     // init: false
+     // the init option will prevent automatically initing the sdk.
+     // you have to call sdk.init() yourself. This can be useful if your environment is not known before runtime
    }
  }```
  * The environment is optional, defaulting to live. See
@@ -74,9 +77,11 @@ export class SdkService {
    * */
   public ready: Promise<AccountResource>;
 
-  /** Calls init and sets ready to true when finished. */
+  /** Calls init and sets ready to true when finished. Omits init if environment has set init: false */
   constructor(@Inject('environment') public environment) {
-    this.init();
+    if (environment.init !== false) {
+      this.init();
+    }
   }
 
   /** Creates all the API instances and determines the current user. */
