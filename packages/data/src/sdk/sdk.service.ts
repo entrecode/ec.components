@@ -79,7 +79,7 @@ export class SdkService {
 
   /** Calls init and sets ready to true when finished. Omits init if environment has set init: false */
   constructor(@Inject('environment') public environment) {
-    if (environment.init !== false) {
+    if (!environment || environment.init !== false) {
       this.init();
     }
   }
