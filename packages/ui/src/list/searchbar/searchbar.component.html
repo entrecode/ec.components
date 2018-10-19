@@ -1,5 +1,5 @@
 <div class="ec-searchbar">
-    <input #inputField [ecFocus]="focusEvent" type="text" [placeholder]="placeholder || defaultPlaceholder" class="input" (keyup)="keyup.next($event.target.value);preventDefault($event)"
-        (paste)="paste.next($event)" [(ngModel)]="query">
-    <!-- (keydown)="arrowNavigation($event)" -->
+    <input #inputField [ecFocus]="focusEvent" type="text" [placeholder]="placeholder || defaultPlaceholder" class="input"
+        (keyup)="keyup.next($event.target.value);preventDefault($event)" (paste)="paste.next($event)" [(ngModel)]="query"
+        (keydown)="keydown($event)">
 </div>

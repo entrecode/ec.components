@@ -4,11 +4,11 @@
             <ec-icon name="close-x-big"></ec-icon>
         </button>
         <ec-searchbar (selected)="hide()" placeholder="Search.." [list]="entryList" #searchbar *ngIf="entryList"
-            [property]="lightModel?.titleField"></ec-searchbar>
+            [property]="lightModel?.titleField" [listComponent]="entryList"></ec-searchbar>
         <ec-list-header [list]="entryList?.list" [selection]="selection"></ec-list-header>
     </header>
     <div class="dialog-body">
-        <ec-entry-list (changed)="searchbar.focusEvent.emit(true)" [model]="model" [config]="config" [selection]="selection"
+        <ec-entry-list #entryList (changed)="searchbar.focusEvent.emit(true)" [model]="model" [config]="config" [selection]="selection"
             (columnClicked)="select($event)" #entryList></ec-entry-list>
     </div>
     <div class="dialog-footer">

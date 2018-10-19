@@ -99,6 +99,9 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
         item.getBody().delete();
       }
     }
+    if (this.searchbar) {
+      this.searchbar.focusEvent.emit(true);
+    }
     if (e) {
       e.preventDefault();
       e.stopPropagation();
@@ -106,13 +109,20 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   }
 
   togglePop(e) {
+    if (this.searchbar) {
+      this.searchbar.focusEvent.emit(true);
+    }
     if (this.dropdown && !this.config.disableSelect) {
-      this.dropdown.toggle(e);
+      this.dropdown.show(e);
     } else if (this.entryListPop && !this.config.disableListPop) {
       this.entryListPop.show();
     } else if (this.entryPop && !this.config.disableCreatePop) {
       this.entryPop.show();
     }
+  }
+
+  showSearchbar() {
+    return this.entryList && this.lightModel && !!this.lightModel.titleField && !!this.entryList.list;
   }
 
   defaultPlaceholder() {
@@ -144,6 +154,7 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
 
   useModel(model) {
     this.model = model;
+    this.modelConfig.getLightModel(model).then(lightModel => this.lightModel = lightModel);
     this.initConfig();
   }
 

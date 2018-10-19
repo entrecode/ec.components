@@ -93,6 +93,7 @@ export class ListComponent<T> implements OnChanges {
     let index = 0;
     if (!this.selection.isEmpty()) {
       index = this.list.items.indexOf(this.selection.items[0]) + 1;
+      console.log('not empty..', index);
     }
     this.selection.removeAll();
     this.selectIndex(index % this.list.items.length);

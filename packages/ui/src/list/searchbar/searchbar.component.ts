@@ -39,6 +39,10 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
   @Input() listComponent: ListComponent<any>;
   /** Output that emits when enter is pressed on a selected item */
   @Output() selected: EventEmitter<any> = new EventEmitter();
+  /** emits when enter key is pressed */
+  @Output() enter: EventEmitter<any> = new EventEmitter();
+  /** emits when any key is pressed */
+  @Output() keypress: EventEmitter<any> = new EventEmitter();
 
   constructor(public route: ActivatedRoute, public symbol: SymbolService) {
     this.defaultPlaceholder = this.symbol.resolve('searchbar.placeholder');
@@ -132,7 +136,8 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
   }
 
   /** called on keydown. if arrow keys are pressed, toggle selection of next/prev elements of list */
-  arrowNavigation(e) {
+  keydown(e) {
+    this.keypress.emit(e);
     if (!this.listComponent || !this.listComponent.selection) {
       console.warn('Arrow navigation is disabled: no listComponent given to searchbar');
       return;
@@ -150,6 +155,7 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
         if (!this.listComponent.selection.isEmpty()) {
           this.selected.emit(this.listComponent.selection.items[0]);
         }
+        this.enter.emit();
         break;
     }
   }
