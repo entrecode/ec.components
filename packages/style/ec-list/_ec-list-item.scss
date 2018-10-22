@@ -9,7 +9,10 @@
 // @param {array} $ec-list-item-style
 .ec-list-item {
   display: flex;
-  // min-width: 100%;
+  @supports (display: grid) {
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(48px, 1fr) );
+  }
   transition: all 0.4s;
   @include inject-style($ec-list-item-style);
   padding: arrayMagic($ec-list-item-padding);
