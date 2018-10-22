@@ -118,8 +118,9 @@ export class ModelConfigService extends Config {
           validation,
           description,
           localizable,
-          legacyAssets
+          legacyAssets,
         }) => {
+          config = config || {};
           if (type.includes('asset') && !legacyAssets) {
             type = type.replace('a', 'dmA');
           }
@@ -132,6 +133,12 @@ export class ModelConfigService extends Config {
             relation: validation,
             immutable: !mutable,
             readOnly,
+            hidden: config.hideInList,
+            // hideInList: config.hideInList !== false,
+            hideInForm: config.hideInForm,
+            create: !config.hideOnCreate,
+            edit: !config.hideOnEdit,
+            classes: config.classes,
             unique,
             required,
             columns: config && config.columns ? config.columns : 12,

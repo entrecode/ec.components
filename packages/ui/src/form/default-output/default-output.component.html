@@ -48,7 +48,7 @@
   </div>
 
   <div class="ec-output-avatar" *ngSwitchCase="'avatar'">
-    <img [src]="item?.display(field.property)" class="avatar">
+    <img *ngIf="item?.display(field.property)" [src]="item?.display(field.property)" class="avatar">
   </div>
 
   <div class="ec-output-avatar" *ngSwitchCase="'avatars'">

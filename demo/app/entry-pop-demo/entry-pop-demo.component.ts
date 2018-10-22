@@ -32,7 +32,7 @@ export class EntryPopDemoComponent {
           label: 'amazement_factorororororor'
         },
         test_asset: {
-          label: 'teststststst'
+          label: 'test asset'
         }
       }
     });
