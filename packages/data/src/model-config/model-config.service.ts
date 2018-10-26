@@ -124,24 +124,35 @@ export class ModelConfigService extends Config {
           if (type.includes('asset') && !legacyAssets) {
             type = type.replace('a', 'dmA');
           }
+          // parse field config
+          const { hideInList,
+            hideInForm,
+            hideOnCreate,
+            hideOnEdit,
+            placeholder,
+            label,
+            classes,
+            columns = 12
+          } = config;
           // assign default values + merge customFieldConfig if given
           fields[title] = Object.assign({
             property: title,
-            label: title + (type === 'datetime' ? ` ${this.symbol.resolve('datetime.local')}` : ''),
+            label: label || title + (type === 'datetime' ? ` ${this.symbol.resolve('datetime.local')}` : ''),
+            placeholder,
             description,
             validation,
             relation: validation,
             immutable: !mutable,
             readOnly,
-            hidden: config.hideInList,
-            // hideInList: config.hideInList !== false,
-            hideInForm: config.hideInForm,
-            create: !config.hideOnCreate,
-            edit: !config.hideOnEdit,
-            classes: config.classes,
+            hidden: hideInList,
+            // hideInList: hideInList !== false,
+            hideInForm,
+            create: !hideOnCreate,
+            edit: !hideOnEdit,
+            classes,
             unique,
             required,
-            columns: config && config.columns ? config.columns : 12,
+            columns,
             display: ((value) => value),
             localizable,
           }, this.typeConfig.get(type));
