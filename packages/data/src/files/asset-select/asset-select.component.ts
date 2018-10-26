@@ -73,6 +73,7 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
   }
 
   setGroup(group) {
+    console.log('set group', group);
     if (!group) {
       return;
     }
@@ -113,9 +114,9 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
     if (this.assetGroupID === 'null') {
       delete this.assetGroupID;
     }
-    const oldAssetTypes = ['image', 'video', 'audio', 'plain', 'document', 'spreadsheet', 'legacyAsset'];
-    if (this.containsNewAssets() || (this.assetGroupID && !oldAssetTypes.includes(this.assetGroupID))) {
-      if (!this.assetGroupID || oldAssetTypes.includes(this.assetGroupID)) {
+    const isOldAssetGroupID = this.fileService.isOldAssetGroupID(this.assetGroupID);
+    if (this.containsNewAssets() || !isOldAssetGroupID) {
+      if (isOldAssetGroupID) {
         this.notificationService.emit({
           title: 'Falsche Assets',
           type: 'error',
@@ -125,9 +126,9 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
       }
       config = this.dmAssetConfig;
       this.assetGroupID = this.assetGroupID || this.getAssetGroupID();
-    } else if (this.containsOldAssets() || this.assetGroupID === 'legacyAsset') {
+    } else if (this.containsOldAssets() || isOldAssetGroupID) {
       // legacy assets
-      if (this.assetGroupID && this.assetGroupID !== 'legacyAsset') {
+      if (!isOldAssetGroupID) {
         this.notificationService.emit({
           title: 'Falsche Assets',
           type: 'error',

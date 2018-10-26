@@ -83,7 +83,7 @@ export class UploadComponent implements WithLoader, WithNotifications {
     files = typeof files === 'string'
       ? files.split('\n').map(url => ({ name: url, url }))
       : files;
-    if (files[0].url && this.assetGroupID === 'legacyAsset') {
+    if (files[0].url && this.fileService.isOldAssetGroupID(this.assetGroupID)) {
       delete this.assetGroupID;
     }
     this.filesToUpload = files;
@@ -99,7 +99,7 @@ export class UploadComponent implements WithLoader, WithNotifications {
 
   /** Triggers upload of current selected files */
   upload(files, api = this.sdk.api) {
-    this.uploadPromise = (this.assetGroupID !== 'legacyAsset' ?
+    this.uploadPromise = (this.fileService.isNewAssetGroupID(this.assetGroupID) ?
       this.fileService.uploadAssets(files, this.assetGroupID, this.options, api) :
       this.fileService.uploadFiles(files))
       .then((_upload) => {
