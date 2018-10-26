@@ -2,9 +2,6 @@
   <div class="ec-list-cell ec-list-item__selector" *ngIf="list?.config?.selectMode&&!list?.isEmpty()">
     <input type="checkbox" (click)="selection?.toggleAll(list?.page)" [checked]="selection?.hasAll(list?.page)" [disabled]="selection?.config?.solo">
   </div>
-
-  <ec-form [config]="list?.config" [value]="list?.config?.filter" [empty]="true" #filterForm></ec-form>
-
   <div class="ec-list-cell" *ngFor="let field of list?.fields;let i = index" 
     [ngClass]="'ec-list-cell_' + field.view + ' ' + field?.classes" 
     [class.is-hidden]="field.hidden"
@@ -47,3 +44,5 @@
     </div>
   </div>
 </div>
+
+<ec-form [config]="list?.config" [value]="list?.config?.filter" [empty]="true" #filterForm></ec-form>
