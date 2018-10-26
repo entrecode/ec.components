@@ -113,9 +113,9 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
     if (this.assetGroupID === 'null') {
       delete this.assetGroupID;
     }
-    if (this.containsNewAssets() || (this.assetGroupID && this.assetGroupID !== 'legacyAsset')) {
-      const oldAssetTypes = ['image', 'video', 'audio', 'plain', 'document', 'spreadsheet'];
-      if (!this.assetGroupID || oldAssetTypes.concat('legacyAsset').includes(this.assetGroupID)) {
+    const oldAssetTypes = ['image', 'video', 'audio', 'plain', 'document', 'spreadsheet', 'legacyAsset'];
+    if (this.containsNewAssets() || (this.assetGroupID && !oldAssetTypes.includes(this.assetGroupID))) {
+      if (!this.assetGroupID || oldAssetTypes.includes(this.assetGroupID)) {
         this.notificationService.emit({
           title: 'Falsche Assets',
           type: 'error',
