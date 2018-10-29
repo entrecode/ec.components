@@ -154,4 +154,11 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
     this.useConfig(this.initConfig());
     this.use(value, false);
   }
+  /** On Change check if solo, if true, close pop */
+  onChange() {
+    super.onChange();
+    if (this.config.solo && this.pop) {
+      this.pop.hide();
+    }
+  }
 }
