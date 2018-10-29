@@ -38,6 +38,8 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
   protected control: FormControl;
   /** If true, a pop will open that can be used to rename files before upload */
   @Input() custom: boolean;
+  /** Custom Placeholder */
+  @Input() placeholder: string;
   /** The used item */
   @Input() item: Item<any>;
   /** If true, the selection cannot be changed and no uploads can be made. */

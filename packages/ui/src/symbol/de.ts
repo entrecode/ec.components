@@ -181,6 +181,14 @@ export default [
         content: 'Resource'
     },
     {
+        name: 'resource.select.placeholder.new',
+        content: 'Hinzufügen...'
+    },
+    {
+        name: 'resource.select.placeholder.select',
+        content: 'Auswählen...'
+    },
+    {
         name: 'pagination.first',
         content: '«'
     },

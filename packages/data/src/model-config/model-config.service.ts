@@ -154,7 +154,9 @@ export class ModelConfigService extends Config {
             columns,
             display: ((value) => value),
             localizable,
-          }, this.typeConfig.get(type));
+          }, this.typeConfig.get(type), {
+              placeholder: placeholder || this.typeConfig.get(type).placeholder
+            });
         });
       return fields;
     });
