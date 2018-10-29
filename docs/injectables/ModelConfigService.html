@@ -2630,7 +2630,7 @@ set method. </p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="171" class="link-to-prism">packages/data/src/model-config/model-config.service.ts:171</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="170" class="link-to-prism">packages/data/src/model-config/model-config.service.ts:170</a></div>
                             </td>
                         </tr>
 
@@ -2869,7 +2869,7 @@ This config is meant to deliver the default behaviour when nothing else is confi
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="199" class="link-to-prism">packages/data/src/model-config/model-config.service.ts:199</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="198" class="link-to-prism">packages/data/src/model-config/model-config.service.ts:198</a></div>
                             </td>
                         </tr>
 
@@ -2947,7 +2947,7 @@ This config is meant to deliver the default behaviour when nothing else is confi
 </div>
 
                             <div class="io-description">
-                                <b>Returns : </b>    <code>{ id: { label: any; view: string; form: boolean; immutable: boolean; hidden: boolean; }; _created...</code>
+                                <b>Returns : </b>    <code><a href="../classes/List.html" target="_self" >{ id: { label: any; view: string; form: boolean; immutable: boolean; hideInList: boolean; }; _cre...</a></code>
 
                             </div>
                     </td>
@@ -3178,7 +3178,7 @@ export class ModelConfigService extends Config {
         view: &#x27;string&#x27;,
         form: false,
         immutable: true,
-        hidden: true
+        hideInList: true
       },
       _created: {
         label: this.symbol.resolve(&#x27;field.label.created&#x27;),
@@ -3187,7 +3187,7 @@ export class ModelConfigService extends Config {
         form: false,
         immutable: true,
         sortable: true,
-        hidden: true,
+        hideInList: true,
         rawFilter: true
       },
       _modified: {
@@ -3197,7 +3197,7 @@ export class ModelConfigService extends Config {
         form: false,
         immutable: true,
         sortable: true,
-        hidden: false,
+        hideInList: false,
         rawFilter: true
       },
       _creator: {
@@ -3206,7 +3206,7 @@ export class ModelConfigService extends Config {
         view: &#x27;account&#x27;,
         form: false,
         immutable: true,
-        hidden: true
+        hideInList: true
       }
     };
   }
@@ -3256,8 +3256,7 @@ export class ModelConfigService extends Config {
             relation: validation,
             immutable: !mutable,
             readOnly,
-            hidden: hideInList,
-            // hideInList: hideInList !&#x3D;&#x3D; false,
+            hideInList,
             hideInForm,
             create: !hideOnCreate,
             edit: !hideOnEdit,
