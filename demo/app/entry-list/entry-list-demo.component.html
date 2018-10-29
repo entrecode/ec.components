@@ -3,10 +3,10 @@
 <!-- <ec-daterange [timespan]="timespan" (spanChanged)="updateFilter($event,entryList)"></ec-daterange> -->
 <ec-searchbar [listComponent]="entryList" [list]="entryList?.list" property="name"></ec-searchbar>
 <ec-entry-list (changed)="updateList($event)" #entryList model="muffin" [config]="{sortBy:heatProperty,desc:true,rawFilter:true}">
-    <div class="ec-list-empty">
+    <div data-ec-list-empty>
         Die Demo Entry Liste ist noch leer..
     </div>
-    <div class="ec-list-empty-filtered">
+    <div data-ec-list-empty-filtered>
         Filter greift nicht. Rezept:
         <a (click)="entryList.list?.clearFilter()">Filter aufheben</a>
     </div>
