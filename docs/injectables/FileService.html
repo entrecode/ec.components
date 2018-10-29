@@ -2481,6 +2481,18 @@ changes.</p>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
+                                <a href="#dmAssetConfig">dmAssetConfig</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#legacyAssetConfig">legacyAssetConfig</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#oldAssetGroupIDs">oldAssetGroupIDs</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#uploads">uploads</a>
                             </li>
                         </ul>
@@ -2501,11 +2513,23 @@ changes.</p>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
+                                <a href="#getAssetConfig">getAssetConfig</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
                                 <a href="#getFormData">getFormData</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
                                 <a href="#isNewAsset">isNewAsset</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#isNewAssetGroupID">isNewAssetGroupID</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#isOldAssetGroupID">isOldAssetGroupID</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
@@ -2545,7 +2569,7 @@ changes.</p>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">packages/data/src/files/file.service.ts:62</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">packages/data/src/files/file.service.ts:68</a></div>
                             </td>
                         </tr>
 
@@ -2650,7 +2674,7 @@ changes.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="195" class="link-to-prism">packages/data/src/files/file.service.ts:195</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="215" class="link-to-prism">packages/data/src/files/file.service.ts:215</a></div>
                             </td>
                         </tr>
 
@@ -2701,6 +2725,73 @@ changes.</p>
             <tbody>
                 <tr>
                     <td class="col-md-4">
+                        <a name="getAssetConfig"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            getAssetConfig
+                            </b>
+                            <a href="#getAssetConfig"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon fa fa-reset"></span>
+                        <code>getAssetConfig(assetGroupID: )</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">packages/data/src/files/file.service.ts:77</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>assetGroupID</td>
+                                                    
+                                                    <td>
+                                                            no
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
                         <a name="getFormData"></a>
                         <span class="name">
                             <b>
@@ -2721,7 +2812,7 @@ changes.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">packages/data/src/files/file.service.ts:85</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">packages/data/src/files/file.service.ts:105</a></div>
                             </td>
                         </tr>
 
@@ -2806,7 +2897,7 @@ changes.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">packages/data/src/files/file.service.ts:72</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">packages/data/src/files/file.service.ts:92</a></div>
                             </td>
                         </tr>
 
@@ -2876,6 +2967,144 @@ changes.</p>
             <tbody>
                 <tr>
                     <td class="col-md-4">
+                        <a name="isNewAssetGroupID"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            isNewAssetGroupID
+                            </b>
+                            <a href="#isNewAssetGroupID"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon fa fa-reset"></span>
+                        <code>isNewAssetGroupID(assetGroupID: )</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="224" class="link-to-prism">packages/data/src/files/file.service.ts:224</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Yields true if the given assetGroupID is not an old one, meaning it is defined and legacyAsset or an old asset type. </p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>assetGroupID</td>
+                                                    
+                                                    <td>
+                                                            no
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="isOldAssetGroupID"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            isOldAssetGroupID
+                            </b>
+                            <a href="#isOldAssetGroupID"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon fa fa-reset"></span>
+                        <code>isOldAssetGroupID(assetGroupID: )</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="220" class="link-to-prism">packages/data/src/files/file.service.ts:220</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Yields true if the given assetGroupID is an old one. Also checks for old validation types </p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>assetGroupID</td>
+                                                    
+                                                    <td>
+                                                            no
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
                         <a name="resolveAssets"></a>
                         <span class="name">
                             <b>
@@ -2896,7 +3125,7 @@ changes.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="159" class="link-to-prism">packages/data/src/files/file.service.ts:159</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="179" class="link-to-prism">packages/data/src/files/file.service.ts:179</a></div>
                             </td>
                         </tr>
 
@@ -2979,7 +3208,7 @@ changes.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="200" class="link-to-prism">packages/data/src/files/file.service.ts:200</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="229" class="link-to-prism">packages/data/src/files/file.service.ts:229</a></div>
                             </td>
                         </tr>
 
@@ -3064,7 +3293,7 @@ changes.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">packages/data/src/files/file.service.ts:104</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">packages/data/src/files/file.service.ts:124</a></div>
                             </td>
                         </tr>
 
@@ -3181,7 +3410,7 @@ changes.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">packages/data/src/files/file.service.ts:126</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="146" class="link-to-prism">packages/data/src/files/file.service.ts:146</a></div>
                             </td>
                         </tr>
 
@@ -3329,6 +3558,132 @@ changes.</p>
             <tbody>
                 <tr>
                     <td class="col-md-4">
+                        <a name="dmAssetConfig"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            dmAssetConfig
+                            </b>
+                            <a href="#dmAssetConfig"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon fa fa-reset"></span><code>dmAssetConfig:     <code></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>Object.assign({}, this.resourceConfig.get(&#x27;dmAsset&#x27;))</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">packages/data/src/files/file.service.ts:64</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>config for new assets </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="legacyAssetConfig"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            legacyAssetConfig
+                            </b>
+                            <a href="#legacyAssetConfig"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon fa fa-reset"></span><code>legacyAssetConfig:     <code></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>Object.assign({}, this.resourceConfig.get(&#x27;legacyAsset&#x27;), { forceGroup: true })</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">packages/data/src/files/file.service.ts:66</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>config for legacy assets </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="oldAssetGroupIDs"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            oldAssetGroupIDs
+                            </b>
+                            <a href="#oldAssetGroupIDs"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon fa fa-reset"></span><code>oldAssetGroupIDs:     <code>[]</code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[&#x27;image&#x27;, &#x27;video&#x27;, &#x27;audio&#x27;, &#x27;plain&#x27;, &#x27;document&#x27;, &#x27;spreadsheet&#x27;, &#x27;legacyAsset&#x27;]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">packages/data/src/files/file.service.ts:68</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>All the possible assetGroupIDs that are interpreted as old. Comes from validation of field </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
                         <a name="uploads"></a>
                         <span class="name">
                             <b>
@@ -3439,12 +3794,32 @@ export class FileService {
     deduplicate: false,
     fileName: []
   };
+  /** config for new assets */
+  public dmAssetConfig &#x3D; Object.assign({}, this.resourceConfig.get(&#x27;dmAsset&#x27;));
+  /** config for legacy assets */
+  public legacyAssetConfig &#x3D; Object.assign({}, this.resourceConfig.get(&#x27;legacyAsset&#x27;), { forceGroup: true });
+  /** All the possible assetGroupIDs that are interpreted as old. Comes from validation of field */
+  public oldAssetGroupIDs &#x3D; [&#x27;image&#x27;, &#x27;video&#x27;, &#x27;audio&#x27;, &#x27;plain&#x27;, &#x27;document&#x27;, &#x27;spreadsheet&#x27;, &#x27;legacyAsset&#x27;];
 
   /** Injects sdk */
   constructor(private sdk: SdkService,
     private typeConfig: TypeConfigService,
     private resourceService: ResourceService,
     private resourceConfig: ResourceConfig) {
+  }
+
+  public getAssetConfig(assetGroupID) {
+    if (this.isOldAssetGroupID(assetGroupID)) {
+      const config &#x3D; Object.assign({}, this.legacyAssetConfig);
+      if (this.oldAssetGroupIDs.includes(assetGroupID)) {
+        config.filter &#x3D; Object.assign({}, (config.filter || {}), {
+          type: assetGroupID
+        });
+      }
+      return config;
+    } else {
+      return Object.assign({}, this.dmAssetConfig);
+    }
   }
 
   /** returns true if the given asset is a new one (DMAssetResource) */
@@ -3573,6 +3948,15 @@ export class FileService {
 
   public assetGroupList(forceReload &#x3D; false) {
     return (!forceReload &amp;&amp; this.assetGroupListPromise) || this.sdk.api.assetGroupList();
+  }
+
+  /** Yields true if the given assetGroupID is an old one. Also checks for old validation types */
+  public isOldAssetGroupID(assetGroupID) {
+    return !assetGroupID || this.oldAssetGroupIDs.includes(assetGroupID);
+  }
+  /** Yields true if the given assetGroupID is not an old one, meaning it is defined and legacyAsset or an old asset type. */
+  public isNewAssetGroupID(assetGroupID) {
+    return !this.isOldAssetGroupID(assetGroupID);
   }
 
   /** method that can be called after the upload to select the uploaded item(s). */

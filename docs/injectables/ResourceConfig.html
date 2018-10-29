@@ -3469,6 +3469,11 @@ export class ResourceConfig {
             display: value &#x3D;&gt; value.length,
             immutable: true
           },
+          type: {
+            filterOperator: &#x27;exact&#x27;,
+            form: false,
+            immutable: true
+          },
           tags: this.tagsField(this.symbol.resolve(&#x27;asset.field.label.tags&#x27;)),
           created: this.created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
         }
@@ -3507,6 +3512,11 @@ export class ResourceConfig {
             view: &#x27;tag&#x27;,
             form: false,
             display: value &#x3D;&gt; value.length,
+            immutable: true
+          },
+          type: {
+            filterOperator: &#x27;exact&#x27;,
+            form: false,
             immutable: true
           },
           tags: this.tagsField(this.symbol.resolve(&#x27;asset.field.label.tags&#x27;)),

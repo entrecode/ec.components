@@ -5618,9 +5618,9 @@ export class List&lt;T&gt; extends Collection&lt;Item&lt;T&gt;&gt; {
   /** Sets all fields that exceed the maxColumns to hidden */
   protected hideOverflowFields() {
     if (this.config &amp;&amp; this.config.maxColumns) {
-      this.fields.filter(f &#x3D;&gt; !f.hidden).forEach((field, index) &#x3D;&gt; {
-        if (index &gt;&#x3D; this.config.maxColumns &amp;&amp; field.hidden &#x3D;&#x3D;&#x3D; undefined) {
-          field.hidden &#x3D; true;
+      this.fields.filter(f &#x3D;&gt; !f.hideInList).forEach((field, index) &#x3D;&gt; {
+        if (index &gt;&#x3D; this.config.maxColumns &amp;&amp; field.hideInList &#x3D;&#x3D;&#x3D; undefined) {
+          field.hideInList &#x3D; true;
         }
       });
     }
@@ -5749,7 +5749,7 @@ export class List&lt;T&gt; extends Collection&lt;Item&lt;T&gt;&gt; {
   }
   /** Returns true if the given field index in the visible fields is higher than maxColumns.  */
   public isOverTheMax(field: Field) {
-    return this.fields.filter(f &#x3D;&gt; !f.hidden).indexOf(field) &gt;&#x3D; this.config.maxColumns;
+    return this.fields.filter(f &#x3D;&gt; !f.hideInList).indexOf(field) &gt;&#x3D; this.config.maxColumns;
   }
 }
 </code></pre>
