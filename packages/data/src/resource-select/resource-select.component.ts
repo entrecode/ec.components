@@ -59,7 +59,7 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
     // tslint:disable-next-line:no-input-rename
     @Input('config') crudConfig: CrudConfig<Resource>;
     /** The crud pop with the list to select from */
-    @ViewChild('dropdown') pop: PopComponent;
+    @ViewChild('dropdown') dropdown: PopComponent;
     /** The nested resource pop for editing and creating */
     @ViewChild(ResourcePopComponent) resourcePop: ResourcePopComponent;
     /** The nested resource list pop */
@@ -81,6 +81,16 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
 
     ngOnChanges() {
         this.init()
+    }
+
+    togglePop(e) {
+        if (this.dropdown && !this.config.disableSelect) {
+            this.dropdown.toggle(e);
+        } else if (this.resourceListPop && !this.config.disableListPop) {
+            this.resourceListPop.show();
+        } else if (this.resourcePop && !this.config.disableCreatePop) {
+            this.resourcePop.show();
+        }
     }
 
     /** Calls super.useConfig and then creates special dropdownConfig with just entryTitle as field  */
@@ -119,7 +129,7 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
             return;
         }
         this.config = Object.assign(this.resourceConfig.get(this.relation), { size: 10 },
-            this.crudConfig, { solo: this.solo, selectMode: true, disableSelectSwitch: true });
+            this.crudConfig, { solo: this.solo, selectMode: false, disableSelectSwitch: true });
         this.useConfig(this.config);
     }
 
@@ -147,7 +157,7 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
 
     onChange() {
         super.onChange();
-        if (this.resourceListPop) {
+        if (this.config.solo && this.resourceListPop) {
             this.resourceListPop.hide();
         }
     }

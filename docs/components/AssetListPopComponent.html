@@ -1158,6 +1158,9 @@
                         <a href="interfaces/ModelConfiguration.html" data-type="entity-link">ModelConfiguration</a>
                     </li>
                     <li class="link">
+                        <a href="interfaces/SdkField.html" data-type="entity-link">SdkField</a>
+                    </li>
+                    <li class="link">
                         <a href="interfaces/Symbol.html" data-type="entity-link">Symbol</a>
                     </li>
                     <li class="link">
@@ -2356,6 +2359,9 @@
                         <a href="interfaces/ModelConfiguration.html" data-type="entity-link">ModelConfiguration</a>
                     </li>
                     <li class="link">
+                        <a href="interfaces/SdkField.html" data-type="entity-link">SdkField</a>
+                    </li>
+                    <li class="link">
                         <a href="interfaces/Symbol.html" data-type="entity-link">Symbol</a>
                     </li>
                     <li class="link">
@@ -3110,7 +3116,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">packages/data/src/files/asset-list-pop/asset-list-pop.component.ts:86</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">packages/data/src/files/asset-list-pop/asset-list-pop.component.ts:84</a></div>
                             </td>
                         </tr>
 
@@ -3188,7 +3194,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">packages/data/src/files/asset-list-pop/asset-list-pop.component.ts:77</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">packages/data/src/files/asset-list-pop/asset-list-pop.component.ts:75</a></div>
                             </td>
                         </tr>
 
@@ -3322,7 +3328,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">packages/data/src/files/asset-list-pop/asset-list-pop.component.ts:91</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">packages/data/src/files/asset-list-pop/asset-list-pop.component.ts:89</a></div>
                             </td>
                         </tr>
 
@@ -3920,13 +3926,11 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
   ngOnInit() {
     this.fileService.assetGroupList().then(assetGroups &#x3D;&gt; {
       this.assetGroups &#x3D; assetGroups;
-      /* if (!this.assetGroupID) {
-        this.assetGroupID &#x3D; assetGroups[0] || &#x27;legacyAsset&#x27;;
-        this.groupChanged.emit(this.assetGroupID);
-      } */
     });
     this.uploadConfig &#x3D; Object.assign({}, this.config, { disableListPop: true });
-    this.config &#x3D; Object.assign({ hidePagination: true, disableHeader: true }, this.config);
+    this.config &#x3D; Object.assign(
+      this.fileService.getAssetConfig(this.assetGroupID),
+      { hidePagination: true, disableHeader: true }, this.config);
   }
 
   /** emits columnClicked event or toggles selection if no observers. */
@@ -3940,7 +3944,7 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
 
   /** Returns the full resource relation name based on the current assetGroupID  */
   getGroupRelation() {
-    return !this.assetGroupID || this.assetGroupID &#x3D;&#x3D;&#x3D; &#x27;legacyAsset&#x27; ? &#x27;legacyAsset&#x27;
+    return this.fileService.isOldAssetGroupID(this.assetGroupID) ? &#x27;legacyAsset&#x27;
       : &#x27;dmAsset.&#x27; + this.assetGroupID;
   }
 

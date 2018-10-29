@@ -4,7 +4,7 @@
   // @param {array} $ec-list-cell-is-filtered-style
   &.is-filterable {
     cursor: pointer;
-    position: relative;
+    // position: relative;
     @include inject-style($ec-list-cell-is-filtered-style);
   }
 
@@ -34,27 +34,22 @@
 }
 
 .is-filterable-pop {
-  > .ec-pop-container {
-    > .ec-pop {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 10;
-      box-shadow: initial;
-      padding: arrayMagic($ec-list-cell-padding);
-      font-size: rem($ec-list-header-size);
-    }
-
-    &.is-visible {
-      > .ec-pop {
-        display: flex;
-      }
-    }
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  box-shadow: initial;
+  padding: arrayMagic($ec-list-cell-padding);
+  font-size: rem($ec-list-header-size);
+  
+  &.is-active {
+    display: flex;
   }
 
   .is-filterable-filter__reset {

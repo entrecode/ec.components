@@ -2,19 +2,16 @@
   <div class="ec-list-cell ec-list-item__selector" *ngIf="list?.config?.selectMode&&!list?.isEmpty()">
     <input type="checkbox" (click)="selection?.toggleAll(list?.page)" [checked]="selection?.hasAll(list?.page)" [disabled]="selection?.config?.solo">
   </div>
-
-  <ec-form [config]="list?.config" [value]="list?.config?.filter" [empty]="true" #filterForm></ec-form>
-
   <div class="ec-list-cell" *ngFor="let field of list?.fields;let i = index" 
-    [ngClass]="'ec-list-cell_' + field.view" 
-    [class.is-hidden]="field.hidden"
+    [ngClass]="'ec-list-cell_' + field.view + ' ' + field?.classes" 
+    [class.is-hidden]="field.hideInList"
     [class.is-sortable]="field.sortable" 
     [class.is-sorted]="list.isSorted(field.property)" 
     [class.is-filterable]="field.filterable"
     [class.is-filtered]="list.isFiltered(field.property)" 
     [class.is-filter-active]="filterPop.visible" 
-    [class.is-sorted-desc]="list.isSorted(field.property, false)" 
-    [class.is-sorted-asc]="list.isSorted(field.property, true)">
+    [class.is-sorted-desc]="list.isSorted(field.property, true)" 
+    [class.is-sorted-asc]="list.isSorted(field.property, false)">
 
     <a (click)="editFilter(filterPop)" class="is-filterable-control" *ngIf="field.filterable">
       <ec-icon name="find"></ec-icon>
@@ -32,18 +29,19 @@
     </ec-pop>
   </div>
 
-  <!-- TODO see T5-2289 - move field-filter to ec-list-header -->
   <div class="dropdown dropdown_right ec-list-column-filter" tabindex="0" *ngIf="!list?.config?.disableColumnFilter">
     <span>&#9776;</span>
     <div class="dropdown-options ec-list-column-filter-options">
       <ul>
-        <li class="ec-list-column-filter-option" *ngFor="let field of list?.fields" [class.is-active]="!field.hidden" [class.is-hidden]="field.hideInColumnFilter">
+        <li class="ec-list-column-filter-option" *ngFor="let field of list?.fields" [class.is-active]="!field.hideInList" [class.is-hidden]="field.hideInColumnFilter">
           <div class="form-boolean" (click)="fieldCheckbox.click()">
             <label>{{fieldLabel(field)}}</label>
-            <input (click)="toggleVisibility(field)" #fieldCheckbox [checked]="!field.hidden" type="checkbox"/> 
+            <input (click)="toggleVisibility(field)" #fieldCheckbox [checked]="!field.hideInList" type="checkbox"/> 
           </div>
         </li>
       </ul>
     </div>
   </div>
 </div>
+
+<ec-form [config]="list?.config" [value]="list?.config?.filter" [empty]="true" #filterForm></ec-form>

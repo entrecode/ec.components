@@ -42,13 +42,10 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
 
   constructor(public route: ActivatedRoute, public symbol: SymbolService) {
     this.defaultPlaceholder = this.symbol.resolve('searchbar.placeholder');
-    const paste = this.paste.asObservable();
     this.paste.asObservable()
       .subscribe((e) => {
         const pasted = (e.clipboardData).getData('text');
-        if (this.filterList(pasted, true)) {
-          this.preventDefault(e);
-        }
+        this.filterList(pasted, true);
       });
 
     this.keyup.asObservable().debounceTime(this.debounceTime)
@@ -80,8 +77,6 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
     list.change$.subscribe(newList => {
       if (!this.list.config.filter || !this.list.config.filter[this.property]) {
         this.clear();
-      } else if (this.list.config.filter[this.property]) {
-        this.query = this.list.config.filter[this.property];
       }
     });
   };

@@ -13,4 +13,8 @@ export class EntrySelectDemoComponent {
 
   constructor() {
   }
+
+  toggle(item) {
+    console.log('toggle', item);
+  }
 }

@@ -90,14 +90,14 @@ export const mocked = {
         },
         density: {
           label: 'Dichte',
-          hidden: true,
+          hideInList: true,
           resolve: (body) => {
             return body.music ? (Math.round(body.music.measures.reduce((chords, measure) => chords.concat(measure), []).length / body.music.measures.length * 10) / 10) : 0;
           }
         },
         diversity: {
           label: 'Diversität',
-          hidden: true,
+          hideInList: true,
           resolve: (body) => {
             return body.music ? (body.music.measures.reduce((chords, measure) => chords.concat(measure), []).filter((v, i, a) => a.indexOf(v) === i).length) : 0;
           },

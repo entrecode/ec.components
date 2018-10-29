@@ -1,5 +1,12 @@
 # Changelog
 
+<a name="data0.40.0"></a>
+
+## @ec.components/data 0.40.0
+
+BREAKING CHANGE: 
+* field property hidden has been renamed to hideInList. You have to refactor all configurations that contain hidden: true to hideInList: true.
+
 <a name="ui0.32.0"></a>
 
 ## @ec.components/ui 0.32.0

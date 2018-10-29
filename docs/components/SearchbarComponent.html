@@ -1158,6 +1158,9 @@
                         <a href="interfaces/ModelConfiguration.html" data-type="entity-link">ModelConfiguration</a>
                     </li>
                     <li class="link">
+                        <a href="interfaces/SdkField.html" data-type="entity-link">SdkField</a>
+                    </li>
+                    <li class="link">
                         <a href="interfaces/Symbol.html" data-type="entity-link">Symbol</a>
                     </li>
                     <li class="link">
@@ -2356,6 +2359,9 @@
                         <a href="interfaces/ModelConfiguration.html" data-type="entity-link">ModelConfiguration</a>
                     </li>
                     <li class="link">
+                        <a href="interfaces/SdkField.html" data-type="entity-link">SdkField</a>
+                    </li>
+                    <li class="link">
                         <a href="interfaces/Symbol.html" data-type="entity-link">Symbol</a>
                     </li>
                     <li class="link">
@@ -2927,7 +2933,7 @@ Supports autofocus and arrow navigation. </p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="140" class="link-to-prism">packages/ui/src/list/searchbar/searchbar.component.ts:140</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="135" class="link-to-prism">packages/ui/src/list/searchbar/searchbar.component.ts:135</a></div>
                             </td>
                         </tr>
 
@@ -2994,7 +3000,7 @@ Supports autofocus and arrow navigation. </p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">packages/ui/src/list/searchbar/searchbar.component.ts:98</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">packages/ui/src/list/searchbar/searchbar.component.ts:93</a></div>
                             </td>
                         </tr>
 
@@ -3034,7 +3040,7 @@ Supports autofocus and arrow navigation. </p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">packages/ui/src/list/searchbar/searchbar.component.ts:119</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">packages/ui/src/list/searchbar/searchbar.component.ts:114</a></div>
                             </td>
                         </tr>
 
@@ -3118,7 +3124,7 @@ select is emitted immediately with a pseudo item containing the value as item id
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">packages/ui/src/list/searchbar/searchbar.component.ts:67</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">packages/ui/src/list/searchbar/searchbar.component.ts:64</a></div>
                             </td>
                         </tr>
 
@@ -3156,7 +3162,7 @@ select is emitted immediately with a pseudo item containing the value as item id
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">packages/ui/src/list/searchbar/searchbar.component.ts:110</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">packages/ui/src/list/searchbar/searchbar.component.ts:105</a></div>
                             </td>
                         </tr>
 
@@ -3196,7 +3202,7 @@ select is emitted immediately with a pseudo item containing the value as item id
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">packages/ui/src/list/searchbar/searchbar.component.ts:93</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">packages/ui/src/list/searchbar/searchbar.component.ts:88</a></div>
                             </td>
                         </tr>
 
@@ -3234,7 +3240,7 @@ select is emitted immediately with a pseudo item containing the value as item id
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">packages/ui/src/list/searchbar/searchbar.component.ts:89</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">packages/ui/src/list/searchbar/searchbar.component.ts:84</a></div>
                             </td>
                         </tr>
 
@@ -3272,7 +3278,7 @@ select is emitted immediately with a pseudo item containing the value as item id
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">packages/ui/src/list/searchbar/searchbar.component.ts:103</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">packages/ui/src/list/searchbar/searchbar.component.ts:98</a></div>
                             </td>
                         </tr>
 
@@ -3582,13 +3588,10 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
 
   constructor(public route: ActivatedRoute, public symbol: SymbolService) {
     this.defaultPlaceholder &#x3D; this.symbol.resolve(&#x27;searchbar.placeholder&#x27;);
-    const paste &#x3D; this.paste.asObservable();
     this.paste.asObservable()
       .subscribe((e) &#x3D;&gt; {
         const pasted &#x3D; (e.clipboardData).getData(&#x27;text&#x27;);
-        if (this.filterList(pasted, true)) {
-          this.preventDefault(e);
-        }
+        this.filterList(pasted, true);
       });
 
     this.keyup.asObservable().debounceTime(this.debounceTime)
@@ -3620,8 +3623,6 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
     list.change$.subscribe(newList &#x3D;&gt; {
       if (!this.list.config.filter || !this.list.config.filter[this.property]) {
         this.clear();
-      } else if (this.list.config.filter[this.property]) {
-        this.query &#x3D; this.list.config.filter[this.property];
       }
     });
   };

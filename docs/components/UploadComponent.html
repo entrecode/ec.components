@@ -1158,6 +1158,9 @@
                         <a href="interfaces/ModelConfiguration.html" data-type="entity-link">ModelConfiguration</a>
                     </li>
                     <li class="link">
+                        <a href="interfaces/SdkField.html" data-type="entity-link">SdkField</a>
+                    </li>
+                    <li class="link">
                         <a href="interfaces/Symbol.html" data-type="entity-link">Symbol</a>
                     </li>
                     <li class="link">
@@ -2354,6 +2357,9 @@
                     </li>
                     <li class="link">
                         <a href="interfaces/ModelConfiguration.html" data-type="entity-link">ModelConfiguration</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/SdkField.html" data-type="entity-link">SdkField</a>
                     </li>
                     <li class="link">
                         <a href="interfaces/Symbol.html" data-type="entity-link">Symbol</a>
@@ -3673,7 +3679,7 @@ export class UploadComponent implements WithLoader, WithNotifications {
     files &#x3D; typeof files &#x3D;&#x3D;&#x3D; &#x27;string&#x27;
       ? files.split(&#x27;\n&#x27;).map(url &#x3D;&gt; ({ name: url, url }))
       : files;
-    if (files[0].url &amp;&amp; this.assetGroupID &#x3D;&#x3D;&#x3D; &#x27;legacyAsset&#x27;) {
+    if (files[0].url &amp;&amp; this.fileService.isOldAssetGroupID(this.assetGroupID)) {
       delete this.assetGroupID;
     }
     this.filesToUpload &#x3D; files;
@@ -3689,7 +3695,7 @@ export class UploadComponent implements WithLoader, WithNotifications {
 
   /** Triggers upload of current selected files */
   upload(files, api &#x3D; this.sdk.api) {
-    this.uploadPromise &#x3D; (this.assetGroupID !&#x3D;&#x3D; &#x27;legacyAsset&#x27; ?
+    this.uploadPromise &#x3D; (this.fileService.isNewAssetGroupID(this.assetGroupID) ?
       this.fileService.uploadAssets(files, this.assetGroupID, this.options, api) :
       this.fileService.uploadFiles(files))
       .then((_upload) &#x3D;&gt; {

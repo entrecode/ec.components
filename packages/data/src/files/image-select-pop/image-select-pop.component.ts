@@ -7,6 +7,7 @@ import { SdkService } from '@ec.components/data/src/sdk/sdk.service';
 import { LoaderComponent } from '@ec.components/ui';
 import { DefaultEntryInputComponent } from '@ec.components/data/src/entry-form/default-entry-input.component';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import { FileService } from '../file.service';
 
 /** This component is a pop with a form to add images. You can set an the alternative Text and the size.
  * The size inputs will keep the image ratio by default.  */
@@ -31,16 +32,18 @@ export class ImageSelectPopComponent extends PopComponent implements OnInit {
     constructor(public popService: PopService,
         public sdk: SdkService,
         public symbol: SymbolService,
+        public fileService: FileService,
         public elementRef: ElementRef) {
         super(popService, elementRef);
     }
     /** Inits the form */
     ngOnInit() {
+        const isOldAssetGroupID = this.fileService.isOldAssetGroupID(this.assetGroupID);
         this.imageForm = {
             submitButtonLabel: this.symbol.resolve('image-select-pop.submitButtonLabel'),
             onSave: (form, value: { img, height, width, alt }) => {
                 const size = Math.max(value.width, value.height);
-                if (!this.assetGroupID || this.assetGroupID === 'legacyAsset') {
+                if (isOldAssetGroupID) {
                     this.sdk.api.asset(value.img)
                         .then(asset =>
                             asset.getImageUrl(size, '')
@@ -63,12 +66,12 @@ export class ImageSelectPopComponent extends PopComponent implements OnInit {
                 img: {
                     label: ' ',
                     input: DefaultEntryInputComponent,
-                    type: this.assetGroupID && this.assetGroupID !== 'legacyAsset' ? 'dmAsset' : 'asset',
-                    relation: this.assetGroupID || 'legacyAsset',
+                    type: isOldAssetGroupID ? 'asset' : 'dmAsset',
+                    relation: !isOldAssetGroupID ? this.assetGroupID : 'legacyAsset',
                     required: true,
                     changed: (value, form) => {
                         const loadImg = Promise.resolve().then(() => {
-                            if (!this.assetGroupID || this.assetGroupID === 'legacyAsset') {
+                            if (isOldAssetGroupID) {
                                 return this.sdk.api.asset(value).then(asset => {
                                     const original = asset.getOriginalFile();
                                     const resolution = original.resolution;

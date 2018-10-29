@@ -361,6 +361,11 @@ export class ResourceConfig {
             display: value => value.length,
             immutable: true
           },
+          type: {
+            filterOperator: 'exact',
+            form: false,
+            immutable: true
+          },
           tags: this.tagsField(this.symbol.resolve('asset.field.label.tags')),
           created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
         }
@@ -399,6 +404,11 @@ export class ResourceConfig {
             view: 'tag',
             form: false,
             display: value => value.length,
+            immutable: true
+          },
+          type: {
+            filterOperator: 'exact',
+            form: false,
             immutable: true
           },
           tags: this.tagsField(this.symbol.resolve('asset.field.label.tags')),

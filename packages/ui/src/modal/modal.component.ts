@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ElementRef, OnChanges, TemplateRef, ContentChild, ContentChildren } from '@angular/core';
+import { Component, Input, OnInit, ElementRef, OnChanges, TemplateRef, ContentChildren } from '@angular/core';
 import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
 import { PopService } from '@ec.components/ui/src/pop/pop.service';
 

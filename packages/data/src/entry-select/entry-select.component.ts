@@ -1,7 +1,7 @@
 /**
  * Created by felix on 23.05.17.
  */
-import { Component, forwardRef, Input, OnChanges, OnInit, ViewChild, ViewEncapsulation, ElementRef } from '@angular/core';
+import { Component, forwardRef, Input, OnChanges, OnInit, ViewChild, ViewEncapsulation, ElementRef, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Form } from '@ec.components/core';
 import { Item } from '@ec.components/core/src/item/item';
@@ -61,7 +61,7 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   // tslint:disable-next-line:no-input-rename
   @Input('config') crudConfig: CrudConfig<EntryResource>;
   /** The dropdown pop with the list to select from */
-  @ViewChild('dropdown') pop: PopComponent;
+  @ViewChild('dropdown') dropdown: PopComponent;
   /** The nested entry pop */
   @ViewChild(EntryPopComponent) entryPop: EntryPopComponent;
   /** The nested entry list pop */
@@ -72,6 +72,10 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   @ViewChild(SearchbarComponent) searchbar: SearchbarComponent;
   /** THe nested delete confirmation pop */
   @ViewChild(ResourceDeletePopComponent) confirmDelete: ResourceDeletePopComponent;
+  /** Emits when an entry is being removed */
+  @Output() remove: EventEmitter<Item<EntryResource>> = new EventEmitter();
+  /** Emits when an entry is being added */
+  @Output() add: EventEmitter<Item<EntryResource>> = new EventEmitter();
   /** The current lightModel (part of root response) */
   lightModel: any;
   /** Model list that is only loaded when needing to pick the model first. */
@@ -101,9 +105,9 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
     }
   }
 
-  toggle(e) {
-    if (this.pop && !this.config.disableSelect) {
-      this.pop.toggle(e);
+  togglePop(e) {
+    if (this.dropdown && !this.config.disableSelect) {
+      this.dropdown.toggle(e);
     } else if (this.entryListPop && !this.config.disableListPop) {
       this.entryListPop.show();
     } else if (this.entryPop && !this.config.disableCreatePop) {
@@ -124,7 +128,7 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
     this.dropdownConfig = Object.assign({}, this.config, {
       fields: {
         [this.config.label]: Object.assign({}, (this.config.fields || {})[this.config.label]),
-        _modified: { hidden: true }
+        _modified: { hideInList: true }
       }
     });
     this.auth.getAllowedModelMethods(this.model, this.config.methods)
@@ -164,7 +168,7 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
     this.modelConfig.generateConfig(this.model) // , (this.config || {}).fields
       .then((config) => {
         this.config = Object.assign(config, { size: 10 }, this.crudConfig,
-          { solo: this.solo, selectMode: true, disableSelectSwitch: true });
+          { solo: this.solo, selectMode: false, disableSelectSwitch: true });
         this.useConfig(this.config);
       });
   }
@@ -203,7 +207,7 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
 
   onChange() {
     super.onChange();
-    if (this.entryListPop) {
+    if (this.config.solo && this.entryListPop) {
       this.entryListPop.hide();
     }
   }

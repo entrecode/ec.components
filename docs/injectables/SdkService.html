@@ -1158,6 +1158,9 @@
                         <a href="interfaces/ModelConfiguration.html" data-type="entity-link">ModelConfiguration</a>
                     </li>
                     <li class="link">
+                        <a href="interfaces/SdkField.html" data-type="entity-link">SdkField</a>
+                    </li>
+                    <li class="link">
                         <a href="interfaces/Symbol.html" data-type="entity-link">Symbol</a>
                     </li>
                     <li class="link">
@@ -2356,6 +2359,9 @@
                         <a href="interfaces/ModelConfiguration.html" data-type="entity-link">ModelConfiguration</a>
                     </li>
                     <li class="link">
+                        <a href="interfaces/SdkField.html" data-type="entity-link">SdkField</a>
+                    </li>
+                    <li class="link">
                         <a href="interfaces/Symbol.html" data-type="entity-link">Symbol</a>
                     </li>
                     <li class="link">
@@ -2449,11 +2455,14 @@
                 <p>The SdkService exposes all instances of the ec.sdk APIs.
 To be able to use it, you have to provide an environment like this in your module&#39;s providers:</p>
 <div><pre class="line-numbers"><code class="language-json">{
-provide: &quot;environment&quot;,
+provide: &#39;environment&#39;,
 useValue: {
-datamanagerID: &quot;83cc6374&quot;,
-environment: &quot;stage&quot;,
-clientID: &quot;rest&quot;
+datamanagerID: &#39;83cc6374&#39;,
+environment: &#39;stage&#39;,
+clientID: &#39;rest&#39;,
+// init: false
+// the init option will prevent automatically initing the sdk.
+// you have to call sdk.init() yourself. This can be useful if your environment is not known before runtime
 }
 }</code></pre></div><p>The environment is optional, defaulting to live. See
 <a href="https://entrecode.github.io/ec.sdk/#environment">https://entrecode.github.io/ec.sdk/#environment</a> for more info. The clientID is only optional if
@@ -2568,13 +2577,13 @@ setClientID.</p>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:75</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:78</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
-                            <div class="io-description"><p>Calls init and sets ready to true when finished. </p>
+                            <div class="io-description"><p>Calls init and sets ready to true when finished. Omits init if environment has set init: false </p>
 </div>
                             <div>
                                     <b>Parameters :</b>
@@ -2631,7 +2640,7 @@ setClientID.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="127" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:127</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="132" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:132</a></div>
                             </td>
                         </tr>
 
@@ -2702,7 +2711,7 @@ setClientID.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="116" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:116</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="121" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:121</a></div>
                             </td>
                         </tr>
 
@@ -2786,7 +2795,7 @@ setClientID.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:83</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:88</a></div>
                             </td>
                         </tr>
 
@@ -2857,7 +2866,7 @@ setClientID.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="139" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:139</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="144" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:144</a></div>
                             </td>
                         </tr>
 
@@ -2930,7 +2939,7 @@ setClientID.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:106</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:111</a></div>
                             </td>
                         </tr>
 
@@ -3032,7 +3041,7 @@ If you set &quot;datamanagerID&quot; in your environment, this method is called 
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:48</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:51</a></div>
                             </td>
                         </tr>
 
@@ -3073,7 +3082,7 @@ If you set &quot;datamanagerID&quot; in your environment, this method is called 
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:46</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:49</a></div>
                             </td>
                         </tr>
 
@@ -3113,7 +3122,7 @@ If you set &quot;datamanagerID&quot; in your environment, this method is called 
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:31</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:34</a></div>
                             </td>
                         </tr>
 
@@ -3159,7 +3168,7 @@ If you set &quot;datamanagerID&quot; in your environment, this method is called 
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:50</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:53</a></div>
                             </td>
                         </tr>
 
@@ -3200,7 +3209,7 @@ If you set &quot;datamanagerID&quot; in your environment, this method is called 
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:64</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:67</a></div>
                             </td>
                         </tr>
 
@@ -3240,7 +3249,7 @@ If you set &quot;datamanagerID&quot; in your environment, this method is called 
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:78</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:81</a></div>
                             </td>
                         </tr>
 
@@ -3275,7 +3284,7 @@ If you set &quot;datamanagerID&quot; in your environment, this method is called 
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:75</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:78</a></div>
                             </td>
                         </tr>
 
@@ -3320,7 +3329,7 @@ If you set &quot;datamanagerID&quot; in your environment, this method is called 
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:33</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:36</a></div>
                             </td>
                         </tr>
 
@@ -3366,7 +3375,7 @@ If you set &quot;datamanagerID&quot; in your environment, this method is called 
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:68</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:71</a></div>
                             </td>
                         </tr>
 
@@ -3407,7 +3416,7 @@ If you set &quot;datamanagerID&quot; in your environment, this method is called 
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:44</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:47</a></div>
                             </td>
                         </tr>
 
@@ -3448,7 +3457,7 @@ If you set &quot;datamanagerID&quot; in your environment, this method is called 
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:66</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:69</a></div>
                             </td>
                         </tr>
 
@@ -3483,7 +3492,7 @@ If you set &quot;datamanagerID&quot; in your environment, this method is called 
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:34</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:37</a></div>
                                 </td>
                             </tr>
 
@@ -3505,7 +3514,7 @@ If you set &quot;datamanagerID&quot; in your environment, this method is called 
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:52</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:55</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -3527,7 +3536,7 @@ If you set &quot;datamanagerID&quot; in your environment, this method is called 
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:59</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">packages/data/src/sdk/sdk.service.ts:62</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -3587,11 +3596,14 @@ import { Subject } from &#x27;rxjs/Subject&#x27;;
  *
  *&#x60;&#x60;&#x60;json
  {
-   provide: &quot;environment&quot;,
+   provide: &#x27;environment&#x27;,
    useValue: {
-     datamanagerID: &quot;83cc6374&quot;,
-     environment: &quot;stage&quot;,
-     clientID: &quot;rest&quot;
+     datamanagerID: &#x27;83cc6374&#x27;,
+     environment: &#x27;stage&#x27;,
+     clientID: &#x27;rest&#x27;,
+     // init: false
+     // the init option will prevent automatically initing the sdk.
+     // you have to call sdk.init() yourself. This can be useful if your environment is not known before runtime
    }
  }&#x60;&#x60;&#x60;
  * The environment is optional, defaulting to live. See
@@ -3648,9 +3660,11 @@ export class SdkService {
    * */
   public ready: Promise&lt;AccountResource&gt;;
 
-  /** Calls init and sets ready to true when finished. */
+  /** Calls init and sets ready to true when finished. Omits init if environment has set init: false */
   constructor(@Inject(&#x27;environment&#x27;) public environment) {
-    this.init();
+    if (!environment || environment.init !&#x3D;&#x3D; false) {
+      this.init();
+    }
   }
 
   /** Creates all the API instances and determines the current user. */

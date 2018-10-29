@@ -37,7 +37,7 @@ export class ListConfigService {
         if (!key) {
             return;
         }
-        const config = { hide: list.fields.filter(f => f.hidden).map(f => f.property) };
+        const config = { hide: list.fields.filter(f => f.hideInList).map(f => f.property) };
         this.store(key, config);
     }
 
@@ -48,14 +48,14 @@ export class ListConfigService {
         }
         const existing = this.retrieve(key);
         if (existing && existing.hide) {
-            list.fields.forEach(field => field.hidden = false);
+            list.fields.forEach(field => field.hideInList = false);
             existing.hide.forEach(property => {
                 const field = list.fields.find(f => f.property === property);
                 if (!field) {
                     console.warn('field ', property, ' not found');
                     return;
                 }
-                field.hidden = true;
+                field.hideInList = true;
             });
         }
     }

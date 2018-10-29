@@ -36,14 +36,18 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   @Output() changed: EventEmitter<Selection<T>> = new EventEmitter();
   /** Event emitter on selected item click */
   @Output() itemClick: EventEmitter<Item<T>> = new EventEmitter();
+  /** Emits when an item is being removed */
+  @Output() remove: EventEmitter<Item<T>> = new EventEmitter();
+  /** Emits when an item is being added */
+  @Output() add: EventEmitter<Item<T>> = new EventEmitter();
   /** The Instance of the List */
   @Input() list: List<T>;
   /** Available Items */
   @Input() values: Array<T>;
   /** Wether or not the selection should be solo */
   @Input() solo: boolean;
-  /** The selection pop */
-  @ViewChild(PopComponent) pop: PopComponent;
+  /** The selection dropdown */
+  @ViewChild('dropdown') dropdown: PopComponent;
 
   constructor(public elementRef: ElementRef) {
   }
@@ -93,11 +97,23 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
 
   /** Removes the given item from selection */
   removeItem(item: Item<any>, e?) {
-    this.selection.remove(item);
     if (e) {
       e.preventDefault();
       e.stopPropagation();
       e.stopImmediatePropagation();
+    }
+    if (this.remove.observers.length) {
+      this.remove.emit(item);
+    } else {
+      this.selection.remove(item);
+    }
+  }
+  /** Adds the given ite, emits add output if observed */
+  addItem(item: Item<any>) {
+    if (this.add.observers.length) {
+      this.add.emit(item);
+    } else {
+      this.selection.toggle(item);
     }
   }
 
@@ -128,14 +144,18 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
 
   /** Select handler. Toggles selection. */
   public select(item) {
-    this.selection.toggle(item);
+    if (this.selection.has(item)) {
+      this.removeItem(item);
+    } else {
+      this.addItem(item);
+    }
   }
 
-  /** Fires on selection change. Hides pop if solo */
+  /** Fires on selection change. Hides dropdown if solo */
   onChange() {
     this.changed.emit(this.selection);
-    if (this.config.solo && this.pop) {
-      this.pop.hide();
+    if (this.config.solo && this.dropdown) {
+      this.dropdown.hide();
     }
     this.value = this.selection.getValue();
     return this.propagateChange(this.value);

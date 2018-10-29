@@ -1,26 +1,12 @@
 <h2>Entry List</h2>
-
-<!-- <nav class="dropdown dropdown_center" tabindex="0">
-    <span class="btn btn_clear btn_minor">
-        <ec-icon name="binoculars"></ec-icon>
-    </span>
-    <ul class="dropdown-options">
-        <li class="dropdown-option" *ngFor="let field of entryList.list?.fields" [class.is-active]="!field.hidden">
-            <a (click)="field.hidden=!field.hidden">
-                <ec-icon name="check" *ngIf="!field.hidden">{{field.property}}</ec-icon>
-                <ec-icon name="substract" *ngIf="field.hidden">{{field.property}}</ec-icon>
-            </a>
-        </li>
-    </ul>
-</nav> -->
 <!-- <ec-heatmap #heatmap (spanChanged)="updateFilter($event,entryList)" style="width:400px;display:block" [timestamps]="timestamps"></ec-heatmap> -->
 <!-- <ec-daterange [timespan]="timespan" (spanChanged)="updateFilter($event,entryList)"></ec-daterange> -->
 <ec-searchbar [listComponent]="entryList" [list]="entryList?.list" property="name"></ec-searchbar>
 <ec-entry-list (changed)="updateList($event)" #entryList model="muffin" [config]="{sortBy:heatProperty,desc:true,rawFilter:true}">
-    <div class="ec-list-empty">
+    <div data-ec-list-empty>
         Die Demo Entry Liste ist noch leer..
     </div>
-    <div class="ec-list-empty-filtered">
+    <div data-ec-list-empty-filtered>
         Filter greift nicht. Rezept:
         <a (click)="entryList.list?.clearFilter()">Filter aufheben</a>
     </div>
