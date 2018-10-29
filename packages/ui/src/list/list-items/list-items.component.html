@@ -5,7 +5,7 @@
       <input type="checkbox" [checked]="selection?.has(item)">
     </div>
     <div *ngFor="let field of list?.fields;let i = index" class="ec-list-cell" [ngClass]="'ec-list-cell_' + field.view + ' ' + field?.classes"
-      [ngSwitch]="field.view" [class.is-hidden]="field.hidden" [class.is-sortable]="field.sortable" [class.is-filtered]="list.isFiltered(field.property)"
+      [ngSwitch]="field.view" [class.is-hidden]="field.hideInList" [class.is-sortable]="field.sortable" [class.is-filtered]="list.isFiltered(field.property)"
       [class.is-sorted]="list.config?.sortBy===field.property">
       <ec-output [field]="field" [item]="item"></ec-output>
     </div>
