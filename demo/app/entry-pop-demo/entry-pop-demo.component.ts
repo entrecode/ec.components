@@ -23,7 +23,7 @@ export class EntryPopDemoComponent {
     this.modelConfig.set('muffin', {
       fields: {
         id: {
-          hidden: true
+          hideInList: true
         },
         name: {
           label: 'Name..'

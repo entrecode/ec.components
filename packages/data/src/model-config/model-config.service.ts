@@ -66,7 +66,7 @@ export class ModelConfigService extends Config {
         view: 'string',
         form: false,
         immutable: true,
-        hidden: true
+        hideInList: true
       },
       _created: {
         label: this.symbol.resolve('field.label.created'),
@@ -75,7 +75,7 @@ export class ModelConfigService extends Config {
         form: false,
         immutable: true,
         sortable: true,
-        hidden: true,
+        hideInList: true,
         rawFilter: true
       },
       _modified: {
@@ -85,7 +85,7 @@ export class ModelConfigService extends Config {
         form: false,
         immutable: true,
         sortable: true,
-        hidden: false,
+        hideInList: false,
         rawFilter: true
       },
       _creator: {
@@ -94,7 +94,7 @@ export class ModelConfigService extends Config {
         view: 'account',
         form: false,
         immutable: true,
-        hidden: true
+        hideInList: true
       }
     };
   }
@@ -144,8 +144,7 @@ export class ModelConfigService extends Config {
             relation: validation,
             immutable: !mutable,
             readOnly,
-            hidden: hideInList,
-            // hideInList: hideInList !== false,
+            hideInList,
             hideInForm,
             create: !hideOnCreate,
             edit: !hideOnEdit,
