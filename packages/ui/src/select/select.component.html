@@ -20,8 +20,8 @@
       <div class="drag-placeholder" style="width: 48px;"></div>
     </li>
   </ul>
-  <ec-searchbar *ngIf="!config?.disableSelect" [autofocus]="false" [property]="config?.label"
-    [placeholder]="placeholder" (keypressed)="handleKey($event,dropdownList)" (queryChanged)="filterDropdownList(dropdownList,$event)"></ec-searchbar>
+  <ec-searchbar *ngIf="!config?.disableSelect" [autofocus]="false" [property]="config?.label" [placeholder]="placeholder"
+    (focus)="focus($event)" (keypressed)="handleKey($event,dropdownList)" (queryChanged)="filterDropdownList(dropdownList,$event)"></ec-searchbar>
 
   <ec-pop class="ec-select-options" [hideOnClickOutside]="true" #dropdown>
     <ec-list #dropdownList [list]="list" (columnClicked)="select($event)" [selection]="selection"></ec-list>

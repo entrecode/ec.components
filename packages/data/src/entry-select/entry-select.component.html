@@ -49,7 +49,7 @@
       (keypressed)="handleKey($event,dropdownList)" (focus)="focus($event)"
       (queryChanged)="filterDropdownList(dropdownList,$event)"></ec-searchbar>
     <ec-pop *ngIf="!config?.disableSelect" class="ec-select-options" #dropdown [hideOnClickOutside]="true">
-      <ec-loader class="ec-loader ec-loader_local" #dropdownLoader></ec-loader>
+      <ec-loader class="ec-loader loader is-local" #dropdownLoader></ec-loader>
       <ec-entry-list #dropdownList [selection]="selection" *ngIf="dropdown.activated" [model]="model" [config]="dropdownConfig"
         [loader]="dropdownLoader" (columnClicked)="select($event)"></ec-entry-list>
     </ec-pop>

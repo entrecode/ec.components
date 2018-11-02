@@ -161,6 +161,12 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
     }
   }
 
+  focus(e) {
+    if (this.dropdown) {
+      this.dropdown.show();
+    }
+  }
+
   /** Fires on selection change. Hides dropdown if solo */
   onChange() {
     this.changed.emit(this.selection);
@@ -207,7 +213,7 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
 
   activate(e) {
     if (this.dropdown) {
-      this.dropdown.toggle(e);
+      this.dropdown.show(e);
     }
     if (this.searchbar) {
       this.searchbar.focusEvent.emit(true);

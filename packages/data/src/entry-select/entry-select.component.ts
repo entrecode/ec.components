@@ -180,12 +180,6 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
       });
   }
 
-  focus(e) {
-    if (this.dropdown) {
-      this.dropdown.show();
-    }
-  }
-
   /** Fires initConfig */
   ngOnInit() {
     this.initConfig();
