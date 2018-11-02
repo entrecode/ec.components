@@ -3,6 +3,8 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { List, ListConfig, Selection } from '@ec.components/core';
 import { Item } from '@ec.components/core/src/item/item';
 import { PopComponent } from '../pop/pop.component';
+import { SearchbarComponent } from '../list/searchbar/searchbar.component';
+import { ListComponent } from '../list/list.component';
 
 /**
  * The SelectComponent will render a dropdown of a given list.
@@ -48,6 +50,10 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   @Input() solo: boolean;
   /** The selection dropdown */
   @ViewChild('dropdown') dropdown: PopComponent;
+  /** The list in the dropdown */
+  @ViewChild(ListComponent) dropdownList: ListComponent<any>;
+  /** The nested searchbar */
+  @ViewChild(SearchbarComponent) searchbar: SearchbarComponent;
 
   constructor(public elementRef: ElementRef) {
   }
@@ -149,12 +155,16 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
     } else {
       this.addItem(item);
     }
+    if (this.searchbar) {
+      /* this.searchbar.clear(); */
+      this.searchbar.focusEvent.emit(true);
+    }
   }
 
   /** Fires on selection change. Hides dropdown if solo */
   onChange() {
     this.changed.emit(this.selection);
-    if (this.config.solo && this.dropdown) {
+    if (this.dropdown && this.config.solo && !this.selection.isEmpty()) {
       this.dropdown.hide();
     }
     this.value = this.selection.getValue();
@@ -193,5 +203,74 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   cancelDrag(item, e, target = e.target) {
     delete this.dragged;
     window.requestAnimationFrame(function () { target.style.display = 'inherit'; });
+  }
+
+  activate(e) {
+    if (this.dropdown) {
+      this.dropdown.toggle(e);
+    }
+    if (this.searchbar) {
+      this.searchbar.focusEvent.emit(true);
+    }
+  }
+
+  preventDefault(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+  }
+
+  handleKey(e, list) {
+    const { event, query } = e;
+    if (!list) {
+      console.warn('no dropdown given');
+      return;
+    }
+    switch (event.key) {
+      case 'ArrowUp':
+        if (!this.dropdown.active) {
+          this.dropdown.show(event);
+        } else {
+          list.focusPrev();
+        }
+        this.preventDefault(event);
+        break;
+      case 'ArrowDown':
+        if (!this.dropdown.active) {
+          this.dropdown.show(event);
+        } else {
+          list.focusNext();
+        }
+        this.preventDefault(event);
+        break;
+      case 'Enter':
+        if (list.focusItem) {
+          this.selection.toggle(list.focusItem);
+          /* this.searchbar.clear(); */
+        }
+        this.preventDefault(event);
+        break;
+      case 'Backspace':
+        if (!this.selection.isEmpty() && query === '') {
+          this.selection.remove(this.selection.items[this.selection.items.length - 1]);
+        }
+        break;
+      case 'Tab':
+        if (this.dropdown) {
+          this.dropdown.hide()
+        }
+        break;
+      default:
+        return;
+    }
+  }
+
+  filterDropdownList(list, query) {
+    if (!list) {
+      console.warn('cannot filter yet: list not ready');
+      return;
+    }
+    this.dropdown.show();
+    list.filter(this.config.label, query);
   }
 }

@@ -22,6 +22,7 @@ import { ResourcePopComponent } from '../resource-pop/resource-pop.component';
 import { AuthService } from '../auth/auth.service';
 import { ResourceListPopComponent } from '@ec.components/data/src/resource-list-pop/resource-list-pop.component';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import { ResourceListComponent } from '../resource-list/resource-list.component';
 /** Shows resources of a selection and is able to pick new ones from a crud list
 */
 
@@ -61,6 +62,8 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
     @Input('config') crudConfig: CrudConfig<Resource>;
     /** The crud pop with the list to select from */
     @ViewChild('dropdown') dropdown: PopComponent;
+    /** The nested resource list in the dropdown */
+    @ViewChild('dropdownList') dropdownList: ResourceListComponent;
     /** The nested resource pop for editing and creating */
     @ViewChild(ResourcePopComponent) resourcePop: ResourcePopComponent;
     /** The nested resource list pop */
@@ -86,8 +89,11 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
     }
 
     togglePop(e) {
+        if (this.searchbar) {
+            this.searchbar.focusEvent.emit(true);
+        }
         if (this.dropdown && !this.config.disableSelect) {
-            this.dropdown.toggle(e);
+            this.dropdown.show(e);
         } else if (this.resourceListPop && !this.config.disableListPop) {
             this.resourceListPop.show();
         } else if (this.resourcePop && !this.config.disableCreatePop) {
@@ -96,7 +102,7 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
     }
 
     defaultPlaceholder() {
-        if (this.config.disableSelect && this.config.disableListPop) {
+        if (this.config && this.config.disableSelect && this.config.disableListPop) {
             return this.symbol.resolve('resource.select.placeholder.new');
         }
         return this.symbol.resolve('resource.select.placeholder.select');
@@ -137,7 +143,7 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
             super.useConfig(this.config);
             return;
         }
-        this.config = Object.assign(this.resourceConfig.get(this.relation), { size: 10 },
+        this.config = Object.assign(this.resourceConfig.get(this.relation), { size: 5 },
             this.crudConfig, { solo: this.solo, selectMode: false, disableSelectSwitch: true });
         this.useConfig(this.config);
     }

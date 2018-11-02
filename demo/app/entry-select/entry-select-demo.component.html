@@ -1,13 +1,10 @@
+
+<!-- <ec-entry-select model="muffin" #entrySelect [(ngModel)]="selectedMuffins"></ec-entry-select> -->
+
+
 <h2 class="mega">ec-entry-select</h2>
-<strong>without model</strong>
-<ec-entry-select model="muffin"></ec-entry-select>
 <strong>solo</strong>
 <ec-entry-select model="muffin" [config]="{popColumns:12}" [solo]="true"></ec-entry-select>
-
-<strong>without model</strong>
-<ec-entry-select></ec-entry-select>
-
-<hr>
 
 <strong>default usage</strong>
 <ec-entry-select model="muffin" #entrySelect [(ngModel)]="selectedMuffins"></ec-entry-select>
@@ -24,9 +21,6 @@
 </div>
 <strong>with disableSelect</strong>
 <ec-entry-select model="muffin" [solo]="true" [config]="{disableSelect:true}"></ec-entry-select>
-
-
-<!-- <pre>{{soloEntry.selection?.getValue()}}</pre> -->
 
 <strong>solo with disableListPop</strong>
 <ec-entry-select model="muffin" [solo]="true" [config]="{disableListPop:true}"></ec-entry-select>

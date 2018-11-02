@@ -67,7 +67,7 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   /** The nested entry list pop */
   @ViewChild(EntryListPopComponent) entryListPop: EntryListPopComponent;
   /** The nested full EntryListComponent */
-  @ViewChild('entryList') entryList: EntryListComponent;
+  @ViewChild('dropdownList') dropdownList: EntryListComponent;
   /** The nested searchbar */
   @ViewChild(SearchbarComponent) searchbar: SearchbarComponent;
   /** THe nested delete confirmation pop */
@@ -112,7 +112,7 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
     if (this.searchbar) {
       this.searchbar.focusEvent.emit(true);
     }
-    if (this.dropdown && !this.config.disableSelect) {
+    if (this.dropdown) {
       this.dropdown.show(e);
     } else if (this.entryListPop && !this.config.disableListPop) {
       this.entryListPop.show();
@@ -121,12 +121,8 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
     }
   }
 
-  showSearchbar() {
-    return this.entryList && this.lightModel && !!this.lightModel.titleField && !!this.entryList.list;
-  }
-
   defaultPlaceholder() {
-    if (this.config.disableSelect && this.config.disableListPop) {
+    if (this.config && this.config.disableSelect && this.config.disableListPop) {
       return this.symbol.resolve('entry.select.placeholder.new');
     }
     return this.symbol.resolve('entry.select.placeholder.select');
@@ -178,10 +174,16 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
 
     this.modelConfig.generateConfig(this.model) // , (this.config || {}).fields
       .then((config) => {
-        this.config = Object.assign(config, { size: 10 }, this.crudConfig,
+        this.config = Object.assign(config, { size: 5 }, this.crudConfig,
           { solo: this.solo, selectMode: false, disableSelectSwitch: true });
         this.useConfig(this.config);
       });
+  }
+
+  focus(e) {
+    if (this.dropdown) {
+      this.dropdown.show();
+    }
   }
 
   /** Fires initConfig */
@@ -218,8 +220,18 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
 
   onChange() {
     super.onChange();
-    if (this.config.solo && this.entryListPop) {
+    if (!this.config.solo || this.selection.isEmpty()) {
+      return;
+    }
+    if (this.entryListPop) {
       this.entryListPop.hide();
+    }
+  }
+
+  filterDropdownList(list, query) {
+    if (list) {
+      this.dropdown.show();
+      list.filter(this.lightModel.titleField, query);
     }
   }
 }

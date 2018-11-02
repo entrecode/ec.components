@@ -39,6 +39,8 @@ export class ListComponent<T> implements OnChanges {
   @Input() pagination: Pagination<T>;
   /** Custom PaginationConfig */
   @Input() paginationConfig: PaginationConfig;
+  /** Current focus */
+  focusItem: Item<T>;
 
   constructor(public listConfig: ListConfigService) {
   }
@@ -89,23 +91,25 @@ export class ListComponent<T> implements OnChanges {
   }
 
   /** Selects the next item */
-  selectNext() {
+  focusNext() {
     let index = 0;
-    if (!this.selection.isEmpty()) {
-      index = this.list.items.indexOf(this.selection.items[0]) + 1;
-      console.log('not empty..', index);
+    if (this.focusItem) {
+      index = this.list.page.indexOf(this.focusItem) + 1;
     }
-    this.selection.removeAll();
-    this.selectIndex(index % this.list.items.length);
+    this.focusItem = this.list.page[index % this.list.page.length];
   }
 
   /** Selects the previous item */
-  selectPrev() {
-    let index = this.list.items.length - 1;
-    if (!this.selection.isEmpty()) {
-      index = this.list.items.indexOf(this.selection.items[0]) + this.list.items.length - 1;
+  focusPrev() {
+    let index = this.list.page.length - 1;
+    if (this.focusItem) {
+      index = this.list.page.indexOf(this.focusItem) + this.list.page.length - 1;
     }
-    this.selection.removeAll();
-    this.selectIndex(index % this.list.items.length);
+    this.focusItem = this.list.page[index % this.list.page.length];
+  }
+
+  /** Filters the list */
+  filter(property, value) {
+    this.list.filter(property, value);
   }
 }

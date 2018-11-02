@@ -10,7 +10,8 @@
           <span class="ec-list-group-header__title">{{group.value}}</span>
         </div>
       </div>
-      <ec-list-items [list]="list" [selection]="selection" (columnClicked)="columnClick($event)" #listItems [items]="list?.page | group: group.property: group.value"></ec-list-items>
+      <ec-list-items [focusItem]="focusItem" [list]="list" [selection]="selection" (columnClicked)="columnClick($event)"
+        #listItems [items]="list?.page | group: group.property: group.value"></ec-list-items>
     </div>
 
     <div class="ec-list-empty" *ngIf="list?.isEmpty()&&!list?.isLoading">
@@ -32,7 +33,7 @@
         </p>
       </div>
     </div>
-    <div class="ec-list-empty" *ngIf="list?.isLoading">
+    <div class="ec-list-empty" *ngIf="list?.isEmpty()&&list?.isLoading">
       <div #loadingSlot>
         <ng-content select="[data-ec-list-loading]"></ng-content>
       </div>

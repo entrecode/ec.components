@@ -82,6 +82,7 @@ export class ResourceList extends List<Resource> {
       .catch(err => this.error.next(err))
       .then(() => this.isLoading = false);
     this.loading.next(this.promise);
+    return this.promise;
   }
 
   /** deletes all undefined values from given config and assigns it to this.config */

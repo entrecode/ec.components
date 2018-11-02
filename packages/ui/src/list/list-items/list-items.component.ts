@@ -18,6 +18,8 @@ export class ListItemsComponent<T> implements OnChanges {
   @Input() items: Item<T>[];
   /** If true, only one item is selectable next */
   @Input() solo: boolean;
+  /** The current focused item */
+  @Input() focusItem: Item<T>;
   /** Event emitter on item clicked */
   @Output() columnClicked: EventEmitter<Item<T>> = new EventEmitter();
 
@@ -26,6 +28,10 @@ export class ListItemsComponent<T> implements OnChanges {
     if (!this.items && this.list) {
       this.items = this.list.page;
     }
+  }
+  /** yields true if the item is focussed */
+  hasFocus(item) {
+    return this.focusItem === item;
   }
 
   isClickable() {

@@ -2,8 +2,11 @@
 
 <strong>Default</strong>
 <ec-select [list]="products" [(ngModel)]="values"></ec-select>
+
+
 <pre><code>{{values | json}}</code></pre>
 
+<!-- 
 <strong>Solo</strong>
 <ec-select [list]="products" [solo]="true" #ecSelectSolo></ec-select>
 <pre><code>{{ecSelectSolo.selection.getValue() | json}}</code></pre>
@@ -32,4 +35,4 @@
     </ec-tab>
 </ec-tabs>
 
-<ec-notifications></ec-notifications>
+<ec-notifications></ec-notifications> -->

@@ -28,6 +28,8 @@ export class ResourceListComponent extends ListComponent<Resource>
   @Input() listResource: ListResource;
   /** If true, only one item is selectable next */
   @Input() solo: boolean;
+  /** If set to false, the list will wait for the flag to turn true before loading. */
+  @Input() loadWhen: boolean;
   /** The instance of an EntryList */
   list: ResourceList;
   /** The API Connector that possesses the resource list, see https://entrecode.github.io/ec.sdk/#api-connectors */
@@ -81,6 +83,13 @@ export class ResourceListComponent extends ListComponent<Resource>
 
   /** Creates/Updates the list and subscribes Observables.  */
   update() {
+    if (this.loadWhen === false) {
+      console.log('wait for loadWhen flag to turn true');
+      return;
+    }
+    if (this.loadWhen === true) {
+      console.log('loadWhen is now true!');
+    }
     this.config = Object.assign(this.config || {}, this.configInput || {});
     Promise.resolve(this.createList()).then(list => {
       if (!list) {
@@ -119,8 +128,8 @@ export class ResourceListComponent extends ListComponent<Resource>
   }
 
   /** This method will filter the list by a given property value and optional operator. */
-  filter(property: string, value: any) {
-    this.list.filter(property, value);
+  filter(property: string, value: any): Promise<any> {
+    return this.list.filter(property, value);
   }
 
   initFilterQuery(
