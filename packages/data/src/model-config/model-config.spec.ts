@@ -13,7 +13,7 @@ describe('ModelConfig', () => {
 
   it('should generate a field config from scratch', () => {
     /*const s = sinon.stub(Datamanager, 'schema');
-    s.returns(muffinSchema);*/ //TODO
+    s.returns(muffinSchema);*/ // TODO
     /*return ModelConfig.generateConfig('muffin').then((config) => {
       expect(config).toBeDefined();
       expect(config.hasOwnProperty('_id')).toBe(false);

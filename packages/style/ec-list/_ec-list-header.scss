@@ -7,6 +7,10 @@
 // @param {array} $ec-list-header-style
 .ec-list-header {
   display: flex;
+  @supports (display: grid) {
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(48px, 1fr) );
+  }
   position: relative;
   @include inject-style($ec-list-header-style);
   background: $ec-list-header-background;

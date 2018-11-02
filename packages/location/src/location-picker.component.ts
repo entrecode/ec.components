@@ -24,6 +24,8 @@ export class LocationPickerComponent extends DefaultInputComponent implements Co
     @Input() formControl: FormControl;
     /** If true, the raw location value will be visible*/
     @Input() showRawValue = true;
+    /** Placeholder for search input */
+    @Input() placeholder;
     /** The nested LocationMapComponent */
     @ViewChild(LocationMapComponent) map: LocationMapComponent;
     /** The nested LocationSearchComponent */

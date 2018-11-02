@@ -1158,6 +1158,9 @@
                         <a href="interfaces/ModelConfiguration.html" data-type="entity-link">ModelConfiguration</a>
                     </li>
                     <li class="link">
+                        <a href="interfaces/SdkField.html" data-type="entity-link">SdkField</a>
+                    </li>
+                    <li class="link">
                         <a href="interfaces/Symbol.html" data-type="entity-link">Symbol</a>
                     </li>
                     <li class="link">
@@ -2356,6 +2359,9 @@
                         <a href="interfaces/ModelConfiguration.html" data-type="entity-link">ModelConfiguration</a>
                     </li>
                     <li class="link">
+                        <a href="interfaces/SdkField.html" data-type="entity-link">SdkField</a>
+                    </li>
+                    <li class="link">
                         <a href="interfaces/Symbol.html" data-type="entity-link">Symbol</a>
                     </li>
                     <li class="link">
@@ -3238,7 +3244,7 @@ export class ListHeaderComponent {
 
   /** Toggles the fields visibility in the list */
   public toggleVisibility(field: Field) {
-    field.hidden &#x3D; !field.hidden;
+    field.hideInList &#x3D; !field.hideInList;
     this.listConfig.storeConfig(this.list);
   }
 }
@@ -3250,19 +3256,16 @@ export class ListHeaderComponent {
   &lt;div class&#x3D;&quot;ec-list-cell ec-list-item__selector&quot; *ngIf&#x3D;&quot;list?.config?.selectMode&amp;&amp;!list?.isEmpty()&quot;&gt;
     &lt;input type&#x3D;&quot;checkbox&quot; (click)&#x3D;&quot;selection?.toggleAll(list?.page)&quot; [checked]&#x3D;&quot;selection?.hasAll(list?.page)&quot; [disabled]&#x3D;&quot;selection?.config?.solo&quot;&gt;
   &lt;/div&gt;
-
-  &lt;ec-form [config]&#x3D;&quot;list?.config&quot; [value]&#x3D;&quot;list?.config?.filter&quot; [empty]&#x3D;&quot;true&quot; #filterForm&gt;&lt;/ec-form&gt;
-
   &lt;div class&#x3D;&quot;ec-list-cell&quot; *ngFor&#x3D;&quot;let field of list?.fields;let i &#x3D; index&quot; 
-    [ngClass]&#x3D;&quot;&#x27;ec-list-cell_&#x27; + field.view&quot; 
-    [class.is-hidden]&#x3D;&quot;field.hidden&quot;
+    [ngClass]&#x3D;&quot;&#x27;ec-list-cell_&#x27; + field.view + &#x27; &#x27; + field?.classes&quot; 
+    [class.is-hidden]&#x3D;&quot;field.hideInList&quot;
     [class.is-sortable]&#x3D;&quot;field.sortable&quot; 
     [class.is-sorted]&#x3D;&quot;list.isSorted(field.property)&quot; 
     [class.is-filterable]&#x3D;&quot;field.filterable&quot;
     [class.is-filtered]&#x3D;&quot;list.isFiltered(field.property)&quot; 
     [class.is-filter-active]&#x3D;&quot;filterPop.visible&quot; 
-    [class.is-sorted-desc]&#x3D;&quot;list.isSorted(field.property, false)&quot; 
-    [class.is-sorted-asc]&#x3D;&quot;list.isSorted(field.property, true)&quot;&gt;
+    [class.is-sorted-desc]&#x3D;&quot;list.isSorted(field.property, true)&quot; 
+    [class.is-sorted-asc]&#x3D;&quot;list.isSorted(field.property, false)&quot;&gt;
 
     &lt;a (click)&#x3D;&quot;editFilter(filterPop)&quot; class&#x3D;&quot;is-filterable-control&quot; *ngIf&#x3D;&quot;field.filterable&quot;&gt;
       &lt;ec-icon name&#x3D;&quot;find&quot;&gt;&lt;/ec-icon&gt;
@@ -3280,21 +3283,22 @@ export class ListHeaderComponent {
     &lt;/ec-pop&gt;
   &lt;/div&gt;
 
-  &lt;!-- TODO see T5-2289 - move field-filter to ec-list-header --&gt;
   &lt;div class&#x3D;&quot;dropdown dropdown_right ec-list-column-filter&quot; tabindex&#x3D;&quot;0&quot; *ngIf&#x3D;&quot;!list?.config?.disableColumnFilter&quot;&gt;
     &lt;span&gt;&amp;#9776;&lt;/span&gt;
     &lt;div class&#x3D;&quot;dropdown-options ec-list-column-filter-options&quot;&gt;
       &lt;ul&gt;
-        &lt;li class&#x3D;&quot;ec-list-column-filter-option&quot; *ngFor&#x3D;&quot;let field of list?.fields&quot; [class.is-active]&#x3D;&quot;!field.hidden&quot; [class.is-hidden]&#x3D;&quot;field.hideInColumnFilter&quot;&gt;
+        &lt;li class&#x3D;&quot;ec-list-column-filter-option&quot; *ngFor&#x3D;&quot;let field of list?.fields&quot; [class.is-active]&#x3D;&quot;!field.hideInList&quot; [class.is-hidden]&#x3D;&quot;field.hideInColumnFilter&quot;&gt;
           &lt;div class&#x3D;&quot;form-boolean&quot; (click)&#x3D;&quot;fieldCheckbox.click()&quot;&gt;
             &lt;label&gt;{{fieldLabel(field)}}&lt;/label&gt;
-            &lt;input (click)&#x3D;&quot;toggleVisibility(field)&quot; #fieldCheckbox [checked]&#x3D;&quot;!field.hidden&quot; type&#x3D;&quot;checkbox&quot;/&gt; 
+            &lt;input (click)&#x3D;&quot;toggleVisibility(field)&quot; #fieldCheckbox [checked]&#x3D;&quot;!field.hideInList&quot; type&#x3D;&quot;checkbox&quot;/&gt; 
           &lt;/div&gt;
         &lt;/li&gt;
       &lt;/ul&gt;
     &lt;/div&gt;
   &lt;/div&gt;
-&lt;/div&gt;</code></pre>
+&lt;/div&gt;
+
+&lt;ec-form [config]&#x3D;&quot;list?.config&quot; [value]&#x3D;&quot;list?.config?.filter&quot; [empty]&#x3D;&quot;true&quot; #filterForm&gt;&lt;/ec-form&gt;</code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-tree">
@@ -3322,7 +3326,7 @@ export class ListHeaderComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="ec-list-header">  <div class="ec-list-cell ec-list-item__selector" *ngIf="list?.config?.selectMode&&!list?.isEmpty()">    <input type="checkbox" (click)="selection?.toggleAll(list?.page)" [checked]="selection?.hasAll(list?.page)" [disabled]="selection?.config?.solo">  </div>  <ec-form [config]="list?.config" [value]="list?.config?.filter" [empty]="true" #filterForm></ec-form>  <div class="ec-list-cell" *ngFor="let field of list?.fields;let i = index"     [ngClass]="\'ec-list-cell_\' + field.view"     [class.is-hidden]="field.hidden"    [class.is-sortable]="field.sortable"     [class.is-sorted]="list.isSorted(field.property)"     [class.is-filterable]="field.filterable"    [class.is-filtered]="list.isFiltered(field.property)"     [class.is-filter-active]="filterPop.visible"     [class.is-sorted-desc]="list.isSorted(field.property, false)"     [class.is-sorted-asc]="list.isSorted(field.property, true)">    <a (click)="editFilter(filterPop)" class="is-filterable-control" *ngIf="field.filterable">      <ec-icon name="find"></ec-icon>    </a>    <span class="ec-list-column-title" (click)="field.sortable&&list.toggleSort(field.property)">      {{fieldLabel(field)}}    </span>    <span class="is-sortable-indicator" *ngIf="field.sortable"></span>    <ec-pop #filterPop class="is-filterable-pop">       <!-- [ngClass]="field.filterPopClass" -->      <ec-input [field]="field" [group]="filterForm?.group" [debounce]="200" *ngIf="field.filterable&&filterForm?.group?.get(field?.property)" (changed)="applyFilter(field.property, $event)"></ec-input>      <a (click)="removeFilter(field.property, filterForm?.group?.get(field.property));filterPop.hide()" class="is-filterable-filter__reset">&times;</a>    </ec-pop>  </div>  <!-- TODO see T5-2289 - move field-filter to ec-list-header -->  <div class="dropdown dropdown_right ec-list-column-filter" tabindex="0" *ngIf="!list?.config?.disableColumnFilter">    <span>&#9776;</span>    <div class="dropdown-options ec-list-column-filter-options">      <ul>        <li class="ec-list-column-filter-option" *ngFor="let field of list?.fields" [class.is-active]="!field.hidden" [class.is-hidden]="field.hideInColumnFilter">          <div class="form-boolean" (click)="fieldCheckbox.click()">            <label>{{fieldLabel(field)}}</label>            <input (click)="toggleVisibility(field)" #fieldCheckbox [checked]="!field.hidden" type="checkbox"/>           </div>        </li>      </ul>    </div>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="ec-list-header">  <div class="ec-list-cell ec-list-item__selector" *ngIf="list?.config?.selectMode&&!list?.isEmpty()">    <input type="checkbox" (click)="selection?.toggleAll(list?.page)" [checked]="selection?.hasAll(list?.page)" [disabled]="selection?.config?.solo">  </div>  <div class="ec-list-cell" *ngFor="let field of list?.fields;let i = index"     [ngClass]="\'ec-list-cell_\' + field.view + \' \' + field?.classes"     [class.is-hidden]="field.hideInList"    [class.is-sortable]="field.sortable"     [class.is-sorted]="list.isSorted(field.property)"     [class.is-filterable]="field.filterable"    [class.is-filtered]="list.isFiltered(field.property)"     [class.is-filter-active]="filterPop.visible"     [class.is-sorted-desc]="list.isSorted(field.property, true)"     [class.is-sorted-asc]="list.isSorted(field.property, false)">    <a (click)="editFilter(filterPop)" class="is-filterable-control" *ngIf="field.filterable">      <ec-icon name="find"></ec-icon>    </a>    <span class="ec-list-column-title" (click)="field.sortable&&list.toggleSort(field.property)">      {{fieldLabel(field)}}    </span>    <span class="is-sortable-indicator" *ngIf="field.sortable"></span>    <ec-pop #filterPop class="is-filterable-pop">       <!-- [ngClass]="field.filterPopClass" -->      <ec-input [field]="field" [group]="filterForm?.group" [debounce]="200" *ngIf="field.filterable&&filterForm?.group?.get(field?.property)" (changed)="applyFilter(field.property, $event)"></ec-input>      <a (click)="removeFilter(field.property, filterForm?.group?.get(field.property));filterPop.hide()" class="is-filterable-filter__reset">&times;</a>    </ec-pop>  </div>  <div class="dropdown dropdown_right ec-list-column-filter" tabindex="0" *ngIf="!list?.config?.disableColumnFilter">    <span>&#9776;</span>    <div class="dropdown-options ec-list-column-filter-options">      <ul>        <li class="ec-list-column-filter-option" *ngFor="let field of list?.fields" [class.is-active]="!field.hideInList" [class.is-hidden]="field.hideInColumnFilter">          <div class="form-boolean" (click)="fieldCheckbox.click()">            <label>{{fieldLabel(field)}}</label>            <input (click)="toggleVisibility(field)" #fieldCheckbox [checked]="!field.hideInList" type="checkbox"/>           </div>        </li>      </ul>    </div>  </div></div><ec-form [config]="list?.config" [value]="list?.config?.filter" [empty]="true" #filterForm></ec-form></div>'
     var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'AdminEntryInputComponent', 'selector': ''},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'AssetgroupSelectComponent', 'selector': 'ec-assetgroup-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DaterangeComponent', 'selector': 'ec-daterange'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryListPopComponent', 'selector': 'ec-entry-list-pop'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'HeatmapComponent', 'selector': 'ec-heatmap'},{'name': 'IconComponent', 'selector': 'ec-icon'},{'name': 'ImageSelectPopComponent', 'selector': 'ec-image-select-pop'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LocationMapComponent', 'selector': 'ec-location-map'},{'name': 'LocationPickerComponent', 'selector': 'ec-location-picker'},{'name': 'LocationSearchComponent', 'selector': 'ec-location-search'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'MockupComponent', 'selector': 'ec-mockup'},{'name': 'ModalComponent', 'selector': 'ec-modal'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceCrudComponent', 'selector': 'ec-resource-crud'},{'name': 'ResourceDeletePopComponent', 'selector': 'ec-resource-delete-pop'},{'name': 'ResourceFormComponent', 'selector': 'ec-resource-form'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'ResourceListPopComponent', 'selector': 'ec-resource-list-pop'},{'name': 'ResourcePopComponent', 'selector': 'ec-resource-pop'},{'name': 'ResourceSelectComponent', 'selector': 'ec-resource-select'},{'name': 'SearchbarComponent', 'selector': 'ec-searchbar'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SignupComponent', 'selector': 'ec-signup'},{'name': 'SignupFormComponent', 'selector': 'ec-signup-form'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'UploadComponent', 'selector': 'ec-upload'},{'name': 'UploadSelectComponent', 'selector': 'ec-upload-select'}];
     var DIRECTIVES = [{'name': 'AssetDirective', 'selector': '[ecAsset]'},{'name': 'DropzoneDirective', 'selector': '[ecDropzone]'},{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'FocusDirective', 'selector': '[ecFocus]'},{'name': 'ImageDirective', 'selector': 'img [ecImage]'},{'name': 'SlotHostDirective', 'selector': '[ec-slot-host]'}];
     var ACTUAL_COMPONENT = {'name': 'ListHeaderComponent'};

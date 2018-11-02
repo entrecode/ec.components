@@ -38,6 +38,8 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
   protected control: FormControl;
   /** If true, a pop will open that can be used to rename files before upload */
   @Input() custom: boolean;
+  /** Custom Placeholder */
+  @Input() placeholder: string;
   /** The used item */
   @Input() item: Item<any>;
   /** If true, the selection cannot be changed and no uploads can be made. */
@@ -73,6 +75,7 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
   }
 
   setGroup(group) {
+    console.log('set group', group);
     if (!group) {
       return;
     }
@@ -113,9 +116,9 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
     if (this.assetGroupID === 'null') {
       delete this.assetGroupID;
     }
-    if (this.containsNewAssets() || (this.assetGroupID && this.assetGroupID !== 'legacyAsset')) {
-      const oldAssetTypes = ['image', 'video', 'audio', 'plain', 'document', 'spreadsheet'];
-      if (!this.assetGroupID || oldAssetTypes.concat('legacyAsset').includes(this.assetGroupID)) {
+    const isOldAssetGroupID = this.fileService.isOldAssetGroupID(this.assetGroupID);
+    if (this.containsNewAssets() || !isOldAssetGroupID) {
+      if (isOldAssetGroupID) {
         this.notificationService.emit({
           title: 'Falsche Assets',
           type: 'error',
@@ -125,9 +128,9 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
       }
       config = this.dmAssetConfig;
       this.assetGroupID = this.assetGroupID || this.getAssetGroupID();
-    } else if (this.containsOldAssets() || this.assetGroupID === 'legacyAsset') {
+    } else if (this.containsOldAssets() || isOldAssetGroupID) {
       // legacy assets
-      if (this.assetGroupID && this.assetGroupID !== 'legacyAsset') {
+      if (!isOldAssetGroupID) {
         this.notificationService.emit({
           title: 'Falsche Assets',
           type: 'error',
@@ -150,5 +153,12 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
     this.value = value;
     this.useConfig(this.initConfig());
     this.use(value, false);
+  }
+  /** On Change check if solo, if true, close pop */
+  onChange() {
+    super.onChange();
+    if (this.config.solo && this.pop) {
+      this.pop.hide();
+    }
   }
 }

@@ -49,7 +49,7 @@ export class ListHeaderComponent {
 
   /** Toggles the fields visibility in the list */
   public toggleVisibility(field: Field) {
-    field.hidden = !field.hidden;
+    field.hideInList = !field.hideInList;
     this.listConfig.storeConfig(this.list);
   }
 }

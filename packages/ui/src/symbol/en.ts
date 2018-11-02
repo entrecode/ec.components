@@ -465,6 +465,10 @@ export default [
         content: 'No Item yet..'
     },
     {
+        name: 'list.loading',
+        content: 'Loading List..'
+    },
+    {
         name: 'list.filter.noResults',
         content: 'No Items found'
     },

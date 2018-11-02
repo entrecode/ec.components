@@ -64,13 +64,11 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
   ngOnInit() {
     this.fileService.assetGroupList().then(assetGroups => {
       this.assetGroups = assetGroups;
-      /* if (!this.assetGroupID) {
-        this.assetGroupID = assetGroups[0] || 'legacyAsset';
-        this.groupChanged.emit(this.assetGroupID);
-      } */
     });
     this.uploadConfig = Object.assign({}, this.config, { disableListPop: true });
-    this.config = Object.assign({ hidePagination: true, disableHeader: true }, this.config);
+    this.config = Object.assign(
+      this.fileService.getAssetConfig(this.assetGroupID),
+      { hidePagination: true, disableHeader: true }, this.config);
   }
 
   /** emits columnClicked event or toggles selection if no observers. */
@@ -84,7 +82,7 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
 
   /** Returns the full resource relation name based on the current assetGroupID  */
   getGroupRelation() {
-    return !this.assetGroupID || this.assetGroupID === 'legacyAsset' ? 'legacyAsset'
+    return this.fileService.isOldAssetGroupID(this.assetGroupID) ? 'legacyAsset'
       : 'dmAsset.' + this.assetGroupID;
   }
 

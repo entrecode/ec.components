@@ -1,25 +1,25 @@
 <div [ngSwitch]="field.type" *ngIf="group" [formGroup]="group">
   <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>
   <div *ngSwitchCase="'entry'">
-    <ec-entry-select [formControl]="group.get(field.property)" [model]="field['relation']" [id]="field.id" [solo]="true" [config]="field.nestedCrudConfig"></ec-entry-select>
+    <ec-entry-select [placeholder]="field.placeholder" [formControl]="group.get(field.property)" [model]="field['relation']" [id]="field.id" [solo]="true" [config]="field.nestedCrudConfig"></ec-entry-select>
   </div>
   <div *ngSwitchCase="'entries'">
-    <ec-entry-select [formControl]="group.get(field.property)" [model]="field['relation']" [id]="field.id" [config]="field.nestedCrudConfig"></ec-entry-select>
+    <ec-entry-select [placeholder]="field.placeholder" [formControl]="group.get(field.property)" [model]="field['relation']" [id]="field.id" [config]="field.nestedCrudConfig"></ec-entry-select>
   </div>
   <div *ngSwitchCase="'asset'">
-    <ec-asset-select [formControl]="group.get(field.property)" [id]="field.id" [solo]="true" [readOnly]="field.readOnly" assetGroupID="legacyAsset"></ec-asset-select>
+    <ec-asset-select [placeholder]="field.placeholder" [formControl]="group.get(field.property)" [id]="field.id" [solo]="true" assetGroupID="legacyAsset"></ec-asset-select>
   </div>
   <div *ngSwitchCase="'assets'">
-    <ec-asset-select [formControl]="group.get(field.property)" [id]="field.id" [readOnly]="field.readOnly" assetGroupID="legacyAsset"></ec-asset-select>
+    <ec-asset-select [placeholder]="field.placeholder" [formControl]="group.get(field.property)" [id]="field.id" assetGroupID="legacyAsset"></ec-asset-select>
   </div>
   <div *ngSwitchCase="'dmAsset'">
-    <ec-asset-select [formControl]="group.get(field.property)" [id]="field.id" [solo]="true" [readOnly]="field.readOnly" [assetGroupID]="field['relation']"></ec-asset-select>
+    <ec-asset-select [placeholder]="field.placeholder" [formControl]="group.get(field.property)" [id]="field.id" [solo]="true" [assetGroupID]="field['relation']"></ec-asset-select>
   </div>
   <div *ngSwitchCase="'dmAssets'">
-    <ec-asset-select [formControl]="group.get(field.property)" [id]="field.id" [readOnly]="field.readOnly" [assetGroupID]="field['relation']"></ec-asset-select>
+    <ec-asset-select [placeholder]="field.placeholder" [formControl]="group.get(field.property)" [id]="field.id" [assetGroupID]="field['relation']"></ec-asset-select>
   </div>
   <div *ngSwitchCase="'groups'">
-    <ec-resource-select [formControl]="group.get(field.property)" [api]="sdk.accounts" relation="group" [id]="field.id"></ec-resource-select>
+    <ec-resource-select [placeholder]="field.placeholder" [formControl]="group.get(field.property)" [api]="sdk.accounts" relation="group" [id]="field.id"></ec-resource-select>
   </div>
   <input *ngSwitchCase="'phone'" type="text" [placeholder]="field.placeholder" [id]="field.id">
   <div *ngSwitchDefault>

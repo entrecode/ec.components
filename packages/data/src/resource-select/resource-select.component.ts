@@ -21,6 +21,7 @@ import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { ResourcePopComponent } from '../resource-pop/resource-pop.component';
 import { AuthService } from '../auth/auth.service';
 import { ResourceListPopComponent } from '@ec.components/data/src/resource-list-pop/resource-list-pop.component';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 /** Shows resources of a selection and is able to pick new ones from a crud list
 */
 
@@ -70,7 +71,8 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
     constructor(
         private resourceConfig: ResourceConfig,
         private auth: AuthService,
-        public elementRef: ElementRef
+        public elementRef: ElementRef,
+        public symbol: SymbolService
     ) {
         super(elementRef);
     }
@@ -91,6 +93,13 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
         } else if (this.resourcePop && !this.config.disableCreatePop) {
             this.resourcePop.show();
         }
+    }
+
+    defaultPlaceholder() {
+        if (this.config.disableSelect && this.config.disableListPop) {
+            return this.symbol.resolve('resource.select.placeholder.new');
+        }
+        return this.symbol.resolve('resource.select.placeholder.select');
     }
 
     /** Calls super.useConfig and then creates special dropdownConfig with just entryTitle as field  */

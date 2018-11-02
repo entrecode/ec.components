@@ -3,13 +3,13 @@ import { Config } from '@ec.components/core/src/config/config';
 import { FieldConfigProperty } from '@ec.components/core/src/config/field-config-property.interface';
 import { FieldConfig } from '@ec.components/core/src/config/field-config.interface';
 import { Item } from '@ec.components/core/src/item/item';
-import { ListConfig } from '@ec.components/core/src/list/list-config.interface';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { CrudConfig } from '../crud/crud-config.interface';
 import { CrudService } from '../crud/crud.service';
 import { SdkService } from '../sdk/sdk.service';
 import { TypeConfigService } from './type-config.service';
+import { SdkField } from './sdk-field';
 
 /** The main class for configuring the behaviour of a model.
  * By default, everything is auto generated from the model's schema but can be overriden via the
@@ -58,20 +58,15 @@ export class ModelConfigService extends Config {
     return this.configure('model', property, config);
   }
 
-  /** Checks if a given property name is a system property (either part of omittedFields or beginning with _).*/
-  isSystemProperty(property: string) {
-    return property[0] === '_' || this.omittedFields.indexOf(property) !== -1;
-  }
-
-  /** Assigns default system fields to given config. Does not override by default */
-  addSystemPropertiesToFieldConfig(config: FieldConfig<FieldConfigProperty>, override = false) {
-    const defaultConfig = {
+  /** Returns the field config for all system fields */
+  getSystemFields() {
+    return {
       id: {
         label: this.symbol.resolve('field.label.id'),
         view: 'string',
         form: false,
         immutable: true,
-        hidden: true
+        hideInList: true
       },
       _created: {
         label: this.symbol.resolve('field.label.created'),
@@ -80,7 +75,7 @@ export class ModelConfigService extends Config {
         form: false,
         immutable: true,
         sortable: true,
-        hidden: true,
+        hideInList: true,
         rawFilter: true
       },
       _modified: {
@@ -90,7 +85,7 @@ export class ModelConfigService extends Config {
         form: false,
         immutable: true,
         sortable: true,
-        hidden: false,
+        hideInList: false,
         rawFilter: true
       },
       _creator: {
@@ -99,106 +94,109 @@ export class ModelConfigService extends Config {
         view: 'account',
         form: false,
         immutable: true,
-        hidden: true
+        hideInList: true
       }
-    };
-    Object.keys(defaultConfig).forEach(property =>
-      Object.assign(config, {
-        [property]: override ? defaultConfig[property] : config[property] || defaultConfig[property]
-      }));
-  }
-
-  /** Parses the property type (as contained in the property schema's title field). */
-  parseType(type: string) {
-    if (!type) {
-      return null;
-    }
-    const match = type.match(/^(\w*)(<(.*)>)?/i);
-    let name = match[1];
-    let relation = match.length > 2 ? match[3] : null;
-    if (name.includes('asset') && relation) {
-      const r = relation.split(':');
-      if (r[0] === 'ag') { // new asset
-        name = name.replace('a', 'dmA');
-        relation = r[1];
-      } // else: old asset with type validation
-    }
-    return !match.length ? null : {
-      raw: type, name, relation
     };
   }
 
-  /** Generates a proper fieldConfig for a given model and an optional local fieldConfig.
-   * Operates in three layers: If a local fieldConfig is given, it will be used.
-   * If no local fieldConfig is given, the global model's field config is used.
-   * If no global field config is found for that model, it will be generated from the model schema.
-   * */
-  generateFieldConfig(model: string, fields?): Promise<FieldConfig<FieldConfigProperty>> {
-    let fieldConfig;
-    return Promise.resolve().then(() => {
-      if (fields) {
-        return fields;
-      }
-      // use global config, if given
-      if (this.get(model) && this.get(model).fields) {
-        return this.get(model).fields;
-      }
-    }).then((config) => {
-      fieldConfig = config;
-      return this.sdk.getSchema(model);
-    }).then((schema) => {
-      schema = schema.allOf[1];
-      const properties = Object.keys(schema.properties)
-        .filter(property => (!fieldConfig && !this.isSystemProperty(property)) || (fieldConfig && !!fieldConfig[property]));
-      fieldConfig = fieldConfig || {};
-      this.addSystemPropertiesToFieldConfig(fieldConfig); // prepends system fields
-      properties.forEach(property => {
-        let type;
-        if (property === '_entryTitle') {
-          type = {
-            raw: 'text',
-            name: 'text',
-            model: null
-          };
-        } else {
-          type = this.parseType(schema.properties[property].title);
-        }
-        if (!type) {
-          console.error('Model Property Schema title ', schema.properties[property].title, ' was unexpected, ignoring property', property)
-          return;
-        }
-        fieldConfig[property] = Object.assign({
-          label: property + (type.name === 'datetime' ? ` ${this.symbol.resolve('datetime.local')}` : ''),
-          schema: schema.properties[property],
-          relation: type.relation,
-          readOnly: schema.properties[property].readOnly || this.isSystemProperty(property),
-          // required: schema.required.indexOf(property) !== -1, // TODO
-          display: ((value) => value)
-        }, this.typeConfig.get(type.name),
-          fieldConfig[property] ? fieldConfig[property] : {});
-      });
-      return fieldConfig;
+  /** Returns the default field config for the given model.
+   * Utilizes PublicAPI#getFieldConfig + TypeConfigService#get.
+   * This config is meant to deliver the default behaviour when nothing else is configured. */
+  getFieldConfig(model: string): Promise<FieldConfig<FieldConfigProperty>> {
+    return this.sdk.api.getFieldConfig(model).then((fieldConfig: SdkField) => {
+      const fields = {};
+      Object.assign(fields, this.getSystemFields());
+      Object.keys(fieldConfig).map(property => fieldConfig[property])
+        .forEach(({
+          config,
+          type,
+          title,
+          unique,
+          mutable,
+          readOnly,
+          required,
+          validation,
+          description,
+          localizable,
+          legacyAssets,
+        }) => {
+          config = config || {};
+          if (type.includes('asset') && !legacyAssets) {
+            type = type.replace('a', 'dmA');
+          }
+          // parse field config
+          const { hideInList,
+            hideInForm,
+            hideOnCreate,
+            hideOnEdit,
+            placeholder,
+            label,
+            classes,
+            columns = 12
+          } = config;
+          // assign default values + merge customFieldConfig if given
+          fields[title] = Object.assign({
+            property: title,
+            label: label || title + (type === 'datetime' ? ` ${this.symbol.resolve('datetime.local')}` : ''),
+            placeholder,
+            description,
+            validation,
+            relation: validation,
+            immutable: !mutable,
+            readOnly,
+            hideInList,
+            hideInForm,
+            create: !hideOnCreate,
+            edit: !hideOnEdit,
+            classes,
+            unique,
+            required,
+            columns,
+            display: ((value) => value),
+            localizable,
+          }, this.typeConfig.get(type), {
+              placeholder: placeholder || this.typeConfig.get(type).placeholder
+            });
+        });
+      return fields;
     });
   }
 
-  /** Returns the given model's config and generates a field config from the schema if it is not configured. */
-  generateConfig(model: string, fieldConfig?): Promise<ListConfig<EntryResource>> {
-    const config = Object.assign({}, this.get(model) || {}); // clone
-    Object.assign(config, {
+  /** Generates a CrudConfig for the given model.
+   * Merges three configurations into one:
+   * - default field config, obtained by getFieldConfig
+   * - global model config (if any) configured via with set
+   * - customFieldConfig: any custom field config that is merged on top of the other two.
+   * This enables the developer to either customize at a global scale to target all lists/forms,
+   * or just specific components. */
+  generateConfig(model: string, customFieldConfig?: FieldConfig<FieldConfigProperty>): Promise<CrudConfig<EntryResource>> {
+    // first step: merge global model config with default entry config
+    const modelConfig = Object.assign(this.get(model) || {}, {
       identifier: 'id',
       identifierPattern: /^[0-9A-Za-z-_]{7,14}$/, // shortID pattern
       label: '_entryTitle',
       onSave: (item: Item<EntryResource>, value) => this.crud.save(model, item.getBody(), value)
     });
-    if (!model) {
-      return Promise.resolve(config);
-    }
-    return this.generateFieldConfig(model, fieldConfig).then((fields) => {
-      Object.assign(config, { fields });
-      return Promise.resolve(config);
-    });
+    return this.getFieldConfig(model)
+      .then((fieldConfig: FieldConfig<FieldConfigProperty>) => {
+        const modelConfigFields = modelConfig.fields || {};
+        const relevantKeys = Object.keys(customFieldConfig || modelConfigFields);
+        const mergedFields = {};
+        if (!relevantKeys.length) {
+          modelConfig.fields = fieldConfig;
+        } else {
+          relevantKeys.forEach(key => {
+            mergedFields[key] = Object.assign(
+              fieldConfig[key] || {},
+              modelConfigFields[key] || {},
+              (customFieldConfig || {})[key]);
+          });
+          modelConfig.fields = mergedFields;
+        }
+        return modelConfig;
+      });
   }
-
+  /** Returns light model information */
   getLightModel(model) {
     return this.sdk.ready.then(() => this.sdk.api.modelList()).then((models) => models[model]);
   }

@@ -138,7 +138,7 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
     this.dropdownConfig = Object.assign({}, this.config, {
       fields: {
         [this.config.label]: Object.assign({}, (this.config.fields || {})[this.config.label]),
-        _modified: { hidden: true }
+        _modified: { hideInList: true }
       }
     });
     this.auth.getAllowedModelMethods(this.model, this.config.methods)

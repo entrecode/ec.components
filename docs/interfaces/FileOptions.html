@@ -1158,6 +1158,9 @@
                         <a href="interfaces/ModelConfiguration.html" data-type="entity-link">ModelConfiguration</a>
                     </li>
                     <li class="link">
+                        <a href="interfaces/SdkField.html" data-type="entity-link">SdkField</a>
+                    </li>
+                    <li class="link">
                         <a href="interfaces/Symbol.html" data-type="entity-link">Symbol</a>
                     </li>
                     <li class="link">
@@ -2356,6 +2359,9 @@
                         <a href="interfaces/ModelConfiguration.html" data-type="entity-link">ModelConfiguration</a>
                     </li>
                     <li class="link">
+                        <a href="interfaces/SdkField.html" data-type="entity-link">SdkField</a>
+                    </li>
+                    <li class="link">
                         <a href="interfaces/Symbol.html" data-type="entity-link">Symbol</a>
                     </li>
                     <li class="link">
@@ -2809,12 +2815,32 @@ export class FileService {
     deduplicate: false,
     fileName: []
   };
+  /** config for new assets */
+  public dmAssetConfig &#x3D; Object.assign({}, this.resourceConfig.get(&#x27;dmAsset&#x27;));
+  /** config for legacy assets */
+  public legacyAssetConfig &#x3D; Object.assign({}, this.resourceConfig.get(&#x27;legacyAsset&#x27;), { forceGroup: true });
+  /** All the possible assetGroupIDs that are interpreted as old. Comes from validation of field */
+  public oldAssetGroupIDs &#x3D; [&#x27;image&#x27;, &#x27;video&#x27;, &#x27;audio&#x27;, &#x27;plain&#x27;, &#x27;document&#x27;, &#x27;spreadsheet&#x27;, &#x27;legacyAsset&#x27;];
 
   /** Injects sdk */
   constructor(private sdk: SdkService,
     private typeConfig: TypeConfigService,
     private resourceService: ResourceService,
     private resourceConfig: ResourceConfig) {
+  }
+
+  public getAssetConfig(assetGroupID) {
+    if (this.isOldAssetGroupID(assetGroupID)) {
+      const config &#x3D; Object.assign({}, this.legacyAssetConfig);
+      if (this.oldAssetGroupIDs.includes(assetGroupID)) {
+        config.filter &#x3D; Object.assign({}, (config.filter || {}), {
+          type: assetGroupID
+        });
+      }
+      return config;
+    } else {
+      return Object.assign({}, this.dmAssetConfig);
+    }
   }
 
   /** returns true if the given asset is a new one (DMAssetResource) */
@@ -2943,6 +2969,15 @@ export class FileService {
 
   public assetGroupList(forceReload &#x3D; false) {
     return (!forceReload &amp;&amp; this.assetGroupListPromise) || this.sdk.api.assetGroupList();
+  }
+
+  /** Yields true if the given assetGroupID is an old one. Also checks for old validation types */
+  public isOldAssetGroupID(assetGroupID) {
+    return !assetGroupID || this.oldAssetGroupIDs.includes(assetGroupID);
+  }
+  /** Yields true if the given assetGroupID is not an old one, meaning it is defined and legacyAsset or an old asset type. */
+  public isNewAssetGroupID(assetGroupID) {
+    return !this.isOldAssetGroupID(assetGroupID);
   }
 
   /** method that can be called after the upload to select the uploaded item(s). */

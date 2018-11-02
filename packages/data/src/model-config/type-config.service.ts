@@ -55,6 +55,7 @@ export class TypeConfigService {
     },
     asset: {
       view: 'asset',
+      // view: 'avatar',
       input: DefaultEntryInputComponent,
       filterOperator: 'exact',
       filterable: true,
@@ -64,6 +65,7 @@ export class TypeConfigService {
     },
     assets: {
       view: 'assets',
+      // view: 'avatars',
       input: DefaultEntryInputComponent,
       display: (value, entry, property) =>
         entry.getImageThumbUrl(property, 100),
@@ -75,6 +77,7 @@ export class TypeConfigService {
     },
     dmAsset: {
       view: 'dmAsset',
+      // view: 'avatar',
       input: DefaultEntryInputComponent,
       filterOperator: 'exact',
       filterable: true,
@@ -84,6 +87,7 @@ export class TypeConfigService {
     },
     dmAssets: {
       view: 'dmAssets',
+      // view: 'avatars',
       input: DefaultEntryInputComponent,
       display: (value, entry, property) =>
         entry.getImageThumbUrl(property, 100),

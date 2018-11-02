@@ -1158,6 +1158,9 @@
                         <a href="interfaces/ModelConfiguration.html" data-type="entity-link">ModelConfiguration</a>
                     </li>
                     <li class="link">
+                        <a href="interfaces/SdkField.html" data-type="entity-link">SdkField</a>
+                    </li>
+                    <li class="link">
                         <a href="interfaces/Symbol.html" data-type="entity-link">Symbol</a>
                     </li>
                     <li class="link">
@@ -2354,6 +2357,9 @@
                     </li>
                     <li class="link">
                         <a href="interfaces/ModelConfiguration.html" data-type="entity-link">ModelConfiguration</a>
+                    </li>
+                    <li class="link">
+                        <a href="interfaces/SdkField.html" data-type="entity-link">SdkField</a>
                     </li>
                     <li class="link">
                         <a href="interfaces/Symbol.html" data-type="entity-link">Symbol</a>
@@ -3582,10 +3588,10 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
 
   constructor(public route: ActivatedRoute, public symbol: SymbolService) {
     this.defaultPlaceholder &#x3D; this.symbol.resolve(&#x27;searchbar.placeholder&#x27;);
-    const paste &#x3D; this.paste.asObservable();
     this.paste.asObservable()
       .subscribe((e) &#x3D;&gt; {
         const pasted &#x3D; (e.clipboardData).getData(&#x27;text&#x27;);
+        this.filterList(pasted, true);
       });
 
     this.keyup.asObservable().debounceTime(this.debounceTime)

@@ -181,6 +181,14 @@ export default [
         content: 'Resource'
     },
     {
+        name: 'resource.select.placeholder.new',
+        content: 'Hinzufügen...'
+    },
+    {
+        name: 'resource.select.placeholder.select',
+        content: 'Auswählen...'
+    },
+    {
         name: 'pagination.first',
         content: '«'
     },
@@ -463,6 +471,10 @@ export default [
     {
         name: 'list.empty',
         content: 'Noch keine Einträge..'
+    },
+    {
+        name: 'list.loading',
+        content: 'Lade Liste..'
     },
     {
         name: 'list.filter.noResults',

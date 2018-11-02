@@ -34,6 +34,8 @@ export class List<T> extends Collection<Item<T>> {
   protected change: Subject<List<T>> = new Subject();
   /** Observable that is nexted when the list has changed. */
   public change$: Observable<List<T>> = this.change.asObservable();
+  /** Tells if the list is in loading state. */
+  public isLoading = false;
 
   /** Getter for items, calls transform */
   get display() {
@@ -103,9 +105,9 @@ export class List<T> extends Collection<Item<T>> {
   /** Sets all fields that exceed the maxColumns to hidden */
   protected hideOverflowFields() {
     if (this.config && this.config.maxColumns) {
-      this.fields.filter(f => !f.hidden).forEach((field, index) => {
-        if (index >= this.config.maxColumns && field.hidden === undefined) {
-          field.hidden = true;
+      this.fields.filter(f => !f.hideInList).forEach((field, index) => {
+        if (index >= this.config.maxColumns && field.hideInList === undefined) {
+          field.hideInList = true;
         }
       });
     }
@@ -234,6 +236,6 @@ export class List<T> extends Collection<Item<T>> {
   }
   /** Returns true if the given field index in the visible fields is higher than maxColumns.  */
   public isOverTheMax(field: Field) {
-    return this.fields.filter(f => !f.hidden).indexOf(field) >= this.config.maxColumns;
+    return this.fields.filter(f => !f.hideInList).indexOf(field) >= this.config.maxColumns;
   }
 }

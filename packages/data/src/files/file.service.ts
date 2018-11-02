@@ -60,12 +60,32 @@ export class FileService {
     deduplicate: false,
     fileName: []
   };
+  /** config for new assets */
+  public dmAssetConfig = Object.assign({}, this.resourceConfig.get('dmAsset'));
+  /** config for legacy assets */
+  public legacyAssetConfig = Object.assign({}, this.resourceConfig.get('legacyAsset'), { forceGroup: true });
+  /** All the possible assetGroupIDs that are interpreted as old. Comes from validation of field */
+  public oldAssetGroupIDs = ['image', 'video', 'audio', 'plain', 'document', 'spreadsheet', 'legacyAsset'];
 
   /** Injects sdk */
   constructor(private sdk: SdkService,
     private typeConfig: TypeConfigService,
     private resourceService: ResourceService,
     private resourceConfig: ResourceConfig) {
+  }
+
+  public getAssetConfig(assetGroupID) {
+    if (this.isOldAssetGroupID(assetGroupID)) {
+      const config = Object.assign({}, this.legacyAssetConfig);
+      if (this.oldAssetGroupIDs.includes(assetGroupID) && assetGroupID !== 'legacyAsset') {
+        config.filter = Object.assign({}, (config.filter || {}), {
+          type: assetGroupID
+        });
+      }
+      return config;
+    } else {
+      return Object.assign({}, this.dmAssetConfig);
+    }
   }
 
   /** returns true if the given asset is a new one (DMAssetResource) */
@@ -194,6 +214,15 @@ export class FileService {
 
   public assetGroupList(forceReload = false) {
     return (!forceReload && this.assetGroupListPromise) || this.sdk.api.assetGroupList();
+  }
+
+  /** Yields true if the given assetGroupID is an old one. Also checks for old validation types */
+  public isOldAssetGroupID(assetGroupID) {
+    return !assetGroupID || this.oldAssetGroupIDs.includes(assetGroupID);
+  }
+  /** Yields true if the given assetGroupID is not an old one, meaning it is defined and legacyAsset or an old asset type. */
+  public isNewAssetGroupID(assetGroupID) {
+    return !this.isOldAssetGroupID(assetGroupID);
   }
 
   /** method that can be called after the upload to select the uploaded item(s). */

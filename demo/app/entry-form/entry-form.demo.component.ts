@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DefaultEntryInputComponent } from '@ec.components/data';
+import { DefaultEntryInputComponent, SdkService } from '@ec.components/data';
 
 @Component({
   selector: 'ec-entry-form-demo',
@@ -66,8 +66,7 @@ export class EntryFormDemoComponent {
       console.log('on save', item);
     }
   }
-  constructor() {
-  }
+
   addField(item, form, pop) {
     const field = item.getBody();
     form.addField(field.property, item.getBody());
