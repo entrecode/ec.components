@@ -34,6 +34,8 @@ export class List<T> extends Collection<Item<T>> {
   protected change: Subject<List<T>> = new Subject();
   /** Observable that is nexted when the list has changed. */
   public change$: Observable<List<T>> = this.change.asObservable();
+  /** Tells if the list is in loading state. */
+  public isLoading = false;
 
   /** Getter for items, calls transform */
   get display() {

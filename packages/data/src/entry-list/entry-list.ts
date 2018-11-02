@@ -34,12 +34,11 @@ export class EntryList extends ResourceList {
       return;
     }
     this.useConfig(config);
+    this.isLoading = true;
     this.promise = this.sdk.api.entryList(this.model, this.getFilterOptions(this.config))
-      .then((list) => {
-        this.use(list);
-      }).catch((err) => {
-        this.error.next(err);
-      });
+      .then((list) => this.use(list))
+      .catch((err) => this.error.next(err))
+      .then(() => this.isLoading = false);
     this.loading.next(this.promise);
   }
 }

@@ -15,7 +15,7 @@ export class LoaderService {
   /** Tells the given loader to wait for the given promise. If no loader is given, the global loader is used (if set)*/
   wait(promise: Promise<any>, loader: LoaderComponent = this.loader) {
     if (!loader || !promise) {
-      // console.warn('cannot trigger loader: no promise or loader given');
+      console.warn('cannot trigger loader: no promise or loader given');
       return;
     }
     return loader.wait(promise);

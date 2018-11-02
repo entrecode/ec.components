@@ -473,6 +473,10 @@ export default [
         content: 'Noch keine Einträge..'
     },
     {
+        name: 'list.loading',
+        content: 'Lade Liste..'
+    },
+    {
         name: 'list.filter.noResults',
         content: 'Keine Einträge gefunden'
     },
