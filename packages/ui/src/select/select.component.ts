@@ -155,7 +155,7 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
     } else {
       this.addItem(item);
     }
-    if (this.searchbar) {
+    if (this.searchbar && !this.config.solo) {
       /* this.searchbar.clear(); */
       this.searchbar.focusEvent.emit(true);
     }
