@@ -24,6 +24,7 @@
     (focus)="focus($event)" (keypressed)="handleKey($event,dropdownList)" (queryChanged)="filterDropdownList(dropdownList,$event)"></ec-searchbar>
 
   <ec-pop class="ec-select-options" [hideOnClickOutside]="true" #dropdown>
-    <ec-list #dropdownList [list]="list" (columnClicked)="select($event)" [selection]="selection"></ec-list>
+    <ec-loader class="ec-loader loader is-local" #dropdownLoader></ec-loader>
+    <ec-list #dropdownList [list]="list" (columnClicked)="listItemClicked($event)" [selection]="selection"></ec-list>
   </ec-pop>
 </div>

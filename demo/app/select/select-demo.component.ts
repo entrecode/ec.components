@@ -19,6 +19,43 @@ export class SelectDemoComponent {
   values = [];
   products = mocked.lists.products;
 
+  actions = [{
+    id: 'west',
+    title: 'Go West',
+    action: (item, bar) => {
+      console.log('go west!');
+      /* bar.selection.toggle(item); */
+      bar.loadActions([
+        {
+          id: 'saloon',
+          title: 'Enter Saloon'
+        },
+        {
+          id: 'bank',
+          title: 'Rob Bank'
+        }
+      ])
+    }
+  },
+  {
+    id: 'south',
+    title: 'Go South',
+    action: (item, bar) => {
+      /* bar.selection.toggle(item); */
+      console.log('go south!');
+      bar.loadActions([
+        {
+          id: 'blues',
+          title: 'Play Blues'
+        },
+        {
+          id: 'chicago',
+          title: 'Visit Chicago'
+        }
+      ])
+    }
+  }];
+
   constructor(public notificationService: NotificationsService) {
     console.log('list', this.products);
   }

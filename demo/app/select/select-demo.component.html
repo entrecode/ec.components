@@ -3,7 +3,13 @@
 <strong>Default</strong>
 <ec-select [list]="products" [(ngModel)]="values"></ec-select>
 
+<strong>Actionbar</strong>
+<ec-actionbar [actions]="actions"></ec-actionbar>
 
+<strong>Resource Actionbar</strong>
+<ec-resource-actionbar></ec-resource-actionbar>
+
+<ec-notifications></ec-notifications>
 <pre><code>{{values | json}}</code></pre>
 
 <!-- 

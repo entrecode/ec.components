@@ -205,7 +205,7 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   /** Is called when the nested entry-form has been saved. Selects the fresh entry and clears the form */
   formSubmitted(form: Form<EntryResource>) {
     if (!this.selection.has(form)) {
-      this.select(form);
+      this.toggleItem.next(form);
     } else { // already in selection => update body
       const index = this.selection.index(form);
       this.selection.items[index].body = form.getBody();

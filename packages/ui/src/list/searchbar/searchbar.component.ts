@@ -163,7 +163,12 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
   }
 
   keyupEvent(e) {
-    if (e.key === 'Escape') {
+    if (['Escape',
+      'Enter',
+      'ArrowLeft',
+      'ArrowRight',
+      'ArrowUp',
+      'ArrowDown'].includes(e.key)) {
       return;
     }
     this.queryValue.next(e.target.value);

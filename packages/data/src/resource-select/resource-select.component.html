@@ -16,9 +16,9 @@
         <ec-pop class="ec-select-options" #dropdown [hideOnClickOutside]="true">
             <ec-loader class="ec-loader loader is-local" #dropdownLoader></ec-loader>
             <ec-resource-list #dropdownList *ngIf="dropdown.activated" [relation]="relation" [api]="api" [config]="dropdownConfig"
-                [selection]="selection" [loader]="dropdownLoader" (columnClicked)="select($event);searchbar?.focusEvent?.emit(true)"></ec-resource-list>
+                [selection]="selection" [loader]="dropdownLoader" (columnClicked)="listItemClicked($event);searchbar?.focusEvent?.emit(true)"></ec-resource-list>
         </ec-pop>
-        <ec-resource-list-pop (columnClicked)="select($event)" #listPop #resourceListPop [api]="api" [relation]="relation"
+        <ec-resource-list-pop (columnClicked)="listItemClicked($event)" #listPop #resourceListPop [api]="api" [relation]="relation"
             [config]="config" [selection]="selection"></ec-resource-list-pop>
 
     </div>

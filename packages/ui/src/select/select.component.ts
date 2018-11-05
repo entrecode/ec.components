@@ -5,6 +5,8 @@ import { Item } from '@ec.components/core/src/item/item';
 import { PopComponent } from '../pop/pop.component';
 import { SearchbarComponent } from '../list/searchbar/searchbar.component';
 import { ListComponent } from '../list/list.component';
+import { Subject } from 'rxjs/Subject';
+import { LoaderComponent } from '../loader/loader.component';
 
 /**
  * The SelectComponent will render a dropdown of a given list.
@@ -50,12 +52,26 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   @Input() solo: boolean;
   /** The selection dropdown */
   @ViewChild('dropdown') dropdown: PopComponent;
+  /** The loader inside the dropdown */
+  @ViewChild('dropdownLoader') dropdownLoader: LoaderComponent;
   /** The list in the dropdown */
   @ViewChild(ListComponent) dropdownList: ListComponent<any>;
   /** The nested searchbar */
   @ViewChild(SearchbarComponent) searchbar: SearchbarComponent;
+  /** Subject that is nexted when an item is being selected (clicked or entered on) */
+  toggleItem: Subject<Item<T>> = new Subject();
 
   constructor(public elementRef: ElementRef) {
+    this.toggleItem.asObservable().subscribe((item) => {
+      if (this.selection.has(item)) {
+        this.removeItem(item);
+      } else {
+        this.addItem(item);
+      }
+      if (this.searchbar && !this.config.solo) {
+        this.searchbar.focusEvent.emit(true);
+      }
+    });
   }
 
   getParentTree(el, tree = []) {
@@ -94,6 +110,11 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
     this.selection.update$.subscribe(() => {
       this.onChange();
     });
+  }
+
+  focusFirstItemInDropdown() {
+    delete this.dropdownList.focusItem;
+    this.dropdownList.focusNext()
   }
 
   /** Called when the model changes */
@@ -149,16 +170,8 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   }
 
   /** Select handler. Toggles selection. */
-  public select(item) {
-    if (this.selection.has(item)) {
-      this.removeItem(item);
-    } else {
-      this.addItem(item);
-    }
-    if (this.searchbar && !this.config.solo) {
-      /* this.searchbar.clear(); */
-      this.searchbar.focusEvent.emit(true);
-    }
+  public listItemClicked(item) {
+    this.toggleItem.next(item);
   }
 
   focus(e) {
@@ -214,6 +227,7 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   activate(e) {
     if (this.dropdown) {
       this.dropdown.show(e);
+      this.focusFirstItemInDropdown();
     }
     if (this.searchbar) {
       this.searchbar.focusEvent.emit(true);
@@ -251,14 +265,14 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
         break;
       case 'Enter':
         if (list.focusItem) {
-          this.selection.toggle(list.focusItem);
-          /* this.searchbar.clear(); */
+          this.searchbar.clear();
+          this.toggleItem.next(list.focusItem);
         }
         this.preventDefault(event);
         break;
       case 'Backspace':
         if (!this.selection.isEmpty() && query === '') {
-          this.selection.remove(this.selection.items[this.selection.items.length - 1]);
+          this.removeItem(this.selection.items[this.selection.items.length - 1])
         }
         break;
       case 'Tab':
@@ -271,12 +285,14 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
     }
   }
 
-  filterDropdownList(list, query) {
-    if (!list) {
+  filterDropdownList(listComponent: ListComponent<any>, query) {
+    if (!listComponent) {
       console.warn('cannot filter yet: list not ready');
       return;
     }
     this.dropdown.show();
-    list.filter(this.config.label, query);
+    Promise.resolve(listComponent.filter(this.config.label, query)).then(() => {
+      this.focusFirstItemInDropdown();
+    });
   }
 }

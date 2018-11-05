@@ -92,6 +92,9 @@ export class ListComponent<T> implements OnChanges {
 
   /** Selects the next item */
   focusNext() {
+    if (!this.list) {
+      return;
+    }
     let index = 0;
     if (this.focusItem) {
       index = this.list.page.indexOf(this.focusItem) + 1;
@@ -101,6 +104,9 @@ export class ListComponent<T> implements OnChanges {
 
   /** Selects the previous item */
   focusPrev() {
+    if (!this.list) {
+      return;
+    }
     let index = this.list.page.length - 1;
     if (this.focusItem) {
       index = this.list.page.indexOf(this.focusItem) + this.list.page.length - 1;
