@@ -21,8 +21,8 @@
                 (columnClicked)="listItemClicked($event)"></ec-resource-list>
         </ec-pop>
     </div>
-    <ec-resource-list-pop [hideOnClickOutside]="true" (pasted)="pasteValue($event)" (columnClicked)="listItemClicked($event)"
-        #resourceListPop [api]="api" [relation]="relation" [config]="config" [selection]="selection"></ec-resource-list-pop>
+    <ec-resource-list-pop (pasted)="pasteValue($event)" (columnClicked)="listItemClicked($event)" #resourceListPop
+        [api]="api" [relation]="relation" [config]="config" [selection]="selection"></ec-resource-list-pop>
     <ec-resource-pop #resourcePop [api]="api" [relation]="relation" [config]="config" (submitted)="formSubmitted($event)"
         (deleted)="removeItem($event)" *ngIf="config"></ec-resource-pop>
     <nav class="ec-resource-select__controls">

@@ -9,7 +9,7 @@
       [config]="uploadConfig" [assetGroupID]="assetGroupID"></ec-upload-select>
     <div data-grid *ngIf="active&&sdk.apiResolved">
       <div [attr.data-col]="showGroupSelect()?'6-sm':'12-sm'">
-        <ec-searchbar #searchbar [list]="resourceList"></ec-searchbar>
+        <ec-searchbar #searchbar [listComponent]="resourceList"></ec-searchbar>
       </div>
       <div data-col='6-sm' *ngIf="showGroupSelect()">
         <ec-assetgroup-select [readOnly]="config.forceGroup" [assetGroupID]="assetGroupID" (groupChanged)="setGroup($event)"></ec-assetgroup-select>
@@ -18,8 +18,7 @@
   </div>
   <div class="ec-asset-list-pop-body">
     <ec-resource-list #resourceList [relation]="getGroupRelation()" [api]="sdk.api" [selection]="selection"
-      (columnClicked)="select($event)" (changed)="searchbar.updatedList($event)" [config]="config" [loader]="popLoader"
-      class="ec-resource-list"></ec-resource-list>
+      (columnClicked)="select($event)" [config]="config" [loader]="popLoader" class="ec-resource-list" (changed)="searchbar.updatedList($event)"></ec-resource-list>
   </div>
   <div class="dialog-footer">
     <ec-pagination [pagination]="resourceList?.list?.pagination"></ec-pagination>

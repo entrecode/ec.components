@@ -55,8 +55,8 @@
     </ec-pop>
   </div>
   <!-- Fully fledged entryListPop -->
-  <ec-entry-list-pop [hideOnClickOutside]="true" (columnClicked)="listItemClicked($event)" [model]="model" class="ec-entry-list-pop"
-    [config]="config" [selection]="selection" #entryListPop></ec-entry-list-pop>
+  <ec-entry-list-pop (columnClicked)="listItemClicked($event)" [model]="model" class="ec-entry-list-pop" [config]="config"
+    [selection]="selection" #entryListPop></ec-entry-list-pop>
   <ec-resource-delete-pop [question]="'entry.select.delete.question' | symbol" #confirmDelete></ec-resource-delete-pop>
 
   <ec-entry-pop #entryPop *ngIf="config" [model]="model" [config]="config" (submitted)="formSubmitted($event)"

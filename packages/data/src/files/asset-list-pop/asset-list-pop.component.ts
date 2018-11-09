@@ -78,6 +78,7 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
     } else if (this.selection) {
       this.selection.toggle($event);
     }
+    this.searchbar.focusEvent.emit(true);
   }
 
   /** Returns the full resource relation name based on the current assetGroupID  */

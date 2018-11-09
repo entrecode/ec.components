@@ -55,6 +55,8 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
   @Output() pasted: EventEmitter<any> = new EventEmitter();
   /** Emitted when the query changes, including debounce */
   @Output() queryChanged: EventEmitter<any> = new EventEmitter();
+  /** timestamp of latest keypress that has been emitted */
+  latestQuery;
 
   constructor(public route: ActivatedRoute, public symbol: SymbolService) {
     this.defaultPlaceholder = this.symbol.resolve('searchbar.placeholder');
@@ -77,7 +79,8 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
       .pipe(distinctUntilChanged())
       .subscribe(value => this.filterList(value));
 
-    this.keySubject.asObservable().debounceTime(100)
+    this.keySubject.asObservable()
+      .debounceTime(100)
       .subscribe(data => {
         this.keypressed.emit(data);
       });
@@ -93,7 +96,7 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
 
   updatedList(list) {
     this.list = list;
-    this.query = list.getFilterValue(this.property) || '';
+    this.updateQueryFromOutside(list.getFilterValue(this.property) || '');
     if (this.autofocus) {
       this.focusEvent.emit(true);
     }
@@ -132,7 +135,14 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
 
   /** clears the input query */
   clear() {
-    this.query = '';
+    this.updateQueryFromOutside('');
+  }
+
+  /** Updates the query string if the change happened outside */
+  updateQueryFromOutside(query) {
+    if (query !== this.latestQuery) {
+      this.query = query;
+    }
   }
 
   /** prevents the event default and disables propagation */
@@ -154,6 +164,9 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
    * select is emitted immediately with a pseudo item containing the value as item identifier. */
   filterList(value) {
     // this.query = value;
+    this.latestQuery = value;
+
+    this.updateQueryFromOutside(value);
     if (this.queryChanged.observers.length) {
       this.queryChanged.emit(value);
       return;
@@ -184,30 +197,34 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
   }
 
   /** called on keydown. if arrow keys are pressed, toggle selection of next/prev elements of list */
-  handleKey(e) {
+  handleKey(e, listComponent = this.listComponent) {
     this.keySubject.next({ event: e, query: this.query });
-    if (!this.listComponent || !this.listComponent.selection) {
+    if (!listComponent || !listComponent.selection) {
       // console.warn('Arrow navigation is disabled: no listComponent given to searchbar');
       return;
     }
     switch (e.key) {
       case 'ArrowUp':
-        this.listComponent.focusPrev();
+        listComponent.focusPrev();
         this.preventDefault(e);
         break;
       case 'ArrowDown':
-        this.listComponent.focusNext();
+        listComponent.focusNext();
         this.preventDefault(e);
         break;
       case 'ArrowRight':
-        this.listComponent.list.pagination.next();
+        listComponent.list.pagination.next();
         break;
       case 'ArrowLeft':
-        this.listComponent.list.pagination.prev();
+        listComponent.list.pagination.prev();
         break;
       case 'Enter':
-        if (this.listComponent.focusItem) {
-          this.selected.emit(this.listComponent.focusItem);
+        if (listComponent.focusItem) {
+          if (this.selected.observers.length) {
+            this.selected.emit(listComponent.focusItem);
+          } else {
+            listComponent.selection.toggle(listComponent.focusItem);
+          }
         }
         this.enter.emit(e);
         break;

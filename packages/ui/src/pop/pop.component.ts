@@ -45,8 +45,8 @@ export class PopComponent {
 
   /** yields true if the given element is outside the pop / or is the wrapper element itself (the backdrop) */
   isOutside(element) {
-    return !this.elementRef.nativeElement.contains(element) ||
-      element === this.elementRef.nativeElement;
+    return !this.elementRef.nativeElement.contains(element)/*  ||
+      element === this.elementRef.nativeElement */;
   }
 
   /** Shows if not active, hides if active. */ // active: boolean = !this.active, emit: boolean = false

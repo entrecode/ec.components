@@ -96,9 +96,7 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
         } else if (this.resourcePop && !this.config.disableCreatePop) {
             this.resourcePop.show();
         }
-        if (this.searchbar) {
-            this.searchbar.focusEvent.emit(true);
-        }
+        this.focusSearchbar();
     }
 
     defaultPlaceholder() {
