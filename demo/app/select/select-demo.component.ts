@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { mocked } from '../../../mocks/data';
 import { NotificationsService } from '@ec.components/ui';
+import { karlotto } from './karlotto';
 
 @Component({
   selector: 'ec-select-demo',
@@ -18,46 +19,85 @@ export class SelectDemoComponent {
 
   values = [];
   products = mocked.lists.products;
-
-  actions = [{
-    id: 'west',
-    title: 'Go West',
-    action: (item, bar) => {
-      console.log('go west!');
-      /* bar.selection.toggle(item); */
-      bar.loadActions([
-        {
-          id: 'saloon',
-          title: 'Enter Saloon'
-        },
-        {
-          id: 'bank',
-          title: 'Rob Bank'
+  saloon = {
+    id: 'saloon',
+    title: 'Enter Saloon',
+    children: [
+      {
+        id: 'drink',
+        title: 'Drink Beer',
+        add: false,
+        action: () => alert('Now you are drunk')
+      },
+      {
+        id: 'fight',
+        title: 'Start fight',
+        action: (item, bar) => {
+          alert('Now you are dead');
+          bar.reset();
         }
-      ])
-    }
-  },
-  {
-    id: 'south',
-    title: 'Go South',
+      }]
+  };
+  bank = {
+    id: 'bank',
+    title: 'Rob Bank',
     action: (item, bar) => {
-      /* bar.selection.toggle(item); */
-      console.log('go south!');
-      bar.loadActions([
+      alert('You WIN!');
+      bar.reset();
+    }
+  };
+  actions = [
+    {
+      id: 'west',
+      title: 'West',
+      children: [
+        {
+          id: 'shoot',
+          title: 'Shoot',
+          add: false,
+          action: () => alert('PENG. Nothing happens')
+        },
+        this.saloon,
+        this.bank
+      ]
+    },
+    {
+      id: 'south',
+      title: 'South',
+      children: [
         {
           id: 'blues',
-          title: 'Play Blues'
+          title: 'Play Blues',
+          add: false,
+          action: (item, bar) => {
+            alert('Your guitar is broken... :(');
+          }
         },
         {
           id: 'chicago',
-          title: 'Visit Chicago'
+          title: 'Visit Chicago',
+          children: [
+            this.saloon,
+            this.bank
+          ]
         }
-      ])
-    }
-  }];
+      ]
+    }];
+  otto;
+  ottostart: any[];
 
   constructor(public notificationService: NotificationsService) {
-    console.log('list', this.products);
+    console.log('karlott', karlotto);
+    this.otto = karlotto.map((line, i) => ({
+      id: i,
+      title: line,
+      add: false,
+      children: []
+    }));
+    this.otto.forEach((action, i) => {
+      action.children = [this.otto[(i + 1) % this.otto.length]];
+    });
+    this.ottostart = [this.otto[0]]
   }
 
   toggle(item, selection) {

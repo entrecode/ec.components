@@ -21,11 +21,6 @@ export class ResourceActionbarComponent extends ActionbarComponent implements On
                     (dm) => {
                         this.sdk.useDatamanager(dm.shortID);
                         actionbar.loadActions([
-                            {
-                                title: 'Edit',
-                                id: 'edit',
-                                action: () => this.openCurrentPath()
-                            },
                             this.resourceAction({
                                 actionbar,
                                 title: 'Models',
@@ -78,6 +73,11 @@ export class ResourceActionbarComponent extends ActionbarComponent implements On
                                 relation: 'dmAccount',
                                 api: dm
                             }),
+                            {
+                                title: 'Edit',
+                                id: 'edit',
+                                action: () => this.openCurrentPath()
+                            },
                         ])
                     }
                 )

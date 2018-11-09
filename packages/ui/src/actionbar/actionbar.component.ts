@@ -43,6 +43,9 @@ export class ActionbarComponent extends SelectComponent<Action> implements OnIni
             if (item.getBody().action) {
                 item.getBody().action(item, this);
             }
+            if (item.getBody().children) {
+                this.loadActions(item.getBody().children);
+            }
         });
         this.remove.subscribe((item) => {
             this.selection.remove(item);
@@ -62,6 +65,11 @@ export class ActionbarComponent extends SelectComponent<Action> implements OnIni
             return 'ROOT';
         }
         return this.selection.items[this.selection.items.length - 1].id();
+    }
+
+    reset() {
+        this.selection.removeAll();
+        this.loadActions(this.actionStack[this.currentID()])
     }
 
     loadActions(actions) {
