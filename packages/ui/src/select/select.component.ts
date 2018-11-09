@@ -263,6 +263,12 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
         }
         this.preventDefault(event);
         break;
+      case 'ArrowRight':
+        list.list.pagination.next();
+        break;
+      case 'ArrowLeft':
+        list.list.pagination.prev();
+        break;
       case 'Enter':
         if (list.focusItem) {
           this.searchbar.clear();
