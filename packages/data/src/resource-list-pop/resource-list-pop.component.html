@@ -3,13 +3,14 @@
         <button (click)="hide()" type="button" class="dialog-dismiss">
             <ec-icon name="close-x-big"></ec-icon>
         </button>
-        <ec-searchbar (selected)="hide()" placeholder="Search.." [list]="resourceList" #searchbar *ngIf="resourceList"
-            [property]="config?.label"></ec-searchbar>
+        <ec-searchbar placeholder="Search.." [list]="resourceList" #searchbar *ngIf="resourceList" (selected)="selection.toggle($event)"
+            (pasted)="pasted.emit($event)" [property]="config?.label" [listComponent]="resourceList"></ec-searchbar>
         <ec-list-header [list]="resourceList?.list" [selection]="selection"></ec-list-header>
     </header>
     <div class="dialog-body">
-        <ec-resource-list (changed)="searchbar.focusEvent.emit(true)" [api]="api" [relation]="relation" [config]="config"
-            [selection]="selection" (columnClicked)="select($event)" #resourceList></ec-resource-list>
+        <ec-loader class="ec-loader loader is-local" #resourceListLoader></ec-loader>
+        <ec-resource-list (changed)="searchbar.updatedList($event)" [api]="api" [relation]="relation" [config]="config"
+            [selection]="selection" (columnClicked)="select($event)" [loader]="resourceListLoader" #resourceList></ec-resource-list>
     </div>
     <div class="dialog-footer">
         <ec-pagination [pagination]="resourceList?.list?.pagination"></ec-pagination>

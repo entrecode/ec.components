@@ -28,7 +28,7 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
   /** The event that focuses the input */
   public focusEvent: EventEmitter<boolean> = new EventEmitter();
   /** Delay until search is fired */
-  @Input() debounceTime = 300;
+  @Input() debounceTime = 200;
   /** Subject that is triggered on keyup */
   public queryValue: Subject<any> = new Subject<any>();
   /** Subject that is triggered on key trigger */
@@ -51,6 +51,8 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
   @Output() blur: EventEmitter<any> = new EventEmitter();
   /** Emits on focus */
   @Output() focus: EventEmitter<any> = new EventEmitter();
+  /** Emits on paste */
+  @Output() pasted: EventEmitter<any> = new EventEmitter();
   /** Emitted when the query changes, including debounce */
   @Output() queryChanged: EventEmitter<any> = new EventEmitter();
 
@@ -60,14 +62,20 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
     this.paste.asObservable()
       .subscribe((e) => {
         const pasted = (e.clipboardData).getData('text');
-        this.filterList(pasted, true);
+        if (this.pasted.observers.length) {
+          this.pasted.emit(e);
+        } else if (this.list.config.identifierPattern && pasted.match(this.list.config.identifierPattern)) {
+          this.preventDefault(e);
+          this.clear();
+          this.selected.emit(new Item({
+            [this.list.config.identifier]: pasted,
+          }, this.list.config));
+        }
       });
 
     this.queryValue.asObservable().debounceTime(this.debounceTime)
       .pipe(distinctUntilChanged())
-      .subscribe(value => {
-        this.filterList(value);
-      });
+      .subscribe(value => this.filterList(value));
 
     this.keySubject.asObservable().debounceTime(100)
       .subscribe(data => {
@@ -81,6 +89,14 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
         }
         this.clear();
       })
+  }
+
+  updatedList(list) {
+    this.list = list;
+    this.query = list.getFilterValue(this.property) || '';
+    if (this.autofocus) {
+      this.focusEvent.emit(true);
+    }
   }
 
   initList() {
@@ -136,12 +152,11 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
   /** Filters the list by the given value, either uses property or list.config.label.
    * If paste is true and the value matches the list.config.identifierPattern,
    * select is emitted immediately with a pseudo item containing the value as item identifier. */
-  filterList(value, paste = false) {
+  filterList(value) {
+    // this.query = value;
     if (this.queryChanged.observers.length) {
       this.queryChanged.emit(value);
-      if (!this.list) {
-        return; // skip warnings
-      }
+      return;
     }
     if (!this.list) {
       console.warn('could not search: no list given!', this.list);
@@ -150,14 +165,6 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
     if (!this.property && !this.list.config.label) {
       console.warn('cannot filter list: no property set and no label property configured');
       return;
-    }
-    if (paste && this.list.config.identifierPattern) {
-      if (value.match(this.list.config.identifierPattern)) {
-        this.selected.emit(new Item({
-          [this.list.config.identifier]: value,
-        }, this.list.config));
-        /* return true; */
-      }
     }
     this.list.filter(this.property || this.list.config.label, value);
   }
@@ -192,8 +199,14 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
         this.listComponent.focusNext();
         this.preventDefault(e);
         break;
+      case 'ArrowRight':
+        this.listComponent.list.pagination.next();
+        break;
+      case 'ArrowLeft':
+        this.listComponent.list.pagination.prev();
+        break;
       case 'Enter':
-        if (!this.listComponent.selection.isEmpty()) {
+        if (this.listComponent.focusItem) {
           this.selected.emit(this.listComponent.focusItem);
         }
         this.enter.emit(e);

@@ -38,8 +38,6 @@ export class ResourceListComponent extends ListComponent<Resource>
   @Input() relation: string;
   /** The loader that should be shown while the list is loaded. */
   @Input() loader: LoaderComponent;
-  /** emits when the list changed (after loading) */
-  @Output() changed: EventEmitter<List<Resource>> = new EventEmitter();
 
   /** The constructor will just call super of List*/
   constructor(
@@ -95,11 +93,7 @@ export class ResourceListComponent extends ListComponent<Resource>
       if (!list) {
         return;
       }
-      this.list = list;
-      this.listConfig.applyConfig(this.list);
-      this.list.change$.subscribe(newList => {
-        this.changed.next(newList)
-      });
+      this.init(list);
       if (this.list.promise) {
         this.loaderService.wait(this.list.promise, this.loader);
       }
@@ -112,9 +106,6 @@ export class ResourceListComponent extends ListComponent<Resource>
           error: err
         });
       });
-      if (!this.selection) {
-        this.selection = new Selection([], this.list.config);
-      }
     });
   }
 

@@ -7,21 +7,22 @@
             <li *ngFor="let selected of selection?.items">
                 <span [class.ec-select-selected]="!solo" [class.ec-select-selected_solo]="solo" (click)="!solo&&editItem(selected,$event)">
                     {{selected.display()}}
-                    <a (click)="removeItem(selected,$event)">&times;</a>
+                    <a (click)="removeItem(selected,$event);">&times;</a>
                 </span>
             </li>
         </ul>
         <ec-searchbar *ngIf="!config?.disableSelect" [autofocus]="false" [property]="config?.label" [placeholder]="placeholder||defaultPlaceholder()"
-            (keypressed)="handleKey($event,dropdownList)" (focus)="focus($event)" (queryChanged)="filterDropdownList(dropdownList,$event)"></ec-searchbar>
+            (pasted)="pasteValue($event)" (keypressed)="handleKey($event,dropdownList)" (focus)="focus($event)"
+            (queryChanged)="filterDropdownList(dropdownList,$event)"></ec-searchbar>
         <ec-pop class="ec-select-options" #dropdown [hideOnClickOutside]="true">
             <ec-loader class="ec-loader loader is-local" #dropdownLoader></ec-loader>
-            <ec-resource-list #dropdownList *ngIf="dropdown.activated" [relation]="relation" [api]="api" [config]="dropdownConfig"
-                [selection]="selection" [loader]="dropdownLoader" (columnClicked)="listItemClicked($event);searchbar?.focusEvent?.emit(true)"></ec-resource-list>
+            <ec-resource-list (changed)="searchbar.updatedList($event)" #dropdownList *ngIf="dropdown.activated"
+                [relation]="relation" [api]="api" [config]="dropdownConfig" [selection]="selection" [loader]="dropdownLoader"
+                (columnClicked)="listItemClicked($event)"></ec-resource-list>
         </ec-pop>
-        <ec-resource-list-pop (columnClicked)="listItemClicked($event)" #listPop #resourceListPop [api]="api" [relation]="relation"
-            [config]="config" [selection]="selection"></ec-resource-list-pop>
-
     </div>
+    <ec-resource-list-pop [hideOnClickOutside]="true" (pasted)="pasteValue($event)" (columnClicked)="listItemClicked($event)"
+        #resourceListPop [api]="api" [relation]="relation" [config]="config" [selection]="selection"></ec-resource-list-pop>
     <ec-resource-pop #resourcePop [api]="api" [relation]="relation" [config]="config" (submitted)="formSubmitted($event)"
         (deleted)="removeItem($event)" *ngIf="config"></ec-resource-pop>
     <nav class="ec-resource-select__controls">
@@ -31,7 +32,7 @@
         <a (click)="resourcePop.create()" class="btn btn_clear" *ngIf="!config?.disableCreatePop&&hasMethod('post')">
             <ec-icon name="add"></ec-icon>
         </a>
-        <a (click)="listPop.show()" class="btn btn_clear" *ngIf="!config?.disableListPop&&hasMethod('get')">
+        <a (click)="resourceListPop.show($event)" class="btn btn_clear" *ngIf="!config?.disableListPop&&hasMethod('get')">
             <ec-icon name="find"></ec-icon>
         </a>
     </nav>

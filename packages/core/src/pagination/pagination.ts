@@ -82,8 +82,9 @@ export class Pagination<T> {
   }
 
   /** Selects the given page number */
-  select(page: number): void {
-    if (page === this.config.page) {
+  select(page: number, silent = false): void {
+    if (page === this.config.page || silent) {
+      this.config.page = page;
       return;
     }
     this.load({ page: page });

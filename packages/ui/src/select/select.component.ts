@@ -68,9 +68,6 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
       } else {
         this.addItem(item);
       }
-      if (this.searchbar && !this.config.solo) {
-        this.searchbar.focusEvent.emit(true);
-      }
     });
   }
 
@@ -110,11 +107,6 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
     this.selection.update$.subscribe(() => {
       this.onChange();
     });
-  }
-
-  focusFirstItemInDropdown() {
-    delete this.dropdownList.focusItem;
-    this.dropdownList.focusNext()
   }
 
   /** Called when the model changes */
@@ -172,19 +164,33 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   /** Select handler. Toggles selection. */
   public listItemClicked(item) {
     this.toggleItem.next(item);
+    // TODO: prevent default to prevent bluring searchbear.
+    // refocusing is not possible because that will activate the pop again..
   }
 
   focus(e) {
-    if (this.dropdown) {
+    if (this.dropdown && !this.dropdown.active) {
       this.dropdown.show();
+    }
+  }
+
+  hasSoloSelection() {
+    return this.config.solo && !this.selection.isEmpty();
+  }
+
+  focusSearchbar() {
+    if (this.searchbar) {
+      this.searchbar.focusEvent.emit(true);
     }
   }
 
   /** Fires on selection change. Hides dropdown if solo */
   onChange() {
     this.changed.emit(this.selection);
-    if (this.dropdown && this.config.solo && !this.selection.isEmpty()) {
+    if (this.dropdown && this.hasSoloSelection()) {
       this.dropdown.hide();
+    } else {
+      this.focusSearchbar();
     }
     this.value = this.selection.getValue();
     return this.propagateChange(this.value);
@@ -227,7 +233,6 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   activate(e) {
     if (this.dropdown) {
       this.dropdown.show(e);
-      this.focusFirstItemInDropdown();
     }
     if (this.searchbar) {
       this.searchbar.focusEvent.emit(true);
@@ -265,13 +270,17 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
         break;
       case 'ArrowRight':
         list.list.pagination.next();
+        this.preventDefault(event);
         break;
       case 'ArrowLeft':
         list.list.pagination.prev();
+        this.preventDefault(event);
         break;
       case 'Enter':
         if (list.focusItem) {
-          this.searchbar.clear();
+          if (list.list.isFiltered()) {
+            list.list.clearFilter();
+          }
           this.toggleItem.next(list.focusItem);
         }
         this.preventDefault(event);
@@ -283,7 +292,7 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
         break;
       case 'Tab':
         if (this.dropdown) {
-          this.dropdown.hide()
+          this.dropdown.hide();
         }
         break;
       default:
@@ -298,7 +307,7 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
     }
     this.dropdown.show();
     Promise.resolve(listComponent.filter(this.config.label, query)).then(() => {
-      this.focusFirstItemInDropdown();
+      listComponent.focusFirst();
     });
   }
 }

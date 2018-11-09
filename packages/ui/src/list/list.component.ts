@@ -39,8 +39,12 @@ export class ListComponent<T> implements OnChanges {
   @Input() pagination: Pagination<T>;
   /** Custom PaginationConfig */
   @Input() paginationConfig: PaginationConfig;
+  /** If true, the first item in the list will always be focused after changed */
+  @Input() autoFocusFirst = false;
   /** Current focus */
   focusItem: Item<T>;
+  /** emits after the list changed */
+  @Output() changed: EventEmitter<List<T>> = new EventEmitter();
 
   constructor(public listConfig: ListConfigService) {
   }
@@ -50,14 +54,27 @@ export class ListComponent<T> implements OnChanges {
   ngOnChanges(changes?) {
     this.config = Object.assign(this.config || {}, this.configInput || {});
     if (this.items) {
-      this.list = new List(this.items, this.config, this.pagination);
+      this.init(new List(this.items, this.config, this.pagination));
     } else if (this.collection) {
-      this.list = new List(this.collection.items, this.config, this.pagination);
+      this.init(new List(this.collection.items, this.config, this.pagination));
     }
-    if (!this.list) {
+  }
+
+  init(list: List<T>) {
+    if (!list) {
+      console.warn('tried to init list.component with undefined list');
       return;
     }
+    this.list = list;
     this.listConfig.applyConfig(this.list);
+    this.list.change$.subscribe(() => {
+      if (this.autoFocusFirst || this.list.isFiltered()) {
+        this.focusFirst();
+      } else {
+        delete this.focusItem;
+      }
+      this.changed.emit(this.list)
+    });
     if (!this.selection) {
       this.selection = new Selection([], this.list.config);
     }
@@ -88,6 +105,11 @@ export class ListComponent<T> implements OnChanges {
       return;
     }
     this.selection.select(this.list.items[index]);
+  }
+
+  focusFirst() {
+    delete this.focusItem;
+    this.focusNext()
   }
 
   /** Selects the next item */

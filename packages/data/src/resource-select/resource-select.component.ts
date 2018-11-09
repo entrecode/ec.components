@@ -89,15 +89,15 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
     }
 
     togglePop(e) {
-        if (this.searchbar) {
-            this.searchbar.focusEvent.emit(true);
-        }
         if (this.dropdown && !this.config.disableSelect) {
             this.dropdown.show(e);
         } else if (this.resourceListPop && !this.config.disableListPop) {
-            this.resourceListPop.show();
+            this.resourceListPop.show(e);
         } else if (this.resourcePop && !this.config.disableCreatePop) {
             this.resourcePop.show();
+        }
+        if (this.searchbar) {
+            this.searchbar.focusEvent.emit(true);
         }
     }
 
@@ -158,6 +158,16 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
         }
     }
 
+    pasteValue(e) {
+        const value = (e.clipboardData).getData('text');
+        if (this.config.identifierPattern && value.match(this.config.identifierPattern)) {
+            this.preventDefault(e);
+            this.api.resource(this.relation, value)
+                .then(resource => this.addItem(new Item(resource, this.config)))
+                .catch(error => this.searchbar.filterList(value));
+        }
+    }
+
     /** Is called when a selected item has been clicked. */
     editItem(item: Item<Resource>, e) {
         this.auth.getAllowedResourceMethods(this.relation, { [this.config.identifier]: item.id() })
@@ -172,8 +182,15 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
 
     onChange() {
         super.onChange();
-        if (this.config.solo && this.resourceListPop) {
+        if (this.hasSoloSelection() && this.resourceListPop) {
             this.resourceListPop.hide();
+            return;
+        }
+    }
+
+    focusSearchbar() {
+        if (!this.resourceListPop || !this.resourceListPop.active) {
+            this.searchbar.focusEvent.emit(true);
         }
     }
 }

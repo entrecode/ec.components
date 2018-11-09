@@ -45,18 +45,18 @@
       <ec-resource-list #entryList [relation]="'model.'+model" [api]="sdk.api" *ngIf="model" [config]="dropdownConfig" [selection]="selection"
         (click)="$event.preventDefault();$event.stopPropagation()" (columnClicked)="listItemClicked($event)"></ec-resource-list> &&selection&&dropdown.active -->
 
-    <ec-searchbar *ngIf="!config?.disableSelect" [autofocus]="false" [property]="config?.label" [placeholder]="placeholder||defaultPlaceholder()"
-      (keypressed)="handleKey($event,dropdownList)" (focus)="focus($event)"
+    <ec-searchbar *ngIf="!config?.disableSelect" [autofocus]="false" [property]="lightModel?.titleField" [placeholder]="placeholder||defaultPlaceholder()"
+      (keypressed)="handleKey($event,dropdownList)" (focus)="focus($event)" (pasted)="pasteValue($event)"
       (queryChanged)="filterDropdownList(dropdownList,$event)"></ec-searchbar>
     <ec-pop *ngIf="!config?.disableSelect" class="ec-select-options" #dropdown [hideOnClickOutside]="true">
       <ec-loader class="ec-loader loader is-local" #dropdownLoader></ec-loader>
       <ec-entry-list #dropdownList [selection]="selection" *ngIf="dropdown.activated" [model]="model" [config]="dropdownConfig"
-        [loader]="dropdownLoader" (columnClicked)="listItemClicked($event)"></ec-entry-list>
+        [loader]="dropdownLoader" (changed)="searchbar.updatedList($event)" (columnClicked)="listItemClicked($event)"></ec-entry-list>
     </ec-pop>
   </div>
   <!-- Fully fledged entryListPop -->
-  <ec-entry-list-pop (columnClicked)="listItemClicked($event)" [model]="model" class="ec-entry-list-pop" [config]="config"
-    [selection]="selection" #entryListPop></ec-entry-list-pop>
+  <ec-entry-list-pop [hideOnClickOutside]="true" (columnClicked)="listItemClicked($event)" [model]="model" class="ec-entry-list-pop"
+    [config]="config" [selection]="selection" #entryListPop></ec-entry-list-pop>
   <ec-resource-delete-pop [question]="'entry.select.delete.question' | symbol" #confirmDelete></ec-resource-delete-pop>
 
   <ec-entry-pop #entryPop *ngIf="config" [model]="model" [config]="config" (submitted)="formSubmitted($event)"
@@ -69,7 +69,7 @@
     <a (click)="entryPop.create()" class="btn btn_clear" *ngIf="!config?.disableCreatePop&&hasMethod('post')&&(!solo||selection?.isEmpty())">
       <ec-icon name="add"></ec-icon>
     </a>
-    <a (click)="entryListPop.show()" class="btn btn_clear" *ngIf="!config?.disableListPop&&hasMethod('get')">
+    <a (click)="entryListPop.show($event)" class="btn btn_clear" *ngIf="!config?.disableListPop&&hasMethod('get')">
       <ec-icon name="find"></ec-icon>
     </a>
   </nav>

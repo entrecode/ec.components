@@ -79,7 +79,9 @@ export class ActionbarComponent extends SelectComponent<Action> implements OnIni
             this.initSelection();
         }
         setTimeout(() => {
-            this.focusFirstItemInDropdown();
+            if (this.dropdownList) {
+                this.dropdownList.focusFirst();
+            }
         })
     }
 

@@ -99,9 +99,6 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
         item.getBody().delete();
       }
     }
-    if (this.searchbar) {
-      this.searchbar.focusEvent.emit(true);
-    }
     if (e) {
       e.preventDefault();
       e.stopPropagation();
@@ -109,15 +106,15 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   }
 
   togglePop(e) {
-    if (this.searchbar) {
-      this.searchbar.focusEvent.emit(true);
-    }
     if (this.dropdown) {
       this.dropdown.show(e);
     } else if (this.entryListPop && !this.config.disableListPop) {
-      this.entryListPop.show();
+      this.entryListPop.show(e);
     } else if (this.entryPop && !this.config.disableCreatePop) {
       this.entryPop.show();
+    }
+    if (this.searchbar) {
+      this.searchbar.focusEvent.emit(true);
     }
   }
 
@@ -214,11 +211,25 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
 
   onChange() {
     super.onChange();
-    if (!this.config.solo || this.selection.isEmpty()) {
+    if (this.hasSoloSelection() && this.entryListPop) {
+      this.entryListPop.hide();
       return;
     }
-    if (this.entryListPop) {
-      this.entryListPop.hide();
+  }
+
+  focusSearchbar() {
+    if (!this.entryListPop || !this.entryListPop.active) {
+      this.searchbar.focusEvent.emit(true);
+    }
+  }
+
+  pasteValue(e) {
+    const value = (e.clipboardData).getData('text');
+    if (this.config.identifierPattern && value.match(this.config.identifierPattern)) {
+      this.preventDefault(e);
+      this.sdk.api.entry(this.model, value)
+        .then(entry => this.addItem(new Item(entry, this.config)))
+        .catch(error => this.searchbar.filterList(value));
     }
   }
 

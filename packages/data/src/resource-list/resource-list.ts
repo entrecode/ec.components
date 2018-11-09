@@ -174,6 +174,7 @@ export class ResourceList extends List<Resource> {
       return; // filter is already empty => no need to load again
     }
     return this.load({
+      page: 1, // reset page
       filter: this.filterProperty(property, value)
     });
   }

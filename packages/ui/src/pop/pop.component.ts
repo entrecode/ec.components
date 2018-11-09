@@ -34,13 +34,19 @@ export class PopComponent {
       this.clickEvent &&
       $event !== this.clickEvent && // to ensure the show event wont hide immediately
       this.elementRef &&
-      !this.elementRef.nativeElement.contains($event.target)) {
+      this.isOutside($event.target)) {
       this.hide();
     }
   }
 
   constructor(protected popService: PopService,
     public elementRef: ElementRef) {
+  }
+
+  /** yields true if the given element is outside the pop / or is the wrapper element itself (the backdrop) */
+  isOutside(element) {
+    return !this.elementRef.nativeElement.contains(element) ||
+      element === this.elementRef.nativeElement;
   }
 
   /** Shows if not active, hides if active. */ // active: boolean = !this.active, emit: boolean = false
