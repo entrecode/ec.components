@@ -152,7 +152,7 @@ export class ModelConfigService extends Config {
             unique,
             required,
             columns,
-            display: ((value) => value),
+            /* display: ((value) => value), */
             localizable,
           }, this.typeConfig.get(type), {
               placeholder: placeholder || this.typeConfig.get(type).placeholder
@@ -187,6 +187,7 @@ export class ModelConfigService extends Config {
         } else {
           relevantKeys.forEach(key => {
             mergedFields[key] = Object.assign(
+              {},
               fieldConfig[key] || {},
               modelConfigFields[key] || {},
               (customFieldConfig || {})[key]);

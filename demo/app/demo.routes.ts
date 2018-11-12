@@ -38,6 +38,7 @@ import { DemoDashboardComponent } from './dashboard.component';
 import { ImageSelectPopDemoComponent } from './image-select-pop-demo/image-select-pop-demo.component';
 import { ResourceListPopDemoComponent } from './resource-list-pop/resource-list-pop-demo.component';
 import { ModalDemoComponent } from './modal/modal-demo.component';
+import { EntryListSelectDemoComponent } from './entry-list-select/entry-list-select-demo.component';
 
 export const demoRoutes: Routes = [
   {
@@ -307,6 +308,14 @@ export const demoRoutes: Routes = [
         data: {
           paths: ['entry-select/entry-select-demo.component.html', 'entry-select/entry-select-demo.component.ts'],
           links: ['components/EntrySelectComponent.html']
+        }
+      },
+      {
+        path: 'entry-list-select',
+        component: EntryListSelectDemoComponent,
+        data: {
+          paths: ['entry-list-select/entry-list-select-demo.component.html', 'entry-list-select/entry-list-select.demo.component.ts'],
+          links: ['components/EntryListSelectComponent.html#readme', 'modules/DataModule.html']
         }
       },
       {

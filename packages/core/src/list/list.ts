@@ -130,6 +130,11 @@ export class List<T> extends Collection<Item<T>> {
 
   /** Filters the list after the given property and value */
   public filter(property: string, value: any = '', operator: string = 'exact') {
+    if (value === null) {
+      this.load();
+      return;
+      // this.page = [].concat(this.items);
+    }
     // TODO find way to filter with pagination and without loosing filtered out items
     this.page = this.items.filter((item) => {
       return item.resolve(property).includes(value);

@@ -92,7 +92,7 @@ export class CrudComponent<T> implements OnInit, WithLoader, WithNotifications {
       if (!this.config.alwaysLoadEntry && !this.mustReload(item) && (!this.config.levels || this.config.levels === 1)) {
         return item.getBody();
       }
-      return this.sdk.api.entry(this.model, item.id(), { levels: this.config.levels || 1 })
+      return this.sdk.api.entry(this.model, item.id(), this.config.levels || 1 )
     }).then((loadedEntry) => {
       this.entryPop.edit(loadedEntry);
       this.notificationService.emit({ hide: this.notifications });
