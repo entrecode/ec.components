@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, Input, Output, OnInit, OnChanges } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, Output, OnInit, OnChanges, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Item, List } from '@ec.components/core';
 import { SymbolService } from '../../symbol/symbol.service';
@@ -12,6 +12,7 @@ import { ListComponent } from '@ec.components/ui';
 @Component({
   selector: 'ec-searchbar',
   templateUrl: 'searchbar.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChanges {

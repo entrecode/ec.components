@@ -13,7 +13,7 @@
       <ec-list-items [list]="list" [selection]="selection" (columnClicked)="columnClick($event)" #listItems [items]="list?.page | group: group.property: group.value"></ec-list-items>
     </div>
 
-    <div class="ec-list-empty" *ngIf="list?.isEmpty()&&!list?.isLoading">
+    <div class="ec-list-empty" *ngIf="list?.isEmpty()&&!isLoading">
       <div *ngIf="list?.isFiltered()">
         <div #noResults>
           <ng-content select="[data-ec-list-empty-filtered]"></ng-content>
@@ -32,7 +32,7 @@
         </p>
       </div>
     </div>
-    <div class="ec-list-empty" *ngIf="list?.isLoading">
+    <div class="ec-list-empty" *ngIf="isLoading">
       <div #loadingSlot>
         <ng-content select="[data-ec-list-loading]"></ng-content>
       </div>

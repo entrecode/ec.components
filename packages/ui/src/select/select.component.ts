@@ -1,4 +1,4 @@
-import { Component, EventEmitter, forwardRef, Input, OnChanges, OnInit, Output, ViewChild, ViewEncapsulation, ElementRef } from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, OnChanges, OnInit, Output, ViewChild, ViewEncapsulation, ElementRef, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { List, ListConfig, Selection } from '@ec.components/core';
 import { Item } from '@ec.components/core/src/item/item';
@@ -13,6 +13,7 @@ import { PopComponent } from '../pop/pop.component';
   selector: 'ec-select',
   templateUrl: './select.component.html',
   encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -49,7 +50,10 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   /** The selection dropdown */
   @ViewChild('dropdown') dropdown: PopComponent;
 
-  constructor(public elementRef: ElementRef) {
+  constructor(
+    public elementRef: ElementRef,
+    public cdr: ChangeDetectorRef
+  ) {
   }
 
   getParentTree(el, tree = []) {
@@ -85,6 +89,7 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
     this.config = Object.assign({ solo: this.solo }, this.config);
     const value: Array<T> = Array.isArray(this.value) ? this.value : this.value ? [this.value] : [];
     this.selection = new Selection(value, this.config);
+    this.cdr.markForCheck();
     this.selection.update$.subscribe(() => {
       this.onChange();
     });

@@ -1,7 +1,7 @@
 /**
  * Created by felix on 23.05.17.
  */
-import { Component, forwardRef, Input, OnChanges, OnInit, ViewChild, ViewEncapsulation, ElementRef, Output, EventEmitter } from '@angular/core';
+import { Component, forwardRef, Input, OnChanges, OnInit, ViewChild, ViewEncapsulation, ElementRef, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Form } from '@ec.components/core';
 import { Item } from '@ec.components/core/src/item/item';
@@ -86,8 +86,9 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
     public symbol: SymbolService,
     public sdk: SdkService,
     public elementRef: ElementRef,
-    private auth: AuthService) {
-    super(elementRef);
+    private auth: AuthService,
+    public cdr: ChangeDetectorRef) {
+    super(elementRef, cdr);
   }
 
   removeItem(item, skipDelete, e?) {

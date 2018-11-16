@@ -34,8 +34,6 @@ export class List<T> extends Collection<Item<T>> {
   protected change: Subject<List<T>> = new Subject();
   /** Observable that is nexted when the list has changed. */
   public change$: Observable<List<T>> = this.change.asObservable();
-  /** Tells if the list is in loading state. */
-  public isLoading = false;
 
   /** Getter for items, calls transform */
   get display() {
@@ -100,6 +98,11 @@ export class List<T> extends Collection<Item<T>> {
       });
     });
     return fields;
+  }
+
+  public toggleVisibility(field) {
+    field.hideInList = !field.hideInList;
+    this.change.next(this);
   }
 
   /** Sets all fields that exceed the maxColumns to hidden */
@@ -202,6 +205,7 @@ export class List<T> extends Collection<Item<T>> {
     this.config = Object.assign({}, this.config, {
       selectMode: !this.config.selectMode
     });
+    this.change.next(this);
   }
 
   /** Returns an Array of all unique values of the given property */

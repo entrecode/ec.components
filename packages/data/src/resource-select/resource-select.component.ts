@@ -6,7 +6,8 @@ import {
     Input,
     OnChanges,
     ViewChild,
-    ViewEncapsulation
+    ViewEncapsulation,
+    ChangeDetectorRef
 } from '@angular/core';
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
@@ -72,9 +73,10 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
         private resourceConfig: ResourceConfig,
         private auth: AuthService,
         public elementRef: ElementRef,
-        public symbol: SymbolService
+        public symbol: SymbolService,
+        public cdr: ChangeDetectorRef
     ) {
-        super(elementRef);
+        super(elementRef, cdr);
     }
 
     ngOnInit() {

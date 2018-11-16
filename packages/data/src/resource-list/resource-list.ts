@@ -74,13 +74,11 @@ export class ResourceList extends List<Resource> {
     if (!this.api || !this.relation) {
       return;
     }
-    this.isLoading = true;
     const options = this.getFilterOptions(this.config);
     this.promise = this.api
       .resourceList(this.relation, options)
       .then(list => this.use(list))
       .catch(err => this.error.next(err))
-      .then(() => this.isLoading = false);
     this.loading.next(this.promise);
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, forwardRef, Input, OnChanges, ViewChild, ComponentFactoryResolver } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, forwardRef, Input, OnChanges, ViewChild, ComponentFactoryResolver, ChangeDetectorRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Selection, ListConfig, Form } from '@ec.components/core';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
@@ -34,7 +34,8 @@ export class EntryListSelectComponent extends InputComponent implements ControlV
     constructor(
         public modelConfig: ModelConfigService,
         public symbol: SymbolService,
-        public componentFactoryResolver: ComponentFactoryResolver
+        public componentFactoryResolver: ComponentFactoryResolver,
+        public cdr: ChangeDetectorRef
     ) {
         super(componentFactoryResolver)
     }
@@ -46,7 +47,6 @@ export class EntryListSelectComponent extends InputComponent implements ControlV
     ngOnChanges() {
         /*    this.init(); */
     }
-
 
     init() {
         if (this.field && !this.model) {
@@ -91,17 +91,16 @@ export class EntryListSelectComponent extends InputComponent implements ControlV
         }
     }
 
-
-
     initSelection(config = this.listConfig) {
         this.selection = this.selection || new Selection(this.value, config);
         this.items = this.selection.items.map(item => item.getBody());
+        this.cdr.markForCheck();
         this.selection.update$.subscribe(() => {
             this.items = this.selection.items.map(item => item.getBody());
             this.propagateChange(this.selection.getValue());
+            this.cdr.markForCheck();
         });
     }
-
 
     /** Is called when the nested entry-form has been saved. Selects the fresh entry and clears the form */
     formSubmitted(form: Form<EntryResource>) {
@@ -116,7 +115,6 @@ export class EntryListSelectComponent extends InputComponent implements ControlV
     removeItem(item) {
         this.selection.remove(item);
     }
-
 
     /** Called when the model changes */
     writeValue(value: any) {

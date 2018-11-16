@@ -1,4 +1,4 @@
-import { Component, Input, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { Component, Input, QueryList, ViewChild, ViewChildren, ChangeDetectionStrategy } from '@angular/core';
 import { PopComponent } from '../../pop/pop.component';
 import { FormComponent } from '../../form/form.component';
 import { List } from '@ec.components/core/src/list/list';
@@ -10,6 +10,7 @@ import { ListConfigService } from '../list-config.service';
 @Component({
   selector: 'ec-list-header',
   templateUrl: './list-header.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListHeaderComponent {
   /** The list instance */
@@ -49,7 +50,7 @@ export class ListHeaderComponent {
 
   /** Toggles the fields visibility in the list */
   public toggleVisibility(field: Field) {
-    field.hideInList = !field.hideInList;
+    this.list.toggleVisibility(field);
     this.listConfig.storeConfig(this.list);
   }
 }

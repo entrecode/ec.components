@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ElementRef, OnChanges, TemplateRef, ContentChildren } from '@angular/core';
+import { Component, Input, OnInit, ElementRef, OnChanges, TemplateRef, ContentChildren, ChangeDetectorRef } from '@angular/core';
 import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
 import { PopService } from '@ec.components/ui/src/pop/pop.service';
 
@@ -44,8 +44,9 @@ export class ModalComponent extends PopComponent implements OnInit, OnChanges {
     /** Constructs the modal, injects pop service */
     constructor(
         public popService: PopService,
-        public elementRef: ElementRef) {
-        super(popService, elementRef);
+        public elementRef: ElementRef,
+        public cdr: ChangeDetectorRef) {
+        super(popService, elementRef, cdr);
     }
     /** Is called on init and change. Parses mode input and throws warning if type is not supported. */
     initMode() {

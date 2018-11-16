@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, Output, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, ViewEncapsulation, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Collection, List, ListConfig, Selection, Pagination } from '@ec.components/core';
 import { Item } from '@ec.components/core/src/item/item';
 import { PaginationConfig } from './pagination/pagination-config.interface';
@@ -13,12 +13,15 @@ import { ListConfigService } from './list-config.service';
 @Component({
   selector: 'ec-list',
   templateUrl: './list.component.html',
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListComponent<T> implements OnChanges {
   /** The current list config */
   config: ListConfig<T> = {};
   /** Config input for List */
+  /** Flag that flips true when loading. */
+  isLoading = false;
   // tslint:disable-next-line:no-input-rename
   @Input('config') configInput: ListConfig<T>;
   /** The visible items */
@@ -40,7 +43,10 @@ export class ListComponent<T> implements OnChanges {
   /** Custom PaginationConfig */
   @Input() paginationConfig: PaginationConfig;
 
-  constructor(public listConfig: ListConfigService) {
+  constructor(
+    public listConfig: ListConfigService,
+    public cdr: ChangeDetectorRef
+  ) {
   }
 
   /** Changing items or collection will trigger reconstructing the list with the new items.
@@ -56,6 +62,9 @@ export class ListComponent<T> implements OnChanges {
       return;
     }
     this.listConfig.applyConfig(this.list);
+    this.list.change$.subscribe(() => {
+      this.cdr.markForCheck();
+    });
     if (!this.selection) {
       this.selection = new Selection([], this.list.config);
     }

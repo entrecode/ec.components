@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Item, List, Selection } from '@ec.components/core';
 import { ListComponent } from '../list.component';
 import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
@@ -8,6 +8,7 @@ import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 @Component({
   selector: 'ec-list-items',
   templateUrl: './list-items.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListItemsComponent<T> implements OnChanges {
   /** The list instance */
@@ -21,10 +22,17 @@ export class ListItemsComponent<T> implements OnChanges {
   /** Event emitter on item clicked */
   @Output() columnClicked: EventEmitter<Item<T>> = new EventEmitter();
 
+
+  constructor(public cdr: ChangeDetectorRef) { }
   /** Checks for host and uses its list. */
   ngOnChanges() {
     if (!this.items && this.list) {
       this.items = this.list.page;
+    }
+    if (this.list) {
+      this.list.change$.subscribe(newList => {
+        this.cdr.markForCheck();
+      });
     }
   }
 
