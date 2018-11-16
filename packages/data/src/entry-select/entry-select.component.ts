@@ -134,6 +134,7 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
     });
     this.auth.getAllowedModelMethods(this.model, this.config.methods)
       .then((methods) => {
+        this.cdr.markForCheck();
         this.config.methods = methods
       });
   }

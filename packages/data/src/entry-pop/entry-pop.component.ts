@@ -114,6 +114,7 @@ export class EntryPopComponent extends PopComponent implements OnInit {
   ngOnInit() {
     this.auth.getAllowedModelMethods(this.model, this.config.methods)
       .then((methods) => {
+        this.cdr.markForCheck();
         this.config.methods = methods;
       });
   }
