@@ -89,19 +89,19 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
     }
 
     togglePop(e) {
-        if (this.dropdown && !this.config.disableSelect) {
-            this.dropdown.show(e);
+        if (this.dropdown && !this.config.disableSearchbar) {
+          this.dropdown.show(e);
         } else if (this.resourceListPop && !this.config.disableListPop) {
-            this.resourceListPop.show(e);
+          this.resourceListPop.show(e);
         } else if (this.resourcePop && !this.config.disableCreatePop) {
-            this.resourcePop.show();
+          this.resourcePop.show();
         }
         this.focusSearchbar();
     }
 
     defaultPlaceholder() {
-        if (this.config && this.config.disableSelect && this.config.disableListPop) {
-            return this.symbol.resolve('resource.select.placeholder.new');
+        if (this.config && this.config.disableSearchbar && this.config.disableListPop) {
+          return this.symbol.resolve('resource.select.placeholder.new');
         }
         return this.symbol.resolve('resource.select.placeholder.select');
     }

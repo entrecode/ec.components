@@ -8,11 +8,13 @@
 </div>
 
 <div class="ec-entry-select">
-  <div class="ec-select" [class.ec-select_solo]="solo" [class.is-dirty]="!selection?.isEmpty()" (click)="togglePop($event)">
-    <span class="ec-select__placeholder" *ngIf="config?.disableSelect&&selection.isEmpty()">
-      {{config?.placeholder||placeholder||defaultPlaceholder()}}
-    </span>
-    <ul class="ec-select-selection" *ngIf="selection?.display?.length" dndDropzone (dndDrop)="onDrop($event)">
+  <div class="ec-select" [class.ec-select_solo]="solo" [class.is-empty]="selection?.isEmpty()" (click)="togglePop($event)" >
+    <ul class="ec-select-selection" dndDropzone (dndDrop)="onDrop($event)">
+      <li *ngIf="config?.disableSearchbar&&selection.isEmpty()">
+        <span class="ec-select__placeholder">
+          {{config?.placeholder||placeholder||defaultPlaceholder()}}
+        </span>
+      </li>
       <li [dndDisableIf]="solo||config?.disableDrag" [class.is-dragged]="selected===dragged" [class.is-draggable]="solo||!config?.disableDrag"
         dndEffectAllowed="move" [dndDraggable]="i" *ngFor="let selected of selection?.display;let i = index" (dndStart)="onDragStart(selected,$event)"
         (dndCanceled)="cancelDrag(selected,$event)" (dndEnd)="cancelDrag(selected,$event)">
@@ -22,33 +24,14 @@
         </span>
       </li>
       <li dndPlaceholderRef>
-        <!-- TODO change to width of dragged element -->
         <div class="drag-placeholder" style="width: 48px;"></div>
       </li>
+      <li *ngIf="!config?.disableSearchbar" class="ec-select__searchbar">
+        <ec-searchbar [autofocus]="false" [property]="lightModel?.titleField" [placeholder]="placeholder||defaultPlaceholder()"
+        (keypressed)="handleKey($event,dropdownList)" (focus)="focus($event)" (pasted)="pasteValue($event)" (queryChanged)="filterDropdownList(dropdownList,$event)"></ec-searchbar>
+      </li>
     </ul>
-    <!-- Dropdown -->
-
-    <!--<ec-pop [ngClass]="config?.nestedPopClass || 'ec-select-options'" #dropdown *ngIf="!config?.disableSelect">
-      <ec-list [items]="models" *ngIf="!model" [config]="modelDropdownConfig" (columnClicked)="selectModel($event)"></ec-list>
-      
-      <div class="ec-list" *ngIf="model">
-        <div class="ec-list-body">
-          <div class="ec-list-group">
-            <div class="ec-list-group-header">
-              <div class="ec-list-cell">
-                <a class="ec-list-group-header__title" (click)="switchModel($event)">{{model}}</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <ec-resource-list #entryList [relation]="'model.'+model" [api]="sdk.api" *ngIf="model" [config]="dropdownConfig" [selection]="selection"
-        (click)="$event.preventDefault();$event.stopPropagation()" (columnClicked)="listItemClicked($event)"></ec-resource-list> &&selection&&dropdown.active -->
-
-    <ec-searchbar *ngIf="!config?.disableSelect" [autofocus]="false" [property]="lightModel?.titleField" [placeholder]="placeholder||defaultPlaceholder()"
-      (keypressed)="handleKey($event,dropdownList)" (focus)="focus($event)" (pasted)="pasteValue($event)"
-      (queryChanged)="filterDropdownList(dropdownList,$event)"></ec-searchbar>
-    <ec-pop *ngIf="!config?.disableSelect" class="ec-select-options" #dropdown [hideOnClickOutside]="true">
+    <ec-pop *ngIf="!config?.disableSearchbar" class="ec-select-options" #dropdown [hideOnClickOutside]="true">
       <ec-loader class="ec-loader loader is-local" #dropdownLoader></ec-loader>
       <ec-entry-list #dropdownList [selection]="selection" *ngIf="dropdown.activated" [model]="model" [config]="dropdownConfig"
         [loader]="dropdownLoader" (changed)="searchbar.updatedList($event)" (columnClicked)="listItemClicked($event)"></ec-entry-list>

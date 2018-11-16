@@ -1,19 +1,22 @@
 <div class="ec-resource-select">
-    <div class="ec-select" [class.ec-select_solo]="solo" [class.is-dirty]="selection?.items.length" (click)="togglePop($event)">
-        <span class="ec-select__placeholder" *ngIf="config?.disableSelect&&selection.isEmpty()">
-            {{placeholder||defaultPlaceholder()}}
-        </span>
-        <ul class="ec-select-selection" *ngIf="selection?.items.length">
+    <div class="ec-select" [class.ec-select_solo]="solo" [class.is-empty]="selection?.isEmpty()" (click)="togglePop($event)" [class.has-searchbar]="!config?.disableSearchbar">
+        <ul class="ec-select-selection">
+            <li *ngIf="config?.disableSearchbar&&selection.isEmpty()">
+                <span class="ec-select__placeholder">
+                    {{placeholder||defaultPlaceholder()}}
+                </span>
+            </li>
             <li *ngFor="let selected of selection?.items">
                 <span [class.ec-select-selected]="!solo" [class.ec-select-selected_solo]="solo" (click)="!solo&&editItem(selected,$event)">
                     {{selected.display()}}
                     <a (click)="removeItem(selected,$event);">&times;</a>
                 </span>
             </li>
+            <li *ngIf="!config?.disableSearchbar" class="ec-select__searchbar">
+                <ec-searchbar [autofocus]="false" [property]="config?.label" [placeholder]="placeholder||defaultPlaceholder()"
+                    (pasted)="pasteValue($event)" (keypressed)="handleKey($event,dropdownList)" (focus)="focus($event)" (queryChanged)="filterDropdownList(dropdownList,$event)"></ec-searchbar>
+            </li>
         </ul>
-        <ec-searchbar *ngIf="!config?.disableSelect" [autofocus]="false" [property]="config?.label" [placeholder]="placeholder||defaultPlaceholder()"
-            (pasted)="pasteValue($event)" (keypressed)="handleKey($event,dropdownList)" (focus)="focus($event)"
-            (queryChanged)="filterDropdownList(dropdownList,$event)"></ec-searchbar>
         <ec-pop class="ec-select-options" #dropdown [hideOnClickOutside]="true">
             <ec-loader class="ec-loader loader is-local" #dropdownLoader></ec-loader>
             <ec-resource-list (changed)="searchbar.updatedList($event)" #dropdownList *ngIf="dropdown.activated"

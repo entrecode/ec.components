@@ -119,7 +119,7 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   }
 
   defaultPlaceholder() {
-    if (this.config && this.config.disableSelect && this.config.disableListPop) {
+    if (this.config && this.config.disableSearchbar && this.config.disableListPop) {
       return this.symbol.resolve('entry.select.placeholder.new');
     }
     return this.symbol.resolve('entry.select.placeholder.select');
