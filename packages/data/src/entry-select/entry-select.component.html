@@ -8,7 +8,7 @@
 </div>
 
 <div class="ec-entry-select">
-  <div class="ec-select" [class.ec-select_solo]="solo" [class.is-empty]="selection?.isEmpty()" (click)="togglePop($event)" >
+  <div class="ec-select" [class.ec-select_solo]="solo" [class.is-empty]="selection?.isEmpty()" [class.has-searchbar]="!config?.disableSearchbar" (click)="togglePop($event)" >
     <ul class="ec-select-selection" dndDropzone (dndDrop)="onDrop($event)">
       <li *ngIf="config?.disableSearchbar&&selection.isEmpty()">
         <span class="ec-select__placeholder">

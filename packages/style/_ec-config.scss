@@ -392,6 +392,28 @@ $ec-list-cell-padding: 8 !default;
 $ec-list-cell-style: () !default;
 
 //
+// EC-LIST-EMPTY
+// ------------------------------------------------------
+// @param {array} $ec-list-empty-style
+// @param {color} $ec-list-empty-background [getColor(background, lightest)]
+// @param {color} $ec-list-empty-color [inherit]
+// @param {array} $ec-list-empty-padding [8]
+// @param {array} $ec-list-empty-spacing [4 0]
+// @param {array} $ec-list-empty-radius [4]
+$ec-list-empty-background: getColor(background, lightest) !default;
+$ec-list-empty-color: inherit !default;
+$ec-list-empty-padding: 8 !default;
+$ec-list-empty-spacing: 4 0 !default;
+$ec-list-empty-radius: 4 !default;
+$ec-list-empty-style: () !default;
+$ec-list-empty-style: map-merge(
+  (
+    text-align: center
+  ),
+  $ec-list-empty-style
+);
+
+//
 // EC-PAGINATION
 // ------------------------------------------------------
 // @param {color} $ec-pagination-background [transparent]
