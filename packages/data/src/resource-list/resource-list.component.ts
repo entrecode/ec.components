@@ -100,6 +100,7 @@ export class ResourceListComponent extends ListComponent<Resource>
       this.list.loading$.subscribe((promise: Promise<any>) => {
         this.loaderService.wait(promise, this.loader);
         this.isLoading = true;
+        this.cdr.markForCheck();
         promise.then(() => {
           this.isLoading = false;
           this.cdr.markForCheck();
