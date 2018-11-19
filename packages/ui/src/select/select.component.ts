@@ -139,6 +139,7 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
     } else {
       this.selection.toggle(item);
     }
+    this.cdr.markForCheck();
   }
 
   /** Uses the given value as selection items */

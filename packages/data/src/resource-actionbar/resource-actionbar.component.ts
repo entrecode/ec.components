@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, Input } from '@angular/core';
+import { Component, OnInit, ElementRef, Input, ChangeDetectorRef } from '@angular/core';
 import { ActionbarComponent, Action } from '@ec.components/ui/src/actionbar/actionbar.component';
 import { SdkService } from '../..';
 import { NotificationsService } from '@ec.components/ui';
@@ -96,9 +96,10 @@ export class ResourceActionbarComponent extends ActionbarComponent implements On
         public notificationService: NotificationsService,
         public sdk: SdkService,
         public resourceConfig: ResourceConfig,
-        public elementRef: ElementRef
+        public elementRef: ElementRef,
+        public cdr: ChangeDetectorRef,
     ) {
-        super(elementRef);
+        super(elementRef, cdr);
     }
 
     ngOnInit() {

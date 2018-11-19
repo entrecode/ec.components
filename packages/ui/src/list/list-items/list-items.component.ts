@@ -36,6 +36,11 @@ export class ListItemsComponent<T> implements OnChanges {
         this.cdr.markForCheck();
       });
     }
+    if (this.selection) {
+      this.selection.update$.subscribe(newList => {
+        this.cdr.markForCheck();
+      });
+    }
   }
   /** yields true if the item is focussed */
   hasFocus(item) {

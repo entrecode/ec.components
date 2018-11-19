@@ -88,7 +88,7 @@ export class ListComponent<T> implements OnChanges {
     if (this.selection) {
       this.selection.update$.subscribe((selection: Selection<T>) => {
         this.selected.emit(selection);
-      })
+      });
     }
   }
 
@@ -116,7 +116,7 @@ export class ListComponent<T> implements OnChanges {
 
   focusFirst() {
     delete this.focusItem;
-    this.focusNext()
+    this.focusNext();
   }
 
   /** Selects the next item */
@@ -129,6 +129,7 @@ export class ListComponent<T> implements OnChanges {
       index = this.list.page.indexOf(this.focusItem) + 1;
     }
     this.focusItem = this.list.page[index % this.list.page.length];
+    this.cdr.markForCheck();
   }
 
   /** Selects the previous item */
@@ -141,6 +142,7 @@ export class ListComponent<T> implements OnChanges {
       index = this.list.page.indexOf(this.focusItem) + this.list.page.length - 1;
     }
     this.focusItem = this.list.page[index % this.list.page.length];
+    this.cdr.markForCheck();
   }
 
   /** Filters the list */

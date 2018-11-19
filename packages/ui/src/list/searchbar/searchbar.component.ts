@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, EventEmitter, Input, Output, OnInit, OnChanges, ChangeDetectionStrategy } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, Output, OnInit, OnChanges, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Item, List } from '@ec.components/core';
 import { SymbolService } from '../../symbol/symbol.service';
@@ -59,7 +59,11 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
   /** timestamp of latest keypress that has been emitted */
   latestQuery;
 
-  constructor(public route: ActivatedRoute, public symbol: SymbolService) {
+  constructor(
+    public route: ActivatedRoute,
+    public symbol: SymbolService,
+    public cdr: ChangeDetectorRef
+  ) {
     this.defaultPlaceholder = this.symbol.resolve('searchbar.placeholder');
     this.queryValue.next('');
     this.paste.asObservable()
@@ -144,6 +148,7 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
     if (query !== this.latestQuery) {
       this.query = query;
     }
+    this.cdr.markForCheck();
   }
 
   /** prevents the event default and disables propagation */
