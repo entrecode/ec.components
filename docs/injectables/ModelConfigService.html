@@ -2660,7 +2660,7 @@ set method. </p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="172" class="link-to-prism">packages/data/src/model-config/model-config.service.ts:172</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="174" class="link-to-prism">packages/data/src/model-config/model-config.service.ts:174</a></div>
                             </td>
                         </tr>
 
@@ -2899,7 +2899,7 @@ This config is meant to deliver the default behaviour when nothing else is confi
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="201" class="link-to-prism">packages/data/src/model-config/model-config.service.ts:201</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="203" class="link-to-prism">packages/data/src/model-config/model-config.service.ts:203</a></div>
                             </td>
                         </tr>
 
@@ -3252,6 +3252,7 @@ export class ModelConfigService extends Config {
         .forEach(({
           config,
           type,
+          formView,
           title,
           unique,
           mutable,
@@ -3282,6 +3283,7 @@ export class ModelConfigService extends Config {
             label: label || title + (type &#x3D;&#x3D;&#x3D; &#x27;datetime&#x27; ? &#x60; ${this.symbol.resolve(&#x27;datetime.local&#x27;)}&#x60; : &#x27;&#x27;),
             placeholder,
             description,
+            formView: formView || type,
             validation,
             relation: validation,
             immutable: !mutable,
