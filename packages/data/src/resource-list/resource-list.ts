@@ -74,13 +74,11 @@ export class ResourceList extends List<Resource> {
     if (!this.api || !this.relation) {
       return;
     }
-    this.isLoading = true;
     const options = this.getFilterOptions(this.config);
     this.promise = this.api
       .resourceList(this.relation, options)
       .then(list => this.use(list))
       .catch(err => this.error.next(err))
-      .then(() => this.isLoading = false);
     this.loading.next(this.promise);
     return this.promise;
   }
@@ -128,19 +126,20 @@ export class ResourceList extends List<Resource> {
     if (sortBy) {
       Object.assign(options, { sort: [(desc ? '-' : '') + sortBy] });
     }
-    if (filter) {
-      for (const property in filter) {
-        if (filter.hasOwnProperty(property)) {
-          Object.assign(options, {
-            [property]: ResourceList.isRawFilter(property, this.fields)
-              ? filter[property]
-              : {
-                [ResourceList.getFilterOperator(property, this.fields)]: filter[
-                  property
-                ]
-              }
-          });
-        }
+    if (!filter) {
+      return options;
+    }
+    for (const property in filter) {
+      if (filter.hasOwnProperty(property)) {
+        Object.assign(options, {
+          [property]: ResourceList.isRawFilter(property, this.fields)
+            ? filter[property]
+            : {
+              [ResourceList.getFilterOperator(property, this.fields)]: filter[
+                property
+              ]
+            }
+        });
       }
     }
     return options;

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { SelectComponent } from '../select/select.component';
 import { ListConfig, List, Item } from '@ec.components/core';
 
@@ -31,8 +31,11 @@ export class ActionbarComponent extends SelectComponent<Action> implements OnIni
     @Input() actions: Action[];
     actionStack: { [id: string]: Action[] } = {}
 
-    constructor(public elementRef: ElementRef) {
-        super(elementRef);
+    constructor(
+        public elementRef: ElementRef,
+        public cdr: ChangeDetectorRef,
+    ) {
+        super(elementRef, cdr);
         /* this.toggleItem.asObservable().subscribe((item) => {
             console.log('item', item);
         }); */

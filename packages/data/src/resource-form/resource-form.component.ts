@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { FormComponent, LoaderService, NotificationsService, FormService, LoaderComponent } from '@ec.components/ui';
 import Core from 'ec.sdk/lib/Core';
 import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
@@ -37,7 +37,8 @@ import { ResourceConfig } from '../resource-config/resource-config.service';
  */
 @Component({
     selector: 'ec-resource-form',
-    templateUrl: '../../../ui/src/form/form.component.html'
+    templateUrl: '../../../ui/src/form/form.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ResourceFormComponent extends FormComponent<Resource> implements OnInit, OnChanges {
     resourceConfig: ResourceConfig;
@@ -54,8 +55,9 @@ export class ResourceFormComponent extends FormComponent<Resource> implements On
         protected formService: FormService,
         protected symbol: SymbolService,
         public resourceService: ResourceService,
+        protected cdr: ChangeDetectorRef
     ) {
-        super(loaderService, notificationService, formService, symbol);
+        super(loaderService, notificationService, formService, symbol, cdr);
         this.resourceConfig = this.resourceService.config;
     }
     /** Inits config */

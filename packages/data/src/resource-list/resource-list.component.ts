@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, Optional, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Optional, Output, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { List } from '@ec.components/core/src/list/list';
 import { Selection } from '@ec.components/core/src/selection/selection';
@@ -19,7 +19,8 @@ import { ListConfigService } from '@ec.components/ui/src/list/list-config.servic
  * It is meant to be extended and overriden the createList method. See e.g. AssetListComponent. */
 @Component({
   selector: 'ec-resource-list',
-  templateUrl: '../../../ui/src/list/list.component.html'
+  templateUrl: '../../../ui/src/list/list.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ResourceListComponent extends ListComponent<Resource>
   implements OnChanges, WithLoader {
@@ -47,9 +48,10 @@ export class ResourceListComponent extends ListComponent<Resource>
     protected symbol: SymbolService,
     protected resourceService: ResourceService,
     public listConfig: ListConfigService,
+    public cdr: ChangeDetectorRef,
     @Optional() public route: ActivatedRoute
   ) {
-    super(listConfig);
+    super(listConfig, cdr);
     this.resourceConfig = this.resourceService.config;
     if (route) {
       route.queryParams.subscribe(query => {
@@ -99,6 +101,12 @@ export class ResourceListComponent extends ListComponent<Resource>
       }
       this.list.loading$.subscribe((promise: Promise<any>) => {
         this.loaderService.wait(promise, this.loader);
+        this.isLoading = true;
+        this.cdr.markForCheck();
+        promise.then(() => {
+          this.isLoading = false;
+          this.cdr.markForCheck();
+        });
       });
       this.list.error$.subscribe(err => {
         this.notificationService.emit({

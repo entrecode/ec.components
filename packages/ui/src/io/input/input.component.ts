@@ -1,4 +1,4 @@
-import { Component, EventEmitter, forwardRef, Input, OnChanges, Output, Type } from '@angular/core';
+import { Component, EventEmitter, forwardRef, Input, OnChanges, Output, Type, ChangeDetectionStrategy } from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, AbstractControl } from '@angular/forms';
 import { FieldConfigProperty, Field, Form, Item } from '@ec.components/core';
 import { DefaultInputComponent } from '../../form/default-input/default-input.component';
@@ -8,6 +8,7 @@ import { DynamicSlotComponent } from '../dynamic-slot/dynamic-slot.component';
 @Component({
   selector: 'ec-input',
   templateUrl: '../dynamic-slot/dynamic-slot.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

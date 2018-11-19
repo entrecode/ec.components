@@ -14,7 +14,7 @@
         #listItems [items]="list?.page | group: group.property: group.value"></ec-list-items>
     </div>
 
-    <div class="ec-list-empty" *ngIf="list?.isEmpty()&&!list?.isLoading">
+    <div class="ec-list-empty" *ngIf="list?.isEmpty()&&!isLoading">
       <div *ngIf="list?.isFiltered()">
         <div #noResults>
           <ng-content select="[data-ec-list-empty-filtered]"></ng-content>
@@ -33,7 +33,7 @@
         </div>
       </div>
     </div>
-    <div class="ec-list-empty" *ngIf="list?.isEmpty()&&list?.isLoading">
+    <div class="ec-list-empty" *ngIf="list?.isEmpty()&&isLoading">
       <div #loadingSlot>
         <ng-content select="[data-ec-list-loading]"></ng-content>
       </div>

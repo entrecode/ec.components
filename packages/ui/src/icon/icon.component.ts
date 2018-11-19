@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import { IconService } from './icon.service';
 import { Symbol } from '../symbol/symbol.interface';
 
@@ -7,7 +7,8 @@ import { Symbol } from '../symbol/symbol.interface';
  */
 @Component({
     selector: 'ec-icon',
-    templateUrl: './icon.component.html'
+    templateUrl: './icon.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class IconComponent implements OnInit {

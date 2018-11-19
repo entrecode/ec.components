@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import { FormComponent } from '@ec.components/ui/src/form/form.component';
 import { ModelConfigService } from '../model-config/model-config.service';
 import { LoaderService } from '@ec.components/ui/src/loader/loader.service';
@@ -20,6 +20,7 @@ import { TypeConfigService } from '../model-config/type-config.service';
 @Component({
   selector: 'ec-entry-form',
   templateUrl: '../../../ui/src/form/form.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EntryFormComponent extends FormComponent<EntryResource> implements WithNotifications {
   /** The model of the form. It is used to extract the schema and generate the config from.
@@ -40,8 +41,9 @@ export class EntryFormComponent extends FormComponent<EntryResource> implements 
     protected crud: CrudService,
     protected formService: FormService,
     protected typeConfig: TypeConfigService,
-    protected symbol: SymbolService) {
-    super(loaderService, notificationService, formService, symbol);
+    protected symbol: SymbolService,
+    protected cdr: ChangeDetectorRef) {
+    super(loaderService, notificationService, formService, symbol, cdr);
   }
 
   /** As soon as the model is known, the config is generated to then instantiate the form with. */

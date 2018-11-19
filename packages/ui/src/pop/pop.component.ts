@@ -1,7 +1,18 @@
 /**
  * Created by felix on 26.05.17.
  */
-import { Component, EventEmitter, Input, Output, HostBinding, OnInit, HostListener, ElementRef } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  HostBinding,
+  OnInit,
+  HostListener,
+  ElementRef,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef
+} from '@angular/core';
 import { PopService } from './pop.service';
 
 /** A Pop is an area of content whose visibility can be toggled.
@@ -11,6 +22,7 @@ import { PopService } from './pop.service';
 @Component({
   selector: 'ec-pop',
   templateUrl: './pop.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PopComponent {
   /** If true, .ec-pop is part of the DOM (*ngIf) + .active is set on .ec-pop-container.  */
@@ -40,7 +52,9 @@ export class PopComponent {
   }
 
   constructor(protected popService: PopService,
-    public elementRef: ElementRef) {
+    public elementRef: ElementRef,
+    protected cdr: ChangeDetectorRef
+  ) {
   }
 
   /** yields true if the given element is outside the pop / or is the wrapper element itself (the backdrop) */
@@ -69,11 +83,13 @@ export class PopComponent {
     } else if (this.hideOnClickOutside) {
       // console.warn('To use hideOnClickOutside, you need to pass the click event to the show method of ec-pop!');
     }
+    this.cdr.markForCheck();
   }
 
   /** Hides the pop. Sets active false and removes pop from popService.stack */
   public hide() {
     this.popService.stack.remove(this);
     this.active = false;
+    this.cdr.markForCheck();
   }
 }

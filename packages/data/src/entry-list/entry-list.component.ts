@@ -1,4 +1,4 @@
-import { Component, Input, Optional } from '@angular/core';
+import { Component, Input, Optional, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ListConfig } from '@ec.components/core/src/list/list-config.interface';
 import { LoaderService } from '@ec.components/ui/src/loader/loader.service';
@@ -18,7 +18,8 @@ import { ListConfigService } from '@ec.components/ui/src/list/list-config.servic
 */
 @Component({
   selector: 'ec-entry-list',
-  templateUrl: '../../../ui/src/list/list.component.html', // TODO avoid relative paths
+  templateUrl: '../../../ui/src/list/list.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EntryListComponent extends ResourceListComponent {
   /** The model whose entries should be shown.*/
@@ -35,8 +36,16 @@ export class EntryListComponent extends ResourceListComponent {
     protected symbol: SymbolService,
     protected resourceService: ResourceService,
     public listConfig: ListConfigService,
+    public cdr: ChangeDetectorRef,
     @Optional() public route: ActivatedRoute) {
-    super(loaderService, sdk, notificationService, symbol, resourceService, listConfig, route);
+    super(loaderService,
+      sdk,
+      notificationService,
+      symbol,
+      resourceService,
+      listConfig,
+      cdr,
+      route);
     /*if (route) {
       route.params.subscribe(({ model }) => {
         if (model) {

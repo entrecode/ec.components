@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, Output, EventEmitter, HostBinding, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, Output, EventEmitter, HostBinding, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { FormComponent } from '@ec.components/ui/src/form/form.component';
 import { FormConfig } from '@ec.components/core';
 import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
@@ -33,8 +33,9 @@ export class ImageSelectPopComponent extends PopComponent implements OnInit {
         public sdk: SdkService,
         public symbol: SymbolService,
         public fileService: FileService,
-        public elementRef: ElementRef) {
-        super(popService, elementRef);
+        public elementRef: ElementRef,
+        public cdr: ChangeDetectorRef) {
+        super(popService, elementRef, cdr);
     }
     /** Inits the form */
     ngOnInit() {

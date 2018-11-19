@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, ChangeDetectionStrategy } from '@angular/core';
 import { DefaultOutputComponent } from '../../form/default-output/default-output.component';
 import { DynamicSlotComponent } from '../dynamic-slot/dynamic-slot.component';
 import { Field } from '@ec.components/core/src/field/field';
@@ -8,6 +8,7 @@ import { Item } from '@ec.components/core/src/item/item';
 @Component({
   selector: 'ec-output',
   templateUrl: '../dynamic-slot/dynamic-slot.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OutputComponent extends DynamicSlotComponent implements OnChanges {
   /** The instance of field that should be used in the template */

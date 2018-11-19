@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, Output, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, ViewEncapsulation, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Collection, List, ListConfig, Selection, Pagination } from '@ec.components/core';
 import { Item } from '@ec.components/core/src/item/item';
 import { PaginationConfig } from './pagination/pagination-config.interface';
@@ -13,12 +13,15 @@ import { ListConfigService } from './list-config.service';
 @Component({
   selector: 'ec-list',
   templateUrl: './list.component.html',
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListComponent<T> implements OnChanges {
   /** The current list config */
   config: ListConfig<T> = {};
   /** Config input for List */
+  /** Flag that flips true when loading. */
+  isLoading = false;
   // tslint:disable-next-line:no-input-rename
   @Input('config') configInput: ListConfig<T>;
   /** The visible items */
@@ -46,7 +49,10 @@ export class ListComponent<T> implements OnChanges {
   /** emits after the list changed */
   @Output() changed: EventEmitter<List<T>> = new EventEmitter();
 
-  constructor(public listConfig: ListConfigService) {
+  constructor(
+    public listConfig: ListConfigService,
+    public cdr: ChangeDetectorRef
+  ) {
   }
 
   /** Changing items or collection will trigger reconstructing the list with the new items.
@@ -73,6 +79,7 @@ export class ListComponent<T> implements OnChanges {
       } else {
         delete this.focusItem;
       }
+      this.cdr.markForCheck();
       this.changed.emit(this.list)
     });
     if (!this.selection) {
@@ -81,7 +88,7 @@ export class ListComponent<T> implements OnChanges {
     if (this.selection) {
       this.selection.update$.subscribe((selection: Selection<T>) => {
         this.selected.emit(selection);
-      })
+      });
     }
   }
 
@@ -109,7 +116,7 @@ export class ListComponent<T> implements OnChanges {
 
   focusFirst() {
     delete this.focusItem;
-    this.focusNext()
+    this.focusNext();
   }
 
   /** Selects the next item */
@@ -122,6 +129,7 @@ export class ListComponent<T> implements OnChanges {
       index = this.list.page.indexOf(this.focusItem) + 1;
     }
     this.focusItem = this.list.page[index % this.list.page.length];
+    this.cdr.markForCheck();
   }
 
   /** Selects the previous item */
@@ -134,6 +142,7 @@ export class ListComponent<T> implements OnChanges {
       index = this.list.page.indexOf(this.focusItem) + this.list.page.length - 1;
     }
     this.focusItem = this.list.page[index % this.list.page.length];
+    this.cdr.markForCheck();
   }
 
   /** Filters the list */

@@ -1,7 +1,7 @@
 /**
  * Created by felix on 23.05.17.
  */
-import { Component, forwardRef, Input, OnInit, ViewChild, ViewEncapsulation, EventEmitter, ElementRef } from '@angular/core';
+import { Component, forwardRef, Input, OnInit, ViewChild, ViewEncapsulation, EventEmitter, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Item } from '@ec.components/core/src/item/item';
 import { SdkService } from '../../sdk/sdk.service';
@@ -69,13 +69,13 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
     public notificationService: NotificationsService,
     public sdk: SdkService,
     public symbol: SymbolService,
-    public elementRef: ElementRef
+    public elementRef: ElementRef,
+    public cdr: ChangeDetectorRef
   ) {
-    super(elementRef);
+    super(elementRef, cdr);
   }
 
   setGroup(group) {
-    console.log('set group', group);
     if (!group) {
       return;
     }
