@@ -314,7 +314,7 @@ export const demoRoutes: Routes = [
         path: 'entry-list-select',
         component: EntryListSelectDemoComponent,
         data: {
-          paths: ['entry-list-select/entry-list-select-demo.component.html', 'entry-list-select/entry-list-select.demo.component.ts'],
+          paths: ['entry-list-select/entry-list-select-demo.component.html', 'entry-list-select/entry-list-select-demo.component.ts'],
           links: ['components/EntryListSelectComponent.html#readme', 'modules/DataModule.html']
         }
       },
