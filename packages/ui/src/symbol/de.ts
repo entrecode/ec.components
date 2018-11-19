@@ -465,6 +465,10 @@ export default [
         content: 'Model wählen...'
     },
     {
+        name: 'entry.select.remove',
+        content: 'Entfernen'
+    },
+    {
         name: 'entry.generic',
         content: 'Entry'
     },

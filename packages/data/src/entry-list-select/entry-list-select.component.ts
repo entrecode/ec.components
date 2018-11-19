@@ -20,15 +20,21 @@ import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
         }
     ]
 })
-
+/** Renders a Selection inside a list with full crud support. It can act as a replacement for ec-entry-select. */
 export class EntryListSelectComponent extends InputComponent implements ControlValueAccessor, OnInit, OnChanges {
+    /** The model that is picked from */
     @Input() model: string;
+    /** The selection that should be edited */
     @Input() selection: Selection<EntryResource>;
+    /** The config for the entry list */
     @Input() listConfig: CrudConfig<EntryResource>;
-    entryListConfig: CrudConfig<EntryResource>;
+    /** The nested entryList */
     @ViewChild(EntryListComponent) entryList: EntryListComponent;
+    /** The current selected entries */
     items: EntryResource[];
-    @Input() selectionConfig: ListConfig<LiteEntryResource>
+    /** The config for the selection list. */
+    @Input() selectionConfig: ListConfig<LiteEntryResource>;
+    /** The current value of the input */
     value = [];
 
     constructor(
@@ -40,6 +46,7 @@ export class EntryListSelectComponent extends InputComponent implements ControlV
         super(componentFactoryResolver)
     }
 
+    /** Calls init */
     ngOnInit() {
         this.init();
     }
@@ -48,6 +55,7 @@ export class EntryListSelectComponent extends InputComponent implements ControlV
         /*    this.init(); */
     }
 
+    /** Initializes the input. Reads relation from field. Generates model config + adds remove buttons. */
     init() {
         if (this.field && !this.model) {
             this.model = this.field.relation;
@@ -60,25 +68,25 @@ export class EntryListSelectComponent extends InputComponent implements ControlV
                         disableHeader: false,
                         hidePagination: true,
                         fields: Object.assign({},
-                            {
-                                button: {
-                                    label: ' ',
-                                    form: false,
-                                    resolve: () => ' ',
-                                    view: 'link',
-                                    class: 'btn btn_clear',
-                                    icon: 'trash',
-                                    action: (item, property) => {
-                                        this.selection.remove(item);
-                                    }
-                                }
-                            },
                             this.listConfig.fields,
                             {
                                 _modified: Object.assign({},
                                     config.fields._modified,
                                     { hideInList: true }
                                 ),
+                            },
+                            {
+                                button: {
+                                    label: this.symbol.resolve('entry.select.remove'),
+                                    form: false,
+                                    resolve: () => ' ',
+                                    view: 'link',
+                                    class: 'btn btn_clear',
+                                    icon: 'close-x',
+                                    action: (item, property) => {
+                                        this.selection.remove(item);
+                                    }
+                                }
                             })
                     });
                     Object.keys(this.selectionConfig.fields).forEach(key => {
@@ -91,6 +99,7 @@ export class EntryListSelectComponent extends InputComponent implements ControlV
         }
     }
 
+    /** Initializes the selection with listConfig. Propagates change */
     initSelection(config = this.listConfig) {
         this.selection = this.selection || new Selection(this.value, config);
         this.items = this.selection.items.map(item => item.getBody());
@@ -112,6 +121,7 @@ export class EntryListSelectComponent extends InputComponent implements ControlV
         }
     }
 
+    /** Removes the given item from the selection */
     removeItem(item) {
         this.selection.remove(item);
     }

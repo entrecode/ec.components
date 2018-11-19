@@ -1,4 +1,3 @@
-<!-- && listConfig -->
 <ec-entry-list-pop #entryListPop [model]="model" [selection]="selection"></ec-entry-list-pop>
 <ec-list [config]="selectionConfig" [items]="items" (columnClicked)="entryPop.edit($event.getBody())" #selectionList></ec-list>
 <ec-entry-pop [model]="model" #entryPop (submitted)="formSubmitted($event)" (deleted)="removeItem($event)"></ec-entry-pop>
