@@ -110,6 +110,7 @@ export class ModelConfigService extends Config {
         .forEach(({
           config,
           type,
+          formView,
           title,
           unique,
           mutable,
@@ -140,6 +141,7 @@ export class ModelConfigService extends Config {
             label: label || title + (type === 'datetime' ? ` ${this.symbol.resolve('datetime.local')}` : ''),
             placeholder,
             description,
+            formView: formView || type,
             validation,
             relation: validation,
             immutable: !mutable,

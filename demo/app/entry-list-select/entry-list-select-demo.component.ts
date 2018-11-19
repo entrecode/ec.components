@@ -10,11 +10,9 @@ import { TypeConfigService } from '@ec.components/data/src/model-config/type-con
 export class EntryListSelectDemoComponent implements OnInit {
     constructor(public typeConfig: TypeConfigService) {
         this.typeConfig.set('entries', {
-            input: EntryListSelectComponent
-        })
-        /* this.typeConfig.set('dmAsset', {
-            view: 'preview'
-        }); */
+            /* input: EntryListSelectComponent */
+            inputView: 'entry-list-select'
+        });
     }
     ngOnInit() { }
 }

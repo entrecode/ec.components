@@ -46,6 +46,8 @@ export interface FieldConfigProperty {
   model?: string;
   /** The type of cell view. (e.g. tags, email etc..) */
   view?: string;
+  /** The type of form input view. Defaults to type if not specified. */
+  inputView?: string;
   /** Tells if the field should be hidden */
   hidden?: boolean;
   /** Tells if the field is required in forms */
