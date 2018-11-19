@@ -1,5 +1,17 @@
 # Changelog
 
+<a name="data0.41.0"></a>
+
+## @ec.components/data 0.41.0
+
+* added entry-list-select. you can set it up by using inputView:'entry-list-select' in your field config.
+
+<a name="ui0.35.0"></a>
+
+## @ec.components/ui 0.35.0
+
+* selects now have an input field that filter the dropdown + keyboard controls.
+
 <a name="data0.40.0"></a>
 
 ## @ec.components/data 0.40.0
