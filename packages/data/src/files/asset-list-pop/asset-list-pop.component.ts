@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild, HostBinding, ElementRef } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild, HostBinding, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { Item, Selection } from '@ec.components/core';
 import { SdkService } from '../../sdk/sdk.service';
 import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
@@ -44,8 +44,9 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
   constructor(protected popService: PopService,
     private fileService: FileService,
     public sdk: SdkService,
-    public elementRef: ElementRef) {
-    super(popService, elementRef);
+    public elementRef: ElementRef,
+    public cdr: ChangeDetectorRef) {
+    super(popService, elementRef, cdr);
   }
 
   /** Changes the assetGroupID to the given value, emits groupChange */
@@ -78,6 +79,7 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
     } else if (this.selection) {
       this.selection.toggle($event);
     }
+    this.searchbar.focusEvent.emit(true);
   }
 
   /** Returns the full resource relation name based on the current assetGroupID  */

@@ -3,17 +3,24 @@ import { NgModule } from '@angular/core';
 import { DndModule } from 'ngx-drag-drop';
 import { ListModule } from '../list/list.module';
 import { SelectComponent } from './select.component';
+import { ActionbarComponent } from '../actionbar/actionbar.component';
+import { LoaderModule } from '../loader/loader.module';
 
 @NgModule({
   imports: [
     CommonModule,
     ListModule,
-    DndModule
+    DndModule,
+    LoaderModule
   ],
-  declarations: [SelectComponent],
+  declarations: [
+    SelectComponent,
+    ActionbarComponent
+  ],
   exports: [
     ListModule,
     SelectComponent,
+    ActionbarComponent,
     DndModule
   ],
   providers: [],

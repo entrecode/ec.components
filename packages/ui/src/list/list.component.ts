@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, Output, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, ViewEncapsulation, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Collection, List, ListConfig, Selection, Pagination } from '@ec.components/core';
 import { Item } from '@ec.components/core/src/item/item';
 import { PaginationConfig } from './pagination/pagination-config.interface';
@@ -13,12 +13,15 @@ import { ListConfigService } from './list-config.service';
 @Component({
   selector: 'ec-list',
   templateUrl: './list.component.html',
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListComponent<T> implements OnChanges {
   /** The current list config */
   config: ListConfig<T> = {};
   /** Config input for List */
+  /** Flag that flips true when loading. */
+  isLoading = false;
   // tslint:disable-next-line:no-input-rename
   @Input('config') configInput: ListConfig<T>;
   /** The visible items */
@@ -39,8 +42,17 @@ export class ListComponent<T> implements OnChanges {
   @Input() pagination: Pagination<T>;
   /** Custom PaginationConfig */
   @Input() paginationConfig: PaginationConfig;
+  /** If true, the first item in the list will always be focused after changed */
+  @Input() autoFocusFirst = false;
+  /** Current focus */
+  focusItem: Item<T>;
+  /** emits after the list changed */
+  @Output() changed: EventEmitter<List<T>> = new EventEmitter();
 
-  constructor(public listConfig: ListConfigService) {
+  constructor(
+    public listConfig: ListConfigService,
+    public cdr: ChangeDetectorRef
+  ) {
   }
 
   /** Changing items or collection will trigger reconstructing the list with the new items.
@@ -48,21 +60,35 @@ export class ListComponent<T> implements OnChanges {
   ngOnChanges(changes?) {
     this.config = Object.assign(this.config || {}, this.configInput || {});
     if (this.items) {
-      this.list = new List(this.items, this.config, this.pagination);
+      this.init(new List(this.items, this.config, this.pagination));
     } else if (this.collection) {
-      this.list = new List(this.collection.items, this.config, this.pagination);
+      this.init(new List(this.collection.items, this.config, this.pagination));
     }
-    if (!this.list) {
+  }
+
+  init(list: List<T>) {
+    if (!list) {
+      console.warn('tried to init list.component with undefined list');
       return;
     }
+    this.list = list;
     this.listConfig.applyConfig(this.list);
+    this.list.change$.subscribe(() => {
+      if (this.autoFocusFirst || this.list.isFiltered()) {
+        this.focusFirst();
+      } else {
+        delete this.focusItem;
+      }
+      this.cdr.markForCheck();
+      this.changed.emit(this.list)
+    });
     if (!this.selection) {
       this.selection = new Selection([], this.list.config);
     }
     if (this.selection) {
       this.selection.update$.subscribe((selection: Selection<T>) => {
         this.selected.emit(selection);
-      })
+      });
     }
   }
 
@@ -88,23 +114,39 @@ export class ListComponent<T> implements OnChanges {
     this.selection.select(this.list.items[index]);
   }
 
+  focusFirst() {
+    delete this.focusItem;
+    this.focusNext();
+  }
+
   /** Selects the next item */
-  selectNext() {
-    let index = 0;
-    if (!this.selection.isEmpty()) {
-      index = this.list.items.indexOf(this.selection.items[0]) + 1;
+  focusNext() {
+    if (!this.list) {
+      return;
     }
-    this.selection.removeAll();
-    this.selectIndex(index % this.list.items.length);
+    let index = 0;
+    if (this.focusItem) {
+      index = this.list.page.indexOf(this.focusItem) + 1;
+    }
+    this.focusItem = this.list.page[index % this.list.page.length];
+    this.cdr.markForCheck();
   }
 
   /** Selects the previous item */
-  selectPrev() {
-    let index = this.list.items.length - 1;
-    if (!this.selection.isEmpty()) {
-      index = this.list.items.indexOf(this.selection.items[0]) + this.list.items.length - 1;
+  focusPrev() {
+    if (!this.list) {
+      return;
     }
-    this.selection.removeAll();
-    this.selectIndex(index % this.list.items.length);
+    let index = this.list.page.length - 1;
+    if (this.focusItem) {
+      index = this.list.page.indexOf(this.focusItem) + this.list.page.length - 1;
+    }
+    this.focusItem = this.list.page[index % this.list.page.length];
+    this.cdr.markForCheck();
+  }
+
+  /** Filters the list */
+  filter(property, value) {
+    this.list.filter(property, value);
   }
 }

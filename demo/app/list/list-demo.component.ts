@@ -16,7 +16,8 @@ import { mocked } from '../../../mocks/data';
 export class ListDemoComponent {
   public mocked = mocked;
   public paginationConfig = {
-    hideFirstLast: true
+    hideFirstLast: true,
+    sizes: [3, 10]
   }
   constructor() {
   }

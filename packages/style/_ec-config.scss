@@ -392,6 +392,28 @@ $ec-list-cell-padding: 8 !default;
 $ec-list-cell-style: () !default;
 
 //
+// EC-LIST-EMPTY
+// ------------------------------------------------------
+// @param {array} $ec-list-empty-style
+// @param {color} $ec-list-empty-background [getColor(background, lightest)]
+// @param {color} $ec-list-empty-color [inherit]
+// @param {array} $ec-list-empty-padding [8]
+// @param {array} $ec-list-empty-spacing [4 0]
+// @param {array} $ec-list-empty-radius [4]
+$ec-list-empty-background: getColor(background, lightest) !default;
+$ec-list-empty-color: inherit !default;
+$ec-list-empty-padding: 8 !default;
+$ec-list-empty-spacing: 4 0 !default;
+$ec-list-empty-radius: 4 !default;
+$ec-list-empty-style: () !default;
+$ec-list-empty-style: map-merge(
+  (
+    text-align: center
+  ),
+  $ec-list-empty-style
+);
+
+//
 // EC-PAGINATION
 // ------------------------------------------------------
 // @param {color} $ec-pagination-background [transparent]
@@ -567,8 +589,8 @@ $ec-select-radius: $xui-select-radius !default;
 // @param {array} $ec-select-is-solo-style
 $ec-select-solo-style: () !default;
 
-// @param {array} $ec-select-is-dirty-style
-$ec-select-is-dirty-style: () !default;
+// @param {array} $ec-select-is-empty-style
+$ec-select-is-empty-style: () !default;
 
 // @param {color} $ec-select-placeholder-color [$xui-select-placeholder-color]
 // @param {array} $ec-select-placeholder-style [$xui-select-placeholder-style]
@@ -652,16 +674,24 @@ $ec-select-options-shadow: $xui-select-options-shadow !default;
 $ec-select-options-style: $xui-select-options-style !default;
 
 // @param {array} $ec-select-option-padding [8 16]
-// @param {color} $ec-select-option-color [$link]
+// @param {array} $ec-select-option-spacing [2 0]
+// @param {array} $ec-select-option-radius [4]
+// @param {color} $ec-select-option-color [$text]
 // @param {color} $ec-select-option-background [transparent]
-// @param {color} $ec-select-option-color [$ec-select-option-color]
-// @param {color} $ec-select-option-background [$state-hover]
+// @param {color} $ec-select-option-focus-color [$link]
+// @param {color} $ec-select-option-focus-background [transparent]
+// @param {color} $ec-select-option-selected-color [$link]
+// @param {color} $ec-select-option-selected-background [$state-hover]
 // @param {array} $ec-select-option-style
 $ec-select-option-padding: 8 16 !default;
-$ec-select-option-color: $link !default;
+$ec-select-option-spacing: 2 0 !default;
+$ec-select-option-radius: 4 !default;
+$ec-select-option-color: $text !default;
 $ec-select-option-background: transparent !default;
-$ec-select-option-hover-color: $ec-select-option-color !default;
-$ec-select-option-hover-background: $state-hover !default;
+$ec-select-option-focus-color: $link !default;
+$ec-select-option-focus-background: transparent !default;
+$ec-select-option-selected-color: $link !default;
+$ec-select-option-selected-background: $state-hover !default;
 $ec-select-option-style: () !default;
 
 //

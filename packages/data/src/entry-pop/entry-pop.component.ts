@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild, Output, EventEmitter, HostBinding, ElementRef } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, Output, EventEmitter, HostBinding, ElementRef, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { CrudConfig } from '../crud/crud-config.interface';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
@@ -19,6 +19,7 @@ import { FormService } from '@ec.components/ui/src/form/form.service';
 @Component({
   selector: 'ec-entry-pop',
   templateUrl: './entry-pop.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class EntryPopComponent extends PopComponent implements OnInit {
@@ -47,8 +48,9 @@ export class EntryPopComponent extends PopComponent implements OnInit {
     private route: ActivatedRoute,
     public formService: FormService,
     public symbol: SymbolService,
-    public elementRef: ElementRef) {
-    super(popService, elementRef);
+    public elementRef: ElementRef,
+    public cdr: ChangeDetectorRef) {
+    super(popService, elementRef, cdr);
   }
 
   /** Returns true if the given method is part of the methods array (or if there is no methods array) */
@@ -112,6 +114,7 @@ export class EntryPopComponent extends PopComponent implements OnInit {
   ngOnInit() {
     this.auth.getAllowedModelMethods(this.model, this.config.methods)
       .then((methods) => {
+        this.cdr.markForCheck();
         this.config.methods = methods;
       });
   }

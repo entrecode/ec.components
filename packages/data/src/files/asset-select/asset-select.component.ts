@@ -1,7 +1,7 @@
 /**
  * Created by felix on 23.05.17.
  */
-import { Component, forwardRef, Input, OnInit, ViewChild, ViewEncapsulation, EventEmitter, ElementRef } from '@angular/core';
+import { Component, forwardRef, Input, OnInit, ViewChild, ViewEncapsulation, EventEmitter, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Item } from '@ec.components/core/src/item/item';
 import { SdkService } from '../../sdk/sdk.service';
@@ -38,6 +38,8 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
   protected control: FormControl;
   /** If true, a pop will open that can be used to rename files before upload */
   @Input() custom: boolean;
+  /** Custom Placeholder */
+  @Input() placeholder: string;
   /** The used item */
   @Input() item: Item<any>;
   /** If true, the selection cannot be changed and no uploads can be made. */
@@ -67,13 +69,13 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
     public notificationService: NotificationsService,
     public sdk: SdkService,
     public symbol: SymbolService,
-    public elementRef: ElementRef
+    public elementRef: ElementRef,
+    public cdr: ChangeDetectorRef
   ) {
-    super(elementRef);
+    super(elementRef, cdr);
   }
 
   setGroup(group) {
-    console.log('set group', group);
     if (!group) {
       return;
     }
@@ -151,5 +153,12 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
     this.value = value;
     this.useConfig(this.initConfig());
     this.use(value, false);
+  }
+  /** On Change check if solo, if true, close pop */
+  onChange() {
+    super.onChange();
+    if (this.config.solo && this.pop) {
+      this.pop.hide();
+    }
   }
 }

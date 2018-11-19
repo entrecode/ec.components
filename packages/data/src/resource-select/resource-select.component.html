@@ -1,34 +1,41 @@
-<div class="ec-resource-select" *ngIf="selection">
-    <div class="ec-select" [class.ec-select_solo]="solo" [class.is-dirty]="selection.items.length" (click)="togglePop($event)">
-        <span class="ec-select__placeholder" *ngIf="!selection.items.length">
-            {{placeholder||'Auswählen'}}
-        </span>
-        <ul class="ec-select-selection" *ngIf="selection.items.length">
+<div class="ec-resource-select">
+    <div class="ec-select" [class.ec-select_solo]="solo" [class.is-empty]="selection?.isEmpty()" (click)="togglePop($event)" [class.has-searchbar]="!config?.disableSearchbar">
+        <ul class="ec-select-selection">
+            <li *ngIf="config?.disableSearchbar&&selection.isEmpty()">
+                <span class="ec-select__placeholder">
+                    {{placeholder||defaultPlaceholder()}}
+                </span>
+            </li>
             <li *ngFor="let selected of selection?.items">
                 <span [class.ec-select-selected]="!solo" [class.ec-select-selected_solo]="solo" (click)="!solo&&editItem(selected,$event)">
                     {{selected.display()}}
-                    <a (click)="removeItem(selected,$event)">&times;</a>
+                    <a (click)="removeItem(selected,$event);">&times;</a>
                 </span>
+            </li>
+            <li *ngIf="!config?.disableSearchbar" class="ec-select__searchbar">
+                <ec-searchbar [autofocus]="false" [property]="config?.label" [placeholder]="placeholder||defaultPlaceholder()"
+                    (pasted)="pasteValue($event)" (keypressed)="handleKey($event,dropdownList)" (focus)="focus($event)" (queryChanged)="filterDropdownList(dropdownList,$event)"></ec-searchbar>
             </li>
         </ul>
         <ec-pop class="ec-select-options" #dropdown [hideOnClickOutside]="true">
-            <ec-resource-list [relation]="relation" [api]="api" *ngIf="selection&&dropdown.active" [config]="dropdownConfig"
-                [selection]="selection" (columnClicked)="select($event)"></ec-resource-list>
+            <ec-loader class="ec-loader loader is-local" #dropdownLoader></ec-loader>
+            <ec-resource-list (changed)="searchbar.updatedList($event)" #dropdownList *ngIf="dropdown.activated"
+                [relation]="relation" [api]="api" [config]="dropdownConfig" [selection]="selection" [loader]="dropdownLoader"
+                (columnClicked)="listItemClicked($event)"></ec-resource-list>
         </ec-pop>
-
-        <ec-resource-list-pop (columnClicked)="select($event)" #listPop #resourceListPop [api]="api" [relation]="relation" [config]="config" [selection]="selection"></ec-resource-list-pop>
-
     </div>
+    <ec-resource-list-pop (pasted)="pasteValue($event)" (columnClicked)="listItemClicked($event)" #resourceListPop
+        [api]="api" [relation]="relation" [config]="config" [selection]="selection"></ec-resource-list-pop>
     <ec-resource-pop #resourcePop [api]="api" [relation]="relation" [config]="config" (submitted)="formSubmitted($event)"
-        (deleted)="removeItem($event)"></ec-resource-pop>
+        (deleted)="removeItem($event)" *ngIf="config"></ec-resource-pop>
     <nav class="ec-resource-select__controls">
-        <a (click)="editItem(selection.items[0],$event)" class="btn btn_clear" *ngIf="solo&&!config.disableCreatePop&&hasMethod('put')&&!selection.isEmpty()">
+        <a (click)="editItem(selection?.items[0],$event)" class="btn btn_clear" *ngIf="solo&&!config?.disableCreatePop&&hasMethod('put')&&!selection?.isEmpty()">
             <ec-icon name="pencil"></ec-icon>
         </a>
         <a (click)="resourcePop.create()" class="btn btn_clear" *ngIf="!config?.disableCreatePop&&hasMethod('post')">
             <ec-icon name="add"></ec-icon>
         </a>
-        <a (click)="listPop.show()" class="btn btn_clear" *ngIf="!config?.disableListPop&&hasMethod('get')">
+        <a (click)="resourceListPop.show($event)" class="btn btn_clear" *ngIf="!config?.disableListPop&&hasMethod('get')">
             <ec-icon name="find"></ec-icon>
         </a>
     </nav>

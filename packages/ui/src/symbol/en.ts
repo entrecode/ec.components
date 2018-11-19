@@ -457,12 +457,20 @@ export default [
         content: 'select model...'
     },
     {
+        name: 'entry.select.remove',
+        content: 'Remove'
+    },
+    {
         name: 'entry.generic',
         content: 'Entry'
     },
     {
         name: 'list.empty',
         content: 'No Item yet..'
+    },
+    {
+        name: 'list.loading',
+        content: 'Loading List..'
     },
     {
         name: 'list.filter.noResults',

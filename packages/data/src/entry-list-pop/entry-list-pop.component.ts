@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, Output, ViewChild, HostBinding, ElementRef } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, ViewChild, HostBinding, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { Item, ListConfig, Selection } from '@ec.components/core';
 import { PopComponent } from '@ec.components/ui';
 import { PopService } from '@ec.components/ui/src/pop/pop.service';
@@ -25,18 +25,17 @@ export class EntryListPopComponent extends PopComponent implements OnChanges {
     constructor(
         public modelConfig: ModelConfigService,
         protected popService: PopService,
-        public elementRef: ElementRef
+        public elementRef: ElementRef,
+        public cdr: ChangeDetectorRef
     ) {
-        super(popService, elementRef);
+        super(popService, elementRef, cdr);
     }
 
     ngOnChanges() {
         if (this.model) {
             this.modelConfig.getLightModel(this.model).then(model => this.lightModel = model);
         }
-        if (this.config) {
-            this.config = Object.assign({ hidePagination: true, disableHeader: true }, this.config);
-        }
+        this.config = Object.assign({}, this.config || {}, { hidePagination: true, disableHeader: true });
     }
 
     /** emits columnClicked event or toggles selection if no observers. */
@@ -46,5 +45,6 @@ export class EntryListPopComponent extends PopComponent implements OnChanges {
         } else if (this.selection) {
             this.selection.toggle(item);
         }
+        this.searchbar.focusEvent.emit(true);
     }
 }

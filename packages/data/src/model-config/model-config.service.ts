@@ -110,6 +110,7 @@ export class ModelConfigService extends Config {
         .forEach(({
           config,
           type,
+          formView,
           title,
           unique,
           mutable,
@@ -140,6 +141,7 @@ export class ModelConfigService extends Config {
             label: label || title + (type === 'datetime' ? ` ${this.symbol.resolve('datetime.local')}` : ''),
             placeholder,
             description,
+            formView: formView || type,
             validation,
             relation: validation,
             immutable: !mutable,
@@ -152,9 +154,11 @@ export class ModelConfigService extends Config {
             unique,
             required,
             columns,
-            display: ((value) => value),
+            /* display: ((value) => value), */
             localizable,
-          }, this.typeConfig.get(type));
+          }, this.typeConfig.get(type), {
+              placeholder: placeholder || this.typeConfig.get(type).placeholder
+            });
         });
       return fields;
     });
@@ -185,6 +189,7 @@ export class ModelConfigService extends Config {
         } else {
           relevantKeys.forEach(key => {
             mergedFields[key] = Object.assign(
+              {},
               fieldConfig[key] || {},
               modelConfigFields[key] || {},
               (customFieldConfig || {})[key]);

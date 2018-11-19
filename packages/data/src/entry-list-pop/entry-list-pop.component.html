@@ -3,13 +3,14 @@
         <button (click)="hide()" type="button" class="dialog-dismiss">
             <ec-icon name="close-x-big"></ec-icon>
         </button>
-        <ec-searchbar (selected)="hide()" placeholder="Search.." [list]="entryList" #searchbar *ngIf="entryList"
-            [property]="lightModel?.titleField"></ec-searchbar>
+        <ec-searchbar (selected)="selection.toggle($event)" placeholder="Search.." [list]="entryList" *ngIf="entryList"
+            #searchbar [property]="lightModel?.titleField" [listComponent]="entryList"></ec-searchbar>
         <ec-list-header [list]="entryList?.list" [selection]="selection"></ec-list-header>
     </header>
     <div class="dialog-body">
-        <ec-entry-list (changed)="searchbar.focusEvent.emit(true)" [model]="model" [config]="config" [selection]="selection"
-            (columnClicked)="select($event)" #entryList></ec-entry-list>
+        <ec-loader class="ec-loader loader is-local" #entryListLoader></ec-loader>
+        <ec-entry-list #entryList [loader]="entryListLoader" (changed)="searchbar.updatedList($event)" [model]="model"
+            [config]="config" [selection]="selection" (columnClicked)="select($event)" #entryList></ec-entry-list>
     </div>
     <div class="dialog-footer">
         <ec-pagination [pagination]="entryList?.list?.pagination"></ec-pagination>

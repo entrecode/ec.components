@@ -1,7 +1,7 @@
 /**
  * Created by felix on 26.05.17.
  */
-import { Component, EventEmitter, Input, OnInit, Optional, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Optional, Output, ViewChild, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CrudConfig } from './crud-config.interface';
 import { EntryFormComponent } from '../entry-form/entry-form.component';
@@ -55,6 +55,7 @@ export class CrudComponent<T> implements OnInit, WithLoader, WithNotifications {
     private loaderService: LoaderService,
     private notificationService: NotificationsService,
     private symbol: SymbolService,
+    private cdr: ChangeDetectorRef,
     @Optional() public router: Router,
     @Optional() public route: ActivatedRoute) {
     if (route) {
@@ -70,6 +71,7 @@ export class CrudComponent<T> implements OnInit, WithLoader, WithNotifications {
   ngOnInit() {
     this.auth.getAllowedModelMethods(this.model, this.config.methods)
       .then((methods) => {
+        this.cdr.markForCheck();
         this.config.methods = methods;
       });
   }
@@ -92,7 +94,7 @@ export class CrudComponent<T> implements OnInit, WithLoader, WithNotifications {
       if (!this.config.alwaysLoadEntry && !this.mustReload(item) && (!this.config.levels || this.config.levels === 1)) {
         return item.getBody();
       }
-      return this.sdk.api.entry(this.model, item.id(), { levels: this.config.levels || 1 })
+      return this.sdk.api.entry(this.model, item.id(), this.config.levels || 1)
     }).then((loadedEntry) => {
       this.entryPop.edit(loadedEntry);
       this.notificationService.emit({ hide: this.notifications });

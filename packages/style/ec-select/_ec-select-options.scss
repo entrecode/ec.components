@@ -38,10 +38,13 @@
   }
 
   // @param {array} $ec-select-option-padding [8 16]
-  // @param {color} $ec-select-option-color [$link]
+  // @param {array} $ec-select-option-radius [4]
+  // @param {color} $ec-select-option-color [$text]
   // @param {color} $ec-select-option-background [transparent]
-  // @param {color} $ec-select-option-color [$ec-select-option-color]
-  // @param {color} $ec-select-option-background [$state-hover]
+  // @param {color} $ec-select-option-focus-color [$link]
+  // @param {color} $ec-select-option-focus-background [transparent]
+  // @param {color} $ec-select-option-selected-color [$link]
+  // @param {color} $ec-select-option-selected-background [$state-hover]
   // @param {array} $ec-select-option-style
   .ec-list-item {
     display: flex;
@@ -49,19 +52,37 @@
     box-shadow: none;
     outline: none;
     @include inject-style($ec-select-option-style);
+    border-radius: arrayMagic($ec-select-option-radius);
     color: $ec-select-option-color;
     background: $ec-select-option-background;
     padding: arrayMagic($ec-select-option-padding);
+    margin: arrayMagic($ec-select-option-spacing);
 
     &:hover,
+    &.is-focus {
+      color: $ec-select-option-focus-color;
+      background: $ec-select-option-focus-background;
+    }
+
     &.is-selected {
-      color: $ec-select-option-hover-color;
-      background: $ec-select-option-hover-background;
+      color: $ec-select-option-selected-color;
+      background: $ec-select-option-selected-background;
+
+      &.is-focus {
+        color: darken($ec-select-option-selected-color, $hover-shading);
+        background: darken($ec-select-option-selected-background, $hover-shading);
+      }
     }
   }
 
   .ec-list-cell {
     padding: 0;
+    color: inherit !important;
+
+    &.is-filtered {
+      background: inherit !important;
+      color: inherit !important;
+    }
   }
 
   .ec-pagination {

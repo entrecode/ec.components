@@ -16,7 +16,7 @@ import { DefaultEntryOutputComponent } from '../entry-form/default-entry-output.
 export class TypeConfigService {
   /** The default config for nested crud lists, as passed to entry-select */
   private nestedCrudConfig: CrudConfig<EntryResource> = {
-    size: 10,
+    size: 5,
     // methods: ['get']
   };
 
@@ -55,6 +55,7 @@ export class TypeConfigService {
     },
     asset: {
       view: 'asset',
+      inputView: 'asset-select',
       // view: 'avatar',
       input: DefaultEntryInputComponent,
       filterOperator: 'exact',
@@ -65,6 +66,7 @@ export class TypeConfigService {
     },
     assets: {
       view: 'assets',
+      inputView: 'assets-select',
       // view: 'avatars',
       input: DefaultEntryInputComponent,
       display: (value, entry, property) =>
@@ -77,6 +79,7 @@ export class TypeConfigService {
     },
     dmAsset: {
       view: 'dmAsset',
+      inputView: 'dmAsset-select',
       // view: 'avatar',
       input: DefaultEntryInputComponent,
       filterOperator: 'exact',
@@ -87,6 +90,7 @@ export class TypeConfigService {
     },
     dmAssets: {
       view: 'dmAssets',
+      inputView: 'dmAssets-select',
       // view: 'avatars',
       input: DefaultEntryInputComponent,
       display: (value, entry, property) =>
@@ -120,6 +124,7 @@ export class TypeConfigService {
     },
     entry: {
       view: 'tag',
+      inputView: 'entry-select',
       input: DefaultEntryInputComponent,
       output: DefaultOutputComponent,
       display: (value, entry, property) => entry.getTitle(property),
@@ -130,6 +135,7 @@ export class TypeConfigService {
     },
     entries: {
       view: 'tags',
+      inputView: 'entries-select',
       input: DefaultEntryInputComponent,
       output: DefaultOutputComponent,
       display: (value, entry, property) => entry.getTitle(property),

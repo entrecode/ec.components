@@ -77,7 +77,7 @@ export class FileService {
   public getAssetConfig(assetGroupID) {
     if (this.isOldAssetGroupID(assetGroupID)) {
       const config = Object.assign({}, this.legacyAssetConfig);
-      if (this.oldAssetGroupIDs.includes(assetGroupID)) {
+      if (this.oldAssetGroupIDs.includes(assetGroupID) && assetGroupID !== 'legacyAsset') {
         config.filter = Object.assign({}, (config.filter || {}), {
           type: assetGroupID
         });

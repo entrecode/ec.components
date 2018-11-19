@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, Output, ViewChild, HostBinding, ElementRef } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, ViewChild, HostBinding, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { Item, ListConfig, Selection } from '@ec.components/core';
 import { PopComponent } from '@ec.components/ui';
 import { PopService } from '@ec.components/ui/src/pop/pop.service';
@@ -19,6 +19,7 @@ export class ResourceListPopComponent extends PopComponent implements OnChanges 
     @Input() config: ListConfig<Resource>;
     @Input() selection: Selection<Resource>;
     @Output() columnClicked: EventEmitter<Item<Resource>> = new EventEmitter();
+    @Output() pasted: EventEmitter<Item<Resource>> = new EventEmitter();
     @ViewChild(SearchbarComponent) searchbar: SearchbarComponent;
     /** Set host class to make sure the type is used */
     @HostBinding('class') class = 'dialog-wrapper';
@@ -27,9 +28,10 @@ export class ResourceListPopComponent extends PopComponent implements OnChanges 
     constructor(
         public resourceConfig: ResourceConfig,
         protected popService: PopService,
-        public elementRef: ElementRef
+        public elementRef: ElementRef,
+        public cdr: ChangeDetectorRef
     ) {
-        super(popService, elementRef);
+        super(popService, elementRef, cdr);
     }
 
     ngOnChanges() {
@@ -48,5 +50,6 @@ export class ResourceListPopComponent extends PopComponent implements OnChanges 
         } else if (this.selection) {
             this.selection.toggle(item);
         }
+        this.searchbar.focusEvent.emit(true);
     }
 }

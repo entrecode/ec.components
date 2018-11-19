@@ -35,11 +35,9 @@ export class EntryList extends ResourceList {
     }
     this.useConfig(config);
     this.promise = this.sdk.api.entryList(this.model, this.getFilterOptions(this.config))
-      .then((list) => {
-        this.use(list);
-      }).catch((err) => {
-        this.error.next(err);
-      });
+      .then((list) => this.use(list))
+      .catch((err) => this.error.next(err))
     this.loading.next(this.promise);
+    return this.promise;
   }
 }

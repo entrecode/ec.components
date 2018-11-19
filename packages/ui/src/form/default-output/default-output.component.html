@@ -56,7 +56,7 @@
   </div>
 
   <div class="ec-output-preview" *ngSwitchCase="'preview'">
-    <img [src]="item?.display(field.property)">
+    <img [src]="item?.display(field.property)" *ngIf="item?.display(field.property)">
   </div>
 
   <a *ngSwitchCase="'link'" (click)="item?.action(field.property, $event)" [ngClass]="field.class">

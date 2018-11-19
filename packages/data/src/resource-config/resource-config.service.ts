@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { DefaultEntryInputComponent } from '../entry-form/default-entry-input.component';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 import Resource from 'ec.sdk/lib/resources/Resource';
 import { CrudConfig } from '../crud/crud-config.interface';
@@ -213,7 +212,7 @@ export class ResourceConfig {
           groups: {
             label: this.symbol.resolve('account.field.label.groups'),
             type: 'groups',
-            input: DefaultEntryInputComponent,
+            input: AdminEntryInputComponent,
             list: false,
             display: (value) => value ? value.map(group => group.name) : []
           },
@@ -226,7 +225,7 @@ export class ResourceConfig {
       dmAccount: {
         identifier: 'accountID',
         identifierPattern: this.uuid(),
-        label: 'title',
+        label: 'email',
         permissions: {
           get: 'acc:list',
           put: 'acc:edit:<accountID>'
@@ -236,6 +235,10 @@ export class ResourceConfig {
           accountID: {
             label: this.symbol.resolve('field.label.id'),
             view: 'string'
+          },
+          title: {
+            label: 'Title',
+            filterable: true,
           },
           email: {
             label: this.symbol.resolve('field.label.email'),

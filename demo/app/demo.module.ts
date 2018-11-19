@@ -60,6 +60,7 @@ import { ImageSelectPopDemoComponent } from './image-select-pop-demo/image-selec
 import { ResourceListPopDemoComponent } from './resource-list-pop/resource-list-pop-demo.component';
 import { ModalDemoComponent } from './modal/modal-demo.component';
 import { TinyInputComponent } from './tinymce-demo/tiny-input.component';
+import { EntryListSelectDemoComponent } from './entry-list-select/entry-list-select-demo.component';
 
 /* const routes = [].concat(demoRoutes); */
 /* routes.unshift({
@@ -83,6 +84,7 @@ import { TinyInputComponent } from './tinymce-demo/tiny-input.component';
     ListTransformsDemoComponent,
     PaginationDemoComponent,
     EntryListDemoComponent,
+    EntryListSelectDemoComponent,
     ApiExplorerComponent,
     ResourceFormDemoComponent,
     ResourceCrudDemoComponent,

@@ -78,8 +78,9 @@ export class ResourceList extends List<Resource> {
     this.promise = this.api
       .resourceList(this.relation, options)
       .then(list => this.use(list))
-      .catch(err => this.error.next(err));
+      .catch(err => this.error.next(err))
     this.loading.next(this.promise);
+    return this.promise;
   }
 
   /** deletes all undefined values from given config and assigns it to this.config */
@@ -125,19 +126,20 @@ export class ResourceList extends List<Resource> {
     if (sortBy) {
       Object.assign(options, { sort: [(desc ? '-' : '') + sortBy] });
     }
-    if (filter) {
-      for (const property in filter) {
-        if (filter.hasOwnProperty(property)) {
-          Object.assign(options, {
-            [property]: ResourceList.isRawFilter(property, this.fields)
-              ? filter[property]
-              : {
-                [ResourceList.getFilterOperator(property, this.fields)]: filter[
-                  property
-                ]
-              }
-          });
-        }
+    if (!filter) {
+      return options;
+    }
+    for (const property in filter) {
+      if (filter.hasOwnProperty(property)) {
+        Object.assign(options, {
+          [property]: ResourceList.isRawFilter(property, this.fields)
+            ? filter[property]
+            : {
+              [ResourceList.getFilterOperator(property, this.fields)]: filter[
+                property
+              ]
+            }
+        });
       }
     }
     return options;
@@ -171,8 +173,8 @@ export class ResourceList extends List<Resource> {
       return; // filter is already empty => no need to load again
     }
     return this.load({
+      page: 1, // reset page
       filter: this.filterProperty(property, value)
     });
   }
-
 }

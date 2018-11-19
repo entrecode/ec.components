@@ -10,26 +10,35 @@
           <span class="ec-list-group-header__title">{{group.value}}</span>
         </div>
       </div>
-      <ec-list-items [list]="list" [selection]="selection" (columnClicked)="columnClick($event)" #listItems [items]="list?.page | group: group.property: group.value"></ec-list-items>
+      <ec-list-items [focusItem]="focusItem" [list]="list" [selection]="selection" (columnClicked)="columnClick($event)"
+        #listItems [items]="list?.page | group: group.property: group.value"></ec-list-items>
     </div>
 
-    <div class="ec-list-empty" *ngIf="list?.isEmpty()">
-      <div *ngIf="list.isFiltered()">
+    <div class="ec-list-empty" *ngIf="list?.isEmpty()&&!isLoading">
+      <div *ngIf="list?.isFiltered()">
         <div #noResults>
           <ng-content select="[data-ec-list-empty-filtered]"></ng-content>
         </div>
-        <p *ngIf="!noResults?.children?.length">
+        <div *ngIf="!noResults?.children?.length">
           {{'list.filter.noResults' | symbol}}
           <a (click)="list.clearFilter()">{{'list.filter.reset' | symbol}}</a>
-        </p>
+        </div>
       </div>
       <div *ngIf="!list.isFiltered()">
         <div #emptySlot>
           <ng-content select="[data-ec-list-empty]"></ng-content>
         </div>
-        <p *ngIf="!emptySlot?.children?.length">
+        <div *ngIf="!emptySlot?.children?.length">
           {{'list.empty' | symbol}}
-        </p>
+        </div>
+      </div>
+    </div>
+    <div class="ec-list-empty" *ngIf="list?.isEmpty()&&isLoading">
+      <div #loadingSlot>
+        <ng-content select="[data-ec-list-loading]"></ng-content>
+      </div>
+      <div *ngIf="!loadingSlot?.children?.length">
+        {{'list.loading' | symbol}}
       </div>
     </div>
   </div>

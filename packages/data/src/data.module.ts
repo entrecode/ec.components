@@ -23,6 +23,7 @@ import { TypeConfigService } from './model-config/type-config.service';
 import { ResourceModule } from './resource/resource.module';
 import { HistoryService } from './sdk/history.service';
 import { SdkModule } from './sdk/sdk.module';
+import { EntryListSelectComponent } from './entry-list-select/entry-list-select.component';
 
 @NgModule({
   entryComponents: [
@@ -30,6 +31,7 @@ import { SdkModule } from './sdk/sdk.module';
     DefaultEntryOutputComponent,
     AdminEntryInputComponent,
     EntrySelectComponent,
+    EntryListSelectComponent,
     EntryListPopComponent,
   ],
   declarations: [
@@ -41,6 +43,7 @@ import { SdkModule } from './sdk/sdk.module';
     DefaultEntryInputComponent,
     DefaultEntryOutputComponent,
     AdminEntryInputComponent,
+    EntryListSelectComponent,
     CrudComponent,
     EntrySelectComponent,
     EntryListPopComponent,
@@ -63,6 +66,7 @@ import { SdkModule } from './sdk/sdk.module';
     EntryPopComponent,
     CrudComponent,
     EntrySelectComponent,
+    EntryListSelectComponent,
     EntryListPopComponent,
     RouterModule,
     UiModule,

@@ -55,6 +55,9 @@ export class List<T> extends Collection<Item<T>> {
     this.fields = this.getFields();
     this.hideOverflowFields();
     this.pagination = pagination || new Pagination(this.config, this.items.length);
+    this.change$.subscribe(() => {
+      this.pagination.select(this.config.page || 1, true);
+    });
     if (!pagination) { // load if no custom pagination was given
       this.pagination.change$.debounceTime(200)
         .subscribe(_config => this.load(_config));
@@ -100,6 +103,11 @@ export class List<T> extends Collection<Item<T>> {
     return fields;
   }
 
+  public toggleVisibility(field) {
+    field.hideInList = !field.hideInList;
+    this.change.next(this);
+  }
+
   /** Sets all fields that exceed the maxColumns to hidden */
   protected hideOverflowFields() {
     if (this.config && this.config.maxColumns) {
@@ -128,9 +136,15 @@ export class List<T> extends Collection<Item<T>> {
 
   /** Filters the list after the given property and value */
   public filter(property: string, value: any = '', operator: string = 'exact') {
+    this.config.filter = { [property]: value };
+    if (value === null) {
+      this.load();
+      return;
+      // this.page = [].concat(this.items);
+    }
     // TODO find way to filter with pagination and without loosing filtered out items
     this.page = this.items.filter((item) => {
-      return item.resolve(property).includes(value);
+      return item.resolve(property).toLowerCase().includes(value.toLowerCase()); // TODO: better filter
     }).slice(0, this.config.size || 100);
   }
 
@@ -140,6 +154,7 @@ export class List<T> extends Collection<Item<T>> {
       return this.filter(property, null);
     }
     this.load({
+      page: 1,
       filter: {}
     });
   }
@@ -163,6 +178,17 @@ export class List<T> extends Collection<Item<T>> {
         .length > 0
     }
     return !this.isEmptyFilter(this.config.filter[property]);
+  }
+
+  /** Returns the filter */
+  getFilterValue(property?: string) {
+    if (!property) {
+      property = this.config.label;
+    }
+    if (!this.config.filter || !property) {
+      return undefined;
+    }
+    return this.config.filter[property];
   }
 
   /** Changes the config's sort variables to reflect the given sorting */
@@ -195,6 +221,7 @@ export class List<T> extends Collection<Item<T>> {
     this.config = Object.assign({}, this.config, {
       selectMode: !this.config.selectMode
     });
+    this.change.next(this);
   }
 
   /** Returns an Array of all unique values of the given property */

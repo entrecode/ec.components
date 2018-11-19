@@ -1,4 +1,4 @@
-import { Component, ElementRef } from '@angular/core';
+import { Component, ElementRef, ChangeDetectionStrategy } from '@angular/core';
 import { Collection } from '@ec.components/core/src/collection/collection';
 
 /** The ec-loader can be plugged into various components to be triggered when they load stuff.
@@ -7,6 +7,7 @@ import { Collection } from '@ec.components/core/src/collection/collection';
 @Component({
   selector: 'ec-loader',
   templateUrl: './loader.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoaderComponent {
   /** The current stack of loading promises.*/

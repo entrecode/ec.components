@@ -1,12 +1,12 @@
 <div [ngSwitch]="field.view" *ngIf="group" [formGroup]="group">
-  <input [id]="field.id" *ngSwitchCase="'string'" type="text" [formControl]="control"
-         [placeholder]="field.getPlaceholder()" class="input">
+  <input [id]="field.id" *ngSwitchCase="'string'" type="text" [formControl]="control" [placeholder]="field.getPlaceholder()"
+    class="input">
 
-  <textarea [id]="field.id" *ngSwitchCase="'textarea'" type="text" [formControl]="control"
-            [placeholder]="field.getPlaceholder()" class="input"></textarea>
+  <textarea [id]="field.id" *ngSwitchCase="'textarea'" type="text" [formControl]="control" [placeholder]="field.getPlaceholder()"
+    class="input"></textarea>
 
-  <input [id]="field.id" *ngSwitchCase="'number'" type="number" [formControl]="control"
-         [placeholder]="field.getPlaceholder()" class="input">
+  <input [id]="field.id" *ngSwitchCase="'number'" type="number" [formControl]="control" [placeholder]="field.getPlaceholder()"
+    class="input">
 
   <div class="ec-input_color" *ngSwitchCase="'color'">
     <label [style.backgroundColor]="control.value">
@@ -14,25 +14,25 @@
     </label>
   </div>
 
-  <input [id]="field.id" *ngSwitchCase="'boolean'" type="checkbox" [formControl]="control"
-         [placeholder]="field.getPlaceholder()">
+  <label *ngSwitchCase="'boolean'">
+    <input [id]="field.id" type="checkbox" [formControl]="control">
+    {{field.placeholder}}
+  </label>
 
-  <input [id]="field.id" *ngSwitchCase="'email'" type="email" [formControl]="control"
-         [placeholder]="field.getPlaceholder()" class="input">
+  <input [id]="field.id" *ngSwitchCase="'email'" type="email" [formControl]="control" [placeholder]="field.getPlaceholder()"
+    class="input">
 
-  <input [id]="field.id" *ngSwitchCase="'url'" type="url" [formControl]="control"
-         [placeholder]="field.getPlaceholder()" class="input">
+  <input [id]="field.id" *ngSwitchCase="'url'" type="url" [formControl]="control" [placeholder]="field.getPlaceholder()"
+    class="input">
 
-  <ec-toggle [id]="field.id" *ngSwitchCase="'toggle'" [formControl]="control"
-             [placeholder]="field.getPlaceholder()"></ec-toggle>
+  <ec-toggle [id]="field.id" *ngSwitchCase="'toggle'" [formControl]="control" [placeholder]="field.getPlaceholder()"></ec-toggle>
 
-  <ec-datetime *ngSwitchCase="'date'" [formControl]="control"
-               [placeholder]="field.getPlaceholder()"></ec-datetime>
+  <ec-datetime *ngSwitchCase="'date'" [formControl]="control" [placeholder]="field.getPlaceholder()"></ec-datetime>
 
-  <select [id]="field.id" [formControl]="control" *ngSwitchCase="'select'" (change)="control.patchValue($event.target.value)" class="input">
+  <select [id]="field.id" [formControl]="control" *ngSwitchCase="'select'" (change)="control.patchValue($event.target.value)"
+    class="input">
     <option></option>
-    <option *ngFor="let option of field.values" [selected]="control.value===(option.value?option.value:option)"
-            [value]="option.value?option.value:option">
+    <option *ngFor="let option of field.values" [selected]="control.value===(option.value?option.value:option)" [value]="option.value?option.value:option">
       {{option.label?option.label:option}}
     </option>
   </select>

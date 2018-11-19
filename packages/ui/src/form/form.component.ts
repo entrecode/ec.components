@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, Output, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, QueryList, ViewChild, ViewChildren, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FieldConfigProperty, Form, FormConfig, Item } from '@ec.components/core';
 import { ItemConfig } from '@ec.components/core/src/item/item-config.interface';
@@ -22,6 +22,7 @@ import { distinctUntilChanged, debounceTime } from 'rxjs/operators';
 @Component({
   selector: 'ec-form',
   templateUrl: './form.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormComponent<T> implements OnChanges, WithLoader, WithNotifications {
   /** The instance of Form that is used. */
@@ -64,7 +65,8 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
   constructor(protected loaderService: LoaderService,
     protected notificationService: NotificationsService,
     protected formService: FormService,
-    protected symbol: SymbolService) {
+    protected symbol: SymbolService,
+    protected cdr: ChangeDetectorRef) {
   }
 
   /** On change, the form instance is (re)created by combining all inputs.
@@ -92,7 +94,7 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
       return;
     }
     this.group = this.formService.getGroup(this.form);
-
+    this.cdr.markForCheck();
     Object.keys(this.group.controls).forEach(property => {
       const control = this.group.controls[property];
       control.valueChanges
