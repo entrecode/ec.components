@@ -67,7 +67,7 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   /** The nested entry list pop */
   @ViewChild(EntryListPopComponent) entryListPop: EntryListPopComponent;
   /** The nested full EntryListComponent */
-  @ViewChild('entryList') entryList: EntryListComponent;
+  @ViewChild('dropdownList') dropdownList: EntryListComponent;
   /** The nested searchbar */
   @ViewChild(SearchbarComponent) searchbar: SearchbarComponent;
   /** THe nested delete confirmation pop */
@@ -106,17 +106,20 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   }
 
   togglePop(e) {
-    if (this.dropdown && !this.config.disableSelect) {
-      this.dropdown.toggle(e);
+    if (this.dropdown) {
+      this.dropdown.show(e);
     } else if (this.entryListPop && !this.config.disableListPop) {
-      this.entryListPop.show();
+      this.entryListPop.show(e);
     } else if (this.entryPop && !this.config.disableCreatePop) {
       this.entryPop.show();
+    }
+    if (this.searchbar) {
+      this.searchbar.focusEvent.emit(true);
     }
   }
 
   defaultPlaceholder() {
-    if (this.config.disableSelect && this.config.disableListPop) {
+    if (this.config && this.config.disableSearchbar && this.config.disableListPop) {
       return this.symbol.resolve('entry.select.placeholder.new');
     }
     return this.symbol.resolve('entry.select.placeholder.select');
@@ -144,6 +147,7 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
 
   useModel(model) {
     this.model = model;
+    this.modelConfig.getLightModel(model).then(lightModel => this.lightModel = lightModel);
     this.initConfig();
   }
 
@@ -167,7 +171,7 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
 
     this.modelConfig.generateConfig(this.model) // , (this.config || {}).fields
       .then((config) => {
-        this.config = Object.assign(config, { size: 10 }, this.crudConfig,
+        this.config = Object.assign(config, { size: 5 }, this.crudConfig,
           { solo: this.solo, selectMode: false, disableSelectSwitch: true });
         this.useConfig(this.config);
       });
@@ -198,7 +202,7 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   /** Is called when the nested entry-form has been saved. Selects the fresh entry and clears the form */
   formSubmitted(form: Form<EntryResource>) {
     if (!this.selection.has(form)) {
-      this.select(form);
+      this.toggleItem.next(form);
     } else { // already in selection => update body
       const index = this.selection.index(form);
       this.selection.items[index].body = form.getBody();
@@ -207,8 +211,32 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
 
   onChange() {
     super.onChange();
-    if (this.config.solo && this.entryListPop) {
+    if (this.hasSoloSelection() && this.entryListPop) {
       this.entryListPop.hide();
+      return;
+    }
+  }
+
+  focusSearchbar() {
+    if (!this.entryListPop || !this.entryListPop.active) {
+      this.searchbar.focusEvent.emit(true);
+    }
+  }
+
+  pasteValue(e) {
+    const value = (e.clipboardData).getData('text');
+    if (this.config.identifierPattern && value.match(this.config.identifierPattern)) {
+      this.preventDefault(e);
+      this.sdk.api.entry(this.model, value)
+        .then(entry => this.addItem(new Item(entry, this.config)))
+        .catch(error => this.searchbar.filterList(value));
+    }
+  }
+
+  filterDropdownList(list, query) {
+    if (list) {
+      this.dropdown.show();
+      list.filter(this.lightModel.titleField, query);
     }
   }
 }

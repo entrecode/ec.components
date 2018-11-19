@@ -5,7 +5,7 @@ import { SymbolService } from '../../symbol/symbol.service';
 import { Subject } from 'rxjs/Subject';
 import { distinctUntilChanged } from 'rxjs/operators';
 import { Focus } from '../../utility/focus/focus.interface';
-import { ListComponent } from '@ec.components/ui';
+import { ListComponent } from '../list.component';
 
 /** Genereic Searchbar component. Filters a given list its label property (or given property).
  * Supports autofocus and arrow navigation. */
@@ -28,9 +28,11 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
   /** The event that focuses the input */
   public focusEvent: EventEmitter<boolean> = new EventEmitter();
   /** Delay until search is fired */
-  @Input() debounceTime = 300;
+  @Input() debounceTime = 200;
   /** Subject that is triggered on keyup */
-  public keyup: Subject<any> = new Subject<any>();
+  public queryValue: Subject<any> = new Subject<any>();
+  /** Subject that is triggered on key trigger */
+  public keySubject: Subject<any> = new Subject<any>();
   /** Subject that is nexted when something is pasted */
   public paste: Subject<any> = new Subject<any>();
   /** The list that should be filtered */
@@ -39,18 +41,49 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
   @Input() listComponent: ListComponent<any>;
   /** Output that emits when enter is pressed on a selected item */
   @Output() selected: EventEmitter<any> = new EventEmitter();
+  /** Emits when enter key is pressed */
+  @Output() enter: EventEmitter<any> = new EventEmitter();
+  /** Emits on keyup*/
+  @Output() keyup: EventEmitter<any> = new EventEmitter();
+  /** Emits on keypress */
+  @Output() keypressed: EventEmitter<any> = new EventEmitter();
+  /** Emits on blur */
+  @Output() blur: EventEmitter<any> = new EventEmitter();
+  /** Emits on focus */
+  @Output() focus: EventEmitter<any> = new EventEmitter();
+  /** Emits on paste */
+  @Output() pasted: EventEmitter<any> = new EventEmitter();
+  /** Emitted when the query changes, including debounce */
+  @Output() queryChanged: EventEmitter<any> = new EventEmitter();
+  /** timestamp of latest keypress that has been emitted */
+  latestQuery;
 
   constructor(public route: ActivatedRoute, public symbol: SymbolService) {
     this.defaultPlaceholder = this.symbol.resolve('searchbar.placeholder');
+    this.queryValue.next('');
     this.paste.asObservable()
       .subscribe((e) => {
         const pasted = (e.clipboardData).getData('text');
-        this.filterList(pasted, true);
+        if (this.pasted.observers.length) {
+          this.pasted.emit(e);
+        } else if (this.list.config.identifierPattern && pasted.match(this.list.config.identifierPattern)) {
+          this.preventDefault(e);
+          this.clear();
+          this.selected.emit(new Item({
+            [this.list.config.identifier]: pasted,
+          }, this.list.config));
+        }
       });
 
-    this.keyup.asObservable().debounceTime(this.debounceTime)
+    this.queryValue.asObservable().debounceTime(this.debounceTime)
       .pipe(distinctUntilChanged())
       .subscribe(value => this.filterList(value));
+
+    this.keySubject.asObservable()
+      .debounceTime(100)
+      .subscribe(data => {
+        this.keypressed.emit(data);
+      });
 
     this.route.params
       .subscribe(() => {
@@ -61,7 +94,18 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
       })
   }
 
+  updatedList(list) {
+    this.list = list;
+    this.updateQueryFromOutside(list.getFilterValue(this.property) || '');
+    if (this.autofocus) {
+      this.focusEvent.emit(true);
+    }
+  }
+
   initList() {
+    if (this.listComponent && this.listComponent.list) {
+      this.list = this.listComponent.list;
+    }
     if (!this.list) {
       return;
     }
@@ -91,7 +135,14 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
 
   /** clears the input query */
   clear() {
-    this.query = '';
+    this.updateQueryFromOutside('');
+  }
+
+  /** Updates the query string if the change happened outside */
+  updateQueryFromOutside(query) {
+    if (query !== this.latestQuery) {
+      this.query = query;
+    }
   }
 
   /** prevents the event default and disables propagation */
@@ -111,7 +162,15 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
   /** Filters the list by the given value, either uses property or list.config.label.
    * If paste is true and the value matches the list.config.identifierPattern,
    * select is emitted immediately with a pseudo item containing the value as item identifier. */
-  filterList(value, paste = false) {
+  filterList(value) {
+    // this.query = value;
+    this.latestQuery = value;
+
+    this.updateQueryFromOutside(value);
+    if (this.queryChanged.observers.length) {
+      this.queryChanged.emit(value);
+      return;
+    }
     if (!this.list) {
       console.warn('could not search: no list given!', this.list);
       return;
@@ -120,36 +179,54 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
       console.warn('cannot filter list: no property set and no label property configured');
       return;
     }
-    if (paste && this.list.config.identifierPattern) {
-      if (value.match(this.list.config.identifierPattern)) {
-        this.selected.emit(new Item({
-          [this.list.config.identifier]: value,
-        }, this.list.config));
-        /* return true; */
-      }
-    }
     this.list.filter(this.property || this.list.config.label, value);
   }
 
+  keyupEvent(e) {
+    if (['Escape',
+      'Enter',
+      'ArrowLeft',
+      'ArrowRight',
+      'ArrowUp',
+      'ArrowDown'].includes(e.key)) {
+      return;
+    }
+    this.queryValue.next(e.target.value);
+    this.keyup.emit(e);
+    this.preventDefault(e);
+  }
+
   /** called on keydown. if arrow keys are pressed, toggle selection of next/prev elements of list */
-  arrowNavigation(e) {
-    if (!this.listComponent || !this.listComponent.selection) {
-      console.warn('Arrow navigation is disabled: no listComponent given to searchbar');
+  handleKey(e, listComponent = this.listComponent) {
+    this.keySubject.next({ event: e, query: this.query });
+    if (!listComponent || !listComponent.selection) {
+      // console.warn('Arrow navigation is disabled: no listComponent given to searchbar');
       return;
     }
     switch (e.key) {
       case 'ArrowUp':
-        this.listComponent.selectPrev();
-        e.preventDefault();
+        listComponent.focusPrev();
+        this.preventDefault(e);
         break;
       case 'ArrowDown':
-        this.listComponent.selectNext();
-        e.preventDefault();
+        listComponent.focusNext();
+        this.preventDefault(e);
+        break;
+      case 'ArrowRight':
+        listComponent.list.pagination.next();
+        break;
+      case 'ArrowLeft':
+        listComponent.list.pagination.prev();
         break;
       case 'Enter':
-        if (!this.listComponent.selection.isEmpty()) {
-          this.selected.emit(this.listComponent.selection.items[0]);
+        if (listComponent.focusItem) {
+          if (this.selected.observers.length) {
+            this.selected.emit(listComponent.focusItem);
+          } else {
+            listComponent.selection.toggle(listComponent.focusItem);
+          }
         }
+        this.enter.emit(e);
         break;
     }
   }

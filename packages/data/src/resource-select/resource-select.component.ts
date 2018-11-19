@@ -22,6 +22,7 @@ import { ResourcePopComponent } from '../resource-pop/resource-pop.component';
 import { AuthService } from '../auth/auth.service';
 import { ResourceListPopComponent } from '@ec.components/data/src/resource-list-pop/resource-list-pop.component';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
+import { ResourceListComponent } from '../resource-list/resource-list.component';
 /** Shows resources of a selection and is able to pick new ones from a crud list
 */
 
@@ -61,6 +62,8 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
     @Input('config') crudConfig: CrudConfig<Resource>;
     /** The crud pop with the list to select from */
     @ViewChild('dropdown') dropdown: PopComponent;
+    /** The nested resource list in the dropdown */
+    @ViewChild('dropdownList') dropdownList: ResourceListComponent;
     /** The nested resource pop for editing and creating */
     @ViewChild(ResourcePopComponent) resourcePop: ResourcePopComponent;
     /** The nested resource list pop */
@@ -86,18 +89,19 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
     }
 
     togglePop(e) {
-        if (this.dropdown && !this.config.disableSelect) {
-            this.dropdown.toggle(e);
+        if (this.dropdown && !this.config.disableSearchbar) {
+          this.dropdown.show(e);
         } else if (this.resourceListPop && !this.config.disableListPop) {
-            this.resourceListPop.show();
+          this.resourceListPop.show(e);
         } else if (this.resourcePop && !this.config.disableCreatePop) {
-            this.resourcePop.show();
+          this.resourcePop.show();
         }
+        this.focusSearchbar();
     }
 
     defaultPlaceholder() {
-        if (this.config.disableSelect && this.config.disableListPop) {
-            return this.symbol.resolve('resource.select.placeholder.new');
+        if (this.config && this.config.disableSearchbar && this.config.disableListPop) {
+          return this.symbol.resolve('resource.select.placeholder.new');
         }
         return this.symbol.resolve('resource.select.placeholder.select');
     }
@@ -137,7 +141,7 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
             super.useConfig(this.config);
             return;
         }
-        this.config = Object.assign(this.resourceConfig.get(this.relation), { size: 10 },
+        this.config = Object.assign(this.resourceConfig.get(this.relation), { size: 5 },
             this.crudConfig, { solo: this.solo, selectMode: false, disableSelectSwitch: true });
         this.useConfig(this.config);
     }
@@ -145,10 +149,20 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
     /** Is called when the nested resource-form has been saved. Selects the fresh resource and clears the form */
     formSubmitted(form: Form<EntryResource>) {
         if (!this.selection.has(form)) {
-            this.select(form);
+            this.toggleItem.next(form);
         } else { // already in selection => update body
             const index = this.selection.index(form);
             this.selection.items[index].body = form.getBody();
+        }
+    }
+
+    pasteValue(e) {
+        const value = (e.clipboardData).getData('text');
+        if (this.config.identifierPattern && value.match(this.config.identifierPattern)) {
+            this.preventDefault(e);
+            this.api.resource(this.relation, value)
+                .then(resource => this.addItem(new Item(resource, this.config)))
+                .catch(error => this.searchbar.filterList(value));
         }
     }
 
@@ -166,8 +180,15 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
 
     onChange() {
         super.onChange();
-        if (this.config.solo && this.resourceListPop) {
+        if (this.hasSoloSelection() && this.resourceListPop) {
             this.resourceListPop.hide();
+            return;
+        }
+    }
+
+    focusSearchbar() {
+        if (!this.resourceListPop || !this.resourceListPop.active) {
+            this.searchbar.focusEvent.emit(true);
         }
     }
 }

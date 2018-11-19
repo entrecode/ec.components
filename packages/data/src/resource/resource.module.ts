@@ -13,6 +13,7 @@ import { ResourceSelectComponent } from '../resource-select/resource-select.comp
 import { ResourceService } from '../resource-config/resource.service';
 import { ResourceConfig } from '../resource-config/resource-config.service';
 import { ResourceListPopComponent } from '../resource-list-pop/resource-list-pop.component';
+import { ResourceActionbarComponent } from '../resource-actionbar/resource-actionbar.component';
 
 @NgModule({
   entryComponents: [
@@ -26,6 +27,7 @@ import { ResourceListPopComponent } from '../resource-list-pop/resource-list-pop
     ResourceCrudComponent,
     ResourceDeletePopComponent,
     ResourceSelectComponent,
+    ResourceActionbarComponent
   ],
   imports: [
     CommonModule,
@@ -43,6 +45,7 @@ import { ResourceListPopComponent } from '../resource-list-pop/resource-list-pop
     ResourceCrudComponent,
     ResourceDeletePopComponent,
     ResourceSelectComponent,
+    ResourceActionbarComponent
   ],
   providers: [
     ResourceService,

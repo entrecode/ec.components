@@ -2,8 +2,23 @@
 
 <strong>Default</strong>
 <ec-select [list]="products" [(ngModel)]="values"></ec-select>
+
+<strong>Solo</strong>
+<ec-select [solo]="true" [list]="products"></ec-select>
+
+<strong>Actionbar</strong>
+<ec-actionbar placeholder="Where do you want to go?" [actions]="actions"></ec-actionbar>
+
+<strong>Circular Structure</strong>
+<ec-actionbar [actions]="ottostart"></ec-actionbar>
+
+<strong>Resource Actionbar</strong>
+<ec-resource-actionbar></ec-resource-actionbar>
+
+<ec-notifications></ec-notifications>
 <pre><code>{{values | json}}</code></pre>
 
+<!-- 
 <strong>Solo</strong>
 <ec-select [list]="products" [solo]="true" #ecSelectSolo></ec-select>
 <pre><code>{{ecSelectSolo.selection.getValue() | json}}</code></pre>
@@ -32,4 +47,4 @@
     </ec-tab>
 </ec-tabs>
 
-<ec-notifications></ec-notifications>
+<ec-notifications></ec-notifications> -->

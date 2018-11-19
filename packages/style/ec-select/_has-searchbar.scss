@@ -1,0 +1,40 @@
+.has-searchbar {
+  flex-wrap: wrap;
+
+  ec-searchbar {
+    flex-grow: 1;
+  }
+
+  .ec-searchbar {
+    .input {
+      box-shadow: initial;
+      border: 0;
+      min-height: rem($ec-select-selected-min-height);
+      padding: 0;
+    }
+  }
+
+  .ec-select-selection {
+    li + .ec-select__searchbar {
+      padding-left: rem(8);
+    }
+  }
+
+  .ec-select__searchbar {
+    flex-grow: 1;
+  }
+}
+
+.ec-select_solo {
+  &:not(.is-empty) {
+    .ec-select__searchbar {
+      display: none;
+    }
+  }
+
+  .ec-searchbar {
+    .input {
+      min-height: initial;
+    }
+  }
+}

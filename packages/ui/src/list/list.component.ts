@@ -39,6 +39,12 @@ export class ListComponent<T> implements OnChanges {
   @Input() pagination: Pagination<T>;
   /** Custom PaginationConfig */
   @Input() paginationConfig: PaginationConfig;
+  /** If true, the first item in the list will always be focused after changed */
+  @Input() autoFocusFirst = false;
+  /** Current focus */
+  focusItem: Item<T>;
+  /** emits after the list changed */
+  @Output() changed: EventEmitter<List<T>> = new EventEmitter();
 
   constructor(public listConfig: ListConfigService) {
   }
@@ -48,14 +54,27 @@ export class ListComponent<T> implements OnChanges {
   ngOnChanges(changes?) {
     this.config = Object.assign(this.config || {}, this.configInput || {});
     if (this.items) {
-      this.list = new List(this.items, this.config, this.pagination);
+      this.init(new List(this.items, this.config, this.pagination));
     } else if (this.collection) {
-      this.list = new List(this.collection.items, this.config, this.pagination);
+      this.init(new List(this.collection.items, this.config, this.pagination));
     }
-    if (!this.list) {
+  }
+
+  init(list: List<T>) {
+    if (!list) {
+      console.warn('tried to init list.component with undefined list');
       return;
     }
+    this.list = list;
     this.listConfig.applyConfig(this.list);
+    this.list.change$.subscribe(() => {
+      if (this.autoFocusFirst || this.list.isFiltered()) {
+        this.focusFirst();
+      } else {
+        delete this.focusItem;
+      }
+      this.changed.emit(this.list)
+    });
     if (!this.selection) {
       this.selection = new Selection([], this.list.config);
     }
@@ -88,23 +107,37 @@ export class ListComponent<T> implements OnChanges {
     this.selection.select(this.list.items[index]);
   }
 
+  focusFirst() {
+    delete this.focusItem;
+    this.focusNext()
+  }
+
   /** Selects the next item */
-  selectNext() {
-    let index = 0;
-    if (!this.selection.isEmpty()) {
-      index = this.list.items.indexOf(this.selection.items[0]) + 1;
+  focusNext() {
+    if (!this.list) {
+      return;
     }
-    this.selection.removeAll();
-    this.selectIndex(index % this.list.items.length);
+    let index = 0;
+    if (this.focusItem) {
+      index = this.list.page.indexOf(this.focusItem) + 1;
+    }
+    this.focusItem = this.list.page[index % this.list.page.length];
   }
 
   /** Selects the previous item */
-  selectPrev() {
-    let index = this.list.items.length - 1;
-    if (!this.selection.isEmpty()) {
-      index = this.list.items.indexOf(this.selection.items[0]) + this.list.items.length - 1;
+  focusPrev() {
+    if (!this.list) {
+      return;
     }
-    this.selection.removeAll();
-    this.selectIndex(index % this.list.items.length);
+    let index = this.list.page.length - 1;
+    if (this.focusItem) {
+      index = this.list.page.indexOf(this.focusItem) + this.list.page.length - 1;
+    }
+    this.focusItem = this.list.page[index % this.list.page.length];
+  }
+
+  /** Filters the list */
+  filter(property, value) {
+    this.list.filter(property, value);
   }
 }

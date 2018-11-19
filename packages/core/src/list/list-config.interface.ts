@@ -16,6 +16,8 @@ export interface ListConfig<T> extends ItemConfig<T> {
   /** If true, the list will show its checkboxes and will select on column click.
    * The columnClicked output will be ignored as long selectMode is active */
   selectMode?: boolean
+  /** If true, no select dropdown will be shown on ec-select */
+  disableSearchbar?: boolean
   /** If true, the list will have no header. */
   disableHeader?: boolean
   /** If true, the header will also be shown when the list is empty. Defaults to false */

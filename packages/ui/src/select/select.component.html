@@ -1,27 +1,30 @@
-<div *ngIf="selection&&list" class="ec-select" [class.is-solo]="solo" [class.is-dirty]="selection.display.length" (click)="dropdown?.toggle($event)">
-  <span class="ec-select__placeholder" *ngIf="!selection.display.length">
-    {{placeholder||'make your selection...'}}
-  </span>
-  <span class="ec-select-selected" (click)="clickItem(selection.display[0],$event)" *ngIf="selection.display.length&&solo">
-    {{selection.display[0].display()}}
-    <a (click)="removeItem(selection.display[0],$event)">&times;</a>
-  </span>
-  <ul class="ec-select-selection" *ngIf="selection.display.length&&!solo" dndDropzone (dndDrop)="onDrop($event)">
-    <li *ngFor="let selected of selection.display;let i = index" [dndDisableIf]="solo||config?.disableDrag" [class.is-dragged]="selected===dragged"
-      [class.is-draggable]="solo||!config?.disableDrag" dndEffectAllowed="move" [dndDraggable]="i"
-      (dndStart)="onDragStart(selected,$event,item)" (dndCanceled)="cancelDrag(selected,$event,item)" (dndEnd)="cancelDrag(selected,$event,item)"
-      #item>
-      <span class="ec-select-selected" (click)="clickItem(selected,$event)">
+<div class="ec-select" [class.ec-select_solo]="solo" [class.is-empty]="selection?.isEmpty()" (click)="activate($event)" [class.has-searchbar]="!config?.disableSearchbar">
+  <ul class="ec-select-selection" dndDropzone (dndDrop)="onDrop($event)">
+    <li *ngIf="config?.disableSearchbar&&selection?.isEmpty()">
+      <span class="ec-select__placeholder">
+        {{placeholder||'make your selection?...'}}
+      </span>
+    </li>
+    <li *ngFor="let selected of selection?.display;let i = index" [dndDisableIf]="solo||config?.disableDrag"
+      [class.is-dragged]="selected===dragged" [class.is-draggable]="solo||!config?.disableDrag" dndEffectAllowed="move"
+      [dndDraggable]="i" (dndStart)="onDragStart(selected,$event,item)" (dndCanceled)="cancelDrag(selected,$event,item)"
+      (dndEnd)="cancelDrag(selected,$event,item)" #item>
+      <span [class.ec-select-selected]="!solo" [class.ec-select-selected_solo]="solo" (click)="clickItem(selected,$event)">
         {{selected.display()}}
         <a (click)="removeItem(selected,$event)">&times;</a>
       </span>
     </li>
     <li dndPlaceholderRef>
-      <!-- TODO change to width of dragged element -->
       <div class="drag-placeholder" style="width: 48px;"></div>
+    </li>
+    <li *ngIf="!config?.disableSearchbar" class="ec-select__searchbar">
+      <ec-searchbar [autofocus]="false" [property]="config?.label" [placeholder]="placeholder"
+        (focus)="focus($event)" (keypressed)="handleKey($event,dropdownList)" (queryChanged)="filterDropdownList(dropdownList,$event)"></ec-searchbar>
     </li>
   </ul>
   <ec-pop class="ec-select-options" [hideOnClickOutside]="true" #dropdown>
-    <ec-list [list]="list" (columnClicked)="select($event)" [selection]="selection"></ec-list>
+    <ec-loader class="ec-loader loader is-local" #dropdownLoader></ec-loader>
+    <ec-list (changed)="searchbar.updatedList($event)" #dropdownList [list]="list" (columnClicked)="listItemClicked($event)"
+      [selection]="selection"></ec-list>
   </ec-pop>
 </div>

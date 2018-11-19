@@ -46,5 +46,6 @@ export class EntryListPopComponent extends PopComponent implements OnChanges {
         } else if (this.selection) {
             this.selection.toggle(item);
         }
+        this.searchbar.focusEvent.emit(true);
     }
 }

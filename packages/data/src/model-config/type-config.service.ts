@@ -16,7 +16,7 @@ import { DefaultEntryOutputComponent } from '../entry-form/default-entry-output.
 export class TypeConfigService {
   /** The default config for nested crud lists, as passed to entry-select */
   private nestedCrudConfig: CrudConfig<EntryResource> = {
-    size: 10,
+    size: 5,
     // methods: ['get']
   };
 
