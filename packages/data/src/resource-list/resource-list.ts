@@ -80,6 +80,7 @@ export class ResourceList extends List<Resource> {
       .then(list => this.use(list))
       .catch(err => this.error.next(err))
     this.loading.next(this.promise);
+    return this.promise;
   }
 
   /** deletes all undefined values from given config and assigns it to this.config */
@@ -172,6 +173,7 @@ export class ResourceList extends List<Resource> {
       return; // filter is already empty => no need to load again
     }
     return this.load({
+      page: 1, // reset page
       filter: this.filterProperty(property, value)
     });
   }

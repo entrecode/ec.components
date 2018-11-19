@@ -19,6 +19,7 @@ export class ResourceListPopComponent extends PopComponent implements OnChanges 
     @Input() config: ListConfig<Resource>;
     @Input() selection: Selection<Resource>;
     @Output() columnClicked: EventEmitter<Item<Resource>> = new EventEmitter();
+    @Output() pasted: EventEmitter<Item<Resource>> = new EventEmitter();
     @ViewChild(SearchbarComponent) searchbar: SearchbarComponent;
     /** Set host class to make sure the type is used */
     @HostBinding('class') class = 'dialog-wrapper';
@@ -49,5 +50,6 @@ export class ResourceListPopComponent extends PopComponent implements OnChanges 
         } else if (this.selection) {
             this.selection.toggle(item);
         }
+        this.searchbar.focusEvent.emit(true);
     }
 }

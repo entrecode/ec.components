@@ -226,7 +226,7 @@ export class ResourceConfig {
       dmAccount: {
         identifier: 'accountID',
         identifierPattern: this.uuid(),
-        label: 'title',
+        label: 'email',
         permissions: {
           get: 'acc:list',
           put: 'acc:edit:<accountID>'
@@ -236,6 +236,10 @@ export class ResourceConfig {
           accountID: {
             label: this.symbol.resolve('field.label.id'),
             view: 'string'
+          },
+          title: {
+            label: 'Title',
+            filterable: true,
           },
           email: {
             label: this.symbol.resolve('field.label.email'),

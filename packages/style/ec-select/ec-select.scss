@@ -1,6 +1,7 @@
 @import 'ec-select-selected';
 @import 'ec-select-selection';
 @import 'ec-select-options';
+@import 'has-searchbar';
 
 // scss-lint:disable SelectorDepth NestingDepth
 
@@ -68,17 +69,19 @@
     }
   }
 
-  // @param {array} $ec-select-is-dirty-style
-  &.is-dirty {
-    @include inject-style($ec-select-is-dirty-style);
-    @include macro-metrics(
-      $ec-select-font-size,
-      $ec-select-line-height,
-      $ec-select-min-height,
-      $padding-ratio: 1,
-      $inline-styles: false
-    );
-  }
+  /* // @param {array} $ec-select-is-empty-style
+  &:not(.has-searchbar) {
+    &.is-empty {
+      @include inject-style($ec-select-is-empty-style);
+      @include macro-metrics(
+        $ec-select-font-size,
+        $ec-select-line-height,
+        $ec-select-min-height,
+        $padding-ratio: 1,
+        $inline-styles: false
+      );
+    }
+  } */
 }
 
 // @param {color} $ec-select-placeholder-color [$xui-select-placeholder-color]

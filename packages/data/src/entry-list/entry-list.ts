@@ -38,5 +38,6 @@ export class EntryList extends ResourceList {
       .then((list) => this.use(list))
       .catch((err) => this.error.next(err))
     this.loading.next(this.promise);
+    return this.promise;
   }
 }

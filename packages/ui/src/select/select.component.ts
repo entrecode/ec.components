@@ -3,6 +3,10 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { List, ListConfig, Selection } from '@ec.components/core';
 import { Item } from '@ec.components/core/src/item/item';
 import { PopComponent } from '../pop/pop.component';
+import { SearchbarComponent } from '../list/searchbar/searchbar.component';
+import { ListComponent } from '../list/list.component';
+import { Subject } from 'rxjs/Subject';
+import { LoaderComponent } from '../loader/loader.component';
 
 /**
  * The SelectComponent will render a dropdown of a given list.
@@ -49,11 +53,26 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   @Input() solo: boolean;
   /** The selection dropdown */
   @ViewChild('dropdown') dropdown: PopComponent;
+  /** The loader inside the dropdown */
+  @ViewChild('dropdownLoader') dropdownLoader: LoaderComponent;
+  /** The list in the dropdown */
+  @ViewChild(ListComponent) dropdownList: ListComponent<any>;
+  /** The nested searchbar */
+  @ViewChild(SearchbarComponent) searchbar: SearchbarComponent;
+  /** Subject that is nexted when an item is being selected (clicked or entered on) */
+  toggleItem: Subject<Item<T>> = new Subject();
 
   constructor(
     public elementRef: ElementRef,
     public cdr: ChangeDetectorRef
   ) {
+    this.toggleItem.asObservable().subscribe((item) => {
+      if (this.selection.has(item)) {
+        this.removeItem(item);
+      } else {
+        this.addItem(item);
+      }
+    });
   }
 
   getParentTree(el, tree = []) {
@@ -148,19 +167,35 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   }
 
   /** Select handler. Toggles selection. */
-  public select(item) {
-    if (this.selection.has(item)) {
-      this.removeItem(item);
-    } else {
-      this.addItem(item);
+  public listItemClicked(item) {
+    this.toggleItem.next(item);
+    // TODO: prevent default to prevent bluring searchbear.
+    // refocusing is not possible because that will activate the pop again..
+  }
+
+  focus(e) {
+    if (this.dropdown && !this.dropdown.active) {
+      this.dropdown.show();
+    }
+  }
+
+  hasSoloSelection() {
+    return this.config.solo && !this.selection.isEmpty();
+  }
+
+  focusSearchbar() {
+    if (this.searchbar) {
+      this.searchbar.focusEvent.emit(true);
     }
   }
 
   /** Fires on selection change. Hides dropdown if solo */
   onChange() {
     this.changed.emit(this.selection);
-    if (this.config.solo && this.dropdown) {
+    if (this.dropdown && this.hasSoloSelection()) {
       this.dropdown.hide();
+    } else {
+      this.focusSearchbar();
     }
     this.value = this.selection.getValue();
     return this.propagateChange(this.value);
@@ -198,5 +233,86 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   cancelDrag(item, e, target = e.target) {
     delete this.dragged;
     window.requestAnimationFrame(function () { target.style.display = 'inherit'; });
+  }
+
+  activate(e) {
+    if (this.dropdown) {
+      this.dropdown.show(e);
+    }
+    if (this.searchbar) {
+      this.searchbar.focusEvent.emit(true);
+    }
+  }
+
+  preventDefault(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+  }
+
+  handleKey(e, list) {
+    const { event, query } = e;
+    if (!list) {
+      console.warn('no dropdown given');
+      return;
+    }
+    switch (event.key) {
+      case 'ArrowUp':
+        if (!this.dropdown.active) {
+          this.dropdown.show(event);
+        } else {
+          list.focusPrev();
+        }
+        this.preventDefault(event);
+        break;
+      case 'ArrowDown':
+        if (!this.dropdown.active) {
+          this.dropdown.show(event);
+        } else {
+          list.focusNext();
+        }
+        this.preventDefault(event);
+        break;
+      case 'ArrowRight':
+        list.list.pagination.next();
+        this.preventDefault(event);
+        break;
+      case 'ArrowLeft':
+        list.list.pagination.prev();
+        this.preventDefault(event);
+        break;
+      case 'Enter':
+        if (list.focusItem) {
+          if (list.list.isFiltered()) {
+            list.list.clearFilter();
+          }
+          this.toggleItem.next(list.focusItem);
+        }
+        this.preventDefault(event);
+        break;
+      case 'Backspace':
+        if (!this.selection.isEmpty() && query === '') {
+          this.removeItem(this.selection.items[this.selection.items.length - 1])
+        }
+        break;
+      case 'Tab':
+        if (this.dropdown) {
+          this.dropdown.hide();
+        }
+        break;
+      default:
+        return;
+    }
+  }
+
+  filterDropdownList(listComponent: ListComponent<any>, query) {
+    if (!listComponent) {
+      console.warn('cannot filter yet: list not ready');
+      return;
+    }
+    this.dropdown.show();
+    Promise.resolve(listComponent.filter(this.config.label, query)).then(() => {
+      listComponent.focusFirst();
+    });
   }
 }

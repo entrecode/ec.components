@@ -27,6 +27,8 @@ import { PopService } from './pop.service';
 export class PopComponent {
   /** If true, .ec-pop is part of the DOM (*ngIf) + .active is set on .ec-pop-container.  */
   @Input() @HostBinding('class.is-active') active: boolean;
+  /** Flip and stays true after first show */
+  activated = false
   /** The used type on the host element */
   @Input() type: string;
   /** If set to true, the pop will hide when a click happens outside the pop. */
@@ -44,7 +46,7 @@ export class PopComponent {
       this.clickEvent &&
       $event !== this.clickEvent && // to ensure the show event wont hide immediately
       this.elementRef &&
-      !this.elementRef.nativeElement.contains($event.target)) {
+      this.isOutside($event.target)) {
       this.hide();
     }
   }
@@ -53,6 +55,12 @@ export class PopComponent {
     public elementRef: ElementRef,
     protected cdr: ChangeDetectorRef
   ) {
+  }
+
+  /** yields true if the given element is outside the pop / or is the wrapper element itself (the backdrop) */
+  isOutside(element) {
+    return !this.elementRef.nativeElement.contains(element)/*  ||
+      element === this.elementRef.nativeElement */;
   }
 
   /** Shows if not active, hides if active. */ // active: boolean = !this.active, emit: boolean = false
@@ -68,11 +76,12 @@ export class PopComponent {
   /** Shows the pop. Sets active true and adds pop to popService.stack */
   public show(e?) {
     this.active = true;
+    this.activated = true;
     this.popService.stack.add(this);
     if (e) {
       this.clickEvent = e;
     } else if (this.hideOnClickOutside) {
-      console.warn('To use hideOnClickOutside, you need to pass the click event to the show method of ec-pop!');
+      // console.warn('To use hideOnClickOutside, you need to pass the click event to the show method of ec-pop!');
     }
     this.cdr.markForCheck();
   }
