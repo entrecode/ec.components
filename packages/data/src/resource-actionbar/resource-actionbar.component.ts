@@ -1,8 +1,19 @@
-import { Component, OnInit, ElementRef, Input, ChangeDetectorRef } from '@angular/core';
-import { ActionbarComponent, Action } from '@ec.components/ui/src/actionbar/actionbar.component';
+import { Component, OnInit, ElementRef, Input, ChangeDetectorRef, EventEmitter, Output } from '@angular/core';
+import { ActionbarComponent, Action, ActionFunction } from '@ec.components/ui/src/actionbar/actionbar.component';
 import { SdkService } from '../..';
-import { NotificationsService } from '@ec.components/ui';
+import { NotificationsService, ListComponent } from '@ec.components/ui';
 import { ResourceConfig } from '../resource-config/resource-config.service';
+import ListResource from 'ec.sdk/lib/resources/ListResource';
+import Core from 'ec.sdk/lib/Core';
+import { Item } from '@ec.components/core';
+
+export interface ResourceActionbarState {
+    api: Core,
+    relation: string,
+    actionbar: ActionbarComponent,
+    action?: ActionFunction,
+    options?: Object
+};
 
 @Component({
     selector: 'ec-resource-actionbar',
@@ -11,86 +22,12 @@ import { ResourceConfig } from '../resource-config/resource-config.service';
 
 export class ResourceActionbarComponent extends ActionbarComponent implements OnInit {
 
-    @Input() actions: Action[] = [
-        {
-            id: 'data',
-            title: 'Datamanager',
-            action: (item, actionbar) =>
-                this.loadResourceListActions(
-                    this.sdk.datamanager, 'dataManager', actionbar,
-                    (dm) => {
-                        this.sdk.useDatamanager(dm.shortID);
-                        actionbar.loadActions([
-                            this.resourceAction({
-                                actionbar,
-                                title: 'Models',
-                                relation: 'model',
-                                api: dm,
-                                action: (model) => actionbar.loadActions(
-                                    [
-                                        {
-                                            id: 'entry',
-                                            title: 'Entries',
-                                            action: () => {
-                                                this.sdk.api.entryList(model.title).then((entryList) => {
-                                                    const actions = entryList.getAllItems()
-                                                        .map(listEntry => {
-                                                            return {
-                                                                title: listEntry._entryTitle,
-                                                                id: listEntry.id,
-                                                                data: listEntry,
-                                                                action: (entryItem) => {
-                                                                    const path = this.getPath().join('/');
-                                                                    this.openInEditor(path);
-                                                                }
-                                                            }
-                                                        })
-                                                    actionbar.loadActions(actions);
-                                                })
-                                            }
-                                        },
-                                        {
-                                            id: 'edit',
-                                            title: 'Edit Model',
-                                            action: () => {
-                                                const path = this.getPath().join('/');
-                                                this.openInEditor(path);
-                                            }
-                                        }
-                                    ]
-                                )
-                            }),
-                            this.resourceAction({
-                                actionbar,
-                                title: 'Asset Group',
-                                relation: 'assetGroup',
-                                path: 'asset-group',
-                                api: dm
-                            }),
-                            this.resourceAction({
-                                actionbar,
-                                title: 'Datamanager Accounts',
-                                relation: 'dmAccount',
-                                api: dm
-                            }),
-                            {
-                                title: 'Edit',
-                                id: 'edit',
-                                action: () => this.openCurrentPath()
-                            },
-                        ])
-                    }
-                )
-        },
-        {
-            id: 'accounts',
-            title: 'Account Server',
-            action: (item, actionbar) =>
-                this.loadApiRelationActions(
-                    this.sdk.accounts, actionbar
-                )
-        }
-    ];
+    state: ResourceActionbarState;
+
+    @Output() create: EventEmitter<string> = new EventEmitter();
+    @Output() select: EventEmitter<Item<Action>> = new EventEmitter();
+
+    @Input() actions: Action[];
 
     constructor(
         public notificationService: NotificationsService,
@@ -103,32 +40,34 @@ export class ResourceActionbarComponent extends ActionbarComponent implements On
     }
 
     ngOnInit() {
-        this.loadActions(this.actions);
+        const state = {
+            api: this.sdk.api,
+            relation: 'tags'
+        }
+        const { api, relation } = state;
+        this.sdk.ready.then(() => {
+            this.loadResourceListActions({
+                api,
+                relation,
+                actionbar: this
+            });
+        });
     }
 
-    openInEditor(path, env = 'stage') {
-        window.open(`https://localhost:4200/${env}/${path}`, '_blank');
-    }
-
-    openCurrentPath() {
-        const path = this.getPath().join('/');
-        console.log('open current path', path);
-        this.openInEditor(path);
-    }
-
-    getResourceListActions(resourceList, relation, action?) {
-        const actions = resourceList.getAllItems()
+    getResourceListActions(listResource: ListResource, relation: string, action?: ActionFunction): Action[] {
+        const actions = listResource.getAllItems()
             .map((resource) => {
                 const { identifier, label } = this.resourceConfig.get(relation);
                 return {
                     id: resource[identifier],
                     title: resource[label] || '- no title -',
                     data: resource,
+                    path: relation,
                     action: (item, bar) => {
                         if (action) {
                             action(item.getBody().data, bar)
                         } else {
-                            this.openCurrentPath();
+                            console.log('no action specified..');
                         }
                     }
                 };
@@ -136,34 +75,33 @@ export class ResourceActionbarComponent extends ActionbarComponent implements On
         return actions;
     }
 
-    loadApiRelationActions(api, actionbar, action?) {
-        const actions = Object.keys(api.getAvailableRelations()).map(relationName => ({
-            id: relationName,
-            title: relationName,
-            relation: relationName,
-            action: (item) => {
-                // console.log('selected sub relation', relationName, api);
-                this.loadResourceListActions(api, relationName, actionbar, action);
-            }
-        }));
-        actionbar.loadActions(actions);
+    reload() {
+        this.loadResourceListActions({
+            ...this.state,
+            options: {}
+        });
     }
 
-    loadResourceListActions(api, relation, actionbar, action?) {
-        const loading = api.resourceList(relation)
+    loadResourceListActions(state: ResourceActionbarState = this.state, stack = true): Promise<Action[]> {
+        const { api, relation, actionbar, action, options } = state;
+        this.state = {
+            ...this.state,
+            ...state
+        };
+        const loading = api.resourceList(relation, options)
             .then(list => {
                 return this.getResourceListActions(list, relation, action);
             }).then(actions => {
                 if (actions) {
-                    actionbar.loadActions(actions);
+                    actionbar.loadActions(actions, stack);
                 }
-                return actions || [];
+                return actions;
             }).catch(error => {
                 this.notificationService.emit({
                     title: 'Error while loading Resources',
                     error
-                })
-            });
+                });
+            }).then(actions => actions || []);
         if (actionbar.dropdownLoader) {
             actionbar.dropdownLoader.wait(loading);
         }
@@ -171,14 +109,61 @@ export class ResourceActionbarComponent extends ActionbarComponent implements On
     }
 
     resourceAction({ relation, title, api, action, actionbar, add, path }:
-        { relation, title, api, action?, actionbar?, add?, path?}) {
+        {
+            relation: string,
+            title: string,
+            api: Core,
+            action?: ActionFunction,
+            actionbar?: ActionbarComponent,
+            add?: boolean,
+            path?: string
+        }) {
         return {
             id: path || relation,
             title: title,
             add,
             action: () => this.loadResourceListActions(
-                api, relation, actionbar, action
+                { api, relation, actionbar, action }
             )
         }
+    }
+
+    filterDropdownList(listComponent: ListComponent<any>, query) {
+        const paths = this.currentActions()
+            .map(a => a.path)
+            .filter((value, index, self) => self.indexOf(value) === index)
+            .filter(v => !!v);
+        if (!paths.length) {
+            return super.filterDropdownList(listComponent, query);
+        }
+        const { identifier, label } = this.resourceConfig.get(this.state.relation);
+        this.loadResourceListActions({
+            ...this.state,
+            options: {
+                [label + '~']: { exact: query }
+            }
+        }, false).then((actions) => {
+            if (actions.length === 0) {
+                this.loadActions([{
+                    title: `"${query}" erstellen`,
+                    id: 'createnew',
+                    select: false,
+                    action: () => {
+                        if (this.create.observers.length) {
+                            this.create.emit(query);
+                        } else {
+                            const item = new Item({
+                                id: Date.now() + '',
+                                title: query,
+                            }, this.config);
+                            this.addItem(item);
+                            this.searchbar.clear();
+                            this.reload();
+                        }
+                    }
+                }], false);
+            }
+        });
+
     }
 }

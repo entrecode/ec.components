@@ -26,7 +26,7 @@ export class SelectDemoComponent {
       {
         id: 'drink',
         title: 'Drink Beer',
-        add: false,
+        select: false,
         action: () => alert('Now you are drunk')
       },
       {
@@ -54,7 +54,7 @@ export class SelectDemoComponent {
         {
           id: 'shoot',
           title: 'Shoot',
-          add: false,
+          select: false,
           action: () => alert('PENG. Nothing happens')
         },
         this.saloon,
@@ -68,7 +68,7 @@ export class SelectDemoComponent {
         {
           id: 'blues',
           title: 'Play Blues',
-          add: false,
+          select: false,
           action: (item, bar) => {
             alert('Your guitar is broken... :(');
           }
@@ -85,13 +85,29 @@ export class SelectDemoComponent {
     }];
   otto;
   ottostart: any[];
+  tagSelect = [
+    {
+      id: 'west',
+      title: 'West',
+      children: [
+        {
+          id: 'shoot',
+          title: 'Shoot',
+          select: false,
+          action: () => alert('PENG. Nothing happens')
+        },
+        this.saloon,
+        this.bank
+      ]
+    }
+  ];
 
   constructor(public notificationService: NotificationsService) {
     console.log('karlott', karlotto);
     this.otto = karlotto.map((line, i) => ({
       id: i,
       title: line,
-      add: false,
+      select: false,
       children: []
     }));
     this.otto.forEach((action, i) => {
@@ -112,5 +128,14 @@ export class SelectDemoComponent {
 
   log(x) {
     console.log(x)
+  }
+
+  createNew(q, bar) {
+    console.log('q', q);
+    /* bar.selection.add({
+      id: 'newitem',
+      title: q
+    }) */
+    bar.reload();
   }
 }

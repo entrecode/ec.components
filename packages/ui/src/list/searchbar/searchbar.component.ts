@@ -188,20 +188,6 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
     this.list.filter(this.property || this.list.config.label, value);
   }
 
-  keyupEvent(e) {
-    if (['Escape',
-      'Enter',
-      'ArrowLeft',
-      'ArrowRight',
-      'ArrowUp',
-      'ArrowDown'].includes(e.key)) {
-      return;
-    }
-    this.queryValue.next(e.target.value);
-    this.keyup.emit(e);
-    this.preventDefault(e);
-  }
-
   /** called on keydown. if arrow keys are pressed, toggle selection of next/prev elements of list */
   handleKey(e, listComponent = this.listComponent) {
     this.keySubject.next({ event: e, query: this.query });

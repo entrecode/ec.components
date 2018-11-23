@@ -2,13 +2,15 @@ import { Component, OnInit, Input, ElementRef, ChangeDetectorRef } from '@angula
 import { SelectComponent } from '../select/select.component';
 import { ListConfig, List, Item } from '@ec.components/core';
 
+export type ActionFunction = (item?: Item<Action> | any, actionbar?: ActionbarComponent) => any;
+
 export interface Action {
     title: string;
     id: string;
     path?: string;
     data?: any,
     add?: boolean,
-    action?: (item?: Item<Action>, actionbar?: ActionbarComponent) => any
+    action?: ActionFunction
 }
 
 export interface ActionbarConfig extends ListConfig<Action> {
@@ -36,11 +38,8 @@ export class ActionbarComponent extends SelectComponent<Action> implements OnIni
         public cdr: ChangeDetectorRef,
     ) {
         super(elementRef, cdr);
-        /* this.toggleItem.asObservable().subscribe((item) => {
-            console.log('item', item);
-        }); */
         this.add.subscribe((item) => {
-            if (item.getBody().add !== false) {
+            if (item.getBody().select !== false) {
                 this.selection.add(item);
             }
             if (item.getBody().action) {
@@ -49,14 +48,19 @@ export class ActionbarComponent extends SelectComponent<Action> implements OnIni
             if (item.getBody().children) {
                 this.loadActions(item.getBody().children);
             }
+            this.searchbar.clear();
         });
         this.remove.subscribe((item) => {
             this.selection.remove(item);
-            const actionsBefore = this.actionStack[this.currentID()];
-            if (actionsBefore) {
-                this.loadActions(actionsBefore);
-            }
-        })
+            this.loadActionsBefore();
+        });
+    }
+
+    loadActionsBefore() {
+        const actionsBefore = this.actionStack[this.currentID()];
+        if (actionsBefore) {
+            this.loadActions(actionsBefore);
+        }
     }
 
     ngOnInit() {
@@ -75,8 +79,14 @@ export class ActionbarComponent extends SelectComponent<Action> implements OnIni
         this.loadActions(this.actionStack[this.currentID()])
     }
 
-    loadActions(actions) {
-        this.actionStack[this.currentID()] = actions;
+    currentActions() {
+        return this.actionStack[this.currentID()];
+    }
+
+    loadActions(actions, addToStack = true) {
+        if (addToStack) {
+            this.actionStack[this.currentID()] = actions;
+        }
         this.list = new List(actions, this.config);
         if (!this.selection) {
             this.initSelection();

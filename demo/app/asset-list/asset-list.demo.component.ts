@@ -10,6 +10,13 @@ export class AssetListDemoComponent {
 
   constructor(public sdk: SdkService) {
     this.sdk.ready.then(() => {
+      this.sdk.api.resourceList('tags', {
+        'tag~': {
+          exact: 'es',
+        }
+      }).then((tags) => {
+        console.log('hihi', tags);
+      });
       return this.sdk.datamanager.dataManager(this.sdk.api.dataManagerID);
     }).then(dm => this.api = dm);
   }

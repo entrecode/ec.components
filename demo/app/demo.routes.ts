@@ -344,14 +344,14 @@ export const demoRoutes: Routes = [
           links: ['directives/AssetDirective.html#readme', 'directives/ImageDirective.html#info', 'modules/FilesModule.html']
         }
       },
-      /* {
+      {
         path: 'asset-list',
         component: AssetListDemoComponent,
         data: {
           paths: ['asset-list/asset-list-demo.component.html', 'asset-list/asset-list.demo.component.ts'],
           links: ['components/AssetListComponent.html', 'modules/FilesModule.html']
         }
-      }, */
+      },
       {
         path: 'asset-select',
         component: AssetSelectDemoComponent,

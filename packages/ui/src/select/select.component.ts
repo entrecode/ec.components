@@ -294,6 +294,7 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
       case 'Backspace':
         if (!this.selection.isEmpty() && query === '') {
           this.removeItem(this.selection.items[this.selection.items.length - 1])
+          this.preventDefault(event);
         }
         break;
       case 'Tab':
