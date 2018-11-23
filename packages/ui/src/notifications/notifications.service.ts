@@ -38,6 +38,9 @@ export class NotificationsService {
     } else {
       this.emitter.next(instance);
     }
+    if (notification && notification.error) {
+      console.error(notification.error);
+    }
     return instance;
   }
 

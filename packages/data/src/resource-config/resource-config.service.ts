@@ -14,8 +14,8 @@ export class ResourceConfig {
   get(relationName: string): CrudConfig<Resource> {
     if (!this.config[relationName]) {
       console.error(`${relationName} could not be found in the resource-config.
-      Use one of ${Object.keys(this.config[relationName])}`);
-      return;
+      Use one of ${Object.keys(this.config)}`);
+      return {};
     } // TODO enrich fields with type with type-config?
     return this.config[relationName];
   }
@@ -371,6 +371,24 @@ export class ResourceConfig {
           },
           tags: this.tagsField(this.symbol.resolve('asset.field.label.tags')),
           created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
+        }
+      },
+      tags: {
+        identifier: 'tag',
+        label: 'tag',
+        fields: {
+          tag: {
+            view: 'string',
+            readOnly: true,
+            sortable: true,
+            filterable: true
+          },
+          count: {
+            view: 'number',
+            readOnly: true,
+            create: false,
+            sortable: true
+          }
         }
       },
       legacyAsset: { // old public assets

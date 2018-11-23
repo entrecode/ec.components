@@ -103,7 +103,7 @@ export class ModelConfigService extends Config {
    * Utilizes PublicAPI#getFieldConfig + TypeConfigService#get.
    * This config is meant to deliver the default behaviour when nothing else is configured. */
   getFieldConfig(model: string): Promise<FieldConfig<FieldConfigProperty>> {
-    return this.sdk.api.getFieldConfig(model).then((fieldConfig: SdkField) => {
+    return this.sdk.api.getFieldConfig(model).then((fieldConfig/* : SdkField */) => {
       const fields = {};
       Object.assign(fields, this.getSystemFields());
       Object.keys(fieldConfig).map(property => fieldConfig[property])
