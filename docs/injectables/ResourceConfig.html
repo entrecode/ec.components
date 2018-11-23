@@ -3152,8 +3152,8 @@ export class ResourceConfig {
   get(relationName: string): CrudConfig&lt;Resource&gt; {
     if (!this.config[relationName]) {
       console.error(&#x60;${relationName} could not be found in the resource-config.
-      Use one of ${Object.keys(this.config[relationName])}&#x60;);
-      return;
+      Use one of ${Object.keys(this.config)}&#x60;);
+      return {};
     } // TODO enrich fields with type with type-config?
     return this.config[relationName];
   }
@@ -3509,6 +3509,24 @@ export class ResourceConfig {
           },
           tags: this.tagsField(this.symbol.resolve(&#x27;asset.field.label.tags&#x27;)),
           created: this.created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
+        }
+      },
+      tags: {
+        identifier: &#x27;tag&#x27;,
+        label: &#x27;tag&#x27;,
+        fields: {
+          tag: {
+            view: &#x27;string&#x27;,
+            readOnly: true,
+            sortable: true,
+            filterable: true
+          },
+          count: {
+            view: &#x27;number&#x27;,
+            readOnly: true,
+            create: false,
+            sortable: true
+          }
         }
       },
       legacyAsset: { // old public assets

@@ -2624,7 +2624,7 @@ If true, all notifications will be shown as desktop notifications instead. </p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">packages/ui/src/notifications/notifications.service.ts:58</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">packages/ui/src/notifications/notifications.service.ts:61</a></div>
                             </td>
                         </tr>
 
@@ -2778,7 +2778,7 @@ If true, all notifications will be shown as desktop notifications instead. </p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">packages/ui/src/notifications/notifications.service.ts:45</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">packages/ui/src/notifications/notifications.service.ts:48</a></div>
                             </td>
                         </tr>
 
@@ -2986,6 +2986,9 @@ export class NotificationsService {
       this.desktopNotification(instance);
     } else {
       this.emitter.next(instance);
+    }
+    if (notification &amp;&amp; notification.error) {
+      console.error(notification.error);
     }
     return instance;
   }
