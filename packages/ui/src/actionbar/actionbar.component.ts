@@ -9,7 +9,7 @@ export interface Action {
     id: string;
     path?: string;
     data?: any,
-    add?: boolean,
+    select?: boolean,
     action?: ActionFunction
 }
 
