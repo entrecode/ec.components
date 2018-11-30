@@ -45,6 +45,8 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   @Output() remove: EventEmitter<Item<T>> = new EventEmitter();
   /** Emits when an item is being added */
   @Output() add: EventEmitter<Item<T>> = new EventEmitter();
+  /** Emits the query when enter is pressed */
+  @Output() enter: EventEmitter<SelectComponent<T>> = new EventEmitter();
   /** The Instance of the List */
   @Input() list: List<T>;
   /** Available Items */
@@ -288,6 +290,8 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
             list.list.clearFilter();
           }
           this.toggleItem.next(list.focusItem);
+        } else {
+          this.enter.emit(this);
         }
         this.preventDefault(event);
         break;
