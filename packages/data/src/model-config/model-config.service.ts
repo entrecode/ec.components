@@ -9,7 +9,7 @@ import { CrudConfig } from '../crud/crud-config.interface';
 import { CrudService } from '../crud/crud.service';
 import { SdkService } from '../sdk/sdk.service';
 import { TypeConfigService } from './type-config.service';
-import { SdkField } from './sdk-field';
+import { fields } from 'ec.sdk/lib/PublicAPI';
 
 /** The main class for configuring the behaviour of a model.
  * By default, everything is auto generated from the model's schema but can be overriden via the
@@ -103,14 +103,14 @@ export class ModelConfigService extends Config {
    * Utilizes PublicAPI#getFieldConfig + TypeConfigService#get.
    * This config is meant to deliver the default behaviour when nothing else is configured. */
   getFieldConfig(model: string): Promise<FieldConfig<FieldConfigProperty>> {
-    return this.sdk.api.getFieldConfig(model).then((fieldConfig/* : SdkField */) => {
-      const fields = {};
-      Object.assign(fields, this.getSystemFields());
+    return this.sdk.api.getFieldConfig(model).then((fieldConfig: fields) => {
+      const merged = {};
+      Object.assign(merged, this.getSystemFields());
       Object.keys(fieldConfig).map(property => fieldConfig[property])
         .forEach(({
           config,
           type,
-          formView,
+          /* formView, */
           title,
           unique,
           mutable,
@@ -119,10 +119,11 @@ export class ModelConfigService extends Config {
           validation,
           description,
           localizable,
-          legacyAssets,
+          /* legacyAssets, */
         }) => {
+          /* type = type as string; */
           config = config || {};
-          if (type.includes('asset') && !legacyAssets) {
+          if (type.includes('asset')/*  && !legacyAssets */) {
             type = type.replace('a', 'dmA');
           }
           // parse field config
@@ -135,13 +136,14 @@ export class ModelConfigService extends Config {
             classes,
             columns = 12
           } = config;
+          const typeConfig = this.typeConfig.get(type);
           // assign default values + merge customFieldConfig if given
-          fields[title] = Object.assign({
+          merged[title] = Object.assign({
             property: title,
             label: label || title + (type === 'datetime' ? ` ${this.symbol.resolve('datetime.local')}` : ''),
             placeholder,
             description,
-            formView: formView || type,
+            formView: /* formView || */ type,
             validation,
             relation: validation,
             immutable: !mutable,
@@ -156,11 +158,11 @@ export class ModelConfigService extends Config {
             columns,
             /* display: ((value) => value), */
             localizable,
-          }, this.typeConfig.get(type), {
-              placeholder: placeholder || this.typeConfig.get(type).placeholder
+          }, typeConfig, {
+              placeholder: placeholder || typeConfig.placeholder
             });
         });
-      return fields;
+      return merged;
     });
   }
 

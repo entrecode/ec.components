@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, ViewChild, Output, EventEmitter, HostBinding, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { FormComponent } from '@ec.components/ui/src/form/form.component';
-import { FormConfig } from '@ec.components/core';
 import { PopComponent } from '@ec.components/ui/src/pop/pop.component';
 import { PopService } from '@ec.components/ui/src/pop/pop.service';
 import { SdkService } from '@ec.components/data/src/sdk/sdk.service';
@@ -8,6 +7,7 @@ import { LoaderComponent } from '@ec.components/ui';
 import { DefaultEntryInputComponent } from '@ec.components/data/src/entry-form/default-entry-input.component';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 import { FileService } from '../file.service';
+import { FormConfig } from '@ec.components/core';
 
 /** This component is a pop with a form to add images. You can set an the alternative Text and the size.
  * The size inputs will keep the image ratio by default.  */
