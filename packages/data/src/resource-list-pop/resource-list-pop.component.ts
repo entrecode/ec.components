@@ -22,7 +22,7 @@ export class ResourceListPopComponent extends PopComponent implements OnChanges 
     @Output() pasted: EventEmitter<Item<Resource>> = new EventEmitter();
     @ViewChild(SearchbarComponent) searchbar: SearchbarComponent;
     /** Set host class to make sure the type is used */
-    @HostBinding('class') class = 'dialog-wrapper';
+    @HostBinding('class') class = 'toast-wrapper';
     lightModel: any;
 
     constructor(

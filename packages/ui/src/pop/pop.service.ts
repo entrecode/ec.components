@@ -6,7 +6,7 @@ import { PopComponent } from './pop.component';
 @Injectable()
 export class PopService {
     /** default value for columns of any pop */
-    defaultColumns = 6;
+    defaultColumns = 9;
     /** Stack of current opened pops */
     stack: Collection<PopComponent> = new Collection();
     /** Listens for escape keys and hides latest pop + removes the pop from stack */

@@ -1,10 +1,11 @@
 import { Component, EventEmitter, Input, OnChanges, Output, ViewChild, HostBinding, ElementRef, ChangeDetectorRef } from '@angular/core';
-import { Item, ListConfig, Selection } from '@ec.components/core';
+import { Item, Selection } from '@ec.components/core';
 import { PopComponent } from '@ec.components/ui';
 import { PopService } from '@ec.components/ui/src/pop/pop.service';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { SearchbarComponent } from '@ec.components/ui/src/list/searchbar/searchbar.component';
 import { ModelConfigService } from '../model-config/model-config.service';
+import { CrudConfig } from '../crud/crud-config.interface';
 
 /** A Pop that contains an entry list. TODO: add demo */
 @Component({
@@ -14,12 +15,12 @@ import { ModelConfigService } from '../model-config/model-config.service';
 })
 export class EntryListPopComponent extends PopComponent implements OnChanges {
     @Input() model: string;
-    @Input() config: ListConfig<EntryResource>;
+    @Input() config: CrudConfig<EntryResource>;
     @Input() selection: Selection<EntryResource>;
     @Output() columnClicked: EventEmitter<Item<EntryResource>> = new EventEmitter();
     @ViewChild(SearchbarComponent) searchbar: SearchbarComponent;
     /** Set host class to make sure the type is used */
-    @HostBinding('class') class = 'dialog-wrapper';
+    @HostBinding('class') class = 'toast-wrapper';
     lightModel: any;
 
     constructor(
@@ -46,5 +47,10 @@ export class EntryListPopComponent extends PopComponent implements OnChanges {
             this.selection.toggle(item);
         }
         this.searchbar.focusEvent.emit(true);
+    }
+
+    getHeader(entryList) {
+        const label = this.config.singularLabel || entryList.model;
+        return `${label}`;
     }
 }

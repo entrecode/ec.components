@@ -65,7 +65,7 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
   }
 
   /** Set host class to make sure the type is used */
-  @HostBinding('class') class = 'dialog-wrapper';
+  @HostBinding('class') class = 'toast-wrapper';
 
   /** Injects auth service and calls super constructor. */
   constructor(protected popService: PopService,

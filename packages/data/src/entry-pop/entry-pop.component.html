@@ -1,15 +1,15 @@
-<div class="ec-entry-pop dialog" *ngIf="active" [attr.data-col]="config?.popColumns||popService.defaultColumns">
-  <button (click)="hide()" type="button" class="dialog-dismiss">
+<div class="ec-entry-pop toast" *ngIf="active" [attr.data-col]="config?.popColumns||popService.defaultColumns">
+  <button (click)="hide()" type="button" class="toast-dismiss">
     <ec-icon name="close-x-big"></ec-icon>
   </button>
-  <div class="dialog-header">
+  <div class="toast-header">
     {{getHeader(crudForm)}}
   </div>
-  <div class="dialog-body">
+  <div class="toast-body">
     <ec-entry-form [model]="model" [submitButton]="false" [loader]="popLoader" [config]="config" (submitted)="formSubmitted($event)"
       [entry]="entry" (deleted)="hide()" #crudForm></ec-entry-form>
   </div>
-  <footer class="dialog-footer">
+  <footer class="toast-footer">
     <nav class="nav">
       <ul class="nav__items">
         <li class="nav__item" *ngIf="config?.develop">

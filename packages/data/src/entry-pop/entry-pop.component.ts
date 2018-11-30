@@ -40,7 +40,7 @@ export class EntryPopComponent extends PopComponent implements OnInit {
   /** Emits when the resource has been deleted. */
   @Output() deleted: EventEmitter<Form<EntryResource>> = new EventEmitter();
   /** Set host class to make sure the type is used */
-  @HostBinding('class') class = 'dialog-wrapper';
+  @HostBinding('class') class = 'toast-wrapper';
 
   constructor(protected popService: PopService,
     private auth: AuthService,
