@@ -71,8 +71,8 @@ export class CrudComponent<T> implements OnInit, WithLoader, WithNotifications {
   ngOnInit() {
     this.auth.getAllowedModelMethods(this.model, this.config.methods)
       .then((methods) => {
-        this.cdr.markForCheck();
         this.config.methods = methods;
+        this.cdr.markForCheck();
       });
   }
 

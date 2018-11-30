@@ -110,7 +110,6 @@ export class ModelConfigService extends Config {
         .forEach(({
           config,
           type,
-          inputView,
           title,
           unique,
           mutable,
@@ -131,6 +130,7 @@ export class ModelConfigService extends Config {
             hideOnCreate,
             hideOnEdit,
             placeholder,
+            inputView,
             label,
             classes,
             columns = 12
@@ -142,7 +142,6 @@ export class ModelConfigService extends Config {
             label: label || title + (type === 'datetime' ? ` ${this.symbol.resolve('datetime.local')}` : ''),
             placeholder,
             description,
-            inputView: inputView || type,
             validation,
             relation: validation,
             immutable: !mutable,
@@ -158,7 +157,8 @@ export class ModelConfigService extends Config {
             /* display: ((value) => value), */
             localizable,
           }, typeConfig, {
-              placeholder: placeholder || typeConfig.placeholder
+              placeholder: placeholder || typeConfig.placeholder,
+              inputView: inputView || typeConfig.inputView || type
             });
         });
       return merged;
