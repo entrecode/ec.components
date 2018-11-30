@@ -10,3 +10,5 @@
 
 <h3>Asset Tags</h3>
 <ec-resource-select relation="tags" [api]="sdk.api"></ec-resource-select>
+<h3>Accounts</h3>
+<ec-resource-select relation="dmAccount" [api]="datamanager" *ngIf="datamanager"></ec-resource-select>

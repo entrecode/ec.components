@@ -244,7 +244,8 @@ export class ResourceConfig {
             label: this.symbol.resolve('field.label.email'),
             view: 'string',
             filterable: true,
-            sortable: true
+            sortable: true,
+            resolve: (body) => body.email || body.accountID
           },
           hasPassword: {
             label: this.symbol.resolve('dmAccount.field.label.hasPassword'),
