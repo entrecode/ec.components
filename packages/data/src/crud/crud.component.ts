@@ -94,7 +94,6 @@ export class CrudComponent<T> implements OnInit, WithLoader, WithNotifications {
   private loadEntry(item) {
     return this.modelConfig.getMinLevel(this.model, this.config.fields)
       .then((minLevel) => {
-        console.log('minLevel', minLevel);
         const levels = Math.max(minLevel, this.config.levels || 1);
         if (!this.config.alwaysLoadEntry && !this.mustReload(item) && levels === 1) {
           return item.getBody();
