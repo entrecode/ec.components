@@ -110,7 +110,7 @@ export class ModelConfigService extends Config {
         .forEach(({
           config,
           type,
-          /* formView, */
+          inputView,
           title,
           unique,
           mutable,
@@ -118,12 +118,11 @@ export class ModelConfigService extends Config {
           required,
           validation,
           description,
-          localizable,
-          /* legacyAssets, */
+          localizable
         }) => {
           /* type = type as string; */
           config = config || {};
-          if (type.includes('asset')/*  && !legacyAssets */) {
+          if (type.includes('asset')) {
             type = type.replace('a', 'dmA');
           }
           // parse field config
@@ -143,7 +142,7 @@ export class ModelConfigService extends Config {
             label: label || title + (type === 'datetime' ? ` ${this.symbol.resolve('datetime.local')}` : ''),
             placeholder,
             description,
-            formView: /* formView || */ type,
+            inputView: inputView || type,
             validation,
             relation: validation,
             immutable: !mutable,
