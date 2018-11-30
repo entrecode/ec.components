@@ -234,14 +234,16 @@ export class ResourceConfig {
         fields: {
           accountID: {
             label: this.symbol.resolve('field.label.id'),
-            view: 'string'
+            view: 'string',
+            hideInList: true,
           },
           title: {
             label: 'Title',
             filterable: true,
+            hideInList: true
           },
           email: {
-            label: this.symbol.resolve('field.label.email'),
+            label: this.symbol.resolve('field.label.title'),
             view: 'string',
             filterable: true,
             sortable: true,
