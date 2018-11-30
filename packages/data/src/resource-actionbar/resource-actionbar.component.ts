@@ -72,23 +72,6 @@ export class ResourceActionbarComponent extends ActionbarComponent implements On
                     }
                 };
             });
-        // TODO: append
-        if (listResource.hasPrevLink()) {
-            actions.unshift({
-                id: 'prev-page',
-                title: `Load Previous Page`,
-                path: null,
-                data: {},
-                select: false,
-                action: () => {
-                    listResource.followPrevLink().then((list) => {
-                        const append = this.getResourceListActions(list, relation, action);
-                        this.loadActions(append);
-                    });
-                }
-            })
-            // TODO: add next page action
-        }
         if (listResource.hasNextLink()) {
             actions.push({
                 id: 'next-page',
@@ -98,12 +81,14 @@ export class ResourceActionbarComponent extends ActionbarComponent implements On
                 select: false,
                 action: () => {
                     listResource.followNextLink().then((list) => {
-                        const append = this.getResourceListActions(list, relation, action);
-                        this.loadActions(append);
+                        const concatted = this.list.items
+                            .map(i => i.getBody())
+                            .filter(i => i.id !== 'next-page')
+                            .concat(this.getResourceListActions(list, relation, action));
+                        this.loadActions(concatted);
                     });
                 }
             })
-            // TODO: add next page action
         }
         return actions;
     }
