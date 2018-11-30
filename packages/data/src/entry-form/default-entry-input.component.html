@@ -1,4 +1,4 @@
-<div [ngSwitch]="field.inputView" *ngIf="group" [formGroup]="group">
+<div [ngSwitch]="field.inputView||field.type" *ngIf="group" [formGroup]="group">
   <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>
   <div *ngSwitchCase="'entry-select'">
     <ec-entry-select [placeholder]="field.placeholder" [formControl]="group.get(field.property)" [model]="field['relation']"

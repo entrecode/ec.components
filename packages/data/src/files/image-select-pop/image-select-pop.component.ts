@@ -67,7 +67,7 @@ export class ImageSelectPopComponent extends PopComponent implements OnInit {
                 img: {
                     label: ' ',
                     input: DefaultEntryInputComponent,
-                    type: isOldAssetGroupID ? 'asset' : 'dmAsset',
+                    inputView: isOldAssetGroupID ? 'asset-select' : 'dmAsset-select',
                     relation: !isOldAssetGroupID ? this.assetGroupID : 'legacyAsset',
                     required: true,
                     changed: (value, form) => {
