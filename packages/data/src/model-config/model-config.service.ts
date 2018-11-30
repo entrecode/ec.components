@@ -99,6 +99,25 @@ export class ModelConfigService extends Config {
     };
   }
 
+  /** Parses config for fields that require leveled entries */
+  getMinLevel(model: string, customFieldConfig?: FieldConfig<FieldConfigProperty>) {
+    return this.generateConfig(model, customFieldConfig)
+      .then((modelConfig) => {
+        const fieldConfig = modelConfig.fields;
+        return Object.keys(fieldConfig)
+          .filter(field => !!fieldConfig[field].type)
+          .map(field => {
+            const inputView = fieldConfig[field].inputView;
+            const views = this.typeConfig.get(fieldConfig[field].type).inputViews || [];
+            if (!inputView || !views) {
+              return 1;
+            }
+            const match = views.find(v => v.name === inputView);
+            return match ? match.levels || 1 : 1;
+          }).reduce((max, lvl) => Math.max(max, lvl), 1);
+      });
+  }
+
   /** Returns the default field config for the given model.
    * Utilizes PublicAPI#getFieldConfig + TypeConfigService#get.
    * This config is meant to deliver the default behaviour when nothing else is configured. */

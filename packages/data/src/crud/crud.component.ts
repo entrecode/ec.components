@@ -19,6 +19,7 @@ import { WithLoader } from '@ec.components/ui';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 import { WithNotifications } from '@ec.components/ui/src/notifications/with-notifications.interface';
 import { Notification } from '@ec.components/ui/src/notifications/notification';
+import { ModelConfigService } from '../model-config/model-config.service';
 
 /** The CrudComponent takes at least a model name to render an entry list with create/edit/delete functionality out of the box.
  * ```html
@@ -53,6 +54,7 @@ export class CrudComponent<T> implements OnInit, WithLoader, WithNotifications {
   constructor(private sdk: SdkService,
     private auth: AuthService,
     private loaderService: LoaderService,
+    private modelConfig: ModelConfigService,
     private notificationService: NotificationsService,
     private symbol: SymbolService,
     private cdr: ChangeDetectorRef,
@@ -90,24 +92,27 @@ export class CrudComponent<T> implements OnInit, WithLoader, WithNotifications {
 
   /** Loads the clicked entry item, depending on the configured levels. Reloads the entry if the form has fields the which list has not. */
   private loadEntry(item) {
-    return Promise.resolve().then(() => {
-      if (!this.config.alwaysLoadEntry && !this.mustReload(item) && (!this.config.levels || this.config.levels === 1)) {
-        return item.getBody();
-      }
-      return this.sdk.api.entry(this.model, item.id(), this.config.levels || 1)
-    }).then((loadedEntry) => {
-      this.entryPop.edit(loadedEntry);
-      this.notificationService.emit({ hide: this.notifications });
-    }).catch((err) => {
-      console.log('error while loading entry to edit', err);
-      this.notificationService.emit({
-        title: this.symbol.resolve('error.load'),
-        error: err,
-        sticky: true,
-        hide: this.notifications,
-        replace: this.notifications
-      })
-    });
+    return this.modelConfig.getMinLevel(this.model, this.config.fields)
+      .then((minLevel) => {
+        console.log('minLevel', minLevel);
+        const levels = Math.max(minLevel, this.config.levels || 1);
+        if (!this.config.alwaysLoadEntry && !this.mustReload(item) && levels === 1) {
+          return item.getBody();
+        }
+        return this.sdk.api.entry(this.model, item.id(), levels)
+      }).then((loadedEntry) => {
+        this.entryPop.edit(loadedEntry);
+        this.notificationService.emit({ hide: this.notifications });
+      }).catch((err) => {
+        console.log('error while loading entry to edit', err);
+        this.notificationService.emit({
+          title: this.symbol.resolve('error.load'),
+          error: err,
+          sticky: true,
+          hide: this.notifications,
+          replace: this.notifications
+        })
+      });
   }
 
   /** Is called when an item in the list is clicked. */

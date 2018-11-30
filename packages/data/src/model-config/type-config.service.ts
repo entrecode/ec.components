@@ -136,6 +136,15 @@ export class TypeConfigService {
     entries: {
       view: 'tags',
       inputView: 'entries-select',
+      inputViews: [
+        {
+          name: 'entries-select'
+        },
+        {
+          name: 'entry-list-select',
+          levels: 2
+        }
+      ],
       input: DefaultEntryInputComponent,
       output: DefaultOutputComponent,
       display: (value, entry, property) => entry.getTitle(property),
