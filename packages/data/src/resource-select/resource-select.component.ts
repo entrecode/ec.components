@@ -117,17 +117,22 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
             }
         });
         if (config.methods) {
-            this.config.methods = config.methods;
+            this.useMethods(config.methods)
         } else {
             this.auth.getAllowedResourceMethods(this.relation) // init permissions
-                .then((methods) => this.config.methods = methods);
+                .then((methods) => this.useMethods(methods));
         }
         this.selection.update$.subscribe(change => {
             if (this.solo && !this.selection.isEmpty()) { // update permissions for selected item
                 this.auth.getAllowedResourceMethods(this.relation, { [this.config.identifier]: this.selection.getValue() })
-                    .then((methods) => this.config.methods = methods);
+                    .then((methods) => this.useMethods(methods));
             }
         });
+    }
+
+    useMethods(methods) {
+        this.config.methods = methods;
+        this.cdr.markForCheck();
     }
 
     /** Returns true if the given method is part of the methods array (or if there is no methods array) */
