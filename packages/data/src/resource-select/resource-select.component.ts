@@ -92,18 +92,18 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
 
     togglePop(e) {
         if (this.dropdown && !this.config.disableSearchbar) {
-          this.dropdown.show(e);
+            this.dropdown.show(e);
         } else if (this.resourceListPop && !this.config.disableListPop) {
-          this.resourceListPop.show(e);
+            this.resourceListPop.show(e);
         } else if (this.resourcePop && !this.config.disableCreatePop) {
-          this.resourcePop.show();
+            this.resourcePop.show();
         }
         this.focusSearchbar();
     }
 
     defaultPlaceholder() {
         if (this.config && this.config.disableSearchbar && this.config.disableListPop) {
-          return this.symbol.resolve('resource.select.placeholder.new');
+            return this.symbol.resolve('resource.select.placeholder.new');
         }
         return this.symbol.resolve('resource.select.placeholder.select');
     }
@@ -116,8 +116,12 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
                 [this.config.label]: Object.assign({}, this.config.fields[this.config.label])
             }
         });
-        this.auth.getAllowedResourceMethods(this.relation) // init permissions
-            .then((methods) => this.config.methods = methods);
+        if (config.methods) {
+            this.config.methods = config.methods;
+        } else {
+            this.auth.getAllowedResourceMethods(this.relation) // init permissions
+                .then((methods) => this.config.methods = methods);
+        }
         this.selection.update$.subscribe(change => {
             if (this.solo && !this.selection.isEmpty()) { // update permissions for selected item
                 this.auth.getAllowedResourceMethods(this.relation, { [this.config.identifier]: this.selection.getValue() })
@@ -170,6 +174,7 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
 
     /** Is called when a selected item has been clicked. */
     editItem(item: Item<Resource>, e) {
+        console.log('edit', this.config);
         this.auth.getAllowedResourceMethods(this.relation, { [this.config.identifier]: item.id() })
             .then(methods => {
                 if (methods.indexOf('put') === -1) {

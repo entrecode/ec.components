@@ -8,6 +8,9 @@ import { Subject } from 'rxjs/Subject';
 import { SearchbarComponent } from '@ec.components/ui/src/list/searchbar/searchbar.component';
 import { CrudConfig } from '../../crud/crud-config.interface';
 import { FileService } from '../file.service';
+import PublicTagResource from 'ec.sdk/lib/resources/publicAPI/PublicTagResource';
+import { ResourceListComponent } from '../../resource-list/resource-list.component';
+import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
 
 /** Entry Pop is an extension of Pop component to host an entry-form.
  * You can use it like a normal pop but with the extra handling of an entry form inside.
@@ -36,7 +39,31 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
   public assetGroups: string[];
   /** The nested searchbar */
   @ViewChild(SearchbarComponent) searchbar: SearchbarComponent;
+  /** The nested resource-list */
+  @ViewChild(ResourceListComponent) resourceList: ResourceListComponent;
   uploadConfig: CrudConfig<PublicAssetResource> & { disableListPop: boolean; };
+  tagSelectConfig: CrudConfig<PublicTagResource> = {
+    disableCreatePop: true,
+    disableListPop: true,
+    methods: ['get']
+  }
+  assetTypes = [
+    { value: 'image', label: this.symbol.resolve('dmAsset.field.label.type.image') },
+    { value: 'video', label: this.symbol.resolve('dmAsset.field.label.type.video') },
+    { value: 'audio', label: this.symbol.resolve('dmAsset.field.label.type.audio') },
+    { value: 'plain', label: this.symbol.resolve('dmAsset.field.label.type.plain') },
+    { value: 'document', label: this.symbol.resolve('dmAsset.field.label.type.document') },
+    { value: 'spreadsheet', label: this.symbol.resolve('dmAsset.field.label.type.spreadsheet') },
+    { value: 'other', label: this.symbol.resolve('dmAsset.field.label.type.other') },
+  ];
+  typeSelectConfig = {
+    label: 'label',
+    identifier: 'value',
+    fields: {
+      label: {}
+    }
+  }
+
   /** Set host class to make sure the type is used */
   @HostBinding('class') class = 'dialog-wrapper';
 
@@ -45,6 +72,7 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
     private fileService: FileService,
     public sdk: SdkService,
     public elementRef: ElementRef,
+    public symbol: SymbolService,
     public cdr: ChangeDetectorRef) {
     super(popService, elementRef, cdr);
   }
@@ -60,6 +88,13 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
       this.searchbar.focusEvent.emit(true);
     }
     this.assetGroupID = group;
+  }
+
+  filterByTags(tags) {
+    this.resourceList.filter('tags', tags);
+  }
+  filterByTypes(types) {
+    this.resourceList.filter('type', types);
   }
 
   ngOnInit() {
@@ -88,7 +123,11 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
       : 'dmAsset.' + this.assetGroupID;
   }
 
-  showGroupSelect() {
-    return this.config.hideAssetGroupSelect === false;
+  isLegacy() {
+    return this.getGroupRelation() === 'legacyAsset';
   }
+
+  /*   showTagSelect() {
+      return this.config.hideAssetGroupSelect === false;
+    } */
 }

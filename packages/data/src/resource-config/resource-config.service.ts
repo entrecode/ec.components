@@ -532,8 +532,16 @@ export class ResourceConfig {
           type: {
             label: this.symbol.resolve('dmAsset.field.label.type'),
             view: 'string',
+            filterOperator: 'any',
+            hideInList: true,
             immutable: true,
             form: false
+          },
+          tags: {
+            label: this.symbol.resolve('dmAsset.field.label.tags'),
+            view: 'tags',
+            filterOperator: 'any',
+            hideInList: true
           },
           created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
         }

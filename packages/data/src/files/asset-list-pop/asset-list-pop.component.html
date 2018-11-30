@@ -8,11 +8,17 @@
     <ec-upload-select (uploaded)="fileService.selectUpload($event,selection)" #uploadSelect [disableDrop]="true"
       [config]="uploadConfig" [assetGroupID]="assetGroupID"></ec-upload-select>
     <div data-grid *ngIf="active&&sdk.apiResolved">
-      <div [attr.data-col]="showGroupSelect()?'6-sm':'12-sm'">
+      <!-- <div [attr.data-col]="showTagSelect()?'6-sm':'12-sm'"> -->
+      <div data-col="12-sm">
         <ec-searchbar #searchbar [listComponent]="resourceList"></ec-searchbar>
       </div>
-      <div data-col='6-sm' *ngIf="showGroupSelect()">
-        <ec-assetgroup-select [readOnly]="config.forceGroup" [assetGroupID]="assetGroupID" (groupChanged)="setGroup($event)"></ec-assetgroup-select>
+      <div data-col="12-sm" *ngIf="!isLegacy()">
+        <ec-resource-select (changed)="filterByTags($event.getValue())" placeholder="Tags.." [config]="tagSelectConfig"
+          relation="tags" [api]="sdk.api"></ec-resource-select>
+      </div>
+      <div data-col="12-sm" *ngIf="!isLegacy()">
+        <ec-select (changed)="filterByTypes($event.getValue())" placeholder="Types..." [config]="typeSelectConfig"
+          [values]="assetTypes"></ec-select>
       </div>
     </div>
   </div>

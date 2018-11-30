@@ -413,6 +413,38 @@ export default [
         content: 'Typ'
     },
     {
+        name: 'dmAsset.field.label.type.image',
+        content: 'Bild'
+    },
+    {
+        name: 'dmAsset.field.label.type.audio',
+        content: 'Ton'
+    },
+    {
+        name: 'dmAsset.field.label.type.video',
+        content: 'Video'
+    },
+    {
+        name: 'dmAsset.field.label.type.plain',
+        content: 'Text'
+    },
+    {
+        name: 'dmAsset.field.label.type.document',
+        content: 'Dokument'
+    },
+    {
+        name: 'dmAsset.field.label.type.spreadsheet',
+        content: 'Tabelle'
+    },
+    {
+        name: 'dmAsset.field.label.type.other',
+        content: 'Andere'
+    },
+    {
+        name: 'dmAsset.field.label.tags',
+        content: 'Tags'
+    },
+    {
         name: 'client.field.label.clientID',
         content: 'ID'
     },

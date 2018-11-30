@@ -405,6 +405,38 @@ export default [
         content: 'Type'
     },
     {
+        name: 'dmAsset.field.label.type.image',
+        content: 'Image'
+    },
+    {
+        name: 'dmAsset.field.label.type.audio',
+        content: 'Audio'
+    },
+    {
+        name: 'dmAsset.field.label.type.video',
+        content: 'Video'
+    },
+    {
+        name: 'dmAsset.field.label.type.plain',
+        content: 'Text'
+    },
+    {
+        name: 'dmAsset.field.label.type.document',
+        content: 'Document'
+    },
+    {
+        name: 'dmAsset.field.label.type.spreadsheet',
+        content: 'Spreadsheet'
+    },
+    {
+        name: 'dmAsset.field.label.type.other',
+        content: 'Other'
+    },
+    {
+        name: 'dmAsset.field.label.tags',
+        content: 'Tags'
+    },
+    {
         name: 'client.field.label.clientID',
         content: 'ID'
     },
