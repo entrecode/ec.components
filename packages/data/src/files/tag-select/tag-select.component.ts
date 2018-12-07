@@ -1,11 +1,10 @@
 import { Component, OnInit, ChangeDetectorRef, ElementRef, OnChanges } from '@angular/core';
 import { ResourceSelectComponent } from '../../resource-select/resource-select.component';
 import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
-import { AuthService } from '../../..';
 import { ResourceConfig } from '../../resource-config/resource-config.service';
 import { SdkService } from '../../sdk/sdk.service';
 import { Item } from '@ec.components/core';
-import Resource from 'ec.sdk/lib/resources/Resource';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
     selector: 'ec-tag-select',
