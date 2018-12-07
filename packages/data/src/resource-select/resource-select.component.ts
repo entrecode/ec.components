@@ -39,7 +39,7 @@ import { ResourceListComponent } from '../resource-list/resource-list.component'
         }
     ]
 })
-export class ResourceSelectComponent extends SelectComponent<Resource> implements OnChanges, OnInit {
+export class ResourceSelectComponent extends SelectComponent<Object> implements OnChanges, OnInit {
     /** The item that is targeted by the input */
     protected item: Item<any>;
     /** The form group that is used */
@@ -73,8 +73,8 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
     dropdownConfig: CrudConfig<Resource>;
 
     constructor(
-        private resourceConfig: ResourceConfig,
-        private auth: AuthService,
+        protected resourceConfig: ResourceConfig,
+        protected auth: AuthService,
         public elementRef: ElementRef,
         public symbol: SymbolService,
         public cdr: ChangeDetectorRef
@@ -149,7 +149,7 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
             this.formControl = new FormControl(this.value || []);
         }
         if (this.config) {
-            super.useConfig(this.config);
+            this.useConfig(this.config);
             return;
         }
         this.config = Object.assign(this.resourceConfig.get(this.relation)/* , { size: 5 } */,
@@ -179,7 +179,6 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
 
     /** Is called when a selected item has been clicked. */
     editItem(item: Item<Resource>, e) {
-        console.log('edit', this.config);
         this.auth.getAllowedResourceMethods(this.relation, { [this.config.identifier]: item.id() })
             .then(methods => {
                 if (methods.indexOf('put') === -1) {

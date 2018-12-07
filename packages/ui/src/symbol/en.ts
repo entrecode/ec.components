@@ -253,6 +253,10 @@ export default [
         content: 'upload'
     },
     {
+        name: 'tag-select.placeholder',
+        content: 'Search Tag...'
+    },
+    {
         name: 'field.label.id',
         content: 'ID'
     },

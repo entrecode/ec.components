@@ -261,6 +261,10 @@ export default [
         content: 'Upload'
     },
     {
+        name: 'tag-select.placeholder',
+        content: 'Tag suchen...'
+    },
+    {
         name: 'field.label.id',
         content: 'ID'
     },

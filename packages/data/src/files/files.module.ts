@@ -16,12 +16,14 @@ import { ImageDirective } from './image/image.directive';
 import { UploadComponent } from './upload/upload.component';
 import { UploadSelectComponent } from './upload-select/upload-select.component';
 import { ImageSelectPopComponent } from './image-select-pop/image-select-pop.component';
+import { TagSelectComponent } from './tag-select/tag-select.component';
 
 @NgModule({
   entryComponents: [
     AssetSelectComponent,
     AssetgroupSelectComponent,
     UploadComponent,
+    TagSelectComponent,
   ],
   declarations: [
     AssetListComponent,
@@ -34,6 +36,7 @@ import { ImageSelectPopComponent } from './image-select-pop/image-select-pop.com
     UploadComponent,
     UploadSelectComponent,
     ImageSelectPopComponent,
+    TagSelectComponent
   ],
   imports: [
     CommonModule,
@@ -54,6 +57,7 @@ import { ImageSelectPopComponent } from './image-select-pop/image-select-pop.com
     UploadSelectComponent,
     SdkModule,
     ImageSelectPopComponent,
+    TagSelectComponent
   ],
   providers: [
     FileService

@@ -8,7 +8,9 @@
 <ec-resource-select [config]="{disableListPop:true,disableCreatePop:true}" relation="dataManager" [api]="sdk?.datamanager"
     [solo]="true"></ec-resource-select>
 
-<h3>Asset Tags</h3>
-<ec-resource-select relation="tags" [api]="sdk.api"></ec-resource-select>
 <h3>Accounts</h3>
 <ec-resource-select relation="dmAccount" [api]="datamanager" *ngIf="datamanager"></ec-resource-select>
+<!-- <h3>Asset Tags</h3>
+<ec-resource-select relation="tags" [api]="sdk.api"></ec-resource-select> -->
+<h3>Tag Select</h3>
+<ec-tag-select></ec-tag-select>
