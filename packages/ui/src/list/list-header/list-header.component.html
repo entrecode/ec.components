@@ -33,10 +33,10 @@
     <span>&#9776;</span>
     <div class="dropdown-options ec-list-column-filter-options">
       <ul>
-        <li class="ec-list-column-filter-option" *ngFor="let field of list?.fields" [class.is-active]="!field.hideInList" [class.is-hidden]="field.hideInColumnFilter">
-          <div class="form-boolean" (click)="fieldCheckbox.click()">
-            <label>{{fieldLabel(field)}}</label>
-            <input (click)="toggleVisibility(field)" #fieldCheckbox [checked]="!field.hideInList" type="checkbox"/> 
+        <li class="ec-list-column-filter-option" *ngFor="let field of list?.fields" [class.is-active]="!field.hideInList"
+          [class.is-hidden]="field.hideInColumnFilter">
+          <div class="form-boolean" (click)="toggleVisibility(field)">
+            <ec-icon [name]="field.hideInList?'square':'check-box'">{{fieldLabel(field)}}</ec-icon>
           </div>
         </li>
       </ul>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, OnChanges } from '@angular/core';
 import { IconService } from './icon.service';
 import { Symbol } from '../symbol/symbol.interface';
 
@@ -11,7 +11,7 @@ import { Symbol } from '../symbol/symbol.interface';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class IconComponent implements OnInit {
+export class IconComponent implements OnInit, OnChanges {
     /** The name of the icon. An Icon with this name is expected to be present in the current iconService registry. */
     @Input() name: string;
     /** The resolved icon (by name) */
@@ -19,10 +19,16 @@ export class IconComponent implements OnInit {
     constructor(private iconService: IconService) {
     }
     /** The component will resolve the icon from the current iconService registry. A warning is logged if no icon can be found. */
-    ngOnInit() {
+    resolve() {
         this.icon = this.iconService.get(this.name);
         if (!this.icon) {
             console.warn(`Icon ${this.name} cannot be found. Using the following icon registry:`, this.iconService.registry);
         }
+    }
+    ngOnInit() {
+        this.resolve();
+    }
+    ngOnChanges() {
+        this.resolve();
     }
 }
