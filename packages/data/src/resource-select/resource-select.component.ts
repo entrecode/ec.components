@@ -39,7 +39,7 @@ import { ResourceListComponent } from '../resource-list/resource-list.component'
         }
     ]
 })
-export class ResourceSelectComponent extends SelectComponent<Object> implements OnChanges, OnInit {
+export class ResourceSelectComponent extends SelectComponent<Resource> implements OnChanges, OnInit {
     /** The item that is targeted by the input */
     protected item: Item<any>;
     /** The form group that is used */
@@ -152,8 +152,8 @@ export class ResourceSelectComponent extends SelectComponent<Object> implements 
             this.useConfig(this.config);
             return;
         }
-        this.config = Object.assign(this.resourceConfig.get(this.relation)/* , { size: 5 } */,
-            this.crudConfig, { solo: this.solo, selectMode: false, disableSelectSwitch: true });
+        this.config = <CrudConfig<Resource>>Object.assign(this.resourceConfig.get(this.relation)/* , { size: 5 } */,
+            this.crudConfig, { solo: this.solo, selectMode: false, disableSelectSwitch: true } as CrudConfig<Resource>);
         this.useConfig(this.config);
     }
 

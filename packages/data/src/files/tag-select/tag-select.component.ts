@@ -5,6 +5,7 @@ import { ResourceConfig } from '../../resource-config/resource-config.service';
 import { SdkService } from '../../sdk/sdk.service';
 import { Item } from '@ec.components/core';
 import { AuthService } from '../../auth/auth.service';
+import { CrudConfig } from '../../crud/crud-config.interface';
 
 @Component({
     selector: 'ec-tag-select',
@@ -15,7 +16,7 @@ export class TagSelectComponent extends ResourceSelectComponent implements OnIni
 
     relation = 'tags';
     placeholder = this.symbol.resolve('tag-select.placeholder');
-    config = {
+    config: CrudConfig<any> = {
         label: 'tag',
         identifier: 'tag',
         methods: ['get'],
@@ -35,7 +36,7 @@ export class TagSelectComponent extends ResourceSelectComponent implements OnIni
     ) {
         super(resourceConfig, auth, elementRef, symbol, cdr);
         this.enterPressed.asObservable().subscribe((s) => {
-            this.selection.add(new Item({ tag: this.searchbar.query }, this.config));
+            (this.selection as any).add(new Item({ tag: this.searchbar.query }, this.config));
             this.searchbar.clear();
             this.dropdownList.list.clearFilter();
         })
