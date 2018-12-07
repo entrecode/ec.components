@@ -6883,7 +6883,7 @@ import { ResourceListComponent } from &#x27;../resource-list/resource-list.compo
         }
     ]
 })
-export class ResourceSelectComponent extends SelectComponent&lt;Object&gt; implements OnChanges, OnInit {
+export class ResourceSelectComponent extends SelectComponent&lt;Resource&gt; implements OnChanges, OnInit {
     /** The item that is targeted by the input */
     protected item: Item&lt;any&gt;;
     /** The form group that is used */
@@ -6996,8 +6996,8 @@ export class ResourceSelectComponent extends SelectComponent&lt;Object&gt; imple
             this.useConfig(this.config);
             return;
         }
-        this.config &#x3D; Object.assign(this.resourceConfig.get(this.relation)/* , { size: 5 } */,
-            this.crudConfig, { solo: this.solo, selectMode: false, disableSelectSwitch: true });
+        this.config &#x3D; &lt;CrudConfig&lt;Resource&gt;&gt;Object.assign(this.resourceConfig.get(this.relation)/* , { size: 5 } */,
+            this.crudConfig, { solo: this.solo, selectMode: false, disableSelectSwitch: true } as CrudConfig&lt;Resource&gt;);
         this.useConfig(this.config);
     }
 
