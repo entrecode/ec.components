@@ -2547,6 +2547,9 @@ set method. </p>
                                 <a href="#getLightModel">getLightModel</a>
                             </li>
                             <li>
+                                <a href="#getMinLevel">getMinLevel</a>
+                            </li>
+                            <li>
                                 <a href="#getSystemFields">getSystemFields</a>
                             </li>
                             <li>
@@ -2678,7 +2681,7 @@ set method. </p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="175" class="link-to-prism">packages/data/src/model-config/model-config.service.ts:175</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="194" class="link-to-prism">packages/data/src/model-config/model-config.service.ts:194</a></div>
                             </td>
                         </tr>
 
@@ -2844,7 +2847,7 @@ or just specific components. </li>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">packages/data/src/model-config/model-config.service.ts:105</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">packages/data/src/model-config/model-config.service.ts:124</a></div>
                             </td>
                         </tr>
 
@@ -2917,7 +2920,7 @@ This config is meant to deliver the default behaviour when nothing else is confi
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="204" class="link-to-prism">packages/data/src/model-config/model-config.service.ts:204</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="223" class="link-to-prism">packages/data/src/model-config/model-config.service.ts:223</a></div>
                             </td>
                         </tr>
 
@@ -2942,6 +2945,89 @@ This config is meant to deliver the default behaviour when nothing else is confi
                                                     
                                                     <td>
                                                             no
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getMinLevel"></a>
+                        <span class="name">
+                            <b>
+                            getMinLevel
+                            </b>
+                            <a href="#getMinLevel"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getMinLevel(model: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, customFieldConfig?: <a href="../interfaces/FieldConfigProperty.html">FieldConfig<FieldConfigProperty></a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">packages/data/src/model-config/model-config.service.ts:103</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Parses config for fields that require leveled entries </p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>model</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            no
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>customFieldConfig</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/FieldConfigProperty.html" target="_self" >FieldConfig&lt;FieldConfigProperty&gt;</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            yes
                                                     </td>
                                                     
 
@@ -3259,6 +3345,25 @@ export class ModelConfigService extends Config {
     };
   }
 
+  /** Parses config for fields that require leveled entries */
+  getMinLevel(model: string, customFieldConfig?: FieldConfig&lt;FieldConfigProperty&gt;) {
+    return this.generateConfig(model, customFieldConfig)
+      .then((modelConfig) &#x3D;&gt; {
+        const fieldConfig &#x3D; modelConfig.fields;
+        return Object.keys(fieldConfig)
+          .filter(field &#x3D;&gt; !!fieldConfig[field].type)
+          .map(field &#x3D;&gt; {
+            const inputView &#x3D; fieldConfig[field].inputView;
+            const views &#x3D; this.typeConfig.get(fieldConfig[field].type).inputViews || [];
+            if (!inputView || !views) {
+              return 1;
+            }
+            const match &#x3D; views.find(v &#x3D;&gt; v.name &#x3D;&#x3D;&#x3D; inputView);
+            return match ? match.levels || 1 : 1;
+          }).reduce((max, lvl) &#x3D;&gt; Math.max(max, lvl), 1);
+      });
+  }
+
   /** Returns the default field config for the given model.
    * Utilizes PublicAPI#getFieldConfig + TypeConfigService#get.
    * This config is meant to deliver the default behaviour when nothing else is configured. */
@@ -3270,7 +3375,6 @@ export class ModelConfigService extends Config {
         .forEach(({
           config,
           type,
-          inputView,
           title,
           unique,
           mutable,
@@ -3291,6 +3395,7 @@ export class ModelConfigService extends Config {
             hideOnCreate,
             hideOnEdit,
             placeholder,
+            inputView,
             label,
             classes,
             columns &#x3D; 12
@@ -3302,7 +3407,6 @@ export class ModelConfigService extends Config {
             label: label || title + (type &#x3D;&#x3D;&#x3D; &#x27;datetime&#x27; ? &#x60; ${this.symbol.resolve(&#x27;datetime.local&#x27;)}&#x60; : &#x27;&#x27;),
             placeholder,
             description,
-            inputView: inputView || type,
             validation,
             relation: validation,
             immutable: !mutable,
@@ -3318,7 +3422,8 @@ export class ModelConfigService extends Config {
             /* display: ((value) &#x3D;&gt; value), */
             localizable,
           }, typeConfig, {
-              placeholder: placeholder || typeConfig.placeholder
+              placeholder: placeholder || typeConfig.placeholder,
+              inputView: inputView || typeConfig.inputView || type
             });
         });
       return merged;

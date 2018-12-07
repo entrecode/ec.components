@@ -2520,6 +2520,7 @@
     </p>
     <p class="comment">
                 <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
     </p>
 
 
@@ -2588,7 +2589,13 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#ngOnChanges">ngOnChanges</a>
+                            </li>
+                            <li>
                                 <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#resolve">resolve</a>
                             </li>
                         </ul>
                     </td>
@@ -2703,6 +2710,44 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
+                        <a name="ngOnChanges"></a>
+                        <span class="name">
+                            <b>
+                            ngOnChanges
+                            </b>
+                            <a href="#ngOnChanges"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>ngOnChanges()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">packages/ui/src/icon/icon.component.ts:31</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
                         <a name="ngOnInit"></a>
                         <span class="name">
                             <b>
@@ -2715,6 +2760,44 @@
                 <tr>
                     <td class="col-md-4">
 <code>ngOnInit()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">packages/ui/src/icon/icon.component.ts:28</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="resolve"></a>
+                        <span class="name">
+                            <b>
+                            resolve
+                            </b>
+                            <a href="#resolve"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>resolve()</code>
                     </td>
                 </tr>
 
@@ -2814,7 +2897,7 @@ export class SomeModule  {
     </div>
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input, ChangeDetectionStrategy } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input, ChangeDetectionStrategy, OnChanges } from &#x27;@angular/core&#x27;;
 import { IconService } from &#x27;./icon.service&#x27;;
 import { Symbol } from &#x27;../symbol/symbol.interface&#x27;;
 
@@ -2827,7 +2910,7 @@ import { Symbol } from &#x27;../symbol/symbol.interface&#x27;;
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class IconComponent implements OnInit {
+export class IconComponent implements OnInit, OnChanges {
     /** The name of the icon. An Icon with this name is expected to be present in the current iconService registry. */
     @Input() name: string;
     /** The resolved icon (by name) */
@@ -2835,11 +2918,17 @@ export class IconComponent implements OnInit {
     constructor(private iconService: IconService) {
     }
     /** The component will resolve the icon from the current iconService registry. A warning is logged if no icon can be found. */
-    ngOnInit() {
+    resolve() {
         this.icon &#x3D; this.iconService.get(this.name);
         if (!this.icon) {
             console.warn(&#x60;Icon ${this.name} cannot be found. Using the following icon registry:&#x60;, this.iconService.registry);
         }
+    }
+    ngOnInit() {
+        this.resolve();
+    }
+    ngOnChanges() {
+        this.resolve();
     }
 }
 </code></pre>
