@@ -98,7 +98,7 @@ export class EntryPopComponent extends PopComponent implements OnInit {
     });
   }
 
-  editEntry(resource: EntryResource): EntryResource | Promise<EntryResource> {
+  editEntry(resource: EntryResource): Promise<EntryResource> {
     if (this.config.onEdit) {
       return Promise.resolve(this.config.onEdit(resource));
     }
