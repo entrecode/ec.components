@@ -98,8 +98,17 @@ export class ResourcePopComponent extends PopComponent {
             const trimmed = this.router.url.replace(new RegExp(matcher, 'g'), '');
             this.router.navigate([trimmed, this.editRoute, entry.id]);
         } */
-        this.resource = resource;
-        this.show();
+        this.editResource(resource).then((preparedResource: Resource) => {
+            this.resource = preparedResource;
+            this.show();
+        });
+    }
+
+    editResource(resource: Resource): Resource | Promise<Resource> {
+        if (this.config.onEdit) {
+            return Promise.resolve(this.config.onEdit(resource));
+        }
+        return Promise.resolve(resource);
     }
 
     /** Opens the pop after deleting the current bound entry from the instance. */

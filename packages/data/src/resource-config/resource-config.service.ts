@@ -332,6 +332,8 @@ export class ResourceConfig {
           created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
         }
       },
+      build: {},
+      deployment: {},
       asset: { // old ec.asset
         identifier: 'assetID',
         identifierPattern: this.uuid(),

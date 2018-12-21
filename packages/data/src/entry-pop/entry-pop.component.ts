@@ -92,8 +92,17 @@ export class EntryPopComponent extends PopComponent implements OnInit {
       const trimmed = this.router.url.replace(new RegExp(matcher, 'g'), '');
       this.router.navigate([trimmed, this.editRoute, entry.id]); */
     }
-    this.entry = entry;
-    this.show();
+    this.editEntry(entry).then((preparedEntry: EntryResource) => {
+      this.entry = preparedEntry;
+      this.show();
+    });
+  }
+
+  editEntry(resource: EntryResource): EntryResource | Promise<EntryResource> {
+    if (this.config.onEdit) {
+      return Promise.resolve(this.config.onEdit(resource));
+    }
+    return Promise.resolve(resource);
   }
 
   /** Opens the pop after deleting the current bound entry from the instance. */

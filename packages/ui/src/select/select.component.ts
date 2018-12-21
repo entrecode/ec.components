@@ -205,8 +205,8 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
     } else {
       this.focusSearchbar();
     }
-    this.value = this.selection.getValue();
-    return this.propagateChange(this.value);
+    this.value = this.selection.items.map(i => i.resolve());
+    return this.propagateChange(this.selection.getValue());
   }
 
   /** Propagates formControl/ngModel changes */

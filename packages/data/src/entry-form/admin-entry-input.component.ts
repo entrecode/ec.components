@@ -13,6 +13,6 @@ export class AdminEntryInputComponent extends DefaultInputComponent {
     api: DataManagerResource;
     constructor(public sdk: SdkService) {
         super();
-        this.sdk.root.then((root) => this.api = root);
+        /* this.sdk.root.then((root) => this.api = root); */
     }
 }
