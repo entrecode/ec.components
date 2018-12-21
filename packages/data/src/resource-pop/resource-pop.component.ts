@@ -105,7 +105,7 @@ export class ResourcePopComponent extends PopComponent {
     }
 
     editResource(resource: Resource): Promise<Resource> {
-        if (this.config.onEdit) {
+        if (this.config && this.config.onEdit) {
             return Promise.resolve(this.config.onEdit(resource));
         }
         return Promise.resolve(resource);
