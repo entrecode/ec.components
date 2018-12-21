@@ -2622,6 +2622,9 @@ It is also possible to bind an entry directly which will then be bound to the fo
                                 <a href="#edit">edit</a>
                             </li>
                             <li>
+                                <a href="#editResource">editResource</a>
+                            </li>
+                            <li>
                                 <a href="#escapeRegExp">escapeRegExp</a>
                             </li>
                             <li>
@@ -3273,7 +3276,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:106</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="115" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:115</a></div>
                             </td>
                         </tr>
 
@@ -3315,7 +3318,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="134" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:134</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="143" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:143</a></div>
                             </td>
                         </tr>
 
@@ -3420,6 +3423,75 @@ It is also possible to bind an entry directly which will then be bound to the fo
             <tbody>
                 <tr>
                     <td class="col-md-4">
+                        <a name="editResource"></a>
+                        <span class="name">
+                            <b>
+                            editResource
+                            </b>
+                            <a href="#editResource"><span class="fa fa-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>editResource(resource: Resource)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:107</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>resource</td>
+                                                        <td>
+                                                                    <code>Resource</code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            no
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Resource | Promise</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
                         <a name="escapeRegExp"></a>
                         <span class="name">
                             <b>
@@ -3505,7 +3577,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="144" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:144</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="153" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:153</a></div>
                             </td>
                         </tr>
 
@@ -3576,7 +3648,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="152" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:152</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="161" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:161</a></div>
                             </td>
                         </tr>
 
@@ -3716,7 +3788,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="120" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:120</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:129</a></div>
                             </td>
                         </tr>
 
@@ -3789,7 +3861,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="140" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:140</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="149" class="link-to-prism">packages/data/src/resource-pop/resource-pop.component.ts:149</a></div>
                             </td>
                         </tr>
 
@@ -4661,8 +4733,17 @@ export class ResourcePopComponent extends PopComponent {
             const trimmed &#x3D; this.router.url.replace(new RegExp(matcher, &#x27;g&#x27;), &#x27;&#x27;);
             this.router.navigate([trimmed, this.editRoute, entry.id]);
         } */
-        this.resource &#x3D; resource;
-        this.show();
+        this.editResource(resource).then((preparedResource: Resource) &#x3D;&gt; {
+            this.resource &#x3D; preparedResource;
+            this.show();
+        });
+    }
+
+    editResource(resource: Resource): Resource | Promise&lt;Resource&gt; {
+        if (this.config.onEdit) {
+            return Promise.resolve(this.config.onEdit(resource));
+        }
+        return Promise.resolve(resource);
     }
 
     /** Opens the pop after deleting the current bound entry from the instance. */

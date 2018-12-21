@@ -5297,8 +5297,8 @@ export class SelectComponent&lt;T&gt; implements ControlValueAccessor, OnInit, O
     } else {
       this.focusSearchbar();
     }
-    this.value &#x3D; this.selection.getValue();
-    return this.propagateChange(this.value);
+    this.value &#x3D; this.selection.items.map(i &#x3D;&gt; i.resolve());
+    return this.propagateChange(this.selection.getValue());
   }
 
   /** Propagates formControl/ngModel changes */
