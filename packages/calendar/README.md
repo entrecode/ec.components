@@ -16,12 +16,58 @@ To configure the format of the date strings, you can import the module using for
     imports: [
         /* ... */
         CalendarModule.forRoot({
-            dateFormat: 'DD.MM.YYYY',
-            timeFormat: 'HH:mm',
-            monthFormat: 'MMMM YYYY',
+            date: 'DD.MM.YYYY',
+            time: 'HH:mm',
+            month: 'MMMM YYYY',
         })
     ]
-})
+});
+```
+
+Alternatively, you can set the provider values directly:
+
+```ts
+@NgModule({
+    imports: [
+        /* ... */
+        CalendarModule,
+    ],
+    providers: [
+        /* ... */
+        {
+        provide: 'moment.format.date',
+        useValue: 'DD.MM.YYYY',
+        },
+        {
+        provide: 'moment.format.time',
+        useValue: 'HH:mm'
+        },
+        {
+        provide: 'moment.format.month',
+        useValue: 'MMMM YYYY'
+        }
+    ]
+});
+```
+
+To connect the calendar module with ec.components localization, do the following:
+
+```ts
+  providers: [
+    /* ... */
+    {
+      provide: 'moment.format.date',
+      useValue: SymbolService.resolve('moment.format.date')
+    },
+    {
+      provide: 'moment.format.time',
+      useValue: SymbolService.resolve('moment.format.time')
+    },
+    {
+      provide: 'moment.format.month',
+      useValue: SymbolService.resolve('moment.format.month')
+    }
+  ]
 ```
 
 ## Usage

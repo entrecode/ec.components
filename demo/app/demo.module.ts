@@ -61,6 +61,7 @@ import { ResourceListPopDemoComponent } from './resource-list-pop/resource-list-
 import { ModalDemoComponent } from './modal/modal-demo.component';
 import { TinyInputComponent } from './tinymce-demo/tiny-input.component';
 import { EntryListSelectDemoComponent } from './entry-list-select/entry-list-select-demo.component';
+import { CalendarModule } from '../../packages/calendar/src/calendar.module';
 
 /* const routes = [].concat(demoRoutes); */
 /* routes.unshift({
@@ -136,7 +137,12 @@ import { EntryListSelectDemoComponent } from './entry-list-select/entry-list-sel
     MediumModule,
     TinymceModule,
     AceModule,
-    LocationModule
+    LocationModule,
+    CalendarModule/* .forRoot({
+      date: 'DD.MM.YYYY',
+      time: 'HH:mm',
+      month: 'MMMM YYYY',
+    }) */
   ],
   providers: [
     {

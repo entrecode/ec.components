@@ -4,11 +4,12 @@
       (blur)="showCalendar=false" [placeholder]="placeholder">
     <div class="input-group__addon">
       <a (click)="showCalendar=!showCalendar">
-        <ec-icon name="calendar"></ec-icon>
+        <!-- <ec-icon name="calendar"></ec-icon> -->
+        {{!showCalendar?'C':'X'}}
       </a>
     </div>
   </div>
-  <div class="ec-datetime-select"  [hidden]="!showCalendar" (mousedown)="$event.preventDefault()">
+  <div class="ec-datetime-select" [hidden]="!showCalendar" (mousedown)="$event.preventDefault()">
     <ec-calendar #calendar [formControl]="formControl" [disableTime]="disableTime" [date]="date"></ec-calendar>
   </div>
 </div>

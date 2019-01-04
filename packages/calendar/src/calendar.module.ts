@@ -1,27 +1,63 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
+/* import { DatetimeComponent } from './datetime/datetime.component'; */
+import { DatetimePipe } from './datetime.pipe';
+import { CalendarComponent } from './calendar/calendar.component';
+import { HeatmapComponent } from './heatmap/heatmap.component';
+import { DaterangeComponent } from './daterange/daterange.component';
+import { MonthComponent } from './calendar/month.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
-    imports: [],
-    exports: [],
-    declarations: [],
-    providers: [],
+    imports: [
+        CommonModule
+    ],
+    exports: [
+        /* DatetimeComponent, */
+        DatetimePipe,
+        CalendarComponent,
+        HeatmapComponent,
+        DaterangeComponent,
+        MonthComponent,
+    ],
+    declarations: [
+        /* DatetimeComponent, */
+        DatetimePipe,
+        CalendarComponent,
+        HeatmapComponent,
+        DaterangeComponent,
+        MonthComponent,
+    ],
+    providers: [
+        {
+            provide: 'moment.format.date',
+            useValue: 'DD.MM.YYYY'
+        },
+        {
+            provide: 'moment.format.time',
+            useValue: 'HH:mm'
+        },
+        {
+            provide: 'moment.format.month',
+            useValue: 'MMMM YYYY'
+        }
+    ]
 })
 export class CalendarModule {
-    static forRoot({ dateFormat, timeFormat, monthFormat }: { dateFormat?, timeFormat?, monthFormat?}): ModuleWithProviders {
+    static forRoot(formats: { date?, time?, month?}): ModuleWithProviders {
         return {
             ngModule: CalendarModule,
             providers: [
                 {
                     provide: 'moment.format.date',
-                    useValue: dateFormat
+                    useValue: formats.date
                 },
                 {
                     provide: 'moment.format.time',
-                    useValue: timeFormat
+                    useValue: formats.time
                 },
                 {
                     provide: 'moment.format.month',
-                    useValue: monthFormat
+                    useValue: formats.month
                 },
             ]
         }

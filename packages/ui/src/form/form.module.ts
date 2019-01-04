@@ -9,16 +9,18 @@ import { FormService } from './form.service';
 import { VisibleFieldsPipe } from './visible-fields.pipe';
 import { IoModule } from '../io/io.module';
 import { DatetimeComponent } from './datetime/datetime.component';
-import { MonthComponent } from './datetime/month.component';
+/*import { MonthComponent } from './datetime/month.component';
 import { DatetimePipe } from './datetime/datetime.pipe';
-import { ToggleComponent } from './toggle/toggle.component';
 import { CalendarComponent } from './datetime/calendar.component';
+import { HeatmapComponent } from './datetime/heatmap.component';
+import { DaterangeComponent } from './datetime/daterange.component'; */
+import { ToggleComponent } from './toggle/toggle.component';
 import { LoaderModule } from '../loader/loader.module';
 import { IconModule } from '../icon/icon.module';
 import { MaxItemsPipe } from './max-items.pipe';
 import { SymbolModule } from '../symbol/symbol.module';
-import { HeatmapComponent } from './datetime/heatmap.component';
-import { DaterangeComponent } from './datetime/daterange.component';
+import { CalendarModule } from '../../../calendar/src/calendar.module';
+import { SymbolService } from '../symbol/symbol.service';
 
 @NgModule({
   entryComponents: [
@@ -30,11 +32,11 @@ import { DaterangeComponent } from './datetime/daterange.component';
     DefaultInputComponent,
     DefaultOutputComponent,
     DatetimeComponent,
-    DatetimePipe,
+    /* DatetimePipe,
     MonthComponent,
     HeatmapComponent,
     DaterangeComponent,
-    CalendarComponent,
+    CalendarComponent, */
     VisibleFieldsPipe,
     MaxItemsPipe,
     ToggleComponent,
@@ -46,17 +48,18 @@ import { DaterangeComponent } from './datetime/daterange.component';
     IoModule,
     LoaderModule,
     IconModule,
-    SymbolModule
+    SymbolModule,
+    CalendarModule
   ],
   exports: [
     FormComponent,
     ReactiveFormsModule,
     DatetimeComponent,
-    DatetimePipe,
+    /* DatetimePipe,
     CalendarComponent,
     HeatmapComponent,
     DaterangeComponent,
-    MonthComponent,
+    MonthComponent, */
     PopModule,
     VisibleFieldsPipe,
     MaxItemsPipe,
@@ -64,7 +67,19 @@ import { DaterangeComponent } from './datetime/daterange.component';
     ToggleComponent,
   ],
   providers: [
-    FormService
+    FormService,
+    {
+      provide: 'moment.format.date',
+      useValue: SymbolService.resolve('moment.format.date')
+    },
+    {
+      provide: 'moment.format.time',
+      useValue: SymbolService.resolve('moment.format.time')
+    },
+    {
+      provide: 'moment.format.month',
+      useValue: SymbolService.resolve('moment.format.month')
+    }
   ]
 })
 export class FormModule {

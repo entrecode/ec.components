@@ -2,7 +2,8 @@
   <nav class="ec-calendar-controls">
     <a (click)="grid.alter(-1, 'months')" class="btn btn_clear ec-calendar-controls__prev" [class.is-disabled]="!grid.canAlter(-1,'month')">
       <!--TODO add .ec-icon fallback config-->
-      <ec-icon name="chevron-left"></ec-icon>
+      <!-- <ec-icon name="chevron-left"></ec-icon> -->
+      &lt;
     </a>
     <div class="ec-calendar-title">{{grid.formatted}}</div>
     <a (click)="grid.today()" class="btn btn_clear ec-calendar-controls__current">
@@ -11,7 +12,8 @@
     </a>
     <a (click)="grid.alter(1, 'months')" class="btn btn_clear ec-calendar-controls__next" [class.is-disabled]="!grid.canAlter(1,'month')">
       <!--TODO add .ec-icon fallback config-->
-      <ec-icon name="chevron-right"></ec-icon>
+      <!-- <ec-icon name="chevron-right"></ec-icon> -->
+      &gt;
     </a>
   </nav>
   <div class="ec-calendar-month ">

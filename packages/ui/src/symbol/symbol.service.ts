@@ -8,10 +8,41 @@ import en from './en';
 @Injectable()
 export class SymbolService {
     /** The current symbol set that is registered to the service. It will be used to resolve strings from. */
+    public static sets: { [key: string]: Symbol[] } = {
+        en, de
+    }
+    public static registry: Symbol[] = Object.keys(SymbolService.sets).length ? SymbolService.sets[Object.keys(SymbolService.sets)[0]] : [];
+
     public registry: Symbol[];
     public sets: { [key: string]: Symbol[] } = {
         en, de
     }
+
+    /** finds a symbol in the registry by name */
+    static get(name: string, registry = SymbolService.registry): Symbol {
+        return registry.find(symbol => symbol.name === name);
+    }
+
+    static resolve(name: string, registry = SymbolService.registry): string {
+        const symbol = SymbolService.get(name, registry);
+        if (symbol) {
+            return symbol.content;
+        }
+        return null;
+    }
+    /** Uses the given symbol set to enhance the current registry.
+     * All duplicates will be overriden. Non specified symbols will stay in the registry. */
+    static set(symbols: Symbol[] = [], registry = SymbolService.registry) {
+        symbols.map(symbol => {
+            const index = registry.indexOf(this.get(symbol.name));
+            if (index === -1) {
+                registry.push(symbol);
+            } else {
+                registry[index] = symbol;
+            }
+        })
+    }
+
     constructor() {
         this.registry = Object.keys(this.sets).length ? this.sets[Object.keys(this.sets)[0]] : [];
     }
@@ -31,28 +62,17 @@ export class SymbolService {
 
     /** finds a symbol in the registry by name */
     get(name: string): Symbol {
-        return this.registry.find(symbol => symbol.name === name);
+        return SymbolService.get(name, this.registry);
     }
 
     /** resolves a symbols content by name */
     resolve(name: string): string {
-        const symbol = this.get(name);
-        if (symbol) {
-            return symbol.content;
-        }
-        return null;
+        return SymbolService.resolve(name, this.registry);
     }
 
     /** Uses the given symbol set to enhance the current registry.
      * All duplicates will be overriden. Non specified symbols will stay in the registry. */
     set(symbols: Symbol[] = []) {
-        symbols.map(symbol => {
-            const index = this.registry.indexOf(this.get(symbol.name));
-            if (index === -1) {
-                this.registry.push(symbol);
-            } else {
-                this.registry[index] = symbol;
-            }
-        })
+        SymbolService.set(symbols, this.registry);
     }
 }
