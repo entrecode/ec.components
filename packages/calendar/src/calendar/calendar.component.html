@@ -1,19 +1,48 @@
+<svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg"
+  xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <symbol id="arrowhead-left" viewBox="0 0 24 24">
+      <title>arrowhead-left</title>
+      <path d="M13.829 19c-0.292 0-0.582-0.127-0.78-0.373l-4.828-6c-0.298-0.371-0.294-0.901 0.011-1.267l5-6c0.353-0.424 0.984-0.481 1.409-0.128s0.481 0.984 0.127 1.408l-4.475 5.371 4.315 5.362c0.346 0.43 0.278 1.060-0.153 1.406-0.184 0.149-0.406 0.221-0.626 0.221z"></path>
+    </symbol>
+    <symbol id="arrowhead-right" viewBox="0 0 24 24">
+      <title>arrowhead-right</title>
+      <path d="M9.999 19c-0.226 0-0.453-0.076-0.64-0.232-0.424-0.353-0.481-0.984-0.128-1.408l4.476-5.371-4.315-5.362c-0.346-0.43-0.278-1.060 0.152-1.406 0.431-0.346 1.060-0.278 1.407 0.152l4.828 6c0.298 0.371 0.294 0.901-0.011 1.267l-5 6c-0.198 0.237-0.482 0.36-0.769 0.36z"></path>
+    </symbol>
+    <symbol id="today" viewBox="0 0 24 24">
+      <title>today</title>
+      <path d="M16 12c0 2.209-1.791 4-4 4s-4-1.791-4-4c0-2.209 1.791-4 4-4s4 1.791 4 4z"></path>
+    </symbol>
+  </defs>
+</svg>
+<style>
+  .ixo {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+  }
+</style>
+
 <div class="ec-calendar">
   <nav class="ec-calendar-controls">
     <a (click)="grid.alter(-1, 'months')" class="btn btn_clear ec-calendar-controls__prev" [class.is-disabled]="!grid.canAlter(-1,'month')">
-      <!--TODO add .ec-icon fallback config-->
-      <!-- <ec-icon name="chevron-left"></ec-icon> -->
-      &lt;
+      <svg class="ixo">
+        <use xlink:href="#arrowhead-left"></use>
+      </svg>
     </a>
     <div class="ec-calendar-title">{{grid.formatted}}</div>
     <a (click)="grid.today()" class="btn btn_clear ec-calendar-controls__current">
-      <!--TODO add fallback config for bull-->
-      &bull;
+      <svg class="ixo">
+        <use xlink:href="#today"></use>
+      </svg>
     </a>
     <a (click)="grid.alter(1, 'months')" class="btn btn_clear ec-calendar-controls__next" [class.is-disabled]="!grid.canAlter(1,'month')">
-      <!--TODO add .ec-icon fallback config-->
-      <!-- <ec-icon name="chevron-right"></ec-icon> -->
-      &gt;
+      <svg class="ixo">
+        <use xlink:href="#arrowhead-right"></use>
+      </svg>
     </a>
   </nav>
   <div class="ec-calendar-month ">
