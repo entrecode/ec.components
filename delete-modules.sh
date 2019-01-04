@@ -16,3 +16,5 @@ cd ../ace
 rm -rf node_modules
 cd ../location
 rm -rf node_modules
+cd ../calendar
+rm -rf node_modules

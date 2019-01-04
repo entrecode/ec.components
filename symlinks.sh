@@ -24,3 +24,6 @@ ln -s ../../packages/ace
 #
 rm -rf location
 ln -s ../../packages/location
+#
+rm -rf calendar
+ln -s ../../packages/calendar
