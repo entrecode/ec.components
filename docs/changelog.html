@@ -1,0 +1,385 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ec.components documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
+	      <link rel="stylesheet" href="./styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="./" class="navbar-brand">ec.components documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content getting-started">
+                   <div class="content-data">
+
+<h1 id="changelog">Changelog</h1>
+<p><a name="data0.41.0"></a></p>
+<h2 id="-ec-components-data-0-41-0">@ec.components/data 0.41.0</h2>
+<ul>
+<li>added entry-list-select. you can set it up by using inputView:&#39;entry-list-select&#39; in your field config.</li>
+</ul>
+<p><a name="ui0.35.0"></a></p>
+<h2 id="-ec-components-ui-0-35-0">@ec.components/ui 0.35.0</h2>
+<ul>
+<li>selects now have an input field that filter the dropdown + keyboard controls.</li>
+</ul>
+<p><a name="data0.40.0"></a></p>
+<h2 id="-ec-components-data-0-40-0">@ec.components/data 0.40.0</h2>
+<p>BREAKING CHANGE: </p>
+<ul>
+<li>field property hidden has been renamed to hideInList. You have to refactor all configurations that contain hidden: true to hideInList: true.</li>
+</ul>
+<p><a name="ui0.32.0"></a></p>
+<h2 id="-ec-components-ui-0-32-0">@ec.components/ui 0.32.0</h2>
+<p>BREAKING CHANGE:</p>
+<ul>
+<li>ec-pop: removed visible attribute + simplified markup structure.<ul>
+<li>removed ec-pop-container class</li>
+<li>removed ec-pop class</li>
+<li>is-active is now set on the ec-pop element itself</li>
+</ul>
+</li>
+</ul>
+<p>DEPRECATED: please update all usages of classes ec-pop_* and use ec-modal or ec-pop with the correct classes.
+Refer to the pop demo or the modal demo for example usages.</p>
+<p><a name="0.34.0"></a></p>
+<h2 id="-ec-components-data-0-34-0">@ec.components/data 0.34.0</h2>
+<p>BREAKING CHANGE:</p>
+<ul>
+<li>ec-searchbar list input now expects a list instance instead of a list component. The component can now be passed to listComponent input to enable arrow navigation. </li>
+</ul>
+<p>Change:</p>
+<div><pre class="line-numbers"><code class="language-html">&lt;ec-searchbar [list]=&quot;resourceList&quot;&gt;&lt;/ec-searchbar&gt;</code></pre></div><p>to</p>
+<div><pre class="line-numbers"><code class="language-html">&lt;ec-searchbar [list]=&quot;resourceList?.list&quot; [listComponent]=&quot;resourceList&quot;&gt;&lt;/ec-searchbar&gt;</code></pre></div><p>The change was introduced to sync the list filter with the searchbar query.</p>
+<p><a name="0.29.0"></a></p>
+<h2 id="-ec-components-data-0-29-0">@ec.components/data 0.29.0</h2>
+<p>BREAKING CHANGE:</p>
+<ul>
+<li>all (change) outputs have been renamed to (changed) to avoid getting also the dom events fired by angular.</li>
+</ul>
+<p><a name="0.25.0"></a></p>
+<h2 id="-ec-components-ui-0-25-0">@ec.components/ui 0.25.0</h2>
+<p>BREAKING CHANGE:</p>
+<ul>
+<li>all (change) outputs have been renamed to (changed) to avoid getting also the dom events fired by angular.</li>
+</ul>
+<p><a name="0.22.0"></a></p>
+<h2 id="-ec-components-ui-0-22-0">@ec.components/ui 0.22.0</h2>
+<p>BREAKING CHANGE:</p>
+<ul>
+<li>now requires ngx-drag-drop packages for new drag and drop features</li>
+</ul>
+<p><a name="0.25.0"></a></p>
+<h2 id="-ec-components-data-0-25-0">@ec.components/data 0.25.0</h2>
+<p>BREAKING CHANGE:</p>
+<ul>
+<li>asset-select now contains asset-group selects in the list-pop and when uploading</li>
+</ul>
+<p><a name="0.23.0"></a></p>
+<h2 id="-ec-components-data-0-23-0">@ec.components/data 0.23.0</h2>
+<p>BREAKING CHANGE:</p>
+<ul>
+<li>added useLegacyAssets flag to use old assets. All projects still using old assets need to set this flag to migrate! The flag can be used in the field config or directly in the asset-select config.</li>
+</ul>
+<p><a name="0.17.0"></a></p>
+<h2 id="0-17-0">0.17.0</h2>
+<ul>
+<li>added resource module with all resource related components and services</li>
+<li>can now add delete and modify entries and resource through the selects</li>
+<li>asset select now supports old and new assets. When you pass [assetGroupID] to select (or list/upload), new assets will be used.</li>
+<li>deprecated asset-list, because ec.sdk now supports public api relations.</li>
+</ul>
+<p>BREAKING CHANGE:</p>
+<ul>
+<li>removed [field] input from selects</li>
+</ul>
+<p><a name="0.15.0"></a></p>
+<h2 id="0-15-0">0.15.0</h2>
+<ul>
+<li>can now use SdkService without datamanagerID.</li>
+<li>added resource-delete-pop</li>
+<li>removed labels config from pagination-config. now using symbol.service</li>
+<li>added ec-resource-select</li>
+<li>added support for new assets</li>
+</ul>
+<p><a name="0.14.0"></a></p>
+<h2 id="0-14-0">0.14.0</h2>
+<ul>
+<li>added ready event to FormComponent when initialization is complete.</li>
+<li>added ResourcePopComponent for creating and editing resources.</li>
+<li>added permissions option to resource-config to automatically show only allowed actions.</li>
+<li>added ResourceCrudComponent for easy create/read/update/delete of any resource.</li>
+<li>can now set field config label to false to show an empty label. (COM-89)</li>
+<li>optimized ec-select toggle behaviour (COM-92, COM-93)</li>
+<li>can now set placeholder for ec-password-reset (COM-101)</li>
+<li>added SymbolService for localization</li>
+</ul>
+<p><a name="0.13.0"></a></p>
+<h2 id="0-13-0">0.13.0</h2>
+<ul>
+<li>can now configure the maximum visible items for &#39;tags&#39; view via the maxItems option in the field config. The default value is 10.</li>
+<li>added auto generated id to all fields. Those ids are used in label#for and input#id. You should also reference this id in custom inputs to make the label clickable.</li>
+<li>added ec-icon component for more flexible icons.</li>
+<li>added paginationConfig Input to ListComponent (+ all children like ResourceListComponent)</li>
+<li>added maxColumns option to list-config.</li>
+</ul>
+<p>BREAKING CHANGES:</p>
+<ul>
+<li>COM-98: active/visible classes: renamed active to is-active, visible to is-visible and disabled to is-disabled</li>
+<li>COM-95: renamed is-sortable-active to is-sorted + added is-sorted-asc and is-sorted-desc</li>
+<li>COM-96: replaced all usages of ec-icon with new ec-icon component (nests one level deeper)</li>
+<li>COM-45: removed range input from pagination, replaced with PaginationConfig with additional options (see docs)</li>
+<li>removed [host] input from ListItemsComponent due to incompatibilities.</li>
+<li>renamed list config property disableSelection to selectMode and inverted its value meaning. When selectMode is true, the checkboxes are shown and the columnClicked event is ignored as long as selectMode is active. You can toggle the selectMode via list#toggleSelectMode.</li>
+<li>removed DatamanagerListComponent and ModelListComponent. You can use ResourceList for both now.</li>
+</ul>
+<p><a name="0.12.0"></a></p>
+<h2 id="0-12-0">0.12.0</h2>
+<p>BREAKING CHANGE:</p>
+<ul>
+<li>form.component (and all children): renamed (submit) output to (submitted)</li>
+</ul>
+<p><a name="0.10.0"></a></p>
+<h2 id="0-10-0">0.10.0</h2>
+<p>BREAKING CHANGES:</p>
+<ul>
+<li>list.component (and all extending components): renamed select output to columnClicked. (Global replace &quot;(select)&quot; to &quot;(columnClicked)&quot;).</li>
+<li>month.component: renamed select output to dayClicked (similar to list.component)</li>
+</ul>
+<p><a name="0.9.0"></a></p>
+<h2 id="0-9-0">0.9.0</h2>
+<ul>
+<li>added use method to selection.component to write the model from outside
+BREAKING CHANGES:</li>
+<li>ecPublicAsset has been renamed to ecAsset and now supports direct id binding to directive.</li>
+</ul>
+<p><a name="0.8.2"></a></p>
+<h2 id="0-8-2">0.8.2</h2>
+<ul>
+<li>added ec-toggle to default inputs (use view: &#39;toggle&#39; in field config)</li>
+<li>added ec-calendar</li>
+<li>system fields (id, created, modified etc) are now readOnly by default</li>
+</ul>
+<p><a name="0.8.1"></a></p>
+<h2 id="0-8-1">0.8.1</h2>
+<ul>
+<li>added ec-entry-pop</li>
+</ul>
+<p><a name="0.8.0"></a></p>
+<h2 id="0-8-0">0.8.0</h2>
+<p>BREAKING CHANGES:</p>
+<ul>
+<li>removed PublicService and AdminService, you should use sdk methods instead.</li>
+<li>login/signup + more auth methods have been moved from SdkService to new AuthService</li>
+<li>former ec-login has been renamed to ec-login-form, the new ec-login handles login automatically.</li>
+<li>crud methods have been renamend to &#39;get&#39;, &#39;put&#39;, &#39;post&#39;, &#39;delete&#39;</li>
+<li>ec-entry and ec-entries are now directives ecEntry and ecEntries</li>
+</ul>
+<p><a name="0.7.0"></a></p>
+<h2 id="0-7-0">0.7.0</h2>
+<p>BREAKING CHANGES:</p>
+<ul>
+<li>pop classes have been completely changed to:<ul>
+<li>.ec-pop_fullscreen</li>
+<li>.ec-pop_dialog</li>
+<li>.ec-pop_drawer-left</li>
+<li>.ec-pop_drawer-top</li>
+<li>.ec-pop_drawer-right</li>
+<li>.ec-pop_drawer-bottom</li>
+<li>.ec-pop_toast-top</li>
+<li>.ec-pop_toast-bottom</li>
+</ul>
+</li>
+<li>added @ec.components/style package</li>
+</ul>
+<p><a name="0.6.0"></a></p>
+<h2 id="0-6-0">0.6.0</h2>
+<ul>
+<li>EntryFormComponent.deleteEntry now returns the deletion promise.</li>
+<li>fix: SdkService.ready promise was not renewed after login</li>
+<li>LoginComponent now accepts a loader as input
+BREAKING CHANGES:</li>
+<li>FormComponent.submitted now emits the instance of Form and not the group</li>
+</ul>
+<p><a name="0.5.3"></a></p>
+<h2 id="0-5-3">0.5.3</h2>
+<ul>
+<li>feature: asset-select is now capable of using ngModel with two way binding</li>
+</ul>
+<p><a name="0.5.2"></a></p>
+<h2 id="0-5-2">0.5.2</h2>
+<ul>
+<li>removed DataRoutingModule from DataModule</li>
+<li>feature: asset-select can now resolve assetID&#39;s.</li>
+<li>feature: added filterPopClass config option to field-property-config.</li>
+<li>further styling</li>
+</ul>
+<p><a name="0.5.1"></a></p>
+<h2 id="0-5-1">0.5.1</h2>
+<ul>
+<li>further styling</li>
+<li>fix: could not set custom inputs/outputs for entry fields</li>
+<li>now using ec.sdk 0.8.6</li>
+</ul>
+<p><a name="0.5.0"></a></p>
+<h2 id="0-5-0">0.5.0</h2>
+<ul>
+<li>further styling
+BREAKING CHANGES:</li>
+<li>view: &#39;label&#39; must now be view: &#39;tag&#39;</li>
+<li>view: &#39;labels&#39; must now be view: &#39;tags&#39;</li>
+<li>selection is now a direct input of ec-crud instead of a config property</li>
+</ul>
+<p><a name="0.4.1"></a></p>
+<h2 id="0-4-1">0.4.1</h2>
+<ul>
+<li>fixed tests after refactoring</li>
+<li>wrote project setup tutorial</li>
+<li>further styling</li>
+</ul>
+<p><a name="0.4.0"></a></p>
+<h2 id="0-4-0">0.4.0</h2>
+<ul>
+<li>now using ec.sdk 0.8.5</li>
+</ul>
+<p>BREAKING CHANGES:</p>
+<ul>
+<li>all imports from <a href="mailto:&#39;@ec.components">&#39;@ec.components</a>/<em>/_&#39; must now lead to <a href="mailto:&#39;@ec.components">&#39;@ec.components</a>/</em>/src/_&#39;</li>
+<li>imports from <a href="mailto:&#39;@ec.components">&#39;@ec.components</a>/*&#39; can stay the same and should generally be preferred.</li>
+</ul>
+<p><a name="0.3.1"></a></p>
+<h2 id="0-3-1">0.3.1</h2>
+<ul>
+<li>refactored typings to be aot compatible</li>
+<li>refactored imports</li>
+<li>began styling</li>
+</ul>
+<p><a name="0.3.0"></a></p>
+<h2 id="0-3-0">0.3.0</h2>
+<ul>
+<li>now using ec.sdk 0.8.1</li>
+<li>now supporting default routes for filtering and more</li>
+<li>AssetInput is now default for asset/assets fields</li>
+</ul>
+<p><a name="0.2.0"></a></p>
+<h2 id="0-2-0">0.2.0</h2>
+<ul>
+<li>now using ec.sdk 0.7.1</li>
+<li>entry-form now supports lvl1 entries even with nested resources</li>
+<li>ec-datetime now supports iso dates</li>
+</ul>
+<p><a name="0.1.1"></a></p>
+<h2 id="0-1-1">0.1.1</h2>
+<ul>
+<li>changed src folder and module structure</li>
+<li>ec-model-list</li>
+<li>ec-asset-select</li>
+<li>ec-upload</li>
+<li>ec-datetime input</li>
+</ul>
+<p><a name="0.1.0"></a></p>
+<h2 id="0-1-0-2017-08-23-">0.1.0 (2017-08-23)</h2>
+<ul>
+<li>the most important basic components are now implemented</li>
+<li>dynamic input/output templates</li>
+<li>ec-entry, ec-entries</li>
+<li>added demo with multiple routes</li>
+<li>ec-form</li>
+<li>much more</li>
+</ul>
+<p><a name="0.0.2"></a></p>
+<h2 id="0-0-2-2017-05-11-">0.0.2 (2017-05-11)</h2>
+<ul>
+<li>improved list</li>
+<li>improved imports</li>
+</ul>
+<p><a name="0.0.1"></a></p>
+<h2 id="0-0-1-2017-05-10-">0.0.1 (2017-05-10)</h2>
+<ul>
+<li>initial release</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 0;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'getting-started';
+            var COMPODOC_CURRENT_PAGE_URL = 'changelog.html';
+       </script>
+
+       <script src="./js/libs/custom-elements.min.js"></script>
+       <script src="./js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="./js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="./js/menu-wc.js" defer></script>
+
+       <script src="./js/libs/bootstrap-native.js"></script>
+
+       <script src="./js/libs/es6-shim.min.js"></script>
+       <script src="./js/libs/EventDispatcher.js"></script>
+       <script src="./js/libs/promise.min.js"></script>
+       <script src="./js/libs/zepto.min.js"></script>
+
+       <script src="./js/compodoc.js"></script>
+
+       <script src="./js/tabs.js"></script>
+       <script src="./js/menu.js"></script>
+       <script src="./js/libs/clipboard.min.js"></script>
+       <script src="./js/libs/prism.js"></script>
+       <script src="./js/sourceCode.js"></script>
+          <script src="./js/search/search.js"></script>
+          <script src="./js/search/lunr.min.js"></script>
+          <script src="./js/search/search-lunr.js"></script>
+          <script src="./js/search/search_index.js"></script>
+       <script src="./js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

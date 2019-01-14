@@ -1,0 +1,1482 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ec.components documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">ec.components documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li>ResourceConfig</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>packages/data/src/lib/resource-config/resource-config.service.ts</code>
+        </p>
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#base64uuid">base64uuid</a>
+                            </li>
+                            <li>
+                                <a href="#created">created</a>
+                            </li>
+                            <li>
+                                <a href="#get">get</a>
+                            </li>
+                            <li>
+                                <a href="#hexColor">hexColor</a>
+                            </li>
+                            <li>
+                                <a href="#shortID">shortID</a>
+                            </li>
+                            <li>
+                                <a href="#stringField">stringField</a>
+                            </li>
+                            <li>
+                                <a href="#tagsField">tagsField</a>
+                            </li>
+                            <li>
+                                <a href="#uuid">uuid</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#config">config</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(symbol: <a href="../injectables/SymbolService.html">SymbolService</a>, typeConfig: <a href="../injectables/TypeConfigService.html">TypeConfigService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">packages/data/src/lib/resource-config/resource-config.service.ts:10</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>symbol</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../injectables/SymbolService.html" target="_self" >SymbolService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>typeConfig</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../injectables/TypeConfigService.html" target="_self" >TypeConfigService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+        <h3 id="methods">
+            Methods
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="base64uuid"></a>
+                        <span class="name">
+                            <b>
+                            base64uuid
+                            </b>
+                            <a href="#base64uuid"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>base64uuid()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">packages/data/src/lib/resource-config/resource-config.service.ts:70</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>regex for base64 uuid </p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>RegExp</code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="created"></a>
+                        <span class="name">
+                            <b>
+                            created
+                            </b>
+                            <a href="#created"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>created(label: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, symbol: <a href="../injectables/SymbolService.html">SymbolService</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">packages/data/src/lib/resource-config/resource-config.service.ts:24</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>returns the config for a created field </p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>label</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>&#x27;Date&#x27;</code>
+                                                        </td>
+
+                                                </tr>
+                                                <tr>
+                                                        <td>symbol</td>
+                                                        <td>
+                                                                    <code><a href="../injectables/SymbolService.html" target="_self" >SymbolService</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>{ label: string; sortable: boolean; view: string; display: any; group: any; form: boolean; immuta...</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="get"></a>
+                        <span class="name">
+                            <b>
+                            get
+                            </b>
+                            <a href="#get"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>get(relationName: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">packages/data/src/lib/resource-config/resource-config.service.ts:14</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Returns the CrudConfig for the given relation name. </p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>relationName</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="../interfaces/CrudConfig.html" target="_self" >CrudConfig&lt;Resource&gt;</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="hexColor"></a>
+                        <span class="name">
+                            <b>
+                            hexColor
+                            </b>
+                            <a href="#hexColor"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>hexColor()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">packages/data/src/lib/resource-config/resource-config.service.ts:36</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>returns the config for a hexColor field </p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>{ label: string; view: string; prefill: string; }</code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="shortID"></a>
+                        <span class="name">
+                            <b>
+                            shortID
+                            </b>
+                            <a href="#shortID"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>shortID()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">packages/data/src/lib/resource-config/resource-config.service.ts:62</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>returns regex for a shortID </p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>RegExp</code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="stringField"></a>
+                        <span class="name">
+                            <b>
+                            stringField
+                            </b>
+                            <a href="#stringField"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>stringField(label, filterable, sortable)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">packages/data/src/lib/resource-config/resource-config.service.ts:53</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>returns the config for a string field </p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>label</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+
+                                                </tr>
+                                                <tr>
+                                                        <td>filterable</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>true</code>
+                                                        </td>
+
+                                                </tr>
+                                                <tr>
+                                                        <td>sortable</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>true</code>
+                                                        </td>
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>{ label: any; view: string; filterable: boolean; sortable: boolean; }</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="tagsField"></a>
+                        <span class="name">
+                            <b>
+                            tagsField
+                            </b>
+                            <a href="#tagsField"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>tagsField(label, list)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">packages/data/src/lib/resource-config/resource-config.service.ts:44</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>returns the config for a tags field </p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>label</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+
+                                                </tr>
+                                                <tr>
+                                                        <td>list</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>true</code>
+                                                        </td>
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>{ label: any; view: string; display: (value: any) &#x3D;&gt; any; list: boolean; }</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="uuid"></a>
+                        <span class="name">
+                            <b>
+                            uuid
+                            </b>
+                            <a href="#uuid"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>uuid()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">packages/data/src/lib/resource-config/resource-config.service.ts:66</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>returns regex for a uuid </p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>RegExp</code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+            <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="config"></a>
+                        <span class="name"><b>config</b><a href="#config"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>config()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">packages/data/src/lib/resource-config/resource-config.service.ts:75</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Returns the whole resource-config, which maps a resource relation name to a CrudConfig. </p>
+</div>
+
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code>literal type</code>
+
+                                </div>
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
+</section>
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { SymbolService } from &#x27;@ec.components/ui&#x27;;
+import Resource from &#x27;ec.sdk/lib/resources/Resource&#x27;;
+import { CrudConfig } from &#x27;../crud/crud-config.interface&#x27;;
+import { AdminEntryInputComponent } from &#x27;../entry-form/admin-entry-input.component&#x27;;
+import { TypeConfigService } from &#x27;../model-config/type-config.service&#x27;;
+
+@Injectable()
+/** Contains default configurations for all kinds of resources. Used by ResourceList and ResourceForm.  */
+export class ResourceConfig {
+
+  constructor(private symbol: SymbolService, private typeConfig: TypeConfigService) { }
+  /** Returns the CrudConfig for the given relation name. */
+  get(relationName: string): CrudConfig&lt;Resource&gt; {
+    if (!this.config[relationName]) {
+      console.error(&#x60;${relationName} could not be found in the resource-config.
+      Use one of ${Object.keys(this.config)}&#x60;);
+      return {};
+    } // TODO enrich fields with type with type-config?
+    return this.config[relationName];
+  }
+
+  /** returns the config for a created field */
+  created(label &#x3D; &#x27;Date&#x27;, symbol: SymbolService) {
+    return {
+      label,
+      sortable: true,
+      view: &#x27;date&#x27;,
+      display: this.typeConfig.displayDate(),
+      group: this.typeConfig.groupDate(),
+      form: false,
+      immutable: true
+    };
+  }
+  /** returns the config for a hexColor field */
+  hexColor() {
+    return {
+      label: &#x27;#&#x27;,
+      view: &#x27;color&#x27;,
+      prefill: &#x27;#ffffff&#x27;
+    };
+  }
+  /** returns the config for a tags field */
+  tagsField(label, list &#x3D; true) {
+    return {
+      label,
+      view: &#x27;tags&#x27;,
+      display: (value) &#x3D;&gt; value || [],
+      list
+    };
+  }
+  /** returns the config for a string field */
+  stringField(label, filterable &#x3D; true, sortable &#x3D; true) {
+    return {
+      label,
+      view: &#x27;string&#x27;,
+      filterable,
+      sortable
+    };
+  }
+  /** returns regex for a shortID */
+  shortID(): RegExp {
+    return /^[0-9A-Za-z-_]{7,14}$/;
+  }
+  /** returns regex for a uuid */
+  uuid(): RegExp {
+    return /^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i;
+  }
+  /** regex for base64 uuid */
+  base64uuid(): RegExp {
+    return /^[a-zA-Z0-9\\-_]{22}$/;
+  }
+
+  /** Returns the whole resource-config, which maps a resource relation name to a CrudConfig. */
+  get config(): { [key: string]: CrudConfig&lt;Resource&gt; } {
+    return {
+      dataManager: {
+        identifier: &#x27;dataManagerID&#x27;,
+        identifierPattern: this.uuid(),
+        label: &#x27;title&#x27;,
+        permissions: {
+          post: &#x27;dm-create&#x27;,
+          put: &#x27;dm:&lt;dataManagerID&gt;:edit&#x27;,
+          delete: &#x27;dm:&lt;dataManagerID&gt;:delete&#x27;,
+          get: true
+        },
+        fields: {
+          hexColor: this.hexColor(),
+          shortID: {
+            immutable: true,
+            list: false
+          },
+          title: Object.assign(this.stringField(&#x27;Name&#x27;), { required: true }),
+          description: {
+            label: this.symbol.resolve(&#x27;field.label.description&#x27;),
+            view: &#x27;string&#x27;,
+            filterable: true
+          },
+          config: {
+            label: this.symbol.resolve(&#x27;field.label.config&#x27;),
+            view: &#x27;json&#x27;,
+            list: false,
+            immutable: true
+          },
+          defaultLocale: {
+            list: false,
+            immutable: true
+          },
+          locales: this.tagsField(this.symbol.resolve(&#x27;field.label.locales&#x27;), false),
+          publicAssetRights: Object.assign(
+            this.tagsField(this.symbol.resolve(&#x27;datamanager.field.label.publicAssetRights&#x27;), false),
+            { immutable: true }),
+          rights: Object.assign(this.tagsField(&#x27;rights&#x27;, false), { immutable: true }),
+          created: this.created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
+        }
+      },
+      model: {
+        identifier: &#x27;modelID&#x27;,
+        identifierPattern: this.uuid(),
+        label: &#x27;title&#x27;,
+        fields: {
+          hexColor: this.hexColor(),
+          title: Object.assign(this.stringField(&#x27;Model&#x27;), { required: true }),
+          description: {
+            label: this.symbol.resolve(&#x27;field.label.description&#x27;),
+            view: &#x27;string&#x27;,
+            filterable: true,
+          },
+          locales: {
+            list: false,
+            prefill: []
+          },
+          fields: {
+            view: &#x27;tags&#x27;,
+            display: (value) &#x3D;&gt; {
+              return (value || []).map(field &#x3D;&gt; field.title).filter(field &#x3D;&gt; field[0] !&#x3D;&#x3D; &#x27;_&#x27;);
+            },
+            prefill: []
+          },
+          titleField: {
+            view: &#x27;string&#x27;,
+            list: false
+          },
+          config: {
+            list: false,
+            view: &#x27;json&#x27;
+          },
+          hasEntries: {
+            immutable: true,
+            view: &#x27;boolean&#x27;
+          },
+          hooks: {
+            display: (value) &#x3D;&gt; {
+              return (value || []).map(hook &#x3D;&gt; (hook.methods || []).join(&#x27;, &#x27;));
+            },
+            view: &#x27;tags&#x27;
+          },
+          policies: {
+            display: (value) &#x3D;&gt; {
+              return (value || []).map(policy &#x3D;&gt; policy.method);
+            },
+            view: &#x27;tags&#x27;
+          },
+          sync: {
+            list: false,
+            view: &#x27;json&#x27;,
+            immutable: true
+          },
+          created: this.created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
+        }
+      },
+      // ec accounts
+      account: {
+        identifier: &#x27;accountID&#x27;,
+        identifierPattern: this.uuid(),
+        label: &#x27;email&#x27;,
+        permissions: {
+          get: &#x27;acc:list&#x27;,
+          put: &#x27;acc:edit:&lt;accountID&gt;&#x27;
+        },
+        fields: {
+          name: this.stringField(this.symbol.resolve(&#x27;field.label.name&#x27;)),
+          email: {
+            label: this.symbol.resolve(&#x27;field.label.email&#x27;),
+            view: &#x27;string&#x27;,
+            filterable: true,
+            sortable: true
+          },
+          hasPassword: {
+            label: this.symbol.resolve(&#x27;field.label.password&#x27;),
+            view: &#x27;boolean&#x27;,
+            filterable: true,
+            sortable: true,
+            readOnly: true
+          },
+          hasPendingEmail: {
+            label: this.symbol.resolve(&#x27;account.field.label.hasPendingEmail&#x27;),
+            view: &#x27;boolean&#x27;,
+            filterable: true,
+            sortable: true,
+            readOnly: true
+          },
+          language: {
+            label: this.symbol.resolve(&#x27;account.field.label.language&#x27;),
+            view: &#x27;string&#x27;,
+            list: false
+          },
+          openID: {
+            list: false
+          },
+          permissions: this.tagsField(this.symbol.resolve(&#x27;account.field.label.permissions&#x27;), false),
+          groups: {
+            label: this.symbol.resolve(&#x27;account.field.label.groups&#x27;),
+            type: &#x27;groups&#x27;,
+            input: AdminEntryInputComponent,
+            list: false,
+            display: (value) &#x3D;&gt; value ? value.map(group &#x3D;&gt; group.name) : []
+          },
+          state: {
+            label: this.symbol.resolve(&#x27;account.field.label.state&#x27;)
+          },
+          created: this.created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
+        }
+      },
+      dmAccount: {
+        identifier: &#x27;accountID&#x27;,
+        identifierPattern: this.uuid(),
+        label: &#x27;email&#x27;,
+        permissions: {
+          get: &#x27;acc:list&#x27;,
+          put: &#x27;acc:edit:&lt;accountID&gt;&#x27;
+        },
+        methods: [&#x27;get&#x27;, &#x27;put&#x27;, &#x27;delete&#x27;],
+        fields: {
+          accountID: {
+            label: this.symbol.resolve(&#x27;field.label.id&#x27;),
+            view: &#x27;string&#x27;,
+            hideInList: true,
+          },
+          title: {
+            label: &#x27;Title&#x27;,
+            filterable: true,
+            hideInList: true
+          },
+          email: {
+            label: this.symbol.resolve(&#x27;field.label.title&#x27;),
+            view: &#x27;string&#x27;,
+            filterable: true,
+            sortable: true,
+            resolve: (body) &#x3D;&gt; body.email || body.accountID
+          },
+          hasPassword: {
+            label: this.symbol.resolve(&#x27;dmAccount.field.label.hasPassword&#x27;),
+            view: &#x27;boolean&#x27;,
+            filterable: true,
+            readOnly: true
+          },
+          pending: {
+            label: this.symbol.resolve(&#x27;dmAccount.field.label.pending&#x27;),
+            view: &#x27;boolean&#x27;,
+            filterable: true,
+            readOnly: true
+          },
+          oauth: {
+            list: false
+          }
+        }
+      },
+      template: {
+        identifier: &#x27;templateID&#x27;,
+        identifierPattern: this.uuid(),
+        label: &#x27;name&#x27;,
+        permissions: {
+          post: &#x27;dm-template-create&#x27;,
+          get: &#x27;dm-template:&lt;templateID&gt;:view&#x27;
+        },
+        fields: {
+          name: {
+            label: this.symbol.resolve(&#x27;template.field.label.template&#x27;),
+            view: &#x27;string&#x27;,
+            filterable: true,
+            sortable: true
+          },
+          version: {
+            label: this.symbol.resolve(&#x27;template.field.label.version&#x27;),
+            display: this.typeConfig.displayDate(),
+            group: this.typeConfig.groupDate(),
+            form: false
+          }
+        }
+      },
+      app: {
+        identifier: &#x27;appID&#x27;,
+        identifierPattern: this.uuid(),
+        permissions: {
+          post: &#x27;app-create&#x27;,
+          delete: &#x27;app:&lt;appID&gt;:delete&#x27;,
+          put: &#x27;app:&lt;appID&gt;:edit&#x27;
+        },
+        fields: {
+          hexColor: this.hexColor(),
+          shortID: {
+            label: this.symbol.resolve(&#x27;field.label.shortID&#x27;),
+            list: false
+          },
+          title: {
+            label: this.symbol.resolve(&#x27;app.field.label.app&#x27;),
+            view: &#x27;string&#x27;,
+            filterable: true,
+            sortable: true,
+          },
+          created: this.created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
+        }
+      },
+      platform: {
+        identifier: &#x27;platformID&#x27;,
+        identifierPattern: this.uuid(),
+        fields: {
+          title: {
+            label: this.symbol.resolve(&#x27;platform.field.label.platform&#x27;),
+            view: &#x27;string&#x27;
+          },
+          platformType: {
+            label: this.symbol.resolve(&#x27;platform.field.label.platformType&#x27;),
+            view: &#x27;string&#x27;
+          },
+          config: {
+            label: this.symbol.resolve(&#x27;field.label.config&#x27;),
+            view: &#x27;json&#x27;,
+            list: false
+          },
+          created: this.created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
+        }
+      },
+      build: {},
+      deployment: {},
+      asset: { // old ec.asset
+        identifier: &#x27;assetID&#x27;,
+        identifierPattern: this.uuid(),
+        fields: {
+          thumb: {
+            form: false,
+            label: this.symbol.resolve(&#x27;asset.field.label.thumb&#x27;),
+            view: &#x27;preview&#x27;,
+            resolve: (asset) &#x3D;&gt; {
+              if (asset.type !&#x3D;&#x3D; &#x27;image&#x27;) {
+                return &#x27;&#x27;;
+              }
+              return asset.getImageUrl(200);
+            },
+            immutable: true
+          },
+          assetID: {
+            label: &#x27;assetID&#x27;,
+            list: false,
+            form: false,
+            immutable: true
+          },
+          title: {
+            label: this.symbol.resolve(&#x27;field.label.title&#x27;),
+            view: &#x27;string&#x27;,
+            sortable: true,
+            filterable: true
+          },
+          files: {
+            label: this.symbol.resolve(&#x27;asset.field.label.files&#x27;),
+            view: &#x27;tag&#x27;,
+            form: false,
+            display: value &#x3D;&gt; value.length,
+            immutable: true
+          },
+          type: {
+            filterOperator: &#x27;exact&#x27;,
+            form: false,
+            immutable: true
+          },
+          tags: this.tagsField(this.symbol.resolve(&#x27;asset.field.label.tags&#x27;)),
+          created: this.created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
+        }
+      },
+      tags: {
+        identifier: &#x27;tag&#x27;,
+        label: &#x27;tag&#x27;,
+        fields: {
+          tag: {
+            view: &#x27;string&#x27;,
+            readOnly: true,
+            sortable: true,
+            filterable: true
+          },
+          count: {
+            view: &#x27;number&#x27;,
+            readOnly: true,
+            create: false,
+            sortable: true
+          }
+        }
+      },
+      legacyAsset: { // old public assets
+        identifier: &#x27;assetID&#x27;,
+        identifierPattern: this.uuid(),
+        label: &#x27;title&#x27;,
+        fields: {
+          thumb: {
+            form: false,
+            label: this.symbol.resolve(&#x27;asset.field.label.thumb&#x27;),
+            view: &#x27;preview&#x27;,
+            resolve: (asset) &#x3D;&gt; {
+              if (asset.type !&#x3D;&#x3D; &#x27;image&#x27;) {
+                return &#x27;&#x27;;
+              }
+              return asset.getImageUrl(200);
+            },
+            immutable: true
+          },
+          assetID: {
+            label: &#x27;assetID&#x27;,
+            list: false,
+            form: false,
+            immutable: true
+          },
+          title: {
+            label: this.symbol.resolve(&#x27;field.label.title&#x27;),
+            view: &#x27;string&#x27;,
+            sortable: true,
+            filterable: true
+          },
+          files: {
+            label: this.symbol.resolve(&#x27;asset.field.label.files&#x27;),
+            view: &#x27;tag&#x27;,
+            form: false,
+            display: value &#x3D;&gt; value.length,
+            immutable: true
+          },
+          type: {
+            filterOperator: &#x27;exact&#x27;,
+            form: false,
+            immutable: true
+          },
+          tags: this.tagsField(this.symbol.resolve(&#x27;asset.field.label.tags&#x27;)),
+          created: this.created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
+        }
+      },
+      // https://doc.entrecode.de/en/develop/resources/dm-assetgroup/
+      assetGroup: {
+        identifier: &#x27;assetGroupID&#x27;,
+        label: &#x27;assetGroupID&#x27;,
+        fields: {
+          assetGroupID: {
+            label: this.symbol.resolve(&#x27;asset.field.label.assetGroupID&#x27;),
+            view: &#x27;string&#x27;,
+            filterable: true
+          },
+          public: {
+            view: &#x27;boolean&#x27;,
+            prefill: false
+          },
+          settings: {
+            view: &#x27;json&#x27;,
+            display: (json) &#x3D;&gt; JSON.stringify(json),
+            prefill: {}
+            /*
+            urlExpiration: string
+            disabledTypes: Array&lt;string&gt;
+            imageSizes: Array&lt;integer&gt;
+            thumbSizes: Array&lt;integer&gt;
+            */
+          },
+          policies: {
+            view: &#x27;tags&#x27;,
+            display: (policies) &#x3D;&gt; (policies || []).map(p &#x3D;&gt; p.method),
+            prefill: []
+            /*
+            method: get, put, post, delete
+            user: public, dmUser
+            conditions: JSON or null (https://entrecode.de/schema/dm-assetgroup#definitions/conditions)
+            */
+          },
+          created: this.created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
+        }
+      },
+      dmAsset: { // new assets
+        identifier: &#x27;assetID&#x27;,
+        identifierPattern: this.base64uuid(),
+        label: &#x27;title&#x27;,
+        fields: {
+          file: {
+            label: this.symbol.resolve(&#x27;dmAsset.field.label.file&#x27;),
+            display: value &#x3D;&gt; value.url,
+            view: &#x27;preview&#x27;,
+            immutable: true,
+            form: false,
+            list: false
+          },
+          thumb: {
+            form: false,
+            list: true,
+            label: this.symbol.resolve(&#x27;asset.field.label.thumb&#x27;),
+            view: &#x27;preview&#x27;,
+            resolve: (asset) &#x3D;&gt; {
+              if (asset.type !&#x3D;&#x3D; &#x27;image&#x27; || !asset.thumbnails || !asset.thumbnails.length) {
+                return &#x27;&#x27;;
+              }
+              return asset.thumbnails[0].url;
+            },
+            immutable: true
+          },
+          assetID: {
+            label: this.symbol.resolve(&#x27;dmAsset.field.label.assetID&#x27;),
+            list: false,
+            form: false,
+            immutable: true
+          },
+          title: {
+            label: this.symbol.resolve(&#x27;field.label.title&#x27;),
+            view: &#x27;string&#x27;,
+            sortable: true,
+            filterable: true
+          },
+          caption: {
+            label: this.symbol.resolve(&#x27;dmAsset.field.label.caption&#x27;),
+            view: &#x27;string&#x27;
+          },
+          duplicates: {
+            label: this.symbol.resolve(&#x27;dmAsset.field.label.duplicates&#x27;),
+            view: &#x27;number&#x27;,
+            list: false,
+            form: false
+          },
+          thumbnails: {
+            label: this.symbol.resolve(&#x27;dmAsset.field.label.thumbnails&#x27;),
+            display: values &#x3D;&gt; values.map(value &#x3D;&gt; value.url),
+            list: false,
+            form: false
+          },
+          type: {
+            label: this.symbol.resolve(&#x27;dmAsset.field.label.type&#x27;),
+            view: &#x27;string&#x27;,
+            filterOperator: &#x27;any&#x27;,
+            hideInList: true,
+            immutable: true,
+            form: false
+          },
+          tags: {
+            label: this.symbol.resolve(&#x27;dmAsset.field.label.tags&#x27;),
+            view: &#x27;tags&#x27;,
+            filterOperator: &#x27;any&#x27;,
+            hideInList: true
+          },
+          created: this.created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
+        }
+      },
+      dmClient: {
+        identifier: &#x27;clientID&#x27;,
+        fields: {
+          clientID: {
+            label: this.symbol.resolve(&#x27;client.field.label.clientID&#x27;),
+            view: &#x27;string&#x27;
+          },
+          callbackURL: {
+            label: this.symbol.resolve(&#x27;client.field.label.callbackURL&#x27;),
+            view: &#x27;string&#x27;,
+          },
+          tokenMethod: this.tagsField(this.symbol.resolve(&#x27;client.field.label.tokenMethod&#x27;)),
+          disableStrategies: this.tagsField(this.symbol.resolve(&#x27;client.field.label.disableStrategies&#x27;)),
+          created: this.created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
+        }
+      },
+      role: {
+        identifier: &#x27;roleID&#x27;,
+        identifierPattern: this.uuid(),
+        label: &#x27;name&#x27;,
+        fields: {
+          name: {
+            label: this.symbol.resolve(&#x27;field.label.name&#x27;),
+            view: &#x27;string&#x27;,
+            filterable: true,
+            sortable: true
+          },
+          label: {
+            label: this.symbol.resolve(&#x27;field.label.label&#x27;),
+            view: &#x27;string&#x27;
+          },
+          accounts: {
+            label: this.symbol.resolve(&#x27;role.field.label.accounts&#x27;),
+            type: &#x27;accounts&#x27;,
+            prefill: [],
+            list: false,
+            display: (value) &#x3D;&gt; value ? value.title : &#x27;&#x27;,
+            input: AdminEntryInputComponent,
+            filterPopClass: &#x27;dialog&#x27;
+          },
+          addRegistered: {
+            label: this.symbol.resolve(&#x27;role.field.label.addRegistered&#x27;),
+            view: &#x27;boolean&#x27;/* ,
+        prefill: false */
+          },
+          addUnregistered: {
+            label: this.symbol.resolve(&#x27;role.field.label.addUnregistered&#x27;),
+            view: &#x27;boolean&#x27;/* ,
+        prefill: false */
+          },
+          created: this.created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
+        }
+      },
+      codeSource: {
+        identifier: &#x27;codeSourceID&#x27;,
+        identifierPattern: this.uuid(),
+        fields: {
+          codeSourceID: {
+            label: this.symbol.resolve(&#x27;field.label.id&#x27;),
+          },
+          codeSourceType: {
+            label: this.symbol.resolve(&#x27;field.label.type&#x27;),
+            view: &#x27;tag&#x27;
+          },
+          config: {
+            label: this.symbol.resolve(&#x27;field.label.config&#x27;),
+            list: false
+          },
+          created: this.created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
+        }
+      },
+      dataSource: {
+        identifier: &#x27;dataSourceID&#x27;,
+        identifierPattern: this.uuid(),
+        fields: {
+          dataSourceID: {
+            label: this.symbol.resolve(&#x27;field.label.id&#x27;),
+          },
+          created: this.created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
+        }
+      },
+      target: {
+        identifier: &#x27;targetID&#x27;,
+        identifierPattern: this.uuid(),
+        fields: {
+          targetType: {
+            label: this.symbol.resolve(&#x27;field.label.type&#x27;),
+            view: &#x27;tag&#x27;
+          },
+          config: {
+            label: this.symbol.resolve(&#x27;field.label.config&#x27;),
+            list: false
+          },
+          created: this.created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol),
+        }
+      },
+      group: {
+        identifier: &#x27;groupID&#x27;,
+        identifierPattern: this.uuid(),
+        label: &#x27;name&#x27;,
+        fields: {
+          name: {
+            label: this.symbol.resolve(&#x27;field.label.name&#x27;),
+            view: &#x27;string&#x27;
+          },
+          permissions: {
+            view: &#x27;tags&#x27;,
+            display: (value) &#x3D;&gt; value || [],
+            list: false
+          },
+          /* created: this.created(this.symbol.resolve(&#x27;field.label.created&#x27;), this.symbol), */
+        }
+      },
+      invite: {
+        identifier: &#x27;invite&#x27;,
+        identifierPattern: this.uuid(),
+        label: &#x27;invite&#x27;,
+        fields: {
+          invite: {
+            view: &#x27;string&#x27;
+          },
+          permissions: {
+            view: &#x27;tags&#x27;
+          },
+          groups: {
+            view: &#x27;tags&#x27;,
+            display: (group &#x3D;&gt; group ? group.map(g &#x3D;&gt; g.name) : [])
+          }
+        }
+      }
+    };
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'ResourceConfig.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

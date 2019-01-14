@@ -1,0 +1,1500 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ec.components documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">ec.components documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>UploadComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>packages/data/src/lib/files/upload/upload.component.ts</code>
+</p>
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>This component will render an input field to upload files to the datamanager. TODO: demo </p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code><a href="../interfaces/WithLoader.html" target="_self" >WithLoader</a></code>
+                <code><a href="../interfaces/WithNotifications.html" target="_self" >WithNotifications</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>ec-upload</code></td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./upload.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#event">event</a>
+                            </li>
+                            <li>
+                                <a href="#fileInput">fileInput</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#filesToUpload">filesToUpload</a>
+                            </li>
+                            <li>
+                                <a href="#notifications">notifications</a>
+                            </li>
+                            <li>
+                                <a href="#pop">pop</a>
+                            </li>
+                            <li>
+                                <a href="#uploadPromise">uploadPromise</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#change">change</a>
+                            </li>
+                            <li>
+                                <a href="#clear">clear</a>
+                            </li>
+                            <li>
+                                <a href="#setGroup">setGroup</a>
+                            </li>
+                            <li>
+                                <a href="#trigger">trigger</a>
+                            </li>
+                            <li>
+                                <a href="#upload">upload</a>
+                            </li>
+                            <li>
+                                <a href="#uploadFiles">uploadFiles</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#api">api</a>
+                            </li>
+                            <li>
+                                <a href="#assetGroupID">assetGroupID</a>
+                            </li>
+                            <li>
+                                <a href="#custom">custom</a>
+                            </li>
+                            <li>
+                                <a href="#loader">loader</a>
+                            </li>
+                            <li>
+                                <a href="#options">options</a>
+                            </li>
+                            <li>
+                                <a href="#placeholder">placeholder</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#groupChanged">groupChanged</a>
+                            </li>
+                            <li>
+                                <a href="#success">success</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(sdk: <a href="../injectables/SdkService.html">SdkService</a>, fileService: <a href="../injectables/FileService.html">FileService</a>, loaderService: <a href="../injectables/LoaderService.html">LoaderService</a>, notificationService: <a href="../injectables/NotificationsService.html">NotificationsService</a>, symbol: <a href="../injectables/SymbolService.html">SymbolService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">packages/data/src/lib/files/upload/upload.component.ts:40</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>sdk</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../injectables/SdkService.html" target="_self" >SdkService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>fileService</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../injectables/FileService.html" target="_self" >FileService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>loaderService</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../injectables/LoaderService.html" target="_self" >LoaderService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>notificationService</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../injectables/NotificationsService.html" target="_self" >NotificationsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>symbol</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../injectables/SymbolService.html" target="_self" >SymbolService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="api"></a>
+                        <code>api</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>The api to use for the upload. Defaults to sdk.api </p>
+</div>
+                            <p>
+                            <em>Type :</em>    <code>PublicAPI</code>
+
+                            </p>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">packages/data/src/lib/files/upload/upload.component.ts:30</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="assetGroupID"></a>
+                        <code>assetGroupID</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>The asset group to upload into. If not defined, old assets will be used! </p>
+</div>
+                            <p>
+                            <em>Type :</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                            </p>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">packages/data/src/lib/files/upload/upload.component.ts:24</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="custom"></a>
+                        <code>custom</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>If true, a pop to rename files + customize flags will appear before uploading. </p>
+</div>
+                            <p>
+                            <em>Type :</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                            </p>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">packages/data/src/lib/files/upload/upload.component.ts:26</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="loader"></a>
+                        <code>loader</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>The loader that should be used while uploading</p>
+</div>
+                            <p>
+                            <em>Type :</em>    <code><a href="../components/LoaderComponent.html" target="_self" >LoaderComponent</a></code>
+
+                            </p>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">packages/data/src/lib/files/upload/upload.component.ts:22</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="options"></a>
+                        <code>options</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>Upload options </p>
+</div>
+                            <p>
+                            <em>Type :</em>    <code><a href="../interfaces/FileOptions.html" target="_self" >FileOptions</a></code>
+
+                            </p>
+                        <p>
+                            <em>Default value : </em><code>Object.assign({}, this.fileService.defaultOptions)</code>
+                        </p>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">packages/data/src/lib/files/upload/upload.component.ts:28</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="placeholder"></a>
+                        <code>placeholder</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>The input placeholder</p>
+</div>
+                            <p>
+                            <em>Type :</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                            </p>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">packages/data/src/lib/files/upload/upload.component.ts:20</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+    <section>
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="groupChanged"></a>
+                        <code>groupChanged</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>emits when the group has been set from the upload pop </p>
+</div>
+                        <em><code>$event</code> Type:</em>    <code>EventEmitter&lt;string&gt;</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">packages/data/src/lib/files/upload/upload.component.ts:34</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-2">
+                        <a name="success"></a>
+                        <code>success</code>
+                    </td>
+                    <td class="col-md-10">
+                        <div><p>Emits when an upload is complete. </p>
+</div>
+                        <em><code>$event</code> Type:</em>    <code><a href="../interfaces/Upload.html" target="_self" >EventEmitter&lt;Upload&gt;</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">packages/data/src/lib/files/upload/upload.component.ts:32</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section>
+    
+        <h3 id="methods">
+            Methods
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="change"></a>
+                        <span class="name">
+                            <b>
+                            change
+                            </b>
+                            <a href="#change"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>change(e, api)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">packages/data/src/lib/files/upload/upload.component.ts:65</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Uploads the files from the input event. Handles loader and notifications. </p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>e</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+
+                                                </tr>
+                                                <tr>
+                                                        <td>api</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>this.sdk.api</code>
+                                                        </td>
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="clear"></a>
+                        <span class="name">
+                            <b>
+                            clear
+                            </b>
+                            <a href="#clear"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>clear()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">packages/data/src/lib/files/upload/upload.component.ts:73</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>clears the file input </p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="setGroup"></a>
+                        <span class="name">
+                            <b>
+                            setGroup
+                            </b>
+                            <a href="#setGroup"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>setGroup(group)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">packages/data/src/lib/files/upload/upload.component.ts:59</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Sets the asset group to upload to </p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>group</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="trigger"></a>
+                        <span class="name">
+                            <b>
+                            trigger
+                            </b>
+                            <a href="#trigger"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>trigger(e)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">packages/data/src/lib/files/upload/upload.component.ts:49</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>opens the system upload window by triggering the input </p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>e</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="upload"></a>
+                        <span class="name">
+                            <b>
+                            upload
+                            </b>
+                            <a href="#upload"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>upload(files, api)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">packages/data/src/lib/files/upload/upload.component.ts:99</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Triggers upload of current selected files </p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>files</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+
+                                                </tr>
+                                                <tr>
+                                                        <td>api</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>this.sdk.api</code>
+                                                        </td>
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="uploadFiles"></a>
+                        <span class="name">
+                            <b>
+                            uploadFiles
+                            </b>
+                            <a href="#uploadFiles"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>uploadFiles(files, e, api)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">packages/data/src/lib/files/upload/upload.component.ts:80</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>files</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+
+                                                </tr>
+                                                <tr>
+                                                        <td>e</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+
+                                                </tr>
+                                                <tr>
+                                                        <td>api</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>this.sdk.api</code>
+                                                        </td>
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="event"></a>
+                        <span class="name">
+                            <b>
+                            event
+                            </b>
+                            <a href="#event"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>event:     <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">packages/data/src/lib/files/upload/upload.component.ts:16</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="fileInput"></a>
+                        <span class="name">
+                            <b>
+                            fileInput
+                            </b>
+                            <a href="#fileInput"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>fileInput:     <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;fileInput&#x27;)<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">packages/data/src/lib/files/upload/upload.component.ts:36</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Reference to the input[type=file] element </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="filesToUpload"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            filesToUpload
+                            </b>
+                            <a href="#filesToUpload"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span><code>filesToUpload:     <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">packages/data/src/lib/files/upload/upload.component.ts:18</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="notifications"></a>
+                        <span class="name">
+                            <b>
+                            notifications
+                            </b>
+                            <a href="#notifications"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>notifications:     <code><a href="../classes/Notification.html" target="_self" >Notification[]</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="../classes/Notification.html" target="_self" >Notification[]</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">packages/data/src/lib/files/upload/upload.component.ts:40</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Error Notifications </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="pop"></a>
+                        <span class="name">
+                            <b>
+                            pop
+                            </b>
+                            <a href="#pop"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>pop:     <code><a href="../components/PopComponent.html" target="_self" >PopComponent</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="../components/PopComponent.html" target="_self" >PopComponent</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(PopComponent)<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">packages/data/src/lib/files/upload/upload.component.ts:38</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Pop child for new asset options. </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="uploadPromise"></a>
+                        <span class="name">
+                            <b>
+                            uploadPromise
+                            </b>
+                            <a href="#uploadPromise"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>uploadPromise:     <code><a href="../interfaces/Upload.html" target="_self" >Promise&lt;Upload | void&gt;</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="../interfaces/Upload.html" target="_self" >Promise&lt;Upload | void&gt;</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">packages/data/src/lib/files/upload/upload.component.ts:17</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from &#x27;@angular/core&#x27;;
+import {
+  LoaderComponent, LoaderService, Notification, NotificationsService,
+  PopComponent, SymbolService, WithLoader, WithNotifications
+} from &#x27;@ec.components/ui&#x27;;
+import PublicAPI from &#x27;ec.sdk/lib/PublicAPI&#x27;;
+import { SdkService } from &#x27;../../sdk/sdk.service&#x27;;
+import { FileOptions, FileService, Upload } from &#x27;../file.service&#x27;;
+
+/** This component will render an input field to upload files to the datamanager. TODO: demo */
+@Component({
+  selector: &#x27;ec-upload&#x27;,
+  templateUrl: &#x27;./upload.component.html&#x27;,
+})
+export class UploadComponent implements WithLoader, WithNotifications {
+  event: any;
+  uploadPromise: Promise&lt;Upload | void&gt;;
+  public filesToUpload: any;
+  /** The input placeholder*/
+  @Input() placeholder: string;
+  /** The loader that should be used while uploading*/
+  @Input() loader: LoaderComponent;
+  /** The asset group to upload into. If not defined, old assets will be used! */
+  @Input() assetGroupID: string;
+  /** If true, a pop to rename files + customize flags will appear before uploading. */
+  @Input() custom: boolean;
+  /** Upload options */
+  @Input() options: FileOptions &#x3D; Object.assign({}, this.fileService.defaultOptions);
+  /** The api to use for the upload. Defaults to sdk.api */
+  @Input() api: PublicAPI;
+  /** Emits when an upload is complete. */
+  @Output() success: EventEmitter&lt;Upload&gt; &#x3D; new EventEmitter();
+  /** emits when the group has been set from the upload pop */
+  @Output() groupChanged: EventEmitter&lt;string&gt; &#x3D; new EventEmitter();
+  /** Reference to the input[type&#x3D;file] element */
+  @ViewChild(&#x27;fileInput&#x27;) fileInput: ElementRef;
+  /** Pop child for new asset options. */
+  @ViewChild(PopComponent) pop: PopComponent;
+  /** Error Notifications */
+  notifications: Notification[] &#x3D; [];
+
+  constructor(private sdk: SdkService,
+    private fileService: FileService,
+    private loaderService: LoaderService,
+    private notificationService: NotificationsService,
+    private symbol: SymbolService) {
+  }
+  /** opens the system upload window by triggering the input */
+  trigger(e) {
+    if (!this.fileInput) {
+      console.error(&#x27;cannot trigger upload: file input element not found!&#x27;);
+      return;
+    }
+    /* this.clear(); */
+    this.fileInput.nativeElement.click();
+  }
+
+  /** Sets the asset group to upload to */
+  setGroup(group) {
+    this.assetGroupID &#x3D; group;
+    this.groupChanged.emit(group);
+  }
+
+  /** Uploads the files from the input event. Handles loader and notifications. */
+  change(e, api &#x3D; this.sdk.api) {
+    if (!e || !e.target || !e.target.files || !e.target.files.length) {
+      return;
+    }
+    return this.uploadFiles(e.target.files, e, api);
+  }
+
+  /** clears the file input */
+  clear() {
+    if (!this.fileInput) {
+      return;
+    }
+    this.fileInput.nativeElement.value &#x3D; &#x27;&#x27;; // clear input to eventually trigger change on same file
+  }
+
+  uploadFiles(files, e, api &#x3D; this.sdk.api) {
+    files &#x3D; typeof files &#x3D;&#x3D;&#x3D; &#x27;string&#x27;
+      ? files.split(&#x27;\n&#x27;).map(url &#x3D;&gt; ({ name: url, url }))
+      : files;
+    if (files[0].url &amp;&amp; this.fileService.isOldAssetGroupID(this.assetGroupID)) {
+      delete this.assetGroupID;
+    }
+    this.filesToUpload &#x3D; files;
+    e.preventDefault();
+    e.stopPropagation();
+    if (this.custom || !this.assetGroupID) {
+      this.event &#x3D; e;
+      this.pop.show();
+      return Promise.resolve();
+    }
+    return this.upload(files, api);
+  }
+
+  /** Triggers upload of current selected files */
+  upload(files, api &#x3D; this.sdk.api) {
+    this.uploadPromise &#x3D; (this.fileService.isNewAssetGroupID(this.assetGroupID) ?
+      this.fileService.uploadAssets(files, this.assetGroupID, this.options, api) :
+      this.fileService.uploadFiles(files))
+      .then((_upload) &#x3D;&gt; {
+        this.success.emit(_upload);
+        this.notificationService.emit({
+          title: this.symbol.resolve(&#x27;success.upload&#x27;),
+          type: &#x27;success&#x27;,
+          hide: this.notifications
+        });
+        this.pop.hide();
+        return _upload;
+      }).catch((err) &#x3D;&gt; {
+        console.error(err);
+        this.notificationService.emit({
+          title: this.symbol.resolve(&#x27;error.upload&#x27;),
+          error: err,
+          sticky: true,
+          hide: this.notifications,
+          append: this.notifications
+        });
+      });
+    this.loaderService.wait(this.uploadPromise, this.loader);
+    this.uploadPromise.then(() &#x3D;&gt; {
+      delete this.uploadPromise;
+    });
+    return this.uploadPromise;
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;input type&#x3D;&quot;file&quot; (change)&#x3D;&quot;change($event, api)&quot; multiple #fileInput (click)&#x3D;&quot;clear()&quot; /&gt;
+&lt;ec-pop class&#x3D;&quot;dialog&quot;&gt;
+    &lt;header class&#x3D;&quot;dialog-header&quot;&gt;
+        &lt;button (click)&#x3D;&quot;pop.hide()&quot; type&#x3D;&quot;button&quot; class&#x3D;&quot;dialog-dismiss&quot;&gt;
+            &lt;ec-icon name&#x3D;&quot;close-x-big&quot;&gt;&lt;/ec-icon&gt;
+        &lt;/button&gt;
+    &lt;/header&gt;
+    &lt;div *ngIf&#x3D;&quot;filesToUpload?.length&quot; class&#x3D;&quot;dialog-body&quot;&gt;
+        &lt;label&gt;
+            {{&#x27;upload.assetGroup&#x27; | symbol}}
+            &lt;ec-assetgroup-select [assetGroupID]&#x3D;&quot;assetGroupID&quot; (groupChanged)&#x3D;&quot;setGroup($event)&quot;&gt;&lt;/ec-assetgroup-select&gt;
+        &lt;/label&gt;
+        &lt;div *ngIf&#x3D;&quot;custom&quot;&gt;
+            &lt;div class&#x3D;&quot;xui-toggle&quot;&gt;
+                &lt;input id&#x3D;&quot;preserveFilenames&quot; type&#x3D;&quot;checkbox&quot; [(ngModel)]&#x3D;&quot;options.preserveFilenames&quot;&gt;
+                &lt;label for&#x3D;&quot;preserveFilenames&quot;&gt;
+                    &lt;div class&#x3D;&quot;xui-toggle__switch&quot;&gt;&lt;/div&gt;
+                    {{&#x27;upload.preserveFilenames&#x27; | symbol}}
+                &lt;/label&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;xui-toggle&quot;&gt;
+                &lt;input id&#x3D;&quot;includeAssetIDInPath&quot; type&#x3D;&quot;checkbox&quot; [(ngModel)]&#x3D;&quot;options.includeAssetIDInPath&quot;&gt;
+                &lt;label for&#x3D;&quot;includeAssetIDInPath&quot;&gt;
+                    &lt;div class&#x3D;&quot;xui-toggle__switch&quot;&gt;&lt;/div&gt;
+                    {{&#x27;upload.includeAssetIDInPath&#x27; | symbol}}
+                &lt;/label&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;xui-toggle&quot;&gt;
+                &lt;input id&#x3D;&quot;ignoreDuplicates&quot; type&#x3D;&quot;checkbox&quot; [(ngModel)]&#x3D;&quot;options.ignoreDuplicates&quot;&gt;
+                &lt;label for&#x3D;&quot;ignoreDuplicates&quot;&gt;
+                    &lt;div class&#x3D;&quot;xui-toggle__switch&quot;&gt;&lt;/div&gt;
+                    {{&#x27;upload.ignoreDuplicates&#x27; | symbol}}
+                &lt;/label&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;xui-toggle&quot;&gt;
+                &lt;input id&#x3D;&quot;deduplicate&quot; type&#x3D;&quot;checkbox&quot; [(ngModel)]&#x3D;&quot;options.deduplicate&quot;&gt;
+                &lt;label for&#x3D;&quot;deduplicate&quot;&gt;
+                    &lt;div class&#x3D;&quot;xui-toggle__switch&quot;&gt;&lt;/div&gt;
+                    {{&#x27;upload.deduplicate&#x27; | symbol}}
+                &lt;/label&gt;
+            &lt;/div&gt;
+            &lt;div *ngFor&#x3D;&quot;let f of filesToUpload;let i &#x3D; index&quot; data-grid&gt;
+                &lt;div data-col&#x3D;&quot;6-sm&quot;&gt;{{ f.name }}&lt;/div&gt;
+                &lt;div data-col&#x3D;&quot;6-sm&quot;&gt;
+                    &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;input&quot; [(ngModel)]&#x3D;&quot;options.fileName[i]&quot; placeholder&#x3D;&quot;{{ f.name }}&quot; [disabled]&#x3D;&quot;!options.preserveFilenames&quot;&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;a class&#x3D;&quot;btn&quot; (click)&#x3D;&quot;!uploadPromise&amp;&amp;upload(filesToUpload, api)&quot; [class.is-disabled]&#x3D;&quot;uploadPromise&quot;&gt;Upload&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/ec-pop&gt;</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><input type="file" (change)="change($event, api)" multiple #fileInput (click)="clear()" /><ec-pop class="dialog">    <header class="dialog-header">        <button (click)="pop.hide()" type="button" class="dialog-dismiss">            <ec-icon name="close-x-big"></ec-icon>        </button>    </header>    <div *ngIf="filesToUpload?.length" class="dialog-body">        <label>            {{\'upload.assetGroup\' | symbol}}            <ec-assetgroup-select [assetGroupID]="assetGroupID" (groupChanged)="setGroup($event)"></ec-assetgroup-select>        </label>        <div *ngIf="custom">            <div class="xui-toggle">                <input id="preserveFilenames" type="checkbox" [(ngModel)]="options.preserveFilenames">                <label for="preserveFilenames">                    <div class="xui-toggle__switch"></div>                    {{\'upload.preserveFilenames\' | symbol}}                </label>            </div>            <div class="xui-toggle">                <input id="includeAssetIDInPath" type="checkbox" [(ngModel)]="options.includeAssetIDInPath">                <label for="includeAssetIDInPath">                    <div class="xui-toggle__switch"></div>                    {{\'upload.includeAssetIDInPath\' | symbol}}                </label>            </div>            <div class="xui-toggle">                <input id="ignoreDuplicates" type="checkbox" [(ngModel)]="options.ignoreDuplicates">                <label for="ignoreDuplicates">                    <div class="xui-toggle__switch"></div>                    {{\'upload.ignoreDuplicates\' | symbol}}                </label>            </div>            <div class="xui-toggle">                <input id="deduplicate" type="checkbox" [(ngModel)]="options.deduplicate">                <label for="deduplicate">                    <div class="xui-toggle__switch"></div>                    {{\'upload.deduplicate\' | symbol}}                </label>            </div>            <div *ngFor="let f of filesToUpload;let i = index" data-grid>                <div data-col="6-sm">{{ f.name }}</div>                <div data-col="6-sm">                    <input type="text" class="input" [(ngModel)]="options.fileName[i]" placeholder="{{ f.name }}" [disabled]="!options.preserveFilenames">                </div>            </div>        </div>        <a class="btn" (click)="!uploadPromise&&upload(filesToUpload, api)" [class.is-disabled]="uploadPromise">Upload</a>    </div></ec-pop></div>'
+    var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'ActionbarComponent', 'selector': 'ec-actionbar'},{'name': 'AdminEntryInputComponent', 'selector': ''},{'name': 'ApiActionbarComponent', 'selector': 'ec-api-actionbar'},{'name': 'AssetgroupSelectComponent', 'selector': 'ec-assetgroup-select'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DaterangeComponent', 'selector': 'ec-daterange'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryListPopComponent', 'selector': 'ec-entry-list-pop'},{'name': 'EntryListSelectComponent', 'selector': 'ec-entry-list-select'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'HeatmapComponent', 'selector': 'ec-heatmap'},{'name': 'IconComponent', 'selector': 'ec-icon'},{'name': 'ImageSelectPopComponent', 'selector': 'ec-image-select-pop'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LocationMapComponent', 'selector': 'ec-location-map'},{'name': 'LocationPickerComponent', 'selector': 'ec-location-picker'},{'name': 'LocationSearchComponent', 'selector': 'ec-location-search'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'ModalComponent', 'selector': 'ec-modal'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceActionbarComponent', 'selector': 'ec-resource-actionbar'},{'name': 'ResourceCrudComponent', 'selector': 'ec-resource-crud'},{'name': 'ResourceDeletePopComponent', 'selector': 'ec-resource-delete-pop'},{'name': 'ResourceFormComponent', 'selector': 'ec-resource-form'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'ResourceListPopComponent', 'selector': 'ec-resource-list-pop'},{'name': 'ResourcePopComponent', 'selector': 'ec-resource-pop'},{'name': 'ResourceSelectComponent', 'selector': 'ec-resource-select'},{'name': 'SearchbarComponent', 'selector': 'ec-searchbar'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SignupComponent', 'selector': 'ec-signup'},{'name': 'SignupFormComponent', 'selector': 'ec-signup-form'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TagSelectComponent', 'selector': 'ec-tag-select'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'UploadComponent', 'selector': 'ec-upload'},{'name': 'UploadSelectComponent', 'selector': 'ec-upload-select'}];
+    var DIRECTIVES = [{'name': 'AssetDirective', 'selector': '[ecAsset]'},{'name': 'DropzoneDirective', 'selector': '[ecDropzone]'},{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'FocusDirective', 'selector': '[ecFocus]'},{'name': 'ImageDirective', 'selector': 'img [ecImage]'},{'name': 'SlotHostDirective', 'selector': '[ecSlotHost]'}];
+    var ACTUAL_COMPONENT = {'name': 'UploadComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'UploadComponent.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
