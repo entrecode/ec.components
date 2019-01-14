@@ -7,20 +7,20 @@ It is mainly used for entrecode admin applications in combination with the [entr
 
 ## Main Packages
 
-- *@ec.components/core*: contains core typescript classes (no angular/datamanager)
-- *@ec.components/ui*: contains core ui components (not datamanager specific)
-- *@ec.components/data*: contains ui components for [datamanager](https://doc.entrecode.de).
-- *@ec.components/style*: contains styles for all components, built on [x.ui](https://entrecode.github.io/x.ui/).
+- @ec.components/core: contains core typescript classes (no angular/datamanager)
+- @ec.components/ui: contains core ui components (not datamanager specific)
+- @ec.components/data: contains ui components for [datamanager](https://doc.entrecode.de).
+- @ec.components/style: contains styles for all components, built on [x.ui](https://entrecode.github.io/x.ui/).
 
 The dependencies stack up from core to data (data > ui > core). You could also omit data, using just the ui components.
 
 ## Optional Packages
 
-- *@ec.components/calendar*: contains calendar components, uses [moment](https://github.com/moment/moment).
-- *@ec.components/location*: wraps [angular-google-maps](https://github.com/SebastianM/angular-google-maps).
-- *@ec.components/tinymce*: wraps [tinymce wysiwyg editor](https://github.com/tinymce/tinymce).
-- *@ec.components/medium-editor*: wraps [medium wysiwyg editor](https://github.com/yabwe/medium-editor).
-- *@ec.components/ace*: wraps [ace code editor](https://github.com/ajaxorg/ace).
+- @ec.components/calendar: contains calendar components, uses [moment](https://github.com/moment/moment).
+- @ec.components/location: wraps [angular-google-maps](https://github.com/SebastianM/angular-google-maps).
+- @ec.components/tinymce: wraps [tinymce wysiwyg editor](https://github.com/tinymce/tinymce).
+- @ec.components/medium-editor: wraps [medium wysiwyg editor](https://github.com/yabwe/medium-editor).
+- @ec.components/ace: wraps [ace code editor](https://github.com/ajaxorg/ace).
 
 ## Documentation
 
