@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build-packages": "sh ./build-packages.sh"
+    "build-packages": "sh ./build-packages.sh",
+    "compodoc": "compodoc packages -d docs -p tsconfig.json -s -o -w --includes tutorial --includesName Tutorial"
   },
   "private": true,
   "workspaces": [
@@ -54,6 +55,7 @@
     "@angular/cli": "~7.2.1",
     "@angular/compiler-cli": "~7.2.0",
     "@angular/language-service": "~7.2.0",
+    "@compodoc/compodoc": "^1.1.7",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
