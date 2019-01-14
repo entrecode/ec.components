@@ -1,0 +1,140 @@
+// @param {color} $ec-pagination-background [transparent]
+// @param {array} $ec-pagination-padding [0]
+// @param {array} $ec-pagination-spacing [8 0]
+// @param {array} $ec-pagination-style
+.ec-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @include inject-style($ec-pagination-style);
+  background: $ec-pagination-background;
+  margin: arrayMagic($ec-pagination-spacing);
+  padding: arrayMagic($ec-pagination-padding);
+}
+
+// @param {number} $ec-pagination-item-padding-ratio [$btn-padding-ratio]
+// @param {array} $ec-pagination-item-spacing [$btn-spacing]
+// @param {variable} $ec-pagination-item-font-family [$btn-font-family]
+// @param {number} $ec-pagination-item-font-size [$btn-font-size]
+// @param {number} $ec-pagination-item-line-height [$btn-line-height]
+// @param {number} $ec-pagination-item-min-height [$btn-min-height]
+// @param {value} $ec-pagination-item-weight [$btn-weight]
+// @param {boolean} $ec-pagination-item-round [$btn-round]
+// @param {rem} $ec-pagination-item-big-radius [$btn-radius]
+// @param {color} $ec-pagination-item-background [transparent]
+// @param {color} $ec-pagination-item-color [$link]
+// @param {array} $ec-pagination-item-style
+.ec-pagination__item {
+  cursor: pointer;
+  appearance: none;
+  user-select: none;
+  outline: none;
+  touch-action: manipulation;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  position: relative;
+  height: auto;
+  border: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  @include inject-style($ec-pagination-item-style);
+  @include macro-metrics(
+    $ec-pagination-item-font-size,
+    $ec-pagination-item-line-height,
+    $ec-pagination-item-min-height,
+    $padding-ratio: $ec-pagination-item-padding-ratio
+  );
+  background: $ec-pagination-item-background;
+  color: $ec-pagination-item-color;
+  font-family: $ec-pagination-item-font-family;
+  font-weight: $ec-pagination-item-weight;
+  margin: arrayMagic($ec-pagination-item-spacing);
+  border-radius: arrayMagic($ec-pagination-item-radius);
+  transition: $btn-transition;
+  
+  @if $ec-pagination-item-round == true {
+    border-radius: arrayMagic($ec-pagination-item-min-height / 2);
+  }
+
+  // @param {color} $ec-pagination-item-is-active-background [transparent]
+  // @param {color} $ec-pagination-item-is-active-color [setHover($link)]
+  // @param {array} $ec-pagination-item-is-active-style
+  &.is-active,
+  &:hover,
+  &:focus {
+    @include inject-style($ec-pagination-item-is-active-style);
+    background: $ec-pagination-item-is-active-background;
+    color: $ec-pagination-item-is-active-color;
+  }
+
+  // @param {color} $ec-pagination-item-is-disabled-background [transparent]
+  // @param {color} $ec-pagination-item-is-disabled-color [setHover($link)]
+  // @param {array} $ec-pagination-item-is-disabled-style
+  &.is-disabled {
+    @include inject-style($ec-pagination-item-is-disabled-style);
+    background: $ec-pagination-item-is-disabled-background;
+    color: $ec-pagination-item-is-disabled-color;
+  }
+}
+
+.ec-pagination-controls {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+// @param {array} $ec-pagination-control-style
+// @param {array} $ec-pagination-control-first-style
+// @param {array} $ec-pagination-control-prev-style
+// @param {array} $ec-pagination-control-next-style
+// @param {array} $ec-pagination-control-last-style
+.ec-pagination-control {
+  @include inject-style($ec-pagination-control-style);
+
+  &_first {
+    @include inject-style($ec-pagination-control-first-style);
+  }
+
+  &_prev {
+    @include inject-style($ec-pagination-control-prev-style);
+  }
+
+  &_next {
+    @include inject-style($ec-pagination-control-next-style);
+  }
+
+  &_last {
+    @include inject-style($ec-pagination-control-last-style);
+  }
+}
+
+.ec-pagination-pages {
+  overflow: hidden;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    transition: all 0.2s linear;
+  }
+}
+
+// @param {px} $ec-pagination-info-size [$base-font-size * 0.875]
+// @param {color} $ec-pagination-info-color [$link]
+// @param {array} $ec-pagination-info-style
+.ec-pagination-info {
+  flex-grow: 1;
+  text-align: center;
+  @include inject-style($ec-pagination-info-style);
+  font-size: arrayMagic($ec-pagination-info-size, xem);
+  color: $ec-pagination-info-color;
+}
+
+.ec-pagination-size-select {
+  flex-shrink: 0;
+}

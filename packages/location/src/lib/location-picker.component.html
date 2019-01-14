@@ -1,0 +1,6 @@
+<ec-location-search [placeholder]="field?.getPlaceholder()||placeholder" (changed)="setValue($event,true)"></ec-location-search>
+<ec-location-map (changed)="setValue($event)"></ec-location-map>
+<a class="btn" (click)="setValue(null)" *ngIf="map.value">
+    <ec-icon name="trash"></ec-icon>
+</a>
+<small *ngIf="showRawValue&&map?.value">{{map.value | json}}</small>

@@ -1,0 +1,98 @@
+// @param {color} $ec-select-selected-background [$tag-background]
+// @param {color} $ec-select-selected-color [setContrast($ec-select-selected-background)]
+// @param {number} $ec-select-selected-padding-ratio [$tag-padding-ratio]
+// @param {px} $ec-select-selected-font-size [$tag-font-size]
+// @param {px} $ec-select-selected-line-height [$tag-line-height]
+// @param {px} $ec-select-selected-min-height [$tag-min-height]
+// @param {value} $ec-select-selected-weight [$tag-weight]
+// @param {array} $ec-select-selected-style
+.ec-select-selected {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  white-space: nowrap;
+  @include inject-style($ec-select-selected-style);
+  @include macro-metrics(
+    $ec-select-selected-font-size,
+    $ec-select-selected-line-height,
+    $ec-select-selected-min-height,
+    $padding-ratio: $ec-select-selected-padding-ratio
+  );
+  font-weight: $ec-select-selected-weight;
+  background: $ec-select-selected-background;
+  color: $ec-select-selected-color;
+
+  // @param {boolean} $ec-select-selected-round [$tag-round]
+  // @param {rem} $ec-select-selected-radius [$tag-radius]
+  @if $ec-select-selected-round {
+    border-radius: rem($ec-select-selected-min-height / 2);
+  } @else {
+    border-radius: arrayMagic($ec-select-selected-radius);
+  }
+
+  a {
+    color: $ec-select-selected-color;
+    opacity: 0.6;
+    padding-left: rem(8);
+    flex-shrink: 0;
+  }
+
+  &:hover {
+    background: setHover($ec-select-selected-background);
+
+    a {
+      opacity: 1;
+    }
+  }
+}
+
+// @param {array} $ec-select-selected-solo-style
+
+.ec-select-selected_solo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-items: center;
+  white-space: nowrap;
+  @include inject-style($ec-select-selected-solo-style);
+
+  a {
+    color: $ec-select-color;
+    opacity: 0.6;
+    padding-left: rem(8);
+    flex-shrink: 0;
+  }
+}
+
+.is-draggable {
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
+}
+
+.ec-select-selection {
+  .is-dragged {
+    padding: 0;
+
+    // @param {array} $ec-select-selected-is-dragged-style
+    .ec-select-selected {
+      cursor: grabbing;
+      z-index: 1;
+      @include inject-style($ec-select-selected-is-dragged-style);
+    }
+  }
+
+  // @param {array} $drag-placeholder-style
+  .drag-placeholder {
+    height: 100%;
+    @include inject-style($drag-placeholder-style);
+
+    @if $ec-select-selected-round {
+      border-radius: rem($ec-select-selected-min-height / 2);
+    } @else {
+      border-radius: arrayMagic($ec-select-selected-radius);
+    }
+  }
+}

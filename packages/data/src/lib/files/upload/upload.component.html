@@ -1,0 +1,51 @@
+<input type="file" (change)="change($event, api)" multiple #fileInput (click)="clear()" />
+<ec-pop class="dialog">
+    <header class="dialog-header">
+        <button (click)="pop.hide()" type="button" class="dialog-dismiss">
+            <ec-icon name="close-x-big"></ec-icon>
+        </button>
+    </header>
+    <div *ngIf="filesToUpload?.length" class="dialog-body">
+        <label>
+            {{'upload.assetGroup' | symbol}}
+            <ec-assetgroup-select [assetGroupID]="assetGroupID" (groupChanged)="setGroup($event)"></ec-assetgroup-select>
+        </label>
+        <div *ngIf="custom">
+            <div class="xui-toggle">
+                <input id="preserveFilenames" type="checkbox" [(ngModel)]="options.preserveFilenames">
+                <label for="preserveFilenames">
+                    <div class="xui-toggle__switch"></div>
+                    {{'upload.preserveFilenames' | symbol}}
+                </label>
+            </div>
+            <div class="xui-toggle">
+                <input id="includeAssetIDInPath" type="checkbox" [(ngModel)]="options.includeAssetIDInPath">
+                <label for="includeAssetIDInPath">
+                    <div class="xui-toggle__switch"></div>
+                    {{'upload.includeAssetIDInPath' | symbol}}
+                </label>
+            </div>
+            <div class="xui-toggle">
+                <input id="ignoreDuplicates" type="checkbox" [(ngModel)]="options.ignoreDuplicates">
+                <label for="ignoreDuplicates">
+                    <div class="xui-toggle__switch"></div>
+                    {{'upload.ignoreDuplicates' | symbol}}
+                </label>
+            </div>
+            <div class="xui-toggle">
+                <input id="deduplicate" type="checkbox" [(ngModel)]="options.deduplicate">
+                <label for="deduplicate">
+                    <div class="xui-toggle__switch"></div>
+                    {{'upload.deduplicate' | symbol}}
+                </label>
+            </div>
+            <div *ngFor="let f of filesToUpload;let i = index" data-grid>
+                <div data-col="6-sm">{{ f.name }}</div>
+                <div data-col="6-sm">
+                    <input type="text" class="input" [(ngModel)]="options.fileName[i]" placeholder="{{ f.name }}" [disabled]="!options.preserveFilenames">
+                </div>
+            </div>
+        </div>
+        <a class="btn" (click)="!uploadPromise&&upload(filesToUpload, api)" [class.is-disabled]="uploadPromise">Upload</a>
+    </div>
+</ec-pop>

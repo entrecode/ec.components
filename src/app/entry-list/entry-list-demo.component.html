@@ -1,0 +1,17 @@
+<h2>Entry List</h2>
+<!-- <ec-heatmap #heatmap (spanChanged)="updateFilter($event,entryList)" style="width:400px;display:block" [timestamps]="timestamps"></ec-heatmap> -->
+<!-- <ec-daterange [timespan]="timespan" (spanChanged)="updateFilter($event,entryList)"></ec-daterange> -->
+<ec-searchbar [listComponent]="entryList" [list]="entryList?.list" property="name"></ec-searchbar>
+<ec-entry-list [loader]="loader" (changed)="updateList($event)" #entryList model="muffin" [config]="{sortBy:heatProperty,desc:true,rawFilter:true}">
+    <div data-ec-list-empty>
+        Noch keine Entries vorhanden!!!!!!!!!
+    </div>
+    <div data-ec-list-empty-filtered>
+        Filter greift nicht. Rezept:
+        <a (click)="entryList.list?.clearFilter()">Filter aufheben</a>
+    </div>
+    <div data-ec-list-loading>
+        List versucht gerade zu laden, bitte nicht stören....
+    </div>
+</ec-entry-list>
+<ec-loader #loader class="ec-loader ec-loader_global"></ec-loader>

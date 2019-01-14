@@ -1,0 +1,35 @@
+.ec-dropzone {
+  &.is-active {
+    .ec-dropzone__info {
+      display: flex;
+    }
+  }
+}
+
+.ec-dropzone__info {
+  @include get-font-size(h1);
+  background: $ec-dropzone-background;
+  color: $ec-dropzone-color;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  mix-blend-mode: multiply;
+  animation: fadeIn .2s forwards;
+
+  &::after {
+    top: rem($base-spacing);
+    right: rem($base-spacing);
+    bottom: rem($base-spacing);
+    left: rem($base-spacing);
+    border: 2px dashed $ec-dropzone-color;
+    content: '';
+    position: absolute;
+  }
+}

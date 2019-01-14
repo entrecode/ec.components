@@ -1,0 +1,24 @@
+<form novalidate [formGroup]="form" (ngSubmit)="onSubmit()" class="ec-auth ec-auth_signup">
+  <p class="error" *ngIf="errorMessage">
+    {{errorMessage}}
+  </p>
+  <div class="form-group form-group_email">
+    <label *ngIf="showLabels">{{emailLabel}}</label>
+    <input type="email" formControlName="email" class="input" [placeholder]="emailPlaceholder">
+    <ec-input-errors [control]="form?.get('email')"></ec-input-errors>
+  </div>
+  <div class="form-group form-group_password">
+    <label *ngIf="showLabels">Passwort</label>
+    <input type="password" formControlName="password" class="input" [placeholder]="passwordPlaceholder">
+    <ec-input-errors [control]="form?.get('password')"></ec-input-errors>
+  </div>
+  <div class="form-group form-group_invite" *ngIf="!invite">
+    <label *ngIf="showLabels">Invite</label>
+    <input type="text" formControlName="invite" class="input" [placeholder]="invitePlaceholder">
+    <ec-input-errors [control]="form?.get('invite')"></ec-input-errors>
+  </div>
+
+  <button type="submit" [disabled]="form?.invalid" [class.is-disabled]="form?.invalid" class="btn ec-auth__btn" [ngClass]="buttonClasses">
+    {{buttonLabel}}
+  </button>
+</form>

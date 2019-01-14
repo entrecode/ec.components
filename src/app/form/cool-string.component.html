@@ -1,0 +1,7 @@
+  <strong *ngIf="!group&&!!item">
+  {{item.display(field.property)}}
+</strong>
+<label [formGroup]="group" *ngIf="group">
+  <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>
+  <input [id]="field.id" type="text" style="background-color:cornflowerblue" [formControlName]="field?.property">
+</label>

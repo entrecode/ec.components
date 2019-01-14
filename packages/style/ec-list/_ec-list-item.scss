@@ -1,0 +1,77 @@
+//scss-lint:disable NestingDepth
+
+// @param {color} $ec-list-item-background [transparent]
+// @param {array} $ec-list-item-padding [0]
+// @param {array} $ec-list-item-spacing [0]
+// @param {color} $ec-list-filterable-control-color [$link]
+// @param {color} $ec-list-item-selected-color [$ec-list-item-clickable-color]
+// @param {color} $ec-list-item-selected-background [$ec-list-item-clickable-background]
+// @param {array} $ec-list-item-style
+.ec-list-item {
+  display: flex;
+  @supports (display: grid) {
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(48px, 1fr) );
+  }
+  transition: all 0.4s;
+  @include inject-style($ec-list-item-style);
+  padding: arrayMagic($ec-list-item-padding);
+  margin: arrayMagic($ec-list-item-spacing);
+  background: $ec-list-item-background;
+
+  // @param {array} $ec-list-item-even-style
+  // @param {array} $ec-list-item-odd-style
+
+  &:nth-child(odd) {
+    @include inject-style($ec-list-item-odd-style);
+  }
+
+  &:nth-child(even) {
+    @include inject-style($ec-list-item-even-style);
+  }
+
+  // @param {color} $ec-list-item-is-clickable-color [inherit]
+  // @param {color} $ec-list-item-is-clickable-background []
+  // @param {array} $ec-list-item-is-clickable-style
+  &.is-clickable {
+    cursor: pointer;
+    @include inject-style($ec-list-item-is-clickable-style);
+    background: $ec-list-item-is-clickable-background;
+    color: $ec-list-item-is-clickable-color;
+
+    // @param {color} $ec-list-item-is-clickable-hover-color [$link]
+    // @param {color} $ec-list-item-is-clickable-hover-background [$state-hover]
+    // @param {array} $ec-list-item-is-clickable-hover-style
+    &:hover {
+      @include inject-style($ec-list-item-is-clickable-hover-style);
+      background: $ec-list-item-is-clickable-hover-background;
+      color: $ec-list-item-is-clickable-hover-color;
+
+      .ec-list-cell {
+        color: $ec-list-item-is-clickable-hover-color;
+      }
+    }
+  }
+
+  // @param {color} $ec-list-item-is-selected-color [$link]
+  // @param {color} $ec-list-item-is-selected-background [$state-hover]
+  // @param {array} $ec-list-item-is-selected-style
+  &.is-selected {
+    @include inject-style($ec-list-item-is-selected-style);
+    color: $ec-list-item-is-selected-color;
+    background: $ec-list-item-is-selected-background;
+
+    .ec-list-cell {
+      color: $ec-list-item-is-selected-color;
+    }
+
+    // @param {color} $ec-list-item-is-selected-hover-color [inherit]
+    // @param {color} $ec-list-item-is-selected-hover-background [inherit]
+    // @param {array} $ec-list-item-is-selected-hover-style
+    &:hover {
+      @include inject-style($ec-list-item-is-selected-hover-style);
+      color: $ec-list-item-is-selected-hover-color;
+      background: $ec-list-item-is-selected-hover-background;
+    }
+  }
+}

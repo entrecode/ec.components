@@ -1,0 +1,31 @@
+// @param {array} $ec-output-asset-padding [8 16]
+// @param {px} $ec-output-asset-radius [$tag-radius]
+// @param {color} $ec-output-asset-background [$background-lighter]
+// @param {px} $ec-output-asset-font-size [$tag-small-font-size]
+// @param {px} $ec-output-asset-line-height [$tag-small-line-height]
+
+.ec-output-asset {
+  @extend %ec-output-asset-style !optional;
+  display: inline-flex;
+  align-items: center;
+  font-size: em($ec-output-asset-font-size);
+  line-height: em($ec-output-asset-line-height, $ec-output-asset-font-size);
+  background: $ec-output-asset-background;
+  border-radius: arrayMagic($ec-output-asset-radius);
+  padding: arrayMagic($ec-output-asset-padding);
+  opacity: .2;
+
+  .ec-icon {
+    font-size: 1em;
+    line-height: 1em;
+
+    &::before {
+      font-size: inherit;
+      line-height: inherit;
+    }
+  }
+
+  &.is-true {
+    opacity: 1;
+  }
+}

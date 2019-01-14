@@ -1,0 +1,103 @@
+// slide to the right animation
+// -----------------------------------------
+
+@keyframes slideInRight {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: unset;
+  }
+}
+
+%slide-in-right {
+  animation: slideInRight .4s forwards;
+}
+
+// slide to the left animation
+// -----------------------------------------
+
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: unset;
+  }
+}
+
+%slide-in-left {
+  animation: slideInLeft .4s forwards;
+}
+
+// slide up animation
+// -----------------------------------------
+
+@keyframes slideInUp {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: unset;
+  }
+}
+
+%slide-in-up {
+  animation: slideInUp .4s forwards;
+}
+
+// slide down animation
+// -----------------------------------------
+
+@keyframes slideInDown {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: unset;
+  }
+}
+
+%slide-in-down {
+  animation: slideInDown .4s forwards;
+}
+
+// fade in animation
+// -----------------------------------------
+
+@keyframes popfadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+%pop-fade-in {
+  animation: popfadeIn .4s forwards;
+}
+
+// appear animation - fade and slide
+// -----------------------------------------
+
+@keyframes dialogAppear {
+  0% {
+    opacity: 0;
+    margin-top: rem(48);
+  }
+
+  100% {
+    opacity: 1;
+    margin-top: 0;
+  }
+}
+
+%dialog-appear {
+  animation: dialogAppear .4s forwards;
+}

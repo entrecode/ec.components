@@ -1,0 +1,33 @@
+// @param {px} $ec-output-tag-font-size [$tag-font-size]
+// @param {px} $ec-output-tag-line-height [$tag-line-height]
+// @param {value} $ec-output-tag-weight [$tag-weight]
+// @param {color} $ec-output-tag-background [$tag-background]
+// @param {color} $ec-output-tag-color [setContrast($tag-background)]
+// @param {px} $ec-output-tag-min-height [$tag-min-height]
+// @param {number} $ec-output-tag-padding-ratio [$tag-padding-ratio]
+// @param {array} $ec-output-tag-style
+.ec-output-tag {
+  &:not(:empty) {
+    white-space: nowrap;
+    display: inline-block;
+    text-align: center;
+    @include inject-style($ec-output-tag-style);
+    @include macro-metrics(
+      $ec-output-tag-font-size,
+      $ec-output-tag-line-height,
+      $ec-output-tag-min-height,
+      $padding-ratio: $ec-output-tag-padding-ratio
+    );
+    background: $ec-output-tag-background;
+    color: $ec-output-tag-color;
+    font-weight: $ec-output-tag-weight;
+
+    // @param {boolean} $ec-output-tag-round [$tag-round]
+    // @param {array} $ec-output-tag-radius [$tag-ratio]
+
+    border-radius: arrayMagic($ec-output-tag-radius);
+    @if $ec-output-tag-round {
+      border-radius: arrayMagic($ec-output-tag-min-height / 2);
+    }
+  }
+}

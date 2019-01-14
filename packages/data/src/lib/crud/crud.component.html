@@ -1,0 +1,20 @@
+<div class="ec-crud">
+  <header class="ec-crud-header">
+    <nav class="nav">
+      <a (click)="entryPop.create()" *ngIf="hasMethod('post')" class="btn">
+        <span *ngIf="config?.createLabel">{{config?.createLabel}}</span>
+        <span *ngIf="!config?.createLabel">
+          <ec-icon name="add"></ec-icon>
+        </span>
+      </a>
+    </nav>
+  </header>
+  <div class="ec-crud-body">
+    <ec-entry-list [model]="model" [config]="config" [solo]="true" *ngIf="hasMethod('get')" [selection]="selection"
+      [loader]="config?.loader||loader" (columnClicked)="selectEntry($event)">
+    </ec-entry-list>
+  </div>
+
+  <ec-loader class="ec-loader ec-loader_overlay ec-loader_global"></ec-loader>
+  <ec-entry-pop [model]="model" [config]="config"></ec-entry-pop>
+</div>

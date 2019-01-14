@@ -1,0 +1,19 @@
+// @param {array} $ec-list-items-style
+.ec-list-items {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  min-width: 100%;
+  @include inject-style($ec-list-items-style);
+
+  .ec-list-cell {
+    ec-default-output,
+    ec-output {
+      display: block;
+      overflow: hidden;
+      flex: 1;
+    }
+  }
+}

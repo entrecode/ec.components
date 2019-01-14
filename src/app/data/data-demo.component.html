@@ -1,0 +1,34 @@
+<div data-container>
+  <ec-loader #dataLoader class="ec-loader ec-loader_global ec-loader_overlay"></ec-loader>
+  <h2>ecEntry</h2>
+  <div ecEntry model="muffin" entryId="SkXEhDZ5yW" #muffinEntry="ecEntry" [loader]="dataLoader"></div>
+  {{muffinEntry.entry?.name}}
+
+  <h2>ecEntry with autoload=false</h2>
+  <div ecEntry model="muffin" entryId="SkXEhDZ5yW" #lazyMuffin="ecEntry" [autoload]="false" [loader]="dataLoader"></div>
+  <a (click)="lazyMuffin.load()" *ngIf="!lazyMuffin.entry">Laden</a>
+  {{lazyMuffin.entry?.name}}
+
+  <h2>ecEntries</h2>
+  <ul ecEntries model="muffin" #muffins="ecEntries" [options]="{size:10}" [loader]="dataLoader">
+    <li *ngIf="!muffins.isFirst()">
+      <a (click)="muffins.prev()">prev</a>
+    </li>
+    <li *ngFor="let muffin of muffins.items">
+      {{muffin.name}}
+    </li>
+    <li *ngIf="!muffins.isLast()">
+      <a (click)="muffins.next()">NEXT</a>
+    </li>
+  </ul>
+
+  <h2>ecEntries endless</h2>
+  <ul ecEntries model="muffin" #endlessMuffins="ecEntries" [options]="{size:10}" [endless]="true" [loader]="dataLoader">
+    <li *ngFor="let muffin of endlessMuffins.items">
+      {{muffin.name}}
+    </li>
+    <li *ngIf="!endlessMuffins.isLast()">
+      <a (click)="endlessMuffins.next()">NEXT</a>
+    </li>
+  </ul>
+</div>
