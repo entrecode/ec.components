@@ -1,15 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MonthComponent } from './month.component';
+import { calendarModuleConfig } from '../calendar.module';
 
 describe('MonthComponent', () => {
   let component: MonthComponent;
   let fixture: ComponentFixture<MonthComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: []
-    })
-    .compileComponents();
+    TestBed.configureTestingModule(calendarModuleConfig)
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -24,5 +23,5 @@ describe('MonthComponent', () => {
 
   it('should have the correct number of days', () => {
     expect(component['cells'].length).toBe(42);
-  })
+  });
 });
