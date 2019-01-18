@@ -34,7 +34,7 @@ export class MediumEditorComponent implements OnInit, OnDestroy, ControlValueAcc
   /** data model */
   @Input() model: any;
   /** MediumEditor [options](https://github.com/yabwe/medium-editor#mediumeditor-options) */
-  @Input() options: any;
+  @Input() options: any = {};
   /** empty placeholder */
   @Input() placeholder: string;
   /** change emitter */
