@@ -1,4 +1,4 @@
-import { Item, Sorter } from '@ec.components/core/public_api';
+import { Item, Sorter } from '@ec.components/core';
 
 describe('Sorter', () => {
   it('should sort numbers', () => {

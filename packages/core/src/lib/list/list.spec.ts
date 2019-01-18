@@ -1,4 +1,4 @@
-import { List } from '@ec.components/core/public_api';
+import { List } from '@ec.components/core';
 import { mocked } from 'src/mocks/data';
 
 describe('List', () => {
@@ -9,13 +9,6 @@ describe('List', () => {
     expect(products.id('x2').resolve('name')).toBe('Toilet');
     expect(products.id('x3').resolve('name')).toBe('Toilet Seat');
     expect(products.id('xy')).toBe(undefined);
-  });
-
-  it('should throw an error when using id without identifier set', () => {
-    const products = new List(mocked.products);
-    expect(() => {
-      products.id('x1');
-    }).toThrow();
   });
 
   it('should support property sorting', () => {

@@ -40,6 +40,8 @@ describe('Selection', () => {
     const duplicate = new Item({ id: 1, name: 'duplicate' });
     tolerantSelection.select(item);
     expect(tolerantSelection.has(item)).toBe(true);
+    expect(tolerantSelection.id(1)).toBe(item);
+    expect(tolerantSelection.index(duplicate)).toBe(0);
     expect(tolerantSelection.has(duplicate)).toBe(true);
   });
   it('should toggle and flip all items', () => {
