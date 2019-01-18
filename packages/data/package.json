@@ -2,8 +2,12 @@
   "name": "@ec.components/data",
   "version": "0.42.2",
   "scripts": {
-    "build": "ng build data"
+    "prepublish": "ng build data"
   },
+  "main": "dist/bundles/ec.components-data.umd.js",
+  "files": [
+    "dist/"
+  ],
   "dependencies": {
     "@ec.components/core": "^0.19.2",
     "@ec.components/ui": "^0.36.2",

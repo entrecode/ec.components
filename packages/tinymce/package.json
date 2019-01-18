@@ -2,8 +2,12 @@
   "name": "@ec.components/tinymce",
   "version": "0.5.1",
   "scripts": {
-    "build": "ng build tinymce"
+    "prepublish": "ng build tinymce"
   },
+  "main": "dist/bundles/ec.components-tinymce.umd.js",
+  "files": [
+    "dist/"
+  ],
   "peerDependencies": {
     "@angular/common": "^7.2.0",
     "@angular/core": "^7.2.0"

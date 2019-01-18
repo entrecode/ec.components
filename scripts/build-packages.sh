@@ -1,8 +1,8 @@
-ng build core &&
-ng build calendar &&
-ng build ui &&
-ng build location &&
-ng build data &&
-ng build ace &&
-ng build medium-editor &&
-ng build tinymce
+ng build core && yarn &&
+ng build calendar && yarn &&
+ng build ui && yarn &&
+ng build location && yarn &&
+ng build data && yarn &&
+ng build ace && yarn &&
+ng build medium-editor && yarn &&
+ng build tinymce && yarn

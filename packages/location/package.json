@@ -2,8 +2,12 @@
   "name": "@ec.components/location",
   "version": "0.18.1",
   "scripts": {
-    "build": "ng build location"
+    "prepublish": "ng build location"
   },
+  "main": "dist/bundles/ec.components-location.umd.js",
+  "files": [
+    "dist/"
+  ],
   "peerDependencies": {
     "@angular/common": "^7.2.0",
     "@angular/core": "^7.2.0",
