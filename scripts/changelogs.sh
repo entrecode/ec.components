@@ -7,3 +7,4 @@ conventional-changelog -p angular -l medium-editor -s -i packages/medium-editor/
 conventional-changelog -p angular -l location -s -i packages/location/CHANGELOG.md --commit-path packages/location
 conventional-changelog -p angular -l style -s -i packages/style/CHANGELOG.md --commit-path packages/style
 conventional-changelog -p angular -l ace -s -i packages/ace/CHANGELOG.md --commit-path packages/ace
+conventional-changelog -p angular  -s -i CHANGELOG.md
