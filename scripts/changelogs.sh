@@ -1,0 +1,9 @@
+conventional-changelog -p angular -r 0 -l core -o packages/core/CHANGELOG.md --commit-path packages/core
+conventional-changelog -p angular -r 0 -l calendar -o packages/calendar/CHANGELOG.md --commit-path packages/calendar
+conventional-changelog -p angular -r 0 -l ui -o packages/ui/CHANGELOG.md --commit-path packages/ui
+conventional-changelog -p angular -r 0 -l data -o packages/data/CHANGELOG.md --commit-path packages/data
+conventional-changelog -p angular -r 0 -l tinymce -o packages/tinymce/CHANGELOG.md --commit-path packages/tinymce
+conventional-changelog -p angular -r 0 -l medium-editor -o packages/medium-editor/CHANGELOG.md --commit-path packages/medium-editor
+conventional-changelog -p angular -r 0 -l location -o packages/location/CHANGELOG.md --commit-path packages/location
+conventional-changelog -p angular -r 0 -l style -o packages/style/CHANGELOG.md --commit-path packages/style
+conventional-changelog -p angular -r 0 -l ace -o packages/ace/CHANGELOG.md --commit-path packages/ace
