@@ -7,8 +7,8 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subject } from 'rxjs';
-import * as tinymce from 'tinymce';
-/* import 'tinymce/plugins/autolink';
+import tinymce from 'tinymce/tinymce';
+import 'tinymce/plugins/autolink';
 import 'tinymce/plugins/autoresize';
 import 'tinymce/plugins/code';
 import 'tinymce/plugins/colorpicker';
@@ -21,7 +21,8 @@ import 'tinymce/plugins/table';
 import 'tinymce/plugins/template';
 import 'tinymce/plugins/textcolor';
 import 'tinymce/plugins/visualblocks';
-import 'tinymce/themes/modern'; */
+import 'tinymce/themes/modern';
+
 import { editorSettings } from './tinymce-settings';
 import { debounceTime } from 'rxjs/operators';
 
@@ -61,7 +62,7 @@ export class TinymceComponent
   @Output() changed: EventEmitter<string> = new EventEmitter();
   /** Output that is emitted when the setup is being made.
    * Passes the editor instance. Intended to be used for custom controls  */
-  @Output() setup: EventEmitter<tinymce.Editor> = new EventEmitter();
+  @Output() setup: EventEmitter<any> = new EventEmitter();
   /** Current value */
   public value = '';
 
@@ -100,24 +101,21 @@ export class TinymceComponent
 
   /** Initializes the editor */
   init() {
-    this.ready = new Promise((resolve, reject) =>
-      setTimeout(() => resolve(tinymce.init(
-        Object.assign({},
-          editorSettings,
-          this.settings,
-          {
-            target: this.container.nativeElement,
-            setup: (editor) => {
-              editorSettings.setup(editor);
-              if (this.settings && this.settings.setup) {
-                this.settings.setup(editor);
-              }
-              this.setup.emit(editor);
-            }
+    const settings = Object.assign({},
+      editorSettings,
+      this.settings,
+      {
+        target: this.container.nativeElement,
+        setup: (editor) => {
+          editorSettings.setup(editor);
+          if (this.settings && this.settings.setup) {
+            this.settings.setup(editor);
           }
-        )
-      )))
+          this.setup.emit(editor);
+        }
+      }
     );
+    this.ready = new Promise((resolve, reject) => setTimeout(() => resolve(tinymce.init(settings))));
     this.ready.then(editor => {
       this.editor = editor[0];
       this.editor.setContent(this.value || '');

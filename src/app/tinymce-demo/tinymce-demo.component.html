@@ -1,12 +1,10 @@
 <h2>TinyMCE</h2>
-
-
-<ec-tinymce [(ngModel)]="html" #defaultTiny></ec-tinymce>
+<!-- <ec-tinymce [(ngModel)]="html" #defaultTiny></ec-tinymce>
 
 <pre>
     {{html}}
-</pre>
-<!-- <ec-tabs>
+</pre> -->
+<ec-tabs>
     <ec-tab label="default" #tabA>
         <a class="btn" (click)="html='<h1>Test</h1>'">Change value from outside</a>
         <ec-tinymce *ngIf="tabA.selected" [(ngModel)]="html" #defaultTiny></ec-tinymce>
@@ -66,4 +64,4 @@
     <ec-tab label="form" #formTab>
         <ec-form *ngIf="formTab.selected" [config]="tinyFormConfig"></ec-form>
     </ec-tab>
-</ec-tabs> -->
+</ec-tabs>

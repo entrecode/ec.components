@@ -24,7 +24,16 @@ export class AppModule {
 }
 ```
 
-### 3. Use it
+### 3. Add styles files to angular.json
+
+```json
+"styles": [
+  "node_modules/tinymce/skins/lightgray/skin.min.css",
+  "node_modules/tinymce/skins/lightgray/content.min.css"
+],
+```
+
+### 4. Use it
 
 ```html
  <ec-tinymce [(ngModel)]="html" (change)="change($event)"></ec-tinymce>
