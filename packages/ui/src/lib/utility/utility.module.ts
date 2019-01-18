@@ -10,7 +10,7 @@ import { SignupFormComponent } from './signup-form/signup-form.component';
 import { TabComponent } from './tab/tab.component';
 import { TabsComponent } from './tabs/tabs.component';
 
-@NgModule({
+export const utilityModuleConfig = {
   entryComponents: [],
   declarations: [
     TabsComponent,
@@ -41,6 +41,8 @@ import { TabsComponent } from './tabs/tabs.component';
     RouterModule,
   ],
   providers: [],
-})
+};
+
+@NgModule(utilityModuleConfig)
 export class UtilityModule {
 }

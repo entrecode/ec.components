@@ -1,17 +1,22 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { TabsComponent } from '../../utility/tabs/tabs.component';
-import { TabComponent } from '../../utility/tab/tab.component';
 import { RouterTestingModule } from '@angular/router/testing';
-import { uiModuleConfig } from '../../ui.module';
+import { TabsComponent } from '../../utility/tabs/tabs.component';
+import { utilityModuleConfig } from '../utility.module';
+
 
 describe('TabsComponent', () => {
   let component: TabsComponent;
   let fixture: ComponentFixture<TabsComponent>;
   /* let children: Array<TabComponent>; */
+
   beforeEach(async(() => {
-    TestBed.configureTestingModule(uiModuleConfig)
-      .compileComponents();
+    TestBed.configureTestingModule({
+      ...utilityModuleConfig,
+      imports: [
+        ...utilityModuleConfig.imports,
+        RouterTestingModule
+      ]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

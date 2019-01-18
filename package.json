@@ -3,12 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --ssl=true --ssl-cert=ssl/server.crt --ssl-key=ssl/server.key",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build-packages": "sh ./build-packages.sh",
+    "build-packages": "sh ./scripts/build-packages.sh",
+    "test-packages": "sh ./scripts/test-packages.sh",
     "dev-setup": "npm run build-packages && yarn",
     "docs": "compodoc packages -d docs -p tsconfig.json -s -o -w --includes tutorial --includesName Tutorial"
   },

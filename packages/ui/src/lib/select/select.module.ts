@@ -6,7 +6,7 @@ import { SelectComponent } from './select.component';
 import { ActionbarComponent } from '../actionbar/actionbar.component';
 import { LoaderModule } from '../loader/loader.module';
 
-@NgModule({
+export const selectModuleConfig = {
   imports: [
     CommonModule,
     ListModule,
@@ -24,6 +24,9 @@ import { LoaderModule } from '../loader/loader.module';
     DndModule
   ],
   providers: [],
-})
+};
+
+
+@NgModule(selectModuleConfig)
 export class SelectModule {
 }

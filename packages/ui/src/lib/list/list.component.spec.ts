@@ -1,17 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule } from '@angular/forms';
-import { ListComponent } from './list.component';
-import { ListItemsComponent } from './list-items/list-items.component';
-import { ListHeaderComponent } from './list-header/list-header.component';
-import { GroupPipe } from './group.pipe';
 import { Item } from '@ec.components/core';
-import { PaginationComponent } from './pagination/pagination.component';
-import { FormModule } from '../form/form.module';
-import { PopModule } from '../pop/pop.module';
-import { NotificationsModule } from '../notifications/notifications.module';
-import { LoaderModule } from '../loader/loader.module';
-import { IconModule } from '../icon/icon.module';
-import { SymbolModule } from '../symbol/symbol.module';
+import { ListComponent } from './list.component';
+import { listModuleConfig } from './list.module';
 /* import { mocked } from '../../mocks/data'; */
 
 describe('ListComponent', () => {
@@ -19,11 +9,7 @@ describe('ListComponent', () => {
   let fixture: ComponentFixture<ListComponent<any>>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [SymbolModule, LoaderModule, FormModule, IconModule, PopModule, NotificationsModule, ReactiveFormsModule],
-      declarations: [PaginationComponent, ListComponent, ListItemsComponent, ListHeaderComponent, GroupPipe],
-      providers: []
-    })
+    TestBed.configureTestingModule(listModuleConfig)
       .compileComponents();
   }));
 

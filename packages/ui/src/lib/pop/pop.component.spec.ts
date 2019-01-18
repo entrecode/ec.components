@@ -1,13 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { PopComponent } from './pop.component';
-import { uiModuleConfig } from '../ui.module';
+import { popModuleConfig } from './pop.module';
 
 describe('PopComponent', () => {
   let component: PopComponent;
   let fixture: ComponentFixture<PopComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule(uiModuleConfig)
+    TestBed.configureTestingModule(popModuleConfig)
       .compileComponents();
   }));
 

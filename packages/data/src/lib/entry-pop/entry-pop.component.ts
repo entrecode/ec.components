@@ -2,7 +2,6 @@ import {
   ChangeDetectionStrategy, ChangeDetectorRef, Component,
   ElementRef, EventEmitter, HostBinding, Input, OnInit, Output, ViewChild
 } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Form } from '@ec.components/core';
 import { FormService, PopComponent, PopService, SymbolService } from '@ec.components/ui';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
@@ -45,8 +44,6 @@ export class EntryPopComponent extends PopComponent implements OnInit {
   constructor(
     public popService: PopService,
     public auth: AuthService,
-    public router: Router,
-    public route: ActivatedRoute,
     public formService: FormService,
     public symbol: SymbolService,
     public elementRef: ElementRef,
@@ -109,11 +106,11 @@ export class EntryPopComponent extends PopComponent implements OnInit {
   /** Opens the pop after deleting the current bound entry from the instance. */
   create() {
     delete this.entry;
-    if (this.createRoute) {
+    /* if (this.createRoute) {
       const matcher = '(' + this.pathRegExp(this.editRoute) + '|' + this.pathRegExp(this.createRoute) + ').*';
       const trimmed = this.router.url.replace(new RegExp(matcher, 'g'), '');
       this.router.navigate([trimmed, this.createRoute]);
-    }
+    } */
     if (this.form) { // clears form if already used before
       this.form.create();
     }

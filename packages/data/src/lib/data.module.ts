@@ -25,7 +25,7 @@ import { HistoryService } from './sdk/history.service';
 import { SdkModule } from './sdk/sdk.module';
 import { EntryListSelectComponent } from './entry-list-select/entry-list-select.component';
 
-@NgModule({
+export const dataModuleConfig = {
   entryComponents: [
     DefaultEntryInputComponent,
     DefaultEntryOutputComponent,
@@ -87,7 +87,9 @@ import { EntryListSelectComponent } from './entry-list-select/entry-list-select.
       }
     }
   ]
-})
+};
+
+@NgModule(dataModuleConfig)
 export class DataModule {
   static forEnvironment(environment): ModuleWithProviders {
     return {

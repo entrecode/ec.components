@@ -5,7 +5,7 @@ import { PopService } from './pop.service';
 import { ModalComponent } from '../modal/modal.component';
 import { IconModule } from '../icon/icon.module';
 
-@NgModule({
+export const popModuleConfig = {
   declarations: [
     PopComponent,
     ModalComponent,
@@ -19,6 +19,8 @@ import { IconModule } from '../icon/icon.module';
     ModalComponent,
   ],
   providers: [PopService]
-})
+};
+
+@NgModule(popModuleConfig)
 export class PopModule {
 }
