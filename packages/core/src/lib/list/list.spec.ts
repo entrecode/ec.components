@@ -1,7 +1,8 @@
-/* import { mocked } from '../../../../mocks/data'; */
-import { List } from './list';
+import { List } from '@ec.components/core/public_api';
+import { mocked } from 'src/mocks/data';
+
 describe('List', () => {
-/*
+
   it('should support identifiers', () => {
     const products = new List(mocked.products, { identifier: 'id' });
     expect(products.id('x1').resolve('name')).toBe('Brush');
@@ -61,5 +62,5 @@ describe('List', () => {
     const muffins = new List([{ name: 'A' }, { name: 'A' }, { name: 'B' }], { fields: { name: { group: (v) => v } } });
     muffins.groupBy('name');
     expect(muffins.groups.length).toBe(2);
-  }); */
+  });
 });

@@ -1,11 +1,6 @@
 import { Pagination } from './pagination';
 
 describe('Pagination', () => {
-  beforeEach(() => {
-    /*TestBed.configureTestingModule({
-     providers: [Sorter]
-     });*/
-  });
 
   it('should construct with default values', () => {
     const pagination = new Pagination();

@@ -1,16 +1,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TinymceDemoComponent } from './tinymce-demo.component';
+import { demoModuleConfig } from '../demo.module';
 
 describe('TinymceDemoComponent', () => {
   let component: TinymceDemoComponent;
   let fixture: ComponentFixture<TinymceDemoComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ TinymceDemoComponent ]
-    })
-    .compileComponents();
+    TestBed.configureTestingModule(demoModuleConfig)
+      .compileComponents();
   }));
 
   beforeEach(() => {

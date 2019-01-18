@@ -1,16 +1,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EntryPopDemoComponent } from './entry-pop-demo.component';
+import { demoModuleConfig } from '../demo.module';
 
 describe('EntryPopDemoComponent', () => {
   let component: EntryPopDemoComponent;
   let fixture: ComponentFixture<EntryPopDemoComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ EntryPopDemoComponent ]
-    })
-    .compileComponents();
+    TestBed.configureTestingModule(demoModuleConfig)
+      .compileComponents();
   }));
 
   beforeEach(() => {

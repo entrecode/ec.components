@@ -1,12 +1,6 @@
-import { Item, Sorter } from '../..';
+import { Item, Sorter } from '@ec.components/core/public_api';
 
 describe('Sorter', () => {
-  beforeEach(() => {
-    /*TestBed.configureTestingModule({
-     providers: [Sorter]
-     });*/
-  });
-
   it('should sort numbers', () => {
     const numbers = [30, 100, 2].map(n => new Item(n));
     Sorter.sort(numbers);

@@ -1,30 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DemoComponent } from './demo.component';
-import { FormsModule } from '@angular/forms';
-import { UiModule } from '@ec.components/ui';
-import { DataModule } from '@ec.components/data';
-import { RouterTestingModule } from '@angular/router/testing';
-import { FilesModule } from '@ec.components/data';
+import { demoModuleConfig } from './demo.module';
 
 describe('DemoComponent', () => {
   let component: DemoComponent;
   let fixture: ComponentFixture<DemoComponent>;
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [
-        DemoComponent
-      ],
-      imports: [
-        FormsModule,
-        UiModule,
-        RouterTestingModule,
-        DataModule,
-        FilesModule,
-      ],
-      providers: [
-        { provide: 'environment', useValue: 'development' }
-      ],
-    }).compileComponents();
+    TestBed.configureTestingModule(demoModuleConfig).compileComponents();
   }));
 
   beforeEach(() => {

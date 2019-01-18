@@ -65,8 +65,7 @@ import { FormsModule } from '@angular/forms';
 import { CalendarModule } from '@ec.components/calendar';
 /* import { CalendarModule } from '../../packages/calendar/src/calendar.module'; */
 
-
-@NgModule({
+export const demoModuleConfig = {
   declarations: [
     GithubSourceComponent,
     GithubSourcesComponent,
@@ -157,7 +156,9 @@ import { CalendarModule } from '@ec.components/calendar';
     }
   ],
   bootstrap: [DemoComponent]
-})
+};
+
+@NgModule(demoModuleConfig)
 export class DemoModule {
   constructor(
     /* private symbol: SymbolService */

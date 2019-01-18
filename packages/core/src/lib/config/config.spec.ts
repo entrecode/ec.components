@@ -1,4 +1,4 @@
-import { Config } from '../..';
+import { Config } from '@ec.components/core';
 
 class ConfigTest extends Config { }
 

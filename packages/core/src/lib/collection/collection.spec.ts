@@ -1,5 +1,5 @@
-import { Collection } from '../..';
-import { mocked } from '../../../../mocks/data';
+import { Collection } from '@ec.components/core';
+import { mocked } from 'src/mocks/data';
 
 describe('Collection', () => {
   it('should be constructed empty', () => {

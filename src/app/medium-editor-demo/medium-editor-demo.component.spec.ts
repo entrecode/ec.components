@@ -1,15 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MediumEditorDemoComponent } from './medium-editor-demo.component';
+import { demoModuleConfig } from '../demo.module';
 
 describe('MediumEditorDemoComponent', () => {
   let component: MediumEditorDemoComponent;
   let fixture: ComponentFixture<MediumEditorDemoComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ MediumEditorDemoComponent ]
-    })
+    TestBed.configureTestingModule(demoModuleConfig)
     .compileComponents();
   }));
 

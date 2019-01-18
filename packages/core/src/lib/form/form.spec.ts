@@ -1,7 +1,8 @@
+import { Item, Form } from '@ec.components/core';
+
 /**
  * Created by felix on 09.05.17.
  */
-import { Form, Item } from '../..';
 
 describe('Form', () => {
   const person = new Item({
@@ -56,5 +57,5 @@ describe('Form', () => {
     expect(prefilledArray.getValue('name')).toEqual(['a', 'b']);
     const prefilledObject = new Form(null, { fields: { name: { prefill: { test: true } } } });
     expect(prefilledObject.getValue('name')).toEqual({ test: true });
-  })
+  });
 });

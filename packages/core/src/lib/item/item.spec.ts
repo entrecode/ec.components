@@ -16,7 +16,7 @@ describe('Item', () => {
   it('resolve', () => {
     const item = new Item(undefined);
     expect(item.resolve()).toBeUndefined();
-  })
+  });
 
   it('should support getProperties', () => {
     const body = { id: 'a' };
@@ -24,7 +24,7 @@ describe('Item', () => {
     const j = new Item('x');
     expect(i.getProperties()).toEqual(Object.keys(i['body']));
     expect(() => {
-      j.id()
+      j.id();
     }).toThrow();
   });
   it('should support transforms', () => {
@@ -47,7 +47,7 @@ describe('Item', () => {
       fields: {
         name: {
           resolve: (v) => {
-            return 'Name:' + v.name
+            return 'Name:' + v.name;
           },
           display: (v) => v + '!',
           group: (v) => v.length,
@@ -77,7 +77,7 @@ describe('Item', () => {
   it('display', () => {
     const item = new Item(6);
     expect(item.display()).toBe(6);
-  })
+  });
 
   it('pickWriteOnly', () => {
     const item = new Item({ name: 'Tobsen', age: 10 }, { fields: { name: {}, age: { readOnly: true } } });
