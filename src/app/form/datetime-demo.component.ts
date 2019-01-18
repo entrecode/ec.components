@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import moment from 'moment-es6';
-
 /* import { events } from './events'; */
 
 @Component({
@@ -26,7 +25,6 @@ export class DatetimeDemoComponent {
   timestamps;
 
   constructor() {
-    console.log('datetime', DatetimeComponent);
     /*     this.timestamps = events.map(e => e.timestamp); */
     this.timestamps = [
       moment().subtract(1, 'day'),
