@@ -1,0 +1,10 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * Configuration for list fields.
+ * @record
+ */
+export function FieldConfig() { }
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZmllbGQtY29uZmlnLmludGVyZmFjZS5qcyIsInNvdXJjZVJvb3QiOiJuZzovL0BlYy5jb21wb25lbnRzL2NvcmUvIiwic291cmNlcyI6WyJsaWIvY29uZmlnL2ZpZWxkLWNvbmZpZy5pbnRlcmZhY2UudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7QUFLQSxpQ0FHQyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IEZpZWxkQ29uZmlnUHJvcGVydHkgfSBmcm9tICcuL2ZpZWxkLWNvbmZpZy1wcm9wZXJ0eS5pbnRlcmZhY2UnO1xuXG4vKipcbiAqIENvbmZpZ3VyYXRpb24gZm9yIGxpc3QgZmllbGRzLlxuICovXG5leHBvcnQgaW50ZXJmYWNlIEZpZWxkQ29uZmlnIHtcbiAgLyoqIEVhY2ggZmllbGQgY2FuIGJlIGNvbmZpZ3VyZWQgaW4gdGhlIGZvcm0gb2YgRmllbGRDb25maWdQcm9wZXJ0eS4gKi9cbiAgW2tleTogc3RyaW5nXTogRmllbGRDb25maWdQcm9wZXJ0eTtcbn1cbiJdfQ==
