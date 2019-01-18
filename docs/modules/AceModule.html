@@ -205,13 +205,15 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
 import { AceComponent } from &#x27;./ace.component&#x27;;
 
-@NgModule({
+export const aceModuleConfig &#x3D; {
     imports: [],
     exports: [AceComponent],
     declarations: [AceComponent],
     entryComponents: [AceComponent],
     providers: [],
-})
+};
+
+@NgModule(aceModuleConfig)
 export class AceModule { }
 </code></pre>
     </div>

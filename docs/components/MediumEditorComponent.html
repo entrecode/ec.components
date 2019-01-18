@@ -284,6 +284,9 @@
                             <em>Type :</em>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                             </p>
+                        <p>
+                            <em>Default value : </em><code>{}</code>
+                        </p>
                     </td>
                 </tr>
                         <tr>
@@ -856,7 +859,7 @@ export class MediumEditorComponent implements OnInit, OnDestroy, ControlValueAcc
   /** data model */
   @Input() model: any;
   /** MediumEditor [options](https://github.com/yabwe/medium-editor#mediumeditor-options) */
-  @Input() options: any;
+  @Input() options: any &#x3D; {};
   /** empty placeholder */
   @Input() placeholder: string;
   /** change emitter */

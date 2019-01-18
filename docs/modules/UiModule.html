@@ -418,7 +418,7 @@ import { IconModule } from &#x27;./icon/icon.module&#x27;;
 import { SymbolModule } from &#x27;./symbol/symbol.module&#x27;;
 import { FormModule } from &#x27;./form/form.module&#x27;;
 
-@NgModule({
+export const uiModuleConfig &#x3D; {
   imports: [
     UtilityModule,
     NotificationsModule,
@@ -441,7 +441,9 @@ import { FormModule } from &#x27;./form/form.module&#x27;;
     IconModule,
     SymbolModule
   ]
-})
+};
+
+@NgModule(uiModuleConfig)
 export class UiModule {
 }
 </code></pre>

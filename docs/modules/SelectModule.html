@@ -286,7 +286,7 @@ import { SelectComponent } from &#x27;./select.component&#x27;;
 import { ActionbarComponent } from &#x27;../actionbar/actionbar.component&#x27;;
 import { LoaderModule } from &#x27;../loader/loader.module&#x27;;
 
-@NgModule({
+export const selectModuleConfig &#x3D; {
   imports: [
     CommonModule,
     ListModule,
@@ -304,7 +304,10 @@ import { LoaderModule } from &#x27;../loader/loader.module&#x27;;
     DndModule
   ],
   providers: [],
-})
+};
+
+
+@NgModule(selectModuleConfig)
 export class SelectModule {
 }
 </code></pre>

@@ -500,10 +500,9 @@ import { MaxItemsPipe } from &#x27;./max-items.pipe&#x27;;
 import { SymbolModule } from &#x27;../symbol/symbol.module&#x27;;
 import { DefaultInputComponent } from &#x27;./default-input/default-input.component&#x27;;
 import { DefaultOutputComponent } from &#x27;./default-output/default-output.component&#x27;;
-import { SymbolService } from &#x27;../symbol/symbol.service&#x27;;
 import { CalendarModule } from &#x27;@ec.components/calendar&#x27;;
 
-@NgModule({
+export const formModuleConfig &#x3D; {
   entryComponents: [
     DefaultInputComponent,
     DefaultOutputComponent,
@@ -552,7 +551,9 @@ import { CalendarModule } from &#x27;@ec.components/calendar&#x27;;
       useValue: SymbolService.resolve(&#x27;moment.format.month&#x27;)
     } */
   ]
-})
+};
+
+@NgModule(formModuleConfig)
 export class FormModule {
 }
 </code></pre>

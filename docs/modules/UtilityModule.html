@@ -354,7 +354,7 @@ import { SignupFormComponent } from &#x27;./signup-form/signup-form.component&#x
 import { TabComponent } from &#x27;./tab/tab.component&#x27;;
 import { TabsComponent } from &#x27;./tabs/tabs.component&#x27;;
 
-@NgModule({
+export const utilityModuleConfig &#x3D; {
   entryComponents: [],
   declarations: [
     TabsComponent,
@@ -385,7 +385,9 @@ import { TabsComponent } from &#x27;./tabs/tabs.component&#x27;;
     RouterModule,
   ],
   providers: [],
-})
+};
+
+@NgModule(utilityModuleConfig)
 export class UtilityModule {
 }
 </code></pre>

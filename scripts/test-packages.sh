@@ -1,8 +1,9 @@
-ng test core --watch=false &&
-ng test calendar --watch=false &&
-ng test ui --watch=false &&
-ng test location --watch=false &&
-ng test data --watch=false &&
-ng test ace --watch=false &&
-ng test medium-editor --watch=false &&
-ng test tinymce --watch=false 
+ng test --watch=false --browsers=ChromeHeadless &&
+ng test core --watch=false --browsers=ChromeHeadless &&
+ng test calendar --watch=false --browsers=ChromeHeadless &&
+ng test ui --watch=false --browsers=ChromeHeadless &&
+ng test location --watch=false --browsers=ChromeHeadless &&
+ng test data --watch=false --browsers=ChromeHeadless &&
+ng test ace --watch=false --browsers=ChromeHeadless &&
+ng test medium-editor --watch=false --browsers=ChromeHeadless &&
+ng test tinymce --watch=false --browsers=ChromeHeadless

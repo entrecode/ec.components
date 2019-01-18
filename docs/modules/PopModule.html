@@ -254,7 +254,7 @@ import { PopService } from &#x27;./pop.service&#x27;;
 import { ModalComponent } from &#x27;../modal/modal.component&#x27;;
 import { IconModule } from &#x27;../icon/icon.module&#x27;;
 
-@NgModule({
+export const popModuleConfig &#x3D; {
   declarations: [
     PopComponent,
     ModalComponent,
@@ -268,7 +268,9 @@ import { IconModule } from &#x27;../icon/icon.module&#x27;;
     ModalComponent,
   ],
   providers: [PopService]
-})
+};
+
+@NgModule(popModuleConfig)
 export class PopModule {
 }
 </code></pre>

@@ -197,12 +197,14 @@
 import { NgModule } from &#x27;@angular/core&#x27;;
 import { MediumEditorComponent } from &#x27;./medium-editor.component&#x27;;
 
-@NgModule({
+export const mediumModuleConfig &#x3D; {
   imports: [CommonModule],
   exports: [MediumEditorComponent],
   declarations: [MediumEditorComponent],
   providers: [],
-})
+};
+
+@NgModule(mediumModuleConfig)
 export class MediumEditorModule {
 }
 </code></pre>

@@ -179,11 +179,13 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
 import { TinymceComponent } from &#x27;./tinymce/tinymce.component&#x27;;
 
-@NgModule({
+export const tinymceModuleConfig &#x3D; {
   declarations: [TinymceComponent],
   entryComponents: [TinymceComponent],
   exports: [TinymceComponent]
-})
+};
+
+@NgModule(tinymceModuleConfig)
 export class TinymceModule {
 }
 </code></pre>

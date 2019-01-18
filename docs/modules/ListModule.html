@@ -442,7 +442,7 @@ import { SearchbarComponent } from &#x27;./searchbar/searchbar.component&#x27;;
 import { ListConfigService } from &#x27;./list-config.service&#x27;;
 import { FormsModule } from &#x27;@angular/forms&#x27;;
 
-@NgModule({
+export const listModuleConfig &#x3D; {
   declarations: [
     ListComponent,
     ListItemsComponent,
@@ -471,7 +471,9 @@ import { FormsModule } from &#x27;@angular/forms&#x27;;
   providers: [
     ListConfigService
   ]
-})
+};
+
+@NgModule(listModuleConfig)
 export class ListModule {
 }
 </code></pre>

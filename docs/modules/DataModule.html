@@ -730,7 +730,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">packages/data/src/lib/data.module.ts:92</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">packages/data/src/lib/data.module.ts:94</a></div>
                             </td>
                         </tr>
 
@@ -806,7 +806,7 @@ import { HistoryService } from &#x27;./sdk/history.service&#x27;;
 import { SdkModule } from &#x27;./sdk/sdk.module&#x27;;
 import { EntryListSelectComponent } from &#x27;./entry-list-select/entry-list-select.component&#x27;;
 
-@NgModule({
+export const dataModuleConfig &#x3D; {
   entryComponents: [
     DefaultEntryInputComponent,
     DefaultEntryOutputComponent,
@@ -868,7 +868,9 @@ import { EntryListSelectComponent } from &#x27;./entry-list-select/entry-list-se
       }
     }
   ]
-})
+};
+
+@NgModule(dataModuleConfig)
 export class DataModule {
   static forEnvironment(environment): ModuleWithProviders {
     return {

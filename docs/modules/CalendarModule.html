@@ -311,7 +311,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">packages/calendar/src/lib/calendar.module.ts:43</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">packages/calendar/src/lib/calendar.module.ts:45</a></div>
                             </td>
                         </tr>
 
@@ -372,7 +372,7 @@ import { DaterangeComponent } from &#x27;./daterange/daterange.component&#x27;;
 import { MonthComponent } from &#x27;./calendar/month.component&#x27;;
 import { CommonModule } from &#x27;@angular/common&#x27;;
 
-@NgModule({
+export const calendarModuleConfig &#x3D; {
     imports: [
         CommonModule
     ],
@@ -404,7 +404,9 @@ import { CommonModule } from &#x27;@angular/common&#x27;;
             useValue: &#x27;MMMM YYYY&#x27;
         }
     ]
-})
+};
+
+@NgModule(calendarModuleConfig)
 export class CalendarModule {
     static forRoot(formats: { date?, time?, month?}): ModuleWithProviders {
         return {
