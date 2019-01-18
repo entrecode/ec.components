@@ -1,24 +1,15 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule } from '@angular/forms';
-import { ListHeaderComponent } from '../../list/list-header/list-header.component';
-import { FormModule } from '../../form/form.module';
-import { LoaderModule } from '../../loader/loader.module';
-import { NotificationsModule } from '../../notifications/notifications.module';
-import { PopModule } from '../../pop/pop.module';
-import { PopComponent } from '../../pop/pop.component';
 import { List } from '@ec.components/core';
-import { IconModule } from '../../icon/icon.module';
+import { ListHeaderComponent } from '../../list/list-header/list-header.component';
+import { PopComponent } from '../../pop/pop.component';
+import { uiModuleConfig } from '../../ui.module';
 
 describe('ListHeaderComponent', () => {
   let component: ListHeaderComponent;
   let fixture: ComponentFixture<ListHeaderComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule, IconModule, FormModule, LoaderModule, PopModule, NotificationsModule],
-      declarations: [ListHeaderComponent],
-      providers: []
-    })
+    TestBed.configureTestingModule(uiModuleConfig)
       .compileComponents();
   }));
 

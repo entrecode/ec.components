@@ -1,8 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { TabsComponent } from '../../utility/tabs/tabs.component';
-import { TabComponent } from '../../utility/tab/tab.component';
-import { RouterTestingModule } from '@angular/router/testing';
+import { uiModuleConfig } from '../../ui.module';
 
 describe('TabComponent', () => {
   /* let component: TabComponent;
@@ -10,10 +8,7 @@ describe('TabComponent', () => {
   let tabsFix: ComponentFixture<TabsComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
-      declarations: [TabsComponent, TabComponent]
-    })
+    TestBed.configureTestingModule(uiModuleConfig)
       .compileComponents();
   }));
 
