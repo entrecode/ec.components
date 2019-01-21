@@ -69,6 +69,48 @@ mkdir @ec.components && cd \@ec.components
 ln -s ../../packages/calendar/dist calendar
 ```
 
+This process can be automated by a script:
+
+symlink-package.sh
+
+```sh
+cd node_modules/\@ec.components
+ln -s ../../packages/$1/dist $1
+```
+
+build-package.hs:
+
+```sh
+ng build $1
+sh scripts/symlink-package.sh $1
+```
+
+```sh
+sh scripts/build-package.sh ui
+```
+
+In lerna.json, we add the root package folders (as opposed to dist folders in package.json):
+
+```json
+{
+  "version": "independent",
+  "useWorkspaces": false,
+  "npmClient": "yarn",
+  "packages": [
+    "packages/ace",
+    "packages/calendar",
+    "packages/core",
+    "packages/data",
+    "packages/location",
+    "packages/medium-editor",
+    "packages/tinymce",
+    "packages/ui"
+  ]
+}
+```
+
+Note that it only works when settings useWorkspaces to false!
+
 
 ## Generating a new package
 
