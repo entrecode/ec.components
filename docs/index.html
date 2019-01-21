@@ -58,10 +58,14 @@ It is mainly used for entrecode admin applications in combination with the <a hr
 <p>The repository is a monorepo, managed by <a href="https://github.com/lerna/lerna">lerna</a> and <a href="https://yarnpkg.com/lang/en/docs/workspaces/">yarn workspaces</a>.
 All folders inside dist + packages/style will be used as symlinks in <a href="mailto:node_modules/@ec.components">node_modules/@ec.components</a>/*.
 You can update the symlinks by running yarn (e.g. after adding a new package).</p>
+<h2 id="setup">Setup</h2>
+<p>After a fresh clone of the repo, run this:</p>
+<div><pre class="line-numbers"><code class="language-sh">yarn install
+npm run dev-setup
+npm run start</code></pre></div><p>The dev-setup script builds all packages and symlinks them to the node_modules.</p>
 <h3 id="publishing">Publishing</h3>
 <p>Run publish task and select versions:</p>
-<div><pre class="line-numbers"><code class="language-sh">npm run publish</code></pre></div><p>To publish a new package, make sure you run <code>npm publish --access=public</code> before running lerna.
-Make sure you update the symlinks.sh and delete-modules.sh scripts to make it work for the demo server.</p>
+<div><pre class="line-numbers"><code class="language-sh">npm run publish</code></pre></div><p>To publish a new package for the first time, make sure you run <code>npm publish --access=public</code> before running lerna. See add-new-package for more info on creating a new package.</p>
 <h2 id="default-readme">Default README</h2>
 <p>This project was generated with <a href="https://github.com/angular/angular-cli">Angular CLI</a> version 7.2.1.</p>
 <h2 id="development-server">Development server</h2>

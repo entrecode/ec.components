@@ -1,4 +1,3 @@
-sh scripts/test-package.sh &&
 sh scripts/test-package.sh core &&
 sh scripts/test-package.sh calendar &&
 sh scripts/test-package.sh ui &&

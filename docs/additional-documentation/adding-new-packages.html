@@ -55,10 +55,12 @@ Just replace the example name &quot;data&quot; with the new package name.</p>
 <h2 id="2-prefix-packages-data-package-json-name-with-ec-components">2. Prefix packages/data/package.json#name with @ec.components</h2>
 <p>also make sure the version is correct</p>
 <h2 id="3-prefix-root-tsconfig-json-paths-data-and-data-with-ec-components">3. Prefix root tsconfig.json paths &quot;data&quot; and &quot;data/*&quot; with @ec.components</h2>
+<p>also change value to &quot;packages/data/dist/*&quot;</p>
 <h2 id="4-move-src-files-to-packages-data-lib">4. Move src files to packages/data/lib</h2>
 <h2 id="5-add-dependencies-e-g-ec-sdk-to-both-root-and-lib-package-json">5. add dependencies (e.g. ec.sdk) to both root and lib package.json</h2>
-<h2 id="6-add-whitelistednonpeerdependencies-to-ng-package-json">6. add whitelistedNonPeerDependencies to ng-package.json</h2>
-<div><pre class="line-numbers"><code class="language-json">  &quot;whitelistedNonPeerDependencies&quot;: [
+<h2 id="6-add-whitelistednonpeerdependencies-and-dest-to-ng-package-json">6. add whitelistedNonPeerDependencies and dest to ng-package.json</h2>
+<div><pre class="line-numbers"><code class="language-json">  &quot;dest&quot;: &quot;./dist&quot;,
+  &quot;whitelistedNonPeerDependencies&quot;: [
     &quot;.&quot;
   ]</code></pre></div><h2 id="7-fix-relative-imports">7. fix relative imports</h2>
 <div><pre class="line-numbers"><code class="language-ts">import { Notification } from &#39;../../../../ui/src/notifications/notification&#39;;
