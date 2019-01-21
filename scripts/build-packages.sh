@@ -7,3 +7,4 @@ sh ./scripts/build-package.sh data &&
 sh ./scripts/build-package.sh ace &&
 sh ./scripts/build-package.sh medium-editor &&
 sh ./scripts/build-package.sh tinymce &&
+sh ./scripts/build-package.sh style
