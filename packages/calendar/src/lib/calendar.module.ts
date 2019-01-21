@@ -40,6 +40,7 @@ export const calendarModuleConfig = {
     ]
 };
 
+/** This Module contains all calendar related components */
 @NgModule(calendarModuleConfig)
 export class CalendarModule {
     static forRoot(formats: { date?, time?, month?}): ModuleWithProviders {
