@@ -4,11 +4,9 @@ import { DefaultInputComponent, InputComponent } from '@ec.components/ui';
 
 import 'ace-builds/src-noconflict/ace';
 import 'ace-builds/webpack-resolver';
-declare const ace: any;
 
 /** Workaround that expects ace to be imported somewhere else... */
-
-
+declare const ace: any;
 
 /** Wraps ace editor as angular component. Implements ControlValueAccessor!
  *
