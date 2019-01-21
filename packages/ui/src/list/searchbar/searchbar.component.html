@@ -1,5 +1,0 @@
-<div class="ec-searchbar">
-    <input novalidate #inputField [ecFocus]="focusEvent" type="text" [placeholder]="placeholder || defaultPlaceholder" class="input"
-        (keyup)="keyupEvent($event)" (paste)="paste.next($event)" [(ngModel)]="query"
-        (keydown)="handleKey($event)" (blur)="blur.emit($event)" (focus)="focus.emit($event)">
-</div>

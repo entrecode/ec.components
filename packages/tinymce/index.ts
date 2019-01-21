@@ -1,1 +1,0 @@
-export { TinymceModule } from './src/tinymce.module'

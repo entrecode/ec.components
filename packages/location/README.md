@@ -4,13 +4,13 @@ This package wraps the [angular-google-maps](https://github.com/SebastianM/angul
 
 ## Installation
 
-1. Install package
+### 1. Install package
 
 ```sh
 npm install @ec.components/location --save
 ```
 
-2. Add Module
+### 2. Add Module
 
 ```js
 import { LocationModule } from '@ec.components/location';
@@ -24,7 +24,7 @@ export class AppModule {
 }
 ```
 
-3. Use it as default input for location fields
+### 3. Use it as default input for location fields
 
 ```ts
   constructor(private typeConfig: TypeConfigService) {

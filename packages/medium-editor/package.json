@@ -1,33 +1,16 @@
 {
   "name": "@ec.components/medium-editor",
-  "version": "0.2.3",
-  "description": "Wrapper around medium-editor for @ec.components",
-  "main": "index.ts",
+  "version": "0.4.4",
+  "main": "src/public_api.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepublish": "ng build medium-editor"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/entrecode/ec.components.git"
+  "peerDependencies": {
+    "@angular/common": "^7.2.0",
+    "@angular/core": "^7.2.0"
   },
-  "keywords": [
-    "medium",
-    "angular"
-  ],
-  "author": "Felix Roos <roos@entrecode.de>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/entrecode/ec.components/issues"
-  },
-  "homepage": "https://github.com/entrecode/ec.components#readme",
   "dependencies": {
-    "@angular/animations": "^5.0.1",
-    "@angular/common": "^5.0.1",
-    "@angular/compiler": "^5.0.1",
-    "@angular/core": "^5.0.1",
-    "@angular/forms": "^5.0.1",
-    "@angular/http": "^5.0.1",
-    "@angular/platform-browser": "^5.0.1",
     "medium-editor": "^5.23.2"
-  }
+  },
+  "gitHead": "40497a2880e6f13660ba7b147b19fddf556e5bb5"
 }

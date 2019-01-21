@@ -1,19 +1,13 @@
 {
   "name": "@ec.components/core",
-  "version": "0.18.0",
-  "description": "Core Classes for ec.components made by entrecode",
-  "main": "./src/index.ts",
+  "version": "0.19.7",
+  "main": "src/public_api.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc -d"
+    "prepublish": "ng build core"
   },
-  "author": "Felix Roos <roos@entrecode.de>",
-  "license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/entrecode/ec.components"
+  "peerDependencies": {
+    "@angular/common": "^7.2.0",
+    "@angular/core": "^7.2.0"
   },
-  "dependencies": {
-    "rxjs": "^5.5.2"
-  }
+  "gitHead": "40497a2880e6f13660ba7b147b19fddf556e5bb5"
 }
