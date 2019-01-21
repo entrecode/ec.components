@@ -1,49 +1,174 @@
-# Adding a new package
+# Adding a new Package in 10 easy steps
 
-To add a new package to @ec.components, follow this guide!
+The following steps need to be done to generate a new library that is standards compliant.
+Just replace the example name "data" with the new package name.
 
-## 1. Create folder in packages
-
-Create a new folder, e.g. ```mkdir packages/medium-editor```
-
-## 2. init npm
-
-```cd packages/medium-editor && npm init```
-
-- Make sure to name the package scoped: ```@ec.components/*```
-- Add dependencies according to your needs, e.g. angular etc.
-
-## 3. Create src folder
-
-Create a src folder and add your super cool typescript code.
-- Make sure your package.json main file is correct.
-- Make sure you have all dependencies up to date.
-
-## 4. add package to symlinks.sh
-
-- Add your package name to the symlinks script.
-
-## 5. add package to delete-modules.sh script
-
-- Add your package name to the delete-modules script.
-
-## 6. add package to main package.json dependencies
-
-- Keep version up to date (or use * as wildcard)
-- run ```npm i```
-
-## 7. add package to lerna.json
-
-- This integrates the package to the bootstrap/publish cycle of lerna.
-
-## 8. Manually Publish package the first time
-
-Before being able to publish with lerna, you have to publish it manually the first time:
+## 1. Run CLI command to generate a new library
 
 ```sh
-npm publish --access=public
+ng generate library data -p ec
 ```
 
-see https://docs.npmjs.com/cli/access#details.
+This will create a new folder under packages/ (see newProjectRoot in angular.json).
 
-## 9. Add Demo
+## 2. Prefix packages/data/package.json#name with @ec.components
+
+also make sure the version is correct
+
+## 3. Prefix root tsconfig.json paths "data" and "data/*" with @ec.components
+
+also change value to "packages/data/dist/*"
+
+## 4. Move src files to packages/data/lib
+
+## 5. add dependencies (e.g. ec.sdk) to both root and lib package.json
+
+## 6. add whitelistedNonPeerDependencies and dest to ng-package.json
+
+```json
+  "dest": "./dist",
+  "whitelistedNonPeerDependencies": [
+    "."
+  ]
+```
+
+## 7. fix relative imports
+
+```ts
+import { Notification } from '../../../../ui/src/notifications/notification';
+import { WithNotifications } from '../../../../ui/src/notifications/with-notifications.interface';
+// replace with
+import { WithNotifications, Notification } from '@ec.components/ui';
+```
+
+## 8. fix rxjs imports
+
+```ts
+import { Subject } from 'rxjs/Subject';
+// to
+import { Subject } from 'rxjs';
+```
+
+## 9. fix other lint errors like semicolon stuff
+
+## build it
+
+```sh
+ng build data
+```
+
+## run yarn to link dist/data to node_modules
+
+## 10. add dependency to root package.json
+
+
+## Dev Notes: Approaches to build a monorepo
+
+### 1. Using workspaces with src folder
+
+This approach will symlink the package folders directly. When doing so, lerna will be able to tell the changed packages. A problem will be the correct importing of built/non-built files.
+
+lerna.json
+
+```json
+{
+  "version": "independent",
+  "useWorkspaces": true,
+  "npmClient": "yarn"
+}
+```
+
+package.json
+
+```json
+"workspaces": [
+  "packages/*"
+],
+```
+
+To ensure correct module resolving, we set the each packages main file to its public_api.ts:
+
+```json
+{
+  "name": "@ec.components/calendar",
+  "main": "src/public_api.ts",
+}
+```
+
+when running ```ng build calendar```, the package.json will be copied to dist/package.json with the main field replaced by ```bundles/ec.components-calendar.umd.js```.
+
+PROBLEM:
+
+as soon as building a package that depends on another package, like ui, the compiler complains:
+
+```sh
+error TS6059: File '/Users/felix/entrecode/ec.components/packages/calendar/src/lib/calendar.module.ts' is not under 'rootDir' '/Users/felix/entrecode/ec.components/packages/ui/src'. 'rootDir' is expected to contain all source files.
+```
+
+ngc (which wraps tsc) hits the source files of the calendar module.
+See https://github.com/ng-packagr/ng-packagr/issues/987.
+
+
+### 2. Using different folders for lerna/workspaces
+
+Use dist for symlinking:
+
+```json
+  "workspaces": [
+    "packages/*/dist"
+  ],
+```
+
+Build calendar (which has no internal dependencies) first:
+
+```ng build calendar```
+
+create symlink of calendar dist folder to @ec.components/calendar:
+
+```sh
+cd node_modules
+mkdir @ec.components && cd \@ec.components
+ln -s ../../packages/calendar/dist calendar
+```
+
+This process can be automated by a script:
+
+symlink-package.sh
+
+```sh
+cd node_modules/\@ec.components
+ln -s ../../packages/$1/dist $1
+```
+
+build-package.hs:
+
+```sh
+ng build $1
+sh scripts/symlink-package.sh $1
+```
+
+```sh
+sh scripts/build-package.sh ui
+```
+
+In lerna.json, we add the root package folders (as opposed to dist folders in package.json):
+
+```json
+{
+  "version": "independent",
+  "useWorkspaces": false,
+  "npmClient": "yarn",
+  "packages": [
+    "packages/ace",
+    "packages/calendar",
+    "packages/core",
+    "packages/data",
+    "packages/location",
+    "packages/medium-editor",
+    "packages/tinymce",
+    "packages/ui"
+  ]
+}
+```
+
+Note that it only works when settings useWorkspaces to false!

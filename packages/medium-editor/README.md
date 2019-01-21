@@ -4,13 +4,13 @@ This package wraps the [medium-editor](https://github.com/yabwe/medium-editor) a
 
 ## Installation
 
-1. Install package
+### 1. Install package
 
 ```sh
 npm install @ec.components/medium-editor --save
 ```
 
-2. Add Module
+### 2. Add Module
 
 ```js
 import { MediumModule } from '@ec.components/medium-editor';
@@ -24,7 +24,7 @@ export class AppModule {
 }
 ```
 
-3. Use it
+### 3. Use it
 
 ```html
  <ec-medium-editor [(model)]="myHTML"

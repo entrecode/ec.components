@@ -1,338 +1,60 @@
-# Changelog
+# [0.0.0](https://github.com/entrecode/ec.components/compare/0.0.1...0.0.0) (2019-01-18)
+
+
+### Bug Fixes
+
+* added optional to btn._clear extension ([373bebf](https://github.com/entrecode/ec.components/commit/373bebf))
+* auth.service clientID check + removed broadcast load on env switch ([def9084](https://github.com/entrecode/ec.components/commit/def9084))
+* calling entry-pop create twice would edit the first entry ([d5dc292](https://github.com/entrecode/ec.components/commit/d5dc292))
+* clear searchbar when changing asset group ([1cfc328](https://github.com/entrecode/ec.components/commit/1cfc328))
+* clientID if statement ([43c7da5](https://github.com/entrecode/ec.components/commit/43c7da5))
+* config generation for empty forms was bugged since last commit ([789e7ca](https://github.com/entrecode/ec.components/commit/789e7ca))
+* control binding ([fd41ccc](https://github.com/entrecode/ec.components/commit/fd41ccc))
+* could not define custom components for entry field types ([0b433be](https://github.com/entrecode/ec.components/commit/0b433be))
+* could not pass config to entry-list seperately ([4a14246](https://github.com/entrecode/ec.components/commit/4a14246))
+* could not set custom asset list config ([06b615c](https://github.com/entrecode/ec.components/commit/06b615c))
+* could not writeValue before init component ([00a2e2e](https://github.com/entrecode/ec.components/commit/00a2e2e))
+* dndDraggable stringify error ([a992381](https://github.com/entrecode/ec.components/commit/a992381))
+* dynamic-slot make inject public to be able to call super ([b7460e6](https://github.com/entrecode/ec.components/commit/b7460e6))
+* ec-input bug ([1d9e231](https://github.com/entrecode/ec.components/commit/1d9e231))
+* EDITOR-187 ([de51159](https://github.com/entrecode/ec.components/commit/de51159))
+* endless ecEntries could concat same page multiple times ([fed2c52](https://github.com/entrecode/ec.components/commit/fed2c52))
+* entry-list.component ([431e3fd](https://github.com/entrecode/ec.components/commit/431e3fd))
+* files index ([bcbefd1](https://github.com/entrecode/ec.components/commit/bcbefd1))
+* filterOperators of entry and asset + default filterPopClass of nested types is now modal ([9e671b9](https://github.com/entrecode/ec.components/commit/9e671b9))
+* first tab selection was throwing an error ([50e2d98](https://github.com/entrecode/ec.components/commit/50e2d98))
+* focus asset list pop searchbar when changing group ([24868b9](https://github.com/entrecode/ec.components/commit/24868b9))
+* form without config would bug ([5892365](https://github.com/entrecode/ec.components/commit/5892365))
+* form.create would not reinstantiate with config being undefined ([f7b65f4](https://github.com/entrecode/ec.components/commit/f7b65f4))
+* group resource-config ([020e689](https://github.com/entrecode/ec.components/commit/020e689))
+* init control in input.component ([3fb8f47](https://github.com/entrecode/ec.components/commit/3fb8f47))
+* lint errors ([1cb8b1c](https://github.com/entrecode/ec.components/commit/1cb8b1c))
+* linter bug ([b4d03eb](https://github.com/entrecode/ec.components/commit/b4d03eb))
+* linter errors ([70d5e24](https://github.com/entrecode/ec.components/commit/70d5e24))
+* ModelConfigService now using CrudConfig instead of ItemConfig ([eb506da](https://github.com/entrecode/ec.components/commit/eb506da))
+* new assets on entry create + removed hacks from input.component ([04fffbd](https://github.com/entrecode/ec.components/commit/04fffbd))
+* only show size select if total>0 ([7a88da8](https://github.com/entrecode/ec.components/commit/7a88da8))
+* parseType would not recognize relations with "-" ([a08a9d6](https://github.com/entrecode/ec.components/commit/a08a9d6))
+* query could be overwritten while typing + fixed asset select ([1c382d1](https://github.com/entrecode/ec.components/commit/1c382d1))
+* relative path in data.module ([fcfdf32](https://github.com/entrecode/ec.components/commit/fcfdf32))
+* removeItem still activated entry-select + entry-select demo ([364482b](https://github.com/entrecode/ec.components/commit/364482b))
+* resource-list.component ([2826ac4](https://github.com/entrecode/ec.components/commit/2826ac4))
+* select assetGroup if legacyAsset and url upload ([7580583](https://github.com/entrecode/ec.components/commit/7580583))
+* selection has + docs ([e8b0e49](https://github.com/entrecode/ec.components/commit/e8b0e49))
+* selection was broken for ec-entry-select list ([121566c](https://github.com/entrecode/ec.components/commit/121566c))
+* selection.toggle would emit change twice sometimes ([b3e8115](https://github.com/entrecode/ec.components/commit/b3e8115))
+* stop select pop event bubbling + selectMode in select component ([47a7930](https://github.com/entrecode/ec.components/commit/47a7930))
+* tinyMCE promise error ([8fab72f](https://github.com/entrecode/ec.components/commit/8fab72f))
+* todos ([9bf067d](https://github.com/entrecode/ec.components/commit/9bf067d))
+* when using objects as prefill, the next prefilled value would return the reference of the one before ([c89591a](https://github.com/entrecode/ec.components/commit/c89591a))
+* wrong import ([b760780](https://github.com/entrecode/ec.components/commit/b760780))
+* wrong method reference ([f3590a7](https://github.com/entrecode/ec.components/commit/f3590a7))
+
+
+### Features
+
+* sdk changesEnvironment + resource service env update broadcast ([ad58c68](https://github.com/entrecode/ec.components/commit/ad58c68))
+* searchbar, ecFocus + added searchbar to asset-list-pop ([8236caf](https://github.com/entrecode/ec.components/commit/8236caf))
 
-<a name="data0.41.0"></a>
 
-## @ec.components/data 0.41.0
 
-* added entry-list-select. you can set it up by using inputView:'entry-list-select' in your field config.
-
-<a name="ui0.35.0"></a>
-
-## @ec.components/ui 0.35.0
-
-* selects now have an input field that filter the dropdown + keyboard controls.
-
-<a name="data0.40.0"></a>
-
-## @ec.components/data 0.40.0
-
-BREAKING CHANGE: 
-* field property hidden has been renamed to hideInList. You have to refactor all configurations that contain hidden: true to hideInList: true.
-
-<a name="ui0.32.0"></a>
-
-## @ec.components/ui 0.32.0
-
-BREAKING CHANGE:
-
-* ec-pop: removed visible attribute + simplified markup structure.
-  * removed ec-pop-container class
-  * removed ec-pop class
-  * is-active is now set on the ec-pop element itself
-
-DEPRECATED: please update all usages of classes ec-pop_* and use ec-modal or ec-pop with the correct classes.
-Refer to the pop demo or the modal demo for example usages.
-
-<a name="0.34.0"></a>
-
-## @ec.components/data 0.34.0
-
-BREAKING CHANGE:
-
-* ec-searchbar list input now expects a list instance instead of a list component. The component can now be passed to listComponent input to enable arrow navigation. 
-
-Change:
-
-```html
-<ec-searchbar [list]="resourceList"></ec-searchbar>
-```
-
-to
-
-```html
-<ec-searchbar [list]="resourceList?.list" [listComponent]="resourceList"></ec-searchbar>
-```
-
-The change was introduced to sync the list filter with the searchbar query.
-
-<a name="0.29.0"></a>
-
-## @ec.components/data 0.29.0
-
-BREAKING CHANGE:
-
-* all (change) outputs have been renamed to (changed) to avoid getting also the dom events fired by angular.
-
-<a name="0.25.0"></a>
-
-## @ec.components/ui 0.25.0
-
-BREAKING CHANGE:
-
-* all (change) outputs have been renamed to (changed) to avoid getting also the dom events fired by angular.
-
-<a name="0.22.0"></a>
-
-## @ec.components/ui 0.22.0
-
-BREAKING CHANGE:
-
-* now requires ngx-drag-drop packages for new drag and drop features
-
-<a name="0.25.0"></a>
-
-## @ec.components/data 0.25.0
-
-BREAKING CHANGE:
-
-* asset-select now contains asset-group selects in the list-pop and when uploading
-
-<a name="0.23.0"></a>
-
-## @ec.components/data 0.23.0
-
-BREAKING CHANGE:
-
-* added useLegacyAssets flag to use old assets. All projects still using old assets need to set this flag to migrate! The flag can be used in the field config or directly in the asset-select config.
-
-<a name="0.17.0"></a>
-
-## 0.17.0
-
-* added resource module with all resource related components and services
-* can now add delete and modify entries and resource through the selects
-* asset select now supports old and new assets. When you pass [assetGroupID] to select (or list/upload), new assets will be used.
-* deprecated asset-list, because ec.sdk now supports public api relations.
-
-BREAKING CHANGE:
-
-* removed [field] input from selects
-
-<a name="0.15.0"></a>
-
-## 0.15.0
-
-* can now use SdkService without datamanagerID.
-* added resource-delete-pop
-* removed labels config from pagination-config. now using symbol.service
-* added ec-resource-select
-* added support for new assets
-
-<a name="0.14.0"></a>
-
-## 0.14.0
-
-* added ready event to FormComponent when initialization is complete.
-* added ResourcePopComponent for creating and editing resources.
-* added permissions option to resource-config to automatically show only allowed actions.
-* added ResourceCrudComponent for easy create/read/update/delete of any resource.
-* can now set field config label to false to show an empty label. (COM-89)
-* optimized ec-select toggle behaviour (COM-92, COM-93)
-* can now set placeholder for ec-password-reset (COM-101)
-* added SymbolService for localization
-
-<a name="0.13.0"></a>
-
-## 0.13.0
-
-* can now configure the maximum visible items for 'tags' view via the maxItems option in the field config. The default value is 10.
-* added auto generated id to all fields. Those ids are used in label#for and input#id. You should also reference this id in custom inputs to make the label clickable.
-* added ec-icon component for more flexible icons.
-* added paginationConfig Input to ListComponent (+ all children like ResourceListComponent)
-* added maxColumns option to list-config.
-
-BREAKING CHANGES:
-* COM-98: active/visible classes: renamed active to is-active, visible to is-visible and disabled to is-disabled
-* COM-95: renamed is-sortable-active to is-sorted + added is-sorted-asc and is-sorted-desc
-* COM-96: replaced all usages of ec-icon with new ec-icon component (nests one level deeper)
-* COM-45: removed range input from pagination, replaced with PaginationConfig with additional options (see docs)
-* removed [host] input from ListItemsComponent due to incompatibilities.
-* renamed list config property disableSelection to selectMode and inverted its value meaning. When selectMode is true, the checkboxes are shown and the columnClicked event is ignored as long as selectMode is active. You can toggle the selectMode via list#toggleSelectMode.
-* removed DatamanagerListComponent and ModelListComponent. You can use ResourceList for both now.
-
-<a name="0.12.0"></a>
-
-## 0.12.0
-
-BREAKING CHANGE:
-
-* form.component (and all children): renamed (submit) output to (submitted)
-
-<a name="0.10.0"></a>
-## 0.10.0
-
-BREAKING CHANGES:
-
-* list.component (and all extending components): renamed select output to columnClicked. (Global replace "(select)" to "(columnClicked)").
-* month.component: renamed select output to dayClicked (similar to list.component)
-
-<a name="0.9.0"></a>
-
-## 0.9.0
-
-* added use method to selection.component to write the model from outside
-  BREAKING CHANGES:
-* ecPublicAsset has been renamed to ecAsset and now supports direct id binding to directive.
-
-<a name="0.8.2"></a>
-
-## 0.8.2
-
-* added ec-toggle to default inputs (use view: 'toggle' in field config)
-* added ec-calendar
-* system fields (id, created, modified etc) are now readOnly by default
-
-<a name="0.8.1"></a>
-
-## 0.8.1
-
-* added ec-entry-pop
-
-<a name="0.8.0"></a>
-
-## 0.8.0
-
-BREAKING CHANGES:
-
-* removed PublicService and AdminService, you should use sdk methods instead.
-* login/signup + more auth methods have been moved from SdkService to new AuthService
-* former ec-login has been renamed to ec-login-form, the new ec-login handles login automatically.
-* crud methods have been renamend to 'get', 'put', 'post', 'delete'
-* ec-entry and ec-entries are now directives ecEntry and ecEntries
-
-<a name="0.7.0"></a>
-
-## 0.7.0
-
-BREAKING CHANGES:
-
-* pop classes have been completely changed to:
-  * .ec-pop_fullscreen
-  * .ec-pop_dialog
-  * .ec-pop_drawer-left
-  * .ec-pop_drawer-top
-  * .ec-pop_drawer-right
-  * .ec-pop_drawer-bottom
-  * .ec-pop_toast-top
-  * .ec-pop_toast-bottom
-* added @ec.components/style package
-
-<a name="0.6.0"></a>
-
-## 0.6.0
-
-* EntryFormComponent.deleteEntry now returns the deletion promise.
-* fix: SdkService.ready promise was not renewed after login
-* LoginComponent now accepts a loader as input
-  BREAKING CHANGES:
-* FormComponent.submitted now emits the instance of Form and not the group
-
-<a name="0.5.3"></a>
-
-## 0.5.3
-
-* feature: asset-select is now capable of using ngModel with two way binding
-
-<a name="0.5.2"></a>
-
-## 0.5.2
-
-* removed DataRoutingModule from DataModule
-* feature: asset-select can now resolve assetID's.
-* feature: added filterPopClass config option to field-property-config.
-* further styling
-
-<a name="0.5.1"></a>
-
-## 0.5.1
-
-* further styling
-* fix: could not set custom inputs/outputs for entry fields
-* now using ec.sdk 0.8.6
-
-<a name="0.5.0"></a>
-
-## 0.5.0
-
-* further styling
-  BREAKING CHANGES:
-* view: 'label' must now be view: 'tag'
-* view: 'labels' must now be view: 'tags'
-* selection is now a direct input of ec-crud instead of a config property
-
-<a name="0.4.1"></a>
-
-## 0.4.1
-
-* fixed tests after refactoring
-* wrote project setup tutorial
-* further styling
-
-<a name="0.4.0"></a>
-
-## 0.4.0
-
-* now using ec.sdk 0.8.5
-
-BREAKING CHANGES:
-
-* all imports from '@ec.components/_/_' must now lead to '@ec.components/_/src/_'
-* imports from '@ec.components/\*' can stay the same and should generally be preferred.
-
-<a name="0.3.1"></a>
-
-## 0.3.1
-
-* refactored typings to be aot compatible
-* refactored imports
-* began styling
-
-<a name="0.3.0"></a>
-
-## 0.3.0
-
-* now using ec.sdk 0.8.1
-* now supporting default routes for filtering and more
-* AssetInput is now default for asset/assets fields
-
-<a name="0.2.0"></a>
-
-## 0.2.0
-
-* now using ec.sdk 0.7.1
-* entry-form now supports lvl1 entries even with nested resources
-* ec-datetime now supports iso dates
-
-<a name="0.1.1"></a>
-
-## 0.1.1
-
-* changed src folder and module structure
-* ec-model-list
-* ec-asset-select
-* ec-upload
-* ec-datetime input
-
-<a name="0.1.0"></a>
-
-## 0.1.0 (2017-08-23)
-
-* the most important basic components are now implemented
-* dynamic input/output templates
-* ec-entry, ec-entries
-* added demo with multiple routes
-* ec-form
-* much more
-
-<a name="0.0.2"></a>
-
-## 0.0.2 (2017-05-11)
-
-* improved list
-* improved imports
-
-<a name="0.0.1"></a>
-
-## 0.0.1 (2017-05-10)
-
-* initial release

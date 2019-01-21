@@ -4,13 +4,13 @@ This package wraps the [tinymce editor](https://github.com/tinymce/tinymce) as a
 
 ## Installation
 
-1. Install package
+### 1. Install package
 
 ```sh
 npm install @ec.components/tinymce --save
 ```
 
-2. Add Module
+### 2. Add Module
 
 ```js
 import { TinymceModule } from '@ec.components/tinymce';
@@ -24,7 +24,16 @@ export class AppModule {
 }
 ```
 
-3. Use it
+### 3. Add styles files to angular.json
+
+```json
+"styles": [
+  "node_modules/tinymce/skins/lightgray/skin.min.css",
+  "node_modules/tinymce/skins/lightgray/content.min.css"
+],
+```
+
+### 4. Use it
 
 ```html
  <ec-tinymce [(ngModel)]="html" (change)="change($event)"></ec-tinymce>

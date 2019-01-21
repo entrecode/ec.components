@@ -1,11 +1,14 @@
-# Changelog
+# Change Log
 
-<a name="0.2.0"></a>
-## 0.2.0
-BREAKING CHANGE:
-- ecMediumEditor Directive is now a component (ec-medium-editor).
-- can now be used with ngModel and formControl (ControlValueAccessor)
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-<a name="0.1.0"></a>
-## 0.1.0
-- Basic Medium Editor Directive
+## [0.4.4](https://github.com/entrecode/ec.components/compare/@ec.components/medium-editor@0.4.4...@ec.components/medium-editor@0.4.4) (2019-01-21)
+
+**Note:** Version bump only for package @ec.components/medium-editor
+
+
+
+
+
+## 0.4.3 (2019-01-21)

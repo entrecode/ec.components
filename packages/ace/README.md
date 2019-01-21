@@ -4,13 +4,13 @@ This package wraps the [ace editor](https://github.com/ajaxorg/ace) as an Angula
 
 ## Installation
 
-1. Install package
+### 1. Install package
 
 ```sh
 npm install @ec.components/ace --save
 ```
 
-2. Add Module
+### 2. Add Module
 
 ```js
 import { AceModule } from '@ec.components/ace';
@@ -24,7 +24,7 @@ export class AppModule {
 }
 ```
 
-3. Add CDN
+### 3. Add CDN
 
 Either add the cdn src to your index.html:
 
@@ -40,7 +40,7 @@ import 'ace-builds/src-noconflict/ace.js';
 
 When importing, you also need to import all extensions/modes/themes that you want to use manually.
 
-4. Use it
+### 4. Use it
 
 ```html
  <ec-ace [(ngModel)]="html" mode="html"></ec-ace>
