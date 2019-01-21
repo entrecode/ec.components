@@ -1,0 +1,1 @@
+ng test $1 --watch=false --browsers=ChromeHeadless
