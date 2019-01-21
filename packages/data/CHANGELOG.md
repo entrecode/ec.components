@@ -1,3 +1,16 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.42.5](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.42.5...@ec.components/data@0.42.5) (2019-01-21)
+
+**Note:** Version bump only for package @ec.components/data
+
+
+
+
+
 ## 0.42.4 (2019-01-21)
 
 
@@ -40,6 +53,3 @@
 
 * sdk changesEnvironment + resource service env update broadcast ([ad58c68](https://github.com/entrecode/ec.components/commit/ad58c68))
 * searchbar, ecFocus + added searchbar to asset-list-pop ([8236caf](https://github.com/entrecode/ec.components/commit/8236caf))
-
-
-
