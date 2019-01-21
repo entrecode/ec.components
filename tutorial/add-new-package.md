@@ -17,13 +17,16 @@ also make sure the version is correct
 
 ## 3. Prefix root tsconfig.json paths "data" and "data/*" with @ec.components
 
+also change value to "packages/data/dist/*"
+
 ## 4. Move src files to packages/data/lib
 
 ## 5. add dependencies (e.g. ec.sdk) to both root and lib package.json
 
-## 6. add whitelistedNonPeerDependencies to ng-package.json
+## 6. add whitelistedNonPeerDependencies and dest to ng-package.json
 
 ```json
+  "dest": "./dist",
   "whitelistedNonPeerDependencies": [
     "."
   ]

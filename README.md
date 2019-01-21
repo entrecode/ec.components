@@ -57,8 +57,7 @@ Run publish task and select versions:
 npm run publish
 ```
 
-To publish a new package, make sure you run ```npm publish --access=public``` before running lerna.
-Make sure you update the symlinks.sh and delete-modules.sh scripts to make it work for the demo server.
+To publish a new package for the first time, make sure you run ```npm publish --access=public``` before running lerna. See add-new-package for more info on creating a new package.
 
 ## Default README
 
