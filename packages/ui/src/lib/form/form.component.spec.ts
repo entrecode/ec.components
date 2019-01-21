@@ -1,7 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormComponent } from './form.component';
 import { uiModuleConfig } from '../ui.module';
-import { SelectComponent } from '@ec.components/ui';
 
 describe('FormComponent', () => {
   let component: FormComponent<any>;

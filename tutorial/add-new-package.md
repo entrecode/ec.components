@@ -1,5 +1,76 @@
-
 # Adding a new Package in 10 easy steps
+
+## Approaches to build a monorepo
+
+### 1. Using workspaces with src folder
+
+This approach will symlink the package folders directly. When doing so, lerna will be able to tell the changed packages. A problem will be the correct importing of built/non-built files.
+
+lerna.json
+
+```json
+{
+  "version": "independent",
+  "useWorkspaces": true,
+  "npmClient": "yarn"
+}
+```
+
+package.json
+
+```json
+"workspaces": [
+  "packages/*"
+],
+```
+
+To ensure correct module resolving, we set the each packages main file to its public_api.ts:
+
+```json
+{
+  "name": "@ec.components/calendar",
+  "main": "src/public_api.ts",
+}
+```
+
+when running ```ng build calendar```, the package.json will be copied to dist/package.json with the main field replaced by ```bundles/ec.components-calendar.umd.js```.
+
+PROBLEM:
+
+as soon as building a package that depends on another package, like ui, the compiler complains:
+
+```sh
+error TS6059: File '/Users/felix/entrecode/ec.components/packages/calendar/src/lib/calendar.module.ts' is not under 'rootDir' '/Users/felix/entrecode/ec.components/packages/ui/src'. 'rootDir' is expected to contain all source files.
+```
+
+ngc (which wraps tsc) hits the source files of the calendar module.
+See https://github.com/ng-packagr/ng-packagr/issues/987.
+
+
+### 2. Using different folders for lerna/workspaces
+
+Use dist for symlinking:
+
+```json
+  "workspaces": [
+    "packages/*/dist"
+  ],
+```
+
+Build calendar (which has no internal dependencies) first:
+
+```ng build calendar```
+
+create symlink of calendar dist folder to @ec.components/calendar:
+
+```sh
+cd node_modules
+mkdir @ec.components && cd \@ec.components
+ln -s ../../packages/calendar/dist calendar
+```
+
+
+## Generating a new package
 
 The following steps need to be done to generate a new library that is standards compliant.
 Just replace the example name "data" with the new package name.
