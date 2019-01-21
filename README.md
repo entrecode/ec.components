@@ -36,6 +36,19 @@ The repository is a monorepo, managed by [lerna](https://github.com/lerna/lerna)
 All folders inside dist + packages/style will be used as symlinks in node_modules/@ec.components/*.
 You can update the symlinks by running yarn (e.g. after adding a new package).
 
+## Setup
+
+After a fresh clone of the repo, run this:
+
+```sh
+yarn install
+npm run dev-setup
+npm run start
+```
+
+The dev-setup script builds all packages and symlinks them to the node_modules.
+
+
 ### Publishing
 
 Run publish task and select versions:

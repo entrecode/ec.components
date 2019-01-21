@@ -1,4 +1,5 @@
 cd packages/$1
 npm run prepublish
-cd ../../
-sh scripts/symlink-package.sh $1
+# the following is also handled by yarn workspaces
+# cd ../../
+# sh scripts/symlink-package.sh $1
