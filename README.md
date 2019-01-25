@@ -87,7 +87,7 @@ import { EntryForm } from '@ec.components/data/src/entry-form/entry-form.compone
 new:
 
 ```ts
-import { EntryForm } from '@ec.components/data
+import { EntryForm } from '@ec.components/data'
 ```
 
 => make sure you never import anything from src, since this folder no longer exists in the package
