@@ -86,7 +86,9 @@ import { EntryForm } from '@ec.components/data/src/entry-form/entry-form.compone
 
 new:
 
-```import { EntryForm } from '@ec.components/data```
+```ts
+import { EntryForm } from '@ec.components/data
+```
 
 => make sure you never import anything from src, since this folder no longer exists in the package
 
@@ -94,11 +96,15 @@ new:
 
 old:
 
-```@import '~@ec.components/style/components';```
+```scss
+@import '~@ec.components/style/components';
+```
 
 new:
 
-```@import '~@ec.components/style/scss/components';```
+```scss
+@import '~@ec.components/style/scss/components';
+```
 
 ## Default README
 
