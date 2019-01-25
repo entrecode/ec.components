@@ -59,6 +59,47 @@ npm run publish
 
 To publish a new package for the first time, make sure you run ```npm publish --access=public``` before running lerna. See add-new-package for more info on creating a new package.
 
+## Angular7 update: BREAKING changes
+
+The following breaking changes need to be considered when updating the components with angular 7.
+Angular 7 is used since the following versions:
+
+- @ec.components/ace@0.6.0
+- @ec.components/calendar@0.2.0
+- @ec.components/core@0.19.0
+- @ec.components/data@0.42.0
+- @ec.components/location@0.18.0
+- @ec.components/medium-editor@0.4.0
+- @ec.components/style@0.21.0
+- @ec.components/tinymce@0.5.0
+- @ec.components/ui@0.36.0
+
+### 1. MediumModule has been renamed to MediumEditorModule
+
+### 2. all imports now go from the packages roots
+
+old:
+
+```ts
+import { EntryForm } from '@ec.components/data/src/entry-form/entry-form.component'
+```
+
+new:
+
+```import { EntryForm } from '@ec.components/data```
+
+=> make sure you never import anything from src, since this folder no longer exists in the package
+
+### 3. SCSS import changes
+
+old:
+
+```@import '~@ec.components/style/components';```
+
+new:
+
+```@import '~@ec.components/style/scss/components';```
+
 ## Default README
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.1.
