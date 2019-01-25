@@ -9,7 +9,7 @@ import { NotificationsService } from '@ec.components/ui';
 export class GithubSourceComponent implements OnInit/* , OnChanges */ {
     @Input() path;
     @Input() base = 'entrecode/ec.components';
-    @Input() branch = 'master/demo/app';
+    @Input() branch = 'master/src/app';
     @Input() mode = 'typescript';
     @Input() theme = 'monokai';
     source = '';
