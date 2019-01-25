@@ -66,6 +66,31 @@ npm run start</code></pre></div><p>The dev-setup script builds all packages and 
 <h3 id="publishing">Publishing</h3>
 <p>Run publish task and select versions:</p>
 <div><pre class="line-numbers"><code class="language-sh">npm run publish</code></pre></div><p>To publish a new package for the first time, make sure you run <code>npm publish --access=public</code> before running lerna. See add-new-package for more info on creating a new package.</p>
+<h2 id="angular7-update-breaking-changes">Angular7 update: BREAKING changes</h2>
+<p>The following breaking changes need to be considered when updating the components with angular 7.
+Angular 7 is used since the following versions:</p>
+<ul>
+<li>@<a href="mailto:ec.components/ace@0.6.0">ec.components/ace@0.6.0</a></li>
+<li>@<a href="mailto:ec.components/calendar@0.2.0">ec.components/calendar@0.2.0</a></li>
+<li>@<a href="mailto:ec.components/core@0.19.0">ec.components/core@0.19.0</a></li>
+<li>@<a href="mailto:ec.components/data@0.42.0">ec.components/data@0.42.0</a></li>
+<li>@<a href="mailto:ec.components/location@0.18.0">ec.components/location@0.18.0</a></li>
+<li>@<a href="mailto:ec.components/medium-editor@0.4.0">ec.components/medium-editor@0.4.0</a></li>
+<li>@<a href="mailto:ec.components/style@0.21.0">ec.components/style@0.21.0</a></li>
+<li>@<a href="mailto:ec.components/tinymce@0.5.0">ec.components/tinymce@0.5.0</a></li>
+<li>@<a href="mailto:ec.components/ui@0.36.0">ec.components/ui@0.36.0</a></li>
+</ul>
+<h3 id="1-mediummodule-has-been-renamed-to-mediumeditormodule">1. MediumModule has been renamed to MediumEditorModule</h3>
+<h3 id="2-all-imports-now-go-from-the-packages-roots">2. all imports now go from the packages roots</h3>
+<p>old:</p>
+<div><pre class="line-numbers"><code class="language-ts">import { EntryForm } from &#39;&#64;ec.components/data/src/entry-form/entry-form.component&#39;</code></pre></div><p>new:</p>
+<p><code>import { EntryForm } from &#39;@ec.components/data</code></p>
+<p>=&gt; make sure you never import anything from src, since this folder no longer exists in the package</p>
+<h3 id="3-scss-import-changes">3. SCSS import changes</h3>
+<p>old:</p>
+<p><code>@import &#39;~@ec.components/style/components&#39;;</code></p>
+<p>new:</p>
+<p><code>@import &#39;~@ec.components/style/scss/components&#39;;</code></p>
 <h2 id="default-readme">Default README</h2>
 <p>This project was generated with <a href="https://github.com/angular/angular-cli">Angular CLI</a> version 7.2.1.</p>
 <h2 id="development-server">Development server</h2>

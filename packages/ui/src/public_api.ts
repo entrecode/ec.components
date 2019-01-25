@@ -62,6 +62,8 @@ export * from './lib/icon/icon.module';
 export * from './lib/icon/ec-icons';
 export * from './lib/icon/emoji-icons';
 
+export * from './lib/symbol/de';
+export * from './lib/symbol/en';
 export * from './lib/symbol/symbol.interface';
 export * from './lib/symbol/symbol.pipe';
 export * from './lib/symbol/symbol.service';
