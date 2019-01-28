@@ -47,35 +47,23 @@
 
 
 
-<h1 id="ui-components-overview">UI Components Overview</h1>
-<p>Now that the Core classes were discussed, lets have a look at its application in the ui components.
-The ui components, which lay inside the ui package are all basic angular components.
-They are API agnostic, meaning they do not contain any datamanager logic (or similar).
-API related components are meant to inherit from the base ui components to eliminate redundancies.</p>
+<h1 id="-ec-components-ui">@ec.components/ui</h1>
+<p>This package contains all angular components that have no ec.datamanager references.
+It utilizes the classes of the @ec.components/core package.
+Being the middle layer in the abstraction tree, it is still backend agnostic but not framework agnostic.</p>
 <h2 id="installation">Installation</h2>
-<div><pre class="line-numbers"><code class="language-sh">npm i &#64;ec.components/ui</code></pre></div><p><a href="https://components.entrecode.de/">Demo</a></p>
-<p>TBD:</p>
-<ul>
-<li>List<ul>
-<li>Custom Cell Components</li>
-<li>Transform fields</li>
-</ul>
-</li>
-<li>Form<ul>
-<li>Custom Field Components</li>
-<li>Inline Forms</li>
-</ul>
-</li>
-<li>Login</li>
-<li>Pop</li>
-<li>Tabs</li>
-<li><p>Select</p>
-</li>
-<li><p>Notifications</p>
-</li>
-<li>Loader</li>
-<li>Menu</li>
-</ul>
+<h3 id="1-install-package">1. Install package</h3>
+<div><pre class="line-numbers"><code class="language-sh">npm install &#64;ec.components/ui --save</code></pre></div><h3 id="2-add-module">2. Add Module</h3>
+<div><pre class="line-numbers"><code class="language-js">import { UiModule } from &#39;&#64;ec.components/ui&#39;;
+
+&#64;NgModule({
+  imports: [
+    UiModule
+  ]
+})
+export class AppModule {
+}</code></pre></div><h2 id="overview">Overview</h2>
+<p>All available components/services are listed on the <a href="https://entrecode.github.io/ec.components/modules/UiModule.html">Module Overview Page</a>.</p>
 
                    </div><div class="search-results">
     <div class="has-results">

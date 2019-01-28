@@ -1,0 +1,126 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ec.components documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../../images/favicon.ico">
+	      <link rel="stylesheet" href="../../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../../" class="navbar-brand">ec.components documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content additional-page">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h1 id="loader">Loader</h1>
+<p>The loader can be used to indicate any kind of loading activity</p>
+<h2 id="template">Template</h2>
+<div><pre class="line-numbers"><code class="language-html">&lt;ec-loader #globalLoader class=&quot;ec-loader ec-loader_overlay ec-loader_global&quot;&gt;&lt;/ec-loader&gt;
+&lt;ec-loader #localLoader class=&quot;ec-loader&quot;&gt;&lt;/ec-loader&gt;
+&lt;button (click)=&quot;globalLoader()&quot;&gt;Global Loader&lt;/button&gt;
+&lt;button (click)=&quot;localLoader()&quot;&gt;Local Loader&lt;/button&gt;</code></pre></div><p>The default classes <a href="https://github.com/entrecode/ec.components/blob/master/packages/style/loader/ec-loader.scss">can be found here</a>.</p>
+<h2 id="usage">Usage</h2>
+<p>You can use a global loader that handles every action or use multiple local loaders:</p>
+<div><pre class="line-numbers"><code class="language-ts">import { LoaderComponent, LoaderService } from &#39;&#64;ec.components/ui&#39;;
+export class MyApp {
+  &#64;ViewChild(&#39;globalLoader&#39;) globalLoader: LoaderComponent;
+  &#64;ViewChild(&#39;localLoader&#39;) localLoader: LoaderComponent;
+  constructor(private loaderService: LoaderService) {
+      this.loaderService.use(this.globalLoader); // set global loader
+  }
+  globalLoader() { // When not passing a loader to .wait, the global loader (set by .use) is used.
+    this.loaderService.wait(new Promise((resolve) =&gt; setTimeout(resolve, 2000)));
+  }
+  localLoader() {
+    this.loaderService.wait(new Promise((resolve) =&gt; setTimeout(resolve, 2000)), this.localLoader);
+    // this.localLoader.wait(new Promise((resolve) =&gt; setTimeout(resolve, 2000))); // alternative way
+  }
+}</code></pre></div><p>The advantage of local loaders is that you can place them in specific places of your template to only &quot;disable&quot; a part of your site while loading and not the whole page.
+See the commented out line in localLoader for a direct way to trigger a loader without the service.</p>
+<h1 id="how-it-works">How it works</h1>
+<p>Each time .wait is called on the LoaderService, the target loader throws the given promise on a stack. When all promises on the stack have been resolved, the loader is hidden. This is better than just a boolean switch because multiple loading activies do not interfere with each other.</p>
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 2;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'additional-page';
+            var COMPODOC_CURRENT_PAGE_URL = 'loadercomponent.html';
+       </script>
+
+       <script src="../../js/libs/custom-elements.min.js"></script>
+       <script src="../../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../../js/menu-wc.js" defer></script>
+
+       <script src="../../js/libs/bootstrap-native.js"></script>
+
+       <script src="../../js/libs/es6-shim.min.js"></script>
+       <script src="../../js/libs/EventDispatcher.js"></script>
+       <script src="../../js/libs/promise.min.js"></script>
+       <script src="../../js/libs/zepto.min.js"></script>
+
+       <script src="../../js/compodoc.js"></script>
+
+       <script src="../../js/tabs.js"></script>
+       <script src="../../js/menu.js"></script>
+       <script src="../../js/libs/clipboard.min.js"></script>
+       <script src="../../js/libs/prism.js"></script>
+       <script src="../../js/sourceCode.js"></script>
+          <script src="../../js/search/search.js"></script>
+          <script src="../../js/search/lunr.min.js"></script>
+          <script src="../../js/search/search-lunr.js"></script>
+          <script src="../../js/search/search_index.js"></script>
+       <script src="../../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

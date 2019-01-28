@@ -2,6 +2,11 @@
 
 This package wraps the [ace editor](https://github.com/ajaxorg/ace) as an Angular Component.
 
+## Overview
+
+- [Module Overview Page](https://entrecode.github.io/ec.components/modules/AceModule.html)
+- [CHANGELOG](https://entrecode.github.io/ec.components/additional-documentation/changelog/ace-changelog.html)
+
 ## Installation
 
 ### 1. Install package
@@ -45,7 +50,3 @@ When importing, you also need to import all extensions/modes/themes that you wan
 ```html
  <ec-ace [(ngModel)]="html" mode="html"></ec-ace>
 ```
-
-## Overview
-
-All available components/services are listed on the [Module Overview Page](https://entrecode.github.io/ec.components/modules/AceModule.html).
