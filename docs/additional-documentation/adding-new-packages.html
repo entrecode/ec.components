@@ -73,56 +73,8 @@ import { Subject } from &#39;rxjs&#39;;</code></pre></div><h2 id="9-fix-other-li
 <h2 id="build-it">build it</h2>
 <div><pre class="line-numbers"><code class="language-sh">ng build data</code></pre></div><h2 id="run-yarn-to-link-dist-data-to-node_modules">run yarn to link dist/data to node_modules</h2>
 <h2 id="10-add-dependency-to-root-package-json">10. add dependency to root package.json</h2>
-<h2 id="dev-notes-approaches-to-build-a-monorepo">Dev Notes: Approaches to build a monorepo</h2>
-<h3 id="1-using-workspaces-with-src-folder">1. Using workspaces with src folder</h3>
-<p>This approach will symlink the package folders directly. When doing so, lerna will be able to tell the changed packages. A problem will be the correct importing of built/non-built files.</p>
-<p>lerna.json</p>
-<div><pre class="line-numbers"><code class="language-json">{
-  &quot;version&quot;: &quot;independent&quot;,
-  &quot;useWorkspaces&quot;: true,
-  &quot;npmClient&quot;: &quot;yarn&quot;
-}</code></pre></div><p>package.json</p>
-<div><pre class="line-numbers"><code class="language-json">&quot;workspaces&quot;: [
-  &quot;packages/*&quot;
-],</code></pre></div><p>To ensure correct module resolving, we set the each packages main file to its public_api.ts:</p>
-<div><pre class="line-numbers"><code class="language-json">{
-  &quot;name&quot;: &quot;&#64;ec.components/calendar&quot;,
-  &quot;main&quot;: &quot;src/public_api.ts&quot;,
-}</code></pre></div><p>when running <code>ng build calendar</code>, the package.json will be copied to dist/package.json with the main field replaced by <code>bundles/ec.components-calendar.umd.js</code>.</p>
-<p>PROBLEM:</p>
-<p>as soon as building a package that depends on another package, like ui, the compiler complains:</p>
-<div><pre class="line-numbers"><code class="language-sh">error TS6059: File &#39;/Users/felix/entrecode/ec.components/packages/calendar/src/lib/calendar.module.ts&#39; is not under &#39;rootDir&#39; &#39;/Users/felix/entrecode/ec.components/packages/ui/src&#39;. &#39;rootDir&#39; is expected to contain all source files.</code></pre></div><p>ngc (which wraps tsc) hits the source files of the calendar module.
-See <a href="https://github.com/ng-packagr/ng-packagr/issues/987">https://github.com/ng-packagr/ng-packagr/issues/987</a>.</p>
-<h3 id="2-using-different-folders-for-lerna-workspaces">2. Using different folders for lerna/workspaces</h3>
-<p>Use dist for symlinking:</p>
-<div><pre class="line-numbers"><code class="language-json">  &quot;workspaces&quot;: [
-    &quot;packages/*/dist&quot;
-  ],</code></pre></div><p>Build calendar (which has no internal dependencies) first:</p>
-<p><code>ng build calendar</code></p>
-<p>create symlink of calendar dist folder to @ec.components/calendar:</p>
-<div><pre class="line-numbers"><code class="language-sh">cd node_modules
-mkdir &#64;ec.components &amp;&amp; cd \&#64;ec.components
-ln -s ../../packages/calendar/dist calendar</code></pre></div><p>This process can be automated by a script:</p>
-<p>symlink-package.sh</p>
-<div><pre class="line-numbers"><code class="language-sh">cd node_modules/\&#64;ec.components
-ln -s ../../packages/$1/dist $1</code></pre></div><p>build-package.hs:</p>
-<div><pre class="line-numbers"><code class="language-sh">ng build $1
-sh scripts/symlink-package.sh $1</code></pre></div><div><pre class="line-numbers"><code class="language-sh">sh scripts/build-package.sh ui</code></pre></div><p>In lerna.json, we add the root package folders (as opposed to dist folders in package.json):</p>
-<div><pre class="line-numbers"><code class="language-json">{
-  &quot;version&quot;: &quot;independent&quot;,
-  &quot;useWorkspaces&quot;: false,
-  &quot;npmClient&quot;: &quot;yarn&quot;,
-  &quot;packages&quot;: [
-    &quot;packages/ace&quot;,
-    &quot;packages/calendar&quot;,
-    &quot;packages/core&quot;,
-    &quot;packages/data&quot;,
-    &quot;packages/location&quot;,
-    &quot;packages/medium-editor&quot;,
-    &quot;packages/tinymce&quot;,
-    &quot;packages/ui&quot;
-  ]
-}</code></pre></div><p>Note that it only works when settings useWorkspaces to false!</p>
+<h2 id="11-add-changelog-md-of-package-to-summary-json-like-others-">11. add CHANGELOG.md of package to summary.json (like others)</h2>
+<h2 id="11-add-link-to-package-changelog-page-to-changelog-md-like-others-">11. add link to package changelog page to CHANGELOG.md (like others)</h2>
 
                    </div><div class="search-results">
     <div class="has-results">
