@@ -1,12 +1,13 @@
+#!/bin/sh
 set -e
 
 git diff-index --quiet HEAD --
 git checkout develop
 npm run docs
 git add -A
-git commit --no-verify  -m "docs: posrelease docs built"
+git commit --no-verify  -m "docs: build docs postrelease"
 git checkout master
-git add -A
-git merge --no-ff --no-verify  -m "chore: posrelease merge develop into master" develop
+git merge --no-ff --no-verify  -m "chore merge develop into master posrelease" develop
+git push --no-verify
 git checkout develop
 git push --no-verify
