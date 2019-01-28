@@ -30,3 +30,7 @@ export class AppModule {
  <ec-medium-editor [(model)]="myHTML"
          [options]="{'toolbar': {'buttons': ['bold', 'italic', 'underline', 'h1', 'h2', 'h3']}}"></ec-medium-editor>
 ```
+
+## Overview
+
+All available components/services are listed on the [Module Overview Page](https://entrecode.github.io/ec.components/modules/MediumEditorModule.html).
