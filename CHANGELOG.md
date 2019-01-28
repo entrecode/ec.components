@@ -1,60 +1,13 @@
-# [0.0.0](https://github.com/entrecode/ec.components/compare/0.0.1...0.0.0) (2019-01-18)
+# Change Log
 
+Each package has its own changelog:
 
-### Bug Fixes
-
-* added optional to btn._clear extension ([373bebf](https://github.com/entrecode/ec.components/commit/373bebf))
-* auth.service clientID check + removed broadcast load on env switch ([def9084](https://github.com/entrecode/ec.components/commit/def9084))
-* calling entry-pop create twice would edit the first entry ([d5dc292](https://github.com/entrecode/ec.components/commit/d5dc292))
-* clear searchbar when changing asset group ([1cfc328](https://github.com/entrecode/ec.components/commit/1cfc328))
-* clientID if statement ([43c7da5](https://github.com/entrecode/ec.components/commit/43c7da5))
-* config generation for empty forms was bugged since last commit ([789e7ca](https://github.com/entrecode/ec.components/commit/789e7ca))
-* control binding ([fd41ccc](https://github.com/entrecode/ec.components/commit/fd41ccc))
-* could not define custom components for entry field types ([0b433be](https://github.com/entrecode/ec.components/commit/0b433be))
-* could not pass config to entry-list seperately ([4a14246](https://github.com/entrecode/ec.components/commit/4a14246))
-* could not set custom asset list config ([06b615c](https://github.com/entrecode/ec.components/commit/06b615c))
-* could not writeValue before init component ([00a2e2e](https://github.com/entrecode/ec.components/commit/00a2e2e))
-* dndDraggable stringify error ([a992381](https://github.com/entrecode/ec.components/commit/a992381))
-* dynamic-slot make inject public to be able to call super ([b7460e6](https://github.com/entrecode/ec.components/commit/b7460e6))
-* ec-input bug ([1d9e231](https://github.com/entrecode/ec.components/commit/1d9e231))
-* EDITOR-187 ([de51159](https://github.com/entrecode/ec.components/commit/de51159))
-* endless ecEntries could concat same page multiple times ([fed2c52](https://github.com/entrecode/ec.components/commit/fed2c52))
-* entry-list.component ([431e3fd](https://github.com/entrecode/ec.components/commit/431e3fd))
-* files index ([bcbefd1](https://github.com/entrecode/ec.components/commit/bcbefd1))
-* filterOperators of entry and asset + default filterPopClass of nested types is now modal ([9e671b9](https://github.com/entrecode/ec.components/commit/9e671b9))
-* first tab selection was throwing an error ([50e2d98](https://github.com/entrecode/ec.components/commit/50e2d98))
-* focus asset list pop searchbar when changing group ([24868b9](https://github.com/entrecode/ec.components/commit/24868b9))
-* form without config would bug ([5892365](https://github.com/entrecode/ec.components/commit/5892365))
-* form.create would not reinstantiate with config being undefined ([f7b65f4](https://github.com/entrecode/ec.components/commit/f7b65f4))
-* group resource-config ([020e689](https://github.com/entrecode/ec.components/commit/020e689))
-* init control in input.component ([3fb8f47](https://github.com/entrecode/ec.components/commit/3fb8f47))
-* lint errors ([1cb8b1c](https://github.com/entrecode/ec.components/commit/1cb8b1c))
-* linter bug ([b4d03eb](https://github.com/entrecode/ec.components/commit/b4d03eb))
-* linter errors ([70d5e24](https://github.com/entrecode/ec.components/commit/70d5e24))
-* ModelConfigService now using CrudConfig instead of ItemConfig ([eb506da](https://github.com/entrecode/ec.components/commit/eb506da))
-* new assets on entry create + removed hacks from input.component ([04fffbd](https://github.com/entrecode/ec.components/commit/04fffbd))
-* only show size select if total>0 ([7a88da8](https://github.com/entrecode/ec.components/commit/7a88da8))
-* parseType would not recognize relations with "-" ([a08a9d6](https://github.com/entrecode/ec.components/commit/a08a9d6))
-* query could be overwritten while typing + fixed asset select ([1c382d1](https://github.com/entrecode/ec.components/commit/1c382d1))
-* relative path in data.module ([fcfdf32](https://github.com/entrecode/ec.components/commit/fcfdf32))
-* removeItem still activated entry-select + entry-select demo ([364482b](https://github.com/entrecode/ec.components/commit/364482b))
-* resource-list.component ([2826ac4](https://github.com/entrecode/ec.components/commit/2826ac4))
-* select assetGroup if legacyAsset and url upload ([7580583](https://github.com/entrecode/ec.components/commit/7580583))
-* selection has + docs ([e8b0e49](https://github.com/entrecode/ec.components/commit/e8b0e49))
-* selection was broken for ec-entry-select list ([121566c](https://github.com/entrecode/ec.components/commit/121566c))
-* selection.toggle would emit change twice sometimes ([b3e8115](https://github.com/entrecode/ec.components/commit/b3e8115))
-* stop select pop event bubbling + selectMode in select component ([47a7930](https://github.com/entrecode/ec.components/commit/47a7930))
-* tinyMCE promise error ([8fab72f](https://github.com/entrecode/ec.components/commit/8fab72f))
-* todos ([9bf067d](https://github.com/entrecode/ec.components/commit/9bf067d))
-* when using objects as prefill, the next prefilled value would return the reference of the one before ([c89591a](https://github.com/entrecode/ec.components/commit/c89591a))
-* wrong import ([b760780](https://github.com/entrecode/ec.components/commit/b760780))
-* wrong method reference ([f3590a7](https://github.com/entrecode/ec.components/commit/f3590a7))
-
-
-### Features
-
-* sdk changesEnvironment + resource service env update broadcast ([ad58c68](https://github.com/entrecode/ec.components/commit/ad58c68))
-* searchbar, ecFocus + added searchbar to asset-list-pop ([8236caf](https://github.com/entrecode/ec.components/commit/8236caf))
-
-
-
+- [@ec.components/data](https://entrecode.github.io/ec.components/additional-documentation/changelog/data.html)
+- [@ec.components/ui](https://entrecode.github.io/ec.components/additional-documentation/changelog/ui.html)
+- [@ec.components/core](https://entrecode.github.io/ec.components/additional-documentation/changelog/core.html)
+- [@ec.components/calendar](https://entrecode.github.io/ec.components/additional-documentation/changelog/calendar.html)
+- [@ec.components/style](https://entrecode.github.io/ec.components/additional-documentation/changelog/style.html)
+- [@ec.components/ace](https://entrecode.github.io/ec.components/additional-documentation/changelog/ace.html)
+- [@ec.components/location](https://entrecode.github.io/ec.components/additional-documentation/changelog/location.html)
+- [@ec.components/medium-editor](https://entrecode.github.io/ec.components/additional-documentation/changelog/medium-editor.html)
+- [@ec.components/tinymce](https://entrecode.github.io/ec.components/additional-documentation/changelog/tinymce.html)
