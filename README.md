@@ -32,7 +32,7 @@ A Demo is available at [components.entrecode.de](https://components.entrecode.de
 
 ## Angular7 update: BREAKING changes
 
-The following breaking changes need to be considered when updating the components with angular 7.
+The following breaking changes need to be considered when updating the components with angular 7. This update guide is just for @ec.components and angular 7. A whole angular 7 update guide can be found [here](https://update.angular.io/).
 Angular 7 is used since the following versions:
 
 - @ec.components/ace@0.6.0
