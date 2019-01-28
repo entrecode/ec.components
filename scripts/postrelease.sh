@@ -7,7 +7,7 @@ npm run docs
 git add -A
 git commit --no-verify  -m "docs: build docs postrelease"
 git checkout master
-git merge --no-ff --no-verify  -m "chore merge develop into master posrelease" develop
+git merge --no-ff --no-verify  -m "chore: merge develop into master posrelease" develop
 git push --no-verify
 git checkout develop
 git push --no-verify

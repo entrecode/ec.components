@@ -47,23 +47,27 @@
 
 
 
-<h1 id="change-log">Change Log</h1>
-<p>All notable changes to this project will be documented in this file.
-See <a href="https://conventionalcommits.org">Conventional Commits</a> for commit guidelines.</p>
-<h2 id="0-4-9-2019-01-28-"><a href="https://github.com/entrecode/ec.components/compare/@ec.components/medium-editor@0.4.8...@ec.components/medium-editor@0.4.9">0.4.9</a> (2019-01-28)</h2>
-<p><strong>Note:</strong> Version bump only for package @ec.components/medium-editor</p>
-<h2 id="0-4-8-2019-01-28-"><a href="https://github.com/entrecode/ec.components/compare/@ec.components/medium-editor@0.4.7...@ec.components/medium-editor@0.4.8">0.4.8</a> (2019-01-28)</h2>
-<p><strong>Note:</strong> Version bump only for package @ec.components/medium-editor</p>
-<h2 id="0-4-7-2019-01-28-"><a href="https://github.com/entrecode/ec.components/compare/@ec.components/medium-editor@0.4.6...@ec.components/medium-editor@0.4.7">0.4.7</a> (2019-01-28)</h2>
-<p><strong>Note:</strong> Version bump only for package @ec.components/medium-editor</p>
-<h2 id="0-4-6-2019-01-28-"><a href="https://github.com/entrecode/ec.components/compare/@ec.components/medium-editor@0.4.5...@ec.components/medium-editor@0.4.6">0.4.6</a> (2019-01-28)</h2>
-<p><strong>Note:</strong> Version bump only for package @ec.components/medium-editor</p>
-<h2 id="0-4-5-2019-01-25-"><a href="https://github.com/entrecode/ec.components/compare/@ec.components/medium-editor@0.4.4...@ec.components/medium-editor@0.4.5">0.4.5</a> (2019-01-25)</h2>
-<p><strong>Note:</strong> Version bump only for package @ec.components/medium-editor</p>
-<h2 id="0-4-4-2019-01-21-"><a href="https://github.com/entrecode/ec.components/compare/@ec.components/medium-editor@0.4.4...@ec.components/medium-editor@0.4.4">0.4.4</a> (2019-01-21)</h2>
-<p><strong>Note:</strong> Version bump only for package @ec.components/medium-editor</p>
-<h2 id="0-4-3-2019-01-21-">0.4.3 (2019-01-21)</h2>
+<h1 id="-ec-components-medium-editor">@ec.components/medium-editor</h1>
+<p>This package wraps the <a href="https://github.com/yabwe/medium-editor">medium-editor</a> as an Angular Directive.</p>
+<h2 id="overview">Overview</h2>
+<ul>
+<li><a href="https://entrecode.github.io/ec.components/modules/MediumEditorModule.html">Module Overview Page</a></li>
+<li><a href="https://entrecode.github.io/ec.components/additional-documentation/changelog/medium-editor-changelog.html">CHANGELOG</a></li>
+</ul>
+<h2 id="installation">Installation</h2>
+<h3 id="1-install-package">1. Install package</h3>
+<div><pre class="line-numbers"><code class="language-sh">npm install &#64;ec.components/medium-editor --save</code></pre></div><h3 id="2-add-module">2. Add Module</h3>
+<div><pre class="line-numbers"><code class="language-js">import { MediumModule } from &#39;&#64;ec.components/medium-editor&#39;;
 
+&#64;NgModule({
+  imports: [
+    MediumModule
+  ]
+})
+export class AppModule {
+}</code></pre></div><h3 id="3-use-it">3. Use it</h3>
+<div><pre class="line-numbers"><code class="language-html"> &lt;ec-medium-editor [(model)]=&quot;myHTML&quot;
+         [options]=&quot;{&#39;toolbar&#39;: {&#39;buttons&#39;: [&#39;bold&#39;, &#39;italic&#39;, &#39;underline&#39;, &#39;h1&#39;, &#39;h2&#39;, &#39;h3&#39;]}}&quot;&gt;&lt;/ec-medium-editor&gt;</code></pre></div>
                    </div><div class="search-results">
     <div class="has-results">
         <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
