@@ -1,5 +1,5 @@
 
-export default [
+export const de = [
     {
         name: 'symbol.language',
         content: 'Deutsch'

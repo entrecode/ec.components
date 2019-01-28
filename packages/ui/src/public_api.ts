@@ -38,6 +38,7 @@ export * from './lib/list/group.pipe';
 export * from './lib/list/list.module';
 
 export * from './lib/io/input/input.component';
+export * from './lib/io/output/output.component';
 
 export * from './lib/form/form.component';
 export * from './lib/form/form.component.html';

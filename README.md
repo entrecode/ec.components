@@ -30,35 +30,6 @@ The main documentation is located at [entrecode.github.io/ec.components](https:/
 
 A Demo is available at [components.entrecode.de](https://components.entrecode.de).
 
-## Developing with Lerna + Yarn Workspaces
-
-The repository is a monorepo, managed by [lerna](https://github.com/lerna/lerna) and [yarn workspaces](https://yarnpkg.com/lang/en/docs/workspaces/).
-All folders inside dist + packages/style will be used as symlinks in node_modules/@ec.components/*.
-You can update the symlinks by running yarn (e.g. after adding a new package).
-
-## Setup
-
-After a fresh clone of the repo, run this:
-
-```sh
-yarn install
-npm run dev-setup
-npm run start
-```
-
-The dev-setup script builds all packages and symlinks them to the node_modules.
-
-
-### Publishing
-
-Run publish task and select versions:
-
-```sh
-npm run publish
-```
-
-To publish a new package for the first time, make sure you run ```npm publish --access=public``` before running lerna. See add-new-package for more info on creating a new package.
-
 ## Angular7 update: BREAKING changes
 
 The following breaking changes need to be considered when updating the components with angular 7.
@@ -87,10 +58,17 @@ import { EntryForm } from '@ec.components/data/src/entry-form/entry-form.compone
 new:
 
 ```ts
-import { EntryForm } from '@ec.components/data
+import { EntryForm } from '@ec.components/data'
 ```
 
 => make sure you never import anything from src, since this folder no longer exists in the package
+
+#### PRO TIP
+
+Use VSCode "Search: Replace in Files" with the following Regex:
+
+- Search: _'@ec.components/(\w+).*'_
+- Replace: _'@ec.components/$1'_
 
 ### 3. SCSS import changes
 
@@ -105,6 +83,36 @@ new:
 ```scss
 @import '~@ec.components/style/scss/components';
 ```
+
+## Developing with Lerna + Yarn Workspaces
+
+The repository is a monorepo, managed by [lerna](https://github.com/lerna/lerna) and [yarn workspaces](https://yarnpkg.com/lang/en/docs/workspaces/).
+All folders inside dist + packages/style will be used as symlinks in node_modules/@ec.components/*.
+You can update the symlinks by running yarn (e.g. after adding a new package).
+
+## Dev Setup
+
+After a fresh clone of the repo, run this:
+
+```sh
+yarn install
+npm run dev-setup
+npm run start
+```
+
+The dev-setup script builds all packages and symlinks them to the node_modules.
+
+### Publishing
+
+Run publish task and select versions:
+
+```sh
+npm run publish
+```
+
+To publish a new package for the first time, make sure you run ```npm publish --access=public``` before running lerna. See add-new-package for more info on creating a new package.
+
+Make sure using [Conventional Commits](https://www.conventionalcommits.org).
 
 ## Default README
 

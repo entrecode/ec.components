@@ -54,18 +54,6 @@ It is mainly used for entrecode admin applications in combination with the <a hr
 <p>The main documentation is located at <a href="https://entrecode.github.io/ec.components/">entrecode.github.io/ec.components</a>. You can find a getting started guide there.</p>
 <h2 id="demo">Demo</h2>
 <p>A Demo is available at <a href="https://components.entrecode.de">components.entrecode.de</a>.</p>
-<h2 id="developing-with-lerna-yarn-workspaces">Developing with Lerna + Yarn Workspaces</h2>
-<p>The repository is a monorepo, managed by <a href="https://github.com/lerna/lerna">lerna</a> and <a href="https://yarnpkg.com/lang/en/docs/workspaces/">yarn workspaces</a>.
-All folders inside dist + packages/style will be used as symlinks in <a href="mailto:node_modules/@ec.components">node_modules/@ec.components</a>/*.
-You can update the symlinks by running yarn (e.g. after adding a new package).</p>
-<h2 id="setup">Setup</h2>
-<p>After a fresh clone of the repo, run this:</p>
-<div><pre class="line-numbers"><code class="language-sh">yarn install
-npm run dev-setup
-npm run start</code></pre></div><p>The dev-setup script builds all packages and symlinks them to the node_modules.</p>
-<h3 id="publishing">Publishing</h3>
-<p>Run publish task and select versions:</p>
-<div><pre class="line-numbers"><code class="language-sh">npm run publish</code></pre></div><p>To publish a new package for the first time, make sure you run <code>npm publish --access=public</code> before running lerna. See add-new-package for more info on creating a new package.</p>
 <h2 id="angular7-update-breaking-changes">Angular7 update: BREAKING changes</h2>
 <p>The following breaking changes need to be considered when updating the components with angular 7.
 Angular 7 is used since the following versions:</p>
@@ -84,11 +72,30 @@ Angular 7 is used since the following versions:</p>
 <h3 id="2-all-imports-now-go-from-the-packages-roots">2. all imports now go from the packages roots</h3>
 <p>old:</p>
 <div><pre class="line-numbers"><code class="language-ts">import { EntryForm } from &#39;&#64;ec.components/data/src/entry-form/entry-form.component&#39;</code></pre></div><p>new:</p>
-<div><pre class="line-numbers"><code class="language-ts">import { EntryForm } from &#39;&#64;ec.components/data</code></pre></div><p>=&gt; make sure you never import anything from src, since this folder no longer exists in the package</p>
+<div><pre class="line-numbers"><code class="language-ts">import { EntryForm } from &#39;&#64;ec.components/data&#39;</code></pre></div><p>=&gt; make sure you never import anything from src, since this folder no longer exists in the package</p>
+<h4 id="pro-tip">PRO TIP</h4>
+<p>Use VSCode &quot;Search: Replace in Files&quot; with the following Regex:</p>
+<ul>
+<li>Search: <a href="mailto:_&#39;@ec.components">_&#39;@ec.components</a>/(\w+).*&#39;_</li>
+<li>Replace: <a href="mailto:_&#39;@ec.components">_&#39;@ec.components</a>/$1&#39;_</li>
+</ul>
 <h3 id="3-scss-import-changes">3. SCSS import changes</h3>
 <p>old:</p>
 <div><pre class="line-numbers"><code class="language-scss">&#64;import &#39;~&#64;ec.components/style/components&#39;;</code></pre></div><p>new:</p>
-<div><pre class="line-numbers"><code class="language-scss">&#64;import &#39;~&#64;ec.components/style/scss/components&#39;;</code></pre></div><h2 id="default-readme">Default README</h2>
+<div><pre class="line-numbers"><code class="language-scss">&#64;import &#39;~&#64;ec.components/style/scss/components&#39;;</code></pre></div><h2 id="developing-with-lerna-yarn-workspaces">Developing with Lerna + Yarn Workspaces</h2>
+<p>The repository is a monorepo, managed by <a href="https://github.com/lerna/lerna">lerna</a> and <a href="https://yarnpkg.com/lang/en/docs/workspaces/">yarn workspaces</a>.
+All folders inside dist + packages/style will be used as symlinks in <a href="mailto:node_modules/@ec.components">node_modules/@ec.components</a>/*.
+You can update the symlinks by running yarn (e.g. after adding a new package).</p>
+<h2 id="dev-setup">Dev Setup</h2>
+<p>After a fresh clone of the repo, run this:</p>
+<div><pre class="line-numbers"><code class="language-sh">yarn install
+npm run dev-setup
+npm run start</code></pre></div><p>The dev-setup script builds all packages and symlinks them to the node_modules.</p>
+<h3 id="publishing">Publishing</h3>
+<p>Run publish task and select versions:</p>
+<div><pre class="line-numbers"><code class="language-sh">npm run publish</code></pre></div><p>To publish a new package for the first time, make sure you run <code>npm publish --access=public</code> before running lerna. See add-new-package for more info on creating a new package.</p>
+<p>Make sure using <a href="https://www.conventionalcommits.org">Conventional Commits</a>.</p>
+<h2 id="default-readme">Default README</h2>
 <p>This project was generated with <a href="https://github.com/angular/angular-cli">Angular CLI</a> version 7.2.1.</p>
 <h2 id="development-server">Development server</h2>
 <p>Run <code>ng serve</code> for a dev server. Navigate to <code>http://localhost:4200/</code>. The app will automatically reload if you change any of the source files.</p>
