@@ -63,6 +63,13 @@ import { EntryForm } from '@ec.components/data'
 
 => make sure you never import anything from src, since this folder no longer exists in the package
 
+#### PRO TIP
+
+Use VSCode "Search: Replace in Files" with the following Regex:
+
+- Search: _'@ec.components/(\w+).*'_
+- Replace: _'@ec.components/$1'_
+
 ### 3. SCSS import changes
 
 old:
