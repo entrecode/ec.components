@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.42.12](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.42.11...@ec.components/data@0.42.12) (2019-01-28)
+
+
+### Bug Fixes
+
+* add missing exports ([d7fa72b](https://github.com/entrecode/ec.components/commit/d7fa72b))
+
+
+
+
+
 ## [0.42.11](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.42.10...@ec.components/data@0.42.11) (2019-01-25)
 
 

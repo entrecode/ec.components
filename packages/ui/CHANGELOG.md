@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.36.11](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.36.10...@ec.components/ui@0.36.11) (2019-01-28)
+
+
+### Bug Fixes
+
+* add missing exports ([d7fa72b](https://github.com/entrecode/ec.components/commit/d7fa72b))
+
+
+
+
+
 ## [0.36.10](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.36.9...@ec.components/ui@0.36.10) (2019-01-25)
 
 
