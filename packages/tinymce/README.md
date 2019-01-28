@@ -38,3 +38,7 @@ export class AppModule {
 ```html
  <ec-tinymce [(ngModel)]="html" (change)="change($event)"></ec-tinymce>
 ```
+
+## Overview
+
+All available components/services are listed on the [Module Overview Page](https://entrecode.github.io/ec.components/modules/TinymceModule.html).
