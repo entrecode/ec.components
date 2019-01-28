@@ -2,6 +2,11 @@
 
 This package wraps the [tinymce editor](https://github.com/tinymce/tinymce) as an Angular Component.
 
+## Overview
+
+- [Module Overview Page](https://entrecode.github.io/ec.components/modules/TinymceModule.html)
+- [CHANGELOG](https://entrecode.github.io/ec.components/additional-documentation/changelog/tinymce-changelog.html)
+
 ## Installation
 
 ### 1. Install package
@@ -38,7 +43,3 @@ export class AppModule {
 ```html
  <ec-tinymce [(ngModel)]="html" (change)="change($event)"></ec-tinymce>
 ```
-
-## Overview
-
-All available components/services are listed on the [Module Overview Page](https://entrecode.github.io/ec.components/modules/TinymceModule.html).

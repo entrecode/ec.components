@@ -1,0 +1,160 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ec.components documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">ec.components documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content additional-page">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h1 id="angular7-update-breaking-changes">Angular7 update: BREAKING changes</h1>
+<p>The following breaking changes need to be considered when updating the components with angular 7. This update guide is just for @ec.components and angular 7. A whole angular 7 update guide can be found <a href="https://update.angular.io/">here</a>.
+Angular 7 is used since the following versions:</p>
+<ul>
+<li>@<a href="mailto:ec.components/ace@0.6.0">ec.components/ace@0.6.0</a></li>
+<li>@<a href="mailto:ec.components/calendar@0.2.0">ec.components/calendar@0.2.0</a></li>
+<li>@<a href="mailto:ec.components/core@0.19.0">ec.components/core@0.19.0</a></li>
+<li>@<a href="mailto:ec.components/data@0.42.0">ec.components/data@0.42.0</a></li>
+<li>@<a href="mailto:ec.components/location@0.18.0">ec.components/location@0.18.0</a></li>
+<li>@<a href="mailto:ec.components/medium-editor@0.4.0">ec.components/medium-editor@0.4.0</a></li>
+<li>@<a href="mailto:ec.components/style@0.21.0">ec.components/style@0.21.0</a></li>
+<li>@<a href="mailto:ec.components/tinymce@0.5.0">ec.components/tinymce@0.5.0</a></li>
+<li>@<a href="mailto:ec.components/ui@0.36.0">ec.components/ui@0.36.0</a></li>
+</ul>
+<p>It is recommended you use the most recent versions. <em>Also add @ec.components/calendar to your package.json if you use datetime pipe or calendars / date pickers</em>.</p>
+<h2 id="1-all-imports-now-go-from-the-packages-roots">1. All imports now go from the packages roots</h2>
+<p>old:</p>
+<div><pre class="line-numbers"><code class="language-ts">import { EntryForm } from &#39;&#64;ec.components/data/src/entry-form/entry-form.component&#39;</code></pre></div><p>new:</p>
+<div><pre class="line-numbers"><code class="language-ts">import { EntryForm } from &#39;&#64;ec.components/data&#39;</code></pre></div><p>=&gt; make sure you never import anything from src, since this folder no longer exists in the package</p>
+<h3 id="pro-tip">PRO TIP</h3>
+<p>Use VSCode &quot;Search: Replace in Files&quot; with the following Regex:</p>
+<ul>
+<li>Search: <a href="mailto:_&#39;@ec.components">_&#39;@ec.components</a>/(\w+).*&#39;_</li>
+<li>Replace: <a href="mailto:_&#39;@ec.components">_&#39;@ec.components</a>/$1&#39;_</li>
+</ul>
+<h2 id="2-scss-import-changes">2. SCSS import changes</h2>
+<p>old:</p>
+<div><pre class="line-numbers"><code class="language-scss">&#64;import &#39;~&#64;ec.components/style/components&#39;;</code></pre></div><p>new:</p>
+<div><pre class="line-numbers"><code class="language-scss">&#64;import &#39;~&#64;ec.components/style/scss/components&#39;;</code></pre></div><h2 id="3-mediummodule-has-been-renamed-to-mediumeditormodule">3. MediumModule has been renamed to MediumEditorModule</h2>
+<h2 id="4-build-errors">4. Build Errors</h2>
+<p>If you are getting this:</p>
+<div><pre class="line-numbers"><code class="language-sh">ERROR in ./node_modules/eventsource/lib/eventsource.js
+Module not found: Error: Can&#39;t resolve &#39;http&#39; in &#39;/your-project/node_modules/eventsource/lib&#39;
+ERROR in ./node_modules/eventsource/lib/eventsource.js
+Module not found: Error: Can&#39;t resolve &#39;https&#39; in &#39;your-project/node_modules/eventsource/lib&#39;
+ERROR in ./node_modules/jsonpath-plus/lib/jsonpath.js
+Module not found: Error: Can&#39;t resolve &#39;vm&#39; in &#39;your-project/node_modules/jsonpath-plus/lib&#39;</code></pre></div><p>To fix it, you need a custom webpack config. Eject is not available any more so we need to use angular-builders:</p>
+<div><pre class="line-numbers"><code class="language-sh">npm i &#64;angular-builders/custom-webpack &#64;angular-builders/dev-server &#64;angular-devkit/build-angular --save-dev</code></pre></div><p>The following versions were used in this guide:</p>
+<div><pre class="line-numbers"><code class="language-sh">&quot;&#64;angular-builders/custom-webpack&quot;: &quot;^7.2.0&quot;,
+&quot;&#64;angular-builders/dev-server&quot;: &quot;^7.2.1&quot;,
+&quot;&#64;angular-devkit/build-angular&quot;: &quot;^0.12.3&quot;,</code></pre></div><p>In angular.json make following changes -</p>
+<div><pre class="line-numbers"><code class="language-json">&quot;architect&quot;: {
+    &quot;build&quot;: {
+        &quot;builder&quot;: &quot;&#64;angular-builders/custom-webpack:browser&quot;,
+        &quot;options&quot;: {
+        &quot;customWebpackConfig&quot;: {&quot;path&quot;: &quot;./custom-webpack.config.js&quot;},</code></pre></div><p>Notice change in builder and new option customWebpackConfig. Also change</p>
+<div><pre class="line-numbers"><code class="language-json">&quot;serve&quot;: {
+    &quot;builder&quot;: &quot;&#64;angular-builders/dev-server:generic&quot;,</code></pre></div><p>Now create a <em>custom-webpack.config.js</em> file in the root directory, containing:</p>
+<div><pre class="line-numbers"><code class="language-js">const path = require(&quot;path&quot;);
+module.exports = {
+    node: {
+        crypto: &#39;empty&#39;,
+        fs: &#39;empty&#39;,
+        http: &#39;empty&#39;,
+        https: &#39;empty&#39;,
+    }
+};</code></pre></div><p>Check <a href="https://stackoverflow.com/questions/39187556/angular-cli-where-is-webpack-config-js-file-new-angular6-does-not-support-ng-e">this</a> for more info.</p>
+<h2 id="other-problems-you-might-run-into">Other Problems you might run into</h2>
+<ul>
+<li><a href="https://stackoverflow.com/questions/38892771/cant-bind-to-ngmodel-since-it-isnt-a-known-property-of-input">Can&#39;t bind to &#39;ngModel&#39; since it isn&#39;t a known property of &#39;input&#39;</a></li>
+</ul>
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'additional-page';
+            var COMPODOC_CURRENT_PAGE_URL = 'angular-7-upgrade-guide.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

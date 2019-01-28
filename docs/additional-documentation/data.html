@@ -47,19 +47,23 @@
 
 
 
-<h1 id="data-components-overview">Data Components Overview</h1>
-<p><a href="https://components.entrecode.de/">Demo</a></p>
-<ul>
-<li>SdkService</li>
-<li>ModelConfig<ul>
-<li>How to set up custom fields (input/output)</li>
-</ul>
-</li>
-<li>entry-list</li>
-<li>entry-form</li>
-<li>entry-select</li>
-<li>crud</li>
-</ul>
+<h1 id="-ec-components-data">@ec.components/data</h1>
+<p>This package contains all ec.datamanager related components.
+Being wether framework agnostic nor backend agnostic, it is lowest fruit on the abstraction tree.
+It extends the classes of the core module to create datamanager specific classes that are then used in the components.</p>
+<h2 id="installation">Installation</h2>
+<h3 id="1-install-package">1. Install package</h3>
+<div><pre class="line-numbers"><code class="language-sh">npm install &#64;ec.components/data --save</code></pre></div><h3 id="2-add-module">2. Add Module</h3>
+<div><pre class="line-numbers"><code class="language-js">import { DataModule } from &#39;&#64;ec.components/data&#39;;
+
+&#64;NgModule({
+  imports: [
+    DataModule
+  ]
+})
+export class AppModule {
+}</code></pre></div><h2 id="overview">Overview</h2>
+<p>All available components/services are listed on the <a href="https://entrecode.github.io/ec.components/modules/DataModule.html">Module Overview Page</a>.</p>
 
                    </div><div class="search-results">
     <div class="has-results">

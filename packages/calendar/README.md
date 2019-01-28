@@ -2,6 +2,11 @@
 
 This package provides calendar and date components as part of [ec.components](https://github.com/entrecode/ec.components).
 
+## Overview
+
+- [Module Overview Page](https://entrecode.github.io/ec.components/modules/CalendarModule.html)
+- [CHANGELOG](https://entrecode.github.io/ec.components/additional-documentation/changelog/calendar-changelog.html)
+
 ## Installation
 
 ### 1. Install package
@@ -29,7 +34,3 @@ export class AppModule {
 ```html
  <ec-calendar [(ngModel)]="html" mode="html"></ec-calendar>
 ```
-
-## Overview
-
-All available components/services are listed on the [Module Overview Page](https://entrecode.github.io/ec.components/modules/CalendarModule.html).

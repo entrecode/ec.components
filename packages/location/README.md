@@ -2,6 +2,11 @@
 
 This package wraps the [angular-google-maps](https://github.com/SebastianM/angular-google-maps) to be suitable for forms.
 
+## Overview
+
+- [Module Overview Page](https://entrecode.github.io/ec.components/modules/LocationModule.html)
+- [CHANGELOG](https://entrecode.github.io/ec.components/additional-documentation/changelog/location-changelog.html)
+
 ## Installation
 
 ### 1. Install package
@@ -32,7 +37,3 @@ export class AppModule {
       input: LocationPickerComponent
     });
 ```
-
-## Overview
-
-All available components/services are listed on the [Module Overview Page](https://entrecode.github.io/ec.components/modules/LocationModule.html).

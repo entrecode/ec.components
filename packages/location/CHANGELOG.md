@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.9](https://github.com/entrecode/ec.components/compare/@ec.components/location@0.18.8...@ec.components/location@0.18.9) (2019-01-28)
+
+**Note:** Version bump only for package @ec.components/location
+
+
+
+
+
 ## [0.18.8](https://github.com/entrecode/ec.components/compare/@ec.components/location@0.18.7...@ec.components/location@0.18.8) (2019-01-28)
 
 **Note:** Version bump only for package @ec.components/location
