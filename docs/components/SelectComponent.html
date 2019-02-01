@@ -639,7 +639,7 @@
                     <td class="col-md-10">
                         <div><p>Subject that is nexted when enter is pressed </p>
 </div>
-                        <em><code>$event</code> Type:</em>    <code>Subject&lt;void&gt;</code>
+                        <em><code>$event</code> Type:</em>    <code>Subject&lt;string&gt;</code>
 
                     </td>
                 </tr>
@@ -2720,7 +2720,7 @@ export class SelectComponent&lt;T&gt; implements ControlValueAccessor, OnInit, O
   /** Emits the query when enter is pressed */
   @Output() enter: EventEmitter&lt;SelectComponent&lt;T&gt;&gt; &#x3D; new EventEmitter();
   /** Subject that is nexted when enter is pressed */
-  @Output() enterPressed: Subject&lt;void&gt; &#x3D; new Subject();
+  @Output() enterPressed: Subject&lt;string&gt; &#x3D; new Subject();
   /** The Instance of the List */
   @Input() list: List&lt;T&gt;;
   /** Available Items */
@@ -2749,7 +2749,7 @@ export class SelectComponent&lt;T&gt; implements ControlValueAccessor, OnInit, O
         this.addItem(item);
       }
     });
-    this.enterPressed.asObservable().subscribe(() &#x3D;&gt; {
+    this.enterPressed.asObservable().subscribe((query) &#x3D;&gt; {
       this.enter.emit(this);
     });
   }
@@ -2968,7 +2968,7 @@ export class SelectComponent&lt;T&gt; implements ControlValueAccessor, OnInit, O
           }
           this.toggleItem.next(list.focusItem);
         } else {
-          this.enterPressed.next();
+          this.enterPressed.next(query);
         }
         this.preventDefault(event);
         break;
@@ -2990,7 +2990,7 @@ export class SelectComponent&lt;T&gt; implements ControlValueAccessor, OnInit, O
 
   filterDropdownList(listComponent: ListComponent&lt;any&gt;, query) {
     if (!listComponent) {
-      console.warn(&#x27;cannot filter yet: list not ready&#x27;);
+      /* console.warn(&#x27;cannot filter yet: list not ready&#x27;); */
       return;
     }
     this.dropdown.show();
