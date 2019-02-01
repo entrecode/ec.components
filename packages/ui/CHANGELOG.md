@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.37.1](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.37.0...@ec.components/ui@0.37.1) (2019-02-01)
+
+
+### Bug Fixes
+
+* default input config to empty object ([46d4a1f](https://github.com/entrecode/ec.components/commit/46d4a1f))
+
+
+
+
+
 # [0.37.0](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.36.15...@ec.components/ui@0.37.0) (2019-02-01)
 
 
