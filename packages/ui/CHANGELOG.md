@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.37.0](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.36.15...@ec.components/ui@0.37.0) (2019-02-01)
+
+
+### Features
+
+* ec-select disableDropdown flag ([7430c70](https://github.com/entrecode/ec.components/commit/7430c70))
+* now passing field config to input component ([25a36aa](https://github.com/entrecode/ec.components/commit/25a36aa))
+
+
+
+
+
 ## [0.36.15](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.36.14...@ec.components/ui@0.36.15) (2019-01-28)
 
 **Note:** Version bump only for package @ec.components/ui

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.20.0](https://github.com/entrecode/ec.components/compare/@ec.components/core@0.19.12...@ec.components/core@0.20.0) (2019-02-01)
+
+
+### Features
+
+* ec-select disableDropdown flag ([7430c70](https://github.com/entrecode/ec.components/commit/7430c70))
+
+
+
+
+
 ## [0.19.12](https://github.com/entrecode/ec.components/compare/@ec.components/core@0.19.11...@ec.components/core@0.19.12) (2019-01-28)
 
 **Note:** Version bump only for package @ec.components/core
