@@ -1,5 +1,6 @@
 export const selectTemplate = `<div class="ec-select" [class.ec-select_solo]="solo"
-[class.is-empty]="selection?.isEmpty()" (click)="activate($event)" [class.has-searchbar]="!config?.disableSearchbar">
+[class.is-empty]="selection?.isEmpty()" (click)="activate($event)" [class.has-searchbar]="!config?.disableSearchbar"
+[class.has-dropdown]="!config?.disableDropdown">
   <ul class="ec-select-selection" dndDropzone (dndDrop)="onDrop($event)">
     <li *ngIf="config?.disableSearchbar&&selection?.isEmpty()">
       <span class="ec-select__placeholder">

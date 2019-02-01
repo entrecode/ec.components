@@ -53,7 +53,7 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   /** Emits the query when enter is pressed */
   @Output() enter: EventEmitter<SelectComponent<T>> = new EventEmitter();
   /** Subject that is nexted when enter is pressed */
-  @Output() enterPressed: Subject<void> = new Subject();
+  @Output() enterPressed: Subject<string> = new Subject();
   /** The Instance of the List */
   @Input() list: List<T>;
   /** Available Items */
@@ -82,7 +82,7 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
         this.addItem(item);
       }
     });
-    this.enterPressed.asObservable().subscribe(() => {
+    this.enterPressed.asObservable().subscribe((query) => {
       this.enter.emit(this);
     });
   }
@@ -301,7 +301,7 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
           }
           this.toggleItem.next(list.focusItem);
         } else {
-          this.enterPressed.next();
+          this.enterPressed.next(query);
         }
         this.preventDefault(event);
         break;
@@ -323,7 +323,7 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
 
   filterDropdownList(listComponent: ListComponent<any>, query) {
     if (!listComponent) {
-      console.warn('cannot filter yet: list not ready');
+      /* console.warn('cannot filter yet: list not ready'); */
       return;
     }
     this.dropdown.show();

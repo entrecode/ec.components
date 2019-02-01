@@ -23,6 +23,8 @@ export interface ListConfig<T> extends ItemConfig<T> {
   disableHeader?: boolean;
   /** If true, the header will also be shown when the list is empty. Defaults to false */
   alwaysShowHeader?: boolean;
+  /** If true, no dropdown will be shown for a select */
+  disableDropdown?: boolean;
   /** If true, no column filter will be shown in the list header */
   disableColumnFilter?: boolean;
   /** If true, select items cannot be dragged */
