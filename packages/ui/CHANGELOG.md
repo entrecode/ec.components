@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.37.2](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.37.1...@ec.components/ui@0.37.2) (2019-02-01)
+
+
+### Bug Fixes
+
+* resource-select dropdown + config ([4920dd4](https://github.com/entrecode/ec.components/commit/4920dd4))
+
+
+
+
+
 ## [0.37.1](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.37.0...@ec.components/ui@0.37.1) (2019-02-01)
 
 

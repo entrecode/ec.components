@@ -44,13 +44,11 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
     @Input() relation: string;
     /** The api to use */
     @Input() api: Core;
-    /** The config that is being generated. */
-    public config: CrudConfig<Resource>;
     /** Wether or not the selection should be solo */
     @Input() solo: boolean;
     /** The config that should be merged into the generated config */
     // tslint:disable-next-line:no-input-rename
-    @Input('config') crudConfig: CrudConfig<Resource>;
+    @Input() config: CrudConfig<Resource>;
     /** The crud pop with the list to select from */
     @ViewChild('dropdown') dropdown: PopComponent;
     /** The nested resource list in the dropdown */
@@ -143,7 +141,7 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
             return;
         }
         this.config = <CrudConfig<Resource>>Object.assign(this.resourceConfig.get(this.relation)/* , { size: 5 } */,
-            this.crudConfig, { solo: this.solo, selectMode: false, disableSelectSwitch: true } as CrudConfig<Resource>);
+            this.config, { solo: this.solo, selectMode: false, disableSelectSwitch: true } as CrudConfig<Resource>);
         this.useConfig(this.config);
     }
 
