@@ -66,7 +66,7 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
       item: this.item,
       field: this.field,
       input: this,
-      config: this.config || this.field.config
+      config: this.config || this.field.config || {}
     };
 
     const componentRef = this.loadComponent(this.component || this.field.input || DefaultInputComponent, data);
