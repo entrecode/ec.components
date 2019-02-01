@@ -129,7 +129,7 @@ export class ApiActionbarComponent extends ResourceActionbarComponent implements
     }
 
     openInEditor(path, env = 'stage') {
-        window.open(`https://localhost:4200/${env}/${path}`, '_blank');
+        window.open(`https://localhost:1337/${env}/${path}`, '_blank');
     }
 
     ngOnInit() {
