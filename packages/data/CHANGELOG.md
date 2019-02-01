@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.43.0](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.42.16...@ec.components/data@0.43.0) (2019-02-01)
+
+
+### Features
+
+* ResourceConfig#set ([ba52443](https://github.com/entrecode/ec.components/commit/ba52443))
+
+
+
+
+
 ## [0.42.16](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.42.15...@ec.components/data@0.42.16) (2019-01-28)
 
 **Note:** Version bump only for package @ec.components/data

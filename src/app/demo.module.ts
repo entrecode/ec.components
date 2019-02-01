@@ -66,6 +66,12 @@ import { CalendarModule } from '@ec.components/calendar';
 /* import { CalendarModule } from '../../packages/calendar/src/calendar.module'; */
 
 export const demoModuleConfig = {
+  entryComponents: [
+    CoolStringComponent,
+    UnsplashImageComponent,
+    CounterComponent,
+    TinyInputComponent,
+  ],
   declarations: [
     GithubSourceComponent,
     GithubSourcesComponent,
@@ -117,12 +123,6 @@ export const demoModuleConfig = {
     CounterComponent,
     LoginDemoComponent,
     ImageSelectPopDemoComponent
-  ],
-  entryComponents: [
-    CoolStringComponent,
-    UnsplashImageComponent,
-    CounterComponent,
-    TinyInputComponent
   ],
   imports: [
     BrowserModule,

@@ -232,7 +232,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>loadComponent(component: Type<any>, data: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank">Object</a>)</code>
+<code>loadComponent(component: Type<any>, attributes: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank">Object</a>)</code>
                     </td>
                 </tr>
 
@@ -276,7 +276,7 @@
 
                                                 </tr>
                                                 <tr>
-                                                        <td>data</td>
+                                                        <td>attributes</td>
                                                         <td>
                                                                     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank" >Object</a></code>
                                                         </td>
@@ -420,12 +420,12 @@ export class DynamicSlotComponent {
   }
 
   /** Loads the given component inside the fieldHost. Sets current item and field by default. */
-  loadComponent(component: Type&lt;any&gt;, data: Object &#x3D; {}): ComponentRef&lt;any&gt; {
+  loadComponent(component: Type&lt;any&gt;, attributes: Object &#x3D; {}): ComponentRef&lt;any&gt; {
     const componentFactory &#x3D; this.componentFactoryResolver.resolveComponentFactory(component);
     const viewContainerRef &#x3D; this.fieldHost.viewContainerRef;
     viewContainerRef.clear();
     const componentRef &#x3D; viewContainerRef.createComponent(componentFactory);
-    Object.assign(componentRef.instance, data);
+    Object.assign(componentRef.instance, attributes);
     return componentRef;
   }
 }

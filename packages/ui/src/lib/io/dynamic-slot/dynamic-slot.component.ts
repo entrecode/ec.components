@@ -15,12 +15,12 @@ export class DynamicSlotComponent {
   }
 
   /** Loads the given component inside the fieldHost. Sets current item and field by default. */
-  loadComponent(component: Type<any>, data: Object = {}): ComponentRef<any> {
+  loadComponent(component: Type<any>, attributes: Object = {}): ComponentRef<any> {
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(component);
     const viewContainerRef = this.fieldHost.viewContainerRef;
     viewContainerRef.clear();
     const componentRef = viewContainerRef.createComponent(componentFactory);
-    Object.assign(componentRef.instance, data);
+    Object.assign(componentRef.instance, attributes);
     return componentRef;
   }
 }

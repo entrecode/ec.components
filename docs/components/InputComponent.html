@@ -495,7 +495,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:88</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:89</a></div>
                             </td>
                         </tr>
 
@@ -571,7 +571,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="113" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:113</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:114</a></div>
                             </td>
                         </tr>
 
@@ -638,7 +638,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="118" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:118</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:119</a></div>
                             </td>
                         </tr>
 
@@ -676,7 +676,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:102</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:103</a></div>
                             </td>
                         </tr>
 
@@ -740,7 +740,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>loadComponent(component: Type<any>, data: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank">Object</a>)</code>
+<code>loadComponent(component: Type<any>, attributes: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank">Object</a>)</code>
                     </td>
                 </tr>
 
@@ -790,7 +790,7 @@
 
                                                 </tr>
                                                 <tr>
-                                                        <td>data</td>
+                                                        <td>attributes</td>
                                                         <td>
                                                                     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank" >Object</a></code>
                                                         </td>
@@ -895,7 +895,7 @@ You can access a form&#39;s InputComponents via FormComponent#inputs </p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="109" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:109</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:110</a></div>
                             </td>
                         </tr>
 
@@ -1111,7 +1111,8 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
       control: this.control || this.group ? this.group.get(this.field.property) : null,
       item: this.item,
       field: this.field,
-      input: this
+      input: this,
+      config: this.config || this.field.config
     };
 
     const componentRef &#x3D; this.loadComponent(this.component || this.field.input || DefaultInputComponent, data);
