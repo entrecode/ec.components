@@ -4521,7 +4521,7 @@ export class ResourceSelectComponent extends SelectComponent&lt;Resource&gt; imp
     togglePop(e) {
         if (this.dropdown &amp;&amp; this.config &amp;&amp; !this.config.disableSearchbar) {
             this.dropdown.show(e);
-        } else if (this.resourceListPop &amp;&amp; !this.config.disableListPop) {
+        } else if (this.resourceListPop &amp;&amp; this.config &amp;&amp; !this.config.disableListPop) {
             this.resourceListPop.show(e);
         } else if (this.resourcePop &amp;&amp; !this.config.disableCreatePop) {
             this.resourcePop.show();
