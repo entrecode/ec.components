@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.43.1](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.43.0...@ec.components/data@0.43.1) (2019-02-01)
+
+
+### Bug Fixes
+
+* resource-select#togglePop ([79c1a6d](https://github.com/entrecode/ec.components/commit/79c1a6d))
+
+
+
+
+
 # [0.43.0](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.42.16...@ec.components/data@0.43.0) (2019-02-01)
 
 
