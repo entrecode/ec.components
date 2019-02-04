@@ -13,12 +13,14 @@
       [formControl]="group.get(field.property)" [id]="field.id" [solo]="true"></ec-resource-select>
   </div>
   <div *ngSwitchCase="'resource'">
-    <ec-resource-select (enter)="field.enter&&field.enter($event)" [config]="field.nestedCrudConfig" [placeholder]="field.placeholder"
-      [api]="field.api" [relation]="field.relation" [formControl]="group.get(field.property)" [id]="field.id" [solo]="true"></ec-resource-select>
+    <ec-resource-select (enter)="field.enter&&field.enter($event)" (itemClick)="field.itemClick&&field.itemClick($event)"
+      [config]="field.nestedCrudConfig" [placeholder]="field.placeholder" [api]="field.api" [relation]="field.relation"
+      [formControl]="group.get(field.property)" [id]="field.id" [solo]="true"></ec-resource-select>
   </div>
   <div *ngSwitchCase="'resources'">
-    <ec-resource-select (enter)="field.enter&&field.enter($event)" [config]="field.nestedCrudConfig" [placeholder]="field.placeholder"
-      [api]="field.api" [relation]="field.relation" [formControl]="group.get(field.property)" [id]="field.id"></ec-resource-select>
+    <ec-resource-select (enter)="field.enter&&field.enter($event)" (itemClick)="field.itemClick&&field.itemClick($event)"
+      [config]="field.nestedCrudConfig" [placeholder]="field.placeholder" [api]="field.api" [relation]="field.relation"
+      [formControl]="group.get(field.property)" [id]="field.id"></ec-resource-select>
   </div>
   <div *ngSwitchCase="'groups'">
     <ec-resource-select [config]="field.nestedCrudConfig" [placeholder]="field.placeholder" [formControl]="group.get(field.property)"
