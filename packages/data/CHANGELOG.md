@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.43.6](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.43.5...@ec.components/data@0.43.6) (2019-02-04)
+
+
+### Bug Fixes
+
+* resource-select click item ([42301aa](https://github.com/entrecode/ec.components/commit/42301aa))
+
+
+
+
+
 ## [0.43.5](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.43.4...@ec.components/data@0.43.5) (2019-02-04)
 
 
