@@ -8,7 +8,7 @@
                 </span>
             </li>
             <li *ngFor="let selected of selection?.items">
-                <span [class.ec-select-selected]="!solo" [class.ec-select-selected_solo]="solo" (click)="!solo&&hasMethod('put')&&editItem(selected,$event)">
+                <span [class.ec-select-selected]="!solo" [class.ec-select-selected_solo]="solo" (click)="clickItem(selected, $event)">
                     {{selected.display()}}
                     <a (click)="removeItem(selected,$event);">&times;</a>
                 </span>
