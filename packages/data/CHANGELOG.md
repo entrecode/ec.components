@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.43.7](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.43.6...@ec.components/data@0.43.7) (2019-02-04)
+
+
+### Bug Fixes
+
+* resource-select stop propagation on item click ([68f12f5](https://github.com/entrecode/ec.components/commit/68f12f5))
+
+
+
+
+
 ## [0.43.6](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.43.5...@ec.components/data@0.43.6) (2019-02-04)
 
 
