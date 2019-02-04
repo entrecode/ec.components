@@ -1189,7 +1189,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="181" class="link-to-prism">packages/data/src/lib/resource-select/resource-select.component.ts:181</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="184" class="link-to-prism">packages/data/src/lib/resource-select/resource-select.component.ts:184</a></div>
                             </td>
                         </tr>
 
@@ -1271,7 +1271,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="200" class="link-to-prism">packages/data/src/lib/resource-select/resource-select.component.ts:200</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="203" class="link-to-prism">packages/data/src/lib/resource-select/resource-select.component.ts:203</a></div>
                             </td>
                         </tr>
 
@@ -1309,7 +1309,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="161" class="link-to-prism">packages/data/src/lib/resource-select/resource-select.component.ts:161</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="164" class="link-to-prism">packages/data/src/lib/resource-select/resource-select.component.ts:164</a></div>
                             </td>
                         </tr>
 
@@ -1382,7 +1382,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="139" class="link-to-prism">packages/data/src/lib/resource-select/resource-select.component.ts:139</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="142" class="link-to-prism">packages/data/src/lib/resource-select/resource-select.component.ts:142</a></div>
                             </td>
                         </tr>
 
@@ -1453,7 +1453,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="144" class="link-to-prism">packages/data/src/lib/resource-select/resource-select.component.ts:144</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="147" class="link-to-prism">packages/data/src/lib/resource-select/resource-select.component.ts:147</a></div>
                             </td>
                         </tr>
 
@@ -1569,7 +1569,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="192" class="link-to-prism">packages/data/src/lib/resource-select/resource-select.component.ts:192</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="195" class="link-to-prism">packages/data/src/lib/resource-select/resource-select.component.ts:195</a></div>
                             </td>
                         </tr>
 
@@ -1607,7 +1607,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="170" class="link-to-prism">packages/data/src/lib/resource-select/resource-select.component.ts:170</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="173" class="link-to-prism">packages/data/src/lib/resource-select/resource-select.component.ts:173</a></div>
                             </td>
                         </tr>
 
@@ -1812,7 +1812,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">packages/data/src/lib/resource-select/resource-select.component.ts:133</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="136" class="link-to-prism">packages/data/src/lib/resource-select/resource-select.component.ts:136</a></div>
                             </td>
                         </tr>
 
@@ -4640,6 +4640,9 @@ export class ResourceSelectComponent extends SelectComponent&lt;Resource&gt; imp
     /** Is called when a selected item is clicked. Either outputs itemClick (if subscribed) or opens the edit pop if puttable. */
     clickItem(item, e) {
         if (this.itemClick.observers.length) {
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
             return this.itemClick.emit(item);
         }
         if (!this.solo &amp;&amp; this.hasMethod(&#x27;put&#x27;)) {

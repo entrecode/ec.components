@@ -123,6 +123,9 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
     /** Is called when a selected item is clicked. Either outputs itemClick (if subscribed) or opens the edit pop if puttable. */
     clickItem(item, e) {
         if (this.itemClick.observers.length) {
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
             return this.itemClick.emit(item);
         }
         if (!this.solo && this.hasMethod('put')) {
