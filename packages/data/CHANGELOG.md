@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.43.5](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.43.4...@ec.components/data@0.43.5) (2019-02-04)
+
+
+### Bug Fixes
+
+* can now set itemClick in field config + fix resouce-select config ([9e23457](https://github.com/entrecode/ec.components/commit/9e23457))
+
+
+
+
+
 ## [0.43.4](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.43.3...@ec.components/data@0.43.4) (2019-02-01)
 
 
