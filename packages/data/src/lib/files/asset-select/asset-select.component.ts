@@ -145,7 +145,7 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
       config = this.legacyAssetConfig;
       this.assetGroupID = 'legacyAsset';
     }
-    return Object.assign(config, { solo: !!this.solo });
+    return Object.assign(config, { solo: !!this.solo, size: 24 });
   }
 
   groupReady() {
