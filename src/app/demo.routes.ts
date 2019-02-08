@@ -449,7 +449,10 @@ export const demoRoutes: Routes = [
         path: 'tinymce',
         component: TinymceDemoComponent,
         data: {
-          paths: ['tinymce-demo/tinymce-demo.component.html', 'tinymce-demo/tinymce-demo.component.ts', 'tinymce-demo/tiny-input.component.ts']
+          paths: [
+            'tinymce-demo/tinymce-demo.component.html',
+            'tinymce-demo/tinymce-demo.component.ts',
+            'tinymce-demo/tiny-input.component.ts']
         }
       },
       {

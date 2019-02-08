@@ -4379,7 +4379,7 @@ export class AssetSelectComponent extends SelectComponent&lt;DMAssetResource | P
       config &#x3D; this.legacyAssetConfig;
       this.assetGroupID &#x3D; &#x27;legacyAsset&#x27;;
     }
-    return Object.assign(config, { solo: !!this.solo });
+    return Object.assign(config, { solo: !!this.solo, size: 24 });
   }
 
   groupReady() {
