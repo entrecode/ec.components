@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.43.8](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.43.7...@ec.components/data@0.43.8) (2019-02-08)
+
+
+### Bug Fixes
+
+* fixed asset-list-pop search + set inital size to 24 ([651f1de](https://github.com/entrecode/ec.components/commit/651f1de))
+
+
+
+
+
 ## [0.43.7](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.43.6...@ec.components/data@0.43.7) (2019-02-04)
 
 
