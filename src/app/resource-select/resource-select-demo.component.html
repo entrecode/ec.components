@@ -1,5 +1,7 @@
 <h2>Resource Select</h2>
-<ec-resource-select relation="dataManager" [api]="sdk?.datamanager" [(ngModel)]="multi"></ec-resource-select>
+<ec-resource-select relation="dataManager" [api]="sdk?.datamanager" [(ngModel)]="multi"
+    [config]="{methods:['put','get']}">
+</ec-resource-select>
 <span *ngIf="multi?.length">{{multi?.length}} items selected</span>
 <ec-resource-select relation="dataManager" [api]="sdk?.datamanager" [solo]="true" [(ngModel)]="solo">
 </ec-resource-select>

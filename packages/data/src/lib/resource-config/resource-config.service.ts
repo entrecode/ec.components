@@ -527,13 +527,11 @@ export class ResourceConfig {
         },
         addRegistered: {
           label: this.symbol.resolve('role.field.label.addRegistered'),
-          view: 'boolean'/* ,
-    prefill: false */
+          view: 'boolean'
         },
         addUnregistered: {
           label: this.symbol.resolve('role.field.label.addUnregistered'),
-          view: 'boolean'/* ,
-    prefill: false */
+          view: 'boolean'
         },
         created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
       }

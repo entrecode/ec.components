@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.44.2](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.44.1...@ec.components/data@0.44.2) (2019-02-15)
+
+
+### Bug Fixes
+
+* resource-select focus searchbar + fire editItem if puttable ([b2cf446](https://github.com/entrecode/ec.components/commit/b2cf446))
+
+
+
+
+
 ## [0.44.1](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.44.0...@ec.components/data@0.44.1) (2019-02-15)
 
 

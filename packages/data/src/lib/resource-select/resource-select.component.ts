@@ -122,14 +122,14 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
 
     /** Is called when a selected item is clicked. Either outputs itemClick (if subscribed) or opens the edit pop if puttable. */
     clickItem(item, e) {
+        if (!this.solo && this.hasMethod('put')) {
+            this.editItem(item, e);
+        }
         if (this.itemClick.observers.length) {
             e.preventDefault();
             e.stopPropagation();
             e.stopImmediatePropagation();
             return this.itemClick.emit(item);
-        }
-        if (!this.solo && this.hasMethod('put')) {
-            this.editItem(item, e);
         }
     }
 
@@ -201,7 +201,8 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
     }
 
     focusSearchbar() {
-        if (!this.resourceListPop || !this.resourceListPop.active) {
+        if ((!this.resourceListPop || !this.resourceListPop.active) &&
+            (this.searchbar && this.searchbar.focusEvent)) {
             this.searchbar.focusEvent.emit(true);
         }
     }
