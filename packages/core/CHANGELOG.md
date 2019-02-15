@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.20.2](https://github.com/entrecode/ec.components/compare/@ec.components/core@0.20.1...@ec.components/core@0.20.2) (2019-02-15)
+
+**Note:** Version bump only for package @ec.components/core
+
+
+
+
+
 ## [0.20.1](https://github.com/entrecode/ec.components/compare/@ec.components/core@0.20.0...@ec.components/core@0.20.1) (2019-02-15)
 
 **Note:** Version bump only for package @ec.components/core
