@@ -202,6 +202,9 @@
                                 <a href="#cancelDrag">cancelDrag</a>
                             </li>
                             <li>
+                                <a href="#canRemove">canRemove</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Public</span>
                                 <a href="#clickItem">clickItem</a>
                             </li>
@@ -933,6 +936,44 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
+                        <a name="canRemove"></a>
+                        <span class="name">
+                            <b>
+                            canRemove
+                            </b>
+                            <a href="#canRemove"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>canRemove()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="266" class="link-to-prism">packages/ui/src/lib/select/select.component.ts:266</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
                         <a name="clickItem"></a>
                         <span class="name">
                             <b>
@@ -1029,7 +1070,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="324" class="link-to-prism">packages/ui/src/lib/select/select.component.ts:324</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="328" class="link-to-prism">packages/ui/src/lib/select/select.component.ts:328</a></div>
                             </td>
                         </tr>
 
@@ -1298,7 +1339,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="266" class="link-to-prism">packages/ui/src/lib/select/select.component.ts:266</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="270" class="link-to-prism">packages/ui/src/lib/select/select.component.ts:270</a></div>
                             </td>
                         </tr>
 
@@ -2930,6 +2971,10 @@ export class SelectComponent&lt;T&gt; implements ControlValueAccessor, OnInit, O
     e.stopImmediatePropagation();
   }
 
+  canRemove() {
+    return !this.config || !this.config.disableRemove;
+  }
+
   handleKey(e, list) {
     const { event, query } &#x3D; e;
     if (!list) {
@@ -2973,7 +3018,7 @@ export class SelectComponent&lt;T&gt; implements ControlValueAccessor, OnInit, O
         this.preventDefault(event);
         break;
       case &#x27;Backspace&#x27;:
-        if (!this.selection.isEmpty() &amp;&amp; query &#x3D;&#x3D;&#x3D; &#x27;&#x27;) {
+        if (!this.selection.isEmpty() &amp;&amp; query &#x3D;&#x3D;&#x3D; &#x27;&#x27; &amp;&amp; this.canRemove()) {
           this.removeItem(this.selection.items[this.selection.items.length - 1]);
           this.preventDefault(event);
         }
