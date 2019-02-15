@@ -25,6 +25,8 @@ export interface ListConfig<T> extends ItemConfig<T> {
   alwaysShowHeader?: boolean;
   /** If true, no dropdown will be shown for a select */
   disableDropdown?: boolean;
+  /** If true, removal of items wont be possible (select) */
+  disableRemove?: boolean;
   /** If true, no column filter will be shown in the list header */
   disableColumnFilter?: boolean;
   /** If true, select items cannot be dragged */

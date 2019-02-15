@@ -10,7 +10,7 @@
             <li *ngFor="let selected of selection?.items">
                 <span [class.ec-select-selected]="!solo" [class.ec-select-selected_solo]="solo" (click)="clickItem(selected, $event)">
                     {{selected.display()}}
-                    <a (click)="removeItem(selected,$event);">&times;</a>
+                    <a (click)="removeItem(selected,$event);" *ngIf="!config.disableRemove">&times; x</a>
                 </span>
             </li>
             <li *ngIf="!config?.disableSearchbar" class="ec-select__searchbar">

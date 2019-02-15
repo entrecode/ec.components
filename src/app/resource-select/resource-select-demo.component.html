@@ -13,7 +13,8 @@
 <ec-resource-select relation="dmAccount" [api]="datamanager" *ngIf="datamanager"></ec-resource-select>
 
 <h3>With config</h3>
-<ec-resource-select relation="model" [api]="datamanager" *ngIf="datamanager" [config]="{disableCreatePop:true}">
+<ec-resource-select relation="model" [api]="datamanager" *ngIf="datamanager"
+    [config]="{disableCreatePop:true,disableRemove:true}">
 
 </ec-resource-select>
 <!-- <h3>Asset Tags</h3>

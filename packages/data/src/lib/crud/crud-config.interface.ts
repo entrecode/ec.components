@@ -36,6 +36,8 @@ export interface CrudConfig<T> extends ListConfig<T> {
   disableCreatePop?: boolean;
   /** If true, no dropdown will be accessible */
   disableSearchbar?: boolean;
+  /** If true, removal of items wont be possible (select) */
+  disableRemove?: boolean;
   /** If true, selects will delete entries that are removed from the selection */
   deleteOnRemove?: boolean;
   /** If true, delete operations need confirmation */
