@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.43.9](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.43.8...@ec.components/data@0.43.9) (2019-02-15)
+
+
+### Bug Fixes
+
+* resource-select config merging + ec-output-tags are now oneline ([c483625](https://github.com/entrecode/ec.components/commit/c483625))
+
+
+
+
+
 ## [0.43.8](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.43.7...@ec.components/data@0.43.8) (2019-02-08)
 
 
