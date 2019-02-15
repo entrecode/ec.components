@@ -3,8 +3,10 @@
 // @param {array} $ec-output-tags-style
 .ec-output-tags {
   display: flex;
-  flex-wrap: wrap;
+  overflow: hidden;
+  /* flex-wrap: wrap; */
   list-style: none;
+  white-space: nowrap;
   padding: 0;
   @include inject-style($ec-output-tags-style);
   margin: arrayMagic($ec-output-tags-spacing);
