@@ -614,14 +614,15 @@ export class ResourceConfig {
           display: (group => group ? group.map(g => g.name) : [])
         }
       }
-    }
+    },
+    token: {}
   };
 
   constructor(private symbol: SymbolService, private typeConfig: TypeConfigService) { }
   /** Returns the CrudConfig for the given relation name. */
   get(relationName: string): CrudConfig<Resource> {
     if (!this.config[relationName]) {
-      console.error(`${relationName} could not be found in the resource-config.
+      console.warn(`${relationName} could not be found in the resource-config.
       Use one of ${Object.keys(this.config)}`);
       return {};
     } // TODO enrich fields with type with type-config?
