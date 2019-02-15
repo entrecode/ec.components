@@ -263,6 +263,10 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
     e.stopImmediatePropagation();
   }
 
+  canRemove() {
+    return !this.config || !this.config.disableRemove;
+  }
+
   handleKey(e, list) {
     const { event, query } = e;
     if (!list) {
@@ -306,7 +310,7 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
         this.preventDefault(event);
         break;
       case 'Backspace':
-        if (!this.selection.isEmpty() && query === '') {
+        if (!this.selection.isEmpty() && query === '' && this.canRemove()) {
           this.removeItem(this.selection.items[this.selection.items.length - 1]);
           this.preventDefault(event);
         }

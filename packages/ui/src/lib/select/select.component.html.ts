@@ -12,7 +12,7 @@ export const selectTemplate = `<div class="ec-select" [class.ec-select_solo]="so
       (dndEnd)="cancelDrag(selected,$event,item)" #item>
       <span [class.ec-select-selected]="!solo" [class.ec-select-selected_solo]="solo" (click)="clickItem(selected,$event)">
         {{selected.display()}}
-        <a (click)="removeItem(selected,$event)">&times;</a>
+        <a (click)="removeItem(selected,$event)" *ngIf="!config?.disableRemove">&times;</a>
       </span>
     </li>
     <li dndPlaceholderRef>

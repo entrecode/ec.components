@@ -20,7 +20,7 @@
         (dndCanceled)="cancelDrag(selected,$event)" (dndEnd)="cancelDrag(selected,$event)">
         <span [class.ec-select-selected]="!solo" [class.ec-select-selected_solo]="solo" (click)="!solo&&editItem(selected,$event)">
           {{selected.display()}}
-          <a (click)="removeItem(selected,false,$event)">&times;</a>
+          <a (click)="removeItem(selected,false,$event)" *ngIf="!config?.disableRemove">&times;</a>
         </span>
       </li>
       <li dndPlaceholderRef>
