@@ -1,7 +1,7 @@
-import { Component, Input, QueryList, ViewChild, ViewChildren, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, QueryList, ViewChild, ViewChildren, ChangeDetectionStrategy, OnInit, OnChanges } from '@angular/core';
 import { PopComponent } from '../../pop/pop.component';
 import { FormComponent } from '../../form/form.component';
-import { List } from '@ec.components/core';
+import { List, ListConfig } from '@ec.components/core';
 import { Selection } from '@ec.components/core';
 import { Field } from '@ec.components/core';
 import { ListConfigService } from '../list-config.service';
@@ -12,7 +12,7 @@ import { ListConfigService } from '../list-config.service';
   templateUrl: './list-header.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ListHeaderComponent {
+export class ListHeaderComponent implements OnChanges {
   /** The list instance */
   @Input() list: List<any>;
   /** The selection instance. This is optional. If It is not provided, no checkbox will be visible.*/
@@ -21,22 +21,72 @@ export class ListHeaderComponent {
   @ViewChildren('filterPop') pops: QueryList<PopComponent>;
   /** The form that holds the current filter information */
   @ViewChild('filterForm') filter: FormComponent<any>;
+  /** The config for the filter form */
+  filterFormConfig: ListConfig<any>;
+  filteredField: any;
 
   constructor(public listConfig: ListConfigService) {
   }
 
-  /** opens the given filter pop and closes all others */
-  public editFilter(pop) {
-    pop.toggle();
+  ngOnChanges(changes?) {
+    if (!changes.list) {
+      return;
+    }
+    if (!this.list || !this.list.config || !this.list.config.fields) {
+      return;
+    }
+    const fieldConfig = this.list.config.fields;
+    const filterableFields = Object.keys(fieldConfig).reduce((fields, property) => {
+      if (fieldConfig[property].filterable) {
+        return {
+          ...fields,
+          [property]: fieldConfig[property]
+        };
+      }
+      return fields;
+    }, {});
+
+    this.filterFormConfig = {
+      ...this.list.config,
+      fields: filterableFields
+    };
   }
 
-  /** Applies the given filter to the list. */
-  public applyFilter(property, value) {
-    this.list.filter(property, value);
+  /** opens the given filter pop and closes all others */
+  public editFilter(pop, field) {
+    if (this.filteredField) {
+      this.removeFilter(this.filteredField.property);
+      if (this.filteredField.property === field.property) {
+        pop.hide();
+        return;
+      }
+    }
+    if (!field) {
+      return;
+    }
+    field.nestedCrudConfig = {
+      ...field.nestedCrudConfig,
+      methods: ['get'],
+    };
+    field.config = {
+      ...field.config,
+      required: false,
+      readOnly: true
+    };
+    this.filteredField = field;
+    pop.show();
+  }
+
+  toggledFilterPop(active) {
+    if (!active) {
+      this.removeFilter(this.filteredField.property);
+      delete this.filteredField;
+    }
   }
 
   /** Resets the fields filter */
-  public removeFilter(property, control) {
+  public removeFilter(property) {
+    const control = this.filter.group.get(property);
     control.reset();
   }
 

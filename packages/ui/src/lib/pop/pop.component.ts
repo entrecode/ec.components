@@ -70,7 +70,6 @@ export class PopComponent {
     } else {
       this.show(e);
     }
-    this._toggle.emit(this.active);
   }
 
   /** Shows the pop. Sets active true and adds pop to popService.stack */
@@ -83,6 +82,7 @@ export class PopComponent {
     } else if (this.hideOnClickOutside) {
       // console.warn('To use hideOnClickOutside, you need to pass the click event to the show method of ec-pop!');
     }
+    this._toggle.emit(this.active);
     this.cdr.markForCheck();
   }
 
@@ -90,6 +90,7 @@ export class PopComponent {
   public hide() {
     this.popService.stack.remove(this);
     this.active = false;
+    this._toggle.emit(this.active);
     this.cdr.markForCheck();
   }
 }

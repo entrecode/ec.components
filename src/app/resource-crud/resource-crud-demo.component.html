@@ -1,4 +1,6 @@
 <h2>Resource Crud</h2>
-<ec-resource-crud relation="dataManager" [api]="sdk.datamanager" [config]="crudConfig" #crud></ec-resource-crud>
+<ec-resource-crud *ngIf="datamanager" relation="dmAccount" [api]="datamanager" [config]="crudConfig" #crud>
+</ec-resource-crud>
+<!-- <ec-resource-crud relation="dataManager" [api]="sdk.datamanager" [config]="crudConfig" #crud></ec-resource-crud> -->
 
-{{crud.list?.selection?.items?.length}} items selected
+<!-- {{crud.list?.selection?.items?.length}} items selected -->

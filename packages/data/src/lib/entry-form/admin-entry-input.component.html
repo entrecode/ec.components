@@ -1,30 +1,33 @@
 <div [ngSwitch]="field.type" *ngIf="group" [formGroup]="group">
   <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>
   <div *ngSwitchCase="'account'">
-    <ec-resource-select [config]="field.nestedCrudConfig" [placeholder]="field.placeholder" [api]="field.api" relation="dmAccount"
-      [formControl]="group.get(field.property)" [id]="field.id" [solo]="true"></ec-resource-select>
+    <ec-resource-select [config]="field.nestedCrudConfig" [placeholder]="field.placeholder" [api]="field.api"
+      relation="dmAccount" [formControl]="group.get(field.property)" [id]="field.id" [solo]="true"></ec-resource-select>
   </div>
   <div *ngSwitchCase="'accounts'">
-    <ec-resource-select [config]="field.nestedCrudConfig" [placeholder]="field.placeholder" [api]="field.api" relation="dmAccount"
-      [formControl]="group.get(field.property)" [id]="field.id"></ec-resource-select>
+    <ec-resource-select [config]="field.nestedCrudConfig" [placeholder]="field.placeholder" [api]="field.api"
+      relation="dmAccount" [formControl]="group.get(field.property)" [id]="field.id"></ec-resource-select>
   </div>
   <div *ngSwitchCase="'role'">
-    <ec-resource-select [config]="field.nestedCrudConfig" [placeholder]="field.placeholder" [api]="field.api" relation="role"
-      [formControl]="group.get(field.property)" [id]="field.id" [solo]="true"></ec-resource-select>
+    <ec-resource-select [config]="field.nestedCrudConfig" [placeholder]="field.placeholder" [api]="field.api"
+      relation="role" [formControl]="group.get(field.property)" [id]="field.id" [solo]="true"></ec-resource-select>
   </div>
   <div *ngSwitchCase="'resource'">
-    <ec-resource-select (enter)="field.enter&&field.enter($event)" (itemClick)="field.itemClick&&field.itemClick($event)"
-      [config]="field.nestedCrudConfig" [placeholder]="field.placeholder" [api]="field.api" [relation]="field.relation"
+    <ec-resource-select (enter)="field.enter&&field.enter($event)"
+      (itemClick)="field.itemClick&&field.itemClick($event)" [config]="field.nestedCrudConfig"
+      [placeholder]="field.placeholder" [api]="field.api" [relation]="field.relation"
       [formControl]="group.get(field.property)" [id]="field.id" [solo]="true"></ec-resource-select>
   </div>
   <div *ngSwitchCase="'resources'">
-    <ec-resource-select (enter)="field.enter&&field.enter($event)" (itemClick)="field.itemClick&&field.itemClick($event)"
-      [config]="field.nestedCrudConfig" [placeholder]="field.placeholder" [api]="field.api" [relation]="field.relation"
+    <ec-resource-select (enter)="field.enter&&field.enter($event)"
+      (itemClick)="field.itemClick&&field.itemClick($event)" [config]="field.nestedCrudConfig"
+      [placeholder]="field.placeholder" [api]="field.api" [relation]="field.relation"
       [formControl]="group.get(field.property)" [id]="field.id"></ec-resource-select>
   </div>
   <div *ngSwitchCase="'groups'">
-    <ec-resource-select [config]="field.nestedCrudConfig" [placeholder]="field.placeholder" [formControl]="group.get(field.property)"
-      [api]="sdk.accounts" relation="group" [id]="field.id"></ec-resource-select>
+    <ec-resource-select [config]="field.nestedCrudConfig" [placeholder]="field.placeholder"
+      [formControl]="group.get(field.property)" [api]="sdk.accounts" relation="group" [id]="field.id">
+    </ec-resource-select>
   </div>
   <div *ngSwitchDefault>
     <marquee>🚂🚃🚃🚃 {{field.type}} input coming soon..</marquee>

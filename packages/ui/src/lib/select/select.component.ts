@@ -154,15 +154,24 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
     this.cdr.markForCheck();
   }
 
+  getArray(value) {
+    return Array.isArray(value) ? value : (value ? [value] : []);
+  }
+
   /** Uses the given value as selection items */
   use(value, event = true) {
-    this.value = Array.isArray(value) ? value : (value ? [value] : []);
     Object.assign(this.config || {}, { solo: this.solo });
-    if (this.selection && this.value && this.value.length) {
-      Object.assign(this.config, { selection: this.selection });
-      const list = new List(this.value, this.config);
-      this.selection.replaceWith(list.items, event);
+    this.value = this.getArray(value);
+    if (!this.selection) {
+      return;
     }
+    if (!this.value.length) {
+      this.selection.removeAll();
+      return;
+    }
+    Object.assign(this.config, { selection: this.selection });
+    const list = new List(this.value, this.config);
+    this.selection.replaceWith(list.items, event);
   }
 
   /** Initializes either with values, collection or list. Creates Selection with config. */
