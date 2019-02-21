@@ -180,6 +180,9 @@
                                 <a href="#connectControl">connectControl</a>
                             </li>
                             <li>
+                                <a href="#init">init</a>
+                            </li>
+                            <li>
                                 <a href="#ngOnChanges">ngOnChanges</a>
                             </li>
                             <li>
@@ -495,7 +498,45 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:89</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:94</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="init"></a>
+                        <span class="name">
+                            <b>
+                            init
+                            </b>
+                            <a href="#init"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>init()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:52</a></div>
                             </td>
                         </tr>
 
@@ -526,7 +567,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>ngOnChanges()</code>
+<code>ngOnChanges(changes?)</code>
                     </td>
                 </tr>
 
@@ -542,9 +583,36 @@
                     <td class="col-md-4">
 
                             <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>changes</td>
+                                                    
+                                                    <td>
+                                                            Yes
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
                                 <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                             </div>
+                                <div class="io-description">
+                                    
+                                </div>
                     </td>
                 </tr>
             </tbody>
@@ -571,7 +639,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:114</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:119</a></div>
                             </td>
                         </tr>
 
@@ -638,7 +706,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:119</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:124</a></div>
                             </td>
                         </tr>
 
@@ -676,7 +744,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:103</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:108</a></div>
                             </td>
                         </tr>
 
@@ -895,7 +963,7 @@ You can access a form&#39;s InputComponents via FormComponent#inputs </p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:110</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="115" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:115</a></div>
                             </td>
                         </tr>
 
@@ -1089,7 +1157,13 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
   /** The current value of the input. Needs to be saved for the case the component is not yet loaded */
   value: any;
 
-  ngOnChanges() {
+  ngOnChanges(changes?) {
+    if (!this.componentInstance || changes.field) {
+      this.init();
+    }
+  }
+
+  init() {
     if (this.property &amp;&amp; this.item instanceof Form) {
       this.field &#x3D; this.item.getField(this.property);
     } else if (!this.field &amp;&amp; this.config) {
@@ -1114,7 +1188,6 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
       input: this,
       config: this.config || this.field.config || {}
     };
-
     const componentRef &#x3D; this.loadComponent(this.component || this.field.input || DefaultInputComponent, data);
     this.componentInstance &#x3D; componentRef.instance;
     this.connectControl();

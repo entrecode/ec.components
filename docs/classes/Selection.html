@@ -215,6 +215,9 @@ It supports solo and multiple selection.</p>
                                 <a href="#load">load</a>
                             </li>
                             <li>
+                                <a href="#setFilter">setFilter</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Public</span>
                                 <a href="#sortableFields">sortableFields</a>
                             </li>
@@ -1501,7 +1504,7 @@ The solo property will change the behaviour like you would expect it to behave :
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in List:151</div>
+                                    <div class="io-line">Defined in List:171</div>
                             </td>
                         </tr>
 
@@ -1726,7 +1729,7 @@ properties directly.</p>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>getFilterValue(property?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+<code>getFilterValue(property?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, filterOptions)</code>
                     </td>
                 </tr>
 
@@ -1739,7 +1742,7 @@ properties directly.</p>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in List:183</div>
+                                    <div class="io-line">Defined in List:204</div>
                             </td>
                         </tr>
 
@@ -1757,6 +1760,7 @@ properties directly.</p>
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Default value</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -1770,6 +1774,22 @@ properties directly.</p>
                                                             Yes
                                                     </td>
                                                     
+                                                        <td>
+                                                        </td>
+
+                                                </tr>
+                                                <tr>
+                                                        <td>filterOptions</td>
+                                                        <td>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>this.config.filter</code>
+                                                        </td>
 
                                                 </tr>
                                         </tbody>
@@ -1816,7 +1836,7 @@ properties directly.</p>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in List:227</div>
+                                    <div class="io-line">Defined in List:248</div>
                             </td>
                         </tr>
 
@@ -2001,7 +2021,7 @@ properties directly.</p>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>isEmptyFilter(query: <a href="../[]s/de.html">null | undefined | string | Array<any></a>)</code>
+<code>isEmptyFilter(query: <a href="../[]s/de.html">null | undefined | string | Array<any> | Object</a>)</code>
                     </td>
                 </tr>
 
@@ -2014,7 +2034,7 @@ properties directly.</p>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in List:162</div>
+                                    <div class="io-line">Defined in List:182</div>
                             </td>
                         </tr>
 
@@ -2038,7 +2058,7 @@ properties directly.</p>
                                                 <tr>
                                                         <td>query</td>
                                                         <td>
-                                                                    <code><a href="../miscellaneous/variables.html#de" target="_self" >null | undefined | string | Array&lt;any&gt;</a></code>
+                                                                    <code><a href="../miscellaneous/variables.html#de" target="_self" >null | undefined | string | Array&lt;any&gt; | Object</a></code>
                                                         </td>
                                                     
                                                     <td>
@@ -2078,7 +2098,7 @@ properties directly.</p>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>isFiltered(property?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+<code>isFiltered(property?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, filterOptions)</code>
                     </td>
                 </tr>
 
@@ -2091,7 +2111,7 @@ properties directly.</p>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in List:170</div>
+                                    <div class="io-line">Defined in List:191</div>
                             </td>
                         </tr>
 
@@ -2109,6 +2129,7 @@ properties directly.</p>
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Default value</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -2122,6 +2143,22 @@ properties directly.</p>
                                                             Yes
                                                     </td>
                                                     
+                                                        <td>
+                                                        </td>
+
+                                                </tr>
+                                                <tr>
+                                                        <td>filterOptions</td>
+                                                        <td>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>this.config.filter</code>
+                                                        </td>
 
                                                 </tr>
                                         </tbody>
@@ -2170,7 +2207,7 @@ properties directly.</p>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in List:262</div>
+                                    <div class="io-line">Defined in List:283</div>
                             </td>
                         </tr>
 
@@ -2249,7 +2286,7 @@ properties directly.</p>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in List:205</div>
+                                    <div class="io-line">Defined in List:226</div>
                             </td>
                         </tr>
 
@@ -2394,6 +2431,85 @@ Reapplies grouping (if any) and calls the change Subject. </p>
             <tbody>
                 <tr>
                     <td class="col-md-4">
+                        <a name="setFilter"></a>
+                        <span class="name">
+                            <b>
+                            setFilter
+                            </b>
+                            <a href="#setFilter"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>setFilter(filterOptions: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank">object</a>)</code>
+                    </td>
+                </tr>
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from     <code><a href="../classes/List.html" target="_self" >List</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in List:150</div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>filterOptions</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>{}</code>
+                                                        </td>
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
                         <a name="sortableFields"></a>
                         <span class="name">
                             <b>
@@ -2420,7 +2536,7 @@ Reapplies grouping (if any) and calls the change Subject. </p>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in List:258</div>
+                                    <div class="io-line">Defined in List:279</div>
                             </td>
                         </tr>
 
@@ -2468,7 +2584,7 @@ Reapplies grouping (if any) and calls the change Subject. </p>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in List:194</div>
+                                    <div class="io-line">Defined in List:215</div>
                             </td>
                         </tr>
 
@@ -2557,7 +2673,7 @@ Reapplies grouping (if any) and calls the change Subject. </p>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in List:219</div>
+                                    <div class="io-line">Defined in List:240</div>
                             </td>
                         </tr>
 
@@ -2603,7 +2719,7 @@ Reapplies grouping (if any) and calls the change Subject. </p>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in List:213</div>
+                                    <div class="io-line">Defined in List:234</div>
                             </td>
                         </tr>
 
@@ -2767,7 +2883,7 @@ Reapplies grouping (if any) and calls the change Subject. </p>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in List:254</div>
+                                    <div class="io-line">Defined in List:275</div>
                             </td>
                         </tr>
 

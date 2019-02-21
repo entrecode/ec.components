@@ -268,7 +268,7 @@ setClientID.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="132" class="link-to-prism">packages/data/src/lib/sdk/sdk.service.ts:132</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="135" class="link-to-prism">packages/data/src/lib/sdk/sdk.service.ts:135</a></div>
                             </td>
                         </tr>
 
@@ -339,7 +339,7 @@ setClientID.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="121" class="link-to-prism">packages/data/src/lib/sdk/sdk.service.ts:121</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">packages/data/src/lib/sdk/sdk.service.ts:124</a></div>
                             </td>
                         </tr>
 
@@ -494,7 +494,7 @@ setClientID.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="144" class="link-to-prism">packages/data/src/lib/sdk/sdk.service.ts:144</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="147" class="link-to-prism">packages/data/src/lib/sdk/sdk.service.ts:147</a></div>
                             </td>
                         </tr>
 
@@ -624,7 +624,7 @@ If you set &quot;datamanagerID&quot; in your environment, this method is called 
                             <div>
                             </div>
                             <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                             </div>
                                 <div class="io-description">
@@ -1327,10 +1327,13 @@ export class SdkService {
   useDatamanager(shortID: string, environment &#x3D; this.environment) {
     this.apiResolved &#x3D; false;
     this._api &#x3D; new PublicAPI(shortID, &lt;env&gt;environment.environment, true);
-    this._api.resolve().then(api &#x3D;&gt; this.apiResolved &#x3D; true);
     if (environment.clientID) {
       this._api.setClientID(environment.clientID);
     }
+    return this._api.resolve().then(api &#x3D;&gt; {
+      this.apiResolved &#x3D; true;
+      return api;
+    });
   }
 
   /** Returns a schema for the given model. Caches the promise. */
