@@ -43,7 +43,13 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
   /** The current value of the input. Needs to be saved for the case the component is not yet loaded */
   value: any;
 
-  ngOnChanges() {
+  ngOnChanges(changes?) {
+    if (!this.componentInstance || changes.field) {
+      this.init();
+    }
+  }
+
+  init() {
     if (this.property && this.item instanceof Form) {
       this.field = this.item.getField(this.property);
     } else if (!this.field && this.config) {
@@ -68,7 +74,6 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
       input: this,
       config: this.config || this.field.config || {}
     };
-
     const componentRef = this.loadComponent(this.component || this.field.input || DefaultInputComponent, data);
     this.componentInstance = componentRef.instance;
     this.connectControl();

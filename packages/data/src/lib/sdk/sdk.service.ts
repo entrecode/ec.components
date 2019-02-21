@@ -111,10 +111,13 @@ export class SdkService {
   useDatamanager(shortID: string, environment = this.environment) {
     this.apiResolved = false;
     this._api = new PublicAPI(shortID, <env>environment.environment, true);
-    this._api.resolve().then(api => this.apiResolved = true);
     if (environment.clientID) {
       this._api.setClientID(environment.clientID);
     }
+    return this._api.resolve().then(api => {
+      this.apiResolved = true;
+      return api;
+    });
   }
 
   /** Returns a schema for the given model. Caches the promise. */

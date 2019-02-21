@@ -293,7 +293,7 @@ changes.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">packages/data/src/lib/crud/crud.service.ts:71</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">packages/data/src/lib/crud/crud.service.ts:72</a></div>
                             </td>
                         </tr>
 
@@ -364,7 +364,7 @@ changes.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">packages/data/src/lib/crud/crud.service.ts:86</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">packages/data/src/lib/crud/crud.service.ts:87</a></div>
                             </td>
                         </tr>
 
@@ -447,7 +447,7 @@ changes.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">packages/data/src/lib/crud/crud.service.ts:98</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">packages/data/src/lib/crud/crud.service.ts:99</a></div>
                             </td>
                         </tr>
 
@@ -530,7 +530,7 @@ changes.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">packages/data/src/lib/crud/crud.service.ts:65</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">packages/data/src/lib/crud/crud.service.ts:66</a></div>
                             </td>
                         </tr>
 
@@ -890,6 +890,7 @@ export class CrudService {
   update(model, entry: EntryResource, value: Object, safePut &#x3D; true): Promise&lt;EntryResource&gt; {
     const oldValues &#x3D; {}; // save old values
     Object.keys(value).forEach((key) &#x3D;&gt; oldValues[key] &#x3D; entry[key]);
+    // TODO: EDITOR-263 get model config, clean readOnly fields too. Add custom filter argument to clean method
     Object.assign(entry, this.clean(value)); // assign new form values
     return entry.save(safePut).then((_entry) &#x3D;&gt; {
       this.resourceService.changes.next({ relation: &#x60;model.${model}&#x60;, resource: _entry, type: &#x27;put&#x27; });

@@ -147,6 +147,26 @@ export class List<T> extends Collection<Item<T>> {
     }).slice(0, this.config.size || 100);
   }
 
+  setFilter(filterOptions = {}) {
+    if (!this.isFiltered(null, filterOptions) && !this.isFiltered()) {
+      return;
+    }
+    if (this.isEmptyFilter(filterOptions)) {
+      return this.clearFilter();
+    }
+    filterOptions = Object.keys(filterOptions).reduce((filtered, key) => {
+      if (this.isEmptyFilter(filterOptions[key])) {
+        delete filtered[key];
+      }
+      return filtered;
+    }, filterOptions);
+
+    this.load({
+      page: 1,
+      filter: filterOptions
+    });
+  }
+
   /** Clears the filter for given property or all properties if none given. */
   clearFilter(property?: string) {
     if (property) {
@@ -159,35 +179,36 @@ export class List<T> extends Collection<Item<T>> {
   }
 
   /** Helper function. Returns true if the given query value is empty (also recognizes empty array) */
-  isEmptyFilter(query: null | undefined | string | Array<any>) {
+  isEmptyFilter(query: null | undefined | string | Array<any> | Object) {
     return query === '' ||
       query === null ||
       query === undefined ||
-      (Array.isArray(query) && !query.length);
+      (Array.isArray(query) && !query.length) ||
+      (typeof query === 'object' && Object.keys(query).length === 0);
   }
 
   /** Returns true if the given property has a filter set. If no property is given it returns true when no property has a filter. */
-  isFiltered(property?: string) {
-    if (!this.config.filter) {
+  isFiltered(property?: string, filterOptions = this.config.filter) {
+    if (!filterOptions) {
       return false;
     }
     if (!property) {
-      return Object.keys(this.config.filter)
-        .filter(key => !this.isEmptyFilter(this.config.filter[key]))
+      return Object.keys(filterOptions)
+        .filter(key => !this.isEmptyFilter(filterOptions[key]))
         .length > 0;
     }
-    return !this.isEmptyFilter(this.config.filter[property]);
+    return !this.isEmptyFilter(filterOptions[property]);
   }
 
   /** Returns the filter */
-  getFilterValue(property?: string) {
+  getFilterValue(property?: string, filterOptions = this.config.filter) {
     if (!property) {
       property = this.config.label;
     }
-    if (!this.config.filter || !property) {
+    if (!filterOptions || !property) {
       return undefined;
     }
-    return this.config.filter[property];
+    return filterOptions[property];
   }
 
   /** Changes the config's sort variables to reflect the given sorting */

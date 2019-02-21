@@ -77,7 +77,25 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
    * You can also pass just an item to use its config and body.*/
   ngOnChanges(changes?) {
     this.config = Object.assign({}, this.config || {}, this.configInput || {});
-    this.init();
+    if (this.group && changes.value) {
+      this.patchValue();
+    } else {
+      this.init();
+    }
+  }
+
+  patchValue(value = this.value) {
+    this.value = value;
+    if (!this.value || Object.keys(this.value).length === 0) {
+      this.group.reset();
+    } else {
+      this.form.fields.forEach(field => {
+        const control = this.group.get(field.property);
+        if (control && control.value && control.value !== this.value[field.property]) {
+          control.patchValue(this.value[field.property]);
+        }
+      });
+    }
   }
 
   /** Inits the form (if ready) */

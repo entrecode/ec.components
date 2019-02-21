@@ -516,15 +516,6 @@ export class ResourceConfig {
           label: this.symbol.resolve('field.label.label'),
           view: 'string'
         },
-        accounts: {
-          label: this.symbol.resolve('role.field.label.accounts'),
-          type: 'accounts',
-          prefill: [],
-          list: false,
-          display: (value) => value ? value.title : '',
-          input: AdminEntryInputComponent,
-          filterPopClass: 'dialog'
-        },
         addRegistered: {
           label: this.symbol.resolve('role.field.label.addRegistered'),
           view: 'boolean'

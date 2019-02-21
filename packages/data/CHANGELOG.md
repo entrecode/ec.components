@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.45.0](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.44.2...@ec.components/data@0.45.0) (2019-02-21)
+
+
+### Features
+
+* reworked list-header filters ([624aecf](https://github.com/entrecode/ec.components/commit/624aecf))
+
+
+
+
+
 ## [0.44.2](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.44.1...@ec.components/data@0.44.2) (2019-02-15)
 
 

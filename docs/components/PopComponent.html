@@ -581,7 +581,7 @@ It can be used e.g as dialog, drawer or dialog.
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">packages/ui/src/lib/pop/pop.component.ts:77</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">packages/ui/src/lib/pop/pop.component.ts:76</a></div>
                             </td>
                         </tr>
 
@@ -897,7 +897,6 @@ export class PopComponent {
     } else {
       this.show(e);
     }
-    this._toggle.emit(this.active);
   }
 
   /** Shows the pop. Sets active true and adds pop to popService.stack */
@@ -910,6 +909,7 @@ export class PopComponent {
     } else if (this.hideOnClickOutside) {
       // console.warn(&#x27;To use hideOnClickOutside, you need to pass the click event to the show method of ec-pop!&#x27;);
     }
+    this._toggle.emit(this.active);
     this.cdr.markForCheck();
   }
 
@@ -917,6 +917,7 @@ export class PopComponent {
   public hide() {
     this.popService.stack.remove(this);
     this.active &#x3D; false;
+    this._toggle.emit(this.active);
     this.cdr.markForCheck();
   }
 }
