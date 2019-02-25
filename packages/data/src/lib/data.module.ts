@@ -83,7 +83,8 @@ export const dataModuleConfig = {
     {
       provide: 'environment',
       useValue: {
-        environment: 'live'
+        environment: 'live',
+        datamanagerID: '83cc6374'
       }
     }
   ]
