@@ -27,6 +27,7 @@ export * from './lib/resource-crud/resource-crud.component';
 
 export * from './lib/files/tag-select/tag-select.component';
 
+export * from './lib/resource-list/resource-list.component';
 export * from './lib/resource-list-pop/resource-list-pop.component';
 export * from './lib/files/image-select-pop/image-select-pop.component';
 export * from './lib/sdk/history.service';
