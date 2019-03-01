@@ -37,6 +37,8 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
   @Input() config: FieldConfigProperty;
   /** Overrides the default component */
   @Input() component: Type<any>;
+  /** If true, the input will never reinit/reload. */
+  @Input() lazy: boolean;
   /** Holds a reference to the component instance. This is helpful when you want to modify the component after form intialization.
    * You can access a form's InputComponents via FormComponent#inputs */
   componentInstance: InputComponent;
@@ -44,7 +46,7 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
   value: any;
 
   ngOnChanges(changes?) {
-    if (!this.componentInstance || changes.field) {
+    if (!this.lazy || !this.componentInstance || changes.field) {
       this.init();
     }
   }
@@ -77,8 +79,8 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
     const componentRef = this.loadComponent(this.component || this.field.input || DefaultInputComponent, data);
     this.componentInstance = componentRef.instance;
     this.connectControl();
-    if (componentRef.instance.control) {
-      componentRef.instance.control.valueChanges
+    if (this.componentInstance.control) {
+      this.componentInstance.control.valueChanges
         .pipe(
           debounceTime(this.debounce)
         ).subscribe((change) => {
