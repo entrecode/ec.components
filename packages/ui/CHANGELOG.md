@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.39.1](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.39.0...@ec.components/ui@0.39.1) (2019-03-01)
+
+
+### Bug Fixes
+
+* added lazy option for new input/form behaviour ([878e9df](https://github.com/entrecode/ec.components/commit/878e9df))
+
+
+
+
+
 # [0.39.0](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.38.0...@ec.components/ui@0.39.0) (2019-02-21)
 
 
