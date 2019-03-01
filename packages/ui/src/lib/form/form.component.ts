@@ -59,6 +59,8 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
   @Output() changed: EventEmitter<FormComponent<T>> = new EventEmitter();
   /** debounce time till changed event/callback will be fired */
   @Input() debounceTime = 200;
+  /** If true, the form will only init once. On new changes, the form values will be patched (see patchValue) */
+  @Input() lazy: boolean;
   /** The forms default loader. it is used when no loader is passed via the loader input */
   @ViewChild(LoaderComponent) defaultLoader: LoaderComponent;
   /** The InputComponents that are used to control the fields */
@@ -77,7 +79,7 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
    * You can also pass just an item to use its config and body.*/
   ngOnChanges(changes?) {
     this.config = Object.assign({}, this.config || {}, this.configInput || {});
-    if (this.group && changes.value) {
+    if (this.lazy && this.group && changes.value) {
       this.patchValue();
     } else {
       this.init();

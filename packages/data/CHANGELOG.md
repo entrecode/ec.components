@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.45.2](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.45.1...@ec.components/data@0.45.2) (2019-03-01)
+
+
+### Bug Fixes
+
+* add resource-list to data public_api ([2b0b354](https://github.com/entrecode/ec.components/commit/2b0b354))
+
+
+
+
+
 ## [0.45.1](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.45.0...@ec.components/data@0.45.1) (2019-02-25)
 
 **Note:** Version bump only for package @ec.components/data
