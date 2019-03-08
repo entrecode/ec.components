@@ -24,8 +24,10 @@ export class CalendarComponent extends MonthComponent implements ControlValueAcc
   @Output() changed: EventEmitter<any> = new EventEmitter();
   /** The form control that holds the date */
   @Input() formControl: FormControl;
-  /** The current value of the input */
+  /** The current value */
   value = '';
+  /** The current value of the input */
+  inputValue = '';
   /** The calendar view child. */
   @ViewChild(MonthComponent) grid: MonthComponent;
   /** Array of the days of a week. */
@@ -78,6 +80,7 @@ export class CalendarComponent extends MonthComponent implements ControlValueAcc
       selected.minute(previous.minute());
     }
     this.value = selected.format(this.getPattern(selected));
+    this.inputValue = this.value;
     this.setValue(selected.toISOString() || 'invalid');
   }
 
@@ -86,7 +89,8 @@ export class CalendarComponent extends MonthComponent implements ControlValueAcc
     this.value = value;
     const typed = moment(value, this.patterns, true);
     if (typed.isValid()) {
-      this.grid.selectDay(typed);
+      this.grid.selectDay(typed, false);
+      this.setValue(typed.toISOString());
     } else if (value === '') {
       this.grid.clearSelection();
       this.setValue(null);
@@ -112,6 +116,7 @@ export class CalendarComponent extends MonthComponent implements ControlValueAcc
       return;
     }
     this.value = date.format(this.patterns[0]) || '';
+    this.inputValue = this.value;
     this.grid.selectDay(moment(value));
   }
 
