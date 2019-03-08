@@ -189,10 +189,12 @@ export class MonthComponent implements OnInit, OnChanges {
   }
 
   /** Selects the day of the given moment. */
-  selectDay(_moment: moment.Moment): void {
+  selectDay(_moment: moment.Moment, emit = true): void {
     this.setDate(_moment);
     this.selected = _moment;
-    this.dayClicked.emit(_moment);
+    if (emit) {
+      this.dayClicked.emit(_moment);
+    }
   }
 
   /** Clears the current selected date*/
@@ -227,5 +229,10 @@ export class MonthComponent implements OnInit, OnChanges {
   /** Sets the current viewed date to today. */
   today(): void {
     this.setDate(moment());
+  }
+
+  /** Sets the current selected date to today. */
+  setToday(): void {
+    this.selectDay(moment());
   }
 }

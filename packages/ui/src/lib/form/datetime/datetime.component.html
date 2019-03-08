@@ -1,7 +1,7 @@
 <div class="ec-datetime-picker">
     <div class="input-group">
-        <input class="input" [value]="calendar.value" (input)="calendar.input($event.target.value)" (focus)="calendarPop.show()"
-            (blur)="calendarPop.hide()" [placeholder]="placeholder">
+        <input class="input" [value]="calendar.inputValue" (input)="calendar.input($event.target.value)"
+            (focus)="calendarPop.show()" (blur)="calendarPop.hide()" [placeholder]="placeholder">
         <div class="input-group__addon">
             <a (click)="calendarPop.toggle()">
                 <ec-icon name="calendar"></ec-icon>

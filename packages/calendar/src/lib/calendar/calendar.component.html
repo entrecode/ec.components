@@ -25,7 +25,6 @@
     fill: currentColor;
   }
 </style>
-
 <div class="ec-calendar">
   <nav class="ec-calendar-controls">
     <a (click)="grid.alter(-1, 'months')" class="btn btn_clear ec-calendar-controls__prev" [class.is-disabled]="!grid.canAlter(-1,'month')">
@@ -34,7 +33,7 @@
       </svg>
     </a>
     <div class="ec-calendar-title">{{grid.formatted}}</div>
-    <a (click)="grid.today()" class="btn btn_clear ec-calendar-controls__current">
+    <a (click)="grid.setToday()" class="btn btn_clear ec-calendar-controls__current">
       <svg class="ixo">
         <use xlink:href="#today"></use>
       </svg>
