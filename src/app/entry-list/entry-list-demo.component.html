@@ -3,7 +3,8 @@
 <!-- <ec-daterange [timespan]="timespan" (spanChanged)="updateFilter($event,entryList)"></ec-daterange> -->
 <!-- 
     <ec-searchbar [listComponent]="entryList" [list]="entryList?.list" property="name"></ec-searchbar> -->
-<ec-entry-list [loader]="loader" (changed)="updateList($event)" #entryList model="muffin" [config]="{sortBy:heatProperty,desc:true,rawFilter:true}">
+<ec-entry-list [loader]="loader" (changed)="updateList($event)" #entryList model="muffin"
+    [config]="{storageKey:'demo-muffins',sortBy:heatProperty,desc:true,rawFilter:true}">
     <div data-ec-list-empty>
         Noch keine Entries vorhanden!!!!!!!!!
     </div>
