@@ -214,6 +214,9 @@
                                 <a href="#setDate">setDate</a>
                             </li>
                             <li>
+                                <a href="#setToday">setToday</a>
+                            </li>
+                            <li>
                                 <a href="#today">today</a>
                             </li>
                         </ul>
@@ -627,7 +630,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="220" class="link-to-prism">packages/calendar/src/lib/calendar/month.component.ts:220</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="222" class="link-to-prism">packages/calendar/src/lib/calendar/month.component.ts:222</a></div>
                             </td>
                         </tr>
 
@@ -709,7 +712,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="211" class="link-to-prism">packages/calendar/src/lib/calendar/month.component.ts:211</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="213" class="link-to-prism">packages/calendar/src/lib/calendar/month.component.ts:213</a></div>
                             </td>
                         </tr>
 
@@ -789,7 +792,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="199" class="link-to-prism">packages/calendar/src/lib/calendar/month.component.ts:199</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="201" class="link-to-prism">packages/calendar/src/lib/calendar/month.component.ts:201</a></div>
                             </td>
                         </tr>
 
@@ -1198,7 +1201,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="204" class="link-to-prism">packages/calendar/src/lib/calendar/month.component.ts:204</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="206" class="link-to-prism">packages/calendar/src/lib/calendar/month.component.ts:206</a></div>
                             </td>
                         </tr>
 
@@ -1517,7 +1520,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>selectDay(_moment: <a href="../[]s/en.html">moment.Moment</a>)</code>
+<code>selectDay(_moment: <a href="../[]s/en.html">moment.Moment</a>, emit)</code>
                     </td>
                 </tr>
 
@@ -1542,6 +1545,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Default value</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -1555,6 +1559,22 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                        </td>
+
+                                                </tr>
+                                                <tr>
+                                                        <td>emit</td>
+                                                        <td>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>true</code>
+                                                        </td>
 
                                                 </tr>
                                         </tbody>
@@ -1652,6 +1672,46 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
+                        <a name="setToday"></a>
+                        <span class="name">
+                            <b>
+                            setToday
+                            </b>
+                            <a href="#setToday"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>setToday()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="235" class="link-to-prism">packages/calendar/src/lib/calendar/month.component.ts:235</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Sets the current selected date to today. </p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
                         <a name="today"></a>
                         <span class="name">
                             <b>
@@ -1670,7 +1730,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="228" class="link-to-prism">packages/calendar/src/lib/calendar/month.component.ts:228</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="230" class="link-to-prism">packages/calendar/src/lib/calendar/month.component.ts:230</a></div>
                             </td>
                         </tr>
 
@@ -2092,10 +2152,12 @@ export class MonthComponent implements OnInit, OnChanges {
   }
 
   /** Selects the day of the given moment. */
-  selectDay(_moment: moment.Moment): void {
+  selectDay(_moment: moment.Moment, emit &#x3D; true): void {
     this.setDate(_moment);
     this.selected &#x3D; _moment;
-    this.dayClicked.emit(_moment);
+    if (emit) {
+      this.dayClicked.emit(_moment);
+    }
   }
 
   /** Clears the current selected date*/
@@ -2130,6 +2192,11 @@ export class MonthComponent implements OnInit, OnChanges {
   /** Sets the current viewed date to today. */
   today(): void {
     this.setDate(moment());
+  }
+
+  /** Sets the current selected date to today. */
+  setToday(): void {
+    this.selectDay(moment());
   }
 }
 </code></pre>
