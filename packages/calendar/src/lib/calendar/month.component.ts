@@ -228,4 +228,9 @@ export class MonthComponent implements OnInit, OnChanges {
   today(): void {
     this.setDate(moment());
   }
+
+  /** Sets the current selected date to today. */
+  setToday(): void {
+    this.selectDay(moment());
+  }
 }

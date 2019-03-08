@@ -72,7 +72,7 @@ export class CalendarComponent extends MonthComponent implements ControlValueAcc
 
   /** Updates the value with the given moment and propagates the change. */
   select(selected) {
-    if (this.value) {
+    if (this.value && selected.hour() === 0 && selected.minute() === 0) {
       const previous = moment(this.value, this.patterns, true);
       selected.hour(previous.hour());
       selected.minute(previous.minute());
