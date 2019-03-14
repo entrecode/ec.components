@@ -220,4 +220,24 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
     }
     return this.group.value;
   }
+
+  /** Returns an Error containing all field validator errors as subErrors.  */
+  getErrors(formComponent: FormComponent<T>, touchedOnly = true): Error {
+    const errs = Object.keys(formComponent.group.controls).reduce((errors, property) => {
+      const control = formComponent.group.get(property);
+      if ((touchedOnly && !control.touched) || !control.errors) {
+        return errors;
+      }
+      return errors.concat({ property, errors: control.errors });
+    }, []);
+    if (!errs.length) {
+      return;
+    }
+    const error: any = new Error('Validierungsfehler');
+    error.subErrors = errs.map(({ property, errors }) => {
+      const label = formComponent.form.getField(property).label || property;
+      return new Error(label + ': ' + Object.values(errors).join(', '));
+    });
+    return error;
+  }
 }
