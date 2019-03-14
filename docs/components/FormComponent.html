@@ -190,6 +190,9 @@
                                 <a href="#editValue">editValue</a>
                             </li>
                             <li>
+                                <a href="#getErrors">getErrors</a>
+                            </li>
+                            <li>
                                 <a href="#getValue">getValue</a>
                             </li>
                             <li>
@@ -1068,6 +1071,94 @@
                             </div>
                             <div class="io-description">
                                 <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getErrors"></a>
+                        <span class="name">
+                            <b>
+                            getErrors
+                            </b>
+                            <a href="#getErrors"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getErrors(formComponent: <a href="../classes/Form.html">FormComponent<T></a>, touchedOnly)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="225" class="link-to-prism">packages/ui/src/lib/form/form.component.ts:225</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Returns an Error containing all field validator errors as subErrors.  </p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>formComponent</td>
+                                                        <td>
+                                                                    <code><a href="../classes/Form.html" target="_self" >FormComponent&lt;T&gt;</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
+
+                                                </tr>
+                                                <tr>
+                                                        <td>touchedOnly</td>
+                                                        <td>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>true</code>
+                                                        </td>
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Error</code>
 
                             </div>
                                 <div class="io-description">
@@ -2029,6 +2120,26 @@ export class FormComponent&lt;T&gt; implements OnChanges, WithLoader, WithNotifi
       return this.group.value[property];
     }
     return this.group.value;
+  }
+
+  /** Returns an Error containing all field validator errors as subErrors.  */
+  getErrors(formComponent: FormComponent&lt;T&gt;, touchedOnly &#x3D; true): Error {
+    const errs &#x3D; Object.keys(formComponent.group.controls).reduce((errors, property) &#x3D;&gt; {
+      const control &#x3D; formComponent.group.get(property);
+      if ((touchedOnly &amp;&amp; !control.touched) || !control.errors) {
+        return errors;
+      }
+      return errors.concat({ property, errors: control.errors });
+    }, []);
+    if (!errs.length) {
+      return;
+    }
+    const error: any &#x3D; new Error(&#x27;Validierungsfehler&#x27;);
+    error.subErrors &#x3D; errs.map(({ property, errors }) &#x3D;&gt; {
+      const label &#x3D; formComponent.form.getField(property).label || property;
+      return new Error(label + &#x27;: &#x27; + Object.values(errors).join(&#x27;, &#x27;));
+    });
+    return error;
   }
 }
 </code></pre>
