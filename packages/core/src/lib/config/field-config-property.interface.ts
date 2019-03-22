@@ -106,6 +106,8 @@ export interface FieldConfigProperty {
   /* hideInList?: boolean; */
   /** is fired when the value changes in a form */
   changed?: (value: any, form: any) => void;
+  /** if true, the field will auto focus after view init */
+  autofocus?: boolean;
   /** wildcard for custom config values */
   [key: string]: any;
 }

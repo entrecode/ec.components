@@ -91,6 +91,10 @@
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
+                                        <a href="#autofocus">autofocus</a>
+                                </li>
+                                <li>
+                                            <span class="modifier">Optional</span>
                                         <a href="#changed">changed</a>
                                 </li>
                                 <li>
@@ -265,7 +269,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">packages/core/src/lib/config/field-config-property.interface.ts:108</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">packages/core/src/lib/config/field-config-property.interface.ts:110</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -315,6 +319,46 @@
                             <tr>
                                 <td class="col-md-4">
                                     <div class="io-description"><p>Any other configuration properties</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="autofocus"></a>
+                                        <span class="name"><b>autofocus</b><a href="#autofocus"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>autofocus:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>if true, the field will auto focus after view init </p>
 </div>
                                 </td>
                             </tr>
@@ -1994,6 +2038,8 @@ export interface FieldConfigProperty {
   /* hideInList?: boolean; */
   /** is fired when the value changes in a form */
   changed?: (value: any, form: any) &#x3D;&gt; void;
+  /** if true, the field will auto focus after view init */
+  autofocus?: boolean;
   /** wildcard for custom config values */
   [key: string]: any;
 }

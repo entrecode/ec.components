@@ -19,13 +19,21 @@ export class ListHeaderComponent implements OnChanges {
   @Input() selection: Selection<any>;
   /** The pop dropdowns that contain the filtering */
   @ViewChildren('filterPop') pops: QueryList<PopComponent>;
-  /** The form that holds the current filter information */
-  @ViewChild('filterForm') filter: FormComponent<any>;
   /** The config for the filter form */
   filterFormConfig: ListConfig<any>;
   filteredField: any;
+  filterForm: FormComponent<any>;
 
   constructor(public listConfig: ListConfigService) {
+  }
+
+  setFilter(field, value) {
+    this.list.setFilter({ [field.property]: value });
+  }
+
+  initFilterForm(filterForm) {
+    // is called when form is ready
+    this.filterForm = filterForm;
   }
 
   ngOnChanges(changes?) {
@@ -40,7 +48,12 @@ export class ListHeaderComponent implements OnChanges {
       if (fieldConfig[property].filterable) {
         return {
           ...fields,
-          [property]: fieldConfig[property]
+          [property]: {
+            ...fieldConfig[property],
+            required: false,
+            readOnly: false,
+            autofocus: true
+          }
         };
       }
       return fields;
@@ -55,39 +68,39 @@ export class ListHeaderComponent implements OnChanges {
   /** opens the given filter pop and closes all others */
   public editFilter(pop, field) {
     if (this.filteredField) {
-      this.removeFilter(this.filteredField.property);
       if (this.filteredField.property === field.property) {
         pop.hide();
         return;
       }
+      this.clearFilter();
     }
     if (!field) {
       return;
     }
+    field.autofocus = true;
     field.nestedCrudConfig = {
       ...field.nestedCrudConfig,
       methods: ['get'],
     };
-    field.config = {
-      ...field.config,
-      required: false,
-      readOnly: true
-    };
+    // patch current filter value to control
+    this.filterForm.group.get(field.property).patchValue(this.list.getFilterValue(field.property));
     this.filteredField = field;
     pop.show();
   }
 
-  toggledFilterPop(active) {
-    if (!active) {
-      this.removeFilter(this.filteredField.property);
-      delete this.filteredField;
+  clearFilter() {
+    if (!this.filteredField || !this.list.isFiltered(this.filteredField.property)) {
+      return;
     }
+    this.filterForm.group.get(this.filteredField.property).reset();
+    this.list.clearFilter();
+    delete this.filteredField;
   }
 
-  /** Resets the fields filter */
-  public removeFilter(property) {
-    const control = this.filter.group.get(property);
-    control.reset();
+  toggledFilterPop(active) {
+    if (!active) {
+      this.clearFilter();
+    }
   }
 
   /** Returns the fields label */

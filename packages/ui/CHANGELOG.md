@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.40.0](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.39.3...@ec.components/ui@0.40.0) (2019-03-22)
+
+
+### Bug Fixes
+
+* EDITOR-289 list-header filter inputs autofocus ([9915311](https://github.com/entrecode/ec.components/commit/9915311))
+
+
+### Features
+
+* DefaultEntryInputComponent#autofocus ([cea52fc](https://github.com/entrecode/ec.components/commit/cea52fc))
+* Field#autofocus + InputComponent#focus ([8f56fb2](https://github.com/entrecode/ec.components/commit/8f56fb2))
+
+
+
+
+
 ## [0.39.3](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.39.2...@ec.components/ui@0.39.3) (2019-03-14)
 
 

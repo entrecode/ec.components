@@ -174,6 +174,9 @@
                                 <a href="#componentInstance">componentInstance</a>
                             </li>
                             <li>
+                                <a href="#focusEvent">focusEvent</a>
+                            </li>
+                            <li>
                                 <a href="#propagateChange">propagateChange</a>
                             </li>
                             <li>
@@ -220,6 +223,9 @@
                             </li>
                             <li>
                                 <a href="#connectControl">connectControl</a>
+                            </li>
+                            <li>
+                                <a href="#focus">focus</a>
                             </li>
                             <li>
                                 <a href="#init">init</a>
@@ -1378,7 +1384,51 @@
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in InputComponent:96</div>
+                                    <div class="io-line">Defined in InputComponent:104</div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="focus"></a>
+                        <span class="name">
+                            <b>
+                            focus
+                            </b>
+                            <a href="#focus"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>focus()</code>
+                    </td>
+                </tr>
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from     <code><a href="../components/InputComponent.html" target="_self" >InputComponent</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in InputComponent:56</div>
                             </td>
                         </tr>
 
@@ -1422,7 +1472,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in InputComponent:54</div>
+                                    <div class="io-line">Defined in InputComponent:62</div>
                             </td>
                         </tr>
 
@@ -1466,7 +1516,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in InputComponent:48</div>
+                                    <div class="io-line">Defined in InputComponent:50</div>
                             </td>
                         </tr>
 
@@ -1537,7 +1587,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in InputComponent:121</div>
+                                    <div class="io-line">Defined in InputComponent:129</div>
                             </td>
                         </tr>
 
@@ -1610,7 +1660,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in InputComponent:126</div>
+                                    <div class="io-line">Defined in InputComponent:134</div>
                             </td>
                         </tr>
 
@@ -1654,7 +1704,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in InputComponent:110</div>
+                                    <div class="io-line">Defined in InputComponent:118</div>
                             </td>
                         </tr>
 
@@ -2011,6 +2061,50 @@ You can access a form&#39;s InputComponents via FormComponent#inputs </p>
             <tbody>
                 <tr>
                     <td class="col-md-4">
+                        <a name="focusEvent"></a>
+                        <span class="name">
+                            <b>
+                            focusEvent</b>
+                            <a href="#focusEvent"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="../miscellaneous/variables.html#en" target="_self" >EventEmitter&lt;boolean&gt;</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new EventEmitter()</code>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from     <code><a href="../components/InputComponent.html" target="_self" >InputComponent</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in InputComponent:48</div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Emitter to focus the input field </p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
                         <a name="propagateChange"></a>
                         <span class="name">
                             <b>
@@ -2032,7 +2126,7 @@ You can access a form&#39;s InputComponents via FormComponent#inputs </p>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in InputComponent:117</div>
+                                    <div class="io-line">Defined in InputComponent:125</div>
                             </td>
                         </tr>
 
@@ -2217,9 +2311,9 @@ export class EntryListSelectComponent extends InputComponent implements ControlV
 
     /** Called when the model changes */
     writeValue(value: any) {
-        this.value &#x3D; value;
+        this.value &#x3D; value || [];
         if (this.selection) {
-            this.selection.replaceWith(value);
+            this.selection.replaceWith(this.value);
         }
     }
 

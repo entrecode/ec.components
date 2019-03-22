@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.45.5](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.45.4...@ec.components/data@0.45.5) (2019-03-22)
+
+
+### Bug Fixes
+
+* entry-list-select undefined array ([bc9bb53](https://github.com/entrecode/ec.components/commit/bc9bb53))
+* pass readOnly + config to asset-select ([b7d33e2](https://github.com/entrecode/ec.components/commit/b7d33e2))
+
+
+
+
+
 ## [0.45.4](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.45.3...@ec.components/data@0.45.4) (2019-03-14)
 
 
