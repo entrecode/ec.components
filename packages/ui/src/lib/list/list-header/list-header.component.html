@@ -1,10 +1,11 @@
 <div *ngIf="filterFormConfig">
-  <ec-form (changed)="list?.setFilter($event?.group?.value)" [config]="filterFormConfig" [value]="list?.config?.filter"
-    [empty]="true" #filterForm></ec-form>
+  <ec-form [config]="filterFormConfig" [value]="list?.config?.filter" [empty]="true" #filterForm
+    (ready)="initFilterForm($event)" [lazy]="true"></ec-form>
   <ec-pop (toggle)="toggledFilterPop($event)" #filterPop>
     <div *ngIf="filteredField" class="btn-group">
-      <ec-input class="has-width-full" [field]="filteredField" [group]="filterForm?.group" [debounce]="200"
-        *ngIf="filterPop.active" #filterInput></ec-input>
+      <ec-input (changed)="setFilter(filteredField, $event)" [lazy]="true" class="has-width-full"
+        [field]="filteredField" [group]="filterForm?.group" [debounce]="200" *ngIf="filterPop.active&&filterForm?.group"
+        #filterInput></ec-input>
       <a class="btn btn_clear" (click)="filterPop.hide()">
         <ec-icon name="close-x-big"></ec-icon>
       </a>
