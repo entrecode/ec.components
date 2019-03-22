@@ -15,6 +15,7 @@ import { SymbolModule } from '../symbol/symbol.module';
 import { DefaultInputComponent } from './default-input/default-input.component';
 import { DefaultOutputComponent } from './default-output/default-output.component';
 import { CalendarModule } from '@ec.components/calendar';
+import { UtilityModule } from '../utility/utility.module';
 
 export const formModuleConfig = {
   entryComponents: [
@@ -38,9 +39,11 @@ export const formModuleConfig = {
     LoaderModule,
     IconModule,
     SymbolModule,
-    CalendarModule
+    CalendarModule,
+    UtilityModule
   ],
   exports: [
+    UtilityModule,
     ReactiveFormsModule,
     IoModule,
     FormComponent,
