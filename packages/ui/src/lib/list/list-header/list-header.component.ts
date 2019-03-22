@@ -90,6 +90,7 @@ export class ListHeaderComponent implements OnChanges {
 
   clearFilter() {
     if (!this.filteredField || !this.list.isFiltered(this.filteredField.property)) {
+      delete this.filteredField;
       return;
     }
     this.filterForm.group.get(this.filteredField.property).reset();
