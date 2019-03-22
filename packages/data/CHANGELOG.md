@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.45.6](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.45.5...@ec.components/data@0.45.6) (2019-03-22)
+
+
+### Bug Fixes
+
+* model config is now only requested once ([a542c43](https://github.com/entrecode/ec.components/commit/a542c43))
+* now using sdk 0.18.7 ([ac3bb86](https://github.com/entrecode/ec.components/commit/ac3bb86))
+
+
+
+
+
 ## [0.45.5](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.45.4...@ec.components/data@0.45.5) (2019-03-22)
 
 
