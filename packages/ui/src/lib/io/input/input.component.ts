@@ -53,9 +53,9 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
     }
   }
 
-  focus() {
+  focus(focus = true) {
     if (this.componentInstance && this.componentInstance.focusEvent) {
-      this.componentInstance.focusEvent.emit(true);
+      this.componentInstance.focusEvent.emit(focus);
     }
   }
 

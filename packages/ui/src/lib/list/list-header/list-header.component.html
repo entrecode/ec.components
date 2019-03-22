@@ -3,6 +3,17 @@
     (ready)="initFilterForm($event)" [lazy]="true"></ec-form>
   <ec-pop (toggle)="toggledFilterPop($event)" #filterPop>
     <div *ngIf="filteredField" class="btn-group">
+      <nav tabindex="0" class="dropdown dropdown-left">
+        <span class="btn btn_clear">
+          <ec-icon name="find">{{fieldLabel(filteredField)}}</ec-icon>
+        </span>
+        <ul class="dropdown-options">
+          <li [class.is-active]="filteredField.property===field.property" class="dropdown-option"
+            *ngFor="let field of list?.filterableFields()">
+            <a (click)="editFilter(filterPop, field.property)">{{fieldLabel(field)}}</a>
+          </li>
+        </ul>
+      </nav>
       <ec-input (changed)="setFilter(filteredField, $event)" [lazy]="true" class="has-width-full"
         [field]="filteredField" [group]="filterForm?.group" [debounce]="200" *ngIf="filterPop.active&&filterForm?.group"
         #filterInput></ec-input>
@@ -24,7 +35,7 @@
       [class.is-sorted-desc]="list.isSorted(field.property, true)"
       [class.is-sorted-asc]="list.isSorted(field.property, false)">
       <!-- [class.is-filter-active]="filterPop.active"-->
-      <a (click)="editFilter(filterPop, field)" class="is-filterable-control" *ngIf="field.filterable">
+      <a (click)="editFilter(filterPop, field.property)" class="is-filterable-control" *ngIf="field.filterable">
         <ec-icon name="find"></ec-icon>
       </a>
 

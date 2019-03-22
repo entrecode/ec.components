@@ -12,7 +12,7 @@ import moment from 'moment-es6';
   <ec-calendar #calendar></ec-calendar>
 
   <h2>Month Heatmap</h2>
-  <ec-heatmap [timestamps]="timestamps"></ec-heatmap>
+  <ec-heatmap (spanChanged)="changedSpan($event)" [timestamps]="timestamps"></ec-heatmap>
 
   <h2>Month</h2>
   <p>Just month grid</p>
@@ -31,5 +31,8 @@ export class DatetimeDemoComponent {
       moment(),
       moment().add(1, 'day'),
     ].map(d => d.toISOString());
+  }
+  changedSpan(span) {
+    console.log('span', span.map(m => m.toISOString()));
   }
 }

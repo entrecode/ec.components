@@ -25,9 +25,9 @@ export class DefaultInputComponent implements AfterViewInit, Focus {
     }
   }
 
-  focus() {
+  focus(focus = true) {
     setTimeout(() => {
-      this.focusEvent.emit(true);
+      this.focusEvent.emit(focus);
     }, 100);
   }
 }

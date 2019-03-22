@@ -43,48 +43,38 @@ export class ListHeaderComponent implements OnChanges {
     if (!this.list || !this.list.config || !this.list.config.fields) {
       return;
     }
-    const fieldConfig = this.list.config.fields;
-    const filterableFields = Object.keys(fieldConfig).reduce((fields, property) => {
-      if (fieldConfig[property].filterable) {
-        return {
-          ...fields,
-          [property]: {
-            ...fieldConfig[property],
-            required: false,
-            readOnly: false,
-            autofocus: true
-          }
-        };
-      }
-      return fields;
-    }, {});
-
     this.filterFormConfig = {
       ...this.list.config,
-      fields: filterableFields
+      fields: this.list.filterableFields().reduce((fields, field) => {
+        return {
+          ...fields,
+          [field.property]: {
+            ...this.list.config.fields[field.property],
+            required: false,
+            readOnly: false,
+            autofocus: true,
+            nestedCrudConfig: {
+              ...field.nestedCrudConfig,
+              methods: ['get'],
+            },
+          }
+        };
+      }, {})
     };
   }
 
   /** opens the given filter pop and closes all others */
-  public editFilter(pop, field) {
+  public editFilter(pop, property) {
     if (this.filteredField) {
-      if (this.filteredField.property === field.property) {
+      if (this.filteredField.property === property) {
         pop.hide();
         return;
       }
       this.clearFilter();
     }
-    if (!field) {
-      return;
-    }
-    field.autofocus = true;
-    field.nestedCrudConfig = {
-      ...field.nestedCrudConfig,
-      methods: ['get'],
-    };
     // patch current filter value to control
-    this.filterForm.group.get(field.property).patchValue(this.list.getFilterValue(field.property));
-    this.filteredField = field;
+    this.filterForm.group.get(property).patchValue(this.list.getFilterValue(property));
+    this.filteredField = this.filterForm.form.getField(property);
     pop.show();
   }
 

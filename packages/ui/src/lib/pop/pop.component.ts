@@ -43,8 +43,7 @@ export class PopComponent {
     if (
       this.hideOnClickOutside &&
       this.active &&
-      this.clickEvent &&
-      $event !== this.clickEvent && // to ensure the show event wont hide immediately
+      (!this.clickEvent || $event !== this.clickEvent) && // to ensure the show event wont hide immediately
       this.elementRef &&
       this.isOutside($event.target)) {
       this.hide();
