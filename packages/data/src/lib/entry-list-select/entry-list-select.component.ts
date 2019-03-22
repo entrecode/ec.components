@@ -131,9 +131,9 @@ export class EntryListSelectComponent extends InputComponent implements ControlV
 
     /** Called when the model changes */
     writeValue(value: any) {
-        this.value = value;
+        this.value = value || [];
         if (this.selection) {
-            this.selection.replaceWith(value);
+            this.selection.replaceWith(this.value);
         }
     }
 
