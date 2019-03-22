@@ -22,6 +22,8 @@ export class ModelConfigService extends Config {
     'modified'
   ];
 
+  modelConfig = {};
+
   /** Injects CrudService and SdkService. */
   constructor(private crud: CrudService,
     private sdk: SdkService,
@@ -119,7 +121,8 @@ export class ModelConfigService extends Config {
    * Utilizes PublicAPI#getFieldConfig + TypeConfigService#get.
    * This config is meant to deliver the default behaviour when nothing else is configured. */
   getFieldConfig(model: string): Promise<FieldConfig> {
-    return this.sdk.api.getFieldConfig(model).then((fieldConfig: fields) => {
+    this.modelConfig[model] = this.modelConfig[model] || this.sdk.api.getFieldConfig(model);
+    return this.modelConfig[model].then((fieldConfig: fields) => {
       const merged = {};
       Object.assign(merged, this.getSystemFields());
       Object.keys(fieldConfig).map(property => fieldConfig[property])
