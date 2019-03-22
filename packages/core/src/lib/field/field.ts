@@ -9,6 +9,8 @@ export class Field implements FieldConfigProperty {
   property?: string;
   /** If true, the field will not be visible anywhere */
   hidden?: boolean;
+  /** If true, the field will autofocus after view init */
+  autofocus?: boolean;
   /** The field's type */
   type?: string;
   /** The field's view */

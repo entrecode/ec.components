@@ -44,10 +44,18 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
   componentInstance: InputComponent;
   /** The current value of the input. Needs to be saved for the case the component is not yet loaded */
   value: any;
+  /** Emitter to focus the input field */
+  focusEvent: EventEmitter<boolean> = new EventEmitter();
 
   ngOnChanges(changes?) {
     if (!this.lazy || !this.componentInstance || changes.field) {
       this.init();
+    }
+  }
+
+  focus() {
+    if (this.componentInstance && this.componentInstance.focusEvent) {
+      this.componentInstance.focusEvent.emit(true);
     }
   }
 
