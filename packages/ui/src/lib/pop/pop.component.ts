@@ -7,7 +7,6 @@ import {
   Input,
   Output,
   HostBinding,
-  OnInit,
   HostListener,
   ElementRef,
   ChangeDetectionStrategy,
@@ -33,6 +32,8 @@ export class PopComponent {
   @Input() type: string;
   /** If set to true, the pop will hide when a click happens outside the pop. */
   @Input() hideOnClickOutside = false;
+  /** If set to false, esc will not close the pop */
+  @Input() hideOnEscape = true;
   // tslint:disable-next-line:no-output-rename
   @Output('toggle') _toggle: EventEmitter<boolean> = new EventEmitter();
 
@@ -75,7 +76,9 @@ export class PopComponent {
   public show(e?) {
     this.active = true;
     this.activated = true;
-    this.popService.stack.add(this);
+    if (this.hideOnEscape) {
+      this.popService.stack.add(this);
+    }
     if (e) {
       this.clickEvent = e;
     } else if (this.hideOnClickOutside) {
@@ -87,7 +90,9 @@ export class PopComponent {
 
   /** Hides the pop. Sets active false and removes pop from popService.stack */
   public hide() {
-    this.popService.stack.remove(this);
+    if (this.hideOnEscape) {
+      this.popService.stack.remove(this);
+    }
     this.active = false;
     this._toggle.emit(this.active);
     this.cdr.markForCheck();
