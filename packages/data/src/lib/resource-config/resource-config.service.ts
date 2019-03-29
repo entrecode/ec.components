@@ -4,7 +4,7 @@ import Resource from 'ec.sdk/lib/resources/Resource';
 import { CrudConfig } from '../crud/crud-config.interface';
 import { AdminEntryInputComponent } from '../entry-form/admin-entry-input.component';
 import { TypeConfigService } from '../model-config/type-config.service';
-import { TagSelectComponent } from '../files/tag-select/tag-select.component';
+// import { TagSelectComponent } from '../files/tag-select/tag-select.component';
 
 @Injectable()
 /** Contains default configurations for all kinds of resources. Used by ResourceList and ResourceForm.  */
@@ -324,7 +324,7 @@ export class ResourceConfig {
         },
         tags: {
           ...this.tagsField(this.symbol.resolve('asset.field.label.tags')),
-          input: TagSelectComponent,
+          // input: TagSelectComponent,
           config: {
             label: 'tag',
             fields: { tag: {} }
@@ -399,7 +399,7 @@ export class ResourceConfig {
 
         tags: {
           ...this.tagsField(this.symbol.resolve('asset.field.label.tags')),
-          input: TagSelectComponent,
+          // input: TagSelectComponent,
           filterOperator: 'any'
         },
         created: this.created(this.symbol.resolve('field.label.created'), this.symbol),

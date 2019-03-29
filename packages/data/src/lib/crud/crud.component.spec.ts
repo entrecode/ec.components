@@ -3,10 +3,10 @@ import { dataModuleConfig } from '../data.module';
 import { CrudComponent } from './crud.component';
 
 describe('CrudComponent', () => {
-  /* let component: CrudComponent<any>;
-  let fixture: ComponentFixture<CrudComponent<any>>; */
+  let component: CrudComponent<any>;
+  let fixture: ComponentFixture<CrudComponent<any>>;
 
-  /* beforeEach(async(() => {
+  beforeEach(async(() => {
     TestBed.configureTestingModule(dataModuleConfig).compileComponents();
   }));
 
@@ -18,5 +18,5 @@ describe('CrudComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  }); */
+  });
 });
