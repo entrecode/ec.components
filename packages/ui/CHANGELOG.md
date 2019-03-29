@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.41.3](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.41.2...@ec.components/ui@0.41.3) (2019-03-29)
+
+
+### Bug Fixes
+
+* set form true in list header ([7664cb2](https://github.com/entrecode/ec.components/commit/7664cb2))
+* set immutable false for filtering ([8ab4791](https://github.com/entrecode/ec.components/commit/8ab4791))
+
+
+
+
+
 ## [0.41.2](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.41.1...@ec.components/ui@0.41.2) (2019-03-29)
 
 
