@@ -65,7 +65,8 @@
             <p class="comment">
                 <p>The SdkService exposes all instances of the ec.sdk APIs.
 To be able to use it, you have to provide an environment like this in your module&#39;s providers:</p>
-<div><pre class="line-numbers"><code class="language-json"> {
+<p><code>json
+ {
    provide: &#39;environment&#39;,
    useValue: {
      datamanagerID: &#39;83cc6374&#39;,
@@ -75,12 +76,14 @@ To be able to use it, you have to provide an environment like this in your modul
      // the init option will prevent automatically initing the sdk.
      // you have to call sdk.init() yourself. This can be useful if your environment is not known before runtime
    }
- }</code></pre></div><p>The environment is optional, defaulting to live. See
-<a href="https://entrecode.github.io/ec.sdk/#environment">https://entrecode.github.io/ec.sdk/#environment</a> for more info. The clientID is only optional if
-you do not plan to use authentication. See <a href="https://entrecode.github.io/ec.sdk/#environment">https://entrecode.github.io/ec.sdk/#environment</a> =&gt;
+ }</code>
+The environment is optional, defaulting to live. See
+https://entrecode.github.io/ec.sdk/#environment for more info. The clientID is only optional if
+you do not plan to use authentication. See https://entrecode.github.io/ec.sdk/#environment =&gt;
 setClientID.</p>
 
             </p>
+
 
 
             <section>
@@ -243,399 +246,403 @@ setClientID.</p>
 
             <section>
     
-        <h3 id="methods">
-            Methods
-        </h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="getAccount"></a>
-                        <span class="name">
-                            <b>
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAccount"></a>
+                    <span class="name">
+                        <b>
                             getAccount
-                            </b>
-                            <a href="#getAccount"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
+                        </b>
+                        <a href="#getAccount"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
 <code>getAccount(api)</code>
-                    </td>
-                </tr>
+                </td>
+            </tr>
 
 
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="135" class="link-to-prism">packages/data/src/lib/sdk/sdk.service.ts:135</a></div>
-                            </td>
-                        </tr>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="135"
+                            class="link-to-prism">packages/data/src/lib/sdk/sdk.service.ts:135</a></div>
+                </td>
+            </tr>
 
 
-                <tr>
-                    <td class="col-md-4">
-                            <div class="io-description"><p>Returns the current account. Works for all apis </p>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Returns the current account. Works for all apis </p>
 </div>
 
-                            <div class="io-description">
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                <td>Optional</td>
-                                                    <td>Default value</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>api</td>
-                                                    
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                        <td>
-                                                                <code>this.accounts</code>
-                                                        </td>
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>api</td>
 
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                            <div>
-                            </div>
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    <td>
+                                        No
+                                    </td>
 
-                            </div>
-                                <div class="io-description">
-                                    
-                                </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="getSchema"></a>
-                        <span class="name">
-                            <b>
+                                    <td>
+                                        <code>this.accounts</code>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getSchema"></a>
+                    <span class="name">
+                        <b>
                             getSchema
-                            </b>
-                            <a href="#getSchema"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
+                        </b>
+                        <a href="#getSchema"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
 <code>getSchema(model, api)</code>
-                    </td>
-                </tr>
+                </td>
+            </tr>
 
 
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">packages/data/src/lib/sdk/sdk.service.ts:124</a></div>
-                            </td>
-                        </tr>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="124"
+                            class="link-to-prism">packages/data/src/lib/sdk/sdk.service.ts:124</a></div>
+                </td>
+            </tr>
 
 
-                <tr>
-                    <td class="col-md-4">
-                            <div class="io-description"><p>Returns a schema for the given model. Caches the promise. </p>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Returns a schema for the given model. Caches the promise. </p>
 </div>
 
-                            <div class="io-description">
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                <td>Optional</td>
-                                                    <td>Default value</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>model</td>
-                                                    
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                        <td>
-                                                        </td>
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>model</td>
 
-                                                </tr>
-                                                <tr>
-                                                        <td>api</td>
-                                                    
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                        <td>
-                                                                <code>this._api</code>
-                                                        </td>
+                                    <td>
+                                        No
+                                    </td>
 
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                            <div>
-                            </div>
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    <td>
+                                    </td>
 
-                            </div>
-                                <div class="io-description">
-                                    
-                                </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="init"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Public</span>
+                                </tr>
+                                <tr>
+                                    <td>api</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>this._api</code>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="init"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
                             init
-                            </b>
-                            <a href="#init"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                            <span class="modifier-icon icon ion-ios-reset"></span>
-                        <code>init(environment)</code>
-                    </td>
-                </tr>
+                        </b>
+                        <a href="#init"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>init(environment)</code>
+                </td>
+            </tr>
 
 
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">packages/data/src/lib/sdk/sdk.service.ts:88</a></div>
-                            </td>
-                        </tr>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="88"
+                            class="link-to-prism">packages/data/src/lib/sdk/sdk.service.ts:88</a></div>
+                </td>
+            </tr>
 
 
-                <tr>
-                    <td class="col-md-4">
-                            <div class="io-description"><p>Creates all the API instances and determines the current user. </p>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Creates all the API instances and determines the current user. </p>
 </div>
 
-                            <div class="io-description">
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                <td>Optional</td>
-                                                    <td>Default value</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>environment</td>
-                                                    
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                        <td>
-                                                                <code>this.environment</code>
-                                                        </td>
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>environment</td>
 
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                            <div>
-                            </div>
-                            <div class="io-description">
-                                <b>Returns : </b>    <code>Promise&lt;AccountResource&gt;</code>
+                                    <td>
+                                        No
+                                    </td>
 
-                            </div>
-                                <div class="io-description">
-                                    
-                                </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="noApi"></a>
-                        <span class="name">
-                            <b>
+                                    <td>
+                                        <code>this.environment</code>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>Promise&lt;AccountResource&gt;</code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="noApi"></a>
+                    <span class="name">
+                        <b>
                             noApi
-                            </b>
-                            <a href="#noApi"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
+                        </b>
+                        <a href="#noApi"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
 <code>noApi(api: Core)</code>
-                    </td>
-                </tr>
+                </td>
+            </tr>
 
 
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="147" class="link-to-prism">packages/data/src/lib/sdk/sdk.service.ts:147</a></div>
-                            </td>
-                        </tr>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="147"
+                            class="link-to-prism">packages/data/src/lib/sdk/sdk.service.ts:147</a></div>
+                </td>
+            </tr>
 
 
-                <tr>
-                    <td class="col-md-4">
+            <tr>
+                <td class="col-md-4">
 
-                            <div class="io-description">
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                                    <td>Default value</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>api</td>
-                                                        <td>
-                                                                    <code>Core</code>
-                                                        </td>
-                                                    
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                        <td>
-                                                                <code>this._api</code>
-                                                        </td>
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>api</td>
+                                    <td>
+                                            <code>Core</code>
+                                    </td>
 
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                            <div>
-                            </div>
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    <td>
+                                        No
+                                    </td>
 
-                            </div>
-                                <div class="io-description">
-                                    
-                                </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="useDatamanager"></a>
-                        <span class="name">
-                            <b>
+                                    <td>
+                                        <code>this._api</code>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="useDatamanager"></a>
+                    <span class="name">
+                        <b>
                             useDatamanager
-                            </b>
-                            <a href="#useDatamanager"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
+                        </b>
+                        <a href="#useDatamanager"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
 <code>useDatamanager(shortID: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, environment)</code>
-                    </td>
-                </tr>
+                </td>
+            </tr>
 
 
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">packages/data/src/lib/sdk/sdk.service.ts:111</a></div>
-                            </td>
-                        </tr>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="111"
+                            class="link-to-prism">packages/data/src/lib/sdk/sdk.service.ts:111</a></div>
+                </td>
+            </tr>
 
 
-                <tr>
-                    <td class="col-md-4">
-                            <div class="io-description"><p>Uses the given datamanager and optional short id to init api.
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Uses the given datamanager and optional short id to init api.
 If you set &quot;datamanagerID&quot; in your environment, this method is called automatically. </p>
 </div>
 
-                            <div class="io-description">
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                                    <td>Default value</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>shortID</td>
-                                                        <td>
-                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                                        </td>
-                                                    
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                        <td>
-                                                        </td>
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>shortID</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
 
-                                                </tr>
-                                                <tr>
-                                                        <td>environment</td>
-                                                        <td>
-                                                        </td>
-                                                    
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                        <td>
-                                                                <code>this.environment</code>
-                                                        </td>
+                                    <td>
+                                        No
+                                    </td>
 
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                            <div>
-                            </div>
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    <td>
+                                    </td>
 
-                            </div>
-                                <div class="io-description">
-                                    
-                                </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                                </tr>
+                                <tr>
+                                    <td>environment</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>this.environment</code>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </section>
-
             <section>
     
         <h3 id="inputs">
@@ -723,7 +730,7 @@ If you set &quot;datamanagerID&quot; in your environment, this method is called 
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
                         </td>
                     </tr>
@@ -874,8 +881,10 @@ If you set &quot;datamanagerID&quot; in your environment, this method is called 
                 <tr>
                     <td class="col-md-4">
                         <div class="io-description"><p>Promise that should be used before using any auth related stuff:</p>
-<div><pre class="line-numbers"><code class="language-ts">   * this.sdk.ready.then(account =&gt; {});
-   *</code></pre></div></div>
+<p><code>ts
+   * this.sdk.ready.then(account =&gt; {});
+   *</code></p>
+</div>
                     </td>
                 </tr>
 
@@ -934,7 +943,7 @@ If you set &quot;datamanagerID&quot; in your environment, this method is called 
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
 
                         </td>
                     </tr>
@@ -1125,7 +1134,7 @@ If you set &quot;datamanagerID&quot; in your environment, this method is called 
                                 <div>
                                 </div>
                                 <div class="io-description">
-                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                                 </div>
                         </td>
