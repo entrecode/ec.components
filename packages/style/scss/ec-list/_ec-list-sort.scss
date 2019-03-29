@@ -1,0 +1,54 @@
+//scss-lint:disable NestingDepth
+
+.sorting-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: rem(8);
+    color: getColor(text);
+    font-size: 0.875em;
+  
+    &.is-sorted-asc {
+      .sorting-option-indicator {
+        &::after {
+          border-top-color: getColor(text);
+        }
+      }
+    }
+  
+    &.is-sorted-desc {
+      .sorting-option-indicator {
+        &::before {
+          border-bottom-color: getColor(text);
+        }
+      }
+    }
+  }
+  
+  .sorting-option-indicator {
+    margin-right: rem(8);
+    height: rem(12);
+    position: relative;
+    width: rem(12);
+    flex-grow: 0;
+  
+    &::after,
+    &::before {
+      content: '';
+      position: absolute;
+      border: rem(4) solid transparent;
+      left: 50%;
+      margin-left: rem(-4);
+    }
+  
+    &::before {
+      border-bottom-color: getColor(text, lightest);
+      top: rem(-4);
+    }
+  
+    &::after {
+      border-top-color: getColor(text, lightest);
+      bottom: rem(-4);
+    }
+  }
+  

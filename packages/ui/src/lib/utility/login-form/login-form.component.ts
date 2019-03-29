@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { throwError } from 'rxjs';
 import { LoaderComponent } from '../../loader/loader.component';
 import { WithLoader } from '../../loader/with-loader.interface';
 import { SymbolService } from '../../symbol/symbol.service';
@@ -60,7 +60,7 @@ export class LoginFormComponent implements OnInit, WithLoader {
     this.errorMessage = err.message;
     this.form.get('password').setValue('');
     this.error.emit(err);
-    Observable.throw(err);
+    throwError(err);
   }
 
   /** Method that is meant to be overwritten by a subclass to communicate with an API. */

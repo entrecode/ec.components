@@ -985,7 +985,7 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, EventEmitter, Input, OnInit, Output } from &#x27;@angular/core&#x27;;
 import { FormBuilder, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
-import { Observable } from &#x27;rxjs&#x27;;
+import { throwError } from &#x27;rxjs&#x27;;
 import { LoaderComponent } from &#x27;../../loader/loader.component&#x27;;
 import { WithLoader } from &#x27;../../loader/with-loader.interface&#x27;;
 import { SymbolService } from &#x27;../../symbol/symbol.service&#x27;;
@@ -1045,7 +1045,7 @@ export class LoginFormComponent implements OnInit, WithLoader {
     this.errorMessage &#x3D; err.message;
     this.form.get(&#x27;password&#x27;).setValue(&#x27;&#x27;);
     this.error.emit(err);
-    Observable.throw(err);
+    throwError(err);
   }
 
   /** Method that is meant to be overwritten by a subclass to communicate with an API. */

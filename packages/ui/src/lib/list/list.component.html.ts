@@ -1,5 +1,5 @@
 export const listTemplate = `<div class="ec-list">
-  <ec-list-header [list]="list" [selection]="selection" *ngIf="showHeader()"></ec-list-header>
+  <ec-list-header [list]="list" [selection]="selection"></ec-list-header>
   <div class="ec-list-body">
     <div class="ec-list-group" *ngFor="let group of list?.groups">
       <div class="ec-list-group-header" *ngIf="group.value" (click)="selection?.toggleAll(listItems?.items)">

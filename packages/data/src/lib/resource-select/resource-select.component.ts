@@ -1,6 +1,6 @@
 import {
     ChangeDetectorRef, Component, ElementRef, forwardRef,
-    Input, OnChanges, OnInit, ViewChild, ViewEncapsulation
+    Input, OnChanges, OnInit, ViewChild, ViewEncapsulation, EventEmitter
 } from '@angular/core';
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Form, Item } from '@ec.components/core';
@@ -61,6 +61,8 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
     @ViewChild(ResourceListPopComponent) resourceListPop: ResourceListPopComponent;
     /** The config of the dropdown pop */
     dropdownConfig: CrudConfig<Resource>;
+    /** The event that focuses the input */
+    @Input() focusEvent: EventEmitter<boolean> = new EventEmitter();
 
     constructor(
         protected resourceConfig: ResourceConfig,
@@ -70,6 +72,11 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
         public cdr: ChangeDetectorRef
     ) {
         super(elementRef, cdr);
+        this.focusEvent.subscribe((focus) => {
+            if (focus) {
+                this.togglePop(null, true);
+            }
+        });
     }
 
     ngOnInit() {
@@ -80,7 +87,7 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
         this.init();
     }
 
-    togglePop(e) {
+    togglePop(e?, noFocus = false) {
         if (this.dropdown && this.config && !this.config.disableSearchbar) {
             this.dropdown.show(e);
         } else if (this.resourceListPop && this.config && !this.config.disableListPop) {
@@ -88,7 +95,9 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
         } else if (this.resourcePop && !this.config.disableCreatePop) {
             this.resourcePop.show();
         }
-        this.focusSearchbar();
+        if (!noFocus) {
+            this.focusSearchbar();
+        }
     }
 
     defaultPlaceholder() {
@@ -102,7 +111,9 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
     useConfig(config: CrudConfig<Resource> = {}) {
         super.useConfig(config);
         this.dropdownConfig = Object.assign({}, this.config, {
-            fields: {
+            disableHeader: true,
+            defaultFilter: false,
+            fields: this.config.dropdownFields || {
                 [this.config.label]: Object.assign({}, this.config.fields[this.config.label])
             }
         });
@@ -202,8 +213,8 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
 
     focusSearchbar() {
         if ((!this.resourceListPop || !this.resourceListPop.active) &&
-            (this.searchbar && this.searchbar.focusEvent)) {
-            this.searchbar.focusEvent.emit(true);
+            (this.focusEvent)) {
+            this.focusEvent.emit(true);
         }
     }
 }

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.22.3](https://github.com/entrecode/ec.components/compare/@ec.components/style@0.22.2...@ec.components/style@0.22.3) (2019-03-29)
+
+
+### Bug Fixes
+
+* improved input focus behaviour ([35022a6](https://github.com/entrecode/ec.components/commit/35022a6))
+* keep list header filter form immutable ([6f53065](https://github.com/entrecode/ec.components/commit/6f53065))
+
+
+
+
+
 ## [0.22.2](https://github.com/entrecode/ec.components/compare/@ec.components/style@0.22.1...@ec.components/style@0.22.2) (2019-02-15)
 
 

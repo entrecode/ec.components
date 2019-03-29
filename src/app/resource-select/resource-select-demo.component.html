@@ -1,4 +1,5 @@
 <h2>Resource Select</h2>
+<!-- <h3>Datamanager</h3>
 <ec-resource-select relation="dataManager" [api]="sdk?.datamanager" [(ngModel)]="multi"
     [config]="{methods:['put','get']}">
 </ec-resource-select>
@@ -21,8 +22,11 @@
 <ec-resource-select relation="model" [api]="datamanager" *ngIf="datamanager"
     [config]="{disableCreatePop:true,disableRemove:true}">
 
-</ec-resource-select>
+</ec-resource-select> -->
 <!-- <h3>Asset Tags</h3>
 <ec-resource-select relation="tags" [api]="sdk.api"></ec-resource-select> -->
 <h3>Tag Select</h3>
 <ec-tag-select></ec-tag-select>
+<h3>Asset Select</h3>
+<ec-resource-select relation="asset" [api]="datamanager" *ngIf="datamanager"
+    [config]="assetSelectConfig">

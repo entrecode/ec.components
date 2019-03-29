@@ -4,12 +4,14 @@ import Resource from 'ec.sdk/lib/resources/Resource';
 import { CrudConfig } from '../crud/crud-config.interface';
 import { AdminEntryInputComponent } from '../entry-form/admin-entry-input.component';
 import { TypeConfigService } from '../model-config/type-config.service';
+// import { TagSelectComponent } from '../files/tag-select/tag-select.component';
 
 @Injectable()
 /** Contains default configurations for all kinds of resources. Used by ResourceList and ResourceForm.  */
 export class ResourceConfig {
   _config = {
     dataManager: {
+      defaultFilter: 'title',
       identifier: 'dataManagerID',
       identifierPattern: this.uuid(),
       label: 'title',
@@ -50,6 +52,7 @@ export class ResourceConfig {
       }
     },
     model: {
+      defaultFilter: 'title',
       identifier: 'modelID',
       identifierPattern: this.uuid(),
       label: 'title',
@@ -109,6 +112,7 @@ export class ResourceConfig {
       identifier: 'accountID',
       identifierPattern: this.uuid(),
       label: 'email',
+      defaultFilter: 'email',
       permissions: {
         get: 'acc:list',
         put: 'acc:edit:<accountID>'
@@ -160,6 +164,7 @@ export class ResourceConfig {
     dmAccount: {
       identifier: 'accountID',
       identifierPattern: this.uuid(),
+      defaultFilter: 'email',
       label: 'email',
       permissions: {
         get: 'acc:list',
@@ -173,6 +178,7 @@ export class ResourceConfig {
           hideInList: true,
         },
         title: {
+          view: 'string',
           label: 'Title',
           filterable: true,
           hideInList: true
@@ -204,6 +210,7 @@ export class ResourceConfig {
     template: {
       identifier: 'templateID',
       identifierPattern: this.uuid(),
+      defaultFilter: 'name',
       label: 'name',
       permissions: {
         post: 'dm-template-create',
@@ -225,6 +232,8 @@ export class ResourceConfig {
       }
     },
     app: {
+      defaultFilter: 'title',
+      label: 'title',
       identifier: 'appID',
       identifierPattern: this.uuid(),
       permissions: {
@@ -250,6 +259,8 @@ export class ResourceConfig {
     platform: {
       identifier: 'platformID',
       identifierPattern: this.uuid(),
+      label: 'title',
+      defaultFilter: 'title',
       fields: {
         title: {
           label: this.symbol.resolve('platform.field.label.platform'),
@@ -271,6 +282,8 @@ export class ResourceConfig {
     deployment: {},
     asset: { // old ec.asset
       identifier: 'assetID',
+      label: 'title',
+      defaultFilter: 'title',
       identifierPattern: this.uuid(),
       fields: {
         thumb: {
@@ -309,13 +322,23 @@ export class ResourceConfig {
           form: false,
           immutable: true
         },
-        tags: this.tagsField(this.symbol.resolve('asset.field.label.tags')),
+        tags: {
+          ...this.tagsField(this.symbol.resolve('asset.field.label.tags')),
+          // input: TagSelectComponent,
+          config: {
+            label: 'tag',
+            fields: { tag: {} }
+          },
+          filterOperator: 'any',
+          filterable: true
+        },
         created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
       }
     },
     tags: {
       identifier: 'tag',
       label: 'tag',
+      defaultFilter: 'tag',
       fields: {
         tag: {
           view: 'string',
@@ -335,6 +358,7 @@ export class ResourceConfig {
       identifier: 'assetID',
       identifierPattern: this.uuid(),
       label: 'title',
+      defaultFilter: 'title',
       fields: {
         thumb: {
           form: false,
@@ -372,7 +396,12 @@ export class ResourceConfig {
           form: false,
           immutable: true
         },
-        tags: this.tagsField(this.symbol.resolve('asset.field.label.tags')),
+
+        tags: {
+          ...this.tagsField(this.symbol.resolve('asset.field.label.tags')),
+          // input: TagSelectComponent,
+          filterOperator: 'any'
+        },
         created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
       }
     },
@@ -380,6 +409,7 @@ export class ResourceConfig {
     assetGroup: {
       identifier: 'assetGroupID',
       label: 'assetGroupID',
+      defaultFilter: 'assetGroupID',
       fields: {
         assetGroupID: {
           label: this.symbol.resolve('asset.field.label.assetGroupID'),
@@ -418,6 +448,7 @@ export class ResourceConfig {
       identifier: 'assetID',
       identifierPattern: this.base64uuid(),
       label: 'title',
+      defaultFilter: 'title',
       fields: {
         file: {
           label: this.symbol.resolve('dmAsset.field.label.file'),
@@ -477,16 +508,24 @@ export class ResourceConfig {
           form: false
         },
         tags: {
-          label: this.symbol.resolve('dmAsset.field.label.tags'),
+          label: 'tag',
           view: 'tags',
           filterOperator: 'any',
-          hideInList: true
+          hideInList: true,
+          identifier: 'tag',
+          methods: ['get'],
+          defaultFilter: '',
+          disableHeader: true,
+          disableListPop: true,
+          disableCreatePop: true,
         },
         created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
       }
     },
     dmClient: {
       identifier: 'clientID',
+      label: 'clientID',
+      defaultFilter: 'clientID',
       fields: {
         clientID: {
           label: this.symbol.resolve('client.field.label.clientID'),
@@ -505,6 +544,7 @@ export class ResourceConfig {
       identifier: 'roleID',
       identifierPattern: this.uuid(),
       label: 'name',
+      defaultFilter: 'name',
       fields: {
         name: {
           label: this.symbol.resolve('field.label.name'),
@@ -574,10 +614,12 @@ export class ResourceConfig {
       identifier: 'groupID',
       identifierPattern: this.uuid(),
       label: 'name',
+      defaultFilter: 'name',
       fields: {
         name: {
           label: this.symbol.resolve('field.label.name'),
-          view: 'string'
+          view: 'string',
+          filterable: true
         },
         permissions: {
           view: 'tags',
@@ -591,9 +633,11 @@ export class ResourceConfig {
       identifier: 'invite',
       identifierPattern: this.uuid(),
       label: 'invite',
+      defaultFilter: 'invite',
       fields: {
         invite: {
-          view: 'string'
+          view: 'string',
+          filterable: true
         },
         permissions: {
           view: 'tags'
@@ -610,12 +654,18 @@ export class ResourceConfig {
   constructor(private symbol: SymbolService, private typeConfig: TypeConfigService) { }
   /** Returns the CrudConfig for the given relation name. */
   get(relationName: string): CrudConfig<Resource> {
-    if (!this.config[relationName]) {
+    const resolved = relationName.split('.').reduce((position: Object, key) => {
+      if (!position) {
+        return;
+      }
+      return position[key];
+    }, this.config);
+    if (!resolved) {
       console.warn(`${relationName} could not be found in the resource-config.
       Use one of ${Object.keys(this.config)}`);
       return {};
     } // TODO enrich fields with type with type-config?
-    return this.config[relationName];
+    return resolved;
   }
 
   set(relationName: string, config: CrudConfig<Resource>): ResourceConfig {

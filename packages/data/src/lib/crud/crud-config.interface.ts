@@ -1,9 +1,11 @@
-import { ListConfig } from '@ec.components/core';
+import { ListConfig, FieldConfig } from '@ec.components/core';
 import { NotificationsComponent, LoaderComponent } from '@ec.components/ui';
 import { FileOptions } from '../files/file.service';
 
 /** The CrudConfig allows a quick customization of an ec-crud component. */
 export interface CrudConfig<T> extends ListConfig<T> {
+  /** The fields that are used in select dropdowns, defaults to label field only. */
+  dropdownFields?: FieldConfig;
   /** The label for one entity */
   singularLabel?: string;
   /** The label for multiple entities */

@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.46.1](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.46.0...@ec.components/data@0.46.1) (2019-03-29)
+
+
+### Bug Fixes
+
+* circular dependency in resource-config ([d8ad11d](https://github.com/entrecode/ec.components/commit/d8ad11d))
+
+
+
+
+
+# [0.46.0](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.45.6...@ec.components/data@0.46.0) (2019-03-29)
+
+
+### Bug Fixes
+
+* improved input focus behaviour ([35022a6](https://github.com/entrecode/ec.components/commit/35022a6))
+* keep list header filter form immutable ([6f53065](https://github.com/entrecode/ec.components/commit/6f53065))
+* no default filter for tag-select ([dd83e20](https://github.com/entrecode/ec.components/commit/dd83e20))
+* remove model config cache after sdk fix ([2e97a10](https://github.com/entrecode/ec.components/commit/2e97a10))
+* resource-pop hasMethod could throw error ([7f99383](https://github.com/entrecode/ec.components/commit/7f99383))
+
+
+### Features
+
+* added defaultFilter setting to ListConfig ([d8c67be](https://github.com/entrecode/ec.components/commit/d8c67be))
+* added dropdownFields option to CrudConfig ([0256008](https://github.com/entrecode/ec.components/commit/0256008))
+
+
+
+
+
 ## [0.45.6](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.45.5...@ec.components/data@0.45.6) (2019-03-22)
 
 

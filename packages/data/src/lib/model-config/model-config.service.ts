@@ -22,7 +22,6 @@ export class ModelConfigService extends Config {
     'modified'
   ];
 
-  modelConfig = {};
 
   /** Injects CrudService and SdkService. */
   constructor(private crud: CrudService,
@@ -121,8 +120,7 @@ export class ModelConfigService extends Config {
    * Utilizes PublicAPI#getFieldConfig + TypeConfigService#get.
    * This config is meant to deliver the default behaviour when nothing else is configured. */
   getFieldConfig(model: string): Promise<FieldConfig> {
-    this.modelConfig[model] = this.modelConfig[model] || this.sdk.api.getFieldConfig(model);
-    return this.modelConfig[model].then((fieldConfig: fields) => {
+    return this.sdk.api.getFieldConfig(model).then((fieldConfig: fields) => {
       const merged = {};
       Object.assign(merged, this.getSystemFields());
       Object.keys(fieldConfig).map(property => fieldConfig[property])
@@ -191,12 +189,14 @@ export class ModelConfigService extends Config {
    * - customFieldConfig: any custom field config that is merged on top of the other two.
    * This enables the developer to either customize at a global scale to target all lists/forms,
    * or just specific components. */
-  generateConfig(model: string, customFieldConfig?: FieldConfig): Promise<CrudConfig<EntryResource>> {
+  async generateConfig(model: string, customFieldConfig?: FieldConfig): Promise<CrudConfig<EntryResource>> {
+    const lightModel = await this.getLightModel(model);
     // first step: merge global model config with default entry config
     const modelConfig = Object.assign(this.get(model) || {}, {
       identifier: 'id',
       identifierPattern: /^[0-9A-Za-z-_]{7,14}$/, // shortID pattern
       label: '_entryTitle',
+      defaultFilter: lightModel.titleField,
       onSave: (item: Item<EntryResource>, value) => this.crud.save(model, item.getBody(), value)
     });
     return this.getFieldConfig(model)

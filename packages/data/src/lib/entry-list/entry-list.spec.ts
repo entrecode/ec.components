@@ -1,6 +1,6 @@
 
-describe('EntryList', () => {
-  it('should construct', () => {
+// describe('EntryList', () => {
+  // it('should construct', () => {
     /*const s = sinon.stub(Datamanager.api(), 'model');
     s.returns({
       entryList: (config) => {
@@ -15,5 +15,5 @@ describe('EntryList', () => {
     /*return muffins['load']().then(() => {
       expect(muffins.items.length).toBe(muffinList.entries.length);
     });*/
-  });
-});
+  // });
+// });

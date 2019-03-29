@@ -42,8 +42,6 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   protected group: FormGroup;
   /** The form control that is used */
   protected control: FormControl;
-  /** The formControl that is used. */
-  @Input() formControl: FormControl;
   /** The value that should be prefilled */
   @Input() value: Array<EntryResource>;
   /** The model to pick from, alternative to field with model property set. */
@@ -133,7 +131,8 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   useConfig(config: CrudConfig<EntryResource> = {}): Promise<CrudConfig<EntryResource>> {
     super.useConfig(config);
     this.dropdownConfig = Object.assign({}, this.config, {
-      fields: {
+      disableHeader: true,
+      fields: this.config.dropdownFields || {
         [this.config.label]: Object.assign({}, (this.config.fields || {})[this.config.label]),
         _modified: { hideInList: true }
       }

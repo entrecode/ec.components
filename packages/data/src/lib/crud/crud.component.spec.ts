@@ -7,8 +7,7 @@ describe('CrudComponent', () => {
   let fixture: ComponentFixture<CrudComponent<any>>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule(dataModuleConfig)
-      .compileComponents();
+    TestBed.configureTestingModule(dataModuleConfig).compileComponents();
   }));
 
   beforeEach(() => {
