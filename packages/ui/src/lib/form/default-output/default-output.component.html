@@ -60,7 +60,7 @@
   </div>
 
   <a *ngSwitchCase="'link'" (click)="item?.action(field.property, $event)" [ngClass]="field.class">
-    {{item?.display(field.property)}}
+    <span>{{item?.display(field.property)}}</span>
     <ec-icon *ngIf="field.icon" [name]="field.icon"></ec-icon>
   </a>
 

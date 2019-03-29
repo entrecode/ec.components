@@ -1,23 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Form, Field } from '@ec.components/core';
-import {
-  AbstractControl,
-  FormControl,
-  FormGroup,
-  ValidationErrors,
-  ValidatorFn,
-  Validators
-} from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { SymbolService } from '../symbol/symbol.service';
 import { FormComponent } from '../form/form.component';
 
 /** This service is the interface between Angular Forms and ec.components core classes. */
 @Injectable()
 export class FormService {
-
-  constructor(
-    public symbol: SymbolService
-  ) { }
+  constructor(public symbol: SymbolService) {}
 
   /** Returns true if the field should be included in the form.
    * Decides based on field config values form, edit and create */
@@ -34,7 +24,8 @@ export class FormService {
   /** Initializes the form group from the form fields*/
   public getGroup(form: Form<any>) {
     const controls = {};
-    form.fields.filter((field) => this.shouldBePartOfForm(field, form))
+    form.fields
+      .filter((field) => this.shouldBePartOfForm(field, form))
       .forEach((field) => {
         const validators = this.getValidators(field);
         controls[field.property] = new FormControl(form.getValue(field.property), validators);
@@ -73,10 +64,15 @@ export class FormService {
       const error = field.validate(control.value, field);
       if (error) {
         return {
-          custom: error
+          custom: error,
         };
       }
     };
+  }
+
+  /** Returns true if the field should be readOnly, depending on its config and the form state. */
+  isReadOnly(field, form) {
+    return field.immutable || (field.readOnly && form && !!form.getBody());
   }
 
   /** Returns label for given form (e.g. Edit label) */
@@ -87,5 +83,4 @@ export class FormService {
     return `${this.symbol.resolve('resource.' + (form.form.isEditing() ? 'edit' : 'create'))}
     ${label} ${form.form.display() ? `"${form.form.display()}"` : ''}`;
   }
-
 }
