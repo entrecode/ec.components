@@ -51,70 +51,51 @@
 <p>The following breaking changes need to be considered when updating the components with angular 7. This update guide is just for @ec.components and angular 7. A whole angular 7 update guide can be found <a href="https://update.angular.io/">here</a>.
 Angular 7 is used since the following versions:</p>
 <ul>
-<li>@ec.components/ace@0.6.0</li>
-<li>@ec.components/calendar@0.2.0</li>
-<li>@ec.components/core@0.19.0</li>
-<li>@ec.components/data@0.42.0</li>
-<li>@ec.components/location@0.18.0</li>
-<li>@ec.components/medium-editor@0.4.0</li>
-<li>@ec.components/style@0.21.0</li>
-<li>@ec.components/tinymce@0.5.0</li>
-<li>@ec.components/ui@0.36.0</li>
+<li>@<a href="mailto:ec.components/ace@0.6.0">ec.components/ace@0.6.0</a></li>
+<li>@<a href="mailto:ec.components/calendar@0.2.0">ec.components/calendar@0.2.0</a></li>
+<li>@<a href="mailto:ec.components/core@0.19.0">ec.components/core@0.19.0</a></li>
+<li>@<a href="mailto:ec.components/data@0.42.0">ec.components/data@0.42.0</a></li>
+<li>@<a href="mailto:ec.components/location@0.18.0">ec.components/location@0.18.0</a></li>
+<li>@<a href="mailto:ec.components/medium-editor@0.4.0">ec.components/medium-editor@0.4.0</a></li>
+<li>@<a href="mailto:ec.components/style@0.21.0">ec.components/style@0.21.0</a></li>
+<li>@<a href="mailto:ec.components/tinymce@0.5.0">ec.components/tinymce@0.5.0</a></li>
+<li>@<a href="mailto:ec.components/ui@0.36.0">ec.components/ui@0.36.0</a></li>
 </ul>
 <p>It is recommended you use the most recent versions. <em>Also add @ec.components/calendar to your package.json if you use datetime pipe or calendars / date pickers</em>.</p>
 <h2 id="1-all-imports-now-go-from-the-packages-roots">1. All imports now go from the packages roots</h2>
 <p>old:</p>
-<p><code>ts
-import { EntryForm } from &#39;@ec.components/data/src/entry-form/entry-form.component&#39;</code></p>
-<p>new:</p>
-<p><code>ts
-import { EntryForm } from &#39;@ec.components/data&#39;</code></p>
-<p>=&gt; make sure you never import anything from src, since this folder no longer exists in the package</p>
+<div><pre class="line-numbers"><code class="language-ts">import { EntryForm } from &#39;&#64;ec.components/data/src/entry-form/entry-form.component&#39;</code></pre></div><p>new:</p>
+<div><pre class="line-numbers"><code class="language-ts">import { EntryForm } from &#39;&#64;ec.components/data&#39;</code></pre></div><p>=&gt; make sure you never import anything from src, since this folder no longer exists in the package</p>
 <h3 id="pro-tip">PRO TIP</h3>
 <p>Use VSCode &quot;Search: Replace in Files&quot; with the following Regex:</p>
 <ul>
-<li>Search: <em>&#39;@ec.components/(\w+).*&#39;</em></li>
-<li>Replace: <em>&#39;@ec.components/$1&#39;</em></li>
+<li>Search: <a href="mailto:_&#39;@ec.components">_&#39;@ec.components</a>/(\w+).*&#39;_</li>
+<li>Replace: <a href="mailto:_&#39;@ec.components">_&#39;@ec.components</a>/$1&#39;_</li>
 </ul>
 <h2 id="2-scss-import-changes">2. SCSS import changes</h2>
 <p>old:</p>
-<p><code>scss
-@import &#39;~@ec.components/style/components&#39;;</code></p>
-<p>new:</p>
-<p><code>scss
-@import &#39;~@ec.components/style/scss/components&#39;;</code></p>
-<h2 id="3-mediummodule-has-been-renamed-to-mediumeditormodule">3. MediumModule has been renamed to MediumEditorModule</h2>
+<div><pre class="line-numbers"><code class="language-scss">&#64;import &#39;~&#64;ec.components/style/components&#39;;</code></pre></div><p>new:</p>
+<div><pre class="line-numbers"><code class="language-scss">&#64;import &#39;~&#64;ec.components/style/scss/components&#39;;</code></pre></div><h2 id="3-mediummodule-has-been-renamed-to-mediumeditormodule">3. MediumModule has been renamed to MediumEditorModule</h2>
 <h2 id="4-build-errors">4. Build Errors</h2>
 <p>If you are getting this:</p>
-<p><code>sh
-ERROR in ./node_modules/eventsource/lib/eventsource.js
+<div><pre class="line-numbers"><code class="language-sh">ERROR in ./node_modules/eventsource/lib/eventsource.js
 Module not found: Error: Can&#39;t resolve &#39;http&#39; in &#39;/your-project/node_modules/eventsource/lib&#39;
 ERROR in ./node_modules/eventsource/lib/eventsource.js
 Module not found: Error: Can&#39;t resolve &#39;https&#39; in &#39;your-project/node_modules/eventsource/lib&#39;
 ERROR in ./node_modules/jsonpath-plus/lib/jsonpath.js
-Module not found: Error: Can&#39;t resolve &#39;vm&#39; in &#39;your-project/node_modules/jsonpath-plus/lib&#39;</code></p>
-<p>To fix it, you need a custom webpack config. Eject is not available any more so we need to use angular-builders:</p>
-<p><code>sh
-npm i @angular-builders/custom-webpack @angular-builders/dev-server @angular-devkit/build-angular --save-dev</code></p>
-<p>The following versions were used in this guide:</p>
-<p><code>sh
-&quot;@angular-builders/custom-webpack&quot;: &quot;^7.2.0&quot;,
-&quot;@angular-builders/dev-server&quot;: &quot;^7.2.1&quot;,
-&quot;@angular-devkit/build-angular&quot;: &quot;^0.12.3&quot;,</code></p>
-<p>In angular.json make following changes -</p>
-<p><code>json
-&quot;architect&quot;: {
+Module not found: Error: Can&#39;t resolve &#39;vm&#39; in &#39;your-project/node_modules/jsonpath-plus/lib&#39;</code></pre></div><p>To fix it, you need a custom webpack config. Eject is not available any more so we need to use angular-builders:</p>
+<div><pre class="line-numbers"><code class="language-sh">npm i &#64;angular-builders/custom-webpack &#64;angular-builders/dev-server &#64;angular-devkit/build-angular --save-dev</code></pre></div><p>The following versions were used in this guide:</p>
+<div><pre class="line-numbers"><code class="language-sh">&quot;&#64;angular-builders/custom-webpack&quot;: &quot;^7.2.0&quot;,
+&quot;&#64;angular-builders/dev-server&quot;: &quot;^7.2.1&quot;,
+&quot;&#64;angular-devkit/build-angular&quot;: &quot;^0.12.3&quot;,</code></pre></div><p>In angular.json make following changes -</p>
+<div><pre class="line-numbers"><code class="language-json">&quot;architect&quot;: {
     &quot;build&quot;: {
-        &quot;builder&quot;: &quot;@angular-builders/custom-webpack:browser&quot;,
+        &quot;builder&quot;: &quot;&#64;angular-builders/custom-webpack:browser&quot;,
         &quot;options&quot;: {
-        &quot;customWebpackConfig&quot;: {&quot;path&quot;: &quot;./custom-webpack.config.js&quot;},</code></p>
-<p>Notice change in builder and new option customWebpackConfig. Also change</p>
-<p><code>json
-&quot;serve&quot;: {
-    &quot;builder&quot;: &quot;@angular-builders/dev-server:generic&quot;,</code></p>
-<p>Now create a <em>custom-webpack.config.js</em> file in the root directory, containing:</p>
-<p><code>js
-const path = require(&quot;path&quot;);
+        &quot;customWebpackConfig&quot;: {&quot;path&quot;: &quot;./custom-webpack.config.js&quot;},</code></pre></div><p>Notice change in builder and new option customWebpackConfig. Also change</p>
+<div><pre class="line-numbers"><code class="language-json">&quot;serve&quot;: {
+    &quot;builder&quot;: &quot;&#64;angular-builders/dev-server:generic&quot;,</code></pre></div><p>Now create a <em>custom-webpack.config.js</em> file in the root directory, containing:</p>
+<div><pre class="line-numbers"><code class="language-js">const path = require(&quot;path&quot;);
 module.exports = {
     node: {
         crypto: &#39;empty&#39;,
@@ -122,8 +103,7 @@ module.exports = {
         http: &#39;empty&#39;,
         https: &#39;empty&#39;,
     }
-};</code></p>
-<p>Check <a href="https://stackoverflow.com/questions/39187556/angular-cli-where-is-webpack-config-js-file-new-angular6-does-not-support-ng-e">this</a> for more info.</p>
+};</code></pre></div><p>Check <a href="https://stackoverflow.com/questions/39187556/angular-cli-where-is-webpack-config-js-file-new-angular6-does-not-support-ng-e">this</a> for more info.</p>
 <h2 id="other-problems-you-might-run-into">Other Problems you might run into</h2>
 <ul>
 <li><a href="https://stackoverflow.com/questions/38892771/cant-bind-to-ngmodel-since-it-isnt-a-known-property-of-input">Can&#39;t bind to &#39;ngModel&#39; since it isn&#39;t a known property of &#39;input&#39;</a></li>

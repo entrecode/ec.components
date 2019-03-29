@@ -187,13 +187,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/AceModule.html" data-type="entity-link">AceModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-AceModule-b00f35ad9a886f025cda759287300e14"' : 'data-target="#xs-components-links-module-AceModule-b00f35ad9a886f025cda759287300e14"' }>
+                                            'data-target="#components-links-module-AceModule-470a9a47ee517e8959536a772dfa644a"' : 'data-target="#xs-components-links-module-AceModule-470a9a47ee517e8959536a772dfa644a"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AceModule-b00f35ad9a886f025cda759287300e14"' :
-                                            'id="xs-components-links-module-AceModule-b00f35ad9a886f025cda759287300e14"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-AceModule-470a9a47ee517e8959536a772dfa644a"' :
+                                            'id="xs-components-links-module-AceModule-470a9a47ee517e8959536a772dfa644a"' }>
                                             <li class="link">
                                                 <a href="components/AceComponent.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">AceComponent</a>

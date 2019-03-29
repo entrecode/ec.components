@@ -65,22 +65,19 @@
             <p class="comment">
                 <p>The SdkService exposes all instances of the ec.sdk APIs.
 To be able to use it, you have to provide an environment like this in your module&#39;s providers:</p>
-<p><code>json
- {
+<div><pre class="line-numbers"><code class="language-json"> {
    provide: &quot;environment&quot;,
    useValue: {
      datamanagerID: &quot;83cc6374&quot;,
      environment: &quot;stage&quot;,
      clientID: &quot;rest&quot;
    }
- }</code>
-The environment is optional, defaulting to live. See
-https://entrecode.github.io/ec.sdk/#environment for more info. The clientID is only optional if
-you do not plan to use authentication. See https://entrecode.github.io/ec.sdk/#environment =&gt;
+ }</code></pre></div><p>The environment is optional, defaulting to live. See
+<a href="https://entrecode.github.io/ec.sdk/#environment">https://entrecode.github.io/ec.sdk/#environment</a> for more info. The clientID is only optional if
+you do not plan to use authentication. See <a href="https://entrecode.github.io/ec.sdk/#environment">https://entrecode.github.io/ec.sdk/#environment</a> =&gt;
 setClientID.</p>
 
             </p>
-
 
 
             <section>
@@ -175,7 +172,7 @@ setClientID.</p>
                                                         <td>resourceConfig</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../injectables/ResourceConfig.html" target="_self" >ResourceConfig</a></code>
+                                                                    <code><a href="../injectables/ResourceConfig.html" target="_self" >ResourceConfig</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -187,7 +184,7 @@ setClientID.</p>
                                                         <td>sdk</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../injectables/SdkService.html" target="_self" >SdkService</a></code>
+                                                                    <code><a href="../injectables/SdkService.html" target="_self" >SdkService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -206,857 +203,847 @@ setClientID.</p>
 
             <section>
     
-    <h3 id="methods">
-        Methods
-    </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="checkPermission"></a>
-                    <span class="name">
-                        <b>
+        <h3 id="methods">
+            Methods
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="checkPermission"></a>
+                        <span class="name">
+                            <b>
                             checkPermission
-                        </b>
-                        <a href="#checkPermission"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
+                            </b>
+                            <a href="#checkPermission"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
 <code>checkPermission(permission: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, api?)</code>
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="67"
-                            class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:67</a></div>
-                </td>
-            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:67</a></div>
+                            </td>
+                        </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>checks given public permission for given api, defaults to this.sdk.api. Also works as ec user </p>
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>checks given public permission for given api, defaults to this.sdk.api. Also works as ec user </p>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>permission</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>permission</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
 
-                                    <td>
-                                        No
-                                    </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>api</td>
+                                                        <td>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            Yes
+                                                    </td>
+                                                    
 
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
-                                </tr>
-                                <tr>
-                                    <td>api</td>
-                                    <td>
-                                    </td>
-
-                                    <td>
-                                        Yes
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="getAccount"></a>
-                    <span class="name">
-                        <b>
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getAccount"></a>
+                        <span class="name">
+                            <b>
                             getAccount
-                        </b>
-                        <a href="#getAccount"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
+                            </b>
+                            <a href="#getAccount"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
 <code>getAccount(api)</code>
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="58"
-                            class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:58</a></div>
-                </td>
-            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:58</a></div>
+                            </td>
+                        </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Returns the current account. Works for all apis </p>
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Returns the current account. Works for all apis </p>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Optional</td>
-                                    <td>Default value</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>api</td>
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>api</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>this.sdk.api</code>
+                                                        </td>
 
-                                    <td>
-                                        No
-                                    </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
-                                    <td>
-                                        <code>this.sdk.api</code>
-                                    </td>
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="getAllowedModelMethods"></a>
-                    <span class="name">
-                        <b>
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getAllowedModelMethods"></a>
+                        <span class="name">
+                            <b>
                             getAllowedModelMethods
-                        </b>
-                        <a href="#getAllowedModelMethods"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
+                            </b>
+                            <a href="#getAllowedModelMethods"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
 <code>getAllowedModelMethods(model: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, methods?: string[])</code>
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="113"
-                            class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:113</a></div>
-                </td>
-            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="113" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:113</a></div>
+                            </td>
+                        </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Returns an array of all allowed methods for the given relation </p>
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Returns an array of all allowed methods for the given relation </p>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>model</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>model</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
 
-                                    <td>
-                                        No
-                                    </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>methods</td>
+                                                        <td>
+                                                                    <code>string[]</code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            Yes
+                                                    </td>
+                                                    
 
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Promise&lt;string[]&gt;</code>
 
-                                </tr>
-                                <tr>
-                                    <td>methods</td>
-                                    <td>
-                                            <code>string[]</code>
-                                    </td>
-
-                                    <td>
-                                        Yes
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Promise&lt;string[]&gt;</code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="getAllowedResourceMethods"></a>
-                    <span class="name">
-                        <b>
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getAllowedResourceMethods"></a>
+                        <span class="name">
+                            <b>
                             getAllowedResourceMethods
-                        </b>
-                        <a href="#getAllowedResourceMethods"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
+                            </b>
+                            <a href="#getAllowedResourceMethods"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
 <code>getAllowedResourceMethods(relation: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, variables: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank">Object</a>, methods?: string[], api?: Core)</code>
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="82"
-                            class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:82</a></div>
-                </td>
-            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:82</a></div>
+                            </td>
+                        </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Returns only the allowed methods for a given relation. Uses the permissions config option from resource-config. </p>
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Returns only the allowed methods for a given relation. Uses the permissions config option from resource-config. </p>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                    <td>Default value</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>relation</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>relation</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
 
-                                    <td>
-                                        No
-                                    </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>variables</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank" >Object</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>{}</code>
+                                                        </td>
 
-                                    <td>
-                                    </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>methods</td>
+                                                        <td>
+                                                                    <code>string[]</code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            Yes
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
 
-                                </tr>
-                                <tr>
-                                    <td>variables</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank" >Object</a></code>
-                                    </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>api</td>
+                                                        <td>
+                                                                    <code>Core</code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            Yes
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
 
-                                    <td>
-                                        No
-                                    </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Promise&lt;string[]&gt;</code>
 
-                                    <td>
-                                        <code>{}</code>
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <td>methods</td>
-                                    <td>
-                                            <code>string[]</code>
-                                    </td>
-
-                                    <td>
-                                        Yes
-                                    </td>
-
-                                    <td>
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <td>api</td>
-                                    <td>
-                                            <code>Core</code>
-                                    </td>
-
-                                    <td>
-                                        Yes
-                                    </td>
-
-                                    <td>
-                                    </td>
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Promise&lt;string[]&gt;</code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="getApi"></a>
-                    <span class="name">
-                        <b>
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getApi"></a>
+                        <span class="name">
+                            <b>
                             getApi
-                        </b>
-                        <a href="#getApi"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
+                            </b>
+                            <a href="#getApi"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
 <code>getApi(email: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="157"
-                            class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:157</a></div>
-                </td>
-            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="157" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:157</a></div>
+                            </td>
+                        </tr>
 
 
-            <tr>
-                <td class="col-md-4">
+                <tr>
+                    <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>email</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>email</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
 
-                                    <td>
-                                        No
-                                    </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="login"></a>
-                    <span class="name">
-                        <b>
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="login"></a>
+                        <span class="name">
+                            <b>
                             login
-                        </b>
-                        <a href="#login"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
+                            </b>
+                            <a href="#login"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
 <code>login(undefined, api?)</code>
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="31"
-                            class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:31</a></div>
-                </td>
-            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:31</a></div>
+                            </td>
+                        </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Generic login that works with both public and admin API. </p>
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Generic login that works with both public and admin API. </p>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
 
-                                    <td>
-                                        No
-                                    </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>api</td>
+                                                    
+                                                    <td>
+                                                            Yes
+                                                    </td>
+                                                    
 
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
-                                </tr>
-                                <tr>
-                                    <td>api</td>
-
-                                    <td>
-                                        Yes
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="logout"></a>
-                    <span class="name">
-                        <b>
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="logout"></a>
+                        <span class="name">
+                            <b>
                             logout
-                        </b>
-                        <a href="#logout"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
+                            </b>
+                            <a href="#logout"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
 <code>logout(api?)</code>
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="147"
-                            class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:147</a></div>
-                </td>
-            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="147" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:147</a></div>
+                            </td>
+                        </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Generic logout that works with both public and admin API. </p>
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Generic logout that works with both public and admin API. </p>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>api</td>
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>api</td>
+                                                    
+                                                    <td>
+                                                            Yes
+                                                    </td>
+                                                    
 
-                                    <td>
-                                        Yes
-                                    </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="noClientID"></a>
-                    <span class="name">
-                        <b>
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="noClientID"></a>
+                        <span class="name">
+                            <b>
                             noClientID
-                        </b>
-                        <a href="#noClientID"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
+                            </b>
+                            <a href="#noClientID"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
 <code>noClientID()</code>
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="171"
-                            class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:171</a></div>
-                </td>
-            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="171" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:171</a></div>
+                            </td>
+                        </tr>
 
 
-            <tr>
-                <td class="col-md-4">
+                <tr>
+                    <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="resetPassword"></a>
-                    <span class="name">
-                        <b>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="resetPassword"></a>
+                        <span class="name">
+                            <b>
                             resetPassword
-                        </b>
-                        <a href="#resetPassword"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
+                            </b>
+                            <a href="#resetPassword"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
 <code>resetPassword(email, api?)</code>
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="135"
-                            class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:135</a></div>
-                </td>
-            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="135" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:135</a></div>
+                            </td>
+                        </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Generic password reset that works with both public and admin API. </p>
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Generic password reset that works with both public and admin API. </p>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>email</td>
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>email</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
 
-                                    <td>
-                                        No
-                                    </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>api</td>
+                                                    
+                                                    <td>
+                                                            Yes
+                                                    </td>
+                                                    
 
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
-                                </tr>
-                                <tr>
-                                    <td>api</td>
-
-                                    <td>
-                                        Yes
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="resolveVariables"></a>
-                    <span class="name">
-                        <b>
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="resolveVariables"></a>
+                        <span class="name">
+                            <b>
                             resolveVariables
-                        </b>
-                        <a href="#resolveVariables"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
+                            </b>
+                            <a href="#resolveVariables"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
 <code>resolveVariables(string: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, variables: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank">Object</a>)</code>
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="74"
-                            class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:74</a></div>
-                </td>
-            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:74</a></div>
+                            </td>
+                        </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>replaces all variables by values in a string </p>
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>replaces all variables by values in a string </p>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>string</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>string</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
 
-                                    <td>
-                                        No
-                                    </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>variables</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank" >Object</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
 
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
-                                </tr>
-                                <tr>
-                                    <td>variables</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank" >Object</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="signup"></a>
-                    <span class="name">
-                        <b>
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="signup"></a>
+                        <span class="name">
+                            <b>
                             signup
-                        </b>
-                        <a href="#signup"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
+                            </b>
+                            <a href="#signup"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
 <code>signup(undefined, api?)</code>
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="45"
-                            class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:45</a></div>
-                </td>
-            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:45</a></div>
+                            </td>
+                        </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Generic Signup, works for accounts API and PublicAPI </p>
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Generic Signup, works for accounts API and PublicAPI </p>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
 
-                                    <td>
-                                        No
-                                    </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>api</td>
+                                                    
+                                                    <td>
+                                                            Yes
+                                                    </td>
+                                                    
 
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
-                                </tr>
-                                <tr>
-                                    <td>api</td>
-
-                                    <td>
-                                        Yes
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 </section>
+
 
     </div>
 

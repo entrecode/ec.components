@@ -47,7 +47,7 @@
 
 
 
-<h1 id="eccomponents">ec.components</h1>
+<h1 id="ec-components">ec.components</h1>
 <p>This project contains all sorts of angular components for creating data driven applications.
 It is mainly used for entrecode admin applications in combination with the <a href="https://doc.entrecode.de">entrecode</a> using <a href="https://github.com/entrecode/ec.sdk">ec.sdk</a>.</p>
 <h2 id="packages">Packages</h2>
@@ -71,22 +71,18 @@ It is mainly used for entrecode admin applications in combination with the <a hr
 <p>The main documentation is located at <a href="https://entrecode.github.io/ec.components/">entrecode.github.io/ec.components</a>. You can find a getting started guide there.</p>
 <h2 id="demo">Demo</h2>
 <p>A Demo is available at <a href="https://components.entrecode.de">components.entrecode.de</a>.</p>
-<h2 id="developing-with-lerna--yarn-workspaces">Developing with Lerna + Yarn Workspaces</h2>
+<h2 id="developing-with-lerna-yarn-workspaces">Developing with Lerna + Yarn Workspaces</h2>
 <p>The repository is a monorepo, managed by <a href="https://github.com/lerna/lerna">lerna</a> and <a href="https://yarnpkg.com/lang/en/docs/workspaces/">yarn workspaces</a>.
-All folders inside dist + packages/style will be used as symlinks in node_modules/@ec.components/*.
+All folders inside dist + packages/style will be used as symlinks in <a href="mailto:node_modules/@ec.components">node_modules/@ec.components</a>/*.
 You can update the symlinks by running yarn (e.g. after adding a new package).</p>
 <h2 id="dev-setup">Dev Setup</h2>
 <p>After a fresh clone of the repo, run this:</p>
-<p><code>sh
-yarn install
+<div><pre class="line-numbers"><code class="language-sh">yarn install
 npm run dev-setup
-npm run start</code></p>
-<p>The dev-setup script builds all packages and symlinks them to the node_modules.</p>
+npm run start</code></pre></div><p>The dev-setup script builds all packages and symlinks them to the node_modules.</p>
 <h3 id="releasing">Releasing</h3>
 <p>Run release task and select versions:</p>
-<p><code>sh
-npm run release</code></p>
-<p>To publish a new package for the first time, make sure you run <code>npm publish --access=public</code> before running lerna. See add-new-package for more info on creating a new package.</p>
+<div><pre class="line-numbers"><code class="language-sh">npm run release</code></pre></div><p>To publish a new package for the first time, make sure you run <code>npm publish --access=public</code> before running lerna. See add-new-package for more info on creating a new package.</p>
 <p>Also make sure to use <a href="https://www.conventionalcommits.org">Conventional Commits</a> for proper changelogging.</p>
 <h2 id="default-readme">Default README</h2>
 <p>This project was generated with <a href="https://github.com/angular/angular-cli">Angular CLI</a> version 7.2.1.</p>

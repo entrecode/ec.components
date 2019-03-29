@@ -67,36 +67,28 @@ The form needs the <a href="https://entrecode.github.io/ec.sdk/#core">api</a> an
 If you pass a resource the form will edit that resource.
 The default config comes from resource-config.ts.</p>
 <p>Example:</p>
-<p><code>js
- * this.datamanager = new DataManager(&#39;live&#39;); // api connector (children of Core)
- *</code></p>
-<p><code>html
- * &lt;ec-resource-form api=&quot;datamanager&quot; relation=&quot;dataManager&quot;&gt;&lt;/ec-resource-form&gt;
- *</code></p>
-<p>The above snippets will render a form to create a datamanager. After the datamanager has been created, the form will switch to edit mode.
+<div><pre class="line-numbers"><code class="language-js"> * this.datamanager = new DataManager(&#39;live&#39;); // api connector (children of Core)
+ *</code></pre></div><div><pre class="line-numbers"><code class="language-html"> * &lt;ec-resource-form api=&quot;datamanager&quot; relation=&quot;dataManager&quot;&gt;&lt;/ec-resource-form&gt;
+ *</code></pre></div><p>The above snippets will render a form to create a datamanager. After the datamanager has been created, the form will switch to edit mode.
 If you directly want to edit a given resource, just pass it through the resource input:</p>
-<p><code>html
- * &lt;ec-resource-form api=&quot;datamanager&quot; relation=&quot;dataManager&quot; [resource]=&quot;myDatamanager&quot;&gt;&lt;/ec-resource-form&gt;
- *</code>
-<code>js
- * this.sdk.datamanager.dataManager(shortID).then(dm=&gt;this.myDatamanager = dm);
- *</code></p>
-
+<div><pre class="line-numbers"><code class="language-html"> * &lt;ec-resource-form api=&quot;datamanager&quot; relation=&quot;dataManager&quot; [resource]=&quot;myDatamanager&quot;&gt;&lt;/ec-resource-form&gt;
+ *</code></pre></div><div><pre class="line-numbers"><code class="language-js"> * this.sdk.datamanager.dataManager(shortID).then(dm=&gt;this.myDatamanager = dm);
+ *</code></pre></div>
     </p>
 
     <p class="comment">
         <h3>Extends</h3>
     </p>
     <p class="comment">
-                <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
+            <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
     </p>
 
     <p class="comment">
         <h3>Implements</h3>
     </p>
     <p class="comment">
-                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
-                    <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
+                <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
     </p>
 
 
@@ -155,6 +147,10 @@ If you directly want to edit a given resource, just pass it through the resource
                 <tr>
                     <td class="col-md-4">
                         <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#formService">formService</a>
+                            </li>
                             <li>
                                 <a href="#resourceConfig">resourceConfig</a>
                             </li>
@@ -370,7 +366,7 @@ If you directly want to edit a given resource, just pass it through the resource
                                                         <td>loaderService</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../injectables/LoaderService.html" target="_self" >LoaderService</a></code>
+                                                                    <code><a href="../injectables/LoaderService.html" target="_self" >LoaderService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -382,7 +378,7 @@ If you directly want to edit a given resource, just pass it through the resource
                                                         <td>notificationService</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../injectables/NotificationsService.html" target="_self" >NotificationsService</a></code>
+                                                                    <code><a href="../injectables/NotificationsService.html" target="_self" >NotificationsService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -394,7 +390,7 @@ If you directly want to edit a given resource, just pass it through the resource
                                                         <td>formService</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../injectables/FormService.html" target="_self" >FormService</a></code>
+                                                                    <code><a href="../injectables/FormService.html" target="_self" >FormService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -406,7 +402,7 @@ If you directly want to edit a given resource, just pass it through the resource
                                                         <td>symbol</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../injectables/SymbolService.html" target="_self" >SymbolService</a></code>
+                                                                    <code><a href="../injectables/SymbolService.html" target="_self" >SymbolService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -418,7 +414,7 @@ If you directly want to edit a given resource, just pass it through the resource
                                                         <td>resourceService</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../injectables/ResourceService.html" target="_self" >ResourceService</a></code>
+                                                                    <code><a href="../injectables/ResourceService.html" target="_self" >ResourceService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -430,7 +426,7 @@ If you directly want to edit a given resource, just pass it through the resource
                                                         <td>cdr</td>
                                                   
                                                         <td>
-                                                                        <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                                    <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -470,7 +466,7 @@ If you directly want to edit a given resource, just pass it through the resource
                         </tr>
                 <tr>
                     <td class="col-md-4">
-                        <div class="io-description"><p>The API Connector that possesses the resource list, see https://entrecode.github.io/ec.sdk/#api-connectors </p>
+                        <div class="io-description"><p>The API Connector that possesses the resource list, see <a href="https://entrecode.github.io/ec.sdk/#api-connectors">https://entrecode.github.io/ec.sdk/#api-connectors</a> </p>
 </div>
                     </td>
                 </tr>
@@ -486,7 +482,7 @@ If you directly want to edit a given resource, just pass it through the resource
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../components/LoaderComponent.html" target="_self" >LoaderComponent</a></code>
+                        <i>Type : </i>    <code><a href="../components/LoaderComponent.html" target="_self" >LoaderComponent</a></code>
 
                     </td>
                 </tr>
@@ -513,7 +509,7 @@ If you directly want to edit a given resource, just pass it through the resource
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                        <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
                     </td>
                 </tr>
@@ -540,20 +536,19 @@ If you directly want to edit a given resource, just pass it through the resource
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../interfaces/FormConfig.html" target="_self" >FormConfig&lt;T&gt;</a></code>
+                        <i>Type : </i>    <code><a href="../interfaces/FormConfig.html" target="_self" >FormConfig&lt;T&gt;</a></code>
 
                     </td>
                 </tr>
                             <tr>
                                 <td class="col-md-4" colspan="2">
-                                    <div class="io-line">Inherited from         <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
+                                    <div class="io-line">Inherited from     <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
 </div>
                                 </td>
                             </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >FormComponent:41</a></code>
-</div>
+                                    <div class="io-line">Defined in FormComponent:41</div>
                             </td>
                         </tr>
                 <tr>
@@ -579,14 +574,13 @@ If you directly want to edit a given resource, just pass it through the resource
                 </tr>
                             <tr>
                                 <td class="col-md-4" colspan="2">
-                                    <div class="io-line">Inherited from         <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
+                                    <div class="io-line">Inherited from     <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
 </div>
                                 </td>
                             </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >FormComponent:61</a></code>
-</div>
+                                    <div class="io-line">Defined in FormComponent:61</div>
                             </td>
                         </tr>
                 <tr>
@@ -607,20 +601,19 @@ If you directly want to edit a given resource, just pass it through the resource
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                        <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
                     </td>
                 </tr>
                             <tr>
                                 <td class="col-md-4" colspan="2">
-                                    <div class="io-line">Inherited from         <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
+                                    <div class="io-line">Inherited from     <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
 </div>
                                 </td>
                             </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >FormComponent:47</a></code>
-</div>
+                                    <div class="io-line">Defined in FormComponent:47</div>
                             </td>
                         </tr>
                 <tr>
@@ -641,20 +634,19 @@ If you directly want to edit a given resource, just pass it through the resource
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../classes/Item.html" target="_self" >Item&lt;T&gt;</a></code>
+                        <i>Type : </i>    <code><a href="../classes/Item.html" target="_self" >Item&lt;T&gt;</a></code>
 
                     </td>
                 </tr>
                             <tr>
                                 <td class="col-md-4" colspan="2">
-                                    <div class="io-line">Inherited from         <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
+                                    <div class="io-line">Inherited from     <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
 </div>
                                 </td>
                             </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >FormComponent:43</a></code>
-</div>
+                                    <div class="io-line">Defined in FormComponent:43</div>
                             </td>
                         </tr>
                 <tr>
@@ -675,20 +667,19 @@ If you directly want to edit a given resource, just pass it through the resource
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                        <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
                     </td>
                 </tr>
                             <tr>
                                 <td class="col-md-4" colspan="2">
-                                    <div class="io-line">Inherited from         <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
+                                    <div class="io-line">Inherited from     <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
 </div>
                                 </td>
                             </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >FormComponent:63</a></code>
-</div>
+                                    <div class="io-line">Defined in FormComponent:63</div>
                             </td>
                         </tr>
                 <tr>
@@ -709,20 +700,19 @@ If you directly want to edit a given resource, just pass it through the resource
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../components/LoaderComponent.html" target="_self" >LoaderComponent</a></code>
+                        <i>Type : </i>    <code><a href="../components/LoaderComponent.html" target="_self" >LoaderComponent</a></code>
 
                     </td>
                 </tr>
                             <tr>
                                 <td class="col-md-4" colspan="2">
-                                    <div class="io-line">Inherited from         <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
+                                    <div class="io-line">Inherited from     <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
 </div>
                                 </td>
                             </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >FormComponent:53</a></code>
-</div>
+                                    <div class="io-line">Defined in FormComponent:53</div>
                             </td>
                         </tr>
                 <tr>
@@ -743,20 +733,19 @@ If you directly want to edit a given resource, just pass it through the resource
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                        <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
                     </td>
                 </tr>
                             <tr>
                                 <td class="col-md-4" colspan="2">
-                                    <div class="io-line">Inherited from         <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
+                                    <div class="io-line">Inherited from     <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
 </div>
                                 </td>
                             </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >FormComponent:51</a></code>
-</div>
+                                    <div class="io-line">Defined in FormComponent:51</div>
                             </td>
                         </tr>
                 <tr>
@@ -777,20 +766,19 @@ If you directly want to edit a given resource, just pass it through the resource
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                        <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
                     </td>
                 </tr>
                             <tr>
                                 <td class="col-md-4" colspan="2">
-                                    <div class="io-line">Inherited from         <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
+                                    <div class="io-line">Inherited from     <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
 </div>
                                 </td>
                             </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >FormComponent:49</a></code>
-</div>
+                                    <div class="io-line">Defined in FormComponent:49</div>
                             </td>
                         </tr>
                 <tr>
@@ -817,14 +805,13 @@ If you directly want to edit a given resource, just pass it through the resource
                 </tr>
                             <tr>
                                 <td class="col-md-4" colspan="2">
-                                    <div class="io-line">Inherited from         <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
+                                    <div class="io-line">Inherited from     <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
 </div>
                                 </td>
                             </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >FormComponent:45</a></code>
-</div>
+                                    <div class="io-line">Defined in FormComponent:45</div>
                             </td>
                         </tr>
                 <tr>
@@ -848,20 +835,19 @@ If you directly want to edit a given resource, just pass it through the resource
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../classes/Form.html" target="_self" >EventEmitter&lt;FormComponent&lt;T&gt;&gt;</a></code>
+                        <i>Type : </i>    <code><a href="../classes/Form.html" target="_self" >EventEmitter&lt;FormComponent&lt;T&gt;&gt;</a></code>
 
                     </td>
                 </tr>
                             <tr>
                                 <td class="col-md-4" colspan="2">
-                                    <div class="io-line">Inherited from         <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
+                                    <div class="io-line">Inherited from     <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
 </div>
                                 </td>
                             </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >FormComponent:59</a></code>
-</div>
+                                    <div class="io-line">Defined in FormComponent:59</div>
                             </td>
                         </tr>
                 <tr>
@@ -882,20 +868,19 @@ If you directly want to edit a given resource, just pass it through the resource
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../classes/Form.html" target="_self" >EventEmitter&lt;FormComponent&lt;T&gt;&gt;</a></code>
+                        <i>Type : </i>    <code><a href="../classes/Form.html" target="_self" >EventEmitter&lt;FormComponent&lt;T&gt;&gt;</a></code>
 
                     </td>
                 </tr>
                             <tr>
                                 <td class="col-md-4" colspan="2">
-                                    <div class="io-line">Inherited from         <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
+                                    <div class="io-line">Inherited from     <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
 </div>
                                 </td>
                             </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >FormComponent:57</a></code>
-</div>
+                                    <div class="io-line">Defined in FormComponent:57</div>
                             </td>
                         </tr>
                 <tr>
@@ -916,20 +901,19 @@ If you directly want to edit a given resource, just pass it through the resource
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../classes/Form.html" target="_self" >EventEmitter&lt;Form&lt;T&gt;&gt;</a></code>
+                        <i>Type : </i>    <code><a href="../classes/Form.html" target="_self" >EventEmitter&lt;Form&lt;T&gt;&gt;</a></code>
 
                     </td>
                 </tr>
                             <tr>
                                 <td class="col-md-4" colspan="2">
-                                    <div class="io-line">Inherited from         <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
+                                    <div class="io-line">Inherited from     <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
 </div>
                                 </td>
                             </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >FormComponent:55</a></code>
-</div>
+                                    <div class="io-line">Defined in FormComponent:55</div>
                             </td>
                         </tr>
                 <tr>
@@ -945,1258 +929,1269 @@ If you directly want to edit a given resource, just pass it through the resource
 
     <section>
     
-    <h3 id="methods">
-        Methods
-    </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="init"></a>
-                    <span class="name">
-                        <b>
-                            <span class="modifier">Protected</span>
+        <h3 id="methods">
+            Methods
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="init"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Protected</span>
                             init
-                        </b>
-                        <a href="#init"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>init(item: <a href="../classes/Item.html">Item<Resource></a>, config: <a href="../interfaces/FormConfig.html">FormConfig<Resource></a>)</code>
-                </td>
-            </tr>
+                            </b>
+                            <a href="#init"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>init(item: <a href="../classes/Item.html">Item<Resource></a>, config: <a href="../interfaces/FormConfig.html">FormConfig<Resource></a>)</code>
+                    </td>
+                </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="79"
-                            class="link-to-prism">packages/data/src/lib/resource-form/resource-form.component.ts:79</a></div>
-                </td>
-            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">packages/data/src/lib/resource-form/resource-form.component.ts:79</a></div>
+                            </td>
+                        </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Inits the form with optional item and config params. If an item is present, the form will edit it.  </p>
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Inits the form with optional item and config params. If an item is present, the form will edit it.  </p>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                    <td>Default value</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>item</td>
-                                    <td>
-                                                <code><a href="../classes/Item.html" target="_self" >Item&lt;Resource&gt;</a></code>
-                                    </td>
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>item</td>
+                                                        <td>
+                                                                    <code><a href="../classes/Item.html" target="_self" >Item&lt;Resource&gt;</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>this.item</code>
+                                                        </td>
 
-                                    <td>
-                                        No
-                                    </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>config</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/FormConfig.html" target="_self" >FormConfig&lt;Resource&gt;</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>this.config</code>
+                                                        </td>
 
-                                    <td>
-                                        <code>this.item</code>
-                                    </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-                                </tr>
-                                <tr>
-                                    <td>config</td>
-                                    <td>
-                                                <code><a href="../interfaces/FormConfig.html" target="_self" >FormConfig&lt;Resource&gt;</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-                                    <td>
-                                        <code>this.config</code>
-                                    </td>
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="initConfig"></a>
-                    <span class="name">
-                        <b>
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="initConfig"></a>
+                        <span class="name">
+                            <b>
                             initConfig
-                        </b>
-                        <a href="#initConfig"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
+                            </b>
+                            <a href="#initConfig"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
 <code>initConfig()</code>
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="72"
-                            class="link-to-prism">packages/data/src/lib/resource-form/resource-form.component.ts:72</a></div>
-                </td>
-            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">packages/data/src/lib/resource-form/resource-form.component.ts:72</a></div>
+                            </td>
+                        </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Merges current config default config and config input  </p>
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Merges current config default config and config input  </p>
 </div>
 
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="isEditing"></a>
-                    <span class="name">
-                        <b>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="isEditing"></a>
+                        <span class="name">
+                            <b>
                             isEditing
-                        </b>
-                        <a href="#isEditing"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
+                            </b>
+                            <a href="#isEditing"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
 <code>isEditing()</code>
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="94"
-                            class="link-to-prism">packages/data/src/lib/resource-form/resource-form.component.ts:94</a></div>
-                </td>
-            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">packages/data/src/lib/resource-form/resource-form.component.ts:94</a></div>
+                            </td>
+                        </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Yields true if the current edited resiource is already existing in the backend. </p>
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Yields true if the current edited resiource is already existing in the backend. </p>
 </div>
 
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="ngOnChanges"></a>
-                    <span class="name">
-                        <b>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ngOnChanges"></a>
+                        <span class="name">
+                            <b>
                             ngOnChanges
-                        </b>
-                        <a href="#ngOnChanges"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
+                            </b>
+                            <a href="#ngOnChanges"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
 <code>ngOnChanges(changes?)</code>
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="68"
-                            class="link-to-prism">packages/data/src/lib/resource-form/resource-form.component.ts:68</a></div>
-                </td>
-            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">packages/data/src/lib/resource-form/resource-form.component.ts:68</a></div>
+                            </td>
+                        </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Reinits config </p>
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Reinits config </p>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>changes</td>
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>changes</td>
+                                                    
+                                                    <td>
+                                                            Yes
+                                                    </td>
+                                                    
 
-                                    <td>
-                                        Yes
-                                    </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="ngOnInit"></a>
-                    <span class="name">
-                        <b>
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ngOnInit"></a>
+                        <span class="name">
+                            <b>
                             ngOnInit
-                        </b>
-                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
+                            </b>
+                            <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
 <code>ngOnInit()</code>
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="64"
-                            class="link-to-prism">packages/data/src/lib/resource-form/resource-form.component.ts:64</a></div>
-                </td>
-            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">packages/data/src/lib/resource-form/resource-form.component.ts:64</a></div>
+                            </td>
+                        </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Inits config </p>
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Inits config </p>
 </div>
 
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="addField"></a>
-                    <span class="name">
-                        <b>
-                            <span class="modifier">Public</span>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="addField"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
                             addField
-                        </b>
-                        <a href="#addField"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>addField(property: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, config: <a href="../interfaces/FieldConfigProperty.html">FieldConfigProperty</a>)</code>
-                </td>
-            </tr>
+                            </b>
+                            <a href="#addField"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>addField(property: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, config: <a href="../interfaces/FieldConfigProperty.html">FieldConfigProperty</a>)</code>
+                    </td>
+                </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Inherited from         <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from     <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
 </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >FormComponent:146</a></code>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in FormComponent:146</div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Adds a new field with the given config to the form </p>
 </div>
-                </td>
-            </tr>
 
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>property</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Adds a new field with the given config to the form </p>
-</div>
+                                                </tr>
+                                                <tr>
+                                                        <td>config</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/FieldConfigProperty.html" target="_self" >FieldConfigProperty</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>property</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>config</td>
-                                    <td>
-                                                <code><a href="../interfaces/FieldConfigProperty.html" target="_self" >FieldConfigProperty</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="clear"></a>
-                    <span class="name">
-                        <b>
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="clear"></a>
+                        <span class="name">
+                            <b>
                             clear
-                        </b>
-                        <a href="#clear"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
+                            </b>
+                            <a href="#clear"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
 <code>clear()</code>
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Inherited from         <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from     <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
 </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >FormComponent:154</a></code>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in FormComponent:154</div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Clears the current value </p>
 </div>
-                </td>
-            </tr>
 
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Clears the current value </p>
-</div>
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="create"></a>
-                    <span class="name">
-                        <b>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="create"></a>
+                        <span class="name">
+                            <b>
                             create
-                        </b>
-                        <a href="#create"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
+                            </b>
+                            <a href="#create"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
 <code>create(config: <a href="../interfaces/ItemConfig.html">ItemConfig<T></a>)</code>
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Inherited from         <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from     <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
 </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >FormComponent:159</a></code>
-</div>
-                </td>
-            </tr>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in FormComponent:159</div>
+                            </td>
+                        </tr>
 
 
-            <tr>
-                <td class="col-md-4">
+                <tr>
+                    <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                    <td>Default value</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>config</td>
-                                    <td>
-                                                <code><a href="../interfaces/ItemConfig.html" target="_self" >ItemConfig&lt;T&gt;</a></code>
-                                    </td>
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>config</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/ItemConfig.html" target="_self" >ItemConfig&lt;T&gt;</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>this.config</code>
+                                                        </td>
 
-                                    <td>
-                                        No
-                                    </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-                                    <td>
-                                        <code>this.config</code>
-                                    </td>
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="edit"></a>
-                    <span class="name">
-                        <b>
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="edit"></a>
+                        <span class="name">
+                            <b>
                             edit
-                        </b>
-                        <a href="#edit"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
+                            </b>
+                            <a href="#edit"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
 <code>edit(item: <a href="../classes/Item.html">Item<T></a>)</code>
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Inherited from         <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from     <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
 </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >FormComponent:165</a></code>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in FormComponent:165</div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>edits a given Item instance by using its config and body. </p>
 </div>
-                </td>
-            </tr>
 
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>item</td>
+                                                        <td>
+                                                                    <code><a href="../classes/Item.html" target="_self" >Item&lt;T&gt;</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>edits a given Item instance by using its config and body. </p>
-</div>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>item</td>
-                                    <td>
-                                                <code><a href="../classes/Item.html" target="_self" >Item&lt;T&gt;</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="editValue"></a>
-                    <span class="name">
-                        <b>
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="editValue"></a>
+                        <span class="name">
+                            <b>
                             editValue
-                        </b>
-                        <a href="#editValue"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
+                            </b>
+                            <a href="#editValue"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
 <code>editValue(value: T, config)</code>
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Inherited from         <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from     <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
 </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >FormComponent:170</a></code>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in FormComponent:170</div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>edits a given value by creating an item and calling edit. </p>
 </div>
-                </td>
-            </tr>
 
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>value</td>
+                                                        <td>
+                                                                    <code>T</code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>edits a given value by creating an item and calling edit. </p>
-</div>
+                                                </tr>
+                                                <tr>
+                                                        <td>config</td>
+                                                        <td>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>this.config</code>
+                                                        </td>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                    <td>Default value</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>value</td>
-                                    <td>
-                                            <code>T</code>
-                                    </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-                                    <td>
-                                        No
-                                    </td>
-
-                                    <td>
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <td>config</td>
-                                    <td>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-                                    <td>
-                                        <code>this.config</code>
-                                    </td>
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="getErrors"></a>
-                    <span class="name">
-                        <b>
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getErrors"></a>
+                        <span class="name">
+                            <b>
                             getErrors
-                        </b>
-                        <a href="#getErrors"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
+                            </b>
+                            <a href="#getErrors"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
 <code>getErrors(formComponent: <a href="../classes/Form.html">FormComponent<T></a>, touchedOnly)</code>
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Inherited from         <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from     <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
 </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >FormComponent:221</a></code>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in FormComponent:221</div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Returns an Error containing all field validator errors as subErrors.  </p>
 </div>
-                </td>
-            </tr>
 
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>formComponent</td>
+                                                        <td>
+                                                                    <code><a href="../classes/Form.html" target="_self" >FormComponent&lt;T&gt;</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                        </td>
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Returns an Error containing all field validator errors as subErrors.  </p>
-</div>
+                                                </tr>
+                                                <tr>
+                                                        <td>touchedOnly</td>
+                                                        <td>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>true</code>
+                                                        </td>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                    <td>Default value</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>formComponent</td>
-                                    <td>
-                                                <code><a href="../classes/Form.html" target="_self" >FormComponent&lt;T&gt;</a></code>
-                                    </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>Error</code>
 
-                                    <td>
-                                        No
-                                    </td>
-
-                                    <td>
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <td>touchedOnly</td>
-                                    <td>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-                                    <td>
-                                        <code>true</code>
-                                    </td>
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>    <code>Error</code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="getValue"></a>
-                    <span class="name">
-                        <b>
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getValue"></a>
+                        <span class="name">
+                            <b>
                             getValue
-                        </b>
-                        <a href="#getValue"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
+                            </b>
+                            <a href="#getValue"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
 <code>getValue(property?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Inherited from         <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from     <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
 </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >FormComponent:213</a></code>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in FormComponent:213</div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Returns the current value of the form control group. When passing a property, it directly returns the property value. </p>
 </div>
-                </td>
-            </tr>
 
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>property</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            Yes
+                                                    </td>
+                                                    
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Returns the current value of the form control group. When passing a property, it directly returns the property value. </p>
-</div>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>property</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
-
-                                    <td>
-                                        Yes
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="init"></a>
-                    <span class="name">
-                        <b>
-                            <span class="modifier">Protected</span>
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="init"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Protected</span>
                             init
-                        </b>
-                        <a href="#init"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>init(item: <a href="../classes/Item.html">Item<T></a>, config: <a href="../interfaces/FormConfig.html">FormConfig<T></a>)</code>
-                </td>
-            </tr>
+                            </b>
+                            <a href="#init"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>init(item: <a href="../classes/Item.html">Item<T></a>, config: <a href="../interfaces/FormConfig.html">FormConfig<T></a>)</code>
+                    </td>
+                </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Inherited from         <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from     <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
 </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >FormComponent:104</a></code>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in FormComponent:104</div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Inits the form (if ready) </p>
 </div>
-                </td>
-            </tr>
 
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>item</td>
+                                                        <td>
+                                                                    <code><a href="../classes/Item.html" target="_self" >Item&lt;T&gt;</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>this.item</code>
+                                                        </td>
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Inits the form (if ready) </p>
-</div>
+                                                </tr>
+                                                <tr>
+                                                        <td>config</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/FormConfig.html" target="_self" >FormConfig&lt;T&gt;</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>this.config</code>
+                                                        </td>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                    <td>Default value</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>item</td>
-                                    <td>
-                                                <code><a href="../classes/Item.html" target="_self" >Item&lt;T&gt;</a></code>
-                                    </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-                                    <td>
-                                        No
-                                    </td>
-
-                                    <td>
-                                        <code>this.item</code>
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <td>config</td>
-                                    <td>
-                                                <code><a href="../interfaces/FormConfig.html" target="_self" >FormConfig&lt;T&gt;</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-                                    <td>
-                                        <code>this.config</code>
-                                    </td>
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="initGroup"></a>
-                    <span class="name">
-                        <b>
-                            <span class="modifier">Protected</span>
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="initGroup"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Protected</span>
                             initGroup
-                        </b>
-                        <a href="#initGroup"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>initGroup()</code>
-                </td>
-            </tr>
+                            </b>
+                            <a href="#initGroup"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>initGroup()</code>
+                    </td>
+                </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Inherited from         <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from     <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
 </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >FormComponent:115</a></code>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in FormComponent:115</div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Initializes the FormGroup which is generated from the current form instance. Sets valueChanges listener </p>
 </div>
-                </td>
-            </tr>
 
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Initializes the FormGroup which is generated from the current form instance. Sets valueChanges listener </p>
-</div>
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="ngOnChanges"></a>
-                    <span class="name">
-                        <b>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ngOnChanges"></a>
+                        <span class="name">
+                            <b>
                             ngOnChanges
-                        </b>
-                        <a href="#ngOnChanges"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
+                            </b>
+                            <a href="#ngOnChanges"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
 <code>ngOnChanges(changes?)</code>
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Inherited from         <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from     <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
 </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >FormComponent:80</a></code>
-</div>
-                </td>
-            </tr>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in FormComponent:80</div>
+                            </td>
+                        </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>On change, the form instance is (re)created by combining all inputs.
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>On change, the form instance is (re)created by combining all inputs.
 If no item is given, an empty form is created using the config.
 You can also pass just an item to use its config and body.</p>
 </div>
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>changes</td>
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>changes</td>
+                                                    
+                                                    <td>
+                                                            Yes
+                                                    </td>
+                                                    
 
-                                    <td>
-                                        Yes
-                                    </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="patchValue"></a>
-                    <span class="name">
-                        <b>
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="patchValue"></a>
+                        <span class="name">
+                            <b>
                             patchValue
-                        </b>
-                        <a href="#patchValue"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
+                            </b>
+                            <a href="#patchValue"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
 <code>patchValue(value)</code>
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Inherited from         <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from     <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
 </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >FormComponent:89</a></code>
-</div>
-                </td>
-            </tr>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in FormComponent:89</div>
+                            </td>
+                        </tr>
 
 
-            <tr>
-                <td class="col-md-4">
+                <tr>
+                    <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Optional</td>
-                                    <td>Default value</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>value</td>
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>value</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>this.value</code>
+                                                        </td>
 
-                                    <td>
-                                        No
-                                    </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-                                    <td>
-                                        <code>this.value</code>
-                                    </td>
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="showSubmitButton"></a>
-                    <span class="name">
-                        <b>
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="showSubmitButton"></a>
+                        <span class="name">
+                            <b>
                             showSubmitButton
-                        </b>
-                        <a href="#showSubmitButton"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
+                            </b>
+                            <a href="#showSubmitButton"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
 <code>showSubmitButton()</code>
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Inherited from         <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from     <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
 </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >FormComponent:208</a></code>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in FormComponent:208</div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Decides if the submit button should be rendered or not based on config </p>
 </div>
-                </td>
-            </tr>
 
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Decides if the submit button should be rendered or not based on config </p>
-</div>
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="submit"></a>
-                    <span class="name">
-                        <b>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="submit"></a>
+                        <span class="name">
+                            <b>
                             submit
-                        </b>
-                        <a href="#submit"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
+                            </b>
+                            <a href="#submit"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
 <code>submit()</code>
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Inherited from         <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from     <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
 </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >FormComponent:176</a></code>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in FormComponent:176</div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Method that is invoked when the form is submitted.</p>
 </div>
-                </td>
-            </tr>
 
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Method that is invoked when the form is submitted.</p>
-</div>
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 </section>
+
     <section>
     
         <h3 id="inputs">
             Properties
         </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="formService"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            formService</b>
+                            <a href="#formService"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="../injectables/FormService.html" target="_self" >FormService</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">packages/data/src/lib/resource-form/resource-form.component.ts:55</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
@@ -2211,7 +2206,7 @@ You can also pass just an item to use its config and body.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../injectables/ResourceConfig.html" target="_self" >ResourceConfig</a></code>
+                            <i>Type : </i>    <code><a href="../injectables/ResourceConfig.html" target="_self" >ResourceConfig</a></code>
 
                         </td>
                     </tr>
@@ -2239,7 +2234,7 @@ You can also pass just an item to use its config and body.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../injectables/ResourceService.html" target="_self" >ResourceService</a></code>
+                            <i>Type : </i>    <code><a href="../injectables/ResourceService.html" target="_self" >ResourceService</a></code>
 
                         </td>
                     </tr>
@@ -2267,20 +2262,19 @@ You can also pass just an item to use its config and body.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../interfaces/FormConfig.html" target="_self" >FormConfig&lt;T&gt;</a></code>
+                            <i>Type : </i>    <code><a href="../interfaces/FormConfig.html" target="_self" >FormConfig&lt;T&gt;</a></code>
 
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Inherited from         <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
+                                    <div class="io-line">Inherited from     <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
 </div>
                                 </td>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >FormComponent:36</a></code>
-</div>
+                                    <div class="io-line">Defined in FormComponent:36</div>
                             </td>
                         </tr>
 
@@ -2307,7 +2301,7 @@ You can also pass just an item to use its config and body.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../components/LoaderComponent.html" target="_self" >LoaderComponent</a></code>
+                            <i>Type : </i>    <code><a href="../components/LoaderComponent.html" target="_self" >LoaderComponent</a></code>
 
                         </td>
                     </tr>
@@ -2322,14 +2316,13 @@ You can also pass just an item to use its config and body.</p>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Inherited from         <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
+                                    <div class="io-line">Inherited from     <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
 </div>
                                 </td>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >FormComponent:65</a></code>
-</div>
+                                    <div class="io-line">Defined in FormComponent:65</div>
                             </td>
                         </tr>
 
@@ -2357,20 +2350,19 @@ You can also pass just an item to use its config and body.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../classes/Form.html" target="_self" >Form&lt;T&gt;</a></code>
+                            <i>Type : </i>    <code><a href="../classes/Form.html" target="_self" >Form&lt;T&gt;</a></code>
 
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Inherited from         <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
+                                    <div class="io-line">Inherited from     <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
 </div>
                                 </td>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >FormComponent:32</a></code>
-</div>
+                                    <div class="io-line">Defined in FormComponent:32</div>
                             </td>
                         </tr>
 
@@ -2398,20 +2390,19 @@ You can also pass just an item to use its config and body.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../injectables/FormService.html" target="_self" >FormService</a></code>
+                            <i>Type : </i>    <code><a href="../injectables/FormService.html" target="_self" >FormService</a></code>
 
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Inherited from         <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
+                                    <div class="io-line">Inherited from     <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
 </div>
                                 </td>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >FormComponent:72</a></code>
-</div>
+                                    <div class="io-line">Defined in FormComponent:72</div>
                             </td>
                         </tr>
 
@@ -2433,20 +2424,19 @@ You can also pass just an item to use its config and body.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../classes/Form.html" target="_self" >FormGroup</a></code>
+                            <i>Type : </i>    <code><a href="../classes/Form.html" target="_self" >FormGroup</a></code>
 
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Inherited from         <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
+                                    <div class="io-line">Inherited from     <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
 </div>
                                 </td>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >FormComponent:34</a></code>
-</div>
+                                    <div class="io-line">Defined in FormComponent:34</div>
                             </td>
                         </tr>
 
@@ -2473,7 +2463,7 @@ You can also pass just an item to use its config and body.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../classes/List.html" target="_self" >QueryList&lt;InputComponent&gt;</a></code>
+                            <i>Type : </i>    <code><a href="../classes/List.html" target="_self" >QueryList&lt;InputComponent&gt;</a></code>
 
                         </td>
                     </tr>
@@ -2488,14 +2478,13 @@ You can also pass just an item to use its config and body.</p>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Inherited from         <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
+                                    <div class="io-line">Inherited from     <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
 </div>
                                 </td>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >FormComponent:67</a></code>
-</div>
+                                    <div class="io-line">Defined in FormComponent:67</div>
                             </td>
                         </tr>
 
@@ -2522,7 +2511,7 @@ You can also pass just an item to use its config and body.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../classes/Notification.html" target="_self" >Notification[]</a></code>
+                            <i>Type : </i>    <code><a href="../classes/Notification.html" target="_self" >Notification[]</a></code>
 
                         </td>
                     </tr>
@@ -2533,14 +2522,13 @@ You can also pass just an item to use its config and body.</p>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Inherited from         <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
+                                    <div class="io-line">Inherited from     <code><a href="../classes/Form.html" target="_self" >FormComponent</a></code>
 </div>
                                 </td>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >FormComponent:38</a></code>
-</div>
+                                    <div class="io-line">Defined in FormComponent:38</div>
                             </td>
                         </tr>
 
@@ -2613,7 +2601,7 @@ export class ResourceFormComponent extends FormComponent&lt;Resource&gt; impleme
     /** Injects services and calls super constructor. */
     constructor(protected loaderService: LoaderService,
         protected notificationService: NotificationsService,
-        protected formService: FormService,
+        public formService: FormService,
         protected symbol: SymbolService,
         public resourceService: ResourceService,
         protected cdr: ChangeDetectorRef

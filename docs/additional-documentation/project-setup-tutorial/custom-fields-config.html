@@ -48,59 +48,60 @@
 
 
 <h1 id="custom-field-configuration">Custom Field Configuration</h1>
-<p>Related Doc:
-- <a href="../../interfaces/FieldConfigProperty.html">All Possible field config properties</a>
-- <a href="../../injectables/TypeConfigService.html#source">Default Type Config</a>
-- <a href="../../interfaces/ListConfig.html">ListConfig</a> (also see ItemConfig parent)
-- <a href="../core-classes/item.html">Item Doc</a></p>
+<p>Related Doc:</p>
+<ul>
+<li><a href="../../interfaces/FieldConfigProperty.html">All Possible field config properties</a></li>
+<li><a href="../../injectables/TypeConfigService.html#source">Default Type Config</a></li>
+<li><a href="../../interfaces/ListConfig.html">ListConfig</a> (also see ItemConfig parent)</li>
+<li><a href="../core-classes/item.html">Item Doc</a></li>
+</ul>
 <h2 id="example">Example</h2>
 <p>You can configure a models behaviour over the ModelConfigService.
 It is recommended to configure a model in a parent component of all possible ec-crud lists or nested forms.</p>
 <p>See the related doc links for default values / possible config values.</p>
-<p>```js
-export class MuffinsComponent {
+<div><pre class="line-numbers"><code class="language-js">export class MuffinsComponent {
   constructor(private modelConfig: ModelConfigService) {
-    moment.locale(&#39;de&#39;); //set moment locale</p>
-<div><pre class="line-numbers"><code class="language-none">this.modelConfig.set(&#39;muffin&#39;, {
-  fields: {
-    pictures: {
-      label: &#39;Bilder&#39; //this label is shown above the form field and in the table header
-    },
-    name: {
-      label: &#39;Muffin Name&#39;,
-      group: (name) =&gt; {
-        return name[0].toUpperCase() //the return value is used to show group headers in a sorted list
-      },
-      required: true //when required, a new entry form cannot be saved without a value set for the field
-    },
-    _created: { //you can also access the system properties
-      label: &#39;Erstellt&#39;,
-      form: false, //this will hide the field inside the form
-      group: (value) =&gt; moment(value).format(&#39;YYYY&#39;)
-    },
-    amazement_factor: {
-      label: &#39;Amazement Faktor&#39;,
-      display: (value) =&gt; { //this will transform the value for output e.g. in a list cell
-        return (value * 10) + &#39;%&#39;
-      },
-      group: (value) =&gt; {
-        return value &gt; 5 ? &#39;Größer als 50%&#39; : &#39;Kleiner als 50%&#39;;
-      },
-      validate: (value) =&gt; { //this function will run when validating the value inside a form
-        if (typeof value !== &#39;number&#39;) {
-          return; //value is valid
-        }
-        if (value &lt; 1) {
-          return &#39;Muss mindestens 1 sein&#39;; //this message will be shown above the field
-        } else if (value &gt; 10) {
-          return &#39;Darf maximal 10 sein&#39;;
-        }
-      }
-    },
-  }
-});</code></pre></div><p>}
-```</p>
+    moment.locale(&#39;de&#39;); //set moment locale
 
+    this.modelConfig.set(&#39;muffin&#39;, {
+      fields: {
+        pictures: {
+          label: &#39;Bilder&#39; //this label is shown above the form field and in the table header
+        },
+        name: {
+          label: &#39;Muffin Name&#39;,
+          group: (name) =&gt; {
+            return name[0].toUpperCase() //the return value is used to show group headers in a sorted list
+          },
+          required: true //when required, a new entry form cannot be saved without a value set for the field
+        },
+        _created: { //you can also access the system properties
+          label: &#39;Erstellt&#39;,
+          form: false, //this will hide the field inside the form
+          group: (value) =&gt; moment(value).format(&#39;YYYY&#39;)
+        },
+        amazement_factor: {
+          label: &#39;Amazement Faktor&#39;,
+          display: (value) =&gt; { //this will transform the value for output e.g. in a list cell
+            return (value * 10) + &#39;%&#39;
+          },
+          group: (value) =&gt; {
+            return value &gt; 5 ? &#39;Größer als 50%&#39; : &#39;Kleiner als 50%&#39;;
+          },
+          validate: (value) =&gt; { //this function will run when validating the value inside a form
+            if (typeof value !== &#39;number&#39;) {
+              return; //value is valid
+            }
+            if (value &lt; 1) {
+              return &#39;Muss mindestens 1 sein&#39;; //this message will be shown above the field
+            } else if (value &gt; 10) {
+              return &#39;Darf maximal 10 sein&#39;;
+            }
+          }
+        },
+      }
+    });
+}</code></pre></div>
                    </div><div class="search-results">
     <div class="has-results">
         <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>

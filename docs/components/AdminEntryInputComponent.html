@@ -74,7 +74,7 @@ This is currently relevant for account and role fields which come from the ec.ap
         <h3>Extends</h3>
     </p>
     <p class="comment">
-                <code><a href="../components/DefaultInputComponent.html" target="_self" >DefaultInputComponent</a></code>
+            <code><a href="../components/DefaultInputComponent.html" target="_self" >DefaultInputComponent</a></code>
     </p>
 
 
@@ -128,6 +128,10 @@ This is currently relevant for account and role fields which come from the ec.ap
                         <ul class="index-list">
                             <li>
                                 <a href="#api">api</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#formService">formService</a>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
@@ -192,7 +196,7 @@ This is currently relevant for account and role fields which come from the ec.ap
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(sdk: <a href="../injectables/SdkService.html">SdkService</a>)</code>
+<code>constructor(sdk: <a href="../injectables/SdkService.html">SdkService</a>, formService: <a href="../injectables/FormService.html">FormService</a>)</code>
                     </td>
                 </tr>
                         <tr>
@@ -218,7 +222,19 @@ This is currently relevant for account and role fields which come from the ec.ap
                                                         <td>sdk</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../injectables/SdkService.html" target="_self" >SdkService</a></code>
+                                                                    <code><a href="../injectables/SdkService.html" target="_self" >SdkService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>formService</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../injectables/FormService.html" target="_self" >FormService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -241,131 +257,130 @@ This is currently relevant for account and role fields which come from the ec.ap
 
     <section>
     
-    <h3 id="methods">
-        Methods
-    </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="focus"></a>
-                    <span class="name">
-                        <b>
+        <h3 id="methods">
+            Methods
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="focus"></a>
+                        <span class="name">
+                            <b>
                             focus
-                        </b>
-                        <a href="#focus"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
+                            </b>
+                            <a href="#focus"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
 <code>focus(focus)</code>
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Inherited from         <code><a href="../components/DefaultInputComponent.html" target="_self" >DefaultInputComponent</a></code>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from     <code><a href="../components/DefaultInputComponent.html" target="_self" >DefaultInputComponent</a></code>
 </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../components/DefaultInputComponent.html#source" target="_self" >DefaultInputComponent:32</a></code>
-</div>
-                </td>
-            </tr>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in DefaultInputComponent:32</div>
+                            </td>
+                        </tr>
 
 
-            <tr>
-                <td class="col-md-4">
+                <tr>
+                    <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Optional</td>
-                                    <td>Default value</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>focus</td>
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>focus</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>true</code>
+                                                        </td>
 
-                                    <td>
-                                        No
-                                    </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-                                    <td>
-                                        <code>true</code>
-                                    </td>
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="ngAfterViewInit"></a>
-                    <span class="name">
-                        <b>
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ngAfterViewInit"></a>
+                        <span class="name">
+                            <b>
                             ngAfterViewInit
-                        </b>
-                        <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
+                            </b>
+                            <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
 <code>ngAfterViewInit()</code>
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Inherited from         <code><a href="../components/DefaultInputComponent.html" target="_self" >DefaultInputComponent</a></code>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from     <code><a href="../components/DefaultInputComponent.html" target="_self" >DefaultInputComponent</a></code>
 </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../components/DefaultInputComponent.html#source" target="_self" >DefaultInputComponent:26</a></code>
-</div>
-                </td>
-            </tr>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in DefaultInputComponent:26</div>
+                            </td>
+                        </tr>
 
 
-            <tr>
-                <td class="col-md-4">
+                <tr>
+                    <td class="col-md-4">
 
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 </section>
+
     <section>
     
         <h3 id="inputs">
@@ -402,6 +417,34 @@ This is currently relevant for account and role fields which come from the ec.ap
             <tbody>
                 <tr>
                     <td class="col-md-4">
+                        <a name="formService"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            formService</b>
+                            <a href="#formService"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="../injectables/FormService.html" target="_self" >FormService</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">packages/data/src/lib/entry-form/admin-entry-input.component.ts:14</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
                         <a name="sdk"></a>
                         <span class="name">
                             <b>
@@ -413,7 +456,7 @@ This is currently relevant for account and role fields which come from the ec.ap
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../injectables/SdkService.html" target="_self" >SdkService</a></code>
+                            <i>Type : </i>    <code><a href="../injectables/SdkService.html" target="_self" >SdkService</a></code>
 
                         </td>
                     </tr>
@@ -441,20 +484,19 @@ This is currently relevant for account and role fields which come from the ec.ap
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../classes/Form.html" target="_self" >FormControl</a></code>
+                            <i>Type : </i>    <code><a href="../classes/Form.html" target="_self" >FormControl</a></code>
 
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Inherited from         <code><a href="../components/DefaultInputComponent.html" target="_self" >DefaultInputComponent</a></code>
+                                    <div class="io-line">Inherited from     <code><a href="../components/DefaultInputComponent.html" target="_self" >DefaultInputComponent</a></code>
 </div>
                                 </td>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in         <code><a href="../components/DefaultInputComponent.html#source" target="_self" >DefaultInputComponent:19</a></code>
-</div>
+                                    <div class="io-line">Defined in DefaultInputComponent:19</div>
                             </td>
                         </tr>
 
@@ -482,20 +524,19 @@ This is currently relevant for account and role fields which come from the ec.ap
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../classes/Field.html" target="_self" >Field</a></code>
+                            <i>Type : </i>    <code><a href="../classes/Field.html" target="_self" >Field</a></code>
 
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Inherited from         <code><a href="../components/DefaultInputComponent.html" target="_self" >DefaultInputComponent</a></code>
+                                    <div class="io-line">Inherited from     <code><a href="../components/DefaultInputComponent.html" target="_self" >DefaultInputComponent</a></code>
 </div>
                                 </td>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in         <code><a href="../components/DefaultInputComponent.html#source" target="_self" >DefaultInputComponent:13</a></code>
-</div>
+                                    <div class="io-line">Defined in DefaultInputComponent:13</div>
                             </td>
                         </tr>
 
@@ -522,7 +563,7 @@ This is currently relevant for account and role fields which come from the ec.ap
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../miscellaneous/variables.html#en" target="_self" >EventEmitter&lt;boolean&gt;</a></code>
+                            <i>Type : </i>    <code><a href="../miscellaneous/variables.html#en" target="_self" >EventEmitter&lt;boolean&gt;</a></code>
 
                         </td>
                     </tr>
@@ -533,14 +574,13 @@ This is currently relevant for account and role fields which come from the ec.ap
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Inherited from         <code><a href="../components/DefaultInputComponent.html" target="_self" >DefaultInputComponent</a></code>
+                                    <div class="io-line">Inherited from     <code><a href="../components/DefaultInputComponent.html" target="_self" >DefaultInputComponent</a></code>
 </div>
                                 </td>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in         <code><a href="../components/DefaultInputComponent.html#source" target="_self" >DefaultInputComponent:21</a></code>
-</div>
+                                    <div class="io-line">Defined in DefaultInputComponent:21</div>
                             </td>
                         </tr>
 
@@ -568,20 +608,19 @@ This is currently relevant for account and role fields which come from the ec.ap
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../injectables/FormService.html" target="_self" >FormService</a></code>
+                            <i>Type : </i>    <code><a href="../injectables/FormService.html" target="_self" >FormService</a></code>
 
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Inherited from         <code><a href="../components/DefaultInputComponent.html" target="_self" >DefaultInputComponent</a></code>
+                                    <div class="io-line">Inherited from     <code><a href="../components/DefaultInputComponent.html" target="_self" >DefaultInputComponent</a></code>
 </div>
                                 </td>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in         <code><a href="../components/DefaultInputComponent.html#source" target="_self" >DefaultInputComponent:24</a></code>
-</div>
+                                    <div class="io-line">Defined in DefaultInputComponent:24</div>
                             </td>
                         </tr>
 
@@ -603,20 +642,19 @@ This is currently relevant for account and role fields which come from the ec.ap
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../classes/Form.html" target="_self" >FormGroup</a></code>
+                            <i>Type : </i>    <code><a href="../classes/Form.html" target="_self" >FormGroup</a></code>
 
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Inherited from         <code><a href="../components/DefaultInputComponent.html" target="_self" >DefaultInputComponent</a></code>
+                                    <div class="io-line">Inherited from     <code><a href="../components/DefaultInputComponent.html" target="_self" >DefaultInputComponent</a></code>
 </div>
                                 </td>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in         <code><a href="../components/DefaultInputComponent.html#source" target="_self" >DefaultInputComponent:17</a></code>
-</div>
+                                    <div class="io-line">Defined in DefaultInputComponent:17</div>
                             </td>
                         </tr>
 
@@ -644,20 +682,19 @@ This is currently relevant for account and role fields which come from the ec.ap
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../classes/Item.html" target="_self" >Item&lt;any&gt;</a></code>
+                            <i>Type : </i>    <code><a href="../classes/Item.html" target="_self" >Item&lt;any&gt;</a></code>
 
                         </td>
                     </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Inherited from         <code><a href="../components/DefaultInputComponent.html" target="_self" >DefaultInputComponent</a></code>
+                                    <div class="io-line">Inherited from     <code><a href="../components/DefaultInputComponent.html" target="_self" >DefaultInputComponent</a></code>
 </div>
                                 </td>
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in         <code><a href="../components/DefaultInputComponent.html#source" target="_self" >DefaultInputComponent:15</a></code>
-</div>
+                                    <div class="io-line">Defined in DefaultInputComponent:15</div>
                             </td>
                         </tr>
 
@@ -678,21 +715,21 @@ This is currently relevant for account and role fields which come from the ec.ap
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { SdkService } from &#x27;../sdk/sdk.service&#x27;;
 import { Component } from &#x27;@angular/core&#x27;;
-import { DefaultInputComponent } from &#x27;@ec.components/ui&#x27;;
+import { DefaultInputComponent, FormService } from &#x27;@ec.components/ui&#x27;;
 import DataManagerResource from &#x27;ec.sdk/lib/resources/datamanager/DataManagerResource&#x27;;
 
 /** This component holds the input templates for all field types that require having the DatamanagerResource as api.
  * This is currently relevant for account and role fields which come from the ec.api.
  */
 @Component({
-    templateUrl: &#x27;./admin-entry-input.component.html&#x27;,
+  templateUrl: &#x27;./admin-entry-input.component.html&#x27;,
 })
 export class AdminEntryInputComponent extends DefaultInputComponent {
-    api: DataManagerResource;
-    constructor(public sdk: SdkService) {
-        super();
-        /* this.sdk.root.then((root) &#x3D;&gt; this.api &#x3D; root); */
-    }
+  api: DataManagerResource;
+  constructor(public sdk: SdkService, public formService: FormService) {
+    super(formService);
+    /* this.sdk.root.then((root) &#x3D;&gt; this.api &#x3D; root); */
+  }
 }
 </code></pre>
     </div>

@@ -73,7 +73,7 @@
     <p class="comment">
         <p>Displays any kind of Notification inside the DOM.
 It listens on the notificationService.$emitter for notifications.
-<example-url>https://components.entrecode.de/ui/notifications?e=1</example-url></p>
+<example-url><a href="https://components.entrecode.de/ui/notifications?e=1">https://components.entrecode.de/ui/notifications?e=1</a></example-url></p>
 
     </p>
 
@@ -195,7 +195,7 @@ It listens on the notificationService.$emitter for notifications.
                                                         <td>notificationService</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../injectables/NotificationsService.html" target="_self" >NotificationsService</a></code>
+                                                                    <code><a href="../injectables/NotificationsService.html" target="_self" >NotificationsService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -224,7 +224,7 @@ It listens on the notificationService.$emitter for notifications.
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                        <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
                     </td>
                 </tr>
@@ -265,7 +265,7 @@ It listens on the notificationService.$emitter for notifications.
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>    <code>Collection&lt;Notification&gt;</code>
+                            <i>Type : </i>    <code><a href="../classes/Notification.html" target="_self" >Collection&lt;Notification&gt;</a></code>
 
                         </td>
                     </tr>
@@ -300,22 +300,21 @@ It listens on the notificationService.$emitter for notifications.
 <ol>
 <li>Place the component somewhere in your app template:</li>
 </ol>
-<p><code>html
-&lt;ec-notifications&gt;&lt;/ec-notifications&gt;</code></p>
-<ol start="2">
+<div><pre class="line-numbers"><code class="language-html">&lt;ec-notifications&gt;&lt;/ec-notifications&gt;</code></pre></div><ol start="2">
 <li>Emit notifications via the service</li>
 </ol>
-<p>```ts
-export class MyComponent {
-  constructor(private notifications: NotificationsService) {}</p>
-<p>  showNotification() {
+<div><pre class="line-numbers"><code class="language-ts">export class MyComponent {
+  constructor(private notifications: NotificationsService) {}
+
+  showNotification() {
       this.notifications.emit({
         type: &#39;success&#39;,
         title: &#39;Das ist der Notification Titel&#39;,
         message: &#39;Das ist die Beschreibung&#39;
       });
-  }</p>
-<p>  doSomethingRisky() {
+  }
+
+  doSomethingRisky() {
       return Promise.reject(&#39;Fehler&#39;)
       .catch((err) =&gt; {
           this.notifications.emit({
@@ -324,41 +323,36 @@ export class MyComponent {
           })
       })
   }
-}
-```</p>
-<p>The given type will be added as class. The classes that are available by default <a href="https://github.com/entrecode/ec.components/blob/master/packages/style/notifications/_ec-notifications_default.scss">can be looked up here</a>.</p>
+}</code></pre></div><p>The given type will be added as class. The classes that are available by default <a href="https://github.com/entrecode/ec.components/blob/master/packages/style/notifications/_ec-notifications_default.scss">can be looked up here</a>.</p>
 <h2 id="advanced-usage">Advanced Usage</h2>
 <p>You can also use multiple ec-notifications at different places:</p>
-<p><code>html
-&lt;ec-notifications #a&gt;&lt;/ec-notifications&gt;
+<div><pre class="line-numbers"><code class="language-html">&lt;ec-notifications #a&gt;&lt;/ec-notifications&gt;
 &lt;ec-notifications #b&gt;&lt;/ec-notifications&gt;
 &lt;button (click)=&quot;emit(a)&quot;&gt;A&lt;/button&gt;
-&lt;button (click)=&quot;emit(b)&quot;&gt;B&lt;/button&gt;</code></p>
-<p>All you have to do, is pass the instance of the component that should display the notification via the host property:</p>
-<p>```ts
-export class MyComponent {
-  constructor(private notifications: NotificationsService) {}</p>
-<p>  emit(host) {
+&lt;button (click)=&quot;emit(b)&quot;&gt;B&lt;/button&gt;</code></pre></div><p>All you have to do, is pass the instance of the component that should display the notification via the host property:</p>
+<div><pre class="line-numbers"><code class="language-ts">export class MyComponent {
+  constructor(private notifications: NotificationsService) {}
+
+  emit(host) {
       this.notifications.emit({
         type: &#39;success&#39;,
         title: &#39;Das ist der Notification Titel&#39;,
         host: host
       });
   }
-}
-```</p>
-<h2 id="hiding-previous-errors">Hiding previous errors</h2>
+}</code></pre></div><h2 id="hiding-previous-errors">Hiding previous errors</h2>
 <p>Here is an example usage of a typical success/error handling.
 It features hiding previous notifications. We recommended you to use the <em>WithNotifications</em> interface for that case.</p>
-<p>```ts
-export class MuffinComponent implements WithNotifications {
+<div><pre class="line-numbers"><code class="language-ts">export class MuffinComponent implements WithNotifications {
   /** Recent Error notification */
-  notifications: Notification[] = [];</p>
-<p>constructor(
+  notifications: Notification[] = [];
+
+constructor(
     public bakery:BakeryService,
     public notificationService: NotificationsService,
-    )</p>
-<p>  bake() {
+    )
+
+  bake() {
     this.bakery.bake().then(()=&gt; {
         this.notificationService.emit({
             title: &#39;Muffin was baken!&#39;,
@@ -373,9 +367,7 @@ export class MuffinComponent implements WithNotifications {
         })
     });
   }
-}
-```</p>
-<p>The hide option is useful to hide obsolete errors. E.g. If you successfully log in after one failiure, the sticky error notification of the first attempt will be hidden. This enables you to keep errors messages as long as they are needed.
+}</code></pre></div><p>The hide option is useful to hide obsolete errors. E.g. If you successfully log in after one failiure, the sticky error notification of the first attempt will be hidden. This enables you to keep errors messages as long as they are needed.
 Instead of replace, you could also use append (see notification.component.ts for implementation).</p>
 </p>
     </div>

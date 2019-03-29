@@ -52,33 +52,23 @@
 <li><a href="https://stackblitz.com/fork/angular">Create Angular Stackblitz</a></li>
 <li>import styles to index.html:</li>
 </ul>
-<p>```html</p>
-<link rel="stylesheet" href="https://icons.entrecode.de/ec-icons-4.0.1.min.css" />
-<link href="https://unpkg.com/@ec.components/style@latest/default.css" rel="stylesheet"/>
-```
-
-<ul>
+<div><pre class="line-numbers"><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://icons.entrecode.de/ec-icons-4.0.1.min.css&quot; /&gt;
+&lt;link href=&quot;https://unpkg.com/&#64;ec.components/style&#64;latest/default.css&quot; rel=&quot;stylesheet&quot;/&gt;</code></pre></div><ul>
 <li>Add @ec.components package(s):</li>
 </ul>
-<p><code>json
-&quot;@ec.components/calendar&quot;: &quot;^0.2.6&quot;,
-/** any other components module */</code></p>
-<ul>
+<div><pre class="line-numbers"><code class="language-json">&quot;&#64;ec.components/calendar&quot;: &quot;^0.2.6&quot;,
+/** any other components module */</code></pre></div><ul>
 <li>import module(s):</li>
 </ul>
-<p><code>ts
-import { CalendarModule } from &#39;@ec.components/calendar&#39;;
-@NgModule({
+<div><pre class="line-numbers"><code class="language-ts">import { CalendarModule } from &#39;&#64;ec.components/calendar&#39;;
+&#64;NgModule({
   imports:      [ /* .. */ CalendarModule ],
   /* ... */
 })
-export class AppModule { }</code></p>
-<ul>
+export class AppModule { }</code></pre></div><ul>
 <li>use component(s) in app.component.html:</li>
 </ul>
-<p><code>html
-&lt;ec-calendar&gt;&lt;/ec-calendar&gt;</code></p>
-
+<div><pre class="line-numbers"><code class="language-html">&lt;ec-calendar&gt;&lt;/ec-calendar&gt;</code></pre></div>
                    </div><div class="search-results">
     <div class="has-results">
         <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
