@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.41.0](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.40.0...@ec.components/ui@0.41.0) (2019-03-29)
+
+
+### Bug Fixes
+
+* formControl Input for select ([bcbbc51](https://github.com/entrecode/ec.components/commit/bcbbc51))
+* improved input focus behaviour ([35022a6](https://github.com/entrecode/ec.components/commit/35022a6))
+* keep list header filter form immutable ([6f53065](https://github.com/entrecode/ec.components/commit/6f53065))
+* list-header: could not retoggle list-filter ([041cd83](https://github.com/entrecode/ec.components/commit/041cd83))
+* rxjs throwError import ([c0c7f17](https://github.com/entrecode/ec.components/commit/c0c7f17))
+
+
+### Features
+
+* added defaultFilter setting to ListConfig ([d8c67be](https://github.com/entrecode/ec.components/commit/d8c67be))
+* hideOnEscape option for pop ([7d50c5f](https://github.com/entrecode/ec.components/commit/7d50c5f))
+* ready emitter for input component ([e2bbf1a](https://github.com/entrecode/ec.components/commit/e2bbf1a))
+* reworked list-header ([ea24c06](https://github.com/entrecode/ec.components/commit/ea24c06))
+
+
+
+
+
 # [0.40.0](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.39.3...@ec.components/ui@0.40.0) (2019-03-22)
 
 
