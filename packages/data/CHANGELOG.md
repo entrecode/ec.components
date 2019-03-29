@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.46.3](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.46.2...@ec.components/data@0.46.3) (2019-03-29)
+
+
+### Bug Fixes
+
+* showHeader back to list template ([ea4ba17](https://github.com/entrecode/ec.components/commit/ea4ba17))
+
+
+
+
+
 ## [0.46.2](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.46.1...@ec.components/data@0.46.2) (2019-03-29)
 
 
