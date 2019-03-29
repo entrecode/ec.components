@@ -42,8 +42,6 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   protected group: FormGroup;
   /** The form control that is used */
   protected control: FormControl;
-  /** The formControl that is used. */
-  @Input() formControl: FormControl;
   /** The value that should be prefilled */
   @Input() value: Array<EntryResource>;
   /** The model to pick from, alternative to field with model property set. */
@@ -54,6 +52,8 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   public dropdownConfig: CrudConfig<EntryResource>;
   /** Wether or not the selection should be solo */
   @Input() solo: boolean;
+  /** The event that focuses the input */
+  @Input() focusEvent: EventEmitter<boolean> = new EventEmitter();
   /** The config that should be merged into the generated config */
   // tslint:disable-next-line:no-input-rename
   @Input('config') crudConfig: CrudConfig<EntryResource>;
@@ -77,6 +77,8 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   lightModel: any;
   /** Model list that is only loaded when needing to pick the model first. */
   models;
+  /** Promise that resolves when the config is ready */
+  ready: Promise<CrudConfig<EntryResource>>;
 
   constructor(private modelConfig: ModelConfigService,
     public resourceService: ResourceService,
@@ -103,17 +105,19 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
     }
   }
 
-  togglePop(e) {
-    if (this.dropdown) {
-      this.dropdown.show(e);
-    } else if (this.entryListPop && !this.config.disableListPop) {
-      this.entryListPop.show(e);
-    } else if (this.entryPop && !this.config.disableCreatePop) {
-      this.entryPop.show();
-    }
-    if (this.searchbar) {
-      this.searchbar.focusEvent.emit(true);
-    }
+  togglePop(e?, noFocus = false) {
+    this.ready.then(() => {
+      if (this.dropdown) {
+        this.dropdown.show(e);
+      } else if (this.entryListPop && !this.config.disableListPop) {
+        this.entryListPop.show(e);
+      } else if (this.entryPop && !this.config.disableCreatePop) {
+        this.entryPop.show();
+      }
+      if (this.searchbar && !noFocus) {
+        this.focusEvent.emit(true);
+      }
+    });
   }
 
   defaultPlaceholder() {
@@ -124,18 +128,20 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   }
 
   /** Calls super.useConfig and then creates special dropdownConfig with just entryTitle as field  */
-  useConfig(config: CrudConfig<EntryResource> = {}) {
+  useConfig(config: CrudConfig<EntryResource> = {}): Promise<CrudConfig<EntryResource>> {
     super.useConfig(config);
     this.dropdownConfig = Object.assign({}, this.config, {
-      fields: {
+      disableHeader: true,
+      fields: this.config.dropdownFields || {
         [this.config.label]: Object.assign({}, (this.config.fields || {})[this.config.label]),
         _modified: { hideInList: true }
       }
     });
-    this.auth.getAllowedModelMethods(this.model, this.config.methods)
+    return this.auth.getAllowedModelMethods(this.model, this.config.methods)
       .then((methods) => {
         this.cdr.markForCheck();
         this.config.methods = methods;
+        return this.config;
       });
   }
 
@@ -156,7 +162,7 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
       this.formControl = new FormControl(this.value || []);
     }
     if (this.config) {
-      this.useConfig(this.config);
+      this.ready = this.useConfig(this.config);
       return;
     }
     if (!this.model && this.sdk.api) {
@@ -168,17 +174,22 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
     this.modelConfig.getLightModel(this.model)
       .then(model => this.lightModel = model);
 
-    this.modelConfig.generateConfig(this.model) // , (this.config || {}).fields
+    this.ready = this.modelConfig.generateConfig(this.model) // , (this.config || {}).fields
       .then((config) => {
         this.config = Object.assign(config, this.crudConfig,
           { solo: this.solo, selectMode: false, disableSelectSwitch: true });
-        this.useConfig(this.config);
+        return this.useConfig(this.config);
       });
   }
 
   /** Fires initConfig */
   ngOnInit() {
     this.initConfig();
+    this.focusEvent.subscribe((focus) => {
+      if (focus) {
+        this.togglePop(null, true);
+      }
+    });
   }
 
   /** Fires initConfig */
@@ -218,7 +229,7 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
 
   focusSearchbar() {
     if (!this.entryListPop || !this.entryListPop.active) {
-      this.searchbar.focusEvent.emit(true);
+      this.focusEvent.emit(true);
     }
   }
 

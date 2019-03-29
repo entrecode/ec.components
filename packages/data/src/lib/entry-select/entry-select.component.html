@@ -27,7 +27,7 @@
         <div class="drag-placeholder" style="width: 48px;"></div>
       </li>
       <li *ngIf="!config?.disableSearchbar" class="ec-select__searchbar">
-        <ec-searchbar [autofocus]="false" [property]="lightModel?.titleField" [placeholder]="placeholder||defaultPlaceholder()"
+        <ec-searchbar [focusEvent]="focusEvent" [autofocus]="false" [property]="lightModel?.titleField" [placeholder]="placeholder||defaultPlaceholder()"
         (keypressed)="handleKey($event,dropdownList)" (focus)="focus($event)" (pasted)="pasteValue($event)" (queryChanged)="filterDropdownList(dropdownList,$event)"></ec-searchbar>
       </li>
     </ul>

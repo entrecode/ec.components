@@ -4,14 +4,15 @@
     </button>
     <header class="toast-header">
         {{getHeader(entryList)}}
-        <ec-searchbar (selected)="selection.toggle($event)" placeholder="Search.." [list]="entryList" *ngIf="entryList"
-            #searchbar [property]="lightModel?.titleField" [listComponent]="entryList"></ec-searchbar>
+        <!-- <ec-searchbar (selected)="selection.toggle($event)" placeholder="Search.." [list]="entryList" *ngIf="entryList"
+            #searchbar [property]="lightModel?.titleField" [listComponent]="entryList"></ec-searchbar> -->
         <ec-list-header [list]="entryList?.list" [selection]="selection"></ec-list-header>
     </header>
     <div class="toast-body">
         <ec-loader class="ec-loader loader is-local" #entryListLoader></ec-loader>
-        <ec-entry-list #entryList [loader]="entryListLoader" (changed)="searchbar.updatedList($event)" [model]="model"
-            [config]="config" [selection]="selection" (columnClicked)="select($event)" #entryList></ec-entry-list>
+        <ec-entry-list #entryList [loader]="entryListLoader" [model]="model" [config]="config" [selection]="selection"
+            (columnClicked)="select($event)" #entryList></ec-entry-list>
+        <!-- (changed)="searchbar.updatedList($event)"  -->
     </div>
     <div class="toast-footer">
         <ec-pagination [pagination]="entryList?.list?.pagination"></ec-pagination>

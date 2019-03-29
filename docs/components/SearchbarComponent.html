@@ -143,10 +143,6 @@ Supports autofocus and arrow navigation. </p>
                             </li>
                             <li>
                                     <span class="modifier">Public</span>
-                                <a href="#focusEvent">focusEvent</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
                                 <a href="#keySubject">keySubject</a>
                             </li>
                             <li>
@@ -230,6 +226,9 @@ Supports autofocus and arrow navigation. </p>
                             </li>
                             <li>
                                 <a href="#defaultPlaceholder">defaultPlaceholder</a>
+                            </li>
+                            <li>
+                                <a href="#focusEvent">focusEvent</a>
                             </li>
                             <li>
                                 <a href="#list">list</a>
@@ -441,6 +440,38 @@ Supports autofocus and arrow navigation. </p>
                 <tr>
                     <td class="col-md-4">
                         <div class="io-description"><p>Default placeholder when no placeholder is given </p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="focusEvent"></a>
+                        <b>focusEvent</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code><a href="../miscellaneous/variables.html#en" target="_self" >EventEmitter&lt;boolean&gt;</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new EventEmitter()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">packages/ui/src/lib/list/searchbar/searchbar.component.ts:33</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The event that focuses the input </p>
 </div>
                     </td>
                 </tr>
@@ -1391,45 +1422,6 @@ select is emitted immediately with a pseudo item containing the value as item id
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="focusEvent"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Public</span>
-                            focusEvent</b>
-                            <a href="#focusEvent"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>    <code><a href="../miscellaneous/variables.html#en" target="_self" >EventEmitter&lt;boolean&gt;</a></code>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>new EventEmitter()</code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">packages/ui/src/lib/list/searchbar/searchbar.component.ts:33</a></div>
-                            </td>
-                        </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>The event that focuses the input </p>
-</div>
-                    </td>
-                </tr>
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
                         <a name="keySubject"></a>
                         <span class="name">
                             <b>
@@ -1664,7 +1656,7 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
   /** If true, the input will be autofocused */
   @Input() autofocus &#x3D; true;
   /** The event that focuses the input */
-  public focusEvent: EventEmitter&lt;boolean&gt; &#x3D; new EventEmitter();
+  @Input() focusEvent: EventEmitter&lt;boolean&gt; &#x3D; new EventEmitter();
   /** Delay until search is fired */
   @Input() debounceTime &#x3D; 200;
   /** Subject that is triggered on keyup */

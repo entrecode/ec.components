@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.24.0](https://github.com/entrecode/ec.components/compare/@ec.components/core@0.23.0...@ec.components/core@0.24.0) (2019-03-29)
+
+
+### Bug Fixes
+
+* keep list header filter form immutable ([6f53065](https://github.com/entrecode/ec.components/commit/6f53065))
+
+
+### Features
+
+* added defaultFilter setting to ListConfig ([d8c67be](https://github.com/entrecode/ec.components/commit/d8c67be))
+* defaultFilter setting for listConfig ([efb984e](https://github.com/entrecode/ec.components/commit/efb984e))
+
+
+
+
+
 # [0.23.0](https://github.com/entrecode/ec.components/compare/@ec.components/core@0.22.0...@ec.components/core@0.23.0) (2019-03-22)
 
 

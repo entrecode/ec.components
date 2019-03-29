@@ -1,4 +1,4 @@
-import { SdkService } from '@ec.components/data';
+import { SdkService, ResourceConfig } from '@ec.components/data';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,7 +10,15 @@ export class ResourceSelectDemoComponent implements OnInit {
     multi;
     solo;
     datamanager;
-    constructor(public sdk: SdkService) { }
+    constructor(public sdk: SdkService, public resourceConfig: ResourceConfig) { }
+
+    assetSelectConfig = {
+        disableCreatePop: true, label: 'title',
+        dropdownFields: {
+            preview: this.resourceConfig.get('asset.fields.thumb'),
+            title: this.resourceConfig.get('asset.fields.title'),
+        }
+    };
 
     ngOnInit() {
         this.sdk.ready

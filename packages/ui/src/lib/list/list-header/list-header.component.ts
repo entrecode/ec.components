@@ -1,10 +1,9 @@
-import { Component, Input, QueryList, ViewChild, ViewChildren, ChangeDetectionStrategy, OnInit, OnChanges } from '@angular/core';
-import { PopComponent } from '../../pop/pop.component';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges, ViewChild } from '@angular/core';
+import { Field, List, ListConfig, Selection } from '@ec.components/core';
 import { FormComponent } from '../../form/form.component';
-import { List, ListConfig } from '@ec.components/core';
-import { Selection } from '@ec.components/core';
-import { Field } from '@ec.components/core';
+import { PopComponent } from '../../pop/pop.component';
 import { ListConfigService } from '../list-config.service';
+import { InputComponent } from '../../io/input/input.component';
 
 /** This component renders, as the name states, the header of a list.*/
 @Component({
@@ -18,22 +17,31 @@ export class ListHeaderComponent implements OnChanges {
   /** The selection instance. This is optional. If It is not provided, no checkbox will be visible.*/
   @Input() selection: Selection<any>;
   /** The pop dropdowns that contain the filtering */
-  @ViewChildren('filterPop') pops: QueryList<PopComponent>;
+  @ViewChild('filterPop') filterPop: PopComponent;
   /** The config for the filter form */
   filterFormConfig: ListConfig<any>;
   filteredField: any;
   filterForm: FormComponent<any>;
+  filterInput: InputComponent;
 
-  constructor(public listConfig: ListConfigService) {
+  constructor(public listConfig: ListConfigService, public cdr: ChangeDetectorRef) {
   }
 
   setFilter(field, value) {
     this.list.setFilter({ [field.property]: value });
   }
 
+  inputReady(input) {
+    this.filterInput = input;
+    input.focus(true);
+  }
+
   initFilterForm(filterForm) {
     // is called when form is ready
     this.filterForm = filterForm;
+    if (this.list.config.defaultFilter) {
+      this.filterField(this.list.config.defaultFilter);
+    }
   }
 
   ngOnChanges(changes?) {
@@ -43,63 +51,77 @@ export class ListHeaderComponent implements OnChanges {
     if (!this.list || !this.list.config || !this.list.config.fields) {
       return;
     }
-    const fieldConfig = this.list.config.fields;
-    const filterableFields = Object.keys(fieldConfig).reduce((fields, property) => {
-      if (fieldConfig[property].filterable) {
-        return {
-          ...fields,
-          [property]: {
-            ...fieldConfig[property],
-            required: false,
-            readOnly: false,
-            autofocus: true
-          }
-        };
+    /* this.list.change$.subscribe(() => {
+      if (this.filterInput) {
+        // this.filterInput.focus(true);
       }
-      return fields;
-    }, {});
-
+    }); */
     this.filterFormConfig = {
       ...this.list.config,
-      fields: filterableFields
+      fields: this.list.filterableFields().reduce((fields, field) => {
+        return {
+          ...fields,
+          [field.property]: {
+            ...this.list.config.fields[field.property],
+            required: false,
+            readOnly: false,
+            autofocus: true,
+            nestedCrudConfig: {
+              ...field.nestedCrudConfig,
+              methods: ['get'],
+            },
+          }
+        };
+      }, {})
     };
   }
 
   /** opens the given filter pop and closes all others */
-  public editFilter(pop, field) {
+  public filterField(property) {
     if (this.filteredField) {
-      if (this.filteredField.property === field.property) {
-        pop.hide();
+      if (this.filteredField.property === property) {
+        /* this.filterPop.hide(); */
+        if (this.filterInput) {
+          this.filterInput.focus(true);
+        }
         return;
       }
       this.clearFilter();
     }
-    if (!field) {
+    // patch current filter value to control
+    const control = this.filterForm.group.get(property);
+    if (!control) {
+      console.warn('no control found for ' + property + '. Is it filterable?', this.list.config);
       return;
     }
-    field.autofocus = true;
-    field.nestedCrudConfig = {
-      ...field.nestedCrudConfig,
-      methods: ['get'],
-    };
-    // patch current filter value to control
-    this.filterForm.group.get(field.property).patchValue(this.list.getFilterValue(field.property));
-    this.filteredField = field;
-    pop.show();
+    this.filterForm.group.get(property).patchValue(this.list.getFilterValue(property));
+    this.filteredField = this.filterForm.form.getField(property);
+    setTimeout(() => this.filterPop.show());
   }
 
-  clearFilter() {
-    if (!this.filteredField || !this.list.isFiltered(this.filteredField.property)) {
+  resetFilter() {
+    if (!this.filteredField || !this.list || !this.list.isFiltered(this.filteredField.property)) {
       return;
     }
     this.filterForm.group.get(this.filteredField.property).reset();
     this.list.clearFilter();
+  }
+
+  clearFilter() {
+    if (!this.filteredField || !this.list.isFiltered(this.filteredField.property)) {
+      delete this.filteredField;
+      return;
+    }
+    this.resetFilter();
     delete this.filteredField;
   }
 
   toggledFilterPop(active) {
     if (!active) {
       this.clearFilter();
+    }
+    if (this.filterInput) {
+      this.filterInput.focus(true);
     }
   }
 

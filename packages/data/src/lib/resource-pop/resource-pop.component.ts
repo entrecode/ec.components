@@ -57,7 +57,7 @@ export class ResourcePopComponent extends PopComponent {
 
     /** Returns true if the given method is part of the methods array (or if there is no methods array) */
     public hasMethod(method: string) {
-        return this.config.methods && this.config.methods.indexOf(method) !== -1;
+        return this.config && this.config.methods && this.config.methods.indexOf(method) !== -1;
     }
 
     /** Determines if the current form can be saved, based on the allowed method (edit/update). */

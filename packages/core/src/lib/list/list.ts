@@ -279,6 +279,10 @@ export class List<T> extends Collection<Item<T>> {
   public sortableFields() {
     return this.fields.filter(field => field.sortable);
   }
+  /** Returns an array of all sortable fields */
+  public filterableFields() {
+    return this.fields.filter(field => field.filterable);
+  }
   /** Returns true if the given field index in the visible fields is higher than maxColumns.  */
   public isOverTheMax(field: Field) {
     return this.fields.filter(f => !f.hideInList).indexOf(field) >= this.config.maxColumns;

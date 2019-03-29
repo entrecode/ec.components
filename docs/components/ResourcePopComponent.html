@@ -263,6 +263,9 @@ It is also possible to bind an entry directly which will then be bound to the fo
                                 <a href="#hideOnClickOutside">hideOnClickOutside</a>
                             </li>
                             <li>
+                                <a href="#hideOnEscape">hideOnEscape</a>
+                            </li>
+                            <li>
                                 <a href="#type">type</a>
                             </li>
                         </ul>
@@ -606,7 +609,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
                             </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in PopComponent:29</div>
+                                    <div class="io-line">Defined in PopComponent:28</div>
                             </td>
                         </tr>
                 <tr>
@@ -638,12 +641,44 @@ It is also possible to bind an entry directly which will then be bound to the fo
                             </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in PopComponent:35</div>
+                                    <div class="io-line">Defined in PopComponent:34</div>
                             </td>
                         </tr>
                 <tr>
                     <td class="col-md-4">
                         <div class="io-description"><p>If set to true, the pop will hide when a click happens outside the pop. </p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="hideOnEscape"></a>
+                        <b>hideOnEscape</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4" colspan="2">
+                                    <div class="io-line">Inherited from     <code><a href="../components/PopComponent.html" target="_self" >PopComponent</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in PopComponent:36</div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>If set to false, esc will not close the pop </p>
 </div>
                     </td>
                 </tr>
@@ -671,7 +706,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
                             </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in PopComponent:33</div>
+                                    <div class="io-line">Defined in PopComponent:32</div>
                             </td>
                         </tr>
                 <tr>
@@ -761,7 +796,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
                             </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in PopComponent:37</div>
+                                    <div class="io-line">Defined in PopComponent:38</div>
                             </td>
                         </tr>
             </tbody>
@@ -836,7 +871,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in PopComponent:42</div>
+                                    <div class="io-line">Defined in PopComponent:43</div>
                             </td>
                         </tr>
 
@@ -1677,7 +1712,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in PopComponent:90</div>
+                                    <div class="io-line">Defined in PopComponent:92</div>
                             </td>
                         </tr>
 
@@ -2132,7 +2167,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in PopComponent:31</div>
+                                    <div class="io-line">Defined in PopComponent:30</div>
                             </td>
                         </tr>
 
@@ -2165,7 +2200,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in PopComponent:39</div>
+                                    <div class="io-line">Defined in PopComponent:40</div>
                             </td>
                         </tr>
 
@@ -2271,7 +2306,7 @@ export class ResourcePopComponent extends PopComponent {
 
     /** Returns true if the given method is part of the methods array (or if there is no methods array) */
     public hasMethod(method: string) {
-        return this.config.methods &amp;&amp; this.config.methods.indexOf(method) !&#x3D;&#x3D; -1;
+        return this.config &amp;&amp; this.config.methods &amp;&amp; this.config.methods.indexOf(method) !&#x3D;&#x3D; -1;
     }
 
     /** Determines if the current form can be saved, based on the allowed method (edit/update). */

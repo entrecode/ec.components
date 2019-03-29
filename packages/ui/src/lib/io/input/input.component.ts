@@ -25,6 +25,8 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
   @Input() control: AbstractControl;
   /** The changed ouput emits whenever the form control of the input changes. */
   @Output() changed = new EventEmitter();
+  /** Emits when the component has been loaded */
+  @Output() ready = new EventEmitter();
   /** Debounce time in ms before the changed event emits. */
   @Input() debounce = 0;
   /** The instance of field that should be used in the template, can also be a property name. */
@@ -53,9 +55,11 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
     }
   }
 
-  focus() {
+  focus(focus = true) {
     if (this.componentInstance && this.componentInstance.focusEvent) {
-      this.componentInstance.focusEvent.emit(true);
+      this.componentInstance.focusEvent.emit(focus);
+    } else {
+      console.warn('could not focus component', this.componentInstance);
     }
   }
 
@@ -82,11 +86,13 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
       item: this.item,
       field: this.field,
       input: this,
-      config: this.config || this.field.config || {}
+      config: this.config || this.field.config || {},
+      focusEvent: this.focusEvent
     };
     const componentRef = this.loadComponent(this.component || this.field.input || DefaultInputComponent, data);
     this.componentInstance = componentRef.instance;
     this.connectControl();
+    this.ready.emit(this);
     if (this.componentInstance.control) {
       this.componentInstance.control.valueChanges
         .pipe(

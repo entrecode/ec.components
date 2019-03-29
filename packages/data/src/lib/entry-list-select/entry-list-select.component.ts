@@ -69,6 +69,7 @@ export class EntryListSelectComponent extends InputComponent implements ControlV
                     this.listConfig = config;
                     this.selectionConfig = Object.assign({}, this.listConfig, {
                         disableHeader: false,
+                        defaultFilter: false,
                         hidePagination: true,
                         fields: Object.assign({},
                             this.listConfig.fields,

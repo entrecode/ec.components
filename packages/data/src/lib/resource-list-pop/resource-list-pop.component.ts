@@ -48,6 +48,6 @@ export class ResourceListPopComponent extends PopComponent implements OnChanges 
         } else if (this.selection) {
             this.selection.toggle(item);
         }
-        this.searchbar.focusEvent.emit(true);
+        // this.searchbar.focusEvent.emit(true);
     }
 }

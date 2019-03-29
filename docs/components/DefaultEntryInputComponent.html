@@ -251,7 +251,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>focus()</code>
+<code>focus(focus)</code>
                     </td>
                 </tr>
 
@@ -273,9 +273,40 @@
                     <td class="col-md-4">
 
                             <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                                    <td>Default value</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>focus</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <code>true</code>
+                                                        </td>
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
                                 <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                             </div>
+                                <div class="io-description">
+                                    
+                                </div>
                     </td>
                 </tr>
             </tbody>
@@ -589,11 +620,11 @@ export class DefaultEntryInputComponent extends DefaultInputComponent {
         <pre class="line-numbers"><code class="language-html">&lt;div [ngSwitch]&#x3D;&quot;field.inputView||field.type&quot; *ngIf&#x3D;&quot;group&quot; [formGroup]&#x3D;&quot;group&quot;&gt;
   &lt;ec-input-errors [control]&#x3D;&quot;group.get(field.property)&quot;&gt;&lt;/ec-input-errors&gt;
   &lt;div *ngSwitchCase&#x3D;&quot;&#x27;entry-select&#x27;&quot;&gt;
-    &lt;ec-entry-select [placeholder]&#x3D;&quot;field.placeholder&quot; [formControl]&#x3D;&quot;group.get(field.property)&quot;
+    &lt;ec-entry-select [focusEvent]&#x3D;&quot;focusEvent&quot; [placeholder]&#x3D;&quot;field.placeholder&quot; [formControl]&#x3D;&quot;group.get(field.property)&quot;
       [model]&#x3D;&quot;field[&#x27;relation&#x27;]&quot; [id]&#x3D;&quot;field.id&quot; [solo]&#x3D;&quot;true&quot; [config]&#x3D;&quot;field.nestedCrudConfig&quot;&gt;&lt;/ec-entry-select&gt;
   &lt;/div&gt;
   &lt;div *ngSwitchCase&#x3D;&quot;&#x27;entries-select&#x27;&quot;&gt;
-    &lt;ec-entry-select [placeholder]&#x3D;&quot;field.placeholder&quot; [formControl]&#x3D;&quot;group.get(field.property)&quot;
+    &lt;ec-entry-select [focusEvent]&#x3D;&quot;focusEvent&quot; [placeholder]&#x3D;&quot;field.placeholder&quot; [formControl]&#x3D;&quot;group.get(field.property)&quot;
       [model]&#x3D;&quot;field[&#x27;relation&#x27;]&quot; [id]&#x3D;&quot;field.id&quot; [config]&#x3D;&quot;field.nestedCrudConfig&quot;&gt;&lt;/ec-entry-select&gt;
   &lt;/div&gt;
   &lt;div *ngSwitchCase&#x3D;&quot;&#x27;entry-list-select&#x27;&quot;&gt;
@@ -655,7 +686,7 @@ export class DefaultEntryInputComponent extends DefaultInputComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div [ngSwitch]="field.inputView||field.type" *ngIf="group" [formGroup]="group">  <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>  <div *ngSwitchCase="\'entry-select\'">    <ec-entry-select [placeholder]="field.placeholder" [formControl]="group.get(field.property)"      [model]="field[\'relation\']" [id]="field.id" [solo]="true" [config]="field.nestedCrudConfig"></ec-entry-select>  </div>  <div *ngSwitchCase="\'entries-select\'">    <ec-entry-select [placeholder]="field.placeholder" [formControl]="group.get(field.property)"      [model]="field[\'relation\']" [id]="field.id" [config]="field.nestedCrudConfig"></ec-entry-select>  </div>  <div *ngSwitchCase="\'entry-list-select\'">    <!--  [placeholder]="field.placeholder" -->    <!--  [config]="field.nestedCrudConfig" -->    <ec-entry-list-select [formControl]="group.get(field.property)" [model]="field[\'relation\']" [id]="field.id"      [listConfig]="field.nestedCrudConfig">    </ec-entry-list-select>  </div>  <div *ngSwitchCase="\'asset-select\'">    <ec-asset-select [readOnly]="field.readOnly" [config]="field.nestedCrudConfig" [placeholder]="field.placeholder"      [formControl]="group.get(field.property)" [id]="field.id" [solo]="true" assetGroupID="legacyAsset">    </ec-asset-select>  </div>  <div *ngSwitchCase="\'assets-select\'">    <ec-asset-select [readOnly]="field.readOnly" [config]="field.nestedCrudConfig" [placeholder]="field.placeholder"      [formControl]="group.get(field.property)" [id]="field.id" assetGroupID="legacyAsset"></ec-asset-select>  </div>  <div *ngSwitchCase="\'dmAsset-select\'">    <ec-asset-select [readOnly]="field.readOnly" [config]="field.nestedCrudConfig" [placeholder]="field.placeholder"      [formControl]="group.get(field.property)" [id]="field.id" [solo]="true" [assetGroupID]="field[\'relation\']">    </ec-asset-select>  </div>  <div *ngSwitchCase="\'dmAssets-select\'">    <ec-asset-select [readOnly]="field.readOnly" [config]="field.nestedCrudConfig" [placeholder]="field.placeholder"      [formControl]="group.get(field.property)" [id]="field.id" [assetGroupID]="field[\'relation\']"></ec-asset-select>  </div>  <input *ngSwitchCase="\'phone\'" type="text" [placeholder]="field.placeholder" [id]="field.id">  <div *ngSwitchDefault>    <marquee>🚂🚃🚃🚃 {{field.type}} input coming soon..</marquee>    <ec-output [field]="field" [item]="item"></ec-output>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div [ngSwitch]="field.inputView||field.type" *ngIf="group" [formGroup]="group">  <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>  <div *ngSwitchCase="\'entry-select\'">    <ec-entry-select [focusEvent]="focusEvent" [placeholder]="field.placeholder" [formControl]="group.get(field.property)"      [model]="field[\'relation\']" [id]="field.id" [solo]="true" [config]="field.nestedCrudConfig"></ec-entry-select>  </div>  <div *ngSwitchCase="\'entries-select\'">    <ec-entry-select [focusEvent]="focusEvent" [placeholder]="field.placeholder" [formControl]="group.get(field.property)"      [model]="field[\'relation\']" [id]="field.id" [config]="field.nestedCrudConfig"></ec-entry-select>  </div>  <div *ngSwitchCase="\'entry-list-select\'">    <!--  [placeholder]="field.placeholder" -->    <!--  [config]="field.nestedCrudConfig" -->    <ec-entry-list-select [formControl]="group.get(field.property)" [model]="field[\'relation\']" [id]="field.id"      [listConfig]="field.nestedCrudConfig">    </ec-entry-list-select>  </div>  <div *ngSwitchCase="\'asset-select\'">    <ec-asset-select [readOnly]="field.readOnly" [config]="field.nestedCrudConfig" [placeholder]="field.placeholder"      [formControl]="group.get(field.property)" [id]="field.id" [solo]="true" assetGroupID="legacyAsset">    </ec-asset-select>  </div>  <div *ngSwitchCase="\'assets-select\'">    <ec-asset-select [readOnly]="field.readOnly" [config]="field.nestedCrudConfig" [placeholder]="field.placeholder"      [formControl]="group.get(field.property)" [id]="field.id" assetGroupID="legacyAsset"></ec-asset-select>  </div>  <div *ngSwitchCase="\'dmAsset-select\'">    <ec-asset-select [readOnly]="field.readOnly" [config]="field.nestedCrudConfig" [placeholder]="field.placeholder"      [formControl]="group.get(field.property)" [id]="field.id" [solo]="true" [assetGroupID]="field[\'relation\']">    </ec-asset-select>  </div>  <div *ngSwitchCase="\'dmAssets-select\'">    <ec-asset-select [readOnly]="field.readOnly" [config]="field.nestedCrudConfig" [placeholder]="field.placeholder"      [formControl]="group.get(field.property)" [id]="field.id" [assetGroupID]="field[\'relation\']"></ec-asset-select>  </div>  <input *ngSwitchCase="\'phone\'" type="text" [placeholder]="field.placeholder" [id]="field.id">  <div *ngSwitchDefault>    <marquee>🚂🚃🚃🚃 {{field.type}} input coming soon..</marquee>    <ec-output [field]="field" [item]="item"></ec-output>  </div></div></div>'
     var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'ActionbarComponent', 'selector': 'ec-actionbar'},{'name': 'AdminEntryInputComponent', 'selector': ''},{'name': 'ApiActionbarComponent', 'selector': 'ec-api-actionbar'},{'name': 'AssetgroupSelectComponent', 'selector': 'ec-assetgroup-select'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DaterangeComponent', 'selector': 'ec-daterange'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryListPopComponent', 'selector': 'ec-entry-list-pop'},{'name': 'EntryListSelectComponent', 'selector': 'ec-entry-list-select'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'HeatmapComponent', 'selector': 'ec-heatmap'},{'name': 'IconComponent', 'selector': 'ec-icon'},{'name': 'ImageSelectPopComponent', 'selector': 'ec-image-select-pop'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LocationMapComponent', 'selector': 'ec-location-map'},{'name': 'LocationPickerComponent', 'selector': 'ec-location-picker'},{'name': 'LocationSearchComponent', 'selector': 'ec-location-search'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'ModalComponent', 'selector': 'ec-modal'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceActionbarComponent', 'selector': 'ec-resource-actionbar'},{'name': 'ResourceCrudComponent', 'selector': 'ec-resource-crud'},{'name': 'ResourceDeletePopComponent', 'selector': 'ec-resource-delete-pop'},{'name': 'ResourceFormComponent', 'selector': 'ec-resource-form'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'ResourceListPopComponent', 'selector': 'ec-resource-list-pop'},{'name': 'ResourcePopComponent', 'selector': 'ec-resource-pop'},{'name': 'ResourceSelectComponent', 'selector': 'ec-resource-select'},{'name': 'SearchbarComponent', 'selector': 'ec-searchbar'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SignupComponent', 'selector': 'ec-signup'},{'name': 'SignupFormComponent', 'selector': 'ec-signup-form'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TagSelectComponent', 'selector': 'ec-tag-select'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'UploadComponent', 'selector': 'ec-upload'},{'name': 'UploadSelectComponent', 'selector': 'ec-upload-select'}];
     var DIRECTIVES = [{'name': 'AssetDirective', 'selector': '[ecAsset]'},{'name': 'DropzoneDirective', 'selector': '[ecDropzone]'},{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'FocusDirective', 'selector': '[ecFocus]'},{'name': 'ImageDirective', 'selector': 'img [ecImage]'},{'name': 'SlotHostDirective', 'selector': '[ecSlotHost]'}];
     var ACTUAL_COMPONENT = {'name': 'DefaultEntryInputComponent'};

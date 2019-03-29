@@ -1,11 +1,11 @@
 <div [ngSwitch]="field.inputView||field.type" *ngIf="group" [formGroup]="group">
   <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>
   <div *ngSwitchCase="'entry-select'">
-    <ec-entry-select [placeholder]="field.placeholder" [formControl]="group.get(field.property)"
+    <ec-entry-select [focusEvent]="focusEvent" [placeholder]="field.placeholder" [formControl]="group.get(field.property)"
       [model]="field['relation']" [id]="field.id" [solo]="true" [config]="field.nestedCrudConfig"></ec-entry-select>
   </div>
   <div *ngSwitchCase="'entries-select'">
-    <ec-entry-select [placeholder]="field.placeholder" [formControl]="group.get(field.property)"
+    <ec-entry-select [focusEvent]="focusEvent" [placeholder]="field.placeholder" [formControl]="group.get(field.property)"
       [model]="field['relation']" [id]="field.id" [config]="field.nestedCrudConfig"></ec-entry-select>
   </div>
   <div *ngSwitchCase="'entry-list-select'">

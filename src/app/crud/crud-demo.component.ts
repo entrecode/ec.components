@@ -9,6 +9,7 @@ import { ResourceConfig } from '@ec.components/data';
 })
 export class CrudDemoComponent {
   public muffinConfig = {
+    defaultFilter: 'name',
     develop: true,
     singularLabel: 'Muffin',
     createLabel: 'Neuer Muffin', size: 15,

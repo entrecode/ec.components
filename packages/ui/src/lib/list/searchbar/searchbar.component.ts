@@ -30,7 +30,7 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
   /** If true, the input will be autofocused */
   @Input() autofocus = true;
   /** The event that focuses the input */
-  public focusEvent: EventEmitter<boolean> = new EventEmitter();
+  @Input() focusEvent: EventEmitter<boolean> = new EventEmitter();
   /** Delay until search is fired */
   @Input() debounceTime = 200;
   /** Subject that is triggered on keyup */

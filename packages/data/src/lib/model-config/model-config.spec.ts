@@ -6,12 +6,12 @@ describe('ModelConfig', () => {
     expect(ModelConfigService).toBeTruthy();
   });
 
-  it('should be able to set and get configurations', () => {
+  /* it('should be able to set and get configurations', () => {
     // ModelConfig.set('duck', { fields: { name: 'Custom Name' } });
     // expect(ModelConfig.get('duck').fields.name).toBe('Custom Name');
-  });
+  }); */
 
-  it('should generate a field config from scratch', () => {
+  // it('should generate a field config from scratch', () => {
     /*const s = sinon.stub(Datamanager, 'schema');
     s.returns(muffinSchema);*/ // TODO
     /*return ModelConfig.generateConfig('muffin').then((config) => {
@@ -23,6 +23,6 @@ describe('ModelConfig', () => {
       s.restore();
       throw err;
     });*/
-  });
+  // });
 
 });
