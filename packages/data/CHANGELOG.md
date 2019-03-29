@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.46.1](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.46.0...@ec.components/data@0.46.1) (2019-03-29)
+
+
+### Bug Fixes
+
+* circular dependency in resource-config ([d8ad11d](https://github.com/entrecode/ec.components/commit/d8ad11d))
+
+
+
+
+
 # [0.46.0](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.45.6...@ec.components/data@0.46.0) (2019-03-29)
 
 
