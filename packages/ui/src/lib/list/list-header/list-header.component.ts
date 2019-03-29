@@ -66,6 +66,7 @@ export class ListHeaderComponent implements OnChanges {
             required: false,
             readOnly: false,
             immutable: false,
+            form: true,
             autofocus: true,
             nestedCrudConfig: {
               ...field.nestedCrudConfig,
