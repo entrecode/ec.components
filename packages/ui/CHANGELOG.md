@@ -3,17 +3,6 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.41.1](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.41.1...@ec.components/ui@0.41.1) (2019-03-29)
-
-
-### Bug Fixes
-
-* revert test task running ([cbe9627](https://github.com/entrecode/ec.components/commit/cbe9627))
-
-
-
-
-
 ## [0.41.1](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.41.0...@ec.components/ui@0.41.1) (2019-03-29)
 
 
