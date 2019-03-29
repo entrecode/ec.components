@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.46.2](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.46.1...@ec.components/data@0.46.2) (2019-03-29)
+
+
+### Bug Fixes
+
+* formService bugs ([ab86f41](https://github.com/entrecode/ec.components/commit/ab86f41))
+* show filter input even if disableHeader true ([9ea65ad](https://github.com/entrecode/ec.components/commit/9ea65ad))
+
+
+
+
+
 ## [0.46.1](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.46.0...@ec.components/data@0.46.1) (2019-03-29)
 
 
