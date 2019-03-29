@@ -105,6 +105,10 @@
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
+                                        <a href="#defaultFilter">defaultFilter</a>
+                                </li>
+                                <li>
+                                            <span class="modifier">Optional</span>
                                         <a href="#desc">desc</a>
                                 </li>
                                 <li>
@@ -313,6 +317,46 @@
                             <tr>
                                 <td class="col-md-4">
                                     <div class="io-description"><p>The available sizes. If not set, the size cannot be changed </p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="defaultFilter"></a>
+                                        <span class="name"><b>defaultFilter</b><a href="#defaultFilter"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>defaultFilter:     <code>string | boolean</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>string | boolean</code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>If set, a filter input for the given field property will be shown by default </p>
 </div>
                                 </td>
                             </tr>
@@ -1223,6 +1267,8 @@ export interface ListConfig&lt;T&gt; extends ItemConfig&lt;T&gt; {
   storageKey?: string | ((list: List&lt;T&gt;) &#x3D;&gt; string);
   /** Transforms the Items before they are displayed, e.g. to apply a filter for the view **/
   display?: (items: Item&lt;T&gt;[]) &#x3D;&gt; Item&lt;T&gt;[];
+  /** If set, a filter input for the given field property will be shown by default */
+  defaultFilter?: string | boolean;
 }
 </code></pre>
     </div>

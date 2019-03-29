@@ -158,6 +158,10 @@ It comes with features like resolve functions, identifiers, display formatting a
                                 <a href="#filter">filter</a>
                             </li>
                             <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#filterableFields">filterableFields</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Protected</span>
                                 <a href="#getFields">getFields</a>
                             </li>
@@ -1035,6 +1039,48 @@ via getFields method.</p>
             <tbody>
                 <tr>
                     <td class="col-md-4">
+                        <a name="filterableFields"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            filterableFields
+                            </b>
+                            <a href="#filterableFields"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>filterableFields()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="283" class="link-to-prism">packages/core/src/lib/list/list.ts:283</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Returns an array of all sortable fields </p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
                         <a name="getFields"></a>
                         <span class="name">
                             <b>
@@ -1525,7 +1571,7 @@ properties directly.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="283" class="link-to-prism">packages/core/src/lib/list/list.ts:283</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="287" class="link-to-prism">packages/core/src/lib/list/list.ts:287</a></div>
                             </td>
                         </tr>
 
@@ -3610,6 +3656,10 @@ export class List&lt;T&gt; extends Collection&lt;Item&lt;T&gt;&gt; {
   /** Returns an array of all sortable fields */
   public sortableFields() {
     return this.fields.filter(field &#x3D;&gt; field.sortable);
+  }
+  /** Returns an array of all sortable fields */
+  public filterableFields() {
+    return this.fields.filter(field &#x3D;&gt; field.filterable);
   }
   /** Returns true if the given field index in the visible fields is higher than maxColumns.  */
   public isOverTheMax(field: Field) {
