@@ -57,5 +57,5 @@ export interface ListConfig<T> extends ItemConfig<T> {
   /** Transforms the Items before they are displayed, e.g. to apply a filter for the view **/
   display?: (items: Item<T>[]) => Item<T>[];
   /** If set, a filter input for the given field property will be shown by default */
-  defaultFilter?: string;
+  defaultFilter?: string | boolean;
 }
