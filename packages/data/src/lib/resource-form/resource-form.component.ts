@@ -52,7 +52,7 @@ export class ResourceFormComponent extends FormComponent<Resource> implements On
     /** Injects services and calls super constructor. */
     constructor(protected loaderService: LoaderService,
         protected notificationService: NotificationsService,
-        protected formService: FormService,
+        public formService: FormService,
         protected symbol: SymbolService,
         public resourceService: ResourceService,
         protected cdr: ChangeDetectorRef
