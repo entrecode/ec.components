@@ -14,7 +14,7 @@
     <ec-input (ready)="inputReady($event)" (changed)="setFilter(filteredField, $event)" [lazy]="true"
       class="has-width-full" [field]="filteredField" [group]="filterForm?.group" [debounce]="200"
       *ngIf="filterPop.active&&filterForm?.group" #filterInput></ec-input>
-      
+
     <a class="btn btn_clear" (click)="resetFilter()" *ngIf="list?.isFiltered(filteredField.property)">
       <!-- <a class="btn btn_clear" (click)="filterPop.hide()"> -->
       <ec-icon name="close-x"></ec-icon>
@@ -59,7 +59,8 @@
       <!-- <a (click)="toggleVisibility(field)" class="is-visibility-control">
         <ec-icon name="eye-closed"></ec-icon>
       </a> -->
-      <span class="ec-list-column-title" (click)="field.sortable&&list.toggleSort(field.property)">
+      <span class="ec-list-column-title" (click)="field.sortable&&list.toggleSort(field.property)"
+        [title]="field.property">
         {{fieldLabel(field)}}
       </span>
       <span (click)="list.toggleSort(field.property)" class="is-sortable-indicator" *ngIf="field.sortable"></span>
