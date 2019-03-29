@@ -20,7 +20,7 @@ export class TagSelectComponent extends ResourceSelectComponent implements OnIni
         label: 'tag',
         identifier: 'tag',
         methods: ['get'],
-        defaultFilter: '',
+        defaultFilter: false,
         disableHeader: true,
         disableListPop: true,
         disableCreatePop: true,
