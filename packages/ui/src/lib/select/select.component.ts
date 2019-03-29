@@ -2,7 +2,7 @@ import {
   Component, EventEmitter, forwardRef, Input, OnChanges, OnInit, Output,
   ViewChild, ViewEncapsulation, ElementRef, ChangeDetectionStrategy, ChangeDetectorRef
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
 import { List, ListConfig, Selection } from '@ec.components/core';
 import { Item } from '@ec.components/core';
 import { PopComponent } from '../pop/pop.component';
@@ -70,6 +70,8 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   @ViewChild(SearchbarComponent) searchbar: SearchbarComponent;
   /** Subject that is nexted when an item is being selected (clicked or entered on) */
   toggleItem: Subject<Item<T>> = new Subject();
+  /** The formControl that is used. */
+  @Input() formControl: FormControl;
 
   constructor(
     public elementRef: ElementRef,
@@ -119,6 +121,10 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
     }
     this.config = Object.assign({ solo: this.solo }, this.config);
     const value: Array<T> = Array.isArray(this.value) ? this.value : this.value ? [this.value] : [];
+
+    if (!this.formControl) {
+      this.formControl = new FormControl(value || []);
+    }
     this.selection = new Selection(value, this.config);
     this.cdr.markForCheck();
     this.selection.update$.subscribe(() => {
