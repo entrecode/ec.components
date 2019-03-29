@@ -42,7 +42,7 @@
       <span class="ec-list-column-title" (click)="field.sortable&&list.toggleSort(field.property)">
         {{fieldLabel(field)}}
       </span>
-      <span class="is-sortable-indicator" *ngIf="field.sortable"></span>
+      <span class="is-sortable-indicator" *ngIf="field.sortable" (click)="list.toggleSort(field.property)"></span>
     </div>
 
 
