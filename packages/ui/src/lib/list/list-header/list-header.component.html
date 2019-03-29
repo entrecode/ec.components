@@ -28,8 +28,8 @@
         <li class="dropdown-option" *ngFor="let field of list?.sortableFields()"
           [class.is-active]="list?.isSorted(field.property, true)">
           <a (click)="list.toggleSort(field.property)" class="sorting-option"
-            [class.is-sorted-asc]="list?.isSorted(field.property, false)"
-            [class.is-sorted-desc]="list?.isSorted(field.property, true)">
+            [class.is-sorted-asc]="list?.isSorted(field.property, true)"
+            [class.is-sorted-desc]="list?.isSorted(field.property, false)">
             <span class="sorting-option-indicator"></span>
             {{fieldLabel(field)}}
           </a>
