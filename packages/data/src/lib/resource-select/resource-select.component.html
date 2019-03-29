@@ -14,7 +14,7 @@
                 </span>
             </li>
             <li *ngIf="!config?.disableSearchbar" class="ec-select__searchbar">
-                <ec-searchbar [autofocus]="false" [property]="config?.label" [placeholder]="placeholder||defaultPlaceholder()"
+                <ec-searchbar [focusEvent]="focusEvent" [autofocus]="false" [property]="config?.label" [placeholder]="placeholder||defaultPlaceholder()"
                     (pasted)="pasteValue($event)" (keypressed)="handleKey($event,dropdownList)" (focus)="focus($event)"
                     (queryChanged)="filterDropdownList(dropdownList,$event)"></ec-searchbar>
             </li>
