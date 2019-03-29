@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.41.4](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.41.3...@ec.components/ui@0.41.4) (2019-03-29)
+
+
+### Bug Fixes
+
+* add titles with original field names ([0dbce91](https://github.com/entrecode/ec.components/commit/0dbce91))
+
+
+
+
+
 ## [0.41.3](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.41.2...@ec.components/ui@0.41.3) (2019-03-29)
 
 
