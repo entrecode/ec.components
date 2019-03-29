@@ -5,6 +5,17 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [0.5.13](https://github.com/entrecode/ec.components/compare/@ec.components/tinymce@0.5.12...@ec.components/tinymce@0.5.13) (2019-03-29)
 
+
+### Bug Fixes
+
+* revert test task running ([cbe9627](https://github.com/entrecode/ec.components/commit/cbe9627))
+
+
+
+
+
+## [0.5.13](https://github.com/entrecode/ec.components/compare/@ec.components/tinymce@0.5.12...@ec.components/tinymce@0.5.13) (2019-03-29)
+
 **Note:** Version bump only for package @ec.components/tinymce
 
 

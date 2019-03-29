@@ -9,6 +9,19 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 * desc/asc icon reversed in field dropdown ([add3ee6](https://github.com/entrecode/ec.components/commit/add3ee6))
+* revert test task running ([cbe9627](https://github.com/entrecode/ec.components/commit/cbe9627))
+* show filter input even if disableHeader true ([9ea65ad](https://github.com/entrecode/ec.components/commit/9ea65ad))
+
+
+
+
+
+## [0.41.1](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.41.0...@ec.components/ui@0.41.1) (2019-03-29)
+
+
+### Bug Fixes
+
+* desc/asc icon reversed in field dropdown ([add3ee6](https://github.com/entrecode/ec.components/commit/add3ee6))
 * show filter input even if disableHeader true ([9ea65ad](https://github.com/entrecode/ec.components/commit/9ea65ad))
 
 

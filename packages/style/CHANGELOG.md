@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.22.5](https://github.com/entrecode/ec.components/compare/@ec.components/style@0.22.4...@ec.components/style@0.22.5) (2019-03-29)
+
+
+### Bug Fixes
+
+* revert test task running ([cbe9627](https://github.com/entrecode/ec.components/commit/cbe9627))
+
+
+
+
+
 ## [0.22.4](https://github.com/entrecode/ec.components/compare/@ec.components/style@0.22.3...@ec.components/style@0.22.4) (2019-03-29)
 
 **Note:** Version bump only for package @ec.components/style

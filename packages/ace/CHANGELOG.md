@@ -5,6 +5,18 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [0.6.12](https://github.com/entrecode/ec.components/compare/@ec.components/ace@0.6.11...@ec.components/ace@0.6.12) (2019-03-29)
 
+
+### Bug Fixes
+
+* ace ui dependency ([cd90ef7](https://github.com/entrecode/ec.components/commit/cd90ef7))
+* revert test task running ([cbe9627](https://github.com/entrecode/ec.components/commit/cbe9627))
+
+
+
+
+
+## [0.6.12](https://github.com/entrecode/ec.components/compare/@ec.components/ace@0.6.11...@ec.components/ace@0.6.12) (2019-03-29)
+
 **Note:** Version bump only for package @ec.components/ace
 
 
