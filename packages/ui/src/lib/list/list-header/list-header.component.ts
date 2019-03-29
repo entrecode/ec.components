@@ -34,6 +34,8 @@ export class ListHeaderComponent implements OnChanges {
   initFilterForm(filterForm) {
     // is called when form is ready
     this.filterForm = filterForm;
+    if (this.list.config.defaultFilter) {
+      this.filterField(this.list.config.defaultFilter);
   }
 
   ngOnChanges(changes?) {

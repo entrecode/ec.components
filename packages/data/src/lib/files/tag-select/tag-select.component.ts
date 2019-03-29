@@ -20,12 +20,15 @@ export class TagSelectComponent extends ResourceSelectComponent implements OnIni
         label: 'tag',
         identifier: 'tag',
         methods: ['get'],
+        defaultFilter: '',
+        disableHeader: true,
         disableListPop: true,
         disableCreatePop: true,
         fields: {
             tag: {}
         }
     };
+
     constructor(
         protected resourceConfig: ResourceConfig,
         protected auth: AuthService,
@@ -36,7 +39,7 @@ export class TagSelectComponent extends ResourceSelectComponent implements OnIni
     ) {
         super(resourceConfig, auth, elementRef, symbol, cdr);
         this.enterPressed.asObservable().subscribe((s) => {
-            (this.selection as any).add(new Item({ tag: this.searchbar.query }, this.config));
+            //  (this.selection as any).add(new Item({ tag: this.searchbar.query }, this.config));
             this.searchbar.clear();
             this.dropdownList.list.clearFilter();
         });

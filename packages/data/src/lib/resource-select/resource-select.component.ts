@@ -102,7 +102,9 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
     useConfig(config: CrudConfig<Resource> = {}) {
         super.useConfig(config);
         this.dropdownConfig = Object.assign({}, this.config, {
-            fields: {
+            disableHeader: true,
+            defaultFilter: false,
+            fields: this.config.dropdownFields || {
                 [this.config.label]: Object.assign({}, this.config.fields[this.config.label])
             }
         });
