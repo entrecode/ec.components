@@ -2,6 +2,7 @@ import { Component, EventEmitter, AfterViewInit, OnChanges } from '@angular/core
 import { FormControl, FormGroup } from '@angular/forms';
 import { Field, Item } from '@ec.components/core';
 import { Focus } from '../../utility/focus/focus.interface';
+import { FormService } from '../form.service';
 
 /** This component holds the templates for all basic field types. */
 @Component({
@@ -18,6 +19,9 @@ export class DefaultInputComponent implements AfterViewInit, Focus {
   public control: FormControl;
   /** Emitter to focus the input field */
   focusEvent: EventEmitter<boolean> = new EventEmitter();
+
+  /** Injects the services. */
+  constructor(public formService: FormService) {}
 
   ngAfterViewInit() {
     if (this.field && this.field.autofocus) {

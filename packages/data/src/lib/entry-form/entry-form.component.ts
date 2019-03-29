@@ -34,7 +34,7 @@ export class EntryFormComponent extends FormComponent<EntryResource> implements 
     private modelConfig: ModelConfigService,
     protected notificationService: NotificationsService,
     protected crud: CrudService,
-    protected formService: FormService,
+    public formService: FormService,
     protected typeConfig: TypeConfigService,
     protected symbol: SymbolService,
     protected cdr: ChangeDetectorRef) {

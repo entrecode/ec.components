@@ -69,7 +69,7 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
   /** Injects the services. */
   constructor(protected loaderService: LoaderService,
     protected notificationService: NotificationsService,
-    protected formService: FormService,
+    public formService: FormService,
     protected symbol: SymbolService,
     protected cdr: ChangeDetectorRef) {
   }
@@ -148,10 +148,6 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
     if (field) {
       this.formService.addField(field, this.form, this.group);
     }
-  }
-  /** Returns true if the field should be readOnly, depending on its config and the form state. */
-  isReadOnly(field) {
-    return field.immutable || (field.readOnly && !!this.form.getBody());
   }
 
   /** Clears the current value */

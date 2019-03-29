@@ -28,8 +28,8 @@
         <li class="dropdown-option" *ngFor="let field of list?.sortableFields()"
           [class.is-active]="list?.isSorted(field.property, true)">
           <a (click)="list.toggleSort(field.property)" class="sorting-option"
-            [class.is-sorted-asc]="list?.isSorted(field.property, false)"
-            [class.is-sorted-desc]="list?.isSorted(field.property, true)">
+            [class.is-sorted-asc]="list?.isSorted(field.property, true)"
+            [class.is-sorted-desc]="list?.isSorted(field.property, false)">
             <span class="sorting-option-indicator"></span>
             {{fieldLabel(field)}}
           </a>
@@ -41,7 +41,7 @@
 <div *ngIf="filterFormConfig">
   <ec-form [config]="filterFormConfig" [value]="list?.config?.filter" [empty]="true" #filterForm
     (ready)="initFilterForm($event)" [lazy]="true"></ec-form>
-  <div class="ec-list-header">
+  <div class="ec-list-header" *ngIf="!list?.config?.disableHeader">
     <div class="ec-list-cell ec-list-item__selector" *ngIf="list?.config?.selectMode&&!list?.isEmpty()">
       <input type="checkbox" (click)="selection?.toggleAll(list?.page)" [checked]="selection?.hasAll(list?.page)"
         [disabled]="selection?.config?.solo">
