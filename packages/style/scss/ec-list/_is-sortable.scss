@@ -1,4 +1,5 @@
 .ec-list-cell {
+
   // @param {array} $ec-list-cell-is-sortable-style
   &.is-sortable {
     @include inject-style($ec-list-cell-is-sortable-style);
@@ -22,8 +23,8 @@
   height: rem(12);
   width: rem(12);
 
-  &::after,
-  &::before {
+  .asc,
+  .desc {
     content: '';
     position: absolute;
     border: rem(4) solid transparent;
@@ -32,12 +33,12 @@
   }
 
   // @param {color} $is-sortable-indicator-color [$text-lightest]
-  &::before {
+  .asc {
     top: rem(-4);
     border-bottom-color: $is-sortable-indicator-color;
   }
 
-  &::after {
+  .desc {
     bottom: rem(-4);
     border-top-color: $is-sortable-indicator-color;
   }
@@ -57,7 +58,7 @@
 // @param {color} $is-sortable-indicator-active-color [$text]
 .is-sorted-asc {
   .is-sortable-indicator {
-    &::before {
+    .asc {
       border-bottom-color: $is-sortable-indicator-active-color;
     }
   }
@@ -65,7 +66,7 @@
 
 .is-sorted-desc {
   .is-sortable-indicator {
-    &::after {
+    .desc {
       border-top-color: $is-sortable-indicator-active-color;
     }
   }

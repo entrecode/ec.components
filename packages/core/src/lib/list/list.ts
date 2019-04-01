@@ -213,7 +213,16 @@ export class List<T> extends Collection<Item<T>> {
 
   /** Changes the config's sort variables to reflect the given sorting */
   protected sortProperty(property: string, desc?: boolean) {
-    if (property !== this.config.sortBy) {
+    if (desc !== undefined) {
+      if (this.config.desc === desc) {
+        delete this.config.sortBy;
+        delete this.config.desc;
+      } else {
+        this.config.desc = desc;
+        this.config.sortBy = property;
+      }
+      return;
+    } else if (property !== this.config.sortBy) {
       delete this.config.desc;
       this.config.sortBy = property;
     } else if (this.config.desc) {

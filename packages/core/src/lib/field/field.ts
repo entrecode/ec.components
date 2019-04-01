@@ -65,4 +65,11 @@ export class Field implements FieldConfigProperty {
   getColumns() {
     return (this.columns || 12) + '-sm';
   }
+  /** Returns the fields label */
+  getLabel() {
+    if (this.label === false) {
+      return '';
+    }
+    return this.label || this.property;
+  }
 }

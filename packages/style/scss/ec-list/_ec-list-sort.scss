@@ -10,7 +10,7 @@
   
     &.is-sorted-asc {
       .sorting-option-indicator {
-        &::after {
+        .desc {
           border-top-color: getColor(text);
         }
       }
@@ -18,7 +18,7 @@
   
     &.is-sorted-desc {
       .sorting-option-indicator {
-        &::before {
+        .asc {
           border-bottom-color: getColor(text);
         }
       }
@@ -32,8 +32,8 @@
     width: rem(12);
     flex-grow: 0;
   
-    &::after,
-    &::before {
+    .asc,
+    .desc {
       content: '';
       position: absolute;
       border: rem(4) solid transparent;
@@ -41,12 +41,12 @@
       margin-left: rem(-4);
     }
   
-    &::before {
+    .asc {
       border-bottom-color: getColor(text, lightest);
       top: rem(-4);
     }
   
-    &::after {
+    .desc {
       border-top-color: getColor(text, lightest);
       bottom: rem(-4);
     }
