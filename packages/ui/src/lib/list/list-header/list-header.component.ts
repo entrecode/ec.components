@@ -127,14 +127,6 @@ export class ListHeaderComponent implements OnChanges {
     }
   }
 
-  /** Returns the fields label */
-  public fieldLabel(field: Field) {
-    if (field.label === false) {
-      return '';
-    }
-    return field.label || field.property;
-  }
-
   /** Toggles the fields visibility in the list */
   public toggleVisibility(field: Field) {
     this.list.toggleVisibility(field);

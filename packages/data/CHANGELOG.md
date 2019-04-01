@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.46.6](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.46.5...@ec.components/data@0.46.6) (2019-04-01)
+
+**Note:** Version bump only for package @ec.components/data
+
+
+
+
+
 ## [0.46.5](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.46.4...@ec.components/data@0.46.5) (2019-03-29)
 
 **Note:** Version bump only for package @ec.components/data

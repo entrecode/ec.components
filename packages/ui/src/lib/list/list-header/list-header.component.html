@@ -2,12 +2,12 @@
   <div *ngIf="filteredField" class="btn-group">
     <!-- <div tabindex="0" class="dropdown dropdown_left">
       <span class="btn btn_clear">
-        {{fieldLabel(filteredField)}}
+        {{filteredField.getLabel()}}
       </span>
       <ul class="dropdown-options">
         <li [class.is-hidden]="field.property===filteredField?.property" class="dropdown-option"
           *ngFor="let field of list?.filterableFields()">
-          <a (click)="filterField(field.property)">{{fieldLabel(field)}}</a>
+          <a (click)="filterField(field.property)">{{filteredField.getLabel()}}</a>
         </li>
       </ul>
     </div> -->
@@ -27,11 +27,14 @@
       <ul class="dropdown-options">
         <li class="dropdown-option" *ngFor="let field of list?.sortableFields()"
           [class.is-active]="list?.isSorted(field.property, true)">
-          <a (click)="list.toggleSort(field.property)" class="sorting-option"
+          <a class="sorting-option"
             [class.is-sorted-asc]="list?.isSorted(field.property, true)"
             [class.is-sorted-desc]="list?.isSorted(field.property, false)">
-            <span class="sorting-option-indicator"></span>
-            {{fieldLabel(field)}}
+            <span class="sorting-option-indicator">
+              <span class="asc" (click)="list.toggleSort(field.property,false)"></span>
+              <span class="desc" (click)="list.toggleSort(field.property,true)"></span>
+            </span>
+            <span (click)="list.toggleSort(field.property)">{{field.getLabel()}}</span>
           </a>
         </li>
       </ul>
@@ -59,11 +62,15 @@
       <!-- <a (click)="toggleVisibility(field)" class="is-visibility-control">
         <ec-icon name="eye-closed"></ec-icon>
       </a> -->
+      
       <span class="ec-list-column-title" (click)="field.sortable&&list.toggleSort(field.property)"
         [title]="field.property">
-        {{fieldLabel(field)}}
+        {{field.getLabel()}}
       </span>
-      <span (click)="list.toggleSort(field.property)" class="is-sortable-indicator" *ngIf="field.sortable"></span>
+      <span class="is-sortable-indicator" *ngIf="field.sortable">
+        <span class="asc" (click)="list.toggleSort(field.property,false)"></span>
+        <span class="desc" (click)="list.toggleSort(field.property,true)"></span>
+      </span>
     </div>
 
     <div class="dropdown dropdown_right ec-list-column-filter" tabindex="0" *ngIf="!list?.config?.disableColumnFilter">
@@ -73,15 +80,8 @@
           <li class="ec-list-column-filter-option" *ngFor="let field of list?.fields"
             [class.is-active]="!field.hideInList" [class.is-hidden]="field.hideInColumnFilter">
             <span (click)="toggleVisibility(field)">
-              <ec-icon [name]="field.hideInList?'square':'check-box'">{{fieldLabel(field)}}</ec-icon>
+              <ec-icon [name]="field.hideInList?'square':'check-box'">{{field.getLabel()}}</ec-icon>
             </span>
-            <!-- <span (click)="list.toggleSort(field.property)" *ngIf="field.sortable">
-              <ec-icon name="filter-2"></ec-icon>
-            </span> -->
-            <!-- <span (click)="filterField(field.property)" *ngIf="field.filterable"
-              [class.is-active]="list.isFiltered(field.property)">
-              <ec-icon name="find"></ec-icon>
-            </span> -->
           </li>
         </ul>
       </div>
