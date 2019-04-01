@@ -3,7 +3,7 @@ import {
   ViewChild, ViewChildren, ChangeDetectionStrategy, ChangeDetectorRef
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { FieldConfigProperty, Form, FormConfig, Item, ItemConfig } from '@ec.components/core';
+import { FieldConfigProperty, Form, FormConfig, Item, ItemConfig, Field } from '@ec.components/core';
 import { InputComponent } from '../io/input/input.component';
 import { LoaderComponent } from '../loader/loader.component';
 import { LoaderService } from '../loader/loader.service';
@@ -126,7 +126,7 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
         .pipe(debounceTime(this.debounceTime))
         .subscribe(value => {
           const changedField = this.form.getField(property);
-          if (changedField.changed) {
+          if (changedField && changedField.changed) {
             changedField.changed(value, this);
           }
         });
@@ -235,5 +235,11 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
       return new Error(label + ': ' + Object.values(errors).join(', '));
     });
     return error;
+  }
+
+  /** Toggles the fields visibility in the form */
+  public toggleVisibility(field: Field) {
+    field.hideInForm = !field.hideInForm;
+    /* this.listConfig.storeConfig(this.form); */
   }
 }
