@@ -1059,7 +1059,7 @@ via getFields method.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="283" class="link-to-prism">packages/core/src/lib/list/list.ts:283</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="292" class="link-to-prism">packages/core/src/lib/list/list.ts:292</a></div>
                             </td>
                         </tr>
 
@@ -1230,7 +1230,7 @@ properties directly.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="248" class="link-to-prism">packages/core/src/lib/list/list.ts:248</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="257" class="link-to-prism">packages/core/src/lib/list/list.ts:257</a></div>
                             </td>
                         </tr>
 
@@ -1571,7 +1571,7 @@ properties directly.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="287" class="link-to-prism">packages/core/src/lib/list/list.ts:287</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="296" class="link-to-prism">packages/core/src/lib/list/list.ts:296</a></div>
                             </td>
                         </tr>
 
@@ -1644,7 +1644,7 @@ properties directly.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="226" class="link-to-prism">packages/core/src/lib/list/list.ts:226</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="235" class="link-to-prism">packages/core/src/lib/list/list.ts:235</a></div>
                             </td>
                         </tr>
 
@@ -1876,7 +1876,7 @@ Reapplies grouping (if any) and calls the change Subject. </p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="279" class="link-to-prism">packages/core/src/lib/list/list.ts:279</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="288" class="link-to-prism">packages/core/src/lib/list/list.ts:288</a></div>
                             </td>
                         </tr>
 
@@ -2001,7 +2001,7 @@ Reapplies grouping (if any) and calls the change Subject. </p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="240" class="link-to-prism">packages/core/src/lib/list/list.ts:240</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="249" class="link-to-prism">packages/core/src/lib/list/list.ts:249</a></div>
                             </td>
                         </tr>
 
@@ -2041,7 +2041,7 @@ Reapplies grouping (if any) and calls the change Subject. </p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="234" class="link-to-prism">packages/core/src/lib/list/list.ts:234</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="243" class="link-to-prism">packages/core/src/lib/list/list.ts:243</a></div>
                             </td>
                         </tr>
 
@@ -2193,7 +2193,7 @@ Reapplies grouping (if any) and calls the change Subject. </p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="275" class="link-to-prism">packages/core/src/lib/list/list.ts:275</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="284" class="link-to-prism">packages/core/src/lib/list/list.ts:284</a></div>
                             </td>
                         </tr>
 
@@ -3591,7 +3591,16 @@ export class List&lt;T&gt; extends Collection&lt;Item&lt;T&gt;&gt; {
 
   /** Changes the config&#x27;s sort variables to reflect the given sorting */
   protected sortProperty(property: string, desc?: boolean) {
-    if (property !&#x3D;&#x3D; this.config.sortBy) {
+    if (desc !&#x3D;&#x3D; undefined) {
+      if (this.config.desc &#x3D;&#x3D;&#x3D; desc) {
+        delete this.config.sortBy;
+        delete this.config.desc;
+      } else {
+        this.config.desc &#x3D; desc;
+        this.config.sortBy &#x3D; property;
+      }
+      return;
+    } else if (property !&#x3D;&#x3D; this.config.sortBy) {
       delete this.config.desc;
       this.config.sortBy &#x3D; property;
     } else if (this.config.desc) {
