@@ -47,7 +47,7 @@
       *ngIf="formService.isReadOnly(field, item)">
   </div>
   <div *ngSwitchCase="'copy'">
-    <div *ngIf="!!item?.resolve(field.property)" class="tag" style="cursor: pointer"
+    <div *ngIf="!!item?.display(field.property)" class="tag" style="cursor: pointer"
       (click)="keycommands.copyToClipBoard(item?.transform('copy', field.property),field.getLabel())"
       [attr.data-tooltip-bottom]="'click to copy '+field.getLabel()">
       {{item?.display(field.property)}}

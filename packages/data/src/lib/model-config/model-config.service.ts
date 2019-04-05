@@ -66,7 +66,7 @@ export class ModelConfigService extends Config {
         form: true,
         immutable: true,
         hideInList: true,
-        columns: 4,
+        columns: 3,
       },
       _created: {
         label: this.symbol.resolve('field.label.created'),
@@ -75,7 +75,7 @@ export class ModelConfigService extends Config {
         copy: this.typeConfig.isoDate(),
         create: false,
         form: true,
-        columns: 4,
+        columns: 3,
         view: 'copy',
         immutable: true,
         sortable: true,
@@ -89,7 +89,7 @@ export class ModelConfigService extends Config {
         copy: this.typeConfig.isoDate(),
         create: false,
         form: true,
-        columns: 4,
+        columns: 3,
         view: 'copy',
         immutable: true,
         sortable: true,
@@ -99,9 +99,11 @@ export class ModelConfigService extends Config {
       _creator: {
         label: this.symbol.resolve('field.label.creator'),
         display: this.typeConfig.displayAccount(),
+        copy: (value) => value,
         create: false,
-        view: 'account',
-        form: false,
+        view: 'copy',
+        columns: 3,
+        form: true,
         immutable: true,
         hideInList: true
       }
@@ -226,6 +228,7 @@ export class ModelConfigService extends Config {
               (customFieldConfig || {})[key]);
           });
           modelConfig.fields = mergedFields;
+          console.log('field config',modelConfig.fields);
         }
         return modelConfig;
       });
