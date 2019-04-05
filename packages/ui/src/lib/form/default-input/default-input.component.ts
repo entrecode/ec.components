@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Field, Item } from '@ec.components/core';
 import { Focus } from '../../utility/focus/focus.interface';
 import { FormService } from '../form.service';
+import { KeycommandsService } from '../../utility/keycommands/keycommands.service';
 
 /** This component holds the templates for all basic field types. */
 @Component({
@@ -21,7 +22,7 @@ export class DefaultInputComponent implements AfterViewInit, Focus {
   focusEvent: EventEmitter<boolean> = new EventEmitter();
 
   /** Injects the services. */
-  constructor(public formService: FormService) {}
+  constructor(public formService: FormService, public keycommands: KeycommandsService) { }
 
   ngAfterViewInit() {
     if (this.field && this.field.autofocus) {

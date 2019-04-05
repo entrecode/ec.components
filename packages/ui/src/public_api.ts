@@ -8,6 +8,7 @@ export * from './lib/utility/menu/menu.component';
 export * from './lib/utility/login-form/login-form.component';
 export * from './lib/utility/signup-form/signup-form.component';
 export * from './lib/utility/focus/focus.directive';
+export * from './lib/utility/keycommands/keycommands.service';
 export * from './lib/utility/utility.module';
 
 export * from './lib/pop/pop.component';

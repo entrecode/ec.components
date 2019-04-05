@@ -1,6 +1,6 @@
 import { SdkService } from '../sdk/sdk.service';
 import { Component } from '@angular/core';
-import { DefaultInputComponent, FormService } from '@ec.components/ui';
+import { DefaultInputComponent, FormService, KeycommandsService } from '@ec.components/ui';
 import DataManagerResource from 'ec.sdk/lib/resources/datamanager/DataManagerResource';
 
 /** This component holds the input templates for all field types that require having the DatamanagerResource as api.
@@ -11,8 +11,7 @@ import DataManagerResource from 'ec.sdk/lib/resources/datamanager/DataManagerRes
 })
 export class AdminEntryInputComponent extends DefaultInputComponent {
   api: DataManagerResource;
-  constructor(public sdk: SdkService, public formService: FormService) {
-    super(formService);
-    /* this.sdk.root.then((root) => this.api = root); */
+  constructor(public sdk: SdkService, public formService: FormService, public keycommands: KeycommandsService) {
+    super(formService, keycommands);
   }
 }

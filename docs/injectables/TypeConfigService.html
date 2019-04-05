@@ -113,6 +113,9 @@
                                 <a href="#groupDate">groupDate</a>
                             </li>
                             <li>
+                                <a href="#isoDate">isoDate</a>
+                            </li>
+                            <li>
                                 <a href="#set">set</a>
                             </li>
                         </ul>
@@ -394,6 +397,46 @@ Usese &#39;moment.format.date&#39; and &#39;moment.format.time&#39; symbols. </p
                 <tr>
                     <td class="col-md-4">
                             <div class="io-description"><p>Returns a date group function. Uses &#39;moment.format.month&#39; symbol </p>
+</div>
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>(value: any) &#x3D;&gt; any</code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="isoDate"></a>
+                        <span class="name">
+                            <b>
+                            isoDate
+                            </b>
+                            <a href="#isoDate"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>isoDate()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="229" class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:229</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Returns a date iso formatter </p>
 </div>
 
                             <div class="io-description">
@@ -962,6 +1005,12 @@ export class TypeConfigService {
   groupDate() {
     return value &#x3D;&gt;
       moment(value).format(this.symbol.resolve(&#x27;moment.format.month&#x27;));
+  }
+
+  /** Returns a date iso formatter */
+  isoDate() {
+    return value &#x3D;&gt;
+      moment(value).toISOString();
   }
 }
 </code></pre>

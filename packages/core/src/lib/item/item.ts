@@ -109,7 +109,7 @@ export class Item<T> {
    * If you dont set the third parameter, the current item value will be used.
    * The third parameter can be used to transform a value that is not yet possesed (e.g. to
    * serialize) */
-  private transform(action: string, property: string, value: any = this.resolve(property), defaultValue: any = this.resolve(property)) {
+  public transform(action: string, property: string, value: any = this.resolve(property), defaultValue: any = this.resolve(property)) {
     if (!this.hasBody()) {
       return;
     }

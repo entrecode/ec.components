@@ -29,6 +29,10 @@ export class Field implements FieldConfigProperty {
   filterOperator?: string;
   /** Defines the class for the filter pop, e.g. in list header. */
   filterPopClass?: string;
+  /** If true, the form input label will always be hidden */
+  hideFormLabel?: boolean;
+  /** If true, the form input label will be hidden if no value is set */
+  hideFormLabelIfEmpty?: boolean;
   /** Wether or not the field should appear in default forms */
   form?: boolean;
   /** Possible Values e.g. in a select */

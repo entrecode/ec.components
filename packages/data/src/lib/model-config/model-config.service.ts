@@ -61,16 +61,22 @@ export class ModelConfigService extends Config {
     return {
       id: {
         label: this.symbol.resolve('field.label.id'),
-        view: 'string',
-        form: false,
+        create: false,
+        view: 'copy',
+        form: true,
         immutable: true,
-        hideInList: true
+        hideInList: true,
+        columns: 3,
       },
       _created: {
         label: this.symbol.resolve('field.label.created'),
         display: this.typeConfig.displayDate(),
         group: this.typeConfig.groupDate(),
-        form: false,
+        copy: this.typeConfig.isoDate(),
+        create: false,
+        form: true,
+        columns: 3,
+        view: 'copy',
         immutable: true,
         sortable: true,
         hideInList: true,
@@ -80,7 +86,11 @@ export class ModelConfigService extends Config {
         label: this.symbol.resolve('field.label.modified'),
         display: this.typeConfig.displayDate(),
         group: this.typeConfig.groupDate(),
-        form: false,
+        copy: this.typeConfig.isoDate(),
+        create: false,
+        form: true,
+        columns: 3,
+        view: 'copy',
         immutable: true,
         sortable: true,
         hideInList: false,
@@ -89,8 +99,11 @@ export class ModelConfigService extends Config {
       _creator: {
         label: this.symbol.resolve('field.label.creator'),
         display: this.typeConfig.displayAccount(),
-        view: 'account',
-        form: false,
+        copy: (value) => value,
+        create: false,
+        view: 'copy',
+        columns: 3,
+        form: true,
         immutable: true,
         hideInList: true
       }
@@ -215,6 +228,7 @@ export class ModelConfigService extends Config {
               (customFieldConfig || {})[key]);
           });
           modelConfig.fields = mergedFields;
+          console.log('field config',modelConfig.fields);
         }
         return modelConfig;
       });

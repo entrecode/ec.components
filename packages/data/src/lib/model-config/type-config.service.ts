@@ -224,4 +224,10 @@ export class TypeConfigService {
     return value =>
       moment(value).format(this.symbol.resolve('moment.format.month'));
   }
+
+  /** Returns a date iso formatter */
+  isoDate() {
+    return value =>
+      moment(value).toISOString();
+  }
 }

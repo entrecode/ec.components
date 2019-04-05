@@ -24,6 +24,10 @@ export interface FieldConfigProperty {
    * @param value The current property value
    * @param field The field property name */
   display?: (value, field, property: string) => any;
+  /** Custom copy transformation function.
+   * @param value The current property value
+   * @param field The field property name */
+  copy?: (value, field, property: string) => any;
   /** Custom group transformation function. Its return value will be used for grouping.
    * @param value The current property value
    * @param field The field property name */

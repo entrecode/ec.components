@@ -214,6 +214,9 @@
                                 <a href="#patchValue">patchValue</a>
                             </li>
                             <li>
+                                <a href="#showLabel">showLabel</a>
+                            </li>
+                            <li>
                                 <a href="#showSubmitButton">showSubmitButton</a>
                             </li>
                             <li>
@@ -1103,7 +1106,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="221" class="link-to-prism">packages/ui/src/lib/form/form.component.ts:221</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="229" class="link-to-prism">packages/ui/src/lib/form/form.component.ts:229</a></div>
                             </td>
                         </tr>
 
@@ -1191,7 +1194,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="213" class="link-to-prism">packages/ui/src/lib/form/form.component.ts:213</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="221" class="link-to-prism">packages/ui/src/lib/form/form.component.ts:221</a></div>
                             </td>
                         </tr>
 
@@ -1503,6 +1506,82 @@ You can also pass just an item to use its config and body.</p>
                             </div>
                             <div class="io-description">
                                 <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="showLabel"></a>
+                        <span class="name">
+                            <b>
+                            showLabel
+                            </b>
+                            <a href="#showLabel"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>showLabel(field, form)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="213" class="link-to-prism">packages/ui/src/lib/form/form.component.ts:213</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Determindes if the given field&#39;s label should be shown based on hideFormLabel+hideFormLabelIfEmpty flags </p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>field</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>form</td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
                             </div>
                                 <div class="io-description">
@@ -2070,6 +2149,14 @@ export class FormComponent&lt;T&gt; implements OnChanges, WithLoader, WithNotifi
   /** Decides if the submit button should be rendered or not based on config */
   showSubmitButton() {
     return this.submitButton !&#x3D;&#x3D; false &amp;&amp; !this.config.hideSubmitButton;
+  }
+
+  /** Determindes if the given field&#x27;s label should be shown based on hideFormLabel+hideFormLabelIfEmpty flags */
+  showLabel(field, form) {
+    if (!field || !form) {
+      return false;
+    }
+    return !field.hideFormLabel &amp;&amp; (!field.hideFormLabelIfEmpty || !!form.resolve(field.property));
   }
 
   /** Returns the current value of the form control group. When passing a property, it directly returns the property value. */

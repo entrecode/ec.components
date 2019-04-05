@@ -38,6 +38,7 @@ import { ImageSelectPopDemoComponent } from './image-select-pop-demo/image-selec
 import { ResourceListPopDemoComponent } from './resource-list-pop/resource-list-pop-demo.component';
 import { ModalDemoComponent } from './modal/modal-demo.component';
 import { EntryListSelectDemoComponent } from './entry-list-select/entry-list-select-demo.component';
+import { KeycommandsDemoComponent } from './keycommands/keycommands-demo.component';
 
 export const demoRoutes: Routes = [
   {
@@ -467,6 +468,13 @@ export const demoRoutes: Routes = [
         component: LocationPickerDemoComponent,
         data: {
           paths: ['location/location-picker-demo.component.html', 'location/location-picker-demo.component.ts']
+        }
+      },
+      {
+        path: 'keycommands',
+        component: KeycommandsDemoComponent,
+        data: {
+          paths: ['keycommands/keycommands-demo.component.ts']
         }
       }
     ]
