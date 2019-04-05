@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.41.6](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.41.5...@ec.components/ui@0.41.6) (2019-04-05)
+
+
+### Bug Fixes
+
+* select readonly input ([77a8486](https://github.com/entrecode/ec.components/commit/77a8486))
+
+
+
+
+
 ## [0.41.5](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.41.4...@ec.components/ui@0.41.5) (2019-04-01)
 
 **Note:** Version bump only for package @ec.components/ui

@@ -30,7 +30,7 @@
 
   <ec-datetime *ngSwitchCase="'date'" [formControl]="control" [placeholder]="field.getPlaceholder()"></ec-datetime>
 
-  <div  *ngSwitchCase="'select'">
+  <div *ngSwitchCase="'select'">
     <select [id]="field.id" [formControl]="control" [ecFocus]="focusEvent"
       (change)="control.patchValue($event.target.value)" class="input" *ngIf="!formService.isReadOnly(field, item)">
       <option>{{field.getPlaceholder()}}</option>
@@ -39,7 +39,7 @@
         {{option.label?option.label:option}}
       </option>
     </select>
-    <input type="text" [formControl]="control" [id]="field.id" class="input"  *ngIf="!formService.isReadOnly(field, item)">
+    <input type="text" [formControl]="control" [id]="field.id" class="input" readonly *ngIf="formService.isReadOnly(field, item)">
   </div>
 
   <div *ngSwitchDefault>
