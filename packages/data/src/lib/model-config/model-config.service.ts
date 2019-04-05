@@ -4,7 +4,7 @@ import { SymbolService } from '@ec.components/ui';
 import { fields } from 'ec.sdk/lib/PublicAPI';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { CrudConfig } from '../crud/crud-config.interface';
-import { CrudService } from '../crud/crud.service';
+import { EntryService } from '../entry/entry.service';
 import { SdkService } from '../sdk/sdk.service';
 import { TypeConfigService } from './type-config.service';
 
@@ -23,8 +23,8 @@ export class ModelConfigService extends Config {
   ];
 
 
-  /** Injects CrudService and SdkService. */
-  constructor(private crud: CrudService,
+  /** Injects EntryService and SdkService. */
+  constructor(private entryService: EntryService,
     private sdk: SdkService,
     private typeConfig: TypeConfigService,
     private symbol: SymbolService) {
@@ -197,7 +197,7 @@ export class ModelConfigService extends Config {
       identifierPattern: /^[0-9A-Za-z-_]{7,14}$/, // shortID pattern
       label: '_entryTitle',
       defaultFilter: lightModel.titleField,
-      onSave: (item: Item<EntryResource>, value) => this.crud.save(model, item.getBody(), value)
+      onSave: (item: Item<EntryResource>, value) => this.entryService.save(model, item, value)
     });
     return this.getFieldConfig(model)
       .then((fieldConfig: FieldConfig) => {

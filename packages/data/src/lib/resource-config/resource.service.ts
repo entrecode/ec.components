@@ -8,7 +8,7 @@ import { ResourceList } from '../resource-list/resource-list';
 import { SdkService } from '../sdk/sdk.service';
 import { ResourceConfig } from './resource-config.service';
 
-/** Instances of Update are emitted by the changes EventEmitter of the CrudService. */
+/** Instances of Update are emitted by the changes EventEmitter of the ResourceService. */
 export interface Update {
     /** The relation that has been updated. */
     relation: string | string[];

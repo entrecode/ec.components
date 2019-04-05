@@ -5,7 +5,7 @@ import {
   NotificationsService, SymbolService, WithNotifications, formTemplate
 } from '@ec.components/ui';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
-import { CrudService } from '../crud/crud.service';
+import { EntryService } from '../entry/entry.service';
 import { ModelConfigService } from '../model-config/model-config.service';
 import { TypeConfigService } from '../model-config/type-config.service';
 
@@ -33,7 +33,7 @@ export class EntryFormComponent extends FormComponent<EntryResource> implements 
   constructor(protected loaderService: LoaderService,
     private modelConfig: ModelConfigService,
     protected notificationService: NotificationsService,
-    protected crud: CrudService,
+    protected entryService: EntryService,
     public formService: FormService,
     protected typeConfig: TypeConfigService,
     protected symbol: SymbolService,
@@ -84,7 +84,7 @@ export class EntryFormComponent extends FormComponent<EntryResource> implements 
     if (!this.form || !this.isEditing()) {
       return;
     }
-    const deletion = this.crud.del(this.model, this.form.getBody()).then(() => {
+    const deletion = this.entryService.del(this.model, this.form.getBody()).then(() => {
       this.deleted.emit();
       this.create();
       this.notificationService.emit({
