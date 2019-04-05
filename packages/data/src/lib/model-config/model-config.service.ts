@@ -228,7 +228,6 @@ export class ModelConfigService extends Config {
               (customFieldConfig || {})[key]);
           });
           modelConfig.fields = mergedFields;
-          console.log('field config',modelConfig.fields);
         }
         return modelConfig;
       });
