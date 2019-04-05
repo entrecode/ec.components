@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.42.0](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.41.6...@ec.components/ui@0.42.0) (2019-04-05)
+
+
+### Features
+
+* added keycommands service ([80b8030](https://github.com/entrecode/ec.components/commit/80b8030))
+* now showing copyable system fields ([5af4631](https://github.com/entrecode/ec.components/commit/5af4631))
+
+
+
+
+
 ## [0.41.6](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.41.5...@ec.components/ui@0.41.6) (2019-04-05)
 
 

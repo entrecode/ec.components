@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.25.0](https://github.com/entrecode/ec.components/compare/@ec.components/core@0.24.3...@ec.components/core@0.25.0) (2019-04-05)
+
+
+### Features
+
+* now showing copyable system fields ([5af4631](https://github.com/entrecode/ec.components/commit/5af4631))
+
+
+
+
+
 ## [0.24.3](https://github.com/entrecode/ec.components/compare/@ec.components/core@0.24.2...@ec.components/core@0.24.3) (2019-04-01)
 
 **Note:** Version bump only for package @ec.components/core
