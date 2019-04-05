@@ -9,6 +9,7 @@ import { MenuComponent } from './menu/menu.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { TabComponent } from './tab/tab.component';
 import { TabsComponent } from './tabs/tabs.component';
+import { KeycommandsService } from './keycommands/keycommands.service';
 
 export const utilityModuleConfig = {
   entryComponents: [],
@@ -40,7 +41,9 @@ export const utilityModuleConfig = {
     FocusDirective,
     RouterModule,
   ],
-  providers: [],
+  providers: [
+    KeycommandsService
+  ],
 };
 
 @NgModule(utilityModuleConfig)

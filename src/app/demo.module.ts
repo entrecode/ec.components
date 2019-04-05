@@ -63,6 +63,7 @@ import { TinyInputComponent } from './tinymce-demo/tiny-input.component';
 import { EntryListSelectDemoComponent } from './entry-list-select/entry-list-select-demo.component';
 import { FormsModule } from '@angular/forms';
 import { CalendarModule } from '@ec.components/calendar';
+import { KeycommandsDemoComponent } from './keycommands/keycommands-demo.component';
 /* import { CalendarModule } from '../../packages/calendar/src/calendar.module'; */
 
 export const demoModuleConfig = {
@@ -122,7 +123,8 @@ export const demoModuleConfig = {
     LocationPickerDemoComponent,
     CounterComponent,
     LoginDemoComponent,
-    ImageSelectPopDemoComponent
+    ImageSelectPopDemoComponent,
+    KeycommandsDemoComponent
   ],
   imports: [
     BrowserModule,
