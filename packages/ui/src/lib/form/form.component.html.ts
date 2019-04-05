@@ -7,7 +7,7 @@ export const formTemplate = `<form novalidate [formGroup]="group" (ngSubmit)="su
       <div [attr.data-col]="field?.getColumns()" *ngFor="let field of form?.fields | visibleFields:form"
       [ngClass]="'ec-form-group_' + field?.view + ' ' + field?.classes" [class.is-read-only]="formService.isReadOnly(field, form)"
         [ngSwitch]="field?.view" class="form-group" [attr.data-type]="field?.type">
-        <label [for]="field.id" [title]="field.property">{{field.label || field.property}}</label>
+        <label *ngIf="showLabel(field, form)" [for]="field.id" [title]="field.property">{{field.label || field.property}}</label>
         <ec-input [field]="field" [group]="group" [item]="form"
         [formControl]="group.get(field.property)"></ec-input>
       </div>

@@ -1,29 +1,33 @@
 <div [ngSwitch]="field.view" *ngIf="group" [formGroup]="group">
   <input [id]="field.id" *ngSwitchCase="'string'" type="text" [formControl]="control"
-    [placeholder]="field.getPlaceholder()" [readonly]="formService.isReadOnly(field, item)" class="input" [ecFocus]="focusEvent" />
+    [placeholder]="field.getPlaceholder()" [readonly]="formService.isReadOnly(field, item)" class="input"
+    [ecFocus]="focusEvent" />
 
   <textarea [id]="field.id" *ngSwitchCase="'textarea'" type="text" [formControl]="control"
-    [placeholder]="field.getPlaceholder()" [readonly]="formService.isReadOnly(field, item)"  class="input" [ecFocus]="focusEvent"></textarea>
+    [placeholder]="field.getPlaceholder()" [readonly]="formService.isReadOnly(field, item)" class="input"
+    [ecFocus]="focusEvent"></textarea>
 
   <input [id]="field.id" *ngSwitchCase="'number'" type="number" [formControl]="control"
-    [placeholder]="field.getPlaceholder()" [readonly]="formService.isReadOnly(field, item)" class="input" [ecFocus]="focusEvent">
+    [placeholder]="field.getPlaceholder()" [readonly]="formService.isReadOnly(field, item)" class="input"
+    [ecFocus]="focusEvent">
 
   <div class="ec-input_color" *ngSwitchCase="'color'">
     <label [style.backgroundColor]="control.value">
-      <input [id]="field.id" type="color" [formControl]="control" [readonly]="formService.isReadOnly(field, item)" >
+      <input [id]="field.id" type="color" [formControl]="control" [readonly]="formService.isReadOnly(field, item)">
     </label>
   </div>
 
   <label *ngSwitchCase="'boolean'">
-    <input [id]="field.id" type="checkbox" [formControl]="control" [readonly]="formService.isReadOnly(field, item)" >
+    <input [id]="field.id" type="checkbox" [formControl]="control" [readonly]="formService.isReadOnly(field, item)">
     {{field.placeholder}}
   </label>
 
-  <input [id]="field.id" *ngSwitchCase="'email'" type="email" [formControl]="control" [readonly]="formService.isReadOnly(field, item)" 
-    [placeholder]="field.getPlaceholder()" class="input" [ecFocus]="focusEvent">
+  <input [id]="field.id" *ngSwitchCase="'email'" type="email" [formControl]="control"
+    [readonly]="formService.isReadOnly(field, item)" [placeholder]="field.getPlaceholder()" class="input"
+    [ecFocus]="focusEvent">
 
   <input [id]="field.id" *ngSwitchCase="'url'" type="url" [formControl]="control" [placeholder]="field.getPlaceholder()"
-    class="input" [ecFocus]="focusEvent" [readonly]="formService.isReadOnly(field, item)" >
+    class="input" [ecFocus]="focusEvent" [readonly]="formService.isReadOnly(field, item)">
 
   <ec-toggle [id]="field.id" *ngSwitchCase="'toggle'" [formControl]="control" [placeholder]="field.getPlaceholder()">
   </ec-toggle>
@@ -39,7 +43,15 @@
         {{option.label?option.label:option}}
       </option>
     </select>
-    <input type="text" [formControl]="control" [id]="field.id" class="input" readonly *ngIf="formService.isReadOnly(field, item)">
+    <input type="text" [formControl]="control" [id]="field.id" class="input" readonly
+      *ngIf="formService.isReadOnly(field, item)">
+  </div>
+  <div *ngSwitchCase="'copy'">
+    <div *ngIf="!!item?.resolve(field.property)" class="tag" style="cursor: pointer"
+      (click)="keycommands.copyToClipBoard(item?.transform('copy', field.property),field.getLabel())"
+      [attr.data-tooltip-bottom]="'click to copy '+field.getLabel()">
+      {{item?.display(field.property)}}
+    </div>
   </div>
 
   <div *ngSwitchDefault>

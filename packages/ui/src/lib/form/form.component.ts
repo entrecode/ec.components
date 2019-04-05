@@ -209,6 +209,14 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
     return this.submitButton !== false && !this.config.hideSubmitButton;
   }
 
+  /** Determindes if the given field's label should be shown based on hideFormLabel+hideFormLabelIfEmpty flags */
+  showLabel(field, form) {
+    if (!field || !form) {
+      return false;
+    }
+    return !field.hideFormLabel && (!field.hideFormLabelIfEmpty || !!form.resolve(field.property));
+  }
+
   /** Returns the current value of the form control group. When passing a property, it directly returns the property value. */
   getValue(property?: string) {
     if (property) {
