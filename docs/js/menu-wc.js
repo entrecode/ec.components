@@ -291,13 +291,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/DataModule.html" data-type="entity-link">DataModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-DataModule-fbd1704c6bfbe24a1aa9832ecc5d8523"' : 'data-target="#xs-components-links-module-DataModule-fbd1704c6bfbe24a1aa9832ecc5d8523"' }>
+                                            'data-target="#components-links-module-DataModule-41cc1f980788fabec85eee8422a22f7e"' : 'data-target="#xs-components-links-module-DataModule-41cc1f980788fabec85eee8422a22f7e"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-DataModule-fbd1704c6bfbe24a1aa9832ecc5d8523"' :
-                                            'id="xs-components-links-module-DataModule-fbd1704c6bfbe24a1aa9832ecc5d8523"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-DataModule-41cc1f980788fabec85eee8422a22f7e"' :
+                                            'id="xs-components-links-module-DataModule-41cc1f980788fabec85eee8422a22f7e"' }>
                                             <li class="link">
                                                 <a href="components/AdminEntryInputComponent.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">AdminEntryInputComponent</a>
@@ -342,13 +342,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     </li>
                                 <li class="chapter inner">
                                     <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                        'data-target="#directives-links-module-DataModule-fbd1704c6bfbe24a1aa9832ecc5d8523"' : 'data-target="#xs-directives-links-module-DataModule-fbd1704c6bfbe24a1aa9832ecc5d8523"' }>
+                                        'data-target="#directives-links-module-DataModule-41cc1f980788fabec85eee8422a22f7e"' : 'data-target="#xs-directives-links-module-DataModule-41cc1f980788fabec85eee8422a22f7e"' }>
                                         <span class="icon ion-md-code-working"></span>
                                         <span>Directives</span>
                                         <span class="icon ion-ios-arrow-down"></span>
                                     </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-DataModule-fbd1704c6bfbe24a1aa9832ecc5d8523"' :
-                                        'id="xs-directives-links-module-DataModule-fbd1704c6bfbe24a1aa9832ecc5d8523"' }>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-DataModule-41cc1f980788fabec85eee8422a22f7e"' :
+                                        'id="xs-directives-links-module-DataModule-41cc1f980788fabec85eee8422a22f7e"' }>
                                         <li class="link">
                                             <a href="directives/EntriesDirective.html"
                                                 data-type="entity-link" data-context="sub-entity" data-context-id="modules">EntriesDirective</a>
@@ -361,16 +361,16 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 </li>
                                 <li class="chapter inner">
                                     <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                        'data-target="#injectables-links-module-DataModule-fbd1704c6bfbe24a1aa9832ecc5d8523"' : 'data-target="#xs-injectables-links-module-DataModule-fbd1704c6bfbe24a1aa9832ecc5d8523"' }>
+                                        'data-target="#injectables-links-module-DataModule-41cc1f980788fabec85eee8422a22f7e"' : 'data-target="#xs-injectables-links-module-DataModule-41cc1f980788fabec85eee8422a22f7e"' }>
                                         <span class="icon ion-md-arrow-round-down"></span>
                                         <span>Injectables</span>
                                         <span class="icon ion-ios-arrow-down"></span>
                                     </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-DataModule-fbd1704c6bfbe24a1aa9832ecc5d8523"' :
-                                        'id="xs-injectables-links-module-DataModule-fbd1704c6bfbe24a1aa9832ecc5d8523"' }>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-DataModule-41cc1f980788fabec85eee8422a22f7e"' :
+                                        'id="xs-injectables-links-module-DataModule-41cc1f980788fabec85eee8422a22f7e"' }>
                                         <li class="link">
-                                            <a href="injectables/CrudService.html"
-                                                data-type="entity-link" data-context="sub-entity" data-context-id="modules" }>CrudService</a>
+                                            <a href="injectables/EntryService.html"
+                                                data-type="entity-link" data-context="sub-entity" data-context-id="modules" }>EntryService</a>
                                         </li>
                                         <li class="link">
                                             <a href="injectables/HistoryService.html"

@@ -3,7 +3,7 @@ import { EntryListComponent } from '../entry-list/entry-list.component';
 import { UiModule } from '@ec.components/ui';
 import { ResourceModule } from '../resource/resource.module';
 import { ModelConfigService } from '../model-config/model-config.service';
-import { CrudService } from '../crud/crud.service';
+import { EntryService } from '../entry/entry.service';
 import { TypeConfigService } from '../model-config/type-config.service';
 import { ImageSelectPopComponent } from '../files/image-select-pop/image-select-pop.component';
 
@@ -19,7 +19,7 @@ describe('EntryListComponent', () => {
       declarations: [ImageSelectPopComponent, EntryListComponent],
       providers: [
         ModelConfigService,
-        CrudService,
+        EntryService,
         TypeConfigService,
         {
           provide: 'environment',

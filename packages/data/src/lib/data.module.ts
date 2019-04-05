@@ -6,7 +6,7 @@ import { UiModule } from '@ec.components/ui';
 import { DndModule } from 'ngx-drag-drop';
 import { AuthModule } from './auth/auth.module';
 import { CrudComponent } from './crud/crud.component';
-import { CrudService } from './crud/crud.service';
+import { EntryService } from './entry/entry.service';
 import { EntriesDirective } from './entries/entries.directive';
 import { AdminEntryInputComponent } from './entry-form/admin-entry-input.component';
 import { DefaultEntryInputComponent } from './entry-form/default-entry-input.component';
@@ -76,7 +76,7 @@ export const dataModuleConfig = {
     ResourceModule
   ],
   providers: [
-    CrudService,
+    EntryService,
     TypeConfigService,
     ModelConfigService,
     HistoryService,

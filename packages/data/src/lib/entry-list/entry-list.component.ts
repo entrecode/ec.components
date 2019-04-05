@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ListConfig } from '@ec.components/core';
 import { ListConfigService, LoaderService, NotificationsService, SymbolService, ListComponent } from '@ec.components/ui';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
-import { CrudService } from '../crud/crud.service';
+import { EntryService } from '../entry/entry.service';
 import { ModelConfigService } from '../model-config/model-config.service';
 import { ResourceService } from '../resource-config/resource.service';
 import { ResourceListComponent } from '../resource-list/resource-list.component';
@@ -30,7 +30,7 @@ export class EntryListComponent extends ResourceListComponent {
     protected sdk: SdkService,
     protected notificationService: NotificationsService,
     protected modelConfig: ModelConfigService,
-    protected crud: CrudService,
+    protected crud: EntryService,
     protected symbol: SymbolService,
     protected resourceService: ResourceService,
     public listConfig: ListConfigService,

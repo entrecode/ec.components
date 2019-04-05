@@ -326,7 +326,7 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(loaderService: <a href="../injectables/LoaderService.html">LoaderService</a>, modelConfig: <a href="../injectables/ModelConfigService.html">ModelConfigService</a>, notificationService: <a href="../injectables/NotificationsService.html">NotificationsService</a>, crud: <a href="../injectables/CrudService.html">CrudService</a>, formService: <a href="../injectables/FormService.html">FormService</a>, typeConfig: <a href="../injectables/TypeConfigService.html">TypeConfigService</a>, symbol: <a href="../injectables/SymbolService.html">SymbolService</a>, cdr: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>)</code>
+<code>constructor(loaderService: <a href="../injectables/LoaderService.html">LoaderService</a>, modelConfig: <a href="../injectables/ModelConfigService.html">ModelConfigService</a>, notificationService: <a href="../injectables/NotificationsService.html">NotificationsService</a>, entryService: <a href="../injectables/EntryService.html">EntryService</a>, formService: <a href="../injectables/FormService.html">FormService</a>, typeConfig: <a href="../injectables/TypeConfigService.html">TypeConfigService</a>, symbol: <a href="../injectables/SymbolService.html">SymbolService</a>, cdr: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>)</code>
                     </td>
                 </tr>
                         <tr>
@@ -387,10 +387,10 @@
                                                     
                                                 </tr>
                                                 <tr>
-                                                        <td>crud</td>
+                                                        <td>entryService</td>
                                                   
                                                         <td>
-                                                                    <code><a href="../injectables/CrudService.html" target="_self" >CrudService</a></code>
+                                                                    <code><a href="../injectables/EntryService.html" target="_self" >EntryService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -2709,7 +2709,7 @@ import {
   NotificationsService, SymbolService, WithNotifications, formTemplate
 } from &#x27;@ec.components/ui&#x27;;
 import EntryResource from &#x27;ec.sdk/lib/resources/publicAPI/EntryResource&#x27;;
-import { CrudService } from &#x27;../crud/crud.service&#x27;;
+import { EntryService } from &#x27;../entry/entry.service&#x27;;
 import { ModelConfigService } from &#x27;../model-config/model-config.service&#x27;;
 import { TypeConfigService } from &#x27;../model-config/type-config.service&#x27;;
 
@@ -2737,7 +2737,7 @@ export class EntryFormComponent extends FormComponent&lt;EntryResource&gt; imple
   constructor(protected loaderService: LoaderService,
     private modelConfig: ModelConfigService,
     protected notificationService: NotificationsService,
-    protected crud: CrudService,
+    protected entryService: EntryService,
     public formService: FormService,
     protected typeConfig: TypeConfigService,
     protected symbol: SymbolService,
@@ -2788,7 +2788,7 @@ export class EntryFormComponent extends FormComponent&lt;EntryResource&gt; imple
     if (!this.form || !this.isEditing()) {
       return;
     }
-    const deletion &#x3D; this.crud.del(this.model, this.form.getBody()).then(() &#x3D;&gt; {
+    const deletion &#x3D; this.entryService.del(this.model, this.form.getBody()).then(() &#x3D;&gt; {
       this.deleted.emit();
       this.create();
       this.notificationService.emit({

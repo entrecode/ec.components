@@ -10,7 +10,7 @@ import { ResourceService } from '../resource-config/resource.service';
 import { ResourceList } from '../resource-list/resource-list';
 import { SdkService } from '../sdk/sdk.service';
 
-/** Instances of Update are emitted by the changes EventEmitter of the CrudService. */
+/** Instances of Update are emitted by the changes EventEmitter of the FileService. */
 export interface Upload {
   /** The relevant asset. */
   asset?: PublicAssetResource;
