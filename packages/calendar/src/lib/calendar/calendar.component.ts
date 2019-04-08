@@ -87,7 +87,7 @@ export class CalendarComponent extends MonthComponent implements ControlValueAcc
   /** Called upon input value change by the user. */
   input(value) {
     this.value = value;
-    const typed = moment(value, this.patterns, true);
+    const typed = moment(value, [...this.patterns, moment.ISO_8601], true);
     if (typed.isValid()) {
       this.grid.selectDay(typed, false);
       this.setValue(typed.toISOString());

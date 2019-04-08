@@ -3222,7 +3222,7 @@ export class CalendarComponent extends MonthComponent implements ControlValueAcc
   /** Called upon input value change by the user. */
   input(value) {
     this.value &#x3D; value;
-    const typed &#x3D; moment(value, this.patterns, true);
+    const typed &#x3D; moment(value, [...this.patterns, moment.ISO_8601], true);
     if (typed.isValid()) {
       this.grid.selectDay(typed, false);
       this.setValue(typed.toISOString());
