@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.47.4](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.47.3...@ec.components/data@0.47.4) (2019-04-12)
+
+
+### Bug Fixes
+
+* EDITOR-293 ([bd766bf](https://github.com/entrecode/ec.components/commit/bd766bf))
+* EDITOR-330 => ids are now filterable ([ee3518f](https://github.com/entrecode/ec.components/commit/ee3518f))
+* public user auth flow after sdk update ([efa26a0](https://github.com/entrecode/ec.components/commit/efa26a0))
+
+
+
+
+
 ## [0.47.3](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.47.2...@ec.components/data@0.47.3) (2019-04-08)
 
 **Note:** Version bump only for package @ec.components/data
