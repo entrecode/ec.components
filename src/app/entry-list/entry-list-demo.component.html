@@ -1,10 +1,7 @@
 <h2>Entry List</h2>
-<!-- <ec-heatmap #heatmap (spanChanged)="updateFilter($event,entryList)" style="width:400px;display:block" [timestamps]="timestamps"></ec-heatmap> -->
-<!-- <ec-daterange [timespan]="timespan" (spanChanged)="updateFilter($event,entryList)"></ec-daterange> -->
-<!-- 
-    <ec-searchbar [listComponent]="entryList" [list]="entryList?.list" property="name"></ec-searchbar> -->
+
 <ec-entry-list [loader]="loader" (changed)="updateList($event)" #entryList model="muffin"
-    [config]="{storageKey:'demo-muffins',desc:true,rawFilter:true}"><!-- ,sortBy:heatProperty -->
+    [config]="entryListConfig">
     <div data-ec-list-empty>
         Noch keine Entries vorhanden!!!!!!!!!
     </div>
@@ -17,3 +14,4 @@
     </div>
 </ec-entry-list>
 <ec-loader #loader class="ec-loader ec-loader_global"></ec-loader>
+<ec-notifications></ec-notifications>

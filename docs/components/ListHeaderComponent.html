@@ -377,7 +377,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">packages/ui/src/lib/list/list-header/list-header.component.ts:112</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">packages/ui/src/lib/list/list-header/list-header.component.ts:114</a></div>
                             </td>
                         </tr>
 
@@ -417,7 +417,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">packages/ui/src/lib/list/list-header/list-header.component.ts:82</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">packages/ui/src/lib/list/list-header/list-header.component.ts:84</a></div>
                             </td>
                         </tr>
 
@@ -679,7 +679,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">packages/ui/src/lib/list/list-header/list-header.component.ts:104</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">packages/ui/src/lib/list/list-header/list-header.component.ts:106</a></div>
                             </td>
                         </tr>
 
@@ -791,7 +791,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="121" class="link-to-prism">packages/ui/src/lib/list/list-header/list-header.component.ts:121</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="123" class="link-to-prism">packages/ui/src/lib/list/list-header/list-header.component.ts:123</a></div>
                             </td>
                         </tr>
 
@@ -858,7 +858,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="131" class="link-to-prism">packages/ui/src/lib/list/list-header/list-header.component.ts:131</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">packages/ui/src/lib/list/list-header/list-header.component.ts:133</a></div>
                             </td>
                         </tr>
 
@@ -1213,9 +1213,11 @@ export class ListHeaderComponent implements OnChanges {
           ...fields,
           [field.property]: {
             ...this.list.config.fields[field.property],
+            view: field.getView(&#x27;filter&#x27;),
             required: false,
             readOnly: false,
             immutable: false,
+            create: true,
             form: true,
             autofocus: true,
             nestedCrudConfig: {
@@ -1243,7 +1245,7 @@ export class ListHeaderComponent implements OnChanges {
     // patch current filter value to control
     const control &#x3D; this.filterForm.group.get(property);
     if (!control) {
-      console.warn(&#x27;no control found for &#x27; + property + &#x27;. Is it filterable?&#x27;, this.list.config);
+      console.warn(&#x27;no control found for &#x27; + property + &#x27;. Is it filterable?&#x27;, this.list.config, this.filterForm.group);
       return;
     }
     this.filterForm.group.get(property).patchValue(this.list.getFilterValue(property));

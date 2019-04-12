@@ -168,7 +168,9 @@ export class TypeConfigService {
       display: value => (value ? value.title : ''),
       input: AdminEntryInputComponent,
       output: DefaultEntryOutputComponent,
-      filterPopClass: 'ec-pop_dialog'
+      filterPopClass: 'ec-pop_dialog',
+      filterable: true,
+      filterOperator: 'exact',
     },
     role: {
       display: value => (value ? value.name : ''),

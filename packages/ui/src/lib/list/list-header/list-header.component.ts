@@ -63,9 +63,11 @@ export class ListHeaderComponent implements OnChanges {
           ...fields,
           [field.property]: {
             ...this.list.config.fields[field.property],
+            view: field.getView('filter'),
             required: false,
             readOnly: false,
             immutable: false,
+            create: true,
             form: true,
             autofocus: true,
             nestedCrudConfig: {
@@ -93,7 +95,7 @@ export class ListHeaderComponent implements OnChanges {
     // patch current filter value to control
     const control = this.filterForm.group.get(property);
     if (!control) {
-      console.warn('no control found for ' + property + '. Is it filterable?', this.list.config);
+      console.warn('no control found for ' + property + '. Is it filterable?', this.list.config, this.filterForm.group);
       return;
     }
     this.filterForm.group.get(property).patchValue(this.list.getFilterValue(property));

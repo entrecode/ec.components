@@ -76,4 +76,8 @@ export class Field implements FieldConfigProperty {
     }
     return this.label || this.property;
   }
+  /** Returns the view for the given occasion */
+  getView(occasion?) {
+    return this[occasion + 'View'] || this.view;
+  }
 }

@@ -247,7 +247,7 @@ set method. </p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="205" class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:205</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="208" class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:208</a></div>
                             </td>
                         </tr>
 
@@ -414,7 +414,7 @@ or just specific components. </li>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="135" class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:135</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="138" class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:138</a></div>
                             </td>
                         </tr>
 
@@ -487,7 +487,7 @@ This config is meant to deliver the default behaviour when nothing else is confi
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="236" class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:236</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="239" class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:239</a></div>
                             </td>
                         </tr>
 
@@ -554,7 +554,7 @@ This config is meant to deliver the default behaviour when nothing else is confi
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:114</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="117" class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:117</a></div>
                             </td>
                         </tr>
 
@@ -648,7 +648,7 @@ This config is meant to deliver the default behaviour when nothing else is confi
 </div>
 
                             <div class="io-description">
-                                <b>Returns : </b>    <code><a href="../classes/List.html" target="_self" >{ id: { label: any; create: boolean; view: string; form: boolean; immutable: boolean; hideInList:...</a></code>
+                                <b>Returns : </b>    <code>{ id: { label: any; create: boolean; view: string; filterView: string; filterable: boolean; filte...</code>
 
                             </div>
                     </td>
@@ -870,6 +870,9 @@ export class ModelConfigService extends Config {
         label: this.symbol.resolve(&#x27;field.label.id&#x27;),
         create: false,
         view: &#x27;copy&#x27;,
+        filterView: &#x27;string&#x27;,
+        filterable: true,
+        filterOperator: &#x27;exact&#x27;,
         form: true,
         immutable: true,
         hideInList: true,

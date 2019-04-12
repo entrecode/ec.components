@@ -8,6 +8,21 @@ import { EntryListComponent } from '@ec.components/data';
 })
 export class EntryListDemoComponent {
   timestamps: any;
+  entryListConfig = {
+    storageKey: 'demo-muffins',
+    desc: true,
+    rawFilter: true,
+    /* fields: {
+      _id: {
+        filterable: true,
+        view: 'string',
+        filterOperator: 'exact'
+      },
+      name: {
+        filterable: true
+      }
+    } */
+  };
   timespan = [moment(), moment().add(1, 'month')];
   heatProperty = '_modified';
   constructor() {

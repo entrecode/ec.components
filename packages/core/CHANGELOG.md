@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.25.2](https://github.com/entrecode/ec.components/compare/@ec.components/core@0.25.1...@ec.components/core@0.25.2) (2019-04-12)
+
+
+### Bug Fixes
+
+* EDITOR-330 => ids are now filterable ([ee3518f](https://github.com/entrecode/ec.components/commit/ee3518f))
+
+
+
+
+
 ## [0.25.1](https://github.com/entrecode/ec.components/compare/@ec.components/core@0.25.0...@ec.components/core@0.25.1) (2019-04-05)
 
 

@@ -13,11 +13,15 @@ export class AuthDemoComponent {
       console.log('me', user);
     });
     this.sdk.ready.then(() => {
-      console.log('ready...');
       this.auth.checkPermission('muffin:post').then((res) => {
         console.log('permission', res);
       }).catch((err) => {
         console.log('check permissino fail', err);
+      });
+      this.auth.checkPermission('musician:post').then((res) => {
+        console.log('permission', res);
+      }).catch((err) => {
+        console.log('check permissisfsfno fail', err);
       });
     });
   }

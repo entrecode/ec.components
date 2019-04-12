@@ -1279,7 +1279,7 @@ export class SdkService {
     return api.me().then((account) &#x3D;&gt; {
       return account || this._api.me();
     }).catch((err) &#x3D;&gt; {
-      return null;
+      return this._api.getToken() ? this._api.me() : null;
     });
   }
 
