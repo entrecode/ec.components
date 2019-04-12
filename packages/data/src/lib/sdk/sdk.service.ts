@@ -140,7 +140,7 @@ export class SdkService {
     return api.me().then((account) => {
       return account || this._api.me();
     }).catch((err) => {
-      return null;
+      return this._api.getToken() ? this._api.me() : null;
     });
   }
 
