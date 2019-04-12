@@ -23,10 +23,8 @@ export class ResourceConfig {
       },
       fields: {
         hexColor: this.hexColor(),
-        shortID: {
-          immutable: true,
-          list: false
-        },
+        shortID: this.idField(),
+        dataManagerID: this.idField(),
         title: Object.assign(this.stringField('Name'), { required: true }),
         description: {
           label: this.symbol.resolve('field.label.description'),
@@ -696,6 +694,17 @@ export class ResourceConfig {
       prefill: '#ffffff'
     };
   }
+  idField(hideInList = true) {
+    return {
+      immutable: true,
+      hideInList,
+      filterView: 'string',
+      view: 'copy',
+      filterable: true,
+      filterOperator: 'exact',
+    };
+  }
+
   /** returns the config for a tags field */
   tagsField(label, list = true) {
     return {
