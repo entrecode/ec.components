@@ -198,6 +198,9 @@
                             <li>
                                 <a href="#getPlaceholder">getPlaceholder</a>
                             </li>
+                            <li>
+                                <a href="#getView">getView</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -1194,6 +1197,73 @@
                 </tr>
             </tbody>
         </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getView"></a>
+                        <span class="name">
+                            <b>
+                            getView
+                            </b>
+                            <a href="#getView"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>getView(occasion?)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">packages/core/src/lib/field/field.ts:80</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Returns the view for the given occasion </p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>occasion</td>
+                                                    
+                                                    <td>
+                                                            Yes
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 </section>
 
             <section>
@@ -1329,6 +1399,10 @@ export class Field implements FieldConfigProperty {
       return &#x27;&#x27;;
     }
     return this.label || this.property;
+  }
+  /** Returns the view for the given occasion */
+  getView(occasion?) {
+    return this[occasion + &#x27;View&#x27;] || this.view;
   }
 }
 </code></pre>

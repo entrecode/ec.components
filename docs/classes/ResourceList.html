@@ -1152,7 +1152,7 @@ via getFields method.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="167" class="link-to-prism">packages/data/src/lib/resource-list/resource-list.ts:167</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="169" class="link-to-prism">packages/data/src/lib/resource-list/resource-list.ts:169</a></div>
                             </td>
                         </tr>
 
@@ -1241,7 +1241,7 @@ via getFields method.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="154" class="link-to-prism">packages/data/src/lib/resource-list/resource-list.ts:154</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="156" class="link-to-prism">packages/data/src/lib/resource-list/resource-list.ts:156</a></div>
                             </td>
                         </tr>
 
@@ -1418,7 +1418,7 @@ via getFields method.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="113" class="link-to-prism">packages/data/src/lib/resource-list/resource-list.ts:113</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="115" class="link-to-prism">packages/data/src/lib/resource-list/resource-list.ts:115</a></div>
                             </td>
                         </tr>
 
@@ -1647,7 +1647,7 @@ via getFields method.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="145" class="link-to-prism">packages/data/src/lib/resource-list/resource-list.ts:145</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="147" class="link-to-prism">packages/data/src/lib/resource-list/resource-list.ts:147</a></div>
                             </td>
                         </tr>
 
@@ -1732,7 +1732,7 @@ via getFields method.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">packages/data/src/lib/resource-list/resource-list.ts:95</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">packages/data/src/lib/resource-list/resource-list.ts:97</a></div>
                             </td>
                         </tr>
 
@@ -1801,7 +1801,7 @@ via getFields method.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="83" class="link-to-prism">packages/data/src/lib/resource-list/resource-list.ts:83</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">packages/data/src/lib/resource-list/resource-list.ts:85</a></div>
                             </td>
                         </tr>
 
@@ -4574,6 +4574,8 @@ export class ResourceList extends List&lt;Resource&gt; {
       return;
     }
     const options &#x3D; this.getFilterOptions(this.config);
+    /* options._count &#x3D; options.size;
+    delete options.size; */
     this.promise &#x3D; this.api
       .resourceList(this.relation, options)
       .then(list &#x3D;&gt; this.use(list))

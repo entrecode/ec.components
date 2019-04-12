@@ -381,7 +381,7 @@ setClientID.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="113" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:113</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="116" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:116</a></div>
                             </td>
                         </tr>
 
@@ -464,7 +464,7 @@ setClientID.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:82</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:85</a></div>
                             </td>
                         </tr>
 
@@ -581,7 +581,7 @@ setClientID.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="157" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:157</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="160" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:160</a></div>
                             </td>
                         </tr>
 
@@ -725,7 +725,7 @@ setClientID.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="147" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:147</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="150" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:150</a></div>
                             </td>
                         </tr>
 
@@ -792,7 +792,7 @@ setClientID.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="171" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:171</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="174" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:174</a></div>
                             </td>
                         </tr>
 
@@ -830,7 +830,7 @@ setClientID.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="135" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:135</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="138" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:138</a></div>
                             </td>
                         </tr>
 
@@ -906,7 +906,7 @@ setClientID.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:74</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:77</a></div>
                             </td>
                         </tr>
 
@@ -1117,7 +1117,10 @@ export class AuthService {
   /** checks given public permission for given api, defaults to this.sdk.api. Also works as ec user */
   checkPermission(permission: string, api?) {
     return this.sdk.ready.then((user) &#x3D;&gt; {
-      api &#x3D; api || this.sdk.user;
+      if (!user) {
+        return false;
+      }
+      api &#x3D; api || this.sdk.api;
       return api.checkPermission(permission);
     });
   }
