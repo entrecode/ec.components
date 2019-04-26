@@ -1,6 +1,6 @@
 import { Component, Input, ViewChild, forwardRef } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { DefaultInputComponent, InputComponent, FormService } from '@ec.components/ui';
+import { DefaultInputComponent, InputComponent, FormService, KeycommandsService } from '@ec.components/ui';
 import { GeocodeService } from './geocode.service';
 import { LocationMapComponent } from './location-map.component';
 import { LocationSearchComponent } from './location-search.component';
@@ -35,9 +35,10 @@ export class LocationPickerComponent extends DefaultInputComponent implements Co
 
   constructor(
     public geocodeService: GeocodeService,
-    public formService: FormService
+    public formService: FormService,
+    public keycommands: KeycommandsService
   ) {
-    super(formService);
+    super(formService, keycommands);
   }
 
   /** Sets value of map and propagates change */
