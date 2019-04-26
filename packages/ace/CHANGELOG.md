@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.13](https://github.com/entrecode/ec.components/compare/@ec.components/ace@0.6.12...@ec.components/ace@0.6.13) (2019-04-26)
+
+
+### Bug Fixes
+
+* ace test ([95f8cc1](https://github.com/entrecode/ec.components/commit/95f8cc1))
+
+
+
+
+
 ## [0.6.12](https://github.com/entrecode/ec.components/compare/@ec.components/ace@0.6.11...@ec.components/ace@0.6.12) (2019-03-29)
 
 

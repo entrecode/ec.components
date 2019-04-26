@@ -178,11 +178,32 @@ export const demoRoutes: Routes = [
       },
       {
         path: 'tabs',
-        component: TabsDemoComponent,
-        data: {
-          paths: ['tabs/tabs-demo.component.html', 'tabs/tabs-demo.component.ts'],
-          links: ['components/TabsComponent.html#readme', 'modules/UtilityModule.html'] // TODO: enhance readme
-        }
+        children: [
+          {
+            path: '',
+            component: TabsDemoComponent,
+            data: {
+              paths: ['tabs/tabs-demo.component.html', 'tabs/tabs-demo.component.ts'],
+              links: ['components/TabsComponent.html#readme', 'modules/UtilityModule.html'] // TODO: enhance readme
+            }
+          },
+          {
+            path: 'foo',
+            component: TabsDemoComponent,
+            data: {
+              paths: ['tabs/tabs-demo.component.html', 'tabs/tabs-demo.component.ts'],
+              links: ['components/TabsComponent.html#readme', 'modules/UtilityModule.html'] // TODO: enhance readme
+            }
+          },
+          {
+            path: 'bar',
+            component: TabsDemoComponent,
+            data: {
+              paths: ['tabs/tabs-demo.component.html', 'tabs/tabs-demo.component.ts'],
+              links: ['components/TabsComponent.html#readme', 'modules/UtilityModule.html'] // TODO: enhance readme
+            }
+          },
+        ]
       },
       {
         path: 'login-form',

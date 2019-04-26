@@ -28,7 +28,7 @@ export class TabsComponent implements AfterContentInit {
     if (!url || !this.tabs) {
       return;
     }
-    const paths = url.split('/');
+    const paths = new URL(url, window.location.origin).pathname.split('/');
     const match = this.tabs.find((tab) => paths[paths.length - 1].indexOf(tab.route) !== -1);
     if (match) {
       this.select(match, true);
