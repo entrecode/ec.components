@@ -185,6 +185,9 @@
                                 <a href="#inputReady">inputReady</a>
                             </li>
                             <li>
+                                <a href="#isLastColumn">isLastColumn</a>
+                            </li>
+                            <li>
                                 <a href="#ngOnChanges">ngOnChanges</a>
                             </li>
                             <li>
@@ -583,6 +586,77 @@
                             </div>
                             <div class="io-description">
                                 <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="isLastColumn"></a>
+                        <span class="name">
+                            <b>
+                            isLastColumn
+                            </b>
+                            <a href="#isLastColumn"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>isLastColumn(field: <a href="../classes/Field.html">Field</a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="139" class="link-to-prism">packages/ui/src/lib/list/list-header/list-header.component.ts:139</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Yields true if the given field is the last column of the current list header </p>
+</div>
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>field</td>
+                                                        <td>
+                                                                    <code><a href="../classes/Field.html" target="_self" >Field</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
                             </div>
                                 <div class="io-description">
@@ -1284,6 +1358,15 @@ export class ListHeaderComponent implements OnChanges {
     this.list.toggleVisibility(field);
     this.listConfig.storeConfig(this.list);
   }
+
+  /** Yields true if the given field is the last column of the current list header */
+  isLastColumn(field: Field) {
+    if (!this.list || !this.list.fields) {
+      return;
+    };
+    const visibleColumns &#x3D; this.list.fields.filter(f &#x3D;&gt; !f.hideInList);
+    return field.property &#x3D;&#x3D;&#x3D; visibleColumns[visibleColumns.length - 1].property;
+  }
 }
 </code></pre>
     </div>
@@ -1341,10 +1424,11 @@ export class ListHeaderComponent implements OnChanges {
         [disabled]&#x3D;&quot;selection?.config?.solo&quot;&gt;
     &lt;/div&gt;
     &lt;div class&#x3D;&quot;ec-list-cell&quot; *ngFor&#x3D;&quot;let field of list?.fields;let i &#x3D; index&quot;
-      [ngClass]&#x3D;&quot;&#x27;ec-list-cell_&#x27; + field.view + &#x27; &#x27; + field?.classes&quot; [class.is-hidden]&#x3D;&quot;field.hideInList&quot;
+      [ngClass]&#x3D;&quot;&#x27;ec-list-cell_&#x27; + field.view + &#x27; &#x27; + (field?.classes||&#x27;&#x27;)&quot; [class.is-hidden]&#x3D;&quot;field.hideInList&quot;
       [class.is-sortable]&#x3D;&quot;field.sortable&quot; [class.is-sorted]&#x3D;&quot;list.isSorted(field.property)&quot;
       [class.is-filterable]&#x3D;&quot;field.filterable&quot; [class.is-filtered]&#x3D;&quot;list.isFiltered(field.property)&quot;
       [class.is-sorted-desc]&#x3D;&quot;list.isSorted(field.property, true)&quot;
+      [class.is-last-column]&#x3D;&quot;isLastColumn(field)&quot;
       [class.is-sorted-asc]&#x3D;&quot;list.isSorted(field.property, false)&quot;&gt;
       &lt;!-- [class.is-filter-active]&#x3D;&quot;filterPop.active&quot;--&gt;
       &lt;a (click)&#x3D;&quot;filterField(field.property)&quot; class&#x3D;&quot;is-filterable-control&quot; *ngIf&#x3D;&quot;field.filterable&quot;&gt;
@@ -1407,7 +1491,7 @@ export class ListHeaderComponent implements OnChanges {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ec-pop (toggle)="toggledFilterPop($event)" [hideOnEscape]="false" #filterPop>  <div *ngIf="filteredField" class="btn-group">    <!-- <div tabindex="0" class="dropdown dropdown_left">      <span class="btn btn_clear">        {{filteredField.getLabel()}}      </span>      <ul class="dropdown-options">        <li [class.is-hidden]="field.property===filteredField?.property" class="dropdown-option"          *ngFor="let field of list?.filterableFields()">          <a (click)="filterField(field.property)">{{filteredField.getLabel()}}</a>        </li>      </ul>    </div> -->    <ec-input (ready)="inputReady($event)" (changed)="setFilter(filteredField, $event)" [lazy]="true"      class="has-width-full" [field]="filteredField" [group]="filterForm?.group" [debounce]="200"      *ngIf="filterPop.active&&filterForm?.group" #filterInput></ec-input>    <a class="btn btn_clear" (click)="resetFilter()" *ngIf="list?.isFiltered(filteredField.property)">      <!-- <a class="btn btn_clear" (click)="filterPop.hide()"> -->      <ec-icon name="close-x"></ec-icon>    </a>    <div tabindex="0" class="dropdown dropdown_right">      <span class="btn btn_clear">        <ec-icon name="filter-2"></ec-icon>      </span>      <ul class="dropdown-options">        <li class="dropdown-option" *ngFor="let field of list?.sortableFields()"          [class.is-active]="list?.isSorted(field.property, true)">          <a class="sorting-option"            [class.is-sorted-asc]="list?.isSorted(field.property, true)"            [class.is-sorted-desc]="list?.isSorted(field.property, false)">            <span class="sorting-option-indicator">              <span class="asc" (click)="list.toggleSort(field.property,false)"></span>              <span class="desc" (click)="list.toggleSort(field.property,true)"></span>            </span>            <span (click)="list.toggleSort(field.property)">{{field.getLabel()}}</span>          </a>        </li>      </ul>    </div>  </div></ec-pop><div *ngIf="filterFormConfig">  <ec-form [config]="filterFormConfig" [value]="list?.config?.filter" [empty]="true" #filterForm    (ready)="initFilterForm($event)" [lazy]="true"></ec-form>  <div class="ec-list-header">    <div class="ec-list-cell ec-list-item__selector" *ngIf="list?.config?.selectMode&&!list?.isEmpty()">      <input type="checkbox" (click)="selection?.toggleAll(list?.page)" [checked]="selection?.hasAll(list?.page)"        [disabled]="selection?.config?.solo">    </div>    <div class="ec-list-cell" *ngFor="let field of list?.fields;let i = index"      [ngClass]="\'ec-list-cell_\' + field.view + \' \' + field?.classes" [class.is-hidden]="field.hideInList"      [class.is-sortable]="field.sortable" [class.is-sorted]="list.isSorted(field.property)"      [class.is-filterable]="field.filterable" [class.is-filtered]="list.isFiltered(field.property)"      [class.is-sorted-desc]="list.isSorted(field.property, true)"      [class.is-sorted-asc]="list.isSorted(field.property, false)">      <!-- [class.is-filter-active]="filterPop.active"-->      <a (click)="filterField(field.property)" class="is-filterable-control" *ngIf="field.filterable">        <ec-icon name="find"></ec-icon>      </a>      <!-- <a (click)="toggleVisibility(field)" class="is-visibility-control">        <ec-icon name="eye-closed"></ec-icon>      </a> -->            <span class="ec-list-column-title" (click)="field.sortable&&list.toggleSort(field.property)"        [title]="field.property">        {{field.getLabel()}}      </span>      <span class="is-sortable-indicator" *ngIf="field.sortable">        <span class="asc" (click)="list.toggleSort(field.property,false)"></span>        <span class="desc" (click)="list.toggleSort(field.property,true)"></span>      </span>    </div>    <div class="dropdown dropdown_right ec-list-column-filter" tabindex="0" *ngIf="!list?.config?.disableColumnFilter">      <span>&#9776;</span>      <div class="dropdown-options ec-list-column-filter-options">        <ul>          <li class="ec-list-column-filter-option" *ngFor="let field of list?.fields"            [class.is-active]="!field.hideInList" [class.is-hidden]="field.hideInColumnFilter">            <span (click)="toggleVisibility(field)">              <ec-icon [name]="field.hideInList?\'square\':\'check-box\'">{{field.getLabel()}}</ec-icon>            </span>          </li>        </ul>      </div>    </div>  </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><ec-pop (toggle)="toggledFilterPop($event)" [hideOnEscape]="false" #filterPop>  <div *ngIf="filteredField" class="btn-group">    <!-- <div tabindex="0" class="dropdown dropdown_left">      <span class="btn btn_clear">        {{filteredField.getLabel()}}      </span>      <ul class="dropdown-options">        <li [class.is-hidden]="field.property===filteredField?.property" class="dropdown-option"          *ngFor="let field of list?.filterableFields()">          <a (click)="filterField(field.property)">{{filteredField.getLabel()}}</a>        </li>      </ul>    </div> -->    <ec-input (ready)="inputReady($event)" (changed)="setFilter(filteredField, $event)" [lazy]="true"      class="has-width-full" [field]="filteredField" [group]="filterForm?.group" [debounce]="200"      *ngIf="filterPop.active&&filterForm?.group" #filterInput></ec-input>    <a class="btn btn_clear" (click)="resetFilter()" *ngIf="list?.isFiltered(filteredField.property)">      <!-- <a class="btn btn_clear" (click)="filterPop.hide()"> -->      <ec-icon name="close-x"></ec-icon>    </a>    <div tabindex="0" class="dropdown dropdown_right">      <span class="btn btn_clear">        <ec-icon name="filter-2"></ec-icon>      </span>      <ul class="dropdown-options">        <li class="dropdown-option" *ngFor="let field of list?.sortableFields()"          [class.is-active]="list?.isSorted(field.property, true)">          <a class="sorting-option"            [class.is-sorted-asc]="list?.isSorted(field.property, true)"            [class.is-sorted-desc]="list?.isSorted(field.property, false)">            <span class="sorting-option-indicator">              <span class="asc" (click)="list.toggleSort(field.property,false)"></span>              <span class="desc" (click)="list.toggleSort(field.property,true)"></span>            </span>            <span (click)="list.toggleSort(field.property)">{{field.getLabel()}}</span>          </a>        </li>      </ul>    </div>  </div></ec-pop><div *ngIf="filterFormConfig">  <ec-form [config]="filterFormConfig" [value]="list?.config?.filter" [empty]="true" #filterForm    (ready)="initFilterForm($event)" [lazy]="true"></ec-form>  <div class="ec-list-header">    <div class="ec-list-cell ec-list-item__selector" *ngIf="list?.config?.selectMode&&!list?.isEmpty()">      <input type="checkbox" (click)="selection?.toggleAll(list?.page)" [checked]="selection?.hasAll(list?.page)"        [disabled]="selection?.config?.solo">    </div>    <div class="ec-list-cell" *ngFor="let field of list?.fields;let i = index"      [ngClass]="\'ec-list-cell_\' + field.view + \' \' + (field?.classes||\'\')" [class.is-hidden]="field.hideInList"      [class.is-sortable]="field.sortable" [class.is-sorted]="list.isSorted(field.property)"      [class.is-filterable]="field.filterable" [class.is-filtered]="list.isFiltered(field.property)"      [class.is-sorted-desc]="list.isSorted(field.property, true)"      [class.is-last-column]="isLastColumn(field)"      [class.is-sorted-asc]="list.isSorted(field.property, false)">      <!-- [class.is-filter-active]="filterPop.active"-->      <a (click)="filterField(field.property)" class="is-filterable-control" *ngIf="field.filterable">        <ec-icon name="find"></ec-icon>      </a>      <!-- <a (click)="toggleVisibility(field)" class="is-visibility-control">        <ec-icon name="eye-closed"></ec-icon>      </a> -->            <span class="ec-list-column-title" (click)="field.sortable&&list.toggleSort(field.property)"        [title]="field.property">        {{field.getLabel()}}      </span>      <span class="is-sortable-indicator" *ngIf="field.sortable">        <span class="asc" (click)="list.toggleSort(field.property,false)"></span>        <span class="desc" (click)="list.toggleSort(field.property,true)"></span>      </span>    </div>    <div class="dropdown dropdown_right ec-list-column-filter" tabindex="0" *ngIf="!list?.config?.disableColumnFilter">      <span>&#9776;</span>      <div class="dropdown-options ec-list-column-filter-options">        <ul>          <li class="ec-list-column-filter-option" *ngFor="let field of list?.fields"            [class.is-active]="!field.hideInList" [class.is-hidden]="field.hideInColumnFilter">            <span (click)="toggleVisibility(field)">              <ec-icon [name]="field.hideInList?\'square\':\'check-box\'">{{field.getLabel()}}</ec-icon>            </span>          </li>        </ul>      </div>    </div>  </div></div></div>'
     var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'ActionbarComponent', 'selector': 'ec-actionbar'},{'name': 'AdminEntryInputComponent', 'selector': ''},{'name': 'ApiActionbarComponent', 'selector': 'ec-api-actionbar'},{'name': 'AssetgroupSelectComponent', 'selector': 'ec-assetgroup-select'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DaterangeComponent', 'selector': 'ec-daterange'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryListPopComponent', 'selector': 'ec-entry-list-pop'},{'name': 'EntryListSelectComponent', 'selector': 'ec-entry-list-select'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'HeatmapComponent', 'selector': 'ec-heatmap'},{'name': 'IconComponent', 'selector': 'ec-icon'},{'name': 'ImageSelectPopComponent', 'selector': 'ec-image-select-pop'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LocationMapComponent', 'selector': 'ec-location-map'},{'name': 'LocationPickerComponent', 'selector': 'ec-location-picker'},{'name': 'LocationSearchComponent', 'selector': 'ec-location-search'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'ModalComponent', 'selector': 'ec-modal'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceActionbarComponent', 'selector': 'ec-resource-actionbar'},{'name': 'ResourceCrudComponent', 'selector': 'ec-resource-crud'},{'name': 'ResourceDeletePopComponent', 'selector': 'ec-resource-delete-pop'},{'name': 'ResourceFormComponent', 'selector': 'ec-resource-form'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'ResourceListPopComponent', 'selector': 'ec-resource-list-pop'},{'name': 'ResourcePopComponent', 'selector': 'ec-resource-pop'},{'name': 'ResourceSelectComponent', 'selector': 'ec-resource-select'},{'name': 'SearchbarComponent', 'selector': 'ec-searchbar'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SignupComponent', 'selector': 'ec-signup'},{'name': 'SignupFormComponent', 'selector': 'ec-signup-form'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TagSelectComponent', 'selector': 'ec-tag-select'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'UploadComponent', 'selector': 'ec-upload'},{'name': 'UploadSelectComponent', 'selector': 'ec-upload-select'}];
     var DIRECTIVES = [{'name': 'AssetDirective', 'selector': '[ecAsset]'},{'name': 'DropzoneDirective', 'selector': '[ecDropzone]'},{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'FocusDirective', 'selector': '[ecFocus]'},{'name': 'ImageDirective', 'selector': 'img [ecImage]'},{'name': 'SlotHostDirective', 'selector': '[ecSlotHost]'}];
     var ACTUAL_COMPONENT = {'name': 'ListHeaderComponent'};
