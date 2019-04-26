@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.42.4](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.42.3...@ec.components/ui@0.42.4) (2019-04-26)
+
+
+### Bug Fixes
+
+* COM-261 ([af10188](https://github.com/entrecode/ec.components/commit/af10188))
+* tab routing EDITOR-267 ([b0c6065](https://github.com/entrecode/ec.components/commit/b0c6065))
+
+
+
+
+
 ## [0.42.3](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.42.2...@ec.components/ui@0.42.3) (2019-04-12)
 
 

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.14](https://github.com/entrecode/ec.components/compare/@ec.components/location@0.18.13...@ec.components/location@0.18.14) (2019-04-26)
+
+
+### Bug Fixes
+
+* location picker spec ([65fa558](https://github.com/entrecode/ec.components/commit/65fa558))
+* location-picker keycommands injection ([600d7ac](https://github.com/entrecode/ec.components/commit/600d7ac))
+
+
+
+
+
 ## [0.18.13](https://github.com/entrecode/ec.components/compare/@ec.components/location@0.18.12...@ec.components/location@0.18.13) (2019-03-29)
 
 
