@@ -7,6 +7,8 @@ import { CrudConfig } from '../crud/crud-config.interface';
 import { EntryService } from '../entry/entry.service';
 import { SdkService } from '../sdk/sdk.service';
 import { TypeConfigService } from './type-config.service';
+import { AdminEntryInputComponent } from '../entry-form/admin-entry-input.component';
+import { DefaultEntryOutputComponent } from '../entry-form/default-entry-output.component';
 
 /** The main class for configuring the behaviour of a model.
  * By default, everything is auto generated from the model's schema but can be overriden via the
@@ -104,12 +106,17 @@ export class ModelConfigService extends Config {
         display: this.typeConfig.displayAccount(),
         copy: (value) => value,
         create: false,
+        type: 'account',
         view: 'copy',
         columns: 3,
         form: true,
         immutable: true,
         hideInList: true,
-        filterable: true
+        filterable: true,
+        input: AdminEntryInputComponent,
+        output: DefaultEntryOutputComponent,
+        filterPopClass: 'ec-pop_dialog',
+        filterOperator: 'exact',
       }
     };
   }
