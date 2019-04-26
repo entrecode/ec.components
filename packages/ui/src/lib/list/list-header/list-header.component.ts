@@ -134,4 +134,13 @@ export class ListHeaderComponent implements OnChanges {
     this.list.toggleVisibility(field);
     this.listConfig.storeConfig(this.list);
   }
+
+  /** Yields true if the given field is the last column of the current list header */
+  isLastColumn(field: Field) {
+    if (!this.list || !this.list.fields) {
+      return;
+    };
+    const visibleColumns = this.list.fields.filter(f => !f.hideInList);
+    return field.property === visibleColumns[visibleColumns.length - 1].property;
+  }
 }

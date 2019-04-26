@@ -50,10 +50,11 @@
         [disabled]="selection?.config?.solo">
     </div>
     <div class="ec-list-cell" *ngFor="let field of list?.fields;let i = index"
-      [ngClass]="'ec-list-cell_' + field.view + ' ' + field?.classes" [class.is-hidden]="field.hideInList"
+      [ngClass]="'ec-list-cell_' + field.view + ' ' + (field?.classes||'')" [class.is-hidden]="field.hideInList"
       [class.is-sortable]="field.sortable" [class.is-sorted]="list.isSorted(field.property)"
       [class.is-filterable]="field.filterable" [class.is-filtered]="list.isFiltered(field.property)"
       [class.is-sorted-desc]="list.isSorted(field.property, true)"
+      [class.is-last-column]="isLastColumn(field)"
       [class.is-sorted-asc]="list.isSorted(field.property, false)">
       <!-- [class.is-filter-active]="filterPop.active"-->
       <a (click)="filterField(field.property)" class="is-filterable-control" *ngIf="field.filterable">
