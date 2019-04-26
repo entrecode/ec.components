@@ -108,7 +108,8 @@ export class ModelConfigService extends Config {
         columns: 3,
         form: true,
         immutable: true,
-        hideInList: true
+        hideInList: true,
+        filterable: true
       }
     };
   }
