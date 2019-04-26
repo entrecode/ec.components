@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.47.8](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.47.7...@ec.components/data@0.47.8) (2019-04-26)
+
+
+### Bug Fixes
+
+* creator filter + resource-select focus ([b461540](https://github.com/entrecode/ec.components/commit/b461540))
+
+
+
+
+
 ## [0.47.7](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.47.6...@ec.components/data@0.47.7) (2019-04-26)
 
 
