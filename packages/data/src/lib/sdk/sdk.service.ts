@@ -139,8 +139,8 @@ export class SdkService {
     }
     return api.me().then((account) => {
       return account || this._api.me();
-    }).catch((err) => {
-      return this._api.getToken() ? this._api.me() : null;
+    }).catch((error) => {
+      return this._api && this._api.getToken() ? this._api.me() : null;
     });
   }
 
