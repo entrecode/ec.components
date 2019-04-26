@@ -1278,8 +1278,8 @@ export class SdkService {
     }
     return api.me().then((account) &#x3D;&gt; {
       return account || this._api.me();
-    }).catch((err) &#x3D;&gt; {
-      return this._api.getToken() ? this._api.me() : null;
+    }).catch((error) &#x3D;&gt; {
+      return this._api &amp;&amp; this._api.getToken() ? this._api.me() : null;
     });
   }
 
