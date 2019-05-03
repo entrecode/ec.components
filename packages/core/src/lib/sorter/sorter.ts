@@ -20,12 +20,11 @@ export function sortBoolean(a, b) {
 
 /** The Sorter is a singleton that handles all kinds of sorting operations. */
 export abstract class Sorter<T> {
-
   /** Contains sorting methods for different value types. */
   static sortType = {
-    'string': sortString,
-    'number': sortNumber,
-    'boolean': sortBoolean
+    string: sortString,
+    number: sortNumber,
+    boolean: sortBoolean,
   };
 
   /** Returns the sorting algorithm for the given item array. */
@@ -33,13 +32,12 @@ export abstract class Sorter<T> {
     if (!items.length) {
       return;
     }
-    if (property && !items
-      .reduce((has, item) => has && item.sort(property) !== undefined, true)) {
+    if (property && !items.reduce((has, item) => has && item.sort(property) !== undefined, true)) {
       console.warn('cannot sort property "' + property + '" because not all items have that property', items);
       return;
     }
     const types = items
-      .map(item => typeof item.sort(property))
+      .map((item) => typeof item.sort(property))
       .filter((item, index, _items) => _items.indexOf(item) === index);
     if (types.length > 1) {
       console.warn('cannot sort items because they contain multiple types:', types);

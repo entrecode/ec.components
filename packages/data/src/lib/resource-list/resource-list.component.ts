@@ -1,8 +1,14 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges, Optional } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {
-  ListComponent, ListConfigService,
-  LoaderComponent, LoaderService, NotificationsService, SymbolService, WithLoader, listTemplate
+  ListComponent,
+  ListConfigService,
+  LoaderComponent,
+  LoaderService,
+  NotificationsService,
+  SymbolService,
+  WithLoader,
+  listTemplate,
 } from '@ec.components/ui';
 import Core from 'ec.sdk/lib/Core';
 import ListResource from 'ec.sdk/lib/resources/ListResource';
@@ -12,16 +18,14 @@ import { ResourceService } from '../resource-config/resource.service';
 import { SdkService } from '../sdk/sdk.service';
 import { ResourceList } from './resource-list';
 
-
 /** The ResourceListComponent is an extension of ListComponent for SDK ListResources.
  * It is meant to be extended and overriden the createList method. See e.g. AssetListComponent. */
 @Component({
   selector: 'ec-resource-list',
   template: listTemplate,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ResourceListComponent extends ListComponent<Resource>
-  implements OnChanges, WithLoader {
+export class ResourceListComponent extends ListComponent<Resource> implements OnChanges, WithLoader {
   resourceConfig: ResourceConfig;
   /** If listResource input is set, the given ListResource will be used directly and loading will be skipped. */
   @Input() listResource: ListResource;
@@ -47,12 +51,12 @@ export class ResourceListComponent extends ListComponent<Resource>
     protected resourceService: ResourceService,
     public listConfig: ListConfigService,
     public cdr: ChangeDetectorRef,
-    @Optional() public route: ActivatedRoute
+    @Optional() public route: ActivatedRoute,
   ) {
     super(listConfig, cdr);
     this.resourceConfig = this.resourceService.config;
     if (route) {
-      route.queryParams.subscribe(query => {
+      route.queryParams.subscribe((query) => {
         this.config.query = Object.assign({}, query);
       });
     }
@@ -65,16 +69,11 @@ export class ResourceListComponent extends ListComponent<Resource>
       // return Promise.reject(`cannot create ResourceList: no relation or api given. Relation: ${this.relation} API: ${this.api}`);
     }
     const namespace = this.relation.split('.')[0];
-    this.config = Object.assign(
-      {},
-      this.resourceConfig.get(namespace) || {},
-      this.config || {}
-    );
+    this.config = Object.assign({}, this.resourceConfig.get(namespace) || {}, this.config || {});
 
-    this.resourceService.change({ relation: namespace })
-      .subscribe((update) => {
-        this.list.load();
-      });
+    this.resourceService.change({ relation: namespace }).subscribe((update) => {
+      this.list.load();
+    });
 
     return new ResourceList(this.config, this.api, this.relation, this.listResource);
   }
@@ -89,7 +88,7 @@ export class ResourceListComponent extends ListComponent<Resource>
       console.log('loadWhen is now true!');
     }
     this.config = Object.assign(this.config || {}, this.configInput || {});
-    Promise.resolve(this.createList()).then(list => {
+    Promise.resolve(this.createList()).then((list) => {
       if (!list) {
         return;
       }
@@ -106,10 +105,10 @@ export class ResourceListComponent extends ListComponent<Resource>
           this.cdr.markForCheck();
         });
       });
-      this.list.error$.subscribe(err => {
+      this.list.error$.subscribe((err) => {
         this.notificationService.emit({
           title: this.symbol.resolve('error.load'),
-          error: err
+          error: err,
         });
       });
     });
@@ -129,21 +128,19 @@ export class ResourceListComponent extends ListComponent<Resource>
     return this.list.filter(property, value);
   }
 
-  initFilterQuery(
-    fieldFilter: (property: string, value: any) => { property; value }
-  ) {
+  initFilterQuery(fieldFilter: (property: string, value: any) => { property; value }) {
     if (!this.config.query || !this.config.fields || !fieldFilter) {
       return;
     }
     Object.keys(this.config.query)
-      .filter(property => fieldFilter(property, this.config.query[property]))
-      .map(property => fieldFilter(property, this.config.query[property]))
-      .filter(filter => {
+      .filter((property) => fieldFilter(property, this.config.query[property]))
+      .map((property) => fieldFilter(property, this.config.query[property]))
+      .filter((filter) => {
         return Object.keys(this.config.fields).indexOf(filter.property) !== -1;
       })
-      .forEach(filter => {
+      .forEach((filter) => {
         this.config.filter = Object.assign(this.config.filter || {}, {
-          [filter.property]: filter.value
+          [filter.property]: filter.value,
         });
       });
   }

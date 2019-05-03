@@ -10,12 +10,8 @@ describe('LocationPickerComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       ...locationModuleConfig,
-      imports: [
-        ...locationModuleConfig.imports,
-        RouterTestingModule
-      ]
-    })
-      .compileComponents();
+      imports: [...locationModuleConfig.imports, RouterTestingModule],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

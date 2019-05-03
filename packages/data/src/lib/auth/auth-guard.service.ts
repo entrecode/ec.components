@@ -11,18 +11,17 @@ export class AuthGuard implements CanActivate {
   /** Subject that is nexted when the user check fails. (Meant to be used for redirecting to another page e.g. login) */
   redirect: Subject<any> = new Subject();
 
-  constructor(private sdk: SdkService, private notifications: NotificationsService) {
-  }
+  constructor(private sdk: SdkService, private notifications: NotificationsService) {}
   /** Checks if the sdk contains a user, if not an error message is shown. */
   canActivate() {
-    return this.sdk.ready.then(user => {
+    return this.sdk.ready.then((user) => {
       if (!!user) {
         return true;
       }
       this.notifications.emit({
         type: 'error',
         title: 'Diese Seite kann nicht angezeigt werden.',
-        message: 'Sie sind nicht eingeloggt.'
+        message: 'Sie sind nicht eingeloggt.',
       });
       this.redirect.next();
     });

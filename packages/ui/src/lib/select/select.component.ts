@@ -1,6 +1,16 @@
 import {
-  Component, EventEmitter, forwardRef, Input, OnChanges, OnInit, Output,
-  ViewChild, ViewEncapsulation, ElementRef, ChangeDetectionStrategy, ChangeDetectorRef
+  Component,
+  EventEmitter,
+  forwardRef,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  ViewChild,
+  ViewEncapsulation,
+  ElementRef,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
 import { List, ListConfig, Selection } from '@ec.components/core';
@@ -27,9 +37,9 @@ import { selectTemplate } from './select.component.html';
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => SelectComponent),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChanges {
   /** the current dragged element */
@@ -73,10 +83,7 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   /** The formControl that is used. */
   @Input() formControl: FormControl;
 
-  constructor(
-    public elementRef: ElementRef,
-    public cdr: ChangeDetectorRef
-  ) {
+  constructor(public elementRef: ElementRef, public cdr: ChangeDetectorRef) {
     this.toggleItem.asObservable().subscribe((item) => {
       if (this.selection.has(item)) {
         this.removeItem(item);
@@ -116,7 +123,8 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
     if (this.list && !this.config) {
       this.config = this.list.config;
     }
-    if (!this.config) { // || !this.config.selectMode
+    if (!this.config) {
+      // || !this.config.selectMode
       return;
     }
     this.config = Object.assign({ solo: this.solo }, this.config);
@@ -161,7 +169,7 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   }
 
   getArray(value) {
-    return Array.isArray(value) ? value : (value ? [value] : []);
+    return Array.isArray(value) ? value : value ? [value] : [];
   }
 
   /** Uses the given value as selection items */
@@ -225,25 +233,25 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
     } else {
       this.focusSearchbar();
     }
-    this.value = this.selection.items.map(i => i.resolve());
+    this.value = this.selection.items.map((i) => i.resolve());
     return this.propagateChange(this.selection.getValue());
   }
 
   /** Propagates formControl/ngModel changes */
-  propagateChange = (_: any) => {
-  }
+  propagateChange = (_: any) => {};
   /** registers change method. (handled by angular) */
   registerOnChange(fn) {
     this.propagateChange = fn;
   }
 
-  registerOnTouched() {
-  }
+  registerOnTouched() {}
 
   /** is called when an element is dragged by the user. hides element in selection */
   onDragStart(item, e, target = e.target) {
     this.dragged = item;
-    window.requestAnimationFrame(function () { target.style.display = 'none'; });
+    window.requestAnimationFrame(function() {
+      target.style.display = 'none';
+    });
   }
   /** called when the element is dropped. moves item in selection. */
   onDrop(e) {
@@ -260,7 +268,9 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   /** is called when the drag stops in any kind of way. */
   cancelDrag(item, e, target = e.target) {
     delete this.dragged;
-    window.requestAnimationFrame(function () { target.style.display = 'inherit'; });
+    window.requestAnimationFrame(function() {
+      target.style.display = 'inherit';
+    });
   }
 
   activate(e) {

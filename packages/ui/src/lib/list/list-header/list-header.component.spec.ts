@@ -9,8 +9,7 @@ describe('ListHeaderComponent', () => {
   let fixture: ComponentFixture<ListHeaderComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule(uiModuleConfig)
-      .compileComponents();
+    TestBed.configureTestingModule(uiModuleConfig).compileComponents();
   }));
 
   beforeEach(() => {

@@ -7,9 +7,9 @@ import { SymbolPipe } from './symbol.pipe';
  * Collects all localization related components and services.
  */
 @NgModule({
-    imports: [CommonModule],
-    declarations: [SymbolPipe],
-    exports: [SymbolPipe],
-    providers: [SymbolService],
+  imports: [CommonModule],
+  declarations: [SymbolPipe],
+  exports: [SymbolPipe],
+  providers: [SymbolService],
 })
-export class SymbolModule { }
+export class SymbolModule {}

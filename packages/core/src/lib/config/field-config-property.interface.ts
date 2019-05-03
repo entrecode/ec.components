@@ -59,7 +59,7 @@ export interface FieldConfigProperty {
   /** The field's JSON schema. */
   schema?: {
     type: string;
-    title: string
+    title: string;
   };
   /** Custom Component for input (forms) */
   input?: Type<any>;

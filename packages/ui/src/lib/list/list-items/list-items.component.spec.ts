@@ -13,9 +13,8 @@ describe('ListItemsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ListItemsComponent, InputComponent, OutputComponent]
-    })
-      .compileComponents();
+      declarations: [ListItemsComponent, InputComponent, OutputComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

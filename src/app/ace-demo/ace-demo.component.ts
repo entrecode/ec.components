@@ -4,7 +4,7 @@ import { AceComponent } from '@ec.components/ace';
 // import 'ace-builds/src-noconflict/ace.js';
 
 @Component({
-    template: `
+  template: `
     <h2>Ace</h2>
     <strong>HTML</strong>
     <ec-ace mode="html" [(ngModel)]="html"></ec-ace>
@@ -18,35 +18,34 @@ import { AceComponent } from '@ec.components/ace';
     <ec-ace mode="json" theme="monokai" [(ngModel)]="json"></ec-ace>
     <pre><code>{{json}}</code></pre>
     <ec-form [config]="jsonFormConfig" (submitted)="submitForm($event)"></ec-form>
-    `
+  `,
 })
-
 export class AceDemoComponent implements OnInit {
-    javascript = 'console.log("double quotes are awful");';
-    html = '<h1>Hello There</h1>';
-    css = 'h1 { color: red }';
-    json;
-    jsonFormConfig = {
-        fields: {
-            json: {
-                label: 'JSON',
-                input: AceComponent,
-                prefill: '{"test":1}',
-                init: (component: AceComponent) => {
-                    component.setMode('json');
-                    component.setTheme('monokai');
-                }
-            }
-        }
-    };
+  javascript = 'console.log("double quotes are awful");';
+  html = '<h1>Hello There</h1>';
+  css = 'h1 { color: red }';
+  json;
+  jsonFormConfig = {
+    fields: {
+      json: {
+        label: 'JSON',
+        input: AceComponent,
+        prefill: '{"test":1}',
+        init: (component: AceComponent) => {
+          component.setMode('json');
+          component.setTheme('monokai');
+        },
+      },
+    },
+  };
 
-    submitForm(e) {
-        console.log('submit', e);
-    }
+  submitForm(e) {
+    console.log('submit', e);
+  }
 
-    fixDoubleQuotes() {
-        this.javascript = 'console.log(\'double quotes are awful\');';
-    }
+  fixDoubleQuotes() {
+    this.javascript = "console.log('double quotes are awful');";
+  }
 
-    ngOnInit() { }
+  ngOnInit() {}
 }

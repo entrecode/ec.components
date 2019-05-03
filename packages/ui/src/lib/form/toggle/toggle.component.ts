@@ -10,9 +10,9 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => ToggleComponent),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class ToggleComponent implements ControlValueAccessor {
   /** The current value */
@@ -30,14 +30,11 @@ export class ToggleComponent implements ControlValueAccessor {
     this.value = value;
   }
   /* Propagates change*/
-  propagateChange = (_: any) => {
-  }
+  propagateChange = (_: any) => {};
   /** Registers change callback */
   registerOnChange(fn) {
     this.propagateChange = fn;
   }
   /** Register Touch */
-  registerOnTouched() {
-  }
-
+  registerOnTouched() {}
 }

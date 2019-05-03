@@ -23,37 +23,26 @@ export class ResourceList extends List<Resource> {
   public error$: Observable<Error> = this.error.asObservable();
 
   /** Returns the operator to use for filtering the given property. Defaults to search. */
-  protected static getFilterOperator(
-    property: string,
-    fields: Array<Field>
-  ): string {
+  protected static getFilterOperator(property: string, fields: Array<Field>): string {
     if (!fields) {
       return 'search';
     }
-    const field = fields.find(_field => _field.property === property);
+    const field = fields.find((_field) => _field.property === property);
     return field && field.filterOperator ? field.filterOperator : 'search';
   }
 
   /** Returns true if the field of the given property has rawFilter set to true */
-  protected static isRawFilter(
-    property: string,
-    fields: Array<Field>
-  ): boolean {
+  protected static isRawFilter(property: string, fields: Array<Field>): boolean {
     if (!fields) {
       return false;
     }
-    const field = fields.find(_field => _field.property === property);
+    const field = fields.find((_field) => _field.property === property);
     return field && field.rawFilter;
   }
 
   /** The constructor will init the List and Pagination instances.
    * Make sure the config is already complete when initiating an EntryList instance. */
-  constructor(
-    config: ListConfig<Resource>,
-    public api?: Core,
-    public relation?,
-    listResource?: ListResource
-  ) {
+  constructor(config: ListConfig<Resource>, public api?: Core, public relation?, listResource?: ListResource) {
     super([], config);
     if (listResource) {
       // list was already preloaded outside of this instance
@@ -75,8 +64,8 @@ export class ResourceList extends List<Resource> {
     delete options.size; */
     this.promise = this.api
       .resourceList(this.relation, options)
-      .then(list => this.use(list))
-      .catch(err => this.error.next(err));
+      .then((list) => this.use(list))
+      .catch((err) => this.error.next(err));
     this.loading.next(this.promise);
     return this.promise;
   }
@@ -84,7 +73,7 @@ export class ResourceList extends List<Resource> {
   /** deletes all undefined values from given config and assigns it to this.config */
   protected useConfig(config?: ListConfig<Resource>) {
     if (config) {
-      Object.keys(config).forEach(key => {
+      Object.keys(config).forEach((key) => {
         if (config[key] === undefined) {
           delete config[key];
         }
@@ -98,10 +87,10 @@ export class ResourceList extends List<Resource> {
     this.listResource = listResource;
     this.removeAll();
     this.addAll(
-      listResource.getAllItems().map(value => {
+      listResource.getAllItems().map((value) => {
         return new Item(value, this.config);
       }),
-      true
+      true,
     );
     this.page = this.items;
     if (this.pagination) {
@@ -118,7 +107,7 @@ export class ResourceList extends List<Resource> {
     filter,
     sortBy,
     desc,
-    sort = []
+    sort = [],
   }: ListConfig<Resource> = {}): filterOptions {
     const options = { size, page };
     if (sortBy) {
@@ -133,10 +122,8 @@ export class ResourceList extends List<Resource> {
           [property]: ResourceList.isRawFilter(property, this.fields)
             ? filter[property]
             : {
-              [ResourceList.getFilterOperator(property, this.fields)]: filter[
-                property
-              ]
-            }
+                [ResourceList.getFilterOperator(property, this.fields)]: filter[property],
+              },
         });
       }
     }
@@ -147,7 +134,7 @@ export class ResourceList extends List<Resource> {
   toggleSort(property: string, desc?: boolean) {
     this.sortProperty(property, desc);
     Object.assign(this.config, {
-      sort: [(this.config.desc ? '-' : '') + this.config.sortBy]
+      sort: [(this.config.desc ? '-' : '') + this.config.sortBy],
     });
     this.load();
   }
@@ -159,7 +146,7 @@ export class ResourceList extends List<Resource> {
       delete currentFilter[property];
     } else {
       Object.assign(currentFilter, {
-        [property]: value
+        [property]: value,
       });
     }
     return currentFilter;
@@ -172,7 +159,7 @@ export class ResourceList extends List<Resource> {
     }
     return this.load({
       page: 1, // reset page
-      filter: this.filterProperty(property, value)
+      filter: this.filterProperty(property, value),
     });
   }
 }

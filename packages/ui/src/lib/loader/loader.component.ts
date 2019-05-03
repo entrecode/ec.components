@@ -3,11 +3,11 @@ import { Collection } from '@ec.components/core';
 
 /** The ec-loader can be plugged into various components to be triggered when they load stuff.
  * <example-url>https://components.entrecode.de/ui/loader?e=1</example-url>
-*/
+ */
 @Component({
   selector: 'ec-loader',
   templateUrl: './loader.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoaderComponent {
   /** The current stack of loading promises.*/
@@ -18,8 +18,7 @@ export class LoaderComponent {
   private timestamp;
 
   /** Injects the host element. */
-  constructor(private host: ElementRef) {
-  }
+  constructor(private host: ElementRef) {}
 
   /** Shows the loader by setting .visible to the host. This method is NOT meant to be used from outside, */
   private show() {
@@ -40,13 +39,12 @@ export class LoaderComponent {
     this.show();
     const timestamp = Date.now();
     this.timestamp = timestamp; // get timestamp
-    Promise.all(this.stack.items)
-      .then(() => {
-        if (timestamp === this.timestamp) {
-          this.hide();
-          this.stack.removeAll();
-        }
-      });
+    Promise.all(this.stack.items).then(() => {
+      if (timestamp === this.timestamp) {
+        this.hide();
+        this.stack.removeAll();
+      }
+    });
     return promise;
   }
 }

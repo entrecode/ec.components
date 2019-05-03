@@ -3,7 +3,7 @@ export abstract class Config {
   // TODO use Map !!!! (like simi did in EventEmitter.ts)
   /** The config object. */
   private config: {
-    [key: string]: Object,
+    [key: string]: Object;
   } = {};
 
   /** This method is a getter and setter for configurations. The key stands for the config (e.g. model).

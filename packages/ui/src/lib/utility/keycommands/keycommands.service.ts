@@ -15,10 +15,7 @@ export class KeycommandsService {
   muted = false;
   meta = false;
 
-  constructor(
-    public router: Router,
-    public notificationsService: NotificationsService
-  ) {
+  constructor(public router: Router, public notificationsService: NotificationsService) {
     window.addEventListener('keyup', (e) => {
       if (!this.muted && this.keys[e.key]) {
         this.activate(this.keys[e.key], e);
@@ -28,13 +25,21 @@ export class KeycommandsService {
       this.meta = e.metaKey;
     });
     // prevents shortcuts to be fired when inputs are focused
-    document.addEventListener('focus', (e) => {
-      this.mute();
-    }, true);
+    document.addEventListener(
+      'focus',
+      (e) => {
+        this.mute();
+      },
+      true,
+    );
 
-    document.addEventListener('blur', (e) => {
-      this.unmute();
-    }, true);
+    document.addEventListener(
+      'blur',
+      (e) => {
+        this.unmute();
+      },
+      true,
+    );
   }
 
   mute() {
@@ -75,7 +80,7 @@ export class KeycommandsService {
   copyCellToClipboard(label = 'Cell') {
     return (item, property) => {
       this.copyToClipBoard(JSON.stringify(item.resolve(property) || ''), label);
-    }
+    };
   }
 
   openUrl(url) {

@@ -11,8 +11,7 @@ export class InputErrorsComponent {
   /** The form control that should be tracked */
   @Input() control: FormControl;
   /** Imported error messages. */
-  constructor(public symbol: SymbolService) {
-  }
+  constructor(public symbol: SymbolService) {}
 
   /** This method will iterate over the control errors and generate objects for the template. */
   public getErrors() {
@@ -26,10 +25,9 @@ export class InputErrorsComponent {
       errs.push({
         key: key,
         error: this.control.errors[key],
-        message
+        message,
       });
       return errs;
     }, []);
   }
-
 }

@@ -15,9 +15,9 @@ import { MonthComponent } from './month.component';
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => CalendarComponent),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class CalendarComponent extends MonthComponent implements ControlValueAccessor {
   /** Output that emits when the value changes */
@@ -45,9 +45,9 @@ export class CalendarComponent extends MonthComponent implements ControlValueAcc
   constructor(
     @Inject('moment.format.date') public defaultDateFormat,
     @Inject('moment.format.time') public defaultTimeFormat,
-    @Inject('moment.format.month') protected defaultMonthFormat
-    /* public symbol: SymbolService */
-  ) {
+    @Inject('moment.format.month') protected defaultMonthFormat,
+  ) /* public symbol: SymbolService */
+  {
     /* super(symbol); */
     super(defaultMonthFormat);
     // pattern localization
@@ -58,9 +58,11 @@ export class CalendarComponent extends MonthComponent implements ControlValueAcc
     this.timeFormat = defaultTimeFormat || this.timeFormat;
     this.weekdays = moment.weekdaysMin(true);
     if (!this.disableTime) {
-      this.patterns = this.patterns.map((pattern) => {
-        return pattern + ' ' + this.timeFormat;
-      }).concat(this.patterns);
+      this.patterns = this.patterns
+        .map((pattern) => {
+          return pattern + ' ' + this.timeFormat;
+        })
+        .concat(this.patterns);
     }
   }
 
@@ -121,8 +123,7 @@ export class CalendarComponent extends MonthComponent implements ControlValueAcc
   }
 
   /** Change propagation for ControlValueAccessor */
-  propagateChange = (_: any) => {
-  }
+  propagateChange = (_: any) => {};
 
   /** registerOnChange implementation of ControlValueAccessor */
   registerOnChange(fn) {
@@ -130,6 +131,5 @@ export class CalendarComponent extends MonthComponent implements ControlValueAcc
   }
 
   /** registerOnTouched implementation of ControlValueAccessor */
-  registerOnTouched() {
-  }
+  registerOnTouched() {}
 }

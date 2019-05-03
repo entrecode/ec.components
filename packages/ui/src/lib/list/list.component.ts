@@ -1,6 +1,12 @@
 import {
-  Component, EventEmitter, Input, OnChanges, Output, ViewEncapsulation,
-  ChangeDetectionStrategy, ChangeDetectorRef
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  ViewEncapsulation,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { Collection, List, ListConfig, Selection, Pagination } from '@ec.components/core';
 import { Item } from '@ec.components/core';
@@ -20,7 +26,7 @@ import { listTemplate } from './list.component.html';
   /* templateUrl: './list.component.html', */
   template: listTemplate,
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListComponent<T> implements OnChanges {
   /** The current list config */
@@ -55,11 +61,7 @@ export class ListComponent<T> implements OnChanges {
   /** emits after the list changed */
   @Output() changed: EventEmitter<List<T>> = new EventEmitter();
 
-  constructor(
-    public listConfig: ListConfigService,
-    public cdr: ChangeDetectorRef
-  ) {
-  }
+  constructor(public listConfig: ListConfigService, public cdr: ChangeDetectorRef) {}
 
   /** Changing items or collection will trigger reconstructing the list with the new items.
    * Changing the selection will reconstruct the selection */
@@ -108,7 +110,12 @@ export class ListComponent<T> implements OnChanges {
   }
   /** Decides if the header should be visible or not */
   showHeader() {
-    return this.list && this.list.config && !this.list.config.disableHeader && (this.list.fields.length || this.list.config.title);
+    return (
+      this.list &&
+      this.list.config &&
+      !this.list.config.disableHeader &&
+      (this.list.fields.length || this.list.config.title)
+    );
     /* && (this.list.config.alwaysShowHeader || !this.list.isEmpty()); */
   }
 

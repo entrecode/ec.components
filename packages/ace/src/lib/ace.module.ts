@@ -3,12 +3,12 @@ import { AceComponent } from './ace.component';
 import { UiModule } from '@ec.components/ui';
 
 export const aceModuleConfig = {
-    imports: [UiModule],
-    exports: [AceComponent],
-    declarations: [AceComponent],
-    entryComponents: [AceComponent],
-    providers: [],
+  imports: [UiModule],
+  exports: [AceComponent],
+  declarations: [AceComponent],
+  entryComponents: [AceComponent],
+  providers: [],
 };
 
 @NgModule(aceModuleConfig)
-export class AceModule { }
+export class AceModule {}

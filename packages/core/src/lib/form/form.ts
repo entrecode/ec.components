@@ -22,10 +22,9 @@ export class Form<T> extends Item<T> {
     if (!this.config || !this.config.fields) {
       return;
     }
-    Object.keys(this.config.fields)
-      .forEach((property) => {
-        this.fields.push(new Field(property, this.config.fields[property]));
-      });
+    Object.keys(this.config.fields).forEach((property) => {
+      this.fields.push(new Field(property, this.config.fields[property]));
+    });
   }
 
   /** creates and adds a single field to the form */

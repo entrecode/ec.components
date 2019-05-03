@@ -12,7 +12,7 @@ import { SymbolService } from '@ec.components/ui';
  * */
 @Directive({
   selector: '[ecEntry]',
-  exportAs: 'ecEntry'
+  exportAs: 'ecEntry',
 })
 export class EntryDirective implements OnChanges, WithLoader {
   /** The loading promise */
@@ -33,10 +33,11 @@ export class EntryDirective implements OnChanges, WithLoader {
   entry: any;
 
   /** Injects the sdk */
-  constructor(private sdk: SdkService,
+  constructor(
+    private sdk: SdkService,
     public symbol: SymbolService,
-    public notificationService: NotificationsService) {
-  }
+    public notificationService: NotificationsService,
+  ) {}
 
   /** as soon as model and id are known, the entry will be loaded. */
   ngOnChanges() {
@@ -51,17 +52,19 @@ export class EntryDirective implements OnChanges, WithLoader {
     if (!this.entryId || !this.model) {
       return;
     }
-    this.promise = this.sdk.api.entry(this.model, this.entryId, this.levels)
+    this.promise = this.sdk.api
+      .entry(this.model, this.entryId, this.levels)
       .then((entry) => {
         this.entry = entry;
         this.loaded.emit(entry);
         return entry;
       })
-      .catch(error =>
+      .catch((error) =>
         this.notificationService.emit({
           title: this.symbol.resolve('entry.load.error'),
-          error
-        }));
+          error,
+        }),
+      );
     if (this.loader) {
       this.loader.wait(this.promise);
     }

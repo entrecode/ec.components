@@ -12,10 +12,10 @@ import { SymbolService } from '@ec.components/ui';
 
 /** Loads an entryList of a given model with the given config.
  * <example-url>https://components.entrecode.de/entries/entries?e=1</example-url>
-*/
+ */
 @Directive({
   selector: '[ecEntries]',
-  exportAs: 'ecEntries'
+  exportAs: 'ecEntries',
 })
 export class EntriesDirective implements OnChanges, WithLoader {
   /** The promise of the entryList call. */
@@ -38,8 +38,8 @@ export class EntriesDirective implements OnChanges, WithLoader {
   constructor(
     private sdk: SdkService,
     public symbol: SymbolService,
-    public notificationService: NotificationsService) {
-  }
+    public notificationService: NotificationsService,
+  ) {}
 
   /** When the model is known, the entryList will be loaded. */
   ngOnChanges() {
@@ -56,12 +56,15 @@ export class EntriesDirective implements OnChanges, WithLoader {
 
   /** Loads the entries */
   load() {
-    this.promise = this.sdk.api.entryList(this.model, this.options)
-      .then(list => this.useList(list))
-      .catch(error => this.notificationService.emit({
-        title: this.symbol.resolve('entries.load.error'),
-        error
-      }));
+    this.promise = this.sdk.api
+      .entryList(this.model, this.options)
+      .then((list) => this.useList(list))
+      .catch((error) =>
+        this.notificationService.emit({
+          title: this.symbol.resolve('entries.load.error'),
+          error,
+        }),
+      );
     if (this.loader) {
       this.loader.wait(this.promise);
     }
@@ -80,14 +83,14 @@ export class EntriesDirective implements OnChanges, WithLoader {
   }
 
   next() {
-    this.promise = this.entryList.followNextLink().then(list => this.useList(list));
+    this.promise = this.entryList.followNextLink().then((list) => this.useList(list));
     if (this.loader) {
       this.loader.wait(this.promise);
     }
   }
 
   prev() {
-    this.promise = this.entryList.followPrevLink().then(list => this.useList(list));
+    this.promise = this.entryList.followPrevLink().then((list) => this.useList(list));
     if (this.loader) {
       this.loader.wait(this.promise);
     }

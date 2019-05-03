@@ -46,7 +46,7 @@ describe('Selection', () => {
   });
   it('should toggle and flip all items', () => {
     const chars = ['a', 'b', 'c'];
-    const items = chars.map(item => new Item(item));
+    const items = chars.map((item) => new Item(item));
     const selection = new Selection(chars);
     expect(selection.hasAll(items)).toBe(true);
     selection.toggleAll(items);
@@ -54,19 +54,19 @@ describe('Selection', () => {
     selection.addAll(items);
     expect(selection.hasAll(items)).toBe(true);
     selection.toggle(items[2]);
-    expect(items.map(item => selection.has(item))).toEqual([true, true, false]);
+    expect(items.map((item) => selection.has(item))).toEqual([true, true, false]);
     selection.flipAll(items);
-    expect(items.map(item => selection.has(item))).toEqual([false, false, true]);
+    expect(items.map((item) => selection.has(item))).toEqual([false, false, true]);
     selection.toggleAll(items);
-    expect(items.map(item => selection.has(item))).toEqual([true, true, true]);
+    expect(items.map((item) => selection.has(item))).toEqual([true, true, true]);
     selection.toggleAll(items);
-    expect(items.map(item => selection.has(item))).toEqual([false, false, false]);
+    expect(items.map((item) => selection.has(item))).toEqual([false, false, false]);
     selection.toggleAll(items);
     selection.toggle(items[0], true);
-    expect(items.map(item => selection.has(item))).toEqual([true, false, false]);
+    expect(items.map((item) => selection.has(item))).toEqual([true, false, false]);
     selection.toggle(items[1], true);
-    expect(items.map(item => selection.has(item))).toEqual([false, true, false]);
+    expect(items.map((item) => selection.has(item))).toEqual([false, true, false]);
     selection.toggle(items[1], true);
-    expect(items.map(item => selection.has(item))).toEqual([false, false, false]);
+    expect(items.map((item) => selection.has(item))).toEqual([false, false, false]);
   });
 });

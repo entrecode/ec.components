@@ -8,7 +8,7 @@ import {
   OnInit,
   Output,
   ViewChild,
-  ViewEncapsulation
+  ViewEncapsulation,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -16,7 +16,7 @@ import * as MediumEditor from 'medium-editor/dist/js/medium-editor';
 
 /** Wraps medium-editor to a reactive form component.
  * <example-url>https://components.entrecode.de/misc/medium-editor?e=1</example-url>
-*/
+ */
 @Component({
   selector: 'ec-medium-editor',
   styleUrls: ['./medium-editor.component.scss'],
@@ -26,9 +26,9 @@ import * as MediumEditor from 'medium-editor/dist/js/medium-editor';
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => MediumEditorComponent),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class MediumEditorComponent implements OnInit, OnDestroy, ControlValueAccessor {
   /** data model */
@@ -72,13 +72,11 @@ export class MediumEditorComponent implements OnInit, OnDestroy, ControlValueAcc
     });
   }
 
-  propagateChange = (_: any) => {
-  }
+  propagateChange = (_: any) => {};
 
   registerOnChange(fn) {
     this.propagateChange = fn;
   }
 
-  registerOnTouched() {
-  }
+  registerOnTouched() {}
 }

@@ -19,11 +19,10 @@ export class OutputComponent extends DynamicSlotComponent implements OnChanges {
    * If the field has no output property set, the DefaultOutputComponent will be rendered. */
   ngOnChanges() {
     if (this.field && this.item) {
-      this.loadComponent(this.field.output || DefaultOutputComponent,
-        {
-          item: this.item,
-          field: this.field
-        });
+      this.loadComponent(this.field.output || DefaultOutputComponent, {
+        item: this.item,
+        field: this.field,
+      });
     }
   }
 }

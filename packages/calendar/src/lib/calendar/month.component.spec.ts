@@ -7,8 +7,7 @@ describe('MonthComponent', () => {
   let fixture: ComponentFixture<MonthComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule(calendarModuleConfig)
-      .compileComponents();
+    TestBed.configureTestingModule(calendarModuleConfig).compileComponents();
   }));
 
   beforeEach(() => {

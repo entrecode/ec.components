@@ -8,7 +8,7 @@ import { Router } from '@angular/router'; // TODO cannot import Route...
 @Component({
   selector: 'ec-menu,[ec-menu]',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss']
+  styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent implements OnChanges {
   /** Routes that should be used for the menu. You can use your angular router routes here. */
@@ -31,21 +31,21 @@ export class MenuComponent implements OnChanges {
   private timeout;
 
   /** Injects the Router. */
-  constructor(private router: Router) {
-  }
+  constructor(private router: Router) {}
 
   /** updates the routes on change of route */
   ngOnChanges() {
     if (this.route) {
       this.routes = this.route.children
-        .filter(route => route.path && route.path.indexOf(':') === -1)
-        .filter(route => !route.data || !route.data.hidden);
+        .filter((route) => route.path && route.path.indexOf(':') === -1)
+        .filter((route) => !route.data || !route.data.hidden);
       console.log('routes', this.routes);
     }
   }
 
   /** Returns true if the item or a child of it is active. */
-  hasActivePath(item, parent = this) { // this.parent
+  hasActivePath(item, parent = this) {
+    // this.parent
     return parent.getPath(item) === this.router.url;
   }
 
@@ -71,7 +71,8 @@ export class MenuComponent implements OnChanges {
   }
 
   /** Hovers the item after hoverDelay timeout. */
-  hoverItem(item) { // : Route
+  hoverItem(item) {
+    // : Route
     if (!this.hover) {
       this.hover = item;
     }

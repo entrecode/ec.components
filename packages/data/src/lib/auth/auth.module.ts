@@ -16,25 +16,9 @@ export function cookieFactory(): ModuleWithProviders {
 }
 /** Module for all auth related components and services. */
 @NgModule({
-  declarations: [
-    PasswordResetComponent,
-    LoginComponent,
-    SignupComponent,
-  ],
-  imports: [
-    FormsModule,
-    cookieFactory(),
-    CommonModule,
-    ReactiveFormsModule,
-    UiModule
-  ],
-  exports: [
-    ReactiveFormsModule,
-    PasswordResetComponent,
-    LoginComponent,
-    SignupComponent,
-  ],
-  providers: [AuthGuard, AuthService]
+  declarations: [PasswordResetComponent, LoginComponent, SignupComponent],
+  imports: [FormsModule, cookieFactory(), CommonModule, ReactiveFormsModule, UiModule],
+  exports: [ReactiveFormsModule, PasswordResetComponent, LoginComponent, SignupComponent],
+  providers: [AuthGuard, AuthService],
 })
-export class AuthModule {
-}
+export class AuthModule {}

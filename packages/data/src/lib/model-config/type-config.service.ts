@@ -22,33 +22,33 @@ export class TypeConfigService {
   /** Defines the base configuration of each type.*/
   private types: FieldConfig = {
     id: {
-      view: 'label'
+      view: 'label',
     },
     text: {
       view: 'string',
       filterable: true,
-      sortable: true
+      sortable: true,
     },
     boolean: {
       prefill: false,
-      filterOperator: 'exact'
+      filterOperator: 'exact',
     },
     formattedText: {
       view: 'textarea',
-      filterable: true
+      filterable: true,
     },
     number: {
       sortable: true,
       filterable: true,
-      filterOperator: 'exact'
+      filterOperator: 'exact',
     },
     decimal: {
       view: 'number',
-      sortable: true
+      sortable: true,
     },
     url: {
       sortable: true,
-      filterable: true
+      filterable: true,
     },
     asset: {
       view: 'asset',
@@ -57,22 +57,20 @@ export class TypeConfigService {
       input: DefaultEntryInputComponent,
       filterOperator: 'exact',
       filterable: true,
-      display: (value, entry, property) =>
-        entry.getImageThumbUrl(property, 100),
-      filterPopClass: ''
+      display: (value, entry, property) => entry.getImageThumbUrl(property, 100),
+      filterPopClass: '',
     },
     assets: {
       view: 'assets',
       inputView: 'assets-select',
       // view: 'avatars',
       input: DefaultEntryInputComponent,
-      display: (value, entry, property) =>
-        entry.getImageThumbUrl(property, 100),
+      display: (value, entry, property) => entry.getImageThumbUrl(property, 100),
       prefill: [],
       filterOperator: 'any',
       filterable: true,
-      queryFilter: value => value.split(','),
-      filterPopClass: ''
+      queryFilter: (value) => value.split(','),
+      filterPopClass: '',
     },
     dmAsset: {
       view: 'dmAsset',
@@ -81,41 +79,37 @@ export class TypeConfigService {
       input: DefaultEntryInputComponent,
       filterOperator: 'exact',
       filterable: true,
-      display: (value, entry, property) =>
-        entry.getImageThumbUrl(property, 100),
-      filterPopClass: ''
+      display: (value, entry, property) => entry.getImageThumbUrl(property, 100),
+      filterPopClass: '',
     },
     dmAssets: {
       view: 'dmAssets',
       inputView: 'dmAssets-select',
       // view: 'avatars',
       input: DefaultEntryInputComponent,
-      display: (value, entry, property) =>
-        entry.getImageThumbUrl(property, 100),
+      display: (value, entry, property) => entry.getImageThumbUrl(property, 100),
       prefill: [],
       filterOperator: 'any',
       filterable: true,
-      queryFilter: value => value.split(','),
-      filterPopClass: ''
+      queryFilter: (value) => value.split(','),
+      filterPopClass: '',
     },
     email: {},
     phone: {
-      view: 'string'
+      view: 'string',
     },
     datetime: {
       view: 'date',
       sortable: true,
       display: this.displayDate(true),
-      validate: value => {
+      validate: (value) => {
         if (value && (value === 'invalid' || !moment(value).isValid())) {
           return 'Ungültiges Datum';
         }
         return;
       },
       filterPopClass: 'ec-pop_dialog',
-      placeholder: moment(new Date()).format(
-        this.symbol.resolve('moment.format.date')
-      )
+      placeholder: moment(new Date()).format(this.symbol.resolve('moment.format.date')),
       /*,
       prefill: new Date(0)*/
     },
@@ -128,19 +122,19 @@ export class TypeConfigService {
       filterable: true,
       filterOperator: 'exact',
       filterPopClass: 'ec-pop_dialog',
-      nestedCrudConfig: this.nestedCrudConfig
+      nestedCrudConfig: this.nestedCrudConfig,
     },
     entries: {
       view: 'tags',
       inputView: 'entries-select',
       inputViews: [
         {
-          name: 'entries-select'
+          name: 'entries-select',
         },
         {
           name: 'entry-list-select',
-          levels: 2
-        }
+          levels: 2,
+        },
       ],
       input: DefaultEntryInputComponent,
       output: DefaultOutputComponent,
@@ -148,24 +142,24 @@ export class TypeConfigService {
       filterable: true,
       filterOperator: 'any',
       prefill: [],
-      queryFilter: value => value.split(','),
+      queryFilter: (value) => value.split(','),
       filterPopClass: 'ec-pop_dialog',
-      nestedCrudConfig: this.nestedCrudConfig
+      nestedCrudConfig: this.nestedCrudConfig,
     },
     json: {
       view: 'json',
       input: DefaultEntryInputComponent,
       output: DefaultEntryOutputComponent,
-      display: value => (value ? JSON.stringify(value) : '')
+      display: (value) => (value ? JSON.stringify(value) : ''),
     },
     location: {
       input: DefaultEntryInputComponent,
       output: DefaultEntryOutputComponent,
-      display: value => (value ? value.longitude + ',' + value.latitude : ''),
-      filterPopClass: 'ec-pop_dialog'
+      display: (value) => (value ? value.longitude + ',' + value.latitude : ''),
+      filterPopClass: 'ec-pop_dialog',
     },
     account: {
-      display: value => (value ? value.title : ''),
+      display: (value) => (value ? value.title : ''),
       input: AdminEntryInputComponent,
       output: DefaultEntryOutputComponent,
       filterPopClass: 'ec-pop_dialog',
@@ -173,13 +167,13 @@ export class TypeConfigService {
       filterOperator: 'exact',
     },
     role: {
-      display: value => (value ? value.name : ''),
+      display: (value) => (value ? value.name : ''),
       input: AdminEntryInputComponent,
       output: DefaultEntryOutputComponent,
-      filterPopClass: 'ec-pop_dialog'
-    }
+      filterPopClass: 'ec-pop_dialog',
+    },
   };
-  constructor(private symbol: SymbolService) { }
+  constructor(private symbol: SymbolService) {}
 
   /** Returns the base FieldConfig for the given type. */
   get(type: string): FieldConfigProperty {
@@ -192,7 +186,7 @@ export class TypeConfigService {
       type,
       view: config.view || type,
       input: config.input || DefaultInputComponent,
-      output: config.output || DefaultOutputComponent
+      output: config.output || DefaultOutputComponent,
     });
     return config;
   }
@@ -210,26 +204,22 @@ export class TypeConfigService {
    * Usese 'moment.format.date' and 'moment.format.time' symbols. */
   displayDate(time = true) {
     const format =
-      this.symbol.resolve('moment.format.date') +
-      (time ? ' ' + this.symbol.resolve('moment.format.time') : '');
-    return value => (value ? moment(value).format(format) : '');
+      this.symbol.resolve('moment.format.date') + (time ? ' ' + this.symbol.resolve('moment.format.time') : '');
+    return (value) => (value ? moment(value).format(format) : '');
   }
 
   /** Returns an account display function */
   displayAccount() {
-    return (value, entry, property) =>
-      entry.getTitle(property) || this.symbol.resolve('field.creator.ecuser');
+    return (value, entry, property) => entry.getTitle(property) || this.symbol.resolve('field.creator.ecuser');
   }
 
   /** Returns a date group function. Uses 'moment.format.month' symbol */
   groupDate() {
-    return value =>
-      moment(value).format(this.symbol.resolve('moment.format.month'));
+    return (value) => moment(value).format(this.symbol.resolve('moment.format.month'));
   }
 
   /** Returns a date iso formatter */
   isoDate() {
-    return value =>
-      moment(value).toISOString();
+    return (value) => moment(value).toISOString();
   }
 }

@@ -1,8 +1,14 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
 import { FieldConfigProperty, FormConfig, Item } from '@ec.components/core';
 import {
-  FormComponent, FormService, LoaderService, Notification,
-  NotificationsService, SymbolService, WithNotifications, formTemplate
+  FormComponent,
+  FormService,
+  LoaderService,
+  Notification,
+  NotificationsService,
+  SymbolService,
+  WithNotifications,
+  formTemplate,
 } from '@ec.components/ui';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { EntryService } from '../entry/entry.service';
@@ -11,11 +17,11 @@ import { TypeConfigService } from '../model-config/type-config.service';
 
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent.
  * <example-url>https://components.entrecode.de/entries/entry-form?e=1</example-url>
-*/
+ */
 @Component({
   selector: 'ec-entry-form',
   template: formTemplate,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EntryFormComponent extends FormComponent<EntryResource> implements WithNotifications {
   /** The model of the form. It is used to extract the schema and generate the config from.
@@ -30,14 +36,16 @@ export class EntryFormComponent extends FormComponent<EntryResource> implements 
   notifications: Notification[] = [];
 
   /** Injects the required services. */
-  constructor(protected loaderService: LoaderService,
+  constructor(
+    protected loaderService: LoaderService,
     private modelConfig: ModelConfigService,
     protected notificationService: NotificationsService,
     protected entryService: EntryService,
     public formService: FormService,
     protected typeConfig: TypeConfigService,
     protected symbol: SymbolService,
-    protected cdr: ChangeDetectorRef) {
+    protected cdr: ChangeDetectorRef,
+  ) {
     super(loaderService, notificationService, formService, symbol, cdr);
   }
 
@@ -49,18 +57,21 @@ export class EntryFormComponent extends FormComponent<EntryResource> implements 
     if (!this.model) {
       return;
     }
-    if (this.entry && this.entry._modelTitle !== this.model) { // warn if model does not match
-      console.error(`ec-entry-form: Tried to edit an entry of model "${this.entry._modelTitle}"
-      while "${this.model}" was expected! Entry: `, this.entry);
+    if (this.entry && this.entry._modelTitle !== this.model) {
+      // warn if model does not match
+      console.error(
+        `ec-entry-form: Tried to edit an entry of model "${this.entry._modelTitle}"
+      while "${this.model}" was expected! Entry: `,
+        this.entry,
+      );
       return;
     }
-    Promise.resolve(this.modelConfig.generateConfig(this.model, (this.config || {}).fields))
-      .then((_config) => {
-        if (this.entry) {
-          item = new Item(this.entry, _config);
-        }
-        super.init(item, _config);
-      });
+    Promise.resolve(this.modelConfig.generateConfig(this.model, (this.config || {}).fields)).then((_config) => {
+      if (this.entry) {
+        item = new Item(this.entry, _config);
+      }
+      super.init(item, _config);
+    });
   }
 
   /** Adds field to entry form. Automatically applies typeconfig */
@@ -84,23 +95,26 @@ export class EntryFormComponent extends FormComponent<EntryResource> implements 
     if (!this.form || !this.isEditing()) {
       return;
     }
-    const deletion = this.entryService.del(this.model, this.form.getBody()).then(() => {
-      this.deleted.emit();
-      this.create();
-      this.notificationService.emit({
-        title: this.symbol.resolve('success.delete'),
-        type: 'success',
-        hide: this.notifications
+    const deletion = this.entryService
+      .del(this.model, this.form.getBody())
+      .then(() => {
+        this.deleted.emit();
+        this.create();
+        this.notificationService.emit({
+          title: this.symbol.resolve('success.delete'),
+          type: 'success',
+          hide: this.notifications,
+        });
+      })
+      .catch((error) => {
+        this.notificationService.emit({
+          title: this.symbol.resolve('error.delete'),
+          error,
+          hide: this.notifications,
+          replace: this.notifications,
+          sticky: true,
+        });
       });
-    }).catch((error) => {
-      this.notificationService.emit({
-        title: this.symbol.resolve('error.delete'),
-        error,
-        hide: this.notifications,
-        replace: this.notifications,
-        sticky: true
-      });
-    });
     this.loaderService.wait(deletion, this.loader);
     return deletion;
   }

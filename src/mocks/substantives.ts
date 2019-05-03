@@ -657,4 +657,5 @@ export const substantives = [
   'Zitrone',
   'Zoll',
   'Zucker',
-  'Zug']
+  'Zug',
+];

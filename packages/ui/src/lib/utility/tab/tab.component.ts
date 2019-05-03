@@ -21,8 +21,7 @@ export class TabComponent {
   parent: TabsComponent;
 
   /** The constructor adds the tab itself to its TabsComponent parent. */
-  constructor(public el: ElementRef) {
-  }
+  constructor(public el: ElementRef) {}
   /** Selects the tab and nexts activated */
   activate() {
     this.selected = true;

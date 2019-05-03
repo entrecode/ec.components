@@ -394,5 +394,5 @@ export const ecIcons: Symbol[] = [
   { name: 'json' },
   { name: 'required' },
   { name: 'validate' },
-  { name: 'fingerprint' }
+  { name: 'fingerprint' },
 ];

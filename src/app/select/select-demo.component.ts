@@ -8,11 +8,10 @@ import { karlotto } from './karlotto';
   templateUrl: './select-demo.component.html',
 })
 export class SelectDemoComponent {
-
   customDisplayConfig = {
     display: (items) => {
-      return items.filter(item => item.getBody() !== 'four');
-    }
+      return items.filter((item) => item.getBody() !== 'four');
+    },
   };
 
   prefilledFour = ['four'];
@@ -27,7 +26,7 @@ export class SelectDemoComponent {
         id: 'drink',
         title: 'Drink Beer',
         select: false,
-        action: () => alert('Now you are drunk')
+        action: () => alert('Now you are drunk'),
       },
       {
         id: 'fight',
@@ -35,8 +34,9 @@ export class SelectDemoComponent {
         action: (item, bar) => {
           alert('Now you are dead');
           bar.reset();
-        }
-      }]
+        },
+      },
+    ],
   };
   bank = {
     id: 'bank',
@@ -44,7 +44,7 @@ export class SelectDemoComponent {
     action: (item, bar) => {
       alert('You WIN!');
       bar.reset();
-    }
+    },
   };
   actions = [
     {
@@ -55,11 +55,11 @@ export class SelectDemoComponent {
           id: 'shoot',
           title: 'Shoot',
           select: false,
-          action: () => alert('PENG. Nothing happens')
+          action: () => alert('PENG. Nothing happens'),
         },
         this.saloon,
-        this.bank
-      ]
+        this.bank,
+      ],
     },
     {
       id: 'south',
@@ -71,18 +71,16 @@ export class SelectDemoComponent {
           select: false,
           action: (item, bar) => {
             alert('Your guitar is broken... :(');
-          }
+          },
         },
         {
           id: 'chicago',
           title: 'Visit Chicago',
-          children: [
-            this.saloon,
-            this.bank
-          ]
-        }
-      ]
-    }];
+          children: [this.saloon, this.bank],
+        },
+      ],
+    },
+  ];
   otto;
   ottostart: any[];
   tagSelect = [
@@ -94,12 +92,12 @@ export class SelectDemoComponent {
           id: 'shoot',
           title: 'Shoot',
           select: false,
-          action: () => alert('PENG. Nothing happens')
+          action: () => alert('PENG. Nothing happens'),
         },
         this.saloon,
-        this.bank
-      ]
-    }
+        this.bank,
+      ],
+    },
   ];
 
   constructor(public notificationService: NotificationsService) {
@@ -108,7 +106,7 @@ export class SelectDemoComponent {
       id: i,
       title: line,
       select: false,
-      children: []
+      children: [],
     }));
     this.otto.forEach((action, i) => {
       action.children = [this.otto[(i + 1) % this.otto.length]];
@@ -121,7 +119,7 @@ export class SelectDemoComponent {
     this.notificationService.emit({
       type: 'info',
       title: 'Toggle item ' + item.display(),
-      message: 'You could now run custom remove logic or forbid removing specific items etc.'
+      message: 'You could now run custom remove logic or forbid removing specific items etc.',
     });
     // selection.toggle(item);
   }

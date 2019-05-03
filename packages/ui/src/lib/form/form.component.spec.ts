@@ -7,10 +7,7 @@ describe('FormComponent', () => {
   let fixture: ComponentFixture<FormComponent<any>>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule(
-      uiModuleConfig
-    )
-      .compileComponents();
+    TestBed.configureTestingModule(uiModuleConfig).compileComponents();
   }));
 
   beforeEach(() => {

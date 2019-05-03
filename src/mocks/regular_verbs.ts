@@ -3049,5 +3049,5 @@ export const regular_verbs = [
   'zwiebeln',
   'zwinkern',
   'zwirbeln',
-  'zwitschern'
+  'zwitschern',
 ];

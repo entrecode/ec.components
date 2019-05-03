@@ -6,6 +6,5 @@ import { SdkService } from '@ec.components/data';
   templateUrl: './data-demo.component.html',
 })
 export class DataDemoComponent {
-  constructor(public sdk: SdkService) {
-  }
+  constructor(public sdk: SdkService) {}
 }

@@ -9,8 +9,7 @@ describe('ListComponent', () => {
   let fixture: ComponentFixture<ListComponent<any>>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule(listModuleConfig)
-      .compileComponents();
+    TestBed.configureTestingModule(listModuleConfig).compileComponents();
   }));
 
   beforeEach(() => {
@@ -85,5 +84,4 @@ describe('ListComponent', () => {
     expect(component.selection.has(component.list.items[0])).toBeFalsy();
     expect(selected).toBe(component.list.items[0]);
   });*/
-
 });

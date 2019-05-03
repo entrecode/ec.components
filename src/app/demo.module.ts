@@ -67,12 +67,7 @@ import { KeycommandsDemoComponent } from './keycommands/keycommands-demo.compone
 /* import { CalendarModule } from '../../packages/calendar/src/calendar.module'; */
 
 export const demoModuleConfig = {
-  entryComponents: [
-    CoolStringComponent,
-    UnsplashImageComponent,
-    CounterComponent,
-    TinyInputComponent,
-  ],
+  entryComponents: [CoolStringComponent, UnsplashImageComponent, CounterComponent, TinyInputComponent],
   declarations: [
     GithubSourceComponent,
     GithubSourcesComponent,
@@ -124,7 +119,7 @@ export const demoModuleConfig = {
     CounterComponent,
     LoginDemoComponent,
     ImageSelectPopDemoComponent,
-    KeycommandsDemoComponent
+    KeycommandsDemoComponent,
   ],
   imports: [
     BrowserModule,
@@ -146,7 +141,7 @@ export const demoModuleConfig = {
   providers: [
     {
       provide: 'useDesktopNotifications',
-      useValue: false
+      useValue: false,
     },
     {
       provide: 'environment',
@@ -154,17 +149,16 @@ export const demoModuleConfig = {
         datamanagerID: '83cc6374',
         environment: 'stage',
         clientID: 'rest',
-      }
-    }
+      },
+    },
   ],
-  bootstrap: [DemoComponent]
+  bootstrap: [DemoComponent],
 };
 
 @NgModule(demoModuleConfig)
 export class DemoModule {
-  constructor(
-    /* private symbol: SymbolService */
-  ) {
+  constructor() /* private symbol: SymbolService */
+  {
     /* this.symbol.use(en); */
     /* moment.locale(this.symbol.resolve('moment.locale')); */
   }

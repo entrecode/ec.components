@@ -7,8 +7,7 @@ describe('SelectComponent', () => {
   let fixture: ComponentFixture<SelectComponent<any>>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule(selectModuleConfig)
-      .compileComponents();
+    TestBed.configureTestingModule(selectModuleConfig).compileComponents();
   }));
 
   beforeEach(() => {

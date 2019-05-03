@@ -9,11 +9,9 @@ import { CrudConfig } from '../../crud/crud-config.interface';
 
 @Component({
   selector: 'ec-tag-select',
-  templateUrl: '../../resource-select/resource-select.component.html'
+  templateUrl: '../../resource-select/resource-select.component.html',
 })
-
 export class TagSelectComponent extends ResourceSelectComponent implements OnInit, OnChanges {
-
   relation = 'tags';
   placeholder = this.symbol.resolve('tag-select.placeholder');
   config: CrudConfig<any>;
@@ -24,7 +22,7 @@ export class TagSelectComponent extends ResourceSelectComponent implements OnIni
     public elementRef: ElementRef,
     public symbol: SymbolService,
     public cdr: ChangeDetectorRef,
-    public sdk: SdkService
+    public sdk: SdkService,
   ) {
     super(resourceConfig, auth, elementRef, symbol, cdr);
     this.enterPressed.asObservable().subscribe((s) => {
@@ -46,13 +44,13 @@ export class TagSelectComponent extends ResourceSelectComponent implements OnIni
       disableCreatePop: true,
       fields: {
         tag: {
-          view: 'string'
-        }
+          view: 'string',
+        },
       },
       dropdownFields: {
         tag: {
-          view: 'string'
-        }
+          view: 'string',
+        },
       },
     };
     this.dropdownConfig = {
@@ -61,9 +59,9 @@ export class TagSelectComponent extends ResourceSelectComponent implements OnIni
       identifier: 'tag',
       fields: {
         tag: {
-          view: 'string'
-        }
-      }
+          view: 'string',
+        },
+      },
     };
   }
 

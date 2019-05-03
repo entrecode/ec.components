@@ -8,9 +8,8 @@ describe('FieldComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [InputComponent, DynamicSlotComponent]
-    })
-      .compileComponents();
+      declarations: [InputComponent, DynamicSlotComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
