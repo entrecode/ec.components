@@ -37,6 +37,12 @@ export class DemoComponent {
       this.hideMenu = !!params['e'];
     });
 
+    /* this.typeConfig.set('json', {
+      view: 'json',
+      input: CoolStringComponent,
+      output: DefaultOutputComponent,
+      display: (value) => (value ? JSON.stringify(value) : ''),
+    }); */
     /* this.typeConfig.set('location', {
       input: LocationPickerComponent
     }); */
