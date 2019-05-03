@@ -147,7 +147,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">packages/ui/src/lib/list/list-config.service.ts:44</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">packages/ui/src/lib/list/list-config.service.ts:43</a></div>
                             </td>
                         </tr>
 
@@ -216,7 +216,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">packages/ui/src/lib/list/list-config.service.ts:23</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">packages/ui/src/lib/list/list-config.service.ts:22</a></div>
                             </td>
                         </tr>
 
@@ -285,7 +285,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">packages/ui/src/lib/list/list-config.service.ts:9</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">packages/ui/src/lib/list/list-config.service.ts:8</a></div>
                             </td>
                         </tr>
 
@@ -350,7 +350,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">packages/ui/src/lib/list/list-config.service.ts:14</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">packages/ui/src/lib/list/list-config.service.ts:13</a></div>
                             </td>
                         </tr>
 
@@ -424,7 +424,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">packages/ui/src/lib/list/list-config.service.ts:18</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">packages/ui/src/lib/list/list-config.service.ts:17</a></div>
                             </td>
                         </tr>
 
@@ -498,7 +498,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">packages/ui/src/lib/list/list-config.service.ts:35</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">packages/ui/src/lib/list/list-config.service.ts:34</a></div>
                             </td>
                         </tr>
 
@@ -573,7 +573,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">packages/ui/src/lib/list/list-config.service.ts:7</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">packages/ui/src/lib/list/list-config.service.ts:6</a></div>
                             </td>
                         </tr>
 
@@ -591,62 +591,61 @@ import { List } from &#x27;@ec.components/core&#x27;;
 
 @Injectable()
 export class ListConfigService {
+  public storageKeyResolver: (list: List&lt;any&gt;) &#x3D;&gt; string;
 
-    public storageKeyResolver: (list: List&lt;any&gt;) &#x3D;&gt; string;
+  retrieve(key) {
+    const config &#x3D; localStorage.getItem(key);
+    return config ? JSON.parse(config) : null;
+  }
 
-    retrieve(key) {
-        const config &#x3D; localStorage.getItem(key);
-        return config ? JSON.parse(config) : null;
+  set(key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
+  }
+
+  store(key, config) {
+    const existing &#x3D; this.retrieve(key) || {};
+    localStorage.setItem(key, JSON.stringify(Object.assign(existing, config)));
+  }
+
+  getStorageKey(list: List&lt;any&gt;) {
+    if (!list || !list.fields || !list.config || !list.config.storageKey) {
+      // console.log(&#x27;cannot apply config: no storage key or list set&#x27;);
+      return;
     }
-
-    set(key, value) {
-        localStorage.setItem(key, JSON.stringify(value));
+    const resolveFn &#x3D; list.config.storageKey || this.storageKeyResolver;
+    if (typeof resolveFn &#x3D;&#x3D;&#x3D; &#x27;function&#x27;) {
+      return resolveFn(list);
     }
+    return list.config.storageKey;
+  }
 
-    store(key, config) {
-        const existing &#x3D; this.retrieve(key) || {};
-        localStorage.setItem(key, JSON.stringify(Object.assign(existing, config)));
+  storeConfig(list: List&lt;any&gt;) {
+    const key &#x3D; this.getStorageKey(list);
+    if (!key) {
+      return;
     }
+    const config &#x3D; { hide: list.fields.filter((f) &#x3D;&gt; f.hideInList).map((f) &#x3D;&gt; f.property) };
+    this.store(key, config);
+  }
 
-    getStorageKey(list: List&lt;any&gt;) {
-        if (!list || !list.fields || !list.config || !list.config.storageKey) {
-            // console.log(&#x27;cannot apply config: no storage key or list set&#x27;);
-            return;
+  applyConfig(list: List&lt;any&gt;) {
+    const key &#x3D; this.getStorageKey(list);
+    if (!key) {
+      return;
+    }
+    const existing &#x3D; this.retrieve(key);
+    if (existing &amp;&amp; existing.hide) {
+      list.fields.forEach((field) &#x3D;&gt; (field.hideInList &#x3D; false));
+      existing.hide.forEach((property) &#x3D;&gt; {
+        const field &#x3D; list.fields.find((f) &#x3D;&gt; f.property &#x3D;&#x3D;&#x3D; property);
+        if (!field) {
+          console.warn(&#x27;field &#x27;, property, &#x27; not found&#x27;);
+          return;
         }
-        const resolveFn &#x3D; list.config.storageKey || this.storageKeyResolver;
-        if (typeof resolveFn &#x3D;&#x3D;&#x3D; &#x27;function&#x27;) {
-            return resolveFn(list);
-        }
-        return list.config.storageKey;
+        field.hideInList &#x3D; true;
+      });
     }
-
-    storeConfig(list: List&lt;any&gt;) {
-        const key &#x3D; this.getStorageKey(list);
-        if (!key) {
-            return;
-        }
-        const config &#x3D; { hide: list.fields.filter(f &#x3D;&gt; f.hideInList).map(f &#x3D;&gt; f.property) };
-        this.store(key, config);
-    }
-
-    applyConfig(list: List&lt;any&gt;) {
-        const key &#x3D; this.getStorageKey(list);
-        if (!key) {
-            return;
-        }
-        const existing &#x3D; this.retrieve(key);
-        if (existing &amp;&amp; existing.hide) {
-            list.fields.forEach(field &#x3D;&gt; field.hideInList &#x3D; false);
-            existing.hide.forEach(property &#x3D;&gt; {
-                const field &#x3D; list.fields.find(f &#x3D;&gt; f.property &#x3D;&#x3D;&#x3D; property);
-                if (!field) {
-                    console.warn(&#x27;field &#x27;, property, &#x27; not found&#x27;);
-                    return;
-                }
-                field.hideInList &#x3D; true;
-            });
-        }
-    }
+  }
 }
 </code></pre>
     </div>

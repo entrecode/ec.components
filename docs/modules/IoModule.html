@@ -343,11 +343,7 @@ import { ReactiveFormsModule } from &#x27;@angular/forms&#x27;;
 import { DynamicRackComponent } from &#x27;./dynamic-rack/dynamic-rack.component&#x27;;
 
 @NgModule({
-  entryComponents: [
-    InputComponent,
-    OutputComponent,
-    InputErrorsComponent,
-  ],
+  entryComponents: [InputComponent, OutputComponent, InputErrorsComponent],
   declarations: [
     InputErrorsComponent,
     SlotHostDirective,
@@ -356,10 +352,7 @@ import { DynamicRackComponent } from &#x27;./dynamic-rack/dynamic-rack.component
     InputComponent,
     OutputComponent,
   ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-  ],
+  imports: [CommonModule, ReactiveFormsModule],
   exports: [
     SlotHostDirective,
     DynamicSlotComponent,
@@ -369,10 +362,9 @@ import { DynamicRackComponent } from &#x27;./dynamic-rack/dynamic-rack.component
     InputErrorsComponent,
     ReactiveFormsModule,
   ],
-  providers: []
+  providers: [],
 })
-export class IoModule {
-}
+export class IoModule {}
 </code></pre>
     </div>
 </div>

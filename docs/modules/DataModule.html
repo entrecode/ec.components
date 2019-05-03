@@ -730,7 +730,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">packages/data/src/lib/data.module.ts:95</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">packages/data/src/lib/data.module.ts:86</a></div>
                             </td>
                         </tr>
 
@@ -829,16 +829,7 @@ export const dataModuleConfig &#x3D; {
     EntrySelectComponent,
     EntryListPopComponent,
   ],
-  imports: [
-    FormsModule,
-    CommonModule,
-    UiModule,
-    SdkModule,
-    FilesModule,
-    AuthModule,
-    ResourceModule,
-    DndModule
-  ],
+  imports: [FormsModule, CommonModule, UiModule, SdkModule, FilesModule, AuthModule, ResourceModule, DndModule],
   exports: [
     EntryListComponent,
     EntryDirective,
@@ -854,7 +845,7 @@ export const dataModuleConfig &#x3D; {
     SdkModule,
     FilesModule,
     AuthModule,
-    ResourceModule
+    ResourceModule,
   ],
   providers: [
     EntryService,
@@ -865,10 +856,10 @@ export const dataModuleConfig &#x3D; {
       provide: &#x27;environment&#x27;,
       useValue: {
         environment: &#x27;live&#x27;,
-        datamanagerID: &#x27;83cc6374&#x27;
-      }
-    }
-  ]
+        datamanagerID: &#x27;83cc6374&#x27;,
+      },
+    },
+  ],
 };
 
 @NgModule(dataModuleConfig)
@@ -881,15 +872,15 @@ export class DataModule {
           provide: &#x27;environment&#x27;,
           useValue: Object.assign(
             {
-              environment: &#x27;live&#x27;
+              environment: &#x27;live&#x27;,
             },
-            environment
-          )
-        }
-      ]
+            environment,
+          ),
+        },
+      ],
     };
   }
-  constructor() { }
+  constructor() {}
 }
 </code></pre>
     </div>

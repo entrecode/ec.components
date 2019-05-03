@@ -255,24 +255,14 @@ import { ModalComponent } from &#x27;../modal/modal.component&#x27;;
 import { IconModule } from &#x27;../icon/icon.module&#x27;;
 
 export const popModuleConfig &#x3D; {
-  declarations: [
-    PopComponent,
-    ModalComponent,
-  ],
-  imports: [
-    CommonModule,
-    IconModule
-  ],
-  exports: [
-    PopComponent,
-    ModalComponent,
-  ],
-  providers: [PopService]
+  declarations: [PopComponent, ModalComponent],
+  imports: [CommonModule, IconModule],
+  exports: [PopComponent, ModalComponent],
+  providers: [PopService],
 };
 
 @NgModule(popModuleConfig)
-export class PopModule {
-}
+export class PopModule {}
 </code></pre>
     </div>
 </div>

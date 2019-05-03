@@ -285,7 +285,7 @@ changes.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="215" class="link-to-prism">packages/data/src/lib/files/file.service.ts:215</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="227" class="link-to-prism">packages/data/src/lib/files/file.service.ts:227</a></div>
                             </td>
                         </tr>
 
@@ -356,7 +356,7 @@ changes.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">packages/data/src/lib/files/file.service.ts:76</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">packages/data/src/lib/files/file.service.ts:77</a></div>
                             </td>
                         </tr>
 
@@ -508,7 +508,7 @@ changes.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">packages/data/src/lib/files/file.service.ts:91</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">packages/data/src/lib/files/file.service.ts:92</a></div>
                             </td>
                         </tr>
 
@@ -598,7 +598,7 @@ changes.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="224" class="link-to-prism">packages/data/src/lib/files/file.service.ts:224</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="236" class="link-to-prism">packages/data/src/lib/files/file.service.ts:236</a></div>
                             </td>
                         </tr>
 
@@ -667,7 +667,7 @@ changes.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="220" class="link-to-prism">packages/data/src/lib/files/file.service.ts:220</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="232" class="link-to-prism">packages/data/src/lib/files/file.service.ts:232</a></div>
                             </td>
                         </tr>
 
@@ -736,7 +736,7 @@ changes.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="178" class="link-to-prism">packages/data/src/lib/files/file.service.ts:178</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="184" class="link-to-prism">packages/data/src/lib/files/file.service.ts:184</a></div>
                             </td>
                         </tr>
 
@@ -819,7 +819,7 @@ changes.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="229" class="link-to-prism">packages/data/src/lib/files/file.service.ts:229</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="241" class="link-to-prism">packages/data/src/lib/files/file.service.ts:241</a></div>
                             </td>
                         </tr>
 
@@ -904,7 +904,7 @@ changes.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="123" class="link-to-prism">packages/data/src/lib/files/file.service.ts:123</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="122" class="link-to-prism">packages/data/src/lib/files/file.service.ts:122</a></div>
                             </td>
                         </tr>
 
@@ -1021,7 +1021,7 @@ changes.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="145" class="link-to-prism">packages/data/src/lib/files/file.service.ts:145</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="146" class="link-to-prism">packages/data/src/lib/files/file.service.ts:146</a></div>
                             </td>
                         </tr>
 
@@ -1132,7 +1132,7 @@ changes.</p>
     includeAssetIDInPath: true,
     ignoreDuplicates: false,
     deduplicate: false,
-    fileName: []
+    fileName: [],
   }</code>
                         </td>
                     </tr>
@@ -1360,7 +1360,7 @@ export class FileService {
     includeAssetIDInPath: true,
     ignoreDuplicates: false,
     deduplicate: false,
-    fileName: []
+    fileName: [],
   };
   /** config for new assets */
   public dmAssetConfig &#x3D; Object.assign({}, this.resourceConfig.get(&#x27;dmAsset&#x27;));
@@ -1370,18 +1370,19 @@ export class FileService {
   public oldAssetGroupIDs &#x3D; [&#x27;image&#x27;, &#x27;video&#x27;, &#x27;audio&#x27;, &#x27;plain&#x27;, &#x27;document&#x27;, &#x27;spreadsheet&#x27;, &#x27;legacyAsset&#x27;];
 
   /** Injects sdk */
-  constructor(private sdk: SdkService,
+  constructor(
+    private sdk: SdkService,
     private typeConfig: TypeConfigService,
     private resourceService: ResourceService,
-    private resourceConfig: ResourceConfig) {
-  }
+    private resourceConfig: ResourceConfig,
+  ) {}
 
   public getAssetConfig(assetGroupID) {
     if (this.isOldAssetGroupID(assetGroupID)) {
       const config &#x3D; Object.assign({}, this.legacyAssetConfig);
       if (this.oldAssetGroupIDs.includes(assetGroupID) &amp;&amp; assetGroupID !&#x3D;&#x3D; &#x27;legacyAsset&#x27;) {
-        config.filter &#x3D; Object.assign({}, (config.filter || {}), {
-          type: assetGroupID
+        config.filter &#x3D; Object.assign({}, config.filter || {}, {
+          type: assetGroupID,
         });
       }
       return config;
@@ -1394,10 +1395,9 @@ export class FileService {
   public isNewAsset(asset: Array&lt;any&gt; | string | DMAssetResource | PublicAssetResource, only &#x3D; false) {
     if (Array.isArray(asset)) {
       return asset.reduce(
-        (match, a) &#x3D;&gt;
-          ((only &amp;&amp; (match &amp;&amp; this.isNewAsset(a)) ||
-            (!only &amp;&amp; (match || this.isNewAsset(a)))))
-        , only);
+        (match, a) &#x3D;&gt; (only &amp;&amp; (match &amp;&amp; this.isNewAsset(a))) || (!only &amp;&amp; (match || this.isNewAsset(a))),
+        only,
+      );
     }
     const id &#x3D; typeof asset &#x3D;&#x3D;&#x3D; &#x27;string&#x27; ? asset : asset.assetID;
     return /^[a-zA-Z0-9\-_]{22}$/.test(id);
@@ -1412,12 +1412,11 @@ export class FileService {
       formData.append(fieldname, files.item(i), name);
     }
     if (options) {
-      [&#x27;preserveFilenames&#x27;, &#x27;includeAssetIDInPath&#x27;, &#x27;ignoreDuplicates&#x27;, &#x27;deduplicate&#x27;]
-        .forEach(key &#x3D;&gt; {
-          if (key in options) {
-            formData.append(key, &#x60;${options[key]}&#x60;);
-          }
-        });
+      [&#x27;preserveFilenames&#x27;, &#x27;includeAssetIDInPath&#x27;, &#x27;ignoreDuplicates&#x27;, &#x27;deduplicate&#x27;].forEach((key) &#x3D;&gt; {
+        if (key in options) {
+          formData.append(key, &#x60;${options[key]}&#x60;);
+        }
+      });
     }
     return formData;
   }
@@ -1427,17 +1426,19 @@ export class FileService {
     if (!files.length) {
       return;
     }
-    const data &#x3D; files[0].url ? files.map(f &#x3D;&gt; f.url) : this.getFormData(files, options);
-    return api.createDMAssets(assetGroupID, data, options)
+    const data &#x3D; files[0].url ? files.map((f) &#x3D;&gt; f.url) : this.getFormData(files, options);
+    return api
+      .createDMAssets(assetGroupID, data, options)
       .then((assetList: DMAssetList) &#x3D;&gt; {
         const assets &#x3D; assetList.getAllItems();
         return {
           asset: assets[0],
           assets,
           item: new Item(assets[0], this.resourceConfig.get(&#x27;dmAsset&#x27;)),
-          items: assets.map(asset &#x3D;&gt; new Item(asset, this.resourceConfig.get(&#x27;dmAsset&#x27;)))
+          items: assets.map((asset) &#x3D;&gt; new Item(asset, this.resourceConfig.get(&#x27;dmAsset&#x27;))),
         };
-      }).then((upload: Upload) &#x3D;&gt; {
+      })
+      .then((upload: Upload) &#x3D;&gt; {
         this.uploads.emit(upload);
         this.resourceService.changes.next({ relation: &#x27;dmAsset&#x27;, type: &#x27;post&#x27; });
         return upload;
@@ -1450,26 +1451,31 @@ export class FileService {
       return;
     }
     const data &#x3D; this.getFormData(files);
-    return Promise.resolve().then((): Promise&lt;() &#x3D;&gt; Promise&lt;(PublicAssetList | PublicAssetResource)&gt;&gt; &#x3D;&gt; {
-      if (files.length &#x3D;&#x3D;&#x3D; 1) {
-        return this.sdk.api.createAsset(data, {});
-      }
-      return this.sdk.api.createAssets(data, {});
-    })
-      .then(res &#x3D;&gt; res())
+    return Promise.resolve()
+      .then(
+        (): Promise&lt;() &#x3D;&gt; Promise&lt;PublicAssetList | PublicAssetResource&gt;&gt; &#x3D;&gt; {
+          if (files.length &#x3D;&#x3D;&#x3D; 1) {
+            return this.sdk.api.createAsset(data, {});
+          }
+          return this.sdk.api.createAssets(data, {});
+        },
+      )
+      .then((res) &#x3D;&gt; res())
       .then((response) &#x3D;&gt; {
         if (response[&#x27;getAllItems&#x27;]) {
           return response[&#x27;getAllItems&#x27;]();
         }
         return [response];
-      }).then((assets) &#x3D;&gt; {
+      })
+      .then((assets) &#x3D;&gt; {
         return {
           asset: assets[0],
           assets,
           item: new Item(assets[0], this.resourceConfig.get(&#x27;legacyAsset&#x27;)),
-          items: assets.map(asset &#x3D;&gt; new Item(asset, this.resourceConfig.get(&#x27;legacyAsset&#x27;)))
+          items: assets.map((asset) &#x3D;&gt; new Item(asset, this.resourceConfig.get(&#x27;legacyAsset&#x27;))),
         };
-      }).then((upload: Upload) &#x3D;&gt; {
+      })
+      .then((upload: Upload) &#x3D;&gt; {
         this.uploads.emit(upload);
         this.resourceService.changes.next({ relation: &#x27;legacyAsset&#x27;, type: &#x27;post&#x27; });
         this.resourceService.changes.next({ relation: &#x27;asset&#x27;, type: &#x27;post&#x27; });
@@ -1478,9 +1484,13 @@ export class FileService {
   }
 
   /** Resolves all assetIDs to PublicAssetResources */
-  public resolveAssets(assets: Array&lt;string | PublicAssetResource | DMAssetResource&gt;, assetGroupID?: string):
-    Promise&lt;Array&lt;PublicAssetResource | DMAssetResource&gt;&gt; {
-    console.warn(&#x27;FileService#resolveAssets is deprecated. I doubt somebody ever used it but if you see this, stop it. please.&#x27;);
+  public resolveAssets(
+    assets: Array&lt;string | PublicAssetResource | DMAssetResource&gt;,
+    assetGroupID?: string,
+  ): Promise&lt;Array&lt;PublicAssetResource | DMAssetResource&gt;&gt; {
+    console.warn(
+      &#x27;FileService#resolveAssets is deprecated. I doubt somebody ever used it but if you see this, stop it. please.&#x27;,
+    );
     const unresolved &#x3D; assets.reduce((ids, asset) &#x3D;&gt; {
       if (typeof asset &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
         ids.push(asset);
@@ -1494,25 +1504,27 @@ export class FileService {
       console.warn(&#x27;wont resolve new asset without knowing assetGroupID&#x27;);
       return Promise.resolve([]);
     }
-    if (assetGroupID) { // new assets
-      return this.sdk.api.dmAssetList(assetGroupID, { assetID: { any: unresolved }, size: 100 })
-        .then(dmAssetList &#x3D;&gt; dmAssetList.getAllItems());
+    if (assetGroupID) {
+      // new assets
+      return this.sdk.api
+        .dmAssetList(assetGroupID, { assetID: { any: unresolved }, size: 100 })
+        .then((dmAssetList) &#x3D;&gt; dmAssetList.getAllItems());
     }
-    return Promise.resolve().then((): any &#x3D;&gt; {
-      if (unresolved.length &#x3D;&#x3D;&#x3D; 1) {
-        return this.sdk.api.asset(unresolved[0]).then(asset &#x3D;&gt; {
-          return [asset];
-        });
-      }
-      return this.sdk.api.assetList({ assetID: { any: unresolved }, page: 1 })
-        .then((assetList) &#x3D;&gt; {
+    return Promise.resolve().then(
+      (): any &#x3D;&gt; {
+        if (unresolved.length &#x3D;&#x3D;&#x3D; 1) {
+          return this.sdk.api.asset(unresolved[0]).then((asset) &#x3D;&gt; {
+            return [asset];
+          });
+        }
+        return this.sdk.api.assetList({ assetID: { any: unresolved }, page: 1 }).then((assetList) &#x3D;&gt; {
           const resolved &#x3D; assetList.getAllItems();
           return assets.map((asset) &#x3D;&gt;
-            typeof asset &#x3D;&#x3D;&#x3D; &#x27;string&#x27; ?
-              resolved.find((resource) &#x3D;&gt; resource.assetID &#x3D;&#x3D;&#x3D; asset) : asset);
+            typeof asset &#x3D;&#x3D;&#x3D; &#x27;string&#x27; ? resolved.find((resource) &#x3D;&gt; resource.assetID &#x3D;&#x3D;&#x3D; asset) : asset,
+          );
         });
-
-    });
+      },
+    );
   }
 
   public assetGroupList(forceReload &#x3D; false) {

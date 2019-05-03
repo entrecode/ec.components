@@ -207,7 +207,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">packages/location/src/lib/location-map.component.ts:12</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">packages/location/src/lib/location-map.component.ts:11</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -234,7 +234,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">packages/location/src/lib/location-map.component.ts:14</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">packages/location/src/lib/location-map.component.ts:13</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -261,7 +261,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">packages/location/src/lib/location-map.component.ts:18</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">packages/location/src/lib/location-map.component.ts:17</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -291,7 +291,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">packages/location/src/lib/location-map.component.ts:16</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">packages/location/src/lib/location-map.component.ts:15</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -332,7 +332,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">packages/location/src/lib/location-map.component.ts:31</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">packages/location/src/lib/location-map.component.ts:30</a></div>
                             </td>
                         </tr>
 
@@ -399,7 +399,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">packages/location/src/lib/location-map.component.ts:24</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">packages/location/src/lib/location-map.component.ts:23</a></div>
                             </td>
                         </tr>
 
@@ -455,41 +455,40 @@
 
 /** Shows Google Maps Map */
 @Component({
-    selector: &#x27;ec-location-map&#x27;,
-    templateUrl: &#x27;./location-map.component.html&#x27;,
-    styleUrls: [&#x27;./location-map.component.scss&#x27;]
+  selector: &#x27;ec-location-map&#x27;,
+  templateUrl: &#x27;./location-map.component.html&#x27;,
+  styleUrls: [&#x27;./location-map.component.scss&#x27;],
 })
-
 export class LocationMapComponent {
-    /** The desired map center */
-    @Input() center: { longitude: any; latitude: any; } &#x3D; { latitude: 48.8093253, longitude: 9.159388100000001 };
-    /** If true, no markers can be changed or set */
-    @Input() readOnly: boolean;
-    /** Emits when the marker has been changed */
-    @Output() changed: EventEmitter&lt;any&gt; &#x3D; new EventEmitter();
-    /** Form input component */
-    @Input() value: {
-        longitude: number,
-        latitude: number
-    };
+  /** The desired map center */
+  @Input() center: { longitude: any; latitude: any } &#x3D; { latitude: 48.8093253, longitude: 9.159388100000001 };
+  /** If true, no markers can be changed or set */
+  @Input() readOnly: boolean;
+  /** Emits when the marker has been changed */
+  @Output() changed: EventEmitter&lt;any&gt; &#x3D; new EventEmitter();
+  /** Form input component */
+  @Input() value: {
+    longitude: number;
+    latitude: number;
+  };
 
-    /** sets the value cand changes the center */
-    setValue(value) {
-        this.value &#x3D; value;
-        if (value) {
-            this.center &#x3D; value;
-        }
+  /** sets the value cand changes the center */
+  setValue(value) {
+    this.value &#x3D; value;
+    if (value) {
+      this.center &#x3D; value;
     }
-    /** changes value on marker dragend */
-    markerDragEnd(coords) {
-        if (!coords) {
-            console.warn(&#x27;no coords&#x27;);
-            return;
-        }
-        const position &#x3D; { longitude: coords.lng, latitude: coords.lat };
-        this.setValue(position);
-        this.changed.emit(position);
+  }
+  /** changes value on marker dragend */
+  markerDragEnd(coords) {
+    if (!coords) {
+      console.warn(&#x27;no coords&#x27;);
+      return;
     }
+    const position &#x3D; { longitude: coords.lng, latitude: coords.lat };
+    this.setValue(position);
+    this.changed.emit(position);
+  }
 }
 </code></pre>
     </div>

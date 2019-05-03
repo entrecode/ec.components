@@ -265,7 +265,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">packages/ui/src/lib/loader/loader.component.ts:31</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">packages/ui/src/lib/loader/loader.component.ts:30</a></div>
                             </td>
                         </tr>
 
@@ -307,7 +307,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">packages/ui/src/lib/loader/loader.component.ts:25</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">packages/ui/src/lib/loader/loader.component.ts:24</a></div>
                             </td>
                         </tr>
 
@@ -347,7 +347,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">packages/ui/src/lib/loader/loader.component.ts:38</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">packages/ui/src/lib/loader/loader.component.ts:37</a></div>
                             </td>
                         </tr>
 
@@ -545,11 +545,11 @@ import { Collection } from &#x27;@ec.components/core&#x27;;
 
 /** The ec-loader can be plugged into various components to be triggered when they load stuff.
  * &lt;example-url&gt;https://components.entrecode.de/ui/loader?e&#x3D;1&lt;/example-url&gt;
-*/
+ */
 @Component({
   selector: &#x27;ec-loader&#x27;,
   templateUrl: &#x27;./loader.component.html&#x27;,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoaderComponent {
   /** The current stack of loading promises.*/
@@ -560,8 +560,7 @@ export class LoaderComponent {
   private timestamp;
 
   /** Injects the host element. */
-  constructor(private host: ElementRef) {
-  }
+  constructor(private host: ElementRef) {}
 
   /** Shows the loader by setting .visible to the host. This method is NOT meant to be used from outside, */
   private show() {
@@ -582,13 +581,12 @@ export class LoaderComponent {
     this.show();
     const timestamp &#x3D; Date.now();
     this.timestamp &#x3D; timestamp; // get timestamp
-    Promise.all(this.stack.items)
-      .then(() &#x3D;&gt; {
-        if (timestamp &#x3D;&#x3D;&#x3D; this.timestamp) {
-          this.hide();
-          this.stack.removeAll();
-        }
-      });
+    Promise.all(this.stack.items).then(() &#x3D;&gt; {
+      if (timestamp &#x3D;&#x3D;&#x3D; this.timestamp) {
+        this.hide();
+        this.stack.removeAll();
+      }
+    });
     return promise;
   }
 }

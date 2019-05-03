@@ -154,15 +154,15 @@
                     <tr>
                         <td class="col-md-4">
                             <i>Default value : </i><code>{
-    &#x27;string&#x27;: sortString,
-    &#x27;number&#x27;: sortNumber,
-    &#x27;boolean&#x27;: sortBoolean
+    string: sortString,
+    number: sortNumber,
+    boolean: sortBoolean,
   }</code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">packages/core/src/lib/sorter/sorter.ts:25</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">packages/core/src/lib/sorter/sorter.ts:24</a></div>
                             </td>
                         </tr>
 
@@ -207,7 +207,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">packages/core/src/lib/sorter/sorter.ts:32</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">packages/core/src/lib/sorter/sorter.ts:31</a></div>
                             </td>
                         </tr>
 
@@ -292,7 +292,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">packages/core/src/lib/sorter/sorter.ts:62</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">packages/core/src/lib/sorter/sorter.ts:60</a></div>
                             </td>
                         </tr>
 
@@ -416,12 +416,11 @@ export function sortBoolean(a, b) {
 
 /** The Sorter is a singleton that handles all kinds of sorting operations. */
 export abstract class Sorter&lt;T&gt; {
-
   /** Contains sorting methods for different value types. */
   static sortType &#x3D; {
-    &#x27;string&#x27;: sortString,
-    &#x27;number&#x27;: sortNumber,
-    &#x27;boolean&#x27;: sortBoolean
+    string: sortString,
+    number: sortNumber,
+    boolean: sortBoolean,
   };
 
   /** Returns the sorting algorithm for the given item array. */
@@ -429,13 +428,12 @@ export abstract class Sorter&lt;T&gt; {
     if (!items.length) {
       return;
     }
-    if (property &amp;&amp; !items
-      .reduce((has, item) &#x3D;&gt; has &amp;&amp; item.sort(property) !&#x3D;&#x3D; undefined, true)) {
+    if (property &amp;&amp; !items.reduce((has, item) &#x3D;&gt; has &amp;&amp; item.sort(property) !&#x3D;&#x3D; undefined, true)) {
       console.warn(&#x27;cannot sort property &quot;&#x27; + property + &#x27;&quot; because not all items have that property&#x27;, items);
       return;
     }
     const types &#x3D; items
-      .map(item &#x3D;&gt; typeof item.sort(property))
+      .map((item) &#x3D;&gt; typeof item.sort(property))
       .filter((item, index, _items) &#x3D;&gt; _items.indexOf(item) &#x3D;&#x3D;&#x3D; index);
     if (types.length &gt; 1) {
       console.warn(&#x27;cannot sort items because they contain multiple types:&#x27;, types);

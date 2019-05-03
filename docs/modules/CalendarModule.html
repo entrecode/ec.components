@@ -318,7 +318,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">packages/calendar/src/lib/calendar.module.ts:46</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">packages/calendar/src/lib/calendar.module.ts:32</a></div>
                             </td>
                         </tr>
 
@@ -380,61 +380,47 @@ import { MonthComponent } from &#x27;./calendar/month.component&#x27;;
 import { CommonModule } from &#x27;@angular/common&#x27;;
 
 export const calendarModuleConfig &#x3D; {
-    imports: [
-        CommonModule
-    ],
-    exports: [
-        DatetimePipe,
-        CalendarComponent,
-        HeatmapComponent,
-        DaterangeComponent,
-        MonthComponent,
-    ],
-    declarations: [
-        DatetimePipe,
-        CalendarComponent,
-        HeatmapComponent,
-        DaterangeComponent,
-        MonthComponent,
-    ],
-    providers: [
-        {
-            provide: &#x27;moment.format.date&#x27;,
-            useValue: &#x27;DD.MM.YYYY&#x27;
-        },
-        {
-            provide: &#x27;moment.format.time&#x27;,
-            useValue: &#x27;HH:mm&#x27;
-        },
-        {
-            provide: &#x27;moment.format.month&#x27;,
-            useValue: &#x27;MMMM YYYY&#x27;
-        }
-    ]
+  imports: [CommonModule],
+  exports: [DatetimePipe, CalendarComponent, HeatmapComponent, DaterangeComponent, MonthComponent],
+  declarations: [DatetimePipe, CalendarComponent, HeatmapComponent, DaterangeComponent, MonthComponent],
+  providers: [
+    {
+      provide: &#x27;moment.format.date&#x27;,
+      useValue: &#x27;DD.MM.YYYY&#x27;,
+    },
+    {
+      provide: &#x27;moment.format.time&#x27;,
+      useValue: &#x27;HH:mm&#x27;,
+    },
+    {
+      provide: &#x27;moment.format.month&#x27;,
+      useValue: &#x27;MMMM YYYY&#x27;,
+    },
+  ],
 };
 
 /** This Module contains all calendar related components */
 @NgModule(calendarModuleConfig)
 export class CalendarModule {
-    static forRoot(formats: { date?, time?, month?}): ModuleWithProviders {
-        return {
-            ngModule: CalendarModule,
-            providers: [
-                {
-                    provide: &#x27;moment.format.date&#x27;,
-                    useValue: formats.date
-                },
-                {
-                    provide: &#x27;moment.format.time&#x27;,
-                    useValue: formats.time
-                },
-                {
-                    provide: &#x27;moment.format.month&#x27;,
-                    useValue: formats.month
-                },
-            ]
-        };
-    }
+  static forRoot(formats: { date?; time?; month? }): ModuleWithProviders {
+    return {
+      ngModule: CalendarModule,
+      providers: [
+        {
+          provide: &#x27;moment.format.date&#x27;,
+          useValue: formats.date,
+        },
+        {
+          provide: &#x27;moment.format.time&#x27;,
+          useValue: formats.time,
+        },
+        {
+          provide: &#x27;moment.format.month&#x27;,
+          useValue: formats.month,
+        },
+      ],
+    };
+  }
 }
 </code></pre>
     </div>

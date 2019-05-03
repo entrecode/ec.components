@@ -226,7 +226,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">packages/ui/src/lib/utility/keycommands/keycommands.service.ts:53</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">packages/ui/src/lib/utility/keycommands/keycommands.service.ts:58</a></div>
                             </td>
                         </tr>
 
@@ -306,7 +306,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">packages/ui/src/lib/utility/keycommands/keycommands.service.ts:75</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">packages/ui/src/lib/utility/keycommands/keycommands.service.ts:80</a></div>
                             </td>
                         </tr>
 
@@ -379,7 +379,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">packages/ui/src/lib/utility/keycommands/keycommands.service.ts:60</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">packages/ui/src/lib/utility/keycommands/keycommands.service.ts:65</a></div>
                             </td>
                         </tr>
 
@@ -453,7 +453,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">packages/ui/src/lib/utility/keycommands/keycommands.service.ts:40</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">packages/ui/src/lib/utility/keycommands/keycommands.service.ts:45</a></div>
                             </td>
                         </tr>
 
@@ -491,7 +491,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">packages/ui/src/lib/utility/keycommands/keycommands.service.ts:85</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">packages/ui/src/lib/utility/keycommands/keycommands.service.ts:90</a></div>
                             </td>
                         </tr>
 
@@ -578,7 +578,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">packages/ui/src/lib/utility/keycommands/keycommands.service.ts:81</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="86" class="link-to-prism">packages/ui/src/lib/utility/keycommands/keycommands.service.ts:86</a></div>
                             </td>
                         </tr>
 
@@ -643,7 +643,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">packages/ui/src/lib/utility/keycommands/keycommands.service.ts:48</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">packages/ui/src/lib/utility/keycommands/keycommands.service.ts:53</a></div>
                             </td>
                         </tr>
 
@@ -712,7 +712,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">packages/ui/src/lib/utility/keycommands/keycommands.service.ts:44</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">packages/ui/src/lib/utility/keycommands/keycommands.service.ts:49</a></div>
                             </td>
                         </tr>
 
@@ -840,7 +840,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">packages/ui/src/lib/utility/keycommands/keycommands.service.ts:20</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">packages/ui/src/lib/utility/keycommands/keycommands.service.ts:18</a></div>
                             </td>
                         </tr>
 
@@ -868,7 +868,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">packages/ui/src/lib/utility/keycommands/keycommands.service.ts:19</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">packages/ui/src/lib/utility/keycommands/keycommands.service.ts:18</a></div>
                             </td>
                         </tr>
 
@@ -898,10 +898,7 @@ export class KeycommandsService {
   muted &#x3D; false;
   meta &#x3D; false;
 
-  constructor(
-    public router: Router,
-    public notificationsService: NotificationsService
-  ) {
+  constructor(public router: Router, public notificationsService: NotificationsService) {
     window.addEventListener(&#x27;keyup&#x27;, (e) &#x3D;&gt; {
       if (!this.muted &amp;&amp; this.keys[e.key]) {
         this.activate(this.keys[e.key], e);
@@ -911,13 +908,21 @@ export class KeycommandsService {
       this.meta &#x3D; e.metaKey;
     });
     // prevents shortcuts to be fired when inputs are focused
-    document.addEventListener(&#x27;focus&#x27;, (e) &#x3D;&gt; {
-      this.mute();
-    }, true);
+    document.addEventListener(
+      &#x27;focus&#x27;,
+      (e) &#x3D;&gt; {
+        this.mute();
+      },
+      true,
+    );
 
-    document.addEventListener(&#x27;blur&#x27;, (e) &#x3D;&gt; {
-      this.unmute();
-    }, true);
+    document.addEventListener(
+      &#x27;blur&#x27;,
+      (e) &#x3D;&gt; {
+        this.unmute();
+      },
+      true,
+    );
   }
 
   mute() {
@@ -958,7 +963,7 @@ export class KeycommandsService {
   copyCellToClipboard(label &#x3D; &#x27;Cell&#x27;) {
     return (item, property) &#x3D;&gt; {
       this.copyToClipBoard(JSON.stringify(item.resolve(property) || &#x27;&#x27;), label);
-    }
+    };
   }
 
   openUrl(url) {

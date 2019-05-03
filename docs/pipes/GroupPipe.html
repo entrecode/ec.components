@@ -196,7 +196,7 @@ import { Item } from &#x27;@ec.components/core&#x27;;
 /** The GroupPipe filters an array of Item instances by a given property value.
  * It is meant to be used to get only the items with the exact same value. */
 @Pipe({
-  name: &#x27;group&#x27;
+  name: &#x27;group&#x27;,
 })
 export class GroupPipe implements PipeTransform {
   transform(items: Array&lt;Item&lt;any&gt;&gt;, property: string, value: any): any {

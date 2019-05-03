@@ -283,7 +283,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">packages/ui/src/lib/utility/signup-form/signup-form.component.ts:17</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">packages/ui/src/lib/utility/signup-form/signup-form.component.ts:16</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -309,7 +309,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">packages/ui/src/lib/utility/signup-form/signup-form.component.ts:21</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">packages/ui/src/lib/utility/signup-form/signup-form.component.ts:20</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -335,7 +335,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">packages/ui/src/lib/utility/signup-form/signup-form.component.ts:19</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">packages/ui/src/lib/utility/signup-form/signup-form.component.ts:18</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -782,7 +782,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">packages/ui/src/lib/utility/signup-form/signup-form.component.ts:23</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">packages/ui/src/lib/utility/signup-form/signup-form.component.ts:22</a></div>
                             </td>
                         </tr>
 
@@ -855,7 +855,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in LoginFormComponent:67</div>
+                                    <div class="io-line">Defined in LoginFormComponent:66</div>
                             </td>
                         </tr>
 
@@ -928,7 +928,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in LoginFormComponent:51</div>
+                                    <div class="io-line">Defined in LoginFormComponent:50</div>
                             </td>
                         </tr>
 
@@ -1020,7 +1020,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in LoginFormComponent:59</div>
+                                    <div class="io-line">Defined in LoginFormComponent:58</div>
                             </td>
                         </tr>
 
@@ -1279,13 +1279,12 @@ import { LoginFormComponent } from &#x27;../login-form/login-form.component&#x27
 
 /** Login Form Component with validation. Fires success event with credentials on submit.
  * &lt;example-url&gt;https://components.entrecode.de/ui/login?e&#x3D;1&lt;/example-url&gt;
-*/
+ */
 @Component({
   selector: &#x27;ec-signup-form&#x27;,
   templateUrl: &#x27;./signup-form.component.html&#x27;,
 })
 export class SignupFormComponent extends LoginFormComponent implements OnInit, WithLoader {
-
   /** The Label of the submit button. Defaults to Login */
   @Input() buttonLabel &#x3D; this.symbol.resolve(&#x27;signup.button.label&#x27;);
   /** The Placeholder of the mail Field */
@@ -1293,7 +1292,8 @@ export class SignupFormComponent extends LoginFormComponent implements OnInit, W
   /** If set, the invite field will be hidden and the given code will be used for signup */
   @Input() invite &#x3D; &#x27;&#x27;;
   /** Method that is meant to be overwritten by a subclass to communicate with an API. */
-  signup(value) { // meant to be overridden
+  signup(value) {
+    // meant to be overridden
     return Promise.resolve(value);
   }
 
@@ -1302,7 +1302,7 @@ export class SignupFormComponent extends LoginFormComponent implements OnInit, W
     this.form &#x3D; this.fb.group({
       email: [&#x27;&#x27;, [Validators.required, FieldValidators.email]], // emailAvailable?
       password: [&#x27;&#x27;, [Validators.required]],
-      invite: [this.invite, [Validators.required]] // FieldValidators.uuid
+      invite: [this.invite, [Validators.required]], // FieldValidators.uuid
     });
   }
 
@@ -1313,11 +1313,10 @@ export class SignupFormComponent extends LoginFormComponent implements OnInit, W
     if (!this.form.valid) {
       return;
     }
-    const login &#x3D; this.signup(this.form.value)
-      .then((res) &#x3D;&gt; {
-        // this.form.reset();
-        this.success.emit(res);
-      });
+    const login &#x3D; this.signup(this.form.value).then((res) &#x3D;&gt; {
+      // this.form.reset();
+      this.success.emit(res);
+    });
     if (this.loader) {
       this.loader.wait(login);
     }

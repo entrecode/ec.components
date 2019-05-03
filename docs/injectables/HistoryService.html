@@ -247,7 +247,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">packages/data/src/lib/sdk/history.service.ts:42</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">packages/data/src/lib/sdk/history.service.ts:47</a></div>
                             </td>
                         </tr>
 
@@ -318,7 +318,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">packages/data/src/lib/sdk/history.service.ts:52</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">packages/data/src/lib/sdk/history.service.ts:57</a></div>
                             </td>
                         </tr>
 
@@ -420,7 +420,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">packages/data/src/lib/sdk/history.service.ts:26</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">packages/data/src/lib/sdk/history.service.ts:27</a></div>
                             </td>
                         </tr>
 
@@ -715,82 +715,99 @@ import * as EventSource from &#x27;eventsource/lib/eventsource-polyfill&#x27;;
 /** The HistoryService keeps track of live updates for models entries and datamanagers. */
 @Injectable()
 export class HistoryService {
-    /** Current loaded histories */
-    promises: { [relation: string]: Promise&lt;any&gt; } &#x3D; {};
-    /** EventSources that are active */
-    eventSources: { [relation: string]: any } &#x3D; {}; // EventSource[]
+  /** Current loaded histories */
+  promises: { [relation: string]: Promise&lt;any&gt; } &#x3D; {};
+  /** EventSources that are active */
+  eventSources: { [relation: string]: any } &#x3D; {}; // EventSource[]
 
-    constructor(
-        public notificationService: NotificationsService,
-        public loaderService: LoaderService,
-        public router: Router,
-        public resourceService: ResourceService) { }
-    /** Toggles live updates on the resource and stores them under the given key.
-     * The relation is passed through the Update instances on change. */
-    toggle(resource: ModelResource | DataManagerResource | EntryResource, relation: string, key &#x3D; this.router.url.split(&#x27;?&#x27;)[0]) {
-        if (this.promises[key] &amp;&amp; !this.eventSources[relation]) {
-            return this.promises[key];
-        }
-        this.disableUpdates(key);
-        this.promises[key] &#x3D; this.enableUpdates(resource, relation, key)
-            .then(source &#x3D;&gt; {
-                this.eventSources[key] &#x3D; source;
-            })
-            .catch(error &#x3D;&gt; {
-                delete this.promises[key];
+  constructor(
+    public notificationService: NotificationsService,
+    public loaderService: LoaderService,
+    public router: Router,
+    public resourceService: ResourceService,
+  ) {}
+  /** Toggles live updates on the resource and stores them under the given key.
+   * The relation is passed through the Update instances on change. */
+  toggle(
+    resource: ModelResource | DataManagerResource | EntryResource,
+    relation: string,
+    key &#x3D; this.router.url.split(&#x27;?&#x27;)[0],
+  ) {
+    if (this.promises[key] &amp;&amp; !this.eventSources[relation]) {
+      return this.promises[key];
+    }
+    this.disableUpdates(key);
+    this.promises[key] &#x3D; this.enableUpdates(resource, relation, key)
+      .then((source) &#x3D;&gt; {
+        this.eventSources[key] &#x3D; source;
+      })
+      .catch((error) &#x3D;&gt; {
+        delete this.promises[key];
+      });
+    this.loaderService.wait(this.promises[key]);
+  }
+
+  /** Closes the event stream for the given key */
+  disableUpdates(key &#x3D; this.router.url.split(&#x27;?&#x27;)[0]) {
+    if (this.eventSources[key]) {
+      this.eventSources[key].close();
+      delete this.promises[key];
+      delete this.eventSources[key];
+      return;
+    }
+  }
+
+  /** Enables Updates for the given resource. The relation is passed through the Update instances on change. */
+  enableUpdates(
+    resource: ModelResource | DataManagerResource | EntryResource,
+    relation: string,
+    key &#x3D; this.router.url.split(&#x27;?&#x27;)[0],
+  ) {
+    if (!resource || !resource.newHistory) {
+      throw new Error(&#x27;cannot get history: no newHistory method found on given resource&#x27;);
+    }
+    if (this.promises[key]) {
+      return this.promises[key];
+    }
+    DataManager.enableHistoryEvents(EventSource);
+    const loading &#x3D; resource
+      .newHistory()
+      .then((source) &#x3D;&gt; {
+        source.addEventListener(
+          &#x27;entryUpdated&#x27;,
+          (e) &#x3D;&gt; {
+            const data &#x3D; JSON.parse(e.data);
+            this.resourceService.changes.next({
+              relation,
+              type: &#x27;put&#x27;,
+              identifier: data ? data.entryID : &#x27;&#x27;,
             });
-        this.loaderService.wait(this.promises[key]);
-    }
-
-    /** Closes the event stream for the given key */
-    disableUpdates(key &#x3D; this.router.url.split(&#x27;?&#x27;)[0]) {
-        if (this.eventSources[key]) {
-            this.eventSources[key].close();
-            delete this.promises[key];
-            delete this.eventSources[key];
-            return;
-        }
-    }
-
-    /** Enables Updates for the given resource. The relation is passed through the Update instances on change. */
-    enableUpdates(resource: ModelResource | DataManagerResource | EntryResource, relation: string, key &#x3D; this.router.url.split(&#x27;?&#x27;)[0]) {
-        if (!resource || !resource.newHistory) {
-            throw new Error(&#x27;cannot get history: no newHistory method found on given resource&#x27;);
-        }
-        if (this.promises[key]) {
-            return this.promises[key];
-        }
-        DataManager.enableHistoryEvents(EventSource);
-        const loading &#x3D; resource.newHistory()
-            .then(source &#x3D;&gt; {
-                source.addEventListener(&#x27;entryUpdated&#x27;, (e) &#x3D;&gt; {
-                    const data &#x3D; JSON.parse(e.data);
-                    this.resourceService.changes.next({
-                        relation,
-                        type: &#x27;put&#x27;,
-                        identifier: data ? data.entryID : &#x27;&#x27;
-                    });
-                }, false);
-                source.addEventListener(&#x27;entryCreated&#x27;, (e) &#x3D;&gt; {
-                    const data &#x3D; JSON.parse(e.data);
-                    this.resourceService.changes.next({
-                        relation,
-                        type: &#x27;post&#x27;,
-                        identifier: data ? data.entryID : &#x27;&#x27;
-                    });
-                }, false);
-                return source;
-            })
-            .catch(error &#x3D;&gt; {
-                this.notificationService.emit({
-                    title: &#x27;History Error&#x27;,
-                    error
-                });
+          },
+          false,
+        );
+        source.addEventListener(
+          &#x27;entryCreated&#x27;,
+          (e) &#x3D;&gt; {
+            const data &#x3D; JSON.parse(e.data);
+            this.resourceService.changes.next({
+              relation,
+              type: &#x27;post&#x27;,
+              identifier: data ? data.entryID : &#x27;&#x27;,
             });
-        this.loaderService.wait(loading);
-        return loading;
-    }
-
+          },
+          false,
+        );
+        return source;
+      })
+      .catch((error) &#x3D;&gt; {
+        this.notificationService.emit({
+          title: &#x27;History Error&#x27;,
+          error,
+        });
+      });
+    this.loaderService.wait(loading);
+    return loading;
+  }
 }
 </code></pre>
     </div>

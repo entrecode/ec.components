@@ -110,7 +110,7 @@
                 <td class="col-md-3">providers</td>
                 <td class="col-md-9">
                             <code><a href="../components/AceComponent.html" target="_self" >{
-    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() &#x3D;&gt; AceComponent), multi: true
+    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() &#x3D;&gt; AceComponent), multi: true,
 }</a></code>
                 </td>
             </tr>
@@ -480,7 +480,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="116" class="link-to-prism">packages/ace/src/lib/ace.component.ts:116</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="115" class="link-to-prism">packages/ace/src/lib/ace.component.ts:115</a></div>
                             </td>
                         </tr>
 
@@ -547,7 +547,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="120" class="link-to-prism">packages/ace/src/lib/ace.component.ts:120</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">packages/ace/src/lib/ace.component.ts:119</a></div>
                             </td>
                         </tr>
 
@@ -1398,114 +1398,112 @@ declare const ace: any;
 /** Wraps ace editor as angular component. Implements ControlValueAccessor!
  *
  * &lt;example-url&gt;https://components.entrecode.de/misc/ace?e&#x3D;1&lt;/example-url&gt;
-*/
+ */
 @Component({
-    selector: &#x27;ec-ace&#x27;,
-    templateUrl: &#x27;ace.component.html&#x27;,
-    styleUrls: [&#x27;ace.component.scss&#x27;],
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() &#x3D;&gt; AceComponent),
-            multi: true
-        }
-    ]
+  selector: &#x27;ec-ace&#x27;,
+  templateUrl: &#x27;ace.component.html&#x27;,
+  styleUrls: [&#x27;ace.component.scss&#x27;],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() &#x3D;&gt; AceComponent),
+      multi: true,
+    },
+  ],
 })
 export class AceComponent extends DefaultInputComponent implements ControlValueAccessor, OnInit, OnChanges {
-    /** The ace editor instance */
-    editor: any;
-    /**
-     * The current value of the editor
-     */
-    value &#x3D; &#x27;&#x27;;
-    /**
-     * Promise that resolves when the editor has been initialized.
-     */
-    ready: Promise&lt;any&gt;;
-    /** Form input component */
-    input: InputComponent;
-    /**
-     * container element for ace editor
-     */
-    @ViewChild(&#x27;container&#x27;) container: ElementRef;
-    /**
-     * mode that should be used (e.g. javascript). Depending on your way of importing ace you have to make sure, the mode is availabe.
-     */
-    @Input() mode: string; // https://github.com/ajaxorg/ace-builds/blob/master/src/ext-modelist.js
-    /**
-     * theme that should be used (e.g. javascript). Depending on your way of importing ace you have to make sure, the theme is availabe.
-     */
-    @Input() theme: string; // https://github.com/ajaxorg/ace-builds/blob/master/src/ext-themelist.js
+  /** The ace editor instance */
+  editor: any;
+  /**
+   * The current value of the editor
+   */
+  value &#x3D; &#x27;&#x27;;
+  /**
+   * Promise that resolves when the editor has been initialized.
+   */
+  ready: Promise&lt;any&gt;;
+  /** Form input component */
+  input: InputComponent;
+  /**
+   * container element for ace editor
+   */
+  @ViewChild(&#x27;container&#x27;) container: ElementRef;
+  /**
+   * mode that should be used (e.g. javascript). Depending on your way of importing ace you have to make sure, the mode is availabe.
+   */
+  @Input() mode: string; // https://github.com/ajaxorg/ace-builds/blob/master/src/ext-modelist.js
+  /**
+   * theme that should be used (e.g. javascript). Depending on your way of importing ace you have to make sure, the theme is availabe.
+   */
+  @Input() theme: string; // https://github.com/ajaxorg/ace-builds/blob/master/src/ext-themelist.js
 
-    /** creates new ace instance if not present and sets mode and theme if given */
-    init() {
-        if (!this.editor) {
-            this.editor &#x3D; ace.edit(this.container.nativeElement);
-        }
-        this.ready &#x3D; Promise.resolve(this.editor);
-        if (this.mode) {
-            this.setMode(this.mode);
-        }
-        if (this.theme) {
-            this.setTheme(this.theme);
-        }
-        if (this.value) {
-            this.editor.setValue(this.value, 1);
-        }
-        this.ready.then((editor) &#x3D;&gt; {
-            editor.on(&#x27;change&#x27;, (e) &#x3D;&gt; {
-                this.propagateChange(this.editor.getValue());
-            });
-        });
+  /** creates new ace instance if not present and sets mode and theme if given */
+  init() {
+    if (!this.editor) {
+      this.editor &#x3D; ace.edit(this.container.nativeElement);
     }
-    /** Sets the editor mode to the specified language (after ace/mode/) */
-    setMode(mode: string) {
-        this.mode &#x3D; mode;
-        if (!this.editor) {
-            return;
-        }
-        this.editor.session.setMode(&#x27;ace/mode/&#x27; + this.mode);
+    this.ready &#x3D; Promise.resolve(this.editor);
+    if (this.mode) {
+      this.setMode(this.mode);
     }
+    if (this.theme) {
+      this.setTheme(this.theme);
+    }
+    if (this.value) {
+      this.editor.setValue(this.value, 1);
+    }
+    this.ready.then((editor) &#x3D;&gt; {
+      editor.on(&#x27;change&#x27;, (e) &#x3D;&gt; {
+        this.propagateChange(this.editor.getValue());
+      });
+    });
+  }
+  /** Sets the editor mode to the specified language (after ace/mode/) */
+  setMode(mode: string) {
+    this.mode &#x3D; mode;
+    if (!this.editor) {
+      return;
+    }
+    this.editor.session.setMode(&#x27;ace/mode/&#x27; + this.mode);
+  }
 
-    /** Sets the editor theme to the specified theme (after ace/theme/) */
-    setTheme(theme: string) {
-        this.theme &#x3D; theme;
-        if (!this.editor) {
-            return;
-        }
-        this.editor.setTheme(&#x27;ace/theme/&#x27; + this.theme);
+  /** Sets the editor theme to the specified theme (after ace/theme/) */
+  setTheme(theme: string) {
+    this.theme &#x3D; theme;
+    if (!this.editor) {
+      return;
     }
+    this.editor.setTheme(&#x27;ace/theme/&#x27; + this.theme);
+  }
 
-    /** Inits the editor */
-    ngOnInit() {
-        this.init();
-    }
-    /** Re-inits the editor */
-    ngOnChanges() {
-        this.init();
-    }
+  /** Inits the editor */
+  ngOnInit() {
+    this.init();
+  }
+  /** Re-inits the editor */
+  ngOnChanges() {
+    this.init();
+  }
 
-    /** writes value to editor on outside model change. */
-    writeValue(value: any) {
-        this.value &#x3D; value || &#x27;&#x27;;
-        if (!this.ready) {
-            return;
-        }
-        this.ready.then((editor) &#x3D;&gt; {
-            editor.setValue(this.value, 1);
-        });
+  /** writes value to editor on outside model change. */
+  writeValue(value: any) {
+    this.value &#x3D; value || &#x27;&#x27;;
+    if (!this.ready) {
+      return;
     }
+    this.ready.then((editor) &#x3D;&gt; {
+      editor.setValue(this.value, 1);
+    });
+  }
 
-    propagateChange &#x3D; (_: any) &#x3D;&gt; {
-    }
+  propagateChange &#x3D; (_: any) &#x3D;&gt; {};
 
-    /** Registers change callback */
-    registerOnChange(fn) {
-        this.propagateChange &#x3D; fn;
-    }
+  /** Registers change callback */
+  registerOnChange(fn) {
+    this.propagateChange &#x3D; fn;
+  }
 
-    registerOnTouched() {
-    }
+  registerOnTouched() {}
 }
 </code></pre>
     </div>

@@ -203,7 +203,7 @@ If no user is found, an error message is shown. You can then react via the redir
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">packages/data/src/lib/auth/auth-guard.service.ts:17</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">packages/data/src/lib/auth/auth-guard.service.ts:16</a></div>
                             </td>
                         </tr>
 
@@ -240,18 +240,17 @@ export class AuthGuard implements CanActivate {
   /** Subject that is nexted when the user check fails. (Meant to be used for redirecting to another page e.g. login) */
   redirect: Subject&lt;any&gt; &#x3D; new Subject();
 
-  constructor(private sdk: SdkService, private notifications: NotificationsService) {
-  }
+  constructor(private sdk: SdkService, private notifications: NotificationsService) {}
   /** Checks if the sdk contains a user, if not an error message is shown. */
   canActivate() {
-    return this.sdk.ready.then(user &#x3D;&gt; {
+    return this.sdk.ready.then((user) &#x3D;&gt; {
       if (!!user) {
         return true;
       }
       this.notifications.emit({
         type: &#x27;error&#x27;,
         title: &#x27;Diese Seite kann nicht angezeigt werden.&#x27;,
-        message: &#x27;Sie sind nicht eingeloggt.&#x27;
+        message: &#x27;Sie sind nicht eingeloggt.&#x27;,
       });
       this.redirect.next();
     });

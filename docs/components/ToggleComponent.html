@@ -96,7 +96,7 @@ It is used in the default input template for the view &#39;toggle&#39;. </p>
                 <td class="col-md-3">providers</td>
                 <td class="col-md-9">
                             <code><a href="../components/ToggleComponent.html" target="_self" >{
-    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() &#x3D;&gt; ToggleComponent), multi: true
+    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() &#x3D;&gt; ToggleComponent), multi: true,
 }</a></code>
                 </td>
             </tr>
@@ -255,7 +255,7 @@ It is used in the default input template for the view &#39;toggle&#39;. </p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">packages/ui/src/lib/form/toggle/toggle.component.ts:36</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">packages/ui/src/lib/form/toggle/toggle.component.ts:35</a></div>
                             </td>
                         </tr>
 
@@ -322,7 +322,7 @@ It is used in the default input template for the view &#39;toggle&#39;. </p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">packages/ui/src/lib/form/toggle/toggle.component.ts:40</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">packages/ui/src/lib/form/toggle/toggle.component.ts:39</a></div>
                             </td>
                         </tr>
 
@@ -535,9 +535,9 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from &#x27;@angular/forms&#x2
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() &#x3D;&gt; ToggleComponent),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class ToggleComponent implements ControlValueAccessor {
   /** The current value */
@@ -555,16 +555,13 @@ export class ToggleComponent implements ControlValueAccessor {
     this.value &#x3D; value;
   }
   /* Propagates change*/
-  propagateChange &#x3D; (_: any) &#x3D;&gt; {
-  }
+  propagateChange &#x3D; (_: any) &#x3D;&gt; {};
   /** Registers change callback */
   registerOnChange(fn) {
     this.propagateChange &#x3D; fn;
   }
   /** Register Touch */
-  registerOnTouched() {
-  }
-
+  registerOnTouched() {}
 }
 </code></pre>
     </div>

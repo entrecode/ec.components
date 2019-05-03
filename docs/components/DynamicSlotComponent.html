@@ -239,7 +239,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">packages/ui/src/lib/io/dynamic-slot/dynamic-slot.component.ts:18</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">packages/ui/src/lib/io/dynamic-slot/dynamic-slot.component.ts:17</a></div>
                             </td>
                         </tr>
 
@@ -395,15 +395,14 @@ import { SlotHostDirective } from &#x27;../slot-host.directive&#x27;;
 /** This directive can be used to display a field. It is used inside ec-form as well as ec-list. */
 @Component({
   selector: &#x27;ec-dynamic-slot&#x27;,
-  templateUrl: &#x27;./dynamic-slot.component.html&#x27;
+  templateUrl: &#x27;./dynamic-slot.component.html&#x27;,
 })
 export class DynamicSlotComponent {
   /** The FieldHostDirective will  be used to nest custom components into the field */
   @ViewChild(SlotHostDirective) fieldHost: SlotHostDirective;
 
   /** The constructor provides the instance of ViewContainerRef which is later used to create embedded views*/
-  constructor(public componentFactoryResolver: ComponentFactoryResolver) {
-  }
+  constructor(public componentFactoryResolver: ComponentFactoryResolver) {}
 
   /** Loads the given component inside the fieldHost. Sets current item and field by default. */
   loadComponent(component: Type&lt;any&gt;, attributes: Object &#x3D; {}): ComponentRef&lt;any&gt; {

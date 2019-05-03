@@ -108,7 +108,7 @@
                 <td class="col-md-3">providers</td>
                 <td class="col-md-9">
                             <code><a href="../components/MediumEditorComponent.html" target="_self" >{
-    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() &#x3D;&gt; MediumEditorComponent), multi: true
+    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() &#x3D;&gt; MediumEditorComponent), multi: true,
 }</a></code>
                 </td>
             </tr>
@@ -473,7 +473,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">packages/medium-editor/src/lib/medium-editor.component.ts:78</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">packages/medium-editor/src/lib/medium-editor.component.ts:77</a></div>
                             </td>
                         </tr>
 
@@ -538,7 +538,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">packages/medium-editor/src/lib/medium-editor.component.ts:82</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">packages/medium-editor/src/lib/medium-editor.component.ts:81</a></div>
                             </td>
                         </tr>
 
@@ -817,7 +817,7 @@
   OnInit,
   Output,
   ViewChild,
-  ViewEncapsulation
+  ViewEncapsulation,
 } from &#x27;@angular/core&#x27;;
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from &#x27;@angular/forms&#x27;;
 
@@ -825,7 +825,7 @@ import * as MediumEditor from &#x27;medium-editor/dist/js/medium-editor&#x27;;
 
 /** Wraps medium-editor to a reactive form component.
  * &lt;example-url&gt;https://components.entrecode.de/misc/medium-editor?e&#x3D;1&lt;/example-url&gt;
-*/
+ */
 @Component({
   selector: &#x27;ec-medium-editor&#x27;,
   styleUrls: [&#x27;./medium-editor.component.scss&#x27;],
@@ -835,9 +835,9 @@ import * as MediumEditor from &#x27;medium-editor/dist/js/medium-editor&#x27;;
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() &#x3D;&gt; MediumEditorComponent),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class MediumEditorComponent implements OnInit, OnDestroy, ControlValueAccessor {
   /** data model */
@@ -881,15 +881,13 @@ export class MediumEditorComponent implements OnInit, OnDestroy, ControlValueAcc
     });
   }
 
-  propagateChange &#x3D; (_: any) &#x3D;&gt; {
-  }
+  propagateChange &#x3D; (_: any) &#x3D;&gt; {};
 
   registerOnChange(fn) {
     this.propagateChange &#x3D; fn;
   }
 
-  registerOnTouched() {
-  }
+  registerOnTouched() {}
 }
 </code></pre>
     </div>

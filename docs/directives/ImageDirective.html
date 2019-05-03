@@ -451,7 +451,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">packages/data/src/lib/files/image/image.directive.ts:60</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">packages/data/src/lib/files/image/image.directive.ts:64</a></div>
                             </td>
                         </tr>
 
@@ -657,7 +657,7 @@ import PublicAssetResource from &#x27;ec.sdk/lib/resources/publicAPI/PublicAsset
 /** Loads an public asset image by id to the template. It can be used with img&#x27;s to auto load the url to the src. */
 @Directive({
   selector: &#x27;img [ecImage]&#x27;,
-  exportAs: &#x27;ecImage&#x27;
+  exportAs: &#x27;ecImage&#x27;,
 })
 export class ImageDirective extends AssetDirective implements OnChanges {
   /** If true, the image will be requested as thumb (square) */
@@ -691,27 +691,30 @@ export class ImageDirective extends AssetDirective implements OnChanges {
   }
 
   use(asset: PublicAssetResource | DMAssetResource) {
-    return Promise.resolve().then(() &#x3D;&gt; {
-      if (asset.type !&#x3D;&#x3D; &#x27;image&#x27;) {
-        return Promise.reject(&#x60;ecImage only works for assets of type image.
+    return Promise.resolve()
+      .then(() &#x3D;&gt; {
+        if (asset.type !&#x3D;&#x3D; &#x27;image&#x27;) {
+          return Promise.reject(&#x60;ecImage only works for assets of type image.
         Loaded id ${asset.id} is of type ${asset.type}&#x60;);
-      }
-      if (asset instanceof DMAssetResource) { // new asset
-        return asset.getFileVariant(this.size, this.thumb);
-      } else if (asset instanceof PublicAssetResource) { // old asset
-        if (this.thumb) {
-          return asset.getImageThumbUrl(this.size, &#x27;&#x27;);
         }
-        return asset.getImageUrl(this.size, &#x27;&#x27;);
-      }
-    }).then(this.setUrl.bind(this));
+        if (asset instanceof DMAssetResource) {
+          // new asset
+          return asset.getFileVariant(this.size, this.thumb);
+        } else if (asset instanceof PublicAssetResource) {
+          // old asset
+          if (this.thumb) {
+            return asset.getImageThumbUrl(this.size, &#x27;&#x27;);
+          }
+          return asset.getImageUrl(this.size, &#x27;&#x27;);
+        }
+      })
+      .then(this.setUrl.bind(this));
   }
 
   setUrl(url: string) {
     this.url &#x3D; url;
     this.elementRef.nativeElement.src &#x3D; this.url;
   }
-
 }
 </code></pre>
     </div>

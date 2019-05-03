@@ -223,7 +223,7 @@ changes.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">packages/data/src/lib/entry/entry.service.ts:21</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">packages/data/src/lib/entry/entry.service.ts:19</a></div>
                             </td>
                         </tr>
 
@@ -294,7 +294,7 @@ changes.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">packages/data/src/lib/entry/entry.service.ts:75</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">packages/data/src/lib/entry/entry.service.ts:76</a></div>
                             </td>
                         </tr>
 
@@ -396,7 +396,7 @@ changes.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">packages/data/src/lib/entry/entry.service.ts:94</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">packages/data/src/lib/entry/entry.service.ts:100</a></div>
                             </td>
                         </tr>
 
@@ -479,7 +479,7 @@ changes.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">packages/data/src/lib/entry/entry.service.ts:106</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">packages/data/src/lib/entry/entry.service.ts:114</a></div>
                             </td>
                         </tr>
 
@@ -562,7 +562,7 @@ changes.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">packages/data/src/lib/entry/entry.service.ts:69</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">packages/data/src/lib/entry/entry.service.ts:71</a></div>
                             </td>
                         </tr>
 
@@ -633,7 +633,7 @@ changes.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">packages/data/src/lib/entry/entry.service.ts:39</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">packages/data/src/lib/entry/entry.service.ts:37</a></div>
                             </td>
                         </tr>
 
@@ -730,7 +730,7 @@ changes.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">packages/data/src/lib/entry/entry.service.ts:53</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">packages/data/src/lib/entry/entry.service.ts:52</a></div>
                             </td>
                         </tr>
 
@@ -851,7 +851,7 @@ changes.</p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">packages/data/src/lib/entry/entry.service.ts:17</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">packages/data/src/lib/entry/entry.service.ts:16</a></div>
                             </td>
                         </tr>
 
@@ -878,10 +878,8 @@ import { Item, ItemConfig } from &#x27;@ec.components/core&#x27;;
  * */
 @Injectable()
 export class EntryService {
-
   /** Injects sdk */
-  constructor(private sdk: SdkService, public resourceService: ResourceService) {
-  }
+  constructor(private sdk: SdkService, public resourceService: ResourceService) {}
 
   /** Yields an observable that emits for all updates that match the given filter */
   change(filter?: any): Observable&lt;any&gt; {
@@ -910,7 +908,8 @@ export class EntryService {
     return this.create(model, value)
       .then((_entry) &#x3D;&gt; {
         return _entry;
-      }).catch((err) &#x3D;&gt; {
+      })
+      .catch((err) &#x3D;&gt; {
         return Promise.reject(err);
       });
   }
@@ -919,37 +918,44 @@ export class EntryService {
   async update(model, entryItem: Item&lt;EntryResource&gt;, value: Object, safePut &#x3D; true): Promise&lt;EntryResource&gt; {
     const oldValues &#x3D; {}; // save old values
     const entry &#x3D; entryItem.getBody();
-    Object.keys(value).forEach((key) &#x3D;&gt; oldValues[key] &#x3D; entry[key]);
+    Object.keys(value).forEach((key) &#x3D;&gt; (oldValues[key] &#x3D; entry[key]));
     // TODO: EDITOR-263 get model config, clean readOnly fields too. Add custom filter argument to clean method
     Object.assign(entry, this.clean(value, entryItem.config, true)); // assign new form values
-    return entry.save(safePut).then((_entry) &#x3D;&gt; {
-      this.resourceService.changes.next({ relation: &#x60;model.${model}&#x60;, resource: _entry, type: &#x27;put&#x27; });
-      return _entry;
-    }).catch((err) &#x3D;&gt; {
-      Object.assign(entry, this.clean(oldValues)); // fall back to old values
-      return Promise.reject(err);
-    });
+    return entry
+      .save(safePut)
+      .then((_entry) &#x3D;&gt; {
+        this.resourceService.changes.next({ relation: &#x60;model.${model}&#x60;, resource: _entry, type: &#x27;put&#x27; });
+        return _entry;
+      })
+      .catch((err) &#x3D;&gt; {
+        Object.assign(entry, this.clean(oldValues)); // fall back to old values
+        return Promise.reject(err);
+      });
   }
 
   /** Returns true if the given field key is an immutable system property */
   isImmutableProperty(key: string) {
-    return key[0] &#x3D;&#x3D;&#x3D; &#x27;_&#x27; ||
-      [&#x27;id&#x27;, &#x27;created&#x27;, &#x27;modified&#x27;].indexOf(key) !&#x3D;&#x3D; -1;
+    return key[0] &#x3D;&#x3D;&#x3D; &#x27;_&#x27; || [&#x27;id&#x27;, &#x27;created&#x27;, &#x27;modified&#x27;].indexOf(key) !&#x3D;&#x3D; -1;
   }
 
   /** Removes all null or undefined values from the given object */
   clean(value: Object, config?: ItemConfig&lt;EntryResource&gt;, cleanReadOnly &#x3D; false): Object {
     for (const key in value) {
       if (value.hasOwnProperty(key)) {
-        if (value[key] &#x3D;&#x3D;&#x3D; &#x27;&#x27;) { // clear empty strings
+        if (value[key] &#x3D;&#x3D;&#x3D; &#x27;&#x27;) {
+          // clear empty strings
           value[key] &#x3D; null;
         }
-        if (this.isImmutableProperty(key)) { // filter system properties
+        if (this.isImmutableProperty(key)) {
+          // filter system properties
           delete value[key];
         }
-        if (config &amp;&amp; config.fields &amp;&amp; config.fields[key] &amp;&amp;
-          (config.fields[key].immutable || (cleanReadOnly &amp;&amp; config.fields[key].readOnly))) {
-          delete value[key];
+        if (config &amp;&amp; config.fields &amp;&amp; config.fields[key]) {
+          if (config.fields[key].immutable || (cleanReadOnly &amp;&amp; config.fields[key].readOnly)) {
+            delete value[key];
+          } else if (config.fields[key].beforeSave) {
+            value[key] &#x3D; config.fields[key].beforeSave(value[key], config.fields[key], value);
+          }
         }
       }
     }
@@ -958,12 +964,14 @@ export class EntryService {
 
   /** Creates a new entry with the given value for the given model. Fires the &quot;create&quot; change. */
   create(model: string, value: Object): Promise&lt;EntryResource&gt; {
-    return this.sdk.api.createEntry(model, this.clean(value))
+    return this.sdk.api
+      .createEntry(model, this.clean(value))
       .then((entry: EntryResource) &#x3D;&gt; {
         // TODO: make sure leveled entries are returned leveled
         this.resourceService.changes.next({ relation: &#x60;model.${model}&#x60;, resource: entry, type: &#x27;post&#x27; });
         return entry;
-      }).catch((err) &#x3D;&gt; {
+      })
+      .catch((err) &#x3D;&gt; {
         return Promise.reject(err);
       });
   }

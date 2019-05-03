@@ -205,14 +205,14 @@ import moment from &#x27;moment-es6&#x27;;
 /** The GroupPipe filters an array of Item instances by a given property value.
  * It is meant to be used to get only the items with the exact same value. */
 @Pipe({
-  name: &#x27;datetime&#x27;
+  name: &#x27;datetime&#x27;,
 })
 export class DatetimePipe implements PipeTransform {
-  constructor(@Inject(&#x27;moment.format.date&#x27;) private dateFormat/* private symbol: SymbolService */) { }
+  constructor(@Inject(&#x27;moment.format.date&#x27;) private dateFormat /* private symbol: SymbolService */) {}
   transform(
     value: Date | string,
-    pattern: string | string[] &#x3D; this.dateFormat/* this.symbol.resolve(&#x27;moment.format.date&#x27;) */,
-    raw?: string
+    pattern: string | string[] &#x3D; this.dateFormat /* this.symbol.resolve(&#x27;moment.format.date&#x27;) */,
+    raw?: string,
   ): string {
     if (!value) {
       return &#x27;&#x27;;
