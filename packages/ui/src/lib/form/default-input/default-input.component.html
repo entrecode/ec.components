@@ -18,7 +18,7 @@
   </div>
 
   <label *ngSwitchCase="'boolean'">
-    <input [id]="field.id" type="checkbox" [formControl]="control" [readonly]="formService.isReadOnly(field, item)">
+    <input [id]="field.id" type="checkbox" [formControl]="control" [attr.disabled]="formService.isReadOnly(field, item)?'disabled':'false'">
     {{field.placeholder}}
   </label>
 

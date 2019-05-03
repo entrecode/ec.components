@@ -561,8 +561,7 @@ export class ResourceConfig {
         addUnregistered: {
           label: this.symbol.resolve('role.field.label.addUnregistered'),
           view: 'boolean'
-        },
-        created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
+        }
       }
     },
     codeSource: {

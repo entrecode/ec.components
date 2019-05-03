@@ -115,6 +115,7 @@ export class ModelConfigService extends Config {
         filterable: true,
         input: AdminEntryInputComponent,
         output: DefaultEntryOutputComponent,
+        readOnly: true,
         filterPopClass: 'ec-pop_dialog',
         filterOperator: 'exact',
       }
