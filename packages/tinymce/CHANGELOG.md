@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.14](https://github.com/entrecode/ec.components/compare/@ec.components/tinymce@0.5.13...@ec.components/tinymce@0.5.14) (2019-05-03)
+
+**Note:** Version bump only for package @ec.components/tinymce
+
+
+
+
+
 ## [0.5.13](https://github.com/entrecode/ec.components/compare/@ec.components/tinymce@0.5.12...@ec.components/tinymce@0.5.13) (2019-03-29)
 
 

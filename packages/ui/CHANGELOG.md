@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.43.0](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.42.5...@ec.components/ui@0.43.0) (2019-05-03)
+
+
+### Features
+
+* can now seperate inputView and outputView ([2e0756e](https://github.com/entrecode/ec.components/commit/2e0756e))
+* can now set different purpose components ([2d2e536](https://github.com/entrecode/ec.components/commit/2d2e536))
+
+
+
+
+
 ## [0.42.5](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.42.4...@ec.components/ui@0.42.5) (2019-05-03)
 
 

@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.48.0](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.47.9...@ec.components/data@0.48.0) (2019-05-03)
+
+
+### Bug Fixes
+
+* can now edit json + location ([388924d](https://github.com/entrecode/ec.components/commit/388924d))
+
+
+### Features
+
+* beforeSave for entry fields ([846039a](https://github.com/entrecode/ec.components/commit/846039a))
+* can now set different purpose components ([2d2e536](https://github.com/entrecode/ec.components/commit/2d2e536))
+
+
+
+
+
 ## [0.47.9](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.47.8...@ec.components/data@0.47.9) (2019-05-03)
 
 

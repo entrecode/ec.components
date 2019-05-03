@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.16](https://github.com/entrecode/ec.components/compare/@ec.components/calendar@0.2.15...@ec.components/calendar@0.2.16) (2019-05-03)
+
+**Note:** Version bump only for package @ec.components/calendar
+
+
+
+
+
 ## [0.2.15](https://github.com/entrecode/ec.components/compare/@ec.components/calendar@0.2.14...@ec.components/calendar@0.2.15) (2019-04-08)
 
 
