@@ -148,18 +148,18 @@ export class TypeConfigService {
     },
     json: {
       formView: 'textarea',
-      formComponent: DefaultInputComponent,
-      listComponent: DefaultOutputComponent,
+      outputView: 'json',
       resolve: (body, item, property) => JSON.stringify(body[property]),
       beforeSave: (value) => JSON.parse(value),
-      outputView: 'json',
       display: (value) => (value ? JSON.stringify(value) : ''),
     },
     location: {
-      input: DefaultEntryInputComponent,
-      output: DefaultEntryOutputComponent,
+      formView: 'textarea',
+      outputView: 'json',
       display: (value) => (value ? value.longitude + ',' + value.latitude : ''),
       filterPopClass: 'ec-pop_dialog',
+      resolve: (body, item, property) => JSON.stringify(body[property]),
+      beforeSave: (value) => JSON.parse(value),
     },
     account: {
       display: (value) => (value ? value.title : ''),
