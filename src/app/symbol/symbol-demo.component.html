@@ -1,7 +1,7 @@
-<h2>Symbols</h2>
-<div data-col="6-sm">
-  <nav class="xui-select" tabindex="0">
-    <div class="xui-select__placeholder">Set auswählen</div>
+<div class="titlebar">
+  <h1 class="is-giga">Symbols</h1>
+  <div class="xui-select" tabindex="0" data-col="3">
+    <div class="xui-select__placeholder">select set</div>
     <ul class="xui-select-options">
       <li class="xui-select-option" *ngFor="let set of sets" tabindex="0">
         <a (click)="symbol.useSet(set)">
@@ -9,9 +9,16 @@
         </a>
       </li>
     </ul>
-  </nav>
+  </div>
 </div>
 
 <ul data-grid="small">
-  <li *ngFor="let symbol of symbol.registry" class="list" data-col="3">{{ symbol.name }} {{ symbol.name | symbol }}</li>
+  <li *ngFor="let symbol of symbol.registry" data-col="12">
+    <div class="well has-padding-2">
+      <dl data-grid class="has-margin-0">
+        <dt data-col="12" class="is-monospace-font is-ink-light">{{ symbol.name }}</dt>
+        <dd data-col="12">{{ symbol.name | symbol }}</dd>
+      </dl>
+    </div>
+  </li>
 </ul>

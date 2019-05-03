@@ -203,21 +203,27 @@
     <div class="tab-pane fade " id="c-readme">
         <p><h1 id="localization">Localization</h1>
 <p>You can setup localization via the SymbolService:</p>
-<div><pre class="line-numbers"><code class="language-typescript">import en from &#39;./en&#39;;
-
-&#64;Component({
+<p>```typescript
+import en from &#39;./en&#39;;</p>
+<p>@Component({
   templateUrl: &#39;./app.component.html&#39;,
 })
 export class AppComponent {
   constructor(private symbols: SymbolService) {
    this.symbols.set(en);
   }
-}</code></pre></div><p>It is expected that you pass an array of <a href="https://entrecode.github.io/ec.components/interfaces/Symbol.html">Symbol&#39;s</a> to SymbolService#set</p>
+}
+```</p>
+<p>It is expected that you pass an array of <a href="https://entrecode.github.io/ec.components/interfaces/Symbol.html">Symbol&#39;s</a> to SymbolService#set</p>
 <h2 id="date-localization">Date Localization</h2>
 <p>If you are using datepickers, you have to include the following line to your root component:</p>
-<div><pre class="line-numbers"><code class="language-typescript">moment.locale(this.symbols.resolve(&#39;moment.locale&#39;));</code></pre></div><h2 id="using-symbols-in-templates">Using symbols in templates</h2>
+<p><code>typescript
+moment.locale(this.symbols.resolve(&#39;moment.locale&#39;));</code></p>
+<h2 id="using-symbols-in-templates">Using symbols in templates</h2>
 <p>To translate symbols in a template, use the symbol pipe:</p>
-<div><pre class="line-numbers"><code class="language-html">{{&#39;symbol.language&#39; | symbol}} &lt;!-- prints your current selected language --&gt;</code></pre></div><h2 id="overwriting">Overwriting</h2>
+<p><code>html
+{{&#39;symbol.language&#39; | symbol}} &lt;!-- prints your current selected language --&gt;</code></p>
+<h2 id="overwriting">Overwriting</h2>
 <p>The names of the symbols act as unique identifier, meaning you can overwrite any preexisting symbols. The default preexisting symbols of ec.components can be looked up <a href="https://components.entrecode.de/ui/symbols">here</a>, or directly at the source: <a href="https://github.com/entrecode/ec.components/blob/master/packages/ui/src/symbol/en.ts">EN</a>, <a href="https://github.com/entrecode/ec.components/blob/master/packages/ui/src/symbol/de.ts">DE</a></p>
 </p>
     </div>
@@ -232,12 +238,12 @@ import { SymbolPipe } from &#x27;./symbol.pipe&#x27;;
  * Collects all localization related components and services.
  */
 @NgModule({
-    imports: [CommonModule],
-    declarations: [SymbolPipe],
-    exports: [SymbolPipe],
-    providers: [SymbolService],
+  imports: [CommonModule],
+  declarations: [SymbolPipe],
+  exports: [SymbolPipe],
+  providers: [SymbolService],
 })
-export class SymbolModule { }
+export class SymbolModule {}
 </code></pre>
     </div>
 </div>
@@ -272,7 +278,7 @@ export class SymbolModule { }
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
-            var COMPODOC_CURRENT_PAGE_URL = 'SymbolModule.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'publishing.html';
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

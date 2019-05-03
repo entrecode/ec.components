@@ -317,28 +317,12 @@ export function cookieFactory(): ModuleWithProviders {
 }
 /** Module for all auth related components and services. */
 @NgModule({
-  declarations: [
-    PasswordResetComponent,
-    LoginComponent,
-    SignupComponent,
-  ],
-  imports: [
-    FormsModule,
-    cookieFactory(),
-    CommonModule,
-    ReactiveFormsModule,
-    UiModule
-  ],
-  exports: [
-    ReactiveFormsModule,
-    PasswordResetComponent,
-    LoginComponent,
-    SignupComponent,
-  ],
-  providers: [AuthGuard, AuthService]
+  declarations: [PasswordResetComponent, LoginComponent, SignupComponent],
+  imports: [FormsModule, cookieFactory(), CommonModule, ReactiveFormsModule, UiModule],
+  exports: [ReactiveFormsModule, PasswordResetComponent, LoginComponent, SignupComponent],
+  providers: [AuthGuard, AuthService],
 })
-export class AuthModule {
-}
+export class AuthModule {}
 </code></pre>
     </div>
 </div>
@@ -373,7 +357,7 @@ export class AuthModule {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
-            var COMPODOC_CURRENT_PAGE_URL = 'AuthModule.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'publishing.html';
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

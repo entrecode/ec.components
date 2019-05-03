@@ -68,6 +68,7 @@
             </p>
 
 
+
             <section>
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
@@ -144,7 +145,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
                         </td>
                     </tr>
@@ -182,7 +183,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>    <code><a href="../classes/Collection.html" target="_self" >Collection&lt;PopComponent&gt;</a></code>
+                            <i>Type : </i>        <code><a href="../classes/Collection.html" target="_self" >Collection&lt;PopComponent&gt;</a></code>
 
                         </td>
                     </tr>
@@ -219,20 +220,20 @@ import { PopComponent } from &#x27;./pop.component&#x27;;
 /** Holds a stack of all open pops. listens for escape keydown events to close the latest opened pop. */
 @Injectable()
 export class PopService {
-    /** default value for columns of any pop */
-    defaultColumns &#x3D; 9;
-    /** Stack of current opened pops */
-    stack: Collection&lt;PopComponent&gt; &#x3D; new Collection();
-    /** Listens for escape keys and hides latest pop + removes the pop from stack */
-    constructor() {
-        window.addEventListener(&#x27;keydown&#x27;, (event) &#x3D;&gt; {
-            if ((event.keyCode &#x3D;&#x3D;&#x3D; 27 || event.key &#x3D;&#x3D;&#x3D; &#x27;Escape&#x27;) &amp;&amp; this.stack.items.length) {
-                const latestPop &#x3D; this.stack.items[this.stack.items.length - 1];
-                latestPop.hide();
-                this.stack.remove(latestPop);
-            }
-        });
-    }
+  /** default value for columns of any pop */
+  defaultColumns &#x3D; 9;
+  /** Stack of current opened pops */
+  stack: Collection&lt;PopComponent&gt; &#x3D; new Collection();
+  /** Listens for escape keys and hides latest pop + removes the pop from stack */
+  constructor() {
+    window.addEventListener(&#x27;keydown&#x27;, (event) &#x3D;&gt; {
+      if ((event.keyCode &#x3D;&#x3D;&#x3D; 27 || event.key &#x3D;&#x3D;&#x3D; &#x27;Escape&#x27;) &amp;&amp; this.stack.items.length) {
+        const latestPop &#x3D; this.stack.items[this.stack.items.length - 1];
+        latestPop.hide();
+        this.stack.remove(latestPop);
+      }
+    });
+  }
 }
 </code></pre>
     </div>
@@ -266,7 +267,7 @@ export class PopService {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
-            var COMPODOC_CURRENT_PAGE_URL = 'PopService.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'publishing.html';
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

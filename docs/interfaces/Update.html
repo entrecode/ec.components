@@ -129,7 +129,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>broadcast:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                        <code>broadcast:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -137,7 +137,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
                                         </td>
                                     </tr>
@@ -169,7 +169,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>identifier:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                        <code>identifier:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -177,7 +177,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
                                         </td>
                                     </tr>
@@ -209,7 +209,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>list:     <code><a href="../classes/ResourceList.html" target="_self" >ResourceList</a></code>
+                                        <code>list:         <code><a href="../classes/ResourceList.html" target="_self" >ResourceList</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -217,7 +217,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>    <code><a href="../classes/ResourceList.html" target="_self" >ResourceList</a></code>
+                                            <i>Type : </i>        <code><a href="../classes/ResourceList.html" target="_self" >ResourceList</a></code>
 
                                         </td>
                                     </tr>
@@ -324,7 +324,7 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-4">
-                                        <code>type:     <code><a href="../miscellaneous/variables.html#de" target="_self" >&quot;post&quot; | &quot;get&quot; | &quot;put&quot; | &quot;delete&quot;</a></code>
+                                        <code>type:         <code><a href="../miscellaneous/variables.html#de" target="_self" >&quot;post&quot; | &quot;get&quot; | &quot;put&quot; | &quot;delete&quot;</a></code>
 </code>
                                     </td>
                                 </tr>
@@ -332,7 +332,7 @@
 
                                     <tr>
                                         <td class="col-md-4">
-                                            <i>Type : </i>    <code><a href="../miscellaneous/variables.html#de" target="_self" >&quot;post&quot; | &quot;get&quot; | &quot;put&quot; | &quot;delete&quot;</a></code>
+                                            <i>Type : </i>        <code><a href="../miscellaneous/variables.html#de" target="_self" >&quot;post&quot; | &quot;get&quot; | &quot;put&quot; | &quot;delete&quot;</a></code>
 
                                         </td>
                                     </tr>
@@ -371,18 +371,18 @@ import { ResourceConfig } from &#x27;./resource-config.service&#x27;;
 
 /** Instances of Update are emitted by the changes EventEmitter of the ResourceService. */
 export interface Update {
-    /** The relation that has been updated. */
-    relation: string | string[];
-    /** The relevant resource. */
-    resource?: Resource;
-    /** The list where it happened. */
-    list?: ResourceList;
-    /** The type of update. (create/read/update/delete) */
-    type?: &#x27;post&#x27; | &#x27;get&#x27; | &#x27;put&#x27; | &#x27;delete&#x27;;
-    /** An identifier associated with the update e.g. an entryID */
-    identifier?: string;
-    /** If true, the Update will reach all subscribers, ignoring all filters. Use with caution (reloads everything) */
-    broadcast?: boolean;
+  /** The relation that has been updated. */
+  relation: string | string[];
+  /** The relevant resource. */
+  resource?: Resource;
+  /** The list where it happened. */
+  list?: ResourceList;
+  /** The type of update. (create/read/update/delete) */
+  type?: &#x27;post&#x27; | &#x27;get&#x27; | &#x27;put&#x27; | &#x27;delete&#x27;;
+  /** An identifier associated with the update e.g. an entryID */
+  identifier?: string;
+  /** If true, the Update will reach all subscribers, ignoring all filters. Use with caution (reloads everything) */
+  broadcast?: boolean;
 }
 
 /** The CRUD service is meant to be used when modifying entries.
@@ -392,110 +392,113 @@ export interface Update {
  * */
 @Injectable()
 export class ResourceService {
-    /** The changes event is emitted everytime an resource is created or updated. */
-    public changes: Subject&lt;Update&gt; &#x3D; new Subject();
+  /** The changes event is emitted everytime an resource is created or updated. */
+  public changes: Subject&lt;Update&gt; &#x3D; new Subject();
 
-    /** Injects sdk */
-    constructor(private sdk: SdkService, public config: ResourceConfig) {
-        /* this.sdk.changesEnvironment.subscribe(env &#x3D;&gt;
+  /** Injects sdk */
+  constructor(private sdk: SdkService, public config: ResourceConfig) {
+    /* this.sdk.changesEnvironment.subscribe(env &#x3D;&gt;
             this.changes.next({
                 relation: &#x27;environment&#x27;,
                 broadcast: true
             })) */
-    }
+  }
 
-    /** Gives true if the given change fits all property values of the filter. */
-    matches(change: Update, filter: Update): boolean {
-        return change.broadcast || Object.keys(filter)
-            .reduce((match, key) &#x3D;&gt; match &amp;&amp; change[key] &#x3D;&#x3D;&#x3D; filter[key], true);
-    }
+  /** Gives true if the given change fits all property values of the filter. */
+  matches(change: Update, filter: Update): boolean {
+    return change.broadcast || Object.keys(filter).reduce((match, key) &#x3D;&gt; match &amp;&amp; change[key] &#x3D;&#x3D;&#x3D; filter[key], true);
+  }
 
-    /** Yields an observable that emits for all updates that match the given filter */
-    change(filter?: Update): Observable&lt;Update&gt; {
-        if (!filter) {
-            return this.changes.asObservable();
+  /** Yields an observable that emits for all updates that match the given filter */
+  change(filter?: Update): Observable&lt;Update&gt; {
+    if (!filter) {
+      return this.changes.asObservable();
+    }
+    return this.changes.asObservable().pipe(rxFilter((change: Update) &#x3D;&gt; this.matches(change, filter)));
+  }
+
+  /** Saves the given resource with the given value. If the resource is not yet existing,
+   * it will be created.Otherwise it will be updated. */
+  save(item: Item&lt;Resource&gt;, value: Object, relation: string, api: Core): Promise&lt;Resource&gt; {
+    const resource &#x3D; item.getBody();
+    if (item.config.onSave) {
+      return Promise.resolve(item.config.onSave(item, value));
+    }
+    item.deleteImmutableProperties(value);
+    if (resource &amp;&amp; resource.save) {
+      return this.update(relation, resource, value);
+    }
+    return this.create(relation, value, api)
+      .then((_resource) &#x3D;&gt; {
+        return _resource;
+      })
+      .catch((err) &#x3D;&gt; {
+        return Promise.reject(err);
+      });
+  }
+
+  /** Updates the given resource with the new value. Fires the &quot;update&quot; change. */
+  update(relation, resource: Resource, value: Object): Promise&lt;Resource&gt; {
+    const oldValues &#x3D; {}; // save old values
+    Object.keys(value).forEach((key) &#x3D;&gt; (oldValues[key] &#x3D; resource[key]));
+    Object.assign(resource, this.clean(value, false, false)); // assign new form values
+    return resource
+      .save()
+      .then((_resource) &#x3D;&gt; {
+        this.changes.next({ relation, resource: _resource, type: &#x27;put&#x27; });
+        return _resource;
+      })
+      .catch((err) &#x3D;&gt; {
+        Object.assign(resource, this.clean(oldValues, false, false)); // fall back to old values
+        return Promise.reject(err);
+      });
+  }
+
+  /** Returns true if the given field key is an immutable system property */
+  isImmutableProperty(key: string) {
+    return key[0] &#x3D;&#x3D;&#x3D; &#x27;_&#x27; || [&#x27;id&#x27;, &#x27;created&#x27;, &#x27;modified&#x27;].indexOf(key) !&#x3D;&#x3D; -1;
+  }
+
+  /** Removes all null or undefined values from the given object */
+  clean(value: Object, setEmptyStringsToNull &#x3D; true, deleteNullProperties &#x3D; true): Object {
+    for (const key in value) {
+      if (value.hasOwnProperty(key)) {
+        if (setEmptyStringsToNull &amp;&amp; value[key] &#x3D;&#x3D;&#x3D; &#x27;&#x27;) {
+          // clear empty strings
+          value[key] &#x3D; null;
         }
-        return this.changes.asObservable().pipe(
-            rxFilter((change: Update) &#x3D;&gt; this.matches(change, filter))
-        );
-    }
-
-    /** Saves the given resource with the given value. If the resource is not yet existing,
-     * it will be created.Otherwise it will be updated. */
-    save(item: Item&lt;Resource&gt;, value: Object, relation: string, api: Core): Promise&lt;Resource&gt; {
-        const resource &#x3D; item.getBody();
-        if (item.config.onSave) {
-            return Promise.resolve(item.config.onSave(item, value));
+        if (deleteNullProperties &amp;&amp; value[key] &#x3D;&#x3D;&#x3D; null) {
+          delete value[key];
         }
-        item.deleteImmutableProperties(value);
-        if (resource &amp;&amp; resource.save) {
-            return this.update(relation, resource, value);
+        if (this.isImmutableProperty(key)) {
+          // filter system properties
+          delete value[key];
         }
-        return this.create(relation, value, api)
-            .then((_resource) &#x3D;&gt; {
-                return _resource;
-            }).catch((err) &#x3D;&gt; {
-                return Promise.reject(err);
-            });
+      }
     }
+    return value;
+  }
 
-    /** Updates the given resource with the new value. Fires the &quot;update&quot; change. */
-    update(relation, resource: Resource, value: Object): Promise&lt;Resource&gt; {
-        const oldValues &#x3D; {}; // save old values
-        Object.keys(value).forEach((key) &#x3D;&gt; oldValues[key] &#x3D; resource[key]);
-        Object.assign(resource, this.clean(value, false, false)); // assign new form values
-        return resource.save().then((_resource) &#x3D;&gt; {
-            this.changes.next({ relation, resource: _resource, type: &#x27;put&#x27; });
-            return _resource;
-        })
-            .catch((err) &#x3D;&gt; {
-                Object.assign(resource, this.clean(oldValues, false, false)); // fall back to old values
-                return Promise.reject(err);
-            });
-    }
+  /** Creates a new resource with the given value for the given relation. Fires the &quot;create&quot; change. */
+  create(relation: string, value: Object, api: Core): Promise&lt;Resource&gt; {
+    return api
+      .create(relation, this.clean(value))
+      .then((resource: Resource) &#x3D;&gt; {
+        this.changes.next({ relation, resource, type: &#x27;post&#x27; });
+        return resource;
+      })
+      .catch((err) &#x3D;&gt; {
+        return Promise.reject(err);
+      });
+  }
 
-    /** Returns true if the given field key is an immutable system property */
-    isImmutableProperty(key: string) {
-        return key[0] &#x3D;&#x3D;&#x3D; &#x27;_&#x27; ||
-            [&#x27;id&#x27;, &#x27;created&#x27;, &#x27;modified&#x27;].indexOf(key) !&#x3D;&#x3D; -1;
-    }
-
-    /** Removes all null or undefined values from the given object */
-    clean(value: Object, setEmptyStringsToNull &#x3D; true, deleteNullProperties &#x3D; true): Object {
-        for (const key in value) {
-            if (value.hasOwnProperty(key)) {
-                if (setEmptyStringsToNull &amp;&amp; value[key] &#x3D;&#x3D;&#x3D; &#x27;&#x27;) { // clear empty strings
-                    value[key] &#x3D; null;
-                }
-                if (deleteNullProperties &amp;&amp; value[key] &#x3D;&#x3D;&#x3D; null) {
-                    delete value[key];
-                }
-                if (this.isImmutableProperty(key)) { // filter system properties
-                    delete value[key];
-                }
-            }
-        }
-        return value;
-    }
-
-    /** Creates a new resource with the given value for the given relation. Fires the &quot;create&quot; change. */
-    create(relation: string, value: Object, api: Core): Promise&lt;Resource&gt; {
-        return api.create(relation, this.clean(value))
-            .then((resource: Resource) &#x3D;&gt; {
-                this.changes.next({ relation, resource, type: &#x27;post&#x27; });
-                return resource;
-            }).catch((err) &#x3D;&gt; {
-                return Promise.reject(err);
-            });
-    }
-
-    /** deletes the given resource and emits the &quot;delete&quot; change. */
-    del(relation: string, resource: Resource) {
-        return resource.del().then((res) &#x3D;&gt; {
-            this.changes.next({ relation, resource, type: &#x27;delete&#x27; });
-            return res;
-        });
-    }
+  /** deletes the given resource and emits the &quot;delete&quot; change. */
+  del(relation: string, resource: Resource) {
+    return resource.del().then((res) &#x3D;&gt; {
+      this.changes.next({ relation, resource, type: &#x27;delete&#x27; });
+      return res;
+    });
+  }
 }
 </code></pre>
     </div>
@@ -523,7 +526,7 @@ export class ResourceService {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
-            var COMPODOC_CURRENT_PAGE_URL = 'Update.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'publishing.html';
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

@@ -291,82 +291,82 @@
 
         <section>
     
-        <h3 id="methods">
-            Methods
-        </h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="forRoot"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Static</span>
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="forRoot"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Static</span>
                             forRoot
-                            </b>
-                            <a href="#forRoot"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                            <span class="modifier-icon icon ion-ios-reset"></span>
-                        <code>forRoot(formats: literal type)</code>
-                    </td>
-                </tr>
+                        </b>
+                        <a href="#forRoot"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>forRoot(formats: literal type)</code>
+                </td>
+            </tr>
 
 
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">packages/calendar/src/lib/calendar.module.ts:46</a></div>
-                            </td>
-                        </tr>
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="32"
+                            class="link-to-prism">packages/calendar/src/lib/calendar.module.ts:32</a></div>
+                </td>
+            </tr>
 
 
-                <tr>
-                    <td class="col-md-4">
+            <tr>
+                <td class="col-md-4">
 
-                            <div class="io-description">
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>formats</td>
-                                                        <td>
-                                                                    <code>literal type</code>
-                                                        </td>
-                                                    
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>formats</td>
+                                    <td>
+                                            <code>literal type</code>
+                                    </td>
 
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                            <div>
-                            </div>
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="../miscellaneous/variables.html#de" target="_self" >ModuleWithProviders</a></code>
+                                    <td>
+                                        No
+                                    </td>
 
-                            </div>
-                                <div class="io-description">
-                                    
-                                </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../miscellaneous/variables.html#de" target="_self" >ModuleWithProviders</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </section>
-
     </div>
 
 
@@ -380,61 +380,47 @@ import { MonthComponent } from &#x27;./calendar/month.component&#x27;;
 import { CommonModule } from &#x27;@angular/common&#x27;;
 
 export const calendarModuleConfig &#x3D; {
-    imports: [
-        CommonModule
-    ],
-    exports: [
-        DatetimePipe,
-        CalendarComponent,
-        HeatmapComponent,
-        DaterangeComponent,
-        MonthComponent,
-    ],
-    declarations: [
-        DatetimePipe,
-        CalendarComponent,
-        HeatmapComponent,
-        DaterangeComponent,
-        MonthComponent,
-    ],
-    providers: [
-        {
-            provide: &#x27;moment.format.date&#x27;,
-            useValue: &#x27;DD.MM.YYYY&#x27;
-        },
-        {
-            provide: &#x27;moment.format.time&#x27;,
-            useValue: &#x27;HH:mm&#x27;
-        },
-        {
-            provide: &#x27;moment.format.month&#x27;,
-            useValue: &#x27;MMMM YYYY&#x27;
-        }
-    ]
+  imports: [CommonModule],
+  exports: [DatetimePipe, CalendarComponent, HeatmapComponent, DaterangeComponent, MonthComponent],
+  declarations: [DatetimePipe, CalendarComponent, HeatmapComponent, DaterangeComponent, MonthComponent],
+  providers: [
+    {
+      provide: &#x27;moment.format.date&#x27;,
+      useValue: &#x27;DD.MM.YYYY&#x27;,
+    },
+    {
+      provide: &#x27;moment.format.time&#x27;,
+      useValue: &#x27;HH:mm&#x27;,
+    },
+    {
+      provide: &#x27;moment.format.month&#x27;,
+      useValue: &#x27;MMMM YYYY&#x27;,
+    },
+  ],
 };
 
 /** This Module contains all calendar related components */
 @NgModule(calendarModuleConfig)
 export class CalendarModule {
-    static forRoot(formats: { date?, time?, month?}): ModuleWithProviders {
-        return {
-            ngModule: CalendarModule,
-            providers: [
-                {
-                    provide: &#x27;moment.format.date&#x27;,
-                    useValue: formats.date
-                },
-                {
-                    provide: &#x27;moment.format.time&#x27;,
-                    useValue: formats.time
-                },
-                {
-                    provide: &#x27;moment.format.month&#x27;,
-                    useValue: formats.month
-                },
-            ]
-        };
-    }
+  static forRoot(formats: { date?; time?; month? }): ModuleWithProviders {
+    return {
+      ngModule: CalendarModule,
+      providers: [
+        {
+          provide: &#x27;moment.format.date&#x27;,
+          useValue: formats.date,
+        },
+        {
+          provide: &#x27;moment.format.time&#x27;,
+          useValue: formats.time,
+        },
+        {
+          provide: &#x27;moment.format.month&#x27;,
+          useValue: formats.month,
+        },
+      ],
+    };
+  }
 }
 </code></pre>
     </div>
@@ -470,7 +456,7 @@ export class CalendarModule {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
-            var COMPODOC_CURRENT_PAGE_URL = 'CalendarModule.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'publishing.html';
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>
