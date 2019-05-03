@@ -29,8 +29,6 @@ export class ModalComponent extends PopComponent implements OnInit, OnChanges {
   @Input() mode: string;
   /** If true, the modal will have a dark backdrop that disables clicking outside. */
   @Input() backdrop = false;
-  /** Sets data-animate. */
-  @Input() animation = 'fadeIn 4';
   /** Header Template */
   @Input() header: TemplateRef<any>;
   /** Body Template */

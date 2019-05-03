@@ -12,7 +12,6 @@ export class ModalDemoComponent implements OnChanges, OnInit {
   showFooter = true;
   showHeader = true;
   showMarkup = false;
-  modalAnimate;
 
   ngOnChanges() {
     this.updateMarkup();
@@ -40,11 +39,6 @@ export class ModalDemoComponent implements OnChanges, OnInit {
         this.modalColumns
           ? `
           [columns]="${this.modalColumns}"`
-          : ''
-      }${
-        this.modalAnimate
-          ? `
-          animation="${this.modalAnimate}"`
           : ''
       }>
         ${

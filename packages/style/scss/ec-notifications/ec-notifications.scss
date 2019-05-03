@@ -22,9 +22,7 @@
 // @param {px} $ec-notification-font-size [$base-font-size * 0.875]
 // @param {array} $ec-notification-shadow [0 8 16 -4px rgba(#000, 0.2)]
 // @param {px} $ec-notification-flag-width [8]
-// @param {value} $ec-notification-animation [notification]
-// @param {time} $ec-notification-animation-speed [0.2s]
-// @param {time} $ec-notification-animation-behavior
+// @param {value} $ec-notification-animation [notification 0.2s]
 // @param {array} $ec-notification-style
 .ec-notifications {
   position: fixed;
@@ -49,8 +47,7 @@
   border-radius: arrayMagic($ec-notification-radius);
   margin: arrayMagic($ec-notification-spacing);
   max-width: rem($ec-notification-max-width);
-  animation: $ec-notification-animation $ec-notification-animation-speed
-    $ec-notification-animation-behavior;
+  animation: $ec-notification-animation;
   border-left-width: rem($ec-notification-flag-width);
 
   &.is-active {
