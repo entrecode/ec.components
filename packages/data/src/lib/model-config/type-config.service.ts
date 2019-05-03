@@ -147,19 +147,21 @@ export class TypeConfigService {
       nestedCrudConfig: this.nestedCrudConfig,
     },
     json: {
-      formView: 'textarea',
-      outputView: 'json',
+      /* formView: 'textarea',
+      outputView: 'json', */
+      view: 'json',
       resolve: (body, item, property) => JSON.stringify(body[property]),
-      beforeSave: (value) => JSON.parse(value),
-      display: (value) => (value ? JSON.stringify(value) : ''),
+      /* beforeSave: (value) => JSON.parse(value),
+      display: (value) => (value ? JSON.stringify(value) : ''), */
     },
     location: {
-      formView: 'textarea',
-      outputView: 'json',
+      /* formView: 'textarea',
+      outputView: 'json', */
+      view: 'json',
       display: (value) => (value ? value.longitude + ',' + value.latitude : ''),
       filterPopClass: 'ec-pop_dialog',
-      resolve: (body, item, property) => JSON.stringify(body[property]),
-      beforeSave: (value) => JSON.parse(value),
+      /* resolve: (body, item, property) => JSON.stringify(body[property]),
+      beforeSave: (value) => JSON.parse(value), */
     },
     account: {
       display: (value) => (value ? value.title : ''),

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.48.1](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.48.0...@ec.components/data@0.48.1) (2019-05-03)
+
+
+### Bug Fixes
+
+* json + location ([01d1130](https://github.com/entrecode/ec.components/commit/01d1130))
+
+
+
+
+
 # [0.48.0](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.47.9...@ec.components/data@0.48.0) (2019-05-03)
 
 
