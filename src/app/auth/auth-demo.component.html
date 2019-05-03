@@ -9,27 +9,27 @@
 </div>
 <section *ngIf="!sdk.user">
   <h3>Login</h3>
-  <div class="well-small">
+  <div class="well">
     <h6>general login</h6>
     <ec-login (success)="log($event)"></ec-login>
   </div>
-  <div class="well-small">
+  <div class="well">
     <h6>public login</h6>
     <ec-login [api]="sdk.api" (success)="log($event)"></ec-login>
   </div>
-  <div class="well-small">
+  <div class="well">
     <h6>admin login</h6>
     <ec-login [api]="sdk.session" (success)="log($event)"></ec-login>
   </div>
-  <div class="well-small">
+  <div class="well">
     <h6>general password reset</h6>
     <ec-password-reset (success)="log($event)"></ec-password-reset>
   </div>
-  <div class="well-small">
+  <div class="well">
     <h6>public password reset</h6>
     <ec-password-reset [api]="sdk.api" (success)="log($event)"></ec-password-reset>
   </div>
-  <div class="well-small">
+  <div class="well">
     <h6>ec password reset</h6>
     <ec-password-reset [api]="sdk.session" (success)="log($event)"></ec-password-reset>
   </div>

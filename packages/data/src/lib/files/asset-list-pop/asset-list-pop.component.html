@@ -8,7 +8,7 @@
   <div class="ec-asset-list-pop-header">
     <ec-upload-select (uploaded)="fileService.selectUpload($event,selection)" #uploadSelect [disableDrop]="true"
       [config]="uploadConfig" [assetGroupID]="assetGroupID"></ec-upload-select>
-    <div data-grid="is-small" *ngIf="active&&sdk.apiResolved">
+    <div data-grid="small" *ngIf="active&&sdk.apiResolved">
       <!-- <div [attr.data-col]="showTagSelect()?'6-sm':'12-sm'"> -->
       <div data-col="12-sm" class="has-padding-bottom">
         <ec-searchbar #searchbar [listComponent]="resourceList" [list]="resourceList"></ec-searchbar>
