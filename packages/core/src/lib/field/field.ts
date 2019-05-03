@@ -17,6 +17,8 @@ export class Field implements FieldConfigProperty {
   view?: string;
   /** Custom Validation function */
   validate?: (value, field) => any;
+  /** Custom clean function to prepare for save */
+  beforeSave?: (value?, field?, body?) => any;
   /** Custom Component to display form input **/
   input?: any;
   /** Custom Component to display value **/

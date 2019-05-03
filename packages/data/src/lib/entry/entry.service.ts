@@ -84,13 +84,12 @@ export class EntryService {
           // filter system properties
           delete value[key];
         }
-        if (
-          config &&
-          config.fields &&
-          config.fields[key] &&
-          (config.fields[key].immutable || (cleanReadOnly && config.fields[key].readOnly))
-        ) {
-          delete value[key];
+        if (config && config.fields && config.fields[key]) {
+          if (config.fields[key].immutable || (cleanReadOnly && config.fields[key].readOnly)) {
+            delete value[key];
+          } else if (config.fields[key].beforeSave) {
+            value[key] = config.fields[key].beforeSave(value[key], config.fields[key], value);
+          }
         }
       }
     }

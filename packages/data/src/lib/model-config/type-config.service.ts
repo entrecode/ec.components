@@ -147,9 +147,12 @@ export class TypeConfigService {
       nestedCrudConfig: this.nestedCrudConfig,
     },
     json: {
-      view: 'json',
-      input: DefaultEntryInputComponent,
-      output: DefaultEntryOutputComponent,
+      formView: 'textarea',
+      formComponent: DefaultInputComponent,
+      listComponent: DefaultOutputComponent,
+      resolve: (body, item, property) => JSON.stringify(body[property]),
+      beforeSave: (value) => JSON.parse(value),
+      outputView: 'json',
       display: (value) => (value ? JSON.stringify(value) : ''),
     },
     location: {
