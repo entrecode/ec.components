@@ -109,7 +109,12 @@ export class Item<T> {
    * If you dont set the third parameter, the current item value will be used.
    * The third parameter can be used to transform a value that is not yet possesed (e.g. to
    * serialize) */
-  public transform(action: string, property: string, value: any = this.resolve(property), defaultValue: any = this.resolve(property)) {
+  public transform(
+    action: string,
+    property: string,
+    value: any = this.resolve(property),
+    defaultValue: any = this.resolve(property),
+  ) {
     if (!this.hasBody()) {
       return;
     }
@@ -153,25 +158,33 @@ export class Item<T> {
 
   /** Returns value with all readOnly properties removed */
   pickWriteOnly(value = this.body) {
-    return (<any>Object).assign({}, ...Object.keys(value)
-      .map(property => {
-        if (this.config.fields[property].readOnly) {
-          return;
-        }
-        return { [property]: value[property] };
-      }).filter(v => !!v));
-
+    return (<any>Object).assign(
+      {},
+      ...Object.keys(value)
+        .map((property) => {
+          if (this.config.fields[property].readOnly) {
+            return;
+          }
+          return { [property]: value[property] };
+        })
+        .filter((v) => !!v),
+    );
   }
 
   isImmutableProperty(property: string): boolean {
-    if (this.config && this.config.fields && this.config.fields[property] && typeof this.config.fields[property].immutable === 'function') {
+    if (
+      this.config &&
+      this.config.fields &&
+      this.config.fields[property] &&
+      typeof this.config.fields[property].immutable === 'function'
+    ) {
       return this.config.fields[property].immutable(this);
     }
     return this.config.fields[property].immutable;
   }
 
   deleteImmutableProperties(value: Object = this.body) {
-    Object.keys(this.config.fields).forEach(property => {
+    Object.keys(this.config.fields).forEach((property) => {
       if (value.hasOwnProperty(property) && this.isImmutableProperty(property)) {
         delete value[property];
       }
@@ -187,7 +200,7 @@ export class Item<T> {
     /** Run the remaining properties through serializers */
     Object.keys(value).map((property) => {
       (<any>Object).assign(value, {
-        [property]: this.transform('serialize', property, value[property]) // TODO: fix
+        [property]: this.transform('serialize', property, value[property]), // TODO: fix
       });
     });
     return value;
@@ -203,11 +216,10 @@ export class Item<T> {
   /** Saves the given value. Run serializers before assigning the new value. */
   save(value: T = this.body): Promise<Item<T>> {
     if (this.config.onSave) {
-      return Promise.resolve(this.config.onSave(this, value))
-        .then((_value: T) => {
-          this.body = _value;
-          return this;
-        });
+      return Promise.resolve(this.config.onSave(this, value)).then((_value: T) => {
+        this.body = _value;
+        return this;
+      });
     }
     this.body = (<any>Object).assign(this.resolve() || {}, value);
     return Promise.resolve(this);

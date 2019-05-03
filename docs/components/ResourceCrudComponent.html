@@ -682,7 +682,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">packages/data/src/lib/resource-crud/resource-crud.component.ts:61</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">packages/data/src/lib/resource-crud/resource-crud.component.ts:62</a></div>
                             </td>
                         </tr>
 
@@ -720,7 +720,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">packages/data/src/lib/resource-crud/resource-crud.component.ts:57</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">packages/data/src/lib/resource-crud/resource-crud.component.ts:58</a></div>
                             </td>
                         </tr>
 
@@ -966,7 +966,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">packages/data/src/lib/resource-crud/resource-crud.component.ts:54</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">packages/data/src/lib/resource-crud/resource-crud.component.ts:55</a></div>
                             </td>
                         </tr>
 
@@ -1003,7 +1003,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">packages/data/src/lib/resource-crud/resource-crud.component.ts:53</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">packages/data/src/lib/resource-crud/resource-crud.component.ts:54</a></div>
                             </td>
                         </tr>
 
@@ -1036,79 +1036,79 @@ import Core from &#x27;ec.sdk/lib/Core&#x27;;
  * &#x60;&#x60;&#x60;
  * */
 @Component({
-    selector: &#x27;ec-resource-crud&#x27;,
-    templateUrl: &#x27;./resource-crud.component.html&#x27;,
+  selector: &#x27;ec-resource-crud&#x27;,
+  templateUrl: &#x27;./resource-crud.component.html&#x27;,
 })
 export class ResourceCrudComponent&lt;T&gt; implements OnInit, WithLoader {
-    /** The API Connector that possesses the resource list, see https://entrecode.github.io/ec.sdk/#api-connectors */
-    @Input() api: Core; // sdk api connector
-    /** The name of the resource. If given, the generic ListResource loading will be used (api.resourceList) */
-    @Input() relation: string;
-    /** CrudConfig for customization of the crud&#x27;s UI.*/
-    @Input() config: CrudConfig&lt;T&gt; &#x3D; {};
-    /** The selection that should be used */
-    @Input() selection: Selection&lt;T&gt;;
-    /** The ResourceListComponent inside the template. */
-    @ViewChild(ResourceListComponent) list: ResourceListComponent;
-    /** The Pop inside the template. */
-    @ViewChild(ResourcePopComponent) pop: ResourcePopComponent;
-    /** The lists loader */
-    @ViewChild(LoaderComponent) loader: LoaderComponent;
-    /** Emits when a list element is clicked */
-    @Output() columnClicked: EventEmitter&lt;any&gt; &#x3D; new EventEmitter();
-    /** Emits when the selection has changed */
-    @Output() selected: EventEmitter&lt;any&gt; &#x3D; new EventEmitter();
-    /** Output that is nexted when pressing the create button */
-    @Output() createClicked: EventEmitter&lt;any&gt; &#x3D; new EventEmitter();
+  /** The API Connector that possesses the resource list, see https://entrecode.github.io/ec.sdk/#api-connectors */
+  @Input() api: Core; // sdk api connector
+  /** The name of the resource. If given, the generic ListResource loading will be used (api.resourceList) */
+  @Input() relation: string;
+  /** CrudConfig for customization of the crud&#x27;s UI.*/
+  @Input() config: CrudConfig&lt;T&gt; &#x3D; {};
+  /** The selection that should be used */
+  @Input() selection: Selection&lt;T&gt;;
+  /** The ResourceListComponent inside the template. */
+  @ViewChild(ResourceListComponent) list: ResourceListComponent;
+  /** The Pop inside the template. */
+  @ViewChild(ResourcePopComponent) pop: ResourcePopComponent;
+  /** The lists loader */
+  @ViewChild(LoaderComponent) loader: LoaderComponent;
+  /** Emits when a list element is clicked */
+  @Output() columnClicked: EventEmitter&lt;any&gt; &#x3D; new EventEmitter();
+  /** Emits when the selection has changed */
+  @Output() selected: EventEmitter&lt;any&gt; &#x3D; new EventEmitter();
+  /** Output that is nexted when pressing the create button */
+  @Output() createClicked: EventEmitter&lt;any&gt; &#x3D; new EventEmitter();
 
-    constructor(private sdk: SdkService,
-        private auth: AuthService,
-        private loaderService: LoaderService,
-        private notificationService: NotificationsService,
-        @Optional() public router: Router,
-        @Optional() public route: ActivatedRoute) {
-    }
+  constructor(
+    private sdk: SdkService,
+    private auth: AuthService,
+    private loaderService: LoaderService,
+    private notificationService: NotificationsService,
+    @Optional() public router: Router,
+    @Optional() public route: ActivatedRoute,
+  ) {}
 
-    ngOnInit() {
-        this.initMethods();
-    }
+  ngOnInit() {
+    this.initMethods();
+  }
 
-    initMethods() {
-        if (!this.relation) {
-            return;
-        }
-        this.auth.getAllowedResourceMethods(this.relation, {}, this.config.methods)
-            .then((methods) &#x3D;&gt; {
-                this.config.methods &#x3D; methods;
-            });
+  initMethods() {
+    if (!this.relation) {
+      return;
     }
+    this.auth.getAllowedResourceMethods(this.relation, {}, this.config.methods).then((methods) &#x3D;&gt; {
+      this.config.methods &#x3D; methods;
+    });
+  }
 
-    /** Returns true if the given method is part of the methods array (or if there is no methods array) */
-    public hasMethod(method: string) {
-        return this.config.methods &amp;&amp; this.config.methods.indexOf(method) !&#x3D;&#x3D; -1;
-    }
+  /** Returns true if the given method is part of the methods array (or if there is no methods array) */
+  public hasMethod(method: string) {
+    return this.config.methods &amp;&amp; this.config.methods.indexOf(method) !&#x3D;&#x3D; -1;
+  }
 
-    /** Called on list columnClicked */
-    select(item) {
-        if (!item) {
-            return;
-        }
-        if (this.columnClicked.observers.length) {
-            this.columnClicked.emit(item);
-            return;
-        }
-        this.pop.edit(item.getBody());
-        // TODO: check CrudComponent#loadEntry for further inspiration
+  /** Called on list columnClicked */
+  select(item) {
+    if (!item) {
+      return;
     }
+    if (this.columnClicked.observers.length) {
+      this.columnClicked.emit(item);
+      return;
+    }
+    this.pop.edit(item.getBody());
+    // TODO: check CrudComponent#loadEntry for further inspiration
+  }
 
-    /** Method that is invoked when pressing the create button. Default behaviour is opening the resource-pop. */
-    create() {
-        if (this.createClicked.observers.length) {
-            this.createClicked.next();
-        } else if (this.pop) {
-            this.pop.create();
-        }
+  /** Method that is invoked when pressing the create button. Default behaviour is opening the resource-pop. */
+  create() {
+    if (this.createClicked.observers.length) {
+      this.createClicked.next();
+    } else if (this.pop) {
+      this.pop.create();
     }
+  }
 }
 </code></pre>
     </div>

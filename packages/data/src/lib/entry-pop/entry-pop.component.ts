@@ -1,6 +1,14 @@
 import {
-  ChangeDetectionStrategy, ChangeDetectorRef, Component,
-  ElementRef, EventEmitter, HostBinding, Input, OnInit, Output, ViewChild
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostBinding,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
 } from '@angular/core';
 import { Form } from '@ec.components/core';
 import { FormService, PopComponent, PopService, SymbolService } from '@ec.components/ui';
@@ -18,9 +26,8 @@ import { EntryFormComponent } from '../entry-form/entry-form.component';
 @Component({
   selector: 'ec-entry-pop',
   templateUrl: './entry-pop.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-
 export class EntryPopComponent extends PopComponent implements OnInit {
   /** CrudConfig for customizing the entry-form and the pop.*/
   @Input() config: CrudConfig<EntryResource> = {};
@@ -47,7 +54,8 @@ export class EntryPopComponent extends PopComponent implements OnInit {
     public formService: FormService,
     public symbol: SymbolService,
     public elementRef: ElementRef,
-    public cdr: ChangeDetectorRef) {
+    public cdr: ChangeDetectorRef,
+  ) {
     super(popService, elementRef, cdr);
   }
 
@@ -79,7 +87,10 @@ export class EntryPopComponent extends PopComponent implements OnInit {
   }
 
   pathRegExp(path) {
-    return path.split('/').map(subpath => this.escapeRegExp(subpath)).join('/');
+    return path
+      .split('/')
+      .map((subpath) => this.escapeRegExp(subpath))
+      .join('/');
   }
 
   /** Edit the given entry. */
@@ -111,7 +122,8 @@ export class EntryPopComponent extends PopComponent implements OnInit {
       const trimmed = this.router.url.replace(new RegExp(matcher, 'g'), '');
       this.router.navigate([trimmed, this.createRoute]);
     } */
-    if (this.form) { // clears form if already used before
+    if (this.form) {
+      // clears form if already used before
       this.form.create();
     }
     this.show();
@@ -119,11 +131,10 @@ export class EntryPopComponent extends PopComponent implements OnInit {
 
   /** Initialize the allowed methods to determine which buttons should be shown. */
   ngOnInit() {
-    this.auth.getAllowedModelMethods(this.model, this.config.methods)
-      .then((methods) => {
-        this.cdr.markForCheck();
-        this.config.methods = methods;
-      });
+    this.auth.getAllowedModelMethods(this.model, this.config.methods).then((methods) => {
+      this.cdr.markForCheck();
+      this.config.methods = methods;
+    });
   }
 
   /** Logs the current form (Developer help). */

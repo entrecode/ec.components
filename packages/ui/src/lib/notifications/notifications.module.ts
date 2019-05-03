@@ -7,24 +7,15 @@ import { ErrorComponent } from './error/error.component';
 import { IconModule } from '../icon/icon.module';
 
 @NgModule({
-  declarations: [
-    NotificationsComponent,
-    ErrorComponent,
-  ],
-  imports: [
-    CommonModule,
-    PopModule,
-    IconModule,
-  ],
-  exports: [
-    NotificationsComponent,
-    ErrorComponent,
-  ],
+  declarations: [NotificationsComponent, ErrorComponent],
+  imports: [CommonModule, PopModule, IconModule],
+  exports: [NotificationsComponent, ErrorComponent],
   providers: [
     {
       provide: 'useDesktopNotifications',
-      useValue: false
-    }, NotificationsService]
+      useValue: false,
+    },
+    NotificationsService,
+  ],
 })
-export class NotificationsModule {
-}
+export class NotificationsModule {}

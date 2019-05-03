@@ -203,7 +203,7 @@ If not, is is expected to be a ec-icon.
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">packages/ui/src/lib/icon/icon.component.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">packages/ui/src/lib/icon/icon.component.ts:18</a></div>
                             </td>
                         </tr>
 
@@ -259,7 +259,7 @@ If not, is is expected to be a ec-icon.
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">packages/ui/src/lib/icon/icon.component.ts:17</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">packages/ui/src/lib/icon/icon.component.ts:16</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -301,7 +301,7 @@ If not, is is expected to be a ec-icon.
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">packages/ui/src/lib/icon/icon.component.ts:32</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">packages/ui/src/lib/icon/icon.component.ts:30</a></div>
                             </td>
                         </tr>
 
@@ -339,7 +339,7 @@ If not, is is expected to be a ec-icon.
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">packages/ui/src/lib/icon/icon.component.ts:29</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">packages/ui/src/lib/icon/icon.component.ts:27</a></div>
                             </td>
                         </tr>
 
@@ -377,7 +377,7 @@ If not, is is expected to be a ec-icon.
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">packages/ui/src/lib/icon/icon.component.ts:23</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">packages/ui/src/lib/icon/icon.component.ts:21</a></div>
                             </td>
                         </tr>
 
@@ -422,7 +422,7 @@ If not, is is expected to be a ec-icon.
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">packages/ui/src/lib/icon/icon.component.ts:19</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">packages/ui/src/lib/icon/icon.component.ts:18</a></div>
                             </td>
                         </tr>
 
@@ -472,31 +472,29 @@ import { Symbol } from &#x27;../symbol/symbol.interface&#x27;;
  * &lt;example-url&gt;https://components.entrecode.de/ui/icons?e&#x3D;1&lt;/example-url&gt;
  */
 @Component({
-    selector: &#x27;ec-icon&#x27;,
-    templateUrl: &#x27;./icon.component.html&#x27;,
-    changeDetection: ChangeDetectionStrategy.OnPush
+  selector: &#x27;ec-icon&#x27;,
+  templateUrl: &#x27;./icon.component.html&#x27;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-
 export class IconComponent implements OnInit, OnChanges {
-    /** The name of the icon. An Icon with this name is expected to be present in the current iconService registry. */
-    @Input() name: string;
-    /** The resolved icon (by name) */
-    icon: Symbol;
-    constructor(private iconService: IconService) {
+  /** The name of the icon. An Icon with this name is expected to be present in the current iconService registry. */
+  @Input() name: string;
+  /** The resolved icon (by name) */
+  icon: Symbol;
+  constructor(private iconService: IconService) {}
+  /** The component will resolve the icon from the current iconService registry. A warning is logged if no icon can be found. */
+  resolve() {
+    this.icon &#x3D; this.iconService.get(this.name);
+    if (!this.icon) {
+      console.warn(&#x60;Icon ${this.name} cannot be found. Using the following icon registry:&#x60;, this.iconService.registry);
     }
-    /** The component will resolve the icon from the current iconService registry. A warning is logged if no icon can be found. */
-    resolve() {
-        this.icon &#x3D; this.iconService.get(this.name);
-        if (!this.icon) {
-            console.warn(&#x60;Icon ${this.name} cannot be found. Using the following icon registry:&#x60;, this.iconService.registry);
-        }
-    }
-    ngOnInit() {
-        this.resolve();
-    }
-    ngOnChanges() {
-        this.resolve();
-    }
+  }
+  ngOnInit() {
+    this.resolve();
+  }
+  ngOnChanges() {
+    this.resolve();
+  }
 }
 </code></pre>
     </div>

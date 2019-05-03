@@ -57,7 +57,7 @@ export class FileService {
     includeAssetIDInPath: true,
     ignoreDuplicates: false,
     deduplicate: false,
-    fileName: []
+    fileName: [],
   };
   /** config for new assets */
   public dmAssetConfig = Object.assign({}, this.resourceConfig.get('dmAsset'));
@@ -67,18 +67,19 @@ export class FileService {
   public oldAssetGroupIDs = ['image', 'video', 'audio', 'plain', 'document', 'spreadsheet', 'legacyAsset'];
 
   /** Injects sdk */
-  constructor(private sdk: SdkService,
+  constructor(
+    private sdk: SdkService,
     private typeConfig: TypeConfigService,
     private resourceService: ResourceService,
-    private resourceConfig: ResourceConfig) {
-  }
+    private resourceConfig: ResourceConfig,
+  ) {}
 
   public getAssetConfig(assetGroupID) {
     if (this.isOldAssetGroupID(assetGroupID)) {
       const config = Object.assign({}, this.legacyAssetConfig);
       if (this.oldAssetGroupIDs.includes(assetGroupID) && assetGroupID !== 'legacyAsset') {
-        config.filter = Object.assign({}, (config.filter || {}), {
-          type: assetGroupID
+        config.filter = Object.assign({}, config.filter || {}, {
+          type: assetGroupID,
         });
       }
       return config;
@@ -91,10 +92,9 @@ export class FileService {
   public isNewAsset(asset: Array<any> | string | DMAssetResource | PublicAssetResource, only = false) {
     if (Array.isArray(asset)) {
       return asset.reduce(
-        (match, a) =>
-          ((only && (match && this.isNewAsset(a)) ||
-            (!only && (match || this.isNewAsset(a)))))
-        , only);
+        (match, a) => (only && (match && this.isNewAsset(a))) || (!only && (match || this.isNewAsset(a))),
+        only,
+      );
     }
     const id = typeof asset === 'string' ? asset : asset.assetID;
     return /^[a-zA-Z0-9\-_]{22}$/.test(id);
@@ -109,12 +109,11 @@ export class FileService {
       formData.append(fieldname, files.item(i), name);
     }
     if (options) {
-      ['preserveFilenames', 'includeAssetIDInPath', 'ignoreDuplicates', 'deduplicate']
-        .forEach(key => {
-          if (key in options) {
-            formData.append(key, `${options[key]}`);
-          }
-        });
+      ['preserveFilenames', 'includeAssetIDInPath', 'ignoreDuplicates', 'deduplicate'].forEach((key) => {
+        if (key in options) {
+          formData.append(key, `${options[key]}`);
+        }
+      });
     }
     return formData;
   }
@@ -124,17 +123,19 @@ export class FileService {
     if (!files.length) {
       return;
     }
-    const data = files[0].url ? files.map(f => f.url) : this.getFormData(files, options);
-    return api.createDMAssets(assetGroupID, data, options)
+    const data = files[0].url ? files.map((f) => f.url) : this.getFormData(files, options);
+    return api
+      .createDMAssets(assetGroupID, data, options)
       .then((assetList: DMAssetList) => {
         const assets = assetList.getAllItems();
         return {
           asset: assets[0],
           assets,
           item: new Item(assets[0], this.resourceConfig.get('dmAsset')),
-          items: assets.map(asset => new Item(asset, this.resourceConfig.get('dmAsset')))
+          items: assets.map((asset) => new Item(asset, this.resourceConfig.get('dmAsset'))),
         };
-      }).then((upload: Upload) => {
+      })
+      .then((upload: Upload) => {
         this.uploads.emit(upload);
         this.resourceService.changes.next({ relation: 'dmAsset', type: 'post' });
         return upload;
@@ -147,26 +148,31 @@ export class FileService {
       return;
     }
     const data = this.getFormData(files);
-    return Promise.resolve().then((): Promise<() => Promise<(PublicAssetList | PublicAssetResource)>> => {
-      if (files.length === 1) {
-        return this.sdk.api.createAsset(data, {});
-      }
-      return this.sdk.api.createAssets(data, {});
-    })
-      .then(res => res())
+    return Promise.resolve()
+      .then(
+        (): Promise<() => Promise<PublicAssetList | PublicAssetResource>> => {
+          if (files.length === 1) {
+            return this.sdk.api.createAsset(data, {});
+          }
+          return this.sdk.api.createAssets(data, {});
+        },
+      )
+      .then((res) => res())
       .then((response) => {
         if (response['getAllItems']) {
           return response['getAllItems']();
         }
         return [response];
-      }).then((assets) => {
+      })
+      .then((assets) => {
         return {
           asset: assets[0],
           assets,
           item: new Item(assets[0], this.resourceConfig.get('legacyAsset')),
-          items: assets.map(asset => new Item(asset, this.resourceConfig.get('legacyAsset')))
+          items: assets.map((asset) => new Item(asset, this.resourceConfig.get('legacyAsset'))),
         };
-      }).then((upload: Upload) => {
+      })
+      .then((upload: Upload) => {
         this.uploads.emit(upload);
         this.resourceService.changes.next({ relation: 'legacyAsset', type: 'post' });
         this.resourceService.changes.next({ relation: 'asset', type: 'post' });
@@ -175,9 +181,13 @@ export class FileService {
   }
 
   /** Resolves all assetIDs to PublicAssetResources */
-  public resolveAssets(assets: Array<string | PublicAssetResource | DMAssetResource>, assetGroupID?: string):
-    Promise<Array<PublicAssetResource | DMAssetResource>> {
-    console.warn('FileService#resolveAssets is deprecated. I doubt somebody ever used it but if you see this, stop it. please.');
+  public resolveAssets(
+    assets: Array<string | PublicAssetResource | DMAssetResource>,
+    assetGroupID?: string,
+  ): Promise<Array<PublicAssetResource | DMAssetResource>> {
+    console.warn(
+      'FileService#resolveAssets is deprecated. I doubt somebody ever used it but if you see this, stop it. please.',
+    );
     const unresolved = assets.reduce((ids, asset) => {
       if (typeof asset === 'string') {
         ids.push(asset);
@@ -191,25 +201,27 @@ export class FileService {
       console.warn('wont resolve new asset without knowing assetGroupID');
       return Promise.resolve([]);
     }
-    if (assetGroupID) { // new assets
-      return this.sdk.api.dmAssetList(assetGroupID, { assetID: { any: unresolved }, size: 100 })
-        .then(dmAssetList => dmAssetList.getAllItems());
+    if (assetGroupID) {
+      // new assets
+      return this.sdk.api
+        .dmAssetList(assetGroupID, { assetID: { any: unresolved }, size: 100 })
+        .then((dmAssetList) => dmAssetList.getAllItems());
     }
-    return Promise.resolve().then((): any => {
-      if (unresolved.length === 1) {
-        return this.sdk.api.asset(unresolved[0]).then(asset => {
-          return [asset];
-        });
-      }
-      return this.sdk.api.assetList({ assetID: { any: unresolved }, page: 1 })
-        .then((assetList) => {
+    return Promise.resolve().then(
+      (): any => {
+        if (unresolved.length === 1) {
+          return this.sdk.api.asset(unresolved[0]).then((asset) => {
+            return [asset];
+          });
+        }
+        return this.sdk.api.assetList({ assetID: { any: unresolved }, page: 1 }).then((assetList) => {
           const resolved = assetList.getAllItems();
           return assets.map((asset) =>
-            typeof asset === 'string' ?
-              resolved.find((resource) => resource.assetID === asset) : asset);
+            typeof asset === 'string' ? resolved.find((resource) => resource.assetID === asset) : asset,
+          );
         });
-
-    });
+      },
+    );
   }
 
   public assetGroupList(forceReload = false) {

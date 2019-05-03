@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, Inject } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  Inject
+} from '@angular/core';
 /* import { SymbolService } from '../../symbol/symbol.service'; */
 import moment from 'moment-es6';
 import { debounceTime } from 'rxjs/operators';
@@ -65,21 +73,25 @@ export class MonthComponent implements OnInit, OnChanges {
   protected drag: Subject<Day> = new Subject();
   protected changeSpan: Subject<moment.Moment[]> = new Subject();
 
-  constructor(
-    @Inject('moment.format.month') protected defaultMonthFormat
-    /* public symbol: SymbolService */
-  ) {
+  /* public symbol: SymbolService */
+  constructor(@Inject('moment.format.month') protected defaultMonthFormat) {
     /* this.monthFormat = this.symbol.resolve('moment.format.month') || this.monthFormat; */
     this.monthFormat = this.defaultMonthFormat || this.monthFormat;
-    this.drag.asObservable()
+    this.drag
+      .asObservable()
       .pipe(debounceTime(100))
-      .subscribe((day) => this.dropDay(day));
-    this.changeSpan.asObservable().pipe(debounceTime(800))
+      .subscribe(day => this.dropDay(day));
+    this.changeSpan
+      .asObservable()
+      .pipe(debounceTime(800))
       .subscribe(timespan => this.spanChanged.emit(this.timespan));
   }
 
   dropDay(day: Day) {
-    if (!this.dragged || (day.first && this.dragged.first || day.last && this.dragged.last)) {
+    if (
+      !this.dragged ||
+      ((day.first && this.dragged.first) || (day.last && this.dragged.last))
+    ) {
       return;
     }
     const newTimespan = [].concat(this.timespan);
@@ -101,7 +113,10 @@ export class MonthComponent implements OnInit, OnChanges {
   }
 
   dragStart(day, e) {
-    if ((this.disableDragStart && day.first) || (this.disableDragEnd && day.last)) {
+    if (
+      (this.disableDragStart && day.first) ||
+      (this.disableDragEnd && day.last)
+    ) {
       return;
     }
     this.dragged = day;
@@ -150,36 +165,59 @@ export class MonthComponent implements OnInit, OnChanges {
       this.setDate(this.date);
     } else if (change.timespan) {
       this.setDate();
-    } if (change.colors || change.heatmap) {
+    }
+    if (change.colors || change.heatmap) {
       this.cells = this.getMonth(this.date.clone(), 'current');
     }
   }
 
   /** Returns days of current month */
   getMonth(day = moment(), type?: string): Array<Day> {
-    const begin = day.clone().startOf('month').startOf('week'); // .subtract(weeksbefore * 7, 'days');
+    const begin = day
+      .clone()
+      .startOf('month')
+      .startOf('week'); // .subtract(weeksbefore * 7, 'days');
     return new Array(42)
       .fill(0)
       .map((d, index) => begin.clone().add(index, 'days'))
       .map((date, index) => {
-        const isStart = this.timespan && date.clone().startOf('day').isSame(this.timespan[0].clone().startOf('day'));
-        const isEnd = this.timespan && date.clone().startOf('day').isSame(this.timespan[1].clone().startOf('day'));
+        const isStart =
+          this.timespan &&
+          date
+            .clone()
+            .startOf('day')
+            .isSame(this.timespan[0].clone().startOf('day'));
+        const isEnd =
+          this.timespan &&
+          date
+            .clone()
+            .startOf('day')
+            .isSame(this.timespan[1].clone().startOf('day'));
         return {
           index,
           date,
-          type: date.format('MM YYYY') === day.format('MM YYYY') ? 'current' : 'other',
-          active: this.timespan && date.isBetween(this.timespan[0], this.timespan[1], 'days', '[]'),
+          type:
+            date.format('MM YYYY') === day.format('MM YYYY')
+              ? 'current'
+              : 'other',
+          active:
+            this.timespan &&
+            date.isBetween(this.timespan[0], this.timespan[1], 'days', '[]'),
           first: isStart,
           last: isEnd,
-          draggable: (!this.disableDragStart && isStart) || (!this.disableDragEnd && isEnd),
+          draggable:
+            (!this.disableDragStart && isStart) ||
+            (!this.disableDragEnd && isEnd),
           color: this.getDayColor(date),
           heat: this.getDayHeat(date),
           format: date.format('DD'),
-          today: moment().startOf('day').diff(date, 'days') === 0,
+          today:
+            moment()
+              .startOf('day')
+              .diff(date, 'days') === 0
         };
       });
   }
-
 
   /** Sets the calendars viewed date to the given moment's month. Renders always 42 cells to keep the layout consistent. */
   setDate(date: moment.Moment = this.selected || this.date || moment()) {
@@ -215,7 +253,12 @@ export class MonthComponent implements OnInit, OnChanges {
       return true;
     }
     const newDate = this.date.clone().add(value, span);
-    return newDate.isBetween(this.timespan[0], this.timespan[1], 'months', '[]');
+    return newDate.isBetween(
+      this.timespan[0],
+      this.timespan[1],
+      'months',
+      '[]'
+    );
   }
 
   /** Updates the viewed date to reflect the given relative changes. */

@@ -13,21 +13,8 @@ import { KeycommandsService } from './keycommands/keycommands.service';
 
 export const utilityModuleConfig = {
   entryComponents: [],
-  declarations: [
-    TabsComponent,
-    TabComponent,
-    MenuComponent,
-    LoginFormComponent,
-    SignupFormComponent,
-    FocusDirective,
-  ],
-  imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    IoModule,
-    CommonModule,
-    RouterModule,
-  ],
+  declarations: [TabsComponent, TabComponent, MenuComponent, LoginFormComponent, SignupFormComponent, FocusDirective],
+  imports: [FormsModule, ReactiveFormsModule, IoModule, CommonModule, RouterModule],
   exports: [
     /* FormsModule,
     ReactiveFormsModule,
@@ -41,11 +28,8 @@ export const utilityModuleConfig = {
     FocusDirective,
     RouterModule,
   ],
-  providers: [
-    KeycommandsService
-  ],
+  providers: [KeycommandsService],
 };
 
 @NgModule(utilityModuleConfig)
-export class UtilityModule {
-}
+export class UtilityModule {}

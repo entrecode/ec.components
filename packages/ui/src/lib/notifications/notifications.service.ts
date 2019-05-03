@@ -27,8 +27,7 @@ export class NotificationsService {
 
   /** The constructors injects the useDesktopNotifications flag from the module.
    * If true, all notifications will be shown as desktop notifications instead. */
-  constructor(@Inject('useDesktopNotifications') private useDesktopNotifications) {
-  }
+  constructor(@Inject('useDesktopNotifications') private useDesktopNotifications) {}
 
   /** Emits a notification to all ec-notification components. If host is set, it is only pushed to the specified host.*/
   emit(notification: Notification, desktop?: boolean) {
@@ -73,5 +72,4 @@ export class NotificationsService {
       setTimeout(() => message.close(), notification.time || this.defaultTime);
     });
   }
-
 }

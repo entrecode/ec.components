@@ -7,7 +7,6 @@ import { List } from '../list/list';
  * It supports solo and multiple selection.
  */
 export class Selection<T> extends List<T> {
-
   /** Adds item to selection. If solo is true, all other items will be removed. */
   select(item: Item<T>, solo = this.config.solo) {
     if (solo) {
@@ -23,7 +22,7 @@ export class Selection<T> extends List<T> {
     if (this.config.identifier) {
       return this.items.indexOf(this.id(item.resolve(this.config.identifier)));
     }
-    return this.items.indexOf(this.items.find(i => i.resolve() === item.resolve()));
+    return this.items.indexOf(this.items.find((i) => i.resolve() === item.resolve()));
   }
 
   has(item: Item<T>) {
@@ -80,11 +79,10 @@ export class Selection<T> extends List<T> {
   /** Returns an Array containing the current value. If an identifier is set, the array will consist of the identifier values,
    * if not, it will resolve the item contents. */
   getValue(solo: boolean = this.config.solo) {
-    const value = this.items.map((item) => this.config.identifier ? item.id() : item.resolve());
+    const value = this.items.map((item) => (this.config.identifier ? item.id() : item.resolve()));
     if (solo) {
       return value.length ? value[0] : null;
     }
     return value;
   }
-
 }

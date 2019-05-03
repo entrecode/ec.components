@@ -267,7 +267,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="94" class="link-to-prism">packages/data/src/lib/resource-actionbar/api-actionbar.component.ts:94</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">packages/data/src/lib/resource-actionbar/api-actionbar.component.ts:92</a></div>
                             </td>
                         </tr>
 
@@ -372,90 +372,90 @@
                 <tr>
                     <td class="col-md-4">
                         <i>Default value : </i><code>[
-        {
-            id: &#x27;data&#x27;,
-            title: &#x27;Datamanager&#x27;,
-            action: (item, actionbar) &#x3D;&gt; this.loadResourceListActions({
-                api: this.sdk.datamanager, relation: &#x27;dataManager&#x27;, actionbar,
-                action: (dm) &#x3D;&gt; {
-                    this.sdk.useDatamanager(dm.shortID);
-                    actionbar.loadActions([
-                        this.resourceAction({
-                            actionbar,
-                            title: &#x27;Models&#x27;,
-                            relation: &#x27;model&#x27;,
-                            api: dm,
-                            action: (model) &#x3D;&gt; actionbar.loadActions(
-                                [{
-                                    id: &#x27;entry&#x27;,
-                                    title: &#x27;Entries&#x27;,
-                                    action: () &#x3D;&gt; {
-                                        this.sdk.api.entryList(model.title).then((entryList) &#x3D;&gt; {
-                                            const actions &#x3D; entryList.getAllItems()
-                                                .map(listEntry &#x3D;&gt; {
-                                                    return {
-                                                        title: listEntry._entryTitle,
-                                                        id: listEntry.id,
-                                                        data: listEntry,
-                                                        action: (entryItem) &#x3D;&gt; {
-                                                            const path &#x3D; this.getPath().join(&#x27;/&#x27;);
-                                                            this.openInEditor(path);
-                                                        }
-                                                    };
-                                                });
-                                            actionbar.loadActions(actions);
-                                        });
-                                    }
-                                },
-                                {
-                                    id: &#x27;edit&#x27;,
-                                    title: &#x27;Edit Model&#x27;,
-                                    action: () &#x3D;&gt; {
-                                        const path &#x3D; this.getPath().join(&#x27;/&#x27;);
-                                        this.openInEditor(path);
-                                    }
-                                }]
-                            )
-                        }),
-                        this.resourceAction({
-                            actionbar,
-                            title: &#x27;Asset Group&#x27;,
-                            relation: &#x27;assetGroup&#x27;,
-                            path: &#x27;asset-group&#x27;,
-                            api: dm,
-                            action: () &#x3D;&gt; this.openCurrentPath()
-                        }),
-                        this.resourceAction({
-                            actionbar,
-                            title: &#x27;Datamanager Accounts&#x27;,
-                            relation: &#x27;dmAccount&#x27;,
-                            api: dm,
-                            action: () &#x3D;&gt; this.openCurrentPath()
-                        }),
-                        {
-                            title: &#x27;Edit&#x27;,
-                            id: &#x27;edit&#x27;,
-                            action: () &#x3D;&gt; this.openCurrentPath()
-                        },
-                    ]);
-                }
-            })
-        },
-        {
-            id: &#x27;accounts&#x27;,
-            title: &#x27;Account Server&#x27;,
-            action: (item, actionbar) &#x3D;&gt;
-                this.loadApiRelationActions(
-                    this.sdk.accounts, actionbar,
-                    () &#x3D;&gt; this.openCurrentPath()
-                )
-        }
-    ]</code>
+    {
+      id: &#x27;data&#x27;,
+      title: &#x27;Datamanager&#x27;,
+      action: (item, actionbar) &#x3D;&gt;
+        this.loadResourceListActions({
+          api: this.sdk.datamanager,
+          relation: &#x27;dataManager&#x27;,
+          actionbar,
+          action: (dm) &#x3D;&gt; {
+            this.sdk.useDatamanager(dm.shortID);
+            actionbar.loadActions([
+              this.resourceAction({
+                actionbar,
+                title: &#x27;Models&#x27;,
+                relation: &#x27;model&#x27;,
+                api: dm,
+                action: (model) &#x3D;&gt;
+                  actionbar.loadActions([
+                    {
+                      id: &#x27;entry&#x27;,
+                      title: &#x27;Entries&#x27;,
+                      action: () &#x3D;&gt; {
+                        this.sdk.api.entryList(model.title).then((entryList) &#x3D;&gt; {
+                          const actions &#x3D; entryList.getAllItems().map((listEntry) &#x3D;&gt; {
+                            return {
+                              title: listEntry._entryTitle,
+                              id: listEntry.id,
+                              data: listEntry,
+                              action: (entryItem) &#x3D;&gt; {
+                                const path &#x3D; this.getPath().join(&#x27;/&#x27;);
+                                this.openInEditor(path);
+                              },
+                            };
+                          });
+                          actionbar.loadActions(actions);
+                        });
+                      },
+                    },
+                    {
+                      id: &#x27;edit&#x27;,
+                      title: &#x27;Edit Model&#x27;,
+                      action: () &#x3D;&gt; {
+                        const path &#x3D; this.getPath().join(&#x27;/&#x27;);
+                        this.openInEditor(path);
+                      },
+                    },
+                  ]),
+              }),
+              this.resourceAction({
+                actionbar,
+                title: &#x27;Asset Group&#x27;,
+                relation: &#x27;assetGroup&#x27;,
+                path: &#x27;asset-group&#x27;,
+                api: dm,
+                action: () &#x3D;&gt; this.openCurrentPath(),
+              }),
+              this.resourceAction({
+                actionbar,
+                title: &#x27;Datamanager Accounts&#x27;,
+                relation: &#x27;dmAccount&#x27;,
+                api: dm,
+                action: () &#x3D;&gt; this.openCurrentPath(),
+              }),
+              {
+                title: &#x27;Edit&#x27;,
+                id: &#x27;edit&#x27;,
+                action: () &#x3D;&gt; this.openCurrentPath(),
+              },
+            ]);
+          },
+        }),
+    },
+    {
+      id: &#x27;accounts&#x27;,
+      title: &#x27;Account Server&#x27;,
+      action: (item, actionbar) &#x3D;&gt;
+        this.loadApiRelationActions(this.sdk.accounts, actionbar, () &#x3D;&gt; this.openCurrentPath()),
+    },
+  ]</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">packages/data/src/lib/resource-actionbar/api-actionbar.component.ts:15</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">packages/data/src/lib/resource-actionbar/api-actionbar.component.ts:13</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -482,7 +482,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in ResourceActionbarComponent:29</div>
+                                    <div class="io-line">Defined in ResourceActionbarComponent:28</div>
                             </td>
                         </tr>
             </tbody>
@@ -512,7 +512,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in ResourceActionbarComponent:26</div>
+                                    <div class="io-line">Defined in ResourceActionbarComponent:25</div>
                             </td>
                         </tr>
             </tbody>
@@ -539,7 +539,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in ResourceActionbarComponent:27</div>
+                                    <div class="io-line">Defined in ResourceActionbarComponent:26</div>
                             </td>
                         </tr>
             </tbody>
@@ -574,7 +574,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">packages/data/src/lib/resource-actionbar/api-actionbar.component.ts:112</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">packages/data/src/lib/resource-actionbar/api-actionbar.component.ts:104</a></div>
                             </td>
                         </tr>
 
@@ -675,7 +675,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="135" class="link-to-prism">packages/data/src/lib/resource-actionbar/api-actionbar.component.ts:135</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="127" class="link-to-prism">packages/data/src/lib/resource-actionbar/api-actionbar.component.ts:127</a></div>
                             </td>
                         </tr>
 
@@ -713,7 +713,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="125" class="link-to-prism">packages/data/src/lib/resource-actionbar/api-actionbar.component.ts:125</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="117" class="link-to-prism">packages/data/src/lib/resource-actionbar/api-actionbar.component.ts:117</a></div>
                             </td>
                         </tr>
 
@@ -751,7 +751,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="131" class="link-to-prism">packages/data/src/lib/resource-actionbar/api-actionbar.component.ts:131</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="123" class="link-to-prism">packages/data/src/lib/resource-actionbar/api-actionbar.component.ts:123</a></div>
                             </td>
                         </tr>
 
@@ -843,7 +843,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in ResourceActionbarComponent:148</div>
+                                    <div class="io-line">Defined in ResourceActionbarComponent:155</div>
                             </td>
                         </tr>
 
@@ -929,7 +929,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in ResourceActionbarComponent:56</div>
+                                    <div class="io-line">Defined in ResourceActionbarComponent:55</div>
                             </td>
                         </tr>
 
@@ -1028,7 +1028,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in ResourceActionbarComponent:102</div>
+                                    <div class="io-line">Defined in ResourceActionbarComponent:100</div>
                             </td>
                         </tr>
 
@@ -1121,7 +1121,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in ResourceActionbarComponent:41</div>
+                                    <div class="io-line">Defined in ResourceActionbarComponent:40</div>
                             </td>
                         </tr>
 
@@ -1165,7 +1165,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in ResourceActionbarComponent:95</div>
+                                    <div class="io-line">Defined in ResourceActionbarComponent:93</div>
                             </td>
                         </tr>
 
@@ -1209,7 +1209,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in ResourceActionbarComponent:128</div>
+                                    <div class="io-line">Defined in ResourceActionbarComponent:130</div>
                             </td>
                         </tr>
 
@@ -1283,7 +1283,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">packages/data/src/lib/resource-actionbar/api-actionbar.component.ts:101</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">packages/data/src/lib/resource-actionbar/api-actionbar.component.ts:99</a></div>
                             </td>
                         </tr>
 
@@ -1311,7 +1311,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">packages/data/src/lib/resource-actionbar/api-actionbar.component.ts:100</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">packages/data/src/lib/resource-actionbar/api-actionbar.component.ts:98</a></div>
                             </td>
                         </tr>
 
@@ -1339,7 +1339,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">packages/data/src/lib/resource-actionbar/api-actionbar.component.ts:97</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">packages/data/src/lib/resource-actionbar/api-actionbar.component.ts:95</a></div>
                             </td>
                         </tr>
 
@@ -1367,7 +1367,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">packages/data/src/lib/resource-actionbar/api-actionbar.component.ts:99</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="97" class="link-to-prism">packages/data/src/lib/resource-actionbar/api-actionbar.component.ts:97</a></div>
                             </td>
                         </tr>
 
@@ -1395,7 +1395,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">packages/data/src/lib/resource-actionbar/api-actionbar.component.ts:98</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">packages/data/src/lib/resource-actionbar/api-actionbar.component.ts:96</a></div>
                             </td>
                         </tr>
 
@@ -1429,7 +1429,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in ResourceActionbarComponent:36</div>
+                                    <div class="io-line">Defined in ResourceActionbarComponent:35</div>
                             </td>
                         </tr>
 
@@ -1463,7 +1463,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in ResourceActionbarComponent:35</div>
+                                    <div class="io-line">Defined in ResourceActionbarComponent:34</div>
                             </td>
                         </tr>
 
@@ -1497,7 +1497,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in ResourceActionbarComponent:32</div>
+                                    <div class="io-line">Defined in ResourceActionbarComponent:31</div>
                             </td>
                         </tr>
 
@@ -1531,7 +1531,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in ResourceActionbarComponent:34</div>
+                                    <div class="io-line">Defined in ResourceActionbarComponent:33</div>
                             </td>
                         </tr>
 
@@ -1565,7 +1565,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in ResourceActionbarComponent:33</div>
+                                    <div class="io-line">Defined in ResourceActionbarComponent:32</div>
                             </td>
                         </tr>
 
@@ -1598,7 +1598,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in ResourceActionbarComponent:24</div>
+                                    <div class="io-line">Defined in ResourceActionbarComponent:23</div>
                             </td>
                         </tr>
 
@@ -1618,136 +1618,128 @@ import { ResourceConfig } from &#x27;../resource-config/resource-config.service&
 import { SdkService } from &#x27;../sdk/sdk.service&#x27;;
 import { ResourceActionbarComponent } from &#x27;./resource-actionbar.component&#x27;;
 
-
 @Component({
-    selector: &#x27;ec-api-actionbar&#x27;,
-    template: selectTemplate
+  selector: &#x27;ec-api-actionbar&#x27;,
+  template: selectTemplate,
 })
 export class ApiActionbarComponent extends ResourceActionbarComponent implements OnInit {
+  @Input() actions: Action[] &#x3D; [
+    {
+      id: &#x27;data&#x27;,
+      title: &#x27;Datamanager&#x27;,
+      action: (item, actionbar) &#x3D;&gt;
+        this.loadResourceListActions({
+          api: this.sdk.datamanager,
+          relation: &#x27;dataManager&#x27;,
+          actionbar,
+          action: (dm) &#x3D;&gt; {
+            this.sdk.useDatamanager(dm.shortID);
+            actionbar.loadActions([
+              this.resourceAction({
+                actionbar,
+                title: &#x27;Models&#x27;,
+                relation: &#x27;model&#x27;,
+                api: dm,
+                action: (model) &#x3D;&gt;
+                  actionbar.loadActions([
+                    {
+                      id: &#x27;entry&#x27;,
+                      title: &#x27;Entries&#x27;,
+                      action: () &#x3D;&gt; {
+                        this.sdk.api.entryList(model.title).then((entryList) &#x3D;&gt; {
+                          const actions &#x3D; entryList.getAllItems().map((listEntry) &#x3D;&gt; {
+                            return {
+                              title: listEntry._entryTitle,
+                              id: listEntry.id,
+                              data: listEntry,
+                              action: (entryItem) &#x3D;&gt; {
+                                const path &#x3D; this.getPath().join(&#x27;/&#x27;);
+                                this.openInEditor(path);
+                              },
+                            };
+                          });
+                          actionbar.loadActions(actions);
+                        });
+                      },
+                    },
+                    {
+                      id: &#x27;edit&#x27;,
+                      title: &#x27;Edit Model&#x27;,
+                      action: () &#x3D;&gt; {
+                        const path &#x3D; this.getPath().join(&#x27;/&#x27;);
+                        this.openInEditor(path);
+                      },
+                    },
+                  ]),
+              }),
+              this.resourceAction({
+                actionbar,
+                title: &#x27;Asset Group&#x27;,
+                relation: &#x27;assetGroup&#x27;,
+                path: &#x27;asset-group&#x27;,
+                api: dm,
+                action: () &#x3D;&gt; this.openCurrentPath(),
+              }),
+              this.resourceAction({
+                actionbar,
+                title: &#x27;Datamanager Accounts&#x27;,
+                relation: &#x27;dmAccount&#x27;,
+                api: dm,
+                action: () &#x3D;&gt; this.openCurrentPath(),
+              }),
+              {
+                title: &#x27;Edit&#x27;,
+                id: &#x27;edit&#x27;,
+                action: () &#x3D;&gt; this.openCurrentPath(),
+              },
+            ]);
+          },
+        }),
+    },
+    {
+      id: &#x27;accounts&#x27;,
+      title: &#x27;Account Server&#x27;,
+      action: (item, actionbar) &#x3D;&gt;
+        this.loadApiRelationActions(this.sdk.accounts, actionbar, () &#x3D;&gt; this.openCurrentPath()),
+    },
+  ];
 
-    @Input() actions: Action[] &#x3D; [
-        {
-            id: &#x27;data&#x27;,
-            title: &#x27;Datamanager&#x27;,
-            action: (item, actionbar) &#x3D;&gt; this.loadResourceListActions({
-                api: this.sdk.datamanager, relation: &#x27;dataManager&#x27;, actionbar,
-                action: (dm) &#x3D;&gt; {
-                    this.sdk.useDatamanager(dm.shortID);
-                    actionbar.loadActions([
-                        this.resourceAction({
-                            actionbar,
-                            title: &#x27;Models&#x27;,
-                            relation: &#x27;model&#x27;,
-                            api: dm,
-                            action: (model) &#x3D;&gt; actionbar.loadActions(
-                                [{
-                                    id: &#x27;entry&#x27;,
-                                    title: &#x27;Entries&#x27;,
-                                    action: () &#x3D;&gt; {
-                                        this.sdk.api.entryList(model.title).then((entryList) &#x3D;&gt; {
-                                            const actions &#x3D; entryList.getAllItems()
-                                                .map(listEntry &#x3D;&gt; {
-                                                    return {
-                                                        title: listEntry._entryTitle,
-                                                        id: listEntry.id,
-                                                        data: listEntry,
-                                                        action: (entryItem) &#x3D;&gt; {
-                                                            const path &#x3D; this.getPath().join(&#x27;/&#x27;);
-                                                            this.openInEditor(path);
-                                                        }
-                                                    };
-                                                });
-                                            actionbar.loadActions(actions);
-                                        });
-                                    }
-                                },
-                                {
-                                    id: &#x27;edit&#x27;,
-                                    title: &#x27;Edit Model&#x27;,
-                                    action: () &#x3D;&gt; {
-                                        const path &#x3D; this.getPath().join(&#x27;/&#x27;);
-                                        this.openInEditor(path);
-                                    }
-                                }]
-                            )
-                        }),
-                        this.resourceAction({
-                            actionbar,
-                            title: &#x27;Asset Group&#x27;,
-                            relation: &#x27;assetGroup&#x27;,
-                            path: &#x27;asset-group&#x27;,
-                            api: dm,
-                            action: () &#x3D;&gt; this.openCurrentPath()
-                        }),
-                        this.resourceAction({
-                            actionbar,
-                            title: &#x27;Datamanager Accounts&#x27;,
-                            relation: &#x27;dmAccount&#x27;,
-                            api: dm,
-                            action: () &#x3D;&gt; this.openCurrentPath()
-                        }),
-                        {
-                            title: &#x27;Edit&#x27;,
-                            id: &#x27;edit&#x27;,
-                            action: () &#x3D;&gt; this.openCurrentPath()
-                        },
-                    ]);
-                }
-            })
-        },
-        {
-            id: &#x27;accounts&#x27;,
-            title: &#x27;Account Server&#x27;,
-            action: (item, actionbar) &#x3D;&gt;
-                this.loadApiRelationActions(
-                    this.sdk.accounts, actionbar,
-                    () &#x3D;&gt; this.openCurrentPath()
-                )
-        }
-    ];
+  constructor(
+    public notificationService: NotificationsService,
+    public sdk: SdkService,
+    public resourceConfig: ResourceConfig,
+    public elementRef: ElementRef,
+    public cdr: ChangeDetectorRef,
+  ) {
+    super(notificationService, sdk, resourceConfig, elementRef, cdr);
+  }
 
-    constructor(
-        public notificationService: NotificationsService,
-        public sdk: SdkService,
-        public resourceConfig: ResourceConfig,
-        public elementRef: ElementRef,
-        public cdr: ChangeDetectorRef,
-    ) {
-        super(
-            notificationService,
-            sdk,
-            resourceConfig,
-            elementRef,
-            cdr
-        );
-    }
+  loadApiRelationActions(api: Core, actionbar: ActionbarComponent &#x3D; this, action?: ActionFunction) {
+    const actions &#x3D; Object.keys(api.getAvailableRelations()).map((relationName) &#x3D;&gt; ({
+      id: relationName,
+      title: relationName,
+      relation: relationName,
+      action: (item) &#x3D;&gt; {
+        // console.log(&#x27;selected sub relation&#x27;, relationName, api);
+        this.loadResourceListActions({ api, relation: relationName, actionbar, action });
+      },
+    }));
+    actionbar.loadActions(actions);
+  }
 
-    loadApiRelationActions(api: Core, actionbar: ActionbarComponent &#x3D; this, action?: ActionFunction) {
-        const actions &#x3D; Object.keys(api.getAvailableRelations()).map(relationName &#x3D;&gt; ({
-            id: relationName,
-            title: relationName,
-            relation: relationName,
-            action: (item) &#x3D;&gt; {
-                // console.log(&#x27;selected sub relation&#x27;, relationName, api);
-                this.loadResourceListActions({ api, relation: relationName, actionbar, action });
-            }
-        }));
-        actionbar.loadActions(actions);
-    }
+  openCurrentPath() {
+    const path &#x3D; this.getPath().join(&#x27;/&#x27;);
+    console.log(&#x27;open current path&#x27;, path);
+    this.openInEditor(path);
+  }
 
-    openCurrentPath() {
-        const path &#x3D; this.getPath().join(&#x27;/&#x27;);
-        console.log(&#x27;open current path&#x27;, path);
-        this.openInEditor(path);
-    }
+  openInEditor(path, env &#x3D; &#x27;stage&#x27;) {
+    window.open(&#x60;https://localhost:1337/${env}/${path}&#x60;, &#x27;_blank&#x27;);
+  }
 
-    openInEditor(path, env &#x3D; &#x27;stage&#x27;) {
-        window.open(&#x60;https://localhost:1337/${env}/${path}&#x60;, &#x27;_blank&#x27;);
-    }
-
-    ngOnInit() {
-        this.loadActions(this.actions);
-    }
+  ngOnInit() {
+    this.loadActions(this.actions);
+  }
 }
 </code></pre>
     </div>

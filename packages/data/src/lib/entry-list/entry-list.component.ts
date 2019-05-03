@@ -1,7 +1,13 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, Optional } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ListConfig } from '@ec.components/core';
-import { ListConfigService, LoaderService, NotificationsService, SymbolService, ListComponent } from '@ec.components/ui';
+import {
+  ListConfigService,
+  LoaderService,
+  NotificationsService,
+  SymbolService,
+  ListComponent,
+} from '@ec.components/ui';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { EntryService } from '../entry/entry.service';
 import { ModelConfigService } from '../model-config/model-config.service';
@@ -13,11 +19,11 @@ import { listTemplate } from '@ec.components/ui';
 
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent
  * <example-url>https://components.entrecode.de/entries/entry-list?e=1</example-url>
-*/
+ */
 @Component({
   selector: 'ec-entry-list',
   template: listTemplate,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EntryListComponent extends ResourceListComponent {
   /** The model whose entries should be shown.*/
@@ -26,7 +32,8 @@ export class EntryListComponent extends ResourceListComponent {
   config: ListConfig<EntryResource> = {};
 
   /** The constructor will just call super of List*/
-  constructor(protected loaderService: LoaderService,
+  constructor(
+    protected loaderService: LoaderService,
     protected sdk: SdkService,
     protected notificationService: NotificationsService,
     protected modelConfig: ModelConfigService,
@@ -35,15 +42,9 @@ export class EntryListComponent extends ResourceListComponent {
     protected resourceService: ResourceService,
     public listConfig: ListConfigService,
     public cdr: ChangeDetectorRef,
-    @Optional() public route: ActivatedRoute) {
-    super(loaderService,
-      sdk,
-      notificationService,
-      symbol,
-      resourceService,
-      listConfig,
-      cdr,
-      route);
+    @Optional() public route: ActivatedRoute,
+  ) {
+    super(loaderService, sdk, notificationService, symbol, resourceService, listConfig, cdr, route);
     /*if (route) {
       route.params.subscribe(({ model }) => {
         if (model) {
@@ -60,7 +61,7 @@ export class EntryListComponent extends ResourceListComponent {
       if (target[0] === this.model && field) {
         return {
           property: target[1],
-          value: field.queryFilter ? field.queryFilter(value) : value
+          value: field.queryFilter ? field.queryFilter(value) : value,
         };
       }
     });
@@ -70,14 +71,13 @@ export class EntryListComponent extends ResourceListComponent {
     if (!this.model) {
       return;
     }
-    this.resourceService.change({ relation: `model.${this.model}` })
-      .subscribe((update) => this.list.load());
-    return this.modelConfig.generateConfig(this.model, (this.config || {}).fields)
+    this.resourceService.change({ relation: `model.${this.model}` }).subscribe((update) => this.list.load());
+    return this.modelConfig
+      .generateConfig(this.model, (this.config || {}).fields)
       .then((config: ListConfig<EntryResource>) => {
         this.config = Object.assign(this.config || {}, config);
         this.initFilter();
         return new EntryList(this.model, this.config, this.sdk);
       });
-
   }
 }

@@ -5,19 +5,23 @@ import { Item, Form } from '@ec.components/core';
  */
 
 describe('Form', () => {
-  const person = new Item({
-    name: 'Tom',
-    age: 10,
-    dead: false
-  }, {
+  const person = new Item(
+    {
+      name: 'Tom',
+      age: 10,
+      dead: false,
+    },
+    {
       fields: {
         name: {
-          type: 'string'
-        }, age: {
-          type: 'number'
-        }
-      }
-    });
+          type: 'string',
+        },
+        age: {
+          type: 'number',
+        },
+      },
+    },
+  );
 
   it('should construct empty', () => {
     const form = new Form({});
@@ -35,15 +39,15 @@ describe('Form', () => {
 
   it('should construct with config only', () => {
     const form = new Form({}, person['config']);
-    expect(form.fields.map(f => f.property)).toEqual(['name', 'age']);
-    expect(form.fields.map(f => f.type)).toEqual(['string', 'number']);
+    expect(form.fields.map((f) => f.property)).toEqual(['name', 'age']);
+    expect(form.fields.map((f) => f.type)).toEqual(['string', 'number']);
     expect(form.getField('name').property).toBe('name');
   });
 
   it('should construct with both and config is prefered', () => {
     const form = new Form(person['body'], person['config']);
-    expect(form.fields.map(f => f.property)).toEqual(['name', 'age']);
-    expect(form.fields.map(f => f.type)).toEqual(['string', 'number']);
+    expect(form.fields.map((f) => f.property)).toEqual(['name', 'age']);
+    expect(form.fields.map((f) => f.type)).toEqual(['string', 'number']);
   });
 
   it('should getValue', () => {

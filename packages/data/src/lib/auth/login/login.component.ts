@@ -5,7 +5,7 @@ import {
   Notification,
   LoaderComponent,
   NotificationsService,
-  WithLoader
+  WithLoader,
 } from '@ec.components/ui';
 import PublicAPI from 'ec.sdk/lib/PublicAPI';
 import AccountResource from 'ec.sdk/lib/resources/accounts/AccountResource';
@@ -13,12 +13,11 @@ import { AuthService } from '../auth.service';
 
 /** Uses LoginFormComponent. Tries to login via AuthService. Shows notifications and nexts success Subject if login was successful.
  * <example-url>https://components.entrecode.de/auth/auth?e=1</example-url>
-*/
+ */
 @Component({
   selector: 'ec-login',
-  templateUrl: 'login.component.html'
+  templateUrl: 'login.component.html',
 })
-
 export class LoginComponent implements WithLoader, WithNotifications {
   /** You can optionally specify PublicAPI instance. Defaults to SdkService#api. */
   @Input() api: PublicAPI;
@@ -31,18 +30,20 @@ export class LoginComponent implements WithLoader, WithNotifications {
   /** Error notifications */
   notifications: Notification[] = [];
 
-  constructor(public auth: AuthService,
+  constructor(
+    public auth: AuthService,
     public notificationService: NotificationsService,
-    public symbol: SymbolService) {
-  }
+    public symbol: SymbolService,
+  ) {}
   /** Communicates with the AuthService. Handles loader, notifications and success Subject. */
   login({ email, password }) {
-    const login = this.auth.login({ email, password }, this.api)
+    const login = this.auth
+      .login({ email, password }, this.api)
       .then((user) => {
         this.notificationService.emit({
           type: 'success',
           title: this.symbol.resolve('login.success'),
-          hide: this.notifications
+          hide: this.notifications,
         });
         this.success.emit(user);
       })
@@ -52,7 +53,7 @@ export class LoginComponent implements WithLoader, WithNotifications {
           error,
           sticky: true,
           hide: this.notifications,
-          replace: this.notifications
+          replace: this.notifications,
         });
         this.error.next(error);
         console.log('could not login', error);

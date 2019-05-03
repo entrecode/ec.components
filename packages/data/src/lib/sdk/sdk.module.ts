@@ -7,9 +7,6 @@ import { SdkService } from './sdk.service';
   declarations: [],
   imports: [],
   exports: [],
-  providers: [
-    SdkService
-  ],
+  providers: [SdkService],
 })
-export class SdkModule {
-}
+export class SdkModule {}

@@ -228,7 +228,7 @@ setClientID.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:67</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:71</a></div>
                             </td>
                         </tr>
 
@@ -310,7 +310,7 @@ setClientID.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:58</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:59</a></div>
                             </td>
                         </tr>
 
@@ -381,7 +381,7 @@ setClientID.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="116" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:116</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="128" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:128</a></div>
                             </td>
                         </tr>
 
@@ -464,7 +464,7 @@ setClientID.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:85</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:89</a></div>
                             </td>
                         </tr>
 
@@ -581,7 +581,7 @@ setClientID.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="160" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:160</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="174" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:174</a></div>
                             </td>
                         </tr>
 
@@ -650,7 +650,7 @@ setClientID.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:31</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:29</a></div>
                             </td>
                         </tr>
 
@@ -725,7 +725,7 @@ setClientID.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="150" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:150</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="160" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:160</a></div>
                             </td>
                         </tr>
 
@@ -792,7 +792,7 @@ setClientID.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="174" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:174</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="190" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:190</a></div>
                             </td>
                         </tr>
 
@@ -830,7 +830,7 @@ setClientID.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="138" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:138</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="149" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:149</a></div>
                             </td>
                         </tr>
 
@@ -906,7 +906,7 @@ setClientID.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:77</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:81</a></div>
                             </td>
                         </tr>
 
@@ -989,7 +989,7 @@ setClientID.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:45</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">packages/data/src/lib/auth/auth.service.ts:44</a></div>
                             </td>
                         </tr>
 
@@ -1073,10 +1073,8 @@ import { SdkService } from &#x27;../sdk/sdk.service&#x27;;
  */
 @Injectable()
 export class AuthService {
-
   /** Calls init and sets ready to true when finished. */
-  constructor(private resourceConfig: ResourceConfig, private sdk: SdkService) {
-  }
+  constructor(private resourceConfig: ResourceConfig, private sdk: SdkService) {}
 
   /** Generic login that works with both public and admin API. */
   login({ email, password }, api?) {
@@ -1087,7 +1085,8 @@ export class AuthService {
       .then((resolvedAPI) &#x3D;&gt; {
         const _api &#x3D; resolvedAPI || this.sdk.session;
         return !_api ? Promise.reject(&#x27;api_not_found&#x27;) : _api.login(email, password);
-      }).then(() &#x3D;&gt; {
+      })
+      .then(() &#x3D;&gt; {
         return this.sdk.init();
       });
   }
@@ -1097,21 +1096,26 @@ export class AuthService {
     if (this.noClientID()) {
       return Promise.reject(this.noClientID());
     }
-    return api ? api.signup(email, password, invite) :
-      this.sdk.api.signup(email, password, invite)
-        .catch(() &#x3D;&gt; this.sdk.accounts.signup(email, password, invite))
-        .then((res) &#x3D;&gt; {
-          return this.sdk.init();
-        });
+    return api
+      ? api.signup(email, password, invite)
+      : this.sdk.api
+          .signup(email, password, invite)
+          .catch(() &#x3D;&gt; this.sdk.accounts.signup(email, password, invite))
+          .then((res) &#x3D;&gt; {
+            return this.sdk.init();
+          });
   }
 
   /** Returns the current account. Works for all apis */
   getAccount(api &#x3D; this.sdk.api) {
-    return api.me().then((account) &#x3D;&gt; {
-      return account || this.sdk.accounts.me();
-    }).catch((err) &#x3D;&gt; {
-      return this.sdk.api.me();
-    });
+    return api
+      .me()
+      .then((account) &#x3D;&gt; {
+        return account || this.sdk.accounts.me();
+      })
+      .catch((err) &#x3D;&gt; {
+        return this.sdk.api.me();
+      });
   }
 
   /** checks given public permission for given api, defaults to this.sdk.api. Also works as ec user */
@@ -1133,7 +1137,12 @@ export class AuthService {
   }
 
   /** Returns only the allowed methods for a given relation. Uses the permissions config option from resource-config. */
-  getAllowedResourceMethods(relation: string, variables: Object &#x3D; {}, methods?: string[], api?: Core): Promise&lt;string[]&gt; {
+  getAllowedResourceMethods(
+    relation: string,
+    variables: Object &#x3D; {},
+    methods?: string[],
+    api?: Core,
+  ): Promise&lt;string[]&gt; {
     if (methods) {
       return Promise.resolve(methods);
     }
@@ -1144,21 +1153,24 @@ export class AuthService {
     const permissions &#x3D; this.resourceConfig.get(relation).permissions;
     return Object.keys(permissions)
       .map((method) &#x3D;&gt; (results) &#x3D;&gt; {
-        return !permissions[method] ? Promise.resolve(results) :
-          permissions[method] &#x3D;&#x3D;&#x3D; true ? Promise.resolve(results.concat(method)) :
-            this.checkPermission(&#x60;${this.resolveVariables(permissions[method], variables)}&#x60;, api)
-              .then(res &#x3D;&gt; {
+        return !permissions[method]
+          ? Promise.resolve(results)
+          : permissions[method] &#x3D;&#x3D;&#x3D; true
+          ? Promise.resolve(results.concat(method))
+          : this.checkPermission(&#x60;${this.resolveVariables(permissions[method], variables)}&#x60;, api)
+              .then((res) &#x3D;&gt; {
                 if (res) {
                   results.push(method);
                 }
                 return results;
-              }).catch(err &#x3D;&gt; {
+              })
+              .catch((err) &#x3D;&gt; {
                 return results;
               });
       })
-      .reduce((a, b) &#x3D;&gt; a.then(r &#x3D;&gt; b(r)), Promise.resolve([]))
-      .then(_methods &#x3D;&gt; {
-        _methods.filter(x &#x3D;&gt; !!x);
+      .reduce((a, b) &#x3D;&gt; a.then((r) &#x3D;&gt; b(r)), Promise.resolve([]))
+      .then((_methods) &#x3D;&gt; {
+        _methods.filter((x) &#x3D;&gt; !!x);
         return _methods;
       });
   }
@@ -1170,17 +1182,16 @@ export class AuthService {
     }
     return [&#x27;get&#x27;, &#x27;post&#x27;, &#x27;put&#x27;, &#x27;delete&#x27;]
       .map((method) &#x3D;&gt; (results) &#x3D;&gt;
-        this.checkPermission(&#x60;${model}:${method}&#x60;, this.sdk.api)
-          .then(res &#x3D;&gt; {
-            if (res) {
-              results.push(method);
-            }
-            return results;
-          })
+        this.checkPermission(&#x60;${model}:${method}&#x60;, this.sdk.api).then((res) &#x3D;&gt; {
+          if (res) {
+            results.push(method);
+          }
+          return results;
+        }),
       )
-      .reduce((a, b) &#x3D;&gt; a.then(r &#x3D;&gt; b(r)), Promise.resolve([]))
-      .then(_methods &#x3D;&gt; {
-        _methods.filter(x &#x3D;&gt; !!x);
+      .reduce((a, b) &#x3D;&gt; a.then((r) &#x3D;&gt; b(r)), Promise.resolve([]))
+      .then((_methods) &#x3D;&gt; {
+        _methods.filter((x) &#x3D;&gt; !!x);
         return _methods;
       });
   }
@@ -1190,11 +1201,10 @@ export class AuthService {
     if (this.noClientID()) {
       return Promise.reject(this.noClientID());
     }
-    return Promise.resolve(api || this.getApi(email))
-      .then((resolvedAPI) &#x3D;&gt; {
-        const _api &#x3D; resolvedAPI || this.sdk.accounts;
-        return !_api ? Promise.reject(&#x27;api_not_found&#x27;) : _api.resetPassword(email);
-      });
+    return Promise.resolve(api || this.getApi(email)).then((resolvedAPI) &#x3D;&gt; {
+      const _api &#x3D; resolvedAPI || this.sdk.accounts;
+      return !_api ? Promise.reject(&#x27;api_not_found&#x27;) : _api.resetPassword(email);
+    });
   }
 
   /** Generic logout that works with both public and admin API. */
@@ -1202,22 +1212,28 @@ export class AuthService {
     if (this.noClientID()) {
       return Promise.reject(this.noClientID());
     }
-    return api ? api.logout() : this.sdk.session.logout().catch(() &#x3D;&gt; this.sdk.api.logout())
-      .then(() &#x3D;&gt; {
-        return this.sdk.init();
-      });
+    return api
+      ? api.logout()
+      : this.sdk.session
+          .logout()
+          .catch(() &#x3D;&gt; this.sdk.api.logout())
+          .then(() &#x3D;&gt; {
+            return this.sdk.init();
+          });
   }
 
   getApi(email: string) {
     if (!this.sdk.api &amp;&amp; !this.sdk.accounts) {
       return Promise.reject(&#x27;no_api_found&#x27;);
     }
-    return this.sdk.api.emailAvailable(email)
+    return this.sdk.api
+      .emailAvailable(email)
       .then((available) &#x3D;&gt; {
         if (!available) {
           return this.sdk.api;
         }
-      }).catch(() &#x3D;&gt; {
+      })
+      .catch(() &#x3D;&gt; {
         return;
       });
   }

@@ -27,7 +27,7 @@ export class FormDemoComponent {
   myNan;
   testField = new Field('test', {
     view: 'string',
-    input: DefaultInputComponent
+    input: DefaultInputComponent,
   });
   layoutDemoConfig = {
     fields: {
@@ -35,47 +35,47 @@ export class FormDemoComponent {
         input: TagSelectComponent,
         nestedCrudConfig: {
           label: 'tag',
-          disableHeader: true
-        }
+          disableHeader: true,
+        },
       },
       forename: {
         view: 'string',
-        columns: 6
+        columns: 6,
       },
       lastname: {
         view: 'string',
-        columns: 6
+        columns: 6,
       },
       street: {
         view: 'string',
-        columns: 4
+        columns: 4,
       },
       plz: {
         view: 'string',
-        columns: 4
+        columns: 4,
       },
       city: {
         view: 'string',
-        columns: 4
+        columns: 4,
       },
       count: {
         view: 'number',
-        create: false
+        create: false,
       },
       delivered: {
         view: 'boolean',
         readonly: true,
-        prefill: true
-      }
-    }
+        prefill: true,
+      },
+    },
   };
 
   customFormConfig = {
     fields: {
       count: {
-        input: CounterComponent
-      }
-    }
+        input: CounterComponent,
+      },
+    },
   };
 
   constructor() {

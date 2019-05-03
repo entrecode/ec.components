@@ -208,19 +208,19 @@ import { SymbolService } from &#x27;./symbol.service&#x27;;
  * See SymbolService for more info about Symbols.
  */
 @Pipe({
-    name: &#x27;symbol&#x27;
+  name: &#x27;symbol&#x27;,
 })
 @Injectable()
 export class SymbolPipe implements PipeTransform {
-    /** Depends on the SymbolService */
-    constructor(private symbol: SymbolService) { }
-    /** Calls SymbolService.resolve with the given name */
-    transform(name: string): string {
-        if (!name) {
-            return &#x27;&#x27;;
-        }
-        return this.symbol.resolve(name) || &#x27;&#x27;;
+  /** Depends on the SymbolService */
+  constructor(private symbol: SymbolService) {}
+  /** Calls SymbolService.resolve with the given name */
+  transform(name: string): string {
+    if (!name) {
+      return &#x27;&#x27;;
     }
+    return this.symbol.resolve(name) || &#x27;&#x27;;
+  }
 }
 </code></pre>
     </div>

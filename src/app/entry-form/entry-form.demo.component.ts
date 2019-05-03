@@ -10,11 +10,11 @@ export class EntryFormDemoComponent {
     fields: {
       property: {
         label: 'Property',
-        view: 'string'
+        view: 'string',
       },
       label: {
         label: 'Label',
-        view: 'string'
+        view: 'string',
       },
       type: {
         label: 'Typ',
@@ -36,35 +36,36 @@ export class EntryFormDemoComponent {
           'json',
           'account',
           'role',
-          'location']
+          'location',
+        ],
       },
       relation: {
         label: 'Relation',
-        view: 'string'
+        view: 'string',
       },
-    }
+    },
   };
   formConfig = {
     fields: {
       name: {
         label: 'Name',
-        type: 'text'
+        type: 'text',
       },
       amazement_factor: {
         label: 'Amazement Faktor',
         type: 'number',
-        readOnly: true
+        readOnly: true,
       },
       test_asset: {
         label: 'Test Asset',
         type: 'asset',
         relation: 'test',
-        input: DefaultEntryInputComponent
-      }
+        input: DefaultEntryInputComponent,
+      },
     },
     onSave: (item) => {
       console.log('on save', item);
-    }
+    },
   };
 
   addField(item, form, pop) {

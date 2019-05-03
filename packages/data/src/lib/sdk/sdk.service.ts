@@ -39,7 +39,9 @@ export class SdkService {
       throw new Error('no api');
     }
     if (!this.roots[this._api.dataManagerID]) {
-      this.roots[this._api.dataManagerID] = this.ready.then(() => this.datamanager.dataManager(this._api.dataManagerID));
+      this.roots[this._api.dataManagerID] = this.ready.then(() =>
+        this.datamanager.dataManager(this._api.dataManagerID),
+      );
     }
     return this.roots[this._api.dataManagerID];
   }
@@ -61,7 +63,7 @@ export class SdkService {
   /** Sets the public api */
   set api(api: PublicAPI) {
     this._api = api;
-    this._api.resolve().then(() => this.apiResolved = true);
+    this._api.resolve().then(() => (this.apiResolved = true));
   }
   /** Current DataManager instance */
   public datamanager: DataManager;
@@ -98,12 +100,11 @@ export class SdkService {
     if (environment.datamanagerID) {
       this.useDatamanager(environment.datamanagerID, environment);
     }
-    this.ready = this.getAccount()
-      .then((user) => {
-        this.user = user;
-        this.datamanager = new DataManager(<env>environment.environment);
-        return this.user;
-      });
+    this.ready = this.getAccount().then((user) => {
+      this.user = user;
+      this.datamanager = new DataManager(<env>environment.environment);
+      return this.user;
+    });
     return this.ready;
   }
   /** Uses the given datamanager and optional short id to init api.
@@ -114,7 +115,7 @@ export class SdkService {
     if (environment.clientID) {
       this._api.setClientID(environment.clientID);
     }
-    return this._api.resolve().then(api => {
+    return this._api.resolve().then((api) => {
       this.apiResolved = true;
       return api;
     });
@@ -137,11 +138,14 @@ export class SdkService {
       /* return Promise.reject('getAccount: ' + this.noApi(api)); */
       return Promise.resolve();
     }
-    return api.me().then((account) => {
-      return account || this._api.me();
-    }).catch((error) => {
-      return this._api && this._api.getToken() ? this._api.me() : null;
-    });
+    return api
+      .me()
+      .then((account) => {
+        return account || this._api.me();
+      })
+      .catch((error) => {
+        return this._api && this._api.getToken() ? this._api.me() : null;
+      });
   }
 
   noApi(api: Core = this._api) {

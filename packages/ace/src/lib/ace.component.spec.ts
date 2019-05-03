@@ -10,12 +10,8 @@ describe('AceComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       ...aceModuleConfig,
-      imports: [
-        ...aceModuleConfig.imports,
-        RouterTestingModule
-      ]
-    })
-      .compileComponents();
+      imports: [...aceModuleConfig.imports, RouterTestingModule],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

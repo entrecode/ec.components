@@ -4,12 +4,18 @@ import { mocked } from '../../mocks/data';
 @Component({
   selector: 'ec-list-demo',
   template: `
-<h2>Simple List</h2>
-<a (click)="toggleSelectMode(treeList.list)">toggle select mode</a> |
-<a (click)="toggleColumnFilter(treeList.list)">toggle column filter</a>
-<ec-list class="ec-list-card" [list]="mocked.lists.trees" #treeList [solo]="true" [paginationConfig]="paginationConfig"></ec-list>
-<pre>
-  {{treeList.list.config | json}}
+    <h2>Simple List</h2>
+    <a (click)="toggleSelectMode(treeList.list)">toggle select mode</a> |
+    <a (click)="toggleColumnFilter(treeList.list)">toggle column filter</a>
+    <ec-list
+      class="ec-list-card"
+      [list]="mocked.lists.trees"
+      #treeList
+      [solo]="true"
+      [paginationConfig]="paginationConfig"
+    ></ec-list>
+    <pre>
+  {{ treeList.list.config | json }}
 </pre>
   `,
 })
@@ -17,10 +23,9 @@ export class ListDemoComponent {
   public mocked = mocked;
   public paginationConfig = {
     hideFirstLast: true,
-    sizes: [3, 10]
+    sizes: [3, 10],
   };
-  constructor() {
-  }
+  constructor() {}
 
   log(wort) {
     console.log('log', wort);

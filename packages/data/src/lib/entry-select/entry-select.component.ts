@@ -2,8 +2,17 @@
  * Created by felix on 23.05.17.
  */
 import {
-  ChangeDetectorRef, Component, ElementRef, EventEmitter,
-  forwardRef, Input, OnChanges, OnInit, Output, ViewChild, ViewEncapsulation
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  forwardRef,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  ViewChild,
+  ViewEncapsulation,
 } from '@angular/core';
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Form, Item } from '@ec.components/core';
@@ -22,7 +31,7 @@ import { SdkService } from '../sdk/sdk.service';
 
 /** Shows entries of a selection and is able to pick new ones from a crud list
  * <example-url>https://components.entrecode.de/entries/entry-select?e=1</example-url>
-*/
+ */
 @Component({
   selector: 'ec-entry-select',
   templateUrl: './entry-select.component.html',
@@ -31,9 +40,9 @@ import { SdkService } from '../sdk/sdk.service';
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => EntrySelectComponent),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class EntrySelectComponent extends SelectComponent<EntryResource> implements OnChanges, OnInit {
   /** The item that is targeted by the input */
@@ -80,13 +89,15 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   /** Promise that resolves when the config is ready */
   ready: Promise<CrudConfig<EntryResource>>;
 
-  constructor(private modelConfig: ModelConfigService,
+  constructor(
+    private modelConfig: ModelConfigService,
     public resourceService: ResourceService,
     public symbol: SymbolService,
     public sdk: SdkService,
     public elementRef: ElementRef,
     private auth: AuthService,
-    public cdr: ChangeDetectorRef) {
+    public cdr: ChangeDetectorRef,
+  ) {
     super(elementRef, cdr);
   }
 
@@ -134,15 +145,14 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
       disableHeader: true,
       fields: this.config.dropdownFields || {
         [this.config.label]: Object.assign({}, (this.config.fields || {})[this.config.label]),
-        _modified: { hideInList: true }
-      }
+        _modified: { hideInList: true },
+      },
     });
-    return this.auth.getAllowedModelMethods(this.model, this.config.methods)
-      .then((methods) => {
-        this.cdr.markForCheck();
-        this.config.methods = methods;
-        return this.config;
-      });
+    return this.auth.getAllowedModelMethods(this.model, this.config.methods).then((methods) => {
+      this.cdr.markForCheck();
+      this.config.methods = methods;
+      return this.config;
+    });
   }
 
   /** Returns true if the given method is part of the methods array (or if there is no methods array) */
@@ -152,7 +162,7 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
 
   useModel(model) {
     this.model = model;
-    this.modelConfig.getLightModel(model).then(lightModel => this.lightModel = lightModel);
+    this.modelConfig.getLightModel(model).then((lightModel) => (this.lightModel = lightModel));
     this.initConfig();
   }
 
@@ -166,18 +176,21 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
       return;
     }
     if (!this.model && this.sdk.api) {
-      this.sdk.api.modelList().then(modelList => {
-        this.models = Object.keys(modelList).map(model => modelList[model]);
+      this.sdk.api.modelList().then((modelList) => {
+        this.models = Object.keys(modelList).map((model) => modelList[model]);
       });
       return;
     }
-    this.modelConfig.getLightModel(this.model)
-      .then(model => this.lightModel = model);
+    this.modelConfig.getLightModel(this.model).then((model) => (this.lightModel = model));
 
-    this.ready = this.modelConfig.generateConfig(this.model) // , (this.config || {}).fields
+    this.ready = this.modelConfig
+      .generateConfig(this.model) // , (this.config || {}).fields
       .then((config) => {
-        this.config = Object.assign(config, this.crudConfig,
-          { solo: this.solo, selectMode: false, disableSelectSwitch: true });
+        this.config = Object.assign(config, this.crudConfig, {
+          solo: this.solo,
+          selectMode: false,
+          disableSelectSwitch: true,
+        });
         return this.useConfig(this.config);
       });
   }
@@ -204,8 +217,10 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
     }
     e.preventDefault();
     e.stopPropagation();
-    item.getBody().resolve()
-      .then(entry => {
+    item
+      .getBody()
+      .resolve()
+      .then((entry) => {
         this.entryPop.edit(entry);
       });
   }
@@ -213,7 +228,8 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   formSubmitted(form: Form<EntryResource>) {
     if (!this.selection.has(form)) {
       this.toggleItem.next(form);
-    } else { // already in selection => update body
+    } else {
+      // already in selection => update body
       const index = this.selection.index(form);
       this.selection.items[index].body = form.getBody();
     }
@@ -234,12 +250,13 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   }
 
   pasteValue(e) {
-    const value = (e.clipboardData).getData('text');
+    const value = e.clipboardData.getData('text');
     if (this.config.identifierPattern && value.match(this.config.identifierPattern)) {
       this.preventDefault(e);
-      this.sdk.api.entry(this.model, value)
-        .then(entry => this.addItem(new Item(entry, this.config)))
-        .catch(error => this.searchbar.filterList(value));
+      this.sdk.api
+        .entry(this.model, value)
+        .then((entry) => this.addItem(new Item(entry, this.config)))
+        .catch((error) => this.searchbar.filterList(value));
     }
   }
 

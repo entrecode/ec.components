@@ -545,9 +545,7 @@ import { ResourceActionbarComponent } from &#x27;../resource-actionbar/resource-
 import { ApiActionbarComponent } from &#x27;../resource-actionbar/api-actionbar.component&#x27;;
 
 @NgModule({
-  entryComponents: [
-    ResourceListComponent,
-  ],
+  entryComponents: [ResourceListComponent],
   declarations: [
     ResourceListComponent,
     ResourceListPopComponent,
@@ -559,12 +557,7 @@ import { ApiActionbarComponent } from &#x27;../resource-actionbar/api-actionbar.
     ResourceActionbarComponent,
     ApiActionbarComponent,
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    UiModule,
-    SdkModule,
-  ],
+  imports: [CommonModule, FormsModule, UiModule, SdkModule],
   exports: [
     UiModule,
     SdkModule,
@@ -578,13 +571,9 @@ import { ApiActionbarComponent } from &#x27;../resource-actionbar/api-actionbar.
     ResourceActionbarComponent,
     ApiActionbarComponent,
   ],
-  providers: [
-    ResourceService,
-    ResourceConfig,
-  ],
+  providers: [ResourceService, ResourceConfig],
 })
-export class ResourceModule {
-}
+export class ResourceModule {}
 </code></pre>
     </div>
 </div>

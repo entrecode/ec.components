@@ -10,5 +10,4 @@ export const mediumModuleConfig = {
 };
 
 @NgModule(mediumModuleConfig)
-export class MediumEditorModule {
-}
+export class MediumEditorModule {}

@@ -6,12 +6,11 @@ import { AuthService } from '../auth.service';
 /** Form to send password reset request.
  * <example-url>https://components.entrecode.de/auth/password-reset?e=1</example-url>
  *
-*/
+ */
 @Component({
   selector: 'ec-password-reset',
-  templateUrl: 'password-reset.component.html'
+  templateUrl: 'password-reset.component.html',
 })
-
 export class PasswordResetComponent implements WithLoader {
   /** To ensure the user only sends one request, the form is locked after the request has been sent */
   lockForm: boolean;
@@ -26,25 +25,26 @@ export class PasswordResetComponent implements WithLoader {
   /** The loader */
   @ViewChild(LoaderComponent) loader;
 
-  constructor(public auth: AuthService, public notifications: NotificationsService) {
-  }
+  constructor(public auth: AuthService, public notifications: NotificationsService) {}
   /** Sends request through AuthService and shows notifications + loader. */
   reset() {
-    const reset = this.auth.resetPassword(this.email, this.api)
+    const reset = this.auth
+      .resetPassword(this.email, this.api)
       .then(() => {
         this.notifications.emit({
           type: 'success',
           title: 'Mail versendet',
           message: 'Sie haben soeben eine Mail mit weiteren Anweisungen erhalten',
-          sticky: true
+          sticky: true,
         });
         this.lockForm = true;
         this.success.emit();
-      }).catch((error) => {
+      })
+      .catch((error) => {
         this.notifications.emit({
           title: 'Fehler beim Passwort zurücksetzen',
           error,
-          sticky: true
+          sticky: true,
         });
         console.log('could not reset password', error);
       });

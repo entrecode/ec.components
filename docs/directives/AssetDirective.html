@@ -437,7 +437,7 @@ assets/asset
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">packages/data/src/lib/files/asset/asset.directive.ts:48</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">packages/data/src/lib/files/asset/asset.directive.ts:47</a></div>
                             </td>
                         </tr>
 
@@ -508,7 +508,7 @@ assets/asset
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">packages/data/src/lib/files/asset/asset.directive.ts:37</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">packages/data/src/lib/files/asset/asset.directive.ts:36</a></div>
                             </td>
                         </tr>
 
@@ -658,7 +658,7 @@ import PublicAPI from &#x27;ec.sdk/lib/PublicAPI&#x27;;
  */
 @Directive({
   selector: &#x27;[ecAsset]&#x27;,
-  exportAs: &#x27;ecAsset&#x27;
+  exportAs: &#x27;ecAsset&#x27;,
 })
 export class AssetDirective implements OnChanges {
   /** The loading promise */
@@ -679,8 +679,7 @@ export class AssetDirective implements OnChanges {
   public asset: any;
 
   /** Injects the sdk */
-  constructor(public sdk: SdkService) {
-  }
+  constructor(public sdk: SdkService) {}
 
   /** as soon as model and id are known, the asset will be loaded. */
   ngOnChanges() {
@@ -703,12 +702,11 @@ export class AssetDirective implements OnChanges {
     if (!api) {
       throw new Error(&#x27;cannot load asset: no api was set!&#x27;);
     }
-    this.promise &#x3D; api.asset(this.assetId)
-      .then((asset) &#x3D;&gt; {
-        this.asset &#x3D; asset;
-        this.loaded.emit(asset);
-        return asset;
-      });
+    this.promise &#x3D; api.asset(this.assetId).then((asset) &#x3D;&gt; {
+      this.asset &#x3D; asset;
+      this.loaded.emit(asset);
+      return asset;
+    });
     return this.promise;
   }
 }

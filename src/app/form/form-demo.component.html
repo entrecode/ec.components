@@ -4,49 +4,66 @@
     <ec-form [config]="layoutDemoConfig" (submitted)="logValue($event)"></ec-form>
   </ec-tab>
   <ec-tab label="ec-input">
-    <label>string {{myString}}
-      <ec-input [config]="{view:'string'}" [(ngModel)]="myString"></ec-input>
+    <label
+      >string {{ myString }}
+      <ec-input [config]="{ view: 'string' }" [(ngModel)]="myString"></ec-input>
     </label>
-    <label>number {{myNumber}}
-      <ec-input [config]="{view:'number'}" [(ngModel)]="myNumber"></ec-input>
+    <label
+      >number {{ myNumber }}
+      <ec-input [config]="{ view: 'number' }" [(ngModel)]="myNumber"></ec-input>
     </label>
-    <label>textarea {{myTextarea}}
-      <ec-input [config]="{view:'textarea'}" [(ngModel)]="myTextarea"></ec-input>
+    <label
+      >textarea {{ myTextarea }}
+      <ec-input [config]="{ view: 'textarea' }" [(ngModel)]="myTextarea"></ec-input>
     </label>
-    <label>color {{myColor}}
-      <ec-input [config]="{view:'color'}" [(ngModel)]="myColor"></ec-input>
+    <label
+      >color {{ myColor }}
+      <ec-input [config]="{ view: 'color' }" [(ngModel)]="myColor"></ec-input>
     </label>
-    <label>boolean {{myBoolean}}
-      <ec-input [config]="{view:'boolean'}" [(ngModel)]="myBoolean"></ec-input>
+    <label
+      >boolean {{ myBoolean }}
+      <ec-input [config]="{ view: 'boolean' }" [(ngModel)]="myBoolean"></ec-input>
     </label>
-    <label>email {{myEmail}}
-      <ec-input [config]="{view:'email'}" [(ngModel)]="myEmail"></ec-input>
+    <label
+      >email {{ myEmail }}
+      <ec-input [config]="{ view: 'email' }" [(ngModel)]="myEmail"></ec-input>
     </label>
-    <label>url {{myUrl}}
-      <ec-input [config]="{view:'url'}" [(ngModel)]="myUrl"></ec-input>
+    <label
+      >url {{ myUrl }}
+      <ec-input [config]="{ view: 'url' }" [(ngModel)]="myUrl"></ec-input>
     </label>
-    <label>toggle {{myToggle}}
-      <ec-input [config]="{view:'toggle'}" [(ngModel)]="myToggle"></ec-input>
+    <label
+      >toggle {{ myToggle }}
+      <ec-input [config]="{ view: 'toggle' }" [(ngModel)]="myToggle"></ec-input>
     </label>
-    <label>date {{myDate}}
-      <ec-input [config]="{view:'date'}" [(ngModel)]="myDate"></ec-input>
+    <label
+      >date {{ myDate }}
+      <ec-input [config]="{ view: 'date' }" [(ngModel)]="myDate"></ec-input>
     </label>
-    <label>select {{mySelect}}
-      <ec-input [config]="{view:'select',values:['a','b','c']}" [(ngModel)]="mySelect"></ec-input>
+    <label
+      >select {{ mySelect }}
+      <ec-input [config]="{ view: 'select', values: ['a', 'b', 'c'] }" [(ngModel)]="mySelect"></ec-input>
     </label>
-    <label>select with labels {{mySelect2}}
-      <ec-input [config]="{view:'select',values:[{value:'male',label:'Männlich'},{value:'female',label:'Weiblich'}]}"
-        [(ngModel)]="mySelect2"></ec-input>
+    <label
+      >select with labels {{ mySelect2 }}
+      <ec-input
+        [config]="{
+          view: 'select',
+          values: [{ value: 'male', label: 'Männlich' }, { value: 'female', label: 'Weiblich' }]
+        }"
+        [(ngModel)]="mySelect2"
+      ></ec-input>
     </label>
-    <label>not existing {{myNan}}
-      <ec-input [config]="{view:'not_existing'}" [(ngModel)]="myNan"></ec-input>
+    <label
+      >not existing {{ myNan }}
+      <ec-input [config]="{ view: 'not_existing' }" [(ngModel)]="myNan"></ec-input>
     </label>
     <label>with field object</label>
     <ec-input [field]="testField"></ec-input>
-
   </ec-tab>
   <ec-tab label="empty">
-    <p>If the ec-form element has no contents, the default form will be rendered, which is a list containing all fields
+    <p>
+      If the ec-form element has no contents, the default form will be rendered, which is a list containing all fields
       and a submit button
     </p>
     <ec-form [config]="mocked.lists.trees.config" (submitted)="logValue($event)" #treeEmptyForm></ec-form>
@@ -55,23 +72,31 @@
     <ec-form [item]="mocked.lists.trees.id(0)" (submitted)="logValue($event)"></ec-form>
   </ec-tab>
   <ec-tab label="custom inputs">
-    <p>As soon as you put something inside the ec-form element, the default content will be omitted. You can utilize
-      the ec-input element to automatically render certain fields.</p>
+    <p>
+      As soon as you put something inside the ec-form element, the default content will be omitted. You can utilize the
+      ec-input element to automatically render certain fields.
+    </p>
     <ec-form [item]="mocked.lists.trees.id(0)" (submitted)="logValue($event)" #treeForm>
       <ec-input [field]="treeForm.form.getField('name')" [group]="treeForm.group"></ec-input>
       <ec-input [field]="treeForm.form.getField('height')" [group]="treeForm.group"></ec-input>
       <ec-input [field]="treeForm.form.getField('fruits')" [group]="treeForm.group"></ec-input>
-      <button type="button" (click)="treeForm.submit()" [disabled]="treeForm.group?.invalid" [class.is-disabled]="treeForm.group?.invalid">
+      <button
+        type="button"
+        (click)="treeForm.submit()"
+        [disabled]="treeForm.group?.invalid"
+        [class.is-disabled]="treeForm.group?.invalid"
+      >
         Na los
       </button>
     </ec-form>
     <pre>
-        {{treeForm.group?.value | json}}
-        </pre>
+        {{ treeForm.group?.value | json }}
+        </pre
+    >
     <h3>custom inputs without wrapper</h3>
     <strong>empty</strong>
     <ec-form (submitted)="logValue($event)" [config]="customFormConfig"></ec-form>
     <strong>with value</strong>
-    <ec-form (submitted)="logValue($event)" [config]="customFormConfig" [value]="{count:2}"></ec-form>
+    <ec-form (submitted)="logValue($event)" [config]="customFormConfig" [value]="{ count: 2 }"></ec-form>
   </ec-tab>
 </ec-tabs>

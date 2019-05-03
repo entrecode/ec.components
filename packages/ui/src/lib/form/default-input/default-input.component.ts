@@ -22,7 +22,7 @@ export class DefaultInputComponent implements AfterViewInit, Focus {
   focusEvent: EventEmitter<boolean> = new EventEmitter();
 
   /** Injects the services. */
-  constructor(public formService: FormService, public keycommands: KeycommandsService) { }
+  constructor(public formService: FormService, public keycommands: KeycommandsService) {}
 
   ngAfterViewInit() {
     if (this.field && this.field.autofocus) {

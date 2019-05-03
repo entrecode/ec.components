@@ -246,7 +246,7 @@ It can be used e.g as dialog, drawer or dialog.
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">packages/ui/src/lib/pop/pop.component.ts:52</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">packages/ui/src/lib/pop/pop.component.ts:53</a></div>
                             </td>
                         </tr>
 
@@ -515,7 +515,7 @@ It can be used e.g as dialog, drawer or dialog.
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">packages/ui/src/lib/pop/pop.component.ts:92</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">packages/ui/src/lib/pop/pop.component.ts:88</a></div>
                             </td>
                         </tr>
 
@@ -555,7 +555,7 @@ It can be used e.g as dialog, drawer or dialog.
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">packages/ui/src/lib/pop/pop.component.ts:61</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">packages/ui/src/lib/pop/pop.component.ts:58</a></div>
                             </td>
                         </tr>
 
@@ -624,7 +624,7 @@ It can be used e.g as dialog, drawer or dialog.
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">packages/ui/src/lib/pop/pop.component.ts:76</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">packages/ui/src/lib/pop/pop.component.ts:72</a></div>
                             </td>
                         </tr>
 
@@ -693,7 +693,7 @@ It can be used e.g as dialog, drawer or dialog.
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">packages/ui/src/lib/pop/pop.component.ts:67</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">packages/ui/src/lib/pop/pop.component.ts:63</a></div>
                             </td>
                         </tr>
 
@@ -859,7 +859,7 @@ It can be used e.g as dialog, drawer or dialog.
   HostListener,
   ElementRef,
   ChangeDetectionStrategy,
-  ChangeDetectorRef
+  ChangeDetectorRef,
 } from &#x27;@angular/core&#x27;;
 import { PopService } from &#x27;./pop.service&#x27;;
 
@@ -870,7 +870,7 @@ import { PopService } from &#x27;./pop.service&#x27;;
 @Component({
   selector: &#x27;ec-pop&#x27;,
   templateUrl: &#x27;./pop.component.html&#x27;,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PopComponent {
   /** If true, .ec-pop is part of the DOM (*ngIf) + .active is set on .ec-pop-container.  */
@@ -895,25 +895,21 @@ export class PopComponent {
       this.active &amp;&amp;
       (!this.clickEvent || $event !&#x3D;&#x3D; this.clickEvent) &amp;&amp; // to ensure the show event wont hide immediately
       this.elementRef &amp;&amp;
-      this.isOutside($event.target)) {
+      this.isOutside($event.target)
+    ) {
       this.hide();
     }
   }
 
-  constructor(protected popService: PopService,
-    public elementRef: ElementRef,
-    protected cdr: ChangeDetectorRef
-  ) {
-  }
+  constructor(protected popService: PopService, public elementRef: ElementRef, protected cdr: ChangeDetectorRef) {}
 
   /** yields true if the given element is outside the pop / or is the wrapper element itself (the backdrop) */
   isOutside(element) {
-    return !this.elementRef.nativeElement.contains(element)/*  ||
+    return !this.elementRef.nativeElement.contains(element) /*  ||
       element &#x3D;&#x3D;&#x3D; this.elementRef.nativeElement */;
-  }
+  } // active: boolean &#x3D; !this.active, emit: boolean &#x3D; false
 
-  /** Shows if not active, hides if active. */ // active: boolean &#x3D; !this.active, emit: boolean &#x3D; false
-  public toggle(e?) {
+  /** Shows if not active, hides if active. */ public toggle(e?) {
     if (this.active) {
       this.hide();
     } else {

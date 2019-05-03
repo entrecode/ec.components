@@ -3,7 +3,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { TabsComponent } from '../../utility/tabs/tabs.component';
 import { utilityModuleConfig } from '../utility.module';
 
-
 describe('TabsComponent', () => {
   let component: TabsComponent;
   let fixture: ComponentFixture<TabsComponent>;
@@ -12,10 +11,7 @@ describe('TabsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       ...utilityModuleConfig,
-      imports: [
-        ...utilityModuleConfig.imports,
-        RouterTestingModule
-      ]
+      imports: [...utilityModuleConfig.imports, RouterTestingModule],
     }).compileComponents();
   }));
 
@@ -32,10 +28,8 @@ describe('TabsComponent', () => {
     expect(component).toBeTruthy();
   });
   it('should add a tab', () => {
-
     expect(component.selected).toBeUndefined();
     // component.add(children[0]);
     // expect(component.selected).toBe(children[0]);
-
   });
 });

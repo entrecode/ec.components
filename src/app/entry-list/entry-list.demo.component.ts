@@ -25,13 +25,11 @@ export class EntryListDemoComponent {
   };
   timespan = [moment(), moment().add(1, 'month')];
   heatProperty = '_modified';
-  constructor() {
-  }
-
+  constructor() {}
 
   updateList(entryList) {
     if (entryList.items) {
-      this.timestamps = entryList.items.map(item => item.resolve(this.heatProperty).toISOString());
+      this.timestamps = entryList.items.map((item) => item.resolve(this.heatProperty).toISOString());
     }
   }
 
@@ -40,9 +38,9 @@ export class EntryListDemoComponent {
       filter: {
         [this.heatProperty]: {
           from: timespan[0].startOf('day').toISOString(),
-          to: timespan[1].endOf('day').toISOString()
-        }
-      }
+          to: timespan[1].endOf('day').toISOString(),
+        },
+      },
     });
   }
 }

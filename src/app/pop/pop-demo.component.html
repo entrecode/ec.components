@@ -3,23 +3,19 @@
   <p>A pop is a portion of content that can be shown or hidden.</p>
   <h3>Default</h3>
   <p>This example showcases the methods show, hide and toggle.</p>
-  <a class="btn" (click)="defaultPop.show()">show</a>
-  <a class="btn" (click)="defaultPop.hide()">hide</a>
+  <a class="btn" (click)="defaultPop.show()">show</a> <a class="btn" (click)="defaultPop.hide()">hide</a>
   <a class="btn" (click)="defaultPop.toggle()">toggle</a>
-  <ec-pop #defaultPop>
-    <h4>I have no class</h4>
-  </ec-pop>
+  <ec-pop #defaultPop> <h4>I have no class</h4> </ec-pop>
 
   <h3>hideOnClickOutside</h3>
-  <p>If you set hideOnClickOutside to true, the pop will hide when any element outside the pop is clicked.
-    This will only work if you pass the click event to the show or toggle method!
+  <p>
+    If you set hideOnClickOutside to true, the pop will hide when any element outside the pop is clicked. This will only
+    work if you pass the click event to the show or toggle method!
   </p>
   <a class="btn" (click)="hideOnClickOutsidePop.toggle($event)">toggle</a>
   <ec-pop [hideOnClickOutside]="true" #hideOnClickOutsidePop class="dialog-wrapper">
     <div class="dialog">
-      <div class="dialog-body">
-        <p>I will close when you click outside</p>
-      </div>
+      <div class="dialog-body"><p>I will close when you click outside</p></div>
     </div>
   </ec-pop>
 </div>

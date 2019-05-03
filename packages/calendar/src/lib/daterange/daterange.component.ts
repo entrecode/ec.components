@@ -3,15 +3,14 @@ import moment from 'moment-es6';
 import { MonthComponent } from '../calendar/month.component';
 
 @Component({
-    selector: 'ec-daterange',
-    templateUrl: './daterange.component.html',
+  selector: 'ec-daterange',
+  templateUrl: './daterange.component.html',
 })
-
 export class DaterangeComponent extends MonthComponent implements OnInit {
-    /** The date that should be displayed at start. */
-    @Input() date: moment.Moment = moment();
-    /** span of moments which is reflected */
-    @Input() timespan: moment.Moment[];
+  /** The date that should be displayed at start. */
+  @Input() date: moment.Moment = moment();
+  /** span of moments which is reflected */
+  @Input() timespan: moment.Moment[];
 
-    ngOnInit() { }
+  ngOnInit() {}
 }

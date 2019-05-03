@@ -1,7 +1,6 @@
 import { Pagination } from './pagination';
 
 describe('Pagination', () => {
-
   it('should construct with default values', () => {
     const pagination = new Pagination();
     expect(pagination['config'].page).toBe(1);
@@ -34,19 +33,19 @@ describe('Pagination', () => {
     }).toThrow();
     expect(pagination.isLast()).toBe(true);
     pagination.setTotal(75);
-    expect([1, 2, 3].map(p => pagination.isActive(p))).toEqual([true, false, false]);
+    expect([1, 2, 3].map((p) => pagination.isActive(p))).toEqual([true, false, false]);
     pagination.next();
-    expect([1, 2, 3].map(p => pagination.isActive(p))).toEqual([false, true, false]);
+    expect([1, 2, 3].map((p) => pagination.isActive(p))).toEqual([false, true, false]);
     pagination.next();
-    expect([1, 2, 3].map(p => pagination.isActive(p))).toEqual([false, false, true]);
+    expect([1, 2, 3].map((p) => pagination.isActive(p))).toEqual([false, false, true]);
     pagination.next(); // one step too far
-    expect([1, 2, 3].map(p => pagination.isActive(p))).toEqual([false, false, true]);
+    expect([1, 2, 3].map((p) => pagination.isActive(p))).toEqual([false, false, true]);
     pagination.prev();
-    expect([1, 2, 3].map(p => pagination.isActive(p))).toEqual([false, true, false]);
+    expect([1, 2, 3].map((p) => pagination.isActive(p))).toEqual([false, true, false]);
     pagination.prev();
-    expect([1, 2, 3].map(p => pagination.isActive(p))).toEqual([true, false, false]);
+    expect([1, 2, 3].map((p) => pagination.isActive(p))).toEqual([true, false, false]);
     pagination.prev(); // one step too far
-    expect([1, 2, 3].map(p => pagination.isActive(p))).toEqual([true, false, false]);
+    expect([1, 2, 3].map((p) => pagination.isActive(p))).toEqual([true, false, false]);
   });
 
   it('should support first/last isFirst/isLast', () => {
@@ -74,6 +73,5 @@ describe('Pagination', () => {
     pagination.setTotal(75);
     expect(pagination.getPages()).toBe(3);
     expect(pagination.isLast()).toBe(false);
-
   });
 });

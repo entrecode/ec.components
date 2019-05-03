@@ -12,8 +12,7 @@ export class PopDemoComponent {
 
   public listHeader = mocked.lists.pop_test;
 
-  constructor() {
-  }
+  constructor() {}
 
   open(popClass: string = 'fullscreen') {
     this.popClass = 'ec-pop_' + popClass;

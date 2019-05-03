@@ -456,7 +456,15 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, EventEmitter, Input, OnChanges, OnInit, Output, Inject } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  Inject
+} from &#x27;@angular/core&#x27;;
 /* import { SymbolService } from &#x27;../../symbol/symbol.service&#x27;; */
 import moment from &#x27;moment-es6&#x27;;
 import { debounceTime } from &#x27;rxjs/operators&#x27;;
@@ -523,21 +531,25 @@ export class MonthComponent implements OnInit, OnChanges {
   protected drag: Subject&lt;Day&gt; &#x3D; new Subject();
   protected changeSpan: Subject&lt;moment.Moment[]&gt; &#x3D; new Subject();
 
-  constructor(
-    @Inject(&#x27;moment.format.month&#x27;) protected defaultMonthFormat
-    /* public symbol: SymbolService */
-  ) {
+  /* public symbol: SymbolService */
+  constructor(@Inject(&#x27;moment.format.month&#x27;) protected defaultMonthFormat) {
     /* this.monthFormat &#x3D; this.symbol.resolve(&#x27;moment.format.month&#x27;) || this.monthFormat; */
     this.monthFormat &#x3D; this.defaultMonthFormat || this.monthFormat;
-    this.drag.asObservable()
+    this.drag
+      .asObservable()
       .pipe(debounceTime(100))
-      .subscribe((day) &#x3D;&gt; this.dropDay(day));
-    this.changeSpan.asObservable().pipe(debounceTime(800))
+      .subscribe(day &#x3D;&gt; this.dropDay(day));
+    this.changeSpan
+      .asObservable()
+      .pipe(debounceTime(800))
       .subscribe(timespan &#x3D;&gt; this.spanChanged.emit(this.timespan));
   }
 
   dropDay(day: Day) {
-    if (!this.dragged || (day.first &amp;&amp; this.dragged.first || day.last &amp;&amp; this.dragged.last)) {
+    if (
+      !this.dragged ||
+      ((day.first &amp;&amp; this.dragged.first) || (day.last &amp;&amp; this.dragged.last))
+    ) {
       return;
     }
     const newTimespan &#x3D; [].concat(this.timespan);
@@ -559,7 +571,10 @@ export class MonthComponent implements OnInit, OnChanges {
   }
 
   dragStart(day, e) {
-    if ((this.disableDragStart &amp;&amp; day.first) || (this.disableDragEnd &amp;&amp; day.last)) {
+    if (
+      (this.disableDragStart &amp;&amp; day.first) ||
+      (this.disableDragEnd &amp;&amp; day.last)
+    ) {
       return;
     }
     this.dragged &#x3D; day;
@@ -608,36 +623,59 @@ export class MonthComponent implements OnInit, OnChanges {
       this.setDate(this.date);
     } else if (change.timespan) {
       this.setDate();
-    } if (change.colors || change.heatmap) {
+    }
+    if (change.colors || change.heatmap) {
       this.cells &#x3D; this.getMonth(this.date.clone(), &#x27;current&#x27;);
     }
   }
 
   /** Returns days of current month */
   getMonth(day &#x3D; moment(), type?: string): Array&lt;Day&gt; {
-    const begin &#x3D; day.clone().startOf(&#x27;month&#x27;).startOf(&#x27;week&#x27;); // .subtract(weeksbefore * 7, &#x27;days&#x27;);
+    const begin &#x3D; day
+      .clone()
+      .startOf(&#x27;month&#x27;)
+      .startOf(&#x27;week&#x27;); // .subtract(weeksbefore * 7, &#x27;days&#x27;);
     return new Array(42)
       .fill(0)
       .map((d, index) &#x3D;&gt; begin.clone().add(index, &#x27;days&#x27;))
       .map((date, index) &#x3D;&gt; {
-        const isStart &#x3D; this.timespan &amp;&amp; date.clone().startOf(&#x27;day&#x27;).isSame(this.timespan[0].clone().startOf(&#x27;day&#x27;));
-        const isEnd &#x3D; this.timespan &amp;&amp; date.clone().startOf(&#x27;day&#x27;).isSame(this.timespan[1].clone().startOf(&#x27;day&#x27;));
+        const isStart &#x3D;
+          this.timespan &amp;&amp;
+          date
+            .clone()
+            .startOf(&#x27;day&#x27;)
+            .isSame(this.timespan[0].clone().startOf(&#x27;day&#x27;));
+        const isEnd &#x3D;
+          this.timespan &amp;&amp;
+          date
+            .clone()
+            .startOf(&#x27;day&#x27;)
+            .isSame(this.timespan[1].clone().startOf(&#x27;day&#x27;));
         return {
           index,
           date,
-          type: date.format(&#x27;MM YYYY&#x27;) &#x3D;&#x3D;&#x3D; day.format(&#x27;MM YYYY&#x27;) ? &#x27;current&#x27; : &#x27;other&#x27;,
-          active: this.timespan &amp;&amp; date.isBetween(this.timespan[0], this.timespan[1], &#x27;days&#x27;, &#x27;[]&#x27;),
+          type:
+            date.format(&#x27;MM YYYY&#x27;) &#x3D;&#x3D;&#x3D; day.format(&#x27;MM YYYY&#x27;)
+              ? &#x27;current&#x27;
+              : &#x27;other&#x27;,
+          active:
+            this.timespan &amp;&amp;
+            date.isBetween(this.timespan[0], this.timespan[1], &#x27;days&#x27;, &#x27;[]&#x27;),
           first: isStart,
           last: isEnd,
-          draggable: (!this.disableDragStart &amp;&amp; isStart) || (!this.disableDragEnd &amp;&amp; isEnd),
+          draggable:
+            (!this.disableDragStart &amp;&amp; isStart) ||
+            (!this.disableDragEnd &amp;&amp; isEnd),
           color: this.getDayColor(date),
           heat: this.getDayHeat(date),
           format: date.format(&#x27;DD&#x27;),
-          today: moment().startOf(&#x27;day&#x27;).diff(date, &#x27;days&#x27;) &#x3D;&#x3D;&#x3D; 0,
+          today:
+            moment()
+              .startOf(&#x27;day&#x27;)
+              .diff(date, &#x27;days&#x27;) &#x3D;&#x3D;&#x3D; 0
         };
       });
   }
-
 
   /** Sets the calendars viewed date to the given moment&#x27;s month. Renders always 42 cells to keep the layout consistent. */
   setDate(date: moment.Moment &#x3D; this.selected || this.date || moment()) {
@@ -673,7 +711,12 @@ export class MonthComponent implements OnInit, OnChanges {
       return true;
     }
     const newDate &#x3D; this.date.clone().add(value, span);
-    return newDate.isBetween(this.timespan[0], this.timespan[1], &#x27;months&#x27;, &#x27;[]&#x27;);
+    return newDate.isBetween(
+      this.timespan[0],
+      this.timespan[1],
+      &#x27;months&#x27;,
+      &#x27;[]&#x27;
+    );
   }
 
   /** Updates the viewed date to reflect the given relative changes. */

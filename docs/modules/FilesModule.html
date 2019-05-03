@@ -601,12 +601,7 @@ import { ImageSelectPopComponent } from &#x27;./image-select-pop/image-select-po
 import { TagSelectComponent } from &#x27;./tag-select/tag-select.component&#x27;;
 
 @NgModule({
-  entryComponents: [
-    AssetSelectComponent,
-    AssetgroupSelectComponent,
-    UploadComponent,
-    TagSelectComponent,
-  ],
+  entryComponents: [AssetSelectComponent, AssetgroupSelectComponent, UploadComponent, TagSelectComponent],
   declarations: [
     AssetListComponent,
     AssetListPopComponent,
@@ -618,15 +613,9 @@ import { TagSelectComponent } from &#x27;./tag-select/tag-select.component&#x27;
     UploadComponent,
     UploadSelectComponent,
     ImageSelectPopComponent,
-    TagSelectComponent
+    TagSelectComponent,
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    UiModule,
-    SdkModule,
-    ResourceModule
-  ],
+  imports: [CommonModule, FormsModule, UiModule, SdkModule, ResourceModule],
   exports: [
     AssetListComponent,
     AssetListPopComponent,
@@ -639,14 +628,11 @@ import { TagSelectComponent } from &#x27;./tag-select/tag-select.component&#x27;
     UploadSelectComponent,
     SdkModule,
     ImageSelectPopComponent,
-    TagSelectComponent
+    TagSelectComponent,
   ],
-  providers: [
-    FileService
-  ],
+  providers: [FileService],
 })
-export class FilesModule {
-}
+export class FilesModule {}
 </code></pre>
     </div>
 </div>

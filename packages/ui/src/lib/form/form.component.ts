@@ -1,6 +1,14 @@
 import {
-  Component, EventEmitter, Input, OnChanges, Output, QueryList,
-  ViewChild, ViewChildren, ChangeDetectionStrategy, ChangeDetectorRef
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  QueryList,
+  ViewChild,
+  ViewChildren,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FieldConfigProperty, Form, FormConfig, Item, ItemConfig } from '@ec.components/core';
@@ -21,11 +29,11 @@ import { formTemplate } from './form.component.html';
  * Example:
  *
  * <example-url>https://components.entrecode.de/ui/form?e=1</example-url>
-*/
+ */
 @Component({
   selector: 'ec-form',
   template: formTemplate,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormComponent<T> implements OnChanges, WithLoader, WithNotifications {
   /** The instance of Form that is used. */
@@ -67,12 +75,13 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
   @ViewChildren(InputComponent) inputs: QueryList<InputComponent>;
 
   /** Injects the services. */
-  constructor(protected loaderService: LoaderService,
+  constructor(
+    protected loaderService: LoaderService,
     protected notificationService: NotificationsService,
     public formService: FormService,
     protected symbol: SymbolService,
-    protected cdr: ChangeDetectorRef) {
-  }
+    protected cdr: ChangeDetectorRef,
+  ) {}
 
   /** On change, the form instance is (re)created by combining all inputs.
    * If no item is given, an empty form is created using the config.
@@ -91,7 +100,7 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
     if (!this.value || Object.keys(this.value).length === 0) {
       this.group.reset();
     } else {
-      this.form.fields.forEach(field => {
+      this.form.fields.forEach((field) => {
         const control = this.group.get(field.property);
         if (control && control.value && control.value !== this.value[field.property]) {
           control.patchValue(this.value[field.property]);
@@ -102,7 +111,8 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
 
   /** Inits the form (if ready) */
   protected init(item: Item<T> = this.item, config: FormConfig<T> = this.config) {
-    if (this.value) { // if value is set, create item from value only
+    if (this.value) {
+      // if value is set, create item from value only
       this.form = new Form(this.value, config);
     } else if (item instanceof Item) {
       this.form = new Form(item.getBody(), item.getConfig() || config || {});
@@ -118,13 +128,13 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
     }
     this.group = this.formService.getGroup(this.form);
     this.cdr.markForCheck();
-    Object.keys(this.group.controls).forEach(property => {
+    Object.keys(this.group.controls).forEach((property) => {
       const control = this.group.controls[property];
       control.valueChanges
         // TODO: remove when fixed: https://github.com/angular/angular/issues/12540
         .pipe(distinctUntilChanged((a, b) => JSON.stringify(a) === JSON.stringify(b)))
         .pipe(debounceTime(this.debounceTime))
-        .subscribe(value => {
+        .subscribe((value) => {
           const changedField = this.form.getField(property);
           if (changedField.changed) {
             changedField.changed(value, this);
@@ -174,7 +184,8 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
 
   /** Method that is invoked when the form is submitted.*/
   submit() {
-    const submit = this.form.save(this.group.value)
+    const submit = this.form
+      .save(this.group.value)
       .then((form: Form<T>) => {
         this.edit(form);
         this.group.markAsPristine();
@@ -182,12 +193,14 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
         if (this.silent) {
           return;
         }
-        this.notificationService.emit({ // TODO pull out to entry-form?
+        this.notificationService.emit({
+          // TODO pull out to entry-form?
           title: this.symbol.resolve('success.save'),
           type: 'success',
-          hide: this.notifications
+          hide: this.notifications,
         });
-      }).catch((err) => {
+      })
+      .catch((err) => {
         console.error(err, err.errors);
         if (this.silent) {
           return;
@@ -197,7 +210,7 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
           error: err,
           sticky: true,
           hide: this.notifications,
-          replace: this.notifications
+          replace: this.notifications,
         });
       });
     this.loaderService.wait(submit, this.loader || this.defaultLoader);

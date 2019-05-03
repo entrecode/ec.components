@@ -22,14 +22,7 @@ export const listModuleConfig = {
     SearchbarComponent,
     GroupPipe,
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    FormModule,
-    IconModule,
-    SymbolModule,
-    UtilityModule
-  ],
+  imports: [CommonModule, FormsModule, FormModule, IconModule, SymbolModule, UtilityModule],
   exports: [
     ListComponent,
     ListItemsComponent,
@@ -39,11 +32,8 @@ export const listModuleConfig = {
     GroupPipe,
     FormModule,
   ],
-  providers: [
-    ListConfigService
-  ]
+  providers: [ListConfigService],
 };
 
 @NgModule(listModuleConfig)
-export class ListModule {
-}
+export class ListModule {}

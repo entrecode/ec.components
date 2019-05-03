@@ -9,7 +9,7 @@ import PublicAPI from 'ec.sdk/lib/PublicAPI';
  */
 @Directive({
   selector: '[ecAsset]',
-  exportAs: 'ecAsset'
+  exportAs: 'ecAsset',
 })
 export class AssetDirective implements OnChanges {
   /** The loading promise */
@@ -30,8 +30,7 @@ export class AssetDirective implements OnChanges {
   public asset: any;
 
   /** Injects the sdk */
-  constructor(public sdk: SdkService) {
-  }
+  constructor(public sdk: SdkService) {}
 
   /** as soon as model and id are known, the asset will be loaded. */
   ngOnChanges() {
@@ -54,12 +53,11 @@ export class AssetDirective implements OnChanges {
     if (!api) {
       throw new Error('cannot load asset: no api was set!');
     }
-    this.promise = api.asset(this.assetId)
-      .then((asset) => {
-        this.asset = asset;
-        this.loaded.emit(asset);
-        return asset;
-      });
+    this.promise = api.asset(this.assetId).then((asset) => {
+      this.asset = asset;
+      this.loaded.emit(asset);
+      return asset;
+    });
     return this.promise;
   }
 }

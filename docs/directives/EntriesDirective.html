@@ -449,7 +449,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">packages/data/src/lib/entries/entries.directive.ts:108</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">packages/data/src/lib/entries/entries.directive.ts:111</a></div>
                             </td>
                         </tr>
 
@@ -489,7 +489,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">packages/data/src/lib/entries/entries.directive.ts:100</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">packages/data/src/lib/entries/entries.directive.ts:103</a></div>
                             </td>
                         </tr>
 
@@ -527,7 +527,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">packages/data/src/lib/entries/entries.directive.ts:96</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">packages/data/src/lib/entries/entries.directive.ts:99</a></div>
                             </td>
                         </tr>
 
@@ -605,7 +605,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">packages/data/src/lib/entries/entries.directive.ts:82</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">packages/data/src/lib/entries/entries.directive.ts:85</a></div>
                             </td>
                         </tr>
 
@@ -683,7 +683,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">packages/data/src/lib/entries/entries.directive.ts:89</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">packages/data/src/lib/entries/entries.directive.ts:92</a></div>
                             </td>
                         </tr>
 
@@ -721,7 +721,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">packages/data/src/lib/entries/entries.directive.ts:71</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">packages/data/src/lib/entries/entries.directive.ts:74</a></div>
                             </td>
                         </tr>
 
@@ -955,10 +955,10 @@ import { SymbolService } from &#x27;@ec.components/ui&#x27;;
 
 /** Loads an entryList of a given model with the given config.
  * &lt;example-url&gt;https://components.entrecode.de/entries/entries?e&#x3D;1&lt;/example-url&gt;
-*/
+ */
 @Directive({
   selector: &#x27;[ecEntries]&#x27;,
-  exportAs: &#x27;ecEntries&#x27;
+  exportAs: &#x27;ecEntries&#x27;,
 })
 export class EntriesDirective implements OnChanges, WithLoader {
   /** The promise of the entryList call. */
@@ -981,8 +981,8 @@ export class EntriesDirective implements OnChanges, WithLoader {
   constructor(
     private sdk: SdkService,
     public symbol: SymbolService,
-    public notificationService: NotificationsService) {
-  }
+    public notificationService: NotificationsService,
+  ) {}
 
   /** When the model is known, the entryList will be loaded. */
   ngOnChanges() {
@@ -999,12 +999,15 @@ export class EntriesDirective implements OnChanges, WithLoader {
 
   /** Loads the entries */
   load() {
-    this.promise &#x3D; this.sdk.api.entryList(this.model, this.options)
-      .then(list &#x3D;&gt; this.useList(list))
-      .catch(error &#x3D;&gt; this.notificationService.emit({
-        title: this.symbol.resolve(&#x27;entries.load.error&#x27;),
-        error
-      }));
+    this.promise &#x3D; this.sdk.api
+      .entryList(this.model, this.options)
+      .then((list) &#x3D;&gt; this.useList(list))
+      .catch((error) &#x3D;&gt;
+        this.notificationService.emit({
+          title: this.symbol.resolve(&#x27;entries.load.error&#x27;),
+          error,
+        }),
+      );
     if (this.loader) {
       this.loader.wait(this.promise);
     }
@@ -1023,14 +1026,14 @@ export class EntriesDirective implements OnChanges, WithLoader {
   }
 
   next() {
-    this.promise &#x3D; this.entryList.followNextLink().then(list &#x3D;&gt; this.useList(list));
+    this.promise &#x3D; this.entryList.followNextLink().then((list) &#x3D;&gt; this.useList(list));
     if (this.loader) {
       this.loader.wait(this.promise);
     }
   }
 
   prev() {
-    this.promise &#x3D; this.entryList.followPrevLink().then(list &#x3D;&gt; this.useList(list));
+    this.promise &#x3D; this.entryList.followPrevLink().then((list) &#x3D;&gt; this.useList(list));
     if (this.loader) {
       this.loader.wait(this.promise);
     }

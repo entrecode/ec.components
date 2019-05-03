@@ -10,7 +10,7 @@ import {
   HostListener,
   ElementRef,
   ChangeDetectionStrategy,
-  ChangeDetectorRef
+  ChangeDetectorRef,
 } from '@angular/core';
 import { PopService } from './pop.service';
 
@@ -21,7 +21,7 @@ import { PopService } from './pop.service';
 @Component({
   selector: 'ec-pop',
   templateUrl: './pop.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PopComponent {
   /** If true, .ec-pop is part of the DOM (*ngIf) + .active is set on .ec-pop-container.  */
@@ -46,25 +46,21 @@ export class PopComponent {
       this.active &&
       (!this.clickEvent || $event !== this.clickEvent) && // to ensure the show event wont hide immediately
       this.elementRef &&
-      this.isOutside($event.target)) {
+      this.isOutside($event.target)
+    ) {
       this.hide();
     }
   }
 
-  constructor(protected popService: PopService,
-    public elementRef: ElementRef,
-    protected cdr: ChangeDetectorRef
-  ) {
-  }
+  constructor(protected popService: PopService, public elementRef: ElementRef, protected cdr: ChangeDetectorRef) {}
 
   /** yields true if the given element is outside the pop / or is the wrapper element itself (the backdrop) */
   isOutside(element) {
-    return !this.elementRef.nativeElement.contains(element)/*  ||
+    return !this.elementRef.nativeElement.contains(element) /*  ||
       element === this.elementRef.nativeElement */;
-  }
+  } // active: boolean = !this.active, emit: boolean = false
 
-  /** Shows if not active, hides if active. */ // active: boolean = !this.active, emit: boolean = false
-  public toggle(e?) {
+  /** Shows if not active, hides if active. */ public toggle(e?) {
     if (this.active) {
       this.hide();
     } else {

@@ -99,7 +99,7 @@
                 <td class="col-md-3">providers</td>
                 <td class="col-md-9">
                             <code><a href="../components/DatetimeComponent.html" target="_self" >{
-    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() &#x3D;&gt; DatetimeComponent), multi: true
+    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() &#x3D;&gt; DatetimeComponent), multi: true,
 }</a></code>
                 </td>
             </tr>
@@ -353,7 +353,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">packages/ui/src/lib/form/datetime/datetime.component.ts:46</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">packages/ui/src/lib/form/datetime/datetime.component.ts:45</a></div>
                             </td>
                         </tr>
 
@@ -420,7 +420,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">packages/ui/src/lib/form/datetime/datetime.component.ts:51</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">packages/ui/src/lib/form/datetime/datetime.component.ts:50</a></div>
                             </td>
                         </tr>
 
@@ -639,7 +639,7 @@ import { CalendarComponent } from &#x27;@ec.components/calendar&#x27;;
  *
  * &lt;example-url&gt;https://components.entrecode.de/ui/datetime?e&#x3D;1&lt;/example-url&gt;
  *
-*/
+ */
 @Component({
   selector: &#x27;ec-datetime&#x27;,
   templateUrl: &#x27;datetime.component.html&#x27;,
@@ -647,9 +647,9 @@ import { CalendarComponent } from &#x27;@ec.components/calendar&#x27;;
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() &#x3D;&gt; DatetimeComponent),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class DatetimeComponent implements ControlValueAccessor {
   /** The date that should be displayed at start. */
@@ -671,8 +671,7 @@ export class DatetimeComponent implements ControlValueAccessor {
   }
 
   /** Change propagation for ControlValueAccessor */
-  propagateChange &#x3D; (_: any) &#x3D;&gt; {
-  }
+  propagateChange &#x3D; (_: any) &#x3D;&gt; {};
 
   /** registerOnChange implementation of ControlValueAccessor */
   registerOnChange(fn) {
@@ -680,8 +679,7 @@ export class DatetimeComponent implements ControlValueAccessor {
   }
 
   /** registerOnTouched implementation of ControlValueAccessor */
-  registerOnTouched() {
-  }
+  registerOnTouched() {}
 }
 </code></pre>
     </div>

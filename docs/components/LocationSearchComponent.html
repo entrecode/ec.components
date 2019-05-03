@@ -201,7 +201,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">packages/location/src/lib/location-search.component.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">packages/location/src/lib/location-search.component.ts:16</a></div>
                             </td>
                         </tr>
 
@@ -268,7 +268,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">packages/location/src/lib/location-search.component.ts:16</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">packages/location/src/lib/location-search.component.ts:12</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -298,7 +298,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">packages/location/src/lib/location-search.component.ts:20</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">packages/location/src/lib/location-search.component.ts:16</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -339,7 +339,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">packages/location/src/lib/location-search.component.ts:28</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">packages/location/src/lib/location-search.component.ts:20</a></div>
                             </td>
                         </tr>
 
@@ -379,7 +379,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">packages/location/src/lib/location-search.component.ts:34</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">packages/location/src/lib/location-search.component.ts:26</a></div>
                             </td>
                         </tr>
 
@@ -433,7 +433,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">packages/location/src/lib/location-search.component.ts:18</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">packages/location/src/lib/location-search.component.ts:14</a></div>
                             </td>
                         </tr>
 
@@ -452,47 +452,36 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
-    AfterViewInit, Component, ElementRef,
-    EventEmitter, Input, NgZone, Output, ViewChild
-} from &#x27;@angular/core&#x27;;
-import { } from &#x27;googlemaps&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { AfterViewInit, Component, ElementRef, EventEmitter, Input, NgZone, Output, ViewChild } from &#x27;@angular/core&#x27;;
+import {} from &#x27;googlemaps&#x27;;
 import { GeocodeService } from &#x27;./geocode.service&#x27;;
 
 /** Google Maps Location Searchbar */
 @Component({
-    selector: &#x27;ec-location-search&#x27;,
-    templateUrl: &#x27;./location-search.component.html&#x27;
+  selector: &#x27;ec-location-search&#x27;,
+  templateUrl: &#x27;./location-search.component.html&#x27;,
 })
-
 export class LocationSearchComponent implements AfterViewInit {
-    /** Placeholder for input */
-    @Input() placeholder &#x3D; &#x27;Search Location...&#x27;;
-    /** The search input element */
-    @ViewChild(&#x27;search&#x27;) searchInput: ElementRef;
-    /** emits when the coords have been changed (after selecting a match) */
-    @Output() changed: EventEmitter&lt;any&gt; &#x3D; new EventEmitter();
+  /** Placeholder for input */
+  @Input() placeholder &#x3D; &#x27;Search Location...&#x27;;
+  /** The search input element */
+  @ViewChild(&#x27;search&#x27;) searchInput: ElementRef;
+  /** emits when the coords have been changed (after selecting a match) */
+  @Output() changed: EventEmitter&lt;any&gt; &#x3D; new EventEmitter();
 
-    constructor(
-        private geocodeService: GeocodeService,
-        private ngZone: NgZone
-    ) {
+  constructor(private geocodeService: GeocodeService, private ngZone: NgZone) {}
+  /** Clears the searchbar input value */
+  clear() {
+    if (this.searchInput) {
+      this.searchInput.nativeElement.value &#x3D; &#x27;&#x27;;
     }
-    /** Clears the searchbar input value */
-    clear() {
-        if (this.searchInput) {
-            this.searchInput.nativeElement.value &#x3D; &#x27;&#x27;;
-        }
-    }
-    /** subscribes to changes from the inputs autocomplete using geocodeService. */
-    ngAfterViewInit() {
-        this.geocodeService.autocompleteAddress(this.searchInput.nativeElement)
-            .subscribe(
-                coords &#x3D;&gt; {
-                    this.changed.emit(coords);
-                }
-            );
-    }
+  }
+  /** subscribes to changes from the inputs autocomplete using geocodeService. */
+  ngAfterViewInit() {
+    this.geocodeService.autocompleteAddress(this.searchInput.nativeElement).subscribe((coords) &#x3D;&gt; {
+      this.changed.emit(coords);
+    });
+  }
 }
 </code></pre>
     </div>

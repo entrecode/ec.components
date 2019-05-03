@@ -254,7 +254,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">packages/ui/src/lib/utility/focus/focus.directive.ts:14</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">packages/ui/src/lib/utility/focus/focus.directive.ts:13</a></div>
                             </td>
                         </tr>
 
@@ -292,7 +292,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">packages/ui/src/lib/utility/focus/focus.directive.ts:20</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">packages/ui/src/lib/utility/focus/focus.directive.ts:19</a></div>
                             </td>
                         </tr>
 
@@ -326,8 +326,7 @@ export class FocusDirective implements OnInit, AfterViewInit {
   @Input() ecFocus: EventEmitter&lt;boolean&gt;;
   @Input() autofocus: boolean;
 
-  constructor(private element: ElementRef) {
-  }
+  constructor(private element: ElementRef) {}
 
   ngAfterViewInit() {
     if (this.autofocus) {
@@ -336,14 +335,13 @@ export class FocusDirective implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.ecFocus
-      .subscribe((event: boolean) &#x3D;&gt; {
-        if (event) {
-          this.element.nativeElement.focus();
-        } else {
-          this.element.nativeElement.blur();
-        }
-      });
+    this.ecFocus.subscribe((event: boolean) &#x3D;&gt; {
+      if (event) {
+        this.element.nativeElement.focus();
+      } else {
+        this.element.nativeElement.blur();
+      }
+    });
   }
 }
 </code></pre>

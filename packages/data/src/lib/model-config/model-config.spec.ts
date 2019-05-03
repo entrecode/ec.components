@@ -1,7 +1,6 @@
 import { ModelConfigService } from './model-config.service';
 
 describe('ModelConfig', () => {
-
   it('should be injected', () => {
     expect(ModelConfigService).toBeTruthy();
   });
@@ -12,9 +11,9 @@ describe('ModelConfig', () => {
   }); */
 
   // it('should generate a field config from scratch', () => {
-    /*const s = sinon.stub(Datamanager, 'schema');
+  /*const s = sinon.stub(Datamanager, 'schema');
     s.returns(muffinSchema);*/ // TODO
-    /*return ModelConfig.generateConfig('muffin').then((config) => {
+  /*return ModelConfig.generateConfig('muffin').then((config) => {
       expect(config).toBeDefined();
       expect(config.hasOwnProperty('_id')).toBe(false);
       expect(config.hasOwnProperty('name')).toBe(true);
@@ -24,5 +23,4 @@ describe('ModelConfig', () => {
       throw err;
     });*/
   // });
-
 });

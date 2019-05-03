@@ -6,36 +6,37 @@ import { Form } from '@ec.components/core';
   templateUrl: './loader-demo.component.html',
 })
 export class LoaderDemoComponent implements OnInit, WithLoader {
-
   public classes = ['', 'ec-loader_global', 'ec-loader_overlay ec-loader_global'];
   @ViewChild('loader') loader: LoaderComponent;
   public options: Form<any>;
   @ViewChild('optionsForm') optionsForm: FormComponent<any>;
 
-  constructor(private loaderService: LoaderService) {
-  }
+  constructor(private loaderService: LoaderService) {}
 
   ngOnInit() {
-    this.options = new Form({
-      time: 20000,
-      hostClass: this.classes[0],
-      desktop: false,
-      title: 'The Toast is hot',
-      message: 'The temperature of your white bread has risen to improve its crisp factor to the optimum!',
-      type: 'success'
-    }, {
+    this.options = new Form(
+      {
+        time: 20000,
+        hostClass: this.classes[0],
+        desktop: false,
+        title: 'The Toast is hot',
+        message: 'The temperature of your white bread has risen to improve its crisp factor to the optimum!',
+        type: 'success',
+      },
+      {
         fields: {
           time: {
             label: 'Zeit in ms',
-            view: 'number'
+            view: 'number',
           },
           hostClass: {
             label: 'Klasse',
             view: 'select',
-            values: this.classes
-          }
-        }
-      });
+            values: this.classes,
+          },
+        },
+      },
+    );
   }
 
   emit({ type, title, message, time }) {

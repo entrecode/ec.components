@@ -7,7 +7,7 @@ import { TinyInputComponent } from './tiny-input.component';
 
 @Component({
   selector: 'ec-tinymce-demo',
-  templateUrl: './tinymce-demo.component.html'
+  templateUrl: './tinymce-demo.component.html',
 })
 export class TinymceDemoComponent {
   html = '<h1>Demo</h1>';
@@ -20,13 +20,12 @@ export class TinymceDemoComponent {
         label: 'This TinyMCE is hosted inside an ec-form',
         input: TinyInputComponent,
         prefill: '<p>Hallo</p>',
-        relation: 'test'
-      }
-    }
+        relation: 'test',
+      },
+    },
   };
 
-  constructor(public sdk: SdkService, public zone: NgZone) {
-  }
+  constructor(public sdk: SdkService, public zone: NgZone) {}
 
   initEditor(editor, pop: ImageSelectPopComponent) {
     console.log('inited', editor);
@@ -38,11 +37,11 @@ export class TinymceDemoComponent {
           const id = Date.now();
           pop.show();
         });
-      }
+      },
     });
   }
 
-  addImage({ url, alt, size }, tiny/*: TinymceComponent */) {
+  addImage({ url, alt, size }, tiny /*: TinymceComponent */) {
     console.log('add image', tiny);
     tiny.addImageByUrl(url, alt, size);
   }

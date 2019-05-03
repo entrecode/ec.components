@@ -9,7 +9,7 @@ import { InputComponent } from '../../io/input/input.component';
 @Component({
   selector: 'ec-list-header',
   templateUrl: './list-header.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListHeaderComponent implements OnChanges {
   /** The list instance */
@@ -24,8 +24,7 @@ export class ListHeaderComponent implements OnChanges {
   filterForm: FormComponent<any>;
   filterInput: InputComponent;
 
-  constructor(public listConfig: ListConfigService, public cdr: ChangeDetectorRef) {
-  }
+  constructor(public listConfig: ListConfigService, public cdr: ChangeDetectorRef) {}
 
   setFilter(field, value) {
     this.list.setFilter({ [field.property]: value });
@@ -74,9 +73,9 @@ export class ListHeaderComponent implements OnChanges {
               ...field.nestedCrudConfig,
               methods: ['get'],
             },
-          }
+          },
         };
-      }, {})
+      }, {}),
     };
   }
 
@@ -139,8 +138,8 @@ export class ListHeaderComponent implements OnChanges {
   isLastColumn(field: Field) {
     if (!this.list || !this.list.fields) {
       return;
-    };
-    const visibleColumns = this.list.fields.filter(f => !f.hideInList);
+    }
+    const visibleColumns = this.list.fields.filter((f) => !f.hideInList);
     return field.property === visibleColumns[visibleColumns.length - 1].property;
   }
 }

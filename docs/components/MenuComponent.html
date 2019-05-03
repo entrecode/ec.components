@@ -497,7 +497,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">packages/ui/src/lib/utility/menu/menu.component.ts:84</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">packages/ui/src/lib/utility/menu/menu.component.ts:85</a></div>
                             </td>
                         </tr>
 
@@ -754,7 +754,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">packages/ui/src/lib/utility/menu/menu.component.ts:98</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">packages/ui/src/lib/utility/menu/menu.component.ts:99</a></div>
                             </td>
                         </tr>
 
@@ -842,7 +842,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">packages/ui/src/lib/utility/menu/menu.component.ts:48</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">packages/ui/src/lib/utility/menu/menu.component.ts:47</a></div>
                             </td>
                         </tr>
 
@@ -991,7 +991,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">packages/ui/src/lib/utility/menu/menu.component.ts:91</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">packages/ui/src/lib/utility/menu/menu.component.ts:92</a></div>
                             </td>
                         </tr>
 
@@ -1031,7 +1031,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">packages/ui/src/lib/utility/menu/menu.component.ts:106</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">packages/ui/src/lib/utility/menu/menu.component.ts:107</a></div>
                             </td>
                         </tr>
 
@@ -1163,7 +1163,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">packages/ui/src/lib/utility/menu/menu.component.ts:38</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">packages/ui/src/lib/utility/menu/menu.component.ts:37</a></div>
                             </td>
                         </tr>
 
@@ -1257,7 +1257,7 @@ import { Router } from &#x27;@angular/router&#x27;; // TODO cannot import Route.
 @Component({
   selector: &#x27;ec-menu,[ec-menu]&#x27;,
   templateUrl: &#x27;./menu.component.html&#x27;,
-  styleUrls: [&#x27;./menu.component.scss&#x27;]
+  styleUrls: [&#x27;./menu.component.scss&#x27;],
 })
 export class MenuComponent implements OnChanges {
   /** Routes that should be used for the menu. You can use your angular router routes here. */
@@ -1280,21 +1280,21 @@ export class MenuComponent implements OnChanges {
   private timeout;
 
   /** Injects the Router. */
-  constructor(private router: Router) {
-  }
+  constructor(private router: Router) {}
 
   /** updates the routes on change of route */
   ngOnChanges() {
     if (this.route) {
       this.routes &#x3D; this.route.children
-        .filter(route &#x3D;&gt; route.path &amp;&amp; route.path.indexOf(&#x27;:&#x27;) &#x3D;&#x3D;&#x3D; -1)
-        .filter(route &#x3D;&gt; !route.data || !route.data.hidden);
+        .filter((route) &#x3D;&gt; route.path &amp;&amp; route.path.indexOf(&#x27;:&#x27;) &#x3D;&#x3D;&#x3D; -1)
+        .filter((route) &#x3D;&gt; !route.data || !route.data.hidden);
       console.log(&#x27;routes&#x27;, this.routes);
     }
   }
 
   /** Returns true if the item or a child of it is active. */
-  hasActivePath(item, parent &#x3D; this) { // this.parent
+  hasActivePath(item, parent &#x3D; this) {
+    // this.parent
     return parent.getPath(item) &#x3D;&#x3D;&#x3D; this.router.url;
   }
 
@@ -1320,7 +1320,8 @@ export class MenuComponent implements OnChanges {
   }
 
   /** Hovers the item after hoverDelay timeout. */
-  hoverItem(item) { // : Route
+  hoverItem(item) {
+    // : Route
     if (!this.hover) {
       this.hover &#x3D; item;
     }

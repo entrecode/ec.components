@@ -142,7 +142,7 @@ set method. </p>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:19</a></div>
                             </td>
                         </tr>
 
@@ -247,7 +247,7 @@ set method. </p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="217" class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:217</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="210" class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:210</a></div>
                             </td>
                         </tr>
 
@@ -338,7 +338,7 @@ or just specific components. </li>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:42</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:37</a></div>
                             </td>
                         </tr>
 
@@ -414,7 +414,7 @@ or just specific components. </li>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="147" class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:147</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="143" class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:143</a></div>
                             </td>
                         </tr>
 
@@ -487,7 +487,7 @@ This config is meant to deliver the default behaviour when nothing else is confi
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="248" class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:248</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="241" class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:241</a></div>
                             </td>
                         </tr>
 
@@ -554,7 +554,7 @@ This config is meant to deliver the default behaviour when nothing else is confi
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:126</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="122" class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:122</a></div>
                             </td>
                         </tr>
 
@@ -637,7 +637,7 @@ This config is meant to deliver the default behaviour when nothing else is confi
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:62</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:57</a></div>
                             </td>
                         </tr>
 
@@ -677,7 +677,7 @@ This config is meant to deliver the default behaviour when nothing else is confi
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:57</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:52</a></div>
                             </td>
                         </tr>
 
@@ -775,13 +775,7 @@ This config is meant to deliver the default behaviour when nothing else is confi
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Default value : </i><code>[
-    &#x27;id&#x27;,
-    &#x27;private&#x27;,
-    &#x27;created&#x27;,
-    &#x27;creator&#x27;,
-    &#x27;modified&#x27;
-  ]</code>
+                            <i>Default value : </i><code>[&#x27;id&#x27;, &#x27;private&#x27;, &#x27;created&#x27;, &#x27;creator&#x27;, &#x27;modified&#x27;]</code>
                         </td>
                     </tr>
                         <tr>
@@ -807,7 +801,7 @@ This config is meant to deliver the default behaviour when nothing else is confi
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 import { Config, FieldConfig, Item } from &#x27;@ec.components/core&#x27;;
-import { SymbolService } from &#x27;@ec.components/ui&#x27;;
+import { SymbolService, DefaultInputComponent } from &#x27;@ec.components/ui&#x27;;
 import { fields } from &#x27;ec.sdk/lib/PublicAPI&#x27;;
 import EntryResource from &#x27;ec.sdk/lib/resources/publicAPI/EntryResource&#x27;;
 import { CrudConfig } from &#x27;../crud/crud-config.interface&#x27;;
@@ -823,20 +817,15 @@ import { DefaultEntryOutputComponent } from &#x27;../entry-form/default-entry-ou
 @Injectable()
 export class ModelConfigService extends Config {
   /** Array of property names that are omitted by default. */
-  omittedFields: Array&lt;string&gt; &#x3D; [
-    &#x27;id&#x27;,
-    &#x27;private&#x27;,
-    &#x27;created&#x27;,
-    &#x27;creator&#x27;,
-    &#x27;modified&#x27;
-  ];
-
+  omittedFields: Array&lt;string&gt; &#x3D; [&#x27;id&#x27;, &#x27;private&#x27;, &#x27;created&#x27;, &#x27;creator&#x27;, &#x27;modified&#x27;];
 
   /** Injects EntryService and SdkService. */
-  constructor(private entryService: EntryService,
+  constructor(
+    private entryService: EntryService,
     private sdk: SdkService,
     private typeConfig: TypeConfigService,
-    private symbol: SymbolService) {
+    private symbol: SymbolService,
+  ) {
     super();
   }
 
@@ -892,7 +881,7 @@ export class ModelConfigService extends Config {
         immutable: true,
         sortable: true,
         hideInList: true,
-        rawFilter: true
+        rawFilter: true,
       },
       _modified: {
         label: this.symbol.resolve(&#x27;field.label.modified&#x27;),
@@ -906,7 +895,7 @@ export class ModelConfigService extends Config {
         immutable: true,
         sortable: true,
         hideInList: false,
-        rawFilter: true
+        rawFilter: true,
       },
       _creator: {
         label: this.symbol.resolve(&#x27;field.label.creator&#x27;),
@@ -920,32 +909,33 @@ export class ModelConfigService extends Config {
         immutable: true,
         hideInList: true,
         filterable: true,
-        input: AdminEntryInputComponent,
+        filterComponent: AdminEntryInputComponent,
+        formComponent: DefaultInputComponent,
         output: DefaultEntryOutputComponent,
         readOnly: true,
         filterPopClass: &#x27;ec-pop_dialog&#x27;,
         filterOperator: &#x27;exact&#x27;,
-      }
+      },
     };
   }
 
   /** Parses config for fields that require leveled entries */
   getMinLevel(model: string, customFieldConfig?: FieldConfig) {
-    return this.generateConfig(model, customFieldConfig)
-      .then((modelConfig) &#x3D;&gt; {
-        const fieldConfig &#x3D; modelConfig.fields;
-        return Object.keys(fieldConfig)
-          .filter(field &#x3D;&gt; !!fieldConfig[field].type)
-          .map(field &#x3D;&gt; {
-            const inputView &#x3D; fieldConfig[field].inputView;
-            const views &#x3D; this.typeConfig.get(fieldConfig[field].type).inputViews || [];
-            if (!inputView || !views) {
-              return 1;
-            }
-            const match &#x3D; views.find(v &#x3D;&gt; v.name &#x3D;&#x3D;&#x3D; inputView);
-            return match ? match.levels || 1 : 1;
-          }).reduce((max, lvl) &#x3D;&gt; Math.max(max, lvl), 1);
-      });
+    return this.generateConfig(model, customFieldConfig).then((modelConfig) &#x3D;&gt; {
+      const fieldConfig &#x3D; modelConfig.fields;
+      return Object.keys(fieldConfig)
+        .filter((field) &#x3D;&gt; !!fieldConfig[field].type)
+        .map((field) &#x3D;&gt; {
+          const inputView &#x3D; fieldConfig[field].inputView;
+          const views &#x3D; this.typeConfig.get(fieldConfig[field].type).inputViews || [];
+          if (!inputView || !views) {
+            return 1;
+          }
+          const match &#x3D; views.find((v) &#x3D;&gt; v.name &#x3D;&#x3D;&#x3D; inputView);
+          return match ? match.levels || 1 : 1;
+        })
+        .reduce((max, lvl) &#x3D;&gt; Math.max(max, lvl), 1);
+    });
   }
 
   /** Returns the default field config for the given model.
@@ -955,61 +945,58 @@ export class ModelConfigService extends Config {
     return this.sdk.api.getFieldConfig(model).then((fieldConfig: fields) &#x3D;&gt; {
       const merged &#x3D; {};
       Object.assign(merged, this.getSystemFields());
-      Object.keys(fieldConfig).map(property &#x3D;&gt; fieldConfig[property])
-        .forEach(({
-          config,
-          type,
-          title,
-          unique,
-          mutable,
-          readOnly,
-          required,
-          validation,
-          description,
-          localizable
-        }) &#x3D;&gt; {
-          /* type &#x3D; type as string; */
-          config &#x3D; config || {};
-          if (type.includes(&#x27;asset&#x27;)) {
-            type &#x3D; type.replace(&#x27;a&#x27;, &#x27;dmA&#x27;);
-          }
-          // parse field config
-          const { hideInList,
-            hideInForm,
-            hideOnCreate,
-            hideOnEdit,
-            placeholder,
-            inputView,
-            label,
-            classes,
-            columns &#x3D; 12
-          } &#x3D; config;
-          const typeConfig &#x3D; this.typeConfig.get(type);
-          // assign default values + merge customFieldConfig if given
-          merged[title] &#x3D; Object.assign({
-            property: title,
-            label: label || title + (type &#x3D;&#x3D;&#x3D; &#x27;datetime&#x27; ? &#x60; ${this.symbol.resolve(&#x27;datetime.local&#x27;)}&#x60; : &#x27;&#x27;),
-            placeholder,
-            description,
-            validation,
-            relation: validation,
-            immutable: !mutable,
-            readOnly,
-            hideInList,
-            hideInForm,
-            create: !hideOnCreate,
-            edit: !hideOnEdit,
-            classes,
-            unique,
-            required,
-            columns,
-            /* display: ((value) &#x3D;&gt; value), */
-            localizable,
-          }, typeConfig, {
-              placeholder: placeholder || typeConfig.placeholder,
-              inputView: inputView || typeConfig.inputView || type
-            });
-        });
+      Object.keys(fieldConfig)
+        .map((property) &#x3D;&gt; fieldConfig[property])
+        .forEach(
+          ({ config, type, title, unique, mutable, readOnly, required, validation, description, localizable }) &#x3D;&gt; {
+            /* type &#x3D; type as string; */
+            config &#x3D; config || {};
+            if (type.includes(&#x27;asset&#x27;)) {
+              type &#x3D; type.replace(&#x27;a&#x27;, &#x27;dmA&#x27;);
+            }
+            // parse field config
+            const {
+              hideInList,
+              hideInForm,
+              hideOnCreate,
+              hideOnEdit,
+              placeholder,
+              inputView,
+              label,
+              classes,
+              columns &#x3D; 12,
+            } &#x3D; config;
+            const typeConfig &#x3D; this.typeConfig.get(type);
+            // assign default values + merge customFieldConfig if given
+            merged[title] &#x3D; Object.assign(
+              {
+                property: title,
+                label: label || title + (type &#x3D;&#x3D;&#x3D; &#x27;datetime&#x27; ? &#x60; ${this.symbol.resolve(&#x27;datetime.local&#x27;)}&#x60; : &#x27;&#x27;),
+                placeholder,
+                description,
+                validation,
+                relation: validation,
+                immutable: !mutable,
+                readOnly,
+                hideInList,
+                hideInForm,
+                create: !hideOnCreate,
+                edit: !hideOnEdit,
+                classes,
+                unique,
+                required,
+                columns,
+                /* display: ((value) &#x3D;&gt; value), */
+                localizable,
+              },
+              typeConfig,
+              {
+                placeholder: placeholder || typeConfig.placeholder,
+                inputView: inputView || typeConfig.inputView || type,
+              },
+            );
+          },
+        );
       return merged;
     });
   }
@@ -1029,27 +1016,27 @@ export class ModelConfigService extends Config {
       identifierPattern: /^[0-9A-Za-z-_]{7,14}$/, // shortID pattern
       label: &#x27;_entryTitle&#x27;,
       defaultFilter: lightModel.titleField,
-      onSave: (item: Item&lt;EntryResource&gt;, value) &#x3D;&gt; this.entryService.save(model, item, value)
+      onSave: (item: Item&lt;EntryResource&gt;, value) &#x3D;&gt; this.entryService.save(model, item, value),
     });
-    return this.getFieldConfig(model)
-      .then((fieldConfig: FieldConfig) &#x3D;&gt; {
-        const modelConfigFields &#x3D; modelConfig.fields || {};
-        const relevantKeys &#x3D; Object.keys(customFieldConfig || modelConfigFields);
-        const mergedFields &#x3D; {};
-        if (!relevantKeys.length) {
-          modelConfig.fields &#x3D; fieldConfig;
-        } else {
-          relevantKeys.forEach(key &#x3D;&gt; {
-            mergedFields[key] &#x3D; Object.assign(
-              {},
-              fieldConfig[key] || {},
-              modelConfigFields[key] || {},
-              (customFieldConfig || {})[key]);
-          });
-          modelConfig.fields &#x3D; mergedFields;
-        }
-        return modelConfig;
-      });
+    return this.getFieldConfig(model).then((fieldConfig: FieldConfig) &#x3D;&gt; {
+      const modelConfigFields &#x3D; modelConfig.fields || {};
+      const relevantKeys &#x3D; Object.keys(customFieldConfig || modelConfigFields);
+      const mergedFields &#x3D; {};
+      if (!relevantKeys.length) {
+        modelConfig.fields &#x3D; fieldConfig;
+      } else {
+        relevantKeys.forEach((key) &#x3D;&gt; {
+          mergedFields[key] &#x3D; Object.assign(
+            {},
+            fieldConfig[key] || {},
+            modelConfigFields[key] || {},
+            (customFieldConfig || {})[key],
+          );
+        });
+        modelConfig.fields &#x3D; mergedFields;
+      }
+      return modelConfig;
+    });
   }
   /** Returns light model information */
   getLightModel(model) {

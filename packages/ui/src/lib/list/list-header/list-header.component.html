@@ -11,11 +11,24 @@
         </li>
       </ul>
     </div> -->
-    <ec-input (ready)="inputReady($event)" (changed)="setFilter(filteredField, $event)" [lazy]="true"
-      class="has-width-full" [field]="filteredField" [group]="filterForm?.group" [debounce]="200"
-      *ngIf="filterPop.active&&filterForm?.group" #filterInput></ec-input>
+    <ec-input
+      (ready)="inputReady($event)"
+      (changed)="setFilter(filteredField, $event)"
+      [lazy]="true"
+      [component]="filteredField.getComponent('filter') || filteredField.input"
+      class="has-width-full"
+      [field]="filteredField"
+      [group]="filterForm?.group"
+      [debounce]="200"
+      *ngIf="filterPop.active && filterForm?.group"
+      #filterInput
+    ></ec-input>
 
-    <a class="btn btn_clear" (click)="resetFilter()" *ngIf="list?.isFiltered(filteredField.property)">
+    <a
+      class="btn btn_clear"
+      (click)="resetFilter()"
+      *ngIf="list?.isFiltered(filteredField.property)"
+    >
       <!-- <a class="btn btn_clear" (click)="filterPop.hide()"> -->
       <ec-icon name="close-x"></ec-icon>
     </a>
@@ -25,16 +38,29 @@
         <ec-icon name="filter-2"></ec-icon>
       </span>
       <ul class="dropdown-options">
-        <li class="dropdown-option" *ngFor="let field of list?.sortableFields()"
-          [class.is-active]="list?.isSorted(field.property, true)">
-          <a class="sorting-option"
+        <li
+          class="dropdown-option"
+          *ngFor="let field of list?.sortableFields()"
+          [class.is-active]="list?.isSorted(field.property, true)"
+        >
+          <a
+            class="sorting-option"
             [class.is-sorted-asc]="list?.isSorted(field.property, true)"
-            [class.is-sorted-desc]="list?.isSorted(field.property, false)">
+            [class.is-sorted-desc]="list?.isSorted(field.property, false)"
+          >
             <span class="sorting-option-indicator">
-              <span class="asc" (click)="list.toggleSort(field.property,false)"></span>
-              <span class="desc" (click)="list.toggleSort(field.property,true)"></span>
+              <span
+                class="asc"
+                (click)="list.toggleSort(field.property, false)"
+              ></span>
+              <span
+                class="desc"
+                (click)="list.toggleSort(field.property, true)"
+              ></span>
             </span>
-            <span (click)="list.toggleSort(field.property)">{{field.getLabel()}}</span>
+            <span (click)="list.toggleSort(field.property)">{{
+              field.getLabel()
+            }}</span>
           </a>
         </li>
       </ul>
@@ -42,46 +68,88 @@
   </div>
 </ec-pop>
 <div *ngIf="filterFormConfig">
-  <ec-form [config]="filterFormConfig" [value]="list?.config?.filter" [empty]="true" #filterForm
-    (ready)="initFilterForm($event)" [lazy]="true"></ec-form>
+  <ec-form
+    [config]="filterFormConfig"
+    [value]="list?.config?.filter"
+    [empty]="true"
+    #filterForm
+    (ready)="initFilterForm($event)"
+    [lazy]="true"
+  ></ec-form>
   <div class="ec-list-header">
-    <div class="ec-list-cell ec-list-item__selector" *ngIf="list?.config?.selectMode&&!list?.isEmpty()">
-      <input type="checkbox" (click)="selection?.toggleAll(list?.page)" [checked]="selection?.hasAll(list?.page)"
-        [disabled]="selection?.config?.solo">
+    <div
+      class="ec-list-cell ec-list-item__selector"
+      *ngIf="list?.config?.selectMode && !list?.isEmpty()"
+    >
+      <input
+        type="checkbox"
+        (click)="selection?.toggleAll(list?.page)"
+        [checked]="selection?.hasAll(list?.page)"
+        [disabled]="selection?.config?.solo"
+      />
     </div>
-    <div class="ec-list-cell" *ngFor="let field of list?.fields;let i = index"
-      [ngClass]="'ec-list-cell_' + field.view + ' ' + (field?.classes||'')" [class.is-hidden]="field.hideInList"
-      [class.is-sortable]="field.sortable" [class.is-sorted]="list.isSorted(field.property)"
-      [class.is-filterable]="field.filterable" [class.is-filtered]="list.isFiltered(field.property)"
+    <div
+      class="ec-list-cell"
+      *ngFor="let field of list?.fields; let i = index"
+      [ngClass]="'ec-list-cell_' + field.view + ' ' + (field?.classes || '')"
+      [class.is-hidden]="field.hideInList"
+      [class.is-sortable]="field.sortable"
+      [class.is-sorted]="list.isSorted(field.property)"
+      [class.is-filterable]="field.filterable"
+      [class.is-filtered]="list.isFiltered(field.property)"
       [class.is-sorted-desc]="list.isSorted(field.property, true)"
       [class.is-last-column]="isLastColumn(field)"
-      [class.is-sorted-asc]="list.isSorted(field.property, false)">
+      [class.is-sorted-asc]="list.isSorted(field.property, false)"
+    >
       <!-- [class.is-filter-active]="filterPop.active"-->
-      <a (click)="filterField(field.property)" class="is-filterable-control" *ngIf="field.filterable">
+      <a
+        (click)="filterField(field.property)"
+        class="is-filterable-control"
+        *ngIf="field.filterable"
+      >
         <ec-icon name="find"></ec-icon>
       </a>
       <!-- <a (click)="toggleVisibility(field)" class="is-visibility-control">
         <ec-icon name="eye-closed"></ec-icon>
       </a> -->
-      
-      <span class="ec-list-column-title" (click)="field.sortable&&list.toggleSort(field.property)"
-        [title]="field.property">
-        {{field.getLabel()}}
+
+      <span
+        class="ec-list-column-title"
+        (click)="field.sortable && list.toggleSort(field.property)"
+        [title]="field.property"
+      >
+        {{ field.getLabel() }}
       </span>
       <span class="is-sortable-indicator" *ngIf="field.sortable">
-        <span class="asc" (click)="list.toggleSort(field.property,false)"></span>
-        <span class="desc" (click)="list.toggleSort(field.property,true)"></span>
+        <span
+          class="asc"
+          (click)="list.toggleSort(field.property, false)"
+        ></span>
+        <span
+          class="desc"
+          (click)="list.toggleSort(field.property, true)"
+        ></span>
       </span>
     </div>
 
-    <div class="dropdown dropdown_right ec-list-column-filter" tabindex="0" *ngIf="!list?.config?.disableColumnFilter">
+    <div
+      class="dropdown dropdown_right ec-list-column-filter"
+      tabindex="0"
+      *ngIf="!list?.config?.disableColumnFilter"
+    >
       <span>&#9776;</span>
       <div class="dropdown-options ec-list-column-filter-options">
         <ul>
-          <li class="ec-list-column-filter-option" *ngFor="let field of list?.fields"
-            [class.is-active]="!field.hideInList" [class.is-hidden]="field.hideInColumnFilter">
+          <li
+            class="ec-list-column-filter-option"
+            *ngFor="let field of list?.fields"
+            [class.is-active]="!field.hideInList"
+            [class.is-hidden]="field.hideInColumnFilter"
+          >
             <span (click)="toggleVisibility(field)">
-              <ec-icon [name]="field.hideInList?'square':'check-box'">{{field.getLabel()}}</ec-icon>
+              <ec-icon [name]="field.hideInList ? 'square' : 'check-box'">{{
+                field.getLabel()
+              }}</ec-icon>
             </span>
           </li>
         </ul>

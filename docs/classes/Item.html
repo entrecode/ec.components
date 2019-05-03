@@ -348,7 +348,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="217" class="link-to-prism">packages/core/src/lib/item/item.ts:217</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="229" class="link-to-prism">packages/core/src/lib/item/item.ts:229</a></div>
                             </td>
                         </tr>
 
@@ -425,7 +425,7 @@ Calls the config#action method with the item and the property name </p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="130" class="link-to-prism">packages/core/src/lib/item/item.ts:130</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="135" class="link-to-prism">packages/core/src/lib/item/item.ts:135</a></div>
                             </td>
                         </tr>
 
@@ -537,7 +537,7 @@ If property given: Returns the output of the config.fields[property].classes met
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="173" class="link-to-prism">packages/core/src/lib/item/item.ts:173</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="186" class="link-to-prism">packages/core/src/lib/item/item.ts:186</a></div>
                             </td>
                         </tr>
 
@@ -610,7 +610,7 @@ If property given: Returns the output of the config.fields[property].classes met
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="142" class="link-to-prism">packages/core/src/lib/item/item.ts:142</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="147" class="link-to-prism">packages/core/src/lib/item/item.ts:147</a></div>
                             </td>
                         </tr>
 
@@ -844,7 +844,7 @@ If no display function is set, it will just return the property value.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="124" class="link-to-prism">packages/core/src/lib/item/item.ts:124</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">packages/core/src/lib/item/item.ts:129</a></div>
                             </td>
                         </tr>
 
@@ -996,7 +996,7 @@ If no group function is set, it will just return the property value.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="166" class="link-to-prism">packages/core/src/lib/item/item.ts:166</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="174" class="link-to-prism">packages/core/src/lib/item/item.ts:174</a></div>
                             </td>
                         </tr>
 
@@ -1065,7 +1065,7 @@ If no group function is set, it will just return the property value.</p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="155" class="link-to-prism">packages/core/src/lib/item/item.ts:155</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="160" class="link-to-prism">packages/core/src/lib/item/item.ts:160</a></div>
                             </td>
                         </tr>
 
@@ -1208,7 +1208,7 @@ This method will traverse the body via the config.resolve function (if given). <
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="204" class="link-to-prism">packages/core/src/lib/item/item.ts:204</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="217" class="link-to-prism">packages/core/src/lib/item/item.ts:217</a></div>
                             </td>
                         </tr>
 
@@ -1283,7 +1283,7 @@ This method will traverse the body via the config.resolve function (if given). <
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="182" class="link-to-prism">packages/core/src/lib/item/item.ts:182</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="195" class="link-to-prism">packages/core/src/lib/item/item.ts:195</a></div>
                             </td>
                         </tr>
 
@@ -1371,7 +1371,7 @@ This method will traverse the body via the config.resolve function (if given). <
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="150" class="link-to-prism">packages/core/src/lib/item/item.ts:150</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="155" class="link-to-prism">packages/core/src/lib/item/item.ts:155</a></div>
                             </td>
                         </tr>
 
@@ -1774,7 +1774,12 @@ export class Item&lt;T&gt; {
    * If you dont set the third parameter, the current item value will be used.
    * The third parameter can be used to transform a value that is not yet possesed (e.g. to
    * serialize) */
-  public transform(action: string, property: string, value: any &#x3D; this.resolve(property), defaultValue: any &#x3D; this.resolve(property)) {
+  public transform(
+    action: string,
+    property: string,
+    value: any &#x3D; this.resolve(property),
+    defaultValue: any &#x3D; this.resolve(property),
+  ) {
     if (!this.hasBody()) {
       return;
     }
@@ -1818,25 +1823,33 @@ export class Item&lt;T&gt; {
 
   /** Returns value with all readOnly properties removed */
   pickWriteOnly(value &#x3D; this.body) {
-    return (&lt;any&gt;Object).assign({}, ...Object.keys(value)
-      .map(property &#x3D;&gt; {
-        if (this.config.fields[property].readOnly) {
-          return;
-        }
-        return { [property]: value[property] };
-      }).filter(v &#x3D;&gt; !!v));
-
+    return (&lt;any&gt;Object).assign(
+      {},
+      ...Object.keys(value)
+        .map((property) &#x3D;&gt; {
+          if (this.config.fields[property].readOnly) {
+            return;
+          }
+          return { [property]: value[property] };
+        })
+        .filter((v) &#x3D;&gt; !!v),
+    );
   }
 
   isImmutableProperty(property: string): boolean {
-    if (this.config &amp;&amp; this.config.fields &amp;&amp; this.config.fields[property] &amp;&amp; typeof this.config.fields[property].immutable &#x3D;&#x3D;&#x3D; &#x27;function&#x27;) {
+    if (
+      this.config &amp;&amp;
+      this.config.fields &amp;&amp;
+      this.config.fields[property] &amp;&amp;
+      typeof this.config.fields[property].immutable &#x3D;&#x3D;&#x3D; &#x27;function&#x27;
+    ) {
       return this.config.fields[property].immutable(this);
     }
     return this.config.fields[property].immutable;
   }
 
   deleteImmutableProperties(value: Object &#x3D; this.body) {
-    Object.keys(this.config.fields).forEach(property &#x3D;&gt; {
+    Object.keys(this.config.fields).forEach((property) &#x3D;&gt; {
       if (value.hasOwnProperty(property) &amp;&amp; this.isImmutableProperty(property)) {
         delete value[property];
       }
@@ -1852,7 +1865,7 @@ export class Item&lt;T&gt; {
     /** Run the remaining properties through serializers */
     Object.keys(value).map((property) &#x3D;&gt; {
       (&lt;any&gt;Object).assign(value, {
-        [property]: this.transform(&#x27;serialize&#x27;, property, value[property]) // TODO: fix
+        [property]: this.transform(&#x27;serialize&#x27;, property, value[property]), // TODO: fix
       });
     });
     return value;
@@ -1868,11 +1881,10 @@ export class Item&lt;T&gt; {
   /** Saves the given value. Run serializers before assigning the new value. */
   save(value: T &#x3D; this.body): Promise&lt;Item&lt;T&gt;&gt; {
     if (this.config.onSave) {
-      return Promise.resolve(this.config.onSave(this, value))
-        .then((_value: T) &#x3D;&gt; {
-          this.body &#x3D; _value;
-          return this;
-        });
+      return Promise.resolve(this.config.onSave(this, value)).then((_value: T) &#x3D;&gt; {
+        this.body &#x3D; _value;
+        return this;
+      });
     }
     this.body &#x3D; (&lt;any&gt;Object).assign(this.resolve() || {}, value);
     return Promise.resolve(this);

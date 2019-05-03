@@ -374,7 +374,7 @@ Make sure the config is already complete when initiating an EntryList instance. 
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in ResourceList:53</div>
+                                    <div class="io-line">Defined in ResourceList:45</div>
                             </td>
                         </tr>
 
@@ -657,7 +657,7 @@ Make sure the config is already complete when initiating an EntryList instance. 
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in ResourceList:54</div>
+                                    <div class="io-line">Defined in ResourceList:45</div>
                             </td>
                         </tr>
 
@@ -766,7 +766,7 @@ Make sure the config is already complete when initiating an EntryList instance. 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">packages/data/src/lib/entry-list/entry-list.ts:32</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">packages/data/src/lib/entry-list/entry-list.ts:31</a></div>
                             </td>
                         </tr>
 
@@ -843,7 +843,7 @@ Make sure the config is already complete when initiating an EntryList instance. 
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in ResourceList:169</div>
+                                    <div class="io-line">Defined in ResourceList:156</div>
                             </td>
                         </tr>
 
@@ -938,7 +938,7 @@ Make sure the config is already complete when initiating an EntryList instance. 
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in ResourceList:156</div>
+                                    <div class="io-line">Defined in ResourceList:143</div>
                             </td>
                         </tr>
 
@@ -1127,7 +1127,7 @@ Make sure the config is already complete when initiating an EntryList instance. 
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in ResourceList:115</div>
+                                    <div class="io-line">Defined in ResourceList:104</div>
                             </td>
                         </tr>
 
@@ -1210,7 +1210,7 @@ Make sure the config is already complete when initiating an EntryList instance. 
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in ResourceList:38</div>
+                                    <div class="io-line">Defined in ResourceList:35</div>
                             </td>
                         </tr>
 
@@ -1299,7 +1299,7 @@ Make sure the config is already complete when initiating an EntryList instance. 
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in ResourceList:66</div>
+                                    <div class="io-line">Defined in ResourceList:55</div>
                             </td>
                         </tr>
 
@@ -1374,7 +1374,7 @@ Make sure the config is already complete when initiating an EntryList instance. 
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in ResourceList:147</div>
+                                    <div class="io-line">Defined in ResourceList:134</div>
                             </td>
                         </tr>
 
@@ -1465,7 +1465,7 @@ Make sure the config is already complete when initiating an EntryList instance. 
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in ResourceList:97</div>
+                                    <div class="io-line">Defined in ResourceList:86</div>
                             </td>
                         </tr>
 
@@ -1540,7 +1540,7 @@ Make sure the config is already complete when initiating an EntryList instance. 
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in ResourceList:85</div>
+                                    <div class="io-line">Defined in ResourceList:74</div>
                             </td>
                         </tr>
 
@@ -1625,8 +1625,7 @@ export class EntryList extends ResourceList {
 
   /** Generates the filterOptions for loading the entries. Sets the _fields option. */
   getFilterOptions(config: ListConfig&lt;EntryResource&gt;): filterOptions {
-    const _fields &#x3D; Object.keys(this.config.fields)
-      .filter((field) &#x3D;&gt; this.config.fields[field].list !&#x3D;&#x3D; false);
+    const _fields &#x3D; Object.keys(this.config.fields).filter((field) &#x3D;&gt; this.config.fields[field].list !&#x3D;&#x3D; false);
     return Object.assign(super.getFilterOptions(config), { _fields });
   }
 
@@ -1636,7 +1635,8 @@ export class EntryList extends ResourceList {
       return;
     }
     this.useConfig(config);
-    this.promise &#x3D; this.sdk.api.entryList(this.model, this.getFilterOptions(this.config))
+    this.promise &#x3D; this.sdk.api
+      .entryList(this.model, this.getFilterOptions(this.config))
       .then((list) &#x3D;&gt; this.use(list))
       .catch((err) &#x3D;&gt; this.error.next(err));
     this.loading.next(this.promise);

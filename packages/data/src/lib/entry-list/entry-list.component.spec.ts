@@ -13,9 +13,7 @@ describe('EntryListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        UiModule,
-        ResourceModule],
+      imports: [UiModule, ResourceModule],
       declarations: [ImageSelectPopComponent, EntryListComponent],
       providers: [
         ModelConfigService,
@@ -24,11 +22,11 @@ describe('EntryListComponent', () => {
         {
           provide: 'environment',
           useValue: {
-            environment: 'live'
-          }
-        }]
-    })
-      .compileComponents();
+            environment: 'live',
+          },
+        },
+      ],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

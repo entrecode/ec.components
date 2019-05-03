@@ -1,6 +1,14 @@
 import {
-  ChangeDetectorRef, Component, ElementRef, forwardRef,
-  Input, OnChanges, OnInit, ViewChild, ViewEncapsulation, EventEmitter
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  forwardRef,
+  Input,
+  OnChanges,
+  OnInit,
+  ViewChild,
+  ViewEncapsulation,
+  EventEmitter,
 } from '@angular/core';
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Form, Item } from '@ec.components/core';
@@ -15,7 +23,7 @@ import { ResourceListPopComponent } from '../resource-list-pop/resource-list-pop
 import { ResourceListComponent } from '../resource-list/resource-list.component';
 import { ResourcePopComponent } from '../resource-pop/resource-pop.component';
 /** Shows resources of a selection and is able to pick new ones from a crud list
-*/
+ */
 
 @Component({
   selector: 'ec-resource-select',
@@ -25,9 +33,9 @@ import { ResourcePopComponent } from '../resource-pop/resource-pop.component';
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => ResourceSelectComponent),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class ResourceSelectComponent extends SelectComponent<Resource> implements OnChanges, OnInit {
   /** The item that is targeted by the input */
@@ -69,7 +77,7 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
     protected auth: AuthService,
     public elementRef: ElementRef,
     public symbol: SymbolService,
-    public cdr: ChangeDetectorRef
+    public cdr: ChangeDetectorRef,
   ) {
     super(elementRef, cdr);
     this.focusEvent.subscribe((focus) => {
@@ -114,18 +122,21 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
       disableHeader: true,
       defaultFilter: false,
       fields: this.config.dropdownFields || {
-        [this.config.label]: Object.assign({}, this.config.fields ? this.config.fields[this.config.label] || {} : {})
-      }
+        [this.config.label]: Object.assign({}, this.config.fields ? this.config.fields[this.config.label] || {} : {}),
+      },
     });
     if (config.methods) {
       this.useMethods(config.methods);
     } else {
-      this.auth.getAllowedResourceMethods(this.relation) // init permissions
+      this.auth
+        .getAllowedResourceMethods(this.relation) // init permissions
         .then((methods) => this.useMethods(methods));
     }
-    this.selection.update$.subscribe(change => {
-      if (this.solo && !this.selection.isEmpty()) { // update permissions for selected item
-        this.auth.getAllowedResourceMethods(this.relation, { [this.config.identifier]: this.selection.getValue() })
+    this.selection.update$.subscribe((change) => {
+      if (this.solo && !this.selection.isEmpty()) {
+        // update permissions for selected item
+        this.auth
+          .getAllowedResourceMethods(this.relation, { [this.config.identifier]: this.selection.getValue() })
           .then((methods) => this.useMethods(methods));
       }
     });
@@ -166,8 +177,13 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
       this.useConfig(this.config);
       return;
     }
-    this.config = <CrudConfig<Resource>>Object.assign(this.resourceConfig.get(this.relation)/* , { size: 5 } */,
-      this.crudConfig, { solo: this.solo, selectMode: false, disableSelectSwitch: true } as CrudConfig<Resource>);
+    this.config = <CrudConfig<Resource>>(
+      Object.assign(this.resourceConfig.get(this.relation) /* , { size: 5 } */, this.crudConfig, {
+        solo: this.solo,
+        selectMode: false,
+        disableSelectSwitch: true,
+      } as CrudConfig<Resource>)
+    );
     this.useConfig(this.config);
   }
 
@@ -175,32 +191,33 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
   formSubmitted(form: Form<EntryResource>) {
     if (!this.selection.has(form)) {
       this.toggleItem.next(form);
-    } else { // already in selection => update body
+    } else {
+      // already in selection => update body
       const index = this.selection.index(form);
       this.selection.items[index].body = form.getBody();
     }
   }
 
   pasteValue(e) {
-    const value = (e.clipboardData).getData('text');
+    const value = e.clipboardData.getData('text');
     if (this.config.identifierPattern && value.match(this.config.identifierPattern)) {
       this.preventDefault(e);
-      this.api.resource(this.relation, value)
-        .then(resource => this.addItem(new Item(resource, this.config)))
-        .catch(error => this.searchbar.filterList(value));
+      this.api
+        .resource(this.relation, value)
+        .then((resource) => this.addItem(new Item(resource, this.config)))
+        .catch((error) => this.searchbar.filterList(value));
     }
   }
 
   /** Is called when a selected item has been clicked. */
   editItem(item: Item<Resource>, e) {
-    this.auth.getAllowedResourceMethods(this.relation, { [this.config.identifier]: item.id() })
-      .then(methods => {
-        if (methods.indexOf('put') === -1) {
-          console.log('cannote put');
-          return;
-        }
-        this.resourcePop.edit(item.getBody(), { methods });
-      });
+    this.auth.getAllowedResourceMethods(this.relation, { [this.config.identifier]: item.id() }).then((methods) => {
+      if (methods.indexOf('put') === -1) {
+        console.log('cannote put');
+        return;
+      }
+      this.resourcePop.edit(item.getBody(), { methods });
+    });
   }
 
   onChange() {
@@ -212,8 +229,7 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
   }
 
   focusSearchbar() {
-    if ((!this.resourceListPop || !this.resourceListPop.active) &&
-      (this.focusEvent)) {
+    if ((!this.resourceListPop || !this.resourceListPop.active) && this.focusEvent) {
       this.focusEvent.emit(true);
     }
   }

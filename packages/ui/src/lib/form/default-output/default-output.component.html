@@ -1,4 +1,4 @@
-<div [ngSwitch]="field.view" *ngIf="item">
+<div [ngSwitch]="field.getView('output')" *ngIf="item">
   <ul class="ec-output-tags" *ngSwitchCase="'tags'">
     <li *ngFor="let label of item?.display(field.property) | maxItems:field.maxItems||10">
       <span class="ec-output-tag">{{label}}</span>

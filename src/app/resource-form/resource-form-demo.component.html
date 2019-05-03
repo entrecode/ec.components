@@ -3,13 +3,19 @@
 <ec-resource-form [api]="sdk.datamanager" relation="dataManager"></ec-resource-form>
 <ec-notifications></ec-notifications>
 
-
 <h3>Custom</h3>
 
-<ec-resource-form [lazy]="true" (submitted)="saved($event)" [api]="sdk.datamanager" relation="dataManager" [value]="datamanager"
-    *ngIf="datamanager" #form>
-    <label [for]="description?.field?.id">{{description?.field?.label}}</label>
-    <ec-input [lazy]="true" property="description" [item]="form?.form" [group]="form?.group" #description></ec-input>
-    <a class="btn btn_wide" (click)="submit(form)">save</a>
+<ec-resource-form
+  [lazy]="true"
+  (submitted)="saved($event)"
+  [api]="sdk.datamanager"
+  relation="dataManager"
+  [value]="datamanager"
+  *ngIf="datamanager"
+  #form
+>
+  <label [for]="description?.field?.id">{{ description?.field?.label }}</label>
+  <ec-input [lazy]="true" property="description" [item]="form?.form" [group]="form?.group" #description></ec-input>
+  <a class="btn btn_wide" (click)="submit(form)">save</a>
 </ec-resource-form>
 <ec-notifications></ec-notifications>

@@ -23,8 +23,7 @@ export class EntryList extends ResourceList {
 
   /** Generates the filterOptions for loading the entries. Sets the _fields option. */
   getFilterOptions(config: ListConfig<EntryResource>): filterOptions {
-    const _fields = Object.keys(this.config.fields)
-      .filter((field) => this.config.fields[field].list !== false);
+    const _fields = Object.keys(this.config.fields).filter((field) => this.config.fields[field].list !== false);
     return Object.assign(super.getFilterOptions(config), { _fields });
   }
 
@@ -34,7 +33,8 @@ export class EntryList extends ResourceList {
       return;
     }
     this.useConfig(config);
-    this.promise = this.sdk.api.entryList(this.model, this.getFilterOptions(this.config))
+    this.promise = this.sdk.api
+      .entryList(this.model, this.getFilterOptions(this.config))
       .then((list) => this.use(list))
       .catch((err) => this.error.next(err));
     this.loading.next(this.promise);

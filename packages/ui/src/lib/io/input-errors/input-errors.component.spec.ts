@@ -9,9 +9,8 @@ describe('InputErrorsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [InputErrorsComponent],
-      providers: [SymbolService]
-    })
-      .compileComponents();
+      providers: [SymbolService],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

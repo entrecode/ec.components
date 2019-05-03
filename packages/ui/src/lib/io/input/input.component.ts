@@ -1,4 +1,13 @@
-import { Component, EventEmitter, forwardRef, Input, OnChanges, Output, Type, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  forwardRef,
+  Input,
+  OnChanges,
+  Output,
+  Type,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, AbstractControl } from '@angular/forms';
 import { FieldConfigProperty, Field, Form, Item } from '@ec.components/core';
 import { DynamicSlotComponent } from '../dynamic-slot/dynamic-slot.component';
@@ -14,9 +23,9 @@ import { debounceTime } from 'rxjs/operators';
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => InputComponent),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class InputComponent extends DynamicSlotComponent implements ControlValueAccessor, OnChanges {
   /** The belonging form group */
@@ -77,7 +86,7 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
     }
     if (!this.group) {
       this.group = new FormGroup({
-        [this.property || this.field.property || 'input']: this.control
+        [this.property || this.field.property || 'input']: this.control,
       });
     }
     const data = {
@@ -87,20 +96,17 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
       field: this.field,
       input: this,
       config: this.config || this.field.config || {},
-      focusEvent: this.focusEvent
+      focusEvent: this.focusEvent,
     };
     const componentRef = this.loadComponent(this.component || this.field.input || DefaultInputComponent, data);
     this.componentInstance = componentRef.instance;
     this.connectControl();
     this.ready.emit(this);
     if (this.componentInstance.control) {
-      this.componentInstance.control.valueChanges
-        .pipe(
-          debounceTime(this.debounce)
-        ).subscribe((change) => {
-          this.changed.emit(change);
-          this.propagateChange(change);
-        });
+      this.componentInstance.control.valueChanges.pipe(debounceTime(this.debounce)).subscribe((change) => {
+        this.changed.emit(change);
+        this.propagateChange(change);
+      });
     }
     if (this.field && typeof this.field.init === 'function') {
       this.field.init(this.componentInstance, this);
@@ -128,8 +134,7 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
     this.value = value;
   }
 
-  propagateChange = (_: any) => {
-  }
+  propagateChange = (_: any) => {};
 
   /** Registers change callback */
   registerOnChange(fn) {
@@ -137,6 +142,5 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
     this.connectControl();
   }
 
-  registerOnTouched() {
-  }
+  registerOnTouched() {}
 }

@@ -464,7 +464,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">packages/data/src/lib/entry/entry.directive.ts:50</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">packages/data/src/lib/entry/entry.directive.ts:51</a></div>
                             </td>
                         </tr>
 
@@ -504,7 +504,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">packages/data/src/lib/entry/entry.directive.ts:42</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">packages/data/src/lib/entry/entry.directive.ts:43</a></div>
                             </td>
                         </tr>
 
@@ -583,7 +583,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">packages/data/src/lib/entry/entry.directive.ts:38</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">packages/data/src/lib/entry/entry.directive.ts:39</a></div>
                             </td>
                         </tr>
 
@@ -644,7 +644,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">packages/data/src/lib/entry/entry.directive.ts:37</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">packages/data/src/lib/entry/entry.directive.ts:38</a></div>
                             </td>
                         </tr>
 
@@ -675,7 +675,7 @@ import { SymbolService } from &#x27;@ec.components/ui&#x27;;
  * */
 @Directive({
   selector: &#x27;[ecEntry]&#x27;,
-  exportAs: &#x27;ecEntry&#x27;
+  exportAs: &#x27;ecEntry&#x27;,
 })
 export class EntryDirective implements OnChanges, WithLoader {
   /** The loading promise */
@@ -696,10 +696,11 @@ export class EntryDirective implements OnChanges, WithLoader {
   entry: any;
 
   /** Injects the sdk */
-  constructor(private sdk: SdkService,
+  constructor(
+    private sdk: SdkService,
     public symbol: SymbolService,
-    public notificationService: NotificationsService) {
-  }
+    public notificationService: NotificationsService,
+  ) {}
 
   /** as soon as model and id are known, the entry will be loaded. */
   ngOnChanges() {
@@ -714,17 +715,19 @@ export class EntryDirective implements OnChanges, WithLoader {
     if (!this.entryId || !this.model) {
       return;
     }
-    this.promise &#x3D; this.sdk.api.entry(this.model, this.entryId, this.levels)
+    this.promise &#x3D; this.sdk.api
+      .entry(this.model, this.entryId, this.levels)
       .then((entry) &#x3D;&gt; {
         this.entry &#x3D; entry;
         this.loaded.emit(entry);
         return entry;
       })
-      .catch(error &#x3D;&gt;
+      .catch((error) &#x3D;&gt;
         this.notificationService.emit({
           title: this.symbol.resolve(&#x27;entry.load.error&#x27;),
-          error
-        }));
+          error,
+        }),
+      );
     if (this.loader) {
       this.loader.wait(this.promise);
     }

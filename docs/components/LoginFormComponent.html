@@ -605,7 +605,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">packages/ui/src/lib/utility/login-form/login-form.component.ts:67</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">packages/ui/src/lib/utility/login-form/login-form.component.ts:66</a></div>
                             </td>
                         </tr>
 
@@ -672,7 +672,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">packages/ui/src/lib/utility/login-form/login-form.component.ts:51</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">packages/ui/src/lib/utility/login-form/login-form.component.ts:50</a></div>
                             </td>
                         </tr>
 
@@ -752,7 +752,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">packages/ui/src/lib/utility/login-form/login-form.component.ts:59</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">packages/ui/src/lib/utility/login-form/login-form.component.ts:58</a></div>
                             </td>
                         </tr>
 
@@ -988,7 +988,7 @@ import { FieldValidators } from &#x27;../validators/field-validators&#x27;;
 
 /** Login Form Component with validation. Fires success event with credentials on submit.
  * &lt;example-url&gt;https://components.entrecode.de/ui/login?e&#x3D;1&lt;/example-url&gt;
-*/
+ */
 @Component({
   selector: &#x27;ec-login-form&#x27;,
   templateUrl: &#x27;./login-form.component.html&#x27;,
@@ -1024,8 +1024,7 @@ export class LoginFormComponent implements OnInit, WithLoader {
   notifications: Notification[];
 
   /** Injects the FormBuilder*/
-  constructor(protected fb: FormBuilder, public symbol: SymbolService) {
-  }
+  constructor(protected fb: FormBuilder, public symbol: SymbolService) {}
 
   /** Initializes the form */
   ngOnInit() {
@@ -1044,7 +1043,8 @@ export class LoginFormComponent implements OnInit, WithLoader {
   }
 
   /** Method that is meant to be overwritten by a subclass to communicate with an API. */
-  login(value) { // meant to be overridden
+  login(value) {
+    // meant to be overridden
     return Promise.resolve(value);
   }
 
@@ -1055,11 +1055,10 @@ export class LoginFormComponent implements OnInit, WithLoader {
     if (!this.form.valid) {
       return;
     }
-    const login &#x3D; this.login(this.form.value)
-      .then((res) &#x3D;&gt; {
-        this.form.reset();
-        this.success.emit(res);
-      });
+    const login &#x3D; this.login(this.form.value).then((res) &#x3D;&gt; {
+      this.form.reset();
+      this.success.emit(res);
+    });
     if (this.loader) {
       this.loader.wait(login);
     }

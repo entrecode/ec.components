@@ -221,7 +221,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">packages/data/src/lib/auth/login/login.component.ts:32</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">packages/data/src/lib/auth/login/login.component.ts:31</a></div>
                             </td>
                         </tr>
 
@@ -301,7 +301,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">packages/data/src/lib/auth/login/login.component.ts:24</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">packages/data/src/lib/auth/login/login.component.ts:23</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -331,7 +331,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">packages/data/src/lib/auth/login/login.component.ts:28</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">packages/data/src/lib/auth/login/login.component.ts:27</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -358,7 +358,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">packages/data/src/lib/auth/login/login.component.ts:26</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">packages/data/src/lib/auth/login/login.component.ts:25</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -501,7 +501,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">packages/data/src/lib/auth/login/login.component.ts:30</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">packages/data/src/lib/auth/login/login.component.ts:29</a></div>
                             </td>
                         </tr>
 
@@ -539,7 +539,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">packages/data/src/lib/auth/login/login.component.ts:32</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">packages/data/src/lib/auth/login/login.component.ts:31</a></div>
                             </td>
                         </tr>
 
@@ -621,7 +621,7 @@ import {
   Notification,
   LoaderComponent,
   NotificationsService,
-  WithLoader
+  WithLoader,
 } from &#x27;@ec.components/ui&#x27;;
 import PublicAPI from &#x27;ec.sdk/lib/PublicAPI&#x27;;
 import AccountResource from &#x27;ec.sdk/lib/resources/accounts/AccountResource&#x27;;
@@ -629,12 +629,11 @@ import { AuthService } from &#x27;../auth.service&#x27;;
 
 /** Uses LoginFormComponent. Tries to login via AuthService. Shows notifications and nexts success Subject if login was successful.
  * &lt;example-url&gt;https://components.entrecode.de/auth/auth?e&#x3D;1&lt;/example-url&gt;
-*/
+ */
 @Component({
   selector: &#x27;ec-login&#x27;,
-  templateUrl: &#x27;login.component.html&#x27;
+  templateUrl: &#x27;login.component.html&#x27;,
 })
-
 export class LoginComponent implements WithLoader, WithNotifications {
   /** You can optionally specify PublicAPI instance. Defaults to SdkService#api. */
   @Input() api: PublicAPI;
@@ -647,18 +646,20 @@ export class LoginComponent implements WithLoader, WithNotifications {
   /** Error notifications */
   notifications: Notification[] &#x3D; [];
 
-  constructor(public auth: AuthService,
+  constructor(
+    public auth: AuthService,
     public notificationService: NotificationsService,
-    public symbol: SymbolService) {
-  }
+    public symbol: SymbolService,
+  ) {}
   /** Communicates with the AuthService. Handles loader, notifications and success Subject. */
   login({ email, password }) {
-    const login &#x3D; this.auth.login({ email, password }, this.api)
+    const login &#x3D; this.auth
+      .login({ email, password }, this.api)
       .then((user) &#x3D;&gt; {
         this.notificationService.emit({
           type: &#x27;success&#x27;,
           title: this.symbol.resolve(&#x27;login.success&#x27;),
-          hide: this.notifications
+          hide: this.notifications,
         });
         this.success.emit(user);
       })
@@ -668,7 +669,7 @@ export class LoginComponent implements WithLoader, WithNotifications {
           error,
           sticky: true,
           hide: this.notifications,
-          replace: this.notifications
+          replace: this.notifications,
         });
         this.error.next(error);
         console.log(&#x27;could not login&#x27;, error);

@@ -5,6 +5,5 @@ import { Component } from '@angular/core';
   templateUrl: './tabs-demo.component.html',
 })
 export class TabsDemoComponent {
-  constructor() {
-  }
+  constructor() {}
 }

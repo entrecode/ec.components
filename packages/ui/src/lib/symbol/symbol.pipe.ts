@@ -11,17 +11,17 @@ import { SymbolService } from './symbol.service';
  * See SymbolService for more info about Symbols.
  */
 @Pipe({
-    name: 'symbol'
+  name: 'symbol',
 })
 @Injectable()
 export class SymbolPipe implements PipeTransform {
-    /** Depends on the SymbolService */
-    constructor(private symbol: SymbolService) { }
-    /** Calls SymbolService.resolve with the given name */
-    transform(name: string): string {
-        if (!name) {
-            return '';
-        }
-        return this.symbol.resolve(name) || '';
+  /** Depends on the SymbolService */
+  constructor(private symbol: SymbolService) {}
+  /** Calls SymbolService.resolve with the given name */
+  transform(name: string): string {
+    if (!name) {
+      return '';
     }
+    return this.symbol.resolve(name) || '';
+  }
 }

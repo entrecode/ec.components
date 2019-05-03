@@ -1,7 +1,13 @@
 import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import {
-  LoaderComponent, LoaderService, Notification, NotificationsService,
-  PopComponent, SymbolService, WithLoader, WithNotifications
+  LoaderComponent,
+  LoaderService,
+  Notification,
+  NotificationsService,
+  PopComponent,
+  SymbolService,
+  WithLoader,
+  WithNotifications,
 } from '@ec.components/ui';
 import PublicAPI from 'ec.sdk/lib/PublicAPI';
 import { SdkService } from '../../sdk/sdk.service';
@@ -39,12 +45,13 @@ export class UploadComponent implements WithLoader, WithNotifications {
   /** Error Notifications */
   notifications: Notification[] = [];
 
-  constructor(private sdk: SdkService,
+  constructor(
+    private sdk: SdkService,
     private fileService: FileService,
     private loaderService: LoaderService,
     private notificationService: NotificationsService,
-    private symbol: SymbolService) {
-  }
+    private symbol: SymbolService,
+  ) {}
   /** opens the system upload window by triggering the input */
   trigger(e) {
     if (!this.fileInput) {
@@ -78,9 +85,7 @@ export class UploadComponent implements WithLoader, WithNotifications {
   }
 
   uploadFiles(files, e, api = this.sdk.api) {
-    files = typeof files === 'string'
-      ? files.split('\n').map(url => ({ name: url, url }))
-      : files;
+    files = typeof files === 'string' ? files.split('\n').map((url) => ({ name: url, url })) : files;
     if (files[0].url && this.fileService.isOldAssetGroupID(this.assetGroupID)) {
       delete this.assetGroupID;
     }
@@ -97,26 +102,28 @@ export class UploadComponent implements WithLoader, WithNotifications {
 
   /** Triggers upload of current selected files */
   upload(files, api = this.sdk.api) {
-    this.uploadPromise = (this.fileService.isNewAssetGroupID(this.assetGroupID) ?
-      this.fileService.uploadAssets(files, this.assetGroupID, this.options, api) :
-      this.fileService.uploadFiles(files))
+    this.uploadPromise = (this.fileService.isNewAssetGroupID(this.assetGroupID)
+      ? this.fileService.uploadAssets(files, this.assetGroupID, this.options, api)
+      : this.fileService.uploadFiles(files)
+    )
       .then((_upload) => {
         this.success.emit(_upload);
         this.notificationService.emit({
           title: this.symbol.resolve('success.upload'),
           type: 'success',
-          hide: this.notifications
+          hide: this.notifications,
         });
         this.pop.hide();
         return _upload;
-      }).catch((err) => {
+      })
+      .catch((err) => {
         console.error(err);
         this.notificationService.emit({
           title: this.symbol.resolve('error.upload'),
           error: err,
           sticky: true,
           hide: this.notifications,
-          append: this.notifications
+          append: this.notifications,
         });
       });
     this.loaderService.wait(this.uploadPromise, this.loader);

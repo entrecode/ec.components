@@ -6,12 +6,11 @@ import AccountResource from 'ec.sdk/lib/resources/accounts/AccountResource';
 
 /** Uses LoginFormComponent. Tries to login via AuthService. Shows notifications and nexts success Subject if login was successful.
  * <example-url>https://components.entrecode.de/auth/signup?e=1</example-url>
-*/
+ */
 @Component({
   selector: 'ec-signup',
-  templateUrl: 'signup.component.html'
+  templateUrl: 'signup.component.html',
 })
-
 export class SignupComponent extends LoginComponent implements WithLoader, WithNotifications {
   /** You can optionally specify PublicAPI instance. Defaults to SdkService#api. */
   @Input() api: PublicAPI;
@@ -26,12 +25,13 @@ export class SignupComponent extends LoginComponent implements WithLoader, WithN
 
   /** Communicates with the AuthService. Handles loader, notifications and success Subject. */
   signup({ email, password, invite }) {
-    const registration = this.auth.signup({ email, password, invite }, this.api)
+    const registration = this.auth
+      .signup({ email, password, invite }, this.api)
       .then((user) => {
         this.notificationService.emit({
           type: 'success',
           title: this.symbol.resolve('signup.success'),
-          hide: this.notifications
+          hide: this.notifications,
         });
         this.success.emit(user);
       })
@@ -41,7 +41,7 @@ export class SignupComponent extends LoginComponent implements WithLoader, WithN
           error,
           sticky: true,
           hide: this.notifications,
-          replace: this.notifications
+          replace: this.notifications,
         });
         this.error.next(error);
         console.log('could not signup', error);

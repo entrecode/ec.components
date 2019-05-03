@@ -11,10 +11,7 @@ describe('TabComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       ...utilityModuleConfig,
-      imports: [
-        ...utilityModuleConfig.imports,
-        RouterTestingModule
-      ]
+      imports: [...utilityModuleConfig.imports, RouterTestingModule],
     }).compileComponents();
   }));
 

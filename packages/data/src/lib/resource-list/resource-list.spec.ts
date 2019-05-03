@@ -2,10 +2,8 @@ import { ResourceList } from './resource-list';
 import { SdkService } from '../sdk/sdk.service';
 /* import { environment } from '../../../../demo/environments/environment.test'; */
 
-
 describe('ResourceList', () => {
-
-    /* it('should construct', () => {
+  /* it('should construct', () => {
         const sdk = new SdkService(environment);
         const list = new ResourceList({});
         expect(list).toBeDefined();

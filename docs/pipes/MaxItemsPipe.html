@@ -111,7 +111,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">packages/ui/src/lib/form/max-items.pipe.ts:8</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">packages/ui/src/lib/form/max-items.pipe.ts:7</a></div>
                             </td>
                         </tr>
 
@@ -201,13 +201,12 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Pipe, PipeTransform } from &#x27;@angular/core&#x27;;
 /** This pipe slices an array after the nth item */
 @Pipe({
-    name: &#x27;maxItems&#x27;
+  name: &#x27;maxItems&#x27;,
 })
-
 export class MaxItemsPipe implements PipeTransform {
-    transform(array: Array&lt;any&gt; &#x3D; [], maxItems: number, start: number &#x3D; 0): any {
-        return array.slice(start, maxItems);
-    }
+  transform(array: Array&lt;any&gt; &#x3D; [], maxItems: number, start: number &#x3D; 0): any {
+    return array.slice(start, maxItems);
+  }
 }
 </code></pre>
     </div>

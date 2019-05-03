@@ -1,4 +1,4 @@
-<div [ngSwitch]="field.view" *ngIf="group" [formGroup]="group">
+<div [ngSwitch]="field.getView('form')" *ngIf="group" [formGroup]="group">
   <input [id]="field.id" *ngSwitchCase="'string'" type="text" [formControl]="control"
     [placeholder]="field.getPlaceholder()" [readonly]="formService.isReadOnly(field, item)" class="input"
     [ecFocus]="focusEvent" />

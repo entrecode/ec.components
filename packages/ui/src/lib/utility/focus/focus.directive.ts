@@ -8,8 +8,7 @@ export class FocusDirective implements OnInit, AfterViewInit {
   @Input() ecFocus: EventEmitter<boolean>;
   @Input() autofocus: boolean;
 
-  constructor(private element: ElementRef) {
-  }
+  constructor(private element: ElementRef) {}
 
   ngAfterViewInit() {
     if (this.autofocus) {
@@ -18,13 +17,12 @@ export class FocusDirective implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.ecFocus
-      .subscribe((event: boolean) => {
-        if (event) {
-          this.element.nativeElement.focus();
-        } else {
-          this.element.nativeElement.blur();
-        }
-      });
+    this.ecFocus.subscribe((event: boolean) => {
+      if (event) {
+        this.element.nativeElement.focus();
+      } else {
+        this.element.nativeElement.blur();
+      }
+    });
   }
 }

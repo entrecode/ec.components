@@ -12,10 +12,8 @@ import { Item, ItemConfig } from '@ec.components/core';
  * */
 @Injectable()
 export class EntryService {
-
   /** Injects sdk */
-  constructor(private sdk: SdkService, public resourceService: ResourceService) {
-  }
+  constructor(private sdk: SdkService, public resourceService: ResourceService) {}
 
   /** Yields an observable that emits for all updates that match the given filter */
   change(filter?: any): Observable<any> {
@@ -44,7 +42,8 @@ export class EntryService {
     return this.create(model, value)
       .then((_entry) => {
         return _entry;
-      }).catch((err) => {
+      })
+      .catch((err) => {
         return Promise.reject(err);
       });
   }
@@ -53,37 +52,44 @@ export class EntryService {
   async update(model, entryItem: Item<EntryResource>, value: Object, safePut = true): Promise<EntryResource> {
     const oldValues = {}; // save old values
     const entry = entryItem.getBody();
-    Object.keys(value).forEach((key) => oldValues[key] = entry[key]);
+    Object.keys(value).forEach((key) => (oldValues[key] = entry[key]));
     // TODO: EDITOR-263 get model config, clean readOnly fields too. Add custom filter argument to clean method
     Object.assign(entry, this.clean(value, entryItem.config, true)); // assign new form values
-    return entry.save(safePut).then((_entry) => {
-      this.resourceService.changes.next({ relation: `model.${model}`, resource: _entry, type: 'put' });
-      return _entry;
-    }).catch((err) => {
-      Object.assign(entry, this.clean(oldValues)); // fall back to old values
-      return Promise.reject(err);
-    });
+    return entry
+      .save(safePut)
+      .then((_entry) => {
+        this.resourceService.changes.next({ relation: `model.${model}`, resource: _entry, type: 'put' });
+        return _entry;
+      })
+      .catch((err) => {
+        Object.assign(entry, this.clean(oldValues)); // fall back to old values
+        return Promise.reject(err);
+      });
   }
 
   /** Returns true if the given field key is an immutable system property */
   isImmutableProperty(key: string) {
-    return key[0] === '_' ||
-      ['id', 'created', 'modified'].indexOf(key) !== -1;
+    return key[0] === '_' || ['id', 'created', 'modified'].indexOf(key) !== -1;
   }
 
   /** Removes all null or undefined values from the given object */
   clean(value: Object, config?: ItemConfig<EntryResource>, cleanReadOnly = false): Object {
     for (const key in value) {
       if (value.hasOwnProperty(key)) {
-        if (value[key] === '') { // clear empty strings
+        if (value[key] === '') {
+          // clear empty strings
           value[key] = null;
         }
-        if (this.isImmutableProperty(key)) { // filter system properties
+        if (this.isImmutableProperty(key)) {
+          // filter system properties
           delete value[key];
         }
-        if (config && config.fields && config.fields[key] &&
-          (config.fields[key].immutable || (cleanReadOnly && config.fields[key].readOnly))) {
-          delete value[key];
+        if (config && config.fields && config.fields[key]) {
+          if (config.fields[key].immutable || (cleanReadOnly && config.fields[key].readOnly)) {
+            delete value[key];
+          } else if (config.fields[key].beforeSave) {
+            value[key] = config.fields[key].beforeSave(value[key], config.fields[key], value);
+          }
         }
       }
     }
@@ -92,12 +98,14 @@ export class EntryService {
 
   /** Creates a new entry with the given value for the given model. Fires the "create" change. */
   create(model: string, value: Object): Promise<EntryResource> {
-    return this.sdk.api.createEntry(model, this.clean(value))
+    return this.sdk.api
+      .createEntry(model, this.clean(value))
       .then((entry: EntryResource) => {
         // TODO: make sure leveled entries are returned leveled
         this.resourceService.changes.next({ relation: `model.${model}`, resource: entry, type: 'post' });
         return entry;
-      }).catch((err) => {
+      })
+      .catch((err) => {
         return Promise.reject(err);
       });
   }

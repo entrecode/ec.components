@@ -317,102 +317,96 @@ import { ListConfig, List, Item } from &#x27;@ec.components/core&#x27;;
 export type ActionFunction &#x3D; (item?: Item&lt;Action&gt; | any, actionbar?: ActionbarComponent) &#x3D;&gt; any;
 
 export interface Action {
-    title: string;
-    id: string;
-    path?: string;
-    data?: any;
-    select?: boolean;
-    action?: ActionFunction;
+  title: string;
+  id: string;
+  path?: string;
+  data?: any;
+  select?: boolean;
+  action?: ActionFunction;
 }
 
-export interface ActionbarConfig extends ListConfig&lt;Action&gt; {
-
-}
+export interface ActionbarConfig extends ListConfig&lt;Action&gt; {}
 
 @Component({
-    selector: &#x27;ec-actionbar&#x27;,
-    templateUrl: &#x27;../select/select.component.html&#x27;
+  selector: &#x27;ec-actionbar&#x27;,
+  templateUrl: &#x27;../select/select.component.html&#x27;,
 })
-
 export class ActionbarComponent extends SelectComponent&lt;Action&gt; implements OnInit {
-    @Input() config: ActionbarConfig &#x3D; {
-        label: &#x27;title&#x27;,
-        identifier: &#x27;id&#x27;,
-        fields: {
-            title: {}
-        }
-    };
-    @Input() actions: Action[];
-    actionStack: { [id: string]: Action[] } &#x3D; {};
+  @Input() config: ActionbarConfig &#x3D; {
+    label: &#x27;title&#x27;,
+    identifier: &#x27;id&#x27;,
+    fields: {
+      title: {},
+    },
+  };
+  @Input() actions: Action[];
+  actionStack: { [id: string]: Action[] } &#x3D; {};
 
-    constructor(
-        public elementRef: ElementRef,
-        public cdr: ChangeDetectorRef,
-    ) {
-        super(elementRef, cdr);
-        this.add.subscribe((item) &#x3D;&gt; {
-            if (item.getBody().select !&#x3D;&#x3D; false) {
-                this.selection.add(item);
-            }
-            if (item.getBody().action) {
-                item.getBody().action(item, this);
-            }
-            if (item.getBody().children) {
-                this.loadActions(item.getBody().children);
-            }
-            this.searchbar.clear();
-        });
-        this.remove.subscribe((item) &#x3D;&gt; {
-            this.selection.remove(item);
-            this.loadActionsBefore();
-        });
-    }
+  constructor(public elementRef: ElementRef, public cdr: ChangeDetectorRef) {
+    super(elementRef, cdr);
+    this.add.subscribe((item) &#x3D;&gt; {
+      if (item.getBody().select !&#x3D;&#x3D; false) {
+        this.selection.add(item);
+      }
+      if (item.getBody().action) {
+        item.getBody().action(item, this);
+      }
+      if (item.getBody().children) {
+        this.loadActions(item.getBody().children);
+      }
+      this.searchbar.clear();
+    });
+    this.remove.subscribe((item) &#x3D;&gt; {
+      this.selection.remove(item);
+      this.loadActionsBefore();
+    });
+  }
 
-    loadActionsBefore() {
-        const actionsBefore &#x3D; this.actionStack[this.currentID()];
-        if (actionsBefore) {
-            this.loadActions(actionsBefore);
-        }
+  loadActionsBefore() {
+    const actionsBefore &#x3D; this.actionStack[this.currentID()];
+    if (actionsBefore) {
+      this.loadActions(actionsBefore);
     }
+  }
 
-    ngOnInit() {
-        this.loadActions(this.actions);
-    }
+  ngOnInit() {
+    this.loadActions(this.actions);
+  }
 
-    currentID() {
-        if (!this.selection || this.selection.isEmpty()) {
-            return &#x27;ROOT&#x27;;
-        }
-        return this.selection.items[this.selection.items.length - 1].id();
+  currentID() {
+    if (!this.selection || this.selection.isEmpty()) {
+      return &#x27;ROOT&#x27;;
     }
+    return this.selection.items[this.selection.items.length - 1].id();
+  }
 
-    reset() {
-        this.selection.removeAll();
-        this.loadActions(this.actionStack[this.currentID()]);
-    }
+  reset() {
+    this.selection.removeAll();
+    this.loadActions(this.actionStack[this.currentID()]);
+  }
 
-    currentActions() {
-        return this.actionStack[this.currentID()];
-    }
+  currentActions() {
+    return this.actionStack[this.currentID()];
+  }
 
-    loadActions(actions, addToStack &#x3D; true) {
-        if (addToStack) {
-            this.actionStack[this.currentID()] &#x3D; actions;
-        }
-        this.list &#x3D; new List(actions, this.config);
-        if (!this.selection) {
-            this.initSelection();
-        }
-        setTimeout(() &#x3D;&gt; {
-            if (this.dropdownList) {
-                this.dropdownList.focusFirst();
-            }
-        });
+  loadActions(actions, addToStack &#x3D; true) {
+    if (addToStack) {
+      this.actionStack[this.currentID()] &#x3D; actions;
     }
+    this.list &#x3D; new List(actions, this.config);
+    if (!this.selection) {
+      this.initSelection();
+    }
+    setTimeout(() &#x3D;&gt; {
+      if (this.dropdownList) {
+        this.dropdownList.focusFirst();
+      }
+    });
+  }
 
-    getPath() {
-        return this.selection.getValue();
-    }
+  getPath() {
+    return this.selection.getValue();
+  }
 }
 </code></pre>
     </div>
