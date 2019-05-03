@@ -4663,8 +4663,8 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
-    ChangeDetectorRef, Component, ElementRef, forwardRef,
-    Input, OnChanges, OnInit, ViewChild, ViewEncapsulation, EventEmitter
+  ChangeDetectorRef, Component, ElementRef, forwardRef,
+  Input, OnChanges, OnInit, ViewChild, ViewEncapsulation, EventEmitter
 } from &#x27;@angular/core&#x27;;
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from &#x27;@angular/forms&#x27;;
 import { Form, Item } from &#x27;@ec.components/core&#x27;;
@@ -4682,253 +4682,256 @@ import { ResourcePopComponent } from &#x27;../resource-pop/resource-pop.componen
 */
 
 @Component({
-    selector: &#x27;ec-resource-select&#x27;,
-    templateUrl: &#x27;./resource-select.component.html&#x27;,
-    encapsulation: ViewEncapsulation.None,
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() &#x3D;&gt; ResourceSelectComponent),
-            multi: true
-        }
-    ]
+  selector: &#x27;ec-resource-select&#x27;,
+  templateUrl: &#x27;./resource-select.component.html&#x27;,
+  encapsulation: ViewEncapsulation.None,
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() &#x3D;&gt; ResourceSelectComponent),
+      multi: true
+    }
+  ]
 })
 export class ResourceSelectComponent extends SelectComponent&lt;Resource&gt; implements OnChanges, OnInit {
-    /** The item that is targeted by the input */
-    protected item: Item&lt;any&gt;;
-    /** The form group that is used */
-    protected group: FormGroup;
-    /** The form control that is used */
-    protected control: FormControl;
-    /** The formControl that is used. */
-    @Input() formControl: FormControl;
-    /** The value that should be prefilled */
-    @Input() value: Array&lt;Resource&gt;;
-    /** The relation of the resource. */
-    @Input() relation: string;
-    /** The api to use */
-    @Input() api: Core;
-    /** The config that is being generated. */
-    public config: CrudConfig&lt;Resource&gt;;
-    /** Wether or not the selection should be solo */
-    @Input() solo: boolean;
-    /** The config that should be merged into the generated config */
-    // tslint:disable-next-line:no-input-rename
-    @Input(&#x27;config&#x27;) crudConfig: CrudConfig&lt;Resource&gt;;
-    /** The crud pop with the list to select from */
-    @ViewChild(&#x27;dropdown&#x27;) dropdown: PopComponent;
-    /** The nested resource list in the dropdown */
-    @ViewChild(&#x27;dropdownList&#x27;) dropdownList: ResourceListComponent;
-    /** The nested resource pop for editing and creating */
-    @ViewChild(ResourcePopComponent) resourcePop: ResourcePopComponent;
-    /** The nested resource list pop */
-    @ViewChild(ResourceListPopComponent) resourceListPop: ResourceListPopComponent;
-    /** The config of the dropdown pop */
-    dropdownConfig: CrudConfig&lt;Resource&gt;;
-    /** The event that focuses the input */
-    @Input() focusEvent: EventEmitter&lt;boolean&gt; &#x3D; new EventEmitter();
+  /** The item that is targeted by the input */
+  protected item: Item&lt;any&gt;;
+  /** The form group that is used */
+  protected group: FormGroup;
+  /** The form control that is used */
+  protected control: FormControl;
+  /** The formControl that is used. */
+  @Input() formControl: FormControl;
+  /** The value that should be prefilled */
+  @Input() value: Array&lt;Resource&gt;;
+  /** The relation of the resource. */
+  @Input() relation: string;
+  /** The api to use */
+  @Input() api: Core;
+  /** The config that is being generated. */
+  public config: CrudConfig&lt;Resource&gt;;
+  /** Wether or not the selection should be solo */
+  @Input() solo: boolean;
+  /** The config that should be merged into the generated config */
+  // tslint:disable-next-line:no-input-rename
+  @Input(&#x27;config&#x27;) crudConfig: CrudConfig&lt;Resource&gt;;
+  /** The crud pop with the list to select from */
+  @ViewChild(&#x27;dropdown&#x27;) dropdown: PopComponent;
+  /** The nested resource list in the dropdown */
+  @ViewChild(&#x27;dropdownList&#x27;) dropdownList: ResourceListComponent;
+  /** The nested resource pop for editing and creating */
+  @ViewChild(ResourcePopComponent) resourcePop: ResourcePopComponent;
+  /** The nested resource list pop */
+  @ViewChild(ResourceListPopComponent) resourceListPop: ResourceListPopComponent;
+  /** The config of the dropdown pop */
+  dropdownConfig: CrudConfig&lt;Resource&gt;;
+  /** The event that focuses the input */
+  @Input() focusEvent: EventEmitter&lt;boolean&gt; &#x3D; new EventEmitter();
 
-    constructor(
-        protected resourceConfig: ResourceConfig,
-        protected auth: AuthService,
-        public elementRef: ElementRef,
-        public symbol: SymbolService,
-        public cdr: ChangeDetectorRef
-    ) {
-        super(elementRef, cdr);
-        this.focusEvent.subscribe((focus) &#x3D;&gt; {
-            if (focus) {
-                this.togglePop(null, true);
-            }
-        });
+  constructor(
+    protected resourceConfig: ResourceConfig,
+    protected auth: AuthService,
+    public elementRef: ElementRef,
+    public symbol: SymbolService,
+    public cdr: ChangeDetectorRef
+  ) {
+    super(elementRef, cdr);
+    this.focusEvent.subscribe((focus) &#x3D;&gt; {
+      if (focus) {
+        this.togglePop(null, true);
+      }
+    });
+  }
+
+  ngOnInit() {
+    this.init();
+  }
+
+  ngOnChanges() {
+    this.init();
+  }
+
+  togglePop(e?, noFocus &#x3D; false) {
+    if (this.dropdown &amp;&amp; this.config &amp;&amp; !this.config.disableSearchbar) {
+      this.dropdown.show(e);
+    } else if (this.resourceListPop &amp;&amp; this.config &amp;&amp; !this.config.disableListPop) {
+      this.resourceListPop.show(e);
+    } else if (this.resourcePop &amp;&amp; !this.config.disableCreatePop) {
+      this.resourcePop.show();
     }
-
-    ngOnInit() {
-        this.init();
+    if (!noFocus) {
+      this.focusSearchbar();
     }
+  }
 
-    ngOnChanges() {
-        this.init();
+  defaultPlaceholder() {
+    if (this.config &amp;&amp; this.config.disableSearchbar &amp;&amp; this.config.disableListPop) {
+      return this.symbol.resolve(&#x27;resource.select.placeholder.new&#x27;);
     }
+    return this.symbol.resolve(&#x27;resource.select.placeholder.select&#x27;);
+  }
 
-    togglePop(e?, noFocus &#x3D; false) {
-        if (this.dropdown &amp;&amp; this.config &amp;&amp; !this.config.disableSearchbar) {
-            this.dropdown.show(e);
-        } else if (this.resourceListPop &amp;&amp; this.config &amp;&amp; !this.config.disableListPop) {
-            this.resourceListPop.show(e);
-        } else if (this.resourcePop &amp;&amp; !this.config.disableCreatePop) {
-            this.resourcePop.show();
+  /** Calls super.useConfig and then creates special dropdownConfig with just entryTitle as field  */
+  useConfig(config: CrudConfig&lt;Resource&gt; &#x3D; {}) {
+    super.useConfig(config);
+    this.dropdownConfig &#x3D; Object.assign({}, this.config, {
+      disableHeader: true,
+      defaultFilter: false,
+      fields: this.config.dropdownFields || {
+        [this.config.label]: Object.assign({}, this.config.fields ? this.config.fields[this.config.label] || {} : {})
+      }
+    });
+    if (config.methods) {
+      this.useMethods(config.methods);
+    } else {
+      this.auth.getAllowedResourceMethods(this.relation) // init permissions
+        .then((methods) &#x3D;&gt; this.useMethods(methods));
+    }
+    this.selection.update$.subscribe(change &#x3D;&gt; {
+      if (this.solo &amp;&amp; !this.selection.isEmpty()) { // update permissions for selected item
+        this.auth.getAllowedResourceMethods(this.relation, { [this.config.identifier]: this.selection.getValue() })
+          .then((methods) &#x3D;&gt; this.useMethods(methods));
+      }
+    });
+  }
+
+  /** Is called when a selected item is clicked. Either outputs itemClick (if subscribed) or opens the edit pop if puttable. */
+  clickItem(item, e) {
+    if (!this.solo &amp;&amp; this.hasMethod(&#x27;put&#x27;)) {
+      this.editItem(item, e);
+    }
+    if (this.itemClick.observers.length) {
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
+      return this.itemClick.emit(item);
+    }
+  }
+
+  useMethods(methods) {
+    this.config.methods &#x3D; methods;
+    this.cdr.markForCheck();
+  }
+
+  /** Returns true if the given method is part of the methods array (or if there is no methods array) */
+  public hasMethod(method: string) {
+    return this.config &amp;&amp; this.config.methods &amp;&amp; this.config.methods.indexOf(method) !&#x3D;&#x3D; -1;
+  }
+
+  /** Inits the select with api, relation and config setup */
+  init() {
+    if (!this.api || !this.relation) {
+      return;
+    }
+    if (!this.formControl) {
+      this.formControl &#x3D; new FormControl(this.value || []);
+    }
+    if (this.config) {
+      this.useConfig(this.config);
+      return;
+    }
+    this.config &#x3D; &lt;CrudConfig&lt;Resource&gt;&gt;Object.assign(this.resourceConfig.get(this.relation)/* , { size: 5 } */,
+      this.crudConfig, { solo: this.solo, selectMode: false, disableSelectSwitch: true } as CrudConfig&lt;Resource&gt;);
+    this.useConfig(this.config);
+  }
+
+  /** Is called when the nested resource-form has been saved. Selects the fresh resource and clears the form */
+  formSubmitted(form: Form&lt;EntryResource&gt;) {
+    if (!this.selection.has(form)) {
+      this.toggleItem.next(form);
+    } else { // already in selection &#x3D;&gt; update body
+      const index &#x3D; this.selection.index(form);
+      this.selection.items[index].body &#x3D; form.getBody();
+    }
+  }
+
+  pasteValue(e) {
+    const value &#x3D; (e.clipboardData).getData(&#x27;text&#x27;);
+    if (this.config.identifierPattern &amp;&amp; value.match(this.config.identifierPattern)) {
+      this.preventDefault(e);
+      this.api.resource(this.relation, value)
+        .then(resource &#x3D;&gt; this.addItem(new Item(resource, this.config)))
+        .catch(error &#x3D;&gt; this.searchbar.filterList(value));
+    }
+  }
+
+  /** Is called when a selected item has been clicked. */
+  editItem(item: Item&lt;Resource&gt;, e) {
+    this.auth.getAllowedResourceMethods(this.relation, { [this.config.identifier]: item.id() })
+      .then(methods &#x3D;&gt; {
+        if (methods.indexOf(&#x27;put&#x27;) &#x3D;&#x3D;&#x3D; -1) {
+          console.log(&#x27;cannote put&#x27;);
+          return;
         }
-        if (!noFocus) {
-            this.focusSearchbar();
-        }
-    }
+        this.resourcePop.edit(item.getBody(), { methods });
+      });
+  }
 
-    defaultPlaceholder() {
-        if (this.config &amp;&amp; this.config.disableSearchbar &amp;&amp; this.config.disableListPop) {
-            return this.symbol.resolve(&#x27;resource.select.placeholder.new&#x27;);
-        }
-        return this.symbol.resolve(&#x27;resource.select.placeholder.select&#x27;);
+  onChange() {
+    super.onChange();
+    if (this.hasSoloSelection() &amp;&amp; this.resourceListPop) {
+      this.resourceListPop.hide();
+      return;
     }
+  }
 
-    /** Calls super.useConfig and then creates special dropdownConfig with just entryTitle as field  */
-    useConfig(config: CrudConfig&lt;Resource&gt; &#x3D; {}) {
-        super.useConfig(config);
-        this.dropdownConfig &#x3D; Object.assign({}, this.config, {
-            disableHeader: true,
-            defaultFilter: false,
-            fields: this.config.dropdownFields || {
-                [this.config.label]: Object.assign({}, this.config.fields[this.config.label])
-            }
-        });
-        if (config.methods) {
-            this.useMethods(config.methods);
-        } else {
-            this.auth.getAllowedResourceMethods(this.relation) // init permissions
-                .then((methods) &#x3D;&gt; this.useMethods(methods));
-        }
-        this.selection.update$.subscribe(change &#x3D;&gt; {
-            if (this.solo &amp;&amp; !this.selection.isEmpty()) { // update permissions for selected item
-                this.auth.getAllowedResourceMethods(this.relation, { [this.config.identifier]: this.selection.getValue() })
-                    .then((methods) &#x3D;&gt; this.useMethods(methods));
-            }
-        });
+  focusSearchbar() {
+    if ((!this.resourceListPop || !this.resourceListPop.active) &amp;&amp;
+      (this.focusEvent)) {
+      this.focusEvent.emit(true);
     }
-
-    /** Is called when a selected item is clicked. Either outputs itemClick (if subscribed) or opens the edit pop if puttable. */
-    clickItem(item, e) {
-        if (!this.solo &amp;&amp; this.hasMethod(&#x27;put&#x27;)) {
-            this.editItem(item, e);
-        }
-        if (this.itemClick.observers.length) {
-            e.preventDefault();
-            e.stopPropagation();
-            e.stopImmediatePropagation();
-            return this.itemClick.emit(item);
-        }
-    }
-
-    useMethods(methods) {
-        this.config.methods &#x3D; methods;
-        this.cdr.markForCheck();
-    }
-
-    /** Returns true if the given method is part of the methods array (or if there is no methods array) */
-    public hasMethod(method: string) {
-        return this.config &amp;&amp; this.config.methods &amp;&amp; this.config.methods.indexOf(method) !&#x3D;&#x3D; -1;
-    }
-
-    /** Inits the select with api, relation and config setup */
-    init() {
-        if (!this.api || !this.relation) {
-            return;
-        }
-        if (!this.formControl) {
-            this.formControl &#x3D; new FormControl(this.value || []);
-        }
-        if (this.config) {
-            this.useConfig(this.config);
-            return;
-        }
-        this.config &#x3D; &lt;CrudConfig&lt;Resource&gt;&gt;Object.assign(this.resourceConfig.get(this.relation)/* , { size: 5 } */,
-            this.crudConfig, { solo: this.solo, selectMode: false, disableSelectSwitch: true } as CrudConfig&lt;Resource&gt;);
-        this.useConfig(this.config);
-    }
-
-    /** Is called when the nested resource-form has been saved. Selects the fresh resource and clears the form */
-    formSubmitted(form: Form&lt;EntryResource&gt;) {
-        if (!this.selection.has(form)) {
-            this.toggleItem.next(form);
-        } else { // already in selection &#x3D;&gt; update body
-            const index &#x3D; this.selection.index(form);
-            this.selection.items[index].body &#x3D; form.getBody();
-        }
-    }
-
-    pasteValue(e) {
-        const value &#x3D; (e.clipboardData).getData(&#x27;text&#x27;);
-        if (this.config.identifierPattern &amp;&amp; value.match(this.config.identifierPattern)) {
-            this.preventDefault(e);
-            this.api.resource(this.relation, value)
-                .then(resource &#x3D;&gt; this.addItem(new Item(resource, this.config)))
-                .catch(error &#x3D;&gt; this.searchbar.filterList(value));
-        }
-    }
-
-    /** Is called when a selected item has been clicked. */
-    editItem(item: Item&lt;Resource&gt;, e) {
-        this.auth.getAllowedResourceMethods(this.relation, { [this.config.identifier]: item.id() })
-            .then(methods &#x3D;&gt; {
-                if (methods.indexOf(&#x27;put&#x27;) &#x3D;&#x3D;&#x3D; -1) {
-                    console.log(&#x27;cannote put&#x27;);
-                    return;
-                }
-                this.resourcePop.edit(item.getBody(), { methods });
-            });
-    }
-
-    onChange() {
-        super.onChange();
-        if (this.hasSoloSelection() &amp;&amp; this.resourceListPop) {
-            this.resourceListPop.hide();
-            return;
-        }
-    }
-
-    focusSearchbar() {
-        if ((!this.resourceListPop || !this.resourceListPop.active) &amp;&amp;
-            (this.focusEvent)) {
-            this.focusEvent.emit(true);
-        }
-    }
+  }
 }
 </code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;ec-resource-select&quot;&gt;
-    &lt;div class&#x3D;&quot;ec-select&quot; [class.ec-select_solo]&#x3D;&quot;solo&quot; [class.is-empty]&#x3D;&quot;selection?.isEmpty()&quot; (click)&#x3D;&quot;togglePop($event)&quot;
-        [class.has-searchbar]&#x3D;&quot;!config?.disableSearchbar&quot;&gt;
-        &lt;ul class&#x3D;&quot;ec-select-selection&quot;&gt;
-            &lt;li *ngIf&#x3D;&quot;config?.disableSearchbar&amp;&amp;selection.isEmpty()&quot;&gt;
-                &lt;span class&#x3D;&quot;ec-select__placeholder&quot;&gt;
-                    {{placeholder||defaultPlaceholder()}}
-                &lt;/span&gt;
-            &lt;/li&gt;
-            &lt;li *ngFor&#x3D;&quot;let selected of selection?.items&quot;&gt;
-                &lt;span [class.ec-select-selected]&#x3D;&quot;!solo&quot; [class.ec-select-selected_solo]&#x3D;&quot;solo&quot; (click)&#x3D;&quot;clickItem(selected, $event)&quot;&gt;
-                    {{selected.display()}}
-                    &lt;a (click)&#x3D;&quot;removeItem(selected,$event);&quot; *ngIf&#x3D;&quot;!config.disableRemove&quot;&gt;&amp;times;&lt;/a&gt;
-                &lt;/span&gt;
-            &lt;/li&gt;
-            &lt;li *ngIf&#x3D;&quot;!config?.disableSearchbar&quot; class&#x3D;&quot;ec-select__searchbar&quot;&gt;
-                &lt;ec-searchbar [focusEvent]&#x3D;&quot;focusEvent&quot; [autofocus]&#x3D;&quot;false&quot; [property]&#x3D;&quot;config?.label&quot; [placeholder]&#x3D;&quot;placeholder||defaultPlaceholder()&quot;
-                    (pasted)&#x3D;&quot;pasteValue($event)&quot; (keypressed)&#x3D;&quot;handleKey($event,dropdownList)&quot; (focus)&#x3D;&quot;focus($event)&quot;
-                    (queryChanged)&#x3D;&quot;filterDropdownList(dropdownList,$event)&quot;&gt;&lt;/ec-searchbar&gt;
-            &lt;/li&gt;
-        &lt;/ul&gt;
-        &lt;ec-pop class&#x3D;&quot;ec-select-options&quot; #dropdown [hideOnClickOutside]&#x3D;&quot;true&quot;&gt;
-            &lt;ec-loader class&#x3D;&quot;ec-loader loader is-local&quot; #dropdownLoader&gt;&lt;/ec-loader&gt;
-            &lt;ec-resource-list (changed)&#x3D;&quot;searchbar.updatedList($event)&quot; #dropdownList *ngIf&#x3D;&quot;dropdown.activated&quot;
-                [relation]&#x3D;&quot;relation&quot; [api]&#x3D;&quot;api&quot; [config]&#x3D;&quot;dropdownConfig&quot; [selection]&#x3D;&quot;selection&quot; [loader]&#x3D;&quot;dropdownLoader&quot;
-                (columnClicked)&#x3D;&quot;listItemClicked($event)&quot;&gt;&lt;/ec-resource-list&gt;
-        &lt;/ec-pop&gt;
-    &lt;/div&gt;
-    &lt;ec-resource-list-pop (pasted)&#x3D;&quot;pasteValue($event)&quot; (columnClicked)&#x3D;&quot;listItemClicked($event)&quot; #resourceListPop
-        [api]&#x3D;&quot;api&quot; [relation]&#x3D;&quot;relation&quot; [config]&#x3D;&quot;config&quot; [selection]&#x3D;&quot;selection&quot;&gt;&lt;/ec-resource-list-pop&gt;
-    &lt;ec-resource-pop #resourcePop [api]&#x3D;&quot;api&quot; [relation]&#x3D;&quot;relation&quot; [config]&#x3D;&quot;config&quot; (submitted)&#x3D;&quot;formSubmitted($event)&quot;
-        (deleted)&#x3D;&quot;removeItem($event)&quot; *ngIf&#x3D;&quot;config&quot;&gt;&lt;/ec-resource-pop&gt;
-    &lt;nav class&#x3D;&quot;ec-resource-select__controls&quot;&gt;
-        &lt;a (click)&#x3D;&quot;editItem(selection?.items[0],$event)&quot; class&#x3D;&quot;btn btn_clear&quot; *ngIf&#x3D;&quot;solo&amp;&amp;hasMethod(&#x27;put&#x27;)&amp;&amp;!selection?.isEmpty()&quot;&gt;
-            &lt;ec-icon name&#x3D;&quot;pencil&quot;&gt;&lt;/ec-icon&gt;
-        &lt;/a&gt;
-        &lt;a (click)&#x3D;&quot;resourcePop.create()&quot; class&#x3D;&quot;btn btn_clear&quot; *ngIf&#x3D;&quot;!config?.disableCreatePop&amp;&amp;hasMethod(&#x27;post&#x27;)&quot;&gt;
-            &lt;ec-icon name&#x3D;&quot;add&quot;&gt;&lt;/ec-icon&gt;
-        &lt;/a&gt;
-        &lt;a (click)&#x3D;&quot;resourceListPop.show($event)&quot; class&#x3D;&quot;btn btn_clear&quot; *ngIf&#x3D;&quot;!config?.disableListPop&amp;&amp;hasMethod(&#x27;get&#x27;)&quot;&gt;
-            &lt;ec-icon name&#x3D;&quot;find&quot;&gt;&lt;/ec-icon&gt;
-        &lt;/a&gt;
-    &lt;/nav&gt;
+  &lt;div class&#x3D;&quot;ec-select&quot; [class.ec-select_solo]&#x3D;&quot;solo&quot; [class.is-empty]&#x3D;&quot;selection?.isEmpty()&quot;
+    (click)&#x3D;&quot;togglePop($event)&quot; [class.has-searchbar]&#x3D;&quot;!config?.disableSearchbar&quot;&gt;
+    &lt;ul class&#x3D;&quot;ec-select-selection&quot;&gt;
+      &lt;li *ngIf&#x3D;&quot;config?.disableSearchbar&amp;&amp;selection.isEmpty()&quot;&gt;
+        &lt;span class&#x3D;&quot;ec-select__placeholder&quot;&gt;
+          {{placeholder||defaultPlaceholder()}}
+        &lt;/span&gt;
+      &lt;/li&gt;
+      &lt;li *ngFor&#x3D;&quot;let selected of selection?.items&quot;&gt;
+        &lt;span [class.ec-select-selected]&#x3D;&quot;!solo&quot; [class.ec-select-selected_solo]&#x3D;&quot;solo&quot;
+          (click)&#x3D;&quot;clickItem(selected, $event)&quot;&gt;
+          {{selected.display()}}
+          &lt;a (click)&#x3D;&quot;removeItem(selected,$event);&quot; *ngIf&#x3D;&quot;!config.disableRemove&quot;&gt;&amp;times;&lt;/a&gt;
+        &lt;/span&gt;
+      &lt;/li&gt;
+      &lt;li *ngIf&#x3D;&quot;!config?.disableSearchbar&quot; class&#x3D;&quot;ec-select__searchbar&quot;&gt;
+        &lt;ec-searchbar [focusEvent]&#x3D;&quot;focusEvent&quot; [autofocus]&#x3D;&quot;false&quot; [property]&#x3D;&quot;config?.label||dropdownConfig?.label&quot;
+          [placeholder]&#x3D;&quot;placeholder||defaultPlaceholder()&quot; (pasted)&#x3D;&quot;pasteValue($event)&quot;
+          (keypressed)&#x3D;&quot;handleKey($event,dropdownList)&quot; (focus)&#x3D;&quot;focus($event)&quot;
+          (queryChanged)&#x3D;&quot;filterDropdownList(dropdownList,$event)&quot;&gt;&lt;/ec-searchbar&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;ec-pop class&#x3D;&quot;ec-select-options&quot; #dropdown [hideOnClickOutside]&#x3D;&quot;true&quot;&gt;
+      &lt;ec-loader class&#x3D;&quot;ec-loader loader is-local&quot; #dropdownLoader&gt;&lt;/ec-loader&gt;
+      &lt;ec-resource-list (changed)&#x3D;&quot;searchbar.updatedList($event)&quot; #dropdownList *ngIf&#x3D;&quot;dropdown.activated&quot;
+        [relation]&#x3D;&quot;relation&quot; [api]&#x3D;&quot;api&quot; [config]&#x3D;&quot;dropdownConfig&quot; [selection]&#x3D;&quot;selection&quot; [loader]&#x3D;&quot;dropdownLoader&quot;
+        (columnClicked)&#x3D;&quot;listItemClicked($event)&quot;&gt;&lt;/ec-resource-list&gt;
+    &lt;/ec-pop&gt;
+  &lt;/div&gt;
+  &lt;ec-resource-list-pop (pasted)&#x3D;&quot;pasteValue($event)&quot; (columnClicked)&#x3D;&quot;listItemClicked($event)&quot; #resourceListPop
+    [api]&#x3D;&quot;api&quot; [relation]&#x3D;&quot;relation&quot; [config]&#x3D;&quot;config&quot; [selection]&#x3D;&quot;selection&quot;&gt;&lt;/ec-resource-list-pop&gt;
+  &lt;ec-resource-pop #resourcePop [api]&#x3D;&quot;api&quot; [relation]&#x3D;&quot;relation&quot; [config]&#x3D;&quot;config&quot; (submitted)&#x3D;&quot;formSubmitted($event)&quot;
+    (deleted)&#x3D;&quot;removeItem($event)&quot; *ngIf&#x3D;&quot;config&quot;&gt;&lt;/ec-resource-pop&gt;
+  &lt;nav class&#x3D;&quot;ec-resource-select__controls&quot;&gt;
+    &lt;a (click)&#x3D;&quot;editItem(selection?.items[0],$event)&quot; class&#x3D;&quot;btn btn_clear&quot;
+      *ngIf&#x3D;&quot;solo&amp;&amp;hasMethod(&#x27;put&#x27;)&amp;&amp;!selection?.isEmpty()&quot;&gt;
+      &lt;ec-icon name&#x3D;&quot;pencil&quot;&gt;&lt;/ec-icon&gt;
+    &lt;/a&gt;
+    &lt;a (click)&#x3D;&quot;resourcePop.create()&quot; class&#x3D;&quot;btn btn_clear&quot; *ngIf&#x3D;&quot;!config?.disableCreatePop&amp;&amp;hasMethod(&#x27;post&#x27;)&quot;&gt;
+      &lt;ec-icon name&#x3D;&quot;add&quot;&gt;&lt;/ec-icon&gt;
+    &lt;/a&gt;
+    &lt;a (click)&#x3D;&quot;resourceListPop.show($event)&quot; class&#x3D;&quot;btn btn_clear&quot; *ngIf&#x3D;&quot;!config?.disableListPop&amp;&amp;hasMethod(&#x27;get&#x27;)&quot;&gt;
+      &lt;ec-icon name&#x3D;&quot;find&quot;&gt;&lt;/ec-icon&gt;
+    &lt;/a&gt;
+  &lt;/nav&gt;
 &lt;/div&gt;</code></pre>
     </div>
 
@@ -4958,7 +4961,7 @@ export class ResourceSelectComponent extends SelectComponent&lt;Resource&gt; imp
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="ec-resource-select">    <div class="ec-select" [class.ec-select_solo]="solo" [class.is-empty]="selection?.isEmpty()" (click)="togglePop($event)"        [class.has-searchbar]="!config?.disableSearchbar">        <ul class="ec-select-selection">            <li *ngIf="config?.disableSearchbar&&selection.isEmpty()">                <span class="ec-select__placeholder">                    {{placeholder||defaultPlaceholder()}}                </span>            </li>            <li *ngFor="let selected of selection?.items">                <span [class.ec-select-selected]="!solo" [class.ec-select-selected_solo]="solo" (click)="clickItem(selected, $event)">                    {{selected.display()}}                    <a (click)="removeItem(selected,$event);" *ngIf="!config.disableRemove">&times;</a>                </span>            </li>            <li *ngIf="!config?.disableSearchbar" class="ec-select__searchbar">                <ec-searchbar [focusEvent]="focusEvent" [autofocus]="false" [property]="config?.label" [placeholder]="placeholder||defaultPlaceholder()"                    (pasted)="pasteValue($event)" (keypressed)="handleKey($event,dropdownList)" (focus)="focus($event)"                    (queryChanged)="filterDropdownList(dropdownList,$event)"></ec-searchbar>            </li>        </ul>        <ec-pop class="ec-select-options" #dropdown [hideOnClickOutside]="true">            <ec-loader class="ec-loader loader is-local" #dropdownLoader></ec-loader>            <ec-resource-list (changed)="searchbar.updatedList($event)" #dropdownList *ngIf="dropdown.activated"                [relation]="relation" [api]="api" [config]="dropdownConfig" [selection]="selection" [loader]="dropdownLoader"                (columnClicked)="listItemClicked($event)"></ec-resource-list>        </ec-pop>    </div>    <ec-resource-list-pop (pasted)="pasteValue($event)" (columnClicked)="listItemClicked($event)" #resourceListPop        [api]="api" [relation]="relation" [config]="config" [selection]="selection"></ec-resource-list-pop>    <ec-resource-pop #resourcePop [api]="api" [relation]="relation" [config]="config" (submitted)="formSubmitted($event)"        (deleted)="removeItem($event)" *ngIf="config"></ec-resource-pop>    <nav class="ec-resource-select__controls">        <a (click)="editItem(selection?.items[0],$event)" class="btn btn_clear" *ngIf="solo&&hasMethod(\'put\')&&!selection?.isEmpty()">            <ec-icon name="pencil"></ec-icon>        </a>        <a (click)="resourcePop.create()" class="btn btn_clear" *ngIf="!config?.disableCreatePop&&hasMethod(\'post\')">            <ec-icon name="add"></ec-icon>        </a>        <a (click)="resourceListPop.show($event)" class="btn btn_clear" *ngIf="!config?.disableListPop&&hasMethod(\'get\')">            <ec-icon name="find"></ec-icon>        </a>    </nav></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="ec-resource-select">  <div class="ec-select" [class.ec-select_solo]="solo" [class.is-empty]="selection?.isEmpty()"    (click)="togglePop($event)" [class.has-searchbar]="!config?.disableSearchbar">    <ul class="ec-select-selection">      <li *ngIf="config?.disableSearchbar&&selection.isEmpty()">        <span class="ec-select__placeholder">          {{placeholder||defaultPlaceholder()}}        </span>      </li>      <li *ngFor="let selected of selection?.items">        <span [class.ec-select-selected]="!solo" [class.ec-select-selected_solo]="solo"          (click)="clickItem(selected, $event)">          {{selected.display()}}          <a (click)="removeItem(selected,$event);" *ngIf="!config.disableRemove">&times;</a>        </span>      </li>      <li *ngIf="!config?.disableSearchbar" class="ec-select__searchbar">        <ec-searchbar [focusEvent]="focusEvent" [autofocus]="false" [property]="config?.label||dropdownConfig?.label"          [placeholder]="placeholder||defaultPlaceholder()" (pasted)="pasteValue($event)"          (keypressed)="handleKey($event,dropdownList)" (focus)="focus($event)"          (queryChanged)="filterDropdownList(dropdownList,$event)"></ec-searchbar>      </li>    </ul>    <ec-pop class="ec-select-options" #dropdown [hideOnClickOutside]="true">      <ec-loader class="ec-loader loader is-local" #dropdownLoader></ec-loader>      <ec-resource-list (changed)="searchbar.updatedList($event)" #dropdownList *ngIf="dropdown.activated"        [relation]="relation" [api]="api" [config]="dropdownConfig" [selection]="selection" [loader]="dropdownLoader"        (columnClicked)="listItemClicked($event)"></ec-resource-list>    </ec-pop>  </div>  <ec-resource-list-pop (pasted)="pasteValue($event)" (columnClicked)="listItemClicked($event)" #resourceListPop    [api]="api" [relation]="relation" [config]="config" [selection]="selection"></ec-resource-list-pop>  <ec-resource-pop #resourcePop [api]="api" [relation]="relation" [config]="config" (submitted)="formSubmitted($event)"    (deleted)="removeItem($event)" *ngIf="config"></ec-resource-pop>  <nav class="ec-resource-select__controls">    <a (click)="editItem(selection?.items[0],$event)" class="btn btn_clear"      *ngIf="solo&&hasMethod(\'put\')&&!selection?.isEmpty()">      <ec-icon name="pencil"></ec-icon>    </a>    <a (click)="resourcePop.create()" class="btn btn_clear" *ngIf="!config?.disableCreatePop&&hasMethod(\'post\')">      <ec-icon name="add"></ec-icon>    </a>    <a (click)="resourceListPop.show($event)" class="btn btn_clear" *ngIf="!config?.disableListPop&&hasMethod(\'get\')">      <ec-icon name="find"></ec-icon>    </a>  </nav></div></div>'
     var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'ActionbarComponent', 'selector': 'ec-actionbar'},{'name': 'AdminEntryInputComponent', 'selector': ''},{'name': 'ApiActionbarComponent', 'selector': 'ec-api-actionbar'},{'name': 'AssetgroupSelectComponent', 'selector': 'ec-assetgroup-select'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DaterangeComponent', 'selector': 'ec-daterange'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryListPopComponent', 'selector': 'ec-entry-list-pop'},{'name': 'EntryListSelectComponent', 'selector': 'ec-entry-list-select'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'HeatmapComponent', 'selector': 'ec-heatmap'},{'name': 'IconComponent', 'selector': 'ec-icon'},{'name': 'ImageSelectPopComponent', 'selector': 'ec-image-select-pop'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LocationMapComponent', 'selector': 'ec-location-map'},{'name': 'LocationPickerComponent', 'selector': 'ec-location-picker'},{'name': 'LocationSearchComponent', 'selector': 'ec-location-search'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'ModalComponent', 'selector': 'ec-modal'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceActionbarComponent', 'selector': 'ec-resource-actionbar'},{'name': 'ResourceCrudComponent', 'selector': 'ec-resource-crud'},{'name': 'ResourceDeletePopComponent', 'selector': 'ec-resource-delete-pop'},{'name': 'ResourceFormComponent', 'selector': 'ec-resource-form'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'ResourceListPopComponent', 'selector': 'ec-resource-list-pop'},{'name': 'ResourcePopComponent', 'selector': 'ec-resource-pop'},{'name': 'ResourceSelectComponent', 'selector': 'ec-resource-select'},{'name': 'SearchbarComponent', 'selector': 'ec-searchbar'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SignupComponent', 'selector': 'ec-signup'},{'name': 'SignupFormComponent', 'selector': 'ec-signup-form'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TagSelectComponent', 'selector': 'ec-tag-select'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'UploadComponent', 'selector': 'ec-upload'},{'name': 'UploadSelectComponent', 'selector': 'ec-upload-select'}];
     var DIRECTIVES = [{'name': 'AssetDirective', 'selector': '[ecAsset]'},{'name': 'DropzoneDirective', 'selector': '[ecDropzone]'},{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'FocusDirective', 'selector': '[ecFocus]'},{'name': 'ImageDirective', 'selector': 'img [ecImage]'},{'name': 'SlotHostDirective', 'selector': '[ecSlotHost]'}];
     var ACTUAL_COMPONENT = {'name': 'ResourceSelectComponent'};

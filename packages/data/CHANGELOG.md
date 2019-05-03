@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.47.9](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.47.8...@ec.components/data@0.47.9) (2019-05-03)
+
+
+### Bug Fixes
+
+* COM-259 boolean readonly ([cb43986](https://github.com/entrecode/ec.components/commit/cb43986))
+* EDITOR-348 ([336ba95](https://github.com/entrecode/ec.components/commit/336ba95))
+* tag select EDITOR-343 ([7dcaf42](https://github.com/entrecode/ec.components/commit/7dcaf42))
+
+
+
+
+
 ## [0.47.8](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.47.7...@ec.components/data@0.47.8) (2019-04-26)
 
 

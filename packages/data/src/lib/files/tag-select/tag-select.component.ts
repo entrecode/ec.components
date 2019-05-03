@@ -8,47 +8,69 @@ import { AuthService } from '../../auth/auth.service';
 import { CrudConfig } from '../../crud/crud-config.interface';
 
 @Component({
-    selector: 'ec-tag-select',
-    templateUrl: '../../resource-select/resource-select.component.html'
+  selector: 'ec-tag-select',
+  templateUrl: '../../resource-select/resource-select.component.html'
 })
 
 export class TagSelectComponent extends ResourceSelectComponent implements OnInit, OnChanges {
 
-    relation = 'tags';
-    placeholder = this.symbol.resolve('tag-select.placeholder');
-    config: CrudConfig<any> = {
-        label: 'tag',
-        identifier: 'tag',
-        methods: ['get'],
-        defaultFilter: false,
-        disableHeader: true,
-        disableListPop: true,
-        disableCreatePop: true,
-        fields: {
-            tag: {}
+  relation = 'tags';
+  placeholder = this.symbol.resolve('tag-select.placeholder');
+  config: CrudConfig<any>;
+
+  constructor(
+    protected resourceConfig: ResourceConfig,
+    protected auth: AuthService,
+    public elementRef: ElementRef,
+    public symbol: SymbolService,
+    public cdr: ChangeDetectorRef,
+    public sdk: SdkService
+  ) {
+    super(resourceConfig, auth, elementRef, symbol, cdr);
+    this.enterPressed.asObservable().subscribe((s) => {
+      this.selection.add(new Item({ tag: this.searchbar.query }, this.config));
+      this.searchbar.clear();
+      this.dropdownList.list.clearFilter();
+    });
+  }
+
+  useConfig(config = {}) {
+    super.useConfig(config);
+    this.config = {
+      label: 'tag',
+      identifier: 'tag',
+      methods: ['get'],
+      defaultFilter: false,
+      disableHeader: true,
+      disableListPop: true,
+      disableCreatePop: true,
+      fields: {
+        tag: {
+          view: 'string'
         }
+      },
+      dropdownFields: {
+        tag: {
+          view: 'string'
+        }
+      },
     };
+    this.dropdownConfig = {
+      disableHeader: true,
+      label: 'tag',
+      identifier: 'tag',
+      fields: {
+        tag: {
+          view: 'string'
+        }
+      }
+    };
+  }
 
-    constructor(
-        protected resourceConfig: ResourceConfig,
-        protected auth: AuthService,
-        public elementRef: ElementRef,
-        public symbol: SymbolService,
-        public cdr: ChangeDetectorRef,
-        public sdk: SdkService
-    ) {
-        super(resourceConfig, auth, elementRef, symbol, cdr);
-        this.enterPressed.asObservable().subscribe((s) => {
-            //  (this.selection as any).add(new Item({ tag: this.searchbar.query }, this.config));
-            this.searchbar.clear();
-            this.dropdownList.list.clearFilter();
-        });
-    }
-
-    init() {
-        this.sdk.ready.then(() => {
-            this.api = this.sdk.api;
-            super.init();
-        });
-    }
+  init() {
+    this.sdk.ready.then(() => {
+      this.api = this.sdk.api;
+      super.init();
+    });
+  }
 }
