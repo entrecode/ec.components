@@ -1,14 +1,21 @@
 <h2>resource-list-pop</h2>
-<p>This demo showcases the resource-list-pop, which is a dialog that contains a list of resources.
-    All you have to provide is the api (ec.sdk Core conncetor) and a relation name to render the list.
-    If you pass no config, the default config of ResourceConfig service will be used.
-    The demo contains a tiny api-explorer that enables you to navigate through different apis.</p>
-<h4>{{selectedRelation}} relations</h4>
-<a *ngIf="apis?.length>1" (click)="goBack()">back</a>
+<p>
+  This demo showcases the resource-list-pop, which is a dialog that contains a list of resources. All you have to
+  provide is the api (ec.sdk Core conncetor) and a relation name to render the list. If you pass no config, the default
+  config of ResourceConfig service will be used. The demo contains a tiny api-explorer that enables you to navigate
+  through different apis.
+</p>
+<h4>{{ selectedRelation }} relations</h4>
+<a *ngIf="apis?.length > 1" (click)="goBack()">back</a>
 <ul>
-    <li *ngFor="let relation of availableRelations">
-        <a (click)="selectRelation(relation)">select {{relation}}</a>
-    </li>
-    <li *ngIf="!availableRelations?.length">no subrelations</li>
+  <li *ngFor="let relation of availableRelations">
+    <a (click)="selectRelation(relation)">select {{ relation }}</a>
+  </li>
+  <li *ngIf="!availableRelations?.length">no subrelations</li>
 </ul>
-<ec-resource-list-pop (columnClicked)="selectApi($event.getBody())" #resourceListPop [api]="api" [relation]="selectedRelation"></ec-resource-list-pop>
+<ec-resource-list-pop
+  (columnClicked)="selectApi($event.getBody())"
+  #resourceListPop
+  [api]="api"
+  [relation]="selectedRelation"
+></ec-resource-list-pop>

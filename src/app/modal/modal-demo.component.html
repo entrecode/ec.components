@@ -97,9 +97,7 @@
         sustainable mumblecore twee mustache adaptogen plaid 3 wolf moon snackwave.
       </p>
     </div>
-    <footer *ngIf="showFooter">
-      this is my footer
-    </footer>
+    <footer *ngIf="showFooter">this is my footer</footer>
   </ec-modal>
 
   <h3>Ways to define</h3>
@@ -107,9 +105,7 @@
 
   <a class="btn" (click)="testModalA.toggle()">ng-container</a>
   <ec-modal #testModalA>
-    <ng-container ngProjectAs="header">
-      <p>This is my header</p>
-    </ng-container>
+    <ng-container ngProjectAs="header"> <p>This is my header</p> </ng-container>
     <ng-container>
       <p>
         This modal uses ng-container with ngProjectAs.<br />
@@ -117,16 +113,12 @@
         Disadvantage: Ugly definition.
       </p>
     </ng-container>
-    <ng-container ngProjectAs="footer">
-      <p>This is my footer</p>
-    </ng-container>
+    <ng-container ngProjectAs="footer"> <p>This is my footer</p> </ng-container>
   </ec-modal>
 
   <a class="btn" (click)="testModalB.toggle()">ng-template</a>
   <ec-modal #testModalB [header]="header" [body]="body" [footer]="footer">
-    <ng-template #header>
-      <p>Header</p>
-    </ng-template>
+    <ng-template #header> <p>Header</p> </ng-template>
     <ng-template #body>
       <p>
         This modal uses ng-template + the template inputs.<br />
@@ -134,9 +126,7 @@
         Disadvantage: need unique template variable names for each definition.
       </p>
     </ng-template>
-    <ng-template #footer>
-      <p>Footer</p>
-    </ng-template>
+    <ng-template #footer> <p>Footer</p> </ng-template>
   </ec-modal>
 
   <a class="btn" (click)="testModalC.toggle()">classes</a>
@@ -149,9 +139,7 @@
       Advantage: cleanest definitoin<br />
       Disadvantage: Extra wrappers for header and footer
     </p>
-    <div class="modal-footer">
-      <p>Footer</p>
-    </div>
+    <div class="modal-footer"><p>Footer</p></div>
   </ec-modal>
 
   <a class="btn" (click)="testModalD.toggle()">header/footer</a>
@@ -165,8 +153,6 @@
       Advantage: cleaner definition (HTML5 elements)<br />
       Disadvantage: Extra wrappers for header and footer
     </p>
-    <footer>
-      <p>Footer</p>
-    </footer>
+    <footer><p>Footer</p></footer>
   </ec-modal>
 </div>

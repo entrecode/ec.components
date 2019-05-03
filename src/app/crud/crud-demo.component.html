@@ -9,11 +9,14 @@
     <ec-crud model="field_test"></ec-crud>
   </ec-tab>
   <ec-tab label="Baker">
-    <p>The following crud omits the picture field. To open the form, the entry is automatically reloaded with the
-      picture
-      field
-      to be able to edit it.</p>
-    <ec-crud model="baker" [config]="{develop:true,keepPopOpen:true,size:5,availableSizes:[1,2,5,10]}"></ec-crud>
+    <p>
+      The following crud omits the picture field. To open the form, the entry is automatically reloaded with the picture
+      field to be able to edit it.
+    </p>
+    <ec-crud
+      model="baker"
+      [config]="{ develop: true, keepPopOpen: true, size: 5, availableSizes: [1, 2, 5, 10] }"
+    ></ec-crud>
   </ec-tab>
 </ec-tabs>
 <ec-notifications></ec-notifications>
