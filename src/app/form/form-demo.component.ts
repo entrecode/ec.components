@@ -3,6 +3,7 @@ import { Field, Form, Item } from '@ec.components/core';
 import { DefaultInputComponent } from '@ec.components/ui';
 import { mocked } from '../../mocks/data';
 import { CounterComponent } from './counter.component';
+import { TagSelectComponent } from '@ec.components/data';
 
 @Component({
   selector: 'ec-form-demo',
@@ -30,6 +31,13 @@ export class FormDemoComponent {
   });
   layoutDemoConfig = {
     fields: {
+      tags: {
+        input: TagSelectComponent,
+        nestedCrudConfig: {
+          label: 'tag',
+          disableHeader: true
+        }
+      },
       forename: {
         view: 'string',
         columns: 6
