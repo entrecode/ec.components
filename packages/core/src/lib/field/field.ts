@@ -80,4 +80,8 @@ export class Field implements FieldConfigProperty {
   getView(occasion?) {
     return this[occasion + 'View'] || this.view;
   }
+  /** Returns the component for the given occasion */
+  getComponent(occasion?) {
+    return this[occasion + 'Component'];
+  }
 }

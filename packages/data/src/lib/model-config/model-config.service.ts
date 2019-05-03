@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Config, FieldConfig, Item } from '@ec.components/core';
-import { SymbolService } from '@ec.components/ui';
+import { SymbolService, DefaultInputComponent } from '@ec.components/ui';
 import { fields } from 'ec.sdk/lib/PublicAPI';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 import { CrudConfig } from '../crud/crud-config.interface';
@@ -108,7 +108,8 @@ export class ModelConfigService extends Config {
         immutable: true,
         hideInList: true,
         filterable: true,
-        input: AdminEntryInputComponent,
+        filterComponent: AdminEntryInputComponent,
+        formComponent: DefaultInputComponent,
         output: DefaultEntryOutputComponent,
         readOnly: true,
         filterPopClass: 'ec-pop_dialog',
