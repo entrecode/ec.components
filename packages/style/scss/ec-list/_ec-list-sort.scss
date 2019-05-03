@@ -1,54 +1,53 @@
 //scss-lint:disable NestingDepth
 
 .sorting-option {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: rem(8);
-    color: getColor(text);
-    font-size: 0.875em;
-  
-    &.is-sorted-asc {
-      .sorting-option-indicator {
-        .desc {
-          border-top-color: getColor(text);
-        }
-      }
-    }
-  
-    &.is-sorted-desc {
-      .sorting-option-indicator {
-        .asc {
-          border-bottom-color: getColor(text);
-        }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: rem(8);
+  color: getColor(text);
+  font-size: 0.875em;
+
+  &.is-sorted-asc {
+    .sorting-option-indicator {
+      .desc {
+        border-top-color: getColor(text);
       }
     }
   }
-  
-  .sorting-option-indicator {
-    margin-right: rem(8);
-    height: rem(12);
-    position: relative;
-    width: rem(12);
-    flex-grow: 0;
-  
-    .asc,
-    .desc {
-      content: '';
-      position: absolute;
-      border: rem(4) solid transparent;
-      left: 50%;
-      margin-left: rem(-4);
-    }
-  
-    .asc {
-      border-bottom-color: getColor(text, lightest);
-      top: rem(-4);
-    }
-  
-    .desc {
-      border-top-color: getColor(text, lightest);
-      bottom: rem(-4);
+
+  &.is-sorted-desc {
+    .sorting-option-indicator {
+      .asc {
+        border-bottom-color: getColor(text);
+      }
     }
   }
-  
+}
+
+.sorting-option-indicator {
+  margin-right: rem(8);
+  height: rem(12);
+  position: relative;
+  width: rem(12);
+  flex-grow: 0;
+
+  .asc,
+  .desc {
+    content: '';
+    position: absolute;
+    border: rem(4) solid transparent;
+    left: 50%;
+    margin-left: rem(-4);
+  }
+
+  .asc {
+    border-bottom-color: getColor(text, lightest);
+    top: rem(-4);
+  }
+
+  .desc {
+    border-top-color: getColor(text, lightest);
+    bottom: rem(-4);
+  }
+}

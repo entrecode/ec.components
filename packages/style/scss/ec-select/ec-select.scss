@@ -27,7 +27,7 @@
     $ec-select-font-size,
     $ec-select-line-height,
     $ec-select-min-height,
-    $padding-ratio: $ec-select-padding-ratio,
+    $padding-ratio: $ec-select-padding-ratio
   );
   background: $ec-select-background;
   color: $ec-select-color;
@@ -60,6 +60,22 @@
       @include inject-style($ec-select-placeholder-hover-style);
     }
   }
+
+  // @param {array} $ec-select-solo-style
+  &.ec-select_solo {
+    @include inject-style($ec-select-solo-style);
+    @include atom-metrics(
+      $ec-select-font-size,
+      $ec-select-line-height,
+      $ec-select-min-height,
+      $padding-ratio: $ec-select-padding-ratio
+    );
+    .ec-select-selection {
+      > li {
+        width: 100%;
+      }
+    }
+  }
 }
 
 // @param {color} $ec-select-placeholder-color [$xui-select-placeholder-color]
@@ -67,20 +83,4 @@
 .ec-select__placeholder {
   @include inject-style($ec-select-placeholder-style);
   color: $ec-select-placeholder-color;
-}
-
-// @param {array} $ec-select-solo-style
-.ec-select.ec-select_solo {
-  @include inject-style($ec-select-solo-style);
-  @include atom-metrics(
-    $ec-select-font-size,
-    $ec-select-line-height,
-    $ec-select-min-height,
-    $padding-ratio: $ec-select-padding-ratio,
-  );
-  .ec-select-selection {
-    > li {
-      width: 100%;
-    }
-  }
 }

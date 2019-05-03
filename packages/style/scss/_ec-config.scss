@@ -24,11 +24,11 @@ $ec-calendar-controls-style: () !default;
 
 // @param {px} $ec-calendar-title-size [$base-font-size]
 // @param {value} $ec-calendar-title-weight [$is-bold]
-// @param {color} $ec-calendar-title-color [getColor(text, light)]
+// @param {color} $ec-calendar-title-color [$text-light]
 // @param {array} $ec-calendar-title-style
 $ec-calendar-title-size: $base-font-size !default;
 $ec-calendar-title-weight: $is-bold !default;
-$ec-calendar-title-color: getColor(text, light) !default;
+$ec-calendar-title-color: $text-light !default;
 $ec-calendar-title-style: () !default;
 
 // @param {array} $ec-calendar-month-style
@@ -36,11 +36,11 @@ $ec-calendar-month-style: () !default;
 
 // @param {px} $ec-calendar-weekdays-size [$base-font-size * 0.875]
 // @param {value} $ec-calendar-weekdays-weight [$is-bold]
-// @param {color} $ec-calendar-weekdays-color [getColor(text, light)]
+// @param {color} $ec-calendar-weekdays-color [$text-light]
 // @param {array} $ec-calendar-weekdays-style
 $ec-calendar-weekdays-size: $base-font-size * 0.875 !default;
 $ec-calendar-weekdays-weight: $is-bold !default;
-$ec-calendar-weekdays-color: getColor(text, light) !default;
+$ec-calendar-weekdays-color: $text-light !default;
 $ec-calendar-weekdays-style: () !default;
 
 // @param {array} $ec-calendar-days-style
@@ -321,7 +321,7 @@ $ec-list-cell-is-sorted-color: inherit !default;
 $ec-list-cell-is-sorted-style: () !default;
 $ec-list-cell-is-sorted-style: map-merge(
   (
-    font-weight: $is-bold
+    font-weight: $is-bold,
   ),
   $ec-list-cell-is-sorted-style
 );
@@ -408,7 +408,7 @@ $ec-list-empty-radius: 4 !default;
 $ec-list-empty-style: () !default;
 $ec-list-empty-style: map-merge(
   (
-    text-align: center
+    text-align: center,
   ),
   $ec-list-empty-style
 );
@@ -634,7 +634,7 @@ $ec-select-selected-is-dragged-style: () !default;
 
 $ec-select-selected-is-dragged-style: map-merge(
   (
-    opacity: 0.6
+    opacity: 0.6,
   ),
   $ec-select-selected-is-dragged-style
 );
@@ -644,7 +644,7 @@ $drag-placeholder-style: () !default;
 
 $drag-placeholder-style: map-merge(
   (
-    border: 1px dashed $link
+    border: 1px dashed $link,
   ),
   $drag-placeholder-style
 );
