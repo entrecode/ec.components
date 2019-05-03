@@ -53,6 +53,11 @@ export class FormDemoComponent {
       count: {
         view: 'number',
         create: false
+      },
+      delivered: {
+        view: 'boolean',
+        readonly: true,
+        prefill: true
       }
     }
   };
