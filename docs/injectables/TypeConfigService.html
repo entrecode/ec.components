@@ -141,7 +141,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="178" class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:178</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="180" class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:180</a></div>
                             </td>
                         </tr>
 
@@ -206,7 +206,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="215" class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:215</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="217" class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:217</a></div>
                             </td>
                         </tr>
 
@@ -246,7 +246,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="208" class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:208</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="210" class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:210</a></div>
                             </td>
                         </tr>
 
@@ -318,7 +318,7 @@ Usese &#39;moment.format.date&#39; and &#39;moment.format.time&#39; symbols. </p
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="182" class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:182</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="184" class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:184</a></div>
                             </td>
                         </tr>
 
@@ -389,7 +389,7 @@ Usese &#39;moment.format.date&#39; and &#39;moment.format.time&#39; symbols. </p
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="220" class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:220</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="222" class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:222</a></div>
                             </td>
                         </tr>
 
@@ -429,7 +429,7 @@ Usese &#39;moment.format.date&#39; and &#39;moment.format.time&#39; symbols. </p
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="225" class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:225</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="227" class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:227</a></div>
                             </td>
                         </tr>
 
@@ -469,7 +469,7 @@ Usese &#39;moment.format.date&#39; and &#39;moment.format.time&#39; symbols. </p
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="198" class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:198</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="200" class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:200</a></div>
                             </td>
                         </tr>
 
@@ -727,19 +727,21 @@ Usese &#39;moment.format.date&#39; and &#39;moment.format.time&#39; symbols. </p
       nestedCrudConfig: this.nestedCrudConfig,
     },
     json: {
-      formView: &#x27;textarea&#x27;,
-      outputView: &#x27;json&#x27;,
+      /* formView: &#x27;textarea&#x27;,
+      outputView: &#x27;json&#x27;, */
+      view: &#x27;json&#x27;,
       resolve: (body, item, property) &#x3D;&gt; JSON.stringify(body[property]),
-      beforeSave: (value) &#x3D;&gt; JSON.parse(value),
-      display: (value) &#x3D;&gt; (value ? JSON.stringify(value) : &#x27;&#x27;),
+      /* beforeSave: (value) &#x3D;&gt; JSON.parse(value),
+      display: (value) &#x3D;&gt; (value ? JSON.stringify(value) : &#x27;&#x27;), */
     },
     location: {
-      formView: &#x27;textarea&#x27;,
-      outputView: &#x27;json&#x27;,
+      /* formView: &#x27;textarea&#x27;,
+      outputView: &#x27;json&#x27;, */
+      view: &#x27;json&#x27;,
       display: (value) &#x3D;&gt; (value ? value.longitude + &#x27;,&#x27; + value.latitude : &#x27;&#x27;),
       filterPopClass: &#x27;ec-pop_dialog&#x27;,
-      resolve: (body, item, property) &#x3D;&gt; JSON.stringify(body[property]),
-      beforeSave: (value) &#x3D;&gt; JSON.parse(value),
+      /* resolve: (body, item, property) &#x3D;&gt; JSON.stringify(body[property]),
+      beforeSave: (value) &#x3D;&gt; JSON.parse(value), */
     },
     account: {
       display: (value) &#x3D;&gt; (value ? value.title : &#x27;&#x27;),
@@ -928,19 +930,21 @@ export class TypeConfigService {
       nestedCrudConfig: this.nestedCrudConfig,
     },
     json: {
-      formView: &#x27;textarea&#x27;,
-      outputView: &#x27;json&#x27;,
+      /* formView: &#x27;textarea&#x27;,
+      outputView: &#x27;json&#x27;, */
+      view: &#x27;json&#x27;,
       resolve: (body, item, property) &#x3D;&gt; JSON.stringify(body[property]),
-      beforeSave: (value) &#x3D;&gt; JSON.parse(value),
-      display: (value) &#x3D;&gt; (value ? JSON.stringify(value) : &#x27;&#x27;),
+      /* beforeSave: (value) &#x3D;&gt; JSON.parse(value),
+      display: (value) &#x3D;&gt; (value ? JSON.stringify(value) : &#x27;&#x27;), */
     },
     location: {
-      formView: &#x27;textarea&#x27;,
-      outputView: &#x27;json&#x27;,
+      /* formView: &#x27;textarea&#x27;,
+      outputView: &#x27;json&#x27;, */
+      view: &#x27;json&#x27;,
       display: (value) &#x3D;&gt; (value ? value.longitude + &#x27;,&#x27; + value.latitude : &#x27;&#x27;),
       filterPopClass: &#x27;ec-pop_dialog&#x27;,
-      resolve: (body, item, property) &#x3D;&gt; JSON.stringify(body[property]),
-      beforeSave: (value) &#x3D;&gt; JSON.parse(value),
+      /* resolve: (body, item, property) &#x3D;&gt; JSON.stringify(body[property]),
+      beforeSave: (value) &#x3D;&gt; JSON.parse(value), */
     },
     account: {
       display: (value) &#x3D;&gt; (value ? value.title : &#x27;&#x27;),
