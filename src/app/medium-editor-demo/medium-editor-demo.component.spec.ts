@@ -8,8 +8,7 @@ describe('MediumEditorDemoComponent', () => {
   let fixture: ComponentFixture<MediumEditorDemoComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule(demoModuleConfig)
-    .compileComponents();
+    TestBed.configureTestingModule(demoModuleConfig).compileComponents();
   }));
 
   beforeEach(() => {

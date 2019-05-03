@@ -1,10 +1,7 @@
 /**
  * Created by felix on 26.05.17.
  */
-import {
-  Component, EventEmitter, Input, OnInit, Optional,
-  Output, ViewChild, ChangeDetectorRef
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Optional, Output, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CrudConfig } from './crud-config.interface';
 import { EntryListComponent } from '../entry-list/entry-list.component';
@@ -48,7 +45,8 @@ export class CrudComponent<T> implements OnInit, WithLoader, WithNotifications {
   /** Emitted Notifications */
   notifications: Notification[] = [];
 
-  constructor(private sdk: SdkService,
+  constructor(
+    private sdk: SdkService,
     private auth: AuthService,
     private loaderService: LoaderService,
     private modelConfig: ModelConfigService,
@@ -56,7 +54,8 @@ export class CrudComponent<T> implements OnInit, WithLoader, WithNotifications {
     private symbol: SymbolService,
     private cdr: ChangeDetectorRef,
     @Optional() public router: Router,
-    @Optional() public route: ActivatedRoute) {
+    @Optional() public route: ActivatedRoute,
+  ) {
     /* if (route) {
       merge(route.data, route.params, route.queryParams)
         .subscribe(({ model }) => {
@@ -68,11 +67,10 @@ export class CrudComponent<T> implements OnInit, WithLoader, WithNotifications {
   }
 
   ngOnInit() {
-    this.auth.getAllowedModelMethods(this.model, this.config.methods)
-      .then((methods) => {
-        this.config.methods = methods;
-        this.cdr.markForCheck();
-      });
+    this.auth.getAllowedModelMethods(this.model, this.config.methods).then((methods) => {
+      this.config.methods = methods;
+      this.cdr.markForCheck();
+    });
   }
 
   /** Returns true if the given method is part of the methods array (or if there is no methods array) */
@@ -89,24 +87,27 @@ export class CrudComponent<T> implements OnInit, WithLoader, WithNotifications {
 
   /** Loads the clicked entry item, depending on the configured levels. Reloads the entry if the form has fields the which list has not. */
   private loadEntry(item) {
-    return this.modelConfig.getMinLevel(this.model, this.config.fields)
+    return this.modelConfig
+      .getMinLevel(this.model, this.config.fields)
       .then((minLevel) => {
         const levels = Math.max(minLevel, this.config.levels || 1);
         if (!this.config.alwaysLoadEntry && !this.mustReload(item) && levels === 1) {
           return item.getBody();
         }
         return this.sdk.api.entry(this.model, item.id(), levels);
-      }).then((loadedEntry) => {
+      })
+      .then((loadedEntry) => {
         this.entryPop.edit(loadedEntry);
         this.notificationService.emit({ hide: this.notifications });
-      }).catch((err) => {
+      })
+      .catch((err) => {
         console.log('error while loading entry to edit', err);
         this.notificationService.emit({
           title: this.symbol.resolve('error.load'),
           error: err,
           sticky: true,
           hide: this.notifications,
-          replace: this.notifications
+          replace: this.notifications,
         });
       });
   }

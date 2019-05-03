@@ -17,9 +17,7 @@ import { ResourceActionbarComponent } from '../resource-actionbar/resource-actio
 import { ApiActionbarComponent } from '../resource-actionbar/api-actionbar.component';
 
 @NgModule({
-  entryComponents: [
-    ResourceListComponent,
-  ],
+  entryComponents: [ResourceListComponent],
   declarations: [
     ResourceListComponent,
     ResourceListPopComponent,
@@ -31,12 +29,7 @@ import { ApiActionbarComponent } from '../resource-actionbar/api-actionbar.compo
     ResourceActionbarComponent,
     ApiActionbarComponent,
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    UiModule,
-    SdkModule,
-  ],
+  imports: [CommonModule, FormsModule, UiModule, SdkModule],
   exports: [
     UiModule,
     SdkModule,
@@ -50,10 +43,6 @@ import { ApiActionbarComponent } from '../resource-actionbar/api-actionbar.compo
     ResourceActionbarComponent,
     ApiActionbarComponent,
   ],
-  providers: [
-    ResourceService,
-    ResourceConfig,
-  ],
+  providers: [ResourceService, ResourceConfig],
 })
-export class ResourceModule {
-}
+export class ResourceModule {}

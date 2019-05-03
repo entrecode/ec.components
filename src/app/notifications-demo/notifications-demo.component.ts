@@ -13,62 +13,67 @@ export class NotificationsDemoComponent implements OnInit, WithNotifications {
   /* public latest:Notification; */
   @ViewChild('optionsForm') optionsForm: FormComponent<any>;
 
-  constructor(private notificationService: NotificationsService) {
-  }
+  constructor(private notificationService: NotificationsService) {}
 
   ngOnInit() {
-    this.options = new Form({
-      time: 8000,
-      hostClass: this.classes[0],
-      desktop: false,
-      title: 'The Toast is hot',
-      message: 'The temperature of your white bread has risen to improve its crisp factor to the optimum!',
-      type: 'success'
-    }, {
+    this.options = new Form(
+      {
+        time: 8000,
+        hostClass: this.classes[0],
+        desktop: false,
+        title: 'The Toast is hot',
+        message: 'The temperature of your white bread has risen to improve its crisp factor to the optimum!',
+        type: 'success',
+      },
+      {
         fields: {
           time: {
             label: 'Zeit in ms',
-            view: 'number'
+            view: 'number',
           },
           hostClass: {
             label: 'Klasse',
             view: 'select',
-            values: this.classes
+            values: this.classes,
           },
           desktop: {
             label: 'Desktop',
-            view: 'boolean'
+            view: 'boolean',
           },
           replace: {
             label: 'Replace',
-            view: 'boolean'
+            view: 'boolean',
           },
           title: {
             label: 'Title',
             view: 'string',
-            prefill: 'Title'
+            prefill: 'Title',
           },
           message: {
             label: 'Message',
-            view: 'textarea'
+            view: 'textarea',
           },
           type: {
             label: 'Type',
             view: 'select',
-            values: this.types
+            values: this.types,
           },
-        }
-      });
+        },
+      },
+    );
   }
 
   emit({ type, title, message, desktop, replace }) {
     const hide = replace ? this.notifications : [];
-    const notification = this.notificationService.emit({ type, title, message, hide, replace: this.notifications }, desktop);
+    const notification = this.notificationService.emit(
+      { type, title, message, hide, replace: this.notifications },
+      desktop,
+    );
   }
 
   hide() {
     this.notificationService.emit({
-      hide: this.notifications
+      hide: this.notifications,
     });
   }
 }

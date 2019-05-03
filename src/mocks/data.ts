@@ -8,20 +8,20 @@ export const products = [
     id: 'x1',
     name: 'Brush',
     price: 2,
-    tags: ['tool', 'plastic', 'dirty']
+    tags: ['tool', 'plastic', 'dirty'],
   },
   {
     id: 'x2',
     name: 'Toilet',
     price: 100,
-    tags: ['tool', 'water']
+    tags: ['tool', 'water'],
   },
   {
     id: 'x3',
     name: 'Toilet Seat',
     price: 20,
-    tags: ['utility', 'plastic']
-  }
+    tags: ['utility', 'plastic'],
+  },
 ];
 
 export const mocked = {
@@ -30,25 +30,27 @@ export const mocked = {
     {
       value: {
         name: 'Vanilla Fudge',
-        cost: 10
-      }
-    }, {
+        cost: 10,
+      },
+    },
+    {
       value: {
         name: 'Chocolate Dream',
-        cost: 15
-      }
-    }, {
+        cost: 15,
+      },
+    },
+    {
       value: {
         name: 'Strawberry Girlie',
-        cost: 5
-      }
-    }
+        cost: 5,
+      },
+    },
   ],
   people: [{ name: 'John' }, { name: 'Henry' }, { name: 'Maria' }],
   environment: {
     apiRoot: 'https://datamanager.entrecode.de/api/292b02f5',
     datamanagerID: '292b02f5',
-    model: 'muffin'
+    model: 'muffin',
   },
   lists: {
     products: new List(products, { identifier: 'id', label: 'name' }),
@@ -57,14 +59,14 @@ export const mocked = {
       fields: {
         picture: {
           label: 'Bild',
-          resolve: (body) => body.music ? body.music.measures.length : 1,
-          output: UnsplashImageComponent
+          resolve: (body) => (body.music ? body.music.measures.length : 1),
+          output: UnsplashImageComponent,
         },
         music: {
           label: 'Akkorde',
           display: (value) => value.measures.reduce((chords, measure) => chords.concat(measure), []),
-          sort: (value) => value ? value.measures.length : 0,
-          view: 'tags'
+          sort: (value) => (value ? value.measures.length : 0),
+          view: 'tags',
         },
         title: {
           label: 'Titel',
@@ -92,16 +94,24 @@ export const mocked = {
           label: 'Dichte',
           hideInList: true,
           resolve: (body) => {
-            return body.music ? (Math.round(body.music.measures.reduce((chords, measure) => chords.concat(measure), []).length
-              / body.music.measures.length * 10) / 10) : 0;
-          }
+            return body.music
+              ? Math.round(
+                  (body.music.measures.reduce((chords, measure) => chords.concat(measure), []).length /
+                    body.music.measures.length) *
+                    10,
+                ) / 10
+              : 0;
+          },
         },
         diversity: {
           label: 'Diversität',
           hideInList: true,
           resolve: (body) => {
-            return body.music ? (body.music.measures.reduce((chords, measure) => chords.concat(measure), [])
-              .filter((v, i, a) => a.indexOf(v) === i).length) : 0;
+            return body.music
+              ? body.music.measures
+                  .reduce((chords, measure) => chords.concat(measure), [])
+                  .filter((v, i, a) => a.indexOf(v) === i).length
+              : 0;
           },
           sortable: true,
         },
@@ -114,50 +124,57 @@ export const mocked = {
           view: 'number',
           group: (value) => {
             if (value < 5) {
-              return 'Käseleicht'
+              return 'Käseleicht';
             }
             if (value < 10) {
-              return 'Anfänger'
+              return 'Anfänger';
             }
             if (value < 30) {
-              return 'Ganz nett'
+              return 'Ganz nett';
             }
             if (value < 40) {
-              return 'Fortgeschritten'
+              return 'Fortgeschritten';
             }
             if (value < 50) {
-              return 'Ordentlich'
+              return 'Ordentlich';
             }
             if (value < 60) {
-              return 'Profi'
+              return 'Profi';
             }
-            return 'Hardcore'
-          }
+            return 'Hardcore';
+          },
         },
-      }
+      },
     }),
-    trees: new List([
+    trees: new List(
+      [
+        {
+          name: 'Appletree',
+          height: 10,
+          fruits: true,
+        },
+        {
+          name: 'Lemontree',
+          height: 8,
+          fruits: true,
+        },
+        {
+          name: 'Birch',
+          height: 20,
+          fruits: false,
+        },
+        {
+          name: 'Cinnamon',
+          height: 10,
+          fruits: true,
+        },
+        {
+          name: 'Papple',
+          height: 8,
+          fruits: true,
+        },
+      ],
       {
-        name: 'Appletree',
-        height: 10,
-        fruits: true
-      }, {
-        name: 'Lemontree',
-        height: 8,
-        fruits: true
-      }, {
-        name: 'Birch',
-        height: 20,
-        fruits: false
-      }, {
-        name: 'Cinnamon',
-        height: 10,
-        fruits: true
-      }, {
-        name: 'Papple',
-        height: 8,
-        fruits: true
-      }], {
         size: 3,
         selectMode: true,
         storageKey: 'treeListConfig',
@@ -168,23 +185,23 @@ export const mocked = {
             required: true,
             input: CoolStringComponent,
             output: CoolStringComponent,
-            sortable: true
+            sortable: true,
           },
           height: {
             label: 'Höhe',
-            group: (h) => h > 10 ? 'Höher als 10m' : 'Niedriger als 10m',
+            group: (h) => (h > 10 ? 'Höher als 10m' : 'Niedriger als 10m'),
             view: 'number',
             required: true,
             validate: (value) => {
               if (value < 1) {
-                return 'Der Wert muss positiv sein.'
+                return 'Der Wert muss positiv sein.';
               }
             },
-            sortable: true
+            sortable: true,
           },
           fruits: {
             label: 'Früchte',
-            display: (value) => value ? 'ja' : 'nein',
+            display: (value) => (value ? 'ja' : 'nein'),
             view: 'boolean',
             sortable: true,
             hideInColumnFilter: true,
@@ -199,145 +216,158 @@ export const mocked = {
             icon: 'binoculars',
             action: (item, property) => {
               console.log('clicked button', item, property);
-            }
-          }
+            },
+          },
         },
-      }),
+      },
+    ),
     pop_test: new List([], {
       fields: {
         defaultClass: {
           label: 'default',
           filterable: true,
-          view: 'string'
+          view: 'string',
         },
         fullscreen: {
           filterPopClass: 'ec-pop_fullscreen',
           filterable: true,
-          view: 'string'
+          view: 'string',
         },
         dialog: {
           filterPopClass: 'dialog ec-pop_overlay',
           filterable: true,
-          view: 'string'
+          view: 'string',
         },
         'drawer-left': {
           filterPopClass: 'ec-pop_drawer-left',
           filterable: true,
-          view: 'string'
+          view: 'string',
         },
         'drawer-right': {
           filterPopClass: 'ec-pop_drawer-right',
           filterable: true,
-          view: 'string'
+          view: 'string',
         },
         'drawer-top': {
           filterPopClass: 'ec-pop_drawer-top',
           filterable: true,
-          view: 'string'
+          view: 'string',
         },
         'drawer-bottom': {
           filterPopClass: 'ec-pop_drawer-bottom',
           filterable: true,
-          view: 'string'
+          view: 'string',
         },
         'toast-top': {
           filterPopClass: 'ec-pop_toast-top',
           filterable: true,
-          view: 'string'
-        }
-      }
-    })
-  }
+          view: 'string',
+        },
+      },
+    }),
+  },
 };
 
 export const muffinSchema = {
-  '_links': { '$ref': 'https://entrecode.de/schema/hal#_links' },
-  '_id': {
-    'type': 'string',
-    'pattern': '^[0-9A-Za-z-_]{7,14}$',
-    'title': 'id',
-    'description': 'Unique identifier for this entry.'
+  _links: { $ref: 'https://entrecode.de/schema/hal#_links' },
+  _id: {
+    type: 'string',
+    pattern: '^[0-9A-Za-z-_]{7,14}$',
+    title: 'id',
+    description: 'Unique identifier for this entry.',
   },
-  'id': {
-    'type': 'string',
-    'pattern': '^[0-9A-Za-z-_]{7,14}$',
-    'title': 'id',
-    'description': 'Unique identifier for this entry.'
+  id: {
+    type: 'string',
+    pattern: '^[0-9A-Za-z-_]{7,14}$',
+    title: 'id',
+    description: 'Unique identifier for this entry.',
   },
-  'private': { 'type': 'boolean', 'description': 'Indicates if an entry was posted private.' },
-  '_created': {
-    'type': 'string',
-    'format': 'date-time',
-    'title': 'datetime',
-    'description': 'Timestamp of the creation of this entry.'
+  private: { type: 'boolean', description: 'Indicates if an entry was posted private.' },
+  _created: {
+    type: 'string',
+    format: 'date-time',
+    title: 'datetime',
+    description: 'Timestamp of the creation of this entry.',
   },
-  'created': {
-    'type': 'string',
-    'format': 'date-time',
-    'title': 'datetime',
-    'description': 'Timestamp of the creation of this entry.'
+  created: {
+    type: 'string',
+    format: 'date-time',
+    title: 'datetime',
+    description: 'Timestamp of the creation of this entry.',
   },
-  '_creator': {
-    'type': ['string', 'null'],
-    'title': 'account',
-    'description': 'Creator of this entry.'
+  _creator: {
+    type: ['string', 'null'],
+    title: 'account',
+    description: 'Creator of this entry.',
   },
-  'creator': {
-    'type': ['string', 'null'],
-    'title': 'account',
-    'description': 'Creator of this entry.'
+  creator: {
+    type: ['string', 'null'],
+    title: 'account',
+    description: 'Creator of this entry.',
   },
-  '_modified': {
-    'type': 'string',
-    'format': 'date-time',
-    'title': 'datetime',
-    'description': 'Timestamp of the last modification of this entry.'
+  _modified: {
+    type: 'string',
+    format: 'date-time',
+    title: 'datetime',
+    description: 'Timestamp of the last modification of this entry.',
   },
-  'modified': {
-    'type': 'string',
-    'format': 'date-time',
-    'title': 'datetime',
-    'description': 'Timestamp of the last modification of this entry.'
+  modified: {
+    type: 'string',
+    format: 'date-time',
+    title: 'datetime',
+    description: 'Timestamp of the last modification of this entry.',
   },
-  '_modelTitleField': {
-    'type': 'string',
-    'description': 'Indicates which field is the title field of the model.'
+  _modelTitleField: {
+    type: 'string',
+    description: 'Indicates which field is the title field of the model.',
   },
-  '_modelTitle': {
-    'type': 'string',
-    'description': 'The title of the model this entry is part of.',
-    'pattern': '^[a-zA-Z0-9_\\-]{1,256}$'
+  _modelTitle: {
+    type: 'string',
+    description: 'The title of the model this entry is part of.',
+    pattern: '^[a-zA-Z0-9_\\-]{1,256}$',
   },
-  '_entryTitle': { 'description': 'Shorthand for entry title.' },
-  'name': { 'type': 'string', 'title': 'text', 'description': 'Name of Muffin', 'default': '' },
-  'amazement_factor': {
-    'oneOf': [{ 'type': 'null' }, {
-      'type': 'number',
-      'minimum': 1,
-      'maximum': 10,
-      'multipleOf': 1
-    }], 'title': 'number', 'description': 'How amazing is the Muffin?', 'default': null
+  _entryTitle: { description: 'Shorthand for entry title.' },
+  name: { type: 'string', title: 'text', description: 'Name of Muffin', default: '' },
+  amazement_factor: {
+    oneOf: [
+      { type: 'null' },
+      {
+        type: 'number',
+        minimum: 1,
+        maximum: 10,
+        multipleOf: 1,
+      },
+    ],
+    title: 'number',
+    description: 'How amazing is the Muffin?',
+    default: null,
   },
-  'pictures': {
-    'type': 'array',
-    'items': {
-      'oneOf': [{
-        'type': 'string',
-        'pattern': '^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$'
-      }, {
-        'type': 'object',
-        'properties': {
-          'assetID': {
-            'oneOf': [{ 'type': 'null' }, {
-              'type': 'string',
-              'pattern': '^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$'
-            }]
-          }
-        }
-      }]
+  pictures: {
+    type: 'array',
+    items: {
+      oneOf: [
+        {
+          type: 'string',
+          pattern: '^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$',
+        },
+        {
+          type: 'object',
+          properties: {
+            assetID: {
+              oneOf: [
+                { type: 'null' },
+                {
+                  type: 'string',
+                  pattern: '^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-4[0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$',
+                },
+              ],
+            },
+          },
+        },
+      ],
     },
-    'title': 'assets',
-    'description': '',
-    'default': null
-  }
+    title: 'assets',
+    description: '',
+    default: null,
+  },
 };

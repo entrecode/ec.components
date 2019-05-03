@@ -8,8 +8,7 @@ describe('TinymceDemoComponent', () => {
   let fixture: ComponentFixture<TinymceDemoComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule(demoModuleConfig)
-      .compileComponents();
+    TestBed.configureTestingModule(demoModuleConfig).compileComponents();
   }));
 
   beforeEach(() => {

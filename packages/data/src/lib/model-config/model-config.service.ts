@@ -16,20 +16,15 @@ import { DefaultEntryOutputComponent } from '../entry-form/default-entry-output.
 @Injectable()
 export class ModelConfigService extends Config {
   /** Array of property names that are omitted by default. */
-  omittedFields: Array<string> = [
-    'id',
-    'private',
-    'created',
-    'creator',
-    'modified'
-  ];
-
+  omittedFields: Array<string> = ['id', 'private', 'created', 'creator', 'modified'];
 
   /** Injects EntryService and SdkService. */
-  constructor(private entryService: EntryService,
+  constructor(
+    private entryService: EntryService,
     private sdk: SdkService,
     private typeConfig: TypeConfigService,
-    private symbol: SymbolService) {
+    private symbol: SymbolService,
+  ) {
     super();
   }
 
@@ -85,7 +80,7 @@ export class ModelConfigService extends Config {
         immutable: true,
         sortable: true,
         hideInList: true,
-        rawFilter: true
+        rawFilter: true,
       },
       _modified: {
         label: this.symbol.resolve('field.label.modified'),
@@ -99,7 +94,7 @@ export class ModelConfigService extends Config {
         immutable: true,
         sortable: true,
         hideInList: false,
-        rawFilter: true
+        rawFilter: true,
       },
       _creator: {
         label: this.symbol.resolve('field.label.creator'),
@@ -118,27 +113,27 @@ export class ModelConfigService extends Config {
         readOnly: true,
         filterPopClass: 'ec-pop_dialog',
         filterOperator: 'exact',
-      }
+      },
     };
   }
 
   /** Parses config for fields that require leveled entries */
   getMinLevel(model: string, customFieldConfig?: FieldConfig) {
-    return this.generateConfig(model, customFieldConfig)
-      .then((modelConfig) => {
-        const fieldConfig = modelConfig.fields;
-        return Object.keys(fieldConfig)
-          .filter(field => !!fieldConfig[field].type)
-          .map(field => {
-            const inputView = fieldConfig[field].inputView;
-            const views = this.typeConfig.get(fieldConfig[field].type).inputViews || [];
-            if (!inputView || !views) {
-              return 1;
-            }
-            const match = views.find(v => v.name === inputView);
-            return match ? match.levels || 1 : 1;
-          }).reduce((max, lvl) => Math.max(max, lvl), 1);
-      });
+    return this.generateConfig(model, customFieldConfig).then((modelConfig) => {
+      const fieldConfig = modelConfig.fields;
+      return Object.keys(fieldConfig)
+        .filter((field) => !!fieldConfig[field].type)
+        .map((field) => {
+          const inputView = fieldConfig[field].inputView;
+          const views = this.typeConfig.get(fieldConfig[field].type).inputViews || [];
+          if (!inputView || !views) {
+            return 1;
+          }
+          const match = views.find((v) => v.name === inputView);
+          return match ? match.levels || 1 : 1;
+        })
+        .reduce((max, lvl) => Math.max(max, lvl), 1);
+    });
   }
 
   /** Returns the default field config for the given model.
@@ -148,61 +143,58 @@ export class ModelConfigService extends Config {
     return this.sdk.api.getFieldConfig(model).then((fieldConfig: fields) => {
       const merged = {};
       Object.assign(merged, this.getSystemFields());
-      Object.keys(fieldConfig).map(property => fieldConfig[property])
-        .forEach(({
-          config,
-          type,
-          title,
-          unique,
-          mutable,
-          readOnly,
-          required,
-          validation,
-          description,
-          localizable
-        }) => {
-          /* type = type as string; */
-          config = config || {};
-          if (type.includes('asset')) {
-            type = type.replace('a', 'dmA');
-          }
-          // parse field config
-          const { hideInList,
-            hideInForm,
-            hideOnCreate,
-            hideOnEdit,
-            placeholder,
-            inputView,
-            label,
-            classes,
-            columns = 12
-          } = config;
-          const typeConfig = this.typeConfig.get(type);
-          // assign default values + merge customFieldConfig if given
-          merged[title] = Object.assign({
-            property: title,
-            label: label || title + (type === 'datetime' ? ` ${this.symbol.resolve('datetime.local')}` : ''),
-            placeholder,
-            description,
-            validation,
-            relation: validation,
-            immutable: !mutable,
-            readOnly,
-            hideInList,
-            hideInForm,
-            create: !hideOnCreate,
-            edit: !hideOnEdit,
-            classes,
-            unique,
-            required,
-            columns,
-            /* display: ((value) => value), */
-            localizable,
-          }, typeConfig, {
-              placeholder: placeholder || typeConfig.placeholder,
-              inputView: inputView || typeConfig.inputView || type
-            });
-        });
+      Object.keys(fieldConfig)
+        .map((property) => fieldConfig[property])
+        .forEach(
+          ({ config, type, title, unique, mutable, readOnly, required, validation, description, localizable }) => {
+            /* type = type as string; */
+            config = config || {};
+            if (type.includes('asset')) {
+              type = type.replace('a', 'dmA');
+            }
+            // parse field config
+            const {
+              hideInList,
+              hideInForm,
+              hideOnCreate,
+              hideOnEdit,
+              placeholder,
+              inputView,
+              label,
+              classes,
+              columns = 12,
+            } = config;
+            const typeConfig = this.typeConfig.get(type);
+            // assign default values + merge customFieldConfig if given
+            merged[title] = Object.assign(
+              {
+                property: title,
+                label: label || title + (type === 'datetime' ? ` ${this.symbol.resolve('datetime.local')}` : ''),
+                placeholder,
+                description,
+                validation,
+                relation: validation,
+                immutable: !mutable,
+                readOnly,
+                hideInList,
+                hideInForm,
+                create: !hideOnCreate,
+                edit: !hideOnEdit,
+                classes,
+                unique,
+                required,
+                columns,
+                /* display: ((value) => value), */
+                localizable,
+              },
+              typeConfig,
+              {
+                placeholder: placeholder || typeConfig.placeholder,
+                inputView: inputView || typeConfig.inputView || type,
+              },
+            );
+          },
+        );
       return merged;
     });
   }
@@ -222,27 +214,27 @@ export class ModelConfigService extends Config {
       identifierPattern: /^[0-9A-Za-z-_]{7,14}$/, // shortID pattern
       label: '_entryTitle',
       defaultFilter: lightModel.titleField,
-      onSave: (item: Item<EntryResource>, value) => this.entryService.save(model, item, value)
+      onSave: (item: Item<EntryResource>, value) => this.entryService.save(model, item, value),
     });
-    return this.getFieldConfig(model)
-      .then((fieldConfig: FieldConfig) => {
-        const modelConfigFields = modelConfig.fields || {};
-        const relevantKeys = Object.keys(customFieldConfig || modelConfigFields);
-        const mergedFields = {};
-        if (!relevantKeys.length) {
-          modelConfig.fields = fieldConfig;
-        } else {
-          relevantKeys.forEach(key => {
-            mergedFields[key] = Object.assign(
-              {},
-              fieldConfig[key] || {},
-              modelConfigFields[key] || {},
-              (customFieldConfig || {})[key]);
-          });
-          modelConfig.fields = mergedFields;
-        }
-        return modelConfig;
-      });
+    return this.getFieldConfig(model).then((fieldConfig: FieldConfig) => {
+      const modelConfigFields = modelConfig.fields || {};
+      const relevantKeys = Object.keys(customFieldConfig || modelConfigFields);
+      const mergedFields = {};
+      if (!relevantKeys.length) {
+        modelConfig.fields = fieldConfig;
+      } else {
+        relevantKeys.forEach((key) => {
+          mergedFields[key] = Object.assign(
+            {},
+            fieldConfig[key] || {},
+            modelConfigFields[key] || {},
+            (customFieldConfig || {})[key],
+          );
+        });
+        modelConfig.fields = mergedFields;
+      }
+      return modelConfig;
+    });
   }
   /** Returns light model information */
   getLightModel(model) {

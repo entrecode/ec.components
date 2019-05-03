@@ -27,7 +27,7 @@ export interface CrudConfig<T> extends ListConfig<T> {
   /** If true, an entry is always loaded when opened, even with lvl1 */
   alwaysLoadEntry?: boolean;
   /** maps the permissions to the methods post put create delete */
-  permissions?: { put?: string | boolean, post?: string | boolean, get?: string | boolean, delete?: string | boolean };
+  permissions?: { put?: string | boolean; post?: string | boolean; get?: string | boolean; delete?: string | boolean };
   /** If true, no select mode switch will be shown */
   disableSelectSwitch?: boolean;
   /** If true, no list pop will be available at selects */
@@ -56,5 +56,4 @@ export interface CrudConfig<T> extends ListConfig<T> {
   nestedPopActive?: boolean;
   /** Sets a placeholder. Used e.g. for empty entry-select */
   placeholder?: string;
-
 }

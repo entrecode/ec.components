@@ -8,8 +8,7 @@ describe('EntryPopDemoComponent', () => {
   let fixture: ComponentFixture<EntryPopDemoComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule(demoModuleConfig)
-      .compileComponents();
+    TestBed.configureTestingModule(demoModuleConfig).compileComponents();
   }));
 
   beforeEach(() => {

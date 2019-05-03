@@ -17,31 +17,28 @@ export class DemoComponent {
   paths = [];
   links = [];
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private typeConfig: TypeConfigService) {
-    this.router.events.pipe(
-      filter(event => event instanceof ChildActivationEnd),
-      /* take(1), */
-    ).subscribe(event => {
-      const data = event['snapshot'].firstChild.data;
-      if (data.paths) {
-        this.paths = data.paths;
-      }
-      if (data.links) {
-        this.links = data.links;
-      }
-    });
-
-    this.route.queryParams
-      .subscribe(params => {
-        this.hideMenu = !!params['e'];
+  constructor(private route: ActivatedRoute, private router: Router, private typeConfig: TypeConfigService) {
+    this.router.events
+      .pipe(
+        filter((event) => event instanceof ChildActivationEnd),
+        /* take(1), */
+      )
+      .subscribe((event) => {
+        const data = event['snapshot'].firstChild.data;
+        if (data.paths) {
+          this.paths = data.paths;
+        }
+        if (data.links) {
+          this.links = data.links;
+        }
       });
+
+    this.route.queryParams.subscribe((params) => {
+      this.hideMenu = !!params['e'];
+    });
 
     /* this.typeConfig.set('location', {
       input: LocationPickerComponent
     }); */
   }
-
 }

@@ -1,9 +1,15 @@
 import {
-  AfterViewInit, ApplicationRef,
-  Component, ElementRef,
-  EventEmitter, forwardRef,
-  Input, OnDestroy, Output,
-  ViewChild, ViewEncapsulation
+  AfterViewInit,
+  ApplicationRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  forwardRef,
+  Input,
+  OnDestroy,
+  Output,
+  ViewChild,
+  ViewEncapsulation,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subject } from 'rxjs';
@@ -28,7 +34,7 @@ import { debounceTime } from 'rxjs/operators';
 
 /** Wraps tinymce as a control input.
  * <example-url>https://components.entrecode.de/misc/tinymce?e=1</example-url>
-*/
+ */
 @Component({
   selector: 'ec-tinymce',
   templateUrl: './tinymce.component.html',
@@ -38,12 +44,11 @@ import { debounceTime } from 'rxjs/operators';
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => TinymceComponent),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
-export class TinymceComponent
-  implements AfterViewInit, OnDestroy, ControlValueAccessor, OnDestroy {
+export class TinymceComponent implements AfterViewInit, OnDestroy, ControlValueAccessor, OnDestroy {
   /** Promise that resolves when the editor has been initialized */
   ready: Promise<any>;
   /** The current editor instance */
@@ -71,7 +76,7 @@ export class TinymceComponent
     this.update
       .asObservable()
       .pipe(debounceTime(this.debounce))
-      .subscribe(editor => {
+      .subscribe((editor) => {
         if (!this.editor) {
           return;
         }
@@ -101,38 +106,33 @@ export class TinymceComponent
 
   /** Initializes the editor */
   init() {
-    const settings = Object.assign({},
-      editorSettings,
-      this.settings,
-      {
-        target: this.container.nativeElement,
-        setup: (editor) => {
-          editorSettings.setup(editor);
-          if (this.settings && this.settings.setup) {
-            this.settings.setup(editor);
-          }
-          this.setup.emit(editor);
+    const settings = Object.assign({}, editorSettings, this.settings, {
+      target: this.container.nativeElement,
+      setup: (editor) => {
+        editorSettings.setup(editor);
+        if (this.settings && this.settings.setup) {
+          this.settings.setup(editor);
         }
-      }
-    );
+        this.setup.emit(editor);
+      },
+    });
     this.ready = new Promise((resolve, reject) => setTimeout(() => resolve(tinymce.init(settings))));
-    this.ready.then(editor => {
+    this.ready.then((editor) => {
       this.editor = editor[0];
       this.editor.setContent(this.value || '');
-      this.editor.on('dblclick', e => {
+      this.editor.on('dblclick', (e) => {
         if (e.target.localName === 'img') {
           this.editor.buttons.image.onclick(true, e.toElement);
         }
       });
-      this.editor.on('change keyup', res => this.update.next(this.editor));
+      this.editor.on('change keyup', (res) => this.update.next(this.editor));
       return this.editor;
     });
   }
 
   /** adds an image by url to the editor */
   addImageByUrl(url: string, caption = '', size = 200) {
-    this.editor.execCommand('mceInsertContent', false,
-      `<img alt="${caption}" width="${size}" src="${url}"/>`);
+    this.editor.execCommand('mceInsertContent', false, `<img alt="${caption}" width="${size}" src="${url}"/>`);
   }
   /** Writes value to editor on outside model change. */
   writeValue(value: any) {
@@ -142,11 +142,11 @@ export class TinymceComponent
     }
   }
 
-  propagateChange = (_: any) => { };
+  propagateChange = (_: any) => {};
 
   registerOnChange(fn) {
     this.propagateChange = fn;
   }
 
-  registerOnTouched() { }
+  registerOnTouched() {}
 }

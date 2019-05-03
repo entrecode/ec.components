@@ -8,33 +8,33 @@ export class EntryPopDemoComponent {
   popConfig = {
     fields: {
       name: {
-        label: 'Name im POP!'
+        label: 'Name im POP!',
       },
       amazement_factor: {
-        columns: 6
+        columns: 6,
       },
       test_asset: {
-        columns: 6
-      }
-    }
+        columns: 6,
+      },
+    },
   };
 
   constructor(public modelConfig: ModelConfigService) {
     this.modelConfig.set('muffin', {
       fields: {
         id: {
-          hideInList: true
+          hideInList: true,
         },
         name: {
-          label: 'Name..'
+          label: 'Name..',
         },
         amazement_factor: {
-          label: 'amazement_factorororororor'
+          label: 'amazement_factorororororor',
         },
         test_asset: {
-          label: 'test asset'
-        }
-      }
+          label: 'test asset',
+        },
+      },
     });
   }
 }

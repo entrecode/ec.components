@@ -48,7 +48,7 @@ export class List<T> extends Collection<Item<T>> {
   constructor(values?: Array<T>, config: ListConfig<T> = {}, pagination?: Pagination<T>) {
     super([]);
     if (values) {
-      super.addAll(values.map(value => new Item(value, Object.assign({}, config))), false, false);
+      super.addAll(values.map((value) => new Item(value, Object.assign({}, config))), false, false);
     }
     this.config = Object.assign({ page: 1, maxColumns: 8 }, config || {});
     this.fields = this.getFields();
@@ -57,9 +57,9 @@ export class List<T> extends Collection<Item<T>> {
     this.change$.subscribe(() => {
       this.pagination.select(this.config.page || 1, true);
     });
-    if (!pagination) { // load if no custom pagination was given
-      this.pagination.change$.pipe(debounceTime(200))
-        .subscribe(_config => this.load(_config));
+    if (!pagination) {
+      // load if no custom pagination was given
+      this.pagination.change$.pipe(debounceTime(200)).subscribe((_config) => this.load(_config));
       this.load();
     }
   }
@@ -93,7 +93,7 @@ export class List<T> extends Collection<Item<T>> {
     }
     const fields = [];
     this.items.forEach((item) => {
-      item.getProperties().forEach(property => {
+      item.getProperties().forEach((property) => {
         if (!fields.find((f) => f.property === property)) {
           fields.push(new Field(property, { type: typeof item.resolve(property) }));
         }
@@ -110,11 +110,13 @@ export class List<T> extends Collection<Item<T>> {
   /** Sets all fields that exceed the maxColumns to hidden */
   protected hideOverflowFields() {
     if (this.config && this.config.maxColumns) {
-      this.fields.filter(f => !f.hideInList).forEach((field, index) => {
-        if (index >= this.config.maxColumns && field.hideInList === undefined) {
-          field.hideInList = true;
-        }
-      });
+      this.fields
+        .filter((f) => !f.hideInList)
+        .forEach((field, index) => {
+          if (index >= this.config.maxColumns && field.hideInList === undefined) {
+            field.hideInList = true;
+          }
+        });
     }
   }
 
@@ -125,12 +127,14 @@ export class List<T> extends Collection<Item<T>> {
     if (identifier === undefined) {
       throw new Error(`cannot get item with identifier "${identifier}"`);
     }
-    return this.items.find((item, key) => {
-      if (!item.config.identifier) {
-        return false;
-      }
-      return item.id() === identifier;
-    }) || this.items[identifier];
+    return (
+      this.items.find((item, key) => {
+        if (!item.config.identifier) {
+          return false;
+        }
+        return item.id() === identifier;
+      }) || this.items[identifier]
+    );
   }
 
   /** Filters the list after the given property and value */
@@ -142,9 +146,14 @@ export class List<T> extends Collection<Item<T>> {
       // this.page = [].concat(this.items);
     }
     // TODO find way to filter with pagination and without loosing filtered out items
-    this.page = this.items.filter((item) => {
-      return item.resolve(property).toLowerCase().includes(value.toLowerCase()); // TODO: better filter
-    }).slice(0, this.config.size || 100);
+    this.page = this.items
+      .filter((item) => {
+        return item
+          .resolve(property)
+          .toLowerCase()
+          .includes(value.toLowerCase()); // TODO: better filter
+      })
+      .slice(0, this.config.size || 100);
   }
 
   setFilter(filterOptions = {}) {
@@ -163,7 +172,7 @@ export class List<T> extends Collection<Item<T>> {
 
     this.load({
       page: 1,
-      filter: filterOptions
+      filter: filterOptions,
     });
   }
 
@@ -174,17 +183,19 @@ export class List<T> extends Collection<Item<T>> {
     }
     this.load({
       page: 1,
-      filter: {}
+      filter: {},
     });
   }
 
   /** Helper function. Returns true if the given query value is empty (also recognizes empty array) */
   isEmptyFilter(query: null | undefined | string | Array<any> | Object) {
-    return query === '' ||
+    return (
+      query === '' ||
       query === null ||
       query === undefined ||
       (Array.isArray(query) && !query.length) ||
-      (typeof query === 'object' && Object.keys(query).length === 0);
+      (typeof query === 'object' && Object.keys(query).length === 0)
+    );
   }
 
   /** Returns true if the given property has a filter set. If no property is given it returns true when no property has a filter. */
@@ -193,9 +204,7 @@ export class List<T> extends Collection<Item<T>> {
       return false;
     }
     if (!property) {
-      return Object.keys(filterOptions)
-        .filter(key => !this.isEmptyFilter(filterOptions[key]))
-        .length > 0;
+      return Object.keys(filterOptions).filter((key) => !this.isEmptyFilter(filterOptions[key])).length > 0;
     }
     return !this.isEmptyFilter(filterOptions[property]);
   }
@@ -248,7 +257,7 @@ export class List<T> extends Collection<Item<T>> {
   /** Toggles selectMode of list config */
   toggleSelectMode() {
     this.config = Object.assign({}, this.config, {
-      selectMode: !this.config.selectMode
+      selectMode: !this.config.selectMode,
     });
     this.change.next(this);
   }
@@ -258,22 +267,24 @@ export class List<T> extends Collection<Item<T>> {
     delete this.groups;
     const page = this.pagination ? this.pagination.getPage() : 0;
     if (!property || !this.config.fields || !this.config.fields[property] || !this.config.fields[property].group) {
-      this.groups = [{
-        page,
-        sortBy: this.config.sortBy,
-        desc: this.config.desc
-      }];
+      this.groups = [
+        {
+          page,
+          sortBy: this.config.sortBy,
+          desc: this.config.desc,
+        },
+      ];
       return;
     }
     const groups = [];
-    this.page.forEach(item => {
+    this.page.forEach((item) => {
       const value = item.group(property);
       if (!groups.find((g) => g.value === value)) {
         groups.push({
           value,
           page,
           property: this.config.sortBy,
-          desc: this.config.desc
+          desc: this.config.desc,
         });
       }
     });
@@ -286,14 +297,14 @@ export class List<T> extends Collection<Item<T>> {
   }
   /** Returns an array of all sortable fields */
   public sortableFields() {
-    return this.fields.filter(field => field.sortable);
+    return this.fields.filter((field) => field.sortable);
   }
   /** Returns an array of all sortable fields */
   public filterableFields() {
-    return this.fields.filter(field => field.filterable);
+    return this.fields.filter((field) => field.filterable);
   }
   /** Returns true if the given field index in the visible fields is higher than maxColumns.  */
   public isOverTheMax(field: Field) {
-    return this.fields.filter(f => !f.hideInList).indexOf(field) >= this.config.maxColumns;
+    return this.fields.filter((f) => !f.hideInList).indexOf(field) >= this.config.maxColumns;
   }
 }

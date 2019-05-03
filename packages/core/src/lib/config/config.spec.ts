@@ -1,9 +1,8 @@
 import { Config } from '@ec.components/core';
 
-class ConfigTest extends Config { }
+class ConfigTest extends Config {}
 
 describe('Config', () => {
-
   it('should be injected', () => {
     expect(ConfigTest).toBeTruthy();
   });

@@ -7,12 +7,11 @@ export class EntrySelectDemoComponent {
   selectedMuffins: Array<any>;
   customDisplay = {
     display: (items) => {
-      return items.filter(item => item.getBody()._entryTitle !== 'best muffin ever');
-    }
+      return items.filter((item) => item.getBody()._entryTitle !== 'best muffin ever');
+    },
   };
 
-  constructor() {
-  }
+  constructor() {}
 
   toggle(item) {
     console.log('toggle', item);

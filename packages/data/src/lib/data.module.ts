@@ -48,16 +48,7 @@ export const dataModuleConfig = {
     EntrySelectComponent,
     EntryListPopComponent,
   ],
-  imports: [
-    FormsModule,
-    CommonModule,
-    UiModule,
-    SdkModule,
-    FilesModule,
-    AuthModule,
-    ResourceModule,
-    DndModule
-  ],
+  imports: [FormsModule, CommonModule, UiModule, SdkModule, FilesModule, AuthModule, ResourceModule, DndModule],
   exports: [
     EntryListComponent,
     EntryDirective,
@@ -73,7 +64,7 @@ export const dataModuleConfig = {
     SdkModule,
     FilesModule,
     AuthModule,
-    ResourceModule
+    ResourceModule,
   ],
   providers: [
     EntryService,
@@ -84,10 +75,10 @@ export const dataModuleConfig = {
       provide: 'environment',
       useValue: {
         environment: 'live',
-        datamanagerID: '83cc6374'
-      }
-    }
-  ]
+        datamanagerID: '83cc6374',
+      },
+    },
+  ],
 };
 
 @NgModule(dataModuleConfig)
@@ -100,13 +91,13 @@ export class DataModule {
           provide: 'environment',
           useValue: Object.assign(
             {
-              environment: 'live'
+              environment: 'live',
             },
-            environment
-          )
-        }
-      ]
+            environment,
+          ),
+        },
+      ],
     };
   }
-  constructor() { }
+  constructor() {}
 }

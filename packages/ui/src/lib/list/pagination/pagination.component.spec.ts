@@ -12,9 +12,8 @@ describe('PaginationComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [IconModule, SymbolModule],
-      declarations: [PaginationComponent]
-    })
-      .compileComponents();
+      declarations: [PaginationComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

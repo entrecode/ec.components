@@ -19,7 +19,7 @@ export class ResourceConfig {
         post: 'dm-create',
         put: 'dm:<dataManagerID>:edit',
         delete: 'dm:<dataManagerID>:delete',
-        get: true
+        get: true,
       },
       fields: {
         hexColor: this.hexColor(),
@@ -29,25 +29,26 @@ export class ResourceConfig {
         description: {
           label: this.symbol.resolve('field.label.description'),
           view: 'string',
-          filterable: true
+          filterable: true,
         },
         config: {
           label: this.symbol.resolve('field.label.config'),
           view: 'json',
           list: false,
-          immutable: true
+          immutable: true,
         },
         defaultLocale: {
           list: false,
-          immutable: true
+          immutable: true,
         },
         locales: this.tagsField(this.symbol.resolve('field.label.locales'), false),
         publicAssetRights: Object.assign(
           this.tagsField(this.symbol.resolve('datamanager.field.label.publicAssetRights'), false),
-          { immutable: true }),
+          { immutable: true },
+        ),
         rights: Object.assign(this.tagsField('rights', false), { immutable: true }),
         created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
-      }
+      },
     },
     model: {
       defaultFilter: 'title',
@@ -64,46 +65,46 @@ export class ResourceConfig {
         },
         locales: {
           list: false,
-          prefill: []
+          prefill: [],
         },
         fields: {
           view: 'tags',
           display: (value) => {
-            return (value || []).map(field => field.title).filter(field => field[0] !== '_');
+            return (value || []).map((field) => field.title).filter((field) => field[0] !== '_');
           },
-          prefill: []
+          prefill: [],
         },
         titleField: {
           view: 'string',
-          list: false
+          list: false,
         },
         config: {
           list: false,
-          view: 'json'
+          view: 'json',
         },
         hasEntries: {
           immutable: true,
-          view: 'boolean'
+          view: 'boolean',
         },
         hooks: {
           display: (value) => {
-            return (value || []).map(hook => (hook.methods || []).join(', '));
+            return (value || []).map((hook) => (hook.methods || []).join(', '));
           },
-          view: 'tags'
+          view: 'tags',
         },
         policies: {
           display: (value) => {
-            return (value || []).map(policy => policy.method);
+            return (value || []).map((policy) => policy.method);
           },
-          view: 'tags'
+          view: 'tags',
         },
         sync: {
           list: false,
           view: 'json',
-          immutable: true
+          immutable: true,
         },
         created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
-      }
+      },
     },
     // ec accounts
     account: {
@@ -113,7 +114,7 @@ export class ResourceConfig {
       defaultFilter: 'email',
       permissions: {
         get: 'acc:list',
-        put: 'acc:edit:<accountID>'
+        put: 'acc:edit:<accountID>',
       },
       fields: {
         name: this.stringField(this.symbol.resolve('field.label.name')),
@@ -121,29 +122,29 @@ export class ResourceConfig {
           label: this.symbol.resolve('field.label.email'),
           view: 'string',
           filterable: true,
-          sortable: true
+          sortable: true,
         },
         hasPassword: {
           label: this.symbol.resolve('field.label.password'),
           view: 'boolean',
           filterable: true,
           sortable: true,
-          readOnly: true
+          readOnly: true,
         },
         hasPendingEmail: {
           label: this.symbol.resolve('account.field.label.hasPendingEmail'),
           view: 'boolean',
           filterable: true,
           sortable: true,
-          readOnly: true
+          readOnly: true,
         },
         language: {
           label: this.symbol.resolve('account.field.label.language'),
           view: 'string',
-          list: false
+          list: false,
         },
         openID: {
-          list: false
+          list: false,
         },
         permissions: this.tagsField(this.symbol.resolve('account.field.label.permissions'), false),
         groups: {
@@ -151,13 +152,13 @@ export class ResourceConfig {
           type: 'groups',
           input: AdminEntryInputComponent,
           list: false,
-          display: (value) => value ? value.map(group => group.name) : []
+          display: (value) => (value ? value.map((group) => group.name) : []),
         },
         state: {
-          label: this.symbol.resolve('account.field.label.state')
+          label: this.symbol.resolve('account.field.label.state'),
         },
         created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
-      }
+      },
     },
     dmAccount: {
       identifier: 'accountID',
@@ -166,7 +167,7 @@ export class ResourceConfig {
       label: 'email',
       permissions: {
         get: 'acc:list',
-        put: 'acc:edit:<accountID>'
+        put: 'acc:edit:<accountID>',
       },
       methods: ['get', 'put', 'delete'],
       fields: {
@@ -179,31 +180,31 @@ export class ResourceConfig {
           view: 'string',
           label: 'Title',
           filterable: true,
-          hideInList: true
+          hideInList: true,
         },
         email: {
           label: this.symbol.resolve('field.label.title'),
           view: 'string',
           filterable: true,
           sortable: true,
-          resolve: (body) => body.email || body.accountID
+          resolve: (body) => body.email || body.accountID,
         },
         hasPassword: {
           label: this.symbol.resolve('dmAccount.field.label.hasPassword'),
           view: 'boolean',
           filterable: true,
-          readOnly: true
+          readOnly: true,
         },
         pending: {
           label: this.symbol.resolve('dmAccount.field.label.pending'),
           view: 'boolean',
           filterable: true,
-          readOnly: true
+          readOnly: true,
         },
         oauth: {
-          list: false
-        }
-      }
+          list: false,
+        },
+      },
     },
     template: {
       identifier: 'templateID',
@@ -212,22 +213,22 @@ export class ResourceConfig {
       label: 'name',
       permissions: {
         post: 'dm-template-create',
-        get: 'dm-template:<templateID>:view'
+        get: 'dm-template:<templateID>:view',
       },
       fields: {
         name: {
           label: this.symbol.resolve('template.field.label.template'),
           view: 'string',
           filterable: true,
-          sortable: true
+          sortable: true,
         },
         version: {
           label: this.symbol.resolve('template.field.label.version'),
           display: this.typeConfig.displayDate(),
           group: this.typeConfig.groupDate(),
-          form: false
-        }
-      }
+          form: false,
+        },
+      },
     },
     app: {
       defaultFilter: 'title',
@@ -237,13 +238,13 @@ export class ResourceConfig {
       permissions: {
         post: 'app-create',
         delete: 'app:<appID>:delete',
-        put: 'app:<appID>:edit'
+        put: 'app:<appID>:edit',
       },
       fields: {
         hexColor: this.hexColor(),
         shortID: {
           label: this.symbol.resolve('field.label.shortID'),
-          list: false
+          list: false,
         },
         title: {
           label: this.symbol.resolve('app.field.label.app'),
@@ -252,7 +253,7 @@ export class ResourceConfig {
           sortable: true,
         },
         created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
-      }
+      },
     },
     platform: {
       identifier: 'platformID',
@@ -262,23 +263,24 @@ export class ResourceConfig {
       fields: {
         title: {
           label: this.symbol.resolve('platform.field.label.platform'),
-          view: 'string'
+          view: 'string',
         },
         platformType: {
           label: this.symbol.resolve('platform.field.label.platformType'),
-          view: 'string'
+          view: 'string',
         },
         config: {
           label: this.symbol.resolve('field.label.config'),
           view: 'json',
-          list: false
+          list: false,
         },
         created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
-      }
+      },
     },
     build: {},
     deployment: {},
-    asset: { // old ec.asset
+    asset: {
+      // old ec.asset
       identifier: 'assetID',
       label: 'title',
       defaultFilter: 'title',
@@ -294,44 +296,44 @@ export class ResourceConfig {
             }
             return asset.getImageUrl(200);
           },
-          immutable: true
+          immutable: true,
         },
         assetID: {
           label: 'assetID',
           list: false,
           form: false,
-          immutable: true
+          immutable: true,
         },
         title: {
           label: this.symbol.resolve('field.label.title'),
           view: 'string',
           sortable: true,
-          filterable: true
+          filterable: true,
         },
         files: {
           label: this.symbol.resolve('asset.field.label.files'),
           view: 'tag',
           form: false,
-          display: value => value.length,
-          immutable: true
+          display: (value) => value.length,
+          immutable: true,
         },
         type: {
           filterOperator: 'exact',
           form: false,
-          immutable: true
+          immutable: true,
         },
         tags: {
           ...this.tagsField(this.symbol.resolve('asset.field.label.tags')),
           // input: TagSelectComponent,
           config: {
             label: 'tag',
-            fields: { tag: {} }
+            fields: { tag: {} },
           },
           filterOperator: 'any',
-          filterable: true
+          filterable: true,
         },
         created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
-      }
+      },
     },
     tags: {
       identifier: 'tag',
@@ -342,17 +344,18 @@ export class ResourceConfig {
           view: 'string',
           readOnly: true,
           sortable: true,
-          filterable: true
+          filterable: true,
         },
         count: {
           view: 'number',
           readOnly: true,
           create: false,
-          sortable: true
-        }
-      }
+          sortable: true,
+        },
+      },
     },
-    legacyAsset: { // old public assets
+    legacyAsset: {
+      // old public assets
       identifier: 'assetID',
       identifierPattern: this.uuid(),
       label: 'title',
@@ -368,40 +371,40 @@ export class ResourceConfig {
             }
             return asset.getImageUrl(200);
           },
-          immutable: true
+          immutable: true,
         },
         assetID: {
           label: 'assetID',
           list: false,
           form: false,
-          immutable: true
+          immutable: true,
         },
         title: {
           label: this.symbol.resolve('field.label.title'),
           view: 'string',
           sortable: true,
-          filterable: true
+          filterable: true,
         },
         files: {
           label: this.symbol.resolve('asset.field.label.files'),
           view: 'tag',
           form: false,
-          display: value => value.length,
-          immutable: true
+          display: (value) => value.length,
+          immutable: true,
         },
         type: {
           filterOperator: 'exact',
           form: false,
-          immutable: true
+          immutable: true,
         },
 
         tags: {
           ...this.tagsField(this.symbol.resolve('asset.field.label.tags')),
           // input: TagSelectComponent,
-          filterOperator: 'any'
+          filterOperator: 'any',
         },
         created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
-      }
+      },
     },
     // https://doc.entrecode.de/en/develop/resources/dm-assetgroup/
     assetGroup: {
@@ -412,16 +415,16 @@ export class ResourceConfig {
         assetGroupID: {
           label: this.symbol.resolve('asset.field.label.assetGroupID'),
           view: 'string',
-          filterable: true
+          filterable: true,
         },
         public: {
           view: 'boolean',
-          prefill: false
+          prefill: false,
         },
         settings: {
           view: 'json',
           display: (json) => JSON.stringify(json),
-          prefill: {}
+          prefill: {},
           /*
           urlExpiration: string
           disabledTypes: Array<string>
@@ -431,8 +434,8 @@ export class ResourceConfig {
         },
         policies: {
           view: 'tags',
-          display: (policies) => (policies || []).map(p => p.method),
-          prefill: []
+          display: (policies) => (policies || []).map((p) => p.method),
+          prefill: [],
           /*
           method: get, put, post, delete
           user: public, dmUser
@@ -440,9 +443,10 @@ export class ResourceConfig {
           */
         },
         created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
-      }
+      },
     },
-    dmAsset: { // new assets
+    dmAsset: {
+      // new assets
       identifier: 'assetID',
       identifierPattern: this.base64uuid(),
       label: 'title',
@@ -450,11 +454,11 @@ export class ResourceConfig {
       fields: {
         file: {
           label: this.symbol.resolve('dmAsset.field.label.file'),
-          display: value => value.url,
+          display: (value) => value.url,
           view: 'preview',
           immutable: true,
           form: false,
-          list: false
+          list: false,
         },
         thumb: {
           form: false,
@@ -467,35 +471,35 @@ export class ResourceConfig {
             }
             return asset.thumbnails[0].url;
           },
-          immutable: true
+          immutable: true,
         },
         assetID: {
           label: this.symbol.resolve('dmAsset.field.label.assetID'),
           list: false,
           form: false,
-          immutable: true
+          immutable: true,
         },
         title: {
           label: this.symbol.resolve('field.label.title'),
           view: 'string',
           sortable: true,
-          filterable: true
+          filterable: true,
         },
         caption: {
           label: this.symbol.resolve('dmAsset.field.label.caption'),
-          view: 'string'
+          view: 'string',
         },
         duplicates: {
           label: this.symbol.resolve('dmAsset.field.label.duplicates'),
           view: 'number',
           list: false,
-          form: false
+          form: false,
         },
         thumbnails: {
           label: this.symbol.resolve('dmAsset.field.label.thumbnails'),
-          display: values => values.map(value => value.url),
+          display: (values) => values.map((value) => value.url),
           list: false,
-          form: false
+          form: false,
         },
         type: {
           label: this.symbol.resolve('dmAsset.field.label.type'),
@@ -503,7 +507,7 @@ export class ResourceConfig {
           filterOperator: 'any',
           hideInList: true,
           immutable: true,
-          form: false
+          form: false,
         },
         tags: {
           label: 'tag',
@@ -518,7 +522,7 @@ export class ResourceConfig {
           disableCreatePop: true,
         },
         created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
-      }
+      },
     },
     dmClient: {
       identifier: 'clientID',
@@ -527,7 +531,7 @@ export class ResourceConfig {
       fields: {
         clientID: {
           label: this.symbol.resolve('client.field.label.clientID'),
-          view: 'string'
+          view: 'string',
         },
         callbackURL: {
           label: this.symbol.resolve('client.field.label.callbackURL'),
@@ -536,7 +540,7 @@ export class ResourceConfig {
         tokenMethod: this.tagsField(this.symbol.resolve('client.field.label.tokenMethod')),
         disableStrategies: this.tagsField(this.symbol.resolve('client.field.label.disableStrategies')),
         created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
-      }
+      },
     },
     role: {
       identifier: 'roleID',
@@ -548,21 +552,21 @@ export class ResourceConfig {
           label: this.symbol.resolve('field.label.name'),
           view: 'string',
           filterable: true,
-          sortable: true
+          sortable: true,
         },
         label: {
           label: this.symbol.resolve('field.label.label'),
-          view: 'string'
+          view: 'string',
         },
         addRegistered: {
           label: this.symbol.resolve('role.field.label.addRegistered'),
-          view: 'boolean'
+          view: 'boolean',
         },
         addUnregistered: {
           label: this.symbol.resolve('role.field.label.addUnregistered'),
-          view: 'boolean'
-        }
-      }
+          view: 'boolean',
+        },
+      },
     },
     codeSource: {
       identifier: 'codeSourceID',
@@ -573,14 +577,14 @@ export class ResourceConfig {
         },
         codeSourceType: {
           label: this.symbol.resolve('field.label.type'),
-          view: 'tag'
+          view: 'tag',
         },
         config: {
           label: this.symbol.resolve('field.label.config'),
-          list: false
+          list: false,
         },
         created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
-      }
+      },
     },
     dataSource: {
       identifier: 'dataSourceID',
@@ -590,7 +594,7 @@ export class ResourceConfig {
           label: this.symbol.resolve('field.label.id'),
         },
         created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
-      }
+      },
     },
     target: {
       identifier: 'targetID',
@@ -598,14 +602,14 @@ export class ResourceConfig {
       fields: {
         targetType: {
           label: this.symbol.resolve('field.label.type'),
-          view: 'tag'
+          view: 'tag',
         },
         config: {
           label: this.symbol.resolve('field.label.config'),
-          list: false
+          list: false,
         },
         created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
-      }
+      },
     },
     group: {
       identifier: 'groupID',
@@ -616,15 +620,15 @@ export class ResourceConfig {
         name: {
           label: this.symbol.resolve('field.label.name'),
           view: 'string',
-          filterable: true
+          filterable: true,
         },
         permissions: {
           view: 'tags',
           display: (value) => value || [],
-          list: false
+          list: false,
         },
         /* created: this.created(this.symbol.resolve('field.label.created'), this.symbol), */
-      }
+      },
     },
     invite: {
       identifier: 'invite',
@@ -634,21 +638,21 @@ export class ResourceConfig {
       fields: {
         invite: {
           view: 'string',
-          filterable: true
+          filterable: true,
         },
         permissions: {
-          view: 'tags'
+          view: 'tags',
         },
         groups: {
           view: 'tags',
-          display: (group => group ? group.map(g => g.name) : [])
-        }
-      }
+          display: (group) => (group ? group.map((g) => g.name) : []),
+        },
+      },
     },
-    token: {}
+    token: {},
   };
 
-  constructor(private symbol: SymbolService, private typeConfig: TypeConfigService) { }
+  constructor(private symbol: SymbolService, private typeConfig: TypeConfigService) {}
   /** Returns the CrudConfig for the given relation name. */
   get(relationName: string): CrudConfig<Resource> {
     const resolved = relationName.split('.').reduce((position: Object, key) => {
@@ -667,8 +671,8 @@ export class ResourceConfig {
 
   set(relationName: string, config: CrudConfig<Resource>): ResourceConfig {
     this._config[relationName] = {
-      ...this._config[relationName] || {},
-      ...config
+      ...(this._config[relationName] || {}),
+      ...config,
     };
     return this;
   }
@@ -682,7 +686,7 @@ export class ResourceConfig {
       display: this.typeConfig.displayDate(),
       group: this.typeConfig.groupDate(),
       form: false,
-      immutable: true
+      immutable: true,
     };
   }
   /** returns the config for a hexColor field */
@@ -690,7 +694,7 @@ export class ResourceConfig {
     return {
       label: '#',
       view: 'color',
-      prefill: '#ffffff'
+      prefill: '#ffffff',
     };
   }
   idField(hideInList = true) {
@@ -710,7 +714,7 @@ export class ResourceConfig {
       label,
       view: 'tags',
       display: (value) => value || [],
-      list
+      list,
     };
   }
   /** returns the config for a string field */
@@ -719,7 +723,7 @@ export class ResourceConfig {
       label,
       view: 'string',
       filterable,
-      sortable
+      sortable,
     };
   }
   /** returns regex for a shortID */

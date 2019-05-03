@@ -18,10 +18,7 @@ import { CalendarModule } from '@ec.components/calendar';
 import { UtilityModule } from '../utility/utility.module';
 
 export const formModuleConfig = {
-  entryComponents: [
-    DefaultInputComponent,
-    DefaultOutputComponent,
-  ],
+  entryComponents: [DefaultInputComponent, DefaultOutputComponent],
   declarations: [
     FormComponent,
     DatetimeComponent,
@@ -40,7 +37,7 @@ export const formModuleConfig = {
     IconModule,
     SymbolModule,
     CalendarModule,
-    UtilityModule
+    UtilityModule,
   ],
   exports: [
     UtilityModule,
@@ -67,9 +64,8 @@ export const formModuleConfig = {
       provide: 'moment.format.month',
       useValue: SymbolService.resolve('moment.format.month')
     } */
-  ]
+  ],
 };
 
 @NgModule(formModuleConfig)
-export class FormModule {
-}
+export class FormModule {}

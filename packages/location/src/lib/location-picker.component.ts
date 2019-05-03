@@ -14,11 +14,10 @@ import { LocationSearchComponent } from './location-search.component';
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => LocationPickerComponent),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
-
 export class LocationPickerComponent extends DefaultInputComponent implements ControlValueAccessor {
   /** The form control that holds the location */
   @Input() formControl: FormControl;
@@ -36,7 +35,7 @@ export class LocationPickerComponent extends DefaultInputComponent implements Co
   constructor(
     public geocodeService: GeocodeService,
     public formService: FormService,
-    public keycommands: KeycommandsService
+    public keycommands: KeycommandsService,
   ) {
     super(formService, keycommands);
   }
@@ -66,21 +65,20 @@ export class LocationPickerComponent extends DefaultInputComponent implements Co
       this.search.searchInput.nativeElement.value = '';
       return;
     }
-    this.geocodeService.getNearestAddress(value)
-      .then(results => {
-        if (results.length) {
-          this.search.searchInput.nativeElement.value = results[0].formatted_address;
-        } else {
-          this.search.searchInput.nativeElement.value = '';
-        }
-      });
+    this.geocodeService.getNearestAddress(value).then((results) => {
+      if (results.length) {
+        this.search.searchInput.nativeElement.value = results[0].formatted_address;
+      } else {
+        this.search.searchInput.nativeElement.value = '';
+      }
+    });
   }
 
-  propagateChange = (_: any) => { };
+  propagateChange = (_: any) => {};
 
   registerOnChange(fn) {
     this.propagateChange = fn;
   }
 
-  registerOnTouched() { }
+  registerOnTouched() {}
 }

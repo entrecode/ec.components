@@ -7,7 +7,7 @@ import PublicAssetResource from 'ec.sdk/lib/resources/publicAPI/PublicAssetResou
 /** Loads an public asset image by id to the template. It can be used with img's to auto load the url to the src. */
 @Directive({
   selector: 'img [ecImage]',
-  exportAs: 'ecImage'
+  exportAs: 'ecImage',
 })
 export class ImageDirective extends AssetDirective implements OnChanges {
   /** If true, the image will be requested as thumb (square) */
@@ -41,25 +41,28 @@ export class ImageDirective extends AssetDirective implements OnChanges {
   }
 
   use(asset: PublicAssetResource | DMAssetResource) {
-    return Promise.resolve().then(() => {
-      if (asset.type !== 'image') {
-        return Promise.reject(`ecImage only works for assets of type image.
+    return Promise.resolve()
+      .then(() => {
+        if (asset.type !== 'image') {
+          return Promise.reject(`ecImage only works for assets of type image.
         Loaded id ${asset.id} is of type ${asset.type}`);
-      }
-      if (asset instanceof DMAssetResource) { // new asset
-        return asset.getFileVariant(this.size, this.thumb);
-      } else if (asset instanceof PublicAssetResource) { // old asset
-        if (this.thumb) {
-          return asset.getImageThumbUrl(this.size, '');
         }
-        return asset.getImageUrl(this.size, '');
-      }
-    }).then(this.setUrl.bind(this));
+        if (asset instanceof DMAssetResource) {
+          // new asset
+          return asset.getFileVariant(this.size, this.thumb);
+        } else if (asset instanceof PublicAssetResource) {
+          // old asset
+          if (this.thumb) {
+            return asset.getImageThumbUrl(this.size, '');
+          }
+          return asset.getImageUrl(this.size, '');
+        }
+      })
+      .then(this.setUrl.bind(this));
   }
 
   setUrl(url: string) {
     this.url = url;
     this.elementRef.nativeElement.src = this.url;
   }
-
 }

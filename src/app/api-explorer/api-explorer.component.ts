@@ -5,7 +5,7 @@ import { TabComponent } from '@ec.components/ui';
 
 @Component({
   selector: 'ec-api-explorer',
-  templateUrl: 'api-explorer.component.html'
+  templateUrl: 'api-explorer.component.html',
 })
 export class ApiExplorerComponent implements OnInit {
   symbol: string;
@@ -18,8 +18,7 @@ export class ApiExplorerComponent implements OnInit {
   resource: any;
   @ViewChild(ResourcePopComponent) pop: ResourcePopComponent;
 
-  constructor(public sdk: SdkService) {
-  }
+  constructor(public sdk: SdkService) {}
 
   ngOnInit() {
     this.sdk.ready.then(() => {
@@ -61,7 +60,6 @@ export class ApiExplorerComponent implements OnInit {
     this.symbols = Object.keys(this.api.getAvailableRelations());
     console.log('symbols', this.symbols);
     this.useRelation(this.symbols[0]);
-
   }
 
   useRelation(symbol) {

@@ -8,7 +8,7 @@ import { FieldValidators } from '../validators/field-validators';
 
 /** Login Form Component with validation. Fires success event with credentials on submit.
  * <example-url>https://components.entrecode.de/ui/login?e=1</example-url>
-*/
+ */
 @Component({
   selector: 'ec-login-form',
   templateUrl: './login-form.component.html',
@@ -44,8 +44,7 @@ export class LoginFormComponent implements OnInit, WithLoader {
   notifications: Notification[];
 
   /** Injects the FormBuilder*/
-  constructor(protected fb: FormBuilder, public symbol: SymbolService) {
-  }
+  constructor(protected fb: FormBuilder, public symbol: SymbolService) {}
 
   /** Initializes the form */
   ngOnInit() {
@@ -64,7 +63,8 @@ export class LoginFormComponent implements OnInit, WithLoader {
   }
 
   /** Method that is meant to be overwritten by a subclass to communicate with an API. */
-  login(value) { // meant to be overridden
+  login(value) {
+    // meant to be overridden
     return Promise.resolve(value);
   }
 
@@ -75,11 +75,10 @@ export class LoginFormComponent implements OnInit, WithLoader {
     if (!this.form.valid) {
       return;
     }
-    const login = this.login(this.form.value)
-      .then((res) => {
-        this.form.reset();
-        this.success.emit(res);
-      });
+    const login = this.login(this.form.value).then((res) => {
+      this.form.reset();
+      this.success.emit(res);
+    });
     if (this.loader) {
       this.loader.wait(login);
     }

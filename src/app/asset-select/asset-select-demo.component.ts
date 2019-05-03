@@ -10,7 +10,5 @@ export class AssetSelectDemoComponent {
   selectedNewAssets: string[];
   solo = false;
 
-  constructor() {
-
-  }
+  constructor() {}
 }

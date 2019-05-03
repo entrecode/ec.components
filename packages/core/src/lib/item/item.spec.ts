@@ -1,7 +1,6 @@
 import { Item } from './item';
 
 describe('Item', () => {
-
   it('should construct an item and support resolve', () => {
     const body = { id: 'a' };
     const i = new Item(body);
@@ -30,15 +29,18 @@ describe('Item', () => {
   it('should support transforms', () => {
     const i = new Item({ id: 'a' });
     expect(i['transform']('xyz', 'id')).toBe('a');
-    const j = new Item({ id: 'b' }, {
-      fields: {
-        id: {
-          display: (v) => {
-            return v + '!!';
-          }
-        }
-      }
-    });
+    const j = new Item(
+      { id: 'b' },
+      {
+        fields: {
+          id: {
+            display: (v) => {
+              return v + '!!';
+            },
+          },
+        },
+      },
+    );
     expect(j.display('id')).toBe('b!!');
   });
 
@@ -51,10 +53,10 @@ describe('Item', () => {
           },
           display: (v) => v + '!',
           group: (v) => v.length,
-          validate: (v) => v.indexOf('a') === -1 ? 'Kein a enthalten!' : null,
-          sort: (v) => v.length
-        }
-      }
+          validate: (v) => (v.indexOf('a') === -1 ? 'Kein a enthalten!' : null),
+          sort: (v) => v.length,
+        },
+      },
     };
     const persons = [
       new Item({ name: 'Max' }, config),
@@ -89,12 +91,13 @@ describe('Item', () => {
   it('immutable properties', () => {
     const config = {
       fields: {
-        name: {}, age: {
+        name: {},
+        age: {
           immutable: (item) => {
             return item.getBody().age > 10;
-          }
-        }
-      }
+          },
+        },
+      },
     };
     const itemA = new Item({ name: 'Tobsen', age: 10 }, config);
     const itemB = new Item({ name: 'Tobsen', age: 11 }, config);

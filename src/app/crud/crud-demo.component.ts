@@ -13,18 +13,19 @@ export class CrudDemoComponent {
     disableHeader: false,
     develop: true,
     singularLabel: 'Muffin',
-    createLabel: 'Neuer Muffin', size: 15,
-    levels: 2
+    createLabel: 'Neuer Muffin',
+    size: 15,
+    levels: 2,
     /* ,
     filter: {
       amazement_factor: 10
     } */
   };
-  constructor(public modelConfig: ModelConfigService,
+  constructor(
+    public modelConfig: ModelConfigService,
     public resourceConfig: ResourceConfig,
-    public symbol: SymbolService) {
-  }
+    public symbol: SymbolService,
+  ) {}
 
-  log(entry) {
-  }
+  log(entry) {}
 }

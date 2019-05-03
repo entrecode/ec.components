@@ -5,5 +5,4 @@ import { DefaultInputComponent } from '@ec.components/ui';
   selector: 'ec-cool-string',
   templateUrl: './cool-string.component.html',
 })
-export class CoolStringComponent extends DefaultInputComponent {
-}
+export class CoolStringComponent extends DefaultInputComponent {}

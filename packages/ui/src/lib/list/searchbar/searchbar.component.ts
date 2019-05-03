@@ -1,6 +1,13 @@
 import {
-  AfterViewInit, Component, EventEmitter, Input,
-  Output, OnInit, OnChanges, ChangeDetectionStrategy, ChangeDetectorRef
+  AfterViewInit,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  OnInit,
+  OnChanges,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Item, List } from '@ec.components/core';
@@ -15,9 +22,8 @@ import { ListComponent } from '../list.component';
 @Component({
   selector: 'ec-searchbar',
   templateUrl: 'searchbar.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-
 export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChanges {
   /** Searchbar placeholder */
   @Input() placeholder: string;
@@ -62,44 +68,46 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
   /** timestamp of latest keypress that has been emitted */
   latestQuery;
 
-  constructor(
-    public route: ActivatedRoute,
-    public symbol: SymbolService,
-    public cdr: ChangeDetectorRef
-  ) {
+  constructor(public route: ActivatedRoute, public symbol: SymbolService, public cdr: ChangeDetectorRef) {
     this.defaultPlaceholder = this.symbol.resolve('searchbar.placeholder');
     this.queryValue.next('');
-    this.paste.asObservable()
-      .subscribe((e) => {
-        const pasted = (e.clipboardData).getData('text');
-        if (this.pasted.observers.length) {
-          this.pasted.emit(e);
-        } else if (this.list.config.identifierPattern && pasted.match(this.list.config.identifierPattern)) {
-          this.preventDefault(e);
-          this.clear();
-          this.selected.emit(new Item({
-            [this.list.config.identifier]: pasted,
-          }, this.list.config));
-        }
-      });
+    this.paste.asObservable().subscribe((e) => {
+      const pasted = e.clipboardData.getData('text');
+      if (this.pasted.observers.length) {
+        this.pasted.emit(e);
+      } else if (this.list.config.identifierPattern && pasted.match(this.list.config.identifierPattern)) {
+        this.preventDefault(e);
+        this.clear();
+        this.selected.emit(
+          new Item(
+            {
+              [this.list.config.identifier]: pasted,
+            },
+            this.list.config,
+          ),
+        );
+      }
+    });
 
-    this.queryValue.asObservable().pipe(debounceTime(this.debounceTime))
+    this.queryValue
+      .asObservable()
+      .pipe(debounceTime(this.debounceTime))
       .pipe(distinctUntilChanged())
-      .subscribe(value => this.filterList(value));
+      .subscribe((value) => this.filterList(value));
 
-    this.keySubject.asObservable()
+    this.keySubject
+      .asObservable()
       .pipe(debounceTime(100))
-      .subscribe(data => {
+      .subscribe((data) => {
         this.keypressed.emit(data);
       });
 
-    this.route.params
-      .subscribe(() => {
-        if (this.autofocus) {
-          this.focusEvent.emit(true);
-        }
-        this.clear();
-      });
+    this.route.params.subscribe(() => {
+      if (this.autofocus) {
+        this.focusEvent.emit(true);
+      }
+      this.clear();
+    });
   }
 
   updatedList(list) {
@@ -126,7 +134,7 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
       // console.warn('no change listener', list);
       return;
     }
-    list.change$.subscribe(newList => {
+    list.change$.subscribe((newList) => {
       if (!this.list.config.filter || !this.list.config.filter[this.property]) {
         this.clear();
       }

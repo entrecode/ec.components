@@ -2,8 +2,15 @@
  * Created by felix on 23.05.17.
  */
 import {
-  ChangeDetectorRef, Component, ElementRef,
-  EventEmitter, forwardRef, Input, OnInit, ViewChild, ViewEncapsulation
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  forwardRef,
+  Input,
+  OnInit,
+  ViewChild,
+  ViewEncapsulation,
 } from '@angular/core';
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Item } from '@ec.components/core';
@@ -18,7 +25,7 @@ import { FileService } from '../file.service';
 
 /** Shows assets of a selection and is able to pick new ones from a crud list.
  * <example-url>https://components.entrecode.de/assets/asset-select?e=1</example-url>
-*/
+ */
 @Component({
   selector: 'ec-asset-select',
   templateUrl: './asset-select.component.html',
@@ -27,9 +34,9 @@ import { FileService } from '../file.service';
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => AssetSelectComponent),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class AssetSelectComponent extends SelectComponent<DMAssetResource | PublicAssetResource> implements OnInit {
   /** The formControl that is used. */
@@ -72,7 +79,7 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
     public sdk: SdkService,
     public symbol: SymbolService,
     public elementRef: ElementRef,
-    public cdr: ChangeDetectorRef
+    public cdr: ChangeDetectorRef,
   ) {
     super(elementRef, cdr);
   }
@@ -91,10 +98,10 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
   }
 
   containsNewAssets() {
-    return (this.value && this.fileService.isNewAsset(this.value));
+    return this.value && this.fileService.isNewAsset(this.value);
   }
   containsOldAssets() {
-    return (this.value && !this.fileService.isNewAsset(this.value, true));
+    return this.value && !this.fileService.isNewAsset(this.value, true);
   }
 
   getAssetGroupID() {
@@ -126,7 +133,7 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
           type: 'error',
           sticky: true,
           message: `ALARM: asset picker hat neues asset aber assetGroupID "${this.assetGroupID}".
-          Bitte füge im model die assetGroupID "${this.getAssetGroupID()}" als validation des feldes hinzu`
+          Bitte füge im model die assetGroupID "${this.getAssetGroupID()}" als validation des feldes hinzu`,
         });
       }
       config = this.dmAssetConfig;
@@ -139,7 +146,7 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
           type: 'error',
           sticky: true,
           message: `ALARM: asset picker hat altes asset aber assetGroupID "${this.assetGroupID}".
-          Entweder asset entfernen oder validation rausnehmen.`
+          Entweder asset entfernen oder validation rausnehmen.`,
         });
       }
       config = this.legacyAssetConfig;

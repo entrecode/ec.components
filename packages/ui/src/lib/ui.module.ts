@@ -19,7 +19,7 @@ export const uiModuleConfig = {
     ListModule,
     SelectModule,
     IconModule,
-    SymbolModule
+    SymbolModule,
   ],
   exports: [
     UtilityModule,
@@ -30,10 +30,9 @@ export const uiModuleConfig = {
     FormModule,
     SelectModule,
     IconModule,
-    SymbolModule
-  ]
+    SymbolModule,
+  ],
 };
 
 @NgModule(uiModuleConfig)
-export class UiModule {
-}
+export class UiModule {}

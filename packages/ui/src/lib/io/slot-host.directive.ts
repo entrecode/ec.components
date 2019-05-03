@@ -8,7 +8,5 @@ import { Directive, ViewContainerRef } from '@angular/core';
 })
 export class SlotHostDirective {
   /** The constructor exposes the viewContainer that is used to load components into from outside.*/
-  constructor(public viewContainerRef: ViewContainerRef) {
-  }
+  constructor(public viewContainerRef: ViewContainerRef) {}
 }
-

@@ -4,7 +4,7 @@ import { TabComponent } from '../tab/tab.component';
 
 /** The TabsComponent holds serveral instances of TabComponent.
  * <example-url>https://components.entrecode.de/ui/tabs?e=1</example-url>
-*/
+ */
 @Component({
   selector: 'ec-tabs',
   templateUrl: './tabs.component.html',
@@ -60,5 +60,4 @@ export class TabsComponent implements AfterContentInit {
       this.router.navigate(['../' + tab.route], { relativeTo: this.route });
     }
   }
-
 }

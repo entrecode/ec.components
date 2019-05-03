@@ -7,8 +7,7 @@ describe('PopComponent', () => {
   let fixture: ComponentFixture<PopComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule(popModuleConfig)
-      .compileComponents();
+    TestBed.configureTestingModule(popModuleConfig).compileComponents();
   }));
 
   beforeEach(() => {

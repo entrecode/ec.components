@@ -17,9 +17,8 @@ export class PaginationDemoComponent {
       content: 'NEGSCHT'
     }]); */
     this.pagination.setTotal(5100);
-    this.pagination.change$.pipe(debounceTime(500))
-      .subscribe((p) => {
-        this.currentPage = this.pagination.getPage();
-      });
+    this.pagination.change$.pipe(debounceTime(500)).subscribe((p) => {
+      this.currentPage = this.pagination.getPage();
+    });
   }
 }

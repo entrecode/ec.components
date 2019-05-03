@@ -7,7 +7,7 @@ import { CalendarComponent } from '@ec.components/calendar';
  *
  * <example-url>https://components.entrecode.de/ui/datetime?e=1</example-url>
  *
-*/
+ */
 @Component({
   selector: 'ec-datetime',
   templateUrl: 'datetime.component.html',
@@ -15,9 +15,9 @@ import { CalendarComponent } from '@ec.components/calendar';
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => DatetimeComponent),
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class DatetimeComponent implements ControlValueAccessor {
   /** The date that should be displayed at start. */
@@ -39,8 +39,7 @@ export class DatetimeComponent implements ControlValueAccessor {
   }
 
   /** Change propagation for ControlValueAccessor */
-  propagateChange = (_: any) => {
-  }
+  propagateChange = (_: any) => {};
 
   /** registerOnChange implementation of ControlValueAccessor */
   registerOnChange(fn) {
@@ -48,6 +47,5 @@ export class DatetimeComponent implements ControlValueAccessor {
   }
 
   /** registerOnTouched implementation of ControlValueAccessor */
-  registerOnTouched() {
-  }
+  registerOnTouched() {}
 }

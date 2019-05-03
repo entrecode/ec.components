@@ -1,4 +1,14 @@
-import { ChangeDetectorRef, Component, ElementRef, EventEmitter, HostBinding, Input, OnInit, Output, ViewChild } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostBinding,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { Item, Selection } from '@ec.components/core';
 import { PopComponent, PopService, SearchbarComponent, SymbolService } from '@ec.components/ui';
 import PublicAssetResource from 'ec.sdk/lib/resources/publicAPI/PublicAssetResource';
@@ -18,7 +28,6 @@ import { FileService } from '../file.service';
   selector: 'ec-asset-list-pop',
   templateUrl: './asset-list-pop.component.html',
 })
-
 export class AssetListPopComponent extends PopComponent implements OnInit {
   /** CrudConfig for customizing the entry-form and the pop.*/
   @Input() config: CrudConfig<PublicAssetResource> = {};
@@ -38,11 +47,11 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
   @ViewChild(SearchbarComponent) searchbar: SearchbarComponent;
   /** The nested resource-list */
   @ViewChild(ResourceListComponent) resourceList: ResourceListComponent;
-  uploadConfig: CrudConfig<PublicAssetResource> & { disableListPop: boolean; };
+  uploadConfig: CrudConfig<PublicAssetResource> & { disableListPop: boolean };
   tagSelectConfig: CrudConfig<PublicTagResource> = {
     disableCreatePop: true,
     disableListPop: true,
-    methods: ['get']
+    methods: ['get'],
   };
   assetTypes = [
     { value: 'image', label: this.symbol.resolve('dmAsset.field.label.type.image') },
@@ -57,8 +66,8 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
     label: 'label',
     identifier: 'value',
     fields: {
-      label: {}
-    }
+      label: {},
+    },
   };
 
   /** Set host class to make sure the type is used */
@@ -71,7 +80,8 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
     public sdk: SdkService,
     public elementRef: ElementRef,
     public symbol: SymbolService,
-    public cdr: ChangeDetectorRef) {
+    public cdr: ChangeDetectorRef,
+  ) {
     super(popService, elementRef, cdr);
   }
 
@@ -96,13 +106,15 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.fileService.assetGroupList().then(assetGroups => {
+    this.fileService.assetGroupList().then((assetGroups) => {
       this.assetGroups = assetGroups;
     });
     this.uploadConfig = Object.assign({}, this.config, { disableListPop: true });
     this.config = Object.assign(
       this.fileService.getAssetConfig(this.assetGroupID),
-      { hidePagination: true, disableHeader: true }, this.config);
+      { hidePagination: true, disableHeader: true },
+      this.config,
+    );
   }
 
   /** emits columnClicked event or toggles selection if no observers. */
@@ -117,8 +129,7 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
 
   /** Returns the full resource relation name based on the current assetGroupID  */
   getGroupRelation() {
-    return this.fileService.isOldAssetGroupID(this.assetGroupID) ? 'legacyAsset'
-      : 'dmAsset.' + this.assetGroupID;
+    return this.fileService.isOldAssetGroupID(this.assetGroupID) ? 'legacyAsset' : 'dmAsset.' + this.assetGroupID;
   }
 
   isLegacy() {

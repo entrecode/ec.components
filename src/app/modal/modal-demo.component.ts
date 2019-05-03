@@ -26,18 +26,42 @@ export class ModalDemoComponent implements OnChanges, OnInit {
     setTimeout(() => {
       this.modalMarkup = `
       <a (click)="yourModal.show()">open</a>
-      <ec-modal #yourModal${this.modalMode ? `
-          mode="${this.modalMode}"` : ''}${this.modalBackdrop ? `
-          [backdrop]="${this.modalBackdrop}"` : ''}${this.modalColumns ? `
-          [columns]="${this.modalColumns}"` : ''}${this.modalAnimate ? `
-          animation="${this.modalAnimate}"` : ''}>
-        ${this.showHeader ? `<header>
+      <ec-modal #yourModal${
+        this.modalMode
+          ? `
+          mode="${this.modalMode}"`
+          : ''
+      }${
+        this.modalBackdrop
+          ? `
+          [backdrop]="${this.modalBackdrop}"`
+          : ''
+      }${
+        this.modalColumns
+          ? `
+          [columns]="${this.modalColumns}"`
+          : ''
+      }${
+        this.modalAnimate
+          ? `
+          animation="${this.modalAnimate}"`
+          : ''
+      }>
+        ${
+          this.showHeader
+            ? `<header>
           <h4>Header</h4>
-        </header>` : ''}
+        </header>`
+            : ''
+        }
         <p>Body</p>
-        ${this.showFooter ? `<footer>
+        ${
+          this.showFooter
+            ? `<footer>
           Footer
-        </footer>` : ''}
+        </footer>`
+            : ''
+        }
       </ec-modal>
       `;
     });

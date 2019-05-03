@@ -8,8 +8,7 @@ describe('NotificationsDemoComponent', () => {
   let fixture: ComponentFixture<NotificationsDemoComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule(demoModuleConfig)
-      .compileComponents();
+    TestBed.configureTestingModule(demoModuleConfig).compileComponents();
   }));
 
   beforeEach(() => {

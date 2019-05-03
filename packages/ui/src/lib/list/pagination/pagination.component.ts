@@ -38,8 +38,13 @@ export class PaginationComponent<T> implements OnChanges, OnInit {
   /** Determines if a page should be visible */
   isVisible(page) {
     const current = this.pagination.getPage();
-    return Math.abs(current - page) < this.config.range + 1 + Math.max(0, this.config.range - current + 1)
-      + Math.max(0, current - this.pagination.getPages() + this.config.range);
+    return (
+      Math.abs(current - page) <
+      this.config.range +
+        1 +
+        Math.max(0, this.config.range - current + 1) +
+        Math.max(0, current - this.pagination.getPages() + this.config.range)
+    );
   }
 
   updateSize(value: string) {
