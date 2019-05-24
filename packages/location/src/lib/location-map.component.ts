@@ -11,6 +11,8 @@ export class LocationMapComponent {
   @Input() center: { longitude: any; latitude: any } = { latitude: 48.8093253, longitude: 9.159388100000001 };
   /** If true, no markers can be changed or set */
   @Input() readOnly: boolean;
+  /** If true, no marker can be chaned */
+  @Input() disabled: boolean;
   /** Emits when the marker has been changed */
   @Output() changed: EventEmitter<any> = new EventEmitter();
   /** Form input component */
@@ -21,6 +23,10 @@ export class LocationMapComponent {
 
   /** sets the value cand changes the center */
   setValue(value) {
+    if (this.disabled) {
+      console.warn('cannot change map value: disabled!');
+      return;
+    }
     this.value = value;
     if (value) {
       this.center = value;
@@ -30,6 +36,9 @@ export class LocationMapComponent {
   markerDragEnd(coords) {
     if (!coords) {
       console.warn('no coords');
+      return;
+    }
+    if (this.disabled) {
       return;
     }
     const position = { longitude: coords.lng, latitude: coords.lat };

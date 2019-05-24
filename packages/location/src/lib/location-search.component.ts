@@ -10,6 +10,8 @@ import { GeocodeService } from './geocode.service';
 export class LocationSearchComponent implements AfterViewInit {
   /** Placeholder for input */
   @Input() placeholder = 'Search Location...';
+  /** If true, the input cannot be used */
+  @Input() disabled;
   /** The search input element */
   @ViewChild('search') searchInput: ElementRef;
   /** emits when the coords have been changed (after selecting a match) */
