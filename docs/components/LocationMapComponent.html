@@ -153,6 +153,9 @@
                                 <a href="#center">center</a>
                             </li>
                             <li>
+                                <a href="#disabled">disabled</a>
+                            </li>
+                            <li>
                                 <a href="#readOnly">readOnly</a>
                             </li>
                             <li>
@@ -222,6 +225,33 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
+                        <a name="disabled"></a>
+                        <b>disabled</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">packages/location/src/lib/location-map.component.ts:15</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>If true, no marker can be chaned </p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
                         <a name="readOnly"></a>
                         <b>readOnly</b>
                     </td>
@@ -261,7 +291,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">packages/location/src/lib/location-map.component.ts:17</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">packages/location/src/lib/location-map.component.ts:19</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -291,7 +321,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">packages/location/src/lib/location-map.component.ts:15</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">packages/location/src/lib/location-map.component.ts:17</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -332,7 +362,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">packages/location/src/lib/location-map.component.ts:30</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">packages/location/src/lib/location-map.component.ts:36</a></div>
                             </td>
                         </tr>
 
@@ -399,7 +429,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">packages/location/src/lib/location-map.component.ts:23</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">packages/location/src/lib/location-map.component.ts:25</a></div>
                             </td>
                         </tr>
 
@@ -464,6 +494,8 @@ export class LocationMapComponent {
   @Input() center: { longitude: any; latitude: any } &#x3D; { latitude: 48.8093253, longitude: 9.159388100000001 };
   /** If true, no markers can be changed or set */
   @Input() readOnly: boolean;
+  /** If true, no marker can be chaned */
+  @Input() disabled: boolean;
   /** Emits when the marker has been changed */
   @Output() changed: EventEmitter&lt;any&gt; &#x3D; new EventEmitter();
   /** Form input component */
@@ -474,6 +506,10 @@ export class LocationMapComponent {
 
   /** sets the value cand changes the center */
   setValue(value) {
+    if (this.disabled) {
+      console.warn(&#x27;cannot change map value: disabled!&#x27;);
+      return;
+    }
     this.value &#x3D; value;
     if (value) {
       this.center &#x3D; value;
@@ -483,6 +519,9 @@ export class LocationMapComponent {
   markerDragEnd(coords) {
     if (!coords) {
       console.warn(&#x27;no coords&#x27;);
+      return;
+    }
+    if (this.disabled) {
       return;
     }
     const position &#x3D; { longitude: coords.lng, latitude: coords.lat };
@@ -495,7 +534,7 @@ export class LocationMapComponent {
 
     <div class="tab-pane fade " id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;agm-map [latitude]&#x3D;&quot;center?.latitude&quot; [longitude]&#x3D;&quot;center?.longitude&quot;&gt;
-    &lt;agm-marker #marker [markerDraggable]&#x3D;&quot;!readOnly&quot; (dragEnd)&#x3D;&quot;markerDragEnd($event?.coords)&quot; [latitude]&#x3D;&quot;value?.latitude&quot;
+    &lt;agm-marker #marker [markerDraggable]&#x3D;&quot;!readOnly&amp;&amp;!disabled&quot; (dragEnd)&#x3D;&quot;markerDragEnd($event?.coords)&quot; [latitude]&#x3D;&quot;value?.latitude&quot;
         [longitude]&#x3D;&quot;value?.longitude&quot; *ngIf&#x3D;&quot;value&quot;&gt;&lt;/agm-marker&gt;
 &lt;/agm-map&gt;</code></pre>
     </div>
@@ -537,7 +576,7 @@ agm-map {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><agm-map [latitude]="center?.latitude" [longitude]="center?.longitude">    <agm-marker #marker [markerDraggable]="!readOnly" (dragEnd)="markerDragEnd($event?.coords)" [latitude]="value?.latitude"        [longitude]="value?.longitude" *ngIf="value"></agm-marker></agm-map></div>'
+        var COMPONENT_TEMPLATE = '<div><agm-map [latitude]="center?.latitude" [longitude]="center?.longitude">    <agm-marker #marker [markerDraggable]="!readOnly&&!disabled" (dragEnd)="markerDragEnd($event?.coords)" [latitude]="value?.latitude"        [longitude]="value?.longitude" *ngIf="value"></agm-marker></agm-map></div>'
     var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'ActionbarComponent', 'selector': 'ec-actionbar'},{'name': 'AdminEntryInputComponent', 'selector': ''},{'name': 'ApiActionbarComponent', 'selector': 'ec-api-actionbar'},{'name': 'AssetgroupSelectComponent', 'selector': 'ec-assetgroup-select'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DaterangeComponent', 'selector': 'ec-daterange'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryListPopComponent', 'selector': 'ec-entry-list-pop'},{'name': 'EntryListSelectComponent', 'selector': 'ec-entry-list-select'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'HeatmapComponent', 'selector': 'ec-heatmap'},{'name': 'IconComponent', 'selector': 'ec-icon'},{'name': 'ImageSelectPopComponent', 'selector': 'ec-image-select-pop'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LocationMapComponent', 'selector': 'ec-location-map'},{'name': 'LocationPickerComponent', 'selector': 'ec-location-picker'},{'name': 'LocationSearchComponent', 'selector': 'ec-location-search'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'ModalComponent', 'selector': 'ec-modal'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceActionbarComponent', 'selector': 'ec-resource-actionbar'},{'name': 'ResourceCrudComponent', 'selector': 'ec-resource-crud'},{'name': 'ResourceDeletePopComponent', 'selector': 'ec-resource-delete-pop'},{'name': 'ResourceFormComponent', 'selector': 'ec-resource-form'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'ResourceListPopComponent', 'selector': 'ec-resource-list-pop'},{'name': 'ResourcePopComponent', 'selector': 'ec-resource-pop'},{'name': 'ResourceSelectComponent', 'selector': 'ec-resource-select'},{'name': 'SearchbarComponent', 'selector': 'ec-searchbar'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SignupComponent', 'selector': 'ec-signup'},{'name': 'SignupFormComponent', 'selector': 'ec-signup-form'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TagSelectComponent', 'selector': 'ec-tag-select'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'UploadComponent', 'selector': 'ec-upload'},{'name': 'UploadSelectComponent', 'selector': 'ec-upload-select'}];
     var DIRECTIVES = [{'name': 'AssetDirective', 'selector': '[ecAsset]'},{'name': 'DropzoneDirective', 'selector': '[ecDropzone]'},{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'FocusDirective', 'selector': '[ecFocus]'},{'name': 'ImageDirective', 'selector': 'img [ecImage]'},{'name': 'SlotHostDirective', 'selector': '[ecSlotHost]'}];
     var ACTUAL_COMPONENT = {'name': 'LocationMapComponent'};
