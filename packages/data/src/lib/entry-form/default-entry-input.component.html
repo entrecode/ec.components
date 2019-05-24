@@ -8,6 +8,10 @@
     <ec-entry-select [focusEvent]="focusEvent" [placeholder]="field.placeholder" [formControl]="group.get(field.property)"
       [model]="field['relation']" [id]="field.id" [config]="field.nestedCrudConfig"></ec-entry-select>
   </div>
+  <div *ngSwitchCase="'entries-actionbar'">
+    <ec-entry-actionbar [focusEvent]="focusEvent" [placeholder]="field.placeholder" [formControl]="group.get(field.property)"
+    [model]="field['relation']" [id]="field.id" [config]="field.nestedCrudConfig"></ec-entry-actionbar>
+  </div>
   <div *ngSwitchCase="'entry-list-select'">
     <!--  [placeholder]="field.placeholder" -->
     <!--  [config]="field.nestedCrudConfig" -->
