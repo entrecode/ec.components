@@ -120,6 +120,7 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
       // console.warn('could not connect control: no instance loaded');
       return;
     }
+    this.componentInstance.disabled = this.disabled;
     if (this.componentInstance.registerOnChange && this.propagateChange) {
       this.componentInstance.registerOnChange(this.propagateChange);
     }
@@ -148,5 +149,8 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
 
   setDisabledState(isDisabled) {
     this.disabled = isDisabled;
+    if (this.componentInstance) {
+      this.componentInstance.disabled = isDisabled;
+    }
   }
 }
