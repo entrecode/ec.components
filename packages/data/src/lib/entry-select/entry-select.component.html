@@ -20,14 +20,14 @@
         (dndCanceled)="cancelDrag(selected,$event)" (dndEnd)="cancelDrag(selected,$event)">
         <span [class.ec-select-selected]="!solo" [class.ec-select-selected_solo]="solo" (click)="!solo&&editItem(selected,$event)">
           {{selected.display()}}
-          <a (click)="removeItem(selected,false,$event)" *ngIf="!config?.disableRemove">&times;</a>
+          <a (click)="removeItem(selected,false,$event)" *ngIf="!config?.disableRemove&&!disabled">&times;</a>
         </span>
       </li>
       <li dndPlaceholderRef>
         <div class="drag-placeholder" style="width: 48px;"></div>
       </li>
       <li *ngIf="!config?.disableSearchbar" class="ec-select__searchbar">
-        <ec-searchbar [focusEvent]="focusEvent" [autofocus]="false" [property]="lightModel?.titleField" [placeholder]="placeholder||defaultPlaceholder()"
+        <ec-searchbar [disabled]="disabled" [focusEvent]="focusEvent" [autofocus]="false" [property]="lightModel?.titleField" [placeholder]="placeholder||defaultPlaceholder()"
         (keypressed)="handleKey($event,dropdownList)" (focus)="focus($event)" (pasted)="pasteValue($event)" (queryChanged)="filterDropdownList(dropdownList,$event)"></ec-searchbar>
       </li>
     </ul>
@@ -52,7 +52,7 @@
     <a (click)="entryPop.create()" class="btn btn_clear" *ngIf="!config?.disableCreatePop&&hasMethod('post')&&(!solo||selection?.isEmpty())">
       <ec-icon name="add"></ec-icon>
     </a>
-    <a (click)="entryListPop.show($event)" class="btn btn_clear" *ngIf="!config?.disableListPop&&hasMethod('get')">
+    <a (click)="entryListPop.show($event)" class="btn btn_clear" *ngIf="!config?.disableListPop&&hasMethod('get')&&!disabled">
       <ec-icon name="find"></ec-icon>
     </a>
   </nav>
