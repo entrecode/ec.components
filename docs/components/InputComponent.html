@@ -818,7 +818,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="142" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:142</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="143" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:143</a></div>
                             </td>
                         </tr>
 
@@ -885,7 +885,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="147" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:147</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="148" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:148</a></div>
                             </td>
                         </tr>
 
@@ -923,7 +923,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="149" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:149</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="150" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:150</a></div>
                             </td>
                         </tr>
 
@@ -988,7 +988,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="132" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:132</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="133" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:133</a></div>
                             </td>
                         </tr>
 
@@ -1263,7 +1263,7 @@ You can access a form&#39;s InputComponents via FormComponent#inputs </p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="139" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:139</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="140" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:140</a></div>
                             </td>
                         </tr>
 
@@ -1513,6 +1513,7 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
       // console.warn(&#x27;could not connect control: no instance loaded&#x27;);
       return;
     }
+    this.componentInstance.disabled &#x3D; this.disabled;
     if (this.componentInstance.registerOnChange &amp;&amp; this.propagateChange) {
       this.componentInstance.registerOnChange(this.propagateChange);
     }
@@ -1541,6 +1542,9 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
 
   setDisabledState(isDisabled) {
     this.disabled &#x3D; isDisabled;
+    if (this.componentInstance) {
+      this.componentInstance.disabled &#x3D; isDisabled;
+    }
   }
 }
 </code></pre>
