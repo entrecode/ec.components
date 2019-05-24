@@ -70,42 +70,44 @@ export class EntryListSelectComponent extends InputComponent implements ControlV
     if (this.field && !this.model) {
       this.model = this.field.relation;
     }
-    if (this.model) {
-      this.modelConfig.generateConfig(this.model, (this.listConfig || {}).fields).then((config) => {
-        this.listConfig = config;
-        this.selectionConfig = Object.assign({}, this.listConfig, {
-          disableHeader: false,
-          defaultFilter: false,
-          hidePagination: true,
-          fields: Object.assign(
-            {},
-            this.listConfig.fields,
-            {
-              _modified: Object.assign({}, config.fields._modified, { hideInList: true }),
-            },
-            {
-              button: {
-                label: this.symbol.resolve('entry.select.remove'),
-                form: false,
-                resolve: () => ' ',
-                view: 'link',
-                class: 'btn btn_clear',
-                icon: 'close-x',
-                action: (item, property) => {
-                  this.selection.remove(item);
-                },
-              },
-            },
-          ),
-        });
-        Object.keys(this.selectionConfig.fields).forEach((key) => {
-          if (this.selectionConfig.fields[key].type !== 'text') {
-            this.selectionConfig.fields[key].filterable = false;
-          }
-        });
-        this.initSelection();
-      });
+    if (!this.model) {
+      return;
     }
+    this.modelConfig.generateConfig(this.model, (this.listConfig || {}).fields).then((config) => {
+      this.listConfig = config;
+      this.selectionConfig = Object.assign({}, this.listConfig, {
+        disableHeader: false,
+        defaultFilter: false,
+        hidePagination: true,
+        fields: Object.assign(
+          {},
+          this.listConfig.fields,
+          {
+            _modified: Object.assign({}, config.fields._modified, { hideInList: true }),
+          },
+          {
+            button: {
+              label: this.symbol.resolve('entry.select.remove'),
+              form: false,
+              resolve: () => ' ',
+              view: 'link',
+              class: 'btn btn_clear',
+              icon: 'close-x',
+              action: (item, property) => {
+                this.selection.remove(item);
+              },
+              hideInList: this.disabled,
+            },
+          },
+        ),
+      });
+      Object.keys(this.selectionConfig.fields).forEach((key) => {
+        if (this.selectionConfig.fields[key].type !== 'text') {
+          this.selectionConfig.fields[key].filterable = false;
+        }
+      });
+      this.initSelection();
+    });
   }
 
   /** Initializes the selection with listConfig. Propagates change */

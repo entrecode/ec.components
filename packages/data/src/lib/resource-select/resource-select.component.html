@@ -37,7 +37,7 @@
       *ngIf="solo&&hasMethod('put')&&!selection?.isEmpty()">
       <ec-icon name="pencil"></ec-icon>
     </a>
-    <a (click)="resourcePop.create()" class="btn btn_clear" *ngIf="!config?.disableCreatePop&&hasMethod('post')">
+    <a (click)="resourcePop.create()" class="btn btn_clear" *ngIf="!disabled&&!config?.disableCreatePop&&hasMethod('post')">
       <ec-icon name="add"></ec-icon>
     </a>
     <a (click)="resourceListPop.show($event)" class="btn btn_clear" *ngIf="!config?.disableListPop&&hasMethod('get')&&!disabled">

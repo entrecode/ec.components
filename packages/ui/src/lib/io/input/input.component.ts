@@ -30,6 +30,8 @@ import { debounceTime } from 'rxjs/operators';
 export class InputComponent extends DynamicSlotComponent implements ControlValueAccessor, OnChanges {
   /** The belonging form group */
   @Input() group: FormGroup;
+  /** If true, the input is readonly. Is set by ControlValueAccessor#setDisabled */
+  disabled: FormGroup;
   /** The belonging form control. This is not required if you pass in a field and group. */
   @Input() control: AbstractControl;
   /** The changed ouput emits whenever the form control of the input changes. */
@@ -143,4 +145,8 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
   }
 
   registerOnTouched() {}
+
+  setDisabledState(isDisabled) {
+    this.disabled = isDisabled;
+  }
 }
