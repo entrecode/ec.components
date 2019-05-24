@@ -1543,7 +1543,11 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
   setDisabledState(isDisabled) {
     this.disabled &#x3D; isDisabled;
     if (this.componentInstance) {
-      this.componentInstance.disabled &#x3D; isDisabled;
+      if (this.componentInstance.setDisabledState) {
+        this.componentInstance.setDisabledState(isDisabled);
+      } else {
+        this.componentInstance.disabled &#x3D; isDisabled;
+      }
     }
   }
 }
