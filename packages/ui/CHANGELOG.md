@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.43.1](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.43.0...@ec.components/ui@0.43.1) (2019-05-24)
+
+
+### Bug Fixes
+
+* EDITOR-363 ([80eecab](https://github.com/entrecode/ec.components/commit/80eecab))
+
+
+
+
+
 # [0.43.0](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.42.5...@ec.components/ui@0.43.0) (2019-05-03)
 
 

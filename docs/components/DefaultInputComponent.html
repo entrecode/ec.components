@@ -648,35 +648,66 @@ export class DefaultInputComponent implements AfterViewInit, Focus {
 
     <div class="tab-pane fade " id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div [ngSwitch]&#x3D;&quot;field.getView(&#x27;form&#x27;)&quot; *ngIf&#x3D;&quot;group&quot; [formGroup]&#x3D;&quot;group&quot;&gt;
-  &lt;input [id]&#x3D;&quot;field.id&quot; *ngSwitchCase&#x3D;&quot;&#x27;string&#x27;&quot; type&#x3D;&quot;text&quot; [formControl]&#x3D;&quot;control&quot;
-    [placeholder]&#x3D;&quot;field.getPlaceholder()&quot; [readonly]&#x3D;&quot;formService.isReadOnly(field, item)&quot; class&#x3D;&quot;input&quot;
-    [ecFocus]&#x3D;&quot;focusEvent&quot; /&gt;
+  &lt;input
+    [id]&#x3D;&quot;field.id&quot;
+    *ngSwitchCase&#x3D;&quot;&#x27;string&#x27;&quot;
+    type&#x3D;&quot;text&quot;
+    [formControl]&#x3D;&quot;control&quot;
+    [placeholder]&#x3D;&quot;field.getPlaceholder()&quot;
+    class&#x3D;&quot;input&quot;
+    [ecFocus]&#x3D;&quot;focusEvent&quot;
+  /&gt;
 
-  &lt;textarea [id]&#x3D;&quot;field.id&quot; *ngSwitchCase&#x3D;&quot;&#x27;textarea&#x27;&quot; type&#x3D;&quot;text&quot; [formControl]&#x3D;&quot;control&quot;
-    [placeholder]&#x3D;&quot;field.getPlaceholder()&quot; [readonly]&#x3D;&quot;formService.isReadOnly(field, item)&quot; class&#x3D;&quot;input&quot;
-    [ecFocus]&#x3D;&quot;focusEvent&quot;&gt;&lt;/textarea&gt;
+  &lt;textarea
+    [id]&#x3D;&quot;field.id&quot;
+    *ngSwitchCase&#x3D;&quot;&#x27;textarea&#x27;&quot;
+    type&#x3D;&quot;text&quot;
+    [formControl]&#x3D;&quot;control&quot;
+    [placeholder]&#x3D;&quot;field.getPlaceholder()&quot;
+    class&#x3D;&quot;input&quot;
+    [ecFocus]&#x3D;&quot;focusEvent&quot;
+  &gt;&lt;/textarea&gt;
 
-  &lt;input [id]&#x3D;&quot;field.id&quot; *ngSwitchCase&#x3D;&quot;&#x27;number&#x27;&quot; type&#x3D;&quot;number&quot; [formControl]&#x3D;&quot;control&quot;
-    [placeholder]&#x3D;&quot;field.getPlaceholder()&quot; [readonly]&#x3D;&quot;formService.isReadOnly(field, item)&quot; class&#x3D;&quot;input&quot;
-    [ecFocus]&#x3D;&quot;focusEvent&quot;&gt;
+  &lt;input
+    [id]&#x3D;&quot;field.id&quot;
+    *ngSwitchCase&#x3D;&quot;&#x27;number&#x27;&quot;
+    type&#x3D;&quot;number&quot;
+    [formControl]&#x3D;&quot;control&quot;
+    [placeholder]&#x3D;&quot;field.getPlaceholder()&quot;
+    class&#x3D;&quot;input&quot;
+    [ecFocus]&#x3D;&quot;focusEvent&quot;
+  /&gt;
 
   &lt;div class&#x3D;&quot;ec-input_color&quot; *ngSwitchCase&#x3D;&quot;&#x27;color&#x27;&quot;&gt;
     &lt;label [style.backgroundColor]&#x3D;&quot;control.value&quot;&gt;
-      &lt;input [id]&#x3D;&quot;field.id&quot; type&#x3D;&quot;color&quot; [formControl]&#x3D;&quot;control&quot; [readonly]&#x3D;&quot;formService.isReadOnly(field, item)&quot;&gt;
+      &lt;input [id]&#x3D;&quot;field.id&quot; type&#x3D;&quot;color&quot; [formControl]&#x3D;&quot;control&quot; /&gt;
     &lt;/label&gt;
   &lt;/div&gt;
 
   &lt;label *ngSwitchCase&#x3D;&quot;&#x27;boolean&#x27;&quot;&gt;
-    &lt;input [id]&#x3D;&quot;field.id&quot; type&#x3D;&quot;checkbox&quot; [formControl]&#x3D;&quot;control&quot; [attr.disabled]&#x3D;&quot;formService.isReadOnly(field, item)?&#x27;disabled&#x27;:&#x27;false&#x27;&quot;&gt;
-    {{field.placeholder}}
+    &lt;input [id]&#x3D;&quot;field.id&quot; type&#x3D;&quot;checkbox&quot; [formControl]&#x3D;&quot;control&quot; /&gt;
+    {{ field.placeholder }}
   &lt;/label&gt;
 
-  &lt;input [id]&#x3D;&quot;field.id&quot; *ngSwitchCase&#x3D;&quot;&#x27;email&#x27;&quot; type&#x3D;&quot;email&quot; [formControl]&#x3D;&quot;control&quot;
-    [readonly]&#x3D;&quot;formService.isReadOnly(field, item)&quot; [placeholder]&#x3D;&quot;field.getPlaceholder()&quot; class&#x3D;&quot;input&quot;
-    [ecFocus]&#x3D;&quot;focusEvent&quot;&gt;
+  &lt;input
+    [id]&#x3D;&quot;field.id&quot;
+    *ngSwitchCase&#x3D;&quot;&#x27;email&#x27;&quot;
+    type&#x3D;&quot;email&quot;
+    [formControl]&#x3D;&quot;control&quot;
+    [placeholder]&#x3D;&quot;field.getPlaceholder()&quot;
+    class&#x3D;&quot;input&quot;
+    [ecFocus]&#x3D;&quot;focusEvent&quot;
+  /&gt;
 
-  &lt;input [id]&#x3D;&quot;field.id&quot; *ngSwitchCase&#x3D;&quot;&#x27;url&#x27;&quot; type&#x3D;&quot;url&quot; [formControl]&#x3D;&quot;control&quot; [placeholder]&#x3D;&quot;field.getPlaceholder()&quot;
-    class&#x3D;&quot;input&quot; [ecFocus]&#x3D;&quot;focusEvent&quot; [readonly]&#x3D;&quot;formService.isReadOnly(field, item)&quot;&gt;
+  &lt;input
+    [id]&#x3D;&quot;field.id&quot;
+    *ngSwitchCase&#x3D;&quot;&#x27;url&#x27;&quot;
+    type&#x3D;&quot;url&quot;
+    [formControl]&#x3D;&quot;control&quot;
+    [placeholder]&#x3D;&quot;field.getPlaceholder()&quot;
+    class&#x3D;&quot;input&quot;
+    [ecFocus]&#x3D;&quot;focusEvent&quot;
+  /&gt;
 
   &lt;ec-toggle [id]&#x3D;&quot;field.id&quot; *ngSwitchCase&#x3D;&quot;&#x27;toggle&#x27;&quot; [formControl]&#x3D;&quot;control&quot; [placeholder]&#x3D;&quot;field.getPlaceholder()&quot;&gt;
   &lt;/ec-toggle&gt;
@@ -684,22 +715,39 @@ export class DefaultInputComponent implements AfterViewInit, Focus {
   &lt;ec-datetime *ngSwitchCase&#x3D;&quot;&#x27;date&#x27;&quot; [formControl]&#x3D;&quot;control&quot; [placeholder]&#x3D;&quot;field.getPlaceholder()&quot;&gt;&lt;/ec-datetime&gt;
 
   &lt;div *ngSwitchCase&#x3D;&quot;&#x27;select&#x27;&quot;&gt;
-    &lt;select [id]&#x3D;&quot;field.id&quot; [formControl]&#x3D;&quot;control&quot; [ecFocus]&#x3D;&quot;focusEvent&quot;
-      (change)&#x3D;&quot;control.patchValue($event.target.value)&quot; class&#x3D;&quot;input&quot; *ngIf&#x3D;&quot;!formService.isReadOnly(field, item)&quot;&gt;
-      &lt;option&gt;{{field.getPlaceholder()}}&lt;/option&gt;
-      &lt;option *ngFor&#x3D;&quot;let option of field.values&quot; [selected]&#x3D;&quot;control.value&#x3D;&#x3D;&#x3D;(option.value?option.value:option)&quot;
-        [value]&#x3D;&quot;option.value?option.value:option&quot;&gt;
-        {{option.label?option.label:option}}
+    &lt;select
+      [id]&#x3D;&quot;field.id&quot;
+      [formControl]&#x3D;&quot;control&quot;
+      [ecFocus]&#x3D;&quot;focusEvent&quot;
+      (change)&#x3D;&quot;control.patchValue($event.target.value)&quot;
+      class&#x3D;&quot;input&quot;
+      *ngIf&#x3D;&quot;!formService.isReadOnly(field, item)&quot;
+    &gt;
+      &lt;option&gt;{{ field.getPlaceholder() }}&lt;/option&gt;
+      &lt;option
+        *ngFor&#x3D;&quot;let option of field.values&quot;
+        [selected]&#x3D;&quot;control.value &#x3D;&#x3D;&#x3D; (option.value ? option.value : option)&quot;
+        [value]&#x3D;&quot;option.value ? option.value : option&quot;
+      &gt;
+        {{ option.label ? option.label : option }}
       &lt;/option&gt;
     &lt;/select&gt;
-    &lt;input type&#x3D;&quot;text&quot; [formControl]&#x3D;&quot;control&quot; [id]&#x3D;&quot;field.id&quot; class&#x3D;&quot;input&quot; readonly
-      *ngIf&#x3D;&quot;formService.isReadOnly(field, item)&quot;&gt;
+    &lt;input
+      type&#x3D;&quot;text&quot;
+      [formControl]&#x3D;&quot;control&quot;
+      [id]&#x3D;&quot;field.id&quot;
+      class&#x3D;&quot;input&quot;
+    /&gt;
   &lt;/div&gt;
   &lt;div *ngSwitchCase&#x3D;&quot;&#x27;copy&#x27;&quot;&gt;
-    &lt;div *ngIf&#x3D;&quot;!!item?.display(field.property)&quot; class&#x3D;&quot;tag&quot; style&#x3D;&quot;cursor: pointer&quot;
-      (click)&#x3D;&quot;keycommands.copyToClipBoard(item?.transform(&#x27;copy&#x27;, field.property),field.getLabel())&quot;
-      [attr.data-tooltip-bottom]&#x3D;&quot;&#x27;click to copy &#x27;+field.getLabel()&quot;&gt;
-      {{item?.display(field.property)}}
+    &lt;div
+      *ngIf&#x3D;&quot;!!item?.display(field.property)&quot;
+      class&#x3D;&quot;tag&quot;
+      style&#x3D;&quot;cursor: pointer&quot;
+      (click)&#x3D;&quot;keycommands.copyToClipBoard(item?.transform(&#x27;copy&#x27;, field.property), field.getLabel())&quot;
+      [attr.data-tooltip-bottom]&#x3D;&quot;&#x27;click to copy &#x27; + field.getLabel()&quot;
+    &gt;
+      {{ item?.display(field.property) }}
     &lt;/div&gt;
   &lt;/div&gt;
 
@@ -707,7 +755,8 @@ export class DefaultInputComponent implements AfterViewInit, Focus {
     &lt;ec-output [field]&#x3D;&quot;field&quot; [item]&#x3D;&quot;item&quot;&gt;&lt;/ec-output&gt;
   &lt;/div&gt;
   &lt;ec-input-errors [control]&#x3D;&quot;group.get(field.property)&quot;&gt;&lt;/ec-input-errors&gt;
-&lt;/div&gt;</code></pre>
+&lt;/div&gt;
+</code></pre>
     </div>
 
 
@@ -736,7 +785,7 @@ export class DefaultInputComponent implements AfterViewInit, Focus {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div [ngSwitch]="field.getView(\'form\')" *ngIf="group" [formGroup]="group">  <input [id]="field.id" *ngSwitchCase="\'string\'" type="text" [formControl]="control"    [placeholder]="field.getPlaceholder()" [readonly]="formService.isReadOnly(field, item)" class="input"    [ecFocus]="focusEvent" />  <textarea [id]="field.id" *ngSwitchCase="\'textarea\'" type="text" [formControl]="control"    [placeholder]="field.getPlaceholder()" [readonly]="formService.isReadOnly(field, item)" class="input"    [ecFocus]="focusEvent"></textarea>  <input [id]="field.id" *ngSwitchCase="\'number\'" type="number" [formControl]="control"    [placeholder]="field.getPlaceholder()" [readonly]="formService.isReadOnly(field, item)" class="input"    [ecFocus]="focusEvent">  <div class="ec-input_color" *ngSwitchCase="\'color\'">    <label [style.backgroundColor]="control.value">      <input [id]="field.id" type="color" [formControl]="control" [readonly]="formService.isReadOnly(field, item)">    </label>  </div>  <label *ngSwitchCase="\'boolean\'">    <input [id]="field.id" type="checkbox" [formControl]="control" [attr.disabled]="formService.isReadOnly(field, item)?\'disabled\':\'false\'">    {{field.placeholder}}  </label>  <input [id]="field.id" *ngSwitchCase="\'email\'" type="email" [formControl]="control"    [readonly]="formService.isReadOnly(field, item)" [placeholder]="field.getPlaceholder()" class="input"    [ecFocus]="focusEvent">  <input [id]="field.id" *ngSwitchCase="\'url\'" type="url" [formControl]="control" [placeholder]="field.getPlaceholder()"    class="input" [ecFocus]="focusEvent" [readonly]="formService.isReadOnly(field, item)">  <ec-toggle [id]="field.id" *ngSwitchCase="\'toggle\'" [formControl]="control" [placeholder]="field.getPlaceholder()">  </ec-toggle>  <ec-datetime *ngSwitchCase="\'date\'" [formControl]="control" [placeholder]="field.getPlaceholder()"></ec-datetime>  <div *ngSwitchCase="\'select\'">    <select [id]="field.id" [formControl]="control" [ecFocus]="focusEvent"      (change)="control.patchValue($event.target.value)" class="input" *ngIf="!formService.isReadOnly(field, item)">      <option>{{field.getPlaceholder()}}</option>      <option *ngFor="let option of field.values" [selected]="control.value===(option.value?option.value:option)"        [value]="option.value?option.value:option">        {{option.label?option.label:option}}      </option>    </select>    <input type="text" [formControl]="control" [id]="field.id" class="input" readonly      *ngIf="formService.isReadOnly(field, item)">  </div>  <div *ngSwitchCase="\'copy\'">    <div *ngIf="!!item?.display(field.property)" class="tag" style="cursor: pointer"      (click)="keycommands.copyToClipBoard(item?.transform(\'copy\', field.property),field.getLabel())"      [attr.data-tooltip-bottom]="\'click to copy \'+field.getLabel()">      {{item?.display(field.property)}}    </div>  </div>  <div *ngSwitchDefault>    <ec-output [field]="field" [item]="item"></ec-output>  </div>  <ec-input-errors [control]="group.get(field.property)"></ec-input-errors></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div [ngSwitch]="field.getView(\'form\')" *ngIf="group" [formGroup]="group">  <input    [id]="field.id"    *ngSwitchCase="\'string\'"    type="text"    [formControl]="control"    [placeholder]="field.getPlaceholder()"    class="input"    [ecFocus]="focusEvent"  />  <textarea    [id]="field.id"    *ngSwitchCase="\'textarea\'"    type="text"    [formControl]="control"    [placeholder]="field.getPlaceholder()"    class="input"    [ecFocus]="focusEvent"  ></textarea>  <input    [id]="field.id"    *ngSwitchCase="\'number\'"    type="number"    [formControl]="control"    [placeholder]="field.getPlaceholder()"    class="input"    [ecFocus]="focusEvent"  />  <div class="ec-input_color" *ngSwitchCase="\'color\'">    <label [style.backgroundColor]="control.value">      <input [id]="field.id" type="color" [formControl]="control" />    </label>  </div>  <label *ngSwitchCase="\'boolean\'">    <input [id]="field.id" type="checkbox" [formControl]="control" />    {{ field.placeholder }}  </label>  <input    [id]="field.id"    *ngSwitchCase="\'email\'"    type="email"    [formControl]="control"    [placeholder]="field.getPlaceholder()"    class="input"    [ecFocus]="focusEvent"  />  <input    [id]="field.id"    *ngSwitchCase="\'url\'"    type="url"    [formControl]="control"    [placeholder]="field.getPlaceholder()"    class="input"    [ecFocus]="focusEvent"  />  <ec-toggle [id]="field.id" *ngSwitchCase="\'toggle\'" [formControl]="control" [placeholder]="field.getPlaceholder()">  </ec-toggle>  <ec-datetime *ngSwitchCase="\'date\'" [formControl]="control" [placeholder]="field.getPlaceholder()"></ec-datetime>  <div *ngSwitchCase="\'select\'">    <select      [id]="field.id"      [formControl]="control"      [ecFocus]="focusEvent"      (change)="control.patchValue($event.target.value)"      class="input"      *ngIf="!formService.isReadOnly(field, item)"    >      <option>{{ field.getPlaceholder() }}</option>      <option        *ngFor="let option of field.values"        [selected]="control.value === (option.value ? option.value : option)"        [value]="option.value ? option.value : option"      >        {{ option.label ? option.label : option }}      </option>    </select>    <input      type="text"      [formControl]="control"      [id]="field.id"      class="input"    />  </div>  <div *ngSwitchCase="\'copy\'">    <div      *ngIf="!!item?.display(field.property)"      class="tag"      style="cursor: pointer"      (click)="keycommands.copyToClipBoard(item?.transform(\'copy\', field.property), field.getLabel())"      [attr.data-tooltip-bottom]="\'click to copy \' + field.getLabel()"    >      {{ item?.display(field.property) }}    </div>  </div>  <div *ngSwitchDefault>    <ec-output [field]="field" [item]="item"></ec-output>  </div>  <ec-input-errors [control]="group.get(field.property)"></ec-input-errors></div></div>'
     var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'ActionbarComponent', 'selector': 'ec-actionbar'},{'name': 'AdminEntryInputComponent', 'selector': ''},{'name': 'ApiActionbarComponent', 'selector': 'ec-api-actionbar'},{'name': 'AssetgroupSelectComponent', 'selector': 'ec-assetgroup-select'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DaterangeComponent', 'selector': 'ec-daterange'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryListPopComponent', 'selector': 'ec-entry-list-pop'},{'name': 'EntryListSelectComponent', 'selector': 'ec-entry-list-select'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'HeatmapComponent', 'selector': 'ec-heatmap'},{'name': 'IconComponent', 'selector': 'ec-icon'},{'name': 'ImageSelectPopComponent', 'selector': 'ec-image-select-pop'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LocationMapComponent', 'selector': 'ec-location-map'},{'name': 'LocationPickerComponent', 'selector': 'ec-location-picker'},{'name': 'LocationSearchComponent', 'selector': 'ec-location-search'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'ModalComponent', 'selector': 'ec-modal'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceActionbarComponent', 'selector': 'ec-resource-actionbar'},{'name': 'ResourceCrudComponent', 'selector': 'ec-resource-crud'},{'name': 'ResourceDeletePopComponent', 'selector': 'ec-resource-delete-pop'},{'name': 'ResourceFormComponent', 'selector': 'ec-resource-form'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'ResourceListPopComponent', 'selector': 'ec-resource-list-pop'},{'name': 'ResourcePopComponent', 'selector': 'ec-resource-pop'},{'name': 'ResourceSelectComponent', 'selector': 'ec-resource-select'},{'name': 'SearchbarComponent', 'selector': 'ec-searchbar'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SignupComponent', 'selector': 'ec-signup'},{'name': 'SignupFormComponent', 'selector': 'ec-signup-form'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TagSelectComponent', 'selector': 'ec-tag-select'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'UploadComponent', 'selector': 'ec-upload'},{'name': 'UploadSelectComponent', 'selector': 'ec-upload-select'}];
     var DIRECTIVES = [{'name': 'AssetDirective', 'selector': '[ecAsset]'},{'name': 'DropzoneDirective', 'selector': '[ecDropzone]'},{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'FocusDirective', 'selector': '[ecFocus]'},{'name': 'ImageDirective', 'selector': 'img [ecImage]'},{'name': 'SlotHostDirective', 'selector': '[ecSlotHost]'}];
     var ACTUAL_COMPONENT = {'name': 'DefaultInputComponent'};
