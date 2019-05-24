@@ -20,6 +20,7 @@ export interface ActionbarConfig extends ListConfig<Action> {}
   templateUrl: '../select/select.component.html',
 })
 export class ActionbarComponent extends SelectComponent<Action> implements OnInit {
+  @Input() root = 'ROOT'; // id of root stack item
   @Input() config: ActionbarConfig = {
     label: 'title',
     identifier: 'id',
@@ -63,7 +64,7 @@ export class ActionbarComponent extends SelectComponent<Action> implements OnIni
 
   currentID() {
     if (!this.selection || this.selection.isEmpty()) {
-      return 'ROOT';
+      return this.root;
     }
     return this.selection.items[this.selection.items.length - 1].id();
   }
@@ -77,11 +78,17 @@ export class ActionbarComponent extends SelectComponent<Action> implements OnIni
     return this.actionStack[this.currentID()];
   }
 
-  loadActions(actions, addToStack = true) {
+  async loadActions(actions, addToStack = true) {
+    let resolved;
+    if (typeof actions === 'function') {
+      resolved = await Promise.resolve(actions(this.actionStack, this));
+    } else {
+      resolved = [].concat(actions);
+    }
     if (addToStack) {
       this.actionStack[this.currentID()] = actions;
     }
-    this.list = new List(actions, this.config);
+    this.list = new List(resolved, this.config);
     if (!this.selection) {
       this.initSelection();
     }

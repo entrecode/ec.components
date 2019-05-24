@@ -5,20 +5,24 @@
 
 <strong>Solo</strong>
 <ec-select [solo]="true" [list]="products"></ec-select>
+<!-- <ec-select [solo]="true" [list]="products" [value]="{}"></ec-select> -->
 
 <strong>DisableRemove</strong>
 <ec-select [solo]="true" [list]="products" [config]="{ disableRemove: true }"></ec-select>
 
-<strong>Actionbar</strong>
+<h3>Actionbar</h3>
+
+<strong>Simple</strong>
 <ec-actionbar placeholder="Where do you want to go?" [actions]="actions"></ec-actionbar>
 
 <strong>Circular Structure</strong>
 <ec-actionbar [actions]="ottostart"></ec-actionbar>
 
+<strong>async actionbar</strong>
+<ec-actionbar [actions]="asyncActions" (enter)="enter($event)"></ec-actionbar>
+
 <!-- <strong>Resource Actionbar</strong>
 <ec-resource-actionbar></ec-resource-actionbar> -->
-<!-- <strong>API Actionbar</strong>
-<ec-api-actionbar></ec-api-actionbar>  -->
 
 <ec-notifications></ec-notifications>
 <pre><code>{{values | json}}</code></pre>
