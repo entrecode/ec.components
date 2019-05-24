@@ -101,6 +101,7 @@ export interface ActionbarConfig extends ListConfig&lt;Action&gt; {}
   templateUrl: &#x27;../select/select.component.html&#x27;,
 })
 export class ActionbarComponent extends SelectComponent&lt;Action&gt; implements OnInit {
+  @Input() root &#x3D; &#x27;ROOT&#x27;; // id of root stack item
   @Input() config: ActionbarConfig &#x3D; {
     label: &#x27;title&#x27;,
     identifier: &#x27;id&#x27;,
@@ -144,7 +145,7 @@ export class ActionbarComponent extends SelectComponent&lt;Action&gt; implements
 
   currentID() {
     if (!this.selection || this.selection.isEmpty()) {
-      return &#x27;ROOT&#x27;;
+      return this.root;
     }
     return this.selection.items[this.selection.items.length - 1].id();
   }
@@ -158,11 +159,17 @@ export class ActionbarComponent extends SelectComponent&lt;Action&gt; implements
     return this.actionStack[this.currentID()];
   }
 
-  loadActions(actions, addToStack &#x3D; true) {
+  async loadActions(actions, addToStack &#x3D; true) {
+    let resolved;
+    if (typeof actions &#x3D;&#x3D;&#x3D; &#x27;function&#x27;) {
+      resolved &#x3D; await Promise.resolve(actions(this.actionStack, this));
+    } else {
+      resolved &#x3D; [].concat(actions);
+    }
     if (addToStack) {
       this.actionStack[this.currentID()] &#x3D; actions;
     }
-    this.list &#x3D; new List(actions, this.config);
+    this.list &#x3D; new List(resolved, this.config);
     if (!this.selection) {
       this.initSelection();
     }
