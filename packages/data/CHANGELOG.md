@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.49.0](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.48.6...@ec.components/data@0.49.0) (2019-05-24)
+
+
+### Features
+
+* entry-actionbar ([786d09b](https://github.com/entrecode/ec.components/commit/786d09b))
+
+
+
+
+
 ## [0.48.6](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.48.5...@ec.components/data@0.48.6) (2019-05-24)
 
 **Note:** Version bump only for package @ec.components/data
