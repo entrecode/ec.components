@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.16](https://github.com/entrecode/ec.components/compare/@ec.components/location@0.18.15...@ec.components/location@0.18.16) (2019-05-24)
+
+
+### Bug Fixes
+
+* COM-259 ([6603aea](https://github.com/entrecode/ec.components/commit/6603aea))
+
+
+
+
+
 ## [0.18.15](https://github.com/entrecode/ec.components/compare/@ec.components/location@0.18.14...@ec.components/location@0.18.15) (2019-05-03)
 
 **Note:** Version bump only for package @ec.components/location
