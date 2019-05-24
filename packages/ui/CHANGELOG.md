@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.43.2](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.43.1...@ec.components/ui@0.43.2) (2019-05-24)
+
+
+### Bug Fixes
+
+* disabled state for select inputs ([ac83326](https://github.com/entrecode/ec.components/commit/ac83326))
+* missing readonly states ([52dc850](https://github.com/entrecode/ec.components/commit/52dc850))
+
+
+
+
+
 ## [0.43.1](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.43.0...@ec.components/ui@0.43.1) (2019-05-24)
 
 

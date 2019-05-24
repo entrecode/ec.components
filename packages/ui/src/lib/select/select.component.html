@@ -12,14 +12,14 @@
             (dndEnd)="cancelDrag(selected,$event,item)" #item>
             <span [class.ec-select-selected]="!solo" [class.ec-select-selected_solo]="solo" (click)="clickItem(selected,$event)">
                 {{selected.display()}}
-                <a (click)="removeItem(selected,$event)">&times;</a>
+                <a (click)="removeItem(selected,$event)" *ngIf="!config?.disableRemove&&!disabled">&times;</a>
             </span>
         </li>
         <li dndPlaceholderRef>
             <div class="drag-placeholder" style="width: 48px;"></div>
         </li>
         <li *ngIf="!config?.disableSearchbar" class="ec-select__searchbar">
-            <ec-searchbar [autofocus]="false" [property]="config?.label" [placeholder]="placeholder" (focus)="focus($event)"
+            <ec-searchbar [autofocus]="false" [property]="config?.label" [placeholder]="placeholder" (focus)="focus($event)" [disabled]="disabled"
                 (keypressed)="handleKey($event,dropdownList)" (queryChanged)="filterDropdownList(dropdownList,$event)"></ec-searchbar>
         </li>
     </ul>

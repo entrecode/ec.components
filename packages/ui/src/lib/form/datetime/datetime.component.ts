@@ -32,6 +32,8 @@ export class DatetimeComponent implements ControlValueAccessor {
   @Input() disableTime: boolean;
   /** The input's placeholder */
   @Input() placeholder = '';
+  /** If true, the time cannot be changed */
+  disabled: boolean;
 
   /** Selects the given Date when the model changes. */
   writeValue(value: Date) {
@@ -48,4 +50,8 @@ export class DatetimeComponent implements ControlValueAccessor {
 
   /** registerOnTouched implementation of ControlValueAccessor */
   registerOnTouched() {}
+
+  setDisabledState(isDisabled) {
+    this.disabled = isDisabled;
+  }
 }

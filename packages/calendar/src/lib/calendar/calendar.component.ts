@@ -34,6 +34,8 @@ export class CalendarComponent extends MonthComponent implements ControlValueAcc
   public weekdays: string[];
   /** The input's placeholder */
   @Input() placeholder = '';
+  /** If true, the date cannot be changed */
+  @Input() disabled;
   /** If true, the time will not be displayed nor will be editable. */
   @Input() disableTime: boolean;
   /** Allowed date input patterns. The first one will be standard. */
@@ -45,9 +47,8 @@ export class CalendarComponent extends MonthComponent implements ControlValueAcc
   constructor(
     @Inject('moment.format.date') public defaultDateFormat,
     @Inject('moment.format.time') public defaultTimeFormat,
-    @Inject('moment.format.month') protected defaultMonthFormat,
-  ) /* public symbol: SymbolService */
-  {
+    @Inject('moment.format.month') protected defaultMonthFormat /* public symbol: SymbolService */,
+  ) {
     /* super(symbol); */
     super(defaultMonthFormat);
     // pattern localization
@@ -76,6 +77,10 @@ export class CalendarComponent extends MonthComponent implements ControlValueAcc
 
   /** Updates the value with the given moment and propagates the change. */
   select(selected) {
+    if (this.disabled) {
+      console.warn('cannot select date: calendar is set to disabled=true');
+      return;
+    }
     if (this.value && selected.hour() === 0 && selected.minute() === 0) {
       const previous = moment(this.value, this.patterns, true);
       selected.hour(previous.hour());
@@ -132,4 +137,8 @@ export class CalendarComponent extends MonthComponent implements ControlValueAcc
 
   /** registerOnTouched implementation of ControlValueAccessor */
   registerOnTouched() {}
+
+  setDisabledState(isDisabled) {
+    this.disabled = isDisabled;
+  }
 }

@@ -96,6 +96,12 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
   }
 
   togglePop(e?, noFocus = false) {
+    if (this.disabled) {
+      if (!this.selection.isEmpty()) {
+        this.editItem(this.selection.display[0], e);
+      }
+      return;
+    }
     if (this.dropdown && this.config && !this.config.disableSearchbar) {
       this.dropdown.show(e);
     } else if (this.resourceListPop && this.config && !this.config.disableListPop) {
@@ -177,12 +183,14 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
       this.useConfig(this.config);
       return;
     }
-    this.config = <CrudConfig<Resource>>(
-      Object.assign(this.resourceConfig.get(this.relation) /* , { size: 5 } */, this.crudConfig, {
+    this.config = <CrudConfig<Resource>>Object.assign(
+      this.resourceConfig.get(this.relation) /* , { size: 5 } */,
+      this.crudConfig,
+      {
         solo: this.solo,
         selectMode: false,
         disableSelectSwitch: true,
-      } as CrudConfig<Resource>)
+      } as CrudConfig<Resource>,
     );
     this.useConfig(this.config);
   }

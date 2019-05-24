@@ -51,6 +51,6 @@
       </li>
     </ul>
     <ec-month [disableDragStart]="disableDragStart" [disableDragEnd]="disableDragEnd" (spanChanged)="spanChanged.emit($event)"
-      [timespan]="timespan" [heatmap]="heatmap" [date]="date" (dayClicked)="select($event)" #grid></ec-month>
+      [timespan]="timespan" [disabled]="disabled" [heatmap]="heatmap" [date]="date" (dayClicked)="select($event)" #grid></ec-month>
   </div>
 </div>

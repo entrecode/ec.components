@@ -46,6 +46,8 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   dragged: Item<T>;
   /** Configuration Object for List */
   @Input() config: ListConfig<T>;
+  /** If true, the input will be disabled */
+  @Input() disabled: ListConfig<T>;
   /** The visible items */
   @Input() value: Array<T> | T;
   /** The used selection */
@@ -359,5 +361,9 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
     Promise.resolve(listComponent.filter(this.config.label, query)).then(() => {
       listComponent.focusFirst();
     });
+  }
+
+  setDisabledState(isDisabled) {
+    this.disabled = isDisabled;
   }
 }
