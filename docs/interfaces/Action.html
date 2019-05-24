@@ -312,6 +312,7 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input, ElementRef, ChangeDetectorRef } from &#x27;@angular/core&#x27;;
 import { SelectComponent } from &#x27;../select/select.component&#x27;;
+import { selectTemplate } from &#x27;../select/select.component.html&#x27;;
 import { ListConfig, List, Item } from &#x27;@ec.components/core&#x27;;
 
 export type ActionFunction &#x3D; (item?: Item&lt;Action&gt; | any, actionbar?: ActionbarComponent) &#x3D;&gt; any;
@@ -329,7 +330,7 @@ export interface ActionbarConfig extends ListConfig&lt;Action&gt; {}
 
 @Component({
   selector: &#x27;ec-actionbar&#x27;,
-  templateUrl: &#x27;../select/select.component.html&#x27;,
+  template: selectTemplate,
 })
 export class ActionbarComponent extends SelectComponent&lt;Action&gt; implements OnInit {
   @Input() root &#x3D; &#x27;ROOT&#x27;; // id of root stack item

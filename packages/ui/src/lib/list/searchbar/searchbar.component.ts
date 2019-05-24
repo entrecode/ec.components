@@ -161,6 +161,7 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
     if (query !== this.latestQuery) {
       this.query = query;
     }
+    /* this.queryValue.next(query); */
     this.cdr.markForCheck();
   }
 

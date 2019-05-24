@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { SelectComponent } from '../select/select.component';
+import { selectTemplate } from '../select/select.component.html';
 import { ListConfig, List, Item } from '@ec.components/core';
 
 export type ActionFunction = (item?: Item<Action> | any, actionbar?: ActionbarComponent) => any;
@@ -17,7 +18,7 @@ export interface ActionbarConfig extends ListConfig<Action> {}
 
 @Component({
   selector: 'ec-actionbar',
-  templateUrl: '../select/select.component.html',
+  template: selectTemplate,
 })
 export class ActionbarComponent extends SelectComponent<Action> implements OnInit {
   @Input() root = 'ROOT'; // id of root stack item

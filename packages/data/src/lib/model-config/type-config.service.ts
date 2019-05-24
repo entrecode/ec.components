@@ -126,10 +126,13 @@ export class TypeConfigService {
     },
     entries: {
       view: 'tags',
-      inputView: 'entries-select',
+      inputView: 'entries-actionbar',
       inputViews: [
         {
           name: 'entries-select',
+        },
+        {
+          name: 'entries-actionbar',
         },
         {
           name: 'entry-list-select',
