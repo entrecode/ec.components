@@ -110,7 +110,7 @@ export class ResourceConfig {
     account: {
       identifier: 'accountID',
       identifierPattern: this.uuid(),
-      label: 'email',
+      label: 'name',
       defaultFilter: 'email',
       permissions: {
         get: 'acc:list',
