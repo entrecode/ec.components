@@ -210,7 +210,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">packages/ui/src/lib/form/form.service.ts:45</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">packages/ui/src/lib/form/form.service.ts:47</a></div>
                             </td>
                         </tr>
 
@@ -305,7 +305,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">packages/ui/src/lib/form/form.service.ts:85</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">packages/ui/src/lib/form/form.service.ts:87</a></div>
                             </td>
                         </tr>
 
@@ -466,7 +466,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">packages/ui/src/lib/form/form.service.ts:53</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">packages/ui/src/lib/form/form.service.ts:55</a></div>
                             </td>
                         </tr>
 
@@ -537,7 +537,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">packages/ui/src/lib/form/form.service.ts:80</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">packages/ui/src/lib/form/form.service.ts:82</a></div>
                             </td>
                         </tr>
 
@@ -692,7 +692,7 @@ Decides based on field config values form, edit and create </p>
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">packages/ui/src/lib/form/form.service.ts:65</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">packages/ui/src/lib/form/form.service.ts:67</a></div>
                             </td>
                         </tr>
 
@@ -812,9 +812,11 @@ export class FormService {
       .filter((field) &#x3D;&gt; this.shouldBePartOfForm(field, form))
       .forEach((field) &#x3D;&gt; {
         const validators &#x3D; this.getValidators(field);
+        let value &#x3D; form.getValue(field.property);
+        value &#x3D; value &#x3D;&#x3D;&#x3D; undefined ? null : value;
         controls[field.property] &#x3D; new FormControl(
           {
-            value: form.getValue(field.property),
+            value,
             disabled: this.isReadOnly(field, form),
           },
           validators,
