@@ -28,9 +28,11 @@ export class FormService {
       .filter((field) => this.shouldBePartOfForm(field, form))
       .forEach((field) => {
         const validators = this.getValidators(field);
+        let value = form.getValue(field.property);
+        value = value === undefined ? null : value;
         controls[field.property] = new FormControl(
           {
-            value: form.getValue(field.property),
+            value,
             disabled: this.isReadOnly(field, form),
           },
           validators,
