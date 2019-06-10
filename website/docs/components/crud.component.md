@@ -30,7 +30,7 @@ clickedMuffin(muffin: Item<EntryResource>) {
 }
 ```
 
-See [Items](../core-concepts/items) for more info.
+See [Items](../core-concepts/items) for more info on the emitted object.
 
 ### config
 
@@ -38,7 +38,9 @@ See [Items](../core-concepts/items) for more info.
 <ec-crud model="muffin" [config]="muffinCrudConfig"></ec-crud>
 ```
 
-### methods
+See [Configuration](../core-concepts/configuration) for other ways to pass configuration.
+
+### config#methods
 
 You can control the available actions by methods
 
@@ -55,15 +57,15 @@ muffinCrudConfig = {
 
 This will disable creating and deleting entries.
 
-#### Default Methods
+**Default Methods**
 
 By default, the crud component will respect the active users permissions, meaning a create button will only be visible if the user is allowed to create entries. The same goes for delete and save buttons. See [Accounts & Rights](../core-concepts/accounts) for more info. If you pass methods to the config, those will always be used.
 
-### createLabel
+### config#createLabel
 
 Changes the Label of the create button
 
-### fields
+### config#fields
 
 The fields option defines which fields should be visible, and how they should look. This will affect the list and form:
 

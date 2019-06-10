@@ -35,18 +35,13 @@ When using the components, you can use the field config for entries or resources
 
 ```ts
 muffinConfig = {
-  fields: {
-    /* [property]: config */ 
-  }
+  fields: muffinFields
 }
 ```
 
-### In Lists
-
 ```html
-<ec-entry-list model="muffin" [config]="muffinConfig"></ec-entry-list>
+<ec-crud model="muffin" [config]="muffinConfig"></ec-crud>
 ```
-
 
 
 ### Available Options
@@ -61,7 +56,6 @@ muffinConfig = {
 | hideInForm | if true, the field will be hidden in the form | boolean |  | X |
 | hideInList | if true, the field will be hidden in the list | boolean | X |  |
 | hideInColumnFilter | if true, the field will be hidden in the column filter of the list-header | boolean | X | |
-| type   | field type   | string    | X | X 
 | filterable   | if true, the field can be filtered from the list-header   | boolean    | X | 
 | sortable   | if true, the field can be sorted from the list-header   | boolean    | X | 
 | filterOperator   | the filterOperator that should be used. See [sdk filter doc](https://entrecode.github.io/ec.sdk/#filter)   | boolean    | X | 
@@ -83,9 +77,27 @@ muffinConfig = {
 | validate | transformation for form validation | transformation function |  | X |
 
 
-### type
+### hidden fields: soft vs hard
 
-## deprecate
+Having read all of the above options (of course), you may have noticed, that there is a form flag and a hideInForm flag, same for list. It may not be obvious to get the difference.
+
+You can imagine the hideInX flags as a "soft" and the other flags as a "hard" hide. The soft hide will load the list field but hide it from the markup. You can then unhide the field from the list column dropdown. The hard hide wont't load the list field at all, meaning you also cannot unhide it. That way is recommended for heavier fields like JSON fields.
+
+It is also important to note that the hard hidden fields wont be available in the form without a full reload when opening the form. When the field is soft hidden, the entry does not need a reload.
+
+If you dont want the user to be able to unhide a soft hidden field, use hideInColumnFilter.
+
+<!-- ### custom list filter
+
+TBD
+
+### custom sort grouping
+
+TBD -->
+
+
+
+<!-- ## deprecate
 
 title
 schema
@@ -97,20 +109,54 @@ view
 read values:
 
 property
+ -->
 
-### Type specific options
+### Complex Example
 
-icon : type action
+```js
+export class MuffinsComponent {
+  constructor(private modelConfig: ModelConfigService) {
+    moment.locale('de'); //set moment locale
 
-maxItems: type tags
+    this.modelConfig.set('muffin', {
+      fields: {
+        pictures: {
+          label: 'Bilder' //this label is shown above the form field and in the table header
+        },
+        name: {
+          label: 'Muffin Name',
+          group: (name) => {
+            return name[0].toUpperCase() //the return value is used to show group headers in a sorted list
+          },
+          required: true //when required, a new entry form cannot be saved without a value set for the field
+        },
+        _created: { //you can also access the system properties
+          label: 'Erstellt',
+          form: false, //this will hide the field inside the form
+          group: (value) => moment(value).format('YYYY')
+        },
+        amazement_factor: {
+          label: 'Amazement Faktor',
+          display: (value) => { //this will transform the value for output e.g. in a list cell
+            return (value * 10) + '%'
+          },
+          group: (value) => {
+            return value > 5 ? 'Größer als 50%' : 'Kleiner als 50%';
+          },
+          validate: (value) => { //this function will run when validating the value inside a form
+            if (typeof value !== 'number') {
+              return; //value is valid
+            }
+            if (value < 1) {
+              return 'Muss mindestens 1 sein'; //this message will be shown above the field
+            } else if (value > 10) {
+              return 'Darf maximal 10 sein';
+            }
+          }
+        },
+      }
+    });
+}
+```
 
-entries, entry: model
-
-relation: resource
-
-select: values
-
-#### label
-
-
-[All Options](https://entrecode.github.io/ec.components/interfaces/FieldConfigProperty.html)
+[See Options in API Docs](https://entrecode.github.io/ec.components/interfaces/FieldConfigProperty.html)
