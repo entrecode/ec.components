@@ -43,7 +43,7 @@ export const formTemplate = `
         >
       </button>
       <ec-loader
-        class="ec-loader ec-loader_overlay ec-loader_global"
+        class="ec-loader loader is-global"
         #formLoader
       ></ec-loader>
     </div>
