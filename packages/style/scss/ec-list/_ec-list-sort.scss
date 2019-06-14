@@ -5,13 +5,13 @@
   justify-content: space-between;
   align-items: center;
   padding: rem(8);
-  color: getColor(text);
+  color: get-color(text);
   font-size: 0.875em;
 
   &.is-sorted-asc {
     .sorting-option-indicator {
       .desc {
-        border-top-color: getColor(text);
+        border-top-color: get-color(text);
       }
     }
   }
@@ -19,7 +19,7 @@
   &.is-sorted-desc {
     .sorting-option-indicator {
       .asc {
-        border-bottom-color: getColor(text);
+        border-bottom-color: get-color(text);
       }
     }
   }
@@ -42,12 +42,12 @@
   }
 
   .asc {
-    border-bottom-color: getColor(text, lightest);
+    border-bottom-color: get-color(text, lightest);
     top: rem(-4);
   }
 
   .desc {
-    border-top-color: getColor(text, lightest);
+    border-top-color: get-color(text, lightest);
     bottom: rem(-4);
   }
 }

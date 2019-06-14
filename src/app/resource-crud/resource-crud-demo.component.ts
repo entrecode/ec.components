@@ -19,8 +19,10 @@ export class ResourceCrudDemoComponent {
   }
 
   async init() {
-    const datamanager = await this.sdk.useDatamanager('83cc6374').then((dm) => dm.getDataManagerResource());
-    console.log('datamanager', datamanager);
+    await this.sdk.ready;
+    const datamanager = await this.sdk
+      .useDatamanager('83cc6374')
+      .then((dm) => this.sdk.datamanager.dataManager(dm.dataManagerID));
     this.crudConfig = {
       identifier: 'accountID',
       label: 'email',

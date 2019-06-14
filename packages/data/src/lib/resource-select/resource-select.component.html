@@ -11,11 +11,11 @@
         <span [class.ec-select-selected]="!solo" [class.ec-select-selected_solo]="solo"
           (click)="clickItem(selected, $event)">
           {{selected.display()}}
-          <a (click)="removeItem(selected,$event);" *ngIf="!config.disableRemove">&times;</a>
+          <a (click)="removeItem(selected,$event);" *ngIf="!config?.disableRemove&&!disabled">&times;</a>
         </span>
       </li>
       <li *ngIf="!config?.disableSearchbar" class="ec-select__searchbar">
-        <ec-searchbar [focusEvent]="focusEvent" [autofocus]="false" [property]="config?.label||dropdownConfig?.label"
+        <ec-searchbar [disabled]="disabled" [focusEvent]="focusEvent" [autofocus]="false" [property]="config?.label||dropdownConfig?.label"
           [placeholder]="placeholder||defaultPlaceholder()" (pasted)="pasteValue($event)"
           (keypressed)="handleKey($event,dropdownList)" (focus)="focus($event)"
           (queryChanged)="filterDropdownList(dropdownList,$event)"></ec-searchbar>
@@ -37,10 +37,10 @@
       *ngIf="solo&&hasMethod('put')&&!selection?.isEmpty()">
       <ec-icon name="pencil"></ec-icon>
     </a>
-    <a (click)="resourcePop.create()" class="btn btn_clear" *ngIf="!config?.disableCreatePop&&hasMethod('post')">
+    <a (click)="resourcePop.create()" class="btn btn_clear" *ngIf="!disabled&&!config?.disableCreatePop&&hasMethod('post')">
       <ec-icon name="add"></ec-icon>
     </a>
-    <a (click)="resourceListPop.show($event)" class="btn btn_clear" *ngIf="!config?.disableListPop&&hasMethod('get')">
+    <a (click)="resourceListPop.show($event)" class="btn btn_clear" *ngIf="!config?.disableListPop&&hasMethod('get')&&!disabled">
       <ec-icon name="find"></ec-icon>
     </a>
   </nav>

@@ -34,3 +34,13 @@
   *ngIf="datamanager"
   [config]="assetSelectConfig"
 ></ec-resource-select>
+
+<h3>Entry Actionbar</h3>
+<ec-entry-actionbar [(ngModel)]="selectedEntries"></ec-entry-actionbar>
+{{ selectedEntries | json}}
+
+<!-- <h3>Resource Actionbar</h3>
+<ec-resource-actionbar></ec-resource-actionbar> -->
+
+<h3>API Actionbar</h3>
+<ec-api-actionbar></ec-api-actionbar>

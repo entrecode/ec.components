@@ -3,6 +3,85 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.44.1](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.44.0...@ec.components/ui@0.44.1) (2019-05-27)
+
+
+### Bug Fixes
+
+* COM-276 ([a581ce2](https://github.com/entrecode/ec.components/commit/a581ce2))
+
+
+
+
+
+# [0.44.0](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.43.4...@ec.components/ui@0.44.0) (2019-05-24)
+
+
+### Features
+
+* entry-actionbar ([786d09b](https://github.com/entrecode/ec.components/commit/786d09b))
+
+
+
+
+
+## [0.43.4](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.43.3...@ec.components/ui@0.43.4) (2019-05-24)
+
+
+### Bug Fixes
+
+* COM-259 ([b6ec56b](https://github.com/entrecode/ec.components/commit/b6ec56b))
+
+
+
+
+
+## [0.43.3](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.43.2...@ec.components/ui@0.43.3) (2019-05-24)
+
+
+### Bug Fixes
+
+* connect disabled state COM-259 ([bbe7ba3](https://github.com/entrecode/ec.components/commit/bbe7ba3))
+
+
+
+
+
+## [0.43.2](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.43.1...@ec.components/ui@0.43.2) (2019-05-24)
+
+
+### Bug Fixes
+
+* disabled state for select inputs ([ac83326](https://github.com/entrecode/ec.components/commit/ac83326))
+* missing readonly states ([52dc850](https://github.com/entrecode/ec.components/commit/52dc850))
+
+
+
+
+
+## [0.43.1](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.43.0...@ec.components/ui@0.43.1) (2019-05-24)
+
+
+### Bug Fixes
+
+* EDITOR-363 ([80eecab](https://github.com/entrecode/ec.components/commit/80eecab))
+
+
+
+
+
+# [0.43.0](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.42.5...@ec.components/ui@0.43.0) (2019-05-03)
+
+
+### Features
+
+* can now seperate inputView and outputView ([2e0756e](https://github.com/entrecode/ec.components/commit/2e0756e))
+* can now set different purpose components ([2d2e536](https://github.com/entrecode/ec.components/commit/2d2e536))
+
+
+
+
+
 ## [0.42.5](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.42.4...@ec.components/ui@0.42.5) (2019-05-03)
 
 

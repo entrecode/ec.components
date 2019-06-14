@@ -117,6 +117,12 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   }
 
   togglePop(e?, noFocus = false) {
+    if (this.disabled) {
+      if (!this.selection.isEmpty()) {
+        this.editItem(this.selection.display[0], e);
+      }
+      return;
+    }
     this.ready.then(() => {
       if (this.dropdown) {
         this.dropdown.show(e);

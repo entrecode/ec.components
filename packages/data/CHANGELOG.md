@@ -3,6 +3,103 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.49.1](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.49.0...@ec.components/data@0.49.1) (2019-05-27)
+
+**Note:** Version bump only for package @ec.components/data
+
+
+
+
+
+# [0.49.0](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.48.6...@ec.components/data@0.49.0) (2019-05-24)
+
+
+### Features
+
+* entry-actionbar ([786d09b](https://github.com/entrecode/ec.components/commit/786d09b))
+
+
+
+
+
+## [0.48.6](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.48.5...@ec.components/data@0.48.6) (2019-05-24)
+
+**Note:** Version bump only for package @ec.components/data
+
+
+
+
+
+## [0.48.5](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.48.4...@ec.components/data@0.48.5) (2019-05-24)
+
+**Note:** Version bump only for package @ec.components/data
+
+
+
+
+
+## [0.48.4](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.48.3...@ec.components/data@0.48.4) (2019-05-24)
+
+
+### Bug Fixes
+
+* disabled state for select inputs ([ac83326](https://github.com/entrecode/ec.components/commit/ac83326))
+* missing readonly states ([52dc850](https://github.com/entrecode/ec.components/commit/52dc850))
+
+
+
+
+
+## [0.48.3](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.48.2...@ec.components/data@0.48.3) (2019-05-24)
+
+
+### Bug Fixes
+
+* EDITOR-364 ([62162b7](https://github.com/entrecode/ec.components/commit/62162b7))
+
+
+
+
+
+## [0.48.2](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.48.1...@ec.components/data@0.48.2) (2019-05-03)
+
+
+### Bug Fixes
+
+* json + location now really reverted ([3fe4aaf](https://github.com/entrecode/ec.components/commit/3fe4aaf))
+
+
+
+
+
+## [0.48.1](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.48.0...@ec.components/data@0.48.1) (2019-05-03)
+
+
+### Bug Fixes
+
+* json + location ([01d1130](https://github.com/entrecode/ec.components/commit/01d1130))
+
+
+
+
+
+# [0.48.0](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.47.9...@ec.components/data@0.48.0) (2019-05-03)
+
+
+### Bug Fixes
+
+* can now edit json + location ([388924d](https://github.com/entrecode/ec.components/commit/388924d))
+
+
+### Features
+
+* beforeSave for entry fields ([846039a](https://github.com/entrecode/ec.components/commit/846039a))
+* can now set different purpose components ([2d2e536](https://github.com/entrecode/ec.components/commit/2d2e536))
+
+
+
+
+
 ## [0.47.9](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.47.8...@ec.components/data@0.47.9) (2019-05-03)
 
 

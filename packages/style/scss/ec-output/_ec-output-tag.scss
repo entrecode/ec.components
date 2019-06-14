@@ -2,7 +2,7 @@
 // @param {px} $ec-output-tag-line-height [$tag-line-height]
 // @param {value} $ec-output-tag-weight [$tag-weight]
 // @param {color} $ec-output-tag-background [$tag-background]
-// @param {color} $ec-output-tag-color [setContrast($tag-background)]
+// @param {color} $ec-output-tag-color [set-contrast($tag-background)]
 // @param {px} $ec-output-tag-min-height [$tag-min-height]
 // @param {number} $ec-output-tag-padding-ratio [$tag-padding-ratio]
 // @param {array} $ec-output-tag-style
@@ -12,7 +12,7 @@
     display: inline-block;
     text-align: center;
     @include inject-style($ec-output-tag-style);
-    @include atom-metrics(
+    @include metrics(
       $ec-output-tag-font-size,
       $ec-output-tag-line-height,
       $ec-output-tag-min-height,

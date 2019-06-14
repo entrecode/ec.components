@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.14](https://github.com/entrecode/ec.components/compare/@ec.components/ace@0.6.13...@ec.components/ace@0.6.14) (2019-05-03)
+
+**Note:** Version bump only for package @ec.components/ace
+
+
+
+
+
 ## [0.6.13](https://github.com/entrecode/ec.components/compare/@ec.components/ace@0.6.12...@ec.components/ace@0.6.13) (2019-04-26)
 
 

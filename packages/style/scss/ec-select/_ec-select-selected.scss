@@ -1,5 +1,5 @@
 // @param {color} $ec-select-selected-background [$tag-background]
-// @param {color} $ec-select-selected-color [setContrast($ec-select-selected-background)]
+// @param {color} $ec-select-selected-color [set-contrast($ec-select-selected-background)]
 // @param {number} $ec-select-selected-padding-ratio [$tag-padding-ratio]
 // @param {px} $ec-select-selected-font-size [$tag-font-size]
 // @param {px} $ec-select-selected-line-height [$tag-line-height]
@@ -12,7 +12,7 @@
   align-items: center;
   white-space: nowrap;
   @include inject-style($ec-select-selected-style);
-  @include atom-metrics(
+  @include metrics(
     $ec-select-selected-font-size,
     $ec-select-selected-line-height,
     $ec-select-selected-min-height,

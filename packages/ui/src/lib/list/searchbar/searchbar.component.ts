@@ -25,6 +25,8 @@ import { ListComponent } from '../list.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChanges {
+  /** If true, the input wont be editable */
+  @Input() disabled: boolean;
   /** Searchbar placeholder */
   @Input() placeholder: string;
   /** Default placeholder when no placeholder is given */
@@ -159,6 +161,7 @@ export class SearchbarComponent implements AfterViewInit, Focus, OnInit, OnChang
     if (query !== this.latestQuery) {
       this.query = query;
     }
+    /* this.queryValue.next(query); */
     this.cdr.markForCheck();
   }
 

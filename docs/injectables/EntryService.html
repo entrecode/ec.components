@@ -399,8 +399,8 @@ changes.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="101"
-                            class="link-to-prism">packages/data/src/lib/entry/entry.service.ts:101</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="100"
+                            class="link-to-prism">packages/data/src/lib/entry/entry.service.ts:100</a></div>
                 </td>
             </tr>
 
@@ -483,8 +483,8 @@ changes.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="115"
-                            class="link-to-prism">packages/data/src/lib/entry/entry.service.ts:115</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="114"
+                            class="link-to-prism">packages/data/src/lib/entry/entry.service.ts:114</a></div>
                 </td>
             </tr>
 
@@ -957,13 +957,12 @@ export class EntryService {
           // filter system properties
           delete value[key];
         }
-        if (
-          config &amp;&amp;
-          config.fields &amp;&amp;
-          config.fields[key] &amp;&amp;
-          (config.fields[key].immutable || (cleanReadOnly &amp;&amp; config.fields[key].readOnly))
-        ) {
-          delete value[key];
+        if (config &amp;&amp; config.fields &amp;&amp; config.fields[key]) {
+          if (config.fields[key].immutable || (cleanReadOnly &amp;&amp; config.fields[key].readOnly)) {
+            delete value[key];
+          } else if (config.fields[key].beforeSave) {
+            value[key] &#x3D; config.fields[key].beforeSave(value[key], config.fields[key], value);
+          }
         }
       }
     }

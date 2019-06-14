@@ -24,6 +24,7 @@ import { ResourceModule } from './resource/resource.module';
 import { HistoryService } from './sdk/history.service';
 import { SdkModule } from './sdk/sdk.module';
 import { EntryListSelectComponent } from './entry-list-select/entry-list-select.component';
+import { EntryActionbarComponent } from './entry-actionbar/entry-actionbar.component';
 
 export const dataModuleConfig = {
   entryComponents: [
@@ -31,6 +32,7 @@ export const dataModuleConfig = {
     DefaultEntryOutputComponent,
     AdminEntryInputComponent,
     EntrySelectComponent,
+    EntryActionbarComponent,
     EntryListSelectComponent,
     EntryListPopComponent,
   ],
@@ -46,6 +48,7 @@ export const dataModuleConfig = {
     EntryListSelectComponent,
     CrudComponent,
     EntrySelectComponent,
+    EntryActionbarComponent,
     EntryListPopComponent,
   ],
   imports: [FormsModule, CommonModule, UiModule, SdkModule, FilesModule, AuthModule, ResourceModule, DndModule],
@@ -57,6 +60,7 @@ export const dataModuleConfig = {
     EntryPopComponent,
     CrudComponent,
     EntrySelectComponent,
+    EntryActionbarComponent,
     EntryListSelectComponent,
     EntryListPopComponent,
     RouterModule,

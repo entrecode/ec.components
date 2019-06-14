@@ -83,6 +83,8 @@ export class SelectDemoComponent {
   ];
   otto;
   ottostart: any[];
+  newActions = ['Hello', 'Thats that'];
+
   tagSelect = [
     {
       id: 'west',
@@ -99,6 +101,72 @@ export class SelectDemoComponent {
       ],
     },
   ];
+
+  vaderFight(stack?, actionbar?) {
+    actionbar.placeholder = 'Darth Vader Appears! What will you do?';
+    const weapon = actionbar.selection.id('weapon');
+    return [
+      {
+        id: 'vader',
+        select: false,
+        health: 100,
+        title: 'Attack with ' + weapon.resolve('title'),
+        action: (vader, bar) => {
+          if (weapon.resolve('hitChance') > Math.random()) {
+            vader.body.health -= weapon.resolve('damage');
+            if (vader.body.health <= 0) {
+              bar.placeholder = 'You killed Darth Vader! YOU WIN!!!';
+              bar.loadActions([{ title: 'Restart', id: 'restart', action: (a, b) => bar.reset() }]);
+            } else {
+              bar.placeholder = 'Darth Vader has been hit! (' + vader.resolve('health') + '/100)';
+            }
+          } else {
+            bar.placeholder = 'You missed!';
+          }
+        },
+      },
+    ];
+  }
+
+  getWeapons(stack?, actionbar?) {
+    console.log('weapon', stack, actionbar);
+    const char = actionbar.selection.id('character');
+    return [
+      {
+        id: 'weapon',
+        title: 'Lightsaber',
+        hitChance: 0.7,
+        damage: 55,
+        jedi: true,
+        children: (s, a) => this.vaderFight(s, a),
+      },
+      {
+        id: 'weapon',
+        title: 'Blaster',
+        damage: 30,
+        hitChance: 0.4,
+        children: (s, a) => this.vaderFight(s, a),
+      },
+    ].filter((w) => !w.jedi || !!char.resolve('jedi'));
+  }
+
+  asyncActions = (stack, actionbar) => {
+    console.log('load', stack);
+    actionbar.placeholder = 'select name';
+    return [
+      {
+        id: 'character',
+        title: 'Han Solo',
+        children: (s, bar) => this.getWeapons(s, bar),
+      },
+      {
+        id: 'character',
+        title: 'Luke Skywalker',
+        jedi: true,
+        children: (s, bar) => this.getWeapons(s, bar),
+      },
+    ];
+  };
 
   constructor(public notificationService: NotificationsService) {
     console.log('karlott', karlotto);
@@ -135,5 +203,9 @@ export class SelectDemoComponent {
       title: q
     }) */
     bar.reload();
+  }
+
+  enter(q, bar) {
+    console.log('enter', q, bar);
   }
 }

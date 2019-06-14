@@ -263,8 +263,8 @@ set method. </p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="209"
-                            class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:209</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="210"
+                            class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:210</a></div>
                 </td>
             </tr>
 
@@ -431,8 +431,8 @@ or just specific components. </p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="142"
-                            class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:142</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="143"
+                            class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:143</a></div>
                 </td>
             </tr>
 
@@ -505,8 +505,8 @@ This config is meant to deliver the default behaviour when nothing else is confi
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="240"
-                            class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:240</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="241"
+                            class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:241</a></div>
                 </td>
             </tr>
 
@@ -573,8 +573,8 @@ This config is meant to deliver the default behaviour when nothing else is confi
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="121"
-                            class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:121</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="122"
+                            class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:122</a></div>
                 </td>
             </tr>
 
@@ -977,7 +977,7 @@ If a config is given, the property config is merged via Object.assign. </p>
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 import { Config, FieldConfig, Item } from &#x27;@ec.components/core&#x27;;
-import { SymbolService } from &#x27;@ec.components/ui&#x27;;
+import { SymbolService, DefaultInputComponent } from &#x27;@ec.components/ui&#x27;;
 import { fields } from &#x27;ec.sdk/lib/PublicAPI&#x27;;
 import EntryResource from &#x27;ec.sdk/lib/resources/publicAPI/EntryResource&#x27;;
 import { CrudConfig } from &#x27;../crud/crud-config.interface&#x27;;
@@ -1085,7 +1085,8 @@ export class ModelConfigService extends Config {
         immutable: true,
         hideInList: true,
         filterable: true,
-        input: AdminEntryInputComponent,
+        filterComponent: AdminEntryInputComponent,
+        formComponent: DefaultInputComponent,
         output: DefaultEntryOutputComponent,
         readOnly: true,
         filterPopClass: &#x27;ec-pop_dialog&#x27;,

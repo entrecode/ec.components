@@ -31,6 +31,8 @@ export class LocationPickerComponent extends DefaultInputComponent implements Co
   @ViewChild(LocationSearchComponent) search: LocationSearchComponent;
   /** Form input component */
   input: InputComponent;
+  /** readonly? */
+  @Input() disabled: boolean;
 
   constructor(
     public geocodeService: GeocodeService,
@@ -81,4 +83,8 @@ export class LocationPickerComponent extends DefaultInputComponent implements Co
   }
 
   registerOnTouched() {}
+
+  setDisabledState(isDisabled) {
+    this.disabled = isDisabled;
+  }
 }
