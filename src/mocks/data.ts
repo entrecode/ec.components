@@ -213,7 +213,7 @@ export const mocked = {
             resolve: () => ' ',
             view: 'link',
             class: 'btn btn_outlined',
-            icon: 'binoculars',
+            icon: 'eye-open',
             action: (item, property) => {
               console.log('clicked button', item, property);
             },
