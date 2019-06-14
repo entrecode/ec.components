@@ -1,6 +1,6 @@
 <div *ngIf="active" [ngClass]="type+' '+classes" [class.is-active]="!backdrop&&active" [attr.data-col]="columns">
     <button (click)="hide()" type="button" [ngClass]="type+'-dismiss'">
-        <ec-icon name="close-x-big"></ec-icon>
+        <ec-icon name="close"></ec-icon>
     </button>
     <div [ngClass]="type+'-header'">
         <ng-content select=".modal-header,header"></ng-content>

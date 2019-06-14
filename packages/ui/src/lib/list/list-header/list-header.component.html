@@ -29,7 +29,7 @@
       *ngIf="list?.isFiltered(filteredField.property)"
     >
       <!-- <a class="btn btn_clear" (click)="filterPop.hide()"> -->
-      <ec-icon name="close-x"></ec-icon>
+      <ec-icon name="close"></ec-icon>
     </a>
 
     <div tabindex="0" class="dropdown dropdown_right">
@@ -146,7 +146,7 @@
             [class.is-hidden]="field.hideInColumnFilter"
           >
             <span (click)="toggleVisibility(field)">
-              <ec-icon [name]="field.hideInList ? 'square' : 'check-box'">{{
+              <ec-icon [name]="field.hideInList ? 'checkbox-off' : 'checkmark-square'">{{
                 field.getLabel()
               }}</ec-icon>
             </span>

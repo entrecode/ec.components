@@ -30,20 +30,20 @@
   </div>
 
   <div class="ec-output-asset" *ngSwitchCase="'asset'" [class.is-true]="item?.resolve(field.property)">
-    <ec-icon name="tape"></ec-icon>
+    <ec-icon name="image"></ec-icon>
   </div>
 
   <div class="ec-output-assets" *ngSwitchCase="'assets'" [class.is-true]="item?.resolve(field.property)">
-    <ec-icon name="tape"></ec-icon>
+    <ec-icon name="images"></ec-icon>
     <strong>{{ item?.resolve(field.property)?.length }}</strong>
   </div>
 
   <div class="ec-output-asset" *ngSwitchCase="'dmAsset'" [class.is-true]="item?.resolve(field.property)">
-    <ec-icon name="img"></ec-icon>
+    <ec-icon name="image"></ec-icon>
   </div>
 
   <div data-flex class="ec-output-assets" *ngSwitchCase="'dmAssets'" [class.is-true]="item?.resolve(field.property)">
-    <ec-icon name="img"></ec-icon>
+    <ec-icon name="images"></ec-icon>
     <strong>{{ item?.resolve(field.property)?.length }}</strong>
   </div>
 

@@ -1,2 +1,3 @@
-<span *ngIf="!icon?.content" class="ec-icon" [ngClass]="icon?.name"><ng-content></ng-content></span>
-<span *ngIf="icon?.content">{{icon.content}}</span>
+<!-- <span *ngIf="!icon?.content" class="ec-icon" [ngClass]="icon?.name"><ng-content></ng-content></span> -->
+<span *ngIf="icon?.content">{{ icon.content }}</span>
+<svg *ngIf="!icon?.content" class="ixo"><use [attr.xlink:href]="'#' + icon?.name"></use></svg>
