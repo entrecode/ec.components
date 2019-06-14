@@ -39,14 +39,38 @@ module.exports = {
               label: 'Docs',
               to: 'project-setup/getting-started',
             },
+            {
+              label: 'API Docs',
+              href: 'https://entrecode.github.io/ec.components/',
+            },
+            {
+              label: 'Changelog',
+              href: 'https://entrecode.github.io/ec.components/changelog.html',
+            },
+            {
+              label: 'Demos',
+              href: 'https://components.entrecode.de/',
+            },
           ],
         },
         {
-          title: 'Community',
+          title: 'Other Resources',
           items: [
             {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
+              label: 'x.ui',
+              href: 'https://entrecode.github.io/x.ui/',
+            },
+            {
+              label: 'ec.sdk',
+              href: 'https://github.com/entrecode/ec.sdk',
+            },
+            {
+              label: 'ec.doc',
+              href: 'https://doc.entrecode.de/',
+            },
+            {
+              label: 'entrecode',
+              href: 'https://entrecode.de/',
             },
           ],
         },
@@ -57,14 +81,18 @@ module.exports = {
               label: 'Blog',
               to: 'blog',
             },
+            {
+              label: 'Github',
+              href: 'https://github.com/entrecode/ec.components',
+            },
           ],
         },
       ],
-      logo: {
-        alt: 'Facebook Open Source Logo',
-        src: 'https://docusaurus.io/img/oss_logo.png',
-      },
-      copyright: `Copyright © ${new Date().getFullYear()} Facebook, Inc.`,
+      /* logo: {
+        alt: 'entrecode',
+        src: 'img/ec_logo.png',
+      }, */
+      copyright: `Copyright © ${new Date().getFullYear()} entrecode`,
     },
   },
   presets: [

@@ -1,16 +1,10 @@
 ---
-title: Hello
-author: Endilie Yacop Sucipto
-authorTitle: Maintainer of Docusaurus
-authorURL: https://github.com/endiliey
-authorImageURL: https://avatars1.githubusercontent.com/u/17883920?s=460&v=4
-authorTwitter: endiliey
+title: New Components Docs
+author: felixroos
+authorURL: https://github.com/felixroos
+authorImageURL: https://avatars2.githubusercontent.com/u/12023032?s=460&v=4
 ---
 
-Welcome to this blog. This blog is created with [**Docusaurus 2 alpha**](https://v2.docusaurus.io/).
+The new ec.components doc are now here. Made with [**Docusaurus 2 alpha**](https://v2.docusaurus.io/).
 
-<!--truncate-->
-
-This is a test post.
-
-A whole bunch of other information.
+This little Blog will act as a digested version of the [changelog](https://entrecode.github.io/ec.components/changelog.html).
