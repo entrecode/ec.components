@@ -1,7 +1,7 @@
 // @param {array} $ec-pop-dialog-spacing [$base-spacing]
 .ec-pop_dialog {
   > .ec-pop-container {
-    padding: arrayMagic($ec-pop-dialog-spacing);
+    padding: array-magic($ec-pop-dialog-spacing);
     position: fixed;
     z-index: 9999;
     top: 0;
@@ -28,8 +28,8 @@
     // @param {array} $ec-pop-dialog-style
     > .ec-pop {
       @include inject-style($ec-pop-dialog-style);
-      box-shadow: arrayMagic($ec-pop-dialog-shadow);
-      border-radius: arrayMagic($ec-pop-dialog-radius);
+      box-shadow: array-magic($ec-pop-dialog-shadow);
+      border-radius: array-magic($ec-pop-dialog-radius);
       background: $ec-pop-dialog-background;
       color: $ec-pop-dialog-color;
 

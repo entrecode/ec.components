@@ -5,8 +5,8 @@
 .ec-tabs {
   @include inject-style($ec-tabs-style);
   background: $ec-tabs-background;
-  margin: arrayMagic($ec-tabs-spacing);
-  padding: arrayMagic($ec-tabs-padding);
+  margin: array-magic($ec-tabs-spacing);
+  padding: array-magic($ec-tabs-padding);
 }
 
 // @param {color} $ec-tabs-nav-background [$xui-tabs-nav-background]
@@ -16,8 +16,8 @@
 .ec-tabs-nav {
   @include inject-style($ec-tabs-nav-style);
   background: $ec-tabs-nav-background;
-  margin: arrayMagic($ec-tabs-nav-spacing);
-  padding: arrayMagic($ec-tabs-nav-padding);
+  margin: array-magic($ec-tabs-nav-spacing);
+  padding: array-magic($ec-tabs-nav-padding);
 
   > ul {
     list-style: none;
@@ -36,7 +36,7 @@
 .ec-tabs-nav-item {
   position: relative;
   text-align: center;
-  padding: arrayMagic($ec-tabs-nav-items-gutter);
+  padding: array-magic($ec-tabs-nav-items-gutter);
 
   @supports not (display: flex) {
     display: inline-block;
@@ -53,11 +53,11 @@
     display: block;
     text-align: center;
     @include inject-style($ec-tabs-nav-item-style);
-    border-radius: arrayMagic($ec-tabs-nav-item-radius);
+    border-radius: array-magic($ec-tabs-nav-item-radius);
     background: $ec-tabs-nav-item-background;
     color: $ec-tabs-nav-item-color;
     font-weight: $ec-tabs-nav-item-weight;
-    padding: arrayMagic($ec-tabs-nav-item-padding);
+    padding: array-magic($ec-tabs-nav-item-padding);
 
     // @param {color} $ec-tabs-nav-item-hover-background [$xui-tabs-nav-item-hover-background]
     // @param {color} $ec-tabs-nav-item-hover-color [$xui-tabs-nav-item-hover-color]
@@ -88,6 +88,6 @@
 .ec-tab {
   @include inject-style($ec-tab-style);
   background: $ec-tab-background;
-  margin: arrayMagic($ec-tab-spacing);
-  padding: arrayMagic($ec-tab-padding);
+  margin: array-magic($ec-tab-spacing);
+  padding: array-magic($ec-tab-padding);
 }

@@ -16,7 +16,6 @@
       (changed)="setFilter(filteredField, $event)"
       [lazy]="true"
       [component]="filteredField.getComponent('filter') || filteredField.input"
-      class="has-width-full"
       [field]="filteredField"
       [group]="filterForm?.group"
       [debounce]="200"

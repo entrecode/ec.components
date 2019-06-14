@@ -13,13 +13,13 @@
     @include inject-style($ec-input-color-style);
     width: rem($ec-input-color-size);
     height: rem($ec-input-color-size);
-    border: arrayMagic($ec-input-color-border);
+    border: array-magic($ec-input-color-border);
 
     // @param {boolean} $ec-input-color-round [$input-round]
     // @param {px} $ec-input-color-radius [$input-radius]
-    border-radius: arrayMagic($ec-input-color-radius);
+    border-radius: array-magic($ec-input-color-radius);
     @if $ec-input-color-round == true {
-      border-radius: arrayMagic($ec-input-color-size / 2);
+      border-radius: array-magic($ec-input-color-size / 2);
     }
 
     &::after {

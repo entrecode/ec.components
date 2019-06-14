@@ -34,12 +34,12 @@
   border-color: $ec-select-border-color;
   border-width: rem($ec-select-border-width);
   border-style: $ec-select-border-style;
-  margin: arrayMagic($ec-select-spacing); // @param {boolean} $ec-select-round [$input-round]
+  margin: array-magic($ec-select-spacing); // @param {boolean} $ec-select-round [$input-round]
   // @param {array} $ec-select-radius [$xui-select-radius]
   @if $ec-select-round {
-    border-radius: arrayMagic($ec-select-min-height / 2);
+    border-radius: array-magic($ec-select-min-height / 2);
   } @else {
-    border-radius: arrayMagic($ec-select-radius);
+    border-radius: array-magic($ec-select-radius);
   }
 
   &.is-focus {

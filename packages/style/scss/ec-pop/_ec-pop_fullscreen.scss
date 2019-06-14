@@ -11,7 +11,7 @@
     flex-direction: column;
     align-items: center;
     align-content: center;
-    padding: arrayMagic($ec-pop-fullscreen-spacing);
+    padding: array-magic($ec-pop-fullscreen-spacing);
 
     // @param {color} $ec-pop-fullscreen-background [$ec-pop-background]
     // @param {color} $ec-pop-fullscreen-color [$ec-pop-color]
@@ -23,8 +23,8 @@
     // @param {array} $ec-pop-fullscreen-style
     > .ec-pop {
       @include inject-style($ec-pop-fullscreen-style);
-      box-shadow: arrayMagic($xui-overlay-shadow);
-      border-radius: arrayMagic($ec-pop-fullscreen-radius);
+      box-shadow: array-magic($xui-overlay-shadow);
+      border-radius: array-magic($ec-pop-fullscreen-radius);
       background: $ec-pop-fullscreen-background;
       color: $ec-pop-fullscreen-color;
       width: 100%;

@@ -17,10 +17,10 @@
   @include is-scrollable(y, contain, auto);
   font-size: rem($base-font-size);
   max-height: rem($ec-select-options-max-height);
-  margin: arrayMagic($ec-select-options-spacing);
-  padding: arrayMagic($ec-select-options-padding);
-  box-shadow: arrayMagic($ec-select-options-shadow);
-  border-radius: arrayMagic($ec-select-options-radius);
+  margin: array-magic($ec-select-options-spacing);
+  padding: array-magic($ec-select-options-padding);
+  box-shadow: array-magic($ec-select-options-shadow);
+  border-radius: array-magic($ec-select-options-radius);
   background: $ec-select-options-background;
 
   &.is-active {
@@ -56,11 +56,11 @@
     box-shadow: none;
     outline: none;
     @include inject-style($ec-select-option-style);
-    border-radius: arrayMagic($ec-select-option-radius);
+    border-radius: array-magic($ec-select-option-radius);
     color: $ec-select-option-color;
     background: $ec-select-option-background;
-    padding: arrayMagic($ec-select-option-padding);
-    margin: arrayMagic($ec-select-option-spacing);
+    padding: array-magic($ec-select-option-padding);
+    margin: array-magic($ec-select-option-spacing);
 
     &:hover,
     &.is-focus {
@@ -73,8 +73,8 @@
       background: $ec-select-option-selected-background;
 
       &.is-focus {
-        color: setHover($ec-select-option-selected-color);
-        background: setHover($ec-select-option-selected-background);
+        color: set-hover($ec-select-option-selected-color);
+        background: set-hover($ec-select-option-selected-background);
       }
     }
   }

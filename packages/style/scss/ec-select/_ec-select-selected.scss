@@ -27,7 +27,7 @@
   @if $ec-select-selected-round {
     border-radius: rem($ec-select-selected-min-height / 2);
   } @else {
-    border-radius: arrayMagic($ec-select-selected-radius);
+    border-radius: array-magic($ec-select-selected-radius);
   }
 
   a {
@@ -38,7 +38,7 @@
   }
 
   &:hover {
-    background: setHover($ec-select-selected-background);
+    background: set-hover($ec-select-selected-background);
 
     a {
       opacity: 1;
@@ -91,7 +91,7 @@
     @if $ec-select-selected-round {
       border-radius: rem($ec-select-selected-min-height / 2);
     } @else {
-      border-radius: arrayMagic($ec-select-selected-radius);
+      border-radius: array-magic($ec-select-selected-radius);
     }
   }
 }

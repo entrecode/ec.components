@@ -4,8 +4,8 @@
   <ec-upload-select [custom]="config?.customUpload" #uploadSelect (uploaded)="fileService.selectUpload($event,selection)"
     (browse)="assetListPop.show()" [config]="config" [readOnly]="readOnly" [assetGroupID]="assetGroupID" [options]="config?.fileOptions"></ec-upload-select>
   <div *ngIf="selection.items.length" class="ec-asset-selected">
-    <ul class="ec-asset-selected__items" data-grid="small" dndDropzone (dndDrop)="onDrop($event)">
-      <li *ngFor="let selected of selection.items" class="ec-asset-selected__item" data-col="3-sm" [dndDisableIf]="solo||config?.disableDrag"
+    <ul class="ec-asset-selected__items" data-grid="small-gutter" dndDropzone (dndDrop)="onDrop($event)">
+      <li *ngFor="let selected of selection.items" class="ec-asset-selected__item" data-col="3@sm" [dndDisableIf]="solo||config?.disableDrag"
         [class.is-dragged]="selected===dragged" dndEffectAllowed="move" [dndDraggable]="selected.id()" (dndStart)="onDragStart(selected,$event,item)"
         (dndCanceled)="cancelDrag(selected,$event,item)" (dndEnd)="cancelDrag(selected,$event,item)" #item>
         <div class="ec-asset-card">
@@ -17,7 +17,7 @@
           </nav>
         </div>
       </li>
-      <li dndPlaceholderRef class="ec-asset-selected__item" data-col="3-sm">
+      <li dndPlaceholderRef class="ec-asset-selected__item" data-col="3@sm">
         <div class="ec-asset-card">
           <div class="drag-placeholder"></div>
         </div>
