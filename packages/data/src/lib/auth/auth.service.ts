@@ -70,9 +70,9 @@ export class AuthService {
   /** checks given public permission for given api, defaults to this.sdk.api. Also works as ec user */
   checkPermission(permission: string, api?) {
     return this.sdk.ready.then((user) => {
-      if (!user) {
+      /* if (!user) {
         return false;
-      }
+      } */
       api = api || this.sdk.api;
       return api.checkPermission(permission);
     });
