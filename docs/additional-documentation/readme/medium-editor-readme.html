@@ -47,7 +47,7 @@
 
 
 
-<h1 id="-ec-components-medium-editor">@ec.components/medium-editor</h1>
+<h1 id="eccomponentsmedium-editor">@ec.components/medium-editor</h1>
 <p>This package wraps the <a href="https://github.com/yabwe/medium-editor">medium-editor</a> as an Angular Directive.</p>
 <h2 id="overview">Overview</h2>
 <ul>
@@ -56,18 +56,24 @@
 </ul>
 <h2 id="installation">Installation</h2>
 <h3 id="1-install-package">1. Install package</h3>
-<div><pre class="line-numbers"><code class="language-sh">npm install &#64;ec.components/medium-editor --save</code></pre></div><h3 id="2-add-module">2. Add Module</h3>
-<div><pre class="line-numbers"><code class="language-js">import { MediumModule } from &#39;&#64;ec.components/medium-editor&#39;;
-
-&#64;NgModule({
+<p><code>sh
+npm install @ec.components/medium-editor --save</code></p>
+<h3 id="2-add-module">2. Add Module</h3>
+<p>```js
+import { MediumModule } from &#39;@ec.components/medium-editor&#39;;</p>
+<p>@NgModule({
   imports: [
     MediumModule
   ]
 })
 export class AppModule {
-}</code></pre></div><h3 id="3-use-it">3. Use it</h3>
-<div><pre class="line-numbers"><code class="language-html"> &lt;ec-medium-editor [(model)]=&quot;myHTML&quot;
-         [options]=&quot;{&#39;toolbar&#39;: {&#39;buttons&#39;: [&#39;bold&#39;, &#39;italic&#39;, &#39;underline&#39;, &#39;h1&#39;, &#39;h2&#39;, &#39;h3&#39;]}}&quot;&gt;&lt;/ec-medium-editor&gt;</code></pre></div>
+}
+```</p>
+<h3 id="3-use-it">3. Use it</h3>
+<p><code>html
+ &lt;ec-medium-editor [(model)]=&quot;myHTML&quot;
+         [options]=&quot;{&#39;toolbar&#39;: {&#39;buttons&#39;: [&#39;bold&#39;, &#39;italic&#39;, &#39;underline&#39;, &#39;h1&#39;, &#39;h2&#39;, &#39;h3&#39;]}}&quot;&gt;&lt;/ec-medium-editor&gt;</code></p>
+
                    </div><div class="search-results">
     <div class="has-results">
         <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>

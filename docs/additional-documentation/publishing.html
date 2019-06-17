@@ -53,15 +53,19 @@ Make sure you have a project running that follows the Setup Tutorial.</p>
 <h2 id="login">Login</h2>
 <h3 id="1-create-a-new-route">1. Create a new Route</h3>
 <p>Refer to the routes tutorial. We create a route called login with a LoginComponent.</p>
-<h3 id="2-add-route-redirect-to-login-component-ts-">2. Add route redirect to login.component.ts:</h3>
-<div><pre class="line-numbers"><code class="language-js">  constructor(public router: Router) {
-  }
-
-  redirect() {
+<h3 id="2-add-route-redirect-to-logincomponentts">2. Add route redirect to login.component.ts:</h3>
+<p>```js
+  constructor(public router: Router) {
+  }</p>
+<p>  redirect() {
     this.router.navigate([&#39;profile&#39;])
-  }</code></pre></div><h3 id="3-add-login-component-to-template">3. Add Login Component to template</h3>
+  }
+```</p>
+<h3 id="3-add-login-component-to-template">3. Add Login Component to template</h3>
 <p>Use this in your login.component.html template:</p>
-<div><pre class="line-numbers"><code class="language-html">&lt;ec-login (success)=&quot;redirect()&quot;&gt;&lt;/ec-login&gt;</code></pre></div>
+<p><code>html
+&lt;ec-login (success)=&quot;redirect()&quot;&gt;&lt;/ec-login&gt;</code></p>
+
                    </div><div class="search-results">
     <div class="has-results">
         <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
