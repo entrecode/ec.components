@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.49.2](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.49.1...@ec.components/data@0.49.2) (2019-06-17)
+
+
+### Bug Fixes
+
+* EDITOR-371 always check permissions ([a6a63b7](https://github.com/entrecode/ec.components/commit/a6a63b7))
+
+
+
+
+
 ## [0.49.1](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.49.0...@ec.components/data@0.49.1) (2019-05-27)
 
 **Note:** Version bump only for package @ec.components/data

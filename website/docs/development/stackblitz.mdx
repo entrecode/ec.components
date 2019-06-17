@@ -1,0 +1,69 @@
+---
+id: stackblitz
+title: Stackblitz Snippets
+sidebar_label: Stackblitz
+---
+
+## Embeding Snippets to the doc via the Stackblitz Component
+
+/* import { Stackblitz } from 'react-stackblitz-snippet/index.jsx'; */
+
+To add a code snippet that should be editable/openable via [Stackblitz](https://stackblitz.com/), use the Stackblitz Component inside an mdx file:
+
+```html
+import { Stackblitz } from 'react-stackblitz-snippet';
+<Stackblitz>
+  <file name="index.html" content="<h1>Hello</h1>" />
+  <file name="index.ts" open>console.log("hello stackblitz!!");</file>
+</Stackblitz>
+```
+
+This will use the [Stackblitz SDK](https://stackblitz.com/docs#open-and-embed-stackblitz-projects) to load the specified files into an iframe:
+
+<!-- <Stackblitz>
+  <file name="index.html" content="<h1>Hello</h1>" open />
+  <file name="index.ts">console.log("hello stackblitz!!");</file>
+</Stackblitz> -->
+
+The **open** flag on a file tells the SDK to open that file by default. You can also pass options to the Stackblitz component.
+
+<!-- ## Embeding ec.components
+
+```
+componentsStackblitz
+```
+ -->
+
+## Components Stackblitz
+
+- [Create Angular Stackblitz](https://stackblitz.com/fork/angular)
+- -import styles to index.html
+
+```html
+<link rel="stylesheet" href="https://icons.entrecode.de/ec-icons-4.0.1.min.css" />
+<link href="https://unpkg.com/@ec.components/style@latest/default.css" rel="stylesheet" />
+```
+
+- Add @ec.components package(s):
+
+```json
+"@ec.components/calendar": "^0.2.6",
+/** any other components module */
+```
+
+- -import module(s):
+
+```ts
+import { CalendarModule } from '@ec.components/calendar';
+@NgModule({
+  imports: [/* .. */ CalendarModule],
+  /* ... */
+})
+export class AppModule {}
+```
+
+- use component(s) in app.component.html:
+
+```html
+<ec-calendar></ec-calendar>
+```

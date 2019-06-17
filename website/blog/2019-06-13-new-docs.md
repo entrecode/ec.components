@@ -1,0 +1,10 @@
+---
+title: New Components Docs
+author: felixroos
+authorURL: https://github.com/felixroos
+authorImageURL: https://avatars2.githubusercontent.com/u/12023032?s=460&v=4
+---
+
+The new ec.components doc are now here. Made with [**Docusaurus 2 alpha**](https://v2.docusaurus.io/).
+
+This little Blog will act as a digested version of the [changelog](https://entrecode.github.io/ec.components/changelog.html).
