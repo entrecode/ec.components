@@ -12,7 +12,7 @@ sidebar_label: Entry List
 
 Entry Lists load multiple entries from a model and display them in a paginated list. It supports load error notifications, loader, filtering, sorting and automatic reloading + many customizations.
 
-## Default Usage
+## Basic Example
 
 ```html
 <ec-entry-list model="muffin"></ec-entry-list>
@@ -20,80 +20,87 @@ Entry Lists load multiple entries from a model and display them in a paginated l
 
 The above snippet will either consume the config for muffin in ModelConfigService, or if no config is found, generate one from the model schema.
 
-## Passing a Config
+## Methods
 
-The following snippet will assign the given config to the model/schema config:
+### load
+
+params:
+
+- config
+
+(Re)Loads the list.
+
+```html
+<ec-entry-list #muffinList model="muffin"></ec-entry-list>
+```
+
+```ts
+this.muffinList.load();
+```
+
+#### load#config
+
+```ts
+this.muffinList.load({ sortBy: 'amazement_factor' });
+```
+
+## Outputs
+
+### columnClicked
+
+The columnClicked Output will be emitted when an entry is clicked. You get an Item containing the clicked entry as _\$event_:
+
+```html
+<ec-crud model="muffin" (columnClicked)="clickedMuffin($event)"></ec-crud>
+```
+
+now you could e.g. navigate to a detail page:
+
+```ts
+clickedMuffin(muffin: Item<EntryResource>) {
+  this.router.navigate(['muffin', muffin.id()]);
+}
+```
+
+See [Items](../core-concepts/items.md) for more info on the emitted object.
+
+If you do not use the columnClicked Output, nothing will happen on click by default. If you want to edit the entry without a custom route/form, consider using [crud.component](./crud.component.md).
+
+## Inputs
+
+### config
 
 ```html
 <ec-entry-list model="muffin" [config]="muffinListConfig"></ec-entry-list>
 ```
 
-## columnClicked output
+See [Config Pipeline](../core-concepts/config-pipeline.md) for other ways to pass configuration.
 
-You can react to column clicks via the columnClicked output:
+### config.hidePagination
 
-```html
-<ec-entry-list model="muffin" (columnClicked)="select($event)"></ec-entry-list>
-```
-
-```ts
-select(item) {
-    console.log('entry',item.getBody(),item.id());
-}
-```
-
-## Seperated header/items/pagination markup
-
-If you need a seperation of the list-header -items and -pagination, you can use the sub components of list.component:
+If true, no pagination will be visible. Expects you to use ec-pagination somewhere else:
 
 ```html
-<ec-list-header [list]="dealList?.list"></ec-list-header>
+<ec-entry-list #muffinList model="muffin" [config]="{hidePagination: true}"></ec-entry-list>
 <!-- -->
-<ec-entry-list model="deal" #dealList (columnClicked)="select($event)"
-    [selection]="dealSelection"
-    [config]="{disableHeader: true, hidePagination: true}"></ec-entry-list>
+<ec-pagination [pagination]="muffinList?.list?.pagination"></ec-pagination>
+```
+
+### config.disableHeader
+
+If true, no list-header will be visible. This way you can render the list header on a different spot in your markup:
+
+```html
+<ec-list-header [list]="muffinList?.list"></ec-list-header>
 <!-- -->
-<ec-pagination [pagination]="dealList?.list?.pagination"></ec-pagination>
+<ec-entry-list #muffinList model="deal" [config]="{disableHeader: true}"></ec-entry-list>
 ```
 
+### config.selectMode
 
+If true, each list row will have select boxes that can be toggled:
 
-## Filtering Lists
+### config.fields
 
-By default, each column that hosts a filterable property contains a search icon in its header. If the property is filterable is defined either by the field config (filterable) or falls back to the backend types that support filters. The search icon will open a pop with a field type specific filter input inside.
-
-### Custom Filtering
-
-If you do not want that (currently pretty clunky) pop filters, you can set filterable to false and manually call list.load with the desired filter:
-
-```html
-<a (click)="muffinList.list.load({filter:{amazement_factor:10}})">
-    show amazing muffins
-</a>
-<ec-entry-list #muffinList model="muffin"></ec-entry-list>
-```
-
-Clicking the link will now show all muffins with exactly amazement_factor 10.
-
-### Custom filter operators
-
-By default, the entry-list will filter the property by its default filterOperator (see type config). If you want to change the default operator you can set it in the config:
-
-```ts
-this.modelConfig.set('muffin', {
-    fields: {
-        amazement_factor: {
-            filterOperator: 'from'
-        }
-    }
-});
-```
-
-```html
-<a (click)="muffinList.list.load({filter:{amazement_factor:5}})">
-    show amazing muffins
-</a>
-<ec-entry-list #muffinList model="muffin"></ec-entry-list>
-```
-
-If you now click the link, all muffins with amazement_factor>=5 will be loaded.
+See [Fields Config](../core-concepts/fields.md).
+The fields option defines which fields should be visible, and how they should look and behave.

@@ -4,7 +4,9 @@ title: CRUD
 sidebar_label: Crud
 ---
 
-The CrudComponent (CRUD stands for Create Read Update Delete) is like the meta component that combines most of the other components. By just passing a model name, it renders a table of the model entries (Read). Pressing the "+" button opens a modal to add new entries (Create). Clicking a row in the list opens a modal to modify (Edit) or remove (Delete) entries.
+<!-- ![crud](../../static/img/crud.png) -->
+
+The CrudComponent (CRUD stands for Create Read Update Delete) is like the meta component that combines most of the other components. By just passing a model name, it renders a list of the model entries (Read). Pressing the "+" button opens a modal to add new entries (Create). Clicking a row in the list opens a modal to modify (Edit) or remove (Delete) entries.
 
 ## Basic Example
 
@@ -12,7 +14,12 @@ The CrudComponent (CRUD stands for Create Read Update Delete) is like the meta c
 <ec-crud model="muffin"></ec-crud>
 ```
 
-## Options
+## Used Components
+
+- [entry-list](entry-list.component.md) available as entryList property
+- [entry-pop](entry-pop.component.md) available as entryPop property
+
+## Outputs
 
 ### columnClicked
 
@@ -30,7 +37,11 @@ clickedMuffin(muffin: Item<EntryResource>) {
 }
 ```
 
-See [Items](../core-concepts/items) for more info on the emitted object.
+See [Items](../core-concepts/items.md) for more info on the emitted object.
+
+If you do not use the columnClicked output, clicking an entry will open its edit form.
+
+## Inputs
 
 ### config
 
@@ -38,9 +49,9 @@ See [Items](../core-concepts/items) for more info on the emitted object.
 <ec-crud model="muffin" [config]="muffinCrudConfig"></ec-crud>
 ```
 
-See [Configuration](../core-concepts/configuration) for other ways to pass configuration.
+See [Config Pipeline](../core-concepts/config-pipeline.md) for other ways to pass configuration.
 
-### config#methods
+### config.methods
 
 You can control the available actions by methods
 
@@ -61,25 +72,11 @@ This will disable creating and deleting entries.
 
 By default, the crud component will respect the active users permissions, meaning a create button will only be visible if the user is allowed to create entries. The same goes for delete and save buttons. See [Accounts & Rights](../core-concepts/accounts) for more info. If you pass methods to the config, those will always be used.
 
-### config#createLabel
+### config.createLabel
 
 Changes the Label of the create button
 
-### config#fields
+### config.fields
 
-The fields option defines which fields should be visible, and how they should look. This will affect the list and form:
-
-```ts
-muffinCrudConfig = {
-  fields: {
-    name: {
-      label: 'Name'
-    },
-    amazement_factor: {
-      label: 'Amazement Factor'
-    }
-  }
-};
-```
-
-Being one of the core pieces of the components, the fields config has [many more options](../core-concepts/fields).
+See [Fields Config](../core-concepts/config-options.md).
+The fields option defines which fields should be visible, and how they should look. This will affect the list and form.

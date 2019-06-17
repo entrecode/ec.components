@@ -1,7 +1,7 @@
 ---
 id: entry-form
-title: Entry Forms
-sidebar_label: Entry Forms
+title: Entry Form
+sidebar_label: Entry Form
 ---
 
 Entry forms can edit and create entries. They support notifications, loader, validation error handling and dynamic config generation out of the box.
