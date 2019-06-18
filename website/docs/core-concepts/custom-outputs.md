@@ -6,7 +6,11 @@ sidebar_label: Custom List Fields
 
 ## transforms
 
-If you want to custom field behaviour, that does not require a custom markup, you can use transforms.
+If you want to modify your field value in a certain context, you can use transforms:
+
+```ts
+
+```
 
 ### display
 
