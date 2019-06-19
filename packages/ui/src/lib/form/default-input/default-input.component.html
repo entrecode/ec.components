@@ -83,13 +83,9 @@
         {{ option.label ? option.label : option }}
       </option>
     </select>
-    <input
-      type="text"
-      [formControl]="control"
-      [id]="field.id"
-      class="input"
-    />
+    <input type="text" [formControl]="control" [id]="field.id" class="is-hidden-input" />
   </div>
+
   <div *ngSwitchCase="'copy'">
     <div
       *ngIf="!!item?.display(field.property)"
