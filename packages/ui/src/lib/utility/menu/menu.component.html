@@ -1,12 +1,15 @@
 <nav class="demo-menu">
   <ul class="nav nav_stacked">
-    <li *ngFor="let item of routes" class="nav__item">
-      <a [routerLink]="item.path" [class.is-active]="isActive('/' + item.path)">
-        <strong>{{ item.data?.title || item.path }}</strong>
-      </a>
+    <li *ngFor="let item of routes">
+      <div class="nav__item">
+        <a [routerLink]="item.path" class="nav__link">
+          {{ item.data?.title || item.path }}
+        </a>
+      </div>
       <ul *ngIf="item?.children" class="nav nav_stacked">
         <li *ngFor="let child of item.children" class="nav__item">
           <a
+            class="nav__link"
             [routerLink]="item.path + '/' + child.path"
             [class.is-active]="isActive('/' + item.path + '/' + child.path)"
             >{{ child.data?.title || child.path }}</a

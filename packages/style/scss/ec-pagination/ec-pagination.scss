@@ -60,7 +60,7 @@
   }
 
   // @param {color} $ec-pagination-item-is-active-background [transparent]
-  // @param {color} $ec-pagination-item-is-active-color [set-hover($link)]
+  // @param {color} $ec-pagination-item-is-active-color [$link-hover]
   // @param {array} $ec-pagination-item-is-active-style
   &.is-active,
   &:hover,
@@ -71,7 +71,7 @@
   }
 
   // @param {color} $ec-pagination-item-is-disabled-background [transparent]
-  // @param {color} $ec-pagination-item-is-disabled-color [set-hover($link)]
+  // @param {color} $ec-pagination-item-is-disabled-color [$text-light]
   // @param {array} $ec-pagination-item-is-disabled-style
   &.is-disabled {
     @include inject-style($ec-pagination-item-is-disabled-style);
