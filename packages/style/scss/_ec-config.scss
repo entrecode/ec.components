@@ -497,7 +497,7 @@ $ec-notification-flag-warning: $state-warning !default;
 // @param {array} $ec-select-hover-style [$input-hover-style]
 $ec-select-background: $xui-select-background !default;
 $ec-select-color: $xui-select-color !default;
-$ec-select-spacing: $input-spacing !default;
+$ec-select-spacing: $xui-select-spacing !default;
 $ec-select-padding-ratio: $xui-select-padding-ratio !default;
 $ec-select-font-size: $xui-select-font-size !default;
 $ec-select-line-height: $xui-select-line-height !default;
@@ -508,9 +508,9 @@ $ec-select-border-style: $xui-select-border-style !default;
 $ec-select-style: $xui-select-style !default;
 $ec-select-hover-style: $input-hover-style !default;
 
-// @param {boolean} $ec-select-round [$input-round]
+// @param {boolean} $ec-select-round [$xui-select-round]
 // @param {array} $ec-select-radius [$xui-select-radius]
-$ec-select-round: $input-round !default;
+$ec-select-round: $xui-select-round !default;
 $ec-select-radius: $xui-select-radius !default;
 
 // @param {array} $ec-select-is-solo-style
@@ -536,8 +536,8 @@ $ec-select-selection-gutter: 2;
 //
 // EC-SELECT-SELECTED
 // ------------------------------------------------------
-// @param {color} $ec-select-selected-background [$link]
-// @param {color} $ec-select-selected-color [$link-contrast]
+// @param {color} $ec-select-selected-background [$tag-background]
+// @param {color} $ec-select-selected-color [$tag-color]
 // @param {number} $ec-select-selected-padding-ratio [$tag-padding-ratio]
 // @param {px} $ec-select-selected-font-size [$tag-font-size]
 // @param {px} $ec-select-selected-line-height [$tag-line-height]
@@ -545,8 +545,8 @@ $ec-select-selection-gutter: 2;
 // @param {value} $ec-select-selected-weight [$tag-weight]
 // @param {array} $ec-select-selected-style
 // @param {array} $ec-select-selected-solo-style
-$ec-select-selected-background: $link !default;
-$ec-select-selected-color: $link-contrast !default;
+$ec-select-selected-background: $tag-background !default;
+$ec-select-selected-color: $tag-color !default;
 $ec-select-selected-padding-ratio: $tag-padding-ratio !default;
 $ec-select-selected-font-size: $tag-font-size !default;
 $ec-select-selected-line-height: $tag-line-height !default;
@@ -605,7 +605,7 @@ $ec-select-options-style: $xui-select-options-style !default;
 // @param {color} $ec-select-option-background [transparent]
 // @param {color} $ec-select-option-focus-color [$link]
 // @param {color} $ec-select-option-focus-background [transparent]
-// @param {color} $ec-select-option-selected-color [$link]
+// @param {color} $ec-select-option-selected-color [$state-hover-contrast]
 // @param {color} $ec-select-option-selected-background [$state-hover]
 // @param {array} $ec-select-option-style
 $ec-select-option-padding: 8 16 !default;
@@ -615,7 +615,7 @@ $ec-select-option-color: $text !default;
 $ec-select-option-background: transparent !default;
 $ec-select-option-focus-color: $link !default;
 $ec-select-option-focus-background: transparent !default;
-$ec-select-option-selected-color: $link !default;
+$ec-select-option-selected-color: $state-hover-contrast !default;
 $ec-select-option-selected-background: $state-hover !default;
 $ec-select-option-style: () !default;
 
