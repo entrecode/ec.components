@@ -29,10 +29,11 @@
     [ecFocus]="focusEvent"
   />
 
-  <div class="ec-input_color" *ngSwitchCase="'color'">
-    <label [style.backgroundColor]="control.value">
+  <div class="ec-input-color" *ngSwitchCase="'color'">
+    <div class="ec-input-color__preview" [style.backgroundColor]="control.value">
       <input [id]="field.id" type="color" [formControl]="control" />
-    </label>
+    </div>
+    <input type="text" [formControl]="control" [placeholder]="field.getPlaceholder()" class="input" />
   </div>
 
   <label *ngSwitchCase="'boolean'">
