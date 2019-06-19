@@ -1,12 +1,12 @@
-$_background: #fff;
-$_background-light: #f8f9fc;
-$_text: #171e28;
-$_minor: #eceff6;
+$_background: #171e28;
+
+$_text: #c2c9d6;
+$_minor: lighten($_background, 40%);
 $_link: #23ca74;
 $_super: #4c43e9;
 $_highlight: #ffa;
 
-$_input-background: #edf2f7;
+$_input-background: lighten($_background, 8%);
 
 $_state-hover: rgba($_link, 0.2);
 $_state-hover-contrast: $_text;
@@ -22,14 +22,14 @@ $_ua: #ffca69;
 :root {
   // background
   --background: #{$_background};
-  --background-light: #{$_background-light};
-  --background-lighter: #{darken($_background-light, 2%)};
-  --background-lightest: #{darken($_background-light, 4%)};
+  --background-light: #{lighten($_background, 2%)};
+  --background-lighter: #{lighten($_background, 4%)};
+  --background-lightest: #{lighten($_background, 8%)};
 
   --background-invert: #{_text};
 
-  --list-item-background: #{$_background-light};
-  --list-item-hover-background: #{darken($_background-light, 2%)};
+  --list-item-background: #{lighten($_background, 2%)};
+  --list-item-hover-background: #{lighten($_background, 4%)};
 
   // text
   --text: #{$_text};
