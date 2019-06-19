@@ -1,4 +1,4 @@
-<div *ngIf="selection" class="ec-asset-select ec-dropzone" (ecDropzone)="uploadSelect?.uploader?.uploadFiles($event.dataTransfer.files,$event)"
+<div *ngIf="selection" class="file-upload ec-asset-select ec-dropzone" (ecDropzone)="uploadSelect?.uploader?.uploadFiles($event.dataTransfer.files,$event)"
   [disabled]="readOnly" [class.ec-asset-select_solo]="solo" [class.empty]="!selection?.items?.length">
   <div class="ec-dropzone__info">drop to upload</div>
   <ec-upload-select [custom]="config?.customUpload" #uploadSelect (uploaded)="fileService.selectUpload($event,selection)"

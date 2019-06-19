@@ -75,10 +75,10 @@ $ec-calendar-day-is-other-color: $text-lighter !default;
 $ec-calendar-day-is-other-background: transparent !default;
 $ec-calendar-day-is-other-style: () !default;
 
-// @param {color} $ec-calendar-day-is-selected-color [set-contrast($link)]
+// @param {color} $ec-calendar-day-is-selected-color [$link-contrast]
 // @param {color} $ec-calendar-day-is-selected-background [$link]
 // @param {array} $ec-calendar-day-is-selected-style
-$ec-calendar-day-is-selected-color: set-contrast($link) !default;
+$ec-calendar-day-is-selected-color: $link-contrast !default;
 $ec-calendar-day-is-selected-background: $link !default;
 $ec-calendar-day-is-selected-style: () !default;
 
@@ -536,8 +536,8 @@ $ec-select-selection-gutter: 2;
 //
 // EC-SELECT-SELECTED
 // ------------------------------------------------------
-// @param {color} $ec-select-selected-background [$tag-background]
-// @param {color} $ec-select-selected-color [set-contrast($ec-select-selected-background)]
+// @param {color} $ec-select-selected-background [$link]
+// @param {color} $ec-select-selected-color [$link-contrast]
 // @param {number} $ec-select-selected-padding-ratio [$tag-padding-ratio]
 // @param {px} $ec-select-selected-font-size [$tag-font-size]
 // @param {px} $ec-select-selected-line-height [$tag-line-height]
@@ -546,7 +546,7 @@ $ec-select-selection-gutter: 2;
 // @param {array} $ec-select-selected-style
 // @param {array} $ec-select-selected-solo-style
 $ec-select-selected-background: $link !default;
-$ec-select-selected-color: set-contrast($ec-select-selected-background) !default;
+$ec-select-selected-color: $link-contrast !default;
 $ec-select-selected-padding-ratio: $tag-padding-ratio !default;
 $ec-select-selected-font-size: $tag-font-size !default;
 $ec-select-selected-line-height: $tag-line-height !default;
@@ -700,7 +700,7 @@ $ec-asset-list-pop-style: () !default;
 //
 // EC-DROPZONE
 // ------------------------------------------------------
-// @param {color} $ec-dropzone-background [get-color(link)]
-// @param {color} $ec-dropzone-color [set-contrast(get-color(link))]
-$ec-dropzone-background: get-color(link) !default;
-$ec-dropzone-color: set-contrast(get-color(link)) !default;
+// @param {color} $ec-dropzone-background [$link]
+// @param {color} $ec-dropzone-color [$link-contrast]
+$ec-dropzone-background: $link !default;
+$ec-dropzone-color: $link-contrast !default;
