@@ -15,12 +15,13 @@
 }
 
 // @param {color} $ec-notification-background [$background]
+// @param {color} $ec-notification-color [$text]
 // @param {array} $ec-notification-padding [8 16]
 // @param {array} $ec-notification-spacing [4]
 // @param {px} $ec-notification-max-width [320]
 // @param {array} $ec-notification-radius [$xui-overlay-radius]
 // @param {px} $ec-notification-font-size [$base-font-size * 0.875]
-// @param {array} $ec-notification-shadow [0 8 16 -4px rgba(#000, 0.2)]
+// @param {array} $ec-notification-elevation [8]
 // @param {px} $ec-notification-flag-width [8]
 // @param {value} $ec-notification-animation [notification 0.2s]
 // @param {array} $ec-notification-style
@@ -40,15 +41,16 @@
   width: 100%;
   border-left-style: solid;
   @include inject-style($ec-notification-style);
+  @include elevation($ec-notification-elevation);
   font-size: em($ec-notification-font-size);
   background: $ec-notification-background;
   padding: array-magic($ec-notification-padding);
-  box-shadow: array-magic($ec-notification-shadow);
   border-radius: array-magic($ec-notification-radius);
   margin: array-magic($ec-notification-spacing);
   max-width: rem($ec-notification-max-width);
   animation: $ec-notification-animation;
   border-left-width: rem($ec-notification-flag-width);
+  border-left-color: $ec-notification-background;
 
   &.is-active {
     display: flex;
@@ -77,7 +79,7 @@
     height: rem(24);
     text-align: center;
     opacity: 0.6;
-    color: set-contrast($ec-notification-background);
+    color: $ec-notification-color;
 
     &:hover {
       opacity: 1;
