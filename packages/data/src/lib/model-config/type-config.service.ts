@@ -35,11 +35,12 @@ export class TypeConfigService {
         },
         {
           name: 'color',
-        }
+        },
       ],
     },
     boolean: {
       prefill: false,
+      filterable: true,
       filterOperator: 'exact',
     },
     formattedText: {
