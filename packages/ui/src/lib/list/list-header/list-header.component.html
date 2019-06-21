@@ -1,6 +1,7 @@
 <ec-pop (toggle)="toggledFilterPop($event)" [hideOnEscape]="false" #filterPop>
-  <div *ngIf="filteredField" class="btn-group">
-    <!-- <div tabindex="0" class="dropdown dropdown_left">
+  <div class="ec-searchbar">
+    <div *ngIf="filteredField" data-grid="no-gutter">
+      <!-- <div tabindex="0" class="dropdown dropdown_left">
       <span class="btn btn_clear">
         {{filteredField.getLabel()}}
       </span>
@@ -11,46 +12,55 @@
         </li>
       </ul>
     </div> -->
-    <ec-input
-      (ready)="inputReady($event)"
-      (changed)="setFilter(filteredField, $event)"
-      [lazy]="true"
-      [component]="filteredField.getComponent('filter') || filteredField.input"
-      [field]="filteredField"
-      [group]="filterForm?.group"
-      [debounce]="200"
-      *ngIf="filterPop.active && filterForm?.group"
-      #filterInput
-    ></ec-input>
-
-    <a class="btn btn_clear" (click)="resetFilter()" *ngIf="list?.isFiltered(filteredField.property)">
-      <!-- <a class="btn btn_clear" (click)="filterPop.hide()"> -->
-      <ec-icon name="close"></ec-icon>
-    </a>
-
-    <div tabindex="0" class="dropdown dropdown_right">
-      <span class="btn btn_clear">
-        <ec-icon name="filter"></ec-icon>
-      </span>
-      <ul class="dropdown-options">
-        <li
-          class="dropdown-option"
-          *ngFor="let field of list?.sortableFields()"
-          [class.is-active]="list?.isSorted(field.property, true)"
-        >
-          <a
-            class="sorting-option"
-            [class.is-sorted-asc]="list?.isSorted(field.property, true)"
-            [class.is-sorted-desc]="list?.isSorted(field.property, false)"
-          >
-            <span class="sorting-option-indicator">
-              <span class="asc" (click)="list.toggleSort(field.property, false)"></span>
-              <span class="desc" (click)="list.toggleSort(field.property, true)"></span>
-            </span>
-            <span (click)="list.toggleSort(field.property)">{{ field.getLabel() }}</span>
-          </a>
-        </li>
-      </ul>
+      <div data-col="auto">
+        <div class="input-group">
+          <div class="input-group__addon" data-flex="center">
+            <ec-icon name="search"></ec-icon>
+          </div>
+          <ec-input
+            (ready)="inputReady($event)"
+            (changed)="setFilter(filteredField, $event)"
+            [lazy]="true"
+            [component]="filteredField.getComponent('filter') || filteredField.input"
+            [field]="filteredField"
+            [group]="filterForm?.group"
+            [debounce]="200"
+            *ngIf="filterPop.active && filterForm?.group"
+            #filterInput
+          ></ec-input>
+          <div class="input-group__addon" *ngIf="list?.isFiltered(filteredField.property)" data-flex="center center-items">
+            <a class="btn btn_clear btn_small is-ink-light" (click)="resetFilter()">
+              <ec-icon name="clear"></ec-icon>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div data-col="fit">
+        <div tabindex="0" class="dropdown dropdown_right">
+          <span class="btn btn_clear">
+            <ec-icon name="filter"></ec-icon>
+          </span>
+          <ul class="dropdown-options">
+            <li
+              class="dropdown-option"
+              *ngFor="let field of list?.sortableFields()"
+              [class.is-active]="list?.isSorted(field.property, true)"
+            >
+              <a
+                class="sorting-option"
+                [class.is-sorted-asc]="list?.isSorted(field.property, true)"
+                [class.is-sorted-desc]="list?.isSorted(field.property, false)"
+              >
+                <span class="sorting-option-indicator">
+                  <span class="asc" (click)="list.toggleSort(field.property, false)"></span>
+                  <span class="desc" (click)="list.toggleSort(field.property, true)"></span>
+                </span>
+                <span (click)="list.toggleSort(field.property)">{{ field.getLabel() }}</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </ec-pop>
