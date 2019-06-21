@@ -326,11 +326,11 @@ $ec-list-item-is-selected-color: $link !default;
 $ec-list-item-is-selected-background: $state-hover !default;
 $ec-list-item-is-selected-style: () !default;
 
-// @param {color} $ec-list-item-is-selected-hover-color [inherit]
-// @param {color} $ec-list-item-is-selected-hover-background [inherit]
+// @param {color} $ec-list-item-is-selected-hover-color [$ec-list-item-is-selected-color]
+// @param {color} $ec-list-item-is-selected-hover-background [$ec-list-item-is-selected-background]
 // @param {array} $ec-list-item-is-selected-hover-style
-$ec-list-item-is-selected-hover-color: inherit !default;
-$ec-list-item-is-selected-hover-background: inherit !default;
+$ec-list-item-is-selected-hover-color: $ec-list-item-is-selected-color !default;
+$ec-list-item-is-selected-hover-background: $ec-list-item-is-selected-background !default;
 $ec-list-item-is-selected-hover-style: () !default;
 
 //
@@ -689,16 +689,6 @@ $ec-tab-style: $xui-tab-style !default;
 //
 // data/files
 // ------------------------------------------------------------------------------------------------------------
-//
-// EC-ASSET-LIST-POP
-// ------------------------------------------------------
-// @param {color} $ec-asset-list-pop-background [inherit]
-// @param {color} $ec-asset-list-pop-color [inherit]
-// @param {array} $ec-asset-list-pop-style
-$ec-asset-list-pop-background: inherit !default;
-$ec-asset-list-pop-color: inherit !default;
-$ec-asset-list-pop-style: () !default;
-
 //
 // EC-DROPZONE
 // ------------------------------------------------------
