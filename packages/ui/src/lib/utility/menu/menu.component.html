@@ -1,21 +1,26 @@
 <nav class="demo-menu">
   <ul class="nav nav_stacked">
     <li *ngFor="let item of routes">
-      <div class="nav__item">
+      <div class="nav__item" *ngIf="item.path">
         <a [routerLink]="item.path" class="nav__link">
-          {{ item.data?.title || item.path }}
+          <div class="is-giga">
+            {{ item.data?.title || item.path }}
+          </div>
         </a>
       </div>
       <ul *ngIf="item?.children" class="nav nav_stacked">
-        <li *ngFor="let child of item.children" class="nav__item">
-          <a
-            class="nav__link"
-            [routerLink]="item.path + '/' + child.path"
-            [class.is-active]="isActive('/' + item.path + '/' + child.path)"
-            >{{ child.data?.title || child.path }}</a
-          >
+        <li *ngFor="let child of item.children">
+          <div class="nav__item" *ngIf="child.path">
+            <a
+              class="nav__link"
+              [routerLink]="item.path + '/' + child.path"
+              [class.is-active]="isActive('/' + item.path + '/' + child.path)"
+              >{{ child.data?.title || child.path }}</a
+            >
+          </div>
         </li>
       </ul>
+      <div class="y-space-5"></div>
     </li>
   </ul>
 </nav>
