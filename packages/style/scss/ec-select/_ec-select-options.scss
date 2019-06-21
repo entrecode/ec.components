@@ -1,5 +1,5 @@
 // @param {color} $ec-select-options-background [$xui-select-options-background]
-// @param {array} $ec-select-options-padding [$xui-select-options-padding]
+// @param {array} $ec-select-options-padding [0]
 // @param {array} $ec-select-options-spacing [$ec-select-border-width 0 0]
 // @param {array} $ec-select-options-radius [$xui-select-options-radius]
 // @param {px | null} $ec-select-options-max-height [$xui-select-options-max-height]
@@ -90,7 +90,8 @@
   }
 
   .ec-pagination {
-    margin: getSpace(2);
+    margin: 0;
+    justify-content: inherit;
 
     .ec-pagination-size-select {
       display: none;
