@@ -1,10 +1,8 @@
 <div class="ec-tabs">
-  <nav class="ec-tabs-nav">
-    <ul class="ec-tabs-nav-items">
-      <li *ngFor="let tab of tabs;let i = index" class="ec-tabs-nav-item" [class.is-selected]="tab.selected">
-        <a (click)="select(tab)">{{tab.label}}</a>
-      </li>
-    </ul>
-  </nav>
+  <div class="ec-tabs-nav">
+    <div *ngFor="let tab of tabs; let i = index" class="ec-tabs-nav__item" [class.is-selected]="tab.selected">
+      <a (click)="select(tab)">{{ tab.label }}</a>
+    </div>
+  </div>
   <ng-content select="ec-tab" #tab></ng-content>
 </div>
