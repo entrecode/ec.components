@@ -1,0 +1,46 @@
+---
+id: component-tree
+title: Component Overview
+sidebar_label: Component Overview
+---
+
+This document gives a broad overview of the different components and how they are intertwined.
+The prefix "ec" is omitted to prevent cluttering your eyes.
+
+import { ComponentsOverview } from '../../ComponentsOverview.js';
+
+<ComponentsOverview visibleNodes={['ec-crud']} showCheckboxes={true} width={800} height={600} />
+
+## Data Components
+
+| name              | description                                                       | package | extends       | contains                        |
+| ----------------- | ----------------------------------------------------------------- | ------- | ------------- | ------------------------------- |
+| crud              | Create Read Update and Delete data. Combines all below components | data    |               | entry-list, entry-pop           |
+| entry-list        | Displays entries of a model                                       | data    | resource-list |
+| entry-pop         | Opens an entry form in a pop.                                     | data    | pop           | entry-form, resource-delete-pop |
+| entry-form        | Edits or creates entries                                          | data    | form          |
+| entry-select      | filterable Dropdown to pick one or multiple entries               | data    | select        |
+| entry-list-select | displays selected entries as a list                               | data    | input         |
+
+## UI Components
+
+| name         | description                                                             | package | extends      | contains                            |
+| ------------ | ----------------------------------------------------------------------- | ------- | ------------ | ----------------------------------- |
+| form         | Renders form for items                                                  | ui      |              | input                               |
+| list         | Displays resources                                                      | ui      |              | list-header, list-items, pagination |
+| list-header  | Shows list columns. Controls filtering sorting and visibility of fields | ui      |              | form, input, pop                    |
+| list-items   | Shows list items. Displays values based on type                         | ui      |              | output                              |
+| pagination   | Shows list pagination                                                   | ui      |              |                                     |
+| pop          | toggleable content                                                      | ui      |
+| select       | filterable dropdow to pick one or multiple items                        | ui      |
+| input        | general form input                                                      | ui      | dynamic-slot |
+| output       | general output                                                          | ui      | dynamic-slot |
+| dynamic-slot | component that loads another component into intself                     | ui      |
+
+## Resource Components
+
+| name                | description                          | package | extends | contains                           |
+| ------------------- | ------------------------------------ | ------- | ------- | ---------------------------------- |
+| resource-delete-pop | Deletes resource after confirmation. | data    |
+| resource-pop        | Opens resource in a pop.             | data    | pop     | resource-form, resource-delete-pop |
+| resource-list       | Displays resources                   | data    | list    |

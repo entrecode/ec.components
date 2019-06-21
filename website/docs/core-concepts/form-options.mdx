@@ -1,0 +1,419 @@
+---
+id: form-options
+title: Form API
+sidebar_label: Form API
+---
+
+This document shows which config options can be used to control forms.
+
+## Example
+
+For all following snippets, let's assume the following template
+
+```html
+<ec-entry-form model="muffin" [config]="muffinConfig" #muffinForm></ec-entry-form>
+```
+
+... made available:
+
+```ts
+class AppComponent {
+  @ViewChild('muffinForm') muffinForm;
+  muffinConfig = {
+    /* config here */
+  };
+}
+```
+
+## form components
+
+import { ComponentsOverview } from '../../ComponentsOverview.js';
+
+<ComponentsOverview
+  visibleNodes={['ec-form', 'ec-entry-form', 'ec-resource-form']}
+  showCheckboxes={false}
+  height={200}
+  width={600}
+/>
+
+The techniques of this document apply to the following components:
+
+| components       | description                                                               | package             |
+| ---------------- | ------------------------------------------------------------------------- | ------------------- |
+| ec-form          | base form component. Parent of all other forms. Not datamanager specific. | @ec.components/ui   |
+| ec-entry-form    | form for model entries.                                                   | @ec.components/data |
+| ec-resource-form | form for resources of ec apis (like datamanagers, models, apps etc..)     | @ec.components/data |
+
+Also check out [Config Pipeline](./config-pipeline.md) for other ways to set the config.
+
+### components using forms
+
+<ComponentsOverview
+  visibleNodes={[
+    'ec-form',
+    'ec-entry-form',
+    'ec-crud',
+    'ec-select',
+    'ec-entry-select',
+    'ec-list-header',
+    'ec-input',
+    'ec-entry-pop',
+    'ec-resource-select',
+  ]}
+  showCheckboxes={false}
+  height={400}
+  width={600}
+/>
+
+The following components use forms as a part of their functionality:
+
+- ec-crud
+- ec-entry-pop
+- ec-list-header (filter inputs)
+
+To alter the config of forms that are part of those components, you can use the [Config Pipeline](./config-pipeline.md).
+
+## parts
+
+A typical form looks like this:
+
+![form](../../static/img/form.png)
+
+The form consists of three main parts:
+
+### header
+
+This part is only relevant for entry forms. It displays the four immutable system fields. Values can be copied by click.
+
+### body
+
+The form body contains all field inputs. The look and behaviour of each form field depends on its type.
+
+### footer
+
+Contains buttons. In entry forms, the buttons depend on the permissions of the user. If all permissions are granted, a save button and a delete button will be shown.
+
+## visibility
+
+The following options control the visibility of fields.
+
+| option           | description                                                | type    |
+| ---------------- | ---------------------------------------------------------- | ------- |
+| field.hideInForm | if true, the field will not be visible.                    | boolean |
+| field.form       | if false, the field will not be visible and not be loaded. | boolean |
+
+## config
+
+The following field options control the forms looks/behaviour:
+
+| option        | description                                     | type                    |
+| ------------- | ----------------------------------------------- | ----------------------- |
+| label         | label above input                               | string                  |
+| placeholder   | input placeholder                               | string                  |
+| columns       | how many columns are used by the field          | number 1-12             |
+| immutable     | if true, the property won't be sent when saving | boolean                 |
+| readOnly      | if true, the property won't be editable         | boolean                 |
+| required      | if true, the field needs to be filled out       | boolean                 |
+| prefill       | prefill value for new entries                   | any                     |
+| input         | custom input component                          | Component               |
+| formComponent | custom input component used in form only        | Component               |
+| inputView     | view for input component                        | string                  |
+| validate      | transformation for form validation              | transformation function |
+
+## validate
+
+To apply custom validation magic to your fields, you can use the validate transformation:
+
+```ts
+muffinFormConfig = {
+  fields: {
+    name: {
+      validate: (value) => {
+        if (value === 'Captain Crumble') {
+          return 'This Name is copyrighted, do not use it';
+        }
+      },
+    },
+    amazement_factor: {
+      validate: (value) => {
+        if (value > 10 || value < 1) {
+          return 'Must be between 1 and 10';
+        }
+      },
+    },
+  },
+};
+```
+
+It will run when the field values changes. If anything is returned, it is interpreted as a malicious input. The message is outputted below the field.
+
+For custom input components, you can display the validation error by placing this somewhere in your template:
+
+```html
+<ec-input-errors [control]="control"></ec-input-errors>
+```
+
+## input views
+
+<ComponentsOverview
+  visibleNodes={[
+    'ec-form',
+    'ec-entry-form',
+    'ec-resource-form',
+    'ec-input',
+    'ec-default-input',
+    'ec-default-entry-input',
+  ]}
+  showCheckboxes={false}
+  height={400}
+  width={600}
+/>
+
+### available input views
+
+Setting inputView on a field will control the input that is used. By default, the most common inputs are implemented in the components.
+Most views are derived from the [field types of the entrecode API](https://doc.entrecode.de/data_manager/#types).
+
+| inputView         | for type         | description                     | is default | specials                                                 |
+| ----------------- | ---------------- | ------------------------------- | ---------- | -------------------------------------------------------- |
+| string            | text             | normal text input               | X          |
+| textarea          | formattedText    | textarea input                  | X          |
+| number            | number + decimal | number input                    | X          |
+| color             | text             | HTML5 color input               |            |
+| boolean           | boolean          | checkbox                        | X          |
+| email             | email            | email input                     | X          |
+| url               | url              | url input                       | X          |
+| toggle            | boolean          |                                 |
+| date              | datetime         | ec-datetime                     | X          |
+| select            | text             | html select                     |            | values                                                   |
+| copy              | any              | click to copy                   |            | uses copy transformation                                 |
+| phone             | phone            | phone input                     | X          |                                                          |
+| entry-select      | entry            | shows entry-select              | X          | expects validation to be set to model title              | can pass nestedCrudConfig |
+| entries-select    | entries          | shows entry-select              | X          | expects validation to be set to model title              | can pass nestedCrudConfig |
+| entries-actionbar | entries          | shows actionbar                 |            | works without validation                                 |
+| entry-list-select | entries          | renders entry-list of selection |            | will load the entry with levels 2 request                |
+| asset-select      | asset            | single asset select             | X          | for legacyAssets (no assetGroup set in field validation) |
+| assets-select     | assets           | multiple assets select          | X          | for legacyAssets (no assetGroup set in field validation) |
+| dmAsset-select    | dmAsset          | single dmAssets select          | X          | expects validation to be set to assetGroupID             |
+| dmAssets-select   | dmAssets         | multiple dmAssets select        | X          | expects validation to be set to assetGroupID             |
+
+not passing an inputView will use the default inputView. If you pass an invalid inputView (not existing), the field's value will be displayed.
+
+sources:
+
+- [default-input](https://github.com/entrecode/ec.components/blob/master/packages/ui/src/lib/form/default-input/default-input.component.html)
+- [default-entry-input](https://github.com/entrecode/ec.components/blob/master/packages/data/src/lib/entry-form/default-entry-input.component.html)
+
+### inputView in the editor
+
+In the model field config of the [ec.editor](https://e.entrecode.de), you can also select a default inputView in the frontend tab. Currently, this is only possible for entries fields, but will be available for more in the future (TODO: add inputViews to type-config.service).
+
+### entry-select + entry-selects
+
+As you see above, entry/entries fields will default to inputViews entry-select / entries-select. You can customize the entry select via nestedCrudConfig, which is passed to the entry-select:
+
+```ts
+bakerConfig = {
+  fields: {
+    /* other fields */
+    baked_muffins: { // entries field
+      nestedCrudConfig: {
+        disableSearchbar: true
+        disableDrag: true
+        disableRemove: true
+        disableSearchbar: true
+        disableCreatePop: true
+        /* or use methods */
+        methods: ['get','put','post','delete']
+      }
+    }
+  }
+}
+```
+
+The nestedCrudConfig is also passed down to the children of entry-select: entry-list-pop & entry-pop. You could of course also pass a fields config but it is recommended you use ModelConfigService. See [Configuration](configuration#by-modelconfigservice) for details.
+
+### select
+
+To render a html select with options:
+
+```ts
+const muffinConfig = {
+  fields: {
+    /* .. */
+    country: {
+      inputView: 'select',
+      values: ['Germany', 'USA', 'Kongo'],
+    },
+  },
+};
+```
+
+### copy
+
+To render a copyable date:
+
+```ts
+const muffinConfig = {
+  fields: {
+    /* .. */
+    _created: {
+      inputView: 'copy',
+      copy: (value) => moment(value).toISOString(),
+    },
+  },
+};
+```
+
+This uses the copy transform to turn the date into an iso string before copying. If you do not define a copy transform, the value will be copied as is (as returned by resolve).
+
+## custom input component
+
+If you want custom behaviour that is not handled by the default inputViews, you can use a custom component as input:
+
+### 1. Create Custom Input Component
+
+```sh
+ng g c custom-input
+```
+
+This component will serve as a container for all possible custom input fields.
+
+### 2. Extend InputComponent (custom-input.component.ts)
+
+To make the current field information available to the template, you need to extend InputComponent from @ec.components/ui:
+
+```js
+import { Component } from '@angular/core';
+import { InputComponent } from '@ec.components/ui';
+
+@Component({
+  selector: 'clubapp-custom-input',
+  templateUrl: './custom-input.component.html',
+  styleUrls: ['./custom-input.component.scss'],
+})
+export class CustomInputComponent extends InputComponent {}
+```
+
+CMD+Click on InputComponent to see which properties you can now use!
+
+### 3. Add Markup (custom-input.component.html)
+
+Now we can decide which custom input should be used, based on e.g. the fields view value:
+
+```html
+<div [ngSwitch]="field.getView('input')" *ngIf="group" [formGroup]="group">
+  <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>
+  <div *ngSwitchCase="'speakingurl'">
+    <input [id]="field.id" type="text" [formControl]="control" />
+  </div>
+  <div *ngSwitchCase="'openingHours'">
+    <!-- <ec-opening-hours [formControl]="control"></ec-opening-hours> -->
+  </div>
+</div>
+```
+
+Of course you could also switch based on property name or type, depending on your application.
+The id property of field is referenced in the label of the form. By adding it to the input makes sure your label click enters the input.
+
+### 4. Add CustomInputComponent to entryComponents:
+
+Because the custom component will be loaded dynamically, your module needs to declare it as entryComponent:
+
+```js
+@NgModule({
+  entryComponents: [CustomInputComponent],
+  /** more stuff **/
+})
+export class AppModule {}
+```
+
+### 5. Add CustomInputComponent to field config:
+
+Now you can add the Component as input to your field config:
+
+```js
+this.modelConfig.set('muffin', {
+      fields: {
+        url: {
+          label: 'URL',
+          view: 'speakingurl',
+          input: CustomInputComponent
+        },
+        openingHours: {
+          label: 'Öffnungszeiten',
+          view: 'openingHours',
+          input: CustomInputComponent
+        }
+})
+```
+
+By changing the view option, we can now decide which case will be met!
+
+### Custom Form Controls via ControlValueAccessor
+
+In the above custom-input.component template, we use _ec-opening-hours_ with a formControl input.
+To have access to the form control's value, you need to provide a ControlValueAccessor:
+
+```js
+import { Component, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { InputComponent } from '@ec.components/ui';
+
+@Component({
+  selector: 'ec-opening-hours',
+  templateUrl: './opening-hours.component.html',
+  styleUrls: ['./opening-hours.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => OpeningHoursComponent),
+      multi: true
+    }
+  ]
+})
+```
+
+Now you can implement your own logic and call propagateChange when you change the value from your component, and react to change via the writeValue method!
+You now could also use your component with ngModel or formControl in another context!
+More information on this pattern: https://blog.thoughtram.io/angular/2016/07/27/custom-form-controls-in-angular-2.html
+
+### Custom Fields without wrapper
+
+You can also use custom components as input directly without needing to wrap them in "CustomFieldsComponent".
+Just make sure you implement ControlValueAccessor like above. When changes occur from the template, call propagateChange. You can react to outside model changes in writeValue.
+
+```typescript
+import { Component, OnInit, Input } from '@angular/core';
+import { InputComponent } from '../../../packages/ui';
+import { ControlValueAccessor } from '@angular/forms';
+
+@Component({
+  selector: 'ec-counter',
+  templateUrl: './counter.component.html',
+})
+export class CounterComponent extends InputComponent implements ControlValueAccessor {
+  value = 0;
+
+  increment() {
+    this.propagateChange(++this.value);
+  }
+
+  decrement() {
+    this.propagateChange(--this.value);
+  }
+
+  writeValue(value: any) {
+    this.value = value;
+    console.log('received value', value);
+  }
+
+  propagateChange = (_: any) => {};
+
+  registerOnChange(fn) {
+    this.propagateChange = fn;
+  }
+
+  registerOnTouched() {}
+}
+```
