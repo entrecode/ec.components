@@ -1,12 +1,12 @@
-<div class="ec-resource-delete-pop dialog" *ngIf="active">
-  <div class="dialog-body">
+<div class="ec-resource-delete-pop model" *ngIf="active">
+  <div class="model__body">
     <p>{{ question || ((!safetyWord ? 'resource.delete.question' : 'resource.delete.safety') | symbol) }}</p>
     <div class="field-group" *ngIf="safetyWord">
       <label class="field-group__label" for="confirmInput">"{{ safetyWord }}"</label>
       <input [ecFocus]="focusEvent" id="confirmInput" type="text" class="input" [(ngModel)]="confirmInput" />
     </div>
   </div>
-  <div class="dialog-footer">
+  <div class="model__footer">
     <ul class="nav">
       <li class="nav__item">
         <a class="btn" (click)="delete()" [class.is-disabled]="!canDelete()">

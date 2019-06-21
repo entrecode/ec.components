@@ -7,14 +7,16 @@
       </a>
     </li>
   </ul>
-  <ec-pop class="dialog-wrapper" #sourcePop>
-    <div class="dialog source-pop" data-col="8">
-      <div class="dialog-header">
+  <ec-pop class="modal-wrapper" #sourcePop>
+    <div class="modal source-pop" data-col="8">
+      <button (click)="sourcePop.hide()" type="button" class="modal__dismiss"><ec-icon name="close"></ec-icon></button>
+      <div class="modal__header">
         <h3>{{ getFileName(path) }}</h3>
       </div>
-      <button (click)="sourcePop.hide()" type="button" class="modal__dismiss"><ec-icon name="close"></ec-icon></button>
-      <div *ngFor="let source of paths">
-        <ec-github-source *ngIf="path === source" [path]="path" [mode]="getFileMode(path)"></ec-github-source>
+      <div class="modal__body">
+        <div *ngFor="let source of paths">
+          <ec-github-source *ngIf="path === source" [path]="path" [mode]="getFileMode(path)"></ec-github-source>
+        </div>
       </div>
     </div>
   </ec-pop>
