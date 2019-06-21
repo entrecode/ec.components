@@ -1,13 +1,10 @@
-<div class="ec-resource-delete-pop model" *ngIf="active">
-  <div class="model__body">
-    <p>{{ question || ((!safetyWord ? 'resource.delete.question' : 'resource.delete.safety') | symbol) }}</p>
+<div class="ec-resource-delete-pop modal" *ngIf="active">
+  <div class="modal__body">
+    <div class="has-padding-middle-3">{{ question || ((!safetyWord ? 'resource.delete.question' : 'resource.delete.safety') | symbol) }} <strong *ngIf="safetyWord">: {{ safetyWord }}</strong></div>
     <div class="field-group" *ngIf="safetyWord">
-      <label class="field-group__label" for="confirmInput">"{{ safetyWord }}"</label>
       <input [ecFocus]="focusEvent" id="confirmInput" type="text" class="input" [(ngModel)]="confirmInput" />
     </div>
-  </div>
-  <div class="model__footer">
-    <ul class="nav">
+    <ul class="nav" data-flex="center">
       <li class="nav__item">
         <a class="btn" (click)="delete()" [class.is-disabled]="!canDelete()">
           {{ yes || ((!safetyWord ? 'resource.delete.yes' : 'resource.delete.confirm') | symbol) }}
