@@ -1,17 +1,6 @@
 <ec-pop (toggle)="toggledFilterPop($event)" [hideOnEscape]="false" #filterPop>
   <div class="ec-searchbar">
     <div *ngIf="filteredField" data-grid="no-gutter">
-      <!-- <div tabindex="0" class="dropdown dropdown_left">
-      <span class="btn btn_clear">
-        {{filteredField.getLabel()}}
-      </span>
-      <ul class="dropdown-options">
-        <li [class.is-hidden]="field.property===filteredField?.property" class="dropdown-option"
-          *ngFor="let field of list?.filterableFields()">
-          <a (click)="filterField(field.property)">{{filteredField.getLabel()}}</a>
-        </li>
-      </ul>
-    </div> -->
       <div data-col="auto">
         <div class="input-group">
           <div class="input-group__addon" data-flex="center">
@@ -28,7 +17,11 @@
             *ngIf="filterPop.active && filterForm?.group"
             #filterInput
           ></ec-input>
-          <div class="input-group__addon" *ngIf="list?.isFiltered(filteredField.property)" data-flex="center center-items">
+          <div
+            class="input-group__addon"
+            *ngIf="list?.isFiltered(filteredField.property)"
+            data-flex="center center-items"
+          >
             <a class="btn btn_clear btn_small is-ink-light" (click)="resetFilter()">
               <ec-icon name="clear"></ec-icon>
             </a>
