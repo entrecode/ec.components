@@ -10,6 +10,7 @@ import { Symbol } from '../symbol/symbol.interface';
   selector: 'ec-icon',
   templateUrl: './icon.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  styleUrls: ['./icon.component.scss'],
 })
 export class IconComponent implements OnInit, OnChanges {
   /** The name of the icon. An Icon with this name is expected to be present in the current iconService registry. */

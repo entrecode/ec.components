@@ -23,7 +23,7 @@ import { PopService } from '../pop/pop.service';
 })
 export class ModalComponent extends PopComponent implements OnInit, OnChanges {
   /** all possible modes that can be set */
-  types = ['dialog', 'overlay', 'deck', 'toast', 'snackbar'];
+  types = ['', 'overlay', 'deck', 'toast'];
   /** This property sets the mode + additional options.
    * It expects the type at first and non mandatory options like opens-left afterwards. */
   @Input() mode: string;
@@ -47,10 +47,11 @@ export class ModalComponent extends PopComponent implements OnInit, OnChanges {
   }
   /** Is called on init and change. Parses mode input and throws warning if type is not supported. */
   initMode() {
-    this.mode = this.mode || 'dialog';
+    this.elementRef.nativeElement.classList.add('modal-wrapper');
+    this.mode = this.mode || '';
     this.type = this.mode.split(' ')[0];
     if (!this.types.includes(this.type)) {
-      const fallback = this.mode.replace(this.type, 'dialog');
+      const fallback = this.mode.replace(this.type, '');
       console.warn(`ec-modal does not support the mode "${this.type}".
             Use one of ${this.types.join(', ')}.
             Falling back to ${fallback}.`);
@@ -64,7 +65,7 @@ export class ModalComponent extends PopComponent implements OnInit, OnChanges {
       this.elementRef.nativeElement.classList.remove(`${type}-wrapper`);
     });
     if (this.backdrop) {
-      this.elementRef.nativeElement.classList.add(`${this.type}-wrapper`);
+      this.elementRef.nativeElement.classList.add(`has-backdrop`);
     }
   }
 

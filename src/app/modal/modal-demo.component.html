@@ -10,7 +10,13 @@
     </header>
     <p>This is my body. You can change my settings below</p>
     <div class="field-group">
-      <input class="input" type="checkbox" id="modalBackdrop" (ngModelChange)="updateMarkup()" [(ngModel)]="modalBackdrop" />
+      <input
+        class="input"
+        type="checkbox"
+        id="modalBackdrop"
+        (ngModelChange)="updateMarkup()"
+        [(ngModel)]="modalBackdrop"
+      />
       <label class="field-group__label" for="modalBackdrop">
         with backdrop
       </label>
@@ -30,14 +36,11 @@
     <div class="field-group">
       <label class="field-group__label" for="modalMode">mode</label>
       <select class="input" id="modalMode" (ngModelChange)="updateMarkup()" [(ngModel)]="modalMode">
-        <option>dialog</option>
         <option>deck</option>
         <option>deck opens-right</option>
         <option>overlay</option>
         <option>toast</option>
         <option>toast opens-bottom</option>
-        <option>snackbar</option>
-        <option>snackbar opens-bottom</option>
         <option>does-not-exist</option>
       </select>
     </div>
