@@ -1,12 +1,12 @@
-<div class="dialog">
-    <button (click)="hide()" class="modal__dismiss" type="button">
-        <ec-icon name="close"></ec-icon>
-    </button>
-    <div class="dialog-header">
-        {{'image-select-pop.header' | symbol}}
-    </div>
-    <div class="dialog-body">
-        <ec-loader class="ec-loader loader" #imageLoader></ec-loader>
-        <ec-form *ngIf="imageForm" [config]="imageForm" #imageSettings></ec-form>
-    </div>
+<div class="modal">
+  <button (click)="hide()" class="modal__dismiss" type="button">
+    <ec-icon name="close"></ec-icon>
+  </button>
+  <div class="modal__header">
+    {{ 'image-select-pop.header' | symbol }}
+  </div>
+  <div class="modal__body">
+    <ec-loader class="ec-loader loader" #imageLoader></ec-loader>
+    <ec-form *ngIf="imageForm" [config]="imageForm" #imageSettings></ec-form>
+  </div>
 </div>
