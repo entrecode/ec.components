@@ -8,6 +8,7 @@ import { KeycommandsService } from '../../utility/keycommands/keycommands.servic
 /** This component holds the templates for all basic field types. */
 @Component({
   templateUrl: './default-input.component.html',
+  styleUrls: ['./default-input.component.scss'],
 })
 export class DefaultInputComponent implements AfterViewInit, Focus {
   /** The field for which the input is meant. */

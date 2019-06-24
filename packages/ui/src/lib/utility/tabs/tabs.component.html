@@ -1,7 +1,7 @@
 <div class="ec-tabs">
   <div class="ec-tabs-nav">
-    <div *ngFor="let tab of tabs; let i = index" class="ec-tabs-nav__item" [class.is-selected]="tab.selected">
-      <a (click)="select(tab)">{{ tab.label }}</a>
+    <div *ngFor="let tab of tabs; let i = index" class="ec-tabs-nav__item">
+      <a (click)="select(tab)" class="ec-tabs-nav__link" [class.is-active]="tab.selected">{{ tab.label }}</a>
     </div>
   </div>
   <ng-content select="ec-tab" #tab></ng-content>

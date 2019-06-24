@@ -91,14 +91,18 @@
         Na los
       </button>
     </ec-form>
-    <pre>
-        {{ treeForm.group?.value | json }}
-        </pre
-    >
+    <pre><code>{{ treeForm.group?.value | json }}</code></pre>
+
     <h3>custom inputs without wrapper</h3>
-    <strong>empty</strong>
-    <ec-form (submitted)="logValue($event)" [config]="customFormConfig"></ec-form>
-    <strong>with value</strong>
-    <ec-form (submitted)="logValue($event)" [config]="customFormConfig" [value]="{ count: 2 }"></ec-form>
+    <div data-grid>
+      <div data-col="6">
+        <h4>empty</h4>
+        <ec-form (submitted)="logValue($event)" [config]="customFormConfig"></ec-form>
+      </div>
+      <div data-col="6">
+        <h4>with value</h4>
+        <ec-form (submitted)="logValue($event)" [config]="customFormConfig" [value]="{ count: 2 }"></ec-form>
+      </div>
+    </div>
   </ec-tab>
 </ec-tabs>
