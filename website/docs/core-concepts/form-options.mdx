@@ -93,32 +93,25 @@ The form body contains all field inputs. The look and behaviour of each form fie
 
 Contains buttons. In entry forms, the buttons depend on the permissions of the user. If all permissions are granted, a save button and a delete button will be shown.
 
-## visibility
-
-The following options control the visibility of fields.
-
-| option           | description                                                | type    |
-| ---------------- | ---------------------------------------------------------- | ------- |
-| field.hideInForm | if true, the field will not be visible.                    | boolean |
-| field.form       | if false, the field will not be visible and not be loaded. | boolean |
-
-## config
+## field config
 
 The following field options control the forms looks/behaviour:
 
-| option        | description                                     | type                    |
-| ------------- | ----------------------------------------------- | ----------------------- |
-| label         | label above input                               | string                  |
-| placeholder   | input placeholder                               | string                  |
-| columns       | how many columns are used by the field          | number 1-12             |
-| immutable     | if true, the property won't be sent when saving | boolean                 |
-| readOnly      | if true, the property won't be editable         | boolean                 |
-| required      | if true, the field needs to be filled out       | boolean                 |
-| prefill       | prefill value for new entries                   | any                     |
-| input         | custom input component                          | Component               |
-| formComponent | custom input component used in form only        | Component               |
-| inputView     | view for input component                        | string                  |
-| validate      | transformation for form validation              | transformation function |
+| option              | description                                                | type                    |
+| ------------------- | ---------------------------------------------------------- | ----------------------- |
+| field.hideInForm    | if true, the field will not be visible.                    | boolean                 |
+| field.form          | if false, the field will not be visible and not be loaded. | boolean                 |
+| field.label         | label above input                                          | string                  |
+| field.placeholder   | input placeholder                                          | string                  |
+| field.columns       | how many columns are used by the field                     | number 1-12             |
+| field.immutable     | if true, the property won't be sent when saving            | boolean                 |
+| field.readOnly      | if true, the property won't be editable                    | boolean                 |
+| field.required      | if true, the field needs to be filled out                  | boolean                 |
+| field.prefill       | prefill value for new entries                              | any                     |
+| field.input         | custom input component                                     | Component               |
+| field.formComponent | custom input component used in form only                   | Component               |
+| field.inputView     | view for input component                                   | string                  |
+| field.validate      | transformation for form validation                         | transformation function |
 
 ## validate
 

@@ -1,17 +1,26 @@
-import { ForceGraph2D, ForceGraph3D } from 'react-force-graph';
 import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
 import Graph from 'react-graph-vis';
 
-const getColor = (n) => '#' + ((n * 1234567) % Math.pow(2, 24)).toString(16).padStart(6, '0');
-const packageColors = {
-  data: '#AB4B43',
-  ui: 'green',
-  optional: 'gray',
+const allPackages = {
+  data: {
+    color: '#AB4B43',
+  },
+  ui: {
+    color: 'green',
+  },
+  optional: {
+    color: 'gray',
+  },
+  calendar: {
+    color: 'darkblue',
+  },
+  modules: {
+    color: 'black',
+  },
 };
 const typeShapes = {
   component: 'box',
-  service: 'box',
+  module: 'ellipse',
 };
 const allNodes = [
   { label: 'ec-crud', package: 'data', type: 'component' },
@@ -28,23 +37,67 @@ const allNodes = [
   { label: 'ec-entry-select', package: 'data', type: 'component' },
   { label: 'ec-entry-list-select', package: 'data', type: 'component' },
   { label: 'ec-entry-actionbar', package: 'data', type: 'component' },
+  { label: 'ec-default-entry-input', package: 'data', type: 'component' },
+  { label: 'ec-resource-delete-pop', package: 'data', type: 'component' },
+  { label: 'ec-asset-select', package: 'data', type: 'component' },
   { label: 'ec-select', package: 'ui', type: 'component' },
   { label: 'ec-actionbar', package: 'ui', type: 'component' },
   { label: 'ec-form', package: 'ui', type: 'component' },
   { label: 'ec-input', package: 'ui', type: 'component' },
   { label: 'ec-default-input', package: 'ui', type: 'component' },
   { label: 'ec-default-output', package: 'ui', type: 'component' },
-  { label: 'ec-default-entry-input', package: 'data', type: 'component' },
   { label: 'ec-input-errors', package: 'ui', type: 'component' },
-  { label: 'ec-datetime', package: 'ui', type: 'component' },
+  { label: 'ec-datetime', package: 'calendar', type: 'component' },
+  { label: 'ec-calendar', package: 'calendar', type: 'component' },
+  { label: 'ec-month', package: 'calendar', type: 'component' },
+  { label: 'ec-daterange', package: 'calendar', type: 'component' },
+  { label: 'ec-heatmap', package: 'calendar', type: 'component' },
   { label: 'ec-dynamic-slot', package: 'ui', type: 'component' },
+  { label: 'ec-loader', package: 'ui', type: 'component' },
   { label: 'ec-output', package: 'ui', type: 'component' },
   { label: 'ec-pop', package: 'ui', type: 'component' },
-  { label: 'ec-resource-delete-pop', package: 'data', type: 'component' },
+  { label: 'ec-modal', package: 'ui', type: 'component' },
   { label: 'ec-location-picker', package: 'optional', type: 'component' },
   { label: 'ec-ace', package: 'optional', type: 'component' },
-  { label: 'ec-asset-select', package: 'data', type: 'component' },
   { label: 'ec-toggle', package: 'ui', type: 'component' },
+  { label: 'ec-login', package: 'data', type: 'component' },
+  { label: 'ec-password-reset', package: 'data', type: 'component' },
+  { label: 'ecEntry', package: 'data', type: 'directive' },
+  { label: 'ecEntries', package: 'data', type: 'directive' },
+  { label: 'ecAsset', package: 'data', type: 'directive' },
+  { label: 'ec-asset-list-pop', package: 'data', type: 'component' },
+  { label: 'ec-asset-select', package: 'data', type: 'component' },
+  { label: 'ec-searchbar', package: 'data', type: 'component' },
+  { label: 'ec-upload-select', package: 'data', type: 'component' },
+  { label: 'ec-assetgroup-select', package: 'data', type: 'component' },
+  { label: 'ecDropzone', package: 'data', type: 'component' },
+  { label: 'ecImage', package: 'data', type: 'component' },
+  { label: 'ecImage', package: 'data', type: 'component' },
+  { label: 'ec-image-select-pop', package: 'data', type: 'component' },
+  { label: 'FilesModule', package: 'modules', type: 'module' },
+  { label: 'DataModule', package: 'modules', type: 'module' },
+  { label: 'UiModule', package: 'modules', type: 'module' },
+  { label: 'SdkModule', package: 'modules', type: 'module' },
+  { label: 'AuthModule', package: 'modules', type: 'module' },
+  { label: 'ResourceModule', package: 'modules', type: 'module' },
+  { label: 'UtilityModule', package: 'modules', type: 'module' },
+  { label: 'PopModule', package: 'modules', type: 'module' },
+  { label: 'NotificationsModule', package: 'modules', type: 'module' },
+  { label: 'LoaderModule', package: 'modules', type: 'module' },
+  { label: 'ListModule', package: 'modules', type: 'module' },
+  { label: 'FormModule', package: 'modules', type: 'module' },
+  { label: 'SelectModule', package: 'modules', type: 'module' },
+  { label: 'IconModule', package: 'modules', type: 'module' },
+  { label: 'SymbolModule', package: 'modules', type: 'module' },
+
+  { label: 'ec-tabs', package: 'ui', type: 'component' },
+  { label: 'ec-tab', package: 'ui', type: 'component' },
+  { label: 'ec-menu', package: 'ui', type: 'component' },
+  { label: 'ec-login-form', package: 'ui', type: 'component' },
+  { label: 'ec-signup-form', package: 'ui', type: 'component' },
+  { label: 'ecFocus', package: 'ui', type: 'component' },
+  { label: 'KeycommandsService', package: 'ui', type: 'service' },
+  { label: 'PopService', package: 'ui', type: 'service' },
 ];
 const allEdges = [
   { from: 'ec-crud', to: 'ec-entry-list' },
@@ -91,12 +144,98 @@ const allEdges = [
   { from: 'ec-select', to: 'ec-pop' },
   { from: 'ec-select', to: 'ec-list' },
   { from: 'ec-crud', to: 'ec-entry-list' },
-];
-const allPackages = ['data', 'ui', 'optional'];
+  { from: 'ec-datetime', to: 'ec-calendar' },
+  { from: 'ec-calendar', to: 'ec-month' },
+  { from: 'ec-daterange', to: 'ec-calendar' },
+  { from: 'ec-heatmap', to: 'ec-calendar' },
+  { from: 'ec-login', to: 'ec-login-form' },
+  { from: 'ec-signup-form', to: 'ec-login-form' },
+  { from: 'ec-signup', to: 'ec-signup-form' },
+  { from: 'DataModule', to: 'FilesModule' },
+  { from: 'DataModule', to: 'ec-crud' },
+  { from: 'FilesModule', to: 'ec-asset-list-pop' },
+  { from: 'FilesModule', to: 'ec-asset-select' },
+  { from: 'FilesModule', to: 'ec-image-select-pop' },
+  { from: 'ec-asset-list-pop', to: 'ec-resource-list' },
+  { from: 'ec-asset-list-pop', to: 'ec-resource-select' },
+  { from: 'ec-asset-list-pop', to: 'ec-pagination' },
+  { from: 'ec-asset-list-pop', to: 'ec-select' },
+  { from: 'ec-asset-list-pop', to: 'ec-searchbar' },
+  { from: 'ec-asset-list-pop', to: 'ec-upload-select' },
+  { from: 'ec-asset-select', to: 'ec-upload-select' },
+  { from: 'ec-asset-select', to: 'ec-select' },
+  { from: 'ec-image-select-pop', to: 'ec-pop' },
+  { from: 'ec-image-select-pop', to: 'ec-form' },
+  { from: 'ec-image-select-pop', to: 'ec-asset-select' },
+  { from: 'DataModule', to: 'ec-entry-list' },
+  { from: 'DataModule', to: 'ecEntry' },
+  { from: 'DataModule', to: 'ecEntries' },
+  { from: 'DataModule', to: 'ec-entry-form' },
+  { from: 'DataModule', to: 'ec-entry-pop' },
+  { from: 'DataModule', to: 'ec-default-entry-input' },
+  /* { from: 'DataModule', to: 'ec-default-entry-output' }, */
+  /* { from: 'DataModule', to: 'ec-admin-entry-input' }, */
+  { from: 'DataModule', to: 'ec-entry-list-select' },
+  { from: 'DataModule', to: 'ec-crud' },
+  { from: 'DataModule', to: 'ec-entry-select' },
+  { from: 'DataModule', to: 'ec-entry-actionbar' },
+  { from: 'DataModule', to: 'ec-entry-list-pop' },
+  { from: 'DataModule', to: 'UiModule' },
+  { from: 'DataModule', to: 'SdkModule' },
+  { from: 'DataModule', to: 'FilesModule' },
+  { from: 'DataModule', to: 'AuthModule' },
+  { from: 'DataModule', to: 'ResourceModule' },
+  { from: 'UiModule', to: 'UtilityModule' },
+  { from: 'UiModule', to: 'PopModule' },
+  { from: 'UiModule', to: 'NotificationsModule' },
+  { from: 'UiModule', to: 'LoaderModule' },
+  { from: 'UiModule', to: 'ListModule' },
+  { from: 'UiModule', to: 'FormModule' },
+  { from: 'UiModule', to: 'SelectModule' },
+  { from: 'UiModule', to: 'IconModule' },
+  { from: 'UiModule', to: 'SymbolModule' },
 
-export const ComponentsOverview = ({ visibleNodes, showCheckboxes, width, height }) => {
+  { from: 'UtilityModule', to: 'ec-tabs' },
+  { from: 'UtilityModule', to: 'ec-tab' },
+  { from: 'UtilityModule', to: 'ec-menu' },
+  { from: 'UtilityModule', to: 'ec-login-form' },
+  { from: 'UtilityModule', to: 'ec-signup-form' },
+  { from: 'UtilityModule', to: 'ecFocus' },
+  { from: 'UtilityModule', to: 'KeycommandsService' },
+
+  { from: 'PopModule', to: 'ec-pop' },
+  { from: 'PopModule', to: 'ec-modal' },
+  { from: 'PopModule', to: 'PopService' },
+];
+
+const getChildren = (label) => {
+  return allEdges
+    .filter((e) => e.from === label)
+    .map((e) => e.to)
+    .map((c) => allNodes.find((n) => n.label === c));
+};
+const getParents = (label) => {
+  return allEdges
+    .filter((e) => e.to === label)
+    .map((e) => e.from)
+    .map((c) => allNodes.find((n) => n.label === c));
+};
+
+export const ComponentsOverview = ({ visibleNodes, levels, showCheckboxes, width, height, visiblePackages }) => {
   [width, height] = [width || 800, height || 600];
-  const [packages, setPackages] = useState(allPackages);
+  const [packages, setPackages] = useState(Object.keys(allPackages));
+  if (visiblePackages) {
+    console.log('visible', visiblePackages);
+    visibleNodes = allNodes.filter((n) => visiblePackages.includes(n.package)).map((n) => n.label);
+  }
+  if (levels && visibleNodes) {
+    console.log('chlidrenOnly', visibleNodes);
+
+    visibleNodes = visibleNodes.reduce((visible, current) => {
+      return visible.concat(getChildren(current).map((n) => n.label));
+    }, []);
+    console.log('visible', visibleNodes);
+  }
   const [activeNodes, setActiveNodes] = useState(
     allNodes.filter((n) => (visibleNodes || allNodes.map((n) => n.label)).includes(n.label)),
   );
@@ -109,13 +248,15 @@ export const ComponentsOverview = ({ visibleNodes, showCheckboxes, width, height
   };
   const toggleNode = (nodeLabel) => {
     const currentNode = allNodes.find((n) => n.label === nodeLabel);
+    const toActivate = getChildren(currentNode.label).concat([currentNode]);
+    const toDeactivate = getParents(currentNode.label);
+    console.log('children', toActivate);
+    console.log('parents', toDeactivate);
 
-    const children = allEdges
-      .filter((e) => e.from === currentNode.label)
-      .map((e) => e.to)
-      .concat([nodeLabel])
-      .map((c) => allNodes.find((n) => n.label === c));
-    const activated = activeNodes.concat(children.filter((n, i, a) => a.indexOf(n) === i));
+    const activated = activeNodes
+      .concat(toActivate)
+      /* .filter((n) => !toDeactivate.map((n) => n.label).includes(n.label)) */
+      .filter((n, i, a) => a.indexOf(n) === i);
     setActiveNodes(activated);
   };
   const nodes = allNodes
@@ -124,10 +265,10 @@ export const ComponentsOverview = ({ visibleNodes, showCheckboxes, width, height
     .map((n, id) => ({
       ...n,
       id,
-      color: packageColors[n.package] || 'red',
+      color: (allPackages[n.package] ? allPackages[n.package].color : 'red') || 'white',
       shape: typeShapes[n.type] || 'box',
       font: { color: 'white' },
-      size: 150,
+      size: 10,
     }));
 
   const edges = allEdges
@@ -144,7 +285,7 @@ export const ComponentsOverview = ({ visibleNodes, showCheckboxes, width, height
         damping: 0.5,
         springConstant: 0.01,
         avoidOverlap: 1,
-        gravitationalConstant: -5000,
+        gravitationalConstant: -4000,
       },
       timestep: 0.2,
     },
@@ -163,7 +304,6 @@ export const ComponentsOverview = ({ visibleNodes, showCheckboxes, width, height
     width: width + 'px',
     height: height + 'px',
   };
-  console.log('options', options, width, height);
 
   const events = {
     select: function(e) {
@@ -191,7 +331,7 @@ export const ComponentsOverview = ({ visibleNodes, showCheckboxes, width, height
       />
       {!showCheckboxes || (
         <ul>
-          {allPackages.map((p, i) => (
+          {Object.keys(allPackages).map((p, i) => (
             <li key={i} style={{ listStyle: 'none' }}>
               <label>
                 <input onChange={() => togglePackage(p)} type="checkbox" checked={packages.includes(p)} />

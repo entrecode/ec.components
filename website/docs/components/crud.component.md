@@ -17,7 +17,7 @@ The CrudComponent (CRUD stands for Create Read Update Delete) is like the meta c
 ## Used Components
 
 - [entry-list](entry-list.component.md) available as entryList property
-- [entry-pop](entry-pop.component.md) available as entryPop property
+- entry-pop available as entryPop property
 
 ## Outputs
 
@@ -70,7 +70,7 @@ This will disable creating and deleting entries.
 
 **Default Methods**
 
-By default, the crud component will respect the active users permissions, meaning a create button will only be visible if the user is allowed to create entries. The same goes for delete and save buttons. See [Accounts & Rights](../core-concepts/accounts) for more info. If you pass methods to the config, those will always be used.
+By default, the crud component will respect the active users permissions, meaning a create button will only be visible if the user is allowed to create entries. The same goes for delete and save buttons. See [Accounts & Rights](../core-concepts/accounts.md) for more info. If you pass methods to the config, those will always be used.
 
 ### config.createLabel
 

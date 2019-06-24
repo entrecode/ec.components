@@ -5,24 +5,37 @@ sidebar_label: Component Overview
 ---
 
 This document gives a broad overview of the different components and how they are intertwined.
-The prefix "ec" is omitted to prevent cluttering your eyes.
 
 import { ComponentsOverview } from '../../ComponentsOverview.js';
 
-<ComponentsOverview visibleNodes={['ec-crud']} showCheckboxes={true} width={800} height={600} />
+## Module Structure
+
+<ComponentsOverview visiblePackages={['modules']} showCheckboxes={false} width={800} height={600} />
 
 ## Data Components
 
-| name              | description                                                       | package | extends       | contains                        |
-| ----------------- | ----------------------------------------------------------------- | ------- | ------------- | ------------------------------- |
-| crud              | Create Read Update and Delete data. Combines all below components | data    |               | entry-list, entry-pop           |
-| entry-list        | Displays entries of a model                                       | data    | resource-list |
-| entry-pop         | Opens an entry form in a pop.                                     | data    | pop           | entry-form, resource-delete-pop |
-| entry-form        | Edits or creates entries                                          | data    | form          |
-| entry-select      | filterable Dropdown to pick one or multiple entries               | data    | select        |
-| entry-list-select | displays selected entries as a list                               | data    | input         |
+<!-- <ComponentsOverview visiblePackages={['modules']} showCheckboxes={false} width={800} height={600} /> -->
+<!-- <ComponentsOverview visibleNodes={['DataModule']} levels={1} showCheckboxes={false} width={800} height={600} />  -->
+
+
+<ComponentsOverview visiblePackages={['data']} showCheckboxes={false} width={800} height={600} />
+
+
+| name                | description                                                       | package | extends       | contains                           |
+| ------------------- | ----------------------------------------------------------------- | ------- | ------------- | ---------------------------------- |
+| crud                | Create Read Update and Delete data. Combines all below components | data    |               | entry-list, entry-pop              |
+| entry-list          | Displays entries of a model                                       | data    | resource-list |
+| entry-pop           | Opens an entry form in a pop.                                     | data    | pop           | entry-form, resource-delete-pop    |
+| entry-form          | Edits or creates entries                                          | data    | form          |
+| entry-select        | filterable Dropdown to pick one or multiple entries               | data    | select        |
+| entry-list-select   | displays selected entries as a list                               | data    | input         |
+| resource-delete-pop | Deletes resource after confirmation.                              | data    |
+| resource-pop        | Opens resource in a pop.                                          | data    | pop           | resource-form, resource-delete-pop |
+| resource-list       | Displays resources                                                | data    | list          |
 
 ## UI Components
+
+<ComponentsOverview visiblePackages={['ui']} showCheckboxes={false} width={800} height={600} />
 
 | name         | description                                                             | package | extends      | contains                            |
 | ------------ | ----------------------------------------------------------------------- | ------- | ------------ | ----------------------------------- |
@@ -36,11 +49,3 @@ import { ComponentsOverview } from '../../ComponentsOverview.js';
 | input        | general form input                                                      | ui      | dynamic-slot |
 | output       | general output                                                          | ui      | dynamic-slot |
 | dynamic-slot | component that loads another component into intself                     | ui      |
-
-## Resource Components
-
-| name                | description                          | package | extends | contains                           |
-| ------------------- | ------------------------------------ | ------- | ------- | ---------------------------------- |
-| resource-delete-pop | Deletes resource after confirmation. | data    |
-| resource-pop        | Opens resource in a pop.             | data    | pop     | resource-form, resource-delete-pop |
-| resource-list       | Displays resources                   | data    | list    |
