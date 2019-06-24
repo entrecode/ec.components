@@ -33,7 +33,7 @@ export class ImageSelectPopComponent extends PopComponent implements OnInit {
   /** The loader that is shown after an image has been selected  */
   @ViewChild('imageLoader') imageLoader: LoaderComponent;
   /** Set host class to make sure the type is used */
-  @HostBinding('class') class = 'modal-wrapper';
+  @HostBinding('class') class = 'ec-image-select-pop modal-wrapper';
 
   constructor(
     public popService: PopService,

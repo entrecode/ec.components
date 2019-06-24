@@ -17,7 +17,7 @@ import { ResourceService } from '../resource-config/resource.service';
 export class ResourceDeletePopComponent extends PopComponent {
   /* The current value of the confirmation input */
   confirmInput = '';
-  @HostBinding('class') type = 'modal-wrapper';
+  @HostBinding('class') type = 'modal-wrapper ec-resource-delete-pop';
   /** The question inside the pop */
   @Input() question: string;
   /** The label for confirmation */

@@ -1,6 +1,9 @@
-<div class="ec-resource-delete-pop modal" *ngIf="active">
+<div class="modal" *ngIf="active">
   <div class="modal__body">
-    <div class="has-padding-middle-3">{{ question || ((!safetyWord ? 'resource.delete.question' : 'resource.delete.safety') | symbol) }} <strong *ngIf="safetyWord">: {{ safetyWord }}</strong></div>
+    <div class="has-padding-middle-3">
+      {{ question || ((!safetyWord ? 'resource.delete.question' : 'resource.delete.safety') | symbol) }}
+      <strong *ngIf="safetyWord">: {{ safetyWord }}</strong>
+    </div>
     <div class="field-group" *ngIf="safetyWord">
       <input [ecFocus]="focusEvent" id="confirmInput" type="text" class="input" [(ngModel)]="confirmInput" />
     </div>
