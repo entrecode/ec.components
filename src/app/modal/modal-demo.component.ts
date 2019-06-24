@@ -4,7 +4,8 @@ import { Component, ViewChild, OnChanges, OnInit } from '@angular/core';
   templateUrl: './modal-demo.component.html',
 })
 export class ModalDemoComponent implements OnChanges, OnInit {
-  modalMode;
+  modalMode = '';
+  modalPreset = '';
   modalBackdrop = true;
   modalColumns;
   modalMarkup;
