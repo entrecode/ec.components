@@ -8,7 +8,9 @@
     </li>
   </ul>
 
-  <div class="ec-output-tag tag" *ngSwitchCase="'tag'">{{ item?.display(field.property) }}</div>
+  <div class="ec-output-tag" *ngSwitchCase="'tag'">
+    <div class="span" class="tag" *ngIf="item?.display(field.property)">{{ item?.display(field.property) }}</div>
+  </div>
 
   <div *ngSwitchCase="'boolean'" class="ec-output-boolean" [class.is-true]="item?.resolve(field.property)">
     <span>&#10004;</span>
