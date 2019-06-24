@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Graph from 'react-graph-vis';
 
+console.log('context', ContextSymbols);
+
 const allPackages = {
   data: {
     color: '#AB4B43',

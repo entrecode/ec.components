@@ -5,6 +5,10 @@ sidebar_label: Config API
 ---
 
 This document describes all the options of the config object, which is a powerful API the control list and form looks and behaviour. See [Config Pipeline](./config-pipeline.md) for more info on where to put your config.
+This list contains all available config options. For a tutorial on how to use them, see
+
+- [List API](./list-options)
+- [Form API](./form-options)
 
 ## config.fields
 
@@ -41,7 +45,74 @@ The _fields_ config option determines which fields should be part of your applic
 | queryFilter        | transformation for query param to filter value                                                           | transformation function | X                       |              |
 | validate           | transformation for form validation                                                                       | transformation function |                         | X            |
 
-### Complex Example
+## main options
+
+| option               | type                                         | description                                                                                                                                       | affects list          | affects form                                    |
+| -------------------- | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ----------------------------------------------- |
+| title                | string                                       | For primitive values only: the title for the item                                                                                                 |
+| identifier           | string                                       | The Property that is used to identify items from another (e.g. in a selection).                                                                   |
+| identifierPattern    | RegExp                                       | Pattern of the identifier field. Is used e.g. in the searchbar                                                                                    |
+| label                | string                                       | The Property that is used to display the item for humans                                                                                          |
+| fields               | FieldConfig                                  | The Items field Config                                                                                                                            |
+| type                 | string                                       | The type of the Item. It determines how it will be displayed in different contexts                                                                |
+| resolve              | (body) > any                                 | Custom resolve path function. It can be used e.g. to access subbranches of an Object.                                                             |
+| parent               | any                                          | Contains the parent Instance which inhabits the item. This property is set programmatically and therefore meant to be readonly.                   |
+| onSave               | (item                                        | Item, value                                                                                                                                       | Object) - Promise / T | Callback that is invoked when the item is saved |
+| onEdit               | (value / T) - Promise / T                    | Callback that is invoked before the item is edited                                                                                                |
+| classes              | (item / Item) - string                       | This method can be used to set custom classes based on item contents. Used e.g. in list-items for row class                                       |
+| title                | string                                       | For lists with primitive values only: the title of the list header                                                                                |
+| sortBy               | string                                       | The property name that is sorted after                                                                                                            |
+| sort                 | string[]                                     | Array of properties that is sorted after, experimental...                                                                                         |
+| desc                 | boolean                                      | If set to true, the sorting will be descending                                                                                                    |
+| selectMode           | boolean                                      | If true, the list will show its checkboxes and will select on column click. The columnClicked output will be ignored as long selectMode is active |
+| disableSearchbar     | boolean                                      | If true, no select dropdown will be shown on ec-select                                                                                            |
+| disableHeader        | boolean                                      | If true, the list will have no header.                                                                                                            |
+| alwaysShowHeader     | boolean                                      | If true, the header will also be shown when the list is empty. Defaults to false                                                                  |
+| disableDropdown      | boolean                                      | If true, no dropdown will be shown for a select                                                                                                   |
+| disableRemove        | boolean                                      | If true, removal of items wont be possible (select)                                                                                               |
+| disableColumnFilter  | boolean                                      | If true, no column filter will be shown in the list header                                                                                        |
+| disableDrag          | boolean                                      | If true, select items cannot be dragged                                                                                                           |
+| hidePagination       | boolean                                      | If true, the default pagination will not be visible.                                                                                              |
+| page                 | number                                       | The current active page                                                                                                                           |
+| size                 | number                                       | The number of items per page                                                                                                                      |
+| availableSizes       | number[]                                     | The available sizes. If not set, the size cannot be changed                                                                                       |
+| solo                 | boolean                                      | Should the selection be solo?                                                                                                                     |
+| filter               | [key: string]: any; };                       | tells the list to show only items that match the filter                                                                                           |
+| query                | [key: string]: any; };                       | a query that will be turned in to a filter                                                                                                        |
+| maxColumns           | number                                       | Maximal visible columns. Defaults to 8                                                                                                            |
+| popColumns           | number                                       | how many columns should the pop have?                                                                                                             |
+| autoload             | boolean                                      | If true, the list will automatically load on change                                                                                               |
+| storageKey           | string <!--  ((list: List<T>) => string) --> | The key that should store the lists config in the local storage. If set, the key will be populated on config changes.                             |
+| display              | <!-- (items: Item<T>[]) => Item<T>[] -->     | Transforms the Items before they are displayed, e.g. to apply a filter for the view \*\*/                                                         |
+| defaultFilter        | string                                       | If set, a filter input for the given field property will be shown by default                                                                      |
+| dropdownFields       | FieldConfig                                  | The fields that are used in select dropdowns, defaults to label field only.                                                                       |
+| singularLabel        | string                                       | The label for one entity                                                                                                                          |
+| pluralLabel          | string                                       | The label for multiple entities                                                                                                                   |
+| createLabel          | string                                       | The label for the entry create button                                                                                                             |
+| methods              | get / put / post / delete                    | An Array of Methods that should be supported. Possible values are create, read, update and delete\*/                                              |
+| loader               | LoaderComponent                              | An external loader component that should be used, falls back to internal.                                                                         |
+| notifications        | NotificationsComponent                       | An external notifications component that should be used, falls back to internal                                                                   |
+| develop              | boolean                                      | If true, an extra develop button will be shown\*/                                                                                                 |
+| keepPopOpen          | boolean                                      | If true, the entry pop will remain open after the entry has been successfully saved.                                                              |
+| levels               | number                                       | With how many levels should a list entry be loaded? Defaults to 1 (taking entry directly from the list, without loading)\*/                       |
+| alwaysLoadEntry      | boolean                                      | If true, an entry is always loaded when opened, even with lvl1                                                                                    |
+| permissions          |                                              | maps the permissions to the methods post put create delete                                                                                        |
+| disableSelectSwitch  | boolean                                      | If true, no select mode switch will be shown                                                                                                      |
+| disableListPop       | boolean                                      | If true, no list pop will be available at selects                                                                                                 |
+| disableUrlUpload     | boolean                                      | If true, assets cannot be upload via url                                                                                                          |
+| disableCreatePop     | boolean                                      | If true, no create pop will be available at selects                                                                                               |
+| disableSearchbar     | boolean                                      | If true, no dropdown will be accessible                                                                                                           |
+| disableRemove        | boolean                                      | If true, removal of items wont be possible (select)                                                                                               |
+| deleteOnRemove       | boolean                                      | If true, selects will delete entries that are removed from the selection                                                                          |
+| safeDelete           | boolean                                      | If true, delete operations need confirmation                                                                                                      |
+| hideAssetGroupSelect | boolean                                      | Hides the assetGroup select in asset-list-pop                                                                                                     |
+| fileOptions          | FileOptions                                  | Default options for file uploads                                                                                                                  |
+| customUpload         | boolean                                      | If true, a pop will open before upload to set up custom options                                                                                   |
+| popColumns           | number                                       | Defines the column width of the pops used. Defaults to popService.defaultColumns                                                                  |
+| nestedPopActive      | boolean                                      | If true, a nested pop will be active immediately                                                                                                  |
+| placeholder          | string                                       | Sets a placeholder. Used e.g. for empty entry-select                                                                                              |
+
+## Complex Example
 
 ```js
 export class MuffinsComponent {
