@@ -14,6 +14,6 @@
   ></ec-form>
   <a class="btn" (click)="optionsForm.submit()">EMIT</a> <a class="btn" (click)="hide()">HIDE</a>
 
-  <pre><code>{{optionsForm.group?.value | json}}</code></pre>
+  <pre class="demo-code"><code>{{optionsForm.group?.value | json}}</code></pre>
   <ec-notifications [time]="optionsForm.getValue('time')"></ec-notifications>
 </div>

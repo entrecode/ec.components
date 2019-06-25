@@ -9,10 +9,10 @@
     [silent]="true"
     [submitButton]="false"
   ></ec-form>
-  <a class="btn" (click)="optionsForm.submit()">LOAD</a>
-
-  <pre><code>{{optionsForm.group?.value | json}}</code></pre>
+  <a class="btn" (click)="optionsForm.submit()">load</a>
+  <div class="spacer"></div>
   <div class="well">
     <ec-loader [ngClass]="optionsForm.getValue('hostClass')" class="ec-loader loader" #loader> </ec-loader>
   </div>
+  <pre class="demo-code"><code>{{optionsForm.group?.value | json}}</code></pre>
 </div>
