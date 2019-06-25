@@ -1,8 +1,8 @@
 <div *ngIf="links.length">
-    <h3 class="is-h6">Related Docs</h3>
-    <ul class="is-unstyled">
-        <li *ngFor="let link of links">
-            <a [href]="getUrl(link)" target="_blank">{{link}}</a>
-        </li>
-    </ul>
+  <h3 class="is-kilo">Related Docs</h3>
+  <ul class="is-unstyled">
+    <li *ngFor="let link of links">
+      <a [href]="getUrl(link)" target="_blank" class="is-monospace">{{ link }}</a>
+    </li>
+  </ul>
 </div>
