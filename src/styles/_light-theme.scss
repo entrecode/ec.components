@@ -1,5 +1,5 @@
 $_background: #fff;
-$_background-light: #f8f9fc;
+$_background-lightest: #f8f9fc;
 $_text: #171e28;
 $_minor: #eceff6;
 $_link: #23ca74;
@@ -22,14 +22,14 @@ $_ua: #ffca69;
 :root {
   // background
   --background: #{$_background};
-  --background-light: #{$_background-light};
-  --background-lighter: #{darken($_background-light, 2%)};
-  --background-lightest: #{darken($_background-light, 4%)};
+  --background-lightest: #{$_background-lightest};
+  --background-lighter: #{darken($_background-lightest, 2%)};
+  --background-light: #{darken($_background-lightest, 4%)};
 
   --background-invert: #{_text};
 
-  --list-item-background: #{$_background-light};
-  --list-item-hover-background: #{darken($_background-light, 2%)};
+  --list-item-background: #{$_background-lightest};
+  --list-item-hover-background: #{darken($_background-lightest, 2%)};
 
   // text
   --text: #{$_text};
