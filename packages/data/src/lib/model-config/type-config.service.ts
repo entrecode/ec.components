@@ -28,9 +28,19 @@ export class TypeConfigService {
       view: 'string',
       filterable: true,
       sortable: true,
+      inputView: 'string',
+      inputViews: [
+        {
+          name: 'string',
+        },
+        {
+          name: 'color',
+        },
+      ],
     },
     boolean: {
       prefill: false,
+      filterable: true,
       filterOperator: 'exact',
     },
     formattedText: {
@@ -126,7 +136,7 @@ export class TypeConfigService {
     },
     entries: {
       view: 'tags',
-      inputView: 'entries-actionbar',
+      inputView: 'entries-select',
       inputViews: [
         {
           name: 'entries-select',

@@ -23,7 +23,9 @@
     "watch:ui": "ng build ui --watch",
     "watch:data": "ng build data --watch",
     "watch:core": "ng build core --watch",
-    "watch:calendar": "ng build calendar --watch"
+    "watch:calendar": "ng build calendar --watch",
+    "postinstall": "cd website && npm i",
+    "build:website": "cd website && npm run build"
   },
   "private": true,
   "workspaces": [

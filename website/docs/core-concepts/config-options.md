@@ -5,416 +5,114 @@ sidebar_label: Config API
 ---
 
 This document describes all the options of the config object, which is a powerful API the control list and form looks and behaviour. See [Config Pipeline](./config-pipeline.md) for more info on where to put your config.
+This list contains all available config options. For a tutorial on how to use them, see
+
+- [List API](./list-options)
+- [Form API](./form-options)
 
 ## config.fields
 
 The _fields_ config option determines which fields should be part of your application. Fields that are not included won't be loaded at all.
 
-### field.label
-
-The label is shown in the header of the list column and in the label above the form input.
-
-### field flags
-
-| option             | description                                                                                    | type    |
-| ------------------ | ---------------------------------------------------------------------------------------------- | ------- |
-| form               | If set to false, the field will be omitted only from the form.                                 | boolean |
-| list               | If set to false, the field will be omitted from the list                                       | boolean |
-| hideInForm         | If set to true, the field will be hidden in the form                                           | boolean |
-| hideInList         | If set to true, the field will be hidden in the list                                           | boolean |
-| hideInColumnFilter | If set to true, the field can not be toggled from the column filter (top-right corner of list) | boolean |
-
-It may not be obvious to get the difference between form/list and hideInForm/hideInList.
-
-You can imagine the hideInX flags as a "soft" and the other flags as a "hard" hide. The soft hide will load the list field but hide it from the markup. You can then unhide the field from the list column dropdown. The hard hide wont't load the list field at all, meaning you also cannot unhide it. That way is recommended for heavier fields like JSON fields.
-
-It is also important to note that the hard hidden fields wont be available in the form without a full reload when opening the form. When the field is soft hidden, the entry does not need a reload.
-
-If you dont want the user to be able to unhide a soft hidden field, use hideInColumnFilter.
-
-Example:
-
-```ts
-const muffinConfig = {
-  fields: {
-    name: {
-      label: 'Name',
-      form: false // name will not be in the form
-    },
-    amazement_factor: {
-      label: 'Amazement Factor',
-      list: false
-    },
-    baker: {
-      label: 'Bakeperson',
-      hideInList: true
-    }
-  };
-}
-```
-
-In this example, the list will show only names and the form only amazement_factor. While the baker could be made visible in the list (via column filter), the amazement_factor isn't even loaded and therefor hard hidden.
-
-## sorting
-
-The following options are related to sorting lists:
-
-| option                           | description                                           | type    |
-| -------------------------------- | ----------------------------------------------------- | ------- |
-| [field.sortable](#fieldsortable) | if true, the field can be sorted from the list-header | boolean |
-| [config.sortBy](#configsortby)   | the property that should be sorted after              | string  |
-| [config.desc](#configdesc)       | if true, the sorting will be descending               | string  |
-
-### field.sortable
-
-If true, the column can be sorted by clicking the column header, as indicated by two arrows:
-
-![sort-icon](../../static/img/sort-icon.png)
-
-The first click sorts ascending, the second descending and the thirds resets the sorting.
-
-### config.sortBy
-
-The field property by which the list should be sorted:
-
-```ts
-list.load({ sortBy: 'amazement_factor' });
-```
-
-### config.desc
-
-If true, the sorting will be in descending order:
-
-```ts
-list.load({ sortBy: 'amazement_factor', desc: true });
-```
-
-Also see [entry-list.load](../components/entry-list.component.md#load).
-
-## filtering
-
-The following options are related to filtering lists:
-
-| option                              | description                                                                                              | type      |
-| ----------------------------------- | -------------------------------------------------------------------------------------------------------- | --------- |
-| [filterable](#filterable)           | if true, the field can be filtered from the list-header                                                  | boolean   |
-| [filterOperator](#filteroperator)   | the filterOperator that should be used. See [sdk filter doc](https://entrecode.github.io/ec.sdk/#filter) | boolean   |
-| [filterComponent](#filtercomponent) | custom component to be used for filtering                                                                | Component | X |
-| [rawFilter](#rawfilter)             | if set, the filter value will used as is (without filter operator)                                       | boolean   |
-
-### field.filterable
-
-If true, a clickable search icon will be shown in the list-header, beneath the label:
-
-![filter-icon](../../static/img/filter-icon.png)
-
-Clicking the icon opens a filter input above the list-header. By default, the looks/behaviour of the filter input is based on the field's input, see [Input](./input.md) for all possible inputViews.
-
-Entering values into the filter input will trigger a list load with the current filter value.
-
-```ts
-muffinConfig = {
-  fields: {
-    amazement_factor: {
-      filterable: true,
-    },
-  },
-};
-```
-
-In this case, amazement_factor is a number, so the searchbar will be a number input. If you enter a number, the list will load all entries with amazement_factor set to exactly that value.
-
-### field.filterOperator
-
-The sdk accepts [different types of filter operators](https://entrecode.github.io/ec.sdk/#filter) like _exact_, _search_, _from_, _any_ etc.
-By default, the filter input will use the most common filterOperator for the field's type.
-
-| type             | default filterOperator |
-| ---------------- | ---------------------- |
-| id               | search                 |
-| text             | search                 |
-| boolean          | exact                  |
-| formattedText    | search                 |
-| decimal          | search                 |
-| number           | search ?               |
-| url              | search                 |
-| asset, dmAsset   | exact                  |
-| assets, dmAssets | any                    |
-| email            | search                 |
-| datetime         | search ?               |
-| entry            | exact                  |
-| entries          | any                    |
-| json             | search ?               |
-| location         | search ?               |
-| account          | exact                  |
-| role             | search ?               |
-
-Fields marked with "?" experimental.
-
-You can set filterOperator to any other value to alter that default value:
-
-```ts
-muffinConfig = {
-  fields: {
-    amazement_factor: {
-      filterable: true,
-      filterOperator: 'to', // input will act as 'max' value
-    },
-    _created_: {
-      filterable: true,
-      filterOperator: 'from', // input will act as 'min' date
-    },
-    name: {
-      filterable: true,
-      filterOperator: 'exact', // only muffins with exactly that name
-    },
-  },
-};
-```
-
-### field.rawFilter
-
-This flag can be used to indicate that the filter input value should be used directly as filter value in the sdk:
-
-```ts
-muffinConfig = {
-  fields: {
-    amazement_factor: {
-      rawFilter: true
-    },
-};
-amazingMuffinFilter = {
-  amazement_factor: {
-    from: 8
-  }
-}
-```
-
-This can be helpful for triggering custom filters:
-
-```html
-<ec-entry-list #muffinList model="muffin" [config]="muffinConfig"></ec-entry-list>
-<a (click)="muffinList.load({ filter: amazingMuffinFilter })">Only 8+</a>
-```
-
-Also see [EntryList.load](../components/entry-list.component.md#load)
-
-### field.filterComponent
-
-If you want to use a different component just for filtering, you can define one via the _filterComponent_ option.
-
-```ts
-muffinConfig = {
-  fields: {
-    amazement_factor: {
-      filterable: true,
-      filterComponent: MyCustomNumberFilter,
-    },
-  },
-};
-```
-
-<!-- ### custom list filter
-
-TBD
-
-### custom sort grouping
-
-TBD -->
-
-<!-- ## deprecate
-
-title
-schema
-filterPopClass
-view
-
-### form/list vs hideInList/hideInList
-
-read values:
-
-property
- -->
-
-[See Options in API Docs](https://entrecode.github.io/ec.components/interfaces/FieldConfigProperty.html)
-
-## form options
-
-The following field options control the forms looks/behaviour:
-
-| option      | description                                      | type                    |
-| ----------- | ------------------------------------------------ | ----------------------- |
-| label       | label above input                                | string                  |
-| placeholder | input placeholder                                | string                  |
-| form        | if false, the field will not be part of the form | boolean                 |
-| hideInForm  | if true, the field will be hidden in the form    | boolean                 |
-| columns     | how many columns are used by the field           | number 1-12             |
-| immutable   | if true, the property won't be sent when saving  | boolean                 |
-| readOnly    | if true, the property won't be editable          | boolean                 |
-| required    | if true, the field needs to be filled out        | boolean                 |
-| prefill     | prefill value for new entries                    | any                     |
-| input       | custom input component                           | Component               |
-| inputView   | view for input component                         | string                  |
-| validate    | transformation for form validation               | transformation function |
-
-
-
-## transform methods
-
-To modify your field value for certain contexts, you can use transform function:
-
-```ts
-const personConfig = {
-  fields: {
-    name: {
-      display: (value) => value.toUpperCase(),
-      group: (value) => value.length + ' Buchstaben',
-      sort: (value) => value.length,
-    },
-  },
-};
-```
-
-| option      | description                                           | type                    |
-| ----------- | ----------------------------------------------------- | ----------------------- |
-| resolve     | resolves value for transformation                     | function                |  |  |
-| copy        | transformation to copy the fields value               | transformation function |  |  |
-| display     | transformation to display the fields value            | transformation function | X |  |
-| sort        | transformation to sort fields                         | transformation function | X |  |
-| group       | transformation to group the fields value when sorting | transformation function | X |  |
-| queryFilter | transformation for query param to filter value        | transformation function | X |  |
-| validate    | transformation for form validation                    | transformation function |  | X |
-
-As you see, a transform function accepts a value and outputs a transformation of that value (or anything you want).
-
-#### display
-
-The display transform method is used to show the value in a readable format.
-It is called from inside ec-output, which is used in list-cells.
-You can change the display behaviour like this:
-
-```ts
-this.modelConfig.set('muffin', {
-  fields: {
-    amazement_factor: {
-      display: (value, item) => {
-        if (value === 10) {
-          return 'AMAZING!';
-        } else if (value > 7) {
-          return 'amazing';
-        }
-        return 'not so amazing';
-      },
-    },
-  },
-});
-```
-
-Now, each muffin's amazement_factor will be replaced by the labels defined above.
-
-#### group
-
-You can use grouping to get a clearer outline over sorted data:
-
-```ts
-this.modelConfig.set('muffin', {
-  fields: {
-    amazement_factor: {
-      group: (value, item) => {
-        if (value === 10) {
-          return 'AMAZING!';
-        } else if (value > 7) {
-          return 'amazing';
-        }
-        return 'not so amazing';
-      },
-    },
-  },
-});
-```
-
-The syntax is the same as for display but the result is used as a group label when the property is sorted.
-
-#### resolve
-
-You can also define pseudo properties, meaning properties that do not exist on the original object:
-
-```ts
-this.modelConfig.set('muffin', {
-  fields: {
-    ranking: {
-      resolve: (body, item) => (body.amazement_factor * body.flavour) / body.price,
-    },
-  },
-});
-```
-
-This comes in handy when you want to display a often combined value out of multiple values.
-
-NOTE: pseudo properties should not be passed to the backend. Use immutable: true for hide the field from the form via form: false.
-
-### custom output
-
-If you want custom cell values that require a custom markup, you can use a custom output component:
-
-```ts
-this.modelConfig.set('muffin', {
-  fields: {
-    amazement_factor: {
-      output: StrongComponent,
-    },
-  },
-});
-```
-
-In your strong.component.ts, you can inherit OutputComponent, giving you access to the field and item of your cell:
-
-```ts
-@Component({
-  selector: 'app-strong',
-  template: `
-    <strong>{{ item.resolve(field.property) }}</strong>
-  `,
-})
-export class StrongComponent extends OutputComponent {}
-```
-
-Warning: This option is experimental!
-
-## All Options
-
-| option               | description                                                                                              | type                    | affects list            | affects form |
-| -------------------- | -------------------------------------------------------------------------------------------------------- | ----------------------- | ----------------------- | ------------ |
-| [label](#fieldlabel) | column label in list-header                                                                              | string                  | column header           | input label  |
-| classes              | class that is appended to list-header                                                                    | string                  | appended to each column | -            |
-| placeholder          | input placeholder                                                                                        | string                  | filter input            | input        |
-| form                 | if false, the field will not be part of the form                                                         | boolean                 |                         | X            |
-| list                 | if false, the field will not be part of the list                                                         | boolean                 | X                       |              |
-| hideInForm           | if true, the field will be hidden in the form                                                            | boolean                 |                         | X            |
-| hideInList           | if true, the field will be hidden in the list                                                            | boolean                 | X                       |              |
-| hideInColumnFilter   | if true, the field will be hidden in the column filter of the list-header                                | boolean                 | X                       |              |
-| filterable           | if true, the field can be filtered from the list-header                                                  | boolean                 | X                       |
-| sortable             | if true, the field can be sorted from the list-header                                                    | boolean                 | X                       |
-| filterOperator       | the filterOperator that should be used. See [sdk filter doc](https://entrecode.github.io/ec.sdk/#filter) | boolean                 | X                       |
-| filterComponent      | custom component to be used for filtering                                                                | Component               | X                       |
-| rawFilter            | if set, the filter value will used as is (without filter operator)                                       | boolean                 | X                       |
-| columns              | how many columns are used by the field                                                                   | number 1-12             |                         | X            |
-| immutable            | if true, the property won't be sent when saving                                                          | boolean                 |                         | X            |
-| readOnly             | if true, the property won't be editable                                                                  | boolean                 |                         | X            |
-| required             | if true, the field needs to be filled out                                                                | boolean                 |                         | X            |
-| prefill              | prefill value for new entries                                                                            | any                     |                         | X            |
-| input                | custom input component                                                                                   | Component               | filter input            | X            |
-| output               | custom output component                                                                                  | Component               | X                       |
-| inputView            | view for input component                                                                                 | string                  |                         | X            |
-| resolve              | resolves value for transformation                                                                        | function                |                         |              |
-| copy                 | transformation to copy the fields value                                                                  | transformation function |                         |              |
-| display              | transformation to display the fields value                                                               | transformation function | X                       |              |
-| sort                 | transformation to sort fields                                                                            | transformation function | X                       |              |
-| group                | transformation to group the fields value when sorting                                                    | transformation function | X                       |              |
-| queryFilter          | transformation for query param to filter value                                                           | transformation function | X                       |              |
-| validate             | transformation for form validation                                                                       | transformation function |                         | X            |
-
-### Complex Example
+| option             | description                                                                                              | type                    | affects list            | affects form |
+| ------------------ | -------------------------------------------------------------------------------------------------------- | ----------------------- | ----------------------- | ------------ |
+| label              | column label in list-header                                                                              | string                  | column header           | input label  |
+| classes            | class that is appended to list-header                                                                    | string                  | appended to each column | -            |
+| placeholder        | input placeholder                                                                                        | string                  | filter input            | input        |
+| form               | if false, the field will not be part of the form                                                         | boolean                 |                         | X            |
+| list               | if false, the field will not be part of the list                                                         | boolean                 | X                       |              |
+| hideInForm         | if true, the field will be hidden in the form                                                            | boolean                 |                         | X            |
+| hideInList         | if true, the field will be hidden in the list                                                            | boolean                 | X                       |              |
+| hideInColumnFilter | if true, the field will be hidden in the column filter of the list-header                                | boolean                 | X                       |              |
+| filterable         | if true, the field can be filtered from the list-header                                                  | boolean                 | X                       |
+| sortable           | if true, the field can be sorted from the list-header                                                    | boolean                 | X                       |
+| filterOperator     | the filterOperator that should be used. See [sdk filter doc](https://entrecode.github.io/ec.sdk/#filter) | boolean                 | X                       |
+| filterComponent    | custom component to be used for filtering                                                                | Component               | X                       |
+| rawFilter          | if set, the filter value will used as is (without filter operator)                                       | boolean                 | X                       |
+| columns            | how many columns are used by the field                                                                   | number 1-12             |                         | X            |
+| immutable          | if true, the property won't be sent when saving                                                          | boolean                 |                         | X            |
+| readOnly           | if true, the property won't be editable                                                                  | boolean                 |                         | X            |
+| required           | if true, the field needs to be filled out                                                                | boolean                 |                         | X            |
+| prefill            | prefill value for new entries                                                                            | any                     |                         | X            |
+| input              | custom input component                                                                                   | Component               | filter input            | X            |
+| output             | custom output component                                                                                  | Component               | X                       |
+| inputView          | view for input component                                                                                 | string                  |                         | X            |
+| resolve            | resolves value for transformation                                                                        | function                |                         |              |
+| copy               | transformation to copy the fields value                                                                  | transformation function |                         |              |
+| display            | transformation to display the fields value                                                               | transformation function | X                       |              |
+| sort               | transformation to sort fields                                                                            | transformation function | X                       |              |
+| group              | transformation to group the fields value when sorting                                                    | transformation function | X                       |              |
+| queryFilter        | transformation for query param to filter value                                                           | transformation function | X                       |              |
+| validate           | transformation for form validation                                                                       | transformation function |                         | X            |
+
+## main options
+
+| option               | type                                         | description                                                                                                                                       | affects list          | affects form                                    |
+| -------------------- | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ----------------------------------------------- |
+| title                | string                                       | For primitive values only: the title for the item                                                                                                 |
+| identifier           | string                                       | The Property that is used to identify items from another (e.g. in a selection).                                                                   |
+| identifierPattern    | RegExp                                       | Pattern of the identifier field. Is used e.g. in the searchbar                                                                                    |
+| label                | string                                       | The Property that is used to display the item for humans                                                                                          |
+| fields               | FieldConfig                                  | The Items field Config                                                                                                                            |
+| type                 | string                                       | The type of the Item. It determines how it will be displayed in different contexts                                                                |
+| resolve              | (body) > any                                 | Custom resolve path function. It can be used e.g. to access subbranches of an Object.                                                             |
+| parent               | any                                          | Contains the parent Instance which inhabits the item. This property is set programmatically and therefore meant to be readonly.                   |
+| onSave               | (item                                        | Item, value                                                                                                                                       | Object) - Promise / T | Callback that is invoked when the item is saved |
+| onEdit               | (value / T) - Promise / T                    | Callback that is invoked before the item is edited                                                                                                |
+| classes              | (item / Item) - string                       | This method can be used to set custom classes based on item contents. Used e.g. in list-items for row class                                       |
+| title                | string                                       | For lists with primitive values only: the title of the list header                                                                                |
+| sortBy               | string                                       | The property name that is sorted after                                                                                                            |
+| sort                 | string[]                                     | Array of properties that is sorted after, experimental...                                                                                         |
+| desc                 | boolean                                      | If set to true, the sorting will be descending                                                                                                    |
+| selectMode           | boolean                                      | If true, the list will show its checkboxes and will select on column click. The columnClicked output will be ignored as long selectMode is active |
+| disableSearchbar     | boolean                                      | If true, no select dropdown will be shown on ec-select                                                                                            |
+| disableHeader        | boolean                                      | If true, the list will have no header.                                                                                                            |
+| alwaysShowHeader     | boolean                                      | If true, the header will also be shown when the list is empty. Defaults to false                                                                  |
+| disableDropdown      | boolean                                      | If true, no dropdown will be shown for a select                                                                                                   |
+| disableRemove        | boolean                                      | If true, removal of items wont be possible (select)                                                                                               |
+| disableColumnFilter  | boolean                                      | If true, no column filter will be shown in the list header                                                                                        |
+| disableDrag          | boolean                                      | If true, select items cannot be dragged                                                                                                           |
+| hidePagination       | boolean                                      | If true, the default pagination will not be visible.                                                                                              |
+| page                 | number                                       | The current active page                                                                                                                           |
+| size                 | number                                       | The number of items per page                                                                                                                      |
+| availableSizes       | number[]                                     | The available sizes. If not set, the size cannot be changed                                                                                       |
+| solo                 | boolean                                      | Should the selection be solo?                                                                                                                     |
+| filter               | [key: string]: any; };                       | tells the list to show only items that match the filter                                                                                           |
+| query                | [key: string]: any; };                       | a query that will be turned in to a filter                                                                                                        |
+| maxColumns           | number                                       | Maximal visible columns. Defaults to 8                                                                                                            |
+| popColumns           | number                                       | how many columns should the pop have?                                                                                                             |
+| autoload             | boolean                                      | If true, the list will automatically load on change                                                                                               |
+| storageKey           | string <!--  ((list: List<T>) => string) --> | The key that should store the lists config in the local storage. If set, the key will be populated on config changes.                             |
+| display              | <!-- (items: Item<T>[]) => Item<T>[] -->     | Transforms the Items before they are displayed, e.g. to apply a filter for the view \*\*/                                                         |
+| defaultFilter        | string                                       | If set, a filter input for the given field property will be shown by default                                                                      |
+| dropdownFields       | FieldConfig                                  | The fields that are used in select dropdowns, defaults to label field only.                                                                       |
+| singularLabel        | string                                       | The label for one entity                                                                                                                          |
+| pluralLabel          | string                                       | The label for multiple entities                                                                                                                   |
+| createLabel          | string                                       | The label for the entry create button                                                                                                             |
+| methods              | get / put / post / delete                    | An Array of Methods that should be supported. Possible values are create, read, update and delete\*/                                              |
+| loader               | LoaderComponent                              | An external loader component that should be used, falls back to internal.                                                                         |
+| notifications        | NotificationsComponent                       | An external notifications component that should be used, falls back to internal                                                                   |
+| develop              | boolean                                      | If true, an extra develop button will be shown\*/                                                                                                 |
+| keepPopOpen          | boolean                                      | If true, the entry pop will remain open after the entry has been successfully saved.                                                              |
+| levels               | number                                       | With how many levels should a list entry be loaded? Defaults to 1 (taking entry directly from the list, without loading)\*/                       |
+| alwaysLoadEntry      | boolean                                      | If true, an entry is always loaded when opened, even with lvl1                                                                                    |
+| permissions          |                                              | maps the permissions to the methods post put create delete                                                                                        |
+| disableSelectSwitch  | boolean                                      | If true, no select mode switch will be shown                                                                                                      |
+| disableListPop       | boolean                                      | If true, no list pop will be available at selects                                                                                                 |
+| disableUrlUpload     | boolean                                      | If true, assets cannot be upload via url                                                                                                          |
+| disableCreatePop     | boolean                                      | If true, no create pop will be available at selects                                                                                               |
+| disableSearchbar     | boolean                                      | If true, no dropdown will be accessible                                                                                                           |
+| disableRemove        | boolean                                      | If true, removal of items wont be possible (select)                                                                                               |
+| deleteOnRemove       | boolean                                      | If true, selects will delete entries that are removed from the selection                                                                          |
+| safeDelete           | boolean                                      | If true, delete operations need confirmation                                                                                                      |
+| hideAssetGroupSelect | boolean                                      | Hides the assetGroup select in asset-list-pop                                                                                                     |
+| fileOptions          | FileOptions                                  | Default options for file uploads                                                                                                                  |
+| customUpload         | boolean                                      | If true, a pop will open before upload to set up custom options                                                                                   |
+| popColumns           | number                                       | Defines the column width of the pops used. Defaults to popService.defaultColumns                                                                  |
+| nestedPopActive      | boolean                                      | If true, a nested pop will be active immediately                                                                                                  |
+| placeholder          | string                                       | Sets a placeholder. Used e.g. for empty entry-select                                                                                              |
+
+## Complex Example
 
 ```js
 export class MuffinsComponent {
