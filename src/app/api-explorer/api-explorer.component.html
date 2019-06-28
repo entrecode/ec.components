@@ -8,7 +8,7 @@
 </ul> -->
 
 <ec-resource-pop [api]="api" [resource]="resource" [relation]="relation" #resourcePop>
-  <a (click)="use(resource)" class="btn outline" *ngIf="resource && hasChildren(resource)">
+  <a (click)="use(resource)" class="btn btn_square" *ngIf="resource && hasChildren(resource)">
     <ec-icon name="database"></ec-icon>
   </a>
 </ec-resource-pop>
@@ -24,8 +24,8 @@
   ></ec-tab>
 </ec-tabs>
 
-<a class="btn outline" (click)="resourcePop.create()"> <ec-icon name="add"></ec-icon> </a>
-<a class="btn outline" (click)="resourceList.list.toggleSelectMode()"> <ec-icon name="checkmark"></ec-icon> </a>
+<a class="btn btn_square" (click)="resourcePop.create()"> <ec-icon name="add"></ec-icon> </a>
+<a class="btn btn_square" (click)="resourceList.list.toggleSelectMode()"> <ec-icon name="checkmark"></ec-icon> </a>
 
 <ec-resource-list
   [loader]="loader"
