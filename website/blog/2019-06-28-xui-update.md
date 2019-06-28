@@ -1,5 +1,5 @@
 ---
-title: x.ui Update
+title: x.ui update guide
 author: felixroos
 authorURL: https://github.com/felixroos
 authorImageURL: https://avatars2.githubusercontent.com/u/12023032?s=460&v=4
@@ -13,6 +13,8 @@ ec.components now landed on x.ui 10 🛬
 - Now supporting dark and light mode!
 - See [x.ui changelog](https://github.com/entrecode/x.ui/blob/develop/CHANGELOG.md)
 
+<!--truncate-->
+
 ## Upgrade Guide
 
 ### 1. Update versions
@@ -25,6 +27,7 @@ Use the following versions in your package.json:
 - @ec.components/core#>=0.27.0
 - @ec.components/core#>=0.27.0
 - x.ui#>=10.0.0-beta.0
+
 
 ### 2. fix x.ui import path
 
