@@ -1,17 +1,15 @@
 ---
-title: x.ui Update Notes
+title: x.ui Update
 author: felixroos
 authorURL: https://github.com/felixroos
 authorImageURL: https://avatars2.githubusercontent.com/u/12023032?s=460&v=4
 ---
 
 ec.components now landed on x.ui 10 🛬
+The new version _10.0.0-beta.0_ is used with
 
-## Breaking Changes
+- @ec.components/data#>=0.50.0
+- @ec.components/ui#>=0.45.0
+- @ec.components/style#>=0.23.0
 
-- TBD 🐂
-
-## Other additions
-
-- can now use _is-fit_ class on ec-list-cell to disable flex for specific fields
-- added ec-list-field_{field.property} class to ec-list-cell
+Make sure to use x.ui 10 when upgrading to those versions
