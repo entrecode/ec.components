@@ -515,8 +515,8 @@ Make sure the given promise is catched (so the loader will stop loading on error
 <p>The loader can be used to indicate any kind of loading activity</p>
 <h2 id="template">Template</h2>
 <p><code>html
-&lt;ec-loader #globalLoader class=&quot;ec-loader ec-loader_overlay ec-loader_global&quot;&gt;&lt;/ec-loader&gt;
-&lt;ec-loader #localLoader class=&quot;ec-loader&quot;&gt;&lt;/ec-loader&gt;
+&lt;ec-loader #globalLoader class=&quot;ec-loader loader is-global&quot;&gt;&lt;/ec-loader&gt;
+&lt;ec-loader #localLoader class=&quot;ec-loader loader is-local&quot;&gt;&lt;/ec-loader&gt;
 &lt;button (click)=&quot;globalLoader()&quot;&gt;Global Loader&lt;/button&gt;
 &lt;button (click)=&quot;localLoader()&quot;&gt;Local Loader&lt;/button&gt;</code></p>
 <p>The default classes <a href="https://github.com/entrecode/ec.components/blob/master/packages/style/loader/ec-loader.scss">can be found here</a>.</p>
@@ -576,7 +576,7 @@ export class LoaderComponent {
 
   /** Hide the loader by removing .visible from the host. This method is NOT meant to be used from outside, */
   private hide() {
-    this.visible &#x3D; false; // show loader
+    this.visible &#x3D; false; // hide loader
     this.host.nativeElement.classList.remove(&#x27;is-active&#x27;);
   }
 

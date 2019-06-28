@@ -1,4 +1,6 @@
 import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   EventEmitter,
   Input,
@@ -7,11 +9,10 @@ import {
   QueryList,
   ViewChild,
   ViewChildren,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { FieldConfigProperty, Form, FormConfig, Item, ItemConfig } from '@ec.components/core';
+import { Field, FieldConfigProperty, Form, FormConfig, Item, ItemConfig } from '@ec.components/core';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { InputComponent } from '../io/input/input.component';
 import { LoaderComponent } from '../loader/loader.component';
 import { LoaderService } from '../loader/loader.service';
@@ -20,9 +21,8 @@ import { Notification } from '../notifications/notification';
 import { NotificationsService } from '../notifications/notifications.service';
 import { WithNotifications } from '../notifications/with-notifications.interface';
 import { SymbolService } from '../symbol/symbol.service';
-import { FormService } from './form.service';
-import { distinctUntilChanged, debounceTime } from 'rxjs/operators';
 import { formTemplate } from './form.component.html';
+import { FormService } from './form.service';
 
 /** This component renders a form using a FieldConfig Object.
  *
@@ -93,6 +93,11 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
     } else {
       this.init();
     }
+  }
+
+  /** Returns the column class for data-col, based on configured columns */
+  getColumns(field: Field): string {
+    return field.columns ? `${field.columns}` : '12';
   }
 
   patchValue(value = this.value) {

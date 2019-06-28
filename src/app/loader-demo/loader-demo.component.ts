@@ -6,7 +6,7 @@ import { Form } from '@ec.components/core';
   templateUrl: './loader-demo.component.html',
 })
 export class LoaderDemoComponent implements OnInit, WithLoader {
-  public classes = ['', 'ec-loader_global', 'ec-loader_overlay ec-loader_global'];
+  public classes = ['', 'is-local', 'is-global'];
   @ViewChild('loader') loader: LoaderComponent;
   public options: Form<any>;
   @ViewChild('optionsForm') optionsForm: FormComponent<any>;
@@ -16,7 +16,7 @@ export class LoaderDemoComponent implements OnInit, WithLoader {
   ngOnInit() {
     this.options = new Form(
       {
-        time: 20000,
+        time: 2000,
         hostClass: this.classes[0],
         desktop: false,
         title: 'The Toast is hot',

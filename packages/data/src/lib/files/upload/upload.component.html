@@ -1,51 +1,62 @@
 <input type="file" (change)="change($event, api)" multiple #fileInput (click)="clear()" />
-<ec-pop class="dialog">
-    <header class="dialog-header">
-        <button (click)="pop.hide()" type="button" class="dialog-dismiss">
-            <ec-icon name="close-x-big"></ec-icon>
-        </button>
-    </header>
-    <div *ngIf="filesToUpload?.length" class="dialog-body">
-        <label>
-            {{'upload.assetGroup' | symbol}}
-            <ec-assetgroup-select [assetGroupID]="assetGroupID" (groupChanged)="setGroup($event)"></ec-assetgroup-select>
-        </label>
-        <div *ngIf="custom">
-            <div class="xui-toggle">
-                <input id="preserveFilenames" type="checkbox" [(ngModel)]="options.preserveFilenames">
-                <label for="preserveFilenames">
-                    <div class="xui-toggle__switch"></div>
-                    {{'upload.preserveFilenames' | symbol}}
-                </label>
-            </div>
-            <div class="xui-toggle">
-                <input id="includeAssetIDInPath" type="checkbox" [(ngModel)]="options.includeAssetIDInPath">
-                <label for="includeAssetIDInPath">
-                    <div class="xui-toggle__switch"></div>
-                    {{'upload.includeAssetIDInPath' | symbol}}
-                </label>
-            </div>
-            <div class="xui-toggle">
-                <input id="ignoreDuplicates" type="checkbox" [(ngModel)]="options.ignoreDuplicates">
-                <label for="ignoreDuplicates">
-                    <div class="xui-toggle__switch"></div>
-                    {{'upload.ignoreDuplicates' | symbol}}
-                </label>
-            </div>
-            <div class="xui-toggle">
-                <input id="deduplicate" type="checkbox" [(ngModel)]="options.deduplicate">
-                <label for="deduplicate">
-                    <div class="xui-toggle__switch"></div>
-                    {{'upload.deduplicate' | symbol}}
-                </label>
-            </div>
-            <div *ngFor="let f of filesToUpload;let i = index" data-grid>
-                <div data-col="6-sm">{{ f.name }}</div>
-                <div data-col="6-sm">
-                    <input type="text" class="input" [(ngModel)]="options.fileName[i]" placeholder="{{ f.name }}" [disabled]="!options.preserveFilenames">
-                </div>
-            </div>
+<ec-pop class="modal-wrapper" data-flex="start-items">
+  <div class="modal" data-col="8@md 6@lg 4@xl">
+    <button (click)="pop.hide()" type="button" class="modal__dismiss">
+      <ec-icon name="close"></ec-icon>
+    </button>
+    <div *ngIf="filesToUpload?.length" class="modal__body">
+      <div class="field-group">
+        <label class="field-group__label">{{ 'upload.assetGroup' | symbol }}</label>
+        <ec-assetgroup-select [assetGroupID]="assetGroupID" (groupChanged)="setGroup($event)"></ec-assetgroup-select>
+      </div>
+      <div *ngIf="custom">
+        <div *ngFor="let f of filesToUpload; let i = index" class="field-group">
+          <label class="field-group__label">Title</label>
+          <input
+            type="text"
+            class="input"
+            [(ngModel)]="options.fileName[i]"
+            placeholder="{{ f.name }}"
+            [disabled]="!options.preserveFilenames"
+          />
+          <div class="field-group__info">{{ f.name }}</div>
         </div>
-        <a class="btn" (click)="!uploadPromise&&upload(filesToUpload, api)" [class.is-disabled]="uploadPromise">Upload</a>
+        <div class="field-group">
+          <div class="xui-checkbox">
+            <input id="preserveFilenames" type="checkbox" [(ngModel)]="options.preserveFilenames" />
+            <label for="preserveFilenames" class="xui-checkbox__label">
+              {{ 'upload.preserveFilenames' | symbol }}
+            </label>
+          </div>
+        </div>
+        <div class="field-group">
+          <div class="xui-checkbox">
+            <input id="includeAssetIDInPath" type="checkbox" [(ngModel)]="options.includeAssetIDInPath" />
+            <label for="includeAssetIDInPath" class="xui-checkbox__label">
+              {{ 'upload.includeAssetIDInPath' | symbol }}
+            </label>
+          </div>
+        </div>
+        <div class="field-group">
+          <div class="xui-checkbox">
+            <input id="ignoreDuplicates" type="checkbox" [(ngModel)]="options.ignoreDuplicates" />
+            <label for="ignoreDuplicates" class="xui-checkbox__label">
+              {{ 'upload.ignoreDuplicates' | symbol }}
+            </label>
+          </div>
+        </div>
+        <div class="field-group">
+          <div class="xui-checkbox">
+            <input id="deduplicate" type="checkbox" [(ngModel)]="options.deduplicate" />
+            <label for="deduplicate" class="xui-checkbox__label">
+              {{ 'upload.deduplicate' | symbol }}
+            </label>
+          </div>
+        </div>
+      </div>
+      <a class="btn" (click)="!uploadPromise && upload(filesToUpload, api)" [class.is-disabled]="uploadPromise"
+        >Upload</a
+      >
     </div>
+  </div>
 </ec-pop>

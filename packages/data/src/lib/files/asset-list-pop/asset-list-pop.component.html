@@ -1,36 +1,64 @@
-<div class="toast ec-dropzone" *ngIf="active"
-  (ecDropzone)="uploadSelect?.uploader?.uploadFiles($event.dataTransfer.files,$event)"
-  [attr.data-col]="config?.popColumns||popService.defaultColumns">
-  <button (click)="hide()" class="toast-dismiss" type="button">
-    <ec-icon name="close-x-big"></ec-icon>
+<div
+  class="asset-list-pop modal ec-dropzone"
+  *ngIf="active"
+  (ecDropzone)="uploadSelect?.uploader?.uploadFiles($event.dataTransfer.files, $event)"
+  [attr.data-col]="config?.popColumns || 12"
+>
+  <button (click)="hide()" class="modal__dismiss" type="button">
+    <ec-icon name="close"></ec-icon>
   </button>
   <div class="ec-dropzone__info">Drop to upload</div>
-  <div class="ec-asset-list-pop-header">
-    <ec-upload-select (uploaded)="fileService.selectUpload($event,selection)" #uploadSelect [disableDrop]="true"
-      [config]="uploadConfig" [assetGroupID]="assetGroupID"></ec-upload-select>
-    <div data-grid="is-small" *ngIf="active&&sdk.apiResolved">
-      <!-- <div [attr.data-col]="showTagSelect()?'6-sm':'12-sm'"> -->
-      <div data-col="12-sm" class="has-padding-bottom">
+  <div class="modal__header">
+    <ec-upload-select
+      (uploaded)="fileService.selectUpload($event, selection)"
+      #uploadSelect
+      [disableDrop]="true"
+      [config]="uploadConfig"
+      [assetGroupID]="assetGroupID"
+    ></ec-upload-select>
+    <div data-grid="small-gutter" *ngIf="active && sdk.apiResolved">
+      <div data-col="6@md">
         <ec-searchbar #searchbar [listComponent]="resourceList" [list]="resourceList"></ec-searchbar>
       </div>
-      <div data-col="6-sm" *ngIf="!isLegacy()">
-        <ec-resource-select (changed)="filterByTags($event.getValue())" placeholder="Tags.." [config]="tagSelectConfig"
-          relation="tags" [api]="sdk.api"></ec-resource-select>
-      </div>
-      <div data-col="6-sm" *ngIf="!isLegacy()">
-        <ec-select (changed)="filterByTypes($event.getValue())" placeholder="Types..." [config]="typeSelectConfig"
-          [values]="assetTypes"></ec-select>
+      <div data-col="6@md" *ngIf="!isLegacy()">
+        <div data-grid="small-gutter">
+          <div data-col="6@sm">
+            <ec-resource-select
+              (changed)="filterByTags($event.getValue())"
+              placeholder="Tags.."
+              [config]="tagSelectConfig"
+              relation="tags"
+              [api]="sdk.api"
+            ></ec-resource-select>
+          </div>
+          <div data-col="6@sm">
+            <ec-select
+              (changed)="filterByTypes($event.getValue())"
+              placeholder="Types..."
+              [config]="typeSelectConfig"
+              [values]="assetTypes"
+            ></ec-select>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <div class="ec-asset-list-pop-body">
-    <ec-resource-list #resourceList [relation]="getGroupRelation()" [api]="sdk.api" [selection]="selection"
-      (columnClicked)="select($event)" [config]="config" [loader]="popLoader" class="ec-resource-list">
+  <div class="modal__body">
+    <ec-resource-list
+      #resourceList
+      [relation]="getGroupRelation()"
+      [api]="sdk.api"
+      [selection]="selection"
+      (columnClicked)="select($event)"
+      [config]="config"
+      [loader]="popLoader"
+      class="ec-asset-list"
+    >
     </ec-resource-list>
     <!-- (changed)="searchbar.updatedList($event)" -->
   </div>
-  <div class="toast-footer">
+  <div class="modal__footer">
     <ec-pagination [pagination]="resourceList?.list?.pagination"></ec-pagination>
   </div>
-  <ec-loader #popLoader class="ec-loader ec-loader_global"></ec-loader>
+  <ec-loader #popLoader class="ec-loader loader is-global"></ec-loader>
 </div>

@@ -67,10 +67,6 @@ export class Field implements FieldConfigProperty {
   getPlaceholder() {
     return this.placeholder || this.label || this.property;
   }
-  /** Returns the column class for data-col, based on configured columns */
-  getColumns() {
-    return (this.columns || 12) + '-sm';
-  }
   /** Returns the fields label */
   getLabel() {
     if (this.label === false) {

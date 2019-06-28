@@ -194,9 +194,6 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#getColumns">getColumns</a>
-                            </li>
-                            <li>
                                 <a href="#getComponent">getComponent</a>
                             </li>
                             <li>
@@ -1122,47 +1119,6 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="getColumns"></a>
-                    <span class="name">
-                        <b>
-                            getColumns
-                        </b>
-                        <a href="#getColumns"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>getColumns()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="71"
-                            class="link-to-prism">packages/core/src/lib/field/field.ts:71</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-description"><p>Returns the column class for data-col, based on configured columns </p>
-</div>
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
                     <a name="getComponent"></a>
                     <span class="name">
                         <b>
@@ -1181,8 +1137,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="86"
-                            class="link-to-prism">packages/core/src/lib/field/field.ts:86</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="82"
+                            class="link-to-prism">packages/core/src/lib/field/field.ts:82</a></div>
                 </td>
             </tr>
 
@@ -1249,8 +1205,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="75"
-                            class="link-to-prism">packages/core/src/lib/field/field.ts:75</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="71"
+                            class="link-to-prism">packages/core/src/lib/field/field.ts:71</a></div>
                 </td>
             </tr>
 
@@ -1331,8 +1287,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="82"
-                            class="link-to-prism">packages/core/src/lib/field/field.ts:82</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="78"
+                            class="link-to-prism">packages/core/src/lib/field/field.ts:78</a></div>
                 </td>
             </tr>
 
@@ -1504,10 +1460,6 @@ export class Field implements FieldConfigProperty {
   /** Returns placeholder if any */
   getPlaceholder() {
     return this.placeholder || this.label || this.property;
-  }
-  /** Returns the column class for data-col, based on configured columns */
-  getColumns() {
-    return (this.columns || 12) + &#x27;-sm&#x27;;
   }
   /** Returns the fields label */
   getLabel() {

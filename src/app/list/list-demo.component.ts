@@ -14,9 +14,7 @@ import { mocked } from '../../mocks/data';
       [solo]="true"
       [paginationConfig]="paginationConfig"
     ></ec-list>
-    <pre>
-  {{ treeList.list.config | json }}
-</pre>
+    <pre class="demo-code"><code>{{ treeList.list.config | json }}</code></pre>
   `,
 })
 export class ListDemoComponent {

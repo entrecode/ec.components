@@ -4,48 +4,48 @@
     <ec-form [config]="layoutDemoConfig" (submitted)="logValue($event)"></ec-form>
   </ec-tab>
   <ec-tab label="ec-input">
-    <label
-      >string {{ myString }}
+    <div class="field-group">
+      <label class="field-group__label">string {{ myString }} </label>
       <ec-input [config]="{ view: 'string' }" [(ngModel)]="myString"></ec-input>
-    </label>
-    <label
-      >number {{ myNumber }}
+    </div>
+    <div class="field-group">
+      <label class="field-group__label">number {{ myNumber }} </label>
       <ec-input [config]="{ view: 'number' }" [(ngModel)]="myNumber"></ec-input>
-    </label>
-    <label
-      >textarea {{ myTextarea }}
+    </div>
+    <div class="field-group">
+      <label class="field-group__label">textarea {{ myTextarea }}</label>
       <ec-input [config]="{ view: 'textarea' }" [(ngModel)]="myTextarea"></ec-input>
-    </label>
-    <label
-      >color {{ myColor }}
+    </div>
+    <div class="field-group">
+      <label class="field-group__label">color {{ myColor }}</label>
       <ec-input [config]="{ view: 'color' }" [(ngModel)]="myColor"></ec-input>
-    </label>
-    <label
-      >boolean {{ myBoolean }}
+    </div>
+    <div class="field-group ec-field-group_boolean">
+      <label class="field-group__label">boolean {{ myBoolean }}</label>
       <ec-input [config]="{ view: 'boolean' }" [(ngModel)]="myBoolean"></ec-input>
-    </label>
-    <label
-      >email {{ myEmail }}
+    </div>
+    <div class="field-group">
+      <label class="field-group__label">email {{ myEmail }} </label>
       <ec-input [config]="{ view: 'email' }" [(ngModel)]="myEmail"></ec-input>
-    </label>
-    <label
-      >url {{ myUrl }}
+    </div>
+    <div class="field-group">
+      <label class="field-group__label">url {{ myUrl }} </label>
       <ec-input [config]="{ view: 'url' }" [(ngModel)]="myUrl"></ec-input>
-    </label>
-    <label
-      >toggle {{ myToggle }}
+    </div>
+    <div class="field-group">
+      <label class="field-group__label">toggle {{ myToggle }} </label>
       <ec-input [config]="{ view: 'toggle' }" [(ngModel)]="myToggle"></ec-input>
-    </label>
-    <label
-      >date {{ myDate }}
+    </div>
+    <div class="field-group">
+      <label class="field-group__label">date {{ myDate }}</label>
       <ec-input [config]="{ view: 'date' }" [(ngModel)]="myDate"></ec-input>
-    </label>
-    <label
-      >select {{ mySelect }}
+    </div>
+    <div class="field-group">
+      <label class="field-group__label">select {{ mySelect }} </label>
       <ec-input [config]="{ view: 'select', values: ['a', 'b', 'c'] }" [(ngModel)]="mySelect"></ec-input>
-    </label>
-    <label
-      >select with labels {{ mySelect2 }}
+    </div>
+    <div class="field-group">
+      <label class="field-group__label">select with labels {{ mySelect2 }} </label>
       <ec-input
         [config]="{
           view: 'select',
@@ -53,13 +53,15 @@
         }"
         [(ngModel)]="mySelect2"
       ></ec-input>
-    </label>
-    <label
-      >not existing {{ myNan }}
+    </div>
+    <div class="field-group">
+      <label class="field-group__label">not existing {{ myNan }} </label>
       <ec-input [config]="{ view: 'not_existing' }" [(ngModel)]="myNan"></ec-input>
-    </label>
-    <label>with field object</label>
-    <ec-input [field]="testField"></ec-input>
+    </div>
+    <div class="field-group">
+      <label class="field-group__label">with field object</label>
+      <ec-input [field]="testField"></ec-input>
+    </div>
   </ec-tab>
   <ec-tab label="empty">
     <p>
@@ -89,14 +91,18 @@
         Na los
       </button>
     </ec-form>
-    <pre>
-        {{ treeForm.group?.value | json }}
-        </pre
-    >
+    <pre><code>{{ treeForm.group?.value | json }}</code></pre>
+
     <h3>custom inputs without wrapper</h3>
-    <strong>empty</strong>
-    <ec-form (submitted)="logValue($event)" [config]="customFormConfig"></ec-form>
-    <strong>with value</strong>
-    <ec-form (submitted)="logValue($event)" [config]="customFormConfig" [value]="{ count: 2 }"></ec-form>
+    <div data-grid>
+      <div data-col="6">
+        <h4>empty</h4>
+        <ec-form (submitted)="logValue($event)" [config]="customFormConfig"></ec-form>
+      </div>
+      <div data-col="6">
+        <h4>with value</h4>
+        <ec-form (submitted)="logValue($event)" [config]="customFormConfig" [value]="{ count: 2 }"></ec-form>
+      </div>
+    </div>
   </ec-tab>
 </ec-tabs>

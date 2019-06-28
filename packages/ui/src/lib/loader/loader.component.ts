@@ -28,7 +28,7 @@ export class LoaderComponent {
 
   /** Hide the loader by removing .visible from the host. This method is NOT meant to be used from outside, */
   private hide() {
-    this.visible = false; // show loader
+    this.visible = false; // hide loader
     this.host.nativeElement.classList.remove('is-active');
   }
 

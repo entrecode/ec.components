@@ -1,0 +1,33 @@
+// scss-lint:disable SelectorDepth NestingDepth
+
+.input-group {
+  > ec-input {
+    &:not(:only-child) {
+      &:first-child {
+        .input {
+          border-bottom-right-radius: 0;
+          border-right: 0;
+          border-top-right-radius: 0;
+        }
+      }
+
+      &:last-child {
+        .input {
+          border-bottom-left-radius: 0;
+          border-left: 0;
+          border-top-left-radius: 0;
+        }
+      }
+    }
+
+    &:not(:last-child) {
+      &:not(:first-child) {
+        .input {
+          border-left: 0;
+          border-radius: 0;
+          border-right: 0;
+        }
+      }
+    }
+  }
+}

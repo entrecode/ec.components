@@ -11,19 +11,9 @@
   font-size: em($ec-output-asset-font-size);
   line-height: em($ec-output-asset-line-height, $ec-output-asset-font-size);
   background: $ec-output-asset-background;
-  border-radius: arrayMagic($ec-output-asset-radius);
-  padding: arrayMagic($ec-output-asset-padding);
-  opacity: .2;
-
-  .ec-icon {
-    font-size: 1em;
-    line-height: 1em;
-
-    &::before {
-      font-size: inherit;
-      line-height: inherit;
-    }
-  }
+  border-radius: array-magic($ec-output-asset-radius);
+  padding: array-magic($ec-output-asset-padding);
+  opacity: 0.2;
 
   &.is-true {
     opacity: 1;

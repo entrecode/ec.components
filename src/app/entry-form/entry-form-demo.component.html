@@ -39,9 +39,11 @@
   </ec-tab>
   <ec-tab label="dynamic">
     <ec-entry-form model="muffin" #simpleMuffin></ec-entry-form>
-    <ec-pop class="dialog" #fieldPop>
-      <div class="dialog-body">
-        <ec-form [config]="fieldForm" (submitted)="addField($event, simpleMuffin, fieldPop)"></ec-form>
+    <ec-pop class="modal-wrapper" #fieldPop>
+      <div class="modal">
+        <div class="modal__body">
+          <ec-form [config]="fieldForm" (submitted)="addField($event, simpleMuffin, fieldPop)"></ec-form>
+        </div>
       </div>
     </ec-pop>
     <a (click)="fieldPop.show()">add field</a>

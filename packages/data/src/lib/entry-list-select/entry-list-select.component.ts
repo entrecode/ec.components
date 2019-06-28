@@ -92,7 +92,7 @@ export class EntryListSelectComponent extends InputComponent implements ControlV
               resolve: () => ' ',
               view: 'link',
               class: 'btn btn_clear',
-              icon: 'close-x',
+              icon: 'close',
               action: (item, property) => {
                 this.selection.remove(item);
               },

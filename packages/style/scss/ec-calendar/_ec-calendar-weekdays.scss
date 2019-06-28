@@ -1,6 +1,6 @@
 // @param {px} $ec-calendar-weekdays-size [$base-font-size * 0.875]
 // @param {value} $ec-calendar-weekdays-weight [$is-bold]
-// @param {color} $ec-calendar-weekdays-color [getColor(text, light)]
+// @param {color} $ec-calendar-weekdays-color [$text-light]
 // @param {array} $ec-calendar-weekdays-style
 .ec-calendar-weekdays {
   display: flex;
@@ -8,7 +8,7 @@
   padding: 0;
   margin: 0;
   @include inject-style($ec-calendar-weekdays-style);
-  font-size: arrayMagic($ec-calendar-weekdays-size, xem);
+  font-size: array-magic($ec-calendar-weekdays-size, xem);
   line-height: rem($btn-min-height);
   font-weight: $ec-calendar-weekdays-weight;
   color: $ec-calendar-weekdays-color;

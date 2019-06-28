@@ -1,5 +1,7 @@
 # @ec.components/style
 
+WARNING: This version is currently experimental as it's part of the x.ui 10 update.
+
 This package contains all scss styles for the ec.components packages.
 
 ## Overview

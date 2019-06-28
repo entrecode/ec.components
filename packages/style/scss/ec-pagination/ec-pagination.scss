@@ -8,11 +8,11 @@
   align-items: center;
   @include inject-style($ec-pagination-style);
   background: $ec-pagination-background;
-  margin: arrayMagic($ec-pagination-spacing);
-  padding: arrayMagic($ec-pagination-padding);
+  margin: array-magic($ec-pagination-spacing);
+  padding: array-magic($ec-pagination-padding);
 }
 
-// @param {number} $ec-pagination-item-padding-ratio [$btn-padding-ratio]
+// @param {number} $ec-pagination-item-padding-ratio [1]
 // @param {array} $ec-pagination-item-spacing [$btn-spacing]
 // @param {variable} $ec-pagination-item-font-family [$btn-font-family]
 // @param {number} $ec-pagination-item-font-size [$btn-font-size]
@@ -41,7 +41,7 @@
   justify-content: center;
 
   @include inject-style($ec-pagination-item-style);
-  @include macro-metrics(
+  @include metrics(
     $ec-pagination-item-font-size,
     $ec-pagination-item-line-height,
     $ec-pagination-item-min-height,
@@ -51,16 +51,16 @@
   color: $ec-pagination-item-color;
   font-family: $ec-pagination-item-font-family;
   font-weight: $ec-pagination-item-weight;
-  margin: arrayMagic($ec-pagination-item-spacing);
-  border-radius: arrayMagic($ec-pagination-item-radius);
+  margin: array-magic($ec-pagination-item-spacing);
+  border-radius: array-magic($ec-pagination-item-radius);
   transition: $btn-transition;
-  
+
   @if $ec-pagination-item-round == true {
-    border-radius: arrayMagic($ec-pagination-item-min-height / 2);
+    border-radius: array-magic($ec-pagination-item-min-height / 2);
   }
 
   // @param {color} $ec-pagination-item-is-active-background [transparent]
-  // @param {color} $ec-pagination-item-is-active-color [setHover($link)]
+  // @param {color} $ec-pagination-item-is-active-color [$link-hover]
   // @param {array} $ec-pagination-item-is-active-style
   &.is-active,
   &:hover,
@@ -71,7 +71,7 @@
   }
 
   // @param {color} $ec-pagination-item-is-disabled-background [transparent]
-  // @param {color} $ec-pagination-item-is-disabled-color [setHover($link)]
+  // @param {color} $ec-pagination-item-is-disabled-color [$text-light]
   // @param {array} $ec-pagination-item-is-disabled-style
   &.is-disabled {
     @include inject-style($ec-pagination-item-is-disabled-style);
@@ -131,7 +131,7 @@
   flex-grow: 1;
   text-align: center;
   @include inject-style($ec-pagination-info-style);
-  font-size: arrayMagic($ec-pagination-info-size, xem);
+  font-size: array-magic($ec-pagination-info-size, xem);
   color: $ec-pagination-info-color;
 }
 

@@ -1,23 +1,9 @@
 //scss-lint:disable SelectorDepth NestingDepth
 
 .ec-resource-list {
-  /* display: grid;
-  grid-template-areas: 'list' 'pagination';
-  grid-template-rows: 1fr auto;
-  height: 100%; */
-
-  /* .ec-list {
-    @include is-scrollable(y, contain);
-    grid-area: list;
-  } */
-
   .ec-list-header {
     display: none;
   }
-
-  /* ec-pagination {
-    grid-area: pagination;
-  } */
 
   .ec-list-items {
     flex-wrap: wrap;
@@ -27,15 +13,15 @@
 
   .ec-list-item {
     flex-direction: column;
-    padding: 0 0 rem(8) 0;
+    padding: 0 0 rem(8);
     width: 100 / 4 * 1%;
-    background: getColor(background, lighter);
-    border-right: rem(1) solid white;
-    border-bottom: rem(1) solid white;
+    background: get-color(background, lighter);
+    border-right: rem(1) solid #fff;
+    border-bottom: rem(1) solid #fff;
 
     &:hover {
-      background: getColor(background, light);
-      
+      background: get-color(background, light);
+
       .ec-list-cell {
         color: inherit;
       }
@@ -53,7 +39,6 @@
     .ec-list-cell_preview {
       flex-shrink: 0;
       padding: rem(8);
-      
     }
   }
 }

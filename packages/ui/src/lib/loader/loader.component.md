@@ -5,8 +5,8 @@ The loader can be used to indicate any kind of loading activity
 ## Template
 
 ```html
-<ec-loader #globalLoader class="ec-loader ec-loader_overlay ec-loader_global"></ec-loader>
-<ec-loader #localLoader class="ec-loader"></ec-loader>
+<ec-loader #globalLoader class="ec-loader loader is-global"></ec-loader>
+<ec-loader #localLoader class="ec-loader loader is-local"></ec-loader>
 <button (click)="globalLoader()">Global Loader</button>
 <button (click)="localLoader()">Local Loader</button>
 ```

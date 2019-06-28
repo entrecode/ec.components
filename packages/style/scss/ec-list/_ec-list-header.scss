@@ -6,20 +6,16 @@
 // @param {array} $ec-list-header-spacing [0 0 8]
 // @param {array} $ec-list-header-style
 .ec-list-header {
-    display: flex;
-    @supports (display: grid) {
-        display: grid;
-        grid-template-columns: repeat( auto-fit, minmax(48px, 1fr));
-    }
-    position: relative;
-    @include inject-style($ec-list-header-style);
-    background: $ec-list-header-background;
-    padding: arrayMagic($ec-list-header-padding);
-    margin: arrayMagic($ec-list-header-spacing);
-    .ec-list-cell {
-        overflow: initial;
-        font-size: arrayMagic($ec-list-header-size, xem);
-        font-weight: $ec-list-header-weight;
-        color: $ec-list-header-color;
-    }
+  display: flex;
+  position: relative;
+  @include inject-style($ec-list-header-style);
+  background: $ec-list-header-background;
+  padding: array-magic($ec-list-header-padding);
+  margin: array-magic($ec-list-header-spacing);
+
+  .ec-list-cell {
+    font-size: array-magic($ec-list-header-size, xem);
+    font-weight: $ec-list-header-weight;
+    color: $ec-list-header-color;
+  }
 }

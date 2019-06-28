@@ -4,7 +4,8 @@ import { Component, ViewChild, OnChanges, OnInit } from '@angular/core';
   templateUrl: './modal-demo.component.html',
 })
 export class ModalDemoComponent implements OnChanges, OnInit {
-  modalMode;
+  modalMode = '';
+  modalPreset = '';
   modalBackdrop = true;
   modalColumns;
   modalMarkup;
@@ -12,7 +13,6 @@ export class ModalDemoComponent implements OnChanges, OnInit {
   showFooter = true;
   showHeader = true;
   showMarkup = false;
-  modalAnimate;
 
   ngOnChanges() {
     this.updateMarkup();
@@ -40,11 +40,6 @@ export class ModalDemoComponent implements OnChanges, OnInit {
         this.modalColumns
           ? `
           [columns]="${this.modalColumns}"`
-          : ''
-      }${
-        this.modalAnimate
-          ? `
-          animation="${this.modalAnimate}"`
           : ''
       }>
         ${

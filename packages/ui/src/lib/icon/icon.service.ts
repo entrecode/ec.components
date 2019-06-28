@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ecIcons } from './ec-icons';
+import { ixo } from './ixo';
 import { Symbol } from '../symbol/symbol.interface';
 import { SymbolService } from '../symbol/symbol.service';
 /** Service to register icons and icon sets. The default set is ec-icons. (Requires including ec-icons)
@@ -8,5 +8,5 @@ import { SymbolService } from '../symbol/symbol.service';
 @Injectable()
 export class IconService extends SymbolService {
   /** The current icon set that is registered to the service. It will be used to resolve icons from. */
-  public registry: Symbol[] = ecIcons;
+  public registry: Symbol[] = ixo;
 }

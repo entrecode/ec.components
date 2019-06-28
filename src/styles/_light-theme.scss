@@ -1,0 +1,98 @@
+$_background: #fff;
+$_background-lightest: #f8f9fc;
+$_text: #171e28;
+$_minor: #eceff6;
+$_link: #23ca74;
+$_super: #4c43e9;
+$_highlight: #ffa;
+
+$_input-background: #edf2f7;
+
+$_state-hover: rgba($_link, 0.2);
+$_state-hover-contrast: $_text;
+$_state-error: #ff2a58;
+$_state-info: #cae6fe;
+$_state-success: #d3ecdb;
+$_state-warning: #fff2cf;
+
+$_dm: #23ca74;
+$_am: #0081fa;
+$_ua: #ffca69;
+
+:root {
+  // background
+  --background: #{$_background};
+  --background-lightest: #{$_background-lightest};
+  --background-lighter: #{darken($_background-lightest, 2%)};
+  --background-light: #{darken($_background-lightest, 4%)};
+  
+  --background-invert: #{_text};
+  --modal-background: #{$_background};
+  
+  --list-item-background: #{$_background-lightest};
+  --list-item-hover-background: #{darken($_background-lightest, 2%)};
+
+  // text
+  --text: #{$_text};
+  --text-light: #{lighten($_text, 30%)};
+  --text-lighter: #{lighten($_text, 40%)};
+  --text-lightest: #{lighten($_text, 60%)};
+  --text-invert: #{_background};
+
+  --dm: #{$_dm};
+  --dm-contrast: #{set-contrast($_dm)};
+  --am: #{$_am};
+  --am-contrast: #{set-contrast($_am)};
+  --ua: #{$_ua};
+  --ua-contrast: #{set-contrast($_ua)};
+
+  --link: #{$_link};
+  --link-safe: #{$_link};
+  --link-contrast: #fff;
+  --link-hover: #{set-hover($_link)};
+
+  --super: #{$_super};
+  --super-contrast: #fff;
+  --super-safe: #{set-contrast($_background, $_super)};
+  --super-hover: #{set-hover($_super)};
+
+  --minor: #{$_minor};
+  --minor-contrast: #{$_text};
+  --minor-safe: #(set-contrast($_background, $_minor));
+  --minor-hover: #{set-hover($_minor)};
+
+  --highlight: #{$_highlight};
+  --highlight-contrast: #000;
+  --highlight-safe: #{set-contrast($_background, $_highlight)};
+  --highlight-hover: #{set-hover($_highlight)};
+
+  --input-background: #{$_input-background};
+  --input-color: #{$text};
+
+  --ec-select-selected: #{darken($_input-background, 8%)};
+
+  --ace-gutter: #{darken($_input-background, 4%)};
+
+  --state-hover: #{$_state-hover};
+  --state-hover-contrast: #{$_state-hover-contrast};
+
+  --state-error: #{$_state-error};
+  --state-error-contrast: #{set-contrast($_state-error)};
+  --state-error-safe: #{set-contrast($_background, $_state-error)};
+  --state-error-hover: #{set-hover($_state-error)};
+
+  --state-info: #{$_state-info};
+  --state-info-contrast: #{set-contrast($_state-info)};
+  --state-info-safe: #{set-contrast($_background, $_state-info)};
+  --state-info-hover: #{set-hover($_state-info)};
+
+  --state-success: #{$_state-success};
+  --state-success-contrast: #{set-contrast($_state-success)};
+  --state-success-safe: #{set-contrast($_background, $_state-success)};
+  --state-success-hover: #{set-hover($_state-success)};
+
+  --state-warning: #{$_state-warning};
+  --state-warning-contrast: #{set-contrast($_state-warning)};
+  --state-warning-safe: #{set-contrast($_background, $_state-warning)};
+  --state-warning-hover: #{set-hover($_state-warning)};
+}

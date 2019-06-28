@@ -2,11 +2,6 @@
 //
 // ui/form
 // ------------------------------------------------------------------------------------------------------------
-// @param {array} $ec-btn-save-style
-// @param {array} $ec-btn-delete-style
-$ec-btn-save-style: () !default;
-$ec-btn-delete-style: () !default;
-
 //
 // EC-CALENDAR
 // ------------------------------------------------------
@@ -24,11 +19,11 @@ $ec-calendar-controls-style: () !default;
 
 // @param {px} $ec-calendar-title-size [$base-font-size]
 // @param {value} $ec-calendar-title-weight [$is-bold]
-// @param {color} $ec-calendar-title-color [getColor(text, light)]
+// @param {color} $ec-calendar-title-color [$text-light]
 // @param {array} $ec-calendar-title-style
 $ec-calendar-title-size: $base-font-size !default;
 $ec-calendar-title-weight: $is-bold !default;
-$ec-calendar-title-color: getColor(text, light) !default;
+$ec-calendar-title-color: $text-light !default;
 $ec-calendar-title-style: () !default;
 
 // @param {array} $ec-calendar-month-style
@@ -36,11 +31,11 @@ $ec-calendar-month-style: () !default;
 
 // @param {px} $ec-calendar-weekdays-size [$base-font-size * 0.875]
 // @param {value} $ec-calendar-weekdays-weight [$is-bold]
-// @param {color} $ec-calendar-weekdays-color [getColor(text, light)]
+// @param {color} $ec-calendar-weekdays-color [$text-light]
 // @param {array} $ec-calendar-weekdays-style
 $ec-calendar-weekdays-size: $base-font-size * 0.875 !default;
 $ec-calendar-weekdays-weight: $is-bold !default;
-$ec-calendar-weekdays-color: getColor(text, light) !default;
+$ec-calendar-weekdays-color: $text-light !default;
 $ec-calendar-weekdays-style: () !default;
 
 // @param {array} $ec-calendar-days-style
@@ -80,10 +75,10 @@ $ec-calendar-day-is-other-color: $text-lighter !default;
 $ec-calendar-day-is-other-background: transparent !default;
 $ec-calendar-day-is-other-style: () !default;
 
-// @param {color} $ec-calendar-day-is-selected-color [setContrast($link)]
+// @param {color} $ec-calendar-day-is-selected-color [$link-contrast]
 // @param {color} $ec-calendar-day-is-selected-background [$link]
 // @param {array} $ec-calendar-day-is-selected-style
-$ec-calendar-day-is-selected-color: setContrast($link) !default;
+$ec-calendar-day-is-selected-color: $link-contrast !default;
 $ec-calendar-day-is-selected-background: $link !default;
 $ec-calendar-day-is-selected-style: () !default;
 
@@ -104,14 +99,6 @@ $ec-output-asset-background: $background-lighter !default;
 $ec-output-asset-font-size: $tag-small-font-size !default;
 $ec-output-asset-line-height: $tag-small-line-height !default;
 $ec-output-asset-style: () !default;
-
-// EC-OUTPUT-AVATR
-// @param {px} $ec-output-avatar-size [32]
-// @param {array} $ec-output-avatar-border [2 solid $background]
-// @param {array} $ec-output-avatar-style
-$ec-output-avatar-size: 32 !default;
-$ec-output-avatar-border: 2 solid $background !default;
-$ec-output-avatar-style: () !default;
 
 // EC-OUTPUT-AVATARS
 // @param {array} $ec-output-avatars-spacing [0]
@@ -137,40 +124,9 @@ $ec-output-color-size: 20 !default;
 $ec-output-color-border: 0 !default;
 $ec-output-color-style: () !default;
 
-// EC-OUTPUT-MAIL
-// @param {array} $ec-output-mail-style
-$ec-output-mail-style: () !default;
-
 // EC-OUTPUT-PREVIEW
 // @param {array} $ec-output-preview-style
 $ec-output-preview-style: () !default;
-
-// EC-OUTPUT-STRING
-// @param {array} $ec-output-string-style
-$ec-output-string-style: () !default;
-
-// EC-OUTPUT-TAG
-// @param {px} $ec-output-tag-font-size [$tag-font-size]
-// @param {px} $ec-output-tag-line-height [$tag-line-height]
-// @param {value} $ec-output-tag-weight [$tag-weight]
-// @param {color} $ec-output-tag-background [$tag-background]
-// @param {color} $ec-output-tag-color [setContrast($tag-background)]
-// @param {px} $ec-output-tag-min-height [$tag-min-height]
-// @param {number} $ec-output-tag-padding-ratio [$tag-padding-ratio]
-$ec-output-tag-font-size: $tag-font-size !default;
-$ec-output-tag-line-height: $tag-line-height !default;
-$ec-output-tag-weight: $tag-weight !default;
-$ec-output-tag-background: $tag-background !default;
-$ec-output-tag-color: setContrast($tag-background) !default;
-$ec-output-tag-min-height: $tag-min-height !default;
-$ec-output-tag-padding-ratio: $tag-padding-ratio !default;
-
-// @param {boolean} $ec-output-tag-round [$tag-round]
-// @param {array} $ec-output-tag-radius [$tag-ratio]
-// @param {array} $ec-output-tag-style
-$ec-output-tag-round: $tag-round !default;
-$ec-output-tag-radius: $tag-radius !default;
-$ec-output-tag-style: () !default;
 
 // EC-OUTPUT-TAGS
 // @param {array} $ec-output-tags-spacing [0 -2]
@@ -204,7 +160,7 @@ $ec-input-color-radius: $input-radius !default;
 // @param {array} $ec-input-errors-style
 $ec-input-errors-spacing: 8 0 0 !default;
 $ec-input-errors-size: $base-font-size * 0.875 !default;
-$ec-input-errors-color: $state-error !default;
+$ec-input-errors-color: $state-error-safe !default;
 $ec-input-errors-style: () !default;
 
 //
@@ -260,6 +216,9 @@ $ec-list-header-padding: 0 !default;
 $ec-list-header-spacing: 0 0 8 !default;
 $ec-list-header-style: () !default;
 
+// @param {color} $ec-list-header-hover-color [$text]
+$ec-list-header-hover-color: $text !default;
+
 //
 // EC-LIST-COLUMN-TITLE
 // ------------------------------------------------------
@@ -298,8 +257,8 @@ $ec-list-cell-is-filterable-style: () !default;
 // @param {color} $ec-list-cell-is-filtered-background [$state-hover]
 // @param {color} $ec-list-cell-is-filtered-color [inherit]
 // @param {array} $ec-list-cell-is-filtered-style
-$ec-list-cell-is-filtered-background: $state-hover;
-$ec-list-cell-is-filtered-color: inherit;
+$ec-list-cell-is-filtered-background: $state-hover !default;
+$ec-list-cell-is-filtered-color: inherit !default;
 $ec-list-cell-is-filtered-style: () !default;
 
 //
@@ -321,7 +280,7 @@ $ec-list-cell-is-sorted-color: inherit !default;
 $ec-list-cell-is-sorted-style: () !default;
 $ec-list-cell-is-sorted-style: map-merge(
   (
-    font-weight: $is-bold
+    font-weight: $is-bold,
   ),
   $ec-list-cell-is-sorted-style
 );
@@ -370,11 +329,11 @@ $ec-list-item-is-selected-color: $link !default;
 $ec-list-item-is-selected-background: $state-hover !default;
 $ec-list-item-is-selected-style: () !default;
 
-// @param {color} $ec-list-item-is-selected-hover-color [inherit]
-// @param {color} $ec-list-item-is-selected-hover-background [inherit]
+// @param {color} $ec-list-item-is-selected-hover-color [$ec-list-item-is-selected-color]
+// @param {color} $ec-list-item-is-selected-hover-background [$ec-list-item-is-selected-background]
 // @param {array} $ec-list-item-is-selected-hover-style
-$ec-list-item-is-selected-hover-color: inherit !default;
-$ec-list-item-is-selected-hover-background: inherit !default;
+$ec-list-item-is-selected-hover-color: $ec-list-item-is-selected-color !default;
+$ec-list-item-is-selected-hover-background: $ec-list-item-is-selected-background !default;
 $ec-list-item-is-selected-hover-style: () !default;
 
 //
@@ -395,12 +354,12 @@ $ec-list-cell-style: () !default;
 // EC-LIST-EMPTY
 // ------------------------------------------------------
 // @param {array} $ec-list-empty-style
-// @param {color} $ec-list-empty-background [getColor(background, lightest)]
+// @param {color} $ec-list-empty-background [get-color(background, lightest)]
 // @param {color} $ec-list-empty-color [inherit]
 // @param {array} $ec-list-empty-padding [8]
 // @param {array} $ec-list-empty-spacing [4 0]
 // @param {array} $ec-list-empty-radius [4]
-$ec-list-empty-background: getColor(background, lightest) !default;
+$ec-list-empty-background: get-color(background, lightest) !default;
 $ec-list-empty-color: inherit !default;
 $ec-list-empty-padding: 8 !default;
 $ec-list-empty-spacing: 4 0 !default;
@@ -408,7 +367,7 @@ $ec-list-empty-radius: 4 !default;
 $ec-list-empty-style: () !default;
 $ec-list-empty-style: map-merge(
   (
-    text-align: center
+    text-align: center,
   ),
   $ec-list-empty-style
 );
@@ -425,7 +384,7 @@ $ec-pagination-padding: 0 !default;
 $ec-pagination-spacing: 8 0 !default;
 $ec-pagination-style: () !default;
 
-// @param {number} $ec-pagination-item-padding-ratio [0]
+// @param {number} $ec-pagination-item-padding-ratio [1]
 // @param {array} $ec-pagination-item-spacing [$btn-spacing]
 // @param {variable} $ec-pagination-item-font-family [$btn-font-family]
 // @param {number} $ec-pagination-item-font-size [$btn-font-size]
@@ -433,9 +392,9 @@ $ec-pagination-style: () !default;
 // @param {number} $ec-pagination-item-min-height [$btn-min-height]
 // @param {value} $ec-pagination-item-weight [$btn-weight]
 // @param {rem} $ec-pagination-item-big-radius [$btn-radius]
-$ec-pagination-item-padding-ratio: 0 !default;
+$ec-pagination-item-padding-ratio: 1 !default;
 $ec-pagination-item-spacing: $btn-spacing !default;
-$ec-pagination-item-font-family: $btn-font-family;
+$ec-pagination-item-font-family: $btn-font-family !default;
 $ec-pagination-item-font-size: $btn-font-size !default;
 $ec-pagination-item-line-height: $btn-line-height !default;
 $ec-pagination-item-min-height: $btn-min-height !default;
@@ -450,17 +409,17 @@ $ec-pagination-item-color: $link !default;
 $ec-pagination-item-style: () !default;
 
 // @param {color} $ec-pagination-item-is-active-background [transparent]
-// @param {color} $ec-pagination-item-is-active-color [setHover($link)]
+// @param {color} $ec-pagination-item-is-active-color [$link-hover]
 // @param {array} $ec-pagination-item-is-active-style
-$ec-pagination-item-is-active-background: $state-hover !default;
-$ec-pagination-item-is-active-color: setHover($link) !default;
+$ec-pagination-item-is-active-background: $minor !default;
+$ec-pagination-item-is-active-color: $link-hover !default;
 $ec-pagination-item-is-active-style: () !default;
 
 // @param {color} $ec-pagination-item-is-disabled-background [transparent]
-// @param {color} $ec-pagination-item-is-disabled-color [setHover($link)]
+// @param {color} $ec-pagination-item-is-disabled-color [$text-light]
 // @param {array} $ec-pagination-item-is-disabled-style
 $ec-pagination-item-is-disabled-background: transparent !default;
-$ec-pagination-item-is-disabled-color: $state-disabled !default;
+$ec-pagination-item-is-disabled-color: $text-light !default;
 $ec-pagination-item-is-disabled-style: () !default;
 
 // @param {boolean} $ec-pagination-item-round [$btn-round]
@@ -485,54 +444,27 @@ $ec-pagination-info-color: $text-light !default;
 $ec-pagination-info-style: () !default;
 
 //
-// EC-LOADER
-// ------------------------------------------------------
-// @param {px} $ec-loader-size [24]
-// @param {array} $ec-loader-overlay-style
-// @param {px} $ec-loader-track-width [24]
-// @param {color} $ec-loader-track-color [$divider-color]
-// @param {color} $ec-loader-racer-color [$link]
-// @param {value} $ec-loader-racer-animation [loaderDefault]
-// @param {duration} $ec-loader-racer-animation-speed [1s]
-// @param {value} $ec-loader-racer-animation-behavior [infinite linear]
-$ec-loader-size: 24 !default;
-$ec-loader-style: () !default;
-$ec-loader-track-width: 4 !default;
-$ec-loader-track-color: $divider-color !default;
-$ec-loader-racer-color: $link !default;
-$ec-loader-racer-animation: loaderDefault !default;
-$ec-loader-racer-animation-speed: 1s !default;
-$ec-loader-racer-animation-behavior: infinite linear !default;
-
-// @param {color} $ec-loader-overlay-background [rgba($background, 0.6)]
-// @param {array} $ec-loader-overlay-style
-$ec-loader-overlay-background: rgba($background, 0.6) !default;
-$ec-loader-overlay-style: () !default;
-
-//
 // EC-NOTIFICATION
 // ------------------------------------------------------
 // @param {color} $ec-notification-background [$background]
+// @param {color} $ec-notification-color [$text]
 // @param {array} $ec-notification-padding [8 16]
 // @param {array} $ec-notification-spacing [4]
 // @param {px} $ec-notification-max-width [320]
-// @param {array} $ec-notification-radius [$dialog-radius]
+// @param {array} $ec-notification-radius [4]
 // @param {px} $ec-notification-font-size [$base-font-size * 0.875]
-// @param {array} $ec-notification-shadow [0 8 16 -4px rgba(#000, 0.2)]
-// @param {value} $ec-notification-animation [notification]
-// @param {time} $ec-notification-animation-speed [0.2s]
-// @param {time} $ec-notification-animation-behavior
+// @param {array} $ec-notification-elevation [8]
+// @param {value} $ec-notification-animation [notification 0.2s]
 // @param {array} $ec-notification-style
 $ec-notification-background: $background !default;
+$ec-notification-color: $text !default;
 $ec-notification-padding: 8 16 !default;
 $ec-notification-spacing: 4 !default;
 $ec-notification-max-width: 320 !default;
-$ec-notification-radius: $dialog-radius !default;
+$ec-notification-radius: 4 !default;
 $ec-notification-font-size: $base-font-size * 0.875 !default;
-$ec-notification-shadow: 0 8 16 -4px rgba(#000, 0.2) !default;
-$ec-notification-animation: notification !default;
-$ec-notification-animation-speed: 0.2s !default;
-$ec-notification-animation-behavior: '' !default;
+$ec-notification-elevation: 8 !default;
+$ec-notification-animation: notification 0.2s !default;
 $ec-notification-style: () !default;
 
 // @param {px} $ec-notification-title-font-size [$ec-notification-font-size]
@@ -570,7 +502,7 @@ $ec-notification-flag-warning: $state-warning !default;
 // @param {array} $ec-select-hover-style [$input-hover-style]
 $ec-select-background: $xui-select-background !default;
 $ec-select-color: $xui-select-color !default;
-$ec-select-spacing: $input-spacing !default;
+$ec-select-spacing: $xui-select-spacing !default;
 $ec-select-padding-ratio: $xui-select-padding-ratio !default;
 $ec-select-font-size: $xui-select-font-size !default;
 $ec-select-line-height: $xui-select-line-height !default;
@@ -581,9 +513,9 @@ $ec-select-border-style: $xui-select-border-style !default;
 $ec-select-style: $xui-select-style !default;
 $ec-select-hover-style: $input-hover-style !default;
 
-// @param {boolean} $ec-select-round [$input-round]
+// @param {boolean} $ec-select-round [$xui-select-round]
 // @param {array} $ec-select-radius [$xui-select-radius]
-$ec-select-round: $input-round !default;
+$ec-select-round: $xui-select-round !default;
 $ec-select-radius: $xui-select-radius !default;
 
 // @param {array} $ec-select-is-solo-style
@@ -597,22 +529,20 @@ $ec-select-is-empty-style: () !default;
 $ec-select-placeholder-color: $xui-select-placeholder-color !default;
 $ec-select-placeholder-style: $xui-select-placeholder-style !default;
 
-// @param {color} $ec-select-placeholder-hover-color [$xui-select-placeholder-hover-color]
 // @param {array} $ec-select-placeholder-hover-style [$xui-select-placeholder-hover-style]
-$ec-select-placeholder-hover-color: $xui-select-placeholder-hover-color !default;
 $ec-select-placeholder-hover-style: $xui-select-placeholder-hover-style !default;
 
 //
 // EC-SELECT-SELECTION
 // ------------------------------------------------------
 // @param {px} $ec-select-selection-gutter [2]
-$ec-select-selection-gutter: 2;
+$ec-select-selection-gutter: 2 !default;
 
 //
 // EC-SELECT-SELECTED
 // ------------------------------------------------------
 // @param {color} $ec-select-selected-background [$tag-background]
-// @param {color} $ec-select-selected-color [setContrast($ec-select-selected-background)]
+// @param {color} $ec-select-selected-color [$tag-color]
 // @param {number} $ec-select-selected-padding-ratio [$tag-padding-ratio]
 // @param {px} $ec-select-selected-font-size [$tag-font-size]
 // @param {px} $ec-select-selected-line-height [$tag-line-height]
@@ -620,8 +550,8 @@ $ec-select-selection-gutter: 2;
 // @param {value} $ec-select-selected-weight [$tag-weight]
 // @param {array} $ec-select-selected-style
 // @param {array} $ec-select-selected-solo-style
-$ec-select-selected-background: $link !default;
-$ec-select-selected-color: setContrast($ec-select-selected-background) !default;
+$ec-select-selected-background: $tag-background !default;
+$ec-select-selected-color: $tag-color !default;
 $ec-select-selected-padding-ratio: $tag-padding-ratio !default;
 $ec-select-selected-font-size: $tag-font-size !default;
 $ec-select-selected-line-height: $tag-line-height !default;
@@ -640,7 +570,7 @@ $ec-select-selected-is-dragged-style: () !default;
 
 $ec-select-selected-is-dragged-style: map-merge(
   (
-    opacity: 0.6
+    opacity: 0.6,
   ),
   $ec-select-selected-is-dragged-style
 );
@@ -650,7 +580,7 @@ $drag-placeholder-style: () !default;
 
 $drag-placeholder-style: map-merge(
   (
-    border: 1px dashed $link
+    border: 1px dashed $link,
   ),
   $drag-placeholder-style
 );
@@ -659,14 +589,14 @@ $drag-placeholder-style: map-merge(
 // EC-SELECT-OPTIONS
 // ------------------------------------------------------
 // @param {color} $ec-select-options-background [$xui-select-options-background]
-// @param {array} $ec-select-options-padding [$xui-select-options-padding]
+// @param {array} $ec-select-options-padding [0]
 // @param {array} $ec-select-options-spacing [$ec-select-border-width 0 0]
 // @param {array} $ec-select-options-radius [$xui-select-options-radius]
 // @param {px | null} $ec-select-options-max-height [$xui-select-options-max-height]
 // @param {array} $ec-select-options-shadow [$xui-select-options-shadow]
 // @param {array} $ec-select-options-style [$xui-select-options-style]
 $ec-select-options-background: $xui-select-options-background !default;
-$ec-select-options-padding: $xui-select-options-padding !default;
+$ec-select-options-padding: 0 !default;
 $ec-select-options-spacing: $ec-select-border-width 0 0 !default;
 $ec-select-options-radius: $xui-select-options-radius !default;
 $ec-select-options-max-height: $xui-select-options-max-height !default;
@@ -680,7 +610,7 @@ $ec-select-options-style: $xui-select-options-style !default;
 // @param {color} $ec-select-option-background [transparent]
 // @param {color} $ec-select-option-focus-color [$link]
 // @param {color} $ec-select-option-focus-background [transparent]
-// @param {color} $ec-select-option-selected-color [$link]
+// @param {color} $ec-select-option-selected-color [$state-hover-contrast]
 // @param {color} $ec-select-option-selected-background [$state-hover]
 // @param {array} $ec-select-option-style
 $ec-select-option-padding: 8 16 !default;
@@ -690,7 +620,7 @@ $ec-select-option-color: $text !default;
 $ec-select-option-background: transparent !default;
 $ec-select-option-focus-color: $link !default;
 $ec-select-option-focus-background: transparent !default;
-$ec-select-option-selected-color: $link !default;
+$ec-select-option-selected-color: $state-hover-contrast !default;
 $ec-select-option-selected-background: $state-hover !default;
 $ec-select-option-style: () !default;
 
@@ -763,19 +693,9 @@ $ec-tab-style: $xui-tab-style !default;
 // data/files
 // ------------------------------------------------------------------------------------------------------------
 //
-// EC-ASSET-LIST-POP
-// ------------------------------------------------------
-// @param {color} $ec-asset-list-pop-background [inherit]
-// @param {color} $ec-asset-list-pop-color [inherit]
-// @param {array} $ec-asset-list-pop-style
-$ec-asset-list-pop-background: inherit !default;
-$ec-asset-list-pop-color: inherit !default;
-$ec-asset-list-pop-style: () !default;
-
-//
 // EC-DROPZONE
 // ------------------------------------------------------
-// @param {color} $ec-dropzone-background [getColor(link)]
-// @param {color} $ec-dropzone-color [setContrast(getColor(link))]
-$ec-dropzone-background: getColor(link) !default;
-$ec-dropzone-color: setContrast(getColor(link)) !default;
+// @param {color} $ec-dropzone-background [$link]
+// @param {color} $ec-dropzone-color [$link-contrast]
+$ec-dropzone-background: $link !default;
+$ec-dropzone-color: $link-contrast !default;

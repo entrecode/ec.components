@@ -1,0 +1,218 @@
+@import url('https://fonts.googleapis.com/css?family=Geo|Inconsolata:400');
+
+$body-font-family: 'Inconsolata', sans-serif;
+$headings-font-family: 'Geo', sans-serif;
+
+$base-font-size: 14;
+
+$is-light: 400;
+$is-normal: 400;
+$is-medium: 400;
+$is-bold: 500;
+
+$lighter-fallback: #fff;
+$darker-fallback: #000;
+
+$state-hover: var(--state-hover);
+$state-hover-contrast: var(--state-hover-contrast);
+
+$state-error: var(--state-error);
+$state-error-contrast: var(--state-error-contrast);
+$state-error-safe: var(--state-error-safe);
+$state-error-hover: var(--state-error-hover);
+
+$state-info: var(--state-info);
+$state-info-contrast: var(--state-info-contrast);
+$state-info-safe: var(--state-info-safe);
+$state-info-hover: var(--state-info-hover);
+
+$state-success: var(--state-success);
+$state-success-contrast: var(--state-success-contrast);
+$state-success-safe: var(--state-success-safe);
+$state-success-hover: var(--state-success-hover);
+
+$state-warning: var(--state-warning);
+$state-warning-contrast: var(--state-warning-contrast);
+$state-warning-safe: var(--state-warning-safe);
+$state-warning-hover: var(--state-warning-hover);
+
+$background: var(--background);
+$background-light: var(--background-light);
+$background-lighter: var(--background-lighter);
+$background-lightest: var(--background-lightest);
+$background-invert: var(--background-invert);
+
+$text: var(--text);
+$text-light: var(--text-light);
+$text-lighter: var(--text-lighter);
+$text-lightest: var(--text-lightest);
+$text-invert: var(--text-invert);
+
+$link: var(--link);
+$link-safe: var(--link-safe);
+$link-contrast: var(--link-contrast);
+$link-hover: var(--link-hover);
+
+$super: var(--super);
+$super-contrast: var(--super-contrast);
+$super-safe: var(--super-safe);
+$super-hover: var(--super-hover);
+
+$minor: var(--minor);
+$minor-contrast: var(--minor-contrast);
+$minor-safe: var(--minor-safe);
+$minor-hover: var(--minor-hover);
+
+$highlight: var(--minor);
+$highlight-safe: var(--highlight-safe);
+$highlight-contrast: var(--highlight-contrast);
+$highlight-hover: var(--highlight-hover);
+
+$title-spacing: 0 0 16;
+
+$btn-font-family: $headings-font-family;
+$btn-font-weight: normal;
+$btn-padding-ratio: 2;
+
+$btn-font-size: 14;
+$btn-line-height: 16;
+$btn-min-height: 40;
+
+$btn-wide: 160;
+
+$btn-small-font-size: 12;
+$btn-small-line-height: 16;
+$btn-small-min-height: 28;
+$btn-small-weight: $is-normal;
+
+$btn-minor-background: var(--minor);
+$btn-minor-color: var(--minor-contrasr);
+
+$btn-clear-color: var(--text-light);
+$btn-clear-hover-color: var(--link);
+
+$tag-style: (
+  '&.tag_dm': (
+    background-color: var(--dm),
+  ),
+);
+
+$tag-small-style: (
+  text-transform: uppercase,
+);
+
+$tooltip-background: $background;
+$tooltip-color: $text;
+$tooltip-radius: 2;
+$tooltip-font-size: 12;
+$tooltip-line-height: 12;
+$tooltip-weight: $is-bold;
+
+$input-padding-ratio: 1;
+$input-font-size: 14;
+$input-line-height: 16;
+$input-min-height: 40;
+$input-color: var(--input-color);
+
+$input-placeholder-color: $text-light;
+$input-placeholder-hover-color: $input-color;
+
+$input-big-font-size: 14;
+$input-big-line-height: 22;
+$input-big-min-height: 40;
+
+$input-background: var(--input-background);
+$input-border-width: 0;
+$input-border-color: transparent;
+
+$field-group-spacing: 0 0 16;
+
+$dropdown-options-max-height: 320;
+$dropdown-option-alignment: left;
+$dropdown-option-hover-style: (
+  background: var(--minor),
+  border-radius: 4px,
+  transition: background 0.2s,
+);
+
+$xui-list-spacing: 0 -8 16;
+
+$xui-list-item-padding: 8 12;
+$xui-list-item-spacing: 4 0;
+$xui-list-item-radius: 4;
+$xui-list-item-background: transparent;
+
+$xui-list-item-hover-background: var(--list-item-background);
+$xui-list-item-hover-color: $link;
+
+$xui-list-item-active-background: var(--list-item-background);
+$xui-list-item-active-color: $link;
+
+$xui-select-options-background: var(--background-light);
+
+$modal-background: var(--modal-background);
+
+$ec-list-header-size: 12;
+$ec-list-header-padding: 4 8;
+$ec-list-header-spacing: 0 0 8;
+$ec-list-header-background: transparent;
+
+$ec-list-body-spacing: 0 0 16;
+
+$ec-list-group-header-font-size: $base-font-size;
+$ec-list-group-header-spacing: 0;
+$ec-list-group-header-style: (
+  '.ec-list-group-header__title': (
+    text-align: left !important,
+  ),
+);
+
+$ec-list-item-background: var(--list-item-background);
+$ec-list-item-color: $text;
+$ec-list-item-padding: 4 8;
+$ec-list-item-spacing: 4 0;
+$ec-list-item-style: (
+  border-radius: 8px,
+);
+
+$ec-list-item-is-clickable-color: $text;
+$ec-list-item-is-clickable-background: $ec-list-item-background;
+$ec-list-item-is-clickable-hover-color: $text;
+$ec-list-item-is-clickable-hover-background: var(--list-item-hover-background);
+
+$ec-list-cell-is-filtered-background: var(--list-item-hover-background);
+$ec-list-cell-is-filtered-style: (
+  border-radius: 2px,
+);
+
+$ec-list-cell-size: 14;
+$ec-list-cell-padding: 8;
+
+$ec-list-item-style: (
+  border-radius: 4px,
+);
+
+$ec-list-empty-background: transparent;
+
+$ec-pagination-item-min-height: 32;
+
+$ec-notification-style: (
+  top: 32px,
+  right: 48px,
+);
+
+$ec-pagination-padding: 16;
+$ec-pagination-background: linear-gradient(0deg, $background, transparent);
+$ec-pagination-style: (
+  position: sticky,
+  bottom: 0,
+);
+
+$ec-output-boolean-is-true-color: $link;
+
+$ec-select-selected-background: var(--ec-select-selected);
+
+// delete with new version
+// $ec-pop-fullscreen-background: #f00;
+
+$loader-track-color: $background-lightest;

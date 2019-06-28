@@ -1,9 +1,17 @@
-<div data-grid *ngIf="!hideMenu">
-  <div data-col="3 2-md" class="is-bordered-right"><ec-menu [routes]="demos"></ec-menu></div>
-  <div data-col="9 10-md">
+<div data-grid="no-gutter" *ngIf="!hideMenu">
+  <div data-col="3 2@md" class="has-border-right is-theme-menu">
+    <div class="has-padding-5">
+      <ec-menu [routes]="demos"></ec-menu>
+    </div>
+  </div>
+  <div data-col="9 10@md">
     <div data-grid>
-      <div data-col="8-sm 6-xxl" class="has-padding-top"><router-outlet></router-outlet></div>
-      <div data-col="4-sm 2-xxl" class="has-padding-top">
+      <div data-col="8@sm">
+        <div class="has-padding-5">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+      <div data-col="4@sm">
         <ec-github-sources [paths]="paths"></ec-github-sources>
         <ec-doclinks [links]="links"></ec-doclinks>
       </div>
@@ -12,5 +20,5 @@
 </div>
 <div *ngIf="hideMenu">
   <router-outlet *ngIf="hideMenu"></router-outlet>
-  <div data-container class="has-padding-top"><ec-github-sources [paths]="paths"></ec-github-sources></div>
+  <ec-github-sources [paths]="paths"></ec-github-sources>
 </div>
