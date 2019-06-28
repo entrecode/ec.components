@@ -2,9 +2,9 @@
   <button (click)="hide()" type="button" class="modal__dismiss">
     <ec-icon name="close"></ec-icon>
   </button>
-  <!-- <header class="modal__header">
+  <header class="modal__header">
     {{ getHeader(entryList) }}
-  </header> -->
+  </header>
   <ec-list-header [list]="entryList?.list" class="modal__header" [selection]="selection"></ec-list-header>
   <div class="modal__body">
     <ec-loader class="ec-loader loader is-local" #entryListLoader></ec-loader>
