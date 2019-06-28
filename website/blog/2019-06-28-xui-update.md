@@ -11,6 +11,7 @@ The new version _10.0.0-beta.0_ is used with
 - @ec.components/data#>=0.50.0
 - @ec.components/ui#>=0.45.0
 - @ec.components/style#>=0.23.0
+- @ec.components/core#>=0.27.0
 
 Make sure to use x.ui 10 when upgrading to those versions.
 
