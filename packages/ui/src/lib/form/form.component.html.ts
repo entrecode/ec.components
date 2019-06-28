@@ -6,7 +6,7 @@ export const formTemplate = `
     <div *ngIf="!wrapper.children.length&&!empty">
       <div data-grid>
         <div
-          [attr.data-col]="field?.getColumns()"
+          [attr.data-col]="getColumns(field)"
           *ngFor="let field of form?.fields | visibleFields:form"
           [ngSwitch]="field?.view"
           [attr.data-type]="field?.type"
