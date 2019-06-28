@@ -123,7 +123,7 @@ Note that `xyz` stands for the icon name that is used.
 e.g. if you are using the names ```add-circle``` and ```alarm```, you can add them to your icon set like this:
 
 ```ts
-import { IconService } from '@ec.components/ui';
+// import { IconService } from '@ec.components/ui';
 
 export class App {
   constructor(public iconService: IconService) {
