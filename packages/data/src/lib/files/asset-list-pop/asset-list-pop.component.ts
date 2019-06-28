@@ -132,7 +132,7 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
           },
           title: {
             label: '',
-            view: 'title',
+            classes: 'is-fit',
           },
         },
       },

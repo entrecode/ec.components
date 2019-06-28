@@ -307,6 +307,7 @@ export class ResourceConfig {
         title: {
           label: this.symbol.resolve('field.label.title'),
           view: 'string',
+          classes: 'is-fit',
           sortable: true,
           filterable: true,
         },
@@ -482,11 +483,14 @@ export class ResourceConfig {
         title: {
           label: this.symbol.resolve('field.label.title'),
           view: 'string',
+          classes: 'is-fit',
           sortable: true,
           filterable: true,
         },
         caption: {
           label: this.symbol.resolve('dmAsset.field.label.caption'),
+          hideInList: true,
+          classes: 'is-fit',
           view: 'string',
         },
         duplicates: {
@@ -506,6 +510,7 @@ export class ResourceConfig {
           view: 'string',
           filterOperator: 'any',
           hideInList: true,
+          classes: 'is-fit',
           immutable: true,
           form: false,
         },
@@ -521,7 +526,10 @@ export class ResourceConfig {
           disableListPop: true,
           disableCreatePop: true,
         },
-        created: this.created(this.symbol.resolve('field.label.created'), this.symbol),
+        created: {
+          ...this.created(this.symbol.resolve('field.label.created'), this.symbol),
+          classes: 'is-fit',
+        },
       },
     },
     dmClient: {
