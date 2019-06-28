@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.27.0](https://github.com/entrecode/ec.components/compare/@ec.components/core@0.26.0...@ec.components/core@0.27.0) (2019-06-28)
+
+
+### Bug Fixes
+
+* form columns + x.ui version ([c3513dc](https://github.com/entrecode/ec.components/commit/c3513dc))
+
+
+### Features
+
+* x.ui 10 update ([1c8180f](https://github.com/entrecode/ec.components/commit/1c8180f))
+
+
+
+
+
 # [0.26.0](https://github.com/entrecode/ec.components/compare/@ec.components/core@0.25.2...@ec.components/core@0.26.0) (2019-05-03)
 
 
