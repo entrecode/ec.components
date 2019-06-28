@@ -5,8 +5,8 @@
 .ec-tabs {
   @include inject-style($ec-tabs-style);
   background: $ec-tabs-background;
-  margin: arrayMagic($ec-tabs-spacing);
-  padding: arrayMagic($ec-tabs-padding);
+  margin: array-magic($ec-tabs-spacing);
+  padding: array-magic($ec-tabs-padding);
 }
 
 // @param {color} $ec-tabs-nav-background [$xui-tabs-nav-background]
@@ -16,68 +16,56 @@
 .ec-tabs-nav {
   @include inject-style($ec-tabs-nav-style);
   background: $ec-tabs-nav-background;
-  margin: arrayMagic($ec-tabs-nav-spacing);
-  padding: arrayMagic($ec-tabs-nav-padding);
-
-  > ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-
-    @supports (display: flex) {
-      align-items: center;
-      display: flex;
-      justify-content: center;
-    }
-  }
+  margin: array-magic($ec-tabs-nav-spacing);
+  padding: array-magic($ec-tabs-nav-padding);
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 // @param {array} $ec-tabs-nav-items-gutter [$xui-tabs-nav-item-gutter]
-.ec-tabs-nav-item {
+.ec-tabs-nav__item {
   position: relative;
   text-align: center;
-  padding: arrayMagic($ec-tabs-nav-items-gutter);
+  padding: array-magic($ec-tabs-nav-items-gutter);
 
   @supports not (display: flex) {
     display: inline-block;
   }
+}
 
-  // @param {array} $ec-tabs-nav-item-padding [$xui-tabs-nav-item-padding]
-  // @param {value} $ec-tabs-nav-item-radius [$xui-tabs-nav-item-radius]
-  // @param {value} $ec-tabs-nav-item-weight [$xui-tabs-nav-item-weight]
-  // @param {color} $ec-tabs-nav-item-background [$xui-tabs-nav-item-background]
-  // @param {color} $ec-tabs-nav-item-color [$xui-tabs-nav-item-color]
-  // @param {array} $ec-tabs-nav-item-style [$xui-tabs-nav-item-style]
-  a {
-    cursor: pointer;
-    display: block;
-    text-align: center;
-    @include inject-style($ec-tabs-nav-item-style);
-    border-radius: arrayMagic($ec-tabs-nav-item-radius);
-    background: $ec-tabs-nav-item-background;
-    color: $ec-tabs-nav-item-color;
-    font-weight: $ec-tabs-nav-item-weight;
-    padding: arrayMagic($ec-tabs-nav-item-padding);
+// @param {array} $ec-tabs-nav-item-padding [$xui-tabs-nav-item-padding]
+// @param {value} $ec-tabs-nav-item-radius [$xui-tabs-nav-item-radius]
+// @param {value} $ec-tabs-nav-item-weight [$xui-tabs-nav-item-weight]
+// @param {color} $ec-tabs-nav-item-background [$xui-tabs-nav-item-background]
+// @param {color} $ec-tabs-nav-item-color [$xui-tabs-nav-item-color]
+// @param {array} $ec-tabs-nav-item-style [$xui-tabs-nav-item-style]
+.ec-tabs-nav__link {
+  cursor: pointer;
+  display: flex;
+  @include inject-style($ec-tabs-nav-item-style);
+  border-radius: array-magic($ec-tabs-nav-item-radius);
+  background: $ec-tabs-nav-item-background;
+  color: $ec-tabs-nav-item-color;
+  font-weight: $ec-tabs-nav-item-weight;
+  padding: array-magic($ec-tabs-nav-item-padding);
 
-    // @param {color} $ec-tabs-nav-item-hover-background [$xui-tabs-nav-item-hover-background]
-    // @param {color} $ec-tabs-nav-item-hover-color [$xui-tabs-nav-item-hover-color]
-    // @param {array} $ec-tabs-nav-item-hover-style [$xui-tabs-nav-item-hover-style]
-    &:hover {
-      @include inject-style($ec-tabs-nav-item-hover-style);
-      background: $ec-tabs-nav-item-hover-background;
-      color: $ec-tabs-nav-item-hover-color;
-    }
+  // @param {color} $ec-tabs-nav-item-hover-background [$xui-tabs-nav-item-hover-background]
+  // @param {color} $ec-tabs-nav-item-hover-color [$xui-tabs-nav-item-hover-color]
+  // @param {array} $ec-tabs-nav-item-hover-style [$xui-tabs-nav-item-hover-style]
+  &:hover {
+    @include inject-style($ec-tabs-nav-item-hover-style);
+    background: $ec-tabs-nav-item-hover-background;
+    color: $ec-tabs-nav-item-hover-color;
   }
 
   // @param {color} $ec-tabs-nav-item-active-background [$xui-tabs-nav-item-active-background]
   // @param {color} $ec-tabs-nav-item-active-color [$xui-tabs-nav-item-active-color]
   // @param {array} $ec-tabs-nav-item-active-style [$xui-tabs-nav-item-active-style]
-  &.is-selected {
-    a {
-      @include inject-style($ec-tabs-nav-item-active-style);
-      background: $ec-tabs-nav-item-active-background;
-      color: $ec-tabs-nav-item-active-color;
-    }
+  &.is-active {
+    @include inject-style($ec-tabs-nav-item-active-style);
+    background: $ec-tabs-nav-item-active-background;
+    color: $ec-tabs-nav-item-active-color;
   }
 }
 
@@ -88,6 +76,6 @@
 .ec-tab {
   @include inject-style($ec-tab-style);
   background: $ec-tab-background;
-  margin: arrayMagic($ec-tab-spacing);
-  padding: arrayMagic($ec-tab-padding);
+  margin: array-magic($ec-tab-spacing);
+  padding: array-magic($ec-tab-padding);
 }

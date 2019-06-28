@@ -1,12 +1,17 @@
 <h3>ResourceDeletePop Demo</h3>
 <p>Press the trash icon to open the confirm pop.</p>
 <div class="well"><a (click)="muffinPop.create()" class="btn">create muffin</a></div>
-<ul ecEntries model="muffin" #muffins="ecEntries" [options]="{ size: 10 }">
-  <li *ngFor="let muffin of muffins.items">
-    {{ muffin.name }} <a (click)="pop.confirm(muffin)"> <ec-icon name="trash"></ec-icon> </a>
-  </li>
-</ul>
+<div ecEntries model="muffin" #muffins="ecEntries" [options]="{ size: 10 }" class="xui-list">
+  <div class="xui-list-item" *ngFor="let muffin of muffins.items">
+    <div class="xui-list-item__label">
+      {{ muffin.name }}
+    </div>
+    <div class="xui-list-item__end">
+      <a (click)="pop.confirm(muffin)" class="btn btn_clear"> <ec-icon name="trash"></ec-icon> </a>
+    </div>
+  </div>
+</div>
 <ec-notifications></ec-notifications>
 <ec-resource-delete-pop relation="entry" #pop safetyWord="jajaklar"></ec-resource-delete-pop>
-<ec-entry-pop model="muffin" #muffinPop class="dialog"></ec-entry-pop>
-<ec-loader class="ec-loader ec-loader_global"></ec-loader>
+<ec-entry-pop model="muffin" #muffinPop></ec-entry-pop>
+<ec-loader class="ec-loader loader is-global"></ec-loader>

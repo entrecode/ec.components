@@ -9,14 +9,10 @@
 // @param {array} $ec-list-item-style
 .ec-list-item {
   display: flex;
-  @supports (display: grid) {
-    display: grid;
-    grid-template-columns: repeat( auto-fit, minmax(48px, 1fr) );
-  }
   transition: all 0.4s;
   @include inject-style($ec-list-item-style);
-  padding: arrayMagic($ec-list-item-padding);
-  margin: arrayMagic($ec-list-item-spacing);
+  padding: array-magic($ec-list-item-padding);
+  margin: array-magic($ec-list-item-spacing);
   background: $ec-list-item-background;
 
   // @param {array} $ec-list-item-even-style
@@ -65,8 +61,8 @@
       color: $ec-list-item-is-selected-color;
     }
 
-    // @param {color} $ec-list-item-is-selected-hover-color [inherit]
-    // @param {color} $ec-list-item-is-selected-hover-background [inherit]
+    // @param {color} $ec-list-item-is-selected-hover-color [$ec-list-item-is-selected-color]
+    // @param {color} $ec-list-item-is-selected-hover-background [$ec-list-item-is-selected-background]
     // @param {array} $ec-list-item-is-selected-hover-style
     &:hover {
       @include inject-style($ec-list-item-is-selected-hover-style);

@@ -26,6 +26,7 @@ import { EntryFormComponent } from '../entry-form/entry-form.component';
 @Component({
   selector: 'ec-entry-pop',
   templateUrl: './entry-pop.component.html',
+  styleUrls: ['./entry-pop.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EntryPopComponent extends PopComponent implements OnInit {
@@ -46,7 +47,7 @@ export class EntryPopComponent extends PopComponent implements OnInit {
   /** Emits when the resource has been deleted. */
   @Output() deleted: EventEmitter<Form<EntryResource>> = new EventEmitter();
   /** Set host class to make sure the type is used */
-  @HostBinding('class') class = 'toast-wrapper';
+  @HostBinding('class') class = 'ec-entry-pop modal-wrapper';
 
   constructor(
     public popService: PopService,

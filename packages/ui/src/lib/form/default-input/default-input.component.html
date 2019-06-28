@@ -1,4 +1,4 @@
-<div [ngSwitch]="field.getView('form')" *ngIf="group" [formGroup]="group">
+<div [ngSwitch]="field.getView('form')" *ngIf="group" [formGroup]="group" class="ec-input">
   <input
     [id]="field.id"
     *ngSwitchCase="'string'"
@@ -8,7 +8,6 @@
     class="input"
     [ecFocus]="focusEvent"
   />
-
   <textarea
     [id]="field.id"
     *ngSwitchCase="'textarea'"
@@ -29,10 +28,11 @@
     [ecFocus]="focusEvent"
   />
 
-  <div class="ec-input_color" *ngSwitchCase="'color'">
-    <label [style.backgroundColor]="control.value">
+  <div class="ec-input-color" *ngSwitchCase="'color'">
+    <div class="ec-input-color__preview" [style.backgroundColor]="control.value">
       <input [id]="field.id" type="color" [formControl]="control" />
-    </label>
+    </div>
+    <input type="text" [formControl]="control" [placeholder]="field.getPlaceholder()" class="input" />
   </div>
 
   <label *ngSwitchCase="'boolean'">
@@ -60,8 +60,16 @@
     [ecFocus]="focusEvent"
   />
 
-  <ec-toggle [id]="field.id" *ngSwitchCase="'toggle'" [formControl]="control" [placeholder]="field.getPlaceholder()">
-  </ec-toggle>
+  <!-- <ec-toggle [id]="field.id" *ngSwitchCase="'toggle'" [formControl]="control" [placeholder]="field.getPlaceholder()">
+  </ec-toggle>-->
+  
+  <div class="ec-toggle xui-toggle" *ngSwitchCase="'toggle'">
+    <input [id]="field.id" type="checkbox" [formControl]="control" />
+    <label [for]="field.id" class="xui-toggle__label">
+      <div class="xui-toggle__switch"></div>
+      {{ field.getPlaceholder() }}
+    </label>
+  </div>
 
   <ec-datetime *ngSwitchCase="'date'" [formControl]="control" [placeholder]="field.getPlaceholder()"></ec-datetime>
 
@@ -83,13 +91,9 @@
         {{ option.label ? option.label : option }}
       </option>
     </select>
-    <input
-      type="text"
-      [formControl]="control"
-      [id]="field.id"
-      class="input"
-    />
+    <input type="text" [formControl]="control" [id]="field.id" class="is-hidden-input" />
   </div>
+
   <div *ngSwitchCase="'copy'">
     <div
       *ngIf="!!item?.display(field.property)"

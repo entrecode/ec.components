@@ -48,7 +48,7 @@ export class ResourcePopComponent extends PopComponent {
   /** Emits when the resource has been deleted. */
   @Output() deleted: EventEmitter<ResourceForm | Form<Resource>> = new EventEmitter();
   /** Set host class to make sure the type is used */
-  @HostBinding('class') class = 'toast-wrapper';
+  @HostBinding('class') class = 'ec-resource-pop modal-wrapper';
 
   constructor(
     public popService: PopService,

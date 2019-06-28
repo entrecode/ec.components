@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.50.0](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.49.3...@ec.components/data@0.50.0) (2019-06-28)
+
+
+### Bug Fixes
+
+* asset list proportions ([66d0b56](https://github.com/entrecode/ec.components/commit/66d0b56))
+
+
+### Features
+
+* x.ui 10 update ([1c8180f](https://github.com/entrecode/ec.components/commit/1c8180f))
+
+
+
+
+
 ## [0.49.3](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.49.2...@ec.components/data@0.49.3) (2019-06-21)
 
 

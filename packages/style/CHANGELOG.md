@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.23.0](https://github.com/entrecode/ec.components/compare/@ec.components/style@0.22.7...@ec.components/style@0.23.0) (2019-06-28)
+
+
+### Bug Fixes
+
+* asset list proportions ([66d0b56](https://github.com/entrecode/ec.components/commit/66d0b56))
+* form columns + x.ui version ([c3513dc](https://github.com/entrecode/ec.components/commit/c3513dc))
+
+
+### Features
+
+* x.ui 10 update ([bda5def](https://github.com/entrecode/ec.components/commit/bda5def))
+* x.ui 10 update ([1c8180f](https://github.com/entrecode/ec.components/commit/1c8180f))
+* x.ui 10 update ([e801ecf](https://github.com/entrecode/ec.components/commit/e801ecf))
+
+
+
+
+
 ## [0.22.7](https://github.com/entrecode/ec.components/compare/@ec.components/style@0.22.6...@ec.components/style@0.22.7) (2019-05-03)
 
 **Note:** Version bump only for package @ec.components/style

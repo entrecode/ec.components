@@ -4,4 +4,6 @@ export interface Symbol {
   name: string;
   /** Text content. If nothing is set, the symbol is expected to have e.g. valid font glyph name. */
   content?: string;
+  /** Path content */
+  path?: string;
 }

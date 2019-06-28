@@ -1,5 +1,5 @@
 // @param {color} $ec-select-selected-background [$tag-background]
-// @param {color} $ec-select-selected-color [setContrast($ec-select-selected-background)]
+// @param {color} $ec-select-selected-color [$tag-color]
 // @param {number} $ec-select-selected-padding-ratio [$tag-padding-ratio]
 // @param {px} $ec-select-selected-font-size [$tag-font-size]
 // @param {px} $ec-select-selected-line-height [$tag-line-height]
@@ -12,7 +12,7 @@
   align-items: center;
   white-space: nowrap;
   @include inject-style($ec-select-selected-style);
-  @include macro-metrics(
+  @include metrics(
     $ec-select-selected-font-size,
     $ec-select-selected-line-height,
     $ec-select-selected-min-height,
@@ -27,7 +27,7 @@
   @if $ec-select-selected-round {
     border-radius: rem($ec-select-selected-min-height / 2);
   } @else {
-    border-radius: arrayMagic($ec-select-selected-radius);
+    border-radius: array-magic($ec-select-selected-radius);
   }
 
   a {
@@ -38,7 +38,7 @@
   }
 
   &:hover {
-    background: setHover($ec-select-selected-background);
+    background: set-hover($ec-select-selected-background);
 
     a {
       opacity: 1;
@@ -52,7 +52,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  align-items: center;
   white-space: nowrap;
   @include inject-style($ec-select-selected-solo-style);
 
@@ -92,7 +91,7 @@
     @if $ec-select-selected-round {
       border-radius: rem($ec-select-selected-min-height / 2);
     } @else {
-      border-radius: arrayMagic($ec-select-selected-radius);
+      border-radius: array-magic($ec-select-selected-radius);
     }
   }
 }

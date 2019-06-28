@@ -1,19 +1,20 @@
-<div class="toast ec-resource-list-pop" *ngIf="active" [attr.data-col]="config?.popColumns||popService.defaultColumns">
-    <header class="toast-header">
-        <button (click)="hide()" type="button" class="toast-dismiss">
-            <ec-icon name="close-x-big"></ec-icon>
-        </button>
-        <!-- <ec-searchbar placeholder="Search.." [list]="resourceList" #searchbar *ngIf="resourceList" (selected)="selection.toggle($event)"
-            (pasted)="pasted.emit($event)" [property]="config?.label" [listComponent]="resourceList"></ec-searchbar> -->
-        <ec-list-header [list]="resourceList?.list" [selection]="selection"></ec-list-header>
-    </header>
-    <div class="toast-body">
-        <ec-loader class="ec-loader loader is-local" #resourceListLoader></ec-loader>
-        <ec-resource-list [api]="api" [relation]="relation" [config]="config"
-            [selection]="selection" (columnClicked)="select($event)" [loader]="resourceListLoader" #resourceList></ec-resource-list>
-            <!-- (changed)="searchbar.updatedList($event)" -->
-    </div>
-    <div class="toast-footer">
-        <ec-pagination [pagination]="resourceList?.list?.pagination"></ec-pagination>
-    </div>
+<div class="modal" *ngIf="active" [attr.data-col]="config?.popColumns || '8@md'">
+  <button (click)="hide()" type="button" class="modal__dismiss">
+    <ec-icon name="close"></ec-icon>
+  </button>
+  <ec-list-header class="modal__header" [list]="resourceList?.list" [selection]="selection"></ec-list-header>
+  <div class="modal__body">
+    <ec-loader class="ec-loader loader is-local" #resourceListLoader></ec-loader>
+    <ec-resource-list
+      [api]="api"
+      [relation]="relation"
+      [config]="config"
+      [selection]="selection"
+      (columnClicked)="select($event)"
+      [loader]="resourceListLoader"
+      #resourceList
+    ></ec-resource-list>
+    <!-- (changed)="searchbar.updatedList($event)" -->
+  </div>
+  <ec-pagination [pagination]="resourceList?.list?.pagination"></ec-pagination>
 </div>

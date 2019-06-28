@@ -1,82 +1,62 @@
 <div data-container>
+  <div class="alert alert_error">model classes are deprecated in x.ui 10.</div>
   <h2>Modal</h2>
   <p>ec-modal is an ec-pop with extended styling options.</p>
-
   <a class="btn" (click)="myModal.toggle()">toggle modal</a>
-  <ec-modal [mode]="modalMode" [backdrop]="modalBackdrop" [columns]="modalColumns" [animation]="modalAnimate" #myModal>
+  <ec-modal [mode]="modalMode" [class]="modalPreset" class="modal-wrapper" [backdrop]="modalBackdrop" [columns]="modalColumns" #myModal>
     <header *ngIf="showHeader">
       <h4>I am a {{ myModal.type }}</h4>
     </header>
     <p>This is my body. You can change my settings below</p>
-    <div class="form-group">
-      <label>
-        <input class="input" type="checkbox" (ngModelChange)="updateMarkup()" [(ngModel)]="modalBackdrop" /> with
-        backdrop
+    <div class="field-group">
+      <input
+        class="input"
+        type="checkbox"
+        id="modalBackdrop"
+        (ngModelChange)="updateMarkup()"
+        [(ngModel)]="modalBackdrop"
+      />
+      <label class="field-group__label" for="modalBackdrop">
+        with backdrop
       </label>
     </div>
-    <div class="form-group">
-      <label>
-        <input class="input" type="checkbox" (ngModelChange)="updateMarkup()" [(ngModel)]="showHeader" /> show header
+    <div class="field-group">
+      <input class="input" type="checkbox" id="showHeader" (ngModelChange)="updateMarkup()" [(ngModel)]="showHeader" />
+      <label class="field-group__label" for="showHeader">
+        show header
       </label>
     </div>
-    <div class="form-group">
-      <label>
-        <input class="input" type="checkbox" (ngModelChange)="updateMarkup()" [(ngModel)]="showFooter" /> show footer
+    <div class="field-group">
+      <input class="input" type="checkbox" id="showFooter" (ngModelChange)="updateMarkup()" [(ngModel)]="showFooter" />
+      <label class="field-group__label" for="showFooter">
+        show footer
       </label>
     </div>
-    <div class="form-group">
-      <label
-        >mode
-        <select class="input" (ngModelChange)="updateMarkup()" [(ngModel)]="modalMode">
-          <option>dialog</option>
-          <option>deck</option>
-          <option>deck opens-right</option>
-          <option>overlay</option>
-          <option>toast</option>
-          <option>toast opens-bottom</option>
-          <option>snackbar</option>
-          <option>snackbar opens-bottom</option>
-          <option>does-not-exist</option>
-        </select>
-      </label>
+    <div class="field-group">
+      <label class="field-group__label" for="modalPreset">preset</label>
+      <select class="input" id="modalPreset" (ngModelChange)="updateMarkup()" [(ngModel)]="modalPreset">
+        <option value>select preset</option>
+        <option value="modal_deck">deck</option>
+        <option value="modal_deck opens-right">deck right</option>
+        <option value="modal_toast">toast</option>
+        <option value="modal_toast opens-bottom">toast bottom</option>
+        <option value="modal_overlay">overlay</option>
+      </select>
     </div>
-    <div class="form-group">
-      <label
-        >animation
-        <select class="input" (ngModelChange)="updateMarkup()" [(ngModel)]="modalAnimate">
-          <option></option>
-          <option>fadeIn 4</option>
-          <option>popIn 4</option>
-          <option>flipLeft 4</option>
-          <option>flipRight 4</option>
-          <option>slideLeft 4</option>
-          <option>slideRight 4</option>
-          <option>slideUp 4</option>
-          <option>slideDown 4</option>
-          <option>ambulance 4</option>
-        </select>
-      </label>
-    </div>
-    <div class="form-group">
-      <label
-        >columns
-        <input
-          class="input"
-          type="number"
-          min="1"
-          max="12"
-          [(ngModel)]="modalColumns"
-          (ngModelChange)="updateMarkup()"
-        />
-      </label>
+    <div class="field-group">
+      <label class="field-group__label" for="modalColumns">columns </label>
+      <input
+        class="input"
+        type="number"
+        min="1"
+        max="12"
+        id="modalColumns"
+        [(ngModel)]="modalColumns"
+        (ngModelChange)="updateMarkup()"
+      />
     </div>
     <p><a (click)="showMarkup = !showMarkup">toggle markup</a></p>
-    <code *ngIf="showMarkup">
-      <pre>
-          {{ modalMarkup }}
-        </pre
-      >
-    </code>
+    <pre *ngIf="showMarkup"><code>{{ modalMarkup }}</code></pre>
     <p><a (click)="showFillText = !showFillText">toggle filltext to test scrolling behaviour</a></p>
     <div *ngIf="showFillText">
       <p>
@@ -103,9 +83,10 @@
     <footer *ngIf="showFooter">this is my footer</footer>
   </ec-modal>
 
+  <div class="spacer"></div>
+
   <h3>Ways to define</h3>
   <p>There are multiple ways to define the modal template</p>
-
   <a class="btn" (click)="testModalA.toggle()">ng-container</a>
   <ec-modal #testModalA>
     <ng-container ngProjectAs="header"> <p>This is my header</p> </ng-container>
@@ -134,7 +115,9 @@
 
   <a class="btn" (click)="testModalC.toggle()">classes</a>
   <ec-modal #testModalC>
-    <div class="modal-header"><p>Header</p></div>
+    <div class="modal-header">
+      <p>Header</p>
+    </div>
     <p>
       This modal uses modal-* classes for content projection.<br />
       Advantage: cleanest definitoin<br />
@@ -145,7 +128,9 @@
 
   <a class="btn" (click)="testModalD.toggle()">header/footer</a>
   <ec-modal #testModalD>
-    <header><p>Header</p></header>
+    <header>
+      <p>Header</p>
+    </header>
     <p>
       This modal uses header and footer for content projection. Everything that is not inside a header or footer tag
       will be projected to the body.<br />

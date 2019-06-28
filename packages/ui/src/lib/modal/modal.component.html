@@ -1,18 +1,17 @@
-<div *ngIf="active" [ngClass]="type+' '+classes" [class.is-active]="!backdrop&&active" [attr.data-col]="columns"
-    [attr.data-animate]="animation">
-    <button (click)="hide()" type="button" [ngClass]="type+'-dismiss'">
-        <ec-icon name="close-x-big"></ec-icon>
-    </button>
-    <div [ngClass]="type+'-header'">
-        <ng-content select=".modal-header,header"></ng-content>
-        <ng-container [ngTemplateOutlet]="header"></ng-container>
-    </div>
-    <div [ngClass]="type+'-body'">
-        <ng-content></ng-content>
-        <ng-container [ngTemplateOutlet]="body"></ng-container>
-    </div>
-    <div [ngClass]="type+'-footer'">
-        <ng-content select=".modal-footer,footer"></ng-content>
-        <ng-container [ngTemplateOutlet]="footer"></ng-container>
-    </div>
+<div *ngIf="active" [attr.data-col]="columns" class="modal ec-modal">
+  <button (click)="hide()" type="button" class="modal__dismiss">
+    <ec-icon name="close"></ec-icon>
+  </button>
+  <div class="modal__header">
+    <ng-content select=".modal-header,header"></ng-content>
+    <ng-container [ngTemplateOutlet]="header"></ng-container>
+  </div>
+  <div class="modal__body">
+    <ng-content></ng-content>
+    <ng-container [ngTemplateOutlet]="body"></ng-container>
+  </div>
+  <div class="modal__footer">
+    <ng-content select=".modal-footer,footer"></ng-content>
+    <ng-container [ngTemplateOutlet]="footer"></ng-container>
+  </div>
 </div>

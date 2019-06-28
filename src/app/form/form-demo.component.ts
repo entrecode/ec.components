@@ -63,7 +63,7 @@ export class FormDemoComponent {
         create: false,
       },
       delivered: {
-        view: 'boolean',
+        view: 'toggle',
         readonly: true,
         prefill: true,
       },

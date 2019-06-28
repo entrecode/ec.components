@@ -47,13 +47,13 @@
 
   <nav class="ec-entry-select__controls">
     <a (click)="editItem(selection?.display[0],$event)" class="btn btn_clear" *ngIf="solo&&!config?.disableCreatePop&&hasMethod('put')&&!selection?.isEmpty()">
-      <ec-icon name="pencil"></ec-icon>
+      <ec-icon name="edit"></ec-icon>
     </a>
     <a (click)="entryPop.create()" class="btn btn_clear" *ngIf="!disabled&&!config?.disableCreatePop&&hasMethod('post')&&(!solo||selection?.isEmpty())">
       <ec-icon name="add"></ec-icon>
     </a>
     <a (click)="entryListPop.show($event)" class="btn btn_clear" *ngIf="!config?.disableListPop&&hasMethod('get')&&!disabled">
-      <ec-icon name="find"></ec-icon>
+      <ec-icon name="search"></ec-icon>
     </a>
   </nav>
 </div>

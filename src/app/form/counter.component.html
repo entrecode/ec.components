@@ -1,2 +1,8 @@
-<a class="btn" (click)="decrement()">-</a> <a class="btn btn_outline">{{ value }}</a>
-<a class="btn" (click)="increment()">+</a>
+<div class="input-group">
+  <div class="input-group__addon">
+    <a class="btn btn_clear btn_small is-bold" (click)="decrement()">-</a>
+    <div class="input">{{ value }}</div>
+    <a class="btn btn_clear btn_small is-bold" (click)="increment()">+</a>
+  </div>
+</div>
+

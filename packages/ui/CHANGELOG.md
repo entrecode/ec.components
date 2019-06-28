@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.45.0](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.44.1...@ec.components/ui@0.45.0) (2019-06-28)
+
+
+### Bug Fixes
+
+* asset list proportions ([66d0b56](https://github.com/entrecode/ec.components/commit/66d0b56))
+* form columns + x.ui version ([c3513dc](https://github.com/entrecode/ec.components/commit/c3513dc))
+* form imports ([20a3f6e](https://github.com/entrecode/ec.components/commit/20a3f6e))
+* kill ec-icon old code ([658398d](https://github.com/entrecode/ec.components/commit/658398d))
+
+
+### Features
+
+* x.ui 10 update ([1c8180f](https://github.com/entrecode/ec.components/commit/1c8180f))
+
+
+
+
+
 ## [0.44.1](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.44.0...@ec.components/ui@0.44.1) (2019-05-27)
 
 

@@ -1,31 +1,41 @@
-<h2 class="mega">ec-select</h2>
+<h2 class="is-mega">ec-select</h2>
 
-<strong>Default</strong>
-<ec-select [list]="products" [(ngModel)]="values"></ec-select>
+<div class="field-group">
+  <label class="field-group__label">Default</label>
+  <ec-select [list]="products" [(ngModel)]="values"></ec-select>
+</div>
+<div class="field-group">
+  <label class="field-group__label">Solo</label>
+  <ec-select [solo]="true" [list]="products"></ec-select>
+</div>
+<div class="field-group">
+  <label class="field-group__label">DisableRemove</label>
+  <ec-select [solo]="true" [list]="products" [config]="{ disableRemove: true }"></ec-select>
+</div>
 
-<strong>Solo</strong>
-<ec-select [solo]="true" [list]="products"></ec-select>
-<!-- <ec-select [solo]="true" [list]="products" [value]="{}"></ec-select> -->
+<div class="spacer"></div>
 
-<strong>DisableRemove</strong>
-<ec-select [solo]="true" [list]="products" [config]="{ disableRemove: true }"></ec-select>
+<h3 class="is-mega">Actionbar</h3>
 
-<h3>Actionbar</h3>
+<div class="field-group">
+  <label class="field-group__label">Simple</label>
+  <ec-actionbar placeholder="Where do you want to go?" [actions]="actions"></ec-actionbar>
+</div>
+<div class="field-group">
+  <label class="field-group__label">circular structure</label>
+  <ec-actionbar [actions]="ottostart"></ec-actionbar>
+</div>
+<div class="field-group">
+  <label class="field-group__label">async actionbar</label>
+  <ec-actionbar [actions]="asyncActions" (enter)="enter($event)"></ec-actionbar>
+</div>
 
-<strong>Simple</strong>
-<ec-actionbar placeholder="Where do you want to go?" [actions]="actions"></ec-actionbar>
-
-<strong>Circular Structure</strong>
-<ec-actionbar [actions]="ottostart"></ec-actionbar>
-
-<strong>async actionbar</strong>
-<ec-actionbar [actions]="asyncActions" (enter)="enter($event)"></ec-actionbar>
+<div class="spacer"></div>
 
 <!-- <strong>Resource Actionbar</strong>
 <ec-resource-actionbar></ec-resource-actionbar> -->
-
 <ec-notifications></ec-notifications>
-<pre><code>{{values | json}}</code></pre>
+<pre class="demo-code"><code>{{values | json}}</code></pre>
 
 <!-- 
 <strong>Solo</strong>

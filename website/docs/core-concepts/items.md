@@ -4,7 +4,7 @@ title: Items
 sidebar_label: Items
 ---
 
-The foundation for all entities is the [Item](../../classes/Item.html) class.
+The foundation for all list and form entities is the Item class.
 It consists of a body (value) and a config <!-- (see [ItemConfig](../../interfaces/ItemConfig.html)) -->.
 It can be used with arbitrary body values but is mainly thought to be a wrapper for objects.
 
@@ -70,4 +70,4 @@ bobby.group('name'); //'5 Buchstaben'
 bobby.sort('name'); //5
 ```
 
-See [fields](Fields) for more info.
+See [Config API](config-options.md) for more info.

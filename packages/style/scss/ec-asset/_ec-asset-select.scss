@@ -15,9 +15,9 @@
 }
 
 .ec-asset-card {
-  border-radius: arrayMagic(2);
+  border-radius: array-magic(2);
   position: relative;
-  border: 1px solid getColor(divider);
+  border: 1px solid get-color(divider);
   transition: all 0.2s;
   width: 100%;
   padding-top: 100%;
@@ -41,15 +41,13 @@
     display: none;
     opacity: 0;
 
-    .ec-asset-card-controls__remove {
+    &__remove {
       @extend %btn !optional;
-      background: getColor(background);
+      background: get-color(background);
     }
   }
 
   &:hover {
-    background: getColor(state, hover);
-
     img {
       mix-blend-mode: multiply;
     }

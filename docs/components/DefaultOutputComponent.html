@@ -245,67 +245,71 @@ export class DefaultOutputComponent {
     <div class="tab-pane fade " id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div [ngSwitch]&#x3D;&quot;field.getView(&#x27;output&#x27;)&quot; *ngIf&#x3D;&quot;item&quot;&gt;
   &lt;ul class&#x3D;&quot;ec-output-tags&quot; *ngSwitchCase&#x3D;&quot;&#x27;tags&#x27;&quot;&gt;
-    &lt;li *ngFor&#x3D;&quot;let label of item?.display(field.property) | maxItems:field.maxItems||10&quot;&gt;
-      &lt;span class&#x3D;&quot;ec-output-tag&quot;&gt;{{label}}&lt;/span&gt;
+    &lt;li *ngFor&#x3D;&quot;let label of item?.display(field.property) | maxItems: field.maxItems || 10&quot;&gt;
+      &lt;span class&#x3D;&quot;ec-output-tag tag&quot;&gt;{{ label }}&lt;/span&gt;
     &lt;/li&gt;
-    &lt;li *ngIf&#x3D;&quot;item?.display(field.property)?.length&gt;(field.maxItems||10)&quot;&gt;
-      &lt;span class&#x3D;&quot;ec-output-tag&quot;&gt;&amp;hellip;&lt;/span&gt;
+    &lt;li *ngIf&#x3D;&quot;item?.display(field.property)?.length &gt; (field.maxItems || 10)&quot;&gt;
+      &lt;span class&#x3D;&quot;ec-output-tag tag&quot;&gt;&amp;hellip;&lt;/span&gt;
     &lt;/li&gt;
   &lt;/ul&gt;
 
-  &lt;div class&#x3D;&quot;ec-output-tag&quot; *ngSwitchCase&#x3D;&quot;&#x27;tag&#x27;&quot;&gt;{{item?.display(field.property)}}&lt;/div&gt;
+  &lt;div class&#x3D;&quot;ec-output-tag&quot; *ngSwitchCase&#x3D;&quot;&#x27;tag&#x27;&quot;&gt;
+    &lt;div class&#x3D;&quot;span&quot; class&#x3D;&quot;tag&quot; *ngIf&#x3D;&quot;item?.display(field.property)&quot;&gt;{{ item?.display(field.property) }}&lt;/div&gt;
+  &lt;/div&gt;
 
   &lt;div *ngSwitchCase&#x3D;&quot;&#x27;boolean&#x27;&quot; class&#x3D;&quot;ec-output-boolean&quot; [class.is-true]&#x3D;&quot;item?.resolve(field.property)&quot;&gt;
     &lt;span&gt;&amp;#10004;&lt;/span&gt;
   &lt;/div&gt;
   &lt;div *ngSwitchCase&#x3D;&quot;&#x27;date&#x27;&quot; class&#x3D;&quot;ec-output-date&quot; [title]&#x3D;&quot;item?.display(field.property)&quot;&gt;
-    {{item?.display(field.property)}}
+    {{ item?.display(field.property) }}
   &lt;/div&gt;
 
   &lt;div class&#x3D;&quot;ec-output-mail&quot; *ngSwitchCase&#x3D;&quot;&#x27;email&#x27;&quot;&gt;
-    &lt;a [href]&#x3D;&quot;&#x27;mailto:&#x27;+item?.display(field.property)&quot;&gt;{{item?.display(field.property)}}&lt;/a&gt;
+    &lt;a [href]&#x3D;&quot;&#x27;mailto:&#x27; + item?.display(field.property)&quot;&gt;{{ item?.display(field.property) }}&lt;/a&gt;
   &lt;/div&gt;
   &lt;div class&#x3D;&quot;ec-output-url&quot; *ngSwitchCase&#x3D;&quot;&#x27;url&#x27;&quot;&gt;
-    &lt;a [href]&#x3D;&quot;item?.display(field.property)&quot;&gt;{{item?.display(field.property)}}&lt;/a&gt;
+    &lt;a [href]&#x3D;&quot;item?.display(field.property)&quot;&gt;{{ item?.display(field.property) }}&lt;/a&gt;
   &lt;/div&gt;
 
   &lt;div class&#x3D;&quot;ec-output-color&quot; *ngSwitchCase&#x3D;&quot;&#x27;color&#x27;&quot;&gt;
     &lt;span class&#x3D;&quot;ec-output-color__sample&quot; [style.backgroundColor]&#x3D;&quot;item?.display(field.property)&quot;&gt;&lt;/span&gt;
-    &lt;span class&#x3D;&quot;ec-output-color__property&quot;&gt;{{item?.display(field.property)}}&lt;/span&gt;
+    &lt;span class&#x3D;&quot;ec-output-color__property&quot;&gt;{{ item?.display(field.property) }}&lt;/span&gt;
   &lt;/div&gt;
 
   &lt;div class&#x3D;&quot;ec-output-asset&quot; *ngSwitchCase&#x3D;&quot;&#x27;asset&#x27;&quot; [class.is-true]&#x3D;&quot;item?.resolve(field.property)&quot;&gt;
-    &lt;ec-icon name&#x3D;&quot;tape&quot;&gt;&lt;/ec-icon&gt;
+    &lt;ec-icon name&#x3D;&quot;image&quot;&gt;&lt;/ec-icon&gt;
   &lt;/div&gt;
 
   &lt;div class&#x3D;&quot;ec-output-assets&quot; *ngSwitchCase&#x3D;&quot;&#x27;assets&#x27;&quot; [class.is-true]&#x3D;&quot;item?.resolve(field.property)&quot;&gt;
-    &lt;ec-icon name&#x3D;&quot;tape&quot;&gt;&lt;/ec-icon&gt;
-    &lt;strong&gt;{{item?.resolve(field.property)?.length}}&lt;/strong&gt;
+    &lt;ec-icon name&#x3D;&quot;images&quot;&gt;&lt;/ec-icon&gt;
+    &lt;strong&gt;{{ item?.resolve(field.property)?.length }}&lt;/strong&gt;
   &lt;/div&gt;
 
   &lt;div class&#x3D;&quot;ec-output-asset&quot; *ngSwitchCase&#x3D;&quot;&#x27;dmAsset&#x27;&quot; [class.is-true]&#x3D;&quot;item?.resolve(field.property)&quot;&gt;
-    &lt;ec-icon name&#x3D;&quot;img&quot;&gt;&lt;/ec-icon&gt;
+    &lt;ec-icon name&#x3D;&quot;image&quot;&gt;&lt;/ec-icon&gt;
   &lt;/div&gt;
 
   &lt;div data-flex class&#x3D;&quot;ec-output-assets&quot; *ngSwitchCase&#x3D;&quot;&#x27;dmAssets&#x27;&quot; [class.is-true]&#x3D;&quot;item?.resolve(field.property)&quot;&gt;
-    &lt;ec-icon name&#x3D;&quot;img&quot;&gt;&lt;/ec-icon&gt;
-    &lt;strong&gt;{{item?.resolve(field.property)?.length}}&lt;/strong&gt;
+    &lt;ec-icon name&#x3D;&quot;images&quot;&gt;&lt;/ec-icon&gt;
+    &lt;strong&gt;{{ item?.resolve(field.property)?.length }}&lt;/strong&gt;
   &lt;/div&gt;
 
-  &lt;div class&#x3D;&quot;ec-output-avatar&quot; *ngSwitchCase&#x3D;&quot;&#x27;avatar&#x27;&quot;&gt;
-    &lt;img *ngIf&#x3D;&quot;item?.display(field.property)&quot; [src]&#x3D;&quot;item?.display(field.property)&quot; class&#x3D;&quot;avatar&quot;&gt;
+  &lt;div class&#x3D;&quot;ec-output-avatar avatar&quot; *ngSwitchCase&#x3D;&quot;&#x27;avatar&#x27;&quot;&gt;
+    &lt;img *ngIf&#x3D;&quot;item?.display(field.property)&quot; [src]&#x3D;&quot;item?.display(field.property)&quot; /&gt;
   &lt;/div&gt;
 
-  &lt;div class&#x3D;&quot;ec-output-avatar&quot; *ngSwitchCase&#x3D;&quot;&#x27;avatars&#x27;&quot;&gt;
-    &lt;img *ngFor&#x3D;&quot;let url of item?.display(field.property)&quot; [src]&#x3D;&quot;url&quot; class&#x3D;&quot;avatar&quot;&gt;
+  &lt;div class&#x3D;&quot;ec-output-avatars&quot; *ngSwitchCase&#x3D;&quot;&#x27;avatars&#x27;&quot;&gt;
+    &lt;div class&#x3D;&quot;ec-output-avatar avatar&quot; *ngFor&#x3D;&quot;let url of item?.display(field.property)&quot;&gt;
+      &lt;img [src]&#x3D;&quot;url&quot; /&gt;
+    &lt;/div&gt;
   &lt;/div&gt;
 
   &lt;div class&#x3D;&quot;ec-output-preview&quot; *ngSwitchCase&#x3D;&quot;&#x27;preview&#x27;&quot;&gt;
-    &lt;img [src]&#x3D;&quot;item?.display(field.property)&quot; *ngIf&#x3D;&quot;item?.display(field.property)&quot;&gt;
+    &lt;img [src]&#x3D;&quot;item?.display(field.property)&quot; *ngIf&#x3D;&quot;item?.display(field.property)&quot; /&gt;
   &lt;/div&gt;
 
   &lt;a *ngSwitchCase&#x3D;&quot;&#x27;link&#x27;&quot; (click)&#x3D;&quot;item?.action(field.property, $event)&quot; [ngClass]&#x3D;&quot;field.class&quot;&gt;
-    &lt;span&gt;{{item?.display(field.property)}}&lt;/span&gt;
+    &lt;span&gt;{{ item?.display(field.property) }}&lt;/span&gt;
     &lt;ec-icon *ngIf&#x3D;&quot;field.icon&quot; [name]&#x3D;&quot;field.icon&quot;&gt;&lt;/ec-icon&gt;
   &lt;/a&gt;
 
@@ -318,14 +322,15 @@ export class DefaultOutputComponent {
     &lt;span class&#x3D;&quot;tag&quot;&gt;JSON&lt;/span&gt;
   &lt;/code&gt;
   &lt;div *ngSwitchCase&#x3D;&quot;&#x27;string&#x27;&quot; class&#x3D;&quot;ec-output-string&quot; [title]&#x3D;&quot;item?.display(field.property)&quot;&gt;
-    {{item?.display(field.property)}}
+    {{ item?.display(field.property) }}
     &lt;!-- {{field.view}} --&gt;
   &lt;/div&gt;
   &lt;span *ngSwitchDefault [title]&#x3D;&quot;item?.display(field.property)&quot;&gt;
-    {{item?.display(field.property)}}
+    {{ item?.display(field.property) }}
     &lt;!-- {{field.view}} --&gt;
   &lt;/span&gt;
-&lt;/div&gt;</code></pre>
+&lt;/div&gt;
+</code></pre>
     </div>
 
 
@@ -354,7 +359,7 @@ export class DefaultOutputComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div [ngSwitch]="field.getView(\'output\')" *ngIf="item">  <ul class="ec-output-tags" *ngSwitchCase="\'tags\'">    <li *ngFor="let label of item?.display(field.property) | maxItems:field.maxItems||10">      <span class="ec-output-tag">{{label}}</span>    </li>    <li *ngIf="item?.display(field.property)?.length>(field.maxItems||10)">      <span class="ec-output-tag">&hellip;</span>    </li>  </ul>  <div class="ec-output-tag" *ngSwitchCase="\'tag\'">{{item?.display(field.property)}}</div>  <div *ngSwitchCase="\'boolean\'" class="ec-output-boolean" [class.is-true]="item?.resolve(field.property)">    <span>&#10004;</span>  </div>  <div *ngSwitchCase="\'date\'" class="ec-output-date" [title]="item?.display(field.property)">    {{item?.display(field.property)}}  </div>  <div class="ec-output-mail" *ngSwitchCase="\'email\'">    <a [href]="\'mailto:\'+item?.display(field.property)">{{item?.display(field.property)}}</a>  </div>  <div class="ec-output-url" *ngSwitchCase="\'url\'">    <a [href]="item?.display(field.property)">{{item?.display(field.property)}}</a>  </div>  <div class="ec-output-color" *ngSwitchCase="\'color\'">    <span class="ec-output-color__sample" [style.backgroundColor]="item?.display(field.property)"></span>    <span class="ec-output-color__property">{{item?.display(field.property)}}</span>  </div>  <div class="ec-output-asset" *ngSwitchCase="\'asset\'" [class.is-true]="item?.resolve(field.property)">    <ec-icon name="tape"></ec-icon>  </div>  <div class="ec-output-assets" *ngSwitchCase="\'assets\'" [class.is-true]="item?.resolve(field.property)">    <ec-icon name="tape"></ec-icon>    <strong>{{item?.resolve(field.property)?.length}}</strong>  </div>  <div class="ec-output-asset" *ngSwitchCase="\'dmAsset\'" [class.is-true]="item?.resolve(field.property)">    <ec-icon name="img"></ec-icon>  </div>  <div data-flex class="ec-output-assets" *ngSwitchCase="\'dmAssets\'" [class.is-true]="item?.resolve(field.property)">    <ec-icon name="img"></ec-icon>    <strong>{{item?.resolve(field.property)?.length}}</strong>  </div>  <div class="ec-output-avatar" *ngSwitchCase="\'avatar\'">    <img *ngIf="item?.display(field.property)" [src]="item?.display(field.property)" class="avatar">  </div>  <div class="ec-output-avatar" *ngSwitchCase="\'avatars\'">    <img *ngFor="let url of item?.display(field.property)" [src]="url" class="avatar">  </div>  <div class="ec-output-preview" *ngSwitchCase="\'preview\'">    <img [src]="item?.display(field.property)" *ngIf="item?.display(field.property)">  </div>  <a *ngSwitchCase="\'link\'" (click)="item?.action(field.property, $event)" [ngClass]="field.class">    <span>{{item?.display(field.property)}}</span>    <ec-icon *ngIf="field.icon" [name]="field.icon"></ec-icon>  </a>  <div *ngSwitchCase="\'textarea\'" class="ec-output-textarea">    <!--{{item?.display(field.property)}}-->    <span class="tag tag_small">text</span>  </div>  <code *ngSwitchCase="\'json\'" class="ec-output-json">    <!--<pre>{{item?.display(field.property)}}</pre>-->    <span class="tag">JSON</span>  </code>  <div *ngSwitchCase="\'string\'" class="ec-output-string" [title]="item?.display(field.property)">    {{item?.display(field.property)}}    <!-- {{field.view}} -->  </div>  <span *ngSwitchDefault [title]="item?.display(field.property)">    {{item?.display(field.property)}}    <!-- {{field.view}} -->  </span></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div [ngSwitch]="field.getView(\'output\')" *ngIf="item">  <ul class="ec-output-tags" *ngSwitchCase="\'tags\'">    <li *ngFor="let label of item?.display(field.property) | maxItems: field.maxItems || 10">      <span class="ec-output-tag tag">{{ label }}</span>    </li>    <li *ngIf="item?.display(field.property)?.length > (field.maxItems || 10)">      <span class="ec-output-tag tag">&hellip;</span>    </li>  </ul>  <div class="ec-output-tag" *ngSwitchCase="\'tag\'">    <div class="span" class="tag" *ngIf="item?.display(field.property)">{{ item?.display(field.property) }}</div>  </div>  <div *ngSwitchCase="\'boolean\'" class="ec-output-boolean" [class.is-true]="item?.resolve(field.property)">    <span>&#10004;</span>  </div>  <div *ngSwitchCase="\'date\'" class="ec-output-date" [title]="item?.display(field.property)">    {{ item?.display(field.property) }}  </div>  <div class="ec-output-mail" *ngSwitchCase="\'email\'">    <a [href]="\'mailto:\' + item?.display(field.property)">{{ item?.display(field.property) }}</a>  </div>  <div class="ec-output-url" *ngSwitchCase="\'url\'">    <a [href]="item?.display(field.property)">{{ item?.display(field.property) }}</a>  </div>  <div class="ec-output-color" *ngSwitchCase="\'color\'">    <span class="ec-output-color__sample" [style.backgroundColor]="item?.display(field.property)"></span>    <span class="ec-output-color__property">{{ item?.display(field.property) }}</span>  </div>  <div class="ec-output-asset" *ngSwitchCase="\'asset\'" [class.is-true]="item?.resolve(field.property)">    <ec-icon name="image"></ec-icon>  </div>  <div class="ec-output-assets" *ngSwitchCase="\'assets\'" [class.is-true]="item?.resolve(field.property)">    <ec-icon name="images"></ec-icon>    <strong>{{ item?.resolve(field.property)?.length }}</strong>  </div>  <div class="ec-output-asset" *ngSwitchCase="\'dmAsset\'" [class.is-true]="item?.resolve(field.property)">    <ec-icon name="image"></ec-icon>  </div>  <div data-flex class="ec-output-assets" *ngSwitchCase="\'dmAssets\'" [class.is-true]="item?.resolve(field.property)">    <ec-icon name="images"></ec-icon>    <strong>{{ item?.resolve(field.property)?.length }}</strong>  </div>  <div class="ec-output-avatar avatar" *ngSwitchCase="\'avatar\'">    <img *ngIf="item?.display(field.property)" [src]="item?.display(field.property)" />  </div>  <div class="ec-output-avatars" *ngSwitchCase="\'avatars\'">    <div class="ec-output-avatar avatar" *ngFor="let url of item?.display(field.property)">      <img [src]="url" />    </div>  </div>  <div class="ec-output-preview" *ngSwitchCase="\'preview\'">    <img [src]="item?.display(field.property)" *ngIf="item?.display(field.property)" />  </div>  <a *ngSwitchCase="\'link\'" (click)="item?.action(field.property, $event)" [ngClass]="field.class">    <span>{{ item?.display(field.property) }}</span>    <ec-icon *ngIf="field.icon" [name]="field.icon"></ec-icon>  </a>  <div *ngSwitchCase="\'textarea\'" class="ec-output-textarea">    <!--{{item?.display(field.property)}}-->    <span class="tag tag_small">text</span>  </div>  <code *ngSwitchCase="\'json\'" class="ec-output-json">    <!--<pre>{{item?.display(field.property)}}</pre>-->    <span class="tag">JSON</span>  </code>  <div *ngSwitchCase="\'string\'" class="ec-output-string" [title]="item?.display(field.property)">    {{ item?.display(field.property) }}    <!-- {{field.view}} -->  </div>  <span *ngSwitchDefault [title]="item?.display(field.property)">    {{ item?.display(field.property) }}    <!-- {{field.view}} -->  </span></div></div>'
     var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'ActionbarComponent', 'selector': 'ec-actionbar'},{'name': 'AdminEntryInputComponent', 'selector': ''},{'name': 'ApiActionbarComponent', 'selector': 'ec-api-actionbar'},{'name': 'AssetgroupSelectComponent', 'selector': 'ec-assetgroup-select'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DaterangeComponent', 'selector': 'ec-daterange'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EntryActionbarComponent', 'selector': 'ec-entry-actionbar'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryListPopComponent', 'selector': 'ec-entry-list-pop'},{'name': 'EntryListSelectComponent', 'selector': 'ec-entry-list-select'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'HeatmapComponent', 'selector': 'ec-heatmap'},{'name': 'IconComponent', 'selector': 'ec-icon'},{'name': 'ImageSelectPopComponent', 'selector': 'ec-image-select-pop'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LocationMapComponent', 'selector': 'ec-location-map'},{'name': 'LocationPickerComponent', 'selector': 'ec-location-picker'},{'name': 'LocationSearchComponent', 'selector': 'ec-location-search'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'ModalComponent', 'selector': 'ec-modal'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceActionbarComponent', 'selector': 'ec-resource-actionbar'},{'name': 'ResourceCrudComponent', 'selector': 'ec-resource-crud'},{'name': 'ResourceDeletePopComponent', 'selector': 'ec-resource-delete-pop'},{'name': 'ResourceFormComponent', 'selector': 'ec-resource-form'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'ResourceListPopComponent', 'selector': 'ec-resource-list-pop'},{'name': 'ResourcePopComponent', 'selector': 'ec-resource-pop'},{'name': 'ResourceSelectComponent', 'selector': 'ec-resource-select'},{'name': 'SearchbarComponent', 'selector': 'ec-searchbar'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SignupComponent', 'selector': 'ec-signup'},{'name': 'SignupFormComponent', 'selector': 'ec-signup-form'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TagSelectComponent', 'selector': 'ec-tag-select'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'UploadComponent', 'selector': 'ec-upload'},{'name': 'UploadSelectComponent', 'selector': 'ec-upload-select'}];
     var DIRECTIVES = [{'name': 'AssetDirective', 'selector': '[ecAsset]'},{'name': 'DropzoneDirective', 'selector': '[ecDropzone]'},{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'FocusDirective', 'selector': '[ecFocus]'},{'name': 'ImageDirective', 'selector': 'img [ecImage]'},{'name': 'SlotHostDirective', 'selector': '[ecSlotHost]'}];
     var ACTUAL_COMPONENT = {'name': 'DefaultOutputComponent'};

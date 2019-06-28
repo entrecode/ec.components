@@ -27,6 +27,7 @@ import { FileService } from '../file.service';
 @Component({
   selector: 'ec-asset-list-pop',
   templateUrl: './asset-list-pop.component.html',
+  styleUrls: ['./asset-list-pop.component.scss'],
 })
 export class AssetListPopComponent extends PopComponent implements OnInit {
   /** CrudConfig for customizing the entry-form and the pop.*/
@@ -71,7 +72,7 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
   };
 
   /** Set host class to make sure the type is used */
-  @HostBinding('class') class = 'toast-wrapper';
+  @HostBinding('class') class = 'modal-wrapper has-backdrop';
 
   /** Injects auth service and calls super constructor. */
   constructor(
@@ -112,7 +113,29 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
     this.uploadConfig = Object.assign({}, this.config, { disableListPop: true });
     this.config = Object.assign(
       this.fileService.getAssetConfig(this.assetGroupID),
-      { hidePagination: true, disableHeader: true },
+      {
+        hidePagination: true,
+        disableHeader: true,
+        fields: {
+          thumb: {
+            form: false,
+            list: true,
+            label: this.symbol.resolve('asset.field.label.thumb'),
+            view: 'preview',
+            resolve: (asset) => {
+              if (asset.type !== 'image' || !asset.thumbnails || !asset.thumbnails.length) {
+                return '';
+              }
+              return asset.thumbnails[0].url;
+            },
+            immutable: true,
+          },
+          title: {
+            label: '',
+            classes: 'is-fit',
+          },
+        },
+      },
       this.config,
     );
   }

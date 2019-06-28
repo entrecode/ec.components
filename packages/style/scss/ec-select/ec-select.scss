@@ -2,6 +2,7 @@
 @import 'ec-select-selection';
 @import 'ec-select-options';
 @import 'has-searchbar';
+
 // scss-lint:disable SelectorDepth NestingDepth
 // @param {number} $ec-select-padding-ratio [$xui-select-padding-ratio]
 // @param {color} $ec-select-background [$xui-select-background ]
@@ -15,74 +16,74 @@
 // @param {value} $ec-select-border-style [$xui-select-border-style]
 // @param {array} $ec-select-style [$xui-select-style]
 .ec-select {
-    cursor: pointer;
-    position: relative;
-    display: flex;
-    align-items: center;
-    outline: none;
-    text-align: left;
-    width: 100%;
-    @include inject-style($ec-select-style);
-    @include macro-metrics( $ec-select-font-size, $ec-select-line-height, $ec-select-min-height, $padding-ratio: $ec-select-padding-ratio, $inline-styles: false);
-    background: $ec-select-background;
-    color: $ec-select-color;
-    border-color: $ec-select-border-color;
-    border-width: rem($ec-select-border-width);
-    border-style: $ec-select-border-style;
-    margin: arrayMagic($ec-select-spacing); // @param {boolean} $ec-select-round [$input-round]
-    // @param {array} $ec-select-radius [$xui-select-radius]
-    @if $ec-select-round {
-        border-radius: arrayMagic($ec-select-min-height / 2);
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  outline: none;
+  text-align: left;
+  width: 100%;
+  @include inject-style($ec-select-style);
+  @include metrics(
+    $ec-select-font-size,
+    $ec-select-line-height,
+    $ec-select-min-height,
+    $padding-ratio: $ec-select-padding-ratio
+  );
+  background: $ec-select-background;
+  color: $ec-select-color;
+  border-color: $ec-select-border-color;
+  border-width: rem($ec-select-border-width);
+  border-style: $ec-select-border-style;
+  margin: array-magic($ec-select-spacing);
+
+  // @param {boolean} $ec-select-round [$input-round]
+  // @param {array} $ec-select-radius [$xui-select-radius]
+  @if $ec-select-round {
+    border-radius: array-magic($ec-select-min-height / 2);
+  } @else {
+    border-radius: array-magic($ec-select-radius);
+  }
+
+  &.is-focus {
+    &::after {
+      z-index: 11;
+      transform: rotate(180deg);
+      margin-top: 0;
+      margin-bottom: rem(4);
     }
-    @else {
-        border-radius: arrayMagic($ec-select-radius);
+  }
+
+  // @param {array} $ec-select-hover-style [$input-hover-style]
+  &:focus {
+    @include inject-style($ec-select-hover-style);
+
+    // @param {array} $ec-select-placeholder-hover-style [$xui-select-placeholder-hover-style]
+    .ec-select__placeholder {
+      @include inject-style($ec-select-placeholder-hover-style);
     }
-    &.is-focus {
-        &::after {
-            z-index: 11;
-            transform: rotate(180deg);
-            margin-top: 0;
-            margin-bottom: rem(4);
-        }
-    } // @param {array} $ec-select-hover-style [$input-hover-style]
-    &:focus/* ,
-    &:hover */ {
-        @include inject-style($ec-select-hover-style); // @param {color} $ec-select-placeholder-hover-color [$xui-select-placeholder-hover-color]
-        // @param {array} $ec-select-placeholder-hover-style [$xui-select-placeholder-hover-style]
-        .ec-select__placeholder {
-            @include inject-style($ec-select-placeholder-hover-style);
-            color: $ec-select-placeholder-hover-color;
-        }
+  }
+
+  // @param {array} $ec-select-solo-style
+  &.ec-select_solo {
+    @include inject-style($ec-select-solo-style);
+    @include metrics(
+      $ec-select-font-size,
+      $ec-select-line-height,
+      $ec-select-min-height,
+      $padding-ratio: $ec-select-padding-ratio
+    );
+    .ec-select-selection {
+      > li {
+        width: 100%;
+      }
     }
-    /* // @param {array} $ec-select-is-empty-style
-  &:not(.has-searchbar) {
-    &.is-empty {
-      @include inject-style($ec-select-is-empty-style);
-      @include macro-metrics(
-        $ec-select-font-size,
-        $ec-select-line-height,
-        $ec-select-min-height,
-        $padding-ratio: 1,
-        $inline-styles: false
-      );
-    }
-  } */
+  }
 }
 
 // @param {color} $ec-select-placeholder-color [$xui-select-placeholder-color]
 // @param {array} $ec-select-placeholder-style [$xui-select-placeholder-style]
 .ec-select__placeholder {
-    @include inject-style($ec-select-placeholder-style);
-    color: $ec-select-placeholder-color;
-}
-
-// @param {array} $ec-select-solo-style
-.ec-select.ec-select_solo {
-    @include inject-style($ec-select-solo-style);
-    @include macro-metrics( $ec-select-font-size, $ec-select-line-height, $ec-select-min-height, $padding-ratio: $ec-select-padding-ratio, $inline-styles: false);
-    .ec-select-selection {
-        >li {
-            width: 100%;
-        }
-    }
+  @include inject-style($ec-select-placeholder-style);
+  color: $ec-select-placeholder-color;
 }

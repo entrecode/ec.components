@@ -5,16 +5,18 @@ A Pop is not just a modal, but a section of markup that appears (pops) anywhere 
 ## Usage
 
 ```html
-<ec-pop class="dialog" #myPop>
-    <header class="dialog-header">
-        <a (click)="myPop.hide()">Close</a>
+<ec-pop class="modal-wrapper" #myPop>
+  <div class="modal">
+    <a (click)="myPop.hide()" class="modal__dismiss">Close</a>
+    <header class="modal__header">
     </header>
-    <div class="dialog-body">
+    <div class="modal__body">
         Some body content
     </div>
-    <footer class="dialog-footer">
+    <footer class="modal__footer">
         This is the footer
     </footer>
+  </div>
 </ec-pop>
 <button (click)="myPop.show()">Show pop</button>
 ```

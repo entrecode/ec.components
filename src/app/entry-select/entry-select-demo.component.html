@@ -1,11 +1,16 @@
 <!-- <ec-entry-select model="muffin" #entrySelect [(ngModel)]="selectedMuffins"></ec-entry-select> -->
 
-<h2 class="mega">ec-entry-select</h2>
-<strong>solo</strong>
-<ec-entry-select model="muffin" [config]="{ popColumns: 12 }" [solo]="true"></ec-entry-select>
+<h2 class="is-mega">ec-entry-select</h2>
+<div class="field-group">
+  <label class="field-group__label">solo</label>
+  <ec-entry-select model="muffin" [config]="{ popColumns: 12 }" [solo]="true"></ec-entry-select>
+</div>
 
-<strong>default usage</strong>
-<ec-entry-select model="muffin" #entrySelect [(ngModel)]="selectedMuffins"></ec-entry-select>
+<div class="field-group">
+  <label class="field-group__label">default usage</label>
+  <ec-entry-select model="muffin" #entrySelect [(ngModel)]="selectedMuffins"></ec-entry-select>
+</div>
+
 <div *ngIf="entrySelect.selection?.items?.length">
   {{ selectedMuffins.length }} items in ngModel <strong>Manual iteration over selected entry items</strong>
   <ul>
@@ -14,29 +19,51 @@
   <strong>selected IDs:</strong>
   <pre>{{ entrySelect.selection?.getValue() | json }}</pre>
 </div>
-<strong>with disableSearchbar</strong>
-<ec-entry-select model="muffin" [solo]="true" [config]="{ disableSearchbar: true }"></ec-entry-select>
+<div class="field-group">
+  <label class="field-group__label">with disableSearchbar</label>
+  <ec-entry-select model="muffin" [solo]="true" [config]="{ disableSearchbar: true }"></ec-entry-select>
+</div>
 
-<strong>solo with disableListPop</strong>
-<ec-entry-select model="muffin" [solo]="true" [config]="{ disableListPop: true }"></ec-entry-select>
+<div class="field-group">
+  <label class="field-group__label">solo with disableListPop</label>
+  <ec-entry-select model="muffin" [solo]="true" [config]="{ disableListPop: true }"></ec-entry-select>
+</div>
 
-<strong>with disableListPop + disableSearchbar</strong>
-<ec-entry-select model="muffin" [config]="{ disableListPop: true, disableSearchbar: true }"></ec-entry-select>
+<div class="field-group">
+  <label class="field-group__label">with disableListPop + disableSearchbar</label>
+  <ec-entry-select model="muffin" [config]="{ disableListPop: true, disableSearchbar: true }"></ec-entry-select>
+</div>
 
-<strong>solo with deleteOnRemove + safeDelete</strong>
-<ec-entry-select model="muffin" [solo]="true" [config]="{ deleteOnRemove: true, safeDelete: true }"></ec-entry-select>
+<div class="field-group">
+  <label class="field-group__label">solo with deleteOnRemove + safeDelete</label>
+  <ec-entry-select model="muffin" [solo]="true" [config]="{ deleteOnRemove: true, safeDelete: true }"></ec-entry-select>
+</div>
 
-<strong>solo with deleteOnRemove</strong>
-<ec-entry-select model="muffin" [solo]="true" [config]="{ deleteOnRemove: true, safeDelete: false }"></ec-entry-select>
+<div class="field-group">
+  <label class="field-group__label">solo with deleteOnRemove</label>
+  <ec-entry-select
+    model="muffin"
+    [solo]="true"
+    [config]="{ deleteOnRemove: true, safeDelete: false }"
+  ></ec-entry-select>
+</div>
 
-<strong>with display transformation</strong>
-<ec-entry-select model="muffin" [config]="customDisplay"></ec-entry-select>
+<div class="field-group">
+  <label class="field-group__label">with display transformation</label>
+  <ec-entry-select model="muffin" [config]="customDisplay"></ec-entry-select>
+</div>
 
-<strong>with add/remove outputs</strong>
-<ec-entry-select model="muffin" (add)="toggle($event)" (remove)="toggle($event)"></ec-entry-select>
+<div class="field-group">
+  <label class="field-group__label">with add/remove outputs</label>
+  <ec-entry-select model="muffin" (add)="toggle($event)" (remove)="toggle($event)"></ec-entry-select>
+</div>
 
 <ec-notifications></ec-notifications>
 
 <ec-tabs>
-  <ec-tab label="Inside Tab" selected> <ec-entry-select [solo]="true" model="muffin"></ec-entry-select> </ec-tab>
+  <ec-tab label="Inside Tab" selected>
+    <div class="field-group">
+      <ec-entry-select [solo]="true" model="muffin"></ec-entry-select>
+    </div>
+  </ec-tab>
 </ec-tabs>

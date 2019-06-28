@@ -5,7 +5,7 @@
   justify-content: space-between;
   align-items: center;
   @include inject-style($ec-calendar-controls-style);
-  margin: arrayMagic($ec-calendar-controls-spacing);
+  margin: array-magic($ec-calendar-controls-spacing);
 
   .is-disabled {
     opacity: 0.4;
@@ -23,13 +23,13 @@
   .ec-calendar-controls__prev,
   .ec-calendar-controls__current,
   .ec-calendar-controls__next {
-    margin: arrayMagic($ec-calendar-controls-gutter);
+    margin: array-magic($ec-calendar-controls-gutter);
   }
 }
 
 // @param {px} $ec-calendar-title-size [$base-font-size]
 // @param {value} $ec-calendar-title-weight [$is-bold]
-// @param {color} $ec-calendar-title-color [getColor(text, light)]
+// @param {color} $ec-calendar-title-color [$text-light]
 // @param {array} $ec-calendar-title-style
 .ec-calendar-title {
   text-align: center;
@@ -37,6 +37,6 @@
   padding-left: rem(40);
   @include inject-style($ec-calendar-title-style);
   font-weight: $ec-calendar-title-weight;
-  font-size: arrayMagic($ec-calendar-title-size, xem);
+  font-size: array-magic($ec-calendar-title-size, xem);
   color: $ec-calendar-title-color;
 }

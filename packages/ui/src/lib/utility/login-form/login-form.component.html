@@ -1,18 +1,24 @@
 <form novalidate [formGroup]="form" (ngSubmit)="onSubmit()" class="ec-auth ec-auth_login">
   <p class="error" *ngIf="errorMessage">
-    {{errorMessage}}
+    {{ errorMessage }}
   </p>
-  <div class="form-group form-group_email">
-    <label *ngIf="showLabels">{{emailLabel}}</label>
-    <input type="email" formControlName="email" class="input" [placeholder]="emailPlaceholder">
+  <div class="field-group ec-auth__email">
+    <label *ngIf="showLabels" for="ecAuthEmail" class="field-group__label">{{ emailLabel }}</label>
+    <input type="email" id="ecAuthEmail" formControlName="email" class="input" [placeholder]="emailPlaceholder" />
     <ec-input-errors [control]="form.get('email')"></ec-input-errors>
   </div>
-  <div class="form-group form-group_password">
-    <label *ngIf="showLabels">Passwort</label>
-    <input type="password" formControlName="password" class="input" [placeholder]="passwordPlaceholder">
+  <div class="field-group ec-auth__password">
+    <label *ngIf="showLabels" for="ecAuthPassword" class="field-group__label">Passwort</label>
+    <input type="password" id="ecAuthPassword" formControlName="password" class="input" [placeholder]="passwordPlaceholder" />
     <ec-input-errors [control]="form.get('password')"></ec-input-errors>
   </div>
-  <button type="submit" [disabled]="form.invalid" [class.is-disabled]="form.invalid" class="btn ec-auth__btn" [ngClass]="buttonClasses">
-    {{buttonLabel}}
+  <button
+    type="submit"
+    [disabled]="form.invalid"
+    [class.is-disabled]="form.invalid"
+    class="btn ec-auth__btn"
+    [ngClass]="buttonClasses"
+  >
+    {{ buttonLabel }}
   </button>
 </form>

@@ -1,25 +1,23 @@
-<div class="ec-resource-delete-pop dialog" *ngIf="active"><!--  [attr.data-col]="config?.popColumns||popService.defaultColumns" -->
-    <div class="dialog-body">
-        <p>{{question||((!safetyWord?'resource.delete.question':'resource.delete.safety') | symbol)}}</p>
-        <div class="form-group safety-query" *ngIf="safetyWord">
-            <label>"{{safetyWord}}"</label>
-            <input [ecFocus]="focusEvent" type="text" class="input" [(ngModel)]="confirmInput" />
-        </div>
+<div class="modal" *ngIf="active">
+  <div class="modal__body">
+    <div class="has-padding-middle-3">
+      {{ question || ((!safetyWord ? 'resource.delete.question' : 'resource.delete.safety') | symbol) }}
+      <strong *ngIf="safetyWord">: {{ safetyWord }}</strong>
     </div>
-    <div class="dialog-footer">
-        <div class="nav">
-            <ul class="nav__items">
-                <li class="nav__item">
-                    <a class="btn" (click)="delete()" [class.is-disabled]="!canDelete()">
-                        {{yes||((!safetyWord?'resource.delete.yes':'resource.delete.confirm') | symbol)}}
-                    </a>
-                </li>
-                <li class="nav__item">
-                    <a class="btn btn_minor" (click)="hide()">
-                        {{no||((!safetyWord?'resource.delete.no':'resource.delete.cancel') | symbol)}}
-                    </a>
-                </li>
-            </ul>
-        </div>
+    <div class="field-group" *ngIf="safetyWord">
+      <input [ecFocus]="focusEvent" id="confirmInput" type="text" class="input" [(ngModel)]="confirmInput" />
     </div>
+    <ul class="nav" data-flex="center">
+      <li class="nav__item">
+        <a class="btn" (click)="delete()" [class.is-disabled]="!canDelete()">
+          {{ yes || ((!safetyWord ? 'resource.delete.yes' : 'resource.delete.confirm') | symbol) }}
+        </a>
+      </li>
+      <li class="nav__item">
+        <a class="btn btn_minor" (click)="hide()">
+          {{ no || ((!safetyWord ? 'resource.delete.no' : 'resource.delete.cancel') | symbol) }}
+        </a>
+      </li>
+    </ul>
+  </div>
 </div>

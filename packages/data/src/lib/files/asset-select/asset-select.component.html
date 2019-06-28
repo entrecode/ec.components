@@ -1,29 +1,64 @@
-<div *ngIf="selection" class="ec-asset-select ec-dropzone" (ecDropzone)="uploadSelect?.uploader?.uploadFiles($event.dataTransfer.files,$event)"
-  [disabled]="readOnly" [class.ec-asset-select_solo]="solo" [class.empty]="!selection?.items?.length">
+<div
+  *ngIf="selection"
+  class="ec-asset-select ec-dropzone"
+  (ecDropzone)="uploadSelect?.uploader?.uploadFiles($event.dataTransfer.files, $event)"
+  [disabled]="readOnly"
+  [class.ec-asset-select_solo]="solo"
+  [class.empty]="!selection?.items?.length"
+>
   <div class="ec-dropzone__info">drop to upload</div>
-  <ec-upload-select [custom]="config?.customUpload" #uploadSelect (uploaded)="fileService.selectUpload($event,selection)"
-    (browse)="assetListPop.show()" [config]="config" [readOnly]="readOnly" [assetGroupID]="assetGroupID" [options]="config?.fileOptions"></ec-upload-select>
+  <ec-upload-select
+    [custom]="config?.customUpload"
+    #uploadSelect
+    (uploaded)="fileService.selectUpload($event, selection)"
+    (browse)="assetListPop.show()"
+    [config]="config"
+    [readOnly]="readOnly"
+    [assetGroupID]="assetGroupID"
+    [options]="config?.fileOptions"
+  ></ec-upload-select>
   <div *ngIf="selection.items.length" class="ec-asset-selected">
-    <ul class="ec-asset-selected__items" data-grid="is-small" dndDropzone (dndDrop)="onDrop($event)">
-      <li *ngFor="let selected of selection.items" class="ec-asset-selected__item" data-col="3-sm" [dndDisableIf]="solo||config?.disableDrag"
-        [class.is-dragged]="selected===dragged" dndEffectAllowed="move" [dndDraggable]="selected.id()" (dndStart)="onDragStart(selected,$event,item)"
-        (dndCanceled)="cancelDrag(selected,$event,item)" (dndEnd)="cancelDrag(selected,$event,item)" #item>
+    <ul class="ec-asset-selected__items" data-grid="small-gutter" dndDropzone (dndDrop)="onDrop($event)">
+      <li
+        *ngFor="let selected of selection.items"
+        class="ec-asset-selected__item"
+        data-col="3@sm"
+        [dndDisableIf]="solo || config?.disableDrag"
+        [class.is-dragged]="selected === dragged"
+        dndEffectAllowed="move"
+        [dndDraggable]="selected.id()"
+        (dndStart)="onDragStart(selected, $event, item)"
+        (dndCanceled)="cancelDrag(selected, $event, item)"
+        (dndEnd)="cancelDrag(selected, $event, item)"
+        #item
+      >
         <div class="ec-asset-card">
-          <img [src]="selected.resolve('thumb')">
+          <img [src]="selected.resolve('thumb')" />
           <nav class="ec-asset-card-controls">
-            <a (click)="selection.remove(selected)" class="ec-asset-card-controls__remove" *ngIf="!readOnly&&!config?.disableRemove">
-              <ec-icon name="close-x"></ec-icon>
+            <a
+              (click)="selection.remove(selected)"
+              class="ec-asset-card-controls__remove"
+              *ngIf="!readOnly && !config?.disableRemove"
+            >
+              <ec-icon name="close"></ec-icon>
             </a>
           </nav>
         </div>
       </li>
-      <li dndPlaceholderRef class="ec-asset-selected__item" data-col="3-sm">
+      <li dndPlaceholderRef class="ec-asset-selected__item" data-col="3@sm">
         <div class="ec-asset-card">
           <div class="drag-placeholder"></div>
         </div>
       </li>
     </ul>
   </div>
-  <ec-asset-list-pop (groupChanged)="setGroup($event)" [assetGroupID]="assetGroupID" (columnClicked)="listItemClicked($event)"
-    [config]="config" [selection]="selection" [active]="config?.nestedPopActive" #assetListPop></ec-asset-list-pop>
+  <ec-asset-list-pop
+    (groupChanged)="setGroup($event)"
+    [assetGroupID]="assetGroupID"
+    (columnClicked)="listItemClicked($event)"
+    [config]="config"
+    [selection]="selection"
+    [active]="config?.nestedPopActive"
+    #assetListPop
+  ></ec-asset-list-pop>
 </div>

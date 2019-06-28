@@ -1,19 +1,15 @@
-@import 'config';
-@import '~x.ui/src/x.ui.scss';
-// @import '~@ec.components/style/scss/components';
+@import './styles/test-config';
+@import '~x.ui/scss/x.ui';
 @import '../packages/style/scss/components';
+@import './styles/shame';
+// @import './styles/dark-theme';
+@import './styles/light-theme';
 
-.demo-menu {
-    padding: rem(16);
-    a {
-        color: getColor(text);
-    }
-    ul {
-        list-style: none;
-        margin: 0 0 rem(16);
-        padding: rem(8);
-        li {
-            padding: rem(8) 0;
-        }
-    }
+.demo-code {
+  color: var(--text);
+  display: block;
+  overflow-x: auto;
+  padding: rem(16);
+  background: var(--background-lightest);
+  border-radius: rem(4);
 }

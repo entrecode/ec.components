@@ -12,7 +12,7 @@
   padding-right: 0;
   transition: all 0.4s;
   @include inject-style($ec-calendar-day-style);
-  @include macro-metrics(
+  @include metrics(
     $ec-calendar-day-font-size,
     $ec-calendar-day-line-height,
     $ec-calendar-day-size,
@@ -51,7 +51,7 @@
     color: $ec-calendar-day-is-other-color;
   }
 
-  // @param {color} $ec-calendar-day-is-selected-color [setContrast($link)]
+  // @param {color} $ec-calendar-day-is-selected-color [$link-contrast]
   // @param {color} $ec-calendar-day-is-selected-background [$link]
   // @param {array} $ec-calendar-day-is-selected-style
   &.is-selected {

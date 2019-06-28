@@ -644,7 +644,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Default value : </i><code>&#x27;toast-wrapper&#x27;</code>
+                            <i>Default value : </i><code>&#x27;ec-list-pop modal-wrapper&#x27;</code>
                         </td>
                     </tr>
                         <tr>
@@ -1485,7 +1485,7 @@ export class EntryListPopComponent extends PopComponent implements OnChanges {
   @Output() columnClicked: EventEmitter&lt;Item&lt;EntryResource&gt;&gt; &#x3D; new EventEmitter();
   @ViewChild(SearchbarComponent) searchbar: SearchbarComponent;
   /** Set host class to make sure the type is used */
-  @HostBinding(&#x27;class&#x27;) class &#x3D; &#x27;toast-wrapper&#x27;;
+  @HostBinding(&#x27;class&#x27;) class &#x3D; &#x27;ec-list-pop modal-wrapper&#x27;;
   lightModel: any;
 
   constructor(
@@ -1523,26 +1523,30 @@ export class EntryListPopComponent extends PopComponent implements OnChanges {
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;toast ec-entry-list-pop&quot; *ngIf&#x3D;&quot;active&quot; [attr.data-col]&#x3D;&quot;config?.popColumns||popService.defaultColumns&quot;&gt;
-    &lt;button (click)&#x3D;&quot;hide()&quot; type&#x3D;&quot;button&quot; class&#x3D;&quot;toast-dismiss&quot;&gt;
-        &lt;ec-icon name&#x3D;&quot;close-x-big&quot;&gt;&lt;/ec-icon&gt;
-    &lt;/button&gt;
-    &lt;header class&#x3D;&quot;toast-header&quot;&gt;
-        {{getHeader(entryList)}}
-        &lt;!-- &lt;ec-searchbar (selected)&#x3D;&quot;selection.toggle($event)&quot; placeholder&#x3D;&quot;Search..&quot; [list]&#x3D;&quot;entryList&quot; *ngIf&#x3D;&quot;entryList&quot;
-            #searchbar [property]&#x3D;&quot;lightModel?.titleField&quot; [listComponent]&#x3D;&quot;entryList&quot;&gt;&lt;/ec-searchbar&gt; --&gt;
-        &lt;ec-list-header [list]&#x3D;&quot;entryList?.list&quot; [selection]&#x3D;&quot;selection&quot;&gt;&lt;/ec-list-header&gt;
-    &lt;/header&gt;
-    &lt;div class&#x3D;&quot;toast-body&quot;&gt;
-        &lt;ec-loader class&#x3D;&quot;ec-loader loader is-local&quot; #entryListLoader&gt;&lt;/ec-loader&gt;
-        &lt;ec-entry-list #entryList [loader]&#x3D;&quot;entryListLoader&quot; [model]&#x3D;&quot;model&quot; [config]&#x3D;&quot;config&quot; [selection]&#x3D;&quot;selection&quot;
-            (columnClicked)&#x3D;&quot;select($event)&quot; #entryList&gt;&lt;/ec-entry-list&gt;
-        &lt;!-- (changed)&#x3D;&quot;searchbar.updatedList($event)&quot;  --&gt;
-    &lt;/div&gt;
-    &lt;div class&#x3D;&quot;toast-footer&quot;&gt;
-        &lt;ec-pagination [pagination]&#x3D;&quot;entryList?.list?.pagination&quot;&gt;&lt;/ec-pagination&gt;
-    &lt;/div&gt;
-&lt;/div&gt;</code></pre>
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;modal &quot; *ngIf&#x3D;&quot;active&quot; [attr.data-col]&#x3D;&quot;config?.popColumns || &#x27;8@md&#x27;&quot;&gt;
+  &lt;button (click)&#x3D;&quot;hide()&quot; type&#x3D;&quot;button&quot; class&#x3D;&quot;modal__dismiss&quot;&gt;
+    &lt;ec-icon name&#x3D;&quot;close&quot;&gt;&lt;/ec-icon&gt;
+  &lt;/button&gt;
+  &lt;!-- &lt;header class&#x3D;&quot;modal__header&quot;&gt;
+    {{ getHeader(entryList) }}
+  &lt;/header&gt; --&gt;
+  &lt;ec-list-header [list]&#x3D;&quot;entryList?.list&quot; class&#x3D;&quot;modal__header&quot; [selection]&#x3D;&quot;selection&quot;&gt;&lt;/ec-list-header&gt;
+  &lt;div class&#x3D;&quot;modal__body&quot;&gt;
+    &lt;ec-loader class&#x3D;&quot;ec-loader loader is-local&quot; #entryListLoader&gt;&lt;/ec-loader&gt;
+    &lt;ec-entry-list
+      #entryList
+      [loader]&#x3D;&quot;entryListLoader&quot;
+      [model]&#x3D;&quot;model&quot;
+      [config]&#x3D;&quot;config&quot;
+      [selection]&#x3D;&quot;selection&quot;
+      (columnClicked)&#x3D;&quot;select($event)&quot;
+      #entryList
+    &gt;&lt;/ec-entry-list&gt;
+    &lt;!-- (changed)&#x3D;&quot;searchbar.updatedList($event)&quot;  --&gt;
+  &lt;/div&gt;
+  &lt;ec-pagination [pagination]&#x3D;&quot;entryList?.list?.pagination&quot;&gt;&lt;/ec-pagination&gt;
+&lt;/div&gt;
+</code></pre>
     </div>
 
 
@@ -1571,7 +1575,7 @@ export class EntryListPopComponent extends PopComponent implements OnChanges {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="toast ec-entry-list-pop" *ngIf="active" [attr.data-col]="config?.popColumns||popService.defaultColumns">    <button (click)="hide()" type="button" class="toast-dismiss">        <ec-icon name="close-x-big"></ec-icon>    </button>    <header class="toast-header">        {{getHeader(entryList)}}        <!-- <ec-searchbar (selected)="selection.toggle($event)" placeholder="Search.." [list]="entryList" *ngIf="entryList"            #searchbar [property]="lightModel?.titleField" [listComponent]="entryList"></ec-searchbar> -->        <ec-list-header [list]="entryList?.list" [selection]="selection"></ec-list-header>    </header>    <div class="toast-body">        <ec-loader class="ec-loader loader is-local" #entryListLoader></ec-loader>        <ec-entry-list #entryList [loader]="entryListLoader" [model]="model" [config]="config" [selection]="selection"            (columnClicked)="select($event)" #entryList></ec-entry-list>        <!-- (changed)="searchbar.updatedList($event)"  -->    </div>    <div class="toast-footer">        <ec-pagination [pagination]="entryList?.list?.pagination"></ec-pagination>    </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="modal " *ngIf="active" [attr.data-col]="config?.popColumns || \'8@md\'">  <button (click)="hide()" type="button" class="modal__dismiss">    <ec-icon name="close"></ec-icon>  </button>  <!-- <header class="modal__header">    {{ getHeader(entryList) }}  </header> -->  <ec-list-header [list]="entryList?.list" class="modal__header" [selection]="selection"></ec-list-header>  <div class="modal__body">    <ec-loader class="ec-loader loader is-local" #entryListLoader></ec-loader>    <ec-entry-list      #entryList      [loader]="entryListLoader"      [model]="model"      [config]="config"      [selection]="selection"      (columnClicked)="select($event)"      #entryList    ></ec-entry-list>    <!-- (changed)="searchbar.updatedList($event)"  -->  </div>  <ec-pagination [pagination]="entryList?.list?.pagination"></ec-pagination></div></div>'
     var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'ActionbarComponent', 'selector': 'ec-actionbar'},{'name': 'AdminEntryInputComponent', 'selector': ''},{'name': 'ApiActionbarComponent', 'selector': 'ec-api-actionbar'},{'name': 'AssetgroupSelectComponent', 'selector': 'ec-assetgroup-select'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DaterangeComponent', 'selector': 'ec-daterange'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EntryActionbarComponent', 'selector': 'ec-entry-actionbar'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryListPopComponent', 'selector': 'ec-entry-list-pop'},{'name': 'EntryListSelectComponent', 'selector': 'ec-entry-list-select'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'HeatmapComponent', 'selector': 'ec-heatmap'},{'name': 'IconComponent', 'selector': 'ec-icon'},{'name': 'ImageSelectPopComponent', 'selector': 'ec-image-select-pop'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LocationMapComponent', 'selector': 'ec-location-map'},{'name': 'LocationPickerComponent', 'selector': 'ec-location-picker'},{'name': 'LocationSearchComponent', 'selector': 'ec-location-search'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'ModalComponent', 'selector': 'ec-modal'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceActionbarComponent', 'selector': 'ec-resource-actionbar'},{'name': 'ResourceCrudComponent', 'selector': 'ec-resource-crud'},{'name': 'ResourceDeletePopComponent', 'selector': 'ec-resource-delete-pop'},{'name': 'ResourceFormComponent', 'selector': 'ec-resource-form'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'ResourceListPopComponent', 'selector': 'ec-resource-list-pop'},{'name': 'ResourcePopComponent', 'selector': 'ec-resource-pop'},{'name': 'ResourceSelectComponent', 'selector': 'ec-resource-select'},{'name': 'SearchbarComponent', 'selector': 'ec-searchbar'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SignupComponent', 'selector': 'ec-signup'},{'name': 'SignupFormComponent', 'selector': 'ec-signup-form'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TagSelectComponent', 'selector': 'ec-tag-select'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'UploadComponent', 'selector': 'ec-upload'},{'name': 'UploadSelectComponent', 'selector': 'ec-upload-select'}];
     var DIRECTIVES = [{'name': 'AssetDirective', 'selector': '[ecAsset]'},{'name': 'DropzoneDirective', 'selector': '[ecDropzone]'},{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'FocusDirective', 'selector': '[ecFocus]'},{'name': 'ImageDirective', 'selector': 'img [ecImage]'},{'name': 'SlotHostDirective', 'selector': '[ecSlotHost]'}];
     var ACTUAL_COMPONENT = {'name': 'EntryListPopComponent'};
