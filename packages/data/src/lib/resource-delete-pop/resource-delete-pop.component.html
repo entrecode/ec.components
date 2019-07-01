@@ -1,6 +1,6 @@
 <div class="modal" *ngIf="active">
   <div class="modal__body">
-    <div class="has-padding-middle-3">
+    <div class="is-padding-middle-3">
       {{ question || ((!safetyWord ? 'resource.delete.question' : 'resource.delete.safety') | symbol) }}
       <strong *ngIf="safetyWord">: {{ safetyWord }}</strong>
     </div>

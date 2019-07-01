@@ -1,13 +1,21 @@
 .ec-asset-list {
   .ec-list-items {
-    flex-wrap: wrap;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: rem(16);
   }
 
   .ec-list-item {
-    width: 100 / 3 * 1%;
-    flex-direction: column;
     padding: 8px;
+    flex-direction: column;
+  }
+
+  .ec-list-cell {
+    padding: 0;
+  }
+
+  .ec-output-date {
+    font-size: 0.825em;
   }
 
   .ec-list-cell_preview {

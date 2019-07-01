@@ -72,7 +72,7 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
   };
 
   /** Set host class to make sure the type is used */
-  @HostBinding('class') class = 'modal-wrapper has-backdrop';
+  @HostBinding('class') class = 'ec-asset-list-pop modal-wrapper modal-wrapper_backdrop';
 
   /** Injects auth service and calls super constructor. */
   constructor(
