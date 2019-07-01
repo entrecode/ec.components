@@ -27,7 +27,6 @@ import { FileService } from '../file.service';
 @Component({
   selector: 'ec-asset-list-pop',
   templateUrl: './asset-list-pop.component.html',
-  styleUrls: ['./asset-list-pop.component.scss'],
 })
 export class AssetListPopComponent extends PopComponent implements OnInit {
   /** CrudConfig for customizing the entry-form and the pop.*/
