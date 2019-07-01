@@ -3,6 +3,14 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: rem(16);
+
+    @media (min-width: bp(lg)) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    
+    @media (min-width: bp(xxl)) {
+      grid-template-columns: repeat(6, 1fr);
+    }
   }
 
   .ec-list-item {
