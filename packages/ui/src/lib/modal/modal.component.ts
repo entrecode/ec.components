@@ -65,7 +65,7 @@ export class ModalComponent extends PopComponent implements OnInit, OnChanges {
       this.elementRef.nativeElement.classList.remove(`${type}-wrapper`);
     });
     if (this.backdrop) {
-      this.elementRef.nativeElement.classList.add(`has-backdrop`);
+      this.elementRef.nativeElement.classList.add(`modal-wrapper_backdrop`);
     }
   }
 

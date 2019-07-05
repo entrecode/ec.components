@@ -1,15 +1,12 @@
+@import '~x.ui/scss/functions/functions';
+
 $_background: #fff;
-$_background-lightest: #f8f9fc;
 $_text: #171e28;
 $_minor: #eceff6;
 $_link: #23ca74;
 $_super: #4c43e9;
 $_highlight: #ffa;
 
-$_input-background: #edf2f7;
-
-$_state-hover: rgba($_link, 0.2);
-$_state-hover-contrast: $_text;
 $_state-error: #ff2a58;
 $_state-info: #cae6fe;
 $_state-success: #d3ecdb;
@@ -22,15 +19,17 @@ $_ua: #ffca69;
 :root {
   // background
   --background: #{$_background};
-  --background-lightest: #{$_background-lightest};
-  --background-lighter: #{darken($_background-lightest, 2%)};
-  --background-light: #{darken($_background-lightest, 4%)};
-  
-  --background-invert: #{_text};
+  --background-rgb: 255, 255, 255;
+  --background-light: #{darken($_background, 8%)};
+  --background-lighter: #{darken($_background, 4%)};
+  --background-lightest: #{darken($_background, 2%)};
+
   --modal-background: #{$_background};
-  
-  --list-item-background: #{$_background-lightest};
-  --list-item-hover-background: #{darken($_background-lightest, 2%)};
+
+  --background-invert: #{_text};
+
+  --list-item-background: #{darken($_background, 2%)};
+  --list-item-hover-background: #{darken($_background, 4%)};
 
   // text
   --text: #{$_text};
@@ -66,15 +65,16 @@ $_ua: #ffca69;
   --highlight-safe: #{set-contrast($_background, $_highlight)};
   --highlight-hover: #{set-hover($_highlight)};
 
-  --input-background: #{$_input-background};
+  --btn-minor-background: #{lighten($_background, 12%)};
+  --btn-minor-color: #{$_text};
+
+  --input-background: #edf2f7;
   --input-color: #{$text};
 
-  --ec-select-selected: #{darken($_input-background, 8%)};
+  --ace-gutter: #{darken(#edf2f7, 4%)};
 
-  --ace-gutter: #{darken($_input-background, 4%)};
-
-  --state-hover: #{$_state-hover};
-  --state-hover-contrast: #{$_state-hover-contrast};
+  --state-hover: #{rgba($_link, 0.2)};
+  --state-hover-contrast: #{set-contrast($_link)};
 
   --state-error: #{$_state-error};
   --state-error-contrast: #{set-contrast($_state-error)};

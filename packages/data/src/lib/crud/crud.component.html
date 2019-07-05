@@ -1,6 +1,6 @@
 <div class="ec-crud">
   <header class="ec-crud-header">
-    <a (click)="entryPop.create()" *ngIf="hasMethod('post')" class="btn">
+    <a (click)="entryPop.create()" *ngIf="hasMethod('post')" class="btn" [class.btn_square]="!config?.createLabel">
       <span *ngIf="config?.createLabel">{{ config?.createLabel }}</span>
       <span *ngIf="!config?.createLabel">
         <ec-icon name="add"></ec-icon>

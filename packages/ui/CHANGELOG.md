@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.45.1](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.45.0...@ec.components/ui@0.45.1) (2019-07-05)
+
+
+### Bug Fixes
+
+* buttons with only icons are square now ([51bf664](https://github.com/entrecode/ec.components/commit/51bf664))
+* udated to x.ui.10.0.0-beta.5 ([341baba](https://github.com/entrecode/ec.components/commit/341baba))
+
+
+
+
+
 # [0.45.0](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.44.1...@ec.components/ui@0.45.0) (2019-06-28)
 
 

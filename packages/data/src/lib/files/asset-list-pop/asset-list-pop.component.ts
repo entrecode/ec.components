@@ -27,7 +27,6 @@ import { FileService } from '../file.service';
 @Component({
   selector: 'ec-asset-list-pop',
   templateUrl: './asset-list-pop.component.html',
-  styleUrls: ['./asset-list-pop.component.scss'],
 })
 export class AssetListPopComponent extends PopComponent implements OnInit {
   /** CrudConfig for customizing the entry-form and the pop.*/
@@ -72,7 +71,7 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
   };
 
   /** Set host class to make sure the type is used */
-  @HostBinding('class') class = 'modal-wrapper has-backdrop';
+  @HostBinding('class') class = 'ec-asset-list-pop modal-wrapper modal-wrapper_backdrop';
 
   /** Injects auth service and calls super constructor. */
   constructor(

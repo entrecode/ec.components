@@ -17,7 +17,7 @@ The CrudComponent (CRUD stands for Create Read Update Delete) is like the meta c
 ## Used Components
 
 - [entry-list](entry-list.component.md) available as entryList property
-- entry-pop available as entryPop property
+- [entry-pop](entry-pop) available as entryPop property
 
 ## Outputs
 
@@ -49,7 +49,12 @@ If you do not use the columnClicked output, clicking an entry will open its edit
 <ec-crud model="muffin" [config]="muffinCrudConfig"></ec-crud>
 ```
 
-See [Config Pipeline](../core-concepts/config-pipeline.md) for other ways to pass configuration.
+See 
+
+- [Config Pipeline](../core-concepts/config-pipeline) for other ways to pass configuration.
+- [Form API](../core-concepts/form-options) for the options affecting the form.
+- [List API](../core-concepts/list-options) for the options affecting the list.
+- [Entry Pop](entry-pop) for the options affecting the entry-pop.
 
 ### config.methods
 

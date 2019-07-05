@@ -1,15 +1,12 @@
-$_background: #171e28;
+@import '~x.ui/scss/functions/functions';
 
+$_background: #171e28;
 $_text: #c2c9d6;
-$_minor: lighten($_background, 12%);
+$_minor: lighten($_background, 10%);
 $_link: #23ca74;
 $_super: #4c43e9;
 $_highlight: #ffa;
 
-$_input-background: lighten($_background, 8%);
-
-$_state-hover: rgba($_link, 0.2);
-$_state-hover-contrast: $_text;
 $_state-error: #ff2a58;
 $_state-info: #cae6fe;
 $_state-success: #d3ecdb;
@@ -19,23 +16,26 @@ $_dm: #23ca74;
 $_am: #0081fa;
 $_ua: #ffca69;
 
-:root {
+.dark-theme {
   // background
   --background: #{$_background};
+  --background-rgb: 22, 30, 39;
   --background-light: #{lighten($_background, 2%)};
   --background-lighter: #{lighten($_background, 4%)};
   --background-lightest: #{lighten($_background, 8%)};
 
+  --modal-background: #{lighten($_background, 2%)};
+
   --background-invert: #{_text};
 
-  --list-item-background: #{lighten($_background, 2%)};
-  --list-item-hover-background: #{lighten($_background, 4%)};
+  --list-item-background: #{darken($_background, 2%)};
+  --list-item-hover-background: #{darken($_background, 4%)};
 
   // text
   --text: #{$_text};
-  --text-light: #{darken($_text, 20%)};
-  --text-lighter: #{darken($_text, 40%)};
-  --text-lightest: #{darken($_text, 60%)};
+  --text-light: #{lighten($_background, 80%)};
+  --text-lighter: #{lighten($_background, 60%)};
+  --text-lightest: #{lighten($_background, 40%)};
   --text-invert: #{_background};
 
   --dm: #{$_dm};
@@ -65,15 +65,16 @@ $_ua: #ffca69;
   --highlight-safe: #{set-contrast($_background, $_highlight)};
   --highlight-hover: #{set-hover($_highlight)};
 
-  --input-background: #{$_input-background};
+  --btn-minor-background: #{lighten($_background, 12%)};
+  --btn-minor-color: #{$_text};
+
+  --input-background: #{lighten($_background, 8%)};
   --input-color: #{$text};
 
-  --ec-select-selected: #{darken($_input-background, 8%)};
+  --ace-gutter: #{$_background};
 
-  --ace-gutter: #{darken($_input-background, 4%)};
-
-  --state-hover: #{$_state-hover};
-  --state-hover-contrast: #{$_state-hover-contrast};
+  --state-hover: #{rgba($_link, 0.2)};
+  --state-hover-contrast: #{set-contrast($_link)};
 
   --state-error: #{$_state-error};
   --state-error-contrast: #{set-contrast($_state-error)};
