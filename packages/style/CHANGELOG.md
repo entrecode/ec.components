@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.1](https://github.com/entrecode/ec.components/compare/@ec.components/style@0.23.0...@ec.components/style@0.23.1) (2019-07-05)
+
+
+### Bug Fixes
+
+* minor code style fixes ([62bb2b3](https://github.com/entrecode/ec.components/commit/62bb2b3))
+* responsive layout update for `ec-asset-list` ([af45a9a](https://github.com/entrecode/ec.components/commit/af45a9a))
+* try to fixed ec-list overflow problem for field with long ([a2df038](https://github.com/entrecode/ec.components/commit/a2df038))
+* udated to x.ui.10.0.0-beta.5 ([341baba](https://github.com/entrecode/ec.components/commit/341baba))
+
+
+
+
+
 # [0.23.0](https://github.com/entrecode/ec.components/compare/@ec.components/style@0.22.7...@ec.components/style@0.23.0) (2019-06-28)
 
 

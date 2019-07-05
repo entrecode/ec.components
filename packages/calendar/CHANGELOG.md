@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.18](https://github.com/entrecode/ec.components/compare/@ec.components/calendar@0.2.17...@ec.components/calendar@0.2.18) (2019-07-05)
+
+
+### Bug Fixes
+
+* udated to x.ui.10.0.0-beta.5 ([341baba](https://github.com/entrecode/ec.components/commit/341baba))
+
+
+
+
+
 ## [0.2.17](https://github.com/entrecode/ec.components/compare/@ec.components/calendar@0.2.16...@ec.components/calendar@0.2.17) (2019-05-24)
 
 
