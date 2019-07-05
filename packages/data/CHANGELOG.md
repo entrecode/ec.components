@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.50.1](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.50.0...@ec.components/data@0.50.1) (2019-07-05)
+
+
+### Bug Fixes
+
+* buttons with only icons are square now ([51bf664](https://github.com/entrecode/ec.components/commit/51bf664))
+* entry-list-pop header now visible again ([f9b12c3](https://github.com/entrecode/ec.components/commit/f9b12c3))
+* udated to x.ui.10.0.0-beta.5 ([341baba](https://github.com/entrecode/ec.components/commit/341baba))
+
+
+
+
+
 # [0.50.0](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.49.3...@ec.components/data@0.50.0) (2019-06-28)
 
 
