@@ -741,8 +741,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="59"
-                            class="link-to-prism">packages/data/src/lib/entry-list-pop/entry-list-pop.component.ts:59</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="58"
+                            class="link-to-prism">packages/data/src/lib/entry-list-pop/entry-list-pop.component.ts:58</a></div>
                 </td>
             </tr>
 
@@ -1513,9 +1513,11 @@ export class EntryListPopComponent extends PopComponent implements OnChanges {
     }
     // this.searchbar.focusEvent.emit(true);
   }
-
   getHeader(entryList) {
-    const label &#x3D; this.config.singularLabel || entryList.model;
+    const label &#x3D; this.config.singularLabel || &#x60;${entryList.model}&#x60;;
+    if (!this.selection.isEmpty()) {
+      return &#x60;${label}: ${this.selection.items.length} selected&#x60;;
+    }
     return &#x60;${label}&#x60;;
   }
 }
