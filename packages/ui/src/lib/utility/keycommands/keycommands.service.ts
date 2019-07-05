@@ -13,11 +13,20 @@ export interface KeyAction {
 export class KeycommandsService {
   keys: { [key: string]: KeyAction } = {};
   muted = false;
+  input;
   meta = false;
+  shift = false;
 
   constructor(public router: Router, public notificationsService: NotificationsService) {
+    window.addEventListener('keydown', (e) => {
+      if (e.altKey && this.keys[e.key]) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        e.stopPropagation();
+      }
+    });
     window.addEventListener('keyup', (e) => {
-      if (!this.muted && this.keys[e.key]) {
+      if ((!this.muted || e.altKey) && this.keys[e.key]) {
         this.activate(this.keys[e.key], e);
       }
     });
@@ -28,7 +37,7 @@ export class KeycommandsService {
     document.addEventListener(
       'focus',
       (e) => {
-        this.mute();
+        this.mute(e);
       },
       true,
     );
@@ -36,17 +45,19 @@ export class KeycommandsService {
     document.addEventListener(
       'blur',
       (e) => {
-        this.unmute();
+        this.unmute(e);
       },
       true,
     );
   }
 
-  mute() {
+  mute(e?) {
+    this.input = e.target;
     this.muted = true;
   }
 
-  unmute() {
+  unmute(e?) {
+    delete this.input;
     this.muted = false;
   }
 
@@ -56,7 +67,7 @@ export class KeycommandsService {
   }
 
   activate(keyconfig: KeyAction, e?) {
-    if (!keyconfig.canActivate()) {
+    if (!keyconfig.canActivate(e)) {
       return;
     }
     keyconfig.action(e);
