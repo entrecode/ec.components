@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.50.3](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.50.2...@ec.components/data@0.50.3) (2019-07-05)
+
+
+### Bug Fixes
+
+* add selected count to entry-list-pop header ([a52a655](https://github.com/entrecode/ec.components/commit/a52a655))
+
+
+
+
+
 ## [0.50.2](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.50.1...@ec.components/data@0.50.2) (2019-07-05)
 
 **Note:** Version bump only for package @ec.components/data
