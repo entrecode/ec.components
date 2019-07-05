@@ -28,7 +28,7 @@
 </ul>
 <ul data-grid="small-gutter">
   <li *ngFor="let icon of iconService.registry | iconPipe: query" data-col="3">
-    <div class="has-margin-bottom-3 has-padding-3 is-theme-lightest" style="font-size: 1.5em;">
+    <div class="is-margin-bottom-3 is-padding-3 is-theme-lightest" style="font-size: 1.5em;">
       <ec-icon [name]="icon.name">{{ icon.name }}</ec-icon>
     </div>
   </li>

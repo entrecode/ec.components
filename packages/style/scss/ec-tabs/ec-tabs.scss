@@ -14,13 +14,13 @@
 // @param {array} $ec-tabs-nav-padding [$xui-tabs-nav-padding]
 // @param {array} $ec-tabs-nav-style [$xui-tabs-nav-style]
 .ec-tabs-nav {
+  align-items: center;
+  display: flex;
+  justify-content: center;
   @include inject-style($ec-tabs-nav-style);
   background: $ec-tabs-nav-background;
   margin: array-magic($ec-tabs-nav-spacing);
   padding: array-magic($ec-tabs-nav-padding);
-  align-items: center;
-  display: flex;
-  justify-content: center;
 }
 
 // @param {array} $ec-tabs-nav-items-gutter [$xui-tabs-nav-item-gutter]
@@ -28,10 +28,6 @@
   position: relative;
   text-align: center;
   padding: array-magic($ec-tabs-nav-items-gutter);
-
-  @supports not (display: flex) {
-    display: inline-block;
-  }
 }
 
 // @param {array} $ec-tabs-nav-item-padding [$xui-tabs-nav-item-padding]

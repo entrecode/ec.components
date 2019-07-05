@@ -33,14 +33,14 @@
   <ec-resource-pop #resourcePop [api]="api" [relation]="relation" [config]="config" (submitted)="formSubmitted($event)"
     (deleted)="removeItem($event)" *ngIf="config"></ec-resource-pop>
   <nav class="ec-resource-select__controls">
-    <a (click)="editItem(selection?.items[0],$event)" class="btn btn_clear"
+    <a (click)="editItem(selection?.items[0],$event)" class="btn btn_clear btn_square"
       *ngIf="solo&&hasMethod('put')&&!selection?.isEmpty()">
       <ec-icon name="edit"></ec-icon>
     </a>
-    <a (click)="resourcePop.create()" class="btn btn_clear" *ngIf="!disabled&&!config?.disableCreatePop&&hasMethod('post')">
+    <a (click)="resourcePop.create()" class="btn btn_clear btn_square" *ngIf="!disabled&&!config?.disableCreatePop&&hasMethod('post')">
       <ec-icon name="add"></ec-icon>
     </a>
-    <a (click)="resourceListPop.show($event)" class="btn btn_clear" *ngIf="!config?.disableListPop&&hasMethod('get')&&!disabled">
+    <a (click)="resourceListPop.show($event)" class="btn btn_clear btn_square" *ngIf="!config?.disableListPop&&hasMethod('get')&&!disabled">
       <ec-icon name="search"></ec-icon>
     </a>
   </nav>
