@@ -13,21 +13,19 @@ import { ComponentsOverview } from '../../ComponentsOverview.js';
 <!-- <ComponentsOverview visiblePackages={['modules']} showCheckboxes={false} width={800} height={600} /> -->
 <!-- <ComponentsOverview visibleNodes={['DataModule']} levels={1} showCheckboxes={false} width={800} height={600} />  -->
 
-
 <ComponentsOverview visiblePackages={['data']} showCheckboxes={false} width={800} height={600} />
 
-
-| name                | description                                                       | package | extends       | contains                           |
-| ------------------- | ----------------------------------------------------------------- | ------- | ------------- | ---------------------------------- |
-| crud                | Create Read Update and Delete data. Combines all below components | data    |               | entry-list, entry-pop              |
-| entry-list          | Displays entries of a model                                       | data    | resource-list |
-| entry-pop           | Opens an entry form in a pop.                                     | data    | pop           | entry-form, resource-delete-pop    |
-| entry-form          | Edits or creates entries                                          | data    | form          |
-| entry-select        | filterable Dropdown to pick one or multiple entries               | data    | select        |
-| entry-list-select   | displays selected entries as a list                               | data    | input         |
-| resource-delete-pop | Deletes resource after confirmation.                              | data    |
-| resource-pop        | Opens resource in a pop.                                          | data    | pop           | resource-form, resource-delete-pop |
-| resource-list       | Displays resources                                                | data    | list          |
+| name                                                | description                                                       | package | extends       | contains                           |
+| --------------------------------------------------- | ----------------------------------------------------------------- | ------- | ------------- | ---------------------------------- |
+| [crud](../components/crud.component.md)             | Create Read Update and Delete data. Combines all below components | data    |               | entry-list, entry-pop              |
+| [entry-list](../components/entry-list.component.md) | Displays entries of a model                                       | data    | resource-list |
+| [entry-pop](../components/entry-pop)   | Opens an entry form in a pop.                                     | data    | pop           | entry-form, resource-delete-pop    |
+| [entry-form](../components/entry-form.component.md) | Edits or creates entries                                          | data    | form          |
+| entry-select                                        | filterable Dropdown to pick one or multiple entries               | data    | select        |
+| entry-list-select                                   | displays selected entries as a list                               | data    | input         |
+| resource-delete-pop                                 | Deletes resource after confirmation.                              | data    |
+| resource-pop                                        | Opens resource in a pop.                                          | data    | pop           | resource-form, resource-delete-pop |
+| resource-list                                       | Displays resources                                                | data    | list          |
 
 ## UI Components
 
