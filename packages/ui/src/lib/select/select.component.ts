@@ -72,6 +72,8 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   @Input() values: Array<T>;
   /** Wether or not the selection should be solo */
   @Input() solo: boolean;
+  /** Event emitter to focus input */
+  @Input() focusEvent: EventEmitter<boolean> = new EventEmitter();
   /** The selection dropdown */
   @ViewChild('dropdown') dropdown: PopComponent;
   /** The loader inside the dropdown */
