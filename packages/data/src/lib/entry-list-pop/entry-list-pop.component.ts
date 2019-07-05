@@ -55,9 +55,11 @@ export class EntryListPopComponent extends PopComponent implements OnChanges {
     }
     // this.searchbar.focusEvent.emit(true);
   }
-
   getHeader(entryList) {
-    const label = this.config.singularLabel || entryList.model;
+    const label = this.config.singularLabel || `${entryList.model}`;
+    if (!this.selection.isEmpty()) {
+      return `${label}: ${this.selection.items.length} selected`;
+    }
     return `${label}`;
   }
 }

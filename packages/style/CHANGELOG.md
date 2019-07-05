@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.3](https://github.com/entrecode/ec.components/compare/@ec.components/style@0.23.2...@ec.components/style@0.23.3) (2019-07-05)
+
+
+### Bug Fixes
+
+* removed wrap from `ec-output-tags` ([17a2ba7](https://github.com/entrecode/ec.components/commit/17a2ba7))
+
+
+
+
+
 ## [0.23.2](https://github.com/entrecode/ec.components/compare/@ec.components/style@0.23.1...@ec.components/style@0.23.2) (2019-07-05)
 
 
