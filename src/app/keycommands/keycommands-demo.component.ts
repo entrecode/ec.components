@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { KeycommandsService } from '@ec.components/ui';
+import { KeycommandsService, NotificationsService } from '@ec.components/ui';
 
 @Component({
   selector: 'ec-keycommands-demo',
@@ -10,7 +10,20 @@ import { KeycommandsService } from '@ec.components/ui';
   `,
 })
 export class KeycommandsDemoComponent implements OnInit {
-  constructor(public keycommands: KeycommandsService) {}
+  constructor(public keycommands: KeycommandsService, public notificationService: NotificationsService) {
+    this.keycommands.register({
+      key: 'π',
+      description: 'Press π',
+      canActivate: () => true,
+      action: (e) => {
+        console.log('boom',e);
+        this.notificationService.emit({
+          type: 'success',
+          title: 'PRESSED π!',
+        });
+      },
+    });
+  }
 
   ngOnInit() {}
 }

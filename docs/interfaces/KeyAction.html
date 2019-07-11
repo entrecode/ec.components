@@ -243,11 +243,20 @@ export interface KeyAction {
 export class KeycommandsService {
   keys: { [key: string]: KeyAction } &#x3D; {};
   muted &#x3D; false;
+  input;
   meta &#x3D; false;
+  shift &#x3D; false;
 
   constructor(public router: Router, public notificationsService: NotificationsService) {
+    window.addEventListener(&#x27;keydown&#x27;, (e) &#x3D;&gt; {
+      if (e.altKey &amp;&amp; this.keys[e.key]) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        e.stopPropagation();
+      }
+    });
     window.addEventListener(&#x27;keyup&#x27;, (e) &#x3D;&gt; {
-      if (!this.muted &amp;&amp; this.keys[e.key]) {
+      if ((!this.muted || e.altKey) &amp;&amp; this.keys[e.key]) {
         this.activate(this.keys[e.key], e);
       }
     });
@@ -258,7 +267,7 @@ export class KeycommandsService {
     document.addEventListener(
       &#x27;focus&#x27;,
       (e) &#x3D;&gt; {
-        this.mute();
+        this.mute(e);
       },
       true,
     );
@@ -266,17 +275,19 @@ export class KeycommandsService {
     document.addEventListener(
       &#x27;blur&#x27;,
       (e) &#x3D;&gt; {
-        this.unmute();
+        this.unmute(e);
       },
       true,
     );
   }
 
-  mute() {
+  mute(e?) {
+    this.input &#x3D; e.target;
     this.muted &#x3D; true;
   }
 
-  unmute() {
+  unmute(e?) {
+    delete this.input;
     this.muted &#x3D; false;
   }
 
@@ -286,7 +297,7 @@ export class KeycommandsService {
   }
 
   activate(keyconfig: KeyAction, e?) {
-    if (!keyconfig.canActivate()) {
+    if (!keyconfig.canActivate(e)) {
       return;
     }
     keyconfig.action(e);

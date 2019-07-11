@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.45.2](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.45.1...@ec.components/ui@0.45.2) (2019-07-05)
+
+
+### Bug Fixes
+
+* focusSearchbar on select ([c0632d2](https://github.com/entrecode/ec.components/commit/c0632d2))
+* improved keycommands ([0890cd3](https://github.com/entrecode/ec.components/commit/0890cd3))
+
+
+
+
+
 ## [0.45.1](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.45.0...@ec.components/ui@0.45.1) (2019-07-05)
 
 

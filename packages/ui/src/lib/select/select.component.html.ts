@@ -20,7 +20,7 @@ export const selectTemplate = `<div class="ec-select" [class.ec-select_solo]="so
     </li>
     <li *ngIf="!config?.disableSearchbar" class="ec-select__searchbar">
       <ec-searchbar [autofocus]="false" [property]="config?.label" [placeholder]="placeholder"
-        (focus)="focus($event)" (keypressed)="handleKey($event,dropdownList)"
+        (focus)="focus($event)" (keypressed)="handleKey($event,dropdownList)" [focusEvent]="focusEvent"
         (queryChanged)="filterDropdownList(dropdownList,$event)"></ec-searchbar>
     </li>
   </ul>

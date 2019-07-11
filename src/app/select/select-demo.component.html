@@ -2,7 +2,8 @@
 
 <div class="field-group">
   <label class="field-group__label">Default</label>
-  <ec-select [list]="products" [(ngModel)]="values"></ec-select>
+  <ec-select [list]="products" [(ngModel)]="values" #mySelect></ec-select>
+  <a (click)="mySelect.focusSearchbar()">focus!</a>
 </div>
 <div class="field-group">
   <label class="field-group__label">Solo</label>
