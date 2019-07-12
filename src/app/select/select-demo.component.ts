@@ -205,7 +205,7 @@ export class SelectDemoComponent {
     bar.reload();
   }
 
-  enter(q, bar) {
-    console.log('enter', q, bar);
+  enter(q) {
+    console.log('enter', q);
   }
 }
