@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.4](https://github.com/entrecode/ec.components/compare/@ec.components/style@0.23.3...@ec.components/style@0.23.4) (2019-07-12)
+
+
+### Bug Fixes
+
+* spacer for item before filter icon to avoid overlapping ([c63e1d9](https://github.com/entrecode/ec.components/commit/c63e1d9))
+
+
+
+
+
 ## [0.23.3](https://github.com/entrecode/ec.components/compare/@ec.components/style@0.23.2...@ec.components/style@0.23.3) (2019-07-05)
 
 
