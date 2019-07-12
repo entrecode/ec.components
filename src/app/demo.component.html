@@ -18,7 +18,4 @@
     </div>
   </div>
 </div>
-<div *ngIf="hideMenu">
-  <router-outlet *ngIf="hideMenu"></router-outlet>
-  <ec-github-sources [paths]="paths"></ec-github-sources>
-</div>
+<router-outlet *ngIf="hideMenu"></router-outlet>

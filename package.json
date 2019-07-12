@@ -25,7 +25,10 @@
     "watch:core": "ng build core --watch",
     "watch:calendar": "ng build calendar --watch",
     "postinstall": "cd website && npm i",
-    "build:website": "cd website && npm run build"
+    "build:website": "cd website && npm run build",
+    "docusaurus": "cd website && npm run start",
+    "test:screenshots": "cd scripts && jest screenshot.test.js",
+    "test:screenshots-update": "cd scripts && jest screenshot.test.js -u"
   },
   "private": true,
   "workspaces": [
@@ -79,6 +82,8 @@
     "conventional-changelog": "^3.0.6",
     "jasmine-core": "^3.3.0",
     "jasmine-spec-reporter": "~4.2.1",
+    "jest": "^24.8.0",
+    "jest-image-snapshot": "^2.9.0",
     "karma": "4.0.0",
     "karma-chrome-launcher": "~2.2.0",
     "karma-coverage-istanbul-reporter": "^2.0.5",
@@ -86,6 +91,7 @@
     "karma-jasmine-html-reporter": "^1.4.0",
     "ng-packagr": "^4.7.1",
     "protractor": "~5.4.0",
+    "puppeteer": "^1.18.1",
     "tsickle": ">=0.34.0",
     "tslib": "^1.9.0",
     "tslint": "~5.11.0",

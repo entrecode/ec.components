@@ -166,7 +166,7 @@ export class SelectDemoComponent {
         children: (s, bar) => this.getWeapons(s, bar),
       },
     ];
-  };
+  }
 
   constructor(public notificationService: NotificationsService) {
     console.log('karlott', karlotto);

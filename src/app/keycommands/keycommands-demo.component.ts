@@ -17,7 +17,6 @@ export class KeycommandsDemoComponent implements OnInit {
       description: 'Press π',
       canActivate: () => true,
       action: (e) => {
-        console.log('boom',e);
         this.notificationService.emit({
           type: 'success',
           title: 'PRESSED π!',
