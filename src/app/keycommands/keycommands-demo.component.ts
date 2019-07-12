@@ -10,13 +10,13 @@ import { KeycommandsService, NotificationsService } from '@ec.components/ui';
   `,
 })
 export class KeycommandsDemoComponent implements OnInit {
+  textToCopy;
   constructor(public keycommands: KeycommandsService, public notificationService: NotificationsService) {
     this.keycommands.register({
       key: 'π',
       description: 'Press π',
       canActivate: () => true,
       action: (e) => {
-        console.log('boom',e);
         this.notificationService.emit({
           type: 'success',
           title: 'PRESSED π!',

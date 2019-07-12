@@ -260,129 +260,46 @@ const muffinConfig = {
 
 This uses the copy transform to turn the date into an iso string before copying. If you do not define a copy transform, the value will be copied as is (as returned by resolve).
 
-## custom input component
+## custom form components
 
-If you want custom behaviour that is not handled by the default inputViews, you can use a custom component as input:
+You can pass your own components to use them as input
 
-### 1. Create Custom Input Component
+### counter example
 
-```sh
-ng g c custom-input
+```ts
+this.modelConfig.set('muffin', {
+  fields: {
+    /* .. */
+    count: {
+      input: CounterComponent,
+    },
+  },
+});
 ```
 
-This component will serve as a container for all possible custom input fields.
+The passed component will be loaded dynamically into the respective ec-input, which is part of the form.
 
-### 2. Extend InputComponent (custom-input.component.ts)
-
-To make the current field information available to the template, you need to extend InputComponent from @ec.components/ui:
-
-```js
-import { Component } from '@angular/core';
-import { InputComponent } from '@ec.components/ui';
-
-@Component({
-  selector: 'clubapp-custom-input',
-  templateUrl: './custom-input.component.html',
-  styleUrls: ['./custom-input.component.scss'],
-})
-export class CustomInputComponent extends InputComponent {}
-```
-
-CMD+Click on InputComponent to see which properties you can now use!
-
-### 3. Add Markup (custom-input.component.html)
-
-Now we can decide which custom input should be used, based on e.g. the fields view value:
+The following template renders the counter:
 
 ```html
-<div [ngSwitch]="field.getView('input')" *ngIf="group" [formGroup]="group">
-  <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>
-  <div *ngSwitchCase="'speakingurl'">
-    <input [id]="field.id" type="text" [formControl]="control" />
-  </div>
-  <div *ngSwitchCase="'openingHours'">
-    <!-- <ec-opening-hours [formControl]="control"></ec-opening-hours> -->
+<div class="input-group">
+  <div class="input-group__addon">
+    <a class="btn btn_clear btn_small is-bold" (click)="decrement()">-</a>
+    <div class="input">{{ value }}</div>
+    <a class="btn btn_clear btn_small is-bold" (click)="increment()">+</a>
   </div>
 </div>
 ```
 
-Of course you could also switch based on property name or type, depending on your application.
-The id property of field is referenced in the label of the form. By adding it to the input makes sure your label click enters the input.
+To have control to the form input's value, you need to use angulars ControlValueAccessor:
 
-### 4. Add CustomInputComponent to entryComponents:
-
-Because the custom component will be loaded dynamically, your module needs to declare it as entryComponent:
-
-```js
-@NgModule({
-  entryComponents: [CustomInputComponent],
-  /** more stuff **/
-})
-export class AppModule {}
-```
-
-### 5. Add CustomInputComponent to field config:
-
-Now you can add the Component as input to your field config:
-
-```js
-this.modelConfig.set('muffin', {
-      fields: {
-        url: {
-          label: 'URL',
-          view: 'speakingurl',
-          input: CustomInputComponent
-        },
-        openingHours: {
-          label: 'Öffnungszeiten',
-          view: 'openingHours',
-          input: CustomInputComponent
-        }
-})
-```
-
-By changing the view option, we can now decide which case will be met!
-
-### Custom Form Controls via ControlValueAccessor
-
-In the above custom-input.component template, we use _ec-opening-hours_ with a formControl input.
-To have access to the form control's value, you need to provide a ControlValueAccessor:
-
-```js
-import { Component, forwardRef } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { InputComponent } from '@ec.components/ui';
-
-@Component({
-  selector: 'ec-opening-hours',
-  templateUrl: './opening-hours.component.html',
-  styleUrls: ['./opening-hours.component.scss'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => OpeningHoursComponent),
-      multi: true
-    }
-  ]
-})
-```
-
-Now you can implement your own logic and call propagateChange when you change the value from your component, and react to change via the writeValue method!
-You now could also use your component with ngModel or formControl in another context!
-More information on this pattern: https://blog.thoughtram.io/angular/2016/07/27/custom-form-controls-in-angular-2.html
-
-### Custom Fields without wrapper
-
-You can also use custom components as input directly without needing to wrap them in "CustomFieldsComponent".
-Just make sure you implement ControlValueAccessor like above. When changes occur from the template, call propagateChange. You can react to outside model changes in writeValue.
-
-```typescript
+```ts
 import { Component, OnInit, Input } from '@angular/core';
 import { InputComponent } from '../../../packages/ui';
 import { ControlValueAccessor } from '@angular/forms';
 
 @Component({
-  selector: 'ec-counter',
+  selector: 'app-counter',
   templateUrl: './counter.component.html',
 })
 export class CounterComponent extends InputComponent implements ControlValueAccessor {
@@ -410,3 +327,136 @@ export class CounterComponent extends InputComponent implements ControlValueAcce
   registerOnTouched() {}
 }
 ```
+
+Now you can implement your own logic and call propagateChange when you change the value from your component, and react to change via the writeValue method!
+You now could also use your component with ngModel or formControl in another context!
+More information on this pattern: https://blog.thoughtram.io/angular/2016/07/27/custom-form-controls-in-angular-2.html
+
+### container example
+
+Instead of using a single component for one specific field, you could also use one component to serve as a container for multiple possible views:
+
+```ts
+this.modelConfig.set('muffin', {
+      fields: {
+        /** */
+        url: {
+          label: 'URL',
+          inputView: 'speakingurl',
+          input: CustomInputComponent
+        },
+        count: {
+          label: 'Count',
+          inputView: 'counter',
+          input: CustomInputComponent
+        }
+})
+```
+
+The component is rather simple:
+
+```ts
+import { Component } from '@angular/core';
+import { InputComponent } from '@ec.components/ui';
+
+@Component({
+  selector: 'app-custom-input',
+  templateUrl: './custom-input.component.html',
+  styleUrls: ['./custom-input.component.scss'],
+})
+export class CustomInputComponent extends InputComponent {}
+```
+
+Extending InputComponent enables you to use the following properties in your template:
+
+- control FormControl instance
+- group FormGroup instance
+- field Field instance
+- item Item instance
+- config
+- property 
+
+```html
+<div [ngSwitch]="field.getView('input')" *ngIf="group" [formGroup]="group">
+  <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>
+  <div *ngSwitchCase="'speakingurl'">
+    <input [id]="field.id" type="text" [formControl]="control" />
+  </div>
+  <div *ngSwitchCase="'counter'">
+    <app-counter [formControl]="control"></app-counter>
+  </div>
+</div>
+```
+
+Of course you could also switch based on property name or type, depending on your application.
+The id property of field is referenced in the label of the form. By adding it to the input makes sure your label click enters the input.
+
+### entryComponents
+
+Because the custom component will be loaded dynamically, your module needs to declare it as entryComponent:
+
+```js
+@NgModule({
+  entryComponents: [CounterComponent, CustomInputComponent],
+  /** more stuff **/
+})
+export class AppModule {}
+```
+
+## custom form markup
+
+To use your own markup for a form, you can use one of the following approaches.
+
+### via ec-input + ec-output
+
+ec-input and ec-output can be used to render a fields input:
+
+```html
+<ec-entry-form model="muffin" #form>
+  <!-- input -->
+  <label
+    >Title
+    <ec-input property="title" [item]="form.form" [group]="form.group"></ec-input>
+  </label>
+  <!-- output -->
+  <label>Amazement Factor</label>
+  <ec-output property="amazement_factor" [item]="form.form" [group]="form.group"></ec-output>
+  <a class="btn" (click)="form.submit()">Submit</a>
+</ec-entry-form>
+```
+
+As soon as the ec-entry-form contains elements (or you pass empty=true, as mentioned below), the contents will be rendered instead of the default form.
+
+Features you have to add manually (if needed)
+
+- submit button
+- layout (field.columns will be ignored)
+
+NOTE: dont wrap labels around complex input components, because they fire ghost clicks!
+
+### via form controls
+
+If you do not want to use ec-input, you can also access the form controls directly:
+
+```html
+<ec-entry-form model="muffin" #form>
+  <!-- input -->
+  <label>Title</label>
+  <input type="text" [formControl]="form.group.get('title')" />
+  <ec-input-errors [control]="form.group.get('title')"></ec-input-errors>
+
+  <a class="btn" (click)="form.submit()">Submit</a>
+</ec-entry-form>
+```
+
+As you see, the _ec-input-errors_ component can be used to automatically handle validation errors.
+That component is also used by the default input components which will be loaded by ec-input.
+Note that you will have to manually have to care for:
+
+- readOnly state
+- placeholder
+- label
+- error handling (use ec-input-errors)
+- layout (field.columns will be ignored)
+
+Consider using ec-input instead to get the component sugar + lower mainetenance cost.

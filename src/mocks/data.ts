@@ -173,13 +173,25 @@ export const mocked = {
           height: 8,
           fruits: true,
         },
+        {
+          name: 'Dapple',
+          height: 8,
+          fruits: true,
+        },
+        {
+          name: 'Zapple',
+          height: 8,
+          fruits: true,
+        },
       ],
       {
-        size: 3,
-        selectMode: true,
+        size: 5,
+        selectMode: false,
         storageKey: 'treeListConfig',
+        defaultFilter: 'name',
         fields: {
           name: {
+            filterable: true,
             label: 'Name',
             view: 'string',
             required: true,

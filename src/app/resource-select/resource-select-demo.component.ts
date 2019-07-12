@@ -9,6 +9,7 @@ export class ResourceSelectDemoComponent implements OnInit {
   multi;
   solo;
   datamanager;
+  selectedEntries;
   constructor(public sdk: SdkService, public resourceConfig: ResourceConfig) {}
 
   assetSelectConfig = {
