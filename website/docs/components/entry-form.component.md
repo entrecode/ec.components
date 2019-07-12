@@ -79,7 +79,7 @@ The model of the form. Controls the available fields by using model schema.
 <ec-entry-form model="muffin" [config]="formConfig"></ec-entry-form>
 ```
 
-See [Configuration](../core-concepts/configuration) for ways to pass configuration.
+See [Configuration](../core-concepts/config-pipeline.md) for ways to pass configuration.
 
 ### empty
 
