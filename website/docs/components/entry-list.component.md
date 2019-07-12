@@ -96,9 +96,9 @@ If true, no list-header will be visible. This way you can render the list header
 <ec-entry-list #muffinList model="deal" [config]="{disableHeader: true}"></ec-entry-list>
 ```
 
-### config.selectMode
+<!-- ### config.selectMode
 
-If true, each list row will have select boxes that can be toggled:
+If true, each list row will have select boxes that can be toggled: -->
 
 ### config.fields
 
