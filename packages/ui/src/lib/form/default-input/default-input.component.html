@@ -60,16 +60,8 @@
     [ecFocus]="focusEvent"
   />
 
-  <!-- <ec-toggle [id]="field.id" *ngSwitchCase="'toggle'" [formControl]="control" [placeholder]="field.getPlaceholder()">
-  </ec-toggle>-->
-
-  <div class="ec-toggle xui-toggle" *ngSwitchCase="'toggle'">
-    <input [id]="field.id" type="checkbox" [formControl]="control" />
-    <label [for]="field.id" class="xui-toggle__label">
-      <div class="xui-toggle__switch"></div>
-      {{ field.getPlaceholder() }}
-    </label>
-  </div>
+  <ec-toggle [id]="field.id" *ngSwitchCase="'toggle'" [formControl]="control" [placeholder]="field.getPlaceholder()">
+  </ec-toggle>
 
   <ec-datetime *ngSwitchCase="'date'" [formControl]="control" [placeholder]="field.getPlaceholder()"></ec-datetime>
 
