@@ -181,6 +181,9 @@ It is used in the default input template for the view &#39;toggle&#39;. </p>
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
+                                <a href="#id">id</a>
+                            </li>
+                            <li>
                                 <a href="#placeholder">placeholder</a>
                             </li>
                         </ul>
@@ -197,6 +200,26 @@ It is used in the default input template for the view &#39;toggle&#39;. </p>
 
     <section>
     <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="id"></a>
+                        <b>id</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;toggle&#x27; + Date.now()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">packages/ui/src/lib/form/toggle/toggle.component.ts:22</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
@@ -255,8 +278,8 @@ It is used in the default input template for the view &#39;toggle&#39;. </p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="35"
-                            class="link-to-prism">packages/ui/src/lib/form/toggle/toggle.component.ts:35</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="36"
+                            class="link-to-prism">packages/ui/src/lib/form/toggle/toggle.component.ts:36</a></div>
                 </td>
             </tr>
 
@@ -323,8 +346,8 @@ It is used in the default input template for the view &#39;toggle&#39;. </p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="39"
-                            class="link-to-prism">packages/ui/src/lib/form/toggle/toggle.component.ts:39</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="40"
+                            class="link-to-prism">packages/ui/src/lib/form/toggle/toggle.component.ts:40</a></div>
                 </td>
             </tr>
 
@@ -364,8 +387,8 @@ It is used in the default input template for the view &#39;toggle&#39;. </p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="24"
-                            class="link-to-prism">packages/ui/src/lib/form/toggle/toggle.component.ts:24</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="25"
+                            class="link-to-prism">packages/ui/src/lib/form/toggle/toggle.component.ts:25</a></div>
                 </td>
             </tr>
 
@@ -405,8 +428,8 @@ It is used in the default input template for the view &#39;toggle&#39;. </p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="29"
-                            class="link-to-prism">packages/ui/src/lib/form/toggle/toggle.component.ts:29</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="30"
+                            class="link-to-prism">packages/ui/src/lib/form/toggle/toggle.component.ts:30</a></div>
                 </td>
             </tr>
 
@@ -480,7 +503,7 @@ It is used in the default input template for the view &#39;toggle&#39;. </p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">packages/ui/src/lib/form/toggle/toggle.component.ts:33</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">packages/ui/src/lib/form/toggle/toggle.component.ts:34</a></div>
                             </td>
                         </tr>
 
@@ -547,6 +570,7 @@ export class ToggleComponent implements ControlValueAccessor {
   value: boolean;
   /** The toggles placeholder (currently not in use) */
   @Input() placeholder: string;
+  @Input() id &#x3D; &#x27;toggle&#x27; + Date.now();
 
   /** Toggles the value */
   toggle() {
@@ -558,19 +582,25 @@ export class ToggleComponent implements ControlValueAccessor {
     this.value &#x3D; value;
   }
   /* Propagates change*/
-  propagateChange &#x3D; (_: any) &#x3D;&gt; {};
+  propagateChange &#x3D; (_: any) &#x3D;&gt; { };
   /** Registers change callback */
   registerOnChange(fn) {
     this.propagateChange &#x3D; fn;
   }
   /** Register Touch */
-  registerOnTouched() {}
+  registerOnTouched() { }
 }
 </code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;ec-toggle xui-toggle__switch&quot; [class.is-active]&#x3D;&quot;value&quot; (click)&#x3D;&quot;toggle()&quot;&gt;&lt;/div&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;ec-toggle xui-toggle&quot;&gt;
+  &lt;input [id]&#x3D;&quot;id&quot; type&#x3D;&quot;checkbox&quot; [checked]&#x3D;&quot;value&quot; (click)&#x3D;&quot;toggle()&quot; /&gt;
+  &lt;label [for]&#x3D;&quot;id&quot; class&#x3D;&quot;xui-toggle__label&quot;&gt;
+    &lt;div class&#x3D;&quot;xui-toggle__switch&quot; [class.is-active]&#x3D;&quot;value&quot;&gt;&lt;/div&gt;
+    {{ placeholder }}
+  &lt;/label&gt;
+&lt;/div&gt;
 </code></pre>
     </div>
 
@@ -600,7 +630,7 @@ export class ToggleComponent implements ControlValueAccessor {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="ec-toggle xui-toggle__switch" [class.is-active]="value" (click)="toggle()"></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="ec-toggle xui-toggle">  <input [id]="id" type="checkbox" [checked]="value" (click)="toggle()" />  <label [for]="id" class="xui-toggle__label">    <div class="xui-toggle__switch" [class.is-active]="value"></div>    {{ placeholder }}  </label></div></div>'
     var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'ActionbarComponent', 'selector': 'ec-actionbar'},{'name': 'AdminEntryInputComponent', 'selector': ''},{'name': 'ApiActionbarComponent', 'selector': 'ec-api-actionbar'},{'name': 'AssetgroupSelectComponent', 'selector': 'ec-assetgroup-select'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DaterangeComponent', 'selector': 'ec-daterange'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EntryActionbarComponent', 'selector': 'ec-entry-actionbar'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryListPopComponent', 'selector': 'ec-entry-list-pop'},{'name': 'EntryListSelectComponent', 'selector': 'ec-entry-list-select'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'HeatmapComponent', 'selector': 'ec-heatmap'},{'name': 'IconComponent', 'selector': 'ec-icon'},{'name': 'ImageSelectPopComponent', 'selector': 'ec-image-select-pop'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LocationMapComponent', 'selector': 'ec-location-map'},{'name': 'LocationPickerComponent', 'selector': 'ec-location-picker'},{'name': 'LocationSearchComponent', 'selector': 'ec-location-search'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'ModalComponent', 'selector': 'ec-modal'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceActionbarComponent', 'selector': 'ec-resource-actionbar'},{'name': 'ResourceCrudComponent', 'selector': 'ec-resource-crud'},{'name': 'ResourceDeletePopComponent', 'selector': 'ec-resource-delete-pop'},{'name': 'ResourceFormComponent', 'selector': 'ec-resource-form'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'ResourceListPopComponent', 'selector': 'ec-resource-list-pop'},{'name': 'ResourcePopComponent', 'selector': 'ec-resource-pop'},{'name': 'ResourceSelectComponent', 'selector': 'ec-resource-select'},{'name': 'SearchbarComponent', 'selector': 'ec-searchbar'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SignupComponent', 'selector': 'ec-signup'},{'name': 'SignupFormComponent', 'selector': 'ec-signup-form'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TagSelectComponent', 'selector': 'ec-tag-select'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'UploadComponent', 'selector': 'ec-upload'},{'name': 'UploadSelectComponent', 'selector': 'ec-upload-select'}];
     var DIRECTIVES = [{'name': 'AssetDirective', 'selector': '[ecAsset]'},{'name': 'DropzoneDirective', 'selector': '[ecDropzone]'},{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'FocusDirective', 'selector': '[ecFocus]'},{'name': 'ImageDirective', 'selector': 'img [ecImage]'},{'name': 'SlotHostDirective', 'selector': '[ecSlotHost]'}];
     var ACTUAL_COMPONENT = {'name': 'ToggleComponent'};

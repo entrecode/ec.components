@@ -22,7 +22,7 @@
     </div>
     <div class="field-group ec-field-group_boolean">
       <label class="field-group__label">boolean {{ myBoolean }}</label>
-      <ec-input [config]="{ view: 'boolean' }" [(ngModel)]="myBoolean"></ec-input>
+      <ec-input [config]="{ view: 'boolean', property: 'boolean' }" [(ngModel)]="myBoolean"></ec-input>
     </div>
     <div class="field-group">
       <label class="field-group__label">email {{ myEmail }} </label>
@@ -34,7 +34,7 @@
     </div>
     <div class="field-group">
       <label class="field-group__label">toggle {{ myToggle }} </label>
-      <ec-input [config]="{ view: 'toggle' }" [(ngModel)]="myToggle"></ec-input>
+      <ec-input [config]="{ view: 'toggle', property: 'toggle' }" [(ngModel)]="myToggle"></ec-input>
     </div>
     <div class="field-group">
       <label class="field-group__label">date {{ myDate }}</label>

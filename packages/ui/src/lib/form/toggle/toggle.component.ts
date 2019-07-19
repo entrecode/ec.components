@@ -19,6 +19,7 @@ export class ToggleComponent implements ControlValueAccessor {
   value: boolean;
   /** The toggles placeholder (currently not in use) */
   @Input() placeholder: string;
+  @Input() id = 'toggle' + Date.now();
 
   /** Toggles the value */
   toggle() {
@@ -30,11 +31,11 @@ export class ToggleComponent implements ControlValueAccessor {
     this.value = value;
   }
   /* Propagates change*/
-  propagateChange = (_: any) => {};
+  propagateChange = (_: any) => { };
   /** Registers change callback */
   registerOnChange(fn) {
     this.propagateChange = fn;
   }
   /** Register Touch */
-  registerOnTouched() {}
+  registerOnTouched() { }
 }

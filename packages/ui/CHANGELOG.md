@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.45.3](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.45.2...@ec.components/ui@0.45.3) (2019-07-19)
+
+
+### Bug Fixes
+
+* ec-toggle ([e54f950](https://github.com/entrecode/ec.components/commit/e54f950))
+* show select value when readOnly ([5bad1fb](https://github.com/entrecode/ec.components/commit/5bad1fb))
+* toggle ([77b8aac](https://github.com/entrecode/ec.components/commit/77b8aac))
+
+
+
+
+
 ## [0.45.2](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.45.1...@ec.components/ui@0.45.2) (2019-07-05)
 
 

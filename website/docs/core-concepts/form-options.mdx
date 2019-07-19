@@ -112,6 +112,7 @@ The following field options control the forms looks/behaviour:
 | field.formComponent | custom input component used in form only                   | Component               |
 | field.inputView     | view for input component                                   | string                  |
 | field.validate      | transformation for form validation                         | transformation function |
+| field.changed       | callback when a field changes                              | (value, form)           |
 
 ## validate
 
@@ -374,7 +375,7 @@ Extending InputComponent enables you to use the following properties in your tem
 - field Field instance
 - item Item instance
 - config
-- property 
+- property
 
 ```html
 <div [ngSwitch]="field.getView('input')" *ngIf="group" [formGroup]="group">
