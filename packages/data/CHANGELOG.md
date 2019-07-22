@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.50.5](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.50.4...@ec.components/data@0.50.5) (2019-07-22)
+
+
+### Bug Fixes
+
+* hide bool label, fix inputView config ([bdbe0d1](https://github.com/entrecode/ec.components/commit/bdbe0d1))
+
+
+
+
+
 ## [0.50.4](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.50.3...@ec.components/data@0.50.4) (2019-07-19)
 
 **Note:** Version bump only for package @ec.components/data

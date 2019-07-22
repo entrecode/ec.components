@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.45.4](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.45.3...@ec.components/ui@0.45.4) (2019-07-22)
+
+
+### Bug Fixes
+
+* hide bool label, fix inputView config ([bdbe0d1](https://github.com/entrecode/ec.components/commit/bdbe0d1))
+
+
+
+
+
 ## [0.45.3](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.45.2...@ec.components/ui@0.45.3) (2019-07-19)
 
 

@@ -191,7 +191,7 @@ export class ModelConfigService extends Config {
               typeConfig,
               {
                 placeholder: placeholder || typeConfig.placeholder,
-                inputView: inputView || typeConfig.inputView || type,
+                inputView: inputView || typeConfig.inputView,
               },
             );
           },

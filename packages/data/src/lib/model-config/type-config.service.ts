@@ -39,6 +39,7 @@ export class TypeConfigService {
       ],
     },
     boolean: {
+      hideFormLabel: true,
       prefill: false,
       filterable: true,
       filterOperator: 'exact',
@@ -186,7 +187,7 @@ export class TypeConfigService {
       filterPopClass: 'ec-pop_dialog',
     },
   };
-  constructor(private symbol: SymbolService) {}
+  constructor(private symbol: SymbolService) { }
 
   /** Returns the base FieldConfig for the given type. */
   get(type: string): FieldConfigProperty {
