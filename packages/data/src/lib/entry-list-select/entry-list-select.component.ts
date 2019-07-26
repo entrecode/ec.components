@@ -116,7 +116,6 @@ export class EntryListSelectComponent extends InputComponent implements ControlV
     this.items = this.selection.items.map((item) => item.getBody());
     this.cdr.markForCheck();
     this.selection.update$.subscribe(() => {
-      console.log('update selection');
       this.items = this.selection.items.map((item) => item.getBody());
       this.propagateChange(this.selection.getValue());
       this.cdr.markForCheck();
