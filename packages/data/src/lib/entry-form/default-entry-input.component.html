@@ -1,11 +1,17 @@
 <div [ngSwitch]="field.inputView||field.type" *ngIf="group" [formGroup]="group">
   <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>
   <div *ngSwitchCase="'entry-select'">
+    <div *ngIf="!field['relation']">
+        <marquee>🚂🚃🚃🚃 Caution: Using single entry fields without validation is experimental</marquee>
+    </div>
     <ec-entry-select [focusEvent]="focusEvent" [placeholder]="field.placeholder" [formControl]="group.get(field.property)"
       [model]="field['relation']" [id]="field.id" [solo]="true" [config]="field.nestedCrudConfig"></ec-entry-select>
   </div>
   <div *ngSwitchCase="'entries-select'">
-    <ec-entry-select [focusEvent]="focusEvent" [placeholder]="field.placeholder" [formControl]="group.get(field.property)"
+    <div *ngIf="!field['relation']">
+        <marquee>🚂🚃🚃🚃 No model set in field validation. Use inputView "entries-actionbar" or set validation...</marquee>
+    </div>
+    <ec-entry-select *ngIf="field['relation']" [focusEvent]="focusEvent" [placeholder]="field.placeholder" [formControl]="group.get(field.property)"
       [model]="field['relation']" [id]="field.id" [config]="field.nestedCrudConfig"></ec-entry-select>
   </div>
   <div *ngSwitchCase="'entries-actionbar'">
@@ -15,26 +21,29 @@
   <div *ngSwitchCase="'entry-list-select'">
     <!--  [placeholder]="field.placeholder" -->
     <!--  [config]="field.nestedCrudConfig" -->
-    <ec-entry-list-select [formControl]="group.get(field.property)" [model]="field['relation']" [id]="field.id"
+    <div *ngIf="!field['relation']">
+        <marquee>🚂🚃🚃🚃 No model set in field validation. Use inputView "entries-actionbar" or set validation...</marquee>
+    </div>
+    <ec-entry-list-select *ngIf="field['relation']" [formControl]="group.get(field.property)" [model]="field['relation']" [id]="field.id"
       [listConfig]="field.nestedCrudConfig">
     </ec-entry-list-select>
   </div>
   <div *ngSwitchCase="'asset-select'">
-    <ec-asset-select [readOnly]="field.readOnly" [config]="field.nestedCrudConfig" [placeholder]="field.placeholder"
+    <ec-asset-select [readOnly]="formService.isReadOnly(field, item)" [config]="field.nestedCrudConfig" [placeholder]="field.placeholder"
       [formControl]="group.get(field.property)" [id]="field.id" [solo]="true" assetGroupID="legacyAsset">
     </ec-asset-select>
   </div>
   <div *ngSwitchCase="'assets-select'">
-    <ec-asset-select [readOnly]="field.readOnly" [config]="field.nestedCrudConfig" [placeholder]="field.placeholder"
+    <ec-asset-select [readOnly]="formService.isReadOnly(field, item)" [config]="field.nestedCrudConfig" [placeholder]="field.placeholder"
       [formControl]="group.get(field.property)" [id]="field.id" assetGroupID="legacyAsset"></ec-asset-select>
   </div>
   <div *ngSwitchCase="'dmAsset-select'">
-    <ec-asset-select [readOnly]="field.readOnly" [config]="field.nestedCrudConfig" [placeholder]="field.placeholder"
+    <ec-asset-select [readOnly]="formService.isReadOnly(field, item)" [config]="field.nestedCrudConfig" [placeholder]="field.placeholder"
       [formControl]="group.get(field.property)" [id]="field.id" [solo]="true" [assetGroupID]="field['relation']">
     </ec-asset-select>
   </div>
   <div *ngSwitchCase="'dmAssets-select'">
-    <ec-asset-select [readOnly]="field.readOnly" [config]="field.nestedCrudConfig" [placeholder]="field.placeholder"
+    <ec-asset-select [readOnly]="formService.isReadOnly(field, item)" [config]="field.nestedCrudConfig" [placeholder]="field.placeholder"
       [formControl]="group.get(field.property)" [id]="field.id" [assetGroupID]="field['relation']"></ec-asset-select>
   </div>
   <input *ngSwitchCase="'phone'" type="text" [placeholder]="field.placeholder" [id]="field.id">

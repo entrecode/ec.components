@@ -1,21 +1,15 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, Optional } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, Optional } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ListConfig } from '@ec.components/core';
-import {
-  ListConfigService,
-  LoaderService,
-  NotificationsService,
-  SymbolService,
-  ListComponent,
-} from '@ec.components/ui';
+import { ListConfigService, listTemplate, LoaderService, NotificationsService, SymbolService, componentDestroyed } from '@ec.components/ui';
 import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
+import { takeUntil } from 'rxjs/operators';
 import { EntryService } from '../entry/entry.service';
 import { ModelConfigService } from '../model-config/model-config.service';
 import { ResourceService } from '../resource-config/resource.service';
 import { ResourceListComponent } from '../resource-list/resource-list.component';
 import { SdkService } from '../sdk/sdk.service';
 import { EntryList } from './entry-list';
-import { listTemplate } from '@ec.components/ui';
 
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent
  * <example-url>https://components.entrecode.de/entries/entry-list?e=1</example-url>
@@ -25,7 +19,7 @@ import { listTemplate } from '@ec.components/ui';
   template: listTemplate,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EntryListComponent extends ResourceListComponent {
+export class EntryListComponent extends ResourceListComponent implements OnDestroy {
   /** The model whose entries should be shown.*/
   @Input() model: string;
   /** Overrides the Config of ResourceList with a ListConfig containing an EntryResource */
@@ -71,7 +65,11 @@ export class EntryListComponent extends ResourceListComponent {
     if (!this.model) {
       return;
     }
-    this.resourceService.change({ relation: `model.${this.model}` }).subscribe((update) => this.list.load());
+    this.resourceService.change({ relation: `model.${this.model}` })
+      .pipe(takeUntil(componentDestroyed(this)))
+      .subscribe((update) => {
+        this.list.load();
+      });
     return this.modelConfig
       .generateConfig(this.model, (this.config || {}).fields)
       .then((config: ListConfig<EntryResource>) => {
@@ -79,5 +77,8 @@ export class EntryListComponent extends ResourceListComponent {
         this.initFilter();
         return new EntryList(this.model, this.config, this.sdk);
       });
+  }
+
+  ngOnDestroy() {
   }
 }

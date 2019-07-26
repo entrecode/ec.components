@@ -12,7 +12,6 @@ import {
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Field, FieldConfigProperty, Form, FormConfig, Item, ItemConfig } from '@ec.components/core';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { InputComponent } from '../io/input/input.component';
 import { LoaderComponent } from '../loader/loader.component';
 import { LoaderService } from '../loader/loader.service';
@@ -23,6 +22,7 @@ import { WithNotifications } from '../notifications/with-notifications.interface
 import { SymbolService } from '../symbol/symbol.service';
 import { formTemplate } from './form.component.html';
 import { FormService } from './form.service';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 /** This component renders a form using a FieldConfig Object.
  *
@@ -81,7 +81,7 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
     public formService: FormService,
     protected symbol: SymbolService,
     protected cdr: ChangeDetectorRef,
-  ) {}
+  ) { }
 
   /** On change, the form instance is (re)created by combining all inputs.
    * If no item is given, an empty form is created using the config.
@@ -137,8 +137,10 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
       const control = this.group.controls[property];
       control.valueChanges
         // TODO: remove when fixed: https://github.com/angular/angular/issues/12540
-        .pipe(distinctUntilChanged((a, b) => JSON.stringify(a) === JSON.stringify(b)))
-        .pipe(debounceTime(this.debounceTime))
+        .pipe(
+          distinctUntilChanged((a, b) => JSON.stringify(a) === JSON.stringify(b)),
+          debounceTime(this.debounceTime),
+        )
         .subscribe((value) => {
           const changedField = this.form.getField(property);
           if (changedField.changed) {
@@ -149,8 +151,10 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
 
     this.group.valueChanges
       // TODO: remove when fixed: https://github.com/angular/angular/issues/12540
-      .pipe(distinctUntilChanged((a, b) => JSON.stringify(a) === JSON.stringify(b)))
-      .pipe(debounceTime(this.debounceTime))
+      .pipe(
+        distinctUntilChanged((a, b) => JSON.stringify(a) === JSON.stringify(b)),
+        debounceTime(this.debounceTime)
+      )
       .subscribe((change) => {
         this.changed.emit(this);
       });

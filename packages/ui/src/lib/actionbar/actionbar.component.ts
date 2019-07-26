@@ -14,7 +14,7 @@ export interface Action {
   action?: ActionFunction;
 }
 
-export interface ActionbarConfig extends ListConfig<Action> {}
+export interface ActionbarConfig extends ListConfig<Action> { }
 
 @Component({
   selector: 'ec-actionbar',
@@ -44,7 +44,7 @@ export class ActionbarComponent extends SelectComponent<Action> implements OnIni
       if (item.getBody().children) {
         this.loadActions(item.getBody().children);
       }
-      this.searchbar.clear();
+      // this.searchbar.clear();
     });
     this.remove.subscribe((item) => {
       this.selection.remove(item);
@@ -89,7 +89,10 @@ export class ActionbarComponent extends SelectComponent<Action> implements OnIni
     if (addToStack) {
       this.actionStack[this.currentID()] = actions;
     }
-    this.list = new List(resolved, this.config);
+    this.list = new List(resolved, { size: 1000, ...this.config });
+    if (resolved.length > this.list.config) {
+      console.warn('actions exceed list size...');
+    }
     if (!this.selection) {
       this.initSelection();
     }

@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 import { IoModule } from '../io/io.module';
 import { FocusDirective } from './focus/focus.directive';
 import { LoginFormComponent } from './login-form/login-form.component';
-import { MenuComponent } from './menu/menu.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { TabComponent } from './tab/tab.component';
 import { TabsComponent } from './tabs/tabs.component';
@@ -13,7 +12,7 @@ import { KeycommandsService } from './keycommands/keycommands.service';
 
 export const utilityModuleConfig = {
   entryComponents: [],
-  declarations: [TabsComponent, TabComponent, MenuComponent, LoginFormComponent, SignupFormComponent, FocusDirective],
+  declarations: [TabsComponent, TabComponent, LoginFormComponent, SignupFormComponent, FocusDirective],
   imports: [FormsModule, ReactiveFormsModule, IoModule, CommonModule, RouterModule],
   exports: [
     /* FormsModule,
@@ -22,7 +21,6 @@ export const utilityModuleConfig = {
     */
     TabsComponent,
     TabComponent,
-    MenuComponent,
     LoginFormComponent,
     SignupFormComponent,
     FocusDirective,

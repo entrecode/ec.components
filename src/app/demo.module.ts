@@ -64,12 +64,14 @@ import { EntryListSelectDemoComponent } from './entry-list-select/entry-list-sel
 import { FormsModule } from '@angular/forms';
 import { CalendarModule } from '@ec.components/calendar';
 import { KeycommandsDemoComponent } from './keycommands/keycommands-demo.component';
+import { MenuComponent } from './menu/menu.component';
 /* import { CalendarModule } from '../../packages/calendar/src/calendar.module'; */
 
 export const demoModuleConfig = {
   entryComponents: [CoolStringComponent, UnsplashImageComponent, CounterComponent, TinyInputComponent],
   declarations: [
     GithubSourceComponent,
+    MenuComponent,
     GithubSourcesComponent,
     DoclinksComponent,
     DemoDashboardComponent,
@@ -157,8 +159,7 @@ export const demoModuleConfig = {
 
 @NgModule(demoModuleConfig)
 export class DemoModule {
-  constructor() /* private symbol: SymbolService */
-  {
+  constructor() /* private symbol: SymbolService */ {
     /* this.symbol.use(en); */
     /* moment.locale(this.symbol.resolve('moment.locale')); */
   }

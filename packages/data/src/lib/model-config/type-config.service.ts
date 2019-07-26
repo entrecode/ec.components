@@ -36,6 +36,12 @@ export class TypeConfigService {
         {
           name: 'color',
         },
+        {
+          name: 'copy',
+        },
+        {
+          name: 'textarea',
+        },
       ],
     },
     boolean: {
@@ -43,6 +49,14 @@ export class TypeConfigService {
       prefill: false,
       filterable: true,
       filterOperator: 'exact',
+      inputViews: [
+        {
+          name: 'boolean',
+        },
+        {
+          name: 'toggle',
+        },
+      ],
     },
     formattedText: {
       view: 'textarea',

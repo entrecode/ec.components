@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.45.6](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.45.5...@ec.components/ui@0.45.6) (2019-07-26)
+
+
+### Bug Fixes
+
+* added componentDestroyed method ([bd36bc0](https://github.com/entrecode/ec.components/commit/bd36bc0))
+* COM-280 move menu.component to graveyard ([7966a71](https://github.com/entrecode/ec.components/commit/7966a71))
+* entry actionbar load more ([19a5130](https://github.com/entrecode/ec.components/commit/19a5130))
+* use comma seperator in rxjs pipe ([86181ad](https://github.com/entrecode/ec.components/commit/86181ad))
+
+
+
+
+
 ## [0.45.5](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.45.4...@ec.components/ui@0.45.5) (2019-07-26)
 
 

@@ -95,7 +95,7 @@ export interface Action {
   action?: ActionFunction;
 }
 
-export interface ActionbarConfig extends ListConfig&lt;Action&gt; {}
+export interface ActionbarConfig extends ListConfig&lt;Action&gt; { }
 
 @Component({
   selector: &#x27;ec-actionbar&#x27;,
@@ -125,7 +125,7 @@ export class ActionbarComponent extends SelectComponent&lt;Action&gt; implements
       if (item.getBody().children) {
         this.loadActions(item.getBody().children);
       }
-      this.searchbar.clear();
+      // this.searchbar.clear();
     });
     this.remove.subscribe((item) &#x3D;&gt; {
       this.selection.remove(item);
@@ -170,7 +170,10 @@ export class ActionbarComponent extends SelectComponent&lt;Action&gt; implements
     if (addToStack) {
       this.actionStack[this.currentID()] &#x3D; actions;
     }
-    this.list &#x3D; new List(resolved, this.config);
+    this.list &#x3D; new List(resolved, { size: 1000, ...this.config });
+    if (resolved.length &gt; this.list.config) {
+      console.warn(&#x27;actions exceed list size...&#x27;);
+    }
     if (!this.selection) {
       this.initSelection();
     }

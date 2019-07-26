@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.50.8](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.50.7...@ec.components/data@0.50.8) (2019-07-26)
+
+
+### Bug Fixes
+
+* added additional inputViews to type config ([fed2156](https://github.com/entrecode/ec.components/commit/fed2156))
+* COM-265 ([107d1de](https://github.com/entrecode/ec.components/commit/107d1de))
+* COM-275 ([df82333](https://github.com/entrecode/ec.components/commit/df82333))
+* Com-303 ([219a51a](https://github.com/entrecode/ec.components/commit/219a51a))
+* entry actionbar load more ([19a5130](https://github.com/entrecode/ec.components/commit/19a5130))
+* error when using incompatible entry view ([e40056b](https://github.com/entrecode/ec.components/commit/e40056b))
+* remove log ([fecb195](https://github.com/entrecode/ec.components/commit/fecb195))
+
+
+
+
+
 ## [0.50.7](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.50.6...@ec.components/data@0.50.7) (2019-07-26)
 
 

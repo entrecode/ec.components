@@ -130,6 +130,7 @@ export class EntryListSelectComponent extends InputComponent implements ControlV
       // already in selection => update body
       const index = this.selection.index(form);
       this.selection.items[index].body = form.getBody();
+      this.selection['update'].next(this.selection); // trigger update manually
     }
   }
 
@@ -147,11 +148,11 @@ export class EntryListSelectComponent extends InputComponent implements ControlV
   }
 
   /** Propagates formControl/ngModel changes */
-  propagateChange = (_: any) => {};
+  propagateChange = (_: any) => { };
   /** registers change method. (handled by angular) */
   registerOnChange(fn) {
     this.propagateChange = fn;
   }
 
-  registerOnTouched() {}
+  registerOnTouched() { }
 }

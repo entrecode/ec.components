@@ -57,9 +57,9 @@ export class EntryListPopComponent extends PopComponent implements OnChanges {
   }
   getHeader(entryList) {
     const label = this.config.singularLabel || `${entryList.model}`;
-    if (!this.selection.isEmpty()) {
-      return `${label}: ${this.selection.items.length} selected`;
+    if (!this.selection || this.selection.isEmpty()) {
+      return `${label}`;
     }
-    return `${label}`;
+    return `${label}: ${this.selection.items.length} selected`;
   }
 }
