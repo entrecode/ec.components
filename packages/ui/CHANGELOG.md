@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.45.5](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.45.4...@ec.components/ui@0.45.5) (2019-07-26)
+
+
+### Bug Fixes
+
+* COM-302 ([5d1aae3](https://github.com/entrecode/ec.components/commit/5d1aae3))
+
+
+
+
+
 ## [0.45.4](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.45.3...@ec.components/ui@0.45.4) (2019-07-22)
 
 
