@@ -225,6 +225,9 @@
                                 <a href="#getModelActions">getModelActions</a>
                             </li>
                             <li>
+                                <a href="#getNextPageAction">getNextPageAction</a>
+                            </li>
+                            <li>
                                     <span class="modifier">Async</span>
                                 <a href="#loadEntryActions">loadEntryActions</a>
                             </li>
@@ -1304,8 +1307,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="100"
-                            class="link-to-prism">packages/data/src/lib/entry-actionbar/entry-actionbar.component.ts:100</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="125"
+                            class="link-to-prism">packages/data/src/lib/entry-actionbar/entry-actionbar.component.ts:125</a></div>
                 </td>
             </tr>
 
@@ -1469,6 +1472,72 @@
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="../interfaces/Action.html" target="_self" >Promise&lt;Action[]&gt;</a></code>
 
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getNextPageAction"></a>
+                    <span class="name">
+                        <b>
+                            getNextPageAction
+                        </b>
+                        <a href="#getNextPageAction"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getNextPageAction(entryList)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="97"
+                            class="link-to-prism">packages/data/src/lib/entry-actionbar/entry-actionbar.component.ts:97</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>entryList</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>{ id: string; title: string; select: boolean; action: () &#x3D;&gt; any; }</code>
+
+                    </div>
+                    <div class="io-description">
+                        
                     </div>
                 </td>
             </tr>
@@ -1665,8 +1734,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="93"
-                            class="link-to-prism">packages/data/src/lib/entry-actionbar/entry-actionbar.component.ts:93</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="118"
+                            class="link-to-prism">packages/data/src/lib/entry-actionbar/entry-actionbar.component.ts:118</a></div>
                 </td>
             </tr>
 
@@ -1827,7 +1896,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../interfaces/Action.html#source" target="_self" >ActionbarComponent:103</a></code>
+                        <div class="io-line">Defined in         <code><a href="../interfaces/Action.html#source" target="_self" >ActionbarComponent:106</a></code>
 </div>
                 </td>
             </tr>
@@ -4793,7 +4862,32 @@ export class EntryActionbarComponent extends ActionbarComponent implements OnIni
       select: false,
       action: () &#x3D;&gt; this.loadModelActions(),
     });
+    const nextPageAction &#x3D; this.getNextPageAction(entryList);
+    if (nextPageAction) {
+      entryActions.push(nextPageAction);
+    }
     this.loadActions(entryActions);
+  }
+
+  getNextPageAction(entryList) {
+    if (entryList.hasNextLink()) {
+      return {
+        id: &#x27;load-next-page&#x27;,
+        title: &#x27;Load More...&#x27;,
+        select: false,
+        action: async () &#x3D;&gt; {
+          const nextPage &#x3D; await entryList.followNextLink();
+          const entryActions: any[] &#x3D; nextPage.getAllItems().map((entry) &#x3D;&gt; this.getEntryAction(entry));
+          const allActions &#x3D; (this.currentActions() || []).filter(a &#x3D;&gt; a.id !&#x3D;&#x3D; &#x27;load-next-page&#x27;).concat(entryActions);
+          const nextPageAction &#x3D; this.getNextPageAction(nextPage);
+          if (nextPageAction) {
+            allActions.push(nextPageAction);
+          }
+          this.loadActions(allActions);
+
+        }
+      };
+    }
   }
 
   writeValue(value) {
@@ -4842,7 +4936,7 @@ export class EntryActionbarComponent extends ActionbarComponent implements OnIni
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div>selectTemplate</div>'
-    var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'ActionbarComponent', 'selector': 'ec-actionbar'},{'name': 'AdminEntryInputComponent', 'selector': ''},{'name': 'ApiActionbarComponent', 'selector': 'ec-api-actionbar'},{'name': 'AssetgroupSelectComponent', 'selector': 'ec-assetgroup-select'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DaterangeComponent', 'selector': 'ec-daterange'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EntryActionbarComponent', 'selector': 'ec-entry-actionbar'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryListPopComponent', 'selector': 'ec-entry-list-pop'},{'name': 'EntryListSelectComponent', 'selector': 'ec-entry-list-select'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'HeatmapComponent', 'selector': 'ec-heatmap'},{'name': 'IconComponent', 'selector': 'ec-icon'},{'name': 'ImageSelectPopComponent', 'selector': 'ec-image-select-pop'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LocationMapComponent', 'selector': 'ec-location-map'},{'name': 'LocationPickerComponent', 'selector': 'ec-location-picker'},{'name': 'LocationSearchComponent', 'selector': 'ec-location-search'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'MenuComponent', 'selector': 'ec-menu,[ec-menu]'},{'name': 'ModalComponent', 'selector': 'ec-modal'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceActionbarComponent', 'selector': 'ec-resource-actionbar'},{'name': 'ResourceCrudComponent', 'selector': 'ec-resource-crud'},{'name': 'ResourceDeletePopComponent', 'selector': 'ec-resource-delete-pop'},{'name': 'ResourceFormComponent', 'selector': 'ec-resource-form'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'ResourceListPopComponent', 'selector': 'ec-resource-list-pop'},{'name': 'ResourcePopComponent', 'selector': 'ec-resource-pop'},{'name': 'ResourceSelectComponent', 'selector': 'ec-resource-select'},{'name': 'SearchbarComponent', 'selector': 'ec-searchbar'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SignupComponent', 'selector': 'ec-signup'},{'name': 'SignupFormComponent', 'selector': 'ec-signup-form'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TagSelectComponent', 'selector': 'ec-tag-select'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'UploadComponent', 'selector': 'ec-upload'},{'name': 'UploadSelectComponent', 'selector': 'ec-upload-select'}];
+    var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'ActionbarComponent', 'selector': 'ec-actionbar'},{'name': 'AdminEntryInputComponent', 'selector': ''},{'name': 'ApiActionbarComponent', 'selector': 'ec-api-actionbar'},{'name': 'AssetgroupSelectComponent', 'selector': 'ec-assetgroup-select'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DaterangeComponent', 'selector': 'ec-daterange'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EntryActionbarComponent', 'selector': 'ec-entry-actionbar'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryListPopComponent', 'selector': 'ec-entry-list-pop'},{'name': 'EntryListSelectComponent', 'selector': 'ec-entry-list-select'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'HeatmapComponent', 'selector': 'ec-heatmap'},{'name': 'IconComponent', 'selector': 'ec-icon'},{'name': 'ImageSelectPopComponent', 'selector': 'ec-image-select-pop'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LocationMapComponent', 'selector': 'ec-location-map'},{'name': 'LocationPickerComponent', 'selector': 'ec-location-picker'},{'name': 'LocationSearchComponent', 'selector': 'ec-location-search'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'ModalComponent', 'selector': 'ec-modal'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceActionbarComponent', 'selector': 'ec-resource-actionbar'},{'name': 'ResourceCrudComponent', 'selector': 'ec-resource-crud'},{'name': 'ResourceDeletePopComponent', 'selector': 'ec-resource-delete-pop'},{'name': 'ResourceFormComponent', 'selector': 'ec-resource-form'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'ResourceListPopComponent', 'selector': 'ec-resource-list-pop'},{'name': 'ResourcePopComponent', 'selector': 'ec-resource-pop'},{'name': 'ResourceSelectComponent', 'selector': 'ec-resource-select'},{'name': 'SearchbarComponent', 'selector': 'ec-searchbar'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SignupComponent', 'selector': 'ec-signup'},{'name': 'SignupFormComponent', 'selector': 'ec-signup-form'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TagSelectComponent', 'selector': 'ec-tag-select'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'UploadComponent', 'selector': 'ec-upload'},{'name': 'UploadSelectComponent', 'selector': 'ec-upload-select'}];
     var DIRECTIVES = [{'name': 'AssetDirective', 'selector': '[ecAsset]'},{'name': 'DropzoneDirective', 'selector': '[ecDropzone]'},{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'FocusDirective', 'selector': '[ecFocus]'},{'name': 'ImageDirective', 'selector': 'img [ecImage]'},{'name': 'SlotHostDirective', 'selector': '[ecSlotHost]'}];
     var ACTUAL_COMPONENT = {'name': 'EntryActionbarComponent'};
 </script>
