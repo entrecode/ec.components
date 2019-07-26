@@ -37,7 +37,7 @@
 
   <label *ngSwitchCase="'boolean'">
     <input [id]="field.id" type="checkbox" [formControl]="control" />
-    {{ field.placeholder }}
+    {{ field.getPlaceholder() }}
   </label>
 
   <input
