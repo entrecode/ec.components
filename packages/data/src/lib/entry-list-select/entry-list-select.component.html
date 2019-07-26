@@ -1,10 +1,20 @@
 <ec-entry-list-pop #entryListPop [model]="model" [selection]="selection"></ec-entry-list-pop>
-<ec-list [config]="selectionConfig" [items]="items" (columnClicked)="entryPop.edit($event.getBody())" #selectionList></ec-list>
-<ec-entry-pop [model]="model" #entryPop (submitted)="formSubmitted($event)" (deleted)="removeItem($event)"></ec-entry-pop>
+<ec-list
+  [config]="selectionConfig"
+  [items]="items"
+  (columnClicked)="entryPop.edit($event.getBody())"
+  #selectionList
+></ec-list>
+<ec-entry-pop
+  [model]="model"
+  #entryPop
+  (submitted)="formSubmitted($event)"
+  (deleted)="removeItem($event)"
+></ec-entry-pop>
 
-<a class="btn btn_clear btn_square" (click)="entryPop.create()" *ngIf="!disabled&&model">
-    <ec-icon name="add"></ec-icon>
+<a class="btn btn_clear btn_square" (click)="entryPop.create()" *ngIf="!disabled && model">
+  <ec-icon name="add"></ec-icon>
 </a>
 <a class="btn btn_clear btn_square" (click)="entryListPop.show()" *ngIf="!disabled">
-    <ec-icon name="search"></ec-icon>
+  <ec-icon name="search"></ec-icon>
 </a>

@@ -1,11 +1,17 @@
 <div [ngSwitch]="field.inputView||field.type" *ngIf="group" [formGroup]="group">
   <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>
   <div *ngSwitchCase="'entry-select'">
+    <div *ngIf="!field['relation']">
+        <marquee>🚂🚃🚃🚃 Caution: Using single entry fields without validation is experimental</marquee>
+    </div>
     <ec-entry-select [focusEvent]="focusEvent" [placeholder]="field.placeholder" [formControl]="group.get(field.property)"
       [model]="field['relation']" [id]="field.id" [solo]="true" [config]="field.nestedCrudConfig"></ec-entry-select>
   </div>
   <div *ngSwitchCase="'entries-select'">
-    <ec-entry-select [focusEvent]="focusEvent" [placeholder]="field.placeholder" [formControl]="group.get(field.property)"
+    <div *ngIf="!field['relation']">
+        <marquee>🚂🚃🚃🚃 No model set in field validation. Use inputView "entries-actionbar" or set validation...</marquee>
+    </div>
+    <ec-entry-select *ngIf="field['relation']" [focusEvent]="focusEvent" [placeholder]="field.placeholder" [formControl]="group.get(field.property)"
       [model]="field['relation']" [id]="field.id" [config]="field.nestedCrudConfig"></ec-entry-select>
   </div>
   <div *ngSwitchCase="'entries-actionbar'">
@@ -15,7 +21,10 @@
   <div *ngSwitchCase="'entry-list-select'">
     <!--  [placeholder]="field.placeholder" -->
     <!--  [config]="field.nestedCrudConfig" -->
-    <ec-entry-list-select [formControl]="group.get(field.property)" [model]="field['relation']" [id]="field.id"
+    <div *ngIf="!field['relation']">
+        <marquee>🚂🚃🚃🚃 No model set in field validation. Use inputView "entries-actionbar" or set validation...</marquee>
+    </div>
+    <ec-entry-list-select *ngIf="field['relation']" [formControl]="group.get(field.property)" [model]="field['relation']" [id]="field.id"
       [listConfig]="field.nestedCrudConfig">
     </ec-entry-list-select>
   </div>
