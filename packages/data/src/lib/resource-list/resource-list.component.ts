@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges, Optional } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges, Optional, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {
   ListComponent,
@@ -9,6 +9,7 @@ import {
   SymbolService,
   WithLoader,
   listTemplate,
+  componentDestroyed,
 } from '@ec.components/ui';
 import Core from 'ec.sdk/lib/Core';
 import ListResource from 'ec.sdk/lib/resources/ListResource';
@@ -17,6 +18,7 @@ import { ResourceConfig } from '../resource-config/resource-config.service';
 import { ResourceService } from '../resource-config/resource.service';
 import { SdkService } from '../sdk/sdk.service';
 import { ResourceList } from './resource-list';
+import { takeUntil } from 'rxjs/operators';
 
 /** The ResourceListComponent is an extension of ListComponent for SDK ListResources.
  * It is meant to be extended and overriden the createList method. See e.g. AssetListComponent. */
@@ -25,7 +27,7 @@ import { ResourceList } from './resource-list';
   template: listTemplate,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ResourceListComponent extends ListComponent<Resource> implements OnChanges, WithLoader {
+export class ResourceListComponent extends ListComponent<Resource> implements OnChanges, WithLoader, OnDestroy {
   resourceConfig: ResourceConfig;
   /** If listResource input is set, the given ListResource will be used directly and loading will be skipped. */
   @Input() listResource: ListResource;
@@ -71,11 +73,16 @@ export class ResourceListComponent extends ListComponent<Resource> implements On
     const namespace = this.relation.split('.')[0];
     this.config = Object.assign({}, this.resourceConfig.get(namespace) || {}, this.config || {});
 
-    this.resourceService.change({ relation: namespace }).subscribe((update) => {
-      this.list.load();
-    });
+    this.resourceService.change({ relation: namespace })
+      .pipe(takeUntil(componentDestroyed(this)))
+      .subscribe((update) => {
+        this.list.load();
+      });
 
     return new ResourceList(this.config, this.api, this.relation, this.listResource);
+  }
+
+  ngOnDestroy() {
   }
 
   /** Creates/Updates the list and subscribes Observables.  */
