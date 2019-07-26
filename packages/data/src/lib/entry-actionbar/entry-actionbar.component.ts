@@ -87,7 +87,32 @@ export class EntryActionbarComponent extends ActionbarComponent implements OnIni
       select: false,
       action: () => this.loadModelActions(),
     });
+    const nextPageAction = this.getNextPageAction(entryList);
+    if (nextPageAction) {
+      entryActions.push(nextPageAction);
+    }
     this.loadActions(entryActions);
+  }
+
+  getNextPageAction(entryList) {
+    if (entryList.hasNextLink()) {
+      return {
+        id: 'load-next-page',
+        title: 'Load More...',
+        select: false,
+        action: async () => {
+          const nextPage = await entryList.followNextLink();
+          const entryActions: any[] = nextPage.getAllItems().map((entry) => this.getEntryAction(entry));
+          const allActions = (this.currentActions() || []).filter(a => a.id !== 'load-next-page').concat(entryActions);
+          const nextPageAction = this.getNextPageAction(nextPage);
+          if (nextPageAction) {
+            allActions.push(nextPageAction);
+          }
+          this.loadActions(allActions);
+
+        }
+      };
+    }
   }
 
   writeValue(value) {
