@@ -39,7 +39,7 @@ export class TypeConfigService {
       ],
     },
     boolean: {
-      // hideFormLabel: true,
+      hideFormLabel: true,
       prefill: false,
       filterable: true,
       filterOperator: 'exact',

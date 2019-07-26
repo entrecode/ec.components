@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.50.7](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.50.6...@ec.components/data@0.50.7) (2019-07-26)
+
+
+### Bug Fixes
+
+* COM-302 ([5d1aae3](https://github.com/entrecode/ec.components/commit/5d1aae3))
+
+
+
+
+
 ## [0.50.6](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.50.5...@ec.components/data@0.50.6) (2019-07-26)
 
 
