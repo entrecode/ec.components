@@ -1076,7 +1076,7 @@ export class ModelConfigService extends Config {
       _creator: {
         label: this.symbol.resolve(&#x27;field.label.creator&#x27;),
         display: this.typeConfig.displayAccount(),
-        copy: (value) &#x3D;&gt; this.typeConfig.displayAccount(),
+        copy: this.typeConfig.displayAccount(),
         create: false,
         type: &#x27;account&#x27;,
         view: &#x27;copy&#x27;,
