@@ -99,7 +99,7 @@ export class ModelConfigService extends Config {
       _creator: {
         label: this.symbol.resolve('field.label.creator'),
         display: this.typeConfig.displayAccount(),
-        copy: (value) => value,
+        copy: (value) => this.typeConfig.displayAccount(),
         create: false,
         type: 'account',
         view: 'copy',

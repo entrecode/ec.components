@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.50.9](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.50.8...@ec.components/data@0.50.9) (2019-08-01)
+
+
+### Bug Fixes
+
+* EDITOR-392 ([547bc03](https://github.com/entrecode/ec.components/commit/547bc03))
+
+
+
+
+
 ## [0.50.8](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.50.7...@ec.components/data@0.50.8) (2019-07-26)
 
 
