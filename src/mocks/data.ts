@@ -233,50 +233,6 @@ export const mocked = {
         },
       },
     ),
-    pop_test: new List([], {
-      fields: {
-        defaultClass: {
-          label: 'default',
-          filterable: true,
-          view: 'string',
-        },
-        fullscreen: {
-          filterPopClass: 'ec-pop_fullscreen',
-          filterable: true,
-          view: 'string',
-        },
-        dialog: {
-          filterPopClass: 'dialog ec-pop_overlay',
-          filterable: true,
-          view: 'string',
-        },
-        'drawer-left': {
-          filterPopClass: 'ec-pop_drawer-left',
-          filterable: true,
-          view: 'string',
-        },
-        'drawer-right': {
-          filterPopClass: 'ec-pop_drawer-right',
-          filterable: true,
-          view: 'string',
-        },
-        'drawer-top': {
-          filterPopClass: 'ec-pop_drawer-top',
-          filterable: true,
-          view: 'string',
-        },
-        'drawer-bottom': {
-          filterPopClass: 'ec-pop_drawer-bottom',
-          filterable: true,
-          view: 'string',
-        },
-        'toast-top': {
-          filterPopClass: 'ec-pop_toast-top',
-          filterable: true,
-          view: 'string',
-        },
-      },
-    }),
   },
 };
 

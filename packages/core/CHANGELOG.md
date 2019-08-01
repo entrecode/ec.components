@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.28.0](https://github.com/entrecode/ec.components/compare/@ec.components/core@0.27.0...@ec.components/core@0.28.0) (2019-08-01)
+
+
+### Features
+
+* added outputViews + refactored type-config ([3cbb157](https://github.com/entrecode/ec.components/commit/3cbb157))
+
+
+
+
+
 # [0.27.0](https://github.com/entrecode/ec.components/compare/@ec.components/core@0.26.0...@ec.components/core@0.27.0) (2019-06-28)
 
 

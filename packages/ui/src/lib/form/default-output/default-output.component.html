@@ -8,15 +8,21 @@
     </li>
   </ul>
 
+  <div class="ec-output-strings" *ngSwitchCase="'strings'">
+    <span *ngFor="let label of item?.display(field.property) | maxItems: field.maxItems || 10">
+      {{ label }}
+    </span>
+    <span *ngIf="item?.display(field.property)?.length > (field.maxItems || 10)">
+      &hellip;
+    </span>
+  </div>
+
   <div class="ec-output-tag" *ngSwitchCase="'tag'">
     <div class="span" class="tag" *ngIf="item?.display(field.property)">{{ item?.display(field.property) }}</div>
   </div>
 
   <div *ngSwitchCase="'boolean'" class="ec-output-boolean" [class.is-true]="item?.resolve(field.property)">
     <span>&#10004;</span>
-  </div>
-  <div *ngSwitchCase="'date'" class="ec-output-date" [title]="item?.display(field.property)">
-    {{ item?.display(field.property) }}
   </div>
 
   <div class="ec-output-mail" *ngSwitchCase="'email'">
@@ -31,20 +37,11 @@
     <span class="ec-output-color__property">{{ item?.display(field.property) }}</span>
   </div>
 
-  <div class="ec-output-asset" *ngSwitchCase="'asset'" [class.is-true]="item?.resolve(field.property)">
+  <div class="ec-output-asset" *ngSwitchCase="'image'" [class.is-true]="item?.resolve(field.property)">
     <ec-icon name="image"></ec-icon>
   </div>
 
-  <div class="ec-output-assets" *ngSwitchCase="'assets'" [class.is-true]="item?.resolve(field.property)">
-    <ec-icon name="images"></ec-icon>
-    <strong>{{ item?.resolve(field.property)?.length }}</strong>
-  </div>
-
-  <div class="ec-output-asset" *ngSwitchCase="'dmAsset'" [class.is-true]="item?.resolve(field.property)">
-    <ec-icon name="image"></ec-icon>
-  </div>
-
-  <div data-flex class="ec-output-assets" *ngSwitchCase="'dmAssets'" [class.is-true]="item?.resolve(field.property)">
+  <div class="ec-output-assets" *ngSwitchCase="'images'" [class.is-true]="item?.resolve(field.property)">
     <ec-icon name="images"></ec-icon>
     <strong>{{ item?.resolve(field.property)?.length }}</strong>
   </div>
@@ -69,19 +66,12 @@
   </a>
 
   <div *ngSwitchCase="'textarea'" class="ec-output-textarea">
-    <!--{{item?.display(field.property)}}-->
     <span class="tag tag_small">text</span>
   </div>
   <code *ngSwitchCase="'json'" class="ec-output-json">
-    <!--<pre>{{item?.display(field.property)}}</pre>-->
     <span class="tag">JSON</span>
   </code>
-  <div *ngSwitchCase="'string'" class="ec-output-string" [title]="item?.display(field.property)">
+  <span *ngSwitchDefault [class]="'ec-output-' + field.getView('output')" [title]="item?.display(field.property)">
     {{ item?.display(field.property) }}
-    <!-- {{field.view}} -->
-  </div>
-  <span *ngSwitchDefault [title]="item?.display(field.property)">
-    {{ item?.display(field.property) }}
-    <!-- {{field.view}} -->
   </span>
 </div>

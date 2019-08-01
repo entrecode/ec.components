@@ -112,7 +112,6 @@ export class ModelConfigService extends Config {
         formComponent: DefaultInputComponent,
         output: DefaultEntryOutputComponent,
         readOnly: true,
-        filterPopClass: 'ec-pop_dialog',
         filterOperator: 'exact',
       },
     };
@@ -161,6 +160,7 @@ export class ModelConfigService extends Config {
               hideOnEdit,
               placeholder,
               inputView,
+              outputView,
               label,
               classes,
               columns = 12,
@@ -192,6 +192,7 @@ export class ModelConfigService extends Config {
               {
                 placeholder: placeholder || typeConfig.placeholder,
                 inputView: inputView || typeConfig.inputView,
+                outputView: outputView || typeConfig.outputView,
               },
             );
           },

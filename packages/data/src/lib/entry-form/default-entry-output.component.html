@@ -1,10 +1,23 @@
-<div [ngSwitch]="field.type">
-  <div *ngSwitchCase="'json'" class="ec-output-json ec-entry-output-json">
-    <!--{{item?.display(field.property)}}-->
-    <span class="tag">JSON</span>
+<div [ngSwitch]="field.getView('output')">
+  <div class="ec-output-asset" *ngSwitchCase="'asset'" [class.is-true]="item?.resolve(field.property)">
+    <ec-icon name="image"></ec-icon>
+  </div>
+
+  <div class="ec-output-assets" *ngSwitchCase="'assets'" [class.is-true]="item?.resolve(field.property)">
+    <ec-icon name="images"></ec-icon>
+    <strong>{{ item?.resolve(field.property)?.length }}</strong>
+  </div>
+
+  <div class="ec-output-asset" *ngSwitchCase="'dmAsset'" [class.is-true]="item?.resolve(field.property)">
+    <ec-icon name="image"></ec-icon>
+  </div>
+
+  <div data-flex class="ec-output-assets" *ngSwitchCase="'dmAssets'" [class.is-true]="item?.resolve(field.property)">
+    <ec-icon name="images"></ec-icon>
+    <strong>{{ item?.resolve(field.property)?.length }}</strong>
   </div>
   <div *ngSwitchDefault>
     <!--<marquee>🚂🚃🚃🚃 {{field.type}} output coming soon!</marquee>-->
-    {{item?.display(field.property)}}
+    {{ item?.display(field.property) }}
   </div>
 </div>

@@ -73,7 +73,7 @@ export interface FieldConfigProperty {
   filterable?: boolean;
   /** The operator to use for filtering: exact, search, any etc.. see ec.sdk doc */
   filterOperator?: string;
-  /** Defines the class for the filter pop, e.g. in list header. */
+  /** Defines the class for the filter pop, e.g. in list header. DEPRECATED */
   filterPopClass?: string;
   /** Transforms a string value from the url query to a value that is used for filtering.
    * e.g. transforms "A,B,C" to ['A','B','C'] */

@@ -29,7 +29,7 @@ export class Field implements FieldConfigProperty {
   label?: string | boolean;
   /** The operator to use for filtering: exact, search, any etc.. see ec.sdk doc */
   filterOperator?: string;
-  /** Defines the class for the filter pop, e.g. in list header. */
+  /** Defines the class for the filter pop, e.g. in list header. DEPRECATED */
   filterPopClass?: string;
   /** If true, the form input label will always be hidden */
   hideFormLabel?: boolean;

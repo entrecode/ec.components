@@ -99,6 +99,10 @@
     </div>
   </div>
 
+  <div *ngSwitchCase="'none'">
+    <marquee>🚂🚃🚃🚃 {{ field.type }} has no input yet. </marquee>
+  </div>
+
   <div *ngSwitchDefault>
     <ec-output [field]="field" [item]="item"></ec-output>
   </div>

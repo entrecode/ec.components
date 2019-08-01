@@ -8,10 +8,10 @@ export const formTemplate = `
         <div
           [attr.data-col]="getColumns(field)"
           *ngFor="let field of form?.fields | visibleFields:form"
-          [ngSwitch]="field?.view"
+          [ngSwitch]="field?.getView('input')"
           [attr.data-type]="field?.type"
         >
-          <div [ngClass]="'ec-field-group_' + field?.view + ' ' + field?.classes"
+          <div [ngClass]="'ec-field-group_' + field?.getView('input') + ' ' + field?.classes"
           [class.is-read-only]="formService.isReadOnly(field, form)" class="field-group">
             <label
               *ngIf="showLabel(field, form)"

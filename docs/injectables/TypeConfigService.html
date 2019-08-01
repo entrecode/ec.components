@@ -142,7 +142,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="203" class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:203</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="182" class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:182</a></div>
                             </td>
                         </tr>
 
@@ -207,8 +207,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="240"
-                            class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:240</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="219"
+                            class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:219</a></div>
                 </td>
             </tr>
 
@@ -248,8 +248,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="233"
-                            class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:233</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="212"
+                            class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:212</a></div>
                 </td>
             </tr>
 
@@ -321,8 +321,8 @@ Usese &#39;moment.format.date&#39; and &#39;moment.format.time&#39; symbols. </p
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="207"
-                            class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:207</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="186"
+                            class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:186</a></div>
                 </td>
             </tr>
 
@@ -393,8 +393,8 @@ Usese &#39;moment.format.date&#39; and &#39;moment.format.time&#39; symbols. </p
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="245"
-                            class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:245</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="224"
+                            class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:224</a></div>
                 </td>
             </tr>
 
@@ -434,8 +434,8 @@ Usese &#39;moment.format.date&#39; and &#39;moment.format.time&#39; symbols. </p
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="250"
-                            class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:250</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="229"
+                            class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:229</a></div>
                 </td>
             </tr>
 
@@ -475,8 +475,8 @@ Usese &#39;moment.format.date&#39; and &#39;moment.format.time&#39; symbols. </p
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="223"
-                            class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:223</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="202"
+                            class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:202</a></div>
                 </td>
             </tr>
 
@@ -611,41 +611,27 @@ Usese &#39;moment.format.date&#39; and &#39;moment.format.time&#39; symbols. </p
       view: &#x27;label&#x27;,
     },
     text: {
-      view: &#x27;string&#x27;,
       filterable: true,
       sortable: true,
+      outputView: &#x27;string&#x27;,
+      outputViews: [&#x27;string&#x27;, &#x27;tag&#x27;, &#x27;color&#x27;].map(name &#x3D;&gt; ({ name })),
       inputView: &#x27;string&#x27;,
-      inputViews: [
-        {
-          name: &#x27;string&#x27;,
-        },
-        {
-          name: &#x27;color&#x27;,
-        },
-        {
-          name: &#x27;copy&#x27;,
-        },
-        {
-          name: &#x27;textarea&#x27;,
-        },
-      ],
+      inputViews: [&#x27;string&#x27;, &#x27;color&#x27;, &#x27;copy&#x27;, &#x27;textarea&#x27;].map(name &#x3D;&gt; ({ name }))
     },
     boolean: {
       hideFormLabel: true,
       prefill: false,
       filterable: true,
       filterOperator: &#x27;exact&#x27;,
-      inputViews: [
-        {
-          name: &#x27;boolean&#x27;,
-        },
-        {
-          name: &#x27;toggle&#x27;,
-        },
-      ],
+      outputView: &#x27;boolean&#x27;,
+      /* outputViews: [&#x27;boolean&#x27;].map(name &#x3D;&gt; ({ name })), */
+      inputView: &#x27;boolean&#x27;,
+      inputViews: [&#x27;boolean&#x27;, &#x27;toggle&#x27;].map(name &#x3D;&gt; ({ name })),
     },
     formattedText: {
-      view: &#x27;textarea&#x27;,
+      inputView: &#x27;textarea&#x27;,
+      outputView: &#x27;textarea&#x27;,
+      outputViews: [&#x27;textarea&#x27;, &#x27;string&#x27;].map(name &#x3D;&gt; ({ name })),
       filterable: true,
     },
     number: {
@@ -654,63 +640,66 @@ Usese &#39;moment.format.date&#39; and &#39;moment.format.time&#39; symbols. </p
       filterOperator: &#x27;exact&#x27;,
     },
     decimal: {
-      view: &#x27;number&#x27;,
+      inputView: &#x27;number&#x27;,
       sortable: true,
     },
     url: {
+      outputView: &#x27;url&#x27;,
+      outputViews: [&#x27;url&#x27;, &#x27;string&#x27;].map(name &#x3D;&gt; ({ name })),
+      inputView: &#x27;url&#x27;,
       sortable: true,
       filterable: true,
     },
     asset: {
-      view: &#x27;asset&#x27;,
+      outputView: &#x27;image&#x27;,
+      outputViews: [&#x27;image&#x27;, &#x27;preview&#x27;, &#x27;avatar&#x27;].map(name &#x3D;&gt; ({ name })),
       inputView: &#x27;asset-select&#x27;,
-      // view: &#x27;avatar&#x27;,
       input: DefaultEntryInputComponent,
       filterOperator: &#x27;exact&#x27;,
       filterable: true,
       display: (value, entry, property) &#x3D;&gt; entry.getImageThumbUrl(property, 100),
-      filterPopClass: &#x27;&#x27;,
     },
     assets: {
-      view: &#x27;assets&#x27;,
+      outputView: &#x27;images&#x27;,
+      outputViews: [&#x27;images&#x27;, &#x27;avatars&#x27;].map(name &#x3D;&gt; ({ name })),
       inputView: &#x27;assets-select&#x27;,
-      // view: &#x27;avatars&#x27;,
       input: DefaultEntryInputComponent,
       display: (value, entry, property) &#x3D;&gt; entry.getImageThumbUrl(property, 100),
       prefill: [],
       filterOperator: &#x27;any&#x27;,
       filterable: true,
       queryFilter: (value) &#x3D;&gt; value.split(&#x27;,&#x27;),
-      filterPopClass: &#x27;&#x27;,
     },
     dmAsset: {
-      view: &#x27;dmAsset&#x27;,
+      outputView: &#x27;images&#x27;,
+      outputViews: [&#x27;images&#x27;, &#x27;avatars&#x27;].map(name &#x3D;&gt; ({ name })),
       inputView: &#x27;dmAsset-select&#x27;,
-      // view: &#x27;avatar&#x27;,
       input: DefaultEntryInputComponent,
       filterOperator: &#x27;exact&#x27;,
       filterable: true,
       display: (value, entry, property) &#x3D;&gt; entry.getImageThumbUrl(property, 100),
-      filterPopClass: &#x27;&#x27;,
     },
     dmAssets: {
-      view: &#x27;dmAssets&#x27;,
+      outputView: &#x27;images&#x27;,
+      outputViews: [&#x27;images&#x27;, &#x27;avatars&#x27;].map(name &#x3D;&gt; ({ name })),
       inputView: &#x27;dmAssets-select&#x27;,
-      // view: &#x27;avatars&#x27;,
       input: DefaultEntryInputComponent,
       display: (value, entry, property) &#x3D;&gt; entry.getImageThumbUrl(property, 100),
       prefill: [],
       filterOperator: &#x27;any&#x27;,
       filterable: true,
       queryFilter: (value) &#x3D;&gt; value.split(&#x27;,&#x27;),
-      filterPopClass: &#x27;&#x27;,
     },
-    email: {},
+    email: {
+      inputView: &#x27;email&#x27;,
+      outputView: &#x27;email&#x27;,
+      outputViews: [&#x27;email&#x27;, &#x27;string&#x27;].map(name &#x3D;&gt; ({ name })),
+    },
     phone: {
-      view: &#x27;string&#x27;,
+      inputView: &#x27;string&#x27;,
     },
     datetime: {
-      view: &#x27;date&#x27;,
+      inputView: &#x27;date&#x27;,
       sortable: true,
       display: this.displayDate(true),
       validate: (value) &#x3D;&gt; {
@@ -719,24 +708,22 @@ Usese &#39;moment.format.date&#39; and &#39;moment.format.time&#39; symbols. </p
         }
         return;
       },
-      filterPopClass: &#x27;ec-pop_dialog&#x27;,
       placeholder: moment(new Date()).format(this.symbol.resolve(&#x27;moment.format.date&#x27;)),
-      /*,
-      prefill: new Date(0)*/
     },
     entry: {
-      view: &#x27;tag&#x27;,
+      outputView: &#x27;tag&#x27;,
+      outputViews: [&#x27;tag&#x27;, &#x27;string&#x27;].map(name &#x3D;&gt; ({ name })),
       inputView: &#x27;entry-select&#x27;,
       input: DefaultEntryInputComponent,
       output: DefaultOutputComponent,
       display: (value, entry, property) &#x3D;&gt; entry.getTitle(property),
       filterable: true,
       filterOperator: &#x27;exact&#x27;,
-      filterPopClass: &#x27;ec-pop_dialog&#x27;,
       nestedCrudConfig: this.nestedCrudConfig,
     },
     entries: {
-      view: &#x27;tags&#x27;,
+      outputView: &#x27;tags&#x27;,
+      outputViews: [&#x27;tags&#x27;, &#x27;strings&#x27;].map(value &#x3D;&gt; ({ value })),
       inputView: &#x27;entries-select&#x27;,
       inputViews: [
         {
@@ -757,26 +744,21 @@ Usese &#39;moment.format.date&#39; and &#39;moment.format.time&#39; symbols. </p
       filterOperator: &#x27;any&#x27;,
       prefill: [],
       queryFilter: (value) &#x3D;&gt; value.split(&#x27;,&#x27;),
-      filterPopClass: &#x27;ec-pop_dialog&#x27;,
       nestedCrudConfig: this.nestedCrudConfig,
     },
     json: {
-      view: &#x27;json&#x27;,
-      input: DefaultEntryInputComponent,
-      output: DefaultEntryOutputComponent,
+      inputView: &#x27;none&#x27;,
+      outputView: &#x27;json&#x27;,
       display: (value) &#x3D;&gt; (value ? JSON.stringify(value) : &#x27;&#x27;),
     },
     location: {
-      input: DefaultEntryInputComponent,
-      output: DefaultEntryOutputComponent,
+      inputView: &#x27;none&#x27;,
       display: (value) &#x3D;&gt; (value ? value.longitude + &#x27;,&#x27; + value.latitude : &#x27;&#x27;),
-      filterPopClass: &#x27;ec-pop_dialog&#x27;,
     },
     account: {
       display: (value) &#x3D;&gt; (value ? value.title : &#x27;&#x27;),
       input: AdminEntryInputComponent,
       output: DefaultEntryOutputComponent,
-      filterPopClass: &#x27;ec-pop_dialog&#x27;,
       filterable: true,
       filterOperator: &#x27;exact&#x27;,
     },
@@ -784,14 +766,13 @@ Usese &#39;moment.format.date&#39; and &#39;moment.format.time&#39; symbols. </p
       display: (value) &#x3D;&gt; (value ? value.name : &#x27;&#x27;),
       input: AdminEntryInputComponent,
       output: DefaultEntryOutputComponent,
-      filterPopClass: &#x27;ec-pop_dialog&#x27;,
     },
   }</code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:23</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:21</a></div>
                             </td>
                         </tr>
 
@@ -829,49 +810,33 @@ export class TypeConfigService {
     // methods: [&#x27;get&#x27;]
   };
 
-  // TODO check if filterPopClass: &#x27;&#x27; is still needed
-
   /** Defines the base configuration of each type.*/
   private types: FieldConfig &#x3D; {
     id: {
       view: &#x27;label&#x27;,
     },
     text: {
-      view: &#x27;string&#x27;,
       filterable: true,
       sortable: true,
+      outputView: &#x27;string&#x27;,
+      outputViews: [&#x27;string&#x27;, &#x27;tag&#x27;, &#x27;color&#x27;].map(name &#x3D;&gt; ({ name })),
       inputView: &#x27;string&#x27;,
-      inputViews: [
-        {
-          name: &#x27;string&#x27;,
-        },
-        {
-          name: &#x27;color&#x27;,
-        },
-        {
-          name: &#x27;copy&#x27;,
-        },
-        {
-          name: &#x27;textarea&#x27;,
-        },
-      ],
+      inputViews: [&#x27;string&#x27;, &#x27;color&#x27;, &#x27;copy&#x27;, &#x27;textarea&#x27;].map(name &#x3D;&gt; ({ name }))
     },
     boolean: {
       hideFormLabel: true,
       prefill: false,
       filterable: true,
       filterOperator: &#x27;exact&#x27;,
-      inputViews: [
-        {
-          name: &#x27;boolean&#x27;,
-        },
-        {
-          name: &#x27;toggle&#x27;,
-        },
-      ],
+      outputView: &#x27;boolean&#x27;,
+      /* outputViews: [&#x27;boolean&#x27;].map(name &#x3D;&gt; ({ name })), */
+      inputView: &#x27;boolean&#x27;,
+      inputViews: [&#x27;boolean&#x27;, &#x27;toggle&#x27;].map(name &#x3D;&gt; ({ name })),
     },
     formattedText: {
-      view: &#x27;textarea&#x27;,
+      inputView: &#x27;textarea&#x27;,
+      outputView: &#x27;textarea&#x27;,
+      outputViews: [&#x27;textarea&#x27;, &#x27;string&#x27;].map(name &#x3D;&gt; ({ name })),
       filterable: true,
     },
     number: {
@@ -880,63 +845,66 @@ export class TypeConfigService {
       filterOperator: &#x27;exact&#x27;,
     },
     decimal: {
-      view: &#x27;number&#x27;,
+      inputView: &#x27;number&#x27;,
       sortable: true,
     },
     url: {
+      outputView: &#x27;url&#x27;,
+      outputViews: [&#x27;url&#x27;, &#x27;string&#x27;].map(name &#x3D;&gt; ({ name })),
+      inputView: &#x27;url&#x27;,
       sortable: true,
       filterable: true,
     },
     asset: {
-      view: &#x27;asset&#x27;,
+      outputView: &#x27;image&#x27;,
+      outputViews: [&#x27;image&#x27;, &#x27;preview&#x27;, &#x27;avatar&#x27;].map(name &#x3D;&gt; ({ name })),
       inputView: &#x27;asset-select&#x27;,
-      // view: &#x27;avatar&#x27;,
       input: DefaultEntryInputComponent,
       filterOperator: &#x27;exact&#x27;,
       filterable: true,
       display: (value, entry, property) &#x3D;&gt; entry.getImageThumbUrl(property, 100),
-      filterPopClass: &#x27;&#x27;,
     },
     assets: {
-      view: &#x27;assets&#x27;,
+      outputView: &#x27;images&#x27;,
+      outputViews: [&#x27;images&#x27;, &#x27;avatars&#x27;].map(name &#x3D;&gt; ({ name })),
       inputView: &#x27;assets-select&#x27;,
-      // view: &#x27;avatars&#x27;,
       input: DefaultEntryInputComponent,
       display: (value, entry, property) &#x3D;&gt; entry.getImageThumbUrl(property, 100),
       prefill: [],
       filterOperator: &#x27;any&#x27;,
       filterable: true,
       queryFilter: (value) &#x3D;&gt; value.split(&#x27;,&#x27;),
-      filterPopClass: &#x27;&#x27;,
     },
     dmAsset: {
-      view: &#x27;dmAsset&#x27;,
+      outputView: &#x27;images&#x27;,
+      outputViews: [&#x27;images&#x27;, &#x27;avatars&#x27;].map(name &#x3D;&gt; ({ name })),
       inputView: &#x27;dmAsset-select&#x27;,
-      // view: &#x27;avatar&#x27;,
       input: DefaultEntryInputComponent,
       filterOperator: &#x27;exact&#x27;,
       filterable: true,
       display: (value, entry, property) &#x3D;&gt; entry.getImageThumbUrl(property, 100),
-      filterPopClass: &#x27;&#x27;,
     },
     dmAssets: {
-      view: &#x27;dmAssets&#x27;,
+      outputView: &#x27;images&#x27;,
+      outputViews: [&#x27;images&#x27;, &#x27;avatars&#x27;].map(name &#x3D;&gt; ({ name })),
       inputView: &#x27;dmAssets-select&#x27;,
-      // view: &#x27;avatars&#x27;,
       input: DefaultEntryInputComponent,
       display: (value, entry, property) &#x3D;&gt; entry.getImageThumbUrl(property, 100),
       prefill: [],
       filterOperator: &#x27;any&#x27;,
       filterable: true,
       queryFilter: (value) &#x3D;&gt; value.split(&#x27;,&#x27;),
-      filterPopClass: &#x27;&#x27;,
     },
-    email: {},
+    email: {
+      inputView: &#x27;email&#x27;,
+      outputView: &#x27;email&#x27;,
+      outputViews: [&#x27;email&#x27;, &#x27;string&#x27;].map(name &#x3D;&gt; ({ name })),
+    },
     phone: {
-      view: &#x27;string&#x27;,
+      inputView: &#x27;string&#x27;,
     },
     datetime: {
-      view: &#x27;date&#x27;,
+      inputView: &#x27;date&#x27;,
       sortable: true,
       display: this.displayDate(true),
       validate: (value) &#x3D;&gt; {
@@ -945,24 +913,22 @@ export class TypeConfigService {
         }
         return;
       },
-      filterPopClass: &#x27;ec-pop_dialog&#x27;,
       placeholder: moment(new Date()).format(this.symbol.resolve(&#x27;moment.format.date&#x27;)),
-      /*,
-      prefill: new Date(0)*/
     },
     entry: {
-      view: &#x27;tag&#x27;,
+      outputView: &#x27;tag&#x27;,
+      outputViews: [&#x27;tag&#x27;, &#x27;string&#x27;].map(name &#x3D;&gt; ({ name })),
       inputView: &#x27;entry-select&#x27;,
       input: DefaultEntryInputComponent,
       output: DefaultOutputComponent,
       display: (value, entry, property) &#x3D;&gt; entry.getTitle(property),
       filterable: true,
       filterOperator: &#x27;exact&#x27;,
-      filterPopClass: &#x27;ec-pop_dialog&#x27;,
       nestedCrudConfig: this.nestedCrudConfig,
     },
     entries: {
-      view: &#x27;tags&#x27;,
+      outputView: &#x27;tags&#x27;,
+      outputViews: [&#x27;tags&#x27;, &#x27;strings&#x27;].map(value &#x3D;&gt; ({ value })),
       inputView: &#x27;entries-select&#x27;,
       inputViews: [
         {
@@ -983,26 +949,21 @@ export class TypeConfigService {
       filterOperator: &#x27;any&#x27;,
       prefill: [],
       queryFilter: (value) &#x3D;&gt; value.split(&#x27;,&#x27;),
-      filterPopClass: &#x27;ec-pop_dialog&#x27;,
       nestedCrudConfig: this.nestedCrudConfig,
     },
     json: {
-      view: &#x27;json&#x27;,
-      input: DefaultEntryInputComponent,
-      output: DefaultEntryOutputComponent,
+      inputView: &#x27;none&#x27;,
+      outputView: &#x27;json&#x27;,
       display: (value) &#x3D;&gt; (value ? JSON.stringify(value) : &#x27;&#x27;),
     },
     location: {
-      input: DefaultEntryInputComponent,
-      output: DefaultEntryOutputComponent,
+      inputView: &#x27;none&#x27;,
       display: (value) &#x3D;&gt; (value ? value.longitude + &#x27;,&#x27; + value.latitude : &#x27;&#x27;),
-      filterPopClass: &#x27;ec-pop_dialog&#x27;,
     },
     account: {
       display: (value) &#x3D;&gt; (value ? value.title : &#x27;&#x27;),
       input: AdminEntryInputComponent,
       output: DefaultEntryOutputComponent,
-      filterPopClass: &#x27;ec-pop_dialog&#x27;,
       filterable: true,
       filterOperator: &#x27;exact&#x27;,
     },
@@ -1010,7 +971,6 @@ export class TypeConfigService {
       display: (value) &#x3D;&gt; (value ? value.name : &#x27;&#x27;),
       input: AdminEntryInputComponent,
       output: DefaultEntryOutputComponent,
-      filterPopClass: &#x27;ec-pop_dialog&#x27;,
     },
   };
   constructor(private symbol: SymbolService) { }

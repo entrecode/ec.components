@@ -75,7 +75,7 @@
     <div
       class="ec-list-cell"
       *ngFor="let field of list?.fields; let i = index"
-      [ngClass]="'ec-list-cell_' + field.view + ' ' + (field?.classes || '')"
+      [ngClass]="'ec-list-cell_' + field.getView('output') + ' ' + (field?.classes || '')"
       [class.is-hidden]="field.hideInList"
       [class.is-sortable]="field.sortable"
       [class.is-sorted]="list.isSorted(field.property)"

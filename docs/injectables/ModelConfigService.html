@@ -263,8 +263,8 @@ set method. </p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="210"
-                            class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:210</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="211"
+                            class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:211</a></div>
                 </td>
             </tr>
 
@@ -431,8 +431,8 @@ or just specific components. </p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="143"
-                            class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:143</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="142"
+                            class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:142</a></div>
                 </td>
             </tr>
 
@@ -505,8 +505,8 @@ This config is meant to deliver the default behaviour when nothing else is confi
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="241"
-                            class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:241</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="242"
+                            class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:242</a></div>
                 </td>
             </tr>
 
@@ -573,8 +573,8 @@ This config is meant to deliver the default behaviour when nothing else is confi
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="122"
-                            class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:122</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="121"
+                            class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:121</a></div>
                 </td>
             </tr>
 
@@ -1089,7 +1089,6 @@ export class ModelConfigService extends Config {
         formComponent: DefaultInputComponent,
         output: DefaultEntryOutputComponent,
         readOnly: true,
-        filterPopClass: &#x27;ec-pop_dialog&#x27;,
         filterOperator: &#x27;exact&#x27;,
       },
     };
@@ -1138,6 +1137,7 @@ export class ModelConfigService extends Config {
               hideOnEdit,
               placeholder,
               inputView,
+              outputView,
               label,
               classes,
               columns &#x3D; 12,
@@ -1169,6 +1169,7 @@ export class ModelConfigService extends Config {
               {
                 placeholder: placeholder || typeConfig.placeholder,
                 inputView: inputView || typeConfig.inputView,
+                outputView: outputView || typeConfig.outputView,
               },
             );
           },

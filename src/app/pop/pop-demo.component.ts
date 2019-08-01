@@ -10,8 +10,6 @@ export class PopDemoComponent {
   private popClass: string;
   @ViewChild('pop') pop: PopComponent;
 
-  public listHeader = mocked.lists.pop_test;
-
   constructor() {}
 
   open(popClass: string = 'fullscreen') {
