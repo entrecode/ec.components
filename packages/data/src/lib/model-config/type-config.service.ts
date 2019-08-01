@@ -17,49 +17,33 @@ export class TypeConfigService {
     // methods: ['get']
   };
 
-  // TODO check if filterPopClass: '' is still needed
-
   /** Defines the base configuration of each type.*/
   private types: FieldConfig = {
     id: {
       view: 'label',
     },
     text: {
-      view: 'string',
       filterable: true,
       sortable: true,
+      outputView: 'string',
+      outputViews: ['string', 'tag', 'color'].map(name => ({ name })),
       inputView: 'string',
-      inputViews: [
-        {
-          name: 'string',
-        },
-        {
-          name: 'color',
-        },
-        {
-          name: 'copy',
-        },
-        {
-          name: 'textarea',
-        },
-      ],
+      inputViews: ['string', 'color', 'copy', 'textarea'].map(name => ({ name }))
     },
     boolean: {
       hideFormLabel: true,
       prefill: false,
       filterable: true,
       filterOperator: 'exact',
-      inputViews: [
-        {
-          name: 'boolean',
-        },
-        {
-          name: 'toggle',
-        },
-      ],
+      outputView: 'boolean',
+      /* outputViews: ['boolean'].map(name => ({ name })), */
+      inputView: 'boolean',
+      inputViews: ['boolean', 'toggle'].map(name => ({ name })),
     },
     formattedText: {
-      view: 'textarea',
+      inputView: 'textarea',
+      outputView: 'textarea',
+      outputViews: ['textarea', 'string'].map(name => ({ name })),
       filterable: true,
     },
     number: {
@@ -68,63 +52,66 @@ export class TypeConfigService {
       filterOperator: 'exact',
     },
     decimal: {
-      view: 'number',
+      inputView: 'number',
       sortable: true,
     },
     url: {
+      outputView: 'url',
+      outputViews: ['url', 'string'].map(name => ({ name })),
+      inputView: 'url',
       sortable: true,
       filterable: true,
     },
     asset: {
-      view: 'asset',
+      outputView: 'image',
+      outputViews: ['image', 'preview', 'avatar'].map(name => ({ name })),
       inputView: 'asset-select',
-      // view: 'avatar',
       input: DefaultEntryInputComponent,
       filterOperator: 'exact',
       filterable: true,
       display: (value, entry, property) => entry.getImageThumbUrl(property, 100),
-      filterPopClass: '',
     },
     assets: {
-      view: 'assets',
+      outputView: 'images',
+      outputViews: ['images', 'avatars'].map(name => ({ name })),
       inputView: 'assets-select',
-      // view: 'avatars',
       input: DefaultEntryInputComponent,
       display: (value, entry, property) => entry.getImageThumbUrl(property, 100),
       prefill: [],
       filterOperator: 'any',
       filterable: true,
       queryFilter: (value) => value.split(','),
-      filterPopClass: '',
     },
     dmAsset: {
-      view: 'dmAsset',
+      outputView: 'images',
+      outputViews: ['images', 'avatars'].map(name => ({ name })),
       inputView: 'dmAsset-select',
-      // view: 'avatar',
       input: DefaultEntryInputComponent,
       filterOperator: 'exact',
       filterable: true,
       display: (value, entry, property) => entry.getImageThumbUrl(property, 100),
-      filterPopClass: '',
     },
     dmAssets: {
-      view: 'dmAssets',
+      outputView: 'images',
+      outputViews: ['images', 'avatars'].map(name => ({ name })),
       inputView: 'dmAssets-select',
-      // view: 'avatars',
       input: DefaultEntryInputComponent,
       display: (value, entry, property) => entry.getImageThumbUrl(property, 100),
       prefill: [],
       filterOperator: 'any',
       filterable: true,
       queryFilter: (value) => value.split(','),
-      filterPopClass: '',
     },
-    email: {},
+    email: {
+      inputView: 'email',
+      outputView: 'email',
+      outputViews: ['email', 'string'].map(name => ({ name })),
+    },
     phone: {
-      view: 'string',
+      inputView: 'string',
     },
     datetime: {
-      view: 'date',
+      inputView: 'date',
       sortable: true,
       display: this.displayDate(true),
       validate: (value) => {
@@ -133,24 +120,22 @@ export class TypeConfigService {
         }
         return;
       },
-      filterPopClass: 'ec-pop_dialog',
       placeholder: moment(new Date()).format(this.symbol.resolve('moment.format.date')),
-      /*,
-      prefill: new Date(0)*/
     },
     entry: {
-      view: 'tag',
+      outputView: 'tag',
+      outputViews: ['tag', 'string'].map(name => ({ name })),
       inputView: 'entry-select',
       input: DefaultEntryInputComponent,
       output: DefaultOutputComponent,
       display: (value, entry, property) => entry.getTitle(property),
       filterable: true,
       filterOperator: 'exact',
-      filterPopClass: 'ec-pop_dialog',
       nestedCrudConfig: this.nestedCrudConfig,
     },
     entries: {
-      view: 'tags',
+      outputView: 'tags',
+      outputViews: ['tags', 'strings'].map(value => ({ value })),
       inputView: 'entries-select',
       inputViews: [
         {
@@ -171,26 +156,21 @@ export class TypeConfigService {
       filterOperator: 'any',
       prefill: [],
       queryFilter: (value) => value.split(','),
-      filterPopClass: 'ec-pop_dialog',
       nestedCrudConfig: this.nestedCrudConfig,
     },
     json: {
-      view: 'json',
-      input: DefaultEntryInputComponent,
-      output: DefaultEntryOutputComponent,
+      inputView: 'none',
+      outputView: 'json',
       display: (value) => (value ? JSON.stringify(value) : ''),
     },
     location: {
-      input: DefaultEntryInputComponent,
-      output: DefaultEntryOutputComponent,
+      inputView: 'none',
       display: (value) => (value ? value.longitude + ',' + value.latitude : ''),
-      filterPopClass: 'ec-pop_dialog',
     },
     account: {
       display: (value) => (value ? value.title : ''),
       input: AdminEntryInputComponent,
       output: DefaultEntryOutputComponent,
-      filterPopClass: 'ec-pop_dialog',
       filterable: true,
       filterOperator: 'exact',
     },
@@ -198,7 +178,6 @@ export class TypeConfigService {
       display: (value) => (value ? value.name : ''),
       input: AdminEntryInputComponent,
       output: DefaultEntryOutputComponent,
-      filterPopClass: 'ec-pop_dialog',
     },
   };
   constructor(private symbol: SymbolService) { }

@@ -151,7 +151,7 @@ CMD+Click on InputComponent to see which properties you can now use!
 Now we can decide which custom input should be used, based on e.g. the fields view value:
 
 ```html
-<div [ngSwitch]="field.view" *ngIf="group" [formGroup]="group">
+<div [ngSwitch]="field.inputView" *ngIf="group" [formGroup]="group">
   <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>
   <div *ngSwitchCase="'speakingurl'">
     <input [id]="field.id" type="text" [formControl]="control">
