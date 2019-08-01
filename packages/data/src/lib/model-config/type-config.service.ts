@@ -64,7 +64,7 @@ export class TypeConfigService {
     },
     asset: {
       outputView: 'image',
-      outputViews: ['image', 'preview', 'avatar'].map(name => ({ name })),
+      outputViews: ['image', /* 'preview', */ 'avatar'].map(name => ({ name })),
       inputView: 'asset-select',
       input: DefaultEntryInputComponent,
       filterOperator: 'exact',
@@ -84,7 +84,7 @@ export class TypeConfigService {
     },
     dmAsset: {
       outputView: 'images',
-      outputViews: ['images', 'avatars'].map(name => ({ name })),
+      outputViews: ['image', 'avatar'].map(name => ({ name })),
       inputView: 'dmAsset-select',
       input: DefaultEntryInputComponent,
       filterOperator: 'exact',
@@ -135,7 +135,7 @@ export class TypeConfigService {
     },
     entries: {
       outputView: 'tags',
-      outputViews: ['tags', 'strings'].map(value => ({ value })),
+      outputViews: ['tags', 'strings'].map(name => ({ name })),
       inputView: 'entries-select',
       inputViews: [
         {

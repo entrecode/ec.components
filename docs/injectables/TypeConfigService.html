@@ -652,7 +652,7 @@ Usese &#39;moment.format.date&#39; and &#39;moment.format.time&#39; symbols. </p
     },
     asset: {
       outputView: &#x27;image&#x27;,
-      outputViews: [&#x27;image&#x27;, &#x27;preview&#x27;, &#x27;avatar&#x27;].map(name &#x3D;&gt; ({ name })),
+      outputViews: [&#x27;image&#x27;, /* &#x27;preview&#x27;, */ &#x27;avatar&#x27;].map(name &#x3D;&gt; ({ name })),
       inputView: &#x27;asset-select&#x27;,
       input: DefaultEntryInputComponent,
       filterOperator: &#x27;exact&#x27;,
@@ -672,7 +672,7 @@ Usese &#39;moment.format.date&#39; and &#39;moment.format.time&#39; symbols. </p
     },
     dmAsset: {
       outputView: &#x27;images&#x27;,
-      outputViews: [&#x27;images&#x27;, &#x27;avatars&#x27;].map(name &#x3D;&gt; ({ name })),
+      outputViews: [&#x27;image&#x27;, &#x27;avatar&#x27;].map(name &#x3D;&gt; ({ name })),
       inputView: &#x27;dmAsset-select&#x27;,
       input: DefaultEntryInputComponent,
       filterOperator: &#x27;exact&#x27;,
@@ -723,7 +723,7 @@ Usese &#39;moment.format.date&#39; and &#39;moment.format.time&#39; symbols. </p
     },
     entries: {
       outputView: &#x27;tags&#x27;,
-      outputViews: [&#x27;tags&#x27;, &#x27;strings&#x27;].map(value &#x3D;&gt; ({ value })),
+      outputViews: [&#x27;tags&#x27;, &#x27;strings&#x27;].map(name &#x3D;&gt; ({ name })),
       inputView: &#x27;entries-select&#x27;,
       inputViews: [
         {
@@ -857,7 +857,7 @@ export class TypeConfigService {
     },
     asset: {
       outputView: &#x27;image&#x27;,
-      outputViews: [&#x27;image&#x27;, &#x27;preview&#x27;, &#x27;avatar&#x27;].map(name &#x3D;&gt; ({ name })),
+      outputViews: [&#x27;image&#x27;, /* &#x27;preview&#x27;, */ &#x27;avatar&#x27;].map(name &#x3D;&gt; ({ name })),
       inputView: &#x27;asset-select&#x27;,
       input: DefaultEntryInputComponent,
       filterOperator: &#x27;exact&#x27;,
@@ -877,7 +877,7 @@ export class TypeConfigService {
     },
     dmAsset: {
       outputView: &#x27;images&#x27;,
-      outputViews: [&#x27;images&#x27;, &#x27;avatars&#x27;].map(name &#x3D;&gt; ({ name })),
+      outputViews: [&#x27;image&#x27;, &#x27;avatar&#x27;].map(name &#x3D;&gt; ({ name })),
       inputView: &#x27;dmAsset-select&#x27;,
       input: DefaultEntryInputComponent,
       filterOperator: &#x27;exact&#x27;,
@@ -928,7 +928,7 @@ export class TypeConfigService {
     },
     entries: {
       outputView: &#x27;tags&#x27;,
-      outputViews: [&#x27;tags&#x27;, &#x27;strings&#x27;].map(value &#x3D;&gt; ({ value })),
+      outputViews: [&#x27;tags&#x27;, &#x27;strings&#x27;].map(name &#x3D;&gt; ({ name })),
       inputView: &#x27;entries-select&#x27;,
       inputViews: [
         {
