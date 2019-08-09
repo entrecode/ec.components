@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.5](https://github.com/entrecode/ec.components/compare/@ec.components/style@0.23.4...@ec.components/style@0.23.5) (2019-08-09)
+
+
+### Bug Fixes
+
+* heatmap style ([5d4b6f6](https://github.com/entrecode/ec.components/commit/5d4b6f6))
+* improved heatmap dragging ux ([f05b148](https://github.com/entrecode/ec.components/commit/f05b148))
+
+
+
+
+
 ## [0.23.4](https://github.com/entrecode/ec.components/compare/@ec.components/style@0.23.3...@ec.components/style@0.23.4) (2019-07-12)
 
 
