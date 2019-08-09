@@ -22,6 +22,7 @@
       class="ec-calendar-day"
       [style.background-color]="day.color"
       [class.is-other]="day.type !== 'current'"
+      [class.is-not-selectable]="!day.selectable"
       [class.is-today]="day.today"
       [class.is-selected]="isSelected(day.date)"
     >

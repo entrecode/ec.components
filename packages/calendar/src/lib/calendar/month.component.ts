@@ -34,6 +34,7 @@ export interface Day {
 export class MonthComponent implements OnInit, OnChanges {
   dragged: any;
   move: boolean;
+  todayMoment = moment();
   /** The current selected date */
   @Input() selected: moment.Moment;
   /** Color mapping for day cells. E.g. to view a month heatmap */
@@ -42,6 +43,8 @@ export class MonthComponent implements OnInit, OnChanges {
   @Input() heatmap: Object;
   /** Timespan that is reflected. Marks days inside the span */
   @Input() timespan: moment.Moment[];
+  /** Timespan in which the dates can be selected. */
+  @Input() selectSpan: moment.Moment[];
   /** The current date (for showing month) */
   @Input() date: moment.Moment;
   /** The color of days that are inside the timespan */
@@ -90,7 +93,7 @@ export class MonthComponent implements OnInit, OnChanges {
       );
   }
 
-  dragDay(day: Day, e?) {
+  dragOverDay(day: Day, e?) {
     if (!this.dragged) {
       return;
     }
@@ -110,6 +113,11 @@ export class MonthComponent implements OnInit, OnChanges {
       newTimespan[this.dragged.first ? 0 : 1] = day.date.clone();
     }
 
+    if (this.selectSpan && (
+      newTimespan[0].isBefore(this.selectSpan[0].startOf('day')) || newTimespan[1].isAfter(this.selectSpan[1].endOf('day'))
+    )) {
+      return;
+    }
 
     if (newTimespan[0].isSame(this.timespan[0]) && newTimespan[1].isSame(this.timespan[1])) {
       // nothing changes => no need to rerender
@@ -143,7 +151,6 @@ export class MonthComponent implements OnInit, OnChanges {
     if (this.disabled || !this.isDraggable(day)) {
       return;
     }
-    console.log('drag start', this.isDraggable(day));
     e.preventDefault();
     this.dragged = day;
     this.move = false;
@@ -171,7 +178,7 @@ export class MonthComponent implements OnInit, OnChanges {
       return;
     }
     e.preventDefault();
-    this.dragDay(day, e);
+    this.dragOverDay(day, e);
   }
 
   getDayColor(_moment: moment.Moment) {
@@ -193,17 +200,17 @@ export class MonthComponent implements OnInit, OnChanges {
 
   /** When changing the date or selected input, the calendar will update its view to display the month containing it. */
   ngOnChanges(change) {
-    if (change.selected) {
+    /* if (change.selected) {
       this.setDate(this.selected);
       return;
     } else if (change.date) {
       this.setDate(this.date);
-    } else if (change.timespan) {
+    } else if (change.timespan || change.selectSpan) {
       this.setDate();
     }
     if (change.colors || change.heatmap) {
       this.cells = this.getMonth(this.date.clone(), 'current');
-    }
+    } */
   }
 
   /** Returns days of current month */
@@ -235,6 +242,7 @@ export class MonthComponent implements OnInit, OnChanges {
           active: this.timespan && date.isBetween(this.timespan[0], this.timespan[1], 'days', '[]'),
           first: isStart,
           last: isEnd,
+          selectable: this.isSelectable(date),
           inside: this.isInTimeSpan(date),
           color: this.getDayColor(date),
           heat: this.getDayHeat(date),
@@ -248,17 +256,20 @@ export class MonthComponent implements OnInit, OnChanges {
   }
 
   /** Sets the calendars viewed date to the given moment's month. Renders always 42 cells to keep the layout consistent. */
-  setDate(date: moment.Moment = this.selected || this.date || moment()) {
+  setDate(date: moment.Moment = this.selected || this.date) {
     if (date && date !== this.date) {
       this.date = date.clone();
     }
-    this.formatted = date.format(this.monthFormat);
-    this.cells = this.getMonth(date.clone(), 'current');
+    if (!date) {
+      this.date = this.selectSpan ? this.selectSpan[1].clone() : moment();
+    }
+    this.formatted = this.date.format(this.monthFormat);
+    this.cells = this.getMonth(this.date.clone(), 'current');
   }
 
   /** Selects the day of the given moment. */
   selectDay(_moment: moment.Moment, emit = true): void {
-    if (this.disabled) {
+    if (this.disabled || !this.isSelectable(_moment)) {
       return;
     }
     this.timespan = [_moment, _moment];
@@ -282,12 +293,13 @@ export class MonthComponent implements OnInit, OnChanges {
     return this.selected.startOf('day').diff(_moment, 'days') === 0;
   }
 
+  isSelectable(date, span = 'days') {
+    return !this.selectSpan || date.isBetween(this.selectSpan[0], this.selectSpan[1], span, '[]');
+  }
+
   canAlter(value, span: string) {
-    if (!this.timespan) {
-      return true;
-    }
     const newDate = this.date.clone().add(value, span);
-    return newDate.isBetween(this.timespan[0], this.timespan[1], 'months', '[]');
+    return this.isSelectable(newDate, 'months');
   }
 
   /** Updates the viewed date to reflect the given relative changes. */
