@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.21](https://github.com/entrecode/ec.components/compare/@ec.components/calendar@0.2.20...@ec.components/calendar@0.2.21) (2019-08-09)
+
+
+### Bug Fixes
+
+* fixed a few bugs in the date range picker ([81f5da3](https://github.com/entrecode/ec.components/commit/81f5da3))
+
+
+
+
+
 ## [0.2.20](https://github.com/entrecode/ec.components/compare/@ec.components/calendar@0.2.19...@ec.components/calendar@0.2.20) (2019-08-09)
 
 

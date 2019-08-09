@@ -88,8 +88,8 @@ export class MonthComponent implements OnInit, OnChanges {
     return !this.disabled &&
       !this.disableDrag &&
       (
-        !this.disableDragAnywhere || (
-          (day.first && !this.disableDragStart) || day.last && !this.disableDragEnd)
+        (!this.disableDragAnywhere || this.isInTimeSpan(day.date)) ||
+        ((day.first && !this.disableDragStart) || day.last && !this.disableDragEnd)
       );
   }
 
@@ -102,7 +102,9 @@ export class MonthComponent implements OnInit, OnChanges {
     /*  if (day.date.isSame(this.dragged.date)) {
        return;
      } */
-
+    if (!day || !this.isSelectable(day.date)) {
+      return;
+    }
     let newTimespan;
     if (this.move) {
       const moved = day.date.diff(this.dragged.date, 'days');
@@ -200,7 +202,7 @@ export class MonthComponent implements OnInit, OnChanges {
 
   /** When changing the date or selected input, the calendar will update its view to display the month containing it. */
   ngOnChanges(change) {
-    /* if (change.selected) {
+    if (change.selected) {
       this.setDate(this.selected);
       return;
     } else if (change.date) {
@@ -210,7 +212,7 @@ export class MonthComponent implements OnInit, OnChanges {
     }
     if (change.colors || change.heatmap) {
       this.cells = this.getMonth(this.date.clone(), 'current');
-    } */
+    }
   }
 
   /** Returns days of current month */
@@ -272,9 +274,20 @@ export class MonthComponent implements OnInit, OnChanges {
     if (this.disabled || !this.isSelectable(_moment)) {
       return;
     }
-    this.timespan = [_moment, _moment];
+    if (!this.disableDragAnywhere) {
+      this.timespan = [_moment, _moment];
+      this.spanChanged.emit(this.timespan);
+    } /* else if (!this.isInTimeSpan(_moment)) {
+      if (_moment.isBefore(this.timespan[0])) {
+        this.timespan = [_moment, this.timespan[1]];
+      } else if (_moment.isAfter(this.timespan[1])) {
+        this.timespan = [this.timespan[0], _moment];
+      }
+      this.spanChanged.emit(this.timespan);
+    } */ else if (!this.timespan) {
+      this.selected = _moment;
+    }
     this.setDate(_moment);
-    this.selected = _moment;
     if (emit) {
       this.dayClicked.emit(_moment);
     }

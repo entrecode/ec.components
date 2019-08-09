@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.46.3](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.46.2...@ec.components/ui@0.46.3) (2019-08-09)
+
+**Note:** Version bump only for package @ec.components/ui
+
+
+
+
+
 ## [0.46.2](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.46.1...@ec.components/ui@0.46.2) (2019-08-09)
 
 **Note:** Version bump only for package @ec.components/ui
