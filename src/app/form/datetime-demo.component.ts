@@ -12,7 +12,7 @@ import moment from 'moment-es6';
     <ec-calendar #calendar></ec-calendar>
 
     <h2>Month Heatmap</h2>
-    <ec-heatmap (spanChanged)="changedSpan($event)" [timestamps]="timestamps"></ec-heatmap>
+    <ec-heatmap [disabled]="true" (spanChanged)="changedSpan($event)" [timestamps]="timestamps"></ec-heatmap>
 
     <h2>Month</h2>
     <p>Just month grid</p>
