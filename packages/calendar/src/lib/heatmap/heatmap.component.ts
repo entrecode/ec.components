@@ -29,7 +29,6 @@ export class HeatmapComponent extends MonthComponent implements OnInit, OnChange
       });
       this.timespan =
         this.keepTimespan && this.timespan ? this.timespan : [moment(sorted[sorted.length - 1]), moment(sorted[0])];
-      this.date = this.timespan[1];
       this.stats = this.statsInfo();
       this.updateHeatmap();
     }
