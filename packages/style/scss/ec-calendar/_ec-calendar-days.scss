@@ -15,14 +15,16 @@
     text-align: center;
     transition: all 0.2s;
 
-    &:nth-child(7n) {
-      &::after {
+    /* &:nth-child(7n) { */
+    &.is-active.is-first {
+      &::before {
         display: none;
       }
     }
 
-    &:nth-child(7n + 1) {
-      &::before {
+    /* &:nth-child(7n + 1) { */
+    &.is-active.is-last {
+      &::after {
         display: none;
       }
     }
