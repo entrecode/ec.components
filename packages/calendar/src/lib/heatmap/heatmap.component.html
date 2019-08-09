@@ -1,4 +1,13 @@
 <div class="ec-heatmap">
-    <ec-calendar (spanChanged)="spanChanged.emit($event)" [heatmap]="heatmap" [timespan]="timespan" [date]="date" [disableDragStart]="disableDragStart"
-        [disableDragEnd]="disableDragEnd" [disabled]="disabled"></ec-calendar>
+  <ec-calendar
+    (spanChanged)="spanChanged.emit($event)"
+    [heatmap]="heatmap"
+    [timespan]="timespan"
+    [date]="date"
+    [disabled]="disabled"
+    [disableDrag]="disableDrag"
+    [disableDragAnywhere]="disableDragAnywhere"
+    [disableDragStart]="disableDragStart"
+    [disableDragEnd]="disableDragEnd"
+  ></ec-calendar>
 </div>

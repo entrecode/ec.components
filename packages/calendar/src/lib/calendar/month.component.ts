@@ -22,8 +22,6 @@ export interface Day {
   first: boolean;
   /** if the day is the last in the timespan */
   last: boolean;
-  /** determines if the day can be dragged to change the timespan */
-  draggable: boolean;
   /** custom class */
   heat?: string;
 }
@@ -35,6 +33,7 @@ export interface Day {
 })
 export class MonthComponent implements OnInit, OnChanges {
   dragged: any;
+  move: boolean;
   /** The current selected date */
   @Input() selected: moment.Moment;
   /** Color mapping for day cells. E.g. to view a month heatmap */
@@ -51,6 +50,10 @@ export class MonthComponent implements OnInit, OnChanges {
   @Input() disableDragStart = false;
   /** If true, the timespan end cannot be dragged */
   @Input() disableDragEnd = false;
+  /** If true, cannot drag anywhere to select a span (can still drag start and end, if not disabled too) */
+  @Input() disableDragAnywhere = false;
+  /** If true, no dragging can be done at all (other drag flags will be ignored) */
+  @Input() disableDrag = false;
   /** If true, nothing can be changed */
   @Input() disabled;
   /** The current month as string */
@@ -64,51 +67,94 @@ export class MonthComponent implements OnInit, OnChanges {
   /** Changed Timespan selection */
   @Output() spanChanged: EventEmitter<any> = new EventEmitter();
 
-  protected drag: Subject<Day> = new Subject();
   protected changeSpan: Subject<moment.Moment[]> = new Subject();
 
   /* public symbol: SymbolService */
   constructor(@Inject('moment.format.month') protected defaultMonthFormat) {
     /* this.monthFormat = this.symbol.resolve('moment.format.month') || this.monthFormat; */
     this.monthFormat = this.defaultMonthFormat || this.monthFormat;
-    this.drag
-      .asObservable()
-      .pipe(debounceTime(100))
-      .subscribe((day) => this.dropDay(day));
     this.changeSpan
       .asObservable()
-      .pipe(debounceTime(800))
-      .subscribe((timespan) => this.spanChanged.emit(this.timespan));
+      .pipe(debounceTime(500))
+      .subscribe((timespan) => {
+        this.spanChanged.emit(this.timespan);
+      });
   }
 
-  dropDay(day: Day) {
-    if (!this.dragged || ((day.first && this.dragged.first) || (day.last && this.dragged.last))) {
+  isDraggable(day) {
+    return !this.disabled &&
+      !this.disableDrag &&
+      (
+        !this.disableDragAnywhere || (
+          (day.first && !this.disableDragStart) || day.last && !this.disableDragEnd)
+      );
+  }
+
+  dragDay(day: Day, e?) {
+    if (!this.dragged) {
       return;
     }
-    const newTimespan = [].concat(this.timespan);
-    newTimespan[this.dragged.first ? 0 : 1] = day.date.clone();
+    this.selected = null;
+
+    /*  if (day.date.isSame(this.dragged.date)) {
+       return;
+     } */
+
+    let newTimespan;
+    if (this.move) {
+      const moved = day.date.diff(this.dragged.date, 'days');
+      newTimespan = [this.timespan[0].clone().add(moved, 'days'), this.timespan[1].clone().add(moved, 'days')];
+      this.dragged = day;
+    } else {
+      newTimespan = [].concat(this.timespan);
+      newTimespan[this.dragged.first ? 0 : 1] = day.date.clone();
+    }
+
+
+    if (newTimespan[0].isSame(this.timespan[0]) && newTimespan[1].isSame(this.timespan[1])) {
+      // nothing changes => no need to rerender
+      return;
+    }
     if (newTimespan[0].isAfter(newTimespan[1])) {
       this.dragged.first = !this.dragged.first;
       this.dragged.last = !this.dragged.last;
       newTimespan.reverse();
     }
     this.timespan = newTimespan;
-    this.changeSpan.next(this.timespan);
+    // this.changeSpan.next(this.timespan);
+
+    this.setDate();
+
     /* if (this.cells[0] === day || this.cells[this.cells.length - 1] === day) {
       // change month if dragging to edge
       this.setDate(day.date.clone().subtract(1, 'days'));
     } else {
       this.setDate();
     } */
-    this.setDate();
+
+    /* this.cells = this.getMonth(this.date, 'current'); */
+  }
+
+  isInTimeSpan(date) {
+    return this.timespan && date.isBetween(this.timespan[0], this.timespan[1], 'days', '][');
   }
 
   dragStart(day, e) {
-    if ((this.disableDragStart && day.first) || (this.disableDragEnd && day.last)) {
+    if (this.disabled || !this.isDraggable(day)) {
       return;
     }
-    this.dragged = day;
+    console.log('drag start', this.isDraggable(day));
     e.preventDefault();
+    this.dragged = day;
+    this.move = false;
+    if (!day.first && !day.last) {
+      if (this.isInTimeSpan(day.date)) {
+        this.move = true;
+        return;
+      }
+      this.timespan = [day.date, day.date];
+      this.setDate();
+    }
   }
 
   mouseUp(day, e) {
@@ -116,6 +162,7 @@ export class MonthComponent implements OnInit, OnChanges {
       return;
     }
     delete this.dragged;
+    this.changeSpan.next(this.timespan);
     e.preventDefault();
   }
 
@@ -124,7 +171,7 @@ export class MonthComponent implements OnInit, OnChanges {
       return;
     }
     e.preventDefault();
-    this.drag.next(day);
+    this.dragDay(day, e);
   }
 
   getDayColor(_moment: moment.Moment) {
@@ -188,7 +235,7 @@ export class MonthComponent implements OnInit, OnChanges {
           active: this.timespan && date.isBetween(this.timespan[0], this.timespan[1], 'days', '[]'),
           first: isStart,
           last: isEnd,
-          draggable: (!this.disableDragStart && isStart) || (!this.disableDragEnd && isEnd),
+          inside: this.isInTimeSpan(date),
           color: this.getDayColor(date),
           heat: this.getDayHeat(date),
           format: date.format('DD'),
@@ -202,10 +249,9 @@ export class MonthComponent implements OnInit, OnChanges {
 
   /** Sets the calendars viewed date to the given moment's month. Renders always 42 cells to keep the layout consistent. */
   setDate(date: moment.Moment = this.selected || this.date || moment()) {
-    if (this.disabled) {
-      return;
+    if (date && date !== this.date) {
+      this.date = date.clone();
     }
-    this.date = date.clone();
     this.formatted = date.format(this.monthFormat);
     this.cells = this.getMonth(date.clone(), 'current');
   }
@@ -215,6 +261,7 @@ export class MonthComponent implements OnInit, OnChanges {
     if (this.disabled) {
       return;
     }
+    this.timespan = [_moment, _moment];
     this.setDate(_moment);
     this.selected = _moment;
     if (emit) {

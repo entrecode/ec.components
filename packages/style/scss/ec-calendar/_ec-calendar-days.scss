@@ -65,9 +65,14 @@
     }
   }
 
-  .is-last,
-  .is-first {
-    cursor: move;
+  .is-draggable {
+    &.is-last,
+    &.is-first {
+      cursor: col-resize;
+    }
+    &.is-inside-timespan {
+      cursor: move;
+    }
   }
 
   .is-first {
