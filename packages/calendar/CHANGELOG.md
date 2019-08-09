@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.19](https://github.com/entrecode/ec.components/compare/@ec.components/calendar@0.2.18...@ec.components/calendar@0.2.19) (2019-08-09)
+
+
+### Bug Fixes
+
+* improved heatmap dragging ux ([f05b148](https://github.com/entrecode/ec.components/commit/f05b148))
+* pass disabled flag from heatmap ([f635cc4](https://github.com/entrecode/ec.components/commit/f635cc4))
+
+
+
+
+
 ## [0.2.18](https://github.com/entrecode/ec.components/compare/@ec.components/calendar@0.2.17...@ec.components/calendar@0.2.18) (2019-07-05)
 
 
