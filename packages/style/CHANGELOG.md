@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.6](https://github.com/entrecode/ec.components/compare/@ec.components/style@0.23.5...@ec.components/style@0.23.6) (2019-08-09)
+
+
+### Bug Fixes
+
+* select span for month ([816d2e0](https://github.com/entrecode/ec.components/commit/816d2e0))
+
+
+
+
+
 ## [0.23.5](https://github.com/entrecode/ec.components/compare/@ec.components/style@0.23.4...@ec.components/style@0.23.5) (2019-08-09)
 
 

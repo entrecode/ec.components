@@ -46,7 +46,11 @@
       </svg>
     </a>
     <div class="ec-calendar-title">{{ grid.formatted }}</div>
-    <a (click)="grid.setToday()" class="btn btn_clear btn_square ec-calendar-controls__current">
+    <a
+      *ngIf="isSelectable(todayMoment)"
+      (click)="grid.setToday()"
+      class="btn btn_clear btn_square ec-calendar-controls__current"
+    >
       <svg class="ixo">
         <use xlink:href="#today"></use>
       </svg>
@@ -74,6 +78,7 @@
       [disableDragStart]="disableDragStart"
       [disableDragEnd]="disableDragEnd"
       (spanChanged)="spanChanged.emit($event)"
+      [selectSpan]="selectSpan"
       [timespan]="timespan"
       [heatmap]="heatmap"
       [date]="date"

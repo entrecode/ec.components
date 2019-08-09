@@ -165,6 +165,9 @@
                             <li>
                                 <a href="#move">move</a>
                             </li>
+                            <li>
+                                <a href="#todayMoment">todayMoment</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -205,7 +208,7 @@
                                 <a href="#clearSelection">clearSelection</a>
                             </li>
                             <li>
-                                <a href="#dragDay">dragDay</a>
+                                <a href="#dragOverDay">dragOverDay</a>
                             </li>
                             <li>
                                 <a href="#dragStart">dragStart</a>
@@ -224,6 +227,9 @@
                             </li>
                             <li>
                                 <a href="#isInTimeSpan">isInTimeSpan</a>
+                            </li>
+                            <li>
+                                <a href="#isSelectable">isSelectable</a>
                             </li>
                             <li>
                                 <a href="#isSelected">isSelected</a>
@@ -296,6 +302,9 @@
                             </li>
                             <li>
                                 <a href="#selected">selected</a>
+                            </li>
+                            <li>
+                                <a href="#selectSpan">selectSpan</a>
                             </li>
                             <li>
                                 <a href="#spancolor">spancolor</a>
@@ -414,7 +423,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:40</a></code>
+                                    <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:41</a></code>
 </div>
                             </td>
                         </tr>
@@ -448,7 +457,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:46</a></code>
+                                    <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:49</a></code>
 </div>
                             </td>
                         </tr>
@@ -476,7 +485,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:58</a></code>
+                                    <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:61</a></code>
 </div>
                             </td>
                         </tr>
@@ -509,7 +518,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:56</a></code>
+                                    <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:59</a></code>
 </div>
                             </td>
                         </tr>
@@ -542,7 +551,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:54</a></code>
+                                    <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:57</a></code>
 </div>
                             </td>
                         </tr>
@@ -575,7 +584,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:52</a></code>
+                                    <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:55</a></code>
 </div>
                             </td>
                         </tr>
@@ -608,7 +617,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:50</a></code>
+                                    <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:53</a></code>
 </div>
                             </td>
                         </tr>
@@ -642,7 +651,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:42</a></code>
+                                    <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:43</a></code>
 </div>
                             </td>
                         </tr>
@@ -676,13 +685,47 @@
                             </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:38</a></code>
+                                    <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:39</a></code>
 </div>
                             </td>
                         </tr>
                 <tr>
                     <td class="col-md-4">
                         <div class="io-description"><p>The current selected date </p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="selectSpan"></a>
+                        <b>selectSpan</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../miscellaneous/variables.html#en" target="_self" >moment.Moment[]</a></code>
+
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4" colspan="2">
+                                    <div class="io-line">Inherited from         <code><a href="../components/MonthComponent.html" target="_self" >MonthComponent</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:47</a></code>
+</div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Timespan in which the dates can be selected. </p>
 </div>
                     </td>
                 </tr>
@@ -709,7 +752,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:48</a></code>
+                                    <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:51</a></code>
 </div>
                             </td>
                         </tr>
@@ -743,7 +786,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:44</a></code>
+                                    <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:45</a></code>
 </div>
                             </td>
                         </tr>
@@ -780,7 +823,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:66</a></code>
+                                    <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:69</a></code>
 </div>
                             </td>
                         </tr>
@@ -814,7 +857,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:68</a></code>
+                                    <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:71</a></code>
 </div>
                             </td>
                         </tr>
@@ -1252,7 +1295,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:294</a></code>
+                        <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:306</a></code>
 </div>
                 </td>
             </tr>
@@ -1341,7 +1384,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:285</a></code>
+                        <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:300</a></code>
 </div>
                 </td>
             </tr>
@@ -1428,7 +1471,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:273</a></code>
+                        <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:284</a></code>
 </div>
                 </td>
             </tr>
@@ -1451,18 +1494,18 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="dragDay"></a>
+                    <a name="dragOverDay"></a>
                     <span class="name">
                         <b>
-                            dragDay
+                            dragOverDay
                         </b>
-                        <a href="#dragDay"><span class="icon ion-ios-link"></span></a>
+                        <a href="#dragOverDay"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>dragDay(day: <a href="../interfaces/Day.html">Day</a>, e?)</code>
+<code>dragOverDay(day: <a href="../interfaces/Day.html">Day</a>, e?)</code>
                 </td>
             </tr>
 
@@ -1475,7 +1518,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:93</a></code>
+                        <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:96</a></code>
 </div>
                 </td>
             </tr>
@@ -1562,7 +1605,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:142</a></code>
+                        <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:150</a></code>
 </div>
                 </td>
             </tr>
@@ -1643,7 +1686,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:177</a></code>
+                        <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:184</a></code>
 </div>
                 </td>
             </tr>
@@ -1719,7 +1762,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:183</a></code>
+                        <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:190</a></code>
 </div>
                 </td>
             </tr>
@@ -1795,7 +1838,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:210</a></code>
+                        <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:217</a></code>
 </div>
                 </td>
             </tr>
@@ -1890,7 +1933,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:84</a></code>
+                        <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:87</a></code>
 </div>
                 </td>
             </tr>
@@ -1962,7 +2005,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:138</a></code>
+                        <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:146</a></code>
 </div>
                 </td>
             </tr>
@@ -2010,6 +2053,99 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="isSelectable"></a>
+                    <span class="name">
+                        <b>
+                            isSelectable
+                        </b>
+                        <a href="#isSelectable"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>isSelectable(date, span: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../components/MonthComponent.html" target="_self" >MonthComponent</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:296</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>date</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>span</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>&#x27;days&#x27;</code>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="isSelected"></a>
                     <span class="name">
                         <b>
@@ -2034,7 +2170,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:278</a></code>
+                        <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:289</a></code>
 </div>
                 </td>
             </tr>
@@ -2112,7 +2248,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:169</a></code>
+                        <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:176</a></code>
 </div>
                 </td>
             </tr>
@@ -2193,7 +2329,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:160</a></code>
+                        <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:167</a></code>
 </div>
                 </td>
             </tr>
@@ -2274,7 +2410,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:195</a></code>
+                        <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:202</a></code>
 </div>
                 </td>
             </tr>
@@ -2348,7 +2484,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:190</a></code>
+                        <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:197</a></code>
 </div>
                 </td>
             </tr>
@@ -2395,7 +2531,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:260</a></code>
+                        <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:271</a></code>
 </div>
                 </td>
             </tr>
@@ -2490,7 +2626,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:251</a></code>
+                        <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:259</a></code>
 </div>
                 </td>
             </tr>
@@ -2524,7 +2660,7 @@
                                     </td>
 
                                     <td>
-                                        <code>this.selected || this.date || moment()</code>
+                                        <code>this.selected || this.date</code>
                                     </td>
 
                                 </tr>
@@ -2572,7 +2708,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:307</a></code>
+                        <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:319</a></code>
 </div>
                 </td>
             </tr>
@@ -2619,7 +2755,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:302</a></code>
+                        <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:314</a></code>
 </div>
                 </td>
             </tr>
@@ -2704,7 +2840,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:62</a></code>
+                                    <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:65</a></code>
 </div>
                             </td>
                         </tr>
@@ -2750,7 +2886,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:70</a></code>
+                                    <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:73</a></code>
 </div>
                             </td>
                         </tr>
@@ -2819,7 +2955,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:60</a></code>
+                                    <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:63</a></code>
 </div>
                             </td>
                         </tr>
@@ -2865,7 +3001,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:64</a></code>
+                                    <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:67</a></code>
 </div>
                             </td>
                         </tr>
@@ -2906,6 +3042,39 @@
                         <tr>
                             <td class="col-md-4">
                                     <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:36</a></code>
+</div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="todayMoment"></a>
+                        <span class="name">
+                            <b>
+                            todayMoment</b>
+                            <a href="#todayMoment"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>moment()</code>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Inherited from         <code><a href="../components/MonthComponent.html" target="_self" >MonthComponent</a></code>
+</div>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in         <code><a href="../components/MonthComponent.html#source" target="_self" >MonthComponent:37</a></code>
 </div>
                             </td>
                         </tr>
@@ -3020,6 +3189,7 @@ export class HeatmapComponent extends MonthComponent implements OnInit, OnChange
     [disableDragAnywhere]&#x3D;&quot;disableDragAnywhere&quot;
     [disableDragStart]&#x3D;&quot;disableDragStart&quot;
     [disableDragEnd]&#x3D;&quot;disableDragEnd&quot;
+    [selectSpan]&#x3D;&quot;selectSpan&quot;
   &gt;&lt;/ec-calendar&gt;
 &lt;/div&gt;
 </code></pre>
@@ -3056,7 +3226,7 @@ export class HeatmapComponent extends MonthComponent implements OnInit, OnChange
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="ec-heatmap">  <ec-calendar    (spanChanged)="spanChanged.emit($event)"    [heatmap]="heatmap"    [timespan]="timespan"    [date]="date"    [disabled]="disabled"    [disableDrag]="disableDrag"    [disableDragAnywhere]="disableDragAnywhere"    [disableDragStart]="disableDragStart"    [disableDragEnd]="disableDragEnd"  ></ec-calendar></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="ec-heatmap">  <ec-calendar    (spanChanged)="spanChanged.emit($event)"    [heatmap]="heatmap"    [timespan]="timespan"    [date]="date"    [disabled]="disabled"    [disableDrag]="disableDrag"    [disableDragAnywhere]="disableDragAnywhere"    [disableDragStart]="disableDragStart"    [disableDragEnd]="disableDragEnd"    [selectSpan]="selectSpan"  ></ec-calendar></div></div>'
     var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'ActionbarComponent', 'selector': 'ec-actionbar'},{'name': 'AdminEntryInputComponent', 'selector': ''},{'name': 'ApiActionbarComponent', 'selector': 'ec-api-actionbar'},{'name': 'AssetgroupSelectComponent', 'selector': 'ec-assetgroup-select'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DaterangeComponent', 'selector': 'ec-daterange'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EntryActionbarComponent', 'selector': 'ec-entry-actionbar'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryListPopComponent', 'selector': 'ec-entry-list-pop'},{'name': 'EntryListSelectComponent', 'selector': 'ec-entry-list-select'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'HeatmapComponent', 'selector': 'ec-heatmap'},{'name': 'IconComponent', 'selector': 'ec-icon'},{'name': 'ImageSelectPopComponent', 'selector': 'ec-image-select-pop'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LocationMapComponent', 'selector': 'ec-location-map'},{'name': 'LocationPickerComponent', 'selector': 'ec-location-picker'},{'name': 'LocationSearchComponent', 'selector': 'ec-location-search'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'ModalComponent', 'selector': 'ec-modal'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceActionbarComponent', 'selector': 'ec-resource-actionbar'},{'name': 'ResourceCrudComponent', 'selector': 'ec-resource-crud'},{'name': 'ResourceDeletePopComponent', 'selector': 'ec-resource-delete-pop'},{'name': 'ResourceFormComponent', 'selector': 'ec-resource-form'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'ResourceListPopComponent', 'selector': 'ec-resource-list-pop'},{'name': 'ResourcePopComponent', 'selector': 'ec-resource-pop'},{'name': 'ResourceSelectComponent', 'selector': 'ec-resource-select'},{'name': 'SearchbarComponent', 'selector': 'ec-searchbar'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SignupComponent', 'selector': 'ec-signup'},{'name': 'SignupFormComponent', 'selector': 'ec-signup-form'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TagSelectComponent', 'selector': 'ec-tag-select'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'UploadComponent', 'selector': 'ec-upload'},{'name': 'UploadSelectComponent', 'selector': 'ec-upload-select'}];
     var DIRECTIVES = [{'name': 'AssetDirective', 'selector': '[ecAsset]'},{'name': 'DropzoneDirective', 'selector': '[ecDropzone]'},{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'FocusDirective', 'selector': '[ecFocus]'},{'name': 'ImageDirective', 'selector': 'img [ecImage]'},{'name': 'SlotHostDirective', 'selector': '[ecSlotHost]'}];
     var ACTUAL_COMPONENT = {'name': 'HeatmapComponent'};

@@ -12,12 +12,7 @@
   padding-right: 0;
   transition: all 0.2s;
   @include inject-style($ec-calendar-day-style);
-  @include metrics(
-    $ec-calendar-day-font-size,
-    $ec-calendar-day-line-height,
-    $ec-calendar-day-size,
-    $padding-ratio: 0
-  );
+  @include metrics($ec-calendar-day-font-size, $ec-calendar-day-line-height, $ec-calendar-day-size, $padding-ratio: 0);
   background: $ec-calendar-day-background;
   color: $ec-calendar-day-color;
   border-radius: rem($ec-calendar-day-size / 2);
@@ -49,6 +44,14 @@
     @include inject-style($ec-calendar-day-is-other-style);
     background: $ec-calendar-day-is-other-background;
     color: $ec-calendar-day-is-other-color;
+  }
+
+  // @param {color} $ec-calendar-day-is-other-color [$text-lighter]
+  // @param {color} $ec-calendar-day-is-other-background [transparent]
+  // @param {array} $ec-calendar-day-is-other-style
+  &.is-not-selectable {
+    @include inject-style($ec-calendar-day-is-other-style);
+    font-size: 0;
   }
 
   // @param {color} $ec-calendar-day-is-selected-color [$link-contrast]
