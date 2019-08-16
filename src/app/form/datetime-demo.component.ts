@@ -11,8 +11,9 @@ import moment from 'moment-es6';
     <p>controls + month grid inside</p>
     <ec-calendar #calendar></ec-calendar>
     <h2>Month Heatmap</h2>
-    <ec-heatmap [selectSpan]="selectSpan"
+    <ec-heatmap [selectSpan]="selectSpan" [date]="myDate"
     [disableDrag]="false" [disableDragAnywhere]="true" (spanChanged)="changedSpan($event)" [timestamps]="timestamps"></ec-heatmap>
+    <button (click)="changeMonth()">change month</button>
     <h2>Month</h2>
     <p>Just month grid</p>
     <ec-month #month></ec-month>
@@ -21,6 +22,7 @@ import moment from 'moment-es6';
 })
 export class DatetimeDemoComponent {
   timestamps;
+  myDate;
   selectSpan = [moment().subtract(2, 'months'), moment()];
 
   constructor() {
@@ -29,5 +31,8 @@ export class DatetimeDemoComponent {
   }
   changedSpan(span) {
     console.log('span', span.map((m) => m.toISOString()));
+  }
+  changeMonth() {
+    this.myDate = moment().subtract(12, 'months');
   }
 }
