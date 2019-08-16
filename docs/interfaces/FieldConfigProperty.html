@@ -111,6 +111,10 @@
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
+                                        <a href="#disabled">disabled</a>
+                                </li>
+                                <li>
+                                            <span class="modifier">Optional</span>
                                         <a href="#display">display</a>
                                 </li>
                                 <li>
@@ -273,7 +277,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">packages/core/src/lib/config/field-config-property.interface.ts:114</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="116" class="link-to-prism">packages/core/src/lib/config/field-config-property.interface.ts:116</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -523,6 +527,46 @@
                             <tr>
                                 <td class="col-md-4">
                                     <div class="io-description"><p>Custom copy transformation function.</p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="disabled"></a>
+                                        <span class="name"><b>disabled</b><a href="#disabled"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>disabled:     <code>boolean | any</code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>    <code>boolean | any</code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>If true, the property will always be disabled (like readOnly but also on create) </p>
 </div>
                                 </td>
                             </tr>
@@ -1002,7 +1046,7 @@
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>If true, the property will be omitted when saving (edit and create) </p>
+                                    <div class="io-description"><p>If true, the property will be ignored when saving (filtered out from object of emitted object) </p>
 </div>
                                 </td>
                             </tr>
@@ -1523,7 +1567,7 @@ e.g. transforms &quot;A,B,C&quot; to [&#39;A&#39;,&#39;B&#39;,&#39;C&#39;] </p>
 
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-description"><p>If true, an ec-output will be rendered inside each form which prevents editing the field. </p>
+                                    <div class="io-description"><p>If true, the form input will be disabled when editing </p>
 </div>
                                 </td>
                             </tr>
@@ -2041,9 +2085,11 @@ export interface FieldConfigProperty {
   input?: Type&lt;any&gt;;
   /** Custom Component for output (e.g. list cell) */
   output?: Type&lt;any&gt;;
-  /** If true, an ec-output will be rendered inside each form which prevents editing the field. */
+  /** If true, the form input will be disabled when editing */
   readOnly?: boolean;
-  /** If true, the property will be omitted when saving (edit and create) */
+  /** If true, the property will always be disabled (like readOnly but also on create) */
+  disabled?: boolean | any;
+  /** If true, the property will be ignored when saving (filtered out from object of emitted object) */
   immutable?: boolean | any;
   /** if false, the field will not be filterable in a list */
   filterable?: boolean;

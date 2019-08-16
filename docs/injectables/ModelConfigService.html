@@ -263,8 +263,8 @@ set method. </p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="211"
-                            class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:211</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="217"
+                            class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:217</a></div>
                 </td>
             </tr>
 
@@ -431,8 +431,8 @@ or just specific components. </p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="142"
-                            class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:142</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="146"
+                            class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:146</a></div>
                 </td>
             </tr>
 
@@ -505,8 +505,8 @@ This config is meant to deliver the default behaviour when nothing else is confi
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="242"
-                            class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:242</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="248"
+                            class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:248</a></div>
                 </td>
             </tr>
 
@@ -573,8 +573,8 @@ This config is meant to deliver the default behaviour when nothing else is confi
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="121"
-                            class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:121</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="125"
+                            class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:125</a></div>
                 </td>
             </tr>
 
@@ -1042,6 +1042,7 @@ export class ModelConfigService extends Config {
         filterOperator: &#x27;exact&#x27;,
         form: true,
         immutable: true,
+        disabled: true,
         hideInList: true,
         columns: 3,
       },
@@ -1055,6 +1056,7 @@ export class ModelConfigService extends Config {
         columns: 3,
         view: &#x27;copy&#x27;,
         immutable: true,
+        disabled: true,
         sortable: true,
         hideInList: true,
         rawFilter: true,
@@ -1069,6 +1071,7 @@ export class ModelConfigService extends Config {
         columns: 3,
         view: &#x27;copy&#x27;,
         immutable: true,
+        disabled: true,
         sortable: true,
         hideInList: false,
         rawFilter: true,
@@ -1083,6 +1086,7 @@ export class ModelConfigService extends Config {
         columns: 3,
         form: true,
         immutable: true,
+        disabled: true,
         hideInList: true,
         filterable: true,
         filterComponent: AdminEntryInputComponent,
@@ -1140,6 +1144,7 @@ export class ModelConfigService extends Config {
               outputView,
               label,
               classes,
+              disabled,
               columns &#x3D; 12,
             } &#x3D; config;
             const typeConfig &#x3D; this.typeConfig.get(type);
@@ -1153,6 +1158,7 @@ export class ModelConfigService extends Config {
                 validation,
                 relation: validation,
                 immutable: !mutable,
+                disabled,
                 readOnly,
                 hideInList,
                 hideInForm,
