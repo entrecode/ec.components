@@ -205,6 +205,9 @@
                                 <a href="#resolve">resolve</a>
                             </li>
                             <li>
+                                <a href="#resolvePath">resolvePath</a>
+                            </li>
+                            <li>
                                 <a href="#save">save</a>
                             </li>
                             <li>
@@ -265,6 +268,9 @@
                             </li>
                             <li>
                                 <a href="#resolve">resolve</a>
+                            </li>
+                            <li>
+                                <a href="#resolvePath">resolvePath</a>
                             </li>
                             <li>
                                 <a href="#save">save</a>
@@ -1175,7 +1181,7 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >Form:229</a></code>
+                        <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >Form:234</a></code>
 </div>
                 </td>
             </tr>
@@ -1259,7 +1265,7 @@ Calls the config#action method with the item and the property name </p>
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >Form:135</a></code>
+                        <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >Form:140</a></code>
 </div>
                 </td>
             </tr>
@@ -1385,7 +1391,7 @@ If property given: Returns the output of the config.fields[property].classes met
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >Form:186</a></code>
+                        <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >Form:191</a></code>
 </div>
                 </td>
             </tr>
@@ -1465,7 +1471,7 @@ If property given: Returns the output of the config.fields[property].classes met
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >Form:147</a></code>
+                        <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >Form:152</a></code>
 </div>
                 </td>
             </tr>
@@ -1734,7 +1740,7 @@ If no display function is set, it will just return the property value.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >Form:129</a></code>
+                        <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >Form:134</a></code>
 </div>
                 </td>
             </tr>
@@ -1907,7 +1913,7 @@ If no group function is set, it will just return the property value.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >Form:174</a></code>
+                        <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >Form:179</a></code>
 </div>
                 </td>
             </tr>
@@ -1983,7 +1989,7 @@ If no group function is set, it will just return the property value.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >Form:160</a></code>
+                        <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >Form:165</a></code>
 </div>
                 </td>
             </tr>
@@ -2116,6 +2122,84 @@ This method will traverse the body via the config.resolve function (if given). <
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="resolvePath"></a>
+                    <span class="name">
+                        <b>
+                            resolvePath
+                        </b>
+                        <a href="#resolvePath"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>resolvePath(path: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../classes/Form.html" target="_self" >Form</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >Form:109</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Resolves the given path on the item object. e.g. &quot;value.config.usePassword&quot; will resolve that object path, if existing. </p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>path</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="save"></a>
                     <span class="name">
                         <b>
@@ -2140,7 +2224,7 @@ This method will traverse the body via the config.resolve function (if given). <
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >Form:217</a></code>
+                        <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >Form:222</a></code>
 </div>
                 </td>
             </tr>
@@ -2222,7 +2306,7 @@ This method will traverse the body via the config.resolve function (if given). <
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >Form:195</a></code>
+                        <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >Form:200</a></code>
 </div>
                 </td>
             </tr>
@@ -2317,7 +2401,7 @@ This method will traverse the body via the config.resolve function (if given). <
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >Form:155</a></code>
+                        <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >Form:160</a></code>
 </div>
                 </td>
             </tr>
@@ -2397,7 +2481,7 @@ This method will traverse the body via the config.resolve function (if given). <
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >Form:112</a></code>
+                        <div class="io-line">Defined in         <code><a href="../classes/Form.html#source" target="_self" >Form:117</a></code>
 </div>
                 </td>
             </tr>
@@ -2603,7 +2687,7 @@ serialize) </p>
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Item.html#source" target="_self" >Item:229</a></code>
+                        <div class="io-line">Defined in         <code><a href="../classes/Item.html#source" target="_self" >Item:234</a></code>
 </div>
                 </td>
             </tr>
@@ -2687,7 +2771,7 @@ Calls the config#action method with the item and the property name </p>
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Item.html#source" target="_self" >Item:135</a></code>
+                        <div class="io-line">Defined in         <code><a href="../classes/Item.html#source" target="_self" >Item:140</a></code>
 </div>
                 </td>
             </tr>
@@ -2813,7 +2897,7 @@ If property given: Returns the output of the config.fields[property].classes met
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Item.html#source" target="_self" >Item:186</a></code>
+                        <div class="io-line">Defined in         <code><a href="../classes/Item.html#source" target="_self" >Item:191</a></code>
 </div>
                 </td>
             </tr>
@@ -2893,7 +2977,7 @@ If property given: Returns the output of the config.fields[property].classes met
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Item.html#source" target="_self" >Item:147</a></code>
+                        <div class="io-line">Defined in         <code><a href="../classes/Item.html#source" target="_self" >Item:152</a></code>
 </div>
                 </td>
             </tr>
@@ -3162,7 +3246,7 @@ If no display function is set, it will just return the property value.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Item.html#source" target="_self" >Item:129</a></code>
+                        <div class="io-line">Defined in         <code><a href="../classes/Item.html#source" target="_self" >Item:134</a></code>
 </div>
                 </td>
             </tr>
@@ -3335,7 +3419,7 @@ If no group function is set, it will just return the property value.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Item.html#source" target="_self" >Item:174</a></code>
+                        <div class="io-line">Defined in         <code><a href="../classes/Item.html#source" target="_self" >Item:179</a></code>
 </div>
                 </td>
             </tr>
@@ -3411,7 +3495,7 @@ If no group function is set, it will just return the property value.</p>
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Item.html#source" target="_self" >Item:160</a></code>
+                        <div class="io-line">Defined in         <code><a href="../classes/Item.html#source" target="_self" >Item:165</a></code>
 </div>
                 </td>
             </tr>
@@ -3544,6 +3628,84 @@ This method will traverse the body via the config.resolve function (if given). <
         <tbody>
             <tr>
                 <td class="col-md-4">
+                    <a name="resolvePath"></a>
+                    <span class="name">
+                        <b>
+                            resolvePath
+                        </b>
+                        <a href="#resolvePath"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>resolvePath(path: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Inherited from         <code><a href="../classes/Item.html" target="_self" >Item</a></code>
+</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-line">Defined in         <code><a href="../classes/Item.html#source" target="_self" >Item:109</a></code>
+</div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Resolves the given path on the item object. e.g. &quot;value.config.usePassword&quot; will resolve that object path, if existing. </p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>path</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
                     <a name="save"></a>
                     <span class="name">
                         <b>
@@ -3568,7 +3730,7 @@ This method will traverse the body via the config.resolve function (if given). <
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Item.html#source" target="_self" >Item:217</a></code>
+                        <div class="io-line">Defined in         <code><a href="../classes/Item.html#source" target="_self" >Item:222</a></code>
 </div>
                 </td>
             </tr>
@@ -3650,7 +3812,7 @@ This method will traverse the body via the config.resolve function (if given). <
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Item.html#source" target="_self" >Item:195</a></code>
+                        <div class="io-line">Defined in         <code><a href="../classes/Item.html#source" target="_self" >Item:200</a></code>
 </div>
                 </td>
             </tr>
@@ -3745,7 +3907,7 @@ This method will traverse the body via the config.resolve function (if given). <
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Item.html#source" target="_self" >Item:155</a></code>
+                        <div class="io-line">Defined in         <code><a href="../classes/Item.html#source" target="_self" >Item:160</a></code>
 </div>
                 </td>
             </tr>
@@ -3825,7 +3987,7 @@ This method will traverse the body via the config.resolve function (if given). <
             </tr>
             <tr>
                 <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../classes/Item.html#source" target="_self" >Item:112</a></code>
+                        <div class="io-line">Defined in         <code><a href="../classes/Item.html#source" target="_self" >Item:117</a></code>
 </div>
                 </td>
             </tr>

@@ -603,7 +603,7 @@ export interface ItemConfig&lt;T&gt; {
   /** The type of the Item. It determines how it will be displayed in different contexts */
   type?: string;
   /** Custom resolve path function. It can be used e.g. to access subbranches of an Object. */
-  resolve?: (body: T) &#x3D;&gt; any;
+  resolve?: (body: T, item: Item&lt;T&gt;) &#x3D;&gt; any;
   /** Contains the parent Instance which inhabits the item. This property is set programmatically and therefore meant to be readonly.*/
   parent?: any;
   /** Callback that is invoked when the item is saved */

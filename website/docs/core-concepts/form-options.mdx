@@ -110,9 +110,9 @@ The following field options control the forms looks/behaviour:
 | field.prefill       | prefill value for new entries                              | any                     |
 | field.input         | custom input component                                     | Component               |
 | field.formComponent | custom input component used in form only                   | Component               |
-| field.inputView     | view for input component                                   | string                  |
 | field.validate      | transformation for form validation                         | transformation function |
 | field.changed       | callback when a field changes                              | (value, form)           |
+| field.inputView     | view for input component                                   | string                  |
 
 ## validate
 
@@ -146,6 +146,26 @@ For custom input components, you can display the validation error by placing thi
 ```html
 <ec-input-errors [control]="control"></ec-input-errors>
 ```
+
+## changed
+
+with the changed callback, you can run custom logic when the field value changes:
+
+```ts
+muffinFormConfig = {
+  fields: {
+    name: {
+      changed: (value, form: FormComponent) => {
+        // do something with the new value. maybe update other form fields
+        form.group.get('url').patchValue(slugify(value));
+      },
+    },
+    url: {},
+  },
+};
+```
+
+In the above example, when changing the name field, the url is automatically updated with a slugified version of the new name.
 
 ## input views
 
@@ -461,3 +481,51 @@ Note that you will have to manually have to care for:
 - layout (field.columns will be ignored)
 
 Consider using ec-input instead to get the component sugar + lower mainetenance cost.
+
+### nested fields
+
+In some cases, you might want to control values that are not a direct property of your target object. Imagine an API expecting this:
+
+```json
+{
+  "title": "Example Title",
+  "config": {
+    "useVanillaSauce": true,
+    "secrets": {
+      "fridgePassword": "ilikedampfnudels"
+    }
+  }
+}
+```
+
+If you want to add inputs to control the nested properties "useVanillaSauce" and "fridgePassword", you can do that:
+
+```js
+{
+  fields: {
+    title: {
+      inputView: 'string'
+    },
+    'config_useVanillaSauce': {
+      label: 'Use Vanilla Sauce',
+      immutable: true,
+      inputView: 'toggle',
+      resolve: (body, item) => item.resolvePath('config.useVanillaSauce'),
+      changed: (value, form) => form.patchObjectField('config', 'useVanillaSauce', value)
+    },
+    'config_fridgePassword': {
+      label:'Fridge Password',
+      immutable: true,
+      inputView:'password',
+      resolve: (body, item) => item.resolvePath('config.secrets.useVanillaSauce'),
+      changed: (value, form) => form.patchObjectField('config', 'secrets.fridgePassword', value)
+    }
+  }
+}
+```
+
+The immutable flags will tell the form to ignore the field value, so we can handle it ourselfes.
+On every change, we patch the value of the config with the updated value.
+
+- The helper function resolvePath returns the given path on the item body, if existing. This function is a handy helper to handle deep objects.
+- The helper function pathObjectField is similar to resolvePath, but writes to the given path on the control of the field (calls patchValue)
