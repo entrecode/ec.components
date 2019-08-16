@@ -16,7 +16,7 @@ export interface ItemConfig<T> {
   /** The type of the Item. It determines how it will be displayed in different contexts */
   type?: string;
   /** Custom resolve path function. It can be used e.g. to access subbranches of an Object. */
-  resolve?: (body: T) => any;
+  resolve?: (body: T, item: Item<T>) => any;
   /** Contains the parent Instance which inhabits the item. This property is set programmatically and therefore meant to be readonly.*/
   parent?: any;
   /** Callback that is invoked when the item is saved */

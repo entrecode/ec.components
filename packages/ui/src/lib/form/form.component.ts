@@ -144,7 +144,7 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
         .subscribe((value) => {
           const changedField = this.form.getField(property);
           if (changedField.changed) {
-            changedField.changed(value, this);
+            changedField.changed(value, this, changedField);
           }
         });
     });
@@ -159,6 +159,11 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
         this.changed.emit(this);
       });
     this.ready.emit(this);
+  }
+
+  public patchObjectField(property, path, value) {
+    const control = this.group.get(property);
+    control.patchValue(patchObject(control.value, path, value));
   }
 
   /** Adds a new field with the given config to the form */
@@ -267,3 +272,19 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
     return error;
   }
 }
+
+
+function patchObject(o, path, value) {
+  const p = path.split('.');
+  if (p.length === 1) {
+    return {
+      ...(o || {}),
+      [p[0]]: value,
+    };
+  }
+  return {
+    ...(o || {}),
+    [p[0]]: patchObject((o || {})[p[0]], p.slice(1).join('.'), value),
+  };
+}
+

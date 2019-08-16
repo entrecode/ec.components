@@ -481,3 +481,51 @@ Note that you will have to manually have to care for:
 - layout (field.columns will be ignored)
 
 Consider using ec-input instead to get the component sugar + lower mainetenance cost.
+
+### nested fields
+
+In some cases, you might want to control values that are not a direct property of your target object. Imagine an API expecting this:
+
+```json
+{
+  "title": "Example Title",
+  "config": {
+    "useVanillaSauce": true,
+    "secrets": {
+      "fridgePassword": "ilikedampfnudels"
+    }
+  }
+}
+```
+
+If you want to add inputs to control the nested properties "useVanillaSauce" and "fridgePassword", you can do that:
+
+```js
+{
+  fields: {
+    title: {
+      inputView: 'string'
+    },
+    'config_useVanillaSauce': {
+      label: 'Use Vanilla Sauce',
+      immutable: true,
+      inputView: 'toggle',
+      resolve: (body, item) => item.resolvePath('config.useVanillaSauce'),
+      changed: (value, form) => form.patchObjectField('config', 'useVanillaSauce', value)
+    },
+    'config_fridgePassword': {
+      label:'Fridge Password',
+      immutable: true,
+      inputView:'password',
+      resolve: (body, item) => item.resolvePath('config.secrets.useVanillaSauce'),
+      changed: (value, form) => form.patchObjectField('config', 'secrets.fridgePassword', value)
+    }
+  }
+}
+```
+
+The immutable flags will tell the form to ignore the field value, so we can handle it ourselfes.
+On every change, we patch the value of the config with the updated value.
+
+- The helper function resolvePath returns the given path on the item body, if existing. This function is a handy helper to handle deep objects.
+- The helper function pathObjectField is similar to resolvePath, but writes to the given path on the control of the field (calls patchValue)

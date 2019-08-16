@@ -91,7 +91,7 @@ export class Item<T> {
     }
     if (!property) {
       if (this.config.resolve) {
-        return this.config.resolve(this.body);
+        return this.config.resolve(this.body, this);
       }
       return this.body;
     }
@@ -101,8 +101,13 @@ export class Item<T> {
     if (!this.config.resolve) {
       return this.body[property];
     }
-    const v = this.config.resolve(this.body);
+    const v = this.config.resolve(this.body, this);
     return v ? v[property] : null;
+  }
+
+  /** Resolves the given path on the item object. e.g. "value.config.usePassword" will resolve that object path, if existing. */
+  resolvePath(path: string) {
+    return getPath(this.body, path);
   }
 
   /** The main method for transformation functions like resolve, display and group.
@@ -234,4 +239,9 @@ export class Item<T> {
       this.config.fields[property].action(this, property);
     }
   }
+}
+
+function getPath(o, path) {
+  const p = path.split('.');
+  return p.length === 1 ? (o || {})[p[0]] : getPath((o || {})[p[0]], p.slice(1).join('.'));
 }
