@@ -110,9 +110,9 @@ The following field options control the forms looks/behaviour:
 | field.prefill       | prefill value for new entries                              | any                     |
 | field.input         | custom input component                                     | Component               |
 | field.formComponent | custom input component used in form only                   | Component               |
-| field.inputView     | view for input component                                   | string                  |
 | field.validate      | transformation for form validation                         | transformation function |
 | field.changed       | callback when a field changes                              | (value, form)           |
+| field.inputView     | view for input component                                   | string                  |
 
 ## validate
 
@@ -146,6 +146,26 @@ For custom input components, you can display the validation error by placing thi
 ```html
 <ec-input-errors [control]="control"></ec-input-errors>
 ```
+
+## changed
+
+with the changed callback, you can run custom logic when the field value changes:
+
+```ts
+muffinFormConfig = {
+  fields: {
+    name: {
+      changed: (value, form: FormComponent) => {
+        // do something with the new value. maybe update other form fields
+        form.group.get('url').patchValue(slugify(value));
+      },
+    },
+    url: {},
+  },
+};
+```
+
+In the above example, when changing the name field, the url is automatically updated with a slugified version of the new name.
 
 ## input views
 
