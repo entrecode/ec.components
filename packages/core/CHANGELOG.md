@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.29.0](https://github.com/entrecode/ec.components/compare/@ec.components/core@0.28.1...@ec.components/core@0.29.0) (2019-08-16)
+
+
+### Features
+
+* added disabled property ([444e098](https://github.com/entrecode/ec.components/commit/444e098))
+
+
+
+
+
 ## [0.28.1](https://github.com/entrecode/ec.components/compare/@ec.components/core@0.28.0...@ec.components/core@0.28.1) (2019-08-16)
 
 
