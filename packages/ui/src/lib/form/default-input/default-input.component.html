@@ -30,9 +30,15 @@
 
   <div class="ec-input-color" *ngSwitchCase="'color'">
     <div class="ec-input-color__preview" [style.backgroundColor]="control.value">
-      <input [id]="field.id" type="color" [formControl]="control" />
+      <input [id]="field.id" type="color" [value]="group.value[field.property]" [formControl]="control" />
     </div>
-    <input type="text" [formControl]="control" [placeholder]="field.getPlaceholder()" class="input" />
+    <input
+      type="text"
+      [formControl]="control"
+      [value]="group.value[field.property]"
+      [placeholder]="field.getPlaceholder()"
+      class="input"
+    />
   </div>
 
   <label *ngSwitchCase="'boolean'">
