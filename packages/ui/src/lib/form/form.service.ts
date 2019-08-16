@@ -7,7 +7,7 @@ import { FormComponent } from '../form/form.component';
 /** This service is the interface between Angular Forms and ec.components core classes. */
 @Injectable()
 export class FormService {
-  constructor(public symbol: SymbolService) {}
+  constructor(public symbol: SymbolService) { }
 
   /** Returns true if the field should be included in the form.
    * Decides based on field config values form, edit and create */
@@ -80,7 +80,7 @@ export class FormService {
 
   /** Returns true if the field should be readOnly, depending on its config and the form state. */
   isReadOnly(field, form) {
-    return field.immutable || (field.readOnly && form && !!form.getBody());
+    return field.disabled || (field.readOnly && form && !!form.getBody());
   }
 
   /** Returns label for given form (e.g. Edit label) */

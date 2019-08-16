@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.52.0](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.51.6...@ec.components/data@0.52.0) (2019-08-16)
+
+
+### Features
+
+* added disabled property ([444e098](https://github.com/entrecode/ec.components/commit/444e098))
+
+
+
+
+
 ## [0.51.6](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.51.5...@ec.components/data@0.51.6) (2019-08-16)
 
 **Note:** Version bump only for package @ec.components/data
