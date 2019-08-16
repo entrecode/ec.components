@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.28.1](https://github.com/entrecode/ec.components/compare/@ec.components/core@0.28.0...@ec.components/core@0.28.1) (2019-08-16)
+
+
+### Bug Fixes
+
+* nested fields in forms ([8685121](https://github.com/entrecode/ec.components/commit/8685121))
+
+
+
+
+
 # [0.28.0](https://github.com/entrecode/ec.components/compare/@ec.components/core@0.27.0...@ec.components/core@0.28.0) (2019-08-01)
 
 
