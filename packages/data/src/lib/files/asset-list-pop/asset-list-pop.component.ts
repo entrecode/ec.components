@@ -128,6 +128,7 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
               return asset.thumbnails[0].url;
             },
             immutable: true,
+            disabled: true
           },
           title: {
             label: '',

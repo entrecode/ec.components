@@ -65,9 +65,11 @@ export interface FieldConfigProperty {
   input?: Type<any>;
   /** Custom Component for output (e.g. list cell) */
   output?: Type<any>;
-  /** If true, an ec-output will be rendered inside each form which prevents editing the field. */
+  /** If true, the form input will be disabled when editing */
   readOnly?: boolean;
-  /** If true, the property will be omitted when saving (edit and create) */
+  /** If true, the property will always be disabled (like readOnly but also on create) */
+  disabled?: boolean | any;
+  /** If true, the property will be ignored when saving (filtered out from object of emitted object) */
   immutable?: boolean | any;
   /** if false, the field will not be filterable in a list */
   filterable?: boolean;
