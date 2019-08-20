@@ -3,7 +3,7 @@
 // @param {array} $ec-select-options-spacing [$ec-select-border-width 0 0]
 // @param {array} $ec-select-options-radius [$xui-select-options-radius]
 // @param {px | null} $ec-select-options-max-height [$xui-select-options-max-height]
-// @param {array} $ec-select-options-shadow [$xui-overlay-shadow]
+// @param {array} $ec-select-options-elevation [$xui-select-options-elevation]
 // @param {array} $ec-select-options-style [$xui-select-options-style]
 
 .ec-select-options {
@@ -15,11 +15,13 @@
   display: none;
   @include inject-style($ec-select-options-style);
   @include is-scrollable(y, contain, auto);
+  @if $ec-select-options-elevation {
+    @include elevation($ec-select-options-elevation);
+  }
   font-size: rem($base-font-size);
   max-height: rem($ec-select-options-max-height);
   margin: array-magic($ec-select-options-spacing);
   padding: array-magic($ec-select-options-padding);
-  box-shadow: array-magic($ec-select-options-shadow);
   border-radius: array-magic($ec-select-options-radius);
   background: $ec-select-options-background;
 
