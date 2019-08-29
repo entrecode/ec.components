@@ -16,7 +16,7 @@ import { TinymceComponent } from '@ec.components/tinymce';
   `,
 })
 export class TinyInputComponent extends InputComponent {
-  @ViewChild('imagePop') imagePop: ImageSelectPopComponent;
+  @ViewChild('imagePop', { static: true }) imagePop: ImageSelectPopComponent;
 
   constructor(public zone: NgZone, componentFactoryResolver: ComponentFactoryResolver) {
     super(componentFactoryResolver);

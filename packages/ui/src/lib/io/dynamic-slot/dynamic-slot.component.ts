@@ -8,7 +8,7 @@ import { SlotHostDirective } from '../slot-host.directive';
 })
 export class DynamicSlotComponent {
   /** The FieldHostDirective will  be used to nest custom components into the field */
-  @ViewChild(SlotHostDirective) fieldHost: SlotHostDirective;
+  @ViewChild(SlotHostDirective, { static: true }) fieldHost: SlotHostDirective;
 
   /** The constructor provides the instance of ViewContainerRef which is later used to create embedded views*/
   constructor(public componentFactoryResolver: ComponentFactoryResolver) {}

@@ -25,7 +25,7 @@ export class DatetimeComponent implements ControlValueAccessor {
   /** The form control that holds the date */
   @Input() formControl: FormControl = new FormControl();
   /** The used calendar component */
-  @ViewChild(CalendarComponent) calendar: CalendarComponent;
+  @ViewChild(CalendarComponent, { static: true }) calendar: CalendarComponent;
   /** Array of the days of a week. */
   public weekdays: string[];
   /** If true, the time will not be displayed nor will be editable. */

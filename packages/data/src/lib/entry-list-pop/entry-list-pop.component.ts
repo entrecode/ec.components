@@ -25,7 +25,7 @@ export class EntryListPopComponent extends PopComponent implements OnChanges {
   @Input() config: CrudConfig<EntryResource>;
   @Input() selection: Selection<EntryResource>;
   @Output() columnClicked: EventEmitter<Item<EntryResource>> = new EventEmitter();
-  @ViewChild(SearchbarComponent) searchbar: SearchbarComponent;
+  @ViewChild(SearchbarComponent, { static: false }) searchbar: SearchbarComponent;
   /** Set host class to make sure the type is used */
   @HostBinding('class') class = 'ec-list-pop modal-wrapper modal-wrapper_backdrop';
   lightModel: any;

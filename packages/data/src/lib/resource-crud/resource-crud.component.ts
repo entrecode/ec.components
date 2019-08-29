@@ -34,11 +34,11 @@ export class ResourceCrudComponent<T> implements OnInit, WithLoader {
   /** The selection that should be used */
   @Input() selection: Selection<T>;
   /** The ResourceListComponent inside the template. */
-  @ViewChild(ResourceListComponent) list: ResourceListComponent;
+  @ViewChild(ResourceListComponent, { static: false }) list: ResourceListComponent;
   /** The Pop inside the template. */
-  @ViewChild(ResourcePopComponent) pop: ResourcePopComponent;
+  @ViewChild(ResourcePopComponent, { static: true }) pop: ResourcePopComponent;
   /** The lists loader */
-  @ViewChild(LoaderComponent) loader: LoaderComponent;
+  @ViewChild(LoaderComponent, { static: true }) loader: LoaderComponent;
   /** Emits when a list element is clicked */
   @Output() columnClicked: EventEmitter<any> = new EventEmitter();
   /** Emits when the selection has changed */
