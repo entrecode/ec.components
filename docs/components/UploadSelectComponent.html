@@ -978,7 +978,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(UploadComponent)<br />
+                                @ViewChild(UploadComponent, {static: false})<br />
                             </code>
                         </td>
                     </tr>
@@ -1068,7 +1068,7 @@ export class UploadSelectComponent implements OnInit {
   @Output() browse: EventEmitter&lt;void&gt; &#x3D; new EventEmitter();
   @Input() config: CrudConfig&lt;DMAssetResource | PublicAssetResource&gt;;
   /** The nested upload component */
-  @ViewChild(UploadComponent) uploader: UploadComponent;
+  @ViewChild(UploadComponent, { static: false }) uploader: UploadComponent;
   /** The Url to upload from */
   urlsToUpload &#x3D; &#x27;&#x27;;
   /** Wether or not the url input should be visible */

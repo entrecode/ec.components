@@ -514,7 +514,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;container&#x27;)<br />
+                                @ViewChild(&#x27;container&#x27;, {static: false})<br />
                             </code>
                         </td>
                     </tr>
@@ -600,7 +600,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;pageContainer&#x27;)<br />
+                                @ViewChild(&#x27;pageContainer&#x27;, {static: false})<br />
                             </code>
                         </td>
                     </tr>
@@ -631,7 +631,7 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ElementRef, Input, OnInit, QueryList, ViewChild, ViewChildren } from &#x27;@angular/core&#x27;;
-import { OnChanges } from &#x27;@angular/core/src/metadata/lifecycle_hooks&#x27;;
+import { OnChanges } from &#x27;@angular/core&#x27;;
 import { Pagination } from &#x27;@ec.components/core&#x27;;
 import { PaginationConfig } from &#x27;./pagination-config.interface&#x27;;
 
@@ -646,9 +646,9 @@ export class PaginationComponent&lt;T&gt; implements OnChanges, OnInit {
   /** A Pagination Instance */
   @Input() pagination: Pagination&lt;T&gt;;
   /** The div container for the pages*/
-  @ViewChild(&#x27;container&#x27;) private container: ElementRef;
+  @ViewChild(&#x27;container&#x27;, { static: false }) private container: ElementRef;
   /** The ul around pages */
-  @ViewChild(&#x27;pageContainer&#x27;) private pageContainer: ElementRef;
+  @ViewChild(&#x27;pageContainer&#x27;, { static: false }) private pageContainer: ElementRef;
   /** The pages li elements. The first one is used to determine the container translation. */
   @ViewChildren(&#x27;page&#x27;) private page: QueryList&lt;ElementRef&gt;;
   /** The config that is used */
@@ -673,9 +673,9 @@ export class PaginationComponent&lt;T&gt; implements OnChanges, OnInit {
     return (
       Math.abs(current - page) &lt;
       this.config.range +
-        1 +
-        Math.max(0, this.config.range - current + 1) +
-        Math.max(0, current - this.pagination.getPages() + this.config.range)
+      1 +
+      Math.max(0, this.config.range - current + 1) +
+      Math.max(0, current - this.pagination.getPages() + this.config.range)
     );
   }
 

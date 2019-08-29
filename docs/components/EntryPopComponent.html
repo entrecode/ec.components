@@ -2063,7 +2063,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(EntryFormComponent)<br />
+                                @ViewChild(EntryFormComponent, {static: false})<br />
                             </code>
                         </td>
                     </tr>
@@ -2309,7 +2309,7 @@ export class EntryPopComponent extends PopComponent implements OnInit {
   /** CrudConfig for customizing the entry-form and the pop.*/
   @Input() config: CrudConfig&lt;EntryResource&gt; &#x3D; {};
   /** The entry form inside the view */
-  @ViewChild(EntryFormComponent) form: EntryFormComponent;
+  @ViewChild(EntryFormComponent, { static: false }) form: EntryFormComponent;
   /** The model that should be edited/created*/
   @Input() model: string;
   /** The entry that should be used in the form. Is also set by edit.*/

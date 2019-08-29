@@ -938,7 +938,7 @@ Passes the editor instance. Intended to be used for custom controls  </p>
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;container&#x27;)<br />
+                                @ViewChild(&#x27;container&#x27;, {static: true})<br />
                             </code>
                         </td>
                     </tr>
@@ -1189,7 +1189,7 @@ export class TinymceComponent implements AfterViewInit, OnDestroy, ControlValueA
   /** The current editor instance */
   public editor: any;
   /** The container where the editor is rendered */
-  @ViewChild(&#x27;container&#x27;) container: ElementRef;
+  @ViewChild(&#x27;container&#x27;, { static: true }) container: ElementRef;
   /** Subject that is nexted on editor change */
   update: Subject&lt;any&gt; &#x3D; new Subject();
   /** Debounce time for value change processing */

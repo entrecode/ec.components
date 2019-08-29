@@ -3177,7 +3177,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(MonthComponent)<br />
+                                @ViewChild(MonthComponent, {static: true})<br />
                             </code>
                         </td>
                     </tr>
@@ -3722,7 +3722,7 @@ export class CalendarComponent extends MonthComponent implements ControlValueAcc
   /** The current value of the input */
   inputValue &#x3D; &#x27;&#x27;;
   /** The calendar view child. */
-  @ViewChild(MonthComponent) grid: MonthComponent;
+  @ViewChild(MonthComponent, { static: true }) grid: MonthComponent;
   /** Array of the days of a week. */
   public weekdays: string[];
   /** The input&#x27;s placeholder */

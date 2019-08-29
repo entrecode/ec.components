@@ -364,7 +364,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(SlotHostDirective)<br />
+                                @ViewChild(SlotHostDirective, {static: true})<br />
                             </code>
                         </td>
                     </tr>
@@ -399,7 +399,7 @@ import { SlotHostDirective } from &#x27;../slot-host.directive&#x27;;
 })
 export class DynamicSlotComponent {
   /** The FieldHostDirective will  be used to nest custom components into the field */
-  @ViewChild(SlotHostDirective) fieldHost: SlotHostDirective;
+  @ViewChild(SlotHostDirective, { static: true }) fieldHost: SlotHostDirective;
 
   /** The constructor provides the instance of ViewContainerRef which is later used to create embedded views*/
   constructor(public componentFactoryResolver: ComponentFactoryResolver) {}

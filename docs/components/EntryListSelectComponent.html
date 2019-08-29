@@ -2116,7 +2116,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(EntryListComponent)<br />
+                                @ViewChild(EntryListComponent, {static: false})<br />
                             </code>
                         </td>
                     </tr>
@@ -2551,7 +2551,7 @@ You can access a form&#39;s InputComponents via FormComponent#inputs </p>
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(SlotHostDirective)<br />
+                                @ViewChild(SlotHostDirective, {static: true})<br />
                             </code>
                         </td>
                     </tr>
@@ -2624,7 +2624,7 @@ export class EntryListSelectComponent extends InputComponent implements ControlV
   /** The config for the entry list */
   @Input() listConfig: CrudConfig&lt;EntryResource&gt;;
   /** The nested entryList */
-  @ViewChild(EntryListComponent) entryList: EntryListComponent;
+  @ViewChild(EntryListComponent, { static: false }) entryList: EntryListComponent;
   /** The current selected entries */
   items: EntryResource[];
   /** The config for the selection list. */

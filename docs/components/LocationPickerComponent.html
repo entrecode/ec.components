@@ -1091,7 +1091,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(LocationMapComponent)<br />
+                                @ViewChild(LocationMapComponent, {static: true})<br />
                             </code>
                         </td>
                     </tr>
@@ -1159,7 +1159,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(LocationSearchComponent)<br />
+                                @ViewChild(LocationSearchComponent, {static: true})<br />
                             </code>
                         </td>
                     </tr>
@@ -1491,9 +1491,9 @@ export class LocationPickerComponent extends DefaultInputComponent implements Co
   /** Placeholder for search input */
   @Input() placeholder;
   /** The nested LocationMapComponent */
-  @ViewChild(LocationMapComponent) map: LocationMapComponent;
+  @ViewChild(LocationMapComponent, { static: true }) map: LocationMapComponent;
   /** The nested LocationSearchComponent */
-  @ViewChild(LocationSearchComponent) search: LocationSearchComponent;
+  @ViewChild(LocationSearchComponent, { static: true }) search: LocationSearchComponent;
   /** Form input component */
   input: InputComponent;
   /** readonly? */

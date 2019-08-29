@@ -2611,7 +2611,7 @@ You can also pass just an item to use its config and body.</p>
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(LoaderComponent)<br />
+                                @ViewChild(LoaderComponent, {static: false})<br />
                             </code>
                         </td>
                     </tr>
@@ -2864,7 +2864,7 @@ import {
   formTemplate,
 } from &#x27;@ec.components/ui&#x27;;
 import Core from &#x27;ec.sdk/lib/Core&#x27;;
-import { OnChanges } from &#x27;@angular/core/src/metadata/lifecycle_hooks&#x27;;
+import { OnChanges } from &#x27;@angular/core&#x27;;
 import { Item, FormConfig } from &#x27;@ec.components/core&#x27;;
 import Resource from &#x27;ec.sdk/lib/resources/Resource&#x27;;
 import { ResourceForm } from &#x27;./resource-form&#x27;;
