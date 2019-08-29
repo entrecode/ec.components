@@ -7,9 +7,9 @@ import { Form } from '@ec.components/core';
 })
 export class LoaderDemoComponent implements OnInit, WithLoader {
   public classes = ['', 'is-local', 'is-global'];
-  @ViewChild('loader') loader: LoaderComponent;
+  @ViewChild('loader', { static: true }) loader: LoaderComponent;
   public options: Form<any>;
-  @ViewChild('optionsForm') optionsForm: FormComponent<any>;
+  @ViewChild('optionsForm', { static: true }) optionsForm: FormComponent<any>;
 
   constructor(private loaderService: LoaderService) {}
 

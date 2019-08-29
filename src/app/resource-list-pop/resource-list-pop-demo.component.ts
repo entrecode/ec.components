@@ -7,7 +7,7 @@ import Core from 'ec.sdk/lib/Core';
   templateUrl: './resource-list-pop-demo.component.html',
 })
 export class ResourceListPopDemoComponent {
-  @ViewChild(ResourceListPopComponent) resourceListPop: ResourceListPopComponent;
+  @ViewChild(ResourceListPopComponent, { static: true }) resourceListPop: ResourceListPopComponent;
   apis: Core[] = [];
   relations: string[] = [];
   api: Core;

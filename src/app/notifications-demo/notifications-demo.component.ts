@@ -11,7 +11,7 @@ export class NotificationsDemoComponent implements OnInit, WithNotifications {
   public notifications: Notification[] = [];
   public options: Form<any>;
   /* public latest:Notification; */
-  @ViewChild('optionsForm') optionsForm: FormComponent<any>;
+  @ViewChild('optionsForm', { static: true }) optionsForm: FormComponent<any>;
 
   constructor(private notificationService: NotificationsService) {}
 

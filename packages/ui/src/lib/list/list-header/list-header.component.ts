@@ -17,7 +17,7 @@ export class ListHeaderComponent implements OnChanges {
   /** The selection instance. This is optional. If It is not provided, no checkbox will be visible.*/
   @Input() selection: Selection<any>;
   /** The pop dropdowns that contain the filtering */
-  @ViewChild('filterPop') filterPop: PopComponent;
+  @ViewChild('filterPop', { static: true }) filterPop: PopComponent;
   /** The config for the filter form */
   filterFormConfig: ListConfig<any>;
   filteredField: any;

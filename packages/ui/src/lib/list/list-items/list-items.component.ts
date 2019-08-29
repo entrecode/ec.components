@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { Item, List, Selection } from '@ec.components/core';
-import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
+import { OnChanges } from '@angular/core';
 
 /** The ListItemsComponent displays the actual list, without all peripherals (header, pagination etc.).
  * It can either be given an Array of Items or just the list parent to control the shown items. */
@@ -23,7 +23,7 @@ export class ListItemsComponent<T> implements OnChanges {
   /** Event emitter on item clicked */
   @Output() columnClicked: EventEmitter<Item<T>> = new EventEmitter();
 
-  constructor(public cdr: ChangeDetectorRef) {}
+  constructor(public cdr: ChangeDetectorRef) { }
   /** Checks for host and uses its list. */
   ngOnChanges() {
     if (!this.items && this.list) {

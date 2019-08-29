@@ -26,7 +26,7 @@ export class LoginComponent implements WithLoader, WithNotifications {
   /** Subject that is nexted when an error occurs. For custom error reactions */
   @Output() error: EventEmitter<AccountResource> = new EventEmitter();
   /** The included loader. */
-  @ViewChild(LoaderComponent) loader;
+  @ViewChild(LoaderComponent, { static: true }) loader;
   /** Error notifications */
   notifications: Notification[] = [];
 

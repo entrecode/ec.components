@@ -8,7 +8,7 @@ import {
   formTemplate,
 } from '@ec.components/ui';
 import Core from 'ec.sdk/lib/Core';
-import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
+import { OnChanges } from '@angular/core';
 import { Item, FormConfig } from '@ec.components/core';
 import Resource from 'ec.sdk/lib/resources/Resource';
 import { ResourceForm } from './resource-form';

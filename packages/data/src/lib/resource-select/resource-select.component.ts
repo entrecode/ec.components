@@ -60,13 +60,13 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
   // tslint:disable-next-line:no-input-rename
   @Input('config') crudConfig: CrudConfig<Resource>;
   /** The crud pop with the list to select from */
-  @ViewChild('dropdown') dropdown: PopComponent;
+  @ViewChild('dropdown', { static: true }) dropdown: PopComponent;
   /** The nested resource list in the dropdown */
-  @ViewChild('dropdownList') dropdownList: ResourceListComponent;
+  @ViewChild('dropdownList', { static: false }) dropdownList: ResourceListComponent;
   /** The nested resource pop for editing and creating */
-  @ViewChild(ResourcePopComponent) resourcePop: ResourcePopComponent;
+  @ViewChild(ResourcePopComponent, { static: false }) resourcePop: ResourcePopComponent;
   /** The nested resource list pop */
-  @ViewChild(ResourceListPopComponent) resourceListPop: ResourceListPopComponent;
+  @ViewChild(ResourceListPopComponent, { static: true }) resourceListPop: ResourceListPopComponent;
   /** The config of the dropdown pop */
   dropdownConfig: CrudConfig<Resource>;
   /** The event that focuses the input */

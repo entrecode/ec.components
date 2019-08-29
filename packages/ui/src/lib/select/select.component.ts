@@ -75,13 +75,13 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   /** Event emitter to focus input */
   @Input() focusEvent: EventEmitter<boolean> = new EventEmitter();
   /** The selection dropdown */
-  @ViewChild('dropdown') dropdown: PopComponent;
+  @ViewChild('dropdown', { static: true }) dropdown: PopComponent;
   /** The loader inside the dropdown */
-  @ViewChild('dropdownLoader') dropdownLoader: LoaderComponent;
+  @ViewChild('dropdownLoader', { static: true }) dropdownLoader: LoaderComponent;
   /** The list in the dropdown */
-  @ViewChild(ListComponent) dropdownList: ListComponent<any>;
+  @ViewChild(ListComponent, { static: true }) dropdownList: ListComponent<any>;
   /** The nested searchbar */
-  @ViewChild(SearchbarComponent) searchbar: SearchbarComponent;
+  @ViewChild(SearchbarComponent, { static: false }) searchbar: SearchbarComponent;
   /** Subject that is nexted when an item is being selected (clicked or entered on) */
   toggleItem: Subject<Item<T>> = new Subject();
   /** The formControl that is used. */
