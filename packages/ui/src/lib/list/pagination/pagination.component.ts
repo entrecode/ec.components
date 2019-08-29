@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
-import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
+import { OnChanges } from '@angular/core';
 import { Pagination } from '@ec.components/core';
 import { PaginationConfig } from './pagination-config.interface';
 
@@ -41,9 +41,9 @@ export class PaginationComponent<T> implements OnChanges, OnInit {
     return (
       Math.abs(current - page) <
       this.config.range +
-        1 +
-        Math.max(0, this.config.range - current + 1) +
-        Math.max(0, current - this.pagination.getPages() + this.config.range)
+      1 +
+      Math.max(0, this.config.range - current + 1) +
+      Math.max(0, current - this.pagination.getPages() + this.config.range)
     );
   }
 
