@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.14](https://github.com/entrecode/ec.components/compare/@ec.components/medium-editor@0.4.13...@ec.components/medium-editor@0.4.14) (2019-08-29)
+
+
+### Bug Fixes
+
+* imports + polyfill hacking ([4c4a5de](https://github.com/entrecode/ec.components/commit/4c4a5de))
+* update to angular 8 ([99c3035](https://github.com/entrecode/ec.components/commit/99c3035))
+
+
+
+
+
 ## [0.4.13](https://github.com/entrecode/ec.components/compare/@ec.components/medium-editor@0.4.12...@ec.components/medium-editor@0.4.13) (2019-05-03)
 
 **Note:** Version bump only for package @ec.components/medium-editor
