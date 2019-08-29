@@ -13,7 +13,7 @@ export class TinymceDemoComponent {
   html = '<h1>Demo</h1>';
   editor: any;
   /** asset pop that will be opened when the image button is pressed */
-  @ViewChild('imageLoader') imageLoader: LoaderComponent;
+  @ViewChild('imageLoader', { static: false }) imageLoader: LoaderComponent;
   tinyFormConfig = {
     fields: {
       tiny: {

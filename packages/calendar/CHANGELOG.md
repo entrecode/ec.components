@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.22](https://github.com/entrecode/ec.components/compare/@ec.components/calendar@0.2.21...@ec.components/calendar@0.2.22) (2019-08-29)
+
+
+### Bug Fixes
+
+* imports + polyfill hacking ([4c4a5de](https://github.com/entrecode/ec.components/commit/4c4a5de))
+* update to angular 8 ([99c3035](https://github.com/entrecode/ec.components/commit/99c3035))
+
+
+
+
+
 ## [0.2.21](https://github.com/entrecode/ec.components/compare/@ec.components/calendar@0.2.20...@ec.components/calendar@0.2.21) (2019-08-09)
 
 

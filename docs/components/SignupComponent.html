@@ -593,7 +593,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(LoaderComponent)<br />
+                                @ViewChild(LoaderComponent, {static: true})<br />
                             </code>
                         </td>
                     </tr>
@@ -702,7 +702,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(LoaderComponent)<br />
+                                @ViewChild(LoaderComponent, {static: true})<br />
                             </code>
                         </td>
                     </tr>
@@ -870,7 +870,7 @@ export class SignupComponent extends LoginComponent implements WithLoader, WithN
   /** Subject that is nexted when the login was successful. Meant to be used for redirecting to another page (or similar). */
   @Output() success: EventEmitter&lt;AccountResource&gt; &#x3D; new EventEmitter();
   /** The included loader. */
-  @ViewChild(LoaderComponent) loader;
+  @ViewChild(LoaderComponent, { static: true }) loader;
   /** Error notifications */
   notifications: Notification[] &#x3D; [];
 

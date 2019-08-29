@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.30.0](https://github.com/entrecode/ec.components/compare/@ec.components/core@0.29.0...@ec.components/core@0.30.0) (2019-08-29)
+
+
+### Bug Fixes
+
+* imports + polyfill hacking ([4c4a5de](https://github.com/entrecode/ec.components/commit/4c4a5de))
+
+
+### Features
+
+* angular 8 ([d5ce586](https://github.com/entrecode/ec.components/commit/d5ce586))
+
+
+
+
+
 # [0.29.0](https://github.com/entrecode/ec.components/compare/@ec.components/core@0.28.1...@ec.components/core@0.29.0) (2019-08-16)
 
 

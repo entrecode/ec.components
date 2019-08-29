@@ -8,7 +8,7 @@ import { mocked } from '../../mocks/data';
 })
 export class PopDemoComponent {
   private popClass: string;
-  @ViewChild('pop') pop: PopComponent;
+  @ViewChild('pop', { static: false }) pop: PopComponent;
 
   constructor() {}
 

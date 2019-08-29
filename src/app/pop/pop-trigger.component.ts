@@ -25,7 +25,7 @@ import { PopComponent } from '@ec.components/ui';
 })
 export class PopTriggerComponent {
   popClass: string;
-  @ViewChild('pop') pop: PopComponent;
+  @ViewChild('pop', { static: true }) pop: PopComponent;
 
   constructor() {}
 

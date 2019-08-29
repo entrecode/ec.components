@@ -2059,7 +2059,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(ResourceFormComponent)<br />
+                                @ViewChild(ResourceFormComponent, {static: false})<br />
                             </code>
                         </td>
                     </tr>
@@ -2304,7 +2304,7 @@ export class ResourcePopComponent extends PopComponent {
   /** CrudConfig for customizing the entry-form and the pop.*/
   @Input() config: CrudConfig&lt;Resource&gt; &#x3D; {};
   /** The entry form inside the view */
-  @ViewChild(ResourceFormComponent) form: ResourceFormComponent;
+  @ViewChild(ResourceFormComponent, { static: false }) form: ResourceFormComponent;
   /** The API Connector that possesses the resource list, see https://entrecode.github.io/ec.sdk/#api-connectors */
   @Input() api: Core; // sdk api connector
   /** The name of the resource. If given, the generic ListResource loading will be used (api.resourceList) */

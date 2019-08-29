@@ -26,7 +26,7 @@ export class ResourceListPopComponent extends PopComponent implements OnChanges 
   @Input() selection: Selection<Resource>;
   @Output() columnClicked: EventEmitter<Item<Resource>> = new EventEmitter();
   @Output() pasted: EventEmitter<Item<Resource>> = new EventEmitter();
-  @ViewChild(SearchbarComponent) searchbar: SearchbarComponent;
+  @ViewChild(SearchbarComponent, { static: false }) searchbar: SearchbarComponent;
   /** Set host class to make sure the type is used */
   @HostBinding('class') class = 'ec-resource-list-pop modal-wrapper';
   lightModel: any;

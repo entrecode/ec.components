@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.48.0](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.47.0...@ec.components/ui@0.48.0) (2019-08-29)
+
+
+### Bug Fixes
+
+* delete old select template ([e69168d](https://github.com/entrecode/ec.components/commit/e69168d))
+* imports + polyfill hacking ([4c4a5de](https://github.com/entrecode/ec.components/commit/4c4a5de))
+* update to angular 8 ([99c3035](https://github.com/entrecode/ec.components/commit/99c3035))
+
+
+### Features
+
+* angular 8 ([d5ce586](https://github.com/entrecode/ec.components/commit/d5ce586))
+
+
+
+
+
 # [0.47.0](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.46.5...@ec.components/ui@0.47.0) (2019-08-16)
 
 

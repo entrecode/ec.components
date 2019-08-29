@@ -3962,7 +3962,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(AssetListPopComponent)<br />
+                                @ViewChild(AssetListPopComponent, {static: false})<br />
                             </code>
                         </td>
                     </tr>
@@ -4233,7 +4233,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;dropdown&#x27;)<br />
+                                @ViewChild(&#x27;dropdown&#x27;, {static: true})<br />
                             </code>
                         </td>
                     </tr>
@@ -4282,7 +4282,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(ListComponent)<br />
+                                @ViewChild(ListComponent, {static: true})<br />
                             </code>
                         </td>
                     </tr>
@@ -4331,7 +4331,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;dropdownLoader&#x27;)<br />
+                                @ViewChild(&#x27;dropdownLoader&#x27;, {static: true})<br />
                             </code>
                         </td>
                     </tr>
@@ -4454,7 +4454,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(SearchbarComponent)<br />
+                                @ViewChild(SearchbarComponent, {static: false})<br />
                             </code>
                         </td>
                     </tr>
@@ -4590,7 +4590,7 @@ export class AssetSelectComponent extends SelectComponent&lt;DMAssetResource | P
   /** Configuration Object for List */
   @Input() config: CrudConfig&lt;DMAssetResource | PublicAssetResource&gt; &#x3D; {};
   /** The asset selection pop */
-  @ViewChild(AssetListPopComponent) pop: AssetListPopComponent;
+  @ViewChild(AssetListPopComponent, { static: false }) pop: AssetListPopComponent;
   /** config for new assets */
   public dmAssetConfig &#x3D; Object.assign({}, this.resourceConfig.get(&#x27;dmAsset&#x27;));
   /** config for legacy assets */

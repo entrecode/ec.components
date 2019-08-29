@@ -19,7 +19,7 @@ export class SignupComponent extends LoginComponent implements WithLoader, WithN
   /** Subject that is nexted when the login was successful. Meant to be used for redirecting to another page (or similar). */
   @Output() success: EventEmitter<AccountResource> = new EventEmitter();
   /** The included loader. */
-  @ViewChild(LoaderComponent) loader;
+  @ViewChild(LoaderComponent, { static: true }) loader;
   /** Error notifications */
   notifications: Notification[] = [];
 

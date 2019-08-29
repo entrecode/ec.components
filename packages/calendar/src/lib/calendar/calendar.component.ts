@@ -29,7 +29,7 @@ export class CalendarComponent extends MonthComponent implements ControlValueAcc
   /** The current value of the input */
   inputValue = '';
   /** The calendar view child. */
-  @ViewChild(MonthComponent) grid: MonthComponent;
+  @ViewChild(MonthComponent, { static: true }) grid: MonthComponent;
   /** Array of the days of a week. */
   public weekdays: string[];
   /** The input's placeholder */

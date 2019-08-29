@@ -40,7 +40,7 @@ export class MediumEditorComponent implements OnInit, OnDestroy, ControlValueAcc
   /** change emitter */
   @Output() modelChange: EventEmitter<any> = new EventEmitter();
   /** container element */
-  @ViewChild('container') container: ElementRef;
+  @ViewChild('container', { static: true }) container: ElementRef;
   /** current value */
   value: any;
   /** editor instance */

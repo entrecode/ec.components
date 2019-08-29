@@ -13,7 +13,7 @@ export class LocationSearchComponent implements AfterViewInit {
   /** If true, the input cannot be used */
   @Input() disabled;
   /** The search input element */
-  @ViewChild('search') searchInput: ElementRef;
+  @ViewChild('search', { static: true }) searchInput: ElementRef;
   /** emits when the coords have been changed (after selecting a match) */
   @Output() changed: EventEmitter<any> = new EventEmitter();
 

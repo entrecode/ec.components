@@ -70,7 +70,7 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
   /** If true, the form will only init once. On new changes, the form values will be patched (see patchValue) */
   @Input() lazy: boolean;
   /** The forms default loader. it is used when no loader is passed via the loader input */
-  @ViewChild(LoaderComponent) defaultLoader: LoaderComponent;
+  @ViewChild(LoaderComponent, { static: false }) defaultLoader: LoaderComponent;
   /** The InputComponents that are used to control the fields */
   @ViewChildren(InputComponent) inputs: QueryList<InputComponent>;
 
