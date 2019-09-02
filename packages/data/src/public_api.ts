@@ -17,6 +17,8 @@ export * from './lib/entry-form/entry-form.component';
 export * from './lib/entry-form/admin-entry-input.component';
 
 export * from './lib/entry-list/entry-list.component';
+export * from './lib/entry-pop/entry-pop.component';
+export * from './lib/entry-select/entry-select.component';
 
 export * from './lib/crud/crud.component';
 export * from './lib/crud/crud-config.interface';
@@ -26,6 +28,7 @@ export * from './lib/resource-select/resource-select.component';
 export * from './lib/resource-crud/resource-crud.component';
 
 export * from './lib/files/tag-select/tag-select.component';
+export * from './lib/files/file.service';
 
 export * from './lib/resource-list/resource-list.component';
 export * from './lib/resource-list-pop/resource-list-pop.component';
