@@ -4287,7 +4287,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(ResourceDeletePopComponent)<br />
+                                @ViewChild(ResourceDeletePopComponent, {static: true})<br />
                             </code>
                         </td>
                     </tr>
@@ -4363,7 +4363,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;dropdown&#x27;)<br />
+                                @ViewChild(&#x27;dropdown&#x27;, {static: false})<br />
                             </code>
                         </td>
                     </tr>
@@ -4439,7 +4439,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;dropdownList&#x27;)<br />
+                                @ViewChild(&#x27;dropdownList&#x27;, {static: false})<br />
                             </code>
                         </td>
                     </tr>
@@ -4509,7 +4509,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(EntryListPopComponent)<br />
+                                @ViewChild(EntryListPopComponent, {static: true})<br />
                             </code>
                         </td>
                     </tr>
@@ -4551,7 +4551,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(EntryPopComponent)<br />
+                                @ViewChild(EntryPopComponent, {static: false})<br />
                             </code>
                         </td>
                     </tr>
@@ -4810,7 +4810,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(SearchbarComponent)<br />
+                                @ViewChild(SearchbarComponent, {static: false})<br />
                             </code>
                         </td>
                     </tr>
@@ -4955,7 +4955,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;dropdown&#x27;)<br />
+                                @ViewChild(&#x27;dropdown&#x27;, {static: true})<br />
                             </code>
                         </td>
                     </tr>
@@ -5004,7 +5004,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(ListComponent)<br />
+                                @ViewChild(ListComponent, {static: true})<br />
                             </code>
                         </td>
                     </tr>
@@ -5053,7 +5053,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;dropdownLoader&#x27;)<br />
+                                @ViewChild(&#x27;dropdownLoader&#x27;, {static: true})<br />
                             </code>
                         </td>
                     </tr>
@@ -5176,7 +5176,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(SearchbarComponent)<br />
+                                @ViewChild(SearchbarComponent, {static: false})<br />
                             </code>
                         </td>
                     </tr>
@@ -5319,17 +5319,17 @@ export class EntrySelectComponent extends SelectComponent&lt;EntryResource&gt; i
   // tslint:disable-next-line:no-input-rename
   @Input(&#x27;config&#x27;) crudConfig: CrudConfig&lt;EntryResource&gt;;
   /** The dropdown pop with the list to select from */
-  @ViewChild(&#x27;dropdown&#x27;) dropdown: PopComponent;
+  @ViewChild(&#x27;dropdown&#x27;, { static: false }) dropdown: PopComponent;
   /** The nested entry pop */
-  @ViewChild(EntryPopComponent) entryPop: EntryPopComponent;
+  @ViewChild(EntryPopComponent, { static: false }) entryPop: EntryPopComponent;
   /** The nested entry list pop */
-  @ViewChild(EntryListPopComponent) entryListPop: EntryListPopComponent;
+  @ViewChild(EntryListPopComponent, { static: true }) entryListPop: EntryListPopComponent;
   /** The nested full EntryListComponent */
-  @ViewChild(&#x27;dropdownList&#x27;) dropdownList: any;
+  @ViewChild(&#x27;dropdownList&#x27;, { static: false }) dropdownList: any;
   /** The nested searchbar */
-  @ViewChild(SearchbarComponent) searchbar: SearchbarComponent;
+  @ViewChild(SearchbarComponent, { static: false }) searchbar: SearchbarComponent;
   /** THe nested delete confirmation pop */
-  @ViewChild(ResourceDeletePopComponent) confirmDelete: ResourceDeletePopComponent;
+  @ViewChild(ResourceDeletePopComponent, { static: true }) confirmDelete: ResourceDeletePopComponent;
   /** Emits when an entry is being removed */
   @Output() remove: EventEmitter&lt;Item&lt;EntryResource&gt;&gt; &#x3D; new EventEmitter();
   /** Emits when an entry is being added */

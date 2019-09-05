@@ -51,7 +51,7 @@ If you want to add inputs to control the nested properties "useVanillaSauce" and
       label:'Fridge Password',
       immutable: true,
       inputView:'password',
-      resolve: (body, item) => item.resolvePath('config.secrets.useVanillaSauce'),
+      resolve: (body, item) => item.resolvePath('config.secrets.fridgePassword'),
       changed: (value, form) => form.patchObjectField('config', 'secrets.fridgePassword', value)
     }
   }

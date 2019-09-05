@@ -2706,7 +2706,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;dropdown&#x27;)<br />
+                                @ViewChild(&#x27;dropdown&#x27;, {static: true})<br />
                             </code>
                         </td>
                     </tr>
@@ -2748,7 +2748,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(ListComponent)<br />
+                                @ViewChild(ListComponent, {static: true})<br />
                             </code>
                         </td>
                     </tr>
@@ -2790,7 +2790,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;dropdownLoader&#x27;)<br />
+                                @ViewChild(&#x27;dropdownLoader&#x27;, {static: true})<br />
                             </code>
                         </td>
                     </tr>
@@ -2892,7 +2892,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(SearchbarComponent)<br />
+                                @ViewChild(SearchbarComponent, {static: false})<br />
                             </code>
                         </td>
                     </tr>
@@ -3042,13 +3042,13 @@ export class SelectComponent&lt;T&gt; implements ControlValueAccessor, OnInit, O
   /** Event emitter to focus input */
   @Input() focusEvent: EventEmitter&lt;boolean&gt; &#x3D; new EventEmitter();
   /** The selection dropdown */
-  @ViewChild(&#x27;dropdown&#x27;) dropdown: PopComponent;
+  @ViewChild(&#x27;dropdown&#x27;, { static: true }) dropdown: PopComponent;
   /** The loader inside the dropdown */
-  @ViewChild(&#x27;dropdownLoader&#x27;) dropdownLoader: LoaderComponent;
+  @ViewChild(&#x27;dropdownLoader&#x27;, { static: true }) dropdownLoader: LoaderComponent;
   /** The list in the dropdown */
-  @ViewChild(ListComponent) dropdownList: ListComponent&lt;any&gt;;
+  @ViewChild(ListComponent, { static: true }) dropdownList: ListComponent&lt;any&gt;;
   /** The nested searchbar */
-  @ViewChild(SearchbarComponent) searchbar: SearchbarComponent;
+  @ViewChild(SearchbarComponent, { static: false }) searchbar: SearchbarComponent;
   /** Subject that is nexted when an item is being selected (clicked or entered on) */
   toggleItem: Subject&lt;Item&lt;T&gt;&gt; &#x3D; new Subject();
   /** The formControl that is used. */

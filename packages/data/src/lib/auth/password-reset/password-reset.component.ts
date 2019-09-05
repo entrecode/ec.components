@@ -23,7 +23,7 @@ export class PasswordResetComponent implements WithLoader {
   /** Event after request was successful */
   @Output() success: EventEmitter<any> = new EventEmitter();
   /** The loader */
-  @ViewChild(LoaderComponent) loader;
+  @ViewChild(LoaderComponent, { static: true }) loader;
 
   constructor(public auth: AuthService, public notifications: NotificationsService) {}
   /** Sends request through AuthService and shows notifications + loader. */

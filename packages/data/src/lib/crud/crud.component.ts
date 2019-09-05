@@ -33,11 +33,11 @@ export class CrudComponent<T> implements OnInit, WithLoader, WithNotifications {
   /** The selection that should be used */
   @Input() selection: Selection<T>;
   /** The EntryList inside the template. */
-  @ViewChild(EntryListComponent) list: EntryListComponent;
+  @ViewChild(EntryListComponent, { static: false }) list: EntryListComponent;
   /** The Pop inside the template. */
-  @ViewChild(EntryPopComponent) entryPop: EntryPopComponent;
+  @ViewChild(EntryPopComponent, { static: true }) entryPop: EntryPopComponent;
   /** The lists loader */
-  @ViewChild(LoaderComponent) loader: LoaderComponent;
+  @ViewChild(LoaderComponent, { static: true }) loader: LoaderComponent;
   /** Emits when a list element is clicked */
   @Output() columnClicked: EventEmitter<any> = new EventEmitter();
   /** Emits when the selection has changed */

@@ -1162,7 +1162,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;filterPop&#x27;)<br />
+                                @ViewChild(&#x27;filterPop&#x27;, {static: true})<br />
                             </code>
                         </td>
                     </tr>
@@ -1250,7 +1250,7 @@ export class ListHeaderComponent implements OnChanges {
   /** The selection instance. This is optional. If It is not provided, no checkbox will be visible.*/
   @Input() selection: Selection&lt;any&gt;;
   /** The pop dropdowns that contain the filtering */
-  @ViewChild(&#x27;filterPop&#x27;) filterPop: PopComponent;
+  @ViewChild(&#x27;filterPop&#x27;, { static: true }) filterPop: PopComponent;
   /** The config for the filter form */
   filterFormConfig: ListConfig&lt;any&gt;;
   filteredField: any;

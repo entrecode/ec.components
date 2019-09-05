@@ -40,7 +40,7 @@ export class AceComponent extends DefaultInputComponent implements ControlValueA
   /**
    * container element for ace editor
    */
-  @ViewChild('container') container: ElementRef;
+  @ViewChild('container', { static: true }) container: ElementRef;
   /**
    * mode that should be used (e.g. javascript). Depending on your way of importing ace you have to make sure, the mode is availabe.
    */

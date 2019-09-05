@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
-import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
+import { OnChanges } from '@angular/core';
 import { Pagination } from '@ec.components/core';
 import { PaginationConfig } from './pagination-config.interface';
 
@@ -14,9 +14,9 @@ export class PaginationComponent<T> implements OnChanges, OnInit {
   /** A Pagination Instance */
   @Input() pagination: Pagination<T>;
   /** The div container for the pages*/
-  @ViewChild('container') private container: ElementRef;
+  @ViewChild('container', { static: false }) private container: ElementRef;
   /** The ul around pages */
-  @ViewChild('pageContainer') private pageContainer: ElementRef;
+  @ViewChild('pageContainer', { static: false }) private pageContainer: ElementRef;
   /** The pages li elements. The first one is used to determine the container translation. */
   @ViewChildren('page') private page: QueryList<ElementRef>;
   /** The config that is used */
@@ -41,9 +41,9 @@ export class PaginationComponent<T> implements OnChanges, OnInit {
     return (
       Math.abs(current - page) <
       this.config.range +
-        1 +
-        Math.max(0, this.config.range - current + 1) +
-        Math.max(0, current - this.pagination.getPages() + this.config.range)
+      1 +
+      Math.max(0, this.config.range - current + 1) +
+      Math.max(0, current - this.pagination.getPages() + this.config.range)
     );
   }
 

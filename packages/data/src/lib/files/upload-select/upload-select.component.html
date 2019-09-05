@@ -8,6 +8,7 @@
   <ec-upload
     [custom]="custom"
     #uploaderChild
+    [options]="config.fileOptions"
     (groupChanged)="setGroup($event)"
     [loader]="loader"
     [assetGroupID]="assetGroupID"

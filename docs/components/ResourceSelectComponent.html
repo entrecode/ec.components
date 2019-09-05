@@ -4180,7 +4180,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;dropdown&#x27;)<br />
+                                @ViewChild(&#x27;dropdown&#x27;, {static: true})<br />
                             </code>
                         </td>
                     </tr>
@@ -4255,7 +4255,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;dropdownList&#x27;)<br />
+                                @ViewChild(&#x27;dropdownList&#x27;, {static: false})<br />
                             </code>
                         </td>
                     </tr>
@@ -4393,7 +4393,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(ResourceListPopComponent)<br />
+                                @ViewChild(ResourceListPopComponent, {static: true})<br />
                             </code>
                         </td>
                     </tr>
@@ -4435,7 +4435,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(ResourcePopComponent)<br />
+                                @ViewChild(ResourcePopComponent, {static: false})<br />
                             </code>
                         </td>
                     </tr>
@@ -4580,7 +4580,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;dropdown&#x27;)<br />
+                                @ViewChild(&#x27;dropdown&#x27;, {static: true})<br />
                             </code>
                         </td>
                     </tr>
@@ -4629,7 +4629,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(ListComponent)<br />
+                                @ViewChild(ListComponent, {static: true})<br />
                             </code>
                         </td>
                     </tr>
@@ -4678,7 +4678,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;dropdownLoader&#x27;)<br />
+                                @ViewChild(&#x27;dropdownLoader&#x27;, {static: true})<br />
                             </code>
                         </td>
                     </tr>
@@ -4801,7 +4801,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(SearchbarComponent)<br />
+                                @ViewChild(SearchbarComponent, {static: false})<br />
                             </code>
                         </td>
                     </tr>
@@ -4940,13 +4940,13 @@ export class ResourceSelectComponent extends SelectComponent&lt;Resource&gt; imp
   // tslint:disable-next-line:no-input-rename
   @Input(&#x27;config&#x27;) crudConfig: CrudConfig&lt;Resource&gt;;
   /** The crud pop with the list to select from */
-  @ViewChild(&#x27;dropdown&#x27;) dropdown: PopComponent;
+  @ViewChild(&#x27;dropdown&#x27;, { static: true }) dropdown: PopComponent;
   /** The nested resource list in the dropdown */
-  @ViewChild(&#x27;dropdownList&#x27;) dropdownList: ResourceListComponent;
+  @ViewChild(&#x27;dropdownList&#x27;, { static: false }) dropdownList: ResourceListComponent;
   /** The nested resource pop for editing and creating */
-  @ViewChild(ResourcePopComponent) resourcePop: ResourcePopComponent;
+  @ViewChild(ResourcePopComponent, { static: false }) resourcePop: ResourcePopComponent;
   /** The nested resource list pop */
-  @ViewChild(ResourceListPopComponent) resourceListPop: ResourceListPopComponent;
+  @ViewChild(ResourceListPopComponent, { static: true }) resourceListPop: ResourceListPopComponent;
   /** The config of the dropdown pop */
   dropdownConfig: CrudConfig&lt;Resource&gt;;
   /** The event that focuses the input */

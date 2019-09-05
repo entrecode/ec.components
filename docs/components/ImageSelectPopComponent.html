@@ -1195,7 +1195,7 @@ The size inputs will keep the image ratio by default.  </p>
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;imageLoader&#x27;)<br />
+                                @ViewChild(&#x27;imageLoader&#x27;, {static: true})<br />
                             </code>
                         </td>
                     </tr>
@@ -1439,7 +1439,7 @@ export class ImageSelectPopComponent extends PopComponent implements OnInit {
   /** The instance of the imageForm  */
   imageForm: FormConfig&lt;any&gt;;
   /** The loader that is shown after an image has been selected  */
-  @ViewChild(&#x27;imageLoader&#x27;) imageLoader: LoaderComponent;
+  @ViewChild(&#x27;imageLoader&#x27;, { static: true }) imageLoader: LoaderComponent;
   /** Set host class to make sure the type is used */
   @HostBinding(&#x27;class&#x27;) class &#x3D; &#x27;ec-image-select-pop modal-wrapper&#x27;;
 

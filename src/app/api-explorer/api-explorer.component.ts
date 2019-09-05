@@ -16,7 +16,7 @@ export class ApiExplorerComponent implements OnInit {
   relation: string;
   api: any;
   resource: any;
-  @ViewChild(ResourcePopComponent) pop: ResourcePopComponent;
+  @ViewChild(ResourcePopComponent, { static: true }) pop: ResourcePopComponent;
 
   constructor(public sdk: SdkService) {}
 

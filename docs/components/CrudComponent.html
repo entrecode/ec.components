@@ -888,7 +888,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(EntryPopComponent)<br />
+                                @ViewChild(EntryPopComponent, {static: true})<br />
                             </code>
                         </td>
                     </tr>
@@ -930,7 +930,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(EntryListComponent)<br />
+                                @ViewChild(EntryListComponent, {static: false})<br />
                             </code>
                         </td>
                     </tr>
@@ -972,7 +972,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(LoaderComponent)<br />
+                                @ViewChild(LoaderComponent, {static: true})<br />
                             </code>
                         </td>
                     </tr>
@@ -1141,11 +1141,11 @@ export class CrudComponent&lt;T&gt; implements OnInit, WithLoader, WithNotificat
   /** The selection that should be used */
   @Input() selection: Selection&lt;T&gt;;
   /** The EntryList inside the template. */
-  @ViewChild(EntryListComponent) list: EntryListComponent;
+  @ViewChild(EntryListComponent, { static: false }) list: EntryListComponent;
   /** The Pop inside the template. */
-  @ViewChild(EntryPopComponent) entryPop: EntryPopComponent;
+  @ViewChild(EntryPopComponent, { static: true }) entryPop: EntryPopComponent;
   /** The lists loader */
-  @ViewChild(LoaderComponent) loader: LoaderComponent;
+  @ViewChild(LoaderComponent, { static: true }) loader: LoaderComponent;
   /** Emits when a list element is clicked */
   @Output() columnClicked: EventEmitter&lt;any&gt; &#x3D; new EventEmitter();
   /** Emits when the selection has changed */

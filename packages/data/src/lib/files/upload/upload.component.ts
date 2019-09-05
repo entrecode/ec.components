@@ -39,9 +39,9 @@ export class UploadComponent implements WithLoader, WithNotifications {
   /** emits when the group has been set from the upload pop */
   @Output() groupChanged: EventEmitter<string> = new EventEmitter();
   /** Reference to the input[type=file] element */
-  @ViewChild('fileInput') fileInput: ElementRef;
+  @ViewChild('fileInput', { static: true }) fileInput: ElementRef;
   /** Pop child for new asset options. */
-  @ViewChild(PopComponent) pop: PopComponent;
+  @ViewChild(PopComponent, { static: true }) pop: PopComponent;
   /** Error Notifications */
   notifications: Notification[] = [];
 
