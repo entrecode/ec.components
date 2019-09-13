@@ -94,6 +94,9 @@
                                 <a href="#applyConfig">applyConfig</a>
                             </li>
                             <li>
+                                <a href="#getFilteredID">getFilteredID</a>
+                            </li>
+                            <li>
                                 <a href="#getStorageKey">getStorageKey</a>
                             </li>
                             <li>
@@ -187,6 +190,72 @@
                     </div>
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getFilteredID"></a>
+                    <span class="name">
+                        <b>
+                            getFilteredID
+                        </b>
+                        <a href="#getFilteredID"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getFilteredID(list)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="62"
+                            class="link-to-prism">packages/ui/src/lib/list/list-config.service.ts:62</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>list</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                     </div>
                     <div class="io-description">
@@ -651,6 +720,20 @@ export class ListConfigService {
         field.hideInList &#x3D; true;
       });
     }
+  }
+
+  getFilteredID(list) {
+    if (!list || !list.config || !list.config.filter) {
+      return;
+    }
+    return Object.keys(list.config.filter).reduce((id, property) &#x3D;&gt; {
+      if (!id &amp;&amp; list.config.identifierPattern &amp;&amp; list.config.filter &amp;&amp;
+        typeof list.config.filter[property] &#x3D;&#x3D;&#x3D; &#x27;string&#x27; &amp;&amp;
+        list.config.filter[property].match(list.config.identifierPattern)) {
+        return list.config.filter[property];
+      }
+      return id;
+    }, null);
   }
 }
 </code></pre>
