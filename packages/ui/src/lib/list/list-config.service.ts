@@ -58,4 +58,18 @@ export class ListConfigService {
       });
     }
   }
+
+  getFilteredID(list) {
+    if (!list || !list.config || !list.config.filter) {
+      return;
+    }
+    return Object.keys(list.config.filter).reduce((id, property) => {
+      if (!id && list.config.identifierPattern && list.config.filter &&
+        typeof list.config.filter[property] === 'string' &&
+        list.config.filter[property].match(list.config.identifierPattern)) {
+        return list.config.filter[property];
+      }
+      return id;
+    }, null);
+  }
 }

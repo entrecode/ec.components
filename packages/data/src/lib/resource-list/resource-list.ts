@@ -32,7 +32,7 @@ export class ResourceList extends List<Resource> {
   }
 
   /** Returns true if the field of the given property has rawFilter set to true */
-  protected static isRawFilter(property: string, fields: Array<Field>): boolean {
+  public isRawFilter(property: string, fields: Array<Field> = this.fields): boolean {
     if (!fields) {
       return false;
     }
@@ -119,11 +119,11 @@ export class ResourceList extends List<Resource> {
     for (const property in filter) {
       if (filter.hasOwnProperty(property)) {
         Object.assign(options, {
-          [property]: ResourceList.isRawFilter(property, this.fields)
+          [property]: this.isRawFilter(property, this.fields)
             ? filter[property]
             : {
-                [ResourceList.getFilterOperator(property, this.fields)]: filter[property],
-              },
+              [ResourceList.getFilterOperator(property, this.fields)]: filter[property],
+            },
         });
       }
     }

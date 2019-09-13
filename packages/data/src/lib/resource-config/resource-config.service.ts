@@ -476,9 +476,10 @@ export class ResourceConfig {
         },
         assetID: {
           label: this.symbol.resolve('dmAsset.field.label.assetID'),
-          list: false,
+          filterOperator: 'exact',
+          hideInList: true,
           form: false,
-          immutable: true,
+          immutable: true
         },
         title: {
           label: this.symbol.resolve('field.label.title'),
@@ -660,7 +661,7 @@ export class ResourceConfig {
     token: {},
   };
 
-  constructor(private symbol: SymbolService, private typeConfig: TypeConfigService) {}
+  constructor(private symbol: SymbolService, private typeConfig: TypeConfigService) { }
   /** Returns the CrudConfig for the given relation name. */
   get(relationName: string): CrudConfig<Resource> {
     const resolved = relationName.split('.').reduce((position: Object, key) => {
