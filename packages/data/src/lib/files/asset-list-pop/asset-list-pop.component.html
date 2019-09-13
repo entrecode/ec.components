@@ -18,7 +18,12 @@
     ></ec-upload-select>
     <div data-grid="small-gutter" *ngIf="active && sdk.apiResolved">
       <div data-col="6@md">
-        <ec-searchbar #searchbar [listComponent]="resourceList" [list]="resourceList"></ec-searchbar>
+        <ec-searchbar
+          #searchbar
+          [listComponent]="resourceList"
+          [list]="resourceList"
+          (pasted)="pasted($event, resourceList)"
+        ></ec-searchbar>
       </div>
       <div data-col="6@md" *ngIf="!isLegacy()">
         <div data-grid="small-gutter">
@@ -54,6 +59,17 @@
       [loader]="popLoader"
       class="ec-asset-list"
     >
+      <div data-ec-list-empty-filtered>
+        <p>
+          {{ 'list.filter.noResults' | symbol }}
+          <a (click)="resourceList?.list?.clearFilter()">{{ 'list.filter.reset' | symbol }}</a>
+        </p>
+        <a
+          *ngIf="!!listConfig.getFilteredID(resourceList?.list)"
+          (click)="selectID(listConfig.getFilteredID(resourceList?.list))"
+          >Select ID</a
+        >
+      </div>
     </ec-resource-list>
     <!-- (changed)="searchbar.updatedList($event)" -->
   </div>

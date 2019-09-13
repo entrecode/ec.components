@@ -10,7 +10,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Item, Selection } from '@ec.components/core';
-import { PopComponent, PopService, SearchbarComponent, SymbolService } from '@ec.components/ui';
+import { PopComponent, PopService, SearchbarComponent, SymbolService, ListConfigService } from '@ec.components/ui';
 import PublicAssetResource from 'ec.sdk/lib/resources/publicAPI/PublicAssetResource';
 import PublicTagResource from 'ec.sdk/lib/resources/publicAPI/PublicTagResource';
 import { Subject } from 'rxjs';
@@ -76,6 +76,7 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
   /** Injects auth service and calls super constructor. */
   constructor(
     public popService: PopService,
+    public listConfig: ListConfigService,
     public fileService: FileService,
     public sdk: SdkService,
     public elementRef: ElementRef,
@@ -83,6 +84,10 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
     public cdr: ChangeDetectorRef,
   ) {
     super(popService, elementRef, cdr);
+  }
+
+
+  pasted(e, list) {
   }
 
   /** Changes the assetGroupID to the given value, emits groupChange */
@@ -138,6 +143,14 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
       },
       this.config,
     );
+  }
+
+  selectID(id) {
+    if (this.getGroupRelation() === 'legacyAsset') {
+      console.warn('This is not supported by legacy assets');
+      return;
+    }
+    this.resourceList.list.load({ filter: { assetID: id } });
   }
 
   /** emits columnClicked event or toggles selection if no observers. */

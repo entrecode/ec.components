@@ -206,8 +206,7 @@ method to call the SDK method for loading the desired list! (see EntryList for e
                                 <a href="#getFilterOptions">getFilterOptions</a>
                             </li>
                             <li>
-                                    <span class="modifier">Protected</span>
-                                    <span class="modifier">Static</span>
+                                    <span class="modifier">Public</span>
                                 <a href="#isRawFilter">isRawFilter</a>
                             </li>
                             <li>
@@ -1669,8 +1668,7 @@ via getFields method.</p>
                     <a name="isRawFilter"></a>
                     <span class="name">
                         <b>
-                            <span class="modifier">Protected</span>
-                            <span class="modifier">Static</span>
+                            <span class="modifier">Public</span>
                             isRawFilter
                         </b>
                         <a href="#isRawFilter"><span class="icon ion-ios-link"></span></a>
@@ -1706,6 +1704,7 @@ via getFields method.</p>
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Default value</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -1719,6 +1718,8 @@ via getFields method.</p>
                                         No
                                     </td>
 
+                                    <td>
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -1731,6 +1732,9 @@ via getFields method.</p>
                                         No
                                     </td>
 
+                                    <td>
+                                        <code>this.fields</code>
+                                    </td>
 
                                 </tr>
                             </tbody>
@@ -5808,7 +5812,7 @@ export class ResourceList extends List&lt;Resource&gt; {
   }
 
   /** Returns true if the field of the given property has rawFilter set to true */
-  protected static isRawFilter(property: string, fields: Array&lt;Field&gt;): boolean {
+  public isRawFilter(property: string, fields: Array&lt;Field&gt; &#x3D; this.fields): boolean {
     if (!fields) {
       return false;
     }
@@ -5895,11 +5899,11 @@ export class ResourceList extends List&lt;Resource&gt; {
     for (const property in filter) {
       if (filter.hasOwnProperty(property)) {
         Object.assign(options, {
-          [property]: ResourceList.isRawFilter(property, this.fields)
+          [property]: this.isRawFilter(property, this.fields)
             ? filter[property]
             : {
-                [ResourceList.getFilterOperator(property, this.fields)]: filter[property],
-              },
+              [ResourceList.getFilterOperator(property, this.fields)]: filter[property],
+            },
         });
       }
     }
