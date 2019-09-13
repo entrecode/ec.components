@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.8](https://github.com/entrecode/ec.components/compare/@ec.components/style@0.23.7...@ec.components/style@0.23.8) (2019-09-13)
+
+
+### Bug Fixes
+
+* font-site bug ion ec-calendar ([a43c887](https://github.com/entrecode/ec.components/commit/a43c887))
+* icon component doc ([515a77e](https://github.com/entrecode/ec.components/commit/515a77e))
+* update to x.ui 10.0.1 ([2ed4c9a](https://github.com/entrecode/ec.components/commit/2ed4c9a))
+
+
+
+
+
 ## [0.23.7](https://github.com/entrecode/ec.components/compare/@ec.components/style@0.23.6...@ec.components/style@0.23.7) (2019-08-29)
 
 **Note:** Version bump only for package @ec.components/style

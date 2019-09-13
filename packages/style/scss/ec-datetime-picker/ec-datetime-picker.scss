@@ -4,14 +4,14 @@
   @include inject-style($ec-datetime-picker-style);
 }
 
-// @param {color} $ec-datetime-select-background [$xui-overlay-background]
+// @param {color} $ec-datetime-select-background [$dropdown-options-background]
 // @param {px} $ec-datetime-select-max-width [320]
-// @param {array} $ec-datetime-select-padding [$xui-overlay-padding]
-// @param {array} $ec-datetime-select-radius [$xui-overlay-radius]
-// @param {array} $ec-datetime-select-shadow [$xui-overlay-shadow]
+// @param {array} $ec-datetime-select-padding [$dropdown-options-padding]
+// @param {array} $ec-datetime-select-radius [$dropdown-options-radius]
+// @param {[1-24] | false} ec-datetime-select-elevation [$dropdown-options-elevation]
 // @param {array} $ec-datetime-select-style
 .ec-datetime-select {
-  .ec-pop {
+  .ec-calendar {
     position: absolute;
     top: 100%;
     z-index: 10;
@@ -19,8 +19,10 @@
     @include inject-style($ec-datetime-select-style);
     max-width: rem($ec-datetime-select-max-width);
     padding: array-magic($ec-datetime-select-padding);
-    box-shadow: array-magic($ec-datetime-select-shadow);
     border-radius: array-magic($ec-datetime-select-radius);
     background: $ec-datetime-select-background;
+    @if $ec-datetime-select-elevation {
+      @include elevation($ec-datetime-select-elevation);
+    }
   }
 }
