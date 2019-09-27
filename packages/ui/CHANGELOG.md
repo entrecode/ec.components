@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.48.3](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.48.2...@ec.components/ui@0.48.3) (2019-09-27)
+
+
+### Bug Fixes
+
+* COM-315 optimized form error handling ([79efb3e](https://github.com/entrecode/ec.components/commit/79efb3e))
+
+
+
+
+
 ## [0.48.2](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.48.1...@ec.components/ui@0.48.2) (2019-09-13)
 
 
