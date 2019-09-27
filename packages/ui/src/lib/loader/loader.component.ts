@@ -18,7 +18,7 @@ export class LoaderComponent {
   private timestamp;
 
   /** Injects the host element. */
-  constructor(private host: ElementRef) {}
+  constructor(private host: ElementRef) { }
 
   /** Shows the loader by setting .visible to the host. This method is NOT meant to be used from outside, */
   private show() {
@@ -39,7 +39,8 @@ export class LoaderComponent {
     this.show();
     const timestamp = Date.now();
     this.timestamp = timestamp; // get timestamp
-    Promise.all(this.stack.items).then(() => {
+    Promise.all(this.stack.items).catch(error => {
+    }).then(() => {
       if (timestamp === this.timestamp) {
         this.hide();
         this.stack.removeAll();

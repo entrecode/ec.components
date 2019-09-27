@@ -1,4 +1,5 @@
 <h2>Form</h2>
+<ec-notifications></ec-notifications>
 <ec-tabs>
   <ec-tab label="Layout" selected>
     <ec-form [config]="layoutDemoConfig" (submitted)="logValue($event)"></ec-form>
@@ -104,5 +105,9 @@
         <ec-form (submitted)="logValue($event)" [config]="customFormConfig" [value]="{ count: 2 }"></ec-form>
       </div>
     </div>
+  </ec-tab>
+  <ec-tab label="error test">
+    <ec-form #testFormComponent [config]="testForm" (submitted)="logValue($event)"></ec-form>
+    <a (click)="submitForm(testFormComponent)">manual submit</a>
   </ec-tab>
 </ec-tabs>

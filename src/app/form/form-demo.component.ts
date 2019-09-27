@@ -3,7 +3,7 @@ import { Field, Form, Item } from '@ec.components/core';
 import { DefaultInputComponent } from '@ec.components/ui';
 import { mocked } from '../../mocks/data';
 import { CounterComponent } from './counter.component';
-import { TagSelectComponent } from '@ec.components/data';
+import { TagSelectComponent, EntryFormComponent } from '@ec.components/data';
 
 @Component({
   selector: 'ec-form-demo',
@@ -70,6 +70,20 @@ export class FormDemoComponent {
     },
   };
 
+  testForm = {
+    fields: {
+      string: {
+        inputView: 'string'
+      }
+    },
+    onSave: (form) => {
+      console.log('form onSave', form);
+      throw new Error('arr');
+      /* return new Error('arr'); */
+    }
+  };
+
+
   customFormConfig = {
     fields: {
       count: {
@@ -84,5 +98,21 @@ export class FormDemoComponent {
 
   logValue(form: Form<any>) {
     console.log('form value', form.resolve());
+  }
+
+  submitForm(form: EntryFormComponent) {
+    console.log('submit form', form);
+
+    /* form.form.save(form.group.value).then(res => {
+      console.log('form submitted', res);
+    }).catch(error => {
+      console.log('received error', error);
+    }); */
+
+    form.submit(false).then((res) => {
+      console.log('form submitted', res);
+    }).catch(error => {
+      console.log('received error', error);
+    });
   }
 }
