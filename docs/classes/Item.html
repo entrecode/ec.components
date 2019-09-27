@@ -351,8 +351,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="234"
-                            class="link-to-prism">packages/core/src/lib/item/item.ts:234</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="240"
+                            class="link-to-prism">packages/core/src/lib/item/item.ts:240</a></div>
                 </td>
             </tr>
 
@@ -1990,9 +1990,15 @@ export class Item&lt;T&gt; {
   /** Saves the given value. Run serializers before assigning the new value. */
   save(value: T &#x3D; this.body): Promise&lt;Item&lt;T&gt;&gt; {
     if (this.config.onSave) {
-      return Promise.resolve(this.config.onSave(this, value)).then((_value: T) &#x3D;&gt; {
-        this.body &#x3D; _value;
-        return this;
+      return new Promise((resolve, reject) &#x3D;&gt; {
+        try {
+          Promise.resolve(this.config.onSave(this, value)).then((_value: T) &#x3D;&gt; {
+            this.body &#x3D; _value;
+            resolve(this);
+          });
+        } catch (error) {
+          reject(error);
+        }
       });
     }
     this.body &#x3D; (&lt;any&gt;Object).assign(this.resolve() || {}, value);

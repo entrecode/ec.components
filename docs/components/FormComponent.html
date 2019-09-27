@@ -1190,8 +1190,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="256"
-                            class="link-to-prism">packages/ui/src/lib/form/form.component.ts:256</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="257"
+                            class="link-to-prism">packages/ui/src/lib/form/form.component.ts:257</a></div>
                 </td>
             </tr>
 
@@ -1279,8 +1279,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="248"
-                            class="link-to-prism">packages/ui/src/lib/form/form.component.ts:248</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="249"
+                            class="link-to-prism">packages/ui/src/lib/form/form.component.ts:249</a></div>
                 </td>
             </tr>
 
@@ -1713,8 +1713,8 @@ You can also pass just an item to use its config and body.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="240"
-                            class="link-to-prism">packages/ui/src/lib/form/form.component.ts:240</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="241"
+                            class="link-to-prism">packages/ui/src/lib/form/form.component.ts:241</a></div>
                 </td>
             </tr>
 
@@ -1790,8 +1790,8 @@ You can also pass just an item to use its config and body.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="235"
-                            class="link-to-prism">packages/ui/src/lib/form/form.component.ts:235</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="236"
+                            class="link-to-prism">packages/ui/src/lib/form/form.component.ts:236</a></div>
                 </td>
             </tr>
 
@@ -2348,6 +2348,7 @@ export class FormComponent&lt;T&gt; implements OnChanges, WithLoader, WithNotifi
           hide: this.notifications,
           replace: this.notifications,
         });
+        throw new Error(err);
       });
     this.loaderService.wait(submit, this.loader || this.defaultLoader);
     return submit;
