@@ -566,7 +566,7 @@ export class LoaderComponent {
   private timestamp;
 
   /** Injects the host element. */
-  constructor(private host: ElementRef) {}
+  constructor(private host: ElementRef) { }
 
   /** Shows the loader by setting .visible to the host. This method is NOT meant to be used from outside, */
   private show() {
@@ -587,7 +587,8 @@ export class LoaderComponent {
     this.show();
     const timestamp &#x3D; Date.now();
     this.timestamp &#x3D; timestamp; // get timestamp
-    Promise.all(this.stack.items).then(() &#x3D;&gt; {
+    Promise.all(this.stack.items).catch(error &#x3D;&gt; {
+    }).then(() &#x3D;&gt; {
       if (timestamp &#x3D;&#x3D;&#x3D; this.timestamp) {
         this.hide();
         this.stack.removeAll();

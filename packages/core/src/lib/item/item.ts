@@ -221,9 +221,15 @@ export class Item<T> {
   /** Saves the given value. Run serializers before assigning the new value. */
   save(value: T = this.body): Promise<Item<T>> {
     if (this.config.onSave) {
-      return Promise.resolve(this.config.onSave(this, value)).then((_value: T) => {
-        this.body = _value;
-        return this;
+      return new Promise((resolve, reject) => {
+        try {
+          Promise.resolve(this.config.onSave(this, value)).then((_value: T) => {
+            this.body = _value;
+            resolve(this);
+          });
+        } catch (error) {
+          reject(error);
+        }
       });
     }
     this.body = (<any>Object).assign(this.resolve() || {}, value);

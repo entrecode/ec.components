@@ -226,6 +226,7 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
           hide: this.notifications,
           replace: this.notifications,
         });
+        throw new Error(err);
       });
     this.loaderService.wait(submit, this.loader || this.defaultLoader);
     return submit;
