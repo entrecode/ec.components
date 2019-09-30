@@ -226,7 +226,7 @@ export class Item<T> {
           Promise.resolve(this.config.onSave(this, value)).then((_value: T) => {
             this.body = _value;
             resolve(this);
-          });
+          }).catch(error => reject(error));
         } catch (error) {
           reject(error);
         }
