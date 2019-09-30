@@ -109,7 +109,7 @@ export class FormDemoComponent {
       console.log('received error', error);
     }); */
 
-    form.submit(false).then((res) => {
+    form.submit().then((res) => {
       console.log('form submitted', res);
     }).catch(error => {
       console.log('received error', error);

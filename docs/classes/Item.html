@@ -1995,7 +1995,7 @@ export class Item&lt;T&gt; {
           Promise.resolve(this.config.onSave(this, value)).then((_value: T) &#x3D;&gt; {
             this.body &#x3D; _value;
             resolve(this);
-          });
+          }).catch(error &#x3D;&gt; reject(error));
         } catch (error) {
           reject(error);
         }

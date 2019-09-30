@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.30.2](https://github.com/entrecode/ec.components/compare/@ec.components/core@0.30.1...@ec.components/core@0.30.2) (2019-09-30)
+
+
+### Bug Fixes
+
+* error handling onSave ([532024e](https://github.com/entrecode/ec.components/commit/532024e))
+
+
+
+
+
 ## [0.30.1](https://github.com/entrecode/ec.components/compare/@ec.components/core@0.30.0...@ec.components/core@0.30.1) (2019-09-27)
 
 
