@@ -216,8 +216,10 @@ export class ModelConfigService extends Config {
    * or just specific components. */
   async generateConfig(model: string, customFieldConfig?: FieldConfig): Promise<CrudConfig<EntryResource>> {
     const lightModel = await this.getLightModel(model);
+    const { singularLabel } = lightModel.config;
     // first step: merge global model config with default entry config
     const modelConfig = Object.assign(this.get(model) || {}, {
+      singularLabel,
       identifier: 'id',
       identifierPattern: /^[0-9A-Za-z-_]{7,14}$/, // shortID pattern
       label: '_entryTitle',

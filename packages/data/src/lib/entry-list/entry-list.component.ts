@@ -10,6 +10,7 @@ import { ResourceService } from '../resource-config/resource.service';
 import { ResourceListComponent } from '../resource-list/resource-list.component';
 import { SdkService } from '../sdk/sdk.service';
 import { EntryList } from './entry-list';
+import { CrudConfig } from '../crud/crud-config.interface';
 
 /** The EntryListComponent is a thin holder of an EntryList instance. It extends the ListComponent
  * <example-url>https://components.entrecode.de/entries/entry-list?e=1</example-url>
@@ -72,7 +73,7 @@ export class EntryListComponent extends ResourceListComponent implements OnDestr
       });
     return this.modelConfig
       .generateConfig(this.model, (this.config || {}).fields)
-      .then((config: ListConfig<EntryResource>) => {
+      .then((config: CrudConfig<EntryResource>) => {
         this.config = Object.assign(this.config || {}, config);
         this.initFilter();
         return new EntryList(this.model, this.config, this.sdk);
