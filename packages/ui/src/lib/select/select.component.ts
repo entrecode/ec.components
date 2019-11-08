@@ -207,10 +207,13 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   }
 
   /** Select handler. Toggles selection. */
-  public listItemClicked(item) {
+  public listItemClicked(item, list?) {
     this.toggleItem.next(item);
     // TODO: prevent default to prevent bluring searchbear.
     // refocusing is not possible because that will activate the pop again..
+    if (list && list.list.isFiltered()) {
+      list.list.clearFilter();
+    }
   }
 
   focus(e) {
@@ -242,18 +245,18 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   }
 
   /** Propagates formControl/ngModel changes */
-  propagateChange = (_: any) => {};
+  propagateChange = (_: any) => { };
   /** registers change method. (handled by angular) */
   registerOnChange(fn) {
     this.propagateChange = fn;
   }
 
-  registerOnTouched() {}
+  registerOnTouched() { }
 
   /** is called when an element is dragged by the user. hides element in selection */
   onDragStart(item, e, target = e.target) {
     this.dragged = item;
-    window.requestAnimationFrame(function() {
+    window.requestAnimationFrame(function () {
       target.style.display = 'none';
     });
   }
@@ -272,7 +275,7 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   /** is called when the drag stops in any kind of way. */
   cancelDrag(item, e, target = e.target) {
     delete this.dragged;
-    window.requestAnimationFrame(function() {
+    window.requestAnimationFrame(function () {
       target.style.display = 'inherit';
     });
   }
