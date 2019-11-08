@@ -3,8 +3,8 @@ import { dataModuleConfig } from '../data.module';
 import { CrudComponent } from './crud.component';
 
 describe('CrudComponent', () => {
-  let component: CrudComponent<any>;
-  let fixture: ComponentFixture<CrudComponent<any>>;
+  let component: CrudComponent;
+  let fixture: ComponentFixture<CrudComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule(dataModuleConfig).compileComponents();

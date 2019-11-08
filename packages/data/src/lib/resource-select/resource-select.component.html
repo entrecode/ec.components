@@ -25,7 +25,7 @@
       <ec-loader class="ec-loader loader is-local" #dropdownLoader></ec-loader>
       <ec-resource-list (changed)="searchbar.updatedList($event)" #dropdownList *ngIf="dropdown.activated"
         [relation]="relation" [api]="api" [config]="dropdownConfig" [selection]="selection" [loader]="dropdownLoader"
-        (columnClicked)="listItemClicked($event)"></ec-resource-list>
+        (columnClicked)="listItemClicked($event,dropdownList)"></ec-resource-list>
     </ec-pop>
   </div>
   <ec-resource-list-pop (pasted)="pasteValue($event)" (columnClicked)="listItemClicked($event)" #resourceListPop

@@ -34,7 +34,7 @@
     <ec-pop *ngIf="!config?.disableSearchbar" class="ec-select-options" #dropdown [hideOnClickOutside]="true">
       <ec-loader class="ec-loader loader is-local" #dropdownLoader></ec-loader>
       <ec-entry-list #dropdownList [selection]="selection" *ngIf="dropdown.activated" [model]="model" [config]="dropdownConfig"
-        [loader]="dropdownLoader" (changed)="searchbar.updatedList($event)" (columnClicked)="listItemClicked($event)"></ec-entry-list>
+        [loader]="dropdownLoader" (changed)="searchbar.updatedList($event)" (columnClicked)="listItemClicked($event,dropdownList)"></ec-entry-list>
     </ec-pop>
   </div>
   <!-- Fully fledged entryListPop -->

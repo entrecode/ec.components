@@ -12,7 +12,7 @@ export class CrudDemoComponent {
     defaultFilter: 'name',
     disableHeader: false,
     develop: true,
-    singularLabel: 'Muffin',
+    /* singularLabel: 'Muffin', */ // now handled by publicConfig
     createLabel: 'Neuer Muffin',
     size: 15,
     levels: 2,

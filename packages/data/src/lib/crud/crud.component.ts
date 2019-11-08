@@ -14,6 +14,7 @@ import { EntryPopComponent } from '../entry-pop/entry-pop.component';
 import { WithLoader } from '@ec.components/ui';
 import { Notification, WithNotifications, SymbolService } from '@ec.components/ui';
 import { ModelConfigService } from '../model-config/model-config.service';
+import EntryResource from 'ec.sdk/lib/resources/publicAPI/EntryResource';
 
 /** The CrudComponent takes at least a model name to render an entry list with create/edit/delete functionality out of the box.
  * ```html
@@ -25,13 +26,13 @@ import { ModelConfigService } from '../model-config/model-config.service';
   selector: 'ec-crud',
   templateUrl: './crud.component.html',
 })
-export class CrudComponent<T> implements OnInit, WithLoader, WithNotifications {
+export class CrudComponent implements OnInit, WithLoader, WithNotifications {
   /** The model that should be crud'ed. */
   @Input() model: string;
   /** CrudConfig for customization of the crud's UI.*/
-  @Input() config: CrudConfig<T> = {};
+  @Input() config: CrudConfig<EntryResource> = {};
   /** The selection that should be used */
-  @Input() selection: Selection<T>;
+  @Input() selection: Selection<EntryResource>;
   /** The EntryList inside the template. */
   @ViewChild(EntryListComponent, { static: false }) list: EntryListComponent;
   /** The Pop inside the template. */
@@ -70,6 +71,12 @@ export class CrudComponent<T> implements OnInit, WithLoader, WithNotifications {
     this.auth.getAllowedModelMethods(this.model, this.config.methods).then((methods) => {
       this.config.methods = methods;
       this.cdr.markForCheck();
+    });
+    this.modelConfig.generateConfig(this.model).then(config => {
+      this.config = {
+        ...config,
+        ...this.config
+      };
     });
   }
 

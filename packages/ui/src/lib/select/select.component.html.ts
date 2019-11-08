@@ -26,7 +26,7 @@ export const selectTemplate = `<div class="ec-select" [class.ec-select_solo]="so
   </ul>
   <ec-pop class="ec-select-options" [hideOnClickOutside]="true" #dropdown>
     <ec-loader class="ec-loader loader is-local" #dropdownLoader></ec-loader>
-    <ec-list (changed)="searchbar.updatedList($event)" #dropdownList [list]="list" (columnClicked)="listItemClicked($event)"
+    <ec-list (changed)="searchbar.updatedList($event)" #dropdownList [list]="list" (columnClicked)="listItemClicked($event, dropdownList)"
       [selection]="selection"></ec-list>
   </ec-pop>
 </div>`;

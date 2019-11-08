@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.53.6](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.53.5...@ec.components/data@0.53.6) (2019-11-08)
+
+
+### Bug Fixes
+
+* COM-310 ([e9e4d5e](https://github.com/entrecode/ec.components/commit/e9e4d5e))
+* COM-313 ([0167092](https://github.com/entrecode/ec.components/commit/0167092))
+* crud test ([c2226d6](https://github.com/entrecode/ec.components/commit/c2226d6))
+
+
+
+
+
 ## [0.53.5](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.53.4...@ec.components/data@0.53.5) (2019-09-30)
 
 **Note:** Version bump only for package @ec.components/data

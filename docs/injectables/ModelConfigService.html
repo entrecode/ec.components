@@ -505,8 +505,8 @@ This config is meant to deliver the default behaviour when nothing else is confi
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="248"
-                            class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:248</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="250"
+                            class="link-to-prism">packages/data/src/lib/model-config/model-config.service.ts:250</a></div>
                 </td>
             </tr>
 
@@ -1193,8 +1193,10 @@ export class ModelConfigService extends Config {
    * or just specific components. */
   async generateConfig(model: string, customFieldConfig?: FieldConfig): Promise&lt;CrudConfig&lt;EntryResource&gt;&gt; {
     const lightModel &#x3D; await this.getLightModel(model);
+    const { singularLabel } &#x3D; lightModel.config;
     // first step: merge global model config with default entry config
     const modelConfig &#x3D; Object.assign(this.get(model) || {}, {
+      singularLabel,
       identifier: &#x27;id&#x27;,
       identifierPattern: /^[0-9A-Za-z-_]{7,14}$/, // shortID pattern
       label: &#x27;_entryTitle&#x27;,
