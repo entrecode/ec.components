@@ -87,7 +87,7 @@ export const dataModuleConfig = {
 
 @NgModule(dataModuleConfig)
 export class DataModule {
-  static forEnvironment(environment): ModuleWithProviders {
+  static forEnvironment(environment): ModuleWithProviders<DataModule> {
     return {
       ngModule: DataModule,
       providers: [

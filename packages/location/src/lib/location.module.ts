@@ -28,7 +28,7 @@ export const locationModuleConfig = {
 /** This module holds all location/map related components and services */
 @NgModule(locationModuleConfig)
 export class LocationModule {
-  static forRoot({ apiKey }): ModuleWithProviders {
+  static forRoot({ apiKey }): ModuleWithProviders<LocationModule> {
     return {
       ngModule: LocationModule,
       providers: [

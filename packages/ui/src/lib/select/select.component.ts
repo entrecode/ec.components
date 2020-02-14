@@ -81,7 +81,7 @@ export class SelectComponent<T> implements ControlValueAccessor, OnInit, OnChang
   /** The list in the dropdown */
   @ViewChild(ListComponent, { static: true }) dropdownList: ListComponent<any>;
   /** The nested searchbar */
-  @ViewChild(SearchbarComponent, { static: false }) searchbar: SearchbarComponent;
+  @ViewChild(SearchbarComponent) searchbar: SearchbarComponent;
   /** Subject that is nexted when an item is being selected (clicked or entered on) */
   toggleItem: Subject<Item<T>> = new Subject();
   /** The formControl that is used. */

@@ -60,7 +60,7 @@ export class AssetSelectComponent extends SelectComponent<DMAssetResource | Publ
   /** Configuration Object for List */
   @Input() config: CrudConfig<DMAssetResource | PublicAssetResource> = {};
   /** The asset selection pop */
-  @ViewChild(AssetListPopComponent, { static: false }) pop: AssetListPopComponent;
+  @ViewChild(AssetListPopComponent) pop: AssetListPopComponent;
   /** config for new assets */
   public dmAssetConfig = Object.assign({}, this.resourceConfig.get('dmAsset'));
   /** config for legacy assets */
