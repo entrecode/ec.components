@@ -119,7 +119,7 @@ export class EntryActionbarComponent extends ActionbarComponent implements OnIni
     if (!value) {
       value = [];
     }
-    this.selection.replaceWith(value.map((liteEntry) => new Item(this.getEntryAction(liteEntry), this.config)));
+    this.selection?.replaceWith(value.map((liteEntry) => new Item(this.getEntryAction(liteEntry), this.config)));
   }
 
   filterDropdownList(listComponent: ListComponent<any>, query) {

@@ -10,9 +10,6 @@ import moment from 'moment-es6';
     <h2>Calendar: {{ calendar.value }}</h2>
     <p>controls + month grid inside</p>
     <ec-calendar #calendar></ec-calendar>
-    <h2>Month Heatmap</h2>
-    <ec-heatmap [selectSpan]="selectSpan" [date]="myDate"
-    [disableDrag]="false" [disableDragAnywhere]="true" (spanChanged)="changedSpan($event)" [timestamps]="timestamps"></ec-heatmap>
     <button (click)="changeMonth()">change month</button>
     <h2>Month</h2>
     <p>Just month grid</p>
@@ -20,6 +17,10 @@ import moment from 'moment-es6';
     {{ month.date }}
   `,
 })
+/*
+    <h2>Month Heatmap</h2>
+    <ec-heatmap [selectSpan]="selectSpan" [date]="myDate"
+    [disableDrag]="false" [disableDragAnywhere]="true" (spanChanged)="changedSpan($event)" [timestamps]="timestamps"></ec-heatmap> */
 export class DatetimeDemoComponent {
   timestamps;
   myDate;
