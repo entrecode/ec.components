@@ -311,7 +311,7 @@ export class MonthComponent implements OnInit, OnChanges {
   }
 
   canAlter(value, span: string) {
-    const newDate = this.date.clone().add(value, span);
+    const newDate = this.date?.clone().add(value, span);
     return this.isSelectable(newDate, 'months');
   }
 
