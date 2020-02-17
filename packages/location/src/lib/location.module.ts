@@ -10,7 +10,8 @@ import { LocationSearchComponent } from './location-search.component';
 /** The components of this module */
 const LOCATION_COMPONENTS = [LocationMapComponent, LocationSearchComponent, LocationPickerComponent];
 
-export const locationModuleConfig = {
+/** This module holds all location/map related components and services */
+@NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -24,9 +25,7 @@ export const locationModuleConfig = {
   declarations: LOCATION_COMPONENTS,
   entryComponents: LOCATION_COMPONENTS,
   providers: [GeocodeService],
-};
-/** This module holds all location/map related components and services */
-@NgModule(locationModuleConfig)
+})
 export class LocationModule {
   static forRoot({ apiKey }): ModuleWithProviders<LocationModule> {
     return {

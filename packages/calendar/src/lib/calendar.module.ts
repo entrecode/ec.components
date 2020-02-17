@@ -6,7 +6,8 @@ import { DaterangeComponent } from './daterange/daterange.component';
 import { MonthComponent } from './calendar/month.component';
 import { CommonModule } from '@angular/common';
 
-export const calendarModuleConfig = {
+/** This Module contains all calendar related components */
+@NgModule({
   imports: [CommonModule],
   exports: [DatetimePipe, CalendarComponent, HeatmapComponent, DaterangeComponent, MonthComponent],
   declarations: [DatetimePipe, CalendarComponent, HeatmapComponent, DaterangeComponent, MonthComponent],
@@ -24,10 +25,7 @@ export const calendarModuleConfig = {
       useValue: 'MMMM YYYY',
     },
   ],
-};
-
-/** This Module contains all calendar related components */
-@NgModule(calendarModuleConfig)
+})
 export class CalendarModule {
   static forRoot(formats: { date?; time?; month? }): ModuleWithProviders<CalendarModule> {
     return {

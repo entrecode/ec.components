@@ -1,4 +1,3 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { DataModule } from '@ec.components/data';
@@ -51,9 +50,6 @@ import { TinymceDemoComponent } from './tinymce-demo/tinymce-demo.component';
 import { GithubSourceComponent } from './github-source/github-source.component';
 import { GithubSourcesComponent } from './github-source/github-sources.component';
 import { DoclinksComponent } from './doclinks/doclinks.component';
-import moment from 'moment-es6';
-/* import { SymbolService } from '@ec.components/ui/src/symbol/symbol.service';
-import en from '@ec.components/ui/src/symbol/en'; */
 import { CounterComponent } from './form/counter.component';
 import { LoginDemoComponent } from './login-demo/login-demo.component';
 import { ImageSelectPopDemoComponent } from './image-select-pop-demo/image-select-pop-demo.component';
@@ -65,9 +61,8 @@ import { FormsModule } from '@angular/forms';
 import { CalendarModule } from '@ec.components/calendar';
 import { KeycommandsDemoComponent } from './keycommands/keycommands-demo.component';
 import { MenuComponent } from './menu/menu.component';
-/* import { CalendarModule } from '../../packages/calendar/src/calendar.module'; */
 
-@NgModule({
+export const demoModuleConfig = {
   entryComponents: [CoolStringComponent, UnsplashImageComponent, CounterComponent, TinyInputComponent],
   declarations: [
     GithubSourceComponent,
@@ -155,10 +150,4 @@ import { MenuComponent } from './menu/menu.component';
     },
   ],
   bootstrap: [DemoComponent],
-})
-export class DemoModule {
-  constructor() /* private symbol: SymbolService */ {
-    /* this.symbol.use(en); */
-    /* moment.locale(this.symbol.resolve('moment.locale')); */
-  }
-}
+};

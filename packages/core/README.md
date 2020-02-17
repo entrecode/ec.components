@@ -2,7 +2,7 @@
 
 WARNING: This version is currently experimental as it's part of the x.ui 10 update.
 
-This package contains all the core typescript classes.
+This pacikage contains all the core typescript classes.
 It is the highest abstraction layer and is therefor framework and backend agnostic.
 This means it contains no angular or ec.datamanager references.
 

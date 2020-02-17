@@ -1,13 +1,18 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { PopComponent } from './pop.component';
-import { popModuleConfig } from './pop.module';
+import { CommonModule } from '@angular/common';
+import { IconModule, ModalComponent, PopService } from '@ec.components/ui';
 
 describe('PopComponent', () => {
   let component: PopComponent;
   let fixture: ComponentFixture<PopComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule(popModuleConfig).compileComponents();
+    TestBed.configureTestingModule({
+      declarations: [PopComponent, ModalComponent],
+      imports: [CommonModule, IconModule],
+      providers: [PopService],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

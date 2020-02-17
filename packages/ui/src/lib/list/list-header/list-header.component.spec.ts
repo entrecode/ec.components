@@ -1,15 +1,35 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { List } from '@ec.components/core';
 import { ListHeaderComponent } from '../../list/list-header/list-header.component';
-import { PopComponent } from '../../pop/pop.component';
-import { uiModuleConfig } from '../../ui.module';
+import {
+  SymbolModule,
+  IconModule,
+  SelectModule,
+  ListModule,
+  FormModule,
+  LoaderModule,
+  PopModule,
+  NotificationsModule,
+  UtilityModule
+} from '@ec.components/ui/public_api';
 
 describe('ListHeaderComponent', () => {
   let component: ListHeaderComponent;
   let fixture: ComponentFixture<ListHeaderComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule(uiModuleConfig).compileComponents();
+    TestBed.configureTestingModule({
+      imports: [
+        UtilityModule,
+        NotificationsModule,
+        PopModule,
+        LoaderModule,
+        FormModule,
+        ListModule,
+        SelectModule,
+        IconModule,
+        SymbolModule,
+      ],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

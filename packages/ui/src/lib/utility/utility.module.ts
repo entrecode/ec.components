@@ -10,7 +10,7 @@ import { TabComponent } from './tab/tab.component';
 import { TabsComponent } from './tabs/tabs.component';
 import { KeycommandsService } from './keycommands/keycommands.service';
 
-export const utilityModuleConfig = {
+@NgModule({
   entryComponents: [],
   declarations: [TabsComponent, TabComponent, LoginFormComponent, SignupFormComponent, FocusDirective],
   imports: [FormsModule, ReactiveFormsModule, IoModule, CommonModule, RouterModule],
@@ -27,7 +27,5 @@ export const utilityModuleConfig = {
     RouterModule,
   ],
   providers: [KeycommandsService],
-};
-
-@NgModule(utilityModuleConfig)
+})
 export class UtilityModule {}

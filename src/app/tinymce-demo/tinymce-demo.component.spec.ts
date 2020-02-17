@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TinymceDemoComponent } from './tinymce-demo.component';
-import { demoModuleConfig } from '../demo.module';
+import { demoModuleConfig } from '../demo.module.config';
 
 describe('TinymceDemoComponent', () => {
   let component: TinymceDemoComponent;
