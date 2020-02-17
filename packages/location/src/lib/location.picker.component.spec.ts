@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { LocationPickerComponent } from './location-picker.component';
 import { RouterTestingModule } from '@angular/router/testing';
-import { LocationMapComponent, LocationSearchComponent, GeocodeService } from '@ec.components/location';
+import { LocationMapComponent, LocationSearchComponent, GeocodeService } from '../public_api';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UiModule } from '@ec.components/ui';

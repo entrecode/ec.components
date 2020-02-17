@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Item } from '@ec.components/core';
 import { ListComponent } from './list.component';
 import {
   ListConfigService,
@@ -8,9 +7,10 @@ import {
   SymbolModule,
   UtilityModule, GroupPipe, SearchbarComponent, PaginationComponent, ListHeaderComponent,
   ListItemsComponent
-} from '@ec.components/ui';
+} from '../../public_api';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Item } from '@ec.components/core';
 /* import { mocked } from '../../mocks/data'; */
 
 describe('ListComponent', () => {

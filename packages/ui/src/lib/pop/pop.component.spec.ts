@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { PopComponent } from './pop.component';
 import { CommonModule } from '@angular/common';
-import { IconModule, ModalComponent, PopService } from '@ec.components/ui';
+import { IconModule, ModalComponent, PopService } from '../../public_api';
 
 describe('PopComponent', () => {
   let component: PopComponent;

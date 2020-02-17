@@ -12,7 +12,7 @@ import {
   TypeConfigService,
   ModelConfigService,
   HistoryService
-} from '@ec.components/data';
+} from '../../public_api';
 import { EntryActionbarComponent } from '../entry-actionbar/entry-actionbar.component';
 import { EntryListSelectComponent } from '../entry-list-select/entry-list-select.component';
 import { EntryListPopComponent } from '../entry-list-pop/entry-list-pop.component';
