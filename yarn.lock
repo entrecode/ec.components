@@ -2,11 +2,6 @@
 # yarn lockfile v1
 
 
-"@agm/core@1.0.0-beta.5":
-  version "1.0.0-beta.5"
-  resolved "https://registry.npmjs.org/@agm/core/-/core-1.0.0-beta.5.tgz#6dbceb666b2dbc4a868b97e1340a3faceb5f2113"
-  integrity sha512-LVENJqtBZEWpX+uJkGI0zgg+Xkm2KkktQm4ojZozArbeNvQkVL6pqVc04Mme6vvOzwJpD1cET5w4byC8Xaq1QQ==
-
 "@agm/core@1.1.0":
   version "1.1.0"
   resolved "https://registry.npmjs.org/@agm/core/-/core-1.1.0.tgz#6f8dcbac068f681fe4fa9b0a0cbf660588025911"
@@ -1159,6 +1154,72 @@
   dependencies:
     is-absolute "^1.0.0"
     is-negated-glob "^1.0.0"
+
+"@ec.components/ace@*":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@ec.components/ace/-/ace-0.7.0.tgz#e77020c79fc7f0fefd19fe8223c2af53e3f6c687"
+  integrity sha512-04kmmYvk0jdg6XNdLdu6VE1gsqfKO4A6P9JSG99CfmallLWBZJ0avo1rVq8FcY0yIle6zGMKgRb705kbcI1FYw==
+  dependencies:
+    ace-builds "^1.4.2"
+
+"@ec.components/calendar@*", "@ec.components/calendar@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@ec.components/calendar/-/calendar-0.3.0.tgz#c53b9d12c4c67e67c4b32ccb05dbc2a16bb890d1"
+  integrity sha512-yKK8mT7z7mcHtIvw8myXb/5prEQQgobY9kT8uJMgoNlTKrnevRCRbnnoIhPe+mgNxqrgtMjNh9PtQke4QLXSKQ==
+  dependencies:
+    moment-es6 "^1.0.0"
+
+"@ec.components/core@*", "@ec.components/core@^0.31.0":
+  version "0.31.0"
+  resolved "https://registry.yarnpkg.com/@ec.components/core/-/core-0.31.0.tgz#d7f456748a4db800bb41ddc7c0efdffaadf90f3a"
+  integrity sha512-gIvfwdYJr/UVmx95L3YOJkwgXl1ZGnGD7xJeeNlg80ww3fapaci5PeCRKKCIdeMAC2EDXC3wCmfb4IGrvQKIhQ==
+
+"@ec.components/data@*":
+  version "0.54.0"
+  resolved "https://registry.yarnpkg.com/@ec.components/data/-/data-0.54.0.tgz#5f55a18b41e8f9898c3a0b6da3664b5cf53d1049"
+  integrity sha512-Ke+WwhYkzHB10dZ3KmZkPyQtKfdd9NlxcaJxfzQao241t+aMCG/6GQ0krrAA7PXA/mxqC1a75Bgw+H1Rnu/w8w==
+  dependencies:
+    "@ec.components/core" "^0.31.0"
+    "@ec.components/ui" "^0.49.0"
+    ngx-cookie "^2.0.1"
+
+"@ec.components/location@*":
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/@ec.components/location/-/location-0.19.0.tgz#f4e6abf950d2f2f0f25f7b60d5ce536047eeb9b7"
+  integrity sha512-K8I8HyIlQ6nM6scQ+DsLJs31AipWKTFf1MK9txFo/GcOVDMZpjeZWWH8yjfZkofljc9ZfMSgL/NH9Tq4jhKJcA==
+  dependencies:
+    "@agm/core" "1.1.0"
+    googlemaps "^1.12.0"
+
+"@ec.components/medium-editor@*":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@ec.components/medium-editor/-/medium-editor-0.5.0.tgz#0653434571e88681cc539adf4b90d6a2c253e717"
+  integrity sha512-NMJDCejBcjfHc1rgpoZcj9jIu9cYFjJa/+7IA7sDDui2+sORvOsOxfNbU6w276/hjcwO5N8wRunLX0cBS8jKGw==
+  dependencies:
+    medium-editor "^5.23.2"
+
+"@ec.components/style@*":
+  version "0.23.8"
+  resolved "https://registry.yarnpkg.com/@ec.components/style/-/style-0.23.8.tgz#b014f9e0f6a579e6f47c4937479f6c05aec2a8fb"
+  integrity sha512-KMQ1tDCJVqQnfu/sQZOZepoe6j77SgByFoWQnz55Fszm7vzZIxrtrgo+eCDr7rjMa9fN9/KUCs28y8t1EoGFaw==
+  dependencies:
+    x.ui "10.0.1"
+
+"@ec.components/tinymce@*":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@ec.components/tinymce/-/tinymce-0.6.0.tgz#842e18009447ef830e5a5aca3fb01037d5ad5ad2"
+  integrity sha512-tt3i0dtnZU2j+07GZlkcOeXLDBtcOg0lrgrmuwPmCeuno2gOR+ifZiiJkpI99Y3BHMbD8D81aftqtotSmcBAxw==
+  dependencies:
+    tinymce "4.7.4"
+
+"@ec.components/ui@*", "@ec.components/ui@^0.49.0":
+  version "0.49.0"
+  resolved "https://registry.yarnpkg.com/@ec.components/ui/-/ui-0.49.0.tgz#68ee9aa42640112146b2eddd89de246aa1020503"
+  integrity sha512-mWjpxOw29oCp3rHxmpQu2wihruBaeBllEc9dsTIatlH9MseYhTUKzgaZu/wx4TkAS46quBJuWIH7Rp71la0dIQ==
+  dependencies:
+    "@ec.components/calendar" "^0.3.0"
+    "@ec.components/core" "^0.31.0"
+    ngx-drag-drop "^2.0.0"
 
 "@evocateur/libnpmaccess@^3.1.2":
   version "3.1.2"
@@ -2367,13 +2428,6 @@
   dependencies:
     "@types/jasmine" "*"
 
-"@types/jquery@*":
-  version "3.3.29"
-  resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-3.3.29.tgz#680a2219ce3c9250483722fccf5570d1e2d08abd"
-  integrity sha512-FhJvBninYD36v3k6c+bVk1DSZwh7B5Dpb/Pyk3HKVsiohn0nhbefZZ+3JXbWQhFyt0MxSl2jRDdGQPHeOHFXrQ==
-  dependencies:
-    "@types/sizzle" "*"
-
 "@types/jwt-decode@^2.2.1":
   version "2.2.1"
   resolved "https://registry.npmjs.org/@types/jwt-decode/-/jwt-decode-2.2.1.tgz#afdf5c527fcfccbd4009b5fd02d1e18241f2d2f2"
@@ -2431,11 +2485,6 @@
   resolved "https://registry.npmjs.org/@types/shortid/-/shortid-0.0.29.tgz#8093ee0416a6e2bf2aa6338109114b3fbffa0e9b"
   integrity sha1-gJPuBBam4r8qpjOBCRFLP7/6Dps=
 
-"@types/sizzle@*":
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/@types/sizzle/-/sizzle-2.3.2.tgz#a811b8c18e2babab7d542b3365887ae2e4d9de47"
-  integrity sha512-7EJYyKTL7tFR8+gDbB6Wwz/arpGa0Mywk1TJbNzKzHtzbwVmY4HR9WqS5VV7dsBUKQmPNr192jHr/VpBluj/hg==
-
 "@types/source-list-map@*":
   version "0.1.2"
   resolved "https://registry.npmjs.org/@types/source-list-map/-/source-list-map-0.1.2.tgz#0078836063ffaf17412349bba364087e0ac02ec9"
@@ -2453,13 +2502,6 @@
   dependencies:
     "@types/cookiejar" "*"
     "@types/node" "*"
-
-"@types/tinymce@^4.5.14":
-  version "4.5.22"
-  resolved "https://registry.yarnpkg.com/@types/tinymce/-/tinymce-4.5.22.tgz#134827d2d6cfd7c7ed14d7ee1bfbfe4d66f7eb84"
-  integrity sha512-qmvmXUYgkdQ6jAbsRSQclfttq3nk8mbJYi6xthyhF2J9GFgzbNPcBntsrOr9CpnY6uE1Z8L0NBB1eA7TA+5GKA==
-  dependencies:
-    "@types/jquery" "*"
 
 "@types/traverson@^2.0.28":
   version "2.0.28"
@@ -9090,9 +9132,9 @@ locate-path@^5.0.0:
   dependencies:
     p-locate "^4.1.0"
 
-lodash._reinterpolate@^3.0.0, lodash._reinterpolate@~3.0.0:
+lodash._reinterpolate@^3.0.0:
   version "3.0.0"
-  resolved "https://registry.npmjs.org/lodash._reinterpolate/-/lodash._reinterpolate-3.0.0.tgz#0ccf2d89166af03b3663c796538b75ac6e114d9d"
+  resolved "https://registry.yarnpkg.com/lodash._reinterpolate/-/lodash._reinterpolate-3.0.0.tgz#0ccf2d89166af03b3663c796538b75ac6e114d9d"
   integrity sha1-DM8tiRZq8Ds2Y8eWU4t1rG4RTZ0=
 
 lodash.clonedeep@^4.5.0:
@@ -9135,15 +9177,7 @@ lodash.sortby@^4.7.0:
   resolved "https://registry.npmjs.org/lodash.sortby/-/lodash.sortby-4.7.0.tgz#edd14c824e2cc9c1e0b0a1b42bb5210516a42438"
   integrity sha1-7dFMgk4sycHgsKG0K7UhBRakJDg=
 
-lodash.template@^4.0.2:
-  version "4.4.0"
-  resolved "https://registry.npmjs.org/lodash.template/-/lodash.template-4.4.0.tgz#e73a0385c8355591746e020b99679c690e68fba0"
-  integrity sha1-5zoDhcg1VZF0bgILmWecaQ5o+6A=
-  dependencies:
-    lodash._reinterpolate "~3.0.0"
-    lodash.templatesettings "^4.0.0"
-
-lodash.template@^4.5.0:
+lodash.template@^4.0.2, lodash.template@^4.5.0:
   version "4.5.0"
   resolved "https://registry.npmjs.org/lodash.template/-/lodash.template-4.5.0.tgz#f976195cf3f347d0d5f52483569fe8031ccce8ab"
   integrity sha512-84vYFxIkmidUiFxidA/KjjH9pAycqW+h980j7Fuz5qxRtO9pgB7MDFTdys1N7A5mcucRiDyEq4fusljItR1T/A==
@@ -9152,11 +9186,11 @@ lodash.template@^4.5.0:
     lodash.templatesettings "^4.0.0"
 
 lodash.templatesettings@^4.0.0:
-  version "4.1.0"
-  resolved "https://registry.npmjs.org/lodash.templatesettings/-/lodash.templatesettings-4.1.0.tgz#2b4d4e95ba440d915ff08bc899e4553666713316"
-  integrity sha1-K01OlbpEDZFf8IvImeRVNmZxMxY=
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/lodash.templatesettings/-/lodash.templatesettings-4.2.0.tgz#e481310f049d3cf6d47e912ad09313b154f0fb33"
+  integrity sha512-stgLz+i3Aa9mZgnjr/O+v9ruKZsPsndy7qPZOchbqk2cnTU1ZaldKK+v7m54WoKIyxiuMZTKT2H81F8BeAc3ZQ==
   dependencies:
-    lodash._reinterpolate "~3.0.0"
+    lodash._reinterpolate "^3.0.0"
 
 lodash.uniq@^4.5.0:
   version "4.5.0"
@@ -9910,11 +9944,6 @@ ngx-cookie@^2.0.1:
   version "2.0.1"
   resolved "https://registry.npmjs.org/ngx-cookie/-/ngx-cookie-2.0.1.tgz#031d8938bf9026954356b3b3ae668e2e1964e584"
   integrity sha512-3+agXZkoPxRP3IyELf7Eiuhk6TX+EAX974kkCR6Xjm+N7boEA+Fin2Q90AAE4XZzY48skkVzLH96TOikb5yU3g==
-
-ngx-drag-drop@^1.0.3:
-  version "1.1.1"
-  resolved "https://registry.npmjs.org/ngx-drag-drop/-/ngx-drag-drop-1.1.1.tgz#e9a5d5bc0417ae62482bc954a635a14ffa085a52"
-  integrity sha512-q//2tJ/M1cmTsPnHnY41vDQAJPGafhkofzo0h+JBCLdRumpuCkJ2l4UElIeSgG42Msc4YC4uBcRxIulHlalgwQ==
 
 ngx-drag-drop@^2.0.0:
   version "2.0.0"
