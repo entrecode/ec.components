@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.54.0](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.53.6...@ec.components/data@0.54.0) (2020-02-17)
+
+
+### Bug Fixes
+
+* add prod flags to prevent ivy build ([62f99f5](https://github.com/entrecode/ec.components/commit/62f99f5))
+* build works now ([5152b20](https://github.com/entrecode/ec.components/commit/5152b20))
+* little fixes ([1b94e81](https://github.com/entrecode/ec.components/commit/1b94e81))
+* peer deps ([c29fa39](https://github.com/entrecode/ec.components/commit/c29fa39))
+* remaning tests ([578ca2e](https://github.com/entrecode/ec.components/commit/578ca2e))
+* test imports ([a4dd259](https://github.com/entrecode/ec.components/commit/a4dd259))
+
+
+### Features
+
+* angular 9 ([cb15804](https://github.com/entrecode/ec.components/commit/cb15804))
+
+
+
+
+
 ## [0.53.6](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.53.5...@ec.components/data@0.53.6) (2019-11-08)
 
 
