@@ -5,7 +5,6 @@ import { TabComponent, LoginFormComponent, SignupFormComponent, FocusDirective, 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IoModule } from '@ec.components/ui/lib/io/io.module';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 
 describe('TabComponent', () => {
   /* let component: TabComponent;
@@ -16,7 +15,7 @@ describe('TabComponent', () => {
     TestBed.configureTestingModule(
       {
         declarations: [TabsComponent, TabComponent, LoginFormComponent, SignupFormComponent, FocusDirective],
-        imports: [FormsModule, ReactiveFormsModule, IoModule, CommonModule, RouterModule, RouterTestingModule],
+        imports: [FormsModule, ReactiveFormsModule, IoModule, CommonModule, RouterTestingModule],
         providers: [KeycommandsService],
       }).compileComponents();
   }));
