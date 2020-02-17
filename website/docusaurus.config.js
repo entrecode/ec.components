@@ -7,6 +7,10 @@
 
 module.exports = {
   title: 'ec.components',
+  organizationName: 'entrecode',
+  projectName: 'ec.components',
+  url: 'http://entrecode.github.io',
+  baseUrl: '/ec.components/',
   tagline: 'UI Components for the entrecode datamanager',
   url: 'https://components.entrecode.de',
   baseUrl: '/',
