@@ -4,7 +4,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { LocationMapComponent, LocationSearchComponent, GeocodeService } from '@ec.components/location';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { UiModule } from '@ec.components/ui/public_api';
+import { UiModule } from '@ec.components/ui';
 import { AgmCoreModule } from '@agm/core';
 
 describe('LocationPickerComponent', () => {

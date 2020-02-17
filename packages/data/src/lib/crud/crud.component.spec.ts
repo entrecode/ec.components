@@ -12,7 +12,7 @@ import {
   TypeConfigService,
   ModelConfigService,
   HistoryService
-} from '../../public_api';
+} from '@ec.components/data';
 import { EntryActionbarComponent } from '../entry-actionbar/entry-actionbar.component';
 import { EntryListSelectComponent } from '../entry-list-select/entry-list-select.component';
 import { EntryListPopComponent } from '../entry-list-pop/entry-list-pop.component';
@@ -20,7 +20,7 @@ import { EntryDirective } from '../entry/entry.directive';
 import { EntriesDirective } from '../entries/entries.directive';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { UiModule } from '@ec.components/ui/public_api';
+import { UiModule } from '@ec.components/ui';
 import { SdkModule } from '../sdk/sdk.module';
 import { AuthModule } from '../auth';
 import { ResourceModule } from '../resource/resource.module';

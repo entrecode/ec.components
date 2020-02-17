@@ -10,7 +10,7 @@ import {
   PopModule,
   NotificationsModule,
   UtilityModule
-} from '@ec.components/ui/public_api';
+} from '@ec.components/ui';
 
 describe('FormComponent', () => {
   let component: FormComponent<any>;
