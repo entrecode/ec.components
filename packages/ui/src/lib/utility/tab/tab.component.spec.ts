@@ -3,7 +3,7 @@ import { TabsComponent } from '../../utility/tabs/tabs.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TabComponent, LoginFormComponent, SignupFormComponent, FocusDirective, KeycommandsService } from '@ec.components/ui';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { IoModule } from '@ec.components/ui/lib/io/io.module';
+import { IoModule } from '@ec.components/ui';
 import { CommonModule } from '@angular/common';
 
 describe('TabComponent', () => {
