@@ -1377,8 +1377,7 @@ It runs before all other transformation methods.</li>
 <li><em>group</em>: Should return a value that is suitable for grouping multiple different values together, like in a list.</li>
 </ul>
 <p>Example Usage:</p>
-<p><code>ts
-const field = new Field(&#39;name&#39;, {
+<div><pre class="line-numbers"><code class="language-ts">const field = new Field(&#39;name&#39;, {
     resolve: (body) =&gt; body.value.name,
     display: (value) =&gt; value.toUpperCase(),
     group: (value) =&gt; value.length + &#39; Buchstaben&#39;,
@@ -1387,8 +1386,7 @@ const field = new Field(&#39;name&#39;, {
 const name = field.resolve({value:{name:&#39;bobby&#39;}}); // &#39;bobby&#39;
 field.display(name); // =&gt; &#39;Bobby&#39;
 field.group(name); // =&gt; &#39;5 Buchstaben&#39;
-field.sort(name); // =&gt; 5</code>
-The above example is of course only viable to show the concept.
+field.sort(name); // =&gt; 5</code></pre></div><p>The above example is of course only viable to show the concept.
 When using the components as a whole, those methods will be called automatically from Item, List or Form.</p>
 </p>
     </div>
@@ -1483,6 +1481,7 @@ export class Field implements FieldConfigProperty {
 
 
 
+                   
 
 
 
@@ -1505,6 +1504,7 @@ export class Field implements FieldConfigProperty {
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
             var COMPODOC_CURRENT_PAGE_URL = 'Field.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

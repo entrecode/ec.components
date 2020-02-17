@@ -69,7 +69,7 @@
             </p>
             <p class="comment">
                 <p>Loads an entryList of a given model with the given config.
-<example-url>https://components.entrecode.de/entries/entries?e=1</example-url></p>
+<example-url><a href="https://components.entrecode.de/entries/entries?e=1">https://components.entrecode.de/entries/entries?e=1</a></example-url></p>
 
             </p>
 
@@ -943,14 +943,11 @@
     <div class="tab-pane fade " id="c-readme">
         <p><h1 id="ec-entries">ec-entries</h1>
 <p>This component can be used to load a list of entries from the template:</p>
-<p>```html</p>
-<ul ecEntries model="muffin" #myMuffins="ecEntries">
-  <li *ngFor="let muffin of myMuffins.items">
+<div><pre class="line-numbers"><code class="language-html">&lt;ul ecEntries model=&quot;muffin&quot; #myMuffins=&quot;ecEntries&quot;&gt;
+  &lt;li *ngFor=&quot;let muffin of myMuffins.items&quot;&gt;
   {{muffin.name}}
-  </li>
-</li>
-```
-</p>
+  &lt;/li&gt;
+&lt;/li&gt;</code></pre></div></p>
     </div>
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
@@ -1085,6 +1082,7 @@ export class EntriesDirective implements OnChanges, WithLoader {
 
 
 
+                   
 
 
 
@@ -1107,6 +1105,7 @@ export class EntriesDirective implements OnChanges, WithLoader {
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'directive';
             var COMPODOC_CURRENT_PAGE_URL = 'EntriesDirective.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

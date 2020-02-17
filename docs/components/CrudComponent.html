@@ -68,11 +68,13 @@
         <h3>Description</h3>
     </p>
     <p class="comment">
-        <p>The CrudComponent takes at least a model name to render an entry list with create/edit/delete functionality out of the box.
-<code>html
- * &lt;ec-crud model=&quot;muffin&quot;&gt;&lt;/ec-crud&gt;
- *</code>
-<example-url>https://components.entrecode.de/entries/crud?e=1</example-url></p>
+        <p>The CrudComponent takes at least a model name to render an entry list with create/edit/delete functionality out of the box.</p>
+<p>```html</p>
+<ul>
+<li><ec-crud model="muffin"></ec-crud></li>
+<li>```
+<example-url><a href="https://components.entrecode.de/entries/crud?e=1">https://components.entrecode.de/entries/crud?e=1</a></example-url></li>
+</ul>
 
     </p>
 
@@ -930,7 +932,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(EntryListComponent, {static: false})<br />
+                                @ViewChild(EntryListComponent)<br />
                             </code>
                         </td>
                     </tr>
@@ -1142,7 +1144,7 @@ export class CrudComponent implements OnInit, WithLoader, WithNotifications {
   /** The selection that should be used */
   @Input() selection: Selection&lt;EntryResource&gt;;
   /** The EntryList inside the template. */
-  @ViewChild(EntryListComponent, { static: false }) list: EntryListComponent;
+  @ViewChild(EntryListComponent) list: EntryListComponent;
   /** The Pop inside the template. */
   @ViewChild(EntryPopComponent, { static: true }) entryPop: EntryPopComponent;
   /** The lists loader */
@@ -1318,6 +1320,7 @@ export class CrudComponent implements OnInit, WithLoader, WithNotifications {
 
 
 
+                   
 
 
 
@@ -1340,6 +1343,7 @@ export class CrudComponent implements OnInit, WithLoader, WithNotifications {
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
             var COMPODOC_CURRENT_PAGE_URL = 'CrudComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

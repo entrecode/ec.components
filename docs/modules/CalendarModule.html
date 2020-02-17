@@ -318,8 +318,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="32"
-                            class="link-to-prism">packages/calendar/src/lib/calendar.module.ts:32</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="30"
+                            class="link-to-prism">packages/calendar/src/lib/calendar.module.ts:30</a></div>
                 </td>
             </tr>
 
@@ -356,7 +356,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../miscellaneous/variables.html#de" target="_self" >ModuleWithProviders</a></code>
+                        <b>Returns : </b>    <code>ModuleWithProviders&lt;CalendarModule&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -379,7 +379,8 @@ import { DaterangeComponent } from &#x27;./daterange/daterange.component&#x27;;
 import { MonthComponent } from &#x27;./calendar/month.component&#x27;;
 import { CommonModule } from &#x27;@angular/common&#x27;;
 
-export const calendarModuleConfig &#x3D; {
+/** This Module contains all calendar related components */
+@NgModule({
   imports: [CommonModule],
   exports: [DatetimePipe, CalendarComponent, HeatmapComponent, DaterangeComponent, MonthComponent],
   declarations: [DatetimePipe, CalendarComponent, HeatmapComponent, DaterangeComponent, MonthComponent],
@@ -397,12 +398,9 @@ export const calendarModuleConfig &#x3D; {
       useValue: &#x27;MMMM YYYY&#x27;,
     },
   ],
-};
-
-/** This Module contains all calendar related components */
-@NgModule(calendarModuleConfig)
+})
 export class CalendarModule {
-  static forRoot(formats: { date?; time?; month? }): ModuleWithProviders {
+  static forRoot(formats: { date?; time?; month? }): ModuleWithProviders&lt;CalendarModule&gt; {
     return {
       ngModule: CalendarModule,
       providers: [
@@ -435,6 +433,7 @@ export class CalendarModule {
 
 
 
+                   
 
 
 
@@ -457,6 +456,7 @@ export class CalendarModule {
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
             var COMPODOC_CURRENT_PAGE_URL = 'CalendarModule.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

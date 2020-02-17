@@ -978,7 +978,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(UploadComponent, {static: false})<br />
+                                @ViewChild(UploadComponent)<br />
                             </code>
                         </td>
                     </tr>
@@ -1068,7 +1068,7 @@ export class UploadSelectComponent implements OnInit {
   @Output() browse: EventEmitter&lt;void&gt; &#x3D; new EventEmitter();
   @Input() config: CrudConfig&lt;DMAssetResource | PublicAssetResource&gt;;
   /** The nested upload component */
-  @ViewChild(UploadComponent, { static: false }) uploader: UploadComponent;
+  @ViewChild(UploadComponent) uploader: UploadComponent;
   /** The Url to upload from */
   urlsToUpload &#x3D; &#x27;&#x27;;
   /** Wether or not the url input should be visible */
@@ -1189,6 +1189,7 @@ export class UploadSelectComponent implements OnInit {
 
 
 
+                   
 
 
 
@@ -1211,6 +1212,7 @@ export class UploadSelectComponent implements OnInit {
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
             var COMPODOC_CURRENT_PAGE_URL = 'UploadSelectComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

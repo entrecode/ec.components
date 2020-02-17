@@ -4705,7 +4705,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(SearchbarComponent, {static: false})<br />
+                                @ViewChild(SearchbarComponent)<br />
                             </code>
                         </td>
                     </tr>
@@ -4903,7 +4903,7 @@ export class EntryActionbarComponent extends ActionbarComponent implements OnIni
     if (!value) {
       value &#x3D; [];
     }
-    this.selection.replaceWith(value.map((liteEntry) &#x3D;&gt; new Item(this.getEntryAction(liteEntry), this.config)));
+    this.selection?.replaceWith(value.map((liteEntry) &#x3D;&gt; new Item(this.getEntryAction(liteEntry), this.config)));
   }
 
   filterDropdownList(listComponent: ListComponent&lt;any&gt;, query) {
@@ -4960,6 +4960,7 @@ export class EntryActionbarComponent extends ActionbarComponent implements OnIni
 
 
 
+                   
 
 
 
@@ -4982,6 +4983,7 @@ export class EntryActionbarComponent extends ActionbarComponent implements OnIni
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
             var COMPODOC_CURRENT_PAGE_URL = 'EntryActionbarComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

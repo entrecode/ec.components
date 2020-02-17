@@ -442,7 +442,7 @@ import { SearchbarComponent } from &#x27;./searchbar/searchbar.component&#x27;;
 import { ListConfigService } from &#x27;./list-config.service&#x27;;
 import { FormsModule } from &#x27;@angular/forms&#x27;;
 
-export const listModuleConfig &#x3D; {
+@NgModule({
   declarations: [
     ListComponent,
     ListItemsComponent,
@@ -462,9 +462,7 @@ export const listModuleConfig &#x3D; {
     FormModule,
   ],
   providers: [ListConfigService],
-};
-
-@NgModule(listModuleConfig)
+})
 export class ListModule {}
 </code></pre>
     </div>
@@ -479,6 +477,7 @@ export class ListModule {}
 
 
 
+                   
 
 
 
@@ -501,6 +500,7 @@ export class ListModule {}
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
             var COMPODOC_CURRENT_PAGE_URL = 'ListModule.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

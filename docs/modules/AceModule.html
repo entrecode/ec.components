@@ -231,15 +231,13 @@
 import { AceComponent } from &#x27;./ace.component&#x27;;
 import { UiModule } from &#x27;@ec.components/ui&#x27;;
 
-export const aceModuleConfig &#x3D; {
+@NgModule({
   imports: [UiModule],
   exports: [AceComponent],
   declarations: [AceComponent],
   entryComponents: [AceComponent],
   providers: [],
-};
-
-@NgModule(aceModuleConfig)
+})
 export class AceModule {}
 </code></pre>
     </div>
@@ -254,6 +252,7 @@ export class AceModule {}
 
 
 
+                   
 
 
 
@@ -276,6 +275,7 @@ export class AceModule {}
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
             var COMPODOC_CURRENT_PAGE_URL = 'AceModule.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

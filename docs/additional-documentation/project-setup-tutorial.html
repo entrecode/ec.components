@@ -43,6 +43,7 @@
 
 
 
+                   
 
 
 
@@ -51,9 +52,7 @@
 <p>This tutorial will show you how to set up a new project with the ec.components.</p>
 <h3 id="1-prequisites">1. Prequisites</h3>
 <p>Install <a href="https://cli.angular.io/">angular-cli</a> globally:</p>
-<p><code>sh
-npm install -g @angular/cli</code>
-The following versions have been used for this tutorial:</p>
+<div><pre class="line-numbers"><code class="language-sh">npm install -g &#64;angular/cli</code></pre></div><p>The following versions have been used for this tutorial:</p>
 <ul>
 <li>@angular/cli: 1.3.2</li>
 <li>@angular/animations: 4.3.6</li>
@@ -72,50 +71,41 @@ The following versions have been used for this tutorial:</p>
 </ul>
 <p>You can lookup your versions with <code>ng --version</code></p>
 <h3 id="2-generate-new-project">2. Generate new Project</h3>
-<p><code>sh
-ng new ec-project --prefix ec-admin --routing true --style scss</code>
-Make sure you replace <em>ec-project</em> with your project name and the prefix <em>ec-admin</em> with a project related shorthand symbol.
+<div><pre class="line-numbers"><code class="language-sh">ng new ec-project --prefix ec-admin --routing true --style scss</code></pre></div><p>Make sure you replace <em>ec-project</em> with your project name and the prefix <em>ec-admin</em> with a project related shorthand symbol.
 <a href="https://github.com/angular/angular-cli/wiki/new">More info on the options for new</a>.</p>
 <h3 id="3-install-eccomponentsdata">3. Install @ec.components/data</h3>
-<p><code>sh
-cd ec-project
-yarn add @ec.components/data --save
-yarn add @ec.components/style --save</code></p>
-<p>This will install the data package which depends on ui and core packages.
+<div><pre class="line-numbers"><code class="language-sh">cd ec-project
+yarn add &#64;ec.components/data --save
+yarn add &#64;ec.components/style --save</code></pre></div><p>This will install the data package which depends on ui and core packages.
 The style package contains styles for ui and data.</p>
 <h3 id="4-import-styles">4. Import Styles</h3>
 <p>Into your styles.scss, import the following styles:</p>
-<p><code>@import &quot;~xlcss/sass/xlcss.scss&quot;;
-@import &quot;~x.ui/src/_config&quot;;
-@import &quot;~x.ui/src/x.ui-sandbox.scss&quot;;
-@import &quot;~@ec.components/style/components.scss&quot;;</code></p>
-<h3 id="5-setup-environment">5. Setup environment</h3>
+<div><pre class="line-numbers"><code class="language-none">&#64;import &quot;~xlcss/sass/xlcss.scss&quot;;
+&#64;import &quot;~x.ui/src/_config&quot;;
+&#64;import &quot;~x.ui/src/x.ui-sandbox.scss&quot;;
+&#64;import &quot;~&#64;ec.components/style/components.scss&quot;;</code></pre></div><h3 id="5-setup-environment">5. Setup environment</h3>
 <p>In src/environments, you can find the different environment files.
 By Default, there is a dev and a prod environment. For this tutorial, those two should be enough. We will use the dev environment for dev and staging and the prod environment for live. You could also add more environments, for more information, <a href="https://github.com/angular/angular-cli/wiki/stories-application-environments">look here</a>. </p>
 <p><em>src/environments/environment.ts</em>:</p>
-<p><code>js
-export const environment = {
+<div><pre class="line-numbers"><code class="language-js">export const environment = {
   production: false,
   environment: &#39;stage&#39;, // https://entrecode.github.io/ec.sdk/#environment
   datamanagerID: &#39;XXXXXXXX&#39;, // datamanager shortID
   clientID: &#39;my-dev-client&#39; // your clientID
-};</code></p>
-<p><em>src/environments/environment.prod.ts</em>:</p>
-<p><code>js
-export const environment = {
+};</code></pre></div><p><em>src/environments/environment.prod.ts</em>:</p>
+<div><pre class="line-numbers"><code class="language-js">export const environment = {
   production: true,
   environment: &#39;live&#39;, // https://entrecode.github.io/ec.sdk/#environment
   datamanagerID: &#39;XXXXXXXX&#39;, // datamanager shortID
   clientID: &#39;my-live-client&#39; // your clientID
-};</code>
-The .prod environment will be used when running ng build for production.
+};</code></pre></div><p>The .prod environment will be used when running ng build for production.
 The client should use token method body. The callback URL does not matter.</p>
 <h3 id="6-add-datamodule">6. Add DataModule</h3>
 <p>Go to src/app/app.module and add DataModule to your imports:</p>
-<p>```js
-import { DataModule } from &#39;@ec.components/data&#39;;
-import { environment } from &#39;../environments/environment&#39;;</p>
-<p>@NgModule({
+<div><pre class="line-numbers"><code class="language-js">import { DataModule } from &#39;&#64;ec.components/data&#39;;
+import { environment } from &#39;../environments/environment&#39;;
+
+&#64;NgModule({
   declarations: [
     AppComponent
   ],
@@ -127,28 +117,19 @@ import { environment } from &#39;../environments/environment&#39;;</p>
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
-```
-Here we are importing the DataModule along with the environment to then import it into our AppModule with the forEnvironment method.</p>
+export class AppModule { }</code></pre></div><p>Here we are importing the DataModule along with the environment to then import it into our AppModule with the forEnvironment method.</p>
 <h3 id="7-add---ssl-flag">7. Add --ssl flag</h3>
 <p>in your package.json, edit your start script to look like this:</p>
-<p><code>&quot;start&quot;: &quot;ng serve --ssl&quot;,</code></p>
-<p>Without the --ssl flag, the authorization won&#39;t work, because it enforces https.</p>
+<div><pre class="line-numbers"><code class="language-none">&quot;start&quot;: &quot;ng serve --ssl&quot;,</code></pre></div><p>Without the --ssl flag, the authorization won&#39;t work, because it enforces https.</p>
 <h3 id="8-add-a-component">8. Add a component</h3>
 <p>e.g. add to <em>src/app/app.component.html</em>:</p>
-<p><code>html
-&lt;ec-crud model=&quot;muffin&quot;&gt;&lt;/ec-crud&gt;</code></p>
-<p>This assumes that the model <em>muffin</em> exists inside the datamanager provided through your environment.</p>
+<div><pre class="line-numbers"><code class="language-html">&lt;ec-crud model=&quot;muffin&quot;&gt;&lt;/ec-crud&gt;</code></pre></div><p>This assumes that the model <em>muffin</em> exists inside the datamanager provided through your environment.</p>
 <h3 id="9-run-the-fun">9. Run the fun</h3>
 <p>Thats it! Now you can run the app using:</p>
-<p><code>sh
-npm run start</code></p>
-<p>now navigate to https://localhost:4200</p>
+<div><pre class="line-numbers"><code class="language-sh">npm run start</code></pre></div><p>now navigate to <a href="https://localhost:4200">https://localhost:4200</a></p>
 <h3 id="10-add-notifications">10. Add Notifications</h3>
 <p>To your app.component, you can add a global notification component, outside of your routing:</p>
-<p><code>html
-&lt;ec-notifications&gt;&lt;/ec-notifications&gt;</code></p>
-<p>This will display all messages sent by the components or your own modules.</p>
+<div><pre class="line-numbers"><code class="language-html">&lt;ec-notifications&gt;&lt;/ec-notifications&gt;</code></pre></div><p>This will display all messages sent by the components or your own modules.</p>
 
                    </div><div class="search-results">
     <div class="has-results">
@@ -168,6 +149,7 @@ npm run start</code></p>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'additional-page';
             var COMPODOC_CURRENT_PAGE_URL = 'project-setup-tutorial.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

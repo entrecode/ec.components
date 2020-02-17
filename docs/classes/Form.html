@@ -2268,15 +2268,15 @@ serialize) </p>
 
     <div class="tab-pane fade " id="c-readme">
         <p><h1 id="form">Form</h1>
-<p><a href="../../classes/Form.html">Form</a> is an Item with extra functions:
-- instantiates fields to iterate over
-- getters for fields and property values, including prefills.</p>
-<p><code>ts
-const tommy = new Form({ name: &#39;tommy&#39; }); //init without config
+<p><a href="../../classes/Form.html">Form</a> is an Item with extra functions:</p>
+<ul>
+<li>instantiates fields to iterate over</li>
+<li>getters for fields and property values, including prefills.</li>
+</ul>
+<div><pre class="line-numbers"><code class="language-ts">const tommy = new Form({ name: &#39;tommy&#39; }); //init without config
 tommy.getValue(&#39;name&#39;)); //&#39;tommy&#39;
 const bobby = new Form(null, { fields: { name: { prefill:&#39;bobby&#39; }}}); //init with config only
-tommy.getValue(&#39;name&#39;)); //&#39;bobby&#39;</code></p>
-</p>
+tommy.getValue(&#39;name&#39;)); //&#39;bobby&#39;</code></pre></div></p>
     </div>
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
@@ -2361,6 +2361,7 @@ export class Form&lt;T&gt; extends Item&lt;T&gt; {
 
 
 
+                   
 
 
 
@@ -2383,6 +2384,7 @@ export class Form&lt;T&gt; extends Item&lt;T&gt; {
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
             var COMPODOC_CURRENT_PAGE_URL = 'Form.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

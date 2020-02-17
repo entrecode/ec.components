@@ -70,7 +70,7 @@
     <p class="comment">
         <p>This component renders a form using a FieldConfig Object.</p>
 <p>Example:</p>
-<p><example-url>https://components.entrecode.de/ui/form?e=1</example-url></p>
+<p><example-url><a href="https://components.entrecode.de/ui/form?e=1">https://components.entrecode.de/ui/form?e=1</a></example-url></p>
 
     </p>
 
@@ -1913,7 +1913,7 @@ You can also pass just an item to use its config and body.</p>
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(LoaderComponent, {static: false})<br />
+                                @ViewChild(LoaderComponent)<br />
                             </code>
                         </td>
                     </tr>
@@ -2114,9 +2114,7 @@ You can also pass just an item to use its config and body.</p>
 
     <div class="tab-pane fade " id="c-readme">
         <p><h1 id="form">Form</h1>
-<p><code>html
-&lt;ec-form [config]=&quot;mocked.lists.trees.config&quot; [item]=&quot;mocked.lists.trees.id(0)&quot;&gt;&lt;/ec-form&gt;</code></p>
-</p>
+<div><pre class="line-numbers"><code class="language-html">&lt;ec-form [config]=&quot;mocked.lists.trees.config&quot; [item]=&quot;mocked.lists.trees.id(0)&quot;&gt;&lt;/ec-form&gt;</code></pre></div></p>
     </div>
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
@@ -2192,7 +2190,7 @@ export class FormComponent&lt;T&gt; implements OnChanges, WithLoader, WithNotifi
   /** If true, the form will only init once. On new changes, the form values will be patched (see patchValue) */
   @Input() lazy: boolean;
   /** The forms default loader. it is used when no loader is passed via the loader input */
-  @ViewChild(LoaderComponent, { static: false }) defaultLoader: LoaderComponent;
+  @ViewChild(LoaderComponent) defaultLoader: LoaderComponent;
   /** The InputComponents that are used to control the fields */
   @ViewChildren(InputComponent) inputs: QueryList&lt;InputComponent&gt;;
 
@@ -2462,6 +2460,7 @@ function patchObject(o, path, value) {
 
 
 
+                   
 
 
 
@@ -2484,6 +2483,7 @@ function patchObject(o, path, value) {
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
             var COMPODOC_CURRENT_PAGE_URL = 'FormComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

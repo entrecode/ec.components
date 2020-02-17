@@ -646,11 +646,8 @@
     <div class="tab-pane fade " id="c-readme">
         <p><h1 id="ecimage">ecImage</h1>
 <p>This directive can be used to load an image:</p>
-<p>```html
-&lt;img ecImage=&quot;f663ba74-d33b-499f-a37c-9a5b4cf94543&quot; #myImage=&quot;ecImage&quot;&gt;</p>
-<p>ID: {{myImage.asset?.assetID}}</p>
-```
-</p>
+<div><pre class="line-numbers"><code class="language-html">&lt;img ecImage=&quot;f663ba74-d33b-499f-a37c-9a5b4cf94543&quot; #myImage=&quot;ecImage&quot;&gt;
+&lt;p&gt;ID: {{myImage.asset?.assetID}}&lt;/p&gt;</code></pre></div></p>
     </div>
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
@@ -734,6 +731,7 @@ export class ImageDirective extends AssetDirective implements OnChanges {
 
 
 
+                   
 
 
 
@@ -756,6 +754,7 @@ export class ImageDirective extends AssetDirective implements OnChanges {
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'directive';
             var COMPODOC_CURRENT_PAGE_URL = 'ImageDirective.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

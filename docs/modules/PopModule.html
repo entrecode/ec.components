@@ -254,14 +254,12 @@ import { PopService } from &#x27;./pop.service&#x27;;
 import { ModalComponent } from &#x27;../modal/modal.component&#x27;;
 import { IconModule } from &#x27;../icon/icon.module&#x27;;
 
-export const popModuleConfig &#x3D; {
+@NgModule({
   declarations: [PopComponent, ModalComponent],
   imports: [CommonModule, IconModule],
   exports: [PopComponent, ModalComponent],
   providers: [PopService],
-};
-
-@NgModule(popModuleConfig)
+})
 export class PopModule {}
 </code></pre>
     </div>
@@ -276,6 +274,7 @@ export class PopModule {}
 
 
 
+                   
 
 
 
@@ -298,6 +297,7 @@ export class PopModule {}
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
             var COMPODOC_CURRENT_PAGE_URL = 'PopModule.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

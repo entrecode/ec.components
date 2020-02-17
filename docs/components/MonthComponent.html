@@ -753,8 +753,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="319"
-                            class="link-to-prism">packages/calendar/src/lib/calendar/month.component.ts:319</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="321"
+                            class="link-to-prism">packages/calendar/src/lib/calendar/month.component.ts:321</a></div>
                 </td>
             </tr>
 
@@ -836,8 +836,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="313"
-                            class="link-to-prism">packages/calendar/src/lib/calendar/month.component.ts:313</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="315"
+                            class="link-to-prism">packages/calendar/src/lib/calendar/month.component.ts:315</a></div>
                 </td>
             </tr>
 
@@ -917,8 +917,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="297"
-                            class="link-to-prism">packages/calendar/src/lib/calendar/month.component.ts:297</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="299"
+                            class="link-to-prism">packages/calendar/src/lib/calendar/month.component.ts:299</a></div>
                 </td>
             </tr>
 
@@ -1475,8 +1475,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="309"
-                            class="link-to-prism">packages/calendar/src/lib/calendar/month.component.ts:309</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="311"
+                            class="link-to-prism">packages/calendar/src/lib/calendar/month.component.ts:311</a></div>
                 </td>
             </tr>
 
@@ -1562,8 +1562,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="302"
-                            class="link-to-prism">packages/calendar/src/lib/calendar/month.component.ts:302</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="304"
+                            class="link-to-prism">packages/calendar/src/lib/calendar/month.component.ts:304</a></div>
                 </td>
             </tr>
 
@@ -1893,8 +1893,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="273"
-                            class="link-to-prism">packages/calendar/src/lib/calendar/month.component.ts:273</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="275"
+                            class="link-to-prism">packages/calendar/src/lib/calendar/month.component.ts:275</a></div>
                 </td>
             </tr>
 
@@ -2058,8 +2058,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="332"
-                            class="link-to-prism">packages/calendar/src/lib/calendar/month.component.ts:332</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="334"
+                            class="link-to-prism">packages/calendar/src/lib/calendar/month.component.ts:334</a></div>
                 </td>
             </tr>
 
@@ -2099,8 +2099,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="327"
-                            class="link-to-prism">packages/calendar/src/lib/calendar/month.component.ts:327</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="329"
+                            class="link-to-prism">packages/calendar/src/lib/calendar/month.component.ts:329</a></div>
                 </td>
             </tr>
 
@@ -2617,8 +2617,10 @@ export class MonthComponent implements OnInit, OnChanges {
     if (!date) {
       this.date &#x3D; this.selectSpan ? this.selectSpan[1].clone() : moment();
     }
-    this.formatted &#x3D; this.date.format(this.monthFormat);
-    this.cells &#x3D; this.getMonth(this.date.clone(), &#x27;current&#x27;);
+    setTimeout(() &#x3D;&gt; {
+      this.formatted &#x3D; this.date.format(this.monthFormat);
+      this.cells &#x3D; this.getMonth(this.date.clone(), &#x27;current&#x27;);
+    });
   }
 
   /** Selects the day of the given moment. */
@@ -2663,7 +2665,7 @@ export class MonthComponent implements OnInit, OnChanges {
   }
 
   canAlter(value, span: string) {
-    const newDate &#x3D; this.date.clone().add(value, span);
+    const newDate &#x3D; this.date?.clone().add(value, span);
     return this.isSelectable(newDate, &#x27;months&#x27;);
   }
 
@@ -2771,6 +2773,7 @@ export class MonthComponent implements OnInit, OnChanges {
 
 
 
+                   
 
 
 
@@ -2793,6 +2796,7 @@ export class MonthComponent implements OnInit, OnChanges {
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
             var COMPODOC_CURRENT_PAGE_URL = 'MonthComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

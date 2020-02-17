@@ -43,49 +43,41 @@
 
 
 
+                   
 
 
 
 
 <h1 id="entry-forms">Entry Forms</h1>
-<p>Related Doc:
-- <a href="../../interfaces/FieldConfigProperty.html">All Possible field config properties</a>
-- <a href="../../injectables/TypeConfigService.html#source">Default Type Config</a>
-- <a href="../../interfaces/ListConfig.html">ListConfig</a> (also see ItemConfig parent)
-- <a href="../core-classes/item.html">Item Doc</a></p>
+<p>Related Doc:</p>
+<ul>
+<li><a href="../../interfaces/FieldConfigProperty.html">All Possible field config properties</a></li>
+<li><a href="../../injectables/TypeConfigService.html#source">Default Type Config</a></li>
+<li><a href="../../interfaces/ListConfig.html">ListConfig</a> (also see ItemConfig parent)</li>
+<li><a href="../core-classes/item.html">Item Doc</a></li>
+</ul>
 <p>Entry forms can edit and create entries. They support notifications, loader, validation error handling and dynamic config generation out of the box.
 NOTE: it is expected you have placed a ec-notifications tag somewhere in your root component.</p>
 <h2 id="default-behaviour">Default Behaviour</h2>
 <h3 id="create">Create</h3>
-<p><code>html
-&lt;ec-entry-form model=&quot;muffin&quot;&gt;&lt;/ec-entry-form&gt;</code></p>
-<p>submitting the form will create a new entry and then switch to edit mode.</p>
+<div><pre class="line-numbers"><code class="language-html">&lt;ec-entry-form model=&quot;muffin&quot;&gt;&lt;/ec-entry-form&gt;</code></pre></div><p>submitting the form will create a new entry and then switch to edit mode.</p>
 <h3 id="edit">Edit</h3>
-<p><code>html
-&lt;ec-entry-form model=&quot;muffin&quot; [entry]=&quot;muffinEntry&quot;&gt;&lt;/ec-entry-form&gt;</code></p>
-<h3 id="dynamic-editcreate-from-template">Dynamic Edit/Create from template</h3>
+<div><pre class="line-numbers"><code class="language-html">&lt;ec-entry-form model=&quot;muffin&quot; [entry]=&quot;muffinEntry&quot;&gt;&lt;/ec-entry-form&gt;</code></pre></div><h3 id="dynamic-editcreate-from-template">Dynamic Edit/Create from template</h3>
 <p>You can also access the form from the template and call edit or create:</p>
-<p>```html
-&lt;ec-entry-form model=&quot;muffin&quot; #muffinForm&gt;</ec-entry-form></p>
-<ul ecEntries model="muffin" #muffinList="ecEntries">
-    <li *ngFor="let muffin of muffinList.items">
-      <a (click)="muffinForm.edit(muffin)">{{muffin.name}}</a>
-    </li>
-  </ul>
-<a class="btn" (click)="muffinForm.create()">Create new Muffin</a>
-```
-
-<h2 id="configuration">Configuration</h2>
+<div><pre class="line-numbers"><code class="language-html">&lt;ec-entry-form model=&quot;muffin&quot; #muffinForm&gt;&lt;/ec-entry-form&gt;
+&lt;ul ecEntries model=&quot;muffin&quot; #muffinList=&quot;ecEntries&quot;&gt;
+    &lt;li *ngFor=&quot;let muffin of muffinList.items&quot;&gt;
+      &lt;a (click)=&quot;muffinForm.edit(muffin)&quot;&gt;{{muffin.name}}&lt;/a&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;a class=&quot;btn&quot; (click)=&quot;muffinForm.create()&quot;&gt;Create new Muffin&lt;/a&gt;</code></pre></div><h2 id="configuration">Configuration</h2>
 <p>If nothing else is configured, the form will parse the schema of muffin and generate a generic field config.
 If you configured the model via ModelConfigService (see <a href="./custom-fields.html">Custom Fields</a>), the form will use that config.
 Alternatively, you can also pass a config directly:</p>
-<p><code>html
-&lt;ec-entry-form model=&quot;muffin&quot; [config]=&quot;formConfig&quot;&gt;&lt;/ec-entry-form&gt;</code></p>
-<p>The given config will be Object.assigned to the possible preexisting modelConfig.</p>
+<div><pre class="line-numbers"><code class="language-html">&lt;ec-entry-form model=&quot;muffin&quot; [config]=&quot;formConfig&quot;&gt;&lt;/ec-entry-form&gt;</code></pre></div><p>The given config will be Object.assigned to the possible preexisting modelConfig.</p>
 <h2 id="custom-markup-with-ec-inputec-output">Custom Markup with ec-input/ec-output</h2>
 <p>Most times, you&#39;ll want more freedom over your forms markup etc. This is where ec-input and ec-output come into play:</p>
-<p><code>html
-  &lt;ec-entry-form model=&quot;muffin&quot; #form&gt;
+<div><pre class="line-numbers"><code class="language-html">  &lt;ec-entry-form model=&quot;muffin&quot; #form&gt;
     &lt;!-- input --&gt;
     &lt;label&gt;Title
         &lt;ec-input property=&quot;title&quot; [item]=&quot;form.form&quot; [group]=&quot;form.group&quot;&gt;&lt;/ec-input&gt;
@@ -94,8 +86,7 @@ Alternatively, you can also pass a config directly:</p>
     &lt;label&gt;Amazement Factor&lt;/label&gt;
     &lt;ec-output property=&quot;amazement_factor&quot; [item]=&quot;form.form&quot; [group]=&quot;form.group&quot;&gt;&lt;/ec-output&gt;
     &lt;a class=&quot;btn&quot; (click)=&quot;form.submit()&quot;&gt;Submit&lt;/a&gt;
-  &lt;/ec-entry-form&gt;</code></p>
-<p>As soon as the ec-entry-form contains elements (or you pass empty=true, as meantioned below), the contents will be rendered instead of the default form.</p>
+  &lt;/ec-entry-form&gt;</code></pre></div><p>As soon as the ec-entry-form contains elements (or you pass empty=true, as meantioned below), the contents will be rendered instead of the default form.</p>
 <p>Features you have to add manually (if needed)</p>
 <ul>
 <li>submit button</li>
@@ -105,19 +96,17 @@ Alternatively, you can also pass a config directly:</p>
 <p>NOTE: dont wrap labels around complex input components, because they fire ghost clicks!</p>
 <h2 id="custom-inputoutput-markup">Custom input/output markup</h2>
 <p>Of course you can remove another layer of abstraction to further customize the form:</p>
-<p>```html
-  &lt;ec-entry-form model=&quot;muffin&quot; #form&gt;
-    <!-- input -->
-    <label>Title</label>
+<div><pre class="line-numbers"><code class="language-html">  &lt;ec-entry-form model=&quot;muffin&quot; #form&gt;
+    &lt;!-- input --&gt;
+    &lt;label&gt;Title&lt;/label&gt;
     &lt;input type=&quot;text&quot; [formControl]=&quot;form.group.get(&#39;title&#39;)&quot;/&gt;
-    &lt;ec-input-errors [control]=&quot;form.group.get(&#39;title&#39;)&quot;&gt;</ec-input-errors>
-    <!-- output -->
-    <label>Amazement Factor</label>
-    {{form.display(&#39;amazement_factor&#39;)}}</p>
-<div><pre class="line-numbers"><code class="language-none">&lt;a class=&quot;btn&quot; (click)=&quot;form.submit()&quot;&gt;Submit&lt;/a&gt;</code></pre></div>  </ec-entry-form>
-```
+    &lt;ec-input-errors [control]=&quot;form.group.get(&#39;title&#39;)&quot;&gt;&lt;/ec-input-errors&gt;
+    &lt;!-- output --&gt;
+    &lt;label&gt;Amazement Factor&lt;/label&gt;
+    {{form.display(&#39;amazement_factor&#39;)}}
 
-<p>Features you have to add manually:</p>
+    &lt;a class=&quot;btn&quot; (click)=&quot;form.submit()&quot;&gt;Submit&lt;/a&gt;
+  &lt;/ec-entry-form&gt;</code></pre></div><p>Features you have to add manually:</p>
 <ul>
 <li>handling of input errors (ec-input-errors)</li>
 <li>making sure your markup handles the field type correctly</li>
@@ -126,60 +115,47 @@ Alternatively, you can also pass a config directly:</p>
 <p>It is generally recommended to use ec-input over hard coded forms.</p>
 <h3 id="the-empty-flag">The empty flag</h3>
 <p>You can also place the ec-input elements somewhere else and just tell the ec-entry-form that it shouldn&#39;t render the default form with the empty flag:</p>
-<p><code>html
-&lt;ec-entry-form model=&quot;muffin&quot; [empty]=&quot;true&quot; #form&gt;&lt;/ec-entry-form&gt;
-&lt;ec-input property=&quot;title&quot; [item]=&quot;form.form&quot; [group]=&quot;form.group&quot;&gt;&lt;/ec-input&gt;</code></p>
-<p>NOTE: Always make sure the property accessed by ec-input is also present in your config (or you dont use a config at all). Otherwise, the input wont know what to render.</p>
+<div><pre class="line-numbers"><code class="language-html">&lt;ec-entry-form model=&quot;muffin&quot; [empty]=&quot;true&quot; #form&gt;&lt;/ec-entry-form&gt;
+&lt;ec-input property=&quot;title&quot; [item]=&quot;form.form&quot; [group]=&quot;form.group&quot;&gt;&lt;/ec-input&gt;</code></pre></div><p>NOTE: Always make sure the property accessed by ec-input is also present in your config (or you dont use a config at all). Otherwise, the input wont know what to render.</p>
 <h2 id="creating-custom-inputs">Creating custom inputs</h2>
 <h3 id="1-create-custom-input-component">1. Create Custom Input Component</h3>
-<p><code>sh
-ng g c custom-input</code></p>
-<p>This component will serve as a container for all possible custom input fields.</p>
+<div><pre class="line-numbers"><code class="language-sh">ng g c custom-input</code></pre></div><p>This component will serve as a container for all possible custom input fields.</p>
 <h3 id="2-extend-inputcomponent-custom-inputcomponentts">2. Extend InputComponent (custom-input.component.ts)</h3>
 <p>To make the current field information available to the template, you need to extend InputComponent from @ec.components/ui:</p>
-<p>```js
-import { Component } from &#39;@angular/core&#39;;
-import { InputComponent } from &#39;@ec.components/ui&#39;;</p>
-<p>@Component({
+<div><pre class="line-numbers"><code class="language-js">import { Component } from &#39;&#64;angular/core&#39;;
+import { InputComponent } from &#39;&#64;ec.components/ui&#39;;
+
+&#64;Component({
   selector: &#39;clubapp-custom-input&#39;,
   templateUrl: &#39;./custom-input.component.html&#39;,
   styleUrls: [&#39;./custom-input.component.scss&#39;]
 })
 export class CustomInputComponent extends InputComponent {
-}
-```</p>
-<p>CMD+Click on InputComponent to see which properties you can now use!</p>
+}</code></pre></div><p>CMD+Click on InputComponent to see which properties you can now use!</p>
 <h3 id="3-add-markup-custom-inputcomponenthtml">3. Add Markup (custom-input.component.html)</h3>
 <p>Now we can decide which custom input should be used, based on e.g. the fields view value:</p>
-<p>```html</p>
-<div [ngSwitch]="field.inputView" *ngIf="group" [formGroup]="group">
-  <ec-input-errors [control]="group.get(field.property)"></ec-input-errors>
-  <div *ngSwitchCase="'speakingurl'">
-    <input [id]="field.id" type="text" [formControl]="control">
-  </div>
-  <div *ngSwitchCase="'openingHours'">
-    <!-- <ec-opening-hours [formControl]="control"></ec-opening-hours> -->
-  </div>
-</div>
-```
-
-<p>Of course you could also switch based on property name or type, depending on your application.
+<div><pre class="line-numbers"><code class="language-html">&lt;div [ngSwitch]=&quot;field.inputView&quot; *ngIf=&quot;group&quot; [formGroup]=&quot;group&quot;&gt;
+  &lt;ec-input-errors [control]=&quot;group.get(field.property)&quot;&gt;&lt;/ec-input-errors&gt;
+  &lt;div *ngSwitchCase=&quot;&#39;speakingurl&#39;&quot;&gt;
+    &lt;input [id]=&quot;field.id&quot; type=&quot;text&quot; [formControl]=&quot;control&quot;&gt;
+  &lt;/div&gt;
+  &lt;div *ngSwitchCase=&quot;&#39;openingHours&#39;&quot;&gt;
+    &lt;!-- &lt;ec-opening-hours [formControl]=&quot;control&quot;&gt;&lt;/ec-opening-hours&gt; --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></div><p>Of course you could also switch based on property name or type, depending on your application.
 The id property of field is referenced in the label of the form. By adding it to the input makes sure your label click enters the input.</p>
 <h3 id="4-add-custominputcomponent-to-entrycomponents">4. Add CustomInputComponent to entryComponents:</h3>
 <p>Because the custom component will be loaded dynamically, your module needs to declare it as entryComponent:</p>
-<p><code>js
-@NgModule({
+<div><pre class="line-numbers"><code class="language-js">&#64;NgModule({
   entryComponents: [
     CustomInputComponent
   ]
   /** more stuff **/
 })
 export class AppModule {
-}</code></p>
-<h3 id="5-add-custominputcomponent-to-field-config">5. Add CustomInputComponent to field config:</h3>
+}</code></pre></div><h3 id="5-add-custominputcomponent-to-field-config">5. Add CustomInputComponent to field config:</h3>
 <p>Now you can add the Component as input to your field config:</p>
-<p><code>js
-this.modelConfig.set(&#39;muffin&#39;, {
+<div><pre class="line-numbers"><code class="language-js">this.modelConfig.set(&#39;muffin&#39;, {
       fields: {
         url: {
           label: &#39;URL&#39;,
@@ -191,17 +167,16 @@ this.modelConfig.set(&#39;muffin&#39;, {
           view: &#39;openingHours&#39;,
           input: CustomInputComponent
         }
-})</code></p>
-<p>By changing the view option, we can now decide which case will be met!</p>
+})</code></pre></div><p>By changing the view option, we can now decide which case will be met!</p>
 <h2 id="custom-form-controls">Custom Form Controls</h2>
 <p>Now what if you want to use a custom form control that does not rely on primitve inputs like number or text?
 In the above custom-input.component template, we use <ec-opening-hours> with a formControl input.
 To have access to the form control&#39;s value, you need to provide a ControlValueAccessor:</p>
-<p>```js
-import { Component, forwardRef } from &#39;@angular/core&#39;;
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from &#39;@angular/forms&#39;;
-import { InputComponent } from &#39;@ec.components/ui&#39;;</p>
-<p>@Component({
+<div><pre class="line-numbers"><code class="language-js">import { Component, forwardRef } from &#39;&#64;angular/core&#39;;
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from &#39;&#64;angular/forms&#39;;
+import { InputComponent } from &#39;&#64;ec.components/ui&#39;;
+
+&#64;Component({
   selector: &#39;ec-opening-hours&#39;,
   templateUrl: &#39;./opening-hours.component.html&#39;,
   styleUrls: [&#39;./opening-hours.component.scss&#39;],
@@ -212,49 +187,49 @@ import { InputComponent } from &#39;@ec.components/ui&#39;;</p>
       multi: true
     }
   ]
-})
-```</p>
-<p>Now you can implement your own logic and call propagateChange when you change the value from your component, and react to change via the writeValue method!
+})</code></pre></div><p>Now you can implement your own logic and call propagateChange when you change the value from your component, and react to change via the writeValue method!
 You now could also use your component with ngModel or formControl in another context!
-More information on this pattern: https://blog.thoughtram.io/angular/2016/07/27/custom-form-controls-in-angular-2.html</p>
+More information on this pattern: <a href="https://blog.thoughtram.io/angular/2016/07/27/custom-form-controls-in-angular-2.html">https://blog.thoughtram.io/angular/2016/07/27/custom-form-controls-in-angular-2.html</a></p>
 <h2 id="custom-fields-without-wrapper">Custom Fields without wrapper</h2>
 <p>You can also use custom components as input directly without needing to wrap them in &quot;CustomFieldsComponent&quot;.
 Just make sure you implement ControlValueAccessor like above. When changes occur from the template, call propagateChange. You can react to outside model changes in writeValue.</p>
-<p>```typescript
-import { Component, OnInit, Input } from &#39;@angular/core&#39;;
+<div><pre class="line-numbers"><code class="language-typescript">import { Component, OnInit, Input } from &#39;&#64;angular/core&#39;;
 import { InputComponent } from &#39;../../../packages/ui&#39;;
-import { ControlValueAccessor } from &#39;@angular/forms&#39;;</p>
-<p>@Component({
+import { ControlValueAccessor } from &#39;&#64;angular/forms&#39;;
+
+&#64;Component({
     selector: &#39;ec-counter&#39;,
     templateUrl: &#39;./counter.component.html&#39;
-})</p>
-<p>export class CounterComponent extends InputComponent implements ControlValueAccessor {</p>
-<div><pre class="line-numbers"><code class="language-none">value = 0;
+})
 
-increment() {
-    this.propagateChange(++this.value);
-}
+export class CounterComponent extends InputComponent implements ControlValueAccessor {
 
-decrement() {
-    this.propagateChange(--this.value);
-}
+    value = 0;
 
-writeValue(value: any) {
-    this.value = value;
-    console.log(&#39;received value&#39;, value);
-}
+    increment() {
+        this.propagateChange(++this.value);
+    }
 
-propagateChange = (_: any) =&gt; {
-};
+    decrement() {
+        this.propagateChange(--this.value);
+    }
 
-registerOnChange(fn) {
-    this.propagateChange = fn;
-}
+    writeValue(value: any) {
+        this.value = value;
+        console.log(&#39;received value&#39;, value);
+    }
 
-registerOnTouched() {
-}</code></pre></div><p>}
-```</p>
+    propagateChange = (_: any) =&gt; {
+    };
 
+    registerOnChange(fn) {
+        this.propagateChange = fn;
+    }
+
+    registerOnTouched() {
+    }
+
+}</code></pre></div>
                    </div><div class="search-results">
     <div class="has-results">
         <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
@@ -273,6 +248,7 @@ registerOnTouched() {
             var COMPODOC_CURRENT_PAGE_DEPTH = 2;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'additional-page';
             var COMPODOC_CURRENT_PAGE_URL = 'custom-entry-forms.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../../js/libs/custom-elements.min.js"></script>

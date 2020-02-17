@@ -599,9 +599,15 @@ import { UploadComponent } from &#x27;./upload/upload.component&#x27;;
 import { UploadSelectComponent } from &#x27;./upload-select/upload-select.component&#x27;;
 import { ImageSelectPopComponent } from &#x27;./image-select-pop/image-select-pop.component&#x27;;
 import { TagSelectComponent } from &#x27;./tag-select/tag-select.component&#x27;;
+import { DndModule } from &#x27;ngx-drag-drop&#x27;;
 
 @NgModule({
-  entryComponents: [AssetSelectComponent, AssetgroupSelectComponent, UploadComponent, TagSelectComponent],
+  entryComponents: [
+    AssetSelectComponent,
+    AssetgroupSelectComponent,
+    UploadComponent,
+    TagSelectComponent
+  ],
   declarations: [
     AssetListComponent,
     AssetListPopComponent,
@@ -615,7 +621,7 @@ import { TagSelectComponent } from &#x27;./tag-select/tag-select.component&#x27;
     ImageSelectPopComponent,
     TagSelectComponent,
   ],
-  imports: [CommonModule, FormsModule, UiModule, SdkModule, ResourceModule],
+  imports: [CommonModule, DndModule, FormsModule, UiModule, SdkModule, ResourceModule],
   exports: [
     AssetListComponent,
     AssetListPopComponent,
@@ -632,7 +638,7 @@ import { TagSelectComponent } from &#x27;./tag-select/tag-select.component&#x27;
   ],
   providers: [FileService],
 })
-export class FilesModule {}
+export class FilesModule { }
 </code></pre>
     </div>
 </div>
@@ -646,6 +652,7 @@ export class FilesModule {}
 
 
 
+                   
 
 
 
@@ -668,6 +675,7 @@ export class FilesModule {}
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
             var COMPODOC_CURRENT_PAGE_URL = 'FilesModule.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

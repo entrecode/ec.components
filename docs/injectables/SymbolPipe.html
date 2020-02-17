@@ -64,9 +64,11 @@
             </p>
             <p class="comment">
                 <p>The symbol pipe translates Symbol names to their content.</p>
-<p><code>html
- * {{ &#39;entry.saved&#39; | symbol }}
- *</code></p>
+<p>```html</p>
+<ul>
+<li>{{ &#39;entry.saved&#39; | symbol }}</li>
+<li><div><pre class="line-numbers"><code class="language-none"></code></pre></div></li>
+</ul>
 <p>See SymbolService for more info about Symbols.</p>
 
             </p>
@@ -236,6 +238,7 @@ export class SymbolPipe implements PipeTransform {
 
 
 
+                   
 
 
 
@@ -258,6 +261,7 @@ export class SymbolPipe implements PipeTransform {
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
             var COMPODOC_CURRENT_PAGE_URL = 'SymbolPipe.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

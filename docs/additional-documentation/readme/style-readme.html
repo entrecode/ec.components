@@ -43,6 +43,7 @@
 
 
 
+                   
 
 
 
@@ -58,23 +59,15 @@
 <h2 id="installation">Installation</h2>
 <h3 id="method-a-with-prebuilt-css-styles">Method A: With prebuilt CSS styles</h3>
 <p>If you are not using scss or you just want to add styles without hassle, just add this css to your index.html:</p>
-<p>```html</p>
-<link href="https://unpkg.com/@ec.components/style@latest/default.css" rel="stylesheet"/>
-```
-
-<h3 id="method-b-custom-styles-with-scss">Method B: Custom Styles with SCSS</h3>
+<div><pre class="line-numbers"><code class="language-html">&lt;link href=&quot;https://unpkg.com/&#64;ec.components/style&#64;latest/default.css&quot; rel=&quot;stylesheet&quot;/&gt;</code></pre></div><h3 id="method-b-custom-styles-with-scss">Method B: Custom Styles with SCSS</h3>
 <p>If you want to use your own styles, you can use scss to import and build the styles with <a href="https://entrecode.github.io/x.ui/">x.ui</a>:</p>
 <h4 id="1-install-package">1. Install package</h4>
-<p><code>sh
-npm install @ec.components/style --save</code></p>
-<p>This will also install x.ui.</p>
+<div><pre class="line-numbers"><code class="language-sh">npm install &#64;ec.components/style --save</code></pre></div><p>This will also install x.ui.</p>
 <h4 id="3-add-styles">3. Add styles</h4>
 <p>Details on how to setup your config can be found in the <a href="https://github.com/entrecode/x.ui#xui">x.ui README</a>.</p>
-<p><code>scss
-@import &#39;config&#39;;
-@import &#39;~x.ui/src/x.ui.scss&#39;;
-@import &#39;~@ec.components/style/scss/components&#39;;</code></p>
-
+<div><pre class="line-numbers"><code class="language-scss">&#64;import &#39;config&#39;;
+&#64;import &#39;~x.ui/src/x.ui.scss&#39;;
+&#64;import &#39;~&#64;ec.components/style/scss/components&#39;;</code></pre></div>
                    </div><div class="search-results">
     <div class="has-results">
         <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
@@ -93,6 +86,7 @@ npm install @ec.components/style --save</code></p>
             var COMPODOC_CURRENT_PAGE_DEPTH = 2;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'additional-page';
             var COMPODOC_CURRENT_PAGE_URL = 'style-readme.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../../js/libs/custom-elements.min.js"></script>

@@ -1954,7 +1954,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(ResourceListComponent, {static: false})<br />
+                                @ViewChild(ResourceListComponent)<br />
                             </code>
                         </td>
                     </tr>
@@ -2024,7 +2024,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(SearchbarComponent, {static: false})<br />
+                                @ViewChild(SearchbarComponent)<br />
                             </code>
                         </td>
                     </tr>
@@ -2320,9 +2320,9 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
   /** The loaded assetGroups */
   public assetGroups: string[];
   /** The nested searchbar */
-  @ViewChild(SearchbarComponent, { static: false }) searchbar: SearchbarComponent;
+  @ViewChild(SearchbarComponent) searchbar: SearchbarComponent;
   /** The nested resource-list */
-  @ViewChild(ResourceListComponent, { static: false }) resourceList: ResourceListComponent;
+  @ViewChild(ResourceListComponent) resourceList: ResourceListComponent;
   uploadConfig: CrudConfig&lt;PublicAssetResource&gt; &amp; { disableListPop: boolean };
   tagSelectConfig: CrudConfig&lt;PublicTagResource&gt; &#x3D; {
     disableCreatePop: true,
@@ -2581,6 +2581,7 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
 
 
 
+                   
 
 
 
@@ -2603,6 +2604,7 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
             var COMPODOC_CURRENT_PAGE_URL = 'AssetListPopComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

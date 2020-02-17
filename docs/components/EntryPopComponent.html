@@ -75,7 +75,7 @@
 You can use it like a normal pop but with the extra handling of an entry form inside.
 You can call edit with an entry object to edit an entry, or just call show.
 It is also possible to bind an entry directly which will then be bound to the form.
-<example-url>https://components.entrecode.de/entries/entry-pop/muffin/create?e=1</example-url></p>
+<example-url><a href="https://components.entrecode.de/entries/entry-pop/muffin/create?e=1">https://components.entrecode.de/entries/entry-pop/muffin/create?e=1</a></example-url></p>
 
     </p>
 
@@ -2063,7 +2063,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(EntryFormComponent, {static: false})<br />
+                                @ViewChild(EntryFormComponent)<br />
                             </code>
                         </td>
                     </tr>
@@ -2309,7 +2309,7 @@ export class EntryPopComponent extends PopComponent implements OnInit {
   /** CrudConfig for customizing the entry-form and the pop.*/
   @Input() config: CrudConfig&lt;EntryResource&gt; &#x3D; {};
   /** The entry form inside the view */
-  @ViewChild(EntryFormComponent, { static: false }) form: EntryFormComponent;
+  @ViewChild(EntryFormComponent) form: EntryFormComponent;
   /** The model that should be edited/created*/
   @Input() model: string;
   /** The entry that should be used in the form. Is also set by edit.*/
@@ -2551,6 +2551,7 @@ export class EntryPopComponent extends PopComponent implements OnInit {
 
 
 
+                   
 
 
 
@@ -2573,6 +2574,7 @@ export class EntryPopComponent extends PopComponent implements OnInit {
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
             var COMPODOC_CURRENT_PAGE_URL = 'EntryPopComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>
