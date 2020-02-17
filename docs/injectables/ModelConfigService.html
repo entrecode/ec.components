@@ -272,12 +272,14 @@ set method. </p>
             <tr>
                 <td class="col-md-4">
                     <div class="io-description"><p>Generates a CrudConfig for the given model.
-Merges three configurations into one:
-- default field config, obtained by getFieldConfig
-- global model config (if any) configured via with set
-- customFieldConfig: any custom field config that is merged on top of the other two.
+Merges three configurations into one:</p>
+<ul>
+<li>default field config, obtained by getFieldConfig</li>
+<li>global model config (if any) configured via with set</li>
+<li>customFieldConfig: any custom field config that is merged on top of the other two.
 This enables the developer to either customize at a global scale to target all lists/forms,
-or just specific components. </p>
+or just specific components. </li>
+</ul>
 </div>
 
                     <div class="io-description">
@@ -393,9 +395,11 @@ or just specific components. </p>
                     <div>
                         <b>Example :</b>
                         <div>
-                            <pre class="line-numbers"><code class="language-html">&lt;code&gt;typescript
-   * ModelConfig.get(&amp;#39;muffin&amp;#39;); //returns muffin config;
-   *&lt;/code&gt;</code></pre>
+                            <pre class="line-numbers"><code class="language-html">```typescript&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ModelConfig.get(&amp;#39;muffin&amp;#39;); //returns muffin config;&lt;/li&gt;
+&lt;li&gt;```&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
                         </div>
                     </div>
                     <div class="io-description">
@@ -750,14 +754,16 @@ This config is meant to deliver the default behaviour when nothing else is confi
                     <div>
                         <b>Example :</b>
                         <div>
-                            <pre class="line-numbers"><code class="language-html">&lt;code&gt;typescript
-   * ModelConfig.set(&amp;#39;muffin&amp;#39;, {
-   *  fields: {
-   *    title: {
-   *      label: &amp;#39;Muffin Titel&amp;#39;
-   *    }
-   *  });
-   *&lt;/code&gt;</code></pre>
+                            <pre class="line-numbers"><code class="language-html">```typescript&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ModelConfig.set(&amp;#39;muffin&amp;#39;, {&lt;/li&gt;
+&lt;li&gt;fields: {&lt;/li&gt;
+&lt;li&gt;title: {&lt;/li&gt;
+&lt;li&gt;label: &amp;#39;Muffin Titel&amp;#39;&lt;/li&gt;
+&lt;li&gt;}&lt;/li&gt;
+&lt;li&gt;});&lt;/li&gt;
+&lt;li&gt;```&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
                         </div>
                     </div>
                     <div class="io-description">
@@ -1239,6 +1245,7 @@ export class ModelConfigService extends Config {
 
 
 
+                   
 
 
 
@@ -1261,6 +1268,7 @@ export class ModelConfigService extends Config {
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
             var COMPODOC_CURRENT_PAGE_URL = 'ModelConfigService.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

@@ -17,9 +17,15 @@ import { UploadComponent } from './upload/upload.component';
 import { UploadSelectComponent } from './upload-select/upload-select.component';
 import { ImageSelectPopComponent } from './image-select-pop/image-select-pop.component';
 import { TagSelectComponent } from './tag-select/tag-select.component';
+import { DndModule } from 'ngx-drag-drop';
 
 @NgModule({
-  entryComponents: [AssetSelectComponent, AssetgroupSelectComponent, UploadComponent, TagSelectComponent],
+  entryComponents: [
+    AssetSelectComponent,
+    AssetgroupSelectComponent,
+    UploadComponent,
+    TagSelectComponent
+  ],
   declarations: [
     AssetListComponent,
     AssetListPopComponent,
@@ -33,7 +39,7 @@ import { TagSelectComponent } from './tag-select/tag-select.component';
     ImageSelectPopComponent,
     TagSelectComponent,
   ],
-  imports: [CommonModule, FormsModule, UiModule, SdkModule, ResourceModule],
+  imports: [CommonModule, DndModule, FormsModule, UiModule, SdkModule, ResourceModule],
   exports: [
     AssetListComponent,
     AssetListPopComponent,
@@ -50,4 +56,4 @@ import { TagSelectComponent } from './tag-select/tag-select.component';
   ],
   providers: [FileService],
 })
-export class FilesModule {}
+export class FilesModule { }

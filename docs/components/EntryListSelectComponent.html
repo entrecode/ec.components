@@ -2116,7 +2116,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(EntryListComponent, {static: false})<br />
+                                @ViewChild(EntryListComponent)<br />
                             </code>
                         </td>
                     </tr>
@@ -2624,7 +2624,7 @@ export class EntryListSelectComponent extends InputComponent implements ControlV
   /** The config for the entry list */
   @Input() listConfig: CrudConfig&lt;EntryResource&gt;;
   /** The nested entryList */
-  @ViewChild(EntryListComponent, { static: false }) entryList: EntryListComponent;
+  @ViewChild(EntryListComponent) entryList: EntryListComponent;
   /** The current selected entries */
   items: EntryResource[];
   /** The config for the selection list. */
@@ -2810,6 +2810,7 @@ export class EntryListSelectComponent extends InputComponent implements ControlV
 
 
 
+                   
 
 
 
@@ -2832,6 +2833,7 @@ export class EntryListSelectComponent extends InputComponent implements ControlV
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
             var COMPODOC_CURRENT_PAGE_URL = 'EntryListSelectComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

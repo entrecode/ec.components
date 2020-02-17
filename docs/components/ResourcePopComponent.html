@@ -495,7 +495,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
                         </tr>
                 <tr>
                     <td class="col-md-4">
-                        <div class="io-description"><p>The API Connector that possesses the resource list, see https://entrecode.github.io/ec.sdk/#api-connectors </p>
+                        <div class="io-description"><p>The API Connector that possesses the resource list, see <a href="https://entrecode.github.io/ec.sdk/#api-connectors">https://entrecode.github.io/ec.sdk/#api-connectors</a> </p>
 </div>
                     </td>
                 </tr>
@@ -2059,7 +2059,7 @@ It is also possible to bind an entry directly which will then be bound to the fo
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(ResourceFormComponent, {static: false})<br />
+                                @ViewChild(ResourceFormComponent)<br />
                             </code>
                         </td>
                     </tr>
@@ -2304,7 +2304,7 @@ export class ResourcePopComponent extends PopComponent {
   /** CrudConfig for customizing the entry-form and the pop.*/
   @Input() config: CrudConfig&lt;Resource&gt; &#x3D; {};
   /** The entry form inside the view */
-  @ViewChild(ResourceFormComponent, { static: false }) form: ResourceFormComponent;
+  @ViewChild(ResourceFormComponent) form: ResourceFormComponent;
   /** The API Connector that possesses the resource list, see https://entrecode.github.io/ec.sdk/#api-connectors */
   @Input() api: Core; // sdk api connector
   /** The name of the resource. If given, the generic ListResource loading will be used (api.resourceList) */
@@ -2547,6 +2547,7 @@ export class ResourcePopComponent extends PopComponent {
 
 
 
+                   
 
 
 
@@ -2569,6 +2570,7 @@ export class ResourcePopComponent extends PopComponent {
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
             var COMPODOC_CURRENT_PAGE_URL = 'ResourcePopComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

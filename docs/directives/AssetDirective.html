@@ -70,7 +70,7 @@
             <p class="comment">
                 <p>Loads an public asset by id to the template.
 assets/asset
-<example-url>https://components.entrecode.de/assets/asset?e=1</example-url></p>
+<example-url><a href="https://components.entrecode.de/assets/asset?e=1">https://components.entrecode.de/assets/asset?e=1</a></example-url></p>
 
             </p>
 
@@ -637,17 +637,14 @@ assets/asset
     <div class="tab-pane fade " id="c-readme">
         <p><h1 id="ecasset">ecAsset</h1>
 <p>This directive can be used to load a single asset directly from the template:</p>
-<p>```html</p>
-<ul ecAsset="f663ba74-d33b-499f-a37c-9a5b4cf94543" #myAsset="ecAsset">
-  <li>id: {{myAsset.asset?.assetID}}</li>
-  <li>title: {{myAsset.asset?.title}}</li>
-  <li>tags: {{myAsset.asset?.tags}}</li>
-  <li>created: {{myAsset.asset?.created}}</li>
-  <li>type: {{myAsset.asset?.type}}</li>
-  <li>files: {{myAsset.asset?.files?.length}}</li>
-</ul>
-```
-</p>
+<div><pre class="line-numbers"><code class="language-html">&lt;ul ecAsset=&quot;f663ba74-d33b-499f-a37c-9a5b4cf94543&quot; #myAsset=&quot;ecAsset&quot;&gt;
+  &lt;li&gt;id: {{myAsset.asset?.assetID}}&lt;/li&gt;
+  &lt;li&gt;title: {{myAsset.asset?.title}}&lt;/li&gt;
+  &lt;li&gt;tags: {{myAsset.asset?.tags}}&lt;/li&gt;
+  &lt;li&gt;created: {{myAsset.asset?.created}}&lt;/li&gt;
+  &lt;li&gt;type: {{myAsset.asset?.type}}&lt;/li&gt;
+  &lt;li&gt;files: {{myAsset.asset?.files?.length}}&lt;/li&gt;
+&lt;/ul&gt;</code></pre></div></p>
     </div>
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
@@ -731,6 +728,7 @@ export class AssetDirective implements OnChanges {
 
 
 
+                   
 
 
 
@@ -753,6 +751,7 @@ export class AssetDirective implements OnChanges {
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'directive';
             var COMPODOC_CURRENT_PAGE_URL = 'AssetDirective.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

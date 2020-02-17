@@ -514,7 +514,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;container&#x27;, {static: false})<br />
+                                @ViewChild(&#x27;container&#x27;)<br />
                             </code>
                         </td>
                     </tr>
@@ -600,7 +600,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;pageContainer&#x27;, {static: false})<br />
+                                @ViewChild(&#x27;pageContainer&#x27;)<br />
                             </code>
                         </td>
                     </tr>
@@ -646,9 +646,9 @@ export class PaginationComponent&lt;T&gt; implements OnChanges, OnInit {
   /** A Pagination Instance */
   @Input() pagination: Pagination&lt;T&gt;;
   /** The div container for the pages*/
-  @ViewChild(&#x27;container&#x27;, { static: false }) private container: ElementRef;
+  @ViewChild(&#x27;container&#x27;) private container: ElementRef;
   /** The ul around pages */
-  @ViewChild(&#x27;pageContainer&#x27;, { static: false }) private pageContainer: ElementRef;
+  @ViewChild(&#x27;pageContainer&#x27;) private pageContainer: ElementRef;
   /** The pages li elements. The first one is used to determine the container translation. */
   @ViewChildren(&#x27;page&#x27;) private page: QueryList&lt;ElementRef&gt;;
   /** The config that is used */
@@ -780,6 +780,7 @@ export class PaginationComponent&lt;T&gt; implements OnChanges, OnInit {
 
 
 
+                   
 
 
 
@@ -802,6 +803,7 @@ export class PaginationComponent&lt;T&gt; implements OnChanges, OnInit {
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
             var COMPODOC_CURRENT_PAGE_URL = 'PaginationComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

@@ -17,7 +17,7 @@ import { DefaultOutputComponent } from './default-output/default-output.componen
 import { CalendarModule } from '@ec.components/calendar';
 import { UtilityModule } from '../utility/utility.module';
 
-export const formModuleConfig = {
+@NgModule({
   entryComponents: [DefaultInputComponent, DefaultOutputComponent],
   declarations: [
     FormComponent,
@@ -65,7 +65,5 @@ export const formModuleConfig = {
       useValue: SymbolService.resolve('moment.format.month')
     } */
   ],
-};
-
-@NgModule(formModuleConfig)
-export class FormModule {}
+})
+export class FormModule { }

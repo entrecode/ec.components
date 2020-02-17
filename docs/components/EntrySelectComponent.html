@@ -69,7 +69,7 @@
     </p>
     <p class="comment">
         <p>Shows entries of a selection and is able to pick new ones from a crud list
-<example-url>https://components.entrecode.de/entries/entry-select?e=1</example-url></p>
+<example-url><a href="https://components.entrecode.de/entries/entry-select?e=1">https://components.entrecode.de/entries/entry-select?e=1</a></example-url></p>
 
     </p>
 
@@ -4372,7 +4372,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;dropdown&#x27;, {static: false})<br />
+                                @ViewChild(&#x27;dropdown&#x27;)<br />
                             </code>
                         </td>
                     </tr>
@@ -4448,7 +4448,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;dropdownList&#x27;, {static: false})<br />
+                                @ViewChild(&#x27;dropdownList&#x27;)<br />
                             </code>
                         </td>
                     </tr>
@@ -4560,7 +4560,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(EntryPopComponent, {static: false})<br />
+                                @ViewChild(EntryPopComponent)<br />
                             </code>
                         </td>
                     </tr>
@@ -4819,7 +4819,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(SearchbarComponent, {static: false})<br />
+                                @ViewChild(SearchbarComponent)<br />
                             </code>
                         </td>
                     </tr>
@@ -5185,7 +5185,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(SearchbarComponent, {static: false})<br />
+                                @ViewChild(SearchbarComponent)<br />
                             </code>
                         </td>
                     </tr>
@@ -5328,15 +5328,15 @@ export class EntrySelectComponent extends SelectComponent&lt;EntryResource&gt; i
   // tslint:disable-next-line:no-input-rename
   @Input(&#x27;config&#x27;) crudConfig: CrudConfig&lt;EntryResource&gt;;
   /** The dropdown pop with the list to select from */
-  @ViewChild(&#x27;dropdown&#x27;, { static: false }) dropdown: PopComponent;
+  @ViewChild(&#x27;dropdown&#x27;) dropdown: PopComponent;
   /** The nested entry pop */
-  @ViewChild(EntryPopComponent, { static: false }) entryPop: EntryPopComponent;
+  @ViewChild(EntryPopComponent) entryPop: EntryPopComponent;
   /** The nested entry list pop */
   @ViewChild(EntryListPopComponent, { static: true }) entryListPop: EntryListPopComponent;
   /** The nested full EntryListComponent */
-  @ViewChild(&#x27;dropdownList&#x27;, { static: false }) dropdownList: any;
+  @ViewChild(&#x27;dropdownList&#x27;) dropdownList: any;
   /** The nested searchbar */
-  @ViewChild(SearchbarComponent, { static: false }) searchbar: SearchbarComponent;
+  @ViewChild(SearchbarComponent) searchbar: SearchbarComponent;
   /** THe nested delete confirmation pop */
   @ViewChild(ResourceDeletePopComponent, { static: true }) confirmDelete: ResourceDeletePopComponent;
   /** Emits when an entry is being removed */
@@ -5646,6 +5646,7 @@ export class EntrySelectComponent extends SelectComponent&lt;EntryResource&gt; i
 
 
 
+                   
 
 
 
@@ -5668,6 +5669,7 @@ export class EntrySelectComponent extends SelectComponent&lt;EntryResource&gt; i
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
             var COMPODOC_CURRENT_PAGE_URL = 'EntrySelectComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

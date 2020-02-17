@@ -197,14 +197,12 @@
 import { NgModule } from &#x27;@angular/core&#x27;;
 import { MediumEditorComponent } from &#x27;./medium-editor.component&#x27;;
 
-export const mediumModuleConfig &#x3D; {
+@NgModule({
   imports: [CommonModule],
   exports: [MediumEditorComponent],
   declarations: [MediumEditorComponent],
   providers: [],
-};
-
-@NgModule(mediumModuleConfig)
+})
 export class MediumEditorModule {}
 </code></pre>
     </div>
@@ -219,6 +217,7 @@ export class MediumEditorModule {}
 
 
 
+                   
 
 
 
@@ -241,6 +240,7 @@ export class MediumEditorModule {}
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
             var COMPODOC_CURRENT_PAGE_URL = 'MediumEditorModule.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

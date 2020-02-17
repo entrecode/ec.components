@@ -69,7 +69,7 @@
     </p>
     <p class="comment">
         <p>Shows assets of a selection and is able to pick new ones from a crud list.
-<example-url>https://components.entrecode.de/assets/asset-select?e=1</example-url></p>
+<example-url><a href="https://components.entrecode.de/assets/asset-select?e=1">https://components.entrecode.de/assets/asset-select?e=1</a></example-url></p>
 
     </p>
 
@@ -3971,7 +3971,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(AssetListPopComponent, {static: false})<br />
+                                @ViewChild(AssetListPopComponent)<br />
                             </code>
                         </td>
                     </tr>
@@ -4463,7 +4463,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(SearchbarComponent, {static: false})<br />
+                                @ViewChild(SearchbarComponent)<br />
                             </code>
                         </td>
                     </tr>
@@ -4599,7 +4599,7 @@ export class AssetSelectComponent extends SelectComponent&lt;DMAssetResource | P
   /** Configuration Object for List */
   @Input() config: CrudConfig&lt;DMAssetResource | PublicAssetResource&gt; &#x3D; {};
   /** The asset selection pop */
-  @ViewChild(AssetListPopComponent, { static: false }) pop: AssetListPopComponent;
+  @ViewChild(AssetListPopComponent) pop: AssetListPopComponent;
   /** config for new assets */
   public dmAssetConfig &#x3D; Object.assign({}, this.resourceConfig.get(&#x27;dmAsset&#x27;));
   /** config for legacy assets */
@@ -4830,6 +4830,7 @@ export class AssetSelectComponent extends SelectComponent&lt;DMAssetResource | P
 
 
 
+                   
 
 
 
@@ -4852,6 +4853,7 @@ export class AssetSelectComponent extends SelectComponent&lt;DMAssetResource | P
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
             var COMPODOC_CURRENT_PAGE_URL = 'AssetSelectComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

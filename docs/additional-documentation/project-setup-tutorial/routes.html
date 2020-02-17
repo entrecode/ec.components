@@ -43,6 +43,7 @@
 
 
 
+                   
 
 
 
@@ -52,16 +53,12 @@
 In the following tutorials, refer to this when you are called to create a new route.</p>
 <h2 id="1-create-component">1. Create Component</h2>
 <p>Generate a new component</p>
-<p><code>sh
-ng generate component muffins</code></p>
-<p>Add template to <em>src/app/muffins/muffins.component.html</em></p>
-<p><code>html
-&lt;ec-crud model=&quot;muffin&quot;&gt;&lt;/ec-crud&gt;</code></p>
-<h2 id="2-add-a-route">2. Add a Route</h2>
+<div><pre class="line-numbers"><code class="language-sh">ng generate component muffins</code></pre></div><p>Add template to <em>src/app/muffins/muffins.component.html</em></p>
+<div><pre class="line-numbers"><code class="language-html">&lt;ec-crud model=&quot;muffin&quot;&gt;&lt;/ec-crud&gt;</code></pre></div><h2 id="2-add-a-route">2. Add a Route</h2>
 <p><em>src/app/app-routing.module.ts</em>:</p>
-<p>```js
-import { MuffinsComponent } from &#39;./muffins/muffins.component&#39;;</p>
-<p>const routes: Routes = [
+<div><pre class="line-numbers"><code class="language-js">import { MuffinsComponent } from &#39;./muffins/muffins.component&#39;;
+
+const routes: Routes = [
   {
     path: &#39;&#39;,
     children: []
@@ -70,10 +67,8 @@ import { MuffinsComponent } from &#39;./muffins/muffins.component&#39;;</p>
     path: &#39;muffins&#39;,
     component: MuffinsComponent
   }
-];
-```</p>
-<h2 id="3-run-the-route">3. Run the Route</h2>
-<p>Now you can access the muffin crud at https://localhost:4200/muffins</p>
+];</code></pre></div><h2 id="3-run-the-route">3. Run the Route</h2>
+<p>Now you can access the muffin crud at <a href="https://localhost:4200/muffins">https://localhost:4200/muffins</a></p>
 
                    </div><div class="search-results">
     <div class="has-results">
@@ -93,6 +88,7 @@ import { MuffinsComponent } from &#39;./muffins/muffins.component&#39;;</p>
             var COMPODOC_CURRENT_PAGE_DEPTH = 2;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'additional-page';
             var COMPODOC_CURRENT_PAGE_URL = 'routes.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../../js/libs/custom-elements.min.js"></script>

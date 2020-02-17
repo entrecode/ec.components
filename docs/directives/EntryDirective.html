@@ -69,7 +69,7 @@
             </p>
             <p class="comment">
                 <p>Loads an entry by id to the template.
-<example-url>https://components.entrecode.de/entries/entries?e=1</example-url></p>
+<example-url><a href="https://components.entrecode.de/entries/entries?e=1">https://components.entrecode.de/entries/entries?e=1</a></example-url></p>
 
             </p>
 
@@ -660,10 +660,8 @@
     <div class="tab-pane fade " id="c-readme">
         <p><h1 id="ec-entry">ec-entry</h1>
 <p>This directive can be used to load a single entry directly from the template:</p>
-<p>```html</p>
-<h1 ecEntry model="muffin" entryId="SkXEhDZ5yW" #muffin="ecEntry"></h1>
-{{muffin.entry?.name}}
-```</p>
+<div><pre class="line-numbers"><code class="language-html">&lt;h1 ecEntry model=&quot;muffin&quot; entryId=&quot;SkXEhDZ5yW&quot; #muffin=&quot;ecEntry&quot;&gt;&lt;/h1&gt;
+{{muffin.entry?.name}}</code></pre></div></p>
     </div>
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
@@ -754,6 +752,7 @@ export class EntryDirective implements OnChanges, WithLoader {
 
 
 
+                   
 
 
 
@@ -776,6 +775,7 @@ export class EntryDirective implements OnChanges, WithLoader {
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'directive';
             var COMPODOC_CURRENT_PAGE_URL = 'EntryDirective.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

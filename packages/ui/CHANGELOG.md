@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.49.0](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.48.5...@ec.components/ui@0.49.0) (2020-02-17)
+
+
+### Bug Fixes
+
+* add prod flags to prevent ivy build ([62f99f5](https://github.com/entrecode/ec.components/commit/62f99f5))
+* build works now ([5152b20](https://github.com/entrecode/ec.components/commit/5152b20))
+* io import ([ed2e29c](https://github.com/entrecode/ec.components/commit/ed2e29c))
+* peer deps ([c29fa39](https://github.com/entrecode/ec.components/commit/c29fa39))
+* remaning tests ([578ca2e](https://github.com/entrecode/ec.components/commit/578ca2e))
+* remove router module from test ([6dcc4a5](https://github.com/entrecode/ec.components/commit/6dcc4a5))
+* tabs test ([10952fb](https://github.com/entrecode/ec.components/commit/10952fb))
+* test imports ([a4dd259](https://github.com/entrecode/ec.components/commit/a4dd259))
+* trailing commas ([c90aa86](https://github.com/entrecode/ec.components/commit/c90aa86))
+
+
+### Features
+
+* angular 9 ([cb15804](https://github.com/entrecode/ec.components/commit/cb15804))
+
+
+
+
+
 ## [0.48.5](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.48.4...@ec.components/ui@0.48.5) (2019-11-08)
 
 

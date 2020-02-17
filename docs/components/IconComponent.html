@@ -76,7 +76,7 @@
     <p class="comment">
         <p>Displays icons by name. If the matching Icon (from registry contains a content, the content is shown.
 If not, is is expected to be a ec-icon.
-<example-url>https://components.entrecode.de/ui/icons?e=1</example-url></p>
+<example-url><a href="https://components.entrecode.de/ui/icons?e=1">https://components.entrecode.de/ui/icons?e=1</a></example-url></p>
 
     </p>
 
@@ -452,13 +452,11 @@ If not, is is expected to be a ec-icon.
         <p><h1 id="icon">Icon</h1>
 <p><a href="https://components.entrecode.de/ui/icons?e=1">Open Demo</a></p>
 <p>Displays an icon:</p>
-<p><code>html
-&lt;ec-icon name=&quot;add&quot;&gt;&lt;/ec-icon&gt;</code></p>
-<p>ec-icon set uses <a href="https://entrecode.github.io/ixo/">ixo</a> svg icons. You can see the icon names that are used by the components <a href="https://github.com/entrecode/ec.components/blob/2e4c44505932fab63e399ab83ffa29e29f90e059/packages/ui/src/lib/icon/ec-icons.ts#L11">here</a>. All ixo icons that are NOT used by the components must be defined in your app to have them available. This can be done using IconService and the <a href="https://entrecode.github.io/ixo/">ixo site</a>.</p>
+<div><pre class="line-numbers"><code class="language-html">&lt;ec-icon name=&quot;add&quot;&gt;&lt;/ec-icon&gt;</code></pre></div><p>ec-icon set uses <a href="https://entrecode.github.io/ixo/">ixo</a> svg icons. You can see the icon names that are used by the components <a href="https://github.com/entrecode/ec.components/blob/2e4c44505932fab63e399ab83ffa29e29f90e059/packages/ui/src/lib/icon/ec-icons.ts#L11">here</a>. All ixo icons that are NOT used by the components must be defined in your app to have them available. This can be done using IconService and the <a href="https://entrecode.github.io/ixo/">ixo site</a>.</p>
 <p>e.g. if you are using the names <code>add-circle</code> and <code>alarm</code>, you can add them to your icon set like this:</p>
-<p>```ts
-// import { IconService } from &#39;@ec.components/ui&#39;;</p>
-<p>export class App {
+<div><pre class="line-numbers"><code class="language-ts">// import { IconService } from &#39;&#64;ec.components/ui&#39;;
+
+export class App {
   constructor(public iconService: IconService) {
     iconsService.set([
       {
@@ -473,9 +471,7 @@ If not, is is expected to be a ec-icon.
       },
     ]);
   }
-}
-```</p>
-<p>The path for each icon has to be copied from the <a href="https://entrecode.github.io/ixo/">ixo site</a>.</p>
+}</code></pre></div><p>The path for each icon has to be copied from the <a href="https://entrecode.github.io/ixo/">ixo site</a>.</p>
 </p>
     </div>
 
@@ -583,6 +579,7 @@ export class IconComponent implements OnInit, OnChanges {
 
 
 
+                   
 
 
 
@@ -605,6 +602,7 @@ export class IconComponent implements OnInit, OnChanges {
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
             var COMPODOC_CURRENT_PAGE_URL = 'IconComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

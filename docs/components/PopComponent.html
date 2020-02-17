@@ -73,7 +73,7 @@
     <p class="comment">
         <p>A Pop is an area of content whose visibility can be toggled.
 It can be used e.g as dialog, drawer or dialog.
-<example-url>https://components.entrecode.de/ui/pop?e=1</example-url></p>
+<example-url><a href="https://components.entrecode.de/ui/pop?e=1">https://components.entrecode.de/ui/pop?e=1</a></example-url></p>
 
     </p>
 
@@ -837,8 +837,7 @@ It can be used e.g as dialog, drawer or dialog.
         <p><h1 id="pop">Pop</h1>
 <p>A Pop is not just a modal, but a section of markup that appears (pops) anywhere and with any style on your page.</p>
 <h2 id="usage">Usage</h2>
-<p><code>html
-&lt;ec-pop class=&quot;modal-wrapper&quot; #myPop&gt;
+<div><pre class="line-numbers"><code class="language-html">&lt;ec-pop class=&quot;modal-wrapper&quot; #myPop&gt;
   &lt;div class=&quot;modal&quot;&gt;
     &lt;a (click)=&quot;myPop.hide()&quot; class=&quot;modal__dismiss&quot;&gt;Close&lt;/a&gt;
     &lt;header class=&quot;modal__header&quot;&gt;
@@ -851,8 +850,7 @@ It can be used e.g as dialog, drawer or dialog.
     &lt;/footer&gt;
   &lt;/div&gt;
 &lt;/ec-pop&gt;
-&lt;button (click)=&quot;myPop.show()&quot;&gt;Show pop&lt;/button&gt;</code></p>
-<p>The default pop classes <a href="https://github.com/entrecode/ec.components/blob/master/packages/style/pop/ec-pop.scss">can be looked up here</a>.</p>
+&lt;button (click)=&quot;myPop.show()&quot;&gt;Show pop&lt;/button&gt;</code></pre></div><p>The default pop classes <a href="https://github.com/entrecode/ec.components/blob/master/packages/style/pop/ec-pop.scss">can be looked up here</a>.</p>
 </p>
     </div>
 
@@ -1004,6 +1002,7 @@ export class PopComponent {
 
 
 
+                   
 
 
 
@@ -1026,6 +1025,7 @@ export class PopComponent {
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
             var COMPODOC_CURRENT_PAGE_URL = 'PopComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

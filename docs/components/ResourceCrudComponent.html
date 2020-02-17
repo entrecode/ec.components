@@ -65,10 +65,12 @@
         <h3>Description</h3>
     </p>
     <p class="comment">
-        <p>The ResourceCrudComponent takes a relation name and api to render a resource list with create/edit/delete functionality out of the box.
-<code>html
- * &lt;ec-resource-crud [api]=&quot;sdk.datamanager&quot; relation=&quot;dataManager&quot;&gt;&lt;/ec-resource-crud&gt;
- *</code></p>
+        <p>The ResourceCrudComponent takes a relation name and api to render a resource list with create/edit/delete functionality out of the box.</p>
+<p>```html</p>
+<ul>
+<li>&lt;ec-resource-crud [api]=&quot;sdk.datamanager&quot; relation=&quot;dataManager&quot;&gt;</ec-resource-crud></li>
+<li>```</li>
+</ul>
 
     </p>
 
@@ -365,7 +367,7 @@
                         </tr>
                 <tr>
                     <td class="col-md-4">
-                        <div class="io-description"><p>The API Connector that possesses the resource list, see https://entrecode.github.io/ec.sdk/#api-connectors </p>
+                        <div class="io-description"><p>The API Connector that possesses the resource list, see <a href="https://entrecode.github.io/ec.sdk/#api-connectors">https://entrecode.github.io/ec.sdk/#api-connectors</a> </p>
 </div>
                     </td>
                 </tr>
@@ -839,7 +841,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(ResourceListComponent, {static: false})<br />
+                                @ViewChild(ResourceListComponent)<br />
                             </code>
                         </td>
                     </tr>
@@ -1055,7 +1057,7 @@ export class ResourceCrudComponent&lt;T&gt; implements OnInit, WithLoader {
   /** The selection that should be used */
   @Input() selection: Selection&lt;T&gt;;
   /** The ResourceListComponent inside the template. */
-  @ViewChild(ResourceListComponent, { static: false }) list: ResourceListComponent;
+  @ViewChild(ResourceListComponent) list: ResourceListComponent;
   /** The Pop inside the template. */
   @ViewChild(ResourcePopComponent, { static: true }) pop: ResourcePopComponent;
   /** The lists loader */
@@ -1199,6 +1201,7 @@ export class ResourceCrudComponent&lt;T&gt; implements OnInit, WithLoader {
 
 
 
+                   
 
 
 
@@ -1221,6 +1224,7 @@ export class ResourceCrudComponent&lt;T&gt; implements OnInit, WithLoader {
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
             var COMPODOC_CURRENT_PAGE_URL = 'ResourceCrudComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

@@ -14,7 +14,7 @@ export class GithubSourcesComponent implements OnInit {
     ts: 'typescript',
   };
   path: string;
-  @ViewChild(PopComponent, { static: false }) sourcePop: PopComponent;
+  @ViewChild(PopComponent) sourcePop: PopComponent;
   constructor() {}
 
   ngOnInit() {}

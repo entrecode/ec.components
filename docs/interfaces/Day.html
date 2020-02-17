@@ -69,7 +69,7 @@
             </p>
             <p class="comment">
                 <p>Interface for a day inside the a month.
-<example-url>https://components.entrecode.de/ui/datetime?e=1</example-url></p>
+<example-url><a href="https://components.entrecode.de/ui/datetime?e=1">https://components.entrecode.de/ui/datetime?e=1</a></example-url></p>
 
             </p>
 
@@ -685,8 +685,10 @@ export class MonthComponent implements OnInit, OnChanges {
     if (!date) {
       this.date &#x3D; this.selectSpan ? this.selectSpan[1].clone() : moment();
     }
-    this.formatted &#x3D; this.date.format(this.monthFormat);
-    this.cells &#x3D; this.getMonth(this.date.clone(), &#x27;current&#x27;);
+    setTimeout(() &#x3D;&gt; {
+      this.formatted &#x3D; this.date.format(this.monthFormat);
+      this.cells &#x3D; this.getMonth(this.date.clone(), &#x27;current&#x27;);
+    });
   }
 
   /** Selects the day of the given moment. */
@@ -731,7 +733,7 @@ export class MonthComponent implements OnInit, OnChanges {
   }
 
   canAlter(value, span: string) {
-    const newDate &#x3D; this.date.clone().add(value, span);
+    const newDate &#x3D; this.date?.clone().add(value, span);
     return this.isSelectable(newDate, &#x27;months&#x27;);
   }
 
@@ -758,6 +760,7 @@ export class MonthComponent implements OnInit, OnChanges {
 </div>
 
 
+                   
 
 
 
@@ -780,6 +783,7 @@ export class MonthComponent implements OnInit, OnChanges {
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
             var COMPODOC_CURRENT_PAGE_URL = 'Day.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

@@ -1260,11 +1260,9 @@ If no config is provided, it will default to <code>{page: 1, size: 25}</code>. <
     <div class="tab-pane fade " id="c-readme">
         <p><h1 id="pagination">Pagination</h1>
 <p><a href="../../classes/Pagination.html">Pagination</a> can be used to keep track of the pages of arbitrary items.</p>
-<p><code>ts
-const pagination = new Pagination({ size: 10 });
+<div><pre class="line-numbers"><code class="language-ts">const pagination = new Pagination({ size: 10 });
 pagination.setTotal(50); //tells the pagination that it should paginate over 50 items.
-pagination.getPages(); //5</code>
-See list.ts/list.component for example usage.</p>
+pagination.getPages(); //5</code></pre></div><p>See list.ts/list.component for example usage.</p>
 </p>
     </div>
 
@@ -1427,6 +1425,7 @@ export class Pagination&lt;T&gt; {
 
 
 
+                   
 
 
 
@@ -1449,6 +1448,7 @@ export class Pagination&lt;T&gt; {
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
             var COMPODOC_CURRENT_PAGE_URL = 'Pagination.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

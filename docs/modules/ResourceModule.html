@@ -543,6 +543,7 @@ import { ResourceConfig } from &#x27;../resource-config/resource-config.service&
 import { ResourceListPopComponent } from &#x27;../resource-list-pop/resource-list-pop.component&#x27;;
 import { ResourceActionbarComponent } from &#x27;../resource-actionbar/resource-actionbar.component&#x27;;
 import { ApiActionbarComponent } from &#x27;../resource-actionbar/api-actionbar.component&#x27;;
+import { DndModule } from &#x27;ngx-drag-drop&#x27;;
 
 @NgModule({
   entryComponents: [ResourceListComponent],
@@ -557,7 +558,7 @@ import { ApiActionbarComponent } from &#x27;../resource-actionbar/api-actionbar.
     ResourceActionbarComponent,
     ApiActionbarComponent,
   ],
-  imports: [CommonModule, FormsModule, UiModule, SdkModule],
+  imports: [CommonModule, DndModule, FormsModule, UiModule, SdkModule],
   exports: [
     UiModule,
     SdkModule,
@@ -573,7 +574,7 @@ import { ApiActionbarComponent } from &#x27;../resource-actionbar/api-actionbar.
   ],
   providers: [ResourceService, ResourceConfig],
 })
-export class ResourceModule {}
+export class ResourceModule { }
 </code></pre>
     </div>
 </div>
@@ -587,6 +588,7 @@ export class ResourceModule {}
 
 
 
+                   
 
 
 
@@ -609,6 +611,7 @@ export class ResourceModule {}
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
             var COMPODOC_CURRENT_PAGE_URL = 'ResourceModule.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

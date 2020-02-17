@@ -34,7 +34,7 @@ export class CrudComponent implements OnInit, WithLoader, WithNotifications {
   /** The selection that should be used */
   @Input() selection: Selection<EntryResource>;
   /** The EntryList inside the template. */
-  @ViewChild(EntryListComponent, { static: false }) list: EntryListComponent;
+  @ViewChild(EntryListComponent) list: EntryListComponent;
   /** The Pop inside the template. */
   @ViewChild(EntryPopComponent, { static: true }) entryPop: EntryPopComponent;
   /** The lists loader */

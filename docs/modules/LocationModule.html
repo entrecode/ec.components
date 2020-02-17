@@ -317,8 +317,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="31"
-                            class="link-to-prism">packages/location/src/lib/location.module.ts:31</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="30"
+                            class="link-to-prism">packages/location/src/lib/location.module.ts:30</a></div>
                 </td>
             </tr>
 
@@ -350,7 +350,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../miscellaneous/variables.html#de" target="_self" >ModuleWithProviders</a></code>
+                        <b>Returns : </b>        <code><a href="../miscellaneous/variables.html#de" target="_self" >ModuleWithProviders&lt;LocationModule&gt;</a></code>
 
                     </div>
                     <div class="io-description">
@@ -377,7 +377,8 @@ import { LocationSearchComponent } from &#x27;./location-search.component&#x27;;
 /** The components of this module */
 const LOCATION_COMPONENTS &#x3D; [LocationMapComponent, LocationSearchComponent, LocationPickerComponent];
 
-export const locationModuleConfig &#x3D; {
+/** This module holds all location/map related components and services */
+@NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -391,11 +392,9 @@ export const locationModuleConfig &#x3D; {
   declarations: LOCATION_COMPONENTS,
   entryComponents: LOCATION_COMPONENTS,
   providers: [GeocodeService],
-};
-/** This module holds all location/map related components and services */
-@NgModule(locationModuleConfig)
+})
 export class LocationModule {
-  static forRoot({ apiKey }): ModuleWithProviders {
+  static forRoot({ apiKey }): ModuleWithProviders&lt;LocationModule&gt; {
     return {
       ngModule: LocationModule,
       providers: [
@@ -420,6 +419,7 @@ export class LocationModule {
 
 
 
+                   
 
 
 
@@ -442,6 +442,7 @@ export class LocationModule {
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
             var COMPODOC_CURRENT_PAGE_URL = 'LocationModule.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

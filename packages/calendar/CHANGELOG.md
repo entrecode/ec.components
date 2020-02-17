@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/entrecode/ec.components/compare/@ec.components/calendar@0.2.22...@ec.components/calendar@0.3.0) (2020-02-17)
+
+
+### Bug Fixes
+
+* add prod flags to prevent ivy build ([62f99f5](https://github.com/entrecode/ec.components/commit/62f99f5))
+* angular regression error ([45ba56f](https://github.com/entrecode/ec.components/commit/45ba56f))
+* build works now ([5152b20](https://github.com/entrecode/ec.components/commit/5152b20))
+* little fixes ([1b94e81](https://github.com/entrecode/ec.components/commit/1b94e81))
+* peer deps ([c29fa39](https://github.com/entrecode/ec.components/commit/c29fa39))
+* trailing commas ([c90aa86](https://github.com/entrecode/ec.components/commit/c90aa86))
+
+
+### Features
+
+* angular 9 ([cb15804](https://github.com/entrecode/ec.components/commit/cb15804))
+
+
+
+
+
 ## [0.2.22](https://github.com/entrecode/ec.components/compare/@ec.components/calendar@0.2.21...@ec.components/calendar@0.2.22) (2019-08-29)
 
 

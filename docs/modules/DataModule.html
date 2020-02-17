@@ -763,8 +763,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="90"
-                            class="link-to-prism">packages/data/src/lib/data.module.ts:90</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="97"
+                            class="link-to-prism">packages/data/src/lib/data.module.ts:97</a></div>
                 </td>
             </tr>
 
@@ -797,7 +797,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../miscellaneous/variables.html#de" target="_self" >ModuleWithProviders</a></code>
+                        <b>Returns : </b>        <code><a href="../miscellaneous/variables.html#de" target="_self" >ModuleWithProviders&lt;DataModule&gt;</a></code>
 
                     </div>
                     <div class="io-description">
@@ -840,7 +840,7 @@ import { SdkModule } from &#x27;./sdk/sdk.module&#x27;;
 import { EntryListSelectComponent } from &#x27;./entry-list-select/entry-list-select.component&#x27;;
 import { EntryActionbarComponent } from &#x27;./entry-actionbar/entry-actionbar.component&#x27;;
 
-export const dataModuleConfig &#x3D; {
+@NgModule({
   entryComponents: [
     DefaultEntryInputComponent,
     DefaultEntryOutputComponent,
@@ -865,7 +865,16 @@ export const dataModuleConfig &#x3D; {
     EntryActionbarComponent,
     EntryListPopComponent,
   ],
-  imports: [FormsModule, CommonModule, UiModule, SdkModule, FilesModule, AuthModule, ResourceModule, DndModule],
+  imports: [
+    FormsModule,
+    CommonModule,
+    UiModule,
+    SdkModule,
+    FilesModule,
+    AuthModule,
+    ResourceModule,
+    DndModule
+  ],
   exports: [
     EntryListComponent,
     EntryDirective,
@@ -897,11 +906,9 @@ export const dataModuleConfig &#x3D; {
       },
     },
   ],
-};
-
-@NgModule(dataModuleConfig)
+})
 export class DataModule {
-  static forEnvironment(environment): ModuleWithProviders {
+  static forEnvironment(environment): ModuleWithProviders&lt;DataModule&gt; {
     return {
       ngModule: DataModule,
       providers: [
@@ -917,7 +924,7 @@ export class DataModule {
       ],
     };
   }
-  constructor() {}
+  constructor() { }
 }
 </code></pre>
     </div>
@@ -932,6 +939,7 @@ export class DataModule {
 
 
 
+                   
 
 
 
@@ -954,6 +962,7 @@ export class DataModule {
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
             var COMPODOC_CURRENT_PAGE_URL = 'DataModule.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

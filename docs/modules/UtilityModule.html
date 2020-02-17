@@ -349,7 +349,7 @@ import { TabComponent } from &#x27;./tab/tab.component&#x27;;
 import { TabsComponent } from &#x27;./tabs/tabs.component&#x27;;
 import { KeycommandsService } from &#x27;./keycommands/keycommands.service&#x27;;
 
-export const utilityModuleConfig &#x3D; {
+@NgModule({
   entryComponents: [],
   declarations: [TabsComponent, TabComponent, LoginFormComponent, SignupFormComponent, FocusDirective],
   imports: [FormsModule, ReactiveFormsModule, IoModule, CommonModule, RouterModule],
@@ -366,9 +366,7 @@ export const utilityModuleConfig &#x3D; {
     RouterModule,
   ],
   providers: [KeycommandsService],
-};
-
-@NgModule(utilityModuleConfig)
+})
 export class UtilityModule {}
 </code></pre>
     </div>
@@ -383,6 +381,7 @@ export class UtilityModule {}
 
 
 
+                   
 
 
 
@@ -405,6 +404,7 @@ export class UtilityModule {}
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
             var COMPODOC_CURRENT_PAGE_URL = 'UtilityModule.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

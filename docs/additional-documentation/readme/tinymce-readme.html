@@ -43,6 +43,7 @@
 
 
 
+                   
 
 
 
@@ -56,29 +57,21 @@
 </ul>
 <h2 id="installation">Installation</h2>
 <h3 id="1-install-package">1. Install package</h3>
-<p><code>sh
-npm install @ec.components/tinymce --save</code></p>
-<h3 id="2-add-module">2. Add Module</h3>
-<p>```js
-import { TinymceModule } from &#39;@ec.components/tinymce&#39;;</p>
-<p>@NgModule({
+<div><pre class="line-numbers"><code class="language-sh">npm install &#64;ec.components/tinymce --save</code></pre></div><h3 id="2-add-module">2. Add Module</h3>
+<div><pre class="line-numbers"><code class="language-js">import { TinymceModule } from &#39;&#64;ec.components/tinymce&#39;;
+
+&#64;NgModule({
   imports: [
     TinymceModule
   ]
 })
 export class AppModule {
-}
-```</p>
-<h3 id="3-add-styles-files-to-angularjson">3. Add styles files to angular.json</h3>
-<p><code>json
-&quot;styles&quot;: [
+}</code></pre></div><h3 id="3-add-styles-files-to-angularjson">3. Add styles files to angular.json</h3>
+<div><pre class="line-numbers"><code class="language-json">&quot;styles&quot;: [
   &quot;node_modules/tinymce/skins/lightgray/skin.min.css&quot;,
   &quot;node_modules/tinymce/skins/lightgray/content.min.css&quot;
-],</code></p>
-<h3 id="4-use-it">4. Use it</h3>
-<p><code>html
- &lt;ec-tinymce [(ngModel)]=&quot;html&quot; (change)=&quot;change($event)&quot;&gt;&lt;/ec-tinymce&gt;</code></p>
-
+],</code></pre></div><h3 id="4-use-it">4. Use it</h3>
+<div><pre class="line-numbers"><code class="language-html"> &lt;ec-tinymce [(ngModel)]=&quot;html&quot; (change)=&quot;change($event)&quot;&gt;&lt;/ec-tinymce&gt;</code></pre></div>
                    </div><div class="search-results">
     <div class="has-results">
         <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
@@ -97,6 +90,7 @@ export class AppModule {
             var COMPODOC_CURRENT_PAGE_DEPTH = 2;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'additional-page';
             var COMPODOC_CURRENT_PAGE_URL = 'tinymce-readme.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../../js/libs/custom-elements.min.js"></script>

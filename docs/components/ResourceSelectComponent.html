@@ -4264,7 +4264,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(&#x27;dropdownList&#x27;, {static: false})<br />
+                                @ViewChild(&#x27;dropdownList&#x27;)<br />
                             </code>
                         </td>
                     </tr>
@@ -4444,7 +4444,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(ResourcePopComponent, {static: false})<br />
+                                @ViewChild(ResourcePopComponent)<br />
                             </code>
                         </td>
                     </tr>
@@ -4810,7 +4810,7 @@
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(SearchbarComponent, {static: false})<br />
+                                @ViewChild(SearchbarComponent)<br />
                             </code>
                         </td>
                     </tr>
@@ -4951,9 +4951,9 @@ export class ResourceSelectComponent extends SelectComponent&lt;Resource&gt; imp
   /** The crud pop with the list to select from */
   @ViewChild(&#x27;dropdown&#x27;, { static: true }) dropdown: PopComponent;
   /** The nested resource list in the dropdown */
-  @ViewChild(&#x27;dropdownList&#x27;, { static: false }) dropdownList: ResourceListComponent;
+  @ViewChild(&#x27;dropdownList&#x27;) dropdownList: ResourceListComponent;
   /** The nested resource pop for editing and creating */
-  @ViewChild(ResourcePopComponent, { static: false }) resourcePop: ResourcePopComponent;
+  @ViewChild(ResourcePopComponent) resourcePop: ResourcePopComponent;
   /** The nested resource list pop */
   @ViewChild(ResourceListPopComponent, { static: true }) resourceListPop: ResourceListPopComponent;
   /** The config of the dropdown pop */
@@ -5226,6 +5226,7 @@ export class ResourceSelectComponent extends SelectComponent&lt;Resource&gt; imp
 
 
 
+                   
 
 
 
@@ -5248,6 +5249,7 @@ export class ResourceSelectComponent extends SelectComponent&lt;Resource&gt; imp
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
             var COMPODOC_CURRENT_PAGE_URL = 'ResourceSelectComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

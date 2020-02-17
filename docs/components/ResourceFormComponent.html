@@ -67,20 +67,25 @@ The form needs the <a href="https://entrecode.github.io/ec.sdk/#core">api</a> an
 If you pass a resource the form will edit that resource.
 The default config comes from resource-config.ts.</p>
 <p>Example:</p>
-<p><code>js
- * this.datamanager = new DataManager(&#39;live&#39;); // api connector (children of Core)
- *</code></p>
-<p><code>html
- * &lt;ec-resource-form api=&quot;datamanager&quot; relation=&quot;dataManager&quot;&gt;&lt;/ec-resource-form&gt;
- *</code></p>
+<p>```js</p>
+<ul>
+<li>this.datamanager = new DataManager(&#39;live&#39;); // api connector (children of Core)</li>
+<li><div><pre class="line-numbers"><code class="language-none"></code></pre></div></li>
+</ul>
+<p>```html</p>
+<ul>
+<li><ec-resource-form api="datamanager" relation="dataManager"></ec-resource-form></li>
+<li><div><pre class="line-numbers"><code class="language-none"></code></pre></div></li>
+</ul>
 <p>The above snippets will render a form to create a datamanager. After the datamanager has been created, the form will switch to edit mode.
 If you directly want to edit a given resource, just pass it through the resource input:</p>
-<p><code>html
- * &lt;ec-resource-form api=&quot;datamanager&quot; relation=&quot;dataManager&quot; [resource]=&quot;myDatamanager&quot;&gt;&lt;/ec-resource-form&gt;
- *</code>
-<code>js
- * this.sdk.datamanager.dataManager(shortID).then(dm=&gt;this.myDatamanager = dm);
- *</code></p>
+<p>```html</p>
+<ul>
+<li>&lt;ec-resource-form api=&quot;datamanager&quot; relation=&quot;dataManager&quot; [resource]=&quot;myDatamanager&quot;&gt;</ec-resource-form></li>
+<li><code></code>js</li>
+<li>this.sdk.datamanager.dataManager(shortID).then(dm=&gt;this.myDatamanager = dm);</li>
+<li>```</li>
+</ul>
 
     </p>
 
@@ -484,7 +489,7 @@ If you directly want to edit a given resource, just pass it through the resource
                         </tr>
                 <tr>
                     <td class="col-md-4">
-                        <div class="io-description"><p>The API Connector that possesses the resource list, see https://entrecode.github.io/ec.sdk/#api-connectors </p>
+                        <div class="io-description"><p>The API Connector that possesses the resource list, see <a href="https://entrecode.github.io/ec.sdk/#api-connectors">https://entrecode.github.io/ec.sdk/#api-connectors</a> </p>
 </div>
                     </td>
                 </tr>
@@ -2611,7 +2616,7 @@ You can also pass just an item to use its config and body.</p>
                             <b>Decorators : </b>
                             <br />
                             <code>
-                                @ViewChild(LoaderComponent, {static: false})<br />
+                                @ViewChild(LoaderComponent)<br />
                             </code>
                         </td>
                     </tr>
@@ -3019,6 +3024,7 @@ export class ResourceFormComponent extends FormComponent&lt;Resource&gt; impleme
 
 
 
+                   
 
 
 
@@ -3041,6 +3047,7 @@ export class ResourceFormComponent extends FormComponent&lt;Resource&gt; impleme
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
             var COMPODOC_CURRENT_PAGE_URL = 'ResourceFormComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

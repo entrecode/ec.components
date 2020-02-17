@@ -38,7 +38,7 @@ describe('Form', () => {
   });
 
   it('should construct with config only', () => {
-    const form = new Form({}, person['config']);
+    const form = new Form({ name: '', age: 0, dead: false }, person['config']);
     expect(form.fields.map((f) => f.property)).toEqual(['name', 'age']);
     expect(form.fields.map((f) => f.type)).toEqual(['string', 'number']);
     expect(form.getField('name').property).toBe('name');

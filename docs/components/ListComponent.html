@@ -69,8 +69,8 @@
     </p>
     <p class="comment">
         <p>The ListComponent will render a list containing the given items or collection.</p>
-<p><example-url>https://components.entrecode.de/ui/list/basic?e=1</example-url>
-<example-url>https://components.entrecode.de/ui/list/transforms?e=1</example-url></p>
+<p><example-url><a href="https://components.entrecode.de/ui/list/basic?e=1">https://components.entrecode.de/ui/list/basic?e=1</a></example-url>
+<example-url><a href="https://components.entrecode.de/ui/list/transforms?e=1">https://components.entrecode.de/ui/list/transforms?e=1</a></example-url></p>
 
     </p>
 
@@ -1351,8 +1351,7 @@ Changing the selection will reconstruct the selection </p>
 <p>The List is one of the main components to work with.
 The basic idea is to display collections of data in a structured but flexible way.</p>
 <p>You can create a new List like this:</p>
-<p><code>typescript
-this.trees = new List(
+<div><pre class="line-numbers"><code class="language-typescript">this.trees = new List(
 //first argument: Array of Objects
 [{
   name: &#39;Appletree&#39;,
@@ -1382,11 +1381,8 @@ this.trees = new List(
       display: (value) =&gt; value ? &#39;yes&#39; : &#39;no&#39;
     },
   }
-})</code></p>
-<p>This is how you display a List instance into your template:</p>
-<p><code>html
-&lt;ec-list [list]=&quot;trees&quot;&gt;&lt;/ec-list&gt;</code></p>
-</p>
+})</code></pre></div><p>This is how you display a List instance into your template:</p>
+<div><pre class="line-numbers"><code class="language-html">&lt;ec-list [list]=&quot;trees&quot;&gt;&lt;/ec-list&gt;</code></pre></div></p>
     </div>
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
@@ -1609,6 +1605,7 @@ export class ListComponent&lt;T&gt; implements OnChanges {
 
 
 
+                   
 
 
 
@@ -1631,6 +1628,7 @@ export class ListComponent&lt;T&gt; implements OnChanges {
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
             var COMPODOC_CURRENT_PAGE_URL = 'ListComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

@@ -286,14 +286,12 @@ import { SelectComponent } from &#x27;./select.component&#x27;;
 import { ActionbarComponent } from &#x27;../actionbar/actionbar.component&#x27;;
 import { LoaderModule } from &#x27;../loader/loader.module&#x27;;
 
-export const selectModuleConfig &#x3D; {
+@NgModule({
   imports: [CommonModule, ListModule, DndModule, LoaderModule],
   declarations: [SelectComponent, ActionbarComponent],
   exports: [ListModule, SelectComponent, ActionbarComponent, DndModule],
   providers: [],
-};
-
-@NgModule(selectModuleConfig)
+})
 export class SelectModule {}
 </code></pre>
     </div>
@@ -308,6 +306,7 @@ export class SelectModule {}
 
 
 
+                   
 
 
 
@@ -330,6 +329,7 @@ export class SelectModule {}
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
             var COMPODOC_CURRENT_PAGE_URL = 'SelectModule.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

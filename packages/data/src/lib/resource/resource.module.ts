@@ -15,6 +15,7 @@ import { ResourceConfig } from '../resource-config/resource-config.service';
 import { ResourceListPopComponent } from '../resource-list-pop/resource-list-pop.component';
 import { ResourceActionbarComponent } from '../resource-actionbar/resource-actionbar.component';
 import { ApiActionbarComponent } from '../resource-actionbar/api-actionbar.component';
+import { DndModule } from 'ngx-drag-drop';
 
 @NgModule({
   entryComponents: [ResourceListComponent],
@@ -29,7 +30,7 @@ import { ApiActionbarComponent } from '../resource-actionbar/api-actionbar.compo
     ResourceActionbarComponent,
     ApiActionbarComponent,
   ],
-  imports: [CommonModule, FormsModule, UiModule, SdkModule],
+  imports: [CommonModule, DndModule, FormsModule, UiModule, SdkModule],
   exports: [
     UiModule,
     SdkModule,
@@ -45,4 +46,4 @@ import { ApiActionbarComponent } from '../resource-actionbar/api-actionbar.compo
   ],
   providers: [ResourceService, ResourceConfig],
 })
-export class ResourceModule {}
+export class ResourceModule { }

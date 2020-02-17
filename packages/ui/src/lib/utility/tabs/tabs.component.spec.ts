@@ -1,7 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TabsComponent } from '../../utility/tabs/tabs.component';
-import { utilityModuleConfig } from '../utility.module';
+import { TabComponent, LoginFormComponent, SignupFormComponent, FocusDirective, IoModule } from '@ec.components/ui';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { KeycommandsService } from '../keycommands/keycommands.service';
 
 describe('TabsComponent', () => {
   let component: TabsComponent;
@@ -9,10 +12,13 @@ describe('TabsComponent', () => {
   /* let children: Array<TabComponent>; */
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      ...utilityModuleConfig,
-      imports: [...utilityModuleConfig.imports, RouterTestingModule],
-    }).compileComponents();
+    TestBed.configureTestingModule(
+      {
+        declarations: [TabsComponent, TabComponent, LoginFormComponent, SignupFormComponent, FocusDirective],
+        imports: [RouterTestingModule, FormsModule, ReactiveFormsModule, IoModule, CommonModule],
+        providers: [KeycommandsService],
+      }
+    ).compileComponents();
   }));
 
   beforeEach(() => {

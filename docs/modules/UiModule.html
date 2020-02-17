@@ -418,7 +418,7 @@ import { IconModule } from &#x27;./icon/icon.module&#x27;;
 import { SymbolModule } from &#x27;./symbol/symbol.module&#x27;;
 import { FormModule } from &#x27;./form/form.module&#x27;;
 
-export const uiModuleConfig &#x3D; {
+@NgModule({
   imports: [
     UtilityModule,
     NotificationsModule,
@@ -441,10 +441,8 @@ export const uiModuleConfig &#x3D; {
     IconModule,
     SymbolModule,
   ],
-};
-
-@NgModule(uiModuleConfig)
-export class UiModule {}
+})
+export class UiModule { }
 </code></pre>
     </div>
 </div>
@@ -458,6 +456,7 @@ export class UiModule {}
 
 
 
+                   
 
 
 
@@ -480,6 +479,7 @@ export class UiModule {}
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
             var COMPODOC_CURRENT_PAGE_URL = 'UiModule.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

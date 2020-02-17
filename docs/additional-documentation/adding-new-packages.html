@@ -43,6 +43,7 @@
 
 
 
+                   
 
 
 
@@ -51,9 +52,7 @@
 <p>The following steps need to be done to generate a new library that is standards compliant.
 Just replace the example name &quot;data&quot; with the new package name.</p>
 <h2 id="1-run-cli-command-to-generate-a-new-library">1. Run CLI command to generate a new library</h2>
-<p><code>sh
-ng generate library data -p ec</code></p>
-<p>This will create a new folder under packages/ (see newProjectRoot in angular.json).</p>
+<div><pre class="line-numbers"><code class="language-sh">ng generate library data -p ec</code></pre></div><p>This will create a new folder under packages/ (see newProjectRoot in angular.json).</p>
 <h2 id="2-prefix-packagesdatapackagejsonname-with-eccomponents">2. Prefix packages/data/package.json#name with @ec.components</h2>
 <p>also make sure the version is correct</p>
 <h2 id="3-prefix-root-tsconfigjson-paths-data-and-data-with-eccomponents">3. Prefix root tsconfig.json paths &quot;data&quot; and &quot;data/*&quot; with @ec.components</h2>
@@ -61,27 +60,19 @@ ng generate library data -p ec</code></p>
 <h2 id="4-move-src-files-to-packagesdatalib">4. Move src files to packages/data/lib</h2>
 <h2 id="5-add-dependencies-eg-ecsdk-to-both-root-and-lib-packagejson">5. add dependencies (e.g. ec.sdk) to both root and lib package.json</h2>
 <h2 id="6-add-whitelistednonpeerdependencies-and-dest-to-ng-packagejson">6. add whitelistedNonPeerDependencies and dest to ng-package.json</h2>
-<p><code>json
-  &quot;dest&quot;: &quot;./dist&quot;,
+<div><pre class="line-numbers"><code class="language-json">  &quot;dest&quot;: &quot;./dist&quot;,
   &quot;whitelistedNonPeerDependencies&quot;: [
     &quot;.&quot;
-  ]</code></p>
-<h2 id="7-fix-relative-imports">7. fix relative imports</h2>
-<p><code>ts
-import { Notification } from &#39;../../../../ui/src/notifications/notification&#39;;
+  ]</code></pre></div><h2 id="7-fix-relative-imports">7. fix relative imports</h2>
+<div><pre class="line-numbers"><code class="language-ts">import { Notification } from &#39;../../../../ui/src/notifications/notification&#39;;
 import { WithNotifications } from &#39;../../../../ui/src/notifications/with-notifications.interface&#39;;
 // replace with
-import { WithNotifications, Notification } from &#39;@ec.components/ui&#39;;</code></p>
-<h2 id="8-fix-rxjs-imports">8. fix rxjs imports</h2>
-<p><code>ts
-import { Subject } from &#39;rxjs/Subject&#39;;
+import { WithNotifications, Notification } from &#39;&#64;ec.components/ui&#39;;</code></pre></div><h2 id="8-fix-rxjs-imports">8. fix rxjs imports</h2>
+<div><pre class="line-numbers"><code class="language-ts">import { Subject } from &#39;rxjs/Subject&#39;;
 // to
-import { Subject } from &#39;rxjs&#39;;</code></p>
-<h2 id="9-fix-other-lint-errors-like-semicolon-stuff">9. fix other lint errors like semicolon stuff</h2>
+import { Subject } from &#39;rxjs&#39;;</code></pre></div><h2 id="9-fix-other-lint-errors-like-semicolon-stuff">9. fix other lint errors like semicolon stuff</h2>
 <h2 id="build-it">build it</h2>
-<p><code>sh
-ng build data</code></p>
-<h2 id="run-yarn-to-link-distdata-to-node_modules">run yarn to link dist/data to node_modules</h2>
+<div><pre class="line-numbers"><code class="language-sh">ng build data</code></pre></div><h2 id="run-yarn-to-link-distdata-to-node_modules">run yarn to link dist/data to node_modules</h2>
 <h2 id="10-add-dependency-to-root-packagejson">10. add dependency to root package.json</h2>
 <h2 id="11-add-changelogmd-of-package-to-summaryjson-like-others">11. add CHANGELOG.md of package to summary.json (like others)</h2>
 <h2 id="11-add-link-to-package-changelog-page-to-changelogmd-like-others">11. add link to package changelog page to CHANGELOG.md (like others)</h2>
@@ -104,6 +95,7 @@ ng build data</code></p>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'additional-page';
             var COMPODOC_CURRENT_PAGE_URL = 'adding-new-packages.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

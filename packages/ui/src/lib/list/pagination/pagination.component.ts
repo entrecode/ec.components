@@ -14,9 +14,9 @@ export class PaginationComponent<T> implements OnChanges, OnInit {
   /** A Pagination Instance */
   @Input() pagination: Pagination<T>;
   /** The div container for the pages*/
-  @ViewChild('container', { static: false }) private container: ElementRef;
+  @ViewChild('container') private container: ElementRef;
   /** The ul around pages */
-  @ViewChild('pageContainer', { static: false }) private pageContainer: ElementRef;
+  @ViewChild('pageContainer') private pageContainer: ElementRef;
   /** The pages li elements. The first one is used to determine the container translation. */
   @ViewChildren('page') private page: QueryList<ElementRef>;
   /** The config that is used */

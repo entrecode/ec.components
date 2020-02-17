@@ -66,10 +66,12 @@
     </p>
     <p class="comment">
         <p>This component can be used to delete all kinds of resources with a confirmation pop.</p>
-<p><code>html
- * &lt;ec-resource-pop (deleted)=&quot;runAway()&quot; #pop&gt;&lt;/ec-resource-pop&gt;
- * &lt;a (click)=&quot;pop.confirm(SomeResource)&quot;&gt;LÖSCHEN!&lt;/a&gt;
- *</code></p>
+<p>```html</p>
+<ul>
+<li>&lt;ec-resource-pop (deleted)=&quot;runAway()&quot; #pop&gt;</ec-resource-pop></li>
+<li>&lt;a (click)=&quot;pop.confirm(SomeResource)&quot;&gt;LÖSCHEN!</a></li>
+<li>```</li>
+</ul>
 
     </p>
 
@@ -1945,6 +1947,7 @@ export class ResourceDeletePopComponent extends PopComponent {
 
 
 
+                   
 
 
 
@@ -1967,6 +1970,7 @@ export class ResourceDeletePopComponent extends PopComponent {
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
             var COMPODOC_CURRENT_PAGE_URL = 'ResourceDeletePopComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

@@ -179,13 +179,11 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
 import { TinymceComponent } from &#x27;./tinymce/tinymce.component&#x27;;
 
-export const tinymceModuleConfig &#x3D; {
+@NgModule({
   declarations: [TinymceComponent],
   entryComponents: [TinymceComponent],
   exports: [TinymceComponent],
-};
-
-@NgModule(tinymceModuleConfig)
+})
 export class TinymceModule {}
 </code></pre>
     </div>
@@ -200,6 +198,7 @@ export class TinymceModule {}
 
 
 
+                   
 
 
 
@@ -222,6 +221,7 @@ export class TinymceModule {}
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
             var COMPODOC_CURRENT_PAGE_URL = 'TinymceModule.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

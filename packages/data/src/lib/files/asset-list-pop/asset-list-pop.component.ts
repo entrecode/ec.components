@@ -44,9 +44,9 @@ export class AssetListPopComponent extends PopComponent implements OnInit {
   /** The loaded assetGroups */
   public assetGroups: string[];
   /** The nested searchbar */
-  @ViewChild(SearchbarComponent, { static: false }) searchbar: SearchbarComponent;
+  @ViewChild(SearchbarComponent) searchbar: SearchbarComponent;
   /** The nested resource-list */
-  @ViewChild(ResourceListComponent, { static: false }) resourceList: ResourceListComponent;
+  @ViewChild(ResourceListComponent) resourceList: ResourceListComponent;
   uploadConfig: CrudConfig<PublicAssetResource> & { disableListPop: boolean };
   tagSelectConfig: CrudConfig<PublicTagResource> = {
     disableCreatePop: true,

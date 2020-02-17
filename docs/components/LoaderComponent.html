@@ -72,7 +72,7 @@
     </p>
     <p class="comment">
         <p>The ec-loader can be plugged into various components to be triggered when they load stuff.
-<example-url>https://components.entrecode.de/ui/loader?e=1</example-url></p>
+<example-url><a href="https://components.entrecode.de/ui/loader?e=1">https://components.entrecode.de/ui/loader?e=1</a></example-url></p>
 
     </p>
 
@@ -514,19 +514,16 @@ Make sure the given promise is catched (so the loader will stop loading on error
         <p><h1 id="loader">Loader</h1>
 <p>The loader can be used to indicate any kind of loading activity</p>
 <h2 id="template">Template</h2>
-<p><code>html
-&lt;ec-loader #globalLoader class=&quot;ec-loader loader is-global&quot;&gt;&lt;/ec-loader&gt;
+<div><pre class="line-numbers"><code class="language-html">&lt;ec-loader #globalLoader class=&quot;ec-loader loader is-global&quot;&gt;&lt;/ec-loader&gt;
 &lt;ec-loader #localLoader class=&quot;ec-loader loader is-local&quot;&gt;&lt;/ec-loader&gt;
 &lt;button (click)=&quot;globalLoader()&quot;&gt;Global Loader&lt;/button&gt;
-&lt;button (click)=&quot;localLoader()&quot;&gt;Local Loader&lt;/button&gt;</code></p>
-<p>The default classes <a href="https://github.com/entrecode/ec.components/blob/master/packages/style/loader/ec-loader.scss">can be found here</a>.</p>
+&lt;button (click)=&quot;localLoader()&quot;&gt;Local Loader&lt;/button&gt;</code></pre></div><p>The default classes <a href="https://github.com/entrecode/ec.components/blob/master/packages/style/loader/ec-loader.scss">can be found here</a>.</p>
 <h2 id="usage">Usage</h2>
 <p>You can use a global loader that handles every action or use multiple local loaders:</p>
-<p><code>ts
-import { LoaderComponent, LoaderService } from &#39;@ec.components/ui&#39;;
+<div><pre class="line-numbers"><code class="language-ts">import { LoaderComponent, LoaderService } from &#39;&#64;ec.components/ui&#39;;
 export class MyApp {
-  @ViewChild(&#39;globalLoader&#39;) globalLoader: LoaderComponent;
-  @ViewChild(&#39;localLoader&#39;) localLoader: LoaderComponent;
+  &#64;ViewChild(&#39;globalLoader&#39;) globalLoader: LoaderComponent;
+  &#64;ViewChild(&#39;localLoader&#39;) localLoader: LoaderComponent;
   constructor(private loaderService: LoaderService) {
       this.loaderService.use(this.globalLoader); // set global loader
   }
@@ -537,8 +534,7 @@ export class MyApp {
     this.loaderService.wait(new Promise((resolve) =&gt; setTimeout(resolve, 2000)), this.localLoader);
     // this.localLoader.wait(new Promise((resolve) =&gt; setTimeout(resolve, 2000))); // alternative way
   }
-}</code></p>
-<p>The advantage of local loaders is that you can place them in specific places of your template to only &quot;disable&quot; a part of your site while loading and not the whole page.
+}</code></pre></div><p>The advantage of local loaders is that you can place them in specific places of your template to only &quot;disable&quot; a part of your site while loading and not the whole page.
 See the commented out line in localLoader for a direct way to trigger a loader without the service.</p>
 <h1 id="how-it-works">How it works</h1>
 <p>Each time .wait is called on the LoaderService, the target loader throws the given promise on a stack. When all promises on the stack have been resolved, the loader is hidden. This is better than just a boolean switch because multiple loading activies do not interfere with each other.</p>
@@ -652,6 +648,7 @@ export class LoaderComponent {
 
 
 
+                   
 
 
 
@@ -674,6 +671,7 @@ export class LoaderComponent {
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
             var COMPODOC_CURRENT_PAGE_URL = 'LoaderComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

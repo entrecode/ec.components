@@ -62,9 +62,9 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
   /** The crud pop with the list to select from */
   @ViewChild('dropdown', { static: true }) dropdown: PopComponent;
   /** The nested resource list in the dropdown */
-  @ViewChild('dropdownList', { static: false }) dropdownList: ResourceListComponent;
+  @ViewChild('dropdownList') dropdownList: ResourceListComponent;
   /** The nested resource pop for editing and creating */
-  @ViewChild(ResourcePopComponent, { static: false }) resourcePop: ResourcePopComponent;
+  @ViewChild(ResourcePopComponent) resourcePop: ResourcePopComponent;
   /** The nested resource list pop */
   @ViewChild(ResourceListPopComponent, { static: true }) resourceListPop: ResourceListPopComponent;
   /** The config of the dropdown pop */

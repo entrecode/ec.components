@@ -1,7 +1,16 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Item } from '@ec.components/core';
 import { ListComponent } from './list.component';
-import { listModuleConfig } from './list.module';
+import {
+  ListConfigService,
+  FormModule,
+  IconModule,
+  SymbolModule,
+  UtilityModule, GroupPipe, SearchbarComponent, PaginationComponent, ListHeaderComponent,
+  ListItemsComponent
+} from '../../public_api';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { Item } from '@ec.components/core';
 /* import { mocked } from '../../mocks/data'; */
 
 describe('ListComponent', () => {
@@ -9,7 +18,18 @@ describe('ListComponent', () => {
   let fixture: ComponentFixture<ListComponent<any>>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule(listModuleConfig).compileComponents();
+    TestBed.configureTestingModule({
+      declarations: [
+        ListComponent,
+        ListItemsComponent,
+        ListHeaderComponent,
+        PaginationComponent,
+        SearchbarComponent,
+        GroupPipe,
+      ],
+      imports: [CommonModule, FormsModule, FormModule, IconModule, SymbolModule, UtilityModule],
+      providers: [ListConfigService],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
