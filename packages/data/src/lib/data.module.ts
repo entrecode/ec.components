@@ -26,7 +26,7 @@ import { SdkModule } from './sdk/sdk.module';
 import { EntryListSelectComponent } from './entry-list-select/entry-list-select.component';
 import { EntryActionbarComponent } from './entry-actionbar/entry-actionbar.component';
 
-export const dataModuleConfig = {
+@NgModule({
   entryComponents: [
     DefaultEntryInputComponent,
     DefaultEntryOutputComponent,
@@ -51,7 +51,16 @@ export const dataModuleConfig = {
     EntryActionbarComponent,
     EntryListPopComponent,
   ],
-  imports: [FormsModule, CommonModule, UiModule, SdkModule, FilesModule, AuthModule, ResourceModule, DndModule],
+  imports: [
+    FormsModule,
+    CommonModule,
+    UiModule,
+    SdkModule,
+    FilesModule,
+    AuthModule,
+    ResourceModule,
+    DndModule
+  ],
   exports: [
     EntryListComponent,
     EntryDirective,
@@ -83,11 +92,9 @@ export const dataModuleConfig = {
       },
     },
   ],
-};
-
-@NgModule(dataModuleConfig)
+})
 export class DataModule {
-  static forEnvironment(environment): ModuleWithProviders {
+  static forEnvironment(environment): ModuleWithProviders<DataModule> {
     return {
       ngModule: DataModule,
       providers: [
@@ -103,5 +110,5 @@ export class DataModule {
       ],
     };
   }
-  constructor() {}
+  constructor() { }
 }

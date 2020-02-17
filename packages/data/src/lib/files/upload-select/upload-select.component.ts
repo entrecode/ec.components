@@ -25,7 +25,7 @@ export class UploadSelectComponent implements OnInit {
   @Output() browse: EventEmitter<void> = new EventEmitter();
   @Input() config: CrudConfig<DMAssetResource | PublicAssetResource>;
   /** The nested upload component */
-  @ViewChild(UploadComponent, { static: false }) uploader: UploadComponent;
+  @ViewChild(UploadComponent) uploader: UploadComponent;
   /** The Url to upload from */
   urlsToUpload = '';
   /** Wether or not the url input should be visible */

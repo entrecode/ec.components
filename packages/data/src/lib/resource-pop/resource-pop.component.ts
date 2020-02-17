@@ -32,7 +32,7 @@ export class ResourcePopComponent extends PopComponent {
   /** CrudConfig for customizing the entry-form and the pop.*/
   @Input() config: CrudConfig<Resource> = {};
   /** The entry form inside the view */
-  @ViewChild(ResourceFormComponent, { static: false }) form: ResourceFormComponent;
+  @ViewChild(ResourceFormComponent) form: ResourceFormComponent;
   /** The API Connector that possesses the resource list, see https://entrecode.github.io/ec.sdk/#api-connectors */
   @Input() api: Core; // sdk api connector
   /** The name of the resource. If given, the generic ListResource loading will be used (api.resourceList) */

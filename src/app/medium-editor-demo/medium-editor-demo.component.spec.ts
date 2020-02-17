@@ -1,7 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MediumEditorDemoComponent } from './medium-editor-demo.component';
-import { demoModuleConfig } from '../demo.module';
+import { demoModuleConfig } from '../demo.module.config';
+
 
 describe('MediumEditorDemoComponent', () => {
   let component: MediumEditorDemoComponent;

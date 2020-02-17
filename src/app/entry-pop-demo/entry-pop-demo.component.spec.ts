@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EntryPopDemoComponent } from './entry-pop-demo.component';
-import { demoModuleConfig } from '../demo.module';
+import { demoModuleConfig } from '../demo.module.config';
 
 describe('EntryPopDemoComponent', () => {
   let component: EntryPopDemoComponent;

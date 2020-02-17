@@ -38,6 +38,11 @@ export * from './lib/list/searchbar/searchbar.component';
 export * from './lib/list/group.pipe';
 export * from './lib/list/list.module';
 
+export * from './lib/io/io.module';
+export * from './lib/io/slot-host.directive';
+export * from './lib/io/dynamic-slot/dynamic-slot.component';
+export * from './lib/io/dynamic-rack/dynamic-rack.component';
+export * from './lib/io/input-errors/input-errors.component';
 export * from './lib/io/input/input.component';
 export * from './lib/io/output/output.component';
 

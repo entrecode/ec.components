@@ -67,15 +67,15 @@ export class EntrySelectComponent extends SelectComponent<EntryResource> impleme
   // tslint:disable-next-line:no-input-rename
   @Input('config') crudConfig: CrudConfig<EntryResource>;
   /** The dropdown pop with the list to select from */
-  @ViewChild('dropdown', { static: false }) dropdown: PopComponent;
+  @ViewChild('dropdown') dropdown: PopComponent;
   /** The nested entry pop */
-  @ViewChild(EntryPopComponent, { static: false }) entryPop: EntryPopComponent;
+  @ViewChild(EntryPopComponent) entryPop: EntryPopComponent;
   /** The nested entry list pop */
   @ViewChild(EntryListPopComponent, { static: true }) entryListPop: EntryListPopComponent;
   /** The nested full EntryListComponent */
-  @ViewChild('dropdownList', { static: false }) dropdownList: any;
+  @ViewChild('dropdownList') dropdownList: any;
   /** The nested searchbar */
-  @ViewChild(SearchbarComponent, { static: false }) searchbar: SearchbarComponent;
+  @ViewChild(SearchbarComponent) searchbar: SearchbarComponent;
   /** THe nested delete confirmation pop */
   @ViewChild(ResourceDeletePopComponent, { static: true }) confirmDelete: ResourceDeletePopComponent;
   /** Emits when an entry is being removed */

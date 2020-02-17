@@ -39,7 +39,7 @@ export class EntryListSelectComponent extends InputComponent implements ControlV
   /** The config for the entry list */
   @Input() listConfig: CrudConfig<EntryResource>;
   /** The nested entryList */
-  @ViewChild(EntryListComponent, { static: false }) entryList: EntryListComponent;
+  @ViewChild(EntryListComponent) entryList: EntryListComponent;
   /** The current selected entries */
   items: EntryResource[];
   /** The config for the selection list. */

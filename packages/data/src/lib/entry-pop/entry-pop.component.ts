@@ -33,7 +33,7 @@ export class EntryPopComponent extends PopComponent implements OnInit {
   /** CrudConfig for customizing the entry-form and the pop.*/
   @Input() config: CrudConfig<EntryResource> = {};
   /** The entry form inside the view */
-  @ViewChild(EntryFormComponent, { static: false }) form: EntryFormComponent;
+  @ViewChild(EntryFormComponent) form: EntryFormComponent;
   /** The model that should be edited/created*/
   @Input() model: string;
   /** The entry that should be used in the form. Is also set by edit.*/

@@ -34,7 +34,7 @@ export class ResourceCrudComponent<T> implements OnInit, WithLoader {
   /** The selection that should be used */
   @Input() selection: Selection<T>;
   /** The ResourceListComponent inside the template. */
-  @ViewChild(ResourceListComponent, { static: false }) list: ResourceListComponent;
+  @ViewChild(ResourceListComponent) list: ResourceListComponent;
   /** The Pop inside the template. */
   @ViewChild(ResourcePopComponent, { static: true }) pop: ResourcePopComponent;
   /** The lists loader */

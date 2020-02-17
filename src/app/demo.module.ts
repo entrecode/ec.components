@@ -67,7 +67,7 @@ import { KeycommandsDemoComponent } from './keycommands/keycommands-demo.compone
 import { MenuComponent } from './menu/menu.component';
 /* import { CalendarModule } from '../../packages/calendar/src/calendar.module'; */
 
-export const demoModuleConfig = {
+@NgModule({
   entryComponents: [CoolStringComponent, UnsplashImageComponent, CounterComponent, TinyInputComponent],
   declarations: [
     GithubSourceComponent,
@@ -155,9 +155,7 @@ export const demoModuleConfig = {
     },
   ],
   bootstrap: [DemoComponent],
-};
-
-@NgModule(demoModuleConfig)
+})
 export class DemoModule {
   constructor() /* private symbol: SymbolService */ {
     /* this.symbol.use(en); */

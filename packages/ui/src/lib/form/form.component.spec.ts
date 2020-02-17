@@ -1,13 +1,35 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormComponent } from './form.component';
-import { uiModuleConfig } from '../ui.module';
+import {
+  SymbolModule,
+  IconModule,
+  SelectModule,
+  ListModule,
+  FormModule,
+  LoaderModule,
+  PopModule,
+  NotificationsModule,
+  UtilityModule
+} from '@ec.components/ui/public_api';
 
 describe('FormComponent', () => {
   let component: FormComponent<any>;
   let fixture: ComponentFixture<FormComponent<any>>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule(uiModuleConfig).compileComponents();
+    TestBed.configureTestingModule({
+      imports: [
+        UtilityModule,
+        NotificationsModule,
+        PopModule,
+        LoaderModule,
+        FormModule,
+        ListModule,
+        SelectModule,
+        IconModule,
+        SymbolModule,
+      ]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

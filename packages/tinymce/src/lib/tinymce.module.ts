@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { TinymceComponent } from './tinymce/tinymce.component';
 
-export const tinymceModuleConfig = {
+@NgModule({
   declarations: [TinymceComponent],
   entryComponents: [TinymceComponent],
   exports: [TinymceComponent],
-};
-
-@NgModule(tinymceModuleConfig)
+})
 export class TinymceModule {}

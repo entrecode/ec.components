@@ -265,8 +265,10 @@ export class MonthComponent implements OnInit, OnChanges {
     if (!date) {
       this.date = this.selectSpan ? this.selectSpan[1].clone() : moment();
     }
-    this.formatted = this.date.format(this.monthFormat);
-    this.cells = this.getMonth(this.date.clone(), 'current');
+    setTimeout(() => {
+      this.formatted = this.date.format(this.monthFormat);
+      this.cells = this.getMonth(this.date.clone(), 'current');
+    });
   }
 
   /** Selects the day of the given moment. */
@@ -311,7 +313,7 @@ export class MonthComponent implements OnInit, OnChanges {
   }
 
   canAlter(value, span: string) {
-    const newDate = this.date.clone().add(value, span);
+    const newDate = this.date?.clone().add(value, span);
     return this.isSelectable(newDate, 'months');
   }
 

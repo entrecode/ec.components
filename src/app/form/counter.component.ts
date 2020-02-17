@@ -7,6 +7,8 @@ import { ControlValueAccessor } from '@angular/forms';
   templateUrl: './counter.component.html',
 })
 export class CounterComponent extends InputComponent implements ControlValueAccessor {
+  // TODO: add explicit constructor
+
   value = 0;
 
   increment() {
