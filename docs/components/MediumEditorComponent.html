@@ -393,8 +393,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="63"
-                            class="link-to-prism">packages/medium-editor/src/lib/medium-editor.component.ts:63</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="66"
+                            class="link-to-prism">packages/medium-editor/src/lib/medium-editor.component.ts:66</a></div>
                 </td>
             </tr>
 
@@ -475,8 +475,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="77"
-                            class="link-to-prism">packages/medium-editor/src/lib/medium-editor.component.ts:77</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="83"
+                            class="link-to-prism">packages/medium-editor/src/lib/medium-editor.component.ts:83</a></div>
                 </td>
             </tr>
 
@@ -541,8 +541,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="81"
-                            class="link-to-prism">packages/medium-editor/src/lib/medium-editor.component.ts:81</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="87"
+                            class="link-to-prism">packages/medium-editor/src/lib/medium-editor.component.ts:87</a></div>
                 </td>
             </tr>
 
@@ -580,8 +580,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="68"
-                            class="link-to-prism">packages/medium-editor/src/lib/medium-editor.component.ts:68</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="71"
+                            class="link-to-prism">packages/medium-editor/src/lib/medium-editor.component.ts:71</a></div>
                 </td>
             </tr>
 
@@ -731,7 +731,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">packages/medium-editor/src/lib/medium-editor.component.ts:75</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="81" class="link-to-prism">packages/medium-editor/src/lib/medium-editor.component.ts:81</a></div>
                             </td>
                         </tr>
 
@@ -866,6 +866,9 @@ export class MediumEditorComponent implements OnInit, OnDestroy, ControlValueAcc
     this.container.nativeElement.innerHTML &#x3D; this.model || &#x27;&#x27;;
     this.options.placeholder &#x3D; this.placeholder;
     this.editor &#x3D; new MediumEditor(this.container.nativeElement, this.options);
+    if (this.value) { // if writeValue happened before init &#x3D;&gt; use value
+      this.editor.setContent(this.value);
+    }
     this.editor.subscribe(&#x27;editableInput&#x27;, () &#x3D;&gt; {
       this.value &#x3D; this.editor.getContent();
       this.propagateChange(this.value);
@@ -880,18 +883,21 @@ export class MediumEditorComponent implements OnInit, OnDestroy, ControlValueAcc
   /** Writes value to editor on outside model change. */
   writeValue(value: any) {
     this.value &#x3D; value || &#x27;&#x27;;
+    if (!this.ready) {
+      return;
+    }
     this.ready.then((editor) &#x3D;&gt; {
       editor.setContent(this.value);
     });
   }
 
-  propagateChange &#x3D; (_: any) &#x3D;&gt; {};
+  propagateChange &#x3D; (_: any) &#x3D;&gt; { };
 
   registerOnChange(fn) {
     this.propagateChange &#x3D; fn;
   }
 
-  registerOnTouched() {}
+  registerOnTouched() { }
 }
 </code></pre>
     </div>
