@@ -10,7 +10,7 @@ import classnames from 'classnames';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import withBaseUrl from '@docusaurus/withBaseUrl';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './styles.module.css';
 
 const highlights = [
@@ -51,7 +51,7 @@ function Home() {
       description="Description will go into a meta tag in <head />">
       <header className={classnames('hero hero--dark', styles.header)}>
         <div className="container">
-          <img src={withBaseUrl('img/ec_logo.png')} alt="logo" />
+          <img src={useBaseUrl('img/ec_logo.png')} alt="logo" />
           <h1 className="hero__title">{siteConfig.title}</h1>
           <p className="hero__subtitle">{siteConfig.tagline}</p>
           <div className={styles.buttons}>
@@ -60,7 +60,7 @@ function Home() {
                 'button button--outline button--primary button--lg',
                 styles.getStarted,
               )}
-              to={withBaseUrl('docs/project-setup/overview')}>
+              to={useBaseUrl('docs/project-setup/overview')}>
               Overview
             </Link>
             {/* <Link
@@ -68,7 +68,7 @@ function Home() {
                 'button button--outline button--primary button--lg',
                 styles.getStarted,
               )}
-              to={withBaseUrl('docs/project-setup/getting-started')}>
+              to={useBaseUrl('docs/project-setup/getting-started')}>
               Get Started
             </Link> */}
           </div>
@@ -83,7 +83,7 @@ function Home() {
                   <div
                     key={`landing-page-highlight-${idx}`}
                     className={classnames('col col--4', styles.highlight)}>
-                    <img src={withBaseUrl(imageUrl)} alt={title} />
+                    <img src={useBaseUrl(imageUrl)} alt={title} />
                     <h3>{title}</h3>
                     <p>{description}</p>
                   </div>
