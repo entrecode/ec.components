@@ -53,6 +53,9 @@ export class MediumEditorComponent implements OnInit, OnDestroy, ControlValueAcc
     this.container.nativeElement.innerHTML = this.model || '';
     this.options.placeholder = this.placeholder;
     this.editor = new MediumEditor(this.container.nativeElement, this.options);
+    if (this.value) { // if writeValue happened before init => use value
+      this.editor.setContent(this.value);
+    }
     this.editor.subscribe('editableInput', () => {
       this.value = this.editor.getContent();
       this.propagateChange(this.value);
@@ -67,16 +70,19 @@ export class MediumEditorComponent implements OnInit, OnDestroy, ControlValueAcc
   /** Writes value to editor on outside model change. */
   writeValue(value: any) {
     this.value = value || '';
+    if (!this.ready) {
+      return;
+    }
     this.ready.then((editor) => {
       editor.setContent(this.value);
     });
   }
 
-  propagateChange = (_: any) => {};
+  propagateChange = (_: any) => { };
 
   registerOnChange(fn) {
     this.propagateChange = fn;
   }
 
-  registerOnTouched() {}
+  registerOnTouched() { }
 }
