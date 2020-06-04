@@ -231,6 +231,14 @@
                                 </li>
                                 <li>
                                             <span class="modifier">Optional</span>
+                                        <a href="#showDescription">showDescription</a>
+                                </li>
+                                <li>
+                                            <span class="modifier">Optional</span>
+                                        <a href="#showTitle">showTitle</a>
+                                </li>
+                                <li>
+                                            <span class="modifier">Optional</span>
                                         <a href="#sort">sort</a>
                                 </li>
                                 <li>
@@ -277,7 +285,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="116" class="link-to-prism">packages/core/src/lib/config/field-config-property.interface.ts:116</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="120" class="link-to-prism">packages/core/src/lib/config/field-config-property.interface.ts:120</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -1737,6 +1745,86 @@ e.g. transforms &quot;A,B,C&quot; to [&#39;A&#39;,&#39;B&#39;,&#39;C&#39;] </p>
                         <tbody>
                                 <tr>
                                     <td class="col-md-4">
+                                        <a name="showDescription"></a>
+                                        <span class="name"><b>showDescription</b><a href="#showDescription"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>showDescription:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>If true, the field description will be shown below the label (if any) </p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <a name="showTitle"></a>
+                                        <span class="name"><b>showTitle</b><a href="#showTitle"><span class="icon ion-ios-link"></span></a></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-4">
+                                        <code>showTitle:         <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+</code>
+                                    </td>
+                                </tr>
+
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="col-md-4">
+                                            <i>Optional</i>
+                                        </td>
+                                    </tr>
+
+
+
+
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-description"><p>If true, the field title will be shown beside the label (if any) </p>
+</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-4">
                                         <a name="sort"></a>
                                         <span class="name"><b>sort</b><a href="#sort"><span class="icon ion-ios-link"></span></a></span>
                                     </td>
@@ -2128,6 +2216,10 @@ export interface FieldConfigProperty {
   hideInColumnFilter?: boolean;
   /** If true, the field wont be shown in the form */
   hideInForm?: boolean;
+  /** If true, the field title will be shown beside the label (if any) */
+  showTitle?: boolean;
+  /** If true, the field description will be shown below the label (if any) */
+  showDescription?: boolean;
   /** If true, the field will be hidden in the list (but still be loaded) */
   /* hideInList?: boolean; */
   /** is fired when the value changes in a form */

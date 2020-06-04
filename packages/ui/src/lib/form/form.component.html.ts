@@ -18,7 +18,7 @@ export const formTemplate = `
               [for]="field.id"
               [title]="field.property"
               class="field-group__label"
-              >{{field.label || field.property}}</label
+              >{{field.label || field.property}}<i *ngIf="showTitle(field,form)"> {{field.property}}</i></label
             >
             <ec-input
               [field]="field"
@@ -27,6 +27,7 @@ export const formTemplate = `
               [component]="field.getComponent('form')||field.input"
               [formControl]="group.get(field.property)"
             ></ec-input>
+            <p *ngIf="field.description && field.showDescription">{{field.description}}</p>
           </div>
         </div>
       </div>

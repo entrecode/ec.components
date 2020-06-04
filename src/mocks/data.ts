@@ -96,10 +96,10 @@ export const mocked = {
           resolve: (body) => {
             return body.music
               ? Math.round(
-                  (body.music.measures.reduce((chords, measure) => chords.concat(measure), []).length /
-                    body.music.measures.length) *
-                    10,
-                ) / 10
+                (body.music.measures.reduce((chords, measure) => chords.concat(measure), []).length /
+                  body.music.measures.length) *
+                10,
+              ) / 10
               : 0;
           },
         },
@@ -109,8 +109,8 @@ export const mocked = {
           resolve: (body) => {
             return body.music
               ? body.music.measures
-                  .reduce((chords, measure) => chords.concat(measure), [])
-                  .filter((v, i, a) => a.indexOf(v) === i).length
+                .reduce((chords, measure) => chords.concat(measure), [])
+                .filter((v, i, a) => a.indexOf(v) === i).length
               : 0;
           },
           sortable: true,
@@ -191,6 +191,9 @@ export const mocked = {
         defaultFilter: 'name',
         fields: {
           name: {
+            showTitle: true,
+            showDescription: true,
+            description: 'Name biiiiitte',
             filterable: true,
             label: 'Name',
             view: 'string',

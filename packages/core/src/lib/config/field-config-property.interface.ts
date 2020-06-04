@@ -108,6 +108,10 @@ export interface FieldConfigProperty {
   hideInColumnFilter?: boolean;
   /** If true, the field wont be shown in the form */
   hideInForm?: boolean;
+  /** If true, the field title will be shown beside the label (if any) */
+  showTitle?: boolean;
+  /** If true, the field description will be shown below the label (if any) */
+  showDescription?: boolean;
   /** If true, the field will be hidden in the list (but still be loaded) */
   /* hideInList?: boolean; */
   /** is fired when the value changes in a form */
