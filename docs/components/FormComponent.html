@@ -227,6 +227,9 @@
                                 <a href="#showSubmitButton">showSubmitButton</a>
                             </li>
                             <li>
+                                <a href="#showTitle">showTitle</a>
+                            </li>
+                            <li>
                                 <a href="#submit">submit</a>
                             </li>
                         </ul>
@@ -1190,8 +1193,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="257"
-                            class="link-to-prism">packages/ui/src/lib/form/form.component.ts:257</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="265"
+                            class="link-to-prism">packages/ui/src/lib/form/form.component.ts:265</a></div>
                 </td>
             </tr>
 
@@ -1279,8 +1282,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="249"
-                            class="link-to-prism">packages/ui/src/lib/form/form.component.ts:249</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="257"
+                            class="link-to-prism">packages/ui/src/lib/form/form.component.ts:257</a></div>
                 </td>
             </tr>
 
@@ -1804,6 +1807,83 @@ You can also pass just an item to use its config and body.</p>
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showTitle"></a>
+                    <span class="name">
+                        <b>
+                            showTitle
+                        </b>
+                        <a href="#showTitle"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>showTitle(field, form)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="249"
+                            class="link-to-prism">packages/ui/src/lib/form/form.component.ts:249</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Determines if the field labels should always show the field title (EDITOR-431) </p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>field</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>form</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
                     </div>
                 </td>
             </tr>
@@ -2363,6 +2443,14 @@ export class FormComponent&lt;T&gt; implements OnChanges, WithLoader, WithNotifi
       return false;
     }
     return !field.hideFormLabel &amp;&amp; (!field.hideFormLabelIfEmpty || !!form.resolve(field.property));
+  }
+
+  /** Determines if the field labels should always show the field title (EDITOR-431) */
+  showTitle(field, form) {
+    if (!field || !form) {
+      return false;
+    }
+    return field.label &amp;&amp; field.showTitle;
   }
 
   /** Returns the current value of the form control group. When passing a property, it directly returns the property value. */
