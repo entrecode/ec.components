@@ -250,7 +250,7 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
     if (!field || !form) {
       return false;
     }
-    return field.label && field.showTitle;
+    return field.label && field.showTitle && field.title !== field.label;
   }
 
   /** Returns the current value of the form control group. When passing a property, it directly returns the property value. */
