@@ -245,12 +245,12 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
     return !field.hideFormLabel && (!field.hideFormLabelIfEmpty || !!form.resolve(field.property));
   }
 
-  /** Determines if the field labels should always show the field title (EDITOR-431) */
+  /** Determines if the field labels should always show the field property (EDITOR-431) */
   showTitle(field, form) {
     if (!field || !form) {
       return false;
     }
-    return field.label && field.showTitle && field.title !== field.label;
+    return field.label && field.showTitle && field.property !== field.label;
   }
 
   /** Returns the current value of the form control group. When passing a property, it directly returns the property value. */
