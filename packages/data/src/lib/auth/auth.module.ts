@@ -10,7 +10,7 @@ import { PasswordResetComponent } from './password-reset/password-reset.componen
 import { SignupComponent } from './signup/signup.component';
 
 /** loads CookieModule */
-export function cookieFactory(): ModuleWithProviders {
+export function cookieFactory(): ModuleWithProviders<CookieModule> {
   // https://github.com/auth0/angular2-jwt/issues/305
   return CookieModule.forRoot();
 }
