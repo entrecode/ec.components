@@ -1155,6 +1155,72 @@
     is-absolute "^1.0.0"
     is-negated-glob "^1.0.0"
 
+"@ec.components/ace@*":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@ec.components/ace/-/ace-0.7.0.tgz#e77020c79fc7f0fefd19fe8223c2af53e3f6c687"
+  integrity sha512-04kmmYvk0jdg6XNdLdu6VE1gsqfKO4A6P9JSG99CfmallLWBZJ0avo1rVq8FcY0yIle6zGMKgRb705kbcI1FYw==
+  dependencies:
+    ace-builds "^1.4.2"
+
+"@ec.components/calendar@*", "@ec.components/calendar@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@ec.components/calendar/-/calendar-0.3.0.tgz#c53b9d12c4c67e67c4b32ccb05dbc2a16bb890d1"
+  integrity sha512-yKK8mT7z7mcHtIvw8myXb/5prEQQgobY9kT8uJMgoNlTKrnevRCRbnnoIhPe+mgNxqrgtMjNh9PtQke4QLXSKQ==
+  dependencies:
+    moment-es6 "^1.0.0"
+
+"@ec.components/core@*", "@ec.components/core@^0.31.1":
+  version "0.31.1"
+  resolved "https://registry.yarnpkg.com/@ec.components/core/-/core-0.31.1.tgz#0cf20d62201a9846cdc21ef8e145654e734236fd"
+  integrity sha512-ETf21FQf+4cEtRdI7zVvNg8k2nhA+Ai3kS1kgL9Tsc59EW7V67aydKWu1nTk0CZG+YDtzIociHKLg1LzbOZZUA==
+
+"@ec.components/data@*":
+  version "0.54.3"
+  resolved "https://registry.yarnpkg.com/@ec.components/data/-/data-0.54.3.tgz#d738c7fb86ad1d09e26f53247ac912df0124d969"
+  integrity sha512-pFPw85N2iiZI1Qg41oWEkEBwlowhI8rZSKMBVf7NvRziDe9zjXoIzl40UAYQ8044E1x35dvhofwumrnrsYM7QQ==
+  dependencies:
+    "@ec.components/core" "^0.31.1"
+    "@ec.components/ui" "^0.49.3"
+    ngx-cookie "^2.0.1"
+
+"@ec.components/location@*":
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/@ec.components/location/-/location-0.19.0.tgz#f4e6abf950d2f2f0f25f7b60d5ce536047eeb9b7"
+  integrity sha512-K8I8HyIlQ6nM6scQ+DsLJs31AipWKTFf1MK9txFo/GcOVDMZpjeZWWH8yjfZkofljc9ZfMSgL/NH9Tq4jhKJcA==
+  dependencies:
+    "@agm/core" "1.1.0"
+    googlemaps "^1.12.0"
+
+"@ec.components/medium-editor@*":
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/@ec.components/medium-editor/-/medium-editor-0.5.2.tgz#9454c8cf3bc696bc77c649d4bc723c8132505233"
+  integrity sha512-Zd5GBICjxi3N1mqluPIsLR/c99FY/lQrD+YHbFkhz1plRmaEp8k0KRlw1OoDJy/YrsTqFp/TdS8KQ/BstBdeug==
+  dependencies:
+    medium-editor "^5.23.2"
+
+"@ec.components/style@*":
+  version "0.23.8"
+  resolved "https://registry.yarnpkg.com/@ec.components/style/-/style-0.23.8.tgz#b014f9e0f6a579e6f47c4937479f6c05aec2a8fb"
+  integrity sha512-KMQ1tDCJVqQnfu/sQZOZepoe6j77SgByFoWQnz55Fszm7vzZIxrtrgo+eCDr7rjMa9fN9/KUCs28y8t1EoGFaw==
+  dependencies:
+    x.ui "10.0.1"
+
+"@ec.components/tinymce@*":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@ec.components/tinymce/-/tinymce-0.6.0.tgz#842e18009447ef830e5a5aca3fb01037d5ad5ad2"
+  integrity sha512-tt3i0dtnZU2j+07GZlkcOeXLDBtcOg0lrgrmuwPmCeuno2gOR+ifZiiJkpI99Y3BHMbD8D81aftqtotSmcBAxw==
+  dependencies:
+    tinymce "4.7.4"
+
+"@ec.components/ui@*", "@ec.components/ui@^0.49.3":
+  version "0.49.3"
+  resolved "https://registry.yarnpkg.com/@ec.components/ui/-/ui-0.49.3.tgz#fe2ed10f6ae69cda63a4551c4710aed57df391ba"
+  integrity sha512-/GGnZmo2rX1vhYiHDAWww34l+4xgGXzky9zadAqTiZOs1848cdaqcpYbbGzhFjdgaZBx6E5ENVFmm2usblx4xw==
+  dependencies:
+    "@ec.components/calendar" "^0.3.0"
+    "@ec.components/core" "^0.31.1"
+    ngx-drag-drop "^2.0.0"
+
 "@evocateur/libnpmaccess@^3.1.2":
   version "3.1.2"
   resolved "https://registry.npmjs.org/@evocateur/libnpmaccess/-/libnpmaccess-3.1.2.tgz#ecf7f6ce6b004e9f942b098d92200be4a4b1c845"
@@ -13556,9 +13622,9 @@ tinymce@4.7.4:
   integrity sha1-HX67GSqhwjjLn8g1A3bC6i77iJE=
 
 tinymce@^4.9.8:
-  version "4.9.8"
-  resolved "https://registry.npmjs.org/tinymce/-/tinymce-4.9.8.tgz#1f470a9defe3b52845fd51147cb226d44740750e"
-  integrity sha512-587xEh2+otXUNz4FVC8vBogMWpCxhiUIKNYQwOuqao9CHtCVXGHnK2rpEQHE6RsSTLsERpoMsAVte3K6KXoGzQ==
+  version "4.9.11"
+  resolved "https://registry.yarnpkg.com/tinymce/-/tinymce-4.9.11.tgz#e3dae099722294c5b8d84ba7ef18dd126de6b582"
+  integrity sha512-nkSLsax+VY5DBRjMFnHFqPwTnlLEGHCco82FwJF2JNH6W+5/ClvNC1P4uhD5lXPDNiDykSHR0XJdEh7w/ICHzA==
 
 tmp@0.0.30:
   version "0.0.30"
