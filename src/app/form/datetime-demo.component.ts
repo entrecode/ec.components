@@ -10,6 +10,8 @@ import moment from 'moment-es6';
     <h2>Calendar: {{ calendar.value }}</h2>
     <p>controls + month grid inside</p>
     <ec-calendar #calendar></ec-calendar>
+    <p>disablePast = true</p>
+    <ec-calendar [disablePast]="true"></ec-calendar>
     <button (click)="changeMonth()">change month</button>
     <h2>Month</h2>
     <p>Just month grid</p>

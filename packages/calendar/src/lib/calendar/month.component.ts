@@ -45,6 +45,8 @@ export class MonthComponent implements OnInit, OnChanges {
   @Input() timespan: moment.Moment[];
   /** Timespan in which the dates can be selected. */
   @Input() selectSpan: moment.Moment[];
+  /** If true, past dates cannot be selected */
+  @Input() disablePast: boolean;
   /** The current date (for showing month) */
   @Input() date: moment.Moment;
   /** The color of days that are inside the timespan */
@@ -309,6 +311,9 @@ export class MonthComponent implements OnInit, OnChanges {
   }
 
   isSelectable(date, span = 'days') {
+    if (this.disablePast && date.diff(moment(), 'days') < 0) {
+      return false;
+    }
     return !this.selectSpan || date.isBetween(this.selectSpan[0], this.selectSpan[1], span, '[]');
   }
 
