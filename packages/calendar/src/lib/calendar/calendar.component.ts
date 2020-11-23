@@ -38,6 +38,8 @@ export class CalendarComponent extends MonthComponent implements ControlValueAcc
   @Input() disabled;
   /** If true, the time will not be displayed nor will be editable. */
   @Input() disableTime: boolean;
+  /** If true, past dates cannot be selected */
+  @Input() disablePast: boolean;
   /** Allowed date input patterns. The first one will be standard. */
   private patterns = ['DD.MM.YYYY', 'DD.MM', 'DD.MM.YY', 'MM-DD-YYYY', 'YYYY-MM-DD', 'YYYY-MM-DD'];
   /** Sets the input format of the time */
@@ -128,7 +130,7 @@ export class CalendarComponent extends MonthComponent implements ControlValueAcc
   }
 
   /** Change propagation for ControlValueAccessor */
-  propagateChange = (_: any) => {};
+  propagateChange = (_: any) => { };
 
   /** registerOnChange implementation of ControlValueAccessor */
   registerOnChange(fn) {
@@ -136,7 +138,7 @@ export class CalendarComponent extends MonthComponent implements ControlValueAcc
   }
 
   /** registerOnTouched implementation of ControlValueAccessor */
-  registerOnTouched() {}
+  registerOnTouched() { }
 
   setDisabledState(isDisabled) {
     this.disabled = isDisabled;
