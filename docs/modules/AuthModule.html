@@ -311,7 +311,7 @@ import { PasswordResetComponent } from &#x27;./password-reset/password-reset.com
 import { SignupComponent } from &#x27;./signup/signup.component&#x27;;
 
 /** loads CookieModule */
-export function cookieFactory(): ModuleWithProviders {
+export function cookieFactory(): ModuleWithProviders&lt;CookieModule&gt; {
   // https://github.com/auth0/angular2-jwt/issues/305
   return CookieModule.forRoot();
 }
