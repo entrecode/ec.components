@@ -1155,6 +1155,72 @@
     is-absolute "^1.0.0"
     is-negated-glob "^1.0.0"
 
+"@ec.components/ace@*":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@ec.components/ace/-/ace-0.7.0.tgz#e77020c79fc7f0fefd19fe8223c2af53e3f6c687"
+  integrity sha512-04kmmYvk0jdg6XNdLdu6VE1gsqfKO4A6P9JSG99CfmallLWBZJ0avo1rVq8FcY0yIle6zGMKgRb705kbcI1FYw==
+  dependencies:
+    ace-builds "^1.4.2"
+
+"@ec.components/calendar@*", "@ec.components/calendar@^0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@ec.components/calendar/-/calendar-0.3.1.tgz#bf6a63a695af32cc9a04551dd103b39a305b32f6"
+  integrity sha512-AG5ijLM0rX2iN6roxzGDoIS9jQLan/XEFBIaRfRjH7Zhn2Y0VmsVlAty2red7lvOZDK2rhkvREc0WLKnacDVXg==
+  dependencies:
+    moment-es6 "^1.0.0"
+
+"@ec.components/core@*", "@ec.components/core@^0.31.1":
+  version "0.31.1"
+  resolved "https://registry.yarnpkg.com/@ec.components/core/-/core-0.31.1.tgz#0cf20d62201a9846cdc21ef8e145654e734236fd"
+  integrity sha512-ETf21FQf+4cEtRdI7zVvNg8k2nhA+Ai3kS1kgL9Tsc59EW7V67aydKWu1nTk0CZG+YDtzIociHKLg1LzbOZZUA==
+
+"@ec.components/data@*":
+  version "0.54.4"
+  resolved "https://registry.yarnpkg.com/@ec.components/data/-/data-0.54.4.tgz#ed68991f6f94032375bfcc7326575c5aae029214"
+  integrity sha512-3OSn598m+HF3vxzB9rlkbn4RprTFbv0jhGeFgFALQE4qKVpZP6d6O9Cc9KcP2TmZM8J4ZOjZktg8XsGGI5TlZw==
+  dependencies:
+    "@ec.components/core" "^0.31.1"
+    "@ec.components/ui" "^0.49.4"
+    ngx-cookie "^2.0.1"
+
+"@ec.components/location@*":
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/@ec.components/location/-/location-0.19.0.tgz#f4e6abf950d2f2f0f25f7b60d5ce536047eeb9b7"
+  integrity sha512-K8I8HyIlQ6nM6scQ+DsLJs31AipWKTFf1MK9txFo/GcOVDMZpjeZWWH8yjfZkofljc9ZfMSgL/NH9Tq4jhKJcA==
+  dependencies:
+    "@agm/core" "1.1.0"
+    googlemaps "^1.12.0"
+
+"@ec.components/medium-editor@*":
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/@ec.components/medium-editor/-/medium-editor-0.5.2.tgz#9454c8cf3bc696bc77c649d4bc723c8132505233"
+  integrity sha512-Zd5GBICjxi3N1mqluPIsLR/c99FY/lQrD+YHbFkhz1plRmaEp8k0KRlw1OoDJy/YrsTqFp/TdS8KQ/BstBdeug==
+  dependencies:
+    medium-editor "^5.23.2"
+
+"@ec.components/style@*":
+  version "0.23.8"
+  resolved "https://registry.yarnpkg.com/@ec.components/style/-/style-0.23.8.tgz#b014f9e0f6a579e6f47c4937479f6c05aec2a8fb"
+  integrity sha512-KMQ1tDCJVqQnfu/sQZOZepoe6j77SgByFoWQnz55Fszm7vzZIxrtrgo+eCDr7rjMa9fN9/KUCs28y8t1EoGFaw==
+  dependencies:
+    x.ui "10.0.1"
+
+"@ec.components/tinymce@*":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@ec.components/tinymce/-/tinymce-0.6.0.tgz#842e18009447ef830e5a5aca3fb01037d5ad5ad2"
+  integrity sha512-tt3i0dtnZU2j+07GZlkcOeXLDBtcOg0lrgrmuwPmCeuno2gOR+ifZiiJkpI99Y3BHMbD8D81aftqtotSmcBAxw==
+  dependencies:
+    tinymce "4.7.4"
+
+"@ec.components/ui@*", "@ec.components/ui@^0.49.4":
+  version "0.49.4"
+  resolved "https://registry.yarnpkg.com/@ec.components/ui/-/ui-0.49.4.tgz#46dff0116c8e6d04ed6254da97cde01cf0f49c18"
+  integrity sha512-GPDJNBqHyOmirZd832GxlVgUHDcpRCuSpYofgZgNA/X9wPdoggBw0aBJlIMFi9a6aaNVGpdQZbqba7qXpbQ5gQ==
+  dependencies:
+    "@ec.components/calendar" "^0.3.1"
+    "@ec.components/core" "^0.31.1"
+    ngx-drag-drop "^2.0.0"
+
 "@evocateur/libnpmaccess@^3.1.2":
   version "3.1.2"
   resolved "https://registry.npmjs.org/@evocateur/libnpmaccess/-/libnpmaccess-3.1.2.tgz#ecf7f6ce6b004e9f942b098d92200be4a4b1c845"
@@ -3409,10 +3475,10 @@ bluebird@^3.5.5:
   resolved "https://registry.npmjs.org/bluebird/-/bluebird-3.7.2.tgz#9f229c15be272454ffa973ace0dbee79a1b0c36f"
   integrity sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg==
 
-bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.1.1, bn.js@^4.4.0:
-  version "4.11.8"
-  resolved "https://registry.npmjs.org/bn.js/-/bn.js-4.11.8.tgz#2cde09eb5ee341f484746bb0309b3253b1b1442f"
-  integrity sha512-ItfYfPLkWHUjckQCk8xC+LwxgK8NYcXywGigJgSwOP8Y2iyWT4f2vsZnoOXTTbo+o5yXmIUJ4gn5538SO5S3gA==
+bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.1.1, bn.js@^4.11.9:
+  version "4.12.0"
+  resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-4.12.0.tgz#775b3f278efbb9718eec7361f483fb36fbbfea88"
+  integrity sha512-c98Bf3tPniI+scsdk237ku1Dc3ujXQTSgyiPUDEOe7tRkhrqridvh8klBv0HCEso1OLOYcHuCv/cS6DNxKH+ZA==
 
 body-parser@1.19.0, body-parser@^1.16.1:
   version "1.19.0"
@@ -3519,9 +3585,9 @@ brfs@^2.0.2:
     static-module "^3.0.2"
     through2 "^2.0.0"
 
-brorand@^1.0.1:
+brorand@^1.0.1, brorand@^1.1.0:
   version "1.1.0"
-  resolved "https://registry.npmjs.org/brorand/-/brorand-1.1.0.tgz#12c25efe40a45e3c323eb8675a0a0ce57b22371f"
+  resolved "https://registry.yarnpkg.com/brorand/-/brorand-1.1.0.tgz#12c25efe40a45e3c323eb8675a0a0ce57b22371f"
   integrity sha1-EsJe/kCkXjwyPrhnWgoM5XsiNx8=
 
 brotli@^1.2.0:
@@ -5624,17 +5690,17 @@ electron-to-chromium@^1.3.322, electron-to-chromium@^1.3.349:
   integrity sha512-uEb2zs6EJ6OZIqaMsCSliYVgzE/f7/s1fLWqtvRtHg/v5KBF2xds974fUnyatfxIDgkqzQVwFtam5KExqywx0Q==
 
 elliptic@^6.0.0:
-  version "6.4.1"
-  resolved "https://registry.npmjs.org/elliptic/-/elliptic-6.4.1.tgz#c2d0b7776911b86722c632c3c06c60f2f819939a"
-  integrity sha512-BsXLz5sqX8OHcsh7CqBMztyXARmGQ3LWPtGjJi6DiJHq5C/qvi9P3OqgswKSDftbu8+IoI/QDTAm2fFnQ9SZSQ==
+  version "6.5.4"
+  resolved "https://registry.yarnpkg.com/elliptic/-/elliptic-6.5.4.tgz#da37cebd31e79a1367e941b592ed1fbebd58abbb"
+  integrity sha512-iLhC6ULemrljPZb+QutR5TQGB+pdW6KGD5RSegS+8sorOZT+rdQFbsQFJgvN3eRqNALqJer4oQ16YvJHlU8hzQ==
   dependencies:
-    bn.js "^4.4.0"
-    brorand "^1.0.1"
+    bn.js "^4.11.9"
+    brorand "^1.1.0"
     hash.js "^1.0.0"
-    hmac-drbg "^1.0.0"
-    inherits "^2.0.1"
-    minimalistic-assert "^1.0.0"
-    minimalistic-crypto-utils "^1.0.0"
+    hmac-drbg "^1.0.1"
+    inherits "^2.0.4"
+    minimalistic-assert "^1.0.1"
+    minimalistic-crypto-utils "^1.0.1"
 
 emitter-component@^1.1.1:
   version "1.1.1"
@@ -7126,7 +7192,7 @@ hash-base@^3.0.0:
 
 hash.js@^1.0.0, hash.js@^1.0.3:
   version "1.1.7"
-  resolved "https://registry.npmjs.org/hash.js/-/hash.js-1.1.7.tgz#0babca538e8d4ee4a0f8988d68866537a003cf42"
+  resolved "https://registry.yarnpkg.com/hash.js/-/hash.js-1.1.7.tgz#0babca538e8d4ee4a0f8988d68866537a003cf42"
   integrity sha512-taOaskGt4z4SOANNseOviYDvjEJinIkRgmp7LbKP2YTTmVxWBl87s/uzK9r+44BclBSp2X7K1hqeNfz9JbBeXA==
   dependencies:
     inherits "^2.0.3"
@@ -7142,9 +7208,9 @@ highlight.js@*:
   resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-9.15.8.tgz#f344fda123f36f1a65490e932cf90569e4999971"
   integrity sha512-RrapkKQWwE+wKdF73VsOa2RQdIoO3mxwJ4P8mhbI6KYJUraUHRKM5w5zQQKXNk0xNL4UVRdulV9SBJcmzJNzVA==
 
-hmac-drbg@^1.0.0:
+hmac-drbg@^1.0.1:
   version "1.0.1"
-  resolved "https://registry.npmjs.org/hmac-drbg/-/hmac-drbg-1.0.1.tgz#d2745701025a6c775a6c545793ed502fc0c649a1"
+  resolved "https://registry.yarnpkg.com/hmac-drbg/-/hmac-drbg-1.0.1.tgz#d2745701025a6c775a6c545793ed502fc0c649a1"
   integrity sha1-0nRXAQJabHdabFRXk+1QL8DGSaE=
   dependencies:
     hash.js "^1.0.3"
@@ -7479,15 +7545,20 @@ inflight@^1.0.4:
     once "^1.3.0"
     wrappy "1"
 
-inherits@2, inherits@2.0.3, inherits@^2.0.1, inherits@^2.0.3, inherits@~2.0.1, inherits@~2.0.3:
-  version "2.0.3"
-  resolved "https://registry.npmjs.org/inherits/-/inherits-2.0.3.tgz#633c2c83e3da42a502f52466022480f4208261de"
-  integrity sha1-Yzwsg+PaQqUC9SRmAiSA9CCCYd4=
+inherits@2, inherits@^2.0.1, inherits@^2.0.3, inherits@^2.0.4, inherits@~2.0.1, inherits@~2.0.3:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.4.tgz#0fa2c64f932917c3433a0ded55363aae37416b7c"
+  integrity sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==
 
 inherits@2.0.1:
   version "2.0.1"
   resolved "https://registry.npmjs.org/inherits/-/inherits-2.0.1.tgz#b17d08d326b4423e568eff719f91b0b1cbdf69f1"
   integrity sha1-sX0I0ya0Qj5Wjv9xn5GwscvfafE=
+
+inherits@2.0.3:
+  version "2.0.3"
+  resolved "https://registry.npmjs.org/inherits/-/inherits-2.0.3.tgz#633c2c83e3da42a502f52466022480f4208261de"
+  integrity sha1-Yzwsg+PaQqUC9SRmAiSA9CCCYd4=
 
 ini@1.3.5, ini@^1.3.2, ini@^1.3.4, ini@^1.3.5, ini@~1.3.0:
   version "1.3.5"
@@ -9555,12 +9626,12 @@ minilog@^3.1.0:
 
 minimalistic-assert@^1.0.0, minimalistic-assert@^1.0.1:
   version "1.0.1"
-  resolved "https://registry.npmjs.org/minimalistic-assert/-/minimalistic-assert-1.0.1.tgz#2e194de044626d4a10e7f7fbc00ce73e83e4d5c7"
+  resolved "https://registry.yarnpkg.com/minimalistic-assert/-/minimalistic-assert-1.0.1.tgz#2e194de044626d4a10e7f7fbc00ce73e83e4d5c7"
   integrity sha512-UtJcAD4yEaGtjPezWuO9wC4nwUnVH/8/Im3yEHQP4b67cXlD/Qr9hdITCU1xDbSEXg2XKNaP8jsReV7vQd00/A==
 
-minimalistic-crypto-utils@^1.0.0, minimalistic-crypto-utils@^1.0.1:
+minimalistic-crypto-utils@^1.0.1:
   version "1.0.1"
-  resolved "https://registry.npmjs.org/minimalistic-crypto-utils/-/minimalistic-crypto-utils-1.0.1.tgz#f6c00c1c0b082246e5c4d99dfb8c7c083b2b582a"
+  resolved "https://registry.yarnpkg.com/minimalistic-crypto-utils/-/minimalistic-crypto-utils-1.0.1.tgz#f6c00c1c0b082246e5c4d99dfb8c7c083b2b582a"
   integrity sha1-9sAMHAsIIkblxNmd+4x8CDsrWCo=
 
 minimatch@3.0.4, minimatch@^3.0.0, minimatch@^3.0.2, minimatch@^3.0.3, minimatch@^3.0.4:
