@@ -2,9 +2,11 @@
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
   "dest": "./dist",
   "lib": {
-    "entryFile": "src/public_api.ts"
+    "entryFile": "src/public_api.ts",
+    "umdModuleIds": {
+      "@ec.components/core": "../core/dist",
+      "@ec.components/ui": "../ui/dist"
+    }
   },
-  "whitelistedNonPeerDependencies": [
-    "."
-  ]
+  "allowedNonPeerDependencies": ["."]
 }

@@ -1,11 +1,13 @@
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import {
-  SymbolService,
-  WithNotifications,
-  Notification,
-  LoaderComponent,
-  NotificationsService,
-  WithLoader,
+  LoaderComponent, Notification,
+
+  NotificationsService, SymbolService,
+
+
+
+
+  WithLoader, WithNotifications
 } from '@ec.components/ui';
 import PublicAPI from 'ec.sdk/lib/PublicAPI';
 import AccountResource from 'ec.sdk/lib/resources/accounts/AccountResource';

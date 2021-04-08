@@ -260,7 +260,6 @@ export class CounterComponent extends InputComponent implements ControlValueAcce
 
     writeValue(value: any) {
         this.value = value;
-        console.log('received value', value);
     }
 
     propagateChange = (_: any) => {

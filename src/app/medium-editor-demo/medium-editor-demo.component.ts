@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MediumEditorComponent } from '@ec.components/medium-editor'
 import { Item } from '@ec.components/core';
+import { MediumEditorComponent } from '@ec.components/medium-editor';
 @Component({
   selector: 'ec-medium-editor-demo',
   templateUrl: './medium-editor-demo.component.html',
@@ -11,16 +11,16 @@ export class MediumEditorDemoComponent implements OnInit {
   mediumForm = {
     fields: {
       text: {
-        input: MediumEditorComponent
-      }
-    }
+        input: MediumEditorComponent,
+      },
+    },
   };
-  formItem = new Item({
-    text: 'Hallo'
-  }, this.mediumForm);
-  constructor() {
-    console.log('awfas');
-   }
+  formItem = new Item(
+    {
+      text: 'Hallo',
+    },
+    this.mediumForm
+  );
 
-  ngOnInit() { }
+  ngOnInit() {}
 }

@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform, Inject } from '@angular/core';
+import { Inject, Pipe, PipeTransform } from '@angular/core';
 import moment from 'moment-es6';
 /* import { SymbolService } from '../../symbol/symbol.service'; */
 
@@ -12,13 +12,9 @@ export class DatetimePipe implements PipeTransform {
   transform(
     value: Date | string,
     pattern: string | string[] = this.dateFormat /* this.symbol.resolve('moment.format.date') */,
-    raw?: string,
   ): string {
     if (!value) {
       return '';
-    }
-    if (raw) {
-      console.log('raw', raw);
     }
     const typed = moment(value, pattern, true);
     if (!typed.isValid()) {

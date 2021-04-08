@@ -1,5 +1,5 @@
-import { Component, EventEmitter, forwardRef, Input, Output, ViewChild, Inject } from '@angular/core';
-import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, EventEmitter, forwardRef, Inject, Input, Output, ViewChild } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 /* import { SymbolService } from '../../symbol/symbol.service'; */
 import moment from 'moment-es6';
 import { MonthComponent } from './month.component';
@@ -22,8 +22,6 @@ import { MonthComponent } from './month.component';
 export class CalendarComponent extends MonthComponent implements ControlValueAccessor {
   /** Output that emits when the value changes */
   @Output() changed: EventEmitter<any> = new EventEmitter();
-  /** The form control that holds the date */
-  @Input() formControl: FormControl;
   /** The current value */
   value = '';
   /** The current value of the input */

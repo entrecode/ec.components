@@ -1,10 +1,9 @@
-import { Component, OnInit, ElementRef, Input, ChangeDetectorRef, EventEmitter, Output } from '@angular/core';
-import { ActionbarComponent, Action, ActionFunction, selectTemplate } from '@ec.components/ui';
-import { NotificationsService, ListComponent } from '@ec.components/ui';
-import { ResourceConfig } from '../resource-config/resource-config.service';
-import ListResource from 'ec.sdk/lib/resources/ListResource';
-import Core from 'ec.sdk/lib/Core';
+import { ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Item } from '@ec.components/core';
+import { Action, ActionbarComponent, ActionFunction, ListComponent, NotificationsService, selectTemplate } from '@ec.components/ui';
+import Core from 'ec.sdk/lib/Core';
+import ListResource from 'ec.sdk/lib/resources/ListResource';
+import { ResourceConfig } from '../resource-config/resource-config.service';
 import { SdkService } from '../sdk/sdk.service';
 
 export interface ResourceActionbarState {
@@ -63,8 +62,6 @@ export class ResourceActionbarComponent extends ActionbarComponent implements On
         action: (item, bar) => {
           if (action) {
             action(item.getBody().data, bar);
-          } else {
-            console.log('no action specified..');
           }
         },
       };

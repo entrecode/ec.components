@@ -2,13 +2,18 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
-  forwardRef,
+
+
+
+
+
+
+  EventEmitter, forwardRef,
   Input,
   OnChanges,
   OnInit,
   ViewChild,
-  ViewEncapsulation,
-  EventEmitter,
+  ViewEncapsulation
 } from '@angular/core';
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Form, Item } from '@ec.components/core';
@@ -221,7 +226,6 @@ export class ResourceSelectComponent extends SelectComponent<Resource> implement
   editItem(item: Item<Resource>, e) {
     this.auth.getAllowedResourceMethods(this.relation, { [this.config.identifier]: item.id() }).then((methods) => {
       if (methods.indexOf('put') === -1) {
-        console.log('cannote put');
         return;
       }
       this.resourcePop.edit(item.getBody(), { methods });

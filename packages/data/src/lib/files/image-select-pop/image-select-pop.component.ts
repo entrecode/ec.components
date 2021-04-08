@@ -7,7 +7,7 @@ import {
   Input,
   OnInit,
   Output,
-  ViewChild,
+  ViewChild
 } from '@angular/core';
 import { FormConfig } from '@ec.components/core';
 import { FormComponent, LoaderComponent, PopComponent, PopService, SymbolService } from '@ec.components/ui';
@@ -116,11 +116,6 @@ export class ImageSelectPopComponent extends PopComponent implements OnInit {
           label: this.symbol.resolve('image-select-pop.keepRatio'),
           view: 'boolean',
           prefill: true,
-          changed: (value) => {
-            if (value === true) {
-              console.log('should fix ratio now...');
-            }
-          },
         },
         width: {
           label: this.symbol.resolve('image-select-pop.width'),

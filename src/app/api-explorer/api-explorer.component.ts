@@ -47,7 +47,6 @@ export class ApiExplorerComponent implements OnInit {
       return;
     }
     const symbols = Object.keys(resource.getAvailableRelations());
-    /* console.log('symbols', symbols); */
     return symbols.length && symbols[0] !== 'dummy';
   }
 
@@ -56,9 +55,7 @@ export class ApiExplorerComponent implements OnInit {
     this.symbol = this.relation;
     delete this.resource;
     this.pop.hide();
-    console.log('use api', this.api);
     this.symbols = Object.keys(this.api.getAvailableRelations());
-    console.log('symbols', this.symbols);
     this.useRelation(this.symbols[0]);
   }
 

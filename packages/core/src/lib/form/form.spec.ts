@@ -1,4 +1,4 @@
-import { Item, Form } from '@ec.components/core';
+import { Form, Item } from '@ec.components/core';
 
 /**
  * Created by felix on 09.05.17.
@@ -30,7 +30,6 @@ describe('Form', () => {
 
   it('should construct with body only', () => {
     const form = new Form(person['body']);
-    console.log('form', form);
     expect(form['body']).toBe(person['body']);
     expect(form.getProperties()).toEqual(['name', 'age', 'dead']);
     /* expect(form.fields.map(f => f.property)).toEqual(['name', 'age', 'dead']);

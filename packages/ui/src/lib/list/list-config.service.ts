@@ -21,7 +21,6 @@ export class ListConfigService {
 
   getStorageKey(list: List<any>) {
     if (!list || !list.fields || !list.config || !list.config.storageKey) {
-      // console.log('cannot apply config: no storage key or list set');
       return;
     }
     const resolveFn = list.config.storageKey || this.storageKeyResolver;

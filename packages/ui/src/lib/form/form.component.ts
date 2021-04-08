@@ -6,13 +6,12 @@ import {
   Input,
   OnChanges,
   Output,
-  QueryList,
-  ViewChild,
-  ViewChildren,
+
+  ViewChild
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Field, FieldConfigProperty, Form, FormConfig, Item, ItemConfig } from '@ec.components/core';
-import { InputComponent } from '../io/input/input.component';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { LoaderComponent } from '../loader/loader.component';
 import { LoaderService } from '../loader/loader.service';
 import { WithLoader } from '../loader/with-loader.interface';
@@ -22,7 +21,6 @@ import { WithNotifications } from '../notifications/with-notifications.interface
 import { SymbolService } from '../symbol/symbol.service';
 import { formTemplate } from './form.component.html';
 import { FormService } from './form.service';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 /** This component renders a form using a FieldConfig Object.
  *
@@ -72,7 +70,6 @@ export class FormComponent<T> implements OnChanges, WithLoader, WithNotification
   /** The forms default loader. it is used when no loader is passed via the loader input */
   @ViewChild(LoaderComponent) defaultLoader: LoaderComponent;
   /** The InputComponents that are used to control the fields */
-  @ViewChildren(InputComponent) inputs: QueryList<InputComponent>;
 
   /** Injects the services. */
   constructor(
