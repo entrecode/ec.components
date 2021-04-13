@@ -21,16 +21,13 @@ npm install @ec.components/calendar --save
 import { CalendarModule } from '@ec.components/calendar';
 
 @NgModule({
-  imports: [
-    CalendarModule
-  ]
+  imports: [CalendarModule],
 })
-export class AppModule {
-}
+export class AppModule {}
 ```
 
 ### 3. Use it
 
 ```html
- <ec-calendar [(ngModel)]="html" mode="html"></ec-calendar>
+<ec-calendar [(ngModel)]="html" mode="html"></ec-calendar>
 ```
