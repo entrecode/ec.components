@@ -1463,9 +1463,9 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input, ViewChild, forwardRef } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, forwardRef, Input, ViewChild } from &#x27;@angular/core&#x27;;
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from &#x27;@angular/forms&#x27;;
-import { DefaultInputComponent, InputComponent, FormService, KeycommandsService } from &#x27;@ec.components/ui&#x27;;
+import { DefaultInputComponent, FormService, InputComponent, KeycommandsService } from &#x27;@ec.components/ui&#x27;;
 import { GeocodeService } from &#x27;./geocode.service&#x27;;
 import { LocationMapComponent } from &#x27;./location-map.component&#x27;;
 import { LocationSearchComponent } from &#x27;./location-search.component&#x27;;
@@ -1502,7 +1502,7 @@ export class LocationPickerComponent extends DefaultInputComponent implements Co
   constructor(
     public geocodeService: GeocodeService,
     public formService: FormService,
-    public keycommands: KeycommandsService,
+    public keycommands: KeycommandsService
   ) {
     super(formService, keycommands);
   }
