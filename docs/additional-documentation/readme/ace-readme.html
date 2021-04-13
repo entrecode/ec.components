@@ -61,17 +61,14 @@
 <div><pre class="line-numbers"><code class="language-js">import { AceModule } from &#39;&#64;ec.components/ace&#39;;
 
 &#64;NgModule({
-  imports: [
-    AceModule
-  ]
+  imports: [AceModule],
 })
-export class AppModule {
-}</code></pre></div><h3 id="3-add-cdn">3. Add CDN</h3>
+export class AppModule {}</code></pre></div><h3 id="3-add-cdn">3. Add CDN</h3>
 <p>Either add the cdn src to your index.html:</p>
-<div><pre class="line-numbers"><code class="language-html">  &lt;script src=&quot;//cdn.bootcss.com/ace/1.2.8/ace.js&quot;&gt;&lt;/script&gt;</code></pre></div><p>Or import from ace-builds (in app.module):</p>
+<div><pre class="line-numbers"><code class="language-html">&lt;script src=&quot;//cdn.bootcss.com/ace/1.2.8/ace.js&quot;&gt;&lt;/script&gt;</code></pre></div><p>Or import from ace-builds (in app.module):</p>
 <div><pre class="line-numbers"><code class="language-js">import &#39;ace-builds/src-noconflict/ace.js&#39;;</code></pre></div><p>When importing, you also need to import all extensions/modes/themes that you want to use manually.</p>
 <h3 id="4-use-it">4. Use it</h3>
-<div><pre class="line-numbers"><code class="language-html"> &lt;ec-ace [(ngModel)]=&quot;html&quot; mode=&quot;html&quot;&gt;&lt;/ec-ace&gt;</code></pre></div>
+<div><pre class="line-numbers"><code class="language-html">&lt;ec-ace [(ngModel)]=&quot;html&quot; mode=&quot;html&quot;&gt;&lt;/ec-ace&gt;</code></pre></div>
                    </div><div class="search-results">
     <div class="has-results">
         <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
