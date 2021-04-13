@@ -21,12 +21,9 @@ npm install @ec.components/tinymce --save
 import { TinymceModule } from '@ec.components/tinymce';
 
 @NgModule({
-  imports: [
-    TinymceModule
-  ]
+  imports: [TinymceModule],
 })
-export class AppModule {
-}
+export class AppModule {}
 ```
 
 ### 3. Add styles files to angular.json
@@ -41,5 +38,5 @@ export class AppModule {
 ### 4. Use it
 
 ```html
- <ec-tinymce [(ngModel)]="html" (change)="change($event)"></ec-tinymce>
+<ec-tinymce [(ngModel)]="html" (change)="change($event)"></ec-tinymce>
 ```
