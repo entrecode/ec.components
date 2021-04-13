@@ -61,12 +61,9 @@
 <div><pre class="line-numbers"><code class="language-js">import { LocationModule } from &#39;&#64;ec.components/location&#39;;
 
 &#64;NgModule({
-  imports: [
-    LocationModule
-  ]
+  imports: [LocationModule],
 })
-export class AppModule {
-}</code></pre></div><h3 id="3-use-it-as-default-input-for-location-fields">3. Use it as default input for location fields</h3>
+export class AppModule {}</code></pre></div><h3 id="3-use-it-as-default-input-for-location-fields">3. Use it as default input for location fields</h3>
 <div><pre class="line-numbers"><code class="language-ts">  constructor(private typeConfig: TypeConfigService) {
     this.typeConfig.set(&#39;location&#39;, {
       input: LocationPickerComponent

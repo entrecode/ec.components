@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.20.0](https://github.com/entrecode/ec.components/compare/@ec.components/location@0.19.0...@ec.components/location@0.20.0) (2021-04-13)
+
+
+### Features
+
+* angular 11 ([8bef283](https://github.com/entrecode/ec.components/commit/8bef28349678ae533f1793ab725f743da24cf2fa))
+
+
+
+
+
 # [0.19.0](https://github.com/entrecode/ec.components/compare/@ec.components/location@0.18.18...@ec.components/location@0.19.0) (2020-02-17)
 
 

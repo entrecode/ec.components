@@ -25,10 +25,7 @@ npm install @ec.components/data --save
 import { DataModule } from '@ec.components/data';
 
 @NgModule({
-  imports: [
-    DataModule
-  ]
+  imports: [DataModule],
 })
-export class AppModule {
-}
+export class AppModule {}
 ```

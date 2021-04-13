@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/entrecode/ec.components/compare/@ec.components/calendar@0.3.1...@ec.components/calendar@0.4.0) (2021-04-13)
+
+
+### Features
+
+* angular 11 ([26d7f44](https://github.com/entrecode/ec.components/commit/26d7f448d04d7184f46495d4249221fb0e4605fb))
+
+
+
+
+
 ## [0.3.1](https://github.com/entrecode/ec.components/compare/@ec.components/calendar@0.3.0...@ec.components/calendar@0.3.1) (2020-11-23)
 
 **Note:** Version bump only for package @ec.components/calendar

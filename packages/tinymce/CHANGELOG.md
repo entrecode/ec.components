@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/entrecode/ec.components/compare/@ec.components/tinymce@0.6.0...@ec.components/tinymce@0.7.0) (2021-04-13)
+
+
+### Features
+
+* angular 11 ([0f8bd14](https://github.com/entrecode/ec.components/commit/0f8bd14e3caabbaec880e4858f18bac13cc8f781))
+
+
+
+
+
 # [0.6.0](https://github.com/entrecode/ec.components/compare/@ec.components/tinymce@0.5.15...@ec.components/tinymce@0.6.0) (2020-02-17)
 
 
