@@ -25,10 +25,7 @@ npm install @ec.components/ui --save
 import { UiModule } from '@ec.components/ui';
 
 @NgModule({
-  imports: [
-    UiModule
-  ]
+  imports: [UiModule],
 })
-export class AppModule {
-}
+export class AppModule {}
 ```
