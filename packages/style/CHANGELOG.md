@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.23.9](https://github.com/entrecode/ec.components/compare/@ec.components/style@0.23.8...@ec.components/style@0.23.9) (2021-04-13)
+
+**Note:** Version bump only for package @ec.components/style
+
+
+
+
+
 ## [0.23.8](https://github.com/entrecode/ec.components/compare/@ec.components/style@0.23.7...@ec.components/style@0.23.8) (2019-09-13)
 
 

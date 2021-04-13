@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.55.0](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.54.4...@ec.components/data@0.55.0) (2021-04-13)
+
+
+### Features
+
+* angular 11 ([0415754](https://github.com/entrecode/ec.components/commit/0415754ebf5e91ce109203c0a0fd65ff12d5b62a))
+
+
+
+
+
 ## [0.54.4](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.54.3...@ec.components/data@0.54.4) (2020-11-23)
 
 **Note:** Version bump only for package @ec.components/data
