@@ -98,7 +98,7 @@ See [Custom Form Markup](../core-concepts/form-options#custom-form-markup) for d
 
 ### group
 
-Holds the current [FormGroup](), which can be used to access FormControls directly. See Custom Markup for examples.
+Holds the current FormGroup, which can be used to access FormControls directly. See Custom Markup for examples.
 
 ## Customization
 

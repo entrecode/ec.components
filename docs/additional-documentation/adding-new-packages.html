@@ -59,9 +59,9 @@ Just replace the example name &quot;data&quot; with the new package name.</p>
 <p>also change value to &quot;packages/data/dist/*&quot;</p>
 <h2 id="4-move-src-files-to-packagesdatalib">4. Move src files to packages/data/lib</h2>
 <h2 id="5-add-dependencies-eg-ecsdk-to-both-root-and-lib-packagejson">5. add dependencies (e.g. ec.sdk) to both root and lib package.json</h2>
-<h2 id="6-add-whitelistednonpeerdependencies-and-dest-to-ng-packagejson">6. add whitelistedNonPeerDependencies and dest to ng-package.json</h2>
+<h2 id="6-add-allowednonpeerdependencies-and-dest-to-ng-packagejson">6. add allowedNonPeerDependencies and dest to ng-package.json</h2>
 <div><pre class="line-numbers"><code class="language-json">  &quot;dest&quot;: &quot;./dist&quot;,
-  &quot;whitelistedNonPeerDependencies&quot;: [
+  &quot;allowedNonPeerDependencies&quot;: [
     &quot;.&quot;
   ]</code></pre></div><h2 id="7-fix-relative-imports">7. fix relative imports</h2>
 <div><pre class="line-numbers"><code class="language-ts">import { Notification } from &#39;../../../../ui/src/notifications/notification&#39;;

@@ -23,7 +23,7 @@ module.exports = {
         alt: 'entrecode logo',
         src: 'img/ec_logo.png',
       },
-      links: [
+      items: [
         { to: 'docs/project-setup/getting-started', label: 'Docs', position: 'left' },
         { to: 'blog', label: 'Blog', position: 'left' },
         {
@@ -39,10 +39,10 @@ module.exports = {
         {
           title: 'Docs',
           items: [
-            {
+            /* {
               label: 'Docs',
               to: 'project-setup/getting-started',
-            },
+            }, */
             {
               label: 'API Docs',
               href: 'https://entrecode.github.io/ec.components/',

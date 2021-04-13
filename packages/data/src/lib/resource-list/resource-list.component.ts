@@ -1,24 +1,27 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges, Optional, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges, OnDestroy, Optional } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {
-  ListComponent,
+  componentDestroyed, ListComponent,
   ListConfigService,
-  LoaderComponent,
+
+
+
+
+
+  listTemplate, LoaderComponent,
   LoaderService,
   NotificationsService,
   SymbolService,
-  WithLoader,
-  listTemplate,
-  componentDestroyed,
+  WithLoader
 } from '@ec.components/ui';
 import Core from 'ec.sdk/lib/Core';
 import ListResource from 'ec.sdk/lib/resources/ListResource';
 import Resource from 'ec.sdk/lib/resources/Resource';
+import { takeUntil } from 'rxjs/operators';
 import { ResourceConfig } from '../resource-config/resource-config.service';
 import { ResourceService } from '../resource-config/resource.service';
 import { SdkService } from '../sdk/sdk.service';
 import { ResourceList } from './resource-list';
-import { takeUntil } from 'rxjs/operators';
 
 /** The ResourceListComponent is an extension of ListComponent for SDK ListResources.
  * It is meant to be extended and overriden the createList method. See e.g. AssetListComponent. */
@@ -88,11 +91,7 @@ export class ResourceListComponent extends ListComponent<Resource> implements On
   /** Creates/Updates the list and subscribes Observables.  */
   update() {
     if (this.loadWhen === false) {
-      console.log('wait for loadWhen flag to turn true');
       return;
-    }
-    if (this.loadWhen === true) {
-      console.log('loadWhen is now true!');
     }
     this.config = Object.assign(this.config || {}, this.configInput || {});
     Promise.resolve(this.createList()).then((list) => {

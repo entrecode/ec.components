@@ -16,9 +16,6 @@ export class AssetListDemoComponent {
             'tag~': {
               exact: 'es',
             },
-          })
-          .then((tags) => {
-            console.log('hihi', tags);
           });
         return this.sdk.datamanager.dataManager(this.sdk.api.dataManagerID);
       })

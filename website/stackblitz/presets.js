@@ -80,10 +80,10 @@ export class HelloComponent  {
         }).catch(err => console.error(err));
 `,
         'polyfills.ts': `
-import 'core-js/es6/reflect';
-import 'core-js/es7/reflect';
-import 'zone.js/dist/zone'; 
-`,
+import 'core-js/proposals/reflect-metadata';
+import 'zone.js/dist/zone';
+import 'zone.js/dist/zone-testing';
+        `,
         'angular.json': `
         {
           "$schema": "./node_modules/@angular/cli/lib/config/schema.json",

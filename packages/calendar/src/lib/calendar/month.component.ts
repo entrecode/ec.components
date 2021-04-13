@@ -1,8 +1,8 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, Inject } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, OnChanges, OnInit, Output } from '@angular/core';
 /* import { SymbolService } from '../../symbol/symbol.service'; */
 import moment from 'moment-es6';
-import { debounceTime } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 /** Interface for a day inside the a month.
  * <example-url>https://components.entrecode.de/ui/datetime?e=1</example-url>

@@ -105,7 +105,7 @@ It is meant to be used to get only the items with the exact same value. </p>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>transform(value: Date | string, pattern: string | string[], raw?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+<code>transform(value: Date | string, pattern: string | string[])</code>
                 </td>
             </tr>
 
@@ -162,20 +162,6 @@ It is meant to be used to get only the items with the exact same value. </p>
                                     </td>
 
                                 </tr>
-                                <tr>
-                                    <td>raw</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                    </td>
-
-                                    <td>
-                                        Yes
-                                    </td>
-
-                                    <td>
-                                    </td>
-
-                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -198,7 +184,7 @@ It is meant to be used to get only the items with the exact same value. </p>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Pipe, PipeTransform, Inject } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Inject, Pipe, PipeTransform } from &#x27;@angular/core&#x27;;
 import moment from &#x27;moment-es6&#x27;;
 /* import { SymbolService } from &#x27;../../symbol/symbol.service&#x27;; */
 
@@ -212,13 +198,9 @@ export class DatetimePipe implements PipeTransform {
   transform(
     value: Date | string,
     pattern: string | string[] &#x3D; this.dateFormat /* this.symbol.resolve(&#x27;moment.format.date&#x27;) */,
-    raw?: string,
   ): string {
     if (!value) {
       return &#x27;&#x27;;
-    }
-    if (raw) {
-      console.log(&#x27;raw&#x27;, raw);
     }
     const typed &#x3D; moment(value, pattern, true);
     if (!typed.isValid()) {

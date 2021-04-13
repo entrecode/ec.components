@@ -1,34 +1,31 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { LocationPickerComponent } from './location-picker.component';
-import { RouterTestingModule } from '@angular/router/testing';
-import { LocationMapComponent, LocationSearchComponent, GeocodeService } from '../public_api';
-import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
-import { UiModule } from '@ec.components/ui';
 import { AgmCoreModule } from '@agm/core';
+import { CommonModule } from '@angular/common';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { UiModule } from '@ec.components/ui';
+import { GeocodeService, LocationMapComponent, LocationSearchComponent } from '../public_api';
+import { LocationPickerComponent } from './location-picker.component';
 
 describe('LocationPickerComponent', () => {
   let component: LocationPickerComponent;
   let fixture: ComponentFixture<LocationPickerComponent>;
-  const LOCATION_COMPONENTS = [LocationMapComponent, LocationSearchComponent, LocationPickerComponent];
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule(
-      {
-        imports: [
-          CommonModule,
-          ReactiveFormsModule,
-          UiModule,
-          RouterTestingModule,
-          AgmCoreModule.forRoot({
-            apiKey: 'AIzaSyAdgEUE1Yxo1F-qb1MrO56u5KATpX9j8o4',
-            libraries: ['places'],
-          }),
-        ],
-        declarations: LOCATION_COMPONENTS,
-        providers: [GeocodeService],
-      }
-    ).compileComponents();
+    TestBed.configureTestingModule({
+      imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        UiModule,
+        RouterTestingModule,
+        AgmCoreModule.forRoot({
+          apiKey: 'AIzaSyAdgEUE1Yxo1F-qb1MrO56u5KATpX9j8o4',
+          libraries: ['places'],
+        }),
+      ],
+      declarations: [LocationMapComponent, LocationSearchComponent, LocationPickerComponent],
+      providers: [GeocodeService],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

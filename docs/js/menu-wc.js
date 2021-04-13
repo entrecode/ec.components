@@ -726,13 +726,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/LocationModule.html" data-type="entity-link">LocationModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-LocationModule-ac969a78fc30e0e30cac8b6e7a855080"' : 'data-target="#xs-components-links-module-LocationModule-ac969a78fc30e0e30cac8b6e7a855080"' }>
+                                            'data-target="#components-links-module-LocationModule-81a3903f38480dfaa3f187d5623226e2"' : 'data-target="#xs-components-links-module-LocationModule-81a3903f38480dfaa3f187d5623226e2"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-LocationModule-ac969a78fc30e0e30cac8b6e7a855080"' :
-                                            'id="xs-components-links-module-LocationModule-ac969a78fc30e0e30cac8b6e7a855080"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-LocationModule-81a3903f38480dfaa3f187d5623226e2"' :
+                                            'id="xs-components-links-module-LocationModule-81a3903f38480dfaa3f187d5623226e2"' }>
                                             <li class="link">
                                                 <a href="components/LocationMapComponent.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">LocationMapComponent</a>
@@ -749,13 +749,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     </li>
                                 <li class="chapter inner">
                                     <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                        'data-target="#injectables-links-module-LocationModule-ac969a78fc30e0e30cac8b6e7a855080"' : 'data-target="#xs-injectables-links-module-LocationModule-ac969a78fc30e0e30cac8b6e7a855080"' }>
+                                        'data-target="#injectables-links-module-LocationModule-81a3903f38480dfaa3f187d5623226e2"' : 'data-target="#xs-injectables-links-module-LocationModule-81a3903f38480dfaa3f187d5623226e2"' }>
                                         <span class="icon ion-md-arrow-round-down"></span>
                                         <span>Injectables</span>
                                         <span class="icon ion-ios-arrow-down"></span>
                                     </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-LocationModule-ac969a78fc30e0e30cac8b6e7a855080"' :
-                                        'id="xs-injectables-links-module-LocationModule-ac969a78fc30e0e30cac8b6e7a855080"' }>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-LocationModule-81a3903f38480dfaa3f187d5623226e2"' :
+                                        'id="xs-injectables-links-module-LocationModule-81a3903f38480dfaa3f187d5623226e2"' }>
                                         <li class="link">
                                             <a href="injectables/GeocodeService.html"
                                                 data-type="entity-link" data-context="sub-entity" data-context-id="modules" }>GeocodeService</a>
@@ -1194,6 +1194,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="interfaces/ModelConfiguration.html" data-type="entity-link">ModelConfiguration</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/ModuleWithProviders.html" data-type="entity-link">ModuleWithProviders</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/ResourceActionbarState.html" data-type="entity-link">ResourceActionbarState</a>

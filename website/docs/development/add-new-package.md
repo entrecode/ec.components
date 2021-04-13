@@ -27,11 +27,11 @@ also change value to "packages/data/dist/*"
 
 ## 5. add dependencies (e.g. ec.sdk) to both root and lib package.json
 
-## 6. add whitelistedNonPeerDependencies and dest to ng-package.json
+## 6. add allowedNonPeerDependencies and dest to ng-package.json
 
 ```json
   "dest": "./dist",
-  "whitelistedNonPeerDependencies": [
+  "allowedNonPeerDependencies": [
     "."
   ]
 ```

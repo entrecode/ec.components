@@ -107,7 +107,6 @@ export class ApiActionbarComponent extends ResourceActionbarComponent implements
       title: relationName,
       relation: relationName,
       action: (item) => {
-        // console.log('selected sub relation', relationName, api);
         this.loadResourceListActions({ api, relation: relationName, actionbar, action });
       },
     }));
@@ -116,7 +115,6 @@ export class ApiActionbarComponent extends ResourceActionbarComponent implements
 
   openCurrentPath() {
     const path = this.getPath().join('/');
-    console.log('open current path', path);
     this.openInEditor(path);
   }
 

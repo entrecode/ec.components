@@ -266,13 +266,12 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, ElementRef, Input, ChangeDetectorRef, EventEmitter, Output } from &#x27;@angular/core&#x27;;
-import { ActionbarComponent, Action, ActionFunction, selectTemplate } from &#x27;@ec.components/ui&#x27;;
-import { NotificationsService, ListComponent } from &#x27;@ec.components/ui&#x27;;
-import { ResourceConfig } from &#x27;../resource-config/resource-config.service&#x27;;
-import ListResource from &#x27;ec.sdk/lib/resources/ListResource&#x27;;
-import Core from &#x27;ec.sdk/lib/Core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, OnInit, Output } from &#x27;@angular/core&#x27;;
 import { Item } from &#x27;@ec.components/core&#x27;;
+import { Action, ActionbarComponent, ActionFunction, ListComponent, NotificationsService, selectTemplate } from &#x27;@ec.components/ui&#x27;;
+import Core from &#x27;ec.sdk/lib/Core&#x27;;
+import ListResource from &#x27;ec.sdk/lib/resources/ListResource&#x27;;
+import { ResourceConfig } from &#x27;../resource-config/resource-config.service&#x27;;
 import { SdkService } from &#x27;../sdk/sdk.service&#x27;;
 
 export interface ResourceActionbarState {
@@ -331,8 +330,6 @@ export class ResourceActionbarComponent extends ActionbarComponent implements On
         action: (item, bar) &#x3D;&gt; {
           if (action) {
             action(item.getBody().data, bar);
-          } else {
-            console.log(&#x27;no action specified..&#x27;);
           }
         },
       };

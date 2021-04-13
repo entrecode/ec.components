@@ -10,15 +10,6 @@ This package contains all scss styles for the ec.components packages.
 - [x.ui](https://github.com/entrecode/x.ui)
 
 ## Installation
-
-### Method A: With prebuilt CSS styles
-
-If you are not using scss or you just want to add styles without hassle, just add this css to your index.html:
-
-```html
-<link href="https://unpkg.com/@ec.components/style@latest/default.css" rel="stylesheet"/>
-```
-
 ### Method B: Custom Styles with SCSS
 
 If you want to use your own styles, you can use scss to import and build the styles with [x.ui](https://entrecode.github.io/x.ui/):

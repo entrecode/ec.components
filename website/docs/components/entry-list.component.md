@@ -102,5 +102,5 @@ If true, each list row will have select boxes that can be toggled: -->
 
 ### config.fields
 
-See [Fields Config](../core-concepts/fields.md).
+See [Fields Config](../core-concepts/config-options.md).
 The fields option defines which fields should be visible, and how they should look and behave.

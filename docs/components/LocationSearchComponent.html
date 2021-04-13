@@ -199,7 +199,7 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(geocodeService: <a href="../injectables/GeocodeService.html">GeocodeService</a>, ngZone: <a href="https://angular.io/api/core/NgZone" target="_blank">NgZone</a>)</code>
+<code>constructor(geocodeService: <a href="../injectables/GeocodeService.html">GeocodeService</a>)</code>
                     </td>
                 </tr>
                         <tr>
@@ -226,18 +226,6 @@
                                                   
                                                         <td>
                                                                         <code><a href="../injectables/GeocodeService.html" target="_self" >GeocodeService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>ngZone</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="https://angular.io/api/core/NgZone" target="_blank" >NgZone</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -477,8 +465,8 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { AfterViewInit, Component, ElementRef, EventEmitter, Input, NgZone, Output, ViewChild } from &#x27;@angular/core&#x27;;
-import {} from &#x27;googlemaps&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from &#x27;@angular/core&#x27;;
+import { } from &#x27;googlemaps&#x27;;
 import { GeocodeService } from &#x27;./geocode.service&#x27;;
 
 /** Google Maps Location Searchbar */
@@ -496,7 +484,7 @@ export class LocationSearchComponent implements AfterViewInit {
   /** emits when the coords have been changed (after selecting a match) */
   @Output() changed: EventEmitter&lt;any&gt; &#x3D; new EventEmitter();
 
-  constructor(private geocodeService: GeocodeService, private ngZone: NgZone) {}
+  constructor(private geocodeService: GeocodeService) {}
   /** Clears the searchbar input value */
   clear() {
     if (this.searchInput) {

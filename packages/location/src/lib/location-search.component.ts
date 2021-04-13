@@ -1,5 +1,5 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, NgZone, Output, ViewChild } from '@angular/core';
-import {} from 'googlemaps';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { } from 'googlemaps';
 import { GeocodeService } from './geocode.service';
 
 /** Google Maps Location Searchbar */
@@ -17,7 +17,7 @@ export class LocationSearchComponent implements AfterViewInit {
   /** emits when the coords have been changed (after selecting a match) */
   @Output() changed: EventEmitter<any> = new EventEmitter();
 
-  constructor(private geocodeService: GeocodeService, private ngZone: NgZone) {}
+  constructor(private geocodeService: GeocodeService) {}
   /** Clears the searchbar input value */
   clear() {
     if (this.searchInput) {

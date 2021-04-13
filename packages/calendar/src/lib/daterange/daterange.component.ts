@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import moment from 'moment-es6';
 import { MonthComponent } from '../calendar/month.component';
 

@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, ElementRef, ChangeDetectorRef } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, Input, OnInit } from '@angular/core';
+import { Item, List, ListConfig } from '@ec.components/core';
 import { SelectComponent } from '../select/select.component';
 import { selectTemplate } from '../select/select.component.html';
-import { ListConfig, List, Item } from '@ec.components/core';
 
 export type ActionFunction = (item?: Item<Action> | any, actionbar?: ActionbarComponent) => any;
 
@@ -12,9 +12,10 @@ export interface Action {
   data?: any;
   select?: boolean;
   action?: ActionFunction;
+  children?: List<Action>;
 }
 
-export interface ActionbarConfig extends ListConfig<Action> { }
+export interface ActionbarConfig extends ListConfig<Action> {}
 
 @Component({
   selector: 'ec-actionbar',

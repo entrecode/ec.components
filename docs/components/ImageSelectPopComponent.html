@@ -1415,7 +1415,7 @@ The size inputs will keep the image ratio by default.  </p>
   Input,
   OnInit,
   Output,
-  ViewChild,
+  ViewChild
 } from &#x27;@angular/core&#x27;;
 import { FormConfig } from &#x27;@ec.components/core&#x27;;
 import { FormComponent, LoaderComponent, PopComponent, PopService, SymbolService } from &#x27;@ec.components/ui&#x27;;
@@ -1524,11 +1524,6 @@ export class ImageSelectPopComponent extends PopComponent implements OnInit {
           label: this.symbol.resolve(&#x27;image-select-pop.keepRatio&#x27;),
           view: &#x27;boolean&#x27;,
           prefill: true,
-          changed: (value) &#x3D;&gt; {
-            if (value &#x3D;&#x3D;&#x3D; true) {
-              console.log(&#x27;should fix ratio now...&#x27;);
-            }
-          },
         },
         width: {
           label: this.symbol.resolve(&#x27;image-select-pop.width&#x27;),
