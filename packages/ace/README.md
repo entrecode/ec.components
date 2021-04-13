@@ -21,12 +21,9 @@ npm install @ec.components/ace --save
 import { AceModule } from '@ec.components/ace';
 
 @NgModule({
-  imports: [
-    AceModule
-  ]
+  imports: [AceModule],
 })
-export class AppModule {
-}
+export class AppModule {}
 ```
 
 ### 3. Add CDN
@@ -34,8 +31,8 @@ export class AppModule {
 Either add the cdn src to your index.html:
 
 ```html
-  <script src="//cdn.bootcss.com/ace/1.2.8/ace.js"></script>
-````
+<script src="//cdn.bootcss.com/ace/1.2.8/ace.js"></script>
+```
 
 Or import from ace-builds (in app.module):
 
@@ -48,5 +45,5 @@ When importing, you also need to import all extensions/modes/themes that you wan
 ### 4. Use it
 
 ```html
- <ec-ace [(ngModel)]="html" mode="html"></ec-ace>
+<ec-ace [(ngModel)]="html" mode="html"></ec-ace>
 ```
