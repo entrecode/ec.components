@@ -15,11 +15,14 @@ The following ways can be used to configure a models behaviour in one or more co
 
 The configuration works like a pipeline, with the following "streams":
 
-- [default config](#default-config)
-- [by ec.editor](#by-eceditor)
-- [by ModelConfigService](#by-modelconfigservice)
-- [by field type](#by-field-type)
-- [by Component Input](#by-component-input)
+- [Different Streams](#different-streams)
+  - [default config](#default-config)
+  - [by ec.editor](#by-eceditor)
+  - [by ModelConfigService](#by-modelconfigservice)
+  - [by field type](#by-field-type)
+  - [by Component Input](#by-component-input)
+  - [TL;DR](#tldr)
+- [resource config](#resource-config)
 
 Based on the default config, each "stream" is merged into the previous one.
 
@@ -54,7 +57,7 @@ For example, here's a simplified extract of a [typical model schema](https://dat
 }
 ```
 
-This schema is then used generate a base configuration for that model. For example, the type value determines how the field will look like in, as described [here](./default-inputs.md).
+This schema is then used generate a base configuration for that model.
 
 ### by ec.editor
 

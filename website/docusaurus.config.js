@@ -39,10 +39,10 @@ module.exports = {
         {
           title: 'Docs',
           items: [
-            {
+            /* {
               label: 'Docs',
               to: 'project-setup/getting-started',
-            },
+            }, */
             {
               label: 'API Docs',
               href: 'https://entrecode.github.io/ec.components/',
