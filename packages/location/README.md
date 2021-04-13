@@ -21,12 +21,9 @@ npm install @ec.components/location --save
 import { LocationModule } from '@ec.components/location';
 
 @NgModule({
-  imports: [
-    LocationModule
-  ]
+  imports: [LocationModule],
 })
-export class AppModule {
-}
+export class AppModule {}
 ```
 
 ### 3. Use it as default input for location fields
