@@ -1,0 +1,13 @@
+<div class="input-group">
+  <input class="input" type="number" (ngModelChange)="update()" [(ngModel)]="amount" style="width: 150px" />
+  <div class="x-space-1"></div>
+  <select class="input" (ngModelChange)="update()" [(ngModel)]="period">
+    <!-- <option value="s">Sekunde{{ amount > 1 ? 'n' : '' }}</option> -->
+    <!-- <option value="m">Minute{{ amount > 1 ? 'n' : '' }}</option> -->
+    <!-- <option value="h">Stunde{{ amount > 1 ? 'n' : '' }}</option> -->
+    <option value="D">Tag{{ amount > 1 ? 'e' : '' }}</option>
+    <!-- <option value="W">Woche{{ amount > 1 ? 'n' : '' }}</option> -->
+    <option value="M">Monat{{ amount > 1 ? 'e' : '' }}</option>
+    <option value="Y">Jahr{{ amount > 1 ? 'e' : '' }}</option>
+  </select>
+</div>

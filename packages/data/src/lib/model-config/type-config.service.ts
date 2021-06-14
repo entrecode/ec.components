@@ -138,7 +138,7 @@ export class TypeConfigService {
       filterable: true,
       sortable: true,
       outputView: 'string',
-      inputView: 'string',
+      inputView: 'period',
     },
     entry: {
       outputView: 'tag',
