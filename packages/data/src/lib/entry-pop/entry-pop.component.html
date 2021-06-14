@@ -28,7 +28,7 @@
       <li class="nav__item" *ngIf="hasMethod('delete') && crudForm.isEditing()">
         <!--TODO placeholder config for 'löschen'-->
         <button (click)="delete.confirm(entry)" class="btn ec-btn_delete" type="button">
-          <span>delete</span>
+          <span>{{ getDeleteButtonLabel() }}</span>
         </button>
       </li>
       <li class="nav__item" *ngIf="maySave(crudForm)">
@@ -40,7 +40,7 @@
           class="btn ec-btn_save"
           [class.is-disabled]="crudForm.group?.invalid"
         >
-          <span>save</span>
+          <span>{{ getSaveButtonLabel() }}</span>
         </button>
       </li>
     </ul>

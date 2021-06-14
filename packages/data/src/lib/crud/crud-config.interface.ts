@@ -8,6 +8,10 @@ export interface CrudConfig<T> extends ListConfig<T> {
   dropdownFields?: FieldConfig;
   /** The label for one entity */
   singularLabel?: string;
+  /** The label for the save button, defaults to "Speichern" */
+  saveButtonLabel?: string;
+  /** The label for the delete button, defaults to "Löschen" */
+  deleteButtonLabel?: string;
   /** The label for multiple entities */
   pluralLabel?: string;
   /** The label for the entry create button */

@@ -21,6 +21,7 @@ export class EntryPopDemoComponent {
 
   constructor(public modelConfig: ModelConfigService) {
     this.modelConfig.set('muffin', {
+      saveButtonLabel: 'Muffin speichern',
       fields: {
         id: {
           hideInList: true,

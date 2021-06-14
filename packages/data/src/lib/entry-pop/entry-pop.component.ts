@@ -161,4 +161,14 @@ export class EntryPopComponent extends PopComponent implements OnInit {
     const label = this.config.singularLabel || form.model;
     return this.formService.getFormLabel(form, label);
   }
+
+  /** Returns header for current form */
+  getSaveButtonLabel() {
+    return this.config.saveButtonLabel || 'Speichern';
+  }
+
+  /** Returns header for current form */
+  getDeleteButtonLabel() {
+    return this.config.deleteButtonLabel || 'Löschen';
+  }
 }
