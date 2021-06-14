@@ -122,6 +122,26 @@ export class TypeConfigService {
       },
       placeholder: moment(new Date()).format(this.symbol.resolve('moment.format.date')),
     },
+    date: {
+      inputView: 'date-only',
+      sortable: true,
+      display: this.displayDate(true),
+      validate: (value) => {
+        if (value && (value === 'invalid' || !moment(value).isValid())) {
+          return 'Ungültiges Datum.';
+        }
+        return;
+      },
+      placeholder: moment(new Date()).format(this.symbol.resolve('moment.format.date')),
+    },
+    period: {
+      filterable: true,
+      sortable: true,
+      outputView: 'string',
+      // outputViews: ['string', 'tag', 'color'].map(name => ({ name })),
+      inputView: 'string',
+      // inputViews: ['string', 'color', 'copy', 'textarea'].map(name => ({ name }))
+    },
     entry: {
       outputView: 'tag',
       outputViews: ['tag', 'string'].map(name => ({ name })),

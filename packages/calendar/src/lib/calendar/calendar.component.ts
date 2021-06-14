@@ -36,6 +36,8 @@ export class CalendarComponent extends MonthComponent implements ControlValueAcc
   @Input() disabled;
   /** If true, the time will not be displayed nor will be editable. */
   @Input() disableTime: boolean;
+  /** If true, the time will not be in the emitted value */
+  @Input() dateOnly: boolean;
   /** If true, past dates cannot be selected */
   @Input() disablePast: boolean;
   /** Allowed date input patterns. The first one will be standard. */
@@ -51,13 +53,12 @@ export class CalendarComponent extends MonthComponent implements ControlValueAcc
   ) {
     /* super(symbol); */
     super(defaultMonthFormat);
-    // pattern localization
-    /* this.patterns = this.symbol.resolve('moment.format.date') ?
-    // [defaultDateFormatthis.symbol.resolve('moment.format.date')] : this.patterns; */
     this.patterns = defaultDateFormat ? [defaultDateFormat] : this.patterns;
-    /* this.timeFormat = this.symbol.resolve('moment.format.time') || this.timeFormat; */
     this.timeFormat = defaultTimeFormat || this.timeFormat;
     this.weekdays = moment.weekdaysMin(true);
+  }
+
+  ngOnInit() {
     if (!this.disableTime) {
       this.patterns = this.patterns
         .map((pattern) => {
@@ -88,7 +89,11 @@ export class CalendarComponent extends MonthComponent implements ControlValueAcc
     }
     this.value = selected.format(this.getPattern(selected));
     this.inputValue = this.value;
-    this.setValue(selected.toISOString() || 'invalid');
+    if (this.dateOnly) {
+      this.setValue(selected.format("YYYY-MM-DD") || 'invalid');
+    } else {
+      this.setValue(selected.toISOString() || 'invalid');
+    }
   }
 
   /** Called upon input value change by the user. */
