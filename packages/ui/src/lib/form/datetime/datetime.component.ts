@@ -30,6 +30,8 @@ export class DatetimeComponent implements ControlValueAccessor {
   public weekdays: string[];
   /** If true, the time will not be displayed nor will be editable. */
   @Input() disableTime: boolean;
+  /** If true, the time will not be in the emitted value */
+  @Input() dateOnly = false;
   /** The input's placeholder */
   @Input() placeholder = '';
   /** If true, the time cannot be changed */
@@ -41,7 +43,7 @@ export class DatetimeComponent implements ControlValueAccessor {
   }
 
   /** Change propagation for ControlValueAccessor */
-  propagateChange = (_: any) => {};
+  propagateChange = (_: any) => { };
 
   /** registerOnChange implementation of ControlValueAccessor */
   registerOnChange(fn) {
@@ -49,7 +51,7 @@ export class DatetimeComponent implements ControlValueAccessor {
   }
 
   /** registerOnTouched implementation of ControlValueAccessor */
-  registerOnTouched() {}
+  registerOnTouched() { }
 
   setDisabledState(isDisabled) {
     this.disabled = isDisabled;

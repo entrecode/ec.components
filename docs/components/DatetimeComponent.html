@@ -194,6 +194,9 @@
                                 <a href="#date">date</a>
                             </li>
                             <li>
+                                <a href="#dateOnly">dateOnly</a>
+                            </li>
+                            <li>
                                 <a href="#disableTime">disableTime</a>
                             </li>
                             <li>
@@ -238,6 +241,32 @@
                 <tr>
                     <td class="col-md-4">
                         <div class="io-description"><p>The date that should be displayed at start. </p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dateOnly"></a>
+                        <b>dateOnly</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">packages/ui/src/lib/form/datetime/datetime.component.ts:34</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>If true, the time will not be in the emitted value </p>
 </div>
                     </td>
                 </tr>
@@ -317,7 +346,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">packages/ui/src/lib/form/datetime/datetime.component.ts:34</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">packages/ui/src/lib/form/datetime/datetime.component.ts:36</a></div>
                             </td>
                         </tr>
                 <tr>
@@ -359,8 +388,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="47"
-                            class="link-to-prism">packages/ui/src/lib/form/datetime/datetime.component.ts:47</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="49"
+                            class="link-to-prism">packages/ui/src/lib/form/datetime/datetime.component.ts:49</a></div>
                 </td>
             </tr>
 
@@ -427,8 +456,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="52"
-                            class="link-to-prism">packages/ui/src/lib/form/datetime/datetime.component.ts:52</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="54"
+                            class="link-to-prism">packages/ui/src/lib/form/datetime/datetime.component.ts:54</a></div>
                 </td>
             </tr>
 
@@ -468,8 +497,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="54"
-                            class="link-to-prism">packages/ui/src/lib/form/datetime/datetime.component.ts:54</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="56"
+                            class="link-to-prism">packages/ui/src/lib/form/datetime/datetime.component.ts:56</a></div>
                 </td>
             </tr>
 
@@ -534,8 +563,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="39"
-                            class="link-to-prism">packages/ui/src/lib/form/datetime/datetime.component.ts:39</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="41"
+                            class="link-to-prism">packages/ui/src/lib/form/datetime/datetime.component.ts:41</a></div>
                 </td>
             </tr>
 
@@ -652,7 +681,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">packages/ui/src/lib/form/datetime/datetime.component.ts:36</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">packages/ui/src/lib/form/datetime/datetime.component.ts:38</a></div>
                             </td>
                         </tr>
 
@@ -684,7 +713,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">packages/ui/src/lib/form/datetime/datetime.component.ts:44</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">packages/ui/src/lib/form/datetime/datetime.component.ts:46</a></div>
                             </td>
                         </tr>
 
@@ -769,6 +798,8 @@ export class DatetimeComponent implements ControlValueAccessor {
   public weekdays: string[];
   /** If true, the time will not be displayed nor will be editable. */
   @Input() disableTime: boolean;
+  /** If true, the time will not be in the emitted value */
+  @Input() dateOnly &#x3D; false;
   /** The input&#x27;s placeholder */
   @Input() placeholder &#x3D; &#x27;&#x27;;
   /** If true, the time cannot be changed */
@@ -780,7 +811,7 @@ export class DatetimeComponent implements ControlValueAccessor {
   }
 
   /** Change propagation for ControlValueAccessor */
-  propagateChange &#x3D; (_: any) &#x3D;&gt; {};
+  propagateChange &#x3D; (_: any) &#x3D;&gt; { };
 
   /** registerOnChange implementation of ControlValueAccessor */
   registerOnChange(fn) {
@@ -788,7 +819,7 @@ export class DatetimeComponent implements ControlValueAccessor {
   }
 
   /** registerOnTouched implementation of ControlValueAccessor */
-  registerOnTouched() {}
+  registerOnTouched() { }
 
   setDisabledState(isDisabled) {
     this.disabled &#x3D; isDisabled;
@@ -799,19 +830,33 @@ export class DatetimeComponent implements ControlValueAccessor {
 
     <div class="tab-pane fade " id="c-templateData">
         <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;ec-datetime-picker&quot;&gt;
-    &lt;div class&#x3D;&quot;input-group&quot;&gt;
-        &lt;input class&#x3D;&quot;input&quot; [value]&#x3D;&quot;calendar.inputValue&quot; (input)&#x3D;&quot;calendar.input($event.target.value)&quot;
-            (focus)&#x3D;&quot;calendarPop.show()&quot; (blur)&#x3D;&quot;calendarPop.hide()&quot; [placeholder]&#x3D;&quot;placeholder&quot; [disabled]&#x3D;&quot;disabled&quot;&gt;
-        &lt;div class&#x3D;&quot;input-group__addon&quot;&gt;
-            &lt;a (click)&#x3D;&quot;calendarPop.toggle()&quot;&gt;
-                &lt;ec-icon name&#x3D;&quot;calendar&quot;&gt;&lt;/ec-icon&gt;
-            &lt;/a&gt;
-        &lt;/div&gt;
+  &lt;div class&#x3D;&quot;input-group&quot;&gt;
+    &lt;input
+      class&#x3D;&quot;input&quot;
+      [value]&#x3D;&quot;calendar.inputValue&quot;
+      (input)&#x3D;&quot;calendar.input($event.target.value)&quot;
+      (focus)&#x3D;&quot;calendarPop.show()&quot;
+      (blur)&#x3D;&quot;calendarPop.hide()&quot;
+      [placeholder]&#x3D;&quot;placeholder&quot;
+      [disabled]&#x3D;&quot;disabled&quot;
+    /&gt;
+    &lt;div class&#x3D;&quot;input-group__addon&quot;&gt;
+      &lt;a (click)&#x3D;&quot;calendarPop.toggle()&quot;&gt;
+        &lt;ec-icon name&#x3D;&quot;calendar&quot;&gt;&lt;/ec-icon&gt;
+      &lt;/a&gt;
     &lt;/div&gt;
-    &lt;ec-pop class&#x3D;&quot;ec-datetime-select&quot; #calendarPop (mousedown)&#x3D;&quot;$event.preventDefault()&quot;&gt;
-        &lt;ec-calendar #calendar [formControl]&#x3D;&quot;formControl&quot; [disableTime]&#x3D;&quot;disableTime&quot; [date]&#x3D;&quot;date&quot;&gt;&lt;/ec-calendar&gt;
-    &lt;/ec-pop&gt;
-&lt;/div&gt;</code></pre>
+  &lt;/div&gt;
+  &lt;ec-pop class&#x3D;&quot;ec-datetime-select&quot; #calendarPop (mousedown)&#x3D;&quot;$event.preventDefault()&quot;&gt;
+    &lt;ec-calendar
+      #calendar
+      [formControl]&#x3D;&quot;formControl&quot;
+      [disableTime]&#x3D;&quot;disableTime&quot;
+      [dateOnly]&#x3D;&quot;dateOnly&quot;
+      [date]&#x3D;&quot;date&quot;
+    &gt;&lt;/ec-calendar&gt;
+  &lt;/ec-pop&gt;
+&lt;/div&gt;
+</code></pre>
     </div>
 
 
@@ -845,7 +890,7 @@ export class DatetimeComponent implements ControlValueAccessor {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="ec-datetime-picker">    <div class="input-group">        <input class="input" [value]="calendar.inputValue" (input)="calendar.input($event.target.value)"            (focus)="calendarPop.show()" (blur)="calendarPop.hide()" [placeholder]="placeholder" [disabled]="disabled">        <div class="input-group__addon">            <a (click)="calendarPop.toggle()">                <ec-icon name="calendar"></ec-icon>            </a>        </div>    </div>    <ec-pop class="ec-datetime-select" #calendarPop (mousedown)="$event.preventDefault()">        <ec-calendar #calendar [formControl]="formControl" [disableTime]="disableTime" [date]="date"></ec-calendar>    </ec-pop></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="ec-datetime-picker">  <div class="input-group">    <input      class="input"      [value]="calendar.inputValue"      (input)="calendar.input($event.target.value)"      (focus)="calendarPop.show()"      (blur)="calendarPop.hide()"      [placeholder]="placeholder"      [disabled]="disabled"    />    <div class="input-group__addon">      <a (click)="calendarPop.toggle()">        <ec-icon name="calendar"></ec-icon>      </a>    </div>  </div>  <ec-pop class="ec-datetime-select" #calendarPop (mousedown)="$event.preventDefault()">    <ec-calendar      #calendar      [formControl]="formControl"      [disableTime]="disableTime"      [dateOnly]="dateOnly"      [date]="date"    ></ec-calendar>  </ec-pop></div></div>'
     var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'ActionbarComponent', 'selector': 'ec-actionbar'},{'name': 'AdminEntryInputComponent', 'selector': ''},{'name': 'ApiActionbarComponent', 'selector': 'ec-api-actionbar'},{'name': 'AssetgroupSelectComponent', 'selector': 'ec-assetgroup-select'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DaterangeComponent', 'selector': 'ec-daterange'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EntryActionbarComponent', 'selector': 'ec-entry-actionbar'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryListPopComponent', 'selector': 'ec-entry-list-pop'},{'name': 'EntryListSelectComponent', 'selector': 'ec-entry-list-select'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'HeatmapComponent', 'selector': 'ec-heatmap'},{'name': 'IconComponent', 'selector': 'ec-icon'},{'name': 'ImageSelectPopComponent', 'selector': 'ec-image-select-pop'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LocationMapComponent', 'selector': 'ec-location-map'},{'name': 'LocationPickerComponent', 'selector': 'ec-location-picker'},{'name': 'LocationSearchComponent', 'selector': 'ec-location-search'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'ModalComponent', 'selector': 'ec-modal'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceActionbarComponent', 'selector': 'ec-resource-actionbar'},{'name': 'ResourceCrudComponent', 'selector': 'ec-resource-crud'},{'name': 'ResourceDeletePopComponent', 'selector': 'ec-resource-delete-pop'},{'name': 'ResourceFormComponent', 'selector': 'ec-resource-form'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'ResourceListPopComponent', 'selector': 'ec-resource-list-pop'},{'name': 'ResourcePopComponent', 'selector': 'ec-resource-pop'},{'name': 'ResourceSelectComponent', 'selector': 'ec-resource-select'},{'name': 'SearchbarComponent', 'selector': 'ec-searchbar'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SignupComponent', 'selector': 'ec-signup'},{'name': 'SignupFormComponent', 'selector': 'ec-signup-form'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TagSelectComponent', 'selector': 'ec-tag-select'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'UploadComponent', 'selector': 'ec-upload'},{'name': 'UploadSelectComponent', 'selector': 'ec-upload-select'}];
     var DIRECTIVES = [{'name': 'AssetDirective', 'selector': '[ecAsset]'},{'name': 'DropzoneDirective', 'selector': '[ecDropzone]'},{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'FocusDirective', 'selector': '[ecFocus]'},{'name': 'ImageDirective', 'selector': 'img [ecImage]'},{'name': 'SlotHostDirective', 'selector': '[ecSlotHost]'}];
     var ACTUAL_COMPONENT = {'name': 'DatetimeComponent'};

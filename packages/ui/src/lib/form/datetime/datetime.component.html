@@ -1,14 +1,27 @@
 <div class="ec-datetime-picker">
-    <div class="input-group">
-        <input class="input" [value]="calendar.inputValue" (input)="calendar.input($event.target.value)"
-            (focus)="calendarPop.show()" (blur)="calendarPop.hide()" [placeholder]="placeholder" [disabled]="disabled">
-        <div class="input-group__addon">
-            <a (click)="calendarPop.toggle()">
-                <ec-icon name="calendar"></ec-icon>
-            </a>
-        </div>
+  <div class="input-group">
+    <input
+      class="input"
+      [value]="calendar.inputValue"
+      (input)="calendar.input($event.target.value)"
+      (focus)="calendarPop.show()"
+      (blur)="calendarPop.hide()"
+      [placeholder]="placeholder"
+      [disabled]="disabled"
+    />
+    <div class="input-group__addon">
+      <a (click)="calendarPop.toggle()">
+        <ec-icon name="calendar"></ec-icon>
+      </a>
     </div>
-    <ec-pop class="ec-datetime-select" #calendarPop (mousedown)="$event.preventDefault()">
-        <ec-calendar #calendar [formControl]="formControl" [disableTime]="disableTime" [date]="date"></ec-calendar>
-    </ec-pop>
+  </div>
+  <ec-pop class="ec-datetime-select" #calendarPop (mousedown)="$event.preventDefault()">
+    <ec-calendar
+      #calendar
+      [formControl]="formControl"
+      [disableTime]="disableTime"
+      [dateOnly]="dateOnly"
+      [date]="date"
+    ></ec-calendar>
+  </ec-pop>
 </div>

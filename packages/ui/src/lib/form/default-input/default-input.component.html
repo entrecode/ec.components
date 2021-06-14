@@ -71,6 +71,14 @@
 
   <ec-datetime *ngSwitchCase="'date'" [formControl]="control" [placeholder]="field.getPlaceholder()"></ec-datetime>
 
+  <ec-datetime
+    *ngSwitchCase="'date-only'"
+    [formControl]="control"
+    [placeholder]="field.getPlaceholder()"
+    [disableTime]="true"
+    [dateOnly]="true"
+  ></ec-datetime>
+
   <div *ngSwitchCase="'select'">
     <select
       [id]="field.id"

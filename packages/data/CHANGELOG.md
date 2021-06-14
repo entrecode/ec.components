@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.55.1](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.55.0...@ec.components/data@0.55.1) (2021-06-14)
+
+
+### Bug Fixes
+
+* date and period types ([2a326d9](https://github.com/entrecode/ec.components/commit/2a326d92475f63f2ad17593623e8eb9744d8b042))
+
+
+
+
+
 # [0.55.0](https://github.com/entrecode/ec.components/compare/@ec.components/data@0.54.4...@ec.components/data@0.55.0) (2021-04-13)
 
 
