@@ -15,7 +15,7 @@ import { LocationSearchComponent } from './location-search.component';
     ReactiveFormsModule,
     UiModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAdgEUE1Yxo1F-qb1MrO56u5KATpX9j8o4',
+      apiKey: 'AIzaSyAdgEUE1Yxo1F-qb1MrO56u5KATpX9j8o4', // TODO: move to user land
       libraries: ['places'],
     }),
   ],
