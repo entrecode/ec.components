@@ -142,7 +142,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="182" class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:182</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="200" class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:200</a></div>
                             </td>
                         </tr>
 
@@ -207,8 +207,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="219"
-                            class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:219</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="237"
+                            class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:237</a></div>
                 </td>
             </tr>
 
@@ -248,8 +248,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="212"
-                            class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:212</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="230"
+                            class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:230</a></div>
                 </td>
             </tr>
 
@@ -321,8 +321,8 @@ Usese &#39;moment.format.date&#39; and &#39;moment.format.time&#39; symbols. </p
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="186"
-                            class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:186</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="204"
+                            class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:204</a></div>
                 </td>
             </tr>
 
@@ -393,8 +393,8 @@ Usese &#39;moment.format.date&#39; and &#39;moment.format.time&#39; symbols. </p
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="224"
-                            class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:224</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="242"
+                            class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:242</a></div>
                 </td>
             </tr>
 
@@ -434,8 +434,8 @@ Usese &#39;moment.format.date&#39; and &#39;moment.format.time&#39; symbols. </p
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="229"
-                            class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:229</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="247"
+                            class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:247</a></div>
                 </td>
             </tr>
 
@@ -475,8 +475,8 @@ Usese &#39;moment.format.date&#39; and &#39;moment.format.time&#39; symbols. </p
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="202"
-                            class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:202</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="220"
+                            class="link-to-prism">packages/data/src/lib/model-config/type-config.service.ts:220</a></div>
                 </td>
             </tr>
 
@@ -710,6 +710,24 @@ Usese &#39;moment.format.date&#39; and &#39;moment.format.time&#39; symbols. </p
       },
       placeholder: moment(new Date()).format(this.symbol.resolve(&#x27;moment.format.date&#x27;)),
     },
+    date: {
+      inputView: &#x27;date-only&#x27;,
+      sortable: true,
+      display: this.displayDate(true),
+      validate: (value) &#x3D;&gt; {
+        if (value &amp;&amp; (value &#x3D;&#x3D;&#x3D; &#x27;invalid&#x27; || !moment(value).isValid())) {
+          return &#x27;Ungültiges Datum.&#x27;;
+        }
+        return;
+      },
+      placeholder: moment(new Date()).format(this.symbol.resolve(&#x27;moment.format.date&#x27;)),
+    },
+    period: {
+      filterable: true,
+      sortable: true,
+      outputView: &#x27;string&#x27;,
+      inputView: &#x27;string&#x27;,
+    },
     entry: {
       outputView: &#x27;tag&#x27;,
       outputViews: [&#x27;tag&#x27;, &#x27;string&#x27;].map(name &#x3D;&gt; ({ name })),
@@ -914,6 +932,24 @@ export class TypeConfigService {
         return;
       },
       placeholder: moment(new Date()).format(this.symbol.resolve(&#x27;moment.format.date&#x27;)),
+    },
+    date: {
+      inputView: &#x27;date-only&#x27;,
+      sortable: true,
+      display: this.displayDate(true),
+      validate: (value) &#x3D;&gt; {
+        if (value &amp;&amp; (value &#x3D;&#x3D;&#x3D; &#x27;invalid&#x27; || !moment(value).isValid())) {
+          return &#x27;Ungültiges Datum.&#x27;;
+        }
+        return;
+      },
+      placeholder: moment(new Date()).format(this.symbol.resolve(&#x27;moment.format.date&#x27;)),
+    },
+    period: {
+      filterable: true,
+      sortable: true,
+      outputView: &#x27;string&#x27;,
+      inputView: &#x27;string&#x27;,
     },
     entry: {
       outputView: &#x27;tag&#x27;,
