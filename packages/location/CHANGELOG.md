@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.20.1](https://github.com/entrecode/ec.components/compare/@ec.components/location@0.20.0...@ec.components/location@0.20.1) (2021-06-14)
+
+
+### Bug Fixes
+
+* unprivate package ([a0d0a24](https://github.com/entrecode/ec.components/commit/a0d0a2482e8fbac91fcbac506c5b3dc3e24be24b))
+
+
+
+
+
 # [0.20.0](https://github.com/entrecode/ec.components/compare/@ec.components/location@0.19.0...@ec.components/location@0.20.0) (2021-04-13)
 
 
