@@ -726,13 +726,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/LocationModule.html" data-type="entity-link">LocationModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#components-links-module-LocationModule-81a3903f38480dfaa3f187d5623226e2"' : 'data-target="#xs-components-links-module-LocationModule-81a3903f38480dfaa3f187d5623226e2"' }>
+                                            'data-target="#components-links-module-LocationModule-23b4aa850aaa075d80fa207537f29c35"' : 'data-target="#xs-components-links-module-LocationModule-23b4aa850aaa075d80fa207537f29c35"' }>
                                             <span class="icon ion-md-cog"></span>
                                             <span>Components</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-LocationModule-81a3903f38480dfaa3f187d5623226e2"' :
-                                            'id="xs-components-links-module-LocationModule-81a3903f38480dfaa3f187d5623226e2"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="components-links-module-LocationModule-23b4aa850aaa075d80fa207537f29c35"' :
+                                            'id="xs-components-links-module-LocationModule-23b4aa850aaa075d80fa207537f29c35"' }>
                                             <li class="link">
                                                 <a href="components/LocationMapComponent.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">LocationMapComponent</a>
@@ -749,13 +749,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                     </li>
                                 <li class="chapter inner">
                                     <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                        'data-target="#injectables-links-module-LocationModule-81a3903f38480dfaa3f187d5623226e2"' : 'data-target="#xs-injectables-links-module-LocationModule-81a3903f38480dfaa3f187d5623226e2"' }>
+                                        'data-target="#injectables-links-module-LocationModule-23b4aa850aaa075d80fa207537f29c35"' : 'data-target="#xs-injectables-links-module-LocationModule-23b4aa850aaa075d80fa207537f29c35"' }>
                                         <span class="icon ion-md-arrow-round-down"></span>
                                         <span>Injectables</span>
                                         <span class="icon ion-ios-arrow-down"></span>
                                     </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-LocationModule-81a3903f38480dfaa3f187d5623226e2"' :
-                                        'id="xs-injectables-links-module-LocationModule-81a3903f38480dfaa3f187d5623226e2"' }>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-LocationModule-23b4aa850aaa075d80fa207537f29c35"' :
+                                        'id="xs-injectables-links-module-LocationModule-23b4aa850aaa075d80fa207537f29c35"' }>
                                         <li class="link">
                                             <a href="injectables/GeocodeService.html"
                                                 data-type="entity-link" data-context="sub-entity" data-context-id="modules" }>GeocodeService</a>
