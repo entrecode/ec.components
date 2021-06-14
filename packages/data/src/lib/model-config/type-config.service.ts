@@ -138,9 +138,7 @@ export class TypeConfigService {
       filterable: true,
       sortable: true,
       outputView: 'string',
-      // outputViews: ['string', 'tag', 'color'].map(name => ({ name })),
       inputView: 'string',
-      // inputViews: ['string', 'color', 'copy', 'textarea'].map(name => ({ name }))
     },
     entry: {
       outputView: 'tag',
