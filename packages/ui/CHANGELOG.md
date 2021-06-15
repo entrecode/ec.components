@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.50.4](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.50.3...@ec.components/ui@0.50.4) (2021-06-15)
+
+
+### Bug Fixes
+
+* period bugs + add clear button ([98a3679](https://github.com/entrecode/ec.components/commit/98a36791f549c6b2373b60f759edd47e58477c2b))
+
+
+
+
+
 ## [0.50.3](https://github.com/entrecode/ec.components/compare/@ec.components/ui@0.50.2...@ec.components/ui@0.50.3) (2021-06-15)
 
 **Note:** Version bump only for package @ec.components/ui
