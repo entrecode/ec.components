@@ -139,6 +139,7 @@ export class TypeConfigService {
       sortable: true,
       outputView: 'string',
       inputView: 'period',
+      inputViews: ['period', 'period-date']
     },
     entry: {
       outputView: 'tag',

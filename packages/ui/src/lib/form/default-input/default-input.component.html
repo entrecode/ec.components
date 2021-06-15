@@ -71,7 +71,8 @@
 
   <ec-datetime *ngSwitchCase="'date'" [formControl]="control" [placeholder]="field.getPlaceholder()"></ec-datetime>
 
-  <ec-period *ngSwitchCase="'period'" [formControl]="control"></ec-period>
+  <ec-period *ngSwitchCase="'period'" [formControl]="control" [disableTime]="false"></ec-period>
+  <ec-period *ngSwitchCase="'period-date'" [formControl]="control" [disableTime]="true"></ec-period>
 
   <ec-datetime
     *ngSwitchCase="'date-only'"
