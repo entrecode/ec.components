@@ -2,16 +2,16 @@
   <input
     class="input"
     type="number"
-    (ngModelChange)="updateSimple()"
+    (ngModelChange)="updateSimple($event, period)"
     [(ngModel)]="amount"
     style="width: 150px"
     *ngIf="!customMode"
   />
   <div class="x-space-1" *ngIf="!customMode"></div>
-  <select class="input" (ngModelChange)="updateSimple()" [(ngModel)]="period" *ngIf="!customMode">
-    <option *ngIf="!disableTime" value="s">Sekunde{{ amount > 1 ? 'n' : '' }}</option>
-    <option *ngIf="!disableTime" value="m">Minute{{ amount > 1 ? 'n' : '' }}</option>
-    <option *ngIf="!disableTime" value="h">Stunde{{ amount > 1 ? 'n' : '' }}</option>
+  <select class="input" (ngModelChange)="updateSimple(amount, $event)" [(ngModel)]="period" *ngIf="!customMode">
+    <option *ngIf="!disableTime" value="TS">Sekunde{{ amount > 1 ? 'n' : '' }}</option>
+    <option *ngIf="!disableTime" value="TM">Minute{{ amount > 1 ? 'n' : '' }}</option>
+    <option *ngIf="!disableTime" value="TH">Stunde{{ amount > 1 ? 'n' : '' }}</option>
     <option *ngIf="!disableTime" value="D">Tag{{ amount > 1 ? 'e' : '' }}</option>
     <option value="W">Woche{{ amount > 1 ? 'n' : '' }}</option>
     <option value="M">Monat{{ amount > 1 ? 'e' : '' }}</option>
@@ -26,7 +26,10 @@
     [class.is-hidden]="!customMode"
     #customInput
   />
-  <a (click)="toggleMode()" class="input-group__addon btn btn_minor" [class.is-disabled]="!isSimpleValue(value)">
+  <a (click)="toggleMode()" class="input-group__addon btn btn_minor" [class.is-disabled]="customMode && !isSimpleValue(value)">
     <ec-icon name="code"></ec-icon>
+  </a>
+  <a (click)="clear()" class="input-group__addon btn btn_minor" [class.is-disabled]="!value">
+    <ec-icon name="trash"></ec-icon>
   </a>
 </div>
