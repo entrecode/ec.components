@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.20.5](https://github.com/entrecode/ec.components/compare/@ec.components/location@0.20.4...@ec.components/location@0.20.5) (2021-06-15)
+
+**Note:** Version bump only for package @ec.components/location
+
+
+
+
+
+## [0.20.4](https://github.com/entrecode/ec.components/compare/@ec.components/location@0.20.3...@ec.components/location@0.20.4) (2021-06-15)
+
+**Note:** Version bump only for package @ec.components/location
+
+
+
+
+
 ## [0.20.3](https://github.com/entrecode/ec.components/compare/@ec.components/location@0.20.2...@ec.components/location@0.20.3) (2021-06-14)
 
 **Note:** Version bump only for package @ec.components/location

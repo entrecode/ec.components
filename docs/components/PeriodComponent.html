@@ -35,7 +35,7 @@
 
 <ol class="breadcrumb">
   <li>Components</li>
-  <li>InputComponent</li>
+  <li>PeriodComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -58,30 +58,16 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>packages/ui/src/lib/io/input/input.component.ts</code>
+    <code>packages/ui/src/lib/form/period/period.component.ts</code>
 </p>
 
-    <p class="comment">
-        <h3>Description</h3>
-    </p>
-    <p class="comment">
-        <p>This directive can be used to display a field. It is used inside ec-form as well as ec-list. </p>
 
-    </p>
-
-    <p class="comment">
-        <h3>Extends</h3>
-    </p>
-    <p class="comment">
-                <code><a href="../components/DynamicSlotComponent.html" target="_self" >DynamicSlotComponent</a></code>
-    </p>
 
     <p class="comment">
         <h3>Implements</h3>
     </p>
     <p class="comment">
                     <code><a href="https://angular.io/api/forms/ControlValueAccessor" target="_blank" >ControlValueAccessor</a></code>
-                    <code><a href="https://angular.io/api/core/OnChanges" target="_blank" >OnChanges</a></code>
     </p>
 
 
@@ -90,10 +76,6 @@
     <table class="table table-sm table-hover">
         <tbody>
 
-            <tr>
-                <td class="col-md-3">changeDetection</td>
-                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
-            </tr>
 
 
 
@@ -105,8 +87,8 @@
             <tr>
                 <td class="col-md-3">providers</td>
                 <td class="col-md-9">
-                                <code><a href="../components/InputComponent.html" target="_self" >{
-    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() &#x3D;&gt; InputComponent), multi: true,
+                                <code><a href="../components/PeriodComponent.html" target="_self" >{
+    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() &#x3D;&gt; PeriodComponent), multi: true,
 }</a></code>
                 </td>
             </tr>
@@ -114,7 +96,7 @@
 
             <tr>
                 <td class="col-md-3">selector</td>
-                <td class="col-md-9"><code>ec-input</code></td>
+                <td class="col-md-9"><code>ec-period</code></td>
             </tr>
 
 
@@ -122,7 +104,7 @@
 
             <tr>
                 <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>../dynamic-slot/dynamic-slot.component.html</code></td>
+                <td class="col-md-9"><code>./period.component.html</code></td>
             </tr>
 
 
@@ -149,26 +131,25 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#componentInstance">componentInstance</a>
+                                <a href="#amount">amount</a>
+                            </li>
+                            <li>
+                                <a href="#customInput">customInput</a>
+                            </li>
+                            <li>
+                                <a href="#customMode">customMode</a>
                             </li>
                             <li>
                                 <a href="#disabled">disabled</a>
                             </li>
                             <li>
-                                <a href="#focusEvent">focusEvent</a>
+                                <a href="#period">period</a>
                             </li>
                             <li>
                                 <a href="#propagateChange">propagateChange</a>
                             </li>
                             <li>
                                 <a href="#value">value</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Public</span>
-                                <a href="#componentFactoryResolver">componentFactoryResolver</a>
-                            </li>
-                            <li>
-                                <a href="#fieldHost">fieldHost</a>
                             </li>
                         </ul>
                     </td>
@@ -183,16 +164,13 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#connectControl">connectControl</a>
+                                <a href="#isSimpleValue">isSimpleValue</a>
                             </li>
                             <li>
-                                <a href="#focus">focus</a>
+                                <a href="#isTimePeriod">isTimePeriod</a>
                             </li>
                             <li>
-                                <a href="#init">init</a>
-                            </li>
-                            <li>
-                                <a href="#ngOnChanges">ngOnChanges</a>
+                                <a href="#parseValue">parseValue</a>
                             </li>
                             <li>
                                 <a href="#registerOnChange">registerOnChange</a>
@@ -204,10 +182,19 @@
                                 <a href="#setDisabledState">setDisabledState</a>
                             </li>
                             <li>
-                                <a href="#writeValue">writeValue</a>
+                                <a href="#toggleMode">toggleMode</a>
                             </li>
                             <li>
-                                <a href="#loadComponent">loadComponent</a>
+                                <a href="#updateAmountAndPeriod">updateAmountAndPeriod</a>
+                            </li>
+                            <li>
+                                <a href="#updateCustom">updateCustom</a>
+                            </li>
+                            <li>
+                                <a href="#updateSimple">updateSimple</a>
+                            </li>
+                            <li>
+                                <a href="#writeValue">writeValue</a>
                             </li>
                         </ul>
                     </td>
@@ -222,31 +209,10 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#component">component</a>
+                                <a href="#disableTime">disableTime</a>
                             </li>
                             <li>
-                                <a href="#config">config</a>
-                            </li>
-                            <li>
-                                <a href="#control">control</a>
-                            </li>
-                            <li>
-                                <a href="#debounce">debounce</a>
-                            </li>
-                            <li>
-                                <a href="#field">field</a>
-                            </li>
-                            <li>
-                                <a href="#group">group</a>
-                            </li>
-                            <li>
-                                <a href="#item">item</a>
-                            </li>
-                            <li>
-                                <a href="#lazy">lazy</a>
-                            </li>
-                            <li>
-                                <a href="#property">property</a>
+                                <a href="#formControl">formControl</a>
                             </li>
                         </ul>
                     </td>
@@ -263,9 +229,6 @@
                             <li>
                                 <a href="#changed">changed</a>
                             </li>
-                            <li>
-                                <a href="#ready">ready</a>
-                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -276,6 +239,24 @@
     </table>
 </section>
 
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor()</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">packages/ui/src/lib/form/period/period.component.ts:30</a></div>
+                            </td>
+                        </tr>
+
+            </tbody>
+        </table>
+</section>
 
     <section>
     <h3 id="inputs">Inputs</h3>
@@ -283,24 +264,29 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="component"></a>
-                        <b>component</b>
+                        <a name="disableTime"></a>
+                        <b>disableTime</b>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>    <code>Type&lt;any&gt;</code>
+                        <i>Type : </i>        <code><a href="../classes/Form.html" target="_self" >FormControl</a></code>
 
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>new FormControl()</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:52</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">packages/ui/src/lib/form/period/period.component.ts:22</a></div>
                             </td>
                         </tr>
                 <tr>
                     <td class="col-md-4">
-                        <div class="io-description"><p>Overrides the default component </p>
+                        <div class="io-description"><p>If true, no time values can be selected </p>
 </div>
                     </td>
                 </tr>
@@ -310,212 +296,29 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="config"></a>
-                        <b>config</b>
+                        <a name="formControl"></a>
+                        <b>formControl</b>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../interfaces/FieldConfigProperty.html" target="_self" >FieldConfigProperty</a></code>
+                        <i>Type : </i>        <code><a href="../classes/Form.html" target="_self" >FormControl</a></code>
 
                     </td>
                 </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:50</a></div>
-                            </td>
-                        </tr>
                 <tr>
                     <td class="col-md-4">
-                        <div class="io-description"><p>Config that should be used, only needed when not using field input </p>
-</div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="control"></a>
-                        <b>control</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://angular.io/api/forms/AbstractControl" target="_blank" >AbstractControl</a></code>
-
+                        <i>Default value : </i><code>new FormControl()</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:36</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">packages/ui/src/lib/form/period/period.component.ts:20</a></div>
                             </td>
                         </tr>
                 <tr>
                     <td class="col-md-4">
-                        <div class="io-description"><p>The belonging form control. This is not required if you pass in a field and group. </p>
-</div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="debounce"></a>
-                        <b>debounce</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>0</code>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:42</a></div>
-                            </td>
-                        </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>Debounce time in ms before the changed event emits. </p>
-</div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="field"></a>
-                        <b>field</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../classes/Field.html" target="_self" >Field</a></code>
-
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:44</a></div>
-                            </td>
-                        </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>The instance of field that should be used in the template, can also be a property name. </p>
-</div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="group"></a>
-                        <b>group</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../classes/Form.html" target="_self" >FormGroup</a></code>
-
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:32</a></div>
-                            </td>
-                        </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>The belonging form group </p>
-</div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="item"></a>
-                        <b>item</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../classes/Item.html" target="_self" >Item&lt;any&gt;</a></code>
-
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:48</a></div>
-                            </td>
-                        </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>The belonging item </p>
-</div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="lazy"></a>
-                        <b>lazy</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
-
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:54</a></div>
-                            </td>
-                        </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>If true, the input will never reinit/reload. </p>
-</div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="property"></a>
-                        <b>property</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:46</a></div>
-                            </td>
-                        </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>The property name that is edited. Expects a form as item input </p>
+                        <div class="io-description"><p>The form control that holds the date </p>
 </div>
                     </td>
                 </tr>
@@ -534,45 +337,18 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../miscellaneous/variables.html#en" target="_self" >EventEmitter</a></code>
+                        <i>Type : </i>        <code><a href="../miscellaneous/variables.html#en" target="_self" >EventEmitter&lt;any&gt;</a></code>
 
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:38</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">packages/ui/src/lib/form/period/period.component.ts:18</a></div>
                             </td>
                         </tr>
                 <tr>
                     <td class="col-md-4">
-                        <div class="io-description"><p>The changed ouput emits whenever the form control of the input changes. </p>
-</div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="ready"></a>
-                        <b>ready</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../miscellaneous/variables.html#en" target="_self" >EventEmitter</a></code>
-
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:40</a></div>
-                            </td>
-                        </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>Emits when the component has been loaded </p>
+                        <div class="io-description"><p>Output that emits when the value changes </p>
 </div>
                     </td>
                 </tr>
@@ -590,65 +366,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="connectControl"></a>
+                    <a name="isSimpleValue"></a>
                     <span class="name">
                         <b>
-                            connectControl
+                            isSimpleValue
                         </b>
-                        <a href="#connectControl"><span class="icon ion-ios-link"></span></a>
+                        <a href="#isSimpleValue"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>connectControl()</code>
+<code>isSimpleValue(value)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="118"
-                            class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:118</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="focus"></a>
-                    <span class="name">
-                        <b>
-                            focus
-                        </b>
-                        <a href="#focus"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>focus(focus)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="69"
-                            class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:69</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="87"
+                            class="link-to-prism">packages/ui/src/lib/form/period/period.component.ts:87</a></div>
                 </td>
             </tr>
 
@@ -663,20 +400,16 @@
                                 <tr>
                                     <td>Name</td>
                                     <td>Optional</td>
-                                    <td>Default value</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>focus</td>
+                                    <td>value</td>
 
                                     <td>
                                         No
                                     </td>
 
-                                    <td>
-                                        <code>true</code>
-                                    </td>
 
                                 </tr>
                             </tbody>
@@ -685,7 +418,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
                     </div>
                     <div class="io-description">
@@ -699,65 +432,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="init"></a>
+                    <a name="isTimePeriod"></a>
                     <span class="name">
                         <b>
-                            init
+                            isTimePeriod
                         </b>
-                        <a href="#init"><span class="icon ion-ios-link"></span></a>
+                        <a href="#isTimePeriod"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>init()</code>
+<code>isTimePeriod(period)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="77"
-                            class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:77</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="ngOnChanges"></a>
-                    <span class="name">
-                        <b>
-                            ngOnChanges
-                        </b>
-                        <a href="#ngOnChanges"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>ngOnChanges(changes?)</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="63"
-                            class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:63</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="38"
+                            class="link-to-prism">packages/ui/src/lib/form/period/period.component.ts:38</a></div>
                 </td>
             </tr>
 
@@ -776,10 +470,10 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>changes</td>
+                                    <td>period</td>
 
                                     <td>
-                                        Yes
+                                        No
                                     </td>
 
 
@@ -790,7 +484,73 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="parseValue"></a>
+                    <span class="name">
+                        <b>
+                            parseValue
+                        </b>
+                        <a href="#parseValue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>parseValue(value)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="34"
+                            class="link-to-prism">packages/ui/src/lib/form/period/period.component.ts:34</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>value</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                     </div>
                     <div class="io-description">
@@ -822,15 +582,15 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="143"
-                            class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:143</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="115"
+                            class="link-to-prism">packages/ui/src/lib/form/period/period.component.ts:115</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Registers change callback </p>
+                    <div class="io-description"><p>registerOnChange implementation of ControlValueAccessor </p>
 </div>
 
                     <div class="io-description">
@@ -890,14 +650,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="148"
-                            class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:148</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="120"
+                            class="link-to-prism">packages/ui/src/lib/form/period/period.component.ts:120</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>registerOnTouched implementation of ControlValueAccessor </p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -929,8 +691,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="150"
-                            class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:150</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="122"
+                            class="link-to-prism">packages/ui/src/lib/form/period/period.component.ts:122</a></div>
                 </td>
             </tr>
 
@@ -977,34 +739,71 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="writeValue"></a>
+                    <a name="toggleMode"></a>
                     <span class="name">
                         <b>
-                            writeValue
+                            toggleMode
                         </b>
-                        <a href="#writeValue"><span class="icon ion-ios-link"></span></a>
+                        <a href="#toggleMode"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>writeValue(value: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+<code>toggleMode()</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="133"
-                            class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:133</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="70"
+                            class="link-to-prism">packages/ui/src/lib/form/period/period.component.ts:70</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>writes value to editor on outside model change. </p>
-</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateAmountAndPeriod"></a>
+                    <span class="name">
+                        <b>
+                            updateAmountAndPeriod
+                        </b>
+                        <a href="#updateAmountAndPeriod"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateAmountAndPeriod(value)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="61"
+                            class="link-to-prism">packages/ui/src/lib/form/period/period.component.ts:61</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -1012,21 +811,21 @@
                             <thead>
                                 <tr>
                                     <td>Name</td>
-                                    <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Default value</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>value</td>
-                                    <td>
-                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-                                    </td>
 
                                     <td>
                                         No
                                     </td>
 
+                                    <td>
+                                        <code>this.value</code>
+                                    </td>
 
                                 </tr>
                             </tbody>
@@ -1049,39 +848,111 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="loadComponent"></a>
+                    <a name="updateCustom"></a>
                     <span class="name">
                         <b>
-                            loadComponent
+                            updateCustom
                         </b>
-                        <a href="#loadComponent"><span class="icon ion-ios-link"></span></a>
+                        <a href="#updateCustom"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>loadComponent(component: Type<any>, attributes: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank">Object</a>)</code>
+<code>updateCustom()</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Inherited from         <code><a href="../components/DynamicSlotComponent.html" target="_self" >DynamicSlotComponent</a></code>
-</div>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-                        <div class="io-line">Defined in         <code><a href="../components/DynamicSlotComponent.html#source" target="_self" >DynamicSlotComponent:17</a></code>
-</div>
+                    <div class="io-line">Defined in <a href="" data-line="54"
+                            class="link-to-prism">packages/ui/src/lib/form/period/period.component.ts:54</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Loads the given component inside the fieldHost. Sets current item and field by default. </p>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateSimple"></a>
+                    <span class="name">
+                        <b>
+                            updateSimple
+                        </b>
+                        <a href="#updateSimple"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateSimple()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="43"
+                            class="link-to-prism">packages/ui/src/lib/form/period/period.component.ts:43</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="writeValue"></a>
+                    <span class="name">
+                        <b>
+                            writeValue
+                        </b>
+                        <a href="#writeValue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>writeValue(value: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="97"
+                            class="link-to-prism">packages/ui/src/lib/form/period/period.component.ts:97</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Selects the given Date when the model changes. </p>
 </div>
 
                     <div class="io-description">
@@ -1092,37 +963,19 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
-                                    <td>Default value</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>component</td>
+                                    <td>value</td>
                                     <td>
-                                            <code>Type&lt;any&gt;</code>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                     </td>
 
                                     <td>
                                         No
                                     </td>
 
-                                    <td>
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <td>attributes</td>
-                                    <td>
-                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank" >Object</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-                                    <td>
-                                        <code>{}</code>
-                                    </td>
 
                                 </tr>
                             </tbody>
@@ -1131,7 +984,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../miscellaneous/variables.html#en" target="_self" >ComponentRef&lt;any&gt;</a></code>
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
                     </div>
                     <div class="io-description">
@@ -1151,33 +1004,93 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="componentInstance"></a>
+                        <a name="amount"></a>
                         <span class="name">
                             <b>
-                            componentInstance</b>
-                            <a href="#componentInstance"><span class="icon ion-ios-link"></span></a>
+                            amount</b>
+                            <a href="#amount"><span class="icon ion-ios-link"></span></a>
                         </span>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../components/InputComponent.html" target="_self" >InputComponent</a></code>
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>1</code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:57</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">packages/ui/src/lib/form/period/period.component.ts:26</a></div>
                             </td>
                         </tr>
 
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <div class="io-description"><p>Holds a reference to the component instance. This is helpful when you want to modify the component after form intialization.
-You can access a form&#39;s InputComponents via FormComponent#inputs </p>
-</div>
+                        <a name="customInput"></a>
+                        <span class="name">
+                            <b>
+                            customInput</b>
+                            <a href="#customInput"><span class="icon ion-ios-link"></span></a>
+                        </span>
                     </td>
                 </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;customInput&#x27;)<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">packages/ui/src/lib/form/period/period.component.ts:23</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="customMode"></a>
+                        <span class="name">
+                            <b>
+                            customMode</b>
+                            <a href="#customMode"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">packages/ui/src/lib/form/period/period.component.ts:30</a></div>
+                            </td>
+                        </tr>
+
 
             </tbody>
         </table>
@@ -1195,19 +1108,19 @@ You can access a form&#39;s InputComponents via FormComponent#inputs </p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../classes/Form.html" target="_self" >FormGroup</a></code>
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:34</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">packages/ui/src/lib/form/period/period.component.ts:29</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
-                        <div class="io-description"><p>If true, the input is readonly. Is set by ControlValueAccessor#setDisabled </p>
+                        <div class="io-description"><p>If true, the time cannot be changed </p>
 </div>
                     </td>
                 </tr>
@@ -1218,37 +1131,31 @@ You can access a form&#39;s InputComponents via FormComponent#inputs </p>
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="focusEvent"></a>
+                        <a name="period"></a>
                         <span class="name">
                             <b>
-                            focusEvent</b>
-                            <a href="#focusEvent"><span class="icon ion-ios-link"></span></a>
+                            period</b>
+                            <a href="#period"><span class="icon ion-ios-link"></span></a>
                         </span>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../miscellaneous/variables.html#en" target="_self" >EventEmitter&lt;boolean&gt;</a></code>
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Default value : </i><code>new EventEmitter()</code>
+                            <i>Default value : </i><code>&#x27;D&#x27;</code>
                         </td>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:61</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">packages/ui/src/lib/form/period/period.component.ts:27</a></div>
                             </td>
                         </tr>
 
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>Emitter to focus the input field </p>
-</div>
-                    </td>
-                </tr>
 
             </tbody>
         </table>
@@ -1271,10 +1178,16 @@ You can access a form&#39;s InputComponents via FormComponent#inputs </p>
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="140" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:140</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">packages/ui/src/lib/form/period/period.component.ts:112</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Change propagation for ControlValueAccessor </p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -1292,103 +1205,24 @@ You can access a form&#39;s InputComponents via FormComponent#inputs </p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">packages/ui/src/lib/io/input/input.component.ts:59</a></div>
-                            </td>
-                        </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                        <div class="io-description"><p>The current value of the input. Needs to be saved for the case the component is not yet loaded </p>
-</div>
-                    </td>
-                </tr>
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="componentFactoryResolver"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Public</span>
-                            componentFactoryResolver</b>
-                            <a href="#componentFactoryResolver"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../miscellaneous/variables.html#en" target="_self" >ComponentFactoryResolver</a></code>
-
-                        </td>
-                    </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Inherited from         <code><a href="../components/DynamicSlotComponent.html" target="_self" >DynamicSlotComponent</a></code>
-</div>
-                                </td>
-                            </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in         <code><a href="../components/DynamicSlotComponent.html#source" target="_self" >DynamicSlotComponent:14</a></code>
-</div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="fieldHost"></a>
-                        <span class="name">
-                            <b>
-                            fieldHost</b>
-                            <a href="#fieldHost"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>    <code>SlotHostDirective</code>
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <b>Decorators : </b>
-                            <br />
-                            <code>
-                                @ViewChild(SlotHostDirective, {static: true})<br />
-                            </code>
+                            <i>Default value : </i><code>&#x27;&#x27;</code>
                         </td>
                     </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Inherited from         <code><a href="../components/DynamicSlotComponent.html" target="_self" >DynamicSlotComponent</a></code>
-</div>
-                                </td>
-                            </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in         <code><a href="../components/DynamicSlotComponent.html#source" target="_self" >DynamicSlotComponent:11</a></code>
-</div>
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">packages/ui/src/lib/form/period/period.component.ts:25</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
-                        <div class="io-description"><p>The FieldHostDirective will  be used to nest custom components into the field </p>
+                        <div class="io-description"><p>The current value </p>
 </div>
                     </td>
                 </tr>
@@ -1401,171 +1235,168 @@ You can access a form&#39;s InputComponents via FormComponent#inputs </p>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
-  Component,
-  EventEmitter,
-  forwardRef,
-  Input,
-  OnChanges,
-  Output,
-  Type,
-  ChangeDetectionStrategy,
-} from &#x27;@angular/core&#x27;;
-import { ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR, AbstractControl } from &#x27;@angular/forms&#x27;;
-import { FieldConfigProperty, Field, Form, Item } from &#x27;@ec.components/core&#x27;;
-import { DynamicSlotComponent } from &#x27;../dynamic-slot/dynamic-slot.component&#x27;;
-import { DefaultInputComponent } from &#x27;../../form/default-input/default-input.component&#x27;;
-import { debounceTime } from &#x27;rxjs/operators&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ElementRef, EventEmitter, forwardRef, Input, OnInit, Output, ViewChild } from &#x27;@angular/core&#x27;;
+import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from &#x27;@angular/forms&#x27;;
 
-/** This directive can be used to display a field. It is used inside ec-form as well as ec-list. */
 @Component({
-  selector: &#x27;ec-input&#x27;,
-  templateUrl: &#x27;../dynamic-slot/dynamic-slot.component.html&#x27;,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: &#x27;ec-period&#x27;,
+  templateUrl: &#x27;./period.component.html&#x27;,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() &#x3D;&gt; InputComponent),
+      useExisting: forwardRef(() &#x3D;&gt; PeriodComponent),
       multi: true,
     },
   ],
 })
-export class InputComponent extends DynamicSlotComponent implements ControlValueAccessor, OnChanges {
-  /** The belonging form group */
-  @Input() group: FormGroup;
-  /** If true, the input is readonly. Is set by ControlValueAccessor#setDisabled */
-  disabled: FormGroup;
-  /** The belonging form control. This is not required if you pass in a field and group. */
-  @Input() control: AbstractControl;
-  /** The changed ouput emits whenever the form control of the input changes. */
-  @Output() changed &#x3D; new EventEmitter();
-  /** Emits when the component has been loaded */
-  @Output() ready &#x3D; new EventEmitter();
-  /** Debounce time in ms before the changed event emits. */
-  @Input() debounce &#x3D; 0;
-  /** The instance of field that should be used in the template, can also be a property name. */
-  @Input() field: Field;
-  /** The property name that is edited. Expects a form as item input */
-  @Input() property: string;
-  /** The belonging item */
-  @Input() item: Item&lt;any&gt;;
-  /** Config that should be used, only needed when not using field input */
-  @Input() config: FieldConfigProperty;
-  /** Overrides the default component */
-  @Input() component: Type&lt;any&gt;;
-  /** If true, the input will never reinit/reload. */
-  @Input() lazy: boolean;
-  /** Holds a reference to the component instance. This is helpful when you want to modify the component after form intialization.
-   * You can access a form&#x27;s InputComponents via FormComponent#inputs */
-  componentInstance: InputComponent;
-  /** The current value of the input. Needs to be saved for the case the component is not yet loaded */
-  value: any;
-  /** Emitter to focus the input field */
-  focusEvent: EventEmitter&lt;boolean&gt; &#x3D; new EventEmitter();
 
-  ngOnChanges(changes?) {
-    if (!this.lazy || !this.componentInstance || changes.field) {
-      this.init();
+export class PeriodComponent implements ControlValueAccessor {
+  /** Output that emits when the value changes */
+  @Output() changed: EventEmitter&lt;any&gt; &#x3D; new EventEmitter();
+  /** The form control that holds the date */
+  @Input() formControl: FormControl &#x3D; new FormControl();
+  /** If true, no time values can be selected */
+  @Input() disableTime: FormControl &#x3D; new FormControl();
+  @ViewChild(&#x27;customInput&#x27;) customInput: any;
+  /** The current value */
+  value &#x3D; &#x27;&#x27;;
+  amount &#x3D; 1;
+  period &#x3D; &#x27;D&#x27;;
+  /** If true, the time cannot be changed */
+  disabled: boolean;
+  customMode &#x3D; false;
+
+  constructor() { }
+
+  parseValue(value) {
+    return value.match(/^P(?:(\d+(?:\.\d+)?)([D]|[W]|M|[JY]))?(?:T(\d+(?:\.\d+)?)([sS]|[mM]|[hH]))?$/)?.slice(1) || [];
+  }
+
+  isTimePeriod(period) {
+    return period.match(/^([sS]|[mM]|[hH])$/);
+  }
+
+  // simple mode: update value when amount and period change + propagate change
+  updateSimple() {
+    setTimeout(() &#x3D;&gt; {
+      const isTimePeriod &#x3D; this.isTimePeriod(this.period);
+      const value &#x3D; &#x27;P&#x27; + (isTimePeriod ? &#x27;T&#x27; : &#x27;&#x27;) + this.amount + this.period;
+      // console.log(&#x27;change&#x27;, value);
+      this.value &#x3D; value;
+      this.propagateChange(value);
+    })
+  }
+
+  // custom mode: update amount and period when value changes + propagate change
+  updateCustom() {
+    setTimeout(() &#x3D;&gt; {
+      this.propagateChange(this.value);
+    })
+  }
+
+  // parse current value and update amount and period &#x3D;&gt; should only do if 
+  updateAmountAndPeriod(value &#x3D; this.value) {
+    if (!this.isSimpleValue(value)) {
+      throw new Error(&#x27;cannot update amount and period from a non simple value!&#x27;)
+    }
+    const [dateAmount, datePeriod, timeAmount, timePeriod] &#x3D; this.parseValue(value);
+    this.amount &#x3D; dateAmount !&#x3D;&#x3D; undefined ? +dateAmount : +timeAmount;
+    this.period &#x3D; datePeriod !&#x3D;&#x3D; undefined ? datePeriod : timePeriod;
+  }
+
+  toggleMode() {
+    if (this.customMode) {
+      try {
+        this.updateAmountAndPeriod(); // before switching to simple mode, update form values
+      } catch (error) {
+        console.log(&#x27;cannot switch to simple mode when value is complex!&#x27;);
+        return;
+      }
+    }
+    this.customMode &#x3D; !this.customMode;
+    if (this.customMode) { // after transitioning to custom mode, focus input
+      setTimeout(() &#x3D;&gt; {
+        this.customInput?.nativeElement?.focus();
+      })
     }
   }
 
-  focus(focus &#x3D; true) {
-    if (this.componentInstance &amp;&amp; this.componentInstance.focusEvent) {
-      this.componentInstance.focusEvent.emit(focus);
+  isSimpleValue(value) {
+    const [_, datePeriod, __, timePeriod] &#x3D; this.parseValue(value);
+    if (!!timePeriod !&#x3D;&#x3D; !!datePeriod) {
+      return true;
     } else {
-      console.warn(&#x27;could not focus component&#x27;, this.componentInstance);
+      return false;
     }
   }
 
-  init() {
-    if (this.property &amp;&amp; this.item instanceof Form) {
-      this.field &#x3D; this.item.getField(this.property);
-    } else if (!this.field &amp;&amp; this.config) {
-      this.field &#x3D; new Field(this.property || &#x27;input&#x27;, this.config);
-    }
-    if (!this.field) {
-      return;
-    }
-    if (!this.control) {
-      this.control &#x3D; this.group ? this.group.get(this.field.property) : new FormControl();
-    }
-    if (!this.group) {
-      this.group &#x3D; new FormGroup({
-        [this.property || this.field.property || &#x27;input&#x27;]: this.control,
-      });
-    }
-    const data &#x3D; {
-      group: this.group,
-      control: this.control || this.group ? this.group.get(this.field.property) : null,
-      item: this.item,
-      field: this.field,
-      input: this,
-      config: this.config || this.field.config || {},
-      focusEvent: this.focusEvent,
-    };
-    const componentRef &#x3D; this.loadComponent(this.component || this.field.input || DefaultInputComponent, data);
-    this.componentInstance &#x3D; componentRef.instance;
-    this.connectControl();
-    this.ready.emit(this);
-    if (this.componentInstance.control) {
-      this.componentInstance.control.valueChanges.pipe(debounceTime(this.debounce)).subscribe((change) &#x3D;&gt; {
-        this.changed.emit(change);
-        this.propagateChange(change);
-      });
-    }
-    if (this.field &amp;&amp; typeof this.field.init &#x3D;&#x3D;&#x3D; &#x27;function&#x27;) {
-      this.field.init(this.componentInstance, this);
-    }
-  }
-
-  connectControl() {
-    if (!this.componentInstance) {
-      // console.warn(&#x27;could not connect control: no instance loaded&#x27;);
-      return;
-    }
-    this.componentInstance.disabled &#x3D; this.disabled;
-    if (this.componentInstance.registerOnChange &amp;&amp; this.propagateChange) {
-      this.componentInstance.registerOnChange(this.propagateChange);
-    }
-    if (this.value !&#x3D;&#x3D; undefined) {
-      this.writeValue(this.value);
-    }
-  }
-
-  /** writes value to editor on outside model change. */
-  writeValue(value: any) {
-    if (this.componentInstance &amp;&amp; this.componentInstance.writeValue) {
-      this.componentInstance.writeValue(value);
+  /** Selects the given Date when the model changes. */
+  writeValue(value: string) {
+    if (!value) {
+      return &#x27;&#x27;;
     }
     this.value &#x3D; value;
+    try {
+      this.updateAmountAndPeriod(value);
+      this.customMode &#x3D; false;
+    } catch (error) {
+      console.log(&#x27;error&#x27;, error);
+      this.customMode &#x3D; true;
+    }
   }
 
-  propagateChange &#x3D; (_: any) &#x3D;&gt; {};
+  /** Change propagation for ControlValueAccessor */
+  propagateChange &#x3D; (_: any) &#x3D;&gt; { };
 
-  /** Registers change callback */
+  /** registerOnChange implementation of ControlValueAccessor */
   registerOnChange(fn) {
     this.propagateChange &#x3D; fn;
-    this.connectControl();
   }
 
-  registerOnTouched() {}
+  /** registerOnTouched implementation of ControlValueAccessor */
+  registerOnTouched() { }
 
   setDisabledState(isDisabled) {
     this.disabled &#x3D; isDisabled;
-    if (this.componentInstance) {
-      if (this.componentInstance.setDisabledState) {
-        this.componentInstance.setDisabledState(isDisabled);
-      } else {
-        this.componentInstance.disabled &#x3D; isDisabled;
-      }
-    }
   }
-}
-</code></pre>
+
+}</code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;ng-template ecSlotHost&gt;&lt;/ng-template&gt;</code></pre>
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;input-group&quot;&gt;
+  &lt;input
+    class&#x3D;&quot;input&quot;
+    type&#x3D;&quot;number&quot;
+    (ngModelChange)&#x3D;&quot;updateSimple()&quot;
+    [(ngModel)]&#x3D;&quot;amount&quot;
+    style&#x3D;&quot;width: 150px&quot;
+    *ngIf&#x3D;&quot;!customMode&quot;
+  /&gt;
+  &lt;div class&#x3D;&quot;x-space-1&quot; *ngIf&#x3D;&quot;!customMode&quot;&gt;&lt;/div&gt;
+  &lt;select class&#x3D;&quot;input&quot; (ngModelChange)&#x3D;&quot;updateSimple()&quot; [(ngModel)]&#x3D;&quot;period&quot; *ngIf&#x3D;&quot;!customMode&quot;&gt;
+    &lt;option *ngIf&#x3D;&quot;!disableTime&quot; value&#x3D;&quot;s&quot;&gt;Sekunde{{ amount &gt; 1 ? &#x27;n&#x27; : &#x27;&#x27; }}&lt;/option&gt;
+    &lt;option *ngIf&#x3D;&quot;!disableTime&quot; value&#x3D;&quot;m&quot;&gt;Minute{{ amount &gt; 1 ? &#x27;n&#x27; : &#x27;&#x27; }}&lt;/option&gt;
+    &lt;option *ngIf&#x3D;&quot;!disableTime&quot; value&#x3D;&quot;h&quot;&gt;Stunde{{ amount &gt; 1 ? &#x27;n&#x27; : &#x27;&#x27; }}&lt;/option&gt;
+    &lt;option *ngIf&#x3D;&quot;!disableTime&quot; value&#x3D;&quot;D&quot;&gt;Tag{{ amount &gt; 1 ? &#x27;e&#x27; : &#x27;&#x27; }}&lt;/option&gt;
+    &lt;option value&#x3D;&quot;W&quot;&gt;Woche{{ amount &gt; 1 ? &#x27;n&#x27; : &#x27;&#x27; }}&lt;/option&gt;
+    &lt;option value&#x3D;&quot;M&quot;&gt;Monat{{ amount &gt; 1 ? &#x27;e&#x27; : &#x27;&#x27; }}&lt;/option&gt;
+    &lt;option value&#x3D;&quot;Y&quot;&gt;Jahr{{ amount &gt; 1 ? &#x27;e&#x27; : &#x27;&#x27; }}&lt;/option&gt;
+  &lt;/select&gt;
+  &lt;input
+    autocomplete&#x3D;&quot;off&quot;
+    class&#x3D;&quot;input&quot;
+    type&#x3D;&quot;text&quot;
+    (ngModelChange)&#x3D;&quot;updateCustom()&quot;
+    [(ngModel)]&#x3D;&quot;value&quot;
+    [class.is-hidden]&#x3D;&quot;!customMode&quot;
+    #customInput
+  /&gt;
+  &lt;a (click)&#x3D;&quot;toggleMode()&quot; class&#x3D;&quot;input-group__addon btn btn_minor&quot; [class.is-disabled]&#x3D;&quot;!isSimpleValue(value)&quot;&gt;
+    &lt;ec-icon name&#x3D;&quot;code&quot;&gt;&lt;/ec-icon&gt;
+  &lt;/a&gt;
+&lt;/div&gt;
+</code></pre>
     </div>
 
 
@@ -1594,10 +1425,10 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><ng-template ecSlotHost></ng-template></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="input-group">  <input    class="input"    type="number"    (ngModelChange)="updateSimple()"    [(ngModel)]="amount"    style="width: 150px"    *ngIf="!customMode"  />  <div class="x-space-1" *ngIf="!customMode"></div>  <select class="input" (ngModelChange)="updateSimple()" [(ngModel)]="period" *ngIf="!customMode">    <option *ngIf="!disableTime" value="s">Sekunde{{ amount > 1 ? \'n\' : \'\' }}</option>    <option *ngIf="!disableTime" value="m">Minute{{ amount > 1 ? \'n\' : \'\' }}</option>    <option *ngIf="!disableTime" value="h">Stunde{{ amount > 1 ? \'n\' : \'\' }}</option>    <option *ngIf="!disableTime" value="D">Tag{{ amount > 1 ? \'e\' : \'\' }}</option>    <option value="W">Woche{{ amount > 1 ? \'n\' : \'\' }}</option>    <option value="M">Monat{{ amount > 1 ? \'e\' : \'\' }}</option>    <option value="Y">Jahr{{ amount > 1 ? \'e\' : \'\' }}</option>  </select>  <input    autocomplete="off"    class="input"    type="text"    (ngModelChange)="updateCustom()"    [(ngModel)]="value"    [class.is-hidden]="!customMode"    #customInput  />  <a (click)="toggleMode()" class="input-group__addon btn btn_minor" [class.is-disabled]="!isSimpleValue(value)">    <ec-icon name="code"></ec-icon>  </a></div></div>'
     var COMPONENTS = [{'name': 'AceComponent', 'selector': 'ec-ace'},{'name': 'ActionbarComponent', 'selector': 'ec-actionbar'},{'name': 'AdminEntryInputComponent', 'selector': ''},{'name': 'ApiActionbarComponent', 'selector': 'ec-api-actionbar'},{'name': 'AssetgroupSelectComponent', 'selector': 'ec-assetgroup-select'},{'name': 'AssetListComponent', 'selector': 'ec-asset-list'},{'name': 'AssetListPopComponent', 'selector': 'ec-asset-list-pop'},{'name': 'AssetSelectComponent', 'selector': 'ec-asset-select'},{'name': 'CalendarComponent', 'selector': 'ec-calendar'},{'name': 'CrudComponent', 'selector': 'ec-crud'},{'name': 'DaterangeComponent', 'selector': 'ec-daterange'},{'name': 'DatetimeComponent', 'selector': 'ec-datetime'},{'name': 'DefaultEntryInputComponent', 'selector': ''},{'name': 'DefaultEntryOutputComponent', 'selector': 'ec-default-entry-output'},{'name': 'DefaultInputComponent', 'selector': ''},{'name': 'DefaultOutputComponent', 'selector': 'ec-default-output'},{'name': 'DynamicRackComponent', 'selector': ''},{'name': 'DynamicSlotComponent', 'selector': 'ec-dynamic-slot'},{'name': 'EntryActionbarComponent', 'selector': 'ec-entry-actionbar'},{'name': 'EntryFormComponent', 'selector': 'ec-entry-form'},{'name': 'EntryListComponent', 'selector': 'ec-entry-list'},{'name': 'EntryListPopComponent', 'selector': 'ec-entry-list-pop'},{'name': 'EntryListSelectComponent', 'selector': 'ec-entry-list-select'},{'name': 'EntryPopComponent', 'selector': 'ec-entry-pop'},{'name': 'EntrySelectComponent', 'selector': 'ec-entry-select'},{'name': 'ErrorComponent', 'selector': 'ec-error'},{'name': 'FormComponent', 'selector': 'ec-form'},{'name': 'HeatmapComponent', 'selector': 'ec-heatmap'},{'name': 'IconComponent', 'selector': 'ec-icon'},{'name': 'ImageSelectPopComponent', 'selector': 'ec-image-select-pop'},{'name': 'InputComponent', 'selector': 'ec-input'},{'name': 'InputErrorsComponent', 'selector': 'ec-input-errors'},{'name': 'ListComponent', 'selector': 'ec-list'},{'name': 'ListHeaderComponent', 'selector': 'ec-list-header'},{'name': 'ListItemsComponent', 'selector': 'ec-list-items'},{'name': 'LoaderComponent', 'selector': 'ec-loader'},{'name': 'LocationMapComponent', 'selector': 'ec-location-map'},{'name': 'LocationPickerComponent', 'selector': 'ec-location-picker'},{'name': 'LocationSearchComponent', 'selector': 'ec-location-search'},{'name': 'LoginComponent', 'selector': 'ec-login'},{'name': 'LoginFormComponent', 'selector': 'ec-login-form'},{'name': 'MediumEditorComponent', 'selector': 'ec-medium-editor'},{'name': 'ModalComponent', 'selector': 'ec-modal'},{'name': 'MonthComponent', 'selector': 'ec-month'},{'name': 'NotificationsComponent', 'selector': 'ec-notifications'},{'name': 'OutputComponent', 'selector': 'ec-output'},{'name': 'PaginationComponent', 'selector': 'ec-pagination'},{'name': 'PasswordResetComponent', 'selector': 'ec-password-reset'},{'name': 'PeriodComponent', 'selector': 'ec-period'},{'name': 'PopComponent', 'selector': 'ec-pop'},{'name': 'ResourceActionbarComponent', 'selector': 'ec-resource-actionbar'},{'name': 'ResourceCrudComponent', 'selector': 'ec-resource-crud'},{'name': 'ResourceDeletePopComponent', 'selector': 'ec-resource-delete-pop'},{'name': 'ResourceFormComponent', 'selector': 'ec-resource-form'},{'name': 'ResourceListComponent', 'selector': 'ec-resource-list'},{'name': 'ResourceListPopComponent', 'selector': 'ec-resource-list-pop'},{'name': 'ResourcePopComponent', 'selector': 'ec-resource-pop'},{'name': 'ResourceSelectComponent', 'selector': 'ec-resource-select'},{'name': 'SearchbarComponent', 'selector': 'ec-searchbar'},{'name': 'SelectComponent', 'selector': 'ec-select'},{'name': 'SignupComponent', 'selector': 'ec-signup'},{'name': 'SignupFormComponent', 'selector': 'ec-signup-form'},{'name': 'TabComponent', 'selector': 'ec-tab'},{'name': 'TabsComponent', 'selector': 'ec-tabs'},{'name': 'TagSelectComponent', 'selector': 'ec-tag-select'},{'name': 'TinymceComponent', 'selector': 'ec-tinymce'},{'name': 'ToggleComponent', 'selector': 'ec-toggle'},{'name': 'UploadComponent', 'selector': 'ec-upload'},{'name': 'UploadSelectComponent', 'selector': 'ec-upload-select'}];
     var DIRECTIVES = [{'name': 'AssetDirective', 'selector': '[ecAsset]'},{'name': 'DropzoneDirective', 'selector': '[ecDropzone]'},{'name': 'EntriesDirective', 'selector': '[ecEntries]'},{'name': 'EntryDirective', 'selector': '[ecEntry]'},{'name': 'FocusDirective', 'selector': '[ecFocus]'},{'name': 'ImageDirective', 'selector': 'img [ecImage]'},{'name': 'SlotHostDirective', 'selector': '[ecSlotHost]'}];
-    var ACTUAL_COMPONENT = {'name': 'InputComponent'};
+    var ACTUAL_COMPONENT = {'name': 'PeriodComponent'};
 </script>
 <script src="../js/tree.js"></script>
 
@@ -1632,7 +1463,7 @@ export class InputComponent extends DynamicSlotComponent implements ControlValue
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
-            var COMPODOC_CURRENT_PAGE_URL = 'InputComponent.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'PeriodComponent.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

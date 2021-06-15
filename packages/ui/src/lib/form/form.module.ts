@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormComponent } from './form.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PopModule } from '../pop/pop.module';
 import { FormService } from './form.service';
 import { VisibleFieldsPipe } from './visible-fields.pipe';
@@ -16,6 +16,7 @@ import { DefaultInputComponent } from './default-input/default-input.component';
 import { DefaultOutputComponent } from './default-output/default-output.component';
 import { CalendarModule } from '@ec.components/calendar';
 import { UtilityModule } from '../utility/utility.module';
+import { PeriodComponent } from './period/period.component';
 
 @NgModule({
   entryComponents: [DefaultInputComponent, DefaultOutputComponent],
@@ -27,9 +28,11 @@ import { UtilityModule } from '../utility/utility.module';
     ToggleComponent,
     DefaultInputComponent,
     DefaultOutputComponent,
+    PeriodComponent,
   ],
   imports: [
     CommonModule,
+    FormsModule,
     ReactiveFormsModule,
     PopModule,
     IoModule,
