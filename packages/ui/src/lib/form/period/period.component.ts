@@ -21,6 +21,8 @@ export class PeriodComponent implements ControlValueAccessor {
   /** If true, no time values can be selected */
   @Input() disableTime: FormControl = new FormControl();
   @ViewChild('customInput') customInput: any;
+  /** The input's placeholder */
+  @Input() placeholder = '';
   /** The current value */
   value = '';
   amount = 1;

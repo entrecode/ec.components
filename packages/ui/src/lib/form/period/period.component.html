@@ -24,6 +24,7 @@
     (ngModelChange)="updateCustom()"
     [(ngModel)]="value"
     [class.is-hidden]="!customMode"
+    [placeholder]="placeholder"
     #customInput
   />
   <a (click)="toggleMode()" class="input-group__addon btn btn_minor" [class.is-disabled]="customMode && !isSimpleValue(value)">
