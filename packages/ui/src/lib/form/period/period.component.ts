@@ -21,6 +21,8 @@ export class PeriodComponent implements ControlValueAccessor {
   /** If true, no time values can be selected */
   @Input() disableTime: FormControl = new FormControl();
   @ViewChild('customInput') customInput: any;
+  /** The input's placeholder */
+  @Input() placeholder = '';
   /** The current value */
   value = '';
   amount = 1;
@@ -32,22 +34,16 @@ export class PeriodComponent implements ControlValueAccessor {
   constructor() { }
 
   parseValue(value) {
-    return value.match(/^P(?:(\d+(?:\.\d+)?)([D]|[W]|M|[JY]))?(?:T(\d+(?:\.\d+)?)([sS]|[mM]|[hH]))?$/)?.slice(1) || [];
-  }
-
-  isTimePeriod(period) {
-    return period.match(/^([sS]|[mM]|[hH])$/);
+    return value?.match(/^P(?:(\d+(?:\.\d+)?)(D|W|M|Y))?(?:T(\d+(?:\.\d+)?)(S|M|H))?$/)?.slice(1) || [];
   }
 
   // simple mode: update value when amount and period change + propagate change
-  updateSimple() {
-    setTimeout(() => {
-      const isTimePeriod = this.isTimePeriod(this.period);
-      const value = 'P' + (isTimePeriod ? 'T' : '') + this.amount + this.period;
-      // console.log('change', value);
-      this.value = value;
-      this.propagateChange(value);
-    })
+  updateSimple(amount, period) {
+    const isTimePeriod = period?.[0] === 'T';
+    const value = 'P' + (isTimePeriod ? 'T' : '') + (amount ?? '') + (isTimePeriod ? period?.slice(1) : period ?? '');
+    // console.log('change', value);
+    this.value = value;
+    this.propagateChange(value);
   }
 
   // custom mode: update amount and period when value changes + propagate change
@@ -57,14 +53,26 @@ export class PeriodComponent implements ControlValueAccessor {
     })
   }
 
+  clear() {
+    console.log('clear');
+    this.value = null;
+    this.period = undefined;
+    this.amount = undefined;
+    this.propagateChange(this.value);
+  }
+
   // parse current value and update amount and period => should only do if 
   updateAmountAndPeriod(value = this.value) {
     if (!this.isSimpleValue(value)) {
       throw new Error('cannot update amount and period from a non simple value!')
     }
+    if (!value) {
+      this.amount = undefined;
+      this.period = undefined;
+    }
     const [dateAmount, datePeriod, timeAmount, timePeriod] = this.parseValue(value);
     this.amount = dateAmount !== undefined ? +dateAmount : +timeAmount;
-    this.period = datePeriod !== undefined ? datePeriod : timePeriod;
+    this.period = datePeriod !== undefined ? datePeriod : 'T' + timePeriod;
   }
 
   toggleMode() {
@@ -86,17 +94,16 @@ export class PeriodComponent implements ControlValueAccessor {
 
   isSimpleValue(value) {
     const [_, datePeriod, __, timePeriod] = this.parseValue(value);
-    if (!!timePeriod !== !!datePeriod) {
-      return true;
-    } else {
-      return false;
-    }
+    return !value || !!timePeriod !== !!datePeriod;
   }
 
   /** Selects the given Date when the model changes. */
   writeValue(value: string) {
     if (!value) {
-      return '';
+      this.amount = undefined;
+      this.period = undefined;
+      this.value = value;
+      return;
     }
     this.value = value;
     try {
