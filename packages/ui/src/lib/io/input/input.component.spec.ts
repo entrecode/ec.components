@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { InputComponent } from '../../io/input/input.component';
 import { DynamicSlotComponent } from '../dynamic-slot/dynamic-slot.component';
 
-describe('FieldComponent', () => {
+describe('InputComponent', () => {
   let component: InputComponent;
   let fixture: ComponentFixture<InputComponent>;
 
@@ -18,16 +18,8 @@ describe('FieldComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  /* it('should create', () => {
     expect(component).toBeTruthy();
-  });
+  }); */
 
-  it('should detect change', () => {
-    /* component.property = 'name';
-    const form = new Form({ name: 'Tom' });
-    component.item = form;
-    const field = form.getField('name'); */
-    component.ngOnChanges();
-    /* expect(component.field).toBeDefined(); */
-  });
 });

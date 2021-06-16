@@ -52,6 +52,7 @@ import { PeriodComponent } from './period/period.component';
     VisibleFieldsPipe,
     MaxItemsPipe,
     ToggleComponent,
+    PeriodComponent,
   ],
   providers: [
     FormService,
