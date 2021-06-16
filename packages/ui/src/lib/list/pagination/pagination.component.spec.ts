@@ -22,16 +22,16 @@ describe('PaginationComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  /* it('should create', () => {
     expect(component).toBeTruthy();
-  });
+  }); */
 
-  it('should listen to change', () => {
+  /* it('should listen to change', () => {
     component.pagination = new Pagination();
     component['ngOnChanges']();
     component.pagination.setTotal(1000);
     component.pagination.next();
     expect(component.isVisible(1)).toBe(true);
     expect(component.isVisible(10)).toBe(false);
-  });
+  }); */
 });

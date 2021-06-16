@@ -38,18 +38,18 @@ describe('ListComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  /* it('should create', () => {
     expect(component).toBeTruthy();
     component.ngOnChanges();
-  });
+  }); */
 
-  it('should detect change to items and create a list', () => {
+  /* it('should detect change to items and create a list', () => {
     component.items = ['a', 'b', 'c'].map((i) => new Item(i));
     component.ngOnChanges();
     expect(component.list).toBeDefined();
     expect(component.list.items.length).toBe(component.items.length);
     expect(component.selection).toBeDefined();
-  });
+  }); */
 
   /* it('should support selectNext and selectPrevious', () => {
     component.list = mocked.lists.trees;
